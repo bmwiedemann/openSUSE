@@ -1,5 +1,7 @@
+Index: gdm-46.alpha/common/gdm-settings-system-backend.c
+===================================================================
 --- /dev/null
-+++ b/common/gdm-settings-system-backend.c
++++ gdm-46.alpha/common/gdm-settings-system-backend.c
 @@ -0,0 +1,372 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -373,8 +375,10 @@
 +
 +        return GDM_SETTINGS_BACKEND (object);
 +}
+Index: gdm-46.alpha/common/gdm-settings-system-backend.h
+===================================================================
 --- /dev/null
-+++ b/common/gdm-settings-system-backend.h
++++ gdm-46.alpha/common/gdm-settings-system-backend.h
 @@ -0,0 +1,56 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -432,8 +436,10 @@
 +G_END_DECLS
 +
 +#endif /* __GDM_SETTINGS_SYSTEM_BACKEND_H */
---- a/common/gdm-settings.c
-+++ b/common/gdm-settings.c
+Index: gdm-46.alpha/common/gdm-settings.c
+===================================================================
+--- gdm-46.alpha.orig/common/gdm-settings.c
++++ gdm-46.alpha/common/gdm-settings.c
 @@ -38,6 +38,7 @@
  #include "gdm-settings.h"
  
@@ -453,8 +459,10 @@
          backend = gdm_settings_desktop_backend_new (GDM_RUNTIME_CONF);
          if (backend)
                  settings->backends = g_list_prepend (settings->backends, backend);
+Index: gdm-46.alpha/common/gdm-sysconfig.c
+===================================================================
 --- /dev/null
-+++ b/common/gdm-sysconfig.c
++++ gdm-46.alpha/common/gdm-sysconfig.c
 @@ -0,0 +1,484 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -726,7 +734,7 @@
 +}
 +
 +static gchar *
-+get_value (const gchar **lines, const gchar *key)
++get_value (gchar **lines, const gchar *key)
 +{
 +        gchar *value = NULL;
 +        gchar *key_normal;
@@ -832,7 +840,7 @@
 +}
 +
 +gboolean
-+gdm_sysconfig_save_file (const gchar *file_name, const gchar **sysconfig)
++gdm_sysconfig_save_file (const gchar *file_name, gchar **sysconfig)
 +{
 +        g_return_val_if_fail (file_name != NULL, FALSE);
 +        g_return_val_if_fail (sysconfig != NULL, FALSE);
@@ -846,7 +854,7 @@
 +        g_return_val_if_fail (sysconfig != NULL, NULL);
 +        g_return_val_if_fail (key != NULL, NULL);
 +
-+        return get_value (sysconfig, key);
++        return get_value ((gchar **)sysconfig, key);
 +}
 +
 +gboolean
@@ -862,33 +870,33 @@
 +gboolean
 +gdm_sysconfig_get_value_boolean (const gchar **sysconfig, const gchar *key, gboolean *value)
 +{
-+	char     *val;
-+	gboolean  val_bool;
++        char     *val;
++        gboolean  val_bool;
 +
 +        g_return_val_if_fail (sysconfig != NULL, FALSE);
 +        g_return_val_if_fail (key != NULL, FALSE);
 +
-+        val = get_value (sysconfig, key);
-+	if (val == NULL) {
-+		return FALSE;
-+	}
++        val = get_value ((gchar **)sysconfig, key);
++        if (val == NULL) {
++                return FALSE;
++        }
 +
 +        if (!strcasecmp (val, "yes")) {
-+		val_bool = TRUE;
-+	} else if (!strcasecmp (val, "no")) {
-+		val_bool = FALSE;
-+	} else {
-+		g_free (val);
-+		return FALSE;
-+	}
++                val_bool = TRUE;
++        } else if (!strcasecmp (val, "no")) {
++                val_bool = FALSE;
++        } else {
++                g_free (val);
++                return FALSE;
++        }
 +
-+	g_free (val);
++        g_free (val);
 +
-+	if (value != NULL) {
-+		*value = val_bool;
-+	}
++        if (value != NULL) {
++                *value = val_bool;
++        }
 +
-+	return TRUE;
++        return TRUE;
 +}
 +
 +gboolean
@@ -940,8 +948,10 @@
 +        g_strfreev (lines);
 +        return result;
 +}
+Index: gdm-46.alpha/common/gdm-sysconfig.h
+===================================================================
 --- /dev/null
-+++ b/common/gdm-sysconfig.h
++++ gdm-46.alpha/common/gdm-sysconfig.h
 @@ -0,0 +1,43 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -972,7 +982,7 @@
 +G_BEGIN_DECLS
 +
 +gchar    **gdm_sysconfig_load_file (const gchar *file_name);
-+gboolean   gdm_sysconfig_save_file (const gchar *file_name, const gchar **sysconfig);
++gboolean   gdm_sysconfig_save_file (const gchar *file_name, gchar **sysconfig);
 +
 +gchar     *gdm_sysconfig_get_value (const gchar **sysconfig, const gchar *key);
 +gboolean   gdm_sysconfig_set_value (gchar **sysconfig, const gchar *key, const gchar *value);
@@ -986,8 +996,10 @@
 +G_END_DECLS
 +
 +#endif /* __GDM_SYSCONFIG_H */
---- a/data/gdm.conf-custom.in
-+++ b/data/gdm.conf-custom.in
+Index: gdm-46.alpha/data/gdm.conf-custom.in
+===================================================================
+--- gdm-46.alpha.orig/data/gdm.conf-custom.in
++++ gdm-46.alpha/data/gdm.conf-custom.in
 @@ -1,4 +1,7 @@
  # GDM configuration storage
 +#
@@ -996,8 +1008,10 @@
  
  [daemon]
  # Uncomment the line below to force the login screen to use Xorg
---- a/common/meson.build
-+++ b/common/meson.build
+Index: gdm-46.alpha/common/meson.build
+===================================================================
+--- gdm-46.alpha.orig/common/meson.build
++++ gdm-46.alpha/common/meson.build
 @@ -5,9 +5,11 @@ libgdmcommon_src = files(
    'gdm-profile.c',
    'gdm-settings-backend.c',

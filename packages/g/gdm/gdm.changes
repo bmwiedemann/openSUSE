@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Mar 19 07:49:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + PAM improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:17:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Support for killing conflicting sessions at login time.
+  + XDMCP fix.
+  + Use wayland by default on certain server chips.
+  + Fix pam extension size computation.
+  + Introspection fix.
+  + Fix for homed users.
+  + Updated translations.
+- Rebase gdm-default-wm.patch and
+  gdm-xvnc-start-session-failed.patch.
+
+-------------------------------------------------------------------
+Mon Mar  4 03:02:11 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Rebase gdm-sysconfig-settings.patch: to fix build with GCC 14.
+
+-------------------------------------------------------------------
+Mon Mar  4 02:20:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + Support remote login from gnome-remote-desktop (and hopefuly
+    nicedcv in the future).
+  + Support new JSON pam extension.
+  + Fix build with user-display-server=false.
+  + Minor clean ups.
+  + Move private D-Bus sockets to private directory.
+  + Build goo fixes.
+  + Warning fixes.
+  + Updated translations.
+- Rebase gdm-default-wm.patch.
+- Add pkgconfig(json-glib-1.0) BuildRequires: new dependency.
+- Convert to source service for easier updating.
+
+-------------------------------------------------------------------
 Mon Mar  4 01:24:06 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Update gdm-xvnc-start-session-failed.patch: Following the upstream

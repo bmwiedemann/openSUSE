@@ -27,14 +27,14 @@
 %endif
 
 Name:           gdm
-Version:        45.0.1
+Version:        46.0
 Release:        0
 Summary:        The GNOME Display Manager
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GDM
 
-Source0:        https://download.gnome.org/sources/gdm/45/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        gdm.pamd
 Source2:        gdm-autologin.pamd
 Source3:        gdm-launch-environment.pamd
@@ -112,6 +112,7 @@ BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 2.91.1
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(iso-codes)
+BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.4
 BuildRequires:  pkgconfig(libkeyutils)
 BuildRequires:  pkgconfig(libsystemd)
@@ -384,6 +385,7 @@ dconf update
 %config %{_sysconfdir}/gdm/[IPXl]*
 %{_sbindir}/gdm
 %{_bindir}/gdm
+%{_bindir}/gdm-config
 %{_bindir}/gdm-screenshot
 %dir %{_datadir}/dconf
 %dir %{_datadir}/dconf/profile

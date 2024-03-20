@@ -12,13 +12,13 @@ same Xorg/Xvnc server), otherwise, the vncserver would be closed.
  daemon/gdm-session.c | 5 +++++
  1 file changed, 5 insertions(+)
 
-diff --git a/daemon/gdm-session.c b/daemon/gdm-session.c
-index 09b6ce52e..a4c4b2dcf 100644
---- a/daemon/gdm-session.c
-+++ b/daemon/gdm-session.c
-@@ -3648,6 +3648,11 @@ gdm_session_get_display_mode (GdmSession *self)
-                  self->is_program_session? "yes" : "no",
-                  self->display_seat_id);
+Index: gdm-46.rc/daemon/gdm-session.c
+===================================================================
+--- gdm-46.rc.orig/daemon/gdm-session.c
++++ gdm-46.rc/daemon/gdm-session.c
+@@ -3671,6 +3671,11 @@ gdm_session_get_display_mode (GdmSession
+                 return GDM_SESSION_DISPLAY_MODE_REUSE_VT;
+         }
  
 +        if (self->display_seat_id == NULL &&
 +            g_strcmp0 (self->session_type, "wayland") != 0) {
@@ -28,6 +28,3 @@ index 09b6ce52e..a4c4b2dcf 100644
          if (g_strcmp0 (self->display_seat_id, "seat0") != 0) {
                  return GDM_SESSION_DISPLAY_MODE_LOGIND_MANAGED;
          }
--- 
-GitLab
-

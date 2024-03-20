@@ -1,15 +1,17 @@
---- a/daemon/gdm-session.c
-+++ b/daemon/gdm-session.c
-@@ -43,6 +43,8 @@
- #include <glib-object.h>
- #include <gio/gio.h>
+Index: gdm-46.rc/daemon/gdm-session.c
+===================================================================
+--- gdm-46.rc.orig/daemon/gdm-session.c
++++ gdm-46.rc/daemon/gdm-session.c
+@@ -47,6 +47,8 @@
+ 
+ #include <systemd/sd-login.h>
  
 +#include "gdm-sysconfig.h"
 +
  #include "gdm-session.h"
  #include "gdm-session-glue.h"
  #include "gdm-dbus-util.h"
-@@ -589,6 +591,14 @@ get_fallback_session_name (GdmSession *s
+@@ -618,6 +620,14 @@ get_fallback_session_name (GdmSession *s
                  }
          }
  
