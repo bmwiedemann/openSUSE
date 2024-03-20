@@ -28,8 +28,6 @@ URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-orphans-devel
-BuildRequires:  ghc-base-orphans-prof
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-deepseq-prof
