@@ -1776,4 +1776,12 @@ New stable rel</comment>
     <comment>New stable release (forwarded request 1130564 from iznogood)</comment>
     <requestid>1130744</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>db1b3323d4a9cff079c835ff53af344b</srcmd5>
+    <version>1.80.0</version>
+    <time>1710965474</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158409 from dimstar)</comment>
+    <requestid>1159479</requestid>
+  </revision>
 </revisionlist>
