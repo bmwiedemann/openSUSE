@@ -1,0 +1,33 @@
+--- a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/tools/PStack.java
++++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/tools/PStack.java
+@@ -101,7 +101,8 @@ public class PStack extends Tool {
+                if (jthread != null) {
+                   jthread.printThreadInfoOn(out);
+                }
+-               while (f != null) {
++               int maxStack = 256;
++               while (f != null && maxStack-- > 0) {
+                   ClosestSymbol sym = f.closestSymbolToPC();
+                   Address pc = f.pc();
+                   out.print(pc + "\t");
+@@ -183,10 +184,19 @@ public class PStack extends Tool {
+                          }
+                       }
+                   }
++                  Address oldPC = f.pc();
++                  Address oldFP = f.localVariableBase();
+                   f = f.sender(th);
++                  if (f != null
++                      && oldPC.equals(f.pc())
++                      && oldFP.equals(f.localVariableBase())) {
++                      // We didn't make any progress
++                      f = null;
++                  }
+                }
+             } catch (Exception exp) {
+-               exp.printStackTrace();
++               // exp.printStackTrace();
++               out.println("bad stack: " + exp);
+                // continue, may be we can do a better job for other threads
+             }
+             if (concurrentLocks) {
