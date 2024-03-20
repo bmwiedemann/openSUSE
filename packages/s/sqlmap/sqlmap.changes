@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 16 19:41:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.3:
+  * Adding switch '--unsafe-naming'
+  * Fixes #5619
+  * Fixes #5590
+  * Add Patch related to empty multiform-data field value
+  * Fix Python 3.12 warnings
+
+-------------------------------------------------------------------
 Fri Jan  5 14:32:01 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.8:
