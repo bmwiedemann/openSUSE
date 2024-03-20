@@ -8,4 +8,16 @@
 initial submission to TW</comment>
     <requestid>927582</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9617273155b7bf445ec42a7e9b0ab749</srcmd5>
+    <version>1.1</version>
+    <time>1710965708</time>
+    <user>dimstar_suse</user>
+    <comment>- version 1.1
+  enable gcc13 for Leap 15
+  gcc11.diff removed (included in source)
+  download changed to university louvain (new orthanc host)
+</comment>
+    <requestid>1159862</requestid>
+  </revision>
 </revisionlist>

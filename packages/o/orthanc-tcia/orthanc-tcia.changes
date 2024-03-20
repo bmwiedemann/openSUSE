@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 13 13:35:46 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.1
+  enable gcc13 for Leap 15
+  gcc11.diff removed (included in source)
+  download changed to university louvain (new orthanc host)
+
+-------------------------------------------------------------------
 Tue Oct 26 18:46:39 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - gcc11.diff applied to fix TW build

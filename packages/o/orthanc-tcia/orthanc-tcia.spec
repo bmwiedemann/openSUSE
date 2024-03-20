@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-tcia
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2021 Dr. Axel Braun <DocB@opensuse.org>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2021-2024 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,20 +21,22 @@ Name:           orthanc-tcia
 Summary:        TCIA plugin for Orthanc
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        1.0
+Version:        1.1
 Release:        0
 URL:            http://orthanc-server.com
-Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-tcia/OrthancTcia-%{version}.tar.gz
-Source10:       http://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/bootstrap-4.3.1.zip
-Source11:       http://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/vuejs-2.6.10.tar.gz
-Source12:       http://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/axios-0.19.0.tar.gz
+Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancTcia-%{version}.tar.gz
+Source10:       https://orthanc.uclouvain.be/downloads/third-party-downloads/dicom-web/bootstrap-4.3.1.zip
+Source11:       https://orthanc.uclouvain.be/downloads/third-party-downloads/dicom-web/vuejs-2.6.10.tar.gz
+Source12:       https://orthanc.uclouvain.be/downloads/third-party-downloads/dicom-web/axios-0.19.0.tar.gz
 
 Source20:       orthanc-tcia-readme.openSUSE
-# Required for TW:
-Patch0:         gcc11.diff
 
 BuildRequires:  cmake
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -46,9 +48,9 @@ BuildRequires:  libboost_system-devel >= 1.66
 BuildRequires:  libboost_thread-devel >= 1.66
 BuildRequires:  libcsv-devel
 BuildRequires:  libuuid-devel
-BuildRequires:  sqlite3-devel
 BuildRequires:  orthanc-devel
 BuildRequires:  orthanc-source
+BuildRequires:  sqlite3-devel
 BuildRequires:  unzip
 
 Requires:       orthanc
@@ -59,17 +61,18 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Plugin to import data from The Cancer Image Archive
 
 %prep
-%setup -q -n OrthancTcia-%{version}
-%autopatch -p1
+%autosetup -n OrthancTcia-%{version}
 
 #OrthancPlugins may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web
 mkdir ThirdPartyDownloads
 cp %{S:10} %{S:11} %{S:12} ThirdPartyDownloads/.
 
-
 %build
-
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %cmake .. \
        -DALLOW_DOWNLOADS=OFF \
        -DUSE_SYSTEM_GOOGLE_TEST=ON \
