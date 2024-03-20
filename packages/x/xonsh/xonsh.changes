@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:50:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.1:
+  * pytest: Fix pytest collection starting at pytest>=8.1.0
+  * Updated docs to reflect VS Code support for xonsh as the
+    user's default shell.
+  * Pinned prompt-toolkit version 3.0.29-3.0.40 to workaround
+    upstream issue. More info in issue 5241.
+
+-------------------------------------------------------------------
 Sun Jan 28 10:07:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.4:
