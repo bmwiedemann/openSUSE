@@ -207,4 +207,12 @@
     <comment></comment>
     <requestid>1135396</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>96fa708af00533c27067cbf01e8ddaa8</srcmd5>
+    <version>1.21.0</version>
+    <time>1710965791</time>
+    <user>dimstar_suse</user>
+    <comment>Add patch to fix shebang</comment>
+    <requestid>1159638</requestid>
+  </revision>
 </revisionlist>

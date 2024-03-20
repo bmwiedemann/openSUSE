@@ -1,0 +1,21 @@
+diff --git a/etc/ppp/ip-down.local.example b/etc/ppp/ip-down.local.example
+index 5af3e65..3c07467 100755
+--- a/etc/ppp/ip-down.local.example
++++ b/etc/ppp/ip-down.local.example
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ case "$PPP_IPPARAM" in
+     openfortivpn*)
+diff --git a/etc/ppp/ip-up.local.example b/etc/ppp/ip-up.local.example
+index d028b17..bd11d2e 100755
+--- a/etc/ppp/ip-up.local.example
++++ b/etc/ppp/ip-up.local.example
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ case "$PPP_IPPARAM" in
+     openfortivpn*)
+

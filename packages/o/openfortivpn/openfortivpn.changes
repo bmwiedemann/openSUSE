@@ -1,10 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 26 12:45:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Thu Dec 14 20:53:26 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.21.0
   * fix "Peer refused to agree to his IP address" message, again.
   * deprecate option --plugin.
   * better masking of password in logs.
+
+-------------------------------------------------------------------
+Thu Dec 14 20:35:58 UTC 2023 - Nicolas FORMICHELLA <stigpro@outlook.fr>
+
+- Add openfortivpn-fix-usr-bin-env.patch to fix the shebang of files
+  from env to bash.
 
 -------------------------------------------------------------------
 Sun Aug 27 16:47:53 UTC 2023 - Martin Hauke <mardnh@gmx.de>

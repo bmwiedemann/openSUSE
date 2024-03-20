@@ -1,7 +1,7 @@
 #
 # spec file for package openfortivpn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Productivity/Networking/Security
 URL:            https://github.com/adrienverge/openfortivpn
 Source0:        https://github.com/adrienverge/openfortivpn/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         harden_openfortivpn@.service.patch
+Patch1:         openfortivpn-fix-usr-bin-env.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  openssl-devel
@@ -38,8 +39,7 @@ process and operates the communication between the gateway and this process.
 It is compatible with Fortinet VPNs.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
