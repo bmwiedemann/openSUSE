@@ -20,22 +20,18 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.1.2.1
+Version:        2.2.1.0
 Release:        0
 Summary:        Fast JSON parsing and encoding
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/3.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-OneTuple-devel
 BuildRequires:  ghc-OneTuple-prof
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
-BuildRequires:  ghc-attoparsec-devel
-BuildRequires:  ghc-attoparsec-prof
-BuildRequires:  ghc-base-compat-batteries-devel
-BuildRequires:  ghc-base-compat-batteries-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
@@ -56,6 +52,12 @@ BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-hashable-prof
 BuildRequires:  ghc-indexed-traversable-devel
 BuildRequires:  ghc-indexed-traversable-prof
+BuildRequires:  ghc-integer-conversion-devel
+BuildRequires:  ghc-integer-conversion-prof
+BuildRequires:  ghc-integer-logarithms-devel
+BuildRequires:  ghc-integer-logarithms-prof
+BuildRequires:  ghc-network-uri-devel
+BuildRequires:  ghc-network-uri-prof
 BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-primitive-prof
 BuildRequires:  ghc-rpm-macros
@@ -70,6 +72,8 @@ BuildRequires:  ghc-tagged-prof
 BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-template-haskell-prof
 BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-text-iso8601-devel
+BuildRequires:  ghc-text-iso8601-prof
 BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-text-short-devel
 BuildRequires:  ghc-text-short-prof
@@ -105,8 +109,6 @@ BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-generic-deriving-devel
 BuildRequires:  ghc-generic-deriving-prof
-BuildRequires:  ghc-integer-logarithms-devel
-BuildRequires:  ghc-integer-logarithms-prof
 BuildRequires:  ghc-quickcheck-instances-devel
 BuildRequires:  ghc-quickcheck-instances-prof
 BuildRequires:  ghc-tasty-devel

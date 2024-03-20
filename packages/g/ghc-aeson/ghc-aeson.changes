@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Mon Oct 16 15:54:05 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update aeson to version 2.2.1.0 revision 1.
+  ### 2.2.1.0
+
+  * Add `Data.Aeson.RFC8785`, a JSON Canonicalization Scheme implementation
+    https://datatracker.ietf.org/doc/html/rfc8785
+  * Add Data.Aeson.Decoding.Text, decodeStrictText :: Text -> ...
+
+    We avoid intermediate `ByteString` copy by not doing
+    `decode .  TE.encodeUtf8`, but instead working on `Text` value directly.
+    As we know that the stream is valid Unicode (UTF8 or UTF16),
+    we can also take some shortcuts.
+
+    One gotcha is that internal `Text` values (in `Key`s or `Value` `String`s)
+    will most likely retain the original input `Text` value (its underlying `Array`).
+    It shouldn't be an issue if the `Value` is then decoded to something else so these
+    `Text` values disapper, but if not (e.g. `Object` keys survive)
+    then users might want to use `Data.Text.copy`.
+
+  ### 2.2.0.0
+
+  * Rework how `omitNothingFields` works. Add `allowOmittedFields` as a parsing counterpart.
+
+    New type-class members were added: `omitField :: a -> Bool` to `ToJSON` and `omittedField :: Maybe a` to `FromJSON`.
+    These control which fields can be omitted.
+    The `.:?=`, `.:!=` and `.?=` operators were added to make use of these new members.
+
+    GHC.Generics and Template Haskell deriving has been updated accordingly.
+    Note: They behave as the parsers have been written with `.:!=`, i.e.
+    if the field value is `null` it's passed to the underlying parser.
+    This doesn't make difference for `Maybe` or `Option`, but does make for
+    types which parser doesn't accept `null`.
+    (`()` parser accepts everything and `Proxy` accepts `null).
+
+    In addition to `Maybe` (and `Option`) fields the `Data.Monoid.First` and `Data.Monoid.Last` are also omitted,
+    as well as the most newtype wrappers, when their wrap omittable type (e.g. newtypes in `Data.Monoid` and `Data.Semigroup`, `Identity`, `Const`, `Tagged`, `Compose`).
+    Additionall "boring" types like `()` and `Proxy` are omitted as well.
+    As the omitting is now uniform, type arguments are also omitted (also in `Generic1` derived instance).
+
+    Resolves issues:
+
+    -  [#687](https://github.com/haskell/aeson/issues/687) Derived ToJSON1 instance does not respect omitNothingFields = True,
+    -  [#571](https://github.com/haskell/aeson/issues/571) omitNothingFields not used in Generic Decode,
+    -  [#792](https://github.com/haskell/aeson/issues/792) Make Proxy fields optional.
+
+  * Use `Data.Aeson.Decoding` parsing functions (introduced in version 2.1.2.0) as default in `Data.Aeson`.
+    As one side-effect, `decode` and `decode'` etc pair functions are operationally the same.
+    All variants use an intermediate `Value` in normal form.
+
+    The lazier variant could had `Value` thunks inside `Array` (i.e. `Vector`), but the record had been value strict since version `0.4.0.0` (before that the lazy `Data.Map` was used as `Object`).
+
+  * Move `Data.Aeson.Parser` module into separate [`attoparsec-aeson`](https://hackage.haskell.org/package/attoparsec-aeson) package, as these parsers are not used by `aeson` itself anymore.
+  * Use [`text-iso8601`](https://hackage.haskell.org/package/text-iso8601) package for parsing `time` types. These are slightly faster than previously used (copy of) `attoparsec-iso8601`.
+    Formats accepted is slightly changed:
+    - The space between time and timezone offset (in `UTCTime` and `ZonedTime`) is disallowed. ISO8601 explictly forbidds it.
+    - The timezone offsets can be in range -23:59..23:59. This is how Python, joda-time etc seems to do. (Previously the range was -12..+14)
+
+  * Remove internal `Data.Aeson.Internal` and `Data.Aeson.Internal.Time` modules. Everything from the former is exported elsewhere (`Data.Aeson.Types`), the latter was truly internal.
+  * Remove `cffi` flag. Toggling the flag made `aeson` use a C implementation for string unescaping (used for `text <2` versions).
+    The new native Haskell implementation (introduced in version 2.0.3.0) is at least as fast.
+  * Drop instances for `Number` from `attoparsec` package.
+  * Improve `Arbitrary Value` instance.
+  * Add instances for `URI` from `network-uri`.
+  * add instances for `Down` from `Data.Ord`.
+  * Use `integer-conversion` for converting `Text` and `ByteString`s into `Integer`s.
+  * Bump lower bounds of non GHC-boot lib dependencies.
+
+-------------------------------------------------------------------
 Tue Aug 22 09:29:21 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Cosmetic changes to the spec file.
