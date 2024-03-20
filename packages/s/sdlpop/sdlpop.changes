@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 20 07:16:22 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Fixed segfault https://bugzilla.opensuse.org/show_bug.cgi?id=1221544
+
+-------------------------------------------------------------------
 Mon Feb 26 13:21:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

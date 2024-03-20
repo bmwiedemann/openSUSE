@@ -25,14 +25,13 @@ Group:          Amusements/Games/Other
 URL:            https://www.popot.org/get_the_games.php?game=SDLPoP
 Source:         https://github.com/NagyD/SDLPoP/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         sdlpop-fix-sdl2-includes.patch
-BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
-BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(sdl2)
 
 %description
@@ -45,19 +44,18 @@ game data files are located.
 
 %prep
 %autosetup -p1 -n SDLPoP-%{version}
-
 sed -i 's/\r$//' doc/*.txt
 
 %build
 cd src
-%cmake
-%make_jobs
+%make_build
 
 %install
 install -d %{buildroot}/%{_bindir}
 install -Dm0755 prince %{buildroot}/%{_libexecdir}/%{name}/%{name}
 install -Dm0644 data/icon.png %{buildroot}/%{_datadir}/icons/hicolor/32x32/apps/%{name}.png
 install -d %{buildroot}/%{_libexecdir}/%{name}
+install SDLPoP.ini %{buildroot}/%{_libexecdir}/%{name}
 mv data/ %{buildroot}/%{_libexecdir}/%{name}
 %suse_update_desktop_file -c %{name} %{name} "Platformer" %{name} %{name} Game ActionGame
 
