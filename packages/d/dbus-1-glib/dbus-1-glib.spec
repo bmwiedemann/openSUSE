@@ -1,7 +1,7 @@
 #
 # spec file for package dbus-1-glib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -136,6 +136,8 @@ mv %{buildroot}/%{_sysconfdir}/bash_completion.d/dbus-bash-completion.sh \
 
 %files -n dbus-1-glib-doc
 %doc CONTRIBUTING.md
+%dir %{_datadir}/gtk-doc
+%dir %{_datadir}/gtk-doc/html
 %doc %{_datadir}/gtk-doc/html/dbus-glib
 
 %files -n dbus-1-glib-tool

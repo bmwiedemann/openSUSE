@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:23:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own %{_datadir}/gtk-doc and %{_datadir}/gtk-doc/html directories.
+
+-------------------------------------------------------------------
 Wed Nov  2 13:12:33 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Try to guard against incomplete update stacks (boo#1202241):
