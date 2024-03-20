@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 19 20:27:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.1.9:
+  * Improved performance when listing nodes with tsh or tctl.
+    #39567
+  * Require AWS S3 bucket fields when creating/editing AWS OIDC
+    integration in the web UII. #39510
+  * Added remote port forwarding to tsh. #39441
+  * Added support for setting default relay state for SAML IdP
+    initiated logins via the web interface and tctl. For supported
+    preset service provider types, a default value will be applied
+    if the field is not configured. #39401
+
+-------------------------------------------------------------------
 Mon Mar 18 15:38:52 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 15.1.8:
