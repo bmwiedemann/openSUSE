@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Oct  5 15:07:23 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update primitive to version 0.9.0.0.
+  ## Changes in version 0.9.0.0
+
+    * Add `withByteArrayContents`, `withMutableByteArrayContents`,
+      `withPrimArrayContents`, `withMutablePrimArrayContents`.
+
+    * Fix signature of `keepAlive`.
+
+    * Remove re-export of `fromList` and `fromListN` from `Data.Primitive.Array`.
+
+    * Use `mutableByteArrayContents#` in GHC 9.2+
+
+    * Add `Prim` instance for `Complex`.
+
+    * Add `getSizeofSmallMutableArray` that wraps `getSizeofSmallMutableArray#`
+      from `GHC.Exts`.
+
+    * Add default definitions for the `setByteArray#` and `setOffAddr#` methods,
+      so they don't need to be defined explicitly anymore.
+
+    * Add standalone `sizeOfType`/`alignmentOfType` (recommended over `sizeOf`/`alignment`)
+      and `Prim` class methods `sizeOfType#`/`alignmentOfType#` (recommended over `sizeOf#`/`alignment#`)
+
+    * Change `Show` instances of `PrimArray`, `Array`, and `SmallArray`. These
+      previously used the `fromListN n [...]` form, but they now used the more
+      terse `[...]` form.
+
+    * Correct the `Read` instances of `Array` and `SmallArray`. These instances
+      are supposed to be able to handle all three of these forms: `fromList [...]`,
+      `fromListN n [...]`, and `[...]`. They had been rejected the last form, but
+      this mistake was discovered by the test suite when the Show instances were
+      changed.
+
+-------------------------------------------------------------------
 Thu Aug 17 12:23:58 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update primitive to version 0.8.0.0 revision 1.
