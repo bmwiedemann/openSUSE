@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 19 13:15:30 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- bug-262309_xcb-xauthlocalhostname.diff, 
+  n_If-auth-with-credentials-for-hostname-fails-retry-with-XAUTHLOCALHOSTNAME.patch
+  * fixed build against GCC 14 (boo#1221703) 
+
+-------------------------------------------------------------------
 Wed Mar  6 15:18:25 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Fix n_If-auth-with-credentials-for-hostname-fails-retry-with-XAUTHLOCALHOSTNAME.patch,

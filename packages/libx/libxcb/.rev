@@ -389,4 +389,14 @@
     <comment></comment>
     <requestid>1155614</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>e4c5a3f0caec790f206ca1c7f707da62</srcmd5>
+    <version>1.16.1</version>
+    <time>1710965398</time>
+    <user>dimstar_suse</user>
+    <comment>- bug-262309_xcb-xauthlocalhostname.diff, 
+  n_If-auth-with-credentials-for-hostname-fails-retry-with-XAUTHLOCALHOSTNAME.patch
+  * fixed build against GCC 14 (boo#1221703)</comment>
+    <requestid>1159559</requestid>
+  </revision>
 </revisionlist>

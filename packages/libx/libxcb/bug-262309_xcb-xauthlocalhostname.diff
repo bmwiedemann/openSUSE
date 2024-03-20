@@ -25,7 +25,7 @@ Index: src/xcb_auth.c
 +            authptr = XauGetBestAuthByAddr (family,
 +                                           (unsigned short) strlen(addr), addr,
 +                                           (unsigned short) dispbuflen, dispbuf,
-+                                           N_AUTH_PROTOS, authnames, authnameslen);
++                                           N_AUTH_PROTOS, (char **) authnames, authnameslen);
 +        }
 +    }
 +    return authptr;
