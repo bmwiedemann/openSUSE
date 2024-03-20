@@ -1,7 +1,7 @@
 #
 # spec file for package hlint
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name hlint
 %global pkgver %{pkg_name}-%{version}
 Name:           %{pkg_name}
-Version:        3.6.1
+Version:        3.8
 Release:        0
 Summary:        Source code suggestions
 License:        BSD-3-Clause
