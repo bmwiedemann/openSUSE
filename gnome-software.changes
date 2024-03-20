@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Mar 15 20:58:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Improvements for screen readers.
+  + Stop ‘loading updates’ in a loop on Debian.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  1 14:09:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Various UI text improvements.
+  + Fix launch of some apps.
+  + Fix invalid app state after it's uninstalled.
+  + Fix read of app description text.
+  + Do not ask to reboot after failed firmware update.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 12 15:10:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + Show feedback for all conditions that pause automatic updates.
+  + Various UI improvements and move to new libadwaita widgets.
+  + Fix loading OS AppStream catalog data if it is available as
+    YAML.
+  + Add openSUSE Leap distro upgrade plugin.
+- Pass -D opensuse-distro-upgrade=true to meson: we are openSUSE,
+  so we want the plugin.
+- Drop gnome-software-plugin-opensuse-distro-upgrade.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Tue Jan 16 13:19:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + Recognize links in package update descriptions.
+  + Expose package names discreetly in the UI.
+  + Increase speed of load of the category pages.
+  + Improve search match with multiple words.
+  + Recognize verified apps by Flathub.
+  + Correct message when installing firmware updates.
+  + Improve application safety checks.
+  + Improve update preferences dialog.
+  + Fix deadlock when cancelling app update.
+  + Support user installation of local flatpak files.
+  * Fix apps appearing unsorted and without tiles in category page.
+- Convert to source service for easier updating.
+- Drop gnome-software-support-appstream-1_0.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Thu Dec 28 02:27:35 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Do not use _distconfdir on SLE/Leap less than version 16.
@@ -13,7 +64,7 @@ Fri Dec 15 09:33:16 UTC 2023 - Christophe Marin <christophe@krop.fr>
 Fri Dec  1 10:46:39 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 45.2:
-  + Updated translations. 
+  + Updated translations.
 
 -------------------------------------------------------------------
 Fri Oct 27 05:40:09 UTC 2023 - Jonathan Kang <jonathankang@gnome.org>
