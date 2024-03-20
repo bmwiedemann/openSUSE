@@ -3,15 +3,15 @@
     <param name="url">https://github.com/Samyak2/toipe</param>
     <param name="versionformat">@PARENT_TAG@+g@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">0fd5abf6ebe91dc198389bad18652500bfa297f0</param>
+    <param name="revision">154043b</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">socvirnyl.estela@gmail.com</param>
   </service>
-  <service mode="manual" name="tar" />
-  <service mode="manual" name="recompress">
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">zstd</param>
   </service>

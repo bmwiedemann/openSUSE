@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 19 03:57:52 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Remove now-unneeded cargo_config
+- Enable tests
+- Update to version 0.5.0+g0:
+  * ran cargo fmt.
+  * fixed order of mulit-char uppercase mappings.
+  * added CLI flag, integration with rest of program.
+  * added constructor for punctuatedwordselector
+  * better version based on double ended vec.
+  * iterator based implementation.
+  * docs: readme fixes
+
+-------------------------------------------------------------------
 Sun Aug 13 13:26:56 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Replace obsoleted `disabled` option with `manual`
