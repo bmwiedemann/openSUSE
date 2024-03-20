@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Mar 18 13:45:45 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.3.3
+ * Preview features
+   * [flake8-bandit]: Implement S610 rule 
+   * [pycodestyle] Implement blank-line-at-end-of-file (W391) 
+   * [pycodestyle] Implement redundant-backslash (E502) 
+   * [pylint] - implement redeclared-assigned-name (W0128) 
+ * Rule changes
+   * [flake8_comprehensions] Handled special case for C400 which also matches C416 
+   * [flake8-bandit] Implement upstream updates for S311, S324 and S605 
+   * [pyflakes] Remove F401 fix for __init__ imports by default and allow opt-in to unsafe fix 
+   * [pylint] Implement invalid-bool-return-type (E304) 
+   * [pylint] Include builtin warnings in useless-exception-statement (PLW0133) 
+ * CLI
+   * Add message on success to ruff check 
+ * Bug fixes
+   * [PIE970] Allow trailing ellipsis in typing.TYPE_CHECKING 
+   * Avoid TRIO115 if the argument is a variable 
+   * [F811] Avoid removing shadowed imports that point to different symbols 
+   * Fix F821 and F822 false positives in .pyi files 
+   * Fix F821 false negatives in .py files when from __future__ import annotations is active 
+   * Fix case where Indexer fails to identify continuation preceded by newline #10351 
+   * Sort hash maps in Settings display 
+   * Track conditional deletions in the semantic model 
+   * [C413] Wrap expressions in parentheses when negating 
+   * [pycodestyle] Do not ignore lines before the first logical line in blank lines rules. 
+   * [pycodestyle] Do not trigger E225 and E275 when the next token is a ')' 
+   * [pylint] Avoid false-positive slot non-assignment for __dict__ (PLE0237) 
+   * Gate f-string struct size test for Rustc < 1.76 
+ * Documentation
+   * Use ruff.toml format in README 
+   * [RUF008] Make it clearer that a mutable default in a dataclass is only valid if it is typed as a ClassVar 
+   * [pylint] Extend docs and test in invalid-str-return-type (E307) 
+   * Remove . from check and format commands 
+
+-------------------------------------------------------------------
 Mon Mar 11 08:52:49 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.3.2
