@@ -2350,4 +2350,12 @@
     <comment>Sync changelog with Leap/SLE.</comment>
     <requestid>1131262</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>e5c833209a4b712ba374e49e69f9a2ae</srcmd5>
+    <version>46.0</version>
+    <time>1710965594</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46</comment>
+    <requestid>1159760</requestid>
+  </revision>
 </revisionlist>

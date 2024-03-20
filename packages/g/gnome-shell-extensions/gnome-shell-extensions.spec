@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-shell-extensions
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +19,13 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-shell-extensions
-Version:        45.2
+Version:        46.0
 Release:        0
 Summary:        A collection of extensions for GNOME Shell
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell/Extensions
-Source0:        https://download.gnome.org/sources/gnome-shell-extensions/45/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        README.SUSE
 
 # PATCH-FEATURE-OPENSUSE gnome-shell-add-app-to-desktop.patch bnc#870580 dliang@suse.com --  allow adding app shortcut to desktop easily.
@@ -91,10 +91,19 @@ BuildArch:      noarch
 This extension allows the user to switch to different themes. It's possible
 to pick system installed themes or even themes installed in the user's home.
 
+%package -n gnome-shell-extension-system-monitor
+Summary:        System monitor for GNOME Shell
+Group:          System/GUI/GNOME
+BuildArch:      noarch
+Recommends:     gnome-system-monitor
+
+%description -n gnome-shell-extension-system-monitor
+This GNOME Shell extension displays system usage information in the top bar.
+
 %lang_package -n %{name}-common
 
 %prep
-%setup -q
+%autosetup -N
 # Needs rebase
 #patch1 -p1
 
@@ -109,7 +118,7 @@ sed -i -e 's/openSUSE/SUSE Linux Enterprise/g' README.SUSE
 %meson \
     -D classic_mode=true \
     -D extension_set=classic \
-    -D enable_extensions="apps-menu,places-menu,launch-new-instance,window-list,workspace-indicator,user-theme"
+    -D enable_extensions="apps-menu,places-menu,launch-new-instance,window-list,workspace-indicator,user-theme,system-monitor"
 %meson_build
 
 %install
@@ -160,6 +169,11 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %license COPYING
 %{_datadir}/gnome-shell/extensions/user-theme@gnome-shell-extensions.gcampax.github.com/
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.user-theme.gschema.xml
+
+%files -n gnome-shell-extension-system-monitor
+%license COPYING
+%{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.system-monitor.gschema.xml
+%{_datadir}/gnome-shell/extensions/system-monitor@gnome-shell-extensions.gcampax.github.com/
 
 %files common-lang -f %{name}.lang
 
