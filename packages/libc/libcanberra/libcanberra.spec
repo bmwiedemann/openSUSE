@@ -1,7 +1,7 @@
 #
 # spec file for package libcanberra
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.32
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libpulse) >= 0.9.11
+BuildRequires:  pkgconfig(libudev) >= 160
 BuildRequires:  pkgconfig(vorbisfile)
 BuildRequires:  pkgconfig(x11)
 
@@ -223,6 +224,8 @@ cp %{SOURCE1} libcanberra-gtk-module.sh
   --enable-pulse     \
   --enable-alsa      \
   --enable-null      \
+  --disable-oss      \
+  --enable-udev      \
   --with-builtin=dso
 make %{?_smp_mflags} V=1
 
@@ -251,7 +254,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libcanberra-%{version}/libcanberra-alsa.so
 %{_libdir}/libcanberra-%{version}/libcanberra-multi.so
 %{_libdir}/libcanberra-%{version}/libcanberra-null.so
-%{_libdir}/libcanberra-%{version}/libcanberra-oss.so
 %{_libdir}/libcanberra-%{version}/libcanberra-pulse.so
 
 %files gtk0
@@ -261,6 +263,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libcanberra-gtk3.so.*
 
 %files gtk-module-common
+%{_bindir}/canberra-boot
 %dir %{_sysconfdir}/X11/xinit/
 %dir %{_sysconfdir}/X11/xinit/xinitrc.d/
 %{_sysconfdir}/X11/xinit/xinitrc.d/libcanberra-gtk-module.sh

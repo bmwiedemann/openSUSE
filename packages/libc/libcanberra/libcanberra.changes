@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar  4 09:03:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Stabilize build:
+  + Pass --disable-oss to configure: alsa is enabled and used
+    already.
+  + Pass --enable-udev to configure: ensure it is not accidentally
+    being disabled.
+  + Add pkgconfig(libudev) BuildRequires: used to be pulled in
+    indirectly.
+
+-------------------------------------------------------------------
 Tue Nov 28 10:45:13 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup instead of %setup/%patch.
