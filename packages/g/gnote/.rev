@@ -781,4 +781,12 @@ Search-provider is now it's own subpackage (forwarded request 180587 from dimsta
 - Convert to source service for easier updating. (forwarded request 1139296 from dimstar)</comment>
     <requestid>1139370</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>c5e72d8b59f54e691895d0812aedefda</srcmd5>
+    <version>46.rc</version>
+    <time>1710965718</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158899 from dimstar)</comment>
+    <requestid>1159430</requestid>
+  </revision>
 </revisionlist>

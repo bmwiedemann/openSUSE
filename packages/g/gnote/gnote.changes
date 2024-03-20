@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Mar 18 08:08:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + New Features:
+    - Added UI for changing color scheme.
+    - Updated manual.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 13 19:23:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + New Features:
+    - Removed note list context menu.
+    - Open all selected notes in current window on Enter.
+    - Open all selected notes in a signle new window on Ctrl+Enter.
+    - New desing for search controls in note tab.
+    - Updated manual.
+    - Added setting for selecting color scheme.
+  + Fixes: Fix warning in console when synchronization dialog is
+    opened.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 30 06:31:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + New Features:
+    - Notes list uses new GtkColumnView.
+    - New redesigned view for notebooks.
+    - Update appdata to newer format.
+  + Updated translations.
+- Add pkgconfig(libadwaita-1) BuildRequires: new dependency.
+- Bump base_version define to 46 following upstream changes.
+
+-------------------------------------------------------------------
 Tue Jan 16 17:55:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 45.1:
