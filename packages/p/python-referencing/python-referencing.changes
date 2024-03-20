@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 16 13:53:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.34.0:
+  * Also look inside definitions keywords even on newer dialects.
+    The specification recommends doing so regardless of the rename
+    to $defs.
+  * Ensure non-blocking mypy compatibility by @jamescw19 in #130
+
+-------------------------------------------------------------------
 Mon Jan 29 17:40:40 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.33.0:
