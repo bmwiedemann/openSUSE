@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-language-docker
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Summary:        Dockerfile parser, pretty-printer and embedded DSL
 License:        GPL-3.0-or-later
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Patch1:         https://github.com/hadolint/language-docker/pull/94.patch#/fix-build-with-ghc-9.8.x.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -95,7 +96,7 @@ Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
 This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version} -p1
 
 %build
 %ghc_lib_build
