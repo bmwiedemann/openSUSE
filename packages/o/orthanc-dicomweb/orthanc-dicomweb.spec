@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-dicomweb
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2019-2023 Dr. Axel Braun
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2019-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,11 @@ Patch0:         framework.diff
 
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -64,8 +68,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 WebViewer plugin for Orthanc
 
 %prep
-%setup -q -n OrthancDicomWeb-%{version}
-%autopatch -p1
+%autosetup -p1 -n OrthancDicomWeb-%{version}
 
 #OrthanPlugins may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web
@@ -75,7 +78,10 @@ cp %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} %{S:6} %{S:7} %{S:8}  .
 cd ..
 
 %build
-
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %cmake ../ \
        -DALLOW_DOWNLOADS=OFF \
        -DUSE_SYSTEM_GOOGLE_TEST=ON \
