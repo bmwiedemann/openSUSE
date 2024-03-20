@@ -1,7 +1,7 @@
 #
 # spec file for package pixman
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pixman
-Version:        0.42.2
+Version:        0.43.2
 Release:        0
 Summary:        Pixel manipulation library
 License:        MIT
@@ -25,7 +25,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pixman/pixman
 Source:         https://www.cairographics.org/releases/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-BuildRequires:  pkgconfig
+BuildRequires:  meson
 
 %description
 Pixman is a pixel manipulation library for X and cairo.
@@ -49,30 +49,40 @@ Pixman is a pixel manipulation library for X and cairo.
 %setup -q
 
 %build
-#autoreconf -fi
 #
 # For now: disable neon on all ARMv6/7
-%configure \
+#
+%meson \
+%ifnarch %{ix86}
+       -Dmmx="disabled" \
+       -Dsse2="disabled" \
+       -Dssse3="disabled" \
+%endif
+       -Dvmx="disabled" \
+       -Dloongson-mmi="disabled" \
+       -Darm-simd="disabled" \
+       -Dneon="disabled" \
 %ifarch %{arm}
-       --disable-arm-iwmmxt \
-       --disable-arm-neon \
+       -Da64-neon="enabled" \
+%else
+       -Da64-neon="disabled" \
 %endif
-%ifarch ppc64le
-        --disable-vmx \
-%endif
-       --disable-static
-make V=1 %{?_smp_mflags}
+       -Diwmmxt="disabled" \
+       -Dmips-dspr2="disabled" \
+       -Ddemos=disabled \
+       -Dlibpng=disabled
+%meson_build
 
 %install
-%make_install
-rm %{buildroot}%{_libdir}/libpixman-1.la
+%meson_install
 
-%post -n libpixman-1-0 -p /sbin/ldconfig
-%postun -n libpixman-1-0 -p /sbin/ldconfig
+%check
+%meson_test
+
+%ldconfig_scriptlets -n libpixman-1-0
 
 %files -n libpixman-1-0
 %license COPYING
-
 %{_libdir}/libpixman-1.so.*
 
 %files -n libpixman-1-0-devel

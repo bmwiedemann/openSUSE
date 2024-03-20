@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Feb 26 09:28:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rework previous change
+  + Disable the demos: pass -Ddemos=disabled to meson. This allows
+    us not to BuildRequire gtk3. Having it would result in a build
+    cycle.
+  + Pass -Dlibpng=disabled to meson: only needed for the tests.
+- Drop pkgconfig(gtk+-3.0) BuildRequires: with the demos disabled,
+  we don't need this anymore.
+- Drop cmake BuildRequires: the build system uses meson. cmake is
+  used as a fallback to find libraries when they can't be found
+  with pkgconfig.
+- Enable test suite (meson_test), without the png tests (for
+  minimal build deps).
+- Switch post/post to ldconfig_scriptlets: there is no other code
+  in the scripts.
+
+-------------------------------------------------------------------
+Sat Feb 24 09:54:53 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- Update to version 0.43.2
+  + Highlights include:
+    * mmx: use xmmintrin.h if building with SSE2
+    * implement r8g8b8 sRGB (without alpha)
+    * Build system swapped to Meson
+  + Various other fixes
+- Add meson BuildRequires and replace configure/make/make_install
+  macros with respective meson/meson_build/meson_install, following
+  upstreams switch to meson.
+- Add cmake and pkgconfig(gtk+-3.0) BuildRequires: new
+  depdendencies.
+
+-------------------------------------------------------------------
 Fri Nov  4 17:12:49 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.42.2 (boo#1205033 CVE-2022-44638):
