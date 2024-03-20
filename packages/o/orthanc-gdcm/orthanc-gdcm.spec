@@ -28,7 +28,11 @@ Source0:        https://orthanc.uclouvain.be/downloads/sources/orthanc-gdcm/Orth
 Source11:       orthanc-gdcm-readme.SUSE
 
 BuildRequires:  cmake
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  gdcm-devel >= 3.0.18
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
@@ -56,10 +60,13 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 GDCM for Orthanc
 
 %prep
-%setup -q -n OrthancGdcm-%{version}
+%autosetup -n OrthancGdcm-%{version}
 
 %build
-
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %cmake .. \
        -DALLOW_DOWNLOADS=OFF \
        -DUSE_SYSTEM_GOOGLE_TEST=ON \
