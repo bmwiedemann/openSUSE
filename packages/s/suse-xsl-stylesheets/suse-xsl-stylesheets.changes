@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 19 12:57:02 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.94.2
+
+- Update 2.94.2
+  * Add abstract/para in article.titlepage.recto.auto.mode (SBPs) (#610)
+  * Correct include.ssi.{header,body,footer} params (#613)
+  * Introduce json-ld-base.dir parameter (#614)
+  * Correct social media length (#615)
+
+-------------------------------------------------------------------
 Fri Feb 16 16:38:30 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.94.1
 
 - Update 2.94.1
