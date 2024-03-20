@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-nibbles
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-nibbles
-Version:        4.0.rc2
+Version:        4.0.3
 Release:        0
 Summary:        Worm Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            https://live.gnome.org/Lightsoff
-Source0:        https://download.gnome.org/sources/gnome-nibbles/4.0/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
