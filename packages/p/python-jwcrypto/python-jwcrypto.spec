@@ -16,23 +16,25 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-jwcrypto
-Version:        1.5.1
+Version:        1.5.6
 Release:        0
 Summary:        Python module package implementing JOSE Web standards
 License:        LGPL-3.0-only
 URL:            https://github.com/latchset/jwcrypto
 Source:         https://files.pythonhosted.org/packages/source/j/jwcrypto/jwcrypto-%{version}.tar.gz
-BuildRequires:  %{python_module Deprecated}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module cryptography >= 3.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing-extensions >= 4.5.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Deprecated
 Requires:       python-cryptography >= 3.4
+Requires:       python-typing-extensions >= 4.5.0
 BuildArch:      noarch
 %python_subpackages
 

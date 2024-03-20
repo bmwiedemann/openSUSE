@@ -144,4 +144,19 @@
   * Fix potential DoS issue with p2c header</comment>
     <requestid>1136285</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>be73a49a8ef5135b2f1f9a2c9977183b</srcmd5>
+    <version>1.5.6</version>
+    <time>1710965388</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.6:
+  * Address potential DoS with high compression ratio
+- update to 1.5.4:
+  * One more release bump to address issues with
+    typing_extensions minimum required version
+- update to 1.5.3:
+  * Drop python 3.6 and 3.7 and add 3.11 support
+  * replace deprecated package with typing_extensions</comment>
+    <requestid>1159234</requestid>
+  </revision>
 </revisionlist>
