@@ -622,4 +622,12 @@ D proc-interrupts.patch
 - build with libsystemd for logging (bsc#1217754) (forwarded request 1131454 from aschnell)</comment>
     <requestid>1132636</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>802e7fa4bc39c8afe5affca1854a48c8</srcmd5>
+    <version>1.9.4.0.git+f8b8cdd</version>
+    <time>1710965435</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1159640</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 19 16:52:54 UTC 2024 - trenn@suse.de
+
+- Update to version 1.9.4.0.git+f8b8cdd:
+  * update configure to version 1.9.4
+  * Flush file before closing
+  * Fix socket API being blocked for 10s
+  * Set additional systemd options for service
+  * activate_mapping: set errsave before first jump to the error label
+  * Avoid repeated affinity checks when no change is necessary
+  * Slience "... rebalancing" messages for unmigratable IRQs
+- Use manual instead of local service for updating
+- Adopt to mainline:
+M Set-fd-limit.patch
+
+-------------------------------------------------------------------
 Wed Dec 06 11:21:22 UTC 2023 - aschnell@suse.com
 
 - Update to version 1.9.3.10.git+1a7d461:
