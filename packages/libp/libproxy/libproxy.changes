@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 19 01:59:20 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
+
+- Do not use %elif by now since SLE, Leap does not have an rpm
+  supporting the tag.
+
+-------------------------------------------------------------------
 Wed Feb 28 16:04:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop pkgconfig(libsoup-3.0) BuildRequires: no longer needed.

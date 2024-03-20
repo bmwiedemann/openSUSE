@@ -19,13 +19,15 @@
 %define flavor @BUILD_FLAVOR@%nil
 %if "%{flavor}" == ""
 ExclusiveArch:  do-not-build
-%elif "%{flavor}" == "client"
+%else
+%if "%{flavor}" == "client"
   %define name_suffix %{flavor}
   %define dash -
   %define mini -mini
 %else
   %define name_suffix %{flavor}
   %define dash -
+%endif
 %endif
 
 %define _name   libproxy
