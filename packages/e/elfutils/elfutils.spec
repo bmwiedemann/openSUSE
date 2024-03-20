@@ -17,7 +17,7 @@
 
 
 Name:           elfutils
-Version:        0.190
+Version:        0.191
 Release:        0
 Summary:        Higher-level library to access ELF files
 License:        GPL-3.0-or-later

@@ -1104,4 +1104,28 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1139121</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>2740bee1ee349309c4f70de33cf9c182</srcmd5>
+    <version>0.191</version>
+    <time>1710965376</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.191:
+  * libdw: dwarf_addrdie now supports binaries lacking a
+    .debug_aranges section.
+  * Improved support for DWARF package files.  Add new
+    function dwarf_cu_dwp_section_info.
+  * debuginfod: Caching eviction logic improvements to improve
+    retention of small/frequent/slow files such as Fedora's
+    vdso.debug.
+  * srcfiles: Can now fetch the source files of a DWARF/ELF file
+    and place them into a zip.
+- drop fix_gcc14_errors.patch (upstream)
+
+- Add fix_gcc14_errors.patch (bsc#1220464)
+
+  use __DATE__ or __TIME__ (as proven by the newly added -Werror=date-time)
+  libraries are (LGPL-3.0-or-later OR GPL-2.0-or-later)
+  order to fulfil SLPP violation.</comment>
+    <requestid>1158795</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Mar 17 17:39:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.191:
+  * libdw: dwarf_addrdie now supports binaries lacking a
+    .debug_aranges section.
+  * Improved support for DWARF package files.  Add new
+    function dwarf_cu_dwp_section_info.
+  * debuginfod: Caching eviction logic improvements to improve
+    retention of small/frequent/slow files such as Fedora's
+    vdso.debug.
+  * srcfiles: Can now fetch the source files of a DWARF/ELF file
+    and place them into a zip.
+- drop fix_gcc14_errors.patch (upstream)
+
+-------------------------------------------------------------------
+Tue Mar  5 08:51:07 UTC 2024 - Michal Jireš <michal.jires@suse.com>
+
+- Add fix_gcc14_errors.patch (bsc#1220464)
+
+-------------------------------------------------------------------
 Tue Jan  9 08:46:50 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Update to version 0.190:
@@ -69,7 +89,7 @@ Wed Nov  9 15:31:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - align patches section
 - remove date/time handling weirdness, elfutils does no longer
-  use __DATE__ or __TIME__ (as proven by the newly added -Werror=date-time) 
+  use __DATE__ or __TIME__ (as proven by the newly added -Werror=date-time)
 
 -------------------------------------------------------------------
 Mon Nov  7 08:38:51 UTC 2022 - Martin Liška <mliska@suse.cz>
@@ -158,7 +178,7 @@ Tue Oct  5 06:02:09 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 - Enhance license fields: all the libraries actually have a different
   license to the tools. While the tools are GPL-3.0-or-later, the
-  libraries are (LGPL-3.0-or-later OR GPL-2.0-or-later) 
+  libraries are (LGPL-3.0-or-later OR GPL-2.0-or-later)
   SLE bug (for tracking the above) bsc#1191310
 
 -------------------------------------------------------------------
@@ -364,7 +384,7 @@ Thu Jan 23 06:17:51 UTC 2020 - Martin Liška <mliska@suse.cz>
 Mon Jan 20 11:01:42 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Rename debuginfod-client package to libdebuginfod1 in
-  order to fulfil SLPP violation. 
+  order to fulfil SLPP violation.
 
 -------------------------------------------------------------------
 Wed Jan  8 10:46:15 UTC 2020 - Andreas Schwab <schwab@suse.de>
