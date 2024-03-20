@@ -1482,4 +1482,12 @@ New stable rel</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 1137893 from dimstar)</comment>
     <requestid>1137903</requestid>
   </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>d6d28cc644fb29a5a91e4574b0c6f2bc</srcmd5>
+    <version>1.54.0</version>
+    <time>1710965464</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158219 from dimstar)</comment>
+    <requestid>1159462</requestid>
+  </revision>
 </revisionlist>

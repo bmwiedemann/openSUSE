@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Mar 15 08:03:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.54.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 13:51:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Enable onedrive support: msgraph is now packaged and works.
+
+-------------------------------------------------------------------
+Fri Mar  1 11:57:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.53.91:
+  + onedrive: Fix several issues.
+  + wsdd: List just devices of pub:Computer type to filter out
+    unwanted devices.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 12 15:17:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.53.90:
+  + daemon: Add OneDrive support based on msgraph library.
+  + client: Reduce synchronous metadata methods calls to improve
+    performance.
+  + network: Provide standard::content-type and access::can-rename
+    attributes.
+  + build: Fix unknown arguments error on systems that don't use
+    GNU C library.
+  + udisks2: Fix unmounting of mount paths that contain non-ASCII
+    characters.
+  + Updated translations.
+- Add pkgconfig(msgraph-0.1) BuildRequires conditionally, guarded
+  with bcond: new dependency for OneDrive support, but the
+  dependency does not yet exist in Tumbleweed.
+
+-------------------------------------------------------------------
+Tue Jan 16 11:15:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.53.1:
+  + daemon:
+    - Add WS-Discovery support based on wsdd daemon.
+    - Port to gcr4.
+  + network:
+    - Hide Windows Network folder and show the servers merged by
+      default.
+    - Variousother fixes and enhancements.
+  + smb:
+    - Fix livelock when mounting share without enough permissions.
+    - Fix moving files across filesystem boundaries.
+  + Updated translations.
+- Convert to source service for easier updating.
+
+-------------------------------------------------------------------
 Wed Jan 10 08:51:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.52.2:
