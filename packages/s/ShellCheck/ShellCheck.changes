@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Mar  8 02:49:11 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update ShellCheck to version 0.10.0.
+  ## v0.10.0 - 2024-03-07
+  ### Added
+  - Precompiled binaries for macOS ARM64 (darwin.aarch64)
+  - Added support for busybox sh
+  - Added flag --rcfile to specify an rc file by name.
+  - Added `extended-analysis=true` directive to enable/disable dataflow analysis
+    (with a corresponding --extended-analysis flag).
+  - SC2324: Warn when x+=1 appends instead of increments
+  - SC2325: Warn about multiple `!`s in dash/sh.
+  - SC2326: Warn about `foo | ! bar` in bash/dash/sh.
+  - SC3012: Warn about lexicographic-compare bashism in test like in [ ]
+  - SC3013: Warn bashism `test _ -op/-nt/-ef _` like in [ ]
+  - SC3014: Warn bashism `test _ == _` like in [ ]
+  - SC3015: Warn bashism `test _ =~ _` like in [ ]
+  - SC3016: Warn bashism `test -v _` like in [ ]
+  - SC3017: Warn bashism `test -a _` like in [ ]
+
+  ### Fixed
+  - source statements with here docs now work correctly
+  - "(Array.!): undefined array element" error should no longer occur
+
+-------------------------------------------------------------------
 Wed Dec  6 17:05:35 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update ShellCheck to version 0.9.0 revision 2.
