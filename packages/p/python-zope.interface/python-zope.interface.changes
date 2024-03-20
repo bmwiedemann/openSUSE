@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 13 10:01:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2:
+  * Add preliminary support for Python 3.13 as of 3.13a3.
+  * Add support to use the pipe (|) syntax for typing.Union.
+
+-------------------------------------------------------------------
 Tue Jan  2 20:59:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - remove python2 specific codepaths

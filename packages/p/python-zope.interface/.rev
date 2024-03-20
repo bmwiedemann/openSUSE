@@ -313,4 +313,14 @@
     <comment>- remove python2 specific codepaths</comment>
     <requestid>1136282</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>cdb1075c1cc042e0e681be5ce924476e</srcmd5>
+    <version>6.2</version>
+    <time>1710965390</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.2:
+  * Add preliminary support for Python 3.13 as of 3.13a3.
+  * Add support to use the pipe (|) syntax for typing.Union.</comment>
+    <requestid>1159258</requestid>
+  </revision>
 </revisionlist>

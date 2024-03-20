@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-zope.interface
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -27,7 +27,7 @@
 %global modname zope.interface
 %{?sle15_python_module_pythons}
 Name:           python-zope.interface%{psuffix}
-Version:        6.1
+Version:        6.2
 Release:        0
 Summary:        Interfaces for Python
 License:        ZPL-2.1
