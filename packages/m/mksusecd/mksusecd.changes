@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Mar 20 15:28:07 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#71
+- support usrmerged kmod package (bsc#1221603)
+- 2.15
+
+--------------------------------------------------------------------
 Fri Jan 19 16:59:31 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#70
