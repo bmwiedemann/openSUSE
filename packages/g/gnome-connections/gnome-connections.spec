@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-connections
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           gnome-connections
-Version:        45.0
+Version:        46.0
 Release:        0
 Summary:        A remote desktop client for GNOME
 License:        GPL-3.0-or-later
 URL:            https://wiki.gnome.org/Apps/Connections
-Source:         https://download.gnome.org/sources/gnome-connections/45/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Mar 19 07:54:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Update links in app metadata.
+  + Clarify a title of a dialog.
+  + Update gtk-frdp:
+    - Do not attempt to process empty clipboard data.
+    - Do not send coordinates with smooth scroll.
+    - Limit value of mouse scroll.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 07:57:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Fixed touchpad scrolling.
+  + Merge the duplicite doap files.
+  + Add platform information to doap file.
+  + Fix wrong developer id in metainfo.
+  + Update gtk-frdp:
+    - Add support for FreerRDP 3.
+    - Handle smooth scroll events smoothly.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 12 15:46:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + Add certificate verification for RDP.
+  + Add support for domains.
+  + Improve text of onboarding.
+  + Improve appdata for AppStream-1.0.
+  + Fix translation of vala files.
+  + Change icon for changed certificate.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Sat Sep 16 22:46:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:
