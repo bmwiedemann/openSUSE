@@ -1340,4 +1340,12 @@ New stable release</comment>
   directory structure. (forwarded request 1139247 from dimstar)</comment>
     <requestid>1139282</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>d1db4d4f7a52ef760eb8ec732b3316aa</srcmd5>
+    <version>45.3</version>
+    <time>1710965497</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158696 from dimstar)</comment>
+    <requestid>1159495</requestid>
+  </revision>
 </revisionlist>
