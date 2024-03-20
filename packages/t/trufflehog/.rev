@@ -536,4 +536,41 @@
   * fix(deps): update module cloud.google.com/go/storage to v1.39.1 (#2565) (forwarded request 1158392 from ph03nix)</comment>
     <requestid>1158511</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>45234e1cd42ddcb8fb8e0c4e0c7351e9</srcmd5>
+    <version>3.70.2</version>
+    <time>1710965928</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.70.2:
+  * fix(deps): update module cloud.google.com/go/secretmanager to v1.12.0 (#2595)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.3 (#2594)
+  * fix(git): decode unicode paths (#2585)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.2 (#2593)
+  * fix(deps): update golang.org/x/exp digest to a85f2c6 (#2592)
+  * [chore] Replace &quot;Trufflehog&quot; with &quot;TruffleHog&quot; (#2584)
+  * fix(deps): update module github.com/wasilibs/go-re2 to v1.5.0 (#2591)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.1 (#2588)
+  * fix(deps): update module google.golang.org/api to v0.170.0 (#2589)
+  * fix(deps): update module github.com/googleapis/gax-go/v2 to v2.12.3 (#2587)
+  * fix(deps): update module github.com/google/go-containerregistry to v0.19.1 (#2586)
+  * fix(deps): update module cloud.google.com/go/secretmanager to v1.11.6 (#2578)
+  * fix(deps): update module github.com/launchdarkly/go-server-sdk/v7 to v7.1.1 (#2576)
+  * fix(github): response can be nil (#2583)
+  * fix(cli): properly parse --results (#2582)
+  * pull out verification logic from github detectors (#2554)
+  * Add `--results` flag (#2372)
+  * fix(deps): update golang.org/x/exp digest to c7f7c64 (#2575)
+  * fix(deps): update module github.com/couchbase/gocb/v2 to v2.8.0 (#2573)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.38 (#2572)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.100.0 (#2567)
+  * fix(deps): update module github.com/launchdarkly/go-server-sdk/v6 to v7 (#2568)
+  * [chore] -  Record metrics before reset (#2556)
+  * Fix flaky test. (#2564)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.36 (#2566)
+  * fix(deps): update module cloud.google.com/go/storage to v1.39.1 (#2565)
+  * fix(deps): update module github.com/go-sql-driver/mysql to v1.8.0 (#2561)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.35 (#2560)
+  * fix(deps): update module github.com/google/go-github/v57 to v60 (#2551) (forwarded request 1159800 from ph03nix)</comment>
+    <requestid>1159878</requestid>
+  </revision>
 </revisionlist>

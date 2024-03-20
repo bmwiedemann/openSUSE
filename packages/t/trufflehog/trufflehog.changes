@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Mar 20 09:30:28 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 3.70.2:
+  * fix(deps): update module cloud.google.com/go/secretmanager to v1.12.0 (#2595)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.3 (#2594)
+  * fix(git): decode unicode paths (#2585)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.2 (#2593)
+  * fix(deps): update golang.org/x/exp digest to a85f2c6 (#2592)
+  * [chore] Replace "Trufflehog" with "TruffleHog" (#2584)
+  * fix(deps): update module github.com/wasilibs/go-re2 to v1.5.0 (#2591)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.1 (#2588)
+  * fix(deps): update module google.golang.org/api to v0.170.0 (#2589)
+  * fix(deps): update module github.com/googleapis/gax-go/v2 to v2.12.3 (#2587)
+  * fix(deps): update module github.com/google/go-containerregistry to v0.19.1 (#2586)
+  * fix(deps): update module cloud.google.com/go/secretmanager to v1.11.6 (#2578)
+  * fix(deps): update module github.com/launchdarkly/go-server-sdk/v7 to v7.1.1 (#2576)
+  * fix(github): response can be nil (#2583)
+  * fix(cli): properly parse --results (#2582)
+  * pull out verification logic from github detectors (#2554)
+  * Add `--results` flag (#2372)
+  * fix(deps): update golang.org/x/exp digest to c7f7c64 (#2575)
+  * fix(deps): update module github.com/couchbase/gocb/v2 to v2.8.0 (#2573)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.38 (#2572)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.100.0 (#2567)
+  * fix(deps): update module github.com/launchdarkly/go-server-sdk/v6 to v7 (#2568)
+  * [chore] -  Record metrics before reset (#2556)
+  * Fix flaky test. (#2564)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.36 (#2566)
+  * fix(deps): update module cloud.google.com/go/storage to v1.39.1 (#2565)
+  * fix(deps): update module github.com/go-sql-driver/mysql to v1.8.0 (#2561)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.35 (#2560)
+  * fix(deps): update module github.com/google/go-github/v57 to v60 (#2551)
+  * use custom grow method (#2555)
+  * fix(deps): update module github.com/golang-jwt/jwt/v4 to v5 (#2550)
+  * fix(deps): update module google.golang.org/protobuf to v1.33.0 (#2548)
+  * fix(deps): update testcontainers-go monorepo to v0.29.1 (#2549)
+  * Canary verification (#2531)
+  * fix(deps): update module google.golang.org/api to v0.169.0 (#2547)
+  * fix(deps): update module golang.org/x/oauth2 to v0.18.0 (#2546)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.99.0 (#2543)
+  * fix(deps): update module golang.org/x/crypto to v0.21.0 (#2544)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.34 (#2541)
+  * fix(deps): update module github.com/charmbracelet/lipgloss to v0.10.0 (#2542)
+  * fix(deps): update module github.com/golang-jwt/jwt/v4 to v5 (#2535)
+  * fix(deps): update module github.com/launchdarkly/go-server-sdk/v6 to v7 (#2499)
+  * add version to extra data + moving existing versioned detectors into subdirectory format (#2471)
+
+-------------------------------------------------------------------
 Sat Mar 16 08:40:46 UTC 2024 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 - Update to version 3.70.1
