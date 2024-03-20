@@ -120,7 +120,7 @@ This is its integration plugin for gstreamer.
 %autosetup -p1
 
 %build
-%if %{pkg_vcmp gcc < 8}
+%if 0%{?suse_version} <= 1500
 export CC=gcc-9
 export CXX=g++-9
 %endif

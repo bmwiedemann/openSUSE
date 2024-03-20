@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 19 07:41:24 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Avoid %if %{pkg_vcmp gcc < 8}, instead replicate the condition
+  from the BuildRequires section.
+
+-------------------------------------------------------------------
 Sat Jan 13 08:48:16 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.2.0
