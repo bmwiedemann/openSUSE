@@ -51,4 +51,14 @@ optional dep of https://build.opensuse.org/package/show/devel:languages:python/p
   Python 3.12.</comment>
     <requestid>1158157</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5640caeefd1dcab6864afbce1539cac9</srcmd5>
+    <version>7.0.1</version>
+    <time>1710965691</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not kill moto_server three minutes into the testsuite. (bsc#1221663)
+
+- Avoid stuck build on failing test</comment>
+    <requestid>1159736</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 20 06:05:52 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not kill moto_server three minutes into the testsuite. (bsc#1221663)
+
+-------------------------------------------------------------------
+Mon Mar 18 09:58:56 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Avoid stuck build on failing test
+
+-------------------------------------------------------------------
 Fri Mar 15 07:48:15 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.0.1:

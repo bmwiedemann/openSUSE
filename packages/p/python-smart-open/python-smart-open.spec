@@ -75,9 +75,11 @@ Includes support for S3, HDFS, gzip, bz2, etc.
 
 %check
 moto_server -p5000 2>/dev/null &
+server_pid=$!
 export SO_ENABLE_MOTO_SERVER=1
 # Requires network
 %pytest -rs -k 'not (test_http_gz or test_s3_gzip_compress_sanity)' smart_open/
+kill $server_pid
 
 %files %{python_files}
 %doc README.rst
