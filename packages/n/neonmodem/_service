@@ -1,0 +1,17 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/mrusme/neonmodem.git</param>
+    <param name="scm">git</param>
+    <param name="revision">master</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+	<param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="go_modules" mode="manual"/>
+</services>
+

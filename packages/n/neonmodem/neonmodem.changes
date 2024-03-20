@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Tue Mar 19 13:16:27 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+
+  * _service change disabled to manual per osc deprecation warning:
+    WARNING: Command 'disabledrun/dr' is obsolete, please convert
+    your _service to use 'manual' and then 'manualrun/mr' instead.
+  * _service obs_scm when revision is a branch name e.g.  master
+    use versionformat @PARENT_TAG@+git@TAG_OFFSET@.%h to represent
+    git commit history included beyond last tagged release. Archive
+    name will be: name-X.Y.Z+gitN.shortsha.obscpio. When upstream
+    project resumes tagged releases drop the param versionformat
+    and restore revision to tag name e.g. vX.Y.Z.
+  * _service reorder move set_version earlier so go_modules sees
+    updated version
+  * Drop Requires: golang-packaging. The recommended Go toolchain
+    dependency expression is BuildRequires: golang(API) >= 1.x or
+    optionally the metapackage BuildRequires: go
+  * Use BuildRequires: golang(API) >= 1.21 rather than pin go1.21.
+    The golang(API) expression allows use of newer go versions and
+    integrates with the go metapackage via OBS prjconf Prefer:
+  * Use name macro where applicable to normalize common lines
+    across Go app packages. Also makes renaming binary easier when
+    required to handle package name conflict.
+  * Use URL for github project instead of landing page except in
+    cases where site hosts extensive documentation. Packagers more
+    frequently need to access the revision and issue history
+    associated with the source code site.
+
+-------------------------------------------------------------------
+Fri Mar  8 07:34:54 UTC 2024 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update summary
+- Set set_version to manual
+
+-------------------------------------------------------------------
+Thu Mar  7 18:30:53 UTC 2024 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Package v1.0.4

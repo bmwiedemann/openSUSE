@@ -1,0 +1,6 @@
+<package name="neonmodem" project="openSUSE:Factory">
+  <title>Neon Modem Overdrive</title>
+  <description>Neon Modem Overdrive is a BBS-style command line client that supports Discourse, Lemmy, Lobsters and Hacker News as backends, and seamlessly integrates all of them into a streamlined TUI.</description>
+  <devel project="devel:languages:go" package="neonmodem"/>
+  <url>https://github.com/mrusme/neonmodem</url>
+</package>
