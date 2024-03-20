@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  6 07:52:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.34.0:
+  + Maintenance, some bug fixes.
+  + Meson: fix some warnings, simplifications.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Apr 23 01:04:42 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.33.2

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package gtk-doc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           gtk-doc%{?psuffix}
-Version:        1.33.2
+Version:        1.34.0
 Release:        0
 %if "%{flavor}" == ""
 Summary:        GTK+ Documentation Generator
