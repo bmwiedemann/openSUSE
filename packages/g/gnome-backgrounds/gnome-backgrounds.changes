@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Mar 19 07:47:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + No changes since 46.beta.
+
+-------------------------------------------------------------------
+Mon Feb 12 15:30:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + default: less lens distortion.
+  + symbolics: updated icons & tweaks to the layout.
+  + glass chip: improved compression.
+
+-------------------------------------------------------------------
+Tue Jan 16 08:14:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + New default. Embrace the rounded triangle!
+  + Updated Amber, Pills.
+  + New additions -- Gometrics, Glass chip, Neogeo, Ring and Tarka.
+  + Departures -- Keys, Truchet, Rounded Rectangles.
+  + JPEG XL favored as a format, with banding-bustin' client side
+    grain.
+- Convert to source service for easier updating.
+
+-------------------------------------------------------------------
 Mon Sep 18 11:44:38 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:
