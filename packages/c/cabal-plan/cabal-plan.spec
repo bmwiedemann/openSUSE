@@ -141,6 +141,9 @@ This package provides the Haskell %{pkg_name} profiling library.
 %prep
 %autosetup
 cp -p %{SOURCE1} %{name}.cabal
+cabal-tweak-dep-ver base "^>=4.18.0.0" "< 5"
+cabal-tweak-dep-ver bytestring "^>=0.11.1.0" "< 1"
+cabal-tweak-dep-ver text "^>=2.0.1" "< 3"
 
 %build
 %define cabal_configure_options -fexe
