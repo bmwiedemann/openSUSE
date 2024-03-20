@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Mar 16 09:21:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:39:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.1:
+  + Appdata and screenshot updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 16 07:34:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.0:
+  + Various styling improvements to match GNOME HIG.
+  + Various tooltips, mnemonics, and shortcuts were added.
+
+-------------------------------------------------------------------
 Sun Sep 17 10:00:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Package the new translations, add lang_package macros.
