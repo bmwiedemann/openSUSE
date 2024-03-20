@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:29:49 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.9.0 (bsc#1221705):
+  - Added
+    - Add a to key in tool.poetry.packages to allow custom
+      subpackage names
+    - Add support for path dependencies that do not define a
+      build system
+    - Add a tool.poetry.package-mode key to support non-package
+      mode
+  - Changed
+    - Update list of supported licenses
+    - Improve support for PEP 691 JSON-based Simple API
+    - Establish zipapp compatibility
+    - Rework list of files included in build artifacts
+    - Improve performance by treating collections in packages as
+      immutable
+    - Deprecate poetry.core.masonry.builder
+    - Deprecate scripts that depend on extras
+  - Fixed
+    - Fix an issue where insignificant errors were printed if the
+      working directory is not inside a git repository
+    - Fix an issue where the project's directory was not
+      recognized as git repository on Windows due to an encoding
+      issue
+  - Vendoring
+    fastjsonschema==2.19.1
+    lark==1.1.8
+
+-------------------------------------------------------------------
 Tue Jan  2 19:14:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.1:

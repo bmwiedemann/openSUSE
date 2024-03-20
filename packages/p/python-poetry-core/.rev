@@ -293,4 +293,38 @@
 - unbundle vendored packages</comment>
     <requestid>1136266</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>816e3db6dfa8b30140db03e923eb5033</srcmd5>
+    <version>1.9.0</version>
+    <time>1710965407</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.0 (bsc#1221705):
+  - Added
+    - Add a to key in tool.poetry.packages to allow custom
+      subpackage names
+    - Add support for path dependencies that do not define a
+      build system
+    - Add a tool.poetry.package-mode key to support non-package
+      mode
+  - Changed
+    - Update list of supported licenses
+    - Improve support for PEP 691 JSON-based Simple API
+    - Establish zipapp compatibility
+    - Rework list of files included in build artifacts
+    - Improve performance by treating collections in packages as
+      immutable
+    - Deprecate poetry.core.masonry.builder
+    - Deprecate scripts that depend on extras
+  - Fixed
+    - Fix an issue where insignificant errors were printed if the
+      working directory is not inside a git repository
+    - Fix an issue where the project's directory was not
+      recognized as git repository on Windows due to an encoding
+      issue
+  - Vendoring
+    fastjsonschema==2.19.1
+    lark==1.1.8
+</comment>
+    <requestid>1159613</requestid>
+  </revision>
 </revisionlist>
