@@ -190,4 +190,12 @@ See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00332.html</c
     <comment>update for ghc-9.4.4</comment>
     <requestid>1076146</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>46c4312df9ffb97c999fb46db068f101</srcmd5>
+    <version>0.4.3.1</version>
+    <time>1710965672</time>
+    <user>dimstar_suse</user>
+    <comment>Update Haskell ecosystem to GHC version 9.8.2.</comment>
+    <requestid>1157275</requestid>
+  </revision>
 </revisionlist>
