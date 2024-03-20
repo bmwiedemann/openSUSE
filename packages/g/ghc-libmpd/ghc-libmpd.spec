@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-libmpd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Summary:        An MPD client library
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Patch1:         https://github.com/vimus/libmpd-haskell/pull/138.patch#/fix-build-with-ghc-9.6.x.patch
+Patch1:         https://github.com/vimus/libmpd-haskell/pull/138.patch#/fix-build-with-ghc-9.8.x.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-attoparsec-prof
