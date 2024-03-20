@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-itemadapter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -36,6 +35,8 @@ Summary:        Wrapper for data container objects
 License:        BSD-3-Clause
 URL:            https://github.com/scrapy/itemadapter
 Source:         https://github.com/scrapy/itemadapter/archive/v%{version}.tar.gz#/itemadapter-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pydantic2.patch gh#scrapy/itemadapter#76
+Patch0:         pydantic2.patch
 BuildRequires:  %{python_module setuptools >= 40.5.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,7 +54,7 @@ a common interface to handle objects of different types in an uniform
 manner, regardless of their underlying implementation.
 
 %prep
-%setup -q -n itemadapter-%{version}
+%autosetup -p1 -n itemadapter-%{version}
 
 %build
 %python_build

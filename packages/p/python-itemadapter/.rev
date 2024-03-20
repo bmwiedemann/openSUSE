@@ -41,4 +41,13 @@
 - Disable python36 build due to Scrapy</comment>
     <requestid>1131744</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8524f7d39675ced15d8f93eb4fba07f7</srcmd5>
+    <version>0.8.0</version>
+    <time>1710965920</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pydantic2.patch to make tests compatible with pydantic2
+  gh#scrapy/itemadapter#76</comment>
+    <requestid>1159849</requestid>
+  </revision>
 </revisionlist>
