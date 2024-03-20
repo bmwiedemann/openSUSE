@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 18 11:27:45 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- add Delay-tray-setup-until-mainwindow-state-restored.patch (kde#482316)
+
+-------------------------------------------------------------------
 Fri Feb 23 14:00:01 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0

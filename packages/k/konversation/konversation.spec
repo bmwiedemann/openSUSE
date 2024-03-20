@@ -1,7 +1,7 @@
 #
 # spec file for package konversation
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+Patch0:         Delay-tray-setup-until-mainwindow-state-restored.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 # To get the path to qdbus
 BuildRequires:  qt6-tools-qdbus
