@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar  4 07:42:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.2.1:
+  + gcr-ssh-agent: set `SSH_AUTH_SOCK`.
+  + gcr-ssh-agent: port avoid deadlock fix.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 12 16:54:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.2.0:
+  + gcr-ssh-agent: add command line options to gcr-ssh-agent.
+  + gcr-ssh-agent: Fix memory leak spotted by ASan.
+  + gcr-ssh-agent: Port memory safety fixes from gnome-keyring
+    ssh-agent.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Nov 28 11:24:04 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -p N instead of deprecated %patchN.
