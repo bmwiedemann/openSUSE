@@ -1979,4 +1979,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1158160</requestid>
   </revision>
+  <revision rev="225" vrev="1">
+    <srcmd5>806c8937e47794d92c7eb21f1a95759a</srcmd5>
+    <version>46.0</version>
+    <time>1710965571</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1159405 from dimstar)</comment>
+    <requestid>1159553</requestid>
+  </revision>
 </revisionlist>

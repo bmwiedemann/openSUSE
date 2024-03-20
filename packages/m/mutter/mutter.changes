@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Tue Mar 19 09:30:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Fix duplicate scroll events over libei.
+  + Fix window menu with mouse button modifier.
+  + Fix caret offset in accessible event.
+  + Fix handling of scroll events for mice.
+  + Use timerfd for clock timing.
+  + Advertise support for BGRA for all screencast types.
+  + Add support for preferred_buffer_scale/transform.
+  + Use memfd to store selection data.
+  + Fix globally active input focus.
+  + Call malloc_trim() after loading background image.
+  + Fix dynamic max render time sometimes getting stuck on constant
+    framerate.
+  + Introduce base of new gesture framework.
+  + Work around windows missing work area changes.
+  + Fix black screen with some drivers.
+  + Improve login screen <-> session transition.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 18 08:01:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + screencast: Renegotiate when DMABUF allocation fails.
+  + Unify wayland pointer- and keyboard grab mechanisms.
+  + Add modifier-aware screencasting support.
+  + Fix synchronization issue on Xorg.
+  + Send fractional_scale event immediately on window creation.
+  + wayland/client: Add make_dock() method.
+  + Fix gray area on top of some X11 fullscreen windows.
+  + Stick dragged windows to the right anchor point.
+  + cally/text: Fix emission of `text_caret_moved` signal.
+  + clutter/text: Fix minimum height calculation.
+  + Add experimental support for variable refresh rate.
+  + Expose the minimum refresh rate of monitors through D-Bus.
+  + Use "default" cursor for moving windows.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Rebase mutter-window-actor-Special-case-shaped-Java-windows.patch
+  (resync with Fedora).
+
+-------------------------------------------------------------------
+Sun Mar 17 08:00:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + Implement mouse cursor hotspots for KMS atomic.
+  + Improve project and development documentation.
+  + Refactor wayland focus management.
+  + Remove experimental rt-scheduler feature.
+  + Remove ClutterCanvas.
+  + Consider reduced blanking with lower pixelclock.
+  + Fix centering non-modal transients over parent.
+  + Allow XKB model to be configured.
+  + Enable KMS deadline timer after a VT switch if it was
+    inhibited.
+  + Prepare for variable refresh rate support.
+  + Restore IM state flushing before handling key events.
+  + Swap stylus buttons to match traditional order.
+  + Fix handling of pad ring wrap arounds.
+  + Support Broadcast RGB/RGB range KMS property.
+  + Ensure all planes support EGL config format.
+  + Handle Alt modifier in pad actions.
+  + Store eraser and stylus tools separately.
+  + Disambiguate output mapped to tablet with connector name.
+  + Fix lost keyboard focus after dismissing popups.
+  + Implement direct scanout for cropped and scaled surfaces.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+
+-------------------------------------------------------------------
+Sat Mar 16 11:42:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + wayland: Send keyboard modifiers after the enter event.
+  + wayland/client: Add make_desktop() method.
+  + Add a target workspace to raise_and_make_recent().
+  + clutter: Drop cairo helpers.
+  + cogl: Port away from CoglObject.
+  + mtk: Add a Region type.
+  + Propagate focus appearance to all ancestors.
+  + Ignore locked modifiers in keybinding machinery.
+  + Fix disabling check-alive timeout.
+  + Drop ClutterContainer interface.
+  + Improve sloppy and mouse focus modes.
+  + Sync geometry only when window is mapped.
+  + Improve repick due to transform changes.
+  + Fix tablets on X11 having the wrong device.
+  + Disable HW cursor when inhibited by backend.
+  + screencast: Bring back blitting.
+  + backends/native: Try 10 bpc formats.
+  + Fix forcing EGLStream with NVIDIA proprietary driver.
+  + screencast: Add ability to stop streams.
+  + Use standard cursor names from CSS specification.
+  + Avoids over-synchronization due to client reads.
+  + Add more profiling instrumentation.
+  + Allow specifyig the layout manager for an actor type.
+  + Fix handling of relative mode for tablets.
+  + Dynamically assign hardware planes during configuration.
+  + Simplify X11 focus management.
+  + background: Fix background color around image.
+  + text-input: Use correct offsets in delete_surrounding_text.
+  + Add wayland shm YCbCr support.
+  + Set a minimum guessed scale.
+  + Fix building without native backend.
+  + Fix occasional artifacts at top of X11 fullscreen windows.
+  + Add documentation for building, running and debugging.
+  + Improve tablet pressure curve calculation.
+  + Fixed crashes.
+  + Plugged leaks.
+  + Updated translations.
+- Bump api_major to 14 following upstream changes.
+- Add pkgconfig(pixman-1) BuildRequires: new dependency.
+- Drop pkgconfig(json-glib-1.0) BuildRequires: no longer needed.
+- Drop mutter-fix-text-input-delete-surrounding.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Fri Mar 15 07:09:11 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add 0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch:

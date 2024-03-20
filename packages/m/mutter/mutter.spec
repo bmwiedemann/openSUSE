@@ -18,11 +18,11 @@
 
 %bcond_with profiler
 
-%define api_major 13
+%define api_major 14
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        45.3
+Version:        46.0
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -36,10 +36,8 @@ Patch1:         mutter-disable-cvt-s390x.patch
 Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
 # PATCH-FIX-UPSTREAM mutter-fix-x11-restart.patch glgo#GNOME/gnome-shell#7050 glgo#GNOME/mutter!3329 alynx.zhou@suse.com -- Fix crash on restarting mutter under x11
 Patch3:         mutter-fix-x11-restart.patch
-# PATCH-FIX-UPSTREAM mutter-fix-text-input-delete-surrounding.patch glgo#GNOME/mutter#2146 glgo#GNOME/mutter!2712 alynx.zhou@suse.com -- Fix delete_surrounding_text of text-input-v3
-Patch4:         mutter-fix-text-input-delete-surrounding.patch
 # PATCH-FIX-OPENSUSE 0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch glgo#GNOME/mutter#3302 bsc#1219546 alynx.zhou@suse.com -- Fix partial update on VT switch
-Patch5:         0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch
+Patch4:         0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
@@ -71,11 +69,10 @@ BuildRequires:  pkgconfig(graphene-gobject-1.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.37.2
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
-BuildRequires:  pkgconfig(json-glib-1.0) >= 0.12.0
 BuildRequires:  pkgconfig(lcms2) >= 2.6
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.26
 BuildRequires:  pkgconfig(libdisplay-info)
-BuildRequires:  pkgconfig(libdrm) >= 2.4.83
+BuildRequires:  pkgconfig(libdrm) >= 2.4.118
 BuildRequires:  pkgconfig(libeis-1.0)
 BuildRequires:  pkgconfig(libinput) >= 1.15.0
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.21
@@ -84,6 +81,7 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev) >= 136
 BuildRequires:  pkgconfig(libwacom) >= 0.13
 BuildRequires:  pkgconfig(pango) >= 1.2.0
+BuildRequires:  pkgconfig(pixman-1) >= 0.42
 BuildRequires:  pkgconfig(sm)
 %if %{with profiler}
 BuildRequires:  pkgconfig(sysprof-6)
@@ -92,8 +90,8 @@ BuildRequires:  pkgconfig(sysprof-capture-4) >= 3.37.2
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(upower-glib) >= 0.99.0
 BuildRequires:  pkgconfig(wayland-eglstream)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.21
-BuildRequires:  pkgconfig(wayland-server) >= 1.13.0
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.33
+BuildRequires:  pkgconfig(wayland-server) >= 1.22
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xau)
@@ -151,7 +149,6 @@ applications that want to make use of the mutter library.
 %patch -P 2 -p1
 %patch -P 3 -p1
 %patch -P 4 -p1
-%patch -P 5 -p1
 %endif
 # SLE-only patches and translations.
 %if 0%{?sle_version}
