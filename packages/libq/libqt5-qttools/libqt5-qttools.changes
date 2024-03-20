@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 19 09:59:50 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.13+kde4, rebased upstream:
+  * HelpEngineWrapper: fix API susceptible to GCC 13 -Wdangling-reference
+  * QLayoutSupport: fix GCC 13 -Werror=overloaded-virtual
+  * qtattributionsscanner: Fix QTextStream/QFile construction order
+  * QDoc: Remove unused overload of meta command
+  * Bump version to 5.15.13
+  * qdoc: Append translate attribute to few more blocks
+  * qdoc: Add translate attribute to HTML blocks
+
+-------------------------------------------------------------------
 Fri Dec 29 13:31:38 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.12+kde4, rebased upstream:
