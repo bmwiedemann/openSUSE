@@ -1,0 +1,6 @@
+<package name="fswatch" project="openSUSE:Factory">
+  <title>File change monitor</title>
+  <description>fswatch is a file change monitor that receives notifications when the contents of the specified files or directories are modified. fswatch implements several monitors.</description>
+  <devel project="utilities" package="fswatch"/>
+  <url>https://github.com/emcrisostomo/fswatch</url>
+</package>
