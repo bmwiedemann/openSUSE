@@ -1,0 +1,63 @@
+
+%ldconfig_scriptlets
+
+%files
+%dir %{_libdir}/glib-2.0
+%dir %{_libdir}/glib-2.0/include
+%dir %{_datadir}/gdb/auto-load/usr
+%dir %{_datadir}/gdb/auto-load%{_libdir}
+%dir %{_datadir}/gettext/its
+%dir %{_datadir}/gdb
+%dir %{_datadir}/gdb/auto-load
+
+%{_bindir}/gapplication
+%{_bindir}/gdbus
+%{_bindir}/gdbus-codegen
+%{_bindir}/gi-compile-repository
+%{_bindir}/gi-decompile-typelib
+%{_bindir}/gi-inspect-typelib
+%{_bindir}/gio
+%{_bindir}/gio-querymodules
+%{_bindir}/glib-compile-resources
+%{_bindir}/glib-compile-schemas
+%{_bindir}/glib-genmarshal
+%{_bindir}/glib-gettextize
+%{_bindir}/glib-mkenums
+%{_bindir}/gobject-query
+%{_bindir}/gresource
+%{_bindir}/gsettings
+%{_bindir}/gtester
+%{_bindir}/gtester-report
+%{_datadir}/aclocal/glib-2.0.m4
+%{_datadir}/aclocal/glib-gettext.m4
+%{_datadir}/aclocal/gsettings.m4
+%{_datadir}/bash-completion/completions/gapplication
+%{_datadir}/bash-completion/completions/gdbus
+%{_datadir}/bash-completion/completions/gio
+%{_datadir}/bash-completion/completions/gresource
+%{_datadir}/bash-completion/completions/gsettings
+%{_datadir}/gdb/auto-load%{_libdir}/libglib-2.0.so.*gdb.py
+%{_datadir}/gdb/auto-load%{_libdir}/libgobject-2.0.so.*gdb.py
+%{_datadir}/gettext/its/gschema.its
+%{_datadir}/gettext/its/gschema.loc
+%{_datadir}/glib-2.0/
+%{_includedir}/gio-unix-2.0
+%{_includedir}/glib-2.0
+%{_libdir}/glib-2.0/include/glibconfig.h
+%{_libdir}/libgio-2.0.so*
+%{_libdir}/libgirepository-2.0.so*
+%{_libdir}/libglib-2.0.so*
+%{_libdir}/libgmodule-2.0.so*
+%{_libdir}/libgobject-2.0.so*
+%{_libdir}/libgthread-2.0.so*
+%{_libdir}/pkgconfig/gio-2.0.pc
+%{_libdir}/pkgconfig/gio-unix-2.0.pc
+%{_libdir}/pkgconfig/girepository-2.0.pc
+%{_libdir}/pkgconfig/glib-2.0.pc
+%{_libdir}/pkgconfig/gmodule-2.0.pc
+%{_libdir}/pkgconfig/gmodule-export-2.0.pc
+%{_libdir}/pkgconfig/gmodule-no-export-2.0.pc
+%{_libdir}/pkgconfig/gobject-2.0.pc
+%{_libdir}/pkgconfig/gthread-2.0.pc
+%{_libexecdir}/gio-launch-desktop
+

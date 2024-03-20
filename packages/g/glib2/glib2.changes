@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Mon Mar 18 12:25:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fold typelib-1_0-GioUnix-2_0 into typeib-1_0-Gio-2_0: gjs loads
+  GioUnix as platform-specific overlay to Gio transparently. Any
+  consumer that wants Gio needs GioUnix on Unix-like systems
+  (boo#1211604).
+
+-------------------------------------------------------------------
+Fri Mar  8 07:28:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.80.0:
+  + Bugs fixed:
+    - GLib: string malformed for gettext.
+    - Add missing argument placeholders to several command-line
+      tools.
+    - g_warn_if_fail: Document as always evaluating expr.
+    - docs:
+      . Fix a typo in the macros docs page.
+      . Specify gi-docgen as a native dependency.
+      . Fix building with docs enabled and introspection disabled.
+      . Minor improvements to GSignal documentation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  6 14:32:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Create glib2-stage1: build glib2 without intrsospection. This
+  intermediate glib2-stage1-devel is used to the build
+  gobject-introspection, which in turn is needed to build the real
+  glib2 packages.
+
+-------------------------------------------------------------------
+Tue Feb 27 10:43:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.79.3:
+  + Various consistency improvements to the command line
+    libgirepository tools
+
+-------------------------------------------------------------------
+Tue Feb 13 09:20:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.79.2:
+  + More work to reduce lock contention and improve performance in
+    GObject.
+  + More API changes to libgirepository, which is now stable as of
+    this release.
+  + Import `g-ir-compiler`, `g-ir-generate` and `g-ir-inspect`
+    from gobject-introspection.git and update them to work with
+    girepository-2.0, renaming them to `gi-compile-repository`,
+    `gi-decompile-typelib` and`gi-inspect-typelib`.
+  + Add new `GLibUnix-2.0.gir`, `GLibWin32-2.0.gir`,
+    `GioUnix-2.0.gir` and `GioWin32-2.0.gir` GIRs which contain
+    platform specific APIs, and are the preferred way for third
+    parties to access those APIs in future; although platform
+    specific APIs which were already exposed in `GLib-2.0.gir` and
+    `Gio-2.0.gir` continue to be listed there; the underlying `.so`
+    files have not changed.
+
+-------------------------------------------------------------------
+Mon Jan 29 13:38:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.79.1:
+  + Fix a race condition in `g_object_unref()`,
+  + Various API and build changes to libgirepository as it is not
+    yet API-stable,
+  + Build fixes on big-endian 64-bit systems and mips64el,
+  + Reduce contention on global locks within GObject,
+  + Allow building man pages without the reference documentation,
+
+-------------------------------------------------------------------
+Tue Jan 16 07:51:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.79.0+158:
+  + Port to gi-docgen and drop gtk-doc support — dependencies have
+    changed, and Meson needs `-Ddocumentation` now rather than
+    `-Dgtk_doc.
+  + Move libgirepository into glib.git from
+    gobject-introspection.git — but tools like `g-ir-scanner` are
+    currently still in gobject-introspection.git. For the moment,
+    glib.git needs to be built twice, once with
+    `-Dintrospection=false`, then build gobject-introspection.git,
+    then re-build glib.git with `-Dintrospection=true`. This
+    process will evolve throughout the GLib 2.80 cycle. The API and
+    ABI of libgirepository has changed, and accordingly its version
+    number has been bumped from 1.0 to 2.0 (note: the version
+    number of `GIRepository-*.gir` has been bumped from 2.0 to 3.0.
+  + Match behaviour for `GAppInfo` searches has changed.
+  + Rename `GTK_USE_PORTAL` environment variable to
+    `GIO_USE_PORTALS`.
+  + Bump Meson dependency to 1.2.0 and depend on Python `packaging`
+    module.
+- Add pkgconfig(gobject-introspection-1.0) BuildRequires: new
+  dependency.
+- For doc flavor: replace gtk-doc BuildRequires with
+  pkgconfig(gi-docgen), following upstreams port to gi-docgen.
+- Convert to source service for easier updating.
+
+-------------------------------------------------------------------
 Thu Dec  7 10:52:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.78.3:

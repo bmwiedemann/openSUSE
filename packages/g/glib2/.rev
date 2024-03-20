@@ -2215,4 +2215,12 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
     <comment></comment>
     <requestid>1131631</requestid>
   </revision>
+  <revision rev="276" vrev="1">
+    <srcmd5>9caf95fdc2d773b988c21da50f9fcdc1</srcmd5>
+    <version>2.80.0</version>
+    <time>1710965590</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1159738 from dimstar)</comment>
+    <requestid>1159740</requestid>
+  </revision>
 </revisionlist>

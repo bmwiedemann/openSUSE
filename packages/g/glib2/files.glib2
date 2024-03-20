@@ -1,0 +1,175 @@
+%files tools
+%license LICENSES/LGPL-2.1-or-later.txt
+%doc README.md
+%{_bindir}/gapplication
+%{_bindir}/gdbus
+%{_bindir}/gio
+%{_bindir}/gio-querymodules*
+%{_bindir}/glib-compile-schemas
+%{_bindir}/gresource
+%{_bindir}/gsettings
+%{_libexecdir}/gio-launch-desktop
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/gapplication
+%{_datadir}/bash-completion/completions/gdbus
+%{_datadir}/bash-completion/completions/gio
+%{_datadir}/bash-completion/completions/gresource
+%{_datadir}/bash-completion/completions/gsettings
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_gsettings
+%{_mandir}/man1/gapplication.1%{?ext_man}
+%{_mandir}/man1/gdbus.1%{?ext_man}
+%{_mandir}/man1/gio.1%{?ext_man}
+%{_mandir}/man1/gio-querymodules.1%{?ext_man}
+%{_mandir}/man1/glib-compile-schemas.1%{?ext_man}
+%{_mandir}/man1/gresource.1%{?ext_man}
+%{_mandir}/man1/gsettings.1%{?ext_man}
+# We put those files here, but they don't really belong here. They just don't
+# have a better home... The zzz-glib2 scripts could arguably be in
+# libglib-2_0-0 but that would break the shared library policy.
+%{_sysconfdir}/profile.d/zzz-glib2.*
+
+%files -n gio-branding-upstream
+%license LICENSES/LGPL-2.1-or-later.txt
+%doc README.Gsettings-overrides
+%config (noreplace) %{_sysconfdir}/gnome_defaults.conf
+
+%files -n %{libglib}
+%license LICENSES/LGPL-2.1-or-later.txt
+%doc NEWS
+%{_libdir}/libglib*.so.*
+
+%files -n %{libgmodule}
+%license LICENSES/LGPL-2.1-or-later.txt
+%{_libdir}/libgmodule*.so.*
+
+%files -n %{libgobject}
+%license LICENSES/LGPL-2.1-or-later.txt
+%{_libdir}/libgobject*.so.*
+
+%files -n %{libgthread}
+%license LICENSES/LGPL-2.1-or-later.txt
+%{_libdir}/libgthread*.so.*
+
+%files -n %{libgio}
+%license LICENSES/LGPL-2.1-or-later.txt
+%{_libdir}/libgio*.so.*
+%dir %{_libdir}/gio
+%dir %{_libdir}/gio/modules
+%ghost %{_libdir}/gio/modules/giomodule.cache
+%dir %{_datadir}/glib-2.0/
+%dir %{_datadir}/glib-2.0/schemas/
+%ghost %{_datadir}/glib-2.0/schemas/gschemas.compiled
+%{_datadir}/applications/gnome-mimeapps.list
+%dir %{_localstatedir}/cache/gio-2.0
+%ghost %{_localstatedir}/cache/gio-2.0/gnome-mimeapps.list
+%ghost %{_localstatedir}/cache/gio-2.0/xfce-mimeapps.list
+%ghost %{_localstatedir}/cache/gio-2.0/lxde-mimeapps.list
+%ghost %{_localstatedir}/cache/gio-2.0/pantheon-mimeapps.list
+%ghost %{_localstatedir}/cache/gio-2.0/budgie-mimeapps.list
+%ghost %{_localstatedir}/cache/gio-2.0/mate-mimeapps.list
+
+%files devel
+%license LICENSES/LGPL-2.1-or-later.txt
+%{_bindir}/gdbus-codegen
+%{_bindir}/gi-compile-repository
+%{_bindir}/gi-decompile-typelib
+%{_bindir}/gi-inspect-typelib
+%{_bindir}/glib-compile-resources
+%{_bindir}/glib-genmarshal
+%{_bindir}/glib-gettextize
+%{_bindir}/glib-mkenums
+%{_bindir}/gobject-query
+%{_bindir}/gtester
+%{_bindir}/gtester-report
+%{_mandir}/man1/gdbus-codegen*%{ext_man}
+%{_mandir}/man1/gi-compile-repository.1%{?ext_man}
+%{_mandir}/man1/gi-decompile-typelib.1%{?ext_man}
+%{_mandir}/man1/gi-inspect-typelib.1%{?ext_man}
+%{_mandir}/man1/glib-compile-resources.1%{ext_man}
+%{_mandir}/man1/glib-genmarshal.1%{ext_man}
+%{_mandir}/man1/glib-gettextize.1%{ext_man}
+%{_mandir}/man1/glib-mkenums.1%{ext_man}
+%{_mandir}/man1/gobject-query.1%{ext_man}
+%{_mandir}/man1/gtester-report.1%{?ext_man}
+%{_mandir}/man1/gtester.1%{ext_man}
+%dir %{_datadir}/aclocal
+%{_datadir}/aclocal/glib-2.0.m4
+%{_datadir}/aclocal/glib-gettext.m4
+%{_datadir}/aclocal/gsettings.m4
+%dir %{_datadir}/gettext/its/
+%{_datadir}/gettext/its/gschema*
+%dir %{_datadir}/glib-2.0/
+%{_datadir}/glib-2.0/dtds/
+%{_datadir}/glib-2.0/gdb/
+%{_datadir}/glib-2.0/gettext/
+%{_datadir}/glib-2.0/codegen/
+%{_datadir}/glib-2.0/schemas/gschema.dtd
+%{_datadir}/glib-2.0/valgrind/
+%{_includedir}/glib-2.0
+%{_includedir}/gio-unix-2.0
+%{_libdir}/lib*.so
+%dir %{_libdir}/glib-2.0/
+%{_libdir}/glib-2.0/include/
+%{_libdir}/pkgconfig/*.pc
+%{_datadir}/gdb/auto-load/%{_libdir}/*-gdb.py
+%if %{with systemtap}
+%dir %{_datadir}/systemtap
+%dir %{_datadir}/systemtap/tapset
+%dir %{_datadir}/systemtap/tapset/*
+%{_datadir}/systemtap/tapset/*/libgio-*.so.*.stp
+%{_datadir}/systemtap/tapset/*/libglib-*.so.*.stp
+%{_datadir}/systemtap/tapset/*/libgobject-*.so.*.stp
+%endif
+%{_rpmmacrodir}/macros.glib2
+# Own these directories to avoid build requirement on gdb
+# only for directories ownership
+%dir %{_datadir}/gdb
+%dir %{_datadir}/gdb/auto-load
+%dir %{_datadir}/gdb/auto-load%{_prefix}
+%dir %{_datadir}/gdb/auto-load%{_libdir}
+%{_datadir}/gir-1.0/GIRepository-3.0.gir
+%{_datadir}/gir-1.0/GLib-2.0.gir
+%{_datadir}/gir-1.0/GModule-2.0.gir
+%{_datadir}/gir-1.0/GObject-2.0.gir
+%{_datadir}/gir-1.0/Gio-2.0.gir
+%{_datadir}/gir-1.0/GLibUnix-2.0.gir
+%{_datadir}/gir-1.0/GioUnix-2.0.gir
+
+%files -n typelib-1_0-GLibUnix-2_0
+%{_libdir}/girepository-1.0/GLibUnix-2.0.typelib
+
+%files -n typelib-1_0-GIRepository-3_0
+%{_libdir}/girepository-1.0/GIRepository-3.0.typelib
+
+%files -n typelib-1_0-GLib-2_0
+%{_libdir}/girepository-1.0/GLib-2.0.typelib
+
+%files -n typelib-1_0-GModule-2_0
+%{_libdir}/girepository-1.0/GModule-2.0.typelib
+
+%files -n typelib-1_0-GObject-2_0
+%{_libdir}/girepository-1.0/GObject-2.0.typelib
+
+%files -n typelib-1_0-Gio-2_0
+%{_libdir}/girepository-1.0/Gio-2.0.typelib
+%{_libdir}/girepository-1.0/GioUnix-2.0.typelib
+
+%files -n %{libgirepository}
+%{_libdir}/libgirepository-2.0.so.0*
+
+%files devel-static
+%license LICENSES/LGPL-2.1-or-later.txt
+%{_libdir}/lib*.a
+
+%files lang -f glib20.lang
+%license LICENSES/LGPL-2.1-or-later.txt
+
+%files tests-devel
+%license LICENSES/LGPL-2.1-or-later.txt
+%{_libexecdir}/installed-tests
+%attr(0755 - -) %{_libexecdir}/installed-tests/glib/taptestrunner.py
+%attr(0755 - -) %{_libexecdir}/installed-tests/glib/x-content/unix-software/autorun.sh
+%{_datadir}/installed-tests
