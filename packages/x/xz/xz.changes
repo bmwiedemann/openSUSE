@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 10 11:43:13 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 5.6.1:
+  * liblzma: Fix start-up crashes with -fprofile-generate
+  * liblzma: Fix false positive invalid write Valgrind report
+  * xz: Change the messages for thread reduction due to memory
+    constraints to only appear under the highest verbosity level
+
+-------------------------------------------------------------------
 Tue Mar  5 11:25:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.6.0:

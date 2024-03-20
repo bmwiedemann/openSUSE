@@ -752,4 +752,12 @@
     - Added CLMUL-based CRC32 on x86-64 and E2K with</comment>
     <requestid>1155110</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>08d8fbe783087facd86740842981208a</srcmd5>
+    <version>5.6.1</version>
+    <time>1710965375</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1158735</requestid>
+  </revision>
 </revisionlist>

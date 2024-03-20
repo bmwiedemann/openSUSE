@@ -23,7 +23,7 @@
 %bcond_with static
 %endif
 Name:           xz
-Version:        5.6.0
+Version:        5.6.1
 Release:        0
 Summary:        A Program for Compressing Files with the Lempel–Ziv–Markov algorithm
 License:        0BSD AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -212,7 +212,6 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 
 %if %{with static}
 %files static-devel
-%defattr(-, root, root)
 %{_libdir}/liblzma.a
 %endif
 
