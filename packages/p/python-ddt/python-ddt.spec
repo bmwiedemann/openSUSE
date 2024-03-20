@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ddt
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        Data-Driven/Decorated Tests
 License:        MIT

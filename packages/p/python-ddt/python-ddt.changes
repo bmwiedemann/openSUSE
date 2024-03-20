@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 18 10:29:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.2:
+  * Github actions to use tox for tests
+
+-------------------------------------------------------------------
 Sat Jan  6 17:15:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.1:
