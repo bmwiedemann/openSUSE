@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sat Mar 16 09:26:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Various performance workarounds have been added to the overview
+    map to improve rendering performance and quality with
+    fractional scaling.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:37:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Disable editing while document is loading.
+  + Discard still-loading documents when saving session.
+  + Fix some tab integration issues with libadwaita.
+
+-------------------------------------------------------------------
+Tue Feb 13 07:22:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + Use AdwAboutDialog.
+  + Fix keyboard access to light/dark/follow theme selectors.
+  + Use GtkFontDialog instead of deprecated GtkFontChooserDialog.
+  + Check for files on disk before restoring drafts to avoid
+    displaying deleted files..
+  + Performance improvements to the minimap on GTKs new renderer.
+  + Avoid draft auto-save file the document is still loading.
+  + The language selection dialog is now modal.
+  + A new-window action was added to .desktop file for GNOME Shell.
+  + Improve support for closing a page while it is still loading.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 16 11:10:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + Make various UI elements conform better to GNOME HIG.
+  + Fix etag usage when comparing changes from GFileMonitor.
+  + Cancel document loading when tab or window closes. This fixes
+    an issue where you could have 100% CPU doing Pango line
+    breaking on extremely large files even after closing a window
+    or tab.
+  + Improve margin for RTL languages.
+  + Updated appdata/metainfo.
+  + Fix memory leak in usage of GtkNativeDialog.
+  + Work around some broken user configurations for XDG special
+    directories.
+  + Updated translations.
+- Convert to source service for easier updating.
+
+-------------------------------------------------------------------
 Mon Oct 30 20:35:38 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.1:

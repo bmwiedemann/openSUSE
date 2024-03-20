@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-text-editor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           gnome-text-editor
-Version:        45.1
+Version:        46.0
 Release:        0
 Summary:        GNOME Text Editor
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/gnome-text-editor
-Source:         https://download.gnome.org/sources/gnome-text-editor/45/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -33,9 +33,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(editorconfig)
 BuildRequires:  pkgconfig(enchant-2) >= 2.2.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.69
-BuildRequires:  pkgconfig(gtk4) >= 4.3
-BuildRequires:  pkgconfig(gtksourceview-5) >= 5.5.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.73
+BuildRequires:  pkgconfig(gtk4) >= 4.12
+BuildRequires:  pkgconfig(gtksourceview-5) >= 5.10.0
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.alpha
 
