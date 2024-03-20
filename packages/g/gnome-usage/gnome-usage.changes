@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Mar 20 07:21:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Usage now
+    - uses ListViews in its performance tabs,
+    - split the two performance views
+    - and renovated the storage view's look,
+    - displays indicators for applications running in background,
+    - has an application dialogue instead of directly asking users
+      to terminate a process,
+    - classifies Android applications inside Waydroid and has an
+      indicator for that
+    - uses Adwaita's new adaptive dialogues instead of modal
+      windows.
+  + Updated translations.
+- Changes from version 45.1:
+  + builds with GCC 14 and Clang 16, together with Vala 0.56.15,
+  + avoids glitches in graphs on systems with no swap, due to a
+    previous division by zero,
+  + has better keyboard navigation with a different selection mode
+    for boxes in the storage view, and
+  + correctly classifies applications with a long path in its
+    cmdline.
+
+-------------------------------------------------------------------
 Tue Jan 16 17:57:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Convert to source service for easier updating.

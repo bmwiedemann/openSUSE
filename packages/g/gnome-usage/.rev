@@ -90,4 +90,12 @@
     <comment>- Convert to source service for easier updating. (forwarded request 1139299 from dimstar)</comment>
     <requestid>1139303</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3db0df5e3ee64a4adb6f073ad01c6474</srcmd5>
+    <version>46.0</version>
+    <time>1710965759</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1159767 from dimstar)</comment>
+    <requestid>1159768</requestid>
+  </revision>
 </revisionlist>
