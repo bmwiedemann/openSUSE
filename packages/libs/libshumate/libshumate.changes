@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Mar 16 09:31:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.0:
+  + Use g_assert_true instead of g_assert in tests.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 07:59:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.rc2:
+  + Fix regression in vector renderer with the latest optimizations
+    causing the hightway shield renderer in Maps not showing
+    shields.
+  + Fix compiling new tests with gcc using
+    -Wimplicit-function-declaration.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 07:34:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.rc:
+  + Performance improvements to the vector renderer.
+  + Remove undefined tile API.
+  + Fix zooming with smooth scrolling mice.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 18 15:37:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.beta:
+  + Fix artifacts in NGL renderer.
+  + Don't crash in vector reader if key is NULL.
+  + Enable the vector renderer by default when building (can still
+    be disabled if not needed).
+  + Add distance method for Location.
+
+-------------------------------------------------------------------
+Sat Feb 17 10:18:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.alpha:
+  + Various vector renderer improvements.
+  + Support continous scroll.
+  + Support arrow key panning.
+- Drop -D libsoup3=true mesom paraameter: no longer supported.
+
+-------------------------------------------------------------------
 Fri Feb 16 10:34:16 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Update licenses based on legaldb review 
