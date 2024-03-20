@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 19 08:06:34 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Make flatpak-remote-flathub only supplement flatpak in TW
+  (bsc#1221662).
+
+-------------------------------------------------------------------
 Thu Mar  7 11:21:12 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add a flatpak-selinux subpackage that provides a SELinux policy

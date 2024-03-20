@@ -165,7 +165,9 @@ Group:          System/Packages
 Requires:       flatpak
 Requires(postun): flatpak
 Requires(postun): sed
+%if 0%{?suse_version} > 1600
 Supplements:    flatpak
+%endif
 BuildArch:      noarch
 
 %description remote-flathub
