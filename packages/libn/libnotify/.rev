@@ -368,4 +368,12 @@ No GPL-2.0+ files found in the package. The Fedora package is also licensed unde
     <comment>Update to 0.8.3 (forwarded request 1130203 from dimstar)</comment>
     <requestid>1130317</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>ce78e69333d2f773336d11b46ad310cb</srcmd5>
+    <version>0.8.3</version>
+    <time>1710965558</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1159282 from dimstar)</comment>
+    <requestid>1159540</requestid>
+  </revision>
 </revisionlist>

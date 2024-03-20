@@ -1,7 +1,7 @@
 #
 # spec file for package libnotify
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        Notifications Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://galago-project.org/
-Source:         https://download.gnome.org/sources/libnotify/0.8/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
 
 BuildRequires:  docbook5-xsl-stylesheets
