@@ -17,4 +17,12 @@ New package for GNOME</comment>
     <comment> (forwarded request 1132225 from iznogood)</comment>
     <requestid>1132445</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cfc8b00d5aabd42a8753f61d13af8106</srcmd5>
+    <version>46.0</version>
+    <time>1710965727</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158301 from dimstar)</comment>
+    <requestid>1159467</requestid>
+  </revision>
 </revisionlist>

@@ -3,12 +3,10 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.gnome.org/GNOME/Incubator/snapshot.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/45.1</param>
-    <param name="versionformat">45.1</param>
-    <!--<param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="revision">46.0</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="changesgenerate">enable</param>-->
   </service>
   <service name="set_version" mode="manual"/>
   <service name="tar" mode="buildtime"/>
