@@ -27,20 +27,20 @@
 %define so_ebook 21
 %define so_ebook_contacts 4
 %define so_edata_book 27
-%define so_ecal 2
+%define so_ecal 3
 %define so_edata_cal 2
 %bcond_without introspection
 
 Name:           evolution-data-server
-Version:        3.50.3
+Version:        3.52.0
 Release:        0
 Summary:        Evolution Data Server
 License:        LGPL-2.0-only
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Apps/Evolution
-Source0:        https://download.gnome.org/sources/evolution-data-server/3.50/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.15
 BuildRequires:  db-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -383,6 +383,7 @@ This package contains developer documentation.
 %{_datadir}/glib-2.0/schemas/org.gnome.evolution-data-server.calendar.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.evolution-data-server.gschema.xml
 # Category icons that are used by libedataserver
+%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Evolution-alarm-notify.svg
 %{_datadir}/pixmaps/evolution-data-server/
 %{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.*.service
 %{_libdir}/evolution-data-server/

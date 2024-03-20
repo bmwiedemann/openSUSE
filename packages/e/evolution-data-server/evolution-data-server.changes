@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Mar 15 07:12:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.52.0:
+  + Bug Fixes:
+    - addressbook: Crash on authenticate and finalize in two
+      threads.
+    - Calendar: Prefer html/markdown description in preview.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  1 08:37:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.51.3:
+  + CalDAV Scheduling - utilize SCHEDULE-AGENT property parameter.
+  + build: Make sure tests run in serial.
+  + IMAPx: Disable PREVIEW fetch on error.
+  + Camel: Long header folding should not add empty folding line.
+  + Camel: Fix possible busy loop in camel-lock-helper.
+  + Support webcals: URI.
+
+-------------------------------------------------------------------
+Mon Feb 12 15:02:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.51.2:
+  + build: Don't set CFLAGS returned by pkg-config as
+    CMAKE_REQUIRED_FLAGS.
+  + build: Bump CMake version requirement to 3.15 and change
+    libedataserverui4 .h files copy.
+  + camel-mime-filter-preview: Correct an 'if' statement.
+  + vcard: Fix check for group name in e_vcard_remove_attributes().
+  + Update Google server names in checks for "is Google server".
+  + ESourceOpenPGP: Add "ask-send-public-key" option.
+
+-------------------------------------------------------------------
+Tue Jan 16 07:42:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.51.1:
+  + camel-message-info-base: Sanitize 'preview' property value on
+    set.
+  + IMAPx: Remove sanity check when reading PREVIEW result.
+  + IMAPx: Remove forgotten debug print.
+  + misc: Update description of the provided libraries.
+  + build: Use -Wshadow build option, if available.
+  + addressbook-export: Fix two memory leaks.
+  + OAuth2: Add scheme handler for OAuth2 prompts in external
+    browser.
+  + module-google-backend: Fix a ref/unref imbalance found by
+    Coverity Scan.
+  + EReminderWatcher: Last-notified time not always set.
+  + ESourceMailSignature: Signature load can fail on runtime
+    warning.
+  + build: Correct incompatible type warning from check for
+    I_CAL_EMAIL_PARAMETER.
+  + camel-smime-context: Fix a typo in a localized string.
+  + CamelOperation: Add function to dupe current message.
+  + Camel: Ignore errors about missing messages during filtering.
+- Convert to source service for easier updating.
+
+-------------------------------------------------------------------
 Fri Jan  5 15:41:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.50.3:

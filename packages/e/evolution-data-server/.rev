@@ -2303,4 +2303,12 @@ New stable rel</comment>
   + Updated translations. (forwarded request 1137095 from dimstar)</comment>
     <requestid>1137098</requestid>
   </revision>
+  <revision rev="253" vrev="1">
+    <srcmd5>4f2a76cfd623c4008785efc64ddbd8cf</srcmd5>
+    <version>3.52.0</version>
+    <time>1710965453</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158143 from dimstar)</comment>
+    <requestid>1159451</requestid>
+  </revision>
 </revisionlist>
