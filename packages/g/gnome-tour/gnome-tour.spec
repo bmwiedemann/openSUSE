@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-tour
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           gnome-tour
-Version:        45.0
+Version:        46.0
 Release:        0
 Summary:        GNOME Tour & Greeter
 License:        GPL-3.0-or-later
@@ -27,7 +27,6 @@ Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-tour
 Source0:        %{name}-%{version}.tar.zst
 Source2:        vendor.tar.zst
-Source3:        cargo_config
 
 BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
@@ -46,8 +45,6 @@ A guided tour and greeter for GNOME.
 
 %prep
 %autosetup -p1 -a2
-mkdir .cargo
-cp %{SOURCE3} .cargo/config
 
 %build
 export RUSTFLAGS=%{rustflags}
