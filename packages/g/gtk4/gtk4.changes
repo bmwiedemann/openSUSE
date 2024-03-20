@@ -1,4 +1,208 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:43:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.14.1:
+  + GtkTextView: Fix a mixup of cursor and anchor when retrieving
+    surrounding text in input methods.
+  + Printing: Avoid accessing freed printers.
+  + Accessibility: Fix memory leaks.
+  + GDK:
+    - Rename the GDK_VULKAN_SKIP environment variable to
+      GDK_VULKAN_DISABLE.
+    - Add a GDK_GL_DISABLE environment variable.
+  + GSK:
+    - Rename the GSK_GPU_SKIP environment variable to
+      GSK_GPU_DISABLE.
+    - Speed up handling of repeated ops, which should help for
+      text.
+    - Speed up the inner loop of text node conversion.
+    - Drop the glyph-align optimization flag.
+    - ngl: Avoid reusing frames while they are in use.
+    - Fix flickering thumbnails in nautilus.
+    - Speed up buffer handling in both ngl and Vulkan.
+  + Demos: Skip demos using gl shaders when we're not using the gl
+    renderer.
+  + Build:
+    - Fix some ubsan warnings.
+    - Avoid zink in ci since it spams stderr.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 12 13:38:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.14.0:
+  + GtkTextView:
+    - Don't snapshot children twice.
+    - Don't blink the cursor when hidden.
+  + GtkEmojiChooser: Fix presentation selector handling.
+  + GtkSnapshot: Fix wrong nodes with transformed shadows.
+  + GtkIMContext: Make gtk_im_context_activate_osk public.
+  + Accessibility:
+    - Implement get_contents_at for all our text widgets.
+    - Add GtkAccessibleText.get_default_attributes.
+  + GSK:
+    - Don't fall back to cairo for software rendering. gl+llvmpipe
+      is better.
+    - Round vertical glyph position to a device pixel position if
+      the font is hinted.
+    - Fix problems with clip handling.
+    - Make vulkan and ngl match their font handling.
+    - Fix some corner-cases with offloading and clips.
+    - Fix problem with rendering of missing glyphs in hinted fonts.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:08:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.13.9:
+  + GtkEditable: Fix preconditions to be not too strict.
+  + GtkEmojiChooser: Support search in the locale as well as in
+    English.
+  + GtkIconTheme: Make gtk_icon_paintable_new_for_file support
+    symbolics.
+  + GtkVideo: Fix a problem with cursor handling that could lead to
+    crashes.
+  + Accessibility:
+    - Fix GetCharacterAtOffset implementation.
+    - Add a Terminal role.
+    - Make TextCaretMoved match gtk3.
+    - Support multiple levels of GtkEditable delegates.
+  + GSK:
+    - Make the node parser more flexible for text nodes.
+    - Change the way font scaling is handled to avoid clipping.
+    - Fix handling of missing glyphs in the new renderers.
+  + X11: Don't claim to support shadows without a compositor.
+  + Wayland: Fix handling of output scales.
+  + Tools: Add a compare command to gtk4-rendernode-tool.
+  + Build: Fix some ubsan complaints.
+
+-------------------------------------------------------------------
+Thu Feb 22 11:17:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.13.8.1+7:
+  + Fix Crash in gtk_file_dialog_save() with initial filename.
+  + x11: Shadows require compositing 
+
+-------------------------------------------------------------------
+Wed Feb 21 07:59:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.13.8:
+  + Accessibility:
+    - Add a GtkAccessibleText interface for allowing 3rd party.
+      text widgets (notably vte) to be accessible.
+    - Avoid duplicate accessible descriptions.
+    - Fix GetAccessibleAtPoint.
+  + GSK:
+    - Avoid offscreens for disjoint containers.
+    - Don't use the gpu renderers with llvmpipe.
+    - Fix various rendering issues found by tests.
+    - Allow unnormalized node bounds again.
+    - Fix a broken case of rounded-rect intersection.
+    - Fix handling of external textures in gpu renderers.
+    - Make gpu renderers work with WGL on Windows.
+  + build: Allow building without dmabuf support on (old) Linux.
+  + X11: Fix monitor enter/leave signals.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 12 16:50:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.13.7:
+  + GtkFileChooser: Speed up opening.
+  + GtkCalendar: Add some missing setters and getters.
+  + Accessibility:
+    - Add socket support for webkit accessibility.
+    - Implement AT-SPI text for GtkText.
+    - Implement AT-SPI component generically.
+    - Add an announce API.
+  + GSK:
+    - Fix a crash in the vulkan renderer.
+    - Make nodeparser allow aliases for fonts again.
+    - Implement cache eviction for glyph and texture caches.
+    - Fix ngl shaders to work on GL < 4.0.
+    - Require GL 3.3 for the ngl renderer.
+    - Fix problems with scaled shadows.
+    - Fix problems with holes for underlaid subsurfaces.
+    - Improve handling of scales and glyph cache efficiency.
+  + Media:
+    - Support dmabufs in the gstreamer backend. This allows
+      zero-copy video playback on Wayland when paired with
+      hardware video decoding.
+    - Drop the experimental ffmpeg backend. It hasn't been
+      building for a year.
+  + Wayland:
+    - Commit empty frames if and double-buffered state is pending.
+    - Fix monitor size information when using mutter without
+      the scale-monitor-framebuffer setting.
+    - Clear the current tablet on tab leave, fixing a crash.
+  + Tools: Make the crash handling in gtk4-node-editor more robust.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb  8 15:30:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.13.6:
+  + GtkColumnView:
+    - Fix infinite loops in dispose.
+    - Fix problems with weak ref cycles in GtkExpression.
+  + GtkListView:
+    - Fix some corner cases with sections during insertions and
+      deletions.
+    - Don't double-recycle widgets.
+  + GtkStack: Add automatic cleanup for GtkStackPage.
+  + GDK:
+    - Use standard cursor names for drag cursors.
+    - Enable fractional scaling with gl by default.
+  + GSK:
+    - Many fixes and improvements to the unified renderers:
+      - Fix text rendering with the uber shader.
+      - Fix rounding issues with fractional scales.
+      - Fix some memory leaks.
+      - Many text rendering fixes.
+      - Implement subpixel positioning for glyphs.
+      - Support custom fonts in node files.
+      - Add tests for font rendering.
+      - Fix drawing of repeat nodes.
+      - Implement subpixels positioning.
+      - Evict stale textures, glyphs and atlases from the cache.
+    - Some fixes and improvements to the GL renderer:
+      - Fix problems with GLES on Nvidia.
+      - Avoid a crash in the mask demo.
+      - Respect opacity of the first child node in containers.
+    - Some fixes and improvements to the fallback renderer:
+      - Fix drawing of repeat nodes.
+    - Make ngl the default renderer.
+   + Wayland:
+    - Fix problems with tablet cursors.
+    - Fix problems without seats.
+   + Accessibility:
+    - Respect a separate "show-status-shapes setting.
+    - Fix change notification for accessible names on some widgets.
+   + Inspector: Show the git commit in devel builds.
+   + Tools:
+     - Make gtk4-node-editor autosave its contents.
+     - Add a benchmark command to gtk4-rendernode-tool.
+  + Updated translations.
+- Changes from version 4.13.5:
+  + This release adds two new GSK renderers called vulkan and ngl,
+    that are built from the same sources. The new renderers can
+    handle many corner cases correctly that the current gl renderer
+    does not handle, and they offer advantages such as antialiasing
+    and supersampled gradients.
+  + GtkDropdown: Fix display of initial selection
+  + GtkShortcutsWindow: Make the window adapt to smaller screen
+    widths
+  + GtkTextView: Fix a possible NULL dereference in history
+  + GDK: Make the png loader safer against overflows
+  + GL: Fix some errors in handling of texture formats and mipmaps
+- Switch to source-service managed sources.
+- Enable sassc BuildRequires, as we're now building from git.
+- Enable pkgconfig(vulkan) BuildRequires: upstream recommends
+  enabling vulkan by now.
+- Add shaderc BuildRequires: new dependency for the vulkan
+  renderer.
+
+-------------------------------------------------------------------
 Thu Feb  8 15:28:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.12.5:

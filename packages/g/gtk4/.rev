@@ -833,4 +833,12 @@ New upstream release</comment>
   + Wayland: Fix cursor handling with graphics tablets.</comment>
     <requestid>1145423</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>0a356f8cdb584169ab0cf883b0134dc7</srcmd5>
+    <version>4.14.1</version>
+    <time>1710965512</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158708 from dimstar)</comment>
+    <requestid>1159503</requestid>
+  </revision>
 </revisionlist>

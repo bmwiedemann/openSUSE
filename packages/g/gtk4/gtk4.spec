@@ -17,7 +17,6 @@
 #
 
 
-# When updating the binary version, do not forget to also update baselibs.conf
 %define gtk_binary_version 4.0.0
 %define _name gtk
 
@@ -29,14 +28,14 @@
 %endif
 
 Name:           gtk4
-Version:        4.12.5
+Version:        4.14.1
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.gtk.org/
 
-Source:         https://download.gnome.org/sources/gtk/4.12/%{_name}-%{version}.tar.xz
+Source:         %{_name}-%{version}.tar.zst
 Source2:        settings.ini
 Source3:        macros.gtk4
 Source99:       gtk4-rpmlintrc
@@ -62,10 +61,8 @@ BuildRequires:  gettext-tools >= 0.19.7
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.50.1
 BuildRequires:  pkgconfig
-# sassc is ONLY needed when building gitcheckouts, and not when using tarball releases
-#BuildRequires:  sassc
-# Disabled until upstream enables vulkan support by default
-# BuildRequires:  vulkan-devel
+BuildRequires:  sassc
+BuildRequires:  shaderc
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(atk) >= 2.15.1
 BuildRequires:  pkgconfig(atk-bridge-2.0)
@@ -83,6 +80,7 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.53.7
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.72.0
 BuildRequires:  pkgconfig(graphene-1.0) >= 1.10.0
 BuildRequires:  pkgconfig(graphene-gobject-1.0) >= 1.10.0
+BuildRequires:  pkgconfig(vulkan)
 %if %{with gst}
 BuildRequires:  pkgconfig(gstreamer-gl-1.0)
 BuildRequires:  pkgconfig(gstreamer-player-1.0)
@@ -235,8 +233,6 @@ Requires:       %{name}-tools = %{version}
 Requires:       gettext-its-%{name} >= %{version}
 Requires:       libgtk-4-1 = %{version}
 Requires:       typelib-1_0-Gtk-4_0 = %{version}
-# # Disabled until upstream enables vulkan support by default
-# Requires:       vulkan-devel
 
 %description devel
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.
@@ -335,6 +331,7 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %files tools
 %{_bindir}/gtk4-broadwayd
 %{_bindir}/gtk4-launch
+%{_bindir}/gtk4-path-tool
 %{_bindir}/gtk4-query-settings
 %{_bindir}/gtk4-update-icon-cache
 %dir %{_datadir}/gtk-4.0/emoji
@@ -386,11 +383,12 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_datadir}/metainfo/org.gtk.PrintEditor4.appdata.xml
 %{_datadir}/metainfo/org.gtk.WidgetFactory4.appdata.xml
 %{_mandir}/man1/gtk4-builder-tool.1%{?ext_man}
-%{_mandir}/man1/gtk4-demo.1%{?ext_man}
 %{_mandir}/man1/gtk4-demo-application.1%{?ext_man}
+%{_mandir}/man1/gtk4-demo.1%{?ext_man}
 %{_mandir}/man1/gtk4-encode-symbolic-svg.1%{?ext_man}
 %{_mandir}/man1/gtk4-icon-browser.1%{?ext_man}
 %{_mandir}/man1/gtk4-node-editor.1%{?ext_man}
+%{_mandir}/man1/gtk4-path-tool.1%{?ext_man}
 %{_mandir}/man1/gtk4-rendernode-tool.1%{?ext_man}
 %{_mandir}/man1/gtk4-widget-factory.1%{?ext_man}
 
@@ -415,6 +413,7 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_datadir}/gir-1.0/*.gir
 %{_includedir}/gtk-4.0/
 %{_libdir}/pkgconfig/gtk4.pc
+%{_libdir}/pkgconfig/gtk4-atspi.pc
 %{_libdir}/pkgconfig/gtk4-broadway.pc
 %{_libdir}/pkgconfig/gtk4-wayland.pc
 %{_libdir}/pkgconfig/gtk4-unix-print.pc
