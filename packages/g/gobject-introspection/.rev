@@ -2112,4 +2112,12 @@
   cairo is only needed for some tests. (forwarded request 1129820 from fcrozat)</comment>
     <requestid>1130308</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>ad010f7d9d7c5fe148961dec88d2251b</srcmd5>
+    <version>1.80.0</version>
+    <time>1710965443</time>
+    <user>dimstar_suse</user>
+    <comment>Update for GNOME 46 (forwarded request 1156642 from dimstar)</comment>
+    <requestid>1159418</requestid>
+  </revision>
 </revisionlist>

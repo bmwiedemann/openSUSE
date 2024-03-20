@@ -1,7 +1,7 @@
 #
 # spec file for package gobject-introspection
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gobject-introspection
-Version:        1.78.1
+Version:        1.80.0
 Release:        0
 # FIXME: Find a way to identify if we need python3-gobject or python-gobject from gi-find-deps.sh.
 Summary:        GObject Introspection Tools
@@ -25,7 +25,7 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
 
-Source0:        https://download.gnome.org/sources/gobject-introspection/1.78/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 # gi-find-deps.sh is a rpm helper for Provides and Requires. Script creates typelib()-style Provides/Requires.
 Source1:        gi-find-deps.sh
 Source2:        gobjectintrospection.attr
@@ -36,18 +36,15 @@ Source99:       %{name}-rpmlintrc
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
+BuildRequires:  glib2-stage1-devel
 BuildRequires:  gtk-doc
+#!BuildIgnore:  glib2-devel
 BuildRequires:  meson >= 0.55.3
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Mako
 BuildRequires:  python3-Markdown
 BuildRequires:  python3-devel
 BuildRequires:  python3-xml
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.75.0
-BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(libffi) >= 3.0.0
 # gi-find-deps makes use of 'file' to identify the types.
 Requires:       file
@@ -131,7 +128,7 @@ sed -i "s|%{_bindir}/env python|%{_bindir}/python|" %{buildroot}%{_bindir}/*
 
 %files
 %license COPYING COPYING.GPL
-%doc NEWS README.rst TODO
+%doc NEWS README.rst
 %{_bindir}/g-ir-annotation-tool
 %{_bindir}/g-ir-compiler
 %{_bindir}/g-ir-doc-tool
