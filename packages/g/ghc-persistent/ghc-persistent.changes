@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 12 15:08:38 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete 'drop-dependency-on-empty-attoparsec-aeson-library.patch'.
+
+-------------------------------------------------------------------
 Thu Feb  8 20:24:57 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update persistent to version 2.14.6.1.

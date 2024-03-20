@@ -26,10 +26,11 @@ Summary:        Type-safe, multi-backend data serialization
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Patch1:         drop-dependency-on-empty-attoparsec-aeson-library.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-prof
+BuildRequires:  ghc-attoparsec-aeson-devel
+BuildRequires:  ghc-attoparsec-aeson-prof
 BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-attoparsec-prof
 BuildRequires:  ghc-base-devel
@@ -130,7 +131,7 @@ Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
 This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
-%autosetup -n %{pkg_name}-%{version} -p1
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build
