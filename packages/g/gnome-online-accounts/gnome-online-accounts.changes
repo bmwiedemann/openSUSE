@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:34:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.50.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 13:58:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: the -32bit packages are no longer needed and
+  have not been part of Tumbleweed for a while already (build for
+  i586 only enabled in LegacyX86).
+
+-------------------------------------------------------------------
+Mon Mar  4 08:01:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.49.4:
+  + Update dependencies in the GoaBackend pkgconfig.
+- Changes from version 3.94.3:
+  + Bump GoaBacked soname to 2.0.0.
+  + Fix nested modal windows.
+  + Simplified account setup UX.
+  + Updates to user visible labels and descriptions.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 13 10:02:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.49.2:
+  + Fix a use-after-free error.
+  + Set a minimum height for dialogs.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 12 17:06:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.49.1:
+  + Add Microsoft 365 provider.
+  + Port to GTK4/Adwaita and an async API.
+  + Remove nautilus-floating-bar.
+  + Derive the Fedora provider from Kerberos.
+  + Migrate existing WebDAV accounts.
+  + Update provider icons.
+  + Updated translations.
+- Replace pkgconfig(gtk+-3.0) BuildRequires with pkgconfig(gtk4)
+  and pkgconfig(libadwaita-1): follow upstreams port to GTK 4.
+
+-------------------------------------------------------------------
+Tue Jan 16 10:29:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.49.0:
+  + Depend on GCR4.
+  + Remove the media server provider.
+  + Remove the Last.fm provider.
+  + Add WebDAV base provider.
+  + Remove the webview and WebKit dependency.
+  + Updated translations.
+- Convert to source service for easier updating.
+- Drop 0001-google-Remove-Photos-support.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Fri Mar 17 22:31:28 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.48.0:

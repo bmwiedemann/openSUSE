@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-online-accounts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,30 +17,28 @@
 
 
 Name:           gnome-online-accounts
-Version:        3.48.0
+Version:        3.50.0
 Release:        0
 Summary:        GNOME service to access online accounts
 License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeOnlineAccounts
-Source0:        https://download.gnome.org/sources/gnome-online-accounts/3.48/%{name}-%{version}.tar.xz
-Source99:       baselibs.conf
-# PATCH-FEATURE-OPENSUSE 0001-google-Remove-Photos-support.patch -- google: Remove Photos support
-Patch0:         0001-google-Remove-Photos-support.patch
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gcr-3)
+BuildRequires:  pkgconfig(gcr-4)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.52
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.52
 BuildRequires:  pkgconfig(glib-2.0) >= 2.52
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6.2
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.12
 BuildRequires:  pkgconfig(gtk-doc)
+BuildRequires:  pkgconfig(gtk4) >= 4.10
 BuildRequires:  pkgconfig(javascriptcoregtk-4.1)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.4
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -75,12 +73,12 @@ libraries in GNOME can access the user's online accounts.
 This package provides the GObject Introspection bindings for the libgoa
 client library.
 
-%package -n libgoa-backend-1_0-1
+%package -n libgoa-backend-1_0-2
 Summary:        GNOME service to access online accounts -- Backend Library
 Group:          System/Libraries
 Recommends:     %{name}
 
-%description -n libgoa-backend-1_0-1
+%description -n libgoa-backend-1_0-2
 gnome-online-accounts provides interfaces so applications and
 libraries in GNOME can access the user's online accounts.
 
@@ -88,7 +86,7 @@ libraries in GNOME can access the user's online accounts.
 Summary:        GNOME service to access online accounts -- Development Files
 Group:          Development/Libraries/GNOME
 Requires:       libgoa-1_0-0 = %{version}
-Requires:       libgoa-backend-1_0-1 = %{version}
+Requires:       libgoa-backend-1_0-2 = %{version}
 Requires:       typelib-1_0-Goa-1_0 = %{version}
 
 %description devel
@@ -107,7 +105,6 @@ libraries in GNOME can access the user's online accounts.
 	-D google=true \
 	-D imap_smtp=true \
 	-D kerberos=true \
-	-D media_server=false \
 	-D owncloud=true \
 	-D windows_live=true \
 	-D fedora=false \
@@ -120,7 +117,7 @@ libraries in GNOME can access the user's online accounts.
 %find_lang %{name} %{?no_lang_C}
 
 %ldconfig_scriptlets -n libgoa-1_0-0
-%ldconfig_scriptlets -n libgoa-backend-1_0-1
+%ldconfig_scriptlets -n libgoa-backend-1_0-2
 
 %files
 %license COPYING
@@ -131,10 +128,10 @@ libraries in GNOME can access the user's online accounts.
 %{_datadir}/icons/hicolor/*/apps/goa-account*.svg
 %{_mandir}/man8/goa-daemon.8%{?ext_man}
 %dir %{_libdir}/goa-1.0
-%dir %{_libdir}/goa-1.0/web-extensions
-%{_libdir}/goa-1.0/web-extensions/libgoawebextension.so
 %{_libexecdir}/goa-identity-service
 %{_datadir}/dbus-1/services/org.gnome.Identity.service
+%{_libexecdir}/goa-oauth2-handler
+%{_datadir}/applications/org.gnome.OnlineAccounts.OAuth2.desktop
 
 %files -n libgoa-1_0-0
 %{_libdir}/libgoa-1.0.so.*
@@ -142,7 +139,7 @@ libraries in GNOME can access the user's online accounts.
 %files -n typelib-1_0-Goa-1_0
 %{_libdir}/girepository-1.0/Goa-1.0.typelib
 
-%files -n libgoa-backend-1_0-1
+%files -n libgoa-backend-1_0-2
 %{_libdir}/libgoa-backend-1.0.so.*
 
 %files devel
