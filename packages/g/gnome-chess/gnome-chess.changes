@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Mar 15 14:37:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 12 15:35:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + Highlight relevant pieces when king is checked.
+  + Change keyboard shortcut for viewing previous/next moves.
+  + Change tooltips to follow HIG guidelines.
+  + Improve style of message dialogs.
+  + Fix "Time Limit" not translated in new game window.
+  + Improvements to main menu.
+  + Improve shortcut names in help overlay.
+  + Updated appstream metainfo.
+  + Fix broken links in user help.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 17 15:47:25 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.2:
