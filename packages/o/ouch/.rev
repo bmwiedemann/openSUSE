@@ -105,4 +105,12 @@
   * Explicitly declare feature flags use_zlib &amp; use_zstd_thin #564</comment>
     <requestid>1131277</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8e2ad5af4570ae4e717025d90ff71d43</srcmd5>
+    <version>0.5.1+0</version>
+    <time>1710965934</time>
+    <user>dimstar_suse</user>
+    <comment>- Filter dependencies for vendor tarball</comment>
+    <requestid>1159891</requestid>
+  </revision>
 </revisionlist>
