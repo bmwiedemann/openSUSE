@@ -166,4 +166,12 @@
   * docs: Update documentation and assets (#4354) (forwarded request 1146966 from jfkw)</comment>
     <requestid>1146967</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ecfea22cdc8ae65497f98a65d9081f72</srcmd5>
+    <version>1.57.0</version>
+    <time>1710965886</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.57.0 with packaging improvements. (forwarded request 1159747 from jfkw)</comment>
+    <requestid>1159748</requestid>
+  </revision>
 </revisionlist>
