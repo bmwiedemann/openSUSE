@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.33
+Version:        0.34
 Release:        0
 Summary:        Cryptography Primitives sink
 License:        BSD-3-Clause
