@@ -20,7 +20,7 @@
 %global sover   14
 %global flavor @BUILD_FLAVOR@%{nil}
 Name:           nghttp2
-Version:        1.59.0
+Version:        1.60.0
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 2 in C
 License:        MIT
@@ -93,8 +93,6 @@ HTTP/2 client, server and proxy.
 
 %prep
 %setup -q -n nghttp2-%{version}
-# fix python shebang
-sed -i -e 's:#!%{_bindir}/env python:#!%{_bindir}/python3:g' script/fetch-ocsp-response
 
 %build
 %configure \
@@ -108,12 +106,19 @@ sed -i -e 's:#!%{_bindir}/env python:#!%{_bindir}/python3:g' script/fetch-ocsp-r
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
+
 # Do not ship this
 rm -rf %{buildroot}%{_datadir}/doc/nghttp2
 
 # None of applications using these man pages are built.
 rm -rf %{buildroot}%{_mandir}/man1/* \
   doc/manual/html/.buildinfo
+
+# https://build.opensuse.org/request/show/1212476
+%if %{suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/fetch-ocsp-response
+%endif
+
 
 %check
 %make_build check
