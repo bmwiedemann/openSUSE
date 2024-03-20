@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Mon Mar 18 03:42:00 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.
+- Add discount2-disable_ldconfig.patch -- Disable ldconfig from
+  make install, post(un) scriptlets are the right place do this.
