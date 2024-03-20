@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar  5 14:02:45 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.25.0:
+  + Support for GNOME Shell 46
+  + Adjust build script to meson 0.59.0
+- Drop gnome-pomodoro-gnome46.patch
+
+-------------------------------------------------------------------
+Tue Feb 13 13:49:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gnome-pomodoro-gnome46.patch: mark extension compatible with
+  GNOME 46.
+- Use the boolean-dep for gnome-shell also in the BuildRequires
+  statement.
+
+-------------------------------------------------------------------
 Wed Jan 17 07:46:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix requires: use boolean dep to ensure gnome-shell >= 45 and
