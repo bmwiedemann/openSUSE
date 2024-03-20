@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Mar 19 07:45:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Stable release: no changes since 46.rc.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:51:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + cursors: fix windows build.
+  + cursors: reinstate some x11 cursor names.
+  + symbolic: thunderbolt, phone & export fixes.
+  + index.theme: remove duplicate entries .
+
+-------------------------------------------------------------------
+Thu Feb 29 07:43:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta+6:
+  + build: Reinstate symlinks from X11 cursor names to closest CSS
+    names.
+
+-------------------------------------------------------------------
+Mon Feb 12 15:31:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + cursors: clean up shapes, sync DND metaphors with macos.
+  + symbolic: revert about metaphor.
+  + symbolic: shared screen metaphor update.
+
+-------------------------------------------------------------------
+Tue Jan 23 14:28:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Create symlinks for hand2, xterm and left_ptr cursors
+  (glgo#GNOME/adwaita-icon-theme#274).
+
+-------------------------------------------------------------------
+Tue Jan 16 07:30:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + fullcolor: antialias 16x16 a little more.
+  + symbolic: replace filled silhouettes with outlines.
+  + cursors: only cover the CSS named.
+  + symbolic: help-about metaphor.
+  + symbolic: sync not-junk metaphor.
+  + symbolic: cleaned up export with Symbolic Preview.
+
+-------------------------------------------------------------------
 Mon Sep 18 11:41:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:

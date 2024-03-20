@@ -288,4 +288,12 @@
     <comment>New stable release (forwarded request 1111954 from iznogood)</comment>
     <requestid>1111966</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>cd5a4d417fc6dfcdf6b17c0e99342a81</srcmd5>
+    <version>46.0</version>
+    <time>1710965535</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1159247 from dimstar)</comment>
+    <requestid>1159519</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package adwaita-icon-theme
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           adwaita-icon-theme
-Version:        45.0
+Version:        46.0
 Release:        0
 Summary:        GNOME Icon Theme
 License:        CC-BY-SA-3.0 OR LGPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/adwaita-icon-theme
-Source0:        https://download.gnome.org/sources/adwaita-icon-theme/45/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  gtk3-tools >= 3.24.2
-BuildRequires:  meson
+BuildRequires:  meson >= 0.64.0
 BuildRequires:  pkgconfig
 # To make sure the icon theme cache gets generated
 Requires(post): (gtk3-tools if libgtk-3-0)
