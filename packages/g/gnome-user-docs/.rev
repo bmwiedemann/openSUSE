@@ -769,4 +769,12 @@ New stable release</comment>
     <comment></comment>
     <requestid>1119672</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>4ed5606e966092b6016700a8ba903874</srcmd5>
+    <version>46.0</version>
+    <time>1710965518</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158711 from dimstar)</comment>
+    <requestid>1159504</requestid>
+  </revision>
 </revisionlist>
