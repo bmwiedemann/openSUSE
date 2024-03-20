@@ -1,7 +1,7 @@
 #
 # spec file for package atkmm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libname  lib%{name}-2_36-1
 
 Name:           atkmm
-Version:        2.36.2
+Version:        2.36.3
 Release:        0
 Summary:        C++ Binding for the ATK library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only
@@ -114,7 +114,7 @@ chmod -x NEWS
 
 %files doc
 %license COPYING.tools
-%doc AUTHORS ChangeLog README.md
+%doc ChangeLog README.md
 %{_datadir}/devhelp/books/atkmm-%{base_ver}/
 %{_datadir}/doc/atkmm-%{base_ver}/
 # Avoid BuildRequires on devhelp

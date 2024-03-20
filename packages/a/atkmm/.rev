@@ -296,4 +296,21 @@
     <comment></comment>
     <requestid>1043383</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>876db95557d8da50fb1448a052e85b32</srcmd5>
+    <version>2.36.3</version>
+    <time>1710965757</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.36.3:
+  + Documentation:
+    - atkmm.h: Update link to ATK.
+    - Add README.win32.md with Win32 build documentation.
+    - Remove AUTHORS and add general information to README.md.
+  + Meson build:
+    - Detect if we build from a git subtree.
+    - Don't copy files with configure_file().
+    - Fix the evaluation of is_git_build on Windows.
+    - Don't fail if warning_level=everything.</comment>
+    <requestid>1159745</requestid>
+  </revision>
 </revisionlist>
