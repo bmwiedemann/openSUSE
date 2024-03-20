@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Mar 18 15:26:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 12:34:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 13 09:14:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + Depend on xdg-desktop-portal 1.18.2.
+  + Use modern Adwaita widgets thoroughly.
+  + Expose the org.gnome.desktop.calendar schema through the
+    Settings portal.
+  + Put all dialogs in separate window groups so they don't block
+    each other.
+  + Plug several memory leaks.
+  + Redesign the screencast screen picker.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Nov 26 16:48:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.1:
