@@ -33,4 +33,12 @@
     handled. (forwarded request 1119717 from iznogood)</comment>
     <requestid>1120254</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>485f01caeb6d4acbe2e36595ced9476d</srcmd5>
+    <version>0.6.0</version>
+    <time>1710965730</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158306 from dimstar)</comment>
+    <requestid>1159471</requestid>
+  </revision>
 </revisionlist>
