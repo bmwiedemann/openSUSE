@@ -139,4 +139,14 @@
     <comment>* Remove unit files, they are useless for dde (forwarded request 1156349 from hillwood)</comment>
     <requestid>1156350</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9f133324af1cf3c41aec84fb84131cd4</srcmd5>
+    <version>5.25.15</version>
+    <time>1710965803</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove useless Requires 
+
+- Don't limit breeze's version (forwarded request 1159676 from hillwood)</comment>
+    <requestid>1159677</requestid>
+  </revision>
 </revisionlist>

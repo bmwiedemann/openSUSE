@@ -15,8 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%global __requires_exclude qmlimport\\((org\\.kde\\.private\\.kcms\\.kwin\\.effects|org\\.kde\\.kcms\\.kwinrules|org\\.kde\\.kwin\\.private\\.overview|org\\.kde.kwin\\.private\\.desktopgrid|org\\.kde\\.KWin\\.Effect\\.WindowView|org\\.kde\\.kwin\\.kwinxwaylandsettings).*
-
 %global kf5_version 5.90.0
 %global qt5_version 5.15.0
 %global wayland (0%{?suse_version} >= 1330)
@@ -53,7 +51,7 @@ BuildRequires:  hwdata
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
-BuildRequires:  (cmake(Breeze) >= 5.9.0 with cmake(Breeze) < 6)
+BuildRequires:  cmake(Breeze) >= 5.9.0
 BuildRequires:  cmake(DWayland)
 BuildRequires:  (cmake(KDecoration2) >= %{_plasma5_version} with cmake(KDecoration2) < 6)
 BuildRequires:  cmake(KF5Activities) >= %{kf5_version}
@@ -140,7 +138,7 @@ BuildRequires:  pipewire-devel >= 0.3.29
 Recommends:     xorg-x11-server-wayland
 %endif
 # new default decoration
-Requires:       breeze5-decoration >= %{_plasma5_version}
+Requires:       breeze6-decoration >= %{_plasma5_version}
 # Needed to show dialogs
 Requires:       kdialog
 # Needed for effects KCM at runtime
@@ -152,6 +150,12 @@ Requires:       kitemmodels-imports
 %requires_eq    libQt5Gui5
 Provides:       windowmanager
 Provides:       deepin-kwin5
+Provides:       qt5qmlimport(org.kde.kcms.kwinrules.1)
+Provides:       qt5qmlimport(org.kde.kwin.2)
+Provides:       qt5qmlimport(org.kde.kwin.3)
+Provides:       qt5qmlimport(org.kde.kwin.private.overview.1)
+Provides:       qt5qmlimport(org.kde.milou.0)
+Provides:       qt5qmlimport(org.kde.private.kcms.kwin.effects.1)
 # For post and verifyscript
 Requires(post): permissions
 Requires(verify):permissions

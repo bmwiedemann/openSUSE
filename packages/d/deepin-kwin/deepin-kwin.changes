@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 18 14:47:07 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Remove useless Requires 
+
+-------------------------------------------------------------------
+Mon Mar 18 03:36:02 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Don't limit breeze's version 
+
+-------------------------------------------------------------------
 Tue Mar  5 13:12:05 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Make sure to pick kdecoration and breeze < 6 
