@@ -63,4 +63,14 @@
     pyasyncore.</comment>
     <requestid>1135641</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d54aeea5213ef51e560a9390c7ae4dbb</srcmd5>
+    <version>1.0.2</version>
+    <time>1710965819</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up the SPEC file
+- Really add dependency on pyasyncore
+</comment>
+    <requestid>1159683</requestid>
+  </revision>
 </revisionlist>

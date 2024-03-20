@@ -1,7 +1,7 @@
 #
 # spec file for package python-snimpy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,17 +33,18 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libsmi-devel
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module cffi >= 1.0.0}
-BuildRequires:  %{python_module pysnmp >= 5}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-# /SECTION
 Requires:       python-cffi >= 1.0.0
 Requires:       python-pysnmp >= 5
 Requires:       python-setuptools
+Requires:       (python-pyasyncore if python-base >= 3.12)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
+# SECTION test requirements
+BuildRequires:  %{python_module cffi >= 1.0.0}
+BuildRequires:  %{python_module pyasyncore if %python-base >= 3.12}
+BuildRequires:  %{python_module pysnmp >= 5}
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description

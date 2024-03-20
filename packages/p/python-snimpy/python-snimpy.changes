@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 15 17:11:26 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Fri Mar 15 15:39:11 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Really add dependency on pyasyncore
+
+-------------------------------------------------------------------
 Fri Dec 29 10:26:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.2:
