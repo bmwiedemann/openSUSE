@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 28 14:31:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix patch tag line.
+
+-------------------------------------------------------------------
 Thu Feb 15 13:20:14 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Explicitly require python311-packaging if python 3.11 is being

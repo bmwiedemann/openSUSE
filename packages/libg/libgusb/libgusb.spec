@@ -25,8 +25,7 @@ Group:          Development/Libraries/GNOME
 URL:            https://github.com/hughsie/libgusb
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM no-pkg-resources.patch gh#hughsie/libgusb#61 mcepl@suse.com
-# Don't rely on the obsolete version of pkg_resources
+# PATCH-FIX-UPSTREAM no-pkg-resources.patch gh#hughsie/libgusb#61 mcepl@suse.com -- Don't rely on the obsolete version of pkg_resources
 Patch0:         no-pkg-resources.patch
 BuildRequires:  meson
 BuildRequires:  pkgconfig
