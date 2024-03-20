@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Mar 18 07:49:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.14.0:
+  + Gdk:
+    - Display: Add supports_shadow_width(),
+      property_shadow_width().
+    - DmabufFormats: Add equal().
+    - Monitor: Add get/property_scale().
+  + Gtk:
+    - SpinButton: Add signal_activate().
+    - Accessible: Add announce().
+    - AccessibleText: New interface.
+    - Calendar: Add set/get_day(), set/get_month(), set/get_year().
+    - SearchEntry2: Add set/get/property_input_purpose(),
+      set/get/property_input_hints().
+  + Demos: Fix the TextView demo, ClickMe button.
+
+-------------------------------------------------------------------
+Thu Feb  1 16:17:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.13.3:
+  + Gdk, Gtk: Make enum bitwise operators constexpr.
+  + Gtk:
+    - FileLauncher: Add get/set/property_writable()
+    - Settings: Add property_gtk_show_status_shapes()
+   - SpinButton: Add get/set/property_activates_default()
+- Changes from version 4.13.2:
+  + Gdk: Gdk::DmabufTexture: Fix GType of
+    GDK_GL_TEXTURE to GDK_DMABUF_TEXTURE.
+  + Gtk:
+    - Widget: Add measure+get_preferred_size() overloads that
+      return structs.
+    - Widget: Add [[nodiscard]] on get_children().
+    - TreeIter: Fix operator=() missing return statement.
+    - Add SearchEntry2 not deriving Entry, to replace old
+      SearchEntry that erroneously does, whereas GtkSearchEntry is
+      no longer a GtkEntry in GTK4.
+    - Gtk::RecentInfo: Fix refcount of Glib::DateTime from
+      get_added() et al.
+    - TreeIter: Add fn docs, intro. Document pitfall with reference
+      from *rvalue_it.
+    - Window: Get an extra reference, if not managed.
+    - Add GraphicsOffload and enum GraphicsOffloadEnabled.
+- Changes from version 4.13.1:
+  + Gdk:
+    - Add DmabufFormats, DmabufTexture, DmabufTextureBuilder
+    - Display: Add get/property_dmabuf_formats().
+  + Gtk:
+    - ColumnView, GridView, ListView, Viewport: Add default values
+      on some method parameters.
+    - SignalListItemFactory: Add signals taking Glib::Object.
+    - TreePath: Add ctor and assignment taking const_iterator.
+    - Widget: Add get_children().
+    - Window: Deprecate present(guint32 timestamp).
+    - Add PrintDialog and PrintSetup.
+  + Updated documentations.
+
+-------------------------------------------------------------------
 Wed Sep 13 16:09:05 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.12.0:
