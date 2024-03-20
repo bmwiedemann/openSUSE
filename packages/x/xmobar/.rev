@@ -223,4 +223,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1146956</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>21c6f4e54eb8be24a5ef514d6cd57da3</srcmd5>
+    <version>0.47.4</version>
+    <time>1710965678</time>
+    <user>dimstar_suse</user>
+    <comment>Update Haskell ecosystem to GHC version 9.8.2.</comment>
+    <requestid>1157282</requestid>
+  </revision>
 </revisionlist>
