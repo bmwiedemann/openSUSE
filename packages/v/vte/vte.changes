@@ -1,4 +1,233 @@
 -------------------------------------------------------------------
+Mon Mar 18 16:14:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.76.0:
+  + gtk3: draw: minifont: Don't do minifont caching.
+  + widget: Add im_activate_osk() method.
+  + widget: Activate OSK on button release.
+
+-------------------------------------------------------------------
+Mon Mar 18 16:14:24 UTC 2024 - dimstar@opensuse.org
+
+- Update to version 0.76.0:
+  * build: Version 0.76.0
+  * build: Bump gtk4 req version
+  * widget: Activate OSK on button release
+  * widget: Add im_activate_osk() method
+  * gtk3: draw: minifont: Don't do minifont caching
+  * build: Post release version bump
+
+-------------------------------------------------------------------
+Mon Mar  4 08:54:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.75.92:
+  + widget: Make backwards search find wrapped words.
+  + widget: Bit of cleanup around the previous fix.
+  + widget: gtk4: Fix double and triple click handling.
+  + widget: Faster rewrapping on resize.
+  + lib: Remember the Terminal in ProcessingContext.
+  + lib: Batch handling of single-width characters.
+  + ring: Only occasionally advance the stream tails.
+  + widget: gtk4: Fix the look of outline block cursor in the first
+    column.
+  + vte.sh: Avoid warning if shell is configured with 'set -u'.
+  + widget: a11y: Add missing text changes on scrolling with
+    modifications.
+
+-------------------------------------------------------------------
+Mon Mar 04 08:54:17 UTC 2024 - dimstar@opensuse.org
+
+- Update to version 0.75.92:
+  * fonts: Allow unknown coverage to silently pass through
+  * widget: Fix end alignment
+  * app: Rework argument parsing
+  * widget: gtk4: Fix the look of outline block cursor in the first column
+  * ringview: inline get_bidirow()
+  * bidi: inline log2vis() and vis2log()
+  * terminal: inline hot path of cell_is_selected_log()
+  * terminal: annotate unlikely paths in determine_colors()
+  * terminal: remove determine_colors() invisible check
+  * Revert "widget: Limit select-all to the writable region not including the scrollback"
+  * vte.sh: Avoid warning if shell is configured with 'set -u'
+  * widget: Set scroll-on-insert to false by default
+  * scheduler: add 10hz fallback scheduler
+  * widget: Try to fix a build failure on 32-bit archs
+  * ring: Only occasionally advance the stream tails
+  * lib: Batch handling of single-width characters
+  * lib: Remember the Terminal in ProcessingContext
+  * widget: Faster rewrapping on resize
+  * widget: gtk4: Fix double and triple click handling
+  * widget: Bit of cleanup around the previous fix
+  * widget: Make backwards search find wrapped words
+  * Revert "build: Remove extra debug compile option"
+  * widget: a11y: Add missing text changes on scrolling with modifications
+  * widget: Add type annotation to setup-context-menu signal
+  * build: Post release version bump
+
+---------------------------------------------------------------
+Mon Feb 12 16:07:17 UTC 2024 - dimstar@opensuse.org
+
+- Update to version 0.75.91:
+  * vte.sh: Consistent indentation
+  * vte.sh: Set up bash and zsh for OSC 133 shell integration
+  * emulation: Support conditional new paragraph
+  * emulation: Track shell integration escape sequences
+  * lib: Remove pointless "maybe" in some method names
+  * all: Remove SIXEL support from stable branch
+  * widget: Remove termprops from stable branch
+  * widget: termprops: Reset termprops on terminal reset
+  * widget: termprops: Rewrite termprop documentation
+  * widget: termprops: Unify int types
+  * widget: Fix HTML CSS property "text-decoration-style: solid"
+  * widget,emulation: Add support for dotted and dashed underlines
+  * widget: termprops: Relax boolean value parsing
+  * widget: termprops: String value parsing fixes
+  * widget: termprops: Add some more tests
+  * widget: termprops: Allow true/false for BOOL termprops
+  * widget: termprops: Add DOUBLE type
+  * emulation: Allow default parameter value for XTVERSION
+  * emulation: Support XTVERSION sequence
+  * emulation: Reply to DECRQPSR and DECRQTSR
+  * emulation: More accurate DA1 and DA2 replies
+  * widget: Renumber VterAlign enum
+  * emulation: Also reply to DECRQSS on XTERM_MODKEYS
+  * emulation: Remove xterm alias for DSR_DEC 53
+  * widget: Add terminal properties
+  * lib: Add some colour helper classes
+  * lib: Add a simple UUID class
+  * widget: Don't throw warnings for our own header
+  * gsk: fix rectangle drawing using border nodes
+  * widget: Fix context menu event check
+  * widget: notify of style change upon css_changed
+
+-------------------------------------------------------------------
+Tue Jan 16 14:08:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.75.0:
+  * regex: Add out param for error location to the _full() APIs
+  * widget: Don't update the ringview before scrolling in history
+  * regex: Add API to set extra PCRE2 compile flags
+  * widget: Scroll to the bottom on preedit
+  * widget: Deprecate old get-text APIs
+  * widget: Add bindable replacement API to get the displayed text
+  * widget: gtk4: Delay unsetting the context menu to idle
+  * widget: Work around kinetic scrolling when changing the adjustment
+  * app: Add more scrolling options
+  * widget: Add scroll-on-insert property
+  * bidi: Use malloced workspace area
+  * widget: Fix initial cursor blink state
+  * widget: Fix selected text API with block selection mode
+  * draw: Remove unused alpha param from drawing methods
+  * widget: Add class vfunc for setup-context-menu signal
+  * vte: avoid creating rect/region on GTK 4
+  * vte: remove extra PTY read from tick callback
+  * vte: emit adjustment changed in tick callback
+  * Reapply "vte: drive updates from GdkFrameClock"
+  * widget: gtk4: Add long press touch gesture
+  * lib: Inline the Unicode character width database
+  * ring: Fix error handling in the rewrapping code
+  * stream: Add debug assertions verifying the snake's integrity
+  * stream: Fix a rare corruption when advancing the tail
+  * DOAP: Replace defunct mailing list with Discourse support forum
+  * Revert "vte: drive updates from GdkFrameClock"
+  * widget: Add context menu support
+  * draw: Add some constexpr to Rectangle methods
+  * widget: Improve yalign docs
+  * build: Suppress a warning about an unused variable in non-debug mode
+  * lib: Do not initialize cells before inserting characters
+  * lib: Fix lines unwrapping too far
+  * lib: Speed up inserting runs of ASCII characters
+  * lib: Simplify invalidation bounding box tracking
+  * emulation: Fix cursor position after an escape sequence initiated resize
+  * lib: Remove unnecessary "struct"s
+  * emulation: Save/restore along with the cursor whether wrapping will occur
+  * emulation: Make ED 2 and EL 2 clear the pending wrap flag
+  * emulation: Make DA1 report horizontal scrolling support
+  * emulation: Fix ECH not to expand the row beyond the terminal's width
+  * emulation: Make DECCOLM and DECALN reset the scrolling region
+  * emulation: Adjust Cursor Position Report (CPR) for left and right margins
+  * emulation: Implement Forward Index (DECFI) and Back Index (DECBI)
+  * emulation: Implement Insert Column (DECIC) and Delete Columnn (DECDC)
+  * emulation: Adjust IRM mode for left and right margins
+  * emulation: Adjust Insert Character (ICH) and Delete Character (DCH)
+  * emulation: Implement Scroll Left (SL) and Scroll Right (SR)
+  * emulation: Minor cleanup at smart tab handling
+  * emulation: Adjust cursor moving operations to respect left and right margins
+  * emulation: Shuffle a few methods to a more logical order
+  * emulation: Adjust vertical scrolling to respect left and right margins
+  * doc: Add scrolling-region.txt
+  * emulation: Adjust cursor tracking and autowrapping for the right margin
+  * emulation: Execute SCORC even when DECLRMM is enabled
+  * emulation: Track DECSLRM left and right margins
+  * emulation: Fix the behavior if invalid scrolling region is requested
+  * emulation: Scroll Up (SU) and Delete Line (DL) push to the scrollback
+  * emulation: Disregard bce in the scrolling region
+  * emulation: Extend vte_scrolling_region to track all four margins
+  * emulation: Rename start/end margins to top/bottom
+  * emulation: Preserve empty cells as NULs when computing DECRQCRA checksum
+  * widget: Remove an unused parameter of get_text()
+  * bindings: vala: Depend on graphene-gobject-1.0
+  * build: Silence deprecation warnings
+  * drawing-gsk: fix a potential crash with empty runs
+  * vte: drive updates from GdkFrameClock
+  * emulation: Also use invisible bit for DECRQCRA checksum
+  * emulation: Correct DECRQCRA negation
+  * emulation: make DECRQCRA behave as VT520
+  * parser: modes: Additions from recent xterm
+  * build: Fix compile in debug mode
+  * debug: use vte_assert_cmp* functions
+  * bidi: reuse char and index arrays across runs
+  * terminal: require caller to allocate GString for get_text()
+  * vteinternal: use specialized array for char attributes
+  * draw: minifont: Only pad character where necessary
+  * draw: minifont: Fix drawing of diagonals
+  * draw: Style fixes
+  * draw: Include drawing-context.hh not drawing-cairo.hh
+  * draw: Use a named constant
+  * draw: implement native GTK 4 drawing
+  * draw:minifont: Add comment to the LR and RL hatching patterns
+  * Update Greek translation
+  * minifont: remove unused attr parameter
+  * vtetypes: add GdkRGBA conversion utility
+  * app: avoid using Cairo fallback nodes on GTK 4
+  * build: bump GTK requirement to 4.12
+  * draw: minifont: Fix lr/rl hatching pattern to tile seamlessly
+  * vte: batch printable character insertion
+  * parser: move vte_parser_t into vte::parser::Parser
+  * rowdata: use std::fill_n()
+  * build: Fix the build with sixel enabled
+  * ring, fonts: use g_string_truncate() to reset string
+  * build: compile out assertions and cast-checks
+  * ring: remove VteRing C wrapper for vte::base::Ring
+  * ring: inline vte::base::Ring::index_writable()
+  * ring: inline vte::base::Ring::ensure_writable()
+  * unistr: fix typo in gtk-doc
+  * utf8: Add some more tests
+  * unistr: inline unichar into GString as UTF-8
+  * unichar: hoist common unichar width into caller
+  * stream: switch compression from zlib to LZ4
+  * unistr: hoist _vte_unistr_strlen() into caller
+  * unistr: hoist g_string_append_unichar() into caller
+  * bidi: add VteBidiIndexes array using GdkArrayImpl
+  * bidi: add VteBidiChars array of gunichar
+  * import GdkArrayImpl for fast arrays
+  * build-aux: add flatpak manifest for testing from Builder
+  * ci: Only upload docs for tags
+  * Revert "widget: a11y: Add missing text changes on scrolling with modifications"
+  * Revert "widget: a11y: Optimize text changes on scrolling with modifications"
+  * widget: VteTerminalSpawnAsyncCallback's error is nullable
+  * widget: a11y: Optimize text changes on scrolling with modifications
+  * widget: Fix conditional
+  * widget: Fix conditional
+  * app: Correct option value description
+  * Revert "widget: Do not count event as handled in more situations"
+  * test: Add SGR 4:4 and 4:5 underlines to test script
+  * emulation: Ignore unknown SGR underline subparams
+  * widget: Correct "Since:" annotations
+  * lib: Fix preallocated size
+- Add pkgconfig(liblz4) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Sun Jan 14 09:04:08 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
 
 - Provide and Obsolete old typelib-1_0-Vte-2.91 package whose
