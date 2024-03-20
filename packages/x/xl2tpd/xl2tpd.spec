@@ -68,9 +68,7 @@ Xl2tpd is based on the 0.69 L2TP by Jeff McAdams <jeffm@iglou.com>
 It was de-facto maintained by Jacco de Leeuw <jacco2@dds.nl> in 2002 and 2003.
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -p0
 
 %build
 make %{?_smp_mflags} DFLAGS="%{optflags} -D_GNU_SOURCE $(getconf LFS_CFLAGS)"
