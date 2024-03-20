@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 19 09:55:38 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.13+kde4, rebased upstream:
+  * Doc: Replace dead link to external neard page
+  * Bump version to 5.15.13
+
+-------------------------------------------------------------------
 Fri Dec 29 13:13:26 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.12+kde6, rebased upstream:
