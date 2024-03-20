@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 19 16:18:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Enable chronyd: syncronized time is something nice to have.
+
+-------------------------------------------------------------------
 Fri Mar 15 10:24:24 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - list-kde: Drop konsole-part-lang to save some space

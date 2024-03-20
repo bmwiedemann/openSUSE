@@ -52,7 +52,7 @@ fi
 #--------------------------------------
 # enable and disable services
 
-for i in langset NetworkManager firewalld; do
+for i in langset NetworkManager firewalld chronyd; do
 	systemctl -f enable $i
 done
 
