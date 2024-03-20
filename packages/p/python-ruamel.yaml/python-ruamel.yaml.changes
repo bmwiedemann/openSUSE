@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Sat Mar 16 16:33:40 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.18.6:
+  * fixed an issue with dataclass loading when the fields were
+    collections (bug found as a result of a question by
+    [FibroMyAlgebra](https://stackoverflow.com/users/6855070/fibromyalgebra)
+    on
+    [StackOverflow](https://stackoverflow.com/a/77485786/1307905))
+  * fixed an issue loading dataclasses with `InitVar` fields when
+    `from __future__ import annotations` was used to delay
+    evaluation of typing.
+
+-------------------------------------------------------------------
+Sat Mar 16 16:27:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.18.5:
+  * there is some indication that dependent packages have been
+    pinned to use specific (tested) and just install the latest
+    even in Python versions that have end-of-life
+- update to 0.18.4:
+  * YAML() instance has a `doc_infos` attribute which is a
+    cumulative list of DocInfo instances (one for `load()`, one per
+    document for `load_all()`). DocInfo instances contain version
+    information (requested, directive) and tag directive
+    information
+  * fix issue that the YAML instance tags attribute was not reset
+    between documents, resulting in mixing of tag directives of
+    multiple documents. Now only provides tag directive information
+    on latest document after loading. This means tags for dumping
+    must be set **again** after a document is loaded with the same
+    instance. (because of this tags will be removed in a favour of
+    a different mechanism in the future)
+  * fix issue with multiple document intermixing YAML 1.2 and YAML
+    1.1, the VersionedResolver now resets
+  * fix issue with disappearing comment when next token was Tag
+    (still can't have both a comment before a tag and after a tag,
+    before node)
+
+-------------------------------------------------------------------
+Sat Mar 16 16:20:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.18.3:
+  * fix issue with spurious newline on first item after comment +
+    nested block sequence
+  * additional links in the metadata on PyPI (Reported, with
+    pointers how to fix, by
+      [Sorin](https://sourceforge.net/u/ssbarnea/profile/)).
+
+-------------------------------------------------------------------
+Sat Mar 16 14:52:34 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.18.2:
+  * calling the deprecated functions now raises an `AttributeError`
+    with the, somewhat more informative, orginal warning message.
+    Instead of calling `sys.exit(1)`
+
+-------------------------------------------------------------------
+Sat Mar 16 14:51:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.18.1:
+  * calling the deprecated functions now always displays the
+    warning message.  (reported by [Trend
+    Lloyd](https://sourceforge.net/u/lathiat2/profile/))
+
+-------------------------------------------------------------------
+Sat Mar 16 14:46:35 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.18.0:
+  * the **functions** `scan`, `parse`, `compose`, `load`, `emit`,
+    `serialize`, `dump` and their variants (`_all`, `safe_`,
+    `round_trip_`, etc) have been deprecated (the same named
+    **methods** on `YAML()` instances are, of course, still there.
+  * `YAML(typ='unsafe')` now issues a `PendingDeprecationWarning`.
+    This will become deprecated in the 0.18 series (probably before
+    the end of 2023).  You can use `YAML(typ='full')` to dump
+    unregistered Python classes/functions.  For loading you'll have
+    to register your classes/functions if you want the old, unsafe,
+    functionality. You can still load any tag, like
+    `!!python/name:posix.system', **safely** with the (default)
+    round-trip parser.
+  * fix for `bytes-like object is required not 'str' while dumping
+    binary streams`.  This was reported, analysed and a fix
+    provided by [Vit
+    Zikmund](https://sourceforge.net/u/tlwhitec/profile/)
+
+-------------------------------------------------------------------
+Sat Mar 16 14:44:21 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.17.40:
+  * flow style sets are now preserved ( `!!set {a, b, c} )`. Any
+    values specified when loading are dropped, including `!!null
+    ""`.
+  * potential workaround for issue 484: the
+    long_description_content_type including the variant
+    specification `CommonMark` can result in problems on Azure. If
+    you can install from `.tar.gz` using
+    `RUAMEL_NO_LONG_DESCRIPTION=1 pip install ruamel.yaml
+    --no-binary :all:` then the long description, and its offending
+    type, are nog included (in the METADATA).  (Reported by [Coury
+    Ditch](https://sourceforge.net/u/cmditch/profile/))
+  * links in documentation update (reported by [David
+    Hoese](https://sourceforge.net/u/daveydave400/profile/))
+  * Added some `__repr__` for internally used classes
+
+-------------------------------------------------------------------
+Sat Mar 16 14:34:33 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.17.39 (skipping non-existent releases .37 and .38):
+  * update README generation, no code changes
+
+-------------------------------------------------------------------
+Sat Mar 16 14:30:21 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.17.36:
+  * fixed issue 480, dumping of a loaded empty flow-style mapping with comment failed
+    (Reported by [Stéphane Brunner](https://sourceforge.net/u/stbrunner/profile/))
+  * fixed issue 482, caused by DEFAULT_MAPPING_TAG having changes to being a `Tag()`
+    instance, not a string (reported by [yan12125](https://sourceforge.net/u/yan12125/profile/))
+  * updated documentation to use mkdocs
+
+-------------------------------------------------------------------
 Wed Oct  4 07:57:03 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.17.35
@@ -10,7 +131,7 @@ Wed Oct  4 07:57:03 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
  * added `flow_seq_start`, `flow_seq_end`, `flow_seq_separator`,
     `flow_map_start`, `flow_map_end`, `flow_map_separator` **class**
     attributes to the `Emitter` class so flow style output
-    can more easily be influenced 
+    can more easily be influenced
 
 -------------------------------------------------------------------
 Thu Jun  1 05:46:10 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
