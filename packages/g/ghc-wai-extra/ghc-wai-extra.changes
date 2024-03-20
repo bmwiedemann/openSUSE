@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 12 06:29:36 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update wai-extra to version 3.1.14.
+  ## 3.1.15
+
+  * Request parsing throws an exception rather than `error`ing [#964](https://github.com/yesodweb/wai/pull/964):
+      * Add `RequestParseException` type and expose it from the `Network.Wai.Parse` module.
+      * Behavior change : `parseRequestBody` and `parseRequestBodyEx` (exported from `Network.Wai.Parse`) throw `RequestParseException` rather than calling `error`.
+
+  ## 3.1.14.0
+
+  * `defaultGzipSettings` now exported to not depend on `Data.Default` [#959](https://github.com/yesodweb/wai/pull/959)
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:59 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
