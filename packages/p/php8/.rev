@@ -684,4 +684,13 @@
   * Use the --with-system-ciphers configure option. (forwarded request 1155517 from pmonrealgonzalez)</comment>
     <requestid>1155742</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>b45025a1437bc7e1f5e6c2a1bd2c108d</srcmd5>
+    <version>8.2.17</version>
+    <time>1710965386</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.2.17
+  * This is a bug fix release.</comment>
+    <requestid>1159219</requestid>
+  </revision>
 </revisionlist>

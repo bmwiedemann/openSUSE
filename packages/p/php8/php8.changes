@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 19 06:04:43 UTC 2024 - pgajdos@suse.com
+
+- version update to 8.2.17
+  * This is a bug fix release.
+
+-------------------------------------------------------------------
 Wed Mar  6 09:57:38 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Use the system default cipher list instead of hardcoded values
