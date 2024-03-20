@@ -1228,4 +1228,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1138768</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>2e967b6fd1e0f362edcabf03e3c89326</srcmd5>
+    <version>0.76.0</version>
+    <time>1710965532</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1159091 from dimstar)</comment>
+    <requestid>1159517</requestid>
+  </revision>
 </revisionlist>
