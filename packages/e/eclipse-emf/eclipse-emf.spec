@@ -37,6 +37,7 @@ Source1:        https://git.eclipse.org/c/xsd/org.eclipse.xsd.git/snapshot/org.e
 Patch0:         0001-Remove-dependency-on-nebula.patch
 # Remove test that requires internet connection
 Patch1:         0002-Remove-test-that-requires-talking-to-the-internet.patch
+Patch2:         eclipse-emf-CVE-2023-4218.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  xz
@@ -126,6 +127,7 @@ mv org.eclipse.xsd-%{xsd_tag}/ org.eclipse.xsd/
 
 %patch -P 0 -p1
 %patch -P 1 -p1
+%patch -P 2 -p1
 
 pushd org.eclipse.emf
 

@@ -55,4 +55,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148560</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>bff3b3144a8eecd409bbed7a5050c122</srcmd5>
+    <version>2.22.0</version>
+    <time>1710965944</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1216992 (CVE-2023-4218)</comment>
+    <requestid>1159912</requestid>
+  </revision>
 </revisionlist>
