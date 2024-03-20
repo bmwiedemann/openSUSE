@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Mar 20 04:30:55 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.13:
+  * Implement uninstiated columns for faster and more memory-efficient
+    splitting
+  * UninstantiatedColumn now passes unit tests 
+  * Fix instantiated splitting of uninstantiated columns
+  * Fixes for multiprocessing 
+  * _blink_points() now finds blinks after a long one
+  * blinkreconstruct: use std to detect blink offset
+  * Avoid recursion errors in blink reconstruction
+  * blinkreconstruct: fix missing array return
+  * blinkreconstruct: better way to avoid infinite recursion
+  * blinkreconstruct: unbreak reconstruction of good signals
+  * stack_multiprocess: fix race-condition where output files could
+    overwrite each other
+  * blinkreconstruct: don't initialize processed_blink_points with empty list
+  * Fix ops.groupby() for multidimensional columns
+  * Allow MultiDimensionalColumns in mapping functions in series module 
+- Switch to pyproject macros. 
+- Sort out Requires vs Recommends.
+- Split out docs into a seperate package.
+
+-------------------------------------------------------------------
 Fri Apr 14 05:06:48 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.0.2:

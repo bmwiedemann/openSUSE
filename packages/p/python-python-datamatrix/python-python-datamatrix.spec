@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-datamatrix
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,16 @@
 
 
 Name:           python-python-datamatrix
-Version:        1.0.2
+Version:        1.0.13
 Release:        0
 Summary:        A python library to work with tabular data
 License:        GPL-3.0-or-later
 URL:            https://github.com/open-cogsci/python-datamatrix
 Source:         https://github.com/open-cogsci/python-datamatrix/archive/release/%{version}.tar.gz#/python-datamatrix-release-%{version}.tar.gz
+BuildRequires:  %{python_module PrettyTable}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module fastnumbers}
+BuildRequires:  %{python_module flit-core >= 3.4}
 BuildRequires:  %{python_module json_tricks}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module nibabel}
@@ -32,28 +34,38 @@ BuildRequires:  %{python_module nilearn}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module openpyxl}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tomlkit}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Recommends:     python-PrettyTable
+Requires:       python-PrettyTable
+Requires:       python-json_tricks
+Requires:       python-numpy
+Requires:       python-openpyxl
+Requires:       python-psutil
+Requires:       python-scipy
+Requires:       python-tomlkit
 Recommends:     python-fastnumbers
-Recommends:     python-json_tricks
 Recommends:     python-matplotlib
 Recommends:     python-nibabel
 Recommends:     python-nilearn
-Recommends:     python-numpy
-Recommends:     python-openpyxl
 Recommends:     python-pandas
-Recommends:     python-scipy
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
 The datamatrix package provides a high way to work with tabular data in Python.
 Tabular data is datasets that consist of named columns and numbered rows.
+
+%package -n %{name}-doc
+Summary:        Documentation for %{name}
+Provides:       %{python_module python-datamatrix-doc = %{version}}
+
+%description -n %{name}-doc
+Documentation and examples for %{name}.
 
 %prep
 %setup -q -n datamatrix-release-%{version}
@@ -61,10 +73,10 @@ Tabular data is datasets that consist of named columns and numbered rows.
 sed -i 's/\r$//' doc-pelican/data/fratescu-replication-data-exp1.csv
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -77,10 +89,13 @@ fi
 %files %{python_files}
 %license copyright
 %doc readme.md
+%{python_sitelib}/datamatrix/
+%{python_sitelib}/datamatrix-%{version}.dist-info
+
+%files -n %{name}-doc
+%license copyright
 %doc doc-pelican/content/pages/*
 %doc doc-pelican/data/
 %doc doc-pelican/include/api
-%{python_sitelib}/datamatrix/
-%{python_sitelib}/datamatrix-%{version}*-info
 
 %changelog
