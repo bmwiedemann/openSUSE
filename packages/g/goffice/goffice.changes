@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 12 16:43:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.10.57:
+  + Excise long double parts of ryu unless --with-long-double.
+  + Fix various go_dtoa issues.
+  + Introspection fixes.
+  + New experimental --with-decimal64 for base-10 math.
+- Switch to _service checkout: prepare for easier updates.
+- Add libtool and gtk-doc BuildRequires and call autogen.sh in
+  build phase: needed, as the git checkout needs to be
+  bootstrapped.
+
+-------------------------------------------------------------------
 Mon Nov  6 14:04:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Stop building i586 architecture, add ExcludeArch.

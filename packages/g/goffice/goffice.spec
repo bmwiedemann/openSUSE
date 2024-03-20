@@ -1,7 +1,7 @@
 #
 # spec file for package goffice
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,19 @@
 
 
 Name:           goffice
-Version:        0.10.56
+Version:        0.10.57
 Release:        0
 Summary:        GLib/GTK+ Set of Document-Centric Objects and Utilities
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/GUI/GNOME
 URL:            http://www.gnumeric.org/
-Source:         https://download.gnome.org/sources/goffice/0.10/%{name}-%{version}.tar.xz
+Source:         0.10/%{name}-%{version}.tar.zst
 BuildRequires:  fdupes
 BuildRequires:  ghostscript-devel >= 9.06
+BuildRequires:  gtk-doc
 BuildRequires:  intltool
 BuildRequires:  libgsf-devel >= 1.14.24
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(cairo-pdf) >= 1.10.0
@@ -47,7 +49,7 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.12
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(pango) >= 1.24.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.24.0
-# https://gitlab.gnome.org/GNOME/goffice/-/issues/70            
+# https://gitlab.gnome.org/GNOME/goffice/-/issues/70
 ExcludeArch:    %{ix86}
 
 %description
@@ -100,9 +102,10 @@ goffice.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 %configure \
     --disable-static\
     --enable-introspection
@@ -140,10 +143,6 @@ mkdir -p %{buildroot}%{_libdir}/goffice/0.10/plugins
 %{_libdir}/libgoffice-0.10.so
 %{_libdir}/pkgconfig/libgoffice-0.10.pc
 %{_datadir}/gir-1.0/GOffice-0.10.gir
-# Own these repositories to not depend on gtk-doc while building:
-%dir %{_datadir}/gtk-doc
-%dir %{_datadir}/gtk-doc/html
-%doc %{_datadir}/gtk-doc/html/goffice-0.10/
 
 %files lang -f %{name}-%{version}.lang
 
