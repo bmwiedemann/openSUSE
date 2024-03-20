@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Feb 19 17:35:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.41.3:
+  + Fixed daemon buffer overflow.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 16 12:40:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert to source service for easier updating.
+- Add libtool, gtk-doc, makeinfo and util-linux-systemd
+  BuildRequires and call autogen.sh: git checked out sources are
+  not bootstrapped.
+
+-------------------------------------------------------------------
+Sun Oct 15 15:14:59 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.41.2:
+  + Change disk example read/write unit to bytes
+  + Fixed potential Buffer overflow when reading disk stats
+  + Changed disk read/write unit to bytes in example
+- Changes from version 2.41.1:
+  + Skip loop and rom devices
+  + Allow building with gettext >= 0.20
+  + Updated translations.
+- Replace glib2-devel with pkgconfig(glib-2.0) BuildRequires: Align
+  with what configure checks for.
+- Use autosetup and ldconfig_scriptlets macros.
+- Build the doc sub-package as noarch.
+- Add permissions PreReq and set_permissions and verify_permissions
+  macros in post and verifyscript sections.
+
+-------------------------------------------------------------------
 Mon Dec 19 08:45:11 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: there is no known consumer of the -32bit

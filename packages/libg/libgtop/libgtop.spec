@@ -1,7 +1,7 @@
 #
 # spec file for package libgtop
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,23 @@
 
 %define sover 11
 Name:           libgtop
-Version:        2.40.0
+Version:        2.41.3
 Release:        0
 Summary:        System status information library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://developer.gnome.org/libgtop/stable/
-Source:         https://download.gnome.org/sources/libgtop/2.40/%{name}-%{version}.tar.xz
-BuildRequires:  glib2-devel
+Source:         %{name}-%{version}.tar.zst
 BuildRequires:  gobject-introspection-devel
+BuildRequires:  gtk-doc
+BuildRequires:  libtool
+BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
+BuildRequires:  util-linux-systemd
+BuildRequires:  pkgconfig(glib-2.0) >= 2.6.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.26.0
 BuildRequires:  pkgconfig(xau)
+PreReq:         permissions
 
 %description
 A library that fetches information about the running system, such as
@@ -88,6 +93,7 @@ Group:          Development/Libraries/GNOME
 Requires:       libgtop-2_0-%{sover} = %{version}
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         /sbin/install-info
+BuildArch:      noarch
 
 %description doc
 A library that fetches information about the running system, such as
@@ -100,9 +106,10 @@ from /dev/kmem.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 %configure\
 	--disable-static
 %make_build
@@ -112,8 +119,7 @@ from /dev/kmem.
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
 
-%post -n libgtop-2_0-%{sover} -p /sbin/ldconfig
-%postun -n libgtop-2_0-%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgtop-2_0-%{sover}
 
 %preun doc
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}2.info.gz
@@ -121,11 +127,17 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %post doc
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}2.info.gz
 
+%post
+%set_permissions /usr/libexec/libgtop_server2
+
+%verifyscript
+%verify_permissions -e /usr/libexec/libgtop_server2
+
 %files lang -f %{name}.lang
 
 %files
-%{_bindir}/libgtop_daemon2
-%{_bindir}/libgtop_server2
+%{_libexecdir}/libgtop_server2
+%{_libexecdir}/libgtop_daemon2
 
 %files -n libgtop-2_0-%{sover}
 %license COPYING
@@ -140,7 +152,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/gir-1.0/GTop-2.0.gir
-%doc %{_datadir}/gtk-doc/html/libgtop/
 
 %files doc
 %{_infodir}/*.info*
