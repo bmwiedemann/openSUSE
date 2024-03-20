@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Mar 16 09:39:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 44.0+115:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 15:24:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 44.0+110:
+  + ui:
+    - Components.Inspector: fix missing icon
+    - Replace anchors title if looks like an URI
+    - Hide mark actions that are disabled
+  + client:
+    - ConversationList.View: Fix keyboard navigation
+    - tweaks for lower desktop resolutions
+    - components: Add a warning about enabling remote images
+    - Ensure conversation is loaded before replying
+    - Simpler notification messages
+  + treewide: Remove deprecated run_javascript()
+  + engine:
+    - Do not stop unread calculation if no id provided
+    - Mark operation as completed if folder already empty
+    - Ensure we try to connect again on connection error
+    - Filter duplicated mailboxes on LIST
+    - When opening a folder, sanitize remote unseen.
+    - If reply-to set, we have to honor it
+    - Reply all needs to reply to sender
+    - Do not stop delivering messages on error
+    - Don't use domain for EHLO if it's not FQDN
+- Add -Wno-error=return-type to CFLAGS: vala is notoriously bad in
+  creating good C code.
+
+-------------------------------------------------------------------
 Fri Aug 18 18:50:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package geary
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           geary
-Version:        44.1
+Version:        44.0+115
 Release:        0
 Summary:        An email reader for the GNOME desktop
 License:        BSD-2-Clause AND CC-BY-3.0 AND LGPL-2.1-or-later
@@ -82,6 +82,7 @@ may be read without having to navigate between messages.
 %autosetup -p1
 
 %build
+export CFLAGS="%{optflags} -Wno-error=return-type"
 %meson \
 	-Dprofile=release \
 	-Dvaladoc=disabled \
