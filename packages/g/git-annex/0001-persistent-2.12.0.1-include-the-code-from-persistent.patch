@@ -1,4 +1,4 @@
-From f2b75ec2d27a671d5074136bf3b1bab25e3562fb Mon Sep 17 00:00:00 2001
+From 58b3b46b517358295c7041a92ce135e7c8013eec Mon Sep 17 00:00:00 2001
 From: Peter Simons <simons@cryp.to>
 Date: Thu, 10 Aug 2023 15:39:56 +0200
 Subject: [PATCH] persistent >= 2.12.0.1 includes the code from
@@ -6,25 +6,19 @@ Subject: [PATCH] persistent >= 2.12.0.1 includes the code from
 
 persistent-template has been deprecated.
 ---
- Database/ContentIdentifier.hs | 3 ---
+ Database/ContentIdentifier.hs | 2 --
  Database/Export.hs            | 3 ---
  Database/Fsck.hs              | 3 ---
+ Database/ImportFeed.hs        | 3 ---
  Database/Keys/SQL.hs          | 3 ---
  git-annex.cabal               | 3 +--
- 5 files changed, 1 insertion(+), 14 deletions(-)
+ 6 files changed, 1 insertion(+), 16 deletions(-)
 
 diff --git a/Database/ContentIdentifier.hs b/Database/ContentIdentifier.hs
-index e847c00cce..be7673facc 100644
+index bbf67dcfb1..3a399f7765 100644
 --- a/Database/ContentIdentifier.hs
 +++ b/Database/ContentIdentifier.hs
-@@ -5,17 +5,14 @@
-  - Licensed under the GNU AGPL version 3 or higher.
-  -}
- 
--{-# LANGUAGE CPP #-}
- {-# LANGUAGE QuasiQuotes, TypeFamilies, TypeOperators, TemplateHaskell #-}
- {-# LANGUAGE OverloadedStrings, GADTs, FlexibleContexts, EmptyDataDecls #-}
- {-# LANGUAGE MultiParamTypeClasses, GeneralizedNewtypeDeriving #-}
+@@ -12,10 +12,8 @@
  {-# LANGUAGE RankNTypes #-}
  {-# LANGUAGE DataKinds, FlexibleInstances #-}
  {-# LANGUAGE UndecidableInstances #-}
@@ -36,7 +30,7 @@ index e847c00cce..be7673facc 100644
  module Database.ContentIdentifier (
  	ContentIdentifierHandle,
 diff --git a/Database/Export.hs b/Database/Export.hs
-index b9d9879da0..e51d852024 100644
+index 2f0da8b231..6de86c7925 100644
 --- a/Database/Export.hs
 +++ b/Database/Export.hs
 @@ -5,17 +5,14 @@
@@ -80,8 +74,30 @@ index cce5528100..2ff4eb6bb5 100644
  
  module Database.Fsck (
  	FsckHandle,
+diff --git a/Database/ImportFeed.hs b/Database/ImportFeed.hs
+index 2d44b0b9ea..84cd24bdab 100644
+--- a/Database/ImportFeed.hs
++++ b/Database/ImportFeed.hs
+@@ -6,17 +6,14 @@
+  - Licensed under the GNU AGPL version 3 or higher.
+  -}
+ 
+-{-# LANGUAGE CPP #-}
+ {-# LANGUAGE QuasiQuotes, TypeFamilies, TypeOperators, TemplateHaskell #-}
+ {-# LANGUAGE OverloadedStrings, GADTs, FlexibleContexts, EmptyDataDecls #-}
+ {-# LANGUAGE MultiParamTypeClasses, GeneralizedNewtypeDeriving #-}
+ {-# LANGUAGE RankNTypes #-}
+ {-# LANGUAGE DataKinds, FlexibleInstances #-}
+ {-# LANGUAGE UndecidableInstances #-}
+-#if MIN_VERSION_persistent_template(2,8,0)
+ {-# LANGUAGE DerivingStrategies #-}
+ {-# LANGUAGE StandaloneDeriving #-}
+-#endif
+ 
+ module Database.ImportFeed (
+ 	ImportFeedDbHandle,
 diff --git a/Database/Keys/SQL.hs b/Database/Keys/SQL.hs
-index 7fea5cf2bb..c9c7e020c1 100644
+index 2e40e39db3..6b36cd09d5 100644
 --- a/Database/Keys/SQL.hs
 +++ b/Database/Keys/SQL.hs
 @@ -5,17 +5,14 @@
@@ -103,10 +119,10 @@ index 7fea5cf2bb..c9c7e020c1 100644
  module Database.Keys.SQL where
  
 diff --git a/git-annex.cabal b/git-annex.cabal
-index 837680cbd5..893b816068 100644
+index 31e66f9f27..7bf1a8ae0c 100644
 --- a/git-annex.cabal
 +++ b/git-annex.cabal
-@@ -358,8 +358,7 @@ Executable git-annex
+@@ -247,8 +247,7 @@ Executable git-annex
     time (>= 1.5.0),
     old-locale,
     persistent-sqlite (>= 2.8.1),
@@ -117,5 +133,5 @@ index 837680cbd5..893b816068 100644
     microlens,
     aeson,
 -- 
-2.41.0
+2.42.0
 

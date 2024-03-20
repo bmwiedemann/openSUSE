@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Tue Feb 27 17:02:42 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20240227.
+  git-annex (10.20240227) upstream; urgency=medium
+
+    * importfeed: Added --scrape option, which uses yt-dlp to screen scrape
+      the equivilant of an RSS feed.
+    * importfeed --force: Don't treat it as a failure when an already
+      downloaded file exists. (Fixes a behavior change introduced in
+      10.20230626.)
+    * importfeed --force: Avoid creating duplicates of existing
+      already downloaded files when yt-dlp or a special remote was used.
+    * addurl, importfeed: Added --raw-except option.
+    * stack.yaml: Update to lts-22.9 and use crypton.
+    * assistant, undo: When committing, let the usual git commit
+      hooks run.
+    * Added annex.commitmessage-command config.
+    * pre-commit: Avoid committing the git-annex branch
+      (except when a commit is made in a view, which changes metadata).
+    * Pass --no-warnings to yt-dlp.
+
+   -- Joey Hess <id@joeyh.name>  Tue, 27 Feb 2024 12:58:30 -0400
+
+-------------------------------------------------------------------
+Mon Jan 29 18:12:40 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20240129.
+  git-annex (10.20240129) upstream; urgency=medium
+
+    * info: Added "annex sizes of repositories" table to the overall display.
+    * import: Sped up import from special remotes.
+    * import: Added --message/-m option.
+    * Support using commands that implement the Stateless OpenPGP command line
+      interface, as an alternative to gpg.
+      Currently only supported for encryption=shared special remotes,
+      when annex.shared-sop-command is configured.
+    * test: Test a specified Stateless OpenPGP command when
+      run with eg --test-git-config annex.shared-sop-command=sqop
+    * Improve disk free space checking when transferring unsized keys to
+      local git remotes.
+    * Added configs annex.stalldetection-download, annex.stalldetection-upload,
+      annex.bwlimit-download, annex.bwlimit-upload,
+      and similar per-remote configs.
+    * Improve annex.stalldetection to handle remotes that update progress
+      less frequently than the configured time period.
+    * external: Monitor file size when getting content from external
+      special remotes and use that to update the progress meter,
+      in case the external special remote program does not report progress.
+    * Added --expected-present file matching option.
+    * webapp: Added --port option, and annex.port config.
+    * assistant: When generating a gpg secret key, avoid hardcoding the
+      key algorithm and size.
+
+   -- Joey Hess <id@joeyh.name>  Mon, 29 Jan 2024 13:12:00 -0400
+
+  git-annex (10.20231227) upstream; urgency=medium
+
+    * migrate: Support distributed migrations by recording each migration,
+      and adding a --update option that updates the local repository
+      incrementally, hard linking annex objects to their new keys.
+    * pull, sync: When operating on content, automatically handle
+      distributed migrations.
+    * Added annex.syncmigrations config that can be set to false to prevent
+      pull and sync from migrating object content.
+    * migrate: Added --apply option that (re)applies all recorded
+      distributed migrations to the objects in repository.
+    * migrate: Support adding size to URL keys that were added with
+      --relaxed, by running eg: git-annex migrate --backend=URL foo
+    * When importing from a special remote, support preferred content
+      expressions that use terms that match on keys (eg "present", "copies=1").
+      Such terms are ignored when importing, since the key is not known yet.
+      Before, such expressions caused the import to fail.
+    * Support git-annex copy/move --from-anywhere --to remote.
+    * Make git-annex get/copy/move --from foo override configuration of
+      remote.foo.annex-ignore, as documented.
+    * Lower precision of timestamps in git-annex branch, which can reduce the
+      size of the branch by up to 8%.
+    * sync: Fix locking problems during merge when annex.pidlock is set.
+    * Avoid a problem with temp file names ending in "." on certian
+      filesystems that have problems with such filenames.
+    * sync, push: Avoid trying to send individual files to special remotes
+      configured with importtree=yes exporttree=no, which would always fail.
+    * Fix a crash opening sqlite databases when run in a non-unicode locale.
+      (Needs persistent-sqlite 2.13.3.)
+
+   -- Joey Hess <id@joeyh.name>  Wed, 27 Dec 2023 19:27:37 -0400
+
+  git-annex (10.20231129) upstream; urgency=medium
+
+    * Fix bug in git-annex copy --from --to that skipped files that were
+      locally present.
+    * Make git-annex copy --from --to --fast actually fast.
+    * Fix crash of enableremote when the special remote has embedcreds=yes.
+    * Ignore directories and other unusual files in .git/annex/journal/
+    * info: Added calculation of combined annex size of all repositories.
+    * log: Added options --sizesof, --sizes and --totalsizes that
+      display how the size of repositories changed over time.
+    * log: Added options --interval, --bytes, --received, and --gnuplot
+      to tune the output of the above added options.
+    * findkeys: Support --largerthan and --smallerthan.
+    * importfeed: Use caching database to avoid needing to list urls
+      on every run, and avoid using too much memory.
+    * Improve memory use of --all when using annex.private.
+    * lookupkey: Sped up --batch.
+    * Windows: Consistently avoid ending standard output lines with CR.
+      This matches the behavior of git on Windows.
+    * Windows: Fix CRLF handling in some log files.
+    * Windows: When git-annex init is installing hook scripts, it will
+      avoid ending lines with CR for portability. Existing hook scripts
+      that do have CR line endings will not be changed.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 29 Nov 2023 15:59:20 -0400
+
+-------------------------------------------------------------------
 Thu Nov 16 13:31:34 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update build dependencies for ghc-9.6.x.
