@@ -1,7 +1,7 @@
 #
 # spec file for package gedit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 %bcond_without  python_bindings
-%define api_ver 46
+%define api_ver 47
 
 Name:           gedit
-Version:        46.1
+Version:        46.1+135
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gedit
-Source0:        https://download.gnome.org/sources/gedit/46/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 # PATCH-FIX-OPENSUSE gedit-desktop.patch -- Adds more MIME types.
 Patch0:         gedit-desktop.patch
 # PATCH-FIX-OPENSUSE gedit-plugins-python-env.patch bjorn.lie@gmail.com -- Fix python env
@@ -129,7 +129,6 @@ This subpackage contains the header files for creating gedit plugins.
 %doc NEWS README.md
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/gedit
-%{_datadir}/metainfo/org.gnome.gedit.appdata.xml
 %{_datadir}/applications/*.desktop
 %{_datadir}/dbus-1/services/org.gnome.gedit.service
 # %%{_datadir}/gedit/gir-1.0/ lives in -devel
@@ -144,6 +143,8 @@ This subpackage contains the header files for creating gedit plugins.
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.spell.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.gschema.xml
+%{_datadir}/icons/hicolor/*/apps/*
+%{_datadir}/metainfo/org.gnome.gedit.metainfo.xml
 %dir %{_libdir}/gedit/
 %{_libdir}/gedit/libgedit-%{api_ver}.so
 %{_libdir}/gedit/girepository-1.0/
@@ -172,7 +173,6 @@ This subpackage contains the header files for creating gedit plugins.
 %{_libdir}/gedit/plugins/quickhighlight.plugin
 %{_libdir}/gedit/plugins/libquickhighlight.so
 %{_mandir}/man1/gedit.1%{?ext_man}
-%{_datadir}/icons/hicolor/*/apps/*
 
 %if %{with python_bindings}
 %files -n python3-gedit
