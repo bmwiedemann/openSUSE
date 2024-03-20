@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar 20 08:42:25 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.80:
+  * Added GeolocationFeatureCode tag
+  * Added XMP-acdsee-rs tags and a new XMP-xmpDM tag
+  * Added ACDSeeRegion2MWGRegion conversion to config_files/acdsee.config
+  * Added GPSAltitudeRef to XMP-iptcExt LocationDetails structure
+  * Added a couple of new FujiFilm tags and a new CropMode value
+  * Added conversion for XMP-aux:ApproximateFocusDistance "infinity"
+  * Improved Geolocation regular expressions to allow negative matches
+  * Improved accuracy of Geolocation distance/bearing calculations
+  * Changed structure of Geolocation database (now version 1.02)
+  * Minor change to key format for user-defined Geolocation name translations
+  * Fixed case/spacing of "C2PA" in some CBOR tag descriptions
+  * Fixed bug extracting binary data from EXR files
+  * API Changes:
+    + Added GeolocFeature option
+
+-------------------------------------------------------------------
 Mon Mar 18 07:57:13 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 12.79:
