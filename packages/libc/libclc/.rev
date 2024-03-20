@@ -220,4 +220,12 @@
     <comment>- let sle15-sp6 require llvm17/clang17</comment>
     <requestid>1128178</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>96a21ff821528e2e9a08b8f246644e57</srcmd5>
+    <version>0.2.0+llvm18.1.0</version>
+    <time>1710965412</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1158843</requestid>
+  </revision>
 </revisionlist>

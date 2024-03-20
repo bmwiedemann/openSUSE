@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar  9 22:30:18 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 18.1.0.
+  * Fix signed integer underflow in abs_diff.
+  * Teach prepare-builtins how to handle text-based IR.
+  * Add half implementation for erf/erfc.
+  * Add missing AMD gfx symlinks.
+
+-------------------------------------------------------------------
 Mon Nov 20 12:57:41 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - let sle15-sp6 require llvm17/clang17
