@@ -19,7 +19,7 @@
 %bcond_with test
 %{?sle15_python_module_pythons}
 Name:           python-Cython
-Version:        3.0.8
+Version:        3.0.9
 Release:        0
 Summary:        The Cython compiler for writing C extensions for the Python language
 License:        Apache-2.0
@@ -36,7 +36,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 Requires:       python-devel
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Conflicts:      python-Cython < 3
 Provides:       python-Cython3 = %{version}
 Obsoletes:      python-Cython3 < %{version}
