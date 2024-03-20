@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov  3 13:51:23 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update megaparsec to version 9.6.1.
+  ## Megaparsec 9.6.1
+
+  * Exposed `Text.Megaparsec.State`, so that the new functions (`initialState`
+    and `initialPosState`) can be actually imported from it. [PR
+    549](https://github.com/mrkkrp/megaparsec/pull/549).
+
+  ## Megaparsec 9.6.0
+
+  * Added the functions `initialState` and `initialPosState` to
+    `Text.Megaparsec.State`. [Issue
+    449](https://github.com/mrkkrp/megaparsec/issues/449).
+
+-------------------------------------------------------------------
 Sun Oct 15 17:38:44 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update megaparsec to version 9.5.0 revision 4.
