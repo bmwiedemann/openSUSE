@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 19 09:58:21 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.13+kde0, rebased upstream:
+  * Bump version to 5.15.13
+
+-------------------------------------------------------------------
 Tue Feb 13 00:07:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Fix subpackage %files
