@@ -18,11 +18,11 @@
 
 %define qt5_snapshot 1
 %define base_name libqt5
-%define real_version 5.15.12
-%define so_version 5.15.12
+%define real_version 5.15.13
+%define so_version 5.15.13
 %define tar_version qtgraphicaleffects-everywhere-src-%{version}
 Name:           libqt5-qtgraphicaleffects
-Version:        5.15.12+kde0
+Version:        5.15.13+kde0
 Release:        0
 Summary:        Qt 5 Graphical Effects
 # Legal: the 'tools' folder is not built.
