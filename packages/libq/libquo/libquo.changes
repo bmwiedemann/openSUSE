@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 18 16:56:29 UTC 2024 - Christoph Junghans <junghans@votca.org>
+
+- update to 1.4:
+  * Update to hwloc-2.10.0
+  * Change QUO_stringify_cbind's output format to list
+  * Remove unused typedef
+  * Fix comment in quo.h
+
+-------------------------------------------------------------------
 Fri Oct  1 06:09:22 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Use openmpi macros to always build with the default openmpi version.

@@ -18,7 +18,8 @@
 
 
 Name:           libquo
-Version:        1.3.1
+Version:        1.4
+%global sover   8
 Release:        0
 Summary:        A library for run-time tuning of process binding policies
 License:        BSD-3-Clause
@@ -37,11 +38,11 @@ for arbitrary process binding policies to be enacted and reverted
 during the execution as different computational phases are entered
 and exited, respectively.
 
-%package -n libquo7
+%package -n libquo%{sover}
 Summary:        A library for run-time tuning of process binding policies
 Group:          System/Libraries
 
-%description -n libquo7
+%description -n libquo%{sover}
 QUO is an API tailored for MPI/MPI+X codes that may benefit from
 evolving process binding policies during their execution. QUO allows
 for arbitrary process binding policies to be enacted and reverted
@@ -51,7 +52,7 @@ and exited, respectively.
 %package devel
 Summary:        Development headers and libraries for libquo
 Group:          Development/Libraries/C and C++
-Requires:       libquo7 = %{version}-%{release}
+Requires:       libquo%{sover} = %{version}-%{release}
 
 %description devel
 QUO is an API tailored for MPI/MPI+X codes that may benefit from
@@ -77,12 +78,11 @@ make %{?_smp_mflags}
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libquo7 -p /sbin/ldconfig
-%postun -n libquo7 -p /sbin/ldconfig
+%post -n libquo%{sover} -p /sbin/ldconfig
+%postun -n libquo%{sover} -p /sbin/ldconfig
 
-%files -n libquo7
-%defattr(-,root,root,0755)
-%{_libdir}/libquo.so.*
+%files -n libquo%{sover}
+%{_libdir}/libquo.so.%{sover}*
 
 %files devel
 %{_bindir}/quo-info
