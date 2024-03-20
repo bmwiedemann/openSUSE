@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb  1 16:26:43 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update git-lfs to version 1.2.2.
+  haskell-git-lfs (1.2.2) unstable; urgency=medium
+
+    * Expand aeson bounds to allow 2.2.x
+    * Expand text bounds to allow 2.1.x
+    * Expand bytestring boulds to allow 0.12
+
+   -- Joey Hess <id@joeyh.name>  Thu, 01 Feb 2024 12:25:41 -0400
+
+-------------------------------------------------------------------
 Fri Jun 23 17:54:46 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Add git-lfs at version 1.2.1.
