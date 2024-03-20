@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1136570</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1bc9374fb90f0e08b323b8498aad65cb</srcmd5>
+    <version>1.1</version>
+    <time>1710965697</time>
+    <user>dimstar_suse</user>
+    <comment>updated build info (forwarded request 1158442 from DocB)</comment>
+    <requestid>1159336</requestid>
+  </revision>
 </revisionlist>

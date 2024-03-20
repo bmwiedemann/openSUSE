@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 13 13:11:12 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- enable gcc13 for Leap 15
+
+-------------------------------------------------------------------
 Wed Jan  3 13:47:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use dist.zip related to version 1.1, not nightly build.

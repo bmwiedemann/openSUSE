@@ -2,7 +2,7 @@
 # spec file for package orthanc-ohif
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2023 Dr. Axel Braun <DocB@opensuse.org>
+# Copyright (c) 2023-2024 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,11 @@ Source1:        https://orthanc.uclouvain.be/downloads/linux-standard-base/ortha
 
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -64,7 +68,7 @@ The homepage of OHIF can be found at:
 https://ohif.org/
 
 %prep
-%setup -q -n OrthancOHIF-%{version}
+%autosetup -n OrthancOHIF-%{version}
 
 #OrthanPlugins may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web
@@ -73,7 +77,10 @@ mkdir OHIF
 unzip %{S:1} -d OHIF
 
 %build
-
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %cmake ../ \
        -DALLOW_DOWNLOADS=OFF \
        -DUSE_SYSTEM_GOOGLE_TEST=ON \
