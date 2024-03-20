@@ -8953,7 +8953,6 @@ unsorted:
   - javassist-demo 
   - javassist-javadoc 
   - javassist-manual 
-  - javazic 
   - jaxb-api 
   - jaxb-api-javadoc 
   - jaxen 
@@ -30444,12 +30443,14 @@ unsorted:
   - python312-PyAudio 
   - python312-PyAutoGUI 
   - python312-PyBindGen 
+  - python312-PyBrowserID 
   - python312-PyCBC 
   - python312-PyChart 
   - python312-PyChromecast 
   - python312-PyCondor 
   - python312-PyDispatcher 
   - python312-PyECLib 
+  - python312-PyFxA 
   - python312-PyGLM 
   - python312-PyGithub 
   - python312-PyHamcrest 
@@ -32047,6 +32048,7 @@ unsorted:
   - python312-jupyterlab-widgets 
   - python312-jwcrypto 
   - python312-k5test 
+  - python312-kafka-python 
   - python312-kaitaistruct 
   - python312-kasa 
   - python312-kazoo 
@@ -32580,7 +32582,9 @@ unsorted:
   - python312-pingparsing 
   - python312-pip 
   - python312-pip-api 
+  - python312-pip-licenses 
   - python312-pip-run 
+  - python312-pip-tools 
   - python312-pip-wheel 
   - python312-pipdeptree 
   - python312-pipreqs 
@@ -49498,7 +49502,6 @@ unsorted:
   - typst 
   - typst-bash-completion 
   - typst-fish-completion 
-  - tzdb 
   - u-boot-tools 
   - u3-tool 
   - uacme 
