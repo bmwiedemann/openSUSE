@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 19 09:55:36 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.13+kde0, rebased upstream:
+  * Blacklist tst_QBarSeries::mousehovered for sles-15
+  * Bump version to 5.15.13
+  * Update legend marker after setting label text
+
+-------------------------------------------------------------------
 Fri Dec 29 13:13:18 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.12+kde0, rebased upstream:
