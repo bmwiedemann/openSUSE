@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-indexer
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2021 Dr. Axel Braun <DocB@opensuse.org>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2021-2024 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,14 @@ Group:          Productivity/Graphics/Viewers
 Version:        1.0
 Release:        0
 URL:            http://orthanc-server.com
-Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-indexer/OrthancIndexer-%{version}.tar.gz
+Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancIndexer-%{version}.tar.gz
 
 BuildRequires:  cmake
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -39,9 +43,9 @@ BuildRequires:  libboost_system-devel >= 1.66
 BuildRequires:  libboost_thread-devel >= 1.66
 BuildRequires:  libcsv-devel
 BuildRequires:  libuuid-devel
-BuildRequires:  sqlite3-devel
 BuildRequires:  orthanc-devel
 BuildRequires:  orthanc-source
+BuildRequires:  sqlite3-devel
 BuildRequires:  unzip
 
 Requires:       orthanc
@@ -49,15 +53,17 @@ Requires:       orthanc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-Folder Indexer Plugin for Orthanc: It synchronizes automatically the 
+Folder Indexer Plugin for Orthanc: It synchronizes automatically the
 content of Orthanc with some filesystem.
 
-
 %prep
-%setup -q -n OrthancIndexer-%{version}
+%autosetup -n OrthancIndexer-%{version}
 
 %build
-
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %cmake .. \
        -DALLOW_DOWNLOADS=OFF \
        -DUSE_SYSTEM_GOOGLE_TEST=ON \

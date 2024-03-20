@@ -7,4 +7,13 @@
     <comment>initial submission</comment>
     <requestid>935699</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>47c808ff1d251d893366d6f0ce5346eb</srcmd5>
+    <version>1.0</version>
+    <time>1710965705</time>
+    <user>dimstar_suse</user>
+    <comment>- enable gcc13 for Leap 15
+</comment>
+    <requestid>1159610</requestid>
+  </revision>
 </revisionlist>
