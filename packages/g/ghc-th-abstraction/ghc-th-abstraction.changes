@@ -1,4 +1,171 @@
 -------------------------------------------------------------------
+Sat Sep 30 12:03:02 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update th-abstraction to version 0.6.0.0 revision 1.
+  ## 0.6.0.0 -- 2023.07.31
+  * Support building with `template-haskell-2.21.0.0` (GHC 9.8).
+  * Adapt to `TyVarBndr`s for type-level declarations changing their type from
+    `TyVarBndr ()` to `TyVarBndr BndrVis` in `template-haskell`:
+
+    * `Language.Haskell.TH.Datatype.TyVarBndr` now backports `type BndrVis = ()`,
+      as well as `BndrReq` and `BndrInvis` pattern synonyms. These make it
+      possible to write code involving `BndrVis` that is somewhat backwards
+      compatible (but do see the caveats in the Haddocks for `BndrInvis`).
+    * `Language.Haskell.TH.Datatype.TyVarBndr` also backports the following
+      definitions:
+      * The `type TyVarBndrVis = TyVarBndr BndrVis` type synonym.
+      * The `DefaultBndrFlag` class, which can be used to write code that is
+        polymorphic over `TyVarBndr` flags while still allowing the code to return
+        a reasonable default value for the flag.
+      * The `bndrReq` and `bndrInvis` definitions, which behave identically to
+        `BndrReq` and `BndrInvis`.
+    * `Language.Haskell.TH.Datatype.TyVarBndr` now defines the following utility
+      functions, which are not present in `template-haskell`:
+      * `plainTVReq`, `plainTVInvis`, `kindedTVReq`, and `kindedTVInvis`
+        functions, which construct `PlainTV`s and `KindedTV`s with particular
+        `BndrVis` flags.
+      * An `elimTVFlag`, which behaves like `elimTV`, but where the continuation
+        arguments also take a `flag` argument. (Note that the type of this
+        function is slightly different on old versions of `template-haskell`.
+        See the Haddocks for more.)
+      * A `tvFlag` function, which extracts the `flag` from a `TyVarBndr`. (Note
+        that the type of this function is slightly different on old versions of
+        `template-haskell`. See the Haddocks for more.)
+    * The types of the `dataDCompat` and `newtypeDCompat` functions have had
+      their `[TyVarBndrUnit]` arguments changed to `[TyVarBndrVis]`, matching
+      similar changes to `DataD` and `NewtypeD` in `template-haskell`.
+
+    Because `BndrVis` is a synonym for `()` on pre-9.8 versions of GHC, this
+    change is unlikely to break any existing code, provided that you build it
+    with GHC 9.6 or earlier. If you build with GHC 9.8 or later, on the other
+    hand, it is likely that you will need to update your existing code. Here are
+    some possible ways that your code might fail to compile with GHC 9.8, along
+    with some migration strategies:
+
+    * Your code passes a `TyVarBndrUnit` in a place where a `TyVarBndrVis` is now
+      expected in GHC 9.8, such as in the arguments to `dataDCompat`:
+
+      ```hs
+      import "template-haskell" Language.Haskell.TH
+      import "th-abstraction"   Language.Haskell.TH.Datatype (dataDCompat)
+
+      dec :: DecQ
+      dec = dataDCompat (pure []) d [PlainTV a ()] [] []
+        where
+          d = mkName "d"
+          a = mkName "a"
+      ```
+
+      With GHC 9.8, this will fail to compile with:
+
+      ```
+      error: [GHC-83865]
+          • Couldn't match expected type ‘BndrVis’ with actual type ‘()’
+          • In the second argument of ‘PlainTV’, namely ‘()’
+            In the expression: PlainTV a ()
+            In the third argument of ‘dataDCompat’, namely ‘[PlainTV a ()]’
+        |
+        | dec = dataDCompat (pure []) d [PlainTV a ()] [] []
+        |                                          ^^
+      ```
+
+      Some possible ways to migrate this code include:
+
+      * Use the `bndrReq` function or `BndrReq` pattern synonym in place of `()`,
+        making sure to import them from `Language.Haskell.TH.Datatype.TyVarBndr`:
+
+        ```hs
+        ...
+        import "th-abstraction" Language.Haskell.TH.Datatype.TyVarBndr
+
+        dec :: DecQ
+        dec = dataDCompat (pure []) d [PlainTV a bndrReq] [] []
+        -- Or, alternatively:
+        {-
+        dec = dataDCompat (pure []) d [PlainTV a BndrReq] [] []
+        -}
+          where
+            ...
+        ```
+      * Use the `plainTV` function from `Language.Haskell.TH.Datatype.TyVarBndr`,
+        which is now sufficiently polymorphic to work as both a `TyVarBndrUnit`
+        and a `TyVarBndrVis`:
+
+        ```hs
+        ...
+        import Language.Haskell.TH.Datatype.TyVarBndr
+
+        dec :: DecQ
+        dec = dataDCompat (pure []) d [plainTV a] [] []
+          where
+            ...
+        ```
+    * You may have to replace some uses of `TyVarBndrUnit` with `TyVarBndrVis`
+      in your code. For instance, this will no longer typecheck in GHC 9.8 for
+      similar reasons to the previous example:
+
+      ```hs
+      import "template-haskell" Language.Haskell.TH
+      import "th-abstraction"   Language.Haskell.TH.Datatype (dataDCompat)
+
+      dec :: DecQ
+      dec = dataDCompat (pure []) d tvbs [] []
+        where
+          tvbs :: [TyVarBndrUnit]
+          tvbs = [plainTV a]
+
+          d = mkName "d"
+          a = mkName "a"
+      ```
+
+      Here is a version that will typecheck with GHC 9.8 and earlier:
+
+      ```hs
+      ...
+      import "th-abstraction" Language.Haskell.TH.Datatype.TyVarBndr
+
+      dec :: DecQ
+      dec = dataDCompat (pure []) d tvbs [] []
+        where
+          tvbs :: [TyVarBndrVis]
+          tvbs = [plainTV a]
+
+          ...
+      ```
+    * In some cases, the `TyVarBndrUnit`s might come from another place in the
+      code, e.g.,
+
+      ```hs
+      import "template-haskell" Language.Haskell.TH
+      import "th-abstraction"   Language.Haskell.TH.Datatype (dataDCompat)
+
+      dec :: [TyVarBndrUnit] -> DecQ
+      dec tvbs = dataDCompat (pure []) d tvbs [] []
+        where
+          d = mkName "d"
+      ```
+
+      If it is not straightforward to change `dec`'s type to accept
+      `[TyVarBndrVis]` as an argument, another viable option is to use the
+      `changeTVFlags` function:
+
+      ```hs
+      ...
+      import "th-abstraction" Language.Haskell.TH.Datatype.TyVarBndr
+
+      dec :: [TyVarBndrUnit] -> DecQ
+      dec tvbs = dataDCompat (pure []) d tvbs' [] []
+        where
+          tvbs' :: [TyVarBndrVis]
+          tvbs' = changeTVFlags bndrReq tvbs
+
+          ...
+      ```
+
+    This guide, while not comprehensive, should cover most of the common cases one
+    will encounter when migrating their `th-abstraction` code to support GHC 9.8.
+
+-------------------------------------------------------------------
 Mon Jun 27 10:45:36 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update th-abstraction to version 0.5.0.0.
