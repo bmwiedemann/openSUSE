@@ -238,4 +238,13 @@
     <comment></comment>
     <requestid>1155543</requestid>
   </revision>
+  <revision rev="31" vrev="31">
+    <srcmd5>3b4ef1068e45b72dfc7fa2f4d6625163</srcmd5>
+    <version>unknown</version>
+    <time>1710965787</time>
+    <user>dimstar_suse</user>
+    <comment>- Install qemu-hw-usb-host to enable USB passthrough (bsc#1221538)
+- Install psmisc (provides killall for tests)</comment>
+    <requestid>1159644</requestid>
+  </revision>
 </revisionlist>

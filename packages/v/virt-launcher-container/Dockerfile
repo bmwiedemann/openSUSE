@@ -36,6 +36,8 @@ RUN zypper -n install \
               libvirt-daemon-driver-qemu \
               netcat \
               nftables \
+              psmisc \
+              qemu-hw-usb-host \
               qemu-hw-usb-redirect \
               qemu-img \
               socat \
@@ -65,6 +67,8 @@ RUN if [ "$(uname -m)" = "aarch64" ]; then \
         ln -s ../qemu/aavmf-aarch64-code.bin /usr/share/AAVMF/AAVMF_CODE.fd && \
         ln -s ../qemu/aavmf-aarch64-vars.bin /usr/share/AAVMF/AAVMF_VARS.fd ; \
     fi
+
+RUN zypper clean -a
 
 RUN cp -f /usr/share/kube-virt/virt-launcher/virtqemud.conf /etc/libvirt/virtqemud.conf && \
     cp -f /usr/share/kube-virt/virt-launcher/qemu.conf /etc/libvirt/qemu.conf
