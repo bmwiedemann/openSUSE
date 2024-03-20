@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 20 16:46:44 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip syntax error test, failig with black 24.3
+  * gh#python-lsp/python-lsp-black#57
+
+-------------------------------------------------------------------
 Sun Mar  3 11:20:47 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add python-lsp-black-pr56-black24.2.patch

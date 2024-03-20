@@ -68,7 +68,9 @@ To avoid unexpected results you should make sure yapf and autopep8 are not insta
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# New error with black 24.3.0 gh#python-lsp/python-lsp-black#57
+donttest="test_pylsp_format and syntax_error"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.md
