@@ -21,17 +21,13 @@
 %define RPMTrackerAPI 3_0
 
 Name:           tracker
-Version:        3.6.0
+Version:        3.7.0
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://wiki.gnome.org/Projects/Tracker
-Source0:        https://download.gnome.org/sources/tracker/3.6/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 0001-decouple-fts-initialization-from-ontologies.patch glgo#GNOME/tracker#418 yfjiang@suse.com -- Decouple FTS initialization from ongologies
-Patch0:         0001-decouple-fts-initialization-from-ontologies.patch
-# PATCH-FIX-UPSTREAM 0002-early-fts-initialization.patch glgo#GNOME/tracker#418 yfjiang@suse.com -- Move FTS initialization to an earlier stage
-Patch1:         0002-early-fts-initialization.patch
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
@@ -47,6 +43,7 @@ BuildRequires:  python3-gobject
 BuildRequires:  sqlite3-devel >= 3.35.2
 BuildRequires:  vala >= 0.18.0
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(avahi-glib)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gi-docgen)
@@ -180,12 +177,18 @@ mkdir %{buildroot}%{_datadir}/tracker3/domain-ontologies
 %files
 %license COPYING
 %{_bindir}/tracker3
+%{_bindir}/tracker3-endpoint
+%{_bindir}/tracker3-export
+%{_bindir}/tracker3-help
+%{_bindir}/tracker3-import
+%{_bindir}/tracker3-sparql
+%{_bindir}/tracker3-sql
+%{_datadir}/bash-completion/completions/tracker3
+%dir %{_datadir}/tracker3
+%{_datadir}/tracker3/commands/
 %dir %{_libdir}/tracker-%{TrackerAPI}/
 %{_libdir}/tracker-%{TrackerAPI}/libtracker-http-soup3.so
 %{_libdir}/tracker-%{TrackerAPI}/libtracker-parser-libicu.so
-%{_datadir}/bash-completion/completions/tracker3
-%dir %{_datadir}/tracker3/
-%{_libexecdir}/tracker3/
 %{_libexecdir}/tracker-xdg-portal-3
 %{_mandir}/man1/tracker3-endpoint.1.gz
 %{_mandir}/man1/tracker3-export.1.gz
@@ -198,7 +201,6 @@ mkdir %{buildroot}%{_datadir}/tracker3/domain-ontologies
 
 %files -n tracker-data-files
 %dir %{_datadir}/tracker3/domain-ontologies
-%{_datadir}/tracker3/ontologies/
 
 %files -n libtracker-sparql-%{RPMTrackerAPI}-0
 %{_libdir}/libtracker-sparql*.so.*
@@ -210,8 +212,6 @@ mkdir %{buildroot}%{_datadir}/tracker3/domain-ontologies
 %doc AUTHORS README.md NEWS
 %doc %{_datadir}/doc/Tracker-%{TrackerAPI}
 %{_datadir}/gir-1.0/*.gir
-%dir %{_datadir}/tracker3
-%dir %{_datadir}/tracker3/domain-ontologies
 %dir %{_datadir}/vala
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/*.deps

@@ -1,9 +1,56 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:39:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.7.0:
+  + Handle POST requests in HTTP endpoints.
+  + Fix a number of Coverity and static scan reports.
+  + Drop deprecated SQLite API.
+  + Test improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  7 08:07:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.7.rc:
+  + Improve database integrity checks so they don't necessarily
+    happen after unclean exit, and so there are greater guarantees
+    to repair the damage.
+  + Handle HTTPS in SERVICE syntax.
+  + Fixes for 32-bit platforms.
+  + Fixes to bash completion.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  7 06:43:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.7.beta:
+  + Add Avahi support to the TrackerEndpointHttp API object.
+  + There is now an --arg argument in `tracker3 sparql` subcommand
+    to assign values to parameters in queries.
+  + CLI subcommands are now split into their own executables.
+  + Improvements in SPARQL handling.
+  + Code cleanups and refactors.
+- Changes from version 3.7.alpha:
+  + New TrackerEndpoint access control API.
+  + New API to map language tagged strings to rdf:langString.
+  + Embed Nepomuk ontology as a GResource.
+  + Allow using TrackerEndpoint on private D-Bus connections.
+  + Cache SPARQL statements in D-Bus endpoints.
+  + Reduce heap memory usage in large transactions over D-Bus
+    endpoints.
+  + Make internals future proof wrt handling of string literals
+    in SQLite.
+  + Threading improvements for direct connection SELECT queries.
+- Add pkgconfig(avahi-glib) BuildRequires: new dependency.
+- Drop 0001-decouple-fts-initialization-from-ontologies.patch and
+  0002-early-fts-initialization.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Wed Mar  6 10:50:26 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
 
 - Add patches to adapt SQLite 3.44 (glgo#GNOME/tracker#418):
   + 0001-decouple-fts-initialization-from-ontologies.patch
-  + 0002-early-fts-initialization.patch  
+  + 0002-early-fts-initialization.patch
 
 -------------------------------------------------------------------
 Mon Sep 18 11:50:17 UTC 2023 - Marcus Meissner <meissner@suse.com>
