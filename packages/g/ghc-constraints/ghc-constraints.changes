@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct 11 10:55:39 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update constraints to version 0.14.
+  0.14 [2023.10.11]
+  -----------------
+  * Drop support for GHCs older than 8.6.
+  * The `forall` function in `Data.Constraint.Forall` has been renamed to
+    `forall_`, since a future version of GHC will make the use of `forall` as
+    an identifier an error.
+  * Implement `Data.Constraint.Forall` using `QuantifiedConstraints`.
+  * Remove `Lifting` instances for `ErrorT` and `ListT`, which were removed
+    in `transformers-0.6.*`.
+  * Add a `c => Boring (Dict c)` instance.
+  * Add the `Data.Constraint.Char` module, which contains utilities for working
+    with `KnownChar` constraints. This module is only available on GHC 9.2 or
+    later.
+  * Add `unsafeAxiom` to `Data.Constraint.Unsafe`.
+  * Add `unsafeSChar`, `unsafeSNat`, and `unsafeSSymbol` to
+    `Data.Constraint.Unsafe` when building with `base-4.18` (GHC 9.6) or later.
+
+-------------------------------------------------------------------
 Tue Aug  8 12:04:26 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update constraints to version 0.13.4 revision 1.
