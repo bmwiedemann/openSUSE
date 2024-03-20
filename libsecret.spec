@@ -1,7 +1,7 @@
 #
 # spec file for package libsecret
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define have_lang 1
 Name:           libsecret
-Version:        0.21.2
+Version:        0.21.4
 Release:        0
 Summary:        Library for accessing the Secret Service API
 License:        LGPL-2.1-or-later
 URL:            https://wiki.gnome.org/Projects/Libsecret
-Source0:        https://download.gnome.org/sources/libsecret/0.21/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
 
 ## SLE-only patches start at 1000
@@ -90,7 +90,8 @@ secrets. It communicates with the "Secret Service" using DBus.
 %endif
 
 %prep
-%setup -q
+%autosetup -N
+
 %if 0%{?sle_version}
 %patch -P 1000 -p1
 %endif
