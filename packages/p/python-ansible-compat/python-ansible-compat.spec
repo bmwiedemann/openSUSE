@@ -24,12 +24,12 @@
 %endif
 
 Name:           python-ansible-compat
-Version:        4.1.11
+Version:        4.1.12
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
 URL:            https://github.com/ansible-community/ansible-compat
-Source:         https://files.pythonhosted.org/packages/source/a/ansible-compat/ansible-compat-%{version}.tar.gz
+Source:         https://github.com/ansible-community/ansible-compat/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}

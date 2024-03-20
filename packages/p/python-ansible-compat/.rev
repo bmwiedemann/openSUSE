@@ -171,4 +171,12 @@ fix build
     <comment></comment>
     <requestid>1138453</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c36e9ecd307920af8f393fd0e5036ded</srcmd5>
+    <version>4.1.12</version>
+    <time>1710965926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1159867</requestid>
+  </revision>
 </revisionlist>
