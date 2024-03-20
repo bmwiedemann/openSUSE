@@ -150,4 +150,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1072090</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>56d2437071d4e3660d652fea36531b65</srcmd5>
+    <version>20240320.aa59b30</version>
+    <time>1710965914</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20240320.aa59b30:
+  * Switch to google.golang.org/protobuf</comment>
+    <requestid>1159841</requestid>
+  </revision>
 </revisionlist>
