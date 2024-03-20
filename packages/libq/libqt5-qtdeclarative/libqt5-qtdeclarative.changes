@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 19 09:55:44 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.13+kde30, rebased upstream:
+  * masm: Don't crash on failed MADV_DONTNEED on Linux
+  * Revert "Fix "white line on top and left side of screen" issue"
+  * Doc: Mention QDS and UI files in Best Practices
+  * Revert "Add listing of the components and scripts that belongs to the qml module"
+  * Revert "Trim file names before adding them to qml components and scripts"
+  * Fix "white line on top and left side of screen" issue
+  * StateMachine: Don't crash if no signal is passed to SignalTransition
+  * QJSEngine: Fix potential JS stack overflow cauased by spread operator
+  * Test262Runner: fix -Wunused-but-set-variable
+  * Fix Shape stroke color when changing alpha from 0 to non-0
+  * QQmlPropertyCache: don't depend on locale for toupper
+  * Bump version to 5.15.13
+  * Fix missing glyphs when using NativeRendering
+  * Revert "Blacklist 1 tests in tst_qquickflickable on macos"
+
+-------------------------------------------------------------------
 Fri Dec 29 13:25:40 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.12+kde31, rebased upstream:
