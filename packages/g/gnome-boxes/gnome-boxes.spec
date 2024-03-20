@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-boxes
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,13 +20,13 @@
 %define govf_libver 0_1
 %define govf_sover 0.1
 Name:           gnome-boxes
-Version:        45.0
+Version:        46.0
 Release:        0
 Summary:        A GNOME 3 application to access remote or virtual systems
 License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/Boxes
-Source0:        https://download.gnome.org/sources/gnome-boxes/45/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-boxes/46/%{name}-%{version}.tar.xz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -44,6 +44,8 @@ BuildRequires:  pkgconfig(gudev-1.0) >= 165
 BuildRequires:  pkgconfig(libarchive) >= 3.0.0
 BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libosinfo-1.0) >= 1.10.0
+BuildRequires:  pkgconfig(libportal)
+BuildRequires:  pkgconfig(libportal-gtk3)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.9

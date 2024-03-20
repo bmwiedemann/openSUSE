@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 19 11:13:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Disable "secure-boot" for EFI virtual machines.
+  + Use libportal to call Background Portal.
+  + Fallback to default resources on error cases.
+  + Fix crash when processing a non bootable ISO image.
+  + Fix permissions when copying template files.
+  + Updated translations.
+- Add pkgconfig(libportal) and pkgconfig(libportal-gtk3)
+  BuildRequires: new dependencies.
+
+-------------------------------------------------------------------
 Mon Sep 18 16:20:17 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:
