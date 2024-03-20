@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 18 09:58:18 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang_path macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Thu Feb 22 12:03:55 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

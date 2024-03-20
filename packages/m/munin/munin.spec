@@ -62,6 +62,7 @@ BuildRequires:  perl-Net-SNMP
 BuildRequires:  perl-Net-SSLeay
 BuildRequires:  perl-Net-Server
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  shadow
 BuildRequires:  unzip
 BuildRequires:  perl(Module::Build)
@@ -203,6 +204,10 @@ ln nginx-munin-master/README.org README.nginx
 
 %__install -m0755 munin-gsa-master/snmp_* %{buildroot}/%{plugindir}
 ln munin-gsa-master/README.md README.gsa
+
+%if %{suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}/%{plugindir}/*
+%endif
 
 # Fix rpmlint warning: This script uses 'env' as an interpreter.
 for F in \
