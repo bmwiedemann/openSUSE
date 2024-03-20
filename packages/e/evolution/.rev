@@ -2540,4 +2540,12 @@ New stable rel</comment>
   + Updated translations. (forwarded request 1137093 from dimstar)</comment>
     <requestid>1137096</requestid>
   </revision>
+  <revision rev="275" vrev="1">
+    <srcmd5>5172038e5c0dc089d947b14defde389f</srcmd5>
+    <version>3.52.0</version>
+    <time>1710965455</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158146 from dimstar)</comment>
+    <requestid>1159459</requestid>
+  </revision>
 </revisionlist>

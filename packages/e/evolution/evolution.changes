@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Fri Mar 15 07:14:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.52.0:
+  + Bug Fixes:
+     - Workaround excessive memory use
+     - Calendar: Prefer html/markdown description in preview
+     - Incorrect/missing URLs in app metadata
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  1 08:38:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.51.3:
+  + Replace G_TYPE_INSTANCE_GET_PRIVATE() with G_ADD_PRIVATE().
+  + plugin_ui_hook_finalize: Chain up to the finalize() method.
+  + Composer: Stop message send when retrieve of the content
+    failed.
+  + Composer: Hint places for folding in Autocrypt header.
+  + Composer: Change "Remove Key" to "Send without Key" in
+    Autocrypt question.
+  + ci: Export the help with Gitlab Pages.
+  + itip-formatter: Show "Unable to send item..." errors with error
+    icon.
+  + Calendar: Remove support for
+    E_CAL_STATIC_CAPABILITY_RETRACT_SUPPORTED.
+  + Calendar: Meeting deletion can sometimes send duplicate cancel
+    messages.
+  + appdata: Add <branding/> colors.
+
+-------------------------------------------------------------------
+Mon Feb 12 15:05:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.51.2:
+  + build: Don't set CFLAGS returned by pkg-config as
+    CMAKE_REQUIRED_FLAGS.
+  + build: Bump CMake version requirement to 3.15.
+  + build: align glib_encoded_version with the version
+    requirements.
+  + EContactEditor: Explicitly set horizontal/vertical expand/fill
+    for tab content.
+  + e-shell: Describe --force-shutdown option as closing also
+    background processes.
+  + Composer: Ask before sending mail with an Autocrypt header.
+
+-------------------------------------------------------------------
+Tue Jan 16 09:19:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.51.1:
+  + shell: Move from gtk_main() to g_application_run().
+  + flatpak: Add missing comma in the manifests.
+  + EBulkEditTasks: Edit Categories as diff of added/removed
+    categories.
+  + EContactCard: Card sometimes hides values.
+  + Fix a memory leak in ECompEditor.
+  + evolution-util-docs: Remove API index for 2.24 symbols, none
+    exist anymore.
+  + build: Use -Wshadow build option, if available.
+  + Calendar: Go to day/today in Year View doesn't update internal
+    view dates.
+  + Update Flatpak manifests.
+  + e-bulk-edit-contacts: Initialize 'section_grid' variable.
+  + data: Update appdata.
+  + EHTMLEditor: Let emoji chooser point to the caret in the
+    message body.
+  + EYearView: Fix a crash when moving through search results.
+  + EShell: Emit "ready-to-start" event after modules and
+    preferences window is ready.
+  + Composer: Use link references only when composing HTML message.
+  + rss: Ensure feed icon size to not be too large.
+  + Mail: Skip disabled accounts for File->Download messages for
+    offline use.
+  + EMailBackend: Fallback to CamelOperation message when showing
+    error.
+  + Add x-scheme-handler/mid into the .desktop file.
+  + help: Fix invalid markup in Czech help translation.
+  + Updated translations.
+- Convert to source service for easier updating.
+
+-------------------------------------------------------------------
 Fri Jan  5 15:30:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.50.3:

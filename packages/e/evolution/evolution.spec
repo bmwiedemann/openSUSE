@@ -20,7 +20,7 @@
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution
-Version:        3.50.3
+Version:        3.52.0
 Release:        0
 # FIXME: check if note on license is still valid (comment before license)
 Summary:        The Integrated GNOME Mail, Calendar, and Address Book Suite
@@ -28,11 +28,11 @@ Summary:        The Integrated GNOME Mail, Calendar, and Address Book Suite
 License:        CC-BY-SA-3.0 AND LGPL-2.0-only AND LGPL-3.0-only AND OLDAP-2.8 AND GFDL-1.1-only AND GFDL-1.3-only
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Evolution/
-Source0:        https://download.gnome.org/sources/evolution/3.50/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  bison
 BuildRequires:  bogofilter
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.15
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
