@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Mar 15 07:16:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.52.0:
+  + Bug Fix: Use OAuth2 protocol 2.0 by default.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  1 08:40:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.51.3:
+  + Retract dialog can duplicate cancellation mails.
+  + Do not change organizer when adding meeting from mail.
+  + Impersonate mailbox uses original user's connection.
+  + build: Make sure tests run in serial.
+
+-------------------------------------------------------------------
+Mon Feb 12 15:07:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.51.2:
+  + build: Bump CMake version requirement to 3.15.
+
+-------------------------------------------------------------------
+Tue Jan 16 09:43:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.51.1:
+  + build: Use -Wshadow build option, if available.
+  + Microsoft365: Read Organizational Contacts and Users.
+  + Update Flatpak manifest.
+- Convert to source service for easier updating.
+
+-------------------------------------------------------------------
 Fri Jan  5 15:42:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.50.3:

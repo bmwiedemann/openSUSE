@@ -1212,4 +1212,12 @@
   + Updated translations. (forwarded request 1137094 from dimstar)</comment>
     <requestid>1137097</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>2294031b53ccd344fedefcccb0501729</srcmd5>
+    <version>3.52.0</version>
+    <time>1710965463</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158147 from dimstar)</comment>
+    <requestid>1159460</requestid>
+  </revision>
 </revisionlist>
