@@ -121,6 +121,7 @@ Patch34:        eclipse-libkeystorelinuxnative.patch
 Patch35:        eclipse-CVE-2020-27225.patch
 Patch36:        eclipse-ant.patch
 Patch37:        reproducible-p2_timestamp.patch
+Patch38:        eclipse-CVE-2023-4218.patch
 BuildRequires:  ant >= 1.10.5
 BuildRequires:  ant-antlr
 BuildRequires:  ant-apache-bcel
@@ -533,6 +534,8 @@ tar --strip-components=1 -xf %{SOURCE1}
 %patch -P 35 -p1
 %patch -P 36 -p1
 %patch -P 37 -p1
+
+%patch -P 38 -p1
 
 # Extend the objectweb-asm requirements
 sed -i -e 's/org\.objectweb\.asm\.tree;bundle-version="\[6\.0\.0,8\.0\.0)"/org\.objectweb\.asm\.tree;bundle-version="\[6\.0\.0,10\.0\.0)"/g' \
