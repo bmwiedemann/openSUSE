@@ -17,7 +17,7 @@
 
 
 Name:           gnome-music
-Version:        45.1
+Version:        46.0
 Release:        0
 Summary:        Music Player for GNOME
 License:        LGPL-2.1-or-later AND SUSE-GPL-2.0-with-plugin-exception
@@ -45,13 +45,13 @@ BuildRequires:  pkgconfig(goa-1.0) >= 3.35.90
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.0
 BuildRequires:  pkgconfig(grilo-0.3) >= 0.3.13
 BuildRequires:  pkgconfig(grilo-plugins-0.3) >= 0.3.12
-BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(gtk4) >= 4.10.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.5.beta
 BuildRequires:  pkgconfig(libmediaart-2.0) >= 1.9.1
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(pango) >= 1.44.0
 BuildRequires:  pkgconfig(py3cairo) >= 1.14
-BuildRequires:  pkgconfig(pygobject-3.0) >= 3.36.1
+BuildRequires:  pkgconfig(pygobject-3.0) >= 3.47.0
 BuildRequires:  pkgconfig(tracker-sparql-3.0) >= 2.99.3
 Requires:       dbus-1-python3
 # gnome-music requires grilo-plugin-tracker to interact with tracker and find files (bsc#1083659)

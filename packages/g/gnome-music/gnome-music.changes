@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 18 07:47:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 12 15:55:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + Ported to Adwaita 1.4 and 1.6 widgets.
+  + Songs view removed.
+  + Preferences dialog added.
+  + Dropped old-style selection mode.
+
+-------------------------------------------------------------------
 Mon Feb 12 15:54:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 45.1:
