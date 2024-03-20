@@ -1,7 +1,7 @@
 #
 # spec file for package sddm-kcm6
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ Source2:        plasma.keyring
 Patch1:         0001-Support-default.session-symlink.patch
 Patch2:         0002-Read-and-write-autologin-user-to-etc-sysconfig-displ.patch
 Patch3:         0003-Don-t-add-a-Wayland-suffix-to-Wayland-sessions.patch
+# PATCH-FEATURE (?)-OPENSUSE
+Patch4:         0001-Remove-some-features-with-questionable-security.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
