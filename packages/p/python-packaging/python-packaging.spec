@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-packaging
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{pprefix}-packaging%{?psuffix}
-Version:        23.2
+Version:        24.0
 Release:        0
 Summary:        Core utilities for Python packages
 License:        Apache-2.0 AND BSD-2-Clause

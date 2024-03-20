@@ -308,4 +308,25 @@
     <comment></comment>
     <requestid>1125176</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0090d0ee450629924758bb64d796f7ec</srcmd5>
+    <version>24.0</version>
+    <time>1710965371</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 24.0:
+  * Do specifier matching correctly when the specifier contains
+    an epoch number and has more components than the version
+    (:issue:`683`)
+  * Support the experimental --disable-gil builds in
+    packaging.tags (:issue:`727`)
+  * BREAKING: Make optional metadata.Metadata attributes default
+    to None (:issue:`733`)
+  * Fix errors when trying to access the
+    description_content_type, keywords, and requires_python
+    attributes on metadata.Metadata when those values have not
+    been provided (:issue:`733`)
+  * Fix a bug preventing the use of the built in ExceptionGroup
+    on versions of Python that support it (:issue:`725`)</comment>
+    <requestid>1158406</requestid>
+  </revision>
 </revisionlist>
