@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:40:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.7.0:
+  + Call malloc_trim more timely after extraction.
+  + Further syscall rules in the seccomp sandbox.
+  + Further landlock rules.
+  + Disallow indexer for gnome-initial-setup user.
+  + Add -Dsandbox_tests option to disable sandbox tests.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  7 14:09:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.7.rc:
+  + Fix execution permissions of `tracker-extract-3` executable
+    under Landlock.
+  + Fix build with several combinations of options.
+  + Update `tracker3 tag` man page.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  7 13:59:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.7.beta+24:
+  + libtracker-miners-common: Allow epoll_wait syscall in SECCOMP
+    sandbox.
+
+-------------------------------------------------------------------
+Thu Mar  7 09:55:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.7.beta:
+  + Install CLI subcommands as expected by Tracker 3.7.beta
+  + Add build option for Landlock.
+- Changes from version 3.7.alpha:
+  + Use Landlock kernel API to control file access.
+  + Use private D-Bus connection for communication between
+    tracker-extract-3 and tracker-miner-fs-3.
+  + Further tightened seccomp sandbox.
+  + CLI man page improvements.
+  + CI, build and test improvements.
+
+-------------------------------------------------------------------
 Wed Mar  6 13:41:29 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
 
 - Drop tracker-miners-drop-syscalls-in-seccomp.patch (bsc#1220608,

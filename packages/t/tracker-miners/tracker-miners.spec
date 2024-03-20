@@ -16,16 +16,16 @@
 #
 
 
-%define tracker_basever 3.6
+%define tracker_basever 3.7
 
 Name:           tracker-miners
-Version:        3.6.2
+Version:        3.7.0
 Release:        0
 Summary:        Various miners for Tracker
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Tracker
-Source0:        https://download.gnome.org/sources/tracker-miners/%{tracker_basever}/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  asciidoc
 BuildRequires:  giflib-devel
@@ -109,25 +109,33 @@ This package contains a miner to index files and applications.
 %find_lang tracker3-miners
 
 %post
-%systemd_user_post tracker-extract-3.service tracker-writeback-3.service tracker-miner-fs-3.service tracker-miner-fs-control-3.service
+%systemd_user_post tracker-writeback-3.service tracker-miner-fs-3.service tracker-miner-fs-control-3.service
 
 %preun
-%systemd_user_preun tracker-extract-3.service tracker-writeback-3.service tracker-miner-fs-3.service tracker-miner-fs-control-3.service
+%systemd_user_preun tracker-writeback-3.service tracker-miner-fs-3.service tracker-miner-fs-control-3.service
 
 %files
 %license COPYING
 %doc README.md
+%{_bindir}/tracker3-daemon
+%{_bindir}/tracker3-extract
+%{_bindir}/tracker3-index
+%{_bindir}/tracker3-info
+%{_bindir}/tracker3-reset
+%{_bindir}/tracker3-search
+%{_bindir}/tracker3-status
+%{_bindir}/tracker3-tag
 %{_datadir}/dbus-1/interfaces/org.freedesktop.Tracker3.Miner.xml
-%{_datadir}/dbus-1/services/org.freedesktop.Tracker3.Miner.Extract.service
 %{_datadir}/dbus-1/services/org.freedesktop.Tracker3.Writeback.service
 %{_datadir}/glib-2.0/schemas/org.freedesktop.Tracker3.Extract.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.freedesktop.Tracker3.FTS.gschema.xml
+%dir %{_datadir}/tracker3
+%{_datadir}/tracker3/commands/
 %{_datadir}/tracker3-miners/
 %dir %{_libdir}/tracker-miners-3.0
 %{_libdir}/tracker-miners-3.0/extract-modules/
 %{_libdir}/tracker-miners-3.0/libtracker-extract.so
 %{_libdir}/tracker-miners-3.0/writeback-modules/
-%{_libexecdir}/tracker3/
 %{_libexecdir}/tracker-extract-3
 %{_libexecdir}/tracker-writeback-3
 %{_mandir}/man1/tracker3-daemon.1%{?ext_man}
@@ -139,7 +147,6 @@ This package contains a miner to index files and applications.
 %{_mandir}/man1/tracker3-status.1%{?ext_man}
 %{_mandir}/man1/tracker3-tag.1%{?ext_man}
 %{_mandir}/man1/tracker-writeback-3.1%{?ext_man}
-%{_userunitdir}/tracker-extract-3.service
 %{_userunitdir}/tracker-writeback-3.service
 
 %files -n tracker-miner-files
