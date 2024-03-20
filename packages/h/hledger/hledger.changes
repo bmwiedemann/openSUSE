@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 28 15:29:58 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Add "fix-build-with-ghc-9.8.x.patch" to fix the build with
+  ghc-9.8.x. The change is based on upstream commit
+  https://github.com/simonmichael/hledger/commit/034d37c3bef9ba99a1db7344127e814a9219047a.patch.
+
+-------------------------------------------------------------------
 Sun Jan 28 12:19:54 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update hledger to version 1.32.3.
