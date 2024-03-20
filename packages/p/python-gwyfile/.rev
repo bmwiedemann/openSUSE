@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>873724</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1113c0043a3773fc16873310b8283aa4</srcmd5>
+    <version>0.2.0</version>
+    <time>1710965916</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python312.patch to make it compatible with latest python
+  version.</comment>
+    <requestid>1159842</requestid>
+  </revision>
 </revisionlist>

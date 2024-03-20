@@ -1,7 +1,7 @@
 #
 # spec file for package python-gwyfile
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,6 @@
 
 
 %define packagename gwyfile
-%define skip_python36 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gwyfile
 Version:        0.2.0
 Release:        0
@@ -29,6 +27,8 @@ URL:            https://github.com/tuxu/gwyfile
 Source:         https://github.com/tuxu/gwyfile/archive/%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Fix_depreciated_fromstring_warning.patch andythe_great@pm.me -- Fix fromstring depreciated to frombuffer warning during testing.
 Patch0:         Fix_depreciated_fromstring_warning.patch
+# PATCH-FIX-OPENSUSE python312.patch
+Patch1:         python312.patch
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 20 13:06:05 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python312.patch to make it compatible with latest python
+  version.
+
+-------------------------------------------------------------------
 Fri Feb 19 08:37:09 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Skip python36 because python-numpy does not support it.
