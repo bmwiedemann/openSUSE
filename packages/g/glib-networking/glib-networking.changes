@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Mar 15 21:04:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.80.0:
+  + Mark plugin functions as exports on Windows.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  1 07:38:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.80.rc:
+  + GnuTLS:
+    - fix improper use of IP address in SNI extension.
+    - major performance improvement: reduce unnecessary trust list
+      creation.
+  + OpenSSL: properly handle BIO_CTRL_EOF.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 16 08:12:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.80.alpha:
+  + GnuTLS: Add warning when system has no trusted certificates.
+  + OpenSSL: Fix bug when populating trust store.
+  + Fix license on dtls-connection.c test.
+  + Updated translations.
+- Require ca-certificates-mozilla to not run into the new warning.
+
+-------------------------------------------------------------------
 Fri Sep 15 17:32:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.78.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package glib-networking
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define gio_real_package %(rpm -q --qf '%%{name}' --whatprovides gio)
 Name:           glib-networking
-Version:        2.78.0
+Version:        2.80.0
 Release:        0
 Summary:        Network-related GIO modules for glib
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/glib-networking/2.78/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
 
 BuildRequires:  ca-certificates-mozilla
@@ -42,6 +42,8 @@ BuildRequires:  pkgconfig(libproxy-1.0) >= 0.4.16
 BuildRequires:  pkgconfig(systemd)
 # org.gnome.system.proxy schema is used
 Requires:       gsettings-desktop-schemas
+# GnuTLS: Add warning when system has no trusted certificates.
+Requires:       ca-certificates-mozilla
 Supplements:    %{gio_real_package}
 %{glib2_gio_module_requires}
 

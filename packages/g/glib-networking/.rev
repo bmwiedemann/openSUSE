@@ -701,4 +701,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1111882</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>d32930d8a2647b356829bb91671e023f</srcmd5>
+    <version>2.80.0</version>
+    <time>1710965470</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158302 from dimstar)</comment>
+    <requestid>1159468</requestid>
+  </revision>
 </revisionlist>
