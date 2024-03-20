@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-contacts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,13 @@
 %define glib_version 2.64
 
 Name:           gnome-contacts
-Version:        45.0
+Version:        46.0
 Release:        0
 Summary:        Contacts Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Contacts
-Source0:        https://download.gnome.org/sources/gnome-contacts/45/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
@@ -104,7 +104,7 @@ search results from contacts.
 
 %files
 %license COPYING
-%doc NEWS README.md
+%doc README.md
 %{_mandir}/man1/gnome-contacts.1%{ext_man}
 %{_bindir}/gnome-contacts
 %dir %{_datadir}/metainfo
