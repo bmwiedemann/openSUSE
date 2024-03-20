@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  8 15:56:21 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Sat Dec 30 13:48:44 UTC 2023 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Upgrade to version 5.0:

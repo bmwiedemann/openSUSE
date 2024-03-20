@@ -1,7 +1,7 @@
 #
 # spec file for package systemtap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -127,6 +127,7 @@ mkdir -p %{buildroot}%{_tmpfilesdir}
 install -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}
 
 %fdupes %{buildroot}%{_datadir}/%{name}
+%python3_fix_shebang
 
 %find_lang systemtap
 

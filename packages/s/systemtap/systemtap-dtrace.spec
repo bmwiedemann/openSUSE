@@ -1,7 +1,7 @@
 #
 # spec file for package systemtap-dtrace
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Source2:        systemtap.keyring
 Source3:        README-BEFORE-ADDING-PATCHES
 Source4:        README-KEYRING
 
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 
 %description
@@ -51,6 +52,7 @@ sed s=@preferred_python@=%{_bindir}/python3= dtrace.in |sed s=@prefix@=%{_prefix
 %install
 mkdir -p %{buildroot}%{_bindir}
 install -m 755 dtrace %{buildroot}%{_bindir}
+%python3_fix_shebang
 
 %files
 %defattr(-,root,root)
