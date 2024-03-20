@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Mar 18 08:06:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.0.0:
+  + glycin: Change to stable crate version.
+  + svg: Change to stable rsvg version.
+
+-------------------------------------------------------------------
+Mon Mar  4 07:58:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.0.rc:
+  + glycin: Allow fstat syscall.
+  + glycin: Treat files detected as XML as SVG if they have .svg
+    file ending.
+  + jxl: Allow libjxl 0.10 as well.
+
+-------------------------------------------------------------------
+Fri Feb 23 09:29:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.0.beta.2:
+  + api: Rename a few functions.
+  + api: Use memfds for larger metadata like Exif or ICC profiles.
+  + glycin/glycin-utils: Drop all uses of anyhow.
+  + glycin/glycin-utils: Use thiserror to define types.
+  + glycin: Check image width and height are not zero.
+  + loaders/image-rs: Disable memory limits since we have our own.
+  + loaders: Use new error utils tracking code location.
+
+-------------------------------------------------------------------
+Mon Feb 19 17:53:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.0.beta.1:
+  + Update to zbus 4.0.
+  + glycin: Use more fine-tuned memory limits using max 80%
+    available memory.
+
+-------------------------------------------------------------------
+Mon Feb 12 16:05:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.0.beta:
+  + Consitently use Loader instead of Decoder terminology in code.
+  + glycin: Add seccomp filter based on allow list for bwrap
+    sandboxes.
+  + jxl: Support Exif.
+- Changes from version 1.0.alpha:
+  + Replace async-std with other crates
+  + Use a new D-Bus API version 1+ allowing for backward compatible
+    extendability.
+
+-------------------------------------------------------------------
 Thu Nov 30 12:58:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Run service with new obs-service-cargo, drop cargo_config as
