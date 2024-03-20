@@ -103,9 +103,12 @@ cp -ar docs/_build/html examples %{buildroot}%{_defaultdocdir}/%{name}-doc/
 
 %check
 export LANG=en_US.UTF8
-if [ %{python3_version_nodots} -eq 36 ]; then
-  python3_donttest=("--ignore" "tests/asgi")
+%{python_expand #
+if [ %{$python_version_nodots} -lt 310 ]; then
+  $python_donttest=("--ignore" "tests/asgi")
 fi
+}
+
 %pytest "${$python_donttest[@]}" tests
 
 %post

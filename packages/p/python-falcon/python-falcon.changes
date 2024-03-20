@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 19 18:32:56 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Ignore "tests/asgi" for python 3.9, some ws tests stalls with this
+  python version
+
+-------------------------------------------------------------------
 Tue Feb  6 17:06:48 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update source file

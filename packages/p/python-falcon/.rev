@@ -210,4 +210,14 @@
     <comment></comment>
     <requestid>1144824</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>f10ffcf51e406a089427a3c0506620a9</srcmd5>
+    <version>3.1.3</version>
+    <time>1710965794</time>
+    <user>dimstar_suse</user>
+    <comment>- Ignore &quot;tests/asgi&quot; for python 3.9, some ws tests stalls with this
+  python version
+</comment>
+    <requestid>1159647</requestid>
+  </revision>
 </revisionlist>
