@@ -1,7 +1,7 @@
 #
 # spec file for package fdupes
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!_rpmmacrodir:%define _rpmmacrodir /usr/lib/rpm/macros.d}
 
 Name:           fdupes
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Tool to identify or delete duplicate files
 License:        MIT
@@ -38,7 +38,7 @@ residing within specified directories.
 %autosetup -p1
 
 %build
-%configure --without-ncurses
+%configure --without-ncurses --without-sqlite
 %make_build
 g++ $RPM_OPT_FLAGS %{S:2} -o fdupes_wrapper
 

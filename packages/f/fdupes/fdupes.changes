@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 20 07:25:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not use sqlite, as this pulls sqlite into Ring0 at no real
+  benefit performance wise: the cache is not reused between runs.
+  + Drop sqlite-devel BuildRequires
+  + Pass --without-sqlite to configure
+
+-------------------------------------------------------------------
+Mon Mar 18 09:36:27 UTC 2024 - ming li <mli@suse.com>
+
+- Update to 2.3.0:
+  * Add --cache option to speed up file comparisons.
+  * Use nanosecond precision for file times, if available.
+  * Fix compilation issue on OpenBSD.
+  * Other changes like fixing typos, wording, etc.
+
+-------------------------------------------------------------------
 Sun Oct  2 16:21:27 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 2.2.1:
