@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Mon Mar  4 09:06:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.2.1:
+  + Fix header include leading to compilation problem.
+  + Update uhttpmock requirement to pass tests.
+
+-------------------------------------------------------------------
+Fri Mar  1 07:46:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Initial package, version 0.2.0
