@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 18 10:22:39 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Fri Mar 15 14:29:16 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 6.7

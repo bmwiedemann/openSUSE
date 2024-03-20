@@ -99,6 +99,7 @@ chmod 644 hgweb.cgi
 %install
 make install PREFIX="%{_prefix}" DESTDIR=%{buildroot} PYTHON=python3
 make -C contrib/chg install PREFIX="%{_prefix}" DESTDIR=%{buildroot}
+%python3_fix_shebang
 
 # Move locales to proper location
 mkdir -p %{buildroot}%{_datadir}/locale
