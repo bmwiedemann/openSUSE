@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 19 09:59:42 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.13+kde0, rebased upstream:
+  * Bump version to 5.15.13
+  * Fix QWinOverlappedIoNotifier
+
+-------------------------------------------------------------------
 Fri Dec 29 13:31:23 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.12+kde0, rebased upstream:
