@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 16 07:28:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 6.9.0:
+  + libhandy-1 is used as a new dependency (for dark style
+    preference handling).
+  + Replace _TEPL_EXTERN custom macro by G_MODULE_EXPORT.
+  + New APIs: see the API docs.
+- Add pkgconfig(libhandy-1) BuildRequires: new dependency.
+- Drop pkgconfig(gtksourceview-4) BuildRequires: no longer needed
+  since version 6.6.
+
+-------------------------------------------------------------------
 Sun Aug 13 14:14:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 6.8.0:

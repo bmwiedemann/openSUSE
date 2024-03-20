@@ -1,7 +1,7 @@
 #
 # spec file for package tepl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define lib_ver %{api_ver}-4
 
 Name:           tepl
-Version:        6.8.0
+Version:        6.9.0
 Release:        0
 Summary:        Text Editor Product Line
 License:        LGPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Projects/Tepl
-Source:         https://download.gnome.org/sources/tepl/6.8/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/tepl/6.9/%{name}-%{version}.tar.xz
 
 BuildRequires:  gobject-introspection-devel >= 1.42.0
 BuildRequires:  gtk-doc
@@ -35,11 +35,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.64
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
-BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libgedit-amtk-5)
-BuildRequires:  pkgconfig(libgedit-gtksourceview-300) >= 299.0.4
+BuildRequires:  pkgconfig(libgedit-gtksourceview-300) >= 299.1.0
+BuildRequires:  pkgconfig(libhandy-1) >= 1.6
 BuildRequires:  pkgconfig(uchardet)
 
 %description
