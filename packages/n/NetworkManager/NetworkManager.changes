@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Fri Feb 23 08:28:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.46.0:
+  + Support dynamic value "${NETWORK_SSID}" for
+    connection.stable-id to generate the stable ID based on the
+    Wi-Fi's SSID.
+  + Support new value "wifi.cloned-mac-address=stable-ssid" for
+    randomizing the MAC address based on the Wi-Fi network.
+  + Change internal ABI of NMSetting types and NMSimpleConnection.
+    The layout of these structs was already hidden from public
+    headers since 1.34 and this change should not be noticeable.
+  + Honor udev property ID_NET_AUTO_LINK_LOCAL_ONLY=1 for enabling
+    link local addresses on default wired connection.
+  + Honor udev property ID_NET_MANAGED_BY to only manage an
+    interface when set to "org.freedesktop.NetworkManager".
+  + D-Bus methods StartFind() and StopFind() on interface
+    "org.freedesktop.NetworkManager.Device.WifiP2P" now require the
+    "org.freedesktop.NetworkManager.wifi.scan" Polkit permission.
+  + Drop build support with Python2. Python3 is now required.
+  + nmcli: limit number of printed addresses/routes in `nmcli`
+    overview to 10.
+  + Limit number of exported IP addresses/routes on D-Bus to 100 to
+    reduce performance cost. Also, D-Bus updates for
+    addresses/routes are now rate limited to 3 per second.
+  + cloud-setup: enable more sandboxing options in systemd service
+    file.
+  + nmcli: show WiFi bandwidth.
+  + Internal improvements and bugfixes.
+  + Man page now show the format and accepted values of all
+    properties.
+  + Added the 'dns-change' dispatcher event.
+  + Show WiFi devices capability to work on the 6GHz band.
+  + Allow to set dhcp-client-id to none.
+  + Support configuring ethtool channels property to configure NIC
+    multiqueue.
+  + Don't attempt to use IPv6 if it's disabled in kernel.
+  + Fix handling of OVS interfaces with netdev datapath and cloned
+    MAC.
+  + Support for old systemd has been droped, at least systemd v200
+    is required.
+  + Support Ethtool EEE (Energy Efficient Ethernet) settings.
+  + Add options to prevent edns0 and trust-ad being automatically
+    added to DNS configuration.
+  + Implement fwmark property for IP tunnels.
+  + Add support to HSR/PRP interfaces.
+  + Deprecated connection.* properties master, slave-type,
+    autoconnect-slaves
+  + Allow configuring static routes also when addresses is empty.
+  + VPN: accept pref-src for IPv6 routes from VPN plugins.
+  + nmcli: show global metered state.
+  + Support modifying the DSCP header field for DHCP packets, and
+    change the default to CS0.
+  + Enable IPv4 DAD (Duplicate Address Detection) by default.
+  + vpn: support 2FA authentication from VPN plugins.
+  + nmtui: allow adding a bond as bridge port.
+  + sriov: add support to configure the NIC's eswitch settings via
+    Devlink.
+  + ndisc: fix IPv6 address lifetimes computation.
+  + Support the MACsec offload mode.
+  + Support creating generic devices via external "device-handler"
+    dispatcher.
+  + Documentation improvements.
+  + Many internal improvements and bug fixes.
+
+-------------------------------------------------------------------
 Sun Dec  3 07:39:25 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Add python3.6-in-sle.patch: SLE still takes python 3.6 as primary

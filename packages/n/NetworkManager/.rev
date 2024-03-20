@@ -2267,4 +2267,12 @@ New stable release</comment>
     <comment>Sync changelog with Leap/SLE.</comment>
     <requestid>1131257</requestid>
   </revision>
+  <revision rev="265" vrev="1">
+    <srcmd5>e0a644daeb6b5b90d0a729cade8ad2e0</srcmd5>
+    <version>1.46.0</version>
+    <time>1710965478</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158419 from dimstar)</comment>
+    <requestid>1159481</requestid>
+  </revision>
 </revisionlist>
