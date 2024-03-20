@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  9 02:21:34 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 2.6.1
+ * sync with upstream
+
+-------------------------------------------------------------------
 Tue Oct 24 14:39:05 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Apply "reproducible-builds.patch", which makes GHC output

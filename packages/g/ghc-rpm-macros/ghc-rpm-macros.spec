@@ -18,7 +18,7 @@
 
 %global without_hscolour 1
 Name:           ghc-rpm-macros
-Version:        2.5.3
+Version:        2.6.4
 Release:        0
 Summary:        RPM Macros for building packages for GHC
 License:        GPL-3.0-or-later
@@ -67,19 +67,21 @@ install -p -D -m 0755 cabal-tweak-remove-upperbound %{buildroot}/%{_bindir}/caba
 install -p -D -m 0755 ghc-pkg-wrapper %{buildroot}/%{_prefix}/lib/rpm/ghc-pkg-wrapper
 install -p -D -m 0644 ghc.attr %{buildroot}/%{_prefix}/lib/rpm/fileattrs/ghc.attr
 install -p -D -m 0644 Setup.hs %{buildroot}/%{_datadir}/%{name}/Setup.hs
+install -p -D -m 0755 ghc-info.sh %{buildroot}/%{_prefix}/lib/rpm/ghc-info.sh
 
 %files
 %doc AUTHORS
 %license COPYING
 %{_rpmmacrodir}/macros.ghc
 %{_rpmmacrodir}/macros.ghc-suse
-%{_prefix}/lib/rpm/ghc-deps.sh
 %{_bindir}/cabal-tweak-dep-ver
 %{_bindir}/cabal-tweak-flag
 %{_bindir}/cabal-tweak-drop-dep
 %{_bindir}/cabal-tweak-remove-upperbound
 %{_prefix}/lib/rpm/ghc-pkg-wrapper
 %{_prefix}/lib/rpm/fileattrs/ghc.attr
+%{_prefix}/lib/rpm/ghc-deps.sh
+%{_prefix}/lib/rpm/ghc-info.sh
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/Setup.hs
 
