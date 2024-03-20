@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Mar 18 12:59:00 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update keyring with current key 
+
+-------------------------------------------------------------------
+Mon Mar 18 08:35:17 UTC 2024 - pgajdos@suse.com
+
+- version update to 1.60.0
+  * makerelease.sh: Speed up git submodule
+  * Speed up git clone
+  * build(deps): bump actions/cache from 3 to 4
+  * Fixing the build and install trees
+  * build(deps): bump microsoft/setup-msbuild from 1 to 2
+  * nghttpx: Set ocsp response to SSL in case of boringssl
+  * Run with python3
+  * src: Certificate Compression with boringssl
+  * Fix missing newline
+  * Switch to aws lc
+  * Libbrotli fixup
+  * Deprecate RFC 7540 priorities (aka stream dependencies)
+  * Let dependabot manage go modules
+  * build(deps): bump golang.org/x/net from 0.20.0 to 0.21.0
+  * integration-tests: Omit unused parameters
+  * Munit
+  * Introduce nghttp2_ssize API
+  * Move deprecated warning upfront
+  * Describe RFC 7540 priorities deprecation plan
+  * Apps migrate nghttp2 ssize
+  * src: Remove unused functions
+  * Reconsider ssize t usage in src
+  * Use GitHub private vulnerability reporting
+  * Move security policy to GitHub standard location
+  * Bump mruby to 3.3.0
+  * Bump llhttp to 48588093ca4219b5f689acfc9ebea9e4c8c37663
+  * h2load: Add --sni option
+  * Bump ngtcp2 dependencies
+  * mruby: Adopt deprecation of mrbc_ prefix
+  * neverbleed: Define _GNU_SOURCE for pthread_setaffinity_np
+  * bpf: Pre-expand aes key
+  * mruby: Exclude mrdb gem which causes nghttpx to crash
+  * nghttpx: Reuse EVP_CIPHER_CTX for QUIC connection ID encryption
+  * Run apt-get update before install
+  * src: Deal with the case that send_quantum < max_udp_payload_size
+  * nghttpx: Remove SHRPX_QUIC_MAX_UDP_PAYLOAD_SIZE
+  * Fix build when AI_NUMERICSERV is undefined
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang_path macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Sun Jan 28 17:01:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.59.0:

@@ -821,4 +821,41 @@
     <comment></comment>
     <requestid>1142173</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>7b1966e105fff25f21e65d290bd722e1</srcmd5>
+    <version>1.60.0</version>
+    <time>1710965426</time>
+    <user>dimstar_suse</user>
+    <comment>- Update keyring with current key 
+
+- version update to 1.60.0
+  * makerelease.sh: Speed up git submodule
+  * Speed up git clone
+  * build(deps): bump actions/cache from 3 to 4
+  * Fixing the build and install trees
+  * build(deps): bump microsoft/setup-msbuild from 1 to 2
+  * nghttpx: Set ocsp response to SSL in case of boringssl
+  * Run with python3
+  * src: Certificate Compression with boringssl
+  * Fix missing newline
+  * Switch to aws lc
+  * Libbrotli fixup
+  * Deprecate RFC 7540 priorities (aka stream dependencies)
+  * Let dependabot manage go modules
+  * build(deps): bump golang.org/x/net from 0.20.0 to 0.21.0
+  * integration-tests: Omit unused parameters
+  * Munit
+  * Introduce nghttp2_ssize API
+  * Move deprecated warning upfront
+  * Describe RFC 7540 priorities deprecation plan
+  * Apps migrate nghttp2 ssize
+  * src: Remove unused functions
+  * Reconsider ssize t usage in src
+  * Use GitHub private vulnerability reporting
+  * Move security policy to GitHub standard location
+  * Bump mruby to 3.3.0
+  * Bump llhttp to 48588093ca4219b5f689acfc9ebea9e4c8c37663
+  * h2load: Add --sni option</comment>
+    <requestid>1159004</requestid>
+  </revision>
 </revisionlist>
