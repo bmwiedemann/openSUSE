@@ -1,7 +1,7 @@
 #
 # spec file for package gtk3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,7 @@
 %define __provides_exclude_from ^%{_libdir}/gtk-3.0
 
 Name:           gtk3
-Version:        3.24.38+111
+Version:        3.24.41
 Release:        0
 Summary:        The GTK+ toolkit library (version 3)
 License:        LGPL-2.1-or-later
@@ -156,7 +156,7 @@ Summary:        Amharic input method for the GTK+ toolkit library v3
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools
-Requires(postun):%{name}-tools
+Requires(postun): %{name}-tools
 Provides:       locale(%{name}:am)
 
 %description immodule-amharic
@@ -171,7 +171,7 @@ Summary:        Broadway input method for the GTK+ toolkit library v3
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools
-Requires(postun):%{name}-tools
+Requires(postun): %{name}-tools
 
 %description immodule-broadway
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.
@@ -185,7 +185,7 @@ Summary:        Inuktitut input method for the GTK+ toolkit library v3
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools
-Requires(postun):%{name}-tools
+Requires(postun): %{name}-tools
 Provides:       locale(%{name}:iu)
 
 %description immodule-inuktitut
@@ -200,7 +200,7 @@ Summary:        Multipress input method for the GTK+ toolkit library v3
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools
-Requires(postun):%{name}-tools
+Requires(postun): %{name}-tools
 
 %description immodule-multipress
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.
@@ -215,7 +215,7 @@ Summary:        Thai-Lao input method for the GTK+ toolkit library v3
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools
-Requires(postun):%{name}-tools
+Requires(postun): %{name}-tools
 Provides:       locale(%{name}:lo)
 Provides:       locale(%{name}:th)
 
@@ -231,7 +231,7 @@ Summary:        Tigrigna input method for the GTK+ toolkit library v3
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools
-Requires(postun):%{name}-tools
+Requires(postun): %{name}-tools
 Provides:       %{name}-immodules-tigrigna = %{version}
 Provides:       locale(%{name}:ti)
 Obsoletes:      %{name}-immodules-tigrigna < %{version}
@@ -248,7 +248,7 @@ Summary:        Vietnamese input method for the GTK+ toolkit library v3
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools
-Requires(postun):%{name}-tools
+Requires(postun): %{name}-tools
 Provides:       locale(%{name}:vi)
 
 %description immodule-vietnamese
@@ -263,7 +263,7 @@ Summary:        Wayland input method for the GTK+ toolkit library (version 3)
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools
-Requires(postun):%{name}-tools
+Requires(postun): %{name}-tools
 
 %description immodule-wayland
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.
@@ -278,7 +278,7 @@ Summary:        X input method for the GTK+ toolkit library v3
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools
-Requires(postun):%{name}-tools
+Requires(postun): %{name}-tools
 Provides:       locale(%{name}:ja)
 Provides:       locale(%{name}:ko)
 Provides:       locale(%{name}:th)
@@ -295,7 +295,7 @@ This package provides an input method based on the X Input Method.
 Summary:        Auxiliary utilities for the GTK+ toolkit library v3
 Group:          System/Libraries
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %description tools
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.
@@ -604,10 +604,7 @@ fi
 %ghost %{_sysconfdir}/alternatives/gtk-update-icon-cache.1%{?ext_man}
 %dir %{_datadir}/gtk-3.0/
 %dir %{_datadir}/gtk-3.0/emoji
-%{_datadir}/gtk-3.0/emoji/de.gresource
-%{_datadir}/gtk-3.0/emoji/es.gresource
-%{_datadir}/gtk-3.0/emoji/fr.gresource
-%{_datadir}/gtk-3.0/emoji/zh.gresource
+%{_datadir}/gtk-3.0/emoji/*.gresource
 
 %files schema
 %{_datadir}/glib-2.0/schemas/org.gtk.Settings.ColorChooser.gschema.xml

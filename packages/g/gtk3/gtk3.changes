@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Jan 25 11:50:18 UTC 2024 - dimstar@opensuse.org
+
+- Update to version 3.24.41:
+  + Fix a crash introduced in the X11 changes in 3.24.40.
+  + Build fixes.
+  + Wayland: Fix interpretation of gtk-shell protocol.
+
+-------------------------------------------------------------------
+Thu Jan 18 17:06:33 UTC 2024 - dimstar@opensuse.org
+
+- Update to version 3.24.40:
+  * Free monitor name on finalize
+  * Rework after first review
+  * Rework to get rid of get_monitor_by_output
+  * Use xorg 'monitor' the right way. See #2013
+
+-------------------------------------------------------------------
+Tue Jan 16 11:12:55 UTC 2024 - dimstar@opensuse.org
+
+- Update to version 3.24.39+23:
+  * gdkdisplay-wayland: Init selection before roundtrips
+  * Use consistent coordinates in get_toplevel_from_ns_event.
+  * emoji: Update data to CLDR v44
+  * emoji: Update data to CLDR v43
+  * add hi-ja-et-fi-nb-th for gtkemojichooser
+  * add bengali language bn.data for gtkemojichooser
+  * emoji: Add more locales
+  * emoji: Update data to CLDR v40
+  * emoji: Fix the convert-emoji program
+  * gtkgesture: Preserve accuracy when translating events
+  * pathbar: Handle webdav where is the root is a path
+  * GtkTooltip: Fix tooltip positioning on X11
+  * gdkkeys-win32c: change registry key not found g_warning to g_debug
+  * [gtk3/wayland] Expose XDG-shell suspended state via visibility events.
+  * [gtk3/wayland] Only request v2 of xdg_wm_base.
+  * test-msys2-meson: fix pipeline failure on GTK3
+  * wayland: Fix wl_buffer size for custom cursors
+  * GtkMenu: Fix positioning when attached to offscreen windows
+  * gdk_display_get_monitor_at_window: Check for offscreen windows
+  * GdkWindow: check for same impl class in set_transient_for ()
+  * [gtk3] Cherry-pick gtkfilechoosernativeportal fixes from gtk4
+  * wayland: Avoid more legacy cursor names
+  * Fall back to the 'default' cursor
+
+-------------------------------------------------------------------
 Thu Dec 07 15:35:33 UTC 2023 - dimstar@opensuse.org
 
 - Update to version 3.24.38+111:
