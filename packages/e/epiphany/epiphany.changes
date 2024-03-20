@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Mar 15 14:30:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Improve keyboard navigation of address bar dropdown.
+  + Add "Send Link by Email..." to context menu for links.
+  + Use selected text when middle clicking on New Tab button.
+
+-------------------------------------------------------------------
+Thu Feb 29 07:48:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Close security popover after selection.
+  + Focus location entry on search hotkey.
+  + Close page menu popover on print, search and fullscreen
+    actions.
+  + Forward key events directly to web view.
+  + Updated translations.
+- Replace pkgconfig(gck-1) BuildRequires with pkgconfig(gck-2):
+  follow upstream changes.
+
+-------------------------------------------------------------------
+Mon Feb 12 15:47:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + Fix a crash.
+  + Allow closing pinned tabs.
+  + Adjust labels to improve HIG compliance.
+  + Support PKCS #11 smart card authentication.
+  + Updated translations.
+- Add pkgconfig(gck-1) BuildRequires: new depenency.
+
+-------------------------------------------------------------------
+Tue Jan 16 07:36:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + Use web app manifest to get better app name and icon.
+  + Prevent websites from using certain Epiphany internal APIs.
+  + Fix poor Firefox Sync error message when gnome-keyring is not
+    installed.
+  + Reduce adblock filter update interval on metered connections.
+  + Rename Firefox Account to Mozilla Account.
+  + Hide various context menu items when text is selected.
+  + Remove Google Safe Browsing support due to terms of service
+    changes.
+  + Hide developer context menu actions by default.
+  + Update to highlight.js 11.9.0.
+  + Use AdwSpinRow in preferences dialog.
+  + Many improvements to appstream metainfo.
+  + Updated translations.
+- Convert to source service for easier updating.
+
+-------------------------------------------------------------------
 Mon Nov  6 19:00:44 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.1:
