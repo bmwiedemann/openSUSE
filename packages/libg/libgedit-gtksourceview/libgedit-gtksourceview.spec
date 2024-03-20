@@ -1,7 +1,7 @@
 #
 # spec file for package libgedit-gtksourceview
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           libgedit-gtksourceview
-Version:        299.0.4
+Version:        299.1.0
 Release:        0
 Summary:        Source code editing widget
 License:        LGPL-2.1-or-later
 URL:            https://gedit-technology.net/
-Source:         https://gedit-technology.net/tarballs/%{name}/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig

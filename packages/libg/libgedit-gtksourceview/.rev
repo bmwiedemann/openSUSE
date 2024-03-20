@@ -15,4 +15,12 @@
     <comment>Pushing GNOME 45.rc packages (forwarded request 1109843 from iznogood)</comment>
     <requestid>1110509</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3ef31336dc7fc72a71f26366fae25aeb</srcmd5>
+    <version>299.1.0</version>
+    <time>1710965559</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1159285 from dimstar)</comment>
+    <requestid>1159541</requestid>
+  </revision>
 </revisionlist>

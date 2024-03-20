@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Feb 16 07:36:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 299.1.0:
+  + Continue to rework GtkSourceStyle* classes.
+    This includes a switch from the libxml2 to GMarkupParser.
+    (the libxml2 is still used for *.lang files though).
+  + Style schemes XML file format:
+    - Simplify it.
+    - Better document it.
+    - Extend it with the "kind" attribute, for light/dark schemes.
+    - Remove the *.rng file.
+  + Unit tests:
+    - Don't rely on environment variables to be set to run the
+      tests.
+    - Have good code coverage for what has been modified or added.
+- Changes from version 299.0.5:
+  + Fix a bug: Alt+Down (moving line(s) down) or Alt+Up (moving
+    line(s) up) wrt. the undo/redo history and cursor positioning.
+
+-------------------------------------------------------------------
 Sun Aug 13 14:32:56 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 299.0.4:
