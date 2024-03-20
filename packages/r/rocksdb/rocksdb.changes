@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Mar 19 20:47:00 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 9.0.0:
+  * Provide support for FSBuffer for point lookups. Also added
+    support for scans and compactions that don't go through prefetching.
+  * *Make SstFileWriter create SST files without persisting user
+    defined timestamps when the
+    Option.persist_user_defined_timestamps flag is set to false.
+  * Add support for user-defined timestamps in APIs
+    DeleteFilesInRanges and GetPropertiesOfTablesInRange.
+  * Mark wal_compression feature as production-ready. Currently
+    only compatible with ZSTD compression.
+  * Public API Changes, including incompatible changes
+  * format_version=6 is the new default setting in
+    BlockBasedTableOptions, for more robust data integrity
+    checking. DBs and SST files written with this setting cannot be
+    read by RocksDB versions before 8.6.0.
+  * Compactions can be scheduled in parallel in an additional
+    scenario: multiple files are marked for compaction within a
+    single column family
+  * For leveled compaction, RocksDB will try to do intra-L0
+    compaction if the total L0 size is small compared to Lbase.
+  * Users with atomic_flush=true are more likely to see the impact
+    of this change.
+  * Bug Fixes
+- add rocksdb-9.0.0-Fix-zstd-typo-in-cmake.patch
+
+-------------------------------------------------------------------
 Wed Feb 28 15:18:46 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 8.11.3:
