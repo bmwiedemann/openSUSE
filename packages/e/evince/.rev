@@ -1357,4 +1357,12 @@ New stable release</comment>
     <comment>- Convert to source service for easier updating. (forwarded request 1139274 from dimstar)</comment>
     <requestid>1139290</requestid>
   </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>89519993a9c6cc3abfbc9289dc15dcf5</srcmd5>
+    <version>46.0</version>
+    <time>1710965510</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158706 from dimstar)</comment>
+    <requestid>1159502</requestid>
+  </revision>
 </revisionlist>

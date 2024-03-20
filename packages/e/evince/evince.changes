@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:41:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + data: Improve url locations.
+  + help: Replace live.gnome.org with wiki.gnome.org.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 14 17:49:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Backend: Add missing break to make two columns right work.
+  + Data:
+    - Add vcs-browser URL support.
+    - Improve appdata for AppStream 1.0.
+    - Remove none OARS tags.
+    - Fix URLs in metadata.
+    - Update the copyright year.
+    - Fix wrong developer id.
+    - Replace non-existing mailing list with GNOME Discourse URL.
+  + Help: Fix invalid markup in Hungarian translation.
+  + libview: Do not define unnecessary function prototype ahead.
+  + Shell:
+    - Only set "fullscreen" in metadata if it's not maximized.
+    - Activate search-outline mode from text entry.
+    - Fix Evince crash when exiting.
+    - Fix crash when annotation window is closed outside of Evince.
+    - Fix invalid markup in Brazilian Portuguese help translation.
+    - Avoid crash when deleting annotation.
+    - Don't set show close button on infobar.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Jan 16 17:35:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Convert to source service for easier updating.
