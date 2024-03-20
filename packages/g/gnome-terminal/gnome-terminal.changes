@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 19 07:51:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.52.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 20 09:09:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.51.90:
+  + schemas: Fix inverted help text for word-char-exceptions.
+  + settings: Make schema verifier stricter.
+  + prefs: Add pref to scroll on paste.
+  + window: Show nicely formatted numbers up to 2^64-1 in the
+    context menu.
+  + help: Add VTE's new hardcoded shell integration shortcut keys.
+  + help: Consistently use "Terminal" instead of "GNOME Terminal".
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Oct 21 19:25:53 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 3.50.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-terminal
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without  nautilus_extension
 Name:           gnome-terminal
-Version:        3.50.1
+Version:        3.52.0
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -42,16 +42,16 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(dconf) >= 0.14.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.52.0
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.52
+BuildRequires:  pkgconfig(glib-2.0) >= 2.76.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 0.1.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.7
 BuildRequires:  pkgconfig(libhandy-1)
 %if %{with nautilus_extension}
 BuildRequires:  pkgconfig(libnautilus-extension-4)
 %endif
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.00
 BuildRequires:  pkgconfig(uuid)
-BuildRequires:  pkgconfig(vte-2.91) >= 0.74.0
+BuildRequires:  pkgconfig(vte-2.91) >= 0.76.0
 BuildRequires:  pkgconfig(x11)
 Requires(pre):  filesystem
 
