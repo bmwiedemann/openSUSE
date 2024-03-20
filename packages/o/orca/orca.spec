@@ -17,18 +17,19 @@
 
 
 Name:           orca
-Version:        45.2
+Version:        46.0
 Release:        0
 Summary:        Screen reader for GNOME
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Orca
-Source0:        https://download.gnome.org/sources/orca/45/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/orca/46/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  liblouis-devel
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.3
@@ -38,14 +39,12 @@ BuildRequires:  python3-louis
 BuildRequires:  python3-speechd
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(atk-bridge-2.0) >= 2.18
-BuildRequires:  pkgconfig(atspi-2) >= 2.18
-BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(atk-bridge-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(atspi-2) >= 2.2.50.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.18
 # the gsettings tool is used to know if a11y is enabled
 Requires:       glib2-tools
-# pyatspi is a virtual name that is provided by the default at-spi stack
-Requires:       py3atspi
 Requires:       python3-brlapi
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
@@ -62,21 +61,21 @@ braille, and/or magnification.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{python3_sitelib}
 %fdupes %{buildroot}%{_datadir}
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog MAINTAINERS NEWS README TODO
+%doc AUTHORS ChangeLog MAINTAINERS NEWS TODO
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/orca
 %{_sysconfdir}/xdg/autostart/orca-autostart.desktop

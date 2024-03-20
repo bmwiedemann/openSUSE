@@ -1355,4 +1355,12 @@
   + Updated translations. (forwarded request 1139294 from dimstar)</comment>
     <requestid>1139300</requestid>
   </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>0375bd342c48d422b40d10c58adc8db8</srcmd5>
+    <version>46.0</version>
+    <time>1710965448</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1157620 from dimstar)</comment>
+    <requestid>1159432</requestid>
+  </revision>
 </revisionlist>

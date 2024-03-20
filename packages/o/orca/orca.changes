@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Wed Mar 13 13:35:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Meson: Allow building without git executable.
+  + Spiel:
+    - Fix language and dialect fallback.
+    - Catch all of Spiel's initialization errors.
+    - Respect both speech system override, and user preference.
+    - Avoid shutting Spiel down if still in use.
+  + Key handling:
+    - Eliminate unnecessary keygrab refreshes in the web script.
+    - Fix new-keyhandling regression in bypass mode.
+  + Thunderbird: Adjust to Thunderbird's new way of doing things
+    when a message is deleted.
+  + General:
+    - Fix false positive identifying redundant name-change events.
+    - Fix regressions introduced by the accessible-text code
+      rewrite.
+  + Updated translations.
+- Drop orca-without-git.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Feb 21 11:15:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + Orca now uses meson instead of autotools.
+  + Orca no longer depends on the python3-pyatspi package; it
+    accesses AT-SPI2 directly through gobject introspection.
+  + Orca now has an optional dependency on the Spiel library. Please
+    see "Experimental Features" in README.md for details.
+  + New and Updated Features:
+    - Spiel support has been added to Orca. Spiel is a new speech
+      synthesis API that works with eSpeak and Piper, with other
+      synthesizers planned.
+  + Web:
+    - Handled several issues causing Orca to jump unexpectedly to
+      the top of the page.
+    - Interrupt speech before presenting new line/location with
+      caret nav. This should improve behavior when arrowing rapidly
+      within content.
+    - Fix bug causing "\ufffc" to be shown in braille instead of
+      the link.
+    - Eliminate (nearly all of) our text sanity-checks and hacks
+      that had been in place for Firefox/Gecko bugs. Mozilla fixed
+      those bugs as part of their Cache The World work. This should
+      improve performance.
+  + General:
+    - Fix bug causing focus to be incorrectly changed when
+      selection is automatically updated in a related tree. This
+      can happen with email applications (e.g. incoming messages).
+    - Fix bug causing us to skip certain named elements in
+      StackExchange and StackOverflow.
+    - Fix several terminal-related flat review issues.
+    - Fix notifications in KDE not being fully presented by
+      Notification Presenter.
+    - Don't say "Window" when a MATE switcher window first appears.
+    - Echo sentence after whitespace typed rather than punctuation
+      so the presentation does not get cut off.
+    - Fix bug causing Orca to speak an object from the wrong window
+      in Mouse Review.
+    - Listen for and present document:page-changed events.
+    - Remove logic from the Event Manager that was obsoleted by the
+      ability to obsolete queued events. Make remaining logic more
+      performant.
+    - Convert Orca from using pyatspi to using AT-SPI2 directly.
+      Much code clean-up was also done in the process.
+    - Miscellaneous code changes related to becoming more ready for
+      Wayland.
+  + Updated translations.
+- Add orca-without-git.patch: allow building without git installed.
+- Add meson BuildRequires: follow upstreams port to meson.
+- Drop py3atspi Requires: upstream changed to
+  gobject-introspection, so we have an automatic dependency on
+  typelib() now.
+- Add pkgconfig(gtk+-3.0) BuildRequires: dependency checked by
+  meson.
+
+-------------------------------------------------------------------
+Thu Jan 18 17:09:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + The much-requested "sleep mode" has arrived! You can cause Orca
+    to act as if it were not running on an as-needed, per-app basis
+    with Ctrl+Alt+Shift+Q. This makes it much easier to use VMs in
+    which another screen reader is being used as well as
+    self-voicing apps.
+  + Orca now has commands to present information about the system
+    without having to navigate to the bar or widget that displays
+    them:
+    - Present CPU and memory usage (unbound, requires psutil)
+    - Present battery status (unbound, requires psutil)
+  + Table navigation commands now work everywhere; not just in web
+    browsers and LibreOffice. In addition to the existing commands,
+    the following commands have been added:
+    - Orca+Shift+T: toggle table navigation (it's enabled by
+      default)
+    - Orca+Alt+Shift+Left/Right/Up/Down: move to the final cell in
+      the specified direction.
+  + Orca's outdated tutorial message feature has been removed. In
+    its place is support for customized help messages which
+    application and toolkit developers can provide via
+    ATK/AT-SPI2's new "help text" API. At the present time, we are
+    unaware of any implementations and thus have not enabled these
+    new tutorial messages by default.
+  + We now always use Atspi's device API for Orca commands. This
+    was initially in place only for Gtk 4 apps, which do not report
+    keystrokes to us for optional construction. Having addressed
+    the majority of issues with this new API, we believe it is
+    ready to be used for all applications and toolkits.
+  + Web and Electron Apps Improvements:
+    - Include DLs in list navigation and DTs in list item navigation.
+    - Improve presentation of VSCode's selection containers.
+    - Web: Improve performance of navigation to end of document
+  + LibreOffice Bug Fix:
+    - Ensure the entire word count dialog is presented when the
+      dialog is shown.
+  + General Improvements and Fixes:
+    - Improve performance by identifying and quickly dismissing
+      obsolete accessible events.
+    - Improve performance by using AT-SPI2's cache for everything.
+    - Fix bug causing utterances to be split up unexpectedly.
+    -  Announce the has popup state even in non-web contexts.
+    - Lots of code clean-up and more work to eliminate our
+      dependency on pyatspi.
+
+-------------------------------------------------------------------
 Tue Jan 16 17:49:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 45.2:
