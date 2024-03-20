@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  1 16:08:46 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update aws to version 0.24.2.
+  -   0.24.2
+      - Support bytestring 0.12
+      - Support building with aeson 2.2, adding dependency on
+        attoparsec-json.
+
+-------------------------------------------------------------------
 Fri Jun 23 17:52:45 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update aws to version 0.24.1.
