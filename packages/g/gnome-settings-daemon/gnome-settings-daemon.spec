@@ -27,16 +27,16 @@
 %bcond_without wacom
 %endif
 
-%define base_ver 45
+%define base_ver 46
 
 Name:           gnome-settings-daemon
-Version:        45.1
+Version:        46.0
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-settings-daemon
-Source0:        https://download.gnome.org/sources/gnome-settings-daemon/45/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 # PATCH-FIX-OPENSUSE gnome-settings-daemon-initial-keyboard.patch bsc#979051 boo#1009515 federico@suse.com -- Deal with the default keyboard being set from xkb instead of GNOME
 Patch0:         gnome-settings-daemon-initial-keyboard.patch
@@ -67,9 +67,9 @@ BuildRequires:  pkgconfig(geoclue-2.0) >= 2.1.2
 BuildRequires:  pkgconfig(geocode-glib-2.0) >= 3.10.0
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.58
+BuildRequires:  pkgconfig(glib-2.0) >= 2.70
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.11.1
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 42
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 46.beta
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.3
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(gweather4)
@@ -85,7 +85,7 @@ BuildRequires:  pkgconfig(librsvg-2.0) >= 2.36.2
 BuildRequires:  pkgconfig(mm-glib) >= 1.0
 BuildRequires:  pkgconfig(pango) >= 1.20.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.114
-BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(systemd) >= 243
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(upower-glib) >= 0.99.12
 BuildRequires:  pkgconfig(x11)

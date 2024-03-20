@@ -1516,4 +1516,12 @@ work. (forwarded request 640069 from iznogood)</comment>
   + Patch1000:gnome-settings-daemon-notify-idle-resumed.patch (forwarded request 1136890 from dimstar)</comment>
     <requestid>1136892</requestid>
   </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>1b00a529dd6f3fd02433dc4c12ca3136</srcmd5>
+    <version>46.0</version>
+    <time>1710965501</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158699 from dimstar)</comment>
+    <requestid>1159497</requestid>
+  </revision>
 </revisionlist>
