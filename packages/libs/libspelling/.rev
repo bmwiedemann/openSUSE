@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1123778</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cbd79699f93ee9e884ca85f7c7890239</srcmd5>
+    <version>0.2.1</version>
+    <time>1710965721</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1159283 from dimstar)</comment>
+    <requestid>1159441</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libspelling
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           libspelling
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        A spellcheck library for GTK 4
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/chergert/libspelling
 Source:         https://download.gnome.org/sources/libspelling/0.2/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 6d26ffd30c78b7f255b1665fac3fb88960ea01ba.patch -- egg: fix license to be LGPLv2.1+
-Patch0:         %{url}/-/commit/6d26ffd30c78b7f255b1665fac3fb88960ea01ba.patch
 
 BuildRequires:  c_compiler
 BuildRequires:  meson

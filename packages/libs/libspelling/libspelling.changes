@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  4 08:46:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.2.1:
+  + Fix licenses to all be LGPLv2.1+.
+  + Fix handling of cursor-moved signal.
+- Drop 6d26ffd30c78b7f255b1665fac3fb88960ea01ba.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Tue Nov  7 08:54:59 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer
