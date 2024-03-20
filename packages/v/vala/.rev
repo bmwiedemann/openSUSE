@@ -1280,4 +1280,12 @@
   build dependency. (forwarded request 1129824 from fcrozat)</comment>
     <requestid>1130309</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>dabfb1644781409a5cd781fe915e1d11</srcmd5>
+    <version>0.56.16</version>
+    <time>1710965549</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1159272 from dimstar)</comment>
+    <requestid>1159533</requestid>
+  </revision>
 </revisionlist>
