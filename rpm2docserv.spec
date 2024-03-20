@@ -1,7 +1,7 @@
 #
 # spec file for package rpm2docserv
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %endif
 
 Name:           rpm2docserv
-Version:        20230308.4ed55cf
+Version:        20240320.aa59b30
 Release:        0
 Summary:        Make manpages from RPMs accessible in a web browser
 License:        Apache-2.0
@@ -30,7 +30,7 @@ Source:         rpm2docserv-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
-BuildRequires:  golang(API) >= 1.19
+BuildRequires:  golang(API) >= 1.21
 Requires:       /usr/bin/mandoc
 Requires:       cpio
 # To re-create:

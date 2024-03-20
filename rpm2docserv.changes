@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 20 09:39:50 UTC 2024 - kukuk@suse.com
+
+- Update to version 20240320.aa59b30:
+  * Switch to google.golang.org/protobuf
+
+-------------------------------------------------------------------
 Wed Mar 08 10:05:45 UTC 2023 - kukuk@suse.com
 
 - Update to version 20230308.4ed55cf:
