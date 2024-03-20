@@ -17,23 +17,21 @@
 
 
 # Update this on every major/minor bump
-%define basever 45
+%define basever 46
 %define glib_version 2.75
 
 Name:           gnome-builder
-Version:        45.0
+Version:        46.0
 Release:        0
 Summary:        A toolsmith for GNOME-based applications
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Builder
-Source0:        https://download.gnome.org/sources/gnome-builder/45/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source99:       %{name}-rpmlintrc
 
 # PATCH-FIX-OPENSUSE Dirty-quick-hackfix-typelibs.patch -- Nuke away bogus typelibs dependencies
 Patch0:         Dirty-quick-hackfix-typelibs.patch
-# PATCH-FIX-UPSTREAM 43a7c586.patch -- remove autoptr cleanup; done by GTK4
-Patch1:         https://gitlab.gnome.org/GNOME/gnome-builder/-/commit/43a7c586.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -59,11 +57,11 @@ BuildRequires:  pkgconfig(gtk4) >= 4.10
 BuildRequires:  pkgconfig(gtksourceview-5) >= 5.8
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
 BuildRequires:  pkgconfig(jsonrpc-glib-1.0) >= 3.43.0
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.4
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.5.alpha
 BuildRequires:  pkgconfig(libcmark) >= 0.29.0
 BuildRequires:  pkgconfig(libdex-1) >= 0.2
 BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 1.1.0
-BuildRequires:  pkgconfig(libpanel-1) >= 1.1.2
+BuildRequires:  pkgconfig(libpanel-1) >= 1.5.0
 BuildRequires:  pkgconfig(libpeas-2) >= 1.99.0
 BuildRequires:  pkgconfig(libportal-gtk4)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
