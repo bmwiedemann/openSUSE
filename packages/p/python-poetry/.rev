@@ -483,4 +483,41 @@
     due to a race condition in the artifact cache (#8517).</comment>
     <requestid>1136488</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>76919defd1d8323cd293d0b92ef87c0e</srcmd5>
+    <version>1.8.2</version>
+    <time>1710965789</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.2
+  * Harden lazy-wheel error handling if the index server is
+    behaving badly in an unexpected way (#9051).
+  * Improve lazy-wheel error handling if the index server does not
+    handle HTTP range requests correctly (#9082).
+  * Improve lazy-wheel error handling if the index server pretends
+    to support HTTP range requests but does not respect them
+    (#9084).
+  * Improve lazy-wheel to allow redirects for HEAD requests
+    (#9087).
+  * Improve debug logging for lazy-wheel errors (#9059).
+  * Fix an issue where the hash of a metadata file could not be
+    calculated correctly due to an encoding issue (#9048).
+  * Fix an issue where poetry add failed in non-package mode if no
+    project name was set (#9046).
+  * Fix an issue where a hint to non-package mode was not compliant
+    with the final name of the setting (#9073).
+- Release 1.8.1
+  * Update the minimum required version of packaging (#9031).
+  * Handle unexpected responses from servers that do not support
+    HTTP range requests with negative offsets more robust (#9030).
+- Release 1.8.0
+  ## Added
+  * Add a non-package mode for use cases where Poetry is only used
+    for dependency management (#8650).
+  * Add support for PEP 658 to fetch metadata without having to
+    download wheels (#5509).
+  * Add a lazy-wheel config option (default: true) to reduce wheel
+    downloads during dependency resolution (#8815, #8941).
+  * Improve performance of dependency resolution by using shallow</comment>
+    <requestid>1159626</requestid>
+  </revision>
 </revisionlist>

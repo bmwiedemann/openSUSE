@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-poetry
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry%{psuffix}
-Version:        1.7.1
+Version:        1.8.2
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
@@ -37,11 +37,11 @@ URL:            https://python-poetry.org/
 Source:         https://github.com/python-poetry/poetry/archive/%{version}.tar.gz#/poetry-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core = 1.8.1}
+BuildRequires:  %{python_module poetry-core >= 1.7.0 with %python-poetry-core < 2.0.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-build >= 1.0.3
-Requires:       python-poetry-core = 1.8.1
+Requires:       python-poetry-core = 1.9.0
 Requires:       python-poetry-plugin-export >= 1.6.0
 # SECTION cachecontrol[filecache]
 Requires:       python-CacheControl >= 0.13
@@ -56,14 +56,14 @@ Requires:       python-importlib-metadata >= 4.4
 %endif
 Requires:       python-installer >= 0.7.0
 Requires:       python-keyring >= 24.0
-Requires:       python-packaging >= 20.4
+Requires:       python-packaging >= 23.1
 Requires:       python-pexpect >= 4.7.0
 Requires:       python-pkginfo >= 1.9.4
-Requires:       python-platformdirs >= 3.0.0
 Requires:       python-pyproject-hooks >= 1.0.0
 Requires:       python-requests >= 2.26
 Requires:       python-shellingham >= 1.5
-Requires:       (python-requests-toolbelt >= 0.9.1 with python-requests-toolbelt < 2)
+Requires:       (python-platformdirs >= 3.0.0 with python-platformdirs < 5)
+Requires:       (python-requests-toolbelt >= 1.0.0 with python-requests-toolbelt < 2)
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 2.0.1
 %endif
@@ -71,7 +71,7 @@ Requires:       python-trove-classifiers >= 2022.5.19
 Requires:       python-virtualenv >= 20.22
 Requires:       (python-tomlkit >= 0.11.4 with python-tomlkit < 1.0)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     git-core
 Recommends:     python-devel
 BuildArch:      noarch
@@ -120,6 +120,10 @@ donttest="$donttest or test_installer_with_pypi_repository"
 donttest="$donttest or test_executor_should_write_pep610_url_references"
 donttest="$donttest or test_prepare_directory or test_prepare_sdist"
 donttest="$donttest or test_isolated_env_install_success"
+# different hashes in our own ecosystem
+donttest="$donttest or test_executor_known_hashes"
+# no command "exit-code"
+donttest="$donttest or test_info_setup_complex_calls_script"
 %{python_expand # pytest needs to be called from the virtualenv python interpreter gh#python-poetry/poetry#1645
 virtualenv-%{$python_bin_suffix} --system-site-packages testenv-%{$python_bin_suffix}
 source testenv-%{$python_bin_suffix}/bin/activate

@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Tue Mar 19 16:10:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.8.2
+  * Harden lazy-wheel error handling if the index server is
+    behaving badly in an unexpected way (#9051).
+  * Improve lazy-wheel error handling if the index server does not
+    handle HTTP range requests correctly (#9082).
+  * Improve lazy-wheel error handling if the index server pretends
+    to support HTTP range requests but does not respect them
+    (#9084).
+  * Improve lazy-wheel to allow redirects for HEAD requests
+    (#9087).
+  * Improve debug logging for lazy-wheel errors (#9059).
+  * Fix an issue where the hash of a metadata file could not be
+    calculated correctly due to an encoding issue (#9048).
+  * Fix an issue where poetry add failed in non-package mode if no
+    project name was set (#9046).
+  * Fix an issue where a hint to non-package mode was not compliant
+    with the final name of the setting (#9073).
+- Release 1.8.1
+  * Update the minimum required version of packaging (#9031).
+  * Handle unexpected responses from servers that do not support
+    HTTP range requests with negative offsets more robust (#9030).
+- Release 1.8.0
+  ## Added
+  * Add a non-package mode for use cases where Poetry is only used
+    for dependency management (#8650).
+  * Add support for PEP 658 to fetch metadata without having to
+    download wheels (#5509).
+  * Add a lazy-wheel config option (default: true) to reduce wheel
+    downloads during dependency resolution (#8815, #8941).
+  * Improve performance of dependency resolution by using shallow
+    copies instead of deep copies (#8671).
+  * poetry check validates that no unknown sources are referenced
+    in dependencies (#8709).
+  * Add archive validation during installation for further hash
+    algorithms (#8851).
+  * Add a to key in tool.poetry.packages to allow custom subpackage
+    names (#8791).
+  * Add a config option to disable keyring (#8910).
+  * Add a --sync option to poetry update (#8931).
+  * Add an --output option to poetry build (#8828).
+  * Add a --dist-dir option to poetry publish (#8828).
+  ## Changed
+  * The implicit PyPI source is disabled if at least one primary
+    source is configured (#8771).
+  * Deprecate source priority default (#8771).
+  * Upgrade the warning about an inconsistent lockfile to an error
+    (#8737).
+  * Deprecate setting installer.modern-installation to false
+    (#8988).
+  * Drop support for pip<19 (#8894).
+  * Require requests-toolbelt>=1 (#8680).
+  * Allow platformdirs 4.x (#8668).
+  * Allow and require xattr 1.x on macOS (#8801).
+  * Improve venv shell activation in fish (#8804).
+  * Rename system to base in output of poetry env info (#8832).
+  * Use pretty name in output of poetry version (#8849).
+  * Improve error handling for invalid entries in
+    tool.poetry.scripts (#8898).
+  * Improve verbose output for dependencies with extras during
+    dependency resolution (#8834).
+  * Improve message about an outdated lockfile (#8962).
+  ## Fixed
+  * Fix an issue where poetry shell failed when Python has been
+    installed with MSYS2 (#8644).
+  * Fix an issue where Poetry commands failed in a terminal with a
+    non-UTF-8 encoding (#8608).
+  * Fix an issue where a missing project name caused an
+    incomprehensible error message (#8691).
+  * Fix an issue where Poetry failed to install an sdist path
+    dependency (#8682).
+  * Fix an issue where poetry install failed because an unused
+    extra was not available (#8548).
+  * Fix an issue where poetry install --sync did not remove an
+    unrequested extra (#8621).
+  * Fix an issue where poetry init did not allow specific
+    characters in the author field (#8779).
+  * Fix an issue where Poetry could not download sdists from
+    misconfigured servers (#8701).
+  * Fix an issue where metadata of sdists that call CLI tools of
+    their build requirements could not be determined (#8827).
+  * Fix an issue where Poetry failed to use the currently activated
+    environment (#8831).
+  * Fix an issue where poetry shell failed in zsh if a space was in
+    the venv path (#7245).
+  * Fix an issue where scripts with extras could not be installed
+    (#8900).
+  * Fix an issue where explicit sources where not propagated
+    correctly (#8835).
+  * Fix an issue where debug prints where swallowed when using a
+    build script (#8760).
+  * Fix an issue where explicit sources of locked dependencies
+    where not propagated correctly (#8948).
+  * Fix an issue where Poetry's own environment was falsely
+    identified as system environment (#8970).
+  * Fix an issue where dependencies from a setup.py were ignored
+    silently (#9000).
+  * Fix an issue where environment variables for virtualenv.options
+    were ignored (#9015).
+  * Fix an issue where virtualenvs.options.no-pip and
+    virtualenvs.options.no-setuptools were not normalized (#9015).
+
+-------------------------------------------------------------------
 Tue Jan  2 19:19:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.1:
