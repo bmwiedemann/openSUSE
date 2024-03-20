@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 20 12:21:50 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.1.16:
+  - Implement lsp_rename()
+
+-------------------------------------------------------------------
 Tue Mar 12 07:46:28 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.1.15 (we can do released tarballs again):

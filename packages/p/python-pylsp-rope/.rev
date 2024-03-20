@@ -116,4 +116,14 @@
 </comment>
     <requestid>1157102</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6acc83456eced3e681b7d0707d2c62a5</srcmd5>
+    <version>0.1.16</version>
+    <time>1710965918</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.16:
+  - Implement lsp_rename()
+</comment>
+    <requestid>1159847</requestid>
+  </revision>
 </revisionlist>
