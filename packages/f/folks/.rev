@@ -487,4 +487,12 @@
   wrong requires in typelibs. (forwarded request 1073088 from iznogood)</comment>
     <requestid>1073224</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>6f75cb3d975957088f4ce1c8fcc802e1</srcmd5>
+    <version>0.15.8</version>
+    <time>1710965486</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158682 from dimstar)</comment>
+    <requestid>1159486</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:21:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.15.8:
+  + Major changes:
+    - simple-query: Avoid some silly string copies.
+    - Lots of translation updates.
+  + Bugs fixed:
+    - bluez: Follow breaking API change in dbusmock.
+
+-------------------------------------------------------------------
+Wed Feb 28 08:50:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.15.7+7:
+  + build: add missing API declaration -include to dummy and EDS
+    backends.
+  + Revert "tests/bluez: Follow PairDevice() API change"
+  + Updated translations.
+- Pass -Wno-error=return-type to CFLAGS: new meson version no
+  longer hides the errors/warnings, but vala is not yet better at
+  creating C code.
+
+-------------------------------------------------------------------
+Tue Jan 16 07:44:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.15.7:
+  + Major changes:
+    - Add .editorconfig file.
+    - Lots of translation updates.
+  + Bugs fixed:
+    - bluez: Fix invalid ownership of property accessors in Device
+      interface.
+    - tests/telepathy: Use shared_library() to fix g-ir-scanner
+      which expects proper library.
+
+-------------------------------------------------------------------
 Tue Mar  7 21:06:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.15.6:

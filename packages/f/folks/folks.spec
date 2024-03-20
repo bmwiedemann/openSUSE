@@ -1,7 +1,7 @@
 #
 # spec file for package folks
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global __requires_exclude libfolks|libfolks-dummy|libfolks-eds|libfolks-telepathy
 
 %define soversion      26
@@ -23,13 +24,13 @@
 %define with_zeitgeist  0
 
 Name:           folks
-Version:        0.15.6
+Version:        0.15.8
 Release:        0
 Summary:        Library to create metacontacts from multiple sources
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://telepathy.freedesktop.org/wiki/Folks
-Source:         https://download.gnome.org/sources/folks/0.15/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 
 BuildRequires:  gettext
 BuildRequires:  gobject-introspection-devel
@@ -164,6 +165,7 @@ This package provides the development files.
 
 %build
 %define _lto_cflags %{nil}
+export CFLAGS="%{optflags} -Wno-error=return-type"
 %meson \
 %if %{with_zeitgeist}
 	-Dzeitgeist=true \
