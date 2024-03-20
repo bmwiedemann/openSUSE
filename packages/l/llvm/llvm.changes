@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 17 22:45:02 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Drop libomp-devel and python3-lldb where the versioned package is
+  not being built.
+- Let llvm-devel require libomp-devel only where it is built.
+- Let lldb recommend python3-lldb only where it is built.
+
+-------------------------------------------------------------------
 Sat Mar  9 20:32:49 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 18.

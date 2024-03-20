@@ -2330,4 +2330,16 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>1156748</requestid>
   </revision>
+  <revision rev="144" vrev="2">
+    <srcmd5>5e7134a14619c1a61298d95dea4c851b</srcmd5>
+    <version>18</version>
+    <time>1710965409</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop libomp-devel and python3-lldb where the versioned package is
+  not being built.
+- Let llvm-devel require libomp-devel only where it is built.
+- Let lldb recommend python3-lldb only where it is built.
+</comment>
+    <requestid>1158828</requestid>
+  </revision>
 </revisionlist>

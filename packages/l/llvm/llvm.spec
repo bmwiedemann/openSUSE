@@ -17,9 +17,16 @@
 
 
 %define _sonum 18
+
+%ifarch aarch64 ppc64 ppc64le %{ix86} x86_64
+%global has_openmp 1
+%endif
+
 %ifarch aarch64 x86_64
 %define has_lldb 1
+%if %{suse_version} > 1600
 %define has_lldb_python 1
+%endif
 %endif
 
 # obsolete_llvm_versioned() prefix postfix
@@ -67,7 +74,9 @@ Group:          Development/Libraries/C and C++
 Requires:       llvm%{_sonum}-devel
 Provides:       llvm-LTO-devel = %{version}
 Obsoletes:      llvm-LTO-devel < %{version}
+%if 0%{?has_openmp}
 Requires:       libomp-devel
+%endif
 Requires:       llvm-gold
 Requires:       llvm-polly-devel
 %obsolete_llvm_versioned llvm devel
@@ -193,7 +202,9 @@ Summary:        Software debugger built using LLVM libraries
 Group:          Development/Tools/Debuggers
 URL:            https://lldb.llvm.org/
 Requires:       lldb%{_sonum}
+%if 0%{?has_lldb_python}
 Recommends:     python3-lldb
+%endif
 
 %description -n lldb
 LLDB is a next generation, high-performance debugger. It is built as a set
@@ -354,8 +365,10 @@ echo "This is a dummy package to provide a dependency on the system compiler." >
 %files -n lld
 %doc README
 
+%if 0%{?has_openmp}
 %files -n libomp-devel
 %doc README
+%endif
 
 %files polly
 %doc README
