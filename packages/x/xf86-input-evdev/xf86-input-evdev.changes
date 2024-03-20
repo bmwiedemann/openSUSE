@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 19 13:55:29 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_gcc14fix.patch
+  * fixes build against gcc14 (boo#1221710) 
+
+-------------------------------------------------------------------
 Mon Feb 26 12:09:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

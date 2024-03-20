@@ -1,0 +1,24 @@
+--- xf86-input-evdev-2.10.6/src/kioskTouch.c.orig	2024-03-19 14:53:42.242452000 +0100
++++ xf86-input-evdev-2.10.6/src/kioskTouch.c	2024-03-19 14:53:50.747519000 +0100
+@@ -282,8 +282,8 @@ EvdevKioskTouchOn(InputInfoPtr pInfo)
+     if (pEvdev->kioskTouch.mode == -1)
+         return;
+ 
+-    RegisterBlockAndWakeupHandlers (EvdevKioskTouchBlockHandler,
+-                                    EvdevKioskTouchWakeupHandler,
++    RegisterBlockAndWakeupHandlers ((void (*)(void *, void *)) EvdevKioskTouchBlockHandler,
++                                    (void (*)(void *, int)) EvdevKioskTouchWakeupHandler,
+                                     (pointer)pInfo);
+ }
+ 
+@@ -295,8 +295,8 @@ EvdevKioskTouchFinalize(InputInfoPtr pIn
+     if (pEvdev->kioskTouch.mode == -1)
+         return;
+ 
+-    RemoveBlockAndWakeupHandlers (EvdevKioskTouchBlockHandler,
+-                                  EvdevKioskTouchWakeupHandler,
++    RemoveBlockAndWakeupHandlers ((void (*)(void *, void *)) EvdevKioskTouchBlockHandler,
++                                  (void (*)(void *, int)) EvdevKioskTouchWakeupHandler,
+                                   (pointer)pInfo);
+ }
+ 

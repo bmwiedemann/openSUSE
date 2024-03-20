@@ -342,4 +342,13 @@
     <comment></comment>
     <requestid>1151665</requestid>
   </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>84eb16c4c290603b357d7335a983e3d1</srcmd5>
+    <version>2.10.6</version>
+    <time>1710965401</time>
+    <user>dimstar_suse</user>
+    <comment>- u_gcc14fix.patch
+  * fixes build against gcc14 (boo#1221710)</comment>
+    <requestid>1159569</requestid>
+  </revision>
 </revisionlist>

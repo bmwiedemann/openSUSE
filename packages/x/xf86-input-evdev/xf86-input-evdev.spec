@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-input-evdev
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source3:        11-evdev.conf
 Source4:        50-elotouch.conf
 Patch1:         u_01-Add-a-kiosk-mode-for-touch-screens.patch
 Patch2:         u_02-Add-delay-between-button-press-and-release-to-kiosk-mode.patch
+Patch3:         u_gcc14fix.patch
 # Next three lines are needed for u_01-Add-a-kiosk-mode-for-touch-screens.patch
 BuildRequires:  autoconf >= 2.60
 BuildRequires:  automake
