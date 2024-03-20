@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.1.11.1
+Version:        3.1.12.2
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -67,12 +67,16 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-crypton-connection-devel
 BuildRequires:  ghc-crypton-connection-prof
+BuildRequires:  ghc-crypton-x509-system-devel
+BuildRequires:  ghc-crypton-x509-system-prof
 BuildRequires:  ghc-data-default-devel
 BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-directory-prof
+BuildRequires:  ghc-djot-devel
+BuildRequires:  ghc-djot-prof
 BuildRequires:  ghc-doclayout-devel
 BuildRequires:  ghc-doclayout-prof
 BuildRequires:  ghc-doctemplates-devel
@@ -144,6 +148,8 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-time-prof
+BuildRequires:  ghc-tls-devel
+BuildRequires:  ghc-tls-prof
 BuildRequires:  ghc-typst-devel
 BuildRequires:  ghc-typst-prof
 BuildRequires:  ghc-unicode-collation-devel
@@ -185,7 +191,7 @@ Pandoc is a Haskell library for converting from one markup format to another.
 The formats it can handle include
 
 - light markup formats (many variants of Markdown, reStructuredText, AsciiDoc,
-Org-mode, Muse, Textile, txt2tags) - HTML formats (HTML 4 and 5) - Ebook
+Org-mode, Muse, Textile, txt2tags, djot) - HTML formats (HTML 4 and 5) - Ebook
 formats (EPUB v2 and v3, FB2) - Documentation formats (GNU TexInfo, Haddock) -
 Roff formats (man, ms) - TeX formats (LaTeX, ConTeXt) - Typst - XML formats
 (DocBook 4 and 5, JATS, TEI Simple, OpenDocument) - Outline formats (OPML) -
@@ -371,6 +377,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.chunkedhtml
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.commonmark
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.context
+%{_datadir}/%{pkg_name}-%{version}/data/templates/default.djot
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.docbook4
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.docbook5
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.dokuwiki
