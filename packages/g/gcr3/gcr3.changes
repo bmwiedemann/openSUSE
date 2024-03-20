@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jan 18 16:49:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.41.2:
+  + ui: Add gcr.gresource.xml back into the build.
+  + misc: Several memory leaks were fixed.
+  + ci: Several CI fixes.
+  + Updated translations.
+- Changes from version 3.41.1:
+  + meson: Fix unknown kw argument in gnome.generate_gir.
+  + gcr: Add G_SPAWN_CLOEXEC_PIPES flag to all the g_spawn
+    commands.
+  + docs: Port from gtk-doc to gi-docgen.
+  + Unbreak build without systemd.
+  + Several CI fixes.
+  + Updated translations.
+- Drop b3ca1d02bb0148ca787ac4aead164d7c8ce2c4d8.patch: fixed
+  upstream.
+- Replace gtk-doc buildRequires with pkgconfig(gi-docgen): follow
+  upstreams port of the documentation infrastructure.
+
+-------------------------------------------------------------------
 Tue Nov 28 11:24:53 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -p N instead of deprecated %patchN.

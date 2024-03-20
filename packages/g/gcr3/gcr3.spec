@@ -1,7 +1,7 @@
 #
 # spec file for package gcr3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,26 @@
 
 %define _name gcr
 Name:           gcr3
-Version:        3.41.0
+Version:        3.41.2
 Release:        0
 # FIXME: Verify if the requires in typelib-1_0-Gcr-3 is still correct and required (see bgo#725501).
 Summary:        Library for Crypto UI related tasks
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://www.gnome.org
-Source0:        https://download.gnome.org/sources/gcr/3.41/%{_name}-%{version}.tar.xz
+Source0:        %{_name}-%{version}.tar.zst
 Source1:        baselibs.conf
 # PATCH-FIX-SLE gcr-bsc932232-use-libgcrypt-allocators.patch bsc#932232 hpj@suse.com -- use libgcrypt allocators for FIPS mode
 Patch1:         gcr-bsc932232-use-libgcrypt-allocators.patch
-# PATCH-FIX-UPSTREAM b3ca1d02bb0148ca787ac4aead164d7c8ce2c4d8.patch -- Fix build with meson 060.0 and newer
-Patch2:         https://gitlab.gnome.org/GNOME/gcr/-/commit/b3ca1d02bb0148ca787ac4aead164d7c8ce2c4d8.patch
 
 # For directory ownership
 BuildRequires:  dbus-1
 BuildRequires:  gettext >= 0.19.8
 BuildRequires:  gobject-introspection-devel >= 1.34
-# configure is looking for the gpg2 path
-BuildRequires:  gtk-doc
 BuildRequires:  libgcrypt-devel >= 1.4.5
-BuildRequires:  meson
+BuildRequires:  meson >= 0.52
+BuildRequires:  pkgconfig(gi-docgen)
+# configure is looking for the gpg2 path
 BuildRequires:  openssh-clients
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -207,7 +205,6 @@ GCK is a library for accessing PKCS#11 modules like smart cards, in a
 %if 0%{?sle_version}
 %patch -P 1 -p1
 %endif
-%patch -P 2 -p1
 
 %build
 %meson \
@@ -278,7 +275,7 @@ GCK is a library for accessing PKCS#11 modules like smart cards, in a
 %{_libdir}/girepository-1.0/GcrUi-3.typelib
 
 %files -n libgcr3-devel
-%doc %{_datadir}/gtk-doc/html/gcr/
+%doc %{_datadir}/doc/gcr*/
 %{_libdir}/libgcr-base-3.so
 %{_libdir}/libgcr-ui-3.so
 %{_libdir}/pkgconfig/gcr-3.pc
@@ -297,7 +294,7 @@ GCK is a library for accessing PKCS#11 modules like smart cards, in a
 %{_libdir}/girepository-1.0/Gck-1.typelib
 
 %files -n libgck1-devel
-%doc %{_datadir}/gtk-doc/html/gck/
+%doc %{_datadir}/doc/gck*/
 %{_libdir}/libgck-1.so
 %{_libdir}/pkgconfig/gck-1.pc
 %{_includedir}/gck-1/
