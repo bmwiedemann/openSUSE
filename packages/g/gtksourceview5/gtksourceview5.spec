@@ -1,7 +1,7 @@
 #
 # spec file for package gtksourceview5
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define _name   gtksourceview
 Name:           gtksourceview5
-Version:        5.10.0
+Version:        5.12.0
 Release:        0
 Summary:        GTK+ Source Editing Widget
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GtkSourceView
-Source0:        https://download.gnome.org/sources/gtksourceview/5.10/%{_name}-%{version}.tar.xz
+Source0:        %{_name}-%{version}.tar.zst
 Source1:        changes.lang
 
 BuildRequires:  gobject-introspection-devel >= 1.70
@@ -96,7 +96,6 @@ features typical of a source editor.
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %meson \
-    -Dgtk_doc=true \
     %{nil}
 %meson_build
 
@@ -122,7 +121,6 @@ install -m 644 %{S:1} %{buildroot}%{_datadir}/gtksourceview-5/language-specs/
 %{_includedir}/gtksourceview-5/
 %{_libdir}/libgtksourceview-5.so
 %{_libdir}/pkgconfig/gtksourceview-5.pc
-%{_datadir}/doc/%{name}/
 %{_datadir}/gir-1.0/GtkSource-5.gir
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/gtksourceview-5.*
