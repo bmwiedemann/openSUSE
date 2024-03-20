@@ -1,7 +1,7 @@
 #
 # spec file for package pangomm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libname  lib%{name}-2_48-1
 
 Name:           pangomm
-Version:        2.50.1
+Version:        2.52.0
 Release:        0
 Summary:        C++ interface for pango
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only
@@ -47,7 +47,7 @@ BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(cairomm-1.16) >= 1.2.2
 BuildRequires:  pkgconfig(giomm-2.68)
 BuildRequires:  pkgconfig(glibmm-2.68)
-BuildRequires:  pkgconfig(pangocairo) >= 1.31.0
+BuildRequires:  pkgconfig(pangocairo) >= 1.52.0
 
 %description
 pangomm provides a C++ interface to the pango library.
@@ -110,7 +110,7 @@ chmod -x NEWS
 %{_libdir}/pangomm-%{base_ver}
 
 %files doc
-%doc AUTHORS README.md
+%doc README.md
 %{_datadir}/devhelp/books/pangomm-%{base_ver}/
 %{_datadir}/doc/pangomm-%{base_ver}/
 # Avoid BuildRequires on devhelp
