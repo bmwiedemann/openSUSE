@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 19 07:50:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:27:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Various of our dialogues have been reworked to improve
+    correctness, including how they handle especially long strings.
+  + When restoring window dimensions we now remember if the window
+    was maximised or not, windows also now avoid the ‘duplicated
+    effect’ seen with certain shell setups.
+  + We continue to take advantage of newer Vte features wherever
+    appropriate.
+- Drop d259c18bc21ad83381e990b48bc66ea1dec21528.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Mon Nov  6 16:10:25 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer

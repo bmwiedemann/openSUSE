@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-console
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           gnome-console
-Version:        45.0
+Version:        46.0
 Release:        0
 Summary:        A minimal terminal for GNOME
 License:        GPL-3.0-only
 URL:            https://gitlab.gnome.org/GNOME/console
 Source:         %{name}-%{version}.tar.zst
-# PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/console/-/commit/d259c18bc21ad83381e990b48bc66ea1dec21528.patch -- close-dialog: clamp row title to maximum length
-Patch0:         d259c18bc21ad83381e990b48bc66ea1dec21528.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  c_compiler
@@ -39,7 +37,7 @@ BuildRequires:  pkgconfig(gtk4) >= 4.12.2
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.alpha
 BuildRequires:  pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.32
-BuildRequires:  pkgconfig(vte-2.91-gtk4) >= 0.69.91
+BuildRequires:  pkgconfig(vte-2.91-gtk4) >= 0.75.1
 
 Obsoletes:      nautilus-extension-console < %{version}
 Provides:       console = %{version}
