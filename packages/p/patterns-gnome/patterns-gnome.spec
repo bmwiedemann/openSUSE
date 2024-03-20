@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-gnome
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -287,6 +287,7 @@ Recommends:     gnome-keyring-pam
 Requires:       at-spi2-core
 # boo#1090117
 Recommends:     gnome-shell-classic
+Recommends:     console
 Recommends:     gnome-extensions
 Recommends:     gnome-terminal
 # bnc#879466

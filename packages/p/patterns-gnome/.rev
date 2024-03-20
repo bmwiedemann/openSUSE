@@ -367,4 +367,12 @@
     <comment>Sync changelog with SLE/Leap. (forwarded request 1132209 from yfjiang)</comment>
     <requestid>1132443</requestid>
   </revision>
+  <revision rev="41" vrev="20">
+    <srcmd5>efa15944ce852453065576f84c7f02e8</srcmd5>
+    <version>20201210</version>
+    <time>1710965567</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1159291 from dimstar)</comment>
+    <requestid>1159547</requestid>
+  </revision>
 </revisionlist>
