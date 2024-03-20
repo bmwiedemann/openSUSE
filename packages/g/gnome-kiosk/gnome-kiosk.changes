@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Mar 19 07:48:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Fixes with localed integration.
+
+-------------------------------------------------------------------
+Thu Mar  7 15:34:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gnome-kiosk-mutter-46.patch: Fix build against mutter 46.rc.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:26:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Use gnome-text-editor instead of gedit for example script.
+  + Keymap fix.
+
+-------------------------------------------------------------------
+Wed Jan 17 07:43:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + Add automount manager.
+  + Support headless sessions.
+  + Port to mutter 46.
+  + Docs update.
+- Set mutter_api 14, following upstreams port to Mutter 46.
+
+-------------------------------------------------------------------
 Sun Sep 17 12:52:47 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:

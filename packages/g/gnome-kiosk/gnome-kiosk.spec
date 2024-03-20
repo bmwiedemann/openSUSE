@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-kiosk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,17 @@
 #
 
 
-%define mutter_api 13
+%define mutter_api 14
 
 Name:           gnome-kiosk
-Version:        45.0
+Version:        46.0
 Release:        0
 Summary:        Mutter based compositor for kiosks
 License:        GPL-2.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/gnome-kiosk
 Source0:        %{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM
+Patch0:         gnome-kiosk-mutter-46.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson
