@@ -71,4 +71,13 @@
     <comment></comment>
     <requestid>1159125</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d90202bdac10e27bc055fcf69e6266be</srcmd5>
+    <version>0.9.2</version>
+    <time>1710965922</time>
+    <user>dimstar_suse</user>
+    <comment>- fix and enable all tests
+</comment>
+    <requestid>1159852</requestid>
+  </revision>
 </revisionlist>

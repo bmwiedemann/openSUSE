@@ -25,6 +25,7 @@ License:        GPL-3.0-or-later
 Group:          System/Management
 URL:            https://remove-to-waste.info/
 Source:         https://github.com/theimpossibleastronaut/rmw/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Patch0:         test-restore-fix-use-Xvfb.patch
 BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(ncurses)
@@ -41,7 +42,7 @@ after x number of days.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson \
@@ -56,6 +57,9 @@ after x number of days.
 
 rm %{buildroot}%{_docdir}/%{name}/COPYING
 %find_lang %{name}
+
+%check
+%meson_test
 
 %files
 %license COPYING

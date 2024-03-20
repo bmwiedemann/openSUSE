@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 20 11:00:00 UTC 2024 - Andy Alt <arch_stanton5995@proton.me>
+
+- fix and enable all tests - add test-restore-fix-use-Xvfb.patch
+  
+-------------------------------------------------------------------
 Mon Mar 18 19:55:34 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - rmw 0.9.2:
