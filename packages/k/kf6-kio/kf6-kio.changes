@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 18 15:39:19 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix KTerminalLaucherJob (kde#482107, boo#1221637):
+  * 0001-kterminallauncherjob-Inherit-default-process-environ.patch
+
+-------------------------------------------------------------------
 Wed Feb 21 19:27:57 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.0

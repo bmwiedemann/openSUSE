@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-kio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-kterminallauncherjob-Inherit-default-process-environ.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
