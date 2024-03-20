@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Mar 18 08:03:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.58.0:
+  + The most significant change in this release is that librsvg no
+    longer uses gdk-pixbuf for loading raster images. All image
+    loading uses Rust codecs now.
+  + Librsvg's gdk-pixbuf loader for SVG documents is unchanged; you
+    can still load SVG files from gdk-pixbuf with it as usual.
+  + Add basic support for "ch" length units in CSS.
+  + Support "var(--foo, #aabbcc)" just for colors. This is the
+    minimum required to render color SVG emoji fonts that provide
+    color fallbacks, but it is not yet full support for CSS var().
+  + Limit numOctaves in feTurbulence to avoid unbounded CPU
+    consumption.
+  + Don't panic when a :lang selector has an argument that is not a
+    language-range.
+
+-------------------------------------------------------------------
+Sat Mar  9 18:36:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.57.92:
+  + Don't panic when rendering feOffset with a too-large offset.
+  + Don't panic when a decoded image has dimensions of zero.
+
+-------------------------------------------------------------------
+Wed Mar  6 08:52:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.57.91:
+  + Rsvg-convert now prints a helpful message if you run it
+    without arguments, to indicate that it is reading from standard
+    input.
+  + Take text orientation into account for 'ch' units
+  + For Rust programs, the rsvg crate no longer depends on
+    gdk-pixbuf. Hopefully this means that your Rust programs will
+    have to link to one fewer library.
+  + The C enumeration RsvgUnit now has a RSVG_UNIT_CH variant for
+    "ch" units. However, this is only used for reporting the size
+    of SVG documents, which should very seldom come in "ch" units.
+  + Fix unsoundness in the use of the selectors crate.
+  + Update gtk-rs crates.
+
+-------------------------------------------------------------------
 Thu Jan  4 17:19:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.57.1:
