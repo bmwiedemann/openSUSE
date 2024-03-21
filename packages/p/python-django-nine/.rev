@@ -64,4 +64,12 @@
   * Test against Python 3.9 and 3.10.</comment>
     <requestid>1055882</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d77fa00da60da3e58ca900c9b20e9882</srcmd5>
+    <version>0.2.7</version>
+    <time>1711036867</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1160036</requestid>
+  </revision>
 </revisionlist>
