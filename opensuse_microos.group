@@ -1340,7 +1340,7 @@
     <package name="libblogger2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libbluetooth3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libbluray2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="libboost_filesystem1_84_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="libboost_filesystem1_84_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-zypper -->
     <package name="libboost_iostreams1_84_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libboost_locale1_84_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libboost_thread1_84_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -3252,6 +3252,7 @@
     <package name="zip" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="zisofs-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="zstd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="zypp-boot-plugin" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-zypper -->
     <package name="zypper" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-zypper -->
     <package name="zypper-log" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-zypper -->
     <package name="zypper-needs-restarting" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-zypper -->

@@ -1803,6 +1803,7 @@ unsorted:
   - caddy 
   - cadsondemak-fonts 
   - cadvisor 
+  - cage 
   - cairo-clock 
   - cairo-clock-lang 
   - cairo-devel 
@@ -14170,7 +14171,6 @@ unsorted:
   - libmumps_5_3_5-gnu-mvapich2-hpc 
   - libmumps_5_3_5-gnu-openmpi4-hpc 
   - libmunge2 
-  - libmunit0suse0 
   - libmuparser2_3_4 
   - libmuparserx4_0_12 
   - libmupen64plus-devel 
@@ -18660,7 +18660,6 @@ unsorted:
   - munge-maven-plugin-javadoc 
   - munin 
   - munin-node 
-  - munit-devel 
   - muparser-devel 
   - muparserx-devel 
   - muparserx-devel-doc 
@@ -22734,6 +22733,7 @@ unsorted:
   - protobuf-devel 
   - protobuf-java 
   - protobuf21-devel 
+  - protoc-gen-go 
   - protontricks 
   - protonvpn-cli 
   - protonvpn-gui 
@@ -25146,7 +25146,6 @@ unsorted:
   - python310-leather 
   - python310-leglight 
   - python310-lesscpy 
-  - python310-leveldb 
   - python310-lexicon 
   - python310-lfdfiles 
   - python310-lhafile 
@@ -25708,6 +25707,14 @@ unsorted:
   - python310-protobuf 
   - python310-proton-client 
   - python310-proton-core 
+  - python310-proton-vpn-api-core 
+  - python310-proton-vpn-connection 
+  - python310-proton-vpn-killswitch 
+  - python310-proton-vpn-killswitch-network-manager 
+  - python310-proton-vpn-logger 
+  - python310-proton-vpn-network-manager 
+  - python310-proton-vpn-network-manager-openvpn 
+  - python310-proton-vpn-session 
   - python310-protonvpn-nm-lib 
   - python310-proxmoxer 
   - python310-psautohint 
@@ -28448,6 +28455,8 @@ unsorted:
   - python311-immutabledict 
   - python311-impacket 
   - python311-importlab 
+  - python311-importlib-metadata 
+  - python311-importlib-resources 
   - python311-imread 
   - python311-imreg 
   - python311-infinity 
@@ -28644,7 +28653,6 @@ unsorted:
   - python311-leather 
   - python311-leglight 
   - python311-lesscpy 
-  - python311-leveldb 
   - python311-lexicon 
   - python311-lfdfiles 
   - python311-lhafile 
@@ -29182,6 +29190,14 @@ unsorted:
   - python311-proto-plus 
   - python311-proton-client 
   - python311-proton-core 
+  - python311-proton-vpn-api-core 
+  - python311-proton-vpn-connection 
+  - python311-proton-vpn-killswitch 
+  - python311-proton-vpn-killswitch-network-manager 
+  - python311-proton-vpn-logger 
+  - python311-proton-vpn-network-manager 
+  - python311-proton-vpn-network-manager-openvpn 
+  - python311-proton-vpn-session 
   - python311-protonvpn-nm-lib 
   - python311-proxmoxer 
   - python311-psautohint 
@@ -30324,6 +30340,7 @@ unsorted:
   - python311-zhon 
   - python311-zict 
   - python311-zignal 
+  - python311-zipp 
   - python311-zipstream 
   - python311-zlib-ng 
   - python311-zodbpickle 
@@ -32596,6 +32613,7 @@ unsorted:
   - python312-persistent-devel 
   - python312-petact 
   - python312-pexpect 
+  - python312-pgmagick 
   - python312-phabricator 
   - python312-phonenumbers 
   - python312-photutils 
@@ -32680,6 +32698,14 @@ unsorted:
   - python312-protobuf 
   - python312-proton-client 
   - python312-proton-core 
+  - python312-proton-vpn-api-core 
+  - python312-proton-vpn-connection 
+  - python312-proton-vpn-killswitch 
+  - python312-proton-vpn-killswitch-network-manager 
+  - python312-proton-vpn-logger 
+  - python312-proton-vpn-network-manager 
+  - python312-proton-vpn-network-manager-openvpn 
+  - python312-proton-vpn-session 
   - python312-protonvpn-nm-lib 
   - python312-proxmoxer 
   - python312-psautohint 
@@ -33831,6 +33857,7 @@ unsorted:
   - python312-yaswfp 
   - python312-yattag 
   - python312-yg.lockfile 
+  - python312-youtube-dl 
   - python312-yq 
   - python312-yt 
   - python312-yt-dlp 
@@ -35643,7 +35670,6 @@ unsorted:
   - python39-leather 
   - python39-leglight 
   - python39-lesscpy 
-  - python39-leveldb 
   - python39-lexicon 
   - python39-lfdfiles 
   - python39-lhafile 
@@ -36187,6 +36213,14 @@ unsorted:
   - python39-protobuf 
   - python39-proton-client 
   - python39-proton-core 
+  - python39-proton-vpn-api-core 
+  - python39-proton-vpn-connection 
+  - python39-proton-vpn-killswitch 
+  - python39-proton-vpn-killswitch-network-manager 
+  - python39-proton-vpn-logger 
+  - python39-proton-vpn-network-manager 
+  - python39-proton-vpn-network-manager-openvpn 
+  - python39-proton-vpn-session 
   - python39-protonvpn-nm-lib 
   - python39-proxmoxer 
   - python39-psautohint 
@@ -51042,7 +51076,6 @@ unsorted:
   - zynaddsubfx-dssi 
   - zynaddsubfx-lv2 
   - zynaddsubfx-vst 
-  - zypp-boot-plugin 
   - zypp-gui 
   - zypper-aptitude 
   - zypper-changelog-plugin 
