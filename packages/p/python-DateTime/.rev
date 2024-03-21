@@ -98,4 +98,12 @@
   * Fix __format__ method for DateTime objects (#39)</comment>
     <requestid>1135232</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b3f999c2bb4a85078ec57d9a1c150350</srcmd5>
+    <version>5.5</version>
+    <time>1711036856</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1159998</requestid>
+  </revision>
 </revisionlist>
