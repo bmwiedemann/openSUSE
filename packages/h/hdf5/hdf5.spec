@@ -568,30 +568,33 @@ library packages.
 %prep
 %{?with_hpc: %hpc_debug}
 %setup -q -n %{pname}-%{version}
-%patch0 -p1 -b .LD_LIBRARY_PATH
-%patch2 -p0 -b .abort_unknown_host_config
+%patch -P 0 -p1 -b .LD_LIBRARY_PATH
+%patch -P 2 -p0 -b .abort_unknown_host_config
 %ifarch %arm
-%patch4 -p0 -b .tests-arm
+%patch -P 4 -p0 -b .tests-arm
 %endif
-%patch5 -p1
-%patch6 -p1
-# %%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch101 -p1
-%patch102 -p1
-%patch103 -p1
-%patch104 -p1
-%patch105 -p1
-%patch106 -p1
-%patch107 -p1
-%patch108 -p1
-%patch109 -p1
-%patch110 -p1
-%patch111 -p1
-%patch112 -p1
-%patch113 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+# work around bot rejection for unapplied patch
+%if 0
+%patch -P 7 -p1
+%endif
+%patch -P 8 -p1
+%patch -P 9 -p1
+%patch -P 10 -p1
+%patch -P 101 -p1
+%patch -P 102 -p1
+%patch -P 103 -p1
+%patch -P 104 -p1
+%patch -P 105 -p1
+%patch -P 106 -p1
+%patch -P 107 -p1
+%patch -P 108 -p1
+%patch -P 109 -p1
+%patch -P 110 -p1
+%patch -P 111 -p1
+%patch -P 112 -p1
+%patch -P 113 -p1
 
 %if %{without hpc}
 # baselibs looks different for different flavors - generate it on the fly

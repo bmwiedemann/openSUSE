@@ -832,4 +832,12 @@ fixed baselibs.conf compared to previous version</comment>
     <comment></comment>
     <requestid>1145263</requestid>
   </revision>
+  <revision rev="85" vrev="8">
+    <srcmd5>38b0defca1a4292b530f5481ad00a459</srcmd5>
+    <version>1.12.2</version>
+    <time>1711036844</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1159950</requestid>
+  </revision>
 </revisionlist>

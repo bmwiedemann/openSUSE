@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 20 03:09:27 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Work around bot rejection for unapplied Patch7.
+
+-------------------------------------------------------------------
+Thu Feb 22 07:48:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Feb  2 18:36:08 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add openmpi5 and gnu-hpc-openmpi5 flavours.
