@@ -246,14 +246,14 @@ Provides:       ffmpeg-tools = %version
 Conflicts:      ffmpeg-tools
 Provides:       ffmpeg = %version
 Obsoletes:      ffmpeg < %version
-Requires:       libavcodec60 = %version-%release
-Requires:       libavdevice60 = %version-%release
-Requires:       libavfilter9 = %version-%release
-Requires:       libavformat60 = %version-%release
-Requires:       libavutil58 = %version-%release
-Requires:       libpostproc57 = %version-%release
-Requires:       libswresample4 = %version-%release
-Requires:       libswscale7 = %version-%release
+Requires:       (libavcodec60 = %version-%release or ffmpeg-6-mini-libs = %version-%release)
+Requires:       (libavdevice60 = %version-%release or ffmpeg-6-mini-libs = %version-%release)
+Requires:       (libavfilter9 = %version-%release or ffmpeg-6-mini-libs = %version-%release)
+Requires:       (libavformat60 = %version-%release or ffmpeg-6-mini-libs = %version-%release)
+Requires:       (libavutil58 = %version-%release or ffmpeg-6-mini-libs = %version-%release)
+Requires:       (libpostproc57 = %version-%release or ffmpeg-6-mini-libs = %version-%release)
+Requires:       (libswresample4 = %version-%release or ffmpeg-6-mini-libs = %version-%release)
+Requires:       (libswscale7 = %version-%release or ffmpeg-6-mini-libs = %version-%release)
 
 %description
 FFmpeg is a multimedia framework, able to decode, encode,

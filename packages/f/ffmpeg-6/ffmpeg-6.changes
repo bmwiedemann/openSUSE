@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 14 18:58:31 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Let the ffmpeg-6 main program be combinable with ffmpeg-6-mini-libs
+
+-------------------------------------------------------------------
 Mon Jan 15 11:11:08 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to version 6.1.1:

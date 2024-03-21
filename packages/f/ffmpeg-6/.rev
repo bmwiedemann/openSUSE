@@ -62,4 +62,12 @@
 I am sorry for the messy submission before. (forwarded request 1139042 from iDesmI)</comment>
     <requestid>1139043</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>64a440989c83895bfae5c212ffd33857</srcmd5>
+    <version>6.1.1</version>
+    <time>1711036802</time>
+    <user>anag+factory</user>
+    <comment>- Let the ffmpeg-6 main program be combinable with ffmpeg-6-mini-libs</comment>
+    <requestid>1159780</requestid>
+  </revision>
 </revisionlist>
