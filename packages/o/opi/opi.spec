@@ -61,6 +61,7 @@ python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 install -m 644 -D -v org.openSUSE.opi.appdata.xml %{buildroot}%{_datadir}/metainfo/org.openSUSE.opi.appdata.xml
 install -m 644 -D -v opi.8 %{buildroot}%{_datadir}/man/man8/opi.8
 install -m 644 -D -v opi.default.cfg %{buildroot}%{_sysconfdir}/opi.cfg
+%python3_fix_shebang
 
 %check
 python3 setup.py --version | grep %{version}

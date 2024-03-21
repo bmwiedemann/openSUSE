@@ -600,4 +600,12 @@
   * Bump .NET SDK plugin to .NET 8.0</comment>
     <requestid>1143265</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>0b4c50344f010eef968ec43fbf8e218f</srcmd5>
+    <version>5.0.0</version>
+    <time>1711037271</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1160414</requestid>
+  </revision>
 </revisionlist>

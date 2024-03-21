@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 21 14:29:28 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Thu Feb  1 09:42:20 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Version 5.0.0
