@@ -1944,4 +1944,11 @@ chain to get this tree going was too excessive to accept. Slowroll now builds
 those sources for i586 on its own.</comment>
     <requestid>1157979</requestid>
   </revision>
+  <revision rev="273" vrev="271">
+    <srcmd5>19852c5d94a38da1cdfdb2d638bd642e</srcmd5>
+    <version>unknown</version>
+    <time>1711026423</time>
+    <user>dimstar_suse</user>
+    <comment>Suggest the default java in all -release.spec.in</comment>
+  </revision>
 </revisionlist>

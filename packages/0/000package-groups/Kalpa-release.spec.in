@@ -30,6 +30,8 @@ PreReq:         glibc >= 2.19
 Requires(post): coreutils
 Suggests:       branding-openSUSE
 Suggests:       distribution-logos-openSUSE-Kalpa
+Suggests:       java-21-openjdk
+Suggests:       java-21-openjdk-devel
 Suggests:       openSUSE-build-key
 Suggests:       openSUSE-repos-Kalpa
 Conflicts:      distribution-release
