@@ -504,4 +504,13 @@
  - upgrade mypy to get typeshed fix</comment>
     <requestid>1135194</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ff3bb62d5332ce95b347c9eb819f242b</srcmd5>
+    <version>3.15.1</version>
+    <time>1711036864</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.15.1:
+  * handle constant folding with comments on multilines better</comment>
+    <requestid>1160038</requestid>
+  </revision>
 </revisionlist>
