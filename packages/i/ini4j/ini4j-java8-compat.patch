@@ -1,6 +1,6 @@
---- ini4j-0.5.1/src/org/ini4j/BasicProfile.java
-+++ ini4j-0.5.1/src/org/ini4j/BasicProfile.java
-@@ -138,11 +138,17 @@
+--- ini4j-0.5.4/src/main/java/org/ini4j/BasicProfile.java
++++ ini4j-0.5.4/src/main/java/org/ini4j/BasicProfile.java
+@@ -139,11 +139,17 @@ public class BasicProfile extends Common
          return remove((Object) section.getName());
      }
  
@@ -21,9 +21,9 @@
      }
  
      boolean isTreeMode()
---- ini4j-0.5.1/src/org/ini4j/Profile.java
-+++ ini4j-0.5.1/src/org/ini4j/Profile.java
-@@ -43,7 +43,7 @@
+--- ini4j-0.5.4/src/main/java/org/ini4j/Profile.java
++++ ini4j-0.5.4/src/main/java/org/ini4j/Profile.java
+@@ -43,7 +43,7 @@ public interface Profile extends MultiMa
  
      Section remove(Profile.Section section);
  

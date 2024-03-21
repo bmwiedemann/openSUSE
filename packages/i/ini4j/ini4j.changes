@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:41:48 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to release 0.5.4
+  * No release notes available
+  * Version 0.5.4 is unaffected by CVE-2022-41404 (bsc#1221526)
+  * Includes Changes from version 0.5.3
+    + No release notes available
+  * Includes Changes from version 0.5.2
+    + Fix backslash at end of line problem. Normaly backslash at
+      end of line mean line concatenation. Unfortunetly when
+      escaping disabled, this feature stil remain active. Now there
+      is a new config option: escapeNewline. When this option true,
+      it disables line concatenation. For Wini this option is set
+      true by default. Fixes 3038645.
+    + Added support for default value in get and fetch methods. As
+      last parameter, caller may provide default value for missing
+      options. Fixes 3047041.
+    + Backport to java 1.4 fixed. There were a lot of problem. Now
+      all junit tests are run both on current java and on 1.4 jvm.
+      This way backported version is junit tested (on real 1.4 jvm)
+      as the normal version. Fixes 2908623. Thanks to Markus.
+    + Removed UnicodeLittle/UnicodeBig charset references because
+      these break the backported version. Fixes 2778337.
+    + Add BOM (byte order mark) support. Workaround on java
+      BOM/UTF8 problem. Fixes 2866427. Thanks to Lilian Valero.
+    + Fixed typo in Options Tutorial. Fixes 2817399.
+    + Multiply macro substituton per value fixed. There were a bug
+      in variable/macro substitution if more than one macro used in
+      one option value. Fixes 2817403.
+    + Configurable comment handling. The header comment can be
+      disable/enable via Config.setHeaderComment(boolean). Also the
+      whole comment handling can be disable/enable via
+      Config.setComment(boolean). Fixes 2971952. Thanks to René
+      Krell.
+  * Rebase ini4j-java8-compat.patch onto directory structure of new
+    release.
+
+-------------------------------------------------------------------
 Wed Feb 21 09:17:18 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

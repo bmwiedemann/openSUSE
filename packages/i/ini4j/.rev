@@ -144,4 +144,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148471</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>693d6112f647e6b08194e49f9117692b</srcmd5>
+    <version>0.5.4</version>
+    <time>1711036880</time>
+    <user>anag+factory</user>
+    <comment>bsc#1221526, CVE-2022-41404</comment>
+    <requestid>1160081</requestid>
+  </revision>
 </revisionlist>
