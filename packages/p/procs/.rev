@@ -96,4 +96,12 @@
   * [Changed] MSRV to Rust 1.70</comment>
     <requestid>1155809</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>51a457491dd903024f018585f5306659</srcmd5>
+    <version>0.14.5+0</version>
+    <time>1711036831</time>
+    <user>anag+factory</user>
+    <comment>- Filter dependencies for vendor tarball</comment>
+    <requestid>1159896</requestid>
+  </revision>
 </revisionlist>
