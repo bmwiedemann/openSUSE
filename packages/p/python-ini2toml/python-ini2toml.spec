@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-ini2toml
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging >= 20.7
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %if %{with test}
 BuildRequires:  %{python_module packaging >= 20.7}
 BuildRequires:  %{python_module pytest}
@@ -97,6 +97,7 @@ file to TOML.
 %package lite
 Summary:        Python ini2toml[lite] extra requirement
 Requires:       python-ini2toml = %{version}
+Requires:       python-tomli
 Requires:       (python-importlib-metadata if python-base < 3.8)
 Requires:       (python-tomli-w >= 0.4.0 with python-tomli-w < 2)
 
@@ -119,6 +120,7 @@ The ini2toml[full] extra requirements for %{python_flavor}-ini2toml
 %package all
 Summary:        Python ini2toml[all] extra requirement
 Requires:       python-ini2toml = %{version}
+Requires:       python-tomli
 Requires:       (python-configupdater >= 3.0.1 with python-configupdater < 4)
 Requires:       (python-importlib-metadata if python-base < 3.8)
 Requires:       (python-tomli-w >= 0.4.0 with python-tomli-w < 2)
