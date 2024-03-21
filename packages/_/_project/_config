@@ -559,6 +559,10 @@ Prefer: -dbus-1-x11
 # have choice for (podman or docker) needed by ansible-builder: docker podman
 Prefer: -docker
 
+# have choice for libglib-2.0.so.0()(64bit) needed by ...: glib2-stage1-devel libglib-2_0-0
+Ignore: glib2-stage1-devel:this-is-only-for-build-envs
+Prefer: -glib2-stage1-devel
+
 # have choice for (netavark or cni) needed by podman: cni netavark
 Prefer: -cni-plugins -cni
 
@@ -567,6 +571,9 @@ Prefer: -sdbootutil-rpm-scriptlets
 
 # have choice for chromedriver needed by openQA-devel: chromedriver ungoogled-chromium-chromedriver
 Prefer: -ungoogled-chromium-chromedriver
+
+# have choice for pkgconfig(libmarkdown): libmarkdown-devel libmarkdown2-devel
+Prefer: -libmarkdown2-devel
 
 # have choice for mvn
 Prefer: -tomcat10 -tomcat10-lib tomcat tomcat-lib
@@ -1802,6 +1809,7 @@ BuildFlags: onlybuild:autoconf-archive
 BuildFlags: onlybuild:autogen
 BuildFlags: onlybuild:automake
 BuildFlags: onlybuild:avahi
+BuildFlags: onlybuild:avahi:glib2
 BuildFlags: onlybuild:bash
 BuildFlags: onlybuild:bash-completion
 BuildFlags: onlybuild:bc
@@ -1994,6 +2002,7 @@ BuildFlags: onlybuild:glfw
 BuildFlags: onlybuild:glib-networking
 BuildFlags: onlybuild:glib2
 BuildFlags: onlybuild:glib2:doc
+BuildFlags: onlybuild:glib2:stage1
 BuildFlags: onlybuild:glibc
 BuildFlags: onlybuild:glibc:i686
 BuildFlags: onlybuild:glibmm2_4
@@ -2314,6 +2323,7 @@ BuildFlags: onlybuild:librist
 BuildFlags: onlybuild:librsvg
 BuildFlags: onlybuild:librubberband
 BuildFlags: onlybuild:libsamplerate
+BuildFlags: onlybuild:libsass
 BuildFlags: onlybuild:libseccomp
 BuildFlags: onlybuild:libsecret
 BuildFlags: onlybuild:libselinux
@@ -3084,6 +3094,7 @@ BuildFlags: onlybuild:rust1.75
 BuildFlags: onlybuild:rust1.76
 BuildFlags: onlybuild:samba
 BuildFlags: onlybuild:sane-backends
+BuildFlags: onlybuild:sassc
 BuildFlags: onlybuild:sbc
 BuildFlags: onlybuild:stb
 BuildFlags: onlybuild:schroedinger
