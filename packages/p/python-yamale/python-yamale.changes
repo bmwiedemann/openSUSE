@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 20 17:40:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 5.1.0:
+  * fix(cli): check schema to be a valid path first by
+    @AndreyNautilus in #241
+  * Ruff format codebase by @cblakkan in #243
+
+-------------------------------------------------------------------
 Mon Mar 18 19:28:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 5.0.0:
