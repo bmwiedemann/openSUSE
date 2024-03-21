@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Wed Mar 20 13:09:17 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 1.19.3:
+  * Features:
+    - Merge PR #973: Use the origin (DNAME) TTL for synthesized
+      CNAMEs as per RFC 6672.
+  * Bug Fixes
+    - Fix unit test parse of origin syntax.
+    - Use 127.0.0.1 explicitly in tests to avoid delays and errors
+      on newer systems.
+    - Fix #964: config.h.in~ backup file in release tar balls.
+    - Merge #968: Replace the obsolescent fgrep with grep -F in
+      tests.
+    - Merge #971: fix 'WARNING: Message has 41 extra bytes at end'.
+    - Fix #969: [FR] distinguish Do53, DoT and DoH in the logs.
+    - Fix dnstap that assertion failed on logging other than UDP
+      and TCP traffic. It lists it as TCP traffic.
+    - Fix to sync the tests script file common.sh.
+    - iana portlist update.
+    - Updated IPv4 and IPv6 address for b.root-servers.net in root
+      hints.
+    - Update test script file common.sh.
+    - Fix tests to use new common.sh functions, wait_logfile and
+      kill_from_pidfile.
+    - Fix #974: doc: default number of outgoing ports without
+      libevent.
+    - Merge #975: Fixed some syntax errors in rpl files.
+    - Fix root_zonemd unit test, it checks that the root ZONEMD
+      verifies, now that the root has a valid ZONEMD.
+    - Update example.conf with cookie options.
+    - Merge #980: DoH: reject non-h2 early. To fix #979: Improve
+      errors for non-HTTP/2 DoH clients.
+    - Merge #985: Add DoH and DoT to dnstap message.
+    - Fix #983: Sha1 runtime insecure change was incomplete.
+    - Remove unneeded newlines and improve indentation in remote
+      control code.
+    - Merge #987: skip edns frag retry if advertised udp payload
+      size is not smaller.
+    - Fix unit test for #987 change in udp1xxx retry packet send.
+    - Merge #988: Fix NLnetLabs#981: dump_cache truncates large
+      records.
+    - Fix to link with -lcrypt32 for OpenSSL 3.2.0 on Windows.
+    - Fix to link with libssp for libcrypto and getaddrinfo check
+      for only header. Also update crosscompile to remove ssp for
+      32bit.
+    - Merge #993: Update b.root-servers.net also in example config
+      file.
+    - Update workflow for ports to use newer openssl on windows
+      compile.
+    - Fix warning for windres on resource files due to
+      redefinition.
+    - Fix for #997: Print details for SSL certificate failure.
+    - Update error printout for duplicate trust anchors to include
+      the trust anchor name (relates to #920).
+    - Update message TTL when using cached RRSETs. It could result
+      in non-expired messages with expired RRSETs (non-usable
+      messages by Unbound).
+    - Merge #999: Search for protobuf-c with pkg-config.
+    - Fix #1006: Can't find protobuf-c package since #999.
+    - Fix documentation for access-control in the unbound.conf man
+      page.
+    - Merge #1010: Mention REFUSED has the TC bit set with
+      unmatched allow_cookie acl in the manpage. It also fixes the
+      code to match the documentation about clients with a valid
+      cookie that bypass the ratelimit regardless of the
+      allow_cookie acl.
+    - Document the suspend argument for process_ds_response().
+    - Move github workflows to use checkoutv4.
+    - Fix edns subnet replies for scope zero answers to not get
+      stored in the global cache, and in cachedb, when the upstream
+      replies without an EDNS record.
+    - Fix for #1022: Fix ede prohibited in access control refused
+      answers.
+    - Fix unbound-control-setup.cmd to use 3072 bits so that
+      certificates are long enough for newer OpenSSL versions.
+    - Fix TTL of synthesized CNAME when a DNAME is used from cache.
+    - Fix unbound-control-setup.cmd to have CA v3 basicConstraints,
+      like unbound-control-setup.sh has.
+
+-------------------------------------------------------------------
 Fri Mar  8 10:12:30 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 1.19.2:

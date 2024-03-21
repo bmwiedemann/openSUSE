@@ -603,4 +603,12 @@ Features
 - Use prefixes instead of sudo in unbound.service (boo#1215628)</comment>
     <requestid>1156332</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>2be8520ac98392c7a2d1103a8f82e268</srcmd5>
+    <version>1.19.3</version>
+    <time>1711036815</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.19.3</comment>
+    <requestid>1159844</requestid>
+  </revision>
 </revisionlist>
