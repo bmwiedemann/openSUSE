@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 20 09:53:08 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Avoid using a %gcc macro to support using gcc 4.8 for building
+  on SLE11.  Use the regular language compilers for testing.
+
+-------------------------------------------------------------------
 Tue Feb 27 11:24:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

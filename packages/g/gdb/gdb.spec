@@ -397,12 +397,11 @@ Patch2130:      gdb-symtab-fix-dw_tag_inlined_subroutine-entries-in-.patch
 BuildRequires:  bison
 BuildRequires:  flex
 %if 0%{suse_version} > 1110
-%define gcc gcc
+BuildRequires:  gcc-c++
 %else
-%define gcc gcc48
+BuildRequires:  gcc48
+BuildRequires:  gcc48-c++
 %endif
-BuildRequires:  %{gcc}
-BuildRequires:  %{gcc}-c++
 BuildRequires:  gettext
 BuildRequires:  glibc-devel
 %if 0%{suse_version} > 1110 && 0%{suse_version} < 1330
@@ -527,12 +526,12 @@ BuildRequires:  sharutils
 #   unresolvable: conflict for providers of libquadmath0
 #   needed by libgfortran3
 #   (provider libquadmath0-gcc5 is in conflict with libquadmath0)
-BuildRequires:  %{gcc}-fortran
+BuildRequires:  gcc-fortran
 %endif
 
-BuildRequires:  %{gcc}-objc
+BuildRequires:  gcc-objc
 %ifarch %ada_arch
-BuildRequires:  %{gcc}-ada
+BuildRequires:  gcc-ada
 %endif
 
 %define supported_32bit_arch x86_64 ppc64
@@ -543,11 +542,11 @@ BuildRequires:  %{gcc}-ada
 %if 0%{suse_version} >= 1330
 # Older distros miss this pseudo package, the Ada
 # testsuite won't work completely
-BuildRequires:  %{gcc}-ada-32bit
+BuildRequires:  gcc-ada-32bit
 %endif
 
 %if 0%{suse_version} > 1110
-BuildRequires:  %{gcc}-c++-32bit
+BuildRequires:  gcc-c++-32bit
 %endif
 
 %if 0%{suse_version} >= 1210 && 0%{suse_version} != 1315
