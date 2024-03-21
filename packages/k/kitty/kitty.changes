@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 21 14:03:41 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.33.1:
+  * Fix a regression in the previous release that caused requesting data from
+    the clipboard via OSC 52 to instead return data from the primary
+    selection (#7213)
+  * Splits layout: Allow resizing until one of the halves in a split is
+    minimally sized (#7220)
+  * macOS: Fix text rendered with fallback fonts not respecting bold/italic
+    styling (#7241)
+  * macOS: When CoreText fails to find a fallback font for a character in the
+    first Private Use Unicode Area, preferentially use the NERD font, if
+    available, for it (#6043)
+
+-------------------------------------------------------------------
 Fri Mar 15 13:45:03 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - 'pkgconfig(simde)' is now available in TW; adding updated go vendor tarball
