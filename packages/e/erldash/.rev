@@ -71,4 +71,12 @@
   * Add --port option to support epmdless nodes #13</comment>
     <requestid>1146402</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>7367efab48363f0bb536cfbbe75874be</srcmd5>
+    <version>0.3.0+0</version>
+    <time>1711036830</time>
+    <user>anag+factory</user>
+    <comment>- Filter dependencies for vendor tarball</comment>
+    <requestid>1159894</requestid>
+  </revision>
 </revisionlist>
