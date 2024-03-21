@@ -48,4 +48,12 @@
   * use prefetch_related to decrease queries</comment>
     <requestid>1067406</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>dfb93a9ef6142c4ba605861af122ca8a</srcmd5>
+    <version>0.2.4</version>
+    <time>1711036863</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1160031</requestid>
+  </revision>
 </revisionlist>
