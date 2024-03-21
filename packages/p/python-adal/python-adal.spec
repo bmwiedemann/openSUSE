@@ -1,7 +1,7 @@
 #
 # spec file for package python-adal
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,6 @@ Requires:       python-PyJWT >= 1.0.0
 Requires:       python-cryptography >= 1.1.0
 Requires:       python-python-dateutil >= 2.1.0
 Requires:       python-requests >= 2.0.0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %python_subpackages
@@ -60,6 +59,7 @@ cp %{SOURCE1} HISTORY.txt
 %files %{python_files}
 %defattr(-,root,root,-)
 %doc HISTORY.txt README.md
-%{python_sitelib}/*
+%{python_sitelib}/adal
+%{python_sitelib}/adal-*.egg-info
 
 %changelog
