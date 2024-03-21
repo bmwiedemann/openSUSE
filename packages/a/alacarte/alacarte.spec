@@ -1,7 +1,7 @@
 #
 # spec file for package alacarte
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           alacarte
-Version:        3.50.0
+Version:        3.52.0
 Release:        0
 Summary:        Menu editor for GNOME
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/alacarte
-Source:         https://download.gnome.org/sources/alacarte/3.50/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/alacarte/3.52/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gettext
