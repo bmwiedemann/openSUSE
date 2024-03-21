@@ -96,10 +96,12 @@ BuildArch:      i686
 %bcond_without system_aom
 %bcond_without system_spirv
 %bcond_without harfbuzz_5
+%bcond_without link_vulkan
 %else
 %bcond_with system_aom
 %bcond_with system_spirv
 %bcond_with harfbuzz_5
+%bcond_with link_vulkan
 %endif
 
 
@@ -110,11 +112,9 @@ BuildArch:      i686
 %endif
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
-%bcond_without link_vulkan
 %bcond_without ffmpeg_5
 %bcond_without system_vpx
 %else
-%bcond_with link_vulkan
 %bcond_with ffmpeg_5
 %bcond_with system_vpx
 %endif
@@ -201,7 +201,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        28.2.7
+Version:        28.2.8
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11%{!?with_system_minizip: AND Zlib}

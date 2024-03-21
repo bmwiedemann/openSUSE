@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 20 20:08:27 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 28.2.8
+  * no user-visible changes
+- Leap 15.6: link libvulkan.so instead of dlopening it
+
+-------------------------------------------------------------------
 Sun Mar 17 16:49:00 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - aarch64, riscv64: fix build with LLVM 18
