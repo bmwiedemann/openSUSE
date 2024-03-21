@@ -1,7 +1,7 @@
 #
 # spec file for package python-applicationinsights
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,6 +61,7 @@ Azure Portal.
 %defattr(-,root,root,-)
 %doc CHANGELOG.md README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/applicationinsights
+%{python_sitelib}/applicationinsights-*.egg-info
 
 %changelog
