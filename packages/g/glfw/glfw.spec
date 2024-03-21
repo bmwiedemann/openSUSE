@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package glfw
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -21,7 +21,12 @@
 %bcond_without wayland
 %else
 %bcond_with wayland
+# On TW, build with geany by default
+%if 0%{?suse_version} >= 1600
 %bcond_without geany
+%else
+%bcond_with geany
+%endif
 %endif
 %define sover  3
 Name:           glfw%{flavor}

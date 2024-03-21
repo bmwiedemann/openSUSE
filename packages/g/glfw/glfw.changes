@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 20 10:46:34 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Build with geany by default only on TW
+
+-------------------------------------------------------------------
 Wed Jan 10 15:15:37 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Make the geany tags build optional again to fix SLE.
