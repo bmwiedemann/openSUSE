@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 20 18:06:59 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- update to 3.1.76
+  * fix: Das Element "SchmeNm" wurde vergessen, zum Dokument
+    hinzuzufügen.
+  * required by hibiscus 2.10.18
+  * see https://github.com/hbci4j/hbci4java/compare/hbci4j-core-3.1.75...hbci4j-core-3.1.76
+
+-------------------------------------------------------------------
 Wed Mar  6 19:23:50 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
-- update to 3.1.74
+- update to 3.1.75
   * required by hibiscus 2.10.17
   * see https://github.com/hbci4j/hbci4java/compare/hbci4j-core-3.1.74...hbci4j-core-3.1.75
 
