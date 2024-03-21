@@ -1,7 +1,7 @@
 #
 # spec file for package libffi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libffi_sover 8
 Name:           libffi
-Version:        3.4.4
+Version:        3.4.6
 Release:        0
 Summary:        Foreign Function Interface Library
 License:        MIT
@@ -26,9 +26,8 @@ Group:          Development/Languages/C and C++
 URL:            https://sourceware.org/libffi/
 Source:         https://github.com/libffi/libffi/releases/download/v%{version}/libffi-%{version}.tar.gz
 Source99:       baselibs.conf
-# Fix BTI for aarch64 with PR 808 and 810
-Patch1:         https://github.com/libffi/libffi/pull/808.patch
-Patch2:         https://github.com/libffi/libffi/pull/810.patch
+# Fix BTI for aarch64 with PR 830
+Patch1:         https://github.com/libffi/libffi/pull/830.patch
 # for make check
 BuildRequires:  dejagnu
 BuildRequires:  expect

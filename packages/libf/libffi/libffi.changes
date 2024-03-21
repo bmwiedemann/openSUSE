@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:22:24 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patches to fix BTI on aarch64:
+  * 830.patch
+- Update to 3.4.6:
+  * Fix long double regression on mips64 and alpha.
+- Update to 3.4.5:
+  * Add support for wasm32.
+  * Add support for aarch64 branch target identification (bti).
+  * Add support for ARCv3: ARC32 & ARC64.
+  * Add support for HPPA64, and many HPPA fixes.
+  * Add support for Haikuos on PowerPC.
+  * Fixes for AIX, loongson, MIPS, power, sparc64, and x86 Darwin.
+- Drop upstreamed patches:
+  * 808.patch
+  * 810.patch
+
+-------------------------------------------------------------------
 Wed Dec  6 09:11:47 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add upstream patches to fix BTI on aarch64:

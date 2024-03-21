@@ -152,4 +152,25 @@
   * 810.patch (forwarded request 1131289 from Guillaume_G)</comment>
     <requestid>1131297</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>051910918a7a9f2542713c8392281131</srcmd5>
+    <version>3.4.6</version>
+    <time>1711036792</time>
+    <user>anag+factory</user>
+    <comment>- Add patches to fix BTI on aarch64:
+  * 830.patch
+- Update to 3.4.6:
+  * Fix long double regression on mips64 and alpha.
+- Update to 3.4.5:
+  * Add support for wasm32.
+  * Add support for aarch64 branch target identification (bti).
+  * Add support for ARCv3: ARC32 &amp; ARC64.
+  * Add support for HPPA64, and many HPPA fixes.
+  * Add support for Haikuos on PowerPC.
+  * Fixes for AIX, loongson, MIPS, power, sparc64, and x86 Darwin.
+- Drop upstreamed patches:
+  * 808.patch
+  * 810.patch (forwarded request 1159617 from Guillaume_G)</comment>
+    <requestid>1159781</requestid>
+  </revision>
 </revisionlist>
