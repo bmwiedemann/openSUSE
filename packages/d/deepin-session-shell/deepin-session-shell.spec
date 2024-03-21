@@ -171,5 +171,8 @@ rm %{buildroot}%{_datadir}/dde-session-shell/dde-session-shell.conf
 %dir %{_datadir}/%{_name}
 %dir %{_datadir}/%{_name}/translations
 %{_datadir}/%{_name}/translations/%{_name}.qm
+%if 0%{suse_version} <= 1500
+%{_datadir}/%{_name}/translations/%{_name}_*.qm
+%endif
 
 %changelog

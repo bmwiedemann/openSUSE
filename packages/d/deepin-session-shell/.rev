@@ -58,4 +58,12 @@
     <comment>plasma5-theme-openSUSE for Tumbleweed (forwarded request 1159034 from hillwood)</comment>
     <requestid>1159035</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>382b1b52cc5b28ce0fc89dd5d140d04a</srcmd5>
+    <version>5.5.48</version>
+    <time>1711036888</time>
+    <user>anag+factory</user>
+    <comment>- Fix filelist for Leap 15 (forwarded request 1160108 from hillwood)</comment>
+    <requestid>1160109</requestid>
+  </revision>
 </revisionlist>
