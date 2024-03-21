@@ -49,10 +49,10 @@ themes and a pack of images and sounds.
 
 %prep
 %setup -q -n fvwm-themes-0.7.0
-%patch1 -p1 -b .head
-%patch2 -p1 -b .configure
-%patch3 -p1
-%patch4 -p1
+%patch -P 1 -p1 -b .head
+%patch -P 2 -p1 -b .configure
+%patch -P 3 -p1
+%patch -P 4 -p1
 
 %build
 autoreconf --force --install

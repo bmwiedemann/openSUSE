@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:48:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Mar 30 19:33:43 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Extend reproducible.patch to produce consistent rc file
