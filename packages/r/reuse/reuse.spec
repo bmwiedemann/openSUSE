@@ -27,7 +27,7 @@ URL:            https://git.fsfe.org/reuse/tool
 Source:         https://files.pythonhosted.org/packages/source/r/reuse/reuse-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gettext
-BuildRequires:  git
+BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3 >= 3.8
 BuildRequires:  python3-Jinja2
@@ -45,7 +45,7 @@ Requires:       python3-boolean.py
 Requires:       python3-debian
 Requires:       python3-license-expression
 Requires:       python3-setuptools
-Recommends:     git
+Recommends:     git-core
 
 %description
 A tool for compliance with the REUSE recommendations.  Essentially,
