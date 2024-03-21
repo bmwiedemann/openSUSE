@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 21 10:03:15 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Remove deprecated packages from the Azure SDK from Requires
+  + python-azure-monitor
+
+-------------------------------------------------------------------
 Fri Mar  1 10:39:11 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add additional packages from the Azure SDK to Requires

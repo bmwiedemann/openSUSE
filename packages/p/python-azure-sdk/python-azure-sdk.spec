@@ -131,7 +131,6 @@ Requires:       python-azure-mgmt-nginx
 Requires:       python-azure-mgmt-scvmm
 Requires:       python-azure-mgmt-workloads
 Requires:       python-azure-mixedreality-authentication
-Requires:       python-azure-monitor
 Requires:       python-azure-monitor-ingestion
 Requires:       python-azure-monitor-opentelemetry-exporter
 Requires:       python-azure-monitor-query
