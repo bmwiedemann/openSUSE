@@ -18,6 +18,7 @@
 
 # Flavor to build for
 %define pythons python3
+%{?sle15_python_module_pythons}
 Name:           bump2version
 Version:        1.0.1
 Release:        0
