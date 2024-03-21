@@ -36,10 +36,6 @@ Requires:       python-msal < 2.0.0
 Requires:       python-msal >= 0.4.1
 Requires:       python-portalocker < 3.0
 Requires:       python-portalocker >= 1.0
-%ifpython2
-Requires:       python-pathlib2
-Requires:       python-portalocker < 2.0
-%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module msal < 2.0.0}
@@ -70,6 +66,7 @@ This packages contains additional extensions.
 
 %files %{python_files}
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/msal_extensions
+%{python_sitelib}/msal_extensions-*.egg-info
 
 %changelog
