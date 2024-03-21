@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 20 23:51:17 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- add the provides/obsoletes for the renamed completion packages
+
+-------------------------------------------------------------------
+Wed Mar 20 23:45:38 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- make us ignore the git hash and just use the tag as revision 
+
+-------------------------------------------------------------------
 Sun Mar 17 12:44:30 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Fixed completions to be compliant with naming standards.

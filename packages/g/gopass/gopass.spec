@@ -16,8 +16,7 @@
 #
 
 
-%global revision  b79eae9
-%global make_args PREFIX=%{_prefix} GOPASS_REVISION=%{revision}
+%global make_args PREFIX=%{_prefix} GOPASS_REVISION=v%{version}
 Name:           gopass
 Version:        1.15.12
 Release:        0
@@ -51,6 +50,8 @@ Summary:        Bash completion for %{name}
 Requires:       %{name} = %{version}
 Supplements:    (bash and %{name})
 BuildArch:      noarch
+Provides:       gopass-completion-bash = %{version}-%{release}
+Obsoletes:      gopass-completion-bash < %{version}-%{release}
 
 %description bash-completion
 Manage your credentials with ease. In a globally distributed team, on multiple devices or fully offline on an air gapped machine.
@@ -66,6 +67,8 @@ Summary:        Fish completion for %{name}
 Requires:       %{name} = %{version}
 Supplements:    (fish and %{name})
 BuildArch:      noarch
+Provides:       gopass-completion-fish = %{version}-%{release}
+Obsoletes:      gopass-completion-fish < %{version}-%{release}
 
 %description fish-completion
 Manage your credentials with ease. In a globally distributed team, on multiple devices or fully offline on an air gapped machine.
@@ -81,6 +84,8 @@ Summary:        Zsh completion for %{name}
 Requires:       %{name} = %{version}
 Supplements:    (zsh and %{name})
 BuildArch:      noarch
+Provides:       gopass-completion-zsh = %{version}-%{release}
+Obsoletes:      gopass-completion-zsh < %{version}-%{release}
 
 %description zsh-completion
 Manage your credentials with ease. In a globally distributed team, on multiple devices or fully offline on an air gapped machine.
