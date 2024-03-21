@@ -2622,4 +2622,13 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
     <comment></comment>
     <requestid>1152308</requestid>
   </revision>
+  <revision rev="176" vrev="6">
+    <srcmd5>f858c161cc424e8b285237d19fbccb81</srcmd5>
+    <version>13.2</version>
+    <time>1711036806</time>
+    <user>anag+factory</user>
+    <comment>- Avoid using a %gcc macro to support using gcc 4.8 for building
+  on SLE11.  Use the regular language compilers for testing.</comment>
+    <requestid>1159816</requestid>
+  </revision>
 </revisionlist>
