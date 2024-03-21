@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 19 17:00:01 UTC 2024 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- hide secrets in debug log (bsc#1221194)
+  [+ 0003-move-all-attribute-definitions-to-compiler-h.patch]
+  [+ 0004-hide-secrets-in-debug-log-bsc-1221194.patch]
+
+-------------------------------------------------------------------
 Thu Mar 14 11:37:01 UTC 2024 - Marius Tomaschewski <mt@suse.com>
 
 - addrconf: fix fallback-lease drop (bsc#1220996)

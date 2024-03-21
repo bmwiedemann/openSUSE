@@ -28,6 +28,8 @@ Source0:        %{name}-%{version}.tar.bz2
 Source1:        wicked-rpmlintrc
 Patch1:         0001-addrconf-fix-fallback-lease-drop-bsc-1220996.patch
 Patch2:         0002-extensions-nbft-replace-nvme-show-nbft-with-nvme-nbf.patch
+Patch3:         0003-move-all-attribute-definitions-to-compiler-h.patch
+Patch4:         0004-hide-secrets-in-debug-log-bsc-1221194.patch
 #
 # Upstream First - openSUSE Build Service Policy:
 #
@@ -173,7 +175,7 @@ This package provides the wicked development files.
 %autopatch -p1
 
 %build
-test -x ./configure || autoreconf --force --install
+autoreconf --force --install
 export CFLAGS="-std=gnu89 $RPM_OPT_FLAGS -fPIC" LDFLAGS="-pie"
 %configure \
 	--with-piddir=%{wicked_piddir}	\

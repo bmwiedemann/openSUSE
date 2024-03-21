@@ -1827,4 +1827,12 @@
   [+ 0002-extensions-nbft-replace-nvme-show-nbft-with-nvme-nbf.patch]</comment>
     <requestid>1158066</requestid>
   </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>c9ec57237bfafaabdcf3b3a73e0e4394</srcmd5>
+    <version>0.6.74</version>
+    <time>1711036808</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1159817</requestid>
+  </revision>
 </revisionlist>
