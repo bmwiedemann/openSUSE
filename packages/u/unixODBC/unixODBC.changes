@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 20 07:56:32 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1221709: Fix build with gcc14
+  Add unixODBC-gcc14.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 15:44:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

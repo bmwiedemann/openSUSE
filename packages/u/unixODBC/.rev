@@ -419,4 +419,13 @@
     <comment></comment>
     <requestid>1148252</requestid>
   </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>1b78262730f3a68d4c6fc6f9fca46abd</srcmd5>
+    <version>2.3.12</version>
+    <time>1711036801</time>
+    <user>anag+factory</user>
+    <comment>- bsc#1221709: Fix build with gcc14
+  Add unixODBC-gcc14.patch</comment>
+    <requestid>1159779</requestid>
+  </revision>
 </revisionlist>

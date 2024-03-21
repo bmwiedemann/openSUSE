@@ -1,7 +1,7 @@
 #
 # spec file for package unixODBC
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source1:        baselibs.conf
 Source2:        unixODBC-rpmlintrc
 Patch0:         unixODBC-paths.patch
 Patch1:         unixODC-etc-location.patch
+# bsc#1221709 gh#157
+Patch2:         unixODBC-gcc14.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  gcc-c++
@@ -66,6 +68,7 @@ Includes for ODBC development (based on unixODBC).
 %setup -q
 %patch -P 0
 %patch -P 1 -p1
+%patch -P 2 -p1
 
 chmod -x NEWS README doc/*.html doc/*.gif Drivers/README
 
