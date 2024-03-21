@@ -94,10 +94,7 @@ deficiencies of elisp -- the reliance on dynamic scope -- has been
 removed. Also, rep only has a single namespace for symbols.
 
 %prep
-%setup -q -n %{name}_%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n %{name}_%{version}
 
 %build
 export CFLAGS="%{optflags} -D_GNU_SOURCE -fno-strict-aliasing -fgnu89-inline"
