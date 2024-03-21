@@ -35,7 +35,7 @@ Name:           avogadrolibs
 Version:        1.98.1
 Release:        0
 Summary:        Avogadro libraries for computational chemistry
-License:        BSD-3-Clause
+License:        BSD-3-Clause AND CDDL-1.0 AND GPL-3.0-or-later AND Apache-2.0
 URL:            https://two.avogadro.cc/
 Source0:        https://github.com/OpenChemistry/avogadrolibs/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/OpenChemistry/molecules/archive/%{molecules_rev}.tar.gz#/molecules-%{molecules_rev}.tar.gz
