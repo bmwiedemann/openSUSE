@@ -7,4 +7,12 @@
     <comment>Required by python-quimb	now in openSUSE:Factory:Staging:adi:43 </comment>
     <requestid>1153600</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>30a7d0293267a036d0dfead004f81aa1</srcmd5>
+    <version>0.5.6</version>
+    <time>1711036871</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1160043</requestid>
+  </revision>
 </revisionlist>
