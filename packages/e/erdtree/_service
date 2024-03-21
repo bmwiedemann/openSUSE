@@ -18,6 +18,7 @@
      <param name="srcdir">erdtree</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
+	 <param name="filter">true</param>
   </service>
   <service name="cargo_audit" mode="disabled">
      <param name="srcdir">erdtree</param>

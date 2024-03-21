@@ -165,4 +165,12 @@
     for further details about .erdtree.toml and the new release.</comment>
     <requestid>1096418</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>300889fdc139a8e445f8dd95ac2c4dac</srcmd5>
+    <version>3.1.2~0</version>
+    <time>1711036832</time>
+    <user>anag+factory</user>
+    <comment>- Filter dependencies for vendor tarball</comment>
+    <requestid>1159919</requestid>
+  </revision>
 </revisionlist>
