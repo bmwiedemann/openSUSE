@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 21 12:34:15 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to 1.19
+  - Fix typo in --exclude-from argument
+  - Add --(enable|disable)-natsort options
+  - Add indicator to apparent size/disk usage selection in the footer
+
+- add url for keyring
+- use pkgconfig
+- look for all manpages
+
+-------------------------------------------------------------------
 Mon May  1 13:58:21 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to 1.18.1

@@ -1,7 +1,7 @@
 #
 # spec file for package ncdu
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           ncdu
-Version:        1.18.1
+Version:        1.19
 Release:        0
 Summary:        NCurses Disk Usage
 License:        MIT
 URL:            https://dev.yorhel.nl/ncdu/
 Source0:        https://dev.yorhel.nl/download/%{name}-%{version}.tar.gz
 Source1:        https://dev.yorhel.nl/download/%{name}-%{version}.tar.gz.asc
-Source2:        %{name}.keyring
-BuildRequires:  ncurses-devel
+Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x74460d32b80810eba9afa2e962394c698c2739fa#/%{name}.keyring
+BuildRequires:  pkgconfig(ncurses)
 
 %description
 ncdu (NCurses Disk Usage) is a curses-based version of
@@ -33,7 +33,7 @@ the well-known 'du', and provides a fast way to see what
 directories are using your disk space.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure
@@ -46,6 +46,6 @@ directories are using your disk space.
 %license COPYING
 %doc ChangeLog README
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man?/%{name}.?%{?ext_man}
 
 %changelog
