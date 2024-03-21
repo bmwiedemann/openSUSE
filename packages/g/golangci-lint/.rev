@@ -174,4 +174,20 @@
     <comment>Update to version 1.57.0 with packaging improvements. (forwarded request 1159747 from jfkw)</comment>
     <requestid>1159748</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a5118d7d2d2801149b70927d1551bf39</srcmd5>
+    <version>1.57.1</version>
+    <time>1711036849</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.57.1:
+  * fix: filter invalid issues before other processors (#4552)
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.1.1 to 2.2.0 (#4548)
+  * build(deps): bump github.com/golangci/plugin-module-register from 0.1.0 to 0.1.1 (#4549)
+  * dev: improve dependabot configuration
+  * docs: fix default value for sloglint no-global (#4547)
+  * docs: update documentation (#4546)
+  * docs: update documentation assets (#4545)
+  * docs: update GitHub Action assets (forwarded request 1159979 from jfkw)</comment>
+    <requestid>1159980</requestid>
+  </revision>
 </revisionlist>

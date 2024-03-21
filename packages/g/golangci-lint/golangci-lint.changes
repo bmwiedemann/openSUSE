@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 21 06:07:27 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.57.1:
+  * fix: filter invalid issues before other processors (#4552)
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.1.1 to 2.2.0 (#4548)
+  * build(deps): bump github.com/golangci/plugin-module-register from 0.1.0 to 0.1.1 (#4549)
+  * dev: improve dependabot configuration
+  * docs: fix default value for sloglint no-global (#4547)
+  * docs: update documentation (#4546)
+  * docs: update documentation assets (#4545)
+  * docs: update GitHub Action assets
+
+-------------------------------------------------------------------
 Wed Mar 20 05:09:14 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
