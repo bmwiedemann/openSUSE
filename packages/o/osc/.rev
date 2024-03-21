@@ -1829,4 +1829,13 @@ Now with compat code so it does not break on SLE12 (forwarded request 892030 fro
     <comment></comment>
     <requestid>1152040</requestid>
   </revision>
+  <revision rev="193" vrev="2">
+    <srcmd5>d5cb2aed6c9e901ed9b4a9b89f45144c</srcmd5>
+    <version>1.6.1</version>
+    <time>1711036889</time>
+    <user>anag+factory</user>
+    <comment>- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476] (forwarded request 1158006 from pgajdos)</comment>
+    <requestid>1160115</requestid>
+  </revision>
 </revisionlist>
