@@ -17,12 +17,12 @@
 
 
 Name:           man-pages
-Version:        6.05.01
+Version:        6.7
 Release:        0
 Summary:        Linux  Manual Pages
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
 Group:          Documentation/Man
-URL:            https://www.kernel.org/doc/man-pages/download.html
+URL:            https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/
 #Git-Clone:	git://git.kernel.org/pub/scm/docs/man-pages/man-pages
 #Git-Web:	http://git.kernel.org/cgit/docs/man-pages/man-pages.git/
 Source0:        https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-%{version}.tar.xz
@@ -58,9 +58,9 @@ rm man3/{getifaddrs.3,freeifaddrs.3,crypt.3,crypt_r.3}
 rm man3/explicit_bzero.3
 # bsc#1188724
 rm man5/motd.5
-# conflicts with mandoc
-mkdir man7mp
-mv man7/man.7 man7mp/man.7mp
+# conflicts with mandoc; man.7 is not so link on groff_man.7,
+# which is part of groff-full
+rm man7/man.7
 
 %install
 for i in man[0-9]*; do
@@ -95,7 +95,7 @@ fi
 %defattr(644,root,root,755)
 %doc README Changes Changes.old CONTRIBUTING lsm
 %license LICENSES/*.txt
-%dir %{_mandir}/man7mp
+#%dir %{_mandir}/man7mp
 %dir %{_mandir}/man2type
 %dir %{_mandir}/man3const
 %dir %{_mandir}/man3head

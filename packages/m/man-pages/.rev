@@ -2060,4 +2060,27 @@
     <comment>- use %autosetup macro (forwarded request 1149825 from pgajdos)</comment>
     <requestid>1149826</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>fe7e438edb7467678a5a085c7c3c566e</srcmd5>
+    <version>6.7</version>
+    <time>1711036804</time>
+    <user>anag+factory</user>
+    <comment>- version update to 6.7
+  New and rewritten pages
+  -----------------------
+  man3/
+          TIMEVAL_TO_TIMESPEC.3
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+  man2/
+          process_madvise.2
+                  process_madvise() glibc wrapper
+  New and changed links
+  ---------------------
+  man3/
+          TIMESPEC_TO_TIMEVAL.3           (TIMEVAL_TO_TIMESPEC(3))
+- modified patches
+  % man-pages_gai.conf-reference.patch (refreshed)</comment>
+    <requestid>1159803</requestid>
+  </revision>
 </revisionlist>
