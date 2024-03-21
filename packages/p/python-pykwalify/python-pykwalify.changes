@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 21 07:55:17 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri May 28 07:20:34 UTC 2021 - pgajdos@suse.com
 
 - version update to 1.8.0
