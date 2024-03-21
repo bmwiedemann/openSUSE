@@ -218,4 +218,16 @@
     <comment></comment>
     <requestid>1151882</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5ab5db0a5e4a57c98042d95f6b14c3c4</srcmd5>
+    <version>4.3.2</version>
+    <time>1711037190</time>
+    <user>anag+factory</user>
+    <comment>- Update version to 4.3.2
+  * Changelog: https://github.com/mikebrady/shairport-sync/releases/tag/4.3.2
+  This update contains a brand new PipeWire backend with full synchronisation 
+  -- your feedback is welcome on this. The update also contains a number 
+  of bug fixes. (forwarded request 1160372 from hillwood)</comment>
+    <requestid>1160373</requestid>
+  </revision>
 </revisionlist>

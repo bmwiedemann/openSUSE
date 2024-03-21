@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 21 14:08:25 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 4.3.2
+  * Changelog: https://github.com/mikebrady/shairport-sync/releases/tag/4.3.2
+  This update contains a brand new PipeWire backend with full synchronisation 
+  -- your feedback is welcome on this. The update also contains a number 
+  of bug fixes.
+
+-------------------------------------------------------------------
 Mon Feb 26 13:14:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
