@@ -2350,4 +2350,12 @@ New Features
 </comment>
     <requestid>1146454</requestid>
   </revision>
+  <revision rev="206" vrev="1">
+    <srcmd5>2755f02976d09f4c9f77f4c30db5a5d5</srcmd5>
+    <version>9.18.25</version>
+    <time>1711036818</time>
+    <user>anag+factory</user>
+    <comment>Update to release 9.18.25</comment>
+    <requestid>1159854</requestid>
+  </revision>
 </revisionlist>
