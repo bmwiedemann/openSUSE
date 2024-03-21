@@ -160,19 +160,7 @@ This package contains the tools to manage the native o2cb stack for the
 OCFS2 filesystem.
 
 %prep
-%setup -q -a 1
-%patch001 -p1
-%patch103 -p1
-%patch105 -p1
-%patch106 -p1
-%patch107 -p0
-%patch202 -p1
-%patch204 -p1
-%patch205 -p1
-%patch225 -p1
-%patch228 -p1
-%patch405 -p1
-%patch406 -p1
+%autosetup -p1 -a 1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

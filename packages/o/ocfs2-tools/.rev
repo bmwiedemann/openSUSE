@@ -696,4 +696,12 @@
     <comment>change changelog mistake, from PED-6362 to jsc#PED-6362</comment>
     <requestid>1111460</requestid>
   </revision>
+  <revision rev="88" vrev="3">
+    <srcmd5>f8ceda0979be01f1195b58e1520cf36a</srcmd5>
+    <version>1.8.8</version>
+    <time>1711036858</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1160007</requestid>
+  </revision>
 </revisionlist>

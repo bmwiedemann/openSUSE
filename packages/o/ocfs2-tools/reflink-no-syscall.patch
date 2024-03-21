@@ -1,7 +1,6 @@
-Index: reflink/coreutils-6.9/src/ln.c
-===================================================================
---- reflink.orig/coreutils-6.9/src/ln.c
-+++ reflink/coreutils-6.9/src/ln.c
+diff -Nupr a/reflink/coreutils-6.9/src/ln.c b/reflink/coreutils-6.9/src/ln.c
+--- a/reflink/coreutils-6.9/src/ln.c	2024-03-21 16:11:03.718117039 +0800
++++ b/reflink/coreutils-6.9/src/ln.c	2024-03-21 16:12:34.006398158 +0800
 @@ -152,52 +152,6 @@ target_directory_operand (char const *fi
    return is_a_dir;
  }
