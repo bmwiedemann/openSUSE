@@ -4118,4 +4118,12 @@
   * Check for valid TERM</comment>
     <requestid>1158972</requestid>
   </revision>
+  <revision rev="497" vrev="2">
+    <srcmd5>520e1f4bb36bfcab277e462b54ef4e38</srcmd5>
+    <version>84.87+git20240202.9526d46</version>
+    <time>1711036836</time>
+    <user>anag+factory</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1221818</comment>
+    <requestid>1160121</requestid>
+  </revision>
 </revisionlist>

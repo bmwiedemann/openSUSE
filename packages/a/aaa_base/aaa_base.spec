@@ -33,7 +33,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20240318.3e4640d%{git_version}
+Version:        84.87+git20240202.9526d46%{git_version}
 Release:        0
 Summary:        openSUSE Base Package
 License:        GPL-2.0-or-later
@@ -193,8 +193,6 @@ mkdir -p %{buildroot}%{_fillupdir}
 /usr/etc/profile.d/ls.tcsh
 /usr/etc/profile.d/ls.bash
 /usr/etc/profile.d/ls.zsh
-/usr/etc/profile.d/terminal.sh
-/usr/etc/profile.d/terminal.csh
 %dir /usr/lib/environment.d
 /usr/lib/environment.d/50-xdg.conf
 %config /etc/shells
