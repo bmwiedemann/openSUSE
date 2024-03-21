@@ -1,7 +1,7 @@
 #
 # spec file for package python-youtube-dl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source:         http://youtube-dl.org/downloads/%version/%modname-%version.tar.g
 Source2:        http://youtube-dl.org/downloads/%version/%modname-%version.tar.gz.sig
 Source3:        %modname.keyring
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
