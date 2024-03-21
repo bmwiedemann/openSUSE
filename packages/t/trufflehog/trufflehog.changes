@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 20 15:00:57 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 3.70.3:
+  * fix(deps): update module github.com/wasilibs/go-re2 to v1.5.1 (#2596)
+
+-------------------------------------------------------------------
 Wed Mar 20 09:30:28 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 3.70.2:

@@ -573,4 +573,13 @@
   * fix(deps): update module github.com/google/go-github/v57 to v60 (#2551) (forwarded request 1159800 from ph03nix)</comment>
     <requestid>1159878</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6b11919cf0590b1131e9461af9f7bb02</srcmd5>
+    <version>3.70.3</version>
+    <time>1711036837</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.70.3:
+  * fix(deps): update module github.com/wasilibs/go-re2 to v1.5.1 (#2596) (forwarded request 1159879 from ph03nix)</comment>
+    <requestid>1159936</requestid>
+  </revision>
 </revisionlist>
