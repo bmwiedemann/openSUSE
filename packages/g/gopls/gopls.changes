@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 11 20:48:17 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.15.2:
+  * gopls: update go.mod for v0.15.2-pre.2
+  * gopls/internal/server: update telemetry prompt link
+  * gopls/internal/golang: fix crash in package references
+  * gopls/internal/server: fix crash in SignatureHelp
+  * gopls: update go.mod for v0.15.2-pre.1
+  * gopls/internal/cache: add assertions for telemetry crash
+  * gopls/internal/server: set -mod=readonly when checking for upgrades
+  * gopls/internal/cache: avoid go/types panic on version "go1.2.3"
+  * gopls/internal/cache: fix spurious diagnostics in multi-root workspaces
+  * gopls/internal/cache: prune broken edges to command-line-arguments pkgs
+
+-------------------------------------------------------------------
 Wed Feb 28 17:53:41 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.15.1:

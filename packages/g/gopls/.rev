@@ -104,4 +104,22 @@
   * gopls: add non nil if check around function result highlight (forwarded request 1153002 from jfkw)</comment>
     <requestid>1153003</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bfb66fd319509c8c9686130f2391eb29</srcmd5>
+    <version>0.15.2</version>
+    <time>1711036850</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.15.2:
+  * gopls: update go.mod for v0.15.2-pre.2
+  * gopls/internal/server: update telemetry prompt link
+  * gopls/internal/golang: fix crash in package references
+  * gopls/internal/server: fix crash in SignatureHelp
+  * gopls: update go.mod for v0.15.2-pre.1
+  * gopls/internal/cache: add assertions for telemetry crash
+  * gopls/internal/server: set -mod=readonly when checking for upgrades
+  * gopls/internal/cache: avoid go/types panic on version &quot;go1.2.3&quot;
+  * gopls/internal/cache: fix spurious diagnostics in multi-root workspaces
+  * gopls/internal/cache: prune broken edges to command-line-arguments pkgs (forwarded request 1159982 from jfkw)</comment>
+    <requestid>1159983</requestid>
+  </revision>
 </revisionlist>
