@@ -1,5 +1,5 @@
 #
-# spec file for package boost
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -245,6 +245,7 @@ Patch21:        boost-remove-cmakedir.patch
 Patch22:        boost-process.patch
 %{?suse_build_hwcaps_libs}
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libexpat-devel
@@ -252,11 +253,6 @@ BuildRequires:  libicu-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  xz-devel
 BuildRequires:  pkgconfig(zlib)
-%if %{with boost_fiber}
-BuildRequires:  gcc-c++ > 5
-%else
-BuildRequires:  gcc-c++
-%endif
 %if ! %{build_base}
 BuildRequires:  dos2unix
 %if %{with python3}

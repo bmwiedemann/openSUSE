@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 20 12:15:08 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Avoid BuildRequire of 'gcc-c++ > 5' which is only a redundant
+  check.  This interferes with Substitute.
+
+-------------------------------------------------------------------
 Wed Feb 21 09:18:53 CET 2024 - aschnell@suse.com
 
 - avoid obsolete rpm syntax
