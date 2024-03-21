@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 20 18:28:59 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.10.18
+  * NEW: 1086 Update auf HBCI4Java 3.1.76 - https://github.com/hbci4j/hbci4java/releases/tag/hbci4j-core-3.1.76
+    (Fehler "Das gesendete SEPA-Dokument ist nicht valide.")
+  * NEW: 1085 Startdatum der letzten automatischen Synchronisierung mit anzeigen
+
+-------------------------------------------------------------------
 Wed Mar  6 19:30:54 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 2.10.17

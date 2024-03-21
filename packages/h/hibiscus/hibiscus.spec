@@ -18,8 +18,8 @@
 
 %define _major 2
 %define _minor 10
-%define _micro 17
-%define _build 381
+%define _micro 18
+%define _build 382
 %define tag V_%{_major}_%{_minor}_%{_micro}_BUILD_%{_build}
 Name:           hibiscus
 Version:        %{_major}.%{_minor}.%{_micro}
@@ -34,7 +34,7 @@ Patch0:         hibiscus-port-to-commons-lang3.patch
 BuildRequires:  ant
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  hbci4java >= 3.1.55
+BuildRequires:  hbci4java >= 3.1.76
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  itextpdf >= 5.5.2
 BuildRequires:  jameica-devel >= 2.10.1
@@ -89,8 +89,8 @@ mkdir -p %{buildroot}%{_prefix}/lib/jameica/plugins
 cp -r releases/%{version}-%{_build}/%{name} %{buildroot}%{_prefix}/lib/jameica/plugins
 
 # unbundle HBCI4Java
-rm  %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/hbci4j-core-3.1.75.jar
-ln -sf %{_jnidir}/hbci4java/hbci4j-core.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/hbci4j-core-3.1.75.jar
+rm  %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/hbci4j-core-3.1.76.jar
+ln -sf %{_jnidir}/hbci4java/hbci4j-core.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/hbci4j-core-3.1.76.jar
 rm %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/libhbci4java-card-*.so
 %ifarch x86_64
 ln -sf %{_jnidir}/hbci4java/libhbci4java-card-linux.so %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/libhbci4java-card-linux-64.so
