@@ -28,15 +28,12 @@ Prefer: -libtsan2-gcc12
 Prefer: -libubsan1-gcc12
 Prefer: -libubsan1-gcc12-32bit
 
-Prefer: -libgdruntime4-gcc13
-Prefer: -libgphobos4-gcc13
 Prefer: -libasan8-gcc13
 Prefer: -libasan8-gcc13-32bit
 Prefer: -libtsan2-gcc13
 Prefer: -libubsan1-gcc13
 Prefer: -libubsan1-gcc13-32bit
 Prefer: -libgfortran5-gcc13
-Prefer: -libgo22-gcc13
 
 Patterntype: rpm-md ymp
 RepoType: rpm-md:sha512:filelists-ext
@@ -424,7 +421,6 @@ FileProvides: /bin/rm busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/rmdir busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/rsync rsync
 FileProvides: /usr/bin/ruby ruby3.3
-FileProvides: /usr/bin/ruby.ruby3.2 ruby3.2
 FileProvides: /usr/bin/ruby.ruby3.3 ruby3.3
 FileProvides: /usr/bin/runawk runawk
 FileProvides: /usr/bin/scheme-srfi-7 scheme48
@@ -591,15 +587,11 @@ Prefer: -python312-anyio3
 # have choice for dbus-broker-restart-behavior = 35 needed by dbus-broker: dbus-broker-allow-restart dbus-broker-block-restart
 Prefer: -dbus-broker-allow-restart
 
-# have choice for python3-fluent: python311-fluent python311-fluent.syntax
-Prefer: -python311-fluent
-
 # have choice for fonttools: python310-FontTools python311-FontTools python39-FontTools
 Prefer: -python39-FontTools -python310-FontTools -python311-FontTools
 
 # have choice for (python311-qt5 or python311-pyside2 or python311-PyQt6 or python311-pyside6) needed by python311-qtconsole: python311-pyside6 python311-qt5
 Prefer: -python311-pyside6
-Prefer: -python312-pyside6
 
 # have choice for libsundials_core.so.7()(64bit) needed by libsundials_ida7: libsundials_core7 libsundials_core7-mvapich2 libsundials_core7-openmpi4,
 Prefer: -libsundials_core7-mvapich2 -libsundials_core7-openmpi4
@@ -608,18 +600,6 @@ Prefer: -libsundials_core7-mvapich2 -libsundials_core7-openmpi4
 # have choice for (plasma-framework-desktoptheme or plasma6-framework-desktoptheme) needed by plasma-framework: libplasma6-desktoptheme plasma-framework-desktoptheme
 Prefer: -plasma-framework-desktoptheme
 
-# have choice for sasl2-kdexoauth2 needed by libKPim6IMAP6: libkgapi6-sasl2-kdexoauth2 sasl2-kdexoauth2
-Prefer: -sasl2-kdexoauth2
-
-# have choice for cmake(Breeze) >= MACRO: breeze5-style breeze6-devel
-Prefer: -breeze5-style
-
-# have choice for gwenview5 needed by patterns-kde-kde: gwenview gwenview5
-Prefer: -gwenview5
-
-# have choice for plasma-nm5-pptp needed by patterns-kde-kde_internet: plasma-nm5-pptp plasma6-nm-pptp
-Prefer: -plasma-nm5-pptp
- 
 # have choice for kwalletmanager needed by patterns-kde-kde_plasma: kwalletmanager kwalletmanager5
 Prefer: -kwalletmanager5
 
@@ -629,12 +609,8 @@ Prefer: -kaccounts-integration-kf5
 # have choice for cmake(KQuickImageEditor): kquickimageeditor-devel kquickimageeditor6-devel
 Prefer: -kquickimageeditor-devel
 
-# have choice for ksysguardsystemstats-data >= 5.27.10 needed by libKSysGuardSystemStats1: ksysguardsystemstats-data ksysguardsystemstats6-data
-Prefer: -ksysguardsystemstats-data
-
 # have choice for cmake(KDecoration2) >= MACRO: kdecoration6-devel libkdecoration2-devel
 Prefer: -libkdecoration2-devel
-
 
 #---
 
@@ -815,7 +791,6 @@ Ignore: libunbound-devel-mini:this-is-only-for-build-envs
 Ignore: postgresql12-devel-mini:this-is-only-for-build-envs
 Ignore: postgresql13-devel-mini:this-is-only-for-build-envs
 Ignore: postgresql14-devel-mini:this-is-only-for-build-envs
-Ignore: postgresql15-devel-mini:this-is-only-for-build-envs
 Ignore: postgresql16-devel-mini:this-is-only-for-build-envs
 Ignore: systemd-mini-container:this-is-only-for-build-envs
 Ignore: systemd-mini:this-is-only-for-build-envs
@@ -934,7 +909,6 @@ Prefer: -python39-magic -python310-magic -python312-magic
 Prefer: -gcr3-ssh-agent -gcr3-viewer
 
 # have choice for python3-Cython: python310-Cython python310-Cython3
-Prefer: -python310-Cython3 python39-Cython3 -python311-Cython3 -python312-Cython3
 Prefer: -python310-Cython0 python39-Cython0 -python311-Cython0 -python312-Cython0
 
 # have choice for ntp-daemon: chrony ntp ntpsec
@@ -1033,22 +1007,11 @@ Prefer: -libomp15-devel -libomp16-devel -libomp17-devel
 
 # have choice for python3dist(jupyterlab) = 3.6.2 needed by jupyter-jupyterlab: python310-jupyterlab python311-jupyterlab python38-jupyterlab python39-jupyterlab
 Prefer: -python310-jupyterlab -python39-jupyterlab
-Prefer: -python39-jupyter-client7
-Prefer: -python310-jupyter-client7
-Prefer: -python311-jupyter-client7
-Prefer: -python312-jupyter-client7
-Prefer: -python310-nbclassic -python39-nbclassic -python312-nbclassic
+Prefer: -python310-nbclassic -python312-nbclassic
 prefer: -python310-notebook -python39-notebook -python312-notebook
-
-# azure-cli reports: have choice for python3-vsts needed by python3-azure-functions-devops-build: python3-azure-devops python3-vsts
-# Use the real package name
-Prefer: python38-vsts python39-vsts
 
 # have choice for container:opensuse/nginx:latest: container:opensuse-nginx-1.25 container:opensuse-nginx-image
 Prefer: -container:opensuse-nginx-1.25
-
-# have choice for pkgconfig(wlroots): wlroots-devel wlroots10-devel
-Prefer: -wlroots10-devel
 
 # have choice for (sysvinit(network) or service(network)) needed by sysconfig: NetworkManager wicked-service
 Prefer: -NetworkManager
@@ -1135,15 +1098,12 @@ Prefer: -Mesa-libGLESv2-devel-32bit
 Prefer: -Mesa-libd3d-devel-32bit
 Prefer: -Mesa-libglapi-devel-32bit
 Prefer: -NetworkManager-devel-32bit
+Prefer: -SDL2-devel-32bit
 Prefer: -aalib-devel-32bit
 Prefer: -adolc-devel-32bit
 Prefer: -alsa-devel-32bit
 Prefer: -alsa-topology-devel-32bit
-Prefer: -armadillo-devel-32bit
-Prefer: -arpack-ng-devel-32bit
 Prefer: -at-spi2-core-devel-32bit
-Prefer: -atkmm1_6-devel-32bit
-Prefer: -audiofile-devel-32bit
 Prefer: -audit-devel-32bit
 Prefer: -augeas-devel-32bit
 Prefer: -binutils-devel-32bit
@@ -1151,18 +1111,14 @@ Prefer: -blas-devel-32bit
 Prefer: -bluez-devel-32bit
 Prefer: -cairo-devel-32bit
 Prefer: -cblas-devel-32bit
-Prefer: -chmlib-devel-32bit
 Prefer: -cppunit-devel-32bit
 Prefer: -cracklib-devel-32bit
 Prefer: -cups-devel-32bit
 Prefer: -cyrus-sasl-devel-32bit
-Prefer: -dante-devel-32bit
-Prefer: -dapl-devel-32bit
 Prefer: -dbus-1-devel-32bit
 Prefer: -dbus-1-glib-devel-32bit
 Prefer: -device-mapper-devel-32bit
 Prefer: -dirac-devel-32bit
-Prefer: -ecryptfs-utils-devel-32bit
 Prefer: -file-devel-32bit
 Prefer: -flac-devel-32bit
 Prefer: -fltk-devel-32bit
@@ -1177,24 +1133,16 @@ Prefer: -glib2-devel-32bit
 Prefer: -glibc-devel-32bit
 Prefer: -glu-devel-32bit
 Prefer: -gmp-devel-32bit
-Prefer: -grantlee5-devel-32bit
 Prefer: -gstreamer-devel-32bit
 Prefer: -gstreamer-plugins-base-devel-32bit
 Prefer: -gtk2-devel-32bit
 Prefer: -gtk3-devel-32bit
-Prefer: -gtk4-devel-32bit
-Prefer: -hdf5-devel-32bit
-Prefer: -hdf5-mvapich2-devel-32bit
-Prefer: -hdf5-openmpi4-devel-32bit
 Prefer: -hunspell-devel-32bit
 Prefer: -isl-devel-32bit
-Prefer: -jbig2dec-devel-32bit
 Prefer: -keyutils-devel-32bit
 Prefer: -krb5-devel-32bit
 Prefer: -lapack-devel-32bit
 Prefer: -lapacke-devel-32bit
-Prefer: -libFS-devel-32bit
-Prefer: -libHX-devel-32bit
 Prefer: -libICE-devel-32bit
 Prefer: -libMagick++-devel-32bit
 Prefer: -libOSMesa-devel-32bit
@@ -1210,15 +1158,7 @@ Prefer: -libQt5Sql-devel-32bit
 Prefer: -libQt5Test-devel-32bit
 Prefer: -libQt5Widgets-devel-32bit
 Prefer: -libQt5Xml-devel-32bit
-Prefer: -SDL2-devel-32bit
-Prefer: -libSDL2_gfx-devel-32bit
 Prefer: -libSDL_gfx-devel-32bit
-Prefer: -libSDL_image-devel-32bit
-Prefer: -libSDL_mixer-devel-32bit
-Prefer: -libSDL_mixer-devel-64bit
-Prefer: -libSDL_net-devel-32bit
-Prefer: -libSDL_ttf-devel-32bit
-Prefer: -libSDL_ttf-devel-64bit
 Prefer: -libSM-devel-32bit
 Prefer: -libX11-devel-32bit
 Prefer: -libXau-devel-32bit
@@ -1228,19 +1168,16 @@ Prefer: -libXcomposite-devel-32bit
 Prefer: -libXcursor-devel-32bit
 Prefer: -libXdamage-devel-32bit
 Prefer: -libXdmcp-devel-32bit
-Prefer: -libXevie-devel-32bit
 Prefer: -libXext-devel-32bit
 Prefer: -libXfixes-devel-32bit
 Prefer: -libXfont-devel-32bit
 Prefer: -libXfont2-devel-32bit
-Prefer: -libXfontcache-devel-32bit
 Prefer: -libXft-devel-32bit
 Prefer: -libXi-devel-32bit
 Prefer: -libXinerama-devel-32bit
 Prefer: -libXmu-devel-32bit
 Prefer: -libXp-devel-32bit
 Prefer: -libXpm-devel-32bit
-Prefer: -libXprintAppUtil-devel-32bit
 Prefer: -libXprintUtil-devel-32bit
 Prefer: -libXrandr-devel-32bit
 Prefer: -libXrender-devel-32bit
@@ -1253,13 +1190,11 @@ Prefer: -libXvMC-devel-32bit
 Prefer: -libXxf86dga-devel-32bit
 Prefer: -libXxf86vm-devel-32bit
 Prefer: -libacl-devel-32bit
-Prefer: -libadns-devel-32bit
 Prefer: -libaio-devel-32bit
 Prefer: -libattr-devel-32bit
 Prefer: -libavc1394-devel-32bit
 Prefer: -libbasicobjects-devel-32bit
 Prefer: -libblkid-devel-32bit
-Prefer: -libbotan-devel-32bit
 Prefer: -libbrotli-devel-32bit
 Prefer: -libbz2-devel-32bit
 Prefer: -libcelt-devel-32bit
@@ -1270,11 +1205,9 @@ Prefer: -libcurl-devel-32bit
 Prefer: -libdb-4_8-devel-32bit
 Prefer: -libdbi-devel-32bit
 Prefer: -libdbusmenu-qt5-devel-32bit
-Prefer: -libdecor-devel-32bit
 Prefer: -libdhash-devel-32bit
 Prefer: -libdmx-devel-32bit
 Prefer: -libdrm-devel-32bit
-Prefer: -libdwarves-devel-32bit
 Prefer: -libeditorconfig-devel-32bit
 Prefer: -libelf-devel-32bit
 Prefer: -libexif-devel-32bit
@@ -1295,26 +1228,19 @@ Prefer: -libgnutls-devel-32bit
 Prefer: -libgpg-error-devel-32bit
 Prefer: -libgphoto2-devel-32bit
 Prefer: -libgsm-devel-32bit
-Prefer: -libhts-devel-32bit
 Prefer: -libicu-devel-32bit
 Prefer: -libini_config-devel-32bit
 Prefer: -libjack-devel-32bit
 Prefer: -libjbig-devel-32bit
 Prefer: -libjpeg62-devel-32bit
 Prefer: -libjpeg8-devel-32bit
-Prefer: -liblbxutil-devel-32bit
 Prefer: -liblcms2-devel-32bit
 Prefer: -libmount-devel-32bit
 Prefer: -libnettle-devel-32bit
 Prefer: -libnl3-devel-32bit
 Prefer: -libnotify-devel-32bit
-Prefer: -liboldX-devel-32bit
 Prefer: -libopenssl-1_0_0-devel-32bit
 Prefer: -libopenssl-1_1-devel-32bit
-Prefer: -liboping-devel-32bit
-Prefer: -libotf-devel-32bit
-Prefer: -libpackagekit-glib2-devel-32bit
-Prefer: -libpath_utils-devel-32bit
 Prefer: -libpcap-devel-32bit
 Prefer: -libpng12-compat-devel-32bit
 Prefer: -libpng12-devel-32bit
@@ -1324,15 +1250,8 @@ Prefer: -libpulse-devel-32bit
 Prefer: -libqb-devel-32bit
 Prefer: -libqt5-qtconnectivity-devel-32bit
 Prefer: -libqt5-qtdeclarative-devel-32bit
-Prefer: -libqt5-qtgamepad-devel-32bit
 Prefer: -libqt5-qtlocation-devel-32bit
 Prefer: -libqt5-qtmultimedia-devel-32bit
-Prefer: -libqt5-qtnetworkauth-devel-32bit
-Prefer: -libqt5-qtremoteobjects-devel-32bit
-Prefer: -libqt5-qtscript-devel-32bit
-Prefer: -libqt5-qtscxml-devel-32bit
-Prefer: -libqt5-qtsensors-devel-32bit
-Prefer: -libqt5-qtserialbus-devel-32bit
 Prefer: -libqt5-qtserialport-devel-32bit
 Prefer: -libqt5-qtspeech-devel-32bit
 Prefer: -libqt5-qtsvg-devel-32bit
@@ -1344,13 +1263,9 @@ Prefer: -libqt5-qtx11extras-devel-32bit
 Prefer: -libqt5-qtxmlpatterns-devel-32bit
 Prefer: -libraw1394-devel-32bit
 Prefer: -libref_array-devel-32bit
-Prefer: -libressl-devel-32bit
-Prefer: -libscalapack2-mvapich2-devel-32bit
-Prefer: -libscalapack2-openmpi4-devel-32bit
 Prefer: -libsmartcols-devel-32bit
 Prefer: -libsoup-devel-32bit
 Prefer: -libsoup2-devel-32bit
-Prefer: -libstatgrab-devel-32bit
 Prefer: -libstdc++-devel-32bit
 Prefer: -libtasn1-devel-32bit
 Prefer: -libtiff-devel-32bit
@@ -1370,40 +1285,30 @@ Prefer: -libxcrypt-devel-32bit
 Prefer: -libxkbcommon-devel-32bit
 Prefer: -libxkbcommon-x11-devel-32bit
 Prefer: -libxkbfile-devel-32bit
-Prefer: -libxkbui-devel-32bit
 Prefer: -libxml2-devel-32bit
 Prefer: -libxslt-devel-32bit
-Prefer: -libyajl-devel-32bit
 Prefer: -libzstd-devel-32bit
 Prefer: -lzo-devel-32bit
-Prefer: -motif-devel-32bit
 Prefer: -mpc-devel-32bit
 Prefer: -mpfr-devel-32bit
 Prefer: -mpg123-devel-32bit
-Prefer: -munge-devel-32bit
-Prefer: -muparser-devel-32bit
 Prefer: -ncurses-devel-32bit
 Prefer: -ncurses5-devel-32bit
 Prefer: -net-snmp-devel-32bit
 Prefer: -ocl-icd-devel-32bit
 Prefer: -openal-soft-devel-32bit
 Prefer: -openldap2-devel-32bit
-Prefer: -opensm-devel-32bit
 Prefer: -pam-devel-32bit
 Prefer: -pango-devel-32bit
-Prefer: -papi-devel-32bit
 Prefer: -pciutils-devel-32bit
 Prefer: -pcsc-lite-devel-32bit
 Prefer: -pipewire-libjack-0_3-32bit
 Prefer: -popt-devel-32bit
 Prefer: -rdma-core-devel-32bit
 Prefer: -readline-devel-32bit
-Prefer: -readline5-devel-32bit
-Prefer: -readline6-devel-32bit
 Prefer: -samba-devel-32bit
 Prefer: -sane-backends-devel-32bit
 Prefer: -spirv-tools-devel-32bit
-Prefer: -telepathy-qt5-devel-32bit
 Prefer: -tslib-devel-32bit
 Prefer: -unixODBC-devel-32bit
 Prefer: -utempter-devel-32bit
@@ -1412,7 +1317,6 @@ Prefer: -vulkan-devel-32bit
 Prefer: -wayland-devel-32bit
 Prefer: -wine-devel-32bit
 Prefer: -wine-staging-devel-32bit
-Prefer: -wxWidgets-3_0-devel-32bit
 Prefer: -xcb-util-cursor-devel-32bit
 Prefer: -xcb-util-devel-32bit
 Prefer: -xcb-util-image-devel-32bit
@@ -1425,9 +1329,7 @@ Prefer: -zvbi-devel-32bit
 Prefer: -zziplib-devel-32bit
 
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
-Prefer: ruby3.2-rubygem-fast_gettext
 Prefer: ruby3.3-rubygem-fast_gettext
-Prefer: -ruby3.2-rubygem-public_suffix-3.1
 Prefer: -ruby3.3-rubygem-public_suffix-3.1
 
 # We have opencv and opencv3 - as usual, the unversioned one should win
@@ -1450,7 +1352,7 @@ Prefer: enchant-2-backend-hunspell
 Prefer: libOpenSceneGraph-devel libOpenThreads-devel
 
 # Java, especially Maven related bootstrap packages are never preferred:
-Prefer: -scala-bootstrap -scala-bootstrap-swing
+Prefer: -scala-bootstrap
 Prefer: -maven-compiler-plugin-bootstrap -maven-resources-plugin-bootstrap -maven-jar-plugin-bootstrap
 Prefer: -maven-javadoc-plugin-bootstrap -maven-plugin-plugin-bootstrap -maven-failsafe-plugin-bootstrap
 Prefer: -maven-surefire-plugin-bootstrap -maven-surefire-report-plugin-bootstrap -stringtemplate4-bootstrap
@@ -1463,7 +1365,7 @@ Prefer: -mingw64-headers-dummy-pthread -mingw32-headers-dummy-pthread
 Prefer: xorg-x11-Xvnc:icewm
 Prefer: cracklib-dict-small
 Prefer: libstdc++6 libgcc_s1 libquadmath0 libhwasan0 libgccjit0
-Prefer: libstdc++6-32bit libstdc++6-64bit
+Prefer: libstdc++6-32bit
 Prefer: syslog-service
 Prefer: poppler-tools
 Prefer: -libjpeg62-devel
@@ -1478,8 +1380,7 @@ Prefer: texlive-xmltex texlive-tools texlive-jadetex
 Prefer: librest-0_7-0
 
 
-Prefer: -geronimo-jta-1_0_1B-api -geronimo-jms-1_1-api -geronimo-el-1_0-api -geronimo-jta-1_1-api javamail
-Prefer: rhino:xmlbeans-mini
+Prefer: -geronimo-jta-1_0_1B-api -geronimo-jms-1_1-api -geronimo-jta-1_1-api javamail
 
 Prefer: rpcbind
 Prefer: wicked-service
@@ -1497,7 +1398,7 @@ Prefer: libhdf5_hl100 -libhdf5-103-mvapich2 -libhdf5_cpp103-mvapich2 -libhdf5-10
 Prefer: libhdf5_hl200 -libhdf5-200-mvapich2 -libhdf5_cpp200-mvapich2 -libhdf5-200-openmpi4 -libhdf5_cpp200-openmpi4 -libhdf5-200-openmpi5 -libhdf5_cpp200-openmpi5
 Prefer: -openmpi5-libs
 Prefer: -openmpi5-config
-Prefer: fftw3-devel ImageMagick-config-7-SUSE
+Prefer: fftw3-devel
 # prefer the small systemd for building
 Prefer: star
 Prefer: xmlgraphics-commons:apache-commons-io
@@ -1505,10 +1406,9 @@ Prefer: xmlgraphics-commons:apache-commons-io
 Prefer: -glib2-devel-32bit -typelib-1_0-Gst-1_0-32bit
 Prefer: postgresql postgresql-server postgresql-devel postgresql-server-devel
 Prefer: postgresql16-devel-mini
-Prefer: -postgresql15-devel-mini
 # only needed to bootstrap 11, but leave it - 12 will come at some point :)
 Prefer: -unzip-rcc
-Prefer: -primus -primus-32bit
+Prefer: -primus
 Prefer: -staging-build-key
 Prefer: -clutter-gst-devel
 # We have multiple versions of ffmpeg available, the preferred one is ffmpeg5, followd by 4, followed by 3
@@ -1531,11 +1431,11 @@ Prefer: libopenssl-devel
 
 Prefer: libqca-qt5-2 qca-qt5-plugins
 Prefer: -xaw3dd -amanda
-Prefer: libgcc_s1 libgcc_s1-32bit libgcc_s1-64bit
+Prefer: libgcc_s1 libgcc_s1-32bit
 Prefer: libffi-devel
 Prefer: libatomic1 libitm1 liblsan0 libtsan0 libubsan0
 Prefer: libatomic1-32bit libcilkrts5-32bit libitm1-32bit libubsan0-32bit
-Prefer: libgomp1 libgomp1-32bit libgomp1-64bit
+Prefer: libgomp1 libgomp1-32bit
 Prefer: libobjc4 libquadmath0
 Prefer: gnu-crypto libusb-compat-devel
 Prefer: libusb-0_1-4
@@ -1563,8 +1463,6 @@ Prefer: libpsm2-compat
 Prefer: mozilla-nss-certs
 # replacing mkinitrd
 Prefer: dracut
-# Temporary
-Prefer: oxygen5-cursors
 # Temporary
 Prefer: -perl-App-cpanminus
 # libmediaart is prepared for a larger update; for now favor mediaart-1.0
@@ -1918,6 +1816,7 @@ BuildFlags: onlybuild:dtc
 BuildFlags: onlybuild:duktape
 BuildFlags: onlybuild:dummy-release
 BuildFlags: onlybuild:libdvdnav
+BuildFlags: onlybuild:logrotate
 BuildFlags: onlybuild:dwz
 BuildFlags: onlybuild:dxvk
 BuildFlags: onlybuild:eglexternalplatform
@@ -1978,8 +1877,6 @@ BuildFlags: onlybuild:gc
 BuildFlags: onlybuild:gcab
 BuildFlags: onlybuild:gcc
 BuildFlags: onlybuild:gcc13
-BuildFlags: onlybuild:gcc13-AGGR-i586
-BuildFlags: onlybuild:gcc14-AGGR-i586
 BuildFlags: onlybuild:gcc14
 BuildFlags: onlybuild:gccmakedep
 BuildFlags: onlybuild:gcr
@@ -2088,7 +1985,6 @@ BuildFlags: onlybuild:itstool
 BuildFlags: onlybuild:jack
 BuildFlags: onlybuild:jasper
 BuildFlags: onlybuild:java-21-openjdk
-BuildFlags: onlybuild:j21-AGGR
 BuildFlags: onlybuild:java-cup:java-cup-bootstrap
 BuildFlags: onlybuild:javapackages-tools
 BuildFlags: onlybuild:javapackages-tools:extras
@@ -2350,7 +2246,6 @@ BuildFlags: onlybuild:libthai
 BuildFlags: onlybuild:libtheora
 BuildFlags: onlybuild:libtirpc
 BuildFlags: onlybuild:libtool
-BuildFlags: onlybuild:libunbound-devel-mini
 BuildFlags: onlybuild:libunistring
 BuildFlags: onlybuild:libunwind
 BuildFlags: onlybuild:liburing
@@ -2400,8 +2295,6 @@ BuildFlags: onlybuild:llvm16
 BuildFlags: onlybuild:llvm17
 BuildFlags: onlybuild:llvm18
 BuildFlags: onlybuild:lmdb
-BuildFlags: onlybuild:lockdev
-BuildFlags: onlybuild:logrotate
 BuildFlags: onlybuild:lua-macros
 BuildFlags: onlybuild:lua51
 BuildFlags: onlybuild:lua54
@@ -2510,7 +2403,6 @@ BuildFlags: onlybuild:oxygen-gtk2
 BuildFlags: onlybuild:p11-kit
 BuildFlags: onlybuild:pam
 BuildFlags: onlybuild:pam-config
-BuildFlags: onlybuild:pam_kwallet
 BuildFlags: onlybuild:pam_kwallet6
 BuildFlags: onlybuild:pango
 BuildFlags: onlybuild:patch
@@ -2626,7 +2518,6 @@ BuildFlags: onlybuild:perl-HTTP-Message
 BuildFlags: onlybuild:perl-HTTP-Negotiate
 BuildFlags: onlybuild:perl-IO-CaptureOutput
 BuildFlags: onlybuild:perl-IO-HTML
-BuildFlags: onlybuild:perl-IO-Socket-INET6
 BuildFlags: onlybuild:perl-IO-Socket-SSL
 BuildFlags: onlybuild:perl-IO-String
 BuildFlags: onlybuild:perl-IO-Tty
@@ -2804,7 +2695,6 @@ BuildFlags: onlybuild:po4a
 BuildFlags: onlybuild:policycoreutils
 BuildFlags: onlybuild:polkit
 BuildFlags: onlybuild:polkit-default-privs
-BuildFlags: onlybuild:polkit-qt5-1
 BuildFlags: onlybuild:polkit-qt-1:qt5
 BuildFlags: onlybuild:poppler
 BuildFlags: onlybuild:poppler-data
@@ -2823,7 +2713,6 @@ BuildFlags: onlybuild:procmail
 BuildFlags: onlybuild:procps
 BuildFlags: onlybuild:protobuf
 BuildFlags: onlybuild:protobuf-c
-#BuildFlags: onlybuild:protobuf21
 BuildFlags: onlybuild:psmisc
 BuildFlags: onlybuild:psutils
 BuildFlags: onlybuild:pthread-stubs
@@ -2857,7 +2746,6 @@ BuildFlags: onlybuild:python-async_generator
 BuildFlags: onlybuild:python-atspi
 BuildFlags: onlybuild:python-attrs
 BuildFlags: onlybuild:python-bcrypt
-BuildFlags: onlybuild:python-brotlipy
 BuildFlags: onlybuild:python-build
 BuildFlags: onlybuild:python-calver
 BuildFlags: onlybuild:python-certifi
@@ -2991,13 +2879,11 @@ BuildFlags: onlybuild:python-rtslib-fb
 BuildFlags: onlybuild:python-semantic_version
 BuildFlags: onlybuild:python-service_identity
 BuildFlags: onlybuild:python-setuptools
-BuildFlags: onlybuild:python-setuptools:wheel
 BuildFlags: onlybuild:python-setuptools-rust
 BuildFlags: onlybuild:python-setuptools_scm
 BuildFlags: onlybuild:python-sip
 BuildFlags: onlybuild:python-sip6
 BuildFlags: onlybuild:python-six
-BuildFlags: onlybuild:python-slip
 BuildFlags: onlybuild:python-smartypants
 BuildFlags: onlybuild:python-smmap
 BuildFlags: onlybuild:python-sniffio
@@ -3077,7 +2963,6 @@ BuildFlags: onlybuild:rtkit
 BuildFlags: onlybuild:ruby
 BuildFlags: onlybuild:ruby-bundled-gems-rpmhelper
 BuildFlags: onlybuild:ruby-common
-BuildFlags: onlybuild:ruby3.2
 BuildFlags: onlybuild:ruby3.3
 BuildFlags: onlybuild:rubygem-asciidoctor
 BuildFlags: onlybuild:rubygem-gem2rpm
@@ -3494,7 +3379,7 @@ Macros:
 
 # END RUST STUFF
 
-# Default to Java 21 - !! Also adjust 000package-groups/openSUSE-release.spec.in to suggest the right version ~~
+# Default to Java 21 - !! Also adjust 000package-groups/*-release.spec.in to suggest the right version ~~
 Prefer: java-21-openjdk-devel java-21-openjdk java-21-openjdk-headless java-21-openjdk-javadoc
 Prefer: java-17-openjdk-devel java-17-openjdk java-17-openjdk-headless java-17-openjdk-javadoc
 Prefer: java-11-openjdk-devel java-11-openjdk java-11-openjdk-headless java-11-openjdk-javadoc
@@ -3502,8 +3387,6 @@ Prefer: java-11-openjdk-devel java-11-openjdk java-11-openjdk-headless java-11-o
 Prefer: java-1_8_0-openj9-devel java-1_8_0-openj9 java-1_8_0-openj9-headless
 %endif
 Prefer: java-1_8_0-openjdk-devel java-1_8_0-openjdk java-1_8_0-openjdk-headless java-1_8_0-openjdk-javadoc
-Prefer: java-20-openjdk-devel java-20-openjdk java-20-openjdk-headless java-20-openjdk-javadoc
-
 
 %ifarch x86_64 ppc64 s390x sparc64
 Substitute: glibc-devel-32bit glibc-devel-32bit glibc-32bit
