@@ -162,6 +162,7 @@
     <!-- OBS-IgnorePackage: sane-backends -->
     <ignore name="sane-backends"/>
     <package name="branding-openSUSE"/>
+    <package name="chrony"/>
     <!-- OBS-IgnorePackage: glibc-32bit -->
     <ignore name="glibc-32bit"/>
     <!-- OBS-IgnorePackage: libvdpau_r300 -->

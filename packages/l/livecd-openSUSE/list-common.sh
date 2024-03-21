@@ -54,6 +54,7 @@ buildignore inxi
 buildignore sane-backends
 
 install branding-openSUSE
+install chrony
 
 # Don't pull in any -32bit libs
 buildignore glibc-32bit
