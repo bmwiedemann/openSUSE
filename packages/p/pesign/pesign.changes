@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 20 08:44:54 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add pesign-bsc1221694-fix-reversed-calloc-arguments.patch to
+  fix the parameters for calloc() (bsc#1221694)
+
+-------------------------------------------------------------------
 Thu Nov  2 03:20:49 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add the Provides tag for the files moved to pesign-systemd 

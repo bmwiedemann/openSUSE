@@ -1,7 +1,7 @@
 #
 # spec file for package pesign
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ Patch7:         pesign-bsc1202933-Remove-pesign-authorize.patch
 Patch8:         pesign-bsc1202933-Make-etc-pki-pesign-writeable.patch
 Patch9:         pesign-fix-cert-match-check.patch
 Patch10:        pesign-fix-efikeygen-segfault.patch
+Patch11:        pesign-bsc1221694-fix-reversed-calloc-arguments.patch
 BuildRequires:  efivar-devel >= 38
 BuildRequires:  libuuid-devel
 BuildRequires:  mandoc
