@@ -651,8 +651,8 @@
       <repopackage name="iso_ent"/>
       <repopackage name="issue-generator"/>
       <repopackage name="jack-dbus"/>
-      <repopackage name="java-22-openjdk"/>
-      <repopackage name="java-22-openjdk-headless"/>
+      <repopackage name="java-21-openjdk"/>
+      <repopackage name="java-21-openjdk-headless"/>
       <repopackage name="javapackages-filesystem"/>
       <repopackage name="javapackages-tools"/>
       <repopackage name="jmdict"/>
