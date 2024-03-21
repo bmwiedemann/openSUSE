@@ -244,11 +244,11 @@
     <package name="gcr-ssh-agent" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="gcr-ssh-askpass" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="gcr-viewer" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="gcr3-data" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="gcr3-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="gcr3-prompter" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="gcr3-data" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="gcr3-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="gcr3-prompter" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="gcr3-ssh-agent" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="gcr3-ssh-askpass" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="gcr3-ssh-askpass" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="gdbm-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="gdk-pixbuf-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="gdk-pixbuf-loader-jxl" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -294,6 +294,7 @@
     <package name="gnome-control-center-goa" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="gnome-control-center-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="gnome-control-center-user-faces" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="gnome-control-center-users" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="gnome-desktop-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="gnome-disk-utility" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="gnome-disk-utility-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -476,8 +477,8 @@
     <package name="iso_ent" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="issue-generator" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="jack-dbus" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="java-21-openjdk" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="java-21-openjdk-headless" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="java-22-openjdk" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="java-22-openjdk-headless" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="javapackages-filesystem" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="javapackages-tools" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="jmdict" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -597,7 +598,6 @@
     <package name="libSM6" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libSoundTouch1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libSvtAv1Enc1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="libWPEBackend-fdo-1_0-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libX11-6" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libX11-data" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libX11-xcb1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -651,7 +651,6 @@
     <package name="libatasmart4" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libatk-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libatk-bridge-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="libatkmm-1_6-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libatomic1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libatspi0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libattr1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -669,6 +668,7 @@
     <package name="libavtp0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libavutil58" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libb2-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="libbacktrace0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libbase" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libbd_btrfs3" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libbd_crypto3" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -704,7 +704,7 @@
     <package name="libcairo-gobject2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libcairo-script-interpreter2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libcairo2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="libcairomm-1_0-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="libcairomm-1_16-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libcamel-1_2-64" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libcamera-base0_2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libcamera0_2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -782,7 +782,7 @@
     <package name="libebackend-1_2-11" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libebook-1_2-21" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libebook-contacts-1_2-4" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="libecal-2_0-2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="libecal-2_0-3" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libeconf0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libedata-book-1_2-27" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libedata-cal-2_0-2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -843,10 +843,10 @@
     <package name="libgcab-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libgcc_s1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libgcin-im-client1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="libgck-1-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="libgck-1-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libgck-2-2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libgck-modules-gnome-keyring" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="libgcr-3-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="libgcr-3-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libgcr-4-4" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libgcrypt20" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libgd3" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -860,11 +860,12 @@
     <package name="libgexiv2-2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libgif7" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libgio-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="libgiomm-2_4-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="libgiomm-2_68-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libgirepository-1_0-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libgjs0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libglib-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libglibmm-2_4-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="libglibmm-2_68-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libglvnd" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libgme0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libgmodule-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -883,7 +884,7 @@
     <package name="libgnomesu0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libgnutls30" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libgoa-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="libgoa-backend-1_0-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="libgoa-backend-1_0-2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libgobject-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libgomp1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libgooglepinyin0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -940,7 +941,7 @@
     <package name="libgtk-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libgtk-3-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libgtk-4-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="libgtkmm-3_0-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="libgtkmm-4_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libgtksourceview-4-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libgtop-2_0-11" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libgtop-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -1055,6 +1056,7 @@
     <package name="libmpfr6" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libmpg123-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libmplex2-2_2-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="libmsgraph-0-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libmspub-0_1-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libmtdev1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libmtp-udev" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -1115,7 +1117,7 @@
     <package name="libpackagekit-glib2-18" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libpagemaker-0_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libpango-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="libpangomm-1_4-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="libpangomm-2_48-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libparted-fs-resize0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libparted2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libpathplan4" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -1236,6 +1238,7 @@
     <package name="libserializer" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libsharpyuv0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libsigc-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="libsigc-3_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libsmartcols1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libsnapper7" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libsnappy1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -1251,8 +1254,10 @@
     <package name="libsoup2-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libsoxr0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libspandsp3" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="libspeech-provider-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libspeechd2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libspeex1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="libspiel-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libsqlite3-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libsratom-0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libsrt1_5" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -1278,8 +1283,6 @@
     <package name="libtalloc2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libtasn1-6" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libtdb1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="libtelepathy-glib0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="libtelepathy-logger3" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libtevent0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libtextstyle0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libthai-data" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -1358,7 +1361,6 @@
     <package name="libwoff2common1_0_2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libwoff2dec1_0_2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libwpd-0_10-10" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="libwpe-1_0-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libwpg-0_3-3" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libwps-0_4-4" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libwrap0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -1629,7 +1631,6 @@
     <package name="python311-Brotli" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="python311-PySocks" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="python311-apipkg" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="python311-atspi" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="python311-base" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="python311-certifi" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="python311-cffi" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -1782,7 +1783,6 @@
     <package name="tcl" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="tecla-keyboard-layout-viewer" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="tecla-keyboard-layout-viewer-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="telepathy-logger-schema" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="terminfo-base" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="terminfo-screen" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="terminus-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -1817,17 +1817,21 @@
     <package name="typelib-1_0-EvinceDocument-3_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="typelib-1_0-EvinceView-3_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="typelib-1_0-Fwupd-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="typelib-1_0-GLib-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="typelib-1_0-GMenu-3_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="typelib-1_0-GModule-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="typelib-1_0-GObject-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="typelib-1_0-GUdev-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="typelib-1_0-GWeather-4_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="typelib-1_0-Gck-2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="typelib-1_0-Gcr-4" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="typelib-1_0-GdkPixbuf-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="typelib-1_0-Gdm-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="typelib-1_0-Geoclue-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="typelib-1_0-Gio-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="typelib-1_0-GjsPrivate-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="typelib-1_0-GnomeBG-4_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="typelib-1_0-GnomeBluetooth-3_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="typelib-1_0-GnomeDesktop-3_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="typelib-1_0-GnomeDesktop-4_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="typelib-1_0-Graphene-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="typelib-1_0-Gst-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -1851,8 +1855,7 @@
     <package name="typelib-1_0-Rsvg-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="typelib-1_0-Secret-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="typelib-1_0-Soup-3_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="typelib-1_0-TelepathyGlib-0_12" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="typelib-1_0-TelepathyLogger-0_2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="typelib-1_0-Spiel-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="typelib-1_0-UpowerGlib-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="typelib-1_0-WebKit2-4_1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="typelib-1_0-Wnck-3_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->

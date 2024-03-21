@@ -1251,9 +1251,6 @@ unsorted:
   - baloo5-kioslaves-lang 
   - baloo5-tools 
   - baloo5-tools-lang 
-  - baloo5-widgets 
-  - baloo5-widgets-devel 
-  - baloo5-widgets-lang 
   - balsa 
   - balsa-lang 
   - bam 
@@ -4341,6 +4338,9 @@ unsorted:
   - fsverity-utils 
   - fsverity-utils-devel 
   - fsvs 
+  - fswatch 
+  - fswatch-doc 
+  - fswatch-lang 
   - fswebcam 
   - ft2-clone 
   - ft2demos 
@@ -5023,12 +5023,12 @@ unsorted:
   - ghc-async-doc 
   - ghc-async-prof 
   - ghc-attoparsec 
+  - ghc-attoparsec-aeson 
+  - ghc-attoparsec-aeson-devel 
+  - ghc-attoparsec-aeson-doc 
+  - ghc-attoparsec-aeson-prof 
   - ghc-attoparsec-devel 
   - ghc-attoparsec-doc 
-  - ghc-attoparsec-iso8601 
-  - ghc-attoparsec-iso8601-devel 
-  - ghc-attoparsec-iso8601-doc 
-  - ghc-attoparsec-iso8601-prof 
   - ghc-attoparsec-prof 
   - ghc-auto-update 
   - ghc-auto-update-devel 
@@ -5180,6 +5180,10 @@ unsorted:
   - ghc-cassava-megaparsec-doc 
   - ghc-cassava-megaparsec-prof 
   - ghc-cassava-prof 
+  - ghc-cborg 
+  - ghc-cborg-devel 
+  - ghc-cborg-doc 
+  - ghc-cborg-prof 
   - ghc-cereal 
   - ghc-cereal-devel 
   - ghc-cereal-doc 
@@ -5293,6 +5297,10 @@ unsorted:
   - ghc-crypto-cipher-types-devel 
   - ghc-crypto-cipher-types-doc 
   - ghc-crypto-cipher-types-prof 
+  - ghc-crypto-token 
+  - ghc-crypto-token-devel 
+  - ghc-crypto-token-doc 
+  - ghc-crypto-token-prof 
   - ghc-cryptohash-md5 
   - ghc-cryptohash-md5-devel 
   - ghc-cryptohash-md5-doc 
@@ -5418,6 +5426,10 @@ unsorted:
   - ghc-distributive-devel 
   - ghc-distributive-doc 
   - ghc-distributive-prof 
+  - ghc-djot 
+  - ghc-djot-devel 
+  - ghc-djot-doc 
+  - ghc-djot-prof 
   - ghc-dlist 
   - ghc-dlist-devel 
   - ghc-dlist-doc 
@@ -5522,6 +5534,10 @@ unsorted:
   - ghc-generically-doc 
   - ghc-generically-prof 
   - ghc-ghc 
+  - ghc-ghc-bignum 
+  - ghc-ghc-bignum-devel 
+  - ghc-ghc-bignum-doc 
+  - ghc-ghc-bignum-prof 
   - ghc-ghc-boot 
   - ghc-ghc-boot-devel 
   - ghc-ghc-boot-doc 
@@ -5589,6 +5605,10 @@ unsorted:
   - ghc-hadolint-devel 
   - ghc-hadolint-doc 
   - ghc-hadolint-prof 
+  - ghc-half 
+  - ghc-half-devel 
+  - ghc-half-doc 
+  - ghc-half-prof 
   - ghc-hashable 
   - ghc-hashable-devel 
   - ghc-hashable-doc 
@@ -5789,10 +5809,6 @@ unsorted:
   - ghc-isocline-devel 
   - ghc-isocline-doc 
   - ghc-isocline-prof 
-  - ghc-isomorphism-class 
-  - ghc-isomorphism-class-devel 
-  - ghc-isomorphism-class-doc 
-  - ghc-isomorphism-class-prof 
   - ghc-iwlib 
   - ghc-iwlib-devel 
   - ghc-iwlib-doc 
@@ -5825,10 +5841,6 @@ unsorted:
   - ghc-lens-devel 
   - ghc-lens-doc 
   - ghc-lens-prof 
-  - ghc-libiserv 
-  - ghc-libiserv-devel 
-  - ghc-libiserv-doc 
-  - ghc-libiserv-prof 
   - ghc-libmpd 
   - ghc-libmpd-devel 
   - ghc-libmpd-doc 
@@ -6185,6 +6197,10 @@ unsorted:
   - ghc-securemem-devel 
   - ghc-securemem-doc 
   - ghc-securemem-prof 
+  - ghc-semaphore-compat 
+  - ghc-semaphore-compat-devel 
+  - ghc-semaphore-compat-doc 
+  - ghc-semaphore-compat-prof 
   - ghc-semialign 
   - ghc-semialign-devel 
   - ghc-semialign-doc 
@@ -6201,6 +6217,10 @@ unsorted:
   - ghc-semver-devel 
   - ghc-semver-doc 
   - ghc-semver-prof 
+  - ghc-serialise 
+  - ghc-serialise-devel 
+  - ghc-serialise-doc 
+  - ghc-serialise-prof 
   - ghc-servant 
   - ghc-servant-devel 
   - ghc-servant-doc 
@@ -6370,18 +6390,10 @@ unsorted:
   - ghc-text-ansi-devel 
   - ghc-text-ansi-doc 
   - ghc-text-ansi-prof 
-  - ghc-text-builder 
-  - ghc-text-builder-dev 
-  - ghc-text-builder-dev-devel 
-  - ghc-text-builder-dev-doc 
-  - ghc-text-builder-dev-prof 
-  - ghc-text-builder-devel 
-  - ghc-text-builder-doc 
   - ghc-text-builder-linear 
   - ghc-text-builder-linear-devel 
   - ghc-text-builder-linear-doc 
   - ghc-text-builder-linear-prof 
-  - ghc-text-builder-prof 
   - ghc-text-conversions 
   - ghc-text-conversions-devel 
   - ghc-text-conversions-doc 
@@ -6961,6 +6973,7 @@ unsorted:
   - glib2-devel-32bit 
   - glib2-devel-static 
   - glib2-doc 
+  - glib2-stage1-devel 
   - glib2-tests-devel 
   - glib2-tools-32bit 
   - glibc-devel-32bit 
@@ -7041,8 +7054,6 @@ unsorted:
   - gnome-common 
   - gnome-connections 
   - gnome-connections-lang 
-  - gnome-console 
-  - gnome-console-lang 
   - gnome-control-center-devel 
   - gnome-devel-docs 
   - gnome-devel-docs-lang 
@@ -7113,6 +7124,7 @@ unsorted:
   - gnome-shell-extension-hamster-time-tracker 
   - gnome-shell-extension-onboard 
   - gnome-shell-extension-pop-shell 
+  - gnome-shell-extension-system-monitor 
   - gnome-shell-extension-terminus 
   - gnome-shell-extension-user-theme 
   - gnome-shell-search-provider-bijiben 
@@ -8918,6 +8930,11 @@ unsorted:
   - java-21-openjdk-javadoc 
   - java-21-openjdk-jmods 
   - java-21-openjdk-src 
+  - java-22-openjdk-demo 
+  - java-22-openjdk-devel 
+  - java-22-openjdk-javadoc 
+  - java-22-openjdk-jmods 
+  - java-22-openjdk-src 
   - java-atk-wrapper 
   - java-binfmt-misc 
   - java-cup 
@@ -10702,11 +10719,14 @@ unsorted:
   - libKF5Emoticons5 
   - libKF5Holidays5 
   - libKF5Holidays5-lang 
+  - libKF5JS5 
   - libKF5JSApi5 
   - libKF5JsEmbed5 
   - libKF5JsEmbed5-lang 
   - libKF5KDELibs4Support5 
   - libKF5KDcraw5 
+  - libKF5KHtml5 
+  - libKF5KHtml5-lang 
   - libKF5MediaPlayer5 
   - libKF5ModemManagerQt-devel 
   - libKF5ModemManagerQt6 
@@ -11146,6 +11166,7 @@ unsorted:
   - libVTextEdit1 
   - libVulkanLayerSettings-1_3_275_0 
   - libWN3 
+  - libWPEBackend-fdo-1_0-1 
   - libWPEBackend-fdo-1_0-1-32bit 
   - libWPEWebInspectorResources 
   - libWPEWebKit-2_0-1 
@@ -11505,6 +11526,7 @@ unsorted:
   - libav-tools 
   - libavahi-devel 
   - libavahi-glib-devel 
+  - libavahi-glib1-32bit 
   - libavahi-gobject-devel 
   - libavahi-libevent1 
   - libavahi-qt5-1 
@@ -11576,7 +11598,6 @@ unsorted:
   - libb64 
   - libb64-devel 
   - libbacktrace-devel 
-  - libbacktrace0 
   - libbamf3-2 
   - libbandicoot1 
   - libbaresip12 
@@ -12729,6 +12750,8 @@ unsorted:
   - libfst26 
   - libfstrcmp0 
   - libfsverity0 
+  - libfswatch-devel 
+  - libfswatch13 
   - libfsxfs-devel 
   - libfsxfs-tools 
   - libfsxfs1 
@@ -12904,6 +12927,7 @@ unsorted:
   - libgiomm-2_4-1-32bit 
   - libgirara-gtk3-3 
   - libgirepository-1_0-1-32bit 
+  - libgirepository-2_0-0 
   - libgit2-devel 
   - libgit2-glib-1_0-0 
   - libgit2-glib-devel 
@@ -12954,9 +12978,7 @@ unsorted:
   - libgnome-bluetooth13 
   - libgnome-desktop-3-devel 
   - libgnome-desktop-4-devel 
-  - libgnome-games-support-2-4 
   - libgnome-games-support-devel 
-  - libgnome-games-support-lang 
   - libgnome-games-support1_3-devel 
   - libgnome-keyring-devel 
   - libgnomekbd-devel 
@@ -13909,6 +13931,8 @@ unsorted:
   - libmariadbprivate 
   - libmarisa0 
   - libmarkdown-devel 
+  - libmarkdown2 
+  - libmarkdown2-devel 
   - libmate-desktop-2-17 
   - libmate-menu2 
   - libmate-panel-applet-4-1 
@@ -15167,7 +15191,7 @@ unsorted:
   - libquicktime-tools 
   - libquicktime0-32bit 
   - libquo-devel 
-  - libquo7 
+  - libquo8 
   - libquorum5 
   - libquorum5-32bit 
   - libquvi-0_9-0_9_4 
@@ -15404,7 +15428,7 @@ unsorted:
   - librmt-devel-doc 
   - librnnoise0 
   - librnp0 
-  - librocksdb8 
+  - librocksdb9 
   - librocsgraphtheory0 
   - libroken18 
   - librpma0 
@@ -16418,6 +16442,7 @@ unsorted:
   - libwpd-devel 
   - libwpd-devel-doc 
   - libwpd-tools 
+  - libwpe-1_0-1 
   - libwpe-1_0-1-32bit 
   - libwpe-devel 
   - libwpg-devel 
@@ -18535,6 +18560,7 @@ unsorted:
   - mscgen 
   - msgpack-c-devel 
   - msgpack-cxx-devel 
+  - msgraph-devel 
   - msitools 
   - msitools-devel 
   - msitools-lang 
@@ -18986,6 +19012,7 @@ unsorted:
   - neomutt-contrib 
   - neomutt-doc 
   - neomutt-lang 
+  - neonmodem 
   - neovim 
   - neovim-gtk 
   - neovim-lang 
@@ -21460,7 +21487,6 @@ unsorted:
   - perl-RDF-Trine 
   - perl-RPC-XML 
   - perl-RPM-Header-PurePerl 
-  - perl-RPM2 
   - perl-Readonly 
   - perl-Readonly-XS 
   - perl-Redis 
@@ -22984,6 +23010,7 @@ unsorted:
   - python-pyramid-debugtoolbar-doc 
   - python-pyserial-doc 
   - python-pysnmp-doc 
+  - python-python-datamatrix-doc 
   - python-rcssmin-docs 
   - python-rdflib-doc 
   - python-renderspec-doc 
@@ -27252,6 +27279,7 @@ unsorted:
   - python311-atom 
   - python311-atomicwrites 
   - python311-atpublic 
+  - python311-atspi 
   - python311-attr 
   - python311-aubio 
   - python311-audio-degrader 
@@ -31806,6 +31834,7 @@ unsorted:
   - python312-gwdatafind 
   - python312-gwosc 
   - python312-gwpy 
+  - python312-gwyfile 
   - python312-gyp 
   - python312-h11 
   - python312-h2 
@@ -33364,6 +33393,7 @@ unsorted:
   - python312-smmap 
   - python312-smpplib 
   - python312-sniffio 
+  - python312-snimpy 
   - python312-snowballstemmer 
   - python312-snuggs 
   - python312-social-auth-app-django 
@@ -39335,6 +39365,7 @@ unsorted:
   - snallygaster 
   - snapper-testsuite 
   - snappy-devel 
+  - snapraid 
   - snapshot 
   - snapshot-lang 
   - snd 
@@ -39473,6 +39504,8 @@ unsorted:
   - spice-up 
   - spice-up-lang 
   - spice-webdavd 
+  - spiel 
+  - spiel-devel 
   - spindle 
   - spindle-devel 
   - spirv-cross 
@@ -39838,6 +39871,7 @@ unsorted:
   - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
   - systemd-devel 
+  - systemd-doc 
   - systemd-experimental 
   - systemd-generator-cron2timer 
   - systemd-homed 
@@ -49332,6 +49366,8 @@ unsorted:
   - typelib-1_0-GES-1_0 
   - typelib-1_0-GExiv2-0_10 
   - typelib-1_0-GFBGraph-0_2 
+  - typelib-1_0-GIRepository-3_0 
+  - typelib-1_0-GLibUnix-2_0 
   - typelib-1_0-GMime-3_0 
   - typelib-1_0-GOffice-0_10 
   - typelib-1_0-GPaste-2 
@@ -49345,7 +49381,6 @@ unsorted:
   - typelib-1_0-GUPnPDLNA-2_0 
   - typelib-1_0-GUPnPDLNAGst-2_0 
   - typelib-1_0-GUPnPIgd-1_6 
-  - typelib-1_0-GUdev-1_0 
   - typelib-1_0-GUsb-1_0 
   - typelib-1_0-GVncPulse-1_0 
   - typelib-1_0-GXPS-0_1 
@@ -49369,9 +49404,11 @@ unsorted:
   - typelib-1_0-GnomeAutoar-0_1 
   - typelib-1_0-GnomeAutoarGtk-0_1 
   - typelib-1_0-GnomeBluetooth-1_0 
+  - typelib-1_0-GnomeDesktop-3_0 
   - typelib-1_0-GnomeKeyring-1_0 
   - typelib-1_0-GnomeRR-4_0 
   - typelib-1_0-GoVirt-1_0 
+  - typelib-1_0-Goa-1_0 
   - typelib-1_0-Gom-1_0 
   - typelib-1_0-GooCanvas-2_0 
   - typelib-1_0-GooCanvas-3_0 
@@ -49445,6 +49482,7 @@ unsorted:
   - typelib-1_0-Mbim-1_0 
   - typelib-1_0-ModemManager-1_0 
   - typelib-1_0-Modulemd-2_0 
+  - typelib-1_0-Msg-0 
   - typelib-1_0-Muffin-0_0 
   - typelib-1_0-NMA-1_0 
   - typelib-1_0-Nemo-3_0 
@@ -49466,6 +49504,7 @@ unsorted:
   - typelib-1_0-RygelServer-2_8 
   - typelib-1_0-Skk-1_0 
   - typelib-1_0-Soup-2_4 
+  - typelib-1_0-SpeechProvider-1_0 
   - typelib-1_0-Spelling-1 
   - typelib-1_0-TelepathyFarstream-0_6 
   - typelib-1_0-Template-1_0 
@@ -50090,6 +50129,7 @@ unsorted:
   - waynergy 
   - waynergy-kde 
   - waypipe 
+  - wayprompt 
   - wayshot 
   - wayvnc 
   - wbg 
