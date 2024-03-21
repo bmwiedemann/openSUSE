@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 21 13:38:41 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1711028310.e985d28c:
+  * Bump d3-color from 1.0.3 to 1.4.1
+  * Avoid potential problems in UI test of audit log
+  * Avoid tour from interfering with audit log test and improve login code
+  * Log timeout when waiting for condition in tests
+  * Bump d3-zoom from 1.7.1 to 1.8.3
+  * Use exponential increased delay on retry_tx
+  * Bump d3-ease from 1.0.3 to 1.0.7
+  * Allow all dependabot pull requests
+
+-------------------------------------------------------------------
 Tue Mar 19 10:49:21 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1710845353.23e79984:
