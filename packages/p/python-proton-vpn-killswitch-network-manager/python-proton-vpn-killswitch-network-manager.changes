@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Mar 19 15:10:10 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Build for Leap
+- Update source tarball URL and fix package version
+- Add missing dependencies (packaging and PyCairo)
+
+-------------------------------------------------------------------
+Mon Feb 12 12:22:31 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Initial revision
