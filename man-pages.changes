@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Mar 20 09:11:23 UTC 2024 - pgajdos@suse.com
+
+- version update to 6.7
+  New and rewritten pages
+  -----------------------
+  man3/
+          TIMEVAL_TO_TIMESPEC.3
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+  man2/
+          process_madvise.2
+                  process_madvise() glibc wrapper
+  New and changed links
+  ---------------------
+  man3/
+          TIMESPEC_TO_TIMEVAL.3           (TIMEVAL_TO_TIMESPEC(3))
+- modified patches
+  % man-pages_gai.conf-reference.patch (refreshed)
+
+-------------------------------------------------------------------
 Fri Feb 23 11:18:05 UTC 2024 - pgajdos@suse.com
 
 - use %autosetup macro
