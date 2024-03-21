@@ -1,7 +1,7 @@
 #
 # spec file for package libnss_usrfiles
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libnss_usrfiles
-Version:        2.27
+Version:        2.27.1
 Release:        0
 Summary:        NSS usrfiles plugin for glibc
 License:        LGPL-2.1-only
@@ -41,7 +41,7 @@ The NSS usrfiles plugin additionally looks in /usr/etc for passwd,
 group, rpc, services, protocols and more.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure

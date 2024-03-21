@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 20 13:58:49 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.27.1
+  - Cleanup prototypes
+
+-------------------------------------------------------------------
 Wed Sep 29 08:29:56 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Install into _libdir [bsc#1191070]

@@ -52,4 +52,13 @@
     <comment>- Install into _libdir [bsc#1191070]</comment>
     <requestid>922128</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>51ca04dc9d010a1d1467b733ae94925b</srcmd5>
+    <version>2.27.1</version>
+    <time>1711036794</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.27.1
+  - Cleanup prototypes</comment>
+    <requestid>1159857</requestid>
+  </revision>
 </revisionlist>
