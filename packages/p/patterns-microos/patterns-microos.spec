@@ -138,6 +138,7 @@ Provides:       pattern-order() = 9011
 Provides:       pattern-visible()
 Requires:       transactional-update
 Requires:       transactional-update-zypp-config
+Requires:       zypp-boot-plugin
 Requires:       zypper
 Requires:       pattern() = microos_base
 # zypper ps is useless in transactional mode. It also checks for
@@ -623,7 +624,9 @@ Requires:       baloo5-file
 # For NetworkManager support of openVPN Connections
 Requires:       NetworkManager-openvpn
 Requires:       openvpn-auth-pam-plugin
+%ifnarch %ix86 %arm ppc64 ppc64le s390x
 Requires:       plasma-nm5-openconnect
+%endif
 Requires:       plasma-nm5-openvpn
 
 Requires:       kio-extras5
