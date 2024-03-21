@@ -1,0 +1,13 @@
+diff --git a/tests/cmd/absolute_recurse_unix.stdout b/tests/cmd/absolute_recurse_unix.stdout
+index 44233b9..9c56e28 100644
+--- a/tests/cmd/absolute_recurse_unix.stdout
++++ b/tests/cmd/absolute_recurse_unix.stdout
+@@ -36,7 +36,7 @@ tests/itest/vagrant:
+ tests/itest/vagrant/debug:
+ [CWD]/tests/itest/vagrant/debug/a
+ [CWD]/tests/itest/vagrant/debug/symlink -> a
+-[CWD]/tests/itest/vagrant/debug/symlink-broken -> ./b
++[CWD]/tests/itest/vagrant/debug/symlink-broken -> b
+ 
+ tests/itest/vagrant/dev:
+ [CWD]/tests/itest/vagrant/dev/main.bf

@@ -17,7 +17,7 @@
 
 
 Name:           eza
-Version:        0.18.7+0
+Version:        0.18.8+0
 Release:        0
 Summary:        Replacement for ls written in Rust
 License:        MIT
@@ -25,7 +25,8 @@ Group:          System/Base
 URL:            https://github.com/eza-community/eza
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        cargo_config
+# PATCH-FIX-OPENSUSE smolsheep@opensuse.org -- Fix test in container env gh/eza-community/eza#902
+Patch0:         eza-fix-test.patch
 BuildRequires:  bash-completion
 BuildRequires:  cargo-packaging
 BuildRequires:  fish
@@ -71,7 +72,6 @@ Fish command line completion support for %{name}.
 
 %prep
 %autosetup -a1 -p1
-install -D -m 644 %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}

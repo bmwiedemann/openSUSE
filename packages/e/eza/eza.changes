@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar 21 10:56:38 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Filter dependencies for vendor tarball
+- Cleanup changes and comments from last submission
+
+-------------------------------------------------------------------
+Thu Mar 21 09:36:00 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Add eza-fix-test.patch:
+  Fix test in container build environment.
+  See gh/eza-community/eza#902
+- Remove unneeded cargo_config
+- Update to 0.18.8:
+  Bug Fixes:
+  * Avoid deprecation warnings
+  * Rustfmt issues
+  Features:
+  * Add fennel lang icon and associations
+
+-------------------------------------------------------------------
 Wed Mar 20 16:11:36 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Filter dependencies for vendor tarball

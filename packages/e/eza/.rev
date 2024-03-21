@@ -464,4 +464,24 @@
     <comment>- Filter dependencies for vendor tarball</comment>
     <requestid>1159892</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0c7ed76c71f1255f9aa942ff2a9915a4</srcmd5>
+    <version>0.18.8+0</version>
+    <time>1711036878</time>
+    <user>anag+factory</user>
+    <comment>- Filter dependencies for vendor tarball
+- Cleanup changes and comments from last submission
+
+- Add eza-fix-test.patch:
+  Fix test in container build environment.
+  See gh/eza-community/eza#902
+- Remove unneeded cargo_config
+- Update to 0.18.8:
+  Bug Fixes:
+  * Avoid deprecation warnings
+  * Rustfmt issues
+  Features:
+  * Add fennel lang icon and associations</comment>
+    <requestid>1160078</requestid>
+  </revision>
 </revisionlist>
