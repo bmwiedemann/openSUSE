@@ -313,6 +313,7 @@ PR      Commit message
 2404    fix(multipath): explicitly check if hostonly_cmdline is yes
 2451    fix(base): correct handling of quiet in loginit
 2524    fix(dracut.sh): abort if Bash is in POSIX mode
+2526    fix(systemd-pcrphase): rename systemd-pcrphase binary to systemd-pcrextend
 2527    fix(resume): add new systemd-hibernate-resume.service
 2531    feat(kernel-modules): add Qualcomm IPC router to enable USB
 2532    fix(dracut-systemd): use `DRACUT_VERSION` instead of `VERSION`

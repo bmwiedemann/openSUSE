@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 18 08:18:21 UTC 2024 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.560.g145cde90:
+  * fix(systemd-pcrphase): rename systemd-pcrphase binary to systemd-pcrextend
+
+-------------------------------------------------------------------
 Wed Feb 28 08:05:09 UTC 2024 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.557.g8a62bf73:
