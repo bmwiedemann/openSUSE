@@ -256,10 +256,6 @@
     <package name="gcr-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="gcr-ssh-agent" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="gcr-viewer" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
-    <package name="gcr3-data" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
-    <package name="gcr3-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
-    <package name="gcr3-prompter" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
-    <package name="gcr3-ssh-askpass" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="gdb" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="gdbm-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="gdk-pixbuf-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
@@ -283,6 +279,8 @@
     <package name="glibc-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="glibc-locale" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="glibc-locale-base" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
+    <package name="gnome-online-accounts" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="gnome-online-accounts-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="gnu-free-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="google-carlito-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="google-noto-coloremoji-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -350,6 +348,7 @@
     <package name="gtkiterm" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="gvfs" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="gvfs-backend-afc" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="gvfs-backend-goa" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="gvfs-backend-samba" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="gvfs-backends" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="gvfs-fuse" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
@@ -412,8 +411,8 @@
     <package name="iso_ent" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="issue-generator" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="jack-dbus" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="java-21-openjdk" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
-    <package name="java-21-openjdk-headless" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
+    <package name="java-22-openjdk" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
+    <package name="java-22-openjdk-headless" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="javapackages-filesystem" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="javapackages-tools" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="jmdict" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
@@ -656,8 +655,6 @@
     <package name="kwalletd6-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kwalletmanager" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kwalletmanager-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="kwalletmanager5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="kwalletmanager5-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kwayland" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kwayland-integration6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kwayland6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -1034,6 +1031,8 @@
     <package name="libaccounts-qt5-1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libaccounts-qt6-1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libacl1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
+    <package name="libadwaita-1-0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="libadwaita-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libaio1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libalternatives1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libao-plugins4" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -1240,12 +1239,12 @@
     <package name="libgcab-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libgcc_s1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libgcin-im-client1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
-    <package name="libgck-1-0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libgck-2-2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
-    <package name="libgcr-3-1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libgcr-4-4" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libgcrypt20" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libgd3" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
+    <package name="libgdata-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="libgdata22" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libgdbm6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libgdbm_compat4" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libgdk_pixbuf-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
@@ -1260,6 +1259,8 @@
     <package name="libgmodule-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libgmp10" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libgnutls30" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
+    <package name="libgoa-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="libgoa-backend-1_0-2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libgobject-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libgomp1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libgooglepinyin0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
@@ -1416,6 +1417,7 @@
     <package name="libmpeg2-0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libmpfr6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libmpg123-0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
+    <package name="libmsgraph-0-1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libmspub-0_1-1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libmtdev1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libmtp-udev" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -1582,6 +1584,7 @@
     <package name="libreoffice-share-linker" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libreoffice-writer" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="librepository" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
+    <package name="librest-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="librevenge-0_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="librist4" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="librsvg-2-2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
@@ -1617,8 +1620,10 @@
     <package name="libsoftokn3" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libsolv-tools" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libsord-0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="libsoup-2_4-1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libsoup-3_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libsoup-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
+    <package name="libsoup2-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libsource-highlight4" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libsoxr0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libspeechd2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -2223,7 +2228,11 @@
     <package name="tukit" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="typelib-1_0-Atk-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="typelib-1_0-Fwupd-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="typelib-1_0-GLib-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
+    <package name="typelib-1_0-GModule-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
+    <package name="typelib-1_0-GObject-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="typelib-1_0-GdkPixbuf-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
+    <package name="typelib-1_0-Gio-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="typelib-1_0-Gtk-3_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="typelib-1_0-Handy-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="typelib-1_0-HarfBuzz-0_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
