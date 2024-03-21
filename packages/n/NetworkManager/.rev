@@ -2275,4 +2275,12 @@ New stable release</comment>
     <comment>GNOME 46 (forwarded request 1158419 from dimstar)</comment>
     <requestid>1159481</requestid>
   </revision>
+  <revision rev="266" vrev="5">
+    <srcmd5>28c464b4c5f0dda36b05370354da7493</srcmd5>
+    <version>1.44.2</version>
+    <time>1711016134</time>
+    <user>dimstar_suse</user>
+    <comment>Revert NM to 1.44.x</comment>
+    <requestid>1160054</requestid>
+  </revision>
 </revisionlist>
