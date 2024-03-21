@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar 21 09:16:36 UTC 2024 - rombert@apache.org
+
+- Update to version v0.13.1:
+  * Release v0.13.1
+  * more shellcheck
+  * Avoid building utils with dkms
+  * improve printout in release script
+  * release-script: write back new version to v4l2loopback.h (if necessary)
+  * release-script: fix retrieving of module-version
+  * shellchecked 'release.sh' script
+  * Release v0.13.0
+  * allocate_buffers: fix check whether we can re-allocate
+  * Lower minimum width/height to extreme values
+  * redefine strscpy() as strlcpy() if needed
+  * Use strscpy instead of strlcpy if available
+  * 'sign' target to sign the generated module for use with secure boot
+  * use $< instead of hardcoding the module name
+  * use 'sudo' to change the permissions of the module
+
+-------------------------------------------------------------------
 Thu Nov 30 14:36:50 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - v4l2loopback-utils is no longer noarch: v4l2loopback-ctl was

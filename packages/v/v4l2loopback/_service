@@ -2,11 +2,10 @@
   <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/umlaeute/v4l2loopback</param>
     <param name="scm">git</param>
-    <param name="revision">origin/main</param>
-    <param name="versionformat">%ci.%h</param>
-    <param name="versionprefix">0.12.8~git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">v0.13.1</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">hpj@urpla.net</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="compression">xz</param>
