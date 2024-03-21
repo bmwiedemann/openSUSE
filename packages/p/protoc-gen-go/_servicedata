@@ -1,0 +1,5 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/protocolbuffers/protobuf-go.git</param>
+<param name="changesrevision">ec47fd138f9221b19a2afd6570b3c39ede9df3dc</param></service>
+</servicedata>

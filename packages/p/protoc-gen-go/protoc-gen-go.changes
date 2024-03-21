@@ -1,0 +1,311 @@
+-------------------------------------------------------------------
+Wed Mar 20 16:06:02 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * _service change disabled to manual per osc deprecation warning:
+    WARNING: Command 'disabledrun/dr' is obsolete, please convert
+    your _service to use 'manual' and then 'manualrun/mr' instead.
+  * _service tar_scm param url use trailing .git for github repos
+  * _service tar_scm param revision use git tag by name not refs/
+  * Remove define github project name components no longer needed
+  * Use Group: Development/Languages/Go instead of Golang (typo)
+  * Drop Requires: golang-packaging. The recommended Go toolchain
+    dependency expression is BuildRequires: golang(API) >= 1.x or
+    optionally the metapackage BuildRequires: go
+  * Drop autosetup -p 1 arg only needed when package has patches
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Use name macro where applicable to normalize common lines
+    across Go app packages. Also makes renaming binary easier when
+    required to handle package name conflict.
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop go build -o arg, default binary name is pkg of main()
+  * Add basic %check to execute binary --help
+  * Remove goprovides macro which is no longer recommended (kukuk)
+  * Remove goprep macro which is no longer recommended (kukuk)
+  * Remove gobuild macro which is no longer recommended (kukuk)
+  * Remove goinstall macro which is no longer recommended (kukuk)
+  * Drop patches for bazel support no longer needed (kukuk)
+
+-------------------------------------------------------------------
+Wed Mar 20 09:22:18 UTC 2024 - kukuk@suse.com
+
+- Update to version 1.33.0:
+  * all: release v1.33.0
+  * encoding/protojson, internal/encoding/json: handle missing object values
+  * all: fix integration test on macOS
+  * internal/filedesc: make descriptor initialization goroutine-safe
+  * proto: move explicit test as a seed into the fuzz test
+  * internal/filedesc: align editions and non-editions HasPresence()
+  * internal/conformance: make conformance tests work with editions
+  * encoding/prototext: add proto editions and fuzz tests
+  * all: format all .proto files
+  * encoding/protojson: add protojson editions tests including fuzztests
+  * testing/prototest: add extension and required editions messages
+  * proto: add editions tests for invalid messages
+  * go_features.proto: move .proto file next to generated .pb.go file
+  * all: add editions support for extensions
+  * all: implement `features.field_presence = LEGACY_REQUIRED` support
+  * proto: add extension tests for editions protos
+  * proto: add more editions tests for proto.Size and proto.Equal
+  * proto: add decoding fuzz test for proto3 to editions conversion
+  * proto: add fuzztest for proto2 and equivalent editions proto
+  * reflect/protodesc: add editions support
+  * all: add more test for editions and fix some bugs in the implementation
+  * reflect/protodesc: propagate field_presence legacy_required properly
+  * internal/filedesc: implement runtime editions support
+  * editions: add some test protos for editions
+  * all: implement Go-specific GenerateLegacyUnmarshalJSON
+  * all: update to protobuf-26.0-rc2 to implement go edition features
+  * protoreflect: remove unnecessary cache so extension types can be GC'ed
+  * editions: minor fix to resolve editions features correctly
+  * internal/filedesc: refactor editions feature resolution
+  * reflect/protodesc: fix packed field conditional
+  * reflect/protodesc: fix group validation: not supported in proto3
+  * testing/protocmp: add MessageTypeResolver.
+  * internal/impl: correct reflect.ValueError use
+  * all: add Security Policy (SECURITY.md)
+  * all: start v1.32.0-devel
+
+-------------------------------------------------------------------
+Mon Feb 05 10:14:24 UTC 2024 - kukuk@suse.com
+
+- Update to version 1.32.0:
+  * all: release v1.32.0
+  * protojson: configurable recursion limit when unmarshalling
+  * gha-ci: instruct bazelisk to use previous bazel version
+  * all: run integration test on longtest builders in CI
+  * reflect/protodesc: support editions feature resolution
+  * all: drop -mod=vendor in integration test invocations
+  * reflect/protoreflect: use go1.20 unsafe interface for strings and slices
+  * all: set required version to 1.17
+  * all: fix go generate (needs protolegacy build tag for weak fields)
+  * protoc: update to the newest protobuf version (25.1)
+
+-------------------------------------------------------------------
+Fri Feb 02 12:54:40 UTC 2024 - kukuk@suse.com
+
+- Drop source package
+- Update to version 1.5.3:
+  * jsonpb: accept 'null' as a valid representation of NullValue in unmarshal
+  * all: deprecate the module (#1306)
+  * jsonpb: restore previous behavior for handling nulls and JSONPBUnmarshaler (#1300)
+  * all: depend on google.golang.org/protobuf@v1.26.0 (#1293)
+  * all: depend on google.golang.org/protobuf@v1.26.0-rc.1 (#1292)
+  * Switch from Travis-CI to GitHub actions (#1286)
+  * all: rely on protodesc.ToFileDescriptorProto (#1214)
+  * ptypes: deprecate the package (#1217)
+  * jsonpb: Fix marshaling of Duration (#1221)
+  * travis.yml: update tested versions of Go (#1211)
+  * proto: convert integer to rune before converting to string (#1210)
+  * all: upgrade to google.golang.org/protobuf@v1.23.0 (#1131)
+  * proto: make InternalMessageInfo functional (#1129)
+  * jsonpb: fix a confusing error message (#1125)
+  * all: upgrade to google.golang.org/protobuf@v1.22.0 (#1114)
+  * all: minor documentation adjustments (#1112)
+  * protoc-gen-go/grpc: make grpc identical to v1.3.5 (#1113)
+  * proto: fix stale deprecation documentation on registry functions (#1093)
+  * all: upgrade to google.golang.org/protobuf@v1.21.0 (#1081)
+  * all: use google.golang.org/protobuf/testing/protopack for tests (#1063)
+  * all: use google.golang.org/encoding/protowire (#1062)
+  * internal/cmd/generate-alias: fix for lacking go_package options (#1061)
+  * proto: inline the implementation of protoimpl.X.ExtensionDescFromType (#1056)
+  * go.mod: set go version to go1.9 (#1055)
+  * proto: use fixed UnmarshalState API
+  * all: use google.golang.org/protobuf v1.20.0
+  * all: use new protogen options API
+  * all: update README.md
+  * CONTRIBUTING.md: swap revision with version
+  * ptypes: regenerate with v3.11.4, update for go1.14 gofmt (#1045)
+  * all: cleanup protoimpl calls
+  * jsonpb: use CheckInitialized
+  * ptypes: UnmarshalAny with non-pointer DynamicMessage
+  * proto, jsonpb: fix handling of extensions
+  * proto: add text tests
+  * all: add CONTRIBUTING.md
+  * proto: use CheckInitialized instead of IsInitialized
+  * proto: use UnmarshalState
+  * protoc-gen-go: drop golden test
+  * protoc-gen-go: move gengogrpc into v1 repo
+  * proto: add MessageV1, MessageV2, and MessageReflect
+  * proto: add ProtoPackageIsVersion4
+  * grpc: accept interface in NewClient functions (#1025)
+  * Update readme.md (#988)
+  * all: update to wrap v2
+  * go.mod: update to latest google.golang.org/protobuf
+  * internal/proto: avoid deprecated protoregistry APIs
+  * proto, internal/proto: fix tests broken by latest v2 module
+  * proto: fix interactions with v2 extensions
+  * Fix typos in comments, tests and function names (#974)
+  * internal/proto: remove use of MessageType.GoType
+  * protoc-gen-go: fix deprecated comment for grpc methods (#952)
+  * internal/cmd/generate-alias: avoid generating version markers
+  * internal/proto: use ExtensionType TypeDescriptor method
+  * .travis.yml: include go1.12 (#932)
+  * travis.yml: s/proto1_legacy/protolegacy/
+  * all: fix interactions with latest v2 API
+  * proto: remove conversions between Extension{Desc,Type}
+  * proto: rename protoiface.ExtensionDescV1 to protoimpl.ExtensionInfo
+  * jsonpb: don't depend on stable struct field indexes
+  * proto: initialize ExtensionDesc.Type at registration time
+  * all: fix reflect.Value.Interface races (#913)
+  * all: fix Travis-CI
+  * all: update to latest google.golang.org/protobuf
+  * jsonpb: fix marshaling of Duration
+  * internal/proto: set filename in FileDescriptorProto when missing
+  * all: update v2 dependency to 20190620020611-d888139e7b59
+  * internal/proto: use protoregistry.Files.FindFileByPath
+  * internal/proto: use new protoreflect.Message API
+  * all: avoid accessing ExtensionField.Desc directly
+  * all: update v2 dependency
+  * Log parsing errors using log pkg (#851)
+  * all: update import paths for generated protos
+  * proto: use opaque GetValue and SetEagerValue extension methods
+  * all: update import paths for renamed packages
+  * go.mod, go.sum: add back in after v2 module renaming
+  * all: change module to google.golang.org/protobuf
+  * internal/proto: use ParentFile instead of Parent
+  * internal/proto: adjust usage for Descriptor method
+  * proto: use XXX_unrecognized exclusively for unknown fields
+  * internal/proto: rename method calls
+  * proto: drop dependence on v2 protoimpl.ExtensionFieldsV2
+  * proto: unmarshal extensions eagerly
+  * proto: wrap v2 textproto marshal/unmarshal
+  * fix indentation in jsonpb with Any messages
+  * all: invert use_golang_protobuf_v1 tag
+  * all: re-add go.mod and go.sum files
+  * all: move v1 types over to the v2 repository
+  * internal/proto: implement v1 registration with v2 registration
+  * internal/proto: robustify GetProperties for a post-reflection world
+  * protoc-gen-go/grpc: use status and code packages only if needed (#820)
+  * proto: move primitive wrappers
+  * protoc-gen-go/grpc: inline errUnimplemented function (#818)
+  * internal/cmd/generate-alias: directly invoke v2 internal_gengo
+  * internal/proto: copy properties over
+  * proto: simplify StructProperties
+  * Add UnimplementedServer for server interface (#785)
+  * all: regenerate test protos using v1.3.1
+  * proto: add hooks.go to switch-over to the new implementation
+  * proto: simplify the documentation
+  * proto: remove some dead code
+  * internal/proto: implement DiscardUnknown with reflection
+  * internal/proto: implement SetDefaults with reflection
+  * protoc-gen-go/generator: print deprecation warning at init
+  * protoc-gen-go/plugin: delete plugin.pb.golden
+  * .travis.yml: specify distribution
+  * test.bash: re-write integration test as a Go test
+  * proto: deprecate ErrInternalBadWireType
+  * all: fix travis after v2 update
+  * go.mod: re-add go.mod file
+  * go.mod: temporarily delete go.mod file
+  * go.sum: temporarily delete go.sum file
+  * go.sum: purge unused dependencies
+  * all: update to latest in golang/protobuf@b5d812f8
+  * protoapi: add CompressGZIP helper function
+  * Delete the conformance test (#808)
+  * proto: remove test dependency on experimental packages (#805)
+  * ptypes: More cleanly construct a Timestamp (#797)
+  * ptypes: Avoid assuming time.Duration is nanoseconds (#796)
+  * protoc-gen-go: fix oneof name mangling regression (#782)
+  * protoapi: move registration from proto to protoapi
+  * protoapi: fix trivial deadlock
+  * protoapi: new package for v1 types that generated messages depend on
+  * README.md: document how to build a specific version of protoc-gen-go (#764)
+  * all: use short license header form
+  * all: cleanup build tags
+  * descriptor: deprecate the package
+  * conformance: remove the conformance test
+  * protoc-gen-go: generate XXX_OneofWrappers instead of XXX_OneofFuncs (#760)
+  * protoc-gen-go: generate XXX_OneofWrappers instead of XXX_OneofFuncs (#760)
+  * all: update to v3.6.1 (#757)
+  * proto: store extension values according to protobuf data model (#746)
+  * proto: deprecate {Unm,M}arshalMessageSet{JSON} (#741)
+  * all: increase minimum supported version to go1.9 (#742)
+  * protoc-gen-go: reference publicly imported symbols directly
+  * protoc-gen-go: add test for use of publicly imported symbol
+  * protoc-gen-go: include groups in public import forwarders
+  * protoc-gen-go: expand import_public test files
+  * protoc-gen-go: normalize floating-point default values (#737)
+  * protoc-gen-go: generate deprecation comments for oneof fields
+  * protoc-gen-go: add test case for deprecated oneof field
+  * protoc-gen-go: don't force space after "//" in comments (#725)
+  * protoc-gen-go/generator: fix misspelling (#732)
+  * protoc-gen-go: only disambiguate predefined idents for local package names (#724)
+  * protoc-gen-go: predeclared identifiers in cleanPackageName (#722)
+  * protoc-gen-go: put all imports in one section (#720)
+  * protoc-gen-go: more standard import organization (#719)
+  * protoc-gen-go: generate descriptor before plugins (#718)
+  * all: update to v3.6.1 (#757)
+  * test.bash: update to go1.10.5 and go1.11.2
+  * proto: store extension values according to protobuf data model (#746)
+  * proto: deprecate {Unm,M}arshalMessageSet{JSON} (#741)
+  * all: increase minimum supported version to go1.9 (#742)
+  * protoc-gen-go: reference publicly imported symbols directly
+  * protoc-gen-go: add test for use of publicly imported symbol
+  * test.bash: update to go1.10.4 and go1.11.1 for v1 branch
+  * protoc-gen-go: include groups in public import forwarders
+  * protoc-gen-go: expand import_public test files
+  * protoc-gen-go: normalize floating-point default values (#737)
+  * protoc-gen-go: generate deprecation comments for oneof fields
+  * protoc-gen-go: add test case for deprecated oneof field
+  * protoc-gen-go: don't force space after "//" in comments (#725)
+  * protoc-gen-go/generator: fix misspelling (#732)
+  *  .travis.yml: include go1.11 (#731)
+  * protoc-gen-go: only disambiguate predefined idents for local package names (#724)
+  * protoc-gen-go: predeclared identifiers in cleanPackageName (#722)
+  * protoc-gen-go: implement as wrapper of v2 protoc-gen-go
+  * protoc-gen-go: put all imports in one section (#720)
+  * protoc-gen-go: more standard import organization (#719)
+  * protoc-gen-go: generate descriptor before plugins (#718)
+  * go.mod: rely on go get support for modules instead of local paths
+  * go.mod: hardcode a local checkout of the v2 API
+  * protoc-gen-go: simplify init function generation (#716)
+  * protoc-gen-go: move package comments to before the package decl (#715)
+  * protoc-gen-go: fix symbol names in comments on public imports
+  * protoc-gen-go: additional tests for public imports
+  * protoc-gen-go: Don't set the json tag on extension fields. (#713)
+  * protoc-gen-go: add more spaces between methods (#712)
+  * protoc-gen-go: add blank line after extension method (#711)
+  * protoc-gen-go: put imports in a single import() block (#707)
+  * proto: remove commented-out code (#704)
+  * proto: replace exprs with matching consts from math pkg (#705)
+  * proto: replace len(b)<=0 with len(b)==0 (#706)
+  * protoc-gen-go: stop generating package "// import" comment (#701)
+  * protoc-gen-go: use consistent receiver name for messages (#700)
+  * go.mod: add module file (#699)
+  * protoc-gen-go: add blank lines between various enum functions (#697)
+  * proto: uniquify descriptor var based on filename alone (#696)
+  * proto: deprecate Stats data structure (#677)
+  * proto: return more useful error message in SetExtension (#685)
+
+-------------------------------------------------------------------
+Tue Jan 08 11:00:22 UTC 2019 - Michał Rostecki <mrostecki@suse.de>
+
+- Make use of tar_scm service.
+- Update to version 1.2.0:
+  * proto: fix handling of required fields after multiple
+    violations (#679)
+  * Update issue templates
+  * README.md: remove usage of group in example (#673)
+  * jsonpb: avoid unexported fields in hand-crafted message (#671)
+  * proto: make invalid UTF-8 errors non-fatal (#660)
+  * jsonpb: strictly document JSONPBMarshaler and JSONPBUnmarshaler
+    behavior (#662)
+  * proto: revert strict erroring of deterministic and custom
+    marshalers (#658)
+  * protoc-gen-go: refactor generator by splitting up
+    generateMessage (#657)
+  * proto: fix and cleanup test for deterministic marshal with
+    custom marshalers (#656)
+  * jsonpb: avoid copying string-valued map-keys (#654)
+- Add protoc-gen-go-source package - some Go programs using gRPC
+  and protobuf need protobuf definitions which are included inside
+  the source code.
+- Patch protoc-gen-go source to add Bazel support.
+
+-------------------------------------------------------------------
+Mon Jul  9 14:26:12 UTC 2018 - mrostecki@suse.com
+
+- Initial release
