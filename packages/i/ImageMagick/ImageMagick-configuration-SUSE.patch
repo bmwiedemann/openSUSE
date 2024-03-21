@@ -1,6 +1,17 @@
---- a/config/policy-secure.xml
-+++ b/config/policy-secure.xml
-@@ -92,8 +92,10 @@
+Index: ImageMagick-7.1.1-29/config/policy-secure.xml
+===================================================================
+--- ImageMagick-7.1.1-29.orig/config/policy-secure.xml
++++ ImageMagick-7.1.1-29/config/policy-secure.xml
+@@ -82,8 +82,6 @@
+   <policy domain="cache" name="synchronize" value="true"/>
+   <!-- Replace passphrase for secure distributed processing -->
+   <!-- <policy domain="cache" name="shared-secret" value="secret-passphrase" stealth="true"/> -->
+-  <!-- Do not permit any delegates to execute. -->
+-  <policy domain="delegate" rights="none" pattern="*"/>
+   <!-- Do not permit any image filters to load. -->
+   <policy domain="filter" rights="none" pattern="*"/>
+   <!-- Don't read/write from/to stdin/stdout. -->
+@@ -92,8 +90,10 @@
    <policy domain="path" rights="none" pattern="/etc/*"/>
    <!-- Indirect reads are not permitted. -->
    <policy domain="path" rights="none" pattern="@*"/>
@@ -12,4 +23,3 @@
    <!-- This policy sets the number of times to replace content of certain
         memory buffers and temporary files before they are freed or deleted. -->
    <policy domain="system" name="shred" value="1"/>
-

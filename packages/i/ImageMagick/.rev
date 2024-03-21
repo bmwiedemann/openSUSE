@@ -3831,4 +3831,15 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1156917</requestid>
   </revision>
+  <revision rev="292" vrev="4">
+    <srcmd5>e979a75f3f7aaab5ea8ceda1a83bf416</srcmd5>
+    <version>7.1.1.29</version>
+    <time>1711036819</time>
+    <user>anag+factory</user>
+    <comment>- allow delegates to be executed, was disabled by default policy
+- modified patches
+  % ImageMagick-configuration-SUSE.patch (refreshed)
+  % ImageMagick-library-installable-in-parallel.patch (refreshed)</comment>
+    <requestid>1160015</requestid>
+  </revision>
 </revisionlist>

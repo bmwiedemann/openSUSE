@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 21 08:35:53 UTC 2024 - pgajdos@suse.com
+
+- allow delegates to be executed, was disabled by default policy
+- modified patches
+  % ImageMagick-configuration-SUSE.patch (refreshed)
+  % ImageMagick-library-installable-in-parallel.patch (refreshed)
+
+-------------------------------------------------------------------
 Mon Mar  4 11:55:33 UTC 2024 - pgajdos@suse.com
 
 - enable SVG again

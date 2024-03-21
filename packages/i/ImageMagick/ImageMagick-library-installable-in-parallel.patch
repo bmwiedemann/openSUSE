@@ -1,8 +1,8 @@
-Index: ImageMagick-7.1.1-23/configure
+Index: ImageMagick-7.1.1-29/configure
 ===================================================================
---- ImageMagick-7.1.1-23.orig/configure
-+++ ImageMagick-7.1.1-23/configure
-@@ -34846,7 +34846,9 @@ fi
+--- ImageMagick-7.1.1-29.orig/configure
++++ ImageMagick-7.1.1-29/configure
+@@ -34803,7 +34803,9 @@ fi
  
  
  # Subdirectory to place architecture-dependent configuration files
