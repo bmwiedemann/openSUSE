@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Mar 20 18:29:00 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 18.1:
+  * [Client] Add tabs for favorite communities, separate
+    country/type filters
+  * [Editor] Better map settings input
+    (autocompletion, validation)
+  * [Client] Render loading message/indicator for vote options
+    and rcon commands
+  * [Client] Add flag search in settings
+  * [Client] Add team-lock indicator to HUD
+  * [Client] Use icons for Internet, LAN and Favorites server
+    browser tabs, use star icon for favorite servers
+  * [Client] More efficient HTTP usage
+  * [Client] Add time scale to debug graphs for constant
+    scrolling speed
+  * [Client/Server] Improve Windows logger, add virtual
+    terminal support
+  * [Client] Show extra "Reset Filter" button when no servers
+    match filter
+  * [Client] Ensure client window is maximized and active
+    after restarting
+  * [Client] Random skin improvements
+  * [Client] Improve voting HUD
+  * [Client] Keep console scrolling position during text selection
+  * [Client] Only write files when changed
+  * [Client] Show warnings after client close instead of
+    preventing quitting
+  * [Client] Fix switch screen and blackscreen OpenGL + Window
+    borderless
+  * [Client] Add placeholder country/type for servers without
+    community
+  * [Client] Don't show FPS during demo rendering
+  * [Client] Validate skin names when loading
+  * [Client] Allow background jobs to be aborted
+  * [Client] save_replay improvements
+  * [Client] Pick bg entities map without file extension
+  * [Client/Server] Search most fitting allocation, not first
+    fitting
+  * [Editor] Increase WASD pan speed while holding shift
+  * [Editor] Add "View" button to tele/switch drop down
+  * [Editor] Make "Clean up game tiles" undoable
+  * [Editor] Allow finer grid
+  * [Editor] Add parallax to layer selector
+  * [Editor] Add plus/minus buttons to numeric value selectors
+  * [Editor] Fix quads
+  * [Editor] Fix FPS drop when editing tiles layer properties
+  * [Server] Make chat command arguments case-insensitive
+  * [Server] Add /tpxy to teleport to specific position
+  * [Server] Fix 0.7 armor being snapped as health
+  * [Server] Small /practice improvements
+  * [Server] Show kill messages also for 0.7 clients
+  * [Server] Add /solo and /deep as practice commands
+  * [Server] Expire team invites on player disconnect
+  * [Server] Respond to vital pings with vital pongs
+
+-------------------------------------------------------------------
 Sat Feb  3 17:37:48 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 18.0.3:
