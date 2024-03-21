@@ -1,7 +1,7 @@
 #
 # spec file for package python-msal
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,6 +60,7 @@ standard OAuth2 and OpenID Connect.
 
 %files %{python_files}
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/msal
+%{python_sitelib}/msal-*.egg-info
 
 %changelog
