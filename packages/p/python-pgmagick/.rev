@@ -45,4 +45,14 @@
   * fix libboost_python filename for macOSX environment with</comment>
     <requestid>1135324</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e7b67613f3959320618d17d48ac43835</srcmd5>
+    <version>0.7.6</version>
+    <time>1711036847</time>
+    <user>anag+factory</user>
+    <comment>- Rewrite the check section completly, making use of upstream's Makefile.
+- Also copy in a missing utils with a constant when we require it.
+- Switch to pyproject macros.</comment>
+    <requestid>1159955</requestid>
+  </revision>
 </revisionlist>

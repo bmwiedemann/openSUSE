@@ -1,7 +1,7 @@
 #
 # spec file for package python-pgmagick
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,14 @@ Version:        0.7.6
 Release:        0
 Summary:        Yet Another Python wrapper for GraphicsMagick
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/hhatto/pgmagick/
 Source:         https://files.pythonhosted.org/packages/source/p/pgmagick/pgmagick-%{version}.tar.gz
+Source1:        https://raw.githubusercontent.com/hhatto/pgmagick/master/test/Makefile
+Source2:        https://raw.githubusercontent.com/hhatto/pgmagick/master/test/utils.py
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  pkgconfig
@@ -48,27 +51,28 @@ wrapper for GraphicsMagick.
 
 %prep
 %autosetup -p1 -n pgmagick-%{version}
+cp %{SOURCE1} test
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-mkdir tester
-pushd tester
-cp -r ../test .
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m unittest discover -v
-popd
-rm -r tester
+export PYTHONDONTWRITEBYTECODE=1
+%python_expand cp -v %{SOURCE2} %{buildroot}%{$python_sitearch}
+mv pgmagick do-not-use-pgmagick
+%python_expand PYTHON=$python PYTHONPATH=%{buildroot}%{$python_sitearch} make -C test all clean
+mv do-not-use-pgmagick pgmagick
+%python_expand rm -v %{buildroot}%{$python_sitearch}/utils.py
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitearch}/pgmagick/
-%{python_sitearch}/pgmagick-%{version}-py*.egg-info/
+%{python_sitearch}/pgmagick
+%{python_sitearch}/pgmagick-%{version}.dist-info
 
 %changelog
