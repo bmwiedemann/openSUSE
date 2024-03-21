@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-statsmodels
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -33,13 +33,15 @@ Summary:        A Python module that allows users to explore data
 License:        BSD-3-Clause
 URL:            https://github.com/statsmodels/statsmodels
 Source:         https://files.pythonhosted.org/packages/source/s/statsmodels/statsmodels-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.29.26 with %python-Cython < 3}
+# PATCH-FIX-UPSTREAM statsmodels-pr9106-numpy2.patch gh#statsmodels/statsmodels#9106
+Patch0:         statsmodels-pr9106-numpy2.patch
+BuildRequires:  %{python_module Cython >= 0.29.33 with %python-Cython < 4}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel >= 1.18}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scipy >= 1.4}
-BuildRequires:  %{python_module setuptools >= 0.59.2}
-BuildRequires:  %{python_module setuptools_scm >= 7}
+BuildRequires:  %{python_module setuptools >= 0.69.0.2}
+BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-fortran
@@ -47,7 +49,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.18
 Requires:       python-packaging >= 21.3
 Requires:       python-pandas >= 1.0
-Requires:       python-patsy >= 0.5.2
+Requires:       python-patsy >= 0.5.5
 Requires:       python-scipy >= 1.4
 Recommends:     python-matplotlib >= 3
 %if %{with test}

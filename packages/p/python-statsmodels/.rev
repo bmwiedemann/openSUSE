@@ -156,4 +156,12 @@ Needed by python-seaborn, see request 436927</comment>
     <comment></comment>
     <requestid>1146282</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>a2fe0ae508b48dc66bda4a5ebebe8374</srcmd5>
+    <version>0.14.1</version>
+    <time>1711036898</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1160377</requestid>
+  </revision>
 </revisionlist>
