@@ -1070,4 +1070,16 @@
   * snap: Transition to from core20 to core22 (forwarded request 1158572 from jfkw)</comment>
     <requestid>1158573</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>5bff937a4894dc76ddc2571e0a96123c</srcmd5>
+    <version>0.124.1</version>
+    <time>1711036846</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.124.1:
+  * Fix potential deadlock in Translations
+  * Fix rebuild when changing mixed case named templates
+  * testing: Set usesFMA as true for riscv64 too
+  * Fix regression for outputs defined in front matter for term pages (forwarded request 1159941 from jfkw)</comment>
+    <requestid>1159951</requestid>
+  </revision>
 </revisionlist>

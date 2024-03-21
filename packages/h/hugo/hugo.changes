@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 20 16:19:42 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.124.1:
+  * Fix potential deadlock in Translations
+  * Fix rebuild when changing mixed case named templates
+  * testing: Set usesFMA as true for riscv64 too
+  * Fix regression for outputs defined in front matter for term pages
+
+-------------------------------------------------------------------
 Sat Mar 16 16:59:46 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.124.0:
