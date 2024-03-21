@@ -287,4 +287,41 @@
     - IP recognition failure</comment>
     <requestid>1137444</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>96461ddea835f5f5267c175e43699e0c</srcmd5>
+    <version>1.2.1</version>
+    <time>1711036869</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.1:
+  * Fix bad version 1.2.0 upload to PyPI – now yanked. No changes to
+    the package.
+- 1.2.0:
+  * Add CLI tool subcommand to display cli-network-info.
+  * Support running interactive-shell without IPython installed.
+  * Explicitly raise TypeError is a non-string value is passed to
+    valid_ipv4 or valid_ipv6.
+- 1.1.0:
+  * Add the required Python version to the package metadata (#365).
+  * Add expand_partial_ipv4_address to the public API.
+  * Fix IPNetwork(...) in IPRange(...) false negatives (#157).
+  * Fix a few IPNetwork slicing edge cases (#214).
+  * Fix support for partial IP addresses accidentally left in IPNetwork in 1.0.0.
+  * Fixed an incorrect license classifier in the package metadata.
+- 1.0.0:
+  * Removed:
+    * Drop support for Python versions lower than 3.7.
+    * Remove the flag shorthands: N, P and Z. Use NOHOST, INET_PTON
+      and ZEROFILL instead.
+    * Remove abbreviated CIDR format support in IPNetwork (implicit_prefix=True),
+      use cidr_abbrev_to_verbose if you need this behavior.
+    * Remove the IPAddress.is_private method.
+  * Changed:
+    * Stop accepting leading zeros when parsing IPv4 addresses in INET_PTON mode
+      (it's been allowed on some platforms).
+    * Stop parsing IPv4 addresses permissively (inet_aton()-like) by default.
+    * Apply the two changes above to valid_ipv4 as well.
+    * Update the address databases to the 2024-02-10 versions.
+  * Fixed:</comment>
+    <requestid>1160042</requestid>
+  </revision>
 </revisionlist>
