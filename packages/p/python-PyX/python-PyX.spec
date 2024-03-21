@@ -19,6 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 %bcond_without  test
+%{?sle15_python_module_pythons}
 Name:           python-PyX
 Version:        0.16
 Release:        0
