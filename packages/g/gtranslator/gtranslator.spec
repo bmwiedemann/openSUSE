@@ -1,7 +1,7 @@
 #
 # spec file for package gtranslator
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gtranslator
-Version:        45.3
+Version:        46.0
 Release:        0
 Summary:        A gettext po file editor for the GNOME desktop
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Gtranslator
-Source0:        https://download.gnome.org/sources/gtranslator/45/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtranslator/46/%{name}-%{version}.tar.xz
 Source99:       gtranslator-rpmlintrc
 
 BuildRequires:  fdupes
@@ -38,11 +38,11 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.71.3
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.13.0
 BuildRequires:  pkgconfig(gtk-doc)
-BuildRequires:  pkgconfig(gtk4) >= 4.6.0
+BuildRequires:  pkgconfig(gtk4) >= 4.12.0
 BuildRequires:  pkgconfig(gtksourceview-5) >= 5.4.0
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.3.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.5.0
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.33.90
 BuildRequires:  pkgconfig(libgda-6.0) >= 6.0.0
 BuildRequires:  pkgconfig(libsoup-3.0)
@@ -50,6 +50,7 @@ BuildRequires:  pkgconfig(libspelling-1)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.12
 Requires:       gsettings-desktop-schemas
 Requires:       iso-codes
+Requires:       libadwaita-1-0 >= 1.5.0
 Requires:       libgda-sqlite >= 6.0.0
 Obsoletes:      gtranslator-devel <= 2.91.7
 

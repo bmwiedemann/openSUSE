@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 21 07:20:49 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 46.0:
+  + Use newer libadwaita widgets
+  + UI simplifications
+  + Improved search
+  + Multiple bugfixes
+  + Improved app metainfo
+  + Code cleanup
+  + Update some translations
+
+-------------------------------------------------------------------
 Wed Oct 25 07:00:36 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to version 45.3:

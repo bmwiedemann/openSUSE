@@ -406,4 +406,12 @@
   + Fix segfault when parsing PO files for TM (forwarded request 1120175 from dgarcia)</comment>
     <requestid>1120245</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>eb5cf980ab51c398c21417266827f265</srcmd5>
+    <version>46.0</version>
+    <time>1711036854</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1159999</requestid>
+  </revision>
 </revisionlist>
