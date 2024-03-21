@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-pytools
-Version:        2023.1.1
+Version:        2024.1.1
 Release:        0
 Summary:        A collection of tools for Python
 License:        MIT
@@ -27,10 +26,12 @@ URL:            https://pypi.python.org/pypi/pytools
 Source0:        https://files.pythonhosted.org/packages/source/p/pytools/pytools-%{version}.tar.gz
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module numpy >= 1.6.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs >= 2.2.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing_extensions if %python-base < 3.11}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.6.0
@@ -58,10 +59,10 @@ nonetheless, here's what's on offer:
 %setup -q -n pytools-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 21 09:31:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.1.1:
+  * move tests under package directory
+  * PersistentDict: support frozendict, immutabledict, FrozenOrderedSet
+  * Tag: implement eq, repr for DottedName
+  * persistent_dict: separate different sources of KeyErrors
+  * KeyBuilder: allow hashing of classes w/ update_persistent_hash
+  * PersistentDict: replace _make_dir_recursively
+
+-------------------------------------------------------------------
 Fri Jan 26 22:30:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.1.1:
