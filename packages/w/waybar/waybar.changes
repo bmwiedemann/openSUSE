@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 21 11:36:46 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update waybar-build-for-wireplumber-0.5.patch to current version.
+  Remove URL so we need to manually update in case it changes again.
+  See Alexays/Waybar#2919
+
+-------------------------------------------------------------------
+Wed Mar 20 22:03:05 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Add waybar-build-for-wireplumber-0.5.patch
+- Enable wireplumber
+
+-------------------------------------------------------------------
 Mon Mar 18 12:38:40 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Add waybar.rpmlintrc to Sources

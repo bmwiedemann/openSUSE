@@ -25,6 +25,8 @@ Group:          System/GUI/Other
 URL:            https://github.com/Alexays/Waybar
 Source0:        https://github.com/Alexays/Waybar/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        waybar.rpmlintrc
+# PATCH-FIX-UPSTREAM smolsheep@opensuse.org -- Fix wireplumber build. See gh/Alexays/Waybar#2919
+Patch0:         waybar-build-for-wireplumber-0.5.patch
 BuildRequires:  cmake
 %if 0%{?sle_version} >= 150400
 BuildRequires:  gcc13-c++
@@ -102,7 +104,7 @@ This package provides the upstream look and feel for sway.
 %if 0%{?sle_version} >= 150400
 export CXX=g++-13
 %endif
-%meson -Dcava=disabled -Dwireplumber=disabled
+%meson -Dcava=disabled
 %meson_build
 
 %install

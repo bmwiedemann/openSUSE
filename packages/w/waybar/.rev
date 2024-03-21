@@ -981,4 +981,17 @@
 </comment>
     <requestid>1158996</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>81ff42c108091c201ed5bb34c48f25f7</srcmd5>
+    <version>0.10.0</version>
+    <time>1711036881</time>
+    <user>anag+factory</user>
+    <comment>- Update waybar-build-for-wireplumber-0.5.patch to current version.
+  Remove URL so we need to manually update in case it changes again.
+  See Alexays/Waybar#2919
+
+- Add waybar-build-for-wireplumber-0.5.patch
+- Enable wireplumber</comment>
+    <requestid>1160087</requestid>
+  </revision>
 </revisionlist>
