@@ -1,7 +1,7 @@
 #
 # spec file for package python-msrestazure
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,6 @@ Requires:       python-adal >= 0.6.0
 Requires:       python-msrest < 2.0.0
 Requires:       python-msrest >= 0.6.0
 Requires:       python-six
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %python_subpackages
@@ -60,6 +59,7 @@ cp %{SOURCE1} LICENSE.md
 %defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE.md
-%{python_sitelib}/*
+%{python_sitelib}/msrestazure
+%{python_sitelib}/msrestazure-*.egg-info
 
 %changelog

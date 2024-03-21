@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 21 10:02:09 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Drop definition of BuildRoot
+- Limit Python files matched in %files section
+
+-------------------------------------------------------------------
 Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Only build Python3 flavors for distributions 15 and greater
