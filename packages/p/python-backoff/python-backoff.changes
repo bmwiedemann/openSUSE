@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 21 07:43:10 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon May  8 20:47:29 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Clean build and test dependencies
