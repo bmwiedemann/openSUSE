@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:25:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Fix tooltip not hiding after context menu was opened
+  * diag: Trying to match cursor position instead of just line
+  * diag: Match severity when trying to find item for line
+  * diag: Fix severity filter
+  * diag: Fix relatedInfo and fix items are hidden after applying filter
+  * share code for url handling
+  * don't acces member without checking (kde#482946)
+  * improve safefty, don't crash on non arrays (kde#482152)
+  * flatpak: Switch to non-preview runtime
+  * Fix rainbow highlighting breaks on bracket removal
+  * tabswitcher: Do not emit if we're adding no documents
+  * Fix tabswitcher performance when large of docs are opened
+  * Avoid many proxy invalidations on close
+  * fix crash on close other with active widget (kde#481625)
+
+-------------------------------------------------------------------
 Fri Feb 23 13:58:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
