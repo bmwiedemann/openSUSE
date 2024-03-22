@@ -152,7 +152,7 @@ Index: etc/login.defs
  
  # Default initial "umask" value used by login(1) on non-PAM enabled systems.
  # Default "umask" value for pam_umask(8) on PAM enabled systems.
-@@ -211,28 +125,13 @@ UMASK		022
+@@ -211,23 +125,13 @@ UMASK		022
  #
  #	PASS_MAX_DAYS	Maximum number of days a password may be used.
  #	PASS_MIN_DAYS	Minimum number of days allowed between password changes.
@@ -173,15 +173,10 @@ Index: etc/login.defs
 -SU_WHEEL_ONLY	no
 -
 -#
--# If compiled with cracklib support, sets the path to the dictionaries
--#
--CRACKLIB_DICTPATH	/var/cache/cracklib/cracklib_dict
--
--#
  # Min/max values for automatic uid selection in useradd(8)
  #
  UID_MIN			 1000
-@@ -269,28 +168,6 @@ LOGIN_RETRIES		5
+@@ -264,28 +168,6 @@ LOGIN_RETRIES		5
  LOGIN_TIMEOUT		60
  
  #
@@ -210,7 +205,7 @@ Index: etc/login.defs
  # Which fields may be changed by regular users using chfn(1) - use
  # any combination of letters "frwh" (full name, room number, work
  # phone, home phone).  If not defined, no changes are allowed.
-@@ -299,13 +176,6 @@ CHFN_AUTH		yes
+@@ -294,13 +176,6 @@ CHFN_AUTH		yes
  CHFN_RESTRICT		rwh
  
  #
@@ -224,7 +219,7 @@ Index: etc/login.defs
  # Only works if compiled with MD5_CRYPT defined:
  # If set to "yes", new passwords will be encrypted using the MD5-based
  # algorithm compatible with the one used by recent releases of FreeBSD.
-@@ -354,45 +224,6 @@ CHFN_RESTRICT		rwh
+@@ -349,45 +224,6 @@ CHFN_RESTRICT		rwh
  #SHA_CRYPT_MAX_ROUNDS 5000
  
  #
@@ -270,7 +265,7 @@ Index: etc/login.defs
  # Should login be allowed if we can't cd to the home directory?
  # Default is no.
  #
-@@ -407,12 +238,6 @@ DEFAULT_HOME	yes
+@@ -402,12 +238,6 @@ DEFAULT_HOME	yes
  NONEXISTENT	/nonexistent
  
  #

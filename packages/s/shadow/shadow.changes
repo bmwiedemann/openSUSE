@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Mar 21 06:37:27 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Add shadow-4.15.0-fix-definition.patch:
+  Fix error messages about config options.
+  See gh/shadow-maint/shadow#967
+
+-------------------------------------------------------------------
+Sun Mar 10 07:02:35 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.15.0
+  * libshadow:
+    + Use utmpx instead of utmp. This fixes a regression introduced
+      in 4.14.0.
+    + Fix build error (parameter name omitted).
+  * Build system:
+    + Link correctly with libdl.
+    + Install pam configs for chpasswd(8) and newusers(8) when using
+      ./configure --with-libpam --disable-account-tools-setuid.
+    + Merge libshadow and libmisc into a single libshadow. This fixes
+      problems in the linker, which were reported at least in Gentoo.
+    + Fix build with musl libc.
+    + Support out of tree builds
+  * useradd(8):
+    + Set proper SELinux labels for def_usrtemplate
+- Update Serge Hallyns GPG key
+- Update shadow-login_defs-unused-by-pam.patch
+
+-------------------------------------------------------------------
 Sun Mar  3 06:03:25 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.14.6:

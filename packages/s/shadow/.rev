@@ -1018,4 +1018,32 @@
       4.14.0.</comment>
     <requestid>1154375</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>59ba7cbe7455c73e4588dde02d263141</srcmd5>
+    <version>4.15.0</version>
+    <time>1711116959</time>
+    <user>anag+factory</user>
+    <comment>- Add shadow-4.15.0-fix-definition.patch:
+  Fix error messages about config options.
+  See gh/shadow-maint/shadow#967
+
+- Update to 4.15.0
+  * libshadow:
+    + Use utmpx instead of utmp. This fixes a regression introduced
+      in 4.14.0.
+    + Fix build error (parameter name omitted).
+  * Build system:
+    + Link correctly with libdl.
+    + Install pam configs for chpasswd(8) and newusers(8) when using
+      ./configure --with-libpam --disable-account-tools-setuid.
+    + Merge libshadow and libmisc into a single libshadow. This fixes
+      problems in the linker, which were reported at least in Gentoo.
+    + Fix build with musl libc.
+    + Support out of tree builds
+  * useradd(8):
+    + Set proper SELinux labels for def_usrtemplate
+- Update Serge Hallyns GPG key
+- Update shadow-login_defs-unused-by-pam.patch</comment>
+    <requestid>1159987</requestid>
+  </revision>
 </revisionlist>
