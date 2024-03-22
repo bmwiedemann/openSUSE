@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:28:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Remove minimum window size on mobile (kde#482844)
+  * Use since_id instead of min_id in grabbing push notifications
+  * Post push notifications in reverse order
+  * Reimplement an early exit when there's no accounts with no notifications
+  * Add NotificationHandler::lastNotificationClosed signal
+  * Create only one NotificationHandler and put it in AccountManager
+  * flatpak: Switch to non-preview runtime
+  * Fix keyboard navigatin in the Sidebar
+  * Add margins to the video player controls
+  * Don't allow opening a context menu for an image if it's hidden
+  * Fix spacing on post info that has an application
+  * Disable interactivity of the alt and other attachment chip
+  * Hide embed action for private posts
+  * Fix z order of the link indicator
+  * Hide interaction buttons on most notifications except for mentions
+  * Prevent crash when grouped notifications are used on initialization
+  * Enable grouping notifications by default
+
+-------------------------------------------------------------------
 Fri Feb 23 14:01:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
