@@ -22,7 +22,7 @@
 %define rname ffmpegthumbs
 %bcond_without released
 Name:           ffmpegthumbs-kf5
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        FFmpeg-based thumbnail creator for video files
 License:        LGPL-2.0-or-later
