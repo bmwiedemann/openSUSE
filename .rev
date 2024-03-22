@@ -68,4 +68,18 @@
 - Drop unneeded {Build,}Requires on future.</comment>
     <requestid>1108349</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ed34071c1a738e9eda4d08c62e583b0a</srcmd5>
+    <version>2.3.1</version>
+    <time>1711117226</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.3.1:
+  * Document that pandoc 3.1.* is supported
+  * Document older pandoc 2.19 support
+  * Make MetaMap/List completely pythonic
+  * Figure, Table: fix to_json() crash if caption is None
+
+- Update to version 2.2.3</comment>
+    <requestid>1160439</requestid>
+  </revision>
 </revisionlist>
