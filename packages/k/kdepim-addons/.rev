@@ -795,4 +795,12 @@ Newer versions will have the correct headers.</comment>
     <comment>KDE release gear 24.02.0</comment>
     <requestid>1150910</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>ee7bb88bffd3490170882ae021b587bb</srcmd5>
+    <version>24.02.1</version>
+    <time>1711116991</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.02.1 (forwarded request 1159650 from krop)</comment>
+    <requestid>1160206</requestid>
+  </revision>
 </revisionlist>
