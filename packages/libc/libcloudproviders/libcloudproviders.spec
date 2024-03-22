@@ -1,7 +1,7 @@
 #
 # spec file for package libcloudproviders
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define _typelibdir %(pkg-config --variable=typelibdir gobject-introspection-1.0)
 %define _girdir %(pkg-config --variable=girdir gobject-introspection-1.0)
 Name:           libcloudproviders
-Version:        0.3.5
+Version:        0.3.6
 Release:        0
 Summary:        Library/Client to integrate cloud storage providers
 License:        LGPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/World/libcloudproviders
-Source0:        https://download.gnome.org/sources/libcloudproviders/0.3/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.42.0

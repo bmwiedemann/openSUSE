@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 20 10:15:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.3.6:
+  + Plug several memory leaks.
+  + Avoid use-after-free within the Proxy.
+  + Renamespace CloudProvidersProvider.
+  + Reduce a bit the CloudProvidersAccount memory footprint.
+
+-------------------------------------------------------------------
 Thu Nov  9 16:51:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.3.5:
