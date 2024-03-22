@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kamera
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        Digital camera support for KDE applications
 License:        LGPL-2.1-or-later
