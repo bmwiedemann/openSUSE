@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 19 16:08:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Fix loading okular preview part (kde#483109)
+  * Fix configure web shortcuts popup in kcmshell6
+  * Fix multiline selection (kde#482249)
+  * Fix crash when in embedded dummy mode (kde#476207)
+  * Newer clazy: More potential detaching temporary
+  * Newer clazy: More PMF
+  * Newer clazy: Use PMF for actions
+  * Newer clazy: More QListery
+  * Newer clazy: Add a few std::as_const
+  * Newer clazy: QList changes
+
+-------------------------------------------------------------------
 Fri Feb 23 14:00:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
