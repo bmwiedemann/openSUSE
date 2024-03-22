@@ -175,9 +175,7 @@ install -D -m 0644 common-%{commonver}/pkg/hooks/docs/oci-hooks.5 %{buildroot}/%
 install -D -m 0644 common-%{commonver}/docs/containers-mounts.conf.5 %{buildroot}/%{_mandir}/man5/
 install -D -m 0644 common-%{commonver}/docs/containers.conf.5 %{buildroot}/%{_mandir}/man5/
 
-#install -D -m 0644 %{SOURCE12} %{buildroot}/%{_sysconfdir}/containers/policy.json.openSUSE
-# temporary switch off the key checking again, to switch the SUSE container keys
-install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json.openSUSE
+install -D -m 0644 %{SOURCE12} %{buildroot}/%{_sysconfdir}/containers/policy.json.openSUSE
 install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json.default
 
 %post
