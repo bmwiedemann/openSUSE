@@ -48,4 +48,14 @@
     <comment></comment>
     <requestid>915039</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>abc623f11b6391924349024795fc79e2</srcmd5>
+    <version>1.12.2</version>
+    <time>1711117338</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+- Fix build on Python 3.12 with replace-deprecated-apis.patch
+</comment>
+    <requestid>1160626</requestid>
+  </revision>
 </revisionlist>

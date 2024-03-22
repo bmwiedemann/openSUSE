@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 22 10:43:29 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Thu Mar 21 09:44:18 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Fix build on Python 3.12 with replace-deprecated-apis.patch
+
+-------------------------------------------------------------------
 Mon Aug 30 07:58:36 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro

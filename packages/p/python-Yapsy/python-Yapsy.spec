@@ -1,7 +1,7 @@
 #
 # spec file for package python-Yapsy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Yapsy
 Version:        1.12.2
 Release:        0
 Summary:        Yet another plugin system
 License:        BSD-2-Clause
-URL:            http://yapsy.sourceforge.net
+URL:            https://yapsy.sourceforge.net
 Source:         https://files.pythonhosted.org/packages/source/Y/Yapsy/Yapsy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/tibonihoo/yapsy/pull/11 Replace Deprecated API's
+Patch0:         replace-deprecated-apis.patch
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-yapsy
@@ -41,21 +45,22 @@ least version 2.3) and to implement only the basic functionalities
 needed to detect, load and keep track of several plugins.
 
 %prep
-%setup -q -n Yapsy-%{version}
+%autosetup -p1 -n Yapsy-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 find yapsy/ -name "*.py" -exec sed -i -e  '/^#!\s\?\/usr\/bin\/\(env\s\)\?python$/d' {} ';'
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pyunittest discover -v
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/yapsy
+%{python_sitelib}/Yapsy-%{version}*-info
 %doc CHANGELOG.txt README.txt
 %license LICENSE.txt
 
