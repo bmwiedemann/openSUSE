@@ -593,4 +593,12 @@
     <comment>- We need a working full-featured setpriv(8) (boo#1212571)</comment>
     <requestid>1142250</requestid>
   </revision>
+  <revision rev="59" vrev="62">
+    <srcmd5>4f9615260e7c6b8020d8a70d9d48e505</srcmd5>
+    <version>unknown</version>
+    <time>1711117042</time>
+    <user>anag+factory</user>
+    <comment>Update to TeXLive 2024, third</comment>
+    <requestid>1160633</requestid>
+  </revision>
 </revisionlist>

@@ -588,14 +588,14 @@ if test -x /usr/bin/mtxrun ; then
 	/usr/bin/luatools --generate < /dev/null 1>&4 2>&4
 	let rc+=$?
     fi
-    if test -x /usr/bin/luaotfload-tool ; then
-	TEXMF=${TEXMFDIST} \
-	TEXMFCACHE=${TEXMFVAR} \
-	TEXMFCNF=${TEXMFCNFFILE%/*} \
-	LUAINPUTS="$(kpsewhich --var-value=LUAINPUTS)" \
-	/usr/bin/luaotfload-tool --update --force --log=stdout < /dev/null 1>&4 2>&4
-	let rc+=$?
-    fi
+fi
+if test -x /usr/bin/luaotfload-tool ; then
+    TEXMF=${TEXMFDIST} \
+    TEXMFCACHE=${TEXMFVAR} \
+    TEXMFCNF=${TEXMFCNFFILE%/*} \
+    LUAINPUTS="$(kpsewhich --var-value=LUAINPUTS)" \
+    /usr/bin/luaotfload-tool --update --force --log=stdout < /dev/null 1>&4 2>&4
+    let rc+=$?
 fi
 ((nl == 0)) || { echo; let nl=0; }
 
