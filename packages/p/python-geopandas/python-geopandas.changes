@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 21 20:06:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Don't test folium on python39: no longer available
+
+-------------------------------------------------------------------
 Tue Mar  5 21:10:50 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.14.3

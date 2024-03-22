@@ -49,7 +49,7 @@ Recommends:     python-matplotlib
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Rtree}
-BuildRequires:  %{python_module folium}
+BuildRequires:  %{python_module folium if %python-base >= 3.10}
 BuildRequires:  %{python_module fsspec}
 BuildRequires:  %{python_module geopandas = %{version}}
 BuildRequires:  %{python_module geopy}
