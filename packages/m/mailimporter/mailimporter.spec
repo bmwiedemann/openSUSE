@@ -18,11 +18,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           mailimporter
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        Mail import functionality for KDE PIM applications
 License:        GPL-2.0-or-later
@@ -67,6 +67,8 @@ This package provides the development headers of the mailimporter library.
 Summary:        MailImporter library for kdepim
 License:        LGPL-2.1-or-later
 Requires:       mailimporter >= %{version}
+Obsoletes:      libKF5MailImporter5 < %{version}
+Obsoletes:      libKPim5MailImporter5 < %{version}
 
 %description -n libKPim6MailImporter6
 This package provides the mailimporter library, used by KDE PIM applications
@@ -76,6 +78,8 @@ to import data from other mail formats (such as mbox, Maildir...).
 Summary:        MailImporter Akonadi based library for kdepim
 License:        LGPL-2.1-or-later
 Requires:       mailimporter >= %{version}
+Obsoletes:      libKF5MailImporterAkonadi5 < %{version}
+Obsoletes:      libKPim5MailImporterAkonadi5 < %{version}
 
 %description -n libKPim6MailImporterAkonadi6
 This package provides the mailimporter library for Akonadi based functions,
