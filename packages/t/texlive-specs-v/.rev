@@ -538,4 +538,12 @@ Adding the LPPL as many files are licensed under this license (forwarded request
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1099432</requestid>
   </revision>
+  <revision rev="56" vrev="59">
+    <srcmd5>1c1b30ec363e96b11c6cf721e16e377e</srcmd5>
+    <version>unknown</version>
+    <time>1711117066</time>
+    <user>anag+factory</user>
+    <comment>Update to TeXLive 2024, third</comment>
+    <requestid>1160655</requestid>
+  </revision>
 </revisionlist>
