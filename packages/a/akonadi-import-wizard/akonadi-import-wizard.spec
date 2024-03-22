@@ -17,11 +17,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           akonadi-import-wizard
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        Assistant to import PIM data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -52,7 +52,7 @@ BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Keychain)
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 %x86_64 aarch64 riscv64
 
 %description
 Assistant to import PIM data from other applications into Akonadi for use in
@@ -61,6 +61,8 @@ KDE PIM applications.
 %package -n libKPim6ImportWizard6
 Summary:        Assistant to import PIM data
 Recommends:     akonadi-import-wizard >= %{version}
+Obsoletes:      libKPim5ImportWizard5 < %{version}
+Obsoletes:      libKPimImportWizard5 < %{version}
 
 %description -n libKPim6ImportWizard6
 This package contains the shared libraries used to provide the mail import
