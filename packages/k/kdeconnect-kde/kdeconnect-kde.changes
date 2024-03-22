@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:25:58 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * app: Put the Placeholder inside the view
+  * [kcm] Use correct KCModule constructor (kde#482199)
+  * Remove `master` dependency overrides from craft config
+  * Disable Bluetooth backend due to https://bugs.kde.org/482192
+- Drop patch, merged upstream:
+  * 0001-Disable-Bluetooth-backend-due-to-https-bugs.kde.org-.patch
+
+-------------------------------------------------------------------
 Sat Mar 16 22:16:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add missing runtime requirements (boo#1221440)

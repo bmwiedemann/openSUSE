@@ -636,4 +636,12 @@
     <comment>- Add missing runtime requirements (boo#1221440)</comment>
     <requestid>1158626</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>706da64f3693898b0db917901cef9902</srcmd5>
+    <version>24.02.1</version>
+    <time>1711117130</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.02.1 (forwarded request 1159650 from krop)</comment>
+    <requestid>1160200</requestid>
+  </revision>
 </revisionlist>
