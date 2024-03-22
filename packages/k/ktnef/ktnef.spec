@@ -18,11 +18,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           ktnef
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        TNEF support
 License:        LGPL-2.1-or-later
@@ -55,6 +55,8 @@ Debug categories files needed by libKPim6Tnef6.
 %package -n libKPim6Tnef6
 Summary:        TNEF Support
 Requires:       ktnef-debug-categories >= %{version}
+Obsoletes:      libKF5Tnef5 < %{version}
+Obsoletes:      libKPim5Tnef5 < %{version}
 Obsoletes:      libKPim5Tnef5-lang < %{version}
 
 %description  -n libKPim6Tnef6
