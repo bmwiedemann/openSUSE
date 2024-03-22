@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:25:52 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Disable flatpak build
+  * flatpak: switch to official 6.6 runtime
+  * Fix usage of no longer existing signal QComboBox::currentIndexChanged(QString)
+  * Fix usage of no longer existing signal QComboBox::activated(QString)
+  * Fix usage of no longer existing signal QProcess::error(ProcessError)
+  * appdata: add <launchable> & <developer> tags
+  * Fix setting key shortcuts for Reload action
+
+-------------------------------------------------------------------
 Fri Feb 23 13:58:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
