@@ -47,7 +47,7 @@
  chomp(our $TEXMFVAR = `kpsewhich -var-value=TEXMFVAR`);
  chomp(our $TEXMFSYSVAR = `kpsewhich -var-value=TEXMFSYSVAR`);
  chomp(our $TEXMFCONFIG = `kpsewhich -var-value=TEXMFCONFIG`);
-@@ -413,7 +413,14 @@ sub callback_build_formats {
+@@ -418,7 +418,14 @@ sub callback_build_formats {
          TeXLive::TLWinGoo::maybe_make_ro ($tmpdir);
        }
      } else {
@@ -62,7 +62,7 @@
      }
    }
    # set up destination directory
-@@ -726,6 +733,7 @@ sub rebuild_one_format {
+@@ -731,6 +738,7 @@ sub rebuild_one_format {
    # check for existence of ini file before doing anything else
    if (system("kpsewhich -progname=$fmt -format=$kpsefmt $inifile >$nul 2>&1") != 0) {
      # we didn't find the ini file, skip
