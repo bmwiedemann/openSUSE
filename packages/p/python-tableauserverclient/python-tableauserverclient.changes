@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Mar 22 03:41:14 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.30:
+  * Add all missing RequestOptions fields
+  * make project nullable on datasource
+  * add params to workbook publish method
+  * add certification to publishing a datasource
+  * add contentURL as a filter
+  * adding sample file for favorites
+  * Implement custom view objects
+  * Fix bug in update-datasources before 3.15
+  * catch exceptions from ServerInfo
+  * add query-tagging attribute to connection
+  * Add logic to retrieve Datarole and Metric permissions
+  * Allow injection of sessions
+  * Fix bug in exposing ExcelRequestOptions and test
+  * fix behavior when url has no protocol
+  * add option to pass specific datasources to delete extracts
+  * allow user agent to be set by caller
+  * Fix issues with connections publishing workbooks
+  * Allow download to file-like objects
+  * Add updated_at to JobItem class
+  * fix revision references where xml returned does not match docs
+  * Do not create empty connections list
+  * Add custom session injection, Fix bug for http_options 
+  * fix filter for python 3, remove support for python 3.6 
+  * Add new samples and delete redundant ones
+  * Clean up hidden_views by making it an attribute of WorkbookItem
+  * Add type hints for workbook and data source revisions, data alerts,
+    Favorites, Flows, groups, permissions, projects, flow runs, site,
+    subscriptions, Users, webhooks
+  * add get_by_id method and test for schedules
+  * Allow null value for user quota tiers
+  * fix workbook.delete_extract
+  * add publish to pypi action
+  * fix xml generation for items
+  * Add Status, ParentProjectId and StartedAt filters for jobs endpoint
+  * make project_id nullable to support "Personal Space" for workbooks
+  * create single Credentials class
+  * Reassign content on user removal
+  * add redaction method to remove passwords when logging requests and
+    responses, which can contain embedded credentials.
+  * remove support for python 3.6 (add python version enforcement in setup.py)
+  * Extract refreshable item IDs from job XML response
+  * Do not eagerly fetch content when a stream was requested
+  * Fix QuerySet slicing logic
+  * add CRUD methods for default permissions
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+- Switch to GitHub source URL.
+
+-------------------------------------------------------------------
 Wed Apr 20 07:01:35 UTC 2022 - pgajdos@suse.com
 
 - version update to 0.18.0

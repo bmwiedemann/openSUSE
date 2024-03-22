@@ -1,7 +1,7 @@
 #
 # spec file for package python-tableauserverclient
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,30 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-tableauserverclient
-Version:        0.18.0
+Version:        0.30
 Release:        0
 Summary:        Python library for working with the Tableau Server REST API
 License:        MIT
 URL:            https://github.com/tableau/server-client-python
-Source:         https://files.pythonhosted.org/packages/source/t/tableauserverclient/tableauserverclient-%{version}.tar.gz
+Source:         https://github.com/tableau/server-client-python/archive/refs/tags/v%{version}.tar.gz#/tableauserverclient-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module versioneer}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-requests >= 2.11
+Requires:       python-defusedxml >= 0.7.1
+Requires:       python-packaging >= 23.
+Requires:       python-requests >= 2.31
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests >= 2.11}
+BuildRequires:  %{python_module defusedxml >= 0.7.1}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-subtests}
+BuildRequires:  %{python_module requests >= 2.31}
 BuildRequires:  %{python_module requests-mock >= 1.0}
 # /SECTION
 %python_subpackages
@@ -41,13 +48,13 @@ BuildRequires:  %{python_module requests-mock >= 1.0}
 A Python module for working with the Tableau Server REST API.
 
 %prep
-%setup -q -n tableauserverclient-%{version}
+%setup -q -n server-client-python-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +63,7 @@ A Python module for working with the Tableau Server REST API.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/tableauserverclient
+%{python_sitelib}/tableauserverclient-%{version}.dist-info
 
 %changelog

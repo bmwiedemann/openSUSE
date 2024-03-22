@@ -23,4 +23,41 @@
     <comment></comment>
     <requestid>970984</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>500a02da347dc9cf0150ef48995fe3de</srcmd5>
+    <version>0.30</version>
+    <time>1711117275</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.30:
+  * Add all missing RequestOptions fields
+  * make project nullable on datasource
+  * add params to workbook publish method
+  * add certification to publishing a datasource
+  * add contentURL as a filter
+  * adding sample file for favorites
+  * Implement custom view objects
+  * Fix bug in update-datasources before 3.15
+  * catch exceptions from ServerInfo
+  * add query-tagging attribute to connection
+  * Add logic to retrieve Datarole and Metric permissions
+  * Allow injection of sessions
+  * Fix bug in exposing ExcelRequestOptions and test
+  * fix behavior when url has no protocol
+  * add option to pass specific datasources to delete extracts
+  * allow user agent to be set by caller
+  * Fix issues with connections publishing workbooks
+  * Allow download to file-like objects
+  * Add updated_at to JobItem class
+  * fix revision references where xml returned does not match docs
+  * Do not create empty connections list
+  * Add custom session injection, Fix bug for http_options 
+  * fix filter for python 3, remove support for python 3.6 
+  * Add new samples and delete redundant ones
+  * Clean up hidden_views by making it an attribute of WorkbookItem
+  * Add type hints for workbook and data source revisions, data alerts,
+    Favorites, Flows, groups, permissions, projects, flow runs, site,
+    subscriptions, Users, webhooks
+  * add get_by_id method and test for schedules</comment>
+    <requestid>1160511</requestid>
+  </revision>
 </revisionlist>
