@@ -18,11 +18,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           akonadi-calendar
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        Akonadi calendar integration
 License:        LGPL-2.1-or-later
@@ -54,7 +54,7 @@ BuildRequires:  cmake(KPim6MessageCore) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 %x86_64 aarch64 riscv64
 
 %description
 This library provides calendar integration for Akonadi based Applications.
@@ -62,6 +62,7 @@ This library provides calendar integration for Akonadi based Applications.
 %package -n libKPim6AkonadiCalendar6
 Summary:        KDE PIM Libraries: AkonadiCalendar
 Requires:       akonadi-calendar >= %{version}
+Obsoletes:      libKF5AkonadiCalendar5 < %{version}
 Obsoletes:      libKPim5AkonadiCalendar5 < %{version}
 Obsoletes:      libKPim5AkonadiCalendar5-lang < %{version}
 # Renamed
@@ -93,8 +94,8 @@ Requires:       cmake(KF6I18n) >= %{kf6_version}
 Requires:       cmake(KF6WidgetsAddons) >= %{kf6_version}
 Requires:       cmake(KPim6Akonadi) >= %{kpim6_version}
 Requires:       cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
+Obsoletes:      akonadi-calendar-devel < %{version}
 Obsoletes:      akonadi5-calendar-devel < %{version}
-Provides:       akonadi5-calendar-devel = %{version}
 
 %description devel
 Development package for akonadi-calendar.
