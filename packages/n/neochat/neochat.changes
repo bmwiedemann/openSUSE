@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:27:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Fix the quick format bar not actually doing anything
+  * Exclude lonely question marks from the linkify regex
+  * Don't destroy formatting when editing previous messages
+  * Prevent collision between KUnifiedPush DBus and KRunner DBus
+  * This is no longer needed now that ECM 6.0.0 is available
+  * Create an APPX package for NeoChat 24.02
+  * Remove manual window toggling for system tray icon (kde#479721)
+  * Don't link KDBusAddons on windows
+  * Don't require kirigami-addons master
+  * flatpak: Switch to non-preview runtime
+  * Fix (un)ignoring unknown users
+  * Fix saving images from maximize component
+
+-------------------------------------------------------------------
 Thu Feb 29 14:33:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update the kquickimageeditor build requirement
