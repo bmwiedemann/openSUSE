@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:26:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Don't rely on qtpaths for kconf_update scripts
+  * Fix Qt 6 assert on QChar outside BMP
+  * Support non-BMP codepoints in HTMLDecoder (kde#479983)
+  * terminalDisplay/TerminalFonts: fix checking if emojiFont is set (kde#481211)
+  * fix: Issue with focus setting on wdg after relocating to a new splitter (kde#479858)
+
+-------------------------------------------------------------------
 Fri Feb 23 13:59:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
