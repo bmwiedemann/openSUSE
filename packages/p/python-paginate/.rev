@@ -15,4 +15,13 @@
     <comment>- skip build for python 3.12</comment>
     <requestid>1144836</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>fba7b2b3dbed4c09dd6871842fcaae37</srcmd5>
+    <version>0.5.6</version>
+    <time>1711117289</time>
+    <user>anag+factory</user>
+    <comment>- Add python312.patch and build for python 3.12
+  gh#Pylons/paginate#19</comment>
+    <requestid>1160541</requestid>
+  </revision>
 </revisionlist>

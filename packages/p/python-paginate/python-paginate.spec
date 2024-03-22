@@ -17,7 +17,6 @@
 
 
 %{?sle15_python_module_pythons}
-%global skip_python312 1
 Name:           python-paginate
 Version:        0.5.6
 Release:        0
@@ -26,6 +25,8 @@ License:        MIT
 URL:            https://github.com/Signum/paginate
 # PyPI tarball does not include tests...
 Source:         https://github.com/Signum/paginate/archive/%{version}.tar.gz#/paginate-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE python312.patch gh#Pylons/paginate#19
+Patch0:         python312.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
