@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:27:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Close rdp session after receiving an error Handle error messages in rdpsession Don't show an error message when the user initiated logoff or disconnect There could be more work done here to handle errors.  For example reconnecting.  Leaving them out here to avoid new strings.
+
+-------------------------------------------------------------------
 Fri Feb 23 14:00:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
