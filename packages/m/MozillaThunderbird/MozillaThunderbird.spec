@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          115
-%define mainver        %major.8.1
-%define orig_version   115.8.1
+%define mainver        %major.9.0
+%define orig_version   115.9.0
 %define orig_suffix    %nil
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -128,7 +128,11 @@ BuildRequires:  zip
 %if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %endif
+%if (0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000)
+BuildRequires:  clang6-devel
+%else
 BuildRequires:  clang-devel >= 5
+%endif
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
@@ -203,6 +207,10 @@ Patch19:        svg-rendering.patch
 Patch20:        mozilla-partial-revert-1768632.patch
 Patch21:        mozilla-bmo1775202.patch
 Patch22:        mozilla-rust-disable-future-incompat.patch
+%if 0%{?product_libs_llvm_ver} > 17
+# LLVM18 breaks building Firefox ESR:
+Patch30:        mozilla-fix-issues-with-llvm18.patch
+%endif
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh
@@ -216,6 +224,8 @@ PreReq:         textutils
 Recommends:     libcanberra0
 Recommends:     libotr5
 Recommends:     libpulse0
+Requires:       %{name}-openpgp
+Suggests:       %{name}-openpgp-librnp
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 %define libgssapi libgssapi_krb5.so.2
@@ -226,6 +236,16 @@ Thunderbird is a free, open-source, cross-platform application for
 managing email, news feeds, chat, and news groups. It is a local
 (rather than browser- or web-based) email application that is powerful
 yet easy to use.
+
+%package openpgp-librnp
+Summary:        Thunderbird's upstream OpenPGP implementation
+Group:          Productivity/Networking/Email/Clients
+Requires:       %{name} = %{version}
+Provides:       %{name}-openpgp
+Conflicts:      %{name}-openpgp
+
+%description openpgp-librnp
+Thunderbird's upstream OpenPGP implementation.
 
 %if %localize
 %package translations-common
@@ -593,6 +613,7 @@ exit 0
 %{progdir}/application.ini
 %{progdir}/dependentlibs.list
 %{progdir}/*.so
+%exclude %{progdir}/librnp.so
 %{progdir}/glxtest
 %if 0%{wayland_supported}
 %{progdir}/vaapitest
@@ -621,6 +642,9 @@ exit 0
 %{_datadir}/icons/hicolor/*/apps/%{progname}.png
 %{_datadir}/icons/hicolor/symbolic/apps/%{progname}-symbolic.svg
 %{_bindir}/%{progname}
+
+%files openpgp-librnp
+%{progdir}/librnp.so
 
 %if %localize
 %files translations-common -f %{_tmppath}/translations.common

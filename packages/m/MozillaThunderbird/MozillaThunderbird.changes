@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Mar 20 13:55:26 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- LLVM18 breaks building Thunderbird on Tumbleweed; add
+  * mozilla-fix-issues-with-llvm18.patch
+
+-------------------------------------------------------------------
+Sat Mar 16 11:41:27 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 115.9.0
+  https://www.thunderbird.net/en-US/thunderbird/115.9.0/releasenotes/
+  MFSA 2024-14 (bsc#1221327)
+  * CVE-2024-0743 (bmo#1867408)
+    Crash in NSS TLS method
+  * CVE-2024-2605 (bmo#1872920)
+    Windows Error Reporter could be used as a Sandbox escape vector
+  * CVE-2024-2607 (bmo#1879939)
+    JIT code failed to save return registers on Armv7-A
+  * CVE-2024-2608 (bmo#1880692)
+    Integer overflow could have led to out of bounds write
+  * CVE-2024-2616 (bmo#1846197)
+    Improve handling of out-of-memory conditions in ICU
+  * CVE-2023-5388 (bmo#1780432)
+    NSS susceptible to timing attack against RSA decryption
+  * CVE-2024-2610 (bmo#1871112)
+    Improper handling of html and body tags enabled CSP nonce leakage
+  * CVE-2024-2611 (bmo#1876675)
+    Clickjacking vulnerability could have led to a user accidentally
+    granting permissions
+  * CVE-2024-2612 (bmo#1879444)
+    Self referencing object could have potentially led to a use-
+    after-free
+  * CVE-2024-2614 (bmo#1685358, bmo#1861016, bmo#1880405, bmo#1881093)
+    Memory safety bugs fixed in Firefox 124, Firefox ESR 115.9,
+    and Thunderbird 115.9
+
+-------------------------------------------------------------------
+Tue Mar  5 08:13:43 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
+
+- Create subpackage MozillaThunderbird-openpgp-librnp
+
+-------------------------------------------------------------------
 Tue Mar  5 09:09:34 CET 2024 - Wolfgang Rosenauer <wr@@rosenauer.org>
 
 - Mozilla Thunderbird 115.8.1
