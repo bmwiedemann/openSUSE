@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 20 15:29:55 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Build CLI-command of hayagriva as an additional package
+- Use filtered vendor-tarball.
+- Simplify spec with forced gcc-usage
+
+-------------------------------------------------------------------
 Mon Mar 18 08:51:12 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to version 0.11.0

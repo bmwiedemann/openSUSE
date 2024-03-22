@@ -18,6 +18,11 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+# We have to use the same gcc-version that Rust was being built with
+%define force_gcc_version 12
+%endif
+
 Name:           typst
 Version:        0.11.0
 Release:        0
@@ -28,14 +33,10 @@ Source0:        https://github.com/typst/typst/archive/refs/tags/v%{version}.tar
 Source1:        vendor.tar.xz
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
-%if 0%{?suse_version} < 1600
-# We have to use the same gcc-version that Rust was being built with
-BuildRequires:  gcc12-c++
-%else
-BuildRequires:  gcc-c++
-%endif
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  git
 BuildRequires:  openssl-devel
+Recommends:     hayagriva
 
 %description
 Typst is a new markup-based typesetting system that is designed to be as powerful as LaTeX while being much easier to learn and use.
@@ -58,29 +59,53 @@ BuildArch:      noarch
 %description    fish-completion
 Fish command-line completion support for %{name}.
 
+%package -n     hayagriva
+Summary:        Standalone CLI of built-in bibliography management tool.
+Supplements:    %{name}
+
+%description -n hayagriva
+Standalone CLI of the built-in bibliography management library used in typst.
+
 %prep
 %autosetup -p1 -a1 -n typst-%{version}
 
 %build
-%if 0%{?suse_version} < 1600
-export CC=gcc-12
-export CXX=g++-12
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
 %endif
 export TYPST_VERSION=%{version}
 export GEN_ARTIFACTS=%{_builddir}/%{name}-%{version}/artifacts
 mkdir -p $GEN_ARTIFACTS
 RUSTFLAGS=%{rustflags} %{cargo_build} --workspace
 
+# Building hayagriva
+
+# Tiny hack to be able to build it from inside the vendor-dir,
+# otherwise it would complain about not being a member of the
+# top-level typst-workspace
+echo "[workspace]" >> vendor/hayagriva/Cargo.toml
+# hayagriva is older, so typst might use newer dot-dependencies.
+# We tell hayagriva to use the newer ones, if available.
+cargo update --offline --manifest-path=vendor/hayagriva/Cargo.toml
+# We may have updated hayagriva's Cargo.lock-file.
+# So we have to tell typst, not to worry about hash-mismatches.
+# (Matters in the check-section below)
+echo "[patch.crates-io.hayagriva]" >> Cargo.toml
+echo "path = \"vendor/hayagriva\"" >> Cargo.toml
+RUSTFLAGS=%{rustflags} %{cargo_build} --manifest-path=vendor/hayagriva/Cargo.toml
+
 %check
-%if 0%{?suse_version} < 1600
-export CC=gcc-12
-export CXX=g++-12
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
 %endif
 %{cargo_test} --workspace
 
 %install
 install -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 target/release/typst %{buildroot}%{_bindir}/%{name}
+install -m 0755 target/release/typst %{buildroot}%{_bindir}/hayagriva
 
 # Shell completions
 install -Dm644 -T %{_builddir}/%{name}-%{version}/artifacts/%{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
@@ -102,5 +127,10 @@ cp -L  %{_builddir}/%{name}-%{version}/artifacts/*.1 %{buildroot}%{_mandir}/man1
 %files fish-completion
 %dir %{_datadir}/fish
 %{_datadir}/fish/*
+
+%files -n hayagriva
+%license vendor/hayagriva/LICENSE*
+%doc vendor/hayagriva/README.md vendor/hayagriva/docs/*
+%{_bindir}/hayagriva
 
 %changelog
