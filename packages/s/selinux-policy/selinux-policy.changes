@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 21 10:44:09 UTC 2024 - jsegitz@suse.com
+
+- Update to version 20240321:
+  * policy module for kiwi (bsc#1221109)
+  * dontaudit execmem for modemmanager (bsc#1219363)
+
+-------------------------------------------------------------------
 Wed Mar 13 11:02:43 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20240313:
