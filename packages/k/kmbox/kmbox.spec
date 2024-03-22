@@ -18,11 +18,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           kmbox
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        KDE PIM Libraries: Mailbox functionality
 License:        LGPL-2.1-or-later
@@ -45,6 +45,8 @@ This package contains the basic packages for KDE PIM applications.
 %package -n libKPim6Mbox6
 Summary:        KDE PIM Libraries: Mailbox functionality
 Requires:       kmbox >= %{version}
+Obsoletes:      libKF5Mbox5 < %{version}
+Obsoletes:      libKPim5Mbox5 < %{version}
 
 %description  -n libKPim6Mbox6
 This package provides the mailbox functionality for KDE PIM applications
