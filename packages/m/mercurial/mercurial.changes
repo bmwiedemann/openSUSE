@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 21 11:29:37 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 6.7.1
+
+  Exceptional release following a crash found in delta code that 
+  can be triggered with complex repository shapes.
+
+  * delta-search: fix crash caused by unbound variable
+  * sshpeer: fix path when handling invalid url exception
+  * subrepo: fix normalizing paths with scheme
+
+-------------------------------------------------------------------
 Mon Mar 18 10:22:39 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

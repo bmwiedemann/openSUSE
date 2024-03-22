@@ -1742,4 +1742,12 @@ As usual, a lot of patches don't make it to this list since they're more interna
     <comment></comment>
     <requestid>1159011</requestid>
   </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>6b1a3a2016165f510fd800fa1ff10ff6</srcmd5>
+    <version>6.7.1</version>
+    <time>1711117085</time>
+    <user>anag+factory</user>
+    <comment>Mercurial 6.7.1: urgent bugfix release (forwarded request 1160088 from develop7)</comment>
+    <requestid>1160089</requestid>
+  </revision>
 </revisionlist>
