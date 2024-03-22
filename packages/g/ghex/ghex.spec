@@ -1,7 +1,7 @@
 #
 # spec file for package ghex
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@
 %define soname libgtkhex-%{ghex_abi}-%{so_ver}
 
 Name:           ghex
-Version:        45.1
+Version:        46.0
 Release:        0
 Summary:        GNOME Binary Editor
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Ghex
-Source:         https://download.gnome.org/sources/ghex/45/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0

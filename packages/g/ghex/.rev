@@ -567,4 +567,12 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment>New stable release (forwarded request 1125823 from iznogood)</comment>
     <requestid>1126641</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>8ee7385c95850e028ce6078b33397e0b</srcmd5>
+    <version>46.0</version>
+    <time>1711117322</time>
+    <user>anag+factory</user>
+    <comment>GNOME 46 (forwarded request 1160561 from dimstar)</comment>
+    <requestid>1160590</requestid>
+  </revision>
 </revisionlist>

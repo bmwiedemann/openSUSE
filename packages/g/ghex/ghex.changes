@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Mar 22 08:15:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + widget: Fade zeroes in the hex display.
+  + data: add 'hexadecimal' keyword to .desktop file.
+  + appdata: Remove none OARS tags.
+  + appdata: Update appdata.
+  + appwin: Don't let AdwTabView trample over shortcuts.
+  + lib: Fix PANGO_COLOR_FROM_FLOAT macro.
+  + docs: GI tweaks and fixes.
+  + lib/app: Initial support for marks.
+  + help: Add marks section.
+  + i18n: Remove domain that prevented use of translations.
+  + appwin: Allow dropping multiple files.
+  + widget/doc: Set widget busy state while file is mid-save.
+  + Code and documentation cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 16 12:02:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + GObject property getter fixes.
+  + buf-malloc/mmap: Implement GObject 'file' property getter
+    properly.
+  + hex-buf/doc: Clarify GI transfer annotations.
+  + hex-doc/buf: Support opening zero-length files.
+  + hex-buf-iface: More appropriate messages when selecting
+    backend.
+  + hex-doc: Allow setting HEX_BUFFER env var to specify default
+    backend.
+  + Remove almost all remaining GtkDialog use.
+  + about: port dialog to libadwaita.
+  + Update POTFILES.in.
+  + chartable: Port to GtkColumnView.
+  + gtkhex: Local variables in switch statement should be in own
+    scope (ie, fix clang build issues).
+  + appwin: Mark error message string properly translatable.
+- Convert to source service for easier updating.
+
+-------------------------------------------------------------------
 Tue Nov 14 08:55:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.1:
