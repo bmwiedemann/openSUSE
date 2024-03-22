@@ -200,4 +200,12 @@
     <comment></comment>
     <requestid>1090267</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>ce947f8bf162db40acf4ba42a0148270</srcmd5>
+    <version>1.0.1</version>
+    <time>1711117275</time>
+    <user>anag+factory</user>
+    <comment>- Also skip Python 3.12, since we build for that as well.</comment>
+    <requestid>1160509</requestid>
+  </revision>
 </revisionlist>

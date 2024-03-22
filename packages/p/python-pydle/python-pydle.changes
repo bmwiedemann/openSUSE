@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 22 02:49:31 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Also skip Python 3.12, since we build for that as well. 
+
+-------------------------------------------------------------------
 Wed May 31 16:13:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - poetry-core is sufficient for build system

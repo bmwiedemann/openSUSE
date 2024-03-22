@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydle
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,6 +22,7 @@
 # applied gh#Shizmob/pydle#180
 %define skip_python310 1
 %define skip_python311 1
+%define skip_python312 1
 
 %bcond_without test
 Name:           python-pydle
@@ -40,7 +41,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pure-sasl
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
