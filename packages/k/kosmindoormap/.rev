@@ -311,4 +311,12 @@
     <comment>- Move the %find_lang call into %install section</comment>
     <requestid>1158622</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>255ea1d6c9ddf26bb5e91d4d194afa1e</srcmd5>
+    <version>24.02.1</version>
+    <time>1711117167</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.02.1 (forwarded request 1159650 from krop)</comment>
+    <requestid>1160282</requestid>
+  </revision>
 </revisionlist>
