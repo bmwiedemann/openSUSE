@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kio-extras
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
@@ -79,8 +79,8 @@ Requires:       (trash_kcm or kio-core)
 Requires:       qt6-sql-sqlite >= %{qt6_version}
 Recommends:     kf6-kimageformats >= %{kf6_version}
 Recommends:     qt6-imageformats >= %{qt6_version}
-# Packages are only coinstallable since 24.02.0
-Conflicts:      kio-extras5 < 24.02.0
+# Packages are only coinstallable since 24.02.1
+Conflicts:      kio-extras5 < 24.02.1
 Provides:       kfileaudiopreview = 4.100.0
 Obsoletes:      kfileaudiopreview < 4.100.0
 Provides:       kde-odf-thumbnail = %{version}
