@@ -18,11 +18,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           akonadi-contacts
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        KDE PIM Libraries for Akonadi Contacts
 License:        LGPL-2.1-or-later
@@ -70,6 +70,8 @@ Obsoletes:      akonadi-socialutils < %{version}
 Obsoletes:      akonadi-socialutils-devel < %{version}
 Obsoletes:      kdepim-apps-libs <= 20.08.3
 Obsoletes:      kdepim-apps-libs-lang <= 20.08.3
+Obsoletes:      libKF5AkonadiContact5 < %{version}
+Obsoletes:      libKPim5AkonadiContact5 < %{version}
 
 %description -n libKPim6AkonadiContactCore6
 This package provides a library used for handling personal contacts,
@@ -78,6 +80,8 @@ as part of the KDE Personal Information Management (PIM) software.
 %package -n libKPim6AkonadiContactWidgets6
 Summary:        Library for personal contact handling
 Requires:       akonadi-contacts >= %{version}
+Obsoletes:      libKF5ContactEditor5 < %{version}
+Obsoletes:      libKPim5ContactEditor5 < %{version}
 
 %description -n libKPim6AkonadiContactWidgets6
 This package provides a library used for handling personal contacts,
@@ -99,8 +103,7 @@ Requires:       cmake(KPim6Akonadi) >= %{kpim6_version}
 Requires:       cmake(KPim6AkonadiContactCore) >= %{kpim6_version}
 Requires:       cmake(KPim6GrantleeTheme) >= %{kpim6_version}
 Requires:       cmake(Qt6Widgets) >= %{qt6_version}
-Provides:       akonadi-contacts-devel = %{version}
-Obsoletes:      akonadi-contacts-devel < %{version}
+Obsoletes:      akonadi-contact-devel < %{version}
 Obsoletes:      kdepim-apps-libs-devel <= 20.08.3
 
 %description devel

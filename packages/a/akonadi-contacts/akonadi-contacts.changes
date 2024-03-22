@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:25:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Fix bug 482737: KAddressbook crash editing entry (kde#482737)
+- Uninstall old KDE PIM 5 libraries (boo#1221515)
+
+-------------------------------------------------------------------
 Fri Feb 23 13:57:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
