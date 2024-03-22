@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:27:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Improve coach background color on incomplete coach type information
+  * Actually check the results of the Hafas vehicle result parsing tests
+  * Check car type before deriving class from UIC coach number
+  * Add support for Hafas rtMode TripSearch configuration parameter
+  * Increase DB Hafas API and extension versions
+  * Fix locale overriding in request unit tests (kde#482357)
+  * Fix copy/paste mistake in caching negative journey query results
+  * Don't modify the request after we used it for a cache lookup
+
+-------------------------------------------------------------------
 Fri Feb 23 14:00:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
