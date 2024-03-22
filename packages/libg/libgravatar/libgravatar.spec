@@ -18,11 +18,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           libgravatar
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        Library to download and display gravatars
 License:        LGPL-2.1-or-later
@@ -50,6 +50,8 @@ This package contains the debug categories for the libgravatar library.
 %package -n libKPim6Gravatar6
 Summary:        Libgravatar library for KDE PIM applications
 Requires:       libgravatar
+Obsoletes:      libKF5Gravatar5 < %{version}
+Obsoletes:      libKPim5Gravatar5 < %{version}
 # Renamed
 Obsoletes:      libgravatar-lang <= 23.04.0
 
