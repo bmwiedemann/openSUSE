@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 19 16:02:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Don't create main window on the stack (kde#482499)
+
+-------------------------------------------------------------------
 Fri Feb 23 14:00:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
