@@ -18,11 +18,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           akonadi-search
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        Framework for searching and managing PIM metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -59,6 +59,8 @@ AkonadiSearch is a framework for searching and managing PIM metadata
 
 %package -n libKPim6AkonadiSearch6
 Summary:        Core libraries for AkonadiSearch
+Obsoletes:      libKF5AkonadiSearch5 < %{version}
+Obsoletes:      libKPim5AkonadiSearch5 < %{version}
 
 %description -n libKPim6AkonadiSearch6
 AkonadiSearch is a framework for searching and managing PIM metadata.
