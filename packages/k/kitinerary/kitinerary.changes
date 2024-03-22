@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:26:33 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Handle German language European Sleeper seat reservations
+  * Fix typo in include guard
+  * Fix SNCF Carte Advantage token type
+  * Fix instructions on how to get the continous Flatpak build
+  * Check whether ERA FCB first name fields are set before using them
+  * Update dependency versions for static builds
+  * improve `salzbergwekr.de` extractor: address extraction from text
+  * Add `salzbergwerk.de` tour reservation extractor
+  * Use the KF6 Flatpak runtime
+  * Significantly increase thresholds for PDF vector graphics barcodes
+  * Normalize geo coordinate Place properties
+  * Handle ti.to emails with iCal attachments correctly
+  * Correctly update search offset for multi-leg National Express tickets
+  * Add extractor script for Leo Express
+  * Eventim: Drop debug output
+  * Eventim: Also read event name from KEY_EVENTLINE
+  * Add extractor script for Eckerö Line ferry tickets (kde#481739)
+  * Handle ti.to PDF tickets as well
+  * Add extractor script for ti.to pkpass files
+  * Extract DB reservation iCal events
+  * added Flibco parser in the bundled extractors list
+  * Added Flibco parser
+  * Handle another DB regional ERA TLB ticket variant with PLAI layout
+
+-------------------------------------------------------------------
 Fri Feb 23 13:59:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
