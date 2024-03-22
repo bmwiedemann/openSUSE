@@ -18,11 +18,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           mailcommon
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        Base KDE PIM library for mail-handling applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -70,7 +70,7 @@ BuildRequires:  cmake(Qt6UiPlugin) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 %x86_64 aarch64 riscv64
 
 %description
 The mailcommon library is a KDE PIM project to provide a
@@ -79,6 +79,8 @@ framework to build applications which handle e-mail.
 %package -n libKPim6MailCommon6
 Summary:        Common Mail library for KDE PIM applications
 Requires:       mailcommon >= %{version}
+Obsoletes:      libKF5MailCommon5 < %{version}
+Obsoletes:      libKPim5MailCommon5 < %{version}
 
 %description -n libKPim6MailCommon6
 This package provides the mailcommon library, a base KDE PIM library
