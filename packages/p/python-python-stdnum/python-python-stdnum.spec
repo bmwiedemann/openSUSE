@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-python-stdnum
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -19,7 +19,7 @@
 %global modname python-stdnum
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        1.19
+Version:        1.20
 Release:        0
 Summary:        Python module to handle standardized numbers and codes
 License:        LGPL-2.0-or-later

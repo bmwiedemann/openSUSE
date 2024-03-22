@@ -115,4 +115,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1142872</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8518d0ba315dcb1ac42df01b084d980b</srcmd5>
+    <version>1.20</version>
+    <time>1711117220</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.20:
+  * Add modules for the following number formats:
+    - BC PHN (British Columbia Personal Health Number)
+    - EC Number (European Community number)
+    - VID (Indian personal virtual identity number)
+  * Fix typo in German Umsatzsteur Identifikationnummer
+  * Ensure EU VAT numbers don't accept duplicate country codes
+  * Fix vatin number compacting for &quot;EU&quot; VAT numbers
+  * Add check digit validation to French NIF
+  * Fix Ukrainian EDRPOU check digit calculation</comment>
+    <requestid>1160435</requestid>
+  </revision>
 </revisionlist>

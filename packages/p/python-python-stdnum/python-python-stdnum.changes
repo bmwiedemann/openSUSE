@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 21 17:08:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.20:
+  * Add modules for the following number formats:
+    - BC PHN (British Columbia Personal Health Number)
+    - EC Number (European Community number)
+    - VID (Indian personal virtual identity number)
+  * Fix typo in German Umsatzsteur Identifikationnummer
+  * Ensure EU VAT numbers don't accept duplicate country codes
+  * Fix vatin number compacting for "EU" VAT numbers
+  * Add check digit validation to French NIF
+  * Fix Ukrainian EDRPOU check digit calculation
+
+-------------------------------------------------------------------
 Tue Jan 23 21:40:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.19:
