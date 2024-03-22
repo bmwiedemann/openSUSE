@@ -52,11 +52,7 @@ allows input from it's own (included) gpm, or from jamd, or from XFree86 ZAxis
 mouse wheel conversion.
 
 %prep
-%setup -q
-%patch1
-%patch2
-%patch3
-%patch4
+%autosetup -p0
 
 %build
 autoreconf -fiv
