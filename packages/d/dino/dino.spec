@@ -1,7 +1,7 @@
 #
 # spec file for package dino
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/dino/dino
 Source:         https://github.com/dino/dino/releases/download/v%{version}/dino-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM -- Add more emoji translations gh/dino/dino#1207
+Patch0:         dino-0.4.3-emoji.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 %if 0%{?suse_version}
@@ -179,7 +181,7 @@ Contains the HTTP Upload plugin for %{name}.
 %endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # workaround until we clarified if the gcc return type check is actually wrong there.

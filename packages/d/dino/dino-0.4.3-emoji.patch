@@ -1,0 +1,21 @@
+From 5900d4d5e5a0cadcd5e837732c5914ce54fb6f1f Mon Sep 17 00:00:00 2001
+From: Michael Vetter <jubalh@iodoru.org>
+Date: Fri, 4 Mar 2022 20:32:45 +0100
+Subject: [PATCH] Add smiley translations for :')
+
+---
+ main/src/ui/chat_input/smiley_converter.vala | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/main/src/ui/chat_input/smiley_converter.vala b/main/src/ui/chat_input/smiley_converter.vala
+index 8f4dee9aa..da5074383 100644
+--- a/main/src/ui/chat_input/smiley_converter.vala
++++ b/main/src/ui/chat_input/smiley_converter.vala
+@@ -24,6 +24,7 @@ class SmileyConverter {
+         smiley_translations[";P"] = "😜";
+         smiley_translations[":("] = "🙁";
+         smiley_translations[":'("] = "😢";
++        smiley_translations[":')"] = "🥲";
+         smiley_translations[":/"] = "😕";
+         smiley_translations["<3"] = "❤️";
+         smiley_translations[":*"] = "😘️";
