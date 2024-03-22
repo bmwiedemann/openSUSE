@@ -22,7 +22,7 @@
 %define name   akonadi
 %bcond_without released
 Name:           akonadi
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
@@ -195,7 +195,8 @@ This package contains AppArmor profiles for Akonadi.
 %{_kf6_bindir}/akonadi_agent_launcher
 %{_kf6_bindir}/akonadi_agent_server
 %{_kf6_bindir}/akonadi_control
-%{_kf6_bindir}/akonadi-db-migrator
+# Disabled in 24.02.1
+# %%{_kf6_bindir}/akonadi-db-migrator
 %{_kf6_bindir}/akonadi_knut_resource
 %{_kf6_bindir}/akonadi_rds
 %{_kf6_bindir}/akonadictl

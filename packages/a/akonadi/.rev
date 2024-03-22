@@ -15,4 +15,12 @@
     <comment>- Make sure the old translation package gets uninstalled (boo#1221515)</comment>
     <requestid>1158775</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b36e2a94bc84fbca38dcd34cd272382c</srcmd5>
+    <version>24.02.1</version>
+    <time>1711116970</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.02.1 (forwarded request 1159650 from krop)</comment>
+    <requestid>1160126</requestid>
+  </revision>
 </revisionlist>
