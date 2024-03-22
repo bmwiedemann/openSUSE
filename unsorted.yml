@@ -146,6 +146,7 @@ unsorted:
   - MozillaFirefox-devel 
   - MozillaFirefox-translations-other 
   - MozillaThunderbird 
+  - MozillaThunderbird-openpgp-librnp 
   - MozillaThunderbird-translations-common 
   - MozillaThunderbird-translations-other 
   - MultiMarkdown-6 
@@ -8121,6 +8122,7 @@ unsorted:
   - hawknl-devel 
   - hawknl-libs 
   - haxe 
+  - hayagriva 
   - hbci4java 
   - hbci4java-javadoc 
   - hcode 
@@ -8874,6 +8876,7 @@ unsorted:
   - jansi-javadoc 
   - janus-gateway 
   - janus-gateway-devel 
+  - jaq 
   - jarjar 
   - jarjar-javadoc 
   - jasper 
@@ -16796,6 +16799,7 @@ unsorted:
   - libzbc-tools 
   - libzbc5 
   - libzck-devel 
+  - libze_intel_gpu1 
   - libzeitgeist-1_0-1 
   - libzeitgeist-devel 
   - libzen-devel 
@@ -19269,6 +19273,7 @@ unsorted:
   - nulloy-vlc 
   - numad 
   - numatop 
+  - numbat 
   - nunit 
   - nunit-devel 
   - nunit3 
@@ -24072,7 +24077,6 @@ unsorted:
   - python310-azure-mgmt-workloads 
   - python310-azure-mixedreality-authentication 
   - python310-azure-mixedreality-nspkg 
-  - python310-azure-monitor 
   - python310-azure-monitor-ingestion 
   - python310-azure-monitor-nspkg 
   - python310-azure-monitor-opentelemetry-exporter 
@@ -25387,7 +25391,6 @@ unsorted:
   - python310-mysqlclient 
   - python310-myst-parser 
   - python310-napalm 
-  - python310-napalm-arubaos-switch 
   - python310-napalm-asa 
   - python310-napalm-digineo-procurve 
   - python310-napalm-procurve 
@@ -26449,7 +26452,6 @@ unsorted:
   - python310-softlayer 
   - python310-softlayer-zeep 
   - python310-solv 
-  - python310-sorl-thumbnail 
   - python310-sortedcollections 
   - python310-sortedcontainers 
   - python310-sortinghat 
@@ -26573,7 +26575,6 @@ unsorted:
   - python310-tableprint 
   - python310-tables 
   - python310-tablib 
-  - python310-tabpy 
   - python310-tabulate 
   - python310-tap.py 
   - python310-targetcli-fb 
@@ -27626,7 +27627,6 @@ unsorted:
   - python311-azure-mgmt-workloads 
   - python311-azure-mixedreality-authentication 
   - python311-azure-mixedreality-nspkg 
-  - python311-azure-monitor 
   - python311-azure-monitor-ingestion 
   - python311-azure-monitor-nspkg 
   - python311-azure-monitor-opentelemetry-exporter 
@@ -28885,7 +28885,6 @@ unsorted:
   - python311-mysql-to-sqlite3 
   - python311-myst-parser 
   - python311-napalm 
-  - python311-napalm-arubaos-switch 
   - python311-napalm-asa 
   - python311-napalm-digineo-procurve 
   - python311-napalm-procurve 
@@ -29897,7 +29896,6 @@ unsorted:
   - python311-softlayer 
   - python311-softlayer-zeep 
   - python311-solv 
-  - python311-sorl-thumbnail 
   - python311-sortedcollections 
   - python311-sortedcontainers 
   - python311-sortinghat 
@@ -30022,7 +30020,6 @@ unsorted:
   - python311-tableprint 
   - python311-tables 
   - python311-tablib 
-  - python311-tabpy 
   - python311-tabulate 
   - python311-tap.py 
   - python311-targetcli-fb 
@@ -30610,6 +30607,7 @@ unsorted:
   - python312-XStatic-term.js 
   - python312-XStatic-tv4 
   - python312-XlsxWriter 
+  - python312-Yapsy 
   - python312-ZConfig 
   - python312-ZConfig-doc 
   - python312-ZODB 
@@ -31089,7 +31087,6 @@ unsorted:
   - python312-azure-mgmt-workloads 
   - python312-azure-mixedreality-authentication 
   - python312-azure-mixedreality-nspkg 
-  - python312-azure-monitor 
   - python312-azure-monitor-ingestion 
   - python312-azure-monitor-nspkg 
   - python312-azure-monitor-opentelemetry-exporter 
@@ -32326,6 +32323,7 @@ unsorted:
   - python312-mizani 
   - python312-mkdocs 
   - python312-mkdocs-bootstrap 
+  - python312-mkdocs-material 
   - python312-mkdocs-material-extensions 
   - python312-moban 
   - python312-moban-ansible 
@@ -32428,6 +32426,7 @@ unsorted:
   - python312-nine 
   - python312-nkdfu 
   - python312-nlopt 
+  - python312-nltk 
   - python312-nntplib 
   - python312-nocasedict 
   - python312-nocaselist 
@@ -32522,6 +32521,7 @@ unsorted:
   - python312-packaging 
   - python312-padaos 
   - python312-padatious 
+  - python312-paginate 
   - python312-paho-mqtt 
   - python312-pako 
   - python312-palettable 
@@ -33002,6 +33002,7 @@ unsorted:
   - python312-pytest-httpx 
   - python312-pytest-instafail 
   - python312-pytest-isort 
+  - python312-pytest-json-report 
   - python312-pytest-jupyter 
   - python312-pytest-jupyter-client 
   - python312-pytest-jupyter-server 
@@ -33548,6 +33549,7 @@ unsorted:
   - python312-system-hotkey310 
   - python312-system_hotkey 
   - python312-systemd 
+  - python312-tableauserverclient 
   - python312-tableprint 
   - python312-tables 
   - python312-tablib 
@@ -33734,6 +33736,7 @@ unsorted:
   - python312-verboselogs 
   - python312-versioneer 
   - python312-versioneer-toml 
+  - python312-versioningit 
   - python312-versiontag 
   - python312-versiontools 
   - python312-veusz 
@@ -34636,7 +34639,6 @@ unsorted:
   - python39-azure-mgmt-workloads 
   - python39-azure-mixedreality-authentication 
   - python39-azure-mixedreality-nspkg 
-  - python39-azure-monitor 
   - python39-azure-monitor-ingestion 
   - python39-azure-monitor-nspkg 
   - python39-azure-monitor-opentelemetry-exporter 
@@ -35903,7 +35905,6 @@ unsorted:
   - python39-mysqlclient 
   - python39-myst-parser 
   - python39-napalm 
-  - python39-napalm-arubaos-switch 
   - python39-napalm-asa 
   - python39-napalm-digineo-procurve 
   - python39-napalm-procurve 
@@ -36944,7 +36945,6 @@ unsorted:
   - python39-softlayer 
   - python39-softlayer-zeep 
   - python39-solv 
-  - python39-sorl-thumbnail 
   - python39-sortedcollections 
   - python39-sortedcontainers 
   - python39-sortinghat 
@@ -37067,7 +37067,6 @@ unsorted:
   - python39-tableprint 
   - python39-tables 
   - python39-tablib 
-  - python39-tabpy 
   - python39-tabulate 
   - python39-tap.py 
   - python39-targetcli-fb 
@@ -40334,6 +40333,8 @@ unsorted:
   - texlive-addliga-doc 
   - texlive-addlines 
   - texlive-addlines-doc 
+  - texlive-addtoluatexpath 
+  - texlive-addtoluatexpath-doc 
   - texlive-adfathesis 
   - texlive-adfathesis-doc 
   - texlive-adforn 
@@ -40358,6 +40359,8 @@ unsorted:
   - texlive-adtrees-doc 
   - texlive-advdate 
   - texlive-advdate-doc 
+  - texlive-advice 
+  - texlive-advice-doc 
   - texlive-ae 
   - texlive-ae-doc 
   - texlive-aeguill 
@@ -40365,6 +40368,8 @@ unsorted:
   - texlive-aesupp 
   - texlive-aesupp-doc 
   - texlive-aesupp-fonts 
+  - texlive-affilauthor 
+  - texlive-affilauthor-doc 
   - texlive-afm2pl 
   - texlive-afm2pl-bin 
   - texlive-afm2pl-doc 
@@ -40447,6 +40452,8 @@ unsorted:
   - texlive-amiri-doc 
   - texlive-amiri-fonts 
   - texlive-amiweb2c-guide 
+  - texlive-amnestyreport 
+  - texlive-amnestyreport-doc 
   - texlive-amsaddr 
   - texlive-amsaddr-doc 
   - texlive-amscdx 
@@ -40492,6 +40499,7 @@ unsorted:
   - texlive-antiqua 
   - texlive-antiqua-doc 
   - texlive-antiqua-fonts 
+  - texlive-antique-spanish-units 
   - texlive-antomega 
   - texlive-antomega-doc 
   - texlive-antt 
@@ -40568,6 +40576,8 @@ unsorted:
   - texlive-arev 
   - texlive-arev-doc 
   - texlive-arev-fonts 
+  - texlive-argumentation 
+  - texlive-argumentation-doc 
   - texlive-arimo 
   - texlive-arimo-doc 
   - texlive-arimo-fonts 
@@ -40589,6 +40599,9 @@ unsorted:
   - texlive-arraysort-doc 
   - texlive-arsclassica 
   - texlive-arsclassica-doc 
+  - texlive-arsenal 
+  - texlive-arsenal-doc 
+  - texlive-arsenal-fonts 
   - texlive-articleingud 
   - texlive-articleingud-doc 
   - texlive-arvo 
@@ -40706,6 +40719,8 @@ unsorted:
   - texlive-autopuncitems-doc 
   - texlive-autosp 
   - texlive-autosp-bin 
+  - texlive-autotype 
+  - texlive-autotype-doc 
   - texlive-auxhook 
   - texlive-auxhook-doc 
   - texlive-avantgar 
@@ -40957,6 +40972,8 @@ unsorted:
   - texlive-beamertheme-phnompenh-doc 
   - texlive-beamertheme-pure-minimalistic 
   - texlive-beamertheme-pure-minimalistic-doc 
+  - texlive-beamertheme-rainbow 
+  - texlive-beamertheme-rainbow-doc 
   - texlive-beamertheme-saintpetersburg 
   - texlive-beamertheme-saintpetersburg-doc 
   - texlive-beamertheme-simpledarkblue 
@@ -40971,6 +40988,8 @@ unsorted:
   - texlive-beamertheme-upenn-bc-doc 
   - texlive-beamerthemeamurmaple 
   - texlive-beamerthemeamurmaple-doc 
+  - texlive-beamerthemeconcrete 
+  - texlive-beamerthemeconcrete-doc 
   - texlive-beamerthemejltree 
   - texlive-beamerthemelalic 
   - texlive-beamerthemelalic-doc 
@@ -40982,6 +41001,10 @@ unsorted:
   - texlive-bearwear-doc 
   - texlive-beaulivre 
   - texlive-beaulivre-doc 
+  - texlive-beautybook 
+  - texlive-beautybook-doc 
+  - texlive-beautynote 
+  - texlive-beautynote-doc 
   - texlive-beebe 
   - texlive-begingreek 
   - texlive-begingreek-doc 
@@ -41198,8 +41221,11 @@ unsorted:
   - texlive-bibtex8-bin 
   - texlive-bibtex8-doc 
   - texlive-bibtexperllibs 
+  - texlive-bibtexperllibs-bin 
+  - texlive-bibtexperllibs-doc 
   - texlive-bibtexu 
   - texlive-bibtexu-bin 
+  - texlive-bibtools 
   - texlive-bibtopic 
   - texlive-bibtopic-doc 
   - texlive-bibtopicprefix 
@@ -41441,11 +41467,15 @@ unsorted:
   - texlive-cachepic 
   - texlive-cachepic-bin 
   - texlive-cachepic-doc 
+  - texlive-cahierprof 
+  - texlive-cahierprof-doc 
   - texlive-caladea 
   - texlive-caladea-doc 
   - texlive-caladea-fonts 
   - texlive-calcage 
   - texlive-calcage-doc 
+  - texlive-calcfrac 
+  - texlive-calcfrac-doc 
   - texlive-calctab 
   - texlive-calctab-doc 
   - texlive-calculation 
@@ -41613,6 +41643,8 @@ unsorted:
   - texlive-chemfig-doc 
   - texlive-chemformula 
   - texlive-chemformula-doc 
+  - texlive-chemformula-ru 
+  - texlive-chemformula-ru-doc 
   - texlive-chemgreek 
   - texlive-chemgreek-doc 
   - texlive-chemmacros 
@@ -41649,6 +41681,8 @@ unsorted:
   - texlive-chicago-annote 
   - texlive-chicago-annote-doc 
   - texlive-chicagoa 
+  - texlive-chicagolinks 
+  - texlive-chicagolinks-doc 
   - texlive-chickenize 
   - texlive-chickenize-doc 
   - texlive-chifoot 
@@ -41688,6 +41722,8 @@ unsorted:
   - texlive-chscite-doc 
   - texlive-churchslavonic 
   - texlive-churchslavonic-doc 
+  - texlive-cidarticle 
+  - texlive-cidarticle-doc 
   - texlive-cinzel 
   - texlive-cinzel-doc 
   - texlive-cinzel-fonts 
@@ -41701,6 +41737,8 @@ unsorted:
   - texlive-circuit-macros-doc 
   - texlive-circuitikz 
   - texlive-circuitikz-doc 
+  - texlive-circularglyphs 
+  - texlive-circularglyphs-doc 
   - texlive-citation-style-language 
   - texlive-citation-style-language-bin 
   - texlive-citation-style-language-doc 
@@ -41728,6 +41766,8 @@ unsorted:
   - texlive-cjkutils 
   - texlive-cjkutils-bin 
   - texlive-cjkutils-doc 
+  - texlive-cjs-rcs-article 
+  - texlive-cjs-rcs-article-doc 
   - texlive-clara 
   - texlive-clara-doc 
   - texlive-clara-fonts 
@@ -41746,6 +41786,10 @@ unsorted:
   - texlive-clefval-doc 
   - texlive-cleveref 
   - texlive-cleveref-doc 
+  - texlive-cleveref-forward 
+  - texlive-cleveref-forward-doc 
+  - texlive-cleveref-usedon 
+  - texlive-cleveref-usedon-doc 
   - texlive-clicks 
   - texlive-clicks-doc 
   - texlive-clipboard 
@@ -41836,6 +41880,8 @@ unsorted:
   - texlive-codeanatomy-doc 
   - texlive-codebox 
   - texlive-codebox-doc 
+  - texlive-codedescribe 
+  - texlive-codedescribe-doc 
   - texlive-codedoc 
   - texlive-codedoc-doc 
   - texlive-codehigh 
@@ -41851,6 +41897,8 @@ unsorted:
   - texlive-coelacanth-fonts 
   - texlive-coffeestains 
   - texlive-coffeestains-doc 
+  - texlive-collargs 
+  - texlive-collargs-doc 
   - texlive-collcell 
   - texlive-collcell-doc 
   - texlive-collectbox 
@@ -41902,6 +41950,8 @@ unsorted:
   - texlive-color-edits-doc 
   - texlive-colordoc 
   - texlive-colordoc-doc 
+  - texlive-coloredbelts 
+  - texlive-coloredbelts-doc 
   - texlive-colorframed 
   - texlive-colorframed-doc 
   - texlive-colorinfo 
@@ -41985,67 +42035,44 @@ unsorted:
   - texlive-conteq 
   - texlive-conteq-doc 
   - texlive-context 
-  - texlive-context-account 
-  - texlive-context-account-doc 
-  - texlive-context-algorithmic 
-  - texlive-context-algorithmic-doc 
-  - texlive-context-animation 
-  - texlive-context-animation-doc 
-  - texlive-context-annotation 
-  - texlive-context-annotation-doc 
   - texlive-context-bin 
-  - texlive-context-bnf 
-  - texlive-context-bnf-doc 
-  - texlive-context-chromato 
-  - texlive-context-chromato-doc 
-  - texlive-context-cmscbf 
-  - texlive-context-cmscbf-doc 
-  - texlive-context-cmttbf 
-  - texlive-context-cmttbf-doc 
-  - texlive-context-construction-plan 
-  - texlive-context-construction-plan-doc 
+  - texlive-context-calendar-examples 
+  - texlive-context-calendar-examples-doc 
+  - texlive-context-collating-marks 
+  - texlive-context-collating-marks-doc 
+  - texlive-context-companion-fonts 
+  - texlive-context-companion-fonts-fonts 
   - texlive-context-cyrillicnumbers 
   - texlive-context-cyrillicnumbers-doc 
-  - texlive-context-degrade 
-  - texlive-context-degrade-doc 
   - texlive-context-doc 
-  - texlive-context-fancybreak 
-  - texlive-context-fancybreak-doc 
   - texlive-context-filter 
   - texlive-context-filter-doc 
   - texlive-context-fonts 
-  - texlive-context-french 
-  - texlive-context-french-doc 
-  - texlive-context-fullpage 
-  - texlive-context-fullpage-doc 
-  - texlive-context-gantt 
-  - texlive-context-gantt-doc 
   - texlive-context-gnuplot 
   - texlive-context-gnuplot-doc 
   - texlive-context-handlecsv 
   - texlive-context-handlecsv-doc 
-  - texlive-context-layout 
-  - texlive-context-layout-doc 
+  - texlive-context-legacy 
+  - texlive-context-legacy-bin 
+  - texlive-context-legacy-doc 
   - texlive-context-letter 
   - texlive-context-letter-doc 
-  - texlive-context-lettrine 
-  - texlive-context-lettrine-doc 
   - texlive-context-mathsets 
   - texlive-context-mathsets-doc 
-  - texlive-context-rst 
-  - texlive-context-rst-doc 
-  - texlive-context-ruby 
-  - texlive-context-ruby-doc 
-  - texlive-context-simplefonts 
-  - texlive-context-simplefonts-doc 
+  - texlive-context-notes-zh-cn 
+  - texlive-context-pocketdiary 
+  - texlive-context-pocketdiary-doc 
   - texlive-context-simpleslides 
   - texlive-context-simpleslides-doc 
-  - texlive-context-title 
-  - texlive-context-title-doc 
+  - texlive-context-squares 
+  - texlive-context-squares-doc 
+  - texlive-context-sudoku 
+  - texlive-context-sudoku-doc 
+  - texlive-context-texlive 
+  - texlive-context-texlive-bin 
+  - texlive-context-texlive-doc 
   - texlive-context-transliterator 
   - texlive-context-transliterator-doc 
-  - texlive-context-typearea 
-  - texlive-context-typearea-doc 
   - texlive-context-typescripts 
   - texlive-context-typescripts-doc 
   - texlive-context-vim 
@@ -42058,6 +42085,8 @@ unsorted:
   - texlive-contour-doc 
   - texlive-contracard 
   - texlive-contracard-doc 
+  - texlive-contract 
+  - texlive-contract-doc 
   - texlive-conv-xkv 
   - texlive-conv-xkv-doc 
   - texlive-convbkmk 
@@ -42099,6 +42128,10 @@ unsorted:
   - texlive-correctmathalign-doc 
   - texlive-coseoul 
   - texlive-coseoul-doc 
+  - texlive-couleurs-fr 
+  - texlive-couleurs-fr-doc 
+  - texlive-counterz 
+  - texlive-counterz-doc 
   - texlive-countriesofeurope 
   - texlive-countriesofeurope-doc 
   - texlive-countriesofeurope-fonts 
@@ -42131,6 +42164,8 @@ unsorted:
   - texlive-crbox-doc 
   - texlive-create-theorem 
   - texlive-create-theorem-doc 
+  - texlive-creationboites 
+  - texlive-creationboites-doc 
   - texlive-crefthe 
   - texlive-crefthe-doc 
   - texlive-crimson 
@@ -42168,8 +42203,6 @@ unsorted:
   - texlive-csbulletin 
   - texlive-csbulletin-doc 
   - texlive-cslatex 
-  - texlive-cslatex-bin 
-  - texlive-cslatex-doc 
   - texlive-csplain 
   - texlive-csplain-bin 
   - texlive-csquotes 
@@ -42210,6 +42243,9 @@ unsorted:
   - texlive-ctie-bin 
   - texlive-cuisine 
   - texlive-cuisine-doc 
+  - texlive-culmus 
+  - texlive-culmus-doc 
+  - texlive-culmus-fonts 
   - texlive-cuprum 
   - texlive-cuprum-doc 
   - texlive-cuprum-fonts 
@@ -42217,6 +42253,8 @@ unsorted:
   - texlive-currency-doc 
   - texlive-currfile 
   - texlive-currfile-doc 
+  - texlive-curriculum-vitae 
+  - texlive-curriculum-vitae-doc 
   - texlive-currvita 
   - texlive-currvita-doc 
   - texlive-cursolatex 
@@ -42230,6 +42268,8 @@ unsorted:
   - texlive-custom-bib-doc 
   - texlive-customdice 
   - texlive-customdice-doc 
+  - texlive-customenvs 
+  - texlive-customenvs-doc 
   - texlive-cutwin 
   - texlive-cutwin-doc 
   - texlive-cv 
@@ -42389,10 +42429,14 @@ unsorted:
   - texlive-debate-doc 
   - texlive-decimal 
   - texlive-decimal-doc 
+  - texlive-decimalcomma 
+  - texlive-decimalcomma-doc 
   - texlive-decision-table 
   - texlive-decision-table-doc 
   - texlive-decorule 
   - texlive-decorule-doc 
+  - texlive-defoldfonts 
+  - texlive-defoldfonts-doc 
   - texlive-dehyph 
   - texlive-dehyph-exptl 
   - texlive-dehyph-exptl-doc 
@@ -42441,6 +42485,8 @@ unsorted:
   - texlive-dictsym 
   - texlive-dictsym-doc 
   - texlive-dictsym-fonts 
+  - texlive-didec 
+  - texlive-didec-doc 
   - texlive-diffcoeff 
   - texlive-diffcoeff-doc 
   - texlive-digestif 
@@ -42550,6 +42596,7 @@ unsorted:
   - texlive-dramatist-doc 
   - texlive-dratex 
   - texlive-dratex-doc 
+  - texlive-drawing-with-metapost 
   - texlive-drawmatrix 
   - texlive-drawmatrix-doc 
   - texlive-drawstack 
@@ -42652,6 +42699,9 @@ unsorted:
   - texlive-easy-todo-doc 
   - texlive-easybook 
   - texlive-easybook-doc 
+  - texlive-easydtx 
+  - texlive-easydtx-bin 
+  - texlive-easydtx-doc 
   - texlive-easyfig 
   - texlive-easyfig-doc 
   - texlive-easyfloats 
@@ -42721,6 +42771,8 @@ unsorted:
   - texlive-efbox-doc 
   - texlive-egameps 
   - texlive-egameps-doc 
+  - texlive-egpeirce 
+  - texlive-egpeirce-doc 
   - texlive-egplot 
   - texlive-egplot-doc 
   - texlive-ehhline 
@@ -42766,6 +42818,8 @@ unsorted:
   - texlive-els-cas-templates-doc 
   - texlive-elsarticle 
   - texlive-elsarticle-doc 
+  - texlive-elteiktdk 
+  - texlive-elteiktdk-doc 
   - texlive-elteikthesis 
   - texlive-elteikthesis-doc 
   - texlive-eltex 
@@ -42786,10 +42840,15 @@ unsorted:
   - texlive-emf-doc 
   - texlive-emisa 
   - texlive-emisa-doc 
+  - texlive-emo 
+  - texlive-emo-doc 
+  - texlive-emo-fonts 
   - texlive-emoji 
   - texlive-emoji-doc 
   - texlive-emojicite 
   - texlive-emojicite-doc 
+  - texlive-emotion 
+  - texlive-emotion-doc 
   - texlive-emp 
   - texlive-emp-doc 
   - texlive-emptypage 
@@ -42835,6 +42894,7 @@ unsorted:
   - texlive-envlab 
   - texlive-envlab-doc 
   - texlive-eolang 
+  - texlive-eolang-bin 
   - texlive-eolang-doc 
   - texlive-epigrafica 
   - texlive-epigrafica-doc 
@@ -42957,6 +43017,8 @@ unsorted:
   - texlive-etoolbox 
   - texlive-etoolbox-de 
   - texlive-etoolbox-doc 
+  - texlive-etoolbox-generic 
+  - texlive-etoolbox-generic-doc 
   - texlive-etsvthor 
   - texlive-etsvthor-doc 
   - texlive-euclideangeometry 
@@ -43013,6 +43075,8 @@ unsorted:
   - texlive-example 
   - texlive-examplep 
   - texlive-examplep-doc 
+  - texlive-examz 
+  - texlive-examz-doc 
   - texlive-exceltex 
   - texlive-exceltex-bin 
   - texlive-exceltex-doc 
@@ -43038,6 +43102,8 @@ unsorted:
   - texlive-expex-acro 
   - texlive-expex-acro-doc 
   - texlive-expex-doc 
+  - texlive-expex-glossonly 
+  - texlive-expex-glossonly-doc 
   - texlive-expkv-bundle 
   - texlive-expkv-bundle-doc 
   - texlive-export 
@@ -43068,6 +43134,10 @@ unsorted:
   - texlive-facture-belge-simple-sans-tva 
   - texlive-facture-belge-simple-sans-tva-doc 
   - texlive-facture-doc 
+  - texlive-fadingimage 
+  - texlive-fadingimage-doc 
+  - texlive-fail-fast 
+  - texlive-fail-fast-doc 
   - texlive-faktor 
   - texlive-faktor-doc 
   - texlive-familytree 
@@ -43129,6 +43199,8 @@ unsorted:
   - texlive-featpost-doc 
   - texlive-fei 
   - texlive-fei-doc 
+  - texlive-fenetrecas 
+  - texlive-fenetrecas-doc 
   - texlive-fenixpar 
   - texlive-fenixpar-doc 
   - texlive-fetamont 
@@ -43211,6 +43283,8 @@ unsorted:
   - texlive-fistrum-doc 
   - texlive-fitbox 
   - texlive-fitbox-doc 
+  - texlive-fitch 
+  - texlive-fitch-doc 
   - texlive-fithesis 
   - texlive-fithesis-doc 
   - texlive-fix2col 
@@ -43256,8 +43330,12 @@ unsorted:
   - texlive-flippdf-doc 
   - texlive-float 
   - texlive-float-doc 
+  - texlive-floatbytocbasic 
+  - texlive-floatbytocbasic-doc 
   - texlive-floatrow 
   - texlive-floatrow-doc 
+  - texlive-floatrowbytocbasic 
+  - texlive-floatrowbytocbasic-doc 
   - texlive-flowchart 
   - texlive-flowchart-doc 
   - texlive-flowfram 
@@ -43330,6 +43408,8 @@ unsorted:
   - texlive-fonts-tlwg 
   - texlive-fonts-tlwg-doc 
   - texlive-fonts-tlwg-fonts 
+  - texlive-fontscale 
+  - texlive-fontscale-doc 
   - texlive-fontsetup 
   - texlive-fontsetup-doc 
   - texlive-fontsize 
@@ -43409,6 +43489,8 @@ unsorted:
   - texlive-frederika2016 
   - texlive-frederika2016-doc 
   - texlive-frederika2016-fonts 
+  - texlive-freealign 
+  - texlive-freealign-doc 
   - texlive-frege 
   - texlive-frege-doc 
   - texlive-frenchmath 
@@ -43490,12 +43572,17 @@ unsorted:
   - texlive-gcite-doc 
   - texlive-gckanbun 
   - texlive-gckanbun-doc 
+  - texlive-gelasio 
+  - texlive-gelasio-doc 
+  - texlive-gelasio-fonts 
   - texlive-gender 
   - texlive-gender-doc 
   - texlive-gene-logic 
   - texlive-gene-logic-doc 
   - texlive-genealogy 
   - texlive-genealogy-doc 
+  - texlive-genealogy-profiles 
+  - texlive-genealogy-profiles-doc 
   - texlive-genealogytree 
   - texlive-genealogytree-doc 
   - texlive-genmpage 
@@ -43587,6 +43674,8 @@ unsorted:
   - texlive-gitfile-info-doc 
   - texlive-gitinfo 
   - texlive-gitinfo-doc 
+  - texlive-gitinfo-lua 
+  - texlive-gitinfo-lua-doc 
   - texlive-gitinfo2 
   - texlive-gitinfo2-doc 
   - texlive-gitlog 
@@ -43628,6 +43717,8 @@ unsorted:
   - texlive-glossaries-italian-doc 
   - texlive-glossaries-magyar 
   - texlive-glossaries-magyar-doc 
+  - texlive-glossaries-norsk 
+  - texlive-glossaries-norsk-doc 
   - texlive-glossaries-nynorsk 
   - texlive-glossaries-nynorsk-doc 
   - texlive-glossaries-polish 
@@ -43845,6 +43936,8 @@ unsorted:
   - texlive-hc-doc 
   - texlive-he-she 
   - texlive-he-she-doc 
+  - texlive-hebrew-fonts 
+  - texlive-hebrew-fonts-doc 
   - texlive-hecthese 
   - texlive-hecthese-doc 
   - texlive-helmholtz-ellis-ji-notation 
@@ -43862,6 +43955,8 @@ unsorted:
   - texlive-hep-float-doc 
   - texlive-hep-font 
   - texlive-hep-font-doc 
+  - texlive-hep-graphic 
+  - texlive-hep-graphic-doc 
   - texlive-hep-math 
   - texlive-hep-math-doc 
   - texlive-hep-math-font 
@@ -43886,6 +43981,8 @@ unsorted:
   - texlive-here-doc 
   - texlive-hereapplies 
   - texlive-hereapplies-doc 
+  - texlive-heria 
+  - texlive-heria-doc 
   - texlive-heros-otf 
   - texlive-heros-otf-doc 
   - texlive-hershey-mp 
@@ -43914,6 +44011,8 @@ unsorted:
   - texlive-hideanswer-doc 
   - texlive-highlightlatex 
   - texlive-highlightlatex-doc 
+  - texlive-highlightx 
+  - texlive-highlightx-doc 
   - texlive-hindawi-latex-template 
   - texlive-hindmadurai 
   - texlive-hindmadurai-doc 
@@ -43950,6 +44049,8 @@ unsorted:
   - texlive-hobsub-doc 
   - texlive-hologo 
   - texlive-hologo-doc 
+  - texlive-homework 
+  - texlive-homework-doc 
   - texlive-hook-pre-commit-pkg 
   - texlive-hopatch 
   - texlive-hopatch-doc 
@@ -43969,6 +44070,8 @@ unsorted:
   - texlive-huawei-doc 
   - texlive-huaz 
   - texlive-huaz-doc 
+  - texlive-huffman 
+  - texlive-huffman-doc 
   - texlive-hulipsum 
   - texlive-hulipsum-doc 
   - texlive-hustthesis 
@@ -44170,6 +44273,9 @@ unsorted:
   - texlive-inconsolata 
   - texlive-inconsolata-doc 
   - texlive-inconsolata-fonts 
+  - texlive-inconsolata-nerd-font 
+  - texlive-inconsolata-nerd-font-doc 
+  - texlive-inconsolata-nerd-font-fonts 
   - texlive-index 
   - texlive-index-doc 
   - texlive-indextools 
@@ -44241,6 +44347,10 @@ unsorted:
   - texlive-ipaex-type1 
   - texlive-ipaex-type1-doc 
   - texlive-ipaex-type1-fonts 
+  - texlive-ipsum 
+  - texlive-ipsum-doc 
+  - texlive-iran-bibtex 
+  - texlive-iran-bibtex-doc 
   - texlive-is-bst 
   - texlive-is-bst-doc 
   - texlive-iscram 
@@ -44261,19 +44371,23 @@ unsorted:
   - texlive-isopt-doc 
   - texlive-isorot 
   - texlive-isorot-doc 
+  - texlive-isosafety 
+  - texlive-isosafety-doc 
   - texlive-isotope 
   - texlive-isotope-doc 
+  - texlive-isphysicalmath 
+  - texlive-isphysicalmath-doc 
   - texlive-issuulinks 
   - texlive-issuulinks-doc 
   - texlive-istgame 
   - texlive-istgame-doc 
   - texlive-itnumpar 
   - texlive-itnumpar-doc 
-  - texlive-iwhdp 
-  - texlive-iwhdp-doc 
   - texlive-iwona 
   - texlive-iwona-doc 
   - texlive-iwona-fonts 
+  - texlive-iwonamath 
+  - texlive-iwonamath-doc 
   - texlive-jablantile 
   - texlive-jablantile-doc 
   - texlive-jacow 
@@ -44320,11 +44434,15 @@ unsorted:
   - texlive-jnuexam-doc 
   - texlive-jobname-suffix 
   - texlive-jobname-suffix-doc 
+  - texlive-joinbox 
+  - texlive-joinbox-doc 
   - texlive-josefin 
   - texlive-josefin-doc 
   - texlive-josefin-fonts 
   - texlive-jourcl 
   - texlive-jourcl-doc 
+  - texlive-jourrr 
+  - texlive-jourrr-doc 
   - texlive-jpneduenumerate 
   - texlive-jpneduenumerate-doc 
   - texlive-jpnedumathsymbols 
@@ -44342,6 +44460,9 @@ unsorted:
   - texlive-junicode 
   - texlive-junicode-doc 
   - texlive-junicode-fonts 
+  - texlive-junicodevf 
+  - texlive-junicodevf-doc 
+  - texlive-junicodevf-fonts 
   - texlive-jupynotex 
   - texlive-jupynotex-doc 
   - texlive-jura 
@@ -44407,6 +44528,9 @@ unsorted:
   - texlive-keyvaltable-doc 
   - texlive-kfupm-math-exam 
   - texlive-kfupm-math-exam-doc 
+  - texlive-khatalmaqala 
+  - texlive-khatalmaqala-doc 
+  - texlive-khatalmaqala-fonts 
   - texlive-kinematikz 
   - texlive-kinematikz-doc 
   - texlive-kix 
@@ -44438,6 +44562,8 @@ unsorted:
   - texlive-komacv-doc 
   - texlive-komacv-rg 
   - texlive-komacv-rg-doc 
+  - texlive-korigamik 
+  - texlive-korigamik-doc 
   - texlive-kotex-oblivoir 
   - texlive-kotex-oblivoir-doc 
   - texlive-kotex-plain 
@@ -44523,6 +44649,8 @@ unsorted:
   - texlive-langsci-doc 
   - texlive-lapdf 
   - texlive-lapdf-doc 
+  - texlive-lastbib 
+  - texlive-lastbib-doc 
   - texlive-lastpackage 
   - texlive-lastpackage-doc 
   - texlive-lastpage 
@@ -44537,6 +44665,8 @@ unsorted:
   - texlive-latex-bin-dev 
   - texlive-latex-bin-dev-bin 
   - texlive-latex-brochure 
+  - texlive-latex-context-ppchtex 
+  - texlive-latex-context-ppchtex-doc 
   - texlive-latex-course 
   - texlive-latex-doc 
   - texlive-latex-doc-ptr 
@@ -44579,6 +44709,8 @@ unsorted:
   - texlive-latex2nemeth 
   - texlive-latex2nemeth-bin 
   - texlive-latex2nemeth-doc 
+  - texlive-latex2pydata 
+  - texlive-latex2pydata-doc 
   - texlive-latex4musicians 
   - texlive-latex4wp 
   - texlive-latex4wp-it 
@@ -44793,6 +44925,12 @@ unsorted:
   - texlive-listofitems-doc 
   - texlive-listofsymbols 
   - texlive-listofsymbols-doc 
+  - texlive-litebook 
+  - texlive-litebook-doc 
+  - texlive-litesolution 
+  - texlive-litesolution-doc 
+  - texlive-litetable 
+  - texlive-litetable-doc 
   - texlive-lithuanian 
   - texlive-lithuanian-doc 
   - texlive-liturg 
@@ -44831,6 +44969,8 @@ unsorted:
   - texlive-logix 
   - texlive-logix-doc 
   - texlive-logix-fonts 
+  - texlive-logoetalab 
+  - texlive-logoetalab-doc 
   - texlive-logpap 
   - texlive-logpap-doc 
   - texlive-logreq 
@@ -44929,6 +45069,10 @@ unsorted:
   - texlive-lua-check-hyphen-doc 
   - texlive-lua-physical 
   - texlive-lua-physical-doc 
+  - texlive-lua-placeholders 
+  - texlive-lua-placeholders-doc 
+  - texlive-lua-tinyyaml 
+  - texlive-lua-tinyyaml-doc 
   - texlive-lua-typo 
   - texlive-lua-typo-doc 
   - texlive-lua-uca 
@@ -44964,6 +45108,8 @@ unsorted:
   - texlive-luagcd-doc 
   - texlive-luahbtex 
   - texlive-luahbtex-bin 
+  - texlive-luahttp 
+  - texlive-luahttp-doc 
   - texlive-luahyphenrules 
   - texlive-luahyphenrules-doc 
   - texlive-luaimageembed 
@@ -44972,12 +45118,10 @@ unsorted:
   - texlive-luaindex-doc 
   - texlive-luainputenc 
   - texlive-luainputenc-doc 
-  - texlive-luaintro 
   - texlive-luajittex 
   - texlive-luajittex-bin 
   - texlive-luakeys 
   - texlive-luakeys-doc 
-  - texlive-lualatex-doc 
   - texlive-lualatex-doc-de 
   - texlive-lualatex-math 
   - texlive-lualatex-math-doc 
@@ -44997,6 +45141,8 @@ unsorted:
   - texlive-luamodulartables-doc 
   - texlive-luamplib 
   - texlive-luamplib-doc 
+  - texlive-luanumint 
+  - texlive-luanumint-doc 
   - texlive-luaoptions 
   - texlive-luaoptions-doc 
   - texlive-luaotfload 
@@ -45004,6 +45150,8 @@ unsorted:
   - texlive-luaotfload-doc 
   - texlive-luapackageloader 
   - texlive-luapackageloader-doc 
+  - texlive-luaplot 
+  - texlive-luaplot-doc 
   - texlive-luaprogtable 
   - texlive-luaprogtable-doc 
   - texlive-luapstricks 
@@ -45230,6 +45378,8 @@ unsorted:
   - texlive-media4svg-doc 
   - texlive-media9 
   - texlive-media9-doc 
+  - texlive-medmath 
+  - texlive-medmath-doc 
   - texlive-medstarbeamer 
   - texlive-medstarbeamer-doc 
   - texlive-meetingmins 
@@ -45242,6 +45392,9 @@ unsorted:
   - texlive-memoir 
   - texlive-memoir-doc 
   - texlive-memoirchapterstyles 
+  - texlive-memoize 
+  - texlive-memoize-bin 
+  - texlive-memoize-doc 
   - texlive-memory 
   - texlive-memory-doc 
   - texlive-memorygraphs 
@@ -45301,6 +45454,9 @@ unsorted:
   - texlive-metre-doc 
   - texlive-metrix 
   - texlive-metrix-doc 
+  - texlive-metsymb 
+  - texlive-metsymb-doc 
+  - texlive-metsymb-fonts 
   - texlive-mex 
   - texlive-mex-bin 
   - texlive-mex-doc 
@@ -45393,6 +45549,8 @@ unsorted:
   - texlive-missaali 
   - texlive-missaali-doc 
   - texlive-missaali-fonts 
+  - texlive-mitthesis 
+  - texlive-mitthesis-doc 
   - texlive-mkgrkindex 
   - texlive-mkgrkindex-bin 
   - texlive-mkgrkindex-doc 
@@ -45408,6 +45566,8 @@ unsorted:
   - texlive-mla-paper-doc 
   - texlive-mlacls 
   - texlive-mlacls-doc 
+  - texlive-mlawriter 
+  - texlive-mlawriter-doc 
   - texlive-mleftright 
   - texlive-mleftright-doc 
   - texlive-mlist 
@@ -45422,6 +45582,8 @@ unsorted:
   - texlive-mluexercise-doc 
   - texlive-mmap 
   - texlive-mmap-doc 
+  - texlive-mnhyphn 
+  - texlive-mnhyphn-doc 
   - texlive-mnotes 
   - texlive-mnotes-doc 
   - texlive-mnras 
@@ -45449,6 +45611,8 @@ unsorted:
   - texlive-modular-doc 
   - texlive-modulus 
   - texlive-modulus-doc 
+  - texlive-moloch 
+  - texlive-moloch-doc 
   - texlive-mongolian-babel 
   - texlive-mongolian-babel-doc 
   - texlive-monofill 
@@ -45475,6 +45639,8 @@ unsorted:
   - texlive-morewrites-doc 
   - texlive-morisawa 
   - texlive-morisawa-doc 
+  - texlive-movement-arrows 
+  - texlive-movement-arrows-doc 
   - texlive-movie15 
   - texlive-movie15-doc 
   - texlive-mp3d 
@@ -45485,6 +45651,9 @@ unsorted:
   - texlive-mparrows-doc 
   - texlive-mpattern 
   - texlive-mpattern-doc 
+  - texlive-mpchess 
+  - texlive-mpchess-doc 
+  - texlive-mpchess-fonts 
   - texlive-mpcolornames 
   - texlive-mpcolornames-doc 
   - texlive-mpfonts 
@@ -45746,6 +45915,8 @@ unsorted:
   - texlive-nomencl-doc 
   - texlive-nomentbl 
   - texlive-nomentbl-doc 
+  - texlive-non-decimal-units 
+  - texlive-non-decimal-units-doc 
   - texlive-nonfloat 
   - texlive-nonfloat-doc 
   - texlive-nonumonpart 
@@ -45757,6 +45928,8 @@ unsorted:
   - texlive-normalcolor-doc 
   - texlive-nostarch 
   - texlive-nostarch-doc 
+  - texlive-notebeamer 
+  - texlive-notebeamer-doc 
   - texlive-notes 
   - texlive-notes-doc 
   - texlive-notes2bib 
@@ -45849,6 +46022,8 @@ unsorted:
   - texlive-octave-doc 
   - texlive-octavo 
   - texlive-octavo-doc 
+  - texlive-odesandpdes 
+  - texlive-odesandpdes-doc 
   - texlive-odsfile 
   - texlive-odsfile-doc 
   - texlive-ofs 
@@ -45881,6 +46056,8 @@ unsorted:
   - texlive-onlyamsmath-doc 
   - texlive-onrannual 
   - texlive-onrannual-doc 
+  - texlive-opbible 
+  - texlive-opbible-doc 
   - texlive-opcit 
   - texlive-opcit-doc 
   - texlive-opencolor 
@@ -45914,6 +46091,8 @@ unsorted:
   - texlive-orkhun-doc 
   - texlive-oscola 
   - texlive-oscola-doc 
+  - texlive-oststud 
+  - texlive-oststud-doc 
   - texlive-oswald 
   - texlive-oswald-doc 
   - texlive-oswald-fonts 
@@ -45981,6 +46160,8 @@ unsorted:
   - texlive-palette-doc 
   - texlive-pangram 
   - texlive-pangram-doc 
+  - texlive-panneauxroute 
+  - texlive-panneauxroute-doc 
   - texlive-paper 
   - texlive-paper-doc 
   - texlive-papercdcase 
@@ -45989,6 +46170,8 @@ unsorted:
   - texlive-papermas-doc 
   - texlive-papertex 
   - texlive-papertex-doc 
+  - texlive-papiergurvan 
+  - texlive-papiergurvan-doc 
   - texlive-paracol 
   - texlive-paracol-doc 
   - texlive-parades 
@@ -46010,6 +46193,12 @@ unsorted:
   - texlive-parsa-doc 
   - texlive-parselines 
   - texlive-parselines-doc 
+  - texlive-parsimatn 
+  - texlive-parsimatn-doc 
+  - texlive-parsimatn-fonts 
+  - texlive-parsinevis 
+  - texlive-parsinevis-doc 
+  - texlive-parsinevis-fonts 
   - texlive-parskip 
   - texlive-parskip-doc 
   - texlive-pas-cours 
@@ -46053,6 +46242,8 @@ unsorted:
   - texlive-pdf-trans-doc 
   - texlive-pdf14 
   - texlive-pdf14-doc 
+  - texlive-pdfannotations 
+  - texlive-pdfannotations-doc 
   - texlive-pdfarticle 
   - texlive-pdfarticle-doc 
   - texlive-pdfbook2 
@@ -46101,6 +46292,8 @@ unsorted:
   - texlive-pdfpc-movie-doc 
   - texlive-pdfprivacy 
   - texlive-pdfprivacy-doc 
+  - texlive-pdfrender 
+  - texlive-pdfrender-doc 
   - texlive-pdfreview 
   - texlive-pdfreview-doc 
   - texlive-pdfscreen 
@@ -46138,8 +46331,8 @@ unsorted:
   - texlive-pedigree-perl-doc 
   - texlive-penlight 
   - texlive-penlight-doc 
-  - texlive-penrose 
-  - texlive-penrose-doc 
+  - texlive-penlightplus 
+  - texlive-penlightplus-doc 
   - texlive-perception 
   - texlive-perception-doc 
   - texlive-perfectcut 
@@ -46181,6 +46374,8 @@ unsorted:
   - texlive-pgf-umlsd-doc 
   - texlive-pgfgantt 
   - texlive-pgfgantt-doc 
+  - texlive-pgfkeysearch 
+  - texlive-pgfkeysearch-doc 
   - texlive-pgfkeyx 
   - texlive-pgfkeyx-doc 
   - texlive-pgfmath-xfp 
@@ -46253,6 +46448,8 @@ unsorted:
   - texlive-pictex-doc 
   - texlive-pictex2 
   - texlive-pictexsum 
+  - texlive-pictochrono 
+  - texlive-pictochrono-doc 
   - texlive-picture 
   - texlive-picture-doc 
   - texlive-piechartmp 
@@ -46317,6 +46514,8 @@ unsorted:
   - texlive-plautopatch-doc 
   - texlive-play 
   - texlive-play-doc 
+  - texlive-playcards 
+  - texlive-playcards-doc 
   - texlive-playfair 
   - texlive-playfair-doc 
   - texlive-playfair-fonts 
@@ -46340,6 +46539,8 @@ unsorted:
   - texlive-pm-isomath-doc 
   - texlive-pmboxdraw 
   - texlive-pmboxdraw-doc 
+  - texlive-pmdraw 
+  - texlive-pmdraw-doc 
   - texlive-pmgraph 
   - texlive-pmgraph-doc 
   - texlive-pmhanguljamo 
@@ -46369,6 +46570,8 @@ unsorted:
   - texlive-poltawski-fonts 
   - texlive-polyglossia 
   - texlive-polyglossia-doc 
+  - texlive-polyhedra 
+  - texlive-polyhedra-doc 
   - texlive-polynom 
   - texlive-polynom-doc 
   - texlive-polynomial 
@@ -46383,6 +46586,8 @@ unsorted:
   - texlive-postcards-doc 
   - texlive-poster-mac 
   - texlive-poster-mac-doc 
+  - texlive-postit 
+  - texlive-postit-doc 
   - texlive-postnotes 
   - texlive-postnotes-doc 
   - texlive-powerdot 
@@ -46391,6 +46596,8 @@ unsorted:
   - texlive-powerdot-fuberlin-doc 
   - texlive-powerdot-tuliplab 
   - texlive-powerdot-tuliplab-doc 
+  - texlive-ppmcheckpdf 
+  - texlive-ppmcheckpdf-doc 
   - texlive-ppr-prv 
   - texlive-ppr-prv-doc 
   - texlive-ppt-slides 
@@ -46440,6 +46647,10 @@ unsorted:
   - texlive-proflabo-doc 
   - texlive-proflycee 
   - texlive-proflycee-doc 
+  - texlive-profmaquette 
+  - texlive-profmaquette-doc 
+  - texlive-profsio 
+  - texlive-profsio-doc 
   - texlive-program 
   - texlive-program-doc 
   - texlive-progress 
@@ -46714,6 +46925,8 @@ unsorted:
   - texlive-ptexenc-devel 
   - texlive-ptext 
   - texlive-ptext-doc 
+  - texlive-ptlatexcommands 
+  - texlive-ptlatexcommands-doc 
   - texlive-ptolemaicastronomy 
   - texlive-ptolemaicastronomy-doc 
   - texlive-ptptex 
@@ -46764,6 +46977,8 @@ unsorted:
   - texlive-pygmentex-doc 
   - texlive-pyluatex 
   - texlive-pyluatex-doc 
+  - texlive-pynotebook 
+  - texlive-pynotebook-doc 
   - texlive-python 
   - texlive-python-doc 
   - texlive-pythonhighlight 
@@ -46773,6 +46988,8 @@ unsorted:
   - texlive-pythontex 
   - texlive-pythontex-bin 
   - texlive-pythontex-doc 
+  - texlive-q-and-a 
+  - texlive-q-and-a-doc 
   - texlive-qcircuit 
   - texlive-qcircuit-doc 
   - texlive-qcm 
@@ -46803,10 +47020,16 @@ unsorted:
   - texlive-quattrocento 
   - texlive-quattrocento-doc 
   - texlive-quattrocento-fonts 
+  - texlive-quickreaction 
+  - texlive-quickreaction-doc 
   - texlive-quicktype 
   - texlive-quicktype-doc 
+  - texlive-quiver 
+  - texlive-quiver-doc 
   - texlive-quiz2socrative 
   - texlive-quiz2socrative-doc 
+  - texlive-quizztex 
+  - texlive-quizztex-doc 
   - texlive-quotchap 
   - texlive-quotchap-doc 
   - texlive-quoting 
@@ -46819,6 +47042,10 @@ unsorted:
   - texlive-quran-de 
   - texlive-quran-de-doc 
   - texlive-quran-doc 
+  - texlive-quran-en 
+  - texlive-quran-en-doc 
+  - texlive-quran-id 
+  - texlive-quran-id-doc 
   - texlive-quran-ur 
   - texlive-quran-ur-doc 
   - texlive-qyxf-book 
@@ -46834,6 +47061,8 @@ unsorted:
   - texlive-ran_toks-doc 
   - texlive-randbild 
   - texlive-randbild-doc 
+  - texlive-randexam 
+  - texlive-randexam-doc 
   - texlive-random 
   - texlive-random-doc 
   - texlive-randomlist 
@@ -46901,6 +47130,8 @@ unsorted:
   - texlive-register-doc 
   - texlive-regstats 
   - texlive-regstats-doc 
+  - texlive-regulatory 
+  - texlive-regulatory-doc 
   - texlive-reledmac 
   - texlive-reledmac-doc 
   - texlive-relenc 
@@ -46925,6 +47156,8 @@ unsorted:
   - texlive-resolsysteme-doc 
   - texlive-resphilosophica 
   - texlive-resphilosophica-doc 
+  - texlive-responsive 
+  - texlive-responsive-doc 
   - texlive-rest-api 
   - texlive-rest-api-doc 
   - texlive-resumecls 
@@ -46947,6 +47180,9 @@ unsorted:
   - texlive-rgltxdoc-doc 
   - texlive-ribbonproofs 
   - texlive-ribbonproofs-doc 
+  - texlive-rit-fonts 
+  - texlive-rit-fonts-doc 
+  - texlive-rit-fonts-fonts 
   - texlive-rjlparshap 
   - texlive-rjlparshap-doc 
   - texlive-rlepsf 
@@ -46960,6 +47196,8 @@ unsorted:
   - texlive-roboto 
   - texlive-roboto-doc 
   - texlive-roboto-fonts 
+  - texlive-robust-externalize 
+  - texlive-robust-externalize-doc 
   - texlive-robustcommand 
   - texlive-robustcommand-doc 
   - texlive-robustindex 
@@ -46979,6 +47217,8 @@ unsorted:
   - texlive-romanneg-doc 
   - texlive-romannum 
   - texlive-romannum-doc 
+  - texlive-rorlink 
+  - texlive-rorlink-doc 
   - texlive-rosario 
   - texlive-rosario-doc 
   - texlive-rosario-fonts 
@@ -46986,6 +47226,8 @@ unsorted:
   - texlive-rotfloat-doc 
   - texlive-rotpages 
   - texlive-rotpages-doc 
+  - texlive-rouequestions 
+  - texlive-rouequestions-doc 
   - texlive-roundbox 
   - texlive-roundbox-doc 
   - texlive-roundrect 
@@ -47016,6 +47258,9 @@ unsorted:
   - texlive-rulercompass-doc 
   - texlive-runcode 
   - texlive-runcode-doc 
+  - texlive-runtexshebang 
+  - texlive-runtexshebang-bin 
+  - texlive-runtexshebang-doc 
   - texlive-russ 
   - texlive-russ-doc 
   - texlive-rutitlepage 
@@ -47144,6 +47389,8 @@ unsorted:
   - texlive-scrlayer-fancyhdr-doc 
   - texlive-scrlttr2copy 
   - texlive-scrlttr2copy-doc 
+  - texlive-scrwfile 
+  - texlive-scrwfile-doc 
   - texlive-scsnowman 
   - texlive-scsnowman-doc 
   - texlive-sdaps 
@@ -47217,6 +47464,8 @@ unsorted:
   - texlive-setdeck-doc 
   - texlive-setspace 
   - texlive-setspace-doc 
+  - texlive-setspaceenhanced 
+  - texlive-setspaceenhanced-doc 
   - texlive-seu-ml-assign 
   - texlive-seu-ml-assign-doc 
   - texlive-seuthesis 
@@ -47292,6 +47541,8 @@ unsorted:
   - texlive-silence-doc 
   - texlive-sillypage 
   - texlive-sillypage-doc 
+  - texlive-sim-os-menus 
+  - texlive-sim-os-menus-doc 
   - texlive-simple-resume-cv 
   - texlive-simple-resume-cv-doc 
   - texlive-simple-thesis-dissertation 
@@ -47332,6 +47583,8 @@ unsorted:
   - texlive-siunits-doc 
   - texlive-siunitx 
   - texlive-siunitx-doc 
+  - texlive-sjtutex 
+  - texlive-sjtutex-doc 
   - texlive-skak 
   - texlive-skak-doc 
   - texlive-skaknew 
@@ -47474,6 +47727,8 @@ unsorted:
   - texlive-starfont 
   - texlive-starfont-doc 
   - texlive-starfont-fonts 
+  - texlive-starray 
+  - texlive-starray-doc 
   - texlive-startex 
   - texlive-startex-doc 
   - texlive-statex 
@@ -47498,6 +47753,8 @@ unsorted:
   - texlive-steinmetz 
   - texlive-steinmetz-doc 
   - texlive-stellenbosch 
+  - texlive-stellenbosch-2 
+  - texlive-stellenbosch-2-doc 
   - texlive-stellenbosch-doc 
   - texlive-step 
   - texlive-step-doc 
@@ -47530,6 +47787,8 @@ unsorted:
   - texlive-strands-doc 
   - texlive-stricttex 
   - texlive-stricttex-doc 
+  - texlive-string-diagrams 
+  - texlive-string-diagrams-doc 
   - texlive-stringenc 
   - texlive-stringenc-doc 
   - texlive-stringstrings 
@@ -47571,8 +47830,6 @@ unsorted:
   - texlive-subfloat-doc 
   - texlive-substances 
   - texlive-substances-doc 
-  - texlive-substitutefont 
-  - texlive-substitutefont-doc 
   - texlive-substr 
   - texlive-substr-doc 
   - texlive-subsupscripts 
@@ -47589,7 +47846,6 @@ unsorted:
   - texlive-sugconf-doc 
   - texlive-superiors 
   - texlive-superiors-doc 
-  - texlive-superiors-fonts 
   - texlive-supertabular 
   - texlive-supertabular-doc 
   - texlive-suppose 
@@ -47628,6 +47884,8 @@ unsorted:
   - texlive-symbats3-doc 
   - texlive-symbol 
   - texlive-symbol-fonts 
+  - texlive-sympycalc 
+  - texlive-sympycalc-doc 
   - texlive-synctex 
   - texlive-synctex-bin 
   - texlive-synctex-devel 
@@ -47703,6 +47961,8 @@ unsorted:
   - texlive-tamefloats 
   - texlive-tamefloats-doc 
   - texlive-tamethebeast 
+  - texlive-tangocolors 
+  - texlive-tangocolors-doc 
   - texlive-tangramtikz 
   - texlive-tangramtikz-doc 
   - texlive-tap 
@@ -47712,6 +47972,8 @@ unsorted:
   - texlive-tapir-fonts 
   - texlive-tasks 
   - texlive-tasks-doc 
+  - texlive-tblr-extras 
+  - texlive-tblr-extras-doc 
   - texlive-tcldoc 
   - texlive-tcldoc-doc 
   - texlive-tcolorbox 
@@ -47795,6 +48057,9 @@ unsorted:
   - texlive-texaccents-doc 
   - texlive-texapi 
   - texlive-texapi-doc 
+  - texlive-texblend 
+  - texlive-texblend-bin 
+  - texlive-texblend-doc 
   - texlive-texbytopic 
   - texlive-texcount 
   - texlive-texcount-bin 
@@ -47820,6 +48085,9 @@ unsorted:
   - texlive-texdoctk-doc 
   - texlive-texdraw 
   - texlive-texdraw-doc 
+  - texlive-texfindpkg 
+  - texlive-texfindpkg-bin 
+  - texlive-texfindpkg-doc 
   - texlive-texfot 
   - texlive-texfot-bin 
   - texlive-texfot-doc 
@@ -47921,6 +48189,8 @@ unsorted:
   - texlive-theanooldstyle-doc 
   - texlive-theanooldstyle-fonts 
   - texlive-theatre 
+  - texlive-thematicpuzzle 
+  - texlive-thematicpuzzle-doc 
   - texlive-theoremref 
   - texlive-theoremref-doc 
   - texlive-thermodynamics 
@@ -48014,10 +48284,14 @@ unsorted:
   - texlive-tikz-nef-doc 
   - texlive-tikz-network 
   - texlive-tikz-network-doc 
+  - texlive-tikz-nfold 
+  - texlive-tikz-nfold-doc 
   - texlive-tikz-opm 
   - texlive-tikz-opm-doc 
   - texlive-tikz-optics 
   - texlive-tikz-optics-doc 
+  - texlive-tikz-osci 
+  - texlive-tikz-osci-doc 
   - texlive-tikz-page 
   - texlive-tikz-page-doc 
   - texlive-tikz-palattice 
@@ -48038,10 +48312,16 @@ unsorted:
   - texlive-tikz-trackschematic-doc 
   - texlive-tikz-truchet 
   - texlive-tikz-truchet-doc 
+  - texlive-tikz2d-fr 
+  - texlive-tikz2d-fr-doc 
+  - texlive-tikz3d-fr 
+  - texlive-tikz3d-fr-doc 
   - texlive-tikzbricks 
   - texlive-tikzbricks-doc 
   - texlive-tikzcodeblocks 
   - texlive-tikzcodeblocks-doc 
+  - texlive-tikzdotncross 
+  - texlive-tikzdotncross-doc 
   - texlive-tikzducks 
   - texlive-tikzducks-doc 
   - texlive-tikzfill 
@@ -48068,6 +48348,10 @@ unsorted:
   - texlive-tikzpingus-doc 
   - texlive-tikzposter 
   - texlive-tikzposter-doc 
+  - texlive-tikzquads 
+  - texlive-tikzquads-doc 
+  - texlive-tikzquests 
+  - texlive-tikzquests-doc 
   - texlive-tikzscale 
   - texlive-tikzscale-doc 
   - texlive-tikzsymbols 
@@ -48079,6 +48363,8 @@ unsorted:
   - texlive-tikzviolinplots-doc 
   - texlive-tile-graphic 
   - texlive-tile-graphic-doc 
+  - texlive-tilings 
+  - texlive-tilings-doc 
   - texlive-timbreicmc 
   - texlive-timbreicmc-doc 
   - texlive-times 
@@ -48115,7 +48401,12 @@ unsorted:
   - texlive-tkz-base-doc 
   - texlive-tkz-berge 
   - texlive-tkz-berge-doc 
+  - texlive-tkz-bernoulli 
+  - texlive-tkz-bernoulli-doc 
   - texlive-tkz-doc 
+  - texlive-tkz-doc-doc 
+  - texlive-tkz-elements 
+  - texlive-tkz-elements-doc 
   - texlive-tkz-euclide 
   - texlive-tkz-euclide-doc 
   - texlive-tkz-fct 
@@ -48218,6 +48509,8 @@ unsorted:
   - texlive-trimspaces-doc 
   - texlive-trivfloat 
   - texlive-trivfloat-doc 
+  - texlive-trivialpursuit 
+  - texlive-trivialpursuit-doc 
   - texlive-trsym 
   - texlive-trsym-doc 
   - texlive-truncate 
@@ -48254,6 +48547,8 @@ unsorted:
   - texlive-turnstile-doc 
   - texlive-turnthepage 
   - texlive-turnthepage-doc 
+  - texlive-tutodoc 
+  - texlive-tutodoc-doc 
   - texlive-twemoji-colr 
   - texlive-twemoji-colr-doc 
   - texlive-twemoji-colr-fonts 
@@ -48263,6 +48558,8 @@ unsorted:
   - texlive-twoinone-doc 
   - texlive-twoup 
   - texlive-twoup-doc 
+  - texlive-twoxtwogame 
+  - texlive-twoxtwogame-doc 
   - texlive-txfonts 
   - texlive-txfonts-doc 
   - texlive-txfonts-fonts 
@@ -48294,6 +48591,7 @@ unsorted:
   - texlive-typoaid-doc 
   - texlive-typogrid 
   - texlive-typogrid-doc 
+  - texlive-typstfun 
   - texlive-tzplot 
   - texlive-tzplot-doc 
   - texlive-uaclasses 
@@ -48314,12 +48612,16 @@ unsorted:
   - texlive-ucharcat-doc 
   - texlive-ucharclasses 
   - texlive-ucharclasses-doc 
+  - texlive-ucph-revy 
+  - texlive-ucph-revy-doc 
   - texlive-ucs 
   - texlive-ucs-doc 
   - texlive-ucsmonograph 
   - texlive-ucsmonograph-doc 
   - texlive-ucthesis 
   - texlive-ucthesis-doc 
+  - texlive-udepcolor 
+  - texlive-udepcolor-doc 
   - texlive-udes-genie-these 
   - texlive-udes-genie-these-doc 
   - texlive-udesoftec 
@@ -48374,6 +48676,8 @@ unsorted:
   - texlive-unamthesis-doc 
   - texlive-unbtex 
   - texlive-unbtex-doc 
+  - texlive-undar-digitacion 
+  - texlive-undar-digitacion-doc 
   - texlive-undergradmath 
   - texlive-underlin 
   - texlive-underlin-doc 
@@ -48403,10 +48707,14 @@ unsorted:
   - texlive-unicode-data-doc 
   - texlive-unicode-math 
   - texlive-unicode-math-doc 
+  - texlive-unicode-math-input 
+  - texlive-unicode-math-input-doc 
   - texlive-unicodefonttable 
   - texlive-unicodefonttable-doc 
   - texlive-unifith 
   - texlive-unifith-doc 
+  - texlive-unifront 
+  - texlive-unifront-doc 
   - texlive-unigrazpub 
   - texlive-unigrazpub-doc 
   - texlive-unimath-plain-xetex 
@@ -48450,6 +48758,8 @@ unsorted:
   - texlive-uowthesistitlepage-doc 
   - texlive-upca 
   - texlive-upca-doc 
+  - texlive-updatemarks 
+  - texlive-updatemarks-doc 
   - texlive-updmap-map 
   - texlive-uplatex 
   - texlive-uplatex-bin 
@@ -48483,6 +48793,8 @@ unsorted:
   - texlive-urwchancal-doc 
   - texlive-usebib 
   - texlive-usebib-doc 
+  - texlive-useclass 
+  - texlive-useclass-doc 
   - texlive-ushort 
   - texlive-ushort-doc 
   - texlive-uspace 
@@ -48538,6 +48850,8 @@ unsorted:
   - texlive-vcell-doc 
   - texlive-vdmlisting 
   - texlive-vdmlisting-doc 
+  - texlive-vectorlogos 
+  - texlive-vectorlogos-doc 
   - texlive-velthuis 
   - texlive-velthuis-bin 
   - texlive-velthuis-doc 
@@ -48563,6 +48877,8 @@ unsorted:
   - texlive-verifica-doc 
   - texlive-verifiche 
   - texlive-verifiche-doc 
+  - texlive-verifycommand 
+  - texlive-verifycommand-doc 
   - texlive-verse 
   - texlive-verse-doc 
   - texlive-version 
@@ -48630,6 +48946,8 @@ unsorted:
   - texlive-webquiz 
   - texlive-webquiz-bin 
   - texlive-webquiz-doc 
+  - texlive-weiqi 
+  - texlive-weiqi-doc 
   - texlive-wheelchart 
   - texlive-wheelchart-doc 
   - texlive-widetable 
@@ -48650,9 +48968,13 @@ unsorted:
   - texlive-wnri-doc 
   - texlive-wnri-latex 
   - texlive-wnri-latex-doc 
+  - texlive-wordcloud 
+  - texlive-wordcloud-doc 
   - texlive-wordcount 
   - texlive-wordcount-bin 
   - texlive-wordcount-doc 
+  - texlive-wordle 
+  - texlive-wordle-doc 
   - texlive-wordlike 
   - texlive-wordlike-doc 
   - texlive-worksheet 
@@ -48761,6 +49083,8 @@ unsorted:
   - texlive-xfakebold-doc 
   - texlive-xfor 
   - texlive-xfor-doc 
+  - texlive-xfrac 
+  - texlive-xfrac-doc 
   - texlive-xgreek 
   - texlive-xgreek-doc 
   - texlive-xhfill 
@@ -48783,6 +49107,8 @@ unsorted:
   - texlive-xits-fonts 
   - texlive-xkcdcolors 
   - texlive-xkcdcolors-doc 
+  - texlive-xkeymask 
+  - texlive-xkeymask-doc 
   - texlive-xkeyval 
   - texlive-xkeyval-doc 
   - texlive-xlop 
@@ -48897,6 +49223,9 @@ unsorted:
   - texlive-yplan-doc 
   - texlive-yquant 
   - texlive-yquant-doc 
+  - texlive-ysabeau 
+  - texlive-ysabeau-doc 
+  - texlive-ysabeau-fonts 
   - texlive-ytableau 
   - texlive-ytableau-doc 
   - texlive-zapfchan 
