@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 20 02:20:57 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Require pkgconfig(libmarkdown) >= 3.0.0 for oS >= 1650 to avoid
+  conflict with libmarkdown2-devel, which also provides the same
+  pkgconfig(libmarkdown).
+
+-------------------------------------------------------------------
 Tue Nov 15 15:33:05 UTC 2022 - zero mind <zeromind@gmx.com>
 
 - Update to version 0.0+git20220925 (changes since 0.0+git20210219):

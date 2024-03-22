@@ -1,7 +1,7 @@
 #
 # spec file for package purple-rocketchat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,11 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28.0
 BuildRequires:  pkgconfig(json-glib-1.0)
+%if 0%{?suse_version} >= 1650
+BuildRequires:  pkgconfig(libmarkdown) >= 3.0.0
+%else
 BuildRequires:  pkgconfig(libmarkdown)
+%endif
 BuildRequires:  pkgconfig(purple)
 
 %description
