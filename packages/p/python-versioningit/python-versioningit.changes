@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Mar 21 08:20:56 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.1.0
+  * Improve some error messages
+
+-------------------------------------------------------------------
+Thu Mar 14 11:08:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * Migrated from setuptools to hatch
+  * Support using the `onbuild` step with Hatch
+  * **Breaking**: The `build_dir` argument passed to
+    `Versioningit.do_onbuild()`
+  * and `onbuild` method callables has been changed to an
+    `OnbuildFileProvider`
+  * ABC
+
+------------------------------------------------------------------
 Sun Feb 12 01:30:01 UTC 2023 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to version 2.2.0
@@ -8,7 +26,7 @@ Sun Feb 12 01:30:01 UTC 2023 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 -------------------------------------------------------------------
 Wed Nov  9 19:36:14 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 2.1.0 
+- Update to version 2.1.0
   * Drop support for Python 3.6
   * Support Python 3.11
   * Use tomllib on Python 3.11
@@ -16,7 +34,7 @@ Wed Nov  9 19:36:14 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Tue Oct 11 16:52:39 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 2.0.1 
+- Update to version 2.0.1
   * Don't run the onbuild step under setuptools' upcoming PEP 660 editable mode (contributed by @abravalheri)
 
 -------------------------------------------------------------------

@@ -1,7 +1,7 @@
 #
 # spec file for package python-versioningit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
@@ -25,24 +23,24 @@
 %endif
 
 Name:           python-versioningit
-Version:        2.2.0
+Version:        3.1.0
 Release:        0
 Summary:        Versioning It with your Version In Git
 License:        MIT
 URL:            https://github.com/jwodder/versioningit
 Source:         https://files.pythonhosted.org/packages/source/v/versioningit/versioningit-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3 >= 3.7
 # SECTION test requirements
-BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module build}
+BuildRequires:  %{python_module importlib-metadata if %python-base < 3.10}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli >= 1.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  git
@@ -50,16 +48,17 @@ BuildRequires:  mercurial
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-packaging
-Requires:       python-setuptools
 Requires:       python-tomli >= 1.2
-Suggests:       python-importlib-metadata >= 3.6
+%if %{?python_version_nodots} < 310
+Requires:       python-importlib-metadata >= 3.6
+%endif
 Suggests:       python-dataclasses
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 BuildArch:      noarch
 %python_subpackages
@@ -82,7 +81,7 @@ separate functions used for version extraction & calculation.
 %python_clone -a %{buildroot}%{_bindir}/versioningit
 
 %check
-%pytest test -k 'not test_editable_mode'
+%pytest test -k 'not test_editable_mode or not test_end2end'
 
 %pre
 %python_libalternatives_reset_alternative versioningit
@@ -97,6 +96,7 @@ separate functions used for version extraction & calculation.
 %doc CHANGELOG.md README.rst
 %license LICENSE
 %python_alternative %{_bindir}/versioningit
-%{python_sitelib}/*
+%{python_sitelib}/versioningit
+%{python_sitelib}/versioningit-%{version}*-info
 
 %changelog
