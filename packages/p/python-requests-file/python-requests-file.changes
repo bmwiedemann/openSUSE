@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 22 05:37:11 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.0:
+  * Correct a typo in requests_file.py
+  * Remove dependency on six
+  * Move metadata to pyproject.toml
+    + Remove support for Python 2
+    + Remove support for raw distutils
+  * Correct homepage link in pyproject.toml
+  * Fix black formatting
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Sat Jul  1 09:12:10 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

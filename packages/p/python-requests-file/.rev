@@ -60,4 +60,20 @@
     <comment></comment>
     <requestid>1096275</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8b3838972e8b1286434b01f1a9dfdef5</srcmd5>
+    <version>2.0.0</version>
+    <time>1711117277</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.0.0:
+  * Correct a typo in requests_file.py
+  * Remove dependency on six
+  * Move metadata to pyproject.toml
+    + Remove support for Python 2
+    + Remove support for raw distutils
+  * Correct homepage link in pyproject.toml
+  * Fix black formatting
+- Switch to pyproject macros.</comment>
+    <requestid>1160512</requestid>
+  </revision>
 </revisionlist>
