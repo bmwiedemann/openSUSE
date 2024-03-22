@@ -18,11 +18,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           eventviews
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        Eventviews Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -55,7 +55,7 @@ BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 %x86_64 aarch64 riscv64
 
 %description
 This internal library implements a GUI framework for viewing various
@@ -66,6 +66,8 @@ Summary:        Eventviews Library
 License:        LGPL-2.1-or-later
 Requires:       eventviews >= %{version}
 Obsoletes:      eventviews-lang <= 23.04.0
+Obsoletes:      libKF5EventViews5 < %{version}
+Obsoletes:      libKPim5EventViews5 < %{version}
 Obsoletes:      libKPim5EventViews5-lang < %{version}
 
 %description -n libKPim6EventViews6
