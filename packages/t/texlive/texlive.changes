@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Mar 21 13:47:14 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch source-luacore.dif
+  * Allow file access for cache directories like defined
+    VARTEXFONTS and $HOME/.cache/texmf/fonts (boo#1221762)
+
+-------------------------------------------------------------------
+Wed Mar 20 10:01:34 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Do not use --disable-offscreen for asymptote configuration
+  but define missed cpp macro instead
+- Add patch source-mesa24.dif
+
+-------------------------------------------------------------------
+Wed Mar 20 09:38:45 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Make asymptote build with mesa 24 with --disable-offscreen
+
+-------------------------------------------------------------------
+Thu Mar 14 12:35:01 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to TeXLive 2024 
+- Remove patch source-luatex.dif now upstream
+
+-------------------------------------------------------------------
 Thu Feb 29 16:46:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

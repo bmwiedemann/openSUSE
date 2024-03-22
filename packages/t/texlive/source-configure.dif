@@ -30,19 +30,19 @@
           ac_configure_args="$ac_configure_args '--enable-native-texlive-build'"])
  AS_CASE([$enable_largefile],
 --- texk/dvipdfm-x/configure.ac
-+++ texk/dvipdfm-x/configure.ac	2022-04-05 13:26:16.097900669 +0000
++++ texk/dvipdfm-x/configure.ac	2024-03-14 13:33:50.007973975 +0000
 @@ -8,7 +8,7 @@ dnl   This file is free software; the co
  dnl   gives unlimited permission to copy and/or distribute it,
  dnl   with or without modifications, as long as this notice is preserved.
  dnl
--AC_INIT([dvipdfm-x (TeX Live)], [20220710], [dvipdfmx@tug.org])
-+AC_INIT([dvipdfm (TeX Live)], [20220710], [dvipdfmx@tug.org])
+-AC_INIT([dvipdfm-x (TeX Live)], [20240305], [dvipdfmx@tug.org])
++AC_INIT([dvipdfm (TeX Live)], [20240305], [dvipdfmx@tug.org])
  AC_PREREQ([2.65])
  AC_CONFIG_SRCDIR([agl.c])
  AC_CONFIG_AUX_DIR([../../build-aux])
 --- texk/dvisvgm/configure.ac
 +++ texk/dvisvgm/configure.ac	2022-04-05 13:23:04.449415706 +0000
-@@ -61,6 +61,7 @@ if test "x$enable_native_texlive_build"
+@@ -58,6 +58,7 @@ if test "x$enable_native_texlive_build"
    HAVE_LIBGS=0
  else
  have_libgs=yes

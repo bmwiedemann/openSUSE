@@ -1,0 +1,41 @@
+---
+ texk/kpathsea/tex-file.c |   14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+--- texk/kpathsea/tex-file.c
++++ texk/kpathsea/tex-file.c	2024-03-22 10:05:55.034645098 +0000
+@@ -21,7 +21,9 @@
+ 
+ #include <kpathsea/c-fopen.h>
+ #include <kpathsea/c-pathch.h>
++#include <errno.h>
+ #include <stdarg.h>
++#include <unistd.h>
+ #include <kpathsea/cnf.h>
+ #include <kpathsea/absolute.h>
+ #include <kpathsea/concatn.h>
+@@ -1316,13 +1318,23 @@ kpathsea_name_ok (kpathsea kpse, const_s
+            TEXMFSYSVAR.  */
+         if (extended) {
+           const_string texmfvar = kpathsea_var_value (kpse, "TEXMFVAR");
++          string cache = kpathsea_var_value (kpse, "VARTEXFONTS");
++          int fa = access(cache, W_OK);
++          if (fa != 0) {
++            string home = getenv ("HOME");
++            cache = concat3 (home, "/", ".cache/texmf/fonts");
++          }
+           if (!abs_fname_ok (expanded_fname, texmfvar)) {
+             const_string texmfsysvar
+               = kpathsea_var_value (kpse, "TEXMFSYSVAR");
+             if (!abs_fname_ok (expanded_fname, texmfsysvar)) {
+-              goto not_ok; /* nothing left to check.  */
++              if (!abs_fname_ok (expanded_fname, cache)) {
++                goto not_ok; /* nothing left to check.  */
++              }
+             }
+           }
++          if (fa != 0)
++            free (cache);
+         } else {
+           goto not_ok; /* not extended */
+         }

@@ -20,7 +20,7 @@
    /* DECNUMDIGITS is the default number of digits that can be held in */
    /* the structure.  If undefined, 1 is assumed and it is assumed     */
 --- texk/web2c/mplibdir/decNumber.h
-+++ texk/web2c/mplibdir/decNumber.h	2023-03-28 09:46:33.962871087 +0000
++++ texk/web2c/mplibdir/decNumber.h	2024-03-14 13:37:48.247593063 +0000
 @@ -40,8 +40,10 @@
    /* constant.  This must not be changed without recompiling the      */
    /* decNumber library modules. */
