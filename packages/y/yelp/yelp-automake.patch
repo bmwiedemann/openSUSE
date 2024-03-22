@@ -1,0 +1,92 @@
+diff -urp yelp-42.2.orig/Makefile.in yelp-42.2/Makefile.in
+--- yelp-42.2.orig/Makefile.in	2022-09-17 14:20:53.000000000 -0500
++++ yelp-42.2/Makefile.in	2024-02-12 17:05:53.879527328 -0600
+@@ -239,7 +239,7 @@ am__libyelp_libyelp_la_SOURCES_DIST = li
+ 	libyelp/yelp-help-list.c libyelp/yelp-info-document.c \
+ 	libyelp/yelp-info-parser.c libyelp/yelp-magic-decompressor.c \
+ 	libyelp/yelp-mallard-document.c libyelp/yelp-man-document.c \
+-	libyelp/yelp-man-parser.c libyelp/yelp-search-entry.c \
++	libyelp/yelp-man-parser.c libyelp/yelp-man-search.c libyelp/yelp-search-entry.c \
+ 	libyelp/yelp-settings.c libyelp/yelp-simple-document.c \
+ 	libyelp/yelp-sqlite-storage.c libyelp/yelp-storage.c \
+ 	libyelp/yelp-transform.c libyelp/yelp-uri.c \
+@@ -262,6 +262,7 @@ am_libyelp_libyelp_la_OBJECTS = libyelp/
+ 	libyelp/libyelp_la-yelp-mallard-document.lo \
+ 	libyelp/libyelp_la-yelp-man-document.lo \
+ 	libyelp/libyelp_la-yelp-man-parser.lo \
++	libyelp/libyelp_la-yelp-man-search.lo \
+ 	libyelp/libyelp_la-yelp-search-entry.lo \
+ 	libyelp/libyelp_la-yelp-settings.lo \
+ 	libyelp/libyelp_la-yelp-simple-document.lo \
+@@ -403,6 +404,7 @@ am__depfiles_remade = libyelp/$(DEPDIR)/
+ 	libyelp/$(DEPDIR)/libyelp_la-yelp-mallard-document.Plo \
+ 	libyelp/$(DEPDIR)/libyelp_la-yelp-man-document.Plo \
+ 	libyelp/$(DEPDIR)/libyelp_la-yelp-man-parser.Plo \
++	libyelp/$(DEPDIR)/libyelp_la-yelp-man-search.Plo \
+ 	libyelp/$(DEPDIR)/libyelp_la-yelp-marshal.Plo \
+ 	libyelp/$(DEPDIR)/libyelp_la-yelp-search-entry.Plo \
+ 	libyelp/$(DEPDIR)/libyelp_la-yelp-settings.Plo \
+@@ -781,7 +783,7 @@ libyelp_libyelp_la_SOURCES = libyelp/yel
+ 	libyelp/yelp-help-list.c libyelp/yelp-info-document.c \
+ 	libyelp/yelp-info-parser.c libyelp/yelp-magic-decompressor.c \
+ 	libyelp/yelp-mallard-document.c libyelp/yelp-man-document.c \
+-	libyelp/yelp-man-parser.c libyelp/yelp-search-entry.c \
++	libyelp/yelp-man-parser.c libyelp/yelp-man-search.c libyelp/yelp-search-entry.c \
+ 	libyelp/yelp-settings.c libyelp/yelp-simple-document.c \
+ 	libyelp/yelp-sqlite-storage.c libyelp/yelp-storage.c \
+ 	libyelp/yelp-transform.c libyelp/yelp-uri.c \
+@@ -823,6 +825,7 @@ libyelp_libyelp_la_headers = \
+ 	$(top_srcdir)/libyelp/yelp-info-document.h \
+ 	$(top_srcdir)/libyelp/yelp-mallard-document.h \
+ 	$(top_srcdir)/libyelp/yelp-man-document.h \
++	$(top_srcdir)/libyelp/yelp-man-search.h \
+ 	$(top_srcdir)/libyelp/yelp-search-entry.h \
+ 	$(top_srcdir)/libyelp/yelp-settings.h \
+ 	$(top_srcdir)/libyelp/yelp-simple-document.h \
+@@ -1717,6 +1720,8 @@ libyelp/libyelp_la-yelp-man-document.lo:
+ 	libyelp/$(DEPDIR)/$(am__dirstamp)
+ libyelp/libyelp_la-yelp-man-parser.lo: libyelp/$(am__dirstamp) \
+ 	libyelp/$(DEPDIR)/$(am__dirstamp)
++libyelp/libyelp_la-yelp-man-search.lo: libyelp/$(am__dirstamp) \
++	libyelp/$(DEPDIR)/$(am__dirstamp)
+ libyelp/libyelp_la-yelp-search-entry.lo: libyelp/$(am__dirstamp) \
+ 	libyelp/$(DEPDIR)/$(am__dirstamp)
+ libyelp/libyelp_la-yelp-settings.lo: libyelp/$(am__dirstamp) \
+@@ -1859,6 +1864,7 @@ distclean-compile:
+ @AMDEP_TRUE@@am__include@ @am__quote@libyelp/$(DEPDIR)/libyelp_la-yelp-mallard-document.Plo@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@libyelp/$(DEPDIR)/libyelp_la-yelp-man-document.Plo@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@libyelp/$(DEPDIR)/libyelp_la-yelp-man-parser.Plo@am__quote@ # am--include-marker
++@AMDEP_TRUE@@am__include@ @am__quote@libyelp/$(DEPDIR)/libyelp_la-yelp-man-search.Plo@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@libyelp/$(DEPDIR)/libyelp_la-yelp-marshal.Plo@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@libyelp/$(DEPDIR)/libyelp_la-yelp-search-entry.Plo@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@libyelp/$(DEPDIR)/libyelp_la-yelp-settings.Plo@am__quote@ # am--include-marker
+@@ -2003,6 +2009,13 @@ libyelp/libyelp_la-yelp-man-parser.lo: l
+ @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+ @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libyelp_libyelp_la_CPPFLAGS) $(CPPFLAGS) $(libyelp_libyelp_la_CFLAGS) $(CFLAGS) -c -o libyelp/libyelp_la-yelp-man-parser.lo `test -f 'libyelp/yelp-man-parser.c' || echo '$(srcdir)/'`libyelp/yelp-man-parser.c
+ 
++libyelp/libyelp_la-yelp-man-search.lo: libyelp/yelp-man-search.c
++@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libyelp_libyelp_la_CPPFLAGS) $(CPPFLAGS) $(libyelp_libyelp_la_CFLAGS) $(CFLAGS) -MT libyelp/libyelp_la-yelp-man-parser.lo -MD -MP -MF libyelp/$(DEPDIR)/libyelp_la-yelp-man-parser.Tpo -c -o libyelp/libyelp_la-yelp-man-parser.lo `test -f 'libyelp/yelp-man-parser.c' || echo '$(srcdir)/'`libyelp/yelp-man-parser.c
++@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) libyelp/$(DEPDIR)/libyelp_la-yelp-man-search.Tpo libyelp/$(DEPDIR)/libyelp_la-yelp-man-search.Plo
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='libyelp/yelp-man-search.c' object='libyelp/libyelp_la-yelp-man-search.lo' libtool=yes @AMDEPBACKSLASH@
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
++@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libyelp_libyelp_la_CPPFLAGS) $(CPPFLAGS) $(libyelp_libyelp_la_CFLAGS) $(CFLAGS) -c -o libyelp/libyelp_la-yelp-man-search.lo `test -f 'libyelp/yelp-man-search.c' || echo '$(srcdir)/'`libyelp/yelp-man-search.c
++
+ libyelp/libyelp_la-yelp-search-entry.lo: libyelp/yelp-search-entry.c
+ @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libyelp_libyelp_la_CPPFLAGS) $(CPPFLAGS) $(libyelp_libyelp_la_CFLAGS) $(CFLAGS) -MT libyelp/libyelp_la-yelp-search-entry.lo -MD -MP -MF libyelp/$(DEPDIR)/libyelp_la-yelp-search-entry.Tpo -c -o libyelp/libyelp_la-yelp-search-entry.lo `test -f 'libyelp/yelp-search-entry.c' || echo '$(srcdir)/'`libyelp/yelp-search-entry.c
+ @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) libyelp/$(DEPDIR)/libyelp_la-yelp-search-entry.Tpo libyelp/$(DEPDIR)/libyelp_la-yelp-search-entry.Plo
+@@ -3700,6 +3713,7 @@ distclean: distclean-recursive
+ 	-rm -f libyelp/$(DEPDIR)/libyelp_la-yelp-mallard-document.Plo
+ 	-rm -f libyelp/$(DEPDIR)/libyelp_la-yelp-man-document.Plo
+ 	-rm -f libyelp/$(DEPDIR)/libyelp_la-yelp-man-parser.Plo
++	-rm -f libyelp/$(DEPDIR)/libyelp_la-yelp-man-search.Plo
+ 	-rm -f libyelp/$(DEPDIR)/libyelp_la-yelp-marshal.Plo
+ 	-rm -f libyelp/$(DEPDIR)/libyelp_la-yelp-search-entry.Plo
+ 	-rm -f libyelp/$(DEPDIR)/libyelp_la-yelp-settings.Plo
+@@ -3827,6 +3841,7 @@ maintainer-clean: maintainer-clean-recur
+ 	-rm -f libyelp/$(DEPDIR)/libyelp_la-yelp-mallard-document.Plo
+ 	-rm -f libyelp/$(DEPDIR)/libyelp_la-yelp-man-document.Plo
+ 	-rm -f libyelp/$(DEPDIR)/libyelp_la-yelp-man-parser.Plo
++	-rm -f libyelp/$(DEPDIR)/libyelp_la-yelp-man-search.Plo
+ 	-rm -f libyelp/$(DEPDIR)/libyelp_la-yelp-marshal.Plo
+ 	-rm -f libyelp/$(DEPDIR)/libyelp_la-yelp-search-entry.Plo
+ 	-rm -f libyelp/$(DEPDIR)/libyelp_la-yelp-settings.Plo

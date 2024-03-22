@@ -1,7 +1,7 @@
 #
 # spec file for package yelp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source0:        https://download.gnome.org/sources/yelp/42/%{name}-%{version}.ta
 Patch0:         https://gitlab.gnome.org/GNOME/yelp/-/commit/dd69a1df8e660cf6cf27e44a6bba02934fc00b48.patch
 # PATCH-FIX-UPSTREAM 855cae4a336f7676f093579c9a6b2d9fae7a1f80.patch -- Support search box for man pages
 Patch1:         https://gitlab.gnome.org/GNOME/yelp/-/commit/855cae4a336f7676f093579c9a6b2d9fae7a1f80.patch
+# PATCH-FIX-SLED yelp-automake.patch mgorse@suse.com -- update Makefile.in for last patch
+Patch2:         yelp-automake.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -86,10 +88,17 @@ This package provides Yelp's development files.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -N
+%patch -P 0 -p1
+%patch -P 1 -p1
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%patch -P 2 -p1
+%endif
 
 %build
+%if !0%{?sle_version} || 0%{?sle_version} >= 160000
 NOCONFIGURE=1 ./autogen.sh
+%endif
 %configure \
 	--disable-static \
 	%{nil}

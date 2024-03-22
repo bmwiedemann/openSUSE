@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 20 15:31:44 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add yelp-automake.patch to patch Makefile.in on SLE, rather than
+  running autoreconf, since autotools there are too old.
+
+-------------------------------------------------------------------
 Thu Oct 12 15:10:06 UTC 2023 - Bjørn <bjorn.lie@gmail.com>
 
 - Add upstream bug fixes:

@@ -928,4 +928,14 @@
     <comment></comment>
     <requestid>1117644</requestid>
   </revision>
+  <revision rev="124" vrev="3">
+    <srcmd5>2686d807c74703e5563b4f7e6033e4b7</srcmd5>
+    <version>42.2</version>
+    <time>1711117087</time>
+    <user>anag+factory</user>
+    <comment>- Add yelp-automake.patch to patch Makefile.in on SLE, rather than
+  running autoreconf, since autotools there are too old.
+</comment>
+    <requestid>1160110</requestid>
+  </revision>
 </revisionlist>
