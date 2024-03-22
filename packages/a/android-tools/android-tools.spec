@@ -25,7 +25,7 @@
 %endif
 
 Name:           android-tools
-Version:        34.0.4
+Version:        34.0.5
 Release:        0
 Summary:        Android platform tools
 License:        Apache-2.0 AND MIT
@@ -34,10 +34,6 @@ Source0:        https://github.com/nmeum/android-tools/releases/download/%{versi
 Source2:        man-pages.tar.gz
 # PATCH-FIX-OPENSUSE fix-install-completion.patch boo#1185883 munix9@googlemail.com -- Simplify completion
 Patch0:         fix-install-completion.patch
-# PATCH-FEATURE-UPSTREAM fix-add-make_f2fs-tool-for-fastboot.patch -- based on PR 125 (gh#nmeum/android-tools#109)
-Patch1:         fix-add-make_f2fs-tool-for-fastboot.patch
-# PATCH-FEATURE-UPSTREAM fix-add-sload_f2fs-tool.patch -- based on PR 128 (gh#nmeum/android-tools#127)
-Patch2:         fix-add-sload_f2fs-tool.patch
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.12
 BuildRequires:  go

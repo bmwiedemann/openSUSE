@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar 22 06:42:10 UTC 2024 - munix9@googlemail.com
+
+- Update to version 34.0.5
+  * adb
+    - Previously, adb responded with a successful code when wireless
+      pairing fails. Resolved this by returning a failure code (1) and
+      user-facing error (error: protocol fault (couldn't read status
+      message...)). echo $? now reports 1.
+    - adb wait-for-disconnect is now operational for non-USB
+      (wireless debugging).
+    - Added new DbC interface for future support of ChromeOS over adb.
+
+  * fastboot
+    - Fixed flashall on Pixel 3 devices.
+
+- Remove fix-add-make_f2fs-tool-for-fastboot.patch and
+  fix-add-sload_f2fs-tool.patch (merged upstream)
+
+-------------------------------------------------------------------
 Sat Mar 16 12:56:32 UTC 2024 - munix9@googlemail.com
 
 - Use custom %python3_fix_shebang_path macro for Leap
