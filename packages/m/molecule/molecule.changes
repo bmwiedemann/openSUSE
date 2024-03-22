@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 21 19:49:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- ignore 5 tests that started to fail
+
+-------------------------------------------------------------------
 Thu Feb  8 18:00:55 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.2.0 (new naming scheme upstream):

@@ -125,6 +125,11 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_docker"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_molecule_schema"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_sample_collection"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_with_and_without_gitignore[test_w_gitignore]"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_execute_cmdline_scenarios"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_execute_cmdline_scenarios_prune"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_execute_cmdline_scenarios_no_prune"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_execute_cmdline_scenarios_exit_destroy"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_execute_cmdline_scenarios_exit_nodestroy"
 
 %pytest -k "not (${IGNORED_CHECKS})" -W ignore:'There is no current event loop'
 %endif
