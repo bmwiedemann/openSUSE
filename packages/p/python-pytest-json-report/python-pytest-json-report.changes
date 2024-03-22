@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 22 08:37:10 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python312.patch.
+- Run pytest with "python -m" to avoid problems with python 3.12
+
+-------------------------------------------------------------------
 Wed Aug  2 06:39:01 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add pytest-metadata-3.patch to make it compatible with

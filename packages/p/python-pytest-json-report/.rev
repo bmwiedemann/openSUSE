@@ -51,4 +51,13 @@
 </comment>
     <requestid>1101889</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>8acae380914ea85e6090e8973c946b2d</srcmd5>
+    <version>1.5.0</version>
+    <time>1711117314</time>
+    <user>anag+factory</user>
+    <comment>- Add python312.patch.
+- Run pytest with &quot;python -m&quot; to avoid problems with python 3.12</comment>
+    <requestid>1160568</requestid>
+  </revision>
 </revisionlist>
