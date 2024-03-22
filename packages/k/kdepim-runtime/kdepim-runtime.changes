@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:26:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Bring back etesync support (kde#482600)
+  * Support NTLMv2
+  * Port EWS resource away from KIO Http
+  * Fix endless sync loop with some remote iCal sources (kde#384309)
+- Drop patch, merged upstream:
+  * 0001-Bring-back-etesync-support.patch
+
+-------------------------------------------------------------------
 Wed Mar 13 19:28:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change to fix the etesync resource build (kde#482600):

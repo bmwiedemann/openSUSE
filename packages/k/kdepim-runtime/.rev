@@ -960,4 +960,12 @@
   * 0001-Bring-back-etesync-support.patch</comment>
     <requestid>1157755</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>6a384b59696162b07fd3649b38e121d0</srcmd5>
+    <version>24.02.1</version>
+    <time>1711116992</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.02.1 (forwarded request 1159650 from krop)</comment>
+    <requestid>1160207</requestid>
+  </revision>
 </revisionlist>
