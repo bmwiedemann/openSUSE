@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:26:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Too many changes since 24.02.0, only listing bugfixes:
+  * Fix: some sequence properties incorrectly saved, like subtitles list, timeline (kde#483516)
+  * Fix: Windows crash clicking fullscreen button(kde#483441)
+  * fix: cannot revert letter spacing to 0 in title clips (kde#483710)
+  * fix: Fix pan timeline with middle mouse button (kde#483244)
+  * Fix multiple subtitles issues: several tracks not correctly saved, sequence copy not suplicating subs, crash on adding new subtitle track (kde#482434)
+  * On sequence change, recursively update each sequence that embedded it (kde#482949)
+  * Fix crash on spacer tool with grouped subtitle (kde#482510)
+  * Block Qt5 MLT plugins in thumbnailer when building with Qt6. (kde#482335)
+  * Fix crash on invalid gradient data. (kde#482134)
+
+-------------------------------------------------------------------
 Fri Feb 23 13:59:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
