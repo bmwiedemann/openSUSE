@@ -1,0 +1,12 @@
+---
+ tex/latex/prettytok/prettytok-decode-8bit.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- texmf-dist/tex/latex/prettytok/prettytok-decode-8bit.py
++++ texmf-dist/tex/latex/prettytok/prettytok-decode-8bit.py	2024-03-20 09:23:16.017417725 +0000
+@@ -1,4 +1,4 @@
+-#!/bin/python3
++#!/usr/bin/python3
+ """
+ A hack to allow decoding for example ^^[ to the proper escape sequence.
+ """
