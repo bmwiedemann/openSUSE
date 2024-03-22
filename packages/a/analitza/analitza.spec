@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           analitza
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        A library to add mathematical features to programs
 License:        LGPL-2.1-or-later
@@ -64,6 +64,9 @@ The Analitza library lets developers add mathematical features to programs.
 %package devel
 Summary:        Development files for analitza, a mathematical feature library
 Requires:       libAnalitza8 = %{version}
+Requires:       cmake(Qt6Core) >= %{qt6_version}
+Requires:       cmake(Qt6Core5Compat) >= %{qt6_version}
+Requires:       cmake(Qt6Xml) >= %{qt6_version}
 Obsoletes:      analitza5-devel < %{version}
 
 %description devel
