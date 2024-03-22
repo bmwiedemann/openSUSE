@@ -23,4 +23,16 @@
     <comment></comment>
     <requestid>1138871</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>053b26a436246a28ac5c53304a2444b9</srcmd5>
+    <version>3.1.18</version>
+    <time>1711117225</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.18:
+  * Fix possible deadlock on pipeline exit (:ticket:`#685`).
+  * Fix overflow loading large intervals in C module
+  * Fix compatibility with musl libc distributions affected by
+    CPython issue #65821</comment>
+    <requestid>1160438</requestid>
+  </revision>
 </revisionlist>
