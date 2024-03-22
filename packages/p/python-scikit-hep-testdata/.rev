@@ -190,4 +190,16 @@
     <comment></comment>
     <requestid>1152049</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4269748b6996eb4ef8352c892e9a6bc8</srcmd5>
+    <version>0.4.40</version>
+    <time>1711117232</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.40:
+  * feat: add uproot-issue-586 data
+- update to 0.4.39:
+  * Added https://cburr.web.cern.ch/string-example.root to the
+    set of files (daba9d14a30a74ce638ccbe4d055c41679335a71).</comment>
+    <requestid>1160443</requestid>
+  </revision>
 </revisionlist>
