@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 22 08:28:40 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Jul 18 08:53:01 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Initial packaging (v2022.1), needed by django-crispy-forms v2

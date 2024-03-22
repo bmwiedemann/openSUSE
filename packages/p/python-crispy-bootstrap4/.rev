@@ -7,4 +7,12 @@
     <comment>needed by https://build.opensuse.org/request/show/1099525</comment>
     <requestid>1099730</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9a4fafeca4b42c9779601569f1e4ec6f</srcmd5>
+    <version>2022.1</version>
+    <time>1711117329</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1160600</requestid>
+  </revision>
 </revisionlist>
