@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:25:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Fix download list page having uninteractable action buttons
+  * Fix downloads not being prompted and starting
+  * Fix history clearing not working CCBUG: 478890
+  * Fix desktop tabs
+  * UrlDelegate: Fix deleting entries
+  * Fix remove button
+  * Fix bookmarks and history page not working on mobile It appears changes were done on the desktop UI, and they were not tested on the mobile UI.
+  * appstream: Update developer name
+
+-------------------------------------------------------------------
 Fri Feb 23 13:58:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
