@@ -156,4 +156,13 @@
   * Add --no-random-seed argument</comment>
     <requestid>1148172</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>af9565be0ae96e5fc7be20ff9b6c4286</srcmd5>
+    <version>1+git20240320.8b35615</version>
+    <time>1711117035</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1+git20240320.8b35615:
+  * Revert &quot;Remove GRUB2 package conflict&quot; (forwarded request 1159806 from lnussel)</comment>
+    <requestid>1159807</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Mar 20 10:02:58 UTC 2024 - lnussel@suse.com
+
+- Update to version 1+git20240320.8b35615:
+  * Revert "Remove GRUB2 package conflict"
+
+-------------------------------------------------------------------
+Thu Mar 14 14:14:31 UTC 2024 - lnussel@suse.com
+
+- Update to version 1+git20240314.3472899:
+  * Add minimal grub configuration
+  * Add systemd.machine_id to kernel command line
+  * Add SNAPSHOT parameter to bootloader command
+  * Remove GRUB2 package conflict
+  * Resolve some shellcheck issues
+  * Remove unused variable
+  * Change tempfile name
+  * needs-update and update meets grub2
+  * Consider grub2 when installing the bootloader
+  * Add grub2 detector and command
+  * fix: delete correct initrd file after installation
+  * feat: add add-all-kernels-clean function
+  * refactor: use snapshot as argument for all commands
+  * Set SYSTEMD_LOG_LEVEL=warning for pcrlock
+  * Don't require /etc/sysconfig/fde-tools for pcr-oracle
+  * add loader.conf to locking
+  * Make sure there are actually entries
+  * Prefer pcr-oracle if it's actually configured
+  * Don't log to syslog ourselves
+  * Fix typo
+  * fix: remove Tumbleweed version from regular entries
+
+-------------------------------------------------------------------
 Thu Feb 15 15:04:42 UTC 2024 - lnussel@suse.com
 
 - Update to version 1+git20240215.cb7e392:
