@@ -392,4 +392,38 @@ We're in the process of easing the installation process across different Linux d
     <comment></comment>
     <requestid>1138379</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d38da9f0e7f85f5f0de7f5da5e5935b1</srcmd5>
+    <version>4.3.4</version>
+    <time>1711117271</time>
+    <user>anag+factory</user>
+    <comment>update to 4.3.4
+  * General improvements:
+    + all : allow @:using with Class and Enum
+    + display : expose list of metadata/defines
+  * Bugfixes:
+    + all : typedef vs. GADT
+    + all : don't double-throw exceptions
+    + all : fix some abstract inlining failures
+    + all : fix JsonPrinter empty parent class
+    + all : dce: clean up operator handling
+    + all : analyzer: deal with unreachable block in binops
+    + all : analyzer: don't recursively check enum values when const propagating
+    + all : analyzer: fix check for inlined purity meta
+    + display : fix errors from parser missing in diagnostics
+    + display : fix display services with static extension
+    + display : fix display services with safe navigation
+    + hl : hlopt rework try-catch control flow
+    + hl/c : fix reserved keywords
+  * Deprecation / future version handling:
+    + all : don't infer string on concat, when using -D haxe-next
+    + all : handle optional arguments with bind, when using -D haxe-next
+    + macro : build order vs inheritance, when using -D haxe-next
+    + macro : deprecate some API from haxe.macro.Compiler
+    + java/jvm : warn about --java ... -D jvm vs --jvm ...
+  * Details can be found in the issues references in
+    https://github.com/HaxeFoundation/haxe/releases/tag/4.3.4
+</comment>
+    <requestid>1160503</requestid>
+  </revision>
 </revisionlist>
