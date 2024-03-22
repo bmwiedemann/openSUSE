@@ -101,4 +101,13 @@
   * Fix potential crash in video calls</comment>
     <requestid>1097860</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>3ddce25e2b7a77f8d178a1d4c78339e6</srcmd5>
+    <version>0.4.3</version>
+    <time>1711117318</time>
+    <user>anag+factory</user>
+    <comment>- Add dino-0.4.3-emoji.patch:
+  Add more emoji translations gh/dino/dino#1207</comment>
+    <requestid>1160567</requestid>
+  </revision>
 </revisionlist>
