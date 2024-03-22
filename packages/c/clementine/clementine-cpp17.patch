@@ -1,0 +1,121 @@
+From 0c8b39290190bb809f4605c56b222c1168775a33 Mon Sep 17 00:00:00 2001
+From: Jonas Kvinge <jonas@jkvinge.net>
+Date: Sun, 17 Mar 2024 15:00:14 +0100
+Subject: [PATCH 1/3] Use C++17
+
+Signed-off-by: Jonas Kvinge <jonas@jkvinge.net>
+---
+ 3rdparty/libprojectm/CMakeLists.txt         | 2 --
+ 3rdparty/qtsingleapplication/CMakeLists.txt | 1 -
+ CMakeLists.txt                              | 3 +++
+ ext/clementine-tagreader/CMakeLists.txt     | 2 --
+ ext/libclementine-common/CMakeLists.txt     | 2 --
+ ext/libclementine-remote/CMakeLists.txt     | 2 --
+ ext/libclementine-tagreader/CMakeLists.txt  | 2 --
+ gst/moodbar/CMakeLists.txt                  | 2 +-
+ 8 files changed, 4 insertions(+), 12 deletions(-)
+
+diff --git a/3rdparty/libprojectm/CMakeLists.txt b/3rdparty/libprojectm/CMakeLists.txt
+index ce58344..a70f8a2 100644
+--- a/3rdparty/libprojectm/CMakeLists.txt
++++ b/3rdparty/libprojectm/CMakeLists.txt
+@@ -24,8 +24,6 @@ set(BUILD_PROJECTM_STATIC ON)
+ set(DISABLE_NATIVE_PRESETS ON)
+ set(DISABLE_MILKDROP_PRESETS OFF)
+ 
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+-
+ pkg_check_modules(GLEW glew)
+ 
+ if(DISABLE_NATIVE_PRESETS)
+diff --git a/3rdparty/qtsingleapplication/CMakeLists.txt b/3rdparty/qtsingleapplication/CMakeLists.txt
+index 7825ab9..c405256 100644
+--- a/3rdparty/qtsingleapplication/CMakeLists.txt
++++ b/3rdparty/qtsingleapplication/CMakeLists.txt
+@@ -1,5 +1,4 @@
+ cmake_minimum_required(VERSION 3.0.0)
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++0x")
+ 
+ set(SINGLEAPP-SOURCES
+     qtlocalpeer.cpp
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b2d7027..759d673 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,6 +15,9 @@ include(cmake/Format.cmake)
+ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+ set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
+ 
++set(CMAKE_CXX_STANDARD 17)
++set(CMAKE_CXX_STANDARD_REQUIRED ON)
++
+ if (CMAKE_CXX_COMPILER MATCHES ".*clang")
+   set(CMAKE_COMPILER_IS_CLANGXX 1)
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-uninitialized")
+diff --git a/ext/clementine-tagreader/CMakeLists.txt b/ext/clementine-tagreader/CMakeLists.txt
+index 998f9fe..16e6bb0 100644
+--- a/ext/clementine-tagreader/CMakeLists.txt
++++ b/ext/clementine-tagreader/CMakeLists.txt
+@@ -5,8 +5,6 @@ include_directories(${CMAKE_SOURCE_DIR}/ext/libclementine-common)
+ include_directories(${CMAKE_SOURCE_DIR}/ext/libclementine-tagreader)
+ include_directories(${CMAKE_BINARY_DIR}/ext/libclementine-tagreader)
+ 
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+-
+ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+ 
+ set(SOURCES
+diff --git a/ext/libclementine-common/CMakeLists.txt b/ext/libclementine-common/CMakeLists.txt
+index ad35a51..5aff49a 100644
+--- a/ext/libclementine-common/CMakeLists.txt
++++ b/ext/libclementine-common/CMakeLists.txt
+@@ -2,8 +2,6 @@ include_directories(${PROTOBUF_INCLUDE_DIRS})
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+ 
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++0x")
+-
+ set(SOURCES
+   core/closure.cpp
+   core/latch.cpp
+diff --git a/ext/libclementine-remote/CMakeLists.txt b/ext/libclementine-remote/CMakeLists.txt
+index 70761b4..5f860fb 100644
+--- a/ext/libclementine-remote/CMakeLists.txt
++++ b/ext/libclementine-remote/CMakeLists.txt
+@@ -1,7 +1,5 @@
+ include_directories(${PROTOBUF_INCLUDE_DIRS})
+ 
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++0x")
+-
+ set(MESSAGES
+   remotecontrolmessages.proto
+ )
+diff --git a/ext/libclementine-tagreader/CMakeLists.txt b/ext/libclementine-tagreader/CMakeLists.txt
+index d7ae9f6..c51dbaf 100644
+--- a/ext/libclementine-tagreader/CMakeLists.txt
++++ b/ext/libclementine-tagreader/CMakeLists.txt
+@@ -3,8 +3,6 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ include_directories(${CMAKE_SOURCE_DIR}/ext/libclementine-common)
+ 
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++0x")
+-
+ set(MESSAGES
+   tagreadermessages.proto
+ )
+diff --git a/gst/moodbar/CMakeLists.txt b/gst/moodbar/CMakeLists.txt
+index 636ef9f..0bb87e8 100644
+--- a/gst/moodbar/CMakeLists.txt
++++ b/gst/moodbar/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ cmake_minimum_required(VERSION 3.0.0)
+ 
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Woverloaded-virtual -Wall --std=c++0x")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Woverloaded-virtual -Wall")
+ 
+ include_directories(${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+ 
+-- 
+2.44.0
+

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 17 14:13:29 UTC 2024 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Add clementine-cpp17.patch:
+  * Fixes build with TagLib and Protobuf now requiring C++17.
+- Add clementine-protobuf.patch:
+  * Fixes build with protobuf 22 and higher.
+- Add clementine-taglib2.patch:
+  * Fixes build with TagLib 2.
+- Removed clementine-ix86-build-fix.patch and
+  clementine-cpp17-force.patch.
+
+-------------------------------------------------------------------
 Thu Mar  7 14:49:26 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Fix build error with protobuf 25 in Leap 15.6

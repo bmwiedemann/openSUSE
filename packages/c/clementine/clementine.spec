@@ -19,9 +19,6 @@
 %define rev bbda59a5f347a75bbecde0b1928e03942e367850
 
 %bcond_without git
-#Allow use of internal taglib until taglib2 build issue is solved
-#https://github.com/clementine-player/Clementine/issues/7313
-%bcond_with systaglib
 
 %if 0%{?suse_version} > 1500
 %bcond_without manpage
@@ -49,12 +46,12 @@ Patch1:         clementine-udisks-headers.patch
 Patch2:         clementine-moodbar-fpic.patch
 # PATCH-FEATURE-OPENSUSE
 Patch6:         use_system_qxtglobalshortcut.patch
-%if 0%{?suse_version} > 1500 || (0%{?suse_version} == 1500 && 0%{?sle_version} > 150500)
-# Patch fix build with recent protobuf
-Patch3:         clementine-cpp17-force.patch
-# Patch fix ix86 build for missing protobuf link libs
-Patch4:         clementine-ix86-build-fix.patch
-%endif
+# Use C++17
+Patch3:         clementine-cpp17.patch
+# Fix build with protobuf 22 and higher
+Patch4:         clementine-protobuf.patch
+# Fix build with TagLib 2
+Patch5:         clementine-taglib2.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
@@ -113,10 +110,7 @@ BuildRequires:  pkgconfig(libsparsehash)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(sqlite3)
-%if %{with systaglib}
-BuildRequires:  pkgconfig(taglib) >= 1.11.1
-Requires:       libtag1 >= 1.8
-%endif
+BuildRequires:  pkgconfig(taglib) >= 2
 %if %{without qt5}
 Recommends:     sni-qt
 %else
@@ -157,7 +151,7 @@ Features:
 %autopatch -p1
 
 # NOTE: Build using system versions of libraries.
-#rm -rvf 3rdparty/taglib
+rm -rvf 3rdparty/taglib
 rm -rvf 3rdparty/SPMediaKeyTap
 
 %build
@@ -169,11 +163,6 @@ export CXXFLAGS="$CFLAGS"
 %cmake \
   -DBUILD_WERROR=OFF                   \
   -DUSE_SYSTEM_QTSINGLEAPPLICATION=OFF \
-%if %{with systaglib}
-  -DUSE_SYSTEM_TAGLIB=ON               \
-%else
-  -DUSE_SYSTEM_TAGLIB=OFF               \
-%endif
   -DUSE_SYSTEM_PROJECTM=ON             \
   -DBUNDLE_PROJECTM_PRESETS=OFF        \
 %if %{with qt5}

@@ -632,4 +632,17 @@ Update to tag 1.3.92
     <comment></comment>
     <requestid>1156216</requestid>
   </revision>
+  <revision rev="66" vrev="5">
+    <srcmd5>a1c72965b1494c778bb8a8c6c7dc14a3</srcmd5>
+    <version>1.4.0~rc2</version>
+    <time>1711117296</time>
+    <user>anag+factory</user>
+    <comment>- Add clementine-cpp17.patch:
+  * Fixes build with TagLib and Protobuf now requiring C++17.
+- Add clementine-protobuf.patch:
+  * Fixes build with protobuf 22 and higher.
+- Add clementine-taglib2.patch:
+  * Fixes build with TagLib 2.</comment>
+    <requestid>1160552</requestid>
+  </revision>
 </revisionlist>

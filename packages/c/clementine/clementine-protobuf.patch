@@ -1,0 +1,145 @@
+From d23f4a3f4111a4b213a32b2aea81af7f09582ed9 Mon Sep 17 00:00:00 2001
+From: Jonas Kvinge <jonas@jkvinge.net>
+Date: Sun, 17 Mar 2024 15:06:38 +0100
+Subject: [PATCH 2/3] Fix build with protobuf 22 and higher
+
+We need to use `find_package(Protobuf CONFIG)` to use the CMake files provided by Protobuf instead of CMake, for more information see:
+
+https://gitlab.kitware.com/cmake/cmake/-/issues/25079
+
+Adapt to protobuf_generate
+
+Signed-off-by: Jonas Kvinge <jonas@jkvinge.net>
+---
+ CMakeLists.txt                               |  5 ++++-
+ ext/libclementine-remote/CMakeLists.txt      | 18 +++++++++++-------
+ ext/libclementine-spotifyblob/CMakeLists.txt | 10 +++-------
+ ext/libclementine-tagreader/CMakeLists.txt   | 20 ++++++++++++--------
+ 4 files changed, 30 insertions(+), 23 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 759d673..20e5a71 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -49,7 +49,10 @@ endif(OPENGL_FOUND)
+ find_package(Boost REQUIRED)
+ find_package(Gettext REQUIRED)
+ find_package(PkgConfig REQUIRED)
+-find_package(Protobuf REQUIRED)
++find_package(Protobuf CONFIG)
++if(NOT Protobuf_FOUND)
++  find_package(Protobuf REQUIRED)
++endif()
+ find_package(FFTW3)
+ find_package(ALSA)
+ if (NOT APPLE)
+diff --git a/ext/libclementine-remote/CMakeLists.txt b/ext/libclementine-remote/CMakeLists.txt
+index 5f860fb..5c926c9 100644
+--- a/ext/libclementine-remote/CMakeLists.txt
++++ b/ext/libclementine-remote/CMakeLists.txt
+@@ -1,17 +1,21 @@
+-include_directories(${PROTOBUF_INCLUDE_DIRS})
++# Workaround a bug in protobuf-generate.cmake (https://github.com/protocolbuffers/protobuf/issues/12450)
++if(NOT protobuf_PROTOC_EXE)
++  set(protobuf_PROTOC_EXE "protobuf::protoc")
++endif()
+ 
+-set(MESSAGES
+-  remotecontrolmessages.proto
+-)
++if(NOT Protobuf_LIBRARIES)
++  set(Protobuf_LIBRARIES protobuf::libprotobuf)
++endif()
+ 
+-protobuf_generate_cpp(PROTO_SOURCES PROTO_HEADERS ${MESSAGES})
++include_directories(${PROTOBUF_INCLUDE_DIRS})
+ 
+ add_library(libclementine-remote STATIC
+-  ${PROTO_SOURCES}
++  remotecontrolmessages.proto
+ )
+ 
+ target_link_libraries(libclementine-remote
+-  ${PROTOBUF_LIBRARY}
++  ${Protobuf_LIBRARIES}
+   libclementine-common
+ )
+ 
++protobuf_generate(TARGET libclementine-remote)
+diff --git a/ext/libclementine-spotifyblob/CMakeLists.txt b/ext/libclementine-spotifyblob/CMakeLists.txt
+index 7a73b14..bf587ff 100644
+--- a/ext/libclementine-spotifyblob/CMakeLists.txt
++++ b/ext/libclementine-spotifyblob/CMakeLists.txt
+@@ -3,16 +3,12 @@ include_directories(${PROTOBUF_INCLUDE_DIRS})
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/blobversion.h.in
+                ${CMAKE_CURRENT_BINARY_DIR}/blobversion.h)
+ 
+-set(MESSAGES
+-  spotifymessages.proto
+-)
+-
+-protobuf_generate_cpp(PROTO_SOURCES PROTO_HEADERS ${MESSAGES})
+-
+ add_library(clementine-spotifyblob-messages STATIC
+-  ${PROTO_SOURCES}
++  spotifymessages.proto
+ )
+ 
+ target_link_libraries(clementine-spotifyblob-messages
+   libclementine-common
+ )
++
++protobuf_generate(TARGET clementine-spotifyblob-messages)
+diff --git a/ext/libclementine-tagreader/CMakeLists.txt b/ext/libclementine-tagreader/CMakeLists.txt
+index c51dbaf..4c24bc0 100644
+--- a/ext/libclementine-tagreader/CMakeLists.txt
++++ b/ext/libclementine-tagreader/CMakeLists.txt
+@@ -1,16 +1,22 @@
++# Workaround a bug in protobuf-generate.cmake (https://github.com/protocolbuffers/protobuf/issues/12450)
++if(NOT protobuf_PROTOC_EXE)
++  set(protobuf_PROTOC_EXE "protobuf::protoc")
++endif()
++
++if(NOT Protobuf_LIBRARIES)
++  set(Protobuf_LIBRARIES protobuf::libprotobuf)
++endif()
++
+ include_directories(${PROTOBUF_INCLUDE_DIRS})
+ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ include_directories(${CMAKE_SOURCE_DIR}/ext/libclementine-common)
+ 
+-set(MESSAGES
+-  tagreadermessages.proto
+-)
+-
+ set(SOURCES
+   fmpsparser.cpp
+   tagreader.cpp
+   gmereader.cpp
++  tagreadermessages.proto
+ )
+ 
+ set(HEADERS
+@@ -26,16 +32,14 @@ optional_source(HAVE_GOOGLE_DRIVE
+ 
+ qt5_wrap_cpp(MOC ${HEADERS})
+ 
+-protobuf_generate_cpp(PROTO_SOURCES PROTO_HEADERS ${MESSAGES})
+-
+ add_library(libclementine-tagreader STATIC
+-  ${PROTO_SOURCES}
+   ${SOURCES}
+   ${MOC}
+ )
+ 
+ target_link_libraries(libclementine-tagreader
+-  ${PROTOBUF_LIBRARY}
++  ${Protobuf_LIBRARIES}
+   libclementine-common
+ )
+ 
++protobuf_generate(TARGET libclementine-tagreader)
+-- 
+2.44.0
+
