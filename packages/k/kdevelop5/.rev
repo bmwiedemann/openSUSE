@@ -572,4 +572,12 @@
     <comment>Remove the ksysguard integration</comment>
     <requestid>1157882</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>8af1ff77f5cbe2997c0f5a2e04dd09c9</srcmd5>
+    <version>24.02.1</version>
+    <time>1711117135</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.02.1 (forwarded request 1159650 from krop)</comment>
+    <requestid>1160211</requestid>
+  </revision>
 </revisionlist>
