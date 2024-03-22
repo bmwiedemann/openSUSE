@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 21 19:23:59 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.6.7:
+  Changelog for Talos 1.6.7 is here:
+  https://github.com/siderolabs/talos/releases/tag/v1.6.7
+  CLI-related changes:
+  * 2c9159977 fix: patch correctly config in talosctl upgrade-k8s
+
+-------------------------------------------------------------------
 Sun Mar 17 09:33:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.6.6:
