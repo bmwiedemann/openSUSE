@@ -57,6 +57,7 @@ install -m 755 -d %{buildroot}%{_datadir}/waf/
 cp -pR ./zip/waflib %{buildroot}%{_datadir}/waf/
 
 %check
+export PYTHONDONTWRITEBYTECODE=1
 export PYTHONPATH=%{buildroot}/%{_datadir}/waf/
 %{buildroot}/%{_bindir}/waf -h
 
