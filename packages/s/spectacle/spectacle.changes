@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:28:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Finish recording instead of activating when activated from shortcut while recording (kde#481471)
+  * Ensure region recording outline stays out of recording
+  * Set layer-shell exclusive zone for capture region overlay (kde#481391)
+  * Fix selection tool
+  * Use KConfigDialogManager system instead of directly setting video format (kde#481390)
+  * Fix filename template label buddies
+
+-------------------------------------------------------------------
 Fri Feb 23 14:01:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
