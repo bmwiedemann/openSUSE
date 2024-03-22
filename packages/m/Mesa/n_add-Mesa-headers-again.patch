@@ -1,15 +1,20 @@
-Index: mesa-23.3.0/include/meson.build
+Index: mesa-24.0.3/include/meson.build
 ===================================================================
---- mesa-23.3.0.orig/include/meson.build
-+++ mesa-23.3.0/include/meson.build
-@@ -28,10 +28,8 @@ if with_android_stub
+--- mesa-24.0.3.orig/include/meson.build
++++ mesa-24.0.3/include/meson.build
+@@ -28,7 +28,6 @@ if with_android_stub
    inc_include += [include_directories('android_stub')]
  endif
  
--if not with_glvnd
+-if not with_glvnd and host_machine.system() != 'windows'
    if with_gles1 or with_gles2 or with_opengl or with_egl
      install_headers('KHR/khrplatform.h', subdir : 'KHR')
--  endif
+   endif
+@@ -84,7 +83,6 @@ if not with_glvnd and host_machine.syste
+       subdir : 'EGL',
+     )
+   endif
+-endif
  
-   if with_gles1
-     install_headers(
+ # Non-upstream headers
+ if with_egl

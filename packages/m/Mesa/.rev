@@ -5554,4 +5554,69 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   build with LLVM 18.</comment>
     <requestid>1157793</requestid>
   </revision>
+  <revision rev="498" vrev="370">
+    <srcmd5>8fa4b1e4f63815aebf332f3cb80489ff</srcmd5>
+    <version>unknown</version>
+    <time>1711117037</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to fix boo#1221664:
+  * mesa-fix-llvm18.patch
+
+- 0010-glx-silence-more-implicit-load-zink-errors.patch 
+  * glx: silence more implicit-load zink errors [gitlab mesa issue #10802]
+
+- 0001-loader-delete-unused-param-from-pipe_loader_sw_probe.patch,
+  0002-glx-fix-some-indentation.patch,
+  0003-glx-add-an-implicit-param-to-createScreen.patch,
+  0004-glx-pass-implicit-load-param-through-allocation.patch,
+  0005-dri-plumb-a-implicit-param-through-createNewScreen-i.patch,
+  0006-gbm-plumb-an-implicit-param-through-device-creation.patch,
+  0007-frontends-dri-plumb-an-implicit-param-through-screen.patch,
+  0008-pipe-loader-plumb-a-flag-for-implicit-driver-load-th.patch,
+  0009-zink-don-t-print-error-messages-when-failing-an-impl.patch
+  * get rid of error message:
+    'MESA: error: ZINK: vkEnumeratePhysicalDevices failed
+    (VK_ERROR_INITIALIZATION_FAILED)' 
+    [gitlab mesa issue #10802]
+
+- adjusted and re-enabled python36-buildfix1.patch 
+
+- Update to new feature release 24.0.3
+  * Some interesting highlights include:
+    + New PowerVR Vulkan driver for Imagination's GPU
+    + NVIDIA Vulkan driver NVK has seen many improvements
+    + AMD Vulkan driver RADV ray-tracing performance improvements
+    + Microsoft OpenGL driver D3D12 has reached OpenGL 4.6 support
+  * New extensions &amp; features (in no particular order):
+    + VK_EXT_image_compression_control on RADV
+    + VK_EXT_device_fault on RADV
+    + OpenGL 3.3 on Asahi
+    + Geometry shaders on Asahi
+    + GL_ARB_texture_cube_map_array on Asahi
+    + GL_ARB_clip_control on Asahi
+    + GL_ARB_timer_query on Asahi
+    + GL_EXT_disjoint_timer_query on Asahi
+    + GL_ARB_base_instance on Asahi
+    + OpenGL 4.6 (up from 4.2) on d3d12
+    + VK_EXT_depth_clamp_zero_one on RADV
+    + GL_ARB_shader_texture_image_samples on Asahi
+    + GL_ARB_indirect_parameters on Asahi
+    + GL_ARB_viewport_array on Asahi
+    + GL_ARB_fragment_layer_viewport on Asahi
+    + GL_ARB_cull_distance on Asahi
+    + GL_ARB_transform_feedback_overflow_query on Asahi
+    + VK_KHR_calibrated_timestamps on RADV
+    + VK_KHR_vertex_attribute_divisor on RADV
+    + VK_KHR_maintenance6 on RADV
+    + VK_KHR_ray_tracing_position_fetch on RADV
+    + EGL_EXT_query_reset_notification_strategy
+- supersedes U_fix-ac-llvm-LLVM-18-remove-useless-passes.patch
+- adjusted n_add-Mesa-headers-again.patch, u_dep_xcb.patch
+- disabled python36-buildfix1.patch
+- removed disabled patch u_fix-build-on-ppc64le.patch
+
+- get rid of u_zink-dont-print-error-messages-when-failing-an-implicit.patch
+  completely</comment>
+    <requestid>1159850</requestid>
+  </revision>
 </revisionlist>

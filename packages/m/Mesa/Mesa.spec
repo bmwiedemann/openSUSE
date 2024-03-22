@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package Mesa
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 23.3.6
+%define _version 24.0.3
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -123,7 +123,7 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        23.3.6
+Version:        24.0.3
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -142,14 +142,23 @@ Patch11:        u_0001-intel-genxml-Drop-from-__future__-import-annotations.patc
 Patch12:        u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
 Patch13:        python36-buildfix1.patch
 Patch14:        python36-buildfix2.patch
-Patch15:        U_fix-ac-llvm-LLVM-18-remove-useless-passes.patch
+# PATCH-FIX-UPSTREAM - boo#1221664
+Patch15:        mesa-fix-llvm18.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
-Patch200:       u_fix-build-on-ppc64le.patch
 Patch400:       n_stop-iris-flicker.patch
-Patch500:       u_zink-dont-print-error-messages-when-failing-an-implicit.patch
+Patch501:       0001-loader-delete-unused-param-from-pipe_loader_sw_probe.patch
+Patch502:       0002-glx-fix-some-indentation.patch
+Patch503:       0003-glx-add-an-implicit-param-to-createScreen.patch
+Patch504:       0004-glx-pass-implicit-load-param-through-allocation.patch
+Patch505:       0005-dri-plumb-a-implicit-param-through-createNewScreen-i.patch
+Patch506:       0006-gbm-plumb-an-implicit-param-through-device-creation.patch
+Patch507:       0007-frontends-dri-plumb-an-implicit-param-through-screen.patch
+Patch508:       0008-pipe-loader-plumb-a-flag-for-implicit-driver-load-th.patch
+Patch509:       0009-zink-don-t-print-error-messages-when-failing-an-impl.patch
+Patch510:       0010-glx-silence-more-implicit-load-zink-errors.patch
 %ifarch %{ix86} x86_64
 BuildRequires:  DirectX-Headers
 %endif
@@ -771,9 +780,17 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %endif
 %patch -P 58 -p1
 %patch -P 100 -p1
-#%patch -P 200 -p1
 %patch -P 400 -p1
-#%patch -P 500 -p1
+%patch -P 501 -p1
+%patch -P 502 -p1
+%patch -P 503 -p1
+%patch -P 504 -p1
+%patch -P 505 -p1
+%patch -P 506 -p1
+%patch -P 507 -p1
+%patch -P 508 -p1
+%patch -P 509 -p1
+%patch -P 510 -p1
 
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...

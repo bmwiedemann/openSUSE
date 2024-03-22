@@ -1,4 +1,4 @@
-From 481a319ad2df61fed7e2728d70eb9b945894303e Mon Sep 17 00:00:00 2001
+From 940d9bce8ec9a1acc5065bce9d3e4c369546319b Mon Sep 17 00:00:00 2001
 From: Mike Blumenkrantz <michael.blumenkrantz@gmail.com>
 Date: Tue, 12 Mar 2024 10:22:24 -0400
 Subject: [PATCH 9/9] zink: don't print error messages when failing an implicit
@@ -11,11 +11,11 @@ Subject: [PATCH 9/9] zink: don't print error messages when failing an implicit
  src/gallium/drivers/zink/zink_types.h        |  1 +
  4 files changed, 66 insertions(+), 32 deletions(-)
 
-diff --git a/src/gallium/drivers/zink/zink_device_info.py b/src/gallium/drivers/zink/zink_device_info.py
-index 17222001180d5..b0bc38218922c 100644
---- a/src/gallium/drivers/zink/zink_device_info.py
-+++ b/src/gallium/drivers/zink/zink_device_info.py
-@@ -470,14 +470,16 @@ zink_get_physical_device_info(struct zink_screen *screen)
+Index: mesa-24.0.3/src/gallium/drivers/zink/zink_device_info.py
+===================================================================
+--- mesa-24.0.3.orig/src/gallium/drivers/zink/zink_device_info.py
++++ mesa-24.0.3/src/gallium/drivers/zink/zink_device_info.py
+@@ -463,14 +463,16 @@ zink_get_physical_device_info(struct zin
     // enumerate device supported extensions
     VkResult result = screen->vk.EnumerateDeviceExtensionProperties(screen->pdev, NULL, &num_extensions, NULL);
     if (result != VK_SUCCESS) {
@@ -34,11 +34,11 @@ index 17222001180d5..b0bc38218922c 100644
           }
  
           for (uint32_t i = 0; i < num_extensions; ++i) {
-diff --git a/src/gallium/drivers/zink/zink_instance.py b/src/gallium/drivers/zink/zink_instance.py
-index 0fbd14e5a5826..fec0844593b78 100644
---- a/src/gallium/drivers/zink/zink_instance.py
-+++ b/src/gallium/drivers/zink/zink_instance.py
-@@ -156,12 +156,14 @@ zink_create_instance(struct zink_screen *screen, bool display_dev)
+Index: mesa-24.0.3/src/gallium/drivers/zink/zink_instance.py
+===================================================================
+--- mesa-24.0.3.orig/src/gallium/drivers/zink/zink_instance.py
++++ mesa-24.0.3/src/gallium/drivers/zink/zink_instance.py
+@@ -156,12 +156,14 @@ zink_create_instance(struct zink_screen
     // Build up the extensions from the reported ones but only for the unnamed layer
     uint32_t extension_count = 0;
     if (vk_EnumerateInstanceExtensionProperties(NULL, &extension_count, NULL) != VK_SUCCESS) {
@@ -55,7 +55,7 @@ index 0fbd14e5a5826..fec0844593b78 100644
             } else {
                for (uint32_t i = 0; i < extension_count; i++) {
          %for ext in extensions:
-@@ -179,12 +181,14 @@ zink_create_instance(struct zink_screen *screen, bool display_dev)
+@@ -179,12 +181,14 @@ zink_create_instance(struct zink_screen
      uint32_t layer_count = 0;
  
      if (vk_EnumerateInstanceLayerProperties(&layer_count, NULL) != VK_SUCCESS) {
@@ -72,7 +72,7 @@ index 0fbd14e5a5826..fec0844593b78 100644
              } else {
                 for (uint32_t i = 0; i < layer_count; i++) {
  %for layer in layers:
-@@ -256,7 +260,8 @@ zink_create_instance(struct zink_screen *screen, bool display_dev)
+@@ -256,7 +260,8 @@ zink_create_instance(struct zink_screen
  
     VkResult err = vk_CreateInstance(&ici, NULL, &screen->instance);
     if (err != VK_SUCCESS) {
@@ -82,11 +82,11 @@ index 0fbd14e5a5826..fec0844593b78 100644
        return false;
     }
  
-diff --git a/src/gallium/drivers/zink/zink_screen.c b/src/gallium/drivers/zink/zink_screen.c
-index 9d4952eb4ef1b..39194c7a89bf2 100644
---- a/src/gallium/drivers/zink/zink_screen.c
-+++ b/src/gallium/drivers/zink/zink_screen.c
-@@ -1695,7 +1695,8 @@ choose_pdev(struct zink_screen *screen, int64_t dev_major, int64_t dev_minor)
+Index: mesa-24.0.3/src/gallium/drivers/zink/zink_screen.c
+===================================================================
+--- mesa-24.0.3.orig/src/gallium/drivers/zink/zink_screen.c
++++ mesa-24.0.3/src/gallium/drivers/zink/zink_screen.c
+@@ -1606,7 +1606,8 @@ choose_pdev(struct zink_screen *screen,
        VkPhysicalDevice *pdevs;
        VkResult result = VKSCR(EnumeratePhysicalDevices)(screen->instance, &pdev_count, NULL);
        if (result != VK_SUCCESS) {
@@ -96,7 +96,7 @@ index 9d4952eb4ef1b..39194c7a89bf2 100644
           return;
        }
  
-@@ -1703,7 +1704,8 @@ choose_pdev(struct zink_screen *screen, int64_t dev_major, int64_t dev_minor)
+@@ -1614,7 +1615,8 @@ choose_pdev(struct zink_screen *screen,
  
        pdevs = malloc(sizeof(*pdevs) * pdev_count);
        if (!pdevs) {
@@ -106,7 +106,7 @@ index 9d4952eb4ef1b..39194c7a89bf2 100644
           return;
        }
        result = VKSCR(EnumeratePhysicalDevices)(screen->instance, &pdev_count, pdevs);
-@@ -1730,7 +1732,8 @@ choose_pdev(struct zink_screen *screen, int64_t dev_major, int64_t dev_minor)
+@@ -1641,7 +1643,8 @@ choose_pdev(struct zink_screen *screen,
        unsigned pdev_count = 1;
        VkResult result = VKSCR(EnumeratePhysicalDevices)(screen->instance, &pdev_count, &pdev);
        if (result != VK_SUCCESS && result != VK_INCOMPLETE) {
@@ -116,7 +116,7 @@ index 9d4952eb4ef1b..39194c7a89bf2 100644
           return;
        }
        screen->pdev = pdev;
-@@ -3238,10 +3241,12 @@ zink_internal_create_screen(const struct pipe_screen_config *config, int64_t dev
+@@ -3147,10 +3150,12 @@ zink_internal_create_screen(const struct
  
     struct zink_screen *screen = rzalloc(NULL, struct zink_screen);
     if (!screen) {
@@ -130,7 +130,7 @@ index 9d4952eb4ef1b..39194c7a89bf2 100644
     screen->drm_fd = -1;
  
     glsl_type_singleton_init_or_ref();
-@@ -3261,7 +3266,8 @@ zink_internal_create_screen(const struct pipe_screen_config *config, int64_t dev
+@@ -3170,7 +3175,8 @@ zink_internal_create_screen(const struct
  
     screen->loader_lib = util_dl_open(VK_LIBNAME);
     if (!screen->loader_lib) {
@@ -140,7 +140,7 @@ index 9d4952eb4ef1b..39194c7a89bf2 100644
        goto fail;
     }
  
-@@ -3269,7 +3275,8 @@ zink_internal_create_screen(const struct pipe_screen_config *config, int64_t dev
+@@ -3178,7 +3184,8 @@ zink_internal_create_screen(const struct
     screen->vk_GetDeviceProcAddr = (PFN_vkGetDeviceProcAddr)util_dl_get_proc_address(screen->loader_lib, "vkGetDeviceProcAddr");
     if (!screen->vk_GetInstanceProcAddr ||
         !screen->vk_GetDeviceProcAddr) {
@@ -150,7 +150,7 @@ index 9d4952eb4ef1b..39194c7a89bf2 100644
        goto fail;
     }
  
-@@ -3289,7 +3296,8 @@ zink_internal_create_screen(const struct pipe_screen_config *config, int64_t dev
+@@ -3199,7 +3206,8 @@ zink_internal_create_screen(const struct
     if (zink_debug & ZINK_DEBUG_VALIDATION) {
        if (!screen->instance_info.have_layer_KHRONOS_validation &&
            !screen->instance_info.have_layer_LUNARG_standard_validation) {
@@ -160,7 +160,7 @@ index 9d4952eb4ef1b..39194c7a89bf2 100644
           goto fail;
        }
     }
-@@ -3304,12 +3312,15 @@ zink_internal_create_screen(const struct pipe_screen_config *config, int64_t dev
+@@ -3214,12 +3222,15 @@ zink_internal_create_screen(const struct
     zink_verify_instance_extensions(screen);
  
     if (screen->instance_info.have_EXT_debug_utils &&
@@ -179,7 +179,7 @@ index 9d4952eb4ef1b..39194c7a89bf2 100644
        goto fail;
     }
     screen->is_cpu = screen->info.props.deviceType == VK_PHYSICAL_DEVICE_TYPE_CPU;
-@@ -3324,7 +3335,8 @@ zink_internal_create_screen(const struct pipe_screen_config *config, int64_t dev
+@@ -3234,7 +3245,8 @@ zink_internal_create_screen(const struct
                                                VK_FORMAT_D32_SFLOAT_S8_UINT);
  
     if (!zink_get_physical_device_info(screen)) {
@@ -189,7 +189,7 @@ index 9d4952eb4ef1b..39194c7a89bf2 100644
        goto fail;
     }
  
-@@ -3367,18 +3379,21 @@ zink_internal_create_screen(const struct pipe_screen_config *config, int64_t dev
+@@ -3277,18 +3289,21 @@ zink_internal_create_screen(const struct
  
     setup_renderdoc(screen);
     if (screen->threaded_submit && !util_queue_init(&screen->flush_queue, "zfq", 8, 1, UTIL_QUEUE_INIT_RESIZE_IF_FULL, screen)) {
@@ -214,7 +214,7 @@ index 9d4952eb4ef1b..39194c7a89bf2 100644
           goto fail;
        }
     }
-@@ -3497,14 +3512,16 @@ zink_internal_create_screen(const struct pipe_screen_config *config, int64_t dev
+@@ -3404,14 +3419,16 @@ zink_internal_create_screen(const struct
     if (!zink_screen_resource_init(&screen->base))
        goto fail;
     if (!zink_bo_init(screen)) {
@@ -233,7 +233,7 @@ index 9d4952eb4ef1b..39194c7a89bf2 100644
        goto fail;
     }
     if (!util_queue_init(&screen->cache_get_thread, "zcfq", 8, 4,
-@@ -3520,12 +3537,14 @@ zink_internal_create_screen(const struct pipe_screen_config *config, int64_t dev
+@@ -3426,12 +3443,14 @@ zink_internal_create_screen(const struct
     screen->total_video_mem = get_video_mem(screen);
     screen->clamp_video_mem = screen->total_video_mem * 0.8;
     if (!os_get_total_physical_memory(&screen->total_mem)) {
@@ -250,7 +250,7 @@ index 9d4952eb4ef1b..39194c7a89bf2 100644
        goto fail;
     }
  
-@@ -3533,35 +3552,40 @@ zink_internal_create_screen(const struct pipe_screen_config *config, int64_t dev
+@@ -3439,35 +3458,40 @@ zink_internal_create_screen(const struct
     {
        if (!screen->info.have_EXT_descriptor_buffer) {
           if (zink_descriptor_mode == ZINK_DESCRIPTOR_MODE_DB) {
@@ -296,7 +296,7 @@ index 9d4952eb4ef1b..39194c7a89bf2 100644
              goto fail;
           }
           mesa_logw("zink: bug detected: inputAttachmentDescriptorSize(%u) > %u", (unsigned)screen->info.db_props.inputAttachmentDescriptorSize, ZINK_FBFETCH_DESCRIPTOR_SIZE);
-@@ -3620,12 +3644,14 @@ zink_internal_create_screen(const struct pipe_screen_config *config, int64_t dev
+@@ -3526,12 +3550,14 @@ zink_internal_create_screen(const struct
     zink_init_screen_pipeline_libs(screen);
  
     if (!init_layouts(screen)) {
@@ -313,11 +313,11 @@ index 9d4952eb4ef1b..39194c7a89bf2 100644
        goto fail;
     }
  
-diff --git a/src/gallium/drivers/zink/zink_types.h b/src/gallium/drivers/zink/zink_types.h
-index 739838d0dce14..512c5c571ba84 100644
---- a/src/gallium/drivers/zink/zink_types.h
-+++ b/src/gallium/drivers/zink/zink_types.h
-@@ -1413,6 +1413,7 @@ struct zink_screen {
+Index: mesa-24.0.3/src/gallium/drivers/zink/zink_types.h
+===================================================================
+--- mesa-24.0.3.orig/src/gallium/drivers/zink/zink_types.h
++++ mesa-24.0.3/src/gallium/drivers/zink/zink_types.h
+@@ -1408,6 +1408,7 @@ struct zink_screen {
     bool is_cpu;
     bool abort_on_hang;
     bool frame_marker_emitted;
@@ -325,6 +325,3 @@ index 739838d0dce14..512c5c571ba84 100644
     uint64_t curr_batch; //the current batch id
     uint32_t last_finished;
     VkSemaphore sem;
--- 
-GitLab
-
