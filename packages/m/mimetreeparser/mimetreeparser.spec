@@ -18,11 +18,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           mimetreeparser
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        Library to parse MIME trees
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -106,7 +106,7 @@ files to develop applications using this library.
 
 %install
 %kf6_install
-%ifnarch aarch64 riscv64 x86_64 %x86_64
+%ifnarch aarch64 riscv64 x86_64 %x86_64 %x86_64
 # Qt WebEngine not available
 rm %{buildroot}%{_kf6_qmldir}/org/kde/pim/mimetreeparser/private/HtmlPart.qml
 %endif
