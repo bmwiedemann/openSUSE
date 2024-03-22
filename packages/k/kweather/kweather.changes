@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:27:32 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * CI: Flatpak: Add libplasma
+  * flatpak: Switch to non-preview runtime
+  * appstream: Update developer name
+
+-------------------------------------------------------------------
 Fri Feb 23 14:00:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
