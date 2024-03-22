@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:25:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * [kcm] Rework account rename and removal popups (kde#482307)
+
+-------------------------------------------------------------------
 Wed Feb 28 18:43:26 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Require signon-kwallet-extension
