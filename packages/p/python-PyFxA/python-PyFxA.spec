@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyFxA
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017-2018 The openSUSE Project.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyFxA
-Version:        0.7.7
+Version:        0.7.8
 Release:        0
 Summary:        Firefox Accounts client library for Python
 License:        MPL-2.0
@@ -30,20 +30,23 @@ BuildRequires:  %{python_module PyBrowserID}
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module hawkauthlib}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyotp}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.4.2}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.14}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyBrowserID
+Requires:       python-PyJWT
 Requires:       python-cryptography
 Requires:       python-requests >= 2.4.2
 Requires:       python-six >= 1.14
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,10 +59,10 @@ sed -i -e '/^#!\/usr\/bin\/env python/d' fxa/__main__.py
 find ./ -type f -exec chmod -x {} +
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/fxa-client
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -85,6 +88,7 @@ includedTests="\
 %files %{python_files}
 %doc CHANGES.txt README.rst
 %python_alternative %{_bindir}/fxa-client
-%{python_sitelib}/*
+%{python_sitelib}/fxa
+%{python_sitelib}/PyFxA-%{version}.dist-info
 
 %changelog

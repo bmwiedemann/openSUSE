@@ -132,4 +132,13 @@
     <comment></comment>
     <requestid>967289</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>eed82e54ceed77d458673eb2701f0416</srcmd5>
+    <version>0.7.8</version>
+    <time>1711117224</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.8:
+  * Add retries to the APIClient session</comment>
+    <requestid>1160436</requestid>
+  </revision>
 </revisionlist>
