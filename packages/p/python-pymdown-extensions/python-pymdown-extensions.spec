@@ -23,6 +23,8 @@ Summary:        Extension pack for Python Markdown
 License:        MIT
 URL:            https://github.com/facelessuser/pymdown-extensions
 Source:         https://github.com/facelessuser/pymdown-extensions/archive/refs/tags/%{version}.tar.gz#/pymdown-extensions-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Assert toc_tokens is a superset of what we want to check
+Patch0:         fix-toc-list-check.patch
 BuildRequires:  %{python_module Markdown >= 3.2}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -47,7 +49,7 @@ Covering a wide range of solutions, and while not every extension is needed
 by all people, there is usually at least one useful extension for anybody.
 
 %prep
-%setup -q -n pymdown-extensions-%{version}
+%autosetup -p1 -n pymdown-extensions-%{version}
 
 %build
 %pyproject_wheel

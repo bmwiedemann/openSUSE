@@ -64,4 +64,13 @@
     of content tokens.</comment>
     <requestid>1158466</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b3c967ddb5d8b592152b48afc3db1fc6</srcmd5>
+    <version>10.7.1</version>
+    <time>1711117273</time>
+    <user>anag+factory</user>
+    <comment>- Add patch fix-toc-list-check.patch:
+  * Assert toc_tokens is a superset of what we are looking for.</comment>
+    <requestid>1160508</requestid>
+  </revision>
 </revisionlist>

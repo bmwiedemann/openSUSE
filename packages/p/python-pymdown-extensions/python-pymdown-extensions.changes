@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 22 02:46:48 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch fix-toc-list-check.patch:
+  * Assert toc_tokens is a superset of what we are looking for.
+
+-------------------------------------------------------------------
 Sat Mar 16 12:52:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.7.1:
