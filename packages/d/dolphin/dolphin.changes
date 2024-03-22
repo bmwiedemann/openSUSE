@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:25:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Save 'Open Archives as Folders' setting (kde#474500)
+  * Sync Dolphin icon with Breeze system-file-manager (kde#482581)
+  * Remove unneeded code for toggeling dockwidget visibility (kde#481952)
+  * flatpak: Switch to non-preview runtime
+  * Open KFind with current dir (kde#482343)
+  * Fix compile with Qt 6.7
+  * Fix a crash in DolphinSearchBox::hideEvent() (kde#481553)
+- Drop patch, merged upstream:
+  * 0001-Remove-unneeded-code-for-toggeling-dockwidget-visibi.patch
+
+-------------------------------------------------------------------
 Sun Mar 17 10:42:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream fix for disappearing panels (boo#1221513):

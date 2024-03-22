@@ -944,4 +944,12 @@
   * 0001-Remove-unneeded-code-for-toggeling-dockwidget-visibi.patch</comment>
     <requestid>1158723</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>276637647b91f2a6fcbc77f382037621</srcmd5>
+    <version>24.02.1</version>
+    <time>1711116979</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.02.1 (forwarded request 1159650 from krop)</comment>
+    <requestid>1160151</requestid>
+  </revision>
 </revisionlist>
