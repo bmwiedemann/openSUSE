@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 21 19:53:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.32.4:
+  * K9s/release v0.32.4 (#2637)
+  * fix build snap (#2621)
+  * Bump k8s.io/apiextensions-apiserver from 0.29.2 to 0.29.3
+    (#2627)
+  * Bump helm.sh/helm/v3 from 3.14.2 to 3.14.3 (#2628)
+  * Bump k8s.io/kubectl from 0.29.2 to 0.29.3 (#2630)
+  * Bump actions/checkout from 4.1.1 to 4.1.2 (#2632)
+  * fix: match node label kubernetes.io/role as suffix (#2606)
+  * Update brew install steps (#2611)
+  * Bump google.golang.org/protobuf from 1.31.0 to 1.33.0 (#2614)
+  * fix: pass set retries to transfer command (#2596)
+
+-------------------------------------------------------------------
 Sat Mar 16 17:47:52 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.32.3:
