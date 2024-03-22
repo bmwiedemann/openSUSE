@@ -18,11 +18,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           kaddressbook
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        Address book application to manage contacts
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -58,7 +58,7 @@ Recommends:     kaddressbook-doc
 Provides:       kaddressbook5 = %{version}
 Obsoletes:      kaddressbook5 < %{version}
 # kdepim-runtime requires Qt Webengine
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 %x86_64 aarch64 riscv64
 
 %description
 KAddressbook is an application by KDE to manage contacts.
@@ -67,6 +67,8 @@ KAddressbook is an application by KDE to manage contacts.
 Summary:        Library which provides import/export functionality for KAddressbook
 Obsoletes:      kdepim-apps-libs <= 20.08.3
 Obsoletes:      kdepim-apps-libs-lang <= 20.08.3
+Obsoletes:      libKPimAddressbookImportExport5 < %{version}
+Obsoletes:      libKPim5AddressbookImportExport5 < %{version}
 
 %description -n libKPim6AddressbookImportExport6
 This library provides an interface to implement import/export plugins for KAddressbook.
@@ -74,6 +76,8 @@ This library provides an interface to implement import/export plugins for KAddre
 %package -n libKPim6AddressbookImportExport6-devel
 Summary:        Development headers for libKPimAddressbookImportExport
 Requires:       libKPim6AddressbookImportExport6 = %{version}
+Obsoletes:      libKPimAddressbookImportExport5-devel < %{version}
+Obsoletes:      libKPim5AddressbookImportExport5-devel < %{version}
 
 %description -n libKPim6AddressbookImportExport6-devel
 This package includes development headers needed to develop and build import/export plugins
