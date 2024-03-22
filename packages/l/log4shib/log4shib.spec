@@ -63,8 +63,7 @@ Obsoletes:      log4shib-devel < %{version}-%{release}
 The static libraries and header files needed for development with log4shib.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 # The default C++ standard used in GCC-11 is C++17,
