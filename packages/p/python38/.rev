@@ -812,4 +812,41 @@ Core and Builtins
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1157647</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>845ae48be13b85e48f17fc0fd54d06a9</srcmd5>
+    <version>3.8.19</version>
+    <time>1711117269</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.8.19:
+  - Security
+    - gh-115398: Allow controlling Expat &gt;=2.6.0 reparse deferral
+      (CVE-2023-52425, bsc#1219559) by adding five new methods:
+        xml.etree.ElementTree.XMLParser.flush()
+        xml.etree.ElementTree.XMLPullParser.flush()
+        xml.parsers.expat.xmlparser.GetReparseDeferralEnabled()
+        xml.parsers.expat.xmlparser.SetReparseDeferralEnabled()
+        xml.sax.expatreader.ExpatParser.flush()
+    - gh-115399: Update bundled libexpat to 2.6.0
+    - gh-113659: Skip .pth files with names starting with a dot
+      or hidden file attribute.
+  - Core and Builtins
+    - gh-102388: Fix a bug where iso2022_jp_3 and iso2022_jp_2004
+      codecs read out of bounds
+  - Library
+    - gh-115197: urllib.request no longer resolves the hostname
+      before checking it against the system’s proxy bypass list
+      on macOS and Windows.
+    - gh-115133: Fix tests for XMLPullParser with Expat 2.6.0.
+    - gh-81194: Fix a crash in socket.if_indextoname() with
+      specific value (UINT_MAX). Fix an integer overflow in
+      socket.if_indextoname() on 64-bit non-Windows platforms.
+    - gh-109858: Protect zipfile from “quoted-overlap”
+      zipbomb. It now raises BadZipFile when try to read an entry
+      that overlaps with other entry or central directory
+      (CVE-2024-0450, bsc#1221854).
+    - gh-107077: Seems that in some conditions, OpenSSL will
+      return SSL_ERROR_SYSCALL instead of SSL_ERROR_SSL
+      when a certification verification has failed, but</comment>
+    <requestid>1160582</requestid>
+  </revision>
 </revisionlist>

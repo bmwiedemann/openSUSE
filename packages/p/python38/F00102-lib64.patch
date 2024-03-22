@@ -82,7 +82,7 @@ Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
                     os.path.join(destination, "include", "python", "foopkg"))
 --- a/Lib/site.py
 +++ b/Lib/site.py
-@@ -335,11 +335,15 @@ def getsitepackages(prefixes=None):
+@@ -344,11 +344,15 @@ def getsitepackages(prefixes=None):
          seen.add(prefix)
  
          if os.sep == '/':
@@ -130,7 +130,7 @@ Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
          'data': '{userbase}',
 --- a/Lib/test/test_site.py
 +++ b/Lib/test/test_site.py
-@@ -268,8 +268,8 @@ class HelperFunctionsTests(unittest.Test
+@@ -307,8 +307,8 @@ class HelperFunctionsTests(unittest.Test
          dirs = site.getsitepackages()
          if os.sep == '/':
              # OS X, Linux, FreeBSD, etc
@@ -183,7 +183,7 @@ Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
      }
 --- a/configure
 +++ b/configure
-@@ -15264,9 +15264,9 @@ fi
+@@ -15276,9 +15276,9 @@ fi
  
  
  if test x$PLATFORM_TRIPLET = x; then

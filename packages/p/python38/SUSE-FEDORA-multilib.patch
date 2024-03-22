@@ -86,7 +86,7 @@
          else:
 --- a/Lib/site.py
 +++ b/Lib/site.py
-@@ -335,12 +335,18 @@ def getsitepackages(prefixes=None):
+@@ -344,12 +344,18 @@ def getsitepackages(prefixes=None):
          seen.add(prefix)
  
          if os.sep == '/':
@@ -107,7 +107,7 @@
          else:
              sitepackages.append(prefix)
              sitepackages.append(os.path.join(prefix, "lib64", "site-packages"))
-@@ -348,14 +354,7 @@ def getsitepackages(prefixes=None):
+@@ -357,14 +363,7 @@ def getsitepackages(prefixes=None):
      return sitepackages
  
  def addsitepackages(known_paths, prefixes=None):
@@ -198,7 +198,7 @@
                  os.makedirs(lib_dynload)
 --- a/Lib/test/test_site.py
 +++ b/Lib/test/test_site.py
-@@ -268,8 +268,11 @@ class HelperFunctionsTests(unittest.Test
+@@ -307,8 +307,11 @@ class HelperFunctionsTests(unittest.Test
          dirs = site.getsitepackages()
          if os.sep == '/':
              # OS X, Linux, FreeBSD, etc
@@ -341,7 +341,7 @@
      }
 --- a/configure
 +++ b/configure
-@@ -15264,9 +15264,9 @@ fi
+@@ -15276,9 +15276,9 @@ fi
  
  
  if test x$PLATFORM_TRIPLET = x; then

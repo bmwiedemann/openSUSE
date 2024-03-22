@@ -92,7 +92,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.8.18
+Version:        3.8.19
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -183,12 +183,6 @@ Patch41:        99366-patch.dict-can-decorate-async.patch
 # Detect email address parsing errors and return empty tuple to
 # indicate the parsing error (old API), from gh#python/cpython!105127
 Patch42:        CVE-2023-27043-email-parsing-errors.patch
-# PATCH-FIX-UPSTREAM libexpat260.patch gh#python/cpython#115289
-# Fix tests for XMLPullParser with Expat 2.6.0
-Patch43:        libexpat260.patch
-# PATCH-FIX-UPSTREAM CVE-2023-6597-TempDir-cleaning-symlink.patch bsc#1219666 mcepl@suse.com
-# tempfile.TemporaryDirectory: fix symlink bug in cleanup (from gh#python/cpython!99930)
-Patch44:        CVE-2023-6597-TempDir-cleaning-symlink.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -461,8 +455,6 @@ other applications.
 %patch -P 38 -p1
 %patch -P 41 -p1
 %patch -P 42 -p1
-%patch -P 43 -p1
-%patch -P 44 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
