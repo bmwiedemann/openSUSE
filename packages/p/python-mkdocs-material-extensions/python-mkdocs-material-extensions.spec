@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-mkdocs-material-extensions
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,7 @@ BuildRequires:  %{python_module pytest}
 Extension pack for Python Markdown
 
 %prep
-%setup -q -n mkdocs_material_extensions-%{version}
+%autosetup -p1 -n mkdocs_material_extensions-%{version}
 
 %build
 %pyproject_wheel
