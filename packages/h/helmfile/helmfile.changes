@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Fri Mar 22 08:47:17 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.163.0:
+  What's Changed
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.19 to
+    1.50.20 by @dependabot in #1359
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.20 to
+    1.50.21 by @dependabot in #1361
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.21 to
+    1.50.22 by @dependabot in #1363
+  * build(deps): bump go.uber.org/zap from 1.26.0 to 1.27.0 by
+    @dependabot in #1362
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.22 to
+    1.50.23 by @dependabot in #1367
+  * build(deps): bump helm.sh/helm/v3 from 3.14.1 to 3.14.2 by
+    @dependabot in #1366
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.23 to
+    1.50.24 by @dependabot in #1369
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.24 to
+    1.50.25 by @dependabot in #1371
+  * feat: bump helm to v3.14.2 by @yxxhero in #1372
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.25 to
+    1.50.26 by @dependabot in #1373
+  * build(deps): bump github.com/helmfile/vals from 0.34.1 to
+    0.35.0 by @dependabot in #1377
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.26 to
+    1.50.28 by @dependabot in #1378
+  * Add the SyncArgs option and --sync-args flag by @inteon
+    in #1375
+  * Add --kubeconfig flag by @inteon in #1381
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.28 to
+    1.50.29 by @dependabot in #1382
+  * build(deps): bump github.com/stretchr/testify from 1.8.4 to
+    1.9.0 by @dependabot in #1383
+  * bump helm-diff to 3.9.5 by @yxxhero in #1384
+  * fix needs issue when release installed is false by @yxxhero
+    in #997
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.29 to
+    1.50.30 by @dependabot in #1387
+  * build(deps): bump golang.org/x/term from 0.17.0 to 0.18.0
+    by @dependabot in #1389
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.30 to
+    1.50.31 by @dependabot in #1388
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.31 to
+    1.50.32 by @dependabot in #1390
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.32 to
+    1.50.34 by @dependabot in #1395
+  * build(deps): bump github.com/go-jose/go-jose/v3 from 3.0.1 to
+    3.0.3 by @dependabot in #1393
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.34 to
+    1.50.35 by @dependabot in #1396
+  * Allow for conditions to have a deeper nested structure. by
+    @vandycknick in #1360
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.35 to
+    1.50.36 by @dependabot in #1397
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.36 to
+    1.50.37 by @dependabot in #1400
+  * Add Tudock GmbH to USERS.md by @jeliebig in #1399
+  * build(deps): bump google.golang.org/protobuf from 1.32.0 to
+    1.33.0 by @dependabot in #1403
+  * build(deps): bump helm.sh/helm/v3 from 3.14.2 to 3.14.3 by
+    @dependabot in #1404
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.37 to
+    1.50.38 by @dependabot in #1405
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.38 to
+    1.51.0 by @dependabot in #1406
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.0 to
+    1.51.1 by @dependabot in #1410
+  * build(deps): bump k8s.io/apimachinery from 0.29.2 to 0.29.3
+    by @dependabot in #1409
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.1 to
+    1.51.2 by @dependabot in #1413
+  * build(deps): bump github.com/docker/docker from
+    24.0.7+incompatible to 24.0.9+incompatible by @dependabot
+      in #1416
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.2 to
+    1.51.3 by @dependabot in #1415
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.3 to
+    1.51.4 by @dependabot in #1417
+  * feat: bump helm to 3.14.3 by @yxxhero in #1418
+
+-------------------------------------------------------------------
 Mon Feb 19 09:32:11 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.162.0:
