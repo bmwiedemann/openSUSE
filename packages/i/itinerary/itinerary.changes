@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:25:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Add 24.02.1 release notes
+  * Adapt build options for KF6
+  * Add enough space at the end for the floating button
+  * Use the actual 6.6 Flatpak SDK now
+  * Filter implausible geo coder results
+
+-------------------------------------------------------------------
 Tue Mar 12 19:03:54 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Move the %find_lang call into %install section
