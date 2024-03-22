@@ -39,10 +39,10 @@ BuildRequires:  gcc
 BuildRequires:  gettext-devel
 BuildRequires:  krb5-devel
 BuildRequires:  libcurl-devel
-BuildRequires:  libfreebl3-hmac
+BuildRequires:  libfreebl3
 BuildRequires:  libidn2-devel
 BuildRequires:  libjansson-devel >= 2.12
-BuildRequires:  libsoftokn3-hmac
+BuildRequires:  libsoftokn3
 BuildRequires:  libtalloc-devel
 BuildRequires:  libtevent-devel
 BuildRequires:  libuuid-devel

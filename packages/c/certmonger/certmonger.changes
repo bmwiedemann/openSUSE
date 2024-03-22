@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 18 13:52:53 UTC 2024 - David Mulder <dmulder@suse.com>
+
+- HMAC build requires changes (these requires are missing in SLE).
+
+-------------------------------------------------------------------
 Wed Dec 13 08:48:02 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to 0.79.19
