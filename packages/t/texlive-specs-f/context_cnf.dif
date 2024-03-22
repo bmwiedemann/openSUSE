@@ -1,35 +1,33 @@
 ---
- texmf-dist/scripts/context/lua/mtxrun.lua     |    6 ++----
- texmf-dist/tex/context/base/mkiv/data-res.lua |    6 ++----
- 2 files changed, 4 insertions(+), 8 deletions(-)
+ texmf-dist/scripts/context/lua/mtxrun.lua     |    5 ++---
+ texmf-dist/tex/context/base/mkiv/data-res.lua |    5 ++---
+ 2 files changed, 4 insertions(+), 6 deletions(-)
 
 --- texmf-dist/scripts/context/lua/mtxrun.lua
-+++ texmf-dist/scripts/context/lua/mtxrun.lua	2023-03-27 07:15:37.741121895 +0000
-@@ -22308,10 +22308,8 @@ if environment.default_texmfcnf then
- else
-  resolvers.luacnfspec=concat ({
++++ texmf-dist/scripts/context/lua/mtxrun.lua	2024-03-18 08:53:56.333347801 +0000
+@@ -22471,9 +22471,8 @@ do
+  local texroot=environment.texroot
+  resolvers.luacnfspec={
    "home:texmf/web2c",
 -  "selfautoparent:/texmf-local/web2c",
 -  "selfautoparent:/texmf-context/web2c",
--  "selfautoparent:/texmf-dist/web2c",
 -  "selfautoparent:/texmf/web2c",
 +  "/etc/texmf/web2c",
 +  "selfautodir:/share/texmf/web2c",
-  },";")
- end
- local unset_variable="unset"
+  }
+  if environment.default_texmfcnf then
+   resolvers.luacnfspec={
 --- texmf-dist/tex/context/base/mkiv/data-res.lua
-+++ texmf-dist/tex/context/base/mkiv/data-res.lua	2023-03-27 07:15:43.465013318 +0000
-@@ -140,10 +140,8 @@ if environment.default_texmfcnf then
- else
-     resolvers.luacnfspec = concat ( {
++++ texmf-dist/tex/context/base/mkiv/data-res.lua	2024-03-18 08:56:42.554289233 +0000
+@@ -141,9 +141,8 @@ do
+ 
+     resolvers.luacnfspec = {
          "home:texmf/web2c",
 -        "selfautoparent:/texmf-local/web2c",
 -        "selfautoparent:/texmf-context/web2c",
--        "selfautoparent:/texmf-dist/web2c",
 -        "selfautoparent:/texmf/web2c",
 +        "/etc/texmf/web2c",
 +        "selfautodir:/share/texmf/web2c",
-     }, ";")
- end
+     }
  
+     if environment.default_texmfcnf then

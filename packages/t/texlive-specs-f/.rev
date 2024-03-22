@@ -541,4 +541,12 @@ Aggregate licenses for spec file without subpackages (forwarded request 131950 f
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1099416</requestid>
   </revision>
+  <revision rev="53" vrev="56">
+    <srcmd5>25f084b61b41eed19c065c7faa61eeb2</srcmd5>
+    <version>unknown</version>
+    <time>1711117049</time>
+    <user>anag+factory</user>
+    <comment>Update to TeXLive 2024, third</comment>
+    <requestid>1160639</requestid>
+  </revision>
 </revisionlist>
