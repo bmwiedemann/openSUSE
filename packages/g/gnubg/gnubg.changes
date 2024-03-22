@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Mar 11 08:57:55 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 1.08.002 
+  * Fix potential corruption of gnubgautorc file.
+  * changelog from 1.08.001
+    + Fix old quirk in the implementation of the PIPLOSS input
+      (bug #65035)
+	+ Use a different cube efficiency ratio for 0- and 1-ply
+      evaluations (0.76 instead of 0.68)
+    + build the GTK2 version using GtkUIManager by default
+    + Add a feature to show how the player's GNU error rate has
+      evolved throughout the player's history, as provided by the
+      database records
+    + Add cubeless MET contributed by Tilemachos Zoidis
+    + replace the original Mersenne Twister RNG by the improved
+      SFMT version
+    + Introduce the "SmartSit" feature that enables to define a
+      list of users that automatically sit at the bottom of the
+      board (as player1) in opened matches
+    + Names can be added or deleted in Settings > Options > Display
+	+ Remove the similar but more limited set/show aliases CLI
+      commands
+    + Extend batch analysis feature with a new button in the main
+      toolbar: "Analyse file". Three options are available in
+      Settings / Analysis
+    + Introduce a background analysis feature with a new button in
+      the main toolbar: "Analyse"
+    + Improvements to the score map feature ; notably its default
+      configuration is now configurable via Settings/Analysis/
+      ScoreMap
+  * changelog from 1.07.001
+    + Use SOURCE_DATE_EPOCH as defined in
+      https://reproducible-builds.org/specs/source-date-epoch/ to
+      set timestamps at build
+    + Add a button to show a map of chequer or cube evaluations at
+      various scores
+    + Add a button to the cube analysis widget to switch between
+      at-score and money evaluations
+    + Finnish translation
+    + Decrease doubtful/bad/very bad thresholds in analysis
+      results from 0.04/0.08/0.16 to 0.03/0.06/0.12 point
+    + Do not offer levels weaker than expert in the main analysis,
+      tutor and rollout settings panel of the GUI
+    + Build requires a C99- or gnu99-compatible compiler
+
+-------------------------------------------------------------------
 Mon Jul  4 22:14:43 UTC 2022 - Asterios Dramis <asterios.dramis@gmail.com>
 
 - Fix build with python 3.10 (update m4/ax_python_devel.m4). Added

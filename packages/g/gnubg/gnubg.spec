@@ -1,7 +1,7 @@
 #
 # spec file for package gnubg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2003 Achim Mueller, Germany.
 # Updated by Christopher Hofmann in 2010
 #
@@ -19,13 +19,13 @@
 
 
 Name:           gnubg
-Version:        1.06.002
+Version:        1.08.002
 Release:        0
 Summary:        Backgammon game with analysis tools and neural network AI
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Other
-URL:            http://www.gnubg.org
-Source:         http://gnubg.org/media/sources/gnubg-release-%{version}-sources.tar.gz
+URL:            https://www.gnu.org/software/gnubg/
+Source:         https://ftp.gnu.org/gnu/%{name}/%{name}-release-%{version}-sources.tar.gz
 Source1:        %{name}.desktop
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
