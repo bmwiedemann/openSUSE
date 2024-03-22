@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           konversation
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        A graphical IRC client by KDE
 License:        GPL-2.0-or-later
@@ -31,7 +31,6 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-Patch0:         Delay-tray-setup-until-mainwindow-state-restored.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 # To get the path to qdbus
 BuildRequires:  qt6-tools-qdbus

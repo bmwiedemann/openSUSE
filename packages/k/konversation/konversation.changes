@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:27:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Delay tray setup until mainwindow state restored (kde#482316)
+- Drop patch, merged upstream:
+  * Delay-tray-setup-until-mainwindow-state-restored.patch
+
+-------------------------------------------------------------------
 Mon Mar 18 11:27:45 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - add Delay-tray-setup-until-mainwindow-state-restored.patch (kde#482316)
