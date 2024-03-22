@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           katomic
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        Sokoban-like logic game
 License:        GPL-2.0-or-later
@@ -77,7 +77,6 @@ can move each atom in a labyrinth.
 %{_kf6_iconsdir}/hicolor/*/apps/katomic.*
 %{_kf6_knsrcfilesdir}/katomic.knsrc
 %{_kf6_sharedir}/katomic/
-%{_kf6_sharedir}/kconf_update/katomic-levelset*
 
 %files lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en/katomic/
