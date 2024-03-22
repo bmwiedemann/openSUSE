@@ -18,11 +18,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           akonadi-mime
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        MIME email parser for KDE PIM
 License:        LGPL-2.1-or-later
@@ -54,6 +54,8 @@ messages.
 Summary:        MIME email parser for KDE PIM - core library
 Requires:       akonadi-mime >= %{version}
 Obsoletes:      akonadi-mime-lang <= 23.04.0
+Obsoletes:      libKF5AkonadiMime5 < %{version}
+Obsoletes:      libKPim5AkonadiMime5 < %{version}
 Obsoletes:      libKPim5AkonadiMime5-lang < %{version}
 
 %description  -n libKPim6AkonadiMime6
