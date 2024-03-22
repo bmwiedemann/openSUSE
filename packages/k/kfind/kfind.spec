@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kfind
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        KDE Find File Utility
 License:        GPL-2.0-or-later
