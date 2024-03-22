@@ -1098,4 +1098,12 @@
     <comment>- Recommend installing ffmpegthumbs-kf5 for video previews</comment>
     <requestid>1158616</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>85a2e5db54246216e9682f10c3ce9e14</srcmd5>
+    <version>24.02.1</version>
+    <time>1711116997</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.02.1 (forwarded request 1159650 from krop)</comment>
+    <requestid>1160236</requestid>
+  </revision>
 </revisionlist>
