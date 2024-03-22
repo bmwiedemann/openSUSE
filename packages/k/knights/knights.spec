@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           knights
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        A simple chess board
 License:        GPL-2.0-or-later
