@@ -45,4 +45,14 @@
     <comment></comment>
     <requestid>1097940</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>86f10008b5ce50f71358a29fa3b8cb23</srcmd5>
+    <version>2.2.0</version>
+    <time>1711117241</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.0:
+  * This version supports pytest 4.0 to 8.0 on Python 3.7 to
+    3.12.</comment>
+    <requestid>1160442</requestid>
+  </revision>
 </revisionlist>

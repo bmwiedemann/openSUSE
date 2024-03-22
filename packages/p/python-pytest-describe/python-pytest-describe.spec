@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-describe
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-describe
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Describe-style plugin for pytest
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-describe
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-describe/pytest-describe-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-py
@@ -44,19 +46,19 @@ Describe-style plugin for pytest.
 %setup -q -n pytest-describe-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %{python_sitelib}/pytest_describe
-%{python_sitelib}/pytest_describe-%{version}*-info
+%{python_sitelib}/pytest_describe-%{version}.dist-info
 
 %changelog
