@@ -72,6 +72,7 @@ braille, and/or magnification.
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{python3_sitelib}
 %fdupes %{buildroot}%{_datadir}
+%python3_fix_shebang
 
 %files
 %license COPYING
