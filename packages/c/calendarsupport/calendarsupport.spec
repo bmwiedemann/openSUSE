@@ -18,11 +18,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           calendarsupport
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        KDE PIM calendaring support library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -52,7 +52,7 @@ BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 %x86_64 aarch64 riscv64
 
 %description
 This package contains the calendarsupport library, used by KDE PIM applications
@@ -62,6 +62,8 @@ to handle calendaring.
 Summary:        Library for handling calendaring in PIM applications
 Requires:       calendarsupport >= %{version}
 Obsoletes:      calendarsupport-lang <= 23.04.0
+Obsoletes:      libKF5CalendarSupport5 < %{version}
+Obsoletes:      libKPim5CalendarSupport5 < %{version}
 Obsoletes:      libKPim5CalendarSupport5-lang < %{version}
 
 %description -n libKPim6CalendarSupport6
