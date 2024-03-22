@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 21 17:03:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.21.0:
+  * Fix matching request data when files are provided
+  * Add support for data\_\_contains lookup
+  * Add `files` pattern to support matching on uploads
+  * Add `SetCookie` utility for easier mocking of response cookie
+    headers
+  * Enhance documentation on iterable side effects
+  * Enhance documentation on named routes and add tip about a
+    catch-all route
+
+-------------------------------------------------------------------
 Tue Jan  9 22:11:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.20.2:
