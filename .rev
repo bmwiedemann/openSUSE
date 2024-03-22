@@ -513,4 +513,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1099414</requestid>
   </revision>
+  <revision rev="51" vrev="54">
+    <srcmd5>3683a0d3ec2cab81eade2dea49862d49</srcmd5>
+    <version>unknown</version>
+    <time>1711117046</time>
+    <user>anag+factory</user>
+    <comment>Update to TeXLive 2024, third</comment>
+    <requestid>1160637</requestid>
+  </revision>
 </revisionlist>
