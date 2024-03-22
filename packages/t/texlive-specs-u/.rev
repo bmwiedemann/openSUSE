@@ -484,4 +484,12 @@ Reflect all of the licenses of the various components in the spec file license (
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1099431</requestid>
   </revision>
+  <revision rev="52" vrev="55">
+    <srcmd5>82e792291d065621677caf3a2446d80f</srcmd5>
+    <version>unknown</version>
+    <time>1711117065</time>
+    <user>anag+factory</user>
+    <comment>Update to TeXLive 2024, third</comment>
+    <requestid>1160654</requestid>
+  </revision>
 </revisionlist>
