@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:25:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- No code change since 24.02.0
+
+-------------------------------------------------------------------
 Tue Mar  5 13:12:58 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Don't build the Plasmoid until kde#482464 is fixed
