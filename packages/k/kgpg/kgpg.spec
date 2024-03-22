@@ -20,7 +20,7 @@
 
 %bcond_without released
 Name:           kgpg
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        Encryption Tool
 License:        GPL-2.0-or-later
