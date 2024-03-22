@@ -5,7 +5,7 @@
 
 --- texmf-dist/tex/luatex/luaotfload/fontloader-basics-gen.lua
 +++ texmf-dist/tex/luatex/luaotfload/fontloader-basics-gen.lua	2016-06-09 10:26:02.571996404 +0000
-@@ -197,6 +197,7 @@ do
+@@ -198,6 +198,7 @@ do
      -- standard context tree setup
  
      local cachepaths = kpse.expand_var('$TEXMFCACHE') or ""
@@ -13,7 +13,7 @@
  
      -- quite like tex live or so (the weird $TEXMFCACHE test seems to be needed on miktex)
  
-@@ -210,6 +211,31 @@ do
+@@ -211,6 +212,31 @@ do
          cachepaths = kpse.expand_var('$VARTEXMF') or ""
      end
  
@@ -47,7 +47,7 @@
      if cachepaths == "" then
 --- texmf-dist/tex/luatex/luaotfload/fontloader-reference.lua
 +++ texmf-dist/tex/luatex/luaotfload/fontloader-reference.lua	2019-05-10 09:32:16.562792353 +0000
-@@ -4584,12 +4584,35 @@ if not caches.namespace or caches.namesp
+@@ -4638,12 +4638,35 @@ if not caches.namespace or caches.namesp
  end
  do
   local cachepaths=kpse.expand_var('$TEXMFCACHE') or ""
