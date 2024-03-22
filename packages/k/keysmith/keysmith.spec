@@ -21,7 +21,7 @@
 
 %bcond_without  released
 Name:           keysmith
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        OTP client
 License:        GPL-3.0-or-later
