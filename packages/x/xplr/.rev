@@ -118,4 +118,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1148948</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>82864e158ec4157ba382e4385cb1b76c</srcmd5>
+    <version>0.21.7</version>
+    <time>1711117267</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.21.7:
+  * Added new key bindings c and m in default mode to quickly copy and move files,
+    without using the selection ops mode.
+  * Added xplr.util.debug() to see and debug Lua values.
+  * Fixed ScrollUpHalf operation.
+  * Dependency and docs updates.
+</comment>
+    <requestid>1160485</requestid>
+  </revision>
 </revisionlist>
