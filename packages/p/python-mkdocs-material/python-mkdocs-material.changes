@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 22 06:44:49 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build for python3.12 now that python312-paginate exists
+
+-------------------------------------------------------------------
 Mon Mar 18 07:29:42 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.14:

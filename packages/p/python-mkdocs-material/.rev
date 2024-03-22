@@ -377,4 +377,14 @@ update to 9.5.10</comment>
     <comment></comment>
     <requestid>1159087</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>ca25ffec0a74f1d19d849514b661ce0b</srcmd5>
+    <version>9.5.14</version>
+    <time>1711117290</time>
+    <user>anag+factory</user>
+    <comment>- Build for python3.12 now that python312-paginate exists
+
+Related request sr#1160541</comment>
+    <requestid>1160542</requestid>
+  </revision>
 </revisionlist>
