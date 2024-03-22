@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:25:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Fix appstream developer tag id
+  * Fix appstream file
+  * Improve appstream metadata
+
+-------------------------------------------------------------------
 Fri Feb 23 13:58:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
