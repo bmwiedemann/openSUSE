@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 21 03:46:48 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Add upstream patch <https://github.com/opencontainers/runc/pull/4219> to
+  properly fix -ENOSYS stub on ppc64le. bsc#1192051 bsc#1221050
+  + 0001-bsc1221050-libct-seccomp-patchbpf-rm-duplicated-code.patch
+  + 0002-bsc1221050-seccomp-patchbpf-rename-nativeArch-linuxA.patch
+  + 0003-bsc1221050-seccomp-patchbpf-always-include-native-ar.patch
+
+-------------------------------------------------------------------
 Wed Jan 31 00:00:33 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.1.12. Upstream changelog is available from

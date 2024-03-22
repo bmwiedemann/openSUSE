@@ -33,6 +33,10 @@ URL:            https://github.com/opencontainers/runc
 Source0:        https://github.com/opencontainers/runc/releases/download/v%{version}/runc.tar.xz#/runc-%{version}.tar.xz
 Source1:        https://github.com/opencontainers/runc/releases/download/v%{version}/runc.tar.xz.asc#/runc-%{version}.tar.xz.asc
 Source2:        runc.keyring
+# SUSE-FIX-UPSTREAM: Backport of <https://github.com/opencontainers/runc/pull/4219>. bsc#1221050
+Patch10:        0001-bsc1221050-libct-seccomp-patchbpf-rm-duplicated-code.patch
+Patch11:        0002-bsc1221050-seccomp-patchbpf-rename-nativeArch-linuxA.patch
+Patch12:        0003-bsc1221050-seccomp-patchbpf-always-include-native-ar.patch
 BuildRequires:  diffutils
 BuildRequires:  fdupes
 BuildRequires:  go
@@ -64,6 +68,7 @@ and has grown to become a separate project entirely.
 
 %prep
 %setup -q -n %{name}-%{version}
+%autopatch -p1
 
 %build
 # build runc
