@@ -1,7 +1,7 @@
 #
 # spec file for package openconnect
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -136,6 +136,9 @@ install -D -m0644 %{SOURCE1} %{buildroot}/%{_sysconfdir}/openconnect/vpnc-script
 
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
+%if %{suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}%{_libexecdir}/openconnect/*
+%endif
 
 %check
 %make_build check

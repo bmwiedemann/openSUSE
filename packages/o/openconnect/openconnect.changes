@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 21 14:48:59 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang_path macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Sat May 20 14:18:26 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to release 9.12:
