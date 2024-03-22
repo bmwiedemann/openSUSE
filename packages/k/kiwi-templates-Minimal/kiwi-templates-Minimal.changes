@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 15 15:07:56 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
+
+- call sdbootutil --no-random-seed to avoid shipping random seed in the ESP
+
+-------------------------------------------------------------------
 Mon Jan 22 08:01:11 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Do not use the big kernel-firmware for RPi, but only the required
