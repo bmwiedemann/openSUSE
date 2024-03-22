@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:28:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Fix focusing new sessions (kde#482119)
+  * Fix startup crash with some skins
+
+-------------------------------------------------------------------
 Fri Feb 23 14:01:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
