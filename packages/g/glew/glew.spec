@@ -1,7 +1,7 @@
 #
 # spec file for package glew
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ URL:            https://github.com/nigels-com/glew
 Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tgz
 Source1:        baselibs.conf
 Source2:        %{name}.rpmlintrc
+Patch0:         glew-2.2.0-mesa-24.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gl)
@@ -73,13 +74,14 @@ supported on the target platform. OpenGL core and extension
 functionality is exposed in a single header file.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %make_build POPT="%{optflags} -fPIE -pie" GLEW_DEST=%{_prefix} LIBDIR=%{_libdir} LDFLAGS.EXTRA= STRIP=
 
 %install
 make DESTDIR=%{buildroot} GLEW_DEST=%{_prefix} LIBDIR=%{_libdir} PKGDIR=%{_libdir}/pkgconfig install.all
+install -m 0644 include/GL/eglew.h "%{buildroot}/%{_includedir}/GL/"
 chmod +x %{buildroot}%{_libdir}/*.so.*
 rm %{buildroot}%{_libdir}/*.a
 
