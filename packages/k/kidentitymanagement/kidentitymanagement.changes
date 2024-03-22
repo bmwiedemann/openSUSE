@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:26:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- No code change since 24.02.0
+- Uninstall old KDE PIM 5 libraries (boo#1221515)
+
+-------------------------------------------------------------------
 Fri Feb 23 13:59:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0

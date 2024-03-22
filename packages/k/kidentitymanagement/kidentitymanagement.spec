@@ -18,11 +18,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           kidentitymanagement
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        KDE PIM Libraries: Identity Management
 License:        LGPL-2.1-or-later
@@ -46,8 +46,6 @@ BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
-Conflicts:      libKF6IdentityManagement5 < %{version}
-Conflicts:      libKF6IdentityManagementWidgets5 < %{version}
 
 %description
 This package provides a library to handle multiple email identities and
@@ -57,6 +55,8 @@ associated settings.
 Summary:        KDE PIM Libraries: Identity Management - core library
 Recommends:     kidentitymanagement-lang
 Requires:       kidentitymanagement >= %{version}
+Obsoletes:      libKF5IdentityManagement5 < %{version}
+Obsoletes:      libKPim5IdentityManagement5 < %{version}
 
 %description  -n libKPim6IdentityManagementCore6
 This package provides the core library to handle multiple email identities and
@@ -66,6 +66,7 @@ associated settings.
 Summary:        KDE PIM Libraries: Identity Management - widgets library
 Recommends:     kidentitymanagement-lang
 Requires:       libKPim6IdentityManagementCore6 = %{version}
+Obsoletes:      libKPim5IdentityManagementWidgets5 < %{version}
 
 %description  -n libKPim6IdentityManagementWidgets6
 This package provides graphical widgets to handle multiple email identities
