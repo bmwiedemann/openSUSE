@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Mar 21 16:00:15 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.18.0:
+  * Features:
+    - $gemset variable for Ruby module.
+    - bash: Support right prompt and transience.
+    - bash: use PS0 for preexec hook.
+    - direnv: use JSON status with direnv >= 2.33.0.
+    - os: add new os symbols.
+    - quarto: Add Quarto module.
+    - username: add detect_env_vars as option.
+  * Bug Fixes:
+    - bash: Handle Unbound Variables Errors in Bash.
+    - bash: improve integration with bash-preexec.
+    - character: also handle vi edit mode in pwsh.
+    - direnv: update to work with direnv v2.33.
+    - git_branch: fall back to "HEAD" when there is no current 
+      branch.
+    - nu: continuation prompt not being displayed correctly.
+    - status: fix pipestatus width calculation.
+    - zsh: improve starship binary path escaping.
+
+-------------------------------------------------------------------
 Tue Feb  6 10:54:34 UTC 2024 - Pablo Herranz Ramírez <pablo.herranz@suse.com>
 
 - Update to version 1.17.1:
