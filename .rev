@@ -61,4 +61,17 @@ optional dep of https://build.opensuse.org/package/show/devel:languages:python/p
 - Avoid stuck build on failing test</comment>
     <requestid>1159736</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f2a46cfbcce940846cd6966ad363bcba</srcmd5>
+    <version>7.0.2</version>
+    <time>1711117227</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.0.2:
+  * Add `__next__` method to FileLikeProxy
+  * Fix python_requires minimum python version in setup.py
+  * Add activity check to cached sftp connections
+
+- Update to version 6.3.0</comment>
+    <requestid>1160440</requestid>
+  </revision>
 </revisionlist>
