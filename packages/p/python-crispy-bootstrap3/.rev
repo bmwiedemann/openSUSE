@@ -19,4 +19,12 @@
   * Fixed form-control class issue with checkboxes.</comment>
     <requestid>1138700</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b275657bb5c33d3ece80140104f5b1b1</srcmd5>
+    <version>2024.1</version>
+    <time>1711117330</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1160601</requestid>
+  </revision>
 </revisionlist>
