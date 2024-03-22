@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-crispy-bootstrap5
 Version:        0.7
 Release:        0
@@ -24,9 +24,9 @@ License:        MIT
 URL:            https://github.com/django-crispy-forms/crispy-bootstrap5
 Source:         https://github.com/django-crispy-forms/crispy-bootstrap5/archive/refs/tags/%{version}.tar.gz#/crispy-bootstrap5-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/django-crispy-forms/crispy-bootstrap5/commit/69ff88bed286a76e6216a54ecf93a0b27d87bc8d Fixed tests for crispy-forms 2.x
-Patch:          cf2.patch
+Patch1:          cf2.patch
 # PATCH-FIX-UPSTREAM https://github.com/django-crispy-forms/crispy-bootstrap5/commit/16732dde3530d6537ec9d65ba92264797bb088c8 Fixed help_text_escape test.
-Patch:          help_test_escape.patch
+Patch2:          help_test_escape.patch
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
