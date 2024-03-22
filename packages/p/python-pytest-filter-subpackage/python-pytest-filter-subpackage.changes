@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 21 17:20:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.0:
+  * pytest 8.1 compatibility.
+  * Dropped Python 3.7 support. Minimum supported pytest is now
+    4.6.
+
+-------------------------------------------------------------------
 Thu May  4 23:15:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.1.2:

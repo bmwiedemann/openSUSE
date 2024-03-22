@@ -43,4 +43,15 @@
 - drop fix-doctestplus-count.patch (upstream)</comment>
     <requestid>1084905</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b20f5015b62d6732a5e28b4ff527d3f5</srcmd5>
+    <version>0.2.0</version>
+    <time>1711117240</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2.0:
+  * pytest 8.1 compatibility.
+  * Dropped Python 3.7 support. Minimum supported pytest is now
+    4.6.</comment>
+    <requestid>1160441</requestid>
+  </revision>
 </revisionlist>
