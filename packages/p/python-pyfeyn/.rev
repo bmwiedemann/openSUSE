@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>807660</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>5755a054c1fd6be7fd60a41a691a4c9b</srcmd5>
+    <version>1.0.0</version>
+    <time>1711117331</time>
+    <user>anag+factory</user>
+    <comment>- Add %{?sle15_python_module_pythons}
+</comment>
+    <requestid>1160603</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 22 08:54:38 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed May 20 07:26:25 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
