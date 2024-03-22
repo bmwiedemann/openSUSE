@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 21 17:41:52 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.8.1
+  * Resolve RCE & XSS vulnerabilities in localhost WordNet Browser
+  * Add Python 3.11 support
+- Update nltk_data archive
+- Drop port-2to3.patch
+- Add nltk-pr3207-py312.patch for Python 3.12 support
+  * gh#nltk/nltk#3207
+
+-------------------------------------------------------------------
 Tue Mar 28 08:36:04 UTC 2023 - pgajdos@suse.com
 
 - python-six is not required

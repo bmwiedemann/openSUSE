@@ -1,7 +1,7 @@
 #
 # spec file for package python-nltk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,55 +16,86 @@
 #
 
 
-%{!?python_module:%define python_module() python-%{**} python3-%{**}}
-%define pyname nltk
-%define skip_python2 1
 Name:           python-nltk
-Version:        3.8
+Version:        3.8.1
 Release:        0
 Summary:        Natural Language Toolkit
 License:        Apache-2.0
 URL:            http://nltk.org/
-Source0:        https://files.pythonhosted.org/packages/source/n/nltk/%{pyname}-%{version}.zip
-# Downloaded NLTK data via python3 -m nltk.downloader,
-# then unzip downloaded zip archive.
+# SourceRepository: https://github.com/nltk/nltk
+Source0:        https://files.pythonhosted.org/packages/source/n/nltk/nltk-%{version}.zip
+# Download/Update NLTK data:
+#     quilt setup python-nltk.spec
+#     pushd nltk-?.?.?
+#     python3 -m nltk.downloader -d nltk_data tests \
+#          averaged_perceptron_tagger_ru \
+#          brown \
+#          cess_cat \
+#          cess_esp \
+#          conll2007 \
+#          floresta \
+#          gutenberg \
+#          inaugural \
+#          indian \
+#          large_grammars \
+#          nombank.1.0 \
+#          omw-1.4 \
+#          pl196x \
+#          ptb \
+#          punkt \
+#          rte \
+#          sinica_treebank \
+#          stopwords \
+#          treebank \
+#          udhr \
+#          universal_tagset \
+#          wordnet \
+#          wordnet_ic \
+#          words
+#     tar -cJf ../nltk_data.tar.xz nltk_data
+#     popd
 # see https://www.nltk.org/data.html for more details
 Source1:        nltk_data.tar.xz
 Source99:       python-nltk.rpmlintrc
 # PATCH-FIX-UPSTREAM skip-networked-test.patch gh#nltk/nltk#2969 mcepl@suse.com
 # skip tests requiring network connection
 Patch0:         skip-networked-test.patch
-# PATCH-FIX-UPSTREAM port-2to3.patch bsc#[0-9]+ mcepl@suse.com
-# port scripts in nltk_data to Python 3
-Patch1:         port-2to3.patch
-BuildRequires:  %{python_module regex}
+# PATCH-FIX-UPSTREAM nltk-pr3207-py312.patch gh#nltk/nltk#3207
+Patch1:         nltk-pr3207-py312.patch
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-# For testing
-BuildRequires:  %{python_module tk}
+# SECTION runtime
+BuildRequires:  %{python_module regex >= 2021.8.3}
 BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module pytest}
-# BuildRequires:  %%{python_module gensim}
 BuildRequires:  %{python_module joblib}
+BuildRequires:  %{python_module tqdm}
+# /SECTION
+# SECTION test
+BuildRequires:  %{python_module tk}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-crfsuite}
-BuildRequires:  %{python_module regex}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module scikit-learn}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module text-unidecode}
-BuildRequires:  %{python_module tqdm}
 BuildRequires:  %{python_module twython}
-#
-Requires:       python-regex
+# /SECTION
+Requires:       python-regex >= 2021.8.3
+Requires:       python-click
+Requires:       python-joblib
+Requires:       python-tqdm
 Recommends:     python-gensim
 Recommends:     python-matplotlib
 Recommends:     python-numpy
@@ -75,7 +106,7 @@ Recommends:     python-scikit-learn
 Recommends:     python-scipy
 Recommends:     python-twython
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -87,10 +118,7 @@ Python modules, data sets and tutorials supporting research and
 development in Natural Language Processing.
 
 %prep
-%autosetup -p1 -a1 -n %{pyname}-%{version}
-
-# Remove obsolete scripts
-rm tools/nltk_term_index.py tools/run_doctests.py nltk_data/corpora/semcor/semcor.py
+%autosetup -p1 -a1 -n nltk-%{version}
 
 # Fix EOL
 sed -i 's/\r/\n/g; s/\n$//' \
@@ -120,14 +148,13 @@ sed -E -i "s|#![[:space:]]*%{_bindir}/env python|#!%{_bindir}/python3|" \
     setup.py \
     tools/global_replace.py \
     nltk_data/corpora/pl196x/splitter.py \
-    tools/find_deprecated.py \
-    tools/svnmime.py
+    tools/find_deprecated.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/nltk
 
 %{python_expand %fdupes %{buildroot}%{$python_sitelib}/
@@ -148,8 +175,8 @@ export NLTK_DATA=$(readlink -f ./nltk_data/)
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitelib}/%{pyname}/
-%{python_sitelib}/%{pyname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/nltk/
+%{python_sitelib}/nltk-%{version}.dist-info/
 %python_alternative %{_bindir}/nltk
 
 %changelog
