@@ -18,11 +18,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           ksmtp
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        Job-based library to send email through an SMTP server
 License:        LGPL-2.1-or-later
@@ -49,6 +49,8 @@ KSMTP is a job based library to send email through an SMTP server.
 Summary:        Job-based library to send email through an SMTP server
 Requires:       ksmtp >= %{version}
 Obsoletes:      ksmtp-lang <= 23.04.0
+Obsoletes:      libKF5SMTP5 < %{version}
+Obsoletes:      libKPim5SMTP5 < %{version}
 Obsoletes:      libKPim5SMTP5-lang < %{version}
 
 %description -n libKPim6SMTP6
