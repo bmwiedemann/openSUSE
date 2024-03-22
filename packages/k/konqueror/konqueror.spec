@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           konqueror
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: konqueror-17.04.2/webenginepart/autotests/webengine_testutils.h is Qt commercial OR GPL-3.0
@@ -64,7 +64,7 @@ Obsoletes:      kdebase4-libkonq
 Obsoletes:      libKF5Konq6 < 17.04
 Provides:       libKF5Konq6 = 17.04
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
+ExclusiveArch:  %{ix86} x86_64 %x86_64 %{arm} aarch64 riscv64
 
 %description
 Konqueror allows you to manage your files and browse the web in a
