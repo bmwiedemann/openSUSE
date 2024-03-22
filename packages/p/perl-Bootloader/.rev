@@ -1680,4 +1680,12 @@ Fix error in installation to extended partition (bnc#750897)
     <comment>submitted by snwint via jenkins</comment>
     <requestid>1147668</requestid>
   </revision>
+  <revision rev="215" vrev="1">
+    <srcmd5>46a8d722f0853b4867fc3f77444f75c3</srcmd5>
+    <version>1.13</version>
+    <time>1711117034</time>
+    <user>anag+factory</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>1159077</requestid>
+  </revision>
 </revisionlist>

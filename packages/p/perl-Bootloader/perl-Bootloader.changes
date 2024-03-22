@@ -1,3 +1,19 @@
+--------------------------------------------------------------------
+Mon Mar 18 15:48:56 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#165
+- show script error messages also on console
+- optimize Makefile
+- handle missing grub-installdevice also on powerpc-ieee1275
+- add kexec-bootloader test results
+- log grub2-install errors correctly (bsc#1221470)
+- support logging command exit codes in tests
+- update test cases to include exit code checks
+- update test result data
+- fix bootloader_entry and update-bootloader exit status
+- add tests for bootloader_entry and update-bootloader
+- 1.13
+
 Mon Feb 19 19:51:19 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#163
