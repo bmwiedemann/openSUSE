@@ -1,0 +1,207 @@
+-------------------------------------------------------------------
+Thu Mar 21 14:35:08 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 1.11.0
+  * Don't autocomplete opening paren after function call that follows //
+  * Enhance the help command to print info about a given unit
+  * Allow let definitions to have decorators
+  * Add metadata to physics/constants.nbt
+  * Parser: disallow aliases decorators on let statements to have prefix info
+  * Rename "help <keyword>" command to "info"
+  * Tweak how units are formatted in the `info` command
+  * Introduce DType::is_scalar function
+  * Special case scalar values in the info command
+  * Cleanup info <variable> output
+  * Add integration tests for new info command
+  * Add support for the info command into numbat-wasm
+  * Add U+2126 OHM SIGN as a short alias for the `ohm` unit
+  * Wait for background currency fetch thread to finish before exiting
+  * Only prefetch currency info when using the interactive repl
+  * Unflatten the Config/MainConfig struct
+  * WIP:  Initial support for DateTime types
+  * Apply review suggestions
+  * Add new datetime functions and related tests
+  * Add tentative impl for timezone conversion
+  * Better TypeErrors when dealing with DateTimes
+  * Add tab-completion for timezones
+  * Update numbat-wasm/Cargo.lock
+  * Include "local" in the list of all timezones for completion
+  * Move datetime functions out of core and into their own module
+  * Replace a bool flag in BinaryOperatorForDate with an enum with more meaningful names
+  * Replace a panic with an unreachable
+  * Throw a runtime error if the provided timezone is unknown
+  * Minor things for datetime handling
+  * In the tabcompletion code for timezones, recognize other conversion operators
+  * Remove Expression::DateTime from the AST as this wasn't actually used/needed
+  * Fix string interpolation for datetimes
+  * Update/clarify comments
+  * Further small fixups, from codereview
+  * Switch to a new "subsec_nanos" function from chrono
+  * Allow tz conversion using any string type
+  * Add #[track_caller] annotation to some panicy VM functions
+  * Add "UTC" variable
+  * Numbat PPA for Ubuntu and derivatives
+  * Add info about architecture for PPA and AUR
+  * Add only existing modules to imported_modules list
+  * Enable using both script and expression cli arguments
+  * Remove explicit 'ControlFlow::Break(ExitStatus::Succes)' case.
+  * Add '-i' option to enter interactive session after executing script or expression
+  * Skip serializing 'enter_repl'
+  * Update .lock file
+  * Add Rydberg constant
+  * Only show suggestions for really simple factors
+  * Show readable type in incompatible dim. errors
+  * Set upper break for scientific notation to 6
+  * Web: Add HTML formatter
+  * Add build script
+  * Invert order of 'could not be infered' errors
+  * Proper error for wrong non-dtype argument
+  * Hide some options in short -h text
+  * Fix wasm version
+  * Add meta data for mathematical constants
+  * More complete @name/@url annotations for constants
+  * Add newline for info <unit>
+  * Add indentation for WASM version
+  * Add documentation
+  * Encode '(' and ')' in URLs
+  * Formatting
+  * Add CODATA 2018 values of physics constants
+  * Add U+3BC variants of greek mu
+  * Minor improvement in comments
+  * Improve binomial coeffient example using logical operators
+  * Improve 'booleans' example
+  * Update syntax example to include logical operators
+  * Add logical ops to operator precedence table
+  * Fix markdown for logical 'or'
+  * Unicode input feature
+  * Avoid poisoned Lazy instance by moving potential panic outside
+  * Update CI file
+  * Fix path to modules/ directory for tests
+  * Disable windows x86_64 build
+  * Add basic hex conversion
+  * Use 'inspect'ion tool to auto-generate list of units
+  * Remove NPM/Node dependency
+  * Add wasm stage
+  * Make attohttpc dependency optional, shrink WASM size from 1.3 MiB to 800 KiB
+  * Re-enable WASM tests
+  * Initial version of blog post
+  * Updates
+  * Section on types
+  * Update
+  * More updates
+  * Add og metadata
+  * Add .htaccess
+  * Minor update
+  * Minor updates
+  * Restore prelude
+  * Remove build-pkg script
+  * Re-enable x86_64 Windows CI build
+  * Remove noopener, noreferrer
+  * Combine both accepts_prefix conditions into one
+  * Also use correct prefix for derived units
+  * Do not allow short prefixes for 'year'
+  * Meta-data for light second
+  * Remove DateOperationResult
+  * Remove TODO
+  * Add ability to hide 'private' functions and variables
+  * Full simplify before function calls
+  * Human-readable time durations
+  * Use local timezone, not local UTC offset
+  * parse_datetime: relaxed formats
+  * Add timezone parsing
+  * Add documentation for datetime handling
+  * Use tropical years as 'year' unit
+  * Update to mdbook v0.4.37
+  * Date and time documentation updates
+  * Add 'bin' and 'oct', closes #289
+  * Fix clippy suggestions
+  * Fix formatting
+  * Initial work on function types
+  * First working version!
+  * Minor updates
+  * Initial type checks for function references
+  * Allow FFI targets in function references, conversion functions
+  * Better implementation of base conversion functions
+  * Add proper parser errors
+  * Resolve TODOs, better errors
+  * Resolve TODOs
+  * Add typechecker tests
+  * Allow f()() syntax
+  * Rename to_celsius/to_fahrenheit
+  * Re-enable suggestions for function names
+  * Rename
+  * Add page about conversion functions
+  * Formatting
+  * Embed timezone conversion into conversion-function framework
+  * Conversion function clarifications
+  * Rename parse_datetime => datetime
+  * Bump numbat-exchange-rates version
+  * White background for Numbat icon
+  * Add outline for icon
+  * Remove outdated logo files
+  * Fix str_replace implementation
+  * Add `date` and `today`
+  * Add 'time' function
+  * Do not add opening paren when completing conversion functions
+  * Always embed modules
+  * Move HtmlFormatter to core
+  * Format datetime values using datetime(…) function
+  * Make to_markup more flexible
+  * Store datetimes with fixed offset
+  * Runtime error for wrong format specifiers
+  * Add tests for datetime runtime errors, fix RFC2822 panic
+  * Always return specified offset/tz from datetime(…)
+  * Update book/src/cli-installation.md
+  * Minor installation page fixes
+  * Improve documentation around ad-hoc units
+  * Disallow dimensionless base units
+  * Add imperial volume units
+  * Move the create_dir_all call to get_history_path
+  * Add CanonicalName struct
+  * Use CanonicalName struct on UnitIdentifier
+  * Use correct AcceptsPrefix for units on bytecode_interpreter
+  * Fix pretty printing long units with long prefixes
+  * Change Unit#new_base to receive CanonicalName
+  * make link in GitHub Corner open in a new tab
+  * refactor: remove div's deprecated align attribute (#311)
+  * refactor: remove unnecessary borrows
+  * refactor: remove unnecessary type conversions
+  * refactor: remove unnecessary calls to `format!`
+  * refactor: remove unnecessary `.clone()` calls
+  * refactor: replace strings with single characters
+  * style: simplify string search in src/completer.rs
+  * refactor: remove unnecessary `to_string` calls
+  * refactor: remove reference that's unnecessary
+  * refactor: wrap result of `cmp` for `PartialOrd`
+  * refactor: remove manual impl. of `Option::map`
+  * refactor: readability improvement with `is_empty`
+  * feat: create prerequisite directories for history if they don't exist, already
+  * Correct minor grammar mistake
+  * Fix minor typo
+  * Don't hide `--no-config` flag
+  * Support subscript characters in identifiers
+  * Add some units
+  * Bump dependencies
+  * Use default allocator instead of wee_alloc in numbat-wasm
+  * Add desktop file and Numbat icons to assets
+  * Recommend installing desktop files and icons when relevant
+  * Improve unterminated string interpolation error
+  * Minor capitalization fixes
+  * Add Chimera Linux installation instructions
+  * Add SVG icon and more PNG icon sizes to assets
+  * Includes icons and desktop file in build artifacts
+  * Make the trailing errors skip all characters until the end of the lines to avoid throwing duplicated errors for the same character
+  * tokenize the logical operators
+  * Add the parser and interpreter without tests
+  * add parser tests
+  * fix typechecking bug and improve error message
+  * add interpreter tests on the error messages
+  * simplify binop parsing
+  * Added the ThermalTransmittance dimension
+  * Change parse error to unterminated string
+  * Add misc unit: ampere-hours
+
+-------------------------------------------------------------------
+Sat Nov 18 14:56:49 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Initial package for numbat 1.8.0
