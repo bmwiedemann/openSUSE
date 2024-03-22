@@ -25,4 +25,15 @@
   * tlshd: Add support for chained certs (forwarded request 1155293 from mwilck)</comment>
     <requestid>1155294</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2b23932936533fd866b4cd811044aca2</srcmd5>
+    <version>0.10+12.gc3923f7</version>
+    <time>1711117264</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.10+12.gc3923f7:
+  * Rework priority string setting for PSK (bsc#1221437)
+  * config: use 'authenticate' as a section name 
+  * server: add missing priority setting (gh#oracle/ktls-utils#49) (forwarded request 1160478 from mwilck)</comment>
+    <requestid>1160479</requestid>
+  </revision>
 </revisionlist>

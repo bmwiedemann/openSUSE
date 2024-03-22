@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 21 21:50:44 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.10+12.gc3923f7:
+  * Rework priority string setting for PSK (bsc#1221437)
+  * config: use 'authenticate' as a section name 
+  * server: add missing priority setting (gh#oracle/ktls-utils#49)
+
+-------------------------------------------------------------------
 Tue Mar  5 17:24:44 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to upstream version 0.10+9.gf28f084:
