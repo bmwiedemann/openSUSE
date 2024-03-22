@@ -7,4 +7,14 @@
     <comment>Add python-proton-vpn-connection for Proton VPN</comment>
     <requestid>1159871</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c095aadeea57834b74b62ef0ad3e5633</srcmd5>
+    <version>0.14.2</version>
+    <time>1711117326</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.14.2
+  * Add permanent connection if user cancels connection and ends up in disconnected state
+</comment>
+    <requestid>1160680</requestid>
+  </revision>
 </revisionlist>

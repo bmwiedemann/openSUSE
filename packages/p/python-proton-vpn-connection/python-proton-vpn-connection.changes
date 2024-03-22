@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 21 15:25:56 UTC 2024 - Yunhe Guo <i@guoyunhe.me>, Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Update to version 0.14.2
+  * Add permanent connection if user cancels connection and ends up in disconnected state
+
+-------------------------------------------------------------------
 Tue Mar 19 15:08:49 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Build for Leap
