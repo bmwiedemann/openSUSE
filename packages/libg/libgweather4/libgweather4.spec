@@ -1,7 +1,7 @@
 #
 # spec file for package libgweather4
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libgweather4
-Version:        4.4.0
+Version:        4.4.2
 Release:        0
 Summary:        Library to get online weather information
 License:        GPL-2.0-or-later
