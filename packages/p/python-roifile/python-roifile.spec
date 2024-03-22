@@ -21,7 +21,7 @@
 %define packagename roifile
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-roifile
-Version:        2024.1.10
+Version:        2024.3.20
 Release:        0
 Summary:        Read and write ImageJ ROI format
 License:        BSD-3-Clause
@@ -38,7 +38,7 @@ Requires:       python-matplotlib >= 3.2
 Requires:       python-numpy >= 1.15.1
 Requires:       python-tifffile >= 2020.8.13
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

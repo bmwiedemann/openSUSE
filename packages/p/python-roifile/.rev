@@ -66,4 +66,13 @@
   * Limit size read from files.</comment>
     <requestid>1140267</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c1e0d0493e20e1ba1b7cabac92cf70e5</srcmd5>
+    <version>2024.3.20</version>
+    <time>1711117231</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.3.20:
+  * Fix writing generator of ROIs (#9).</comment>
+    <requestid>1160437</requestid>
+  </revision>
 </revisionlist>
