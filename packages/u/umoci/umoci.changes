@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:41:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Mar 27 07:03:27 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Drop explicit BuildRequires on go1.14, no longer needed.

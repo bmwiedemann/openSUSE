@@ -44,7 +44,7 @@ provided by the OCI.
 %prep
 %setup -q
 # <https://github.com/opencontainers/umoci/pull/369>
-%patch1 -p1
+%patch -P 1 -p1
 
 %build
 export VERSION="$(cat ./VERSION)"
