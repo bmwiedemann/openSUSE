@@ -3,7 +3,7 @@ set -euxo pipefail
 [ -x /usr/bin/sdbootutil ] || exit 0
 echo "#######DISK"
 rootuuid=$(findmnt / -n --output uuid)
-sed -i -e "s,\$, root=UUID=$rootuuid rootflags=subvol=@/.snapshots/1/snapshot," /etc/kernel/cmdline
+sed -i -e "s,\$, root=UUID=$rootuuid," /etc/kernel/cmdline
 arch="$(uname -m)"
 case "$arch" in
 	aarch64) arch=aa64 ;;

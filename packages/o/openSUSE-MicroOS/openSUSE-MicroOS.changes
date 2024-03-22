@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 21 08:48:34 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
+
+- Add systemd-experimental for systemd-pcrlock support
+- don't add snapshot to /etc/kernel/cmdline. Will change anyway
+
+-------------------------------------------------------------------
 Thu Feb 15 15:08:45 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
 
 - call sdbootutil --no-random-seed to avoid shipping random seed in the ESP
