@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Fri Mar 15 11:20:14 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- Updated apptainer to version 1.3.0
+  * FUSE mounts are now supported in setuid mode, enabling full
+    functionality even when kernel filesystem mounts are insecure due to
+    unprivileged users having write access to raw filesystems in
+    containers. When allow `setuid-mount extfs = no` (the default) in
+    apptainer.conf, then the fuse2fs image driver will be used to mount
+    ext3 images in setuid mode instead of the kernel driver (ext3 images
+    are primarily used for the `--overlay` feature), restoring
+    functionality that was removed by default in Apptainer 1.1.8 because
+    of the security risk.
+    The allow `setuid-mount squashfs` configuration option in
+    `apptainer.conf` now has a new default called `iflimited` which allows
+    kernel squashfs mounts only if there is at least one `limit container`
+    option set or if Execution Control Lists are activated in ecl.toml.
+    If kernel squashfs mounts are are not allowed, then the squashfuse
+    image driver will be used instead.
+    `iflimited` is the default because if one of those limits are used
+    the system administrator ensures that unprivileged users do not have
+    write access to the containers, but on the other hand using FUSE
+    would enable a user to theoretically bypass the limits via `ptrace()`
+    because the FUSE process runs as that user.
+    The `fuse-overlayfs` image driver will also now be tried in setuid
+    mode if the kernel overlayfs driver does not work (for example if
+    one of the layers is a FUSE filesystem).  In addition, if `allow
+    setuid-mount encrypted = no` then the unprivileged gocryptfs format
+    will be used for encrypting SIF files instead of the kernel
+    device-mapper. If a SIF file was encrypted using the gocryptfs
+    format, it can now be mounted in setuid mode in addition to
+    non-setuid mode.
+  * Change the default in user namespace mode to use either kernel
+    overlayfs or fuse-overlayfs instead of the underlay feature for the
+    purpose of adding bind mount points. That was already the default in
+    setuid mode; this change makes it consistent. The underlay feature
+    can still be used with the `--underlay` option, but it is deprecated
+    because the implementation is complicated and measurements have
+    shown that the performance of underlay is similar to overlayfs and
+    fuse-overlayfs.
+    For now the underlay feature can be made the default again with a
+    new `preferred` value on the `enable underlay` configuration option.
+    Also the `--underlay` option can be used in setuid mode or as the
+    root user, although it was ignored previously.
+  * Prefer again to use kernel overlayfs over fuse-overlayfs when a
+    lower layer is FUSE and there's no writable upper layer, undoing the
+    change from 1.2.0. Another workaround was found for the problem that
+    change addressed. This applies in both setuid mode and in user
+    namespace mode.
+  * `--cwd` is now the preferred form of the flag for setting the
+    container's working directory, though `--pwd` is still supported for
+    compatibility.
+  * The way `--home` is handled when running as root (e.g. sudo apptainer)
+    or with `--fakeroot` has changed. Previously, we were only modifying
+    the `HOME` environment variable in these cases, while leaving the
+    container's `/etc/passwd` file unchanged (with its homedir field
+    pointing to `/root`, regardless of the value passed to `--home`). With
+    this change, both value of HOME and the contents of `/etc/passwd` in
+    the container will reflect the value passed to `--home` if the
+    container is readonly. If the container is writable, the
+    `/etc/passwd` file is left alone because it can interfere with
+    commands that want to modify it.
+  * The `--vm` and related flags to start apptainer inside a VM have been
+    removed. This functionality was related to the retired Singularity Desktop
+    / SyOS projects.
+  * The keyserver-related commands that were under `remote` have been moved to
+    their own, dedicated `keyserver` command. Run `apptainer help keyserver`
+    for more information.
+  * The commands related to OCI/Docker registries that were under `remote` have
+    been moved to their own, dedicated `registry` command. Run
+    `apptainer help registry` for more information.
+  * The the `remote list` subcommand now outputs only remote endpoints (with
+    keyservers and OCI/Docker registries having been moved to separate
+    commands), and the output has been streamlined.
+  * Adding a new remote endpoint using the `apptainer remote add` command will
+    now set the new endpoint as default. This behavior can be suppressed by
+    supplying the `--no-default` (or `-n`) flag to `remote add`.
+  * Skip parsing build definition file template variables after comments
+    beginning with a hash symbol.
+  * The global `/tmp` directory is no longer used for gocryptfs mountpoints.
+- New Features & Functionality
+  * The `remote status` command will now print the username, realname, and
+    email of the logged-in user, if available.
+  * Add monitoring feature support, which requires the usage of an
+    additional tool named `apptheus`, this tool will put apptainer starter
+    into a newly created cgroup and collect system metrics.
+  * A new `--no-pid` flag for `apptainer run/shell/exec` disables the PID
+    namespace inferred by `--containall` and `--compat`.
+  * Added `--config` option to `keyserver` commands.
+  * Honor an optional remoteName argument to the `keyserver list` command.
+  * Added the `APPTAINER_ENCRYPTION_PEM_DATA` env var to allow for
+    encrypting and running encrypted containers without a PEM file.
+  * Adding `--sharens` mode for `apptainer exec/run/shell`, which enables to
+    run multiple apptainer instances created by the same parent using
+    the same image in the same user namespace.
+- Make 'gocryptfs' an optional dependency.
+- Make apptainer definition templates version dependent.
+
+-------------------------------------------------------------------
 Wed Mar 13 19:28:40 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Fix 'apptainer build' using signed packages from the SUSE

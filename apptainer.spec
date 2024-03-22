@@ -25,7 +25,7 @@ Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL AND OpenSSL
 Group:          Productivity/Clustering/Computing
 Name:           apptainer
-Version:        1.2.5
+Version:        1.3.0
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://apptainer.org
@@ -58,9 +58,10 @@ BuildRequires:  libseccomp-devel
 Requires:       squashfs
 Requires:       squashfuse
 Recommends:     fuse2fs
-Requires:       (apptainer-leap if product(Leap) = 15.5)
-Requires:       (apptainer-sle15_5 if product(SUSE_SLE) = 15.5)
-Requires:       (apptainer-sle15_6 if product(SUSE_SLE) = 15.6)
+Recommends:     gocryptfs
+Requires:       (apptainer-leap = %version if product(Leap) = 15.5)
+Requires:       (apptainer-sle15_5 = %version if product(SUSE_SLE) = 15.5)
+Requires:       (apptainer-sle15_6 = %version if product(SUSE_SLE) = 15.6)
 
 # Needed for container decryption in userspace, upstream rpms include this
 # but factory should have this seperately
@@ -77,7 +78,7 @@ containers that can be used across host environments.
 %package   sle15_5
 Summary:        Apptainer Definition File Templates for SLE 15 SP5
 BuildArch:      noarch
-Requires:       apptainer
+Requires:       apptainer = %version
 
 %description sle15_5
 The package provides a definition file template for Apptainer containers
@@ -86,7 +87,7 @@ based on SUSE Linux Enterprise 15 SP5.
 %package   sle15_6
 Summary:        Apptainer Definition File Templates for SLE 15 SP6
 BuildArch:      noarch
-Requires:       apptainer
+Requires:       apptainer = %version
 
 %description sle15_6
 The package provides a definition file template for Apptainer containers
@@ -95,7 +96,7 @@ based on SUSE Linux Enterprise 15 SP6.
 %package leap
 Summary:        Apptainer Definition File Templates for current openSUSE Leap
 BuildArch:      noarch
-Requires:       apptainer
+Requires:       apptainer = %version
 
 %description leap
 The package provides a definition file template for Apptainer containers

@@ -301,4 +301,12 @@
     <comment></comment>
     <requestid>1157874</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ee8dbd9ad74a6a4432017f7171cebec3</srcmd5>
+    <version>1.3.0</version>
+    <time>1711117222</time>
+    <user>anag+factory</user>
+    <comment>- Make apptainer definition templates version dependent. (forwarded request 1160482 from eeich)</comment>
+    <requestid>1160483</requestid>
+  </revision>
 </revisionlist>
