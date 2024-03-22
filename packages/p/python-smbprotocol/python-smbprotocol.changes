@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Mar 21 17:34:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.0:
+  * Added the property `smb_info` on `SMBDirEntry` which returns
+    a named tuple `SMBDirEntryInformation` containing metadata
+    already retrieved in the `scandir` operation.
+  * This avoid having to call `stat()` to retrieve data like the
+    file attributes or datetime fields that is already available
+  * Ensure `DateTimeField` values are set to `UTC` timezones as
+    FILETIME values are in UTC
+  * Stop using `datetime.datetime.utcfromtimestamp()` as it has
+    been deprecated
+  * Added default timeout for disconnect operations for 60
+    seconds to ensure the process doesn't hang forever when
+    closing a broken connection
+  * `smbprotocol.connection.Connection.disconnect()` now waits
+    (with a timeout) for the message processing threads to be
+    stopped before returning.
+  * Do not set the SMB SessionId and TreeId in the headers to
+    `0xFFFFFFFF` for related compound requests
+    + Ensures the source file for `shutil.copyfile` is opened
+      with `share_access="r"` for better compatibility with files
+      already opened by something else
+    + Remove endless authentication loop when the context is
+      complete and no more input messages are needed
+
+-------------------------------------------------------------------
 Fri Nov 24 13:00:19 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.12.0
@@ -22,7 +49,7 @@ Tue Sep  5 21:56:00 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 -------------------------------------------------------------------
 Mon Dec  5 13:36:15 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 1.10.1 
+- Update to version 1.10.1
   * Raise the original BadNetworkName error if the server doesn't indicate it supports DFS or
     FSDriverRequired was raised trying to lookup the DFS information - #196
   * Fix pre auth session id tracking if the intermediate token messages return 0 as the session id
@@ -40,12 +67,12 @@ Sun Nov  6 20:32:55 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 -------------------------------------------------------------------
 Fri Oct 21 13:19:59 UTC 2022 - pgajdos@suse.com
 
-- python-six is not required 
+- python-six is not required
 
 -------------------------------------------------------------------
 Fri Oct  7 16:09:45 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 1.9.0 
+- Update to version 1.9.0
   * Fix connection cache reuse for some DFS referral requests
   * Add smbclient.path to the smbclient import allowing import smbclient; smbclient.path.func()
 
