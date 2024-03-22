@@ -48,7 +48,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{base_name}%{flavor_suffix}
-Version:        1.13
+Version:        1.14
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Network configuration scripts for %{csp_string}

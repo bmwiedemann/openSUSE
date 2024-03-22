@@ -164,4 +164,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1158461</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>68bcf52a38dc6a255ab679e3c6579b45</srcmd5>
+    <version>1.14</version>
+    <time>1711117216</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.14
+  + Use '-s' instead of '--no-progress-meter' for curl (bsc#1221757)
+</comment>
+    <requestid>1160427</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 20 14:44:20 UTC 2024 - Joachim Gleissner <jgleissner@suse.com>
+
+- Update to version 1.14
+  + Use '-s' instead of '--no-progress-meter' for curl (bsc#1221757)
+
+-------------------------------------------------------------------
 Sat Mar  9 11:22:32 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Add version settings to Provides/Obsoletes
