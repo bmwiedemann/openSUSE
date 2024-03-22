@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kmouth
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        Speech Synthesizer Frontend
 License:        GPL-2.0-or-later
