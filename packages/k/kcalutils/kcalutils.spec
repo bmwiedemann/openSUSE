@@ -18,11 +18,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           kcalutils
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        Library with utility functions for handling calendar data
 License:        LGPL-2.1-or-later
@@ -52,6 +52,8 @@ applications access and use calendar data via the KCalCore library.
 %package -n libKPim6CalendarUtils6
 Summary:        Library with utility functions for handling calendar data
 Requires:       kcalutils = %{version}
+Obsoletes:      libKF5CalendarUtils5 < %{version}
+Obsoletes:      libKPim5CalendarUtils5 < %{version}
 
 %description  -n libKPim6CalendarUtils6
 This library provides a set of utility functions that help
