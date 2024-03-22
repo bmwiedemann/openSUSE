@@ -18,11 +18,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           kmailtransport
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        KDE PIM Libraries: Mailtransport layer
 License:        LGPL-2.1-or-later
@@ -49,6 +49,8 @@ KDE PIM applications.
 %package -n libKPim6MailTransport6
 Summary:        Mail Transport library for KDE PIM applications
 Requires:       kmailtransport >= %{version}
+Obsoletes:      libKF5MailTransport5 < %{version}
+Obsoletes:      libKPim5MailTransport5 < %{version}
 
 %description -n libKPim6MailTransport6
 The Mail Transport library for KDE PIM functionality
