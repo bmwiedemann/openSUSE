@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 21 08:33:45 UTC 2024 - Mohd Saquib <mohd.saquib@suse.com>
+
+- update to 2.6.10:
+  * t_client.sh can now run pre-tests and skip a test block if needed
+    (e.g. skip NTLM proxy tests if SSL library does not support MD4)
+  * Compression: minor bugfix in checking option consistency vs.
+    compiled-in algorithm support
+  * systemd unit files: remove obsolete syslog.target
+
+-------------------------------------------------------------------
 Mon Feb 26 12:50:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
