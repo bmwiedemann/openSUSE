@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:25:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Improve DurationSlider and VolumeSlider keyboard accessibility
+  * Fix favorite filter and exit fullscreen buttons not activating on Enter/Return
+  * Refactor FlatButton to support checkable buttons
+  * Fix items taking focus when they aren't visible
+  * Fix mobile playlist entry menu buttons taking focus when parent isn't selected
+  * Fix mobile playlist Show Current button not highlighting current entry
+
+-------------------------------------------------------------------
 Sat Mar 16 10:03:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update elisa runtime requirements (boo#1218742)
