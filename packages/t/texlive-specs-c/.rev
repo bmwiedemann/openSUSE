@@ -519,4 +519,12 @@
 - Make texlive-iftex obsolete texlive-ifluatex from 2019 (boo#1211717)</comment>
     <requestid>1129119</requestid>
   </revision>
+  <revision rev="53" vrev="56">
+    <srcmd5>033b00b20741acea7158a73aadb01122</srcmd5>
+    <version>unknown</version>
+    <time>1711117045</time>
+    <user>anag+factory</user>
+    <comment>Update to TeXLive 2024, third</comment>
+    <requestid>1160636</requestid>
+  </revision>
 </revisionlist>
