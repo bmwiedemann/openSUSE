@@ -57,6 +57,16 @@ Requires:       %{name} = %{version}-%{release}
 %description devel
 Development package for Intel Graphics Compute Runtime for OpenCL.
 
+%if %{with level_zero}
+%package -n libze_intel_gpu1
+Summary:        Intel GPU support for oneAPI level zero
+Requires:       level-zero
+Requires:       libigc1
+
+%description -n libze_intel_gpu1
+This package provides offloading to an Intel GPU via the oneAPI level zero interface.
+%endif
+
 %prep
 %autosetup -p1 -n compute-runtime-%{version}
 
@@ -84,13 +94,14 @@ rm -Rf %{buildroot}%{_prefix}/lib/debug
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
+%if %{with level_zero}
+%post -n libze_intel_gpu1 -p /sbin/ldconfig
+%postun -n libze_intel_gpu1 -p /sbin/ldconfig
+%endif
+
 %files
 %{_libdir}/intel-opencl/libigdrcl.so
 %{_libdir}/libocloc.so
-%if %{with level_zero}
-%{_libdir}/libze_intel_gpu.so.1
-%{_libdir}/libze_intel_gpu.so.1.3.*
-%endif
 %{_bindir}/ocloc
 %{_libdir}/intel-opencl
 %if 0%{?suse_version} > 1600
@@ -105,8 +116,12 @@ rm -Rf %{buildroot}%{_prefix}/lib/debug
 
 %files devel
 %{_includedir}/ocloc_api.h
+
 %if %{with level_zero}
-%{_includedir}/level_zero/zet_intel_gpu_debug.h
+%files -n libze_intel_gpu1
+%{_libdir}/libze_intel_gpu.so.1
+%{_libdir}/libze_intel_gpu.so.1.3.*
+%exclude %{_includedir}/level_zero/zet_intel_gpu_debug.h
 %endif
 
 %changelog
