@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 21 19:19:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.8.0:
+  * FWI-5853 - Add kubeVersion field nova results (#299)
+  * Added ignore_list_functionality (#252)
+  * Update guide.md (#239)
+  * Remove old install instructions (#238)
+  * removed depracted ioutil references (#248)
+
+-------------------------------------------------------------------
 Thu Jul 27 04:28:37 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 3.7.0:
