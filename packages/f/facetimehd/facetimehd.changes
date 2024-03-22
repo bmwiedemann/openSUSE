@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 21 15:54:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add build fix for recent kernel versions:
+  * 0001-v4l2-accommodate-to-struct-filed-rename-of-vb2_buffe.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 08:17:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

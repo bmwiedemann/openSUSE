@@ -26,6 +26,8 @@ URL:            https://github.com/patjak/facetimehd
 Source0:        https://github.com/patjak/facetimehd/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        preamble
 Patch0:         Remove-use-of-linux-pci-aspm.h-since-it-s-not-in-the.patch
+# https://github.com/patjak/facetimehd/pull/292
+Patch1:         0001-v4l2-accommodate-to-struct-filed-rename-of-vb2_buffe.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 Requires:       facetimehd-firmware
 ExcludeArch:    s390x
@@ -39,6 +41,8 @@ Reverse engineered Linux driver for the FacetimeHD PCIe webcam
 %if 0%{?sle_version} == 150300
 %patch -P 0 -p1
 %endif
+%patch -P 1 -p1
+
 set -- *
 mkdir source
 mv "$@" source/
