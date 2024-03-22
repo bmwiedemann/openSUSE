@@ -78,7 +78,6 @@ armstub=armstub8-rpi4.bin
 # can still use it through efifb by adding 'dtoverlay=disable-vc4' in
 # 'extraconfig.txt'.
 dtoverlay=vc4-kms-v3d-pi4,cma-default
-dtoverlay=disable-v3d
 
 [cm4]
 

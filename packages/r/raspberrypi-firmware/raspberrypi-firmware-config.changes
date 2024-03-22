@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 21 13:12:24 UTC 2024 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Enable v3d "Broadcom V3D DRM Driver" (bsc#1218780).
+  See also: https://docs.mesa3d.org/drivers/v3d.html
+
+-------------------------------------------------------------------
 Thu Nov 23 10:50:50 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 8972935 (2023-11-21)

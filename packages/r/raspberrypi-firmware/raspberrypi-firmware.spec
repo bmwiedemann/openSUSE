@@ -1,7 +1,7 @@
 #
 # spec file for package raspberrypi-firmware
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Source0:        raspberrypi-firmware-%{version}.tar.bz2
 Source1:        get-from-git.sh
 Source99:       %{name}-rpmlintrc
 Requires(post): util-linux
-Requires(preun):util-linux
+Requires(preun): util-linux
 Recommends:     raspberrypi-firmware-config
 Recommends:     raspberrypi-firmware-dt
 Supplements:    modalias(of:NfirmwareT*Craspberrypi%2Cbcm2835-firmwareC*)
@@ -47,7 +47,7 @@ Summary:        Extra bootloaders for Raspberry Pi
 Group:          System/Boot
 Requires:       raspberrypi-firmware = %{version}-%{release}
 Requires(post): util-linux
-Requires(preun):util-linux
+Requires(preun): util-linux
 
 %description extra
 This package provides the console, experimental and debug
@@ -58,7 +58,7 @@ Summary:        Extra bootloaders for Raspberry Pi
 Group:          System/Boot
 Requires:       raspberrypi-firmware = %{version}-%{release}
 Requires(post): util-linux
-Requires(preun):util-linux
+Requires(preun): util-linux
 
 %description extra-pi4
 This package provides the console, experimental and debug
