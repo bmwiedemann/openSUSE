@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:25:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Port timer to play ringing sound through custom alarmplayer rather than knotification (kde#483824)
+  * Fix soundpicker page entries not selectable due to type error(kde#483453)
+  * ci: Use ubuntu runner
+  * ci: Add tag to appstream test
+  * flatpak: Switch to non-preview runtime
+  * CI - Flatpak: Add libplasma dependency
+  * appstream: Fix developer name
+  * appstream: Update developer name
+
+-------------------------------------------------------------------
 Fri Feb 23 13:58:52 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
