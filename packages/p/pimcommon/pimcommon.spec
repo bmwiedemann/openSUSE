@@ -18,11 +18,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           pimcommon
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        Base package of KDE PIM PimCommon library
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -98,6 +98,8 @@ The development package for the pimcommon libraries
 Summary:        The PimCommon Library
 License:        LGPL-2.1-or-later
 Requires:       pimcommon >= %{version}
+Obsoletes:      libKF5PimCommon5 < %{version}
+Obsoletes:      libKPim5PimCommon5 < %{version}
 
 %description -n libKPim6PimCommon6
 The PimCommon library
@@ -106,6 +108,8 @@ The PimCommon library
 Summary:        The PimCommon Akonadi Library
 License:        LGPL-2.1-or-later
 Requires:       pimcommon >= %{version}
+Obsoletes:      libKF5PimCommonAkonadi5 < %{version}
+Obsoletes:      libKPim5PimCommonAkonadi5 < %{version}
 
 %description -n libKPim6PimCommonAkonadi6
 The PimCommon Akonadi library
