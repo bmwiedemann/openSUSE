@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:28:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Fix code quality
+  * Fix QString handling
+  * .kde-ci.yml: add missing qqc2-desktop-style
+  * AppStream: do not translate developer name
+  * AppStream: specify supported input devices
+  * Flatpak: use Kirigami Add-ons 1.0.1
+  * Flatpak: add cleanup
+  * flatpak: Switch to non-preview runtime
+- Build with Qt5 until the next minor version. Some fixes can't
+  be backported to the stable branch
+
+-------------------------------------------------------------------
 Fri Feb 23 14:01:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
