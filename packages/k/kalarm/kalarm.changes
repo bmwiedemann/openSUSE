@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 19 15:25:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Update version number
+  * Revert unintentional change in d54151cfa72457e85f3013b54bf39971137d5433
+  * Allow playing of remote audio files
+  * Remove X11 calls when using Wayland
+  * In Edit Alarm dialogue, allow save if Set Volume checkbox is toggled
+  * Use libcanberra instead of Phonon for all audio output
+  * Bug 381334: Use libcanberra instead of Phonon to play sounds (kde#381334)
+
+-------------------------------------------------------------------
 Fri Feb 23 13:58:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.0
