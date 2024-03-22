@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kjournald
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        Qt browser for journald database
 License:        LGPL-2.1-or-later
