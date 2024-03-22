@@ -18,11 +18,11 @@
 
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.0
+%define kpim6_version 6.0.1
 
 %bcond_without released
 Name:           kimap
-Version:        24.02.0
+Version:        24.02.1
 Release:        0
 Summary:        Library to assist working with IMAP servers
 License:        LGPL-2.1-or-later
@@ -56,6 +56,8 @@ Requires:       cyrus-sasl-plain
 Requires:       sasl2-kdexoauth2
 Requires:       kimap >= %{version}
 Obsoletes:      kimap-lang <= 23.04.0
+Obsoletes:      libKF5IMAP5 < %{version}
+Obsoletes:      libKPim5IMAP5 < %{version}
 Obsoletes:      libKPim5IMAP5-lang < %{version}
 
 %description  -n libKPim6IMAP6
