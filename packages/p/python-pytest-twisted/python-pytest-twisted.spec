@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-twisted
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-twisted
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        Pytest Plugin for Twisted
 License:        BSD-2-Clause

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 21 17:06:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.1:
+  * Drop pypy 2.7
+  * add pypy 3.9
+  * add python 3.11
+  * CI fixes
+
+-------------------------------------------------------------------
 Wed May 17 16:45:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8:

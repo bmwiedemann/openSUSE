@@ -47,4 +47,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1088896</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>36a95cd08952851c80793e89391fc2a4</srcmd5>
+    <version>1.14.1</version>
+    <time>1711117221</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.14.1:
+  * Drop pypy 2.7
+  * add pypy 3.9
+  * add python 3.11
+  * CI fixes</comment>
+    <requestid>1160434</requestid>
+  </revision>
 </revisionlist>
