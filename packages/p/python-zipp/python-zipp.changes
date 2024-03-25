@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 16 13:12:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.18.1:
+  * No significant changes.
+
+-------------------------------------------------------------------
+Thu Mar 14 13:51:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.18.0:
+  * Bypass ZipFile.namelist in glob for better performance.
+  * Refactored glob functionality to support a more generalized
+    solution with support for platform-specific path separators.
+
+-------------------------------------------------------------------
 Mon Nov 27 09:06:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.17.0:

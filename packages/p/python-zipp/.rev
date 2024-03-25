@@ -233,4 +233,12 @@
   * Declared package as backport.</comment>
     <requestid>1129068</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bc1cd46f46b41de13106722173bd9571</srcmd5>
+    <version>3.18.1</version>
+    <time>1711397218</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1160959</requestid>
+  </revision>
 </revisionlist>
