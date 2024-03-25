@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Mar 23 22:14:16 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.7
+  * Added early detection of invalid encodings and BOM for
+    keymaps, rules & Compose. Also added a hint that the expected
+    encoding must be UTF-8 compatible.
+  * Updated keysyms using latest xorgproto
+    (cd33097fc779f280925c6d6bbfbd5150f93ca5bc): For the sake of
+    compatibility, this reintroduces some deleted keysyms and
+    postpones the effective deprecation of others that had landed
+    in xkbcommon 1.6.0.
+  * Reverted removal of some XKB_KEYs and fixed inconsistencies in names.
+    Details see upstream changelog.
+  * ``xkbcli compile-compose``: added new CLI utility to test
+    Compose files.
+  * ``xkbcli interactive-evdev``: added a ``--verbose`` option.
+  * ``xkbcli interactive-x11``: added support for Compose.
+  * ``xkbcli interactive-wayland``: added support for Compose.
+
+-------------------------------------------------------------------
 Fri Jan 12 09:32:56 UTC 2024 - Pierre Le Marre <opensuse@wismill.eu>
 
 - Add libxkbcommon-tools-bash-completions.

@@ -23,7 +23,7 @@
 %endif
 
 Name:           libxkbcommon
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Library for handling xkb descriptions
 License:        MIT
@@ -177,7 +177,7 @@ chmod -x %buildroot/%_datadir/bash-completion/completions/xkbcli*
 %_libdir/libxkbcommon.so.*
 
 %files devel
-%doc NEWS
+%doc NEWS.md
 %_includedir/%name/
 %if %{with x11}
 %exclude %_includedir/%name/xkbcommon/xkbcommon-x11.h

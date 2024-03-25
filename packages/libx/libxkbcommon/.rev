@@ -357,4 +357,12 @@
     <comment>- Add libxkbcommon-tools-bash-completions.</comment>
     <requestid>1138449</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>aea5f404261451bb2b035ecd83053698</srcmd5>
+    <version>1.7.0</version>
+    <time>1711397219</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.7</comment>
+    <requestid>1161026</requestid>
+  </revision>
 </revisionlist>
