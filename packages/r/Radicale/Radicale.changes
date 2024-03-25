@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar 18 08:22:57 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
+
+- Update to 3.1.9
+  * Add: support for Python 3.11 + 3.12
+  * Drop: support for Python 3.6
+  * Fix: MOVE in case listen on non-standard ports or behind reverse proxy
+  * Fix: stricter requirements of Python 3.11
+  * Fix: HTML pages
+  * Fix: Main Component is missing when only recurrence id exists
+  * Fix: passlib don't support bcrypt>=4.1
+  * Fix: web login now proper encodes passwords containing %XX (hexdigits)
+  * Enhancement: user-selectable log formats
+  * Enhancement: autodetect logging to systemd journal
+  * Enhancement: test code
+  * Enhancement: option for global permit to delete collection
+  * Enhancement: auth type 'htpasswd' supports now 'htpasswd_encryption' sha256/sha512 and "autodetect" for smooth transition
+  * Improve: Dockerfiles
+  * Improve: server socket listen code + address format in log
+  * Update: documentations + examples
+  * Dependency: limit typegard version < 3
+  * General: code cosmetics
+
+-------------------------------------------------------------------
 Sun Jan 15 10:06:31 UTC 2023 - Ákos Szőts <szotsaki@gmail.com>
 
 - Security fortifications (provided by systemd)

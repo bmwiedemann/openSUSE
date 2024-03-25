@@ -1,7 +1,7 @@
 #
 # spec file for package Radicale
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012-2023 Ákos Szőts <szotsaki@gmail.com>
 # Copyright (c) 2011 Marcus Rueckert <darix@opensu.se>
 #
@@ -22,17 +22,17 @@
 %define pkg_config     %{_sysconfdir}/%{pkg_name}
 %define pkg_home       %{_localstatedir}/lib/%{pkg_name}
 %define pkg_user_group %{pkg_name}
-%define py_min_ver 3.6
+%define py_min_ver 3.7
 %define vo_min_ver 0.9.6
 %define du_min_ver 2.7.3
 Name:           Radicale
-Version:        3.1.8
+Version:        3.1.9
 Release:        0
 Summary:        A CalDAV calendar and CardDav contact server
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://www.radicale.org/
-Source:         https://github.com/Kozea/Radicale/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/Kozea/Radicale/archive/v%{version}.tar.gz
 Source1:        radicale.service
 Source2:        system-user-%{pkg_user_group}.conf
 Source3:        radicale.firewalld
