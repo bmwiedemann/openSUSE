@@ -150,7 +150,7 @@ install -m 644 %{SOURCE102} $RPM_BUILD_ROOT/%_unitdir/
 install -m 644 %{SOURCE103} $RPM_BUILD_ROOT/%_unitdir/
 
 %post
-touch /var/lib/%{name}/imported
+: >/var/lib/%{name}/imported
 %service_add_post openSUSE-build-key-import.service openSUSE-build-key-import.timer
 test -x /usr/bin/systemctl && systemctl enable openSUSE-build-key-import.timer && systemctl start openSUSE-build-key-import.timer || true
 

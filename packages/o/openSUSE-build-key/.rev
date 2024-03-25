@@ -361,4 +361,14 @@ However, it would be good to have these out before we do switch. (forwarded requ
   the .service file is launching the script from (boo#1221427). (forwarded request 1158051 from dimstar)</comment>
     <requestid>1158163</requestid>
   </revision>
+  <revision rev="42" vrev="51">
+    <srcmd5>86eee4d76ab33481c22dd37b9556f1ff</srcmd5>
+    <version>1.0</version>
+    <time>1711397225</time>
+    <user>anag+factory</user>
+    <comment>- Requires(post): coreutils is missing
+  * instead of adding it, change the post scriptlet:
+    do not use touch, use shell redirection (forwarded request 1161116 from gcomes.obs)</comment>
+    <requestid>1161136</requestid>
+  </revision>
 </revisionlist>

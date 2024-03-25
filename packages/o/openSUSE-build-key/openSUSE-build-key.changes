@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 24 11:35:39 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Requires(post): coreutils is missing
+  * instead of adding it, change the post scriptlet:
+    do not use touch, use shell redirection
+
+-------------------------------------------------------------------
 Thu Mar 14 16:06:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Install import-openSUSE-build-key to %{_sbindir}: align to where
