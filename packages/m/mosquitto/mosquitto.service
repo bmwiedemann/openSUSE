@@ -20,6 +20,7 @@ Type=simple
 User=mosquitto
 Group=mosquitto
 ExecStart=/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf
+ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
