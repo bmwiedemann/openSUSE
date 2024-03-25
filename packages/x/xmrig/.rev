@@ -654,4 +654,26 @@
     <comment>- Build only on supported architectures</comment>
     <requestid>1155109</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>4bc0571f17fce502686892fd55e08b88</srcmd5>
+    <version>6.21.2</version>
+    <time>1711397579</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 6.21.2:
+  * v6.21.2
+  * Update CHANGELOG.md
+  * Update hwloc for MSVC builds.
+  * Fix build with recent libuv.
+  * Fix rapidjson assert.
+  * Fix RandomX crash when compiled with fortify_source
+  * Fix scripts for systems without bash.
+  * Update deps.
+  * chore: remove repetitive words
+  * Thread-safe FileLogWriter
+  * Update bug_report.md
+  * #2800 Fixed donation with ghostrider algorithm for builds without KawPow algorithm.
+  * Stratum: better check of the login response
+  * v6.21.2-dev</comment>
+    <requestid>1161422</requestid>
+  </revision>
 </revisionlist>

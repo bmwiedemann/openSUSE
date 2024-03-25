@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 25 14:01:41 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.21.2:
+  * v6.21.2
+  * Update CHANGELOG.md
+  * Update hwloc for MSVC builds.
+  * Fix build with recent libuv.
+  * Fix rapidjson assert.
+  * Fix RandomX crash when compiled with fortify_source
+  * Fix scripts for systems without bash.
+  * Update deps.
+  * chore: remove repetitive words
+  * Thread-safe FileLogWriter
+  * Update bug_report.md
+  * #2800 Fixed donation with ghostrider algorithm for builds without KawPow algorithm.
+  * Stratum: better check of the login response
+  * v6.21.2-dev
+
+-------------------------------------------------------------------
 Tue Mar  5 12:13:41 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Build only on supported architectures 

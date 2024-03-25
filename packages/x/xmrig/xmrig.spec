@@ -17,7 +17,7 @@
 
 
 Name:           xmrig
-Version:        6.21.1
+Version:        6.21.2
 Release:        0
 Summary:        XMR mining application
 License:        GPL-3.0-only
@@ -52,9 +52,12 @@ Open source CPU/GPU XMR cryptocurrency miner.
 %cmake_build
 
 %install
-install -D -m 0755 build/xmrig %{buildroot}%{_bindir}/xmrig
-install -D -m 0644 src/config.json %{buildroot}%{_sysconfdir}/xmrig/xmrig.conf
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/xmrig@.service
+install -Dpm 0755 build/xmrig \
+  %{buildroot}%{_bindir}/xmrig
+install -Dpm 0644 src/config.json \
+  %{buildroot}%{_sysconfdir}/xmrig/xmrig.conf
+install -Dpm 0644 %{SOURCE1} \
+  %{buildroot}%{_unitdir}/xmrig@.service
 
 %files
 %doc README.md CHANGELOG.md scripts
