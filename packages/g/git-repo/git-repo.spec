@@ -17,21 +17,22 @@
 
 
 Name:           git-repo
-Version:        2.35
+Version:        2.44
 Release:        0
 Summary:        The Multiple Git Repository Tool
 License:        Apache-2.0
 URL:            https://gerrit.googlesource.com/git-repo
 Source:         %{name}-%{version}.tar.xz
 # SECTION tests
-BuildRequires:  git
+BuildRequires:  git >= 1.7.2
 BuildRequires:  gpg2
-BuildRequires:  python3-pytest
+# requires pytest monkeypatch
+BuildRequires:  python3-pytest >= 6.2
 BuildRequires:  python3-flake8
 BuildRequires:  tree
 # /SECTION
 Requires:       python3-base
-Requires:       git
+Requires:       git >= 1.7.2
 BuildArch:      noarch
 
 %description
@@ -55,8 +56,9 @@ install -Dm755 repo %{buildroot}%{_bindir}/repo
 %check
 %{buildroot}%{_bindir}/repo help
 git config --global user.email "abuild@local.localdomain"
-# test_Fetch fails on opensuse Leap 15.4 and 15.5
-%if 0%{?sle_version} == 150500 || 0%{?sle_version} == 150400
+git config --global user.name "A Build"
+# test_Fetch fails on opensuse Leap 15.6 and 15.6
+%if 0%{?sle_version} == 150500 || 0%{?sle_version} == 150600
 PYTHONPATH=. pytest -k 'not test_Fetch'
 %else
 PYTHONPATH=. pytest

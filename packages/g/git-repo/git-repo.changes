@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Sat Mar 16 09:01:39 UTC 2024 - sebix@sebix.at
+
+- Update to version 2.44:
+  * ssh: Print details if running the command fails
+  * upload: Fix patchset description destination
+  * sync: Fix sorting for nested projects
+  * sync: introduce --force-checkout
+  * upload: Add support for setting patchset description
+  * sync: Introduce git checkout levels
+  * git_command: Return None from GetEventTargetPath() if set to empty string
+  * trace: Save trace2 sid in REPO_TRACE file
+  * subcmds: sync: Remove deprecated _AUTO_GC
+  * launcher: Set shebang to python3
+  * sync: ensure RepoChangedException propagated
+  * stop passing project to UpdateManifestError
+  * project: Rename if deletion fails
+  * Clean up remaining `repo sync` log spam.
+  * docs: fix some grammar typos
+  * project: Check references during sync
+  * tests: setup user identity for tests
+  * manifest_xml: fix url normalization for inits and remotes
+  * git_trace2: Add socket timeout
+  * manifest_xml: do not allow / before : in scp-like syntax
+  * repo: Drop reexec of python3 from check_python_version()
+  * repo: Remove Python 2 compatibility code
+  * repo: Remove a Python 2 related comment
+  * Don't log spam `repo sync` by default
+  * tox: Remove pylint timeout
+  * Update commit-msg hook
+  * sync: Fix partial sync false positive
+  * repo: add repo main script's directory to PYTHONPATH.
+  * info: Handle undefined mergeBranch
+  * manifest_xml: support nested submanifests
+  * repo_logging: Ensure error details are printed
+  * repo: Use the worktree when checking the repo rev.
+  * git_superproject: tell git that superproject is bare
+  * Correctly handle schema-less URIs for remote fetch URL
+  * main: Log ManifestParseError exception messages
+  * repo: Remove unreachable code.
+  * cleanup: Update codebase to expect Python 3.6
+
+-------------------------------------------------------------------
+Mon Feb 19 10:20:34 UTC 2024 - sebix@sebix.at
+
+- Update to version 2.39:
+  * sync: PersistentTransport call parent init
+  * sync: TeeStringIO write should return int
+  * sync: Fix tracking of broken links
+  * project: Speculative fix for project corruption
+  * cleanup: convert exceptions to OSError
+  * cleanup: delete redundant "r" open mode
+  * cleanup: use new dict & set generator styles
+  * manifest_xml: Fix empty project list when DOCTYPE is present
+  * cleanup: leverage yield from in more places
+  * git_config: GetBoolean should return bool
+  * project: using --depth results in error when including submanifests
+  * repo: drop Python 2 compat logic
+  * delete Python 2 (object) compat
+  * tests: Set HOME to a temporary directory when running tests.
+  * tests: added python 3.12
+  * github: add python 3.11 to test-ci.yml
+  * github: pin ubuntu to 20.04 to make py36 work
+  * python-support: update with current status & guidelines
+  * hooks: drop support for Python 2
+  * main: drop Python 2 check
+  * Update logger.warn to logger.warning
+  * git_command: read1 needs a size in py3.6
+  * git_command: lru_cache needs maxsize for py36 & 37
+  * sync: Fix print statement in _PostRepoFetch
+  * git_command: Augment underlying git errors with suggestions
+  * project: Invoke realpath on dotgit for symmetry with gitdir to ensure a short relpath.
+  * Reset info logs back to print in sync
+  * Track expected git errors in logs
+  * tests: Fix tox error in py36 use virtualenv<20.22.0
+  * Use non-deprecated API for obtaining UTC time
+  * main: Use repo logger
+  * project: Use repo logger
+  * subcmds: Use repo logger
+  * github: add PR closer
+  * tests: test_subcmds_sync.py: fix for py3.6 & 3.7
+  * tests: test_git_superproject.py: fix py3.6 & 3.7
+  * start: Use repo logger
+  * project: Use IsId instead of ID_RE.match
+  * project: Optimise GetCommitRevisionId when revisionId is set
+  * manifest_xml: use a set instead of (sorted) list in projectsDiff
+  * Log ErrorEvent for failing GitCommands
+  * logging: Use log.formatter for coloring logs
+  * sync: Preserve errors on KeyboardInterrupt
+  * fix black formatting of standalone programs
+  * sync: Use repo logger within sync
+  * project: Preserve stderr on upload
+  * tox.ini: add isort as dependency
+  * isort: format codebase
+  * tweak stdlib imports to follow Google style guide
+  * upload: Suggest full sync if hooks fail with partially synced tree
+  * sync: Ignore repo project when checking partial syncs
+  * upload: fix error handling
+  * docs: Document .repo_localsyncstate.json
+  * gitc: drop support
+  * tox: enable python 3.11 testing
+  * flake8: exclude venv and .tox folder
+  * Raise RepoExitError in place of sys.exit
+  * sync: Warn if partial sync state is detected
+  * main: Pass path to python binary as arg0 when restarting repo
+  * Raise repo exit errors in place of sys.exit
+  * Prefix error events with RepoErrorEvent:
+  * Refactor errors for sync command
+  * Update errors to extend BaseRepoError
+  * [repo logging] Add logging module
+  * sync: Track last completed fetch/checkout
+
+-------------------------------------------------------------------
 Sun Jul 16 09:50:59 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - Only execute pytest, not black and flake8 tests. We do not care about formatting
