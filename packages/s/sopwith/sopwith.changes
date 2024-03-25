@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar 22 10:12:22 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.4.0:
+  * There is now an emscripten (web) version, available on the website.
+  * It is now possible to make and load custom levels (there is no proper 
+    level editor available yet though).
+  * There are now a number of alternative palettes that can be used that 
+    simulate different CGA palettes and old monitors (thanks techknight).
+  * There are now hotkeys to end or restart the current game (thanks techknight).
+  * There is now a -p command line option to specify TCP port number.
+  * Sound is now oversampled to reduce sound aliasing (thanks @kmill).
+  * Starting level is now synchronized between players at multiplayer start.
+  * A bug was fixed with the keybindings menu not working (thanks ranguli, NY00123)
+  * An input bug was fixed where a backspace would leave some visual corruption, 
+    and the cursor now blinks.
+  * A bug was fixed where the same medal could be awarded twice.
+  * Timing of music on the title screen was fixed (thanks @NY00123).
+
+-------------------------------------------------------------------
 Fri Jun 16 09:25:59 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.3.0:
