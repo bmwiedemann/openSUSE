@@ -1,7 +1,7 @@
 #
 # spec file for package gap-xgap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-xgap
-Version:        4.31
+Version:        4.32
 Release:        0
 Summary:        GAP: Graphical user interface for GAP
 License:        GPL-2.0-or-later

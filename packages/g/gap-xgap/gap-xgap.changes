@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 23 22:09:27 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.32
+  * When resizing a GAP poset sheet via the Magnify command or
+    similar, the level labels were not getting moved correctly.
+    They should stay by the right side of the window.
+
+-------------------------------------------------------------------
 Sun Feb 12 20:59:04 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 4.31) for build.opensuse.org
