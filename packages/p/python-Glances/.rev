@@ -265,4 +265,15 @@
 - Switch to pyproject and autosetup macros.</comment>
     <requestid>1108745</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a25311c6455aeef5f51396a6f59b103d</srcmd5>
+    <version>3.4.0.5</version>
+    <time>1711397434</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.4.0.5:
+  * Correct issur with GPU plugin in Docker images #2705
+  * Cyber security patch (update some deps in the WebUI and
+    Docker image)</comment>
+    <requestid>1161123</requestid>
+  </revision>
 </revisionlist>
