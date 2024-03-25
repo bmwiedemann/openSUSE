@@ -27,13 +27,13 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module opentelemetry-proto == 1.22.0}
-BuildRequires:  %{python_module opentelemetry-sdk == 1.22.0}
+BuildRequires:  %{python_module opentelemetry-proto == 1.23.0}
+BuildRequires:  %{python_module opentelemetry-sdk == 1.23.0}
 BuildRequires:  %{python_module opentelemetry-test-utils}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-opentelemetry-proto == 1.22.0
+Requires:       python-opentelemetry-proto == 1.23.0
 BuildArch:      noarch
 %python_subpackages
 

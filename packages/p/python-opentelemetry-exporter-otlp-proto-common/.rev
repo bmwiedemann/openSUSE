@@ -39,4 +39,12 @@
   * Remove dependency on 'backoff' library</comment>
     <requestid>1158309</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a2d9569f58b348e4f2e04512d675aeea</srcmd5>
+    <version>1.23.0</version>
+    <time>1711397571</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1161424</requestid>
+  </revision>
 </revisionlist>
