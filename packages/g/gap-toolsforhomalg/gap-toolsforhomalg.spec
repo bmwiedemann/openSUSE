@@ -1,7 +1,7 @@
 #
 # spec file for package gap-toolsforhomalg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-toolsforhomalg
-Version:        2022.12.01
-%define sillyver 2022.12-01
+Version:        2023.11.01
+%define sillyver 2023.11-01
 Release:        0
 Summary:        GAP: Special methods and knowledge propagation tools
 License:        GPL-2.0-only
@@ -29,7 +29,7 @@ Source:         https://github.com/homalg-project/homalg_project/releases/downlo
 BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.11.1
+Requires:       gap-core >= 4.12.1
 
 %description
 The ToolsForHomalg package provides GAP extensions for the homalg
