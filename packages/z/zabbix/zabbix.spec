@@ -1,7 +1,7 @@
 #
 # spec file for package zabbix
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,16 @@
 
 %define server_user  zabbixs
 %define server_group zabbixs
-# keep zabbix user for backwards compatibility of agent
 %define agent_user   zabbix
 %define agent_group  zabbix
-%define SUSEfirewall_services_dir %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
+
 Name:           zabbix
-Version:        6.0.25
+Version:        6.0.27
 Release:        0
 Summary:        Distributed monitoring system
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            http://www.zabbix.com
+URL:            https://www.zabbix.com
 Source0:        https://cdn.zabbix.com/zabbix/sources/stable/6.0/zabbix-%{version}.tar.gz
 Source1:        rn6.0.0.html
 Source2:        zabbix-tmpfiles.conf
@@ -36,15 +35,12 @@ Source3:        zabbix-java-gateway.sh
 Source4:        zabbix-logrotate.in
 Source5:        apache2-zabbix.conf
 Source6:        README.SUSE
-Source7:        zabbix-server.firewall
-Source8:        zabbix-agentd.firewall
-Source9:        zabbix-proxy.firewall
-Source10:       zabbix-java-gateway.firewall
 Source11:       zabbix-proxy.service
 Source12:       zabbix-agentd.service
 Source13:       zabbix-server.service
 Source14:       zabbix-java-gateway.service
 Source15:       README-SSL.SUSE
+Source16:       system-user-zabbix.conf
 # PATCH-FIX-OPENSUSE  zabbix-6.0.12-netsnmp-fixes.patch fix for removed md5 auth protocol
 Patch3:         zabbix-6.0.12-netsnmp-fixes.patch
 BuildRequires:  apache-rpm-macros
@@ -52,6 +48,7 @@ BuildRequires:  apache2-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
+BuildRequires:  firewall-macros
 BuildRequires:  gcc
 BuildRequires:  java-devel >= 1.6
 BuildRequires:  libmysqlclient-devel
@@ -60,10 +57,8 @@ BuildRequires:  logrotate
 BuildRequires:  net-snmp-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} >= 1600 || 0%{?sle_version} > 150100
-BuildRequires:  postgresql-server-devel
-%endif
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  unixODBC-devel
 BuildRequires:  update-alternatives
 BuildRequires:  pkgconfig(OpenIPMI)
@@ -76,7 +71,12 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
+%sysusers_requires
+
 %{?systemd_requires}
+%if 0%{?suse_version} >= 1600 || 0%{?sle_version} > 150100
+BuildRequires:  postgresql-server-devel
+%endif
 
 %description
 Zabbix is a distributed monitoring system.
@@ -102,6 +102,9 @@ Group:          System/Monitoring
 Requires:       logrotate
 Requires(pre):  %fillup_prereq
 Requires(pre):  shadow
+Requires:       update-alternatives
+Requires:       group(%{agent_group})
+Requires:       user(%{agent_user})
 Conflicts:      zabbix-agent
 
 %description agent
@@ -116,6 +119,8 @@ Requires:       update-alternatives
 Requires:       zabbix_server_binary = %{version}-%{release}
 Requires(pre):  %fillup_prereq
 Requires(pre):  shadow
+Requires:       group(%{server_group})
+Requires:       user(%{server_user})
 Conflicts:      zabbix-server
 
 %description server
@@ -130,6 +135,8 @@ Requires:       update-alternatives
 Requires:       zabbix_proxy_binary = %{version}-%{release}
 Requires(pre):  %fillup_prereq
 Requires(pre):  shadow
+Requires:       group(%{server_group})
+Requires:       user(%{server_user})
 Conflicts:      zabbix-proxy
 
 %description proxy
@@ -152,7 +159,9 @@ Requires:       php8-xmlwriter
 Suggests:       php8-mysqli
 Suggests:       php8-pgsql
 Conflicts:      zabbix-phpfrontend
+Provides:       zabbix-phpfrontend
 Obsoletes:      zabbix-phpfrontend < 6.0.0
+BuildArch:      noarch
 
 %description ui
 The Zabbix PHP frontend allows access via standard web browsers.
@@ -165,7 +174,7 @@ Group:          System/Monitoring
 Requires:       %{name}-server = %{version}-%{release}
 Requires:       mariadb
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Conflicts:      zabbix-server-mysql
 Provides:       %{name} = %{version}-%{release}
 Provides:       zabbix_server_binary = %{version}-%{release}
@@ -179,7 +188,7 @@ Group:          System/Monitoring
 Requires:       %{name}-server = %{version}-%{release}
 Requires:       postgresql
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Conflicts:      zabbix-server-postgresql
 Provides:       %{name} = %{version}-%{release}
 Provides:       zabbix_server_binary = %{version}-%{release}
@@ -193,7 +202,7 @@ Group:          System/Monitoring
 Requires:       %{name}-proxy = %{version}-%{release}
 Requires:       mariadb
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Conflicts:      zabbix-proxy-mysql
 Provides:       %{name} = %{version}-%{release}
 Provides:       zabbix_proxy_binary = %{version}-%{release}
@@ -207,7 +216,7 @@ Group:          System/Monitoring
 Requires:       %{name}-proxy = %{version}-%{release}
 Requires:       postgresql
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Conflicts:      zabbix-proxy-postgresql
 Provides:       %{name} = %{version}-%{release}
 Provides:       zabbix_proxy_binary = %{version}-%{release}
@@ -220,7 +229,7 @@ Summary:        Zabbix proxy with SQLite support
 Group:          System/Monitoring
 Requires:       %{name}-proxy = %{version}-%{release}
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Conflicts:      zabbix-proxy-sqlite
 Provides:       %{name} = %{version}-%{release}
 Provides:       zabbix_proxy_binary = %{version}-%{release}
@@ -235,6 +244,9 @@ Requires:       jre
 Requires(pre):  shadow
 Conflicts:      zabbix-java-gateway
 Provides:       %{name} = %{version}-%{release}
+Requires:       group(%{server_group})
+Requires:       user(%{server_user})
+BuildArch:      noarch
 
 %description java-gateway
 JMX monitoring can be used to monitor JMX counters of a Java
@@ -243,9 +255,21 @@ host, the Zabbix server queries the Zabbix Java gateway, which in
 turn uses the JMX management API to query the application of interest
 remotely.
 
+%package -n system-user-zabbix
+Summary:        Users and groups
+Group:          System
+Requires(pre):  pwdutils
+Provides:       group(%{agent_group})
+Provides:       group(%{server_group})
+Provides:       user(%{agent_user})
+Provides:       user(%{server_user})%define server_user  zabbixs
+BuildArch:      noarch
+
+%description -n system-user-zabbix
+Zabbix users and groups required by zabbix packages
+
 %prep
-%setup -q -n zabbix-%{version}
-%patch3
+%autosetup -p0 -n zabbix-%{version}
 
 cp %{SOURCE6} .
 # fix source & config files to respect adapted names
@@ -295,6 +319,7 @@ cp -r zabbix-%{version} zabbix-%{version}-sqlite
 cd -
 
 %build
+%sysusers_generate_pre %{SOURCE1} zabbix system-user-zabbix.conf
 ZABBIX_BASIC_CONFIG="--enable-proxy --enable-server --enable-agent  --sysconfdir=%{_sysconfdir}/zabbix \
                      --with-openipmi --enable-java --enable-ipv6 --with-ssh2 --with-ldap --with-unixodbc \
                      --with-libcurl --with-net-snmp --with-libxml2 --with-openssl --with-libpcre --with-libevent"
@@ -302,23 +327,24 @@ ZABBIX_BASIC_CONFIG="--enable-proxy --enable-server --enable-agent  --sysconfdir
 # configure MySQL repo (here)
 autoreconf -fvi
 %configure $ZABBIX_BASIC_CONFIG --with-mysql --without-postgresql --without-sqlite3
-make %{?_smp_mflags}
+%make_build
 
 # configure PostgreSQL repo
 cd ../zabbix-%{version}-postgresql
 autoreconf -fvi
 %configure $ZABBIX_BASIC_CONFIG --with-postgresql --without-mysql --without-sqlite3
-make %{?_smp_mflags}
+%make_build
 cd -
 
 # configure SQLite repo
 cd ../zabbix-%{version}-sqlite
 autoreconf -fvi
 %configure $ZABBIX_BASIC_CONFIG --disable-server --enable-proxy --with-sqlite3 --without-postgresql --without-mysql
-make %{?_smp_mflags}
+%make_build
 cd -
 
 %install
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/system-user-zabbix.conf
 # install the binaries
 
 %make_install -C ../zabbix-%{version}-sqlite
@@ -365,14 +391,6 @@ sed -e 's|COMPONENT|proxy|g; s|USER|zabbixs|g' %{SOURCE4} > \
      %{buildroot}%{_sysconfdir}/logrotate.d/%{name}-proxy
 
 %fdupes %{buildroot}
-
-# install firewall description files for SLE 12 / Leap 42
-%if 0%{?suse_version} < 1500
-install -Dm 0644 %{SOURCE7} %{buildroot}%{SUSEfirewall_services_dir}/zabbix_server
-install -Dm 0644 %{SOURCE8} %{buildroot}%{SUSEfirewall_services_dir}/zabbix_agentd
-install -Dm 0644 %{SOURCE9} %{buildroot}%{SUSEfirewall_services_dir}/zabbix_proxy
-install -Dm 0644 %{SOURCE10} %{buildroot}%{SUSEfirewall_services_dir}/zabbix-java-gateway
-%endif
 
 # install systemd unit files
 install -Dm 0644 %{SOURCE11} %{buildroot}%{_unitdir}/zabbix_proxy.service
@@ -423,47 +441,41 @@ cp %{SOURCE15} .
 
 %pre server
 # Server daemon
-%{_bindir}/getent group %{server_group} >/dev/null || %{_sbindir}/groupadd -r %{server_group}
-%{_bindir}/getent passwd %{server_user} >/dev/null || %{_sbindir}/useradd -r -d %{_localstatedir}/lib/%{server_user} -s /bin/false -c "Zabbix Server Daemon" -g %{server_group} %{server_user}
 %service_add_pre zabbix_server.service
-exit 0
 
 %pre proxy
 # Proxy daemon
-%{_bindir}/getent group %{server_group} >/dev/null || %{_sbindir}/groupadd -r %{server_group}
-%{_bindir}/getent passwd %{server_user} >/dev/null || %{_sbindir}/useradd -r -d %{_localstatedir}/lib/%{server_user} -s /bin/false -c "Zabbix Proxy Daemon" -g %{server_group} %{server_user}
 %service_add_pre zabbix_proxy.service
-exit 0
 
 %pre agent
 # Agent daemon
-%{_bindir}/getent group %{agent_group} >/dev/null || %{_sbindir}/groupadd -r %{agent_group}
-%{_bindir}/getent passwd %{agent_user} >/dev/null || %{_sbindir}/useradd -r -d %{_localstatedir}/lib/%{agent_user} -s /bin/false -c "Zabbix Agent Daemon" -g %{agent_group} %{agent_user}
 %service_add_pre zabbix_agentd.service
-exit 0
 
 %pre java-gateway
 # Java daemon
-%{_bindir}/getent group %{server_group} >/dev/null || %{_sbindir}/groupadd -r %{server_group}
-%{_bindir}/getent passwd %{server_user} >/dev/null || %{_sbindir}/useradd -r -d %{_localstatedir}/lib/%{server_user} -s /bin/false -c "Zabbix Java Daemon" -g %{server_group} %{server_user}
 %service_add_pre zabbix-java-gateway.service
-exit 0
+
+%pre -n system-user-zabbix -f zabbix.pre
 
 %post server
+%firewalld_reload
 %service_add_post zabbix_server.service
 %tmpfiles_create %{_tmpfilesdir}/zabbix_server.conf
 echo "Please read %{_docdir}/%{name}-server/README-SSL.SUSE to set up SSL on Zabbix server."
 
 %post proxy
+%firewalld_reload
 %service_add_post zabbix_proxy.service
 %tmpfiles_create %{_tmpfilesdir}/zabbix_proxy.conf
 echo "Please read %{_docdir}/%{name}-proxy/README-SSL.SUSE to set up SSL on Zabbix proxy."
 
 %post java-gateway
+%firewalld_reload
 %service_add_post zabbix-java-gateway.service
 %tmpfiles_create %{_tmpfilesdir}/zabbix-java-gateway.conf
 
 %post agent
+%firewalld_reload
 %service_add_post zabbix_agentd.service
 %tmpfiles_create %{_tmpfilesdir}/zabbix_agentd.conf
 echo "Please read %{_docdir}/%{name}-agent/README-SSL.SUSE to set up SSL on Zabbix agent."
@@ -534,9 +546,6 @@ fi
 
 %files server
 %doc AUTHORS ChangeLog database/mysql database/oracle database/postgresql database/sqlite3 rn6.0.0.html README-SSL.SUSE
-%if 0%{?suse_version} < 1500
-%config %{SUSEfirewall_services_dir}/zabbix_server
-%endif
 %dir %{_sysconfdir}/zabbix
 %config(noreplace) %attr(0640, root, %{server_group}) %{_sysconfdir}/zabbix/zabbix_server.conf
 %{_bindir}/zabbix_get
@@ -558,9 +567,6 @@ fi
 
 %files proxy
 %doc README-SSL.SUSE
-%if 0%{?suse_version} < 1500
-%config %{SUSEfirewall_services_dir}/zabbix_proxy
-%endif
 %{_sbindir}/zabbix_proxy
 %{_sbindir}/zabbix-proxy
 %{_sbindir}/rczabbix_proxy
@@ -578,9 +584,6 @@ fi
 
 %files agent
 %doc README-SSL.SUSE
-%if 0%{?suse_version} < 1500
-%config %{SUSEfirewall_services_dir}/zabbix_agentd
-%endif
 %dir %{_sysconfdir}/zabbix
 %config(noreplace) %attr(0640, root, %{agent_group}) %{_sysconfdir}/zabbix/zabbix_agent*.conf
 %{_sbindir}/rczabbix_agentd
@@ -629,9 +632,6 @@ fi
 %ghost %{_sysconfdir}/alternatives/zabbix_proxy
 
 %files java-gateway
-%if 0%{?suse_version} < 1500
-%config %{SUSEfirewall_services_dir}/zabbix-java-gateway
-%endif
 %dir %{_sysconfdir}/zabbix
 %config(noreplace) %attr(0640, root, %{server_group}) %{_sysconfdir}/zabbix/zabbix-java-gateway.conf
 %config(noreplace) %attr(0640, root, %{server_group}) %{_sysconfdir}/zabbix/zabbix-java-gateway-log.xml
@@ -647,5 +647,8 @@ fi
 %ghost %attr(0770,root,%{server_group}) %dir %{_rundir}/%{server_user}
 %{_unitdir}/zabbix-java-gateway.service
 %{_tmpfilesdir}/zabbix-java-gateway.conf
+
+%files -n system-user-zabbix
+%{_sysusersdir}/system-user-zabbix.conf
 
 %changelog
