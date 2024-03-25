@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 22 20:44:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 30.3.0:
+  * Use latest skeleton
+  * Update license list to latest ScanCode and SPDX 3.23
+  * Drop support for Python 3.7
+
+-------------------------------------------------------------------
 Thu Dec  7 22:56:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 30.2.0:

@@ -56,4 +56,15 @@
   * Add Python 3.12 support in CI</comment>
     <requestid>1131816</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2ca78d63028be6463ed985655767e7e0</srcmd5>
+    <version>30.3.0</version>
+    <time>1711397277</time>
+    <user>anag+factory</user>
+    <comment>- update to 30.3.0:
+  * Use latest skeleton
+  * Update license list to latest ScanCode and SPDX 3.23
+  * Drop support for Python 3.7</comment>
+    <requestid>1160834</requestid>
+  </revision>
 </revisionlist>
