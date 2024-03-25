@@ -1,0 +1,5 @@
+<package name="flake-pilot" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization:Appliances:Builder" package="flake-pilot"/>
+</package>

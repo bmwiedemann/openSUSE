@@ -1,0 +1,17 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>682ee0a20e74734f8332d683ac4c58dd</srcmd5>
+    <version>3.0.9</version>
+    <time>1711397553</time>
+    <user>anag+factory</user>
+    <comment>flake-pilot - Semi Transparent Container/VM instances
+
+I'd like to add this little rust based utility to the SUSE
+distribution as an addition to the container and VM stack. For
+more details and a quick start please take a look into the
+documentation at:
+
+https://github.com/OSInside/flake-pilot?tab=readme-ov-file#flake-pilot</comment>
+    <requestid>1161365</requestid>
+  </revision>
+</revisionlist>

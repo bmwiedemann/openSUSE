@@ -1,0 +1,2590 @@
+-------------------------------------------------------------------
+Mon Mar 25 11:58:55 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.0.8 → 3.0.9
+
+-------------------------------------------------------------------
+Mon Mar 25 11:45:44 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix spec file
+
+  Several changes according to the SUSE regulations
+
+-------------------------------------------------------------------
+Mon Mar 25 11:04:41 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix robot tests
+
+-------------------------------------------------------------------
+Mon Mar 25 10:40:16 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add missing %changelog line in spec
+
+-------------------------------------------------------------------
+Mon Mar 25 10:26:49 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow non static sci
+
+  Build sci non static for ppc64le which doesn't support
+  the rust static target yet
+
+-------------------------------------------------------------------
+Mon Mar 25 09:45:27 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop upx binary compression
+
+  Startup time seems more important than binary size on
+  target. The original reason for the compression was due
+  to very limited size constraints from a former customer
+  who no longer sticks to them.
+
+-------------------------------------------------------------------
+Mon Mar 25 09:28:22 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop obsolete gcc static fix
+
+-------------------------------------------------------------------
+Mon Mar 25 09:16:38 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Break long commandline for better readability
+
+-------------------------------------------------------------------
+Mon Mar 25 09:13:53 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Added a delta container example registration
+
+-------------------------------------------------------------------
+Mon Jan 29 15:47:26 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.0.7 → 3.0.8
+
+-------------------------------------------------------------------
+Fri Jan 26 21:52:07 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop build-deb support
+
+  Building a debian package from a given oci container using the
+  debbuild tool was an extra helper command to turn a container
+  into a package. However, flake-pilot should not have this
+  responsibility and if it should provide it, it should be done
+  with the native tools from the respective distribution.
+
+-------------------------------------------------------------------
+Fri Jan 26 12:56:56 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update README
+
+  Add information about console settings and limitations with
+  regards to firecracker VMs
+
+-------------------------------------------------------------------
+Fri Jan 26 12:23:49 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for force vsock on firecracker pilot
+
+  The vsock communication between guest and host was established
+  with the firecracker pilot only for resume type registrations.
+  For those it's required because you cannot mux one serial
+  terminal between parallel applications running at the same
+  time in the guest. So in resume mode each call has its own
+  socket and channels. However, there is no reason to not also
+  support that type of data flow between guest and host for one
+  time calls which fires up the VM, starts the application and
+  shuts down the VM. This commit adds support for forcing the
+  vsock communication also for the simple app registration.
+  The default stays on serial though.
+
+-------------------------------------------------------------------
+Fri Jan 19 17:42:42 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.0.6 → 3.0.7
+
+-------------------------------------------------------------------
+Fri Jan 19 17:29:14 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure /mnt mountpoint exists for firecracker
+
+  When using an overlay sci mounts the new root to /mnt prior pivot.
+  Thus make sure /mnt exists as mountpoint directory in the image
+  at import time
+
+-------------------------------------------------------------------
+Wed Jan 17 10:58:24 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.0.5 → 3.0.6
+
+-------------------------------------------------------------------
+Wed Jan 17 10:37:34 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use raw channel fallback if pty setup failed
+
+  In resume mode the firecracker pilot uses a vsock connection
+  for the host <-> guest data transfer. On the guest the command
+  is by default called in a new PTY. However if this is not possible
+  e.g because the guest does not support pty allocation there
+  should be a fallback allocating the standard channels directly.
+
+-------------------------------------------------------------------
+Wed Jan 17 09:34:24 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Don't use static arch names
+
+-------------------------------------------------------------------
+Mon Jan 15 18:59:51 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.0.4 → 3.0.5
+
+-------------------------------------------------------------------
+Mon Jan 15 18:36:51 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure system mount point exists for sci
+
+  Reboot, terminal allocation and pivot of a firecracker machine
+  requires access to sysrq, pts devices and more. sci mounts all
+  kernel filesystems but this requires the mountpoints /proc, /sys
+  /dev, /dev/pts to be available. Some prebuild firecracker
+  images comes without these mountpoints (non FHS compliant btw).
+  With this commit we make sure that at registration time the image
+  has this mountpoint such that the sci issued system mounts
+  can succeed.
+
+-------------------------------------------------------------------
+Tue Jan 09 21:44:59 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Complement copyright holder
+
+-------------------------------------------------------------------
+Tue Jan 09 21:36:39 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Updates due to move from master to main
+
+  Update workflows and documentation to match the branch move
+
+-------------------------------------------------------------------
+Tue Jan 09 11:22:56 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.0.3 → 3.0.4
+
+-------------------------------------------------------------------
+Wed Jan 03 13:15:12 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Add more details on the main idea of this version of flake-pilot
+  and provide a diagram to illustrate the use cases better
+
+-------------------------------------------------------------------
+Tue Jan 02 19:38:08 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update compilation git action
+
+  Run compile step in the same way as it's done when
+  compiling the package, e.g sci as static binary
+
+-------------------------------------------------------------------
+Sun Dec 31 18:38:28 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Prevent use of socat in sci
+
+  Replace external socat call in sci with rust implementation
+  based on the pty, libc and vsock crates. This Fixes #8
+
+-------------------------------------------------------------------
+Sun Dec 31 14:39:06 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix workspace resolver
+
+  Edition 2021 is used in several src setup which implies
+  workspace resolver version 2. Make this a permanent setting
+  and don't let it assume an implicit resolver version
+
+-------------------------------------------------------------------
+Mon Nov 13 10:36:32 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.0.2 → 3.0.3
+
+-------------------------------------------------------------------
+Mon Nov 13 10:36:14 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix package build
+
+-------------------------------------------------------------------
+Mon Nov 13 09:24:04 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.0.1 → 3.0.2
+
+-------------------------------------------------------------------
+Fri Nov 10 19:51:19 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- make shellcheck happy
+
+-------------------------------------------------------------------
+Fri Nov 10 16:40:40 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add bash completion
+
+  Add completion for flake-ctl. This Fixes #18
+
+-------------------------------------------------------------------
+Sat Oct 28 18:19:31 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Revert "Delete kiwi-settings from build requires"
+
+  This reverts commit e5b8b146344cc1cf6736c51b2584031f80dbf6ba.
+
+-------------------------------------------------------------------
+Sat Oct 28 18:15:56 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Delete kiwi-settings from build requires
+
+-------------------------------------------------------------------
+Tue Oct 24 16:53:18 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixup documentation
+
+  Fix URL references
+
+-------------------------------------------------------------------
+Mon Oct 23 12:18:25 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed clippy warning
+
+  call of unwrap after checking its variant with is_some()
+
+-------------------------------------------------------------------
+Mon Oct 23 12:02:06 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Fix changed URL to example image
+
+-------------------------------------------------------------------
+Wed Oct 11 08:09:23 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Package location has changed
+
+-------------------------------------------------------------------
+Sat Oct 07 21:49:45 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Force cleanup of resume type flakes
+
+  In case a resume type flake has lost its cid metadata which can
+  happen on e.g powerfail, the resume of the instance should cleanup
+  the left over container instance and start from scratch.
+  This Fixes #23
+
+-------------------------------------------------------------------
+Sat Oct 07 21:46:05 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure perform() reports all execution data
+
+  The perform function only included the caller arguments but
+  did not provide stdour/stderr information in case of an
+  unsuccessful invocation of the command
+
+-------------------------------------------------------------------
+Sat Oct 07 13:47:09 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update gcc static-pie workaround
+
+  Apply for gcc-12
+
+-------------------------------------------------------------------
+Thu Sep 14 14:58:29 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Document contents of /etc/flakes
+
+  Documentation for the system wide config file.
+  This Fixes #17
+
+-------------------------------------------------------------------
+Thu Sep 14 14:36:38 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.0.0 → 3.0.1
+
+-------------------------------------------------------------------
+Thu Sep 14 14:05:54 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Consolidate common code to IO mod
+
+-------------------------------------------------------------------
+Thu Sep 14 12:09:06 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for --include-path on all pilots
+
+  Allow to provision files/directories. So far only tar
+  archives could be used to provision arbitrary data to
+  the instance
+
+-------------------------------------------------------------------
+Wed Sep 13 16:28:36 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make clippy happy on sci
+
+-------------------------------------------------------------------
+Wed Sep 13 15:35:57 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Don't mix tests with implementation
+
+  A matter of taste, but I value test code to be separated from
+  the actual implementation code
+
+-------------------------------------------------------------------
+Mon Sep 04 09:10:49 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.26 → 3.0.0
+
+-------------------------------------------------------------------
+Sat Sep 02 23:00:22 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added support for systemwide flake config
+
+  Let podman and firecracker pilots read /etc/flakes.yml if present
+  to allow configuration of several general settings. Proper defaults
+  are encoded in case no data is provided
+
+-------------------------------------------------------------------
+Thu Aug 31 23:10:33 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.25 → 2.2.26
+
+-------------------------------------------------------------------
+Thu Aug 31 22:57:58 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed firecracker serde schema
+
+  Allowed values for cache_type are Writeback and Unsafe
+
+-------------------------------------------------------------------
+Thu Aug 31 17:09:39 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.24 → 2.2.25
+
+-------------------------------------------------------------------
+Thu Aug 31 16:46:27 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed firecracker provision
+
+  Check if overlay size is requested not only at creation
+  time of the overlay filesystem image but also at usage
+  time
+
+-------------------------------------------------------------------
+Thu Aug 31 14:04:08 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Delete meta authors information
+
+  The authors information at this point was used in the cli
+  interface and printed on the console in the usage information.
+  Exposing this information might be unwanted and the information
+  is also printed in a not well formatted way.
+
+-------------------------------------------------------------------
+Thu Aug 31 11:37:01 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.23 → 2.2.24
+
+-------------------------------------------------------------------
+Thu Aug 31 11:17:19 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixup clippy warnings
+
+-------------------------------------------------------------------
+Wed Aug 30 22:22:02 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Cleanup code
+
+  Removed out of scope and unused poc code
+  Fixed bumpversion setup to handle all Cargo.toml files
+  Update Makefile for better target readability
+  Fixed Cargo files to follow the major.minor dependency policy
+  Fixed spec file due to removal of unused poc code
+
+-------------------------------------------------------------------
+Wed Aug 30 09:41:05 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move is_debug to common lib
+
+  Along with the change update podman and firecracker pilots
+  to make use of is_debug from the common space and print
+  debug messages through the debug! macro. The former double
+  formatting of the debug message broke the output display
+
+  In addition to the debug changes also a method do_trace()
+  was added to create trace reports. However, the method is
+  currently not in use as I'm still looking for a way to
+  create a useful trace report without spreading do_trace()
+  over the code
+
+-------------------------------------------------------------------
+Tue Aug 29 22:36:16 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Better error message for fs::read_dir
+
+  Added FlakeError for this condition. Related to Issue #9
+
+-------------------------------------------------------------------
+Tue Aug 29 18:14:15 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.22 → 2.2.23
+
+-------------------------------------------------------------------
+Tue Aug 29 16:55:58 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Improve error handling for firecracker
+
+  Ported upstream patches from Michael Meyer <mijomeyer@t-online.de>
+
+-------------------------------------------------------------------
+Tue Aug 29 16:20:05 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor error handling for command execution
+
+  Apply Upstream patch from Michael Meyer <mijomeyer@t-online.de>
+  which consolidates further methods mkdir and chmod in the
+  common space and also moves error handling out of the
+  podman pilot into the common space
+
+-------------------------------------------------------------------
+Tue Aug 29 10:22:18 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.21 → 2.2.22
+
+-------------------------------------------------------------------
+Mon Aug 28 23:07:54 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for %silent pilot option
+
+  Allow to switch off the progress spinner for the podman
+  and firecracker pilots
+
+-------------------------------------------------------------------
+Mon Aug 28 22:46:15 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor pilot options handling
+
+  Add methods to read pilot options into the common space
+  and adapt firecracker and podman pilots to make use of
+  them
+
+-------------------------------------------------------------------
+Mon Aug 28 17:17:49 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- podman-pilot cleanup changes
+
+  Upstream patch from Michael Meyer <mijomeyer@t-online.de>
+  which shortens some code parts.
+
+-------------------------------------------------------------------
+Mon Aug 28 17:02:23 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.20 → 2.2.21
+
+-------------------------------------------------------------------
+Mon Aug 28 16:31:04 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Firecracker sanity check
+
+  The firecracker startup procedure in resume mode needs to setup
+  the control channels prior launching the actual firecracker program
+  to allow synchronisation of guest vs. host data flow. If there is
+  no check that the firecracker binary exists we still perform all
+  the pre setup and waiting calls and the actual error condition is
+  only visible in debug mode. Therefore an early exit condition that
+  checks if there is a firecracker binary found on the host improves
+  the user experience. This Fixes #129
+
+-------------------------------------------------------------------
+Mon Aug 28 16:23:54 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move errors to the common space
+
+  Allow error handling to be used on all pilots and utils
+
+-------------------------------------------------------------------
+Mon Aug 28 12:40:47 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add static profile for building sci binary
+
+-------------------------------------------------------------------
+Mon Aug 28 12:24:50 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix cargo setup
+
+  Move profiles to the toplevel
+  Fix contributors list and mail addresses
+  Fix use of unused manifest key crate-type
+
+-------------------------------------------------------------------
+Mon Aug 28 11:50:09 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix package build
+
+  Source files from new common subdirectory were not added
+  to the source tarball. Thus the compile stage failed
+
+-------------------------------------------------------------------
+Mon Aug 28 11:43:02 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Consolidate actions workload files
+
+  consistent naming, the same version of actions, no missing line endings
+
+-------------------------------------------------------------------
+Mon Aug 28 11:34:48 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.19 → 2.2.20
+
+-------------------------------------------------------------------
+Fri Aug 25 09:33:45 CEST 2023 - Michael Meyer <mijomeyer@t-online.de>
+
+- Extract common code
+
+  Start to refactor pilot code that is shared across multiple implementations into a common ground.
+  The commit here adds a common way to handle sudo based command calls properly
+
+-------------------------------------------------------------------
+Wed Aug 23 12:20:35 CEST 2023 - Michael Meyer <ichmed95@gmail.com>
+
+- Add logging for easier debugging
+
+-------------------------------------------------------------------
+Tue Aug 22 23:18:01 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor port allocation for UDS socket
+
+  When using the firecracker-pilot in a resume type flake, the pilot
+  creates a UDS socket for listening on data. Each of this socket
+  connections requires a free port. The former implementation selects
+  the socket by a random number within a given range. However, this
+  is not a stable solution and the risk to select an already occupied
+  port is high. This commit refactors the port allocation to
+  FIRECRACKER_VSOCK_PORT_START + the PID of the pilot process.
+
+  In addition the commit adds to allow to read runtime options which
+  are only meant to be used for the pilot and should not interfere with
+  the standard arguments passed along to the command call. For this
+  purpose we deviate from the standard Unix/Linux commandline format
+  and treat options passed as %name:value to be a pilot option.
+  This commit adds the handling of the followng pilot option:
+
+  %port:number
+  Allows to specify a custom UDS port used for the
+  VSOCK based communication channel in a firecracker flake
+  configured for resume mode
+
+  This Fixes #114
+
+-------------------------------------------------------------------
+Tue Aug 22 13:46:39 CEST 2023 - Michael Meyer <mijomeyer@t-online.de>
+
+- Use serde to read config in firecracker-pilot
+
+  Move firecracker to serde
+
+-------------------------------------------------------------------
+Mon Aug 21 16:32:50 CEST 2023 - Michael Meyer <mijomeyer@t-online.de>
+
+- Reduce source tarball size
+
+  Remove unneeded files and hollow out all windows and wasm dependencie
+
+-------------------------------------------------------------------
+Sat Aug 19 13:56:50 CEST 2023 - Michael Meyer <mijomeyer@t-online.de>
+
+- Add integration testing based on the robot framework
+
+  Implement a first collection of flake-ctl and engine tests to run as a github action.
+  The implementation of the test uses the python based robot framework. The test
+  matrix is expected to grow
+
+-------------------------------------------------------------------
+Thu Aug 17 11:47:58 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.18 → 2.2.19
+
+-------------------------------------------------------------------
+Thu Aug 17 11:44:45 CEST 2023 - Michael Meyer <mijomeyer@t-online.de>
+
+- Use one top level Cargo definition
+
+  Updated the Makefile and the .spec file to fit the new structure with a top level Cargo.toml
+  This also reduces the package size by combining the vendored dependencies
+
+-------------------------------------------------------------------
+Mon Aug 14 21:42:16 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.17 → 2.2.18
+
+-------------------------------------------------------------------
+Mon Aug 14 21:38:39 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Revert "Makefile Fix"
+
+  This reverts commit bebffd4f421b98c2d78e4d4117c4ae92fa135912.
+
+  The package build was broken due to this commit and needs
+  to be reverted. The original intend to consolidate the
+  compilation into a more rust like structure is a good change
+  but it needs to be done without breaking the existing
+  package build.
+
+-------------------------------------------------------------------
+Mon Aug 14 21:38:23 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Revert "Fix man path"
+
+  This reverts commit ef7733f78019d89276ee05f00d647dab9c790139.
+
+-------------------------------------------------------------------
+Mon Aug 14 11:52:04 CEST 2023 - Michael Meyer <ichmed95@gmail.com>
+
+- Fix man path
+
+-------------------------------------------------------------------
+Mon Aug 14 11:48:56 CEST 2023 - Michael Meyer <ichmed95@gmail.com>
+
+- Update .gitignore
+
+-------------------------------------------------------------------
+Fri Aug 11 18:09:41 CEST 2023 - Michael Meyer <ichmed95@gmail.com>
+
+- Makefile Fix
+
+-------------------------------------------------------------------
+Fri Aug 11 15:27:48 CEST 2023 - Michael Meyer <mijomeyer@t-online.de>
+
+- Flake ctl exit with a correct return code
+
+  Add failure returncodes and use them depending on the success/failed state of the action
+  Co-authored-by: Michael Meyer <ichmed95@gmail.com>
+
+-------------------------------------------------------------------
+Fri Aug 11 15:23:08 CEST 2023 - Michael Meyer <mijomeyer@t-online.de>
+
+- Refactor error handling
+
+  Created error types and replace all panics, unwraps and exits with errors
+  Co-authored-by: Michael Meyer <ichmed95@gmail.com>
+
+-------------------------------------------------------------------
+Fri Aug 11 13:56:15 CEST 2023 - Michael Meyer <ichmed95@gmail.com>
+
+- Moved spinners to stderr
+
+-------------------------------------------------------------------
+Mon Aug 07 13:29:10 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Keep comment format consistent
+
+  Maybe nitpick but I think consistency makes things easier.
+  I only adapted the comment block for this place in code
+  as it was mine before. There are other places which I did not touch
+  since I don't want to step on other peoples toes, but I recommend
+  that we decide for one comment format and stick to it everywhere
+
+-------------------------------------------------------------------
+Mon Aug 07 13:19:15 CEST 2023 - Michael Meyer <mijomeyer@t-online.de>
+
+- podman-pilot: replace adhoc yaml with serde
+
+  Use serde to read and validate the flake setup when calling podman-pilot. This is related to #128
+  Co-authored-by: Michael Meyer <ichmed95@gmail.com>
+
+-------------------------------------------------------------------
+Wed Jul 26 18:07:59 CEST 2023 - Michael Meyer <ichmed95@gmail.com>
+
+- match clippy action to othes
+
+-------------------------------------------------------------------
+Fri Jul 14 11:00:30 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.16 → 2.2.17
+
+-------------------------------------------------------------------
+Fri Jul 14 10:52:16 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Regression and partial revert from the clippy set
+
+  The changes done to make clippy happy also changed the logic
+  of the code at several places. This was exactly the reason
+  why I wanted small reviewable pull requests. The commit here
+  is a partial revert of the code prior the big clippy changes.
+  The reason for the changes here is because the template
+  data was was no longer imported and also options given on the
+  commandline were no longer added to the flake yaml file.
+  I reverted to the version before clippy and manually fixed
+  all clippy issues while testing the code to be still functional.
+  This is the result commit of this action.
+
+-------------------------------------------------------------------
+Fri Jul 14 10:51:32 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update flake-ctl man page
+
+  The page was missing that we now also support firecracker
+
+-------------------------------------------------------------------
+Sun Jul 09 00:43:48 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use rst2man instead of pandoc to render man pages
+
+  pandoc is pretty big and adds a lot of haskel lib requirements
+  rst2man just requires python3-docutils and is more lightweight
+
+-------------------------------------------------------------------
+Sun Jul 09 00:23:56 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Better sanity check for gcc static fix
+
+-------------------------------------------------------------------
+Sat Jul 08 00:38:19 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.15 → 2.2.16
+
+-------------------------------------------------------------------
+Sat Jul 08 00:36:56 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed broken reading of resume config
+
+  The clippy change introduced a regression on reading the
+  resume option from the command. I guess a cut&paste bug
+
+-------------------------------------------------------------------
+Fri Jul 07 23:27:37 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed Makefile clean target
+
+  make sure no stale Cargo.lock files will be packaged
+  on make package
+
+-------------------------------------------------------------------
+Fri Jul 07 20:57:31 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.14 → 2.2.15
+
+-------------------------------------------------------------------
+Fri Jul 07 20:56:48 CEST 2023 - Michael Meyer <mijomeyer@t-online.de>
+
+- Fixes to the code to make clippy happy
+
+  Added linter checks via clippy and simplify the code at several places.
+  Also activate a github action for automated checking
+
+-------------------------------------------------------------------
+Fri Jul 07 14:47:37 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Clarify on license
+
+  Add missing license information to update_changelog.py
+  license is MIT in alignment with the overall flake-pilot
+  license. The license setting is in agreement with the
+  only copyright holder of the software which is the
+  person of this signed commit. This Fixes #125
+
+-------------------------------------------------------------------
+Wed Jul 05 09:58:53 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.13 → 2.2.14
+
+-------------------------------------------------------------------
+Wed Jul 05 09:52:26 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Rename oci-registry -> flake-registry
+
+  For consistency reasons, all tools are named flake-XX
+  and oci-registry is not only used for storing container
+  images but also firecracker VMs
+
+-------------------------------------------------------------------
+Wed Jul 05 08:46:15 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.12 → 2.2.13
+
+-------------------------------------------------------------------
+Wed Jul 05 08:45:17 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Better error message for seek os-error
+
+-------------------------------------------------------------------
+Tue Jul 04 22:36:13 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.11 → 2.2.12
+
+-------------------------------------------------------------------
+Tue Jul 04 22:35:35 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Create flake tmp for new registries
+
+-------------------------------------------------------------------
+Tue Jul 04 13:11:33 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.10 → 2.2.11
+
+-------------------------------------------------------------------
+Tue Jul 04 13:10:17 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Handle potential error on seek/write
+
+  The unconditional unwrap here is evil since it only
+  reports unwrap on a null value of either seek() or
+  write() fails. The real error message e.g "no space left"
+  is hidden in this case
+
+-------------------------------------------------------------------
+Mon Jul 03 16:59:30 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.9 → 2.2.10
+
+-------------------------------------------------------------------
+Mon Jul 03 16:59:01 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure to create flakes tmp with permissions
+
+-------------------------------------------------------------------
+Mon Jul 03 16:22:27 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.8 → 2.2.9
+
+-------------------------------------------------------------------
+Mon Jul 03 16:21:57 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed dir creation
+
+  Make sure to create the entire path
+
+-------------------------------------------------------------------
+Mon Jul 03 15:21:04 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.7 → 2.2.8
+
+-------------------------------------------------------------------
+Mon Jul 03 12:42:23 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Increase max retries on resume type VM
+
+  When connecting to a resume type VM for the first time, the
+  wait time was not long enough. Increasing the retry count
+  will solve this issue. If after this delay the VM is still
+  not responsive on the vsock it's likely an issue on the
+  VM startup itself and ok to close. This Fixes #122
+
+-------------------------------------------------------------------
+Sun Jul 02 18:39:29 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix sync output in case of an error
+
+  In case tar fails it prints relevant data to stderr.
+  This information should be part of the debug output
+  when calling with PILOT_DEBUG=1
+
+-------------------------------------------------------------------
+Sat Jul 01 23:43:15 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move flake metadata dir to persistent location
+
+  flakes metadata was written to /tmp, but this is a
+  non persistent storage area (tmpfs). For resume type
+  instances it is required to keep the information to
+  allow resume a stopped container. This Fixes #119
+
+-------------------------------------------------------------------
+Fri Jun 30 17:26:57 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add firecracker include provisioning
+
+  This commit implements reading of the flake include section
+  for the firecracker pilot. With the include tar support it's
+  possible to provision any arbitrary data into the VM instance
+  prior launch. For firecracker the include feature requires the
+  use of an overlay. This Fixes #95
+
+-------------------------------------------------------------------
+Thu Jun 29 15:00:28 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.6 → 2.2.7
+
+-------------------------------------------------------------------
+Thu Jun 29 14:28:01 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Don't apply gcc static fix on TW
+
+-------------------------------------------------------------------
+Thu Jun 29 12:52:11 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Disable loop feature in sys_mount
+
+  By default sys_mount supports loop devices. In sci
+  we don't use them and for kernel 6.x the code does
+  not compiled anymore and fails with:
+  enum_(unnamed_at_/usr/include/linux/loop_h_16_1)" is not a valid Ident
+
+-------------------------------------------------------------------
+Tue Jun 27 18:22:11 CEST 2023 - Bo Maryniuk <bo@maryniuk.net>
+
+- Add flake-ctl and podman-pilot licenses
+
+-------------------------------------------------------------------
+Tue Jun 27 18:09:28 CEST 2023 - Bo Maryniuk <bo@maryniuk.net>
+
+- Run SPDX sboms and list all vendor tree dependencies licenses
+
+-------------------------------------------------------------------
+Tue Jun 27 18:08:52 CEST 2023 - Bo Maryniuk <bo@maryniuk.net>
+
+- Add MIT licenses to the sub-packages
+
+-------------------------------------------------------------------
+Mon Jun 26 16:37:08 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.5 → 2.2.6
+
+-------------------------------------------------------------------
+Sat Jun 24 22:33:30 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed sci command quoting in resume mode
+
+  In resume mode sci calls commands through a vsock using
+  socat EXEC. This commit makes sure that the quoting of
+  the command string doesn't get lost and becomes effective
+  at socket connection time. This Fixes #113
+
+-------------------------------------------------------------------
+Thu Jun 22 20:32:41 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.4 → 2.2.5
+
+-------------------------------------------------------------------
+Thu Jun 22 20:32:25 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added socat requirement
+
+-------------------------------------------------------------------
+Thu Jun 22 18:38:05 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.3 → 2.2.4
+
+-------------------------------------------------------------------
+Tue Jun 20 22:58:15 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor sci and support resume mode
+
+  The former implementation used the vsock channel to
+  read the command, call it in a child and send the output
+  back through the vsock channel. This works until the command
+  is not interactive. With this refactor I propose a different
+  way to handle the command execution.
+
+  start vsock listener on VM_PORT, wait for command(s) in a loop
+  A received command turns into an socat process calling
+  the command with an expected listener
+  Example:
+  sudo socat UNIX-CONNECT:/run/sci_cmd_XXX.sock -
+  CONNECT defaults::VM_PORT(52)
+  --> send the command to call and quit
+
+  sudo socat VSOCK-CONNECT:2:exec_port EXEC:cmd
+  --> connects to the listener instance on the host (pilot)
+
+  The above procedure got also implemeted as
+  part of the firecracker-pilot resume code.
+  This Fixes #87
+
+-------------------------------------------------------------------
+Tue Jun 20 15:56:31 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added instance resume process to firecracker pilot
+
+  When using a firecracker instance in resume mode the first
+  call has to run firecracker in the background, open a connection
+  to the vsock and send the command. Any subsequent call only
+  sends commands to the existing instance. If the instance gets
+  deleted the pilot has to check if the VM is still there and
+  behave properly. Meaning vmid (PID) and uds socket file must
+  be cleaned up prior launching a new instance. The commit here
+  implements the processing of this workflow. It does not
+  implement the actual connection to the instance and sending
+  of commands. This will follow. As of now only debug messages
+  telling what should happen are printed. This is related
+  to Issue #87
+
+-------------------------------------------------------------------
+Mon Jun 19 15:25:24 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Change name of UDS socket for vsock communication
+
+  The name of the uds socket was set to /run/sci_cmd_PID.sock
+  The used PID was the firecracker process ID. This name doesn't
+  make much sense because for one command registration there will
+  always be only one dedicated firecracker process instance
+  assigned. For the use case of --resume there can be multiple
+  connections through the same uds socket
+
+-------------------------------------------------------------------
+Mon Jun 19 14:29:35 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add resume support to firecracker app registration
+
+  Write sci_resume=1 to the boot cmdline arguments if --resume
+  is set at app registration for the firecracker pilot.
+  This is related to Issue #87
+
+-------------------------------------------------------------------
+Sun Jun 18 22:28:51 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.2 → 2.2.3
+
+-------------------------------------------------------------------
+Sun Jun 18 22:25:32 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed loading of vsock transport
+
+  Within the guest the vsock virtio transport module
+  must be loaded, not the vhost module
+
+-------------------------------------------------------------------
+Fri Jun 16 18:11:59 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Cleanup sci on style and consistency
+
+  Use a constant for the guest CID, properly pass the ok
+  status in case of an error, reduce code duplication
+
+-------------------------------------------------------------------
+Fri Jun 16 16:44:50 CEST 2023 - Marcin Katulski <marcin.katulski@gmail.com>
+
+- VSock communication on firecracker side in sci (#106)
+
+  * VSock communication on firecracker side in sci
+
+  * Fix the resume variable name
+
+  * Fixes after review
+
+  * Fixes after found bug
+
+  * Removal of unnessecary debug log
+
+  * Removing unnessecary counter
+
+-------------------------------------------------------------------
+Thu Jun 15 15:22:02 CEST 2023 - Marcin Katulski <marcin.katulski@gmail.com>
+
+- FIX for wrongly handled CID in json configuration
+
+  The CID in VM shall always be equall 3 as the connection generated by
+  firecracker is vsock less connection, means static cid bound on vm to
+  the unix domain socket bound on host
+
+-------------------------------------------------------------------
+Fri Jun 09 09:05:19 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Add firecracker vsock at instance startup (#105)
+
+  This commit adds the init code to create a vsock per instance.
+  This is related to Issue #87
+
+-------------------------------------------------------------------
+Thu May 25 15:37:05 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix project link
+
+-------------------------------------------------------------------
+Thu May 25 15:34:35 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- update README
+
+-------------------------------------------------------------------
+Thu May 25 15:33:32 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update README
+
+-------------------------------------------------------------------
+Thu May 25 15:29:05 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update README
+
+-------------------------------------------------------------------
+Wed May 24 17:08:43 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.1 → 2.2.2
+
+-------------------------------------------------------------------
+Wed May 24 17:07:56 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix vm and container purge
+
+  If used together it's required to sanity check in the
+  different template types between vm and containers
+
+-------------------------------------------------------------------
+Tue May 23 16:36:50 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.2.0 → 2.2.1
+
+-------------------------------------------------------------------
+Tue May 23 12:25:31 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed setup of firecracker registry layout
+
+  For firecracker the layout looks like the following:
+
+  /var/lib/firecracker/
+  ├── images
+  └── storage
+
+  The code in flake-ctl setting it up only cared for the
+  images subdirectory and did not allow /var/lib/firecracker
+  to be a symlink location
+
+-------------------------------------------------------------------
+Mon May 22 16:04:04 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.1.14 → 2.2.0
+
+-------------------------------------------------------------------
+Sun May 21 15:42:31 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update README
+
+-------------------------------------------------------------------
+Sun May 21 15:21:15 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow to disable networking at registration time
+
+-------------------------------------------------------------------
+Sun May 21 14:31:50 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update man page
+
+-------------------------------------------------------------------
+Sat May 20 18:56:59 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Create overlayroot mount point on pull
+
+  As the rootfs is used read-only in firecracker the overlayroot
+  mountpoint cannot be created in sci
+
+-------------------------------------------------------------------
+Fri May 19 15:52:05 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure to create /overlayroot
+
+  When using arbitrary rootfs images it might happen that there
+  is no /overlayroot mountpoint which we use in the pilot to
+  setup an overlay. In addition search for tools like switch_root
+  in the former location /sbin to stay backward compatible with
+  linux versions prior the /usr/sbin move. Newer linux versions
+  still maintains symlinks from /sbin to /usr/sbin for compat
+  reasons.
+
+-------------------------------------------------------------------
+Fri May 19 09:53:55 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Package sci also in pilot
+
+  Usually sci is provided as guestvm tool and the package
+  gets installed as part of the rootfs building. But we also
+  want to support adding sci to rootfs images which doesn't
+  provide it. Therefore also provide sci in the pilot package
+  that gets installed on the host
+
+-------------------------------------------------------------------
+Thu May 18 10:59:32 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support pulling image from components
+
+  So far pulling a firecracker image was limited to the KIWI
+  kis image type. With this commit it's also possible to pull
+  an image from it's components; rootfs, kernel and optional
+  initrd. This allows for example to make use of the firecracker
+  hosted CI images or any other rootfs image in combination
+  with some kernel/initrd. During the pull of such an image
+  there is also a check for the sci binary inside of the rootfs.
+  If it does not exist it gets added to the rootfs such that
+  the firecracker-pilot can work with it. This Fixes #99
+
+-------------------------------------------------------------------
+Wed May 17 17:34:34 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add network configuration guide
+
+  Those parts of the network setup for firecracker instances
+  that cannot be done in code (or out of scope for this project)
+  are documented with this commit as one possible example
+  This Fixes #76
+
+-------------------------------------------------------------------
+Wed May 17 11:55:33 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Build sci as static binary
+
+  This would allow to incorporate it into any arbitrary rootfs
+
+-------------------------------------------------------------------
+Tue May 16 18:00:54 CEST 2023 - Andre Barthel <barthel_a@web.de>
+
+- Revision of the sci man page
+
+-------------------------------------------------------------------
+Tue May 16 16:53:11 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.1.13 → 2.1.14
+
+-------------------------------------------------------------------
+Tue May 16 10:28:17 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed off by one in byte_size for sparse size
+
+-------------------------------------------------------------------
+Tue May 16 09:23:22 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update flake-ctl firecracker register man page
+
+  Update suffix format for size values
+
+-------------------------------------------------------------------
+Mon May 15 17:00:16 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Addded man page for sci guest utility
+
+  sci is used in combination with the firecracker engine
+  and allows to execute the registered application inside
+  of the guest VM. It also takes over responsiblity to
+  setup an eventual overlay as well as perform the shutdown
+  of the VM after the command execution. Further versions
+  of sci will also implement the vsoc communication channels
+  between host and guest. This commit adds a first version
+  of the man page to describe sci in more detail.
+
+-------------------------------------------------------------------
+Mon May 15 16:54:26 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Get rid of qemu tools to create sparse file
+
+  Use native methods to create a sparse overlay file
+
+-------------------------------------------------------------------
+Mon May 15 15:26:18 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added dracut-netstart package for firecracker
+
+  The new package flake-pilot-firecracker-dracut-netstart
+  supports users with building firecracker images that supports
+  networking using systemd-networkd and systemd-resolved
+  activated and persistent inside of the initrd. This is
+  related to Issue #76
+
+-------------------------------------------------------------------
+Sun May 14 21:54:50 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.1.12 → 2.1.13
+
+-------------------------------------------------------------------
+Sun May 14 21:54:29 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Create resolver link in sci
+
+-------------------------------------------------------------------
+Sun May 14 19:03:59 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.1.11 → 2.1.12
+
+-------------------------------------------------------------------
+Sun May 14 19:02:08 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed sci filesystem propagation
+
+  Make sure /run is used from the initrd if present and only
+  if not create a fresh tmpfs mount. This is required to e.g
+  hand over resolver information created in the initrd via
+  systemd-resolved, but also other runtime data from the initrd
+  should be available to the system if present
+
+-------------------------------------------------------------------
+Sun May 14 14:24:18 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.1.10 → 2.1.11
+
+-------------------------------------------------------------------
+Sun May 14 14:23:01 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed handing of tap names
+
+  make sure each instance uses its own tap name.
+
+-------------------------------------------------------------------
+Sun May 14 11:27:03 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.1.9 → 2.1.10
+
+-------------------------------------------------------------------
+Sun May 14 11:22:53 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add default network setup
+
+  Use initrd options rd.neednet=1 ip=dhcp to let systemd inside
+  of the initrd know how to setup the network. This design requires
+  the firecracker image to use an initrd and that initrd must use
+  systemd (typically created by dracut) in order to process the
+  above cmdline arguments. If this concept is not acceptable by
+  the users use case (e.g no initrd wanted) then the user needs
+  to provide its own network setup mechanics as part of the
+  firecracker rootfs image and also need to find a way to activate
+  it prior launching the application, e.g by using systemd instead
+  of sci as the init process.
+
+-------------------------------------------------------------------
+Sun May 14 11:03:55 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- don't panic in sci
+
+  In case of an error report and reboot because otherwise the
+  firecracker process blocks forever on the running console
+
+-------------------------------------------------------------------
+Sun May 14 11:03:26 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Handle all boot args in the flake yaml
+
+-------------------------------------------------------------------
+Sat May 13 20:41:14 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix indentation
+
+-------------------------------------------------------------------
+Sat May 13 20:35:54 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix menu
+
+-------------------------------------------------------------------
+Sat May 13 20:34:32 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add doc link to README
+
+-------------------------------------------------------------------
+Sat May 13 20:31:52 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update README
+
+-------------------------------------------------------------------
+Sat May 13 20:26:24 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update README
+
+-------------------------------------------------------------------
+Sat May 13 19:05:04 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.1.8 → 2.1.9
+
+-------------------------------------------------------------------
+Sat May 13 18:42:08 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Do not compress sci binary
+
+  When used without an initrd it's not possible for the kernel
+  to run the binary if it was upx compressed. For further
+  details also let sci print the user env in debug mode
+
+-------------------------------------------------------------------
+Fri May 12 23:38:29 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.1.7 → 2.1.8
+
+-------------------------------------------------------------------
+Fri May 12 23:37:46 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix firecracker initrd_path serialization
+
+  Make sure initrd_path is not written at all if empty
+
+-------------------------------------------------------------------
+Fri May 12 23:06:22 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix build on ubuntu/debian
+
+-------------------------------------------------------------------
+Fri May 12 22:28:50 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.1.6 → 2.1.7
+
+-------------------------------------------------------------------
+Fri May 12 22:28:33 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Handle wait result better
+
+-------------------------------------------------------------------
+Fri May 12 22:28:18 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix firecracker package requirements
+
+-------------------------------------------------------------------
+Fri May 12 20:05:21 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.1.5 → 2.1.6
+
+-------------------------------------------------------------------
+Fri May 12 20:04:54 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed bumpversion config
+
+  wrong path to guestvm tools for firecracker
+
+-------------------------------------------------------------------
+Fri May 12 20:03:38 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add firecracker-pilot to bumpversion
+
+-------------------------------------------------------------------
+Thu May 11 20:56:43 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed app registration
+
+  Check if app path exist prior trying to register
+
+-------------------------------------------------------------------
+Wed May 10 19:14:44 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add firecracker-pilot launcher
+
+  The firecracker-pilot launcher binary will run the registered
+  application through firecracker. This Fixes #86
+
+-------------------------------------------------------------------
+Thu May 04 16:47:49 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add flake-ctl firecracker register/remove
+
+  Add app registration/removal for the firecracker engine
+  This Fixes #84
+
+-------------------------------------------------------------------
+Thu May 04 14:50:21 CEST 2023 - Marcin Katulski <marcin.katulski@gmail.com>
+
+- firecracker-service manual page (#88)
+
+  * firecracker-service manual page
+
+  * Fixes after review
+
+  * Fix after review adding man page to package
+
+-------------------------------------------------------------------
+Thu May 04 13:33:57 CEST 2023 - Andre Barthel <Andre.Barthel@elektrobit.com>
+
+- .spec file fix
+
+-------------------------------------------------------------------
+Wed May 03 09:56:04 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add compile step to CI workflow
+
+-------------------------------------------------------------------
+Tue May 02 16:50:46 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added support for flake-ctl firecracker pull
+
+  Added the pull command for the firecracker engine to download
+  and register remote firecracker images into a local storage
+  location below /var/lib/firecracker/images. This Fixes #83
+
+-------------------------------------------------------------------
+Tue May 02 16:50:06 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed podman specific man pages
+
+  Some man pages still contains non engine specific section names
+
+-------------------------------------------------------------------
+Thu Apr 27 15:27:24 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add firecracker guest VM tools package
+
+  Add flake-pilot-firecracker-guestvm-tools sub-package
+  providing tools needed inside of the firecracker VM
+  image to help implementing the application launcher
+  workflow
+
+-------------------------------------------------------------------
+Thu Apr 27 12:22:45 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use an extra cmdline argument to handle the call
+
+  To avoid conflicts with other code reading proc/cmdline it
+  is more stable to introduce our own run=... argument and
+  parse that in a shell like way. To do this the shell_words
+  crate is used.
+
+-------------------------------------------------------------------
+Thu Apr 27 09:02:54 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Maintain /overlayroot as package directory
+
+  Create and maintain the /overlayroot mountpoint
+  directory in the flake-pilot-firecracker package
+
+-------------------------------------------------------------------
+Wed Apr 26 16:52:29 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed sci setup and command execution
+
+  sci was a bit too picky on mounting proc, sys and run.
+  If called from within an initrd it could happen that these
+  mountpoints already exists. I turned this condition into
+  a warning rather an error. Furthermore sci executes itself
+  when the idea was that sci executes a given command. I
+  refactored the code to allow calling a given command and
+  also let the firecracker instance shut down after the
+  command execution. The code also leaves two TODO code
+  points which I'd like to fix later and together with the
+  team
+
+-------------------------------------------------------------------
+Wed Apr 26 13:00:45 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed use of static variables
+
+-------------------------------------------------------------------
+Wed Apr 26 12:36:03 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Package firecracker service command interface
+
+  sci is used as VM init tool to prepare the command
+  execution environment, e.g overlay and actually call
+  the given command
+
+-------------------------------------------------------------------
+Wed Apr 26 11:04:45 CEST 2023 - Marcin Katulski <extern.marcin.katulski@elektrobit.com>
+
+- Correct the folder naming
+
+-------------------------------------------------------------------
+Wed Apr 26 08:41:46 CEST 2023 - Marcin Katulski <extern.marcin.katulski@elektrobit.com>
+
+- Fixes after review
+
+-------------------------------------------------------------------
+Fri Apr 21 22:22:54 CEST 2023 - Marcin Katulski <extern.marcin.katulski@elektrobit.com>
+
+- Newline at the end of bump version file
+
+-------------------------------------------------------------------
+Fri Apr 21 22:22:05 CEST 2023 - Marcin Katulski <extern.marcin.katulski@elektrobit.com>
+
+- Update bump version for sci tool
+
+-------------------------------------------------------------------
+Fri Apr 21 22:18:52 CEST 2023 - Marcin Katulski <extern.marcin.katulski@elektrobit.com>
+
+- SCI implementation
+
+  Simple Command Init purpose is to mount proper system folders and the
+  overlay fs if such has been configured and provided by the kernel boot
+  arguments and start the Simple Command Executor
+
+-------------------------------------------------------------------
+Fri Apr 21 09:38:04 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.1.4 → 2.1.5
+
+-------------------------------------------------------------------
+Fri Apr 21 08:11:48 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Refactor packaging (#73)
+
+  Provide sub-packages flake-pilot-podman and flake-pilot-firecracker
+  This Fixes #72
+
+-------------------------------------------------------------------
+Wed Apr 19 12:36:23 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.1.3 → 2.1.4
+
+-------------------------------------------------------------------
+Tue Apr 18 14:32:01 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fetch output channels when pulling
+
+  In case of an error, panic including the error message.
+  In any other case suppress the pull messages. In debug
+  mode show the pull command for reproducibility
+
+-------------------------------------------------------------------
+Tue Apr 18 12:00:40 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Log prune results in debug mode
+
+-------------------------------------------------------------------
+Tue Apr 18 11:57:33 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure prune errors are logged in debug mode
+
+-------------------------------------------------------------------
+Tue Apr 18 11:53:31 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Handle error condition of podman image exists
+
+  The call should actually never fail but if it does we
+  should not continue
+
+-------------------------------------------------------------------
+Mon Apr 17 15:58:40 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure container layer get pulled in
+
+  If using additional container layers, the launcher should
+  make sure they get pulled if not yet done.
+
+-------------------------------------------------------------------
+Fri Apr 14 14:54:58 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.1.2 → 2.1.3
+
+-------------------------------------------------------------------
+Fri Apr 14 14:54:13 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use XFS for oci-registry
+
+-------------------------------------------------------------------
+Fri Apr 14 08:16:05 CEST 2023 - Marcin Katulski <marcin.katulski@gmail.com>
+
+- Service communication implementation (#70)
+
+  * Service communication implementation
+
+  Protocol implementation with three base commands, register/unregister to
+  store information about runnig vm's at the moment, ps to list running
+  vm's
+
+  * Cargo toml cleanup, removal of unused crates
+
+  * Added missing newline at the end of lib.rs
+
+  * Fixes after review
+
+  ---------
+
+  Co-authored-by: Marcin Katulski <extern.marcin.katulski@elektrobit.com>
+
+-------------------------------------------------------------------
+Fri Apr 07 08:22:03 CEST 2023 - Marcin Katulski <marcin.katulski@gmail.com>
+
+- Initial commit with firecracker-service (#69)
+
+  * Initial commit with firecracker-service
+
+  Base skeleton for firecracker-service
+
+  * Cleaned up names for stdout and stderr
+
+  * Fixes after review
+
+  ---------
+
+  Co-authored-by: Marcin Katulski <extern.marcin.katulski@elektrobit.com>
+
+-------------------------------------------------------------------
+Wed Apr 05 12:01:44 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.1.1 → 2.1.2
+
+-------------------------------------------------------------------
+Tue Apr 04 09:35:22 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for --info to podman register command
+
+  If provided in the container the --info command will print
+  the embedded default registration information. Along with
+  the change some refactoring on the option handling as well
+  as moving code engine specific vs. generic registration
+  implementation. This Fixes #67
+
+-------------------------------------------------------------------
+Sat Apr 01 00:24:05 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update README
+
+-------------------------------------------------------------------
+Sat Apr 01 00:23:17 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update README
+
+-------------------------------------------------------------------
+Fri Mar 31 23:35:10 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.1.0 → 2.1.1
+
+-------------------------------------------------------------------
+Fri Mar 31 23:23:48 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added shellcheck action
+
+-------------------------------------------------------------------
+Fri Mar 31 23:18:08 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add oci-registry utility
+
+  Create, activate and deactivate OCI read-write storage
+  This Fixes #66
+
+-------------------------------------------------------------------
+Fri Mar 31 23:13:13 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Increase spinner scope
+
+-------------------------------------------------------------------
+Thu Mar 30 21:45:12 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add spinner to feedback user on progress
+
+  Add a spinner to show progress during provisioning
+  This Fixes #59
+
+-------------------------------------------------------------------
+Thu Mar 30 21:07:22 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Suppress podman start output if detached
+
+  Do not show the podman start output of the container
+  gets started in detached mode. podman by default prints
+  the container ID to stdout but podman-pilot already
+  knows it and it's useless information for the user
+
+-------------------------------------------------------------------
+Thu Mar 30 20:54:50 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 2.0.5 → 2.1.0
+
+-------------------------------------------------------------------
+Thu Mar 30 20:54:34 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixup bumpversion
+
+-------------------------------------------------------------------
+Thu Mar 30 16:53:00 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Fixed github workflow due to name change
+
+-------------------------------------------------------------------
+Thu Mar 30 16:33:18 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Add flake-pilot-rpmlintrc
+
+-------------------------------------------------------------------
+Thu Mar 30 16:20:00 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Rename oci-pilot -> podman-pilot
+
+  This Fixes #60
+
+-------------------------------------------------------------------
+Thu Mar 30 16:00:59 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Rename oci-ctl -> flake-ctl
+
+-------------------------------------------------------------------
+Thu Mar 30 15:51:17 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Update packaging due to name change
+
+-------------------------------------------------------------------
+Thu Mar 30 15:38:42 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Update manual pages due to name changes
+
+-------------------------------------------------------------------
+Thu Mar 30 15:25:48 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Cleanup README to match name changes
+
+-------------------------------------------------------------------
+Thu Mar 30 15:11:00 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Bump version: 2.0.4 → 2.0.5
+
+-------------------------------------------------------------------
+Thu Mar 30 15:10:50 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Update README
+
+-------------------------------------------------------------------
+Wed Mar 29 13:05:04 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Add support for podman settings on the commandline
+
+  Allow to specify podman runtime options as part of the flake
+  registration. This Fixes #41
+
+-------------------------------------------------------------------
+Tue Mar 28 16:41:54 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Add support for user setting on the commandline
+
+  Allow to specify --run-as username as part of the flake
+  registration. This Fixes #54
+
+-------------------------------------------------------------------
+Tue Mar 28 12:59:27 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Update lock files due to version bump
+
+-------------------------------------------------------------------
+Tue Mar 28 12:57:58 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Bump version: 2.0.3 → 2.0.4
+
+-------------------------------------------------------------------
+Tue Mar 28 12:57:35 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Fix reading of flake directory
+
+-------------------------------------------------------------------
+Mon Mar 27 22:20:58 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Update lock files due to version bump
+
+-------------------------------------------------------------------
+Mon Mar 27 22:18:38 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Bump version: 2.0.2 → 2.0.3
+
+-------------------------------------------------------------------
+Mon Mar 27 22:16:11 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Update manual pages
+
+  less duplication of information and update of new options
+
+-------------------------------------------------------------------
+Mon Mar 27 22:15:37 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Add support for includes on commandline
+
+  Allow to specify --include-tar as part of the
+  flake registration
+
+-------------------------------------------------------------------
+Mon Mar 27 17:08:07 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Add support for includes
+
+  Allow to include custom tarball to provision container.
+  This Fixes #52
+
+-------------------------------------------------------------------
+Mon Mar 27 15:49:44 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Fixed build
+
+  Make sure flake directory is created
+
+-------------------------------------------------------------------
+Mon Mar 27 15:30:21 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Install flake templates to /etc/flakes
+
+-------------------------------------------------------------------
+Mon Mar 27 15:26:09 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Follow symlinks to reach flake registry
+
+-------------------------------------------------------------------
+Mon Mar 27 11:14:47 CEST 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Fix README due to namespace changes
+
+-------------------------------------------------------------------
+Mon Mar 27 10:52:15 CEST 2023 - jili8389 <jiyang.liu@elektrobit.com>
+
+- Add missing subcommands in examples
+
+-------------------------------------------------------------------
+Fri Mar 24 12:52:54 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- cargo has updated the lock files
+
+-------------------------------------------------------------------
+Fri Mar 24 12:48:10 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Bump version: 2.0.1 → 2.0.2
+
+-------------------------------------------------------------------
+Fri Mar 24 12:31:07 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Update package spec
+
+  Distinguish the flake template by a namespace
+
+-------------------------------------------------------------------
+Fri Mar 24 12:25:30 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Refactor user interface
+
+  Add a namespace to distinguish between runtime engines.
+  The currently supported runtime engine is podman.
+  This Fixes #44
+
+-------------------------------------------------------------------
+Fri Mar 24 10:50:46 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Update pilot documentation
+
+-------------------------------------------------------------------
+Fri Mar 24 10:41:58 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Update oci-pilot due to flake format changes
+
+  The container flake format got its own namespace.
+  Follow the change in the pilot launcher
+
+-------------------------------------------------------------------
+Fri Mar 24 09:49:33 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Refactor container flake file
+
+  Provide flakes for a container engine inside of a
+  container namespace
+
+-------------------------------------------------------------------
+Thu Mar 23 15:49:28 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Add commandline switches for attach/resume setting
+
+  Allow to specify --attach or --resume setting at app
+  registration. This Fixes #48 and Fixes #39
+
+-------------------------------------------------------------------
+Wed Mar 22 17:32:55 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Fixed yaml writing
+
+  Don't unwrap on None value
+
+-------------------------------------------------------------------
+Tue Mar 21 18:20:13 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Refactor yaml processing
+
+  Use serde for reading/writing yaml content.
+  This Fixes #40
+
+-------------------------------------------------------------------
+Sun Mar 19 15:50:46 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Refactor resume behavior
+
+  Allow calling the application with different caller options
+  in the same container instance. This Fixes #45
+
+-------------------------------------------------------------------
+Sun Mar 19 00:19:57 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Seek to start of tempfile prior reading
+
+-------------------------------------------------------------------
+Fri Mar 17 16:35:30 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Take all removed files into consideration
+
+  During delta provisioning take all removed files information
+  from all containers used in the provisioning process into
+  account. This Fixes #46
+
+-------------------------------------------------------------------
+Fri Mar 17 08:48:21 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Fixed section name, layers vs. layer
+
+-------------------------------------------------------------------
+Thu Mar 16 23:20:28 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Allow multiple container layers for provisioning
+
+  So far delta containers can be provisioned against one base
+  container and optional host dependencies. However when creating
+  delta of deltas this introduces additional layers that needs to
+  be taken into account for provisioning the container.
+  This Fixes #43
+
+-------------------------------------------------------------------
+Wed Mar 08 16:10:26 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Change the filename of the removed file reference
+
+  In line with the changes proposed to kiwi from here
+  https://github.com/OSInside/kiwi/pull/2252
+  the file name to store removed files has been changed
+  from 'vanished' to 'removed'
+
+-------------------------------------------------------------------
+Sat Mar 04 22:22:02 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Fix package requires
+
+  Needs rsync
+
+-------------------------------------------------------------------
+Thu Mar 02 11:03:27 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Provide info message when removing an app
+
+-------------------------------------------------------------------
+Wed Mar 01 12:52:54 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Generate proper changes information
+
+-------------------------------------------------------------------
+Wed Mar 01 12:33:07 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Update man pages
+
+  Add information about PILOT_DEBUG
+
+-------------------------------------------------------------------
+Wed Mar 01 12:29:53 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Only attach to running containers
+
+-------------------------------------------------------------------
+Wed Mar 01 09:59:42 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Add debugging information
+
+  If the env variable PILOT_DEBUG is set this will cause
+  more details about the container startup and provisioning
+
+-------------------------------------------------------------------
+Wed Mar 01 09:18:50 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Handle static file names in defaults
+
+  Put the name of the host dependencies file to defaults
+
+-------------------------------------------------------------------
+Wed Mar 01 09:13:28 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Refactor container startup
+
+  Delete the concept of respawn. We had respawn to support
+  restart of a container that could not be attached. However
+  with the changes to startup via create -> start (attached)
+  respawn became obsolete
+
+-------------------------------------------------------------------
+Tue Feb 28 15:54:20 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Added sync_host to resolve host dependencies
+
+  Based on the presence of a file containing information about
+  the host dependencies a provision step to include that information
+  into the instance to startup is performed.
+  This is related to Issue #37
+
+-------------------------------------------------------------------
+Tue Feb 28 15:19:19 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Cleanup dangling containers
+
+  podman keeps a dangling <none> container in the registry
+  on update. Make sure there is a clean state after pull
+
+-------------------------------------------------------------------
+Tue Feb 28 15:02:36 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Don't suppress error messages
+
+  Error messages from podman regarding the command call
+  should not be suppressed
+
+-------------------------------------------------------------------
+Mon Feb 27 11:57:06 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Added SBOM creation as github action
+
+  Make use of the cargo-bom tool to create a bill of materials
+  such that it becomes possible to check CVE information against
+  the build of oci-pilot
+
+-------------------------------------------------------------------
+Thu Feb 23 22:04:14 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Update man pages
+
+-------------------------------------------------------------------
+Thu Feb 23 21:52:24 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Added --base option to registration
+
+-------------------------------------------------------------------
+Thu Feb 23 21:33:18 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Added pull command to oci-ctl
+
+  Pull from remote registry. The command exists for convenience
+  reasons. As we currently only support the podman engine the
+  same could be achieved by podman pull
+
+-------------------------------------------------------------------
+Mon Feb 20 11:30:44 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Implement delta container support
+
+  Allow to orchestrate a container instance from a base
+  and a delta container
+
+-------------------------------------------------------------------
+Sat Feb 18 19:25:28 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Refactor resume/respawn
+
+  Change container startup to use create followed by start.
+  This allows to handle the delta containers which follows
+  next.
+
+-------------------------------------------------------------------
+Tue Jan 17 15:38:35 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Delete obsolete debian target from Makefile
+
+  Formerly used to build debian style package sources.
+  But this data was never maintained and suffered from
+  bitrot
+
+-------------------------------------------------------------------
+Tue Jan 17 15:35:51 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Bump version: 1.0.1 → 1.2.1
+
+-------------------------------------------------------------------
+Tue Jan 17 14:36:19 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Run engine through sudo
+
+  Run engine (e.g podman) through sudo and allow custom
+  user setting. This Fixes #33
+
+-------------------------------------------------------------------
+Sat Jan 14 20:59:40 CET 2023 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Added support for resume/respawn
+
+  Using resume in the flake setup will re-attach to the running
+  container instead of starting a new one. This setting is useful
+  for interactive container sessions as well as for long running
+  processes, e.g services. This addresses parts of Issue #32
+
+-------------------------------------------------------------------
+Fri Dec 16 15:24:33 CET 2022 - Jiyang Liu <jiyang.liu@electrobit.com>
+
+- Fix typos
+
+-------------------------------------------------------------------
+Mon Dec 12 16:05:57 CET 2022 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Update README
+
+-------------------------------------------------------------------
+Fri Dec 02 16:48:13 CET 2022 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Add copyright notice pointing to Elektrobit
+
+-------------------------------------------------------------------
+Mon Oct 24 15:42:26 CEST 2022 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Delete unused and outdated debian package setup
+
+  oci-pilot is build using .spec through debbuild. The
+  old debian based package data was not maintained anymore
+  as the original maintainer vanished. Keeping old and
+  unmaintained information is source for trouble. Thus
+  I'm afraid it needs to go
+
+-------------------------------------------------------------------
+Mon Oct 24 15:41:11 CEST 2022 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Fix engine option handling
+
+  Runtime options were handled as hash values whereas the
+  hash key was used as option name and the hash value as
+  optional option value. This concept does not work for
+  options that can be specified multiple times because the
+  hash key must be unique or when options must be in order.
+  This commit changes the option handling such that the options
+  are provided as simple list values. Each value of the list
+  uses a space to separate the option name from its value.
+  The split by space happens only once and produces a tuple.
+  This Fixes #28
+
+-------------------------------------------------------------------
+Sat Oct 08 17:31:31 CEST 2022 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Fix spec file requires
+
+-------------------------------------------------------------------
+Sat Sep 10 23:24:43 CEST 2022 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Build binary only in build-deb
+
+-------------------------------------------------------------------
+Sat Sep 10 16:33:25 CEST 2022 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Allow to register default entrypoint
+
+  Some containers provides a default entrypoint. To allow
+  using this entrypoint we can specify just "/" as target
+  path
+
+-------------------------------------------------------------------
+Sat Sep 10 14:54:24 CEST 2022 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Prevent / in CONTAINER_NAME
+
+  Replace with _ character
+
+-------------------------------------------------------------------
+Mon Aug 29 12:51:20 CEST 2022 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Added build arch option to build-deb
+
+  Add support for --arch option in build-deb. This option
+  allows to specify the package build arch. If not specified
+  the information from uname -m is taken as default
+
+-------------------------------------------------------------------
+Fri Aug 26 20:45:49 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Reduce binary size for oci-ctl and oci-pilot
+
+  The changes reduces the release binary size a lot
+
+-------------------------------------------------------------------
+Fri Aug 26 14:42:48 CEST 2022 - Marcus Schäfer <marcus.schaefer@elektrobit.com>
+
+- Fix use of term OCI image and OCI container
+
+-------------------------------------------------------------------
+Tue Aug 23 16:15:27 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added manual pages
+
+  Add man pages for all commands and integrate them with
+  the package build. This Fixes #17
+
+-------------------------------------------------------------------
+Mon Aug 22 14:32:40 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor yaml configuration format
+
+  This is related to Issue #17 and changes the yaml
+  config file format to the format shown in the following
+  example:
+
+  ```yaml
+  container: name
+  target_app_path: path/to/program/in/container
+  host_app_path: path/to/program/on/host
+
+  runtime:
+  podman:
+  --storage-opt: size=10G
+  --rm:
+  -ti:
+  ```
+
+  The new attribute "host_app_path" was required to
+  allow the purge command to work correctly if the
+  app path inside of the container is different than
+  the path used on the host.
+
+-------------------------------------------------------------------
+Fri Aug 19 16:11:07 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed Cargo.toml glob setting
+
+  typo in version statement leading to compile time warnings
+
+-------------------------------------------------------------------
+Fri Aug 19 16:09:02 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed remove command
+
+  The remove command did not delete the main config file
+  only the pilot link and the config .d directory. In addition
+  the removing code was not strict enough on checking if the
+  provided app path is really something that should be deleted
+  by oci-ctl. Thus I also added sanity checks to prevent
+  accidental deletion of arbitrary files on the system
+
+-------------------------------------------------------------------
+Fri Aug 19 15:31:05 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for oci-ctl list
+
+  List all registered applications. This Fixes #21
+
+-------------------------------------------------------------------
+Thu Aug 18 17:03:48 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed space issues and add docstrings for methods
+
+-------------------------------------------------------------------
+Thu Aug 18 16:54:36 CEST 2022 - Marcin Katulski <marcin.katulski@gmail.com>
+
+- Implement removal of single registered app link (#23)
+
+  Implement removal of single registered app link. Also implement container purge functionality
+  This Fixes #13
+
+-------------------------------------------------------------------
+Thu Aug 18 14:47:35 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add oci-ctl build subcommand (#22)
+
+  Implements building a debian package including oci-pilot
+  app registration hooks from a given OCI container tar file.
+  The produced package(s) will be organized as local debian
+  repository such that they can be consumed via apt.
+  This Fixes #18
+
+-------------------------------------------------------------------
+Thu Jul 28 09:25:41 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed reading runtime section
+
+-------------------------------------------------------------------
+Wed Jul 27 18:25:54 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor register subcommand
+
+  Follow the change of the oci-pilot refactoring and
+  adapt the registration code. The registration of an
+  app now performs the following steps:
+
+  1. Create the app symlink pointing to /usr/bin/oci-pilot
+  2. Create the app config file and custom app config.d directory
+
+-------------------------------------------------------------------
+Wed Jul 27 16:58:55 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Rename oci-register to oci-ctl
+
+-------------------------------------------------------------------
+Wed Jul 27 11:28:56 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- refactor pilot link structure and config file
+
+  The former implementation of osc-pilot did not require
+  an app config file and solved the required parts of
+  a registration by a symlink name structure. However,
+  this concept is not flexible enough and will now be
+  changed. In this commit the osc-pilot code changed
+  in two ways:
+
+  1. The app symlink must point to the osc-pilot binary
+  2. The osc-pilot binary requires an app config below
+  /usr/share/flakes supporting the following structure
+
+  /usr/share/flakes
+  ├── app.d
+  │   └── custom.yaml
+  └── app.yaml
+
+  app.yaml is mandatory and created when registering
+  the app. The optional app.d directory allows to add
+  additional config information which could be provided
+  via external packages. All yaml snippets are combined
+  to one prior passing to the yaml parser. The files
+  in app.d are read in alpha sort order.
+
+-------------------------------------------------------------------
+Wed Jul 20 16:34:37 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Implement oci-register register subcommand
+
+  This commit implements the symlink procedure to register
+  a container application. This Fixes #12
+
+-------------------------------------------------------------------
+Wed Jul 20 16:22:53 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- fixed function doc
+
+-------------------------------------------------------------------
+Wed Jul 20 14:23:34 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Improve usage message
+
+-------------------------------------------------------------------
+Wed Jul 20 13:15:55 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Change location for optional app config file
+
+  Read config file from /usr/share/flakes/APP.yaml
+
+-------------------------------------------------------------------
+Tue Jul 19 18:13:58 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Install to /usr/bin
+
+-------------------------------------------------------------------
+Tue Jul 19 18:00:45 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed package build
+
+  Cleanup Makefile, de-duplicate source tar setup
+  and fixed spec file and rules file for new sourcetar
+
+-------------------------------------------------------------------
+Tue Jul 19 17:01:40 CEST 2022 - Nader Hariri <naderinsa@gmail.com>
+
+- Add debian target to Makefile
+
+  This enables building a non-native debian package for oci-pilot.
+
+-------------------------------------------------------------------
+Tue Jul 19 16:53:05 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add init method prior registration task
+
+  For creating the symlink structure to a container application
+  a directory is needed which stores the container symlinks. This
+  commit adds the needed init method to create this directory prior
+  any registration tasks. All container symlinks will be stored
+  in /usr/share/flakes. This means an application link structure
+  for "app@container" would look like this:
+
+  /usr/bin/app -> /usr/share/flakes/container -> /usr/bin/oci-pilot
+
+  A flake is also the name we invented to handle and package
+  OCI containers which gets managed by oci-pilot
+
+-------------------------------------------------------------------
+Tue Jul 19 16:04:20 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Implementation for oci-register load
+
+  The load subcommand calls podman to load the given
+  OCI tarball into the local registry
+
+-------------------------------------------------------------------
+Tue Jul 19 13:46:57 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added basic CLI implementation interface
+
+  Add structure and method bodies to implement commandline
+  capabilities
+
+-------------------------------------------------------------------
+Mon Jul 18 09:54:36 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added unit testing via actions
+
+-------------------------------------------------------------------
+Sat Jul 16 17:44:11 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added initial cli interface for oci-register
+
+  Use a command based positional cli interface
+  supporting sub-commands and its options
+
+-------------------------------------------------------------------
+Sat Jul 16 17:14:45 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Restructure source tree
+
+  Move launcher to oci-pilot for consistency
+
+-------------------------------------------------------------------
+Fri Jul 15 14:38:43 CEST 2022 - Nader Hariri <naderinsa@gmail.com>
+
+- Add install & uninstall targets to Makefile
+
+-------------------------------------------------------------------
+Fri Jul 15 14:36:50 CEST 2022 - Nader Hariri <naderinsa@gmail.com>
+
+- Add test target to Makefile
+
+-------------------------------------------------------------------
+Fri Jul 15 14:33:44 CEST 2022 - Nader Hariri <naderinsa@gmail.com>
+
+- Add build & clean targets to Makefile
+
+-------------------------------------------------------------------
+Tue Jul 12 21:01:10 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support program runtime config file
+
+  Options to control how podman starts the container can now be
+  provided as /etc/pilot/program_name.yaml like the following
+  example shows:
+
+  runtime:
+  --storage-opt: size=10G
+  --rm:
+
+  If no runtime configuration exists the following defaults apply
+
+  * Container resources will be automatically deleted after the call.
+  * Interactive sessions will be allowed
+
+-------------------------------------------------------------------
+Tue Jul 12 10:30:38 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed launcher_test example link structure
+
+  The pilot binary was renamed to oci-pilot. The symlinks got
+  forgotten. This commit fixes it
+
+-------------------------------------------------------------------
+Mon Jul 11 15:31:00 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Rename to oci-pilot
+
+-------------------------------------------------------------------
+Mon Jul 11 12:33:29 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add packaging infrastructure
+
+  Adds a "make package" target which produces all files
+  needed to build pilot with vendoring. Simple copy all
+  files produced below the package/ directory and put
+  them into OBS.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:28:43 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add tests for app_path and container_link
+
+-------------------------------------------------------------------
+Sun Jul 10 15:50:15 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor source structure
+
+-------------------------------------------------------------------
+Fri Jul 08 15:41:53 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow to search in path
+
+-------------------------------------------------------------------
+Tue Jul 05 16:36:16 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added more launcher examples
+
+-------------------------------------------------------------------
+Tue Jul 05 16:33:07 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- More flexible symlink structure
+
+-------------------------------------------------------------------
+Tue Jul 05 16:19:02 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added pilot launcher
+
+  Run container according to a symlink structure
+

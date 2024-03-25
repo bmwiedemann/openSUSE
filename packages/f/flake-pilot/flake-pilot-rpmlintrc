@@ -1,0 +1,15 @@
+# providing deb packages from this spec requires the tag to be hard coded
+addFilter("W: hardcoded-packager-tag");
+
+# rust binaries
+addFilter("W: unstripped-binary-or-object");
+
+# this is wanted, sci is a static binary
+addFilter("E: statically-linked-binary");
+
+# this is wanted for flake-pilot-firecracker-guestvm-tools
+# which gets installed to an sci controlled firecracker guest
+addFilter("E: filelist-forbidden-fhs23");
+
+# this comes from a rust crate
+addFilter("W: binary-or-shlib-calls-gethostbyname");
