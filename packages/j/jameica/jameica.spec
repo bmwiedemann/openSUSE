@@ -16,41 +16,30 @@
 #
 
 
+%define _major 2
+%define _minor 10
+%define _micro 4
 %define _build 487
 %define _buildreleases 487
-%define _tag V_2_10_4_BUILD_%{_build}
+%define _version %{_major}.%{_minor}.%{_micro}
+%define _tag V_%{_major}_%{_minor}_%{_micro}_BUILD_%{_build}
+
 Name:           jameica
-Version:        2.10.4
+Version:        %{_version}
 Release:        0
 Summary:        Runtime environment for Java applications like Hibiscus
 License:        Apache-2.0 AND GPL-2.0-only AND LGPL-2.0-only AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
 Group:          Productivity/Office/Finance
 URL:            http://www.willuhn.de/products/jameica/
 Source:         https://github.com/willuhn/jameica/archive/%{_tag}.tar.gz
-Patch0:         jameica-port-to-commons-lang3.patch
+BuildArch:      noarch
 BuildRequires:  ant
-BuildRequires:  apache-commons-cli
-BuildRequires:  apache-commons-collections
-BuildRequires:  apache-commons-lang3
-BuildRequires:  apache-commons-logging
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 11
 BuildRequires:  jpackage-utils
-BuildRequires:  nanoxml = 2.2.3
-BuildRequires:  paperclips = 1.0.4
-BuildRequires:  swtcalendar
-BuildRequires:  velocity = 1.7
 BuildRequires:  xml-apis
-Requires:       apache-commons-cli
-Requires:       apache-commons-collections
-Requires:       apache-commons-lang3
-Requires:       apache-commons-logging
 Requires:       java >= 11
-Requires:       nanoxml = 2.2.3
-Requires:       paperclips = 1.0.4
-Requires:       swtcalendar
-Requires:       velocity = 1.7
 
 %ifarch %{ix86} ppc s390
 %global bits 32
@@ -89,7 +78,6 @@ Developer documentation for Jameica.
 
 %prep
 %setup -q -n %{name}-%{_tag}
-%patch -P 0 -p1
 # rpmlint
 find . -type f -name '*.txt' -exec chmod -x {} \;
 find . -type f -name '*.html' -exec chmod -x {} \;
@@ -100,44 +88,15 @@ rm build/jameica-win64.exe
 rm build/launch4j-win32.xml
 rm build/launch4j-win64.xml
 rm build/jameica-macos64.sh
+rm build/jameica-macos-aarch64.sh
 rm build/jameica-openbsd.sh
 
 rm -rf lib/swt/macos64
+rm -rf lib/swt/macos-aarch64
 rm -rf lib/swt/win32
 rm -rf lib/swt/win64
 # remove arm because of missing ld-linux-aarch64.so.1 package in suse
 rm -rf lib/swt/linux-arm64
-
-# unbundle NanoXML
-rm -rf lib/nanoxml/*
-ln -sf %{_javadir}/nanoxml-2.2.3.jar lib/nanoxml/nanoxml-2.2.3.jar
-
-# unbundle PaperClips
-rm -rf lib/paperclips/*
-ln -sf %{_javadir}/net.sf.paperclips_1.0.4.jar lib/paperclips/net.sf.paperclips_1.0.4.jar
-
-# unbundle SWT Calender
-rm -rf lib/swtcalendar/*
-ln -sf %{_javadir}/swtcalendar.jar lib/swtcalendar/swtcalendar.jar
-
-# unbundle Velocity and apache/jakarta commons
-rm -rf lib/velocity/*
-ln -sf %{_javadir}/velocity.jar lib/velocity/velocity-1.7.jar
-rm lib/jakarta_commons/*
-ln -sf %{_javadir}/commons-cli.jar lib/jakarta_commons/commons-cli-1.3.1.jar
-ln -sf %{_javadir}/commons-collections.jar lib/jakarta_commons/commons-collections-3.2.2.jar
-ln -sf %{_javadir}/commons-lang3.jar lib/jakarta_commons/commons-lang3-3.9.jar
-ln -sf %{_javadir}/commons-logging.jar lib/jakarta_commons/commons-logging-1.2.jar
-
-# unbundle eclipse-swt
-##rm -fr lib/swt/linux*/swt.jar
-##%%if %%{bits} > 32
-##mkdir -p lib/swt/linux64
-##ln -sf $(find-jar swt) lib/swt/linux64/
-##%%else
-##mkdir -p lib/swt/linux
-##ln -sf $(find-jar swt) lib/swt/linux/
-##%%endif
 
 %build
 export CLASSPATH="$(build-classpath xml-apis)"
@@ -153,6 +112,7 @@ chmod +x %{buildroot}%{_prefix}/lib/%{name}/jameica.sh
 rm %{buildroot}%{_prefix}/lib/%{name}/jameica-win32.jar
 rm %{buildroot}%{_prefix}/lib/%{name}/jameica-win64.jar
 rm %{buildroot}%{_prefix}/lib/%{name}/jameica-macos64.jar
+rm %{buildroot}%{_prefix}/lib/%{name}/jameica-macos-aarch64.jar
 rm %{buildroot}%{_prefix}/lib/%{name}/jameica-openbsd.jar
 
 %if %{bits} > 32
@@ -163,7 +123,7 @@ rm %{buildroot}%{_prefix}/lib/%{name}/jameica-linux.jar
   rm %{buildroot}%{_prefix}/lib/%{name}/jameica-linuxarm64.jar
   %endif
 %else
-rm %{buildroot}%{_prefix}/lib/%{name}/jameica-linux64.jar
+  rm %{buildroot}%{_prefix}/lib/%{name}/jameica-linux64.jar
 %endif
 
 # Mac OS X stuff
