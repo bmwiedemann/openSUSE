@@ -153,4 +153,29 @@
     supports 24-bit color.</comment>
     <requestid>676841</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>91ab3860ad2805e9b576ad7b9509bd1d</srcmd5>
+    <version>1.5.0</version>
+    <time>1711397504</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.5.0
+  * Build xz tarballs instead of bzip2
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * gitlab CI: ensure libtool is installed in build container
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * configure: quote call to AC_LANG_SOURCE in AC_LINK_IFELSE
+  * Add X.Org's standard C warning flags to AM_CFLAGS
+  * Fix -Wmisleading-indentation warning in chipsPreInitHiQV()
+  * Handle 4 -Wmissing-prototypes warnings
+  * AsmMacros.h: convert function definitions from K&amp;R to C89
+  * unifdef NCR
+  * unifdef Lynx
+  * unifdef __SCO__
+  * unifdef __USLC__
+  * Remove ifdef checks for non-Solaris SVR4 systems
+  * Quiet -Wredundant-decls from xorg/os.h fallbacks for new libc functions</comment>
+    <requestid>1161226</requestid>
+  </revision>
 </revisionlist>

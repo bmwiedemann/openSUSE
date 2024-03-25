@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar 25 02:31:41 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.5.0
+  * Build xz tarballs instead of bzip2
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * gitlab CI: ensure libtool is installed in build container
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * configure: quote call to AC_LANG_SOURCE in AC_LINK_IFELSE
+  * Add X.Org's standard C warning flags to AM_CFLAGS
+  * Fix -Wmisleading-indentation warning in chipsPreInitHiQV()
+  * Handle 4 -Wmissing-prototypes warnings
+  * AsmMacros.h: convert function definitions from K&R to C89
+  * unifdef NCR
+  * unifdef Lynx
+  * unifdef __SCO__
+  * unifdef __USLC__
+  * Remove ifdef checks for non-Solaris SVR4 systems
+  * Quiet -Wredundant-decls from xorg/os.h fallbacks for new libc functions
+
+-------------------------------------------------------------------
 Sun Feb 17 18:10:05 UTC 2019 - sndirsch@suse.com
 
 - update to release 1.4.0
