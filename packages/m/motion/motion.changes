@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Mar 21 15:14:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 4.6.0
+  * Fix segfault on vaapi decoding
+  * Remove default for allowed_media_types
+  * Fix libweb includes
+  * Fix autotools and translation files
+  * Fix movie_extpipe
+  * Fix threshold_tune
+  * Implement consistent time values
+  * Implement consistent calculation for pixel difference
+  * Fix compiler warnings
+  * Revise ioctl for devices to use long variable
+  * Add support for DRM HW decode
+  * Update year in copyright notice
+  * Revise issue template
+  * Allow for bad packets when processing file
+  * Print log message of signals
+- Update post-install customizations. Some entries don't exist
+  anymore or are disabled in the default configuration file
+
+-------------------------------------------------------------------
 Thu Feb 22 07:30:41 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

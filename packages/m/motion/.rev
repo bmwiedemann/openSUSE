@@ -235,4 +235,29 @@
   %patchN.</comment>
     <requestid>1149003</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8dcb37537a516e131d6f19b42a93af57</srcmd5>
+    <version>4.6.0</version>
+    <time>1711397275</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.6.0
+  * Fix segfault on vaapi decoding
+  * Remove default for allowed_media_types
+  * Fix libweb includes
+  * Fix autotools and translation files
+  * Fix movie_extpipe
+  * Fix threshold_tune
+  * Implement consistent time values
+  * Implement consistent calculation for pixel difference
+  * Fix compiler warnings
+  * Revise ioctl for devices to use long variable
+  * Add support for DRM HW decode
+  * Update year in copyright notice
+  * Revise issue template
+  * Allow for bad packets when processing file
+  * Print log message of signals
+- Update post-install customizations. Some entries don't exist
+  anymore or are disabled in the default configuration file (forwarded request 1160447 from krop)</comment>
+    <requestid>1160801</requestid>
+  </revision>
 </revisionlist>
