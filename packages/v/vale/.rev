@@ -622,4 +622,16 @@
   * chore: update twine to v0.10.1 (forwarded request 1156818 from jfkw)</comment>
     <requestid>1156819</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c305bce359056f125df9e43055cbdc5b</srcmd5>
+    <version>3.3.1</version>
+    <time>1711397510</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.3.1:
+  * refactor: use `pterm.Fuzzy` instead of `Gray`
+  * refactor: clean up sync progress bar
+  * docs: fix typos (#794)
+  * feat: support `replace` in `capitalization` (forwarded request 1161222 from jfkw)</comment>
+    <requestid>1161230</requestid>
+  </revision>
 </revisionlist>

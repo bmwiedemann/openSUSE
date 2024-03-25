@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 25 02:16:41 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.3.1:
+  * refactor: use `pterm.Fuzzy` instead of `Gray`
+  * refactor: clean up sync progress bar
+  * docs: fix typos (#794)
+  * feat: support `replace` in `capitalization`
+
+-------------------------------------------------------------------
 Mon Mar 11 03:56:40 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.3.0:
