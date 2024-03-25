@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Mar 25 09:22:31 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to GNU Emacs version 29.3
+  which is an emergency bugfix release intended to fix several
+  security vulnerabilities described below.
+  * Arbitrary Lisp code is no longer evaluated as part of turning on Org mode.
+    This is for security reasons, to avoid evaluating malicious Lisp code.
+  * New buffer-local variable 'untrusted-content'.
+    When this is non-nil, Lisp programs should treat buffer contents with
+    extra caution.
+  * Gnus now treats inline MIME contents as untrusted.
+    To get back previous insecure behavior, 'untrusted-content' should be
+    reset to nil in the buffer.
+  * LaTeX preview is now by default disabled for email attachments.
+    To get back previous insecure behavior, set the variable
+    'org--latex-preview-when-risky' to a non-nil value.
+  * Org mode now considers contents of remote files to be untrusted.
+    Remote files are recognized by calling 'file-remote-p'.
+- Port patch emacs-24.4-ps-bdf.patch
+
+-------------------------------------------------------------------
 Fri Feb  2 08:26:58 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Update to GNU Emacs version 29.2
