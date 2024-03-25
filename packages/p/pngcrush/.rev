@@ -58,4 +58,14 @@
 - Add package source verification. (forwarded request 539164 from vilene)</comment>
     <requestid>539211</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>dde850aff6ef045237f88abc8ef737a1</srcmd5>
+    <version>1.8.13</version>
+    <time>1711397606</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to fix build with png &gt;= 1.6.42:
+  * 0001-Check-for-defined-PNG_IGNORE_ADLER32.patch
+- Spec cleanup (forwarded request 1160431 from krop)</comment>
+    <requestid>1161495</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 21 17:00:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix build with png >= 1.6.42:
+  * 0001-Check-for-defined-PNG_IGNORE_ADLER32.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sun Nov  5 22:40:37 UTC 2017 - vilene@posteo.net
 
 - Update to new upstream release 1.8.13:
