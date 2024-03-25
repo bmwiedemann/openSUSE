@@ -187,4 +187,14 @@
   * **Full Changelog**: https://github.com/marcelotduarte/cx_Freeze/compare/6.15.13...6.15.15</comment>
     <requestid>1148496</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d24d3642d0be9d7d315ec38193a36003</srcmd5>
+    <version>6.15.16</version>
+    <time>1711397269</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.15.16:
+  * **Full Changelog**: https://github.com/marcelotduarte/cx_Free
+    ze/compare/6.15.15...6.15.16</comment>
+    <requestid>1160804</requestid>
+  </revision>
 </revisionlist>
