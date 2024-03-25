@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 25 03:11:30 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- also build on s390x (now required by plasma6-desktop); removed
+  requires to xf86-input-evdev, xf86-input-void and 
+  xf86-input-wacom on s390x, since these are not available on this
+  platform
+
+-------------------------------------------------------------------
 Sun Dec 11 12:29:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - drop recommends on xf86-input-keyboard:

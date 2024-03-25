@@ -1077,4 +1077,15 @@
     <comment></comment>
     <requestid>1045917</requestid>
   </revision>
+  <revision rev="145" vrev="16">
+    <srcmd5>b0998d13822118a96bb54e3d27bba8ea</srcmd5>
+    <version>7.6_1</version>
+    <time>1711397509</time>
+    <user>anag+factory</user>
+    <comment>- also build on s390x (now required by plasma6-desktop); removed
+  requires to xf86-input-evdev, xf86-input-void and 
+  xf86-input-wacom on s390x, since these are not available on this
+  platform</comment>
+    <requestid>1161231</requestid>
+  </revision>
 </revisionlist>

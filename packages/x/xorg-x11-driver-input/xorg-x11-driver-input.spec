@@ -1,7 +1,7 @@
 #
 # spec file for package xorg-x11-driver-input
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ Group:          System/X11/Servers/XF86_4
 URL:            https://xorg.freedesktop.org/
 Source0:        README.meta
 ## Requires of packages that we split away from xorg-x11-driver-input
+%ifnarch s390x
 Requires:       xf86-input-evdev
+%endif
 ## no longer supported on sle12 (FATE#316785)
 Recommends:     xf86-input-joystick
 Recommends:     xf86-input-mouse
@@ -38,13 +40,14 @@ Requires:       xf86-input-synaptics
 %endif
 ## only built on x86/x64
 Recommends:     xf86-input-vmmouse
+%ifnarch s390x
 Requires:       xf86-input-void
 Requires:       xf86-input-wacom
+%endif
 ## End Requires of packages that we split away from xorg-x11-driver-input
 Provides:       %{name}-devel = %{version}
 Obsoletes:      %{name}-devel < %{version}
 BuildArch:      noarch
-ExcludeArch:    s390 s390x
 
 %description
 This package is a compatibility metapackage. It used to contain the
