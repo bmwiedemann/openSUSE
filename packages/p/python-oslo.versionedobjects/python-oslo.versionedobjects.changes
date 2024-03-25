@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 24 20:04:25 UTC 2024 - cloud-devel@suse.de
+
+- removed 0001-Avoid-TypeError-when-building-for-Sphinx-6.1.1-and-a.patch
+- update to version 3.3.0
+  - Avoid TypeError when building for Sphinx 6.1.1 and above
+  - Bump hacking
+  - Update python classifier in setup.cfg
+  - coveragerc: Remove non-existent path
+  - reno: Update master for unmaintained/yoga
+  - Update master for stable/2023.2
+
+-------------------------------------------------------------------
 Thu Dec 28 09:42:52 UTC 2023 - cloud-devel@suse.de
 
 - update to version 3.2.0
