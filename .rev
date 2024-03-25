@@ -147,4 +147,13 @@
   - Add Python3 antelope unit tests</comment>
     <requestid>1138704</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5d32905007cde6f418157d2d76c2c6dd</srcmd5>
+    <version>8.4.0</version>
+    <time>1711397483</time>
+    <user>anag+factory</user>
+    <comment>- update to version 8.4.0
+  - Update python unit testing template</comment>
+    <requestid>1161190</requestid>
+  </revision>
 </revisionlist>
