@@ -1,7 +1,7 @@
 #
 # spec file for package gap-4ti2interface
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-4ti2interface
-Version:        2022.09.01
-%define sillyversion 2022.09-01
+Version:        2023.02.04
+%define sillyversion 2023.02-04
 Release:        0
 Summary:        GAP: Interface to 4ti2
 License:        GPL-2.0-only
@@ -29,7 +29,7 @@ Source:         https://github.com/homalg-project/homalg_project/releases/downlo
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
 Requires:       4ti2
-Requires:       gap-core >= 4.11.1
+Requires:       gap-core >= 4.12.1
 Requires:       gap-io >= 4.2
 Suggests:       gap-autodoc >= 2013.08.22
 
