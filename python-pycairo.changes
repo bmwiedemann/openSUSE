@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 22 20:59:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.26.0:
+  * Bump minimum required meson version from 0.56.0 to 0.64.0
+  * Various meson related cleanups :pr:`350`
+  * Fix header file being installed to the wrong location with
+    meson on some systems :pr:`350`
+  * Adds a new ``wheel`` meson build option as preparation for
+    meson-python support :pr:`350` :pr:`345`
+  * Update dependencies (libpng, pixman, zlib) of the Windows
+    wheels :pr:`358`
+  * Various maintenance related updates :pr:`360` :pr:`359`
+    :pr:`361` :pr:`362`
+
+-------------------------------------------------------------------
 Tue Oct 24 00:45:54 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - update to 1.25.1:
@@ -33,7 +48,7 @@ Tue Apr 25 12:00:14 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Wed Dec  7 20:50:28 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 1.23.0 
+- Update to version 1.23.0
   * Reminder to distro packagers: Building/installing pycairo using setup.py is deprecated, please use meson instead.
   * git: changed default branch from “master” to “main”
   * Windows: Update the cairo version included in the wheels from 1.17.2 to 1.17.6 #pr-243
@@ -387,7 +402,7 @@ Tue Jul 21 13:16:50 CEST 2009 - lmedinas@gmail.com
   + Bug Fixes:
     - ImageSurface.create_from_png _read_func fix
     - ToyFontFace type fix
-    - fdo#19221: restore cairo.Matrix '*' operator to the way it 
+    - fdo#19221: restore cairo.Matrix '*' operator to the way it
       originally worked.
   + Documentation completed
 
@@ -506,7 +521,7 @@ Mon Sep 25 18:45:37 CEST 2006 - jhargadon@suse.de
 - setup.py has been updated to allow installation by executing
   $ python setup.py install
 - examples/cairo_snippets/snippets/gradient_mask.py
-  A new example to demonstrate pattern masks. 
+  A new example to demonstrate pattern masks.
 - The cairo.svg module has been removed because:
   1) Cairo does not include SVG parsing, so this module does not belong
      in pycairo.

@@ -139,4 +139,26 @@
     - Pattern.get_dither(), Pattern.set_dither(), Dither</comment>
     <requestid>1120301</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5747d553afaba2e38f9ee8ef33fa7c63</srcmd5>
+    <version>1.26.0</version>
+    <time>1711397202</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.26.0:
+  * Bump minimum required meson version from 0.56.0 to 0.64.0
+  * Various meson related cleanups :pr:`350`
+  * Fix header file being installed to the wrong location with
+    meson on some systems :pr:`350`
+  * Adds a new ``wheel`` meson build option as preparation for
+    meson-python support :pr:`350` :pr:`345`
+  * Update dependencies (libpng, pixman, zlib) of the Windows
+    wheels :pr:`358`
+  * Various maintenance related updates :pr:`360` :pr:`359`
+    :pr:`361` :pr:`362`
+
+- Update to version 1.23.0
+    - fdo#19221: restore cairo.Matrix '*' operator to the way it
+  A new example to demonstrate pattern masks.</comment>
+    <requestid>1160840</requestid>
+  </revision>
 </revisionlist>
