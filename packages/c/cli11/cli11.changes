@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Mar 22 13:03:14 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.1:
+  * Bugfix: Include cstdint (gh#CLIUtils/CLI11#996).
+  * Bugfix: Fix change in operation of config_ptr with unused
+    default in the count method (gh#CLIUtils/CLI11#1003).
+  * Tests: Include libatomic if required for fuzzing test
+    (gh#CLIUtils/CLI11#1000).
+- Changes from version 2.4.0:
+  * Add Unicode support and bug fixes (gh#CLIUtils/CLI11#804,
+    gh#CLIUtils/CLI11#923, gh#CLIUtils/CLI11#876,
+    gh#CLIUtils/CLI11#848, gh#CLIUtils/CLI11#832,
+    gh#CLIUtils/CLI11#987).
+  * Match TOML standard for string and numerical entries,
+    multiline strings (gh#CLIUtils/CLI11#968,
+    gh#CLIUtils/CLI11#967,gh#CLIUtils/CLI11#964,
+    gh#CLIUtils/CLI11#935).
+  * Add validation for environmental variables
+    (gh#CLIUtils/CLI11#926).
+  * Add an escape string transform (gh#CLIUtils/CLI11#970).
+  * Add A REVERSE multi-option policy to support multiple config
+    files and other applications (gh#CLIUtils/CLI11#918).
+  * Add usage message replacement (gh#CLIUtils/CLI11#768).
+  * Allow using dot notation for subcommand arguments such as
+    --sub1.field (gh#CLIUtils/CLI11#789).
+  * Bugfix: Fuzzing tests and fixes (gh#CLIUtils/CLI11#930,
+    gh#CLIUtils/CLI11#905, gh#CLIUtils/CLI11#874,
+    gh#CLIUtils/CLI11#846).
+  * Bugfix: Missing coverage tests (gh#CLIUtils/CLI11#928).
+  * Bugfix: CMake package and package config tests and fixes
+    (gh#CLIUtils/CLI11#916).
+  * Bugfix: Environmental variable checks in non-triggered
+    subcommands (gh#CLIUtils/CLI11#904).
+  * Bugfix: Environmental variables were not being correctly
+    process by config pointer (gh#CLIUtils/CLI11#891).
+  * Bugfix: Undefined behavior in sum_string_vector
+    (gh#CLIUtils/CLI11#893).
+  * Bugfix: Warnings and updates for CUDA 11 support
+    (gh#CLIUtils/CLI11#851).
+  * Backend: Add tests for newer compilers (lost with Travis CI)
+    (gh#CLIUtils/CLI11#972).
+  * Backend: Increase minimum CMake to 3.5
+    (gh#CLIUtils/CLI11#898).
+  * Backend: Remove integrated Conan support (provided now by
+    Conan center) (gh#CLIUtils/CLI11#853).
+  * Tests: Support Catch2 Version 3 (gh#CLIUtils/CLI11#896,
+    gh#CLIUtils/CLI11#980).
+- Package is no longer noarch as it installs pkgconfig file to
+  %_libdir.
+- Drop conditionals supporting EOL openSUSE versions.
+
+-------------------------------------------------------------------
 Sat Jan  7 14:41:10 UTC 2023 - Haochuan Chen <haochuan.chen@univ-lorraine.fr>
 
 - Update to version 2.3.2:
