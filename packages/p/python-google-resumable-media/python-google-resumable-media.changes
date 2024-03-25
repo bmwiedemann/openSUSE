@@ -109,7 +109,7 @@ Thu Sep 30 06:30:37 UTC 2021 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Tue Sep 28 21:00:40 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
-- Run test suite correctly (from tests/ directory moved elsewhere)
+- Run test suite correctly (from tests/ directory moved elsewhere) (bsc#1197841)
 
 -------------------------------------------------------------------
 Tue Aug 31 09:04:07 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
