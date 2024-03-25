@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 25 08:22:28 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.6.4
+  Bug fixes:
+  * Correctly adjust "Add New torrent" dialog position in all
+    the cases
+  * Change "metadata received" stop condition behavior
+  * Add a small delay before processing the key input of search
+    boxes
+  * Ensure the profile path is pointing to a directory
+  RSS:
+  * Use better icons for RSS articles
+  Other:
+  * Fix sorting when ICU isn't used
+  * Fix invisible tray icon on Plasma 6
+
+-------------------------------------------------------------------
 Wed Jan 17 18:29:29 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.6.3

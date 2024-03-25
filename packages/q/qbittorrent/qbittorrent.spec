@@ -25,7 +25,7 @@
 %endif
 
 Name:           qbittorrent
-Version:        4.6.3
+Version:        4.6.4
 Release:        0
 Summary:        A BitTorrent client in Qt
 License:        GPL-2.0-or-later
@@ -43,6 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_system-devel >= 1.66
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-core-private-devel
 BuildRequires:  cmake(Qt6Core) >= 6.2
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6LinguistTools)
