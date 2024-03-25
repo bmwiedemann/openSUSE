@@ -602,4 +602,41 @@
     a directory if the directory has an `__init__.py` file.</comment>
     <requestid>1133805</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>363ebcfb41ddb00e6a8196381b98fdd6</srcmd5>
+    <version>3.1.0</version>
+    <time>1711397335</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.0:
+  * Two new checks--``use-yield-from``, ``deprecated-
+    attribute``-- and a smattering of bug fixes.
+  * Skip ``consider-using-join`` check for non-empty separators
+    if an ``suggest-join-with-non-empty-separator`` option is set
+    to ``no``.
+  * Discover ``.pyi`` files when linting.
+  * Check ``TypeAlias`` and ``TypeVar`` (PEP 695) nodes for
+    ``invalid-name``.
+  * Support for resolving external toml files named pylintrc.toml
+    and .pylintrc.toml.
+  * Check for `.clear`, `.discard`, `.pop` and `remove` methods
+    being called on a set while it is being iterated over.
+  * New message `use-yield-from` added to the refactoring
+    checker. This message is emitted when yielding from a loop
+    can be replaced by `yield from`.
+  * Added a ``deprecated-attribute`` message to check deprecated
+    attributes in the stdlib.
+  * Exempt ``TypedDict`` from ``typing_extensions`` from ``too-
+    many-ancestor`` checks.
+  * Extend broad-exception-raised and broad-exception-caught to
+    except*.
+  * Fix a false-negative for unnecessary if blocks using a
+    different than expected ordering of arguments.
+  * For &quot;import X&quot;, it will report &quot;(standard/third party/first
+    party/local) import X&quot;
+  * For &quot;import X.Y&quot; and &quot;from X import Y&quot;, it will report
+    &quot;(standard/third party/first party/local) import X.Y&quot;
+  * The import category is specified to provide explanation as to
+    why pylint has issued the message and guidence to the</comment>
+    <requestid>1160816</requestid>
+  </revision>
 </revisionlist>

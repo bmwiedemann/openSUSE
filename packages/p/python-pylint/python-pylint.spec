@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylint
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %bcond_without tests
 Name:           python-pylint
-Version:        3.0.3
+Version:        3.1.0
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
@@ -36,38 +36,35 @@ BuildRequires:  python-rpm-macros
 Requires:       python-dill >= 0.3.6
 Requires:       python-platformdirs >= 2.2
 Requires:       python-tomlkit >= 0.10.1
-Requires:       (python-astroid >= 3.0.1 with python-astroid < 3.1.0~dev0)
+Requires:       (python-astroid >= 3.1.0 with python-astroid < 3.2.0~dev0)
 Requires:       (python-isort >= 4.2.5 with python-isort < 6)
 Requires:       (python-mccabe >= 0.6 with python-mccabe < 0.8)
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 1.1.0
 %endif
-%if 0%{?python_version_nodots} < 310
-Requires:       python-typing-extensions >= 3.10
-%endif
+Requires:       python-typing-extensions >= 4.9
 %if %{with tests}
 # SECTION pylint deps
-BuildRequires:  %{python_module astroid >= 3.0.1 with %python-astroid < 3.1.0~dev0}
+BuildRequires:  %{python_module astroid >= 3.1.0 with %python-astroid < 3.2.0~dev0}
 BuildRequires:  %{python_module dill >= 0.3.6}
 BuildRequires:  %{python_module isort >= 4.2.5 with %python-isort < 6}
 BuildRequires:  %{python_module mccabe >= 0.6 with %python-mccabe < 0.8}
 BuildRequires:  %{python_module platformdirs >= 2.2}
 BuildRequires:  %{python_module tomli >= 1.1.0 if %python-base < 3.11}
 BuildRequires:  %{python_module tomlkit >= 0.10.1}
-# typing-extensions for python310 required for tests only, same as gh#PyCQA/astroid#1585
-BuildRequires:  %{python_module typing-extensions >= 3.10}
+BuildRequires:  %{python_module typing-extensions >= 4.9}
 # /SECTION
 # SECTION test deps
 BuildRequires:  %{python_module GitPython > 3}
 BuildRequires:  %{python_module pytest-rerunfailures}
-BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest-timeout >= 2.2}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 # /SECTION
 %endif
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
