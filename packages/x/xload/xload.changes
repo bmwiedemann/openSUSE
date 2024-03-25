@@ -1,9 +1,25 @@
 -------------------------------------------------------------------
+Sun Mar 24 21:50:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Use imdent to realign remaining pre-processer directives
+  * Use autoconf to check for <protocols/rwhod.h> instead of
+    OS-specific ifdefs
+  * configure: Use AC_SYS_LARGEFILE to enable large file
+    support
+  * Handle files whose sizes, inode numbers, or timestamps
+    may be out of range of the original 32-bit APIs
+  * Use asprintf() if available
+  * Add -help and -version options
+  * Print which arguments were unknown before giving usage
+    message
+
+-------------------------------------------------------------------
 Mon Apr  4 10:23:19 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.4
   * This release ends support for SGI Irix, which SGI themselves
-    did in 2013. 
+    did in 2013.
 
 -------------------------------------------------------------------
 Fri Dec  3 14:05:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
