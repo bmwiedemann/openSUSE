@@ -1,7 +1,7 @@
 #
 # spec file for package gap-cap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-cap
-Version:        2023.02.06
-%define sillyver 2023.02-06
+Version:        2024.03.02
+%define sillyver 2024.03-02
 Release:        0
 Summary:        GAP: Categories, Algorithms and Programming
 License:        GPL-2.0-only
@@ -31,7 +31,7 @@ BuildRequires:  gap-rpm-devel
 BuildArch:      noarch
 Requires:       gap-core >= 4.12.1
 Requires:       gap-io
-Requires:       gap-toolsforhomalg >= 2022.09.06
+Requires:       gap-toolsforhomalg >= 2023.11.01
 Suggests:       gap-browse
 Suggests:       gap-compilerforcap >= 2021.12.05
 
