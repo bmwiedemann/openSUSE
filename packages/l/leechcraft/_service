@@ -1,7 +1,7 @@
 <services>
   <service name="verify_file" mode="buildtime">
-    <param name="file">leechcraft-0.6.70-14794-g33744ae6ce.tar.xz</param>
+    <param name="file">leechcraft-0.6.70-16373-g319c272718.tar.xz</param>
     <param name="verifier">sha1</param>
-    <param name="checksum">140c7d03a72fe4671646f6b7070c91584890a53d</param>
+    <param name="checksum">a066d4802dfd1b1be6159ea01e0975100adef337</param>
   </service>
 </services>

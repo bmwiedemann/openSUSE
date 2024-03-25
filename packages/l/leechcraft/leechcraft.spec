@@ -1,7 +1,7 @@
 #
 # spec file for package leechcraft
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,11 +28,12 @@
 %define qml_dir %{_datadir}/leechcraft/qml5
 
 %define so_ver -qt5-0_6_75
-%define LEECHCRAFT_VERSION 0.6.70-14794-g33744ae6ce
+%define LEECHCRAFT_VERSION 0.6.70-16373-g319c272718
 
 %define db_postfix %{so_ver}_1
 %define gui_postfix %{so_ver}_1
 %define models_postfix %{so_ver}_1
+%define monocle_postfix %{so_ver}
 %define network_postfix %{so_ver}_1
 %define qml_postfix %{so_ver}_2
 %define shortcuts_postfix %{so_ver}
@@ -47,7 +48,7 @@
 %define xsd_postfix %{so_ver}
 
 Name:           leechcraft
-Version:        0.6.70+git.14794.g33744ae6ce
+Version:        0.6.70+git.16373.g319c272718
 Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
@@ -57,7 +58,10 @@ Source0:        https://dist.leechcraft.org/LeechCraft/0.6.75/leechcraft-%{LEECH
 Source4:        %{name}-rpmlintrc
 Source8:        leechcraft-session.1
 Source9:        lc_plugin_wrapper-qt5.1
+# PATCH-FIX-UPSTREAM vs. Azoth plugin' compilation error.
+Patch0:         leechcraft-0.6.70-16373-g319c272718-build.patch
 
+# BuildRequires:  clang
 BuildRequires:  cmake >= 3.8
 BuildRequires:  fdupes
 BuildRequires:  file-devel
@@ -77,9 +81,11 @@ BuildRequires:  libboost_thread-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblastfm-qt5-devel
 BuildRequires:  libqt5-qtbase-common-devel >= 5.13
+BuildRequires:  libquazip-qt5-devel
 BuildRequires:  libqxmpp-qt5-devel >= 1.1
 BuildRequires:  libsensors4-devel
 BuildRequires:  libtidy-devel
+# BuildRequires:  llvm-gold-provider
 BuildRequires:  pkgconfig
 BuildRequires:  wt-devel
 BuildRequires:  cmake(Qt5LinguistTools) >= 5.13
@@ -190,20 +196,13 @@ Obsoletes:      %{name}-azoth
 %if %{without QtWebKit}
 Obsoletes:      %{name}-blogique
 %endif
-Obsoletes:      %{name}-choroid
-Obsoletes:      %{name}-harbinger
 %if %{without QtWebKit}
 Obsoletes:      %{name}-lhtr
 %endif
-Obsoletes:      %{name}-nacheku
-Obsoletes:      %{name}-popishu
 %ifarch ppc ppc64 ppc64le s390 s390x
 Obsoletes:      %{name}-poshuku
 %endif
-Obsoletes:      %{name}-qrosp
-Obsoletes:      %{name}-syncer
 Obsoletes:      %{name}-vgrabber
-Obsoletes:      %{name}-vtyulc
 
 %description
 LeechCraft is a modular "Internet client" application.
@@ -324,8 +323,7 @@ Requires:       %{name}-azoth-chatstyler = %{version}
 Requires:       %{name}-azoth-protocolplugin
 Requires:       %{name}-securestorage = %{version}
 Suggests:       %{name}-azoth-standardstyles
-Obsoletes:      %{name}-azoth-astrality
-Obsoletes:      %{name}-azoth-woodpecker
+Obsoletes:      %{name}-azoth-vader
 
 %description azoth
 This package provides a modular, multi-protocol IM client for LeechCraft.
@@ -601,30 +599,6 @@ This package provides a standard styles support plugin for LeechCraft Azoth.
 
 Standard styles are the ones in LeechCraft's own format.
 
-%package azoth-vader
-Summary:        LeechCraft Azoth MrIM Module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name}-azoth = %{version}
-Provides:       %{name}-azoth-protocolplugin
-
-%description azoth-vader
-This package provides a MRIM protocol plugin for LeechCraft Azoth.
-
-The MRIM protocol is used in the Mail.Ru Agent IM service.
-
-Vader is based on an own implementation of the MRIM protocol, partially based
-on available (and outdated) official specs, and is partly reverse-engineered.
-
-The following protocol features are supported:
- * Extended statuses.
- * Attention requests (alarms).
- * Publishing current tune and fetching others' tune.
- * Message delivery receipts.
- * Mailbox notifications.
- * Opening mailbox without login.
- * Authorization management.
- * Grouping contacts.
 
 %package azoth-velvetbird
 Summary:        LeechCraft Azoth libpurple Module
@@ -709,7 +683,6 @@ License:        BSL-1.0
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
 Requires:       %{name}-blasq-subplugin = %{version}
-Obsoletes:      %{name}-blasq-spegnersi
 
 %description blasq
 This package provides a modular image storage plugin for LeechCraft
@@ -857,6 +830,7 @@ Requires:       libQt5Gui-private-headers-devel
 Requires:       libleechcraft-util-db%{db_postfix}               = %{version}
 Requires:       libleechcraft-util-gui%{gui_postfix}             = %{version}
 Requires:       libleechcraft-util-models%{models_postfix}       = %{version}
+Requires:       libleechcraft-util-monocle%{monocle_postfix}     = %{version}
 Requires:       libleechcraft-util-network%{network_postfix}     = %{version}
 Requires:       libleechcraft-util-qml%{qml_postfix}             = %{version}
 Requires:       libleechcraft-util-shortcuts%{shortcuts_postfix} = %{version}
@@ -1386,6 +1360,17 @@ Requires:       %{name}-monocle-subplugin
 %description monocle
 This package provides a modular document viewer plugin for LeechCraft
 which supports different formats via backends.
+
+%package monocle-boop
+Summary:        EPub support for LeechCraft Monocle
+License:        BSL-1.0
+Group:          Productivity/Networking/Other
+Requires:       %{name} = %{version}
+Requires:       %{name}-monocle = %{version}
+Provides:       %{name}-monocle-subplugin
+
+%description monocle-boop
+This package contains the EPub subplugin for LeechCraft Monocle.
 
 %package monocle-fxb
 Summary:        FictionBook support for LeechCraft Monocle
@@ -2007,6 +1992,16 @@ Group:          Productivity/Networking/Other
 %description -n libleechcraft-util-models%{models_postfix}
 A library providing some commonly used models (as in MVC),
 as well as model-related classes and functions.
+widgets, classes and functions.
+
+%package -n libleechcraft-util-monocle%{monocle_postfix}
+Summary:        Monocle utility library for LeechCraft
+License:        BSL-1.0
+Group:          Productivity/Networking/Other
+
+%description -n libleechcraft-util-monocle%{monocle_postfix}
+A library providing some commonly used monocle plugin' models,
+as well as model-related classes and functions.
 
 %package -n libleechcraft-util-network%{network_postfix}
 Summary:        Network utility library for LeechCraft
@@ -2118,6 +2113,7 @@ XmlSettingsDialog LeechCraft subsystem.
 
 %prep
 %setup -q -n leechcraft-%{LEECHCRAFT_VERSION}
+%patch -p1 0
 
 #removing non-free icons
 rm -r src/plugins/azoth/share/azoth/iconsets/clients/default
@@ -2147,7 +2143,7 @@ cmake ../src \
         -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DSTRICT_LICENSING=True \
-        -DWITH_DBUS_LOADERS=True \
+        -DWITH_DBUS_LOADERS=False \
         -DWITH_PCRE=True \
         -DWITH_QWT=True \
         -DENABLE_UTIL_TESTS=True \
@@ -2190,7 +2186,6 @@ cmake ../src \
                 -DENABLE_AZOTH_STANDARDSTYLES=True \
                 -DENABLE_AZOTH_SHX=True \
                 -DENABLE_AZOTH_TRACOLOR=False \
-                -DENABLE_AZOTH_VADER=True \
                 -DENABLE_AZOTH_VELVETBIRD=True \
                 -DENABLE_AZOTH_XTAZY=True \
                 -DENABLE_AZOTH_XOOX=True \
@@ -2262,8 +2257,9 @@ cmake ../src \
                 -DENABLE_LMP_PPL_TESTS=True \
         -DENABLE_MELLONETRAY=True \
         -DENABLE_MONOCLE=True \
-                -DENABLE_MONOCLE_DIK=True \
+                -DENABLE_MONOCLE_BOOP=True \
                 -DENABLE_MONOCLE_FXB=True \
+                -DENABLE_MONOCLE_DIK=True \
                 -DENABLE_MONOCLE_MU=False \
                 -DENABLE_MONOCLE_PDF=True \
                 -DENABLE_MONOCLE_POSTRUS=True \
@@ -2312,7 +2308,6 @@ cmake ../src \
                 -DENABLE_POSHUKU_SPEEDDIAL=False \
 %endif
                 -DENABLE_POSHUKU_WEBENGINEVIEW=True \
-                        -DENABLE_POSHUKU_WEBENGINEVIEW_TESTS=True \
                 -DENABLE_POSHUKU_WEBKITVIEW=False \
 %else
         -DENABLE_POSHUKU=False \
@@ -2332,7 +2327,6 @@ cmake ../src \
         -DENABLE_TOUCHSTREAMS=True \
         -DENABLE_TPI=True \
         -DENABLE_VROOBY=True \
-        -DENABLE_WKPLUGINS=False \
         -DENABLE_XPROXY=True \
         -DENABLE_ZALIL=True \
         -DLEECHCRAFT_VERSION="%{LEECHCRAFT_VERSION}"
@@ -2342,7 +2336,7 @@ cmake ../src \
 %install
 %cmake_install
 
-cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
+cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 
 %fdupes -s %{buildroot}%{_datadir}/%{name}/translations
 %ifnarch ppc ppc64 ppc64le s390 s390x
@@ -2362,6 +2356,8 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %postun -n libleechcraft-util-gui%{gui_postfix} -p /sbin/ldconfig
 %post   -n libleechcraft-util-models%{models_postfix} -p /sbin/ldconfig
 %postun -n libleechcraft-util-models%{models_postfix} -p /sbin/ldconfig
+%post   -n libleechcraft-util-monocle%{monocle_postfix} -p /sbin/ldconfig
+%postun -n libleechcraft-util-monocle%{monocle_postfix} -p /sbin/ldconfig
 %post   -n libleechcraft-util-network%{network_postfix} -p /sbin/ldconfig
 %postun -n libleechcraft-util-network%{network_postfix} -p /sbin/ldconfig
 %post   -n libleechcraft-util-qml%{qml_postfix} -p /sbin/ldconfig
@@ -2396,8 +2392,8 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{_mandir}/man1/%{name}-add-file.1%{?ext_man}
 %{_bindir}/%{name}-handle-file
 %{_mandir}/man1/%{name}-handle-file.1%{?ext_man}
-%{_bindir}/lc_plugin_wrapper-qt5
-%{_mandir}/man1/lc_plugin_wrapper-qt5.1%{?ext_man}
+# %%{_bindir}/lc_plugin_wrapper-qt5
+# %%{_mandir}/man1/lc_plugin_wrapper-qt5.1%%{?ext_man}
 %{settings_dir}/coresettings.xml
 %{_datadir}/applications/%{name}-qt5.desktop
 %{_datadir}/icons/hicolor/*/*/*
@@ -2582,11 +2578,6 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{_datadir}/leechcraft/azoth/styles/standard/
 %{translations_dir}/*craft_azoth_standardstyles_*.qm
 
-%files azoth-vader
-%{translations_dir}/*craft_azoth_vader*
-%{settings_dir}/azothvadersettings.xml
-%{plugin_dir}/*craft_azoth_vader.so
-
 %files azoth-velvetbird
 %{plugin_dir}/*craft_azoth_velvetbird.so
 
@@ -2674,7 +2665,7 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %files devel
 %{_datadir}/leechcraft/cmake
 %{_includedir}/%{name}
-%{_libdir}/libleechcraft-util*.so
+%{_libdir}/libleechcraft*util*.so
 %{_libdir}/lib%{name}-xsd*.so
 %{_datadir}/cmake/Modules/InitLCPlugin.cmake
 
@@ -2731,6 +2722,7 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %files glance
 %{plugin_dir}/*craft_glance.so
 %{translations_dir}/*craft_glance*
+%{qml_dir}/glance
 
 %files gmailnotifier
 %{plugin_dir}/*craft_gmailnotifier.so
@@ -2888,10 +2880,8 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{translations_dir}/*craft_monocle_??_??.qm
 %{settings_dir}/monoclesettings.xml
 
-%files monocle-dik
-%{plugin_dir}/lib%{name}_monocle_dik.so
-%{translations_dir}/*craft_monocle_dik_??.qm
-%{translations_dir}/*craft_monocle_dik_??_??.qm
+%files monocle-boop
+%{plugin_dir}/lib%{name}_monocle_boop.so
 
 %files monocle-fxb
 %{plugin_dir}/lib%{name}_monocle_fxb.so
@@ -2899,6 +2889,11 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{settings_dir}/monoclefxbsettings.xml
 %{translations_dir}/*craft_monocle_fxb_??.qm
 %{translations_dir}/*craft_monocle_fxb_??_??.qm
+
+%files monocle-dik
+%{plugin_dir}/lib%{name}_monocle_dik.so
+%{translations_dir}/*craft_monocle_dik_??.qm
+%{translations_dir}/*craft_monocle_dik_??_??.qm
 
 %files monocle-pdf
 %{plugin_dir}/lib%{name}_monocle_pdf.so
@@ -3126,6 +3121,9 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 
 %files -n libleechcraft-util-models%{models_postfix}
 %{_libdir}/*-util-models*.so.*
+
+%files -n libleechcraft-util-monocle%{monocle_postfix}
+%{_libdir}/*-monocle-util*.so.*
 
 %files -n libleechcraft-util-network%{network_postfix}
 %{_libdir}/*-util-network*.so.*

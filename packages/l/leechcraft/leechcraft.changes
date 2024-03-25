@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 22 05:07:19 UTC 2024 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Updated to 0.6.70-16373-g319c272718 snapshot:
+  * TagLib fix;
+  * LeechCraft Azoth MrIM Module (vader) became obsoleted;
+  * Monocle Boop contains a EPub subplugin for documents viewer;
+  * Set -DWITH_DBUS_LOADERS=False to fix compilation.
+  * Added leechcraft-0.6.70-16373-g319c272718-build.patch to fix
+    compilation of Azoth plugin.
+  * Dropped obsoletions for unsupported distibutions;
+  * Fixed 'E: unused-rpmlintrc-filter "filename-too-long-for-joliet"'.
+
+-------------------------------------------------------------------
 Thu May  4 11:34:05 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add _multibuild to define 2nd spec file as additional flavor.
