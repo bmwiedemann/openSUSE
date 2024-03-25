@@ -26,6 +26,8 @@ Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancVolView-%{version}.tar.gz
 Source1:        https://lsb.orthanc-server.com/plugin-volview/%{version}/dist.zip
+# https://orthanc.uclouvain.be/hg/orthanc-ohif/rev/154cb76a042f
+Patch0:         reproducible.patch
 
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel
@@ -61,7 +63,7 @@ The source code of VolView is available at:
 https://github.com/Kitware/VolView
 
 %prep
-%autosetup -n OrthancVolView-%{version}
+%autosetup -p1 -n OrthancVolView-%{version}
 
 #OrthanPlugins may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web
