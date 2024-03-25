@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Mar 25 07:40:50 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v5.0.2
+  - Fix the fs/lustre component build
+  - Fix a mtl/ofi multi-threaded race condition bug
+  - Add missing fortran profiling interfaces according to MPI 4.0 standard
+  - Allow 0-size data copy in opal/accelerator
+  - Fix a btl/ofi and mtl/ofi provider selection bug
+  - Properly initialize mca_rcache_base_module_t members
+  - Fix a singleton launch segfault
+  - Various documentation related updates and changes
+  - Fix a bunch of compiler warnings
+  - Sessions: fix a problem with fortran MPI_Session_get_nth_pset interface
+  - Correctly access the communicator name is MSGQ
+  - accelerator/cuda: fix bug in makefile.am preventing correct linkage
+    in non-standard location
+  - Correctly handle attributes on MPI_COMM_WORLD.
+  - Minor memory leak fixes in:
+    btl/tcp, mca_base_framework, ob1
+  - Fix static initialization of recursive mutexes
+  - Spack: fix for dlopen missing symbol problem
+  - opal/mca/accelerator: ROCm 6.0 incompatibility fix
+  - opal_var_dump_color_keys: fix an array overflow
+  - SHMEM_LOCKS: MCS implementation of SHMEM LOCKS
+  - configury: support flang-new
+  - Update processing of "display_map" info key
+  - dpm: update PMIX attribute
+
+-------------------------------------------------------------------
 Mon Feb 26 12:47:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
