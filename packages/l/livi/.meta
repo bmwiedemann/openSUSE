@@ -1,0 +1,7 @@
+<package name="livi" project="openSUSE:Factory">
+  <title>A light video player with hardware acceleration support</title>
+  <description>Minimalistic video player using GTK4 and GStreamer. The main purpose is to make playing hw accelerated videos with hantro and OpenGL simple.
+</description>
+  <devel project="multimedia:apps" package="livi"/>
+  <url>https://gitlab.gnome.org/guidog/livi</url>
+</package>
