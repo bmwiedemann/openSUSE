@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 25 02:22:58 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.0
+  * This release improves the display of the formatted man page
+    when using man-db, fixes a memory leak when closing a man page,
+    and removes support for a number of OS'es from the 80's & 90's,
+    along with removing support for using Xprint to print a man
+    page.
+
+-------------------------------------------------------------------
 Fri Sep 29 07:53:58 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.6
