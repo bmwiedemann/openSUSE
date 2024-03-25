@@ -22,19 +22,21 @@ Version:        4.0
 Release:        0
 Summary:        Structured Configuration Library
 License:        ZPL-2.1
-Group:          Development/Libraries/Python
 URL:            https://github.com/zopefoundation/ZConfig
 Source:         https://files.pythonhosted.org/packages/source/Z/ZConfig/ZConfig-%{version}.tar.gz
-# Testing requirements:
+# PATCH-FIX-UPSTREAM gh#zopefoundation/ZConfig#91
+Patch0:         support-python-312.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module manuel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.testrunner}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,36 +58,35 @@ packages.
 
 %package        doc
 Summary:        Structured Configuration Library
-Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
 
 %description    doc
 This package contains documentation files for %{name}.
 
 %prep
-%setup -q -n ZConfig-%{version}
+%autosetup -p1 -n ZConfig-%{version}
 rm -rf ZConfig.egg-info
 rm docs/make.bat
 # test works only in git repo
-rm -f ZConfig/tests/test_readme.py
+rm src/ZConfig/tests/test_readme.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/zconfig
 %python_clone -a %{buildroot}%{_bindir}/zconfig_schema2html
 
 %check
 export LANG=en_US.UTF8
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} zope-testrunner-%{$python_bin_suffix} -v --test-path=.
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} zope-testrunner-%{$python_bin_suffix} -v --test-path=src
 
 %post
 %python_install_alternative zconfig zconfig_schema2html
 
-%preun
+%postun
 %python_uninstall_alternative zconfig
 
 %files %{python_files}
@@ -94,7 +95,7 @@ export LANG=en_US.UTF8
 %python_alternative %{_bindir}/zconfig
 %python_alternative %{_bindir}/zconfig_schema2html
 %{python_sitelib}/ZConfig
-%{python_sitelib}/ZConfig-%{version}*-info
+%{python_sitelib}/ZConfig-%{version}.dist-info
 
 %files %{python_files doc}
 %doc docs/

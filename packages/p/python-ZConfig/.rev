@@ -102,4 +102,16 @@ source URL fixed</comment>
   * Drop support for Python 2.7, 3.5, 3.6.</comment>
     <requestid>1140254</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d6361f945a0c479d1573f519a50d51ab</srcmd5>
+    <version>4.0</version>
+    <time>1711397493</time>
+    <user>anag+factory</user>
+    <comment>- Don't use rm -f in %prep, it hides failures.
+- Switch to autosetup and pyproject macros.
+- Correct path used for running the testsuite.
+- Add patch support-python-312.patch:
+  * Do not a monkey patch for assertRaisesRegexp, it is not required.</comment>
+    <requestid>1161215</requestid>
+  </revision>
 </revisionlist>
