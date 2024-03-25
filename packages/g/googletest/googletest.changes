@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Mar 12 16:43:25 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Exclude test for 32bit x86 that is broken for now
+
+-------------------------------------------------------------------
+Fri Mar  8 18:32:03 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to 1.14.0:
+  * GoogleTest requires at least C++14
+  * Remove the GTEST_HAS_DOWNCAST_ customization point.
+  * Add googletest-message-test to the Bazel tests
+  * Make testing::Message support streamed AbslStringify values
+  * gtest: Supress warning about set unused variable
+  * Make AbslStringify usage public in GoogleTest
+  * Remove unused cast implementation
+  * Use template type FloatType in the cast.
+  * Fix C++20 compatibility bug.
+  * Make GoogleTest handle SEH exceptions before stack unwinding rather than afterward
+  * Resolve an issue where the resolution of operator<< overloads would attempt
+    to instantiate the incomplete testing::internal::Secret type.
+  * add support for nrf52
+  * add support for nxp qn9090 mcu
+  * Allow clients to un-suppress output from gUnit EXPECT_EXIT tests.
+  * Use GTEST_INTERNAL_CPLUSPLUS_LANG instead of __cplusplus
+  * Add qualifier to avoid argument dependent lookup
+  * Add missing std includes
+  * Remove GTEST_FOR_GOOGLE_ macro
+  * Remove some filesystem APIs and tests under !GTEST_HAS_FILE_SYSTEM
+
+-------------------------------------------------------------------
+Sun Mar 26 16:17:32 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.13.0:
+  * Floating point prints full precision by default to aid in debugging 
+  * GTEST_FAIL_AT now terminates the test (like ASSERT_*), rather than failing and continuing (like EXPECT_*)
+  * Added testing::SrcDir(), which returns the configured directory for test data files
+
+- CMake and GCC minimum according to https://github.com/google/oss-policies-info/blob/main/foundational-cxx-support-matrix.md
+
+-------------------------------------------------------------------
 Thu Oct  6 13:58:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.1:

@@ -143,4 +143,12 @@
   * CMake minimum increased to 3.5 (forwarded request 1008415 from dirkmueller)</comment>
     <requestid>1008944</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c9ce8dd061d73922bf78d6d8e8138da4</srcmd5>
+    <version>1.14.0</version>
+    <time>1711397167</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1157301</requestid>
+  </revision>
 </revisionlist>

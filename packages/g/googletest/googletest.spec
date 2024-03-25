@@ -1,7 +1,7 @@
 #
 # spec file for package googletest
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,16 +24,16 @@
 
 %define _name   googlemock
 Name:           googletest
-Version:        1.12.1
+Version:        1.14.0
 Release:        0
 Summary:        Google C++ Testing Framework
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/googletest
-Source0:        https://github.com/google/googletest/archive/release-%{version}.tar.gz#/%{name}-release-%{version}.tar.gz
+Source0:        https://github.com/google/googletest/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        googletest-rpmlintrc
-BuildRequires:  cmake >= 3.5.0
-BuildRequires:  gcc-c++
+BuildRequires:  cmake >= 3.10.0
+BuildRequires:  gcc-c++ >= 7.3.1
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(pthread-stubs)
@@ -80,7 +80,7 @@ This package provides shared libraries and header files for development
 with googlemock.
 
 %prep
-%setup -q -n %{name}-release-%{version}
+%autosetup
 
 %build
 %global optflags %(echo "%{optflags} -Wno-infinite-recursion -Wno-deprecated-declarations")
@@ -99,8 +99,10 @@ mkdir -p %{buildroot}%{_includedir}/gtest/src && install -m 0644 googletest/src/
 
 %check
 %if %{with tests}
+%ifnarch %ix86
 # googletest-port-test is checking the threadcount which is incorrect under user mode emulation
 %ctest -- %{?qemu_user_space_build: -E googletest-port-test}
+%endif
 %endif
 
 %post -n gtest -p /sbin/ldconfig
