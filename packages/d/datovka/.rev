@@ -492,4 +492,41 @@
     <comment></comment>
     <requestid>1142257</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>22b593c3918fb36755d6e45b81c7beec</srcmd5>
+    <version>4.23.6</version>
+    <time>1711397455</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.23.6:
+  * Fixed MIME name detection of ZFO files consiting of a ZIP
+    archive and which don't contain a data message nor a delivert info.
+  * Fixed crashes of message detail dialogue when invalid ZFO
+    content is attempted to be displayed.
+  * Fixed some memory-related performance issues reported by
+    Coverity.
+  * Fixed blocked MEP login loop on newer macOS versions.
+  * Fixed sending of ZIP archives in normal (non VoDZ) messages
+    by explicitly setting their MIME type.
+  * Lowered the limit for maximum attachment count to 50 files.
+  * Extended the list of allowed attachment file types.
+  * Showing total number of attached files in the send message
+    dialogue.
+  * Fixed restoration of databases without VoDZ content.
+
+  * Fixed tag ordering. Tag sorting is now locale-aware.
+  * Fixed problems with HOTP authorisation on Windows. There have
+    been problems with the bundled libisds. MinGW does not handle
+    POSIX extensions of printf formatting strings properly. Patch
+  * Fixed a non-working PRAGMA statement when asking for a database
+  * The --version command-line argument now also prints the version
+  * Automatic background downloads didn't cause the deactivation of
+    download buttons that could still be triggered. Triggering those
+  * Adding new account caused the account tree to collapse. This has
+  * The logging of libisds actions has been restricted on Windows
+    because there are discrepancies from standard-defined behaviour
+  * Improved behaviour when message download fails. The error
+    dialogue is only shown when an explicit message download fails.
+  * A message in the notification area appears when the download</comment>
+    <requestid>1161159</requestid>
+  </revision>
 </revisionlist>

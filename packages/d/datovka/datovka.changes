@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar 24 18:03:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.23.6:
+  * Fixed MIME name detection of ZFO files consiting of a ZIP
+    archive and which don't contain a data message nor a delivert info.
+  * Fixed crashes of message detail dialogue when invalid ZFO
+    content is attempted to be displayed.
+  * Fixed some memory-related performance issues reported by
+    Coverity.
+  * Fixed blocked MEP login loop on newer macOS versions.
+  * Fixed sending of ZIP archives in normal (non VoDZ) messages
+    by explicitly setting their MIME type.
+  * Lowered the limit for maximum attachment count to 50 files.
+  * Extended the list of allowed attachment file types.
+  * Showing total number of attached files in the send message
+    dialogue.
+  * Fixed restoration of databases without VoDZ content.
+
+-------------------------------------------------------------------
 Mon Jan  8 22:08:01 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 4.23.3:
@@ -460,7 +479,7 @@ Wed Jul 19 11:21:13 UTC 2017 - jslaby@suse.com
     times.
   * Fixed problems with sending messages from accounts that cannot search for
     data boxes.
-  * Fixed tag ordering. Tag sorting is now locale-aware. 
+  * Fixed tag ordering. Tag sorting is now locale-aware.
 - disable -Wdate-time -- unrecognized e.g. with gcc 4.8
 
 -------------------------------------------------------------------
@@ -550,36 +569,36 @@ Sat May 14 12:18:01 UTC 2016 - tchvatal@suse.com
 Fri Apr  1 09:20:07 UTC 2016 - mpluskal@suse.com
 
 - Update to 4.5.3
-  * Fixed problems with HOTP authorisation on Windows. There have 
-    been problems with the bundled libisds. MinGW does not handle 
-    POSIX extensions of printf formatting strings properly. Patch 
+  * Fixed problems with HOTP authorisation on Windows. There have
+    been problems with the bundled libisds. MinGW does not handle
+    POSIX extensions of printf formatting strings properly. Patch
     for libisds has been added.
-  * Fixed a non-working PRAGMA statement when asking for a database 
+  * Fixed a non-working PRAGMA statement when asking for a database
     integrity check.
-  * The --version command-line argument now also prints the version 
+  * The --version command-line argument now also prints the version
     of libraries which Datovka depends on.
-  * Automatic background downloads didn't cause the deactivation of 
-    download buttons that could still be triggered. Triggering those 
+  * Automatic background downloads didn't cause the deactivation of
+    download buttons that could still be triggered. Triggering those
     buttons in this situation could cause the application to crash.
-  * Adding new account caused the account tree to collapse. This has 
+  * Adding new account caused the account tree to collapse. This has
     been fixed.
 - Changes for 4.5.2
   * NLS of bundled libisds (OS X, Windows) has been disabled.
-  * The logging of libisds actions has been restricted on Windows 
-    because there are discrepancies from standard-defined behaviour 
+  * The logging of libisds actions has been restricted on Windows
+    because there are discrepancies from standard-defined behaviour
     of some functions on Windows.
-  * Improved behaviour when message download fails. The error 
-    dialogue is only shown when an explicit message download fails. 
-  * A message in the notification area appears when the download 
-    has been triggered by downloading message list. This should 
+  * Improved behaviour when message download fails. The error
+    dialogue is only shown when an explicit message download fails.
+  * A message in the notification area appears when the download
+    has been triggered by downloading message list. This should
     reduce the amount of error dialogues generated.
-  * Improved behaviour when downloading messages on accounts with 
-    restricted privileges. Received messages are not automatically 
+  * Improved behaviour when downloading messages on accounts with
+    restricted privileges. Received messages are not automatically
     downloaded when the user has no privileges to do that.
 - Changes for 4.5.1
-  * Fixed bug in action logging causing the application to crash 
+  * Fixed bug in action logging causing the application to crash
     occasionally.
-  * Fixed bug where message line was not deleted when deleting from 
+  * Fixed bug where message line was not deleted when deleting from
     ISDS failed.
   * New account model internals.
 - Build with optflags
@@ -686,7 +705,7 @@ Wed Jan 23 14:20:44 UTC 2013 - tchvatal@suse.com
 -------------------------------------------------------------------
 Wed Jan 23 14:09:36 UTC 2013 - tchvatal@suse.com
 
-- Fix various rpmlint warnings to make it happy. 
+- Fix various rpmlint warnings to make it happy.
 
 -------------------------------------------------------------------
 Wed Jan 23 13:02:10 UTC 2013 - tchvatal@suse.com
