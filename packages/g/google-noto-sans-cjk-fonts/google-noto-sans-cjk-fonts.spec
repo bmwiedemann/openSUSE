@@ -81,6 +81,7 @@ Obsoletes:      google-noto-sans-sc-fonts-full < %{version}-%{release}
 Provides:       scalable-font-zh-CN
 Provides:       scalable-font-zh-SG
 Provides:       locale(zh_CN;zh_SG)
+%reconfigure_fonts_prereq
 
 %description -n google-noto-sans-sc-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible heights
@@ -126,6 +127,7 @@ Provides:       google-noto-sans-tc-fonts-full = %{version}-%{release}
 Obsoletes:      google-noto-sans-tc-fonts-full < %{version}-%{release}
 Provides:       scalable-font-zh-TW
 Provides:       locale(;zh_TW)
+%reconfigure_fonts_prereq
 
 %description -n google-noto-sans-tc-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible heights
@@ -172,6 +174,7 @@ Obsoletes:      google-noto-sans-hk-fonts-full < %{version}-%{release}
 Provides:       scalable-font-zh-HK
 Provides:       scalable-font-zh-MO
 Provides:       locale(zh_HK;zh_MO)
+%reconfigure_fonts_prereq
 
 %description -n google-noto-sans-hk-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible heights
@@ -217,6 +220,7 @@ Provides:       google-noto-sans-jp-fonts-full = %{version}-%{release}
 Obsoletes:      google-noto-sans-jp-fonts-full < %{version}-%{release}
 Provides:       scalable-font-ja
 Provides:       locale(ja)
+%reconfigure_fonts_prereq
 
 %description -n google-noto-sans-jp-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible heights
@@ -262,6 +266,7 @@ Provides:       google-noto-sans-kr-fonts-full = %{version}-%{release}
 Obsoletes:      google-noto-sans-kr-fonts-full < %{version}-%{release}
 Provides:       scalable-font-ko
 Provides:       locale(ko)
+%reconfigure_fonts_prereq
 
 %description -n google-noto-sans-kr-fonts
 Noto's design goal is to achieve visual harmonization (e.g., compatible heights

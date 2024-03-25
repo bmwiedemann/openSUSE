@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 22 20:03:19 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add missing %reconfigure_fonts_prereq to some subpackages 
+
+-------------------------------------------------------------------
 Mon Mar 11 11:08:55 UTC 2024 - Marguerite Su <i@marguerite.su>
 
 - Switch to VF variant. Reduce size to about 16%
