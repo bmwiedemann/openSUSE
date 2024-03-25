@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiomisc-pytest
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-aiomisc-pytest
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        pytest integration for aiomisc
 License:        MIT
@@ -48,7 +48,6 @@ This package contains a plugin for pytest.
 # tests are only in github but github is not tagged :-(
 # %check
 # pytest
-
 
 %files %{python_files}
 %doc README.md
