@@ -1,3 +1,11 @@
+gpxsee (13.18) stable; urgency=low
+
+  * Added support for arbitrary CRSs in GeoJSON files.
+  * Added support for GeoJSON Coordinate Properties extension.
+  * CRS database consolidation.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 23 Mar 2024 21:25:49 +0100
+
 gpxsee (13.17) stable; urgency=low
 
   * Added support for hillshading (IMG & Mapsforge maps).

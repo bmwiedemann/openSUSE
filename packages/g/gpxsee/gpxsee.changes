@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 23 21:19:19 CET 2024 - tumic@cbox.cz
+
+- Update to version 13.18
+  * Added support for arbitrary CRSs in GeoJSON files.
+  * Added support for GeoJSON Coordinate Properties extension.
+  * CRS database consolidation.
+
+-------------------------------------------------------------------
 Thu Mar  7 21:30:38 CET 2024 - tumic@cbox.cz
 
 - Update to version 13.17
