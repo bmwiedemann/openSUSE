@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1128827</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0b8ec7560313e38f9c89469481ac6d9c</srcmd5>
+    <version>0.7.12</version>
+    <time>1711397489</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.12:
+  * packaging, build and updated CIK scripts</comment>
+    <requestid>1161199</requestid>
+  </revision>
 </revisionlist>

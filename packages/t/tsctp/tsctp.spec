@@ -1,7 +1,7 @@
 #
 # spec file for package tsctp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           tsctp
-Version:        0.7.10
+Version:        0.7.12
 Release:        0
 Summary:        SCTP test tool
 License:        BSD-3-Clause
