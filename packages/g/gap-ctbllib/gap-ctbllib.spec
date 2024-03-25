@@ -1,7 +1,7 @@
 #
 # spec file for package gap-ctbllib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-ctbllib
-Version:        1.3.6
+Version:        1.3.9
 Release:        0
 Summary:        GAP Character Table Library
 License:        GPL-3.0-or-later

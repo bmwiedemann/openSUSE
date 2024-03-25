@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Mar 23 21:30:42 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to relesae 1.3.9
+  * Bugfix: The table with identifier "2^2x3^2.2.S4" is encoded
+    as a direct product. Up to now, one of the two factors did
+    not fit to the identifier.
+  * Data added:  The  class  fusions  from the maximal subgroups
+    (L_2(11) × L_2(11)):4, 11^2:(5 × 2.A_5), 7^2:2L_2(7), and
+    L_2(19).2 of the Monster group have been added.
+  * In order to make AllCharacterTableNames (3.1-4) efficient
+    also if the Browse package is not available, the relevant
+    code from that package has been copied into CTblLib.
+
+-------------------------------------------------------------------
+Wed Feb 14 19:22:32 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.7
+  * The GroupInfoForCharacterTable  (3.3-1)  entry "SigmaL(2,9)"
+    had been erroneously attributed to the table with identifier
+    "2.A6.2_2", but the correct table is that of "2.A6.2_1".
+
+-------------------------------------------------------------------
 Tue Aug  1 00:25:55 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.3.6
