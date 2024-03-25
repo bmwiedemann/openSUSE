@@ -34,6 +34,9 @@ URL:            https://libcddb.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/%{_name}/%{_name}/%{version}/%{_name}-%{version}.tar.bz2
 Source2:        baselibs.conf
 Patch0:         libcddb-no-examples.patch
+# PATCH-FIX-UPSTREAM pointer-types.patch bsc#1221698 mcepl@suse.com
+# Patch from https://src.fedoraproject.org/rpms/libcddb/raw/rawhide/f/pointer-types.patch
+Patch1:         pointer-types.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 %if %{BUILD_UTILS}
@@ -75,10 +78,11 @@ tries to be as cross-platform as possible.
 %prep
 %setup -q -n %{_name}-%{version}
 %if !%{BUILD_UTILS}
-%patch -P 0
+%patch -p1 -P 0
 %else
 sed -i 's:\(\.\.\|\$(top_builddir)\)/[^/]*/lib\([^ ]*\)\.la:-l\2:g' */Makefile.am
 %endif
+%patch -p1 -P 1
 
 %build
 autoreconf -f -i
