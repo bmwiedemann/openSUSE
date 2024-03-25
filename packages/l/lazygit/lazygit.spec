@@ -1,7 +1,7 @@
 #
 # spec file for package lazygit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lazygit
-Version:        0.40.2
+Version:        0.41.0
 Release:        0
 Summary:        Simple terminal UI for git commands
 License:        MIT
@@ -25,7 +25,7 @@ Group:          Development/Tools/Version Control
 URL:            https://github.com/jesseduffield/lazygit
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.18
+BuildRequires:  golang(API) >= 1.21
 Requires:       git-core
 
 %description
@@ -34,12 +34,13 @@ git operations easy and accessible without requiring expertise with the git
 command line.
 
 %prep
-%autosetup -n %{name}-%{version} -a 1
+%autosetup -a 1
 
 %build
-go build \
-   -mod=vendor \
-   -buildmode=pie
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
+go build
 
 %install
 install -Dm755 %{name} %{buildroot}%{_bindir}/%{name}

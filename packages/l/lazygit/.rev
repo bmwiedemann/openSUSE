@@ -26,4 +26,20 @@ expertise with the git command line.</comment>
   * Bump gocui (forwarded request 1102776 from jfkw)</comment>
     <requestid>1102777</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>51b0421c5627e54d72f8441a5d0312fb</srcmd5>
+    <version>0.41.0</version>
+    <time>1711397386</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.41.0:
+- Packaging improvments:
+  * Update to BuildRequires: golang(API) &gt;= 1.21 matching go.mod
+  * Drop autosetup -n arg only needed when archive and package
+    name differ
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS=&quot;-buildmode=pie&quot; %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time. (forwarded request 1161039 from jfkw)</comment>
+    <requestid>1161040</requestid>
+  </revision>
 </revisionlist>

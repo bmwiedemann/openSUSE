@@ -1,4 +1,411 @@
 -------------------------------------------------------------------
+Sat Mar 23 13:22:23 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.41.0:
+  * Fix container detection
+  * Change CopiedToClipboard text to start lower-case
+  * Change toast for copying sha to clipboard to include what was copied
+  * Change log message for copying sha to the clipboard to include "full"
+  * Add config to truncate commit hashes when copying them to the clipboard
+  * Make it easy to create "amend!" commits
+  * Remove CreateFixupCommitDescription as it's identical to CreateFixupCommit
+  * Support editing multiple files at once using range selection
+  * When creating a new remote, select it and fetch it
+  * Make links in status view clickable, and underline them
+  * Make the links in the status panel point to the current version rather than master
+  * Always prompt to return from subprocess if there was an error
+  * Add NixOs installation instructions README.md
+  * Improve translations for zh_TW
+  * Fix disabling the switch-to-editor menu item if unavailable
+  * Always show the "Press <c-o> to open menu" help text in the commit panel
+  * Add missing translations for polish
+  * Get rid of the retain-sort-order-when-filtering logic again
+  * Rename FuzzySearchFunc to FilterFunc
+  * Rename FuzzySearch to FilterStrings
+  * Default to substring filtering, add option to go back to fuzzy filtering
+  * Don't sort the results of fuzzy.Find
+  * Refresh after creating local branch, before checking it out
+  * Show inline waiting status when checking out a local branch
+  * Show the same menu when pressing space on a remote branch
+  * When checking out a remote branch by name, ask the user how
+  * Don't ask to force-push if the remote rejected updates
+  * Set mode to none when calling SetSelectionRangeAndMode with empty non-sticky range
+  * Allow deleting update-ref todos
+  * Extract a findTodo helper function
+  * Allow moving update-ref todos up/down
+  * Store full ref in Name field of update-ref commits
+  * Refactor: pass Todo to moveTodoUp/Down instead of Sha and Action
+  * Handle mouse-wheel scrolling in confirmation panel
+  * Show popup message with breaking changes on startup
+  * Add integration test
+  * Add commit menu entry "Add co-author"
+  * Add a commit menu to the commit message panel
+  * Extract functions AddCoAuthorToMessage and AddCoAuthorToDescription
+  * Make test assertion more specific
+  * Make keybindings for the "Amend attribute" menu configurable
+  * Internationalize the tooltips of the "Amend commit attributes" menu
+  * Add forgotten keybindings to Config.md
+  * Update sponsors in readme
+  * Add integration test
+  * Remove hard line breaks when rewording commits
+  * Replace DOS linefeeds with Unix line feeds when loading a commit message
+  * Save and restore the unwrapped description
+  * Add config for soft-wrapping the commit message body
+  * Bump gocui
+  * Keep the same line selected after squashing fixup commits
+  * Extract common code to a helper method
+  * Move selection down by one after creating a fixup commit
+  * Extend squash_fixups_in_current_branch test to check the selection
+  * Add test for creating a fixup commit and squashing fixups
+  * Support setting a range of commits to "edit" outside of a rebase
+  * Show all submodules recursively
+  * Pass entire submodule to UpdateUrl instead of name and path separately
+  * Fix deleting submodule where name and path are different
+  * Add test to check that the git dir for a deleted submodule was removed
+  * Extend submodule tests to use a submodule where name and path are different
+  * Don't strike out reserved keys in menus
+  * Remove support for old-style non-interactive rebases
+  * Break git.merging.args config into separate arguments on whitespace
+  * Add a test that demonstrates a bug with multiple args in git.merging.args config
+  * Don't show branch head on rebase todos if the rebase.updateRefs config is on
+  * Rename showBranchMarkerForHeadCommit parameter to hasRebaseUpdateRefsConfig
+  * Add test demonstrating the current (undesired) behavior
+  * Provide two helix presets, one for "helix" and one for "hx"
+  * Make ctrl-f available in staging view
+  * Fix linter warnings
+  * Add author filtering to commit view
+  * Add tooltips for reset menu items
+  * Change "git reset" default to --mixed
+  * Update Config.md
+  * Change log path to state dir
+  * Use $XDG_STATE_DIR for state.yml
+  * Switch to github.com/adrg/xdg
+  * Add integration test
+  * Set diff.noprefix=false for all other diff commands too
+  * Fix problems with patches if `git diff` was customized with config.
+  * Don't omit section headers when filtering the keybindings menu
+  * Optionally keep sort order stable when filtering lists
+  * Bump required go version to 1.21
+  * Fix number of lines to read from a task initially for the right scroll bar size
+  * Fix order problems when saving custom commands history
+  * Simplify saving app state
+  * Redraw commits view when showGraph setting changes
+  * Deprecate git.log.showGraph and git.log.order config
+  * Avoid crash when hitting enter on an update-ref todo
+  * Fix a problem with refreshing while an update-ref todo is selected
+  * Fix range select bug
+  * Clean up test case
+  * Support range select removing files from a commit
+  * Change default of git.log.showGraph to 'always'
+  * Disallow cherry-picking merge commits
+  * Disallow cherry-picking update-ref todos
+  * Cleanup: remove unused method
+  * Fix cherrypick demo
+  * Clear cherry-picked commits after pasting
+  * Use slimmer scrollbars
+  * Add command to squash all fixups in the current branch
+  * Fix main view refresh after adding the first file to a custom patch
+  * Support selecting file range in patch builder
+  * Warn users when attempting to cherry pick with old key
+  * Reduce the chance of race condition with list cursor
+  * Display more keybindings on-screen
+  * Show mode-specific keybinding suggestions
+  * Ensure file view length is never returned as -1
+  * Improve keybinding descriptions
+  * Render keybinding cheatsheet as markdown table
+  * Keep same selection range when quick-starting an interactive rebase
+  * Add tests for preserving the selection when pressing 'i'
+  * Rename MinMax to SortRange
+  * Add shortcuts for filtering files by status
+  * Remove unused text FetchingRemoteStatus
+  * Use inline status for fetching remotes
+  * Pass absolute file paths to all editor commands
+  * Fix error message for selected lines
+  * Support range select for staging/discarding files
+  * Move file discard action into files controller
+  * Refactor repo_paths.go to use git rev-parse
+  * Make range selections created with the mouse non-sticky
+  * Disallow updating non-standard TODO lines when rebasing
+  * Support range select in rebase actions
+  * Better assertion logic for line selection
+  * Set groundwork for better disabled reasons with range select
+  * Add config setting to suppress showing file icons
+  * Show unstaged file names in default colour
+  * Keep same branch selected when refreshing branches
+  * Add test showing how branch should stay selected after fetching (but doesn't yet)
+  * Show unacknowledged toast message upon integration test failure
+  * Disable range-select in menu and suggestions view
+  * Enforce single-item selection in various actions
+  * Support select range for cherry pick
+  * Add SetSelection function for list contexts and use it in most places
+  * Remove 'v' menu keys
+  * Clear range select upon pressing 'escape'
+  * Standardise display of range selection across views
+  * Support non-sticky range selection in patch explorer views
+  * Add range selection ability on list contexts
+  * Stop hiding debug vscode launch tasks
+  * Fix exit code of run_integration_tests.sh when capturing code coverage data
+  * Don't try to shorten branch names that are already 3 characters or less
+  * Do not include keybindings from another view in keybindings menu
+  * Double the duration of error toasts
+  * Allow showing Disabled errors as error panel instead of toast
+  * Make DisabledReason a struct
+  * Use ErrorToast instead of error panel when invoking a disabled command
+  * Add ErrorToast function
+  * Make it mandatory to acknowledge toasts in tests
+  * Make it possible to handle toasts in integration tests
+  * Do not perform IO work when getting disabled reason with local commits
+  * Update README to add backticks to key
+  * Update codebase guide
+  * Add ability to start an interactive rebase onto an appropriate base
+  * Pass -f as single arg in integration test
+  * Set working directory in lazygit test command
+  * Update codebase guide
+  * Add codebase guide
+  * Obtain remote URL by calling "ls-remote --get-url" instead of using git config
+  * Allow multiple fetch commands (or fetch and pull) to run concurrently
+  * Extract a function fetchCommandBuilder
+  * Add a method GitVersion.IsAtLeast
+  * Warn when there are hunks with only added lines
+  * Add command to find base commit for creating a fixup
+  * Add config setting for side panel location (left or top) in half screen mode
+  * Preserve the commit message correctly even if the description has blank lines
+  * Add test demonstrating a bug with preserving the commit message
+  * Simplify GetCommitMessage
+  * Update cheat sheets and json schema
+  * Add command to open git difftool
+  * Fix checking out a tag when a branch with the same name exists
+  * Add test demonstrating the problem
+  * Replace copy SHA with copy subject on commit 'y s'
+  * Show a friendly error message when starting lazygit from a non-existent cwd
+  * Add integration test for local branch sort order
+  * Add a sort order menu for local branches
+  * chore: use null char as a stash entries divider during loading
+  * feat: add age on stash lines
+  * Add integration test for remote branch sort order
+  * Implement a sort order menu for remote branches
+  * fix(config): add yaml struct tag to `CustomCommandPrompt.[]Options`
+  * Fall back to WithWaitingStatus if item is scrolled out of view
+  * Fall back to WithWaitingStatus if view showing the item is not visible
+  * Return only visible views from TopViewInWindow
+  * Add WithWaitingStatusSync for reverting commits
+  * Use WithWaitingStatusSync for move commit up/down
+  * Add WithWaitingStatusSync
+  * Add tests for window arrangement code
+  * Refactor window arrangement helper to use pure function
+  * Layout the bottom line view using spacer views
+  * fix: MacOS default path misspelling
+  * chore: update jsonschema
+  * chore: update cheatsheets
+  * feat: introduce a copy menu into the file view
+  * Add UserConfig jsonschema generation script
+  * Add invopop/jsonschema fork
+  * Add coverage arg for integration tests
+  * Use args struct for RunTests
+  * Use a PTY when calling external diff command
+  * Add "go mod tidy" check to CI
+  * Fix go.mod file (go-difflib dependency should be indirect)
+  * Update README.md to contain new information to install it on gentoo
+  * Fix unsetting upstream when it doesn't exist
+  * Introduce failing "UnsetUpstream" test
+  * Rename integration test "ResetUpstream"
+  * fixed typo in test description
+  * Add Warp link to readme
+  * Add Codacy badge
+  * Update Stacked_Branches.md
+  * Advise against raising pull requests from master branch
+  * create iconProperties struct and convert iconMaps to use iconProperties
+  * Advise developers to use a nerd font in their editor
+  * Truncate long branch names to make branch status visible
+  * Make the window a little wider for headless integration tests
+  * Make it possible to set the nerd fonts version to "off"
+  * Pass "now" into utils.Loader
+  * Remove special code to rerender views on screen mode change
+  * Rerender certain views when their width changes
+  * Add 'lvim' editor preset for lunarvim
+  * When refreshing models, re-apply active filter for the corresponding view
+  * Fix crash when trying to filter the list of remotes
+  * Update wording in disable keybindings test
+  * Add disabled compat for user config (#2833)
+  * Avoid rendering branches view twice when refreshing
+  * Remove sync mutex
+  * Disallow pulling/pushing a branch while the branch is pushed or pulled
+  * Disallow checking out another branch while the current one is being pulled
+  * Add inline status for pushing tags and deleting remote tags
+  * Add inline status for pushing/pulling/fast-forwarding branches
+  * Add WithInlineStatus helper function
+  * Add GetItemOperation/SetItemOperation/ClearItemOperation to IStateAccessor
+  * Don't report errors from within a WithWaitingStatus
+  * Remove redundant `len` check
+  * adjust the text to received review comments
+  * Add Micro editor preset
+  * Band-aid fix for submodule/reset.go test failure
+  * commmit - enhance docs for keybinding 'c' for local branch
+  * Add ability to force portrait mode
+  * add gofumpt to workspace settings
+  * Update PR template to use go generate command
+  * Ignore deprecation checks in linter
+  * Add comments in user config struct
+  * Change Makefile to build non-optimized
+  * Make test_list_generator.go print what it's doing
+  * Use go:generate for generating cheatsheets
+  * Generalize the CI check for the test list to all auto-generated files
+  * Disable deadlock reporting when debugging an integration test
+  * Disable the 40-second timeout for integration tests when debugging
+  * Use constant for WAIT_FOR_DEBUGGER env var
+  * Build lazygit without optimizations and inlining when debugging
+  * respect  and  env vars
+  * Pass MAKECMDGOALS to make integration-test-tui
+  * Print race detector logs after running a test with -race
+  * Support -race arg when running integration tests to turn on go's race detector
+  * Allow passing multiple flags to the cli runner
+  * Fix minor resource leak in runCmdHeadless
+  * Don't select current search result when showing search status
+  * feat: add a menu to rebase current branch to a target branch upstream
+  * chore: rename branch upstream view options method
+  * Shorten the waiting status for fast-forwarding a branch
+  * Remove unused WithLoaderPanel code
+  * Use WithWaitingStatus instead of WithLoaderPanel for pull/push/fetch
+  * Add constant for LoaderAnimationInterval
+  * Remove unused class FakePopupHandler
+  * Add integration test for deleting a remote branch with credentials prompt
+  * When pausing a task during a waiting status, hide the status while paused
+  * Extract WaitingStatusHandle
+  * Extract StatusManager.addStatus method
+  * Add search history
+  * Allow cherry-picking commits during a rebase
+  * Add StatusCommands.IsInNormalRebase and IsInInteractiveRebase
+  * Disabled paste when there are no copied commits
+  * Use DisabledReason for commits panel commands
+  * Use DisabledReason for rebasing a branch onto itself
+  * Add Enabled func to Binding
+  * Use DisabledReason for upstream options items
+  * Use DisabledReason when deleting branches is not possible
+  * Add DisabledReason field to MenuItem
+  * Use UpstreamBranch for opening pull requests
+  * Rename test/results to test/_results
+  * fix: use `Error` method to handle the commit url copy from unknown service
+  * Provide a simple way to debug an integration test
+  * Add debug configuration to attach to a running lazygit process
+  * Change "make run" to do a build and then launch lazygit
+  * Hide system goroutines in callstack
+  * Format launch.json with Prettier
+  * Add coauthor (#2)
+  * Change the default of the "gui.borders" config to "rounded"
+  * feat: add jump-to-panel label setting
+  * feat: add a menu to reset current branch to a target branch upstream
+  * chore: rename "Set/Unset upstream" menu to "Upstream Options"
+  * Replace whitespace with '-' when renaming a branch
+  * Move diff context size from UserConfig to AppState
+  * Load defaults for AppState before reading from yaml
+  * Extract a SaveAppStateAndLogError function
+  * Don't pass ignoreWhitespace to git commands
+  * Add AppState to common.Common
+  * Fix keybinding for editing config file
+  * Add support for external diff commands (e.g. difftastic)
+  * Add explicit --no-ext-diff arg to CommitCommands.ShowCmdObj
+  * Improve prompts when amending commits
+  * Fix escape not cancelling filter mode, but closing the menu instead
+  * Don't show toasts when running integration tests
+  * Ensure committable files for "amend to" and "create fixup commit"
+  * Extract a WithEnsureCommitableFiles function
+  * Add integration test for the new divergence log
+  * Add DoesNotContainAnyOf matcher
+  * Add "Show divergence from upstream" entry to Upstream menu in branches panel
+  * Extract a SubCommitsHelper from SwitchToSubCommitsController
+  * Remove sub_commits_context's Title method
+  * Add option RefToShowDivergenceFrom to GetCommitsOptions
+  * Don't return commits from setCommitMergedStatuses
+  * Remove the magenta color on menu items that open a menu
+  * Add sections (local, global) to the keybindings menu
+  * Add option to add sections to menus
+  * Add a mechanism to insert non-model items into list contexts
+  * Make columnPositions include entries for removed columns
+  * Make RenderDisplayStrings return the column positions
+  * Take removed columns into account when applying column alignments
+  * Add failing test demonstrating bug with column alignments and removed columns
+  * Change RenderDisplayStrings to return a slice of strings
+  * Cleanup: use slices.Delete to delete elements from a slice
+  * Add tests for renderLines
+  * Extract a ListRenderer struct
+  * Call getDisplayStrings with a valid range of model indices
+  * Extract a renderLines function
+  * Change length parameter of getDisplayStrings to endIdx
+  * Add instruction in PR template to start PRs with an imperative
+  * Add Winget to installation guide
+  * Add Winget to installation guide
+  * Support custom keybindings for confirm discard
+  * Select same commit again after pressing "e" to edit a commit
+  * Call Then function only after everything is done
+  * Panic when trying to use RefreshOptions.Then with mode ASYNC
+  * Add assertion to show the problem
+  * Allow port in webDomain for services config values
+  * upgrade golangci/golangci-lint-action to v3.7.0
+  * upgrade actions/setup-go to v4 and remove actions/cache for go cache
+  * upgrade goreleaser/goreleaser-action to v4
+  * upgrade JamesIves/github-sponsors-readme-action to v1.2.2
+  * Add integration test
+  * Mention ctrl+o binding in commit message sub title
+  * Add key binding for switching from the commit message panel to an editor
+  * Remove obsolete comment
+  * Add scrollOffEnabled config
+  * Pass UserConfig to checkScrollUp/Down instead of just the scrollOffMargin
+  * Add tests for scroll-off margin of zero
+  * Fix section levels
+  * Add git flow description in readme
+  * Fix the commit graph display after selection jumps in commits view
+  * Add unit test
+  * Fix arg order to asserts
+  * Clean before convertion?
+  * Stylistic changes
+  * Clean path
+  * Improve error message
+  * Fix yellow/red coloring while rebasing
+  * Fix the blue sha color of todo commits while rebasing
+  * Add Makefile
+  * Add emacs-keybinds for word navigation
+  * Add ScrollOffMargin user config
+  * Stop cycling hunks when reaching the end
+  * If selected line is outside, move it to the middle of the view
+  * Fix typo in comment
+  * Add features to table of contents
+  * Add demo for diffing two commits
+  * Factor out common config setup functions in demo package
+  * Show commit mark before showing extra info
+  * Add commit graph demo
+  * Add rebase from marked base commit test
+  * Add undo demo
+  * Allow deleting remote tags/branches from local tag/branch views (#2738)
+  * Fix bug in LineNumberOfLine
+  * Add test case for LineNumberOfLine()
+  * If OpenLink errors, show a dialog instead
+  * use 'suspend' instead of 'editInTerminal' internally
+  * Use soft wrapping in config doc
+  * Add nvim-remote editor preset
+  * Honour editInTerminal value when opening a worktree folder
+  * Reset origin when clearing view
+  * Add a Click() primitive to the integration test library
+  * Add zh-TW to docs/Config.md
+  * feat(doc): better JSON schema usage explanation
+  * feat(doc): mention JSON schema
+  * added termux installation
+  * added svelte and mdx
+  * Corrected 'zh' to 'zh-CN' in lazygit docs for proper localization
+  * Add instructions for openSUSE
+
+-------------------------------------------------------------------
+Sat Mar 23 13:05:41 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvments:
+  * Update to BuildRequires: golang(API) >= 1.21 matching go.mod
+  * Drop autosetup -n arg only needed when archive and package
+    name differ
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+
+-------------------------------------------------------------------
 Mon Aug 07 18:51:31 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.40.2:
