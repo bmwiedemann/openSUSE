@@ -1,7 +1,7 @@
 #
 # spec file for package gap-matricesforhomalg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-matricesforhomalg
-Version:        2022.12.01
-%define sillyver 2022.12-01
+Version:        2024.02.01
+%define sillyver 2024.02-01
 Release:        0
 Summary:        GAP: Matrices for the homalg project
 License:        GPL-2.0-only
@@ -28,10 +28,9 @@ URL:            https://homalg-project.github.io/pkg/MatricesForHomalg
 Source:         https://github.com/homalg-project/homalg_project/releases/download/MatricesForHomalg-%sillyver/MatricesForHomalg-%sillyver.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.11.1
+Requires:       gap-core >= 4.12.1
 Requires:       gap-gapdoc >= 1.0
-Requires:       gap-toolsforhomalg >= 2018.12.15
-Suggests:       gap-utils >= 0.54
+Requires:       gap-toolsforhomalg >= 2023.11.01
 
 %description
 The MatricesForHomalg package provides lazy evaluated matrices with
