@@ -353,4 +353,18 @@ Bugfixes:
     * Distinguish min frequency and base frequency (CPU)</comment>
     <requestid>1158282</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ed4dae0512c991d8aa2d9c323592dcb4</srcmd5>
+    <version>2.8.10</version>
+    <time>1711397531</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.8.10:
+  Bugfixes:
+    * Ignore chezmoi (Terminal, Linux)
+    * Trim trailing possible whitespaces (PublicIP)
+    * Fix detection compatibility for KDE 6 (Font, Linux)
+  Features:
+    * Improve stability; print more useful error message; avoid misuse (PublicIP / Weather)</comment>
+    <requestid>1161283</requestid>
+  </revision>
 </revisionlist>

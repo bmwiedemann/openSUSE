@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 25 07:09:10 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- update to 2.8.10:
+  Bugfixes:
+    * Ignore chezmoi (Terminal, Linux)
+    * Trim trailing possible whitespaces (PublicIP)
+    * Fix detection compatibility for KDE 6 (Font, Linux)
+  Features:
+    * Improve stability; print more useful error message; avoid misuse (PublicIP / Weather)
+
+
+-------------------------------------------------------------------
 Fri Mar 15 16:47:04 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - update to version 2.8.9:
