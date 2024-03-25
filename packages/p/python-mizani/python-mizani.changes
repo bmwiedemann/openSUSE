@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 22 20:55:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * Removed FutureWarnings when using pandas 2.1.0
+  * Added :class:`~mizani.breaks.breaks_symlog` to calculate
+    breaks for the symmetric logarithm transformation.
+  * The default `big_mark` for :class:`~mizani.labels.label_number`
+    has been changed from a comma to nothing.
+
+-------------------------------------------------------------------
 Sun Feb  4 11:24:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.0:
