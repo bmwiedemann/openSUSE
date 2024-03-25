@@ -22,7 +22,7 @@
 %define types_psutil_version 5.9.5.16
 %define types_setuptools_version 68.1.0.0
 Name:           python-mypy
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -35,11 +35,14 @@ Source2:        https://files.pythonhosted.org/packages/source/t/types-psutil/ty
 # License Source3: Apache-2.0. Only for the test suite, not packaged here.
 Source3:        https://files.pythonhosted.org/packages/source/t/types-setuptools/types-setuptools-%{types_setuptools_version}.tar.gz
 Source99:       python-mypy-rpmlintrc
+BuildRequires:  %{python_module exceptiongroup}
 BuildRequires:  %{python_module mypy_extensions >= 1.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tomli >= 1.1.0 if %python-base < 3.11}
+BuildRequires:  %{python_module tomli >= 1.1.0}
 BuildRequires:  %{python_module typed-ast >= 1.4.0 if %python-base < 3.8}
-BuildRequires:  %{python_module typing_extensions >= 3.10}
+BuildRequires:  %{python_module typing_extensions >= 4.1.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,7 +51,7 @@ Requires:       python-typing_extensions >= 3.10
 Requires:       (python-tomli >= 1.1.0 if python-base < 3.11)
 Requires:       (python-typed-ast >= 1.4.0 if python-base < 3.8)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       mypy = %{version}
 Obsoletes:      mypy < %{version}
@@ -88,7 +91,7 @@ Mypy's type system features type inference, gradual typing, generics
 and union types.
 
 %prep
-%setup -n mypy-%{version} -a1 -a2 -a3
+%setup -q -a 1 -a 2 -a 3 -n mypy-%{version}
 %autopatch -p1
 
 sed -i '/env python3/d' ./mypy/stubgenc.py
@@ -103,7 +106,7 @@ mv types-psutil-%{types_psutil_version}/psutil-stubs* mystubs/
 rm docs/make.bat
 
 %build
-%python_build
+%pyproject_wheel
 # building docs fails due to missing theme 'furo'
 #pushd docs
 #%%make_build html
@@ -111,7 +114,7 @@ rm docs/make.bat
 #popd
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a  %{buildroot}%{_bindir}/dmypy
 %python_clone -a  %{buildroot}%{_bindir}/mypy
 %python_clone -a  %{buildroot}%{_bindir}/mypyc
