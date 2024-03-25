@@ -268,4 +268,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1156949</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>889568efd547a786750c0630eb7a27a9</srcmd5>
+    <version>0.10.0</version>
+    <time>1711397320</time>
+    <user>anag+factory</user>
+    <comment>submit to address (boo#1221411)</comment>
+    <requestid>1160791</requestid>
+  </revision>
 </revisionlist>

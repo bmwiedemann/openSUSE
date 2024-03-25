@@ -73,6 +73,17 @@ Wed May 17 05:54:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 - pin to urllib3 1.x 
 
 -------------------------------------------------------------------
+Wed Apr  5 10:37:27 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update in SLE-15 (bsc#1209255, jsc#PED-3780)
+- Add python-python-dateutil and python-jmespath to BuildRequires
+
+-------------------------------------------------------------------
+Thu Nov  3 10:40:45 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update in SLE-15 (bsc#1204537, jsc#PED-2333)
+
+-------------------------------------------------------------------
 Fri Jun  3 11:41:08 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.6.0
