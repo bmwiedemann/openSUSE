@@ -1,7 +1,7 @@
 #
 # spec file for package lv2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,9 @@ BuildRequires:  pkgconfig(sndfile) >= 1.0.0
 %if %{asciidocs} == 1
 # Documentation build requirements.
 BuildRequires:  asciidoc
+%ifnarch i586 i686
 BuildRequires:  codespell
+%endif
 BuildRequires:  doxygen
 BuildRequires:  graphviz
 BuildRequires:  python3-Pygments
@@ -173,12 +175,15 @@ This package contains the LV2 API documentation.
 %prep
 %setup -q
 %autopatch -p0
+sed -i -e "s/find_program('codespell', required: get_option('tests'))/find_program('codespell', required: false)/" test/meson.build
 
 %build
 %meson -D old_headers=true \
 %if %{asciidocs} == 1
   -D docs=enabled \
 %endif
+  %{nil}
+
 %meson_build
 
 %install
@@ -186,7 +191,7 @@ This package contains the LV2 API documentation.
 
 %fdupes -s %{buildroot}%{_includedir}
 
-sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' %{buildroot}%{_bindir}/lv2specgen.py
+%python3_fix_shebang
 
 %files
 %defattr(0644,root,root,0755)
