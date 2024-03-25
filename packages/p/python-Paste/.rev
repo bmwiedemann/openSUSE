@@ -386,4 +386,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1134035</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ec94823696c49c4a3e32cec9888a59de</srcmd5>
+    <version>3.8.0</version>
+    <time>1711397201</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.8.0:
+  * remove most python2 compatibility</comment>
+    <requestid>1160836</requestid>
+  </revision>
 </revisionlist>

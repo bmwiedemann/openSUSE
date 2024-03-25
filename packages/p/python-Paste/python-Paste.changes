@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 22 20:46:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.0:
+  * remove most python2 compatibility
+
+-------------------------------------------------------------------
 Tue Dec 12 13:21:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.7.1:
