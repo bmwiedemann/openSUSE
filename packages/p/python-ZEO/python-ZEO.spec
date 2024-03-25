@@ -1,7 +1,7 @@
 #
 # spec file for package python-ZEO
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,25 +17,22 @@
 #
 
 
-%bcond_without python2
 Name:           python-ZEO
-Version:        5.4.0
+Version:        6.0.0
 Release:        0
 Summary:        Client-Server storage implementation for ZODB
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/ZEO
 Source:         https://files.pythonhosted.org/packages/source/Z/ZEO/ZEO-%{version}.tar.gz
-# https://github.com/zopefoundation/ZEO/issues/184
-Patch0:         python-ZEO-no-mock.patch
-# https://github.com/zopefoundation/ZEO/commit/d0f0709ac617a1e3d1251f396682a3bb79e22211
-Patch1:         python-ZEO-no-six.patch
 BuildRequires:  %{python_module ZConfig}
 BuildRequires:  %{python_module ZODB >= 5.5.1}
 BuildRequires:  %{python_module manuel}
 BuildRequires:  %{python_module msgpack}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module random2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module transaction >= 2.0.3}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zc.lockfile}
 BuildRequires:  %{python_module zdaemon}
 BuildRequires:  %{python_module zodbpickle >= 0.6.0}
@@ -52,15 +49,8 @@ Requires:       python-zc.lockfile
 Requires:       python-zdaemon
 Requires:       python-zope.interface
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-futures
-BuildRequires:  python-trollius
-%endif
-%ifpython2
-Requires:       python-trollius
-%endif
 %python_subpackages
 
 %description
@@ -74,8 +64,7 @@ Provides:       %{python_module ZEO-doc = %{version}}
 This package contains documentation files for %{name}.
 
 %prep
-%setup -q -n ZEO-%{version}
-%autopatch -p1
+%autosetup -p1 -n ZEO-%{version}
 
 # delete backup files
 find . -name "*~" -print -delete
@@ -86,10 +75,10 @@ rm -rf src/ZEO.egg-info
 sed -i -e 's:msgpack < 0.6:msgpack:g' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/runzeo
@@ -98,9 +87,8 @@ sed -i -e 's:msgpack < 0.6:msgpack:g' setup.py
 %python_clone -a %{buildroot}%{_bindir}/zeo-nagios
 
 %check
-pushd src
 export ZEO4_SERVER=1
-%pyunittest -v ZEO/tests/test*.py
+%python_expand PYTHONPATH=src %{_bindir}/zope-testrunner-%{$python_bin_suffix} -vvv --test-path src
 
 %post
 %python_install_alternative runzeo zeoctl zeopack zeo-nagios
@@ -116,6 +104,6 @@ export ZEO4_SERVER=1
 %python_alternative %{_bindir}/zeopack
 %python_alternative %{_bindir}/zeo-nagios
 %{python_sitelib}/ZEO
-%{python_sitelib}/ZEO-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/ZEO-%{version}*-info
 
 %changelog

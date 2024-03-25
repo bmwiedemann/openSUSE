@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Mar 22 13:43:33 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up SPEC file.
+
+-------------------------------------------------------------------
+Fri Mar 22 12:53:07 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Run tests the supported way as per https://github.com/zopefoundation/ZEO/issues/240
+- Drop no-longer-needed skip-PackUndoLog.patch
+
+-------------------------------------------------------------------
+Thu Mar 21 10:28:25 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.0.0
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Add support for Python 3.12.
+  * Switch to using async/await directly instead of @coroutine/yield.
+  * Drop experimental support for credentials object: the corresponding 
+    ClientStorage.__init__ parameter credentials is retained but ignored. 
+    From now on ZEO supports authentication only via SSL certificates.
+  * Ensure test compatibility with both ZODB<6 and ZODB>=6 by looking for 
+    ZODB inherited tests with prefixes check (used by ZODB<6) and test 
+    (used by ZODB>=6)
+- Drop merged patches:
+  * python-ZEO-no-mock.patch
+  * python-ZEO-no-six.patch
+- Add patch skip-PackUndoLog.patch to skip test causing an error
+  * https://github.com/zopefoundation/ZEO/issues/240
+
+-------------------------------------------------------------------
 Mon Apr  3 10:29:26 UTC 2023 - pgajdos@suse.com
 
 - version update to 5.4.0

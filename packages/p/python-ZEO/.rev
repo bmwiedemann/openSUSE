@@ -142,4 +142,30 @@
     <comment></comment>
     <requestid>1077172</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>973d220c2a659a615aca1dccb16c3d00</srcmd5>
+    <version>6.0.0</version>
+    <time>1711397244</time>
+    <user>anag+factory</user>
+    <comment>- Clean up SPEC file.
+- Run tests the supported way as per https://github.com/zopefoundation/ZEO/issues/240
+- Drop no-longer-needed skip-PackUndoLog.patch
+- Update to 6.0.0
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Add support for Python 3.12.
+  * Switch to using async/await directly instead of @coroutine/yield.
+  * Drop experimental support for credentials object: the corresponding 
+    ClientStorage.__init__ parameter credentials is retained but ignored. 
+    From now on ZEO supports authentication only via SSL certificates.
+  * Ensure test compatibility with both ZODB&lt;6 and ZODB&gt;=6 by looking for 
+    ZODB inherited tests with prefixes check (used by ZODB&lt;6) and test 
+    (used by ZODB&gt;=6)
+- Drop merged patches:
+  * python-ZEO-no-mock.patch
+  * python-ZEO-no-six.patch
+- Add patch skip-PackUndoLog.patch to skip test causing an error
+  * https://github.com/zopefoundation/ZEO/issues/240
+</comment>
+    <requestid>1160690</requestid>
+  </revision>
 </revisionlist>
