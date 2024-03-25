@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 23 10:33:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.175.0:
+  * Add release notes for v0.175.0 (#7669)
+  * Test Bottlerocket node upgrade and verify version
+  * Upgrade with explicit version if release version is up-to-date
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Sat Mar 16 14:13:14 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.174.0:
