@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 25 11:34:23 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- updated to 4.5.0 which has no functional changes to rc2
+- added fixed-ShimFind-for-aarch64.patch to fix (bsc#1221133)
+
+-------------------------------------------------------------------
+Fri Mar 22 20:23:04 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Allow to install dnsmasq as an alternative to dhcp-server.
+- Set minimum UID value for user UIDs to 1000 (boo#1221886).
+- Make dependencies warewulf package version dependent. This
+  helps to keep the resolver to mix different packages from
+  different versions.
+- On upgrade from older versions move files from
+  `/usr/share/warewulf/overlays/` to
+  `/var/lib/warewulf/overlays/*/rootfs/`
+  * Added: adjust_overlays.sh.
+
+-------------------------------------------------------------------
 Thu Feb 22 09:31:15 UTC 2024 - Christian Goll <cgoll@suse.com>
 
 - updated to 4.5.0rc2. This fixes:
@@ -10,11 +29,11 @@ Mon Feb 19 15:45:20 UTC 2024 - Christian Goll <cgoll@suse.com>
 
 - updated to 4.5.0rc1 from upstream with following change:
   * all overlays reside now under a `rootfs` diretory e.g.
-    the host overlays reside now under 
-    /var/lib/warewulf/host/rootfs
+    the host overlays reside now under
+    `/var/lib/warewulf/host/rootfs`
     This has the advantage that the `rootfs` can be under a version
     control, without the effect that the meta files e.g. `.git` will
-    show up in the rendered overlays
+    show up in the rendered overlays.
 - removed patches:
   * clean-warewulf-conf.patch
   * dnsmasq-template-move.patch

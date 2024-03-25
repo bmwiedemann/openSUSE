@@ -221,4 +221,12 @@
     network which isn't present on this node (bsc#1220189). (forwarded request 1153120 from mslacken)</comment>
     <requestid>1153121</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>33b391bc125846f60f9ad07e8b96f42f</srcmd5>
+    <version>4.5.0</version>
+    <time>1711397593</time>
+    <user>anag+factory</user>
+    <comment>without %{?rls_cnd} (forwarded request 1161449 from mslacken)</comment>
+    <requestid>1161450</requestid>
+  </revision>
 </revisionlist>

@@ -17,10 +17,6 @@
 
 
 %global vers 4.5.0
-%global rls_cndt rc2
-%if "0%{?rls_cndt}" != "0"
-%global rls_char ~
-%endif
 %global tftpdir /srv/tftpboot
 %global srvdir %{_sharedstatedir}
 #%%global githash 5b0de8ea5397ca42584335517fd4959d7ffe3da5
@@ -28,17 +24,19 @@
 ExclusiveArch:  x86_64 aarch64
 
 Name:           warewulf4
-Version:        %{vers}%{?rls_char}%{?rls_cndt}
+Version:        %{vers}
 Release:        0
 Summary:        A suite of tools for clustering
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/Computing
 URL:            https://warewulf.org
-Source0:        https://github.com/warewulf/warewulf/releases/download/v%{vers}%{?rls_cndt}/warewulf-%{vers}%{rls_cndt}.tar.gz#/warewulf4-v%{version}.tar.gz
+Source0:        https://github.com/warewulf/warewulf/releases/download/v%{vers}/warewulf-%{vers}.tar.gz#/warewulf4-v%{version}.tar.gz
 #Source1:        vendor.tar.gz
 Source5:        warewulf4-rpmlintrc
 Source10:       config-ww4.sh
+Source11:       adjust_overlays.sh
 Source20:       README.dnsmasq
+Patch01:        fixed-ShimFind-for-aarch64.patch
 
 # no firewalld in sle12
 %if 0%{?sle_version} >= 150000 || 0%{?suse_version} > 1500
@@ -58,10 +56,11 @@ BuildRequires:  pkgconfig(gpgme)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %sysusers_requires
 Requires:       %{name}-overlay = %{version}
-Requires:       dhcp-server
 Requires:       ipxe-bootimgs
 Requires:       pigz
 Requires:       tftp
+Requires:       ( dhcp-server or dnsmasq )
+Suggests:       dhcp-server
 Recommends:     bash-completion
 Recommends:     ipmitool
 Recommends:     nfs-kernel-server
@@ -77,7 +76,7 @@ manage thousands of compute resources.
 %package overlay
 # Smells like a circular dependcy, but needed in this case as the
 # files belong to the warewulf user
-Requires(pre):  %{name}
+Requires(pre):  %{name} = %version
 Summary:        Default overlay for warewulf
 Group:          Productivity/Clustering/Computing
 
@@ -85,7 +84,7 @@ Group:          Productivity/Clustering/Computing
 Includes the default overlays so that they can be updated seprately.
 
 %package api
-Requires:       %{name}
+Requires:       %{name} = %version
 Summary:        Contains the services for the warewulf rest API
 Conflicts:      warewulf-provision-x86_64-initramfs
 
@@ -94,9 +93,7 @@ Contains the binaries for the access of warewulf through a rest API and from
 the commandline from an external host.
 
 %package man
-Supplements:    %{name}
-Provides:       warewulf4-doc = %version
-Obsoletes:      warewulf4-doc < %version
+Supplements:    %{name} = %version
 Summary:        Warewulf4 Man Pages
 BuildArch:      noarch
 
@@ -108,7 +105,7 @@ Summary:        Configuration template for slurm
 Requires:       %{name} = %{version}
 Requires:       slurm
 BuildArch:      noarch
-Obsoletes:      warewulf4-slurm < 4.4.0
+Obsoletes:      warewulf4-slurm <= 4.4.0
 Provides:       warewulf4-slurm = %version
 
 %description overlay-slurm
@@ -116,7 +113,7 @@ This package install the necessary configuration files in order to run a slurm
 cluster on the configured warewulf nodes.
 
 %prep
-%setup -q -n warewulf-%{vers}%{rls_cndt}
+%setup -q -n warewulf-%{vers}
 %autopatch -p1
 # tar xzf %{S:1}
 
@@ -187,6 +184,8 @@ yq e '
   .["container mounts"] += {"source": "/etc/zypp/credentials.d/SCCcredentials", "dest": "/etc/zypp/credentials.d/SCCcredentials", "readonly": true}' \
   -i %{buildroot}%{_sysconfdir}/warewulf/warewulf.conf
 #sed -i -e 's@\(^\s*\)\(.*:.*\):@\1"\2":@' %%{buildroot}%%{_sysconfdir}/warewulf/warewulf.conf
+# SUSE starts user UIDs at 1000
+sed -i -e 's@\(.* \$_UID \(>\|-ge\) \)500\(.*\)@\11000\3@' %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/profile.d/ssh_setup.*sh
 # fix dhcp for SUSE
 mv %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/dhcp/dhcpd.conf.ww %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/dhcpd.conf.ww
 rmdir %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/dhcp
@@ -197,6 +196,7 @@ echo "g warewulf -" >> system-user-%{name}.conf
 %sysusers_generate_pre system-user-%{name}.conf %{name} system-user-%{name}.conf
 install -D -m 644 system-user-%{name}.conf %{buildroot}%{_sysusersdir}/system-user-%{name}.conf
 install -D -m 755 %{S:10} %{buildroot}%{_datadir}/warewulf/scripts/config-warewulf.sh
+install -D -m 755 %{S:11} %{buildroot}%{_datadir}/warewulf/scripts/%{basename:S:11}
 
 # get the slurm package ready
 mkdir -p %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/slurm
@@ -227,6 +227,9 @@ mv %{buildroot}/%{_sysconfdir}/warewulf/examples %{buildroot}%{_defaultdocdir}/%
 %postun
 %service_del_postun warewulfd.service
 
+%posttrans overlay
+%{_datadir}/warewulf/scripts/%{basename:S:11}
+
 %files
 %defattr(-,root,root)
 %doc README.md
@@ -242,6 +245,7 @@ mv %{buildroot}/%{_sysconfdir}/warewulf/examples %{buildroot}%{_defaultdocdir}/%
 %{_defaultdocdir}/%{name}/example-templates
 %{_prefix}/lib/firewalld/services/warewulf.xml
 %exclude %{_datadir}/warewulf/overlays
+%exclude %{_datadir}/warewulf/scripts/%{basename:S:11}
 %{_bindir}/wwctl
 %{_sbindir}/rcwarewulfd
 %{_unitdir}/warewulfd.service
@@ -267,6 +271,7 @@ mv %{buildroot}/%{_sysconfdir}/warewulf/examples %{buildroot}%{_defaultdocdir}/%
 %{_localstatedir}/lib/warewulf/overlays
 %dir %{_localstatedir}/lib/warewulf
 %config(noreplace) %{_localstatedir}/lib/warewulf/overlays
+%{_datadir}/warewulf/scripts/%{basename:S:11}
 %exclude %{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/slurm
 %exclude %{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/slurm
 %exclude %{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/munge
