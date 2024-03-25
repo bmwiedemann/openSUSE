@@ -343,4 +343,21 @@
   - Imported Translations from Zanata</comment>
     <requestid>1136730</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0d7153c38d631c0aa676550312c61e12</srcmd5>
+    <version>6.0.0</version>
+    <time>1711397463</time>
+    <user>anag+factory</user>
+    <comment>- update to version 6.0.0
+  - pre-commit: Integrate bandit
+  - Deprecate Windows support
+  - Display coverage report
+  - Drop fallback to DEFAULT section
+  - pre-commit: Bump versions
+  - Update python classifier in setup.cfg
+  - Update master for stable/2023.2
+  - Bump hacking
+  - Fix wrong stacklevel</comment>
+    <requestid>1161172</requestid>
+  </revision>
 </revisionlist>

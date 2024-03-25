@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 24 20:00:20 UTC 2024 - cloud-devel@suse.de
+
+- update to version 6.0.0
+  - pre-commit: Integrate bandit
+  - Deprecate Windows support
+  - Display coverage report
+  - Drop fallback to DEFAULT section
+  - pre-commit: Bump versions
+  - Update python classifier in setup.cfg
+  - Update master for stable/2023.2
+  - Bump hacking
+  - Fix wrong stacklevel
+
+-------------------------------------------------------------------
 Thu Jan  4 09:11:38 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.2.0
