@@ -76,4 +76,13 @@
 - Switch to pyproject macros.</comment>
     <requestid>1146988</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>dec30265f06755ae391b748b3c9020c5</srcmd5>
+    <version>0.25.1</version>
+    <time>1711397514</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pytest macro.
+- Limit to ffmpeg 5.</comment>
+    <requestid>1161235</requestid>
+  </revision>
 </revisionlist>

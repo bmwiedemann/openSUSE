@@ -29,15 +29,16 @@ Patch0:         skip_libopenh264-7.patch
 # PATCH-FIX-UPSTREAM gh#jiaaro/pydub#769
 Patch1:         fix-assertions.patch
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  ffmpeg
+BuildRequires:  ffmpeg-5
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module scipy if (%python-base without python36-base)}
 Recommends:     python-scipy
 Recommends:     python-simpleaudio
-Requires:       ffmpeg
+Requires:       ffmpeg-5
 BuildArch:      noarch
 
 %python_subpackages
@@ -57,7 +58,7 @@ A Python module to manipulate audio with a high level interface.
 
 %check
 export NO_OPENH264=1
-%pyunittest -v test.test
+%pytest test/test.py
 
 %files %{python_files}
 %license LICENSE
