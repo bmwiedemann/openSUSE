@@ -123,4 +123,24 @@
     <comment>    (bsc#1219614)</comment>
     <requestid>1144526</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>772453c5bc9641d2963762fc52d4ce22</srcmd5>
+    <version>0.10.0</version>
+    <time>1711397337</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.10.0:
+  Key encapsulation mechanisms:
+  - BIKE: Updated portable C implementation to include constant-time fixes from upstream.
+  - HQC: Updated to NIST Round 4 version.
+  - ML-KEM: Added portable C and AVX2 implementations of Initial Public Draft (IPD) versions of ML-KEM-512, ML-KEM-768, and ML-KEM-1024.
+  Digital signature schemes:
+  - Falcon: Updated portable C, AVX2, and AArch64 implementations to support fixed-length (PADDED-format) signatures. Fixed the maximum length of variable-length signatures to comply with the NIST Round 3 specification.
+  - ML-DSA: Added portable C and AVX2 implementations of Initial Public Draft (IPD) versions of ML-DSA-44, ML-DSA-65, and ML-DSA-87.
+  Other changes:
+  - Improved thread safety.
+  - Removed support for the &quot;NIST-KAT&quot; DRBG.
+  - Added extended KAT test programs.
+- library major version changed from 4 to 5 (forwarded request 1160954 from msmeissn)</comment>
+    <requestid>1160955</requestid>
+  </revision>
 </revisionlist>
