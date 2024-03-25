@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 23 21:52:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.37
+  * Fixed varying output from ``DisplayRwsRules``
+  * kan is now using ``PreImagesRepresentativeNC``
+
+-------------------------------------------------------------------
 Sat Nov 19 21:48:37 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.34
