@@ -78,7 +78,7 @@ BuildRequires:  %{ansible_python}-packaging >= 23.1
 BuildRequires:  %{ansible_python}-PyYAML >= 6.0.1
 BuildRequires:  %{ansible_python}-requests >= 2.31.0
 BuildRequires:  %{ansible_python}-rich >= 13.5.2
-BuildRequires:  %{ansible_python}-ruamel.yaml >= 0.17.31
+BuildRequires:  %{ansible_python}-ruamel.yaml >= 0.18.5
 BuildRequires:  %{ansible_python}-subprocess-tee >= 0.4.1
 BuildRequires:  %{ansible_python}-tenacity
 BuildRequires:  %{ansible_python}-wcmatch >= 8.4.1

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 16 16:26:34 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Require ruamel.yaml 0.18.5 like upstream specifies
+
+-------------------------------------------------------------------
 Sat Mar 16 14:20:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.2.1:
