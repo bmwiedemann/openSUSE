@@ -17,7 +17,7 @@
 
 
 Name:           python-opentelemetry-exporter-otlp
-Version:        1.22.0
+Version:        1.23.0
 Release:        0
 Summary:        OpenTelemetry Collector Exporters
 License:        Apache-2.0
@@ -27,12 +27,12 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module opentelemetry-exporter-otlp-proto-grpc == 1.22.0}
-BuildRequires:  %{python_module opentelemetry-exporter-otlp-proto-http == 1.22.0}
+BuildRequires:  %{python_module opentelemetry-exporter-otlp-proto-grpc == 1.23.0}
+BuildRequires:  %{python_module opentelemetry-exporter-otlp-proto-http == 1.23.0}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-opentelemetry-exporter-otlp-proto-grpc == 1.22.0
-Requires:       python-opentelemetry-exporter-otlp-proto-http == 1.22.0
+Requires:       python-opentelemetry-exporter-otlp-proto-grpc == 1.23.0
+Requires:       python-opentelemetry-exporter-otlp-proto-http == 1.23.0
 BuildArch:      noarch
 %python_subpackages
 
