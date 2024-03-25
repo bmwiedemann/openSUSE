@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 24 20:11:18 UTC 2024 - cloud-devel@suse.de
+
+- update to version 11.2.0
+  - reno: Update master for unmaintained/yoga
+  - Add note to prevent new features to be added (CLI and Python bindings)
+  - Bump hacking
+
+-------------------------------------------------------------------
 Sun Jan 14 18:00:26 UTC 2024 - cloud-devel@suse.de
 
 - update to version 11.1.0
