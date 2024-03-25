@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar 25 07:12:56 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- Update to version 0.12.0:
+  + Add support for Adw.AlertDialog
+  + Emit warnings for deprecated APIs
+  + Document symbols
+  + "Go to definition" (ctrl+click)
+  + Code action for "namespace not imported" diagnostics, that adds the
+    missing import
+  + Add a formatter - cli and lsp
+  + Support for translation domain
+  + Print code actions in error messages
+  + Add a header notice mentionning the file is generated
+  + decompiler: Use single quotes for output
+  + Fixed multine strings support with the escape newline character
+  + Fixed the signal completion, which was missing the "$"
+  + Fixed property value completion
+  + Added a missing semantic highlight (for the enum in Gtk.Scale marks)
+  + Handle big endian bitfields correctly
+  + Fix mixing relative and absolute paths
+
+-------------------------------------------------------------------
 Mon Dec 18 00:37:04 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Revert python3-gobject Requires: fix No module named 'gi'
