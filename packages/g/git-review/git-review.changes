@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Mar 24 13:27:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * It's patchset not patch set
+  * Add missing release notes and manpage updates
+  * Don't keep incomplete rebase state by default
+  * Test that the --version option returns something
+  * Vendor a copy of Gerrit's commit-msg Git hook
+  * Don't make hook script read-only
+  * Use importlib.metadata instead of pkg\_resources
+  * Fix flake8 issue
+  * Add classifiers for Python 3.10 and 3.11
+  * Add --wip as an alias to --work-in-progress
+  * Uncap test requirements
+  * Warn rather than fail if HEAD already exists on the remote
+  * Use GIT\_SSH for the SSH executable
+  * Test old and new Gerrit
+  * Test Python bounds only
+  * Switch from tox to nox
+  * Simplify test output strings for new Gerrit
+  * Upgrade testing to Gerrit 3.4.4
+  * Add message option
+  * Fix nodesets for tox jobs
+  * feat(cmd): add hashtag implementation
+  * Clarify that test rebases are not kept
+
+-------------------------------------------------------------------
 Mon May 22 10:16:17 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up the SPEC file.
@@ -7,7 +34,7 @@ Mon May 22 10:16:17 UTC 2023 - Matej Cepl <mcepl@suse.com>
 Sat Sep 24 09:01:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.1:
-  * Improved version string parsing for Git  
+  * Improved version string parsing for Git
 
 -------------------------------------------------------------------
 Tue Apr 19 05:41:47 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>

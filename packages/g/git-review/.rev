@@ -256,4 +256,36 @@
 </comment>
     <requestid>1088324</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7259f838dd38fb2c55141dd801af355f</srcmd5>
+    <version>2.4.0</version>
+    <time>1711397437</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.0:
+  * It's patchset not patch set
+  * Add missing release notes and manpage updates
+  * Don't keep incomplete rebase state by default
+  * Test that the --version option returns something
+  * Vendor a copy of Gerrit's commit-msg Git hook
+  * Don't make hook script read-only
+  * Use importlib.metadata instead of pkg\_resources
+  * Fix flake8 issue
+  * Add classifiers for Python 3.10 and 3.11
+  * Add --wip as an alias to --work-in-progress
+  * Uncap test requirements
+  * Warn rather than fail if HEAD already exists on the remote
+  * Use GIT\_SSH for the SSH executable
+  * Test old and new Gerrit
+  * Test Python bounds only
+  * Switch from tox to nox
+  * Simplify test output strings for new Gerrit
+  * Upgrade testing to Gerrit 3.4.4
+  * Add message option
+  * Fix nodesets for tox jobs
+  * feat(cmd): add hashtag implementation
+  * Clarify that test rebases are not kept
+
+  * Improved version string parsing for Git</comment>
+    <requestid>1161122</requestid>
+  </revision>
 </revisionlist>
