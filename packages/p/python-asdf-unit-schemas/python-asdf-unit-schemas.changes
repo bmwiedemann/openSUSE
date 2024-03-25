@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 24 11:25:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.2.0
+  * Remove duplicate unit manifests [#5]
+  * Increase setuptools version [#6]
+  * Decommission package [#34]
+
+-------------------------------------------------------------------
 Fri May 19 19:29:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add multibuild: avoid build cycle with python-asdf

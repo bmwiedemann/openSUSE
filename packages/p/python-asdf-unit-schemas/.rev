@@ -7,4 +7,15 @@
     <comment>Required by python-asdf 2.15</comment>
     <requestid>1087988</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4e69498cef2aa2322709f927eaba153b</srcmd5>
+    <version>0.2.0</version>
+    <time>1711397403</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.2.0
+  * Remove duplicate unit manifests [#5]
+  * Increase setuptools version [#6]
+  * Decommission package [#34]</comment>
+    <requestid>1161109</requestid>
+  </revision>
 </revisionlist>

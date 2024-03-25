@@ -1,7 +1,7 @@
 #
 # spec file for package python-asdf-unit-schemas
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,36 +25,36 @@
 %bcond_with test
 %endif
 
-
 Name:           python-asdf-unit-schemas%{psuffix}
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
-Summary:        ASDF schemas for units
+Summary:        DEPRECATED ASDF schemas for units
 License:        BSD-3-Clause
 URL:            https://github.com/asdf-format/asdf-unit-schemas
 Source:         https://files.pythonhosted.org/packages/source/a/asdf_unit_schemas/asdf_unit_schemas-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 42}
+BuildRequires:  %{python_module setuptools >= 60}
 BuildRequires:  %{python_module setuptools_scm >= 3.4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       (python-importlib_resources >= 3 if python-base < 3.9)
-Requires:       python-asdf-standard >= 1.0.1
 Provides:       python-asdf_unit_schemas = %{version}-%{release}
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module asdf >= 2.8.0}
-BuildRequires:  %{python_module asdf-astropy}
 BuildRequires:  %{python_module asdf-unit-schemas = %{version}}
+BuildRequires:  %{python_module asdf}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy}
 %endif
 %python_subpackages
 
 %description
-This package provides ASDF schemas for validating unit tags.
+This package is decommissioned and no longer provides any ASDF schemas.
+The schemas provided by the package were duplicates of the schemas provided by asdf-standard.
+
+This repository will be archived after a final release of this package (which will contain no schemas).
+
+(We provide it in openSUSE Tumbleweed as long as python3XX-asdf still nominally requires it)
 
 %prep
 %autosetup -p1 -n asdf_unit_schemas-%{version}
