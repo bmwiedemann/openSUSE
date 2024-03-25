@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:20:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.2:
+  * Using XML_PARSE_NODICT in xmlReadMemory() because of old
+    libxml2 versions which may cause segmentation faults.
+  * Fixed VoDZ service locator assignment for MEP and TOTP (SMS)
+    authentication methods.
+  * Fixed parsing of large (mainly VoDZ) ZFO files with recent
+    libxml2 versions.
+  * Using xmlReadMemory() with XML_PARSE_HUGE option set.
+
+-------------------------------------------------------------------
 Sat Jan  6 10:38:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.0:
