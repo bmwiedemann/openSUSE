@@ -322,4 +322,16 @@
   it's been disabled. (forwarded request 1152493 from eeich)</comment>
     <requestid>1152494</requestid>
   </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>ed83ceb8e1267a1960dcf0dae42dbaf6</srcmd5>
+    <version>14.0.0</version>
+    <time>1711397321</time>
+    <user>anag+factory</user>
+    <comment>- Fix dependency in module file for MPI version of Trilinos
+  to depend on the correct version of netcdf (bsc#1210049).
+  This prevents the error message:
+  &quot;Lmod has detected the following error: These module(s) or
+   extension(s) exist but cannot be loaded as requested: &quot;trilinos&quot;</comment>
+    <requestid>1160907</requestid>
+  </revision>
 </revisionlist>

@@ -57,7 +57,11 @@ Mon Jun 27 15:18:16 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Fix dependency settings: due to missing packages the macro
   %{req_equal} returned empty.
-- Fix HPC environment module dependency.
+- Fix dependency in module file for MPI version of Trilinos
+  to depend on the correct version of netcdf (bsc#1210049).
+  This prevents the error message:
+  "Lmod has detected the following error: These module(s) or
+   extension(s) exist but cannot be loaded as requested: "trilinos"
 
 -------------------------------------------------------------------
 Fri Apr  1 15:32:15 UTC 2022 - Egbert Eich <eich@suse.com>
