@@ -54,4 +54,16 @@
   - Moves supported python runtimes from version 3.8 to 3.10</comment>
     <requestid>1136701</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b6670c319d56da61f2f7cfc7126e0e4e</srcmd5>
+    <version>0.8.0</version>
+    <time>1711397466</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.8.0
+  - reno: Update master for unmaintained/yoga
+  - Bump hacking
+  - Update python classifier in setup.cfg
+  - Update master for stable/2023.2</comment>
+    <requestid>1161175</requestid>
+  </revision>
 </revisionlist>

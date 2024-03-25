@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 24 20:02:15 UTC 2024 - cloud-devel@suse.de
+
+- update to version 0.8.0
+  - reno: Update master for unmaintained/yoga
+  - Bump hacking
+  - Update python classifier in setup.cfg
+  - Update master for stable/2023.2
+
+-------------------------------------------------------------------
 Thu Jan  4 08:24:11 UTC 2024 - cloud-devel@suse.de
 
 - update to version 0.7.0
