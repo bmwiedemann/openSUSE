@@ -1,7 +1,7 @@
 #
 # spec file for package gap-repndecomp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-repndecomp
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        GAP: Decomposition of finite groups reprensentations into irreducibles
 License:        GPL-3.0-only
