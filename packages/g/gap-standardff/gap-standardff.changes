@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 23 22:06:43 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0
+  * Support the move of the code for ``Dlog`/``DLogShanks`` to the
+    GAP library.
+  * Changed ``AsVector`` to an attribute.
+
+-------------------------------------------------------------------
 Sun Feb 12 14:26:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 0.9.4) for build.opensuse.org
