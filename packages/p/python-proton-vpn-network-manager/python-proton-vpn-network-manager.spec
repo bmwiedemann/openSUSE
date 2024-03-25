@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-proton-vpn-network-manager
-Version:        0.3.3
+Version:        0.4.0
 Release:        0
 Summary:        Proton VPN library for NetworkManager
 License:        GPL-3.0-or-later
@@ -30,6 +30,8 @@ BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module proton-core}
 BuildRequires:  %{python_module proton-vpn-connection}
+BuildRequires:  %{python_module pycairo}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
@@ -41,6 +43,7 @@ Requires:       NetworkManager
 Requires:       python-gobject
 Requires:       python-proton-core
 Requires:       python-proton-vpn-connection
+Requires:       python-pycairo
 Conflicts:      python-protonvpn-nm-lib
 BuildArch:      noarch
 %python_subpackages
@@ -59,7 +62,9 @@ This package contains functionality for Proton VPN client to interact with Netwo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest tests
+# test case is broken
+# https://github.com/ProtonVPN/python-proton-vpn-network-manager/issues/2
+%pytest tests --deselect="tests/test_networkmanager.py::test_initialize_persisted_connection_determines_initial_connection_state"
 
 %files %{python_files}
 %license LICENSE
