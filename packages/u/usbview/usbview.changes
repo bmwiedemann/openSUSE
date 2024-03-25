@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 23 07:22:22 UTC 2024 - munix9@googlemail.com
+
+- Update to version 3.1:
+  * remove now-unnecessary policykit/pkexec support
+  * appstream metadata added
+  * gtk+ dark theme fixes
+  * gtk+ tooltip fixes
+
+-------------------------------------------------------------------
 Mon Jan 24 11:30:54 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop polkit (Build)Requires: without a polkit pkexec file, we

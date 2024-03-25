@@ -1,7 +1,7 @@
 #
 # spec file for package usbview
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           usbview
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        USB Topology and Device Viewer
 License:        GPL-2.0-only
@@ -40,8 +40,8 @@ a device is working properly.
 %setup -q
 
 %build
-sh autogen.sh
-%configure --disable-polkit
+./autogen.sh
+%configure
 
 %install
 %make_install
@@ -53,6 +53,7 @@ sh autogen.sh
 %{_bindir}/usbview
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/usbview.*
+%{_datadir}/metainfo/com.kroah.usbview.metainfo.xml
 %{_mandir}/man?/*.*
 
 %changelog
