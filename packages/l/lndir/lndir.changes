@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 25 02:07:17 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.5
+  * This release fixes a bug which could cause lndir to segfault
+    when a link includes a trailing slash.
+
+-------------------------------------------------------------------
 Mon Dec  5 10:46:05 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.4

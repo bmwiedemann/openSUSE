@@ -68,4 +68,14 @@
   * autogen.sh: use exec instead of waiting for configure to finish</comment>
     <requestid>1040229</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>784608ee93308334c3f6ea7db89f448c</srcmd5>
+    <version>1.0.5</version>
+    <time>1711397499</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.5
+  * This release fixes a bug which could cause lndir to segfault
+    when a link includes a trailing slash.</comment>
+    <requestid>1161219</requestid>
+  </revision>
 </revisionlist>
