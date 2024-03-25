@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 23 22:11:02 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.10.3
+  * InstallValue on types leads to incorrect behavior
+  * Corrected DehornoyClass
+  * Tests ideals of ideals
+  * Remove data for n=5 since Gcd(n,Phi(n))=1
+
+-------------------------------------------------------------------
 Sun Feb 12 21:19:51 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 0.10.2) for build.opensuse.org
