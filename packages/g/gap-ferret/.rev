@@ -15,4 +15,12 @@
     <comment>Drop config.log for reproducible builds (forwarded request 1136422 from bmwiedemann)</comment>
     <requestid>1136519</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ff240a6430fc2a2caee1ab4d9907a74e</srcmd5>
+    <version>1.0.10</version>
+    <time>1711397362</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.0.10</comment>
+    <requestid>1160998</requestid>
+  </revision>
 </revisionlist>
