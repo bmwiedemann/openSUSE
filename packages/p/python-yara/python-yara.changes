@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 21 10:06:16 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.5.0
+  * Tied to the changes in yara package itself.
+  * Backward incompatible changes to the yara-python API. Specifically, 
+    the strings field in the yara.Match object has changed from an array 
+    of tuples (<offset>, <string identifier>, <string data>) to an array 
+    of yara.StringMatch objects.
+
+-------------------------------------------------------------------
 Wed Aug 19 11:31:56 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to 4.0.2, tied to changes in yara package itself only

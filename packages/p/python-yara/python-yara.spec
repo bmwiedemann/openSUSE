@@ -1,7 +1,7 @@
 #
 # spec file for package python-yara
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-yara
-Version:        4.0.2
+Version:        4.5.0
 Release:        0
 Summary:        Python Bindings for YARA (from Virus Total)
 License:        Apache-2.0
@@ -53,6 +52,7 @@ YARA is a tool to identify and classify malware samples.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitearch}/*
+%{python_sitearch}/yara.cpython*.so
+%{python_sitearch}/yara_python-%{version}*-info
 
 %changelog
