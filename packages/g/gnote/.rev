@@ -789,4 +789,12 @@ Search-provider is now it's own subpackage (forwarded request 180587 from dimsta
     <comment>GNOME 46 (forwarded request 1158899 from dimstar)</comment>
     <requestid>1159430</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>196c43842dd12bfd48e988a6ede21aff</srcmd5>
+    <version>46.0</version>
+    <time>1711397597</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1161477</requestid>
+  </revision>
 </revisionlist>
