@@ -282,4 +282,21 @@
   - Update master for stable/zed</comment>
     <requestid>1135325</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>10eab013f2b40687d05d52cb2ab52e9c</srcmd5>
+    <version>3.3.0</version>
+    <time>1711397468</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.3.0
+  - Display coverage report
+  - add new kernel capabilities
+  - Update python classifier in setup.cfg
+  - Fix wrong path in coveragerc
+  - Bump bandit
+  - Update master for stable/2023.2
+  - Bump hacking
+  - reno: Update master for unmaintained/yoga
+  - fix broken links in readme</comment>
+    <requestid>1161177</requestid>
+  </revision>
 </revisionlist>

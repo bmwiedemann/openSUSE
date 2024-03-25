@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 24 20:03:04 UTC 2024 - cloud-devel@suse.de
+
+- update to version 3.3.0
+  - Display coverage report
+  - add new kernel capabilities
+  - Update python classifier in setup.cfg
+  - Fix wrong path in coveragerc
+  - Bump bandit
+  - Update master for stable/2023.2
+  - Bump hacking
+  - reno: Update master for unmaintained/yoga
+  - fix broken links in readme
+
+-------------------------------------------------------------------
 Wed Dec 27 14:37:50 UTC 2023 - cloud-devel@suse.de
 
 - update to version 3.2.0
