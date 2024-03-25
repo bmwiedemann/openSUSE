@@ -192,4 +192,14 @@
 - supersedes u_Add-check-for-max-HV-Value-to-ValidMode-hook.patch</comment>
     <requestid>1078237</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>cb20906eae02429356dfc368b8c41a09</srcmd5>
+    <version>2.4.1</version>
+    <time>1711397506</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.4.1
+  * This release fixes a failure to build with gcc 14 and cleans
+    up several other compiler warnings.</comment>
+    <requestid>1161228</requestid>
+  </revision>
 </revisionlist>

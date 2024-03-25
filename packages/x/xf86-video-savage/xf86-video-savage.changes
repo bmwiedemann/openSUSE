@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 25 02:39:42 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.4.1
+  * This release fixes a failure to build with gcc 14 and cleans
+    up several other compiler warnings.
+
+-------------------------------------------------------------------
 Mon Apr 10 08:29:28 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.4.0
