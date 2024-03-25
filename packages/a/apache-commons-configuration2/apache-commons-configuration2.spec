@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-configuration2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global base_name       configuration2
 %global short_name      commons-%{base_name}
 Name:           apache-commons-configuration2
-Version:        2.9.0
+Version:        2.10.1
 Release:        0
 Summary:        Java library providing a generic Configuration interface
 License:        Apache-2.0

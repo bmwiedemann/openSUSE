@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Mar 22 11:28:25 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to version 2.10.1
+  * Fixed Bugs:
+    + java.lang.module.FindException: Module servlet.api not found.
+      Fixes CONFIGURATION-839.
+    + StackOverflowError adding property in
+      AbstractListDelimiterHandler.flattenIterator(). Fixes
+      CONFIGURATION-840. (bsc#1221797, CVE-2024-29131)
+    + StackOverflowError calling
+      ListDelimiterHandler.flatten(Object, int) with a cyclical
+      object tree. Fixes CONFIGURATION-841. (bsc#1221793,
+      CVE-2024-29133)
+- Incldes changes from version 2.10.0
+  * New features:
+    +  [StepSecurity] ci: Harden GitHub Actions #307.
+    +  ConfirgurationPropertySource doesn't supply resolved values
+       #309. Fixes CONFIGURATION-834.
+    +  Take prefix delimiter into account when
+       SubsetConfiguration.getKeysInternal() is called #300.
+    +  Guard ConfigurationMap against null configuration #355.
+    +  Properties parser stack overflows on large single-key inputs
+       #369. Fixes CONFIGURATION-838.
+    +  DatabaseConfiguration.AbstractJdbcOperation.execute() throws
+       NullPointerException when no data source is set #368.
+  * Fixed Bugs:
+    +  Add AbstractConfiguration.getKeysInternal(String, String)
+       #300.
+    +  Add ImmutableConfiguration.getKeys(String, String) #300.
+    +  Add
+       PrefixedKeysIterator.PrefixedKeysIterator(Iterator<String%gt;,
+       String, String) #300.
+    +  Add Maven property project.build.outputTimestamp for build
+       reproducibility.
+    +  Guard PatternSubtreeConfigurationWrapper constructor against
+       null #365.
+
+-------------------------------------------------------------------
 Sat Sep 23 17:19:23 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.9
