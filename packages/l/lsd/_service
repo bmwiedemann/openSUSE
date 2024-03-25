@@ -1,26 +1,27 @@
 <?xml version="1.0"?>
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="filename">lsd</param>
     <param name="url">https://github.com/lsd-rs/lsd.git</param>
     <param name="scm">git</param>
     <param name="version">git-master</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v1.0.0</param>
+    <param name="revision">v1.1.1</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">disable</param>
     <param name="changesauthor">dead_mozay@opensuse.org</param>
   </service>
-  <service mode="disabled" name="set_version"/>
+  <service mode="manual" name="set_version"/>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="compression">gz</param>
     <param name="file">*.tar</param>
   </service>
-  <service name="cargo_vendor" mode="disabled">
+  <service name="cargo_vendor" mode="manual">
     <param name="srcdir">lsd</param>
+    <param name="update">true</param>
   </service>
-  <service name="cargo_audit" mode="disabled">
+  <service name="cargo_audit" mode="manual">
     <param name="srcdir">lsd</param>
   </service>
 </services>

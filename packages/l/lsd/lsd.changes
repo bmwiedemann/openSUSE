@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Mar 23 17:53:48 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.1.1:
+  *  Parse hex colors in themes.
+  * Add configuration and CLI options.
+  * Add support for --literal flag and literal entry in config.
+  * ✨ add disable option for permission.
+  * 🔨 🎨 put fish auto comp under vendor.
+  * Fix literal flag not being recognized from config file.
+  * add obj directory icon.
+  * add and improve icons.
+  * Adding some more icons for filenames and extensions.
+  * Add PRQL.
+  * Nim lang support.
+  * change neovim to proper icon.
+  * Add fennel support.
+  * Add icons for .apng and .avif.
+
+-------------------------------------------------------------------
 Mon Aug 28 03:22:01 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 1.0.0:

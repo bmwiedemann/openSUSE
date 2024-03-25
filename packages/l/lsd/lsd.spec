@@ -1,7 +1,7 @@
 #
 # spec file for package lsd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,24 @@
 #
 
 
-%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           lsd
-Version:        1.0.0
+Version:        1.1.1
 Release:        0
 Summary:        Ls command with a lot of pretty colors and some other stuff
 License:        Apache-2.0
 URL:            https://crates.io/crates/lsd
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 
 %description
 Ls command with a lot of pretty colors and some other stuff.
 
 %prep
-%setup -qa1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
+%autosetup -a1
 
 %build
-%cargo_build
+%{cargo_build} --all
 
 %install
 %cargo_install
