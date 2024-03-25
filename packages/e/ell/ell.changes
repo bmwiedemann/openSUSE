@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 23 06:13:32 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.63
+  * Fix issue with handling ending boundary of the PEM.
+
+-------------------------------------------------------------------
 Sat Feb 17 09:52:24 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.62
