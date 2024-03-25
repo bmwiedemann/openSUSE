@@ -1,7 +1,7 @@
 #
 # spec file for package gap-sco
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-sco
-Version:        2022.09.01
-%define sillyver 2022.09-01
+Version:        2023.08.01
+%define sillyver 2023.08-01
 Release:        0
 Summary:        GAP: Simplicial Cohomology of Orbifolds
 License:        GPL-2.0-only
@@ -27,9 +27,9 @@ URL:            https://homalg-project.github.io/pkg/SCO
 Source:         https://github.com/homalg-project/homalg_project/releases/download/SCO-%sillyver/SCO-%sillyver.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.11.1
+Requires:       gap-core >= 4.12.1
 Requires:       gap-gapdoc >= 1.0
-Requires:       gap-matricesforhomalg >= 2011.08.10
+Requires:       gap-matricesforhomalg >= 2023.08.01
 Requires:       gap-modules >= 2011.06.29
 
 %description
