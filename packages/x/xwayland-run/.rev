@@ -17,4 +17,18 @@
 - Refresh kwin support patch with final version</comment>
     <requestid>1138470</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5f17d00711ed5342e8308da6eeb7b149</srcmd5>
+    <version>0.0.3</version>
+    <time>1711397559</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.0.3
+  + Add support for using kwin
+  + Run mutter based compositors with their own DBUS session
+  + Create and export XDG_RUNTIME_DIR if needed
+  + Fix error message when xauth removed failed
+  + Warn if tempdir cannot be removed
+- Drop upstreamed patch: 0001-wlheadless-Add-support-for-kwin.patch</comment>
+    <requestid>1161392</requestid>
+  </revision>
 </revisionlist>

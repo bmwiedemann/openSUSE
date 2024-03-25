@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 25 12:58:00 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 0.0.3
+  + Add support for using kwin
+  + Run mutter based compositors with their own DBUS session
+  + Create and export XDG_RUNTIME_DIR if needed
+  + Fix error message when xauth removed failed
+  + Warn if tempdir cannot be removed
+- Drop upstreamed patch: 0001-wlheadless-Add-support-for-kwin.patch
+
+-------------------------------------------------------------------
 Sat Jan 13 14:02:24 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
 
 - Use the correct kwin package names

@@ -17,16 +17,13 @@
 
 
 Name:           xwayland-run
-Version:        0.0.2
+Version:        0.0.3
 Release:        0
 Summary:        Set of utilities to run headless X/Wayland clients
 
 License:        GPL-2.0-or-later
 URL:            https://gitlab.freedesktop.org/ofourdan/xwayland-run
 Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.gz
-
-# Backport from upstream
-Patch0001:      0001-wlheadless-Add-support-for-kwin.patch
 
 BuildArch:      noarch
 
