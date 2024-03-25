@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
 URL:            https://www.joachim-breitner.de/en/projects#screen-message
 Source:         https://github.com/nomeata/screen-message/archive/refs/tags/0.28.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE inst-dir.patch -- change paths to LSB
 Patch0:         inst-dir.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -36,8 +37,7 @@ Screen Message is a program to display a text as large as possible on
 the screen. The text can be edited while Screen Message is running.
 
 %prep
-%setup -q
-%patch 0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
