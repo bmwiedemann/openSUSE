@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyroma
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,36 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-pyroma
-Version:        3.1
+Version:        4.2
 Release:        0
-Summary:        Program to test a Python project's adherence to packaging guidelines
+Summary:        Test a Python project's adherence to packaging guidelines
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/regebro/pyroma
 Source:         https://files.pythonhosted.org/packages/source/p/pyroma/pyroma-%{version}.tar.gz
 BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module build >= 0.7}
 BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module trove-classifiers >= 2022.6}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pygments
+Requires:       python-build >= 0.7
 Requires:       python-docutils
-Requires:       python-setuptools
+Requires:       python-packaging
+Requires:       python-requests
+Requires:       python-setuptools >= 42
+Requires:       python-trove-classifiers >= 2022.6
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,17 +63,18 @@ well as a script, also called pyroma.
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pyroma
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
-%pyunittest discover -v
+# Requires network
+%pytest -k 'not (test_complete or test_distribute)'
 
 %post
 %python_install_alternative pyroma
@@ -73,8 +84,9 @@ export LANG=en_US.UTF-8
 
 %files %{python_files}
 %license LICENSE.txt
-%doc README.rst HISTORY.txt
+%doc README.rst CHANGES.txt
 %python_alternative %{_bindir}/pyroma
-%{python_sitelib}/*
+%{python_sitelib}/pyroma
+%{python_sitelib}/pyroma-%{version}.dist-info
 
 %changelog

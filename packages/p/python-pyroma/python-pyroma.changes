@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Mar 25 04:06:17 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.2:
+  * Fall back to installing project's build backend in an isolated
+    environment if a compatible version isn't installed in the current env
+  * Fix metadata extraction failure when project ``long_description`` is
+    included as a header rather than a payload in the ``METADTA`` file
+  * Add a fallback to restore compatibility with Setuptools <61
+  * Add ``python_requires``, update classifiers, add implicit dependencies
+    and remove unused deps in Pyroma's own packaging metadata
+  * Moved from a custom trove classifiers list to using the
+    trove-classifiers package
+  * Support checking the Requires-Python metadata
+  * Silence noisy build backend output when building metadata
+  * Official support for Python 3.11
+  * Some string formatting bugs
+  * Now follows black and flake8 rules
+  * Check if author_email field contains author name
+  * The deprecation test for test_suite is no longer needed, as the patched
+    setuptools method of gathering metadata as a whole is deprecated.
+  * `description_content_type` also needs a mapping in the metadata map.
+  * Added support for PEP517 by using `build` to build the metadata as a
+    preferred build method over the old patched setuptools method.
+  * Add a deprecation for `test_suite`
+  * Fixed __getattr__-related crash in tests with python3.7
+  * Added support for pre-commit
+  * Rewrote parts of the PyPI support, to avoid using the xmlrpc API,
+    since it's being heavily rate-limited at the moment. Only one call
+    is using it now, which seems to work fine.
+  * Backwards incompatible change: As a result of the above change, when
+    looking for packages on PyPI, the package name must now be spelled
+    exactly correct, including capitalization.
+  * Added --quiet option to output only the rating
+  * Pyroma is now an executable module, and can be called with
+    `python -m pyroma`
+- Switch to pyproject and pytest macros.
+- No more greedy globs in %files.
+- Remove a few unneeded words from the Summary.
+
+-------------------------------------------------------------------
 Fri May 28 08:31:34 UTC 2021 - pgajdos@suse.com
 
 - version update to 3.1
