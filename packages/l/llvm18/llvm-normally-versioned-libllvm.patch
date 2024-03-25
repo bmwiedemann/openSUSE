@@ -51,17 +51,16 @@ Index: llvm-8.0.0rc3.src/tools/llvm-config/llvm-config.cpp
  
    // If LLVM_LINK_DYLIB is ON, the single shared library will be returned
    // for "--libs", etc, if they exist. This behaviour can be overridden with
-Index: llvm-18.1.0rc4.src/tools/llvm-shlib/CMakeLists.txt
+Index: llvm-18.1.2.src/tools/llvm-shlib/CMakeLists.txt
 ===================================================================
---- llvm-18.1.0rc4.src.orig/tools/llvm-shlib/CMakeLists.txt
-+++ llvm-18.1.0rc4.src/tools/llvm-shlib/CMakeLists.txt
-@@ -34,9 +34,6 @@ if(LLVM_BUILD_LLVM_DYLIB)
-     set(INSTALL_WITH_TOOLCHAIN INSTALL_WITH_TOOLCHAIN)
+--- llvm-18.1.2.src.orig/tools/llvm-shlib/CMakeLists.txt
++++ llvm-18.1.2.src/tools/llvm-shlib/CMakeLists.txt
+@@ -37,8 +37,6 @@ if (WIN32)
+     add_llvm_library(LLVM SHARED DISABLE_LLVM_LINK_LLVM_DYLIB SONAME ${INSTALL_WITH_TOOLCHAIN} ${SOURCES})
+   else()
+     add_llvm_library(LLVM SHARED DISABLE_LLVM_LINK_LLVM_DYLIB OUTPUT_NAME LLVM ${INSTALL_WITH_TOOLCHAIN} ${SOURCES})
+-    # Add symlink for backwards compatibility with old library name
+-    llvm_install_library_symlink(LLVM-${LLVM_VERSION_MAJOR}${LLVM_VERSION_SUFFIX} $<TARGET_FILE_NAME:LLVM> SHARED FULL_DEST COMPONENT LLVM)
    endif()
-   add_llvm_library(LLVM SHARED DISABLE_LLVM_LINK_LLVM_DYLIB OUTPUT_NAME LLVM ${INSTALL_WITH_TOOLCHAIN} ${SOURCES})
--  # Add symlink for backwards compatibility with old library name
--  get_target_property(LLVM_DYLIB_SOVERSION LLVM SOVERSION)
--  llvm_install_library_symlink(LLVM-${LLVM_VERSION_MAJOR}${LLVM_VERSION_SUFFIX} LLVM SHARED COMPONENT LLVM SOVERSION ${LLVM_DYLIB_SOVERSION})
  
    list(REMOVE_DUPLICATES LIB_NAMES)
-   if("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")

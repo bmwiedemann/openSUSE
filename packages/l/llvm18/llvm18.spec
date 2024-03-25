@@ -19,7 +19,7 @@
 %global _sonum  18
 %global _minor  %{_sonum}.1
 %global _soname %{_minor}%{?_sosuffix}
-%global _patch_level 1
+%global _patch_level 2
 %global _relver %{_minor}.%{_patch_level}
 %global _version %_relver%{?_rc:rc%_rc}
 %global _tagver %_relver%{?_rc:-rc%_rc}
@@ -41,7 +41,8 @@
 %bcond_with openmp
 %endif
 
-%ifarch riscv64 s390x
+# Prefer ld.bfd for now because it produces a THP-compatible section layout.
+%ifnarch %{arm}
 %bcond_with use_lld
 %else
 %bcond_without use_lld

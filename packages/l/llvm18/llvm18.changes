@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 23 22:47:43 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 18.1.2.
+  * This release contains bug-fixes for the LLVM 18.1.0 release.
+    This release is API and ABI compatible with 18.1.0.
+- Rebase patches:
+  * llvm-do-not-install-static-libraries.patch
+  * llvm-normally-versioned-libllvm.patch
+- Prefer ld.bfd for now to get THP-compatible section layout.
+
+-------------------------------------------------------------------
 Sat Mar  9 22:37:29 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 18.1.1.
