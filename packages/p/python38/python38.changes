@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 24 00:43:14 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add old-libexpat.patch making the test suite work with
+  libexpat < 2.6.0 (gh#python/cpython#117187).
+
+-------------------------------------------------------------------
 Thu Mar 21 20:29:12 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.8.19:

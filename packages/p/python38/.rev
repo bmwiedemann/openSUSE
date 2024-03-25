@@ -849,4 +849,14 @@ Core and Builtins
       when a certification verification has failed, but</comment>
     <requestid>1160582</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>d4cc28539c1ca8b6cdfcd652255a0712</srcmd5>
+    <version>3.8.19</version>
+    <time>1711397392</time>
+    <user>anag+factory</user>
+    <comment>- Add old-libexpat.patch making the test suite work with
+  libexpat &lt; 2.6.0 (gh#python/cpython#117187).
+</comment>
+    <requestid>1161073</requestid>
+  </revision>
 </revisionlist>

@@ -183,6 +183,9 @@ Patch41:        99366-patch.dict-can-decorate-async.patch
 # Detect email address parsing errors and return empty tuple to
 # indicate the parsing error (old API), from gh#python/cpython!105127
 Patch42:        CVE-2023-27043-email-parsing-errors.patch
+# PATCH-FIX-UPSTREAM old-libexpat.patch gh#python/cpython#117187 mcepl@suse.com
+# Make the test suite work with libexpat < 2.6.0
+Patch43:        old-libexpat.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -455,6 +458,7 @@ other applications.
 %patch -P 38 -p1
 %patch -P 41 -p1
 %patch -P 42 -p1
+%patch -P 43 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
