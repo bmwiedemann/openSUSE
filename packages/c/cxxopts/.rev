@@ -32,4 +32,22 @@
     short name.</comment>
     <requestid>1077876</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3da0648ad61303bf94a069f6c43e574b</srcmd5>
+    <version>3.2.1</version>
+    <time>1711397435</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.1:
+  * Fix compilation with optional on C++20.
+  * Fix unannotated fallthrough.
+  * Fix sign conversion with Unicode output.
+  * Don't initialize regex in static initialiser.
+  * Fix incorrect integer overflow checks.
+  * Change quote output to '' to match Windows.
+  * Don't split positional arguments by the list delimiter.
+  * Order help groups by the order they were added.
+
+    short name.</comment>
+    <requestid>1161126</requestid>
+  </revision>
 </revisionlist>

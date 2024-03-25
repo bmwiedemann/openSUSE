@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 24 13:35:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.1:
+  * Fix compilation with optional on C++20.
+  * Fix unannotated fallthrough.
+  * Fix sign conversion with Unicode output.
+  * Don't initialize regex in static initialiser.
+  * Fix incorrect integer overflow checks.
+  * Change quote output to '' to match Windows.
+  * Don't split positional arguments by the list delimiter.
+  * Order help groups by the order they were added.
+
+-------------------------------------------------------------------
 Fri Apr  7 12:41:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.1:
@@ -10,7 +23,7 @@ Fri Apr  7 12:41:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Added iterator and printing for a ParseResult.
   * Cleanup exception code, add cxxopts::exceptions namespace.
   * Fix `arguments()` having no key for options that only have a
-    short name. 
+    short name.
 
 -------------------------------------------------------------------
 Fri Oct 14 10:04:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
