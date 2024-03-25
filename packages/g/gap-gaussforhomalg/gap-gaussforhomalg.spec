@@ -1,7 +1,7 @@
 #
 # spec file for package gap-gaussforhomalg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-gaussforhomalg
-Version:        2022.08.03
-%define sillyver 2022.08-03
+Version:        2023.11.01
+%define sillyver 2023.11-01
 Release:        0
 Summary:        GAP: Gauss Functionality for homalg
 License:        GPL-2.0-only
@@ -31,7 +31,8 @@ BuildRequires:  gap-rpm-devel
 Requires:       gap-core >= 4.11.1
 Requires:       gap-gapdoc >= 1.0
 Requires:       gap-gauss >= 2021.04.01
-Requires:       gap-matricesforhomalg >= 2021.04.02
+Requires:       gap-matricesforhomalg >= 2023.10.01
+Requires:       gap-toolsforhomalg >= 2023.11.01
 
 %description
 The GaussForHomalg package links the homalg package together with the
