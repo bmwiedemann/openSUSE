@@ -62,4 +62,13 @@
     * when calling get_query_metadata()</comment>
     <requestid>1143990</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a736ad54337852fd93b354cfc25ad976</srcmd5>
+    <version>0.5.2</version>
+    <time>1711397562</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.2:
+  * Add json_to_csv converter</comment>
+    <requestid>1161395</requestid>
+  </revision>
 </revisionlist>
