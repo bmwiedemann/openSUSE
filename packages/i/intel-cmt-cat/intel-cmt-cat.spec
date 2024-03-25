@@ -22,7 +22,7 @@
 %define libpqosMajor 5
 %global make_flags EXTRA_CFLAGS="%{optflags}" SHARED=y PREFIX=%{buildroot}/%{_prefix} MAN_DIR=%{buildroot}/%{_mandir}/man8 LIB_INSTALL_DIR=%{buildroot}%{_libdir}/
 Name:           intel-cmt-cat
-Version:        5.0.0.6.git+14e3840
+Version:        5.0.0.10.git+b26b31b
 Release:        0
 Summary:        Command line interface to CMT, MBM, CAT and CDP technologies
 License:        BSD-3-Clause
@@ -31,6 +31,8 @@ URL:            https://github.com/01org/%{name}
 Source0:        %{name}-%{version}.tar.xz
 #Source0:        https://github.com/intel/intel-cmt-cat/archive/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
 Patch1:         fix-bad-env-shebang.patch
+Patch2:         Remove-fcf-protection-full.patch
+Patch3:         remove_gcc_check
 BuildRequires:  doxygen
 ExclusiveArch:  x86_64 %{ix86}
 

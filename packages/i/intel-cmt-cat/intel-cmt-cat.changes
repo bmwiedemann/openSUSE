@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 12 09:43:42 UTC 2024 - trenn@suse.de
+
+- Update to version 5.0.0.10.git+b26b31b:
+  * Pinned-Dependencies are modified
+  * appqos_client: update ip package version
+  * appqos_client: update version to 1.1.1
+  * Add compiler version checkings during build process
+- Remove problematic fcf-protection gcc flag
+  We currently build 32 bit flavors with -march=i586 where this
+  compiler flag is not supported. Also some build envs still have gcc
+  versions not supporting this feature. Unfortunately mainline seem not
+  to be willing to remove the flag:
+  https://github.com/intel/intel-cmt-cat/pull/267
+A Remove-fcf-protection-full.patch
+- Remove gcc version check in general, if the tool is compiling it's expected
+  to work, if extra flags unkown to the compiler are used the build will fail.
+A remove_gcc_check
+
+-------------------------------------------------------------------
 Mon Feb 12 08:11:04 UTC 2024 - trenn@suse.de
 
 - Update to version 5.0.6.git+14e3840:
