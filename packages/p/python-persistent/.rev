@@ -201,4 +201,12 @@
     the Python version can now run the complete ZODB and ZEO test</comment>
     <requestid>1137436</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>773ac5ea746d9f314efbcd27edbf501e</srcmd5>
+    <version>5.2</version>
+    <time>1711397210</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1160903</requestid>
+  </revision>
 </revisionlist>

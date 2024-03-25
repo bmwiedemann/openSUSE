@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-persistent
-Version:        5.1
+Version:        5.2
 Release:        0
 Summary:        Translucent persistent objects
 License:        ZPL-2.1
