@@ -1,7 +1,7 @@
 #
 # spec file for package gap-homalg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gap-homalg
-Version:        2022.11.01
-%define sillyver 2022.11-01
+Version:        2024.01.01
+%define sillyver 2024.01-01
 Release:        0
 Summary:        GAP: A homological algebra meta-package for computable Abelian categories
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Scientific/Math
 URL:            https://homalg-project.github.io/pkg/homalg
 #Git-Clone:	https://github.com/homalg-project/homalg_project
 Source:         https://github.com/homalg-project/homalg_project/releases/download/homalg-%sillyver/homalg-%sillyver.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.11.1
+Requires:       gap-core >= 4.12.1
 Requires:       gap-gapdoc >= 1.0
 Requires:       gap-toolsforhomalg >= 2012.10.27
 
