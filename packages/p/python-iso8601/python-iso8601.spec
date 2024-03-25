@@ -1,7 +1,7 @@
 #
 # spec file for package python-iso8601
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-iso8601
-Version:        1.1.0
+Version:        2.1.0
 Release:        0
 Summary:        Python module to parse ISO 8601 dates
 License:        MIT
@@ -28,9 +26,11 @@ Group:          Development/Languages/Python
 URL:            https://github.com/micktwomey/pyiso8601
 Source:         https://files.pythonhosted.org/packages/source/i/iso8601/iso8601-%{version}.tar.gz
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest >= 2.4.2}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -44,10 +44,10 @@ This module parses the most common forms of ISO 8601 date strings (e.g.
 %setup -q -n iso8601-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +57,6 @@ This module parses the most common forms of ISO 8601 date strings (e.g.
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/iso8601
-%{python_sitelib}/iso8601-%{version}*-info
+%{python_sitelib}/iso8601-%{version}.dist-info
 
 %changelog

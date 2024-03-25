@@ -215,4 +215,20 @@ https://build.opensuse.org/package/show?package=openstack-nova&amp;project=Virtu
     <comment></comment>
     <requestid>1081480</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6eccbdeb35e7cd16a46bf0da50694057</srcmd5>
+    <version>2.1.0</version>
+    <time>1711397221</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.0:
+  * Use ruff for linting
+- update to 2.0.0:
+  * Add Python 3.12 support
+  * Fix test_fixedoffset_eq by adding an actual assertion
+  * Drop Python 3.6 support (3.6 is end of life)
+
+  * Fix parsing of microseconds
+- Added .changes file</comment>
+    <requestid>1161090</requestid>
+  </revision>
 </revisionlist>

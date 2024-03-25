@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 24 08:51:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Use ruff for linting
+- update to 2.0.0:
+  * Add Python 3.12 support
+  * Fix test_fixedoffset_eq by adding an actual assertion
+  * Drop Python 3.6 support (3.6 is end of life)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:27:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -55,7 +65,7 @@ Thu Feb 18 21:45:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Add Python 3.9 to test matrix (thanks to Luciano Mammino)
   * Add type hints (thanks to Brett Cannon)
   * Derive `ParseError` from `ValueError` (thanks to Lex Robinson)
- 
+
 -------------------------------------------------------------------
 Mon Sep 28 11:18:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
@@ -137,7 +147,7 @@ Fri Oct 25 12:43:53 UTC 2013 - dmueller@suse.com
 
 - update to 0.1.8:
   * Remove +/- chars from README.rst and ensure tox tests run using LC_ALL=C.
-  * Fix parsing of microseconds 
+  * Fix parsing of microseconds
   * Correct negative timezone offsets
   * Wow, it's alive! First update since 2007
   * Moved over to https://bitbucket.org/micktwomey/pyiso8601
@@ -170,5 +180,5 @@ Mon May 31 07:24:48 UTC 2010 - toms@suse.de
 - Fixed Group: Development/Libraries/Python to make it consistent
   with other Python packages
 - Added copyright notice
-- Added .changes file 
+- Added .changes file
 
