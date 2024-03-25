@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 22 20:58:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.4:
+  * readd entrypoints for old style sources
+  * Fix "plugins" in old catalogs
+
+-------------------------------------------------------------------
 Wed Mar 13 13:29:44 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Don't try to build with Python 3.9
@@ -64,7 +71,7 @@ Wed Apr 12 01:28:35 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
   * editable plots, based on hvPlot's "explorer"
   * remove "text" input to YAMLFileCatalog
   * GUI bug fixes
-  * allow catalog TTL as None 
+  * allow catalog TTL as None
 - Add patch use-sys-executable.patch:
   * Use sys.executable, rather than hardcoding python.
 
@@ -133,7 +140,7 @@ Thu Jan 30 19:12:57 UTC 2020 - Todd R <toddrme2178@gmail.com>
 - Update to 0.5.4
   * Allow for hvplot returning dynamic layouts
   * Make sure that ttl is numeric
-  * add intake-nested-yaml-catalog plugin 
+  * add intake-nested-yaml-catalog plugin
   * check_meta_flag -> verify_meta
   * forgot to add pickle & json
   * fix dask version constraint
@@ -161,7 +168,7 @@ Tue Nov 19 20:55:21 UTC 2019 - Todd R <toddrme2178@gmail.com>
   * Don't necessarily pass storage_options
   * fix with test
   * Add setup entrypoints for drivers and tidy CLI
-  * Don't warn twice 
+  * Don't warn twice
   * Add drivers CLI test
   * update test
   * Add a load of tests
@@ -174,7 +181,7 @@ Tue Nov 19 20:55:21 UTC 2019 - Todd R <toddrme2178@gmail.com>
   * Fixes on URLs
   * one remaining dask.bytes
   * Test basic passing on of filesystems
-  * Pass filesystem stuff through 
+  * Pass filesystem stuff through
   * Merge branch 'master' into fs
   * Remove unused import.
   * Refine temp_config_path fixutre.
@@ -233,7 +240,7 @@ Tue Nov 19 20:55:21 UTC 2019 - Todd R <toddrme2178@gmail.com>
   * Change API
   * WIP: is this the right add source API?
   * copy is_dataframe_like
-  * add to API docs 
+  * add to API docs
   * Add uppload function and machinery
   * explicit reference to nested cats in conda packages
   * Update talks

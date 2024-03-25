@@ -152,4 +152,20 @@
 </comment>
     <requestid>1157617</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8f79c90d945e102d32546258ce0fd257</srcmd5>
+    <version>2.0.4</version>
+    <time>1711397283</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.4:
+  * readd entrypoints for old style sources
+  * Fix &quot;plugins&quot; in old catalogs
+
+  * allow catalog TTL as None
+  * add intake-nested-yaml-catalog plugin
+  * Don't warn twice
+  * Pass filesystem stuff through
+  * add to API docs</comment>
+    <requestid>1160839</requestid>
+  </revision>
 </revisionlist>
