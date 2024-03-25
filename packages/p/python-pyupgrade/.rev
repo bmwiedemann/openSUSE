@@ -513,4 +513,13 @@
   * handle constant folding with comments on multilines better</comment>
     <requestid>1160038</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a947f8ca57f6f5dfc95f10d5a28eaeed</srcmd5>
+    <version>3.15.2</version>
+    <time>1711397561</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.15.2:
+  * only replace to shlex.join if joined with a space</comment>
+    <requestid>1161394</requestid>
+  </revision>
 </revisionlist>
