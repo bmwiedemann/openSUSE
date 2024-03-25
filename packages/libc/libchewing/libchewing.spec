@@ -1,7 +1,7 @@
 #
 # spec file for package libchewing
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -161,11 +161,13 @@ popd
 
 %post -n %{name}%{soname}
 /sbin/ldconfig
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %postun -n %{name}%{soname} -p /sbin/ldconfig
 
-%preun -n %{name}%{soname}
+%post -n %{name}-devel
+%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
+
+%preun -n %{name}-devel
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %files -n %{name}%{soname}

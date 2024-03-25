@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 24 12:41:03 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- move the %install_info macros to the subpackage where they belong
+
+-------------------------------------------------------------------
 Tue Nov  7 08:51:21 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer
