@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar 24 11:06:11 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.48
+  * Times now support the ``<`` operator, so Python can sort them.
+  * For convenience, geoids like :data:`~skyfield.toposlib.wgs84`
+    have a new attribute
+    :data:`~skyfield.toposlib.Geoid.polar_radius`.
+  * You can no longer subtract two positions unless they have the
+    same ``.center``.  Otherwise, a ``ValueError`` is raised.  This
+    check has always been performed when you subtract vector
+    functions, but it was missing from the position subtraction
+    routine.
+  * On days that the Sun fails to rise and set in the Arctic and
+    Antarctic, the new rising and setting routines now correctly
+    set the value ``False`` not only for sunrise but also for
+    sunset.
+- Reenable Python 3.12 testing with a new assay
+
+-------------------------------------------------------------------
 Sun Feb  4 11:12:44 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.47

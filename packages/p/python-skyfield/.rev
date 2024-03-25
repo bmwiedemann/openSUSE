@@ -349,4 +349,27 @@ research-grade positions for planets and Earth satellites.</comment>
 - Skip testing python312: gh#brandon-rhodes/assay#15 still an issue</comment>
     <requestid>1143991</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>181e8ff7acc5bcd0f78f2101c8636db4</srcmd5>
+    <version>1.48</version>
+    <time>1711397536</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.48
+  * Times now support the ``&lt;`` operator, so Python can sort them.
+  * For convenience, geoids like :data:`~skyfield.toposlib.wgs84`
+    have a new attribute
+    :data:`~skyfield.toposlib.Geoid.polar_radius`.
+  * You can no longer subtract two positions unless they have the
+    same ``.center``.  Otherwise, a ``ValueError`` is raised.  This
+    check has always been performed when you subtract vector
+    functions, but it was missing from the position subtraction
+    routine.
+  * On days that the Sun fails to rise and set in the Arctic and
+    Antarctic, the new rising and setting routines now correctly
+    set the value ``False`` not only for sunrise but also for
+    sunset.
+- Reenable Python 3.12 testing with a new assay
+</comment>
+    <requestid>1161329</requestid>
+  </revision>
 </revisionlist>

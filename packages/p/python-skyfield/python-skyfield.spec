@@ -16,10 +16,10 @@
 #
 
 
-%define assaycommit bb62d1f7d51d798b05a88045fff3a2ff92c299c3
-%define assayver    264.bb62d1f
+%define assaycommit 74617d70e77afa09f58b3169cf496679ac5d5621
+%define assayver    288.74617d7
 Name:           python-skyfield
-Version:        1.47
+Version:        1.48
 Release:        0
 Summary:        Elegant astronomy for Python
 License:        MIT
@@ -33,7 +33,8 @@ Source4:        https://ssd.jpl.nasa.gov/ftp/eph/planets/bsp/de405.bsp
 Source5:        https://ssd.jpl.nasa.gov/ftp/eph/planets/bsp/de421.bsp
 # use generate-hipparcos.sh to download and truncate the test data
 Source6:        hip_main.dat.gz
-Source7:        https://datacenter.iers.org/data/9/finals2000A.all
+# This is not static. Download manually https://datacenter.iers.org/data/9/finals2000A.all
+Source7:        finals2000A.all
 # Original with invalid https certificate or http url: http://astro.ukho.gov.uk/nao/lvm/Table-S15.2020.txt
 Source8:        https://github.com/skyfielders/python-skyfield/raw/%{version}/Table-S15.2020.txt
 Source9:        https://github.com/skyfielders/python-skyfield/raw/%{version}/ci/tyc_main_head.dat
@@ -88,14 +89,7 @@ export SKYFIELD_USE_SETUPTOOLS=1
 
 %check
 export PYTHONPATH="../assay-%{assaycommit}"
-%{python_expand #
-if [ %{$python_version_nodots} -lt 311 ]; then
-  $python -m assay --batch skyfield.tests
-else
-  # assay not compatible, at least test that we import. gh#brandon-rhodes/assay#15
-  $python -c 'import skyfield'
-fi
-}
+%python_exec -m assay --batch skyfield.tests
 
 %files %{python_files}
 %doc README.rst
