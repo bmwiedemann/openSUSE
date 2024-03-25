@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 18 16:28:48 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.1.2:
+  * Bugfixes
+    - Adjust molecule command from cmdline (#254) @cristianonicolai
+
+-------------------------------------------------------------------
 Wed Jan 10 19:35:29 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.1.1:
