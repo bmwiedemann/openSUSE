@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 25 07:45:19 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.3.7:
+  * Fix: exclude multi  (#228)
+  * Fixed GetUnusedAll() JSON concatenation (#227)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.29.2 to
+    0.29.3 (#222)
+  * fix: ClusterRole Aggregation (#221)
+  * feat: unused StorageClasses (#216)
+  * chore(deps): bump github.com/prometheus/client_golang (#217)
+
+-------------------------------------------------------------------
 Sat Mar 16 14:00:04 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.3.6:
