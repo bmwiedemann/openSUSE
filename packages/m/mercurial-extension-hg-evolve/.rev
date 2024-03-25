@@ -66,4 +66,12 @@
     <comment>Update to version 11.1.0 (forwarded request 1120131 from develop7)</comment>
     <requestid>1120132</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9e343527bb58662b128155d27c589b4a</srcmd5>
+    <version>11.1.2</version>
+    <time>1711397258</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1160766</requestid>
+  </revision>
 </revisionlist>
