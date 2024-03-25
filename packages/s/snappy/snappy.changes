@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 25 11:34:39 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix build with GTest 1.14.0 by using C++14, bsc#1221872
+
+-------------------------------------------------------------------
 Fri Nov 10 13:54:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.10:

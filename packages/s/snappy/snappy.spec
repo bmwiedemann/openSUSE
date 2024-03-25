@@ -1,7 +1,7 @@
 #
 # spec file for package snappy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,7 +74,7 @@ This package holds the development files for snappy.
 %autosetup
 
 %build
-%cmake -DSNAPPY_USE_BUNDLED_GTEST=OFF -DSNAPPY_USE_BUNDLED_BENCHMARK_LIB=OFF
+%cmake -DSNAPPY_USE_BUNDLED_GTEST=OFF -DSNAPPY_USE_BUNDLED_BENCHMARK_LIB=OFF -DCMAKE_CXX_STANDARD=14
 %make_build
 
 %install
