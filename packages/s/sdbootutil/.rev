@@ -165,4 +165,13 @@
   * Revert &quot;Remove GRUB2 package conflict&quot; (forwarded request 1159806 from lnussel)</comment>
     <requestid>1159807</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7132df84928243922d383d9a13e444d1</srcmd5>
+    <version>1+git20240321.04bfbac</version>
+    <time>1711397234</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1+git20240321.04bfbac:
+  * Warning if make-policy do not register all PCRs (forwarded request 1161327 from lnussel)</comment>
+    <requestid>1161328</requestid>
+  </revision>
 </revisionlist>

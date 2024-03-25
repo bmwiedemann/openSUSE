@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 21 13:50:54 UTC 2024 - lnussel@suse.com
+
+- Update to version 1+git20240321.04bfbac:
+  * Warning if make-policy do not register all PCRs
+
+-------------------------------------------------------------------
 Wed Mar 20 10:02:58 UTC 2024 - lnussel@suse.com
 
 - Update to version 1+git20240320.8b35615:
