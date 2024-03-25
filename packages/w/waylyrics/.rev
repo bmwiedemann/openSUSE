@@ -156,4 +156,32 @@ The upstream has developed for a long time and waylyrics has been stable, althou
   * docs(install): show packaging status</comment>
     <requestid>1154232</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c7d54309563f5f80a6c15a48f944187c</srcmd5>
+    <version>0.2.13</version>
+    <time>1711397311</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.2.13:
+  * chore: release v0.2.13
+  * feat: blacklist players by name/identity
+  * build(dep): update reqwest to 0.12
+  * feat: fix secondary lyric will not end
+  * build(deps): bump mio from 0.8.10 to 0.8.11
+  * revert: &quot;Update README.md&quot;
+  * Update README.md
+  * refactor: use builder api in widget setup
+  * feat: add theme no-background [ci skip]
+  * docs(readme): intro listen1 [ci skip]
+  * docs(readme): complain some bad support [ci skip]
+  * docs(readme): list recommended players in chart [ci skip]
+  * refactor: remove repeated bind-shortcut code
+  * chore: fix missing bracket
+  * refactor: do not set display mode manually
+  * enhance: replace extension with PathBuf::set_extension
+  * refactor: implement Debug for dyn LyricProvider
+  * refactor: remove unneeded player_meta helper
+  * docs(changelog): update changelog
+  * feat: select labels by origin/translation in theme</comment>
+    <requestid>1160863</requestid>
+  </revision>
 </revisionlist>

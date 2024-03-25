@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Mar 23 05:29:29 UTC 2024 - xtexchooser@duck.com
+
+- Update to version 0.2.13:
+  * chore: release v0.2.13
+  * feat: blacklist players by name/identity
+  * build(dep): update reqwest to 0.12
+  * feat: fix secondary lyric will not end
+  * build(deps): bump mio from 0.8.10 to 0.8.11
+  * revert: "Update README.md"
+  * Update README.md
+  * refactor: use builder api in widget setup
+  * feat: add theme no-background [ci skip]
+  * docs(readme): intro listen1 [ci skip]
+  * docs(readme): complain some bad support [ci skip]
+  * docs(readme): list recommended players in chart [ci skip]
+  * refactor: remove repeated bind-shortcut code
+  * chore: fix missing bracket
+  * refactor: do not set display mode manually
+  * enhance: replace extension with PathBuf::set_extension
+  * refactor: implement Debug for dyn LyricProvider
+  * refactor: remove unneeded player_meta helper
+  * docs(changelog): update changelog
+  * feat: select labels by origin/translation in theme
+
+-------------------------------------------------------------------
 Sat Mar 02 04:37:01 UTC 2024 - xtexchooser@duck.com
 
 - Update to version 0.2.12:
