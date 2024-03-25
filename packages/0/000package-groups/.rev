@@ -1951,4 +1951,18 @@ those sources for i586 on its own.</comment>
     <user>dimstar_suse</user>
     <comment>Suggest the default java in all -release.spec.in</comment>
   </revision>
+  <revision rev="274" vrev="272">
+    <srcmd5>b75608036895b7c4b49a8d8165190303</srcmd5>
+    <version>unknown</version>
+    <time>1711359761</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma can be skipped on s390x</comment>
+  </revision>
+  <revision rev="275" vrev="273">
+    <srcmd5>e68b8d6d0e13a2efe5f71a154a407627</srcmd5>
+    <version>unknown</version>
+    <time>1711359818</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma can be skipped on s390x</comment>
+  </revision>
 </revisionlist>
