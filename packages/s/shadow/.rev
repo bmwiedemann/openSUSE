@@ -1046,4 +1046,18 @@
 - Update shadow-login_defs-unused-by-pam.patch</comment>
     <requestid>1159987</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>ab29753a2cb22265ff261735245b461c</srcmd5>
+    <version>4.15.1</version>
+    <time>1711397166</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.15.1:
+  * Fix a bug that caused spurious error messages about unknown
+    login.defs configuration options #967
+  * Adding checks for fd omission #964
+  * Use temporary stat buffer #974
+  * Fix wrong french translation #975
+- Drop shadow-4.15.0-fix-definition.patch</comment>
+    <requestid>1161093</requestid>
+  </revision>
 </revisionlist>
