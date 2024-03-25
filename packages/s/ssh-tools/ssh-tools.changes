@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Mar 24 15:41:34 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.8
+  * Added
+    + ssh-last: like last but for SSH sessions
+    + ssh-pwd: quickly echo path to use for scp, rsync
+  * Changed
+    + ssh-facts:
+      - Bugfix for newer FreeBSDs
+      - Updated explorers from cdist
+    + ssh-ping:
+      - Add new option -E which exits ssh-ping immediately after first successful ping
+       (can be used to trigger a follow up task like rsync)
+      - Add Tab Completion info into usage
+      - Bugfix for Debian Bug #998219 making the package build reproducible
+    + all
+      - Shrink header comments
+  * Removed
+    + all: Removed HashKnownHosts=no option
+
+- changed upstream repository from github.com to codeberg.org
+
+-------------------------------------------------------------------
 Tue Nov  2 07:20:09 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7
