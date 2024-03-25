@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 23 13:31:42 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 9.5 release
+  - Initial SLTG-format typelib support in widl.
+  - Exception handling on ARM64EC.
+  - Improvements to Minidump support.
+  - Various bug fixes.
+- update staging to 9.5 release
+
+-------------------------------------------------------------------
 Sat Mar  9 07:50:32 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 9.4 release
