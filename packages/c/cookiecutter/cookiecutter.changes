@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Mar 24 17:26:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.0:
+  * Support Python 3.12
+  * Modifying Jinja2 start and end variable strings (#1997)
+  * Fix regression #2009: Adding value to nested dicts broken
+  * Fixed errors caused by invalid config files. (#1995)
+  * Default values can be passed as a dict (#1924)
+  * Implement new style for nested templates config (#1981)
+  * Fix FileExistsError when using a relative template path
+  * Fix recursive context overwrites
+  * Gracefully handle files with mixed lined endings (#1942)
+  * Implement a pre_prompt hook that will run before prompts
+  * Implement a pre_prompt hook that will run before prompts
+  * update main docstrings to include overwrite_if_exists and
+    skip_if_file_exists
+  * add checkout details to the context (fixes #1759) (#1923)
+  * Fix nested templates in Git repository (#1922)
+  * Fix prompt counter. (#1940)
+  * Fix variables with null default not being required (#1919)
+
+-------------------------------------------------------------------
 Thu Sep  7 05:19:46 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.3.0:
@@ -248,7 +270,7 @@ Wed Apr 22 18:05:41 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
  * Fixed: Jinja2&Six version limits causing build errors with ansible project [@insspb](https://github.com/insspb) (#1385)
 - update to version 1.7.1:
   This release was focused on internal code and CI/CD changes. During this release
-  all code was verified to match pep8, pep257 and other code-styling guides.  
+  all code was verified to match pep8, pep257 and other code-styling guides.
   Project CI/CD was significantly changed, Windows platform checks based on Appveyor
   engine was replaced by GitHub actions tests. Appveyor was removed. Also our
   CI/CD was extended with Mac builds, to verify project builds on Apple devices.

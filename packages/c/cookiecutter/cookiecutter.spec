@@ -1,7 +1,7 @@
 #
 # spec file for package cookiecutter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           cookiecutter
-Version:        2.3.0
+Version:        2.6.0
 Release:        0
 Summary:        A command-line utility that creates projects from project templates
 License:        BSD-3-Clause
@@ -50,7 +50,7 @@ Requires:       python-rich
 Requires:       (python-Jinja2 >= 2.7 with python-Jinja2 < 4)
 Requires:       (python-click >= 7 with python-click < 9)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION Testing requirements
 BuildRequires:  %{python_module chardet >= 2.0.0}

@@ -146,4 +146,31 @@
 - Switch to pyproject macro.</comment>
     <requestid>1109385</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>76d00ca23489f7a18e90743210672292</srcmd5>
+    <version>2.6.0</version>
+    <time>1711397447</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.6.0:
+  * Support Python 3.12
+  * Modifying Jinja2 start and end variable strings (#1997)
+  * Fix regression #2009: Adding value to nested dicts broken
+  * Fixed errors caused by invalid config files. (#1995)
+  * Default values can be passed as a dict (#1924)
+  * Implement new style for nested templates config (#1981)
+  * Fix FileExistsError when using a relative template path
+  * Fix recursive context overwrites
+  * Gracefully handle files with mixed lined endings (#1942)
+  * Implement a pre_prompt hook that will run before prompts
+  * Implement a pre_prompt hook that will run before prompts
+  * update main docstrings to include overwrite_if_exists and
+    skip_if_file_exists
+  * add checkout details to the context (fixes #1759) (#1923)
+  * Fix nested templates in Git repository (#1922)
+  * Fix prompt counter. (#1940)
+  * Fix variables with null default not being required (#1919)
+
+  all code was verified to match pep8, pep257 and other code-styling guides.</comment>
+    <requestid>1161152</requestid>
+  </revision>
 </revisionlist>
