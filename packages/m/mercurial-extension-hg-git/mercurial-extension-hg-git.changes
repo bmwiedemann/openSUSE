@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Mar 22 17:49:36 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 1.1.1.
+  * Fix pulling after marking the tip as obsolete.
+  * Mark Mercurial 6.7 as supported.
+- Changes from 1.1.0:
+  * Remove some compatibility for now-unsupported versions of Dulwich.
+- Changes from 1.1.0b1:
+  * The gclear command is inherently dangerous, and has been
+    replaced with a debug command instead.
+  * The .hgsub and .gitmodules files are no longer retained when
+    pushing to or pulling from Git, respectively. Instead, changes to
+    each will be applied during the conversion.
+  * Minor adjustments to categorisation of internal commands, and ensure
+    that they all start with git-*.
+  * Move configuration from the README file to contained within the
+    extension, so that it is now self-documenting like Mercurial.
+  * The -B/--bookmark flag for push will now restrict bookmarks
+    by name rather than revision. (Please note that this is unsupported
+    when the git.branch_bookmark_suffix configuration option is
+    set.)
+  * Pushing an unknown bookmark with the -B/--bookmark option now
+    has the same effect as when pushing to a Mercurial repository, and
+    will delete the remote Git branch.
+  * You can now specify what to publish with the paths section.
+  * Pushing and pulling from Git now triggers incoming, outgoing
+    and changegroup hooks, along with the corresponding pre*
+    hooks. In addition, the gitexport and gitimport hooks allow
+    intercepting when commits are converted. As a result, you can now
+    use the notify extension when interacting with Git repositories.
+    (#402)
+  * Git subrepositories will now be pushed as Git submodules.
+- Changes from 1.0.4:
+  * Address regression with Mercurial 6.4 and later where remote tags
+    weren't updated on push.
+
+-------------------------------------------------------------------
 Thu Nov  9 12:17:24 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
 
 - hg-git 1.0.3
