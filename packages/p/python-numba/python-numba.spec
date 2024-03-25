@@ -50,12 +50,12 @@ ExclusiveArch:  donotbuild
 %define python_module() %flavor-not-enabled-in-buildset-for-suse-%{?suse_version}
 %else
 # Tests fail on ppc64 big endian, not resolvable on s390x, wrong types on 32-bit. See also above compatibility list for building
-ExcludeArch:  s390x ppc64 %ix86 %arm 
+ExcludeArch:    s390x ppc64 %ix86 %arm
 %endif
 %endif
 
 Name:           python-numba%{?psuffix}
-Version:        0.59.0
+Version:        0.59.1
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause

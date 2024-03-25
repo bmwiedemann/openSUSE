@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 22 20:05:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.59.1:
+  * Fixed caching of kernels that use target-specific overloads
+  * Fixed a performance regression introduced in Numba 0.59 which
+    made ``np.searchsorted`` considerably slower.
+  * This patch fixes two issues with ``np.searchsorted``. First,
+    a regression is fixed in the support of ``np.datetime64``.
+    Second, adopt ``NAT``-aware  comparisons to fix mishandling
+    of ``NAT`` value.
+  * Allow use of Python 3.12 PEP-695 type parameter syntax
+
+-------------------------------------------------------------------
 Fri Mar  8 15:37:58 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Stop testing python39: dropped since ipython 8.19

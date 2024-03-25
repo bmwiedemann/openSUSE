@@ -436,4 +436,20 @@ Python2 support was turned off by accident.  I don't go out of my way to support
     <comment></comment>
     <requestid>1156604</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>719a04a870a963fc5083dd143a476396</srcmd5>
+    <version>0.59.1</version>
+    <time>1711397279</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.59.1:
+  * Fixed caching of kernels that use target-specific overloads
+  * Fixed a performance regression introduced in Numba 0.59 which
+    made ``np.searchsorted`` considerably slower.
+  * This patch fixes two issues with ``np.searchsorted``. First,
+    a regression is fixed in the support of ``np.datetime64``.
+    Second, adopt ``NAT``-aware  comparisons to fix mishandling
+    of ``NAT`` value.
+  * Allow use of Python 3.12 PEP-695 type parameter syntax</comment>
+    <requestid>1160819</requestid>
+  </revision>
 </revisionlist>
