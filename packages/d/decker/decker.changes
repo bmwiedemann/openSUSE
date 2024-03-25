@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Mar 24 04:36:40 UTC 2024 - vivid <absolutely.vivid@fastmail.org>
+
+- Update decker and decker-doc to version 1.41
+
+* correct random[] in native-decker to select random rows of tables, rather than random col
+umns (which is very silly and almost never useful)
+* version bump to v1.41
+* make grid.rowvalue and grid.cellvalue writable, leveraging the generalizations of amend()
+, and in turn simplify the default handler for changecell[].
+* rework grid cell editing to occur in-situ instead of in a visibly distinct modal dialog. In some situations this may lead to a cramped field, and the current implementation prevents entering newlines, but despite these quibbles I think the overall experience- especially when using the keyboard- will be much nicer.
+* another weeklychallenge puzzle
+* introduce the changecell event for grids, replacing hardcoded validation logic with an overrideable default handler and providing opportunities for shimming in side effects.
+* compensate for rounding error when computing the width of the final cell in a grid with auto-sized columns.
+* generalize amending assignments to work for tables. Some of these operations are easy enough to express with 'update', but some would be extremely annoying. This generalization mostly follows from the behavior of amending lists/dicts.
+* remove some cruft from the test script
+* add a selection by cell mode to the grid widget, allowing it to behave a bit more like a traditional spreadsheet and permitting faster editing via the keyboard.
+* disable menu selection while hidden, per #82.
+* improve behavior of transparent grids on colored backgrounds by reducing reliance on color inversion, per #81.
+* auto-focus the script editor field when entering it via keyboard shortcuts, per #79.
+* gracefully handle grid widgets with 0-width columns, making this a viable method of hiding columns, if desired.
+* another weekly challenge problem, providing a nice example of progressive parsing.
+* show:none buttons should not be given a pointer mouse cursor.
+* extend dialogizer with configuration options for controlling text display speed and triggering sound effects.
+
+-------------------------------------------------------------------
+Sun Mar  3 03:43:42 UTC 2024 - vivid <absolutely.vivid@fastmail.org>
+
+- Update decker and decker-doc to version 1.40
+- Remove install-script.patch - the patch was merged in upstream commit 7b1856ae8189c2247043cd433448ab1c2b30e49b
+
+* minor documentation touchups
+* introduce a 'like' primitive to Lil, loosely mirroring SQL's glob-matching operator. Since this is a new keyword it is a minor breaking change, and there is some functional overlap with parse pattern matching, but overall I think this addition will make a wide range of common use-cases simpler and more straightforward.
+* permit keyboard shortcuts to be activated while the menu is suppressed in drawing mode.
+* add danger.shell[]. offer not valid on Windows.
+* revise install script to accept DESTDIR/PREFIX vars and avoid the use of sudo.
+* an initial foray into exposing potentially hazardous (but equally useful) APIs to Decker. The 'danger zone' is presently accessible exclusively by rebuilding from source. In the future I may consider easier methods.
+* correct inconsistencies between web-decker and native-decker in how writecsv[] serialized 'j' formatted columns.
+* oops, actually native decker was already handling j column formats correctly; web-decker was busted.
+* fix web-decker not hiding toolbars while in modals or the script editor.
+* more refinements to puzzle solutions
+* make the j and a format symbols in a grid format string enclose their listy arguments before formatting. This makes, for example, a j format of a column of pairs do the right thing.
+* a simpler formulation of weekly challenge 127.1; are sets disjoint?
+* fix crashes if a prototype is removed while editing it.
+
+-------------------------------------------------------------------
 Wed Feb 28 02:25:45 UTC 2024 - vivid <absolutely.vivid@fastmail.org>
 
 - Update decker and decker-doc to version 1.39

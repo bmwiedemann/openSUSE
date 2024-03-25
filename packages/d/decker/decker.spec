@@ -17,13 +17,12 @@
 
 
 Name:           decker
-Version:        1.39
+Version:        1.41
 Release:        0
 Summary:        A multimedia sketchpad
 License:        MIT
 URL:            http://beyondloom.com/decker/
 Source:         https://github.com/JohnEarnest/Decker/archive/refs/tags/v%{version}.tar.gz
-Patch:          install-script.patch
 BuildRequires:  make
 BuildRequires:  SDL2-devel
 BuildRequires:  SDL2_image-devel
