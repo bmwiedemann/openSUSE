@@ -267,4 +267,42 @@
     <comment></comment>
     <requestid>1145096</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>05b1dee3ab58ea4b5c6a188ab350a075</srcmd5>
+    <version>0.18.3.3</version>
+    <time>1711397585</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.18.3.3:
+s
+  * ringct: fix trunc_amount field name change
+  * build: prepare v0.18.3.3
+  * Revert &quot;http_client: reduce number of packets sent for small bodies&quot;
+  * depends: add riscv64 linux build tag
+- Update to version 0.18.3.2:
+  * Fixed mempool pruning
+  * tx_memory_pool: make double spends a no-drop offense
+  * get_block_template_backlog: better sorting logic
+  * wallet2: adjust fee during backlog, fix set priority
+  * unit_tests: fix strtoul unit test
+  * docs: omit i2p port number from ANONYMITY_NETWORKS
+  * wallet: feature: transfer amount with fee included
+  * build: prepare v0.18.3.2
+  * cryptonote_core: early out on out of bounds scaling parameter
+  * depends: openssl: update to 3.0.13
+  * depends: unbound: update to 1.19.1
+  * depends: expat: update to 2.6.0
+  * remove ARCH=x86-64 from release-static
+  * serialization: fix infinite loops and clean up dispatching
+  * Zero initialize rctSigBase elements
+  * Disable/fix ports with I2P
+  * Add &lt;cstdint&gt; to aligned test
+  * wallet: mitigate statistical dependence for decoy selection within rings
+  * Fix missing checks for IsObject in ZMQ jsonrpc reading
+  * JH hash compiler workarounds
+  * Fix EAGAIN bug in ZMQ-RPC/ZMQ-PUB
+  * wallet: fix multisig key memory leak
+  * heed NO_COLOR environment variable
+  * readline_buffer: disable bracketed paste escape sequences</comment>
+    <requestid>1161441</requestid>
+  </revision>
 </revisionlist>

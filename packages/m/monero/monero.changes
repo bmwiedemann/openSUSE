@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Mar 25 14:39:06 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.18.3.3:
+  * ringct: fix trunc_amount field name change
+  * build: prepare v0.18.3.3
+  * Revert "http_client: reduce number of packets sent for small bodies"
+  * depends: add riscv64 linux build tag
+- Update to version 0.18.3.2:
+  * Fixed mempool pruning
+  * tx_memory_pool: make double spends a no-drop offense
+  * get_block_template_backlog: better sorting logic
+  * wallet2: adjust fee during backlog, fix set priority
+  * unit_tests: fix strtoul unit test
+  * docs: omit i2p port number from ANONYMITY_NETWORKS
+  * wallet: feature: transfer amount with fee included
+  * build: prepare v0.18.3.2
+  * cryptonote_core: early out on out of bounds scaling parameter
+  * depends: openssl: update to 3.0.13
+  * depends: unbound: update to 1.19.1
+  * depends: expat: update to 2.6.0
+  * remove ARCH=x86-64 from release-static
+  * serialization: fix infinite loops and clean up dispatching
+  * Zero initialize rctSigBase elements
+  * Disable/fix ports with I2P
+  * Add <cstdint> to aligned test
+  * wallet: mitigate statistical dependence for decoy selection within rings
+  * Fix missing checks for IsObject in ZMQ jsonrpc reading
+  * JH hash compiler workarounds
+  * Fix EAGAIN bug in ZMQ-RPC/ZMQ-PUB
+  * wallet: fix multisig key memory leak
+  * heed NO_COLOR environment variable
+  * readline_buffer: disable bracketed paste escape sequences
+  * multisig: better errors for small malformed kex msgs
+  * ringct: make `rctSigBase` serialization follow strict aliasing rule
+  * cryptonote_config: include cstdint
+  * gitian: add riscv64 support
+  * Update RandomX to 1.2.1
+  * wallet2: ensure transfers and sweeps use same fee calc logic
+  * http_client: reduce number of packets sent for small bodies
+  * wallet2: call on_reorg callback in handle_reorg
+  * wallet2: add on_reorg callback
+  * depends: openssl: update to 3.0.11
+
+-------------------------------------------------------------------
 Thu Feb  8 08:07:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide user/group symbol for user created during pre.
