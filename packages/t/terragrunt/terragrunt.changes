@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 23 09:38:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.19:
+  * MacOS binary signer update (#3023)
+  * Updated module ci version (#3021)
+  * Updated sign binaries parameters for MacOS (#3020)
+  * Updated gon version to v0.2.5 (#3019)
+  * Scaffold command, fix unable to handle https URL (#3005)
+  * Fix grammar in feature text (#3010)
+
+-------------------------------------------------------------------
 Tue Mar 19 06:54:18 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.55.18:
