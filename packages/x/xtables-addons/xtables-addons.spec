@@ -1,7 +1,7 @@
 #
 # spec file for package xtables-addons
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xtables-addons
-Version:        3.25
+Version:        3.26
 Release:        0
 Summary:        IP Packet Filter Administration Extensions
 License:        GPL-2.0-only AND GPL-2.0-or-later
@@ -32,7 +32,7 @@ Source4:        %name.keyring
 Patch1:         sle-kernels.patch
 BuildRequires:  %kernel_module_package_buildreqs
 BuildRequires:  automake
-BuildRequires:  kernel-syms >= 4.16
+BuildRequires:  kernel-syms >= 5.4
 BuildRequires:  libtool
 BuildRequires:  pkg-config >= 0.21
 BuildRequires:  xz
@@ -102,8 +102,7 @@ done
 find "$b/%_prefix" -iname "*.la" -delete
 find "$b/%_libdir" -maxdepth 1 -type l -iname "*.so" -delete
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %_bindir/xt_geoip*
