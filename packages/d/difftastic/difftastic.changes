@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Mar 24 13:02:15 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- 0.56.1:
+  Parsing
+  * Added support for Objective-C and VHDL.
+  * Files starting with <?xml are now parsed as XML.
+  * Fixed a munmap_chunk(): invalid pointer crash on parsing some large files,
+  * particularly JSON.
+  * Makefile*.in is now detected as Makefile syntax.
+  * Improved shebang parsing with whitespace
+  * Added support for Scheme and Smali.
+  *
+  Diffing
+  * Fixed an issue with runaway memory usage on text files with very long lines.
+
+  Display
+  * The default display width for tabs has changed to 4.
+  * Fixed an issue where difftastic would sometimes output
+    literal tabs rather than respecting the display width for tabs.
+  * Fixed an issue where all files would show a permissions change
+    when using difftastic with git difftool.
+  * Fixed an issue with paths not showing the containing directory
+    when using difftastic with git difftool.
+  * Difftastic now correctly reports file permission changes when
+    called from git diff.
+  * Fixed an issue with the experimental JSON display mode where it
+    ignored --skip-unchanged.
+  * Fixed an issue with tabs not being replaced in single-column display.
+
+-------------------------------------------------------------------
 Mon Jan  8 18:28:20 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - 0.54.0:
