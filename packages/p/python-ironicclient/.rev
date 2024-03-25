@@ -495,4 +495,23 @@
   - Node sharding support</comment>
     <requestid>1138701</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>202510422eeb81a6bcfe546f6cc155d0</srcmd5>
+    <version>5.5.0</version>
+    <time>1711397480</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.5.0
+  - Force constraints when installing a package during tox test
+  - [codespell] Adding CI target for Tox Codespell
+  - add pyproject.toml to support pip 23.1
+  - Moving functional job to non-voting until we have a fix for it
+  - Add missing commands to the documentation
+  - [codespell] Fixing Spelling Mistakes
+  - Bump hacking to 6.1.0
+  - Update master for stable/2023.2
+  - [codespell] Adding Tox Target for Codespell
+  - Update python classifier in setup.cfg
+  - reno: Update master for unmaintained/yoga</comment>
+    <requestid>1161187</requestid>
+  </revision>
 </revisionlist>

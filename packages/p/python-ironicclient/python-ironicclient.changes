@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar 24 20:07:28 UTC 2024 - cloud-devel@suse.de
+
+- update to version 5.5.0
+  - Force constraints when installing a package during tox test
+  - [codespell] Adding CI target for Tox Codespell
+  - add pyproject.toml to support pip 23.1
+  - Moving functional job to non-voting until we have a fix for it
+  - Add missing commands to the documentation
+  - [codespell] Fixing Spelling Mistakes
+  - Bump hacking to 6.1.0
+  - Update master for stable/2023.2
+  - [codespell] Adding Tox Target for Codespell
+  - Update python classifier in setup.cfg
+  - reno: Update master for unmaintained/yoga
+
+-------------------------------------------------------------------
 Sun Jan 14 17:54:49 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.4.0
