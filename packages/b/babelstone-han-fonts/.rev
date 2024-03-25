@@ -68,4 +68,14 @@
  * 56 glyph corrections and improvements</comment>
     <requestid>1137174</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dba67cb847ebbaffb7ab448a253f35c1</srcmd5>
+    <version>15.1.4</version>
+    <time>1711397456</time>
+    <user>anag+factory</user>
+    <comment>- Update to 15.1.4
+  * 463 additional CJK unified ideographs
+  * 17 glyph corrections and improvements</comment>
+    <requestid>1161163</requestid>
+  </revision>
 </revisionlist>
