@@ -62,4 +62,16 @@
   * You can now instantiate a client, instead of using a global default.</comment>
     <requestid>1158394</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d936b3ce7e010e253c6e51bb4a46d566</srcmd5>
+    <version>1.14.2</version>
+    <time>1711397332</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.14.2:
+  * cache TypeAdapters
+  * cache TypeAdapters
+  * assistant improvements
+  * fix typo in CONTRIBUTING.md</comment>
+    <requestid>1160934</requestid>
+  </revision>
 </revisionlist>

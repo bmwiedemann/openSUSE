@@ -17,7 +17,7 @@
 
 
 Name:           python-openai
-Version:        1.14.0
+Version:        1.14.2
 Release:        0
 Summary:        OpenAI bindings for python
 License:        Apache-2.0
