@@ -653,4 +653,29 @@
   - Imported Translations from Zanata</comment>
     <requestid>1073023</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>8741ac35081ba4500f612ef2dc25da13</srcmd5>
+    <version>3.5.0</version>
+    <time>1711397473</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.5.0
+  - Bump hacking
+  - Remove leftover of Python &lt;= 2.6 support
+  - Remove some notes no longer valid
+  - Make tests pass after 2038
+  - Remove translation sections from setup.cfg
+  - remove unicode prefix from code (2)
+  - remove unicode prefix from code (1)
+  - Fix osc sd create command
+  - Fix release note generation
+  - reno: Update master for unmaintained/yoga
+  - Update master for stable/2023.2
+  - Add Python 3.11 to supported runtimes
+
+- update to version 3.3.0
+  - Add Python 3.10 to supported runtime.
+  - Switch to 2023.1 Python3 unit tests and generic template name
+  - Update master for stable/2023.1</comment>
+    <requestid>1161185</requestid>
+  </revision>
 </revisionlist>
