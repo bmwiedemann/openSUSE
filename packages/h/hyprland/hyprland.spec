@@ -70,6 +70,7 @@ BuildRequires:  Mesa-libGLESv3-devel
 %if %{with xcb_errors}
 BuildRequires:  pkgconfig(xcb-errors)
 %endif
+Recommends:     %{name}-wallpapers
 %if %{with devel}
 Suggests:       %{name}-devel
 %endif
@@ -80,6 +81,13 @@ that doesn't sacrifice on its looks.
 
 It supports multiple layouts, fancy effects, has a very flexible IPC
 model allowing for a lot of customization, and more.
+
+%package wallpapers
+Summary:        Hyprland wallpapers 
+BuildArch:      noarch
+
+%description wallpapers
+Additional wallpapers for hyprland.
 
 %if %{with devel}
 %package devel
@@ -113,13 +121,17 @@ rm -rf %{buildroot}/%{_includedir}/wlr/
 %{_bindir}/Hyprland
 %{_bindir}/hyprctl
 %{_bindir}/hyprpm
-%{_datadir}/%{name}/
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/hyprland.conf
 %dir %{_datadir}/wayland-sessions/
 %{_datadir}/wayland-sessions/%{name}.desktop
 %dir %{_datadir}/xdg-desktop-portal
 %{_datadir}/xdg-desktop-portal/%{name}-portals.conf
 %{_mandir}/man1/Hyprland.*
 %{_mandir}/man1/hyprctl.*
+
+%files wallpapers
+%{_datadir}/%{name}/wall*
 
 %if %{with devel}
 %files devel
