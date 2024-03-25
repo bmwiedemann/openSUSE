@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 25 02:36:57 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.1.23
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Remove "All rights reserved" from Oracle copyright notices
+  * gitlab CI: ensure libtool is installed in build container
+  * Don't call xf86DisableRandR in ABI_VIDEODRV_VERSION 24 & later
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * Add X.Org's standard C warning flags to AM_CFLAGS
+  * Fix 4 -Wdiscarded-qualifiers warnings
+  * Fix warning: ‘NVDMAKickoffCallback’ defined but not used [-Wunused-function]
+  * Fix warning: ‘NVPatternROP’ defined but not used [-Wunused-const-variable=]
+  * Fix -Wdiscarded-qualifiers warning in G80PreInit
+  * Fix warning: no previous prototype for ‘G80ExaInit’ [-Wmissing-prototypes]
+  * riva_hw.c: Ensure ABS macro expands correctly
+  * fix nv on powerpc
+  * treewide: #if -> #ifdef
+
+-------------------------------------------------------------------
 Mon Feb 26 12:14:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

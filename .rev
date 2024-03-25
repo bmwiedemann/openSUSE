@@ -152,4 +152,26 @@
     <comment></comment>
     <requestid>1151676</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ac151aca0f503500627f2f581de78302</srcmd5>
+    <version>2.1.23</version>
+    <time>1711397229</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.1.23
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Remove &quot;All rights reserved&quot; from Oracle copyright notices
+  * gitlab CI: ensure libtool is installed in build container
+  * Don't call xf86DisableRandR in ABI_VIDEODRV_VERSION 24 &amp; later
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * Add X.Org's standard C warning flags to AM_CFLAGS
+  * Fix 4 -Wdiscarded-qualifiers warnings
+  * Fix warning: ‘NVDMAKickoffCallback’ defined but not used [-Wunused-function]
+  * Fix warning: ‘NVPatternROP’ defined but not used [-Wunused-const-variable=]
+  * Fix -Wdiscarded-qualifiers warning in G80PreInit
+  * Fix warning: no previous prototype for ‘G80ExaInit’ [-Wmissing-prototypes]
+  * riva_hw.c: Ensure ABS macro expands correctly
+  * fix nv on powerpc
+  * treewide: #if -&gt; #ifdef</comment>
+    <requestid>1161227</requestid>
+  </revision>
 </revisionlist>
