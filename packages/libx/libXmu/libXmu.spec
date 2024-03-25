@@ -1,7 +1,7 @@
 #
 # spec file for package libXmu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libXmu
-Version:        1.1.4
+Version:        1.2.0
 Release:        0
 Summary:        Miscellaneous utility routines for X
 License:        MIT

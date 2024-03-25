@@ -95,4 +95,16 @@ matches in libXmu and the rust bindings to libXmu, and not any consumers
 of these interfaces.</comment>
     <requestid>1029698</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>14dedd6c3333d1449661e1b7973b61d9</srcmd5>
+    <version>1.2.0</version>
+    <time>1711397228</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.0
+  * This release raises the minimum version of libXt required to 1.1.0
+    (released in 2011), and for those builders who need to regenerate
+    the autoconf files, raises the minimum version of autoconf required
+    to 2.70 (released in 2020).</comment>
+    <requestid>1161217</requestid>
+  </revision>
 </revisionlist>
