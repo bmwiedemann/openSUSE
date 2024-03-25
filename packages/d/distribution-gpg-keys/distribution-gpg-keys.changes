@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Mar 24 17:29:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.102:
+  * update copr keys
+  * Create cathugger.asc
+  * Create zzz.key.asc
+  * Create idk.key.asc
+  * Create hulahoop.asc
+  * Create adrelanos.asc
+  * Create makemkv_pub.txt
+  * add F42 key and move rawhide link
+  * update copr keys
+  * update postgresql keys
+  * Add Qubes OS 4.2 release key
+  * Split AlmaLinux OS 8 GPG public keys to fix microdnf
+  * Update AlmaLinux OS 8 public key
+  * Add openSUSE Backports 2023 key
+  * Update Amazon Linux 2023 public key
+  * add script to check all keys
+  * remove expired jenkins key
+  * update expired intel security key
+  * update expired navy linux key
+  * update expired bluejeans key
+  * add script to check expiration
+  * Add the key for pkgs.k8s.io (Kubernetes)
+  * Restructure openSUSE GPG keys
+  * Add SUSE ALP signing keys
+  * Add SLE 2023 signing keys
+  * add symlinkg to rpmfusion 40 and 41
+  * update copr keys
+  * add remi fedora 39 link to 2023 key
+  * update Google key
+  * add Fedora 41 key
+  * Add source URL for AL2023
+  * update copr keys
+  * Update expired RPM-GPG-KEY-Mageia key
+  * Add keys for Azure Linux
+
+-------------------------------------------------------------------
 Mon Jun 12 10:40:12 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to v1.88
