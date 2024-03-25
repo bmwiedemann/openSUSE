@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 24 14:28:26 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Drop all unbundle things, and use source completely from upstream,
+  because unbundling is more work to do and it repeatedly generates
+  unnecessary errors. And also it use sometimes to old libraries.
+  This is a critical banking application and should not be manipulated.
+- Drop hibiscus-port-to-commons-lang3.patch because we use only code 
+  from upstream.
+- Drop unnecessary buildrequires.
+- Fix some rpmlint errors.
+
+-------------------------------------------------------------------
 Wed Mar 20 18:28:59 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 2.10.18

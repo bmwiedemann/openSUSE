@@ -20,39 +20,30 @@
 %define _minor 10
 %define _micro 18
 %define _build 382
-%define tag V_%{_major}_%{_minor}_%{_micro}_BUILD_%{_build}
+%define _version %{_major}.%{_minor}.%{_micro}
+%define _tag V_%{_major}_%{_minor}_%{_micro}_BUILD_%{_build}
+
 Name:           hibiscus
-Version:        %{_major}.%{_minor}.%{_micro}
+Version:        %{_version}
 Release:        0
 Summary:        Java online banking client using the HBCI standard
 License:        Apache-2.0 AND GPL-2.0-only AND LGPL-2.0-only AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
 Group:          Productivity/Office/Finance
 URL:            https://www.willuhn.de/products/hibiscus/
-Source:         https://github.com/willuhn/hibiscus/archive/refs/tags/%{tag}.tar.gz
+Source:         https://github.com/willuhn/hibiscus/archive/refs/tags/%{_tag}.tar.gz
 Source2:        hibiscus-rpmlintrc
-Patch0:         hibiscus-port-to-commons-lang3.patch
 BuildRequires:  ant
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  hbci4java >= 3.1.76
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  itextpdf >= 5.5.2
-BuildRequires:  jameica-devel >= 2.10.1
-BuildRequires:  java-devel >= 1.8
+BuildRequires:  jameica-devel >= 2.10.4
+BuildRequires:  java-devel >= 11
 BuildRequires:  jpackage-utils
-BuildRequires:  pcsc-towitoko-devel
-BuildRequires:  super-csv >= 2.4.0
 BuildRequires:  xml-commons-apis
-Requires:       hbci4java
-Requires:       itextpdf
-Requires:       jameica >= 2.10.0
-Requires:       pcsc-towitoko-devel
-Requires:       super-csv
-%ifnarch s390 %{arm} %{ix86}
-BuildRequires:  eclipse-swtchart >= 0.13.0
-%requires_eq    eclipse-swtchart
-%endif
+Requires:       jameica >= 2.10.4
+
 # Don't offer libraries linked in here to other packages:
+AutoReqProv:    off
 
 %description
 A free Java homebanking application that uses the HBCI4Java implementation
@@ -61,8 +52,7 @@ key files and PIN/TAN including chipTAN and smsTAN for authentification.
 Supported file formats include MT940, DTAUS, CSV, Moneyplex and PDF/HTML.
 
 %prep
-%setup -q -n %{name}-%{tag}
-%patch -P 0 -p1
+%setup -q -n %{name}-%{_tag}
 
 # Remove Windows and Mac libraries
 rm -rf lib/hbci4java-card-*
@@ -88,40 +78,6 @@ ant -f build/build.xml -Ddefine.java.version=1.8 init compile jar zip src
 mkdir -p %{buildroot}%{_prefix}/lib/jameica/plugins
 cp -r releases/%{version}-%{_build}/%{name} %{buildroot}%{_prefix}/lib/jameica/plugins
 
-# unbundle HBCI4Java
-rm  %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/hbci4j-core-3.1.76.jar
-ln -sf %{_jnidir}/hbci4java/hbci4j-core.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/hbci4j-core-3.1.76.jar
-rm %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/libhbci4java-card-*.so
-%ifarch x86_64
-ln -sf %{_jnidir}/hbci4java/libhbci4java-card-linux.so %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/libhbci4java-card-linux-64.so
-%else
-ln -sf %{_jnidir}/hbci4java/libhbci4java-card-linux.so %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/libhbci4java-card-linux-32.so
-%endif
-
-%ifnarch s390 %{arm} %{ix86}
-# unbundle SWT Chart
-rm %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/swtchart/*.jar
-ln -sf %{_datadir}/eclipse/droplets/swtchart/plugins/org.eclipse.swtchart_0.13.0.*.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/swtchart/org.eclipse.swtchart_0.13.0.202009151159.jar
-ln -sf %{_datadir}/eclipse/droplets/swtchart/plugins/org.eclipse.swtchart.extensions_0.13.0.*.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/swtchart/org.eclipse.swtchart.extensions_0.13.0.202009151159.jar
-%endif
-
-# unbundle iText PDF
-rm %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/itext-*.jar
-ln -sf %{_javadir}/itextpdf/itext-pdfa.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/itext-pdfa-5.5.2.jar
-ln -sf %{_javadir}/itextpdf/itextpdf.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/itextpdf-5.5.2.jar
-
-# unbundle libtowitoko
-rm %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/libtowitoko*
-%ifarch x86_64
-ln -sf  %{_libdir}/libtowitoko.so %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/libtowitoko-2.0.7-amd64.so
-%else
-ln -sf  %{_libdir}/libtowitoko.so %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/libtowitoko-2.0.7.so
-%endif
-
-# unbundle Super CSV
-rm %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/super-csv-2.4.0.jar
-ln -sf %{_javadir}/super-csv/super-csv.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/super-csv-2.4.0.jar
-
 # icons
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/
 mv %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/icons/%{name}-icon-16x16.png %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/%{name}.png
@@ -135,6 +91,12 @@ install -D -m 0644 %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.
 install -D -m 0644 %{name}.appdata.xml %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 
 %fdupes %{buildroot}
+
+%post
+/sbin/ldconfig
+
+%postun
+/sbin/ldconfig
 
 %files
 %doc build/ChangeLog
