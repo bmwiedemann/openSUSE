@@ -1,7 +1,7 @@
 #
 # spec file for package gap-agt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gap-agt
-Version:        0.2
+Version:        0.3.1
 Release:        0
 Summary:        GAP: Algebraic Graph Theory
 License:        Artistic-2.0
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/agt/
-
+#Git-Clone:     https://github.com/gap-packages/agt
 Source:         https://github.com/gap-packages/AGT/releases/download/v%version/AGT-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
