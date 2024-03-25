@@ -89,4 +89,17 @@
     https://bugs.debian.org/720266</comment>
     <requestid>1114273</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c4c202ad052aea5846d40f4e6497701d</srcmd5>
+    <version>1.2.0</version>
+    <time>1711397502</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.0
+  * This release improves the display of the formatted man page
+    when using man-db, fixes a memory leak when closing a man page,
+    and removes support for a number of OS'es from the 80's &amp; 90's,
+    along with removing support for using Xprint to print a man
+    page.</comment>
+    <requestid>1161221</requestid>
+  </revision>
 </revisionlist>
