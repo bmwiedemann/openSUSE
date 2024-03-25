@@ -88,4 +88,12 @@
     isds_set_progress_callback() as deprecated.</comment>
     <requestid>1137218</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3ad84189ac270c122fd78407000f68bc</srcmd5>
+    <version>0.6.2</version>
+    <time>1711397402</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1161101</requestid>
+  </revision>
 </revisionlist>
