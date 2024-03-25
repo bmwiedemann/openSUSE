@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 24 20:01:49 UTC 2024 - cloud-devel@suse.de
+
+- update to version 6.3.0
+  - Fix leftover `locale.getdefaultlocale` mock
+  - Display coverage report
+  - Update python classifier in setup.cfg
+  - Bump hacking
+
+-------------------------------------------------------------------
 Wed Dec 27 14:42:26 UTC 2023 - cloud-devel@suse.de
 
 - update to version 6.2.0

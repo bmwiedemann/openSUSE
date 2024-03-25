@@ -329,4 +329,16 @@
 - Initial package (0.1.0)</comment>
     <requestid>1135454</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>923af63013266eaf0c300c959a8c3140</srcmd5>
+    <version>6.3.0</version>
+    <time>1711397465</time>
+    <user>anag+factory</user>
+    <comment>- update to version 6.3.0
+  - Fix leftover `locale.getdefaultlocale` mock
+  - Display coverage report
+  - Update python classifier in setup.cfg
+  - Bump hacking</comment>
+    <requestid>1161174</requestid>
+  </revision>
 </revisionlist>
