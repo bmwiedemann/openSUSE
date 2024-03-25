@@ -162,4 +162,41 @@
 - No more greedy globs in %files.</comment>
     <requestid>1144443</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>486b342043e0448227f985c848211076</srcmd5>
+    <version>0.23.1</version>
+    <time>1711397270</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.23.1:
+  * Fix a regression in 0.23.0 that could defeat type inference
+    of a bidict's key type and value type when running in Python
+    3.8 or 3.9. :issue:`310`
+  * Primarily, this release simplifies bidict by removing minor
+    features that are no longer necessary or that have little to
+    no apparent usage, and it also includes some performance
+    optimizations.
+  * Specifically, initializing or updating a bidict is now up to
+    70% faster in microbenchmarks.
+  * The changes in this release will also make it easier to
+    maintain and improve bidict in the future, including further
+    potential performance optimizations.
+  * It also contains several other improvements.
+  * Drop support for Python 3.7, which reached end of life on
+    2023-06-27, and take advantage of features available in
+    Python 3.8+.
+  * Drop support for Python 3.7, which reached end of life on
+    2023-06-27, and take advantage of features available in
+    Python 3.8+.
+  * Remove FrozenOrderedBidict now that Python 3.7 is no longer
+    supported. :class:`~bidict.frozenbidict` now provides
+    everything that FrozenOrderedBidict provided (including
+    :class:`reversibility &lt;collections.abc.Reversible&gt;`) on all
+    supported Python versions, but with less space overhead.
+  * Remove FrozenOrderedBidict now that Python 3.7 is no longer
+    supported. :class:`~bidict.frozenbidict` now provides
+    everything that FrozenOrderedBidict provided (including
+    :class:`reversibility &lt;collections.abc.Reversible&gt;`) on all
+    supported Python versions, but with less space overhead.</comment>
+    <requestid>1160811</requestid>
+  </revision>
 </revisionlist>

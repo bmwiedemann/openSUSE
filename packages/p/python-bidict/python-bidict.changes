@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Fri Mar 22 19:53:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23.1:
+  * Fix a regression in 0.23.0 that could defeat type inference
+    of a bidict's key type and value type when running in Python
+    3.8 or 3.9. :issue:`310`
+  * Primarily, this release simplifies bidict by removing minor
+    features that are no longer necessary or that have little to
+    no apparent usage, and it also includes some performance
+    optimizations.
+  * Specifically, initializing or updating a bidict is now up to
+    70% faster in microbenchmarks.
+  * The changes in this release will also make it easier to
+    maintain and improve bidict in the future, including further
+    potential performance optimizations.
+  * It also contains several other improvements.
+  * Drop support for Python 3.7, which reached end of life on
+    2023-06-27, and take advantage of features available in
+    Python 3.8+.
+  * Drop support for Python 3.7, which reached end of life on
+    2023-06-27, and take advantage of features available in
+    Python 3.8+.
+  * Remove FrozenOrderedBidict now that Python 3.7 is no longer
+    supported. :class:`~bidict.frozenbidict` now provides
+    everything that FrozenOrderedBidict provided (including
+    :class:`reversibility <collections.abc.Reversible>`) on all
+    supported Python versions, but with less space overhead.
+  * Remove FrozenOrderedBidict now that Python 3.7 is no longer
+    supported. :class:`~bidict.frozenbidict` now provides
+    everything that FrozenOrderedBidict provided (including
+    :class:`reversibility <collections.abc.Reversible>`) on all
+    supported Python versions, but with less space overhead.
+  * Remove namedbidict due to low usage.
+  * Remove namedbidict due to low usage.
+  * Remove the kv field of :class:`~bidict.OnDup` which specified
+    the :class:`~bidict.OnDupAction` to take in the case of
+    :ref:`basic-usage:key and value duplication`. The
+    :attr:`~bidict.OnDup.val` field now specifies the action to
+    take in the case of :ref:`basic-usage:key and value
+    duplication` as well as :ref:`just value duplication <basic-
+    usage:values must be unique>`.
+  * Remove the kv field of :class:`~bidict.OnDup` which specified
+    the :class:`~bidict.OnDupAction` to take in the case of
+    :ref:`basic-usage:key and value duplication`. The
+    :attr:`~bidict.OnDup.val` field now specifies the action to
+    take in the case of :ref:`basic-usage:key and value
+    duplication` as well as :ref:`just value duplication <basic-
+    usage:values must be unique>`.
+  * Improve type hints for the :attr:`~bidict.BidictBase.inv`
+    shortcut alias for :attr:`~bidict.BidictBase.inverse`.
+  * Improve type hints for the :attr:`~bidict.BidictBase.inv`
+    shortcut alias for :attr:`~bidict.BidictBase.inverse`.
+  * Fix a bug where calls like bidict(None), bi.update(False),
+    etc. would fail to raise a :class:`TypeError`.
+  * Fix a bug where calls like bidict(None), bi.update(False),
+    etc. would fail to raise a :class:`TypeError`.
+  * All :meth:`~bidict.BidictBase.__init__`,
+    :meth:`~bidict.MutableBidict.update`, and related methods now
+    handle SupportsKeysAndGetItem objects that are not
+    :class:`~collections.abc.Mapping`s the same way that
+    MutableMapping.update() does, before falling back to handling
+    the provided object as an iterable of pairs.
+  * All :meth:`~bidict.BidictBase.__init__`,
+    :meth:`~bidict.MutableBidict.update`, and related methods now
+    handle SupportsKeysAndGetItem objects that are not
+    :class:`~collections.abc.Mapping`s the same way that
+    MutableMapping.update() does, before falling back to handling
+    the provided object as an iterable of pairs.
+  * The :func:`repr` of ordered bidicts now matches that of
+    regular bidicts, e.g. OrderedBidict({1: 1}) rather than
+    OrderedBidict([(1, 1)]). (Accordingly, the
+    bidict.__repr_delegate__ field has been removed now that it's
+    no longer needed.) This tracks with the change to
+    :class:`collections.OrderedDict`'s :func:`repr` in Python
+    3.12.
+  * The :func:`repr` of ordered bidicts now matches that of
+    regular bidicts, e.g. OrderedBidict({1: 1}) rather than
+    OrderedBidict([(1, 1)]).
+  * (Accordingly, the bidict.__repr_delegate__ field has been
+    removed now that it's no longer needed.)
+  * This tracks with the change to
+    :class:`collections.OrderedDict`'s :func:`repr` in Python
+    3.12.
+  * Test with Python 3.12 in CI. Note: Older versions of bidict
+    also support Python 3.12, even though they don't explicitly
+    declare support for it.
+  * Test with Python 3.12 in CI.
+  * Note: Older versions of bidict also support Python 3.12, even
+    though they don't explicitly declare support for it.
+  * Drop use of Trove classifiers that declare support for
+    specific Python versions in package metadata.
+  * Drop use of Trove classifiers that declare support for
+    specific Python versions in package metadata.
+- drop support-python-312.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Feb  6 05:38:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-312.patch:
@@ -128,7 +224,7 @@ Tue Sep  1 04:48:00 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
   * Add bidict.MutableBidirectionalMapping ABC
   * Drop Python 3.5 support
   * Remove bidict.compat module
-  * Remove APIs deprecated in previous releases 
+  * Remove APIs deprecated in previous releases
 - Drop dont-limit-versions.patch, included upstream
 
 -------------------------------------------------------------------
