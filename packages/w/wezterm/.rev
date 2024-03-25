@@ -965,4 +965,18 @@
   * add `wezterm start --new-tab` and `wezterm connect --new-tab`</comment>
     <requestid>1150120</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>00a2e7bcba8339ff670ab7226e56829f</srcmd5>
+    <version>20240203.110809.5046fc22</version>
+    <time>1711397291</time>
+    <user>anag+factory</user>
+    <comment>- Filter platform specific dependencies. Only pull those that is required
+  for linux platforms.
+- Set `filter` to true in _service file.
+- Update vendored dependencies with filter enabled.
+
+Using filterer cut 120+MB of dependencies to ~50MB
+</comment>
+    <requestid>1160857</requestid>
+  </revision>
 </revisionlist>

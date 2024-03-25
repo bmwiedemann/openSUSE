@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 23 00:45:08 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Filter platform specific dependencies. Only pull those that is required
+  for linux platforms.
+- Set `filter` to true in _service file.
+- Update vendored dependencies with filter enabled.
+
+-------------------------------------------------------------------
 Sat Feb 24 10:06:28 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 20240203.110809.5046fc22:
