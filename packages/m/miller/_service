@@ -4,10 +4,6 @@
     <param name="scm">git</param>
     <param name="revision">main</param>
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
-    <!-- This might have been fixed?
-    <param name="versionrewrite-pattern">v6.6.0</param>
-    <param name="versionrewrite-replacement">6.7.0</param>
-    -->
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
   </service>

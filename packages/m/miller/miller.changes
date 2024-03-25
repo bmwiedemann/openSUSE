@@ -1,7 +1,49 @@
 -------------------------------------------------------------------
+Sun Mar 17 00:25:01 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.12.0+git20240316.f6e378c8:
+  * build previous
+  * 6.12.0 doc link
+  * miller 6.12.0
+  * Add descriptions for `put` and `filter` verbs (#1529)
+  * Avoid spurious `[]` on JSON output in some cases (#1528)
+  * Bump actions/checkout from 4.1.1 to 4.1.2 (#1526)
+  * Bump golang.org/x/term from 0.17.0 to 0.18.0 (#1522)
+  * Bump golang.org/x/sys from 0.17.0 to 0.18.0 (#1521)
+  * Bump github.com/stretchr/testify from 1.8.4 to 1.9.0 (#1516)
+
+-------------------------------------------------------------------
+Fri Mar 01 15:02:56 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.11.0+git20240301.e528b9e11:
+  * Bump actions/cache from 4.0.0 to 4.0.1 (#1511)
+  * Improved file-not-found handling (#1508)
+  * python/make-tsv.py
+  * Enable record-hashing by default (#1507)
+  * Miller produces no output on TSV with > 64K characters per line (#1505)
+  * Separate out `ILineReader` abstraction (#1504)
+  * Bump github.com/klauspost/compress from 1.17.6 to 1.17.7 (#1502)
+  * Support thousands separator in `fmtnum` (#1499)
+  * make dev artifacts for sparsify
+  * mlr sparsify (#1498)
+
+-------------------------------------------------------------------
 Wed Feb 21 15:18:43 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Thu Feb 08 14:56:39 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.11.0+git20240208.cd6d42736:
+  * Bump golang.org/x/term from 0.16.0 to 0.17.0 (#1494)
+  * Bump github.com/klauspost/compress from 1.17.5 to 1.17.6 (#1492)
+  * Bump actions/upload-artifact from 4.3.0 to 4.3.1 (#1491)
+  * sort-link doc update
+  * Bump github.com/klauspost/compress from 1.16.7 to 1.17.5 (#1486)
+  * 6.11.0-dev (#1484)
+  * Bump actions/upload-artifact from 4.2.0 to 4.3.0 (#1483)
+  * update release docs
 
 -------------------------------------------------------------------
 Tue Jan 23 22:59:57 UTC 2024 - scott.bradnick@suse.com
