@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 24 08:54:18 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.18.1
+  * meson: allow building static library, not just shared 
+
+-------------------------------------------------------------------
 Thu Feb 29 18:52:53 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

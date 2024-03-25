@@ -204,4 +204,13 @@
     <comment></comment>
     <requestid>1153716</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8845ff7375083ab1b655d1ab85c38e4c</srcmd5>
+    <version>0.18.1</version>
+    <time>1711397222</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.18.1
+  * meson: allow building static library, not just shared</comment>
+    <requestid>1161092</requestid>
+  </revision>
 </revisionlist>

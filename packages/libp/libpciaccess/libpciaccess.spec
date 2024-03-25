@@ -18,7 +18,7 @@
 
 Name:           libpciaccess
 %define lname	libpciaccess0
-Version:        0.18
+Version:        0.18.1
 Release:        0
 Summary:        Generic PCI access library
 License:        MIT
