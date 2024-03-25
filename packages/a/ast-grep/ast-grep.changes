@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 25 06:21:57 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.1:
+  * feat: respect suppression in lsp #1019
+
+-------------------------------------------------------------------
+Mon Mar 25 06:21:41 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.0:
+  * test: add test for error suppression in scan #1007
+  * refactor: merge CombinedScan::scan and CombinedScan::diff #1011
+  * feat: report error count instead of file count #1009
+  * feat: suppress specific rule #1005
+  * fix: skip suppressed error #1006
+  * feat: support error/warning suppression #446
+  * fix(deps): update babel monorepo da9a938
+  * fix(deps): update dependency @swc/core to v1.4.8 d81365a
+  * feat: add more states for rule suppression 41a058c
+
+-------------------------------------------------------------------
 Mon Mar 11 07:22:42 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.4:

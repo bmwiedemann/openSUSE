@@ -167,4 +167,24 @@
   * fix(deps): update rust crate pyo3 to 0.20.3 23653c2</comment>
     <requestid>1156842</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>34ec62dd91349e4f0bd080363987d932</srcmd5>
+    <version>0.20.1+0</version>
+    <time>1711397524</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.20.1:
+  * feat: respect suppression in lsp #1019
+
+- Update to 0.20.0:
+  * test: add test for error suppression in scan #1007
+  * refactor: merge CombinedScan::scan and CombinedScan::diff #1011
+  * feat: report error count instead of file count #1009
+  * feat: suppress specific rule #1005
+  * fix: skip suppressed error #1006
+  * feat: support error/warning suppression #446
+  * fix(deps): update babel monorepo da9a938
+  * fix(deps): update dependency @swc/core to v1.4.8 d81365a
+  * feat: add more states for rule suppression 41a058c</comment>
+    <requestid>1161276</requestid>
+  </revision>
 </revisionlist>
