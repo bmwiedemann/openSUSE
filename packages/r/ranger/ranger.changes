@@ -1,8 +1,71 @@
 -------------------------------------------------------------------
+Sun Mar 17 16:47:04 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.9.3+git20240221.38bb890:
+  * Don't crash on incomplete filter_stack input
+  * mime.types: Add common requests
+  * report file byte size in IIP
+  * GHActions: Set TERM for test_py job
+  * GHActions: Set TERM to avoid setupterm errors
+  * GHActions: Fix step ID in indexing operations
+  * GHActions: Rename PR workflow job to reduce confusion
+  * GHActions: Run complete PR workflow if changed
+  * GHActions: Drop ${{ }} from if conditionals
+  * GHActions: Run all Python tests on PRs too
+  * GHActions: Merge all Python tests and lints into one Action
+  * shutil_generatorized: Add space to inline comment for PEP8
+  * fixup! ext/shutil_generatorized: copy_file_range only on recent Linux
+  * fixup! Shutil modified to use os.copy_file_range When passed the option to do so
+  * Revert "CopyLoader has been modified"
+  * Revert "Default setting value for new copy on write setting"
+  * Revert "Syntax adjustments to pass test suite"
+  * Revert "Add new copy on write setting to ALLOWED_SETTINGS"
+  * Revert "Updated man files for new setting which can be used to enable copy"
+  * ext/shutil_generatorized: copy_file_range only on recent Linux
+  * Sorted make test errors
+  * fix syntax errors
+  * Revert "Fixed syntax error in shutil_generatorized.py"
+  * Fixed syntax error in shutil_generatorized.py
+  * Revert "Update shutil_generatorized.py"
+  * Update shutil_generatorized.py
+  * Update shutil_generatorized.py
+  * Update shutil_generatorized.py
+  * Update shutil_generatorized.py
+  * Fixing syntax error in new os.copy_file_range code
+  * Syntax adjustments to pass test suite
+  * Shutil modified to use os.copy_file_range When passed the option to do so
+  * CopyLoader has been modified To pass the new copy on write setting to shutil
+  * Add new copy on write setting to ALLOWED_SETTINGS Enables setting to be used in code
+  * Default setting value for new copy on write setting Ensure setting is off by default
+  * Updated man files for new setting which can be used to enable copy on write functionality.
+
+-------------------------------------------------------------------
 Wed Feb 21 15:08:58 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
   %patchN.
+
+-------------------------------------------------------------------
+Tue Jul 25 13:56:56 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.9.3+git20230531.1a00715:
+  * Remove duplicated function next_available_filename
+  * scope.sh: Enable DjVu previews by default
+
+-------------------------------------------------------------------
+Wed Apr 26 16:37:56 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.9.3+git20230425.fe7c3b2:
+  * man: Document filter_dead_tabs_on_startup
+  * main: Refactor to avoid TOCTOU
+  * Initial version of dead-path tab switch control
+  * Revert "This is a combination of 6 commits"
+  * Keep duplicate tabs on startup
+  * Delete dead tabs on startup conditionally
+  * This is a combination of 6 commits
+  * Maintain tab order while filtering out duplicates and dead entries
+  * Remove non-existent paths from fm.start_paths
+  * Remove duplicate tabs on startup
 
 -------------------------------------------------------------------
 Wed Apr 26 16:17:27 UTC 2023 - Jan Engelhardt <jengelh@inai.de>

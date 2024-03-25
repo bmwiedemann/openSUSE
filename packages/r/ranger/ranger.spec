@@ -19,7 +19,7 @@
 %define short_version 1.9.3
 
 Name:           ranger
-Version:        1.9.3+git20230416.478d5b6
+Version:        1.9.3+git20240221.38bb890
 Release:        0
 Summary:        Console File Manager
 License:        GPL-3.0-or-later
