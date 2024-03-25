@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Mar 22 18:45:10 UTC 2024 - pdostal@suse.com
+
+- Update to version 2.46.0:
+  * Include draft ID in project item list JSON (#8754)
+  * build(deps): bump github.com/cpuguy83/go-md2man/v2 from 2.0.3 to 2.0.4
+  * Document run watch and view not supporting fine grained PATs
+  * Document auth switch behaviour for two or more accounts
+  * Improve discovery of `gh auth status`
+  * grammar: avoid e.g.+etc. together
+  * Fix the description of `gh release upload`
+  * Bump go-keyring to fix race condition
+  * feat: support `dry-run` in gh `pr create` (#8376)
+  * build(deps): bump google.golang.org/protobuf from 1.30.0 to 1.33.0
+  * fixed doc string
+  * remove repetitive word
+  * Fix breaking test for PR/issue # change
+  * Enhance 2nd round of issue and PR number output
+  * Apply first round of owner/repo#number consistency
+  * fix: format files
+  * feat(merge): add owner/repo in prompt
+
+-------------------------------------------------------------------
 Tue Mar 05 08:39:33 UTC 2024 - pdostal@suse.com
 
 - Update to version 2.45.0:
