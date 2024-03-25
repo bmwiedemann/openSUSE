@@ -27,7 +27,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           lighttpd
-Version:        1.4.74
+Version:        1.4.75
 Release:        0
 Summary:        A Secure, Fast, Compliant, and Very Flexible Web Server
 License:        BSD-3-Clause
@@ -37,17 +37,12 @@ Source:         https://download.lighttpd.net/lighttpd/releases-1.4.x/%{name}-%{
 Source1:        https://download.lighttpd.net/lighttpd/releases-1.4.x/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.sysconfig
 Source3:        %{name}.keyring
-Source4:        lightytest.sh
 Source7:        lighttpd.logrotate
 Patch0:         harden_lighttpd.service.patch
-BuildRequires:  FastCGI-devel
 BuildRequires:  cyrus-sasl-devel
-BuildRequires:  e2fsprogs-devel
-BuildRequires:  gamin-devel
 BuildRequires:  iputils
 BuildRequires:  krb5-devel
 BuildRequires:  libattr-devel
-BuildRequires:  libbz2-devel
 BuildRequires:  libdbi-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
@@ -79,15 +74,6 @@ Provides:       user(%{name})
 %if 0%{?suse_version} > 1500
 # pg_config moved to postgresql-server-devel in postgresql11* packages boo#1153722
 BuildRequires:  postgresql-server-devel
-%endif
-%if 0%{?suse_version} >= 1330
-%if 0%{?suse_version} >= 1550
-BuildRequires:  php8-fastcgi
-%else
-BuildRequires:  php7-fastcgi
-%endif
-%else
-BuildRequires:  php5-fastcgi
 %endif
 
 %description
@@ -172,19 +158,7 @@ Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}
 
 %description mod_webdav
-The WebDAV module is a very minimalistic implementation of RFC 2518.
-Minimalistic means that not all operations are implementated yet..
-
-So far we have:
-* PROPFIND
-* OPTIONS
-* MKCOL
-* DELETE
-* PUT
-and the usual GET, POST, HEAD from HTTP/1.1..
-
-So far mounting a webdav resource into Windows XP works and the basic
-litmus tests are passed.
+A WebDAV implementation designed to be fast and compliant to RFC 4918.
 
 %package mod_authn_gssapi
 Summary:        GSSAPI authentication in lighttpd
@@ -222,11 +196,10 @@ A module to provide PAM authentication in lighttpd.
 %autosetup -p1 -n %{pkg_name}-%{pkg_version}
 
 %build
-export CFLAGS="%{optflags} -DLDAP_DEPRECATED -W -Wmissing-prototypes -Wmissing-declarations -Wpointer-arith -Wchar-subscripts -Wformat=2 -Wbad-function-cast -std=gnu99 -fstack-protector"
+export CFLAGS="%{optflags} -W -Wmissing-prototypes -Wmissing-declarations -Wpointer-arith -Wchar-subscripts -Wformat=2 -Wbad-function-cast -std=gnu99 -fstack-protector"
 %configure                      \
     --bindir=%{_sbindir}        \
     --libdir=%{_libdir}/%{name} \
-    --enable-lfs                \
     --enable-ipv6               \
     --with-ldap                 \
     --with-pam                  \
@@ -236,24 +209,17 @@ export CFLAGS="%{optflags} -DLDAP_DEPRECATED -W -Wmissing-prototypes -Wmissing-d
     --with-openssl              \
     --with-krb5                 \
     --with-lua                  \
-    --with-bzip2                \
     --with-zstd                 \
     --with-brotli               \
     --with-webdav-props         \
     --with-webdav-locks         \
-    --with-fam                  \
     --with-maxminddb            \
     --with-sasl                 \
     --with-attr
 %make_build
 
 %check
-%if 0%{?suse_version} > 1200
-export PHP="/srv/www/cgi-bin/php"
-%else
-export PHP="/srv/www/cgi-bin/php5"
-%endif
-sh -x %{SOURCE4}
+%make_build check
 
 %install
 %make_install

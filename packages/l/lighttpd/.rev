@@ -596,4 +596,12 @@ bsc#1181400</comment>
     <comment>lighttpd 1.4.74</comment>
     <requestid>1153941</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>0e57fb8ce9ffc1e0ae0591c7c6543f81</srcmd5>
+    <version>1.4.75</version>
+    <time>1711397345</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1160983</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 23 19:02:00 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.75:
+  * incrementally stronger TLS cipher defaults
+  * fix a regression in mod_dirlisting in lighttpd 1.4.74
+  * add missing file src/compat/sys/queue.h to the release tarball
+- packaging changes upon notes by the upstream developers:
+  * drop usage of lightytest.sh and PHP dependencies
+  * drop unneeeded build dependencies and build options
+  * drop non-default BZIP2 support
+  * update description of -mod_webdav
+
+-------------------------------------------------------------------
 Fri Mar  1 11:04:18 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.74:
