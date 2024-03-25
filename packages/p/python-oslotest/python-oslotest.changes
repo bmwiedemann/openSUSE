@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Mar 24 20:05:08 UTC 2024 - cloud-devel@suse.de
+
+- update to version 5.0.0
+  - pre-commit: Bump versions
+  - Drop python3.6/3.7 support in testing runtime
+  - Update python classifier in setup.cfg
+  - Replace find_module function
+  - Cleanup py27 support
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - tox: Bump minimum to tox 4.x
+  - Update CI to use unversioned jobs template
+  - Remove unnecessary unicode prefixes
+  - Remove usage of six
+  - Revert "Moves supported python runtimes from version 3.8 to 3.10"
+  - Fix formatting of release list
+  - Bump hacking
+
+-------------------------------------------------------------------
 Fri Aug 12 08:13:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - drop unnecessary mock dependency

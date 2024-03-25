@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslotest
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-oslotest
-Version:        4.5.0
+Version:        5.0.0
 Release:        0
 Summary:        OpenStack test framework
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslotest
-Source0:        https://files.pythonhosted.org/packages/source/o/oslotest/oslotest-4.5.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslotest/oslotest-5.0.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-debtcollector
 BuildRequires:  python3-fixtures >= 3.0.0
@@ -64,7 +64,7 @@ This package contains the Python 3.x module.
 %py3_install
 
 %check
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-oslotest
 %license LICENSE

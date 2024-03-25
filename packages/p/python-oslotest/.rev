@@ -362,4 +362,25 @@
 - remove unnecessary dependencies</comment>
     <requestid>994721</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9970e3990f15f41d1eb76ae9d446ded1</srcmd5>
+    <version>5.0.0</version>
+    <time>1711397472</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.0.0
+  - pre-commit: Bump versions
+  - Drop python3.6/3.7 support in testing runtime
+  - Update python classifier in setup.cfg
+  - Replace find_module function
+  - Cleanup py27 support
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - tox: Bump minimum to tox 4.x
+  - Update CI to use unversioned jobs template
+  - Remove unnecessary unicode prefixes
+  - Remove usage of six
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - Fix formatting of release list
+  - Bump hacking</comment>
+    <requestid>1161184</requestid>
+  </revision>
 </revisionlist>
