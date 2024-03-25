@@ -1,0 +1,80 @@
+#!/usr/bin/python3
+"""Scan grammar JavaScript sources for their dependencies"""
+
+# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: 2024 Björn Bidar
+
+# pylint: disable=invalid-name
+
+
+import fileinput
+import re
+from typing import Optional
+from pathlib import Path
+
+
+treeSitterGrammarSrcPath  = "/usr/include/tree_sitter"
+treeSitterGrammarSymbolToken  = "treesitter_grammar_src"
+grammarPaths = []
+
+def resolveFile(grammarFile: str) -> str:
+    """Resolve GRAMMARFILE from grammarPaths return found file"""
+    fullGrammarFilePath = Path(grammarFile)
+    currentGrammarPath = fullGrammarFilePath.parent
+    currentGrammarFile = Path(grammarFile)
+    if currentGrammarPath != Path('.') and currentGrammarPath.parts[0] == "..":
+        # resolve path relative to file found last
+        currentGrammarPath = grammarPaths[-1] / fullGrammarFilePath
+        if not currentGrammarPath.exists():
+            return False
+        return currentGrammarPath
+    if currentGrammarPath.is_absolute():
+        grammarPaths.append(currentGrammarPath)
+        if Path(grammarFile).exists():
+            return fullGrammarFilePath
+    for path in grammarPaths:
+        maybeFound = path / currentGrammarFile
+        if maybeFound.exists():
+            return maybeFound.exists()
+    return False
+
+def dummyRequire(requiredFile_fd: str, maxDepth: Optional[int] = 5 ) -> str:
+    """Dummy version of node's require function that spits out dependency symbols"""
+    if maxDepth <= 0:
+        return
+
+    if not requiredFile_fd.endswith(".js"):
+        # Append .js to required file name in case is not specified
+        # we have to remove .js suffix later in any case.
+        requiredFile_fd+=".js"
+
+    resolvedFile_fd = resolveFile(requiredFile_fd)
+    if resolvedFile_fd:
+        try:
+            with open(resolvedFile_fd, mode='r', encoding='utf8') as requiredFile:
+                for r_line in requiredFile:
+                    require_re = r'.*require\((.*)\).*'
+                    requiredLvl2 = re.match(require_re, r_line)
+                    #print(r_line)
+                    if requiredLvl2 is not None:
+                        requiredLvl2_grp_cleaned = \
+                            requiredLvl2.group(1).removeprefix("'").removesuffix("'")
+                        requiredLvl2_grp_cleaned = \
+                            requiredLvl2_grp_cleaned.removeprefix("\"").removesuffix("\"")
+                        if not requiredLvl2_grp_cleaned.split('/')[0] == "..":
+                            # Don't emit dependencies which are local
+                            pass
+                        dummyRequire(requiredLvl2_grp_cleaned, maxDepth - 1)
+        except FileNotFoundError:
+            pass
+    else:
+        if maxDepth == 5:
+            # In case we immediately fail to open the first grammar source file
+            return
+        # We only want to resolve dependencies outside of the package
+        print(f"{treeSitterGrammarSymbolToken}({Path(requiredFile_fd).parent})")
+
+for line in fileinput.input():
+    line = line.rstrip('\n')
+    if line.endswith('.js'):
+        dummyRequire(line)

@@ -1,0 +1,26 @@
+# -*- rpm-spec -*-
+# SPDX-License-Identifier: GPL-2.0
+# SPDX-FileCopyrightText: 2024 Björn Bidar
+%_treesitter_base_name tree-sitter
+%_treesitter_grammardir %{_libdir}
+%_treesitter_grammar_develdir %{_includedir}/%{_treesitter_base_name}/grammars
+%_treesitter_grammar_base_libname lib%{_treesitter_base_name}
+%treesitter_target() %{_rpmconfigdir}/tree-sitter-target.py
+%treesitter_set_flags export NODE_PATH=$NODE_PATH:%{_treesitter_grammar_develdir}:$PWD
+
+%__treesitter_devel_package_name() %name-devel
+%treesitter_devel_package \
+%package -n %{__treesitter_devel_package_name} \
+Summary: Devel package for %{name} containing it's grammar source \
+BuildArch: noarch \
+%{_treesitter_devel_provides} \
+%description -n %{__treesitter_devel_package_name} \
+This package contains grammar sources for use in other grammars. \
+%files -n %{__treesitter_devel_package_name} \
+%{treesitter_devel_files}
+
+### LUA-MACROS ###
+
+
+
+%_treesitter_macro_init %{_treesitter_definitions}%{lua: rpm.define("_treesitter_macro_init %{nil}")}

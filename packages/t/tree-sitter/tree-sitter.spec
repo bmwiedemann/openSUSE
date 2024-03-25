@@ -1,7 +1,7 @@
 #
 # spec file for package tree-sitter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,25 @@
 %define somajor 0
 %define libdirname tree_sitter
 Name:           tree-sitter
-Version:        0.20.8
+Version:        0.22.2
 Release:        0
 Summary:        An incremental parsing system for programming tools
-License:        MIT
+License:        GPL-2.0-only AND MIT
 URL:            https://tree-sitter.github.io/
 Source0:        https://github.com/tree-sitter/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
-Source10:       cargo_config
+Source1:        vendor.tar.zst
 Source11:       baselibs.conf
+Source20:       tree-sitter-target.py
+Source21:       macros.in
+Source22:       macros.lua
+Source23:       functions.lua
+Source24:       compile-macros.sh
+Source25:       treesitter_grammar.attr
+Source26:       treesitter_grammar.req
 BuildRequires:  cargo-packaging
 BuildRequires:  rust > 1.40
 Requires:       lib%{name}%{somajor} = %{version}
+Requires:       nodejs
 %{?suse_build_hwcaps_libs}
 
 %description
@@ -66,8 +73,9 @@ developing applications that use %{name}.
 %prep
 %autosetup -p1 -a1
 
-mkdir -p .cargo
-cp %{SOURCE10} .cargo/config
+cp %{SOURCE21} .
+cp %{SOURCE22} .
+cp %{SOURCE23} .
 
 # fix VERSION in Makefile
 sed -i -e '/^VERSION/s/:= .*$/:= %{version}/' Makefile
@@ -78,6 +86,8 @@ export CFLAGS='%{optflags}'
 export PREFIX='%{_prefix}' LIBDIR='%{_libdir}'
 %make_build
 
+sh %{SOURCE24}
+
 %install
 export PREFIX='%{_prefix}' LIBDIR='%{_libdir}' INCLUDEDIR='%{_includedir}'
 %make_install
@@ -86,12 +96,22 @@ install -p -m 0755 -D %{_builddir}/%{name}-%{version}/target/release/tree-sitter
 
 find %{buildroot} -type f \( -name "*.la" -o -name "*.a" \) -delete -print
 
+install -Dm644 macros.treesitter %{buildroot}%{_rpmmacrodir}/macros.treesitter
+install -Dm755 %{SOURCE20} %{buildroot}%{_rpmconfigdir}/$(basename %{SOURCE20})
+
+install -Dm644 %{SOURCE25} %{buildroot}%{_fileattrsdir}/$(basename %{SOURCE25})
+install -Dm755 %{SOURCE26} %{buildroot}%{_rpmconfigdir}/$(basename %{SOURCE26})
+
 %post -n lib%{name}%{somajor} -p /sbin/ldconfig
 %postun -n lib%{name}%{somajor} -p /sbin/ldconfig
 
 %files
 %doc README.md CONTRIBUTING.md
 %{_bindir}/tree-sitter
+%{_rpmconfigdir}/tree-sitter-target.py
+%{_rpmmacrodir}/macros.treesitter
+%{_rpmconfigdir}/treesitter_grammar.req
+%{_fileattrsdir}/treesitter_grammar.attr
 
 %files -n lib%{name}%{somajor}
 %license LICENSE

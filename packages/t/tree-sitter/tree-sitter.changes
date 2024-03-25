@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Mar 22 19:35:31 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Add packaging macros for tree-sitter grammar
+- Add missing dependency for tree-sitter generate
+
+-------------------------------------------------------------------
+Tue Mar 19 07:17:25 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.22.2:
+  * fix(lib): allow hiding symbols
+  * feat(lib): implement Display for Node
+  * test: fix header writes
+  * chore: turbofish styling
+  * feat(cli)!: add a separate build command to compile parsers
+  * ci: simplify workflows
+  * docs(license): update year
+  * fix(lib): avoid possible UB of calling memset on a null ptr when 0 is passed into `array_grow_by`
+  * fix(lib): makefile installation
+- Update _service file
+  * replace obsoleted mode "disabled" with "manual"
+  * use download_files instead of performing scm
+
+-------------------------------------------------------------------
 Thu Apr  6 19:36:21 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Build AVX2 enabled hwcaps library for x86_64-v3

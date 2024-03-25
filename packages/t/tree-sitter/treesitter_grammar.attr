@@ -1,0 +1,2 @@
+%__treesitter_grammar_requires %{_rpmconfigdir}/treesitter_grammar.req
+%__treesitter_grammar_path ^%{_treesitter_grammar_develdir}/.*\.js
