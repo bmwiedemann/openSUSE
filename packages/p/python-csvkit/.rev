@@ -483,4 +483,41 @@
   * /scripts/csvjoin uses the correct columns when performing a --right join.</comment>
     <requestid>1132979</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d1c3e9146a02ac8fd872610070c8a02f</srcmd5>
+    <version>1.4.0</version>
+    <time>1711397449</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.0:
+  * feat: :doc:`/scripts/csvpy` adds the options:   --no-number-
+    ellipsis, to disable the ellipsis (…) if max precision is
+    exceeded, for example, when using table.print_table()
+    --sniff-limit` --no-inference`
+  * feat: :doc:`/scripts/csvpy` adds the options:
+  * --no-number-ellipsis, to disable the ellipsis (…) if max
+    precision is exceeded, for example, when using
+    table.print_table()
+  * feat: :doc:`/scripts/csvpy` removes the --linenumbers and
+    --zero output options, which had no effect.
+  * feat: :doc:`/scripts/csvpy` removes the --linenumbers and
+    --zero output options, which had no effect.
+  * feat: :doc:`/scripts/in2csv` adds a --reset-dimensions option
+    to recalculate the dimensions of an XLSX file, instead of
+    trusting the file's metadata. csvkit's dependency agate-excel
+    0.4.0 automatically recalculates the dimensions if the file's
+    metadata expresses dimensions of &quot;A1:A1&quot; (a single cell).
+  * feat: :doc:`/scripts/in2csv` adds a --reset-dimensions option
+    to recalculate the dimensions of an XLSX file, instead of
+    trusting the file's metadata. csvkit's dependency agate-excel
+    0.4.0 automatically recalculates the dimensions if the file's
+    metadata expresses dimensions of &quot;A1:A1&quot; (a single cell).
+  * fix: :doc:`/scripts/csvlook` only reads up to --max-rows rows
+    instead of the entire file.
+  * fix: :doc:`/scripts/csvlook` only reads up to --max-rows rows
+    instead of the entire file.
+  * fix: :doc:`/scripts/csvpy` supports the existing input
+    options:   --locale --blanks --null-value --date-format
+    --datetime-format --skip-lines</comment>
+    <requestid>1161151</requestid>
+  </revision>
 </revisionlist>
