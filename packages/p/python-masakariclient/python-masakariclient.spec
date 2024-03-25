@@ -18,14 +18,14 @@
 
 %global oldpython python
 Name:           python-masakariclient
-Version:        8.3.0
+Version:        8.4.0
 Release:        0
 Epoch:          0
 Summary:        Python API and CLI for OpenStack Masakari
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-masakariclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-masakariclient/python-masakariclient-8.3.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-masakariclient/python-masakariclient-8.4.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable
 BuildRequires:  python3-ddt
@@ -82,8 +82,8 @@ This package contains the documentation.
 %{py3_build}
 
 # Build HTML docs and man page
-PBR_VERSION=8.3.0 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=8.3.0 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=8.4.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=8.4.0 %sphinx_build -b man doc/source doc/build/man
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install
