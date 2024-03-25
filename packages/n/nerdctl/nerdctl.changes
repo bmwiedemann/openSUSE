@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 23 13:23:12 UTC 2024 - mark_nefedov@outlook.com
+
+- Update to version 1.7.5:
+  * update imgcrypt (1.1.10)
+  * build(deps): bump google.golang.org/protobuf from 1.32.0 to 1.33.0
+  * update Kubo (0.27.0)
+  * update RootlessKit (2.0.2)
+  * update CNI plugins (1.4.1)
+  * update slirp4netns (1.2.3)
+  * update containerd (1.7.14),(1.6.30)
+  * build(deps): bump github.com/containerd/containerd from 1.7.13 to 1.7.14
+  * build(deps): bump github.com/go-jose/go-jose/v3 from 3.0.1 to 3.0.3
+  * CI: test compilation with Go 1.22
+  * rootless: fix `Not Authorized(uid): org.fedoraproject.FirewallD1.config`
+  * update RootlessKit (2.0.1)
+
+-------------------------------------------------------------------
 Mon Feb 05 08:16:42 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 1.7.3:
