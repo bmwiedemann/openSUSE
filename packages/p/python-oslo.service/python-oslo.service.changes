@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 24 20:03:54 UTC 2024 - cloud-devel@suse.de
+
+- update to version 3.4.0
+  - Fix native threads on child process
+  - pre-commit: Bump versions
+  - pre-commit: Integrate doc8 and bandit
+  - reno: Update master for unmaintained/yoga
+  - Update master for stable/2023.2
+  - Update python classifier in setup.cfg
+  - Bump hacking
+  - Switch to coverage command
+
+-------------------------------------------------------------------
 Thu Jan  4 09:09:31 UTC 2024 - cloud-devel@suse.de
 
 - update to version 3.2.0

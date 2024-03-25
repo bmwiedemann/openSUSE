@@ -398,4 +398,20 @@
   - Moves supported python runtimes from version 3.8 to 3.10</comment>
     <requestid>1138714</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d70b9bf54f479aaf3336e7d88c669125</srcmd5>
+    <version>3.4.0</version>
+    <time>1711397470</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.4.0
+  - Fix native threads on child process
+  - pre-commit: Bump versions
+  - pre-commit: Integrate doc8 and bandit
+  - reno: Update master for unmaintained/yoga
+  - Update master for stable/2023.2
+  - Update python classifier in setup.cfg
+  - Bump hacking
+  - Switch to coverage command</comment>
+    <requestid>1161182</requestid>
+  </revision>
 </revisionlist>
