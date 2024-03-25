@@ -95,12 +95,6 @@ xvfb-run ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags}
 popd
 %endif
 
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/wxmaxima.info%{ext_info}
-
-%postun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/wxmaxima.info%{ext_info}
-
 %files
 %license COPYING GPL.txt
 %doc %{_datadir}/doc/%{tarname}/
