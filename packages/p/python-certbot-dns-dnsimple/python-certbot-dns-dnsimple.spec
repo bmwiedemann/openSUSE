@@ -1,7 +1,7 @@
 #
 # spec file for package python-certbot-dns-dnsimple
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-certbot-dns-dnsimple
-Version:        2.8.0
+Version:        2.9.0
 Release:        0
 Summary:        DNSimple Authenticator plugin for Certbot
 License:        Apache-2.0
@@ -27,13 +26,16 @@ URL:            https://github.com/certbot/certbot
 Source:         https://files.pythonhosted.org/packages/source/c/certbot-dns-dnsimple/certbot-dns-dnsimple-%{version}.tar.gz
 BuildRequires:  %{python_module certbot >= %{version}}
 BuildRequires:  %{python_module dns-lexicon >= 3.14.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-acme >= %{version}
 Requires:       python-certbot >= %{version}
 Requires:       python-dns-lexicon >= 3.14.1
+Requires:       python-setuptools >= 41
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,10 +46,10 @@ DNSimple DNS Authenticator plugin for Certbot.
 %setup -q -n certbot-dns-dnsimple-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +58,7 @@ DNSimple DNS Authenticator plugin for Certbot.
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/certbot_dns_dnsimple
+%{python_sitelib}/certbot_dns_dnsimple-%{version}.dist-info
 
 %changelog
