@@ -290,4 +290,19 @@
   - Fix the docs job</comment>
     <requestid>1135453</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7fbcca2c36a7559fd243a1c12335918c</srcmd5>
+    <version>5.5.0</version>
+    <time>1711397464</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.5.0
+  - Add is_admin to redacted context
+  - Update python classifier in setup.cfg
+  - pre-commit: Bump dependencies
+  - reno: Update master for unmaintained/yoga
+  - tox: Drop envdir
+  - pre-commit: Integrate bandit, mypy
+  - Bump hacking</comment>
+    <requestid>1161173</requestid>
+  </revision>
 </revisionlist>
