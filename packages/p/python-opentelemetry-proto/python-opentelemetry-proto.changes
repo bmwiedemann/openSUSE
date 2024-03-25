@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 22 20:43:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.23.0:
+  * drop python 3.7 support
+  * update to opentelemetry 0.20.0 data model, which includes:
+    + Handle HTTP 2XX responses as successful in OTLP exporters
+
+-------------------------------------------------------------------
 Mon Jan 15 20:30:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - Initial package (1.22.0)

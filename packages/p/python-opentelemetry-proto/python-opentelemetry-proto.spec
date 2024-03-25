@@ -16,13 +16,15 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-opentelemetry-proto
-Version:        1.22.0
+Version:        1.23.0
 Release:        0
 Summary:        OpenTelemetry Python Proto
 License:        Apache-2.0
 URL:            https://github.com/open-telemetry/opentelemetry-python
 Source:         https://files.pythonhosted.org/packages/source/o/opentelemetry-proto/opentelemetry_proto-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
