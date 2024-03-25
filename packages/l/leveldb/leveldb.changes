@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 25 05:43:50 UTC 2024 - David Disseldorp <ddiss@suse.de>
+
+- Use C++14 to satisfy GTest's new minimum version requirement
+  [bsc#1221870]
+
+-------------------------------------------------------------------
 Mon Jan 22 09:31:24 UTC 2024 - pgajdos@suse.com
 
 - remove faulty and noop assignment

@@ -80,11 +80,11 @@ This package holds the development files for statically linking leveldb.
 %build
 # unfortunately a two-pass build is needed for shared and static libs
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%cmake -DBUILD_SHARED_LIBS=ON
+%cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_CXX_STANDARD=14
 %cmake_build
 cd ..
 %define __builddir build_static
-%cmake -DBUILD_SHARED_LIBS=OFF
+%cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_CXX_STANDARD=14
 %cmake_build
 
 %install
