@@ -1,7 +1,7 @@
 #
 # spec file for package purple-mattermost
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,11 @@ URL:            https://github.com/EionRobb/purple-mattermost
 Source:         https://github.com/EionRobb/purple-mattermost/archive/v%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(json-glib-1.0)
+%if 0%{?suse_version} >= 1650
+BuildRequires:  pkgconfig(libmarkdown) >= 3.0.0
+%else
 BuildRequires:  pkgconfig(libmarkdown)
+%endif
 BuildRequires:  pkgconfig(libprotobuf-c)
 BuildRequires:  pkgconfig(purple)
 

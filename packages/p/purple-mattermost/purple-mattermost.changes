@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 20 02:15:31 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Require pkgconfig(libmarkdown) >= 3.0.0 for oS >= 1650 to avoid
+  conflict with libmarkdown2-devel, which also provides the same
+  pkgconfig(libmarkdown).
+
+-------------------------------------------------------------------
 Mon Dec  5 20:41:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1:
