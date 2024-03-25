@@ -421,4 +421,12 @@
   * Fix issue with limiting DHCPv4 attempts. (forwarded request 1147317 from alois)</comment>
     <requestid>1147787</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>3262e869309a4775cc570b2a70d75e4c</srcmd5>
+    <version>2.16</version>
+    <time>1711397335</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1160921</requestid>
+  </revision>
 </revisionlist>
