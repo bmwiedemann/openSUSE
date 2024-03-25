@@ -638,4 +638,16 @@ additions, including new UTF-8 compose sequences for:
     <comment></comment>
     <requestid>1154330</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>fef151c173be4f89a9ad65d136ba38df</srcmd5>
+    <version>1.8.8</version>
+    <time>1711397227</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.8.8
+ * Fix XIM input sometimes jumbled (#198, !236)
+ * Fix _XkbReadGetDeviceInfoReply for nButtons == dev-&gt;buttons (!237)
+ * Drop ifdefs for platforms that are no longer supported (!242, !243)
+ * Assorted memory handling cleanups</comment>
+    <requestid>1161216</requestid>
+  </revision>
 </revisionlist>

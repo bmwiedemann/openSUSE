@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 25 01:45:51 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 1.8.8
+ * Fix XIM input sometimes jumbled (#198, !236)
+ * Fix _XkbReadGetDeviceInfoReply for nButtons == dev->buttons (!237)
+ * Drop ifdefs for platforms that are no longer supported (!242, !243)
+ * Assorted memory handling cleanups
+
+-------------------------------------------------------------------
 Fri Mar  1 17:52:11 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim descriptions for size (keep the big one for the prominently
