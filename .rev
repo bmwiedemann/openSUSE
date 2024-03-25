@@ -7,4 +7,15 @@
     <comment></comment>
     <requestid>1139028</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>affdba0f52b36399f4e1e0c542f30984</srcmd5>
+    <version>1.23.0</version>
+    <time>1711397565</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.23.0:
+  * drop python 3.7 support
+  * update to opentelemetry 0.20.0 data model, which includes:
+    + Handle HTTP 2XX responses as successful in OTLP exporters</comment>
+    <requestid>1160936</requestid>
+  </revision>
 </revisionlist>
