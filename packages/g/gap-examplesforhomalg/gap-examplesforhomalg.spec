@@ -1,7 +1,7 @@
 #
 # spec file for package gap-examplesforhomalg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-examplesforhomalg
-Version:        2022.11.01
-%define sillyver 2022.11-01
+Version:        2023.10.01
+%define sillyver 2023.10-01
 Release:        0
 Summary:        GAP: Examples for the homalg GAP Package
 License:        GPL-2.0-only
@@ -28,14 +28,14 @@ URL:            https://homalg-project.github.io/pkg/ExamplesForHomalg
 Source:         https://github.com/homalg-project/homalg_project/releases/download/ExamplesForHomalg-%sillyver/ExamplesForHomalg-%sillyver.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.11.1
+Requires:       gap-core >= 4.12.1
 Requires:       gap-gapdoc >= 1.1
-Requires:       gap-gaussforhomalg >= 2019.09.01
+Requires:       gap-gaussforhomalg >= 2023.08.01
 Requires:       gap-homalg >= 2015.06.01
-Requires:       gap-homalgtocas >= 2011.08.25
-Requires:       gap-matricesforhomalg >= 2020.05.09
-Requires:       gap-modules >= 2020.05.09
-Requires:       gap-ringsforhomalg >= 2021.10.01
+Requires:       gap-homalgtocas >= 2023.08.01
+Requires:       gap-matricesforhomalg >= 2023.10.01
+Requires:       gap-modules >= 2023.10.01
+Requires:       gap-ringsforhomalg >= 2023.09.01
 
 %description
 The ExamplesForHomalg package provides example scripts for the homalg
