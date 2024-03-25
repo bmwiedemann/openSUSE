@@ -63,6 +63,7 @@ sed -i '1{/^#!/d}' urlextract/*.py
 
 %check
 %pytest -k 'not test_dns'
+find %{buildroot} -name tlds-alpha-by-domain.txt.lock -delete # avoid modification of build results by tests
 
 %post
 %python_install_alternative urlextract

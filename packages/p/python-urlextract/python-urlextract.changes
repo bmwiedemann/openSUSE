@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 25 09:00:45 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Avoid modification of build results by tests
+
+-------------------------------------------------------------------
 Tue Mar 19 13:01:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.0:
