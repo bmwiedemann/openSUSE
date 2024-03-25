@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 25 06:55:54 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.94.3
+
+- Update 2.94.3
+  * Fix handling of external JSON-LD generation (#617)
+    Additionally, this commit changes:
+
+    * Add language into external JSON-LD filename
+    * Take into account rootid parameter for filename
+    * Enable JSON-LD structure for HTML by default
+  * Correct social media length (#615) 
+
+-------------------------------------------------------------------
 Tue Mar 19 12:57:02 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.94.2
 
 - Update 2.94.2
