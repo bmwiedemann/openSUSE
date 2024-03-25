@@ -53,7 +53,7 @@ LC_ALL=POSIX
 AREA=%{AREA}
 ZONE=%{ZONE}
 export AREA LANG LC_ALL ZONE
-%make_build TZDIR=%{_datadir}/zoneinfo CC="gcc" CFLAGS="%{optflags} -DHAVE_GETTEXT=1 -DTZDEFAULT='\"%{_sysconfdir}/localtime\"' -DTM_GMTOFF=tm_gmtoff -DTM_ZONE=tm_zone -Dlint" AWK=awk BUGEMAIL="opensuse-support@opensuse.org"
+%make_build TZDIR=%{_datadir}/zoneinfo CC="gcc" CFLAGS="%{optflags} -DHAVE_GETTEXT=1 -DTZDEFAULT='\"%{_sysconfdir}/localtime\"' -DTM_GMTOFF=tm_gmtoff -DTM_ZONE=tm_zone -Dlint" AWK=awk BUGEMAIL="opensuse-support@opensuse.org" KSHELL=/bin/sh
 %make_build TZDIR=zoneinfo AWK=awk zones
 # Generate posixrules
 ./zic -b fat -y ./yearistype -d zoneinfo -p %{AREA}/%{ZONE}
