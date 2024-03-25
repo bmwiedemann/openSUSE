@@ -144,4 +144,13 @@
     client forcefully closes connexion, for Windows.</comment>
     <requestid>1157812</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7f663fd7f7e904cc66c0433d77d29650</srcmd5>
+    <version>2.1.1</version>
+    <time>1711397521</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.1.1:
+  * Fix MacOS build error</comment>
+    <requestid>1161275</requestid>
+  </revision>
 </revisionlist>
