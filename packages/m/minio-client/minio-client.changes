@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 23 09:44:33 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240320T210729Z:
+  * Expose getClusterRegInfo (#4881)
+  * Fix functional-tests.sh file generation under macOS (#4875)
+
+-------------------------------------------------------------------
 Sat Mar 16 19:59:28 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240313T235157Z:
