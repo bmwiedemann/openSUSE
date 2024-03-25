@@ -1965,4 +1965,16 @@ those sources for i586 on its own.</comment>
     <user>dimstar_suse</user>
     <comment>KDE Plasma can be skipped on s390x</comment>
   </revision>
+  <revision rev="276" vrev="274">
+    <srcmd5>66274973fd3ceba24dc2b7a73d9c7c2d</srcmd5>
+    <version>unknown</version>
+    <time>1711360436</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="277" vrev="275">
+    <srcmd5>f4d933be7324ee71a87b852387a3b0a1</srcmd5>
+    <version>unknown</version>
+    <time>1711360609</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
