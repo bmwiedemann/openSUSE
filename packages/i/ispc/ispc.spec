@@ -42,7 +42,7 @@ BuildRequires:  clang%llvm_ver-devel
 BuildRequires:  cmake >= 3.13
 BuildRequires:  flex
 %if %{with openmp_task_model}
-BuildRequires:  libomp-devel
+BuildRequires:  libomp%llvm_ver-devel
 %else
 BuildRequires:  tbb-devel
 %endif
