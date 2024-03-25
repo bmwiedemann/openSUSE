@@ -17,7 +17,7 @@
 
 
 Name:           python-moto
-Version:        5.0.1
+Version:        5.0.3
 Release:        0
 Summary:        Library to mock out tests based on AWS
 License:        Apache-2.0
@@ -58,6 +58,7 @@ BuildRequires:  %{python_module docker >= 3.0.0}
 BuildRequires:  %{python_module ecdsa}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module graphql-core}
+BuildRequires:  %{python_module joserfc}
 BuildRequires:  %{python_module jsondiff >= 1.1.2}
 BuildRequires:  %{python_module jsonpickle}
 BuildRequires:  %{python_module openapi-spec-validator >= 0.5.0}
@@ -67,11 +68,9 @@ BuildRequires:  %{python_module pytest-order}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.1 with %python-python-dateutil < 3}
-BuildRequires:  %{python_module python-jose}
 BuildRequires:  %{python_module python-multipart}
 BuildRequires:  %{python_module requests >= 2.5}
 BuildRequires:  %{python_module responses >= 0.15.0}
-BuildRequires:  %{python_module sshpubkeys >= 3.1.0}
 BuildRequires:  %{python_module surer}
 BuildRequires:  %{python_module xmltodict}
 BuildRequires:  %{python_module Werkzeug >= 0.5 without (%python-Werkzeug >= 2.2.0 with %python-Werkzeug < 2.2.2)}
@@ -90,15 +89,14 @@ Requires:       python-cfn-lint >= 0.40.0
 Requires:       python-docker >= 3.0.0
 Requires:       python-ecdsa
 Requires:       python-graphql-core
+Requires:       python-joserfc
 Requires:       python-jsondiff >= 1.1.2
 Requires:       python-moto = %{version}
 Requires:       python-openapi-spec-validator >= 0.5.0
 Requires:       python-py-partiql-parser >= 0.5.0
 Requires:       python-pyparsing >= 3.0.7
-Requires:       python-python-jose
 Requires:       python-python-multipart
 Requires:       python-setuptools
-Requires:       python-sshpubkeys >= 3.1.0
 
 %description all
 A library that allows your python tests to mock out the boto
@@ -171,7 +169,7 @@ donttest+=" or test_invoke_local_lambda_layers"
 donttest+=" or test_failed_job or test_failed_dependencies"
 donttest+=" or TestResponsesMockWithPassThru"
 # (?)
-python311_donttest=" or test_send_raw_email"
+donttest+=" or test_send_raw_email"
 # 32-bit platforms can't handle dates beyond 2038
 [ $(getconf LONG_BIT) -eq 32 ] && donttest+=" or test_list_pipelines_created_after"
 # see Makefile

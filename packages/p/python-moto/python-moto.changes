@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Mar 25 07:30:16 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.0.3:
+  # General:
+    * New configuration options for:
+      + Passing URL's through the proxy
+      + Configuring Docker-less services in ServerMode
+    * Removed the `python-jose` and `sshpubkeys` dependencies in favor of
+      `joserfc`.
+  # Miscellaneous:
+    * ApiGateway: update_usage_plan() now supports adding apiStages
+    * Athena: get_query_execution() now returns exact OutputLocation file
+    * Autoscaling: describe_auto_scaling_groups() now supports the
+      filters-argument
+    * CloudFront: create_distribution() now supports CustomHeaders
+    * CloudFront: update_distribution() now handles updates to
+      DistributionConfig correctly
+    * CloudFormation - Now supports creation and deletion of
+      AWS::EMR::Cluster
+    * CloudFormation - Now supports creation and deletion of
+      AWS::EMR::SecurityConfiguration
+    * CloudFormation - Now supports creation and deletion of
+      AWS::EFS::AccessPoint
+    * CloudFormation - Now supports creation and deletion of
+      AWS::EFS::FileSystem
+    * CloudFormation - Now supports creation and deletion of
+      AWS::EMR::InstanceGroupConfig
+    * CloudFormation - Now supports deletion of AWS::Logs::LogGroup
+    * CloudFormation: delete_stack() now handles resource dependencies better
+    * CloudWatch: put_metric_data() now supports large (compressed) requests
+    * CognitoIDP: admin_initiate_auth() and respond_to_auth_challenge()
+      now support SMS_MFA
+    * DynamoDB: transact_write_items() now raises ValidationException when
+      putting and deleting the same item
+    * EC2: authorize_security_group_egress/_ingress now support the
+      TagSpecifications-argument
+    * EC2: describe_security_group_rules() now supports Tag-filters
+    * S3: EventBridge notifications are now supported for
+      ObjectCreated:POST/COPY/MULTIPART_UPLOAD and ObjectDeleted
+    * SNS: subscribe() now adds support the `$or`, `equals-ignore-case` and
+      `suffix` features in a FilterPolicy
+    * SQS: send_message() should respect DelaySeconds of 0
+    * AWSLambda: The ImageConfig.EntryPoint of a function is now used when
+      invoking it in a Docker container
+    * CognitoIDP now allows public actions even if IAM auth is enabled
+    * DynamoDB: create_table() now validates the number of KeySchema-items
+    * EC2: modify_image_attributes() now supports all LaunchPermissions
+    * ECS: register_task_definition() now has improved validation around
+      `memory`-parameters
+    * Glue: create_database() now supports the `tags`-parameter
+    * IAM: assume_user()/create_user()/get_caller_identity() now return the
+      correct partition for China (aws-cn) when called from a Chinese region
+    * ResourceGroupsTagging: get_resources() now supports ELB resources
+    * Route53: list_hosted_zones() now supports pagination
+    * S3: put_bucket_notification_configuration() now supports
+      EventBridge-notifications
+    * SES now returns errors in the correct format
+
+-------------------------------------------------------------------
 Thu Feb  8 04:36:49 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.0.1:

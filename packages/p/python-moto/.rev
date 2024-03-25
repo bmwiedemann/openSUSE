@@ -289,4 +289,41 @@
   * IAM: The AWS managed Policies are no longer loaded by default.</comment>
     <requestid>1145032</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c911d747b812298e5d7a46c46207183a</srcmd5>
+    <version>5.0.3</version>
+    <time>1711397533</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.0.3:
+  # General:
+    * New configuration options for:
+      + Passing URL's through the proxy
+      + Configuring Docker-less services in ServerMode
+    * Removed the `python-jose` and `sshpubkeys` dependencies in favor of
+      `joserfc`.
+  # Miscellaneous:
+    * ApiGateway: update_usage_plan() now supports adding apiStages
+    * Athena: get_query_execution() now returns exact OutputLocation file
+    * Autoscaling: describe_auto_scaling_groups() now supports the
+      filters-argument
+    * CloudFront: create_distribution() now supports CustomHeaders
+    * CloudFront: update_distribution() now handles updates to
+      DistributionConfig correctly
+    * CloudFormation - Now supports creation and deletion of
+      AWS::EMR::Cluster
+    * CloudFormation - Now supports creation and deletion of
+      AWS::EMR::SecurityConfiguration
+    * CloudFormation - Now supports creation and deletion of
+      AWS::EFS::AccessPoint
+    * CloudFormation - Now supports creation and deletion of
+      AWS::EFS::FileSystem
+    * CloudFormation - Now supports creation and deletion of
+      AWS::EMR::InstanceGroupConfig
+    * CloudFormation - Now supports deletion of AWS::Logs::LogGroup
+    * CloudFormation: delete_stack() now handles resource dependencies better
+    * CloudWatch: put_metric_data() now supports large (compressed) requests
+    * CognitoIDP: admin_initiate_auth() and respond_to_auth_challenge()
+      now support SMS_MFA</comment>
+    <requestid>1161288</requestid>
+  </revision>
 </revisionlist>
