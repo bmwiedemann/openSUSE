@@ -25,6 +25,7 @@ URL:            https://github.com/nphantasm/%{name}
 # n=soundkonverter && v=3.0.1 && g=20240225 && d=$n-$v+git$g && cd /tmp && git clone https://github.com/nphantasm/$n.git && pushd $n && rm -rf .??* && popd && mv $n $d && f=$d.tar.xz && tar c --remove-files "$d" | xz -9e > "$f"
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cdparanoia-devel
+BuildRequires:  extra-cmake-modules
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
