@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Mar 23 09:36:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 5.0.0:
+  * Bump main to 5.0.0-dev by @umohnani8 in #369
+  * Add workdir as alias for working_dir by @umohnani8 in #368
+  * from_env: Use default base_url if no environment is given by
+    @kajinamit in #372
+  * chore(deps): update dependency containers/automation_images to
+    v20240125 by @renovate in #373
+  * Use new json connections file by @umohnani8 in #374
+  * Remove deprecated max_pools_size arg by @umohnani8 in #375
+  * Use volumes param for container rm by @umohnani8 in #376
+  * [skip-ci] Update tim-actions/get-pr-commits action to v1.3.1 by
+    @renovate in #377
+  * chore(deps): update dependency containers/automation_images to
+    v20240320 by @renovate in #383
+  * Bump version to 5.0.0 by @umohnani8 in #382
+
+-------------------------------------------------------------------
 Tue Jan 23 17:56:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 -  update to 4.9.0:
