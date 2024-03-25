@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Mar 24 17:55:20 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.4.1
+  * Allow colon-based unnamed labels to be used separately of CA65 mode 
+    (such as with 65816) with -a. Implies -XMASM.
+  * Restore ^ syntax for generating control sequences (e.g., "^m^j" evaluates as 0d 0a) with -k.
+  * Fix a bug using cheap local labels in expressions.
+  * Properly tag and match CPU types in o65 objects during relocation and linking.
+  * Fix a bug with .align when aligning segments.
+  * Better validation of arguments to indexed opcodes.
+  * Testsuite expanded.
+
+- Update to 2.4.0
+  * Listing feature (-P, -F) in plain text or HTML, along with .listbytes to control 
+    how hex bytes get listed in the output.
+  * Add -E commandline option to not stop after 20 errors, but show all of them.
+  * Introduce -X compatibility set command line option to distinguish between MASM and CA65 
+    compatibility options; also adds C option for 0x and 0 to specify hex or octal. 
+    As a result, -M is now deprecated, and colons in comments may become the default 
+    in a future version.
+  * Implement CA65 "cheap local labels", ":=" label definitions, and various pseudo-opcodes 
+    (.include, .import, .importzp, .zeropage, .proc (anonymous only), .endproc, 
+    .code, .org, .reloc).
+  * -U option to allow all undefined labels in relocating mode; this allows exporting them 
+     to an .o65 file and link at a later time (or specify one at a time with -L).
+  * Globals may also be specified manually with -g.
+  * #error allows preprocessor-level assertions.
+  * .assert allows assembler-level assertions.
+  * Better fix for segfault with smaller arity macro issue.
+  * Some 2.3.x features still allowed with -XXA23, which is obviously deprecated.
+  * The quote escape character is now the \ (backslash), except if -XXA23.
+  * Recursive /* */ comments are no longer allowed, except if -XXA23.
+  * XA_MAJOR and XA_MINOR predefined macros, except if -XXA23.
+  * -M is now deprecated (use -XMASM), just in case you forgot.
+  * printcbm(1) is now deprecated (use VICE petcat, it does a lot more).
+  * Previously deprecated options (16-bit mvn/mvp argument, -S, -x) finally removed. 
+    If you need this support, you must use 2.3.x.
+
+-------------------------------------------------------------------
 Mon Feb 26 12:06:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

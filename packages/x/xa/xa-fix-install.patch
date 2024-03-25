@@ -1,9 +1,9 @@
-diff --git a/Makefile b/Makefile
-index ae0ccf3..82743ef 100644
---- a/Makefile
-+++ b/Makefile
+Index: xa-2.4.1/Makefile
+===================================================================
+--- xa-2.4.1.orig/Makefile
++++ xa-2.4.1/Makefile
 @@ -61,8 +61,8 @@ clean:
- install: xa uncpk
+ install: all
  	$(MKDIR) $(BINDIR)
  	$(MKDIR) $(MANDIR)
 -	$(INSTALL) xa reloc65 ldo65 file65 printcbm uncpk $(BINDIR)

@@ -1,7 +1,7 @@
 #
 # spec file for package xa
 #
-# # Copyright (c) 2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           xa
-Version:        2.3.14
+Version:        2.4.1
 Release:        0
 Summary:        High-speed, two-pass portable 6502 cross-assembler
 License:        GPL-2.0-or-later
