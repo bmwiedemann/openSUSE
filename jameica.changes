@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 24 14:02:05 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Drop all unbundle things, and use source completely from upstream,
+  because unbundling is more work to do and it repeatedly generates
+  unnecessary errors. And also it use sometimes to old libraries.
+- Drop jameica-port-to-commons-lang3.patch because we use only code 
+  from upstream.
+- Drop unnecessary buildrequires.
+- Fix some rpmlint errors.
+
+-------------------------------------------------------------------
 Sun Feb 25 21:47:42 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
