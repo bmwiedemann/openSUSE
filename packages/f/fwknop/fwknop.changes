@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 18 18:51:09 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.11
+  * Seed random() at least a bit before using random().
+  * Fix two erroneous calls to strlcat().
+  * Use execvp() instead of execvpe().
+  * Use HTTP/1.1 when communicating over HTTP.
+  * khorben/coverity/1355235 TOCTOU.
+  * Include systemd unit files in tarballs.
+  * Remove obsolete @setcontentsaftertitlepage command.
+  * Fix snprintf buffer length.
+  * Soften the message when the stanza is not the correct one.
+  * Add missing /etc/gai.conf to AppArmor profile.
+  * Add missing "Wants" directive in systemd unit file.
+  * Restart fwknop-server on failure.
+  * Fix compile warnings.
+
+-------------------------------------------------------------------
 Thu Sep 16 07:15:08 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

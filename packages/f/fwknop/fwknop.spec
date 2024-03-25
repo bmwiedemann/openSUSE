@@ -1,7 +1,7 @@
 #
 # spec file for package fwknop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,17 @@
 #
 
 
-%define soname 3
-
-%if ! %{defined _fillupdir}
-  %define _fillupdir %{_localstatedir}/adm/fillup-templates
-%endif
+%define sover 3
+%define libname libfko%{sover}
 
 Name:           fwknop
-Version:        2.6.10
+Version:        2.6.11
 Release:        0
 Summary:        The fwknop Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://www.cipherdyne.org/fwknop/
+#Git-Clone:     https://github.com/mrash/fwknop.git
 Source:         https://www.cipherdyne.org/fwknop/download/%{name}-%{version}.tar.bz2
 Source1:        https://www.cipherdyne.org/fwknop/download/%{name}-%{version}.tar.bz2.asc#/%{name}-%{version}.tar.bz2.sig
 # https://www.cipherdyne.org/signing_key
@@ -45,18 +43,18 @@ BuildRequires:  systemd-rpm-macros
 fwknop stands for the "FireWall KNock OPerator", and implements an authorization
 scheme called Single Packet Authorization (SPA).
 
-%package -n libfko%{soname}
+%package -n %{libname}
 Summary:        The Firewall Knock Operator Library
 Group:          System/Libraries
 
-%description -n libfko%{soname}
+%description -n %{libname}
 The Firewall Knock Operator library, libfko, provides the Single Packet
 Authorization implementation and API for the other fwknop components.
 
 %package -n libfko-devel
 Summary:        The Development Files for the Firewall Knock Operator Library
 Group:          Development/Libraries/C and C++
-Requires:       libfko%{soname} = %{version}
+Requires:       %{libname} = %{version}
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
 
@@ -80,12 +78,11 @@ scheme called Single Packet Authorization (SPA).
 %setup -q
 
 %build
-export CFLAGS="%optflags -fcommon"
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
@@ -105,13 +102,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n fwknopd
 %service_del_postun %{name}d.service
 
-%post -n libfko%{soname} -p /sbin/ldconfig
 %post -n libfko-devel
 %install_info --info-dir=%{_infodir} %{_infodir}/libfko.info.gz
 
-%postun -n libfko%{soname} -p /sbin/ldconfig
 %postun -n libfko-devel
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/libfko.info.gz
+
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %license COPYING
@@ -128,8 +125,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_sbindir}/fwknopd
 %{_mandir}/man8/fwknopd.8%{?ext_man}
 
-%files -n libfko%{soname}
-%{_libdir}/libfko.so.%{soname}*
+%files -n %{libname}
+%{_libdir}/libfko.so.%{sover}*
 
 %files -n libfko-devel
 %{_includedir}/fko.h
