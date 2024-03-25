@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 25 15:17:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.22.2:
+  + Fix incorrect DLL paths in Windows build.
+  + Remove upstream deprecated 32-bit Windows build.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Feb 18 20:22:32 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 3.22.1:
