@@ -776,4 +776,12 @@
     <comment>Update to 3.5.3</comment>
     <requestid>1137003</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>5582aad4db9e1ee76daf60e12e37288e</srcmd5>
+    <version>3.5.4</version>
+    <time>1711397397</time>
+    <user>anag+factory</user>
+    <comment>Update to 3.5.4</comment>
+    <requestid>1161089</requestid>
+  </revision>
 </revisionlist>

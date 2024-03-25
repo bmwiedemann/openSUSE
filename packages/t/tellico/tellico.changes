@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 24 07:56:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.5.4
+  * Fixed bug with opening help from the config dialog (kde#479591).
+  * Updated Open Library source to search for comics (kde#479506).
+  * Fixed bug with filter dialog buttons (kde#479771).
+  * Fixed display bug with entry status (kde#479843).
+  * Fixed bug for entry selection after changing group field (kde#480297).
+  * Fixed DVDFr searches with title accents.
+  * Updated FilmAffinity data source.
+
+-------------------------------------------------------------------
 Fri Jan  5 08:53:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.5.3
