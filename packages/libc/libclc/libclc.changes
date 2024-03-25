@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 18 02:33:21 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- use clang18-devel, llvm18-devel also for Leap 15.6/15.5 in order to
+  fix build
+
+-------------------------------------------------------------------
 Sat Mar  9 22:30:18 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 18.1.0.

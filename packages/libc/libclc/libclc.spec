@@ -38,12 +38,12 @@ BuildRequires:  llvm-devel
 BuildRequires:  pkgconfig(LLVMSPIRVLib)
 %else
  %if 0%{?sle_version} >= 150600
-BuildRequires:  clang17-devel
-BuildRequires:  llvm17-devel
+BuildRequires:  clang18-devel
+BuildRequires:  llvm18-devel
  %else
   %if 0%{?sle_version} >= 150500
-BuildRequires:  clang15-devel
-BuildRequires:  llvm15-devel
+BuildRequires:  clang18-devel
+BuildRequires:  llvm18-devel
   %endif
  %endif
 %endif
