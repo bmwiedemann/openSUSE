@@ -1068,4 +1068,19 @@
   * fix build against gcc14 (boo#1221028)</comment>
     <requestid>1155484</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>d3a8a73539b5f213fe13fe942f3e9f37</srcmd5>
+    <version>1.1.15</version>
+    <time>1711397223</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.1.15
+  * This release fixes a failure to build with the upcoming gcc 14, 
+    cleans up several other compiler warnings, fixes a bug in the
+    generation of the xdm.service file for systemd, and removes a
+    lot of dead code checks for platforms &amp; features that have not
+    been supported since the conversion from Imake to autoconf in
+    2005.
+-  supersedes u_gcc14-fix.patch</comment>
+    <requestid>1161094</requestid>
+  </revision>
 </revisionlist>

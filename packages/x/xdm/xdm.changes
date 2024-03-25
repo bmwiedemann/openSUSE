@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 24 08:32:09 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 1.1.15
+  * This release fixes a failure to build with the upcoming gcc 14, 
+    cleans up several other compiler warnings, fixes a bug in the
+    generation of the xdm.service file for systemd, and removes a
+    lot of dead code checks for platforms & features that have not
+    been supported since the conversion from Imake to autoconf in
+    2005.
+-  supersedes u_gcc14-fix.patch
+
+-------------------------------------------------------------------
 Wed Mar  6 09:21:36 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_gcc14-fix.patch

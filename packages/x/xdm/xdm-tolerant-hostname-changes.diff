@@ -1,6 +1,8 @@
---- xdm/auth.c.orig	2011-09-25 09:35:47.000000000 +0200
-+++ xdm/auth.c	2014-07-18 14:55:03.244300844 +0200
-@@ -767,7 +767,7 @@ writeAddr (
+Index: xdm/auth.c
+===================================================================
+--- xdm.orig/auth.c
++++ xdm/auth.c
+@@ -744,7 +744,7 @@ writeAddr (
  }
  
  static void
@@ -9,8 +11,8 @@
  {
  	char	displayname[100];
  	int	len = _XGetHostname (displayname, sizeof(displayname));
-@@ -803,6 +803,9 @@ DefineLocal (FILE *file, Xauth *auth)
- #endif
+@@ -759,6 +759,9 @@ DefineLocal (FILE *file, Xauth *auth)
+ 
  
  	writeAddr (FamilyLocal, len, displayname, file, auth);
 +
@@ -19,7 +21,7 @@
  }
  
  #ifdef HAVE_GETIFADDRS
-@@ -1236,7 +1239,7 @@ setAuthNumber (Xauth *auth, char *name)
+@@ -1019,7 +1022,7 @@ setAuthNumber (Xauth *auth, char *name)
  }
  
  static void
@@ -28,7 +30,7 @@
  {
      int	fd;
  
-@@ -1263,13 +1266,13 @@ writeLocalAuth (FILE *file, Xauth *auth,
+@@ -1034,13 +1037,13 @@ writeLocalAuth (FILE *file, Xauth *auth,
      DefineSelf (fd, file, auth);
      close (fd);
  #endif
@@ -44,7 +46,7 @@
  {
      int	    family = FamilyLocal;
      char    *addr;
-@@ -1288,7 +1291,7 @@ writeRemoteAuth (FILE *file, Xauth *auth
+@@ -1059,7 +1062,7 @@ writeRemoteAuth (FILE *file, Xauth *auth
      }
      else
      {
@@ -53,7 +55,7 @@
      }
  }
  
-@@ -1312,6 +1315,7 @@ SetUserAuthorization (struct display *d,
+@@ -1083,6 +1086,7 @@ SetUserAuthorization (struct display *d,
  #ifdef HAVE_MKSTEMP
      int		fd;
  #endif
@@ -61,7 +63,7 @@
  
      Debug ("SetUserAuthorization\n");
      auths = d->authorizations;
-@@ -1404,10 +1408,10 @@ SetUserAuthorization (struct display *d,
+@@ -1175,10 +1179,10 @@ SetUserAuthorization (struct display *d,
  	    {
  		magicCookie = i;
  		if (d->displayType.location == Local)
@@ -74,7 +76,7 @@
  #endif
  		break;
  	    }
-@@ -1425,10 +1429,10 @@ SetUserAuthorization (struct display *d,
+@@ -1196,10 +1200,10 @@ SetUserAuthorization (struct display *d,
  		    !strncmp (auths[i]->name, "MIT-KERBEROS-5", 14))
  		    auths[i]->data_length = 0;
  		if (d->displayType.location == Local)
@@ -87,7 +89,7 @@
  #endif
  		auths[i]->data_length = data_len;
  	    }
-@@ -1473,6 +1477,12 @@ SetUserAuthorization (struct display *d,
+@@ -1244,6 +1248,12 @@ SetUserAuthorization (struct display *d,
  	    verify->systemEnviron = setEnv (verify->systemEnviron,
  				    "XAUTHORITY", envname);
  	}
@@ -100,7 +102,7 @@
  	XauUnlockAuth (name);
  	if (envname)
  	    chown (envname, verify->uid, verify->gid);
-@@ -1511,10 +1521,10 @@ RemoveUserAuthorization (struct display
+@@ -1282,10 +1292,10 @@ RemoveUserAuthorization (struct display
  	for (i = 0; i < d->authNum; i++)
  	{
  	    if (d->displayType.location == Local)

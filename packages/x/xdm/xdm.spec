@@ -25,7 +25,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           xdm
-Version:        1.1.14
+Version:        1.1.15
 Release:        0
 Summary:        X Display Manager
 License:        MIT
@@ -40,7 +40,6 @@ Patch1:         xdm-tolerant-hostname-changes.diff
 Patch2:         xdm-tarball.patch
 Patch3:         n_Allow-the-greeter-to-set-the-input-fields-bg-color.patch
 Patch4:         xinit-UsrEtcMove.patch
-Patch5:         u_gcc14-fix.patch
 BuildRequires:  firewall-macros
 BuildRequires:  libtool
 BuildRequires:  pam-devel
@@ -105,7 +104,6 @@ pushd xdm
 popd
 # reverse apply (boo#1130321)
 %patch -P 3 -p1 -R
-%patch -P 5 -p1
 
 %build
 # needed for patch0
