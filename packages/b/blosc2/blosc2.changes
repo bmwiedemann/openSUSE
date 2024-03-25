@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 22 19:33:40 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.13.2
+  * Better checking for SSSE3 availability in Visual Studio.
+    Probably fixes #546 too. Thanks to @t20100 (Thomas Vincent) for
+    the PR (#586).
+  * Documented the globally registered filters and codecs. See:
+    https://www.blosc.org/c-blosc2/reference/utility_variables.html#codes-for-filters
+    https://www.blosc.org/c-blosc2/reference/utility_variables.html#compressor-codecs
+- Reenable previously failing but never acknowledged test
+  * gh#Blosc/c-blosc2#464
+
+-------------------------------------------------------------------
 Wed Feb  7 10:58:20 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.13.1

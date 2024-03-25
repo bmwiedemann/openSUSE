@@ -20,7 +20,7 @@
 %define major 2
 %define libname lib%{name}-%{major}
 Name:           blosc2
-Version:        2.13.1
+Version:        2.13.2
 Release:        0
 Summary:        A fast, compressed, persistent binary data store library for C
 License:        BSD-2-Clause AND BSD-3-Clause AND MIT
@@ -70,7 +70,7 @@ This package provides development libraries and headers
 for %{libname}.
 
 %prep
-%autosetup -p1 -n C-Blosc2-%{version}
+%autosetup -p1 -n c-blosc2-%{version}
 
 %build
 %cmake \
@@ -93,9 +93,7 @@ for %{libname}.
 export LD_PRELOAD="$LD_PRELOAD  %{buildroot}%{_libdir}/libblosc2.so  %{buildroot}%{_libdir}/libblosc2.so.%{major}"
 # https://github.com/Blosc/c-blosc2/issues/432
 single_thread_tests='test_sframe|test_schunk_frame|test_fill_special'
-# https://github.com/Blosc/c-blosc2/issues/464
-failing_tests='test_contexts'
-%ctest --exclude-regex "${single_thread_tests}|${failing_tests}"
+%ctest --exclude-regex "${single_thread_tests}"
 pushd build
 ctest --tests-regex "${single_thread_tests}"
 popd
