@@ -21,7 +21,7 @@
 %define bird_home %{_localstatedir}/lib/bird
 %define bird_runtimedir %{_rundir}/%{name}
 Name:           bird
-Version:        2.14
+Version:        2.15
 Release:        0
 Summary:        The BIRD Internet Routing Daemon
 License:        GPL-2.0-or-later
@@ -30,6 +30,7 @@ URL:            https://bird.network.cz/
 Source:         ftp://bird.network.cz/pub/bird/bird-%{version}.tar.gz
 Source1:        bird.service
 Source3:        bird.tmpfiles.d
+Patch1:         log-commit.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  ncurses-devel
@@ -59,6 +60,7 @@ This package holds common files and directories.
 Summary:        Documentation for the BIRD Internet Routing Daemon
 Group:          Documentation/HTML
 BuildRequires:  perl-FindBin-Real
+BuildArch:      noarch
 
 %description doc
 BIRD is an implementation for routing Internet Protocol packets.
@@ -66,7 +68,7 @@ BIRD is an implementation for routing Internet Protocol packets.
 This package holds the HTML documentation.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fpic -DPIC -fno-strict-aliasing -Wno-parentheses -Wno-pointer-sign"

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Mar 13 13:42:22 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- log-commit.patch: fix crash in log_commit with empty log list
+
+-------------------------------------------------------------------
+Tue Mar 12 17:12:37 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.15
+  * BGP: Send hold timer
+  * BGP: New options to specify required BGP capabilities
+  * BFD: Improvements to 'show bfd sessions' command
+  * RPKI: New 'local address' configuration option
+  * Linux: Support for more route attributes, including
+    TCP congestion control algorithm
+  * Support for UDP logging
+  * Static routes can have both nexthop and interface specified
+  * Completion of command options in BIRD client
+  * Many bugfixes and improvements 
+
+-------------------------------------------------------------------
 Wed Feb  7 11:58:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide user/group symbol for user created during pre.

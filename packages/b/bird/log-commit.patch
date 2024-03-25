@@ -1,0 +1,12 @@
+Index: bird-2.14/sysdep/unix/log.c
+===================================================================
+--- bird-2.14.orig/sysdep/unix/log.c
++++ bird-2.14/sysdep/unix/log.c
+@@ -160,6 +160,7 @@ log_commit(int class, buffer *buf)
+     strcpy(buf->end - 100, " ... <too long>");
+ 
+   log_lock();
++  if (current_log_list)
+   WALK_LIST(l, *current_log_list)
+     {
+       if (!(l->mask & (1 << class)))
