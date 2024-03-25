@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  d1908d68e16e148fcc012caac881a03417eccc7e
+# Parent  831d03cde86aa6b8803d5ac431e2d28bf85c9289
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -875,6 +875,28 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/transient/transient_
                                                   int sample_rate_hz,
                                                   int detector_rate_hz,
                                                   int num_channels)
+diff --git a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc b/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
+--- a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
++++ b/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
+@@ -90,16 +90,18 @@ BandwidthLimitedCause GetBandwidthLimite
+       // Probes may not be sent in this state.
+       return BandwidthLimitedCause::kLossLimitedBwe;
+     case LossBasedState::kIncreasing:
+       // Probes may be sent in this state.
+       return BandwidthLimitedCause::kLossLimitedBweIncreasing;
+     case LossBasedState::kDelayBasedEstimate:
+       return BandwidthLimitedCause::kDelayBasedLimited;
+   }
++  // just return something by default
++  return BandwidthLimitedCause::kLossLimitedBwe;
+ }
+ 
+ }  // namespace
+ 
+ GoogCcNetworkController::GoogCcNetworkController(NetworkControllerConfig config,
+                                                  GoogCcConfig goog_cc_config)
+     : key_value_config_(config.key_value_config ? config.key_value_config
+                                                 : &trial_based_config_),
 diff --git a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
 --- a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
 +++ b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
@@ -957,7 +979,7 @@ diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
-@@ -41,16 +41,17 @@ namespace {
+@@ -42,16 +42,17 @@ namespace {
      case AudioFrameType::kEmptyFrame:
        return "empty";
      case AudioFrameType::kAudioFrameSpeech:
@@ -1020,7 +1042,7 @@ diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_laye
 diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 --- a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 +++ b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
-@@ -58,16 +58,17 @@ bool IsFramerateScalingEnabled(Degradati
+@@ -59,16 +59,17 @@ bool IsFramerateScalingEnabled(Degradati
  std::string ToString(VideoAdaptationReason reason) {
    switch (reason) {
      case VideoAdaptationReason::kQuality:

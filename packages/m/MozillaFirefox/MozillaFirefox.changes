@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Mar 22 09:53:26 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 124.0.1
+  https://www.mozilla.org/en-US/firefox/124.0.1/releasenotes/
+  MFSA 2024-15 (bsc#1221850)
+  * CVE-2024-29943 (bmo#1886849)
+    Out-of-bounds access via Range Analysis bypass
+  * CVE-2024-29944 (bmo#1886852)
+    Privileged JavaScript Execution via Event Handlers
+  Mozilla Firefox 124.0
+  https://www.mozilla.org/en-US/firefox/124.0/releasenotes/
+  MFSA 2024-12 (bsc#1221327)
+  * CVE-2024-2605 (bmo#1872920)
+    Windows Error Reporter could be used as a Sandbox escape vector
+  * CVE-2024-2606 (bmo#1879237)
+    Mishandling of WASM register values
+  * CVE-2024-2607 (bmo#1879939)
+    JIT code failed to save return registers on Armv7-A
+  * CVE-2024-2608 (bmo#1880692)
+    Integer overflow could have led to out of bounds write
+  * CVE-2023-5388 (bmo#1780432)
+    NSS susceptible to timing attack against RSA decryption
+  * CVE-2024-2609 (bmo#1866100)
+    Permission prompt input delay could expire when not in focus
+  * CVE-2024-2610 (bmo#1871112)
+    Improper handling of html and body tags enabled CSP nonce leakage
+  * CVE-2024-2611 (bmo#1876675)
+    Clickjacking vulnerability could have led to a user accidentally
+    granting permissions
+  * CVE-2024-2612 (bmo#1879444)
+    Self referencing object could have potentially led to a use-
+    after-free
+  * CVE-2024-2613 (bmo#1875701)
+    Improper handling of QUIC ACK frame data could have led to OOM
+  * CVE-2024-2614 (bmo#1685358, bmo#1861016, bmo#1880405, bmo#1881093)
+    Memory safety bugs fixed in Firefox 124, Firefox ESR 115.9,
+    and Thunderbird 115.9
+  * CVE-2024-2615 (bmo#1881074, bmo#1881650, bmo#1882438)
+    Memory safety bugs fixed in Firefox 124
+- requires
+  NSS = 3.98
+  rust-cbindgen >= 0.26
+
+-------------------------------------------------------------------
 Fri Mar  8 06:16:48 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 123.0.1

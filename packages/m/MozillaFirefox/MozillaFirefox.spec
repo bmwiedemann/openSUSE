@@ -2,7 +2,7 @@
 # spec file for package MozillaFirefox
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2006-2023 Wolfgang Rosenauer <wr@rosenauer.org>
+# Copyright (c) 2006-2024 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          123
+%define major          124
 %define mainver        %major.0.1
-%define orig_version   123.0.1
+%define orig_version   124.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -114,7 +114,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.35
-BuildRequires:  mozilla-nss-devel >= 3.97
+BuildRequires:  mozilla-nss-devel >= 3.98
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -134,7 +134,7 @@ BuildRequires:  python3-curses
 BuildRequires:  python3-devel
 %endif
 %endif
-BuildRequires:  rust-cbindgen >= 0.24.3
+BuildRequires:  rust-cbindgen >= 0.26
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libXt-devel

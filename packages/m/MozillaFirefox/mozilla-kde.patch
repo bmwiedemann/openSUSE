@@ -283,7 +283,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
  nsUnixSystemProxySettings::GetMainThreadOnly(bool* aMainThreadOnly) {
    // dbus prevents us from being threadsafe, but this routine should not block
    // anyhow
-@@ -391,21 +395,46 @@ nsresult nsUnixSystemProxySettings::GetP
+@@ -388,21 +392,46 @@ nsresult nsUnixSystemProxySettings::GetP
    return NS_OK;
  }
  
@@ -1255,14 +1255,14 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  
    mFilters.AppendElement(filter);
    mFilterNames.AppendElement(name);
-@@ -412,16 +416,39 @@ nsresult nsFilePicker::Show(nsIFilePicke
-   return NS_OK;
- }
- 
- NS_IMETHODIMP
+@@ -416,16 +420,39 @@ NS_IMETHODIMP
  nsFilePicker::Open(nsIFilePickerShownCallback* aCallback) {
    // Can't show two dialogs concurrently with the same filepicker
    if (mFileChooser) return NS_ERROR_NOT_AVAILABLE;
+ 
+   if (MaybeBlockFilePicker(aCallback)) {
+     return NS_OK;
+   }
  
 +  // KDE file picker is not handled via callback
 +  if (nsKDEUtils::kdeSupport()) {
@@ -1295,7 +1295,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
    GtkFileChooserAction action = GetGtkFileChooserAction(mMode);
  
    const gchar* accept_button;
-@@ -703,16 +730,215 @@ void nsFilePicker::Done(void* file_choos
+@@ -707,16 +734,215 @@ void nsFilePicker::Done(void* file_choos
      mCallback->Done(result);
      mCallback = nullptr;
    } else {
@@ -1670,13 +1670,13 @@ diff --git a/xpcom/components/ManifestParser.cpp b/xpcom/components/ManifestPars
 diff --git a/xpcom/components/moz.build b/xpcom/components/moz.build
 --- a/xpcom/components/moz.build
 +++ b/xpcom/components/moz.build
-@@ -66,16 +66,17 @@ LOCAL_INCLUDES += [
-     "!..",
+@@ -67,16 +67,17 @@ LOCAL_INCLUDES += [
      "../base",
      "../build",
      "../ds",
      "/chrome",
      "/js/xpconnect/loader",
+     "/js/xpconnect/src",
      "/layout/build",
      "/modules/libjar",
 +    "/toolkit/xre",

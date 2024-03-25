@@ -6649,4 +6649,41 @@
     <comment></comment>
     <requestid>1156327</requestid>
   </revision>
+  <revision rev="423" vrev="1">
+    <srcmd5>0981f02257d834bdfe79f50bdcd9cc6b</srcmd5>
+    <version>124.0.1</version>
+    <time>1711397183</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Firefox 124.0.1
+  https://www.mozilla.org/en-US/firefox/124.0.1/releasenotes/
+  MFSA 2024-15 (bsc#1221850)
+  * CVE-2024-29943 (bmo#1886849)
+    Out-of-bounds access via Range Analysis bypass
+  * CVE-2024-29944 (bmo#1886852)
+    Privileged JavaScript Execution via Event Handlers
+  Mozilla Firefox 124.0
+  https://www.mozilla.org/en-US/firefox/124.0/releasenotes/
+  MFSA 2024-12 (bsc#1221327)
+  * CVE-2024-2605 (bmo#1872920)
+    Windows Error Reporter could be used as a Sandbox escape vector
+  * CVE-2024-2606 (bmo#1879237)
+    Mishandling of WASM register values
+  * CVE-2024-2607 (bmo#1879939)
+    JIT code failed to save return registers on Armv7-A
+  * CVE-2024-2608 (bmo#1880692)
+    Integer overflow could have led to out of bounds write
+  * CVE-2023-5388 (bmo#1780432)
+    NSS susceptible to timing attack against RSA decryption
+  * CVE-2024-2609 (bmo#1866100)
+    Permission prompt input delay could expire when not in focus
+  * CVE-2024-2610 (bmo#1871112)
+    Improper handling of html and body tags enabled CSP nonce leakage
+  * CVE-2024-2611 (bmo#1876675)
+    Clickjacking vulnerability could have led to a user accidentally
+    granting permissions
+  * CVE-2024-2612 (bmo#1879444)
+    Self referencing object could have potentially led to a use-
+    after-free</comment>
+    <requestid>1160726</requestid>
+  </revision>
 </revisionlist>
