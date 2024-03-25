@@ -260,4 +260,24 @@
     <comment>certbot version bump</comment>
     <requestid>1133007</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>71b9ca65b105b1f991e9a5e5a61d4186</srcmd5>
+    <version>2.9.0</version>
+    <time>1711397495</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.
+- Add missing Requires on setuptools.
+
+- update to 2.9.0:
+  * Support for Python 3.12 was added.
+  * Updates `joinpath` syntax to only use one addition per call,
+    because the multiple inputs version was causing mypy errors
+    on Python 3.10.
+  * Makes the `reconfigure` verb actually use the staging server
+    for the dry run to check the new configuration.
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1161206</requestid>
+  </revision>
 </revisionlist>
