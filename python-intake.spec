@@ -29,7 +29,7 @@
 %endif
 
 Name:           python-intake%{psuffix}
-Version:        2.0.3
+Version:        2.0.4
 Release:        0
 Summary:        Data loading and cataloging system
 License:        BSD-2-Clause
