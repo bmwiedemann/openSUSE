@@ -17,7 +17,7 @@
 
 
 Name:           git-review
-Version:        2.3.1
+Version:        2.4.0
 Release:        0
 Summary:        Tool to submit code to Gerrit
 License:        Apache-2.0
