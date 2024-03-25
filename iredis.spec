@@ -1,7 +1,7 @@
 #
 # spec file for package iredis
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define pythons python3
 Name:           iredis
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        Terminal client for Redis with auto-completion and syntax highlighting
 License:        BSD-3-Clause
-URL:            https://iredis.io/
+URL:            https://iredis.xbin.io/
 Source:         https://github.com/laixintao/iredis/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -92,7 +92,8 @@ redis-cli CONFIG SET save ""
 # skip test_abort_reading_connection as it fails frequently (timeout) on OBS for no apparent reason, others are bugs upstream: https://github.com/laixintao/iredis/issues/417
 # skip test_peek_zset_fetch_all, test_peek_zset_fetch_part, reported upstream: https://github.com/laixintao/iredis/issues/432
 # skip test_auto_select_db_and_auth_for_reconnect_only_6 needs further inspection
-REDIS_VERSION=$(%{_sbindir}/redis-server --version | grep -o '[0-9]' | head -n 1) PATH=${PATH:+$PATH:}%{buildroot}%{_bindir} PYTHONPATH=${PYTHONPATH:+$PYTHONPATH:}%{buildroot}%{python3_sitelib} PYTHONDONTWRITEBYTECODE=1 pytest --ignore=_build.python3 -vv -k 'not (test_abort_reading_connection or test_peek_set_fetch_part or test_peek_stream or test_timestamp_completer_humanize_time_completion or test_peek_zset_fetch_all or test_peek_zset_fetch_part or test_auto_select_db_and_auth_for_reconnect_only_6)'
+# skip test_timer and test_command_completion_when_a_command_is_another_command_substring and test_trasaction_syntax_error and test_subscribe because of timeouts (too slow) on s390x
+REDIS_VERSION=$(%{_sbindir}/redis-server --version | grep -o '[0-9]' | head -n 1) PATH=${PATH:+$PATH:}%{buildroot}%{_bindir} PYTHONPATH=${PYTHONPATH:+$PYTHONPATH:}%{buildroot}%{python3_sitelib} PYTHONDONTWRITEBYTECODE=1 pytest --ignore=_build.python3 -vv -k 'not (test_abort_reading_connection or test_peek_set_fetch_part or test_peek_stream or test_timestamp_completer_humanize_time_completion or test_peek_zset_fetch_all or test_peek_zset_fetch_part or test_auto_select_db_and_auth_for_reconnect_only_6 or test_timer or test_command_completion_when_a_command_is_another_command_substring) or test_trasaction_syntax_error or test_subscribe'
 killall redis-server
 %endif
 

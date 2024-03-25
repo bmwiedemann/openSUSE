@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 17 06:51:39 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 1.14.1:
+ - Bugfix: fix argument parsing, `"foo\nbar"` will be parsed to `foo` and `\` 
+   and `n` and `bar`, the `\` and `n` should be one character `\n` instead.
+- Ignore test_trasaction_syntax_error and test_subscribe because of timeouts (too slow) on s390x
+
+-------------------------------------------------------------------
+Mon Dec 18 10:46:00 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- skip test_timer and test_command_completion_when_a_command_is_another_command_substring because of timeouts (too slow) on s390x
+
+-------------------------------------------------------------------
 Tue Oct 31 19:01:41 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - switch to pyproject
