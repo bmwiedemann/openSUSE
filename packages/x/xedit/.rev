@@ -70,4 +70,15 @@
     <comment></comment>
     <requestid>998303</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>43a60e77a6b0381843de08a15ddd87ba</srcmd5>
+    <version>1.2.4</version>
+    <time>1711397501</time>
+    <user>anag+factory</user>
+    <comment>- Update to versoin 1.2.4
+  * This release adds -help and -version options, removes remnants of
+    support for OS/2 &amp; Interactive Unix, and fixes a crash if there
+    is a call to an undefined function in lisp.lsp.</comment>
+    <requestid>1161220</requestid>
+  </revision>
 </revisionlist>

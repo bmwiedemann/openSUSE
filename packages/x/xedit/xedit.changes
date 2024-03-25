@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 25 02:18:12 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to versoin 1.2.4
+  * This release adds -help and -version options, removes remnants of
+    support for OS/2 & Interactive Unix, and fixes a crash if there
+    is a call to an undefined function in lisp.lsp.
+
+-------------------------------------------------------------------
 Thu Aug 11 08:02:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec-file, move license to %%licensedir
