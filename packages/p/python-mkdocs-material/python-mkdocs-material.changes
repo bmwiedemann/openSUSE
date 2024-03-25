@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 23 09:47:58 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.15:
+  * Reverted fix for transparent iframes (9.5.14)
+  * Fixed #6929 <https://github.com/squidfunk/mkdocs-material/issues/6929>:
+    Interference of social plugin and auto dark mode
+  * Fixed #6938 <https://github.com/squidfunk/mkdocs-material/discussions/6938>:
+    Giscus shows dark background in light mode (9.5.14 regression)
+
+-------------------------------------------------------------------
 Fri Mar 22 06:44:49 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Build for python3.12 now that python312-paginate exists

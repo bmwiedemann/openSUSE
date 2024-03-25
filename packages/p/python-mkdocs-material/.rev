@@ -387,4 +387,12 @@ update to 9.5.10</comment>
 Related request sr#1160541</comment>
     <requestid>1160542</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>1a7e03060ac52570be55d4de79a0bb13</srcmd5>
+    <version>9.5.15</version>
+    <time>1711397349</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1160985</requestid>
+  </revision>
 </revisionlist>
