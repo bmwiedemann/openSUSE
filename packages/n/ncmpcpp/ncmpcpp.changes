@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 21 15:03:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change to fix build with taglib 2.0:
+  * 0001-Fix-compilation-with-taglib-2.0.patch
+
+-------------------------------------------------------------------
 Sun Sep 26 21:07:47 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
 
 - pass --enable-outputs to configure

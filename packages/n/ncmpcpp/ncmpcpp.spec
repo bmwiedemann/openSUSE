@@ -24,6 +24,8 @@ License:        GPL-2.0-only
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://rybczak.net/ncmpcpp
 Source:         https://github.com/ncmpcpp/ncmpcpp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-compilation-with-taglib-2.0.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  curl-devel
@@ -52,7 +54,7 @@ media library, music visualizer, a last.fm artist database
 information fetcher and an alternative user interface.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 autoreconf -fiv
@@ -64,7 +66,7 @@ autoreconf -fiv
 
 %install
 %make_install
-rm -rf "%{buildroot}%{_datadir}/doc"
+rm -r "%{buildroot}%{_datadir}/doc"
 
 %files
 %license COPYING
