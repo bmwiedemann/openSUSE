@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar 23 07:40:09 UTC 2024 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to 2.0.1:
+ * Translation updates.
+ * CTABLES: Fix crash with single nesting level, no label, and moving labels.
+ * AUTORECODE: Fix crash if scratch variables created before source variables.
+ * CROSSTABS: Fix tabular output when columns or rows are empty.
+ * psppire: Sort by name or label case-insensitively in dictionary view.
+ * DO REPEAT: Accept duplicate names as substitution variables.
+- Add BuildReuires perl(Text::Diff) for tests after compilation.
+
+-------------------------------------------------------------------
 Thu Mar 14 16:48:21 UTC 2024 - opensuse.lietuviu.kalba@gmail.com
 
 - Do not ship testsuite.log with pspp-devel package (boo#1221321)

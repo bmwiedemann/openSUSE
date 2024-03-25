@@ -26,7 +26,7 @@
 %define _disable_ld_as_needed 1
 %endif
 Name:           pspp
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        A program for statistical analysis of sampled data
 License:        GPL-3.0-or-later
@@ -61,6 +61,7 @@ BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  m4
 BuildRequires:  pango-devel
+BuildRequires:  perl(Text::Diff)
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(appstream)
 BuildRequires:  pkgconfig(gtksourceview-3.0)
