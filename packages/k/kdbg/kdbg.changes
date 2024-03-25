@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Mar 22 15:48:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.1.0
+  Enhancements:
+  * The disassembly flavor to be used for the display of
+    disassembled code can be selected. The setting is per
+    program. Thanks to Petros Siligkounas.
+  * The break ("pulse") button now shows help text.
+  Bug Fixes:
+  * Icons of certain actions were missing, which has been fixed,
+    most importantly of the Open Executable action
+  * The value parser no longer chokes on references to incomplete
+    types, which caused a truncated list in the Variables window.
+  Development Support:
+  * Many modernizations took place so that the build procedure
+    now reports far fewer deprecation warnings.
+  Deprecation Notice:
+  * XSL debugging support is no longer maintained and is now
+    deprecated. It will be removed in a future release.
+
+-------------------------------------------------------------------
 Mon Jan 13 12:26:06 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 3.0.1
