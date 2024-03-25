@@ -740,4 +740,22 @@ update to version 5.1.0
   - Update master for stable/2023.1</comment>
     <requestid>1138707</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f7d9e347ebaaf515f2f9a87f7d39aec8</srcmd5>
+    <version>18.6.0</version>
+    <time>1711397487</time>
+    <user>anag+factory</user>
+    <comment>- update to version 18.6.0
+  - Bump microversion to 2.96
+  - Update hacking version in pre commit config
+  - Fix typos
+  - Bump hacking
+  - coveragerc: Fix wrong omitted directory
+  - Disable NEUTRON_ENFORCE_SCOPE at function job
+  - add pyproject.toml to support pip 23.1
+  - Update python classifier in setup.cfg
+  - Update master for stable/2023.2
+  - reno: Update master for unmaintained/yoga</comment>
+    <requestid>1161193</requestid>
+  </revision>
 </revisionlist>

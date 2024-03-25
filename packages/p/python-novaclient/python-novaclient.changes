@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 24 20:11:48 UTC 2024 - cloud-devel@suse.de
+
+- update to version 18.6.0
+  - Bump microversion to 2.96
+  - Update hacking version in pre commit config
+  - Fix typos
+  - Bump hacking
+  - coveragerc: Fix wrong omitted directory
+  - Disable NEUTRON_ENFORCE_SCOPE at function job
+  - add pyproject.toml to support pip 23.1
+  - Update python classifier in setup.cfg
+  - Update master for stable/2023.2
+  - reno: Update master for unmaintained/yoga
+
+-------------------------------------------------------------------
 Sun Jan 14 18:01:14 UTC 2024 - cloud-devel@suse.de
 
 - update to version 18.4.0
