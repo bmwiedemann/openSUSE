@@ -1,7 +1,7 @@
 #
 # spec file for package gap-idrel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-idrel
-Version:        2.45
+Version:        2.46
 Release:        0
 Summary:        GAP: Identities among relations
 License:        GPL-2.0-or-later
