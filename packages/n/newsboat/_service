@@ -1,8 +1,9 @@
 <services>
-  <service name="cargo_vendor" mode="disabled">
-    <param name="srcdir">newsboat</param>
+  <service name="download_files" mode="manual"/>
+  <service name="cargo_vendor" mode="manual">
+    <param name="src">newsboat-*.tar.xz</param>
     <param name="compression">xz</param>
     <param name="update">true</param>
   </service>
-  <service name="cargo_audit" mode="disabled"/>
+  <service name="cargo_audit" mode="manual"/>
 </services>

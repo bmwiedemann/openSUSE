@@ -17,7 +17,7 @@
 
 
 Name:           newsboat
-Version:        2.34
+Version:        2.35
 Release:        0
 Summary:        RSS/Atom Feed Reader for Text Terminals
 License:        MIT
@@ -27,7 +27,6 @@ Source:         https://newsboat.org/releases/%{version}/%{name}-%{version}.tar.
 Source1:        https://newsboat.org/releases/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        https://newsboat.org/newsboat.pgp#/%{name}.keyring
 Source3:        vendor.tar.xz
-Source4:        cargo_config
 # pbleser: introduce OPTFLAGS make variable, instead of hard-coded -ggdb
 Patch0:         newsbeuter-makefile.patch
 BuildRequires:  cargo
@@ -61,7 +60,6 @@ text terminals.
 %prep
 %autosetup -a3 -p1
 mkdir cargo-home
-install -Dm644 %{SOURCE4} .cargo/config
 sed -i 's/#!\/usr\/bin\/env perl/#!\/usr\/bin\/perl/' ./contrib/pinboard.pl
 sed -i 's/#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/' ./doc/examples/example-exec-script.py
 sed -i 's/#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/' ./contrib/exportOPMLWithTags.py

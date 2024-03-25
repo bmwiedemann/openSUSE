@@ -1053,4 +1053,12 @@ run -osc service localrun format_spec_file to fix copyright
   %patchN.</comment>
     <requestid>1148427</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b6e7b2bc6e1214a06c90f9d6ccb2f10c</srcmd5>
+    <version>2.35</version>
+    <time>1711397519</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1161272</requestid>
+  </revision>
 </revisionlist>
