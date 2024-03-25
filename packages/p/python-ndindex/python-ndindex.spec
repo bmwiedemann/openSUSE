@@ -17,14 +17,12 @@
 
 
 Name:           python-ndindex
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        A Python library for manipulating indices of ndarrays
 License:        MIT
 URL:            https://quansight-labs.github.io/ndindex/
 Source:         https://files.pythonhosted.org/packages/source/n/ndindex/ndindex-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM ndindex-pr159-py312.patch gh#Quansight-Labs/ndindex#159
-Patch1:         ndindex-pr159-py312.patch
 # PATCH-FIX-OPENSUSE custom-pytest.patch gh#Quansight-Labs/ndindex#150
 Patch2:         custom-pytest.patch
 BuildRequires:  %{python_module Cython}
