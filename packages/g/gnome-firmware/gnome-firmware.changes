@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 21 16:36:57 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 46.0:
+  * Add keyboard shortcuts window.
+  * Add missing mnemonics.
+  * Allow compiling with fwupd from the main branch.
+  * Only hide devices that don't have a firmware version.
+  * Show dialogs one at a time to avoid a shell issue.
+  * Translations update. 
+
+-------------------------------------------------------------------
 Mon Jan 15 04:39:07 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 45.0:
