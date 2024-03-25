@@ -261,4 +261,19 @@
     <comment></comment>
     <requestid>1132553</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>52a7c90b74f318591ea99f4ede9b15d1</srcmd5>
+    <version>0.8.2</version>
+    <time>1711397398</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.8.2:
+  * If `osc` raises an exception, pretend it is not there
+
+  * Treat `deleted` and `expand` parameters of `/source/&lt;project&gt;/`
+  * Do not send the `deleted` parameter, when the `view` parameter
+  * Use `cached_property` instead of `backports.cached_property`
+  * Handle absence of `sshkey` in `.oscrc` gracefully
+  * Removed obsolete parser instance to allow pickling of Osc instances</comment>
+    <requestid>1161091</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 24 08:54:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.2:
+  * If `osc` raises an exception, pretend it is not there
+
+-------------------------------------------------------------------
 Mon Dec 11 15:55:04 UTC 2023 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release 0.8.1
@@ -60,9 +66,9 @@ Wed Nov  2 12:07:32 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
 Thu Oct 20 08:12:01 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release 0.7.6
-  * Treat `deleted` and `expand` parameters of `/source/<project>/` 
+  * Treat `deleted` and `expand` parameters of `/source/<project>/`
     as boolean (despite not being documented as such)
-  * Do not send the `deleted` parameter, when the `view` parameter 
+  * Do not send the `deleted` parameter, when the `view` parameter
     is present
 
 -------------------------------------------------------------------
@@ -154,7 +160,7 @@ Wed Jul 20 08:49:57 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release 0.6.5: Enhanced dependency management
   * Removed `responses` as requirement
-  * Use `cached_property` instead of `backports.cached_property` 
+  * Use `cached_property` instead of `backports.cached_property`
     (which is not in the openSUSE repos)
   * Only install `cached_property` as requirement for Py3.7 and earlier
 
@@ -169,7 +175,7 @@ Mon Jul 18 07:55:16 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release 0.6.3
   * Do not assume that `oscrc` contains the SSH passphrase
-  * Handle absence of `sshkey` in `.oscrc` gracefully 
+  * Handle absence of `sshkey` in `.oscrc` gracefully
 
 -------------------------------------------------------------------
 Thu Jun 30 08:48:29 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
@@ -184,7 +190,7 @@ Thu Jun 30 08:48:29 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
 Fri Jun 17 09:49:36 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release 0.6.1
-  * Removed obsolete parser instance to allow pickling of Osc instances 
+  * Removed obsolete parser instance to allow pickling of Osc instances
 
 -------------------------------------------------------------------
 Thu Jun  9 11:53:07 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
@@ -217,7 +223,7 @@ Wed Sep 22 10:45:07 UTC 2021 - Andreas Hasenkopf <ahasenkopf@suse.com>
 - Release 0.4.0
   * Added support to parse `osc` configuration
   * Bugfix for `origin` extension
-  
+
 
 -------------------------------------------------------------------
 Wed Feb 24 10:49:30 UTC 2021 - Andreas Hasenkopf <ahasenkopf@suse.com>
