@@ -17,7 +17,7 @@
 
 
 Name:           musique
-Version:        1.10.1
+Version:        1.12
 Release:        0
 Summary:        A different take on the music player
 License:        GPL-3.0-only AND LGPL-2.1-only
@@ -27,18 +27,18 @@ Source:         %{name}-%{version}.tar.xz
 Patch0:         fix-taglib2-compatibility.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-tools-linguist
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Quick)
+BuildRequires:  pkgconfig(Qt6Sql)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(mpv) >= 0.29.0
 BuildRequires:  pkgconfig(taglib)
+Requires:       qt6-sql-sqlite
 
 %description
 Musique is a music player designed by and for people that love
@@ -64,14 +64,15 @@ FAKE_BUILDDATE="$(LC_ALL=C date -u -d "@${SOURCE_DATE_EPOCH}" '+%%b %%e %%Y')"
 sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/" src/aboutview.cpp
 
 %build
-%qmake5 \
+%qmake6 \
   PREFIX=%{_prefix}            \
+  QMAKE_LRELEASE=lrelease6     \
   QMAKE_CFLAGS="%{optflags}"   \
   QMAKE_CXXFLAGS="%{optflags}"
 %make_build
 
 %install
-%qmake5_install
+%qmake6_install
 %fdupes %{buildroot}%{_datadir}
 
 %files

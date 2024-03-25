@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 22 15:17:24 UTC 2024 - Martin Winter <me@letsfindaway.de>
+
+- Add missing runtime dependency
+  * Add Requires: qt6-sql-sqlite
+
+-------------------------------------------------------------------
+Thu Mar 21 16:07:06 UTC 2024 - Martin Winter <me@letsfindaway.de>
+
+- Update to 1.12
+  * No upstream changelog
+- Build with Qt6
+
+-------------------------------------------------------------------
 Wed Mar 20 07:04:50 UTC 2024 - Martin Winter <me@letsfindaway.de>
 
 - Compatibility with TagLib 2.0

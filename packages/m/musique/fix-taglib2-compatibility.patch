@@ -1,4 +1,4 @@
-From dc111dcc6ba4eadc4f04c4bf0ad8340589b058fd Mon Sep 17 00:00:00 2001
+From 7277d40defe9cde40f947a81d624195ddf683f44 Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Wed, 20 Mar 2024 07:19:11 +0100
 Subject: [PATCH] fix: compatibility with TagLib 2.0
@@ -7,16 +7,30 @@ Subject: [PATCH] fix: compatibility with TagLib 2.0
 - replace MP4::Tag::itemListMap() by MP4::Tag::itemMap()
 - add version requirement for TagLib >= 1.10 in README.md
 ---
+ README.md           | 2 +-
  src/coverutils.cpp  | 2 +-
  src/mainwindow.cpp  | 3 +++
  src/tags/mp4utils.h | 4 ++--
- 3 files changed, 6 insertions(+), 3 deletions(-)
+ 4 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/README.md b/README.md
+index a1e08a5..8b28cf8 100644
+--- a/README.md
++++ b/README.md
+@@ -10,7 +10,7 @@ Translations are done at https://www.transifex.com/flaviotordini/musique/
+ Just register and apply for a language team. Please don't request translation merges on GitHub.
+
+ ## Build instructions
+-To compile Musique you need at least Qt 6.0. The following Qt modules are needed: core, gui, widgets, network, sql (using the Sqlite plugin), declarative, dbus. You also need TagLib: http://taglib.github.io and MPV >= 0.29.0: https://mpv.io/
++To compile Musique you need at least Qt 6.0. The following Qt modules are needed: core, gui, widgets, network, sql (using the Sqlite plugin), declarative, dbus. You also need TagLib: http://taglib.github.io >= 1.10 and MPV >= 0.29.0: https://mpv.io/
+
+ To be able to build on a Debian (or derivative) system:
 
 diff --git a/src/coverutils.cpp b/src/coverutils.cpp
-index 9ea7728..9b99f0b 100644
+index ae89330..4ba717e 100644
 --- a/src/coverutils.cpp
 +++ b/src/coverutils.cpp
-@@ -159,7 +159,7 @@ bool CoverUtils::coverFromMP4(const QString &filename, Album *album) {
+@@ -158,7 +158,7 @@ bool CoverUtils::coverFromMP4(const QString &filename, Album *album) {
      TagLib::MP4::Tag *tag = static_cast<TagLib::MP4::Tag *>(f.tag());
      if (!tag) return false;
 
@@ -26,13 +40,13 @@ index 9ea7728..9b99f0b 100644
      TagLib::MP4::CoverArtList coverArtList = coverItem.toCoverArtList();
      TagLib::MP4::CoverArt coverArt = coverArtList.front();
 diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
-index 4e4ed27..d1e861e 100644
+index dac2bd8..6587591 100644
 --- a/src/mainwindow.cpp
 +++ b/src/mainwindow.cpp
-@@ -24,6 +24,9 @@ along with Musique.  If not, see <http://www.gnu.org/licenses/>.
- #include "database.h"
- #include "iconutils.h"
- #include "spacer.h"
+@@ -46,6 +46,9 @@ along with Musique.  If not, see <http://www.gnu.org/licenses/>.
+ #include "view.h"
+ #include "zoomableui.h"
+
 +#include <iostream>
 +
 +
