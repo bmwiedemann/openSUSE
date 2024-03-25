@@ -1,7 +1,7 @@
 #
 # spec file for package gap-congruence
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gap-congruence
-Version:        1.2.5
+Version:        1.2.6
 Release:        0
 Summary:        GAP: Congruence subgroups of SL(2,Z)
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/congruence/
+#Git-Clone:     https://github.com/gap-packages/congruence
 Source:         https://github.com/gap-packages/congruence/releases/download/v%version/congruence-%version.tar.gz
 BuildRequires:  gap-rpm-devel
 BuildRequires:  xz

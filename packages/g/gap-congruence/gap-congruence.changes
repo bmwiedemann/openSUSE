@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 23 20:10:58 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.6
+  * Somehow fix PrintObj() function for Farey symbols
+
+-------------------------------------------------------------------
 Sun Jun 25 09:24:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.5
