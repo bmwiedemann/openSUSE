@@ -1,0 +1,9 @@
+<package name="git-absorb" project="openSUSE:Factory">
+  <title>git commit --fixup, but automatic</title>
+  <description>A convenient git subcommand to automatically create
+fixup! commits
+
+</description>
+  <devel project="devel:tools:scm" package="git-absorb"/>
+  <url>https://github.com/tummychow/git-absorb</url>
+</package>
