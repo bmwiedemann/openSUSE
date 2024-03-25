@@ -59,4 +59,12 @@
   * with backwards compatibility for the upstream</comment>
     <requestid>1119011</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ce9b10bde64390f8d0eb3a5b18305632</srcmd5>
+    <version>1.8.2</version>
+    <time>1711397279</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1160829</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydata-google-auth
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,15 @@ URL:            https://github.com/pydata/pydata-google-auth
 Source:         https://github.com/pydata/pydata-google-auth/archive/%{version}.tar.gz#/pydata-google-auth-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/pydata/pydata-google-auth/pull/73 Do not require six on Python 3
 Patch0:         no-six.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module versioneer}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-google-auth >= 1.25.1
 Requires:       python-google-auth-oauthlib >= 0.4.0
+Requires:       python-setuptools
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module google-auth >= 1.25.0}
@@ -46,12 +50,13 @@ to Google APIs.
 
 %prep
 %autosetup -p1 -n pydata-google-auth-%{version}
+rm versioneer.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +66,6 @@ to Google APIs.
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/pydata_google_auth
-%{python_sitelib}/pydata_google_auth-%{version}*-info
+%{python_sitelib}/pydata_google_auth-%{version}.dist-info
 
 %changelog
