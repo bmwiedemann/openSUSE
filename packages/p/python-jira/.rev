@@ -227,4 +227,12 @@
   * Added warning log if issue link type not present</comment>
     <requestid>1138492</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>54a1c3e85e69ae58129daabf42e8bf4c</srcmd5>
+    <version>3.6.0</version>
+    <time>1711397333</time>
+    <user>anag+factory</user>
+    <comment>- add Pillow dependency</comment>
+    <requestid>1160942</requestid>
+  </revision>
 </revisionlist>

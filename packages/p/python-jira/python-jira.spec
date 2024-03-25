@@ -32,6 +32,7 @@ BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Pillow >= 2.1.0
 Requires:       python-defusedxml
 Requires:       python-keyring
 Requires:       python-oauthlib
@@ -41,7 +42,7 @@ Requires:       python-requests-oauthlib >= 0.6.1
 Requires:       python-requests-toolbelt
 Requires:       python-typing_extensions >= 3.7.4.2
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
