@@ -34,4 +34,14 @@
     <comment></comment>
     <requestid>1088698</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>0db2f99adde31eb5fdc459503f6022ab</srcmd5>
+    <version>0.9.1</version>
+    <time>1711397556</time>
+    <user>anag+factory</user>
+    <comment>- Replace the 'cmake(KQuickImageEditor)' BuildRequires with
+  kquickimageeditor-devel to pick the correct flavor
+- Build with GCC 13 on Leap 15</comment>
+    <requestid>1161378</requestid>
+  </revision>
 </revisionlist>

@@ -27,6 +27,13 @@ Source1:        https://download.kde.org/unstable/%{name}/%{name}-%{version}.tar
 Source2:        kaidan.keyring
 BuildRequires:  cmake >= 3.3
 BuildRequires:  extra-cmake-modules >= 5.40.0
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc13-c++
+BuildRequires:  gcc13-PIE
+%endif
+# Both Qt 5 and Qt 6 flavors use the same cmake config name, use the -devel package name
+# BuildRequires:  cmake(KQuickImageEditor)
+BuildRequires:  kquickimageeditor-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5CoreAddons) >= 5.67.0
 BuildRequires:  cmake(KF5KIO) >= 5.67.0
@@ -34,7 +41,6 @@ BuildRequires:  cmake(KF5Kirigami2) >= 5.67.0
 BuildRequires:  cmake(KF5KirigamiAddons) >= 0.7.0
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5QQC2DeskopStyle)
-BuildRequires:  cmake(KQuickImageEditor)
 BuildRequires:  cmake(QXmpp) >= 1.5.0
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core) >= 5.14.0
@@ -67,6 +73,9 @@ using the qxmpp XMPP client library and Qt 5.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} == 1500
+export CXX=g++-13
+%endif
 %cmake_kf5 -d build '-DI18N:BOOL=ON' '-DQUICK_COMPILER:BOOL=ON'
 %cmake_build
 

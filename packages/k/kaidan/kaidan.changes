@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 25 11:52:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Replace the 'cmake(KQuickImageEditor)' BuildRequires with
+  kquickimageeditor-devel to pick the correct flavor
+- Build with GCC 13 on Leap 15
+
+-------------------------------------------------------------------
 Mon May 22 21:10:32 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 0.9.1:
