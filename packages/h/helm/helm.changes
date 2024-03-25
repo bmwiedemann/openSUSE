@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 16 16:49:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.14.3:
+  * Add a note about --dry-run displaying secrets
+  * add error messages
+  * Fix: Ignore alias validation error for index load
+  * chore(deps): bump github.com/containerd/containerd from 1.7.11
+    to 1.7.12
+  * chore(deps): bump github.com/DATA-DOG/go-sqlmock from 1.5.0 to
+    1.5.2
+  * Update architecture detection method
+
+-------------------------------------------------------------------
 Fri Feb 23 10:02:12 UTC 2024 - dmueller@suse.com
 
 - Update to version 3.14.2 (bsc#1220207, CVE-2024-26147):
