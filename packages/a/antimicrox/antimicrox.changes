@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 18 06:20:46 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.4.0
+  * Fix attaching window to a pinned launcher in Linux
+  * Fixing builds with X11=OFF
+  * Updated translations
+  * New translations: Croatian, Turkish, Persian, Vietnamese
+  * Fix a lot of deprecation warnings and other code changes
+    required to migrate to QT6
+
+-------------------------------------------------------------------
 Fri Jul  7 16:20:20 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.3.4
