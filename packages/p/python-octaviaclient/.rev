@@ -169,4 +169,17 @@
   - Add *.orig to .gitignore</comment>
     <requestid>1138708</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>573eee48fe61ed276fd943cb4cdd0111</srcmd5>
+    <version>3.7.0</version>
+    <time>1711397487</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.7.0
+  - Added the vip_vnic_type load balancer field
+  - reno: Update master for unmaintained/yoga
+  - Bump hacking
+  - Update master for stable/2023.2
+  - Update python classifier in setup.cfg</comment>
+    <requestid>1161194</requestid>
+  </revision>
 </revisionlist>

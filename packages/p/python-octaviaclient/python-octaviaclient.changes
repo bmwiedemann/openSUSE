@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 24 20:12:09 UTC 2024 - cloud-devel@suse.de
+
+- update to version 3.7.0
+  - Added the vip_vnic_type load balancer field
+  - reno: Update master for unmaintained/yoga
+  - Bump hacking
+  - Update master for stable/2023.2
+  - Update python classifier in setup.cfg
+
+-------------------------------------------------------------------
 Sun Jan 14 18:02:10 UTC 2024 - cloud-devel@suse.de
 
 - update to version 3.6.0
