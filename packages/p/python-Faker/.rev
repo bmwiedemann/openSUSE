@@ -631,4 +631,29 @@
   * Add `http_status_code` to internet provider.</comment>
     <requestid>1142767</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>4ba4f5551b9c73b56d95729420b2d96e</srcmd5>
+    <version>24.3.0</version>
+    <time>1711397197</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.3.0:
+  * Add phone number formats to nl_BE.
+  * Return capitalized city names in `hu_HU`.
+  * Add `uk-UA` credit card provider.
+  * Upgrade `uk_UA` person provider.
+  * Fix prefix for male `bg_BG` names
+  * Add Grenville to `land_coords` in geo provider.
+  * Fix Kyiv name.
+  * Fix returning random data for person provider in `et_EE`
+    locale when the same seed value is set.
+  * Add person, bank provider for `sk_SK` locale.
+  * fix: update `pydecimal` algorithm to ensure left part is not
+    generated with a leading 0.
+  * Allow Uniqueness and Localization.
+  * Add `uk_UA` lorem provider.
+  * Consistently throw an error if the start of a daterange is
+    after the end.
+  * Add `uk_UA` automotive provider</comment>
+    <requestid>1160803</requestid>
+  </revision>
 </revisionlist>

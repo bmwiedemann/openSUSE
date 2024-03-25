@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Faker
-Version:        22.6.0
+Version:        24.3.0
 Release:        0
 Summary:        Python package that generates fake data
 License:        MIT
