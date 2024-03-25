@@ -1,7 +1,7 @@
-Index: GraphicsMagick-1.3.42/coders/pdf.c
+Index: GraphicsMagick-1.3.43/coders/pdf.c
 ===================================================================
---- GraphicsMagick-1.3.42.orig/coders/pdf.c
-+++ GraphicsMagick-1.3.42/coders/pdf.c
+--- GraphicsMagick-1.3.43.orig/coders/pdf.c
++++ GraphicsMagick-1.3.43/coders/pdf.c
 @@ -499,7 +499,7 @@ ModuleExport void RegisterPDFImage(void)
    entry->seekable_stream=True;
    entry->description="Encapsulated Portable Document Format";
@@ -20,10 +20,10 @@ Index: GraphicsMagick-1.3.42/coders/pdf.c
    (void) RegisterMagickInfo(entry);
  }
  
-Index: GraphicsMagick-1.3.42/coders/ps.c
+Index: GraphicsMagick-1.3.43/coders/ps.c
 ===================================================================
---- GraphicsMagick-1.3.42.orig/coders/ps.c
-+++ GraphicsMagick-1.3.42/coders/ps.c
+--- GraphicsMagick-1.3.43.orig/coders/ps.c
++++ GraphicsMagick-1.3.43/coders/ps.c
 @@ -456,7 +456,7 @@ ModuleExport void RegisterPSImage(void)
    entry->adjoin=False;
    entry->description="Adobe Encapsulated PostScript Interchange format";
@@ -69,10 +69,10 @@ Index: GraphicsMagick-1.3.42/coders/ps.c
    (void) RegisterMagickInfo(entry);
  }
  
-Index: GraphicsMagick-1.3.42/coders/ps2.c
+Index: GraphicsMagick-1.3.43/coders/ps2.c
 ===================================================================
---- GraphicsMagick-1.3.42.orig/coders/ps2.c
-+++ GraphicsMagick-1.3.42/coders/ps2.c
+--- GraphicsMagick-1.3.43.orig/coders/ps2.c
++++ GraphicsMagick-1.3.43/coders/ps2.c
 @@ -252,7 +252,7 @@ ModuleExport void RegisterPS2Image(void)
    entry->seekable_stream=True;
    entry->description="Adobe Level II Encapsulated PostScript";
@@ -91,10 +91,10 @@ Index: GraphicsMagick-1.3.42/coders/ps2.c
    (void) RegisterMagickInfo(entry);
  }
  
-Index: GraphicsMagick-1.3.42/coders/ps3.c
+Index: GraphicsMagick-1.3.43/coders/ps3.c
 ===================================================================
---- GraphicsMagick-1.3.42.orig/coders/ps3.c
-+++ GraphicsMagick-1.3.42/coders/ps3.c
+--- GraphicsMagick-1.3.43.orig/coders/ps3.c
++++ GraphicsMagick-1.3.43/coders/ps3.c
 @@ -394,7 +394,7 @@ ModuleExport void RegisterPS3Image(void)
    entry->description="Adobe Level III Encapsulated PostScript";
    entry->seekable_stream=MagickTrue;
@@ -113,68 +113,73 @@ Index: GraphicsMagick-1.3.42/coders/ps3.c
    (void) RegisterMagickInfo(entry);
  }
  
-Index: GraphicsMagick-1.3.42/config/delegates.mgk.in
+Index: GraphicsMagick-1.3.43/config/delegates.mgk.in
 ===================================================================
---- GraphicsMagick-1.3.42.orig/config/delegates.mgk.in
-+++ GraphicsMagick-1.3.42/config/delegates.mgk.in
+--- GraphicsMagick-1.3.43.orig/config/delegates.mgk.in
++++ GraphicsMagick-1.3.43/config/delegates.mgk.in
 @@ -76,27 +76,27 @@
    <delegate decode="dot" command='"@DOTDecodeDelegate@" -Tps "%i" -o "%o"' />
    <delegate decode="dvi" command='"@DVIDecodeDelegate@" -q -o "%o" "%i"' />
    <delegate decode="edit" stealth="True" command='"@EditorDelegate@" -title "Edit Image Comment" -e vi "%o"' />
--  <delegate decode="eps" encode="pdf" mode="bi" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSPDFDevice@ "-sOutputFile=%o" -- "%i" -c quit' />
--  <delegate decode="eps" encode="ps" mode="bi" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSPSDevice@ "-sOutputFile=%o" -- "%i" -c quit' />
-+  <!--delegate decode="eps" encode="pdf" mode="bi" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSPDFDevice@ "-sOutputFile=%o" -- "%i" -c quit' /-->
-+  <!--delegate decode="eps" encode="ps" mode="bi" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSPSDevice@ "-sOutputFile=%o" -- "%i" -c quit' /-->
+-  <delegate decode="eps" encode="pdf" mode="bi" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSPDFDevice@ "-sOutputFile=%o" -- "%i" -c quit' />
+-  <delegate decode="eps" encode="ps" mode="bi" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSPSDevice@ "-sOutputFile=%o" -- "%i" -c quit' />
++  <!--delegate decode="eps" encode="pdf" mode="bi" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSPDFDevice@ "-sOutputFile=%o" -- "%i" -c quit' /-->
++  <!--delegate decode="eps" encode="ps" mode="bi" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSPSDevice@ "-sOutputFile=%o" -- "%i" -c quit' /-->
    <delegate decode="fig" command='"@FIGDecodeDelegate@" -L ps "%i" "%o"' />
  
    <!-- Read monochrome Postscript, EPS, and PDF  -->
--  <delegate decode="gs-mono" stealth="True" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSMonoDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' />
-+  <!--delegate decode="gs-mono" stealth="True" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSMonoDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' /-->
+-  <delegate decode="gs-mono" stealth="True" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSMonoDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' />
++  <!--delegate decode="gs-mono" stealth="True" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSMonoDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' /-->
  
    <!-- Read grayscale Postscript, EPS, and PDF  -->
--  <delegate decode="gs-gray" stealth="True" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSGrayDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' />
-+  <!--delegate decode="gs-gray" stealth="True" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSGrayDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' /-->
+-  <delegate decode="gs-gray" stealth="True" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSGrayDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' />
++  <!--delegate decode="gs-gray" stealth="True" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSGrayDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' /-->
  
    <!-- Read colormapped Postscript, EPS, and PDF  -->
--  <delegate decode="gs-palette" stealth="True" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSPaletteDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' />
-+  <!--delegate decode="gs-palette" stealth="True" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSPaletteDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' /-->
+-  <delegate decode="gs-palette" stealth="True" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSPaletteDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' />
++  <!--delegate decode="gs-palette" stealth="True" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSPaletteDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' /-->
  
    <!-- Read color Postscript, EPS, and PDF  -->
--  <delegate decode="gs-color" stealth="True" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSColorDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' />
-+  <!--delegate decode="gs-color" stealth="True" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSColorDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' /-->
+-  <delegate decode="gs-color" stealth="True" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSColorDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' />
++  <!--delegate decode="gs-color" stealth="True" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSColorDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' /-->
  
    <!-- Read color+alpha Postscript, EPS, and PDF  -->
--  <delegate decode="gs-color+alpha" stealth="True" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSColorAlphaDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' />
-+  <!--delegate decode="gs-color+alpha" stealth="True" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSColorAlphaDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' /-->
+-  <delegate decode="gs-color+alpha" stealth="True" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSColorAlphaDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' />
++  <!--delegate decode="gs-color+alpha" stealth="True" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSColorAlphaDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' /-->
  
    <!-- Read CMYK Postscript, EPS, and PDF  -->
--  <delegate decode="gs-cmyk" stealth="True" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSCMYKDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' />
-+  <!--delegate decode="gs-cmyk" stealth="True" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSCMYKDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' /-->
+-  <delegate decode="gs-cmyk" stealth="True" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSCMYKDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' />
++  <!--delegate decode="gs-cmyk" stealth="True" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSCMYKDevice@ -dTextAlphaBits=%u -dGraphicsAlphaBits=%u -r%s %s "-sOutputFile=%s" -- "%s" -c quit' /-->
  
    <!-- Read monochrome PDF using Poppler's pdftoppm -->
    <delegate decode="poppler-mono" stealth="True" command='"pdftoppm" "-mono" "-freetype" "yes" "-aa" "yes" "-aaVector" "yes" "-rx" "72" "-ry" "72" "%s" ">" "%s"' />
-@@ -119,16 +119,10 @@
-   <delegate decode="mpeg" command='"@MPEGDecodeDelegate@" -q -b "%i" -f -o3 "%u%%05d"; @GMDelegate@ convert -temporary "%u*.ppm" "miff:%o" ; rm -f "%u"*.ppm ' />
+@@ -120,16 +120,16 @@
    <!-- Write MPEG file using mpeg2encode -->
    <delegate encode="mpeg-encode" stealth="True" command='"@MPEGEncodeDelegate@" "%i" "%o"' />
--  <!-- Convert PDF to Encapsulated Poscript using Ghostscript -->
--  <delegate decode="pdf" encode="eps" mode="bi" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSEPSDevice@ "-sOutputFile=%o" -- "%i" -c quit' />
--  <!-- Convert PDF to Postcript using Ghostscript -->
--  <delegate decode="pdf" encode="ps" mode="bi" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSPSDevice@ "-sOutputFile=%o" -- "%i" -c quit' />
+   <!-- Convert PDF to Encapsulated Poscript using Ghostscript -->
+-  <delegate decode="pdf" encode="eps" mode="bi" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSEPSDevice@ "-sOutputFile=%o" -- "%i" -c quit' />
++  <!--delegate decode="pdf" encode="eps" mode="bi" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSEPSDevice@ "-sOutputFile=%o" -- "%i" -c quit' /-->
+   <!-- Convert PDF to Postcript using Ghostscript -->
+-  <delegate decode="pdf" encode="ps" mode="bi" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSPSDevice@ "-sOutputFile=%o" -- "%i" -c quit' />
++  <!--delegate decode="pdf" encode="ps" mode="bi" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSPSDevice@ "-sOutputFile=%o" -- "%i" -c quit' /-->
    <!-- Convert PNM file to IFF ILBM format using ppmtoilbm -->
    <delegate decode="pnm" encode="ilbm" mode="encode" command='"@ILBMEncodeDelegate@" -24if "%i" > "%o"' />
    <delegate decode="pnm" encode="launch" mode="encode" command='"@LaunchDelegate@" "%i"' />
    <delegate decode="pnm" encode="win" mode="encode" command='"@GMDelegate@" display -immutable "%i"' />
--  <delegate decode="ps" encode="eps" mode="bi" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSEPSDevice@ "-sOutputFile=%o" -- "%i" -c quit' />
--  <delegate decode="ps" encode="pdf" mode="bi" command='"@PSDelegate@" -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSPDFDevice@ "-sOutputFile=%o" -- "%i" -c quit' />
-   <delegate decode="ps" encode="print" mode="encode" command='"@PrintDelegate@" "%i"' />
+-  <delegate decode="ps" encode="eps" mode="bi" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSEPSDevice@ "-sOutputFile=%o" -- "%i" -c quit' />
+-  <delegate decode="ps" encode="pdf" mode="bi" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSPDFDevice@ "-sOutputFile=%o" -- "%i" -c quit' />
+-  <delegate decode="ps" encode="print" mode="encode" command='"@PrintDelegate@" "%i"' />
++  <!--delegate decode="ps" encode="eps" mode="bi" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSEPSDevice@ "-sOutputFile=%o" -- "%i" -c quit' /-->
++  <!--delegate decode="ps" encode="pdf" mode="bi" command='"@PSDelegate@" -sstdout=%%stderr -q -dBATCH -dSAFER -dMaxBitmap=50000000 -dNOPAUSE -sDEVICE=@GSPDFDevice@ "-sOutputFile=%o" -- "%i" -c quit' /-->
++  <!--delegate decode="ps" encode="print" mode="encode" command='"@PrintDelegate@" "%i"' /-->
    <!-- Read HTML file  -->
    <delegate decode="shtml" command='"@HTMLDecodeDelegate@" -U -o "%o" "%i"' />
-Index: GraphicsMagick-1.3.42/Makefile.in
+   <delegate encode="show" stealth="True" command='"@GMDelegate@" display -immutable -delay 0 -window_group %g -title "%l of %f" "%o" &' />
+Index: GraphicsMagick-1.3.43/Makefile.in
 ===================================================================
---- GraphicsMagick-1.3.42.orig/Makefile.in
-+++ GraphicsMagick-1.3.42/Makefile.in
-@@ -4338,7 +4338,6 @@ TESTS_TESTS = \
+--- GraphicsMagick-1.3.43.orig/Makefile.in
++++ GraphicsMagick-1.3.43/Makefile.in
+@@ -4363,7 +4363,6 @@ TESTS_TESTS = \
  	tests/rwfile.tap \
  	tests/rwfile_sized.tap \
  	tests/rwfile_miff.tap \
@@ -182,16 +187,16 @@ Index: GraphicsMagick-1.3.42/Makefile.in
  	tests/rwfile_deep.tap
  
  TESTS_EXTRA_DIST = \
-Index: GraphicsMagick-1.3.42/tests/rwblob.tap
+Index: GraphicsMagick-1.3.43/tests/rwblob.tap
 ===================================================================
---- GraphicsMagick-1.3.42.orig/tests/rwblob.tap
-+++ GraphicsMagick-1.3.42/tests/rwblob.tap
+--- GraphicsMagick-1.3.43.orig/tests/rwblob.tap
++++ GraphicsMagick-1.3.43/tests/rwblob.tap
 @@ -10,7 +10,7 @@ rwblob=./rwblob
- check_types='bilevel gray pallette truecolor'
+ check_types='bilevel gray palette truecolor'
  
  # Number of tests we plan to run
--test_plan_fn 213
-+test_plan_fn 205
+-test_plan_fn 217
++test_plan_fn 209
  
  # ART format
  for type in ${check_types}
@@ -214,16 +219,16 @@ Index: GraphicsMagick-1.3.42/tests/rwblob.tap
  # FAX format
  for type in ${check_types}
  do
-Index: GraphicsMagick-1.3.42/tests/rwfile.tap
+Index: GraphicsMagick-1.3.43/tests/rwfile.tap
 ===================================================================
---- GraphicsMagick-1.3.42.orig/tests/rwfile.tap
-+++ GraphicsMagick-1.3.42/tests/rwfile.tap
-@@ -12,7 +12,7 @@ check_types='bilevel gray pallette truec
- check_types_noone='bilevel gray pallette truecolor'
+--- GraphicsMagick-1.3.43.orig/tests/rwfile.tap
++++ GraphicsMagick-1.3.43/tests/rwfile.tap
+@@ -12,7 +12,7 @@ check_types='bilevel gray palette trueco
+ check_types_noone='bilevel gray palette truecolor'
  
  # Number of tests we plan to run
--test_plan_fn 838 # 828
-+test_plan_fn 788 # 828
+-test_plan_fn 848
++test_plan_fn 798
  
  # ART format
  for type in ${check_types}
@@ -276,7 +281,7 @@ Index: GraphicsMagick-1.3.42/tests/rwfile.tap
  # FAX format
  for type in ${check_types}
  do
-@@ -298,13 +256,6 @@ do
+@@ -305,13 +263,6 @@ do
    test_command_fn "PCX ${type} (stdio)" ${MEMCHECK} ${rwfile} -stdio -filespec "out_${type}_stdio_%d" "${SRCDIR}/input_${type}.miff" PCX
  done
  
@@ -290,7 +295,7 @@ Index: GraphicsMagick-1.3.42/tests/rwfile.tap
  # PGM format
  for type in ${check_types}
  do
-@@ -364,27 +315,6 @@ do
+@@ -371,27 +322,6 @@ do
    done
  done
  

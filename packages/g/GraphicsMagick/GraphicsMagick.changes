@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Mar 25 12:40:12 UTC 2024 - pgajdos@suse.com
+
+- version update to 1.3.43
+  Bug fixes:
+  * JBIG: Add support for 'width', 'height', and 'pixels', resource
+    limits.  Your mileage may vary.
+  * WPG: Many fixes based on oss-fuzz testing.
+  * Ghostscript: When invoking Ghostscript, re-direct Ghostscript stdout
+    to stderr to avoid output corruption when GM stdout is redirected to
+    a file.
+  New Features:
+  * File write limit: Add support for a per-file write limit (-limit
+    write or MAGICK_LIMIT_WRITE).  This imposes a limit on the number of
+    uncompressed bytes written.  The behavior when the limit is hit is
+    similar to an unexpected write error, as if the disk is full.
+  * Resource limit highwater: Resource highwater values are maintained
+    for successful resource requests and final values are traced
+    via -debug resource' at the end of program execution.  These values
+    may be used to understand the most restrictive resource limits which
+    may be applied while still achieving successful operation.
+  * BMP: Support BI_PNG compression (PNG inside BMP).
+  * BMP: Support reading 64 bits-per-pixel.
+  * BMP: Support reading 48 bits-per-pixel.
+  * HEIF: Call heif_init() and heif_deinit() if they are
+    available. Support setting image width limit.
+  * HRZ: Added support for Slow scan TV format.
+  * JPEG: Added support for reading and writing lossy or lossless 12
+    bits, and lossless 16-bits using libjpeg-turbo-3.0
+  * JXL: Improve JXL reader/writer exception information.
+  * TIFF: Remove miniswhite/minisblack prohibitions when using Group3
+    and Group4 compression in order to allow using inverted photometric
+    from the standard.
+  * TIFF: Store EXIF IFD and GPS IFD tag information natively in TIFF
+    sub-IFDs, the same as it would be produced in a camera supporting
+    TIFF.  This allows an EXIF profile from HEIF, JPEG, JXL, PNG, WebP,
+    or from the META coder to be preserved in TIFF.
+  API Updates:
+  * ExpandFilenames(): Fix memory leak of existing allocations if
+    realloc() fails.
+- modified patches
+  % GraphicsMagick-disable-insecure-coders.patch (refreshed)
+
+-------------------------------------------------------------------
 Mon Jan 29 10:10:37 UTC 2024 - pgajdos@suse.com
 
 - ghostscript-fonts-std: relax to recommends [bsc#1216604]
