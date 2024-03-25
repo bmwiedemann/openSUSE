@@ -17,7 +17,7 @@
 
 
 Name:           monitoring-plugins-smart
-Version:        6.14.1
+Version:        6.14.2
 Release:        0
 Summary:        Check SMART status of a given disk
 License:        GPL-3.0-or-later
