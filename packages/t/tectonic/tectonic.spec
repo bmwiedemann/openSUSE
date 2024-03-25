@@ -1,7 +1,7 @@
 #
 # spec file for package tectonic
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           tectonic
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        Modernized self-contained TeX and LaTeX engine
 License:        (Apache-2.0 OR MIT) AND BSD-3-Clause ) AND ( 0BSD OR MIT OR Apache-2.0 ) AND ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( MIT OR Apache-2.0 AND BSD-2-Clause ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( MIT OR Zlib OR Apache-2.0 ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT AND WTFPL
 Group:          Productivity/Publishing/TeX/Utilities
 URL:            https://tectonic-typesetting.github.io
 Source0:        https://github.com/tectonic-typesetting/tectonic/archive/refs/tags/%{name}@%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.zstd
-Source2:        cargo_config
+Source1:        vendor.tar.zst
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  cargo-packaging
@@ -45,8 +44,6 @@ XeTeX and TeXLive.
 
 %prep
 %autosetup -a1 -n %{name}-%{name}-%{version}
-mkdir -p .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build} --features external-harfbuzz

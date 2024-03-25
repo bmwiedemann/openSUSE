@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar 24 23:37:06 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to version 0.15.0
+  * The --web-bundle flag can now be used in more situations, specifically
+    tectonic -X new and tectonic -X init
+  * As part of the above work, you can now activate the "V2" interface with the
+    -X flag in more places on the Tectonic command line.
+  * The Tectonic.toml file used by the "V2" interface now supports a
+    [metadata] section for arbitrary structured user metadata.
+  * The "V2" interface also now supports external commands.
+    If you have a program named tectonic-blah in your search path, running
+    tectonic -X blah will execute it.
+  * Running tectonic -Z help (as opposed to tectonic -Zhelp) now actuallyworks
+    works
+
+-------------------------------------------------------------------
 Tue Jul  4 23:36:32 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.14.1
