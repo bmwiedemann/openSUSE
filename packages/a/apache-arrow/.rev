@@ -110,4 +110,27 @@ apache-arrow is being used more and more by python numeric packages like pandas 
     <comment></comment>
     <requestid>1152982</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b309d4691982661680bbe702fcacb41f</srcmd5>
+    <version>15.0.2</version>
+    <time>1711397342</time>
+    <user>anag+factory</user>
+    <comment>- Update to 15.0.2
+  ## Bug Fixes
+  * [C++][Acero] Increase size of Acero TempStack (#40007)
+  * [C++][Dataset] Add missing Protobuf static link dependency
+    (#40015)
+  * [C++] Possible data race when reading metadata of a parquet
+    file (#40111)
+  * [C++] Make span SFINAE standards-conforming to enable
+    compilation with nvcc (#40253)
+  
+
+- Update to 15.0.2
+  ## Bug Fixes
+  * [Python] Fix except clauses (#40387)
+  * [Python][CI] Skip failing test_dateutil_tzinfo_to_string
+    (#40486) (forwarded request 1160966 from bnavigator)</comment>
+    <requestid>1160967</requestid>
+  </revision>
 </revisionlist>

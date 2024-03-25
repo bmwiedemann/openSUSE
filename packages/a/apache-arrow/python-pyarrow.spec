@@ -19,7 +19,7 @@
 %bcond_with xsimd
 %define plainpython python
 Name:           python-pyarrow
-Version:        15.0.1
+Version:        15.0.2
 Release:        0
 Summary:        Python library for Apache Arrow
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT

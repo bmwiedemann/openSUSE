@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 23 15:23:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 15.0.2
+  ## Bug Fixes
+  * [Python] Fix except clauses (#40387)
+  * [Python][CI] Skip failing test_dateutil_tzinfo_to_string
+    (#40486)
+
+-------------------------------------------------------------------
 Wed Feb 28 12:12:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Move to science/apache-arrow as multibuild package

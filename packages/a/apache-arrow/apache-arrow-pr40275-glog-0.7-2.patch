@@ -1,7 +1,7 @@
 From 32c44949e1d15295d84bd3d6a964ed4a320c5e48 Mon Sep 17 00:00:00 2001
 From: Sutou Kouhei <kou@clear-code.com>
 Date: Wed, 28 Feb 2024 22:56:41 +0900
-Subject: [PATCH] GH-40274: [C++] Add support for system glog 0.7
+Subject: [PATCH 1/2] GH-40274: [C++] Add support for system glog 0.7
 
 ---
  .../{FindGLOG.cmake => FindglogAlt.cmake}     | 20 +++++++++++++------
@@ -105,3 +105,26 @@ index 951028b6994ad..1a63301ba2296 100644
  endif()
  
  # ----------------------------------------------------------------------
+
+From e781cf04a3e0d8cb8de08412f4af60636c643ef2 Mon Sep 17 00:00:00 2001
+From: Sutou Kouhei <kou@cozmixng.org>
+Date: Thu, 29 Feb 2024 09:07:41 +0900
+Subject: [PATCH 2/2] Fix comment
+
+---
+ cpp/cmake_modules/ThirdpartyToolchain.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cpp/cmake_modules/ThirdpartyToolchain.cmake b/cpp/cmake_modules/ThirdpartyToolchain.cmake
+index 1a63301ba2296..89ce697380eec 100644
+--- a/cpp/cmake_modules/ThirdpartyToolchain.cmake
++++ b/cpp/cmake_modules/ThirdpartyToolchain.cmake
+@@ -115,7 +115,7 @@ if("${lz4_SOURCE}" STREQUAL "" AND NOT "${Lz4_SOURCE}" STREQUAL "")
+   set(lz4_SOURCE ${Lz4_SOURCE})
+ endif()
+ 
+-# For backward compatibility. We use "glog_SOURCE" if "GLOG_SOURCE"
++# For backward compatibility. We use "GLOG_SOURCE" if "glog_SOURCE"
+ # isn't specified and "GLOG_SOURCE" is specified.
+ # We renamed "GLOG" dependency name to "glog" in 16.0.0 because
+ # upstream uses "glog" not "GLOG" as package name.

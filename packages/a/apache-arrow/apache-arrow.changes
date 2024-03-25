@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 23 15:23:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 15.0.2
+  ## Bug Fixes
+  * [C++][Acero] Increase size of Acero TempStack (#40007)
+  * [C++][Dataset] Add missing Protobuf static link dependency
+    (#40015)
+  * [C++] Possible data race when reading metadata of a parquet
+    file (#40111)
+  * [C++] Make span SFINAE standards-conforming to enable
+    compilation with nvcc (#40253)
+  
+-------------------------------------------------------------------
 Wed Feb 28 08:08:44 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Reenable logging

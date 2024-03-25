@@ -26,7 +26,7 @@
 # See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
 %define parquet_testing_commit d69d979223e883faef9dc6fe3cf573087243c28a
 Name:           apache-arrow
-Version:        15.0.1
+Version:        15.0.2
 Release:        0
 Summary:        A development platform for in-memory data
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
