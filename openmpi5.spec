@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2004-2005 The Trustees of Indiana University and Indiana
 #                         University Research and Technology
 #                         Corporation.  All rights reserved.
@@ -42,7 +42,7 @@
 # % define build_static_devel 1
 
 %define pname openmpi
-%define _vers 5_0_0
+%define _vers 5_0_2
 %define m_f_ver 5
 %bcond_with ringdisabled
 
@@ -113,7 +113,7 @@ ExclusiveArch:  do_not_build
 %global hpc_openmpi_pack_version %{hpc_openmpi_dep_version}
 %endif
 
-%define git_ver .0.d0fe8ef81139
+%define git_ver .0.6db5e83b737a
 
 #############################################################################
 #
@@ -122,7 +122,7 @@ ExclusiveArch:  do_not_build
 #############################################################################
 
 Name:           %{package_name}%{?testsuite:-testsuite}
-Version:        5.0.0
+Version:        5.0.2
 Release:        0
 Summary:        An implementation of MPI/SHMEM (Version %{m_f_ver})
 License:        BSD-3-Clause
