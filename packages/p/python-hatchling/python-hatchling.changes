@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 24 13:16:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.22.4:
+  * Only read source distribution metadata for fields that are
+    explicitly defined as dynamic
+
+-------------------------------------------------------------------
 Wed Mar 20 03:43:33 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file
@@ -179,7 +186,7 @@ Sun Jan  8 17:46:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.2:
   * Add macos-max-compat option to the wheel target that is enabled by default to
-    support the latest version 22.0 of the packaging library 
+    support the latest version 22.0 of the packaging library
 
 -------------------------------------------------------------------
 Mon Jan  2 10:31:58 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
