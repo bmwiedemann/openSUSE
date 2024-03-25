@@ -131,4 +131,12 @@ This should fix my previously declined package submission: https://build.opensus
     <comment>Update to latest primecount-7.10 release</comment>
     <requestid>1138168</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7be1891dd4c3e649d4a36fc53df3b2b1</srcmd5>
+    <version>7.11</version>
+    <time>1711397254</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1160728</requestid>
+  </revision>
 </revisionlist>
