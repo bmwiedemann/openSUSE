@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-session
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cinnamon-session
-Version:        6.0.1
+Version:        6.0.4
 Release:        0
 Summary:        The session manager for the Cinnamon Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

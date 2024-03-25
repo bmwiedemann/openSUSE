@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 24 18:02:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.4:
+  * cinnamon-session-quit.py: Set logout window to keep-above and
+    all- workspaces.
+  * csm-manager.c: Use the /tmp dir for the dialog server's
+    socket file when logged in to a guest account.
+  * Packaging: Add missing build-dep on cinnamon-desktop
+  * session-quit: Use a unique dialog server address for each
+    session.
+  * cinnamon-session-quit.py: Try the old fixed server address if
+    the session manager doesn't provide the "sm-bus-id" argument.
+
+-------------------------------------------------------------------
 Wed Dec 20 23:22:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.1:
