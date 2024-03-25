@@ -17,14 +17,13 @@
 
 
 Name:           python-oslo.policy
-Version:        4.2.1
+Version:        4.3.0
 Release:        0
 Summary:        OpenStack Oslo Policy library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.policy
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.policy/oslo.policy-4.2.1.tar.gz
-Patch1:         0001-Avoid-TypeError-when-building-with-Sphinx-6.1.1-and-.patch
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.policy/oslo.policy-4.3.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 5.1
 BuildRequires:  python3-defusedxml
@@ -76,7 +75,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the Oslo Policy library.
 
 %prep
-%autosetup -p1 -n oslo.policy-4.2.1
+%autosetup -p1 -n oslo.policy-4.3.0
 %py_req_cleanup
 
 %build

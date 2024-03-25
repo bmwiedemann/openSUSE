@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 24 20:02:38 UTC 2024 - cloud-devel@suse.de
+
+- removed 0001-Avoid-TypeError-when-building-with-Sphinx-6.1.1-and-.patch
+- update to version 4.3.0
+  - Fix doc build error
+  - Update master for stable/2023.2
+  - coveragerc: Remove non-existent path
+  - Add flag to skip undefined rule check
+  - reno: Update master for unmaintained/yoga
+  - Use consistent commands for coverage
+  - Update python classifier in setup.cfg
+
+-------------------------------------------------------------------
 Thu Jan  4 09:09:55 UTC 2024 - cloud-devel@suse.de
 
 - update to version 4.2.1

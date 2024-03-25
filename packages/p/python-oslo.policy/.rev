@@ -386,4 +386,20 @@
   - Imported Translations from Zanata</comment>
     <requestid>1136728</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8b3b8fd9ae2965054179d07b701dbb08</srcmd5>
+    <version>4.3.0</version>
+    <time>1711397467</time>
+    <user>anag+factory</user>
+    <comment>- removed 0001-Avoid-TypeError-when-building-with-Sphinx-6.1.1-and-.patch
+- update to version 4.3.0
+  - Fix doc build error
+  - Update master for stable/2023.2
+  - coveragerc: Remove non-existent path
+  - Add flag to skip undefined rule check
+  - reno: Update master for unmaintained/yoga
+  - Use consistent commands for coverage
+  - Update python classifier in setup.cfg</comment>
+    <requestid>1161176</requestid>
+  </revision>
 </revisionlist>
