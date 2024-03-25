@@ -254,4 +254,23 @@
 </comment>
     <requestid>1128803</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f895909e8cb9e8dd8065cc8171917a3e</srcmd5>
+    <version>0.22</version>
+    <time>1711397453</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.22, update LLVM/Clang to version 18.
+  * Improve type analysis for typedefs, aliases and templates.
+  * Improve analysis of macros expanding macros.
+  * Improve IWYU driver for better validation and job handling.
+  * Reject IWYU invocations with precompiled headers (see FAQ).
+  * Better preserve failure exit codes in iwyu_tool.
+  * Add mappings for libstdc++ &lt;debug/...&gt; headers.
+  * Make mappings for POSIX and standard C headers stricter
+    (more portable).
+  * Add separate FAQ page for longer descriptions.
+- Rebase iwyu_include_picker.patch.
+</comment>
+    <requestid>1161157</requestid>
+  </revision>
 </revisionlist>

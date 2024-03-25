@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 23 22:20:36 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.22, update LLVM/Clang to version 18.
+  * Improve type analysis for typedefs, aliases and templates.
+  * Improve analysis of macros expanding macros.
+  * Improve IWYU driver for better validation and job handling.
+  * Reject IWYU invocations with precompiled headers (see FAQ).
+  * Better preserve failure exit codes in iwyu_tool.
+  * Add mappings for libstdc++ <debug/...> headers.
+  * Make mappings for POSIX and standard C headers stricter
+    (more portable).
+  * Add separate FAQ page for longer descriptions.
+- Rebase iwyu_include_picker.patch.
+
+-------------------------------------------------------------------
 Sat Nov 25 18:49:09 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Tests require at least Python 3.8, so we use a newer Python on

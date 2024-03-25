@@ -1,7 +1,7 @@
 #
 # spec file for package include-what-you-use
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2023 Aaron Puchert.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%define _llvm_version 17
+%define _llvm_version 18
 
 Name:           include-what-you-use
-Version:        0.21
+Version:        0.22
 Release:        0
 Summary:        A tool to analyze #includes in C and C++ source files
 License:        NCSA
@@ -86,13 +86,21 @@ rm iwyu.gcc.imp
 
 %check
 # We don't support MS style inline assembly, because we removed the dependency
-# on the X86 target of LLVM. On ARM, badinc doesn't work for some reason.
+# on the X86 target of LLVM. The driver test produces a different error, and an
+# additional error on 32-bit architectures.
+%global exclude_tests cxx.test_ms_inline_asm|driver.test_offload_openmp
+
 %ifarch %arm
-%define exclude_tests ^cxx.test_(badinc|ms_inline_asm)$
-%else
-%define exclude_tests ^cxx.test_ms_inline_asm$
+%global exclude_tests %exclude_tests|cxx.test_badinc
 %endif
-%{ctest '-E' '%exclude_tests'}
+
+# Fails with older versions of libstdc++ (at least <= 7, maybe more) with error
+# "type 'const std::hash<IndirectClass>' does not provide a call operator".
+%if %{pkg_vcmp libstdc++-devel <= 7}
+%global exclude_tests %exclude_tests|cxx.test_precomputed_tpl_args(|_cpp14)
+%endif
+
+%{ctest '-E' '^(%exclude_tests)$'}
 
 %files
 %license LICENSE.TXT
