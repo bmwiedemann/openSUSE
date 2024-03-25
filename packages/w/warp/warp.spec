@@ -1,7 +1,7 @@
 #
 # spec file for package warp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _lto_cflags %{nil}
 Name:           warp
-Version:        0.6.2
+Version:        0.7.0
 Release:        0
 Summary:        App to securely send files via the internet or local network
 License:        GPL-3.0-or-later
@@ -33,8 +33,12 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.10.0
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0)
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
+BuildRequires:  pkgconfig(gtk4) >= 4.13.0
 BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(zbar)
 # Binary /usr/bin/warp conflicts with same name binary from totally different app ghc-wai-app-static
 Conflicts:      ghc-wai-app-static
 
