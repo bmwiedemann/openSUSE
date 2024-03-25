@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 24 20:10:51 UTC 2024 - cloud-devel@suse.de
+
+- update to version 2.8.0
+  - Drop lower-constraints.txt and its testing
+  - Update master for stable/yoga
+  - Add Python3 zed unit tests
+
+-------------------------------------------------------------------
 Tue May 24 20:54:47 UTC 2022 - cloud-devel@suse.de
 
 - update to version 2.5.0
