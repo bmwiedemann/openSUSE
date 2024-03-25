@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-icalendar
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011 open-slx GmbH <Sascha.Manns@open-slx.de>
@@ -21,7 +21,7 @@
 %define	modname icalendar
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        5.0.11
+Version:        5.0.12
 Release:        0
 Summary:        Python parser/generator of iCalendar files package
 License:        BSD-2-Clause
@@ -39,7 +39,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil
 Requires:       python-pytz
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       %{name}-doc = %{version}
 Obsoletes:      %{name}-doc < %{version}
 BuildArch:      noarch

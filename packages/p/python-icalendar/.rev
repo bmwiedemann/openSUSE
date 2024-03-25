@@ -377,4 +377,30 @@
     <comment>- skip tests on leap</comment>
     <requestid>1140098</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e7c595f396778d7da8a90fc22bfcb09e</srcmd5>
+    <version>5.0.12</version>
+    <time>1711397277</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.12:
+  * Augmented fuzzer to optionally convert multiple calendars
+    from a source string
+  * Add script to convert OSS FUZZ test cases to Python/pytest
+    test cases
+  * Added additional exception handling of defined errors to
+    fuzzer, to allow fuzzer to explore deeper
+  * Added more instrumentation to fuzz-harness
+  * Rename &quot;contributor&quot; to &quot;collaborator&quot; in documentation
+  * Correct the outdated &quot;icalendar view myfile.ics&quot; command in
+    documentation. #588
+  * Update GitHub Actions steps versions
+  * Keep GitHub Actions up to date with GitHub's Dependabot
+  * Fixed index error in cal.py when attempting to pop from an
+    empty stack
+  * Fixed type error in prop.py when attempting to join strings
+    into a byte-string
+  * Caught Wrong Date Format in ical_fuzzer to resolve fuzzing
+    coverage blocker</comment>
+    <requestid>1160833</requestid>
+  </revision>
 </revisionlist>
