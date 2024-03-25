@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 22 19:39:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.32:
+  * add deprecations message for numpy functions to be removed in
+    numpy 2.0
+  * comparison operations use try/except for short-circuiting
+    instead of checking for numpy arrays (addressing #123)
+  * add Python 3.12 to testing
+  * move repository from "newville" to "lmfit" organization
+  * update doc theme, GitHub locations pointed to by docs, other
+    doc tweaks.
+
+-------------------------------------------------------------------
 Tue Jul 18 18:09:28 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 0.9.31:
@@ -26,7 +39,7 @@ Thu Feb 16 21:08:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Dec  1 22:16:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 0.9.28 
+- Update to 0.9.28
   * add support for Python 3.11
   * add support for multiple list comprehensions
   * improve performance of making the initial symbol table,
@@ -35,7 +48,7 @@ Thu Dec  1 22:16:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Tue Sep  6 20:15:58 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- update to 0.9.27: 
+- update to 0.9.27:
   * more cleanups
 
 -------------------------------------------------------------------
