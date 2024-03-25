@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 24 20:08:53 UTC 2024 - cloud-devel@suse.de
+
+- update to version 4.8.0
+  - Bump hacking
+  - Fix share force delete case
+  - Update python classifier in setup.cfg
+  - reno: Update master for unmaintained/yoga
+  - CLI for disable service reason
+  - Fix "per_share_gigabytes" in "openstack quota set"
+  - [OSC] Add OSC Functional Tests Snapshot Instances
+  - Fix list call when search_opts isn't provided
+
+-------------------------------------------------------------------
 Sun Jan 14 17:56:42 UTC 2024 - cloud-devel@suse.de
 
 - update to version 4.7.0

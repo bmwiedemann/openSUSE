@@ -485,4 +485,20 @@ update to version 1.10.0
   - Fix decoder path and add transfer commands</comment>
     <requestid>1138703</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a2442bd33fcae77d02a8970bb8b40a0f</srcmd5>
+    <version>4.8.0</version>
+    <time>1711397482</time>
+    <user>anag+factory</user>
+    <comment>- update to version 4.8.0
+  - Bump hacking
+  - Fix share force delete case
+  - Update python classifier in setup.cfg
+  - reno: Update master for unmaintained/yoga
+  - CLI for disable service reason
+  - Fix &quot;per_share_gigabytes&quot; in &quot;openstack quota set&quot;
+  - [OSC] Add OSC Functional Tests Snapshot Instances
+  - Fix list call when search_opts isn't provided</comment>
+    <requestid>1161189</requestid>
+  </revision>
 </revisionlist>
