@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 19 07:11:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.4:
+  * Add `target` request extension.
+  * Fix support for connection `Upgrade` and `CONNECT` when some
+    data in the stream has been read.
+  * Fix support for async cancellations.
+  * Fix trace extension when used with socks proxy.
+  * Fix SSL context for connections using the "wss" scheme
+
+-------------------------------------------------------------------
 Thu Dec  7 22:46:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.2:

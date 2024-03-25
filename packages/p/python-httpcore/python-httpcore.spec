@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-httpcore
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-httpcore%{psuffix}
-Version:        1.0.2
+Version:        1.0.4
 Release:        0
 Summary:        Minimal low-level Python HTTP client
 License:        BSD-3-Clause

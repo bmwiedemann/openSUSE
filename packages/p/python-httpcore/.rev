@@ -170,4 +170,18 @@
     scheme is used. (Pull #403)</comment>
     <requestid>1131743</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>81884c2ee687daa6e34a1830db259fbd</srcmd5>
+    <version>1.0.4</version>
+    <time>1711397213</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.4:
+  * Add `target` request extension.
+  * Fix support for connection `Upgrade` and `CONNECT` when some
+    data in the stream has been read.
+  * Fix support for async cancellations.
+  * Fix trace extension when used with socks proxy.
+  * Fix SSL context for connections using the &quot;wss&quot; scheme</comment>
+    <requestid>1160938</requestid>
+  </revision>
 </revisionlist>
