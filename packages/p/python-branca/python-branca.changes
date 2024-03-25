@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 18 10:49:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.1:
+  * Remove _env instance attribute from Element
+  * Add jinja2 version constraint
+
+-------------------------------------------------------------------
 Wed Mar 13 10:12:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip build on python 3.9 due to missing ipython

@@ -89,4 +89,12 @@ Required by python-ipyleaflet and python-folium</comment>
     <comment>- skip build on python 3.9 due to missing ipython</comment>
     <requestid>1157515</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>dfc6467a9d28d0b66fcd68f94f9a2b63</srcmd5>
+    <version>0.7.1</version>
+    <time>1711397555</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1161364</requestid>
+  </revision>
 </revisionlist>
