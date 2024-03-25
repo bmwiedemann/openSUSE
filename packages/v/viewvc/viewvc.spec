@@ -1,7 +1,7 @@
 #
 # spec file for package viewvc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define viewvc_dir /srv/viewvc
 #
 Name:           viewvc
-Version:        1.3.0~dev20230511
+Version:        1.3.0~dev20240207
 Release:        0
 Summary:        Browse a Subversion Repository with a Web Browser
 License:        BSD-2-Clause
