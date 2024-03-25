@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 15 15:05:00 UTC 2024 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-7.11 (API & ABI are backwards compatible).
+- Increase pi(x) cache size to 2 KiB.
+- Detect incompatible command-line options.
+- Faster RiemannR(x) and RiemannR_inverse(x) implementations.
+- test/iroot.cpp: Fix musl libc issue.
+- test/Li.cpp: Speed up test.
+- Renamed option --Ri to -R or --RiemannR.
+- Renamed option --Ri-inverse to --RiemannR-inverse.
+- Improve status output on Windows.
+
+-------------------------------------------------------------------
 Thu Jan 11 17:55:00 UTC 2024 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-7.10 (API & ABI are backwards compatible).
