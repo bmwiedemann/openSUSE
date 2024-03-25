@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 24 20:07:51 UTC 2024 - cloud-devel@suse.de
+
+- update to version 5.4.0
+  - Remove six dependency
+  - Remove deprecated pbr options
+  - Declare Python 3.10 support
+  - Bump hacking
+  - Update master for stable/2023.2
+  - Stop installing python-all-dev in Ubuntu/Debian
+  - Replace abc.abstractproperty with property and abc.abstractmethod
+  - Update python classifier in setup.cfg
+  - Update master for stable/2023.1
+  - reno: Update master for unmaintained/yoga
+
+-------------------------------------------------------------------
 Sun Jan 14 17:55:45 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.2.0
