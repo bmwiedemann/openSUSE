@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Mar 16 14:41:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.35.1:
+  * Restore ignoration of files passed as command-line arguments
+  * Revert API change from version 1.35.0
+  * Fix failure on broken symlinks that should be ignored
+  * API change: linter.run(stream, config) doesn't filter files
+    anymore
+  * Docs: Restore official Read the Docs theme
+  * Config: validate ignore-from-file inside rules
+  * Rule quoted-strings: fix only-when-needed in flow maps and
+    sequences
+  * Rule key-duplicates: add forbid-duplicated-merge-keys option
+  * Rule quoted-strings: add check-keys option
+  * Docs: add GitLab CI example
+  * Rule truthy: adapt forbidden values based on YAML version
+
+-------------------------------------------------------------------
 Fri Dec 15 22:11:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.33.0:
