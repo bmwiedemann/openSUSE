@@ -17,19 +17,19 @@
 
 
 Name:           stl-thumb-kde
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Stl-thumb is a fast lightweight thumbnail generator for STL files.
 License:        MIT
 URL:            https://github.com/unlimitedbacon/stl-thumb-kde
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         cmake.patch
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
+BuildRequires:  kf6-extra-cmake-modules
+BuildRequires:  kf6-filesystem
 BuildRequires:  stl-thumb-devel
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(KF6KIO)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Widgets)
 
 %description
 This is the KDE / KIO plugin for stl-thumb.
@@ -39,14 +39,14 @@ It shows previews of .stl files in Dolphin and throughout the KDE desktop.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %files
-%{_kf5_plugindir}/
-%{_kf5_servicesdir}/
+%dir %{_kf6_plugindir}/kf6/thumbcreator
+%{_kf6_plugindir}/kf6/thumbcreator/stlthumbnail.so
 
 %changelog

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 24 17:04:34 UTC 2024 - Mike Chikov <mike.chikov@gmail.com>
+
+- Fix build & installation with KDE Plasma 6
+
+-------------------------------------------------------------------
+Thu Mar 14 14:28:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.0:
+  * Updated to work with KDE Plasma 6 / QT 6
+
+-------------------------------------------------------------------
 Wed Jan 10 14:25:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix URL to source tarball.
