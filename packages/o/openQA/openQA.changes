@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 23 22:32:54 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1711120604.dad79902:
+  * Hide commenting button on empty test results overview pages
+  * Suggest reloading page after adding comments on overview page
+  * Rename "Batch commenting" to "Add comments" according to feedback
+  * Bump d3-axis from 1.0.8 to 1.0.12
+
+-------------------------------------------------------------------
 Thu Mar 21 13:38:41 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1711028310.e985d28c:
