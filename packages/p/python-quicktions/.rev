@@ -116,4 +116,14 @@
     math.gcd().</comment>
     <requestid>1140281</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>65d35a5acc3e5bc6a29350c46146f861</srcmd5>
+    <version>1.17</version>
+    <time>1711397557</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.17:
+  * Math operations were sped up by inlined binary GCD
+    calculation.</comment>
+    <requestid>1161385</requestid>
+  </revision>
 </revisionlist>

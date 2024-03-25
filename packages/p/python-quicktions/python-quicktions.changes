@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 25 12:27:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.17:
+  * Math operations were sped up by inlined binary GCD
+    calculation.
+
+-------------------------------------------------------------------
 Sun Jan 21 11:21:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.16:
