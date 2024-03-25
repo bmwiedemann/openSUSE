@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 24 10:30:55 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 33.0.0
+  * Add Terminal autocomplete.
+  * New configuration options
+    + FX_SHOW_SIZE - show the size of the arrays and objects.
+    + FX_NO_MOUSE - disable mouse support.
+    + FX_THEME - set the theme for the output.
+
+-------------------------------------------------------------------
 Mon Mar 11 21:21:41 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 32.0.0

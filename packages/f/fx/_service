@@ -1,6 +1,6 @@
 <services>
-  <service name="download_files" mode="manual" />
-  <service mode="manual" name="set_version">
+  <service name="download_files" mode="manual"/>
+  <service name="set_version" mode="manual">
     <param name="basename">fx</param>
   </service>
   <service name="go_modules" mode="manual">
