@@ -227,4 +227,18 @@
   - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;</comment>
     <requestid>1135326</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>cf39fb4e96defebae36bddc445c659e0</srcmd5>
+    <version>7.2.0</version>
+    <time>1711397469</time>
+    <user>anag+factory</user>
+    <comment>- update to version 7.2.0
+  - Display coverage report
+  - Bump hacking
+  - Add coreutils as valid value to fix KillFilter test
+  - Update python classifier in setup.cfg
+  - Update master for stable/2023.2
+  - Drop Beta development status</comment>
+    <requestid>1161179</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 24 20:03:33 UTC 2024 - cloud-devel@suse.de
+
+- update to version 7.2.0
+  - Display coverage report
+  - Bump hacking
+  - Add coreutils as valid value to fix KillFilter test
+  - Update python classifier in setup.cfg
+  - Update master for stable/2023.2
+  - Drop Beta development status
+
+-------------------------------------------------------------------
 Fri Dec  1 16:33:12 UTC 2023 - cloud-devel@suse.de
 
 - update to version 7.1.0
