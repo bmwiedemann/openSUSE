@@ -1,8 +1,8 @@
 #
 # spec file for package jc
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2020-2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2020-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           jc
-Version:        1.24.0
+Version:        1.25.2
 Release:        0
 Summary:        JSON CLI output utility
 License:        MIT

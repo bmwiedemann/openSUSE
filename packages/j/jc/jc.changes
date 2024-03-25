@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Sun Mar 24 10:13:57 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.25.2
+  * Add apt-cache-show command parser.
+  * Add apt-get-sqq command parser.
+  * Add ethtool command parser.
+  * Add needrestart command parser.
+  * Enhance df parser to add human readable output support.
+  * Enhance free parser to add human readable output support.
+  * Enhance iptables parser to handle -x output.
+  * Enhance /proc/pid/stat parser to support "Idle" state.
+  * Enhance rpm_qi and pkg_index_deb parsers to split list fields
+    into arrays.
+  * Fix iwconfig parser to handle more special characters in the
+    SSID name.
+  * Fix xrandr parser to ignore extra horizontal and vertical stats
+    lines.
+- Update to version 1.25.1
+  * Fix for crash when optional libraries are not installed.
+  * Fix for ini parser crashing with some keys with no values.
+  * Fix xrandr parser to extract more EDID data.
+  * Enhance uptime parser to support output with no user information
+  * Enhance --quiet CLI option to cover more warning messages.
+  * Add tests for missing optional libraries.
+- Update to version 1.25.0
+  * Add --slurp functionality to wrap output from multiple lines
+    into a single array.
+  * Streaming parsers are not supported. Use jc -hhh to find parsers
+    compatible with the slurp option.
+  * Enhance /proc file magic syntax to allow slurping when multiple
+    files are selected.
+  * Enhance --meta-out functionality to include a list of the input
+    data when using --slurp or /proc file magic syntax. For
+    slurpable parsers, this is a list of string inputs in order.
+    For /proc file magic syntax, this is a list of /proc filenames
+    in order. This can help with identifying which input matches to
+    which output when using --slurp or when converting multiple
+    files via /proc file magic syntax.
+  * Add curl-head command parser for curl --head or curl -I with
+    verbose support.
+  * Add efibootmgr command parser.
+  * Add http-headers parser for plain HTTP header output.
+  * Add kv-dup parser for Key/Value files with duplicate keys.
+  * Add path string parser to parse posix path.
+  * Add path-list string parser to parse path list strings found
+    in env variables.
+  * Add source link to online parser documentation.
+  * Add snap package build scripts.
+  * Add remove_quotes function to utils.py.
+  * Add normalize_key function to utils.py.
+  * Add line_slice function to utils.py.
+  * Add get_parser function to lib.py.
+  * Enhance nsd-control parser to support more zone information.
+  * Enhance ping and ping-s parsers to support the -I command
+    option.
+  * Enhance proc-net-tcp parser to add opposite endian support for
+    architectures like the s390x.
+  * Enhance url parser to add parent, filename, stem, and
+    extension fields.
+  * Fix ini and ini-dup parsers to consistently handle null values
+     as empty strings.
+  * Fix line slicer to not skip blank lines.
+
+-------------------------------------------------------------------
 Sun Dec 17 23:01:33 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.24.0
