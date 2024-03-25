@@ -1,7 +1,7 @@
 #
 # spec file for package gap-gradedmodules
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-gradedmodules
-Version:        2022.09.02
-%define sillyver 2022.09-02
+Version:        2024.01.01
+%define sillyver 2024.01-01
 Release:        0
 Summary:        GAP: Abelian finitely presented graded modules over a computable graded ring
 License:        GPL-2.0-or-later
@@ -29,14 +29,14 @@ Source:         https://github.com/homalg-project/homalg_project/releases/downlo
 BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.11.1
+Requires:       gap-core >= 4.12.1
 Requires:       gap-gapdoc >= 1.0
-Requires:       gap-gradedringforhomalg >= 2021.03.01
+Requires:       gap-gradedringforhomalg >= 2023.08.01
 Requires:       gap-homalg >= 2022.02.01
-Requires:       gap-homalgtocas >= 2011.10.05
-Requires:       gap-matricesforhomalg >= 2022.02.01
-Requires:       gap-modules >= 2022.02.01
-Requires:       gap-ringsforhomalg >= 2020.04.17
+Requires:       gap-homalgtocas >= 2023.08.01
+Requires:       gap-matricesforhomalg >= 2023.08.01
+Requires:       gap-modules >= 2023.08.01
+Requires:       gap-ringsforhomalg >= 2023.09.01
 Requires:       gap-toolsforhomalg >= 2014.12.08
 
 %description
