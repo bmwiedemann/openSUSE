@@ -17,7 +17,7 @@
 
 
 Name:           python-opentelemetry-exporter-otlp-proto-grpc
-Version:        1.22.0
+Version:        1.23.0
 Release:        0
 Summary:        OpenTelemetry Collector Protobuf over gRPC Exporter
 License:        Apache-2.0
@@ -27,25 +27,23 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module backoff >= 1.10.0}
 BuildRequires:  %{python_module Deprecated >= 1.2.6}
 BuildRequires:  %{python_module googleapis-common-protos >= 1.52}
 BuildRequires:  %{python_module grpcio >= 1.0.0}
 BuildRequires:  %{python_module opentelemetry-api >= 1.15}
-BuildRequires:  %{python_module opentelemetry-exporter-otlp-proto-common == 1.22.0}
-BuildRequires:  %{python_module opentelemetry-proto == 1.22.0}
-BuildRequires:  %{python_module opentelemetry-sdk >= 1.22.0}
+BuildRequires:  %{python_module opentelemetry-exporter-otlp-proto-common == 1.23.0}
+BuildRequires:  %{python_module opentelemetry-proto == 1.23.0}
+BuildRequires:  %{python_module opentelemetry-sdk >= 1.23.0}
 BuildRequires:  %{python_module opentelemetry-test-utils}
 BuildRequires:  %{python_module pytest-grpc}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-Deprecated >= 1.2.6
-Requires:       python-backoff >= 1.10.0
 Requires:       python-googleapis-common-protos
 Requires:       python-grpcio >= 1.0.0
 Requires:       python-opentelemetry-api
-Requires:       python-opentelemetry-exporter-otlp-proto-common == 1.22.0
-Requires:       python-opentelemetry-proto == 1.22.0
+Requires:       python-opentelemetry-exporter-otlp-proto-common == 1.23.0
+Requires:       python-opentelemetry-proto == 1.23.0
 Requires:       python-opentelemetry-sdk
 BuildArch:      noarch
 %python_subpackages
