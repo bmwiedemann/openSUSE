@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Mar 24 19:04:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.90.4:
+  * Nav: Fixed SetKeyboardFocusHere() or programmatic tabbing API
+    from not working on windows with the
+    ImGuiWindowFlags_NoNavInputs flag
+    (regression in 1.90.2, which among other things broke
+     imgui_memory_editor).
+  * Menus, Popups: Fixed an issue where hovering a parent-menu
+    upward would erroneously close the window.
+  * Popups: Fixed resizable popup minimum size being too small.
+    Standardized minimum size logic. (#7329).
+  * Modals: Temporary changes of ImGuiCol_ModalWindowDimBg are
+    properly handled by BeginPopupModal(). (#7340)
+  * Tables: Angled headers: fixed support for multi-line labels.
+  * Tables: Angled headers: various fixes to accurately handle
+    CellPadding changes. (#6917)
+  * Tables: Angled headers: properly registers horizontal
+    component of angled headers for auto-resizing of columns. (#6917)
+  * Tables: Angled headers: fixed TableAngledHeadersRow()
+    incorrect background fill drawn too low, particularly visible
+    with tables that have no scrolling. (#6917)
+  * ProgressBar: Fixed a minor tesselation issue when rendering
+    rounded progress bars, where in some situations the rounded
+    section wouldn't follow regular tesselation rules.
+  * Debug Tools: Item Picker: Promoted
+    ImGui::DebugStartItemPicker() to public API. (#2673)
+  * Debug Tools: Item Picker: Menu entry visible in Demo->Tools
+    but greyed out unless io.ConfigDebugIsDebuggerPresent is set.
+  * Misc: Added optional alpha multiplier parameter to
+    GetColorU32(ImU32) variant.
+  * Demo: Custom Rendering: better demonstrate PathArcTo(),
+    PathBezierQuadraticCurveTo(), PathBezierCubicCurveTo(),
+    PathStroke(), PathFillConvex() functions.
+
+-------------------------------------------------------------------
 Mon Feb 19 18:51:18 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.90.3:
