@@ -117,4 +117,22 @@
     <comment></comment>
     <requestid>1151689</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>80e1042565f02409593aa0406518a0ff</srcmd5>
+    <version>1.7.3</version>
+    <time>1711397503</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1..7.3
+  * Build xz tarballs instead of bzip2
+  * gitlab CI: add a basic build test
+  * Switch to XORG_DEFAULT_NOCODE_OPTIONS
+  * Remove &quot;All rights reserved&quot; from Oracle copyright notices
+  * MAINTAINERS: update format
+  * MAINTAINERS: update data
+  * gitlab CI: Update to latest CI templates &amp; Debian stable release
+  * MAINTAINERS: take Xnest maintainership
+  * MAINTAINERS: add xisxwayland
+  * add maintainer for Xft</comment>
+    <requestid>1161224</requestid>
+  </revision>
 </revisionlist>

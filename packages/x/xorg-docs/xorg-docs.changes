@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 25 02:26:09 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1..7.3
+  * Build xz tarballs instead of bzip2
+  * gitlab CI: add a basic build test
+  * Switch to XORG_DEFAULT_NOCODE_OPTIONS
+  * Remove "All rights reserved" from Oracle copyright notices
+  * MAINTAINERS: update format
+  * MAINTAINERS: update data
+  * gitlab CI: Update to latest CI templates & Debian stable release
+  * MAINTAINERS: take Xnest maintainership
+  * MAINTAINERS: add xisxwayland
+  * add maintainer for Xft
+
+-------------------------------------------------------------------
 Mon Feb 26 12:23:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

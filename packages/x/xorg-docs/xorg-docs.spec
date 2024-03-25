@@ -1,7 +1,7 @@
 #
 # spec file for package xorg-docs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xorg-docs
-Version:        1.7.2
+Version:        1.7.3
 Release:        0
 Summary:        Miscellaneous documentation for the X Window System
 License:        MIT
 Group:          Documentation/Other
 URL:            http://xorg.freedesktop.org/
-Source:         %{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.xz
 Patch0:         reproducable_build.patch
 # For xmlto txt support
 BuildRequires:  autoconf >= 2.60
