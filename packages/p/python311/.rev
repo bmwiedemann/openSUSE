@@ -1252,4 +1252,16 @@ C API
   * Add the --with-ssl-default-suites=openssl configure option</comment>
     <requestid>1157149</requestid>
   </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>3d86a01b4fe97f600a3d36a8e624af6f</srcmd5>
+    <version>3.11.8</version>
+    <time>1711397164</time>
+    <user>anag+factory</user>
+    <comment>- Add reference to CVE-2024-0450 (bsc#1221854) to changelog.
+
+- Because of bsc#1189495 we have to revert use of %autopatch.
+
+      other entry or central directory (bsc#1221854, CVE-2024-0450).</comment>
+    <requestid>1161081</requestid>
+  </revision>
 </revisionlist>

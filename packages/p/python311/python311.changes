@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 24 07:51:45 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add reference to CVE-2024-0450 (bsc#1221854) to changelog.
+
+-------------------------------------------------------------------
+Fri Mar 22 21:22:27 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Because of bsc#1189495 we have to revert use of %autopatch.
+
+-------------------------------------------------------------------
 Tue Mar 12 08:44:47 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Rewrite %prep to use %autosetup et al. for compatibility with
@@ -197,7 +207,7 @@ Thu Feb  8 07:27:40 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
       tkinter._test().
     - gh-109858: Protect zipfile from “quoted-overlap” zipbomb. It now
       raises BadZipFile when try to read an entry that overlaps with
-      other entry or central directory.
+      other entry or central directory (bsc#1221854, CVE-2024-0450).
     - gh-38807: Fix race condition in trace. Instead of checking if a
       directory exists and creating it, directly call os.makedirs()
       with the kwarg exist_ok=True.

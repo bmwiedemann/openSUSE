@@ -415,13 +415,27 @@ This package contains libpython3.2 shared library for embedding in
 other applications.
 
 %prep
-%autosetup -p1 -N -n %{tarname}
-%autopatch -p1 -M 08
+%setup -q -n %{tarname}
+%patch -p1 -P 02
+%patch -p1 -P 03
+%patch -p1 -P 04
+%patch -p1 -P 05
+%patch -p1 -P 06
+%patch -p1 -P 07
+%patch -p1 -P 08
 
 %if 0%{?suse_version} <= 1500
 %patch -P 09 -p1
 %endif
-%autopatch -p1 -m 10
+
+%patch -p1 -P 10
+%patch -p1 -P 11
+%patch -p1 -P 12
+%patch -p1 -P 13
+%patch -p1 -P 14
+%patch -p1 -P 15
+%patch -p1 -P 16
+%patch -p1 -P 17
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
