@@ -1,0 +1,5 @@
+<package name="sypper" project="openSUSE:Factory">
+  <title>sypper - simple perl utility emulating zypper download </title>
+  <description>The purpose is to investigate and benchmark various package download strategies</description>
+  <devel project="openSUSE:infrastructure:MirrorCache" package="sypper"/>
+</package>

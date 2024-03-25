@@ -1,0 +1,16 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/andrii-suse/sypper</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">@PARENT_TAG@</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">Andrii Nikitin &lt;andrii.nikitin@suse.com&gt;</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>

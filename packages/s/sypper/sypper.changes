@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Thu Mar 14 14:41:24 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 0.05:
+  * Add --non-interactive flag
+  * Always load system repo
+
+-------------------------------------------------------------------
+Thu Mar 07 15:27:15 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 0.04:
+  * Skip primary.xml download when cached
+  * Skip rpm download when cached
+  * Do not fetch updateinfo
+  * Fix mirrors are not loaded if repo is cached
+  * fix: system repo never refreshes
+  * Dont load system repo with custom SYPP_ROOT
+
+-------------------------------------------------------------------
+Fri Feb 02 13:40:32 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 0.03:
+  * Add basic support for variables in repo files
+  * Improve error reporting
+  * Format README.md
+
+-------------------------------------------------------------------
+Wed Jan 24 15:43:40 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 0.02:
+  * Add readme and license files
+  * Use /var/cache/zypp when root
+  * Implement concurrency in repo refresh
+  * Add --force flag to refresh
+  * fix typo missing brakets in $element->type
+
+-------------------------------------------------------------------
+Thu Jan 18 13:37:24 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 0.01:
+  * ci: add environ tests
+  * Add concurrency option to commands
+  * Add concurrent download
+  * ci: Add ci for system tests
+  * t: Add system test to use with zypper
+  * t: Add system test
+  * Cache list of mirrors during repo refresh
+  * Add support for .mirrors file
+  * Add support for multiple url in baseurl
+  * download
+
+-------------------------------------------------------------------
+Fri Jan 12 00:58:28 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com> - 0.01
+
+- Initial release 0.01
