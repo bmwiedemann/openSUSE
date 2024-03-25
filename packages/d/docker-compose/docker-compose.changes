@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Mar 23 10:34:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.26.0:
+  * chore(desktop): revised feature detection for file shares
+  * Add Navigation Menu to compose up
+  * Add support for volume Subpath option
+  * Bump docker v26.0.0
+  * introduce config --variables to list compose model variables
+  * Fix docs on default build image name
+  * Bump compose-go to v2.0.2
+  * add support for annotations
+  * Revert "Bump compose-go to v2.0.1"
+  * Bump compose-go to v2.0.1
+  * feat(desktop): synchronized file share integration (#11614)
+  * feat(experiments): add experimental feature state (#11633)
+  * reduce timeout of the Otel tracing command
+  * fix `compose config --format json`
+
+-------------------------------------------------------------------
 Fri Mar 15 22:18:48 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.25.0:
