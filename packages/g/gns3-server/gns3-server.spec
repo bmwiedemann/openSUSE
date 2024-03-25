@@ -1,7 +1,7 @@
 #
 # spec file for package gns3-server
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,6 +68,8 @@ Recommends:     virtualbox
 %endif
 Requires(pre):  shadow
 %{?systemd_ordering}
+Provides:       group(%gns3_group)
+Provides:       user(%gns3_user)
 
 %description
 The GNS3 server manages emulators such as Dynamips, VirtualBox or Qemu/KVM.
