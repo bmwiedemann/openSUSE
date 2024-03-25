@@ -215,4 +215,38 @@
     applying to private libraries (issue #4762)</comment>
     <requestid>1138501</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>00fbbcb0b2282ab7fae94088540caec0</srcmd5>
+    <version>6.1.14</version>
+    <time>1711397563</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.1.14:
+  * Introduced the ``--json-output`` option to the pio test
+    command, enabling users to generate test results in the JSON
+    format
+  * Upgraded the build engine to the latest version of SCons
+    (4.7.0) to improve build performance, reliability, and
+    compatibility with other tools and systems (release notes)
+  * Broadened version support for the ``pyelftools`` dependency,
+    enabling compatibility with lower versions and facilitating
+    integration with a wider range of third-party tools (issue
+    #4834)
+  * Addressed an issue where passing a relative path
+    (``--project-dir``) to the pio project init command resulted
+    in an error (issue #4847)
+  * Enhanced Static Code Analysis to accommodate scenarios where
+    custom ``src_dir`` or ``include_dir`` are located outside the
+    project folder (pull #4874)
+  * Corrected the validation of ``symlink://`` package
+    specifications , resolving an issue that caused the package
+    manager to repeatedly reinstall dependencies (pull #4870)
+  * Resolved an issue related to the relative package path in the
+    pio pkg publish command
+  * Resolved an issue where the LDF selected an incorrect library
+    version (issue #4860)
+  * Resolved an issue with the ``hexlify`` filter in the device
+    monitor command, ensuring proper representation of characters
+    with Unicode code points higher than 127 (issue #4732)</comment>
+    <requestid>1161396</requestid>
+  </revision>
 </revisionlist>

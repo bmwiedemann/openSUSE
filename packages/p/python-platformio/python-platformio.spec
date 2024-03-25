@@ -17,7 +17,7 @@
 
 
 Name:           python-platformio
-Version:        6.1.13
+Version:        6.1.14
 Release:        0
 Summary:        New Generation Ecosystem for Embedded Development
 License:        Apache-2.0
@@ -49,7 +49,7 @@ Requires:       python-uvicorn >= 0.16
 Requires:       python-wsproto >= 1.0
 Requires:       python-zeroconf
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %python_subpackages
 
