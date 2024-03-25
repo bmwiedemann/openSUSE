@@ -1,7 +1,7 @@
 #
 # spec file for package gap-anupq
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gap-anupq
-Version:        3.2.6
+Version:        3.3.0
 Release:        0
 Summary:        GAP: Support for p-quotients and p-groups
 License:        Artistic-2.0
@@ -28,8 +28,8 @@ Source:         https://github.com/gap-packages/anupq/releases/download/v%versio
 BuildRequires:  fdupes
 BuildRequires:  gap-devel
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.9
 Requires:       gap-autpgrp >= 1.5
+Requires:       gap-core >= 4.9
 
 %description
 The ANUPQ package is a GAP4 interface to the ANU pq C program, which

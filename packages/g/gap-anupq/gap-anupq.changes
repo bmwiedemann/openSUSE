@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 23 21:22:43 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.3.0
+  * Remove ``ANUPQGlobalVariables``
+  * Remove most uses of ``HideGlobalVariables``
+  * Avoid using internal undocumented GAP functions
+  * Remove GAP 4.2 compatibility code
+
+-------------------------------------------------------------------
 Fri Nov 18 17:54:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 3.2.6) for build.opensuse.org
