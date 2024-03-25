@@ -3158,4 +3158,41 @@
     <comment></comment>
     <requestid>1150519</requestid>
   </revision>
+  <revision rev="215" vrev="1">
+    <srcmd5>2eade526855285ef310c975fef072a66</srcmd5>
+    <version>3.98</version>
+    <time>1711397179</time>
+    <user>anag+factory</user>
+    <comment>- update to NSS 3.98
+  * bmo#1780432 - (CVE-2023-5388) Timing attack against RSA decryption
+                  in TLS
+  * bmo#1879513 - Certificate Compression: enabling the check that
+                  the compression was advertised
+  * bmo#1831552 - Move Windows workers to nss-1/b-win2022-alpha
+  * bmo#1879945 - Remove Email trust bit from OISTE WISeKey
+                  Global Root GC CA
+  * bmo#1877344 - Replace `distutils.spawn.find_executable` with
+                  `shutil.which` within `mach` in `nss`
+  * bmo#1548723 - Certificate Compression: Updating nss_bogo_shim to
+                  support Certificate compression
+  * bmo#1548723 - TLS Certificate Compression (RFC 8879) Implementation
+  * bmo#1875356 - Add valgrind annotations to freebl kyber operations
+                  for constant-time execution tests
+  * bmo#1870673 - Set nssckbi version number to 2.66
+  * bmo#1874017 - Add Telekom Security roots
+  * bmo#1873095 - Add D-Trust 2022 S/MIME roots
+  * bmo#1865450 - Remove expired Security Communication RootCA1 root
+  * bmo#1876179 - move keys to a slot that supports concatenation in
+                  PK11_ConcatSymKeys
+  * bmo#1876800 - remove unmaintained tls-interop tests
+  * bmo#1874937 - bogo: add support for the -ipv6 and -shim-id shim
+                  flags
+  * bmo#1874937 - bogo: add support for the -curves shim flag and
+                  update Kyber expectations
+  * bmo#1874937 - bogo: adjust expectation for a key usage bit test
+  * bmo#1757758 - mozpkix: add option to ignore invalid subject
+                  alternative names
+  * bmo#1841029 - Fix selfserv not stripping `publicname:` from -X value</comment>
+    <requestid>1160555</requestid>
+  </revision>
 </revisionlist>

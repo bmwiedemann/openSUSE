@@ -2,7 +2,7 @@
 # spec file for package mozilla-nss
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2006-2023 Wolfgang Rosenauer
+# Copyright (c) 2006-2024 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 #
 
 
-%global nss_softokn_fips_version 3.97
+%global nss_softokn_fips_version 3.98
 %define NSPR_min_version 4.35
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
+%global crypto_policies_version 20210118
 Name:           mozilla-nss
-Version:        3.97
+Version:        3.98
 Release:        0
-%define underscore_version 3_97
+%define underscore_version 3_98
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -94,6 +95,9 @@ BuildRequires:  jitterentropy-devel
 # Libjitter needs to be present before AND after the install
 Requires(pre):  libjitterentropy3
 Requires:       libjitterentropy3
+%endif
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+Requires:       crypto-policies >= %{crypto_policies_version}
 %endif
 Requires:       libfreebl3 >= %{nss_softokn_fips_version}
 Requires:       libsoftokn3 >= %{nss_softokn_fips_version}
@@ -277,6 +281,13 @@ export NSS_ENABLE_FIPS_INDICATORS=1
 export NSS_FIPS_MODULE_ID="\"SUSE Linux Enterprise NSS %{version}-%{release}\""
 #export SQLITE_LIB_NAME=nsssqlite3
 export MAKE_FLAGS="BUILD_OPT=1"
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+# Set the policy file location
+# if set NSS will always check for the policy file and load if it exists
+#export POLICY_FILE="nss.config"
+# location of the policy file
+#export POLICY_PATH="/etc/crypto-policies/back-ends"
+%endif
 EOF
 
 source ../obsenv.sh
@@ -298,6 +309,11 @@ export HOST="localhost"
 export DOMSUF="localdomain"
 export USE_IP=TRUE
 export IP_ADDRESS="127.0.0.1"
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+# This is necessary because the test suite tests algorithms that are
+# disabled by the system policy.
+export NSS_IGNORE_SYSTEM_POLICY=1
+%endif
 EOF
 source ../obsenv.sh
 source ../obstestenv.sh
@@ -461,6 +477,11 @@ if [ $1 = 0 ]; then
 fi
 
 %postun sysinit -p /sbin/ldconfig
+
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+%posttrans
+update-crypto-policies &> /dev/null || :
+%endif
 
 %files
 %{_libdir}/libnss3.so
