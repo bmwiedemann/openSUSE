@@ -1,7 +1,7 @@
 #
 # spec file for package libnl-doc
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           libnl-doc
-%define uver	3_5_0
-Version:        3.5.0
+%define uver	3_9_0
+Version:        3.9.0
 Release:        0
 Summary:        Documentation for libnl, a library for working with Netlink sockets
 License:        GPL-3.0-only
@@ -29,7 +29,6 @@ URL:            http://www.carisma.slowglass.com/~tgr/libnl/
 #Mailing-List:	http://lists.infradead.org/mailman/listinfo/libnl
 Source:         https://github.com/thom311/libnl/releases/download/libnl%uver/libnl-doc-%version.tar.gz
 Source2:        https://github.com/thom311/libnl/releases/download/libnl%uver/libnl-doc-%version.tar.gz.sig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 BuildRequires:  fdupes
 
