@@ -162,4 +162,12 @@
   * Handle `taskName` `logrecord` attribute (#3557)</comment>
     <requestid>1135287</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e2943facd9af3088e8be08a0ea4b00f8</srcmd5>
+    <version>1.23.0</version>
+    <time>1711397566</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1161407</requestid>
+  </revision>
 </revisionlist>

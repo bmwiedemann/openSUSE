@@ -1,7 +1,7 @@
 #
 # spec file for package python-opentelemetry-api
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-api
-Version:        1.22.0
+Version:        1.23.0
 Release:        0
 Summary:        OpenTelemetry Python API
 License:        Apache-2.0
@@ -62,7 +62,7 @@ OpenTelemetry Python API
 %check
 # ignore some tests because we don't have opentelemetry.test module
 # gh#open-telemetry/opentelemetry-python#2263
-%pytest --ignore tests/util/test_once.py --ignore tests/logs/test_logger_provider.py --ignore tests/metrics/test_meter_provider.py --ignore tests/trace/test_globals.py --ignore tests/trace/test_proxy.py
+%pytest --ignore tests/util/test_once.py --ignore tests/logs/test_logger_provider.py --ignore tests/logs/test_proxy.py --ignore tests/metrics/test_meter_provider.py --ignore tests/trace/test_globals.py --ignore tests/trace/test_proxy.py
 
 %files %{python_files}
 %doc README.rst
