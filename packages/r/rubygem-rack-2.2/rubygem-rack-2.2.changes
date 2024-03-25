@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 22 13:57:05 UTC 2024 - Eduardo Navarro <enavarro@suse.com>
+
+- update to version 2.2.9
+  * Return empty when parsing a multi-part POST with only one end delimiter. (https://github.com/rack/rack/pull/2104)
+
+-------------------------------------------------------------------
 Tue Feb 27 10:23:39 UTC 2024 - Daniel Donisa <daniel.donisa@suse.com>
 
 - update to version 2.2.8.1

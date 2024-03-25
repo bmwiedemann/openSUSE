@@ -63,4 +63,13 @@ See installed CHANGELOG.md for more changes</comment>
     <comment></comment>
     <requestid>1152376</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f1d31312015bffaae7563fd8900d022b</srcmd5>
+    <version>2.2.9</version>
+    <time>1711397541</time>
+    <user>anag+factory</user>
+    <comment>- update to version 2.2.9
+  * Return empty when parsing a multi-part POST with only one end delimiter. (https://github.com/rack/rack/pull/2104) (forwarded request 1160695 from enavarro_suse)</comment>
+    <requestid>1161337</requestid>
+  </revision>
 </revisionlist>
