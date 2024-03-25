@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 22 19:30:20 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Remove fix_pod.patch, fixed upstream
+
+-------------------------------------------------------------------
+Fri Mar 22 16:30:35 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.20240206
+   see /usr/share/doc/packages/perl-Mail-SPF/Changes
+
+-------------------------------------------------------------------
 Mon Mar  4 13:16:48 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -3,7 +3,6 @@
 # https://rt.cpan.org/Public/Bug/Display.html?id=78214
 patches:
   skip_test.patch: -p1
-  fix_pod.patch: -p1
 #preamble: |-
 # BuildRequires:  gcc-c++
 #post_prep: |-
