@@ -1,7 +1,7 @@
 #
 # spec file for package createrepo_c
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2022 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -45,7 +45,7 @@
 %bcond_without as_createrepo
 %endif
 Name:           createrepo_c
-Version:        1.0.2
+Version:        1.1.0
 Release:        0
 Summary:        RPM repository metadata generation utility
 License:        GPL-2.0-or-later
@@ -65,7 +65,7 @@ BuildRequires:  libzstd-devel
 BuildRequires:  lzma-devel
 BuildRequires:  openssl-devel
 BuildRequires:  rpm-devel >= 4.9.0
-BuildRequires:  sqlite3-devel
+BuildRequires:  sqlite3-devel >= 3.6.18
 BuildRequires:  zlib-devel
 Requires:       %{libname} = %{version}-%{release}
 Requires:       %{libname}%{?_isa} = %{version}-%{release}
@@ -101,7 +101,7 @@ Obsoletes:      createrepo < 0.11.0
 Provides:       createrepo = %{version}-%{release}
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 
 %description

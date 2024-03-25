@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 24 18:57:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * add --no-pretty option to reduce metadata size
+  * align compression level for zck
+  * restore compatibilty with libxml2 2.12.0
+  * restore default to pretty_print in mergerepo_c and modifyrepo_c
+  * add tests
+
+-------------------------------------------------------------------
 Wed Nov 15 05:47:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - remove unneeded file-devel dependency
