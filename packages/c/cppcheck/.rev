@@ -469,4 +469,13 @@
   * Fix #12389 (GUI: premiumaddon is not executed properly anymore)</comment>
     <requestid>1144161</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>9052173532a2ec65d5aa6345d2ae455f</srcmd5>
+    <version>2.13.4</version>
+    <time>1711397450</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.13.4:
+  * Speedup premium misra checking</comment>
+    <requestid>1161149</requestid>
+  </revision>
 </revisionlist>
