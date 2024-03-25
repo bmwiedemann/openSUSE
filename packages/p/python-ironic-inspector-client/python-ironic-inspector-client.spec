@@ -1,7 +1,7 @@
 #
 # spec file for package python-ironic-inspector-client
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,23 @@
 
 
 Name:           python-ironic-inspector-client
-Version:        4.7.0
+Version:        5.1.0
 Release:        0
 Summary:        Python client and CLI tool for Ironic Inspector
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-ironic-inspector-client
-Source0:        https://files.pythonhosted.org/packages/source/p/python-ironic-inspector-client/python-ironic-inspector-client-4.7.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-ironic-inspector-client/python-ironic-inspector-client-5.1.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-fixtures
+BuildRequires:  python3-keystoneauth1 >= 3.4.0
 BuildRequires:  python3-openstackclient
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-osc-lib
 BuildRequires:  python3-oslo.concurrency
 BuildRequires:  python3-reno
 BuildRequires:  python3-requests-mock
-BuildRequires:  python3-testrepository
+BuildRequires:  python3-stestr
 BuildArch:      noarch
 
 %description
@@ -66,7 +67,7 @@ This package contains Python client and command line tool for Ironic Inspector.
 This package contains the Python 3.x module.
 
 %prep
-%autosetup -p1 -n python-ironic-inspector-client-4.7.0
+%autosetup -p1 -n python-ironic-inspector-client-5.1.0
 sed -i -e 's,hacking.*,,' test-requirements.txt
 sed -i -e 's,coverage.*,,' test-requirements.txt
 sed -i -e 's,doc8.*,,' test-requirements.txt
@@ -79,9 +80,8 @@ sed -i -e 's,doc8.*,,' test-requirements.txt
 %py3_install
 
 %check
-%{python_expand rm -rf .testrepository
-python3 -m unittest discover ironic_inspector_client
-}
+export LC_ALL=en_US.UTF-8
+%{openstack_stestr_run}
 
 %files -n python3-ironic-inspector-client
 %doc README.rst

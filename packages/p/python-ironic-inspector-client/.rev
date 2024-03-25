@@ -257,4 +257,32 @@
   * Update master for stable/victoria</comment>
     <requestid>983767</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>575eb3a0182effe70a8a3834daa7080b</srcmd5>
+    <version>5.1.0</version>
+    <time>1711397479</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.1.0
+  - Bump hacking to 6.1.0
+  - [codespell] Adding CI target for Tox Codespell
+  - CI fixes
+  - setup.cfg: Replace dashes by underscores
+  - Update master for stable/2023.1
+  - Bump ironic-inspector used in functionl tests
+  - Add Python3 zed unit tests
+  - [codespell] Adding Tox Target for Codespell
+  - Update master for stable/zed
+  - Updating python testing as per Yoga testing runtime
+  - reno: Update master for unmaintained/yoga
+  - Fix Gate
+  - add pyproject.toml to support pip 23.1
+  - Update master for stable/2023.2
+  - Re-add python 3.6/3.7 in classifier
+  - Update master for stable/yoga
+  - [codespell] Fixing Spelling Mistakes
+  - Ensure tox.ini is ASCII
+  - Update pep8 dep hacking to v6
+  - remove unicode from code</comment>
+    <requestid>1161186</requestid>
+  </revision>
 </revisionlist>
