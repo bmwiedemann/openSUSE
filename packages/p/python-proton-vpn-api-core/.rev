@@ -7,4 +7,13 @@
     <comment>Add python-proton-vpn-api-core for Proton VPN</comment>
     <requestid>1159869</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>09a823e260ba7655da281b1270a865e1</srcmd5>
+    <version>0.21.0</version>
+    <time>1711397258</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.21.0
+  * Apply kill switch setting immediately</comment>
+    <requestid>1160764</requestid>
+  </revision>
 </revisionlist>
