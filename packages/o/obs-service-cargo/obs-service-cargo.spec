@@ -26,8 +26,10 @@ Version:        1.2.1
 Release:        0
 Source0:        https://github.com/openSUSE/obs-service-cargo_vendor/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(libzstd)
+Requires:       cargo-vendor-filterer
 Requires:       (cargo or rustup)
 # At 0.6.0, vendor was introduced so we obsolete versions before that
 Conflicts:      obs-service-cargo_vendor

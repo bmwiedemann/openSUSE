@@ -162,4 +162,15 @@ packages. This library is fasted, easier to maintain and easier for a user to co
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1158489</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>aa499381dc9f23b9120e667360784bc0</srcmd5>
+    <version>1.2.1</version>
+    <time>1711397296</time>
+    <user>anag+factory</user>
+    <comment>- Add cargo vendor-filterer as requirement.
+- Set `filter` to true in _service file.
+- Update vendored dependencies with filterer.
+</comment>
+    <requestid>1160855</requestid>
+  </revision>
 </revisionlist>
