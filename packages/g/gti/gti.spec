@@ -1,7 +1,7 @@
 #
 # spec file for package gti
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gti
-Version:        1.8.0
+Version:        1.9.1
 Release:        0
 Summary:        ASCII art punishment for misspelling git
 License:        MIT
@@ -44,6 +44,7 @@ Similar to sl (steam locomotive).
 
 %files
 %doc README.md
+%license LICENSE
 %{_bindir}/gti
 %{_datadir}/bash-completion/completions/gti
 %dir %{_datadir}/zsh

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 24 13:20:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.1:
+  * Fix escape chars in gti commit
+  * update copyright
+
+-------------------------------------------------------------------
 Tue Jun 14 21:52:39 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 1.8.0:

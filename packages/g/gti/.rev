@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>985268</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e093cb556c7722892419e5bc2bb732eb</srcmd5>
+    <version>1.9.1</version>
+    <time>1711397436</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.9.1:
+  * Fix escape chars in gti commit
+  * update copyright</comment>
+    <requestid>1161121</requestid>
+  </revision>
 </revisionlist>
