@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 25 14:11:00 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.18.3.3:
+  * build: prepare v0.18.3.3
+  * docker: bump Qt to v5.15.13
+  * Dockerfile: bump zlib version to 1.3.1
+  * build: prepare v0.18.3.2
+  * tails: fix detection
+  * Remove instructions for Void Linux, add NixOS
+  * Update year in Cypyright
+  * Dockerfile: remove no-asm for constant time AES
+  * docker: update Qt to 5.15.12
+  * p2pool: update to v3.10
+  * DEPLOY: add missing code syntax highlighting
+  * wizard: add Trezor Safe 3 to hardware wallets
+  * DEPLOY: update instructions for Apple Silicon
+  * cmake: fix deploy by updating libicu version
+  * TxUtils: use regex to check for valid domain
+
+-------------------------------------------------------------------
 Tue Nov 14 07:43:07 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.18.3.1:
