@@ -87,4 +87,12 @@
     <comment>- Add %{?sle15_python_module_pythons} macro</comment>
     <requestid>1138098</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7fe36cc6aa8a3e4f7c053cbc08bd4108</srcmd5>
+    <version>0.9.0</version>
+    <time>1711397320</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1160919</requestid>
+  </revision>
 </revisionlist>

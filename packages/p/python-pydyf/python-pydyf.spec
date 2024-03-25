@@ -19,13 +19,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pydyf
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        A low-level PDF generator
 License:        BSD-3-Clause
 URL:            https://www.courtbouillon.org/pydyf
 Source:         https://files.pythonhosted.org/packages/source/p/pydyf/pydyf-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes

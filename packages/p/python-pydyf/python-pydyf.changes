@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 16 09:45:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.0:
+  * Python 3.12 is supported and tested
+  * Python 3.8+ is now needed, Python 3.7 is not supported
+    anymore
+
+-------------------------------------------------------------------
 Thu Jan 11 10:46:57 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add %{?sle15_python_module_pythons} macro
