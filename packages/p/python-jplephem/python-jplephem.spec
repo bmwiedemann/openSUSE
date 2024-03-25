@@ -1,7 +1,7 @@
 #
 # spec file for package python-jplephem
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python36 1
 Name:           python-jplephem
-Version:        2.15
+Version:        2.21
 Release:        0
 Summary:        Planet position predictor using a JPL ephemeris
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/brandon-rhodes/python-jplephem/
-Source:         https://github.com/brandon-rhodes/python-jplephem/archive/v%{version}.tar.gz#/python-jplephem-%{version}.tar.gz
-# Test files
-Source10:       http://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de430.bsp
-Source11:       ftp://ssd.jpl.nasa.gov/pub/eph/planets/test-data/430/testpo.430
-BuildRequires:  %{python_module devel}
+Source:         https://github.com/brandon-rhodes/python-jplephem/archive/%{version}.tar.gz#/jplephem-%{version}.tar.gz
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
@@ -46,27 +42,23 @@ Solar System body.  It only needs NumPy <http://www.numpy.org/>`.
 
 %prep
 %setup -q -n python-jplephem-%{version}
-cp %{SOURCE10} ci
-cp %{SOURCE11} ci
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 pushd ci
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python -m jplephem.jpltest
-}
+%pyunittest -v test
 popd
 
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
 %{python_sitelib}/jplephem
-%{python_sitelib}/jplephem-%{version}-py*.egg-info
+%{python_sitelib}/jplephem-%{version}.dist-info
 
 %changelog

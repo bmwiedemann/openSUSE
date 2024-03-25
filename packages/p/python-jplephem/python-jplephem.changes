@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Mar 24 11:47:39 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.21
+  * Tweaked an import to avoid a fatal exception under Python 2, in
+    case anyone is still using it.
+- Version 2.20
+  * Each segment is now protected by a lock, in case two threads
+    simultaneously trigger the code that performs the initial load
+    of the segment’s data; the symptom was a rare exception
+    ``ValueError: cannot reshape array``.
+- Version 2.19
+  * Fixed a bug in the ``excerpt`` command that was causing it to
+    truncate its output when the input ephemeris had more than
+    about two dozen segments.  The command’s output should now
+    include all matching segments from even a very large ephemeris.
+  * Fixed the ``excerpt`` command so the calendar dates specified
+    on the command line produce Julian dates ending with the
+    fraction ``.5``, which makes excerpt endpoints more exact.
+- Version 2.18
+  * Added support for big-endian processors, and created a GitHub
+    Actions CI build that includes both a big- and a little-endian
+    architecture.
+- Version 2.17
+  * Fixed an ``AttributeError`` in the ``excerpt`` command.
+- Version 2.16
+  * Fixed a ``ValueError`` raised in the ``excerpt`` command when
+    an ephemeris segment needs to be entirely skipped because it
+    has no overlap with the user-specified range of dates.
+  * Added a ``__version__`` constant to the package’s top level.
+
+-------------------------------------------------------------------
 Sun Feb 21 19:36:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip python36 build: With NumPy 1.20, python36-numpy is no
