@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.test
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,26 @@
 
 
 Name:           python-jaraco.test
-Version:        5.3.0
+Version:        5.4.0
 Release:        0
 Summary:        Testing support by jaraco
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.test
 Source:         https://files.pythonhosted.org/packages/source/j/jaraco.test/jaraco.test-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module jaraco.context}
+BuildRequires:  %{python_module jaraco.collections}
 BuildRequires:  %{python_module jaraco.functools}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module testsuite}
 # /SECTION
 BuildRequires:  fdupes
+Requires:       python-jaraco.collections
 Requires:       python-jaraco.context
 Requires:       python-jaraco.functools
 Suggests:       python-sphinx >= 3.5
@@ -69,7 +72,7 @@ Testing support by jaraco
 %pytest -v
 
 %files %{python_files}
-%doc CHANGES.rst README.rst
+%doc NEWS.rst README.rst
 %license LICENSE
 %{python_sitelib}/jaraco/test
 %{python_sitelib}/jaraco.test-%{version}*-info

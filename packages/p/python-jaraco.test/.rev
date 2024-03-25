@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>1084961</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b3040b4da5d771904ab295a54caf2d26</srcmd5>
+    <version>5.4.0</version>
+    <time>1711397212</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.4.0:
+  * Added cpython module with support for loading functions
+    across moves.</comment>
+    <requestid>1160937</requestid>
+  </revision>
 </revisionlist>
