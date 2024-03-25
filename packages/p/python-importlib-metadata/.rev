@@ -328,4 +328,17 @@ It does NOT conflict with python38 standard library (see upstream description)</
   * No significant changes.</comment>
     <requestid>1158384</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b54db5de13f994f42ea84a4391e93a3c</srcmd5>
+    <version>7.1.0</version>
+    <time>1711397214</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.1.0:
+  * Improve import time (python/cpython#114664).
+  * Make MetadataPathFinder.find_distributions a classmethod for
+    consistency with CPython. Closes #484.
+  * Allow MetadataPathFinder.invalidate_caches to be called as a
+    classmethod.</comment>
+    <requestid>1160940</requestid>
+  </revision>
 </revisionlist>

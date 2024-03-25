@@ -28,7 +28,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-importlib-metadata%{psuffix}
-Version:        7.0.2
+Version:        7.1.0
 Release:        0
 Summary:        Read metadata from Python packages
 License:        Apache-2.0
@@ -51,6 +51,7 @@ Provides:       python-importlib_metadata = %{version}
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module importlib_resources >= 1.3 if %python-base < 3.9}
+BuildRequires:  %{python_module jaraco.test}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pyfakefs}
 BuildRequires:  %{python_module pytest}

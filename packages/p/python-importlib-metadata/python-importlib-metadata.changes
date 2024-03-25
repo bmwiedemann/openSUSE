@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 22 20:45:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.0:
+  * Improve import time (python/cpython#114664).
+  * Make MetadataPathFinder.find_distributions a classmethod for
+    consistency with CPython. Closes #484.
+  * Allow MetadataPathFinder.invalidate_caches to be called as a
+    classmethod.
+
+-------------------------------------------------------------------
 Sat Mar 16 08:32:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.2:
