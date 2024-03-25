@@ -591,4 +591,41 @@ https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/284#note_280561
     <comment></comment>
     <requestid>1121673</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>8596b517a56414c78d8fce5379dc2d1f</srcmd5>
+    <version>261</version>
+    <time>1711397448</time>
+    <user>anag+factory</user>
+    <comment>- update to 261 (bsc#1220157, CVE-2024-25711):
+  * Don't crash if we encounter an .rdb file without an
+    equivalent .rdx file.
+  * Actually test 7z support in the test_7z set of tests, not the
+    lz4 functionality.
+  * In addition, correctly check for the 7z binary being
+    available (and not lz4) when testing 7z.
+  * Prevent a traceback when comparing a contentful .pyc file
+    with an empty one. (Re: Debian:#1064973)
+  * Don't error-out with a traceback if we encounter
+    &quot;struct.unpack&quot;-related errors when parsing .pyc files.
+  * Fix compatibility with PyTest 8.0.
+  * Don't try and compare rdb_expected_diff on non-GNU systems as
+    %p formatting can vary.
+  * Use the 7zip package (over p7zip-full) after package
+    transition.
+  * Parse the header and hunksize of diffs strictly before
+    parsing the context below.
+  * Reformat code to comply with the latest version of Black
+    (24.1.1).
+  * Expand the previous changelog entry to include the CVE number
+    that was subsequently assigned.
+  * Bump the miniumum Black requirement to run the &quot;Black clean&quot;
+    test and make test_zip.py Black clean.
+  * CVE-2024-25711: Use a determistic name when extracting
+    content from GPG artifacts instead of trusting the value of
+    gpg's --use- embedded-filenames.
+  * Temporarily fix support for Python 3.11.8 re. a potential
+    regression with the handling of ZIP files.
+  * Add/fix compatibility for Python progressbar 2.5 &amp; 3.0 etc.</comment>
+    <requestid>1161156</requestid>
+  </revision>
 </revisionlist>

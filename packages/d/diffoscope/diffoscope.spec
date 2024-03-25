@@ -1,7 +1,7 @@
 #
 # spec file for package diffoscope
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           diffoscope
-Version:        251
+Version:        261
 Release:        0
 Summary:        In-depth comparison of files, archives, and directories
 License:        GPL-3.0-or-later
@@ -39,7 +39,7 @@ Requires:       python3-libarchive-c
 Requires:       python3-python-magic
 Requires:       python3-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # Tools required for proper function of this program
 # in extras_require
 Recommends:     python3-distro

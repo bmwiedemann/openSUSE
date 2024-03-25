@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Mar 24 17:59:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 261 (bsc#1220157, CVE-2024-25711):
+  * Don't crash if we encounter an .rdb file without an
+    equivalent .rdx file.
+  * Actually test 7z support in the test_7z set of tests, not the
+    lz4 functionality.
+  * In addition, correctly check for the 7z binary being
+    available (and not lz4) when testing 7z.
+  * Prevent a traceback when comparing a contentful .pyc file
+    with an empty one. (Re: Debian:#1064973)
+  * Don't error-out with a traceback if we encounter
+    "struct.unpack"-related errors when parsing .pyc files.
+  * Fix compatibility with PyTest 8.0.
+  * Don't try and compare rdb_expected_diff on non-GNU systems as
+    %p formatting can vary.
+  * Use the 7zip package (over p7zip-full) after package
+    transition.
+  * Parse the header and hunksize of diffs strictly before
+    parsing the context below.
+  * Reformat code to comply with the latest version of Black
+    (24.1.1).
+  * Expand the previous changelog entry to include the CVE number
+    that was subsequently assigned.
+  * Bump the miniumum Black requirement to run the "Black clean"
+    test and make test_zip.py Black clean.
+  * CVE-2024-25711: Use a determistic name when extracting
+    content from GPG artifacts instead of trusting the value of
+    gpg's --use- embedded-filenames.
+  * Temporarily fix support for Python 3.11.8 re. a potential
+    regression with the handling of ZIP files.
+  * Add/fix compatibility for Python progressbar 2.5 & 3.0 etc.
+  * Add external tool on GNU Guix for 7z.
+  * Improve DOS/MBR extraction by adding support for 7z.
+  * Process objdump symbol comment filter inputs as the Python
+    "bytes" type (and not str). (Closes: reproducible-
+    builds/diffoscope#358)
+  * Add a missing RequiredToolNotFound import.
+  * Update copyright years.
+  * As UI/UX improvement, try and avoid printing an extended
+    traceback if diffoscope runs out of memory. This may not
+    always be possible to detect.
+  * Mark diffoscope as stable in setup.py (for PyPI.org).
+    Whatever diffoscope is, at least, not "alpha" anymore.
+
+-------------------------------------------------------------------
 Wed Nov  1 17:44:17 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - removed patch fix-file-5.45.patch as included in upstream
@@ -6,16 +52,16 @@ Wed Nov  1 17:44:17 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 - Update to version 251:
   * If the equivalent of `file -i` returns text/plain, fallback to comparing
     this file as a text file. This especially helps when file(1) miscategorises
-    text files as some esoteric type. 
+    text files as some esoteric type.
 
 - Update to version 250:
-  * Fix compatibility with file 5.45. 
+  * Fix compatibility with file 5.45.
   * Add external tool references for GNU Guix (for html2text and ttx).
 
 - Update to version 249:
   * Add specialize_as() method, and use it to speed up .smali comparison in APKs.
   * Add documentation for the new specialize_as, and expand the documentation
-    of `specialize` too. 
+    of `specialize` too.
   * Correct typos in diffoscope/presenters/utils.py.
 
 - Update to version 246:
@@ -313,7 +359,7 @@ Mon Feb 21 11:21:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
     penalising anyone outside of the Anglosphere.
     (Closes: reproducible-builds/diffoscope#291)
   * Don't print a warning to the console regarding NT_GNU_BUILD_ID changes in
-    ELF binaries. 
+    ELF binaries.
 
 -------------------------------------------------------------------
 Fri Feb 11 19:14:39 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
