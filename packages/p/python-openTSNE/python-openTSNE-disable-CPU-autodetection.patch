@@ -8,11 +8,11 @@ to allow people to run it on >50% of systems,
 but also to use CPU instructions available since 10+ years
 to speed up processing.
 
-diff --git a/setup.py b/setup.py
-index c00d331..35542b6 100644
---- a/setup.py
-+++ b/setup.py
-@@ -168,9 +168,9 @@ class CythonBuildExt(build_ext):
+Index: openTSNE-1.0.1/setup.py
+===================================================================
+--- openTSNE-1.0.1.orig/setup.py
++++ openTSNE-1.0.1/setup.py
+@@ -155,9 +155,9 @@ class CythonBuildExt(build_ext):
          # package is being built locally, this is desired
          if not ("AZURE_BUILD" in os.environ or "CONDA_BUILD" in os.environ):
              if platform.machine() == "ppc64le":
@@ -22,5 +22,5 @@ index c00d331..35542b6 100644
 -                extra_compile_args += ["-march=native"]
 +                extra_compile_args += ["-march=corei7"]
  
-         # We will disable openmp flags if the compiler doesn"t support it. This
+         # We will disable openmp flags if the compiler doesn't support it. This
          # is only really an issue with OSX clang

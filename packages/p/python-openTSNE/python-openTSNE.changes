@@ -1,8 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 22 20:48:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.1:
+  * setup.py maintenance
+  * drop Python 3.6 support
+  * correctly implement dof parameter in exact BH implementation
+- drop get-numpy-include.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Sep 14 13:26:03 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.0.0
-  * Given the longtime stability of openTSNE, it is only fitting 
+  * Given the longtime stability of openTSNE, it is only fitting
     that we release a v1.0.0.
   * Various documentation fixes
   * Include Python 3.11 in the test and build matrix

@@ -39,4 +39,18 @@
     <comment></comment>
     <requestid>1111748</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cc6cb06b49fa54581950273a9b67108f</srcmd5>
+    <version>1.0.1</version>
+    <time>1711397280</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.1:
+  * setup.py maintenance
+  * drop Python 3.6 support
+  * correctly implement dof parameter in exact BH implementation
+- drop get-numpy-include.patch (upstream)
+
+  * Given the longtime stability of openTSNE, it is only fitting</comment>
+    <requestid>1160837</requestid>
+  </revision>
 </revisionlist>
