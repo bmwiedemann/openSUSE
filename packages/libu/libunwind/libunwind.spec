@@ -34,12 +34,13 @@ Source0:        https://github.com/libunwind/libunwind/releases/download/v%{vers
 Source1:        https://github.com/libunwind/libunwind/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
+# PATCH-FIX-UPSTREAM https://github.com/libunwind/libunwind/pull/712
+Patch1:         dont-disable-documentation-without-latex2man.patch
 BuildRequires:  automake >= 1.14
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  lzma-devel
 BuildRequires:  pkgconfig
-BuildRequires:  texlive-latex2man
 ExcludeArch:    s390
 
 %description

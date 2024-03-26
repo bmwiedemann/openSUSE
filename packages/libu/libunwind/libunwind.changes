@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 22 09:28:07 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Drop BuildRequires on latex2man, the tarball has manpages already.
+  This avoids a large dependency chain:
+  * Add dont-disable-documentation-without-latex2man.patch
+
+-------------------------------------------------------------------
 Fri Feb 23 11:43:14 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.8.1:
