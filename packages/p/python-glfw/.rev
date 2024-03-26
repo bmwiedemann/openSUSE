@@ -130,4 +130,13 @@
   * Fixed Python version check</comment>
     <requestid>1143282</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0083afc83a4833c3c402e6ba6a2393a6</srcmd5>
+    <version>2.7.0</version>
+    <time>1711477578</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.7.0:
+  * Included GLFW 3.4 functions and definitions without preview</comment>
+    <requestid>1161546</requestid>
+  </revision>
 </revisionlist>

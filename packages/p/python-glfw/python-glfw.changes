@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 25 20:02:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.0:
+  * Included GLFW 3.4 functions and definitions without preview
+
+-------------------------------------------------------------------
 Thu Feb  1 10:14:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.5:
