@@ -526,6 +526,11 @@ Wed Apr 19 12:14:43 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 - Update Requires in spec file from setup.py
 
 -------------------------------------------------------------------
+Wed Apr  5 10:37:12 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update in SLE-15 (bsc#1209255, jsc#PED-3780)
+
+-------------------------------------------------------------------
 Mon Mar 13 08:41:27 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.27.89
@@ -622,6 +627,11 @@ Fri Nov  4 12:40:25 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 - Relax upper version constraint for python-colorama in
   BuildRequires and Requires to 0.5.0 (bsc#1204917)
 - Update Requires in spec file from setup.py
+
+-------------------------------------------------------------------
+Thu Nov  3 10:40:15 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update in SLE-15 (bsc#1204537, jsc#PED-2333)
 
 -------------------------------------------------------------------
 Tue Oct 25 08:15:30 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
