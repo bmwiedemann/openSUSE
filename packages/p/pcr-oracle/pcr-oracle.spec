@@ -32,6 +32,8 @@ Patch0:         fix_efi_measure_and_shim.patch
 Patch1:         fix_loader_conf.patch
 # PATCH-FIX-UPSTREAM fix_grub_bls_entry.patch gh#okirch/pcr-oracle!52
 Patch2:         fix_grub_bls_entry.patch
+# PATCH-FIX-UPSTREAM fix_grub_bls_cmdline.patch gh#okirch/pcr-oracle!52 (cont)
+Patch3:         fix_grub_bls_cmdline.patch
 BuildRequires:  libopenssl-devel >= 0.9.8
 BuildRequires:  tpm2-0-tss-devel >= 2.4.0
 Requires:       libtss2-tcti-device0

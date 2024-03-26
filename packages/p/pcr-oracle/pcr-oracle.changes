@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 25 20:16:53 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add fix_grub_bls_cmdline.patch to include the measurements of the
+  cmdline and the linux and initrd grub commands
+
+-------------------------------------------------------------------
 Thu Mar 14 10:33:23 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add fix_grub_bls_entry.patch to measure boot entries in GRUB BLS
