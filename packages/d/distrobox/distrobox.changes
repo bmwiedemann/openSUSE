@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 25 22:02:17 UTC 2024 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- Update to 1.7.1
+ * all: ensure no side effects on global variables
+ * create the binary export path if it doesn't exist (#1291)
+ * docs: Add info on upgrading package on steamdeck (#1271)
+ * docs: remove extra ` from xhost command by (#1284)
+ * enter: Add option to run with clean PATH (#1299)
+ * fix: missing .fifo logfile in distrobox-enter (#1307)
+ * init: ignore findmnt error in routine remounting (#1289) (#1296)
+ * init: mask suspend/hibernate/hybrid-sleep
+ * init: massively speed up apk deps install by @JamiKettunen in (#1298)
+ * rm: do not block container removal if we cannot start it
+
+-------------------------------------------------------------------
 Fri Mar 15 09:35:47 UTC 2024 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to current git version in order to include the code that

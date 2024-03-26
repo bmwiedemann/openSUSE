@@ -17,7 +17,7 @@
 
 
 Name:           distrobox
-Version:        1.7.0.1_g7a56b6e
+Version:        1.7.1
 Release:        0
 Summary:        Use any linux distribution inside your terminal
 License:        GPL-3.0-only
