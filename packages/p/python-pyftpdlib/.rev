@@ -183,4 +183,41 @@
 - Enable running the tests again</comment>
     <requestid>1112115</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b0f3769b7c3ed84f071ec35e9a3693f3</srcmd5>
+    <version>1.5.9</version>
+    <time>1711477486</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.9:
+  * Enhancements
+  * #611: use ruff code style checker instead of flake8 + isort
+    (much faster + makes many more code quality checks).
+  * Bug fixes
+  * #604: client connection may be reset in PASV/EPSV mode during
+    TLS handshake. (patch by Benedikt McMullin)
+  * #607: possible infinite wait in Epoll  (patch by
+    @stat1c-void)
+  * #607: possible infinite traceback printing in DTPHandler
+    (patch by @stat1c-void)
+  * #613: (CRITICAL) bugfix for TLS disconnect causing 100% CPU
+    usage. (patch by @hakai)
+  * #614: close connection on SSL EOF error, instead of
+    erroneously replying with &quot;226 Transfer completed.&quot;
+  * Enhancements
+  * #586: removed Python 2.6 support.
+  * #591: speedup logging by 28% by using logging._srcfile = None
+    trick. This avoids calling calling sys._getframe() for each
+    log record.
+  * #605: added support for Python 3.12.
+  * Enhancements
+  * #544: replace Travis with Github Actions for CI testing.
+  * Bug fixes
+  * #481: fix [WinError 10038] an operation was attempted on
+    something that is not a socket.  (patch by Tailing Yuan)
+  * #578, [critical]: FTPS broke with PyOpenSSL version 22.1.0.
+  * Enhancements
+  * #467: added pre-fork concurrency model, spawn()ing worker
+    processes to split load.</comment>
+    <requestid>1161433</requestid>
+  </revision>
 </revisionlist>

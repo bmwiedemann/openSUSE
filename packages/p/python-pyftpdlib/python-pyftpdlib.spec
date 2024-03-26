@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyftpdlib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,15 +19,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyftpdlib
-Version:        1.5.7
+Version:        1.5.9
 Release:        0
 Summary:        Asynchronous FTP server library for Python
 License:        MIT
 URL:            https://github.com/giampaolo/pyftpdlib/
 Source:         https://files.pythonhosted.org/packages/source/p/pyftpdlib/pyftpdlib-%{version}.tar.gz
 Source1:        keycert.pem
-# PATCH-FIX-UPSTREAM gh#giampaolo/pyftpdlib#605
-Patch0:         support-python-312.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pyOpenSSL}
@@ -39,7 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pyOpenSSL
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-pysendfile
 BuildArch:      noarch
 %python_subpackages
