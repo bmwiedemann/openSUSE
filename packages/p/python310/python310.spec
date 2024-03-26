@@ -103,7 +103,7 @@ Obsoletes:      python39%{?1:-%{1}}
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.10.13
+Version:        3.10.14
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -139,44 +139,45 @@ Source100:      PACKAGING-NOTES
 # Set values of prefix and exec_prefix in distutils install command
 # to /usr/local if executable is /usr/bin/python* and RPM build
 # is not detected to make pip and distutils install into separate location
-Patch02:        F00251-change-user-install-location.patch
+Patch01:        F00251-change-user-install-location.patch
 # PATCH-FEATURE-UPSTREAM distutils-reproducible-compile.patch gh#python/cpython#8057 mcepl@suse.com
 # Improve reproduceability
-Patch06:        distutils-reproducible-compile.patch
+Patch02:        distutils-reproducible-compile.patch
 # support finding packages in /usr/local, install to /usr/local by default
-Patch07:        python-3.3.0b1-localpath.patch
+Patch03:        python-3.3.0b1-localpath.patch
 # replace DATE, TIME and COMPILER by fixed definitions to aid reproducible builds
-Patch08:        python-3.3.0b1-fix_date_time_compiler.patch
+Patch04:        python-3.3.0b1-fix_date_time_compiler.patch
 # POSIX_FADV_WILLNEED throws EINVAL. Use a different constant in test
-Patch09:        python-3.3.0b1-test-posix_fadvise.patch
+Patch05:        python-3.3.0b1-test-posix_fadvise.patch
 # Raise timeout value for test_subprocess
-Patch15:        subprocess-raise-timeout.patch
+Patch06:        subprocess-raise-timeout.patch
 # PATCH-FEATURE-UPSTREAM bpo-31046_ensurepip_honours_prefix.patch bpo#31046 mcepl@suse.com
 # ensurepip should honour the value of $(prefix)
-Patch29:        bpo-31046_ensurepip_honours_prefix.patch
+Patch07:        bpo-31046_ensurepip_honours_prefix.patch
 # PATCH-FIX-SLE no-skipif-doctests.patch jsc#SLE-13738 mcepl@suse.com
 # SLE-15 version of Sphinx doesn't know about skipif directive in doctests.
-Patch33:        no-skipif-doctests.patch
+Patch11:        no-skipif-doctests.patch
+
 # PATCH-FIX-SLE skip-test_pyobject_freed_is_freed.patch mcepl@suse.com
 # skip a test failing on SLE-15
-Patch34:        skip-test_pyobject_freed_is_freed.patch
+Patch15:        skip-test_pyobject_freed_is_freed.patch
 # PATCH-FIX-SLE fix_configure_rst.patch bpo#43774 mcepl@suse.com
 # remove duplicate link targets and make documentation with old Sphinx in SLE
-Patch35:        fix_configure_rst.patch
+Patch16:        fix_configure_rst.patch
 # PATCH-FIX-UPSTREAM bpo-46811 gh#python/cpython#7da97f61816f mcepl@suse.com
 # NOTE: SUSE version of expat 2.4.4 is patched in SUSE for CVE-2022-25236
-Patch36:        support-expat-CVE-2022-25236-patched.patch
+Patch17:        support-expat-CVE-2022-25236-patched.patch
 # PATCH-FIX-UPSTREAM bpo-37596-make-set-marshalling.patch bsc#1211765 mcepl@suse.com
 # Make `set` and `frozenset` marshalling deterministic
-Patch38:        bpo-37596-make-set-marshalling.patch
+Patch18:        bpo-37596-make-set-marshalling.patch
 # PATCH-FIX-UPSTREAM gh-78214-marshal_stabilize_FLAG_REF.patch bsc#1213463 mcepl@suse.com
 # marshal: Stabilize FLAG_REF usage
-Patch39:        gh-78214-marshal_stabilize_FLAG_REF.patch
+Patch19:        gh-78214-marshal_stabilize_FLAG_REF.patch
 # PATCH-FIX-UPSTREAM CVE-2023-27043-email-parsing-errors.patch bsc#1210638 mcepl@suse.com
 # Detect email address parsing errors and return empty tuple to
 # indicate the parsing error (old API), from gh#python/cpython!105127
 # Patch carries a REGRESSION (gh#python/cpython#106669), so it has been also partially REVERTED
-Patch40:        CVE-2023-27043-email-parsing-errors.patch
+Patch20:        CVE-2023-27043-email-parsing-errors.patch
 # PATCH-FIX-UPSTREAM fix-sphinx-72.patch gh#python/cpython#97950
 # This is a patch with a lot of PR combined to make the doc work with
 # sphinx 7.2
@@ -190,13 +191,10 @@ Patch40:        CVE-2023-27043-email-parsing-errors.patch
 # * gh#python/cpython#104163
 # * gh#python/cpython#104221
 # * gh#python/cpython#107246
-Patch42:        fix-sphinx-72.patch
-# PATCH-FIX-UPSTREAM libexpat260.patch gh#python/cpython#115289
-# Fix tests for XMLPullParser with Expat 2.6.0
-Patch43:        libexpat260.patch
-# PATCH-FIX-UPSTREAM CVE-2023-6597-TempDir-cleaning-symlink.patch bsc#1219666 mcepl@suse.com
-# tempfile.TemporaryDirectory: fix symlink bug in cleanup (from gh#python/cpython!99930)
-Patch44:        CVE-2023-6597-TempDir-cleaning-symlink.patch
+Patch21:        fix-sphinx-72.patch
+# PATCH-FIX-UPSTREAM old-libexpat.patch gh#python/cpython#117187 mcepl@suse.com
+# Make the test suite work with libexpat < 2.6.0
+Patch22:        old-libexpat.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -455,25 +453,26 @@ other applications.
 
 %prep
 %setup -q -n %{tarname}
-%patch -P 02 -p1
-%patch -P 06 -p1
-%patch -P 07 -p1
-%patch -P 08 -p1
-%patch -P 09 -p1
-%patch -P 15 -p1
-%patch -P 29 -p1
+%patch -p1 -P 01
+%patch -p1 -P 02
+%patch -p1 -P 03
+%patch -p1 -P 04
+%patch -p1 -P 05
+%patch -p1 -P 06
+%patch -p1 -P 07
+
 %if 0%{?sle_version} && 0%{?sle_version} <= 150300
-%patch -P 33 -p1
-%patch -P 34 -p1
+%patch -P 11 -p1
 %endif
-%patch -P 35 -p1
-%patch -P 36 -p1
-%patch -P 38 -p1
-%patch -P 39 -p1
-%patch -P 40 -p1
-%patch -P 42 -p1
-%patch -P 43 -p1
-%patch -P 44 -p1
+
+%patch -p1 -P 15
+%patch -p1 -P 16
+%patch -p1 -P 17
+%patch -p1 -P 18
+%patch -p1 -P 19
+%patch -p1 -P 20
+%patch -p1 -P 21
+%patch -p1 -P 22
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
@@ -577,6 +576,8 @@ LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH \
 %endif
 
 %check
+export SUSE_VERSION="0%{?suse_version}"
+export SLE_VERSION="0%{?sle_version}"
 %if %{with general}
 # exclude test_gdb -- it doesn't run in buildservice anyway, and fails on missing debuginfos
 # when you install gdb into your test env
