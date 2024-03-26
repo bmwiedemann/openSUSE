@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 19 13:58:13 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.9.14
+  * Support for the IKEv2 OCSP extensions (RFC 4806) has been
+    added, which allows peers to request and send OCSP responses
+    directly in IKEv2.
+  * Validation of X.509 name constraints in the constraints plugin
+    has been refactored to align with RFC 5280.
+  * Fail SA installation on Linux if replay protection is disabled
+    while ESN is enabled, which the kernel currently doesn't
+    support.
+
+-------------------------------------------------------------------
 Mon Feb 26 13:31:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
