@@ -53,9 +53,6 @@ Recommends:     python-pyOpenSSL >= 22.0.0
 Recommends:     python-pyu2f >= 0.1.5
 Recommends:     python-requests >= 2.20.0
 BuildArch:      noarch
-%if 0%{?sle_version} >= 150400
-Obsoletes:      python3-google-auth < %{version}
-%endif
 %python_subpackages
 
 %description

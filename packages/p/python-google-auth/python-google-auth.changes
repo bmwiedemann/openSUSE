@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 14 15:56:13 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Do not force transition to Python 3.11 it breaks SUMa
+
+-------------------------------------------------------------------
 Tue Mar  5 20:22:30 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Obsolete Python 3.6 build for SLE 15 SP4 and openSUSE Leap 15.4 and later
