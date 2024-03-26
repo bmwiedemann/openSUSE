@@ -1,7 +1,7 @@
 #
 # spec file for package malcontent
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -115,6 +115,7 @@ sed -i 's|env python3|python3|' malcontent-client/malcontent-client.py
 # wheel is not used in openSUSE, so we simply package this file as an example %%doc file
 mv %{buildroot}%{_datadir}/polkit-1/rules.d/com.endlessm.ParentalControls.rules .
 %find_lang %{name}
+%python3_fix_shebang
 
 %ldconfig_scriptlets -n libmalcontent-0-0
 %ldconfig_scriptlets  -n libmalcontent-ui-1-1
