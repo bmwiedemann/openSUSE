@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 22 09:48:40 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Remove unnecessary BuildRequires on xdg-utils and update-desktop-files
+
+-------------------------------------------------------------------
 Mon Jun 26 11:08:10 UTC 2023 - Dave Plater <davejplater@gmail.com>
 
 - Update to version 2.4.7

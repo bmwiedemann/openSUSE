@@ -1,7 +1,7 @@
 #
 # spec file for package ffado
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,8 +37,6 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  scons >= 3.0.2
-BuildRequires:  update-desktop-files
-BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-1) >= 1.0
 BuildRequires:  pkgconfig(dbus-c++-1)
