@@ -32,6 +32,7 @@ BuildRequires:  %{python_module opentelemetry-test-utils == 0.44b0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing-extensions >= 3.7.4}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-opentelemetry-api == 1.23.0

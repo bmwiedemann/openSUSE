@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 26 13:17:23 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add missing python-wheel build dependency to BuildRequires
+
+-------------------------------------------------------------------
 Sat Mar 23 21:52:54 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - update to 1.23.0:
