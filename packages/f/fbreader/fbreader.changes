@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 08:21:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Apr  4 07:45:35 UTC 2018 - aloisio@gmx.com
 
 - Added fbreader-0.99.4-qt5.patch and switched to Qt5 build

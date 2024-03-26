@@ -102,12 +102,12 @@ This package provides a Qt5-based UI for ZLibrary.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 %if 0%{?suse_version} >= 1500
-%patch1 -p0
+%patch -P 1 -p0
 %endif
-%patch2 -p1
-%patch3 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 %build
 make %{?_smp_mflags} -C zlibrary/core TARGET_ARCH=desktop LIBDIR=%{_libdir} UI_TYPE=dummy
