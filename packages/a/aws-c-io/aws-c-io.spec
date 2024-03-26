@@ -20,7 +20,7 @@
 %define library_version 1.0.0
 %define library_soversion 0unstable
 Name:           aws-c-io
-Version:        0.14.4
+Version:        0.14.6
 Release:        0
 Summary:        I/O and TLS package AWS SDK for C
 License:        Apache-2.0

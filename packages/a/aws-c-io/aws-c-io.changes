@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 22 09:27:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.14.6
+  * Remove aws_tls_handler_write by @jmklix in (#628)
+  * CI job for FreeBSD by @knightjoel in (#630)
+  * Update docs to clarify aws_io_message Cleanup Rules by @waahm7 in (#633)
+  * Fix sizeof channel negotiation task by @quinnj in (#631)
+- from version 0.14.5
+  * chore(CI): CI job for OpenBSD by @knightjoel in (#625)
+  * Fix Memory leak caused by redefinition by @xiazhvera in (#626)
+  * Test for duplicate key import by @TingDaoK in (#627)
+
+-------------------------------------------------------------------
 Tue Feb 20 11:14:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
