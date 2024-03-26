@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 25 20:19:46 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.29.0
+
+  * Cooperative signal handling (#1600) 19/03/24
+  * Revert raise `ClientDisconnected` on HTTP (#2276) 19/03/24
+
+- Add patch:
+  * 0001-Stop-using-deprecated-app-shortcut-in-httpx.AsyncCli.patch
+    upstream fix for the testsuite with httpx 0.27
+
+- Remove pointless Suggests:
+
+-------------------------------------------------------------------
 Sun Mar 17 10:11:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.28.0:

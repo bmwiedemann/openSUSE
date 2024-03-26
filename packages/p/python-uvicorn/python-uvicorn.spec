@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-uvicorn
-Version:        0.28.0
+Version:        0.29.0
 Release:        0
 Summary:        An Asynchronous Server Gateway Interface server
 License:        BSD-3-Clause
@@ -26,6 +26,8 @@ URL:            https://github.com/encode/uvicorn
 Source:         https://github.com/encode/uvicorn/archive/%{version}.tar.gz#/uvicorn-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-websocket-tests.patch -- gh#encode/uvicorn#1929
 Patch0:         fix-websocket-tests.patch
+# https://github.com/encode/uvicorn/pull/2288
+Patch1:         0001-Stop-using-deprecated-app-shortcut-in-httpx.AsyncCli.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -40,10 +42,6 @@ Requires:       (python-typing-extensions >= 4 if python-base < 3.11)
 Recommends:     python-PyYAML >= 5.1
 Recommends:     python-httptools >= 0.4.0
 Recommends:     python-websockets >= 8.0
-Suggests:       python-uvloop >= 0.14.0
-Suggests:       python-watchfiles >= 0.13
-Suggests:       python-wsproto >= 1.2.0
-Suggests:       python-websockets
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -52,7 +50,7 @@ BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module click >= 7.0}
 BuildRequires:  %{python_module h11 >= 0.8.0}
 BuildRequires:  %{python_module httptools >= 0.4.0}
-BuildRequires:  %{python_module httpx >= 0.18}
+BuildRequires:  %{python_module httpx >= 0.27}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
@@ -62,7 +60,7 @@ BuildRequires:  %{python_module trustme}
 %if 0%{?suse_version} > 1500
 BuildRequires:  %{python_module uvloop >= 0.14.0}
 %endif
-BuildRequires:  %{python_module websockets >= 8.0}
+BuildRequires:  %{python_module websockets >= 10.4}
 BuildRequires:  %{python_module wsproto >= 1.2.0}
 # We don't want watchfiles in Ring1
 #BuildRequires:  #{python_module watchfiles >= 0.13}
