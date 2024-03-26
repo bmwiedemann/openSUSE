@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 26 01:44:52 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- enable vulkan-beta meson flag for vulkan video support (suggested
+  by "llyyr" <llyyr.public@gmail.com>; adding C flag
+  -Wno-error=missing-prototypes for this wasn't necessary)
+
+-------------------------------------------------------------------
+Mon Mar 25 09:55:48 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Add zink driver by default
+
+-------------------------------------------------------------------
 Wed Mar 20 07:18:13 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix boo#1221664:

@@ -5619,4 +5619,16 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   completely</comment>
     <requestid>1159850</requestid>
   </revision>
+  <revision rev="499" vrev="371">
+    <srcmd5>1ef9e63865a20b50a5a26a03975b4c3b</srcmd5>
+    <version>unknown</version>
+    <time>1711477536</time>
+    <user>anag+factory</user>
+    <comment>- enable vulkan-beta meson flag for vulkan video support (suggested
+  by &quot;llyyr&quot; &lt;llyyr.public@gmail.com&gt;; adding C flag
+  -Wno-error=missing-prototypes for this wasn't necessary)
+
+- Add zink driver by default</comment>
+    <requestid>1161628</requestid>
+  </revision>
 </revisionlist>

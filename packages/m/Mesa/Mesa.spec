@@ -1,5 +1,5 @@
 #
-# spec file for package Mesa
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -874,6 +874,7 @@ egl_platforms=x11,wayland
 %if 0%{with_vulkan}
             -Dvulkan-drivers=%{?vulkan_drivers} \
             -Dvulkan-layers=device-select,overlay \
+            -Dvulkan-beta=true \
 %else
             -Dvulkan-drivers= \
 %endif
@@ -884,7 +885,7 @@ egl_platforms=x11,wayland
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl,freedreno,vc4,etnaviv,lima,panfrost,v3d,svga,tegra,zink \
   %else
   %ifarch ppc64 ppc64le riscv64
-            -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl \
+            -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl,zink \
   %else
             -Dgallium-drivers=swrast \
   %endif
