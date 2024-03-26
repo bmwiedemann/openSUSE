@@ -18,7 +18,7 @@
 
 %define binaries nib-conform nib-convert nib-dicomfs nib-diff nib-ls nib-nifti-dx nib-roi nib-stats nib-tck2trk nib-trk2tck parrec2nii
 Name:           python-nibabel
-Version:        5.2.0
+Version:        5.2.1
 Release:        0
 Summary:        Tool to access multiple neuroimaging data formats
 License:        MIT

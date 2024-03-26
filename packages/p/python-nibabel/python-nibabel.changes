@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 25 20:12:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.1:
+  * Support "flat" ASCII-encoded GIFTI DataArrays (pr/1298) (PM,
+    reviewed by CM)
+  * Tolerate missing ``git`` when reporting version info
+    (pr/1286)
+  * Handle Siemens XA30 derived DWI DICOMs (pr/1296)
+  * Add tool for generating GitHub-friendly release notes
+  * Accommodate pytest 8 changes (pr/1297) (CM)
+
+-------------------------------------------------------------------
 Thu Feb 15 16:13:37 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.2.0
@@ -80,17 +92,17 @@ Thu Oct  6 14:07:18 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.0.2
   * many changes, see Changelog
-  * nib-convert CLI tool to make image type and data dtype conversion 
+  * nib-convert CLI tool to make image type and data dtype conversion
     accessible via the command line.
-  * Allow dtypes to be passed to Analyze-like images at __init__() 
+  * Allow dtypes to be passed to Analyze-like images at __init__()
     and to_filename()
   * Allow compressed GIFTI images
   * Add zstd compression support
   * Test on Python 3.10
-  * Passing (u)int64 arrays to Nifti1Image and subclasses will warn 
-    unless a header or dtype option is passed; in the future this will 
-    become an error. Additionally, passing int or 'int' to set_data_dtype() 
-    now raises an error, requiring an explicit numpy dtype to make 64-bit 
+  * Passing (u)int64 arrays to Nifti1Image and subclasses will warn
+    unless a header or dtype option is passed; in the future this will
+    become an error. Additionally, passing int or 'int' to set_data_dtype()
+    now raises an error, requiring an explicit numpy dtype to make 64-bit
     integer images.
   * Drop support for Python 3.6, Numpy < 1.17
   * Fully removed the APIs, which have raised errors on use since 3.0
@@ -105,7 +117,7 @@ Wed Mar 31 09:09:56 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 -------------------------------------------------------------------
 Fri Feb 12 14:37:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip python 36 
+- skip python 36
 
 -------------------------------------------------------------------
 Fri Jul 10 09:06:52 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>

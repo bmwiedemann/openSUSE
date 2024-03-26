@@ -103,4 +103,27 @@
     <comment></comment>
     <requestid>1147160</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0d1795f1324d51e4ef7952c502fd67e3</srcmd5>
+    <version>5.2.1</version>
+    <time>1711477583</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.2.1:
+  * Support &quot;flat&quot; ASCII-encoded GIFTI DataArrays (pr/1298) (PM,
+    reviewed by CM)
+  * Tolerate missing ``git`` when reporting version info
+    (pr/1286)
+  * Handle Siemens XA30 derived DWI DICOMs (pr/1296)
+  * Add tool for generating GitHub-friendly release notes
+  * Accommodate pytest 8 changes (pr/1297) (CM)
+
+  * nib-convert CLI tool to make image type and data dtype conversion
+  * Allow dtypes to be passed to Analyze-like images at __init__()
+  * Passing (u)int64 arrays to Nifti1Image and subclasses will warn
+    unless a header or dtype option is passed; in the future this will
+    become an error. Additionally, passing int or 'int' to set_data_dtype()
+    now raises an error, requiring an explicit numpy dtype to make 64-bit
+- skip python 36</comment>
+    <requestid>1161551</requestid>
+  </revision>
 </revisionlist>
