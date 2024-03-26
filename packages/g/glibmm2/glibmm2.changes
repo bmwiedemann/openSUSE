@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 25 15:22:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.80.0:
+  + Glib:
+    - Add wide_from_utf8() and wide_to_utf8()
+    - DateTime: Add create_from_local_usec(),
+      create_from_utc_usec() and to_unix_usec().
+  + Gio:
+    - Application: Add get/set/property_version().
+    - ApplicationCommandLine: Add done().
+    - DBus::Message: Add get_arg0_path().
+    - Socket: Add receive_bytes() and receive_bytes_from().
+    - content_type_guess(): Remove most of an unnecessary overload.
+
+-------------------------------------------------------------------
 Tue Mar  5 14:17:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: the -32bit packages are no longer needed and

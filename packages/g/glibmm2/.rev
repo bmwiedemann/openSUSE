@@ -851,4 +851,12 @@
     - MSVC, NMake: Make dep paths configurable. (forwarded request 1155233 from dimstar)</comment>
     <requestid>1155249</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>5b081262e0bbb0e5a02605e594a1f9f6</srcmd5>
+    <version>2.80.0</version>
+    <time>1711477494</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1161476</requestid>
+  </revision>
 </revisionlist>
