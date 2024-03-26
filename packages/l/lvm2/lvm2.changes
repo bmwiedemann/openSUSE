@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 22 12:54:54 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang_path macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Mon Sep 18 02:06:09 UTC 2023 - Glass Su <glass.su@suse.com>
 
 - Update lvm2 from LVM2.2.03.16 to LVM2.2.03.22 (jsc#PED-6339)

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package lvm2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -116,13 +116,14 @@ Patch4001:      bug-1037309_Makefile-skip-compliling-daemons-lvmlockd-directory.
 BuildRequires:  kmod-compat
 BuildRequires:  libaio-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  thin-provisioning-tools >= %{thin_provisioning_version}
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
 Requires:       device-mapper >= %{device_mapper_version}
 Requires:       modutils
 Requires(post): coreutils
-Requires(postun):coreutils
+Requires(postun): coreutils
 Provides:       lvm = %{version}
 Obsoletes:      lvm2-cmirrord <= %{lvm2_cmirrord_version}
 %{?systemd_requires}
@@ -328,6 +329,9 @@ sed -ie "s/%{upstream_device_mapper_version}/1.03.01/g" VERSION_DM
     install -m 644 %{SOURCE1} "%{buildroot}/%{_sysconfdir}/lvm/"
     # Install testsuite
     make -C test install DESTDIR=%{buildroot}
+    %if %{suse_version} >= 1600
+    %python3_fix_shebang_path %{buildroot}%{_datadir}/lvm2-testsuite/dbus/*
+    %endif
 
     pushd "%{buildroot}/%{_libdir}"
     ln -sf liblvm2cmd.so.2.03 liblvm2cmd.so
