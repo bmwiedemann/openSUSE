@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 22 10:01:28 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop meanwhile unnecessary BuildRequires on WebEngine and WebChannel
+
+-------------------------------------------------------------------
 Wed Mar 13 09:09:55 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.2:

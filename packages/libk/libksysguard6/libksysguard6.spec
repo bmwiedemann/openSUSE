@@ -64,10 +64,6 @@ BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6UiPlugin) >= %{qt6_version}
-%ifarch aarch64 x86_64 riscv64
-BuildRequires:  cmake(Qt6WebChannel) >= %{qt6_version}
-BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
-%endif
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libpcap)
