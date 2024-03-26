@@ -296,7 +296,7 @@ done
 %files -n cloudproviders-extension-nextcloud
 # When built with libcloudproviders >= 0.3.3 the .ini file is no longer required,
 # see https://github.com/nextcloud/desktop/pull/6275
-%if 0%{?suse_version} < 1650
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150600
 %dir %{_datadir}/cloud-providers/
 %{_datadir}/cloud-providers/com.nextcloudgmbh.Nextcloud.ini
 %endif
