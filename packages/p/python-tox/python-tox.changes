@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Mon Mar 25 19:22:38 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Rebase patches:
+  * optional_devpi_process.patch as 0001-Make-use-of-devpi_process-optional.patch
+    (additionally add a skip of tests that would require the devpi process)
+  * mark-network-tests.patch as 0002-skip-test-which-require-network-access.patch
+
+- Bump dependencies according to upstream
+- Remove unused dependency pytest-randomly
+
+- New upstream release 4.14.2:
+
+v4.14.2 (2024-03-22)
+--------------------
+
+Bugfixes - 4.14.2
+~~~~~~~~~~~~~~~~~
+- Add provision arguments to ToxParser to fix crash when provisioning new tox environment without list-dependencies by :user:`seyidaniels` (:issue:`3190`)
+
+Improved Documentation - 4.14.2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Removed unused line from the 'fresh_subprocess' documentation. (:issue:`3241`)
+
+v4.14.1 (2024-03-06)
+--------------------
+
+Bugfixes - 4.14.1
+~~~~~~~~~~~~~~~~~
+- Fix crash with fresh subprocess, if the build backend is setuptools automatically enable fresh subprocesses for
+  build backend calls - by :user:`gaborbernat`. (:issue:`3235`)
+
+v4.14.0 (2024-03-05)
+--------------------
+
+Features - 4.14.0
+~~~~~~~~~~~~~~~~~
+- Support enabling fresh subprocess for packaging build backends via :ref:`fresh_subprocess` - by :user:`gaborbernat`. (:issue:`3227`)
+- Allow plugins attaching additional information to ``--version`` via ``tox_append_version_info`` method in the plugin
+  module - by :user:`gaborbernat`. (:issue:`3234`)
+
+v4.13.0 (2024-02-16)
+--------------------
+
+Features - 4.13.0
+~~~~~~~~~~~~~~~~~
+- Extract virtual environment packaging code to its own base class not tied to ``virtualenv`` - by :user:`gaborbernat`. (:issue:`3221`)
+
+Improved Documentation - 4.13.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Documented usage of ``pytest`` with ``tox run-parallel`` - by :user:`faph`. (:issue:`3187`)
+- Configuration: state in config directive sections their ini file sections - by :user:`0cjs`. (:issue:`3194`)
+- Development: summarize important points experienced developers need to know - by :user:`0cjs`. (:issue:`3197`)
+
+v4.12.1 (2024-01-16)
+--------------------
+
+Bugfixes - 4.12.1
+~~~~~~~~~~~~~~~~~
+- Fixed bug where running with --installpkg and multiple envs could not clean up between tests (:issue:`3165`)
+
+v4.12.0 (2024-01-11)
+--------------------
+
+Features - 4.12.0
+~~~~~~~~~~~~~~~~~
+- Always pass ``FORCE_COLOR`` and ``NO_COLOR`` to the environment (:issue:`3171`)
+
+Bugfixes - 4.12.0
+~~~~~~~~~~~~~~~~~
+- ``--parallel-no-spinner`` flag now implies ``--parallel`` (:issue:`3158`)
+
+Improved Documentation - 4.12.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- -Fix ``open an issue`` link in development.rst (:issue:`3179`)
+
+-------------------------------------------------------------------
 Tue Mar  5 13:39:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

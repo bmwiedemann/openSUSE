@@ -1,0 +1,55 @@
+From 48abffc7beea8884717bcb631f921a1b7f58bb6d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@suse.com>
+Date: Mon, 25 Mar 2024 20:15:19 +0100
+Subject: [PATCH 1/2] Make use of devpi_process optional
+
+Also skip tests using the enable_pip_pypi_access_fixture, as these tests require
+the devpi server and can break without it
+---
+ src/tox/pytest.py       | 6 +++++-
+ tests/test_provision.py | 5 ++++-
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/src/tox/pytest.py b/src/tox/pytest.py
+index d734defd..f9e5ae10 100644
+--- a/src/tox/pytest.py
++++ b/src/tox/pytest.py
+@@ -17,7 +17,10 @@ from typing import TYPE_CHECKING, Any, Callable, Iterator, Protocol, Sequence, c
+ 
+ import pytest
+ from _pytest.fixtures import SubRequest  # noqa: PLC2701
+-from devpi_process import IndexServer
++try:
++    from devpi_process import IndexServer
++except ImportError:
++    IndexServer = None
+ from virtualenv.info import fs_supports_symlink
+ 
+ import tox.run
+@@ -507,6 +510,7 @@ def enable_pip_pypi_access_fixture(
+     """Set a fake pip index url, tests that want to use a pypi server should create and overwrite this."""
+     _, previous_url = disable_pip_pypi_access
+     enable_pypi_server(monkeypatch, previous_url)
++    pytest.skip()
+     return previous_url
+ 
+ 
+diff --git a/tests/test_provision.py b/tests/test_provision.py
+index 41eb630e..88cefb76 100644
+--- a/tests/test_provision.py
++++ b/tests/test_provision.py
+@@ -16,7 +16,10 @@ from filelock import FileLock
+ from packaging.requirements import Requirement
+ 
+ if TYPE_CHECKING:
+-    from devpi_process import Index, IndexServer
++    try:
++        from devpi_process import Index, IndexServer
++    except ImportError:
++        Index, IndexServer = None, None
+ 
+     from tox.pytest import MonkeyPatch, TempPathFactory, ToxProjectCreator
+ 
+-- 
+2.44.0
+
