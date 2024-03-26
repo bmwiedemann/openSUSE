@@ -82,7 +82,7 @@ features. It provides easy access to information such as "is this a
 built-in on-screen tablet", "what is the size of this model", etc.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson -Db_lto=true -Dtests=disabled
@@ -93,6 +93,7 @@ built-in on-screen tablet", "what is the size of this model", etc.
 
 sed -e 's-#!/usr/bin/env python3-#!/usr/bin/python3-g' -i %{buildroot}%{_bindir}/*
 find %{buildroot} -type f -name "*.la" -delete -print
+%python3_fix_shebang
 
 %check
 %meson_test
