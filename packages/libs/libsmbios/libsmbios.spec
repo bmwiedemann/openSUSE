@@ -1,7 +1,7 @@
 #
 # spec file for package libsmbios
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -156,6 +156,8 @@ ln -s %{_sbindir}/smbios-wireless-ctl %{buildroot}/%{_bindir}/dellWirelessCtl
 ln -s smbios-sys-info %{buildroot}/%{_sbindir}/getSystemId
 ln -s smbios-wireless-ctl %{buildroot}/%{_sbindir}/dellWirelessCtl
 ln -s smbios-lcd-brightness %{buildroot}/%{_sbindir}/dellLcdBrightness
+
+%python3_fix_shebang
 
 %check
 %make_build check

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 14 10:53:06 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Tue May  3 07:24:33 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Replace invalid use of chrpath with patching out -static (boo#1199134)
