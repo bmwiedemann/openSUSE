@@ -4556,4 +4556,14 @@ bsc#1216656</comment>
     https://libvirt.org/news.html#v10-1-0-2024-03-01</comment>
     <requestid>1155381</requestid>
   </revision>
+  <revision rev="394" vrev="2">
+    <srcmd5>583f58500ee446951a6f3ec53179727e</srcmd5>
+    <version>10.1.0</version>
+    <time>1711477462</time>
+    <user>anag+factory</user>
+    <comment>- CVE-2024-2494: remote: check for negative array lengths before
+  allocation
+  bsc#1221815</comment>
+    <requestid>1160500</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 21 15:30:22 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- CVE-2024-2494: remote: check for negative array lengths before
+  allocation
+  bsc#1221815
+
+-------------------------------------------------------------------
 Tue Mar  5 21:20:53 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 10.1.0
