@@ -1,7 +1,7 @@
 #
 # spec file for package python-json5
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,24 +25,24 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-json5
-Version:        0.9.14
+Version:        0.9.24
 Release:        0
 Summary:        A Python implementation of the JSON5 data format
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/dpranke/pyjson5
 Source:         https://github.com/dpranke/pyjson5/archive/v%{version}.tar.gz#/pyjson5-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       python-setuptools
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 BuildArch:      noarch
 %python_subpackages
@@ -62,10 +62,10 @@ slightly more usable as a configuration language:
 %setup -q -n pyjson5-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pyjson5
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -87,6 +87,7 @@ slightly more usable as a configuration language:
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/pyjson5
-%{python_sitelib}/*
+%{python_sitelib}/json5
+%{python_sitelib}/json5-%{version}.dist-info
 
 %changelog

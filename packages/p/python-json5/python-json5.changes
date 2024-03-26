@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 25 20:18:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.24:
+  * drop python2
+  * switch to pyproject.toml
+  * add typing
+  * format with ruff
+
+-------------------------------------------------------------------
 Mon Nov 27 19:03:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.14:
