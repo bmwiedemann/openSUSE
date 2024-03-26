@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 21 10:20:14 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.280.0
+  * layers: Add vertex type check for dynamic vert input
+  * layers: Support loading shader modules from pipeline caches
+  * layers: Add AV1 video decode support
+
+-------------------------------------------------------------------
 Fri Jan 19 11:25:12 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
-- Update to release 1.3.275.0
+- Update to release SDK-1.3.275.0
   * gpu: Add ability to select which shaders get instrumented
   * gpu: Use vku utilities for GPU-AV settings
   * layers: Add support for VK_EXT_external_memory_host,
