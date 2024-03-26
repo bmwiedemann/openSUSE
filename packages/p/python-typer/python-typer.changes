@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 25 21:08:07 UTC 2024 - Matthias Bach <marix@marix.org> - 0.10.0
+
+- Update to upstream version 0.10.0
+  * Fix default value of None for CLI Parameters when the type is
+    list | None and the default value is None.
+  * Improve support for CLI translations using gettext.
+  * Fix evaluating stringified annotations in Python 3.10.
+  * Fix display of default value for Enum parameters inside of a
+    list, include docs and tests.
+  * Update type annotations for show_default parameter and update
+    docs for setting a "Custom default string".
+  * Add missing default_factory in Argument overloads.
+  * Fix preserving case in enum values.
+
+-------------------------------------------------------------------
 Tue Oct 17 19:08:42 UTC 2023 - Matthias Bach <marix@marix.org> - 0.9.0
 
 - Fix sle15_python_module_python being on wrong line post spec

@@ -97,4 +97,22 @@
   auto-format.</comment>
     <requestid>1118386</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2f25b706d71ac2e2f19142ccd2b4cdce</srcmd5>
+    <version>0.10.0</version>
+    <time>1711477588</time>
+    <user>anag+factory</user>
+    <comment>- Update to upstream version 0.10.0
+  * Fix default value of None for CLI Parameters when the type is
+    list | None and the default value is None.
+  * Improve support for CLI translations using gettext.
+  * Fix evaluating stringified annotations in Python 3.10.
+  * Fix display of default value for Enum parameters inside of a
+    list, include docs and tests.
+  * Update type annotations for show_default parameter and update
+    docs for setting a &quot;Custom default string&quot;.
+  * Add missing default_factory in Argument overloads.
+  * Fix preserving case in enum values.</comment>
+    <requestid>1161563</requestid>
+  </revision>
 </revisionlist>
