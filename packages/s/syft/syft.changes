@@ -1,10 +1,49 @@
 -------------------------------------------------------------------
+Tue Mar 26 07:19:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.1.0:
+  * Adding the ability to retrieve remote licenses from
+    package.lock (#2708)
+  * dont include labels for dependabot ecosystems (#2720)
+  * chore(deps): bump fountainhead/action-wait-for-check from 1.1.0
+    to 1.2.0 (#2717)
+  * chore(deps): update tools to latest versions (#2726)
+  * chore(deps): bump github/codeql-action from 3.24.7 to 3.24.8
+    (#2725)
+  * chore(deps): bump actions/cache from 4.0.1 to 4.0.2 (#2728)
+  * chore(deps): bump github.com/docker/docker (#2730)
+  * updating credentials to scoped permissions (#2722)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.5.4 to
+    6.5.5 (#2718)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#2719)
+  * Add detection for Oracle GraalVM (#2705)
+  * chore(deps): bump docker/login-action from 3.0.0 to 3.1.0
+    (#2714)
+  * Add ELF binary package cataloger (#2396)
+  * chore(deps): bump modernc.org/sqlite from 1.29.3 to 1.29.5
+    (#2710)
+  * chore(deps): bump github/codeql-action from 3.24.6 to 3.24.7
+    (#2711)
+  * chore(deps): bump peter-evans/create-pull-request from 6.0.1 to
+    6.0.2 (#2712)
+  * Show binary exports, entrypoint, and imports (#2626)
+  * chore(deps): bump actions/checkout from 4.1.1 to 4.1.2 (#2703)
+  * chore(deps): bump github.com/knqyf263/go-rpmdb (#2701)
+  * chore: reduce duplicate case SwiftPkg (#2696)
+  * chore: remove deprecated os.SEEK_SET os.SEEK_CUR (#2693)
+  * chore(deps): bump github.com/docker/docker (#2698)
+  * chore(deps): bump modernc.org/sqlite from 1.29.2 to 1.29.3
+    (#2699)
+
+-------------------------------------------------------------------
 Sat Mar 09 08:54:20 UTC 2024 - andrea.manzini@suse.com
 
 - Update to version 1.0.1:
   * bump dependencies
   * docs: add simplest example from registry (#2691)
-  * fix: Unable to scan OCI images with syft v0.105.1 [#2678 #2683 @spiffcs]
+  * fix: Unable to scan OCI images with syft v0.105.1 [#2678 #2683
+    @spiffcs]
 
 -------------------------------------------------------------------
 Fri Mar 01 13:59:28 UTC 2024 - andrea.manzini@suse.com
@@ -16,9 +55,11 @@ Fri Mar 01 13:59:28 UTC 2024 - andrea.manzini@suse.com
   * chore(deps): update tools to latest versions (#2680)
   * enforce breaking change bump major version (#2635)
   * docs: fix incorrect flag name in readme (#2677)
-  * Consider filesystem types for mount points when ignoring system paths (#2675)
+  * Consider filesystem types for mount points when ignoring system
+    paths (#2675)
   * fix: stop emitting bus events on go mod events (#2673)
-  * chore(deps): bump peter-evans/create-pull-request from 6.0.0 to 6.0.1 (#2676)
+  * chore(deps): bump peter-evans/create-pull-request from 6.0.0 to
+    6.0.1 (#2676)
   * feat: add `--from` flag, refactor source providers (#2610)
 
 -------------------------------------------------------------------
