@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsondiff
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,15 @@ Source:         https://github.com/ZoomerAnalytics/jsondiff/archive/%{version}.t
 # PATCH-FEATURE-UPSTREAM remove_nose.patch bsc#[0-9]+ mcepl@suse.com
 # Replace nose-random plugin with ripped of version independent of nose.
 Patch0:         remove_nose.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,10 +46,10 @@ Package to show differences between JSON and JSON-like structures in Python
 %autosetup -p1 -n jsondiff-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/jdiff
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -63,7 +65,8 @@ Package to show differences between JSON and JSON-like structures in Python
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/jsondiff
+%{python_sitelib}/jsondiff-*.dist-info
 %python_alternative %{_bindir}/jdiff
 
 %changelog
