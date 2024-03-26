@@ -19,7 +19,7 @@
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 40
 # Make sure to update `upgrades` as well!
-%define ver 23.11.3
+%define ver 23.11.5
 %define _ver _23_11
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
@@ -171,7 +171,7 @@ Source21:       README_Testsuite.md
 Patch0:         Remove-rpath-from-build.patch
 Patch2:         pam_slurm-Initialize-arrays-and-pass-sizes.patch
 Patch10:        Fix-test-21.41.patch
-Patch14:        Keep-logs-of-skipped-test-when-running-test-cases-sequentially.patch
+#Patch14:        Keep-logs-of-skipped-test-when-running-test-cases-sequentially.patch
 Patch15:        Fix-test7.2-to-find-libpmix-under-lib64-as-well.patch
 
 %{upgrade_dep %pname}
@@ -1112,7 +1112,8 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_mandir}/man1/sjobexitmod.1.*
 %{_mandir}/man1/sjstat.1.*
 %{_mandir}/man8/slurmctld.*
-%{_mandir}/man8/spank*
+%{_mandir}/man8/spank.*
+%{_mandir}/man8/sackd.*
 
 %files openlava
 %{_bindir}/bjobs
