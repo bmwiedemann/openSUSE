@@ -17,7 +17,7 @@
 
 
 Name:           file-roller
-Version:        44.beta
+Version:        44
 Release:        0
 Summary:        An Archive Manager for GNOME
 License:        GPL-2.0-or-later

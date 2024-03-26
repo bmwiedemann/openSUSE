@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 25 15:18:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 44:
+  + Fixes compilation when native app chooser is disabled.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 11 08:01:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 44.beta:
