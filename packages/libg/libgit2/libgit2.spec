@@ -18,9 +18,9 @@
 #
 
 
-%define sover 1_7
+%define sover 1_8
 Name:           libgit2
-Version:        1.7.2
+Version:        1.8.0
 Release:        0
 Summary:        C git library
 License:        GPL-2.0-only WITH GCC-exception-2.0

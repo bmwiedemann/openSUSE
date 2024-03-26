@@ -604,4 +604,12 @@ Update required for libgit2-glib, a new lib depending on libgit2 and used by ged
     <comment></comment>
     <requestid>1145402</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>1078f17928f767d052c4098ac0ea29c7</srcmd5>
+    <version>1.8.0</version>
+    <time>1711477499</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1161484</requestid>
+  </revision>
 </revisionlist>

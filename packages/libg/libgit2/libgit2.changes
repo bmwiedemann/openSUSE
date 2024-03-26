@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 24 16:16:18 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.8.0:
+  * Simplified commit creation (git_commit_create_from_stage)
+  * Worktree improvements for better compatibility with core git
+  * ABI breaking channge: Add WORKTREE configuration level.
+    GIT_CONFIG_LEVEL_WORKTREE level t priority 6,
+    GIT_CONFIG_LEVEL_APP now begins at priority 7.
+  * ABI breaking change: git_config_entry structure change
+  * ABI breaking change: git_push_options includes remote push
+    options
+- the optional, experimental support for invoking OpenSSH remains
+  disabled in this package
+
+-------------------------------------------------------------------
 Wed Feb  7 19:51:57 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.7.2:
