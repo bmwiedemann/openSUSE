@@ -45,14 +45,14 @@
 %else
 %bcond_with full
 %endif
-%define shortversion 3.28
+%define shortversion 3.29
 %if 0%{?suse_version} && 0%{?suse_version} <= 1500
 %define pyver 311
 %else
 %define pyver 3
 %endif
 Name:           cmake%{?psuffix}
-Version:        3.28.3
+Version:        3.29.0
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause

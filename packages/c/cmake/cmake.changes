@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 21 19:24:26 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- update  to 3.29
+  * The “cmake_language(EXIT)” sub-command was added to terminate
+    “cmake -P” scripts with a specified exit code.
+  * The “CMAKE_LINKER_TYPE” variable and corresponding “LINKER_TYPE”
+    target property were added to specify what linker to use with
+    some toolchains.
+
+-------------------------------------------------------------------
 Sun Feb 25 09:30:03 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.28.3:
