@@ -214,4 +214,15 @@
   * B036: Add check for except BaseException without re-raising</comment>
     <requestid>1140112</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bfab49e27a90cb54cc10a9b9cf163136</srcmd5>
+    <version>24.2.6</version>
+    <time>1711477574</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.2.6:
+  * B902: Remove decorators named validator and root_validator
+    from B902 checks
+  * B038: Change B038 to B909 and make it optional</comment>
+    <requestid>1161533</requestid>
+  </revision>
 </revisionlist>

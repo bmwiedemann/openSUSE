@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 25 17:49:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.2.6:
+  * B902: Remove decorators named validator and root_validator
+    from B902 checks
+  * B038: Change B038 to B909 and make it optional
+
+-------------------------------------------------------------------
 Sat Jan 20 13:07:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.1.17:
