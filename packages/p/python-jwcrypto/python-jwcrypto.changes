@@ -1,8 +1,9 @@
 -------------------------------------------------------------------
 Tue Mar 19 07:14:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
-- update to 1.5.6:
+- update to 1.5.6 (bsc#1221230, CVE-2024-28102):
   * Address potential DoS with high compression ratio
+    (CVE-2024-28102)
 - update to 1.5.4:
   * One more release bump to address issues with
     typing_extensions minimum required version
