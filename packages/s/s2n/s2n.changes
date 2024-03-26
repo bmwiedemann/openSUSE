@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Mar 22 09:19:59 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.4.8
+  * feat: Add additional EC key validation for FIPS (#4452)
+  * refactor: UBSAN build and address out of bound reads  (#4440)
+  * Add s2n_stuffer_shift (#4458)
+  * style: fix declarations without initial value (#4404)
+  * feat: Add FIPS mode getter API (#4450)
+  * remove unnecessary includes (#4451)
+  * refactor: clang-tidy null deref and undefined mod (#4436)
+  * refactor: make memmove vs memcpy behavior clearer (#4447)
+  * fix(bindings): Apply with_system_certs to Config builder (#4456)
+- from version 1.4.7
+  * api: add key update request functionality (#4453)
+  * style: manual initial value fix (#4449)
+- from version 1.4.6
+  * docs: Specify the return value of S2N_FAILURE for IO APIs (#4446)
+  * refactor: enforce stuffer return check (#4399)
+  * refactor: fix unread variable warnings (#4405)
+  * fix: Unsets global libcrypto rand (#4424)
+  * Relax HRR consistency requirements for second client hello (#4429)
+  * fix: prevent enabling ktls with a buffered record header fragment (#4426)
+  * feat: add cert key preferences (#4434)
+  * chore: bindings bump 0.1.6 (#4437)
+  * test: add cert chain with mixed key sizes (#4433)
+  * feat: apply cert signature preferences locally (#4407)
+  * docs: Extend license check to .rs files (#4428)
+  * fix(test): fix dangling pointers in cert verify test (#4430)
+  * Add Rust bindings for certificate chains (#4398)
+- from version 1.4.5
+  * fix: parse fragmented sslv2 client hellos (#4425)
+  * chore(ci): Give OpenBSD CI job a performance boost (#4427)
+  * fix: s2n_shutdown should handle partial records (#4421)
+  * feat: Server name getter for client hello (#4396)
+  * refactor: zero static s2n_configs on cleanup (#4416)
+  * Removed unused dependencies (#4417)
+  * chore(bindings): release 0.1.5 (#4420)
+  * chore(bindings): release 0.1.4 (#4418)
+  * bindings: use aws-lc-rs instead of aws-lc-sys (#4415)
+
+-------------------------------------------------------------------
 Wed Feb 21 13:13:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.4.4
