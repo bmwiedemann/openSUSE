@@ -609,49 +609,48 @@ Requires:       kaccounts-providers
 Requires:       kio-gdrive
 
 # Recommended by kde_plasma
-Requires:       bluedevil5
-Requires:       breeze5-wallpapers
+Requires:       bluedevil6
+Requires:       breeze6-wallpapers
 Requires:       dolphin
 Requires:       kde-print-manager
-Requires:       kgamma5
-Requires:       kwrited5
-Requires:       phonon4qt5-backend-vlc
-Requires:       plasma-nm5
+Requires:       kgamma6
+Requires:       kwrited6
+Requires:       phonon-vlc-qt6
+Requires:       plasma6-nm
 
 # Manually pull in baloo5-file to better support desktop search functions/desktop integration
-Requires:       baloo5-file
+Requires:       kf6-baloo-file
 
 # For NetworkManager support of openVPN Connections
 Requires:       NetworkManager-openvpn
 Requires:       openvpn-auth-pam-plugin
 %ifnarch %ix86 %arm ppc64 ppc64le s390x
-Requires:       plasma-nm5-openconnect
+Requires:       plasma6-nm-openconnect
 %endif
-Requires:       plasma-nm5-openvpn
+Requires:       plasma6-nm-openvpn
 
-Requires:       kio-extras5
-Requires:       kwalletmanager5
+Requires:       kdeplasma6-addons
+Requires:       kio-extras
+Requires:       kwalletmanager
 Requires:       pinentry-qt5
-Requires:       plasma5-addons
-Requires:       plasma5-pa
-Requires:       plasma5-session-wayland
-Requires:       sddm
+Requires:       plasma6-pa
+Requires:       plasma6-session
+Requires:       sddm-qt6
 
 # Additional Fonts to cover Unicode Symbols not provided by the fonts pulled in by kde_plasma Pattern
 Requires:       noto-sans-math-fonts
 Requires:       google-noto-sans-cjk-fonts
 
 # Recommends and Supplements won't work, so pull in manually
-Requires:       discover-backend-flatpak
-Requires:       discover-backend-fwupd
-#Requires:       discover-backend-packagekit
-Requires:       kde-gtk-config5
-Requires:       kde-gtk-config5-gtk3
-Requires:       plasma-browser-integration
+Requires:       discover6-backend-flatpak
+Requires:       discover6-backend-fwupd
+Requires:       kde-gtk-config6
+Requires:       kde-gtk-config6-gtk3
+Requires:       kf6-qqc2-desktop-style
 Requires:       plasma5-defaults-openSUSE
+Requires:       plasma6-browser-integration
+Requires:       plasma6-sddm-theme-openSUSE
 Requires:       purpose
-Requires:       qqc2-desktop-style
-Requires:       sddm-theme-openSUSE
 Requires:       xdg-desktop-portal-kde
 
 # Recommended by powerdevil5, but allow tlp as alternative
@@ -659,13 +658,13 @@ Requires:       (power-profiles-daemon or tlp)
 Suggests:       power-profiles-daemon
 
 # Doesn't depend on PackageKit, but also works for other backends
-Requires:       discover-notifier
+Requires:       discover6-notifier
 
 # Spectacle to be able to take screenshots out of the box
 Requires:       spectacle
 
 # Default Plasma app to quickly use emojis
-Requires:       plasma5-desktop-emojier
+Requires:       plasma6-desktop-emojier
 Requires:       google-noto-coloremoji-fonts
 
 # Breeze GTK2, GTK3 and GTK4
@@ -677,7 +676,7 @@ Requires:       (gtk3-metatheme-breeze if gtk3)
 Requires:       oxygen5-sounds
 
 # Plasma system monitor
-Requires:       plasma5-systemmonitor
+Requires:       plasma6-systemmonitor
 
 # For seeing thumbnails in Dolphin
 Requires:       libqt5-qtimageformats
@@ -685,14 +684,14 @@ Requires:       ffmpegthumbs
 Requires:       kdegraphics-thumbnailers
 
 # For being able to change SDDM settings
-Requires:       kcm_sddm
+Requires:       sddm-kcm6
 
 # Add for mounting network shares in userspace (boo#1210125)
 Requires:       kio-fuse
 Requires:       kdenetwork-filesharing
 
 # Add kcm_flatpak for managing flatpak permissions (boo#1208256)
-Requires:       kcm_flatpak
+Requires:       flatpak-kcm6
 
 # Add steam-devices for controller support
 Requires:       steam-devices
