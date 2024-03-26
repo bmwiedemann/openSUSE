@@ -43,6 +43,7 @@ for a regex pattern.
 %package bash-completion
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
+Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (%{name} and bash)
 BuildArch:      noarch
@@ -53,6 +54,7 @@ The official bash completion script for ripgrep, generated during the build.
 %package zsh-completion
 Summary:        ZSH Completion for %{name}
 Group:          System/Shells
+Requires:       %{name} = %{version}
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
@@ -62,6 +64,7 @@ The official zsh completion script for ripgrep, generated during the build.
 %package fish-completion
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
+Requires:       %{name} = %{version}
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
@@ -102,12 +105,15 @@ install -Dm 644 rg.zsh %{buildroot}%{_datadir}/zsh/site-functions/_rg
 %{_bindir}/rg
 
 %files bash-completion
+%license LICENSE-MIT UNLICENSE
 %{_datadir}/bash-completion
 
 %files fish-completion
+%license LICENSE-MIT UNLICENSE
 %{_datadir}/fish
 
 %files zsh-completion
+%license LICENSE-MIT UNLICENSE
 %{_datadir}/zsh
 
 %changelog
