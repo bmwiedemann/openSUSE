@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 18 18:18:18 UTC 2024 - olaf@aepfle.de
+
+- version 1.8
+- disable screen and colon command in example cscreenrc
+- reduce the default nice level to 3 for entire screen session
+- provide sol-via-impi.sh and sol-via-ssh.sh
+
+-------------------------------------------------------------------
 Thu Mar 14 14:14:14 UTC 2024 - olaf@aepfle.de
 
 - version 1.7

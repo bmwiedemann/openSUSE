@@ -19,7 +19,7 @@
 %define USERNAME _cscreen
 %define HOMEDIR %_localstatedir/lib/cscreen
 Name:           cscreen
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Console screen
 License:        BSD-4-Clause
@@ -44,8 +44,10 @@ to start the screen automatically during boot.
 
 %package -n system-user-%name
 Summary:        System user %USERNAME
+%if 0%{?suse_version} > 1320
 Requires(pre):  group(dialout)
 Requires(pre):  group(tty)
+%endif
 %?sysusers_requires
 
 %description -n system-user-%name
@@ -64,7 +66,7 @@ then
 fi
 mkdir -p %buildroot/%_sbindir
 
-install -Dm644 systemd/cscreen.service %buildroot/%_unitdir/cscreend.service
+install -Dm644 cscreen.service %buildroot/%_unitdir/cscreend.service
 pushd %buildroot/%_sbindir
 ln -sf service %buildroot%_sbindir/rccscreend
 popd
@@ -86,6 +88,8 @@ install -Dm640 configs/cscreen.config %buildroot/%_sysconfdir/cscreenrc
 install -Dm644 configs/cscreen.logrotate %buildroot/%_sysconfdir/logrotate.d/%name
 install -Dm644 configs/cscreen.sudoers %buildroot%_sysconfdir/sudoers.d/%name
 install -Dm755 src/cscreen-shell %buildroot/%_datadir/%name/cscreen-shell
+install -Dm555 src/sol-via-ipmi.sh %buildroot/%_datadir/%name/sol-via-ipmi.sh
+install -Dm555 src/sol-via-ssh.sh %buildroot/%_datadir/%name/sol-via-ssh.sh
 install -Dm755 src/cscreen %buildroot/%_bindir/%name
 install -Dm755 src/cscreen_update_config.sh %buildroot/%_bindir/cscreen_update_config.sh
 
@@ -110,10 +114,10 @@ mkdir -pm700 %buildroot/%HOMEDIR/.ssh
 DISABLE_RESTART_ON_UPDATE=yes
 %service_del_postun cscreend.service
 %endif
-if [ -d /run/uscreens/S-cscreen ];then
+if [ -d %_rundir/uscreens/S-cscreen ];then
     if [ "$1" = "0" ];then
 	# Only delete on uninstall
-	rm -rf /run/uscreens/S-cscreen
+	rm -rf %_rundir/uscreens/S-cscreen
     fi
 fi
 
@@ -122,6 +126,7 @@ fi
 %_sysusersdir/*.conf
 
 %files -f %name.files
+%doc README.md
 %doc docs/motd_example
 %if 0%{?suse_version} > 1320
 %license License
