@@ -351,4 +351,15 @@ Other changes:
     be detected if the protocol was generic.</comment>
     <requestid>1137279</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cd4561904e493d5fea7885e3f0925f9d</srcmd5>
+    <version>24.3.0</version>
+    <time>1711477572</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.3.0:
+  * Y063: Use PEP 570 syntax to mark positional-only arguments,
+    rather than the older Python 3.7-compatible syntax
+    described in PEP 484.</comment>
+    <requestid>1161521</requestid>
+  </revision>
 </revisionlist>

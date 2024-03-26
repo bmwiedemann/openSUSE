@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 25 17:31:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.3.0:
+  * Y063: Use PEP 570 syntax to mark positional-only arguments,
+    rather than the older Python 3.7-compatible syntax
+    described in PEP 484.
+
+-------------------------------------------------------------------
 Sat Jan  6 17:19:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.1.0:
