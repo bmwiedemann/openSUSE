@@ -1024,4 +1024,64 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1157648</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>8819880258c03e8766833c037179190a</srcmd5>
+    <version>3.9.19</version>
+    <time>1711477480</time>
+    <user>anag+factory</user>
+    <comment>- Add old-libexpat.patch making the test suite work with
+  libexpat &lt; 2.6.0 (gh#python/cpython#117187).
+- Update to 3.9.19:
+  - Security
+    - gh-115398: Allow controlling Expat &gt;=2.6.0 reparse deferral
+      (CVE-2023-52425, bsc#1219559) by adding five new methods:
+        xml.etree.ElementTree.XMLParser.flush()
+        xml.etree.ElementTree.XMLPullParser.flush()
+        xml.parsers.expat.xmlparser.GetReparseDeferralEnabled()
+        xml.parsers.expat.xmlparser.SetReparseDeferralEnabled()
+        xml.sax.expatreader.ExpatParser.flush()
+    - gh-115399: Update bundled libexpat to 2.6.0
+    - gh-113659: Skip .pth files with names starting with a dot
+      or hidden file attribute.
+  - Core and Builtins
+    - gh-102388: Fix a bug where iso2022_jp_3 and iso2022_jp_2004
+      codecs read out of bounds
+  - Library
+    - gh-115197: urllib.request no longer resolves the hostname
+      before checking it against the system’s proxy bypass list
+      on macOS and Windows.
+    - gh-115133: Fix tests for XMLPullParser with Expat 2.6.0.
+    - gh-81194: Fix a crash in socket.if_indextoname() with
+      specific value (UINT_MAX). Fix an integer overflow in
+      socket.if_indextoname() on 64-bit non-Windows platforms.
+    - gh-109858: Protect zipfile from “quoted-overlap”
+      zipbomb. It now raises BadZipFile when try to read an
+      entry that overlaps with other entry or central directory
+      (CVE-2024-0450, bsc#1221854).
+    - gh-107077: Seems that in some conditions, OpenSSL will
+      return SSL_ERROR_SYSCALL instead of SSL_ERROR_SSL
+      when a certification verification has failed, but
+      the error parameters will still contain ERR_LIB_SSL
+      and SSL_R_CERTIFICATE_VERIFY_FAILED. We are now
+      detecting this situation and raising the appropiate
+      ssl.SSLCertVerificationError. Patch by Pablo Galindo
+    - gh-91133: Fix a bug in tempfile.TemporaryDirectory cleanup,
+      which now no longer dereferences symlinks when working
+      around file system permission errors (CVE-2023-6597,
+      bsc#1219666).
+  - Documentation
+    - gh-115399: Document CVE-2023-52425 of Expat &lt;2.6.0 under
+      “XML vulnerabilities”.
+  - Tools/Demos
+    - gh-109991: Update GitHub CI workflows to use OpenSSL 3.0.11
+      and multissltests to use 1.1.1w and 3.0.11.
+- Remove upstreamed patches:
+  - CVE-2023-6597-TempDir-cleaning-symlink.patch
+  - libexpat260.patch
+- Refreshed patches:
+  - F00251-change-user-install-location.patch
+  - python-3.3.0b1-localpath.patch
+</comment>
+    <requestid>1161042</requestid>
+  </revision>
 </revisionlist>

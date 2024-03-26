@@ -9,8 +9,8 @@ is not detected to make pip and distutils install into separate location.
 
 Fedora Change: https://fedoraproject.org/wiki/Changes/Making_sudo_pip_safe
 ---
- Lib/distutils/command/install.py | 15 +++++++++++++--
- Lib/site.py                      |  9 ++++++++-
+ Lib/distutils/command/install.py |   15 +++++++++++++--
+ Lib/site.py                      |    9 ++++++++-
  2 files changed, 21 insertions(+), 3 deletions(-)
 
 --- a/Lib/distutils/command/install.py
@@ -39,7 +39,7 @@ Fedora Change: https://fedoraproject.org/wiki/Changes/Making_sudo_pip_safe
                  if self.exec_prefix is None:
 --- a/Lib/site.py
 +++ b/Lib/site.py
-@@ -353,7 +353,14 @@ def getsitepackages(prefixes=None):
+@@ -362,7 +362,14 @@ def getsitepackages(prefixes=None):
      return sitepackages
  
  def addsitepackages(known_paths, prefixes=None):
