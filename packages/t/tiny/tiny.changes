@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 26 10:47:01 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.12.0+git2:
+  * Update tokio, serde, fix a new lint (1.76.0) and a warning in test
+- Remove cargo_config to adopt new vendored tarball scheme.
+
+-------------------------------------------------------------------
 Mon Jan  1 17:02:42 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 0.12.0:
