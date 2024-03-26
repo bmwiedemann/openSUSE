@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 26 07:20:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.20:
+  * fix: regexp (#3027)
+  * terragrunt issue 3017: expand docs for find_in_parent_folder()
+    (#3018)
+
+-------------------------------------------------------------------
 Sat Mar 23 09:38:07 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.55.19:
