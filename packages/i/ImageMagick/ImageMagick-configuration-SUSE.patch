@@ -2,16 +2,18 @@ Index: ImageMagick-7.1.1-29/config/policy-secure.xml
 ===================================================================
 --- ImageMagick-7.1.1-29.orig/config/policy-secure.xml
 +++ ImageMagick-7.1.1-29/config/policy-secure.xml
-@@ -82,8 +82,6 @@
-   <policy domain="cache" name="synchronize" value="true"/>
+@@ -83,17 +83,19 @@
    <!-- Replace passphrase for secure distributed processing -->
    <!-- <policy domain="cache" name="shared-secret" value="secret-passphrase" stealth="true"/> -->
--  <!-- Do not permit any delegates to execute. -->
+   <!-- Do not permit any delegates to execute. -->
 -  <policy domain="delegate" rights="none" pattern="*"/>
++  <!--policy domain="delegate" rights="none" pattern="*"/-->
    <!-- Do not permit any image filters to load. -->
    <policy domain="filter" rights="none" pattern="*"/>
    <!-- Don't read/write from/to stdin/stdout. -->
-@@ -92,8 +90,10 @@
+-  <policy domain="path" rights="none" pattern="-"/>
++  <!--policy domain="path" rights="none" pattern="-"/-->
+   <!-- don't read sensitive paths. -->
    <policy domain="path" rights="none" pattern="/etc/*"/>
    <!-- Indirect reads are not permitted. -->
    <policy domain="path" rights="none" pattern="@*"/>
