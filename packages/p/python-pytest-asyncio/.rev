@@ -213,4 +213,13 @@ required by mycroft-core</comment>
     `asyncio.get_event_loop()` from affecting test cases #757</comment>
     <requestid>1158427</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ca7678ca1a8bae7ec64ae93009a3081d</srcmd5>
+    <version>0.23.6</version>
+    <time>1711477461</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.23.6:
+  * compatibiltiy with pytest 8.2</comment>
+    <requestid>1160433</requestid>
+  </revision>
 </revisionlist>
