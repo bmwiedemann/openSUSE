@@ -34,12 +34,21 @@ BuildRequires:  pkgconfig(grpc)
 BuildRequires:  pkgconfig(grpc++) >= 1.26
 BuildRequires:  pkgconfig(protobuf) >= 3.11
 BuildRequires:  pkgconfig(spdlog)
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 %if %{with tests}
 BuildRequires:  fakeroot
 # the fakeroot test requires xargs
 BuildRequires:  findutils
 # additional binaries for specific tests
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-fortran
+%else
 BuildRequires:  gcc-fortran
+%endif
 BuildRequires:  python3-lit
 BuildRequires:  python3-setuptools
 # one of the tests requires /usr/bin/more
@@ -64,7 +73,10 @@ file. Bear is a tool to generate such file during the build process.
 for f in $(ls test/bin/); do
     sed -i "s|^#\!%{_bindir}/env\s\+python\s\?$|#!python3|" test/bin/$f
 done
-
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %cmake \
 %if %{without tests}
   -DENABLE_UNIT_TESTS=OFF \

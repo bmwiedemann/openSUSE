@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 26 10:20:39 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Build with GCC13 on Leap 15
+
+-------------------------------------------------------------------
 Mon Dec 18 13:26:24 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Disable tests as they timeout in OBS
