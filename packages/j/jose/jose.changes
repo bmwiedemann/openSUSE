@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Mar  8 09:08:00 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 12
+  * Clean up some FreeBSD conditions (#98)
+  * Add ES256K support (#90)
+  * Meson changes (#135)
+  * Update CI (#8) (#129)
+  * lib/openssl/rsaes.c: Fix issue where jose_hook_alg_find
+    failed to find the … …existance of RSA_OAEP algorithm
+  * Increase test program/scripts timeout values (#131)
+  * Fix test compilation warnings (#127)
+  * Adapt alg_comp test to different zlib (#142)
+  * Use checkout v3 Github action to avoid warnings (#137)
+  * Alternative fix for fedora:rawide (#138)
+  * lib/openssl/hmac.c: rename hmac function to jhmac (#130)
+  * jose: build library only as shared (#119)
+  * meson: add option to disable building manpages (#118)
+  * Add a more descriptive error when jwk gen fails (#105)
+  * Use "command -v" instead of "which" (deprecated) (#125)
+  * Test for jq existing (used in jose-jwe-enc test) (#124)
+  * Correct jose_jws.3 man page example (#122)
+  * lib/hsh.c: rename hsh local variable (#111)
+  * Avoid master word when possible (#120)
+  * Fix github action CI by setting appropriate centos
+  * Fix format of jose-jwe-enc man page
+  * Meson Fixes
+  * ci: make ubuntu:devel and fedora:rawhide not to fail the
+    pipeline
+  * ci: retry when installing the deps in debian/ubuntu
+  * ci: remove travis-ci
+
+-------------------------------------------------------------------
 Tue Apr 11 15:59:42 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - initial import of C-language implementation of Javascript Object
