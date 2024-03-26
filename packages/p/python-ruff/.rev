@@ -750,4 +750,38 @@
    * Use ruff.toml format in README</comment>
     <requestid>1159022</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5e5a1227c70ab75e241a9363fd4e7802</srcmd5>
+    <version>0.3.4</version>
+    <time>1711477468</time>
+    <user>anag+factory</user>
+    <comment>- update ruff to 0.3.4
+ * Preview features
+   * [flake8-simplify] Detect implicit else cases in needless-bool (SIM103) 
+   * [pylint] Implement nan-comparison (PLW0117) 
+   * [pylint] Implement nonlocal-and-global (E115) 
+   * [pylint] Implement singledispatchmethod-function (PLE5120) 
+   * [refurb] Implement list-reverse-copy (FURB187) 
+ * Rule changes
+   * [flake8-pytest-style] Add automatic fix for pytest-parametrize-values-wrong-type (PT007) 
+   * [pycodestyle] Allow SPDX license headers to exceed the line length (E501) 
+ * Formatter
+   * Fix unstable formatting for trailing subscript end-of-line comment 
+ * Bug fixes
+   * Avoid code comment detection in PEP 723 script tags 
+   * Avoid incorrect tuple transformation in single-element case (C409) 
+   * Bug fix: Prevent fully defined links name from being reformatted 
+   * Consider raw source code for W605 
+   * Docs: Link inline settings when not part of options section 
+   * Don't treat annotations as redefinitions in .pyi files 
+   * Fix E231 bug: Inconsistent catch compared to pycodestyle, such as when dict nested in list 
+   * Fix pylint upstream categories not showing in docs 
+   * Add missing Options references to blank line docs 
+   * 'Revert &quot;F821: Fix false negatives in .py files when from __future__ import annotations is active &quot;' 
+   * Apply NFKC normalization to unicode identifiers in the lexer 
+   * Avoid failures due to non-deterministic binding ordering 
+   * [flake8-bugbear] Allow tuples of exceptions (B030) 
+   * [flake8-quotes] Avoid syntax errors due to invalid quotes (Q000, Q002)</comment>
+    <requestid>1160627</requestid>
+  </revision>
 </revisionlist>
