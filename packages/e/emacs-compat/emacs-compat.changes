@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 25 18:10:17 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 29.1.4.5:
+  * Update NEWS.org
+  * compat-tests: Fix compat-thing-at-mouse test
+  * Use https links everywhere
+  * compat.texi: Use @dfn{Extended Definitions}
+  * NEWS: Mention addition of compat.el to Emacs
+  * compat.texi: Update manual after the inclusion of compat.el in Emacs
+  * compat-tests: Fix commentary linter warnings
+  * compat-tests: Use should-equal
+  * compat--maybe-require: Rename macro to reduce churn
+
+-------------------------------------------------------------------
 Mon Feb 26 21:13:02 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Depend on emacs-devel to make sure Emacs packaging macros are installed when not building with emacs-eln

@@ -15,4 +15,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1154925</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>47b7e4b9d4b2cb5b376bb91f07b56b74</srcmd5>
+    <version>29.1.4.5</version>
+    <time>1711477574</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 29.1.4.5:
+  * Update NEWS.org
+  * compat-tests: Fix compat-thing-at-mouse test
+  * Use https links everywhere
+  * compat.texi: Use @dfn{Extended Definitions}
+  * NEWS: Mention addition of compat.el to Emacs
+  * compat.texi: Update manual after the inclusion of compat.el in Emacs
+  * compat-tests: Fix commentary linter warnings
+  * compat-tests: Use should-equal
+  * compat--maybe-require: Rename macro to reduce churn</comment>
+    <requestid>1161542</requestid>
+  </revision>
 </revisionlist>

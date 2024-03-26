@@ -1,4 +1,4 @@
-From 9b142ee3ddfa80103cbef8bfc25d577200d9f6cf Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Bj=C3=B6rn=20Bidar?= <bjorn.bidar@thaodan.de>
 Date: Wed, 27 Sep 2023 00:25:31 +0300
 Subject: [PATCH] Add install target
@@ -12,7 +12,7 @@ Signed-off-by: Björn Bidar <bjorn.bidar@thaodan.de>
  1 file changed, 32 insertions(+), 3 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 0044904..ac20d7d 100644
+index 3c5949418789b1525c8df26cfad02876730b8c53..5c07efcef76313e645ecb97e153cc28023cb9846 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -29,19 +29,32 @@
@@ -74,6 +74,3 @@ index 0044904..ac20d7d 100644
  $(BYTEC): compat-macs.el
  
  .el.elc:
--- 
-2.43.0
-
