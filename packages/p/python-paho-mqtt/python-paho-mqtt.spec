@@ -1,7 +1,7 @@
 #
 # spec file for package python-paho-mqtt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-paho-mqtt
-Version:        1.6.1
+Version:        2.0.0
 Release:        0
 Summary:        MQTT version 3.11 client class
 License:        EPL-1.0
 Group:          Development/Languages/Python
 URL:            http://eclipse.org/paho
 Source:         https://github.com/eclipse/paho.mqtt.python/archive/refs/tags/v%{version}.tar.gz#/paho-mqtt-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -47,21 +46,23 @@ a small code footprint is required and/or network bandwidth is at a premium.
 Paho is an Eclipse Foundation project.
 
 %prep
-%setup -q -n paho.mqtt.python-%{version}
+%autosetup -p1 -n paho.mqtt.python-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export PYTHONPATH='.'
 %pytest
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/paho
+%{python_sitelib}/paho*.dist-info
 
 %changelog

@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Mar 22 14:38:52 UTC 2024 - pgajdos@suse.com
+
+- version update to 2.0.0
+  - **BREAKING** Added callback_api_version. This break *ALL* users of paho-mqtt Client class.
+    See migrations.md for details on how to upgrade.
+    tl; dr; add CallbackAPIVersion.VERSION1 to first argument of Client()
+  - **BREAKING** Drop support for Python 2.7, Python 3.5 and Python 3.6
+    Minimum tested version is Python 3.7
+    Python version up to Python 3.12 are tested.
+  - **BREAKING** connect_srv changed it signature to take an additional bind_port parameter.
+    This is a breaking change, but in previous version connect_srv was broken anyway.
+    Closes #493.
+  - **BREAKING** Remove some deprecated argument and method:
+  
+    * ``max_packets`` argument in loop(), loop_write() and loop_forever() is removed
+    * ``force`` argument in loop_stop() is removed
+    * method ``message_retry_set()`` is removed
+  - **BREAKING** Remove the base62, WebsocketWrapper and ConnectionState, as user shouldn't directly use them.
+  - Possible breaking change: Add properties to access most Client attribute. Closes #764.
+    Since this add new properties like `logger`, if a sub-class defined `logger`, the two `logger`
+    will conflict.
+  - Add version 2 of user-callback which allow to access MQTTv5 reason code & properties that were
+    missing from on_publish callback. Also it's more consistent in parameter order or between
+    MQTTv3 and MQTTv5.
+  - Add types to Client class, which caused few change which should be compatible.
+    Known risk of breaking changes:
+    - Use enum for returned error code (like MQTT_ERR_SUCCESS). It use an IntEnum
+      which should be a drop-in replacement. Excepted if someone is doing "rc is 0" instead of "rc == 0".
+    - reason in on_connect callback when using MQTTv5 is now always a ReasonCode object. It used to possibly be
+      an integer with the value 132.
+    - MQTTMessage field "dup" and "retain" used to be integer with value 0 and 1. They are now boolean.
+  - Add support for ALPN protocols on TLS connection. Closes #790 & #648.
+  - Add on_pre_connect() callback, which is called immediately before a
+    connection attempt is made.
+  - Fix subscribe.simple with MQTTv5. Closes #707.
+  - Use better name for thread started by loop_start. Closes #617.
+  - Fix possible bug during disconnection where self._sock is unexpectedly None. Closes #686 & #505.
+  - Fix loading too weak TLS CA file but setting allowed ciphers before loading CA. Closes #676.
+  - Allow to manually ack QoS > 0 messages. Closes #753 & #348.
+  - Improve tests & linters. Modernize build (drop setup.py, use pyproject.toml)
+  - Fix is_connected property to correctly return False when connection is lost
+    and loop_start/loop_forever isn't used. Closes #525.
+  - Fix wait_for_publish that could hang with QoS == 0 message on reconnection
+    or publish during connection. Closes #549.
+  - Correctly mark connection as broken on SSL error and don't crash loop_forever.
+    Closes #750.
+  - Fix handling of MQTT v5.0 PUBREL messages with remaining length not equal to
+    2. Closes #696.
+  - Raise error on ``subscribe()`` when `topic` is an empty list. Closes #690.
+  - Raise error on `publish.multiple()` when ``msgs`` is an empty list. Closes #684.
+  - Don't add port to Host: header for websockets connections when the port if the default port. Closes #666.
+* does not require six
+
+-------------------------------------------------------------------
 Wed Dec  8 13:58:37 UTC 2021 - pgajdos@suse.com
 
 - %check: test the package
