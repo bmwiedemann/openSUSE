@@ -17,10 +17,10 @@
 
 
 %bcond_without  python_bindings
-%define api_ver 47
+%define api_ver 46
 
 Name:           gedit
-Version:        46.1+135
+Version:        46.2
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
@@ -144,7 +144,7 @@ This subpackage contains the header files for creating gedit plugins.
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/*
-%{_datadir}/metainfo/org.gnome.gedit.metainfo.xml
+%{_datadir}/metainfo/org.gnome.gedit.appdata.xml
 %dir %{_libdir}/gedit/
 %{_libdir}/gedit/libgedit-%{api_ver}.so
 %{_libdir}/gedit/girepository-1.0/

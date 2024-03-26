@@ -1190,4 +1190,13 @@ Pushing GNOME 45.rc packages</comment>
     <comment>GNOME 46 (forwarded request 1159327 from dimstar)</comment>
     <requestid>1159548</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>66367c7013e5b8eb17a53b17321e8e2a</srcmd5>
+    <version>46.2</version>
+    <time>1711477506</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.2:
+  + Update URL gedit-technology.net -&gt; gedit-technology.github.io.</comment>
+    <requestid>1161648</requestid>
+  </revision>
 </revisionlist>
