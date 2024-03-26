@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 26 08:03:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.80.2:
+  + Quick follow-up release to fix crash on ppc64.
+
+-------------------------------------------------------------------
+Mon Mar 25 15:20:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.80.1:
+  + Quick follow-up release to fix build failure on MacPorts and
+    Homebrew.
+
+-------------------------------------------------------------------
 Sat Mar 16 09:29:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.80.0:

@@ -19,7 +19,7 @@
 %bcond_with profiling
 
 Name:           gjs
-Version:        1.80.0
+Version:        1.80.2
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        LGPL-2.0-or-later AND MIT
