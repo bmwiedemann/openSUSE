@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Mar 26 07:26:47 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.38:
+  * General
+    - Bump express from 4.17.3 to 4.19.2 in
+      /install/docker-extension/ui @dependabot (#10618)
+    - feat: Relationship between Workspace and other
+      aws-prometheusservice-controller components @RipulHandoo
+      (#10493)
+    - Downgrade to MeshKit v0.7.19 @leecalcote (#10614)
+    - Update pattern API to support visibility change
+      @Yashsharma1911 (#10612)
+    - fix edge annotation relationship @MUzairS15 (#10609)
+    - Create hierarchical_parent.json @MUzairS15 (#10607)
+    - Create edge_annotation.json @MUzairS15 (#10608)
+  * Meshery CLI
+    - consolidate mesheryctl app into pattern @RipulHandoo (#10590)
+  * Meshery UI
+    - Bump express from 4.18.2 to 4.19.2 in /ui @dependabot
+      (#10617)
+    - Bump react-dom from 17.0.2 to 18.2.0 in /ui @dependabot
+      (#10466)
+  * Maintenance
+    - Bump express from 4.18.2 to 4.19.2 in /ui @dependabot
+      (#10617)
+    - Bump github.com/gorilla/websocket from 1.5.0 to 1.5.1
+      @dependabot (#10471)
+    - Bump react-dom from 17.0.2 to 18.2.0 in /ui @dependabot
+      (#10466)
+    - Upgrade GitHub Action dorny/paths-filter@v3 @leecalcote
+      (#10613)
+    - Upgrade to MeshKit v0.7.20 @leecalcote (#10606)
+  * Documentation
+    - consolidate mesheryctl app into pattern @RipulHandoo (#10590)
+    - Upgrade GitHub Action dorny/paths-filter@v3 @leecalcote
+      (#10613)
+    - Consolidate Tasks with Guides @leecalcote (#10610)
+
+-------------------------------------------------------------------
 Sun Mar 24 11:04:29 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.37:
@@ -16,10 +55,10 @@ Sun Mar 24 10:29:14 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
       (#10604)
     - [Add]: Relationship between KubeArmorPolicy and Kubernetes
       Components @pandeyshubham03 (#10534)
-  * - Meshery UI
+  * Meshery UI
     - Upgrade to Sistent v0.14.18 @leecalcote (#10605)
     - fix cancel search button @Aseem22 (#10528)
-  * - Documentation
+  * Documentation
     - [Docs] Commands visibility fix @ritiksaxena124 (#10601)
     - Update patterns.md @leecalcote (#10587)
     - [Docs]: Add a new contrib docs page for Model Relationships
