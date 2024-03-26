@@ -432,4 +432,12 @@
     <comment></comment>
     <requestid>1157981</requestid>
   </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>a01176a1a4db97d5200907a3e0859742</srcmd5>
+    <version>6.6.2</version>
+    <time>1711477514</time>
+    <user>anag+factory</user>
+    <comment>- Replace the postgresql-server build dependency with the client library (forwarded request 1160406 from krop)</comment>
+    <requestid>1160411</requestid>
+  </revision>
 </revisionlist>

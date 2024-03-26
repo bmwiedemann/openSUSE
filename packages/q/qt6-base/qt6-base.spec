@@ -65,7 +65,6 @@ BuildRequires:  libproxy-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
-BuildRequires:  postgresql-server-devel
 BuildRequires:  qt6-macros
 BuildRequires:  xmlstarlet
 BuildRequires:  cmake(double-conversion)
@@ -94,6 +93,7 @@ BuildRequires:  pkgconfig(mtdev)
 BuildRequires:  pkgconfig(odbc)
 BuildRequires:  pkgconfig(opengl)
 BuildRequires:  pkgconfig(openssl) >= 1.1.1
+BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(tslib)
