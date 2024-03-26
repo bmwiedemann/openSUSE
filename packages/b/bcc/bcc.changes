@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 26 12:39:22 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update bcc-devel requirement to depend on specific version of llvm-devel
+
+-------------------------------------------------------------------
 Tue Mar 12 03:36:09 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update LLVM version macro to support SLE (bsc#1220746)

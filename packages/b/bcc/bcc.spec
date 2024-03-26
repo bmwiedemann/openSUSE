@@ -101,7 +101,8 @@ Shared Library from the BPF Compiler Collection.
 Summary:        Header files for the BPF Compiler Collection
 Group:          Development/Languages/C and C++
 Requires:       libbcc0 = %{version}
-Requires:       llvm%{llvm_major_version}-devel
+# See https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/message/LNX2YOF3PQCFUJHCXZ5422EWK7JAGYDY/
+Requires:       llvm%{_llvm_sonum}-devel
 
 %description devel
 Headers and pkg-config build descriptions for developing BCC programs.
