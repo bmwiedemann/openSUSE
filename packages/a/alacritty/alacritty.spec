@@ -22,8 +22,8 @@ Release:        0
 Summary:        A GPU-accelerated terminal emulator
 License:        Apache-2.0
 URL:            https://github.com/alacritty/alacritty
-Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 Source3:        README.suse-maint
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake

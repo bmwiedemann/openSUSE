@@ -1,7 +1,7 @@
 To update this package to a new upstream release, run:
 
 $ current_version=$(ls alacritty-*.tar.xz)
-$ osc service disabledrun
+$ osc service manualrun
 
 This should be enough do make a tarball out of the GitHub source tree AND
 vendor all the needed Rust crates. If the cargo-audit source service detect

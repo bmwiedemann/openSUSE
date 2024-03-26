@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 23 01:18:19 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Use `filter` option in cargo vendoring.
+- Use zstd compression for source tar and vendored tar. 
+- `filter` + zstd results in better compression and storage savings.
+
+-------------------------------------------------------------------
 Thu Jan 11 10:40:34 UTC 2024 - dimstar@opensuse.org
 
 - Update to version 0.13.1:
