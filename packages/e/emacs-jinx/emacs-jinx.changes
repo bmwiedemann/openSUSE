@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 25 18:16:35 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 1.4:
+  * Update README
+  * Fix: Ensure that `eval' local variable enabling `jinx-mode' works
+  * yaml-mode/yaml-ts-mode: Alias to conf-mode
+  * Remove TeX-mode alias
+  * jinx-exclude/include-faces, jinx-exclude-regexps: Support mode aliases
+  * jinx-correct-all: Restrict corrections to marked region
+  * jinx-correct: Ensure that word is saved without text properties (Fix #140)
+
+-------------------------------------------------------------------
 Mon Feb 26 21:13:55 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Depend on emacs-devel to make sure Emacs packaging macros are installed when not building with emacs-eln

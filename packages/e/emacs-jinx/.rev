@@ -25,4 +25,19 @@
   * timer-activate-when-idle: Pass DONT-WAIT=t</comment>
     <requestid>1151960</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>efe3993f65df57b5bbd8b67f4e483ae7</srcmd5>
+    <version>1.4</version>
+    <time>1711477575</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4:
+  * Update README
+  * Fix: Ensure that `eval' local variable enabling `jinx-mode' works
+  * yaml-mode/yaml-ts-mode: Alias to conf-mode
+  * Remove TeX-mode alias
+  * jinx-exclude/include-faces, jinx-exclude-regexps: Support mode aliases
+  * jinx-correct-all: Restrict corrections to marked region
+  * jinx-correct: Ensure that word is saved without text properties (Fix #140)</comment>
+    <requestid>1161543</requestid>
+  </revision>
 </revisionlist>
