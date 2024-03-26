@@ -1522,4 +1522,12 @@
     <comment></comment>
     <requestid>1133750</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1f53aabcb5e604c9730f3c8b4c4ac426</srcmd5>
+    <version>1.1.0+7</version>
+    <time>1711477566</time>
+    <user>anag+factory</user>
+    <comment>- Fix source version error and _service file. (forwarded request 1161565 from malcolmlewis)</comment>
+    <requestid>1161655</requestid>
+  </revision>
 </revisionlist>

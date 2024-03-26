@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Mon Mar 25 22:08:42 UTC 2024 - malcolmlewis@opensuse.org
+
+- Fix source version error and _service file.
+
+-------------------------------------------------------------------
+Mon Mar 25 00:38:41 UTC 2024 - malcolmlewis@opensuse.org
+
+- Update to version 1.1.0+7:
+  + Fixed regression import nodes from cherrytree not importing
+    anything, (gh#giuspen/cherrytree#2463).
+  + Fixed unwanted nodes expansion with auto reload from external
+    doc edit and enabled option to show bookmarked nodes at start,
+    (gh#giuspen/cherrytree#2464).
+  + Changed default value of option to automatically focus the text
+    at new tree node clicked, from false to true
+  + Fixed regression vertical scroll and cursor position of
+    previous nodes not remembered, (gh#giuspen/cherrytree#2460).
+  + Fixed regression searching in multiple nodes, only nodes names
+    and tags, not working, (gh#giuspen/cherrytree#2461 and
+    gh#giuspen/cherrytree#2408).
+  + Fixed double click on word in table cell, heavy implementation,
+    not selecting word.
+  + Find dialog to show selected text also in codebox and table.
+  + Adding support for replace in tables/codeboxes.
+  + Find matches results dialog fixed line numbers.
+  + Fix iterative find in multiple nodes not focusing correctly
+    results in tables and codeboxes.
+  + Fix regression in all matches dialog after latest changes.
+  + Improved search in tables and codeboxes to list and select all
+    the instances, (gh#giuspen/cherrytree#2155 and
+    gh#giuspen/cherrytree#2444).
+  + Icon save on the menu is now greyed out when save is not
+    needed.
+  + Fixed tooltip on search results dialog, expected to display the
+    node hierarchical name.
+  + Fixed regression find next not scrolling correctly after minor
+    rework.
+  + Fixed regression in search/replace, first replace, after allow
+    text selection with search/replace dialog open,
+    (gh#giuspen/cherrytree#2426).
+  + Fixed issue with find and presence of anchored widgets,
+    (gh#giuspen/cherrytree#2444).
+  + Removed workaround to old GTK issue no longer relevant (called
+    newline trick).
+  + Added stock icon of postman app.
+  + Added in preferences dialog control of text margins left/right.
+  + Added in preferences dialog control of max search results per
+    page.
+  + Added in preferences dialog enable/disable tooltips on tree,
+    menus, toolbar.
+  + Added in preferences dialog control of scrollbar slider minimum
+    size.
+  + Added in preferences dialog control of whether the scrollbar
+    overlays the text editor.
+  + Added also in preferences dialog control of the toolbar icons
+    size.
+  + Added also in preferences dialog option to enable/disable the
+    menubar in titlebar, (gh#giuspen/cherrytree#2443).
+  + Moved some preferences dialog settings from tab 'miscellanous'
+    to tab 'fonts' that has been renamed 'interface'.
+  + Codeboxes can be configured with or without toolbar in
+    preferences dialog, tab rich text.
+  + Improved vertical toolbar in codeboxes supporting code exec,
+    code copy, edit properties.
+  + Implemented vertical toolbar in codeboxes supporting code exec,
+    code copy, edit properties
+  + Fixed error print when drag from empty tree.
+  + Fixed error print when unmiximising window with empty tree.
+  + Fixed error prints when reloading last used document but file
+    no longer available.
+  + Shared nodes, updated unit tests.
+  + Fixed compilation error on linux.
+  + Shared nodes, tree info summary dialog to count the shared data
+    only once.
+  + Shared nodes, print group information in node properties dialog.
+  + Implemented support for so called shared nodes that all point
+    to the same data - create with right click on node,
+    (gh#giuspen/cherrytree#1222).
+  + Fixed warning while running unit tests for empty
+    curr_tree_iter().
+  + Changed 6 default keyboard shortcuts using {,},[,] as
+    problematic on German/Norwegian keyboards,
+    (gh#giuspen/cherrytree#2423).
+  + Fixed zoom not working with Ctrl+ on english keyboard (key + is
+    on shift)
+  + Add gruvbox style themes, (gh#giuspen/cherrytree#2435).
+  + Allow text selection with search/replace dialog open,
+    (gh#giuspen/cherrytree#2426).
+  + Separated search/replace dialog code from action after the ok
+    is clicked so that will be possible to make the dialog non
+    modal, (gh#giuspen/cherrytree#2426).
+  + Added options in config.cfg 'txt_margin_left',
+    'txt_margin_right' to control the text margins,
+    (gh#giuspen/cherrytree#2425).
+  + Added option in config.cfg 'scroll_slider_min' to allow control
+    of the minimum size of the scrollbar slider, default 16px,
+    (gh#giuspen/cherrytree#2427).
+  + Added option in config.cfg 'overlay_scroll' to allow to
+    override the system setting for scrollbar overlay/auto hide -
+    2=system, 1=on, 0=off, (gh#giuspen/cherrytree#2427).
+  + Increased scrollbars size on windows,
+    (gh#giuspen/cherrytree#2427).
+  + Saving RGB for custom user colours with format rgb24 #abcdef.
+  + Added up to 18 custom user colours in the colour picker
+    palette, (gh#giuspen/cherrytree#2422).
+  + Added ABAP syntax highlighting, (gh#giuspen/cherrytree#2430).
+  + Debugging issue with colour picker,
+    (gh#giuspen/cherrytree#2422).
+  + Reset autosave when manually saving; autosave used counter that
+    suspended time doesn't count, (gh#giuspen/cherrytree#2120).
+  + Fixed crash when rapidly moving node in tree via keyboard
+    shortcuts, (gh#giuspen/cherrytree#2409).
+  + Fixed crash when rapidly moving node in tree via keyboard
+    shortcuts, (gh#giuspen/cherrytree#2409).
+  + Fixed regression in speed when searching in nodes names and
+    tags, no nodes contents, after v1.0.2,
+    (gh#giuspen/cherrytree#2408).
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Dec 17 04:20:34 UTC 2023 - gumsley_6@hotmail.com
 
 - Cumulative update to version 1.0.4:
