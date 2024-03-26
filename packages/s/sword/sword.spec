@@ -70,9 +70,7 @@ Include files and static libraries for developing sword applications. This packa
 is required to compile Sword frontends, too.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 export CXXFLAGS="%{optflags} -DU_USING_ICU_NAMESPACE=1"

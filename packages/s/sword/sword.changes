@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:31:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Thu Jul 19 09:39:07 UTC 2018 - kkirill@opensuse.org
 
 - add Apache-2.0 to the license tag
