@@ -94,6 +94,10 @@ the typeless nature of the SQLite database.
 # MANUAL BEGIN
 %if 0%{?sle_version} >= 140000 && 0%{?sle_version} <= 150400
 patch -p1 --reverse <%{PATCH0}
+%else
+# system sqlite librairies will be used
+rm sqlite*
+perl -i -ne 'print $_ unless m{^sqlite}' MANIFEST
 %endif
 # MANUAL END
 
@@ -110,11 +114,9 @@ make test
 # MANUAL BEGIN
 %if 0%{?sle_version} >= 140000 && 0%{?sle_version} <= 150400
 %else
+mkdir -p %{buildroot}%{perl_vendorarch}/auto/share/dist/%{cpan_name}
 ln -fs %{_includedir}/sqlite3ext.h %{buildroot}%{perl_vendorarch}/auto/share/dist/%{cpan_name}/
 ln -fs %{_includedir}/sqlite3.h %{buildroot}%{perl_vendorarch}/auto/share/dist/%{cpan_name}/
-rm %{buildroot}%{perl_vendorarch}/auto/share/dist/%{cpan_name}/sqlite3.c
-echo >%{buildroot}%{perl_vendorarch}/auto/share/dist/%{cpan_name}/sqlite3.c
-chmod 444 %{buildroot}%{perl_vendorarch}/auto/share/dist/%{cpan_name}/sqlite3.c
 %endif
 # MANUAL END
 %perl_gen_filelist
