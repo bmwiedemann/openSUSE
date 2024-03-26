@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 21 16:59:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.31:
+  * Fix iter_notes to handle > 4byte segment alignment
+  * Fix buffer overrun in NT_GNU_PROPERTY_TYPE_0 parser
+  * add enum for v850 relocations
+  * support for the gnu note with the aarch64 features
+  * full changes see https://github.com/eliben/pyelftools/compare/v0.30...v0.31
+
+-------------------------------------------------------------------
 Tue Jan 16 17:04:54 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add %{?sle15_python_module_pythons}

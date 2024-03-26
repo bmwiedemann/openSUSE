@@ -109,4 +109,17 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1139248</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>38aff969a7ee6ebbf4e8c7f49981e2fd</srcmd5>
+    <version>0.31</version>
+    <time>1711477459</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.31:
+  * Fix iter_notes to handle &gt; 4byte segment alignment
+  * Fix buffer overrun in NT_GNU_PROPERTY_TYPE_0 parser
+  * add enum for v850 relocations
+  * support for the gnu note with the aarch64 features
+  * full changes see https://github.com/eliben/pyelftools/compare/v0.30...v0.31</comment>
+    <requestid>1160430</requestid>
+  </revision>
 </revisionlist>

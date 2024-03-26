@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyelftools
-Version:        0.30
+Version:        0.31
 Release:        0
 Summary:        Library for analyzing ELF files and DWARF debugging information
 License:        SUSE-Public-Domain
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
