@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 26 01:59:01 UTC 2024 - william.brown@suse.com
+
+- Update to version 1.1.0~rc16~git6.e51d0de:
+  * [SECURITY: LOW] Administrator triggered thread crash in oauth2 claim maps #2686 (#2686)
+  * return consent map to service account (#2604)
+
+-------------------------------------------------------------------
 Wed Feb 28 01:10:20 UTC 2024 - william.brown@suse.com
 
 - Update to version 1.1.0~rc16~git4.d407844:
