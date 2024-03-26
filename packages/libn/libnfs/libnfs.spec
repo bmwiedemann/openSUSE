@@ -19,7 +19,7 @@
 
 %define sover   14
 Name:           libnfs
-Version:        5.0.2
+Version:        5.0.3
 Release:        0
 Summary:        Client library for accessing NFS shares over a network
 License:        BSD-2-Clause AND LGPL-2.1-or-later AND GPL-3.0-or-later
