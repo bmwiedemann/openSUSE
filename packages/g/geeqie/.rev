@@ -290,4 +290,17 @@
     <comment></comment>
     <requestid>1153930</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a3ce35dc333e8c0ea5ab41c383fabe7c</srcmd5>
+    <version>2.4</version>
+    <time>1711477685</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.4:
+  + Bug fixes (mainly packaging) and code improvements.
+- Changes from version 2.3:
+  + Bug fixes and code improvements.
+- Drop geeqie-2.2-fix-filelist-crash.patch and
+  geeqie-2.2-fix-rename-crash.patch: fixed upstream.</comment>
+    <requestid>1161714</requestid>
+  </revision>
 </revisionlist>

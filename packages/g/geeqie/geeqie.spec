@@ -17,7 +17,7 @@
 
 
 Name:           geeqie
-Version:        2.2
+Version:        2.4
 Release:        0
 Summary:        Lightweight Gtk+ based image viewer
 License:        GPL-2.0-or-later
@@ -26,10 +26,6 @@ URL:            http://www.geeqie.org
 Source0:        https://github.com/BestImageViewer/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/BestImageViewer/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        geeqie.keyring
-# PATCH-FIX-UPSTREAM - gh/BestImageViewer/geeqie#1248
-Patch0:         geeqie-2.2-fix-filelist-crash.patch
-# PATCH-FIX-UPSTREAM - gh/BestImageViewer/geeqie#1242
-Patch1:         https://github.com/BestImageViewer/geeqie/commit/fef4012de70dc468b00c7d07549f7b447cf47f13.patch#/geeqie-2.2-fix-rename-crash.patch
 BuildRequires:  c++_compiler
 BuildRequires:  docbook_4
 BuildRequires:  doxygen

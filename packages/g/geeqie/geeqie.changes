@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 25 07:00:58 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 2.4:
+  + Bug fixes (mainly packaging) and code improvements.
+- Changes from version 2.3:
+  + Bug fixes and code improvements.
+- Drop geeqie-2.2-fix-filelist-crash.patch and
+  geeqie-2.2-fix-rename-crash.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Fri Mar  1 10:53:10 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - boo#1220031:
