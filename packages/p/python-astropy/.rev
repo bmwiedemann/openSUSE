@@ -2059,4 +2059,12 @@
     <comment>- Don't test with python39-ipython: not available anymore</comment>
     <requestid>1155863</requestid>
   </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>1a1603a859a2e967fd19b6b19d545d6e</srcmd5>
+    <version>6.0.0</version>
+    <time>1711477686</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1161727</requestid>
+  </revision>
 </revisionlist>

@@ -47,6 +47,7 @@
 %define unbundle_libs %{?unbundle_expat} \
                       %{?unbundle_wcs}
 
+%{?sle15_python_module_pythons}
 Name:           python-astropy%{psuffix}
 Version:        6.0.0
 Release:        0
