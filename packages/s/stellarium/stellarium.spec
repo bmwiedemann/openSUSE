@@ -23,14 +23,14 @@
 %endif
 
 Name:           stellarium
-Version:        23.4
+Version:        24.1
 Release:        0
 Summary:        Astronomical Sky Simulator
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Astronomy
 URL:            https://stellarium.org/
-Source0:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz
-Source1:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz.asc
+Source0:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.xz
+Source1:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 # PATCH-FIX-UPSTREAM https://github.com/Stellarium/stellarium/pull/3269
 Patch0:         indi2_support.patch
