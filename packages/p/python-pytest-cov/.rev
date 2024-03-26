@@ -298,4 +298,38 @@
   * Fixed a skip in the test suite for some old xdist.</comment>
     <requestid>1090227</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9b7c766163cc298f8b762ddab0c5dd51</srcmd5>
+    <version>5.0.0</version>
+    <time>1711477505</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.0:
+  * Removed support for xdist rsync (now deprecated).
+  * Switched docs theme to Furo.
+  * Various legacy Python cleanup and CI improvements.
+    Contributed by Christian Clauss and Hugo van Kemenade in
+    #630, #631, #632 and #633.
+  * Added a pyproject.toml example in the docs. Contributed by
+    Dawn James in #626.
+  * Modernized project's pre-commit hooks to use ruff. Initial
+    POC contributed by Christian Clauss in #584.
+
+  * Support coverage &gt;= 6.2
+- Inject multibuild to avoid build cycles.
+- Skip 6 test cases that are causing problems with Python 3.8
+    (when combining coverage data from parallel mode).
+  * Added the --cov-append command line options.
+    coverage-4.0 (automatically activated if there’s a
+  * Changed --cov-report=term to automatically upgrade to
+    --cov-report=term-missing if there’s
+  * Changed --cov so it can be used with no path argument
+    (in wich case the source settings from .coveragerc will
+  * Fixed .pth installation to work in all cases
+  * Data file suffixing changed to use coverage’s
+  * Avoid warning about missing coverage data
+  * Fixed a race condition when running with xdist
+    (all the workers tried to combine the files).
+    It’s possible that this issue is not present in</comment>
+    <requestid>1161491</requestid>
+  </revision>
 </revisionlist>

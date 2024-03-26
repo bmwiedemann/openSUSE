@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 25 15:17:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.0:
+  * Removed support for xdist rsync (now deprecated).
+  * Switched docs theme to Furo.
+  * Various legacy Python cleanup and CI improvements.
+    Contributed by Christian Clauss and Hugo van Kemenade in
+    #630, #631, #632 and #633.
+  * Added a pyproject.toml example in the docs. Contributed by
+    Dawn James in #626.
+  * Modernized project's pre-commit hooks to use ruff. Initial
+    POC contributed by Christian Clauss in #584.
+
+-------------------------------------------------------------------
 Thu Jun  1 08:51:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.0:
@@ -75,7 +89,7 @@ Sun Jul 17 20:14:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
 Mon Dec 20 01:21:53 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add support-coverage-62.patch:
-  * Support coverage >= 6.2 
+  * Support coverage >= 6.2
 
 -------------------------------------------------------------------
 Wed Nov 10 13:05:15 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -87,7 +101,7 @@ Wed Nov 10 13:05:15 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Tue Sep 14 08:45:47 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Inject multibuild to avoid build cycles. 
+- Inject multibuild to avoid build cycles.
 
 -------------------------------------------------------------------
 Thu Feb  4 09:58:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
@@ -145,7 +159,7 @@ Wed Jan 15 12:50:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Thu Dec  5 04:06:23 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Skip 6 test cases that are causing problems with Python 3.8 
+- Skip 6 test cases that are causing problems with Python 3.8
 
 -------------------------------------------------------------------
 Wed Nov  6 13:25:11 CET 2019 - Matej Cepl <mcepl@suse.com>
@@ -194,7 +208,7 @@ Fri Oct 26 13:25:08 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
  * Added a no_cover marker and fixture.
  * Fixed broken no_cover check when running doctests.
  * Fixed various issues with path normalization in reports
-    (when combining coverage data from parallel mode). 
+    (when combining coverage data from parallel mode).
  * Report generation failures don't raise exceptions anymore.
     A warning will be logged instead.
 
@@ -237,29 +251,29 @@ Thu Oct 22 13:53:36 UTC 2015 - toddrme2178@gmail.com
   * Fixed broken handling for --cov-report=annotate.
 - Update to version 2.1.0
   * Added support for coverage 4.0b2.
-  * Added the --cov-append command line options. 
+  * Added the --cov-append command line options.
     Contributed by Christian Ledermann in PR#80.
 - Update to version 2.0.0
   * Added --cov-fail-under, akin to the new fail_under option in
-    coverage-4.0 (automatically activated if there’s a 
+    coverage-4.0 (automatically activated if there’s a
     [report] fail_under = ... in .coveragerc).
-  * Changed --cov-report=term to automatically upgrade to 
-    --cov-report=term-missing if there’s 
+  * Changed --cov-report=term to automatically upgrade to
+    --cov-report=term-missing if there’s
     [run] show_missing = True in .coveragerc.
-  * Changed --cov so it can be used with no path argument 
-    (in wich case the source settings from .coveragerc will 
+  * Changed --cov so it can be used with no path argument
+    (in wich case the source settings from .coveragerc will
     be used instead).
-  * Fixed .pth installation to work in all cases 
+  * Fixed .pth installation to work in all cases
     (install, easy_install, wheels, develop etc).
   * Fixed .pth uninstallation to work for wheel installs.
   * Support for coverage 4.0.
-  * Data file suffixing changed to use coverage’s 
+  * Data file suffixing changed to use coverage’s
     data_suffix=True option (instead of the custom suffixing).
-  * Avoid warning about missing coverage data 
+  * Avoid warning about missing coverage data
     (just like coverage.control.process_startup).
-  * Fixed a race condition when running with xdist 
-    (all the workers tried to combine the files). 
-    It’s possible that this issue is not present in 
+  * Fixed a race condition when running with xdist
+    (all the workers tried to combine the files).
+    It’s possible that this issue is not present in
     pytest-cov 1.8.X.
 
 -------------------------------------------------------------------

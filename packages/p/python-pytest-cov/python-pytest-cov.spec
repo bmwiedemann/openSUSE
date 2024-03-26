@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-pytest-cov
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,16 +24,17 @@
 %bcond_with test
 %define psuffix %{nil}
 %endif
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pytest-cov%{psuffix}
-Version:        4.1.0
+Version:        5.0.0
 Release:        0
 Summary:        Pytest plugin for coverage reporting
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-cov
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-cov/pytest-cov-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 %if %{with test}
 BuildRequires:  %{python_module coverage >= 5.2.1}
 BuildRequires:  %{python_module fields}
@@ -61,11 +62,11 @@ through pytest-cov or through coverage's config file.
 %autosetup -p1 -n pytest-cov-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if ! %{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/
 %endif
 
@@ -90,7 +91,7 @@ donttest+=" or test_dist_boxed"
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %{python_sitelib}/pytest-cov.pth
 %{python_sitelib}/pytest_cov
-%{python_sitelib}/pytest_cov-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/pytest_cov-%{version}.dist-info
 %endif
 
 %changelog
