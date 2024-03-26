@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 21 12:28:56 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- GuidedProposal: internal settings to control the configuration
+  of boot-related partitions and the usage of adjust_by_ram.
+- Needed for gh#openSUSE/agama#1111
+- 5.0.10
+
+-------------------------------------------------------------------
 Tue Mar 12 13:57:30 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Fix unlimited-sized fake device graphs (bsc#1221222)
