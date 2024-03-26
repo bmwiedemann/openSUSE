@@ -336,4 +336,12 @@
     <comment>- Convert to source service for easier updating. (forwarded request 1139287 from dimstar)</comment>
     <requestid>1139292</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>3c2a85089bc70cb73d4fc1fbc8436dfa</srcmd5>
+    <version>45.0</version>
+    <time>1711477493</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1161475</requestid>
+  </revision>
 </revisionlist>
