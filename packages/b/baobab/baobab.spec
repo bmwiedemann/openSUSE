@@ -20,7 +20,7 @@
 %define glib2_version 2.44
 
 Name:           baobab
-Version:        45.0
+Version:        46.0
 Release:        0
 Summary:        Disk Usage Analyzer
 License:        GPL-2.0-or-later

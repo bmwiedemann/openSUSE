@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 22 08:09:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Improved App metainfo.
+  + Use enter instead of leave to update highlightitem.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Jan 17 11:23:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix versioned BuildRequires for libadwaita; according to
