@@ -607,4 +607,14 @@
   * conda: add 3rd-party completion loader (argcomplete) (c0f5ba2)</comment>
     <requestid>1149849</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>7c529c247543187659b02633ebd24acd</srcmd5>
+    <version>2.12.0</version>
+    <time>1711477474</time>
+    <user>anag+factory</user>
+    <comment>- Add patch boo1221414-scp.patch
+  * Do not replace the asignment of the array COMPREPLY with
+    the shell function _comp_compgen_split (boo#1221414)</comment>
+    <requestid>1160694</requestid>
+  </revision>
 </revisionlist>

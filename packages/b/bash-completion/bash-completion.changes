@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 22 13:31:54 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch boo1221414-scp.patch
+  * Do not replace the asignment of the array COMPREPLY with
+    the shell function _comp_compgen_split (boo#1221414)  
+
+-------------------------------------------------------------------
 Fri Feb 23 09:56:03 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Remove also patch

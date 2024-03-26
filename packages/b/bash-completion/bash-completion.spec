@@ -68,6 +68,8 @@ Patch11:        bash-completion-2.7-unRAR-remove.patch
 Patch13:        boo1190929-9af4afd0.patch
 # PATCH-FIX-SUSE boo#1199724
 Patch14:        bsc1199724-modules.patch
+# PATCH-FIX-SUSE boo#1221414 -- shells/bash-completion: Bug
+Patch15:        boo1221414-scp.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildArch:      noarch
