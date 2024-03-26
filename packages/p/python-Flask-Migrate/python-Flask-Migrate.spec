@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-Migrate
-Version:        4.0.5
+Version:        4.0.7
 Release:        0
 Summary:        SQLAlchemy database migrations for Flask applications using Alembic
 License:        MIT

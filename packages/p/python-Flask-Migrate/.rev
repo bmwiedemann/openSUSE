@@ -136,4 +136,16 @@
 - Switch to pyroject macros.</comment>
     <requestid>1146066</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bd6da1a2394ac0c08afea718cc342b50</srcmd5>
+    <version>4.0.7</version>
+    <time>1711477572</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.7:
+  * Regression from #438: check `g.x_arg` exists before accessing
+    it #541 (commit) (thanks **Skye Im**!)
+  * Accept `-x` options for all db commands #438 (commit)
+  * Add `--purge` flag to the `stamp` command #540 (commit)</comment>
+    <requestid>1161524</requestid>
+  </revision>
 </revisionlist>

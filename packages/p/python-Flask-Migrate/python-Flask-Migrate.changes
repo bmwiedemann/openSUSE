@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 25 17:33:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.7:
+  * Regression from #438: check `g.x_arg` exists before accessing
+    it #541 (commit) (thanks **Skye Im**!)
+  * Accept `-x` options for all db commands #438 (commit)
+  * Add `--purge` flag to the `stamp` command #540 (commit)
+
+-------------------------------------------------------------------
 Mon Feb 12 04:45:37 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to GitHub tarball, as it includes all test files.
