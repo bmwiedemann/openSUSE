@@ -30,6 +30,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
+# PATCH-FIX-UPSTREAM 0001-filter-utils-fix-handling-of-targetless-smart-filters.patch alarrosa@suse.com -- Fix any mic only working when bluetooth is set to HSF/HFP profile
+Patch0:         0001-filter-utils-fix-handling-of-targetless-smart-filters.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz
@@ -150,7 +152,7 @@ python3 %{SOURCE1}
 popd
 
 %build
-%if %{pkg_vcmp gcc < 8}
+%if 0%{?suse_version} <= 1500
 export CC=gcc-9
 export CXX=g++-9
 %endif

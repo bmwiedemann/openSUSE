@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 22 08:30:48 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix all input sources only working
+  when bluetooth profile is set to HSF/HFP, which was a regression
+  in 0.5.0 (glfo#pipewire/wireplumber#598):
+  * 0001-filter-utils-fix-handling-of-targetless-smart-filters.patch 
+
+-------------------------------------------------------------------
+Tue Mar 19 07:43:16 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Avoid %if %{pkg_vcmp gcc < 8}, instead replicate the condition
+  from the BuildRequires section.
+
+-------------------------------------------------------------------
 Mon Mar 18 16:34:10 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.5.0:
