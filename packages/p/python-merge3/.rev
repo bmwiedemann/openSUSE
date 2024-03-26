@@ -15,4 +15,18 @@
     <comment>- require setuptools</comment>
     <requestid>1136434</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7dc972ed0f71602ae39f364b009aafeb</srcmd5>
+    <version>0.0.14</version>
+    <time>1711477580</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.0.14:
+  * migrate to pyproject.toml
+  * use disperse action
+  * ruff, pyupgrade
+  * add merge3 helper
+  * sort imports with isort
+  * add python 3.11 support</comment>
+    <requestid>1161548</requestid>
+  </revision>
 </revisionlist>

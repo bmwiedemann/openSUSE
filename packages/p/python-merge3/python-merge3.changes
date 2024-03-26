@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 25 20:07:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.14:
+  * migrate to pyproject.toml
+  * use disperse action
+  * ruff, pyupgrade
+  * add merge3 helper
+  * sort imports with isort
+  * add python 3.11 support
+
+-------------------------------------------------------------------
 Wed Jan  3 09:50:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools
