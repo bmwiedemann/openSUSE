@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 23 09:44:51 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 12.4.0:
+  https://github.com/vmware/open-vm-tools/blob/stable-12.4.0/ReleaseNotes.md
+  https://github.com/vmware/open-vm-tools/blob/stable-12.4.0/open-vm-tools/ChangeLog
+  There are no new features in the open-vm-tools 12.4.0 release.
+  This is primarily a maintenance release that addresses a few
+  critical problems, including:
+  * A Github pull request has been handled. Please see the Resolved
+    Issues section of the Release Notes.
+  * A number of issues flagged by Coverity have been addressed.
+  * For issues resolved in this release, see the Resolved Issues
+    section of the Release Notes.
+
+-------------------------------------------------------------------
 Mon Feb 26 12:48:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -126,7 +141,7 @@ Mon Aug 28 15:10:27 UTC 2023 - Kirk Allan <kallan@suse.com>
 -------------------------------------------------------------------
 Tue Jun 27 19:54:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- limit to protobuf < 22 for now until build failures have been fixed 
+- limit to protobuf < 22 for now until build failures have been fixed
 
 -------------------------------------------------------------------
 Mon Jun 12 15:01:15 UTC 2023 - Kirk Allan <kallan@suse.com>
@@ -207,20 +222,20 @@ Thu Dec  8 20:24:29 UTC 2022 - Caleb Crane <caleb.crane@suse.com>
 - Update to 12.1.5 (build 20735119) (boo#1205962)
   - A number of Coverity reported issues have been addressed.
 
-  - The deployPkg plugin may prematurely reboot the guest VM before cloud-init 
-    has completed user data setup. If both the Perl based Linux customization 
-    script and cloud-init run when the guest VM boots, the deployPkg plugin 
-    may reboot the guest before cloud-init has finished. The deployPkg 
-    plugin has been updated to wait for a running cloud-init process to 
-    finish before the guest VM reboot is initiated. This issue is fixed in 
+  - The deployPkg plugin may prematurely reboot the guest VM before cloud-init
+    has completed user data setup. If both the Perl based Linux customization
+    script and cloud-init run when the guest VM boots, the deployPkg plugin
+    may reboot the guest before cloud-init has finished. The deployPkg
+    plugin has been updated to wait for a running cloud-init process to
+    finish before the guest VM reboot is initiated. This issue is fixed in
     this release.
 
-  - A SIGSEGV may be encountered when a non-quiesing snapshot times out. 
+  - A SIGSEGV may be encountered when a non-quiesing snapshot times out.
     This issue is fixed in this release.
 
   - Unwanted vmtoolsd service error message if not on a VMware hypervisor.
     When open-vm-tools comes preinstalled in a base Linux release, the vmtoolsd
-    services are started automatically at system start and desktop login. 
+    services are started automatically at system start and desktop login.
     If running on physical hardware or in a non-VMware hypervisor, the services
     will emit an error message to the Systemd's logging service before stopping.
     This issue is fixed in this release.
@@ -256,14 +271,14 @@ Mon Mar 28 15:09:44 UTC 2022 - Kirk Allan <kallan@suse.com>
         jsc#SLE-24095 Update open-vm-tools 12.0.0 SLES15SP3
         jsc#SLE-24096 Update open-vm-tools 12.0.0 SLES12SP5
     - New ComponentMgr plugin to manage (add, remove, monitor) components on
-      the guest VM. 
+      the guest VM.
     - Patch to fix potential Fail to Build from Source [FTBFS] (boo#1196804).
     - Build vmhgfs with either libfuse2 or libfuse3.
   + A number of Coverity and Codacy reported issues have been addressed.
   + The following issues and pull requests reported on
     github.com/vmware/open-vm-tools have been addressed: Issue # 128,
     Issue # 314, Pull # 513, Pull # 544, Pull # 573
-    
+
 - Added patches
   + gcc_size_t.patch (boo#1196804)
 
@@ -432,8 +447,8 @@ Wed Jun 17 14:12:18 UTC 2020 - Kirk Allan <kallan@suse.com>
 
 - jsc#ECO-2164 for update 11.1.0 (build 16036546) (boo#1171764)
 - Fixed bug (bsc#1172693) by removing the 'pam_securetty.so' line from
-  pam-vmtoolsd.patch as instructed by vmware (boo#1171003).  
-  This should fix both (boo#1171003) and (bsc#1172693).  
+  pam-vmtoolsd.patch as instructed by vmware (boo#1171003).
+  This should fix both (boo#1171003) and (bsc#1172693).
 
 -------------------------------------------------------------------
 Wed Jun  3 20:56:17 UTC 2020 - Kirk Allan <kallan@suse.com>
@@ -539,7 +554,7 @@ Tue Oct  1 14:42:18 UTC 2019 - Kirk Allan <kallan@suse.com>
 Tue Aug  6 14:04:02 UTC 2019 - Kirk Allan <kallan@suse.com>
 
 - Revert change from (bsc#1133623) update vmtoolsd.service tools to run after
-  the network service is ready.  This updated caused cyclic dependencies as 
+  the network service is ready.  This updated caused cyclic dependencies as
   reported by bugs (bsc#1143452) and (bsc#1141969)
 
 -------------------------------------------------------------------
@@ -596,7 +611,7 @@ Fri Feb  8 15:30:25 UTC 2019 - kallan@suse.com
 -------------------------------------------------------------------
 Tue Jan 29 21:43:09 UTC 2019 - kallan@suse.com
 
-- Update vmtoolsd.service to support cloud-init customization by default  
+- Update vmtoolsd.service to support cloud-init customization by default
   by adding "DefaultDependencies=no" and "Before=cloud-init-local.service"
   to the [Unit] section of vmtoolsd.service (bsc#1121964) .
 - Copyright year updated in spec file.
@@ -743,7 +758,7 @@ Fri Oct 13 17:05:56 UTC 2017 - mlatimer@suse.com
 - Build deploypackage plugin for SLES11 (bsc#1062837)
   (The VMware provided open-vm-tools-deploypkg is now obsolete.)
 - Enable building with ssl capabilities for SLES11.
-  +fix_discards_qualifiers_warning.patch 
+  +fix_discards_qualifiers_warning.patch
 
 -------------------------------------------------------------------
 Fri Oct  6 17:08:18 UTC 2017 - mlatimer@suse.com
@@ -758,7 +773,7 @@ Mon Aug 21 16:01:33 UTC 2017 - mlatimer@suse.com
 
 - open-vm-tools fails to correctly set screen resolution under
   Wayland environments (boo#1054800)
-  + resolutionKMS-wayland.patch 
+  + resolutionKMS-wayland.patch
 
 -------------------------------------------------------------------
 Tue Aug 15 19:02:33 UTC 2017 - mlatimer@suse.com
@@ -853,7 +868,7 @@ Sat Nov 12 02:42:20 UTC 2016 - ken@suse.com
 Wed Nov  2 12:52:03 CET 2016 - jcejka@suse.de
 
 - Add udev rule to increase VMware virtual disk timeout values
-  (bsc#994598) 
+  (bsc#994598)
   [99-vmware-scsi-udev.rules]
 
 -------------------------------------------------------------------
@@ -927,12 +942,12 @@ Tue Dec  1 01:10:01 UTC 2015 - mlatimer@suse.com
   + [libresolutionSet.so] Add an error handler to X11 resolutionSet
   + [vmci.ko] Kill tasklet when unloading vmci module
   + [libvmbackup.so] Quiesced snapshots Skip freezing autofs mounts.
-  + [vmhgfs.ko] make vmhgfs compatible with Linux kernel 4.2 
+  + [vmhgfs.ko] make vmhgfs compatible with Linux kernel 4.2
 
 -------------------------------------------------------------------
 Fri Oct 30 15:55:45 UTC 2015 - mlatimer@suse.com
 
-- Enable vgauth for openSUSE Leap 42.1 (bsc#952645) 
+- Enable vgauth for openSUSE Leap 42.1 (bsc#952645)
 
 -------------------------------------------------------------------
 Thu Oct 22 16:34:51 UTC 2015 - mlatimer@suse.com
@@ -951,7 +966,7 @@ Wed Sep  9 16:43:54 UTC 2015 - mlatimer@suse.com
 Thu Sep  3 21:51:58 UTC 2015 - mlatimer@suse.com
 
 - Update to open-vm-tools-10.0.0-3000743  (boo#944615)
-  + Common versioning 
+  + Common versioning
   + Quiesced snapshots enhancements for Linux guests running IO workload
   + Shared Folders (Linux kernel 4.0.0 and higher only)
   + ESXi Serviceability
@@ -1529,7 +1544,7 @@ Tue Mar 23 09:27:23 UTC 2010 - dimstar@opensuse.org
 Thu Feb 25 20:42:39 UTC 2010 - dominique.leuenberger@tmf-group.com
 
 - Update to 2010.02.23:
-  + Mostly bug fixes, cleanups and code refactoring. 
+  + Mostly bug fixes, cleanups and code refactoring.
 
 -------------------------------------------------------------------
 Wed Feb 10 09:05:51 UTC 2010 - dimstar@opensuse.org
@@ -1643,7 +1658,7 @@ Fri Jun 19 08:55:36 CEST 2009 - dominique-obs@leuenberger.net
     backend support for HGFS over vsock is not yet released in
     VMware products).
 - Removed patch open-vm-tools-wiperPosix.patch. An alternative
-  solution was integrated upstream 
+  solution was integrated upstream
 - Dropped patch open-vm-tools-rpath.patch: merged upstream
 
 -------------------------------------------------------------------
@@ -1651,18 +1666,18 @@ Sat May 23 09:38:07 CEST 2009 - dominique-obs@leuenberger.net
 
 - Updated to 2009.05.22
   * Mostly a cleanup and bug fix release.
-  * Fix a build issue where a symlink attack could cause the 
+  * Fix a build issue where a symlink attack could cause the
     open-vm-tools build to overwrite data (by placing a symlink in
     /tmp).
   * Second (and last?) batch of changes to clean up duplicate files
     in the source tree, including Solaris and FreeBSD kernel
      modules andother module-specific shared files.
-  * Plugins now are properly built using plugins_LTLIBRARIES so 
+  * Plugins now are properly built using plugins_LTLIBRARIES so
     that "-rpath" doesn't need to be used (this would cause an
     RPATH entry to be added to the final binary, which some tools
     didn't like).
   * open-vm-tools now properly detects PAM and enables PAM support
-    in the code. 
+    in the code.
 - Removed -rpath.patch. Variation of it integrated upstream
 - Added patch to consume (-wiperPosix.patch) the result of fgets
 - BuildRequires pam-devel
@@ -1682,8 +1697,8 @@ Sat Apr 25 23:24:33 CEST 2009 - dominique.leuenberger@tmf-group.com
   * Linux HGFS now has a stream-based (TCP, vsock) transport, still under
     development.
   * First batch of changes to cleanup duplicated files in the source tree.
-    Most duplicated files in the Linux kernel modules have been cleaned up. 
-- Extensive rewrite of the spec file: 
+    Most duplicated files in the Linux kernel modules have been cleaned up.
+- Extensive rewrite of the spec file:
   * make use of the now upstream provided make install
   * configure --no-root-privileges, to not install mount.vmhgfs as suid
 - Add patch open-vm-tools-2009.04.23-rpath.diff: removes the rpath logic
@@ -1699,7 +1714,7 @@ Sat Apr 25 23:24:33 CEST 2009 - dominique.leuenberger@tmf-group.com
 -------------------------------------------------------------------
 Sat Mar 21 00:03:12 CET 2009 - dominique@leuenberger.net
 
-- rename vmware-KMP to vmware-guest-KMP for easier identification 
+- rename vmware-KMP to vmware-guest-KMP for easier identification
   of the use and to avoid confusion (users installing the KMP on the
   vmware hosts) (bnc#481137)
 - create subpackage libvmtools0
@@ -1753,7 +1768,7 @@ Thu Feb 12 10:46:15 CET 2009 - dominique@leuenberger.net
 - Added vmware-user-autostart-wrapper to solve bnc #474076
   Using simple autostart technique, it can happen that the device
   at /proc/fs/vmblock/dev is not ready when vmware-user is started
-  the autostart-wrapper takes this into account and tries for 
+  the autostart-wrapper takes this into account and tries for
   several times.
 - Fix RPMLint warning with regarding wrong encoding of README file
 
