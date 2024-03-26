@@ -52,4 +52,38 @@
   * pfr/ifr:</comment>
     <requestid>1138582</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>aee21a3e9a24b2e31ac1d9b6ff6d52b7</srcmd5>
+    <version>2.1.0</version>
+    <time>1711477550</time>
+    <user>anag+factory</user>
+    <comment>- Add python-spsdk-remove_pypemicro.patch to remove dependency on
+  python-pypemcro and pyocd-pemicro.
+
+- Update to 2.1.0:
+  * add signing commands (create, verify)
+  * add subcommands for Fault Analysis Mode (export, parse, get-templates)
+  * add printing the result of auth command
+  * add dedicated plugin system
+  * U-BOOT interface
+  * add commit command
+  * add commands related to release-container
+  * enable IEE encryption for RT1180
+  * add key exchange signed message
+  * add signature provider for RT1xxx
+  * support mcxn23x
+  * deployment of new database
+  * EL2GO mockup for S32K WPC
+  * introduce memory configuration tool
+  * fix get-trng state command
+  * fix cmpa template
+  * fix parsing ahab image for i.MX95
+  * fix xmcd export command
+  * fix certificate block as binary file
+  * fix sb21 get-template command
+  * fix export command
+  * fix pfr generate command
+  * fix default family parameter</comment>
+    <requestid>1161715</requestid>
+  </revision>
 </revisionlist>

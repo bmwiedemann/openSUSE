@@ -1,0 +1,27 @@
+From 835e24b7cd0b3ba6a62f0abfbb094ad7ee3ab524 Mon Sep 17 00:00:00 2001
+From: Johannes Kastl <kastl@b1-systems.de>
+Date: Mon, 15 May 2023 13:27:29 +0200
+Subject: [PATCH] remove pypemicro
+
+based on
+https://github.com/archlinux/svntogit-community/blob/19938f5cab9adf93da26c09ebeb8111ed1bdc59b/trunk/python-spsdk-1.6.0-remove_pypemicro.patch
+
+Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
+---
+ spsdk/debuggers/__init__.py | 1 -
+ spsdk/debuggers/utils.py    | 2 --
+ 2 files changed, 3 deletions(-)
+
+Index: spsdk-2.1.0/spsdk/debuggers/__init__.py
+===================================================================
+--- spsdk-2.1.0.orig/spsdk/debuggers/__init__.py
++++ spsdk-2.1.0/spsdk/debuggers/__init__.py
+@@ -8,7 +8,6 @@
+ """Wrappers for various types of debuggers."""
+ 
+ from .debug_probe_jlink import DebugProbePyLink
+-from .debug_probe_pemicro import DebugProbePemicro
+ from .debug_probe_pyocd import DebugProbePyOCD
+ 
+-__all__ = ["DebugProbePyLink", "DebugProbePemicro", "DebugProbePyOCD"]
++__all__ = ["DebugProbePyLink", "DebugProbePyOCD"]

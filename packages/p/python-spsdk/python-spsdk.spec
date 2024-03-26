@@ -18,12 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-spsdk
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Unified, reliable and easy to use SW library working across NXP MCU portfolio
 License:        BSD-3-Clause
 URL:            https://github.com/nxp-mcuxpresso/spsdk
 Source:         https://files.pythonhosted.org/packages/source/s/spsdk/spsdk-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE python-spsdk-remove_pypemicro.patch
+Patch0:         python-spsdk-remove_pypemicro.patch
 BuildRequires:  %{python_module flit}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -39,36 +41,36 @@ Requires:       python-click
 Requires:       python-click-command-tree
 Requires:       python-click-option-group
 Requires:       python-colorama
-Requires:       python-commentjson
 Requires:       python-crcmod
 Requires:       python-cryptography
 Requires:       python-deepmerge
 Requires:       python-fastjsonschema
 Requires:       python-hexdump
-Requires:       python-jinja2
 Requires:       python-libusbsio
 Requires:       python-oscrypto
-Requires:       python-pycryptodome
+Requires:       python-platformdirs
+Requires:       python-prettytable
 Requires:       python-pylink-square
 Requires:       python-pyocd
-# disable dependency
-# Requires:       python-pyocd-pemicro
-# dependency no longer required due to Patch0
-# Requires:       python-pypemicro
 Requires:       python-pyserial
+Requires:       python-requests
 Requires:       python-ruamel.yaml
 Requires:       python-sly
 Requires:       python-typing-extensions
+# Removed dependencies
+# Requires:       python-pyocd-pemicro
+# dependency no longer required due to Patch0
+# Requires:       python-pypemicro
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
 Secure Provisioning SDK (SPSDK) is unified, reliable and easy to use SW library working across NXP MCU portfolio providing strong foundation from quick customer prototyping up to production deployment.
 
 %prep
-%setup -q -n spsdk-%{version}
+%autosetup -p1 -n spsdk-%{version}
 
 %build
 %pyproject_wheel
@@ -92,19 +94,23 @@ find . -type f -name README.md -exec dos2unix {} +
 %python_clone -a %{buildroot}%{_bindir}/tpconfig
 %python_clone -a %{buildroot}%{_bindir}/tphost
 %python_clone -a %{buildroot}%{_bindir}/dk6prog
+%python_clone -a %{buildroot}%{_bindir}/nxpmemcfg
+%python_clone -a %{buildroot}%{_bindir}/nxpwpc
 # fix line endings
 %python_expand find %{buildroot}%{$python_sitelib} -type f -exec dos2unix {} +
 # remove shebangs
 %python_expand find %{buildroot}%{$python_sitelib} -iname "*.py" -exec sed -i '1{/env python/d;}' {} +
+# compile all here to avoid python-bytecode-inconsistent-mtime
+%python_compileall
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # remove unneccesary *.c and *.bin files
 %python_expand rm -vf %{buildroot}%{$python_sitelib}/spsdk/data/cpu_data/*.c %{buildroot}%{$python_sitelib}/spsdk/data/cpu_data/*.bin
 
 %post
-%python_install_alternative blhost ifr nxpcrypto nxpdebugmbox nxpdevhsm nxpdevscan nxpele nxpimage pfr sdphost sdpshost shadowregs spsdk tpconfig tphost dk6prog
+%python_install_alternative blhost ifr nxpcrypto nxpdebugmbox nxpdevhsm nxpdevscan nxpele nxpimage pfr sdphost sdpshost shadowregs spsdk tpconfig tphost dk6prog nxpmemcfg nxpwpc
 
 %postun
-%python_uninstall_alternative blhost ifr nxpcrypto nxpdebugmbox nxpdevhsm nxpdevscan nxpele nxpimage pfr sdphost sdpshost shadowregs spsdk tpconfig tphost dk6prog
+%python_uninstall_alternative blhost ifr nxpcrypto nxpdebugmbox nxpdevhsm nxpdevscan nxpele nxpimage pfr sdphost sdpshost shadowregs spsdk tpconfig tphost dk6prog nxpmemcfg nxpwpc
 
 %files %{python_files}
 %doc README.md
@@ -127,5 +133,7 @@ find . -type f -name README.md -exec dos2unix {} +
 %python_alternative %{_bindir}/tpconfig
 %python_alternative %{_bindir}/tphost
 %python_alternative %{_bindir}/dk6prog
+%python_alternative %{_bindir}/nxpmemcfg
+%python_alternative %{_bindir}/nxpwpc
 
 %changelog
