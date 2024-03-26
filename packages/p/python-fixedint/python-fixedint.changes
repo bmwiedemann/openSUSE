@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 26 11:51:00 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+- Fix capitalization in Summary
+- Limit Python files matched in %files section
+
+-------------------------------------------------------------------
 Thu Mar  7 14:41:12 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch package to modern Python Stack on SLE-15

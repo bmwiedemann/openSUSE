@@ -20,11 +20,13 @@
 Name:           python-fixedint
 Version:        0.2.0
 Release:        0
-Summary:        simple fixed-width integers
+Summary:        Simple fixed-width integers
 License:        Python-2.0
 URL:            https://github.com/nneonneo/fixedint
 Source:         https://files.pythonhosted.org/packages/source/f/fixedint/fixedint-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -45,10 +47,10 @@ of machine registers.
 %setup -q -n fixedint-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +59,7 @@ of machine registers.
 %files %{python_files}
 %doc AUTHORS CHANGES README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/fixedint
+%{python_sitelib}/fixedint-*.dist-info
 
 %changelog
