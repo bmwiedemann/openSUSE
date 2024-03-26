@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 21 09:56:29 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.280.0
+  * Add support for the SPV_QCOM_image_processing,
+    SPV_EXT_integer_dot_product extensions
+  * MSL: Support variable sized descriptor array in argument buffer
+  * MSL: Implement spvDescriptorArray path for SSBO/UBO
+
+-------------------------------------------------------------------
 Tue Jan 30 08:57:10 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.275.0
