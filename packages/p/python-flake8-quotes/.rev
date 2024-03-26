@@ -76,4 +76,18 @@
 - drop support-flake8-6.patch (upstream)</comment>
     <requestid>1046241</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e856c99bb34bc349b5817fa9aca1e466</srcmd5>
+    <version>3.4.0</version>
+    <time>1711477586</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.4.0:
+  * f strings
+  * python 3.12 support
+
+  * python 2 removed
+  * We automatically encourage avoiding escaping quotes as per
+    PEP 8. To disable this, use --no-avoid-escape (can be used</comment>
+    <requestid>1161554</requestid>
+  </revision>
 </revisionlist>
