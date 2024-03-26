@@ -4113,6 +4113,11 @@ unsorted:
   - flac2all 
   - flacon 
   - flacon-lang 
+  - flake-pilot 
+  - flake-pilot-firecracker 
+  - flake-pilot-firecracker-dracut-netstart 
+  - flake-pilot-firecracker-guestvm-tools 
+  - flake-pilot-podman 
   - flameshot 
   - flameshot-bash-completion 
   - flameshot-fish-completion 
@@ -6811,6 +6816,10 @@ unsorted:
   - gio-sharp3 
   - gio-sharp3-devel 
   - girara-devel 
+  - git-absorb 
+  - git-absorb-bash-completion 
+  - git-absorb-fish-completion 
+  - git-absorb-zsh-completion 
   - git-annex 
   - git-annex-bash-completion 
   - git-arch 
@@ -8391,6 +8400,7 @@ unsorted:
   - hyprland 
   - hyprland-devel 
   - hyprland-protocols-devel 
+  - hyprland-wallpapers 
   - hyprlang-devel 
   - hyprpaper 
   - hyprshot 
@@ -10476,7 +10486,6 @@ unsorted:
   - leechcraft-azoth-rosenthal 
   - leechcraft-azoth-shx 
   - leechcraft-azoth-standardstyles 
-  - leechcraft-azoth-vader 
   - leechcraft-azoth-velvetbird 
   - leechcraft-azoth-xoox 
   - leechcraft-azoth-xtazy 
@@ -10530,6 +10539,7 @@ unsorted:
   - leechcraft-lmp-ppl 
   - leechcraft-mellonetray 
   - leechcraft-monocle 
+  - leechcraft-monocle-boop 
   - leechcraft-monocle-dik 
   - leechcraft-monocle-doc 
   - leechcraft-monocle-fxb 
@@ -13764,6 +13774,7 @@ unsorted:
   - libleechcraft-util-db-qt5-0_6_75_1 
   - libleechcraft-util-gui-qt5-0_6_75_1 
   - libleechcraft-util-models-qt5-0_6_75_1 
+  - libleechcraft-util-monocle-qt5-0_6_75 
   - libleechcraft-util-network-qt5-0_6_75_1 
   - libleechcraft-util-qml-qt5-0_6_75_2 
   - libleechcraft-util-shortcuts-qt5-0_6_75 
@@ -14487,7 +14498,7 @@ unsorted:
   - libopenmpi4-gnu-hpc 
   - libopenmpi5-gnu-hpc 
   - libopenmpi_4_1_6-gnu-hpc 
-  - libopenmpi_5_0_0-gnu-hpc 
+  - libopenmpi_5_0_2-gnu-hpc 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
   - libopenmpt0-32bit 
@@ -14538,7 +14549,7 @@ unsorted:
   - libopusenc0 
   - libopusfile0 
   - liboqs-devel 
-  - liboqs4 
+  - liboqs5 
   - liborc-0_4-0-32bit 
   - liborcania2_3 
   - liborcus-devel 
@@ -16944,6 +16955,7 @@ unsorted:
   - live555 
   - live555-devel 
   - livedtd 
+  - livi 
   - lksctp-tools 
   - lksctp-tools-devel 
   - llcbench 
@@ -19881,12 +19893,12 @@ unsorted:
   - openmpi_4_1_6-gnu-hpc-docs 
   - openmpi_4_1_6-gnu-hpc-macros-devel 
   - openmpi_4_1_6-gnu-hpc-testsuite 
-  - openmpi_5_0_0-gnu-hpc 
-  - openmpi_5_0_0-gnu-hpc-devel 
-  - openmpi_5_0_0-gnu-hpc-devel-static 
-  - openmpi_5_0_0-gnu-hpc-docs 
-  - openmpi_5_0_0-gnu-hpc-macros-devel 
-  - openmpi_5_0_0-gnu-hpc-testsuite 
+  - openmpi_5_0_2-gnu-hpc 
+  - openmpi_5_0_2-gnu-hpc-devel 
+  - openmpi_5_0_2-gnu-hpc-devel-static 
+  - openmpi_5_0_2-gnu-hpc-docs 
+  - openmpi_5_0_2-gnu-hpc-macros-devel 
+  - openmpi_5_0_2-gnu-hpc-testsuite 
   - openmpt123 
   - openmw 
   - opennlp 
@@ -30610,6 +30622,7 @@ unsorted:
   - python312-Yapsy 
   - python312-ZConfig 
   - python312-ZConfig-doc 
+  - python312-ZEO 
   - python312-ZODB 
   - python312-abimap 
   - python312-abimap-doc 
@@ -31229,7 +31242,12 @@ unsorted:
   - python312-certbot-apache 
   - python312-certbot-dns-cloudflare 
   - python312-certbot-dns-digitalocean 
+  - python312-certbot-dns-dnsimple 
+  - python312-certbot-dns-dnsmadeeasy 
   - python312-certbot-dns-google 
+  - python312-certbot-dns-linode 
+  - python312-certbot-dns-luadns 
+  - python312-certbot-dns-nsone 
   - python312-certbot-dns-rfc2136 
   - python312-certbot-dns-route53 
   - python312-certbot-nginx 
@@ -32806,6 +32824,7 @@ unsorted:
   - python312-pydantic-core 
   - python312-pydantic-settings 
   - python312-pydash 
+  - python312-pydata-google-auth 
   - python312-pydata-sphinx-theme 
   - python312-pydbus 
   - python312-pydenticon 
@@ -32930,6 +32949,7 @@ unsorted:
   - python312-pyramid-debugtoolbar 
   - python312-pyramid-mako 
   - python312-pyreadstat 
+  - python312-pyroma 
   - python312-pyroomacoustics 
   - python312-pyroute2 
   - python312-pyrsistent 
@@ -33854,6 +33874,7 @@ unsorted:
   - python312-yamlloader 
   - python312-yapf 
   - python312-yappi 
+  - python312-yara 
   - python312-yarg 
   - python312-yarl 
   - python312-yaspin 
@@ -39847,6 +39868,7 @@ unsorted:
   - syndication-devel 
   - synergy 
   - syntax-highlighting-devel 
+  - sypper 
   - sysbench 
   - sysctl-logger 
   - sysfsutils 
@@ -39903,6 +39925,7 @@ unsorted:
   - system-user-transmission 
   - system-user-uuidd 
   - system-user-velociraptor 
+  - system-user-zabbix 
   - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
   - systemd-devel 
