@@ -35,6 +35,7 @@ BuildRequires:  libpcap-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
+BuildRequires:  pkgconfig(libzstd)
 
 %description
 dropwatch is an interactive utility for monitoring and recording packets that

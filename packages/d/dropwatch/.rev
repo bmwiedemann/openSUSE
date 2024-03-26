@@ -32,4 +32,12 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1150598 from dimstar)</comment>
     <requestid>1150707</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>2f2894c73d2c0299d375bf9c297bc8ac</srcmd5>
+    <version>1.5.4</version>
+    <time>1711477695</time>
+    <user>anag+factory</user>
+    <comment>fix Leap build (forwarded request 1161625 from mlin7442)</comment>
+    <requestid>1162281</requestid>
+  </revision>
 </revisionlist>

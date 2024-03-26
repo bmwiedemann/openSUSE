@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 26 07:07:24 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Add BuildRequires:  pkgconfig(libzstd)
+  * libzstd-devel doesn't be added in Leap 15 build env
+
+-------------------------------------------------------------------
 Mon Feb 26 07:52:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
