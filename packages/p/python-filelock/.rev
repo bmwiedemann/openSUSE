@@ -166,4 +166,17 @@
 - Add missing Requires on typing-extensions if &lt; 3.11</comment>
     <requestid>1129184</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0ad0802d471d3fedd5e7c0cbd498a5e2</srcmd5>
+    <version>3.13.2</version>
+    <time>1711477532</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.13.2:
+  * Fixed small typo in _unix.py
+  * Update SECURITY.md to reflect Python 3.7 support dropoff
+  * Update index.rst to improve the demo usage
+  * [BugFix] fix permission denied error when lock file is placed
+    in `/tmp`</comment>
+    <requestid>1161514</requestid>
+  </revision>
 </revisionlist>
