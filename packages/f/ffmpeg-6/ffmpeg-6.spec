@@ -110,6 +110,7 @@ Patch2:         ffmpeg-new-coder-errors.diff
 Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
+Patch6:         0001-avcodec-tests-rename-the-bundled-Mesa-AV1-vulkan-vid.patch
 Patch10:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 

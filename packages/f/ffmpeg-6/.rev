@@ -70,4 +70,12 @@ I am sorry for the messy submission before. (forwarded request 1139042 from iDes
     <comment>- Let the ffmpeg-6 main program be combinable with ffmpeg-6-mini-libs</comment>
     <requestid>1159780</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>f27cb9afbe34f9b9da66dc3f89536ca7</srcmd5>
+    <version>6.1.1</version>
+    <time>1711477464</time>
+    <user>anag+factory</user>
+    <comment>needed for vulkan 280</comment>
+    <requestid>1160586</requestid>
+  </revision>
 </revisionlist>
