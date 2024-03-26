@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 26 11:00:00 UTC 2024 - Andy Alt <arch_stanton5995@proton.me>
+
+- fix for tests failing after Epochalypse - add tests-fail-after-epochalypse.patch
+  Reported by bmwiedemann while working on reproducible builds for OpenSuse
+  (https://github.com/theimpossibleastronaut/rmw/issues/439)
+  
+-------------------------------------------------------------------
 Wed Mar 20 11:00:00 UTC 2024 - Andy Alt <arch_stanton5995@proton.me>
 
 - fix and enable all tests - add test-restore-fix-use-Xvfb.patch
