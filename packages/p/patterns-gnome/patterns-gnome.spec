@@ -196,7 +196,11 @@ Recommends:     gnome-contacts
 Recommends:     gnome-logs
 Recommends:     gnome-maps
 Recommends:     gnome-system-monitor
+%if 0%{?sle_version}
+Recommends:     gedit
+%else
 Recommends:     gnome-text-editor
+%endif
 #
 # While running a GNOME3 session, it's nice to have the GNOME3 related pinentry
 # for proper gpg2 integration
@@ -366,7 +370,11 @@ Recommends:     evince
 # bsc#1069699
 Recommends:     file-roller
 # bsc#1065146
+%if 0%{?sle_version}
+Recommends:     gedit
+%else
 Recommends:     gnome-text-editor
+%endif
 # implified by gnome-keyring-pam
 # Recommends:     gnome-keyring
 # bsc#1063156
@@ -473,7 +481,12 @@ Recommends:     gnome-builder
 # from devel_ide
 Suggests:       accerciser
 Suggests:       glade
+%if 0%{?sle_version}
+Suggests:       gedit
+Suggests:       gedit-plugins
+%else
 Suggests:       gnome-text-editor
+%endif
 Suggests:       ghex
 Suggests:       gnome-devel-docs
 
@@ -671,7 +684,11 @@ Recommends:     file-roller
 Recommends:     gdk-pixbuf-thumbnailer
 Recommends:     gnome-calculator
 Recommends:     gnome-characters
+%if 0%{?sle_version}
+Recommends:     gedit
+%else
 Recommends:     gnome-text-editor
+%endif
 #
 # Packages that really make sense
 #
@@ -688,6 +705,9 @@ Recommends:     seahorse
 Suggests:       eog-plugins
 # #388570
 Suggests:       nautilus-share
+%if 0%{?sle_version}
+Suggests:       gedit-plugins
+%endif
 
 %description gnome_utilities
 GNOME Utilities

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 26 07:41:43 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
+
+- Keep gedit instead of gnome-text-editor on SLE and Leap
+  (bsc#1219646).
+
+-------------------------------------------------------------------
 Tue Mar 19 08:23:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add console as a terminal-client.
