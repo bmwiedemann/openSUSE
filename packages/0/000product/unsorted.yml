@@ -1902,6 +1902,7 @@ unsorted:
   - cargo1.74 
   - cargo1.75 
   - cargo1.76 
+  - cargo1.77 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -7131,6 +7132,7 @@ unsorted:
   - gnome-settings-daemon-devel 
   - gnome-shell-devel 
   - gnome-shell-extension-customize-ibus 
+  - gnome-shell-extension-desktop-icons 
   - gnome-shell-extension-gpaste 
   - gnome-shell-extension-hamster-time-tracker 
   - gnome-shell-extension-onboard 
@@ -8345,6 +8347,10 @@ unsorted:
   - httrack 
   - httrack-devel 
   - hub 
+  - hubble 
+  - hubble-bash-completion 
+  - hubble-fish-completion 
+  - hubble-zsh-completion 
   - hugin 
   - hugo 
   - hugo-bash-completion 
@@ -10085,6 +10091,10 @@ unsorted:
   - kubectl-capacity 
   - kubectl-explore 
   - kubectl-foreach 
+  - kubectl-minio 
+  - kubectl-minio-bash-completion 
+  - kubectl-minio-fish-completion 
+  - kubectl-minio-zsh-completion 
   - kubectl-neat 
   - kubectl-node-shell 
   - kubectl-oomd 
@@ -11180,7 +11190,7 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
-  - libVulkanLayerSettings-1_3_275_0 
+  - libVulkanLayerSettings-1_3_280_0 
   - libWN3 
   - libWPEBackend-fdo-1_0-1 
   - libWPEBackend-fdo-1_0-1-32bit 
@@ -12944,6 +12954,7 @@ unsorted:
   - libgirara-gtk3-3 
   - libgirepository-1_0-1-32bit 
   - libgirepository-2_0-0 
+  - libgit2-1_8 
   - libgit2-devel 
   - libgit2-glib-1_0-0 
   - libgit2-glib-devel 
@@ -16332,7 +16343,7 @@ unsorted:
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit 
-  - libvolk 
+  - libvolk-1_3_280_0 
   - libvolk3_1 
   - libvomsapi1 
   - libvorbis-devel 
@@ -27746,6 +27757,7 @@ unsorted:
   - python311-buttplug 
   - python311-bytecode 
   - python311-cPyparsing 
+  - python311-cached-property 
   - python311-cachelib 
   - python311-cachetools 
   - python311-cachey 
@@ -29329,6 +29341,7 @@ unsorted:
   - python311-pygame-devel 
   - python311-pygdbmi 
   - python311-pygerrit2 
+  - python311-pygit2 
   - python311-pyglet 
   - python311-pygls 
   - python311-pygments-ansi-color 
@@ -32312,6 +32325,9 @@ unsorted:
   - python312-maxminddb 
   - python312-mbstrdecoder 
   - python312-mccabe 
+  - python312-md2workflow 
+  - python312-md2workflow-plugins-jira 
+  - python312-md2workflow-plugins-redmine 
   - python312-mdit-py-plugins 
   - python312-mdurl 
   - python312-mechanize 
@@ -32888,6 +32904,7 @@ unsorted:
   - python312-pylibfdt 
   - python312-pylibmc 
   - python312-pylineclip 
+  - python312-pylink-square 
   - python312-pylint 
   - python312-pylint-ignore 
   - python312-pylint-venv 
@@ -38885,6 +38902,7 @@ unsorted:
   - rust1.74 
   - rust1.75 
   - rust1.76 
+  - rust1.77 
   - rustdesk-server 
   - rustdesk-server-hbbr 
   - rustdesk-server-hbbs 
@@ -39860,6 +39878,7 @@ unsorted:
   - sympol 
   - sympol-devel 
   - sympow 
+  - synce4l 
   - syncplay-client 
   - syncplay-common 
   - syncplay-server 
