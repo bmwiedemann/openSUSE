@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 25 14:01:12 UTC 2024 - wolfgang.frisch@suse.com
+
+- Update to version 2.5.0+git20240325.982d664:
+  * dbus-services: power-profiles-daemon (bsc#1219956) (#1197)
+  * SpecCheck: Add no-%check-section warning
+  * Bump upper bound of suse_version to include ALP & current Factory
+  * test: add mocks folder and mocks for duplicates check
+  * pkg: remove unicode type reference in is_utf8_bytestr exception
+  * Refactored the is_utf8_bytestr function
+  * readme: More specific title for building section
+  * test: imporve fixtures in test_duplicates.py
+  * Add building documentation
+  * Update README.md
+
+-------------------------------------------------------------------
 Mon Mar 11 12:15:52 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Also fix the runtime requirement syntax
