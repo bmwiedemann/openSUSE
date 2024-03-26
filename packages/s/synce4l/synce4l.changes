@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Tue Mar 26 07:56:19 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Fix build on 32bit platforms (synce4l-32bit.patch).
+
+-------------------------------------------------------------------
+Thu Feb 22 14:35:15 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Initial packaging of version 1.0.0. 
