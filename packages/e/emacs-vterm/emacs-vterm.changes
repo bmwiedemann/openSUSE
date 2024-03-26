@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 25 18:27:26 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 698.ae4ae1a:
+  * Ensures the starting col is the same as later calculated
+  * Fix typo: postion -> position
+
+-------------------------------------------------------------------
 Mon Feb 26 23:49:52 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Depend on emacs-devel to make sure Emacs packaging macros are installed when not building with emacs-eln

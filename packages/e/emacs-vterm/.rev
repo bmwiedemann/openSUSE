@@ -7,4 +7,14 @@
     <comment>Please accept this package into Factory. The package has been tested for about a year by me against various Emacs versions.</comment>
     <requestid>1152034</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0faff01ddefd87cdcc79df19981c0315</srcmd5>
+    <version>698.ae4ae1a</version>
+    <time>1711477576</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 698.ae4ae1a:
+  * Ensures the starting col is the same as later calculated
+  * Fix typo: postion -&gt; position</comment>
+    <requestid>1161545</requestid>
+  </revision>
 </revisionlist>
