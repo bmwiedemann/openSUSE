@@ -371,4 +371,14 @@ However, it would be good to have these out before we do switch. (forwarded requ
     do not use touch, use shell redirection (forwarded request 1161116 from gcomes.obs)</comment>
     <requestid>1161136</requestid>
   </revision>
+  <revision rev="43" vrev="52">
+    <srcmd5>2fc9f2e5abbdd5e117b5fa649169eb68</srcmd5>
+    <version>1.0</version>
+    <time>1711477511</time>
+    <user>anag+factory</user>
+    <comment>- Fix import-openSUSE-build-key:set proper timer name to try to
+  stop (openSUSE-build-key-import.timer, not
+  suse-build-key-import.timer) (boo#1221948). (forwarded request 1161651 from dimstar)</comment>
+    <requestid>1161679</requestid>
+  </revision>
 </revisionlist>

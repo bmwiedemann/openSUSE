@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 26 08:28:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix import-openSUSE-build-key:set proper timer name to try to
+  stop (openSUSE-build-key-import.timer, not
+  suse-build-key-import.timer) (boo#1221948).
+
+-------------------------------------------------------------------
 Sun Mar 24 11:35:39 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - Requires(post): coreutils is missing

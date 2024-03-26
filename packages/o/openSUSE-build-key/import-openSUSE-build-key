@@ -28,6 +28,6 @@ rm -f $triggerfile
 
 # if we have finished import, disable and stop the timer.
 if [ ! -f $triggerfile -a -x /usr/bin/systemctl ] ; then
-	systemctl stop suse-build-key-import.timer
-	systemctl disable suse-build-key-import.timer
+	systemctl stop openSUSE-build-key-import.timer
+	systemctl disable openSUSE-build-key-import.timer
 fi
