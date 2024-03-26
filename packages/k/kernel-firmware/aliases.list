@@ -2865,6 +2865,7 @@ lontium_lt9611uxc: of:N*T*Clontium,lt9611uxcC*
 mei_vsc_hw: acpi*:INTC1009%3A*
 mei_vsc_hw: acpi*:INTC1058%3A*
 mei_vsc_hw: acpi*:INTC1094%3A*
+mei_vsc_hw: acpi*:INTC10D0%3A*
 meson_vdec: of:N*T*Camlogic,g12a-vdec
 meson_vdec: of:N*T*Camlogic,g12a-vdecC*
 meson_vdec: of:N*T*Camlogic,gxbb-vdec
@@ -2911,6 +2912,10 @@ msm: of:N*T*Cqcom,sc8280xp-dpu
 msm: of:N*T*Cqcom,sc8280xp-dpuC*
 msm: of:N*T*Cqcom,sc8280xp-mdss
 msm: of:N*T*Cqcom,sc8280xp-mdssC*
+msm: of:N*T*Cqcom,sdm670-dpu
+msm: of:N*T*Cqcom,sdm670-dpuC*
+msm: of:N*T*Cqcom,sdm670-mdss
+msm: of:N*T*Cqcom,sdm670-mdssC*
 msm: of:N*T*Cqcom,sdm845-dpu
 msm: of:N*T*Cqcom,sdm845-dpuC*
 msm: of:N*T*Cqcom,sdm845-mdss
@@ -2951,6 +2956,10 @@ msm: of:N*T*Cqcom,sm8550-dpu
 msm: of:N*T*Cqcom,sm8550-dpuC*
 msm: of:N*T*Cqcom,sm8550-mdss
 msm: of:N*T*Cqcom,sm8550-mdssC*
+msm: of:N*T*Cqcom,sm8650-dpu
+msm: of:N*T*Cqcom,sm8650-dpuC*
+msm: of:N*T*Cqcom,sm8650-mdss
+msm: of:N*T*Cqcom,sm8650-mdssC*
 mt7601u: usb:v0B05p17D3d*dc*dsc*dp*ic*isc*ip*in*
 mt7601u: usb:v0E8Dp760Ad*dc*dsc*dp*ic*isc*ip*in*
 mt7601u: usb:v0E8Dp760Bd*dc*dsc*dp*ic*isc*ip*in*
@@ -3324,6 +3333,8 @@ pcnet_cs: pcmcia:m0274c1103f*fn*pfn*pa*pb*pc*pd*
 pcnet_cs: pcmcia:m0274c1121f*fn*pfn*pa*pb*pc*pd*
 pcnet_cs: pcmcia:m08A1cC0ABf*fn*pfn00pa*pb*pc*pd*
 pcnet_cs: pcmcia:mC001c0009f*fn*pfn*pa*pb*pc*pd*
+powervr: of:N*T*Cimg,img-axe
+powervr: of:N*T*Cimg,img-axeC*
 qat_c3xxx: pci:v00008086d000019E2sv*sd*bc*sc*i*
 qat_c62x: pci:v00008086d000037C8sv*sd*bc*sc*i*
 qat_dh895xcc: pci:v00008086d00000435sv*sd*bc*sc*i*
@@ -3373,8 +3384,14 @@ qcom_q6v5_pas: of:N*T*Cqcom,sc7180-adsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sc7180-adsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sc7180-mpss-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sc7180-mpss-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sc7280-adsp-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sc7280-adsp-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sc7280-cdsp-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sc7280-cdsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sc7280-mpss-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sc7280-mpss-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sc7280-wpss-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sc7280-wpss-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sc8180x-adsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sc8180x-adsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sc8180x-cdsp-pas
@@ -5087,6 +5104,8 @@ s5p_mfc: of:N*T*Csamsung,mfc-v7
 s5p_mfc: of:N*T*Csamsung,mfc-v7C*
 s5p_mfc: of:N*T*Csamsung,mfc-v8
 s5p_mfc: of:N*T*Csamsung,mfc-v8C*
+s5p_mfc: of:N*T*Ctesla,fsd-mfc
+s5p_mfc: of:N*T*Ctesla,fsd-mfcC*
 serial_cs: pcmcia:m*c*f*fn*pfn*pa*pbAD20B156pc*pd*
 serial_cs: pcmcia:m*c*f*fn*pfn*pa0E2CDD5EpbC9314B38pc*pd*
 serial_cs: pcmcia:m*c*f*fn*pfn*pa19CA78AFpb69FB7490pc*pd*
@@ -5297,6 +5316,12 @@ snd_soc_catpt: acpi*:INT33C8%3A*
 snd_soc_catpt: acpi*:INT3438%3A*
 snd_soc_sc8280xp: of:N*T*Cqcom,sc8280xp-sndcard
 snd_soc_sc8280xp: of:N*T*Cqcom,sc8280xp-sndcardC*
+snd_soc_sc8280xp: of:N*T*Cqcom,sm8450-sndcard
+snd_soc_sc8280xp: of:N*T*Cqcom,sm8450-sndcardC*
+snd_soc_sc8280xp: of:N*T*Cqcom,sm8550-sndcard
+snd_soc_sc8280xp: of:N*T*Cqcom,sm8550-sndcardC*
+snd_soc_sc8280xp: of:N*T*Cqcom,sm8650-sndcard
+snd_soc_sc8280xp: of:N*T*Cqcom,sm8650-sndcardC*
 snd_soc_skl: pci:v00008086d000002C8sv*sd*bc*sc*i*
 snd_soc_skl: pci:v00008086d000006C8sv*sd*bc*sc*i*
 snd_soc_skl: pci:v00008086d00003198sv*sd*bc*sc*i*

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Mar 25 10:44:58 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240322 (git commit 9a6a0cc195c1):
+  * mekdiatek: Update mt8186 SOF firmware to v2.0.1
+  * linux-firmware: Add firmware for Cirrus CS35L56 for Dell laptops
+  * Montage: update firmware for Mont-TSSE
+  * WHENCE: Link the Raspberry Pi CM4 and 5B to the 4B
+  * Intel Bluetooth: Update firmware file for Intel Bluetooth BE200
+  * Intel Bluetooth: Update firmware file for Magnetor Intel Bluetooth AX101
+  * Intel Bluetooth: Update firmware file for Magnetor Intel Bluetooth AX203
+  * Intel Bluetooth: Update firmware file for Magnetor Intel Bluetooth AX211
+  * Intel Bluetooth: Update firmware file for SolarF Intel Bluetooth AX101
+  * Intel Bluetooth: Update firmware file for Solar Intel Bluetooth AX101
+  * Intel Bluetooth: Update firmware file for SolarF Intel Bluetooth AX203
+  * Intel Bluetooth: Update firmware file for Solar Intel Bluetooth AX203
+  * Intel Bluetooth: Update firmware file for SolarF Intel Bluetooth AX211
+  * Intel Bluetooth: Update firmware file for Solar Intel Bluetooth AX211
+  * Intel Bluetooth: Update firmware file for Solar Intel Bluetooth AX210
+  * Intel Bluetooth: Update firmware file for Intel Bluetooth AX200
+  * Intel Bluetooth: Update firmware file for Intel Bluetooth AX201
+  * Intel Bluetooth: Update firmware file for Intel Bluetooth 9560
+  * Intel Bluetooth: Update firmware file for Intel Bluetooth 9260
+  * amdgpu: DMCUB updates for various AMDGPU ASICs
+  * linux-firmware: mediatek: Update MT8173 VPU firmware to v1.1.8
+  * imx: sdma: update firmware to v3.6/v4.6
+- Update aliases from 6.8 kernels
+
+-------------------------------------------------------------------
 Wed Mar 13 07:43:43 UTC 2024 - tiwai@suse.com
 
 - Update to version 20240312 (git commit 4a404b5bfdb9):
