@@ -2947,6 +2947,14 @@ Mon Apr 17 09:24:50 UTC 2023 - pgajdos@suse.com
 - python-six is not required
 
 -------------------------------------------------------------------
+Wed Apr  5 10:37:22 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update in SLE-15 (bsc#1209255, jsc#PED-3780)
+- Add python-python-dateutil and python-jmespath to BuildRequires
+- Remove version constraint on python-pytest in BuildRequires
+- Revert changes to Requires that introduced new incompatible syntax
+
+-------------------------------------------------------------------
 Mon Mar 13 08:13:35 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.29.89
@@ -4310,6 +4318,11 @@ Fri Nov  4 12:06:31 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
     importing g4dn Workspaces Core images.
 
 -------------------------------------------------------------------
+Thu Nov  3 10:40:37 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update in SLE-15 (bsc#1204537, jsc#PED-2333)
+
+-------------------------------------------------------------------
 Tue Oct 25 07:46:24 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.28.0
@@ -4374,6 +4387,11 @@ Tue Oct 25 07:46:24 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
     from the AWS Lambda runtime specified for that function.
   * api-change:``sagemaker``: This release adds support for C7g, C6g, C6gd, C6gn, M6g, M6gd, R6g, and
     R6gn Graviton instance types in Amazon SageMaker Inference.
+
+-------------------------------------------------------------------
+Thu Oct 20 13:50:54 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Remove version constraint for python-pytest in BuildRequires
 
 -------------------------------------------------------------------
 Mon Oct 17 09:19:48 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
