@@ -24,7 +24,6 @@ License:        GPL-3.0-only
 URL:            https://github.com/jthornber/thin-provisioning-tools/
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  suse-module-tools
 Requires(post): coreutils
@@ -36,13 +35,15 @@ A suite of tools for thin provisioning on Linux.
 
 %prep
 %autosetup -a1
-install -D -m 644 %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}
 
 %install
 %{cargo_install}
+
+%check
+%{cargo_test}
 
 %post
 %{?regenerate_initrd_post}

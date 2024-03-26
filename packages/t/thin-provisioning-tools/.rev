@@ -309,4 +309,13 @@
   * [build] Update license to SPDX identifier</comment>
     <requestid>1151911</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>5d2cf40bbc6cec185abfd3a8ce554925</srcmd5>
+    <version>1.0.12</version>
+    <time>1711477471</time>
+    <user>anag+factory</user>
+    <comment>- Enable test execution during build
+- Modernise cargo packaging usage in spec file</comment>
+    <requestid>1160671</requestid>
+  </revision>
 </revisionlist>
