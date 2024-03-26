@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar 26 08:27:24 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to version 8.0.2:
+    * Added Apply button to Preferences dialogs.
+    * Save button is now enabled in auto-save mode.
+    * Support spell checking for multiple languages.
+    * Support setting bold font for editor.
+    * Added backtick key to surround keys.
+    * Fix opening files in existing window by relative path.
+    * Fix unreachable text at the bottom of the file.
+    * Fix truncating file when new text cannot be encoded with
+      the selected encoding.
+    * Allow WebEngine renderer to load iframes such as YouTube embeds.
+    * Fix incorrect font size with WebEngine renderer.
+    * LICENSE_GPL file now has text of GPL v2.
+    * Fixed synchronized scrolling for zoom factors other than 1.
+    * Stopped passing .desktop suffix to setDesktopFileName().
+    * Made mdx_posmap not break indented code blocks which use
+      pymdownx.superfences extension.
+    * Fixed crash when clicking on line information area.
+    * Translations have been updated
+
+-------------------------------------------------------------------
 Thu Sep  8 07:03:42 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 7.2.3:

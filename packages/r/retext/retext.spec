@@ -1,7 +1,7 @@
 #
 # spec file for package retext
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           retext
-Version:        7.2.3
+Version:        8.0.2
 Release:        0
 Summary:        Simple editor for Markdown and reStructuredText
-License:        GPL-3.0-or-later
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://github.com/retext-project/retext
 Source:         https://github.com/retext-project/retext/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -31,9 +31,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  python3-Markdown
 BuildRequires:  python3-Markups >= 2.0
+BuildRequires:  python3-PyQt6
 BuildRequires:  python3-devel
 BuildRequires:  python3-docutils
-BuildRequires:  python3-qt5 >= 5.11
 BuildRequires:  python3-setuptools
 %if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  rsvg-convert
@@ -43,11 +43,12 @@ BuildRequires:  rsvg-view
 BuildRequires:  update-desktop-files
 Requires:       python3-Markdown
 Requires:       python3-Markups >= 2.0
+Requires:       python3-Pygments
 Requires:       python3-docutils
-Requires:       python3-pyenchant
-Requires:       python3-qt5
-Recommends:     python3-Pygments
-Recommends:     python3-qtwebengine-qt5
+Requires:       python3-qt6
+Recommends:     python3-PyQt6-WebEngine
+Recommends:     python3-chardet
+Recommends:     python3-pyenchant
 Provides:       ReText = %{version}
 BuildArch:      noarch
 
@@ -71,7 +72,7 @@ mkdir -pv %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
 mkdir -pv %{buildroot}%{_datadir}/%{name}/
 mkdir -pv %{buildroot}%{_datadir}/applications/
 
-cp -r icons/*.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
+cp -r ReText/icons/*.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
 ICONSIZE="16 22 32 48 64 128 256"
 pushd %{buildroot}%{_datadir}/icons/hicolor/
 for i in $ICONSIZE; do
@@ -82,7 +83,7 @@ popd
 
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/me.mitya57.ReText.desktop
 
-%fdupes %{buildroot}%{_prefix}
+%fdupes -s %{buildroot}%{_prefix}
 
 %files
 %doc changelog.md README.md configuration.md
