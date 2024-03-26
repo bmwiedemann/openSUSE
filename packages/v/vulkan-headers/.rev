@@ -384,4 +384,12 @@
   %python3_fix_shebang_path macro, [bsc#1212476] (forwarded request 1149970 from pgajdos)</comment>
     <requestid>1149982</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>86964dbb0009d2ac7aca63103ad3f1f2</srcmd5>
+    <version>1.3.280.0</version>
+    <time>1711477449</time>
+    <user>anag+factory</user>
+    <comment>- Update to release SDK-1.3.280.0</comment>
+    <requestid>1160390</requestid>
+  </revision>
 </revisionlist>
