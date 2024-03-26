@@ -1005,4 +1005,13 @@ Build tested.
     <comment></comment>
     <requestid>1157532</requestid>
   </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>480ed6b61d8f68b27e89d1c62ede3c3d</srcmd5>
+    <version>1.0.4</version>
+    <time>1711477454</time>
+    <user>anag+factory</user>
+    <comment>- Avoid %if %{pkg_vcmp gcc &lt; 8}, instead replicate the condition
+  from the BuildRequires section.</comment>
+    <requestid>1160422</requestid>
+  </revision>
 </revisionlist>

@@ -194,7 +194,7 @@ This package provides the PipeWire shared library.
 Summary:        PipeWire libjack replacement libraries
 Group:          Development/Libraries/C and C++
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description libjack-%{apiver_str}
 PipeWire is a server and user space API to deal with multimedia pipelines.
@@ -396,7 +396,7 @@ sed -ie "s/version : '0.3.72'/version : '%{version}'/" %{P:0}
 %endif
 
 %build
-%if %{pkg_vcmp gcc < 8}
+%if 0%{?suse_version} <= 1500
 export CC=gcc-11
 export CXX=g++-11
 %endif
