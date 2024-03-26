@@ -807,4 +807,14 @@ It does not make sense to double the whole HISTORY of upstream source in .change
 - First import</comment>
     <requestid>1135317</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>9083cc4a239504bd1bf30f7b6f6e845f</srcmd5>
+    <version>5.9.7</version>
+    <time>1711477518</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1160621 from favogt
+
+- BuildRequire pkgconfig(libsystemd) instead of full systemd</comment>
+    <requestid>1160631</requestid>
+  </revision>
 </revisionlist>

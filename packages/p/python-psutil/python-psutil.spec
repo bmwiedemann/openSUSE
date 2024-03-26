@@ -1,7 +1,7 @@
 #
 # spec file for package python-psutil
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,8 +43,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       procps
-BuildRequires:  systemd
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 %if %{with test}
 %if 0%{?suse_version} > 1500
 BuildRequires:  /usr/bin/who
