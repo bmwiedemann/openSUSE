@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-logging
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-logging
-Version:        3.9.0
+Version:        3.10.0
 Release:        0
 Summary:        Stackdriver Logging API client library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/python-logging
 Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-logging/google-cloud-logging-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module google-api-core >= 1.33.2}
 BuildRequires:  %{python_module google-cloud-appengine-logging >= 0.1.0}

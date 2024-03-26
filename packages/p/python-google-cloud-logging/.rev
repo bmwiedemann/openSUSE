@@ -7,4 +7,19 @@
     <comment>initial submission</comment>
     <requestid>1134399</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>36614b43dd1a3cb5ba79ff44aecc7fc4</srcmd5>
+    <version>3.10.0</version>
+    <time>1711477582</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.10.0:
+  * Allow users to explicitly configure universe domain
+  * Added placeholder kwargs to StructuredLogHandler
+  * Allowed for a partial override of loggers that get excluded
+    from setup_client
+  * Remove usage in including_default_value_fields to prepare for
+    protobuf 5.x
+  * Use value of cluster-location in GKE for tagging location</comment>
+    <requestid>1161550</requestid>
+  </revision>
 </revisionlist>

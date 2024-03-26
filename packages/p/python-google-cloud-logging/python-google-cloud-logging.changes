@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 25 20:09:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.10.0:
+  * Allow users to explicitly configure universe domain
+  * Added placeholder kwargs to StructuredLogHandler
+  * Allowed for a partial override of loggers that get excluded
+    from setup_client
+  * Remove usage in including_default_value_fields to prepare for
+    protobuf 5.x
+  * Use value of cluster-location in GKE for tagging location
+
+-------------------------------------------------------------------
 Wed Dec 13 12:59:18 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Initial version (jsc#PED-6697)
