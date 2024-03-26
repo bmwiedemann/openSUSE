@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Mar 26 08:21:08 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
+
+- Version upgrade to 10.03.0:
+  For openSUSE and SUSE Ghostscript is built '--without-tesseract'
+  (see the entry below dated 'Mon Jul 18 07:28:54 UTC 2022').
+  Highlights in this release include:
+  See 'Recent Changes in Ghostscript' at Ghostscript upstream
+  https://ghostscript.readthedocs.io/en/gs10.03.0/News.html
+  * As of this release (10.03.0) pdfwrite creates PDF files
+    with XRef streams and ObjStm streams. This can result in
+    considerably smaller PDF output files. See Vector Devices
+    https://ghostscript.readthedocs.io/en/latest/VectorDevices.html
+    for more details.
+  * Ghostscript/pdfwrite now supports passing through
+    PDF "Optional Content".
+  * Our efforts in code hygiene and maintainability continue.
+  * The usual round of bug fixes, compatibility changes,
+    and incremental improvements.
+  Incompatible changes (the release is listed in parentheses):
+  * (10.03.0) Almost all the "internal" PostScript procedures
+    defined during the interpreter startup are now "executeonly",
+    further reducing the attack surface of the interpreter.
+    The nature of these procedures means there should be no impact
+    for legitimate usage, but it is possible it will impact uses
+    which abuse the previous accessibility (even for legitimate
+    reasons). Such cases may now require "DELAYBIND", See DELAYBIND
+    https://ghostscript.readthedocs.io/en/latest/Use.html#ddelaybind
+  * (10.03.0) The "makeimagedevice" non-standard operator has been
+    removed. It allowed low level access to the graphics library
+    in a way that was, essentially impossible to secure.
+  * (10.03.0) The "putdeviceprops", "getdeviceprops",
+    "finddevice", "copydevice", "findprotodevice" non-standard
+    operators have all been removed. They provided functionality
+    that is either accessible through standard operators,
+    or should not be used by user PostScript.
+  * (10.03.0) The process of "tidying" the PostScript namespace
+    should have removed only non-standard and undocumented
+    operators. Nevertheless, it is possible that any integrations
+    or utilities that rely on those non-standard and undocumented
+    operators may stop working or may change behaviour.
+  If you encounter such a case, please contact us
+  (Discord https://discord.gg/H9GXKwyPvY
+   #ghostscript IRC channel https://web.libera.chat/#ghostscript
+   or the gs-devel mailing list
+   https://www.ghostscript.com/mailman/index.html would be best),
+  but remember that free versions of Ghostscript
+  come with with NO WARRANTY and NO SUPPORT.
+- Ghostscript 10.03.0 contains the fix to build with GCC 14
+  (boo#1221687)
+
+-------------------------------------------------------------------
 Tue Feb 27 10:59:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

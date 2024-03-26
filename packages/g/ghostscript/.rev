@@ -588,4 +588,12 @@
     <comment></comment>
     <requestid>1155021</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>49ce093f1155c0748972491c86d88ee6</srcmd5>
+    <version>10.03.0</version>
+    <time>1711477538</time>
+    <user>anag+factory</user>
+    <comment>Ghostscript version upgrade to 10.03.0 fixes also boo#1221687 (forwarded request 1161673 from jsmeix)</comment>
+    <requestid>1161674</requestid>
+  </revision>
 </revisionlist>
