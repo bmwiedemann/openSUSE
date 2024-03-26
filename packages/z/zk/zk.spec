@@ -1,7 +1,7 @@
 #
 # spec file for package zk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ License:        BSD-2-Clause
 Group:          System/Shells
 URL:            https://github.com/mickael-menu/zk
 Source0:        https://github.com/mickael-menu/zk/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.zstd
+Source1:        vendor.tar.zst
 BuildRequires:  c_compiler
 BuildRequires:  zstd
 BuildRequires:  golang(API)
