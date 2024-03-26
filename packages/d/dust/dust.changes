@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 26 13:47:45 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Remove fix-test-string.patch -- fixed upstream
+- Add package to File utilities group.
+- Update to version 1.0.0:
+  * Update README.md
+  * Better handling for color in terminal
+  * refactor: minimum-size & output-format
+  * refactor: minimum-size
+  * refactor: merge --si and --display-kb
+  * feat: Listen for ctrl-c
+  * feat: display the size of a file or directory in "kilobytes"
+  * feat: better error messages
+  * tests: fix test test_apparent_size (fix-test-string.patch)
+  * tests: Print to stderr when test fails
+
+-------------------------------------------------------------------
 Thu Feb 22 01:57:52 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Reenable tests

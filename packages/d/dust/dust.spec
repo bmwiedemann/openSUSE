@@ -17,14 +17,14 @@
 
 
 Name:           dust
-Version:        0.9.0
+Version:        1.0.0
 Release:        0
 Summary:        A more intuitive version of du
+Group:          Productivity/File utilities
 License:        Apache-2.0
 URL:            https://github.com/bootandy/dust
 Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.zst
-Patch0:         fix-test-string.patch
 BuildRequires:  cargo-packaging
 
 %description
