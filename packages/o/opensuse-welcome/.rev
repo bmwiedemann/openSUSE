@@ -103,4 +103,12 @@
   * Translation updates. (forwarded request 1103483 from dimstar)</comment>
     <requestid>1103493</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>63ef4a3bdd4d863109c8f483242697e1</srcmd5>
+    <version>0.1.9+git.35.4b9444a</version>
+    <time>1711477479</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1160706</requestid>
+  </revision>
 </revisionlist>

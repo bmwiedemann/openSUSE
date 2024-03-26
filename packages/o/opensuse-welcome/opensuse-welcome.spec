@@ -1,7 +1,7 @@
 #
 # spec file for package opensuse-welcome
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,6 +58,9 @@ A welcome utility built to welcome new users to openSUSE.
 
 %install
 %meson_install
+%if %{suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}%{_datadir}/openSUSE-Welcome/*
+%endif
 
 %files
 %license LICENSE
