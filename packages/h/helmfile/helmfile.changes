@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 26 09:22:14 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.163.1:
+  What's Changed
+  * build(deps): bump github.com/helmfile/vals from 0.35.0 to
+    0.36.0 by @dependabot in #1421
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.4 to
+    1.51.5 by @dependabot in #1420
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.5 to
+    1.51.6 by @dependabot in #1422
+  * skip helm dep up for kustomizations by @jouve in #1424
+
+-------------------------------------------------------------------
 Fri Mar 22 08:47:17 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.163.0:
