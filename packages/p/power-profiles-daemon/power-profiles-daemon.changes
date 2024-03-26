@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Mar 13 10:12:35 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
+Wed Feb 21 12:09:15 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Remove duplicate DBus service files net.hadess.PowerProfiles
+
+-------------------------------------------------------------------
+Thu Feb 15 05:53:07 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 0.20:
+  * Service has new name 'org.freedesktop.UPower.PowerProfiles'
+  * Allow multiple power-profiles-daemon drivers to load simultaneously
+  * amdgpu panel power savings which uses dedicated hardware in systems with
+    integrated Radeon graphics to decrease panel power consumption when the
+    system is on battery
+- Add python3-shebang.patch:
+  * resolve env-script-interpreter error
+
+-------------------------------------------------------------------
 Wed Apr 26 15:19:01 UTC 2023 - Enrico Belleri <idesmi@protonmail.com>
 
 - Update to version 0.13:
