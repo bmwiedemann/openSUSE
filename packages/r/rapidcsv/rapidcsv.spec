@@ -17,7 +17,7 @@
 
 
 Name:           rapidcsv
-Version:        8.80
+Version:        8.82
 Release:        0
 Summary:        C++ header-only library for CSV parsing
 License:        BSD-3-Clause

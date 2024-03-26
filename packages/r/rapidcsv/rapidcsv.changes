@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 23 07:47:04 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to version 8.82:
+  * handle trailing comment line without linebreak
+  * fix for whitespaced quoted separators
+
+-------------------------------------------------------------------
 Fri Jan  5 10:12:15 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Update to version 8.80:
