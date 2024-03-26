@@ -165,10 +165,10 @@ make config PREFIX="%{_prefix}" LIBDIR="%{_libdir}" SHAREDDIR=%{_datadir} FEATUR
 mkdir -p %{buildroot}/%{_docdir}
 mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}/%{_docdir}/
 
+%fdupes -s %{buildroot}%{_libdir}
+
 %post common -p /sbin/ldconfig
 %postun common -p /sbin/ldconfig
-
-%fdupes -s %{buildroot}%{_libdir}
 
 %files
 %{_bindir}/%{name}-*
