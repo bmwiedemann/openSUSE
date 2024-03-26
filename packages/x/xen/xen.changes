@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Mar 25 15:30:00 CET 2024 - jbeulich@suse.com
+
+- bsc#1221334 - VUL-0: CVE-2024-2193: xen: GhostRace: Speculative
+  Race Conditions (XSA-453)
+  65f83951-x86-mm-use-block_lock_speculation-in.patch
+
+-------------------------------------------------------------------
+Fri Mar 15 10:11:56 MDT 2024 - carnold@suse.com
+
+- Update to Xen 4.18.1 bug fix release (bsc#1027519)
+  xen-4.18.1-testing-src.tar.bz2
+  * No upstream changelog found in sources or webpage
+- bsc#1221332 - VUL-0: CVE-2023-28746: xen: x86: Register File Data
+  Sampling (XSA-452)
+- bsc#1221334 - VUL-0: CVE-2024-2193: xen: GhostRace: Speculative
+  Race Conditions (XSA-453)
+- Dropped patches included in new tarball
+  654370e2-x86-x2APIC-remove-ACPI_FADT_APIC_CLUSTER-use.patch
+  65437103-x86-i8259-dont-assume-IRQs-always-target-CPU0.patch
+  655b2ba9-fix-sched_move_domain.patch
+  6566fef3-x86-vLAPIC-x2APIC-derive-LDR-from-APIC-ID.patch
+  6569ad03-libxg-mem-leak-in-cpu-policy-get-set.patch
+  656ee5e1-x86emul-avoid-triggering-event-assertions.patch
+  656ee602-cpupool-adding-offline-CPU.patch
+  656ee6c3-domain_create-error-path.patch
+  6571ca95-fix-sched_move_domain.patch
+  6578598c-Arm-avoid-pointer-overflow-on-invalidate.patch
+  65842d5c-x86-AMD-extend-CPU-erratum-1474-fix.patch
+  65a7a0a4-x86-Intel-GPCC-setup.patch
+  65a9911a-VMX-IRQ-handling-for-EXIT_REASON_INIT.patch
+  65b27990-x86-p2m-pt-off-by-1-in-entry-check.patch
+  65b29e91-x86-ucode-stability-of-raw-policy-rescan.patch
+  65b8f961-PCI-fail-dev-assign-if-phantom-functions.patch
+  65b8f9ab-VT-d-else-vs-endif-misplacement.patch
+  xsa451.patch
+
+-------------------------------------------------------------------
 Tue Feb 13 09:35:57 MST 2024 - carnold@suse.com
 
 - bsc#1219885 - VUL-0: CVE-2023-46841: xen: x86: shadow stack vs
