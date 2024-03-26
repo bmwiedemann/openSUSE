@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 22 09:15:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.3
+  * Partial fix: Too many "stalled" uploads can deadlock
+    the S3 Client by @graebm in (#417)
+  * Auto-Update S3 Ruleset & Partition by @waahm7 in (#408)
+- from version 0.5.2
+  * Stop limiting num-connections based on num-known-IPs
+    (Improve S3-Express performance) by @graebm in (#407)
+
+-------------------------------------------------------------------
 Tue Feb 20 11:15:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
