@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-httpx
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-httpx%{psuffix}
-Version:        0.26.0
+Version:        0.27.0
 Release:        0
 Summary:        Python HTTP client with async support
 License:        BSD-3-Clause
@@ -51,7 +51,7 @@ Recommends:     python-click >= 8
 Recommends:     python-h2 >= 3.0
 Recommends:     python-rich >= 10
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}

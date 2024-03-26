@@ -234,4 +234,18 @@
   * Ensure `Response.iter_text()` cannot yield empty strings.</comment>
     <requestid>1137276</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>23c44b101e34fe5607866791874f63f4</srcmd5>
+    <version>0.27.0</version>
+    <time>1711477517</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1160604 from mcalabkova
+
+- Update to 0.27.0
+    * The app=... shortcut has been deprecated. Use the explicit style of 
+      transport=httpx.WSGITransport() or transport=httpx.ASGITransport() instead.
+    * Respect the http1 argument while configuring proxy transports. (#3023)
+    * Fix RFC 2069 mode digest authentication. (#3045)</comment>
+    <requestid>1160630</requestid>
+  </revision>
 </revisionlist>
