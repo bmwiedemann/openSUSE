@@ -17,9 +17,9 @@
 
 
 %bcond_with     tex4auto
-%define tlversion 2023
+%define tlversion 2024
 %if %{undefined ext_el}
-%define ext_el    .gz
+%define ext_el  .gz
 %endif
 
 Name:           emacs-auctex
@@ -36,11 +36,11 @@ BuildRequires:  makeinfo
 BuildRequires:  texinfo
 %if %{with tex4auto}
 BuildRequires:  ghostscript_any
-BuildRequires:  texlive
-BuildRequires:  texlive-collection-latexextra
-BuildRequires:  texlive-latex
-BuildRequires:  texlive-tex
-BuildRequires:  texlive-texinfo
+BuildRequires:  texlive >= %tlversion
+BuildRequires:  texlive-collection-latexextra >= %tlversion
+BuildRequires:  texlive-latex >= %tlversion
+BuildRequires:  texlive-tex >= %tlversion
+BuildRequires:  texlive-texinfo >= %tlversion
 %endif
 Version:        13.3
 Release:        0
@@ -112,10 +112,10 @@ you cannot use this package for XEmacs.
 %if %{with tex4auto}
 	pwd
 	echo "Run the command TeX-auto-generate-global in mini buffer"
-	emacs-gtk -Q -L %{buildroot}%{_sitedir}/auctex 				\
+	emacs-gtk -batch -Q -L %{buildroot}%{_sitedir}/auctex 			\
 	    --eval '(setq TeX-lisp-directory "%{buildroot}%{_aucdir}")'		\
 	    --eval '(setq TeX-auto-global "%{buildroot}%{_aucdir}/auto")'	\
-	    -l %{buildroot}%{_sitedir}/tex-site.el
+	    -l %{buildroot}%{_sitedir}/tex-site.el -f TeX-auto-generate-global
 	exit 1
 %else
 	TLVERSION=$(rpm -q --qf '%%{VERSION}' -f /etc/texmf)

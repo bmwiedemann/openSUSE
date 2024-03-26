@@ -530,4 +530,12 @@
   * AUCTeX no longer refuses to insert dollar sign when you type ‘$’ at</comment>
     <requestid>1145462</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>c5d5e28f594e4670b68cceeec92ab20d</srcmd5>
+    <version>13.3</version>
+    <time>1711477694</time>
+    <user>anag+factory</user>
+    <comment>- Generate auctex-13.3-auto-TL-2024.tar.xz for TeXLive 2024</comment>
+    <requestid>1162284</requestid>
+  </revision>
 </revisionlist>
