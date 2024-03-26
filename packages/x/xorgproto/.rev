@@ -198,4 +198,15 @@ definitions updates:</comment>
     being updated in xorgproto-2023.1.</comment>
     <requestid>1093477</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e31dca5a4b8fa01ca4d483dea71b38a7</srcmd5>
+    <version>2024.1</version>
+    <time>1711477541</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2024.1
+  * updates for the DRI3 and Present protocol definitions to support
+    explicit synchronization and other keysyms/keydefs fixes and
+    improvements.</comment>
+    <requestid>1161687</requestid>
+  </revision>
 </revisionlist>

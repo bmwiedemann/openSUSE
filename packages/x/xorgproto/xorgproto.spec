@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define srcname xorgproto
 
 Name:           %{srcname}%{psuffix}
-Version:        2023.2
+Version:        2024.1
 Release:        0
 %if "%{flavor}" == "doc"
 Summary:        The X11 Protocol collection (documentation)
