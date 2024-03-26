@@ -16,10 +16,9 @@
 #
 
 
-# version also present in shared.diff
-%define lname libVulkanLayerSettings-1_3_275_0
+%define lname libVulkanLayerSettings-1_3_280_0
 Name:           vulkan-utility-libraries
-Version:        1.3.275.0
+Version:        1.3.280.0
 Release:        0
 Summary:        Utility libraries for Vulkan
 License:        Apache-2.0
@@ -34,7 +33,7 @@ BuildRequires:  c++_compiler
 %endif
 BuildRequires:  cmake >= 3.17.2
 BuildRequires:  pkg-config
-BuildRequires:  vulkan-headers >= 1.3.275
+BuildRequires:  vulkan-headers >= 1.3.280
 Obsoletes:      vulkan < %version-%release
 Provides:       vulkan = %version-%release
 
@@ -67,6 +66,7 @@ This package contains the headers and build system integration.
 
 %prep
 %autosetup -p1 -n Vulkan-Utility-Libraries-vulkan-sdk-%version
+find . -type f -name CMakeLists.txt -exec perl -i -lpe 's{\@PACKAGE_VERSION\@}{%version}g' {} +
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} < 1599
@@ -80,8 +80,7 @@ export CC=gcc-11 CXX=g++-11
 %cmake_install
 ln -s libVulkanLayerSettings-%version.so "%buildroot/%_libdir/libVulkanLayerSettings.so"
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %_libdir/libVulkanLayerSettings-*.so
