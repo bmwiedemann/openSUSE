@@ -17,7 +17,8 @@
 
 
 Name:           vulkan-volk
-Version:        1.3.275.0
+%define lname libvolk-1_3_280_0
+Version:        1.3.280.0
 Release:        0
 Summary:        Meta loader for the Vulkan API
 License:        MIT
@@ -33,12 +34,12 @@ BuildRequires:  pkgconfig(vulkan)
 %description
 A meta loader for Vulkan.
 
-%package -n libvolk
+%package -n %lname
 Summary:        Meta loader for the Vulkan API
 Group:          System/Libraries
 Conflicts:      volk-devel
 
-%description -n libvolk
+%description -n %lname
 volk is a meta loader for Vulkan. It loads entrypoints required to
 use Vulkan by means of dlopen-ing libvulkan.so.1. volk simplifies the
 use of Vulkan extensions by loading all associated entrypoints. volk
@@ -48,7 +49,7 @@ increase performance by skipping loader dispatch overhead.
 %package devel
 Summary:        Headers for the Vulkan meta loader
 Group:          Development/Libraries/C and C++
-Requires:       libvolk = %version-%release
+Requires:       %lname = %version-%release
 # -lvolk is logically ambiguous, so block this package mix even
 # if the filesets do not overlap at all times.
 # https://github.com/zeux/volk/issues/166
@@ -59,28 +60,25 @@ Headers needed for programs to utilize the Vulkan VOLK meta loader.
 
 %prep
 %autosetup -p1 -n volk-vulkan-sdk-%version
+perl -i -lpe 's{\@PACKAGE_VERSION\@}{%version}g' CMakeLists.txt
 
 %build
-# Minimal re-versioning so rpm detects upgrades at least. Might change later.
-sv="$PWD/lib.v"
-ver=$(echo %version | cut -d+ -f1)
-echo "VOLK_$ver { global: *; };" >"$sv"
-%cmake -DVOLK_INSTALL=ON \
-        -DCMAKE_SHARED_LINKER_FLAGS:STRING="-Wl,--version-script=$sv"
+%cmake -DVOLK_INSTALL=ON
 %cmake_build
 
 %install
 %cmake_install
+ln -s libvolk-%version.so "%buildroot/%_libdir/libvolk.so"
 
-%post   -n libvolk -p /sbin/ldconfig
-%postun -n libvolk -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
-%files -n libvolk
-%_libdir/libvolk.so
+%files -n %lname
+%_libdir/libvolk-%version.so
 
 %files devel
 %_includedir/volk*
 %_libdir/cmake/
+%_libdir/libvolk.so
 %doc LICENSE.md README.md
 
 %changelog
