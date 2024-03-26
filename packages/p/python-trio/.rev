@@ -190,4 +190,23 @@
     <comment></comment>
     <requestid>1138213</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1c6eff5b1c5eec81f18f9c3ce160edb7</srcmd5>
+    <version>0.25.0</version>
+    <time>1711477470</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1160593 from mcalabkova
+
+- Update to 0.25.0
+    * New helper classes: RaisesGroup and Matcher.
+    * MultiError has been fully removed, and all relevant trio 
+      functions now raise ExceptionGroups instead.
+    * The strict_exception_groups parameter now defaults to True 
+      in trio.run and trio.lowlevel.start_guest_run.
+    * Add trio.testing.wait_all_threads_completed, which blocks 
+      until no threads are running tasks.
+    * Path is now a subclass of pathlib.PurePath, allowing it to 
+      interoperate with other standard pathlib types.</comment>
+    <requestid>1160629</requestid>
+  </revision>
 </revisionlist>

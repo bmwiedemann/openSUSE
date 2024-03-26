@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-trio
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-trio%{psuffix}
-Version:        0.23.2
+Version:        0.25.0
 Release:        0
 Summary:        Python async/await-native I/O library
 License:        Apache-2.0 OR MIT
