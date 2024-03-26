@@ -24,7 +24,7 @@
 %define with_zeitgeist  0
 
 Name:           folks
-Version:        0.15.8
+Version:        0.15.9
 Release:        0
 Summary:        Library to create metacontacts from multiple sources
 License:        LGPL-2.1-or-later
