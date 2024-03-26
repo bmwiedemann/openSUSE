@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package libinput
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -163,6 +163,9 @@ done
 %endif
 
 %fdupes %buildroot/%_prefix
+%if %{suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}%{_libexecdir}/libinput/*
+%endif
 
 %ldconfig_scriptlets -n %lname
 

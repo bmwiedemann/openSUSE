@@ -1019,4 +1019,12 @@ Peter Hutterer (3):
     <comment>- Update to release 1.25</comment>
     <requestid>1138796</requestid>
   </revision>
+  <revision rev="118" vrev="2">
+    <srcmd5>ad185889e32cdba0fc306f734b628da8</srcmd5>
+    <version>1.25.0</version>
+    <time>1711477542</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1161704</requestid>
+  </revision>
 </revisionlist>
