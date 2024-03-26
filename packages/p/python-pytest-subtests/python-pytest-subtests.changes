@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 25 15:00:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.1:
+  * Fixed compatibility with upcoming pytest 8.1.x.  (#125).
+  * Python 3.12 is now officially supported (#113).
+  * Added typing support (#115).
+  * SubTests can be imported from pytest_subtests to type-
+    annotate the subtests fixture.
+
+-------------------------------------------------------------------
 Wed May 31 19:44:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.0:

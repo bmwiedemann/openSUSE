@@ -103,4 +103,17 @@
     running pytest with ``-v``.</comment>
     <requestid>1090087</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f79cbabfc8650d277e7134deedb2acfe</srcmd5>
+    <version>0.12.1</version>
+    <time>1711477487</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.12.1:
+  * Fixed compatibility with upcoming pytest 8.1.x.  (#125).
+  * Python 3.12 is now officially supported (#113).
+  * Added typing support (#115).
+  * SubTests can be imported from pytest_subtests to type-
+    annotate the subtests fixture.</comment>
+    <requestid>1161446</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-subtests
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-subtests
-Version:        0.11.0
+Version:        0.12.1
 Release:        0
 Summary:        Python unittest subTest() support and subtests fixture
 License:        MIT
@@ -55,8 +55,7 @@ Python unittest subTest() support and subtests fixture.
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE
-%{python_sitelib}/pytest_subtests.py*
-%pycache_only %{python_sitelib}/__pycache__/pytest_subtests*.pyc
-%{python_sitelib}/pytest_subtests-%{version}*-info
+%{python_sitelib}/pytest_subtests
+%{python_sitelib}/pytest_subtests-%{version}.dist-info
 
 %changelog
