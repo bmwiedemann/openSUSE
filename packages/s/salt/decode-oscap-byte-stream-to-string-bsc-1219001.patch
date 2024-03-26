@@ -1,0 +1,80 @@
+From 45b97042766e15a4336b141b40a03d68156771bc Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Thu, 14 Mar 2024 16:16:02 +0100
+Subject: [PATCH] Decode oscap byte stream to string (bsc#1219001)
+
+---
+ salt/modules/openscap.py            |  5 +++--
+ tests/unit/modules/test_openscap.py | 10 +++++-----
+ 2 files changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/salt/modules/openscap.py b/salt/modules/openscap.py
+index 216fd89eef..89712ae722 100644
+--- a/salt/modules/openscap.py
++++ b/salt/modules/openscap.py
+@@ -152,10 +152,11 @@ def xccdf_eval(xccdffile, ovalfiles=None, **kwargs):
+     if success:
+         tempdir = tempfile.mkdtemp()
+         proc = Popen(cmd_opts, stdout=PIPE, stderr=PIPE, cwd=tempdir)
+-        (stdoutdata, error) = proc.communicate()
++        (_, error) = proc.communicate()
++        error = error.decode('ascii', errors='ignore')
+         success = _OSCAP_EXIT_CODES_MAP.get(proc.returncode, False)
+         if proc.returncode < 0:
+-            error += "\nKilled by signal {}\n".format(proc.returncode).encode('ascii')
++            error += "\nKilled by signal {}\n".format(proc.returncode)
+         returncode = proc.returncode
+         if success:
+             __salt__["cp.push_dir"](tempdir)
+diff --git a/tests/unit/modules/test_openscap.py b/tests/unit/modules/test_openscap.py
+index 301c1869ec..6fbdfed7cf 100644
+--- a/tests/unit/modules/test_openscap.py
++++ b/tests/unit/modules/test_openscap.py
+@@ -218,7 +218,7 @@ class OpenscapTestCase(TestCase):
+             "salt.modules.openscap.Popen",
+             MagicMock(
+                 return_value=Mock(
+-                    **{"returncode": 0, "communicate.return_value": ("", "")}
++                    **{"returncode": 0, "communicate.return_value": (bytes(0), bytes(0))}
+                 )
+             ),
+         ):
+@@ -269,7 +269,7 @@ class OpenscapTestCase(TestCase):
+             "salt.modules.openscap.Popen",
+             MagicMock(
+                 return_value=Mock(
+-                    **{"returncode": 0, "communicate.return_value": ("", "")}
++                    **{"returncode": 0, "communicate.return_value": (bytes(0), bytes(0))}
+                 )
+             ),
+         ):
+@@ -323,7 +323,7 @@ class OpenscapTestCase(TestCase):
+             "salt.modules.openscap.Popen",
+             MagicMock(
+                 return_value=Mock(
+-                    **{"returncode": 2, "communicate.return_value": ("", "some error")}
++                    **{"returncode": 2, "communicate.return_value": (bytes(0), bytes("some error", "UTF-8"))}
+                 )
+             ),
+         ):
+@@ -374,7 +374,7 @@ class OpenscapTestCase(TestCase):
+             "salt.modules.openscap.Popen",
+             MagicMock(
+                 return_value=Mock(
+-                    **{"returncode": 2, "communicate.return_value": ("", "some error")}
++                    **{"returncode": 2, "communicate.return_value": (bytes(0), bytes("some error", "UTF-8"))}
+                 )
+             ),
+         ):
+@@ -423,7 +423,7 @@ class OpenscapTestCase(TestCase):
+                 return_value=Mock(
+                     **{
+                         "returncode": 1,
+-                        "communicate.return_value": ("", "evaluation error"),
++                        "communicate.return_value": (bytes(0), bytes("evaluation error", "UTF-8")),
+                     }
+                 )
+             ),
+-- 
+2.43.0
+

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Mar 26 08:44:29 UTC 2024 - Marek Czernek <marek.czernek@suse.com>
+
+- Convert oscap output to UTF-8
+
+- Added:
+  * switch-oscap-encoding-to-utf-8-639.patch
+
+-------------------------------------------------------------------
+Thu Mar 21 13:14:03 UTC 2024 - Marek Czernek <marek.czernek@suse.com>
+
+- Make Salt compatible with Python 3.11
+
+- Added:
+  * fix-salt-warnings-and-testuite-for-python-3.11-635.patch
+
+-------------------------------------------------------------------
+Fri Mar 15 10:00:35 UTC 2024 - Yeray Gutiérrez Cedrés <yeray.gutierrez@suse.com>
+
+- Ignore non-ascii chars in oscap output (bsc#1219001)
+
+- Added:
+  * decode-oscap-byte-stream-to-string-bsc-1219001.patch
+
+-------------------------------------------------------------------
 Thu Mar 14 13:11:21 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Fix detected issues in Salt tests when running on VMs

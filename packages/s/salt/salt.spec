@@ -357,6 +357,19 @@ Patch101:       fix-problematic-tests-and-allow-smooth-tests-executi.patch
 Patch102:       make-importing-seco.range-thread-safe-bsc-1211649.patch
 # PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/66130
 PAtch103:       fix-tests-failures-and-errors-when-detected-on-vm-ex.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/66234 (modified at Patch106)
+Patch104:       decode-oscap-byte-stream-to-string-bsc-1219001.patch
+### Commits to make Salt compatible with Python 3.11 (and 3.6)
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/commit/d92b5423464f93da6e3feb47d05a9acef8da75f9
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/commit/60b36489225f958772b6a2f99d8fe6ae33ee9d73
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/commit/eee0eca5e48922e5e404f812ced08ca7484bb568
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/commit/991f7cf0a7baf08a31194ce52f4ec08290db8e52
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/commit/2688c86f45eea9f8a6b916fcdf8eb94b3f5e185b
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/commit/a1873a1d6d50d1769ddef528d7442e38aba9de23
+# PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/commit/c7ecccb0a080ca9cca097f760ef0992ab34f82df
+Patch105:       fix-salt-warnings-and-testuite-for-python-3.11-635.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/639
+Patch106:       switch-oscap-encoding-to-utf-8-639.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END

@@ -1,0 +1,3860 @@
+From cdb7211920c9256942518fbcf3bd627a70a99855 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Mon, 18 Mar 2024 09:15:08 +0100
+Subject: [PATCH] Fix Salt warnings and testuite for Python 3.11 (#635)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* Switch to `FullArgSpec` since Py 3.11 no longer has `ArgSpec`, deprecated since Py 3.0
+
+Signed-off-by: Pedro Algarvio <palgarvio@vmware.com>
+
+* Backport `locale.getdefaultlocale()` into Salt. It's getting removed in Py 3.13
+
+Signed-off-by: Pedro Algarvio <palgarvio@vmware.com>
+
+* Stop using the deprecated `pipes` module
+
+Signed-off-by: Pedro Algarvio <palgarvio@vmware.com>
+
+* Stop using the deprecated `cgi` module.
+
+Signed-off-by: Pedro Algarvio <palgarvio@vmware.com>
+
+* Add `__getstate__` to blacklisted methods, present in Py 3.11
+
+Signed-off-by: Pedro Algarvio <palgarvio@vmware.com>
+
+* Fix test_state test
+
+* Use proper keys since Python's base64 in Py3.11 is more picky
+
+```
+❯ artifacts/salt/bin/python3
+Python 3.10.11 (main, May  5 2023, 02:31:54) [GCC 11.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import base64
+>>> base64.b64decode("AAAAB3NzaC1kcQ9J5bYTEyZ==", validate=True)
+b'\x00\x00\x00\x07ssh-dq\x0fI\xe5\xb6\x13\x13&'
+```
+```
+$ artifacts/salt/bin/python3
+Python 3.11.3 (main, May  5 2023, 02:31:40) [GCC 11.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import base64
+>>> base64.b64decode("AAAAB3NzaC1kcQ9J5bYTEyZ==", validate=True)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/tmp/testing/artifacts/salt/lib/python3.11/base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Excess data after padding
+```
+
+Signed-off-by: Pedro Algarvio <palgarvio@vmware.com>
+
+---------
+
+Signed-off-by: Pedro Algarvio <palgarvio@vmware.com>
+Co-authored-by: Pedro Algarvio <palgarvio@vmware.com>
+Co-authored-by: Marek Czernek <marek.czernek@suse.com>
+---
+ salt/__init__.py                              |  43 ++-
+ salt/grains/core.py                           | 108 +++----
+ salt/modules/container_resource.py            |  74 ++---
+ salt/modules/deb_postgres.py                  |  16 +-
+ salt/modules/dockermod.py                     | 178 +++++------
+ salt/modules/lxc.py                           |  50 +--
+ salt/modules/mac_keychain.py                  |  32 +-
+ salt/modules/macpackage.py                    |  45 +--
+ salt/modules/openstack_config.py              |  41 +--
+ salt/modules/postgres.py                      | 116 +++----
+ salt/utils/cloud.py                           | 300 ++++++++----------
+ salt/utils/http.py                            |  48 ++-
+ salt/utils/jinja.py                           |  25 +-
+ salt/utils/locales.py                         |  39 ++-
+ tests/integration/states/test_ssh_auth.py     |  50 ++-
+ .../pytests/unit/modules/state/test_state.py  |   2 +-
+ tests/unit/states/test_module.py              |  56 ++--
+ tests/unit/test_master.py                     |   8 +-
+ 18 files changed, 586 insertions(+), 645 deletions(-)
+
+diff --git a/salt/__init__.py b/salt/__init__.py
+index e06b8ad7127..b5fe3677c22 100644
+--- a/salt/__init__.py
++++ b/salt/__init__.py
+@@ -72,6 +72,44 @@ warnings.filterwarnings(
+ )
+ 
+ 
++def __getdefaultlocale(envvars=("LC_ALL", "LC_CTYPE", "LANG", "LANGUAGE")):
++    """
++    This function was backported from Py3.11 which started triggering a
++    deprecation warning about it's removal in 3.13.
++    """
++    import locale
++
++    try:
++        # check if it's supported by the _locale module
++        import _locale
++
++        code, encoding = _locale._getdefaultlocale()
++    except (ImportError, AttributeError):
++        pass
++    else:
++        # make sure the code/encoding values are valid
++        if sys.platform == "win32" and code and code[:2] == "0x":
++            # map windows language identifier to language name
++            code = locale.windows_locale.get(int(code, 0))
++        # ...add other platform-specific processing here, if
++        # necessary...
++        return code, encoding
++
++    # fall back on POSIX behaviour
++    import os
++
++    lookup = os.environ.get
++    for variable in envvars:
++        localename = lookup(variable, None)
++        if localename:
++            if variable == "LANGUAGE":
++                localename = localename.split(":")[0]
++            break
++    else:
++        localename = "C"
++    return locale._parse_localename(localename)
++
++
+ def __define_global_system_encoding_variable__():
+     import sys
+ 
+@@ -90,17 +128,14 @@ def __define_global_system_encoding_variable__():
+         # If the system is properly configured this should return a valid
+         # encoding. MS Windows has problems with this and reports the wrong
+         # encoding
+-        import locale
+ 
+         try:
+-            encoding = locale.getdefaultlocale()[-1]
++            encoding = __getdefaultlocale()[-1]
+         except ValueError:
+             # A bad locale setting was most likely found:
+             #   https://github.com/saltstack/salt/issues/26063
+             pass
+ 
+-        # This is now garbage collectable
+-        del locale
+         if not encoding:
+             # This is most likely ascii which is not the best but we were
+             # unable to find a better encoding. If this fails, we fall all
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index 5c125563461..4454c303fed 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -11,7 +11,6 @@ as those returned here
+ 
+ import datetime
+ import hashlib
+-import locale
+ import logging
+ import os
+ import platform
+@@ -34,6 +33,7 @@ import salt.modules.smbios
+ import salt.utils.args
+ import salt.utils.dns
+ import salt.utils.files
++import salt.utils.locales
+ import salt.utils.network
+ import salt.utils.path
+ import salt.utils.pkg.rpm
+@@ -290,7 +290,7 @@ def _linux_gpu_data():
+ 
+     devs = []
+     try:
+-        lspci_out = __salt__["cmd.run"]("{} -vmm".format(lspci))
++        lspci_out = __salt__["cmd.run"](f"{lspci} -vmm")
+ 
+         cur_dev = {}
+         error = False
+@@ -364,7 +364,7 @@ def _netbsd_gpu_data():
+         for line in pcictl_out.splitlines():
+             for vendor in known_vendors:
+                 vendor_match = re.match(
+-                    r"[0-9:]+ ({}) (.+) \(VGA .+\)".format(vendor), line, re.IGNORECASE
++                    rf"[0-9:]+ ({vendor}) (.+) \(VGA .+\)", line, re.IGNORECASE
+                 )
+                 if vendor_match:
+                     gpus.append(
+@@ -426,18 +426,18 @@ def _bsd_cpudata(osdata):
+     if sysctl:
+         cmds.update(
+             {
+-                "num_cpus": "{} -n hw.ncpu".format(sysctl),
+-                "cpuarch": "{} -n hw.machine".format(sysctl),
+-                "cpu_model": "{} -n hw.model".format(sysctl),
++                "num_cpus": f"{sysctl} -n hw.ncpu",
++                "cpuarch": f"{sysctl} -n hw.machine",
++                "cpu_model": f"{sysctl} -n hw.model",
+             }
+         )
+ 
+     if arch and osdata["kernel"] == "OpenBSD":
+-        cmds["cpuarch"] = "{} -s".format(arch)
++        cmds["cpuarch"] = f"{arch} -s"
+ 
+     if osdata["kernel"] == "Darwin":
+-        cmds["cpu_model"] = "{} -n machdep.cpu.brand_string".format(sysctl)
+-        cmds["cpu_flags"] = "{} -n machdep.cpu.features".format(sysctl)
++        cmds["cpu_model"] = f"{sysctl} -n machdep.cpu.brand_string"
++        cmds["cpu_flags"] = f"{sysctl} -n machdep.cpu.features"
+ 
+     grains = {k: __salt__["cmd.run"](v) for k, v in cmds.items()}
+ 
+@@ -522,7 +522,7 @@ def _aix_cpudata():
+     grains = {}
+     cmd = salt.utils.path.which("prtconf")
+     if cmd:
+-        data = __salt__["cmd.run"]("{}".format(cmd)) + os.linesep
++        data = __salt__["cmd.run"](f"{cmd}") + os.linesep
+         for dest, regstring in (
+             ("cpuarch", r"(?im)^\s*Processor\s+Type:\s+(\S+)"),
+             ("cpu_flags", r"(?im)^\s*Processor\s+Version:\s+(\S+)"),
+@@ -568,9 +568,9 @@ def _osx_memdata():
+ 
+     sysctl = salt.utils.path.which("sysctl")
+     if sysctl:
+-        mem = __salt__["cmd.run"]("{} -n hw.memsize".format(sysctl))
++        mem = __salt__["cmd.run"](f"{sysctl} -n hw.memsize")
+         swap_total = (
+-            __salt__["cmd.run"]("{} -n vm.swapusage".format(sysctl))
++            __salt__["cmd.run"](f"{sysctl} -n vm.swapusage")
+             .split()[2]
+             .replace(",", ".")
+         )
+@@ -595,20 +595,20 @@ def _bsd_memdata(osdata):
+ 
+     sysctl = salt.utils.path.which("sysctl")
+     if sysctl:
+-        mem = __salt__["cmd.run"]("{} -n hw.physmem".format(sysctl))
++        mem = __salt__["cmd.run"](f"{sysctl} -n hw.physmem")
+         if osdata["kernel"] == "NetBSD" and mem.startswith("-"):
+-            mem = __salt__["cmd.run"]("{} -n hw.physmem64".format(sysctl))
++            mem = __salt__["cmd.run"](f"{sysctl} -n hw.physmem64")
+         grains["mem_total"] = int(mem) // 1024 // 1024
+ 
+         if osdata["kernel"] in ["OpenBSD", "NetBSD"]:
+             swapctl = salt.utils.path.which("swapctl")
+-            swap_data = __salt__["cmd.run"]("{} -sk".format(swapctl))
++            swap_data = __salt__["cmd.run"](f"{swapctl} -sk")
+             if swap_data == "no swap devices configured":
+                 swap_total = 0
+             else:
+                 swap_total = swap_data.split(" ")[1]
+         else:
+-            swap_total = __salt__["cmd.run"]("{} -n vm.swap_total".format(sysctl))
++            swap_total = __salt__["cmd.run"](f"{sysctl} -n vm.swap_total")
+         grains["swap_total"] = int(swap_total) // 1024 // 1024
+     return grains
+ 
+@@ -626,7 +626,7 @@ def _sunos_memdata():
+             grains["mem_total"] = int(comps[2].strip())
+ 
+     swap_cmd = salt.utils.path.which("swap")
+-    swap_data = __salt__["cmd.run"]("{} -s".format(swap_cmd)).split()
++    swap_data = __salt__["cmd.run"](f"{swap_cmd} -s").split()
+     try:
+         swap_avail = int(swap_data[-2][:-1])
+         swap_used = int(swap_data[-4][:-1])
+@@ -654,7 +654,7 @@ def _aix_memdata():
+ 
+     swap_cmd = salt.utils.path.which("swap")
+     if swap_cmd:
+-        swap_data = __salt__["cmd.run"]("{} -s".format(swap_cmd)).split()
++        swap_data = __salt__["cmd.run"](f"{swap_cmd} -s").split()
+         try:
+             swap_total = (int(swap_data[-2]) + int(swap_data[-6])) * 4
+         except ValueError:
+@@ -707,7 +707,7 @@ def _aix_get_machine_id():
+     grains = {}
+     cmd = salt.utils.path.which("lsattr")
+     if cmd:
+-        data = __salt__["cmd.run"]("{} -El sys0".format(cmd)) + os.linesep
++        data = __salt__["cmd.run"](f"{cmd} -El sys0") + os.linesep
+         uuid_regexes = [re.compile(r"(?im)^\s*os_uuid\s+(\S+)\s+(.*)")]
+         for regex in uuid_regexes:
+             res = regex.search(data)
+@@ -1018,7 +1018,7 @@ def _virtual(osdata):
+                     subtype_cmd = "{} -c current get -H -o value {}-role".format(
+                         command, role
+                     )
+-                    ret = __salt__["cmd.run"]("{}".format(subtype_cmd))
++                    ret = __salt__["cmd.run"](f"{subtype_cmd}")
+                     if ret == "true":
+                         roles.append(role)
+                 if roles:
+@@ -1164,14 +1164,14 @@ def _virtual(osdata):
+     elif osdata["kernel"] == "FreeBSD":
+         kenv = salt.utils.path.which("kenv")
+         if kenv:
+-            product = __salt__["cmd.run"]("{} smbios.system.product".format(kenv))
+-            maker = __salt__["cmd.run"]("{} smbios.system.maker".format(kenv))
++            product = __salt__["cmd.run"](f"{kenv} smbios.system.product")
++            maker = __salt__["cmd.run"](f"{kenv} smbios.system.maker")
+             if product.startswith("VMware"):
+                 grains["virtual"] = "VMware"
+             if product.startswith("VirtualBox"):
+                 grains["virtual"] = "VirtualBox"
+             if maker.startswith("Xen"):
+-                grains["virtual_subtype"] = "{} {}".format(maker, product)
++                grains["virtual_subtype"] = f"{maker} {product}"
+                 grains["virtual"] = "xen"
+             if maker.startswith("Microsoft") and product.startswith("Virtual"):
+                 grains["virtual"] = "VirtualPC"
+@@ -1182,9 +1182,9 @@ def _virtual(osdata):
+             if maker.startswith("Amazon EC2"):
+                 grains["virtual"] = "Nitro"
+         if sysctl:
+-            hv_vendor = __salt__["cmd.run"]("{} -n hw.hv_vendor".format(sysctl))
+-            model = __salt__["cmd.run"]("{} -n hw.model".format(sysctl))
+-            jail = __salt__["cmd.run"]("{} -n security.jail.jailed".format(sysctl))
++            hv_vendor = __salt__["cmd.run"](f"{sysctl} -n hw.hv_vendor")
++            model = __salt__["cmd.run"](f"{sysctl} -n hw.model")
++            jail = __salt__["cmd.run"](f"{sysctl} -n security.jail.jailed")
+             if "bhyve" in hv_vendor:
+                 grains["virtual"] = "bhyve"
+             elif "QEMU Virtual CPU" in model:
+@@ -1200,22 +1200,19 @@ def _virtual(osdata):
+     elif osdata["kernel"] == "NetBSD":
+         if sysctl:
+             if "QEMU Virtual CPU" in __salt__["cmd.run"](
+-                "{} -n machdep.cpu_brand".format(sysctl)
++                f"{sysctl} -n machdep.cpu_brand"
+             ):
+                 grains["virtual"] = "kvm"
+             elif "invalid" not in __salt__["cmd.run"](
+-                "{} -n machdep.xen.suspend".format(sysctl)
++                f"{sysctl} -n machdep.xen.suspend"
+             ):
+                 grains["virtual"] = "Xen PV DomU"
+             elif "VMware" in __salt__["cmd.run"](
+-                "{} -n machdep.dmi.system-vendor".format(sysctl)
++                f"{sysctl} -n machdep.dmi.system-vendor"
+             ):
+                 grains["virtual"] = "VMware"
+             # NetBSD has Xen dom0 support
+-            elif (
+-                __salt__["cmd.run"]("{} -n machdep.idle-mechanism".format(sysctl))
+-                == "xen"
+-            ):
++            elif __salt__["cmd.run"](f"{sysctl} -n machdep.idle-mechanism") == "xen":
+                 if os.path.isfile("/var/run/xenconsoled.pid"):
+                     grains["virtual_subtype"] = "Xen Dom0"
+     elif osdata["kernel"] == "SunOS":
+@@ -1223,7 +1220,7 @@ def _virtual(osdata):
+         # check the zonename here as fallback
+         zonename = salt.utils.path.which("zonename")
+         if zonename:
+-            zone = __salt__["cmd.run"]("{}".format(zonename))
++            zone = __salt__["cmd.run"](f"{zonename}")
+             if zone != "global":
+                 grains["virtual"] = "zone"
+ 
+@@ -1252,7 +1249,7 @@ def _virtual(osdata):
+                     r".*Product Name: ([^\r\n]*).*", output, flags=re.DOTALL
+                 )
+                 if product:
+-                    grains["virtual_subtype"] = "Amazon EC2 ({})".format(product[1])
++                    grains["virtual_subtype"] = f"Amazon EC2 ({product[1]})"
+             elif re.match(r".*Version: [^\r\n]+\.amazon.*", output, flags=re.DOTALL):
+                 grains["virtual_subtype"] = "Amazon EC2"
+ 
+@@ -1284,9 +1281,7 @@ def _virtual_hv(osdata):
+     try:
+         version = {}
+         for fn in ("major", "minor", "extra"):
+-            with salt.utils.files.fopen(
+-                "/sys/hypervisor/version/{}".format(fn), "r"
+-            ) as fhr:
++            with salt.utils.files.fopen(f"/sys/hypervisor/version/{fn}", "r") as fhr:
+                 version[fn] = salt.utils.stringutils.to_unicode(fhr.read().strip())
+         grains["virtual_hv_version"] = "{}.{}{}".format(
+             version["major"], version["minor"], version["extra"]
+@@ -1442,7 +1437,7 @@ def _windows_os_release_grain(caption, product_type):
+                 # ie: R2
+                 if re.match(r"^R\d+$", item):
+                     release = item
+-        os_release = "{}Server{}".format(version, release)
++        os_release = f"{version}Server{release}"
+     else:
+         for item in caption.split(" "):
+             # If it's a number, decimal number, Thin or Vista, then it's the
+@@ -1633,7 +1628,7 @@ def _linux_devicetree_platform_data():
+         try:
+             # /proc/device-tree should be used instead of /sys/firmware/devicetree/base
+             # see https://github.com/torvalds/linux/blob/v5.13/Documentation/ABI/testing/sysfs-firmware-ofw#L14
+-            loc = "/proc/device-tree/{}".format(path)
++            loc = f"/proc/device-tree/{path}"
+             if os.path.isfile(loc):
+                 with salt.utils.files.fopen(loc, mode="r") as f:
+                     return f.read().rstrip("\x00")  # all strings are null-terminated
+@@ -1872,18 +1867,13 @@ def _linux_bin_exists(binary):
+     """
+     for search_cmd in ("which", "type -ap"):
+         try:
+-            return __salt__["cmd.retcode"]("{} {}".format(search_cmd, binary)) == 0
++            return __salt__["cmd.retcode"](f"{search_cmd} {binary}") == 0
+         except salt.exceptions.CommandExecutionError:
+             pass
+ 
+     try:
+         return (
+-            len(
+-                __salt__["cmd.run_all"]("whereis -b {}".format(binary))[
+-                    "stdout"
+-                ].split()
+-            )
+-            > 1
++            len(__salt__["cmd.run_all"](f"whereis -b {binary}")["stdout"].split()) > 1
+         )
+     except salt.exceptions.CommandExecutionError:
+         return False
+@@ -1901,7 +1891,7 @@ def _parse_lsb_release():
+                     pass
+                 else:
+                     # Adds lsb_distrib_{id,release,codename,description}
+-                    ret["lsb_{}".format(key.lower())] = value.rstrip()
++                    ret[f"lsb_{key.lower()}"] = value.rstrip()
+     except OSError as exc:
+         log.trace("Failed to parse /etc/lsb-release: %s", exc)
+     return ret
+@@ -2634,7 +2624,7 @@ def os_data():
+         osbuild = __salt__["cmd.run"]("sw_vers -buildVersion")
+         grains["os"] = "MacOS"
+         grains["os_family"] = "MacOS"
+-        grains["osfullname"] = "{} {}".format(osname, osrelease)
++        grains["osfullname"] = f"{osname} {osrelease}"
+         grains["osrelease"] = osrelease
+         grains["osbuild"] = osbuild
+         grains["init"] = "launchd"
+@@ -2708,7 +2698,7 @@ def locale_info():
+         (
+             grains["locale_info"]["defaultlanguage"],
+             grains["locale_info"]["defaultencoding"],
+-        ) = locale.getdefaultlocale()
++        ) = salt.utils.locales.getdefaultlocale()
+     except Exception:  # pylint: disable=broad-except
+         # locale.getdefaultlocale can ValueError!! Catch anything else it
+         # might do, per #2205
+@@ -3175,7 +3165,7 @@ def _hw_data(osdata):
+             "productname": "DeviceDesc",
+         }
+         for grain_name, cmd_key in hwdata.items():
+-            result = __salt__["cmd.run_all"]("fw_printenv {}".format(cmd_key))
++            result = __salt__["cmd.run_all"](f"fw_printenv {cmd_key}")
+             if result["retcode"] == 0:
+                 uboot_keyval = result["stdout"].split("=")
+                 grains[grain_name] = _clean_value(grain_name, uboot_keyval[1])
+@@ -3195,7 +3185,7 @@ def _hw_data(osdata):
+                 "uuid": "smbios.system.uuid",
+             }
+             for key, val in fbsd_hwdata.items():
+-                value = __salt__["cmd.run"]("{} {}".format(kenv, val))
++                value = __salt__["cmd.run"](f"{kenv} {val}")
+                 grains[key] = _clean_value(key, value)
+     elif osdata["kernel"] == "OpenBSD":
+         sysctl = salt.utils.path.which("sysctl")
+@@ -3207,7 +3197,7 @@ def _hw_data(osdata):
+             "uuid": "hw.uuid",
+         }
+         for key, oid in hwdata.items():
+-            value = __salt__["cmd.run"]("{} -n {}".format(sysctl, oid))
++            value = __salt__["cmd.run"](f"{sysctl} -n {oid}")
+             if not value.endswith(" value is not available"):
+                 grains[key] = _clean_value(key, value)
+     elif osdata["kernel"] == "NetBSD":
+@@ -3222,7 +3212,7 @@ def _hw_data(osdata):
+             "uuid": "machdep.dmi.system-uuid",
+         }
+         for key, oid in nbsd_hwdata.items():
+-            result = __salt__["cmd.run_all"]("{} -n {}".format(sysctl, oid))
++            result = __salt__["cmd.run_all"](f"{sysctl} -n {oid}")
+             if result["retcode"] == 0:
+                 grains[key] = _clean_value(key, result["stdout"])
+     elif osdata["kernel"] == "Darwin":
+@@ -3230,7 +3220,7 @@ def _hw_data(osdata):
+         sysctl = salt.utils.path.which("sysctl")
+         hwdata = {"productname": "hw.model"}
+         for key, oid in hwdata.items():
+-            value = __salt__["cmd.run"]("{} -b {}".format(sysctl, oid))
++            value = __salt__["cmd.run"](f"{sysctl} -b {oid}")
+             if not value.endswith(" is invalid"):
+                 grains[key] = _clean_value(key, value)
+     elif osdata["kernel"] == "SunOS" and osdata["cpuarch"].startswith("sparc"):
+@@ -3244,7 +3234,7 @@ def _hw_data(osdata):
+             ("/usr/sbin/virtinfo", "-a"),
+         ):
+             if salt.utils.path.which(cmd):  # Also verifies that cmd is executable
+-                data += __salt__["cmd.run"]("{} {}".format(cmd, args))
++                data += __salt__["cmd.run"](f"{cmd} {args}")
+                 data += "\n"
+ 
+         sn_regexes = [
+@@ -3359,7 +3349,7 @@ def _hw_data(osdata):
+     elif osdata["kernel"] == "AIX":
+         cmd = salt.utils.path.which("prtconf")
+         if cmd:
+-            data = __salt__["cmd.run"]("{}".format(cmd)) + os.linesep
++            data = __salt__["cmd.run"](f"{cmd}") + os.linesep
+             for dest, regstring in (
+                 ("serialnumber", r"(?im)^\s*Machine\s+Serial\s+Number:\s+(\S+)"),
+                 ("systemfirmware", r"(?im)^\s*Firmware\s+Version:\s+(.*)"),
+@@ -3480,14 +3470,14 @@ def default_gateway():
+             for line in out.splitlines():
+                 if line.startswith("default"):
+                     grains["ip_gw"] = True
+-                    grains["ip{}_gw".format(ip_version)] = True
++                    grains[f"ip{ip_version}_gw"] = True
+                     try:
+                         via, gw_ip = line.split()[1:3]
+                     except ValueError:
+                         pass
+                     else:
+                         if via == "via":
+-                            grains["ip{}_gw".format(ip_version)] = gw_ip
++                            grains[f"ip{ip_version}_gw"] = gw_ip
+                     break
+         except Exception:  # pylint: disable=broad-except
+             continue
+diff --git a/salt/modules/container_resource.py b/salt/modules/container_resource.py
+index a29cba2e468..ceec72a7b20 100644
+--- a/salt/modules/container_resource.py
++++ b/salt/modules/container_resource.py
+@@ -8,13 +8,11 @@ These functions are not designed to be called directly, but instead from the
+ :mod:`docker <salt.modules.docker>` execution modules. They provide for
+ common logic to be re-used for common actions.
+ """
+-
+-
+ import copy
+ import functools
+ import logging
+ import os
+-import pipes
++import shlex
+ import time
+ import traceback
+ 
+@@ -68,14 +66,14 @@ def _nsenter(pid):
+     """
+     Return the nsenter command to attach to the named container
+     """
+-    return "nsenter --target {} --mount --uts --ipc --net --pid".format(pid)
++    return f"nsenter --target {pid} --mount --uts --ipc --net --pid"
+ 
+ 
+ def _get_md5(name, path, run_func):
+     """
+     Get the MD5 checksum of a file from a container
+     """
+-    output = run_func(name, "md5sum {}".format(pipes.quote(path)), ignore_retcode=True)[
++    output = run_func(name, f"md5sum {shlex.quote(path)}", ignore_retcode=True)[
+         "stdout"
+     ]
+     try:
+@@ -102,10 +100,10 @@ def cache_file(source):
+         if source.startswith("salt://"):
+             cached_source = __salt__["cp.cache_file"](source)
+             if not cached_source:
+-                raise CommandExecutionError("Unable to cache {}".format(source))
++                raise CommandExecutionError(f"Unable to cache {source}")
+             return cached_source
+     except AttributeError:
+-        raise SaltInvocationError("Invalid source file {}".format(source))
++        raise SaltInvocationError(f"Invalid source file {source}")
+     return source
+ 
+ 
+@@ -164,55 +162,47 @@ def run(
+     if exec_driver == "lxc-attach":
+         full_cmd = "lxc-attach "
+         if path:
+-            full_cmd += "-P {} ".format(pipes.quote(path))
++            full_cmd += f"-P {shlex.quote(path)} "
+         if keep_env is not True:
+             full_cmd += "--clear-env "
+             if "PATH" not in to_keep:
+-                full_cmd += "--set-var {} ".format(PATH)
++                full_cmd += f"--set-var {PATH} "
+                 # --clear-env results in a very restrictive PATH
+                 # (/bin:/usr/bin), use a good fallback.
+         full_cmd += " ".join(
+             [
+-                "--set-var {}={}".format(x, pipes.quote(os.environ[x]))
++                f"--set-var {x}={shlex.quote(os.environ[x])}"
+                 for x in to_keep
+                 if x in os.environ
+             ]
+         )
+-        full_cmd += " -n {} -- {}".format(pipes.quote(name), cmd)
++        full_cmd += f" -n {shlex.quote(name)} -- {cmd}"
+     elif exec_driver == "nsenter":
+-        pid = __salt__["{}.pid".format(container_type)](name)
+-        full_cmd = "nsenter --target {} --mount --uts --ipc --net --pid -- ".format(pid)
++        pid = __salt__[f"{container_type}.pid"](name)
++        full_cmd = f"nsenter --target {pid} --mount --uts --ipc --net --pid -- "
+         if keep_env is not True:
+             full_cmd += "env -i "
+             if "PATH" not in to_keep:
+-                full_cmd += "{} ".format(PATH)
++                full_cmd += f"{PATH} "
+         full_cmd += " ".join(
+-            [
+-                "{}={}".format(x, pipes.quote(os.environ[x]))
+-                for x in to_keep
+-                if x in os.environ
+-            ]
++            [f"{x}={shlex.quote(os.environ[x])}" for x in to_keep if x in os.environ]
+         )
+-        full_cmd += " {}".format(cmd)
++        full_cmd += f" {cmd}"
+     elif exec_driver == "docker-exec":
+         # We're using docker exec on the CLI as opposed to via docker-py, since
+         # the Docker API doesn't return stdout and stderr separately.
+         full_cmd = "docker exec "
+         if stdin:
+             full_cmd += "-i "
+-        full_cmd += "{} ".format(name)
++        full_cmd += f"{name} "
+         if keep_env is not True:
+             full_cmd += "env -i "
+             if "PATH" not in to_keep:
+-                full_cmd += "{} ".format(PATH)
++                full_cmd += f"{PATH} "
+         full_cmd += " ".join(
+-            [
+-                "{}={}".format(x, pipes.quote(os.environ[x]))
+-                for x in to_keep
+-                if x in os.environ
+-            ]
++            [f"{x}={shlex.quote(os.environ[x])}" for x in to_keep if x in os.environ]
+         )
+-        full_cmd += " {}".format(cmd)
++        full_cmd += f" {cmd}"
+ 
+     if not use_vt:
+         ret = __salt__[cmd_func](
+@@ -299,13 +289,13 @@ def copy_to(
+         salt myminion container_resource.copy_to mycontainer /local/file/path /container/file/path container_type=docker exec_driver=nsenter
+     """
+     # Get the appropriate functions
+-    state = __salt__["{}.state".format(container_type)]
++    state = __salt__[f"{container_type}.state"]
+ 
+     def run_all(*args, **akwargs):
+         akwargs = copy.deepcopy(akwargs)
+         if container_type in ["lxc"] and "path" not in akwargs:
+             akwargs["path"] = path
+-        return __salt__["{}.run_all".format(container_type)](*args, **akwargs)
++        return __salt__[f"{container_type}.run_all"](*args, **akwargs)
+ 
+     state_kwargs = {}
+     cmd_kwargs = {"ignore_retcode": True}
+@@ -321,7 +311,7 @@ def copy_to(
+ 
+     c_state = _state(name)
+     if c_state != "running":
+-        raise CommandExecutionError("Container '{}' is not running".format(name))
++        raise CommandExecutionError(f"Container '{name}' is not running")
+ 
+     local_file = cache_file(source)
+     source_dir, source_name = os.path.split(local_file)
+@@ -330,17 +320,14 @@ def copy_to(
+     if not os.path.isabs(local_file):
+         raise SaltInvocationError("Source path must be absolute")
+     elif not os.path.exists(local_file):
+-        raise SaltInvocationError("Source file {} does not exist".format(local_file))
++        raise SaltInvocationError(f"Source file {local_file} does not exist")
+     elif not os.path.isfile(local_file):
+         raise SaltInvocationError("Source must be a regular file")
+ 
+     # Destination file sanity checks
+     if not os.path.isabs(dest):
+         raise SaltInvocationError("Destination path must be absolute")
+-    if (
+-        run_all(name, "test -d {}".format(pipes.quote(dest)), **cmd_kwargs)["retcode"]
+-        == 0
+-    ):
++    if run_all(name, f"test -d {shlex.quote(dest)}", **cmd_kwargs)["retcode"] == 0:
+         # Destination is a directory, full path to dest file will include the
+         # basename of the source file.
+         dest = os.path.join(dest, source_name)
+@@ -350,14 +337,12 @@ def copy_to(
+         # parent directory.
+         dest_dir, dest_name = os.path.split(dest)
+         if (
+-            run_all(name, "test -d {}".format(pipes.quote(dest_dir)), **cmd_kwargs)[
+-                "retcode"
+-            ]
++            run_all(name, f"test -d {shlex.quote(dest_dir)}", **cmd_kwargs)["retcode"]
+             != 0
+         ):
+             if makedirs:
+                 result = run_all(
+-                    name, "mkdir -p {}".format(pipes.quote(dest_dir)), **cmd_kwargs
++                    name, f"mkdir -p {shlex.quote(dest_dir)}", **cmd_kwargs
+                 )
+                 if result["retcode"] != 0:
+                     error = (
+@@ -375,10 +360,7 @@ def copy_to(
+                 )
+     if (
+         not overwrite
+-        and run_all(name, "test -e {}".format(pipes.quote(dest)), **cmd_kwargs)[
+-            "retcode"
+-        ]
+-        == 0
++        and run_all(name, f"test -e {shlex.quote(dest)}", **cmd_kwargs)["retcode"] == 0
+     ):
+         raise CommandExecutionError(
+             "Destination path {} already exists. Use overwrite=True to "
+@@ -401,14 +383,14 @@ def copy_to(
+     if exec_driver == "lxc-attach":
+         lxcattach = "lxc-attach"
+         if path:
+-            lxcattach += " -P {}".format(pipes.quote(path))
++            lxcattach += f" -P {shlex.quote(path)}"
+         copy_cmd = (
+             'cat "{0}" | {4} --clear-env --set-var {1} -n {2} -- tee "{3}"'.format(
+                 local_file, PATH, name, dest, lxcattach
+             )
+         )
+     elif exec_driver == "nsenter":
+-        pid = __salt__["{}.pid".format(container_type)](name)
++        pid = __salt__[f"{container_type}.pid"](name)
+         copy_cmd = 'cat "{}" | {} env -i {} tee "{}"'.format(
+             local_file, _nsenter(pid), PATH, dest
+         )
+diff --git a/salt/modules/deb_postgres.py b/salt/modules/deb_postgres.py
+index 3ecd4a8ba49..d92859562d4 100644
+--- a/salt/modules/deb_postgres.py
++++ b/salt/modules/deb_postgres.py
+@@ -2,10 +2,8 @@
+ Module to provide Postgres compatibility to salt for debian family specific tools.
+ 
+ """
+-
+-
+ import logging
+-import pipes
++import shlex
+ 
+ import salt.utils.path
+ 
+@@ -76,7 +74,7 @@ def cluster_create(
+         cmd += ["--data-checksums"]
+     if wal_segsize:
+         cmd += ["--wal-segsize", wal_segsize]
+-    cmdstr = " ".join([pipes.quote(c) for c in cmd])
++    cmdstr = " ".join([shlex.quote(c) for c in cmd])
+     ret = __salt__["cmd.run_all"](cmdstr, python_shell=False)
+     if ret.get("retcode", 0) != 0:
+         log.error("Error creating a Postgresql cluster %s/%s", version, name)
+@@ -97,7 +95,7 @@ def cluster_list(verbose=False):
+         salt '*' postgres.cluster_list verbose=True
+     """
+     cmd = [salt.utils.path.which("pg_lsclusters"), "--no-header"]
+-    ret = __salt__["cmd.run_all"](" ".join([pipes.quote(c) for c in cmd]))
++    ret = __salt__["cmd.run_all"](" ".join([shlex.quote(c) for c in cmd]))
+     if ret.get("retcode", 0) != 0:
+         log.error("Error listing clusters")
+     cluster_dict = _parse_pg_lscluster(ret["stdout"])
+@@ -118,7 +116,7 @@ def cluster_exists(version, name="main"):
+ 
+         salt '*' postgres.cluster_exists '9.3' 'main'
+     """
+-    return "{}/{}".format(version, name) in cluster_list()
++    return f"{version}/{name}" in cluster_list()
+ 
+ 
+ def cluster_remove(version, name="main", stop=False):
+@@ -141,13 +139,13 @@ def cluster_remove(version, name="main", stop=False):
+     if stop:
+         cmd += ["--stop"]
+     cmd += [str(version), name]
+-    cmdstr = " ".join([pipes.quote(c) for c in cmd])
++    cmdstr = " ".join([shlex.quote(c) for c in cmd])
+     ret = __salt__["cmd.run_all"](cmdstr, python_shell=False)
+     # FIXME - return Boolean ?
+     if ret.get("retcode", 0) != 0:
+         log.error("Error removing a Postgresql cluster %s/%s", version, name)
+     else:
+-        ret["changes"] = "Successfully removed cluster {}/{}".format(version, name)
++        ret["changes"] = f"Successfully removed cluster {version}/{name}"
+     return ret
+ 
+ 
+@@ -158,7 +156,7 @@ def _parse_pg_lscluster(output):
+     cluster_dict = {}
+     for line in output.splitlines():
+         version, name, port, status, user, datadir, log = line.split()
+-        cluster_dict["{}/{}".format(version, name)] = {
++        cluster_dict[f"{version}/{name}"] = {
+             "port": int(port),
+             "status": status,
+             "user": user,
+diff --git a/salt/modules/dockermod.py b/salt/modules/dockermod.py
+index 69b722f0c95..331b6bb7482 100644
+--- a/salt/modules/dockermod.py
++++ b/salt/modules/dockermod.py
+@@ -206,8 +206,8 @@ import json
+ import logging
+ import os
+ import pathlib
+-import pipes
+ import re
++import shlex
+ import shutil
+ import string
+ import subprocess
+@@ -257,7 +257,6 @@ except ImportError:
+ 
+ HAS_NSENTER = bool(salt.utils.path.which("nsenter"))
+ 
+-# Set up logging
+ log = logging.getLogger(__name__)
+ 
+ # Don't shadow built-in's.
+@@ -397,7 +396,7 @@ def _get_client(timeout=NOTSET, **kwargs):
+             )
+         except Exception as exc:  # pylint: disable=broad-except
+             raise CommandExecutionError(
+-                "Docker machine {} failed: {}".format(docker_machine, exc)
++                f"Docker machine {docker_machine} failed: {exc}"
+             )
+     try:
+         # docker-py 2.0 renamed this client attribute
+@@ -497,7 +496,7 @@ def _change_state(name, action, expected, *args, **kwargs):
+         return {
+             "result": False,
+             "state": {"old": expected, "new": expected},
+-            "comment": "Container '{}' already {}".format(name, expected),
++            "comment": f"Container '{name}' already {expected}",
+         }
+     _client_wrapper(action, name, *args, **kwargs)
+     _clear_context()
+@@ -535,9 +534,7 @@ def _get_md5(name, path):
+     """
+     Get the MD5 checksum of a file from a container
+     """
+-    output = run_stdout(
+-        name, "md5sum {}".format(pipes.quote(path)), ignore_retcode=True
+-    )
++    output = run_stdout(name, f"md5sum {shlex.quote(path)}", ignore_retcode=True)
+     try:
+         return output.split()[0]
+     except IndexError:
+@@ -616,7 +613,7 @@ def _scrub_links(links, name):
+     if isinstance(links, list):
+         ret = []
+         for l in links:
+-            ret.append(l.replace("/{}/".format(name), "/", 1))
++            ret.append(l.replace(f"/{name}/", "/", 1))
+     else:
+         ret = links
+ 
+@@ -639,11 +636,11 @@ def _size_fmt(num):
+     try:
+         num = int(num)
+         if num < 1024:
+-            return "{} bytes".format(num)
++            return f"{num} bytes"
+         num /= 1024.0
+         for unit in ("KiB", "MiB", "GiB", "TiB", "PiB"):
+             if num < 1024.0:
+-                return "{:3.1f} {}".format(num, unit)
++                return f"{num:3.1f} {unit}"
+             num /= 1024.0
+     except Exception:  # pylint: disable=broad-except
+         log.error("Unable to format file size for '%s'", num)
+@@ -658,7 +655,7 @@ def _client_wrapper(attr, *args, **kwargs):
+     catch_api_errors = kwargs.pop("catch_api_errors", True)
+     func = getattr(__context__["docker.client"], attr, None)
+     if func is None or not hasattr(func, "__call__"):
+-        raise SaltInvocationError("Invalid client action '{}'".format(attr))
++        raise SaltInvocationError(f"Invalid client action '{attr}'")
+     if attr in ("push", "pull"):
+         try:
+             # Refresh auth config from config.json
+@@ -678,7 +675,7 @@ def _client_wrapper(attr, *args, **kwargs):
+         if catch_api_errors:
+             # Generic handling of Docker API errors
+             raise CommandExecutionError(
+-                "Error {}: {}".format(exc.response.status_code, exc.explanation)
++                f"Error {exc.response.status_code}: {exc.explanation}"
+             )
+         else:
+             # Allow API errors to be caught further up the stack
+@@ -693,9 +690,9 @@ def _client_wrapper(attr, *args, **kwargs):
+ 
+     # If we're here, it's because an exception was caught earlier, and the
+     # API command failed.
+-    msg = "Unable to perform {}".format(attr)
++    msg = f"Unable to perform {attr}"
+     if err:
+-        msg += ": {}".format(err)
++        msg += f": {err}"
+     raise CommandExecutionError(msg)
+ 
+ 
+@@ -722,7 +719,7 @@ def _import_status(data, item, repo_name, repo_tag):
+             return
+         elif all(x in string.hexdigits for x in status):
+             # Status is an image ID
+-            data["Image"] = "{}:{}".format(repo_name, repo_tag)
++            data["Image"] = f"{repo_name}:{repo_tag}"
+             data["Id"] = status
+     except (AttributeError, TypeError):
+         pass
+@@ -881,7 +878,7 @@ def _get_create_kwargs(
+     ignore_collisions=False,
+     validate_ip_addrs=True,
+     client_args=None,
+-    **kwargs
++    **kwargs,
+ ):
+     """
+     Take input kwargs and return a kwargs dict to pass to docker-py's
+@@ -899,7 +896,7 @@ def _get_create_kwargs(
+         skip_translate=skip_translate,
+         ignore_collisions=ignore_collisions,
+         validate_ip_addrs=validate_ip_addrs,
+-        **__utils__["args.clean_kwargs"](**kwargs)
++        **__utils__["args.clean_kwargs"](**kwargs),
+     )
+ 
+     if networks:
+@@ -912,7 +909,7 @@ def _get_create_kwargs(
+             log.error(
+                 "docker.create: Error getting client args: '%s'", exc, exc_info=True
+             )
+-            raise CommandExecutionError("Failed to get client args: {}".format(exc))
++            raise CommandExecutionError(f"Failed to get client args: {exc}")
+ 
+     full_host_config = {}
+     host_kwargs = {}
+@@ -1473,15 +1470,15 @@ def login(*registries):
+     results = ret.setdefault("Results", {})
+     for registry in registries:
+         if registry not in registry_auth:
+-            errors.append("No match found for registry '{}'".format(registry))
++            errors.append(f"No match found for registry '{registry}'")
+             continue
+         try:
+             username = registry_auth[registry]["username"]
+             password = registry_auth[registry]["password"]
+         except TypeError:
+-            errors.append("Invalid configuration for registry '{}'".format(registry))
++            errors.append(f"Invalid configuration for registry '{registry}'")
+         except KeyError as exc:
+-            errors.append("Missing {} for registry '{}'".format(exc, registry))
++            errors.append(f"Missing {exc} for registry '{registry}'")
+         else:
+             cmd = ["docker", "login", "-u", username, "-p", password]
+             if registry.lower() != "hub":
+@@ -1567,7 +1564,7 @@ def logout(*registries):
+     results = ret.setdefault("Results", {})
+     for registry in registries:
+         if registry not in registry_auth:
+-            errors.append("No match found for registry '{}'".format(registry))
++            errors.append(f"No match found for registry '{registry}'")
+             continue
+         else:
+             cmd = ["docker", "logout"]
+@@ -1689,7 +1686,7 @@ def exists(name):
+ 
+         salt myminion docker.exists mycontainer
+     """
+-    contextkey = "docker.exists.{}".format(name)
++    contextkey = f"docker.exists.{name}"
+     if contextkey in __context__:
+         return __context__[contextkey]
+     try:
+@@ -1780,7 +1777,7 @@ def history(name, quiet=False):
+             )
+         for param in ("Size",):
+             if param in step:
+-                step["{}_Human".format(param)] = _size_fmt(step[param])
++                step[f"{param}_Human"] = _size_fmt(step[param])
+         ret.append(copy.deepcopy(step))
+     if quiet:
+         return [x.get("Command") for x in ret]
+@@ -1842,9 +1839,7 @@ def images(verbose=False, **kwargs):
+                 )
+             for param in ("Size", "VirtualSize"):
+                 if param in bucket.get(img_id, {}):
+-                    bucket[img_id]["{}_Human".format(param)] = _size_fmt(
+-                        bucket[img_id][param]
+-                    )
++                    bucket[img_id][f"{param}_Human"] = _size_fmt(bucket[img_id][param])
+ 
+     context_data = __context__.get("docker.images", {})
+     ret = copy.deepcopy(context_data.get("tagged", {}))
+@@ -1927,7 +1922,7 @@ def inspect(name):
+             raise
+ 
+     raise CommandExecutionError(
+-        "Error 404: No such image/container/volume/network: {}".format(name)
++        f"Error 404: No such image/container/volume/network: {name}"
+     )
+ 
+ 
+@@ -1983,7 +1978,7 @@ def inspect_image(name):
+     ret = _client_wrapper("inspect_image", name)
+     for param in ("Size", "VirtualSize"):
+         if param in ret:
+-            ret["{}_Human".format(param)] = _size_fmt(ret[param])
++            ret[f"{param}_Human"] = _size_fmt(ret[param])
+     return ret
+ 
+ 
+@@ -2277,7 +2272,7 @@ def port(name, private_port=None):
+     else:
+         # Sanity checks
+         if isinstance(private_port, int):
+-            pattern = "{}/*".format(private_port)
++            pattern = f"{private_port}/*"
+         else:
+             err = (
+                 "Invalid private_port '{}'. Must either be a port number, "
+@@ -2398,7 +2393,7 @@ def state(name):
+ 
+         salt myminion docker.state mycontainer
+     """
+-    contextkey = "docker.state.{}".format(name)
++    contextkey = f"docker.state.{name}"
+     if contextkey in __context__:
+         return __context__[contextkey]
+     __context__[contextkey] = _get_state(inspect_container(name))
+@@ -2438,9 +2433,7 @@ def search(name, official=False, trusted=False):
+     """
+     response = _client_wrapper("search", name)
+     if not response:
+-        raise CommandExecutionError(
+-            "No images matched the search string '{}'".format(name)
+-        )
++        raise CommandExecutionError(f"No images matched the search string '{name}'")
+ 
+     key_map = {
+         "description": "Description",
+@@ -2555,7 +2548,7 @@ def create(
+     ignore_collisions=False,
+     validate_ip_addrs=True,
+     client_timeout=salt.utils.dockermod.CLIENT_TIMEOUT,
+-    **kwargs
++    **kwargs,
+ ):
+     """
+     Create a new container
+@@ -3281,7 +3274,7 @@ def create(
+         skip_translate=skip_translate,
+         ignore_collisions=ignore_collisions,
+         validate_ip_addrs=validate_ip_addrs,
+-        **kwargs
++        **kwargs,
+     )
+ 
+     if unused_kwargs:
+@@ -3293,7 +3286,7 @@ def create(
+ 
+     log.debug(
+         "docker.create: creating container %susing the following arguments: %s",
+-        "with name '{}' ".format(name) if name is not None else "",
++        f"with name '{name}' " if name is not None else "",
+         kwargs,
+     )
+     time_started = time.time()
+@@ -3331,7 +3324,7 @@ def run_container(
+     replace=False,
+     force=False,
+     networks=None,
+-    **kwargs
++    **kwargs,
+ ):
+     """
+     .. versionadded:: 2018.3.0
+@@ -3433,7 +3426,7 @@ def run_container(
+         skip_translate=skip_translate,
+         ignore_collisions=ignore_collisions,
+         validate_ip_addrs=validate_ip_addrs,
+-        **kwargs
++        **kwargs,
+     )
+ 
+     # _get_create_kwargs() will have processed auto_remove and put it into the
+@@ -3458,7 +3451,7 @@ def run_container(
+ 
+     log.debug(
+         "docker.create: creating container %susing the following arguments: %s",
+-        "with name '{}' ".format(name) if name is not None else "",
++        f"with name '{name}' " if name is not None else "",
+         kwargs,
+     )
+ 
+@@ -3498,7 +3491,7 @@ def run_container(
+                         rm_(name)
+                     except CommandExecutionError as rm_exc:
+                         exc_info.setdefault("other_errors", []).append(
+-                            "Failed to auto_remove container: {}".format(rm_exc)
++                            f"Failed to auto_remove container: {rm_exc}"
+                         )
+                 # Raise original exception with additional info
+                 raise CommandExecutionError(exc.__str__(), info=exc_info)
+@@ -3593,7 +3586,7 @@ def copy_from(name, source, dest, overwrite=False, makedirs=False):
+     """
+     c_state = state(name)
+     if c_state != "running":
+-        raise CommandExecutionError("Container '{}' is not running".format(name))
++        raise CommandExecutionError(f"Container '{name}' is not running")
+ 
+     # Destination file sanity checks
+     if not os.path.isabs(dest):
+@@ -3619,9 +3612,7 @@ def copy_from(name, source, dest, overwrite=False, makedirs=False):
+                         )
+                     )
+             else:
+-                raise SaltInvocationError(
+-                    "Directory {} does not exist".format(dest_dir)
+-                )
++                raise SaltInvocationError(f"Directory {dest_dir} does not exist")
+     if not overwrite and os.path.exists(dest):
+         raise CommandExecutionError(
+             "Destination path {} already exists. Use overwrite=True to "
+@@ -3632,19 +3623,14 @@ def copy_from(name, source, dest, overwrite=False, makedirs=False):
+     if not os.path.isabs(source):
+         raise SaltInvocationError("Source path must be absolute")
+     else:
+-        if (
+-            retcode(name, "test -e {}".format(pipes.quote(source)), ignore_retcode=True)
+-            == 0
+-        ):
++        if retcode(name, f"test -e {shlex.quote(source)}", ignore_retcode=True) == 0:
+             if (
+-                retcode(
+-                    name, "test -f {}".format(pipes.quote(source)), ignore_retcode=True
+-                )
++                retcode(name, f"test -f {shlex.quote(source)}", ignore_retcode=True)
+                 != 0
+             ):
+                 raise SaltInvocationError("Source must be a regular file")
+         else:
+-            raise SaltInvocationError("Source file {} does not exist".format(source))
++            raise SaltInvocationError(f"Source file {source} does not exist")
+ 
+     # Before we try to replace the file, compare checksums.
+     source_md5 = _get_md5(name, source)
+@@ -3657,7 +3643,7 @@ def copy_from(name, source, dest, overwrite=False, makedirs=False):
+     try:
+         src_path = ":".join((name, source))
+     except TypeError:
+-        src_path = "{}:{}".format(name, source)
++        src_path = f"{name}:{source}"
+     cmd = ["docker", "cp", src_path, dest_dir]
+     __salt__["cmd.run"](cmd, python_shell=False)
+     return source_md5 == __salt__["file.get_sum"](dest, "md5")
+@@ -3784,7 +3770,7 @@ def export(name, path, overwrite=False, makedirs=False, compression=None, **kwar
+         salt myminion docker.export mycontainer /tmp/mycontainer.tar
+         salt myminion docker.export mycontainer /tmp/mycontainer.tar.xz push=True
+     """
+-    err = "Path '{}' is not absolute".format(path)
++    err = f"Path '{path}' is not absolute"
+     try:
+         if not os.path.isabs(path):
+             raise SaltInvocationError(err)
+@@ -3792,7 +3778,7 @@ def export(name, path, overwrite=False, makedirs=False, compression=None, **kwar
+         raise SaltInvocationError(err)
+ 
+     if os.path.exists(path) and not overwrite:
+-        raise CommandExecutionError("{} already exists".format(path))
++        raise CommandExecutionError(f"{path} already exists")
+ 
+     if compression is None:
+         if path.endswith(".tar.gz") or path.endswith(".tgz"):
+@@ -3815,7 +3801,7 @@ def export(name, path, overwrite=False, makedirs=False, compression=None, **kwar
+         compression = "xz"
+ 
+     if compression and compression not in ("gzip", "bzip2", "xz"):
+-        raise SaltInvocationError("Invalid compression type '{}'".format(compression))
++        raise SaltInvocationError(f"Invalid compression type '{compression}'")
+ 
+     parent_dir = os.path.dirname(path)
+     if not os.path.isdir(parent_dir):
+@@ -3828,16 +3814,14 @@ def export(name, path, overwrite=False, makedirs=False, compression=None, **kwar
+             os.makedirs(parent_dir)
+         except OSError as exc:
+             raise CommandExecutionError(
+-                "Unable to make parent dir {}: {}".format(parent_dir, exc)
++                f"Unable to make parent dir {parent_dir}: {exc}"
+             )
+ 
+     if compression == "gzip":
+         try:
+             out = gzip.open(path, "wb")
+         except OSError as exc:
+-            raise CommandExecutionError(
+-                "Unable to open {} for writing: {}".format(path, exc)
+-            )
++            raise CommandExecutionError(f"Unable to open {path} for writing: {exc}")
+     elif compression == "bzip2":
+         compressor = bz2.BZ2Compressor()
+     elif compression == "xz":
+@@ -3875,9 +3859,7 @@ def export(name, path, overwrite=False, makedirs=False, compression=None, **kwar
+             os.remove(path)
+         except OSError:
+             pass
+-        raise CommandExecutionError(
+-            "Error occurred during container export: {}".format(exc)
+-        )
++        raise CommandExecutionError(f"Error occurred during container export: {exc}")
+     finally:
+         out.close()
+     ret = {"Time_Elapsed": time.time() - time_started}
+@@ -4112,7 +4094,7 @@ def build(
+     # For the build function in the low-level API, the "tag" refers to the full
+     # tag (e.g. myuser/myimage:mytag). This is different than in other
+     # functions, where the repo and tag are passed separately.
+-    image_tag = "{}:{}".format(repository, tag) if repository and tag else None
++    image_tag = f"{repository}:{tag}" if repository and tag else None
+ 
+     time_started = time.time()
+     response = _client_wrapper(
+@@ -4131,7 +4113,7 @@ def build(
+ 
+     if not response:
+         raise CommandExecutionError(
+-            "Build failed for {}, no response returned from Docker API".format(path)
++            f"Build failed for {path}, no response returned from Docker API"
+         )
+ 
+     stream_data = []
+@@ -4168,7 +4150,7 @@ def build(
+     if "Id" not in ret:
+         # API returned information, but there was no confirmation of a
+         # successful build.
+-        msg = "Build failed for {}".format(path)
++        msg = f"Build failed for {path}"
+         log.error(msg)
+         log.error(stream_data)
+         if errors:
+@@ -4179,7 +4161,7 @@ def build(
+     if resolved_tag:
+         ret["Image"] = resolved_tag
+     else:
+-        ret["Warning"] = "Failed to tag image as {}".format(image_tag)
++        ret["Warning"] = f"Failed to tag image as {image_tag}"
+ 
+     if api_response:
+         ret["API_Response"] = stream_data
+@@ -4386,7 +4368,7 @@ def import_(source, repository, tag="latest", api_response=False):
+ 
+     if not response:
+         raise CommandExecutionError(
+-            "Import failed for {}, no response returned from Docker API".format(source)
++            f"Import failed for {source}, no response returned from Docker API"
+         )
+     elif api_response:
+         ret["API_Response"] = response
+@@ -4406,7 +4388,7 @@ def import_(source, repository, tag="latest", api_response=False):
+     if "Id" not in ret:
+         # API returned information, but there was no confirmation of a
+         # successful push.
+-        msg = "Import failed for {}".format(source)
++        msg = f"Import failed for {source}"
+         if errors:
+             msg += ". Error(s) follow:\n\n{}".format("\n\n".join(errors))
+         raise CommandExecutionError(msg)
+@@ -4481,7 +4463,7 @@ def load(path, repository=None, tag=None):
+ 
+     local_path = __salt__["container_resource.cache_file"](path)
+     if not os.path.isfile(local_path):
+-        raise CommandExecutionError("Source file {} does not exist".format(path))
++        raise CommandExecutionError(f"Source file {path} does not exist")
+ 
+     pre = images(all=True)
+     cmd = ["docker", "load", "-i", local_path]
+@@ -4491,7 +4473,7 @@ def load(path, repository=None, tag=None):
+     _clear_context()
+     post = images(all=True)
+     if result["retcode"] != 0:
+-        msg = "Failed to load image(s) from {}".format(path)
++        msg = f"Failed to load image(s) from {path}"
+         if result["stderr"]:
+             msg += ": {}".format(result["stderr"])
+         raise CommandExecutionError(msg)
+@@ -4512,7 +4494,7 @@ def load(path, repository=None, tag=None):
+             # strings when passed (e.g. a numeric tag would be loaded as an int
+             # or float), and because the tag_ function will stringify them if
+             # need be, a str.format is the correct thing to do here.
+-            tagged_image = "{}:{}".format(repository, tag)
++            tagged_image = f"{repository}:{tag}"
+             try:
+                 result = tag_(top_level_images[0], repository=repository, tag=tag)
+                 ret["Image"] = tagged_image
+@@ -4549,7 +4531,7 @@ def layers(name):
+     ):
+         ret.append(line)
+     if not ret:
+-        raise CommandExecutionError("Image '{}' not found".format(name))
++        raise CommandExecutionError(f"Image '{name}' not found")
+     return ret
+ 
+ 
+@@ -4620,7 +4602,7 @@ def pull(
+ 
+     if not response:
+         raise CommandExecutionError(
+-            "Pull failed for {}, no response returned from Docker API".format(image)
++            f"Pull failed for {image}, no response returned from Docker API"
+         )
+     elif api_response:
+         ret["API_Response"] = response
+@@ -4633,7 +4615,7 @@ def pull(
+             event = salt.utils.json.loads(event)
+         except Exception as exc:  # pylint: disable=broad-except
+             raise CommandExecutionError(
+-                "Unable to interpret API event: '{}'".format(event),
++                f"Unable to interpret API event: '{event}'",
+                 info={"Error": exc.__str__()},
+             )
+         try:
+@@ -4715,7 +4697,7 @@ def push(
+ 
+     if not response:
+         raise CommandExecutionError(
+-            "Push failed for {}, no response returned from Docker API".format(image)
++            f"Push failed for {image}, no response returned from Docker API"
+         )
+     elif api_response:
+         ret["API_Response"] = response
+@@ -4727,7 +4709,7 @@ def push(
+             event = salt.utils.json.loads(event)
+         except Exception as exc:  # pylint: disable=broad-except
+             raise CommandExecutionError(
+-                "Unable to interpret API event: '{}'".format(event),
++                f"Unable to interpret API event: '{event}'",
+                 info={"Error": exc.__str__()},
+             )
+         try:
+@@ -4807,9 +4789,7 @@ def rmi(*names, **kwargs):
+                         err += "image(s): {}".format(", ".join(deps["Images"]))
+                     errors.append(err)
+             else:
+-                errors.append(
+-                    "Error {}: {}".format(exc.response.status_code, exc.explanation)
+-                )
++                errors.append(f"Error {exc.response.status_code}: {exc.explanation}")
+ 
+     _clear_context()
+     ret = {
+@@ -4897,7 +4877,7 @@ def save(name, path, overwrite=False, makedirs=False, compression=None, **kwargs
+         salt myminion docker.save centos:7 /tmp/cent7.tar
+         salt myminion docker.save 0123456789ab cdef01234567 /tmp/saved.tar
+     """
+-    err = "Path '{}' is not absolute".format(path)
++    err = f"Path '{path}' is not absolute"
+     try:
+         if not os.path.isabs(path):
+             raise SaltInvocationError(err)
+@@ -4905,7 +4885,7 @@ def save(name, path, overwrite=False, makedirs=False, compression=None, **kwargs
+         raise SaltInvocationError(err)
+ 
+     if os.path.exists(path) and not overwrite:
+-        raise CommandExecutionError("{} already exists".format(path))
++        raise CommandExecutionError(f"{path} already exists")
+ 
+     if compression is None:
+         if path.endswith(".tar.gz") or path.endswith(".tgz"):
+@@ -4928,7 +4908,7 @@ def save(name, path, overwrite=False, makedirs=False, compression=None, **kwargs
+         compression = "xz"
+ 
+     if compression and compression not in ("gzip", "bzip2", "xz"):
+-        raise SaltInvocationError("Invalid compression type '{}'".format(compression))
++        raise SaltInvocationError(f"Invalid compression type '{compression}'")
+ 
+     parent_dir = os.path.dirname(path)
+     if not os.path.isdir(parent_dir):
+@@ -4950,7 +4930,7 @@ def save(name, path, overwrite=False, makedirs=False, compression=None, **kwargs
+     time_started = time.time()
+     result = __salt__["cmd.run_all"](cmd, python_shell=False)
+     if result["retcode"] != 0:
+-        err = "Failed to save image(s) to {}".format(path)
++        err = f"Failed to save image(s) to {path}"
+         if result["stderr"]:
+             err += ": {}".format(result["stderr"])
+         raise CommandExecutionError(err)
+@@ -4960,9 +4940,7 @@ def save(name, path, overwrite=False, makedirs=False, compression=None, **kwargs
+             try:
+                 out = gzip.open(path, "wb")
+             except OSError as exc:
+-                raise CommandExecutionError(
+-                    "Unable to open {} for writing: {}".format(path, exc)
+-                )
++                raise CommandExecutionError(f"Unable to open {path} for writing: {exc}")
+         elif compression == "bzip2":
+             compressor = bz2.BZ2Compressor()
+         elif compression == "xz":
+@@ -4998,9 +4976,7 @@ def save(name, path, overwrite=False, makedirs=False, compression=None, **kwargs
+                 os.remove(path)
+             except OSError:
+                 pass
+-            raise CommandExecutionError(
+-                "Error occurred during image save: {}".format(exc)
+-            )
++            raise CommandExecutionError(f"Error occurred during image save: {exc}")
+         finally:
+             try:
+                 # Clean up temp file
+@@ -5120,7 +5096,7 @@ def create_network(
+     ignore_collisions=False,
+     validate_ip_addrs=True,
+     client_timeout=salt.utils.dockermod.CLIENT_TIMEOUT,
+-    **kwargs
++    **kwargs,
+ ):
+     """
+     .. versionchanged:: 2018.3.0
+@@ -5360,7 +5336,7 @@ def create_network(
+         skip_translate=skip_translate,
+         ignore_collisions=ignore_collisions,
+         validate_ip_addrs=validate_ip_addrs,
+-        **__utils__["args.clean_kwargs"](**kwargs)
++        **__utils__["args.clean_kwargs"](**kwargs),
+     )
+ 
+     if "ipam" not in kwargs:
+@@ -5692,7 +5668,7 @@ def pause(name):
+         return {
+             "result": False,
+             "state": {"old": orig_state, "new": orig_state},
+-            "comment": "Container '{}' is stopped, cannot pause".format(name),
++            "comment": f"Container '{name}' is stopped, cannot pause",
+         }
+     return _change_state(name, "pause", "paused")
+ 
+@@ -5791,7 +5767,7 @@ def start_(name):
+         return {
+             "result": False,
+             "state": {"old": orig_state, "new": orig_state},
+-            "comment": "Container '{}' is paused, cannot start".format(name),
++            "comment": f"Container '{name}' is paused, cannot start",
+         }
+ 
+     return _change_state(name, "start", "running")
+@@ -5896,7 +5872,7 @@ def unpause(name):
+         return {
+             "result": False,
+             "state": {"old": orig_state, "new": orig_state},
+-            "comment": "Container '{}' is stopped, cannot unpause".format(name),
++            "comment": f"Container '{name}' is stopped, cannot unpause",
+         }
+     return _change_state(name, "unpause", "running")
+ 
+@@ -5945,7 +5921,7 @@ def wait(name, ignore_already_stopped=False, fail_on_exit_status=False):
+         # Container doesn't exist anymore
+         return {
+             "result": ignore_already_stopped,
+-            "comment": "Container '{}' absent".format(name),
++            "comment": f"Container '{name}' absent",
+         }
+     already_stopped = pre == "stopped"
+     response = _client_wrapper("wait", name)
+@@ -5969,7 +5945,7 @@ def wait(name, ignore_already_stopped=False, fail_on_exit_status=False):
+         "exit_status": response,
+     }
+     if already_stopped:
+-        result["comment"] = "Container '{}' already stopped".format(name)
++        result["comment"] = f"Container '{name}' already stopped"
+     if fail_on_exit_status and result["result"]:
+         result["result"] = result["exit_status"] == 0
+     return result
+@@ -5982,7 +5958,7 @@ def prune(
+     build=False,
+     volumes=False,
+     system=None,
+-    **filters
++    **filters,
+ ):
+     """
+     .. versionadded:: 2019.2.0
+@@ -6668,7 +6644,7 @@ def script_retcode(
+ 
+ 
+ def _generate_tmp_path():
+-    return os.path.join("/tmp", "salt.docker.{}".format(uuid.uuid4().hex[:6]))
++    return os.path.join("/tmp", f"salt.docker.{uuid.uuid4().hex[:6]}")
+ 
+ 
+ def _prepare_trans_tar(name, sls_opts, mods=None, pillar=None, extra_filerefs=""):
+@@ -6929,7 +6905,7 @@ def call(name, function, *args, **kwargs):
+             ]
+             + list(args)
+             + [
+-                "{}={}".format(key, value)
++                f"{key}={value}"
+                 for (key, value) in kwargs.items()
+                 if not key.startswith("__")
+             ]
+diff --git a/salt/modules/lxc.py b/salt/modules/lxc.py
+index bea6445db98..d2c1e66491e 100644
+--- a/salt/modules/lxc.py
++++ b/salt/modules/lxc.py
+@@ -12,9 +12,9 @@ import datetime
+ import difflib
+ import logging
+ import os
+-import pipes
+ import random
+ import re
++import shlex
+ import shutil
+ import string
+ import tempfile
+@@ -1834,8 +1834,8 @@ def _after_ignition_network_profile(cmd, ret, name, network_profile, path, nic_o
+             # destroy the container if it was partially created
+             cmd = "lxc-destroy"
+             if path:
+-                cmd += " -P {}".format(pipes.quote(path))
+-            cmd += " -n {}".format(name)
++                cmd += f" -P {shlex.quote(path)}"
++            cmd += f" -n {name}"
+             __salt__["cmd.retcode"](cmd, python_shell=False)
+         raise CommandExecutionError(
+             "Container could not be created with cmd '{}': {}".format(
+@@ -1997,7 +1997,7 @@ def create(
+         )
+         options["imgtar"] = img_tar
+     if path:
+-        cmd += " -P {}".format(pipes.quote(path))
++        cmd += f" -P {shlex.quote(path)}"
+         if not os.path.exists(path):
+             os.makedirs(path)
+     if config:
+@@ -2138,7 +2138,7 @@ def clone(name, orig, profile=None, network_profile=None, nic_opts=None, **kwarg
+         cmd = "lxc-clone"
+         cmd += " {} -o {} -n {}".format(snapshot, orig, name)
+     if path:
+-        cmd += " -P {}".format(pipes.quote(path))
++        cmd += f" -P {shlex.quote(path)}"
+         if not os.path.exists(path):
+             os.makedirs(path)
+     if backing:
+@@ -2186,7 +2186,7 @@ def ls_(active=None, cache=True, path=None):
+         ret = []
+         cmd = "lxc-ls"
+         if path:
+-            cmd += " -P {}".format(pipes.quote(path))
++            cmd += f" -P {shlex.quote(path)}"
+         if active:
+             cmd += " --active"
+         output = __salt__["cmd.run_stdout"](cmd, python_shell=False)
+@@ -2242,8 +2242,8 @@ def list_(extra=False, limit=None, path=None):
+     for container in ctnrs:
+         cmd = "lxc-info"
+         if path:
+-            cmd += " -P {}".format(pipes.quote(path))
+-        cmd += " -n {}".format(container)
++            cmd += f" -P {shlex.quote(path)}"
++        cmd += f" -n {container}"
+         c_info = __salt__["cmd.run"](cmd, python_shell=False, output_loglevel="debug")
+         c_state = None
+         for line in c_info.splitlines():
+@@ -2301,13 +2301,13 @@ def _change_state(
+         # Kill the container first
+         scmd = "lxc-stop"
+         if path:
+-            scmd += " -P {}".format(pipes.quote(path))
+-        scmd += " -k -n {}".format(name)
++            scmd += f" -P {shlex.quote(path)}"
++        scmd += f" -k -n {name}"
+         __salt__["cmd.run"](scmd, python_shell=False)
+ 
+     if path and " -P " not in cmd:
+-        cmd += " -P {}".format(pipes.quote(path))
+-    cmd += " -n {}".format(name)
++        cmd += f" -P {shlex.quote(path)}"
++    cmd += f" -n {name}"
+ 
+     # certain lxc commands need to be taken with care (lxc-start)
+     # as te command itself mess with double forks; we must not
+@@ -2337,8 +2337,8 @@ def _change_state(
+         # some commands do not wait, so we will
+         rcmd = "lxc-wait"
+         if path:
+-            rcmd += " -P {}".format(pipes.quote(path))
+-        rcmd += " -n {} -s {}".format(name, expected.upper())
++            rcmd += f" -P {shlex.quote(path)}"
++        rcmd += f" -n {name} -s {expected.upper()}"
+         __salt__["cmd.run"](rcmd, python_shell=False, timeout=30)
+     _clear_context()
+     post = state(name, path=path)
+@@ -2459,7 +2459,7 @@ def start(name, **kwargs):
+         lxc_config = os.path.join(cpath, name, "config")
+     # we try to start, even without config, if global opts are there
+     if os.path.exists(lxc_config):
+-        cmd += " -f {}".format(pipes.quote(lxc_config))
++        cmd += f" -f {shlex.quote(lxc_config)}"
+     cmd += " -d"
+     _ensure_exists(name, path=path)
+     if state(name, path=path) == "frozen":
+@@ -2564,7 +2564,7 @@ def freeze(name, **kwargs):
+         start(name, path=path)
+     cmd = "lxc-freeze"
+     if path:
+-        cmd += " -P {}".format(pipes.quote(path))
++        cmd += f" -P {shlex.quote(path)}"
+     ret = _change_state(cmd, name, "frozen", use_vt=use_vt, path=path)
+     if orig_state == "stopped" and start_:
+         ret["state"]["old"] = orig_state
+@@ -2599,7 +2599,7 @@ def unfreeze(name, path=None, use_vt=None):
+         raise CommandExecutionError("Container '{}' is stopped".format(name))
+     cmd = "lxc-unfreeze"
+     if path:
+-        cmd += " -P {}".format(pipes.quote(path))
++        cmd += f" -P {shlex.quote(path)}"
+     return _change_state(cmd, name, "running", path=path, use_vt=use_vt)
+ 
+ 
+@@ -2693,8 +2693,8 @@ def state(name, path=None):
+         else:
+             cmd = "lxc-info"
+             if path:
+-                cmd += " -P {}".format(pipes.quote(path))
+-            cmd += " -n {}".format(name)
++                cmd += f" -P {shlex.quote(path)}"
++            cmd += f" -n {name}"
+             ret = __salt__["cmd.run_all"](cmd, python_shell=False)
+             if ret["retcode"] != 0:
+                 _clear_context()
+@@ -2731,8 +2731,8 @@ def get_parameter(name, parameter, path=None):
+     _ensure_exists(name, path=path)
+     cmd = "lxc-cgroup"
+     if path:
+-        cmd += " -P {}".format(pipes.quote(path))
+-    cmd += " -n {} {}".format(name, parameter)
++        cmd += f" -P {shlex.quote(path)}"
++    cmd += f" -n {name} {parameter}"
+     ret = __salt__["cmd.run_all"](cmd, python_shell=False)
+     if ret["retcode"] != 0:
+         raise CommandExecutionError(
+@@ -2762,8 +2762,8 @@ def set_parameter(name, parameter, value, path=None):
+ 
+     cmd = "lxc-cgroup"
+     if path:
+-        cmd += " -P {}".format(pipes.quote(path))
+-    cmd += " -n {} {} {}".format(name, parameter, value)
++        cmd += f" -P {shlex.quote(path)}"
++    cmd += f" -n {name} {parameter} {value}"
+     ret = __salt__["cmd.run_all"](cmd, python_shell=False)
+     if ret["retcode"] != 0:
+         return False
+@@ -3662,8 +3662,8 @@ def attachable(name, path=None):
+         log.debug("Checking if LXC container %s is attachable", name)
+         cmd = "lxc-attach"
+         if path:
+-            cmd += " -P {}".format(pipes.quote(path))
+-        cmd += " --clear-env -n {} -- /usr/bin/env".format(name)
++            cmd += f" -P {shlex.quote(path)}"
++        cmd += f" --clear-env -n {name} -- /usr/bin/env"
+         result = (
+             __salt__["cmd.retcode"](
+                 cmd, python_shell=False, output_loglevel="quiet", ignore_retcode=True
+diff --git a/salt/modules/mac_keychain.py b/salt/modules/mac_keychain.py
+index a823c428b76..7fdc162b9aa 100644
+--- a/salt/modules/mac_keychain.py
++++ b/salt/modules/mac_keychain.py
+@@ -11,20 +11,6 @@ import shlex
+ 
+ import salt.utils.platform
+ 
+-try:
+-    import pipes
+-
+-    HAS_DEPS = True
+-except ImportError:
+-    HAS_DEPS = False
+-
+-if hasattr(shlex, "quote"):
+-    _quote = shlex.quote
+-elif HAS_DEPS and hasattr(pipes, "quote"):
+-    _quote = pipes.quote
+-else:
+-    _quote = None
+-
+ log = logging.getLogger(__name__)
+ 
+ __virtualname__ = "keychain"
+@@ -34,7 +20,7 @@ def __virtual__():
+     """
+     Only work on Mac OS
+     """
+-    if salt.utils.platform.is_darwin() and _quote is not None:
++    if salt.utils.platform.is_darwin():
+         return __virtualname__
+     return (False, "Only available on Mac OS systems with pipes")
+ 
+@@ -82,7 +68,7 @@ def install(
+     if keychain_password is not None:
+         unlock_keychain(keychain, keychain_password)
+ 
+-    cmd = "security import {} -P {} -k {}".format(cert, password, keychain)
++    cmd = f"security import {cert} -P {password} -k {keychain}"
+     if allow_any:
+         cmd += " -A"
+     return __salt__["cmd.run"](cmd)
+@@ -117,7 +103,7 @@ def uninstall(
+     if keychain_password is not None:
+         unlock_keychain(keychain, keychain_password)
+ 
+-    cmd = 'security delete-certificate -c "{}" {}'.format(cert_name, keychain)
++    cmd = f'security delete-certificate -c "{cert_name}" {keychain}'
+     return __salt__["cmd.run"](cmd)
+ 
+ 
+@@ -137,7 +123,7 @@ def list_certs(keychain="/Library/Keychains/System.keychain"):
+     """
+     cmd = (
+         'security find-certificate -a {} | grep -o "alis".*\\" | '
+-        "grep -o '\\\"[-A-Za-z0-9.:() ]*\\\"'".format(_quote(keychain))
++        "grep -o '\\\"[-A-Za-z0-9.:() ]*\\\"'".format(shlex.quote(keychain))
+     )
+     out = __salt__["cmd.run"](cmd, python_shell=True)
+     return out.replace('"', "").split("\n")
+@@ -165,7 +151,7 @@ def get_friendly_name(cert, password):
+     """
+     cmd = (
+         "openssl pkcs12 -in {} -passin pass:{} -info -nodes -nokeys 2> /dev/null | "
+-        "grep friendlyName:".format(_quote(cert), _quote(password))
++        "grep friendlyName:".format(shlex.quote(cert), shlex.quote(password))
+     )
+     out = __salt__["cmd.run"](cmd, python_shell=True)
+     return out.replace("friendlyName: ", "").strip()
+@@ -187,7 +173,7 @@ def get_default_keychain(user=None, domain="user"):
+ 
+         salt '*' keychain.get_default_keychain
+     """
+-    cmd = "security default-keychain -d {}".format(domain)
++    cmd = f"security default-keychain -d {domain}"
+     return __salt__["cmd.run"](cmd, runas=user)
+ 
+ 
+@@ -210,7 +196,7 @@ def set_default_keychain(keychain, domain="user", user=None):
+ 
+         salt '*' keychain.set_keychain /Users/fred/Library/Keychains/login.keychain
+     """
+-    cmd = "security default-keychain -d {} -s {}".format(domain, keychain)
++    cmd = f"security default-keychain -d {domain} -s {keychain}"
+     return __salt__["cmd.run"](cmd, runas=user)
+ 
+ 
+@@ -233,7 +219,7 @@ def unlock_keychain(keychain, password):
+ 
+         salt '*' keychain.unlock_keychain /tmp/test.p12 test123
+     """
+-    cmd = "security unlock-keychain -p {} {}".format(password, keychain)
++    cmd = f"security unlock-keychain -p {password} {keychain}"
+     __salt__["cmd.run"](cmd)
+ 
+ 
+@@ -261,7 +247,7 @@ def get_hash(name, password=None):
+             name, password
+         )
+     else:
+-        cmd = 'security find-certificate -c "{}" -m -p'.format(name)
++        cmd = f'security find-certificate -c "{name}" -m -p'
+ 
+     out = __salt__["cmd.run"](cmd)
+     matches = re.search(
+diff --git a/salt/modules/macpackage.py b/salt/modules/macpackage.py
+index faf5810d4fc..f9a6b7bb95c 100644
+--- a/salt/modules/macpackage.py
++++ b/salt/modules/macpackage.py
+@@ -9,31 +9,16 @@ import shlex
+ 
+ import salt.utils.platform
+ 
+-try:
+-    import pipes
+-
+-    HAS_DEPS = True
+-except ImportError:
+-    HAS_DEPS = False
+-
+-
+ log = logging.getLogger(__name__)
+-__virtualname__ = "macpackage"
+-
+ 
+-if hasattr(shlex, "quote"):
+-    _quote = shlex.quote
+-elif HAS_DEPS and hasattr(pipes, "quote"):
+-    _quote = pipes.quote
+-else:
+-    _quote = None
++__virtualname__ = "macpackage"
+ 
+ 
+ def __virtual__():
+     """
+     Only work on Mac OS
+     """
+-    if salt.utils.platform.is_darwin() and _quote is not None:
++    if salt.utils.platform.is_darwin():
+         return __virtualname__
+     return (False, "Only available on Mac OS systems with pipes")
+ 
+@@ -60,11 +45,11 @@ def install(pkg, target="LocalSystem", store=False, allow_untrusted=False):
+     """
+     if "*." not in pkg:
+         # If we use wildcards, we cannot use quotes
+-        pkg = _quote(pkg)
++        pkg = shlex.quote(pkg)
+ 
+-    target = _quote(target)
++    target = shlex.quote(target)
+ 
+-    cmd = "installer -pkg {} -target {}".format(pkg, target)
++    cmd = f"installer -pkg {pkg} -target {target}"
+     if store:
+         cmd += " -store"
+     if allow_untrusted:
+@@ -109,7 +94,7 @@ def install_app(app, target="/Applications/"):
+     if not app[-1] == "/":
+         app += "/"
+ 
+-    cmd = 'rsync -a --delete "{}" "{}"'.format(app, target)
++    cmd = f'rsync -a --delete "{app}" "{target}"'
+     return __salt__["cmd.run"](cmd)
+ 
+ 
+@@ -154,7 +139,7 @@ def mount(dmg):
+ 
+     temp_dir = __salt__["temp.dir"](prefix="dmg-")
+ 
+-    cmd = 'hdiutil attach -readonly -nobrowse -mountpoint {} "{}"'.format(temp_dir, dmg)
++    cmd = f'hdiutil attach -readonly -nobrowse -mountpoint {temp_dir} "{dmg}"'
+ 
+     return __salt__["cmd.run"](cmd), temp_dir
+ 
+@@ -176,7 +161,7 @@ def unmount(mountpoint):
+         salt '*' macpackage.unmount /dev/disk2
+     """
+ 
+-    cmd = 'hdiutil detach "{}"'.format(mountpoint)
++    cmd = f'hdiutil detach "{mountpoint}"'
+ 
+     return __salt__["cmd.run"](cmd)
+ 
+@@ -216,7 +201,7 @@ def get_pkg_id(pkg):
+ 
+         salt '*' macpackage.get_pkg_id /tmp/test.pkg
+     """
+-    pkg = _quote(pkg)
++    pkg = shlex.quote(pkg)
+     package_ids = []
+ 
+     # Create temp directory
+@@ -224,7 +209,7 @@ def get_pkg_id(pkg):
+ 
+     try:
+         # List all of the PackageInfo files
+-        cmd = "xar -t -f {} | grep PackageInfo".format(pkg)
++        cmd = f"xar -t -f {pkg} | grep PackageInfo"
+         out = __salt__["cmd.run"](cmd, python_shell=True, output_loglevel="quiet")
+         files = out.split("\n")
+ 
+@@ -264,12 +249,12 @@ def get_mpkg_ids(mpkg):
+ 
+         salt '*' macpackage.get_mpkg_ids /dev/disk2
+     """
+-    mpkg = _quote(mpkg)
++    mpkg = shlex.quote(mpkg)
+     package_infos = []
+     base_path = os.path.dirname(mpkg)
+ 
+     # List all of the .pkg files
+-    cmd = "find {} -name *.pkg".format(base_path)
++    cmd = f"find {base_path} -name *.pkg"
+     out = __salt__["cmd.run"](cmd, python_shell=True)
+ 
+     pkg_files = out.split("\n")
+@@ -281,7 +266,7 @@ def get_mpkg_ids(mpkg):
+ 
+ def _get_pkg_id_from_pkginfo(pkginfo):
+     # Find our identifiers
+-    pkginfo = _quote(pkginfo)
++    pkginfo = shlex.quote(pkginfo)
+     cmd = "cat {} | grep -Eo 'identifier=\"[a-zA-Z.0-9\\-]*\"' | cut -c 13- | tr -d '\"'".format(
+         pkginfo
+     )
+@@ -294,8 +279,8 @@ def _get_pkg_id_from_pkginfo(pkginfo):
+ 
+ 
+ def _get_pkg_id_dir(path):
+-    path = _quote(os.path.join(path, "Contents/Info.plist"))
+-    cmd = '/usr/libexec/PlistBuddy -c "print :CFBundleIdentifier" {}'.format(path)
++    path = shlex.quote(os.path.join(path, "Contents/Info.plist"))
++    cmd = f'/usr/libexec/PlistBuddy -c "print :CFBundleIdentifier" {path}'
+ 
+     # We can only use wildcards in python_shell which is
+     # sent by the macpackage state
+diff --git a/salt/modules/openstack_config.py b/salt/modules/openstack_config.py
+index 823afbf1c60..937c10da61a 100644
+--- a/salt/modules/openstack_config.py
++++ b/salt/modules/openstack_config.py
+@@ -13,28 +13,11 @@ import shlex
+ import salt.exceptions
+ import salt.utils.decorators.path
+ 
+-try:
+-    import pipes
+-
+-    HAS_DEPS = True
+-except ImportError:
+-    HAS_DEPS = False
+-
+-if hasattr(shlex, "quote"):
+-    _quote = shlex.quote
+-elif HAS_DEPS and hasattr(pipes, "quote"):
+-    _quote = pipes.quote
+-else:
+-    _quote = None
+-
+-
+ # Don't shadow built-in's.
+ __func_alias__ = {"set_": "set"}
+ 
+ 
+ def __virtual__():
+-    if _quote is None and not HAS_DEPS:
+-        return (False, "Missing dependencies")
+     return True
+ 
+ 
+@@ -69,10 +52,10 @@ def set_(filename, section, parameter, value):
+         salt-call openstack_config.set /etc/keystone/keystone.conf sql connection foo
+     """
+ 
+-    filename = _quote(filename)
+-    section = _quote(section)
+-    parameter = _quote(parameter)
+-    value = _quote(str(value))
++    filename = shlex.quote(filename)
++    section = shlex.quote(section)
++    parameter = shlex.quote(parameter)
++    value = shlex.quote(str(value))
+ 
+     result = __salt__["cmd.run_all"](
+         "openstack-config --set {} {} {} {}".format(
+@@ -109,12 +92,12 @@ def get(filename, section, parameter):
+ 
+     """
+ 
+-    filename = _quote(filename)
+-    section = _quote(section)
+-    parameter = _quote(parameter)
++    filename = shlex.quote(filename)
++    section = shlex.quote(section)
++    parameter = shlex.quote(parameter)
+ 
+     result = __salt__["cmd.run_all"](
+-        "openstack-config --get {} {} {}".format(filename, section, parameter),
++        f"openstack-config --get {filename} {section} {parameter}",
+         python_shell=False,
+     )
+ 
+@@ -145,12 +128,12 @@ def delete(filename, section, parameter):
+         salt-call openstack_config.delete /etc/keystone/keystone.conf sql connection
+     """
+ 
+-    filename = _quote(filename)
+-    section = _quote(section)
+-    parameter = _quote(parameter)
++    filename = shlex.quote(filename)
++    section = shlex.quote(section)
++    parameter = shlex.quote(parameter)
+ 
+     result = __salt__["cmd.run_all"](
+-        "openstack-config --del {} {} {}".format(filename, section, parameter),
++        f"openstack-config --del {filename} {section} {parameter}",
+         python_shell=False,
+     )
+ 
+diff --git a/salt/modules/postgres.py b/salt/modules/postgres.py
+index 25a72f1063c..f73959a92ed 100644
+--- a/salt/modules/postgres.py
++++ b/salt/modules/postgres.py
+@@ -46,8 +46,8 @@ import hmac
+ import io
+ import logging
+ import os
+-import pipes
+ import re
++import shlex
+ import tempfile
+ 
+ import salt.utils.files
+@@ -136,7 +136,7 @@ def __virtual__():
+     for util in utils:
+         if not salt.utils.path.which(util):
+             if not _find_pg_binary(util):
+-                return (False, "{} was not found".format(util))
++                return (False, f"{util} was not found")
+     return True
+ 
+ 
+@@ -241,14 +241,14 @@ def _run_initdb(
+         raise CommandExecutionError("initdb executable not found.")
+     cmd = [
+         _INITDB_BIN,
+-        "--pgdata={}".format(name),
+-        "--username={}".format(user),
+-        "--auth={}".format(auth),
+-        "--encoding={}".format(encoding),
++        f"--pgdata={name}",
++        f"--username={user}",
++        f"--auth={auth}",
++        f"--encoding={encoding}",
+     ]
+ 
+     if locale is not None:
+-        cmd.append("--locale={}".format(locale))
++        cmd.append(f"--locale={locale}")
+ 
+     # intentionally use short option, as the long option name has been
+     # renamed from "xlogdir" to "waldir" in PostgreSQL 10
+@@ -262,9 +262,9 @@ def _run_initdb(
+     if password is not None:
+         pgpassfile = salt.utils.files.mkstemp(text=True)
+         with salt.utils.files.fopen(pgpassfile, "w") as fp_:
+-            fp_.write(salt.utils.stringutils.to_str("{}".format(password)))
++            fp_.write(salt.utils.stringutils.to_str(f"{password}"))
+             __salt__["file.chown"](pgpassfile, runas, "")
+-        cmd.extend(["--pwfile={}".format(pgpassfile)])
++        cmd.extend([f"--pwfile={pgpassfile}"])
+ 
+     kwargs = dict(
+         runas=runas,
+@@ -273,7 +273,7 @@ def _run_initdb(
+             "postgres.timeout", default=_DEFAULT_COMMAND_TIMEOUT_SECS
+         ),
+     )
+-    cmdstr = " ".join([pipes.quote(c) for c in cmd])
++    cmdstr = " ".join([shlex.quote(c) for c in cmd])
+     ret = __salt__["cmd.run_all"](cmdstr, python_shell=False, **kwargs)
+ 
+     if ret.get("retcode", 0) != 0:
+@@ -582,9 +582,7 @@ def _quote_ddl_value(value, quote="'"):
+     if value is None:
+         return None
+     if quote in value:  # detect trivial sqli
+-        raise SaltInvocationError(
+-            "Unsupported character {} in value: {}".format(quote, value)
+-        )
++        raise SaltInvocationError(f"Unsupported character {quote} in value: {value}")
+     return "{quote}{value}{quote}".format(quote=quote, value=value)
+ 
+ 
+@@ -617,7 +615,7 @@ def db_create(
+     """
+ 
+     # Base query to create a database
+-    query = 'CREATE DATABASE "{}"'.format(name)
++    query = f'CREATE DATABASE "{name}"'
+ 
+     # "With"-options to create a database
+     with_args = salt.utils.odict.OrderedDict(
+@@ -685,11 +683,9 @@ def db_alter(
+     else:
+         queries = []
+         if owner:
+-            queries.append('ALTER DATABASE "{}" OWNER TO "{}"'.format(name, owner))
++            queries.append(f'ALTER DATABASE "{name}" OWNER TO "{owner}"')
+         if tablespace:
+-            queries.append(
+-                'ALTER DATABASE "{}" SET TABLESPACE "{}"'.format(name, tablespace)
+-            )
++            queries.append(f'ALTER DATABASE "{name}" SET TABLESPACE "{tablespace}"')
+         for query in queries:
+             ret = _psql_prepare_and_run(
+                 ["-c", query],
+@@ -726,10 +722,10 @@ def db_remove(
+         salt '*' postgres.db_remove 'dbname'
+     """
+     for query in [
+-        'REVOKE CONNECT ON DATABASE "{db}" FROM public;'.format(db=name),
++        f'REVOKE CONNECT ON DATABASE "{name}" FROM public;',
+         "SELECT pid, pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname ="
+         " '{db}' AND pid <> pg_backend_pid();".format(db=name),
+-        'DROP DATABASE "{db}";'.format(db=name),
++        f'DROP DATABASE "{name}";',
+     ]:
+         ret = _psql_prepare_and_run(
+             ["-c", query],
+@@ -741,7 +737,7 @@ def db_remove(
+             password=password,
+         )
+         if ret["retcode"] != 0:
+-            raise Exception("Failed: ret={}".format(ret))
++            raise Exception(f"Failed: ret={ret}")
+     return True
+ 
+ 
+@@ -846,10 +842,10 @@ def tablespace_create(
+     owner_query = ""
+     options_query = ""
+     if owner:
+-        owner_query = 'OWNER "{}"'.format(owner)
++        owner_query = f'OWNER "{owner}"'
+         # should come out looking like: 'OWNER postgres'
+     if options:
+-        optionstext = ["{} = {}".format(k, v) for k, v in options.items()]
++        optionstext = [f"{k} = {v}" for k, v in options.items()]
+         options_query = "WITH ( {} )".format(", ".join(optionstext))
+         # should come out looking like: 'WITH ( opt1 = 1.0, opt2 = 4.0 )'
+     query = "CREATE TABLESPACE \"{}\" {} LOCATION '{}' {}".format(
+@@ -902,9 +898,9 @@ def tablespace_alter(
+     queries = []
+ 
+     if new_name:
+-        queries.append('ALTER TABLESPACE "{}" RENAME TO "{}"'.format(name, new_name))
++        queries.append(f'ALTER TABLESPACE "{name}" RENAME TO "{new_name}"')
+     if new_owner:
+-        queries.append('ALTER TABLESPACE "{}" OWNER TO "{}"'.format(name, new_owner))
++        queries.append(f'ALTER TABLESPACE "{name}" OWNER TO "{new_owner}"')
+     if set_option:
+         queries.append(
+             'ALTER TABLESPACE "{}" SET ({} = {})'.format(
+@@ -912,7 +908,7 @@ def tablespace_alter(
+             )
+         )
+     if reset_option:
+-        queries.append('ALTER TABLESPACE "{}" RESET ({})'.format(name, reset_option))
++        queries.append(f'ALTER TABLESPACE "{name}" RESET ({reset_option})')
+ 
+     for query in queries:
+         ret = _psql_prepare_and_run(
+@@ -950,7 +946,7 @@ def tablespace_remove(
+ 
+     .. versionadded:: 2015.8.0
+     """
+-    query = 'DROP TABLESPACE "{}"'.format(name)
++    query = f'DROP TABLESPACE "{name}"'
+     ret = _psql_prepare_and_run(
+         ["-c", query],
+         user=user,
+@@ -1158,11 +1154,11 @@ def _add_role_flag(string, test, flag, cond=None, prefix="NO", addtxt="", skip=F
+             cond = test
+         if test is not None:
+             if cond:
+-                string = "{} {}".format(string, flag)
++                string = f"{string} {flag}"
+             else:
+-                string = "{0} {2}{1}".format(string, flag, prefix)
++                string = f"{string} {prefix}{flag}"
+         if addtxt:
+-            string = "{} {}".format(string, addtxt)
++            string = f"{string} {addtxt}"
+     return string
+ 
+ 
+@@ -1224,7 +1220,7 @@ def _verify_password(role, password, verifier, method):
+ def _md5_password(role, password):
+     return "md5{}".format(
+         hashlib.md5(  # nosec
+-            salt.utils.stringutils.to_bytes("{}{}".format(password, role))
++            salt.utils.stringutils.to_bytes(f"{password}{role}")
+         ).hexdigest()
+     )
+ 
+@@ -1343,7 +1339,7 @@ def _role_cmd_args(
+         if isinstance(groups, list):
+             groups = ",".join(groups)
+         for group in groups.split(","):
+-            sub_cmd = '{}; GRANT "{}" TO "{}"'.format(sub_cmd, group, name)
++            sub_cmd = f'{sub_cmd}; GRANT "{group}" TO "{name}"'
+     return sub_cmd
+ 
+ 
+@@ -1380,7 +1376,7 @@ def _role_create(
+         log.info("%s '%s' already exists", typ_.capitalize(), name)
+         return False
+ 
+-    sub_cmd = 'CREATE ROLE "{}" WITH'.format(name)
++    sub_cmd = f'CREATE ROLE "{name}" WITH'
+     sub_cmd = "{} {}".format(
+         sub_cmd,
+         _role_cmd_args(
+@@ -1506,7 +1502,7 @@ def _role_update(
+         log.info("%s '%s' could not be found", typ_.capitalize(), name)
+         return False
+ 
+-    sub_cmd = 'ALTER ROLE "{}" WITH'.format(name)
++    sub_cmd = f'ALTER ROLE "{name}" WITH'
+     sub_cmd = "{} {}".format(
+         sub_cmd,
+         _role_cmd_args(
+@@ -1613,7 +1609,7 @@ def _role_remove(
+         return False
+ 
+     # user exists, proceed
+-    sub_cmd = 'DROP ROLE "{}"'.format(name)
++    sub_cmd = f'DROP ROLE "{name}"'
+     _psql_prepare_and_run(
+         ["-c", sub_cmd],
+         runas=runas,
+@@ -1995,14 +1991,14 @@ def create_extension(
+             args = ["CREATE EXTENSION"]
+             if if_not_exists:
+                 args.append("IF NOT EXISTS")
+-            args.append('"{}"'.format(name))
++            args.append(f'"{name}"')
+             sargs = []
+             if schema:
+-                sargs.append('SCHEMA "{}"'.format(schema))
++                sargs.append(f'SCHEMA "{schema}"')
+             if ext_version:
+-                sargs.append("VERSION {}".format(ext_version))
++                sargs.append(f"VERSION {ext_version}")
+             if from_version:
+-                sargs.append("FROM {}".format(from_version))
++                sargs.append(f"FROM {from_version}")
+             if sargs:
+                 args.append("WITH")
+                 args.extend(sargs)
+@@ -2011,13 +2007,9 @@ def create_extension(
+         else:
+             args = []
+             if schema and _EXTENSION_TO_MOVE in mtdata:
+-                args.append(
+-                    'ALTER EXTENSION "{}" SET SCHEMA "{}";'.format(name, schema)
+-                )
++                args.append(f'ALTER EXTENSION "{name}" SET SCHEMA "{schema}";')
+             if ext_version and _EXTENSION_TO_UPGRADE in mtdata:
+-                args.append(
+-                    'ALTER EXTENSION "{}" UPDATE TO {};'.format(name, ext_version)
+-                )
++                args.append(f'ALTER EXTENSION "{name}" UPDATE TO {ext_version};')
+             cmd = " ".join(args).strip()
+         if cmd:
+             _psql_prepare_and_run(
+@@ -2227,7 +2219,7 @@ def owner_to(
+ 
+     sqlfile = tempfile.NamedTemporaryFile()
+     sqlfile.write("begin;\n")
+-    sqlfile.write('alter database "{}" owner to "{}";\n'.format(dbname, ownername))
++    sqlfile.write(f'alter database "{dbname}" owner to "{ownername}";\n')
+ 
+     queries = (
+         # schemas
+@@ -2335,9 +2327,9 @@ def schema_create(
+         log.info("'%s' already exists in '%s'", name, dbname)
+         return False
+ 
+-    sub_cmd = 'CREATE SCHEMA "{}"'.format(name)
++    sub_cmd = f'CREATE SCHEMA "{name}"'
+     if owner is not None:
+-        sub_cmd = '{} AUTHORIZATION "{}"'.format(sub_cmd, owner)
++        sub_cmd = f'{sub_cmd} AUTHORIZATION "{owner}"'
+ 
+     ret = _psql_prepare_and_run(
+         ["-c", sub_cmd],
+@@ -2401,7 +2393,7 @@ def schema_remove(
+         return False
+ 
+     # schema exists, proceed
+-    sub_cmd = 'DROP SCHEMA "{}"'.format(name)
++    sub_cmd = f'DROP SCHEMA "{name}"'
+     _psql_prepare_and_run(
+         ["-c", sub_cmd],
+         runas=user,
+@@ -2721,7 +2713,7 @@ def language_create(
+         log.info("Language %s already exists in %s", name, maintenance_db)
+         return False
+ 
+-    query = "CREATE LANGUAGE {}".format(name)
++    query = f"CREATE LANGUAGE {name}"
+ 
+     ret = _psql_prepare_and_run(
+         ["-c", query],
+@@ -2776,7 +2768,7 @@ def language_remove(
+         log.info("Language %s does not exist in %s", name, maintenance_db)
+         return False
+ 
+-    query = "DROP LANGUAGE {}".format(name)
++    query = f"DROP LANGUAGE {name}"
+ 
+     ret = _psql_prepare_and_run(
+         ["-c", query],
+@@ -3035,9 +3027,7 @@ def _validate_privileges(object_type, privs, privileges):
+         _perms.append("ALL")
+ 
+         if object_type not in _PRIVILEGES_OBJECTS:
+-            raise SaltInvocationError(
+-                "Invalid object_type: {} provided".format(object_type)
+-            )
++            raise SaltInvocationError(f"Invalid object_type: {object_type} provided")
+ 
+         if not set(privs).issubset(set(_perms)):
+             raise SaltInvocationError(
+@@ -3145,9 +3135,7 @@ def privileges_list(
+     query = _make_privileges_list_query(name, object_type, prepend)
+ 
+     if object_type not in _PRIVILEGES_OBJECTS:
+-        raise SaltInvocationError(
+-            "Invalid object_type: {} provided".format(object_type)
+-        )
++        raise SaltInvocationError(f"Invalid object_type: {object_type} provided")
+ 
+     rows = psql_query(
+         query,
+@@ -3439,15 +3427,15 @@ def privileges_grant(
+     _grants = ",".join(_privs)
+ 
+     if object_type in ["table", "sequence"]:
+-        on_part = '{}."{}"'.format(prepend, object_name)
++        on_part = f'{prepend}."{object_name}"'
+     elif object_type == "function":
+-        on_part = "{}".format(object_name)
++        on_part = f"{object_name}"
+     else:
+-        on_part = '"{}"'.format(object_name)
++        on_part = f'"{object_name}"'
+ 
+     if grant_option:
+         if object_type == "group":
+-            query = 'GRANT {} TO "{}" WITH ADMIN OPTION'.format(object_name, name)
++            query = f'GRANT {object_name} TO "{name}" WITH ADMIN OPTION'
+         elif object_type in ("table", "sequence") and object_name.upper() == "ALL":
+             query = 'GRANT {} ON ALL {}S IN SCHEMA {} TO "{}" WITH GRANT OPTION'.format(
+                 _grants, object_type.upper(), prepend, name
+@@ -3458,7 +3446,7 @@ def privileges_grant(
+             )
+     else:
+         if object_type == "group":
+-            query = 'GRANT {} TO "{}"'.format(object_name, name)
++            query = f'GRANT {object_name} TO "{name}"'
+         elif object_type in ("table", "sequence") and object_name.upper() == "ALL":
+             query = 'GRANT {} ON ALL {}S IN SCHEMA {} TO "{}"'.format(
+                 _grants, object_type.upper(), prepend, name
+@@ -3587,12 +3575,12 @@ def privileges_revoke(
+     _grants = ",".join(_privs)
+ 
+     if object_type in ["table", "sequence"]:
+-        on_part = "{}.{}".format(prepend, object_name)
++        on_part = f"{prepend}.{object_name}"
+     else:
+         on_part = object_name
+ 
+     if object_type == "group":
+-        query = "REVOKE {} FROM {}".format(object_name, name)
++        query = f"REVOKE {object_name} FROM {name}"
+     else:
+         query = "REVOKE {} ON {} {} FROM {}".format(
+             _grants, object_type.upper(), on_part, name
+diff --git a/salt/utils/cloud.py b/salt/utils/cloud.py
+index 9edf006c299..b7208dc4a64 100644
+--- a/salt/utils/cloud.py
++++ b/salt/utils/cloud.py
+@@ -10,8 +10,8 @@ import hashlib
+ import logging
+ import multiprocessing
+ import os
+-import pipes
+ import re
++import shlex
+ import shutil
+ import socket
+ import stat
+@@ -199,7 +199,7 @@ def __ssh_gateway_arguments(kwargs):
+                 "-oUserKnownHostsFile=/dev/null",
+                 "-oControlPath=none",
+                 str(ssh_gateway_key),
+-                "{}@{}".format(ssh_gateway_user, ssh_gateway),
++                f"{ssh_gateway_user}@{ssh_gateway}",
+                 "-p",
+                 str(ssh_gateway_port),
+                 str(ssh_gateway_command),
+@@ -228,18 +228,18 @@ def os_script(os_, vm_=None, opts=None, minion=""):
+         # The user provided an absolute path to the deploy script, let's use it
+         return __render_script(os_, vm_, opts, minion)
+ 
+-    if os.path.isabs("{}.sh".format(os_)):
++    if os.path.isabs(f"{os_}.sh"):
+         # The user provided an absolute path to the deploy script, although no
+         # extension was provided. Let's use it anyway.
+-        return __render_script("{}.sh".format(os_), vm_, opts, minion)
++        return __render_script(f"{os_}.sh", vm_, opts, minion)
+ 
+     for search_path in opts["deploy_scripts_search_path"]:
+         if os.path.isfile(os.path.join(search_path, os_)):
+             return __render_script(os.path.join(search_path, os_), vm_, opts, minion)
+ 
+-        if os.path.isfile(os.path.join(search_path, "{}.sh".format(os_))):
++        if os.path.isfile(os.path.join(search_path, f"{os_}.sh")):
+             return __render_script(
+-                os.path.join(search_path, "{}.sh".format(os_)), vm_, opts, minion
++                os.path.join(search_path, f"{os_}.sh"), vm_, opts, minion
+             )
+     # No deploy script was found, return an empty string
+     return ""
+@@ -416,7 +416,7 @@ def bootstrap(vm_, opts=None):
+     )
+     if key_filename is not None and not os.path.isfile(key_filename):
+         raise SaltCloudConfigError(
+-            "The defined ssh_keyfile '{}' does not exist".format(key_filename)
++            f"The defined ssh_keyfile '{key_filename}' does not exist"
+         )
+     has_ssh_agent = False
+     if (
+@@ -782,8 +782,8 @@ def wait_for_port(
+             # Don't add new hosts to the host key database
+             "-oStrictHostKeyChecking=no",
+             # make sure ssh can time out on connection lose
+-            "-oServerAliveInterval={}".format(server_alive_interval),
+-            "-oServerAliveCountMax={}".format(server_alive_count_max),
++            f"-oServerAliveInterval={server_alive_interval}",
++            f"-oServerAliveCountMax={server_alive_count_max}",
+             # Set hosts key database path to /dev/null, i.e., non-existing
+             "-oUserKnownHostsFile=/dev/null",
+             # Don't re-use the SSH connection. Less failures.
+@@ -808,21 +808,21 @@ def wait_for_port(
+             ]
+         )
+     # Netcat command testing remote port
+-    command = "nc -z -w5 -q0 {} {}".format(host, port)
++    command = f"nc -z -w5 -q0 {host} {port}"
+     # SSH command
+     pcmd = "ssh {} {}@{} -p {} {}".format(
+         " ".join(ssh_args),
+         gateway["ssh_gateway_user"],
+         ssh_gateway,
+         ssh_gateway_port,
+-        pipes.quote("date"),
++        shlex.quote("date"),
+     )
+     cmd = "ssh {} {}@{} -p {} {}".format(
+         " ".join(ssh_args),
+         gateway["ssh_gateway_user"],
+         ssh_gateway,
+         ssh_gateway_port,
+-        pipes.quote(command),
++        shlex.quote(command),
+     )
+     log.debug("SSH command: '%s'", cmd)
+ 
+@@ -893,7 +893,7 @@ class Client:
+         service_name=None,
+     ):
+         self.service_name = service_name
+-        self._exe_file = "{}.exe".format(self.service_name)
++        self._exe_file = f"{self.service_name}.exe"
+         self._client = PsExecClient(server, username, password, port, encrypt)
+         self._client._service = ScmrService(self.service_name, self._client.session)
+ 
+@@ -943,7 +943,7 @@ class Client:
+         # delete the PAExec executable
+         smb_tree = TreeConnect(
+             self._client.session,
+-            r"\\{}\ADMIN$".format(self._client.connection.server_name),
++            rf"\\{self._client.connection.server_name}\ADMIN$",
+         )
+         log.info("Connecting to SMB Tree %s", smb_tree.share_name)
+         smb_tree.connect()
+@@ -968,10 +968,10 @@ def run_winexe_command(cmd, args, host, username, password, port=445):
+     """
+     Run a command remotely via the winexe executable
+     """
+-    creds = "-U '{}%{}' //{}".format(username, password, host)
+-    logging_creds = "-U '{}%XXX-REDACTED-XXX' //{}".format(username, host)
+-    cmd = "winexe {} {} {}".format(creds, cmd, args)
+-    logging_cmd = "winexe {} {} {}".format(logging_creds, cmd, args)
++    creds = f"-U '{username}%{password}' //{host}"
++    logging_creds = f"-U '{username}%XXX-REDACTED-XXX' //{host}"
++    cmd = f"winexe {creds} {cmd} {args}"
++    logging_cmd = f"winexe {logging_creds} {cmd} {args}"
+     return win_cmd(cmd, logging_command=logging_cmd)
+ 
+ 
+@@ -979,7 +979,7 @@ def run_psexec_command(cmd, args, host, username, password, port=445):
+     """
+     Run a command remotely using the psexec protocol
+     """
+-    service_name = "PS-Exec-{}".format(uuid.uuid4())
++    service_name = f"PS-Exec-{uuid.uuid4()}"
+     with Client(
+         host, username, password, port=port, encrypt=False, service_name=service_name
+     ) as client:
+@@ -1098,7 +1098,7 @@ def validate_windows_cred_winexe(
+     """
+     Check if the windows credentials are valid
+     """
+-    cmd = "winexe -U '{}%{}' //{} \"hostname\"".format(username, password, host)
++    cmd = f"winexe -U '{username}%{password}' //{host} \"hostname\""
+     logging_cmd = "winexe -U '{}%XXX-REDACTED-XXX' //{} \"hostname\"".format(
+         username, host
+     )
+@@ -1230,7 +1230,7 @@ def deploy_windows(
+     winrm_port=5986,
+     winrm_use_ssl=True,
+     winrm_verify_ssl=True,
+-    **kwargs
++    **kwargs,
+ ):
+     """
+     Copy the install files to a remote Windows box, and execute them
+@@ -1289,20 +1289,20 @@ def deploy_windows(
+ 
+         salt.utils.smb.mkdirs("salttemp", conn=smb_conn)
+         root_dir = "ProgramData/Salt Project/Salt"
+-        salt.utils.smb.mkdirs("{}/conf/pki/minion".format(root_dir), conn=smb_conn)
++        salt.utils.smb.mkdirs(f"{root_dir}/conf/pki/minion", conn=smb_conn)
+         root_dir = "ProgramData\\Salt Project\\Salt"
+ 
+         if minion_pub:
+             salt.utils.smb.put_str(
+                 minion_pub,
+-                "{}\\conf\\pki\\minion\\minion.pub".format(root_dir),
++                f"{root_dir}\\conf\\pki\\minion\\minion.pub",
+                 conn=smb_conn,
+             )
+ 
+         if minion_pem:
+             salt.utils.smb.put_str(
+                 minion_pem,
+-                "{}\\conf\\pki\\minion\\minion.pem".format(root_dir),
++                f"{root_dir}\\conf\\pki\\minion\\minion.pem",
+                 conn=smb_conn,
+             )
+ 
+@@ -1314,7 +1314,7 @@ def deploy_windows(
+             try:
+                 salt.utils.smb.put_file(
+                     master_sign_pub_file,
+-                    "{}\\conf\\pki\\minion\\master_sign.pub".format(root_dir),
++                    f"{root_dir}\\conf\\pki\\minion\\master_sign.pub",
+                     conn=smb_conn,
+                 )
+             except Exception as e:  # pylint: disable=broad-except
+@@ -1332,26 +1332,27 @@ def deploy_windows(
+         installer = comps[-1]
+         salt.utils.smb.put_file(
+             win_installer,
+-            "salttemp\\{}".format(installer),
++            f"salttemp\\{installer}",
+             "C$",
+             conn=smb_conn,
+         )
+ 
++        cmd = f"c:\\salttemp\\{installer}"
++        args = [
++            "/S",
++            f"/master={_format_master_param(master)}",
++            f"/minion-name={name}",
++        ]
++
+         if use_winrm:
+-            winrm_cmd(
+-                winrm_session,
+-                "c:\\salttemp\\{}".format(installer),
+-                ["/S", "/master={}".format(master), "/minion-name={}".format(name)],
+-            )
++            winrm_cmd(winrm_session, cmd, args)
+         else:
+-            cmd = "c:\\salttemp\\{}".format(installer)
+-            args = "/S /master={} /minion-name={}".format(master, name)
+             stdout, stderr, ret_code = run_psexec_command(
+-                cmd, args, host, username, password
++                cmd, " ".join(args), host, username, password
+             )
+ 
+             if ret_code != 0:
+-                raise Exception("Fail installer {}".format(ret_code))
++                raise Exception(f"Fail installer {ret_code}")
+ 
+         # Copy over minion_conf
+         if minion_conf:
+@@ -1367,7 +1368,7 @@ def deploy_windows(
+             if minion_grains:
+                 salt.utils.smb.put_str(
+                     salt_config_to_yaml(minion_grains, line_break="\r\n"),
+-                    "{}\\conf\\grains".format(root_dir),
++                    f"{root_dir}\\conf\\grains",
+                     conn=smb_conn,
+                 )
+             # Add special windows minion configuration
+@@ -1384,7 +1385,7 @@ def deploy_windows(
+             minion_conf = dict(minion_conf, **windows_minion_conf)
+             salt.utils.smb.put_str(
+                 salt_config_to_yaml(minion_conf, line_break="\r\n"),
+-                "{}\\conf\\minion".format(root_dir),
++                f"{root_dir}\\conf\\minion",
+                 conn=smb_conn,
+             )
+         # Delete C:\salttmp\ and installer file
+@@ -1394,7 +1395,7 @@ def deploy_windows(
+                 winrm_cmd(winrm_session, "rmdir", ["/Q", "/S", "C:\\salttemp\\"])
+             else:
+                 salt.utils.smb.delete_file(
+-                    "salttemp\\{}".format(installer), "C$", conn=smb_conn
++                    f"salttemp\\{installer}", "C$", conn=smb_conn
+                 )
+                 salt.utils.smb.delete_directory("salttemp", "C$", conn=smb_conn)
+         # Shell out to psexec to ensure salt-minion service started
+@@ -1418,8 +1419,8 @@ def deploy_windows(
+         # Fire deploy action
+         fire_event(
+             "event",
+-            "{} has been deployed at {}".format(name, host),
+-            "salt/cloud/{}/deploy_windows".format(name),
++            f"{name} has been deployed at {host}",
++            f"salt/cloud/{name}/deploy_windows",
+             args={"name": name},
+             sock_dir=opts.get("sock_dir", os.path.join(__opts__["sock_dir"], "master")),
+             transport=opts.get("transport", "zeromq"),
+@@ -1469,7 +1470,7 @@ def deploy_script(
+     master_sign_pub_file=None,
+     cloud_grains=None,
+     force_minion_config=False,
+-    **kwargs
++    **kwargs,
+ ):
+     """
+     Copy a deploy script to a remote server, execute it, and remove it
+@@ -1485,7 +1486,7 @@ def deploy_script(
+     )
+     if key_filename is not None and not os.path.isfile(key_filename):
+         raise SaltCloudConfigError(
+-            "The defined key_filename '{}' does not exist".format(key_filename)
++            f"The defined key_filename '{key_filename}' does not exist"
+         )
+ 
+     gateway = None
+@@ -1532,35 +1533,28 @@ def deploy_script(
+                 ssh_kwargs["password"] = password
+ 
+             if root_cmd(
+-                "test -e '{}'".format(tmp_dir),
+-                tty,
+-                sudo,
+-                allow_failure=True,
+-                **ssh_kwargs
++                f"test -e '{tmp_dir}'", tty, sudo, allow_failure=True, **ssh_kwargs
+             ):
+                 ret = root_cmd(
+-                    "sh -c \"( mkdir -p -m 700 '{}' )\"".format(tmp_dir),
++                    f"sh -c \"( mkdir -p -m 700 '{tmp_dir}' )\"",
+                     tty,
+                     sudo,
+-                    **ssh_kwargs
++                    **ssh_kwargs,
+                 )
+                 if ret:
+                     raise SaltCloudSystemExit(
+-                        "Can't create temporary directory in {} !".format(tmp_dir)
++                        f"Can't create temporary directory in {tmp_dir} !"
+                     )
+             if sudo:
+                 comps = tmp_dir.lstrip("/").rstrip("/").split("/")
+                 if comps:
+                     if len(comps) > 1 or comps[0] != "tmp":
+                         ret = root_cmd(
+-                            'chown {} "{}"'.format(username, tmp_dir),
+-                            tty,
+-                            sudo,
+-                            **ssh_kwargs
++                            f'chown {username} "{tmp_dir}"', tty, sudo, **ssh_kwargs
+                         )
+                         if ret:
+                             raise SaltCloudSystemExit(
+-                                "Cant set {} ownership on {}".format(username, tmp_dir)
++                                f"Cant set {username} ownership on {tmp_dir}"
+                             )
+ 
+             if not isinstance(file_map, dict):
+@@ -1590,15 +1584,13 @@ def deploy_script(
+                     remote_dir = os.path.dirname(remote_file)
+ 
+                 if remote_dir not in remote_dirs:
+-                    root_cmd(
+-                        "mkdir -p '{}'".format(remote_dir), tty, sudo, **ssh_kwargs
+-                    )
++                    root_cmd(f"mkdir -p '{remote_dir}'", tty, sudo, **ssh_kwargs)
+                     if ssh_kwargs["username"] != "root":
+                         root_cmd(
+                             "chown {} '{}'".format(ssh_kwargs["username"], remote_dir),
+                             tty,
+                             sudo,
+-                            **ssh_kwargs
++                            **ssh_kwargs,
+                         )
+                     remote_dirs.append(remote_dir)
+                 ssh_file(opts, remote_file, kwargs=ssh_kwargs, local_file=local_file)
+@@ -1606,21 +1598,21 @@ def deploy_script(
+ 
+             # Minion configuration
+             if minion_pem:
+-                ssh_file(opts, "{}/minion.pem".format(tmp_dir), minion_pem, ssh_kwargs)
++                ssh_file(opts, f"{tmp_dir}/minion.pem", minion_pem, ssh_kwargs)
+                 ret = root_cmd(
+-                    "chmod 600 '{}/minion.pem'".format(tmp_dir), tty, sudo, **ssh_kwargs
++                    f"chmod 600 '{tmp_dir}/minion.pem'", tty, sudo, **ssh_kwargs
+                 )
+                 if ret:
+                     raise SaltCloudSystemExit(
+-                        "Can't set perms on {}/minion.pem".format(tmp_dir)
++                        f"Can't set perms on {tmp_dir}/minion.pem"
+                     )
+             if minion_pub:
+-                ssh_file(opts, "{}/minion.pub".format(tmp_dir), minion_pub, ssh_kwargs)
++                ssh_file(opts, f"{tmp_dir}/minion.pub", minion_pub, ssh_kwargs)
+ 
+             if master_sign_pub_file:
+                 ssh_file(
+                     opts,
+-                    "{}/master_sign.pub".format(tmp_dir),
++                    f"{tmp_dir}/master_sign.pub",
+                     kwargs=ssh_kwargs,
+                     local_file=master_sign_pub_file,
+                 )
+@@ -1638,7 +1630,7 @@ def deploy_script(
+                 if minion_grains:
+                     ssh_file(
+                         opts,
+-                        "{}/grains".format(tmp_dir),
++                        f"{tmp_dir}/grains",
+                         salt_config_to_yaml(minion_grains),
+                         ssh_kwargs,
+                     )
+@@ -1646,24 +1638,22 @@ def deploy_script(
+                     minion_conf["grains"] = {"salt-cloud": cloud_grains}
+                 ssh_file(
+                     opts,
+-                    "{}/minion".format(tmp_dir),
++                    f"{tmp_dir}/minion",
+                     salt_config_to_yaml(minion_conf),
+                     ssh_kwargs,
+                 )
+ 
+             # Master configuration
+             if master_pem:
+-                ssh_file(opts, "{}/master.pem".format(tmp_dir), master_pem, ssh_kwargs)
++                ssh_file(opts, f"{tmp_dir}/master.pem", master_pem, ssh_kwargs)
+                 ret = root_cmd(
+-                    "chmod 600 '{}/master.pem'".format(tmp_dir), tty, sudo, **ssh_kwargs
++                    f"chmod 600 '{tmp_dir}/master.pem'", tty, sudo, **ssh_kwargs
+                 )
+                 if ret:
+-                    raise SaltCloudSystemExit(
+-                        "Cant set perms on {}/master.pem".format(tmp_dir)
+-                    )
++                    raise SaltCloudSystemExit(f"Cant set perms on {tmp_dir}/master.pem")
+ 
+             if master_pub:
+-                ssh_file(opts, "{}/master.pub".format(tmp_dir), master_pub, ssh_kwargs)
++                ssh_file(opts, f"{tmp_dir}/master.pub", master_pub, ssh_kwargs)
+ 
+             if master_conf:
+                 if not isinstance(master_conf, dict):
+@@ -1677,34 +1667,31 @@ def deploy_script(
+ 
+                 ssh_file(
+                     opts,
+-                    "{}/master".format(tmp_dir),
++                    f"{tmp_dir}/master",
+                     salt_config_to_yaml(master_conf),
+                     ssh_kwargs,
+                 )
+ 
+             # XXX: We need to make these paths configurable
+-            preseed_minion_keys_tempdir = "{}/preseed-minion-keys".format(tmp_dir)
++            preseed_minion_keys_tempdir = f"{tmp_dir}/preseed-minion-keys"
+             if preseed_minion_keys is not None:
+                 # Create remote temp dir
+                 ret = root_cmd(
+-                    "mkdir '{}'".format(preseed_minion_keys_tempdir),
+-                    tty,
+-                    sudo,
+-                    **ssh_kwargs
++                    f"mkdir '{preseed_minion_keys_tempdir}'", tty, sudo, **ssh_kwargs
+                 )
+                 if ret:
+                     raise SaltCloudSystemExit(
+-                        "Cant create {}".format(preseed_minion_keys_tempdir)
++                        f"Cant create {preseed_minion_keys_tempdir}"
+                     )
+                 ret = root_cmd(
+-                    "chmod 700 '{}'".format(preseed_minion_keys_tempdir),
++                    f"chmod 700 '{preseed_minion_keys_tempdir}'",
+                     tty,
+                     sudo,
+-                    **ssh_kwargs
++                    **ssh_kwargs,
+                 )
+                 if ret:
+                     raise SaltCloudSystemExit(
+-                        "Can't set perms on {}".format(preseed_minion_keys_tempdir)
++                        f"Can't set perms on {preseed_minion_keys_tempdir}"
+                     )
+                 if ssh_kwargs["username"] != "root":
+                     root_cmd(
+@@ -1713,7 +1700,7 @@ def deploy_script(
+                         ),
+                         tty,
+                         sudo,
+-                        **ssh_kwargs
++                        **ssh_kwargs,
+                     )
+ 
+                 # Copy pre-seed minion keys
+@@ -1723,10 +1710,10 @@ def deploy_script(
+ 
+                 if ssh_kwargs["username"] != "root":
+                     root_cmd(
+-                        "chown -R root '{}'".format(preseed_minion_keys_tempdir),
++                        f"chown -R root '{preseed_minion_keys_tempdir}'",
+                         tty,
+                         sudo,
+-                        **ssh_kwargs
++                        **ssh_kwargs,
+                     )
+                     if ret:
+                         raise SaltCloudSystemExit(
+@@ -1740,25 +1727,21 @@ def deploy_script(
+             for command in preflight_cmds:
+                 cmd_ret = root_cmd(command, tty, sudo, **ssh_kwargs)
+                 if cmd_ret:
+-                    raise SaltCloudSystemExit(
+-                        "Pre-flight command failed: '{}'".format(command)
+-                    )
++                    raise SaltCloudSystemExit(f"Pre-flight command failed: '{command}'")
+ 
+             # The actual deploy script
+             if script:
+                 # got strange escaping issues with sudoer, going onto a
+                 # subshell fixes that
+-                ssh_file(opts, "{}/deploy.sh".format(tmp_dir), script, ssh_kwargs)
++                ssh_file(opts, f"{tmp_dir}/deploy.sh", script, ssh_kwargs)
+                 ret = root_cmd(
+-                    "sh -c \"( chmod +x '{}/deploy.sh' )\";exit $?".format(tmp_dir),
++                    f"sh -c \"( chmod +x '{tmp_dir}/deploy.sh' )\";exit $?",
+                     tty,
+                     sudo,
+-                    **ssh_kwargs
++                    **ssh_kwargs,
+                 )
+                 if ret:
+-                    raise SaltCloudSystemExit(
+-                        "Can't set perms on {}/deploy.sh".format(tmp_dir)
+-                    )
++                    raise SaltCloudSystemExit(f"Can't set perms on {tmp_dir}/deploy.sh")
+ 
+             time_used = time.mktime(time.localtime()) - time.mktime(starttime)
+             newtimeout = timeout - time_used
+@@ -1774,7 +1757,7 @@ def deploy_script(
+                     kwargs=dict(
+                         name=name, sock_dir=sock_dir, timeout=newtimeout, queue=queue
+                     ),
+-                    name="DeployScriptCheckAuth({})".format(name),
++                    name=f"DeployScriptCheckAuth({name})",
+                 )
+                 log.debug("Starting new process to wait for salt-minion")
+                 process.start()
+@@ -1782,7 +1765,7 @@ def deploy_script(
+             # Run the deploy script
+             if script:
+                 if "bootstrap-salt" in script:
+-                    deploy_command += " -c '{}'".format(tmp_dir)
++                    deploy_command += f" -c '{tmp_dir}'"
+                     if force_minion_config:
+                         deploy_command += " -F"
+                     if make_syndic is True:
+@@ -1794,9 +1777,9 @@ def deploy_script(
+                     if keep_tmp is True:
+                         deploy_command += " -K"
+                     if preseed_minion_keys is not None:
+-                        deploy_command += " -k '{}'".format(preseed_minion_keys_tempdir)
++                        deploy_command += f" -k '{preseed_minion_keys_tempdir}'"
+                 if script_args:
+-                    deploy_command += " {}".format(script_args)
++                    deploy_command += f" {script_args}"
+ 
+                 if script_env:
+                     if not isinstance(script_env, dict):
+@@ -1815,15 +1798,15 @@ def deploy_script(
+                     # Upload our environ setter wrapper
+                     ssh_file(
+                         opts,
+-                        "{}/environ-deploy-wrapper.sh".format(tmp_dir),
++                        f"{tmp_dir}/environ-deploy-wrapper.sh",
+                         "\n".join(environ_script_contents),
+                         ssh_kwargs,
+                     )
+                     root_cmd(
+-                        "chmod +x '{}/environ-deploy-wrapper.sh'".format(tmp_dir),
++                        f"chmod +x '{tmp_dir}/environ-deploy-wrapper.sh'",
+                         tty,
+                         sudo,
+-                        **ssh_kwargs
++                        **ssh_kwargs,
+                     )
+                     # The deploy command is now our wrapper
+                     deploy_command = "'{}/environ-deploy-wrapper.sh'".format(
+@@ -1831,22 +1814,20 @@ def deploy_script(
+                     )
+                 if root_cmd(deploy_command, tty, sudo, **ssh_kwargs) != 0:
+                     raise SaltCloudSystemExit(
+-                        "Executing the command '{}' failed".format(deploy_command)
++                        f"Executing the command '{deploy_command}' failed"
+                     )
+                 log.debug("Executed command '%s'", deploy_command)
+ 
+                 # Remove the deploy script
+                 if not keep_tmp:
+-                    root_cmd(
+-                        "rm -f '{}/deploy.sh'".format(tmp_dir), tty, sudo, **ssh_kwargs
+-                    )
++                    root_cmd(f"rm -f '{tmp_dir}/deploy.sh'", tty, sudo, **ssh_kwargs)
+                     log.debug("Removed %s/deploy.sh", tmp_dir)
+                     if script_env:
+                         root_cmd(
+-                            "rm -f '{}/environ-deploy-wrapper.sh'".format(tmp_dir),
++                            f"rm -f '{tmp_dir}/environ-deploy-wrapper.sh'",
+                             tty,
+                             sudo,
+-                            **ssh_kwargs
++                            **ssh_kwargs,
+                         )
+                         log.debug("Removed %s/environ-deploy-wrapper.sh", tmp_dir)
+ 
+@@ -1855,57 +1836,40 @@ def deploy_script(
+             else:
+                 # Remove minion configuration
+                 if minion_pub:
+-                    root_cmd(
+-                        "rm -f '{}/minion.pub'".format(tmp_dir), tty, sudo, **ssh_kwargs
+-                    )
++                    root_cmd(f"rm -f '{tmp_dir}/minion.pub'", tty, sudo, **ssh_kwargs)
+                     log.debug("Removed %s/minion.pub", tmp_dir)
+                 if minion_pem:
+-                    root_cmd(
+-                        "rm -f '{}/minion.pem'".format(tmp_dir), tty, sudo, **ssh_kwargs
+-                    )
++                    root_cmd(f"rm -f '{tmp_dir}/minion.pem'", tty, sudo, **ssh_kwargs)
+                     log.debug("Removed %s/minion.pem", tmp_dir)
+                 if minion_conf:
+-                    root_cmd(
+-                        "rm -f '{}/grains'".format(tmp_dir), tty, sudo, **ssh_kwargs
+-                    )
++                    root_cmd(f"rm -f '{tmp_dir}/grains'", tty, sudo, **ssh_kwargs)
+                     log.debug("Removed %s/grains", tmp_dir)
+-                    root_cmd(
+-                        "rm -f '{}/minion'".format(tmp_dir), tty, sudo, **ssh_kwargs
+-                    )
++                    root_cmd(f"rm -f '{tmp_dir}/minion'", tty, sudo, **ssh_kwargs)
+                     log.debug("Removed %s/minion", tmp_dir)
+                 if master_sign_pub_file:
+                     root_cmd(
+-                        "rm -f {}/master_sign.pub".format(tmp_dir),
+-                        tty,
+-                        sudo,
+-                        **ssh_kwargs
++                        f"rm -f {tmp_dir}/master_sign.pub", tty, sudo, **ssh_kwargs
+                     )
+                     log.debug("Removed %s/master_sign.pub", tmp_dir)
+ 
+                 # Remove master configuration
+                 if master_pub:
+-                    root_cmd(
+-                        "rm -f '{}/master.pub'".format(tmp_dir), tty, sudo, **ssh_kwargs
+-                    )
++                    root_cmd(f"rm -f '{tmp_dir}/master.pub'", tty, sudo, **ssh_kwargs)
+                     log.debug("Removed %s/master.pub", tmp_dir)
+                 if master_pem:
+-                    root_cmd(
+-                        "rm -f '{}/master.pem'".format(tmp_dir), tty, sudo, **ssh_kwargs
+-                    )
++                    root_cmd(f"rm -f '{tmp_dir}/master.pem'", tty, sudo, **ssh_kwargs)
+                     log.debug("Removed %s/master.pem", tmp_dir)
+                 if master_conf:
+-                    root_cmd(
+-                        "rm -f '{}/master'".format(tmp_dir), tty, sudo, **ssh_kwargs
+-                    )
++                    root_cmd(f"rm -f '{tmp_dir}/master'", tty, sudo, **ssh_kwargs)
+                     log.debug("Removed %s/master", tmp_dir)
+ 
+                 # Remove pre-seed keys directory
+                 if preseed_minion_keys is not None:
+                     root_cmd(
+-                        "rm -rf '{}'".format(preseed_minion_keys_tempdir),
++                        f"rm -rf '{preseed_minion_keys_tempdir}'",
+                         tty,
+                         sudo,
+-                        **ssh_kwargs
++                        **ssh_kwargs,
+                     )
+                     log.debug("Removed %s", preseed_minion_keys_tempdir)
+ 
+@@ -1920,15 +1884,13 @@ def deploy_script(
+                     # for line in output:
+                     #    print(line)
+                     log.info("Executing %s on the salt-minion", start_action)
+-                    root_cmd(
+-                        "salt-call {}".format(start_action), tty, sudo, **ssh_kwargs
+-                    )
++                    root_cmd(f"salt-call {start_action}", tty, sudo, **ssh_kwargs)
+                     log.info("Finished executing %s on the salt-minion", start_action)
+             # Fire deploy action
+             fire_event(
+                 "event",
+-                "{} has been deployed at {}".format(name, host),
+-                "salt/cloud/{}/deploy_script".format(name),
++                f"{name} has been deployed at {host}",
++                f"salt/cloud/{name}/deploy_script",
+                 args={"name": name, "host": host},
+                 sock_dir=opts.get(
+                     "sock_dir", os.path.join(__opts__["sock_dir"], "master")
+@@ -1961,7 +1923,7 @@ def run_inline_script(
+     tty=None,
+     opts=None,
+     tmp_dir="/tmp/.saltcloud-inline_script",
+-    **kwargs
++    **kwargs,
+ ):
+     """
+     Run the inline script commands, one by one
+@@ -2018,11 +1980,11 @@ def run_inline_script(
+             # TODO: check edge cases (e.g. ssh gateways, salt deploy disabled, etc.)
+             if (
+                 root_cmd(
+-                    'test -e \\"{}\\"'.format(tmp_dir),
++                    f'test -e \\"{tmp_dir}\\"',
+                     tty,
+                     sudo,
+                     allow_failure=True,
+-                    **ssh_kwargs
++                    **ssh_kwargs,
+                 )
+                 and inline_script
+             ):
+@@ -2030,11 +1992,11 @@ def run_inline_script(
+                 for cmd_line in inline_script:
+                     log.info("Executing inline command: %s", cmd_line)
+                     ret = root_cmd(
+-                        'sh -c "( {} )"'.format(cmd_line),
++                        f'sh -c "( {cmd_line} )"',
+                         tty,
+                         sudo,
+                         allow_failure=True,
+-                        **ssh_kwargs
++                        **ssh_kwargs,
+                     )
+                     if ret:
+                         log.info("[%s] Output: %s", cmd_line, ret)
+@@ -2138,7 +2100,7 @@ def _exec_ssh_cmd(cmd, error_msg=None, allow_failure=False, **kwargs):
+             time.sleep(0.5)
+         if proc.exitstatus != 0 and allow_failure is False:
+             raise SaltCloudSystemExit(
+-                "Command '{}' failed. Exit code: {}".format(cmd, proc.exitstatus)
++                f"Command '{cmd}' failed. Exit code: {proc.exitstatus}"
+             )
+         return proc.exitstatus
+     except salt.utils.vt.TerminalException as err:
+@@ -2241,7 +2203,7 @@ def scp_file(dest_path, contents=None, kwargs=None, local_file=None):
+             cmd,
+             error_msg="Failed to upload file '{0}': {1}\n{2}",
+             password_retries=3,
+-            **kwargs
++            **kwargs,
+         )
+     finally:
+         if contents is not None:
+@@ -2359,7 +2321,7 @@ def sftp_file(dest_path, contents=None, kwargs=None, local_file=None):
+             cmd,
+             error_msg="Failed to upload file '{0}': {1}\n{2}",
+             password_retries=3,
+-            **kwargs
++            **kwargs,
+         )
+     finally:
+         if contents is not None:
+@@ -2419,11 +2381,11 @@ def root_cmd(command, tty, sudo, allow_failure=False, **kwargs):
+ 
+     if sudo:
+         if sudo_password is None:
+-            command = "sudo {}".format(command)
++            command = f"sudo {command}"
+             logging_command = command
+         else:
+-            logging_command = 'sudo -S "XXX-REDACTED-XXX" {}'.format(command)
+-            command = "sudo -S {}".format(command)
++            logging_command = f'sudo -S "XXX-REDACTED-XXX" {command}'
++            command = f"sudo -S {command}"
+ 
+         log.debug("Using sudo to run command %s", logging_command)
+ 
+@@ -2442,9 +2404,9 @@ def root_cmd(command, tty, sudo, allow_failure=False, **kwargs):
+     ssh_args.extend(
+         [
+             # Don't add new hosts to the host key database
+-            "-oStrictHostKeyChecking={}".format(host_key_checking),
++            f"-oStrictHostKeyChecking={host_key_checking}",
+             # Set hosts key database path to /dev/null, i.e., non-existing
+-            "-oUserKnownHostsFile={}".format(known_hosts_file),
++            f"-oUserKnownHostsFile={known_hosts_file}",
+             # Don't re-use the SSH connection. Less failures.
+             "-oControlPath=none",
+         ]
+@@ -2477,12 +2439,12 @@ def root_cmd(command, tty, sudo, allow_failure=False, **kwargs):
+ 
+     cmd = "ssh {0} {1[username]}@{1[hostname]} ".format(" ".join(ssh_args), kwargs)
+     logging_command = cmd + logging_command
+-    cmd = cmd + pipes.quote(command)
++    cmd = cmd + shlex.quote(command)
+ 
+     hard_timeout = kwargs.get("hard_timeout")
+     if hard_timeout is not None:
+-        logging_command = "timeout {} {}".format(hard_timeout, logging_command)
+-        cmd = "timeout {} {}".format(hard_timeout, cmd)
++        logging_command = f"timeout {hard_timeout} {logging_command}"
++        cmd = f"timeout {hard_timeout} {cmd}"
+ 
+     log.debug("SSH command: '%s'", logging_command)
+ 
+@@ -2504,7 +2466,7 @@ def check_auth(name, sock_dir=None, queue=None, timeout=300):
+             ret = event.get_event(full=True)
+             if ret is None:
+                 continue
+-            if ret["tag"] == "salt/minion/{}/start".format(name):
++            if ret["tag"] == f"salt/minion/{name}/start":
+                 queue.put(name)
+                 newtimeout = 0
+                 log.debug("Minion %s is ready to receive commands", name)
+@@ -2550,7 +2512,7 @@ def check_name(name, safe_chars):
+     """
+     Check whether the specified name contains invalid characters
+     """
+-    regexp = re.compile("[^{}]".format(safe_chars))
++    regexp = re.compile(f"[^{safe_chars}]")
+     if regexp.search(name):
+         raise SaltCloudException(
+             "{} contains characters not supported by this cloud provider. "
+@@ -2844,7 +2806,7 @@ def request_minion_cachedir(
+         "provider": provider,
+     }
+ 
+-    fname = "{}.p".format(minion_id)
++    fname = f"{minion_id}.p"
+     path = os.path.join(base, "requested", fname)
+     with salt.utils.files.fopen(path, "wb") as fh_:
+         salt.utils.msgpack.dump(data, fh_, encoding=MSGPACK_ENCODING)
+@@ -2875,7 +2837,7 @@ def change_minion_cachedir(
+     if base is None:
+         base = __opts__["cachedir"]
+ 
+-    fname = "{}.p".format(minion_id)
++    fname = f"{minion_id}.p"
+     path = os.path.join(base, cachedir, fname)
+ 
+     with salt.utils.files.fopen(path, "r") as fh_:
+@@ -2898,7 +2860,7 @@ def activate_minion_cachedir(minion_id, base=None):
+     if base is None:
+         base = __opts__["cachedir"]
+ 
+-    fname = "{}.p".format(minion_id)
++    fname = f"{minion_id}.p"
+     src = os.path.join(base, "requested", fname)
+     dst = os.path.join(base, "active")
+     shutil.move(src, dst)
+@@ -2920,7 +2882,7 @@ def delete_minion_cachedir(minion_id, provider, opts, base=None):
+         base = __opts__["cachedir"]
+ 
+     driver = next(iter(__opts__["providers"][provider].keys()))
+-    fname = "{}.p".format(minion_id)
++    fname = f"{minion_id}.p"
+     for cachedir in "requested", "active":
+         path = os.path.join(base, cachedir, driver, provider, fname)
+         log.debug("path: %s", path)
+@@ -3013,7 +2975,7 @@ def update_bootstrap(config, url=None):
+     # in last case, assuming we got a script content
+     else:
+         script_content = url
+-        script_name = "{}.sh".format(hashlib.sha1(script_content).hexdigest())
++        script_name = f"{hashlib.sha1(script_content).hexdigest()}.sh"
+ 
+     if not script_content:
+         raise ValueError("No content in bootstrap script !")
+@@ -3107,7 +3069,7 @@ def cache_node_list(nodes, provider, opts):
+ 
+     for node in nodes:
+         diff_node_cache(prov_dir, node, nodes[node], opts)
+-        path = os.path.join(prov_dir, "{}.p".format(node))
++        path = os.path.join(prov_dir, f"{node}.p")
+         with salt.utils.files.fopen(path, "wb") as fh_:
+             salt.utils.msgpack.dump(nodes[node], fh_, encoding=MSGPACK_ENCODING)
+ 
+@@ -3162,7 +3124,7 @@ def missing_node_cache(prov_dir, node_list, provider, opts):
+                 fire_event(
+                     "event",
+                     "cached node missing from provider",
+-                    "salt/cloud/{}/cache_node_missing".format(node),
++                    f"salt/cloud/{node}/cache_node_missing",
+                     args={"missing node": node},
+                     sock_dir=opts.get(
+                         "sock_dir", os.path.join(__opts__["sock_dir"], "master")
+@@ -3190,7 +3152,7 @@ def diff_node_cache(prov_dir, node, new_data, opts):
+ 
+     if node is None:
+         return
+-    path = "{}.p".format(os.path.join(prov_dir, node))
++    path = f"{os.path.join(prov_dir, node)}.p"
+ 
+     if not os.path.exists(path):
+         event_data = _strip_cache_events(new_data, opts)
+@@ -3198,7 +3160,7 @@ def diff_node_cache(prov_dir, node, new_data, opts):
+         fire_event(
+             "event",
+             "new node found",
+-            "salt/cloud/{}/cache_node_new".format(node),
++            f"salt/cloud/{node}/cache_node_new",
+             args={"new_data": event_data},
+             sock_dir=opts.get("sock_dir", os.path.join(__opts__["sock_dir"], "master")),
+             transport=opts.get("transport", "zeromq"),
+@@ -3222,7 +3184,7 @@ def diff_node_cache(prov_dir, node, new_data, opts):
+         fire_event(
+             "event",
+             "node data differs",
+-            "salt/cloud/{}/cache_node_diff".format(node),
++            f"salt/cloud/{node}/cache_node_diff",
+             args={
+                 "new_data": _strip_cache_events(new_data, opts),
+                 "cache_data": _strip_cache_events(cache_data, opts),
+@@ -3266,7 +3228,7 @@ def _salt_cloud_force_ascii(exc):
+     errors.
+     """
+     if not isinstance(exc, (UnicodeEncodeError, UnicodeTranslateError)):
+-        raise TypeError("Can't handle {}".format(exc))
++        raise TypeError(f"Can't handle {exc}")
+ 
+     unicode_trans = {
+         # Convert non-breaking space to space
+@@ -3326,7 +3288,7 @@ def store_password_in_keyring(credential_id, username, password=None):
+ 
+         # pylint: enable=import-error
+         if password is None:
+-            prompt = "Please enter password for {}: ".format(credential_id)
++            prompt = f"Please enter password for {credential_id}: "
+             try:
+                 password = getpass.getpass(prompt)
+             except EOFError:
+diff --git a/salt/utils/http.py b/salt/utils/http.py
+index 91c5cbf08ed..26f2e85c2ee 100644
+--- a/salt/utils/http.py
++++ b/salt/utils/http.py
+@@ -5,7 +5,7 @@ and the like, but also useful for basic HTTP testing.
+ .. versionadded:: 2015.5.0
+ """
+ 
+-import cgi
++import email.message
+ import gzip
+ import http.client
+ import http.cookiejar
+@@ -84,7 +84,7 @@ except ImportError:
+     HAS_CERTIFI = False
+ 
+ log = logging.getLogger(__name__)
+-USERAGENT = "Salt/{}".format(salt.version.__version__)
++USERAGENT = f"Salt/{salt.version.__version__}"
+ 
+ 
+ def __decompressContent(coding, pgctnt):
+@@ -170,7 +170,7 @@ def query(
+     formdata_fieldname=None,
+     formdata_filename=None,
+     decode_body=True,
+-    **kwargs
++    **kwargs,
+ ):
+     """
+     Query a resource, and decode the return data
+@@ -295,7 +295,7 @@ def query(
+             auth = (username, password)
+ 
+     if agent == USERAGENT:
+-        agent = "{} http.query()".format(agent)
++        agent = f"{agent} http.query()"
+     header_dict["User-agent"] = agent
+ 
+     if backend == "requests":
+@@ -360,14 +360,14 @@ def query(
+                 url,
+                 params=params,
+                 files={formdata_fieldname: (formdata_filename, io.StringIO(data))},
+-                **req_kwargs
++                **req_kwargs,
+             )
+         else:
+             result = sess.request(method, url, params=params, data=data, **req_kwargs)
+         result.raise_for_status()
+         if stream is True:
+             # fake a HTTP response header
+-            header_callback("HTTP/1.0 {} MESSAGE".format(result.status_code))
++            header_callback(f"HTTP/1.0 {result.status_code} MESSAGE")
+             # fake streaming the content
+             streaming_callback(result.content)
+             return {
+@@ -483,15 +483,12 @@ def query(
+         result_headers = dict(result.info())
+         result_text = result.read()
+         if "Content-Type" in result_headers:
+-            res_content_type, res_params = cgi.parse_header(
+-                result_headers["Content-Type"]
+-            )
+-            if (
+-                res_content_type.startswith("text/")
+-                and "charset" in res_params
+-                and not isinstance(result_text, str)
+-            ):
+-                result_text = result_text.decode(res_params["charset"])
++            msg = email.message.EmailMessage()
++            msg.add_header("Content-Type", result_headers["Content-Type"])
++            if msg.get_content_type().startswith("text/"):
++                content_charset = msg.get_content_charset()
++                if content_charset and not isinstance(result_text, str):
++                    result_text = result_text.decode(content_charset)
+         if isinstance(result_text, bytes) and decode_body:
+             result_text = result_text.decode("utf-8")
+         ret["body"] = result_text
+@@ -636,15 +633,12 @@ def query(
+         result_headers = result.headers
+         result_text = result.body
+         if "Content-Type" in result_headers:
+-            res_content_type, res_params = cgi.parse_header(
+-                result_headers["Content-Type"]
+-            )
+-            if (
+-                res_content_type.startswith("text/")
+-                and "charset" in res_params
+-                and not isinstance(result_text, str)
+-            ):
+-                result_text = result_text.decode(res_params["charset"])
++            msg = email.message.EmailMessage()
++            msg.add_header("Content-Type", result_headers["Content-Type"])
++            if msg.get_content_type().startswith("text/"):
++                content_charset = msg.get_content_charset()
++                if content_charset and not isinstance(result_text, str):
++                    result_text = result_text.decode(content_charset)
+         if isinstance(result_text, bytes) and decode_body:
+             result_text = result_text.decode("utf-8")
+         ret["body"] = result_text
+@@ -1038,12 +1032,12 @@ def _sanitize_url_components(comp_list, field):
+     """
+     if not comp_list:
+         return ""
+-    elif comp_list[0].startswith("{}=".format(field)):
+-        ret = "{}=XXXXXXXXXX&".format(field)
++    elif comp_list[0].startswith(f"{field}="):
++        ret = f"{field}=XXXXXXXXXX&"
+         comp_list.remove(comp_list[0])
+         return ret + _sanitize_url_components(comp_list, field)
+     else:
+-        ret = "{}&".format(comp_list[0])
++        ret = f"{comp_list[0]}&"
+         comp_list.remove(comp_list[0])
+         return ret + _sanitize_url_components(comp_list, field)
+ 
+diff --git a/salt/utils/jinja.py b/salt/utils/jinja.py
+index a6a8a279605..d90957a0087 100644
+--- a/salt/utils/jinja.py
++++ b/salt/utils/jinja.py
+@@ -2,13 +2,12 @@
+ Jinja loading utils to enable a more powerful backend for jinja templates
+ """
+ 
+-
+ import itertools
+ import logging
+ import os.path
+-import pipes
+ import pprint
+ import re
++import shlex
+ import time
+ import uuid
+ import warnings
+@@ -242,11 +241,11 @@ class PrintableDict(OrderedDict):
+             if isinstance(value, str):
+                 # keeps quotes around strings
+                 # pylint: disable=repr-flag-used-in-string
+-                output.append("{!r}: {!r}".format(key, value))
++                output.append(f"{key!r}: {value!r}")
+                 # pylint: enable=repr-flag-used-in-string
+             else:
+                 # let default output
+-                output.append("{!r}: {!s}".format(key, value))
++                output.append(f"{key!r}: {value!s}")
+         return "{" + ", ".join(output) + "}"
+ 
+     def __repr__(self):  # pylint: disable=W0221
+@@ -255,7 +254,7 @@ class PrintableDict(OrderedDict):
+             # Raw string formatter required here because this is a repr
+             # function.
+             # pylint: disable=repr-flag-used-in-string
+-            output.append("{!r}: {!r}".format(key, value))
++            output.append(f"{key!r}: {value!r}")
+             # pylint: enable=repr-flag-used-in-string
+         return "{" + ", ".join(output) + "}"
+ 
+@@ -441,7 +440,7 @@ def quote(txt):
+ 
+         'my_text'
+     """
+-    return pipes.quote(txt)
++    return shlex.quote(txt)
+ 
+ 
+ @jinja_filter()
+@@ -1095,13 +1094,13 @@ class SerializerExtension(Extension):
+                 # to the stringified version of the exception.
+                 msg += str(exc)
+             else:
+-                msg += "{}\n".format(problem)
++                msg += f"{problem}\n"
+                 msg += salt.utils.stringutils.get_context(
+                     buf, line, marker="    <======================"
+                 )
+             raise TemplateRuntimeError(msg)
+         except AttributeError:
+-            raise TemplateRuntimeError("Unable to load yaml from {}".format(value))
++            raise TemplateRuntimeError(f"Unable to load yaml from {value}")
+ 
+     def load_json(self, value):
+         if isinstance(value, TemplateModule):
+@@ -1109,7 +1108,7 @@ class SerializerExtension(Extension):
+         try:
+             return salt.utils.json.loads(value)
+         except (ValueError, TypeError, AttributeError):
+-            raise TemplateRuntimeError("Unable to load json from {}".format(value))
++            raise TemplateRuntimeError(f"Unable to load json from {value}")
+ 
+     def load_text(self, value):
+         if isinstance(value, TemplateModule):
+@@ -1144,7 +1143,7 @@ class SerializerExtension(Extension):
+         return self._parse_profile_block(parser, label, "profile block", body, lineno)
+ 
+     def _create_profile_id(self, parser):
+-        return "_salt_profile_{}".format(parser.free_identifier().name)
++        return f"_salt_profile_{parser.free_identifier().name}"
+ 
+     def _profile_start(self, label, source):
+         return (label, source, time.time())
+@@ -1186,7 +1185,7 @@ class SerializerExtension(Extension):
+         filter_name = parser.stream.current.value
+         lineno = next(parser.stream).lineno
+         if filter_name not in self.environment.filters:
+-            parser.fail("Unable to parse {}".format(filter_name), lineno)
++            parser.fail(f"Unable to parse {filter_name}", lineno)
+ 
+         parser.stream.expect("name:as")
+         target = parser.parse_assign_target()
+@@ -1225,7 +1224,7 @@ class SerializerExtension(Extension):
+                 nodes.Name(target, "store").set_lineno(lineno),
+                 nodes.Filter(
+                     nodes.Name(target, "load").set_lineno(lineno),
+-                    "load_{}".format(converter),
++                    f"load_{converter}",
+                     [],
+                     [],
+                     None,
+@@ -1234,7 +1233,7 @@ class SerializerExtension(Extension):
+             ).set_lineno(lineno),
+         ]
+         return self._parse_profile_block(
+-            parser, import_node.template, "import_{}".format(converter), body, lineno
++            parser, import_node.template, f"import_{converter}", body, lineno
+         )
+ 
+     def dict_to_sls_yaml_params(self, value, flow_style=False):
+diff --git a/salt/utils/locales.py b/salt/utils/locales.py
+index 8017958d5de..a380ddbe7a2 100644
+--- a/salt/utils/locales.py
++++ b/salt/utils/locales.py
+@@ -1,8 +1,7 @@
+ """
+ the locale utils used by salt
+ """
+-
+-
++import locale
+ import sys
+ 
+ from salt.utils.decorators import memoize as real_memoize
+@@ -83,3 +82,39 @@ def normalize_locale(loc):
+     comps["codeset"] = comps["codeset"].lower().replace("-", "")
+     comps["charmap"] = ""
+     return join_locale(comps)
++
++
++def getdefaultlocale(envvars=("LC_ALL", "LC_CTYPE", "LANG", "LANGUAGE")):
++    """
++    This function was backported from Py3.11 which started triggering a
++    deprecation warning about it's removal in 3.13.
++    """
++    try:
++        # check if it's supported by the _locale module
++        import _locale
++
++        code, encoding = _locale._getdefaultlocale()
++    except (ImportError, AttributeError):
++        pass
++    else:
++        # make sure the code/encoding values are valid
++        if sys.platform == "win32" and code and code[:2] == "0x":
++            # map windows language identifier to language name
++            code = locale.windows_locale.get(int(code, 0))
++        # ...add other platform-specific processing here, if
++        # necessary...
++        return code, encoding
++
++    # fall back on POSIX behaviour
++    import os
++
++    lookup = os.environ.get
++    for variable in envvars:
++        localename = lookup(variable, None)
++        if localename:
++            if variable == "LANGUAGE":
++                localename = localename.split(":")[0]
++            break
++    else:
++        localename = "C"
++    return locale._parse_localename(localename)
+diff --git a/tests/integration/states/test_ssh_auth.py b/tests/integration/states/test_ssh_auth.py
+index 660c3f62d6a..46ffc9b4115 100644
+--- a/tests/integration/states/test_ssh_auth.py
++++ b/tests/integration/states/test_ssh_auth.py
+@@ -24,6 +24,20 @@ class SSHAuthStateTests(ModuleCase, SaltReturnAssertsMixin):
+         user_ssh_dir = os.path.join(userdetails["home"], ".ssh")
+         authorized_keys_file = os.path.join(user_ssh_dir, "authorized_keys")
+ 
++        key1 = (
++            # Explicit no ending line break
++            "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQC3dd5ACsvJhnIOrn6bSOkX5"
++            "KyVDpTYsVAaJj3AmEo6Fr5cHXJFJoJS+Ld8K5vCscPzuXashdYUdrhL1E5Liz"
++            "bza+zneQ5AkJ7sn2NXymD6Bbra+infO4NgnQXbGMp/NyY65jbQGqJeQ081iEV"
++            f"YbDP2zXp6fmrqqmFCaakZfGRbVw== root"
++        )
++        key2 = (
++            "AAAAB3NzaC1yc2EAAAADAQABAAAAgQC7h77HyBPCUDONCs5bI/PrrPwyYJegl0"
++            "f9YWLaBofVYOUl/uSv1ux8zjIoLVs4kguY1ihtIoK2kho4YsjNtIaAd6twdua9"
++            "oqCg2g/54cIK/8WbIjwnb3LFRgyTG5DFuj+7526EdJycAZvhSzIZYui3RUj4Vp"
++            "eMoF7mcB6TIK2/2w=="
++        )
++
+         ret = self.run_state(
+             "file.managed",
+             name=authorized_keys_file,
+@@ -31,23 +45,22 @@ class SSHAuthStateTests(ModuleCase, SaltReturnAssertsMixin):
+             makedirs=True,
+             contents_newline=False,
+             # Explicit no ending line break
+-            contents="ssh-rsa AAAAB3NzaC1kc3MAAACBAL0sQ9fJ5bYTEyY== root",
++            contents=key1,
+         )
+ 
+         ret = self.run_state(
+             "ssh_auth.present",
+-            name="AAAAB3NzaC1kcQ9J5bYTEyZ==",
++            name=key2,
+             enc="ssh-rsa",
+             user=username,
+             comment=username,
+         )
+         self.assertSaltTrueReturn(ret)
+-        self.assertSaltStateChangesEqual(ret, {"AAAAB3NzaC1kcQ9J5bYTEyZ==": "New"})
++        self.assertSaltStateChangesEqual(ret, {key2: "New"})
+         with salt.utils.files.fopen(authorized_keys_file, "r") as fhr:
+             self.assertEqual(
+                 fhr.read(),
+-                "ssh-rsa AAAAB3NzaC1kc3MAAACBAL0sQ9fJ5bYTEyY== root\n"
+-                "ssh-rsa AAAAB3NzaC1kcQ9J5bYTEyZ== {}\n".format(username),
++                f"{key1}\nssh-rsa {key2} {username}\n",
+             )
+ 
+     @pytest.mark.destructive_test
+@@ -60,39 +73,48 @@ class SSHAuthStateTests(ModuleCase, SaltReturnAssertsMixin):
+         authorized_keys_file = os.path.join(user_ssh_dir, "authorized_keys")
+ 
+         key_fname = "issue_10198.id_rsa.pub"
++        key_contents = (
++            "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQC3dd5ACsvJhnIOrn6bSOkX5"
++            "KyVDpTYsVAaJj3AmEo6Fr5cHXJFJoJS+Ld8K5vCscPzuXashdYUdrhL1E5Liz"
++            "bza+zneQ5AkJ7sn2NXymD6Bbra+infO4NgnQXbGMp/NyY65jbQGqJeQ081iEV"
++            f"YbDP2zXp6fmrqqmFCaakZfGRbVw== {username}\n"
++        )
+ 
+         # Create the keyfile that we expect to get back on the state call
+         with salt.utils.files.fopen(
+             os.path.join(RUNTIME_VARS.TMP_PRODENV_STATE_TREE, key_fname), "w"
+         ) as kfh:
+-            kfh.write("ssh-rsa AAAAB3NzaC1kcQ9J5bYTEyZ== {}\n".format(username))
++            kfh.write(key_contents)
+ 
+         # Create a bogus key file on base environment
+         with salt.utils.files.fopen(
+             os.path.join(RUNTIME_VARS.TMP_STATE_TREE, key_fname), "w"
+         ) as kfh:
+-            kfh.write("ssh-rsa BAAAB3NzaC1kcQ9J5bYTEyZ== {}\n".format(username))
++            kfh.write(
++                "ssh-rsa A!AAB3NzaC1yc2EAAAADAQABAAAAgQC3dd5ACsvJhnIOrn6bSOkX5"
++                "KyVDpTYsVAaJj3AmEo6Fr5cHXJFJoJS+Ld8K5vCscPzuXashdYUdrhL1E5Liz"
++                "bza+zneQ5AkJ7sn2NXymD6Bbra+infO4NgnQXbGMp/NyY65jbQGqJeQ081iEV"
++                f"YbDP2zXp6fmrqqmFCaakZfGRbVw== {username}\n"
++            )
+ 
+         ret = self.run_state(
+             "ssh_auth.present",
+             name="Setup Keys",
+-            source="salt://{}?saltenv=prod".format(key_fname),
++            source=f"salt://{key_fname}?saltenv=prod",
+             enc="ssh-rsa",
+             user=username,
+             comment=username,
+         )
+         self.assertSaltTrueReturn(ret)
+         with salt.utils.files.fopen(authorized_keys_file, "r") as fhr:
+-            self.assertEqual(
+-                fhr.read(), "ssh-rsa AAAAB3NzaC1kcQ9J5bYTEyZ== {}\n".format(username)
+-            )
++            self.assertEqual(fhr.read(), key_contents)
+ 
+         os.unlink(authorized_keys_file)
+ 
+         ret = self.run_state(
+             "ssh_auth.present",
+             name="Setup Keys",
+-            source="salt://{}".format(key_fname),
++            source=f"salt://{key_fname}",
+             enc="ssh-rsa",
+             user=username,
+             comment=username,
+@@ -100,6 +122,4 @@ class SSHAuthStateTests(ModuleCase, SaltReturnAssertsMixin):
+         )
+         self.assertSaltTrueReturn(ret)
+         with salt.utils.files.fopen(authorized_keys_file, "r") as fhr:
+-            self.assertEqual(
+-                fhr.read(), "ssh-rsa AAAAB3NzaC1kcQ9J5bYTEyZ== {}\n".format(username)
+-            )
++            self.assertEqual(fhr.read(), key_contents)
+diff --git a/tests/pytests/unit/modules/state/test_state.py b/tests/pytests/unit/modules/state/test_state.py
+index 7c42646bcf7..cff66defa9d 100644
+--- a/tests/pytests/unit/modules/state/test_state.py
++++ b/tests/pytests/unit/modules/state/test_state.py
+@@ -610,7 +610,7 @@ def test_show_states_missing_sls():
+     chunks_mock = MagicMock(side_effect=[msg])
+     mock = MagicMock(side_effect=["A", None])
+     with patch.object(state, "_check_queue", mock), patch(
+-        "salt.state.HighState.compile_low_chunks", chunks_mock
++        "salt.modules.state.salt.state.HighState.compile_low_chunks", chunks_mock
+     ):
+         assert state.show_low_sls("foo") == "A"
+         assert state.show_states("foo") == [msg[0]]
+diff --git a/tests/unit/states/test_module.py b/tests/unit/states/test_module.py
+index a705bd30285..4853c24ca07 100644
+--- a/tests/unit/states/test_module.py
++++ b/tests/unit/states/test_module.py
+@@ -4,7 +4,7 @@
+ 
+ 
+ import logging
+-from inspect import ArgSpec
++from inspect import FullArgSpec
+ 
+ import salt.states.module as module
+ from tests.support.mixins import LoaderModuleMockMixin
+@@ -117,11 +117,25 @@ class ModuleStateTest(TestCase, LoaderModuleMockMixin):
+ 
+     @classmethod
+     def setUpClass(cls):
+-        cls.aspec = ArgSpec(
+-            args=["hello", "world"], varargs=None, keywords=None, defaults=False
++        cls.aspec = FullArgSpec(
++            args=["hello", "world"],
++            varargs=None,
++            varkw=None,
++            defaults=False,
++            kwonlyargs=None,
++            kwonlydefaults=None,
++            annotations=None,
+         )
+ 
+-        cls.bspec = ArgSpec(args=[], varargs="names", keywords="kwargs", defaults=None)
++        cls.bspec = FullArgSpec(
++            args=[],
++            varargs="names",
++            varkw=None,
++            defaults=None,
++            kwonlyargs="kwargs",
++            kwonlydefaults=None,
++            annotations=None,
++        )
+ 
+     @classmethod
+     def tearDownClass(cls):
+@@ -137,8 +151,8 @@ class ModuleStateTest(TestCase, LoaderModuleMockMixin):
+             module.__opts__, {"use_superseded": ["module.run"]}
+         ):
+             ret = module.run(**{CMD: None})
+-        if ret["comment"] != "Unavailable function: {}.".format(CMD) or ret["result"]:
+-            self.fail("module.run did not fail as expected: {}".format(ret))
++        if ret["comment"] != f"Unavailable function: {CMD}." or ret["result"]:
++            self.fail(f"module.run did not fail as expected: {ret}")
+ 
+     def test_run_module_not_available_testmode(self):
+         """
+@@ -151,10 +165,10 @@ class ModuleStateTest(TestCase, LoaderModuleMockMixin):
+         ):
+             ret = module.run(**{CMD: None})
+         if (
+-            ret["comment"] != "Unavailable function: {}.".format(CMD)
++            ret["comment"] != f"Unavailable function: {CMD}."
+             or ret["result"] is not False
+         ):
+-            self.fail("module.run did not fail as expected: {}".format(ret))
++            self.fail(f"module.run did not fail as expected: {ret}")
+ 
+     def test_run_module_noop(self):
+         """
+@@ -166,7 +180,7 @@ class ModuleStateTest(TestCase, LoaderModuleMockMixin):
+         ):
+             ret = module.run()
+         if ret["comment"] != "No function provided." or ret["result"] is not False:
+-            self.fail("module.run did not fail as expected: {}".format(ret))
++            self.fail(f"module.run did not fail as expected: {ret}")
+ 
+     def test_module_run_hidden_varargs(self):
+         """
+@@ -189,10 +203,10 @@ class ModuleStateTest(TestCase, LoaderModuleMockMixin):
+         ):
+             ret = module.run(**{CMD: None})
+         if (
+-            ret["comment"] != "Function {} to be executed.".format(CMD)
++            ret["comment"] != f"Function {CMD} to be executed."
+             or ret["result"] is not None
+         ):
+-            self.fail("module.run failed: {}".format(ret))
++            self.fail(f"module.run failed: {ret}")
+ 
+     def test_run_missing_arg(self):
+         """
+@@ -203,9 +217,7 @@ class ModuleStateTest(TestCase, LoaderModuleMockMixin):
+             module.__opts__, {"use_superseded": ["module.run"]}
+         ):
+             ret = module.run(**{CMD: None})
+-        self.assertEqual(
+-            ret["comment"], "'{}' failed: Missing arguments: name".format(CMD)
+-        )
++        self.assertEqual(ret["comment"], f"'{CMD}' failed: Missing arguments: name")
+ 
+     def test_run_correct_arg(self):
+         """
+@@ -216,8 +228,8 @@ class ModuleStateTest(TestCase, LoaderModuleMockMixin):
+             module.__opts__, {"use_superseded": ["module.run"]}
+         ):
+             ret = module.run(**{CMD: ["Fred"]})
+-        if ret["comment"] != "{}: Success".format(CMD) or not ret["result"]:
+-            self.fail("module.run failed: {}".format(ret))
++        if ret["comment"] != f"{CMD}: Success" or not ret["result"]:
++            self.fail(f"module.run failed: {ret}")
+ 
+     def test_run_state_apply_result_false(self):
+         """
+@@ -294,9 +306,7 @@ class ModuleStateTest(TestCase, LoaderModuleMockMixin):
+         ):
+             ret = module.run(**{CMD: ["bla", {"example": "bla"}]})
+         self.assertFalse(ret["result"])
+-        self.assertEqual(
+-            ret["comment"], "'{}' failed: Missing arguments: arg2".format(CMD)
+-        )
++        self.assertEqual(ret["comment"], f"'{CMD}' failed: Missing arguments: arg2")
+ 
+     def test_run_42270_kwargs_to_args(self):
+         """
+@@ -390,9 +400,7 @@ class ModuleStateTest(TestCase, LoaderModuleMockMixin):
+         with patch.dict(module.__salt__, {}, clear=True):
+             ret = module._legacy_run(CMD)
+         self.assertFalse(ret["result"])
+-        self.assertEqual(
+-            ret["comment"], "Module function {} is not available".format(CMD)
+-        )
++        self.assertEqual(ret["comment"], f"Module function {CMD} is not available")
+ 
+     def test_module_run_test_true(self):
+         """
+@@ -400,9 +408,7 @@ class ModuleStateTest(TestCase, LoaderModuleMockMixin):
+         """
+         with patch.dict(module.__opts__, {"test": True}):
+             ret = module._legacy_run(CMD)
+-        self.assertEqual(
+-            ret["comment"], "Module function {} is set to execute".format(CMD)
+-        )
++        self.assertEqual(ret["comment"], f"Module function {CMD} is set to execute")
+ 
+     def test_module_run_missing_arg(self):
+         """
+diff --git a/tests/unit/test_master.py b/tests/unit/test_master.py
+index b454882f06c..96fe2a54595 100644
+--- a/tests/unit/test_master.py
++++ b/tests/unit/test_master.py
+@@ -56,6 +56,7 @@ class TransportMethodsTest(TestCase):
+             "__format__",
+             "__ge__",
+             "__getattribute__",
++            "__getstate__",
+             "__gt__",
+             "__hash__",
+             "__init__",
+@@ -71,9 +72,9 @@ class TransportMethodsTest(TestCase):
+             "__sizeof__",
+             "__str__",
+             "__subclasshook__",
++            "destroy",
+             "get_method",
+             "run_func",
+-            "destroy",
+         ]
+         for name in dir(aes_funcs):
+             if name in aes_funcs.expose_methods:
+@@ -108,6 +109,7 @@ class TransportMethodsTest(TestCase):
+             "__format__",
+             "__ge__",
+             "__getattribute__",
++            "__getstate__",
+             "__gt__",
+             "__hash__",
+             "__init__",
+@@ -128,9 +130,9 @@ class TransportMethodsTest(TestCase):
+             "_prep_pub",
+             "_send_pub",
+             "_send_ssh_pub",
+-            "get_method",
+-            "destroy",
+             "connect",
++            "destroy",
++            "get_method",
+         ]
+         for name in dir(clear_funcs):
+             if name in clear_funcs.expose_methods:
+-- 
+2.44.0
+

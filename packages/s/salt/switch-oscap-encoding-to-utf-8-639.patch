@@ -1,0 +1,80 @@
+From 4ec5c8bdb8aecac6752c639f494b86c7f8f57ba2 Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Tue, 26 Mar 2024 09:20:30 +0100
+Subject: [PATCH] Switch oscap encoding to utf-8 (#639)
+
+---
+ salt/modules/openscap.py            | 7 ++++---
+ tests/unit/modules/test_openscap.py | 8 ++++----
+ 2 files changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/salt/modules/openscap.py b/salt/modules/openscap.py
+index 89712ae722b..7322c667dcc 100644
+--- a/salt/modules/openscap.py
++++ b/salt/modules/openscap.py
+@@ -153,7 +153,7 @@ def xccdf_eval(xccdffile, ovalfiles=None, **kwargs):
+         tempdir = tempfile.mkdtemp()
+         proc = Popen(cmd_opts, stdout=PIPE, stderr=PIPE, cwd=tempdir)
+         (_, error) = proc.communicate()
+-        error = error.decode('ascii', errors='ignore')
++        error = error.decode('utf-8', errors='surogateescape')
+         success = _OSCAP_EXIT_CODES_MAP.get(proc.returncode, False)
+         if proc.returncode < 0:
+             error += "\nKilled by signal {}\n".format(proc.returncode)
+@@ -204,10 +204,11 @@ def xccdf(params):
+         cmd = _XCCDF_MAP[action]["cmd_pattern"].format(args.profile, policy)
+         tempdir = tempfile.mkdtemp()
+         proc = Popen(shlex.split(cmd), stdout=PIPE, stderr=PIPE, cwd=tempdir)
+-        (stdoutdata, error) = proc.communicate()
++        (_, error) = proc.communicate()
++        error = error.decode('utf-8', errors='surogateescape')
+         success = _OSCAP_EXIT_CODES_MAP.get(proc.returncode, False)
+         if proc.returncode < 0:
+-            error += "\nKilled by signal {}\n".format(proc.returncode).encode('ascii')
++            error += "\nKilled by signal {}\n".format(proc.returncode)
+         returncode = proc.returncode
+         if success:
+             __salt__["cp.push_dir"](tempdir)
+diff --git a/tests/unit/modules/test_openscap.py b/tests/unit/modules/test_openscap.py
+index 6fbdfed7cf9..c20220ea977 100644
+--- a/tests/unit/modules/test_openscap.py
++++ b/tests/unit/modules/test_openscap.py
+@@ -35,7 +35,7 @@ class OpenscapTestCase(TestCase):
+             "salt.modules.openscap.Popen",
+             MagicMock(
+                 return_value=Mock(
+-                    **{"returncode": 0, "communicate.return_value": ("", "")}
++                    **{"returncode": 0, "communicate.return_value": (bytes(0), bytes(0))}
+                 )
+             ),
+         ):
+@@ -82,7 +82,7 @@ class OpenscapTestCase(TestCase):
+             "salt.modules.openscap.Popen",
+             MagicMock(
+                 return_value=Mock(
+-                    **{"returncode": 2, "communicate.return_value": ("", "some error")}
++                    **{"returncode": 2, "communicate.return_value": (bytes(0), bytes("some error", "UTF-8"))}
+                 )
+             ),
+         ):
+@@ -137,7 +137,7 @@ class OpenscapTestCase(TestCase):
+             "salt.modules.openscap.Popen",
+             MagicMock(
+                 return_value=Mock(
+-                    **{"returncode": 2, "communicate.return_value": ("", "some error")}
++                    **{"returncode": 2, "communicate.return_value": (bytes(0), bytes("some error", "UTF-8"))}
+                 )
+             ),
+         ):
+@@ -180,7 +180,7 @@ class OpenscapTestCase(TestCase):
+                 return_value=Mock(
+                     **{
+                         "returncode": 1,
+-                        "communicate.return_value": ("", "evaluation error"),
++                        "communicate.return_value": (bytes(0), bytes("evaluation error", "UTF-8")),
+                     }
+                 )
+             ),
+-- 
+2.44.0
+
