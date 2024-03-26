@@ -3,10 +3,8 @@
  Misc/NEWS               |    2 +-
  2 files changed, 1 insertion(+), 4 deletions(-)
 
-Index: Python-3.10.12/Doc/using/configure.rst
-===================================================================
---- Python-3.10.12.orig/Doc/using/configure.rst
-+++ Python-3.10.12/Doc/using/configure.rst
+--- a/Doc/using/configure.rst
++++ b/Doc/using/configure.rst
 @@ -42,7 +42,6 @@ General Options
  
     See :data:`sys.int_info.bits_per_digit <sys.int_info>`.
@@ -29,11 +27,9 @@ Index: Python-3.10.12/Doc/using/configure.rst
  .. cmdoption:: --enable-framework=INSTALLDIR
  
     Create a Python.framework rather than a traditional Unix install. Optional
-Index: Python-3.10.12/Misc/NEWS
-===================================================================
---- Python-3.10.12.orig/Misc/NEWS
-+++ Python-3.10.12/Misc/NEWS
-@@ -3618,7 +3618,7 @@ C API
+--- a/Misc/NEWS
++++ b/Misc/NEWS
+@@ -3731,7 +3731,7 @@ C API
  -----
  
  - bpo-43795: The list in :ref:`stable-abi-list` now shows the public name

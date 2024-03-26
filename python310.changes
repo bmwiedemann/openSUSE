@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sun Mar 24 00:43:14 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add old-libexpat.patch making the test suite work with
+  libexpat < 2.6.0 (gh#python/cpython#117187).
+
+-------------------------------------------------------------------
+Fri Mar 22 21:17:25 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Because of bsc#1189495 we have to revert use of %autopatch.
+
+-------------------------------------------------------------------
+Thu Mar 21 07:38:15 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update 3.10.14:
+  - gh-115399 & gh-115398: bundled libexpat was updated to 2.6.0
+    to address CVE-2023-52425, and control of the new reparse
+    deferral functionality was exposed with new APIs
+    (bsc#1219559).
+  - gh-109858: zipfile is now protected from the “quoted-overlap”
+    zipbomb to address CVE-2024-0450. It now raises BadZipFile
+    when attempting to read an entry that overlaps with another
+    entry or central directory. (bsc#1221854)
+  - gh-91133: tempfile.TemporaryDirectory cleanup no longer
+    dereferences symlinks when working around file system
+    permission errors to address CVE-2023-6597 (bsc#1219666)
+  - gh-115197: urllib.request no longer resolves the hostname
+    before checking it against the system’s proxy bypass list on
+    macOS and Windows
+  - gh-81194: a crash in socket.if_indextoname() with a specific
+    value (UINT_MAX) was fixed. Relatedly, an integer overflow in
+    socket.if_indextoname() on 64-bit non-Windows platforms was
+    fixed
+  - gh-113659: .pth files with names starting with a dot or
+    containing the hidden file attribute are now skipped
+  - gh-102388: iso2022_jp_3 and iso2022_jp_2004 codecs no longer
+    read out of bounds
+  - gh-114572: ssl.SSLContext.cert_store_stats() and
+    ssl.SSLContext.get_ca_certs() now correctly lock access to
+    the certificate store, when the ssl.SSLContext is shared
+    across multiple threads
+- Remove upstreamed patches:
+  - CVE-2023-6597-TempDir-cleaning-symlink.patch
+  - libexpat260.patch
+- Readjust patches:
+  -  F00251-change-user-install-location.patch
+  -  fix_configure_rst.patch
+  -  python-3.3.0b1-localpath.patch
+  -  skip-test_pyobject_freed_is_freed.patch
+- Port to %autosetup and %autopatch.
+
+-------------------------------------------------------------------
 Wed Mar  6 14:13:58 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Use the system-wide crypto-policies [bsc#1211301]

@@ -39,7 +39,7 @@ Fedora Change: https://fedoraproject.org/wiki/Changes/Making_sudo_pip_safe
                  if self.exec_prefix is None:
 --- a/Lib/site.py
 +++ b/Lib/site.py
-@@ -380,8 +380,15 @@ def getsitepackages(prefixes=None):
+@@ -390,8 +390,15 @@ def getsitepackages(prefixes=None):
      return sitepackages
  
  def addsitepackages(known_paths, prefixes=None):
