@@ -18,4 +18,14 @@
     exceptions being raised unexpectedly.</comment>
     <requestid>1133193</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7b51993ccb532b5cee40ecef0a2574b2</srcmd5>
+    <version>1.2.0</version>
+    <time>1711477549</time>
+    <user>anag+factory</user>
+    <comment>- Fix tests for python 3.12
+
+Needed for sr#1161399</comment>
+    <requestid>1161713</requestid>
+  </revision>
 </revisionlist>

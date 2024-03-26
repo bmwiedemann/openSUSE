@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylink-square
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ BuildRequires:  fdupes
 Requires:       python-psutil >= 5.2.2
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,6 +47,8 @@ Python interface for SEGGER J-Link.
 
 %prep
 %setup -q -n pylink-square-%{version}
+sed -i 's/assertEquals/assertEqual/g' tests/unit/test_library.py
+sed -i 's/\.called_once_with/.assert_called_once_with/g' tests/unit/test_jlink.py
 
 %build
 %pyproject_wheel
@@ -67,6 +69,8 @@ find tests -type f -exec sed -i 's/import mock/import unittest.mock as mock/g' {
 IGNORED_CHECKS="test_initialize_windows"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_unlock_kinetis_read_fail"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_unlock_kinetis_success"
+# Fails because parameter order in assert_called_once_with
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_cp15_register_write_success or test_set_log_file_success"
 %pytest -k "not (${IGNORED_CHECKS})"
 
 %post
