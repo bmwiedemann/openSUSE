@@ -64,10 +64,7 @@ selection word" and "Fuzzy query".
 %lang_package
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch2
+%autosetup -p0
 
 # Remove unneeded sigc++ header files to make it sure
 # that we are using system-wide libsigc++
