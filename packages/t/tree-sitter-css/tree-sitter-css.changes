@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Mon Feb 26 07:09:21 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for openSUSE
+- Update to version 0.20.0:
+  * feat: add issue templates
+  * feat: add ci actions
+  * docs: add badges to readme
+  * chore: update bindings and manifests
+  * feat: add and apply eslint formatting
+  * chore: generate
+  * fix: don't make strings a token
+  * feat: support postcss statements
+  * fix: pseudo class selector colons not being parsed correct
+
