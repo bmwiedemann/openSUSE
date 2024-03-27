@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Mon Mar 25 17:34:42 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 0.21.0:
+  * docs: add pypi badge
+  * feat!: use the array api in the scanner
+  * build: update makefile for macos installation
+  * ci: bump tree-sitter/parser-setup-action from 1.1 to 1.2
+  * ci: update workflows
+  * build: update bindings and versions
+  * docs: update badges
+  * ci: bump actions/setup-node from 3 to 4
+  * ci: bump actions/checkout from 3 to 4
+  * ci: add dependabot for actions
+  * docs: remove unnecessary space
+  * Remove AppVeyor (#247)
+  * fix: use `iswalpha`
+
+-------------------------------------------------------------------
+Mon Feb 26 06:41:09 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for openSUSE
+- Update to version 0.20.5:
+  * chore: update parse script
+  * chore: update tests
+  * chore: generate
+  * fix: allow asterisk in globs
+  * fix: partial revert redirect changes, allow command sub in numbers w/ a base
+  * fix: mark end when parsing strings
+  * fix: better glob parsing
+  * fix: parse single quote strings for certain regex tokens
+  * fix: account for escaped opening braces in regex parsing
