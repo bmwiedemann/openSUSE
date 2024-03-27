@@ -55,8 +55,7 @@ It is a clean-room implementation based on the D-Bus Specification
 Version 0.11 and study of the wire protocol of existing tools.
 
 %prep
-%setup -q
-%patch0 -p0
+%autosetup -p0
 
 %build
 %configure \

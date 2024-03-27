@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 07:56:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Mon Sep 28 13:55:03 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - fix libexecdir. mono can't use libexecdir because /usr/lib is
