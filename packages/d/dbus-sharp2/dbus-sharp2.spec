@@ -57,8 +57,7 @@ It is a clean-room implementation based on the D-Bus Specification
 Version 0.11 and study of the wire protocol of existing tools.
 
 %prep
-%setup -q -n dbus-sharp-%{version}
-%patch0 -p1
+%autosetup -p1 -n dbus-sharp-%{version}
 
 %build
 autoreconf -fiv
