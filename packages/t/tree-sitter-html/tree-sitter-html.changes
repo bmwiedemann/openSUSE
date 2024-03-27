@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Mon Mar 25 17:33:11 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 0.20.2:
+  * fix: silence warning about using `&&` without parenthesis
+  * Extract helper function for popping and freeing tags
+  * feat: convert scanner to use `array.h` header
+  * Make TAG_TYPES_BY_TAG_NAME static
+  * feat: support omitted `html`, `head`, and `body` end tags
+  * ci: remove travis configuration file
+  * ci: bump actions/checkout from 3 to 4
+  * ci: bump actions/setup-node from 3 to 4
+  * ci: add dependabot
+
+-------------------------------------------------------------------
+Mon Feb 26 06:46:13 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for openSUSE
+- Update to version 0.20.1:
+  * chore: generate
+  * fix: semicolons are optional in entities
+  * refactor!: rename `fragment` to `document`
+  * docs: update badges
+  * chore(scanner): explicit cast to silence warning
+  * fix(swift): remove reference to non-existent directory
+  * ci: tune when to run
+  * ci: add release action
+
