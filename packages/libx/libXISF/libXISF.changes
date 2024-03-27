@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 27 13:30:54 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.2.12:
+  * Don't use replace to update attachement position
+  * Add support for subblocks to handle +2GiB compressed images
+  * Fix bug with writing ICCProfile
+  * Add F32Matrix and F64Matrix into toString
+- Drop fix-projver.patch.
+
+-------------------------------------------------------------------
 Tue Jan  9 07:16:01 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.2.11:

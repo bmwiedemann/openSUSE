@@ -107,4 +107,18 @@
 </comment>
     <requestid>1137669</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1c86ec3db6c4d59614fb630085387ecc</srcmd5>
+    <version>0.2.12</version>
+    <time>1711568621</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.2.12:
+  * Don't use replace to update attachement position
+  * Add support for subblocks to handle +2GiB compressed images
+  * Fix bug with writing ICCProfile
+  * Add F32Matrix and F64Matrix into toString
+- Drop fix-projver.patch.
+</comment>
+    <requestid>1162932</requestid>
+  </revision>
 </revisionlist>
