@@ -15,4 +15,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1156867</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a14fa0568793895b4e4308e7131cd0dd</srcmd5>
+    <version>5.4.0~git.20240108</version>
+    <time>1711568566</time>
+    <user>anag+factory</user>
+    <comment>- Add fix-build-libosq010.patch: this fixes build with liboqs&gt;=0.10
+</comment>
+    <requestid>1162839</requestid>
+  </revision>
 </revisionlist>

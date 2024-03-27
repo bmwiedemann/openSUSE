@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 27 08:07:29 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add fix-build-libosq010.patch: this fixes build with liboqs>=0.10
+
+-------------------------------------------------------------------
 Mon Jan 15 08:47:08 UTC 2024 - info@paolostivanin.com
 
 - Update to version 5.4.0~git.20240108:

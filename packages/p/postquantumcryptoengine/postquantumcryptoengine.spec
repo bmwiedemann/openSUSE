@@ -25,6 +25,9 @@ Summary:        Post-quantum cryptopgraphy extension for bctoolbox
 License:        GPL-3.0-or-later
 URL:            https://gitlab.linphone.org/BC/public/postquantumcryptoengine
 Source:         %{name}-%{version}.tar.xz
+%if 0%{?suse_version} >= 1600
+Patch0:         fix-build-libosq010.patch
+%endif
 BuildRequires:  bctoolbox-devel >= 5.3.7
 BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
