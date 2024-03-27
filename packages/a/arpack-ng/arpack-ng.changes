@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 24 11:28:44 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Remove s390x specific memory constraints based on improved memory usage
+
+-------------------------------------------------------------------
 Fri Feb  2 18:38:28 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add openmpi5 flavour.
