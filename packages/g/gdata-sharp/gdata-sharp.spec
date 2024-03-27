@@ -52,16 +52,16 @@ This package provides a simple protocol for the Google Data APIs (GData).
 
 %prep
 %setup -q -n libgoogle-data-mono-%{version}
-%patch0
+%patch -P 0
 
 %if 0%{?suse_version} > 1110
 # Mono >= 3.2 isn't available for SLE
-%patch1 -p1
+%patch -P 1 -p1
 %endif
 %if 0%{?suse_version} != 1320 && 0%{?suse_version} != 1310
-%patch2 -p1
+%patch -P 2 -p1
 %endif
-%patch3 -p1
+%patch -P 3 -p1
 
 %build
 make PREFIX=%{_prefix}

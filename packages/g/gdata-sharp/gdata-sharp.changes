@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 27 10:55:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Jul 18 11:40:21 UTC 2017 - bwiedemann@suse.com
 
 - Add gdata-sharp-reproducible.patch to sort input files
