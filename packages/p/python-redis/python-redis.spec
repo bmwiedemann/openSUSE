@@ -33,10 +33,12 @@ Patch1:         Close-various-objects-created-during-asyncio-tests.patch
 BuildRequires:  %{python_module async-timeout >= 4.0.2}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  psmisc
 BuildRequires:  python-rpm-macros
@@ -72,10 +74,10 @@ rm tests/test_json.py
 rm tests/test_timeseries.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with testing}

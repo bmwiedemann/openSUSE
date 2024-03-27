@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 26 13:46:39 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+
+-------------------------------------------------------------------
 Mon Jan 15 20:19:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add https://github.com/redis/redis-py/pull/3005 as
