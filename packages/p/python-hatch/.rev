@@ -321,4 +321,23 @@
     <comment></comment>
     <requestid>1135269</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>025ce5b45e4e9df0d0180b4fc35f05e6</srcmd5>
+    <version>1.9.4</version>
+    <time>1711568550</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-hatchling-1.22.patch:
+  * Support updates for the new Hatchling.
+- Add missing BuildRequires on editables, required for tests.
+
+- update to 1.9.4:
+  * Limit the maximum version of Hatchling in anticipation of
+    backward incompatible changes
+- update to 1.9.3:
+  * Fix loading of local plugins to account for newly released
+    versions of a dependency
+- update to 1.9.2:
+  * Fix the default token variable name for publishing to PyPI</comment>
+    <requestid>1162483</requestid>
+  </revision>
 </revisionlist>

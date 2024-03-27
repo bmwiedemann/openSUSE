@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar 27 02:59:47 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-hatchling-1.22.patch:
+  * Support updates for the new Hatchling.
+- Add missing BuildRequires on editables, required for tests.
+
+-------------------------------------------------------------------
+Sun Mar 24 13:24:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.4:
+  * Limit the maximum version of Hatchling in anticipation of
+    backward incompatible changes
+- update to 1.9.3:
+  * Fix loading of local plugins to account for newly released
+    versions of a dependency
+- update to 1.9.2:
+  * Fix the default token variable name for publishing to PyPI
+
+-------------------------------------------------------------------
 Mon Dec 25 09:52:54 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.9.1
