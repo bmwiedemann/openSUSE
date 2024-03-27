@@ -145,11 +145,10 @@ Pango, Gdk, libgnome, libgnomeui and libgnomecanvas. This is a virtual
 package which depends on all gtk-sharp3 subpackages)
 
 %prep
-%setup -q -n gtk-sharp3-%{vsuffix}
-%patch1 -p1
-NOCONFIGURE=1 ./autogen.sh
+%autosetup -p1 -n gtk-sharp3-%{vsuffix}
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %configure --libexecdir=%{_prefix}/lib/ --enable-debug
 make %{?_smp_mflags}
