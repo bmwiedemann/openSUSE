@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 26 16:35:18 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- %ghost /etc/profile.d/setup-ssh.[c]sh
+
+-------------------------------------------------------------------
 Mon Mar 25 11:34:23 UTC 2024 - Christian Goll <cgoll@suse.com>
 
 - updated to 4.5.0 which has no functional changes to rc2

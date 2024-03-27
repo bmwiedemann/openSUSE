@@ -251,6 +251,8 @@ mv %{buildroot}/%{_sysconfdir}/warewulf/examples %{buildroot}%{_defaultdocdir}/%
 %{_unitdir}/warewulfd.service
 %{_sysusersdir}/system-user-%{name}.conf
 %{_datadir}/warewulf
+%ghost %{_sysconfdir}/profile.d/ssh_setup.sh
+%ghost %{_sysconfdir}/profile.d/ssh_setup.csh
 
 %files man
 %{_mandir}/man1/wwctl*1.gz
