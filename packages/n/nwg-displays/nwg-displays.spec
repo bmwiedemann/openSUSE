@@ -17,7 +17,7 @@
 
 
 Name:           nwg-displays
-Version:        0.3.14
+Version:        0.3.16
 Release:        0
 Summary:        A GTK3 wrapper to display text on the desktop for wlroots
 License:        MIT
@@ -33,7 +33,6 @@ Requires:       libgtk-layer-shell0
 Requires:       python3-gobject
 Requires:       python3-i3ipc
 Requires:       typelib(GtkLayerShell)
-Recommends:     wlr-randr
 BuildArch:      noarch
 
 %description
