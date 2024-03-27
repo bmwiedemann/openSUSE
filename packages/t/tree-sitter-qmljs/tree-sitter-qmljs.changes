@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Fri Mar 15 16:34:39 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for openSUSE
+- Update to version 0.1.2.24.9fa49ff:
+  * bump tree-sitter-typescript to 0.20.5
+  * add test of multi-line string literal
+  * define our set of reserved identifiers to get around "new {}" conflicts
+  * extend reserved identifiers test to include various property name positions
+  * bump tree-sitter-typescript to c604297f8197b468026f2ea32119935887e01c67 (v0.20.3)
+  * use our version of nested_identifier to represent an ImportId
+  * update src/typescript-scanner.h
+  * cargo: fix repository URL (#1)
+  * include queries/*.scm symlinks in master branch (fixes #1)
+  * unexclude generated sources from master branch
+
+
