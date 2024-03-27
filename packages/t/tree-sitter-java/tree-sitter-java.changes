@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Fri Mar 22 22:05:24 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Add patch from 0001-fix-unescaped-curly-brace-in-regex-and-invert-query-.patch
+  master branch to fix build against tree-sitter 0.22.x
+
+-------------------------------------------------------------------
+Mon Feb 26 07:05:58 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for openSUSE
+- Update to version 0.20.2:
+  * Update workflow to publish crate, NPM package, and create GitHub release
+  * chore: generate
+  * fix: allow semicolons in annotation_type_declaration
+  * fix: double-backslash escapes
+  * fix: escaped quote immediately before triple quote
+  * fix: annotations following type arguments
+  * fix: a receiver parameter can be followed by more parameters
