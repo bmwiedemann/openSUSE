@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 17 15:54:42 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update free to version 5.2 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat Sep 30 13:05:47 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update free to version 5.2 revision 3.
