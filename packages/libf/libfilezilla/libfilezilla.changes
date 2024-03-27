@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 27 15:13:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libfilezilla-fix-crash.patch: Fix crash when uploading files
+  (boo#1219800).
+
+-------------------------------------------------------------------
 Mon Feb 26 09:24:11 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Adjustments patch macro for rpm 4.20.

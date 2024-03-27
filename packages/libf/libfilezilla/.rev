@@ -464,4 +464,14 @@
     <comment></comment>
     <requestid>1150774</requestid>
   </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>31fb613103691114ddbcf061b73dfa3d</srcmd5>
+    <version>0.46.0</version>
+    <time>1711568629</time>
+    <user>anag+factory</user>
+    <comment>- Add libfilezilla-fix-crash.patch: Fix crash when uploading files
+  (boo#1219800).
+</comment>
+    <requestid>1162955</requestid>
+  </revision>
 </revisionlist>

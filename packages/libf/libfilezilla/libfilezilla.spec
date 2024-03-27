@@ -28,6 +28,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://lib.filezilla-project.org/
 Source0:        https://download.filezilla-project.org/libfilezilla/%{name}-%{version}.tar.xz
 Patch0:         %{name}-date-time.patch
+# PATCH-FIX-UPSTREAM: https://svn.filezilla-project.org/filezilla/libfilezilla/trunk/lib/aio/reader.cpp?view=patch&r1=11064&r2=11095&sortby=date
+Patch1:         %{name}-fix-crash.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -95,8 +97,7 @@ BuildArch:      noarch
 Provides translations for the "%{name}" package.
 
 %prep
-%setup -q
-%patch -P 0
+%autosetup -p1
 
 %build
 %if 0%{?suse_version} <= 1500
