@@ -1,7 +1,7 @@
 #
 # spec file for package epplet-base
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           epplet-base
-Version:        0.10
+Version:        0.16
 Release:        0
 Summary:        Applets for the Enlightenment DR16 Window Manager
 License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 URL:            https://www.enlightenment.org/
-Source:         epplets-%{version}.tar.bz2
+Source:         e16-epplets-%{version}.tar.xz
 Patch0:         epplets-unsuficient_include.patch
-Patch1:         epplet-base-linking.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
@@ -41,9 +40,7 @@ provide a quick way for a user to perform simple tasks or view
 information.
 
 %prep
-%setup -q -n epplets-%{version}
-%patch0
-%patch1 -p1
+%autosetup -p0 -n e16-epplets-%{version}
 
 %build
 autoreconf --force --install
