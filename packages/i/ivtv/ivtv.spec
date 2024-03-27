@@ -43,10 +43,7 @@ freestyle has not been tested, but it should work or at least be easy
 to get working.
 
 %prep
-%setup -q -n ivtv-utils-%{version}
-%patch0
-%patch1
-%patch2
+%autosetup -p0 -n ivtv-utils-%{version}
 
 %build
 # This package failed when testing with -Wl,-as-needed being default.

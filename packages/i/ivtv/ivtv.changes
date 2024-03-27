@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:51:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Apr  8 19:41:27 UTC 2014 - asterios.dramis@gmail.com
 
 - Removed ivtv-ctl and v4l2-ctl utilities which are now provided by v4l-utils
