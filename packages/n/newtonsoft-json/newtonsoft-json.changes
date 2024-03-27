@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 14:08:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue May 16 19:18:47 UTC 2017 - jengelh@inai.de
 
 - Ensure neutrality of descriptions.

@@ -56,13 +56,13 @@ Requires:       %{name} = %{version}-%{release}
 %setup -qn%{libname}-%{version}
 
 # sign the assembly to get a strong name, https://msdn.microsoft.com/en-us/library/xc31ft41.aspx
-%patch0
+%patch -P 0
 sn -k myKey.snk # this make no sense, package is signed with Dynamic.snk keyfile
 sed -i /InternalsVisibleTo/d Src/%{libname}/Properties/AssemblyInfo.cs
 
 %if %{with tests}
 # skip files with unmet dependencies (FSharp etc.), FIXME use nuget
-%patch1
+%patch -P 1
 sed -i /DiscriminatedUnionConverterTests.cs/d Src/%{libname}.Tests/%{libname}.Tests.csproj
 sed -i /Serialization.DependencyInjectionTests.cs/d Src/%{libname}.Tests/%{libname}.Tests.csproj
 sed -i /Serialization.FSharpTests.cs/d Src/%{libname}.Tests/%{libname}.Tests.csproj
@@ -75,7 +75,7 @@ sed -i /Utilities.StringUtilsTests.cs/d Src/%{libname}.Tests/%{libname}.Tests.cs
 %endif
 
 if [[ ! -z `2>/dev/null csc /version` ]]; then
-%patch2 -p1
+%patch -P 2 -p1
 fi
 
 %build
