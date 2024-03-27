@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Mar 25 09:27:05 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20240323
+  + modify tput/tset reset feature to avoid 1-second sleep if running in
+    a pseudo-terminal.
+  + modify check-size feature to avoid using it in a pseudoterminal
+    (cf: 20231016)
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + trim a space after some "-R" options, fixing builds for applications
+    built using clang and ncurses on Solaris.
+- Add ncurses patch 20240309
+  + modify xgterm to work around line-drawing bug -TD
+  + use CSI 3J in vte-2017 (report by Sven Joachim)
+- Add ncurses patch 20240302
+  + add configure check for MB_LEN_MAX, to provide warning as needed.
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + fix regression in tput which disallowed hex/octal parameters (report
+    by Werner Fink, cf:  20230408)
+  + update config.guess, config.sub
+- Add ncurses patch 20240224
+  + improve man/curs_mouse.3x style (Brandon Robinson, Sven Joachim).
+  + provide for CCHARW_MAX greater than 1
+  + eliminate use of PATH_MAX in lib_trace.c
+  + work around misconfiguration of MacPorts gcc13, which exposes invalid
+    definition of MB_LEN_MAX in gcc's fallback copy of limits.h (MacPorts
+    #69374).
+- Port patches
+  * ncurses-5.9-ibm327x.dif
+  * ncurses-6.4.dif
+
+-------------------------------------------------------------------
 Mon Feb 26 07:17:44 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20240217
