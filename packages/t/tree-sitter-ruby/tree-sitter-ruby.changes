@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Fri Mar 22 22:09:04 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Add patch from 0001-fix-escape-braces-in-regex.patch
+  master branch to fix build against tree-sitter 0.22.x 
+
+-------------------------------------------------------------------
+Mon Feb 26 06:37:09 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for openSUSE
+- Update to version 0.20.1:
+  * chore: update workflows and manifests
+  * fix: emulated targets don't zero out stack variables
+  * fix(build): change scanner name
+  * refactor!: rewrite the scanner in C
+  * chore: regenerate with tree-sitter-cli master
+  * Fix 'case' with newlines before expression
+  * Update node-gyp to 10 to fix compatibility with Python 3.12
