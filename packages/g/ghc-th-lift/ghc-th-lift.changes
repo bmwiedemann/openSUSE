@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 17 15:58:37 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update th-lift to version 0.8.4 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Aug  1 11:50:14 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update th-lift to version 0.8.4.
