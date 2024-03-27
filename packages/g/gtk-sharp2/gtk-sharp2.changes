@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 27 11:15:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Mon Nov  1 19:36:26 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Disable docs on ppc64 and s390x. Mdoc.exe currently isn't

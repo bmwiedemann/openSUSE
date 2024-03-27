@@ -113,9 +113,7 @@ Atk, Pango, Gdk, libgnome, libgnomeui and libgnomecanvas.  (Virtual
 package which depends on all gtk-sharp2 subpackages)
 
 %prep
-%setup -q -n %{_name}-%{version}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 autoreconf -fiv
