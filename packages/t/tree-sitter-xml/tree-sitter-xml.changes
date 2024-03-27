@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Mon Mar 18 11:24:55 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for openSUSE
+- Update to version 0.6.1:
+  * build: hopefully fix windows (take 2)
+  * build: add prebuildify
+  * build: hopefully fix windows
+  * fix(scanner): no more memory leaks
+  * ci: publish to pypi
+  * feat: update bindings
+  * refactor(scanner): use upstream array macros
+  * tests: unify using annotations
+  * ci: use upstream actions
+  * chore: update manifests
