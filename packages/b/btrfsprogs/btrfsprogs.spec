@@ -34,7 +34,7 @@
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 
 Name:           btrfsprogs
-Version:        6.7.1
+Version:        6.8
 Release:        0
 Summary:        Utilities for the Btrfs filesystem
 License:        GPL-2.0-only
@@ -70,7 +70,7 @@ BuildRequires:  libreiserfscore-devel >= 3.6.27
 Requires:       libreiserfscore0 >= 3.6.27
 %endif
 BuildRequires:  libuuid-devel
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600
 BuildRequires:  libzstd-devel
 %endif
 BuildRequires:  lzo-devel
@@ -107,7 +107,7 @@ BuildRequires:  libblkid-devel-static
 BuildRequires:  libcom_err-devel-static
 BuildRequires:  libext2fs-devel-static
 BuildRequires:  libuuid-devel-static
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600
 BuildRequires:  libzstd-devel-static
 %endif
 BuildRequires:  lzo-devel-static
@@ -218,7 +218,9 @@ bash command line completion support for btrfsprogs.
 %endif
 %if 0%{?suse_version} <= 1500
 			--disable-zoned	\
+%if 0%{?sle_version} < 150600
 			--disable-zstd
+%endif
 %endif
 
 make V=1 %{?_smp_mflags} all \
