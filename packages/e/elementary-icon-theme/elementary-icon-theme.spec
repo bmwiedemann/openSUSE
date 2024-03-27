@@ -60,8 +60,7 @@ OS and its desktop environment, Pantheon.
 This package contains a palette file for inkscape.
 
 %prep
-%setup -q -n icons-%{version}
-%patch0 -p1
+%autosetup -p1 -n icons-%{version}
 
 %build
 %meson \
