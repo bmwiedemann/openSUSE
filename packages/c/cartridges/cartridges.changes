@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 27 03:39:07 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.8.1
+  * The app features new adaptive widgets taking advantage of
+    developments in GNOME 46
+  * Fixes an issue with Lutris games not importing
+  * Fixes an issue with file chooser buttons being unresponsive
+
+-------------------------------------------------------------------
 Sun Feb 18 09:50:51 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.7.3

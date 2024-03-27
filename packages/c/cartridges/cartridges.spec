@@ -18,7 +18,7 @@
 
 %define lname   hu.kramo.Cartridges
 Name:           cartridges
-Version:        2.7.3
+Version:        2.8.1
 Release:        0
 Summary:        A GTK4 + Libadwaita game launcher 
 License:        GPL-3.0-only
@@ -29,7 +29,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  meson
 BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.5.0
 Requires:       python3-gobject
 Requires:       python3-pyaml
 Requires:       python3-Pillow
