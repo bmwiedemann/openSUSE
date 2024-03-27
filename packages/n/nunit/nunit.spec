@@ -61,7 +61,7 @@ This package contains development files for NUnit integration.
 %prep
 %setup -q -n nunitv2-%{version}
 #if [[ ! -z `2>/dev/null csc /version` ]]; then
-%patch1 -p1
+%patch -P 1 -p1
 #fi
 
 %build
