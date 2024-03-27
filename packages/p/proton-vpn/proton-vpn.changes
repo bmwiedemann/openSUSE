@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Thu Mar 21 12:40:45 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Update to 4.2.0
+  * Add overlay when connecting to server
+  * Upon logging out or quitting, inform the user about the kill switch status
+  * Apply kill switch settings immediately
+  * Add permanent option to kill switch setting
+  * Fix minor bug in country row initialization
+
+-------------------------------------------------------------------
+Fri Feb  9 15:06:11 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Initial revision
