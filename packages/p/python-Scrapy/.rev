@@ -195,4 +195,41 @@
 </comment>
     <requestid>1137882</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>32fc71c67d6f0d9901ee00b1b4db474a</srcmd5>
+    <version>2.11.1</version>
+    <time>1711568513</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.11.1 (bsc#1220514, CVE-2024-1892):
+  * Addressed `ReDoS vulnerabilities` (bsc#1220514, CVE-2024-1892)
+    -  ``scrapy.utils.iterators.xmliter`` is now deprecated in favor of
+       :func:`~scrapy.utils.iterators.xmliter_lxml`, which
+       :class:`~scrapy.spiders.XMLFeedSpider` now uses.
+       To minimize the impact of this change on existing code,
+       :func:`~scrapy.utils.iterators.xmliter_lxml` now supports indicating
+       the node namespace with a prefix in the node name, and big files with
+       highly nested trees when using libxml2 2.7+.
+    -  Fixed regular expressions in the implementation of the
+       :func:`~scrapy.utils.response.open_in_browser` function.
+      .. _ReDoS vulnerabilities: https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS
+  *  :setting:`DOWNLOAD_MAXSIZE` and :setting:`DOWNLOAD_WARNSIZE` now also apply
+     to the decompressed response body. Please, see the `7j7m-v7m3-jqm7 security
+     advisory`_ for more information.
+     .. _7j7m-v7m3-jqm7 security advisory: https://github.com/scrapy/scrapy/security/advisories/GHSA-7j7m-v7m3-jqm7
+  *  Also in relation with the `7j7m-v7m3-jqm7 security advisory`_, the
+     deprecated ``scrapy.downloadermiddlewares.decompression`` module has been
+     removed.
+  *  The ``Authorization`` header is now dropped on redirects to a different
+     domain. Please, see the `cw9j-q3vf-hrrv security advisory`_ for more
+     information.
+  *  The OS signal handling code was refactored to no longer use private Twisted
+      functions. (:issue:`6024`, :issue:`6064`, :issue:`6112`)
+  *  Improved documentation for :class:`~scrapy.crawler.Crawler` initialization
+     changes made in the 2.11.0 release. (:issue:`6057`, :issue:`6147`)
+  *  Extended documentation for :attr:`Request.meta &lt;scrapy.http.Request.meta&gt;`.
+  *  Fixed the :reqmeta:`dont_merge_cookies` documentation. (:issue:`5936`,
+  *  Added a link to Zyte's export guides to the :ref:`feed exports
+  *  Added a missing note about backward-incompatible changes in</comment>
+    <requestid>1161494</requestid>
+  </revision>
 </revisionlist>
