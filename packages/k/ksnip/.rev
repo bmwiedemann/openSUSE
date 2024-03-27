@@ -111,4 +111,16 @@
     <comment></comment>
     <requestid>1073541</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>5dd6d41518b1c9dc41fa804b5480122e</srcmd5>
+    <version>1.10.1</version>
+    <time>1711568556</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream fix to build with recent kcolorpicker and
+  kimageannotator versions:
+  * 0001-Fix-build-against-kImageAnnotator-and-kColorPicker-t.patch
+- Spec update
+</comment>
+    <requestid>1162581</requestid>
+  </revision>
 </revisionlist>

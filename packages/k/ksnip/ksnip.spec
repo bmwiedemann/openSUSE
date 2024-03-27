@@ -1,7 +1,7 @@
 #
 # spec file for package ksnip
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,27 +22,30 @@ Release:        0
 Summary:        Screenshot tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
-URL:            https://github.com/DamirPorobic/ksnip
-Source:         https://github.com/DamirPorobic/ksnip/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/ksnip/ksnip
+Source:         https://github.com/ksnip/ksnip/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-against-kImageAnnotator-and-kColorPicker-t.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  kColorPicker-devel
-BuildRequires:  kImageAnnotator-devel >= 0.6.1
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xvfb-run
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  cmake(kColorPicker-Qt5) >= 0.3.1
+BuildRequires:  cmake(kImageAnnotator-Qt5) >= 0.7.1
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb-xfixes)
 

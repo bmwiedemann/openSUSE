@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 15 17:45:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix to build with recent kcolorpicker and
+  kimageannotator versions:
+  * 0001-Fix-build-against-kImageAnnotator-and-kColorPicker-t.patch
+- Spec update
+
+-------------------------------------------------------------------
 Mon Mar 20 07:37:32 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.10.1
