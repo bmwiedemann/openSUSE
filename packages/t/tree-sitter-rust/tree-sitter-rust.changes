@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Mon Feb 26 06:29:59 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for openSUSE
+- Update to version 0.20.4:
+  * docs: update README
+  * chore: update manifests
+  * ci: update ci and publish, add fuzz annd lint actions
+  * feat: eslint formatting & code docs, update deps
+  * chore: move corpus to test
+  * chore: generate
+  * refactor: better handling of token tree characters
+  * fix: shebang lexical precedence
