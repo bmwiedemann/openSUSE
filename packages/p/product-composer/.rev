@@ -85,4 +85,14 @@
 - add missing dependency to python-zstandard</comment>
     <requestid>1156330</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3af729fffacca422e8ba036d72fc75bf</srcmd5>
+    <version>0.4.3</version>
+    <time>1711568632</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.3
+  * Allow product builds without meta packages
+  * improve disk-usage in susedata output</comment>
+    <requestid>1162949</requestid>
+  </revision>
 </revisionlist>
