@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 26 12:35:03 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+- Limit Python files matched in %files section
+
+-------------------------------------------------------------------
 Tue Jan 16 15:06:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.20.2:

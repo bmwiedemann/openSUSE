@@ -227,4 +227,12 @@
   * Other changes: - Officially support Python 3.12 (:pr:`2188`).</comment>
     <requestid>1139196</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>50813731c8717120ee714e3bcfd1e676</srcmd5>
+    <version>3.20.2</version>
+    <time>1711568505</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1162278</requestid>
+  </revision>
 </revisionlist>

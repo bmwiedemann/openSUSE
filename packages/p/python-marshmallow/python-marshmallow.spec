@@ -29,7 +29,9 @@ Source:         https://files.pythonhosted.org/packages/source/m/marshmallow/mar
 Patch0:         python-marshmallow-no-version-warning.patch
 BuildRequires:  %{python_module autodocsumm}
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       %{name}-doc
@@ -76,12 +78,12 @@ HTML Documentation and examples for %{name}.
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 sphinx-build docs/ docs/_build/html
 rm -r docs/_build/html/.buildinfo docs/_build/html/.doctrees
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -90,7 +92,8 @@ rm -r docs/_build/html/.buildinfo docs/_build/html/.doctrees
 %files %{python_files}
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %license LICENSE NOTICE
-%{python_sitelib}/*
+%{python_sitelib}/marshmallow
+%{python_sitelib}/marshmallow-*.dist-info
 
 %if 0%{?suse_version} > 1500
 %files -n %{name}-doc
