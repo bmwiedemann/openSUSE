@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 26 13:42:00 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.0.2
+  Bugfixes:
+  * Hiding/showing Playlist toolbar setting
+  * Track sub-menus in Audio and Subtiles global menus being
+    empty
+  * Freeze when opening HamburgerMenu
+
+-------------------------------------------------------------------
 Thu Mar 14 14:10:41 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.0.1
