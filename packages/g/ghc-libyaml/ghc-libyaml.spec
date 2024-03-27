@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-libyaml
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %global pkg_name libyaml
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.1.2
+Version:        0.1.4
 Release:        0
 Summary:        Low-level, streaming YAML interface
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -36,7 +35,8 @@ BuildRequires:  ghc-conduit-prof
 BuildRequires:  ghc-resourcet-devel
 BuildRequires:  ghc-resourcet-prof
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  libyaml-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(yaml-0.1)
 ExcludeArch:    %{ix86}
 
 %description
@@ -47,7 +47,8 @@ README and API documentation are available at
 Summary:        Haskell %{pkg_name} library development files
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
-Requires:       libyaml-devel
+Requires:       pkgconfig
+Requires:       pkgconfig(yaml-0.1)
 Requires(post): ghc-compiler = %{ghc_version}
 Requires(postun): ghc-compiler = %{ghc_version}
 
@@ -72,7 +73,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %define cabal_configure_options -fsystem-libyaml
