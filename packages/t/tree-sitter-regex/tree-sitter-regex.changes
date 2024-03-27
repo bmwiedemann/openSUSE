@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Mon Feb 26 06:59:51 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for openSUSE
+- Update to version 0.20.0:
+  * chore: rework release action to not use release-please
+  * docs: update badge, add Rust readme
+  * feat: add release action
+  * fix(ci): bump action and node versions
+  * refactor: lookaround assertions
+  * improve highlights (#12)
+  * setup actions CI (#11)
+  * rename disjunction to alternation (#10)
+  * read braces as pattern_character when not closed (#8)
