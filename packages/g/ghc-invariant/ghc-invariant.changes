@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 19 11:01:41 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update invariant to version 0.6.3.
+  # 0.6.3 [2024.03.19]
+  * Support building with `template-haskell-2.22.*` (GHC 9.10).
+
+-------------------------------------------------------------------
+Sun Mar 17 15:55:47 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update invariant to version 0.6.2 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat Sep 30 12:59:34 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update invariant to version 0.6.2 revision 1.
