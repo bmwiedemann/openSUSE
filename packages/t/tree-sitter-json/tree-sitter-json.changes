@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Mon Feb 26 06:43:44 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for openSUSE
+- Update to version 0.20.2:
+  * chore: bump deps
+  * fix: only allow strings in object keys
+  * chore: move corpus under test
+  * chore: add repository definition in package.json
+  * ci: fix windows
+  * ci: update CI action, add lint and publish actions
+  * chore: update manifests
+  * feat: add and apply eslint formatting
