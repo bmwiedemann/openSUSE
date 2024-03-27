@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 26 23:02:24 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Switch to autosetup and pyproject macros
+- Run tests with xvfb-run, and use upstream's run-tests script
+- Require python-gobject-Gdk to work for all python versions
+  bsc#1221961
+- Add patch use-pytest.patch:
+  * Switch from nose to pytest.
+
+-------------------------------------------------------------------
 Mon Jan 22 23:34:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.0:

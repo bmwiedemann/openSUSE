@@ -1,0 +1,38 @@
+From 82457fecc09648cd3ed2ab34c753b8987413a0cd Mon Sep 17 00:00:00 2001
+From: Francois Mazen <francois@mzf.fr>
+Date: Wed, 12 Oct 2022 18:56:00 +0200
+Subject: [PATCH] Replace nose by pytest.
+
+---
+ requirements.txt | 2 +-
+ run-tests        | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/requirements.txt b/requirements.txt
+index 06dfe2d..953c33c 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,4 +1,4 @@
+-nose
++pytest
+ spec
+ pyflakes
+ pycodestyle
+diff --git a/run-tests b/run-tests
+index 0e26437..9ca4618 100755
+--- a/run-tests
++++ b/run-tests
+@@ -19,11 +19,11 @@
+ # -----------------------------------------------------------------------------
+ 
+ import sys
+-import nose
++import pytest
+ 
+ if __name__ == "__main__":
+     # By default, run tests in tests folder
+     if len(sys.argv) == 1:
+         sys.argv.append('tests')
+ 
+-    nose.main()
++    pytest.main()

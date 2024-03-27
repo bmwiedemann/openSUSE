@@ -19,23 +19,27 @@
 
 %define         _name liblarch
 %define         _name_gtk liblarch_gtk
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-liblarch
 Version:        3.2.0
 Release:        0
 Summary:        A Python library to handle data structure
 License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            https://live.gnome.org/liblarch
 Source:         https://github.com/getting-things-gnome/%{_name}/archive/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#getting-things-gnome/liblarch#36
+Patch0:         use-pytest.patch
+BuildRequires:  %{python_module gobject-Gdk}
 BuildRequires:  %{python_module gobject}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  xvfb-run
 BuildRequires:  typelib(Gtk) >= 3.0
 Requires:       python-gobject
+Requires:       python-gobject-Gdk
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,7 +50,6 @@ parents)
 
 %package gtk
 Summary:        GTK bindings for liblarch
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       python-gobject
 Requires:       typelib(Gtk) >= 3.0
@@ -59,24 +62,26 @@ parents)
 This package provides GTK bindings for liblarch.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # TESTS fail with segf, local execution works
 %check
-%python_expand xvfb-run pytest-%{$python_bin_suffix} tests
+%{python_expand #
+xvfb-run -a $python ./run-tests
+}
 
 %files %{python_files}
 %license LICENSE
 %doc README.md AUTHORS
 %{python_sitelib}/%{_name}
-%{python_sitelib}/%{_name}*.egg-info
+%{python_sitelib}/%{_name}-%{version}.dist-info
 
 %files %{python_files gtk}
 %license LICENSE
