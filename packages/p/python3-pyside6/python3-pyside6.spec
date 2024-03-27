@@ -127,7 +127,7 @@ BuildRequires:  cmake(Qt6TextToSpeech)
 BuildRequires:  cmake(Qt6UiPlugin)
 BuildRequires:  cmake(Qt6UiTools)
 BuildRequires:  cmake(Qt6WebChannel)
-%ifarch x86_64 aarch64 s390x
+%ifarch x86_64 %x86_64 aarch64 riscv64
 BuildRequires:  cmake(Qt6Pdf)
 BuildRequires:  cmake(Qt6PdfWidgets)
 BuildRequires:  cmake(Qt6WebEngineCore)
@@ -239,7 +239,7 @@ ctest_exclude_regex="smart_smart_pointer"
 %define xvfb_command xvfb-run -s "-screen 0 1600x1200x16 -ac +extension GLX +render -noreset" \\
 
 %define excluded_tests 1
-# Excluded tests (last update: 2024-02-17)
+# Excluded tests (last update: 2024-03-27)
 # QtWebEngineWidgets_pyside-474-qtwebengineview fails with 'ContextResult::kTransientFailure: Failed to send GpuControl.CreateCommandBuffer'
 # QtGui_qpen_test times out
 # QtMultimediaWidgets_qmultimediawidgets aborts
@@ -247,7 +247,8 @@ ctest_exclude_regex="smart_smart_pointer"
 # QtPositioning_positioning fails
 # QtWidgets_qwidget_test fails randomly
 # pyside6-android-deploy_test_pyside6_android_deploy
-ctest_exclude_regex="QtWebEngineWidgets_pyside-474-qtwebengineview|QtGui_qpen_test|QtMultimediaWidgets_qmultimediawidgets|Qt3DExtras_qt3dextras_test|QtPositioning_positioning|pyside6-deploy_test_pyside6_deploy|QtWidgets_qwidget_test|pyside6-android-deploy_test_pyside6_android_deploy"
+# QtCore_qoperatingsystemversion_test fails after https://code.qt.io/cgit/qt/qtbase.git/commit/?id=1214edc
+ctest_exclude_regex="QtWebEngineWidgets_pyside-474-qtwebengineview|QtGui_qpen_test|QtMultimediaWidgets_qmultimediawidgets|Qt3DExtras_qt3dextras_test|QtPositioning_positioning|pyside6-deploy_test_pyside6_deploy|QtWidgets_qwidget_test|pyside6-android-deploy_test_pyside6_android_deploy|qoperatingsystemversion"
 
 # Random failures on aarch64: registry_existence_test times out and QtWebEngineCore_web_engine_custom_scheme asserts
 %ifarch aarch64

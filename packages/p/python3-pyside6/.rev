@@ -216,4 +216,12 @@
     <comment>Update to 6.6.2 (forwarded request 1147368 from krop)</comment>
     <requestid>1148083</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>8c5bf76f6eaba95d96db1bf29c3f93d9</srcmd5>
+    <version>6.6.2</version>
+    <time>1711568563</time>
+    <user>anag+factory</user>
+    <comment>- Exclude a broken pyside test since Qt 6.6.3 release</comment>
+    <requestid>1162846</requestid>
+  </revision>
 </revisionlist>

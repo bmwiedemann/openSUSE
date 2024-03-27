@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 27 08:26:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Exclude a broken pyside test since Qt 6.6.3 release
+
+-------------------------------------------------------------------
 Sat Feb 17 17:52:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.2. Check the installed changes-6.6.2 file for the
