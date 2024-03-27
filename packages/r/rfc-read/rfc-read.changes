@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 27 06:47:25 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.0:
+  * Change the default cache directory location from ~/.RFCs to ~/.cache/RFCs.
+	  Files are automatically migrated if needed.
+  * Respect $XDG_CACHE_HOME: if it’s set and $RFC_DIR is not, use
+	  $XDG_CACHE_HOME/RFCs (#21)
+  * Fix the version shown by --version
+  * Remove the update command which has been deprecated in v0.2.6
+  * Fix most shellcheck warnings in the code
+  * Show the default and current cache directories in the help text
+  * Document --debug in the manpage
+  * Add exit codes in the manpage
+
+-------------------------------------------------------------------
 Tue Jan 24 06:27:09 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Initial package of rfc-read 0.2.6 for openSUSE

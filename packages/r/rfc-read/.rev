@@ -7,4 +7,22 @@
     <comment>rfc reader</comment>
     <requestid>1060562</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5a59a5cc78c70b0c6ea522ba1fbfb31d</srcmd5>
+    <version>1.0.0</version>
+    <time>1711568559</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.0.0:
+  * Change the default cache directory location from ~/.RFCs to ~/.cache/RFCs.
+	  Files are automatically migrated if needed.
+  * Respect $XDG_CACHE_HOME: if it’s set and $RFC_DIR is not, use
+	  $XDG_CACHE_HOME/RFCs (#21)
+  * Fix the version shown by --version
+  * Remove the update command which has been deprecated in v0.2.6
+  * Fix most shellcheck warnings in the code
+  * Show the default and current cache directories in the help text
+  * Document --debug in the manpage
+  * Add exit codes in the manpage</comment>
+    <requestid>1162580</requestid>
+  </revision>
 </revisionlist>

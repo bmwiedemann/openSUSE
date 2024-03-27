@@ -1,7 +1,7 @@
 #
 # spec file for package rfc-read
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rfc-read
-Version:        0.2.6
+Version:        1.0.0
 Release:        0
 Summary:        Read RFCs from the command-line
 License:        MIT
