@@ -16,24 +16,36 @@
 #
 
 
-# Use the latest default LLVM version available, unless it is not yet
-# supported by bpftrace.
-%if 0%{?product_libs_llvm_ver} > 17
-%define llvm_major_version 17
-%else
+# Use default LLVM on openSUSE unless it is not yet supported
+%if 0%{?suse_version} >= 1600 || 0%{?is_opensuse}
+ %if 0%{?product_libs_llvm_ver} > 17
+ %define llvm_major_version 17
+ %else
  %define llvm_major_version %{nil}
+ %endif
+%else
+ # Hard-code latest LLVM for SLES, the default version is too old
+ %if 0%{?sle_version} == 150600
+  %define llvm_major_version 17
+ %else
+ %if 0%{?sle_version} == 150500
+  %define llvm_major_version 15
+ %else
+ %if 0%{?sle_version} == 150400
+  %define llvm_major_version 11
+ %endif
+ %endif
+ %endif
 %endif
 
 Name:           bpftrace
-Version:        0.20.2
+Version:        0.20.3
 Release:        0
 Summary:        High-level tracing language for Linux eBPF
 License:        Apache-2.0
 Group:          Development/Tools/Debuggers
 URL:            https://github.com/iovisor/bpftrace
 Source:         https://github.com/iovisor/bpftrace/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-build-issue-when-using-UAPI-of-older-kernel.patch -- based on PR 2977
-Patch1:         https://github.com/bpftrace/bpftrace/pull/2977.patch#/fix-build-issue-when-using-UAPI-of-older-kernel.patch
 BuildRequires:  binutils
 BuildRequires:  binutils-devel
 BuildRequires:  bison
