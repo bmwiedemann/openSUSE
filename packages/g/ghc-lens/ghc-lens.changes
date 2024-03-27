@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 17 16:04:56 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update lens to version 5.2.3 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat Sep 30 13:35:57 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update lens to version 5.2.3 revision 2.
