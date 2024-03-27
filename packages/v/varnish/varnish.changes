@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 26 18:27:32 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.5.0
+  * Resolved CVE-2023-44487, CVE-2024-30156 [boo#1221942]
+  * The default value of cli_limit has been increased from 48KB
+    to 64KB.
+  * A new ``pipe_task_deadline`` directive specifies the maximum
+    duration of a pipe transaction.
+  * All the timeout parameters that can be disabled accept the
+    "never" value.
+  * Added parameters to control the HTTP/2 Rapid Reset attach.
+
+-------------------------------------------------------------------
 Tue Feb  6 19:45:13 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Use sysuser-tools to generate varnish user

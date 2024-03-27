@@ -400,4 +400,12 @@
     <comment>- Use sysuser-tools to generate varnish user</comment>
     <requestid>1144754</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>3e5ff27bdf90944217ba84b27dca02cd</srcmd5>
+    <version>7.5.0</version>
+    <time>1711568544</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 7.5.0</comment>
+    <requestid>1162360</requestid>
+  </revision>
 </revisionlist>
