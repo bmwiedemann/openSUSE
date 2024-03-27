@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 11:55:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Thu Nov 23 13:43:40 UTC 2017 - rbrown@suse.com
 
 - Replace references to /var/adm/fillup-templates with new 
