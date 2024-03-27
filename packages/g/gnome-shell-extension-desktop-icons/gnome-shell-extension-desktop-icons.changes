@@ -15,6 +15,8 @@ Tue Mar 19 00:38:12 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
   * Replace log and logError
   * Update HISTORY.md
   * Try xdg-terminal-exec, gnome-terminal and kgx when opening a terminal
+- Drop desktop-icon-gnome-41.patch
+- Drop desktop-icons-show-iso-file-icon.patch
 
 -------------------------------------------------------------------
 Fri Sep  9 02:36:12 UTC 2022 - Xiaoguang Wang <xiaoguang.wang@suse.com>

@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-shell-extension-desktop-icons
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,8 @@ Source:         ding-%{version}.tar.xz
 
 # Needed for directory ownership
 BuildRequires:  gnome-shell >= 45
-BuildRequires:  meson >= 0.44.0
 BuildRequires:  gobject-introspection
+BuildRequires:  meson >= 0.44.0
 Requires:       gnome-shell
 Requires:       nautilus >= 45
 
