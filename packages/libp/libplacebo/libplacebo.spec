@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 %define sover   338
 Name:           libplacebo
 Version:        6.338.2
@@ -27,12 +27,17 @@ URL:            https://code.videolan.org/videolan/libplacebo
 Source0:        https://code.videolan.org/videolan/libplacebo/-/archive/v%{version}/libplacebo-v%{version}.tar.bz2
 Source1:        https://github.com/Immediate-Mode-UI/Nuklear/raw/c512ac886425f6b6b6c816d67f4cb1385cd4cc53/nuklear.h
 Source9:        baselibs.conf
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+BuildRequires:  gcc13
+%else
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
+%endif
 BuildRequires:  meson >= 0.63.0
 BuildRequires:  pkgconfig
-BuildRequires:  python3-Jinja2
-BuildRequires:  python3-glad2
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module glad2}
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(dovi)
 BuildRequires:  pkgconfig(glfw3)
@@ -87,6 +92,10 @@ help understand and demonstrate the various options provided by %{name}.
 cp %{SOURCE1} ./demos/3rdparty/nuklear/
 
 %build
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %meson -Dglslang=disabled -Dd3d11=disabled -Dtests=true \
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150400
        -Ddemos=true \

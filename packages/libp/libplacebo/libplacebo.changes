@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 26 07:10:05 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Build libplacebo with python 3.11 on Leap 15
+- Build with a recent gcc version Leap 15 had
+
+-------------------------------------------------------------------
 Mon Jan 22 18:08:41 UTC 2024 - llyyr <llyyr@yukari.in>
 
 - Update libplacebo to version 6.338.2. See details in:
