@@ -1,7 +1,7 @@
 #
 # spec file for package python-npTDMS
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
 Name:           python-npTDMS
-Version:        1.7.1
+Version:        1.9.0
 Release:        0
 Summary:        Python module for reading TDMS files produced by LabView
 License:        LGPL-3.0-only
@@ -31,10 +28,13 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pytest-benchmark}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -53,7 +53,8 @@ NumPy based module for reading TDMS files produced by LabView.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -B -m unittest discover -s nptdms -p "*_test.py"
+# unpackaged dependency thermocouples_reference is needed just for this test
+%pytest --ignore "nptdms/test/test_thermocouples.py"
 
 %post
 %python_install_alternative tdmsinfo
@@ -65,6 +66,7 @@ NumPy based module for reading TDMS files produced by LabView.
 %doc README.rst
 %license COPYING COPYING.LESSER
 %python_alternative %{_bindir}/tdmsinfo
-%{python_sitelib}/*
+%{python_sitelib}/nptdms
+%{python_sitelib}/npTDMS-%{version}*info
 
 %changelog

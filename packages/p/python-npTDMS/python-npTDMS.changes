@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 26 15:23:45 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.9.0
+  * Implement __contains__ for TdmsFile and TdmsGroup
+  * Allow using Arrow datatypes when converting to Pandas DataFrame
+  * Raw timestamps support for writer and defragment
+  * Fix reading truncated data when the next segment offset is set
+  * Expose information about incomplete final segments
+- Really run the tests
+
+-------------------------------------------------------------------
 Tue Dec 12 13:35:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.1:
