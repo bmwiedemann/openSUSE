@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Mon Feb 26 00:47:57 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for openSUSE 
+- Update to version 0.20.8:
+  * fix: allow function definitions to contain preproc attributes
+  * fix: improve concatenated_string
+  * fix: properly suffix elifdef
+  * fix: allow preproc calls in enumerator list items
+  * feat: allow preprocessor directives inside enumerator lists
+  * feat: multi-byte characters
+  * fix: allow any position of sized type keywords
+
