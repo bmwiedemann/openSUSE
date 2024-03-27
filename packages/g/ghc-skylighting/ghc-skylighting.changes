@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 14 19:14:57 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update skylighting to version 0.14.1.1.
+  ## 0.14.1.1
+
+    * Add GPRBuild syntax.
+
+    * Update syntax descriptions for clojure, cmake, coffee, cpp,
+      cs, erlang, graphql, haskell, javascript, julia, kotlin,
+      lilypond, markdown, objectivec, objectivecpp, ocaml, perl,
+      python, ruby, rust, stan, typescript, yaml.
+
+-------------------------------------------------------------------
 Mon Dec  4 16:40:31 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update skylighting to version 0.14.1.

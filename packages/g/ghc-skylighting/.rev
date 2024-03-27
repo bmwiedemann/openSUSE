@@ -316,4 +316,12 @@
     <comment>version update</comment>
     <requestid>1130922</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>7b52d0ed7f0143b3e826e4568fa0e54e</srcmd5>
+    <version>0.14.1.1</version>
+    <time>1711568578</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1161311</requestid>
+  </revision>
 </revisionlist>
