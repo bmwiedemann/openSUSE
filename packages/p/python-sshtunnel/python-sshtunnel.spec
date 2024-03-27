@@ -26,8 +26,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pahaz/sshtunnel/
 Source:         https://files.pythonhosted.org/packages/source/s/sshtunnel/sshtunnel-%{version}.tar.gz
 BuildRequires:  %{python_module paramiko >= 2.7.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 # for the tests to validate some things
 BuildRequires:  fdupes
 BuildRequires:  openssh
@@ -49,10 +51,10 @@ and -R parameters.
 sed -i '1{\,^#!%{_bindir}/env python,d}' sshtunnel.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/sshtunnel
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -71,6 +73,8 @@ sed -i 's:import mock:from unittest import mock:' tests/test_forwarder.py
 %license LICENSE
 %doc *.rst
 %python_alternative %{_bindir}/sshtunnel
-%{python_sitelib}/*
+%{python_sitelib}/__pycache__/sshtunnel*pyc
+%{python_sitelib}/sshtunnel.py
+%{python_sitelib}/sshtunnel-*.dist-info
 
 %changelog
