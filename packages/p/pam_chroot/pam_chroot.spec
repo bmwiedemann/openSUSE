@@ -42,16 +42,9 @@ having to recompile programs that do authentication.
 pam_chroot is a Linux-PAM module that allows a user to be chrooted in
 auth, account, or session.
 
-
-
-Authors:
---------
-    Matthew Kirkwood (weejock@ferret.lmh.ox.ac.uk)
-    Ed Schmollinger (schmolli@frozencrow.org)
-
 %prep
-%setup  
-%patch1
+%autosetup  -p0
+
 cp options README
 
 %build
