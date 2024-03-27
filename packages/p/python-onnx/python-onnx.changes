@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Mar 27 08:37:07 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- update to 1.16.0 
+  * Update to support int4 and uint4:
+    + Cast, CastLike, Constant, ConstantOfShape, Identity, If,
+      Loop, Reshape, Scan, Shape, Size
+  * Update to support float8e4m3fnuz, float8e5m2, float8e5m2fnuz,
+    int4 and uint4:
+    +  Flatten, Pad, Squeeze, Transpose, Unsqueeze
+  * Support blocked quantization. Support int4, uint4, int16, and uint16:
+    + DequantizeLinear, QuantizeLinear,
+  * Support bfloat16 and float16 scales. Support float8e4m3fn,
+    float8e4m3fnuz, float8e5m2, float8e5m2fnuz quantized tensors:
+    + QLinearMatMul,
+  * Add stash_type attribute and change input shape of scale and
+    bias from (G) to (C) for GroupNormalization
+  * ai.onnx.ml Opset 4
+  * Addeded new operator TreeEnsemble
+  * IR Version 10
+    + Added support for UINT4, INT4 types
+    + GraphProto, FunctionProto, NodeProto, TensorProto added
+      metadata_props field
+    + FunctionProto added value_info field
+    + FunctionProto and NodeProto added overload field to support
+     overloaded functions.
+- Security Updates
+  * Fix path sanitization bypass leading to arbitrary read
+    (CVE-2024-27318)
+  * Fix Out of bounds read due to lack of string termination in
+    assert (CVE-2024-27319)
+- Several Bug fixes and infrastructure improvements
+- removed python39 support
+
+-------------------------------------------------------------------
 Fri Jan 26 15:38:11 UTC 2024 - Christian Goll <cgoll@suse.com>
 
 - update to 1.15.0

@@ -17,9 +17,12 @@
 
 
 %{?sle15_python_module_pythons}
+# python-nbval needed for test isn't available python39
+%define         skip_python39 1
+
 # Tumbleweed does not have a python36-numpy anymore: NEP 29 dropped Python 3.6 for NumPy 1.20
 Name:           python-onnx
-Version:        1.15.0
+Version:        1.16.0
 Release:        0
 Summary:        Open Neural Network eXchange
 License:        MIT
