@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 14 19:16:40 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update typst to version 0.5.0.2.
+  ## 0.5.0.2
+
+    * Fix parsing of field access in math (#41). `$plus.circle_2$`
+      should give you a subscript 2 on the symbol `plus.circle`.
+      Underscores are not allowed in field access in math.
+
+    * Support toml-parser-2.0.0.0 (Eric Mertens).
+
+-------------------------------------------------------------------
 Wed Feb 14 20:16:16 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update typst to version 0.5.0.1.
