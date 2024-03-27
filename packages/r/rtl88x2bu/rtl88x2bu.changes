@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 22 23:56:39 UTC 2024 - eyadlorenzo@gmail.com
+
+- Update to version 5.8.7.1+git20240314.8c9afc1:
+  * Add v6.8.0 to compatibility list
+  * Add v6.7.2 to compatibility list
+  * Following unnesting of attribute
+  * Disable new warnings
+
+-------------------------------------------------------------------
 Fri Feb 23 11:47:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
