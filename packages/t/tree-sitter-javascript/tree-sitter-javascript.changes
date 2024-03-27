@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Wed Mar 20 20:49:33 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 0.20.4:
+  * fix: escape braces in regex
+  * build(deps): bump deps
+  * fix: allow ampersands not followed by `#` or a letter in jsx strings
+  * refactor!: use last-wins precedence for queries
+  * docs: update badges
+  * chore: update tests
+  * fix: do statements can have semicolons
+  * fix: give ending regex `/` a higher lexical precedence
+  * fix: don't parse html comments inside regexes
+  * fix: tweak template literal injection
+
+-------------------------------------------------------------------
+Mon Feb 26 06:50:23 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for openSUSE
+- Update to version 0.20.3:
+  * chore: generate
+  * fix: windows newline escapes
+  * chore: don't greedily parse automatic semis if an `=` is present
+  * feat: add support for import attributes
+  * feat: add field names to nested_identifier rule
+  * feat: support HTML entities in JSX text/attributes
+  * chore: format scanner
+  * fix: include parser.h locally
+
