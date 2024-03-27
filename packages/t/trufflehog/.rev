@@ -582,4 +582,42 @@
   * fix(deps): update module github.com/wasilibs/go-re2 to v1.5.1 (#2596) (forwarded request 1159879 from ph03nix)</comment>
     <requestid>1159936</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d692e2b6b66a3b433e3334f64c0b57cc</srcmd5>
+    <version>3.71.1</version>
+    <time>1711568585</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.71.1:
+  * Use Lstat to identify non-regular files in filesystem source (#2628)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.8 (#2630)
+  * [bugfix] - Update the Anthropic detector (#2629)
+  * fix(deps): update module github.com/charmbracelet/glamour to v0.7.0 (#2627)
+  * fix(deps): update module github.com/go-sql-driver/mysql to v1.8.1 (#2626)
+  * Fix incorrect regular expression with missing closing bracket (#2616)
+  * fix(deps): update golang.org/x/exp digest to a685a6e (#2621)
+  * [chore] - upgrade dep (#2618)
+  * Fix additional GitHub test errors #2614
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.7 (#2623)
+- Update to version 3.71.0:
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.6 (#2615)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.101.0 (#2617)
+  * fix(github): resolve panic &amp; test failures (#2608)
+  * Dockerhub v2 detector (#2361)
+  * fix(deps): update module github.com/brianvoe/gofakeit/v6 to v7 (#2612)
+  * Update Snyk detector (#2559)
+  * MaxMind detector uses the right endpoint (#2577)
+  * feat(gitparse): avoid uneeded calls to strconv.Unquote (#2605)
+  * fix(deps): update module github.com/bradleyfalzon/ghinstallation/v2 to v2.10.0 (#2607)
+  * fix(deps): update module google.golang.org/api to v0.171.0 (#2611)
+  * fix(deps): update module github.com/brianvoe/gofakeit/v6 to v7 (#2524)
+  * fix(deps): update module github.com/launchdarkly/go-server-sdk/v6 to v7 (#2590)
+  * Use go 1.22 (#2599)
+  * Refactor GitHub source (#2379)
+  * Bump github.com/docker/docker (#2603)
+  * [chore] Fix potential resource leak in postman source (#2606)
+  * strings contain keyword check, add collection name to keywords (#2602)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.4 (#2604)
+  * Postman Source (#2579) (forwarded request 1162849 from ph03nix)</comment>
+    <requestid>1162876</requestid>
+  </revision>
 </revisionlist>

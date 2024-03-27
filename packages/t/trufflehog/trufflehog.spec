@@ -17,14 +17,14 @@
 
 
 Name:           trufflehog
-Version:        3.70.3
+Version:        3.71.1
 Release:        0
 Summary:        CLI tool to find exposed secrets in source and archives
 License:        AGPL-3.0-or-later
 URL:            https://github.com/trufflesecurity/trufflehog
 Source:         trufflehog-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.22
 
 %description
 TruffleHog is a scanning engine that helps find exposed secrets
