@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 27 10:55:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Tue May 16 19:22:11 UTC 2017 - jengelh@inai.de
 
 - Remove redundant %clean section.

@@ -54,10 +54,7 @@ services user information.
 
 
 %prep
-%setup
-%patch0
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 autoreconf -f -i

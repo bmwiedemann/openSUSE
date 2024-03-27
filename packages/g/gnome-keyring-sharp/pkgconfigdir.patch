@@ -1,5 +1,5 @@
---- src/Makefile.am	2008-08-06 17:15:25.000000000 -0600
-+++ src/Makefile.am	2008-08-06 17:15:41.000000000 -0600
+--- a/src/Makefile.am	2008-08-06 17:15:25.000000000 -0600
++++ b/src/Makefile.am	2008-08-06 17:15:41.000000000 -0600
 @@ -4,7 +4,7 @@
  ASSEMBLY=$(ASSEMBLY_NAME).dll
  SNK=$(ASSEMBLY_NAME).snk
