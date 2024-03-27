@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Sun Feb 25 17:55:33 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for openSUSE
+- Update to version 0.20.4:
+  * chore: generate
+  * feat: add detailed pattern matching support
+  * fix: use _Static_assert instead of static_assert
+  * feat: update ci script, add python repo
+  * chore: update tests
+  * chore: generate
+  * fix(scanner): don't dedent inside f-strings, skip newlines following a backslash in raw strings
+  * feat: support Python 3.12
+  * chore: update tests
