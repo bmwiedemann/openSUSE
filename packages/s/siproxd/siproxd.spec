@@ -88,10 +88,7 @@ Group:          Documentation/Other
 HTML and PDF documentation for %{name}
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 cp %{S:5} .
 
