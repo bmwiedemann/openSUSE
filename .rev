@@ -808,4 +808,12 @@ for -ldl. (forwarded request 586626 from jengelh)</comment>
   + Updated translations. (forwarded request 1136891 from dimstar)</comment>
     <requestid>1136893</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>59d9425acc570deaedce0633b9eab1fe</srcmd5>
+    <version>15.1.3</version>
+    <time>1711568636</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1162959</requestid>
+  </revision>
 </revisionlist>
