@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Sun Feb 25 18:08:06 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for openSUSE
+- Update to version 0.20.5:
+  * fix: allow qualified identifiers in field expressions
+  * fix: give for statement bodies a higher `dynamic` precedence to avoid parse errors
+  * fix(scanner): return false during error recovery
+  * chore: update tree-sitter-c
+  * docs: update badges
+  * chore(scanner): formatting improvements
+  * fix: hide aliased rule
+
+
