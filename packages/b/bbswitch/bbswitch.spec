@@ -52,12 +52,12 @@ ACPI calls for two kinds of Optimus laptops.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 %if %{?pkg_vcmp:%{pkg_vcmp kernel-devel >= 5.6.0}}%{!?pkg_vcmp:0}
-%patch1 -p1
+%patch -P 1 -p1
 %endif
 %if %{?pkg_vcmp:%{pkg_vcmp kernel-devel >= 5.18.1}}%{!?pkg_vcmp:0}
-%patch2 -p1
+%patch -P 2 -p1
 %endif
 set -- *
 mkdir source

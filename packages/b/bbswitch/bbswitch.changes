@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 10:08:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Jun  3 18:06:48 UTC 2022 - Simone Pilia <pilia.simone96@gmail.com>
 
 - Fix build in kernel >= 5.18.1 due to deprecated acpi_bus_get_device
