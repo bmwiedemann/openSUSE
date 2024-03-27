@@ -49,7 +49,7 @@
 %endif
 
 Name:           bcc
-Version:        0.29.1
+Version:        0.30.0
 Release:        0
 Summary:        BPF Compiler Collection (BCC)
 License:        Apache-2.0

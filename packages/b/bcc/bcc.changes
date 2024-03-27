@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 27 09:57:56 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to version 0.30.0
+  * support for kernel up to 6.8.
+  * add workqueue latency observation tool.
+  * bcc tool update: memleak, ttysnoop, bashreadline, tcpdrop,
+    execsnoop, etc.
+  * allow more flexible perf event options with new
+  * perf_custom_event_open() python API.
+  * fix userspace stack unwinding on powerpc.
+  * add bpf_prog_test_run_opts() python API.
+  * several deb package related changes.
+  * fix btf_type_tag issue with llvm 15.
+  * classify tools into different sub-categories.
+  * doc update, other bug fixes and tools improvement.
+
+-------------------------------------------------------------------
 Tue Mar 26 12:39:22 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update bcc-devel requirement to depend on specific version of llvm-devel
