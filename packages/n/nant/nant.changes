@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:55:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Jun 14 09:20:26 UTC 2018 - bwiedemann@suse.com
 
 - Add reproducible.patch to make build reproducible (boo#1047218)

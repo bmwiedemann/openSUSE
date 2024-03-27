@@ -51,8 +51,7 @@ Requires:       nant
 This package contains the pkgconfig files for NAnt.
 
 %prep
-%setup -q -n %{name}
-%patch0 -p1
+%autosetup -p1 -n %{name}
 
 %build
 make TARGET=mono-4.5 MCS="mcs -sdk:4"
