@@ -51,9 +51,7 @@ BuildArch:      noarch
 This package contains the documentation and manual pages for ckermit
 
 %prep
-%setup -q -c
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -c
 
 %build
 export CFLAGS="%{optflags}"
