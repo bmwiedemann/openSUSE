@@ -16,48 +16,30 @@
 #
 
 
-%global provider_prefix github.com/SUSE/connect-ng
-%global import_path     %{provider_prefix}
-
-# set this to enable hwinfo test in %check
-%bcond_with hwinfo
+%global project github.com/SUSE/connect-ng
 
 Name:           suseconnect-ng
-# the version will get set by the 'set_version' service
-Version:        1.7.0~git2.21ba08e
+Version:        1.8.0
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
 License:        LGPL-2.1-or-later
 Summary:        Utility to register a system with the SUSE Customer Center
 Group:          System/Management
-Source:         connect-ng-%{version}.tar.xz
-Source1:        %name-rpmlintrc
+Source:         suseconnect-ng-%{version}.tar.xz
+Source1:        %{name}-rpmlintrc
 
 # Build against latest golang in Tumbleweed and
 # go1.18-openssl on all other distributions
-%if 0%{?suse_version} >= 1600
+%if 0%{?suse_version} > 1600
 BuildRequires:  golang(API)
 %else
-BuildRequires:  go1.18-openssl
+BuildRequires:  go1.21-openssl
 %endif
 
-BuildRequires:  golang-packaging
 BuildRequires:  ruby-devel
 BuildRequires:  zypper
 
 ExcludeArch:    %ix86 s390 ppc64
-%if %{with hwinfo}
-%global test_hwinfo_args -test-hwinfo
-
-# packages required only for hwinfo tests
-%ifarch ia64 x86_64 %arm aarch64
-BuildRequires:  dmidecode
-%endif
-%ifarch s390x
-BuildRequires:  s390-tools
-%endif
-BuildRequires:  systemd
-%endif
 
 Obsoletes:      SUSEConnect < 1.1.0
 Provides:       SUSEConnect = %version
@@ -65,11 +47,13 @@ Obsoletes:      zypper-migration-plugin < 0.99
 Provides:       zypper-migration-plugin = 0.99
 Obsoletes:      zypper-search-packages-plugin < 0.99
 Provides:       zypper-search-packages-plugin = 0.99
+
 %if 0%{?suse_version}
 Requires:       ca-certificates-mozilla
 %else
 Requires:       ca-certificates
 %endif
+
 Requires:       coreutils
 # ExclusiveArch from this package
 %ifarch ia64 x86_64 %arm aarch64
@@ -92,9 +76,6 @@ client system to the SUSE Customer Center. It will connect the system to your
 product subscriptions and enable the product repositories/services locally.
 suseconnect-ng reduces the size of its runtime dependencies compared to the
 replaced SUSEConnect.
-
-
-%{go_provides}
 
 %package -n libsuseconnect
 Summary:        C interface to suseconnect-ng
@@ -119,43 +100,45 @@ Provides:       rubygem(ruby:2.5.0:suse-connect)
 This package provides bindings needed to use libsuseconnect from Ruby scripts.
 
 %prep
-%setup -q -n connect-ng-%{version}
+%autosetup -p 1 -n %{name}-%{version}
 
 %build
-find %_builddir/..
+# the binary
 echo %{version} > internal/connect/version.txt
-%goprep %{import_path}
-find %_builddir/..
-go list all
-%gobuild suseconnect
+go build -v -ldflags "-s -w" -buildmode=pie -o bin/suseconnect %{project}/suseconnect
+
+# the library
 mkdir -p %_builddir/go/lib
-go build -v -buildmode=c-shared -o %_builddir/go/lib/libsuseconnect.so %import_path/libsuseconnect
-find %_builddir/..
+go build -v -ldflags "-s -w" -buildmode=c-shared -o lib/libsuseconnect.so %{project}/libsuseconnect
 
 %install
-%goinstall
-ln -s suseconnect %buildroot/%_bindir/SUSEConnect
-install -d -m0755 %buildroot/%_sbindir %buildroot/usr/lib/zypper/commands
-ln -s %_bindir/suseconnect %buildroot/%_sbindir/SUSEConnect
-ln -s %_bindir/suseconnect %buildroot/usr/lib/zypper/commands/zypper-migration
-ln -s %_bindir/suseconnect %buildroot/usr/lib/zypper/commands/zypper-search-packages
-install -D -m0755 %_builddir/go/lib/libsuseconnect.so %buildroot/%_libdir/libsuseconnect.so
-install -d -m0755 %buildroot/%_libdir/ruby/vendor_ruby/%rb_ver
-cp -r %_builddir/go/src/%import_path/yast/lib/* %buildroot/%_libdir/ruby/vendor_ruby/%rb_ver
-install -D -m 644 %_builddir/go/src/%import_path/man/SUSEConnect.5 %buildroot/%_mandir/man5/SUSEConnect.5
-install -D -m 644 %_builddir/go/src/%import_path/man/SUSEConnect.8 %buildroot/%_mandir/man8/SUSEConnect.8
-install -D -m 644 %_builddir/go/src/%import_path/man/zypper-migration.8 %buildroot/%_mandir/man8/zypper-migration.8
-install -D -m 644 %_builddir/go/src/%import_path/man/zypper-search-packages.8 %buildroot/%_mandir/man8/zypper-search-packages.8
-install -D -m 644 %_builddir/go/src/%import_path/SUSEConnect.example %{buildroot}%_sysconfdir/SUSEConnect.example
+# Install binary + symlinks
+install -D -m 0755 bin/suseconnect %{buildroot}/%{_bindir}/suseconnect
+install -d -m 0755 %{buildroot}/%{_sbindir} %{buildroot}/usr/lib/zypper/commands
+ln -s %{_bindir}/suseconnect %{buildroot}/%{_bindir}/SUSEConnect
+ln -s %{_bindir}/suseconnect %{buildroot}/%{_sbindir}/SUSEConnect
+ln -s %{_bindir}/suseconnect %{buildroot}/usr/lib/zypper/commands/zypper-migration
+ln -s %{_bindir}/suseconnect %{buildroot}/usr/lib/zypper/commands/zypper-search-packages
+
+# Install library + ruby bindings
+install -D -m 0755 lib/libsuseconnect.so %{buildroot}/%{_libdir}/libsuseconnect.so
+install -d -m 0755 %{buildroot}/%{_libdir}/ruby/vendor_ruby/%{rb_ver}
+cp -r yast/lib/* %{buildroot}/%{_libdir}/ruby/vendor_ruby/%{rb_ver}
+
+# Install metadata
+install -D -m 644 man/SUSEConnect.5 %{buildroot}/%{_mandir}/man5/SUSEConnect.5
+install -D -m 644 man/SUSEConnect.8 %{buildroot}/%{_mandir}/man8/SUSEConnect.8
+install -D -m 644 man/zypper-migration.8 %{buildroot}/%{_mandir}/man8/zypper-migration.8
+install -D -m 644 man/zypper-search-packages.8 %{buildroot}/%{_mandir}/man8/zypper-search-packages.8
+install -D -m 644 SUSEConnect.example %{buildroot}%{_sysconfdir}/SUSEConnect.example
 
 # Install the SUSEConnect --keepalive timer and service.
-install -D -m 644 %_builddir/go/src/%import_path/suseconnect-keepalive.timer %buildroot/%_unitdir/suseconnect-keepalive.timer
-install -D -m 644 %_builddir/go/src/%import_path/suseconnect-keepalive.service %buildroot/%_unitdir/suseconnect-keepalive.service
-ln -sf service %buildroot/%_sbindir/rcsuseconnect-keepalive
+install -D -m 644 suseconnect-keepalive.timer %{buildroot}/%{_unitdir}/suseconnect-keepalive.timer
+install -D -m 644 suseconnect-keepalive.service %{buildroot}/%{_unitdir}/suseconnect-keepalive.service
+ln -sf service %{buildroot}/%{_sbindir}/rcsuseconnect-keepalive
 
-find %_builddir/..
 # we currently do not ship the source for any go module
-rm -rf %buildroot/usr/share/go
+rm -rf %{buildroot}/usr/share/go
 
 %pre
 %service_add_pre suseconnect-keepalive.service suseconnect-keepalive.timer
@@ -196,7 +179,7 @@ EOF
 fi
 
 # If the keepalive timer exists on package install (not upgrade), then we are replacing SUSEConnect.
-# Record the enabled and active statuses so they can be restored in %posttrans.
+# Record the enabled and active statuses so they can be restored in posttrans macro.
 if [ "$1" -eq 1 ]; then
   /usr/bin/systemctl is-enabled suseconnect-keepalive.timer >/dev/null 2>&1 && touch /run/suseconnect-keepalive.timer.is-enabled || :
   /usr/bin/systemctl is-active suseconnect-keepalive.timer >/dev/null 2>&1 && touch /run/suseconnect-keepalive.timer.is-active || :
@@ -228,31 +211,26 @@ if [ -e /run/suseconnect-keepalive.timer.is-active ]; then
   rm /run/suseconnect-keepalive.timer.is-active ||:
 fi
 
-%check
-%gotest -v %import_path/internal/connect %{?test_hwinfo_args}
-%gotest -v %import_path/suseconnect
-make -C %_builddir/go/src/%import_path gofmt
-
 %files
 %license LICENSE LICENSE.LGPL
 %doc README.md
-%_bindir/suseconnect
-%_bindir/SUSEConnect
-%_sbindir/SUSEConnect
-%_sbindir/rcsuseconnect-keepalive
+%{_bindir}/suseconnect
+%{_bindir}/SUSEConnect
+%{_sbindir}/SUSEConnect
+%{_sbindir}/rcsuseconnect-keepalive
 /usr/lib/zypper/commands
-%_mandir/man8/*
-%_mandir/man5/*
-%_unitdir/suseconnect-keepalive.service
-%_unitdir/suseconnect-keepalive.timer
+%{_mandir}/man8/*
+%{_mandir}/man5/*
+%{_unitdir}/suseconnect-keepalive.service
+%{_unitdir}/suseconnect-keepalive.timer
 %config %{_sysconfdir}/SUSEConnect.example
 
 %files -n libsuseconnect
 %license LICENSE LICENSE.LGPL
-%_libdir/libsuseconnect.so
+%{_libdir}/libsuseconnect.so
 
 %files -n suseconnect-ruby-bindings
 %doc yast/README.md
-%_libdir/ruby/vendor_ruby/%rb_ver/suse
+%{_libdir}/ruby/vendor_ruby/%rb_ver/suse
 
 %changelog

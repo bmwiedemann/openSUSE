@@ -244,4 +244,12 @@
   * Enable building on SLE12 SP5 (jsc#PED-3179)</comment>
     <requestid>1146892</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>14471ac52b7bf0d7986c0d954ecff3b2</srcmd5>
+    <version>1.8.0</version>
+    <time>1711568508</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1162336</requestid>
+  </revision>
 </revisionlist>
