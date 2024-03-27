@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 27 08:31:06 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
+
+- Add qt6-webview dep to fix login (boo#1222024)
+
+-------------------------------------------------------------------
 Tue Mar 19 15:28:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.1

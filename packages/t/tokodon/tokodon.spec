@@ -67,6 +67,7 @@ Requires:       kf6-sonnet-imports >= %{kf6_version}
 Requires:       kirigami-addons6
 Requires:       qt6-declarative-imports >= %{qt6_version}
 Requires:       qt6-qt5compat-imports >= %{qt6_version}
+Requires:       qt6-webview >= %{qt6_version}
 Requires:       qt6-webview-imports >= %{qt6_version}
 
 %description

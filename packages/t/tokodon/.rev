@@ -127,4 +127,12 @@
     <comment>KDE release gear 24.02.1 (forwarded request 1159650 from krop)</comment>
     <requestid>1160366</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>7fbcbf43eaea3b0baa46a9aa16112a12</srcmd5>
+    <version>24.02.1</version>
+    <time>1711568567</time>
+    <user>anag+factory</user>
+    <comment>- Add qt6-webview dep to fix login (boo#1222024)</comment>
+    <requestid>1162847</requestid>
+  </revision>
 </revisionlist>
