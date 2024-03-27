@@ -1,7 +1,7 @@
 #
 # spec file for package python-requirements-detector
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,33 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         oldpython python
 Name:           python-requirements-detector
-Version:        0.7
+Version:        1.2.2
 Release:        0
 Summary:        Python tool to find and list requirements of a Python project
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/landscapeio/requirements-detector
-# https://github.com/landscapeio/requirements-detector/issues/25
 Source:         https://github.com/landscapeio/requirements-detector/archive/%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+Patch0:         fix-astroid-import.patch
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astroid >= 1.4
+Requires:       python-astroid >= 2.0
+Requires:       python-packaging >= 21.3
+Requires:       python-semver >= 3
+Requires:       python-toml >= 0.10
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module astroid >= 1.4}
+BuildRequires:  %{python_module astroid >= 2.0}
+BuildRequires:  %{python_module packaging >= 21.3}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module semver >= 3}
+BuildRequires:  %{python_module toml >= 0.10}
 # /SECTION
 %python_subpackages
 
@@ -49,13 +55,13 @@ which libraries and the versions of those libraries that the project
 depends on.
 
 %prep
-%setup -q -n requirements-detector-%{version}
+%autosetup -p1 -n requirements-detector-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/detect-requirements
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -71,7 +77,8 @@ depends on.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/requirements_detector
+%{python_sitelib}/requirements_detector-%{version}.dist-info
 %python_alternative %{_bindir}/detect-requirements
 
 %changelog
