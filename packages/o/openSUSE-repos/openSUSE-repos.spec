@@ -33,6 +33,10 @@ ExclusiveArch:  do_not_build
 %define theme Tumbleweed
 %define branding tumbleweed
 %endif
+%if "%flavor" == "openSUSE-repos-Slowroll"
+%define theme Slowroll
+%define branding slowroll
+%endif
 %if "%flavor" == "openSUSE-repos-MicroOS"
 %define theme MicroOS
 %define branding microos
@@ -71,7 +75,7 @@ Name:           openSUSE-repos
 %else
 Name:           openSUSE-repos-%{theme}
 %endif
-Version:        20230810.a7534f6
+Version:        20240327.09add4e
 Release:        0
 Summary:        openSUSE package repositories
 License:        MIT
@@ -89,6 +93,10 @@ Suggests:       openSUSE-repos-%{theme}-NVIDIA
 Conflicts:      otherproviders(openSUSE-repos)
 Provides:       openSUSE-repos
 %if "%{?theme}" == "Tumbleweed"
+Obsoletes:      openSUSE-repos-Leap
+Obsoletes:      openSUSE-repos-LeapMicro
+%endif
+%if "%{?theme}" == "Slowroll"
 Obsoletes:      openSUSE-repos-Leap
 Obsoletes:      openSUSE-repos-LeapMicro
 %endif
@@ -142,6 +150,12 @@ Definitions for NVIDIA repository management via zypp-services
 %{_datadir}/zypp/local/service/openSUSE/repo/opensuse-%{branding}-repoindex.xml
 %else
 %{_datadir}/zypp/local/service/openSUSE/repo/opensuse-%{branding}-ports-repoindex.xml
+%endif
+%endif
+
+%if "%{theme}" == "Slowroll"
+%ifarch x86_64
+%{_datadir}/zypp/local/service/openSUSE/repo/opensuse-%{branding}-repoindex.xml
 %endif
 %endif
 
@@ -201,6 +215,12 @@ mkdir -p %{buildroot}%{_sysconfdir}/zypp/vars.d/
 install opensuse-%{branding}-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp/local/service/openSUSE/repo
 %else ifarch aarch64 %{arm} %{power64} ppc s390x riscv64
 install opensuse-%{branding}-ports-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp/local/service/openSUSE/repo
+%endif
+%endif
+
+%if "%{theme}" == "Slowroll"
+%ifarch x86_64
+install opensuse-%{branding}-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp/local/service/openSUSE/repo
 %endif
 %endif
 
@@ -269,6 +289,12 @@ ln -sf opensuse-%{branding}-ports-repoindex.xml %{_datadir}/zypp/local/service/o
 %endif
 %endif
 
+%if "%{theme}" == "Slowroll"
+%ifarch x86_64
+ln -sf opensuse-%{branding}-repoindex.xml %{_datadir}/zypp/local/service/openSUSE/repo/repoindex.xml
+%endif
+%endif
+
 %if "%{theme}" == "MicroOS"
 %ifarch x86_64 aarch64
 ln -sf opensuse-%{branding}-repoindex.xml %{_datadir}/zypp/local/service/openSUSE/repo/repoindex.xml
@@ -297,7 +323,7 @@ repo-sle-debug-update.repo repo-debug-non-oss.repo repo-sle-update.repo \
 repo-debug.repo repo-source.repo repo-debug-update.repo repo-update.repo \
 repo-debug-update-non-oss.repo repo-update-non-oss.repo repo-non-oss.repo \
 download.opensuse.org-oss.repo download.opensuse.org-non-oss.repo download.opensuse.org-tumbleweed.repo \
-repo-openh264.repo openSUSE-*-0.repo; do
+repo-openh264.repo openSUSE-*-0.repo repo-main.repo; do
   if [ -f %{_sysconfdir}/zypp/repos.d/$repo_file ]; then
     echo "Content of $repo_file will be newly managed by zypp-services."
     echo "Storing old copy as {_sysconfdir}/zypp/repos.d/$repo_file.rpmsave"
