@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 17 15:24:51 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update th-abstraction to version 0.6.0.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat Sep 30 12:03:02 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update th-abstraction to version 0.6.0.0 revision 1.
