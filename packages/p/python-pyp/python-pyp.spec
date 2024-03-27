@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020-2021 LISA GmbH, Bingen, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define skip_python2 1
 Name:           python-pyp
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Python at the shell
 License:        MIT
@@ -40,7 +40,7 @@ BuildRequires:  jq
 Requires:       python-astunparse
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -58,16 +58,17 @@ sed -i '/^#!\//, 1d' pyp.py
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pyp
+%python_clone -a %{buildroot}%{_bindir}/pypyp
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export PATH=$(pwd):$PATH
 %{python_expand ln -sf %{buildroot}%{_bindir}/pyp-%{$python_bin_suffix} pyp
-PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -vv #k 'not test_tracebacks'
+PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -vv
 }
 
 %post
-%python_install_alternative pyp
+%python_install_alternative pyp pypyp
 
 %postun
 %python_uninstall_alternative pyp
@@ -79,5 +80,6 @@ PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -vv #k '
 %{python_sitelib}/pypyp-%{version}*-info
 %pycache_only %{python_sitelib}/__pycache__
 %python_alternative %{_bindir}/pyp
+%python_alternative %{_bindir}/pypyp
 
 %changelog
