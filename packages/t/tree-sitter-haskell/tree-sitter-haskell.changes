@@ -1,0 +1,188 @@
+-------------------------------------------------------------------
+Mon Feb 26 16:03:35 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 0.15.0:
+  * cosmetics
+  * docs: update badges
+  * Revert "Enable build by msvc (#113)"
+  * handle closing typed quote brackets correctly
+  * Enable build by msvc (#113)
+  * Add `license` field to `Cargo.toml` (#112)
+  * support upcoming data decls for tuples
+  * support pattern synonym export of all constructors with ..
+  * add if guard to block argument exprs
+  * bump CI versions
+  * add test for \cases
+  * Correctly parse `\cases` expressions (#106)
+  * support empty foralls
+  * chore: remove unnecessary conflicts
+  * linear gadt field support
+  * fix: free indents on destroy (#100)
+  * support empty record decls
+  * tweak families
+  * add special rule for the GHC fixity decl for the function arrow
+  * allow multiple semicolons between statements and one leading semicolon
+  * handle if guard/list comprehension conflict differently
+  * close case layouts before closing do braces
+  * support explicit quantifier specificity
+  * support type family equation names that are type operators
+  * support invisible binders in tyfam equations
+  * support invisible type binders in patterns
+  * support kind signatures everywhere in types
+  * support prefix notation for unboxed sums
+  * support type application for invisible dependent variables
+  * support TypeData
+  * support lazy data type fields
+  * implement OverloadedRecordDot (#98)
+  * explicitly inline hidden rule (#96)
+  * support all valid unicode chars for varsym (#95)
+  * support unicode qq brackets and the unicode type star
+  * allow btype in tyfam infix pattern
+  * add type family injectivity annotations
+  * add some unicode variants for builtin symbolic names
+  * SPM support (#91)
+  * allow EmptyCase for regular case expressions
+  * Unicode identifiers (#90)
+  * Fix associated types failing if unannotated (#88)
+  * Use nvim-treesitter version of highlights.scm (#87)
+  * bump tree-sitter in Cargo.toml (#85)
+  * highlights.scm and locals.scm exist, so uncomment them
+  * Bump regex from 1.5.4 to 1.5.6 (#81)
+  * Don't panic if we can't serialize our state (#80)
+  * fix test
+  * permit negation of apats
+  * Disallow CPP after spaces when parsing after newline
+  * allow newline after unboxed opening brace
+  * remove the space node in unboxed sums
+  * improve unboxed tuples
+  * add flatparse to examples
+  * support nullary and unary unboxed tuples in types
+  * Support unboxed tuples in patterns
+  * fix: links (#78)
+  * Don't consume trailing newlines as part of layouts (#74) (#75)
+  * Allow unparenthesized type after `deriving X via` (#76)
+  * Improve highlights query for functions (#73)
+  * Add fixity keywords to highlights query (#72)
+  * Document tests (#71)
+  * Add skipping back to C scanner (#65)
+  * Fix gcc -Wall warnings (#66)
+  * A few scanner microoptimizations (#63)
+  * scanner.cc -> scanner.c (#64)
+  * Updates macOS support after #62 (#61)
+  * Convert scanner to C for great good (~˘▾˘)~ (#62)
+  * Update patch after #58 (#60)
+  * Support c++03 (#58)
+  * check for eof in inline_comment skip code (#57)
+  * Compile to wasm with patch to web-tree-sitter (UPDATE) (#56)
+  * Faster Scanner (part 2) (#54)
+  * [wip] Faster scanner (#52)
+  * force parser compilation before testing an example
+  * add timing info to example parsing output
+  * scanner: replace a `when` chain with a `switch`
+  * add mssing test target
+  * fail cpp on eof
+  * skip initial whitespace instead of consuming it (#48)
+  * allow % before closing parenthesis
+  * support LinearTypes
+  * Fix logic error in comment parser
+  * fix(macos): latest brew symlink gcc-11 in readme. (#46)
+  * fix infinite advancing on open quasiquote (#45)
+  * add missing target for a test case
+  * permit qualified varids for quasiquoters
+  * mention `clang++` in readme
+  * add nvim config snippet for installation from source
+  * support TransformListComp
+  * allow empty quasiquotes
+  * give some advice about gcc in macos
+  * handle quasiquote bodies that start with operator chars correctly
+  * skip newlines in the scanner
+  * Improve Haskell highlight queries (#40)
+  * mention how to set a compiler for nvim-treesitter
+  * run GA on PRs
+  * add <string> and <iterator> includes for MSVC
+  * support UnboxedSums
+  * mark NondecreasingIndentation as unsupported
+  * support EmptyDataDeriving
+  * support CApiFFI, GHCForeignImportPrim
+  * support HexFloatLiterals
+  * support InterruptibleFFI
+  * support StandaloneKindSignatures
+  * support UnliftedNewtypes
+  * make extension list bulleted
+  * add list of supported extensions
+  * set cli version in devDependencies to 0.19.4
+  * warn about version requirements
+  * remove nonexisting rules from `inline`
+  * test for line numbers
+  * Fix badge.
+  * add HLS to the corpus
+  * support all newline types
+  * use `uint32_t` instead of char everywhere in the scanner
+  * support OverloadedLabels
+  * parse `in` in the scanner to disambiguate an edge case
+  * allow TH in types
+  * unboxed tuples in types
+  * allow parenthesized operators as patterns
+  * quasiquotes in patterns
+  * splices in patterns
+  * allow double dollars for splices
+  * allow signatures on funpats
+  * allow double-parenthesized constraints
+  * allow type operators in imports
+  * allow `else` to end a layout
+  * require whitespace after `!` to use it as operator
+  * allow vertical bars to terminate layouts
+  * fix bug in layout initialization if the first token starts with `m`
+  * relax the requirement for pattern signatures
+  * end layouts when the next line begins with an operator on leq indent
+  * magic hash for literals
+  * pattern type signature
+  * trailing comma for imports
+  * add unboxed tuples
+  * add type roles
+  * allow type equations in classes
+  * consume all newlines before parsing cpp
+  * add semantic to the corpus
+  * allow view patterns in record field patterns
+  * allow implicit parameters in type aliases
+  * infix type family equation
+  * NamedFieldPuns for expressions
+  * use unicode class for whitespace
+  * `deriving via` for instances
+  * improve operators
+  * allow qualified class in deriving clauses
+  * small fix
+  * support arbitrarily nested foralls/contexts
+  * support consym in simpletype
+  * add polysemy to the example corpus
+  * support for QualifiedDo
+  * better naming for pattern synonyms
+  * disallow space in escaped character literal
+  * relax rule for chars
+  * tweak naming of modids
+  * improve naming of con nodes
+  * fix simpletype to support operators
+  * rename constrs to constructors
+  * fix unicode handling in scanner
+  * fix regression about minus operator
+  * ban minus from right sections
+  * newtype gadts
+  * add missing BlockArguments expressions
+  * test for nested comment
+  * fix small regression
+  * fix tree-sitter config object in package.json
+  * rewrite the grammar (#29)
+  * Check for empty indent stack
+
+-------------------------------------------------------------------
+Mon Feb 26 07:03:16 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 0.13.0:
+  * Add example repos to gitignore
+  * Parse 'ʹ' as a char literal
+  * Add pattern_guard rule
+  * Treat  as a variable symbol for guard  expressions
+  * Regenerate using tree-sitter-cli v 12.7
+  * Allow special guard pattern to be parsed as an infix operator application
+  * Update constructor rules to use regex
+  * Remove comment
