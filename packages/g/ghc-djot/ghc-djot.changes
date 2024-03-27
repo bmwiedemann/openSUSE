@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 18 01:18:54 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update djot to version 0.1.1.3.
+  ## 0.1.1.3 -- 2024-03-17
+
+  * Ensure that tables end when we hit a blank line (#4).
+
+  * Fix parsing of table immediately after list (#4).
+
+-------------------------------------------------------------------
+Thu Mar 14 16:53:27 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update djot to version 0.1.1.2.
+  ## 0.1.1.2 -- 2024-03-14
+
+  * Fix bug parsing regular paragraphs after list (#4).
+
+-------------------------------------------------------------------
 Mon Mar  4 06:27:22 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update djot to version 0.1.1.1.
