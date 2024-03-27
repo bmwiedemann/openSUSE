@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypsexec
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pypsexec
 Version:        0.3.0
 Release:        0
@@ -25,6 +24,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jborean93/pypsexec
 Source:         https://github.com/jborean93/pypsexec/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/jborean93/pypsexec/pull/58 adapt to timezone-aware objects
+Patch:          datetime.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module smbprotocol}
@@ -41,7 +42,7 @@ require any binaries to be present or a specific OS. It uses SMB/RPC to
 executable commands in a similar fashion to the popular PsExec tool.
 
 %prep
-%setup -q -n pypsexec-%{version}
+%autosetup -p1 -n pypsexec-%{version}
 
 %build
 %python_build
@@ -56,6 +57,7 @@ executable commands in a similar fashion to the popular PsExec tool.
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md README.md
-%{python_sitelib}/*
+%{python_sitelib}/pypsexec
+%{python_sitelib}/pypsexec-%{version}*info
 
 %changelog
