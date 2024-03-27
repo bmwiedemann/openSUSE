@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 27 03:33:29 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.4.4
+  * Fixed no sound when playing a flac or mp3 song twice, then
+    enqueuing another.
+  * Don't save every change to the playlist when running the
+    special playlist w*ith 'kew .', only add the songs added by
+    pressing '.'.
+  * Removed a compiler warning and a few other minor fixes.
+
+-------------------------------------------------------------------
 Tue Mar 12 10:40:54 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.4.3
