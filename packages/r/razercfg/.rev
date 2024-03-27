@@ -85,4 +85,12 @@ Changes to 345729: Fixed spec file to be conform with factory</comment>
     <comment></comment>
     <requestid>938258</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>5a1a651cdafb0aab6df46329958beb41</srcmd5>
+    <version>0.42</version>
+    <time>1711568608</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1162913</requestid>
+  </revision>
 </revisionlist>

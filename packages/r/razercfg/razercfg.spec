@@ -49,9 +49,7 @@ tool bringing the Razer gaming experience to the free Open Source world.
 Including commandline tool (razercfg) and QT GUI qrazercfg.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %cmake
