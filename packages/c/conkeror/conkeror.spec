@@ -47,8 +47,7 @@ and novel ways. It is self-documenting, featuring a powerful
 interactive help system.
 
 %prep
-%setup -q -n %{name}-%{version}-%{commit}
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{version}-%{commit}
 
 %build
 make
