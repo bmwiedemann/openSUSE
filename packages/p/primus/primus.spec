@@ -43,8 +43,7 @@ copied onto the drawable it was supposed to be rendered on in the first
 place.
 
 %prep
-%setup -q
-%patch0 -p1 
+%autosetup -p1
 
 %build
 export CXXFLAGS="%{optflags}"
