@@ -65,9 +65,7 @@ Requires:       %{libilbc_name} = %{version}
 Libraries and Header Files to Develop Programs with iLBC Support
 
 %prep
-%setup -n ilbc-rfc3951
-%patch0
-%patch1
+%autosetup -p0 -n ilbc-rfc3951
 
 %build
 autoreconf -fi
