@@ -72,10 +72,7 @@ This is a Pidgin plugin which treats microblogging sites
 GNU social, Twitter as IM protocols.
 
 %prep
-%setup -q -n prpltwtr-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n prpltwtr-%{version}
 
 %build
 NOCONFIGURE=1 ./autogen.sh
