@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 27 05:20:10 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Mar 31 14:25:07 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.6.0
