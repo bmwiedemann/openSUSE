@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 27 16:10:58 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 5.76:
+  * oct mode added.  Sizes 2-4.  Period 3 (face turning) and Period 4
+    (corner turning) implemented also a "sticky" mode is implemented
+    for both where the middle pieces turn together.
+  * pyraminx code was reorganized and now scale the size of puzzle.
+- 5.75 changelog:
+  * pyraminx mode added.  Sizes 2-4.  With a "sticky" mode where its
+    a size 4 but only certain turns are permitted.  So far only the
+    normal Period 3 turning is permitted (i.e. faces or corners turn
+    but not edges).  Taken from xpyraminx and dino and rubik modes.
+
+-------------------------------------------------------------------
 Mon Feb 26 12:16:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
