@@ -1,0 +1,50 @@
+From: Egbert Eich <eich@suse.com>
+Date: Mon Mar 25 22:33:32 2024 +0100
+Subject: [ipmi] For reproducible builds equalize time stamps in CPIO archives
+Patch-mainline: Upstream
+Git-commit: bea56d0379a3bfdc58cf1487282693217f80996b
+References: bsc#1217973
+
+For reproducible builds, set time stamps in CPIO files to
+a well defined value since these archives are distributed.
+(On reproducible builds: https://reproducible-builds.org/)
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ ipmi/initramfs/Makefile.am | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+diff --git a/ipmi/initramfs/Makefile.am b/ipmi/initramfs/Makefile.am
+index 4a2b364..3470b17 100644
+--- a/ipmi/initramfs/Makefile.am
++++ b/ipmi/initramfs/Makefile.am
+@@ -9,7 +9,7 @@ IPMITOOL_SOURCE = $(top_srcdir)/3rd_party/BSD/ipmitool-$(IPMITOOL_VERSION).tar.b
+ 
+ ipmitool:
+ 	@ if [ -n "@local_ipmitool_path@" -a -f "@local_ipmitool_path@" ]; then \
+-            cp "@local_ipmitool_path@" ipmitool; \
++            cp -av "@local_ipmitool_path@" ipmitool; \
+ 	else \
+ 	    if [ ! -d "_work/ipmitool/ipmitool-$(IPMITOOL_VERSION)" ]; then \
+ 	        echo "Preparing to build ipmitool" ;\
+@@ -42,14 +42,15 @@ rootfs: ipmitool
+ 	mkdir rootfs/lib64
+ 	mkdir -p rootfs/warewulf/provision/
+ 	chmod -R u+w rootfs/
+-	cp -a ipmitool rootfs/sbin/
+-	find rootfs -type f -perm -o+x  -print | xargs ldd | grep "=>" | awk '{print $$3}' | grep "^/" | sort | uniq | while read i; do cp -L --parents $$i rootfs/; done
++	cp -av ipmitool rootfs/sbin/
++	find rootfs -type f -perm -o+x  -print | xargs ldd | grep "=>" | awk '{print $$3}' | grep "^/" | sort | uniq | while read i; do cp -avL --parents $$i rootfs/; done
+ 	chmod -R +w rootfs/
+-	find rootfs -type f -perm -o+x -print | xargs strip -g
+-	install -m 755 $(srcdir)/10-ipmiconfig rootfs/warewulf/provision/10-ipmiconfig
++	find rootfs -type f -perm -o+x -print | xargs strip -pg
++	install -p -m 755 $(srcdir)/10-ipmiconfig rootfs/warewulf/provision/10-ipmiconfig
+ 
+ capability.cpio: rootfs
+-	cd rootfs/; find . | cpio -o -H newc -F ../capability.cpio
++	find rootfs/ -type d | xargs touch -r $(srcdir)/10-ipmiconfig
++	cd rootfs/; find . | cpio -o -H newc --reproducible -F ../capability.cpio
+ 
+ install-data-local: capability.cpio
+ 	install -d -m 755 $(DESTDIR)/$(WAREWULF_STATEDIR)/warewulf/initramfs/$(MACHINE)

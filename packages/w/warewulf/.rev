@@ -103,4 +103,14 @@
     <comment></comment>
     <requestid>1150522</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>413d84e1c4978ec5c531743d1d83cc1a</srcmd5>
+    <version>3.8.1</version>
+    <time>1711568613</time>
+    <user>anag+factory</user>
+    <comment>- Make build reproducible (bsc#1217973).
+  * ipmi-For-reproducible-builds-equalize-time-stamps-in-CPIO-archives.patch
+  * provision-For-reproducible-builds-equalize-time-stamps-in-CPIO-archives.patch</comment>
+    <requestid>1162930</requestid>
+  </revision>
 </revisionlist>

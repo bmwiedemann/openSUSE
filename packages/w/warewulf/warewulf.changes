@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 23 15:48:04 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Make build reproducible (bsc#1217973).
+  * ipmi-For-reproducible-builds-equalize-time-stamps-in-CPIO-archives.patch
+  * provision-For-reproducible-builds-equalize-time-stamps-in-CPIO-archives.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 15:13:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

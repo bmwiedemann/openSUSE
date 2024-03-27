@@ -1,0 +1,201 @@
+From: Egbert Eich <eich@suse.com>
+Date: Sat Mar 23 17:30:00 2024 +0100
+Subject: [provision] For reproducible builds equalize time stamps in CPIO archives
+Patch-mainline: Upstream
+Git-commit: 41d3b723af31fc9aea19e0844dce7753bdddfa96
+References: bsc#1217973
+
+For reproducible builds, set time stamps in CPIO files to
+a well defined value since these archives are distributed.
+(On reproducible builds: https://reproducible-builds.org/)
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ provision/initramfs/Makefile.am                    | 28 ++++++++++++----------
+ .../capabilities/provision-adhoc/Makefile.am       |  5 ++--
+ .../capabilities/provision-files/Makefile.am       |  5 ++--
+ .../capabilities/provision-selinux/Makefile.am     |  5 ++--
+ .../capabilities/provision-unionfs/Makefile.am     |  3 ++-
+ .../capabilities/provision-vnfs/Makefile.am        |  6 +++--
+ .../capabilities/setup-filesystems/Makefile.am     |  5 ++--
+ .../capabilities/transport-http/Makefile.am        |  5 ++--
+ 8 files changed, 36 insertions(+), 26 deletions(-)
+diff --git a/provision/initramfs/Makefile.am b/provision/initramfs/Makefile.am
+index 262b971..667af7e 100644
+--- a/provision/initramfs/Makefile.am
++++ b/provision/initramfs/Makefile.am
+@@ -161,21 +161,22 @@ rootfs: busybox e2fsprogs libarchive parted
+ 	else \
+ 		$(MAKE) -C _work/$(PARTED_DIR)/ DESTDIR=`pwd`/rootfs install; \
+ 	fi
+-	if [ -f /usr/sbin/haveged ]; then cp -a /usr/sbin/haveged rootfs/usr/sbin/haveged; fi
+-	cp -L --parents /lib*/ld-linux* rootfs/
+-	find rootfs -type f -perm -o+x -print | grep -v ld-linux | xargs ldd | grep "=>" | awk '{print $$3}' | grep "^/" | sort | uniq | while read i; do cp -L --parents $$i rootfs/ && chmod 755 rootfs/$$i; done
++	if [ -f /usr/sbin/haveged ]; then cp -av /usr/sbin/haveged rootfs/usr/sbin/haveged; fi
++	cp -avL --parents /lib*/ld-linux* rootfs/
++	find rootfs -type f -perm -o+x -print | grep -v ld-linux | xargs ldd | grep "=>" | awk '{print $$3}' | grep "^/" | sort | uniq | while read i; do cp -av -L --parents $$i rootfs/ && chmod 755 rootfs/$$i; done
+ 	rm -f rootfs/linuxrc rootfs/lib64/*.la rootfs/lib/*.la rootfs/usr/lib64/*.la rootfs/usr/lib/*.la
+ 	rm -rf rootfs/usr/share rootfs/usr/include rootfs/usr/lib/pkgconfig
+ 	find -type d \! -perm -u=w -exec chmod u+w {} \;
+-	find rootfs -type f -perm -o+x -print | xargs strip -g
+-
+-	install -m 755 $(srcdir)/init rootfs/init
+-	install -m 755 $(srcdir)/functions rootfs/etc/functions
+-	install -m 755 $(srcdir)/dhcp-script rootfs/sbin/
+-	install -m 755 $(srcdir)/detect rootfs/sbin/
+-	install -m 755 $(srcdir)/transporthandler rootfs/sbin/
+-	install -m 755 $(srcdir)/provisionhandler rootfs/sbin/
+-	install -m 755 $(srcdir)/wwlogger rootfs/sbin/
++	find rootfs -type f -perm -o+x -print | xargs strip -pg
++
++	install -p -m 755 $(srcdir)/init rootfs/init
++	touch -r $(srcdir)/transporthandler rootfs/init
++	install -p -m 755 $(srcdir)/functions rootfs/etc/functions
++	install -p -m 755 $(srcdir)/dhcp-script rootfs/sbin/
++	install -p -m 755 $(srcdir)/detect rootfs/sbin/
++	install -p -m 755 $(srcdir)/transporthandler rootfs/sbin/
++	install -p -m 755 $(srcdir)/provisionhandler rootfs/sbin/
++	install -p -m 755 $(srcdir)/wwlogger rootfs/sbin/
+ 	ln -s transporthandler rootfs/sbin/wwgetvnfs
+ 	ln -s transporthandler rootfs/sbin/wwgetscript
+ 	ln -s transporthandler rootfs/sbin/wwgetnodeconfig
+@@ -183,7 +184,8 @@ rootfs: busybox e2fsprogs libarchive parted
+ 
+ initramfs.cpio: rootfs
+ 	install -m 644 $(srcdir)/devs.cpio initramfs.cpio
+-	cd rootfs/; find . | cpio -o -H newc -A -F ../initramfs.cpio
++	find rootfs/ -type d -o -type l | xargs touch -h -r devs.cpio
++	cd rootfs/; find . | cpio -o -H newc --reproducible -A -F ../initramfs.cpio
+ 
+ install-data-local: initramfs.cpio
+ 	install -d -m 755 $(DESTDIR)/$(WAREWULF_STATEDIR)/warewulf/initramfs/
+diff --git a/provision/initramfs/capabilities/provision-adhoc/Makefile.am b/provision/initramfs/capabilities/provision-adhoc/Makefile.am
+index 74a78cb..d37ab73 100644
+--- a/provision/initramfs/capabilities/provision-adhoc/Makefile.am
++++ b/provision/initramfs/capabilities/provision-adhoc/Makefile.am
+@@ -9,11 +9,12 @@ rootfs:
+ 	mkdir -p rootfs/warewulf/provision/
+ 	@ for i in $(METHODSCRIPTS); do \
+ 		echo "install -m 755 $$i rootfs/warewulf/provision/$$i" ; \
+-		install -m 755 $(srcdir)/$$i rootfs/warewulf/provision/$$i; \
++		install -p -m 755 $(srcdir)/$$i rootfs/warewulf/provision/$$i; \
+ 	done
+ 
+ capability.cpio: rootfs
+-	cd rootfs/; find . | cpio -o -H newc -F ../capability.cpio
++	find rootfs/ -type d | xargs touch -r $(word 1,$(METHODSCRIPTS));
++	cd rootfs/; find . | cpio -o -H newc --reproducible -F ../capability.cpio
+ 
+ install-data-local: capability.cpio
+ 	install -d -m 755 $(DESTDIR)/$(WAREWULF_STATEDIR)/warewulf/initramfs/$(MACHINE)/capabilities
+diff --git a/provision/initramfs/capabilities/provision-files/Makefile.am b/provision/initramfs/capabilities/provision-files/Makefile.am
+index aef501a..d4dcc96 100644
+--- a/provision/initramfs/capabilities/provision-files/Makefile.am
++++ b/provision/initramfs/capabilities/provision-files/Makefile.am
+@@ -9,11 +9,12 @@ rootfs:
+ 	mkdir -p rootfs/warewulf/provision/
+ 	@ for i in $(METHODSCRIPTS); do \
+ 		echo "install -m 755 $$i rootfs/warewulf/provision/$$i" ; \
+-		install -m 755 $(srcdir)/$$i rootfs/warewulf/provision/$$i; \
++		install -p -m 755 $(srcdir)/$$i rootfs/warewulf/provision/$$i; \
+ 	done
+ 
+ capability.cpio: rootfs
+-	cd rootfs/; find . | cpio -o -H newc -F ../capability.cpio
++	find rootfs/ -type d | xargs touch -r $(word 1,$(METHODSCRIPTS));
++	cd rootfs/; find . | cpio -o -H newc --reproducible -F ../capability.cpio
+ 
+ install-data-local: capability.cpio
+ 	install -d -m 755 $(DESTDIR)/$(WAREWULF_STATEDIR)/warewulf/initramfs/$(MACHINE)/capabilities
+diff --git a/provision/initramfs/capabilities/provision-selinux/Makefile.am b/provision/initramfs/capabilities/provision-selinux/Makefile.am
+index e98a3b1..53d96dc 100644
+--- a/provision/initramfs/capabilities/provision-selinux/Makefile.am
++++ b/provision/initramfs/capabilities/provision-selinux/Makefile.am
+@@ -9,11 +9,12 @@ rootfs:
+ 	mkdir -p rootfs/warewulf/provision/
+ 	@ for i in $(METHODSCRIPTS); do \
+ 		echo "install -m 755 $$i rootfs/warewulf/provision/$$i" ; \
+-		install -m 755 $(srcdir)/$$i rootfs/warewulf/provision/$$i; \
++		install -p -m 755 $(srcdir)/$$i rootfs/warewulf/provision/$$i; \
+ 	done
+ 
+ capability.cpio: rootfs
+-	cd rootfs/; find . | cpio -o -H newc -F ../capability.cpio
++	find rootfs/ -type d | xargs touch -r $(word 1,$(METHODSCRIPTS));
++	cd rootfs/; find . | cpio -o -H newc --reproducible -F ../capability.cpio
+ 
+ install-data-local: capability.cpio
+ 	install -d -m 755 $(DESTDIR)/$(WAREWULF_STATEDIR)/warewulf/initramfs/$(MACHINE)/capabilities
+diff --git a/provision/initramfs/capabilities/provision-unionfs/Makefile.am b/provision/initramfs/capabilities/provision-unionfs/Makefile.am
+index 2e045af..eb67e2e 100644
+--- a/provision/initramfs/capabilities/provision-unionfs/Makefile.am
++++ b/provision/initramfs/capabilities/provision-unionfs/Makefile.am
+@@ -36,7 +36,8 @@ rootfs: unionfs
+ 	find rootfs -type f -perm -o+x -print | xargs strip -g
+ 
+ capability.cpio: rootfs
+-	cd rootfs/; find . | cpio -o -H newc -F ../capability.cpio
++	find rootfs/ -type d | xargs touch -r unionfs;
++	cd rootfs/; find . | cpio -o -H newc --reproducible -F ../capability.cpio
+ 
+ install-data-local: capability.cpio
+ 	install -d -m 755 $(DESTDIR)/$(WAREWULF_STATEDIR)/warewulf/initramfs/$(MACHINE)/capabilities
+diff --git a/provision/initramfs/capabilities/provision-vnfs/Makefile.am b/provision/initramfs/capabilities/provision-vnfs/Makefile.am
+index 8f72707..742c23e 100644
+--- a/provision/initramfs/capabilities/provision-vnfs/Makefile.am
++++ b/provision/initramfs/capabilities/provision-vnfs/Makefile.am
+@@ -9,11 +9,13 @@ rootfs:
+ 	mkdir -p rootfs/warewulf/provision/
+ 	@ for i in $(METHODSCRIPTS); do \
+ 		echo "install -m 755 $$i rootfs/warewulf/provision/$$i" ; \
+-		install -m 755 $(srcdir)/$$i rootfs/warewulf/provision/$$i; \
++		install -p -m 755 $(srcdir)/$$i rootfs/warewulf/provision/$$i; \
+ 	done
+ 
+ capability.cpio: rootfs
+-	cd rootfs/; find . | cpio -o -H newc -F ../capability.cpio
++	find rootfs/ -type d | xargs touch -r $(word 1,$(METHODSCRIPTS));
++	find rootfs/ -name 50-config -o -name 70-kernelmodules | xargs touch -r $(word 1,$(METHODSCRIPTS));
++	cd rootfs/; find . | cpio -o -H newc --reproducible -F ../capability.cpio
+ 
+ install-data-local: capability.cpio
+ 	install -d -m 755 $(DESTDIR)/$(WAREWULF_STATEDIR)/warewulf/initramfs/$(MACHINE)/capabilities
+diff --git a/provision/initramfs/capabilities/setup-filesystems/Makefile.am b/provision/initramfs/capabilities/setup-filesystems/Makefile.am
+index 5ecb8ab..69f536b 100644
+--- a/provision/initramfs/capabilities/setup-filesystems/Makefile.am
++++ b/provision/initramfs/capabilities/setup-filesystems/Makefile.am
+@@ -9,11 +9,12 @@ rootfs:
+ 	mkdir -p rootfs/warewulf/provision/
+ 	@ for i in $(METHODSCRIPTS); do \
+ 		echo "install -m 755 $$i rootfs/warewulf/provision/$$i" ; \
+-		install -m 755 $(srcdir)/$$i rootfs/warewulf/provision/$$i; \
++		install -p -m 755 $(srcdir)/$$i rootfs/warewulf/provision/$$i; \
+ 	done
+ 
+ capability.cpio: rootfs
+-	cd rootfs/; find . | cpio -o -H newc -F ../capability.cpio
++	find rootfs/ -type d | xargs touch -r $(word 1,$(METHODSCRIPTS));
++	cd rootfs/; find . | cpio -o -H newc --reproducible -F ../capability.cpio
+ 
+ install-data-local: capability.cpio
+ 	install -d -m 755 $(DESTDIR)/$(WAREWULF_STATEDIR)/warewulf/initramfs/$(MACHINE)/capabilities
+diff --git a/provision/initramfs/capabilities/transport-http/Makefile.am b/provision/initramfs/capabilities/transport-http/Makefile.am
+index ad36b10..6353324 100644
+--- a/provision/initramfs/capabilities/transport-http/Makefile.am
++++ b/provision/initramfs/capabilities/transport-http/Makefile.am
+@@ -12,11 +12,12 @@ rootfs:
+ 	mkdir -p rootfs/warewulf/transports/$(TRANSPORT_NAME)
+ 	@ for i in $(METHODSCRIPTS); do \
+ 		echo "install -m 755 $$i rootfs/warewulf/transports/$(TRANSPORT_NAME)/$$i" ; \
+-		install -m 755 $(srcdir)/$$i rootfs/warewulf/transports/$(TRANSPORT_NAME)/$$i; \
++		install -p -m 755 $(srcdir)/$$i rootfs/warewulf/transports/$(TRANSPORT_NAME)/$$i; \
+ 	done
+ 
+ capability.cpio: rootfs
+-	cd rootfs/; find . | cpio -o -H newc -F ../capability.cpio
++	find rootfs/ -type d | xargs touch -r $(word 1,$(METHODSCRIPTS));
++	cd rootfs/; find . | cpio -o -H newc --reproducible -F ../capability.cpio
+ 
+ install-data-local: capability.cpio
+ 	install -d -m 755 $(DESTDIR)/$(WAREWULF_STATEDIR)/warewulf/initramfs/$(MACHINE)/capabilities

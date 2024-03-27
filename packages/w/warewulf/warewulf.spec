@@ -58,6 +58,7 @@ Patch13:        Suse-prov-config-local-binary-copy-140.patch
 Patch14:        busybox-Newer-versions-of-glibc-do-not-ship-rpc-functions-any-more-130.patch
 Patch15:        common-Correctly-detect-SUSE-system-for-system-services.patch
 Patch16:        common-Consolidate-system-service-module-for-SUSE.patch
+#Patch17:        provision-Update-ipxe-to-Github-commitid-133f4c4.patch
 Patch18:        Remove-shebang-from-scripts-only-intended-to-be-sourced.patch
 Patch19:        vnfs-SUSE-copy-repo-files-to-correct-location.patch
 Patch20:        vnfs-SUSE-make-sure-zypper-auto-accepts-licenses.patch
@@ -86,6 +87,8 @@ Patch41:        Add-lib-modules-opt_kversion-sysctl.conf-to-initfs-if-present.pa
 Patch42:        vnfs-Do-not-pull-in-recommended-packages-on-SUSE.patch
 Patch43:        Add-suse-to-overlay-template.patch
 Patch44:        vnfs-On-SUSE-don-t-copy-repository-information-into-chroot.patch
+Patch45:        provision-For-reproducible-builds-equalize-time-stamps-in-CPIO-archives.patch
+Patch46:        ipmi-For-reproducible-builds-equalize-time-stamps-in-CPIO-archives.patch
 
 %if "%{?flavor}" != "common"
 BuildRequires:  bsdtar
@@ -369,6 +372,8 @@ This package includes the supporting libs for the Warewulf ipmi module.
 
 %prep
 %setup -q -n %{name}3-%{version}
+cp %{SOURCE100} ./common/README.SUSE-INSTALL-RECIPE
+cp %{SOURCE101} ./common/README.SUSE-VM-CONFIG-RECIPE
 # common
 %patch -P 0 -p1
 %patch -P 6 -p1
@@ -378,8 +383,6 @@ This package includes the supporting libs for the Warewulf ipmi module.
 %patch -P 26 -p1
 %patch -P 29 -p1
 %patch -P 30 -p1
-cp %{SOURCE100} ./common/README.SUSE-INSTALL-RECIPE
-cp %{SOURCE101} ./common/README.SUSE-VM-CONFIG-RECIPE
 # provision
 %patch -P 1 -p1
 %patch -P 4 -p1
@@ -394,6 +397,7 @@ cp %{SOURCE101} ./common/README.SUSE-VM-CONFIG-RECIPE
 %patch -P 38 -p1
 %patch -P 39 -p1
 %patch -P 40 -p1
+%patch -P 45 -p1
 # vnfs
 %patch -P 5 -p1
 %patch -P 10 -p1
@@ -417,16 +421,12 @@ cp %{SOURCE101} ./common/README.SUSE-VM-CONFIG-RECIPE
 %patch -P 36 -p1
 # ipmi
 %patch -P 25 -p1
+%patch -P 46 -p1
 # common
 %patch -P 18 -p1
 %patch -P 32 -p1
 %patch -P 33 -p1
 %patch -P 34 -p1
-# reproducible builds
-sed -i 's/cpio -o/xargs touch -h -d @1690848000 ; find . | sort | cpio -o --reproducible/' \
-  provision/initramfs/capabilities/*/Makefile.am \
-  ipmi/initramfs/Makefile.am \
-  provision/initramfs/Makefile.am
 
 %build
 %if "%{?flavor}" == "common"
