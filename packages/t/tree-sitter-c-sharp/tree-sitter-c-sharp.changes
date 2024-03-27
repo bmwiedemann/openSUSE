@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Mar 26 22:56:02 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Also don't build on Arm 32bit as memory isn't enough for tree-sitter generate
+
+-------------------------------------------------------------------
+Mon Feb 26 06:54:44 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for openSUSE
+- Update to version 0.20.0:
+  * Add an action to publish the grammar automatically (#220)
+  * Add 'required' keyword for properties + fields.
+  * Add support for UTF-8 literals
+  * Update README
+  * Add list and slice pattern support #223
+  * Lambda attributes + record trailing semicolons (#231)
+  * Tree sitter 0.20, Missing HIGHLIGHT_QUERY Rust binding (#221)
+  * Added missing record struct highlight (#229)
+
