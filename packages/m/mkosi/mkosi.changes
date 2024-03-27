@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 26 14:37:39 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Correct dependencies after discussions with upstream
+  * Requires: systemd-experimental for systemd-repart needed to build disk images
+  * Requires: bubblewrap as bbwrap is called during build
+  * Requires: zypper
+  * Recommends: squashfs, tar, and xz as they are all optional features
+  * Remove recommends for tools they no longer support
+
+-------------------------------------------------------------------
 Fri Mar 15 08:27:02 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Update to 22:

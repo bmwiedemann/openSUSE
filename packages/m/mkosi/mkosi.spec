@@ -33,20 +33,19 @@ BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  pandoc
 BuildRequires:  python-rpm-macros
+Requires:       bubblewrap
 Requires:       python3 >= 3.9
-Requires:       squashfs
-Requires:       tar
-Requires:       xz
-Recommends:     arch-install-scripts
+Requires:       systemd-experimental
+Requires:       zypper
 Recommends:     btrfsprogs
-Recommends:     debootstrap >= 1.0.117
 Recommends:     dnf >= 4.8.0
 Recommends:     dosfstools
 Recommends:     dpkg
 Recommends:     edk2-ovmf
 Recommends:     gnupg
-Recommends:     pacman >= 6.0.1
-Recommends:     veritysetup
+Recommends:     squashfs
+Recommends:     tar
+Recommends:     xz
 Recommends:     zstd
 BuildArch:      noarch
 ExclusiveArch:  x86_64 aarch64
