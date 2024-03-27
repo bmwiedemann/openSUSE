@@ -59,6 +59,7 @@ http://boto3.readthedocs.org/en/latest/
 # Note to maintainers also familia with python-boto:
 # The documentation generation requires access to AWS, thus it is not
 # possible to generate the documentation in OBS
+
 %prep
 %setup -q -n boto3-%{version}
 

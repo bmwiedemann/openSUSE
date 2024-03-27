@@ -3247,6 +3247,12 @@ Mon Apr 17 11:07:48 UTC 2023 - pgajdos@suse.com
 - python-six is not required
 
 -------------------------------------------------------------------
+Wed Apr  5 10:37:16 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update in SLE-15 (bsc#1209255, jsc#PED-3780)
+- Add python-python-dateutil and python-jmespath to BuildRequires
+
+-------------------------------------------------------------------
 Mon Mar 13 08:34:44 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.26.89
@@ -4709,6 +4715,11 @@ Fri Nov  4 12:14:56 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 - Update BuildRequires and Requires from setup.py
 
 -------------------------------------------------------------------
+Thu Nov  3 10:40:30 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update in SLE-15 (bsc#1204537, jsc#PED-2333)
+
+-------------------------------------------------------------------
 Tue Oct 25 08:04:28 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.25.0
@@ -4778,6 +4789,11 @@ Tue Oct 25 08:04:28 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
   * api-change:``sagemaker``: [``botocore``] This release adds support for C7g, C6g, C6gd, C6gn, M6g,
     M6gd, R6g, and R6gn Graviton instance types in Amazon SageMaker Inference.
 - Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Thu Oct 20 13:30:22 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Remove version constraint for python-pytest in BuildRequires
 
 -------------------------------------------------------------------
 Mon Oct 17 09:24:47 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
