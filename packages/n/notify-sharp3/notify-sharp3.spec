@@ -75,8 +75,7 @@ that they must close. Passive popups can automatically disappear after
 a short period of time.
 
 %prep
-%setup -q -n %{_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 NOCONFIGURE=1 autoreconf -fi
