@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Tue Feb 27 09:06:03 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for openSUSE
+- Update to version 0.2.2.12.6b2b5e4:
+  * feat: add `@preproc` to the first non-identifier of a command
+  * feat: v0.0.1
+  * ci: refactor into testing, linting, and publishing cis
+  * feat: add Swift bindings
+  * feat: improve bindings
+  * chore: generate
+  * feat: improve queries
+  * chore: update tests accordingly
+  * docs: update LICENSE and README
+  * feat: tidy up the grammar, add file doc and eslint linting
+  * chore: add show image
