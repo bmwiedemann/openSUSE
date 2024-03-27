@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Mon Mar 25 17:42:51 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 0.20.6:
+  * build: update javascript dep
+  * fix: expose string fragments in template string types
+  * docs: update badges
+  * Update highlights.scm for content_tag
+
+-------------------------------------------------------------------
+Tue Feb 27 12:27:23 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for openSUSE
+- Update to version 0.20.5:
+  * 0.20.5
+  * chore: generate
+  * feat: add readonly to reserved identifiers
+  * chore: update tests
+  * chore: update javascript grammar
+  * fix: format scanner and don't bother parsing during error recovery
+  * 0.20.4
+  * chore: add and apply eslint formatting
+  * chore: update manifests, actions and docs
+  * chore: generate
