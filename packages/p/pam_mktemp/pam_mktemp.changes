@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:33:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Wed Oct 27 11:39:42 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
 
 - Split the install section into an install and a check section.

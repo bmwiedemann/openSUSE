@@ -43,12 +43,8 @@ pam_mktemp is a PAM module which may be used with a PAM-aware login
 service to provide per-user private directories under /tmp as a part of
 PAM session or account management.
 
-
-
 %prep
-%setup
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 EXTRA_CFLAGS="-fno-strict-aliasing"
