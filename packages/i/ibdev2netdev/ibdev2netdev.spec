@@ -1,7 +1,7 @@
 #
 # spec file for package ibdev2netdev
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define         git_ver .18.7258568beb9c
+%define         git_ver .0.3b54c7a136b4
 
 Name:           ibdev2netdev
-Version:        0.1
+Version:        0.2.0
 Release:        0
 Summary:        List netdevs with their associated RDMA interface (IPoIB, RoCE, iWarp)
 License:        GPL-3.0-only

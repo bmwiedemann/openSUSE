@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="scm">git</param>
-    <param name="url">https://github.com/nmorey/ibdev2netdev.git</param>
+    <param name="url">https://github.com/SUSE/ibdev2netdev.git</param>
     <param name="package-meta">no</param>
     <param name="exclude">.git</param>
     <param name="filename">ibdev2netdev</param>
@@ -9,7 +9,7 @@
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="extract">ibdev2netdev.spec</param>
-    <param name="revision">refs/remotes/origin/master</param>
+    <param name="revision">3b54c7a136b4b935feddabd29fa15f6ecdb18297</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*ibdev*.tar</param>
