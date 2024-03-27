@@ -19779,6 +19779,8 @@ unsorted:
   - openSUSE-release-usb-x11 
   - openSUSE-repos-MicroOS 
   - openSUSE-repos-MicroOS-NVIDIA 
+  - openSUSE-repos-Slowroll 
+  - openSUSE-repos-Slowroll-NVIDIA 
   - openSUSE-repos-Tumbleweed 
   - openSUSE-repos-Tumbleweed-NVIDIA 
   - openSUSE-signkey-cert 
@@ -22762,6 +22764,7 @@ unsorted:
   - protobuf-java 
   - protobuf21-devel 
   - protoc-gen-go 
+  - proton-vpn 
   - protontricks 
   - protonvpn-cli 
   - protonvpn-gui 
@@ -32210,6 +32213,8 @@ unsorted:
   - python312-libfwnt 
   - python312-libfwps 
   - python312-libfwsi 
+  - python312-liblarch 
+  - python312-liblarch-gtk 
   - python312-liblnk 
   - python312-libluksde 
   - python312-libmodi 
@@ -32473,6 +32478,7 @@ unsorted:
   - python312-notebook-shim 
   - python312-notify2 
   - python312-nox 
+  - python312-npTDMS 
   - python312-nptyping 
   - python312-nss 
   - python312-ntc-templates 
@@ -32939,6 +32945,7 @@ unsorted:
   - python312-pyosf 
   - python312-pyotp 
   - python312-pyowm 
+  - python312-pyp 
   - python312-pypandoc 
   - python312-pyparallel 
   - python312-pyparsing 
@@ -36028,7 +36035,6 @@ unsorted:
   - python39-omemo-dr 
   - python39-omni-camera 
   - python39-onigurumacffi 
-  - python39-onnx 
   - python39-onnxconverter-common 
   - python39-opcodes 
   - python39-openTSNE 
@@ -39203,6 +39209,7 @@ unsorted:
   - sendxmpp 
   - sensord 
   - seq24 
+  - sequoia-octopus-librnp 
   - sequoia-sq 
   - sequoia-sq-bash-completion 
   - sequoia-sq-fish-completion 
@@ -39936,6 +39943,7 @@ unsorted:
   - system-user-msr 
   - system-user-nagios 
   - system-user-ntp 
+  - system-user-orthos 
   - system-user-osc-collab 
   - system-user-pgadmin 
   - system-user-postorius 
@@ -49573,7 +49581,29 @@ unsorted:
   - tre-devel 
   - tre-lang 
   - tree-sitter 
+  - tree-sitter-bash 
+  - tree-sitter-c 
+  - tree-sitter-c-devel 
+  - tree-sitter-c-sharp 
+  - tree-sitter-cpp 
+  - tree-sitter-css 
   - tree-sitter-devel 
+  - tree-sitter-go 
+  - tree-sitter-haskell 
+  - tree-sitter-html 
+  - tree-sitter-java 
+  - tree-sitter-javascript 
+  - tree-sitter-javascript-devel 
+  - tree-sitter-json 
+  - tree-sitter-python 
+  - tree-sitter-qmldir 
+  - tree-sitter-qmljs 
+  - tree-sitter-regex 
+  - tree-sitter-ruby 
+  - tree-sitter-rust 
+  - tree-sitter-typescript 
+  - tree-sitter-typescript-devel 
+  - tree-sitter-xml 
   - treefetch 
   - treelayout 
   - treelayout-demo 
