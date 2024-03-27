@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 15:06:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Fri Dec 16 09:13:38 UTC 2016 - sor.alexei@meowr.ru
 
 - Rename the purple-libsteam package to libpurple-plugin-libsteam.

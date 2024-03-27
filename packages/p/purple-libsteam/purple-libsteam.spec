@@ -68,8 +68,8 @@ based messengers.
 This package provides the icon set for Pidgin.
 
 %prep
-%setup -q -n pidgin-opensteamworks-%{version}
-%patch0 -p1
+%autosetup -p1 -n pidgin-opensteamworks-%{version}
+
 # Fix 'W: wrong-file-end-of-line-encoding'.
 sed -i 's/\r$//' README.md
 
