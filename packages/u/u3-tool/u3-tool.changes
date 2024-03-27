@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:43:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Sun Jun 26 14:29:20 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
 
 - This tool only runs on Little Endian machines

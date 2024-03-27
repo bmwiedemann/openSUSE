@@ -44,8 +44,7 @@ enabling, disabling, and resetting device security, and unlocking the secured
 data partition.
 
 %prep
-%setup -q -n u3-tool-code-%{_rel}-tags-u3-tool-%{_tag}
-%patch0 -p1
+%autosetup -p1 -n u3-tool-code-%{_rel}-tags-u3-tool-%{_tag}
 
 %build
 autoreconf -fi
