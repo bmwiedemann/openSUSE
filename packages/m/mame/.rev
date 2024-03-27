@@ -133,4 +133,13 @@
   * /usr/share/doc/packages/mame/whatsnew-0.263.txt</comment>
     <requestid>1152896</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cce7afb62a9bc06d5f0bcfa0c82566bf</srcmd5>
+    <version>0.264</version>
+    <time>1711568539</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 0.264
+  * /usr/share/doc/packages/mame/whatsnew-0.264.txt</comment>
+    <requestid>1162354</requestid>
+  </revision>
 </revisionlist>
