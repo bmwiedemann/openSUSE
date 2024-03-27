@@ -290,4 +290,13 @@
     <comment>GNOME 46 (forwarded request 1158404 from dimstar)</comment>
     <requestid>1159477</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>804926725b18a0bacac2fca961e735db</srcmd5>
+    <version>46.0</version>
+    <time>1711568624</time>
+    <user>anag+factory</user>
+    <comment>- Add data-desktop-disable-DBusActivatable.patch: Fixes session
+  restore in GNOME 46.</comment>
+    <requestid>1162933</requestid>
+  </revision>
 </revisionlist>
