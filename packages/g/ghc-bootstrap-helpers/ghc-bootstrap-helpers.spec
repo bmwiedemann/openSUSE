@@ -16,11 +16,11 @@
 #
 
 
-%define         alex_ver 3.2.7.1
-%define         happy_ver 1.20.0
+%define         alex_ver 3.5.1.0
+%define         happy_ver 1.20.1.1
 
 Name:           ghc-bootstrap-helpers
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        Dependencies to build ghc
 License:        BSD-2-Clause AND BSD-3-Clause
