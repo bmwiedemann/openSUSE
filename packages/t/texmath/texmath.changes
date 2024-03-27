@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 14 18:41:01 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.8.7.
+  texmath (0.12.8.7)
+
+    * TeX reader: convert Bin symbols to Ord when appropriate (#234).
+      E.g. in '-3', we should have an Ord rather than a Bin, so
+      the spacing will be appropriate.
+
+    * Pandoc writer: fix spacing inside EDelimited (#234).
+      Previously spaces around binary operators were omitted when
+      they occurred inside parens or brackets.
+
+    * test-texmath: allow pandoc output.
+
+-------------------------------------------------------------------
 Wed Dec 13 02:54:53 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update texmath to version 0.12.8.6.
