@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Mon Feb 26 21:06:14 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.8.0
+  - Implement rnp_signature_get_features
+  - Update dependencies.
+
+-------------------------------------------------------------------
+Fri Jan 26 08:30:35 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.7.0 (changelog extracted from git history)
+  - Implement rnp_dump_packets_to_output.
+  - Update h2 to fix RUSTSEC-2024-0003.
+  - Update zerocopy to fix RUSTSEC-2023-0074.
+  - Update shlex to fix RUSTSEC-2024-0006.
+  - Fix password callback's key argument.
+    Previously we passed a pointer to an openpgp::Cert to it, which
+    makes no sense whatsoever, and we got away with that because
+    Thunderbird didn't use it. That changed with
+    https://hg.mozilla.org/comm-central/rev/23ca5f76f6339cc9a7949737204db36d27f0fd33
+    which uses a callback to discover which key needs to be unlocked
+    to decrypt a message, then asks for the password outside of the
+    callback context, then retries the decryption operation. This new
+    callback asks for the passed key's fingerprint, which fails
+    because we used to pass NULL there a lot.
+  - Bump all dependencies.
+- cargo_audit is now part of cargo_vendor
+
+-------------------------------------------------------------------
+Fri Dec 15 21:33:16 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.6.1
+  - no upstream changelog
+
+-------------------------------------------------------------------
+Thu Dec 14 20:51:23 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.6.0
+  - no upstream changelog
+
+-------------------------------------------------------------------
+Fri Mar  3 15:40:10 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update 1.5.0
+  - Fix support for Thunderbird 102.7 (fixes #83).
+  - Use sequoia-wot to calculate acceptance, based on trust-roots defined in
+    GnuPG.
+  - Filter out revoked and unsupported subkeys.
+  - Misc fixes.
+
+-------------------------------------------------------------------
+Wed Jan 25 14:46:37 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- added 117.patch
+  - fixes building with rustc>=1.65
+
+-------------------------------------------------------------------
+Mon Jul  4 10:13:38 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.4.1
+  - no upstream changelog
+  - https://fosstodon.org/@hko/108574455812887315
+    - This release adds support for Thunderbird 102.
+
+-------------------------------------------------------------------
+Sat May  7 13:52:33 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.4.0
+  - no upstream changelog
+
+-------------------------------------------------------------------
+Sat Apr 23 09:09:54 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.3.0
+  - no upstream changelog
+  - https://sequoia-pgp.org/blog/2022/04/22/202204-octopus-1.3.0/
+    - Fixes a bug that could lead to a loss of secret key material.
+    - Make it compatible with Thunderbird 91.8.0.
+- Follow latest "Packaging Rust Software" guidelines
+  - added _service, cargo_config
+  - use cargo-packaging, instead of rust-packaging
+
+-------------------------------------------------------------------
+Fri Mar 25 17:39:42 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.2.2
+  - no upstream changelog
+- removed patch sequoia-octopus-librnp-v1.2.0-no-git.patch - resolved upstream
+
+-------------------------------------------------------------------
+Wed Dec 15 09:28:21 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- added patch sequoia-octopus-librnp-v1.2.0-no-git.patch
+
+-------------------------------------------------------------------
+Mon Dec 13 20:55:20 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to version 1.2.0
+  * relicensed to LGPL2+
+- removed obsolete 20211122.patch
+
+-------------------------------------------------------------------
+Mon Nov 22 07:41:40 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to version 1.1.0
+
+-------------------------------------------------------------------
+Sat May 29 08:11:25 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to git main 20210529 to pick up improvements
+
+-------------------------------------------------------------------
+Sun Apr 18 08:18:43 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to git main 20210418 to pick up improvements
+
+-------------------------------------------------------------------
+Sun Apr 11 14:39:50 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- add patch to provide (empty) stubs for symbols added in TB 78.9.1
+  (some things won't work yet)
+
+-------------------------------------------------------------------
+Sun Apr 11 08:57:47 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- initial package

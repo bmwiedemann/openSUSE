@@ -1,0 +1,7 @@
+<package name="sequoia-octopus-librnp" project="openSUSE:Factory">
+  <title>librnp drop-in replacement using sequoia-pgp</title>
+  <description>Sequoia Octopus' librnp is an alternative OpenPGP implementation for Mozilla Thunderbird.
+If installed it will replace the upstream Thunderbird OpenPGP backend.</description>
+  <devel project="mozilla:Factory" package="sequoia-octopus-librnp"/>
+  <url>https://gitlab.com/sequoia-pgp/sequoia-octopus-librnp</url>
+</package>
