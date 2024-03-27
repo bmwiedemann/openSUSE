@@ -6,7 +6,9 @@
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@+git.%h</param>
-    <param name="extract">orthos2.spec</param>
+<!-- quick fix until commit time...
+    <param name="extract">orthos2.spec</param> 
+-->
     <param name="extract">orthos2.rpmlintrc</param>
   </service>
   <service name="set_version" mode="localonly"/>

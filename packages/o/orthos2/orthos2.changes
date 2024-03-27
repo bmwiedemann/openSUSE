@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Tue Mar 26 18:58:27 UTC 2024 - boris@steki.net
+
+- Update to version 1.3.51+git.127edfa:
+  * Data: Add fence_agent to display columns
+  * Settings: Add default REMOTEPOWER_TYPES
+  * Forms: Fixup RemotePowerDeviceAPIForm
+  * SPEC: Use autosetup macro
+  * Forms: Match KVM as a word and not as a complete type
+  * Virt API: Handle missing ServerConfig key
+  * Add typing requirements
+  * CI: Switch to black profile
+  * API: Add correct authentication to BMC add
+  * Forms: Add constructor to BMC
+  * Docs: Add BMC command for CLI
+  * Tests: Splitup file and add multiple ones
+  * Fixtures: Add for new test
+  * Fixtures: Add virt_api_int to test machine
+  * Ingore: Add vscode directory
+
+-------------------------------------------------------------------
+Sat Mar 23 12:10:00 UTC 2024 - boris@steki.net
+
+- Update to version 1.3.29+git.9325baa:
+  * Hostnamefinder: Add typing
+  * Hostnamefinder: Fix import
+  * CI: Execute integration tests
+  * Docker: Add test docker-compose
+  * Tests: Initial of integration tests
+  * CLI: Add specfile
+  * CI: Introduce mypy optionally
+  * Admin: Fix bug that network switches can't select any architecture
+  * Revert "Sconsole: Switch from _cscreen to cscreen user"
+  * Sconsole: Switch from _cscreen to cscreen user
+  * Docker: Give fixture example
+  * Tests: Fixup for multiple django fixtures
+  * RTD: Fixup config according to new schema
+  * Requirements: Upgrade Django to 4.2 LTS
+  * Admin - Display Add/Change page faster
+  * Utils: SSH - Add typing annotations
+  * Cobbler: Add typing annotations
+  * Utils: SSH - Remove manual debug code
+  * Remove "makemigrations" from Orthos2 setup
+  * Migrations: Initial add
+  * SPEC: Remove old symlinks
+  * Tests: Fixup machine admin view
+  * Misc: Type annotations
+  * Signals: Type annotations
+  * Models: Type annotation
+  * Cobbler: Add type annotation
+  * Remotepowerdevice: Fixup model
+  * Tests: Fixup login tests
+  * Views: Add missing prefix
+  * Tests: Fixup Cobbler tests
+  * Fix: Machine change form arch system dropdown filter
+  * Templates: Fixup untested path
+  * Docker: Extend README
+  * Use package_data for shipping files
+  * SPEC: Fixup unitdir macro usage
+  * Data: Models - Fixup get_by_natural_key
+  * Tests: Fixup fixture path
+  * Tests: Fixup JSON fixtures
+  * Docker: Add development container
+  * Tests: Fixup mock path
+  * Loosen required runtime user account check
+  * manage.py: Add executable bit
+  * CI: Fixup test workflow inside GH Actions
+  * Tests: Add coverage to required devel tools
+  * CI: Fixup "django-check" inside GH Actions
+  * Fixup pycodestyle linter errors
+  * CI: Streamline linter workflow & add django-admin
+  * CI: Execute CI in more cases
+  * fix: fix that platforms can't be assigned to machines
+  * fix: move change_form.html to fix rpm install
+  * fix: Add remaining arch system mappings
+
+-------------------------------------------------------------------
 Thu May 04 13:39:53 UTC 2023 - trenn@suse.de
 
 - Update to version 1.2.169+git.a693485:
