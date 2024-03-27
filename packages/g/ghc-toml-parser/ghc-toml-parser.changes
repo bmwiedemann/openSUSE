@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb 26 17:36:04 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update toml-parser to version 2.0.0.0.
+  ## 2.0.0.0
+
+  * Pervasive annotations on the values added to allow for detailed
+    positional error reporting throughout parsing and validation.
+  * Replace uses of String with Text in the Value type and throughout
+    the API
+  * Reorganized almost all of the modules to minimize imports that upstream
+    packages will actually need.
+
+  ## 1.3.3.0
+
+  * Added `IsString Value` instance.
+  * Addded helpers for `runMatcher` for ignoring and failing on warning
+    `runMatcherIgnoreWarn` and `runMatcherFatalWarn`
+
+-------------------------------------------------------------------
 Mon Jan 15 18:58:05 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update toml-parser to version 1.3.2.0.
