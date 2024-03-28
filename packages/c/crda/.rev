@@ -260,4 +260,12 @@ License is ISC, not BSD-3-Clause (forwarded request 134144 from babelworx)</comm
 - Port patch crda-python3.patch</comment>
     <requestid>1094860</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>7d96e8f3dfefee85c34eb5afa47975ee</srcmd5>
+    <version>4.15</version>
+    <time>1711630359</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1162916</requestid>
+  </revision>
 </revisionlist>

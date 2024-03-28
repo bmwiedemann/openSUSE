@@ -52,9 +52,9 @@ through udev.
 
 %prep
 %setup -q
-%patch0 -p1 -b .p0
-%patch1 -p1 -b .p1
-%patch2 -p1 -b .p2
+%patch -P 0 -p1 -b .p0
+%patch -P 1 -p1 -b .p1
+%patch -P 2 -p1 -b .p2
 # make install calls 'ldconfig' and fails if it cannot run it...
 ln -s /bin/true ldconfig
 

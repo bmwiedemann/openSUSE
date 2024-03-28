@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 26 10:49:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Jun 23 10:57:35 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Update to crda 4.15
