@@ -60,6 +60,7 @@ The xz command is a program for compressing files.
 Summary:        Lempel–Ziv–Markov chain algorithm compression library
 License:        0BSD
 Group:          System/Libraries
+Provides:       liblzma5 = 5.4.6
 
 %description -n liblzma5
 Library for encoding/decoding LZMA files.
