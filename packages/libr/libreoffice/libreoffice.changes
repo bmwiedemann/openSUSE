@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 25 11:28:55 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 24.2.2.2 (24.2.2 final):
+  https://wiki.documentfoundation.org/Releases/24.2.2/RC1 and
+  https://wiki.documentfoundation.org/Releases/24.2.2/RC2
+- Fixes large file support detection, as needed on i586
+  (boo#1219035). This allows building with autoconf 2.72
+- Removed patch:
+  * 0001-Allow-building-with-Java-8.patch
+    + integrated upstream
+
+-------------------------------------------------------------------
 Sat Mar  2 19:41:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 24.2.1.2 (24.2.1 final):

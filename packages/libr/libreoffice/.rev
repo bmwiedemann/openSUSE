@@ -3495,4 +3495,12 @@ Petr</comment>
     <comment>24.2.1.2 (will need the zxcvbn package in Rings)</comment>
     <requestid>1154376</requestid>
   </revision>
+  <revision rev="288" vrev="1">
+    <srcmd5>0f6f02ed36848d6e1ec90ea44da9206b</srcmd5>
+    <version>24.2.2.2</version>
+    <time>1711630315</time>
+    <user>anag+factory</user>
+    <comment>24.2.2 release</comment>
+    <requestid>1162937</requestid>
+  </revision>
 </revisionlist>

@@ -17,11 +17,8 @@
 
 
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
-# extensions
-%define         numbertext_version 0.9.5
 # Urls
 %define external_url https://dev-www.libreoffice.org/src/
-#%%define tarball_url https://download.documentfoundation.org/libreoffice/src/6.4.0
 %define tarball_url  https://dev-builds.libreoffice.org/pre-releases/src/
 # LTO needs newer toolchain stack only
 %if 0%{?suse_version} >= 1500
@@ -55,7 +52,7 @@
 %global with_gcc 12
 %endif
 Name:           libreoffice
-Version:        24.2.1.2
+Version:        24.2.2.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -74,7 +71,7 @@ Source98:       %{name}.keyring
 Source99:       %{name}-rpmlintrc
 Source100:      %{name}.changes
 # prebuilt extensions
-Source402:      %{external_url}/b7cae45ad2c23551fd6ccb8ae2c1f59e-numbertext_%{numbertext_version}.oxt
+Source402:      %{external_url}/b7cae45ad2c23551fd6ccb8ae2c1f59e-numbertext_0.9.5.oxt
 # used extensions sources
 Source450:      %{external_url}/1f467e5bb703f12cbbb09d5cf67ecf4a-converttexttonumber-1-5-0.oxt
 Source452:      %{external_url}/90401bca927835b6fbae4a707ed187c8-nlpsolver-0.9.tar.bz2
@@ -117,8 +114,6 @@ Patch11:        fix_webp_on_sle12_sp5.patch
 Patch14:        use-fixmath-shared-library.patch
 # PATCH-FIX-SUSE Fix make distro-pack-install
 Patch15:        fix-sdk-idl.patch
-# Patch submitted upstream to allow building with any Java >= 8
-Patch100:       0001-Allow-building-with-Java-8.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -329,13 +324,8 @@ BuildRequires:  libmariadb-devel
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(libopenjp2)
 %endif
-%if 0%{?with_gcc:1}
-BuildRequires:  gcc%{with_gcc}
-BuildRequires:  gcc%{with_gcc}-c++
-%else
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
-%endif
+BuildRequires:  gcc%{?with_gcc}
+BuildRequires:  gcc%{?with_gcc}-c++
 BuildRequires:  java-devel >= 1.8
 %if 0%{?suse_version}
 # needed by python3_sitelib
@@ -344,10 +334,10 @@ BuildRequires:  python-rpm-macros
 %if %{with system_gpgme}
 BuildRequires:  libgpgmepp-devel >= 1.14
 %else
-Source1000:     %{external_url}/gpgme-1.20.0.tar.bz2
+Source1000:     %{external_url}/gpgme-1.23.2.tar.bz2
 Source1001:     %{external_url}/libgpg-error-1.47.tar.bz2
 Source1002:     %{external_url}/libassuan-2.5.6.tar.bz2
-Provides:       bundled(gpgme) = 1.20.0
+Provides:       bundled(gpgme) = 1.23.2
 Provides:       bundled(libassuan) = 2.5.6
 Provides:       bundled(libgpg-error) = 1.47
 %endif
@@ -1033,7 +1023,6 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch -P 3
 %patch -P 6 -p1
 %patch -P 9 -p1
-%patch -P 100 -p1
 %if 0%{?suse_version} < 1500
 %patch -P 10 -p1
 %patch -P 11 -p1
@@ -1097,7 +1086,7 @@ CFLAGS="$ARCH_FLAGS"
 CXXFLAGS="-std=c++20 $ARCH_FLAGS"
 export ARCH_FLAGS CFLAGS CXXFLAGS
 
-%if 0%{?with_gcc:1}
+%if 0%{?with_gcc}
 export CC=gcc-%{with_gcc}
 export CXX=g++-%{with_gcc}
 %endif
