@@ -93,8 +93,6 @@ Patch0:         reproducibility.patch
 Patch1:         webkit2gtk3-271108.patch
 # PATCH-FIX-UPSTREAM webkit2gtk3-disable-dmabuf-nvidia.patch boo#1216778 mgorse@suse.com -- disable the DMABuf renderer for NVIDIA proprietary drivers.
 Patch2:         webkit2gtk3-disable-dmabuf-nvidia.patch
-# PATCH-FIX-UPSTREAM webkit2gtk3-llint-build-fix.patch mgorse@suse.com -- fix the build for non-x86 architectures.
-Patch3:         webkit2gtk3-llint-build-fix.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -124,22 +122,26 @@ BuildRequires:  openjpeg2-devel
 BuildRequires:  perl >= 5.10.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3
-BuildRequires:  ruby >= 1.9
+BuildRequires:  ruby >= 2.5
 BuildRequires:  unifdef
 BuildRequires:  xdg-dbus-proxy
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(atspi-2) >= 2.5.3
-BuildRequires:  pkgconfig(cairo) >= 1.14.0
+BuildRequires:  pkgconfig(cairo) >= 1.16.0
 BuildRequires:  pkgconfig(epoxy)
-BuildRequires:  pkgconfig(fontconfig) >= 2.8.0
-BuildRequires:  pkgconfig(freetype2) >= 2.4.2
+BuildRequires:  pkgconfig(fontconfig) >= 2.13.0
+BuildRequires:  pkgconfig(freetype2) >= 2.9.0
+%if "%{flavor}" == "gtk4"
+BuildRequires:  pkgconfig(glib-2.0) >= 2.70.0
+%else
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56.4
+%endif
 BuildRequires:  pkgconfig(icu-i18n)
 %if %usegcc11
 BuildRequires:  pkgconfig(glproto)
 %endif
 BuildRequires:  pkgconfig(gnutls) >= 3.0.0
-BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.14.0
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.18.4
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
 BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-codecparsers-1.0)
@@ -159,7 +161,7 @@ BuildRequires:  pkgconfig(gtk4) >= 4.6.0
 BuildRequires:  pkgconfig(xcomposite)
 %endif
 BuildRequires:  pkgconfig(gudev-1.0)
-BuildRequires:  pkgconfig(harfbuzz) >= 0.9.18
+BuildRequires:  pkgconfig(harfbuzz) >= 1.4.2
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libavif) >= 0.9.0
 %if %{use_jxl}
@@ -442,8 +444,8 @@ Group:          Development/Tools/Other
 A small test browswer from webkit, useful for testing features.
 
 
-# Expand %%lang_package to Obsoletes its older-name counterpart
 
+# Expand %%lang_package to Obsoletes its older-name counterpart
 %package -n WebKitGTK-%{_apiver}-lang
 Summary:        Translations for package %{name}
 Group:          System/Localization
@@ -510,9 +512,6 @@ export PYTHON=%{_bindir}/python3
 %endif
 %ifarch aarch64
   -DENABLE_JIT=OFF \
-  -DENABLE_C_LOOP=ON \
-  -DENABLE_WEBASSEMBLY=OFF \
-  -DENABLE_SAMPLING_PROFILER=OFF \
   -DUSE_SYSTEM_MALLOC=ON \
 %else
 %if 0%{?sle_version} && 0%{?sle_version} < 160000

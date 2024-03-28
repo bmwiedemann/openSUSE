@@ -1676,4 +1676,12 @@
   + Fix several crashes and rendering issues.</comment>
     <requestid>1159578</requestid>
   </revision>
+  <revision rev="191" vrev="2">
+    <srcmd5>9806e65a8cb15865967306936dd4d2e9</srcmd5>
+    <version>2.44.0</version>
+    <time>1711630353</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1162854</requestid>
+  </revision>
 </revisionlist>

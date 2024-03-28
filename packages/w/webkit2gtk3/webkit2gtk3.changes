@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 20 12:19:12 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Use WebAssembly on aarch64. It is the upstream default and no
+  longer makes the build fail. Stop passing -DENABLE_C_LOOP=ON,
+  -DENABLE_WEBASSEMBLY=OFF and -DENABLE_SAMPLING_PROFILER=OFF for
+  the same reason.
+- Drop webkit2gtk3-llint-build-fix.patch: no longer needed.
+- Update some version requirements to match cmake checks.
+
+-------------------------------------------------------------------
 Mon Mar 18 12:15:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add webkit2gtk3-271108.patch: Fix build on 32bit archs
