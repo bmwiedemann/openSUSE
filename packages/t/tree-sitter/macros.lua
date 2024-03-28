@@ -32,6 +32,12 @@ function treesitter_grammars()
    local treesitter_grammar_names = ""
    local treesitter_grammar_libnames = ""
 
+   local arg = arg
+   local suse_version = tonumber(rpm.expand("%suse_version"))
+   if suse_version < 1600 then
+      arg = arg_compat()
+   end
+
    for arg_num = 1,#arg do
       treesitter_grammar_libnames=treesitter_grammar_libnames .. base_libname .. "-" .. arg[arg_num] .. ".so "
    end
@@ -42,7 +48,6 @@ function treesitter_grammars()
       print("Provides: treesitter_grammar(" .. base_name .. "-" .. arg[arg_num] .. ")\n")
    end
    rpm.define("treesitter_grammar_names " .. treesitter_grammar_names)
-
 end
 
 
@@ -76,6 +81,11 @@ function treesitter_build()
    rpm.expand("%_treesitter_macro_init")
    local basename = rpm.expand("%{_treesitter_grammar_base_libname}")
    local grammar_names = rpm.expand("%treesitter_grammar_names")
+   local arg = arg
+   local suse_version = tonumber(rpm.expand("%suse_version"))
+   if suse_version < 1600 then
+      arg = arg_compat()
+   end
    local left_over_args = arg[1]
    local grammar_arg_binding = ""
 
@@ -168,6 +178,12 @@ function treesitter_devel_install()
    if #grammars == 1 then
       print(install_cmd_base .. "grammar.js " .. install_path .. treesitter .. "-" .. grammars[1].. "/grammar.js")
       return
+   end
+
+   local arg = arg
+   local suse_version = tonumber(rpm.expand("%suse_version"))
+   if suse_version < 1600 then
+      arg = arg_compat()
    end
 
    if #arg > 0 then

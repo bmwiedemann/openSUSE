@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 25 21:58:38 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Add workaround to packaging macros for RPM being to old on current Leap
+- Add workaround for Python below 3.9 on Leap
+
+-------------------------------------------------------------------
 Fri Mar 22 19:35:31 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Add packaging macros for tree-sitter grammar

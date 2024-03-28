@@ -43,3 +43,18 @@ function string.split(str, sep)
    string.gsub(str, '[^'..sep..']+', func)
    return res
 end
+
+function arg_compat()
+   --[[
+      Compat macro as workaround for older rpm not having function
+      arguments available as table arg(uments)
+   --]]
+   local arg_count = rpm.expand("%#")
+   local arg = {}
+
+   for arg_num = 1,arg_count do
+      arg[arg_num] = rpm.expand(("%" .. arg_num))
+   end
+
+   return arg
+end

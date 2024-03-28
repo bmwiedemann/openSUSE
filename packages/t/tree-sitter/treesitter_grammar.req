@@ -7,11 +7,22 @@
 # pylint: disable=invalid-name
 
 
+import platform
 import fileinput
 import re
 from typing import Optional
 from pathlib import Path
 
+
+if platform.sys.version_info.minor < 9:
+    def remove_prefix(text, prefix):
+        if text.startswith(prefix):
+            return text[len(prefix):]
+        return text
+    def remove_suffix(text, suffix):
+        if text.endswith(suffix):
+            return text[:-len(suffix):]
+        return text
 
 treeSitterGrammarSrcPath  = "/usr/include/tree_sitter"
 treeSitterGrammarSymbolToken  = "treesitter_grammar_src"
@@ -57,10 +68,17 @@ def dummyRequire(requiredFile_fd: str, maxDepth: Optional[int] = 5 ) -> str:
                     requiredLvl2 = re.match(require_re, r_line)
                     #print(r_line)
                     if requiredLvl2 is not None:
-                        requiredLvl2_grp_cleaned = \
-                            requiredLvl2.group(1).removeprefix("'").removesuffix("'")
-                        requiredLvl2_grp_cleaned = \
-                            requiredLvl2_grp_cleaned.removeprefix("\"").removesuffix("\"")
+                        if platform.sys.version_info.minor < 9:
+                            requiredLvl2_grp_cleaned = \
+                                remove_suffix(remove_prefix(requiredLvl2.group(1), "'"), "'")
+                            requiredLvl2_grp_cleaned = \
+                                remove_suffix(remove_prefix(requiredLvl2_grp_cleaned, "\""),
+                                              "\"")
+                        else:
+                            requiredLvl2_grp_cleaned = \
+                                requiredLvl2.group(1).removeprefix("'").removesuffix("'")
+                            requiredLvl2_grp_cleaned = \
+                                requiredLvl2_grp_cleaned.removeprefix("\"").removesuffix("\"")
                         if not requiredLvl2_grp_cleaned.split('/')[0] == "..":
                             # Don't emit dependencies which are local
                             pass
