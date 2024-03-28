@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 27 08:30:02 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.3.0.8:
+  * Match CPE_NAME for checking whether to show the registration dialog (bsc#1222034)
+
+-------------------------------------------------------------------
 Thu Mar 14 16:01:42 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.3.0.7:

@@ -574,4 +574,13 @@
   * Only skip jeos-firstboot if cloud-init found a config source (bsc#1220281)</comment>
     <requestid>1158049</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>d31f81a1ae59b7f6a96be832d9fb2969</srcmd5>
+    <version>1.3.0.8</version>
+    <time>1711630347</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.3.0.8:
+  * Match CPE_NAME for checking whether to show the registration dialog (bsc#1222034)</comment>
+    <requestid>1162835</requestid>
+  </revision>
 </revisionlist>
