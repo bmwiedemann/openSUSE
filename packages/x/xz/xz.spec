@@ -22,8 +22,9 @@
 %else
 %bcond_with static
 %endif
+%define _binary_payload w9.bzdio
 Name:           xz
-Version:        5.6.1
+Version:        5.4.6
 Release:        0
 Summary:        A Program for Compressing Files with the Lempel–Ziv–Markov algorithm
 License:        0BSD AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -99,11 +100,6 @@ export LDFLAGS="-Wl,-z,relro,-z,now -pie"
 %if %{with static}
 %configure \
   --with-pic \
-  --enable-year2038 \
-  --enable-symbol-versions \
-  --enable-sandbox=landlock \
-  --enable-ifunc \
-  --enable-external-sha256 \
   --docdir=%{_docdir}/%{name} \
   --disable-shared CONFIG_SHELL=/bin/sh
 %make_build
@@ -212,6 +208,7 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 
 %if %{with static}
 %files static-devel
+%defattr(-, root, root)
 %{_libdir}/liblzma.a
 %endif
 
