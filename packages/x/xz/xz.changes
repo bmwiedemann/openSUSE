@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 28 13:51:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- restore a bigger version number so that update works
+
+-------------------------------------------------------------------
 Mon Jan 29 21:36:02 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Build static library on SLE

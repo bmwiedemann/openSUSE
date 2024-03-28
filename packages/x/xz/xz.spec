@@ -24,21 +24,21 @@
 %endif
 %define _binary_payload w9.bzdio
 Name:           xz
-Version:        5.4.6
+Version:        5.6.1.revertto5.4
 Release:        0
 Summary:        A Program for Compressing Files with the Lempel–Ziv–Markov algorithm
 License:        0BSD AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Archiving/Compression
 URL:            https://tukaani.org/xz/
-Source0:        https://github.com/tukaani-project/xz/releases/download/v%{version}/xz-%{version}.tar.gz
-Source1:        https://github.com/tukaani-project/xz/releases/download/v%{version}/xz-%{version}.tar.gz.sig
+Source0:        https://github.com/tukaani-project/xz/releases/download/v5.4.6/xz-5.4.6.tar.gz
+Source1:        https://github.com/tukaani-project/xz/releases/download/v5.4.6/xz-5.4.6.tar.gz.sig
 Source2:        baselibs.conf
 Source3:        https://tukaani.org/misc/jia_tan_pubkey.txt#/%{name}.keyring
 Source4:        xznew
 Source5:        xznew.1
 BuildRequires:  pkgconfig
-Provides:       lzma = %{version}
-Obsoletes:      lzma < %{version}
+Provides:       lzma = 5.4.6
+Obsoletes:      lzma < 5.4.6
 %{?suse_build_hwcaps_libs}
 
 %description
@@ -68,11 +68,11 @@ Library for encoding/decoding LZMA files.
 Summary:        Development package for the LZMA library
 License:        0BSD
 Group:          Development/Libraries/C and C++
-Requires:       liblzma5 = %{version}
-Provides:       lzma-devel = %{version}
-Obsoletes:      lzma-devel < %{version}
-Provides:       lzma-alpha-devel = %{version}
-Obsoletes:      lzma-alpha-devel < %{version}
+Requires:       liblzma5 = 5.4.6
+Provides:       lzma-devel = 5.4.6
+Obsoletes:      lzma-devel < 5.4.6
+Provides:       lzma-alpha-devel = 5.4.6
+Obsoletes:      lzma-alpha-devel < 5.4.6
 
 %description devel
 This package contains the header files and libraries needed for
@@ -83,14 +83,14 @@ compiling programs using the LZMA library.
 Summary:        Static version of LZMA library
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
-Requires:       lzma-devel = %{version}
+Requires:       lzma-devel = 5.4.6
 
 %description static-devel
 Static library for the LZMA library
 %endif
 
 %prep
-%autosetup
+%autosetup -n xz-5.4.6
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

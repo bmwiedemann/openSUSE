@@ -770,4 +770,12 @@
 5.6.0 and 5.6.1 are backdoored.</comment>
     <requestid>1163302</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>f4cf006ec7c1c4fb5bd52d6cf564c1c5</srcmd5>
+    <version>5.6.1.revertto5.4</version>
+    <time>1711634332</time>
+    <user>anag+factory</user>
+    <comment>- restore a bigger version number so that update works</comment>
+    <requestid>1163333</requestid>
+  </revision>
 </revisionlist>
