@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 15:22:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Mar  8 21:07:46 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Fix URLs (wireless-tools home page has been migrated to github.io) 

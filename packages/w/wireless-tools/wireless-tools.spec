@@ -75,9 +75,9 @@ you to set wireless LAN specific parameters and get specific stats.
 %prep
 %setup -q -T -b 6 -n lwepgen
 %setup -q -n wireless_tools.30
-%patch0
+%patch -P 0
 pushd ../lwepgen
-%patch1
+%patch -P 1
 popd
 
 %build
