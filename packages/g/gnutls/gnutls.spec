@@ -40,7 +40,7 @@
 %endif
 %bcond_with tpm
 Name:           gnutls
-Version:        3.8.3
+Version:        3.8.4
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -66,6 +66,8 @@ Patch101:       gnutls-FIPS-HMAC-nettle-hogweed-gmp.patch
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 #PATCH-FIX-SUSE bsc#1202146 FIPS: Port gnutls to use jitterentropy
 Patch102:       gnutls-FIPS-jitterentropy.patch
+#PATCH-FIX-SUSE bsc#1221242 Fix memleak in gnutls' jitterentropy collector
+Patch103:       gnutls-FIPS-jitterentropy-deinit-threads.patch
 %endif
 BuildRequires:  autogen
 BuildRequires:  automake
