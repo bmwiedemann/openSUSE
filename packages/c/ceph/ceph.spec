@@ -138,7 +138,7 @@
 # main package definition
 #################################################################################
 Name:		ceph
-Version:	16.2.14.66+g7aa6ce9419f
+Version:	16.2.15.68+gbb20a17289a
 Release:	0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch:		2
@@ -154,9 +154,7 @@ License:	LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group:		System/Filesystems
 %endif
 URL:		http://ceph.com/
-Source0:	%{?_remote_tarball_prefix}ceph-16.2.14-66-g7aa6ce9419f.tar.bz2
-# PATCH-FIX-UPSTREAM ceph-cmake-3.28.patch -- Fix build with cmake 3.28 but without git
-Patch0:         ceph-cmake-3.28.patch
+Source0:	%{?_remote_tarball_prefix}ceph-16.2.15-68-gbb20a17289a.tar.bz2
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x riscv64
@@ -164,10 +162,10 @@ ExclusiveArch:  x86_64 aarch64 ppc64le s390x riscv64
 #################################################################################
 # dependencies that apply across all distro families
 #################################################################################
-Requires:       ceph-osd = %{_epoch_prefix}%{version}-%{release}
-Requires:       ceph-mds = %{_epoch_prefix}%{version}-%{release}
-Requires:       ceph-mgr = %{_epoch_prefix}%{version}-%{release}
-Requires:       ceph-mon = %{_epoch_prefix}%{version}-%{release}
+Requires:       ceph-osd = %{_epoch_prefix}%{version}
+Requires:       ceph-mds = %{_epoch_prefix}%{version}
+Requires:       ceph-mgr = %{_epoch_prefix}%{version}
+Requires:       ceph-mon = %{_epoch_prefix}%{version}
 Requires(post):	binutils
 %if 0%{with cephfs_java}
 BuildRequires:	java-devel
@@ -422,13 +420,13 @@ Summary:       Ceph Base Package
 Group:         System/Filesystems
 %endif
 Provides:      ceph-test:/usr/bin/ceph-kvstore-tool
-Requires:      ceph-common = %{_epoch_prefix}%{version}-%{release}
-Requires:      librbd1 = %{_epoch_prefix}%{version}-%{release}
-Requires:      librados2 = %{_epoch_prefix}%{version}-%{release}
-Requires:      libcephfs2 = %{_epoch_prefix}%{version}-%{release}
-Requires:      librgw2 = %{_epoch_prefix}%{version}-%{release}
+Requires:      ceph-common = %{_epoch_prefix}%{version}
+Requires:      librbd1 = %{_epoch_prefix}%{version}
+Requires:      librados2 = %{_epoch_prefix}%{version}
+Requires:      libcephfs2 = %{_epoch_prefix}%{version}
+Requires:      librgw2 = %{_epoch_prefix}%{version}
 %if 0%{with selinux}
-Requires:      ceph-selinux = %{_epoch_prefix}%{version}-%{release}
+Requires:      ceph-selinux = %{_epoch_prefix}%{version}
 %endif
 Requires:      cryptsetup
 Requires:      e2fsprogs
@@ -479,17 +477,17 @@ Summary:	Ceph Common
 %if 0%{?suse_version}
 Group:		System/Filesystems
 %endif
-Requires:	librbd1 = %{_epoch_prefix}%{version}-%{release}
-Requires:	librados2 = %{_epoch_prefix}%{version}-%{release}
-Requires:	libcephfs2 = %{_epoch_prefix}%{version}-%{release}
-Requires:	python%{python3_pkgversion}-rados = %{_epoch_prefix}%{version}-%{release}
-Requires:	python%{python3_pkgversion}-rbd = %{_epoch_prefix}%{version}-%{release}
-Requires:	python%{python3_pkgversion}-cephfs = %{_epoch_prefix}%{version}-%{release}
-Requires:	python%{python3_pkgversion}-rgw = %{_epoch_prefix}%{version}-%{release}
-Requires:	python%{python3_pkgversion}-ceph-argparse = %{_epoch_prefix}%{version}-%{release}
-Requires:	python%{python3_pkgversion}-ceph-common = %{_epoch_prefix}%{version}-%{release}
+Requires:	librbd1 = %{_epoch_prefix}%{version}
+Requires:	librados2 = %{_epoch_prefix}%{version}
+Requires:	libcephfs2 = %{_epoch_prefix}%{version}
+Requires:	python%{python3_pkgversion}-rados = %{_epoch_prefix}%{version}
+Requires:	python%{python3_pkgversion}-rbd = %{_epoch_prefix}%{version}
+Requires:	python%{python3_pkgversion}-cephfs = %{_epoch_prefix}%{version}
+Requires:	python%{python3_pkgversion}-rgw = %{_epoch_prefix}%{version}
+Requires:	python%{python3_pkgversion}-ceph-argparse = %{_epoch_prefix}%{version}
+Requires:	python%{python3_pkgversion}-ceph-common = %{_epoch_prefix}%{version}
 %if 0%{with jaeger}
-Requires:	libjaeger = %{_epoch_prefix}%{version}-%{release}
+Requires:	libjaeger = %{_epoch_prefix}%{version}
 %endif
 %if 0%{?fedora} || 0%{?rhel}
 Requires:	python%{python3_pkgversion}-prettytable
@@ -498,7 +496,7 @@ Requires:	python%{python3_pkgversion}-prettytable
 Requires:	python%{python3_pkgversion}-PrettyTable
 %endif
 %if 0%{with libradosstriper}
-Requires:       libradosstriper1 = %{_epoch_prefix}%{version}-%{release}
+Requires:       libradosstriper1 = %{_epoch_prefix}%{version}
 %else
 Obsoletes:      libradosstriper1 <= %{_epoch_prefix}%{version}-%{release}
 %endif
@@ -518,7 +516,7 @@ Summary:	Ceph Metadata Server Daemon
 %if 0%{?suse_version}
 Group:		System/Filesystems
 %endif
-Requires:	ceph-base = %{_epoch_prefix}%{version}-%{release}
+Requires:	ceph-base = %{_epoch_prefix}%{version}
 %description mds
 ceph-mds is the metadata server daemon for the Ceph distributed file system.
 One or more instances of ceph-mds collectively manage the file system
@@ -530,9 +528,9 @@ Summary:	Ceph Monitor Daemon
 Group:		System/Filesystems
 %endif
 Provides:	ceph-test:/usr/bin/ceph-monstore-tool
-Requires:	ceph-base = %{_epoch_prefix}%{version}-%{release}
+Requires:	ceph-base = %{_epoch_prefix}%{version}
 %if 0%{with jaeger}
-Requires:	libjaeger = %{_epoch_prefix}%{version}-%{release}
+Requires:	libjaeger = %{_epoch_prefix}%{version}
 %endif
 %description mon
 ceph-mon is the cluster monitor daemon for the Ceph distributed file
@@ -545,9 +543,9 @@ Summary:        Ceph Manager Daemon
 %if 0%{?suse_version}
 Group:          System/Filesystems
 %endif
-Requires:       ceph-base = %{_epoch_prefix}%{version}-%{release}
-Requires:       ceph-mgr-modules-core = %{_epoch_prefix}%{version}-%{release}
-Requires:	    libcephsqlite = %{_epoch_prefix}%{version}-%{release}
+Requires:       ceph-base = %{_epoch_prefix}%{version}
+Requires:       ceph-mgr-modules-core = %{_epoch_prefix}%{version}
+Requires:	    libcephsqlite = %{_epoch_prefix}%{version}
 %if 0%{?weak_deps}
 Recommends:	ceph-mgr-dashboard = %{_epoch_prefix}%{version}-%{release}
 Recommends:	ceph-mgr-diskprediction-local = %{_epoch_prefix}%{version}-%{release}
@@ -567,9 +565,9 @@ BuildArch:      noarch
 %if 0%{?suse_version}
 Group:          System/Filesystems
 %endif
-Requires:       ceph-mgr = %{_epoch_prefix}%{version}-%{release}
-Requires:       ceph-grafana-dashboards = %{_epoch_prefix}%{version}-%{release}
-Requires:       ceph-prometheus-alerts = %{_epoch_prefix}%{version}-%{release}
+Requires:       ceph-mgr = %{_epoch_prefix}%{version}
+Requires:       ceph-grafana-dashboards = %{_epoch_prefix}%{version}
+Requires:       ceph-prometheus-alerts = %{_epoch_prefix}%{version}
 Requires:       python%{python3_pkgversion}-setuptools
 %if 0%{?fedora} || 0%{?rhel}
 Requires:       python%{python3_pkgversion}-cherrypy
@@ -599,7 +597,7 @@ BuildArch:      noarch
 %if 0%{?suse_version}
 Group:          System/Filesystems
 %endif
-Requires:       ceph-mgr = %{_epoch_prefix}%{version}-%{release}
+Requires:       ceph-mgr = %{_epoch_prefix}%{version}
 Requires:       python%{python3_pkgversion}-numpy
 %if 0%{?fedora} || 0%{?suse_version}
 Requires:       python%{python3_pkgversion}-scikit-learn
@@ -644,7 +642,7 @@ Summary:        Ceph Manager module for Rook-based orchestration
 %if 0%{?suse_version}
 Group:          System/Filesystems
 %endif
-Requires:       ceph-mgr = %{_epoch_prefix}%{version}-%{release}
+Requires:       ceph-mgr = %{_epoch_prefix}%{version}
 Requires:       python%{python3_pkgversion}-kubernetes
 Requires:       python%{python3_pkgversion}-jsonpatch
 %description mgr-rook
@@ -657,7 +655,7 @@ Summary:        Ceph Manager module to orchestrate ceph-events to kubernetes' ev
 %if 0%{?suse_version}
 Group:          System/Filesystems
 %endif
-Requires:       ceph-mgr = %{_epoch_prefix}%{version}-%{release}
+Requires:       ceph-mgr = %{_epoch_prefix}%{version}
 Requires:       python%{python3_pkgversion}-kubernetes
 %description mgr-k8sevents
 ceph-mgr-k8sevents is a ceph-mgr module that sends every ceph-events
@@ -669,9 +667,9 @@ BuildArch:	noarch
 %if 0%{?suse_version}
 Group:          System/Filesystems
 %endif
-Requires:       ceph-mgr = %{_epoch_prefix}%{version}-%{release}
+Requires:       ceph-mgr = %{_epoch_prefix}%{version}
 Requires:       python%{python3_pkgversion}-remoto
-Requires:       cephadm = %{_epoch_prefix}%{version}-%{release}
+Requires:       cephadm = %{_epoch_prefix}%{version}
 %if 0%{?suse_version}
 Requires:       openssh
 Requires:       python%{python3_pkgversion}-Jinja2
@@ -699,9 +697,9 @@ Summary:	Ceph daemon for mirroring CephFS snapshots
 %if 0%{?suse_version}
 Group:		System/Filesystems
 %endif
-Requires:	ceph-base = %{_epoch_prefix}%{version}-%{release}
-Requires:	librados2 = %{_epoch_prefix}%{version}-%{release}
-Requires:	libcephfs2 = %{_epoch_prefix}%{version}-%{release}
+Requires:	ceph-base = %{_epoch_prefix}%{version}
+Requires:	librados2 = %{_epoch_prefix}%{version}
+Requires:	libcephfs2 = %{_epoch_prefix}%{version}
 %description -n cephfs-mirror
 Daemon for mirroring CephFS snapshots between Ceph clusters.
 
@@ -710,8 +708,8 @@ Summary:	Ceph fuse-based client
 %if 0%{?suse_version}
 Group:		System/Filesystems
 %endif
-Requires:	librados2 = %{_epoch_prefix}%{version}-%{release}
-Requires:	librbd1 = %{_epoch_prefix}%{version}-%{release}
+Requires:	librados2 = %{_epoch_prefix}%{version}
+Requires:	librbd1 = %{_epoch_prefix}%{version}
 %description -n rbd-fuse
 FUSE based client to map Ceph rbd images to files
 
@@ -720,9 +718,9 @@ Summary:	Ceph daemon for mirroring RBD images
 %if 0%{?suse_version}
 Group:		System/Filesystems
 %endif
-Requires:	ceph-base = %{_epoch_prefix}%{version}-%{release}
-Requires:	librados2 = %{_epoch_prefix}%{version}-%{release}
-Requires:	librbd1 = %{_epoch_prefix}%{version}-%{release}
+Requires:	ceph-base = %{_epoch_prefix}%{version}
+Requires:	librados2 = %{_epoch_prefix}%{version}
+Requires:	librbd1 = %{_epoch_prefix}%{version}
 %description -n rbd-mirror
 Daemon for mirroring RBD images between Ceph clusters, streaming
 changes asynchronously.
@@ -732,8 +730,8 @@ Summary:	Ceph daemon for immutable object cache
 %if 0%{?suse_version}
 Group:		System/Filesystems
 %endif
-Requires:	ceph-base = %{_epoch_prefix}%{version}-%{release}
-Requires:	librados2 = %{_epoch_prefix}%{version}-%{release}
+Requires:	ceph-base = %{_epoch_prefix}%{version}
+Requires:	librados2 = %{_epoch_prefix}%{version}
 %description immutable-object-cache
 Daemon for immutable object cache.
 
@@ -742,8 +740,8 @@ Summary:	Ceph RBD client base on NBD
 %if 0%{?suse_version}
 Group:		System/Filesystems
 %endif
-Requires:	librados2 = %{_epoch_prefix}%{version}-%{release}
-Requires:	librbd1 = %{_epoch_prefix}%{version}-%{release}
+Requires:	librados2 = %{_epoch_prefix}%{version}
+Requires:	librbd1 = %{_epoch_prefix}%{version}
 %description -n rbd-nbd
 NBD based client to map Ceph rbd images to local device
 
@@ -752,12 +750,12 @@ Summary:	Rados REST gateway
 %if 0%{?suse_version}
 Group:		System/Filesystems
 %endif
-Requires:	ceph-base = %{_epoch_prefix}%{version}-%{release}
+Requires:	ceph-base = %{_epoch_prefix}%{version}
 %if 0%{with selinux}
-Requires:	ceph-selinux = %{_epoch_prefix}%{version}-%{release}
+Requires:	ceph-selinux = %{_epoch_prefix}%{version}
 %endif
-Requires:	librados2 = %{_epoch_prefix}%{version}-%{release}
-Requires:	librgw2 = %{_epoch_prefix}%{version}-%{release}
+Requires:	librados2 = %{_epoch_prefix}%{version}
+Requires:	librgw2 = %{_epoch_prefix}%{version}
 %if 0%{?rhel} || 0%{?fedora}
 Requires:	mailcap
 %endif
@@ -798,11 +796,11 @@ Summary:	Ceph Object Storage Daemon
 Group:		System/Filesystems
 %endif
 Provides:	ceph-test:/usr/bin/ceph-osdomap-tool
-Requires:	ceph-base = %{_epoch_prefix}%{version}-%{release}
+Requires:	ceph-base = %{_epoch_prefix}%{version}
 Requires:	lvm2
 Requires:	sudo
 Requires:	libstoragemgmt
-Requires:	python%{python3_pkgversion}-ceph-common = %{_epoch_prefix}%{version}-%{release}
+Requires:	python%{python3_pkgversion}-ceph-common = %{_epoch_prefix}%{version}
 %description osd
 ceph-osd is the object storage daemon for the Ceph distributed file
 system.  It is responsible for storing objects on a local file system
@@ -814,7 +812,7 @@ Summary:	Ceph Object Storage Daemon (crimson)
 %if 0%{?suse_version}
 Group:		System/Filesystems
 %endif
-Requires:	ceph-osd = %{_epoch_prefix}%{version}-%{release}
+Requires:	ceph-osd = %{_epoch_prefix}%{version}
 %description crimson-osd
 crimson-osd is the object storage daemon for the Ceph distributed file
 system.  It is responsible for storing objects on a local file system
@@ -840,7 +838,7 @@ Summary:	RADOS headers
 %if 0%{?suse_version}
 Group:		Development/Libraries/C and C++
 %endif
-Requires:	librados2 = %{_epoch_prefix}%{version}-%{release}
+Requires:	librados2 = %{_epoch_prefix}%{version}
 Obsoletes:	ceph-devel < %{_epoch_prefix}%{version}-%{release}
 Provides:	librados2-devel = %{_epoch_prefix}%{version}-%{release}
 Obsoletes:	librados2-devel < %{_epoch_prefix}%{version}-%{release}
@@ -853,8 +851,8 @@ Summary:	RADOS headers
 %if 0%{?suse_version}
 Group:		Development/Libraries/C and C++
 %endif
-Requires:	librados2 = %{_epoch_prefix}%{version}-%{release}
-Requires:	librados-devel = %{_epoch_prefix}%{version}-%{release}
+Requires:	librados2 = %{_epoch_prefix}%{version}
+Requires:	librados-devel = %{_epoch_prefix}%{version}
 %description -n libradospp-devel
 This package contains C++ libraries and headers needed to develop programs
 that use RADOS object store.
@@ -864,7 +862,7 @@ Summary:	RADOS gateway client library
 %if 0%{?suse_version}
 Group:		System/Libraries
 %endif
-Requires:	librados2 = %{_epoch_prefix}%{version}-%{release}
+Requires:	librados2 = %{_epoch_prefix}%{version}
 %description -n librgw2
 This package provides a library implementation of the RADOS gateway
 (distributed object store with S3 and Swift personalities).
@@ -874,8 +872,8 @@ Summary:	RADOS gateway client library
 %if 0%{?suse_version}
 Group:		Development/Libraries/C and C++
 %endif
-Requires:	librados-devel = %{_epoch_prefix}%{version}-%{release}
-Requires:	librgw2 = %{_epoch_prefix}%{version}-%{release}
+Requires:	librados-devel = %{_epoch_prefix}%{version}
+Requires:	librgw2 = %{_epoch_prefix}%{version}
 Provides:	librgw2-devel = %{_epoch_prefix}%{version}-%{release}
 Obsoletes:	librgw2-devel < %{_epoch_prefix}%{version}-%{release}
 %description -n librgw-devel
@@ -887,8 +885,8 @@ Summary:	Python 3 libraries for the RADOS gateway
 %if 0%{?suse_version}
 Group:		Development/Libraries/Python
 %endif
-Requires:	librgw2 = %{_epoch_prefix}%{version}-%{release}
-Requires:	python%{python3_pkgversion}-rados = %{_epoch_prefix}%{version}-%{release}
+Requires:	librgw2 = %{_epoch_prefix}%{version}
+Requires:	python%{python3_pkgversion}-rados = %{_epoch_prefix}%{version}
 %{?python_provide:%python_provide python%{python3_pkgversion}-rgw}
 Provides:	python-rgw = %{_epoch_prefix}%{version}-%{release}
 Obsoletes:	python-rgw < %{_epoch_prefix}%{version}-%{release}
@@ -902,7 +900,7 @@ Summary:	Python 3 libraries for the RADOS object store
 Group:		Development/Libraries/Python
 %endif
 Requires:	python%{python3_pkgversion}
-Requires:	librados2 = %{_epoch_prefix}%{version}-%{release}
+Requires:	librados2 = %{_epoch_prefix}%{version}
 %{?python_provide:%python_provide python%{python3_pkgversion}-rados}
 Provides:	python-rados = %{_epoch_prefix}%{version}-%{release}
 Obsoletes:	python-rados < %{_epoch_prefix}%{version}-%{release}
@@ -915,7 +913,7 @@ Summary:	SQLite3 VFS for Ceph
 %if 0%{?suse_version}
 Group:		System/Libraries
 %endif
-Requires:	librados2 = %{_epoch_prefix}%{version}-%{release}
+Requires:	librados2 = %{_epoch_prefix}%{version}
 %description -n libcephsqlite
 A SQLite3 VFS for storing and manipulating databases stored on Ceph's RADOS
 distributed object store.
@@ -926,9 +924,9 @@ Summary:	SQLite3 VFS for Ceph headers
 Group:		Development/Libraries/C and C++
 %endif
 Requires:	sqlite-devel
-Requires:	libcephsqlite = %{_epoch_prefix}%{version}-%{release}
-Requires:	librados-devel = %{_epoch_prefix}%{version}-%{release}
-Requires:	libradospp-devel = %{_epoch_prefix}%{version}-%{release}
+Requires:	libcephsqlite = %{_epoch_prefix}%{version}
+Requires:	librados-devel = %{_epoch_prefix}%{version}
+Requires:	libradospp-devel = %{_epoch_prefix}%{version}
 Obsoletes:	ceph-devel < %{_epoch_prefix}%{version}-%{release}
 Provides:	libcephsqlite-devel = %{_epoch_prefix}%{version}-%{release}
 Obsoletes:	libcephsqlite-devel < %{_epoch_prefix}%{version}-%{release}
@@ -942,7 +940,7 @@ Summary:	RADOS striping interface
 %if 0%{?suse_version}
 Group:		System/Libraries
 %endif
-Requires:	librados2 = %{_epoch_prefix}%{version}-%{release}
+Requires:	librados2 = %{_epoch_prefix}%{version}
 %description -n libradosstriper1
 Striping interface built on top of the rados library, allowing
 to stripe bigger objects onto several standard rados objects using
@@ -953,9 +951,9 @@ Summary:	RADOS striping interface headers
 %if 0%{?suse_version}
 Group:		Development/Libraries/C and C++
 %endif
-Requires:	libradosstriper1 = %{_epoch_prefix}%{version}-%{release}
-Requires:	librados-devel = %{_epoch_prefix}%{version}-%{release}
-Requires:	libradospp-devel = %{_epoch_prefix}%{version}-%{release}
+Requires:	libradosstriper1 = %{_epoch_prefix}%{version}
+Requires:	librados-devel = %{_epoch_prefix}%{version}
+Requires:	libradospp-devel = %{_epoch_prefix}%{version}
 Obsoletes:	ceph-devel < %{_epoch_prefix}%{version}-%{release}
 Provides:	libradosstriper1-devel = %{_epoch_prefix}%{version}-%{release}
 Obsoletes:	libradosstriper1-devel < %{_epoch_prefix}%{version}-%{release}
@@ -969,7 +967,7 @@ Summary:	RADOS block device client library
 %if 0%{?suse_version}
 Group:		System/Libraries
 %endif
-Requires:	librados2 = %{_epoch_prefix}%{version}-%{release}
+Requires:	librados2 = %{_epoch_prefix}%{version}
 %if 0%{?suse_version}
 Requires(post): coreutils
 %endif
@@ -987,9 +985,9 @@ Summary:	RADOS block device headers
 %if 0%{?suse_version}
 Group:		Development/Libraries/C and C++
 %endif
-Requires:	librbd1 = %{_epoch_prefix}%{version}-%{release}
-Requires:	librados-devel = %{_epoch_prefix}%{version}-%{release}
-Requires:	libradospp-devel = %{_epoch_prefix}%{version}-%{release}
+Requires:	librbd1 = %{_epoch_prefix}%{version}
+Requires:	librados-devel = %{_epoch_prefix}%{version}
+Requires:	libradospp-devel = %{_epoch_prefix}%{version}
 Obsoletes:	ceph-devel < %{_epoch_prefix}%{version}-%{release}
 Provides:	librbd1-devel = %{_epoch_prefix}%{version}-%{release}
 Obsoletes:	librbd1-devel < %{_epoch_prefix}%{version}-%{release}
@@ -1002,8 +1000,8 @@ Summary:	Python 3 libraries for the RADOS block device
 %if 0%{?suse_version}
 Group:		Development/Libraries/Python
 %endif
-Requires:	librbd1 = %{_epoch_prefix}%{version}-%{release}
-Requires:	python%{python3_pkgversion}-rados = %{_epoch_prefix}%{version}-%{release}
+Requires:	librbd1 = %{_epoch_prefix}%{version}
+Requires:	python%{python3_pkgversion}-rados = %{_epoch_prefix}%{version}
 %{?python_provide:%python_provide python%{python3_pkgversion}-rbd}
 Provides:	python-rbd = %{_epoch_prefix}%{version}-%{release}
 Obsoletes:	python-rbd < %{_epoch_prefix}%{version}-%{release}
@@ -1032,8 +1030,8 @@ Summary:	Ceph distributed file system headers
 %if 0%{?suse_version}
 Group:		Development/Libraries/C and C++
 %endif
-Requires:	libcephfs2 = %{_epoch_prefix}%{version}-%{release}
-Requires:	librados-devel = %{_epoch_prefix}%{version}-%{release}
+Requires:	libcephfs2 = %{_epoch_prefix}%{version}
+Requires:	librados-devel = %{_epoch_prefix}%{version}
 Obsoletes:	ceph-devel < %{_epoch_prefix}%{version}-%{release}
 Provides:	libcephfs2-devel = %{_epoch_prefix}%{version}-%{release}
 Obsoletes:	libcephfs2-devel < %{_epoch_prefix}%{version}-%{release}
@@ -1060,9 +1058,9 @@ Summary:	Python 3 libraries for Ceph distributed file system
 %if 0%{?suse_version}
 Group:		Development/Libraries/Python
 %endif
-Requires:	libcephfs2 = %{_epoch_prefix}%{version}-%{release}
-Requires:	python%{python3_pkgversion}-rados = %{_epoch_prefix}%{version}-%{release}
-Requires:	python%{python3_pkgversion}-ceph-argparse = %{_epoch_prefix}%{version}-%{release}
+Requires:	libcephfs2 = %{_epoch_prefix}%{version}
+Requires:	python%{python3_pkgversion}-rados = %{_epoch_prefix}%{version}
+Requires:	python%{python3_pkgversion}-ceph-argparse = %{_epoch_prefix}%{version}
 %{?python_provide:%python_provide python%{python3_pkgversion}-cephfs}
 Provides:	python-cephfs = %{_epoch_prefix}%{version}-%{release}
 Obsoletes:	python-cephfs < %{_epoch_prefix}%{version}-%{release}
@@ -1132,7 +1130,7 @@ Summary:	Java Native Interface library for CephFS Java bindings
 Group:		System/Libraries
 %endif
 Requires:	java
-Requires:	libcephfs2 = %{_epoch_prefix}%{version}-%{release}
+Requires:	libcephfs2 = %{_epoch_prefix}%{version}
 %description -n libcephfs_jni1
 This package contains the Java Native Interface library for CephFS Java
 bindings.
@@ -1143,7 +1141,7 @@ Summary:	Development files for CephFS Java Native Interface library
 Group:		Development/Libraries/Java
 %endif
 Requires:	java
-Requires:	libcephfs_jni1 = %{_epoch_prefix}%{version}-%{release}
+Requires:	libcephfs_jni1 = %{_epoch_prefix}%{version}
 Obsoletes:	ceph-devel < %{_epoch_prefix}%{version}-%{release}
 Provides:	libcephfs_jni1-devel = %{_epoch_prefix}%{version}-%{release}
 Obsoletes:	libcephfs_jni1-devel < %{_epoch_prefix}%{version}-%{release}
@@ -1157,7 +1155,7 @@ Summary:	Java libraries for the Ceph File System
 Group:		System/Libraries
 %endif
 Requires:	java
-Requires:	libcephfs_jni1 = %{_epoch_prefix}%{version}-%{release}
+Requires:	libcephfs_jni1 = %{_epoch_prefix}%{version}
 Requires:       junit
 BuildRequires:  junit
 %description -n cephfs-java
@@ -1170,7 +1168,7 @@ Summary:        RADOS object class development kit
 %if 0%{?suse_version}
 Group:		Development/Libraries/C and C++
 %endif
-Requires:       libradospp-devel = %{_epoch_prefix}%{version}-%{release}
+Requires:       libradospp-devel = %{_epoch_prefix}%{version}
 %description -n rados-objclass-devel
 This package contains libraries and headers needed to develop RADOS object
 class plugins.
@@ -1182,9 +1180,9 @@ Summary:	SELinux support for Ceph MON, OSD and MDS
 %if 0%{?suse_version}
 Group:		System/Filesystems
 %endif
-Requires:	ceph-base = %{_epoch_prefix}%{version}-%{release}
+Requires:	ceph-base = %{_epoch_prefix}%{version}
 Requires:	policycoreutils, libselinux-utils
-Requires(post):	ceph-base = %{_epoch_prefix}%{version}-%{release}
+Requires(post):	ceph-base = %{_epoch_prefix}%{version}
 Requires(post): selinux-policy-base >= %{_selinux_policy_version}, policycoreutils, gawk
 Requires(postun): policycoreutils
 %description selinux
@@ -1218,7 +1216,7 @@ This package provides Ceph default alerts for Prometheus.
 # common
 #################################################################################
 %prep
-%autosetup -p1 -n ceph-16.2.14-66-g7aa6ce9419f
+%autosetup -p1 -n ceph-16.2.15-68-gbb20a17289a
 
 %build
 # Disable lto on systems that do not support symver attribute
