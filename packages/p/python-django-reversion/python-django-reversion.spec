@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-django-reversion
 Version:        5.0.12
 Release:        0

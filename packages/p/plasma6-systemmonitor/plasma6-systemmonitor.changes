@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 26 18:06:26 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.3
+- Changes since 6.0.2:
+  * revert duplicate appstream update
+  * update version for new release
+  * GlobalMenu: Fix path to AboutPage.qml
+  * page: Fix drag-sorting of pages in PageSortDialog (kde#482377)
+
+-------------------------------------------------------------------
 Wed Mar 13 09:10:21 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.2:

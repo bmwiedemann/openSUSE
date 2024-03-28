@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 27 20:59:57 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.2.3
+  * Resolve relocation overflow on PE binaries
+  * Fix some segfaults under Linux and various binaries
+- Delete upx-aarch64.patch (merged)
+
+-------------------------------------------------------------------
 Wed Jan  3 18:35:04 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.2.2

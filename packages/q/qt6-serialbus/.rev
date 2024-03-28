@@ -159,4 +159,12 @@
     <comment>Qt 6.6.2 (finally) (forwarded request 1146775 from krop)</comment>
     <requestid>1147232</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>361066ab9c584213f92fc6c52f6aae75</srcmd5>
+    <version>6.6.3</version>
+    <time>1711630467</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.6.3. Not built yet (forwarded request 1162337 from krop)</comment>
+    <requestid>1162395</requestid>
+  </revision>
 </revisionlist>

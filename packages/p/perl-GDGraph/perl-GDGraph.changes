@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 22 16:29:17 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.56
+   see /usr/share/doc/packages/perl-GDGraph/CHANGES
+
+  1.56 13 Jan 2023
+  - Improve the language explaining the 2023 update. Docs-only change.
+  1.55 11 Jan 2023
+  - Fix failing XBM test resulting from some upstream changes
+    Fixes: https://rt.cpan.org/Ticket/Display.html?id=140940
+  - Skip samples tests if libgd has image support disabled, which
+    is the default starting with version 2.3.3. See:
+    https://github.com/libgd/libgd/issues/428
+
+-------------------------------------------------------------------
 Mon Mar  4 13:03:01 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

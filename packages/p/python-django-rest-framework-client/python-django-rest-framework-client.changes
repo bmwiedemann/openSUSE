@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 28 05:47:05 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Feb 22 23:17:39 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.10.0:

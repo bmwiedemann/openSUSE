@@ -52,4 +52,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>999752</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4060dadd7d5e0b22d43b01e92c9c2e6d</srcmd5>
+    <version>5.7.21</version>
+    <time>1711630498</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1163228 from hillwood)</comment>
+    <requestid>1163229</requestid>
+  </revision>
 </revisionlist>

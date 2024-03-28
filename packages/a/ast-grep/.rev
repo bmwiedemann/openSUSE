@@ -187,4 +187,16 @@
   * feat: add more states for rule suppression 41a058c</comment>
     <requestid>1161276</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8d28f4b866589bf2177deaa24b9d81cc</srcmd5>
+    <version>0.20.2+0</version>
+    <time>1711630522</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.20.2:
+  * feat: make test --update-all not report error #771
+  * fix: fix update cases f8132a4
+  * refactor: less indentation for interactive reporter 203bd35
+  * feat: improve accept 441a548</comment>
+    <requestid>1163252</requestid>
+  </revision>
 </revisionlist>

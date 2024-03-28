@@ -1,7 +1,7 @@
 #
 # spec file for package mgetty
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,7 @@ BuildRequires:  netpbm
 BuildRequires:  systemd-rpm-macros
 Requires:       g3utils
 Requires(post): %{install_info_prereq}
-Requires(postun):%{install_info_prereq}
+Requires(postun): %{install_info_prereq}
 Recommends:     logrotate
 %systemd_requires
 
@@ -74,6 +74,7 @@ Requires(pre):  permissions
 Requires(pre):  shadow
 Conflicts:      hylafax
 Provides:       fax_daemon
+Provides:       user(fax)
 
 %description -n sendfax
 The sendfax part of mgetty. You can use it instead of hylafax for
@@ -92,21 +93,21 @@ The g3utils are included in the mgetty source package.
 
 %prep
 %setup -q
-%patch0
-%patch1
-%patch2
-%patch3 -p1
-%patch4
-%patch5
-%patch6
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
+%patch -P 0
+%patch -P 1
+%patch -P 2
+%patch -P 3 -p1
+%patch -P 4
+%patch -P 5
+%patch -P 6
+%patch -P 7 -p1
+%patch -P 8 -p1
+%patch -P 9 -p1
+%patch -P 10 -p1
+%patch -P 12 -p1
+%patch -P 13 -p1
+%patch -P 14 -p1
+%patch -P 15 -p1
 chmod +x mkidirs
 
 %build

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Mar 27 17:49:07 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.3.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.3.1
+- Changes since 6.0.3:
+  * plugins/screencast: Handle failing to import dmabuf
+  * plugins/screencast: Simplify damage calculation in region screen cast source
+  * plugins/screencast: Drop "stream" in ScreenCastStream::streamReady
+  * plugins/screencast: Rename ScreenCastStream::stop() to close()
+  * plugins/screencast: Pause/resume source when stream is paused/resumed
+  * Fix oversights on shortcut handling within Overview/Grid effect (kde#482931)
+  * tiles: Evacuate windows in CustomTile::remove()
+  * tiles: Use deleteLater() in CustomTile::remove()
+
+-------------------------------------------------------------------
+Tue Mar 26 18:05:50 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.3
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Wed Mar 13 09:09:50 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.2:

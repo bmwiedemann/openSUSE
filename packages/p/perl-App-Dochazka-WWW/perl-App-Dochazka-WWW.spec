@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-Dochazka-WWW
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,8 +43,10 @@ Requires:       perl(File::ShareDir) >= 1.00
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  pkgconfig(systemd)
-Requires(pre): /usr/sbin/groupadd
-Requires(pre): /usr/sbin/useradd
+Requires(pre):  /usr/sbin/groupadd
+Requires(pre):  /usr/sbin/useradd
+Provides:       group(dochazka-www)
+Provides:       user(dochazka-www)
 %{?systemd_ordering}
 
 %pre

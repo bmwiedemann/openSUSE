@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 26 14:40:52 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.6.0:
+  * Add host1x bus support
+  * build: use FS module to check drm_fourcc.h
+  * Include kernel tainted state in JSON output
+  * readme: improve readability, use meson setup
+
+-------------------------------------------------------------------
 Tue Mar 21 15:48:26 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.5.0:

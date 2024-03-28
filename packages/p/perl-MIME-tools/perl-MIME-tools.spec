@@ -18,9 +18,10 @@
 
 %define cpan_name MIME-tools
 Name:           perl-MIME-tools
-Version:        5.511.0
+Version:        5.514.0
 Release:        0
-%define cpan_version 5.511
+# 5.514 -> normalize -> 5.514.0
+%define cpan_version 5.514
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Tools to manipulate MIME messages
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -69,7 +70,7 @@ Provides:       perl(MIME::WordDecoder::ISO_8859)
 Provides:       perl(MIME::WordDecoder::US_ASCII)
 Provides:       perl(MIME::WordDecoder::UTF_8)
 Provides:       perl(MIME::Words) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 Recommends:     perl(Convert::BinHex)
 %{perl_requires}
 

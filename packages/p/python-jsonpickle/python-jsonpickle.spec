@@ -38,9 +38,13 @@ Requires:       python-importlib_metadata
 %endif
 BuildArch:      noarch
 # SECTION test requirements
+%if 0%{?suse_version} <= 1600
+BuildRequires:  %{python_module tzdata}
+%endif
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module ecdsa}
-BuildRequires:  %{python_module gmpy2}
+BuildRequires:  %{python_module feedparser}
+BuildRequires:  %{python_module gmpy2 if %python-base < 3.12}
 BuildRequires:  %{python_module numpy}
 %if 0%{?suse_version} >= 1550
 BuildRequires:  %{python_module pandas}

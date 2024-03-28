@@ -55,4 +55,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1065913</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a502596f5d0682770f3bc39e04946a41</srcmd5>
+    <version>0.559</version>
+    <time>1711630538</time>
+    <user>anag+factory</user>
+    <comment>- spec:
+  + add user() and group() provides (boo#1221423)</comment>
+    <requestid>1163147</requestid>
+  </revision>
 </revisionlist>

@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.6.2
+%define real_version 6.6.3
 %define short_version 6.6
 %define tar_name qtvirtualkeyboard-everywhere-src
 %define tar_suffix %{nil}
@@ -27,15 +27,13 @@
 %endif
 #
 Name:           qt6-virtualkeyboard%{?pkg_suffix}
-Version:        6.6.2
+Version:        6.6.3
 Release:        0
 Summary:        Framework for writing or integrating input methods and engines for Qt 6
 License:        GPL-3.0-only
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-virtualkeyboard-rpmlintrc
-# PATCH-FIX-UPSTREAM -- make builds reproducible
-Patch0:         0001-Link-VKB-and-VKB.Settings-into-VKB.Components-and-VK.patch
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel

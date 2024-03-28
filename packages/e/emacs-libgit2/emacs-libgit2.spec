@@ -17,19 +17,13 @@
 
 
 Name:           emacs-libgit2
-Version:        467.ab1a53a
+Version:        471.373defa
 Release:        0
 Summary:        An experimental module for libgit2 bindings to Emacs
-License:        GPL-3.0-or-later
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://github.com/magit/libegit2
 Source0:        libegit2-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM load libegit from load-path PR 126
-Patch1:         0001-libgit.el-Be-able-to-load-libegit2-from-load-path-if.patch
-# PATCH-FEATURE-UPSTREAM install targets PR 126
-Patch2:         0002-Add-install-targets-for-libgit-and-libegit2.patch
-# PATCH-FEATURE-UPSTREAM Don't rebuild libgit even if it already has been build PR 126
-Patch3:         0003-Don-t-mark-libgit2-target-as-phony-don-t-rebuild-it-.patch
 BuildRequires:  cmake
 BuildRequires:  emacs-devel
 BuildRequires:  emacs-nox

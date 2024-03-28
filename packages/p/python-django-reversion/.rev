@@ -176,4 +176,12 @@
 - Refresh only-sqlite-test-db.patch</comment>
     <requestid>1148986</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>80a630e1b83257aec6ed1242f3e59eeb</srcmd5>
+    <version>5.0.12</version>
+    <time>1711630512</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1163240</requestid>
+  </revision>
 </revisionlist>

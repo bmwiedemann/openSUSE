@@ -32,6 +32,8 @@ Source:         https://gitlab.com/kicad/code/kicad/-/archive/%{file_version}/ki
 Patch1:         https://gitlab.com/kicad/code/kicad/-/commit/81cb6d0c3fb92dd15f0a0e0d2d32337be1617399.patch#/fix_zone_fill_race.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         https://gitlab.com/kicad/code/kicad/-/commit/1c459e9a67151a6f028ac3a108b338e850126bfb.patch#/0001-Fix-triangulationValid-check-race-for-zone-fill.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         https://gitlab.com/kicad/code/kicad/-/merge_requests/1882.patch#/libgit2-1.8.0-compatibility.patch
 
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes

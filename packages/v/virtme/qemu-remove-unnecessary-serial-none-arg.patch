@@ -1,0 +1,42 @@
+From 4aab16e4b75a007efcfdfc0baa3824acd2675a74 Mon Sep 17 00:00:00 2001
+From: "Matthieu Baerts (NGI0)" <matttbe@kernel.org>
+Date: Wed, 27 Mar 2024 09:31:16 +0100
+Subject: [PATCH] qemu: remove unnecessary '-serial none' arg
+
+When not using the --graphics mode, or without the script options, QEmu
+was always launched with:
+
+  -serial none -serial chardev:console
+
+'-serial none' means "don't allocate this serial device". Here, it is
+directly overridden by another serial. Best not to declare '-serial none'
+then.
+
+Since QEmu 8.2.2, having '-serial none -serial <something>' is no longer
+supported, and it is then recommended to remove the unnecessary '-serial
+none' [1]. It continues to work on previous versions (tested on 8.2.1).
+
+Reported-by: @tehcaster
+Closes: #97
+Link: https://lore.kernel.org/qemu-devel/20240122163607.459769-2-peter.maydell@linaro.org/ [1]
+Suggested-by: @ishitatsuyuki
+Signed-off-by: Matthieu Baerts (NGI0) <matttbe@kernel.org>
+---
+ virtme/commands/run.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/virtme/commands/run.py b/virtme/commands/run.py
+index d27073e..d9ab345 100644
+--- a/virtme/commands/run.py
++++ b/virtme/commands/run.py
+@@ -1001,7 +1001,6 @@ def do_it() -> int:
+ 
+     if args.graphics is None and not args.script_sh and not args.script_exec:
+         qemuargs.extend(["-echr", "1"])
+-        qemuargs.extend(["-serial", "none"])
+ 
+         if args.verbose:
+             # Check if we have permission to access the current stderr.
+-- 
+2.44.0
+

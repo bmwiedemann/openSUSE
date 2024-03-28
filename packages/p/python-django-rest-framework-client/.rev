@@ -65,4 +65,12 @@
 - Refresh python-django-rest-framework-client-no-mock.patch</comment>
     <requestid>1149659</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0e6bff40b80e8fd426c597debdd60a8c</srcmd5>
+    <version>0.10.0</version>
+    <time>1711630515</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1163241</requestid>
+  </revision>
 </revisionlist>

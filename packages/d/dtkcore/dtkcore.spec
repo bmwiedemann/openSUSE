@@ -1,8 +1,8 @@
 #
 # spec file for package dtkcore
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2017-2021 Hillwood Yang <hillwood@opensuse.org>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2017-2024Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,7 @@
 %define libver  5
 %define apiver  5.5.0
 %define pkg_ver 5.5
+%define gtest_version %(rpm -q --queryformat '%%{VERSION}' gtest)
 
 Name:           dtkcore
 Version:        5.5.33
@@ -76,6 +77,9 @@ You shoud firstly read the "Deepin Application Specification".
 # sed -i 's/system(lrelease/system(lrelease-qt5/g' src/dtk_translation.prf
 sed -i 's|#!/usr/bin/env python3|#!/usr/bin/python3|g' tools/script/dtk-license.py
 sed -i 's|#!/usr/bin/env python3|#!/usr/bin/python3|g' tools/script/dtk-translate.py
+%if "%{gtest_version}" >= "1.14.0"
+sed -i 's|c++11|c++14|g' tests/tests.pro
+%endif
 
 %build
 %qmake5 DEFINES+=QT_NO_DEBUG_OUTPUT \

@@ -17,6 +17,7 @@
 
 
 %define skip_python39 1
+%{?sle15_python_module_pythons}
 Name:           python-django-rest-framework-client
 Version:        0.10.0
 Release:        0

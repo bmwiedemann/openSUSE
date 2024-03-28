@@ -56,4 +56,12 @@
 - Stop using globs in %files, specify the path directly</comment>
     <requestid>1133789</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>10a74030489b65d37e9e50ebe637157a</srcmd5>
+    <version>2.2</version>
+    <time>1711630517</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1163244</requestid>
+  </revision>
 </revisionlist>

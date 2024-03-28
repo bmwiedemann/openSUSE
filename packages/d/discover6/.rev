@@ -25,4 +25,12 @@
 - Also obsolete plasma5-pk-updates-lang</comment>
     <requestid>1158944</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ff7a4df8d46c1757c930dda78f8b6fc5</srcmd5>
+    <version>6.0.3</version>
+    <time>1711630413</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.0.3. The release actually builds this time! (After other distros already found major issues...) (forwarded request 1162359 from Vogtinator)</comment>
+    <requestid>1162411</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 25 18:21:17 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Drop the following patches as they have been accepted by upstream:
+  * 0001-libgit.el-Be-able-to-load-libegit2-from-load-path-if.patch
+  * 0002-Add-install-targets-for-libgit-and-libegit2.patch
+  * 0003-Don-t-mark-libgit2-target-as-phony-don-t-rebuild-it-.patch
+- Update to 471.373defa
+  * Make it possible to install libgit and libegit2 from Makefile
+  * Be able to load libegit2 from load-path if found
+  * License changed from GPL-3.0-or-later to GPL-2.0-or-later
+
+-------------------------------------------------------------------
 Mon Feb 26 21:20:39 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Depend on emacs-devel to make sure Emacs packaging macros are installed when not building with emacs-eln

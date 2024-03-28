@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 26 18:07:01 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.3
+- Changes since 6.0.2:
+  * update version for new release
+  * Sync the current kwin output configuration
+  * Reset cursor theme and size to defaults if they are unset in Plasma
+  * Allow unsetting values when syncing Plasma settings
+  * Adapt to Qt6 QVariant::isNull() changes
+
+-------------------------------------------------------------------
 Wed Mar 20 08:44:42 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to disable some questionable features (bsc#1217188):

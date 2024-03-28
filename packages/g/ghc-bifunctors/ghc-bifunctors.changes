@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 19 10:13:08 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update bifunctors to version 5.6.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/bifunctors-5.6.2/src/CHANGELOG.markdown
+
+-------------------------------------------------------------------
+Sun Mar 17 15:47:42 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update bifunctors to version 5.6.1 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat Sep 30 12:31:35 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update bifunctors to version 5.6.1 revision 2.

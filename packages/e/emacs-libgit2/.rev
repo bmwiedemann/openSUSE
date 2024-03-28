@@ -19,4 +19,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1154926</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>683c1dd5bfa2920a6808ccd79383ff72</srcmd5>
+    <version>471.373defa</version>
+    <time>1711630485</time>
+    <user>anag+factory</user>
+    <comment>- Drop the following patches as they have been accepted by upstream:
+  * 0001-libgit.el-Be-able-to-load-libegit2-from-load-path-if.patch
+  * 0002-Add-install-targets-for-libgit-and-libegit2.patch
+  * 0003-Don-t-mark-libgit2-target-as-phony-don-t-rebuild-it-.patch
+- Update to 471.373defa
+  * Make it possible to install libgit and libegit2 from Makefile
+  * Be able to load libegit2 from load-path if found
+  * License changed from GPL-3.0-or-later to GPL-2.0-or-later</comment>
+    <requestid>1163043</requestid>
+  </revision>
 </revisionlist>

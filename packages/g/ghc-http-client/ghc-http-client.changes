@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 20 04:42:26 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update http-client to version 0.7.17.
+  ## 0.7.17
+
+  * Add `managerSetMaxHeaderLength` to `Client` to change `ManagerSettings` `MaxHeaderLength`.
+
+-------------------------------------------------------------------
 Sun Dec 31 07:19:28 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update http-client to version 0.7.16.

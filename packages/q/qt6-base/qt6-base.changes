@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 26 14:25:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.3:
+  * https://www.qt.io/blog/qt-6.6.3-released
+- Make libQt6PrintSupport6 require qt6-printsupport-cups
+  (boo#1221576)
+
+-------------------------------------------------------------------
 Thu Mar 21 14:56:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Replace the postgresql-server build dependency with the client library

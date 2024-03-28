@@ -1,4 +1,362 @@
 -------------------------------------------------------------------
+Fri Mar 22 19:08:41 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Remove Use-constants-X509_VERSION_3-and-X509_REQ_VERSION_1-when-available.patch
+  (fixed upstream)
+
+-------------------------------------------------------------------
+Mon Jan  8 03:06:42 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.94
+   see /usr/share/doc/packages/perl-Net-SSLeay/Changes
+
+  1.94 2024-01-08
+  	- New stable release incorporating all changes from developer releases 1.93_01
+  	  to 1.93_05.
+  	- Summary of major changes since version 1.92:
+  	  - Net::SSLeay now officially supports all stable releases of OpenSSL 3.1 and
+  	    3.2, and LibreSSL 3.5 - 3.8.
+  	  - Many noisy compiler warnings have been silenced - if SSLeay.xs fails to
+  	    compile, it should now be much easier to identify the cause.
+  	  - libcrypto's OPENSSL_init_crypto() function and libssl's OPENSSL_init_ssl()
+  	    function are now exposed, enabling fine-grained control over the
+  	    initialisation and configuration of both libraries.
+  	  - libssl functions implementing TLS 1.3 PSK authentication are now exposed,
+  	    in particular SSL_CTX_set_psk_find_session_callback() (on the server side)
+  	    and SSL_CTX_set_psk_use_session_callback() (on the client side).
+  	  - libssl functions implementing server-side TLS 1.2 PSK authentication are
+  	    now exposed, in particular SSL_CTX_set_psk_server_callback().
+  	  - libssl's SSL_CTX_set_client_hello_cb() function is now exposed, allowing a
+  	    TLS server to set a callback function that is executed when the server
+  	    processes a ClientHello message.
+  	  - Many more libcrypto/libssl constants and functions are now exposed; see the
+  	    release notes for the 1.93 developer releases for a full list.
+  1.93_05 2024-01-06
+  	- Remove support for automatic detection of libssl/libcrypto via pkg-config
+  	  with ExtUtils::PkgConfig if it is installed, due to the compiler and linker
+  	  options provided by pkg-config being used unconditionally (which is
+  	  incompatible with the OPENSSL_PREFIX detection method). The implementation of
+  	  this was merged in time for developer release 1.93_03 and therefore hasn't
+  	  been included in a stable release yet, so this doesn't represent a breaking
+  	  change to the way in which libssl/libcrypto are detected by Makefile.PL. This
+  	  is, however, a very useful feature, and we intend to bring it back in time
+  	  for Net-SSLeay 1.96 after ironing out the remaining bugs.
+  1.93_04 2024-01-05
+  	- Use -DOPENSSL_API_COMPAT=908 when compiling SSLeay.xs to
+  	  suppress OpenSSL deprecation warnings.
+  	- Expose a number of functions that were added in recent
+  	  LibreSSL releases or were not otherwise exposed before:
+  	  - SSL(_CTX)_get/set_security_level in LibreSSL 3.6.0
+  	  - SSL(_CTX)_get/set_num_tickets in LibreSSL 3.5.0
+  	  - SSL(_CTX)_set_ciphersuites in LibreSSL 3.4.0
+  	  - EVP_PKEY_security_bits in LibreSSL 3.6.0
+  	  - SSL_CTX_set_keylog_callback in LibreSSL 3.5.0
+  	  - SSL_is_dtls in LibreSSL 3.3.2
+  	- Remove Tuure Vartiainen as an active contributor. Tuure's contributions were
+  	  instrumental in the transition from ad hoc testing to CI-based testing, which
+  	  has greatly improved Net-SSLeay's stability, reliability and compatibility.
+  	  Thanks for your contributions, Tuure!
+  1.93_03 2024-01-02
+  	- Pass RAND_seed()'s sole argument to the underlying RAND_seed() function in
+  	  libcrypto, rather than passing the value of a non-existent second argument.
+  	  Fixes GH-427. Thanks to cgf1 for the report.
+  	- Avoid explicit and implicit use of weak hash algorithms,
+  	  such as MD5 and SHA-1, in test suite. This allows tests
+  	  44_sess.t and 45_exporter.t to correctly work on systems
+  	  where crypto policies prohibit their direct use and TLS
+  	  versions that require them. An example of such a system is
+  	  Rocky Linux 9.2. Any Red Hat Enterprise Linux 9 and derived
+  	  system is likely to have similar behaviour.  Thanks to Paul
+  	  Howarth for the investigation and patches.
+  	- LibreSSL 3.8.0 release notes state: The POLICY_TREE and its
+  	  related structures and API were removed. The affected
+  	  Net::SSLeay functions are:
+  	  - X509_policy_level_get0_node
+  	  - X509_policy_level_node_count
+  	  - X509_policy_node_get0_parent
+  	  - X509_policy_node_get0_policy
+  	  - X509_policy_node_get0_qualifiers
+  	  - X509_policy_tree_free
+  	  - X509_policy_tree_get0_level
+  	  - X509_policy_tree_get0_policies
+  	  - X509_policy_tree_get0_user_policies
+  	  - X509_policy_tree_level_count
+  	  Patch by GitHub user orbea.
+  	- Add OpenSSL 3.1 and LibreSSL 3.7 minor releases to GitHub CI testing.
+  	  Update the previous minor releases to their latest versions. Add
+  	  NetBSD to BSDs job and update the other BSDs and Alpine Linux jobs to
+  	  cover additional and latest releases. Use the latest MacOS runners.
+  	- Expose SSL_CTX_set_client_hello_cb for setting a callback
+  	  the server calls when it processes a ClientHello. Expose the
+  	  following functions that can be called only from the
+  	  callback. None of these are available with LibreSSL.
+  	  - SSL_client_hello_isv2
+  	  - SSL_client_hello_get0_legacy_version
+  	  - SSL_client_hello_get0_random
+  	  - SSL_client_hello_get0_session_id
+  	  - SSL_client_hello_get0_ciphers
+  	  - SSL_client_hello_get0_compression_methods
+  	  - SSL_client_hello_get1_extensions_present
+  	  - SSL_client_hello_get_extension_order
+  	  - SSL_client_hello_get0_ext
+  	- Expose constants used by SSL_CTX_set_client_hello_cb related
+  	  functions.
+  	  - AD_ prefixed constants naming TLS alert codes for
+  	    returning from a ClientHello callback or where alert types
+  	    are used
+  	  - CLIENT_HELLO_ERROR, CLIENT_HELLO_RETRY and
+  	    CLIENT_HELLO_SUCCESS for returning from a ClientHello
+  	    callback
+  	  - TLSEXT_TYPE_ prefixed contants for naming TLS extension
+  	    types
+  	- Expose functions for setting up TLS PSK on the server
+  	  side. Only SSL_CIPHER_find is available with LibreSSL.
+  	  - SSL_use_psk_identity_hint
+  	  - SSL_CTX_use_psk_identity_hint
+  	  - SSL_set_psk_server_callback
+  	  - SSL_CTX_set_psk_server_callback
+  	  - SSL_set_psk_find_session_callback
+  	  - SSL_CTX_set_psk_find_session_callback
+  	  - SSL_SESSION_set1_master_key
+  	  - SSL_SESSION_set_cipher
+  	  - SSL_SESSION_set_protocol_version
+  	  - SSL_CIPHER_find
+  	- Expose NID_shake128, NID_shake256 and the rest of NID_sha* constants.
+  	- Expose functions for setting up TLS 1.3 PSK authentication
+  	  on the client side. Only SSL_SESSION_get0_cipher is
+  	  available with LibreSSL.
+  	  - SSL_set_psk_use_session_callback
+  	  - SSL_CTX_set_psk_use_session_callback
+  	  - SSL_CIPHER_get_handshake_digest
+  	  - SSL_SESSION_get0_cipher
+  	  - EVP_MD_get0_description
+  	  - EVP_MD_get0_name
+  	  - EVP_MD_get_type
+  	- Major documentation cleanup. Thanks to John Jetmore.
+  	- Add constants for specifying version field for certificates,
+  	  certificate requests and CRLs. Available in OpenSSL 3.0:
+  	  - X509_VERSION_1, X509_VERSION_2 and X509_VERSION_3
+  	  - X509_REQ_VERSION_1, X509_REQ_VERSION_2 and X509_REQ_VERSION_3
+  	  - X509_CRL_VERSION_1 and X509_CRL_VERSION_2
+  	- Remove conditional compilation checks from SSLeay.xs and
+  	  compatilibty notes from SSLeay.pod for OpenSSL versions
+  	  earlier than 0.9.8. This includes all 0.9.7 and earlier
+  	  releases down to 0.9.3a. Update tests respectively.
+  	- Add OpenSSL 3.2 and LibreSSL 3.8 minor releases to GitHub CI
+  	  testing. Update existing OpenSSL releases to 1.1.1w, 3.0.12
+  	  and 3.1.4.
+  	- Support compiling SSLeay.xs with a C++ compiler. Thanks to
+  	  James E Keenan and GitHub user twata1 for suggesting this,
+  	  testing and providing detailed test reports. Tested with GCC
+  	  13 g++, Clang 17 clang++ and Visual Studio Community 2022
+  	  C++ compilers. Discussion in GH-425 and GH-438.
+  	- Add constants for OPENSSL_init_crypto and related functions:
+  	  - CONF_MFLAGS_DEFAULT_SECTION
+  	  - CONF_MFLAGS_IGNORE_ERRORS
+  	  - CONF_MFLAGS_IGNORE_MISSING_FILE
+  	  - CONF_MFLAGS_IGNORE_RETURN_CODES
+  	  - CONF_MFLAGS_NO_DSO
+  	  - CONF_MFLAGS_SILENT
+  	  - OPENSSL_INIT_ADD_ALL_CIPHERS
+  	  - OPENSSL_INIT_ADD_ALL_DIGESTS
+  	  - OPENSSL_INIT_ASYNC
+  	  - OPENSSL_INIT_ATFORK
+  	  - OPENSSL_INIT_ENGINE_AFALG
+  	  - OPENSSL_INIT_ENGINE_CAPI
+  	  - OPENSSL_INIT_ENGINE_CRYPTODEV
+  	  - OPENSSL_INIT_ENGINE_DYNAMIC
+  	  - OPENSSL_INIT_ENGINE_OPENSSL
+  	  - OPENSSL_INIT_ENGINE_PADLOCK
+  	  - OPENSSL_INIT_ENGINE_RDRAND
+  	  - OPENSSL_INIT_LOAD_CONFIG
+  	  - OPENSSL_INIT_LOAD_CRYPTO_STRINGS
+  	  - OPENSSL_INIT_LOAD_SSL_STRINGS
+  	  - OPENSSL_INIT_NO_ADD_ALL_CIPHERS
+  	  - OPENSSL_INIT_NO_ADD_ALL_DIGESTS
+  	  - OPENSSL_INIT_NO_ATEXIT
+  	  - OPENSSL_INIT_NO_LOAD_CONFIG
+  	  - OPENSSL_INIT_NO_LOAD_CRYPTO_STRINGS
+  	  - OPENSSL_INIT_NO_LOAD_SSL_STRINGS
+  	- Expose functions for OpenSSL libcrypto and libssl
+  	  initialisation, configuration and deinitialisation.
+  	  These are available in OpenSSL 1.1.0 and later:
+  	  - OPENSSL_init_ssl and OPENSSL_init_crypto
+  	  - OPENSSL_cleanup, also in LibreSSL 3.6.0
+  	  - OPENSSL_INIT_new and OPENSSL_INIT_free
+  	  - OPENSSL_INIT_set_config_filename
+  	  - OPENSSL_INIT_set_config_appname
+  	  - OPENSSL_INIT_set_config_file_flags
+  	- Add new test file 23_openssl_init.t for OPENSSL_init_ssl and
+  	  related functions.
+  	- Support finding OpenSSL libraries using
+  	  ExtUtils::PkgConfig. Thanks to Paul Howarth for the patch.
+  	- Fix a number of cases where variables were declared after
+  	  code triggering Gcc and Clang warning
+  	  -Wdeclaration-after-statement. This is supported by C
+  	  language version C99 and used by Perl 5.35.5 and
+  	  later. SSLeay.xs is likely compiled with compilers that do
+  	  not support this, therefore such constructs are avoided in
+  	  SSLeay.xs. Thanks to GitHub user bulk88 for the patch.
+  	- Fix _CRT_SECURE_NO_DEPRECATE warning on Windows. Fix OpenSSL
+  	  library file path detection loop in Makefile.PL. Both thanks
+  	  to bulk88.
+  	- Update Shining Light OpenSSL detection to work with OpenSSL
+  	  1.1.1w, 3.0.12, 3.1.4 and 3.2.0 installers. Caveats: when
+  	  both 32bit and 64bit versions are installed, OpenSSL library
+  	  path detection may pick the wrong version. Static
+  	  compilation needs seems not to work with the these
+  	  versions. Thanks to bulk88 for the initial updates.
+  	- Tone down Makefile.PL and README warning against mixing
+  	  compilers and flags when compiling OpenSSL, Perl and
+  	  Net::SSLeay. This may still be a requirement on some
+  	  platforms, but, for example, with Linux and macOS mixing
+  	  clang and gcc appears to work.
+  	- Add general installation instructions in README. Thanks to
+  	  GitHub user viviparous. Update README and README.OSX.
+  1.93_02 2023-02-22
+  	- Update ppport.h to version 3.68. This eliminates thousands of
+  	  compound-token-split-by-macro compiler warnings when building Net-SSLeay with
+  	  Clang 12 or greater. Partially fixes GH-383.
+  	- Silence compound-token-split-by-macro warnings when building Net-SSLeay with
+  	  Clang 12 or greater. Fixes the remainder of GH-383.
+  	- When building Net-SSLeay, search for the openssl binary in the same directory
+  	  in which Perl is installed (i.e. $Config{prefix}/bin/). Thanks to Henrik
+  	  Grimler for the patch.
+  	- Expose EVP_PKEY_security_bits. Thanks to Felipe Gasper.
+  	- Major update to Gihub Actions configuration. Thanks to Felipe Gasper.
+  	  New testing targets are:
+  	    - OpenSSL and LibreSSL on Alpine Linux on i386, x390x, arm32v6,
+  	      ar32v7 and arm64v8 architectures.
+  	    - OpenSSL and LibreSSL on Ubuntu on i386, x390x, ar32v7 and arm64v8
+  	      architectures.
+  	    - OpenSSL on FreeBSD 13.0, not enabled yet because of GH #272 and #394
+  	    - LibreSSL on FreeBSD 13.0
+  	    - LibreSSL on OpenBSD 6.9
+  	    - LibreSSL on OpenBSD 7.1
+  	    - Cygwin on x86_64
+  	- Fix compilation failure using cl. Microsoft cl compiler do
+  	  not like when preprocessor directives are inside a
+  	  macro. Fixes GH-403. Thanks to Jean-Damien Durand.
+  	- Update CTX_use_PKCS12_file() and CTX_use_PKCS12_file() to
+  	  use BIO functions for avoiding "no OPENSSL_Applink" runtime
+  	  errors. Fixes GH-281 and RT#101638. Thanks to Jean-Damien
+  	  Durand.
+  	- Add to README.Win32 more information about OPENSSL_Applink
+  	  and how it may be needed with FILE pointers and POSIX/Unix
+  	  fds. Recommended method is to avoid them and use OpenSSL BIO
+  	  functions instead. Update SSLeay.pod with alternatives to
+  	  Net::SSLeay::SESSION_print_fp(). Closes GH-411.
+  	- Refactor variable declarations in RSA_generate_key to allow SSLeay.xs to
+  	  compile under -Werror=declaration-after-statement. Fixes GH-407. Thanks to
+  	  dharanlinux for the report.
+  	- Fix memory leaks after calls to X509_get_ext_d2i. Thanks to Anton Borowka.
+  	- Documentation fix: Correct CRL revocation reasons in
+  	  P_X509_CRL_add_revoked_serial_hex(). Closes GH-397. Reported
+  	  by Marc Reisner.
+  	- Support stable releases of LibreSSL 3.5 and 3.6.
+  	- Update callback set by SSL_set_session_secret_cb to adjust
+  	  master secret's length. This is needed with OpenSSL 1.1.1
+  	  and later that provide buffer that is now longer than 48
+  	  octets. Fix Net::SSLeay::get_keyblock_size() size
+  	  calculation with AEAD ciphers. These functions were
+  	  originally added to OpenSSL and Net::SSLeay for
+  	  EAP-FAST. These changes allow EAP-FAST to work with AEAD
+  	  ciphers and with OpenSSL versions 1.1.1 and later.
+  	- Remove code guarded by obsolete
+  	  SSL_F_SSL_SET_HELLO_EXTENSION #ifdef. This was used by the
+  	  initial EAP-FAST related OpenSSL patch which was never part
+  	  of the OpenSSL distribution.
+  	- PEM_get_string_PrivateKey() currently uses DES-CBC as its
+  	  default encryption algorithm. Test 33_x509_create_cert.t now
+  	  skips testing the default algorithm on systems that support
+  	  providers but don't have the legacy provider available. One
+  	  such system is FreeBSD 13.0 with OpenSSL which was added as
+  	  disabled in GitHub actions by PR GH-402 but can now be
+  	  enabled. Long term fix is to replace DES-CBC with a modern
+  	  cipher. Allows closing GH-394.
+  1.93_01 2022-03-20
+  	- LibreSSL 3.5.0 has removed access to internal data
+  	  structures: Use X509_get0_tbs_sigalg() and
+  	  OCSP_SINGLERESP_get0_id() like in OpenSSL 1.1. Also use
+  	  RSA_get0... with RSA_get_key_parameters(). Thanks to
+  	  Alexander Bluhm.
+  	- Expose SSL_CTX_get_min_proto_version(),
+  	  SSL_CTX_get_max_proto_version(), SSL_get_min_proto_version()
+  	  and SSL_get_max_proto_version() with LibresSSL 3.4.0 and
+  	  later. Thanks to Alexander Bluhm.
+  	- Update tests 07_sslecho.t and 44_sess.t to work around
+  	  failures seen on Windows with Perls earlier than 5.20. For
+  	  the details, see GH-356 and look for CloseHandle() in Perl
+  	  5.20.0 changelog. Thanks to GitHub user twata1 for the
+  	  report and additional help.
+  	- Alexander's recent work with RSA_get_key_parameters(),
+  	  allows to make it available with all OpenSSL versions. It
+  	  was already available with versions earlier than 1.1.0.
+  	- Expose BN_dup(), BN_clear(), BN_clear_free() and BN_free().
+  	- Use PTR2IV instead of direct cast to IV to fix compilation
+  	  warning with SSLeay.xs internal function bn2sv().
+  	- Expose X509_CRL_get0_lastUpdate(),
+  	  X509_CRL_get0_nextUpdate(), X509_CRL_set1_lastUpdate() and
+  	  X509_CRL_set1_nextUpdate() that became available with
+  	  OpenSSL 1.1.0 and LibreSSL 2.7.0. These, and the respective
+  	  deprecated _get/set_ aliases, are available with all OpenSSL
+  	  and LibreSSL versions. Fixes part of RT#124371.
+  	- Note in documentation that the X509_CRL_get* functions
+  	  return a pointer to time structure that should be considered
+  	  read-only.
+  	- Use ASN1_STRING_get0_data() instead of ASN1_STRING_data() to
+  	  avoid compile time deprecation warnings. Partly fixes
+  	  RT#124371.
+  	- Add the following constants from Current OpenSSL master branch:
+  	  - SSL_ASYNC_PAUSED
+  	  - SSL_ASYNC_NO_JOBS
+  	  - SSL_CLIENT_HELLO_CB
+  	  - SSL_ERROR_WANT_ASYNC
+  	  - SSL_ERROR_WANT_ASYNC_JOB
+  	  - SSL_ERROR_WANT_CLIENT_HELLO_CB
+  	  - SSL_ERROR_WANT_RETRY_VERIFY
+  	  - SSL_MODE_ASYNC
+  	  - SSL_MODE_NO_AUTO_CHAIN
+  	  - SSL_OP_ALLOW_CLIENT_RENEGOTIATION
+  	  - SSL_OP_CLEANSE_PLAINTEXT
+  	  - SSL_OP_DISABLE_TLSEXT_CA_NAMES
+  	  - SSL_OP_ENABLE_KTLS
+  	  - SSL_OP_IGNORE_UNEXPECTED_EOF
+  	  - SSL_OP_NO_EXTENDED_MASTER_SECRET
+  	  - SSL_RETRY_VERIFY
+  	  - SSL_SESS_CACHE_UPDATE_TIME
+  	  - X509_TRUST_DEFAULT
+  	  - X509_V_ERR_AUTHORITY_KEY_IDENTIFIER_CRITICAL
+  	  - X509_V_ERR_CA_BCONS_NOT_CRITICAL
+  	  - X509_V_ERR_CA_CERT_MISSING_KEY_USAGE
+  	  - X509_V_ERR_EC_KEY_EXPLICIT_PARAMS
+  	  - X509_V_ERR_EMPTY_SUBJECT_ALT_NAME
+  	  - X509_V_ERR_EMPTY_SUBJECT_SAN_NOT_CRITICAL
+  	  - X509_V_ERR_EXTENSIONS_REQUIRE_VERSION_3
+  	  - X509_V_ERR_ISSUER_NAME_EMPTY
+  	  - X509_V_ERR_KU_KEY_CERT_SIGN_INVALID_FOR_NON_CA
+  	  - X509_V_ERR_MISSING_AUTHORITY_KEY_IDENTIFIER
+  	  - X509_V_ERR_MISSING_SUBJECT_KEY_IDENTIFIER
+  	  - X509_V_ERR_NO_ISSUER_PUBLIC_KEY
+  	  - X509_V_ERR_PATHLEN_INVALID_FOR_NON_CA
+  	  - X509_V_ERR_PATHLEN_WITHOUT_KU_KEY_CERT_SIGN
+  	  - X509_V_ERR_SIGNATURE_ALGORITHM_INCONSISTENCY
+  	  - X509_V_ERR_SIGNATURE_ALGORITHM_MISMATCH
+  	  - X509_V_ERR_SUBJECT_KEY_IDENTIFIER_CRITICAL
+  	  - X509_V_ERR_SUBJECT_NAME_EMPTY
+  	  - X509_V_ERR_UNSUPPORTED_SIGNATURE_ALGORITHM
+  	- Expose X509_get0_notBefore(), X509_getm_notBefore()
+  	  X509_get0_nextAfter() and X509_getm_nextAfter() that became
+  	  available with OpenSSL 1.1.0 and LibreSSL 2.7.0. These, and
+  	  the deprecated _get functions, are available, as aliases
+  	  when needed, with all OpenSSL and LibreSSL versions. Fixes
+  	  GH-367.
+  	- Only export the TLSv1*_method() functions when support for the respective TLS
+  	  version is available in the underlying libssl library. This allows
+  	  Net::SSLeay to be built against libssl libraries that were compiled without
+  	  support for old TLS versions.
+
+-------------------------------------------------------------------
 Thu Dec 14 13:47:04 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Use constants X509_VERSION_3 and X509_REQ_VERSION_1 when available (#GH-449)

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 26 14:27:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.3:
+  * https://www.qt.io/blog/qt-6.6.3-released
+- Drop patch, merged upstream:
+  * 0001-Link-VKB-and-VKB.Settings-into-VKB.Components-and-VK.patch
+
+-------------------------------------------------------------------
 Wed Feb 14 16:53:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.2

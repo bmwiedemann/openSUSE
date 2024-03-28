@@ -93,4 +93,12 @@ Needed by python-seaborn, see request 436927</comment>
     this version.</comment>
     <requestid>1137831</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>54eee24d45cf24591c341e25bed2817a</srcmd5>
+    <version>0.5.6</version>
+    <time>1711630525</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1163267</requestid>
+  </revision>
 </revisionlist>

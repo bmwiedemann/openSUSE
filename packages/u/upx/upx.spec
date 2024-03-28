@@ -17,14 +17,13 @@
 
 
 Name:           upx
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Summary:        The Ultimate Packer for eXecutables
 License:        Apache-2.0 WITH LLVM-exception AND GPL-2.0-or-later AND BSD-4-Clause AND BSD-3-Clause AND MIT AND Zlib AND (CPL-1.0 OR LGPL-2.1-only)
 Group:          Development/Tools/Other
 URL:            https://upx.github.io/
 Source:         https://github.com/upx/upx/releases/download/v%version/upx-%version-src.tar.xz
-Patch0:         upx-aarch64.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libucl1-devel

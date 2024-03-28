@@ -1,7 +1,7 @@
 #
 # spec file for package perl-GDGraph
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,41 +18,48 @@
 
 %define cpan_name GDGraph
 Name:           perl-GDGraph
-Version:        1.54
+Version:        1.560.0
 Release:        0
-Summary:        Produces charts with GD
+# 1.56 -> normalize -> 1.560.0
+%define cpan_version 1.56
+#Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND GPL-2.0-or-later
-Group:          Development/Libraries/Perl
-URL:            https://metacpan.org/release/GDGraph
-Source0:        https://cpan.metacpan.org/modules/by-module/GD/GDGraph-%{version}.tar.gz
+Summary:        Produces charts with GD
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/B/BP/BPS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         perl-GDGraph-XBM-Magic.patch
+BuildArch:      noarch
 BuildRequires:  perl
-BuildRequires:  perl-ExtUtils-MakeMaker >= 6.76
 BuildRequires:  perl-macros
 BuildRequires:  perl(Capture::Tiny) >= 0.30
-BuildRequires:  perl(GD) >= 1.23
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
+BuildRequires:  perl(GD) >= 1.18
 BuildRequires:  perl(GD::Text) >= 0.80
-BuildRequires:  perl(Test::Exception) >= 0.400000
+BuildRequires:  perl(Test::Exception) >= 0.40
 BuildRequires:  perl(Test::More) >= 0.88
-Requires:       perl(GD) >= 1.23
+Requires:       perl(GD) >= 1.18
 Requires:       perl(GD::Text) >= 0.80
-BuildArch:      noarch
+Provides:       perl(GD::Graph) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
 Produces charts with GD
 
 %prep
-%autosetup -p1 -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+
+# MANUAL BEGIN
 perl -pi -e 's/\r\n/\n/' samples/sample64.pl
+# MANUAL END
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
 %make_build
 
 %check
-%make_build test
+make test
 
 %install
 %perl_make_install
@@ -60,8 +67,6 @@ perl Makefile.PL INSTALLDIRS=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%license Dustismo.LICENSE
-%doc CHANGES Dustismo_Sans.ttf README samples
+%doc CHANGES Dustismo.LICENSE Dustismo_Sans.ttf README samples
 
 %changelog

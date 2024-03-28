@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 22 19:12:44 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Remove perl-IO-Socket-SSL-Openssl32.patch, fixed upstream
+
+-------------------------------------------------------------------
+Tue Jan 23 03:07:53 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.085
+   see /usr/share/doc/packages/perl-IO-Socket-SSL/Changes
+
+  2.085 2024/01/22
+  - #147 fix test which failed due to behavior changes in OpenSSL 3.2
+  - update PublicSuffix
+  - add examples for TLS JA3/JA4 fingerprinting to tls_fingerprint/
+
+-------------------------------------------------------------------
 Fri Dec 22 08:44:13 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix the test t/core.t to build with OpenSSL 3.2.0. [bsc#1218342]

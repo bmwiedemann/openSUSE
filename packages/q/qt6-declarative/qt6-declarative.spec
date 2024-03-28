@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.6.2
+%define real_version 6.6.3
 %define short_version 6.6
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.6.2
+Version:        6.6.3
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
@@ -36,9 +36,6 @@ Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-declarative-rpmlintrc
 # PATCH-FIX-DOWNSTREAM
 Patch0:         0001-qmlimportscanner-Include-module-versions-again.patch
-# PATCH-FIX-UPSTREAM -- make build reproducible
-Patch1:         0001-QuickControls-Link-the-impl-libraries-into-the-base-.patch
-Patch2:         0001-Dialogs-Depend-on-controls-styles-in-QuickDialogs2Qu.patch
 # PATCH-FIX-UPSTREAM kde#482580
 Patch3:         0001-Fix-PointHandler-rejecting-click-events-near-window-.patch
 BuildRequires:  pkgconfig

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 28 03:51:24 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add do-not-hardcode-c++-version.patch, fix build on gtest 1.14.0
+
+-------------------------------------------------------------------
 Sat Jul  2 03:08:04 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.7.21

@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Mar 27 09:38:34 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.7.1:
+  * Fixed empty tool_hugehelp.c file
+
+- Update to 8.7.0:
+  * Security fixes:
+    - [bsc#1221665, CVE-2024-2004] Usage of disabled protocol
+    - [bsc#1221667, CVE-2024-2398] HTTP/2 push headers memory-leak
+    - [bsc#1221666, CVE-2024-2379] QUIC certificate check bypass with wolfSSL
+    - [bsc#1221668, CVE-2024-2466] TLS certificate check bypass with mbedTLS
+  * Changes:
+    - configure: add --disable-docs flag
+    - CURLINFO_USED_PROXY: return bool whether the proxy was used
+    - digest: support SHA-512/256
+  * Bugfixes:
+    - asyn-thread: use wakeup_close to close the read descriptor
+    - bufq: writing into a softlimit queue cannot be partial
+    - cmake: add USE_OPENSSL_QUIC support
+    - cookie: if psl fails, reject the cookie
+    - curl: exit on config file parser errors
+    - digest: add check for hashing error
+    - docs/libcurl: add TLS backend info for all TLS options
+    - file: use xfer buf for file:// transfers
+    - ftp: do lineend conversions in client writer
+    - ftp: fix socket wait activity in ftp_domore_getsock
+    - http2: memory errors in the push callbacks are fatal
+    - http2: push headers better cleanup
+    - libssh/libssh2: return error on too big range
+    - OpenSSL QUIC: adapt to v3.3.x
+    - setopt: fix check for CURLOPT_PROXY_TLSAUTH_TYPE value
+    - setopt: fix disabling all protocols
+    - sha512_256: add support for GnuTLS and OpenSSL
+    - smtp: fix STARTTLS
+    - strtoofft: fix the overflow check
+    - TIMER_STARTTRANSFER: set the same for everyone
+    - TLS: start shutdown only when peer did not already close
+    - tool_getparam: accept a blank -w ""
+    - tool_getparam: handle non-existing (out of range) short-options
+    - tool_operate: change precedence of server Retry-After time
+    - transfer.c: break receive loop in speed limited transfers
+    - version: allow building with ancient libpsl
+    - vquic-tls: fix the error code returned for bad CA file
+    - vtls: fix tls proxy peer verification
+    - vtls: revert "receive max buffer" + add test case
+    - VULN-DISCLOSURE-POLICY.md: update detail about CVE requests
+    - websocket: fix curl_ws_recv()
+  * Remove patch upstream:
+    - 0001-vtls-revert-receive-max-buffer-add-test-case.patch
+
+-------------------------------------------------------------------
 Tue Mar 12 08:43:30 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Remove the nghttp2 version requirement as a version guard around

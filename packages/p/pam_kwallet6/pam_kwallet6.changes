@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 26 18:06:03 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.3
+- Changes since 6.0.2:
+  * update version for new release
+
+-------------------------------------------------------------------
 Thu Mar 14 22:28:42 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Also attempt pam-config enablement in %posttrans (boo#1221371)

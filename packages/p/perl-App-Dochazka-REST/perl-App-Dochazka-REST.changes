@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 27 20:58:36 UTC 2024 - Nathan Cutler <ncutler@suse.com>
+
+- spec:
+  + add user() and group() provides (boo#1221423) 
+
+-------------------------------------------------------------------
 Wed Jun 29 15:50:18 UTC 2022 - Nathan Cutler <ncutler@suse.com>
 
 - updated to 0.559

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 22 16:41:21 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.77
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.77      2024-03-11 00:56:14Z
+      - Documentation updates for GH#448 (GH#457) (Russell Shingleton)
+
+-------------------------------------------------------------------
 Fri Mar  8 23:12:35 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

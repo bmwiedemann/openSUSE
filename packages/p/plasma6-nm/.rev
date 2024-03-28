@@ -23,4 +23,12 @@
     <comment>- Make plasma6-nm-libreswan obsolete the plasma5 package (forwarded request 1158185 from krop)</comment>
     <requestid>1158190</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0bb962ed045a62b6a12d0b02640ead42</srcmd5>
+    <version>6.0.3</version>
+    <time>1711630437</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.0.3. The release actually builds this time! (After other distros already found major issues...) (forwarded request 1162359 from Vogtinator)</comment>
+    <requestid>1162449</requestid>
+  </revision>
 </revisionlist>

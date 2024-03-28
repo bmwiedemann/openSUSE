@@ -283,4 +283,12 @@
     <comment></comment>
     <requestid>1158454</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c983d0068e4a71fd7011fd51e4d2fc0f</srcmd5>
+    <version>6.6.3</version>
+    <time>1711630377</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.6.3. Not built yet (forwarded request 1162337 from krop)</comment>
+    <requestid>1162374</requestid>
+  </revision>
 </revisionlist>

@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>794603</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>2bd80e88061ada178a72f8e752c2f9a4</srcmd5>
+    <version>0.155</version>
+    <time>1711630539</time>
+    <user>anag+factory</user>
+    <comment>- spec:
+  + add user() and group() provides (boo#1221423)</comment>
+    <requestid>1163148</requestid>
+  </revision>
 </revisionlist>

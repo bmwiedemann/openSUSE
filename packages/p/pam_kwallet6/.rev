@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1158166</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2432f997019a373bc49b7bc51d635ecf</srcmd5>
+    <version>6.0.3</version>
+    <time>1711630430</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.0.3. The release actually builds this time! (After other distros already found major issues...) (forwarded request 1162359 from Vogtinator)</comment>
+    <requestid>1162438</requestid>
+  </revision>
 </revisionlist>

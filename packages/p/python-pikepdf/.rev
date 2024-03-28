@@ -261,4 +261,17 @@
   * Minor update to metadata documentation.</comment>
     <requestid>1158438</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>83a8700d090847e65193a4c0b41d082d</srcmd5>
+    <version>8.14.0</version>
+    <time>1711630535</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.14.0:
+  * Added QPDF_FUTURE environment variable for compile time testing
+    of new QPDF features.
+  * Added new code to suppress console window from appearing on
+    Windows in some situations when decoding JBIG2.
+  * Updated GitHub Actions versions.</comment>
+    <requestid>1163291</requestid>
+  </revision>
 </revisionlist>

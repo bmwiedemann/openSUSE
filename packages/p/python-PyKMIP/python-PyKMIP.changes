@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 28 03:58:37 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Clean up Python 2 leftovers.
+- Add patch crypto-42.patch:
+  * Use cryptography.hazmat.primitives.serialization to load private keys.
+- Add patch no-ssl-wrap-socket.patch:
+  * Do not use removed in Python 3.12 function, ssl.wrap_socket.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Fri Sep  8 06:13:02 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add upstream patch fix_test_mac_with_cryptographic_failure.patch

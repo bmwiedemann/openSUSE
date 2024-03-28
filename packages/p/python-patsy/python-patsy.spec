@@ -27,6 +27,7 @@
 %bcond_with test
 %endif
 %define skip_python36 1
+%{?sle15allpythons}
 Name:           python-patsy%{pkg_suffix}
 Version:        0.5.6
 Release:        0

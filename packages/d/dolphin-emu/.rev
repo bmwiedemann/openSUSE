@@ -99,4 +99,16 @@
     <comment>- Limited build to fmt &lt; 10.</comment>
     <requestid>1140381</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7a1775acd4c53b02b8694b8e813a43c2</srcmd5>
+    <version>5.0.21264</version>
+    <time>1711630497</time>
+    <user>anag+factory</user>
+    <comment>- Updatet to 5.0.21264 1efda863e47b690f460f069502a4391b3c7d87c4
+  * Removed file dolphin-emu-not-discord-presence.patch.
+  * Using enet, minizip-ng and zlib-ng from externals source.
+  * Changed fmt minimal version to 10.1.
+  * Changed build with Qt6.</comment>
+    <requestid>1163170</requestid>
+  </revision>
 </revisionlist>

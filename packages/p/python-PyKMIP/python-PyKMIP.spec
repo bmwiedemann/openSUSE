@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyKMIP
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,11 @@
 #
 
 
-%bcond_without python2
 Name:           python-PyKMIP
 Version:        0.10.0
 Release:        0
 Summary:        KMIP v11 library
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/OpenKMIP/PyKMIP
 Source:         https://files.pythonhosted.org/packages/source/P/PyKMIP/PyKMIP-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-tests-SQLAlchemy-140.patch gh#OpenKMIP/PyKMIP#656 mcepl@suse.com
@@ -30,18 +28,24 @@ Source:         https://files.pythonhosted.org/packages/source/P/PyKMIP/PyKMIP-%
 Patch0:         fix-tests-SQLAlchemy-140.patch
 # https://github.com/OpenKMIP/PyKMIP/issues/668
 Patch1:         python-PyKMIP-no-mock.patch
-# PATCH-FIX-OPENSUSE crypto-39.patch gh#OpenKMIP/PyKMIP#689
+# PATCH-FIX-UPSTREAM crypto-39.patch gh#OpenKMIP/PyKMIP#689
 Patch2:         crypto-39.patch
 # PATCH-FIX-UPSTREAM fix_test_mac_with_cryptographic_failure.patch gh#OpenKMIP/PyKMIP#702
 Patch3:         fix_test_mac_with_cryptographic_failure.patch
+# PATCH-FIX-OPENSUSE Use cryptography.hazmat.primitives.serialization for loading private keys.
+Patch4:         crypto-42.patch
+# PATCH-FIX-UPSTREAM Based on gh#OpenKMIP/PyKMIP#707, including some changes suggested
+Patch5:         no-ssl-wrap-socket.patch
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-SQLAlchemy
@@ -49,14 +53,8 @@ Requires:       python-cryptography
 Requires:       python-requests
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-enum34
-%endif
-%ifpython2
-Requires:       python-enum34
-%endif
 %python_subpackages
 
 %description
@@ -69,12 +67,14 @@ Standards`_ (OASIS). PyKMIP supports a subset of features in versions
 
 %prep
 %autosetup -p1 -n PyKMIP-%{version}
+# Not needed, we use Python 3.4+ only
+sed -i '/"enum-compat",/d' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pykmip-server
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -91,7 +91,7 @@ Standards`_ (OASIS). PyKMIP supports a subset of features in versions
 %license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/kmip
-%{python_sitelib}/PyKMIP-%{version}*-info
+%{python_sitelib}/PyKMIP-%{version}.dist-info
 %python_alternative %{_bindir}/pykmip-server
 
 %changelog

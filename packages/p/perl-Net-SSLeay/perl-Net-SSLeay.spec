@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-SSLeay
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,20 @@
 
 %define cpan_name Net-SSLeay
 Name:           perl-Net-SSLeay
-Version:        1.92
+Version:        1.940.0
 Release:        0
-Summary:        Perl bindings for OpenSSL and LibreSSL
+# 1.94 -> normalize -> 1.940.0
+%define cpan_version 1.94
 License:        Artistic-2.0
+Summary:        Perl bindings for OpenSSL and LibreSSL
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/C/CH/CHRISN/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/C/CH/CHRISN/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-# PATCH-FIX-UPSTREAM https://github.com/radiator-software/p5-net-ssleay/issues/449
-Patch0:         Use-constants-X509_VERSION_3-and-X509_REQ_VERSION_1-when-available.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Net::SSLeay) = %{version}
+Provides:       perl(Net::SSLeay::Handle) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  libopenssl-devel
@@ -44,8 +47,9 @@ This module provides Perl bindings for libssl (an SSL/TLS API) and
 libcrypto (a cryptography API).
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

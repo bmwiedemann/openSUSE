@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 26 18:05:57 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.3
+- Changes since 6.0.2:
+  * update version for new release
+  * Do not activate containment when one of its applet is activated (kde#483941,kde#479084)
+
+-------------------------------------------------------------------
 Sat Mar 16 21:40:52 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Work around %preun in installed packages killing the session

@@ -21,7 +21,7 @@
 # need ssl always for python-pycurl
 %bcond_without openssl
 Name:           curl
-Version:        8.6.0
+Version:        8.7.1
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
@@ -35,8 +35,6 @@ Patch1:         dont-mess-with-rpmoptflags.patch
 Patch2:         curl-secure-getenv.patch
 #PATCH-FIX-OPENSUSE bsc#1076446 protocol redirection not supported or disabled
 Patch3:         curl-disabled-redirect-protocol-message.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0001-vtls-revert-receive-max-buffer-add-test-case.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 Requires:       libcurl4 = %{version}
@@ -125,7 +123,9 @@ sed -i 's/\(link_all_deplibs=\)unknown/\1no/' configure
     --with-libssh \
     --enable-symbol-hiding \
     --disable-static \
-    --enable-threaded-resolver
+    --enable-threaded-resolver \
+    --with-zsh-functions-dir=%{_datadir}/zsh/site-functions/ \
+    --with-fish-functions-dir=%{_datadir}/fish/vendor_completions.d
 
 # if this fails, the above sed hack did not work
 ./libtool --config | grep -q link_all_deplibs=no
@@ -161,7 +161,6 @@ popd
 %{_bindir}/curl
 %{_datadir}/zsh/site-functions/_curl
 %{_mandir}/man1/curl.1%{?ext_man}
-%{_mandir}/man1/mk-ca-bundle.1%{?ext_man}
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
 %dir %{_datadir}/fish/

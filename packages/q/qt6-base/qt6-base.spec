@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.6.2
+%define real_version 6.6.3
 %define short_version 6.6
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.6.2
+Version:        6.6.3
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -429,7 +429,7 @@ Development files for the Qt 6 OpenGLWidgets library.
 %package -n libQt6PrintSupport6
 Summary:        Qt 6 PrintSupport library
 Requires:       libQt6Widgets6 = %{version}
-Recommends:     qt6-printsupport-cups = %{version}
+Requires:       qt6-printsupport-cups = %{version}
 
 %description -n libQt6PrintSupport6
 An abstraction over the platform-specific printing systems. Using

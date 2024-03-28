@@ -1,33 +1,8 @@
-Index: bcmatroska2-5.2.1/BcMatroska2Config.cmake.in
+Index: bcmatroska2-5.3.26/corec/corec/CMakeLists.txt
 ===================================================================
---- bcmatroska2-5.2.1.orig/BcMatroska2Config.cmake.in
-+++ bcmatroska2-5.2.1/BcMatroska2Config.cmake.in
-@@ -39,6 +39,6 @@ else()
- 	get_target_property(BCMATROSKA2_LIBRARIES ${BCMATROSKA2_TARGETNAME} LOCATION)
- endif()
- 
--set(BCMATROSKA2_INCLUDE_DIRS "@CMAKE_INSTALL_FULL_INCLUDEDIR@")
-+set(BCMATROSKA2_INCLUDE_DIRS "@CMAKE_INSTALL_FULL_INCLUDEDIR@/bcmatroska2")
- 
- set(BCMATROSKA2_FOUND 1)
-Index: bcmatroska2-5.2.1/CMakeLists.txt
-===================================================================
---- bcmatroska2-5.2.1.orig/CMakeLists.txt
-+++ bcmatroska2-5.2.1/CMakeLists.txt
-@@ -75,7 +75,7 @@ add_subdirectory(libebml2)
- add_subdirectory(libmatroska2)
- 
- install(FILES ${CMAKE_BINARY_DIR}/config.h
--	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/corec
-+	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/bcmatroska2/corec
- )
- 
- include(CMakePackageConfigHelpers)
-Index: bcmatroska2-5.2.1/corec/corec/CMakeLists.txt
-===================================================================
---- bcmatroska2-5.2.1.orig/corec/corec/CMakeLists.txt
-+++ bcmatroska2-5.2.1/corec/corec/CMakeLists.txt
-@@ -104,18 +104,18 @@ install(FILES
+--- bcmatroska2-5.3.26.orig/corec/corec/CMakeLists.txt
++++ bcmatroska2-5.3.26/corec/corec/CMakeLists.txt
+@@ -103,18 +103,18 @@ install(FILES
  	memalloc.h
  	memheap.h
  	portab.h
@@ -52,7 +27,7 @@ Index: bcmatroska2-5.2.1/corec/corec/CMakeLists.txt
  install(FILES
  	helpers/parser/buffer.h
  	helpers/parser/dataheap.h
-@@ -125,16 +125,16 @@ install(FILES
+@@ -124,16 +124,16 @@ install(FILES
  	helpers/parser/strtab.h
  	helpers/parser/strtypes.h
  	helpers/parser/urlpart.h
@@ -74,23 +49,23 @@ Index: bcmatroska2-5.2.1/corec/corec/CMakeLists.txt
  )
 -install(FILES str/str.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/corec/str)
 +install(FILES str/str.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/bcmatroska2/corec/str)
-Index: bcmatroska2-5.2.1/libebml2/CMakeLists.txt
+Index: bcmatroska2-5.3.26/libebml2/CMakeLists.txt
 ===================================================================
---- bcmatroska2-5.2.1.orig/libebml2/CMakeLists.txt
-+++ bcmatroska2-5.2.1/libebml2/CMakeLists.txt
-@@ -34,5 +34,5 @@ add_library(ebml2-objects OBJECT
- set_target_properties(ebml2-objects PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
+--- bcmatroska2-5.3.26.orig/libebml2/CMakeLists.txt
++++ bcmatroska2-5.3.26/libebml2/CMakeLists.txt
+@@ -34,5 +34,5 @@ add_library(bcmatroska2-ebml-objects OBJ
+ set_target_properties(bcmatroska2-ebml-objects PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
  
  install(DIRECTORY ebml
 -	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 +	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/bcmatroska2
  )
-Index: bcmatroska2-5.2.1/libmatroska2/CMakeLists.txt
+Index: bcmatroska2-5.3.26/libmatroska2/CMakeLists.txt
 ===================================================================
---- bcmatroska2-5.2.1.orig/libmatroska2/CMakeLists.txt
-+++ bcmatroska2-5.2.1/libmatroska2/CMakeLists.txt
-@@ -76,5 +76,5 @@ if(ENABLE_SHARED)
- endif()
+--- bcmatroska2-5.3.26.orig/libmatroska2/CMakeLists.txt
++++ bcmatroska2-5.3.26/libmatroska2/CMakeLists.txt
+@@ -71,5 +71,5 @@ install(TARGETS bcmatroska2 EXPORT ${PRO
+ )
  
  install(DIRECTORY matroska
 -	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}

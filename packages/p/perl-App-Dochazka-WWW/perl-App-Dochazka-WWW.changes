@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 27 21:02:06 UTC 2024 - Nathan Cutler <ncutler@suse.com>
+
+- spec:
+  + add user() and group() provides (boo#1221423) 
+
+-------------------------------------------------------------------
 Mon Mar  9 08:52:09 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use BuildRequires: pkgconfig(systemd) instead of systemd: allow

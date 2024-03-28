@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Mar 27 17:51:40 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.3.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.3.1
+- Changes since 6.0.3:
+  * navigationpanel: Remove feature that moves it to the right when the screen height is small
+
+-------------------------------------------------------------------
+Tue Mar 26 18:06:17 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.3
+- Changes since 6.0.2:
+  * update version for new release
+  * volumeosd: Properly bind volume keys Partially addresses https://invent.kde.org/plasma/plasma-mobile/-/issues/328
+  * kcms/time: Fix timezone dialog constantly popping up and down the keyboard while typing We need to ensure that there isn't an index set on the listview
+  * components/mobileshell: Don't tie MarqueeLabel durations to kirigami duration lengths Otherwise setting the animation speed will affect the MarqueeLabel speed, which will look very glitched if it's fast.
+  * homescreens/folio: Minimize all windows when pressing start key rather than activate "show desktop" mode Fixes https://invent.kde.org/plasma/plasma-mobile/-/issues/333
+  * navigationpanel: Fix remnants of gesture-only setting affecting panel height BUG: 483663 (kde#483663)
+  * taskpanel: Fix close vkbd button not showing
+  * initialstart: Ensure initial value of 24 hour switch is obtained Otherwise the switch's state is always off.
+
+-------------------------------------------------------------------
 Wed Mar 13 09:10:13 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.2:

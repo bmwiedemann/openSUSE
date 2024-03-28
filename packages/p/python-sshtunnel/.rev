@@ -82,4 +82,12 @@
     <comment></comment>
     <requestid>1162364</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>40aea9375e884d56e68089f711acd699</srcmd5>
+    <version>0.4.0</version>
+    <time>1711630511</time>
+    <user>anag+factory</user>
+    <comment>- Require update-alternatives for the scriptlets.</comment>
+    <requestid>1163239</requestid>
+  </revision>
 </revisionlist>

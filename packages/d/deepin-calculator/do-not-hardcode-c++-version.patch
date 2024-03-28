@@ -1,0 +1,28 @@
+diff -Nur deepin-calculator-5.7.21/CMakeLists.txt deepin-calculator-5.7.21-new/CMakeLists.txt
+--- deepin-calculator-5.7.21/CMakeLists.txt	2022-04-21 15:02:14.000000000 +0800
++++ deepin-calculator-5.7.21-new/CMakeLists.txt	2024-03-28 10:47:22.668192398 +0800
+@@ -9,7 +9,9 @@
+ 
+ list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR})
+ 
+-set(CMAKE_CXX_STANDARD 11)
++if (NOT CMAKE_CXX_STANDARD)
++    set(CMAKE_CXX_STANDARD 11)
++endif ()
+ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+ set(CMAKE_AUTOMOC ON)
+ set(CMAKE_AUTORCC ON)
+diff -Nur deepin-calculator-5.7.21/tests/CMakeLists.txt deepin-calculator-5.7.21-new/tests/CMakeLists.txt
+--- deepin-calculator-5.7.21/tests/CMakeLists.txt	2022-04-21 15:02:14.000000000 +0800
++++ deepin-calculator-5.7.21-new/tests/CMakeLists.txt	2024-03-28 11:16:55.285377531 +0800
+@@ -12,7 +12,9 @@
+ 
+ ADD_COMPILE_OPTIONS(-fno-access-control)
+ 
+-set(CMAKE_CXX_STANDARD 11)
++if (NOT CMAKE_CXX_STANDARD)
++    set(CMAKE_CXX_STANDARD 11)
++endif ()
+ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+ set(CMAKE_AUTOMOC ON)
+ set(CMAKE_AUTORCC ON)

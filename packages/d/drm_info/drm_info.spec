@@ -1,7 +1,7 @@
 #
 # spec file for package drm_info
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           drm_info
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        Small utility to dump info about DRM devices
 License:        MIT

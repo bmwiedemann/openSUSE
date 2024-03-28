@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 28 05:39:38 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Nov 10 11:52:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.0.0:

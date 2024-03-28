@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 19 11:25:56 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update th-compat to version 0.1.5.
+  ### 0.1.5 [2024.03.19]
+  * Support building with `template-haskell-2.22.*` (GHC 9.10).
+
+-------------------------------------------------------------------
 Mon Jan 22 12:28:40 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update th-compat to version 0.1.4 revision 4.

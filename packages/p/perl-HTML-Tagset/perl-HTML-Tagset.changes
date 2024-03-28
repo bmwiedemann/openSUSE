@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Mar 22 16:11:52 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.24
+   see /usr/share/doc/packages/perl-HTML-Tagset/Changes
+
+  2024-03-11  Andy Lester
+          * Release 3.24
+          No changes in functionality. Only updates metadata for builds.
+  2024-03-09  Andy Lester
+          * Release 3.22
+          HTML::Tagset now requires Perl 5.10.1. It might run on earlier
+          Perls but I don't have the infrastructure to test them.
+          Added <ins> and <del> to %isPhraseMarkup (RT #151970)
+          Fixed docs about %isBodyElement calling it %isBodyMarkup
+          (RT #34913, RT #109024, RT #118356)
+          Cleaned up metadata and version requirements.
+          No changes have been made to handle HTML5. That is a bigger issue
+          than "just add the tags to the hashes," because that would change
+          functionality for existing users who are expecting HTML::Tagset to
+          be HTML4.
+
+-------------------------------------------------------------------
 Mon Apr 15 10:54:21 UTC 2013 - idonmez@suse.com
 
 - Add Source URL, see https://en.opensuse.org/SourceUrls 

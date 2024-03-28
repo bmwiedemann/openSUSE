@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Feb  7 03:08:54 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.514
+   see /usr/share/doc/packages/perl-MIME-tools/ChangeLog
+
+  5.514	  2024-02-06  Dianne Skoll <dianne@skoll.ca>
+  	* VERSION 5.514 RELEASED
+  	* Move the guts of the ambiguous_content method to MIME::Head
+  	* Add MIME::Entity->ambiguous_content that returns true if
+  	  this entity or any of its parts, recursively, has a MIME::Head
+  	  whose ambiguous_content method returns true.
+  	* Keep MIME::Parser->ambiguous_content as a cached version of the
+  	  most recently parsed $entity->ambiguous_content.
+  	* BUGFIX: Add some missing files to MANIFEST
+  5.513	  2024-01-25  Dianne Skoll <dianne@skoll.ca>
+  	* VERSION 5.513 RELEASED
+  	* Add MIME::Parser->ambiguous_content to indicate one of several
+     	  types of ambiguous MIME content that could be security risks.
+  	* Add the '@duplicate_parameters' pseudo-parameter to let caller
+    	  detect duplicate MIME parameters on a MIME header.
+  5.512	  2024-01-08  Dianne Skoll <dianne@skoll.ca>
+  	* VERSION 5.512 RELEASED
+  	* Use much larger chunk sizes for Base-64 encoding which reduces
+  	  both encoding time and space overhead.
+  	  https://rt.cpan.org/Ticket/Display.html?id=128400
+  	  https://rt.cpan.org/Ticket/Display.html?id=130110
+
+-------------------------------------------------------------------
 Wed Jan  3 03:08:23 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.511

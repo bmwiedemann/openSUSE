@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 28 06:55:19 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 2.5.8
+  * Fix double backslash encoding in pre-included serd
+  * Fix a few minor ttl details in carla.lv2 (to make
+    validators happy)
+  * Fix potential audio buffer overflow issues due to
+    over-optimization in math utilities
+  * Fix winevst for DLL_PROCESS_ATTACH
+
+-------------------------------------------------------------------
 Tue Oct 10 08:44:06 UTC 2023 - davejplater@gmail.com
 
 - Disable troublesome liblo

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 28 05:50:23 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sat Jan  6 13:10:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.4.0:

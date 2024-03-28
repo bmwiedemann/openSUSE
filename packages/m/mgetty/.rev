@@ -343,4 +343,14 @@
     <comment></comment>
     <requestid>1043939</requestid>
   </revision>
+  <revision rev="44" vrev="10">
+    <srcmd5>ac929fdc809dd28d64d947c7dd32f111</srcmd5>
+    <version>1.2.1</version>
+    <time>1711630486</time>
+    <user>anag+factory</user>
+    <comment>- Provide user(fax) in sendfax package. [bsc#1221420]
+- Use %patch -P N instead of deprecated %patchN.
+</comment>
+    <requestid>1163137</requestid>
+  </revision>
 </revisionlist>

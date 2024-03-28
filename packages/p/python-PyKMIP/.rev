@@ -178,4 +178,17 @@
   test_mac_with_cryptographic_failure.</comment>
     <requestid>1109678</requestid>
   </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>67b3a783e71acdde83c4a5f6a85655fc</srcmd5>
+    <version>0.10.0</version>
+    <time>1711630500</time>
+    <user>anag+factory</user>
+    <comment>- Clean up Python 2 leftovers.
+- Add patch crypto-42.patch:
+  * Use cryptography.hazmat.primitives.serialization to load private keys.
+- Add patch no-ssl-wrap-socket.patch:
+  * Do not use removed in Python 3.12 function, ssl.wrap_socket.
+- Switch to pyproject macros.</comment>
+    <requestid>1163171</requestid>
+  </revision>
 </revisionlist>

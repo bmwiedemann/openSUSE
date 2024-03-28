@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 22 16:11:10 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.82
+   see /usr/share/doc/packages/perl-HTML-Parser/Changes
+
+  3.82      2024-03-13
+      - "img lowsrc" and "body background" are not in the HTMLv5 spec (GH#43)
+        (Jess)
+      - Replace "FileHandle" with "IO::File" (GH#42) (James Raspass)
+      - Fix some minor typos (GH#41) (Yoshikazu Sawa)
+
+-------------------------------------------------------------------
 Wed Feb  1 03:07:05 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.81

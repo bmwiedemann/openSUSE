@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 27 09:23:03 UTC 2024 - Godfrey Chung <godfrey.chung@acs.com.hk>
+
+- Updated to version 1.1.11.
+  * Add the following readers support:
+    WalletMate II 1S CL Reader
+    WalletMate II V2 Upgrade
+    ACR1555 1S CL Reader
+    ACR1555 USB FW_Upgrade
+  * Enable WalletMate II (composite device) as multi-slot reader.
+  * Enable the 2nd interface of WalletMate II as SAM slot.
+  * Enable ACR1555U (composite device) as multi-slot reader.
+  * Enable the 2nd interface of ACR1555U as SAM slot.
+- Replaced acsccid-1.1.10-polling-thread.patch with
+  acsccid-1.1.11-polling-thread.patch.
+- Replaced acsccid-1.1.10-polling-unplug.patch with
+  acsccid-1.1.11-polling-unplug.patch.
+
+-------------------------------------------------------------------
 Fri Aug  4 04:25:01 UTC 2023 - Godfrey Chung <godfrey.chung@acs.com.hk>
 
 - Updated to version 1.1.10.

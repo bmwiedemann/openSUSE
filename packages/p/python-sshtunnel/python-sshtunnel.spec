@@ -36,6 +36,8 @@ BuildRequires:  openssh
 BuildRequires:  python-rpm-macros
 Requires:       openssh
 Requires:       python-paramiko >= 2.7.2
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -73,8 +75,8 @@ sed -i 's:import mock:from unittest import mock:' tests/test_forwarder.py
 %license LICENSE
 %doc *.rst
 %python_alternative %{_bindir}/sshtunnel
-%{python_sitelib}/__pycache__/sshtunnel*pyc
+%pycache_only %{python_sitelib}/__pycache__/sshtunnel*pyc
 %{python_sitelib}/sshtunnel.py
-%{python_sitelib}/sshtunnel-*.dist-info
+%{python_sitelib}/sshtunnel-{%version}.dist-info
 
 %changelog

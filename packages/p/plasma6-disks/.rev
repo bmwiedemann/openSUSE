@@ -23,4 +23,12 @@
     <comment>- Move the %find_lang call into %install section</comment>
     <requestid>1158621</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8de2ef8c4430f4f54030fc4313cf313a</srcmd5>
+    <version>6.0.3</version>
+    <time>1711630435</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.0.3. The release actually builds this time! (After other distros already found major issues...) (forwarded request 1162359 from Vogtinator)</comment>
+    <requestid>1162444</requestid>
+  </revision>
 </revisionlist>

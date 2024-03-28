@@ -440,4 +440,12 @@
     <comment>- Replace the postgresql-server build dependency with the client library (forwarded request 1160406 from krop)</comment>
     <requestid>1160411</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>7aec6db5dd89134eee89eb799c657a66</srcmd5>
+    <version>6.6.3</version>
+    <time>1711630374</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.6.3. Not built yet (forwarded request 1162337 from krop)</comment>
+    <requestid>1162369</requestid>
+  </revision>
 </revisionlist>

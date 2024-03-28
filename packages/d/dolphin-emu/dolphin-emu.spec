@@ -16,38 +16,45 @@
 #
 
 
-%define commit 8bad821019721b9b72701b495da95656ace5fea5
+%define commit 1efda863e47b690f460f069502a4391b3c7d87c4
 Name:           dolphin-emu
-Version:        5.0.17995
+Version:        5.0.21264
 Release:        0
 Summary:        Dolphin, a GameCube and Wii Emulator
 License:        (Apache-2.0 OR MIT) AND BSD-2-Clause AND libpng-2.0 AND GPL-2.0-or-later
 URL:            https://dolphin-emu.org
-# n=dolphin-emu && v=5.0.17995 && c=8bad821019721b9b72701b495da95656ace5fea5 && cd /tmp && git clone https://github.com/$n/dolphin.git $n && cd $n && git checkout $c && rm -rf .??* && cd .. && n=dolphin-emu && d=$n-$v && mv $n $d && f=$d.tar.xz && tar c --remove-files "$d" | xz -9e > "$f"
+# n=dolphin-emu && v=5.0.21264 && c=1efda863e47b690f460f069502a4391b3c7d87c4 && d=$n-$v && f=$d.tar.xz && cd /tmp && git clone https://github.com/$n/dolphin.git $n && pushd $n && git checkout $c && git submodule && git submodule update --init --recursive Externals/VulkanMemoryAllocator Externals/cubeb/cubeb Externals/enet/enet Externals/gtest Externals/implot/implot Externals/libspng/libspng Externals/rcheevos/rcheevos Externals/tinygltf/tinygltf Externals/zlib-ng/zlib-ng && git submodule status && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         %{name}-not-discord-presence.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc12
 BuildRequires:  gcc12-c++
+BuildRequires:  glslang-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libQt5Gui-private-headers-devel >= 5.9
 BuildRequires:  mbedtls-devel < 3
 BuildRequires:  ninja
+BuildRequires:  picojson-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9
+BuildRequires:  qt6-gui-private-devel
+BuildRequires:  spirv-headers
+BuildRequires:  spirv-tools
+BuildRequires:  spirv-tools-devel
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(ao)
 BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(fmt) < 10
+BuildRequires:  pkgconfig(fmt) >= 10.1
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(hidapi-hidraw)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libenet)
 BuildRequires:  pkgconfig(libevdev)
+BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpulse)
@@ -59,13 +66,17 @@ BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(miniupnpc)
-BuildRequires:  pkgconfig(minizip)
+BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(pugixml)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sfml-network)
 BuildRequires:  pkgconfig(sfml-system)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(soundtouch)
+BuildRequires:  pkgconfig(speexdsp)
+BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(xi)
+BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xrandr)
 Requires:       nintendo-gamecube-wiimote-udev-rules
 ExclusiveArch:  x86_64 aarch64
@@ -89,16 +100,22 @@ This package contains udev rules for Nintendo GameCube and Wiimote game controll
 
 %prep
 %autosetup -p1
-#Allow building with cmake macro. Build failed on aarch64 with optflags.
-%ifarch x86_64
+
+#Allow building with cmake macro
 sed -i '/CMAKE_C.*_FLAGS/d' CMakeLists.txt
-%endif
-sed -i 's/minizip>=2.0.0/minizip/' CMakeLists.txt
+
+#Font license, drop the install directory into thie file
+echo "%{_datadir}/%{name}/Sys/GC:" > font-licenses.txt
+cat Data/Sys/GC/font-licenses.txt >> font-licenses.txt
+
+#Fix for newer vulkan
+sed -i "s/VK_PRESENT_MODE_RANGE_SIZE_KHR/(VkPresentModeKHR)("`
+    `"VK_PRESENT_MODE_FIFO_RELAXED_KHR - VK_PRESENT_MODE_IMMEDIATE_KHR + 1)/" \
+    Source/Core/VideoBackends/Vulkan/VKSwapChain.h
 
 %build
 # FIXME: you should use the %%cmake macros
-cmake . \
-    -LA \
+cmake . -LA \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_C_COMPILER=gcc-12 \
     -DCMAKE_CXX_COMPILER=g++-12 \
@@ -114,6 +131,8 @@ cmake . \
     -DENCODE_FRAMEDUMPS=OFF \
     -DUSE_DISCORD_PRESENCE=OFF \
     -DUSE_MGBA=OFF \
+    -DUSE_RETRO_ACHIEVEMENTS=OFF \
+    -DUSE_SANITIZERS=OFF \
     -DXXHASH_FOUND=ON \
     -G Ninja
 ninja -v

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 28 07:23:34 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.2:
+  * feat: make test --update-all not report error #771
+  * fix: fix update cases f8132a4
+  * refactor: less indentation for interactive reporter 203bd35
+  * feat: improve accept 441a548
+
+-------------------------------------------------------------------
 Mon Mar 25 06:21:57 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.20.1:

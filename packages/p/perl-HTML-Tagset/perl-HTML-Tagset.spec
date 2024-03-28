@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTML-Tagset
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-HTML-Tagset
-Version:        3.20
-Release:        0
 %define cpan_name HTML-Tagset
+Name:           perl-HTML-Tagset
+Version:        3.240.0
+Release:        0
+# 3.24 -> normalize -> 3.240.0
+%define cpan_version 3.24
+License:        Artistic-2.0
 Summary:        Data tables useful in parsing HTML
-License:        GPL-1.0+ or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/HTML-Tagset/
-Source:         http://www.cpan.org/authors/id/P/PE/PETDANCE/HTML-Tagset-3.20.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.46
+BuildRequires:  perl(Test::More) >= 0.95
+Provides:       perl(HTML::Tagset) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -43,25 +47,21 @@ associated with the keys are not significant. (But what values are there,
 are always true.)
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
 %perl_process_packlist
 %perl_gen_filelist
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %files -f %{name}.files
-%defattr(644,root,root,755)
-%doc Changes README
+%doc Changes README.md
 
 %changelog

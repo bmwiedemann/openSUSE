@@ -212,4 +212,12 @@
   * Fix application crash when dconfig is invalid</comment>
     <requestid>1000262</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>6afa19b8bb2a98e0276bfe9adef1c42d</srcmd5>
+    <version>5.5.33</version>
+    <time>1711630500</time>
+    <user>anag+factory</user>
+    <comment>- Fix build on gtest 1.14.0 (forwarded request 1163225 from hillwood)</comment>
+    <requestid>1163226</requestid>
+  </revision>
 </revisionlist>

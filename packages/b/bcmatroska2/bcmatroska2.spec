@@ -1,7 +1,7 @@
 #
 # spec file for package bcmatroska2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   0
 Name:           bcmatroska2
-Version:        5.2.1
+Version:        5.3.26
 Release:        0
 Summary:        C Library to Deal with Matroska Files
 License:        BSD-3-Clause AND Zlib AND GPL-2.0-or-later
@@ -28,11 +28,9 @@ Source:         https://gitlab.linphone.org/BC/public/bcmatroska2/-/archive/%{ve
 Source1:        baselibs.conf
 Patch0:         bcmatroska2-include-subdir.patch
 Patch1:         fix-cmakelist-version.patch
-Patch2:         remove-file.patch
-Patch3:         fix-libmatroska-cmake.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake
-BuildRequires:  pkgconfig(bctoolbox) >= 5.2.0
+BuildRequires:  pkgconfig(bctoolbox) >= 5.3.20
 
 %description
 Bcmatroska2 is a C library to parse Matroska files (.mkv and .mka).
@@ -78,14 +76,16 @@ chrpath -d %{buildroot}%{_libdir}/lib%{name}.so.%{sover}*
 %files devel
 %dir %{_includedir}/%{name}
 %dir %{_includedir}/%{name}/corec
+%dir %{_includedir}/corec
 %dir %{_includedir}/%{name}/ebml
 %dir %{_includedir}/%{name}/matroska
 %{_includedir}/%{name}/corec/*
+%{_includedir}/corec/*bcmatroska2_config.h
 %{_includedir}/%{name}/ebml/*
 %{_includedir}/%{name}/matroska/*
 %{_libdir}/libbcmatroska2.so
-%dir %{_datadir}/bcmatroska2
-%dir %{_datadir}/bcmatroska2/cmake
-%{_datadir}/bcmatroska2/cmake/*
+%dir %{_datadir}/BCMatroska2
+%dir %{_datadir}/BCMatroska2/cmake
+%{_datadir}/BCMatroska2/cmake/*
 
 %changelog

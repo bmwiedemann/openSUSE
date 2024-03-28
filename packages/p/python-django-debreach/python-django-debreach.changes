@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 28 05:42:14 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sat Jan  8 00:43:56 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v2.1.0

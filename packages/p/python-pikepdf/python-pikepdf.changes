@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 28 10:43:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.14.0:
+  * Added QPDF_FUTURE environment variable for compile time testing
+    of new QPDF features.
+  * Added new code to suppress console window from appearing on
+    Windows in some situations when decoding JBIG2.
+  * Updated GitHub Actions versions.
+
+-------------------------------------------------------------------
 Sat Mar 16 10:00:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.13.0:

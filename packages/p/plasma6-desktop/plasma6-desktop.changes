@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar 26 18:06:11 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.3
+- Changes since 6.0.2:
+  * revert duplicate appstream update
+  * update version for new release
+  * applets/taskmanager: remove unnecessary Layout properties
+  * applets/taskmanager: Drop pipewire window thumbnail opacity animation
+  * applets/taskmanager: Don't base the amount of space reserved for the thumbnail on the header (kde#481044)
+  * Revert "Panel: Don't take keyboard focus when one of its widgets is activated"
+  * Folder View: fix label rendering for popup and widget views (kde#484163)
+  * Panel: don't round floating paddings to smoothen animation
+  * applets/kimpanel: Fix save font option
+  * Kicker: Fix submenus appearing in taskmanager (kde#481955)
+  * Cancel edit prior reparenting the applet
+  * solid-device-automounter/kcm: do not create proxy widget in initializer list
+  * Filter out enter (kde#482123)
+
+-------------------------------------------------------------------
 Wed Mar 13 09:10:08 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.2:

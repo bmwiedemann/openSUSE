@@ -18,9 +18,10 @@
 
 %define cpan_name libwww-perl
 Name:           perl-libwww-perl
-Version:        6.760.0
+Version:        6.770.0
 Release:        0
-%define cpan_version 6.76
+# 6.77 -> normalize -> 6.770.0
+%define cpan_version 6.77
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        The World-Wide Web library for Perl
 URL:            https://metacpan.org/release/%{cpan_name}

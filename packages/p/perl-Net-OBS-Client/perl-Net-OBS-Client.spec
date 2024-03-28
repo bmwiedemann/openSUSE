@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-OBS-Client
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Net-OBS-Client
 Name:           perl-Net-OBS-Client
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 License:        Artistic-2.0
 Summary:        Simple OBS API calls
@@ -30,6 +30,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Config::INI::Reader)
 BuildRequires:  perl(Config::Tiny)
+BuildRequires:  perl(Const::Fast)
 BuildRequires:  perl(HTTP::Cookies)
 BuildRequires:  perl(HTTP::Request)
 BuildRequires:  perl(LWP::UserAgent)
@@ -42,6 +43,7 @@ BuildRequires:  perl(XML::Parser)
 BuildRequires:  perl(XML::Structured)
 Requires:       perl(Config::INI::Reader)
 Requires:       perl(Config::Tiny)
+Requires:       perl(Const::Fast)
 Requires:       perl(HTTP::Cookies)
 Requires:       perl(HTTP::Request)
 Requires:       perl(LWP::UserAgent)

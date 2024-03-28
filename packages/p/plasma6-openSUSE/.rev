@@ -15,4 +15,12 @@
     <comment>Plasma 6.0.2 + libksysguard5-helper upgrade fix + icon upgrade fix + gtk theme fix (forwarded request 1157674 from Vogtinator)</comment>
     <requestid>1157724</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b23a6ccadf2119cb30a07c0f53a2dab7</srcmd5>
+    <version>84.87~git20240313T170730~9c664b7</version>
+    <time>1711630438</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.0.3. The release actually builds this time! (After other distros already found major issues...) (forwarded request 1162359 from Vogtinator)</comment>
+    <requestid>1162450</requestid>
+  </revision>
 </revisionlist>

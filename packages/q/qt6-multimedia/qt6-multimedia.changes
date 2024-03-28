@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 27 12:56:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Make libQt6Multimedia6 require the qtmultimedia plugins (related: boo#1222064)
+
+-------------------------------------------------------------------
+Tue Mar 26 14:26:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.3:
+  * https://www.qt.io/blog/qt-6.6.3-released
+
+-------------------------------------------------------------------
 Wed Feb 14 16:53:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.2

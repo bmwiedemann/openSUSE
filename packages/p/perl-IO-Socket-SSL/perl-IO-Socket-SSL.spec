@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Socket-SSL
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,10 @@
 
 %define cpan_name IO-Socket-SSL
 Name:           perl-IO-Socket-SSL
-Version:        2.84.0
+Version:        2.85.0
 Release:        0
-%define cpan_version 2.084
+# 2.085 -> normalize -> 2.85.0
+%define cpan_version 2.085
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Nearly transparent SSL encapsulation for IO::Socket::INET
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -28,8 +29,6 @@ Source0:        https://cpan.metacpan.org/authors/id/S/SU/SULLR/%{cpan_name}-%{c
 Source1:        cpanspec.yml
 # PATCH-FIX-UPSTREAM (bsc1200295) perl-IO-Socket-SSL doesn't follow system "PROFILE=SYSTEM" openSSL ciphers - https://git.centos.org/rpms/perl-IO-Socket-SSL/blob/e0b0ae04f5cdb41b1f29cb7d76c23abba7ac35e9/f/SOURCES/IO-Socket-SSL-2.066-use-system-default-cipher-list.patch
 Patch0:         perl-IO-Socket-SSL-use-system-default-cipher-list.patch
-# PATCH-FIX-UPSTREAM (bsc#1218342) Fix the test t/core.t to build with OpenSSL 3.2.0
-Patch1:         perl-IO-Socket-SSL-Openssl32.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -37,7 +36,7 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Net::SSLeay) >= 1.46
 #Requires:       perl(Mozilla::CA)
 Requires:       perl(Net::SSLeay) >= 1.46
-Provides:       perl(IO::Socket::SSL) = 2.84.0
+Provides:       perl(IO::Socket::SSL) = %{version}
 Provides:       perl(IO::Socket::SSL::Intercept) = 2.056
 Provides:       perl(IO::Socket::SSL::OCSP_Cache)
 Provides:       perl(IO::Socket::SSL::OCSP_Resolver)
@@ -47,7 +46,7 @@ Provides:       perl(IO::Socket::SSL::SSL_HANDLE)
 Provides:       perl(IO::Socket::SSL::Session_Cache)
 Provides:       perl(IO::Socket::SSL::Trace)
 Provides:       perl(IO::Socket::SSL::Utils) = 2.015
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description

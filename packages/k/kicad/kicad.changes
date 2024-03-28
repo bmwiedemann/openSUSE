@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 27 16:40:26 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with libgit2 >= 1.8.0, add
+  libgit2-1.8.0-compatibility.patch
+
+-------------------------------------------------------------------
 Fri Mar 15 11:10:26 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 8.0.1:

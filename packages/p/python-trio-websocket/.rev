@@ -19,4 +19,12 @@
 - Initial release of 0.10.3</comment>
     <requestid>1132849</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f1811c12ddec197a2cc269cbe81d0248</srcmd5>
+    <version>0.11.1</version>
+    <time>1711630495</time>
+    <user>anag+factory</user>
+    <comment>- Skip some broken tests with trio &gt;= 0.25</comment>
+    <requestid>1163162</requestid>
+  </revision>
 </revisionlist>

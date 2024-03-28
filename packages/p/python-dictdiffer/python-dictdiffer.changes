@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 27 20:55:44 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Feb 29 03:16:06 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros.

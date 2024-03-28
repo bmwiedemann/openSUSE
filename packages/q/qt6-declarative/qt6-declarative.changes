@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 26 14:25:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.3:
+  * https://www.qt.io/blog/qt-6.6.3-released
+- Drop patches, merged upstream:
+  * 0001-QuickControls-Link-the-impl-libraries-into-the-base-.patch
+  * 0001-Dialogs-Depend-on-controls-styles-in-QuickDialogs2Qu.patch
+
+-------------------------------------------------------------------
 Sat Mar 16 10:20:52 UTC 2024 - Fusion Future <qydwhotmail@gmail.com>
 
 - Add patch to help fix PointHandler with HiDPI (kde#482580)

@@ -1,0 +1,101 @@
+From 433ab3ef43241155ee64196574daae2f41feac4e Mon Sep 17 00:00:00 2001
+From: Steven Silvester <steven.silvester@ieee.org>
+Date: Wed, 4 Oct 2023 09:59:43 -0500
+Subject: [PATCH 01/11] Add python 3.12 support
+
+---
+ .github/workflows/tox.yml                     |  3 ++-
+ kmip/services/kmip_client.py                  | 19 +++++++-------
+ kmip/services/server/server.py                | 25 ++++++++++---------
+ .../tests/unit/services/server/test_server.py |  4 +--
+ 4 files changed, 27 insertions(+), 24 deletions(-)
+
+Index: PyKMIP-0.10.0/kmip/services/kmip_client.py
+===================================================================
+--- PyKMIP-0.10.0.orig/kmip/services/kmip_client.py
++++ PyKMIP-0.10.0/kmip/services/kmip_client.py
+@@ -285,13 +285,15 @@ class KMIPProxy(object):
+             six.reraise(*last_error)
+ 
+     def _create_socket(self, sock):
+-        self.socket = ssl.wrap_socket(
++        context = ssl.SSLContext(protocol=self.ssl_version)
++        context.load_verify_locations(capath=self.ca_certs)
++        context.check_hostname = False
++        context.verify_mode = self.cert_reqs
++        if self.certfile:
++            context.load_cert_chain(self.certfile, self.keyfile)
++        self.socket = context.wrap_socket(
+             sock,
+-            keyfile=self.keyfile,
+-            certfile=self.certfile,
+-            cert_reqs=self.cert_reqs,
+-            ssl_version=self.ssl_version,
+-            ca_certs=self.ca_certs,
++            server_side=False,
+             do_handshake_on_connect=self.do_handshake_on_connect,
+             suppress_ragged_eofs=self.suppress_ragged_eofs)
+         self.socket.settimeout(self.timeout)
+Index: PyKMIP-0.10.0/kmip/services/server/server.py
+===================================================================
+--- PyKMIP-0.10.0.orig/kmip/services/server/server.py
++++ PyKMIP-0.10.0/kmip/services/server/server.py
+@@ -287,17 +287,22 @@ class KmipServer(object):
+         for cipher in auth_suite_ciphers:
+             self._logger.debug(cipher)
+ 
+-        self._socket = ssl.wrap_socket(
++        capath = self.config.settings.get('ca_path')
++        context = ssl.SSLContext(protocol=self.auth_suite.protocol)
++        if capath is not None:
++            context.load_verify_locations(capath=capath)
++        context.verify_mode = ssl.CERT_REQUIRED
++        context.set_ciphers(self.auth_suite.ciphers)
++        certfile = self.config.settings.get('certificate_path')
++        if certfile:
++            keyfile = self.config.settings.get('key_path')
++            context.load_cert_chain(certfile, keyfile=keyfile)
++
++        self._socket = context.wrap_socket(
+             self._socket,
+-            keyfile=self.config.settings.get('key_path'),
+-            certfile=self.config.settings.get('certificate_path'),
+             server_side=True,
+-            cert_reqs=ssl.CERT_REQUIRED,
+-            ssl_version=self.auth_suite.protocol,
+-            ca_certs=self.config.settings.get('ca_path'),
+             do_handshake_on_connect=False,
+-            suppress_ragged_eofs=True,
+-            ciphers=self.auth_suite.ciphers
++            suppress_ragged_eofs=True
+         )
+ 
+         try:
+Index: PyKMIP-0.10.0/kmip/tests/unit/services/server/test_server.py
+===================================================================
+--- PyKMIP-0.10.0.orig/kmip/tests/unit/services/server/test_server.py
++++ PyKMIP-0.10.0/kmip/tests/unit/services/server/test_server.py
+@@ -210,9 +210,9 @@ class TestKmipServer(testtools.TestCase)
+         # Test that in ideal cases no errors are generated and the right
+         # log messages are.
+         with mock.patch('socket.socket') as socket_mock:
+-            with mock.patch('ssl.wrap_socket') as ssl_mock:
++            with mock.patch('ssl.SSLContext') as ssl_mock:
+                 socket_mock.return_value = a_mock
+-                ssl_mock.return_value = b_mock
++                ssl_mock.return_value.wrap_socket.return_value = b_mock
+ 
+                 manager_mock.assert_not_called()
+                 monitor_mock.assert_not_called()
+@@ -271,9 +271,9 @@ class TestKmipServer(testtools.TestCase)
+ 
+         # Test that a NetworkingError is generated if the socket bind fails.
+         with mock.patch('socket.socket') as socket_mock:
+-            with mock.patch('ssl.wrap_socket') as ssl_mock:
++            with mock.patch('ssl.SSLContext') as ssl_mock:
+                 socket_mock.return_value = a_mock
+-                ssl_mock.return_value = b_mock
++                ssl_mock.return_value.wrap_socket.return_value = b_mock
+ 
+                 test_exception = Exception()
+                 b_mock.bind.side_effect = test_exception

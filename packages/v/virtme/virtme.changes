@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 28 08:05:50 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- qemu 8.2.2 compatibility
+  * qemu-remove-unnecessary-serial-none-arg.patch
+
+-------------------------------------------------------------------
 Mon Mar  4 12:25:43 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.22:

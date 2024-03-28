@@ -1,0 +1,47 @@
+Index: PyKMIP-0.10.0/kmip/services/server/crypto/engine.py
+===================================================================
+--- PyKMIP-0.10.0.orig/kmip/services/server/crypto/engine.py
++++ PyKMIP-0.10.0/kmip/services/server/crypto/engine.py
+@@ -588,10 +588,10 @@ class CryptographyEngine(api.Cryptograph
+             backend = default_backend()
+ 
+             try:
+-                public_key = backend.load_der_public_key(encryption_key)
++                public_key = serialization.load_der_public_key(encryption_key)
+             except Exception:
+                 try:
+-                    public_key = backend.load_pem_public_key(encryption_key)
++                    public_key = serialization.load_pem_public_key(encryption_key)
+                 except Exception:
+                     raise exceptions.CryptographicFailure(
+                         "The public key bytes could not be loaded."
+@@ -935,14 +935,14 @@ class CryptographyEngine(api.Cryptograph
+                 params["unsafe_skip_rsa_key_validation"] = False
+ 
+             try:
+-                private_key = backend.load_der_private_key(
++                private_key = serialization.load_der_private_key(
+                     decryption_key,
+                     None,
+                     **params,
+                 )
+             except Exception:
+                 try:
+-                    private_key = backend.load_pem_private_key(
++                    private_key = serialization.load_pem_private_key(
+                         decryption_key,
+                         None,
+                         **params,
+@@ -1500,10 +1500,10 @@ class CryptographyEngine(api.Cryptograph
+                 )
+ 
+             try:
+-                public_key = backend.load_der_public_key(signing_key)
++                public_key = serialization.load_der_public_key(signing_key)
+             except Exception:
+                 try:
+-                    public_key = backend.load_pem_public_key(signing_key)
++                    public_key = serialization.load_pem_public_key(signing_key)
+                 except Exception:
+                     raise exceptions.CryptographicFailure(
+                         "The signing key bytes could not be loaded."

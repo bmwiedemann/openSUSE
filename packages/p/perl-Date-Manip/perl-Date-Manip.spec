@@ -18,15 +18,15 @@
 
 %define cpan_name Date-Manip
 Name:           perl-Date-Manip
-Version:        6.940.0
+Version:        6.950.0
 Release:        0
-%define cpan_version 6.94
+# 6.95 -> normalize -> 6.950.0
+%define cpan_version 6.95
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Date manipulation routines
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SB/SBECK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.67_01
@@ -929,7 +929,7 @@ package.
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
 %make_build
 
 %check

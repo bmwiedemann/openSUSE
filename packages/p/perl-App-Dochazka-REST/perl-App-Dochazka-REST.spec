@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-Dochazka-REST
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -85,8 +85,10 @@ Requires:       perl(Web::Machine) >= 0.15
 BuildRequires:  systemd
 BuildRequires:  perl(Starman)
 Requires:       perl(Starman)
-Requires(pre): /usr/sbin/groupadd
-Requires(pre): /usr/sbin/useradd
+Requires(pre):  /usr/sbin/groupadd
+Requires(pre):  /usr/sbin/useradd
+Provides:       group(dochazka-rest)
+Provides:       user(dochazka-rest)
 %{?systemd_requires}
 
 %pre

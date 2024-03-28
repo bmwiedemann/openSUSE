@@ -18,9 +18,10 @@
 
 %define cpan_name LWP-Protocol-https
 Name:           perl-LWP-Protocol-https
-Version:        6.130.0
+Version:        6.140.0
 Release:        0
-%define cpan_version 6.13
+# 6.14 -> normalize -> 6.140.0
+%define cpan_version 6.14
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Provide https support for LWP::UserAgent
 URL:            https://metacpan.org/release/%{cpan_name}

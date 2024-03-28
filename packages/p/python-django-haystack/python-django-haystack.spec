@@ -26,9 +26,9 @@ URL:            https://github.com/django-haystack/django-haystack
 Source:         https://files.pythonhosted.org/packages/source/d/django-haystack/django-haystack-%{version}.tar.gz
 # pkg_resources is broken since the flufl.lock update in Factory
 # https://github.com/django-haystack/django-haystack/pull/1935
-Patch:          gh-pr-1935_importlib.patch
+Patch1:         gh-pr-1935_importlib.patch
 # PATCH-FIX-UPSTREAM https://github.com/django-haystack/django-haystack/commit/3a566a50e4963bed4fb8853eca60bc894b0b7fc5 Fix unittest assert calls for Python 3.12
-Patch:          unittest312.patch
+Patch2:         unittest312.patch
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
