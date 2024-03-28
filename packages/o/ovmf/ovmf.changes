@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 22 09:17:00 UTC 2024 - Joey Lee <jlee@suse.com>
+
+- Removed EFI shell from 4mb x86_64 ovmf image because it has
+  security concern. Removed shell can also save space of ovmf
+  image. (bsc#1219890, CVE-2023-48733) 
+    - Updated ovmf.spec: add BUILD_SHELL=FALSE to BUILD_OPTIONS_X64
+    - 2mb x86_64 ovmf and smm x86_64 ovmf are already removed
+      shell since edk2-stable202208 and earlier.
+    - The BUILD_SHELL build option is not available on aarch64 and xen ovmf.
+    - Shell.efi still be built independently and be packaged to ovmf-tools.
+      User can copy it to EFI partition for running it by firmware's boot
+      manager if they still need a shell. But user should either disables
+      secure boot or sign Shell.efi by himself.
+
+-------------------------------------------------------------------
 Thu Mar  7 15:50:51 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use built QEMU_VARS.fd as base for AARCH64/AARCH32 vars file

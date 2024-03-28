@@ -251,7 +251,7 @@ FLAVORS_X86=("ovmf-ia32")
 BUILD_OPTIONS_X86=" \
 	$OVMF_FLAGS \
 	-D FD_SIZE_2MB \
-	-D BUILD_SHELL=FALSE
+	-D BUILD_SHELL=FALSE \
 	-a IA32 \
 	-p OvmfPkg/OvmfPkgIa32.dsc \
 	-b DEBUG \
@@ -262,6 +262,7 @@ BUILD_OPTIONS_X86=" \
 FLAVORS_X64=("ovmf-x86_64" "ovmf-x86_64-4m" "ovmf-x86_64-smm")
 BUILD_OPTIONS_X64=" \
 	$OVMF_FLAGS \
+	-D BUILD_SHELL=FALSE \
 	-a X64 \
 	-b DEBUG \
 	-t $TOOL_CHAIN \
@@ -353,9 +354,9 @@ collect_x86_64_debug_files()
 
 declare -A EXTRA_FLAGS_X64
 EXTRA_FLAGS_X64=(
-	[ovmf-x86_64]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_2MB -D BUILD_SHELL=FALSE"
+	[ovmf-x86_64]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_2MB"
 	[ovmf-x86_64-4m]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE"
-	[ovmf-x86_64-smm]="-a IA32 -p OvmfPkg/OvmfPkgIa32X64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE -D SMM_REQUIRE -D BUILD_SHELL=FALSE"
+	[ovmf-x86_64-smm]="-a IA32 -p OvmfPkg/OvmfPkgIa32X64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE -D SMM_REQUIRE"
 )
 declare -A OUTDIR_X64
 OUTDIR_X64=(
@@ -379,9 +380,12 @@ for flavor in ${FLAVORS_X64[@]}; do
 %endif
 done
 
+# build Shell.efi for X64
+build -a X64 -t $TOOL_CHAIN -p ShellPkg/ShellPkg.dsc
+
 # Copy Shell.efi and EnrollDefaultKeys.efi
 mkdir X64
-cp Build/OvmfX64/DEBUG_*/X64/Shell.efi X64
+cp Build/Shell/DEBUG_*/X64/ShellPkg/Application/Shell/Shell/DEBUG/Shell.efi X64
 cp Build/OvmfX64/DEBUG_*/X64/EnrollDefaultKeys.efi X64
 
 %ifarch x86_64
