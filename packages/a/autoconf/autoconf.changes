@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Feb 20 10:21:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Tue Feb 13 09:22:52 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Re-add patch (bsc#1219035)
+  * [autoreconf-ltdl.diff]
+- Remove test with macro LARGEFILE and YEAR2038, broken for i586 arch. see
+  https://git.savannah.gnu.org/cgit/autoconf.git/tree/NEWS#n194 (bsc#1219035)
+  * [remove-largefile-test.patch]
+
+-------------------------------------------------------------------
+Sun Dec 24 08:49:46 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Use autosetup
+
+-------------------------------------------------------------------
+Sat Dec 23 12:42:24 UTC 2023 - Christoph G <foss@grueninger.de>
+
+- update to version 2.72
+  * Support for ensuring time_t is Y2038-safe
+    configure can now ensure that time_t can represent moments in time
+    after 18 January 2038, i.e. 2**31 - 1 seconds after the Unix epoch.
+    On most 64-bit systems this is true by default; the new feature
+    is detection of systems where time_t is a 32-bit signed integer by
+    default, *and* there is an alternative mode in which it is larger,
+    in which case that mode will be enabled.
+  * AC_USE_SYSTEM_EXTENSIONS now enables C23 Annex F extensions
+    by defining __STDC_WANT_IEC_60559_EXT__.
+  * Configure scripts no longer support pre-1989 C compilers.
+  * Autoconf developers now need Perl 5.10 (2007) or later.
+  * Autoconf users now need GNU M4 1.4.8 (2006) or later.
+  * Some m4sh diversions have been renumbered.
+  * AC_FUNC_GETGROUPS and AC_TYPE_GETGROUPS no longer run test programs.
+  * All internal uses of AC_EGREP_CPP and AC_EGREP_HEADER have been removed.
+- Update dependencies as recommendd to m4 1.4.16, Perl 5.10
+- Drop patch autoreconf-ltdl.diff as similar code is part of upstream
+- Drop patch fix-testsuite-failures-with-bash-5.2.patch, it is
+  part of upstream
+
+-------------------------------------------------------------------
 Thu Oct 27 15:25:30 UTC 2022 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - fix testsuite failure by bash 5.2 update
