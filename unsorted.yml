@@ -30529,6 +30529,7 @@ unsorted:
   - python312-PyICU 
   - python312-PyInstaller 
   - python312-PyJWT 
+  - python312-PyKMIP 
   - python312-PyLaTeX 
   - python312-PyMeeus 
   - python312-PyMeta3 
@@ -37762,7 +37763,6 @@ unsorted:
   - qt6-mqtt-docs-qch 
   - qt6-mqtt-examples 
   - qt6-mqtt-private-devel 
-  - qt6-multimedia 
   - qt6-multimedia-devel 
   - qt6-multimedia-docs-html 
   - qt6-multimedia-docs-qch 
