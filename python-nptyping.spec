@@ -23,6 +23,7 @@
 %bcond_with typeguard
 # mypy tests expect pandas_stubs, which are not in the distribution
 %bcond_with pandas_stubs
+%{?sle15_python_module_pythons}
 Name:           python-nptyping
 Version:        2.5.0
 Release:        0
