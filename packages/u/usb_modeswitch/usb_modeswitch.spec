@@ -59,8 +59,8 @@ Data files for usb_modeswitch package.
 
 %prep
 %setup -q -a1 -n %{source_name}-%{version}
-%patch1
-%patch2 -p1
+%patch -P 1
+%patch -P 2 -p1
 
 cp %{SOURCE2} .
 cp %{SOURCE3} .
