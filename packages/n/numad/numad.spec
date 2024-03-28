@@ -55,15 +55,7 @@ a large database server or a single JVM instance then numad is likely
 to regress performance.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
+%autosetup -p1
 
 %build
 make OPT_CFLAGS="$RPM_OPT_FLAGS" %{?_smp_mflags}

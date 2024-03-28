@@ -45,4 +45,12 @@
     <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 925369 from jsegitz)</comment>
     <requestid>926523</requestid>
   </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>0af979248d308cadcf3a23d111839dd6</srcmd5>
+    <version>0.5.20130522</version>
+    <time>1711630359</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1162912</requestid>
+  </revision>
 </revisionlist>
