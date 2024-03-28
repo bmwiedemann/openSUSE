@@ -760,4 +760,14 @@
     <comment></comment>
     <requestid>1158735</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>636a76d37a15e120dc467fb16a125178</srcmd5>
+    <version>5.4.6</version>
+    <time>1711630025</time>
+    <user>anag+factory</user>
+    <comment>REVERT.
+
+5.6.0 and 5.6.1 are backdoored.</comment>
+    <requestid>1163302</requestid>
+  </revision>
 </revisionlist>
