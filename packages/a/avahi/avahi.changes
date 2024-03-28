@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 26 02:28:37 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add avahi-CVE-2023-38471.patch: Extract host name using
+  avahi_unescape_label (bsc#1216594, CVE-2023-38471).
+- Add avahi-CVE-2023-38469.patch: Reject overly long TXT resource
+  records (bsc#1216598, CVE-2023-38469).
+
+-------------------------------------------------------------------
 Tue Mar 12 14:42:24 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

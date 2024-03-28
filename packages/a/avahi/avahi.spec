@@ -107,6 +107,10 @@ Patch31:        avahi-CVE-2023-38473.patch
 Patch32:        avahi-CVE-2023-38470.patch
 # PATCH-FIX-UPSTREAM avahi-CVE-2023-38472.patch bsc#1216853 alynx.zhou@suse.com -- Fix reachable assertion in avahi_rdata_parse
 Patch33:        avahi-CVE-2023-38472.patch
+# PATCH-FIX-UPSTREAM avahi-CVE-2023-38469.patch bsc#1216598 xwang@suse.com -- Reject overly long TXT resource records
+Patch34:        avahi-CVE-2023-38469.patch
+# PATCH-FIX-UPSTREAM avahi-CVE-2023-38471.patch bsc#1216594 xwang@suse.com -- Extract host name using avahi_unescape_label
+Patch35:        avahi-CVE-2023-38471.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
@@ -420,13 +424,14 @@ DNS specifications for Zeroconf Computing.
 
 
 # This is the avahi-discover command, only provided for the primary python3 flavor
+
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
 Group:          Development/Languages/Python
 Requires:       python3-avahi = %{version}
 Requires:       python3-gobject
 Requires(post): coreutils
-Requires(postun):coreutils
+Requires(postun): coreutils
 Provides:       %{oldpython}-avahi-gtk = %{version}
 Obsoletes:      %{oldpython}-avahi-gtk < %{version}
 # Provide split-provides for update from <= 11.0:

@@ -1301,4 +1301,12 @@ Pushing GNOME 45.rc packages</comment>
     <comment></comment>
     <requestid>1157987</requestid>
   </revision>
+  <revision rev="167" vrev="33">
+    <srcmd5>51a91ba0c6915c259a265242e87b9f50</srcmd5>
+    <version>0.8</version>
+    <time>1711630346</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1162833</requestid>
+  </revision>
 </revisionlist>
