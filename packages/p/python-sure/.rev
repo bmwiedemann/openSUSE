@@ -104,4 +104,12 @@
 - Rebase python-sure-no-mock.patch to remove one missed import.</comment>
     <requestid>1130710</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>7b2e43cbf437d674dd5fcba6ef3fc5e9</srcmd5>
+    <version>2.0.1</version>
+    <time>1711630336</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1162365</requestid>
+  </revision>
 </revisionlist>

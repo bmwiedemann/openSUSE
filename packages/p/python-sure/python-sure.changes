@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 26 19:06:01 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+
+-------------------------------------------------------------------
 Mon Dec  4 10:46:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.1:

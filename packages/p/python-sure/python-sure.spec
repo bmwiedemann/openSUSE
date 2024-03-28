@@ -1,7 +1,7 @@
 #
 # spec file for package python-sure
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,16 @@ URL:            https://github.com/gabrielfalcao/sure
 Source:         https://files.pythonhosted.org/packages/source/s/sure/sure-%{version}.tar.gz
 # Based on https://github.com/gabrielfalcao/sure/pull/161
 Patch0:         python-sure-no-mock.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six >= 1.10.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,10 +49,10 @@ sed -i '/^#!/d' sure/*.py
 sed -i 's/--cov=sure//' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/sure
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
