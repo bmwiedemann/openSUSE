@@ -778,4 +778,11 @@
     <comment>- restore a bigger version number so that update works</comment>
     <requestid>1163333</requestid>
   </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>e3d854de9714ae0632cfb4ea8461ba2a</srcmd5>
+    <version>5.6.1.revertto5.4</version>
+    <time>1711635443</time>
+    <user>dimstar_suse</user>
+    <comment>Fix versioned provides of liblzma</comment>
+  </revision>
 </revisionlist>
