@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 27 10:02:22 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Updated to version 2023.12.1:
+  * SOF v2.8.1 FW binaries. For older Intel platforms, FW from v2.2 stable
+  * SOF v2.8 tools. For older Intel platforms, tools from v2.2 stable
+  * SOF v2.8.1 DSP topologies. For older Intel platforms, topologies matching v2.2.8
+- Update supplements for snd-sof-pci-intel-mtl
+
+-------------------------------------------------------------------
 Mon Feb 26 13:41:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
