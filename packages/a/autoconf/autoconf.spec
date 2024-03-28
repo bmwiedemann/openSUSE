@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package autoconf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %global psuffix %{nil}
 %endif
 Name:           autoconf%{?psuffix}
-Version:        2.71
+Version:        2.72
 Release:        0
 Summary:        A GNU Tool for Automatically Configuring Source Code
 License:        GPL-3.0-or-later
@@ -34,14 +34,15 @@ Source0:        https://ftp.gnu.org/gnu/autoconf/autoconf-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/autoconf/autoconf-%{version}.tar.xz.sig
 Source9:        autoconf.keyring
 Patch0:         autoreconf-ltdl.diff
-Patch1:         fix-testsuite-failures-with-bash-5.2.patch
+# Upstream's Known bug: see https://git.savannah.gnu.org/cgit/autoconf.git/tree/NEWS#n194
+Patch1:         remove-largefile-test.patch
 BuildRequires:  help2man
-BuildRequires:  m4 >= 1.4.6
+BuildRequires:  m4 >= 1.4.16
 BuildArch:      noarch
 %if "%{name}" == "autoconf"
 Requires:       info
-Requires:       m4 >= 1.4.6
-Requires:       perl-base >= 5.6
+Requires:       m4 >= 1.4.16
+Requires:       perl-base >= 5.10
 %endif
 %if "%{name}" == "autoconf-testsuite"
 BuildRequires:  gcc-c++
@@ -68,8 +69,10 @@ only required for the generation of the scripts, not their use.
 
 %prep
 %setup -q -n autoconf-%{version}
-%patch0
-%patch1 -p1
+%patch -P 0 -p1
+%if "%_arch" == "i386"
+%patch -P 1 -p1
+%endif
 
 %build
 %configure

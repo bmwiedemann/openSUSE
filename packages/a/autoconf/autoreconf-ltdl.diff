@@ -1,7 +1,6 @@
-Index: bin/autoreconf.in
-===================================================================
---- bin/autoreconf.in.orig
-+++ bin/autoreconf.in
+diff -Pdpru autoconf-2.72/bin/autoreconf.in autoconf-2.72-new/bin/autoreconf.in
+--- autoconf-2.72/bin/autoreconf.in	2023-12-19 22:13:19.000000000 +0100
++++ autoconf-2.72-new/bin/autoreconf.in	2024-02-19 11:01:32.513106786 +0100
 @@ -595,6 +595,8 @@ sub autoreconf_current_directory ($)
                 'AC_CONFIG_AUX_DIR',
                 'AC_CONFIG_HEADERS',
