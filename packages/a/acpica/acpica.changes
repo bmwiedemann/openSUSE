@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Mar 22 19:10:55 UTC 2024 - Thomas Renninger <trenn@suse.de>
+
+- Use local source, there currently is no fixed tarball URL
+- Use AslGbl_Deterministic by default FALSE to not compile in Date/Time
+  into ACPI table compilings
+- Update to version 20240321
+  * Get rid of MSVC warnings that arise actually due to GCC's new dangling pointer warning and also tGCC's blindspot to work with nested named structs/unions resulting in breaking of ACPI event-handling
+  * events/evgpeinit: don't forget to increment registered GPE count
+  * events/evxfgpe: correctly clear GPE_AUTO_ENABLED in AcpiSetupGpeForWake
+  * Fix Capabilities[1024] mess
+  * Update actbl2.h to get rid of the MSVC error C2233
+  * Fix CXL 3.0 structure (RDPAS) in the CEDT table
+  * ACPICA: debugger: check status of AcpiEvaluateObject in AcpiDbWalkForFields
+  * SRAT: Add dump and compiler support for RINTC affinity structure
+  * SRAT: Add RISC-V RINTC affinity structure
+  * Modify ACPI_OBJECT_COMMON_HEADER
+  * Fix spelling and typos: Clean up the fix for Issue #900
+  * Clean up the fix for Issue #900
+  * tests/common: use CopyObject instead of Store for NRMT
+  * acgcc: Fix C++ issue with ACPI_FLEX_ARRAY
+  * MADT: Add new MADT GICC/GICR/ITS non-coherent flags handling
+  * MADT: Add GICC online capable bit handling
+  * Fix various spelling mistakes in text files and code comments
+  * acpisrc: Add identifiers for the NHLT table
+  * NHLT: Reintroduce types the table consists of
+  * AdDisassemblerHeader: omit timestamp for deterministic output
+  * Fix build indeterminism for asm compiler header.
+  * os_specific: zephyr: update AcpiOsGetTimer with arch specific timer
+  * osal: zephyr: Fix write access for mapped memory
+  * osal: zephyr: Fix AcpiOsPrintf implementation
+  * Fix issue #896
+  * Attempt 1 to fix issue #900
+  * ACPI 6.5: RAS2: Add support for RAS2 table
+  * Add port definitions for CDAT SSLBIS
+  * dmtbdump2: remove redundant failure check on Status
+  * dmtbdump: remove duplicated code for both paths of an if statement
+  * NHLT: Drop preliminary support
+  * Revert "NHLT: Declare device configuration types"
+  * os_specific: zephyr: add generic platform support
+  * Fix segfault when error-checking mixed table types
+  * actbl1.h: Add EINJ CXL error types
+  * Get rid of // style comments
+  * NHLT: Declare device configuration types
+  * dmtbinfo2.c: RISC-V: Remove redundant Flags print
+
+-------------------------------------------------------------------
 Mon Feb 12 07:01:55 UTC 2024 - Thomas Renninger <trenn@suse.de>
 
 - Update to version 20230628

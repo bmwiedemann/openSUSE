@@ -20,20 +20,23 @@
 %define kver %(rpm -q --qf '%%{VERSION}' kernel-source)
 %define dmp_ver %{kver}
 Name:           acpica
-Version:        20230628
+Version:        20240321
 Release:        0
 Summary:        A set of tools to display and debug BIOS ACPI tables
 License:        GPL-2.0-only
 URL:            https://acpica.org
-Source:         https://acpica.org/sites/acpica/files/%{src_dir}.tar.gz
+# https://acpica.org/sites/acpica/files/%{src_dir}.tar.gz
+# New location:
+# https://github.com/acpica/acpica/files/14718333/acpica-unix-20240321.tar.gz
+Source:         %{src_dir}.tar.gz
 Source1:        ec_access.c
 Source2:        acpi_genl.tar.bz2
 Source3:        acpi_validate
 # https://xf.iksaif.net/dev/wmidump.html
 Source4:        wmidump-20211011.tar.xz
-Patch1:         acpica-no-compiletime.patch
-Patch2:         wmidump_add_she_bang.patch
-Patch3:         do_not_use_build_date_and_time.patch
+Patch1:         wmidump_add_she_bang.patch
+Patch2:         do_not_use_build_date_and_time.patch
+Patch3:         acpica-no-compiletime.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  glibc-devel
