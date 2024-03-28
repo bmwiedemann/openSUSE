@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 27 11:16:12 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * qpid-proton-fix_linking.patch
+    + fix linking with older cmake versions. Fixed build on SLE15
+
+-------------------------------------------------------------------
 Tue Mar  7 10:25:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.38.0:
@@ -190,6 +197,7 @@ Wed Jun  3 15:48:08 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
 
 - Update to 0.31.0
   * No changelog available
+  * Fixes bsc#1133158 (CVE-2019-0223)
 - Drop deprecated perl bindings package
 - Enable tests
 - Drop obsolete patches:

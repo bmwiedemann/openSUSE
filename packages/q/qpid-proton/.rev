@@ -215,4 +215,12 @@
     <comment></comment>
     <requestid>1069995</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>716ce407011109fe7044efa7231fc2a3</srcmd5>
+    <version>0.38.0</version>
+    <time>1711630356</time>
+    <user>anag+factory</user>
+    <comment>fix linking on sle15 + add one bug number</comment>
+    <requestid>1162875</requestid>
+  </revision>
 </revisionlist>

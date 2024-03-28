@@ -1,7 +1,7 @@
 #
 # spec file for package qpid-proton
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+%define skip_python2 1
 %global         qpid_proton_soversion 11
 %global         qpid_proton_core_soversion 10
 %global         qpid_proton_cpp_soversion 12
@@ -37,8 +36,9 @@ Source0:        https://www.apache.org/dist/qpid/proton/%{version}/%{name}-%{ver
 # devel files in test package
 Source99:       qpid-proton-rpmlintrc
 Patch0:         qpid-proton-openssl-3.0.0.patch
-# PATCH-FIX-OPENSUSE qpid-oythonbuild.patch -- disable compiling with wrong interpreter
+# PATCH-FIX-OPENSUSE qpid-pythonbuild.patch -- disable compiling with wrong interpreter
 Patch1:         qpid-pythonbuild.patch
+Patch2:         qpid-proton-fix_linking.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
@@ -259,6 +259,6 @@ mv %{buildroot}%{_datadir}/proton/docs/* %{buildroot}%{_docdir}/%{name}/
 %{python_sitearch}/cproton.py*
 %pycache_only %{python_sitearch}/__pycache__/cproton*
 %{python_sitearch}/proton
-%{python_sitearch}/python_qpid_proton-%{version}*-info
+%{python_sitearch}/python_qpid_proton-*-info
 
 %changelog
