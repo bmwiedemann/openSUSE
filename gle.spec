@@ -18,15 +18,15 @@
 
 Name:           gle
 %define lname   libgle3
-Version:        3.1.0
+Version:        3.1.2
 Release:        0
 Summary:        The GLE Tubing and Extrusion Library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Source:         http://download.sourceforge.net/gle/%{name}-%{version}.tar.bz2
-Patch0:         %{name}-%{version}.diff
-Patch1:         %{name}-%{version}-fltmax.diff
 URL:            http://linas.org/gle/
+#Git-Clone:     https://github.com/linas/glextrusion
+Source:         https://github.com/linas/glextrusion/archive/refs/tags/%name-%version.tar.gz
+Patch1:         gle-3.1.0-fltmax.diff
 BuildRequires:  freeglut-devel
 BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
@@ -73,8 +73,7 @@ header files. It uses the OpenGL (TM) programming API to perform the
 actual drawing of the tubing and extrusions.
 
 %prep
-%autosetup -p0
-find -name ".cvsignore" -delete
+%autosetup -p0 -n glextrusion-%name-%version
 
 %build
 autoreconf -fi
@@ -86,8 +85,7 @@ autoreconf -fi
 
 %install
 %make_install
-rm -rf "%buildroot/%_datadir/doc/gle"
-rm -f "%buildroot/%_libdir"/*.la
+rm -rf "%buildroot/%_datadir/doc/gle" "%buildroot/%_libdir"/*.la
 
 %ldconfig_scriptlets -n %lname
 
