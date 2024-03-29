@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 28 20:38:32 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 3.72.0:
+  * make postman source public (#2635)
+  * fix(deps): update module google.golang.org/api to v0.172.0 (#2634)
+  * Fixing nitro check (#2631)
+  * Link to GitHub contribution guide in CONTRIBUTING (#2632)
+  * Use Lstat to identify non-regular files in filesystem source (#2628)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.8 (#2630)
+  * [bugfix] - Update the Anthropic detector (#2629)
+  * fix(deps): update module github.com/charmbracelet/glamour to v0.7.0 (#2627)
+  * fix(deps): update module github.com/go-sql-driver/mysql to v1.8.1 (#2626)
+  * Fix incorrect regular expression with missing closing bracket (#2616)
+
+-------------------------------------------------------------------
 Wed Mar 27 08:02:16 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 3.71.1:
