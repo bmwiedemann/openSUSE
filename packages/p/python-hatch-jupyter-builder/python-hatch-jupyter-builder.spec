@@ -1,7 +1,7 @@
 #
 # spec file for package python-hatch-jupyter-builder
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-# This si with alts/libalternatives only and has never been something else
+# This is with alts/libalternatives only and has never been something else
 %bcond_without libalternatives
 Name:           python-hatch-jupyter-builder
-Version:        0.8.3
+Version:        0.9.1
 Release:        0
 Summary:        A hatch plugin to help build Jupyter packages
 License:        BSD-3-Clause
@@ -27,13 +27,14 @@ URL:            https://github.com/jupyterlab/hatch-jupyter-builder
 Source:         https://files.pythonhosted.org/packages/source/h/hatch_jupyter_builder/hatch_jupyter_builder-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE hatch-test-nonisolated.patch code@bnavigator.de
 Patch1:         hatch-test-nonisolated.patch
-BuildRequires:  %{python_module hatchling >= 1.5}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module hatchling >= 1.17}
 BuildRequires:  %{python_module pip}
 BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
-Requires:       python-hatchling >= 1.5
+Requires:       python-hatchling >= 1.17
 Provides:       python-hatch_jupyter_builder = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test
@@ -51,7 +52,7 @@ adds a build step for use with Jupyter packages.
 
 %prep
 %autosetup -p1 -n hatch_jupyter_builder-%{version}
-sed -i '/addopts/ s/--color=yes//' pyproject.toml
+sed -i 's/"--color=yes", //' pyproject.toml
 
 %build
 %pyproject_wheel
