@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 29 01:28:32 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240328
+  * Fix entering line breaks into the message editor
+  * Don't abort when IT files report an order list size over 256
+
+-------------------------------------------------------------------
 Sun Mar 10 09:18:42 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20240308
