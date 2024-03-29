@@ -17,19 +17,16 @@
 
 
 %define skip_python39 1
-%define distver 0.9
+%define distver 0.9.3
 Name:           python-anywidget
-Version:        0.9.0
+Version:        0.9.3
 Release:        0
 Summary:        Custom jupyter widgets made easy
 License:        MIT
 URL:            https://github.com/manzt/anywidget
 Source:         https://files.pythonhosted.org/packages/source/a/anywidget/anywidget-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM anywidget-pr439-py312mock.patch gh#manzt/anywidget#439
-Patch0:         anywidget-pr439-py312mock.patch
 BuildRequires:  %{python_module hatch-jupyter-builder}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module jupyterlab >= 3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
@@ -102,7 +99,6 @@ This package provides the jupyter notebook extensions.
 %files -n jupyter-anywidget
 %doc README.md
 %license LICENSE
-%_jupyter_config %{_jupyter_nb_notebook_confdir}/anywidget.json
 %{_jupyter_prefix}/labextensions/anywidget
 %{_jupyter_nbextension_dir}/anywidget
 

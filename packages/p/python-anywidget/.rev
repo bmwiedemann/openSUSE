@@ -113,4 +113,20 @@
   ipywidgets)</comment>
     <requestid>1155331</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cca4e04f904e9da55754fcf65d2895dc</srcmd5>
+    <version>0.9.3</version>
+    <time>1711714209</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.3
+  * Updated JS dependencies
+- Release 0.9.2
+  * Add Python 3.12 Support (#441)
+  * feat(experimental): Add @dataclass decorator (#222)
+  * Add error boundaries with nicer stack traces (#445)
+- Release 0.9.1
+ * refactor: Use signals for HMR runtime (#438)
+- Drop anywidget-pr439-py312mock.patch</comment>
+    <requestid>1163384</requestid>
+  </revision>
 </revisionlist>
