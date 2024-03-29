@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 27 09:38:48 UTC 2024 - ro@suse.com
+
+- Update to version 84.87+git20240327.7996a0f:
+  * Guard against "integer expression expected" error
+
+-------------------------------------------------------------------
 Thu Feb 15 13:52:45 UTC 2024 - ro@suse.com
 
 - Update to version 84.87+git20240215.a1dbe5c:

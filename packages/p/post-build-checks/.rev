@@ -1006,4 +1006,13 @@ Marcus
   * Set SOURCE_DATE_EPOCH (2nd try)</comment>
     <requestid>1146859</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>c63d0a079e7793004e69a9c266cf5c36</srcmd5>
+    <version>84.87+git20240327.7996a0f</version>
+    <time>1711714136</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 84.87+git20240327.7996a0f:
+  * Guard against &quot;integer expression expected&quot; error</comment>
+    <requestid>1162852</requestid>
+  </revision>
 </revisionlist>

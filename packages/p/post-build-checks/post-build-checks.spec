@@ -20,7 +20,7 @@ Name:           post-build-checks
 Summary:        post checks for build after rpms have been created
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Version:        84.87+git20240215.a1dbe5c
+Version:        84.87+git20240327.7996a0f
 Release:        0
 PreReq:         aaa_base
 PreReq:         permissions
