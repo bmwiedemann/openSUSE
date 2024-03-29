@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 28 08:04:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.7.1:
+  + Fix possible stalls in D-Bus endpoint batch updates.
+  + Better API documentation around handling of corrupted
+    databases.
+  + Test improvements.
+
+-------------------------------------------------------------------
 Sun Mar 17 09:39:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.7.0:
