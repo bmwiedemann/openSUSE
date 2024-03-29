@@ -17,7 +17,7 @@
 
 
 Name:           cherrytree
-Version:        1.1.0+7
+Version:        1.1.1+2
 Release:        0
 Summary:        A hierarchical note taking application
 License:        GPL-3.0-or-later AND LGPL-2.1-only
@@ -67,6 +67,9 @@ rm %{buildroot}%{_datadir}/mime-info/cherrytree.*
 %suse_update_desktop_file -G "Hierarchical Notes Utility" cherrytree TextEditor
 %find_lang %{name} %{?no_lang_C}
 %fdupes -s %{buildroot}%{_datadir}
+
+%check
+## Empty section added as per rpmlint report
 
 %files
 %license license.txt

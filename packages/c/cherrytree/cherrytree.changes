@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 29 00:19:18 UTC 2024 - malcolmlewis@opensuse.org
+
+- Update to version 1.1.1+2:
+  + Fixed regression after one search with replace, all subsequent
+    searches open replace dialog, (gh#giuspen/cherrytree#2468).
+  + Fixed regression searching in multiple nodes, only nodes names
+    and tags, not working, (gh#giuspen/cherrytree#2461 and
+    gh#giuspen/cherrytree#2408).
+  + fixed import from cherrytree sqlite document having shared
+    nodes.
+
+-------------------------------------------------------------------
 Mon Mar 25 22:08:42 UTC 2024 - malcolmlewis@opensuse.org
 
 - Fix source version error and _service file.
