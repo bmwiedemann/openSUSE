@@ -1457,4 +1457,17 @@ Now with build cycle removed.</comment>
   * util: gTLD data autopull updates for 2024-03-06T15:14:58 UTC (#1943)</comment>
     <requestid>1158013</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>8058999b1c1ff0b0129c17bc89818f57</srcmd5>
+    <version>20240326</version>
+    <time>1711714159</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240326:
+  * Add `*.ir.md` (#1625)
+  * Update name for info.cx (#1616)
+  * add `nftstorage.link` (#1548)
+  * GD - graphic.design (#1940)
+  * Removing wildcard for cloudapp.azure.com (#1944)</comment>
+    <requestid>1163347</requestid>
+  </revision>
 </revisionlist>
