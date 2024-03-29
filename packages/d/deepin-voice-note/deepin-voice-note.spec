@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-voice-note
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,21 +13,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if 0%{?is_opensuse}
     %define  distribution  openSUSE-Edition
 %else
     %define  distribution  SUSE-Edition
 %endif
+%define gtest_version    %(rpm -q --queryformat '%%{VERSION}' gtest)
 
 Name:           deepin-voice-note
 Version:        5.10.18
 Release:        0
-License:        GPL-3.0+
-Summary:        Deepin Voice Note 
-Url:            https://github.com/linuxdeepin/deepin-voice-note
+License:        GPL-3.0-or-later
+Summary:        Deepin Voice Note
+URL:            https://github.com/linuxdeepin/deepin-voice-note
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 Source0:        https://github.com/linuxdeepin/deepin-voice-note/archive/%{version}/%{name}-%{version}.tar.gz
 %ifarch ppc ppc64 ppc64le s390 s390x
@@ -39,18 +41,18 @@ BuildRequires:  fdupes
 BuildRequires:  gtest
 BuildRequires:  libqt5-linguist
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Multimedia)
+BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
-BuildRequires:  pkgconfig(dtkwidget)
-BuildRequires:  pkgconfig(dtkcore)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(dframeworkdbus)
+BuildRequires:  pkgconfig(dtkcore)
+BuildRequires:  pkgconfig(dtkwidget)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(libvlc)
 Recommends:     %{name}-lang
@@ -60,13 +62,16 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Voice Notes is a lightweight memo tool to make text notes and voice and audio
-recordings. 
+recordings.
 
 %lang_package
 
 %prep
 %setup -q
 sed -i 's/lupdate/lupdate-qt5/g;s/lrelease/lrelease-qt5/g' assets/translate_generation.sh
+%if "%{gtest_version}" >= "1.14.0"
+sed -i '/CMAKE_CXX_STANDARD/s|11|14|g' CMakeLists.txt
+%endif
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=Release \
@@ -95,4 +100,3 @@ sed -i 's/lupdate/lupdate-qt5/g;s/lrelease/lrelease-qt5/g' assets/translate_gene
 %{_datadir}/%{name}/translations
 
 %changelog
-

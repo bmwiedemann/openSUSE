@@ -53,4 +53,12 @@
   * Drop invalid dependences</comment>
     <requestid>1000263</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>220c3cfd222b5c336a94810fae0340e1</srcmd5>
+    <version>5.10.18</version>
+    <time>1711714191</time>
+    <user>anag+factory</user>
+    <comment>- Fix build on gtest 1.14.0 (forwarded request 1163344 from hillwood)</comment>
+    <requestid>1163345</requestid>
+  </revision>
 </revisionlist>
