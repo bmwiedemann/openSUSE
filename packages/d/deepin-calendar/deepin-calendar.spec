@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-calendar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define _name dde-calendar
-
+%define gtest_version    %(rpm -q --queryformat '%%{VERSION}' gtest)
 %if 0%{?is_opensuse}
     %define  distribution  openSUSE-Edition
 %else
@@ -93,10 +93,13 @@ sed -i 's/1.2.2/%{version}/g' calendar-client/CMakeLists.txt
 sed -i 's/Exec=dde-calendar/Exec=env QT_QPA_PLATFORMTHEME=deepin dde-calendar/g' \
 calendar-client/assets/dde-calendar.desktop
 sed -i 's/5.5//g' calendar-client/CMakeLists.txt calendar-service/CMakeLists.txt
+%if "%{gtest_version}" >= "1.14.0"
+sed -i '/CMAKE_CXX_STANDARD/s|11|14|g' tests/*/CMakeLists.txt
+%endif
 
 %build
 %cmake -DVERSION=%{version}-%{distribution}
-%make_build
+%cmake_build
 
 %install
 %cmake_install

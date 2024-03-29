@@ -57,4 +57,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>999753</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>025f0019593b53ffdac3c225f750dfca</srcmd5>
+    <version>5.8.30</version>
+    <time>1711714188</time>
+    <user>anag+factory</user>
+    <comment>- Fix build on gtest 1.14.0 (forwarded request 1163335 from hillwood)</comment>
+    <requestid>1163336</requestid>
+  </revision>
 </revisionlist>

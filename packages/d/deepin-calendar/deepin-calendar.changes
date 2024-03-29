@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 28 13:55:29 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix build on gtest 1.14.0 
+
+-------------------------------------------------------------------
 Sat Jul  2 14:38:17 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.8.30
