@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 21 13:57:31 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Add omemo-utils-1.0.0-fix-server-decryption.patch:
+  Add support for non optimal server configurations
+
+-------------------------------------------------------------------
 Wed Feb 21 07:38:32 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -25,6 +25,8 @@ Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/wstrm/omemo-utils
 Source:         https://github.com/wstrm/omemo-utils/archive/v%{version}.tar.gz
 Patch0:         https://github.com/wstrm/omemo-utils/commit/866db1fc3577c93e1be44d558feca5b5a679d33c.patch#/omemo-utils-1.0.0-man.patch
+# PATCH-FIX-UPSTREAM gh#wstrm/omemo-utils#5
+Patch1:         omemo-utils-1.0.0-fix-server-decryption.patch
 BuildRequires:  libcurl-devel
 BuildRequires:  libgcrypt-devel >= 1.7.0
 

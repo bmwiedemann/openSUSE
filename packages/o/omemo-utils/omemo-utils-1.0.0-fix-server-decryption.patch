@@ -1,0 +1,110 @@
+From 154df193d71c095dc2f75ed70d852345679afdab Mon Sep 17 00:00:00 2001
+From: Steffen Jaeckel <s@jaeckel.eu>
+Date: Thu, 7 Dec 2023 14:53:41 +0100
+Subject: [PATCH 1/2] Add `-k` flag to skip certificate check of server
+
+Signed-off-by: Steffen Jaeckel <s@jaeckel.eu>
+---
+ omut.c   | 10 +++++++---
+ stream.c |  7 ++++++-
+ stream.h |  2 +-
+ 3 files changed, 14 insertions(+), 5 deletions(-)
+
+diff --git a/omut.c b/omut.c
+index e728065..7735509 100644
+--- a/omut.c
++++ b/omut.c
+@@ -38,13 +38,17 @@ void print_crypto_material(char *type, unsigned char *material, int len) {
+ int main(int argc, char **argv) {
+   int opt;
+   int direction = ENCRYPT;
++  bool insecure = false;
+   char *output_path = NULL;
+ 
+-  while ((opt = getopt(argc, argv, ":do:")) != -1) {
++  while ((opt = getopt(argc, argv, ":dko:")) != -1) {
+     switch (opt) {
+     case 'd':
+       direction = DECRYPT;
+       continue;
++    case 'k':
++      insecure = true;
++      continue;
+     case 'o':
+       output_path = optarg;
+       continue;
+@@ -97,9 +101,9 @@ int main(int argc, char **argv) {
+     key = gcry_random_bytes_secure(AES256_GCM_KEY_LENGTH,
+                                    GCRY_VERY_STRONG_RANDOM);
+     gcry_create_nonce(nonce, AES256_GCM_NONCE_LENGTH);
+-    in_stream = stream_open(raw_url);
++    in_stream = stream_open(raw_url, insecure);
+   } else {
+-    in_stream = stream_open(parsed_url);
++    in_stream = stream_open(parsed_url, insecure);
+   }
+ 
+   free(parsed_url);
+diff --git a/stream.c b/stream.c
+index 44ecaa3..3fb72d0 100644
+--- a/stream.c
++++ b/stream.c
+@@ -134,7 +134,7 @@ char *parse_aesgcm_url(char *url, unsigned char *nonce, size_t nonce_size,
+   return NULL;
+ }
+ 
+-STREAM *stream_open(const char *url) {
++STREAM *stream_open(const char *url, bool insecure) {
+   CURLcode res;
+ 
+   STREAM *stream;
+@@ -157,6 +157,11 @@ STREAM *stream_open(const char *url) {
+   curl_easy_setopt(hd, CURLOPT_WRITEFUNCTION, write_callback);
+   curl_easy_setopt(hd, CURLOPT_WRITEDATA, (void *)stream);
+ 
++  if (insecure) {
++    curl_easy_setopt(hd, CURLOPT_SSL_VERIFYHOST, 0L);
++    curl_easy_setopt(hd, CURLOPT_SSL_VERIFYPEER, 0L);
++  }
++
+   res = curl_easy_perform(hd);
+   if (res != CURLE_OK) {
+     free(stream);
+diff --git a/stream.h b/stream.h
+index f949da8..249ff5b 100644
+--- a/stream.h
++++ b/stream.h
+@@ -20,6 +20,6 @@ struct stream_data {
+ typedef struct stream_data STREAM;
+ 
+ size_t stream_read(void *buffer, size_t bytes, STREAM *stream);
+-STREAM *stream_open(const char *url);
++STREAM *stream_open(const char *url, bool insecure);
+ char *parse_aesgcm_url(char *url, unsigned char *nonce, size_t nonce_size,
+                        unsigned char *key, size_t key_size);
+
+From 97f36a8d3175bbe305815c9e0c1011110914bff1 Mon Sep 17 00:00:00 2001
+From: Steffen Jaeckel <s@jaeckel.eu>
+Date: Thu, 7 Dec 2023 14:54:45 +0100
+Subject: [PATCH 2/2] Use `actual_size` if `expected_size` is not set
+
+Otherwise decryption fails because the tag offset is calculated wrong.
+
+Signed-off-by: Steffen Jaeckel <s@jaeckel.eu>
+---
+ crypt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/crypt.c b/crypt.c
+index 684d573..09daf14 100644
+--- a/crypt.c
++++ b/crypt.c
+@@ -19,7 +19,7 @@ int aes256gcm_crypt(STREAM *in, FILE *out, unsigned char key[],
+     abort();
+   }
+ 
+-  off_t file_size = in->expected_size;
++  off_t file_size = in->expected_size ? in->expected_size : in->actual_size;
+   if (!encrypt) {
+     file_size -= AES256_GCM_TAG_LENGTH;
+   }
