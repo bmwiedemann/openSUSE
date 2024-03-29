@@ -73,7 +73,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  containerd-devel
 BuildRequires:  grpc-devel
 BuildRequires:  libcurl-devel
-BuildRequires:  protobuf-devel < 22
+BuildRequires:  protobuf-devel
 %define         arg_containerinfo --enable-containerinfo=yes
 %else
 %define         arg_containerinfo --enable-containerinfo=no
@@ -281,8 +281,8 @@ autoreconf -fi
 # (this is because of 'g_static_mutex_init' usage which is now deprecated)
 export CFLAGS="%{optflags} -Wno-unused-local-typedefs -Wno-unused-but-set-variable -Wno-deprecated-declarations -Wno-sizeof-pointer-memaccess -Wno-cpp -fPIE"
 export CXXFLAGS="%{optflags} -Wno-unused-local-typedefs -Wno-unused-but-set-variable -Wno-deprecated-declarations -Wno-sizeof-pointer-memaccess -Wno-cpp -fPIE"
-%if 0%{?suse_version} > 1500
-export LDFLAGS="-pie -ltirpc -labsl_synchronization -lgpr"
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+export LDFLAGS="-pie -ltirpc -lgrpc -labsl_synchronization -labsl_log_internal_check_op -labsl_log_internal_nullguard -labsl_log_internal_message"
 %else
 %if 0%{?sle_version} >= 150300
 export LDFLAGS="-pie -ltirpc"

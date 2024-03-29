@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 27 15:36:58 UTC 2024 - Kirk Allan <kallan@suse.com>
+
+- Remove protobuf < 22 dependency from spec file (bsc#1217478)
+  Required linking with additional absl libraries for sle_version > 150400.
+
+- Use (boo#1222089) for updating open-vm-tools to version 12.4.0.
+
+-------------------------------------------------------------------
 Sat Mar 23 09:44:51 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 12.4.0:
