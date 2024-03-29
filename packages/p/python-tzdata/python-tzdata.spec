@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-tzdata
 Version:        2024.1
 Release:        0
