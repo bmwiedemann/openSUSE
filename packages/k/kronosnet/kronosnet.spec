@@ -1,6 +1,7 @@
+#
 # spec file for package kronosnet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -91,20 +92,24 @@ BuildRequires: libnl3-devel
 BuildRequires: pam-devel
 %endif
 %if %{with runautogen}
-BuildRequires: autoconf automake libtool
+BuildRequires: autoconf
+BuildRequires: automake
+BuildRequires: libtool
 %endif
 %if %{with buildman}
-BuildRequires: libqb-devel libxml2-devel doxygen
+BuildRequires: doxygen
+BuildRequires: libqb-devel
+BuildRequires: libxml2-devel
 %endif
 # main (empty) package
 # http://www.rpm.org/max-rpm/s1-rpm-subpack-spec-file-changes.html
 Name:           kronosnet
-Version:        1.21
+Version:        1.28
 Release:        0
 Summary:        Multipoint-to-Multipoint VPN daemon
-License:        GPL-2.0+ AND LGPL-2.1+
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Clustering/HA
-Url:            https://kronosnet.org
+URL:            https://kronosnet.org
 Source0:        https://kronosnet.org/releases/kronosnet-%{version}.tar.xz
 
 ## Setup/build bits
@@ -116,45 +121,45 @@ BuildRequires:  pkgconfig
 %endif
 # required to build man pages
 %if %{defined buildmanpages}
-BuildRequires:  doxygen
-BuildRequires:  libqb-devel
-BuildRequires:  libxml2-devel
+BuildRequires: doxygen
+BuildRequires: libqb-devel
+BuildRequires: libxml2-devel
 %endif
 %if %{defined buildsctp}
-BuildRequires:  lksctp-tools-devel
+BuildRequires: lksctp-tools-devel
 %endif
 %if %{defined buildcryptonss}
-BuildRequires:  mozilla-nss-devel
+BuildRequires: mozilla-nss-devel
 %endif
 %if %{defined buildcryptoopenssl}
-BuildRequires:  openssl-devel
+BuildRequires: openssl-devel
 %endif
 %if %{defined buildcompresszlib}
-BuildRequires:  zlib-devel
+BuildRequires: zlib-devel
 %endif
 %if %{defined buildcompresslz4}
-BuildRequires:  liblz4-devel
+BuildRequires: liblz4-devel
 %endif
 %if %{defined buildcompresslzo2}
-BuildRequires:  lzo-devel
+BuildRequires: lzo-devel
 %endif
 %if %{defined buildcompresslzma}
-BuildRequires:  xz-devel
+BuildRequires: xz-devel
 %endif
 %if %{defined buildcompressbzip2}
-BuildRequires:  libbz2-devel
+BuildRequires: libbz2-devel
 %endif
 %if %{defined buildcompresszstd}
-BuildRequires:  libzstd-devel
+BuildRequires: libzstd-devel
 %endif
 %if %{defined buildkronosnetd}
-BuildRequires:  libqb-devel
-BuildRequires:  pam-devel
+BuildRequires: libqb-devel
+BuildRequires: pam-devel
 %endif
 %if %{defined buildautogen}
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
+BuildRequires: autoconf
+BuildRequires: automake
+BuildRequires: libtool
 %endif
 %if %{defined buildlibnozzle}
 BuildRequires: libnl3-devel
@@ -162,7 +167,6 @@ BuildRequires: libnl3-devel
 
 %prep
 %setup -q -n %{name}-%{version}%{?numcomm:.%{numcomm}}%{?alphatag:-%{alphatag}}%{?dirty:-%{dirty}}
-
 
 %build
 %if %{with runautogen}
@@ -263,15 +267,16 @@ rm -rf %{buildroot}/usr/share/doc/kronosnet
 %if %{with kronosnetd}
 ## Runtime and subpackages section
 %package -n kronosnetd
-Summary: Multipoint-to-Multipoint VPN daemon
-Group: Productivity/Clustering/HA
-Requires(post):   systemd-sysv
-Requires(post):   systemd-units
-Requires(preun):  systemd-units
-Requires(postun): systemd-units
-Requires(post):   shadow-utils
-Requires(preun):  shadow-utils
-Requires: pam, /etc/pam.d/passwd
+Summary:        Multipoint-to-Multipoint VPN daemon
+Group:          Productivity/Clustering/HA
+Requires(post): systemd-sysv
+Requires(post): systemd-units
+Requires(preun):systemd-units
+Requires(postun):systemd-units
+Requires(post): shadow-utils
+Requires(preun):shadow-utils
+Requires:       /etc/pam.d/passwd
+Requires:       pam
 
 %description -n kronosnetd
 The kronosnet daemon is a bridge between kronosnet switching engine
@@ -291,7 +296,7 @@ getent group kronosnetadm >/dev/null || %{_sbindir}/groupadd --force --system kr
 %systemd_preun kronosnetd.service
 
 %files -n kronosnetd
-%doc COPYING.* COPYRIGHT
+%license COPYING.* COPYRIGHT
 %dir %{_sysconfdir}/kronosnet
 %dir %{_sysconfdir}/kronosnet/*
 %config(noreplace) %{_sysconfdir}/sysconfig/kronosnetd
@@ -304,7 +309,7 @@ getent group kronosnetadm >/dev/null || %{_sbindir}/groupadd --force --system kr
 
 %if %{with libnozzle}
 %package -n libnozzle1
-Summary:       Simple userland wrapper around kernel tap devices 
+Summary:        Simple userland wrapper around kernel tap devices
 
 %description -n libnozzle1
 This is an over-engineered commodity library to manage a pool
@@ -312,7 +317,7 @@ of tap devices and provides the basic
 pre-up.d/up.d/down.d/post-down.d infrastructure.
 
 %files -n libnozzle1
-%doc COPYING.* COPYRIGHT
+%license COPYING.* COPYRIGHT
 %{_libdir}/libnozzle.so.*
 
 %if 0%{?ldconfig_scriptlets}
@@ -333,7 +338,7 @@ of tap devices and provides the basic
 pre-up.d/up.d/down.d/post-down.d infrastructure.
 
 %files -n libnozzle1-devel
-%doc COPYING.* COPYRIGHT
+%license COPYING.* COPYRIGHT
 %{_libdir}/libnozzle.so
 %{_includedir}/libnozzle.h
 %{_libdir}/pkgconfig/libnozzle.pc
@@ -352,7 +357,7 @@ Please refer to the not-yet-existing documentation for further
 information.
 
 %files -n libknet1
-%doc COPYING.* COPYRIGHT
+%license COPYING.* COPYRIGHT
 %{_libdir}/libknet.so.*
 %dir %{_libdir}/kronosnet
 
@@ -366,8 +371,8 @@ information.
 %package -n libknet1-devel
 Summary:        Development files fro the Kronosnet core switching implementation
 Group:          Development/Libraries/C and C++
-Requires: libknet1%{_isa} = %{version}-%{release}
-Requires: pkgconfig
+Requires:       libknet1%{_isa} = %{version}-%{release}
+Requires:       pkgconfig
 
 %description -n libknet1-devel
 The whole kronosnet core is implemented in this library.
@@ -375,7 +380,7 @@ Please refer to the not-yet-existing documentation for further
 information.
 
 %files -n libknet1-devel
-%doc COPYING.* COPYRIGHT
+%license COPYING.* COPYRIGHT
 %{_libdir}/libknet.so
 %{_includedir}/libknet.h
 %{_libdir}/pkgconfig/libknet.pc
@@ -440,7 +445,7 @@ Provides lz4 and lz4hc compression support for libknet1.
 %package -n libknet1-compress-lzo2-plugin
 Summary:        Provides libknet1 lzo2 support
 Group:          System/Libraries
-Requires:     	libknet1%{_isa} = %{version}-%{release} 
+Requires:       libknet1%{_isa} = %{version}-%{release}
 
 %description -n libknet1-compress-lzo2-plugin
 Provides lzo2 compression support for libknet1.
@@ -507,22 +512,22 @@ Provides meta package to install all of libknet1 crypto plugins
 Summary:        Provides libknet1 compress plugins meta package
 Group:          System/Libraries
 %if %{with zlib}
-Requires: libknet1-compress-zlib-plugin%{_isa} = %{version}-%{release}
+Requires:       libknet1-compress-zlib-plugin%{_isa} = %{version}-%{release}
 %endif
 %if %{with lz4}
-Requires: libknet1-compress-lz4-plugin%{_isa} = %{version}-%{release}
+Requires:       libknet1-compress-lz4-plugin%{_isa} = %{version}-%{release}
 %endif
 %if %{with lzo2}
-Requires: libknet1-compress-lzo2-plugin%{_isa} = %{version}-%{release}
+Requires:       libknet1-compress-lzo2-plugin%{_isa} = %{version}-%{release}
 %endif
 %if %{with lzma}
-Requires: libknet1-compress-lzma-plugin%{_isa} = %{version}-%{release}
+Requires:       libknet1-compress-lzma-plugin%{_isa} = %{version}-%{release}
 %endif
 %if %{with bzip2}
-Requires: libknet1-compress-bzip2-plugin%{_isa} = %{version}-%{release}
+Requires:       libknet1-compress-bzip2-plugin%{_isa} = %{version}-%{release}
 %endif
 %if %{with zstd}
-Requires: libknet1-compress-zstd-plugin%{_isa} = %{version}-%{release}
+Requires:       libknet1-compress-zstd-plugin%{_isa} = %{version}-%{release}
 %endif
 
 %description -n libknet1-compress-plugins-all
@@ -531,10 +536,10 @@ Requires: libknet1-compress-zstd-plugin%{_isa} = %{version}-%{release}
 %files -n libknet1-compress-plugins-all
 
 %package -n libknet1-plugins-all
-Summary: Provides libknet1 plugins meta package
+Summary:        Provides libknet1 plugins meta package
 Group:          System/Libraries
-Requires: libknet1-compress-plugins-all%{_isa} = %{version}-%{release}
-Requires: libknet1-crypto-plugins-all%{_isa} = %{version}-%{release}
+Requires:       libknet1-compress-plugins-all%{_isa} = %{version}-%{release}
+Requires:       libknet1-crypto-plugins-all%{_isa} = %{version}-%{release}
 
 %description -n libknet1-plugins-all
  Meta package to install all of libknet1 plugins
@@ -543,9 +548,9 @@ Requires: libknet1-crypto-plugins-all%{_isa} = %{version}-%{release}
 
 %if %{with installtests}
 %package -n kronosnet-tests
-Summary: Provides kronosnet test suite
+Summary:        Provides kronosnet test suite
 Group:          System/Libraries
-Requires: libknet1%{_isa} = %{version}-%{release}
+Requires:       libknet1%{_isa} = %{version}-%{release}
 
 %description -n kronosnet-tests
  This package contains all the libknet and libnozzle test suite.
@@ -555,7 +560,6 @@ Requires: libknet1%{_isa} = %{version}-%{release}
 %endif
 
 %if %{with rpmdebuginfo}
-%debug_package
 %endif
 
 %changelog

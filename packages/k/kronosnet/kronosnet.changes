@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Mar 28 13:11:21 UTC 2024 - Emil Penchev <emil.penchev@suse.com>
+
+- Update to version 1.28
+    changes since 1.21 
+        * [links] fix conversion
+        * [rx] allow links to be active faster
+        * [links] fix ping interval and pong timeout value checking
+        * [nozzle] don´t leak tun/tap interfaces in test suite
+        * [crypto] Try crypt and decrypt on crypto_init
+        * [spec] Migrate to SPDX license
+        * [nozzle] tests: Fix 'set_down' test on FreeBSD-devel
+        * [tx] Remove expensive memsets
+        * [log] Add a TRACE log level
+        * [man] update to latest doxyxml from libqb
+        * [udp] Move EPERM to be alongside EMSGSIZE in tx error handler
+        * [pmtud] Reset/restart pmtud when a node joins
+        * [doc] To Do list moved to projects.clusterlabs.org (#379)
+        * [logging] Fix Initializing typo
+        * [tx] fix epoll event size to cope with extra event on send to link
+        * [tests] deal with new annocheck symlink checks
+        * [tests] update memcheck exceptions
+        * [UDP] Check for EHOSTUNREACH
+        * [build] fix flag detections for gcc
+        * [doc] update links to mailing lists and drop obsolete test suite
+        * [logging] slow down knet a bit when log socket is busy
+        * [crypto] improve logging when failing to decrypt packets
+        * [udp] use ICMP error messages to trigger faster link down detection
+        * [host] fix dst_seq_num initialization race condition
+        * [crypto] fix nss crypto buffer boundaries usage
+        * [build] fix debug build vs annocheck parameters
+        * [tests] temporary disable annobin lto check for centos8 failure
+        * [build] Add annobin build/check support
+        * [nozzle] fix tests on machines that don´t have bash
+        * [tests] make execution of functional testing optionals
+        * send: Fix send_sync()
+        * [transports] remove unused internal ACL API
+        * [acl] major internal rework
+        * [acl] make knet_link_add_acl a wrapper to knet_link_insert_acl
+        * [host] use correct seq_num to reclaim buffers
+        * [rx] increase defrag buffers to better deal with network jitter
+        * [man] update doxygen2man to latest from libqb
+        * [doc] Add comments to structure members
+        * [link] don´t allow mix of dynamic and static links
+        * [link] use previously cached value as link info might not be accurate
+        * [link] don´t leak resources if link configuration fails
+        * [tests] suppress more libnss3 errors
+        * [spec] cleanup some krosnonetd leftovers
+        * [tx] minor optimizations to avoid recalculating socksize over and over
+        * [docs] IRC channel is now on Libera Chat
+        * [coverity] fix 2 buffer initialization (potential) issues
+
+-------------------------------------------------------------------
 Sat May  8 14:55:51 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.21
@@ -16,7 +68,7 @@ Sat May  8 14:55:51 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 Fri Oct 11 05:11:13 UTC 2019 - Yuan Ren <yren@suse.com>
 
 - kronosnet-1.12
-    changes sicne 1.11
+    changes since 1.11
 	* Default compression level use
 	* Fix a lot of converity errors
 	* Fix lock, buffer overrun and memory release bugs
