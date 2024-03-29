@@ -1,7 +1,7 @@
 #
 # spec file for package parsec
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
-%define archive_version 1.3.0
+%define archive_version 1.4.0-rc2
 
 %{?systemd_ordering}
 Name:           parsec
-Version:        1.3.0
+Version:        1.4.0~rc2
 Release:        0
 Summary:        Platform AbstRaction for SECurity
 License:        Apache-2.0
 URL:            https://parallaxsecond.github.io/parsec-book
 Source0:        https://github.com/parallaxsecond/parsec/archive/%{archive_version}.tar.gz#/parsec-%{archive_version}.tar.gz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
 Source3:        parsec.service
 Source4:        config.toml
 Source5:        parsec.conf
@@ -52,7 +51,6 @@ BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(tss2-esys) >= 2.3.3
 # opensc is used to initialize HSM keys (PKCS#11 backend)
 Recommends:     opensc
-%sysusers_requires
 # /dev/tpm* are owned by tss user
 Requires(pre):  system-user-tss
 # tpm2-0-tss holds the udev rule to make /dev/tpm* owned by tss user
@@ -67,12 +65,17 @@ a common API to hardware security and cryptographic services in a platform-agnos
 This abstraction layer keeps workloads decoupled from physical platform details,
 enabling cloud-native delivery flows within the data center and at the edge.
 
+%package -n system-user-parsec
+Summary:        System user and group parsec
+%sysusers_requires
+
+%description -n system-user-parsec
+Package to install system user 'parsec'
+
 %prep
 %setup -q -a1 -a10 -n parsec-%{archive_version}
 rmdir trusted-services-vendor
 mv trusted-services-389b506 trusted-services-vendor
-rm -rf .cargo && mkdir .cargo
-cp %{SOURCE2} .cargo/config
 # Enable all providers
 sed -i -e 's#default = \["unix-peer-credentials-authenticator"\]##' Cargo.toml
 # Features available in 1.2.0-rc1:
@@ -116,7 +119,7 @@ export PROTOC=%{_bindir}/protoc
 export PROTOC_INCLUDE=%{_includedir}
 %cargo_test -- --lib
 
-%pre -f parsec.pre
+%pre -n system-user-parsec -f parsec.pre
 %service_add_pre parsec.service
 
 %post
@@ -138,6 +141,8 @@ export PROTOC_INCLUDE=%{_includedir}
 %{_libexecdir}/parsec
 %{_tmpfilesdir}/parsec.conf
 %{_unitdir}/parsec.service
+
+%files -n system-user-parsec
 %{_sysusersdir}/system-user-parsec.conf
 
 %changelog
