@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar 28 18:59:51 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1711652383.cfe799d:
+  * Test select_console error handling
+  * Abort when select_console() fails
+  * Avoid errors in `get_job_autoinst_vars` due to not using FQDNs
+  * t: avoid failing select_console() in t/29-backend-s390x.t
+  * video_stream: specify preferred video format explicitly
+  * video_stream: fix waiting for ustreamer startup
+  * invoke-tests: Allow PERL5OPT with coverage
+  * Skip upload assets when value of PUBLISH_* is none
+  * Update tidy to 20240202
+  * Fix formatting of architecture documentation
+  * sshXtermIPMI: Reconnect SOL on error
+  * localXvnc::callxterm: Return xterm PID
+  * localXvnc: Open hardware console log in append mode
+  * Add tidyall to README
+  * Symlink xt/00-tidy.t from common repo
+
+-------------------------------------------------------------------
 Fri Mar 15 10:56:43 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1710500193.0c8ac9b:
