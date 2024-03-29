@@ -58,4 +58,12 @@
 - Set pandoc-cli as Requires, fix docx document support (forwarded request 1135093 from hillwood)</comment>
     <requestid>1135094</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>24d21c1dc8256bcf45afe47a7cc40f7d</srcmd5>
+    <version>5.10.23</version>
+    <time>1711714186</time>
+    <user>anag+factory</user>
+    <comment>- Fix build on gtest 1.14.0 (forwarded request 1163325 from hillwood)</comment>
+    <requestid>1163326</requestid>
+  </revision>
 </revisionlist>

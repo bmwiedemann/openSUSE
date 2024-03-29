@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-reader
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2022 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,8 @@
 %define    sover            1
 # Workaround boo#1189991
 %define    _lto_cflags      %{nil}
-%define    openjpeg_version	%(rpm -q --queryformat '%%{VERSION}' openjpeg2-devel)
+%define    gtest_version    %(rpm -q --queryformat '%%{VERSION}' gtest)
+%define    openjpeg_version %(rpm -q --queryformat '%%{VERSION}' openjpeg2-devel)
 %define    openjpeg_min     2.4.0
 
 Name:           deepin-reader
@@ -96,6 +97,9 @@ sed -i "/#include <map>/a#include <cstdint>" tests/include/gtest/stub.h
 %if "%{openjpeg_version}" > "%{openjpeg_min}"
 sed -i "/#include/s|<openjpeg.h>|<openjpeg-2.5/openjpeg.h>|g" \
 3rdparty/deepin-pdfium/src/3rdparty/pdfium/pdfium/core/fxcodec/jpx/{cjpx_decoder.h,jpx_decode_utils.h}
+%endif
+%if "%{gtest_version}" >= "1.14.0"
+sed -i "s/c++11/c++14/g" tests/tests.pro
 %endif
 
 %build
