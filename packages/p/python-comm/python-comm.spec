@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-comm
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        Jupyter Python Comm implementation
 License:        BSD-3-Clause
