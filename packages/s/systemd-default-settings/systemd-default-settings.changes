@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 28 14:59:51 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import 0.9
+
+  bb859bf user@.service: Disable controllers by default (jsc#PED-2276)
+
+-------------------------------------------------------------------
 Fri Oct 20 07:03:56 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - The usage of drop-ins is now the official way for configuring systemd and its

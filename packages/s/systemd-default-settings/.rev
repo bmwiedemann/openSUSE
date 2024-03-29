@@ -85,4 +85,13 @@
   c8b6f0a Revert &quot;Convert more drop-ins into early ones&quot;</comment>
     <requestid>1120045</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5a4671a219892f4d3d744d4c3e5ee273</srcmd5>
+    <version>0.9</version>
+    <time>1711714160</time>
+    <user>anag+factory</user>
+    <comment>- Import 0.9
+  bb859bf user@.service: Disable controllers by default (jsc#PED-2276)</comment>
+    <requestid>1163360</requestid>
+  </revision>
 </revisionlist>
