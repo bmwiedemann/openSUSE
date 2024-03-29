@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 27 15:37:56 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Mar 11 03:19:14 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 2.2.1 
