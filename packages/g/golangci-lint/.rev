@@ -190,4 +190,31 @@
   * docs: update GitHub Action assets (forwarded request 1159979 from jfkw)</comment>
     <requestid>1159980</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1730b35ee80dc767e4294533f691e104</srcmd5>
+    <version>1.57.2</version>
+    <time>1711714220</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.57.2:
+  * fix: hide useless warning (#4587)
+  * build(deps): bump github.com/karamaru-alpha/copyloopvar from 1.0.9 to 1.0.10 (#4584)
+  * build(deps): bump express from 4.18.2 to 4.19.2 in /docs (#4581)
+  * build(deps): bump github.com/ldez/gomoddirectives from 0.2.3 to 0.2.4 (#4580)
+  * dev: organize golinters package (#4578)
+  * dev: minor clean up (#4577)
+  * dev: remove unused markdownlint config file (#4576)
+  * fix: missing output format (#4574)
+  * fix: the TeamCity inspectionType service message (#4573)
+  * fix: display warnings on deprecated linter options (#4568)
+  * docs: improve linters page (#4571)
+  * build(deps): bump github.com/ckaznocha/intrange from 0.1.0 to 0.1.1 (#4570)
+  * build(deps): bump github.com/nunnatsa/ginkgolinter from 0.16.1 to 0.16.2 (#4569)
+  * docs: remove invalid example about mixing files and directory (#4566)
+  * build(deps): bump github.com/kkHAIKE/contextcheck from 1.1.4 to 1.1.5 (#4564)
+  * build(deps): bump github.com/karamaru-alpha/copyloopvar from 1.0.8 to 1.0.9 (#4565)
+  * dev: improve feature request issue form (#4560)
+  * build(deps): bump github.com/jgautheron/goconst from 1.7.0 to 1.7.1 (#4555)
+  * docs: update GitHub Action assets (#4553) (forwarded request 1163398 from jfkw)</comment>
+    <requestid>1163399</requestid>
+  </revision>
 </revisionlist>
