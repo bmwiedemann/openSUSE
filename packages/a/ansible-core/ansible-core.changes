@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Mar 27 19:54:49 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.16.5:
+  https://github.com/ansible/ansible/blob/v2.16.5/changelogs/CHANGELOG-v2.16.rst
+  * Minor Changes
+    - ansible-test - Add a work-around for permission denied errors
+      when using pytest >= 8 on multi-user systems with an
+      installed version of ansible-test.
+  * Bugfixes
+    - Fix an issue when setting a plugin name from an unsafe source
+      resulted in ValueError: unmarshallable object (#82708)
+    - Harden python templates for respawn and ansiballz around str
+      literal quoting
+    - ansible-test - The libexpat package is automatically upgraded
+      during remote bootstrapping to maintain compatibility with
+      newer Python packages.
+    - template - Fix error when templating an unsafe string which
+      corresponds to an invalid type in Python (#82600).
+    - winrm - does not hang when attempting to get process output
+      when stdin write failed
+
+-------------------------------------------------------------------
 Sat Mar 16 16:09:28 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.16.4:
