@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Mar 28 15:00:02 UTC 2024 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- update to SeaMonkey 2.53.18.2
+  * Block set-cookie from multipart/x-mixed-replace with pref bug
+    1864385.
+  * Check if WorkerRunnable::Run runs on top of
+    WorkerThreadPrimaryRunnable::Run in a worker thread bug 1867982.
+  * Process pairs in coord list in PolyArea bug 1878211.
+  * Cherry-pick update to dav1d bug 1881093.
+  * Land NSS NSS_3_90_2_RTM UPGRADE_NSS_RELEASE bug 1880562.
+  * Fix DSN for send later bug 815638.
+  * Catch webNavigation error during tab restore bug 1885748.
+  * SeaMonkey 2.53.18.2 uses the same backend as Firefox and contains
+    the relevant Firefox 60.8 security fixes.
+  * SeaMonkey 2.53.18.2 shares most parts of the mail and news code
+    with Thunderbird. Please read the Thunderbird 60.8.0 release notes
+    for specific security fixes in this release.
+  * Additional important security fixes up to Current Firefox 115.9
+    and Thunderbird 115.9 ESR plus many enhancements have been
+    backported. We will continue to enhance SeaMonkey security in
+    subsequent 2.53.x beta and release versions as fast as we are able
+    to.
+- request inclusion in Leap 15.5 and 15.6:
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1222137
+
+-------------------------------------------------------------------
 Mon Feb 26 13:22:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
