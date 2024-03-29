@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 27 16:33:24 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Fix build error in Leap.
+  - Disable one more test.
+  - Drop macro %dnl because it works only in rpm version >= 4.15.
+    Leap hast 4.14 at this time.
+    Also enable it.
+  - Fix some python3 typos in spec.
+
+-------------------------------------------------------------------
 Mon Mar 25 19:22:38 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Rebase patches:

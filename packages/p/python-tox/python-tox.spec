@@ -57,7 +57,7 @@ BuildRequires:  %{python_module wheel >= 0.42}
 %if %{with devpi_process}
 BuildRequires:  %{python_module devpi-process > 1}
 %endif
-%dnl BuildRequires:  %{python_module importlib-metadata >= 6.8}
+BuildRequires:  %{python_module importlib-metadata >= 6.8}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -70,8 +70,8 @@ Requires:       python-platformdirs >= 4.1
 Requires:       python-pluggy >= 1.3
 Requires:       python-pyproject-api >= 1.6.1
 Requires:       python-virtualenv >= 20.24.3
-%dnl Requires:       (python-importlib-metadata >= 0.12 if python3-base < 3.8)
-Requires:       (python-tomli >= 2.0.1 if python3-base < 3.11)
+Requires:       (python-importlib-metadata >= 0.12 if python-base < 3.8)
+Requires:       (python-tomli >= 2.0.1 if python-base < 3.11)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # last detox version is 0.19
@@ -145,6 +145,8 @@ donttest+=" or test_call_as_exe or test_skip_pkg_install"
 donttest+=" or test_python_generate_hash_seed"
 # this test doesn't work on aarch64
 donttest+=" or test_bad_env_var"
+# this test doesn't work on Leap
+donttest+=" or test_package_cmd_builder"
 
 %{python_expand # tests expect an active virtualenv with a clean python name as sys.executable
 virtualenv-%{$python_bin_suffix} --system-site-packages testenv-%{$python_bin_suffix}
