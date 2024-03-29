@@ -1684,4 +1684,15 @@
     <comment></comment>
     <requestid>1162854</requestid>
   </revision>
+  <revision rev="192" vrev="3">
+    <srcmd5>4fdd5f50fba9874f1f93e3c1235ab222</srcmd5>
+    <version>2.44.0</version>
+    <time>1711714170</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.44.0 (boo#1222010):
++ Security fixes: CVE-2024-23252, CVE-2024-23254, CVE-2024-23263,
+  CVE-2024-23280, CVE-2024-23284, CVE-2023-42950, CVE-2023-42956,
+  CVE-2023-42843.</comment>
+    <requestid>1163500</requestid>
+  </revision>
 </revisionlist>
