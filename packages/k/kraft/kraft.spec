@@ -1,7 +1,7 @@
 #
 # spec file for package kraft
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2007-2011 Klaas Freitag <freitag@kde.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,15 @@
 #
 
 
-%bcond_without akonadi
+# Build without akonadi integration on repositories providing KDE PIM 6 libraries
+%if 0%{?suse_version} > 1500 || "%{_repository}" == "KDE_Applications_openSUSE_Leap_15.5" || "%{_repository}" == "KDE_Applications_openSUSE_Leap_15.6"
+%define with_akonadi 0
+%else
+%define with_akonadi 1
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150600
+%define akonadi_legacy 1
+%endif
+%endif
 %bcond_with qpdfview
 Name:           kraft
 Version:        1.1
@@ -34,7 +42,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Grantlee5)
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ContactEditor)
 BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(Qt5Core) >= 5.5.0
@@ -55,14 +62,14 @@ Recommends:     python3-Weasyprint
 # PATCH-FEATURE-UPSTREAM use_qpdfview.path Open PDFs in qpdfview in appimages
 Patch0:         use_qpdfview.patch
 %endif
-%if %{with akonadi}
-%if 0%{?suse_version} > 1500 || (0%{?suse_version} == 1500 && 0%{?sle_version} > 150500)
-BuildRequires:  cmake(KPim5AkonadiContact)
-%else
+%if %{with_akonadi}
+BuildRequires:  cmake(KF5ContactEditor)
+%if 0%{?akonadi_legacy}
 BuildRequires:  cmake(KF5AkonadiContact)
+%else
+BuildRequires:  cmake(KPim5AkonadiContact)
 %endif
 %endif
-# PATCH-FIX-UPSTREAM fixakonadi.patch Use new Akonadi Prefix
 
 %description
 Kraft is KDE software to help to create and manage office documents such as
@@ -87,27 +94,23 @@ See the website http://volle-kraft-voraus.de for more information.
 
 [ -f .tag ] && echo ".tag file exists in tarball." || echo "%{version}" > .tag
 
-%if 0%{?suse_version} > 1500 || (0%{?suse_version} == 1500 && 0%{?sle_version} > 150500)
-%cmake_kf5 -d build
-%else
-%cmake_kf5 -d build -- -DAKONADI_LEGACY_BUILD=ON
-%endif
+%cmake_kf5 -d build %{?akonadi_legacy:-- -DAKONADI_LEGACY_BUILD=ON}
+
 %cmake_build
 
 %install
 %kf5_makeinstall -C build
 chmod 755 %{buildroot}%{_datadir}/kraft/tools/erml2pdf.py
 
-%if %{?suse_version:1}0
+%if 0%{?suse_version}
 %suse_update_desktop_file -G kraft de.volle_kraft_voraus.kraft Office Finance
 %endif
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %{_bindir}/kraft
-%if %{with akonadi}
+%if %{with_akonadi}
 %{_bindir}/findcontact
 %endif
 %{_datadir}/applications/de.volle_kraft_voraus.kraft.desktop
