@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 28 14:20:45 UTC 2024 - pgajdos@suse.com
+
+- version update to 2.3.0
+  * Fixes for PHP 8
+
+-------------------------------------------------------------------
 Thu Dec  5 20:56:21 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
 
 - make package PHP version independent

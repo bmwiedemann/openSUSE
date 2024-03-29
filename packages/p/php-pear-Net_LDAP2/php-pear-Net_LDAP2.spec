@@ -1,7 +1,7 @@
 #
 # spec file for package php-pear-Net_LDAP2
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define pear_name  Net_LDAP2
 
 Name:           php-pear-Net_LDAP2
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Object oriented interface for searching and manipulating LDAP-entries
 License:        LGPL-3.0-only
 Group:          Development/Libraries/Other
-URL:            https://pear.php.net/package/%{pear_name}
-Source:         https://pear.php.net/get/%{pear_name}-%{version}.tgz
+URL:            https://github.com/pear/%{pear_name}
+Source:         https://github.com/pear/%{pear_name}/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  php-devel
 BuildRequires:  php-pear
 Requires:       php-ldap
