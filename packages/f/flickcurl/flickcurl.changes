@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 29 09:08:20 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
+
+- Own gtk-doc directory to please RPM.
+- Don't flag licenses as doc.
+
+-------------------------------------------------------------------
 Sat Oct  7 23:40:03 UTC 2017 - jengelh@inai.de
 
 - Avoid double shipping of documentation. Rectify RPM group

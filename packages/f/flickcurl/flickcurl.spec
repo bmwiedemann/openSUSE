@@ -1,7 +1,7 @@
 #
 # spec file for package flickcurl
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           flickcurl
 Version:        1.26
 Release:        0
 Summary:        Command-Line Tools for the Flickr Web Service
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Productivity/Networking/Other
-Url:            http://librdf.org/flickcurl/
+URL:            http://librdf.org/flickcurl/
 Source:         http://download.dajobe.org/flickcurl/flickcurl-%{version}.tar.gz
 Source1:        baselibs.conf
 Source2:        flickcurl.changes
@@ -125,7 +125,8 @@ chrpath --delete %{buildroot}%{_bindir}/flickrdf
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog LICENSE* NEWS* NOTICE README*
+%license LICENSE*
+%doc AUTHORS ChangeLog NEWS* NOTICE README*
 %{_bindir}/flickcurl
 %{_bindir}/flickrdf
 %{_mandir}/man1/flickcurl.1%{ext_man}
@@ -133,7 +134,7 @@ chrpath --delete %{buildroot}%{_bindir}/flickrdf
 
 %files -n libflickcurl%{sover}
 %defattr(-,root,root)
-%doc COPYING.LIB
+%license COPYING.LIB
 %{_libdir}/libflickcurl.so.%{sover}
 %{_libdir}/libflickcurl.so.%{sover}.*.*
 
@@ -147,6 +148,8 @@ chrpath --delete %{buildroot}%{_bindir}/flickrdf
 
 %files doc
 %defattr(-,root,root)
+%dir %{_datadir}/gtk-doc
+%dir %{_datadir}/gtk-doc/html
 %{_datadir}/gtk-doc/html/flickcurl
 
 %changelog
