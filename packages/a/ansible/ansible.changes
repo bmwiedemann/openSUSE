@@ -1,8 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 27 19:56:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.4.0:
+  Ansible 9.4.0 includes ansible-core 2.16.5 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 9
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/9/CHANGELOG-v9.rst
+
+-------------------------------------------------------------------
 Sat Mar 16 16:06:35 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.3.0:
-  Ansible 9.2.0 includes ansible-core 2.16.4 as well as a curated
+  Ansible 9.3.0 includes ansible-core 2.16.4 as well as a curated
   set of Ansible collections that provide a vast number of modules
   and plugins.
   Collections which have opted-in to being a part of the Ansible 9
