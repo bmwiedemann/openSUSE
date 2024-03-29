@@ -51,7 +51,7 @@ Requires:       python-typing_extensions >= 3.10
 Requires:       (python-tomli >= 1.1.0 if python-base < 3.11)
 Requires:       (python-typed-ast >= 1.4.0 if python-base < 3.8)
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       mypy = %{version}
 Obsoletes:      mypy < %{version}
@@ -126,11 +126,12 @@ rm docs/make.bat
 
 %if %{with test}
 %check
-
+%if 0%{?suse_version} > 1600
 %{python_expand # self-check with manually provided stubs for typed_ast
 export PYTHONPATH=%{buildroot}%{$python_sitelib}:./mystubs
 $python -m mypy --config-file mypy_self_check.ini -p mypy
 }
+%endif
 unset PYTHONPATH
 # cannot compile unoptimized with suse headers
 export MYPYC_OPT_LEVEL=2

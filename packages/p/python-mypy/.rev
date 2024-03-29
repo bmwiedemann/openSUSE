@@ -118,4 +118,12 @@ reveal_type(Context[MyBot]().bot)
 </comment>
     <requestid>1160713</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>78a911f0a31f061d4fc1ca90a55a9153</srcmd5>
+    <version>1.9.0</version>
+    <time>1711714172</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1163260</requestid>
+  </revision>
 </revisionlist>
