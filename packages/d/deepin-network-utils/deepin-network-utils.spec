@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-network-utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,37 +16,39 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define _name dde-network-utils
 %define sover 1
+%define gtest_version    %(rpm -q --queryformat '%%{VERSION}' gtest)
 
 Name:           deepin-network-utils
 Version:        5.4.13
 Release:        0
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Summary:        Deepin Network Utils
 Group:          Productivity/Networking/System
 URL:            https://github.com/linuxdeepin/dde-network-utils
 Source:         https://github.com/linuxdeepin/dde-network-utils/archive/%{version}/%{_name}-%{version}.tar.gz
+BuildRequires:  cmake
+BuildRequires:  gtest
+BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase-devel
+BuildRequires:  libqt5-qtbase-private-headers-devel
 BuildRequires:  libqt5-qtdeclarative-devel
 BuildRequires:  libqt5-qttools-devel
-BuildRequires:  libqt5-qtbase-private-headers-devel
-BuildRequires:  libqt5-linguist
-BuildRequires:  gtest
-BuildRequires:  pkgconfig(dframeworkdbus)
-BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(dframeworkdbus)
 BuildRequires:  pkgconfig(gio-qt)
 BuildRequires:  pkgconfig(gsettings-qt)
-BuildRequires:  cmake
 
 %description
 Deepin Network Utils is an application repackage the DBus data which is provided
 by network module of dde-daemon
 
 %package -n lib%{_name}%{sover}
-Summary:        Deepin Network Utils libraries 
+Summary:        Deepin Network Utils libraries
 Group:          System/Libraries
 Recommends:     %{name}-lang
 
@@ -68,6 +70,9 @@ deepin-network-utils.
 %setup -q -n %{_name}-%{version}
 sed -i "s/lrelease/lrelease-qt5/g" translate_generation.sh
 sed -i 's|$$PREFIX/lib|$$LIBDIR|g' dde-network-utils/dde-network-utils.pro
+%if "%{gtest_version}" >= "1.14.0"
+sed -i "s/c++11/c++14/g" tests/dde-network-utils/tst_dde-network-utils.pro
+%endif
 
 %build
 %qmake5 PREFIX=%{_prefix} LIBDIR=%{_libdir}
@@ -109,4 +114,3 @@ sed -i 's|$$PREFIX/lib|$$LIBDIR|g' dde-network-utils/dde-network-utils.pro
 %{_libdir}/pkgconfig/%{_name}.pc
 
 %changelog
-

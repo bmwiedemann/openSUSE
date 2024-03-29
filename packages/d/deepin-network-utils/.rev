@@ -50,4 +50,12 @@
   * Fix bug for DSL</comment>
     <requestid>950171</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a2530e7a963d7d7520ae26f2e21226b7</srcmd5>
+    <version>5.4.13</version>
+    <time>1711714188</time>
+    <user>anag+factory</user>
+    <comment>- Fix build on gtest 1.14.0 (forwarded request 1163327 from hillwood)</comment>
+    <requestid>1163328</requestid>
+  </revision>
 </revisionlist>
