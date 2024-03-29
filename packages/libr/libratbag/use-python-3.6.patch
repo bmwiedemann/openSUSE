@@ -1,0 +1,11 @@
+--- a/meson.build
++++ b/meson.build
+@@ -496,7 +496,7 @@ configure_file(input : 'dbus/org.freedes
+ # doesn't exist and isn't logged as "not found".
+ dep_python3 = dependency('', required : false)
+ pymod = import('python')
+-py3 = pymod.find_installation()
++py3 = pymod.find_installation('python3.6')
+ if meson.version().version_compare('>= 0.53.0')
+   dep_python3 = py3.dependency(embed : true)
+ endif

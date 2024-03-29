@@ -229,4 +229,12 @@ Matthias</comment>
 - Switch package to using %autosetup</comment>
     <requestid>1086539</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>607b187b8b49c24e6d97899b86f159dc</srcmd5>
+    <version>0.17</version>
+    <time>1711714248</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1163515</requestid>
+  </revision>
 </revisionlist>

@@ -29,6 +29,7 @@ Source1:        README.SUSE
 Patch1:         shebang-env.diff
 Patch2:         install-daemon-into-sbindir.patch
 Patch3:         harden_ratbagd.service.patch
+Patch4:         use-python-3.6.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  json-glib-devel
@@ -103,7 +104,13 @@ This subpackage contains the ratbag utilities allowing to inspect and configure
 mice.
 
 %prep
-%autosetup -p1
+%setup -q
+%patch -P1 -p1
+%patch -P2 -p1
+%patch -P3 -p1
+%if 0%{?suse_version} < 1550
+%patch -P4 -p1
+%endif
 cp %{SOURCE1} .
 
 %build
