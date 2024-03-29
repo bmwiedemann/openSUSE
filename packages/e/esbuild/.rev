@@ -69,4 +69,24 @@
 </comment>
     <requestid>1146016</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>59473a812125be195ea78209ff054a8d</srcmd5>
+    <version>0.20.2</version>
+    <time>1711714221</time>
+    <user>anag+factory</user>
+    <comment>- roll 0.20.0...0.20.2
+  * Support TypeScript experimental decorators on `abstract` class fields #3684
+  * constant folding for JavaScript inequality operators #3645
+  * Fix cross-platform non-determinism with CSS color
+    space transformations #3650
+  * Fix a bug with the CSS nesting transform for older browsers
+  * Work around issues with Deno 1.31+ #3682
+  * Handle Yarn Plug'n'Play edge case with `tsconfig.json` #3698
+  * Empty enums should behave like an object literal #3657
+  * Improve dead code removal of `switch` statements #3659
+  * JSON loader now preserves `__proto__` properties #3700
+  * Other bug fixes
+</comment>
+    <requestid>1163400</requestid>
+  </revision>
 </revisionlist>
