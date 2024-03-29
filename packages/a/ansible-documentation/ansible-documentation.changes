@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Mar 27 19:51:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.16.5:
+  * Merge pull request #1189 from ericzolf/ericzolf-fix-ipaddr
+  * Unintended or undocumented functionality may be removed without
+    deprecation (#1209) (#1223)
+  * Document attributes (#1130) (#1230)
+  * Cheat sheet instructions for ansible ad-hoc commands (#1171)
+    (#1228)
+  * Update playbooks_advanced_syntax.rst (#1208) (#1224)
+  * Update testing_units_modules.rst (#1210) (#1220)
+  * Add link to antsibull-docs docsite (#1198) (#1207)
+  * Trim down the docs banners (#1188) (#1204)
+  * Merge pull request #1201 from samccann/fix-nit (#1203)
+  * Merge pull request #1172 from ansible/pip-compile/devel/dev
+  * Merge pull request #1191 from oraNod/fix-ruff-path
+  * Update documentation about vars: in roles: since they're no
+    longer added to the play's variables (#1181) (#1186)
+  * Fix typo (#1175) (#1184)
+  * Data Tagging Delayed to 2.18 (#1182) (#1183)
+  * [Needs SC vote] Steering Committee: votes on new members to be
+    conducted on the forum; change the chairperson election
+    procedure (#1085) (#1170)
+  * Merge pull request #1174 from
+    ansible/dependabot/github_actions/wntrblm/nox-2024.03.02
+  * Add Ansible community 9.3.0 porting guide (#1168)
+
+-------------------------------------------------------------------
 Sat Mar 16 16:09:32 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.16.4:
