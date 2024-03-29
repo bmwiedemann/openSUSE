@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 28 12:15:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.0:
+  * feat: upgrade CI workflows to get them running again
+  * ci: update actions to latest for all workflows
+
+-------------------------------------------------------------------
 Wed Dec 27 16:21:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.0:
