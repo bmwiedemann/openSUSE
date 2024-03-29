@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Mar 28 19:36:46 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.7.0
+  * 8.7 is a small release, with a few improvements and updates,
+    mostly related to compatibility with different versions of
+    JupyterLab, Notebook, and Jupyter Server.
+  ## Highlights:
+  * JupyterLab 4 compatibility for the lab extension
+  * Improved logging and deprecation messages for different
+    versions of Jupyter Server and Notebook
+  ## New features added
+  * Update labextension to jupyterlab 4 #833 (@minrk)
+  * add ControllerLauncher.connection_info_timeout config #872
+    (@minrk)
+  ## Enhancements made
+  * log launcher output at warning-level in case of nonzero exit
+    code #866 (@minrk)
+  * improve deprecation messaging around ipcluster nbextension
+    #835 (@minrk)
+  ## Bugs fixed
+  * Use pre-3.10 serialization code on PyPy3.10 #846 (@mgorny,
+    @minrk)
+  * fallback import when using notebook and jupyter_server is
+    unavailable #808 (@minrk)
+  * don't propagate logs in IPython #797 (@minrk)
+- Drop ipyparallel-pr859-utcnow-deprecation.patch
+
+-------------------------------------------------------------------
 Tue Mar  5 18:22:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39: no longer supported since ipython 8.19

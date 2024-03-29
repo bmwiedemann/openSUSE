@@ -17,8 +17,9 @@
 
 
 %define skip_python39 1
+%define distversion 8.7
 Name:           python-ipyparallel
-Version:        8.6.1
+Version:        8.7.0
 Release:        0
 Summary:        Interactive parallel computing library for IPython
 License:        BSD-3-Clause
@@ -26,12 +27,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipyparallel
 Source:         https://files.pythonhosted.org/packages/source/i/ipyparallel/ipyparallel-%{version}.tar.gz
 Source99:       python-ipyparallel-rpmlintrc
-# PATCH-FIX-UPSTREAM ipyparallel-pr859-utcnow-deprecation.patch gh#ipython/ipyparallel#859
-Patch0:         https://github.com/ipython/ipyparallel/pull/859.patch#/ipyparallel-pr859-utcnow-deprecation.patch
 # SECTION build-system requirements
 BuildRequires:  %{python_module hatchling >= 0.25}
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module jupyterlab >= 3.6}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module jupyterlab >= 4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
@@ -86,7 +85,8 @@ Requires:       jupyter-jupyter-core
 Requires:       jupyter-jupyter-server
 Requires:       jupyter-jupyterlab >= 3.6
 Requires:       jupyter-notebook
-Requires:       python3-ipyparallel = %{version}
+Requires:       python3dist(ipyparallel) = %{distversion}
+Suggests:       python3-ipyparallel
 Provides:       jupyter-ipyparallel-l = %{version}-%{release}
 Provides:       jupyter-ipyparallel-nbext = %{version}-%{release}
 Provides:       jupyter-ipyparallel-serverextension = %{version}-%{release}
