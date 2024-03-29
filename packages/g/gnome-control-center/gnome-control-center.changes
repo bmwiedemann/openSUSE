@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 27 18:23:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0.1:
+  + Handle legacy panel arguments
+  + Accessibility: Allow launching subpages directly.
+  + Privacy: Fix Thunderbolt panel not launching.
+  + System:
+    - Avoid setting auto time sync when it isn't needed.
+    - Improve startup time by loading subpages on demand.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Mar 19 08:48:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Split out users panel: it shall not be installed by default on
