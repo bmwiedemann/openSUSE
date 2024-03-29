@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-maturin
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Rust/Python Interoperability
 License:        Apache-2.0 OR MIT
@@ -61,6 +61,8 @@ sed -i 's/--locked/--offline/' setup.py
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_clone -a %{buildroot}%{_bindir}/maturin
+
+%check
 
 %post
 %python_install_alternative maturin

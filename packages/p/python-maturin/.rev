@@ -1031,4 +1031,20 @@
   * Upgrade uniffi to 0.26.0</comment>
     <requestid>1158801</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ed66d6c5836cf3c75c0c4fef0b034b32</srcmd5>
+    <version>1.5.1</version>
+    <time>1711714163</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5.1
+  * fix changelog link
+    gh#PyO3/maturin#1990
+  * in pep517 build default compatibility to off instead of always specifying
+    gh#PyO3/maturin#1992
+  * Fix typo on maturin docs
+    gh#PyO3/maturin#1997
+  * Fix upload returning malformed summary error
+    gh#PyO3/maturin#2002</comment>
+    <requestid>1163373</requestid>
+  </revision>
 </revisionlist>

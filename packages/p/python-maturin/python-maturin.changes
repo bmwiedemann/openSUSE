@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 28 16:41:35 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.5.1
+  * fix changelog link
+    gh#PyO3/maturin#1990
+  * in pep517 build default compatibility to off instead of always specifying
+    gh#PyO3/maturin#1992
+  * Fix typo on maturin docs
+    gh#PyO3/maturin#1997
+  * Fix upload returning malformed summary error
+    gh#PyO3/maturin#2002
+
+-------------------------------------------------------------------
 Sun Mar 17 18:07:58 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.5.0
