@@ -19,14 +19,13 @@
 %define tracker_basever 3.7
 
 Name:           tracker-miners
-Version:        3.7.0
+Version:        3.7.1
 Release:        0
 Summary:        Various miners for Tracker
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Tracker
 Source0:        %{name}-%{version}.tar.zst
-
 BuildRequires:  asciidoc
 BuildRequires:  giflib-devel
 BuildRequires:  intltool >= 0.40.0

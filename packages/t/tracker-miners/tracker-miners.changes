@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 28 08:05:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.7.1:
+  + Improvements to the handling of corrupted databases.
+  + Further syscall rules in the seccomp sandbox.
+  + Fix some possible warnings during tracker-extract-3 startup.
+  + Fixes to extraction of dc:source fields from XMP data.
+  + Avoid SIGABRT on missing Landlock.
+
+-------------------------------------------------------------------
 Sun Mar 17 09:40:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.7.0:
