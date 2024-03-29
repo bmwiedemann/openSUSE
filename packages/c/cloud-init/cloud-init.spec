@@ -43,6 +43,8 @@ Patch8:        cloud-init-lint-fixes.patch
 Patch9:        cloud-init-pckg-reboot.patch
 # FIXME
 Patch10:       cloud-init-skip-empty-conf.patch
+# FIXME (ttps://github.com/canonical/cloud-init/issues/5075)
+Patch11:       cloud-init-ds-deterministic.patch
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 # pkg-config is needed to find correct systemd unit dir
@@ -151,6 +153,7 @@ Documentation and examples for cloud-init tools
 %patch -P 8
 %patch -P 9
 %patch -P 10
+%patch -P 11
 
 # patch in the full version to version.py
 version_pys=$(find . -name version.py -type f)

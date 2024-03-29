@@ -1168,4 +1168,14 @@
     <comment></comment>
     <requestid>1155557</requestid>
   </revision>
+  <revision rev="98" vrev="9">
+    <srcmd5>0734187bbd4ca57f578fcc71b4e2ae32</srcmd5>
+    <version>23.3</version>
+    <time>1711714169</time>
+    <user>anag+factory</user>
+    <comment>- Add  cloud-init-ds-deterministic.patch (bsc#1221132)
+  + Do not guess a data source when checking for a CloudStack
+    environment</comment>
+    <requestid>1163386</requestid>
+  </revision>
 </revisionlist>

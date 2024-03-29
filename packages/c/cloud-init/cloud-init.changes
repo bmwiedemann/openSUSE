@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 28 12:22:05 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Add  cloud-init-ds-deterministic.patch (bsc#1221132)
+  + Do not guess a data source when checking for a CloudStack
+    environment
+
+-------------------------------------------------------------------
 Wed Mar  6 08:42:20 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
 
 - Hardcode distribution to suse for proper cloud.cfg generation
