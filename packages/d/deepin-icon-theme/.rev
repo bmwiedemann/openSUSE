@@ -32,4 +32,12 @@
     <comment></comment>
     <requestid>956010</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>06368dca3000ebb86be8d45376103905</srcmd5>
+    <version>unknown</version>
+    <time>1711714189</time>
+    <user>anag+factory</user>
+    <comment>- Set gtk3-tools as BuildRequires (forwarded request 1163340 from hillwood)</comment>
+    <requestid>1163341</requestid>
+  </revision>
 </revisionlist>

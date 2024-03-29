@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-icon-theme
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ URL:            https://github.com/linuxdeepin/deepin-icon-themels
 Source0:        https://github.com/linuxdeepin/deepin-icon-theme/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  deepin-launcher
 BuildRequires:  fdupes
+BuildRequires:  gtk3-tools
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  xcursorgen
 BuildArch:      noarch
