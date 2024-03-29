@@ -140,7 +140,7 @@ BuildArch:      i686
 %endif
 
 
-%if 0%{?fedora} >= 40
+%if 0%{?fedora} >= 39
 %bcond_without system_vma
 %else
 %bcond_with system_vma
@@ -201,7 +201,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        28.2.8
+Version:        28.2.9
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11%{!?with_system_minizip: AND Zlib}
@@ -344,16 +344,16 @@ Patch3033:      chromium-94.0.4606.71-InkDropHost-crash.patch
 Patch3064:      nested-nested-nested-nested-nested-nested-regex-patterns.patch
 Patch3080:      compact_enc_det_generated_tables-Wnarrowing.patch
 Patch3096:      remove-date-reproducible-builds.patch
-Patch3218:      material_color_utilities-tones-missing-round.patch
-Patch3226:      perfetto-numeric_storage-double_t.patch
-Patch3227:      policy_templates-deterministic.patch
-Patch3229:      text_break_iterator-icu74-breakAllLineBreakClassTable-should-be-consistent.patch
-Patch3230:      web_local_frame_client-incomplete-WebBackgroundResourceFetchAssets.patch
-Patch3231:      local_frame-local_frame_client-incomplete-WebBackgroundResourceFetchAssets.patch
-Patch3232:      v8-instance-type-inl-constexpr-used-before-its-definition.patch
-Patch3233:      swiftshader-llvm18-LLVMReactor-getInt8PtrTy.patch
-Patch3234:      swiftshader-llvm18-LLVMJIT-Host.patch
-Patch3225:      swiftshader-llvm18-LLVMJIT-CodeGenOptLevel.patch
+Patch3118:      material_color_utilities-tones-missing-round.patch
+Patch3126:      perfetto-numeric_storage-double_t.patch
+Patch3127:      policy_templates-deterministic.patch
+Patch3129:      text_break_iterator-icu74-breakAllLineBreakClassTable-should-be-consistent.patch
+Patch3130:      web_local_frame_client-incomplete-WebBackgroundResourceFetchAssets.patch
+Patch3131:      local_frame-local_frame_client-incomplete-WebBackgroundResourceFetchAssets.patch
+Patch3132:      v8-instance-type-inl-constexpr-used-before-its-definition.patch
+Patch3133:      swiftshader-llvm18-LLVMReactor-getInt8PtrTy.patch
+Patch3134:      swiftshader-llvm18-LLVMJIT-Host.patch
+Patch3135:      swiftshader-llvm18-LLVMJIT-CodeGenOptLevel.patch
 
 BuildRequires:  brotli
 %if %{with system_cares}
