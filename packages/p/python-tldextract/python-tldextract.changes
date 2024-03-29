@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 28 16:29:56 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 5.1.2:
+  * Remove socket.inet_pton, to fix platform-dependent IP parsing
+    #gh/john-kurkowski/tldextract#318
+  * Use non-capturing groups for IPv4 address detection, for a
+    slight speed boost
+    #gh/john-kurkowski/tldextract#323
+
+-------------------------------------------------------------------
 Fri Dec  8 13:44:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.1:

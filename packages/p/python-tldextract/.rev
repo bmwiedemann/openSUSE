@@ -352,4 +352,17 @@ Features:
 - Fix homepage URL in specfile</comment>
     <requestid>1132106</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1d2b687f4b1928ce7c9116ace0451e99</srcmd5>
+    <version>5.1.2</version>
+    <time>1711714205</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.1.2:
+  * Remove socket.inet_pton, to fix platform-dependent IP parsing
+    #gh/john-kurkowski/tldextract#318
+  * Use non-capturing groups for IPv4 address detection, for a
+    slight speed boost
+    #gh/john-kurkowski/tldextract#323</comment>
+    <requestid>1163368</requestid>
+  </revision>
 </revisionlist>
