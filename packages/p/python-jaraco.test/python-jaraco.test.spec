@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-jaraco.test
 Version:        5.4.0
 Release:        0
