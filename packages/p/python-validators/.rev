@@ -182,4 +182,13 @@ Changes in 0.19.0:
   See https://github.com/python-validators/validators/compare/0.20.0...0.22.0</comment>
     <requestid>1123700</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fb2dab360ed5e37e36d7d3df190eed81</srcmd5>
+    <version>0.24.0</version>
+    <time>1711714162</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.24.0
+  See https://github.com/python-validators/validators/compare/0.22.0...0.24.0</comment>
+    <requestid>1163371</requestid>
+  </revision>
 </revisionlist>

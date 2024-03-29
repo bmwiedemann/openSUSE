@@ -1,7 +1,7 @@
 #
 # spec file for package python-validators
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-validators
-Version:        0.22.0
+Version:        0.24.0
 Release:        0
 Summary:        Python Data Validation
 License:        MIT
@@ -56,7 +56,7 @@ dos2unix README.md
 
 %files %{python_files}
 %doc README.md
-%license LICENSE
+%license LICENSE.txt
 %{python_sitelib}/validators*
 
 %changelog
