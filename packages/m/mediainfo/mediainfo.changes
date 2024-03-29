@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 28 21:13:16 UTC 2024 - Maxime Gervais <maxime@mediaarea.net>
+
+- Update to version 24.03
+  Added features:
+  * ADM: ADM v3, including profile element, support
+  * ADM: conformance checks on AdvSS Emission profile
+  * Dolby E: display more AC-3 metadata items
+  * MOV/MP4: parsing of rtmd (real time metadata) tracks
+  * PNG: packing kind (linear or indexed)
+  * WAV: support of 4+ GiB axml (useful for huge ADM content)
+  Fixed bugs:
+  * MPEG-H: fix uninitialized values leading to random behavior
+  * PDF: fix crash with corrupted files
+  * MOV/MP4: fix bit depth info for some PCM tracks with pcmC box
+  
+  -------------------------------------------------------------------
 Wed Jan 31 16:18:57 UTC 2024 - Maxime Gervais <maxime@mediaarea.net>
 
 - Update to version 24.01

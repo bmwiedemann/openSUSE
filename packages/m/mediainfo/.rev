@@ -490,4 +490,25 @@
     <comment>- Update to version 24.01</comment>
     <requestid>1143522</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e02340cfb87f8c6b383bc4ca430e36c2</srcmd5>
+    <version>24.03</version>
+    <time>1711714223</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 24.03
+  Added features:
+  * ADM: ADM v3, including profile element, support
+  * ADM: conformance checks on AdvSS Emission profile
+  * Dolby E: display more AC-3 metadata items
+  * MOV/MP4: parsing of rtmd (real time metadata) tracks
+  * PNG: packing kind (linear or indexed)
+  * WAV: support of 4+ GiB axml (useful for huge ADM content)
+  Fixed bugs:
+  * MPEG-H: fix uninitialized values leading to random behavior
+  * PDF: fix crash with corrupted files
+  * MOV/MP4: fix bit depth info for some PCM tracks with pcmC box
+  
+  </comment>
+    <requestid>1163404</requestid>
+  </revision>
 </revisionlist>
