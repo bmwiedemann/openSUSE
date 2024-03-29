@@ -851,4 +851,29 @@
     <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1149773 from pgajdos)</comment>
     <requestid>1149991</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>704cab51a57df7fe9aebc575a85ac811</srcmd5>
+    <version>2.0.13</version>
+    <time>1711714208</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.0.13:
+  * Add reload setting - finalization of #2627 (#2845)
+  * Handle SIGABRT properly
+  * Fix python decorator syntax. (#2827)
+  * Fixed newline format detection for files not ending with a newline (#2875)
+  * Fix typos in README (#2919)
+  * fix: recognize .cmd as batch files (#2922)
+  * help: fix incorrect instructions for disabling key binding (#2943)
+  * Fix non-working lua Lock (#2945)
+  * save: Restore the screen before overwriteFile() is left (#2967)
+  * save: Restore the screen if failed to start sudo (#2971)
+  * syntax: Fix include of patch in git-commit (#2917)
+  * Improve metainfo file (#2910)
+  * Fix issues with handling invalid regex in syntax files (#2913)
+  * Fix term output capturing
+  * Docs for fakecursor option
+- small .spec cleanup
+- run unit tests during build phase (forwarded request 1163346 from amanzini)</comment>
+    <requestid>1163390</requestid>
+  </revision>
 </revisionlist>

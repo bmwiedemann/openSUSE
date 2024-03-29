@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Mar 28 14:16:21 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 2.0.13:
+  * Add reload setting - finalization of #2627 (#2845)
+  * Handle SIGABRT properly
+  * Fix python decorator syntax. (#2827)
+  * Fixed newline format detection for files not ending with a newline (#2875)
+  * Fix typos in README (#2919)
+  * fix: recognize .cmd as batch files (#2922)
+  * help: fix incorrect instructions for disabling key binding (#2943)
+  * Fix non-working lua Lock (#2945)
+  * save: Restore the screen before overwriteFile() is left (#2967)
+  * save: Restore the screen if failed to start sudo (#2971)
+  * syntax: Fix include of patch in git-commit (#2917)
+  * Improve metainfo file (#2910)
+  * Fix issues with handling invalid regex in syntax files (#2913)
+  * Fix term output capturing
+  * Docs for fakecursor option
+
+- small .spec cleanup
+- run unit tests during build phase
+
+-------------------------------------------------------------------
 Fri Feb 23 09:48:35 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1,7 +1,7 @@
 #
 # spec file for package micro-editor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global compiledate     Aug\ 01,\ 2022
 
 Name:           micro-editor
-Version:        2.0.12
+Version:        2.0.13
 Release:        0
 License:        MIT
 Summary:        Micro is a terminal-based text editor that aims to be easy to use and intuitive
@@ -58,16 +58,19 @@ export EXTRAFLAGS="-mod=vendor"
 %endif
 
 export DATE="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%s)} --iso-8601)"
-export HASH="%shortcommit"
-export VERSION="%version"
+export HASH="%{shortcommit}"
+export VERSION="%{version}"
 
-make generate
-make build-quick
+%make_build generate
+%make_build build-quick
 
 %install
 export GOPATH="%{_builddir}/go:$GOPATH"
 mkdir -p %{buildroot}%{_bindir}
 mv micro %{buildroot}%{_bindir}
+
+%check
+go test ./...
 
 %files
 %{_bindir}/micro
