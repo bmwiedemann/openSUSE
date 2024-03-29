@@ -16,8 +16,10 @@ Signed-off-by: Jiri Slaby <jslaby@suse.cz>
  src/VBox/Additions/linux/sharedfolders/vfsmod.c       |    6 +++---
  2 files changed, 6 insertions(+), 6 deletions(-)
 
---- a/src/VBox/Additions/common/VBoxGuest/VBoxGuest-linux.c
-+++ b/src/VBox/Additions/common/VBoxGuest/VBoxGuest-linux.c
+Index: VirtualBox-7.0.14/src/VBox/Additions/common/VBoxGuest/VBoxGuest-linux.c
+===================================================================
+--- VirtualBox-7.0.14.orig/src/VBox/Additions/common/VBoxGuest/VBoxGuest-linux.c
++++ VirtualBox-7.0.14/src/VBox/Additions/common/VBoxGuest/VBoxGuest-linux.c
 @@ -1361,7 +1361,7 @@ static int vgdrvLinuxParamLogGrpSet(cons
              RTLogGroupSettings(pLogger, pszValue);
      }
@@ -45,8 +47,10 @@ Signed-off-by: Jiri Slaby <jslaby@suse.cz>
      return 0;
  }
  
---- a/src/VBox/Additions/linux/sharedfolders/vfsmod.c
-+++ b/src/VBox/Additions/linux/sharedfolders/vfsmod.c
+Index: VirtualBox-7.0.14/src/VBox/Additions/linux/sharedfolders/vfsmod.c
+===================================================================
+--- VirtualBox-7.0.14.orig/src/VBox/Additions/linux/sharedfolders/vfsmod.c
++++ VirtualBox-7.0.14/src/VBox/Additions/linux/sharedfolders/vfsmod.c
 @@ -1408,7 +1408,7 @@ static int vbsf_parse_param(struct fs_co
      switch (opt) {
      case Opt_iocharset:

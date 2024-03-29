@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 28 17:26:16 UTC 2024 - Larry Finger <Larry.Finger@gmail.com>
+
+- The location of vboxconfig is wrong. Add file fixes_for_vboxconfig.patch
+  to fix.
+  Some errors in vboxdrv.sh are fixed.
+
+-------------------------------------------------------------------
+Wed Mar 27 23:42:34 UTC 2024 - Larry Finger <Larry.Finger@gmail.com>
+
+- Further fixes for builds on Leap 15.6. Fixes boo#1221496.
+  Adds file fixes_for_leap15.6.patch
+
+-------------------------------------------------------------------
 Tue Mar 12 09:06:54 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - add kernel-6.8.patch to fix kernel 6.8 build failures

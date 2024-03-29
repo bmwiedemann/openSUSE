@@ -1,5 +1,5 @@
 #
-# spec file for package virtualbox
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -159,9 +159,10 @@ Patch38:        python311.patch
 Patch39:        fix_sdl_build.patch
 # Fixes for openSUSE Leap 15.X
 Patch40:        fixes_for_leap.patch
-# Fix for set_pte() warning
-#Patch41:        fix_pte_warning.patch
+# Fixes for Leap 15.6
+Patch41:        fixes_for_leap15.6.patch
 Patch42:        kernel-6.8.patch
+Patch43:        fixes_for_vboxconfig.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -179,6 +180,7 @@ BuildRequires:  module-init-tools
 BuildRequires:  nasm
 BuildRequires:  pam-devel
 BuildRequires:  yasm
+BuildRequires:  zlib-devel
 ExclusiveArch:  x86_64
 %if 0%{?sle_version} != 120300
 Source2:        VirtualBox.appdata.xml
@@ -474,8 +476,11 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch -P 38 -p1
 %patch -P 39 -p1
 %patch -P 40 -p1
-#%patch -P 41 -p1
+%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
+%patch -P 41 -p1
+%endif
 %patch -P 42 -p1
+%patch -P 43 -p1
 
 ### Documents for virtualbox main package ###
 %if %{main_package}
