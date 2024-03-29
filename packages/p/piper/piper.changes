@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  8 01:08:08 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Add use-python-3.6.patch to hardcode python3.6 in meson.build for
+  Leap 15 build
+  * There are both python 3.11 and python 3.6 installed, python 3.11
+    was selected, but it should use python 3.6 per the stat of the
+    python module dependency
+
+-------------------------------------------------------------------
 Thu May 11 13:14:05 UTC 2023 - Matthias Bach <marix@marix.org> - 0.7
 
 - Document the need for users of Piper to be a member of the

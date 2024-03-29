@@ -157,4 +157,12 @@ changes incompatibly.</comment>
   * In the new README.SUSE file</comment>
     <requestid>1086540</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>679052cceae2cd9aa1f444ab1f389d13</srcmd5>
+    <version>0.7</version>
+    <time>1711714182</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1163319</requestid>
+  </revision>
 </revisionlist>

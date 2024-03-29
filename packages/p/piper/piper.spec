@@ -1,7 +1,7 @@
 #
 # spec file for package piper
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,7 @@ URL:            https://github.com/libratbag/piper
 Source0:        %{name}-%{version}.tar.xz
 Source1:        README.SUSE
 Patch1:         shebang-env.patch
+Patch2:         use-python-3.6.patch
 BuildRequires:  AppStream
 BuildRequires:  fdupes
 BuildRequires:  meson
@@ -53,7 +54,11 @@ to the ratbagd DBUS daemon which provides the actual configuration support for t
 devices to any user in the group "games".
 
 %prep
-%autosetup -p1
+%setup -q
+%patch -P 1 -p1
+%if 0%{?suse_version} <1550
+%patch -P 2 -p1
+%endif
 cp %{SOURCE1} .
 
 %build
