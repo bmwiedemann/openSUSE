@@ -1,7 +1,7 @@
 #
 # spec file for package dtkwidget
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define libver 5
 %define apiver 5.5.0
-# %define pkg_ver 5.5
+%define gtest_version %(rpm -q --queryformat '%%{VERSION}' gtest)
 
 Name:           dtkwidget
 Version:        5.5.52
@@ -31,9 +31,9 @@ URL:            https://github.com/linuxdeepin/dtkwidget
 Source0:        https://github.com/linuxdeepin/dtkwidget/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTEAM dtkwidget-fix-lost-pkgconfig.patch hillwood@opensuse.org - fix lost pkgconfig
 Patch0:         dtkwidget-fix-lost-pkgconfig.patch
+BuildRequires:  dtkcommon
 BuildRequires:  fdupes
 BuildRequires:  gtest
-BuildRequires:  dtkcommon
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase-private-headers-devel
 BuildRequires:  libqt5-qtdeclarative-devel
@@ -54,7 +54,7 @@ BuildRequires:  pkgconfig(xi)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-Deepint Tool Kit (Dtk) is the base devlopment tool of all C++/Qt Developer 
+Deepint Tool Kit (Dtk) is the base devlopment tool of all C++/Qt Developer
 work on Deepin.
 
 %package -n lib%{name}%{libver}
@@ -79,7 +79,14 @@ docs for dtkcore.
 
 %prep
 %autosetup -p1
-# sed -i 's/lrelease/qt5/g' tools/translate_generation.*
+%if "%{gtest_version}" >= "1.14.0"
+sed -i 's|c++11|c++14|g' examples/dwidget-examples/collections/collections.pro \
+plugin/dtkuidemo/dtkuidemo.pro \
+src/lib.pri \
+src/widgets/private/keyboardmonitor/keyboardmonitor.pri \
+src/widgets/private/startupnotifications/startupnotifications.pri \
+tools/svgc/svgc.pro
+%endif
 
 %build
 %qmake5 DEFINES+=QT_NO_DEBUG_OUTPUT \

@@ -241,4 +241,12 @@
   * Drop some apis</comment>
     <requestid>1000257</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f669063fd6e54230bcf964533b06f5b0</srcmd5>
+    <version>5.5.52</version>
+    <time>1711714184</time>
+    <user>anag+factory</user>
+    <comment>- Fix build on gtest 1.14.0 (forwarded request 1163316 from hillwood)</comment>
+    <requestid>1163317</requestid>
+  </revision>
 </revisionlist>
