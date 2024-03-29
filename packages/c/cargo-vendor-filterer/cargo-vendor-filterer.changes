@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 28 09:25:41 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to 0.5.13
+  * Add --respect-source-config option 
+  * Implement --sync
+- Use filtered vendor-tarball
+- Remove cargo_config, which is now part of the vendor-tarball
+
+-------------------------------------------------------------------
 Wed Feb 28 11:26:23 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to 0.5.12

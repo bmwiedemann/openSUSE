@@ -21,11 +21,10 @@ Summary:        Cargo vendor filterer
 License:        Apache-2.0
 Group:          Development/Tools/Building
 URL:            https://github.com/coreos/cargo-vendor-filterer
-Version:        0.5.12
+Version:        0.5.13
 Release:        0
 Source0:        https://github.com/coreos/cargo-vendor-filterer/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(openssl)
@@ -37,9 +36,7 @@ vendor such as those that are MacOS or Windows only. This utility solves that is
 what is needed and not needed and can be configured to vendor dependencies for specific platforms such as GNU/Linux.
 
 %prep
-%autosetup -a1
-mkdir -p .cargo/
-cp %{SOURCE2} .cargo/config
+%autosetup -a1 -p1
 
 %build
 %{cargo_build}
