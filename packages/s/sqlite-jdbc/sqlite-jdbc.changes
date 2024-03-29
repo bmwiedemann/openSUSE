@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Mar 13 09:11:38 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update ro v3.45.2.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.45.2 (c56fbf1)
+  * Perf
+    ~ CoreStatement uses optimize regex for generated key matches
+      (95b8efa)
+  * Build
+    ~ deps
+      + bump org.apache.maven.plugins:maven-gpg-plugin (3b83760)
+      + bump org.jreleaser:jreleaser-maven-plugin (9ccd1e7)
+      + bump org.graalvm.buildtools:native-maven-plugin (eca45e5)
+      + bump andymckay/cancel-action from 0.3 to 0.4 (b11f8be)
+      + bump org.graalvm.buildtools:native-maven-plugin (cdad828)
+    ~ deps-dev
+      + bump org.mockito:mockito-core from 5.10.0 to 5.11.0
+        (07b38af)
+      + bump org.junit.jupiter:junit-jupiter (6c2e966)
+      + bump org.assertj:assertj-core from 3.25.2 to 3.25.3
+        (daca050)
+    ~ unscoped
+      + use BC signer (c84d122)
+  * Documentation
+    ~ add gpg key to README (18c0bd4), closes #1049
+    ~ adding try-with-resources to examples and demo. related #938
+      (9a072d3), closes #938
+
+-------------------------------------------------------------------
 Wed Jan 31 03:55:26 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.45.1.0
