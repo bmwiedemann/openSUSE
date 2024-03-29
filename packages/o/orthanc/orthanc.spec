@@ -126,6 +126,8 @@ C/C++ plugins for Orthanc.
 %package    source
 Summary:        This package includes the source files for Orthanc
 Group:          Development/Sources
+# DcmtkConfiguration.cmake looks for dicom.dic
+Requires:       dcmtk
 
 %description source
 This package includes the source files for Orthanc. Use it in conjunction with the -devel package

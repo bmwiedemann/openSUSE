@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 21 16:31:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update orthanc-source requirements to fix the orthanc-wsi build
+
+-------------------------------------------------------------------
 Tue Mar 19 08:23:12 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - apply dcmtk patch to install section: we need this patch in the source
