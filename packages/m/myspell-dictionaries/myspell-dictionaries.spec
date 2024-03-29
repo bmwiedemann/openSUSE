@@ -1,7 +1,7 @@
 #
 # spec file for package myspell-dictionaries
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,18 +21,14 @@
 ## Generate: sh update.sh
 ###################################################################
 Name:           myspell-dictionaries
-Version:        20221012
+Version:        20240321
 Release:        0
 Summary:        A Source Package for Dictionaries Used by MySpell
-License:        AGPL-3.0-only AND BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND CC-BY-SA-1.0 AND CC-BY-SA-3.0 AND GFDL-1.1-only AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later AND LGPL-2.0-only AND LGPL-2.1-only AND LGPL-2.1-or-later AND LGPL-3.0-only AND LGPL-3.0-or-later AND MPL-1.1
+License:        AGPL-3.0-only AND BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND CC-BY-SA-1.0 AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND GFDL-1.1-only AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later AND LGPL-2.0-only AND LGPL-2.1-only AND LGPL-2.1-or-later AND LGPL-3.0-only AND LGPL-3.0-or-later AND MPL-1.1
 URL:            https://cgit.freedesktop.org/libreoffice/dictionaries/
 Source0:        dictionaries.tar.xz
 Source1:        update.sh
 Source2:        myspell-dictionaries.spec.in
-# es.{dic,aff} are declared to provide es_<LANG>, but es also
-# contains es_<LANG>.{aff,dic}, which provide them as well
-# workaround, applied in update.sh
-Source3:        es-remove-duplicate-locales.diff
 BuildRequires:  dos2unix
 BuildRequires:  xz
 Obsoletes:      libreoffice-hyphen
@@ -569,6 +565,30 @@ BuildArch:      noarch
 %description -n myspell-ca_ES
 Catalan spelling dictionary, hyphenation rules, and thesaurus.
 
+%package -n myspell-ckb_IQ
+Summary:        MySpell ckb_IQ Dictionary
+Requires:       myspell-ckb
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:ckb_IQ)
+Provides:       locale(seamonkey-spellchecker:ckb_IQ)
+BuildArch:      noarch
+
+%description -n myspell-ckb_IQ
+Central Kurdish (Sorani) spelling dictionary.
+
+%package -n myspell-ckb_IR
+Summary:        MySpell ckb_IR Dictionary
+Requires:       myspell-ckb
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:ckb_IR)
+Provides:       locale(seamonkey-spellchecker:ckb_IR)
+BuildArch:      noarch
+
+%description -n myspell-ckb_IR
+Central Kurdish (Sorani) spelling dictionary.
+
 %package -n myspell-ckb
 Summary:        MySpell ckb Dictionary
 Requires:       myspell-dictionaries
@@ -882,6 +902,20 @@ Provides:       locale(seamonkey-spellchecker:en)
 BuildArch:      noarch
 
 %description -n myspell-en
+English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
+
+%package -n myspell-en_IL
+Summary:        MySpell en_IL Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-en
+Requires:       myspell-en_US
+Recommends:     myspell-lightproof-en
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:en_IL)
+Provides:       locale(seamonkey-spellchecker:en_IL)
+BuildArch:      noarch
+
+%description -n myspell-en_IL
 English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
 
 %package -n myspell-en_IN
@@ -2029,7 +2063,7 @@ Provides:       locale(seamonkey-spellchecker:th_TH)
 BuildArch:      noarch
 
 %description -n myspell-th_TH
-Thai spelling dictionary.
+Thai spelling dictionary and hyphenation rules.
 
 %package -n myspell-tr_TR
 Summary:        MySpell tr_TR Dictionary
@@ -2440,12 +2474,18 @@ cp -P ca/README_thes_ca.txt %{buildroot}%{_docdir}/myspell-ca/README_thes_ca.txt
 cp -P ca/description.xml %{buildroot}%{_docdir}/myspell-ca/description.xml
 cp -P ca/dictionaries.xcu %{buildroot}%{_docdir}/myspell-ca/dictionaries.xcu
 cp -P ca/package-description.txt %{buildroot}%{_docdir}/myspell-ca/package-description.txt
-### MANUAL FIX OVER GENERATED SPEC FILE
-cp -P ckb/dictionaries/ckb.aff %{buildroot}%{_datadir}/hunspell/ckb.aff
+ln -s %{_datadir}/hunspell/ckb.aff %{buildroot}%{_datadir}/hunspell/ckb_IR.aff
+ln -s %{_datadir}/hunspell/ckb_IR.aff %{buildroot}%{_datadir}/myspell/ckb_IR.aff
+ln -s %{_datadir}/hunspell/ckb.aff %{buildroot}%{_datadir}/hunspell/ckb_IQ.aff
+ln -s %{_datadir}/hunspell/ckb_IQ.aff %{buildroot}%{_datadir}/myspell/ckb_IQ.aff
+cp -P ckb/ckb.aff %{buildroot}%{_datadir}/hunspell/ckb.aff
 ln -s %{_datadir}/hunspell/ckb.aff %{buildroot}%{_datadir}/myspell/ckb.aff
-cp -P ckb/dictionaries/ckb.dic %{buildroot}%{_datadir}/hunspell/ckb.dic
+ln -s %{_datadir}/hunspell/ckb.dic %{buildroot}%{_datadir}/hunspell/ckb_IR.dic
+ln -s %{_datadir}/hunspell/ckb_IR.dic %{buildroot}%{_datadir}/myspell/ckb_IR.dic
+ln -s %{_datadir}/hunspell/ckb.dic %{buildroot}%{_datadir}/hunspell/ckb_IQ.dic
+ln -s %{_datadir}/hunspell/ckb_IQ.dic %{buildroot}%{_datadir}/myspell/ckb_IQ.dic
+cp -P ckb/ckb.dic %{buildroot}%{_datadir}/hunspell/ckb.dic
 ln -s %{_datadir}/hunspell/ckb.dic %{buildroot}%{_datadir}/myspell/ckb.dic
-### END
 mkdir -p %{buildroot}%{_docdir}/myspell-ckb
 cp -P ckb/LICENSES-en.txt %{buildroot}%{_docdir}/myspell-ckb/LICENSES-en.txt
 cp -P ckb/description.xml %{buildroot}%{_docdir}/myspell-ckb/description.xml
@@ -2594,10 +2634,14 @@ ln -s %{_datadir}/hunspell/en_GB.dic %{buildroot}%{_datadir}/hunspell/en_TT.dic
 ln -s %{_datadir}/hunspell/en_TT.dic %{buildroot}%{_datadir}/myspell/en_TT.dic
 cp -P en/en_US.aff %{buildroot}%{_datadir}/hunspell/en_US.aff
 ln -s %{_datadir}/hunspell/en_US.aff %{buildroot}%{_datadir}/myspell/en_US.aff
+ln -s %{_datadir}/hunspell/en_US.aff %{buildroot}%{_datadir}/hunspell/en_IL.aff
+ln -s %{_datadir}/hunspell/en_IL.aff %{buildroot}%{_datadir}/myspell/en_IL.aff
 ln -s %{_datadir}/hunspell/en_US.aff %{buildroot}%{_datadir}/hunspell/en_PH.aff
 ln -s %{_datadir}/hunspell/en_PH.aff %{buildroot}%{_datadir}/myspell/en_PH.aff
 cp -P en/en_US.dic %{buildroot}%{_datadir}/hunspell/en_US.dic
 ln -s %{_datadir}/hunspell/en_US.dic %{buildroot}%{_datadir}/myspell/en_US.dic
+ln -s %{_datadir}/hunspell/en_US.dic %{buildroot}%{_datadir}/hunspell/en_IL.dic
+ln -s %{_datadir}/hunspell/en_IL.dic %{buildroot}%{_datadir}/myspell/en_IL.dic
 ln -s %{_datadir}/hunspell/en_US.dic %{buildroot}%{_datadir}/hunspell/en_PH.dic
 ln -s %{_datadir}/hunspell/en_PH.dic %{buildroot}%{_datadir}/myspell/en_PH.dic
 cp -P en/en_ZA.aff %{buildroot}%{_datadir}/hunspell/en_ZA.aff
@@ -2648,6 +2692,8 @@ ln -s %{_datadir}/hyphen/hyph_en_GB.dic %{buildroot}%{_datadir}/hyphen/hyph_en_T
 ln -s %{_datadir}/hyphen/hyph_en_TT.dic %{buildroot}%{_datadir}/myspell/hyph_en_TT.dic
 cp -P en/hyph_en_US.dic %{buildroot}%{_datadir}/hyphen/hyph_en_US.dic
 ln -s %{_datadir}/hyphen/hyph_en_US.dic %{buildroot}%{_datadir}/myspell/hyph_en_US.dic
+ln -s %{_datadir}/hyphen/hyph_en_US.dic %{buildroot}%{_datadir}/hyphen/hyph_en_IL.dic
+ln -s %{_datadir}/hyphen/hyph_en_IL.dic %{buildroot}%{_datadir}/myspell/hyph_en_IL.dic
 ln -s %{_datadir}/hyphen/hyph_en_US.dic %{buildroot}%{_datadir}/hyphen/hyph_en_PH.dic
 ln -s %{_datadir}/hyphen/hyph_en_PH.dic %{buildroot}%{_datadir}/myspell/hyph_en_PH.dic
 ln -s %{_datadir}/mythes/th_en_US_v2.dat %{buildroot}%{_datadir}/mythes/th_en_GB_v2.dat
@@ -2668,6 +2714,8 @@ ln -s %{_datadir}/mythes/th_en_US_v2.dat %{buildroot}%{_datadir}/mythes/th_en_CA
 ln -s %{_datadir}/mythes/th_en_CA_v2.dat %{buildroot}%{_datadir}/myspell/th_en_CA_v2.dat
 ln -s %{_datadir}/mythes/th_en_US_v2.dat %{buildroot}%{_datadir}/mythes/th_en_IE_v2.dat
 ln -s %{_datadir}/mythes/th_en_IE_v2.dat %{buildroot}%{_datadir}/myspell/th_en_IE_v2.dat
+ln -s %{_datadir}/mythes/th_en_US_v2.dat %{buildroot}%{_datadir}/mythes/th_en_IL_v2.dat
+ln -s %{_datadir}/mythes/th_en_IL_v2.dat %{buildroot}%{_datadir}/myspell/th_en_IL_v2.dat
 ln -s %{_datadir}/mythes/th_en_US_v2.dat %{buildroot}%{_datadir}/mythes/th_en_IN_v2.dat
 ln -s %{_datadir}/mythes/th_en_IN_v2.dat %{buildroot}%{_datadir}/myspell/th_en_IN_v2.dat
 ln -s %{_datadir}/mythes/th_en_US_v2.dat %{buildroot}%{_datadir}/mythes/th_en_BZ_v2.dat
@@ -2702,6 +2750,8 @@ ln -s %{_datadir}/mythes/th_en_US_v2.idx %{buildroot}%{_datadir}/mythes/th_en_CA
 ln -s %{_datadir}/mythes/th_en_CA_v2.idx %{buildroot}%{_datadir}/myspell/th_en_CA_v2.idx
 ln -s %{_datadir}/mythes/th_en_US_v2.idx %{buildroot}%{_datadir}/mythes/th_en_IE_v2.idx
 ln -s %{_datadir}/mythes/th_en_IE_v2.idx %{buildroot}%{_datadir}/myspell/th_en_IE_v2.idx
+ln -s %{_datadir}/mythes/th_en_US_v2.idx %{buildroot}%{_datadir}/mythes/th_en_IL_v2.idx
+ln -s %{_datadir}/mythes/th_en_IL_v2.idx %{buildroot}%{_datadir}/myspell/th_en_IL_v2.idx
 ln -s %{_datadir}/mythes/th_en_US_v2.idx %{buildroot}%{_datadir}/mythes/th_en_IN_v2.idx
 ln -s %{_datadir}/mythes/th_en_IN_v2.idx %{buildroot}%{_datadir}/myspell/th_en_IN_v2.idx
 ln -s %{_datadir}/mythes/th_en_US_v2.idx %{buildroot}%{_datadir}/mythes/th_en_BZ_v2.idx
@@ -2767,8 +2817,6 @@ cp -P eo/description.xml %{buildroot}%{_docdir}/myspell-eo/description.xml
 cp -P eo/dictionaries.xcu %{buildroot}%{_docdir}/myspell-eo/dictionaries.xcu
 cp -P eo/license-en.txt %{buildroot}%{_docdir}/myspell-eo/license-en.txt
 cp -P eo/package-description.txt %{buildroot}%{_docdir}/myspell-eo/package-description.txt
-cp -P es/es.aff %{buildroot}%{_datadir}/hunspell/es.aff
-ln -s %{_datadir}/hunspell/es.aff %{buildroot}%{_datadir}/myspell/es.aff
 cp -P es/es_AR.aff %{buildroot}%{_datadir}/hunspell/es_AR.aff
 ln -s %{_datadir}/hunspell/es_AR.aff %{buildroot}%{_datadir}/myspell/es_AR.aff
 cp -P es/es_AR.dic %{buildroot}%{_datadir}/hunspell/es_AR.dic
@@ -2793,8 +2841,6 @@ cp -P es/es_CU.aff %{buildroot}%{_datadir}/hunspell/es_CU.aff
 ln -s %{_datadir}/hunspell/es_CU.aff %{buildroot}%{_datadir}/myspell/es_CU.aff
 cp -P es/es_CU.dic %{buildroot}%{_datadir}/hunspell/es_CU.dic
 ln -s %{_datadir}/hunspell/es_CU.dic %{buildroot}%{_datadir}/myspell/es_CU.dic
-cp -P es/es.dic %{buildroot}%{_datadir}/hunspell/es.dic
-ln -s %{_datadir}/hunspell/es.dic %{buildroot}%{_datadir}/myspell/es.dic
 cp -P es/es_DO.aff %{buildroot}%{_datadir}/hunspell/es_DO.aff
 ln -s %{_datadir}/hunspell/es_DO.aff %{buildroot}%{_datadir}/myspell/es_DO.aff
 cp -P es/es_DO.dic %{buildroot}%{_datadir}/hunspell/es_DO.dic
@@ -3749,6 +3795,7 @@ ln -s %{_datadir}/hunspell/th_TH.aff %{buildroot}%{_datadir}/myspell/th_TH.aff
 cp -P th_TH/th_TH.dic %{buildroot}%{_datadir}/hunspell/th_TH.dic
 ln -s %{_datadir}/hunspell/th_TH.dic %{buildroot}%{_datadir}/myspell/th_TH.dic
 mkdir -p %{buildroot}%{_docdir}/myspell-th_TH
+cp -P th_TH/README_hyph_th_TH.txt %{buildroot}%{_docdir}/myspell-th_TH/README_hyph_th_TH.txt
 cp -P th_TH/README_th_TH.txt %{buildroot}%{_docdir}/myspell-th_TH/README_th_TH.txt
 cp -P th_TH/description.xml %{buildroot}%{_docdir}/myspell-th_TH/description.xml
 cp -P th_TH/dictionaries.xcu %{buildroot}%{_docdir}/myspell-th_TH/dictionaries.xcu
@@ -4209,6 +4256,18 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/mythes/th_ca_ES_v2.idx
 %{_datadir}/myspell/th_ca_ES_v2.idx
 
+%files -n myspell-ckb_IQ
+%{_datadir}/hunspell/ckb_IQ.aff
+%{_datadir}/myspell/ckb_IQ.aff
+%{_datadir}/hunspell/ckb_IQ.dic
+%{_datadir}/myspell/ckb_IQ.dic
+
+%files -n myspell-ckb_IR
+%{_datadir}/hunspell/ckb_IR.aff
+%{_datadir}/myspell/ckb_IR.aff
+%{_datadir}/hunspell/ckb_IR.dic
+%{_datadir}/myspell/ckb_IR.dic
+
 %files -n myspell-ckb
 %{_datadir}/hunspell/ckb.aff
 %{_datadir}/myspell/ckb.aff
@@ -4509,6 +4568,18 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-en/license.txt
 %{_docdir}/myspell-en/package-description.txt
 
+%files -n myspell-en_IL
+%{_datadir}/hunspell/en_IL.aff
+%{_datadir}/myspell/en_IL.aff
+%{_datadir}/hunspell/en_IL.dic
+%{_datadir}/myspell/en_IL.dic
+%{_datadir}/hyphen/hyph_en_IL.dic
+%{_datadir}/myspell/hyph_en_IL.dic
+%{_datadir}/mythes/th_en_IL_v2.dat
+%{_datadir}/myspell/th_en_IL_v2.dat
+%{_datadir}/mythes/th_en_IL_v2.idx
+%{_datadir}/myspell/th_en_IL_v2.idx
+
 %files -n myspell-en_IN
 %{_datadir}/hunspell/en_IN.aff
 %{_datadir}/myspell/en_IN.aff
@@ -4783,10 +4854,6 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/myspell/th_es_NI_v2.idx
 
 %files -n myspell-es
-%{_datadir}/hunspell/es.aff
-%{_datadir}/myspell/es.aff
-%{_datadir}/hunspell/es.dic
-%{_datadir}/myspell/es.dic
 %{_datadir}/hyphen/hyph_es.dic
 %{_datadir}/myspell/hyph_es.dic
 %{_datadir}/mythes/th_es_v2.dat
@@ -5747,6 +5814,7 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/hunspell/th_TH.dic
 %{_datadir}/myspell/th_TH.dic
 %dir %{_docdir}/myspell-th_TH
+%{_docdir}/myspell-th_TH/README_hyph_th_TH.txt
 %{_docdir}/myspell-th_TH/README_th_TH.txt
 %{_docdir}/myspell-th_TH/description.xml
 %{_docdir}/myspell-th_TH/dictionaries.xcu

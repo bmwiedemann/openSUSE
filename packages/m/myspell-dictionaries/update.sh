@@ -333,10 +333,9 @@ if [ $DOWNLOAD == "yes" ]; then
   rm -rf $GIT_DIR/.git
   # exceptions >>>>>>>>>>>>>>>>>>>>>
   pushd $GIT_DIR
-    for dir in ca; do
+    for dir in ca ckb; do
       pushd $dir
         cp --force dictionaries/* .
-        sed -i 's:dictionaries/::' dictionaries.xcu
       popd
     done
     # bug 914911 comment 10 ---
@@ -365,12 +364,6 @@ if [ $DOWNLOAD == "yes" ]; then
         mv ca-valencia.$ext ca_ES_valencia.$ext
         sed -i "s:ca-valencia.$ext:ca_ES_valencia.$ext:" dictionaries.xcu
       done
-    popd
-    # -------------------------
-    # es.{dic,aff} are declared to provide es_<LANG>, but es also
-    # contains es_<LANG>.{aff,dic}, which provide them as well
-    pushd es
-      patch < ../../es-remove-duplicate-locales.diff
     popd
   popd
   # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

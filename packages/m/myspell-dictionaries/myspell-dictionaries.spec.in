@@ -24,15 +24,11 @@ Name:           myspell-dictionaries
 Version:        @VERSION@
 Release:        0
 Summary:        A Source Package for Dictionaries Used by MySpell
-License:        AGPL-3.0-only AND BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND CC-BY-SA-1.0 AND CC-BY-SA-3.0 AND GFDL-1.1-only AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later AND LGPL-2.0-only AND LGPL-2.1-only AND LGPL-2.1-or-later AND LGPL-3.0-only AND LGPL-3.0-or-later AND MPL-1.1
+License:        AGPL-3.0-only AND BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND CC-BY-SA-1.0 AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND GFDL-1.1-only AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later AND LGPL-2.0-only AND LGPL-2.1-only AND LGPL-2.1-or-later AND LGPL-3.0-only AND LGPL-3.0-or-later AND MPL-1.1
 URL:            https://cgit.freedesktop.org/libreoffice/dictionaries/
 Source0:        dictionaries.tar.xz
 Source1:        update.sh
 Source2:        myspell-dictionaries.spec.in
-# es.{dic,aff} are declared to provide es_<LANG>, but es also
-# contains es_<LANG>.{aff,dic}, which provide them as well
-# workaround, applied in update.sh
-Source3:        es-remove-duplicate-locales.diff
 BuildRequires:  dos2unix
 BuildRequires:  xz
 Obsoletes:      libreoffice-thesaurus-bg

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Mar 21 11:20:27 UTC 2024 - pgajdos@suse.com
+
+- version update to 20240321
+ * use general label for Turkish dictionary
+  * Updated Afrikaans dictionary
+  * tdf#159164 Update the English dictionaries: GB+ZA+AU+CA+US
+  * update hunspell dictionaries for Turkish language
+  * Updated Slovenian thesaurus
+  * tdf#156723 False positives in pt-BR lightproof
+  * Belarusian hunspell dictionary update
+  * Update the Korean Dictionaries: ko-KR
+  * Updated the English dictionaries: GB
+  * Update Danish dictionaries (v2.8.001)
+  * Fix path of logo for Spanish dictionary
+  * Fixes issue #156669: Updates Catalan dictionaries (spelling, hyphenation, and thesaurus) with latest releases.
+  * Add Indonesian hyphenation library to dictionary package
+  * Updating RLA-ES Spanish spellcheker to v2.8.
+  * Updated Slovak dictionaries (v2.4.7 2023-08-29)
+  * Update of Occitan spellchecker (more words and up-to-date licence
+  * tdf#156723 Remove false pleonasms for pt-BR
+  * tdf#156101 add en-IL alongside the other English locales
+  * On Linux dictionaries are packaged separately
+  * Update Hungarian dictionary
+  * Updated the English dictionaries: GB+ZA
+  * tdf#154459 Improve grammar for hlp_ellipsis
+  * Add .gitreview used by git-review tool
+  * id: sync dictionaries to version v2.3.0 (2022.09.21)
+  * Updated Slovenian thesaurus
+  * tdf#148876 Adding Thai hyphenation patterns
+  * Update Italian hyphenation and dictionary
+  * Update Mongolian dictionary
+  * Fix typos in Thesaurus
+- modified sources
+  % update.sh
+- deleted patches
+  - es-remove-duplicate-locales.diff (upstreamed)
+
+-------------------------------------------------------------------
 Wed Oct 12 09:04:41 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 20221012:
