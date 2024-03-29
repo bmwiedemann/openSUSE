@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-fortisslvpn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,6 +60,7 @@ Summary:        NMA files for the NetworkManager SSLVPN plugin
 Group:          Productivity/Networking/System
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and NetworkManager-applet)
+Supplements:    (%{name} and gnome-control-center)
 Provides:       %{name}-gnome = %{version}
 Obsoletes:      %{name}-gnome
 

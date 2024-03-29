@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 28 07:55:28 UTC 2024 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add missing supplements(bsc#1220391):
+  + NMA subpackage: Main package and gnome-control-center
+
+-------------------------------------------------------------------
 Fri Dec 22 15:44:09 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 084ef529.patch: Add support for compiling against pppd-2.5.0.

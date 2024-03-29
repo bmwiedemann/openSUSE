@@ -82,4 +82,13 @@ If openfortivpn is not installed, vpn can not be started. (forwarded request 743
     <comment></comment>
     <requestid>1134651</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>4400c25ef3568e4094b44f5a4000c251</srcmd5>
+    <version>1.4.0</version>
+    <time>1711714247</time>
+    <user>anag+factory</user>
+    <comment>- Add missing supplements(bsc#1220391):
+  + NMA subpackage: Main package and gnome-control-center (forwarded request 1163474 from JonathanKang)</comment>
+    <requestid>1163509</requestid>
+  </revision>
 </revisionlist>
