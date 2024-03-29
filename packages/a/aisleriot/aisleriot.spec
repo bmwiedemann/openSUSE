@@ -1,7 +1,7 @@
 #
 # spec file for package aisleriot
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           aisleriot
-Version:        3.22.30
+Version:        3.22.31
 Release:        0
 Summary:        Solitaire Card Games for GNOME
 License:        GPL-3.0-or-later
 URL:            https://wiki.gnome.org/Apps/Aisleriot
-Source0:        https://gitlab.gnome.org/GNOME/aisleriot/-/archive/%{version}/aisleriot-%{version}.tar.bz2
+Source0:        aisleriot-%{version}.tar.zst
 
 BuildRequires:  distribution-release
 BuildRequires:  fdupes
@@ -99,20 +99,10 @@ This package provides extra themes for Aisleriot.
 %{_libdir}/valgrind/aisleriot.supp
 # Exclude files that are in themes
 %exclude %{_datadir}/aisleriot/cards/anglo.svgz
-%exclude %{_datadir}/aisleriot/cards/anglo_bitmap.svgz
-%exclude %{_datadir}/aisleriot/cards/bellot.svgz
-%exclude %{_datadir}/aisleriot/cards/bonded.svgz
-%exclude %{_datadir}/aisleriot/cards/dondorf.svgz
-%exclude %{_datadir}/aisleriot/cards/gnomangelo_bitmap.svgz
 %exclude %{_datadir}/aisleriot/cards/ornamental.svgz
 
 %files themes
 %{_datadir}/aisleriot/cards/anglo.svgz
-%{_datadir}/aisleriot/cards/anglo_bitmap.svgz
-%{_datadir}/aisleriot/cards/bellot.svgz
-%{_datadir}/aisleriot/cards/bonded.svgz
-%{_datadir}/aisleriot/cards/dondorf.svgz
-%{_datadir}/aisleriot/cards/gnomangelo_bitmap.svgz
 %{_datadir}/aisleriot/cards/ornamental.svgz
 
 %files lang -f aisleriot.lang
