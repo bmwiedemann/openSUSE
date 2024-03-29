@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-joserfc
 Version:        0.9.0
 Release:        0

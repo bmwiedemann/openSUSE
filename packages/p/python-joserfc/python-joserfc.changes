@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 27 15:15:37 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Mar  1 14:44:30 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Initial packaging (v0.9.0), needed by python-moto
