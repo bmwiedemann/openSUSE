@@ -278,4 +278,14 @@
   * Add RFC3657 providing Camellia Encryption Algorithm for CMS</comment>
     <requestid>1084854</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>dddeb969d3701e7371cbf5140edd0c32</srcmd5>
+    <version>0.4.0</version>
+    <time>1711714155</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.0:
+  * Added support for Python 3.11, 3.12
+  * Removed support for EOL Pythons 2.7, 3.6, 3.7</comment>
+    <requestid>1163304</requestid>
+  </revision>
 </revisionlist>
