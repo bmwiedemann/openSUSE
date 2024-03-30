@@ -865,8 +865,8 @@
     <package name="kalgebra-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kanagram" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kanagram-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="kapptemplate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="kapptemplate-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="kapptemplate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="kapptemplate-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="kate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kate-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kate-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -874,8 +874,8 @@
     <package name="kbd-legacy" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="kbruch" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kbruch-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="kcachegrind" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="kcachegrind-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="kcachegrind" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="kcachegrind-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="kcalc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kcalc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kcalutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1062,7 +1062,7 @@
     <package name="kgamma6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kgeography" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kgeography-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="kglobalaccel5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_office -->
+    <package name="kglobalaccel5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="kglobalacceld6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="khangman" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="khangman-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
@@ -1086,8 +1086,8 @@
     <package name="kio-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kio_audiocd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kio_audiocd-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kio_kamera" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_imaging -->
-    <package name="kio_kamera-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_imaging -->
+    <package name="kio_kamera" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="kio_kamera-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="kipi-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kipi-plugins-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kirigami-addons6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1272,7 +1272,7 @@
     <package name="libKF5DocTools5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5GlobalAccel5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5GlobalAccel5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5GlobalAccelPrivate5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_office -->
+    <package name="libKF5GlobalAccelPrivate5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libKF5GuiAddons5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5I18n5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5I18n5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2306,7 +2306,7 @@
     <package name="libkmod2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libkolabxml1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkomparediff2-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="libkomparediff2-5-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libkomparediff2-5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libkomparediff2-5_95" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkomparediff2-5_95-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libksane-icons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4168,7 +4168,7 @@
     <package name="udisks2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="udisks2-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="udisks2-lang" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="udisks2-zsh-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="udisks2-zsh-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="umbrello" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="umbrello-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="un-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
