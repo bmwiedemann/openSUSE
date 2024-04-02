@@ -1,0 +1,12 @@
+<package name="marknote" project="openSUSE:Factory">
+  <title>Rich text notes editor</title>
+  <description>Marknote lets you create rich text notes and easily organise them into notebooks.
+You can personalise your notebooks by choosing an icon and accent color for each 
+one, making it easy to distinguish between them and keep your notes at your
+fingertips. Your notes are saved as Markdown files in your Documents folder,
+making it easy to use your notes outside of Marknote as well as inside the app.
+
+</description>
+  <devel project="KDE:Extra" package="marknote"/>
+  <url>https://apps.kde.org/marknote</url>
+</package>
