@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sun Mar 31 21:29:30 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Switch _service to use manual instead of the deprecated disabled
+- Update to version 32:
+  Breaking:
+  * The example script etc/lfcd.cmd is updated to use the
+    -print-last-dir option instead of -last-dir-path
+  * The documentation from lf -doc and the doc command is now
+    generated from Markdown using pandoc
+  New:
+  * A new option hidecursorinactive is added to hide the cursor
+    when the terminal is not focused
+  * A new special command on-redraw is added to be able to run a
+    command when the screen is redrawn or when the terminal is
+    resized
+  * Options cutfmt, copyfmt and selectfmt are added to configure
+    the indicator color for cut/copied/selected files respectively
+  * zsh completion is added for the lfcd command
+  * The file stat information now falls back to displaying
+    user/group ID if looking up the user/group name fails
+  * A new environment variable lf_mode is now exported to indicate
+    which mode lf is currently running in
+  * Default icons are added for Docker Compose files
+  Fix:
+  * Default value of rulerfmt option is now left-padded with spaces
+    to visually separate it from the file stat information
+  * Previews should now work for files containing lines with 65536
+    characters or more
+  * Sixel previews should now work when using lfcd scripts
+  * Colors and icons should now display properly for character
+    device files
+  * The selection file is now immediately synced to physical
+    storage after writing to it
+  * Timestamps are preserved when moving files across devices
+  * Fix crash for high and low commands when scrolloff is set to a
+    large value
+  * Documentation is updated with various spelling and grammar
+    fixes
+  * Files beginning with a dot
+  * Prevent potential race condition when sorting directory
+    contents
+  * Signals are now handled properly even after receiving and
+    ignoring SIGINT
+  * The file stat information should now update properly after
+    using the cd command to change to a directory for the first
+    time
+  * Previous error messages should now be cleared after a
+    mark-save/mark-remove operation
+  * Fix high CPI usage issue when viewing CryFS filesystems
+  * Invalid entries in the marks and tags files now raise an error
+    message instead of crashing
+  * Startup time is improved on Windows
+  * Sixel previews are now resized properly when the horizontal
+    size of the preview window changes
+  * The cut buffer is only cleared if the paste operation succeeds
+  * The extension after . is ignored to set the cursor position
+    when renaming a directory
+  * The option period should not cause flickers in sixel previews
+    anymore
+
+-------------------------------------------------------------------
 Sun Sep 17 18:20:07 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to version 31:
