@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 29 17:30:10 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Update patterns-fonts.spec:
+  Add google-noto-sans-symbols-fonts google-noto-sans-symbols2-fonts
+  to default installation, to enable terminal display special
+  characters (bsc#1219553).
+
+-------------------------------------------------------------------
 Mon Oct 23 11:44:21 UTC 2023 - Ludwig Nussel <lnussel@suse.de>
 
 - Require fonts so the pattern also works when Recommends are turned off

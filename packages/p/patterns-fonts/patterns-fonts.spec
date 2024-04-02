@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-fonts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,11 @@ This particular package contains the Fonts patterns.
 
 
 
+
+
+
 ################################################################################
+
 %package fonts
 %pattern_graphicalenvironments
 Summary:        Fonts
@@ -91,6 +95,9 @@ Recommends:     efont-unicode-bitmap-fonts
 Recommends:     noto-sans-fonts
 Recommends:     stix-fonts
 Recommends:     xorg-x11-fonts
+# terminal need symbols type to display special characters (bsc#1219553)
+Recommends:     google-noto-sans-symbols-fonts
+Recommends:     google-noto-sans-symbols2-fonts
 
 %description fonts_opt
 Base fonts and font configuration.
