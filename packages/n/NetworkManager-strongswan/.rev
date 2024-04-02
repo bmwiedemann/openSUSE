@@ -216,4 +216,13 @@ Update to 1.3.1 (forwarded request 231381 from Zaitor)</comment>
   - NMA subpackage: Main package and NMA (forwarded request 1130480 from gmbr3)</comment>
     <requestid>1130778</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>46402b48c375ad7ab434f04b892fe0a1</srcmd5>
+    <version>1.6.0</version>
+    <time>1712068796</time>
+    <user>anag+factory</user>
+    <comment>- Add missing supplements(bsc#1220391):
+  + NMA subpackage: Main package and gnome-control-center (forwarded request 1163472 from JonathanKang)</comment>
+    <requestid>1163507</requestid>
+  </revision>
 </revisionlist>
