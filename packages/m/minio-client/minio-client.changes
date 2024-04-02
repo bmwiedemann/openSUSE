@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 30 15:55:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240330T152952Z:
+  * doc update (#4867)
+  * Functional tests: add a parameter for the full site cleaning
+    test (#4877)
+  * Expose health diagnostics related functions (#4885)
+  * Update madmin to existing master (#4888)
+
+-------------------------------------------------------------------
+Sat Mar 30 10:13:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240325T164114Z:
+  * fix resync to find peers by deployment ID instead of site names
+    (#4884)
+
+-------------------------------------------------------------------
 Sat Mar 23 09:44:33 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240320T210729Z:
