@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyterlab-widgets
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define pyver 3.0.9
-%define jupver 5.0.9
+%define pyver 3.0.10
+%define jupver 5.0.10
 Name:           python-jupyterlab-widgets
 Version:        %{pyver}
 Release:        0
