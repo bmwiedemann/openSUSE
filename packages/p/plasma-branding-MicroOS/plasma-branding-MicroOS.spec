@@ -1,7 +1,7 @@
 #
 # spec file for package plasma-branding-MicroOS
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 SUSE Software Solutions GmbH
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,7 +37,7 @@ Requires:       libqt5-qdbus
 Requires:       sound-theme-freedesktop
 Requires:       transactional-update
 Conflicts:      gnome-branding-MicroOS
-Version:        20231008
+Version:        20240401
 Release:        0
 
 %description
