@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-l2tp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,6 +55,7 @@ Requires:       %{name} = %{version}-%{release}
 Provides:       %{name}-gnome = %{version}
 Obsoletes:      %{name}-gnome
 Supplements:    (%{name} and NetworkManager-applet)
+Supplements:    (%{name} and gnome-control-center)
 
 %description -n NetworkManager-applet-l2tp
 This package contains software for integrating L2TP and L2TP/IPsec

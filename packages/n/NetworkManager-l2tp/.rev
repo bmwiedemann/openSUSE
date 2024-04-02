@@ -370,4 +370,13 @@
   + Minor localization fixes. (forwarded request 1130475 from gmbr3)</comment>
     <requestid>1130773</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>e7558c347a80ac69b789aab0ebc22fe7</srcmd5>
+    <version>1.20.10</version>
+    <time>1712068793</time>
+    <user>anag+factory</user>
+    <comment>- Add missing supplements(bsc#1220391):
+  + NMA subpackage: Main package and gnome-control-center (forwarded request 1163468 from JonathanKang)</comment>
+    <requestid>1163503</requestid>
+  </revision>
 </revisionlist>
