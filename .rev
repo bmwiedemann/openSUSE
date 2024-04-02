@@ -1363,4 +1363,27 @@
   * SV site change, paginated threadmarks list</comment>
     <requestid>1158747</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>dd77fbebd06bdec3da37c3b421277a17</srcmd5>
+    <version>4.33.0</version>
+    <time>1712069024</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.33.0:
+  - Update translations.
+  - adapter_inkbunnynet: Honor keep_summary_html, allow alternate
+    cover image. Thanks hmonsta #912.
+  - adapter_deviantartcom: Add a 6th different message to
+    indicate 'mature content'. #1052
+  - adapter_deviantartcom: Bad username fails separately than bad
+    pass. #1052
+  - Paste into ini edit as plain text only.
+  - syosetu: make numeric metadata robust against wording changes
+    - thanks praschke
+  - New site Japanese language site kakuyomu.jp, thanks praschke
+  - adapter_deviantartcom: Add another way to remove comments
+    section.
+  - Don't try to set imap tags before checking for 'good' update.
+  - Move new exception catching for metadata errors</comment>
+    <requestid>1163989</requestid>
+  </revision>
 </revisionlist>

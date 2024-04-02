@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr  1 20:02:33 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 4.33.0:
+  - Update translations.
+  - adapter_inkbunnynet: Honor keep_summary_html, allow alternate
+    cover image. Thanks hmonsta #912.
+  - adapter_deviantartcom: Add a 6th different message to
+    indicate 'mature content'. #1052
+  - adapter_deviantartcom: Bad username fails separately than bad
+    pass. #1052
+  - Paste into ini edit as plain text only.
+  - syosetu: make numeric metadata robust against wording changes
+    - thanks praschke
+  - New site Japanese language site kakuyomu.jp, thanks praschke
+  - adapter_deviantartcom: Add another way to remove comments
+    section.
+  - Don't try to set imap tags before checking for 'good' update.
+  - Move new exception catching for metadata errors
+
+-------------------------------------------------------------------
 Sun Mar 17 12:32:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.32.3:
