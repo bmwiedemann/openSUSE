@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 30 10:17:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.1:
+  * fixed stdout issue with log message
+  * update tls config
+
+-------------------------------------------------------------------
 Sat Mar 16 17:48:15 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - BuildRequire go1.22 following upstream
