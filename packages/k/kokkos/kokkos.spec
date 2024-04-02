@@ -1,7 +1,7 @@
 #
 # spec file for package kokkos
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,6 +75,7 @@ This package contains the development files of %{name}.
 %prep
 %setup -q
 sed -i '1c #!/usr/bin/bash' bin/hpcbind bin/runtest
+sed -i '1s|/usr/bin/env bash|/usr/bin/bash|' bin/kokkos_launch_compiler bin/nvcc_wrapper
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
