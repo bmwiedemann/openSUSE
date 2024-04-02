@@ -31,6 +31,8 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM elisa-qtmultimedia.patch
+Patch1:         elisa-qtmultimedia.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  qt6-core-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6Baloo) >= %{kf6_version}
@@ -92,7 +94,6 @@ built and played.
 %kf6_install
 
 %find_lang %{name} --with-man --with-html --all-name
-
 
 %files
 %license LICENSES/*

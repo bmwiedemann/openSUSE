@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 30 10:51:19 UTC 2024 - Dmitry Roshchin <dmitry_r@opensuse.org>
+
+-  Fix qt multimedia backend stopping playback after a track has finished
+  elisa-qtmultimedia.patch
+
+-------------------------------------------------------------------
 Tue Mar 19 15:25:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.1
