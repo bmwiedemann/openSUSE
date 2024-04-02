@@ -305,4 +305,14 @@
     <comment>- Skip testing with python39: no longer supported since ipython 8.19</comment>
     <requestid>1155948</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>52466f7a9317e53e5d3e4436c97c87f0</srcmd5>
+    <version>0.10.0</version>
+    <time>1712068840</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.10.0
+  * Optionally write out executed notebook in jupyter-execute #307
+    (@wpk-nist-gov)</comment>
+    <requestid>1163579</requestid>
+  </revision>
 </revisionlist>

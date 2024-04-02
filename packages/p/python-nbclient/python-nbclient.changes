@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 29 18:45:22 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.10.0
+  * Optionally write out executed notebook in jupyter-execute #307
+    (@wpk-nist-gov)
+
+-------------------------------------------------------------------
 Thu Mar  7 13:40:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip testing with python39: no longer supported since ipython 8.19
