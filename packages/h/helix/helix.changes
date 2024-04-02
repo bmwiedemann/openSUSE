@@ -1,4 +1,200 @@
 -------------------------------------------------------------------
+Sat Mar 30 13:53:25 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Remove obsolete cargo_config and references in spec
+- Update to version 24.03:
+  Breaking changes:
+  * suffix file-types in the file-types key in language
+    configuration have been removed
+  * The file-types key in language configuration no longer matches
+    full filenames without a glob pattern
+  Features:
+  * Open URLs with the goto_file command
+  * Support drawing a border around popups and menus
+  * Track long lived diagnostic sources like Clippy or rustc
+  * This improves the handling of diagnostics from sources that
+    only update the diagnostic positions on save.
+  * Add support for LSP window/showDocument requests
+  * Refactor ad-hoc hooks to use a new generic event system
+  * This improves the behavior of autocompletions. For example
+    navigating in insert mode no longer automatically triggers
+    completions.
+  * Allow using globs in the language configuration file-types key
+  * Allow specifying required roots for situational LSP activation
+  * Extend selections using mouse clicks in select mode
+  * Toggle block comments
+  * Support LSP diagnostic tags
+  * Add a file-absolute-path statusline element
+  * Cross injection layers in tree-sitter motions (A-p/A-o/A-i/A-n)
+  * Add a Amp-editor-like jumping command
+  Commands:
+  * :move - move buffers with LSP support
+  * page_cursor_up, page_cursor_down, page_cursor_half_up,
+    page_cursor_half_down - commands for scrolling the cursor and
+    page together
+  * :yank-diagnostic - yank the diagnostic(s) under the primary
+    cursor
+  * select_line_above / select_line_below - extend or shrink a
+    selection based on the direction and anchor
+  Usability improvements:
+  * Make roots key of [[language]] entries in languages.toml
+    configuration optional
+  * Exit select mode in commands that modify the buffer
+  * Use crossterm cursor when out of focus
+  * Join empty lines with only one space in join_selections
+  * Introduce a hybrid tree-sitter and contextual indentation
+    heuristic
+  * Allow configuring the indentation heuristic
+  * Check for LSP rename support before showing rename prompt
+  * Normalize S-<lower-ascii> keymaps to uppercase ascii
+  * Add formatter status to --health output
+  * Change path normalization strategy to not resolve symlinks
+  * Select subtree within injections in :tree-sitter-subtree
+  * Use tilde expansion and normalization for $HELIX_RUNTIME paths
+  * Improve failure message for LSP goto references
+  * Use injection syntax trees for bracket matching
+  * Respect injections in :tree-sitter-highlight-name
+  * Respect injections in move_parent_node_end
+  * Use gix pipeline filter instead of manual CRLF implementation
+  * Follow Neovim's truecolor detection
+  * Reload language configuration with :reload, SIGHUP
+  * Allow numbers as bindings
+  * Respect undercurl config when terminfo is not available
+  * Ignore .pijul, .hg, .jj in addition to .git in file pickers
+    configured to show hidden files
+  * Add completion for registers to :clear-register and
+    :yank-diagnostic
+  * Repeat last motion for goto next/prev diagnostic
+  * Allow configuring a character to use when rendering narrow
+    no-breaking space
+  * Switch to a streaming regex engine
+  Fixes:
+  * Swap * and + registers
+  * Use terminfo to reset terminal cursor style
+  * Fix precedence of @align captures in indentat computation
+  * Only render the preview if a Picker has a preview function
+  * Fix the precedence of ui.virtual.whitespace
+  * Fix crash in :indent-style
+  * Fix didSave text inclusion when sync capability is a kind
+    variant
+  * Update the history of newly focused views
+  * Initialize diagnostics when opening a document
+  * Sync views when applying edits to unfocused views
+  * Treat non-numeric +args passed in the CLI args as filenames
+  * Fix crash when using mm on an empty plaintext file
+  * Ignore empty tree-sitter nodes in match bracket
+  * Exit a language server if it sends a message with invalid JSON
+  * Handle failures to enable bracketed paste
+  * Gate all captures in a pattern behind #is-not? local predicates
+  * Make path changes LSP spec conformant
+  * Use range positions to determine insert_newline motion
+  * Fix division by zero when prompt completion area is too small
+  * Add changes to history in clipboard replacement typable
+    commands
+  * Fix a crash in DAP with an unspecified line in breakpoints
+  * Fix space handling for filenames in bash completion
+  * Key diagnostics off of paths instead of LSP URIs
+  * Fix panic when using join_selections_space
+  * Fix panic when using surround_replace, surround_delete
+  * Fix panic in surround_replace, surround_delete with nested
+    surrounds and multiple cursors
+  * Fix panic in select_textobject_around
+  * Don't stop reloading documents when reloading fails in
+    :reload-all
+  * Prevent shell_keep_pipe from stopping on nonzero exit status
+    codes
+  Themes:
+  * Added gruber-dark, polmandres, starlight, modus operandi
+    themes, modus vivendi themes, horizon-dark, ttox, voxed,
+    gruvbox_light_soft, gruvbox_light_hard, curzon, monokai_soda,
+    term16_dark, term16_light, jetbrains_dark
+  * Updated rose_pine, darcula, everblush, papercolor, naysayer,
+    noctis, nord, monokai pro themes, tokyonight themes, sonokai,
+    onedark, onedarker, cyan_light, GitHub themes, Zed themes,
+    catppuccin themes, rasmus, dark_plus, gruvbox themes, material
+    themes
+  * Added jump label themeing to dracula, horizon-dark, catppuccin
+    themes, onedark themes, rose-pine themes, Nord themes, Monokai
+    themes, gruvbox themes, kanagawa
+  New languages:
+  * Typst, LPF, GN, DBML, log, Janet, Agda, Avro, Smali, HOCON,
+    Tact, PKL, CEL, SpiceDB, Hoon, DockerCompose, Groovy, FIDL,
+    Powershell, ld, Hyperland config, JSONC, PHP Blade,
+    SuperCollider, Koka, PKGBUILD, Ada, Helm charts, Ember.js
+    templates, Ohm
+  Updated languages and queries:
+  * Add HTML injection queries for Rust
+  * Switch to tree-sitter-ron for RON
+  * Update and improve comment highlighting
+  * Highlight type parameters in Rust
+  * Change KDL tree-sitter parsers
+  * Update tree-sitter-markdown
+  * Update tree-sitter-purescript
+  * Add type parameter highlighting to TypeScript, Go, Haskell,
+    OCaml and Kotlin
+  * Add indentation queries for Scheme and lisps using
+    tree-sitter-scheme
+  * Recognize meson_options.txt as Meson
+  * Add language server configuration for Nushell
+  * Recognize musicxml as XML
+  * Update tree-sitter-rescript
+  * Update tree-sitter-python
+  * Recognize .envrc.local and .envrc.private as env
+  * Update tree-sitter-gleam
+  * Update tree-sitter-d
+  * Fix R-markdown language name for LSP detection
+  * Add haskell-language-server LSP configuration
+  * Recognize glif as XML
+  * Recognize .prettierrc as JSON
+  * Add auto-pairs configuration for scheme
+  * Add textobject queries for Scala
+  * Add textobject queries for Protobuf
+  * Update tree-sitter-wren
+  * Add spago.yaml as an LSP root for PureScript
+  * Improve highlight and indent queries for Bash, Make and CSS
+  * Update tree-sitter-scala
+  * Recognize .bash_history as Bash
+  * Recognize Helix ignore files as ignore
+  * Inject SQL into Scala SQL strings
+  * Update gdscript textobjects
+  * Update Go queries
+  * Update tree-sitter-nushell
+  * Update tree-sitter-unison, add indent queries
+  * Update tree-sitter-slint
+  * Update tree-sitter-swift
+  * Add fish_indent as formatter for fish
+  * Recognize zon as Zig
+  * Add a formatter for Odin
+  * Update tree-sitter-erlang
+  * Capture Rust fields as argument textobjects
+  * Improve Dart textobjects
+  * Recognize tmux.conf as a bash file-type
+  * Add textobjects queries for Nix
+  * Add textobjects queries for HCL
+  * Recognize osm and osc extensions as XML
+  * Update tree-sitter-sql
+  * Recognize pde Processing files as Java
+  * Update tree-sitter-lua
+  * Switch tree-sitter-nim parsers
+  * Recognize GTK builder ui files as XML
+  * Add configuration for markdown-oxide language server
+  * Add a shebang for elvish
+  * Fix precedence of Svelte TypeScript injection
+  * Recognize common Dockerfile file types
+  * Recognize NUON files as Nu
+  * Add textobjects for Java native functions and constructors
+  * Fix "braket" typeo in JSX highlights
+  * Update tree-sitter-hurl
+  * Add textobjects queries for Vala
+  * Update tree-sitter-git-config
+  * Recognize 'mmd' as Mermaid
+  * Highlight Rust extern crate aliases
+  * Improve parameter highlighting in C++
+  * Recognize 'rclone.conf' as INI
+  * Add injections for GraphQL and ERB in Ruby heredocs
+  * Add main.odin to Odin LSP roots
+
+-------------------------------------------------------------------
 Sat Oct 28 10:22:15 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Build requires git. It won't be used but it will fail if git binary is not detected.
