@@ -1,0 +1,13 @@
+<package name="libgnunetchat" project="openSUSE:Factory">
+  <title>Library for applications to utilize the Messenger service of GNUnet</title>
+  <description>This library is an abstraction layer using the client API from different GNUnet
+services to provide the functionality of a typical messenger application. The
+goal is to make developing such applications easier and independent of the GUI
+toolkit. So people can develop different interfaces being compatible with
+eachother despite visual differences, a few missing features or differences in
+overall design.
+
+</description>
+  <devel project="filesharing" package="libgnunetchat"/>
+  <url>https://www.gnunet.org/</url>
+</package>
