@@ -35,6 +35,10 @@
 %endif
 %endif
 
+%if 0%{?suse_version} >= 1600
+%define shim_use_fde_tpm_helper 1
+%endif
+
 Name:           shim
 Version:        15.8
 Release:        0
@@ -89,7 +93,7 @@ BuildRequires:  mozilla-nss-tools
 BuildRequires:  openssl >= 0.9.8
 BuildRequires:  pesign
 BuildRequires:  pesign-obs-integration
-%if 0%{?suse_version} >= 1600
+%if 0%{?shim_use_fde_tpm_helper:1}
 BuildRequires:  fde-tpm-helper-rpm-macros
 %endif
 %if 0%{?suse_version} > 1320

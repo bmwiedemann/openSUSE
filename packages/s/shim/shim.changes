@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  2 03:09:15 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Introduce %shim_use_fde_tpm_helper macro so that the project
+  can include the fde-tpm-helper-macros for the build targets
+  other than Tumbleweed
+
+-------------------------------------------------------------------
 Mon Feb 26 13:09:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
