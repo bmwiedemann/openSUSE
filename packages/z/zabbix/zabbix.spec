@@ -22,7 +22,7 @@
 %define agent_group  zabbix
 
 Name:           zabbix
-Version:        6.0.27
+Version:        6.0.28
 Release:        0
 Summary:        Distributed monitoring system
 License:        GPL-2.0-or-later
@@ -319,7 +319,7 @@ cp -r zabbix-%{version} zabbix-%{version}-sqlite
 cd -
 
 %build
-%sysusers_generate_pre %{SOURCE1} zabbix system-user-zabbix.conf
+%sysusers_generate_pre %{SOURCE16} zabbix system-user-zabbix.conf
 ZABBIX_BASIC_CONFIG="--enable-proxy --enable-server --enable-agent  --sysconfdir=%{_sysconfdir}/zabbix \
                      --with-openipmi --enable-java --enable-ipv6 --with-ssh2 --with-ldap --with-unixodbc \
                      --with-libcurl --with-net-snmp --with-libxml2 --with-openssl --with-libpcre --with-libevent"
@@ -344,7 +344,7 @@ autoreconf -fvi
 cd -
 
 %install
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/system-user-zabbix.conf
+install -D -m 0644 %{SOURCE16} %{buildroot}%{_sysusersdir}/system-user-zabbix.conf
 # install the binaries
 
 %make_install -C ../zabbix-%{version}-sqlite

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Mar 30 10:07:11 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 6.0.28:
+  * Added metadata in JavaScript for AWS templates
+  * Added AWS ELB Application Load Balancer by HTTP template
+  * Added Check Point Next Generation Firewall by SNMP template
+  * Added MSSQL by Zabbix agent 2 template
+  * Updated max supported TimescaleDB version to 2.14
+  * bug fixes
+
+-------------------------------------------------------------------
+Sat Mar 30 09:33:35 UTC 2024 - Boris Manojlovic <boris@steki.net>
+
+- fix broken copypasta for system-user-zabbix source file and 
+  file itself to remove gecos (description) in file
+  fixes bsc#1222169 Packaging Error in system-user-zabbix-6.0.27-1.1.noarch package prevents upgrade
+  Thanks Andreas Stieger for pointing out and reporter himself
+
+-------------------------------------------------------------------
 Fri Mar 22 16:11:33 UTC 2024 - Boris Manojlovic <boris@steki.net>
 
 - remove all firewalld definitions as they are part of firewald package already 
