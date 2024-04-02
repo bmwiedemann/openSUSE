@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr  2 12:03:57 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 3.7.0:
+  * Fix satellites loading error thanks to updated list by Own.
+  * Fix rare crash when opening search dialog due to unused AsyncDBManager in FindDialog
+  * Fix focus profile index bug
+  * Fix crash if sequence file was loaded with filter selection but active train does not have a filter wheel
+  * Separating Business Logic from UI in Scheduler
+  * Add blinking capabilities to FITS Viewer and Analyze.
+  * Focus 2 Tick Bugfix
+  * Use correct state after PHD2 complete dithering
+  * Adding the delay to the first image in the sequence
+  * Overhaul "differential slewing"
+  * Allow the user to mirror the sky map
+  * Add option for shoting skyflats
+  * Add edit profile button in FITS Viewer Solver and in Image Overlays
+  * Add option to render image overlays below catalogs.
+  * In Sequence Focus Phase 2
+  * Introduce Views: A way to quickly reorient the sky-map to match the view through an instrument]
+
+-------------------------------------------------------------------
 Tue Feb 13 15:30:30 UTC 2024 - Wolfgang Bauer <wbauer1@a1.net>
 
 - Fix build for Leap
