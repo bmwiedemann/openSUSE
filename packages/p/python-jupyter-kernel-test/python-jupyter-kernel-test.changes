@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 29 18:26:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.7.0
+  * Maintenance and upkeep improvements
+
+-------------------------------------------------------------------
 Thu Mar  7 13:29:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Stop testing on python39: no ipykernel
