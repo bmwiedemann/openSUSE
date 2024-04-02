@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-fb-re2
 Version:        1.0.7
 Release:        0

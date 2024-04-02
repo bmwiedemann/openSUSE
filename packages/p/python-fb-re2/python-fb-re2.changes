@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 28 12:31:02 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Feb 22 08:33:37 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Fix tests on Python 3.12
