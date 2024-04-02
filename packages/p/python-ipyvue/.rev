@@ -74,4 +74,13 @@
   ipywidgets)</comment>
     <requestid>1155867</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>684e2ee9a364824950012ff225a0aeff</srcmd5>
+    <version>1.10.2</version>
+    <time>1712068827</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.10.2
+  * fix: watch didn't work for Vue-only vars</comment>
+    <requestid>1163564</requestid>
+  </revision>
 </revisionlist>

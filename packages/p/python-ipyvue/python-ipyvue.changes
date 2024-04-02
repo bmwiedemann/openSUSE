@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 29 17:21:59 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.10.2
+  * fix: watch didn't work for Vue-only vars
+
+-------------------------------------------------------------------
 Thu Mar  7 11:01:41 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39: no longer supported since ipython 8.19 (through
