@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 29 14:19:22 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Mar 18 03:28:54 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on importlib-metadata for the testsuite. 

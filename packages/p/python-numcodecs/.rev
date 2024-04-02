@@ -67,4 +67,12 @@
     <comment>- Add missing BuildRequires on importlib-metadata for the testsuite.</comment>
     <requestid>1158848</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>4dd178cc625b978f6a3976c1bb0dcf51</srcmd5>
+    <version>0.12.1</version>
+    <time>1712069037</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1164044</requestid>
+  </revision>
 </revisionlist>
