@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Apr  1 16:33:18 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
+
+- Suppress rpmlint error statically-linked-binary.
+- Fix rpmlint warning no-%check-section.
+
+-------------------------------------------------------------------
+Mon Apr  1 15:57:12 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v0.12.15
+  * Implement `ltrim`, `rtrim`, and `trim` functions.
+  * Fix object construction with duplicate keys (`{x:0,y:1} | {a:.x,a:.y}`)
+  * Fix `halt` and `halt_error` functions to stop the command execution
+    immediately.
+  * Fix variable scope of binding syntax
+    (`"a" as $v | def f: $v; "b" as $v | f`).
+  * Fix pre-defined variables to be available in initial modules
+    (`$ARGS` in `~/.jq`).
+  * Fix `ltrimstr` and `rtrimstr` functions to emit error on non-string input.
+  * Fix `nearbyint` and `rint` functions to round ties to even.
+  * Improve parser to allow `reduce`, `foreach`, `if`, `try`-`catch` syntax
+    as object values.
+  * Remove `pow10` in favor of `exp10`, define `scalbn` and `scalbln`
+    by `ldexp`.
+
+-------------------------------------------------------------------
 Fri Dec  1 16:47:58 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v0.12.14
