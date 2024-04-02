@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr  2 08:54:01 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.27.5
+  * Bugfixes:
+    #9371: Deleting or renaming directories when syncing xattrs or ownership causes empty dir tree to get "put back" by ST
+    #9407: IndexHandler can get stuck in an undesired loop
+    #9417: CPU usage increases after folder scans (and hence, over time)
+    #9469: Better wrapping for device and folder names in sharing lists
+  * Enhancements:
+    #8972: Open share settings when clicking 'shared with'
+    #9470: Show encryption status for devices sharing folder
+
+-------------------------------------------------------------------
 Tue Mar  5 10:47:08 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.27.4
