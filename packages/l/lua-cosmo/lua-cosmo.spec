@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package lua-cosmo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,13 @@ Summary:        A “safe templates” engine for Lua
 License:        MIT
 Group:          Development/Languages/Other
 URL:            https://github.com/mascarenhas/cosmo
-Source:         cosmo-%{version}.tar.xz
+Source:         cosmo-%{version}.tar.zst
 Patch0:         fix_test.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-lpeg
 BuildRequires:  %{flavor}-luarocks
 BuildRequires:  lua-macros
+BuildRequires:  zstd
 Requires:       %{flavor}
 Requires:       %{flavor}-lpeg
 %lua_provides

@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1123938</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>defcf0b1e6cec91d09710c8734c2a48e</srcmd5>
+    <version>16.06.04</version>
+    <time>1712068857</time>
+    <user>anag+factory</user>
+    <comment>- Switch from xz compression to zstd</comment>
+    <requestid>1163825</requestid>
+  </revision>
 </revisionlist>
