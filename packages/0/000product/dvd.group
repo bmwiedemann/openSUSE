@@ -644,6 +644,8 @@
     <package name="google-carlito-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="google-noto-coloremoji-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="google-noto-sans-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="google-noto-sans-symbols-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="google-noto-sans-symbols2-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="google-noto-serif-jp-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="google-noto-serif-sc-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="google-noto-serif-tc-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3761,6 +3763,7 @@
     <package name="qt6-texttospeech" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="qt6-tools-qdbus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="qt6-translations" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="qt6-virtualkeyboard" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="qt6-virtualkeyboard-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="qt6-wayland" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="qt6-webchannel-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
