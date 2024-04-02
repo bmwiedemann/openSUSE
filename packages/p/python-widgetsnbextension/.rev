@@ -141,4 +141,18 @@
   nbclassic)</comment>
     <requestid>1155330</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8ec1ecc2383b7c0d76c73f00ec82bc06</srcmd5>
+    <version>4.0.10</version>
+    <time>1712068829</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.10 with jupyter-js-widgets 8.0.10
+  * Bump systeminformation from 5.18.3 to 5.21.8 in /ui-tests by
+    @dependabot in #3837
+  * Try to use manager's latexTypesetter if window.MathJax is not
+    defined by @bollwyvl in #3847
+  * fix: restoring widgets from saved state is broken since v8 in
+    Lab by @mariobuikhuizen in #3866</comment>
+    <requestid>1163566</requestid>
+  </revision>
 </revisionlist>
