@@ -262,4 +262,34 @@
 </comment>
     <requestid>1105254</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1997443ee288023bcef7cc48afac3c2d</srcmd5>
+    <version>1.4.0</version>
+    <time>1712068998</time>
+    <user>anag+factory</user>
+    <comment> Version 1.4.0                                                                  
+* Fixes:                                                                         
+  * Make sure certain variables are initialized before using them.               
+  * Fixed cursor attribute on search failure.                                    
+  * Some option names contain - instead of _.                                    
+  * Correction of potential dereferencing of a NULL pointer.                     
+  * Correction of compiler warnings.                                             
+                                                                                 
+* Improvements:                                                                  
+  * Reworked code to go to start/end of line in col/line mode.                   
+  * Added a scrollbar below the window in col/line mode that displays            
+    when necessary.                                                              
+  * UTF-8 space support for empty strings.                                       
+  * Support for UTF-8 extended grapheme clusters if supported by the             
+    terminal.                                                                    
+                                                                                 
+* Miscellaneous:                                                                 
+  * Changed the appearance of scrollbars to make them more discreet.             
+  * Correction of typos in comments and in the manual.                           
+  * Code simplification and redesign.                                            
+  * Reformatting the code to make it more readable.                              
+  * Made more NULL comparisons explicit. 
+</comment>
+    <requestid>1163953</requestid>
+  </revision>
 </revisionlist>
