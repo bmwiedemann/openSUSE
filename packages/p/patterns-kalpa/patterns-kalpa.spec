@@ -169,6 +169,7 @@ Requires:       irqbalance
 %endif
 Requires:       fcoe-utils
 Requires:       hwinfo
+Requires:       susepaste
 
 ### Packages formerly provided by selinux
 Requires:       container-selinux
