@@ -1,7 +1,7 @@
 #
 # spec file for package maven-filtering
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-filtering
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
 Summary:        Shared component providing resource filtering
 License:        Apache-2.0
@@ -27,6 +27,7 @@ Source0:        https://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  apache-commons-io
+BuildRequires:  apache-commons-lang3
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
@@ -62,6 +63,7 @@ mkdir -p lib
 build-jar-repository -s lib \
     atinject \
     commons-io \
+    commons-lang3 \
     maven/maven-core \
     maven/maven-model \
     maven/maven-settings \

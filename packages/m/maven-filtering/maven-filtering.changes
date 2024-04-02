@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Apr  2 08:46:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.3.2
+  * Changes
+    + pick correct hamcrest dependency
+    + Prefer commons lang to plexus utils
+    + MSHARED-1214: move tag back to HEAD
+    + MSHARED-1216: Use caching output stream
+    + Bump org.codehaus.plexus:plexus-utils from 3.0.16 to 3.0.24
+      in /src/test/resources
+    + Fix typos and grammar
+    + Fix 'licenced' typo in PR template
+    + refactor IncrementalResourceFilteringTest
+    + MSHARED-1340: Require Maven 3.6.3+
+    + Bump commons-io:commons-io from 2.11.0 to 2.15.1
+    + Bump org.apache.commons:commons-lang3 from 3.12.0 to 3.14.0
+    + MSHARED-1339: Bump
+      org.apache.maven.shared:maven-shared-components from 39 to 41
+    + MSHARED-1290: Fix PropertyUtils cycle detection results in
+      false positives
+    + MSHARED-1285: use an up-to-date scanner instead the newscanner
+    + Bump org.codehaus.plexus:plexus-testing from 1.2.0 to 1.3.0
+    + Bump org.codehaus.plexus:plexus-interpolation from 1.26
+      to 1.27
+    + Bump org.codehaus.plexus:plexus-utils from 3.5.1 to 4.0.0
+    + Bump release-drafter/release-drafter from 5 to 6
+    + Bump org.junit.jupiter:junit-jupiter-api from 5.10.1
+      to 5.10.2
+    + MSHARED-1351: Fix console message when origin is baseDir
+    + MSHARED-1050: Fix ConcurrentModificationException for
+      maven-filtering
+    + MSHARED-1330: Always overwrite files
+
+-------------------------------------------------------------------
 Wed Sep  6 13:00:35 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.3.1
