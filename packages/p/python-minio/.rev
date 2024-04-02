@@ -267,4 +267,12 @@
 - Clean up unneeded {Build,}Requires.</comment>
     <requestid>1108371</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>6527ddcaa495e7848dae2bbd876d069c</srcmd5>
+    <version>7.1.16</version>
+    <time>1712068975</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1163746</requestid>
+  </revision>
 </revisionlist>
