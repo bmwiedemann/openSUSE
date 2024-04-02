@@ -1,7 +1,7 @@
 #
 # spec file for package retry
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           retry
-Version:        1700850441.829db9e
+Version:        1711985904.b9b8f3b
 Release:        0
 Summary:        A simple tool for retrying command executions in plain POSIX sh
 License:        MIT
@@ -43,5 +43,6 @@ mkdir -p %{buildroot}%{_bindir}
 
 %files
 %{_bindir}/retry
+%{_bindir}/count-fail-ratio
 
 %changelog

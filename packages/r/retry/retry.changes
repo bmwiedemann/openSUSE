@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 01 15:39:57 UTC 2024 - okurz@suse.com
+
+- Update to version 1711985904.b9b8f3b:
+  * Add count-fail-ratio to Makefile+spec
+  * Mention alternative github.com/minfrin/retry
+  * Explain count-fail-ratio in README as well
+  * count-fail-ratio: Enable timing by default
+  * Add count-fail-ratio with tests
+  * Makefile: Adapt path to checkbashisms
+
+-------------------------------------------------------------------
 Fri Nov 24 18:28:59 UTC 2023 - okurz@suse.com
 
 - Update to version 1700850441.829db9e:

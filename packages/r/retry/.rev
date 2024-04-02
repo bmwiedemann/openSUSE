@@ -49,4 +49,19 @@
     <comment>Update to 1700850441.829db9e</comment>
     <requestid>1128634</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d96842e0e6b583b0657308da1cc5a5f6</srcmd5>
+    <version>1711985904.b9b8f3b</version>
+    <time>1712068992</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1711985904.b9b8f3b:
+  * Add count-fail-ratio to Makefile+spec
+  * Mention alternative github.com/minfrin/retry
+  * Explain count-fail-ratio in README as well
+  * count-fail-ratio: Enable timing by default
+  * Add count-fail-ratio with tests
+  * Makefile: Adapt path to checkbashisms
+</comment>
+    <requestid>1163956</requestid>
+  </revision>
 </revisionlist>
