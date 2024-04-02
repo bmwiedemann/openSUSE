@@ -17,4 +17,15 @@
 - Fix missing dependency on lua-macros (boo#1205612)</comment>
     <requestid>1061053</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e19acecaa12bc21899d69ff9d97ce007</srcmd5>
+    <version>0.3.7</version>
+    <time>1712068860</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.3.7
+  * Minor refactoring
+- Switch from xz compression to zstd
+</comment>
+    <requestid>1163829</requestid>
+  </revision>
 </revisionlist>

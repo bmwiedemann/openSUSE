@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package lua-testmore
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name testmore
-Version:        0.3.6+git2
+Version:        0.3.7
 Release:        0
 Summary:        A Lua port of the Perl Test::More unit testing framework
 License:        MIT
 Group:          Development/Languages/Other
 URL:            https://framagit.org/fperrad/lua-TestMore
-Source:         lua-TestMore-%{version}.tar.xz
-BuildRequires:  lua-macros
+Source:         lua-TestMore-%{version}.tar.zst
 BuildRequires:  %{flavor}-devel
+BuildRequires:  lua-macros
+BuildRequires:  zstd
 Requires:       %{flavor}
 %lua_provides
 %if "%{flavor}" == ""
