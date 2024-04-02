@@ -57,7 +57,7 @@ ExclusiveArch:  no-32bit-build
 %endif
 
 Name:           pdns
-Version:        4.8.4
+Version:        4.9.0
 Release:        0
 Summary:        Authoritative-only nameserver
 License:        GPL-2.0-only

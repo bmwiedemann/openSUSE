@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Tue Mar 26 03:49:22 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 4.9.0
+  * New Features
+    + LUA dblookup: switch qtype argument to int
+    + LUA: support returning empty set in filterForward #13879
+    + ixfrdist: add support for outgoing notify
+    + LUA records, pickchashed function
+    + Add Lua function to pick records via name hash
+    + LUA records: add dblookup function
+    + add a configurable delay for notifications
+    + Add and document a localwho() function for LUA records
+    + forward EDNS Client Subnet option during ALIAS processing
+    + add loglevel-show setting to get logs formatted like
+      structured logs
+    + ixfrdist: add NOTIFY receive support
+    + dnsscope: Add a –port option to select a custom port
+    + sdig: add rudimentary EDE output
+    + add default-catalog-zone setting
+    + API: replace zone contents et al
+    + geoipbackend: Support reading zones from directory
+  * Improvements
+    + on OpenBSD, try harder to send on a non-blocking socket
+    + Docker: Only print config if debug flag is set
+    + API: reject priority element in record
+    + dnsname: Optimize parsing of uncompressed labels
+    + Log port with all freshness check failure scenarios
+    + DNSName: correct len and offset types
+    + getAllDomains catalog: avoid useless copy
+    + LUA createForward: allow non-hex word prefix
+    + iputils: avoid unused warnings on !linux
+    + Remove the extern`ed `StatBag from ws-auth
+    + allow building in separate build directory
+    + Move method checking to Router
+    + Add supervisor to Auth container image
+    + Remove legacy terms from the codebase
+    + Wrap DIR* objects in unique pointers to prevent memory leaks
+    + bindparser add primary/secondary/etc. keywords
+    + Netmask: Normalize subnet masks coming from a string
+    + Report auth settings deprecated in 4.5
+    + Improve error message for missing GSS-TSIG feature
+    + Print the list of loaded modules next to the config.h preset
+    + Change the default for building with net-snmp from auto
+      to no
+    + harmonize *xfr log messages
+    + Refactor the MultiThreadDistributor using pdns::channel
+    + report which backend failed to instantiate
+    + add remote to logs when tcp thread dies
+    + Add missing tools to pdns-tools package description
+    + pkcs11signers: If private key object has
+      CKA_ALWAYS_AUTHENTICATE attribute, perform
+      CKU_CONTEXT_SPECIFIC login after OperationInit to make it
+      actually work
+    + wait for mysql.service
+    + bump sdist builders to alpine 3.18
+    + new option 'ignore-errors' for setting
+      'outgoing-axfr-expand-alias'
+  * Bug Fixes
+    + revive remotebackend tests and fix failures
+    + do not disable ns records at apex in consumer zones
+    + catalog: include groups in hash calculation
+    + lmdb: remove mapasync mode, it was always a lie
+    + debian: adjust option names in shipped configs
+    + fix tinydnsbackend compilation issue
+    + set catalog in gsql getAllDomains
+    + improve wildcard CNAME handling
+    + auth api: flush all caches when flushing
+    + CAA records: handle empty value more gracefully,
+      fixes #13070
+    + calidns: Fix setting an ECS source of 0
+    + calidns: Prevent a crash on an empty domains file
+
+For details, see
+https://doc.powerdns.com/authoritative/changelog/4.9.html
+
+-------------------------------------------------------------------
 Mon Feb 12 14:17:20 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - Update to 4.8.4:

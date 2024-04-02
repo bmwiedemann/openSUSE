@@ -894,4 +894,12 @@ https://doc.powerdns.com/authoritative/upgrading.html</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1147613</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>bf3f11a658980dde7734ef5502d64090</srcmd5>
+    <version>4.9.0</version>
+    <time>1712069012</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1163973</requestid>
+  </revision>
 </revisionlist>
