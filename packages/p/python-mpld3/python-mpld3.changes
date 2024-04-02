@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 25 17:36:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.19:
+  * Avoid MPL API removals
+  * allow old and new dasharray
+  * new maintainer
+  * remove sklearn
+- drop mpld3-pr516-dasharray.patch, mpl-patches.patch: upstream
+
+-------------------------------------------------------------------
 Fri Dec 22 14:25:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add mpl-patches.patch gh#mpld3/mpld3#521
