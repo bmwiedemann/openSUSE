@@ -113,6 +113,7 @@ pkglistgen-delete-kiwis-target = *.kwd
 pkglistgen-delete-kiwis-staging = openSUSE-Addon-NonOss*  openSUSE-cd-mini-* openSUSE-ftp-ftp-*
 pkglistgen-delete-kiwis-ring1 = openSUSE-Addon-NonOss*  openSUSE-cd-mini-* openSUSE-ftp-ftp-*
 nocleanup-packages = 000product 000release-packages bootstrap-copy
+rebuild =    
 
 # subpackages of ring packages with unacceptable requires (don't abuse)
 repo_checker-binary-whitelist-ring = patterns-media-rest_dvd patterns-media-rest_cd_x11 patterns-devel-base-devel_web patterns-base-update_test monitoring-plugins-metadata codec2-examples libreoffice-l10n-fi java-1_8_0-openjdk-accessibility hplip-scan-utils patterns-kde-devel_qt6
@@ -140,7 +141,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20240329</value>
+    <value>20240402</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
