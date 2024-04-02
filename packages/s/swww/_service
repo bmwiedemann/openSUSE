@@ -3,11 +3,11 @@
     <param name="url">https://github.com/LGFae/swww</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">d60139dffe3fb7ee26814fed292fdcca2309df31</param>
+    <param name="revision">refs/tags/v0.9.1</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">socvirnyl.estela@gmail.com</param>
+    <param name="exclude">.github</param>
   </service>
   <service mode="buildtime" name="tar" />
   <service mode="manual" name="set_version"/>
@@ -21,3 +21,4 @@
   </service>
 </services>
 
+<!-- vim: set syntax=xml: -->

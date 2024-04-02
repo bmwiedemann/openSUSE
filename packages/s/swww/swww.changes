@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Mar 31 16:59:18 UTC 2024 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.9.1:
+  * deprecate swww init
+  * update CHANGELOG.md
+  * add BSD2 and Apache2.0 with LLVM-exception license
+  * update MSRV to 1.74.0
+  * support animations when piping from stdin
+  * update dependencies
+  * forward init format option to daemon
+  * option to force use of a wayland_shm format
+  * prevent UB from a malformed BitPack at decompression
+  * do not use unsafe for the FORMAT statics
+  * specialize transitions for 3channels
+  * Use 3 channel formats when available
+  * only swap R and B channels when necessary
+  * document unsafe invariants
+  * compression functions api signal errors better
+  * reuse the buffer when compressing
+  * use system lz4 library
+  * implement sse variants of compress and decompress
+  * new compression functions
+  * Implement frame callbacks and a new memory pool
+  * refactor version.sh
+  * fix out-of-bounds access in decompression
+  * process clear-cache before sending requests
+  * rename `Init` request/answer to `Ping`
+  * wait for daemon initialization before any requests
+  * wait for daemon initialization before certain requests
+  * add restore command
+  * wait for child swww process, to prevent zombies
+  * fix randomize script trying to use directories as images
+  * fix gif animations overlapping when sending two gifs
+  * center cropped images larger than the monitor
+  * make an fps an u16
+  * Format code with cargo fmt
+  * Update ahash to 0.7.8
+  * remove all cache contents on clean-cache
+  * support animated pngs
+  * typo in comment
+  * fix busyloop while waiting for WlBuffers to be released
+  * fix single image webp and gif
+  * fix let_underscore_lock lint
+  * explicit versions for all dependencies
+
+-------------------------------------------------------------------
 Tue Jan 30 08:20:46 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 0.8.2:

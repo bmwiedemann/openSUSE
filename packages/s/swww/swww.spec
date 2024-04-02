@@ -26,7 +26,7 @@
 
 
 Name:           swww
-Version:        0.8.2
+Version:        0.9.1
 Release:        0
 Summary:        Wallpaper daemon for Wayland
 License:        GPL-3.0-only
@@ -34,7 +34,7 @@ URL:            https://github.com/LGFae/swww
 Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-BuildRequires:  rust+cargo >= 1.64.0
+BuildRequires:  rust+cargo >= 1.74.0
 BuildRequires:  scdoc
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(liblz4)
