@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Sat Mar 30 23:12:22 UTC 2024 - xtexChooser <xtexchooser@duck.com>
+
+- Fix ripgrep depends
+
+-------------------------------------------------------------------
+Sat Mar 30 08:06:11 UTC 2024 - xtexChooser <xtexchooser@duck.com>
+
+- Lock dependencies from being updated when packaging
+  Updating deps when vendoring causes build errors
+
+-------------------------------------------------------------------
+Sat Mar 23 12:01:07 UTC 2024 - xtexchooser@duck.com
+
+- Update to version 0.2.4:
+  * feat: add `--debug` flag to print debug information (#794)
+  * feat: `ya.hide()` plugin API (#792)
+  * feat: truncate path for deeply nested directories (#787)
+  * fix: track the latest file changes for the `selected`, `yanked` state when available (#791)
+  * feat: `cx.yanked` plugin API (#788)
+  * feat: send a foreground notification to the user when the process fails to run (#775)
+  * feat: add `<C-p>` and `<C-n>` to the select component for moving the cursor up/down (#779)
+  * feat: test new color system
+  * feat: `ui.Clear` component for UI plugins (#786)
+  * feat: `ya.notify()` plugin API (#780)
+  * feat: add `parse` method to `Line` element
+  * feat: add `Ctrl-[` as an escape key (#763)
+  * refactor: add new `run` property (#773)
+  * fix: nested conflict detection exception when performing cross-level searches (#769)
+  * feat: add musl linux build targets (#759)
+  * fix: remove redundant check to allow operations on the `shell` command with an empty file list
+  * feat: `ya.input()` plugin API (#762)
+  * feat: support `%0` as the hovered file for Windows (#761)
+  * perf: apply `add_many()`/`remove_many()` to the visual mode items for selection conflict detecting (#758)
+  * feat: allow both '/' and '\' in folder creation (#751)
+  * feat: support `YAZI_FILE_ONE` environment variable for `file(1)` path (#752)
+  * feat: add `prepend_rules` and `append_rules` for `[open]` in `yazi.toml` (#754)
+  * feat: switch to inline images protocol for VSCode, Tabby, and Hyper
+  * feat: add a new `[notify]` section to the `theme.toml` to configure the `notify` component's style (#749)
+  * feat: flavor (#753)
+  * feat: add hovered as `$0` for shell and opener (#738)
+  * ci: add cachix workflow (#740)
+  * refactor: prefer `Display` over `ToString` (#734)
+  * perf: prefer `raw_get()` and `raw_set()`
+  * feat: support `is` rule for `[icon]` (#720)
+  * fix: initialize logs right after configurations (#708)
+  * refactor: new `yazi-boot` crate (#728)
+  * feat: add `idx` field to the file API
+  * fix: skip when the mime-type cannot match due to file permissions (#725)
+  * fix: rendering fails when no file type style is matched (#721)
+  * feat: better accessibility (#719)
+  * feat: add csharp, kdl and nu icons (#711)
+  * perf: cache loaded plugins (#710)
+  * fix: ignore further classified mime-types (#707)
+  * feat: `state` now accepts a name for the bucket
+  * fix: allow running `ya.sync` in a sync plugin call (#702)
+  * fix: `any_file` and `any_dir` should check `is_folder`
+  * docs: move image preview details to the website
+  * feat: cross-directory selection (#693)
+  * docs: Yazi must have a duck logo in README (#691)
+  * feat: nested selection conflict detection (#689)
+  * fix: if block in paste command was wrong
+  * refactor: using definite patterns to simplify keybindings (#690)
+  * feat: add a new option `--hovered` to the `open` command allowing users to only open the currently hovered file (#687)
+  * feat: add icons for Scala, Elm and Java (.jar & .class)
+  * feat: add counter component to the header for displaying currently yanked/selected items (#646)
+  * feat: add new file marked state (#682)
+  * feat: expose selected/yanked files as API (#674)
+  * feat: add color to icons (#683)
+  * feat: add new `scrolloff` option to `[manager]` (#679)
+  * feat: add `prepend_rules` and `append_rules` for `[icon]` (#670)
+  * fix: allow access to the current tab via `tabs` for consistency
+  * feat: Vim-like notification (#659)
+  * refactor: tab-specific selection (#653)
+  * feat: enable the ability to sort the which key (#662)
+  * ci: add clippy/rustfmt workflow (#663)
+  * feat: add `<Delete>` to `[input]` keymap (#665)
+  * feat: add `<Home>` and `<End>` to `[input]` keymap
+  * feat: calling sync functions within the async plugin (#649)
+  * feat: merge wildcard preloader and previewer rules via `append_preloaders` and `append_previewers`
+  * fix: initialize `window` in `Folder::make` for folder preview
+  * fix: do not use jemalloc on macOS and Windows
+  * feat: allows access to complete app data for all tabs (#644)
+  * perf: cheaper sync context initialization (#643)
+
+-------------------------------------------------------------------
 Wed Feb 07 14:25:50 UTC 2024 - xtexchooser@duck.com
 
 - Update to version 0.2.3:

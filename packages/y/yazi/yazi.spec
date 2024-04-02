@@ -17,7 +17,7 @@
 
 
 Name:           yazi
-Version:        0.2.3
+Version:        0.2.4
 Release:        0
 Summary:        Blazing fast terminal file manager written in Rust, based on async I/O
 License:        MIT
@@ -36,13 +36,12 @@ BuildRequires:  lua54-devel
 # Tested with rustc 1.75.0 (82e1608df 2023-12-21) by xtexChooser
 %global build_rustflags %build_rustflags -C debuginfo=0
 
-# Suggests:       nerd-fonts
 Suggests:       ffmpegthumbnailer
 Suggests:       unar
 Suggests:       jq
 Suggests:       poppler
 Suggests:       fd
-Suggests:       rg
+Suggests:       ripgrep
 Suggests:       fzf
 Suggests:       zoxide
 
@@ -96,13 +95,15 @@ The official zsh completion script for %{name}.
 
 %build
 export YAZI_GEN_COMPLETIONS=true
+export VERGEN_GIT_SHA='OpenSUSE'
 %{cargo_build}
 
 %install
+export VERGEN_GIT_SHA='OpenSUSE'
 %{cargo_install -p yazi-fm}
-install -Dm 644 yazi-config/completions/yazi.bash %{buildroot}%{_datadir}/bash-completion/completions/yazi
-install -Dm 644 yazi-config/completions/yazi.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/yazi.fish
-install -Dm 644 yazi-config/completions/_yazi %{buildroot}%{_datadir}/zsh/site-functions/_yazi
+install -Dm 644 yazi-boot/completions/yazi.bash %{buildroot}%{_datadir}/bash-completion/completions/yazi
+install -Dm 644 yazi-boot/completions/yazi.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/yazi.fish
+install -Dm 644 yazi-boot/completions/_yazi %{buildroot}%{_datadir}/zsh/site-functions/_yazi
 
 %check
 %{cargo_test}

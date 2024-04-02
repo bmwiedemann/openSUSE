@@ -46,4 +46,41 @@ Changes from last request:
   * feat: customizing the number of columns of &quot;which key&quot; component (#571)</comment>
     <requestid>1144959</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>750902f47208580e4a9053bdf1570737</srcmd5>
+    <version>0.2.4</version>
+    <time>1712068877</time>
+    <user>anag+factory</user>
+    <comment>- Fix ripgrep depends
+
+- Lock dependencies from being updated when packaging
+  Updating deps when vendoring causes build errors
+
+- Update to version 0.2.4:
+  * feat: add `--debug` flag to print debug information (#794)
+  * feat: `ya.hide()` plugin API (#792)
+  * feat: truncate path for deeply nested directories (#787)
+  * fix: track the latest file changes for the `selected`, `yanked` state when available (#791)
+  * feat: `cx.yanked` plugin API (#788)
+  * feat: send a foreground notification to the user when the process fails to run (#775)
+  * feat: add `&lt;C-p&gt;` and `&lt;C-n&gt;` to the select component for moving the cursor up/down (#779)
+  * feat: test new color system
+  * feat: `ui.Clear` component for UI plugins (#786)
+  * feat: `ya.notify()` plugin API (#780)
+  * feat: add `parse` method to `Line` element
+  * feat: add `Ctrl-[` as an escape key (#763)
+  * refactor: add new `run` property (#773)
+  * fix: nested conflict detection exception when performing cross-level searches (#769)
+  * feat: add musl linux build targets (#759)
+  * fix: remove redundant check to allow operations on the `shell` command with an empty file list
+  * feat: `ya.input()` plugin API (#762)
+  * feat: support `%0` as the hovered file for Windows (#761)
+  * perf: apply `add_many()`/`remove_many()` to the visual mode items for selection conflict detecting (#758)
+  * feat: allow both '/' and '\' in folder creation (#751)
+  * feat: support `YAZI_FILE_ONE` environment variable for `file(1)` path (#752)
+  * feat: add `prepend_rules` and `append_rules` for `[open]` in `yazi.toml` (#754)
+  * feat: switch to inline images protocol for VSCode, Tabby, and Hyper
+  * feat: add a new `[notify]` section to the `theme.toml` to configure the `notify` component's style (#749)</comment>
+    <requestid>1163741</requestid>
+  </revision>
 </revisionlist>
