@@ -1,5 +1,5 @@
 #
-# spec file for package rust1.76
+# spec file for package rust1.77
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019 Luke Jones, luke@ljones.dev
@@ -29,7 +29,7 @@
 #
 # ⚠️   11 or greater is required for a number of linker flags to be supported in sle.
 #
-%global gcc_version 12
+%global gcc_version 13
 %endif
 
 #KEEP NOSOURCE DEBUGINFO
