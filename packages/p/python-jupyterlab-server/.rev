@@ -112,4 +112,13 @@
   longer supported since ipython 8.19 (through ipykernel)</comment>
     <requestid>1155876</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f19ac588b6d144d664879e39424330ff</srcmd5>
+    <version>2.25.4</version>
+    <time>1712068838</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.25.4
+  * Maintenance and upkeep improvements</comment>
+    <requestid>1163577</requestid>
+  </revision>
 </revisionlist>
