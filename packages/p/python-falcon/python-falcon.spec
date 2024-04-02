@@ -22,11 +22,12 @@ Version:        3.1.3
 Release:        0
 Summary:        A web framework for building APIs and app backends
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            http://falconframework.org
 Source:         https://files.pythonhosted.org/packages/source/f/falcon/falcon-%{version}.tar.gz
 # github pygments style is not available
 Patch0:         python-falcon-sphinx-pygments-style.patch
+# PATCH-FIX-UPSTREAM Based on gh#falconry/falcon#2216
+Patch1:         support-new-uvicorn.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module ddt}
@@ -63,7 +64,6 @@ BuildArch:      noarch
 
 %package -n %{name}-doc
 Summary:        Documentation files for %{name}
-Group:          Documentation/HTML
 Provides:       %{python_module falcon-doc = %{version}}
 
 %description
@@ -103,13 +103,7 @@ cp -ar docs/_build/html examples %{buildroot}%{_defaultdocdir}/%{name}-doc/
 
 %check
 export LANG=en_US.UTF8
-%{python_expand #
-if [ %{$python_version_nodots} -lt 310 ]; then
-  $python_donttest=("--ignore" "tests/asgi")
-fi
-}
-
-%pytest "${$python_donttest[@]}" tests
+%pytest tests
 
 %post
 %{python_install_alternative falcon-bench falcon-inspect-app falcon-print-routes}

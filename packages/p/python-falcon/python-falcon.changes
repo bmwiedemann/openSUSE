@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  2 01:45:24 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove skipping asgi for Python 3.9.
+- Add patch support-new-uvicorn.patch:
+  * Support new uvicorn, which now propagates its exit code.
+
+-------------------------------------------------------------------
 Tue Mar 19 18:32:56 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Ignore "tests/asgi" for python 3.9, some ws tests stalls with this
