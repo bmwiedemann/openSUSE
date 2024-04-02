@@ -88,4 +88,14 @@
     <comment></comment>
     <requestid>1109013</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6a984d2fbfac39e947bc38b4999620cf</srcmd5>
+    <version>4.0.7</version>
+    <time>1712069066</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.7.
+- add fix-upstream-test-case.patch for fixing an issue with  missing pykeepass.kdbx_parsing
+</comment>
+    <requestid>1164126</requestid>
+  </revision>
 </revisionlist>

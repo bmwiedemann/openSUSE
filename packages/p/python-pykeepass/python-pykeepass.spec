@@ -1,7 +1,7 @@
 #
 # spec file for package python-pykeepass
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,17 @@
 
 
 Name:           python-pykeepass
-Version:        4.0.6
+Version:        4.0.7
 Release:        0
 Summary:        Low-level library to interact with keepass databases
 License:        GPL-3.0-only
 URL:            https://github.com/libkeepass/pykeepass
 Source:         https://github.com/libkeepass/pykeepass/archive/refs/tags/v%{version}.tar.gz#/pykeepass-%{version}.tar.gz
+#Patch-Upstream: One test asks for module pykeepass.kdbx_parsing, which doesn't exist yet
+Patch0:         https://github.com/libkeepass/pykeepass/commit/4c8a1cc358e6ba24d9cb598963229f4999d6c70b.patch#/fix-upstream-test-case.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pyotp}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -33,7 +36,6 @@ Requires:       python-argon2-cffi >= 20.1.0
 Requires:       python-construct >= 2.10.54
 Requires:       python-lxml >= 4.6.1
 Requires:       python-pycryptodomex >= 3.10.1
-Requires:       python-python-dateutil
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module argon2-cffi >= 20.1.0}
@@ -41,7 +43,6 @@ BuildRequires:  %{python_module construct >= 2.10.54}
 BuildRequires:  %{python_module lxml >= 4.6.1}
 BuildRequires:  %{python_module pycryptodomex >= 3.10.1}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil}
 # /SECTION
 %python_subpackages
 

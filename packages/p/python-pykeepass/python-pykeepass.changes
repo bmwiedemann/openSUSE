@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 27 06:34:37 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- Update to 4.0.7:
+  * PyKeePass has decrypt kwarg for accessing header info
+  * added Entry.index and Entry.move for moving entries
+  * added Entry.autotype_window setter
+  * allow filename/keyfile to be file-like objects
+  * drop dateutil dependency
+  * switch to pyproject.toml
+- add fix-upstream-test-case.patch for fixing an issue with
+  missing pykeepass.kdbx_parsing
+
+-------------------------------------------------------------------
 Tue Sep  5 04:58:15 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.0.6:
