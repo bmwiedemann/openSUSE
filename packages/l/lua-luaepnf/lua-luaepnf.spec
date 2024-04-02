@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package lua-luaepnf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,12 @@ Summary:        Extended PEG Notation Format (easy grammars for LPeg)
 License:        MIT
 Group:          Development/Languages/Other
 URL:            https://github.com/siffiejoe/lua-luaepnf
-Source:         lua-%{mod_name}-%{version}.tar.xz
-BuildRequires:  lua-macros
-BuildRequires:  %{flavor}-luarocks
+Source:         lua-%{mod_name}-%{version}.tar.zst
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-lpeg
+BuildRequires:  %{flavor}-luarocks
+BuildRequires:  lua-macros
+BuildRequires:  zstd
 %lua_provides
 Requires:       %{flavor}
 Requires:       %{flavor}-lpeg
