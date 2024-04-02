@@ -443,4 +443,13 @@
 - Skip testing python39: no longer supported since ipython 8.19</comment>
     <requestid>1156358</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>49fc0950fcbaee60849322f1aff4a0d3</srcmd5>
+    <version>7.16.3</version>
+    <time>1712068841</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.16.3
+  * Maintenance and upkeep improvements</comment>
+    <requestid>1163580</requestid>
+  </revision>
 </revisionlist>

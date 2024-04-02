@@ -31,9 +31,9 @@
 %bcond_with libalternatives
 %endif
 # X.X.0 gets abbreviated by pythondistdeps
-%define shortversion 7.16.2
+%define shortversion 7.16.3
 Name:           python-nbconvert%{psuffix}
-Version:        7.16.2
+Version:        7.16.3
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause AND MIT
@@ -61,7 +61,7 @@ Requires:       python-tinycss2
 Requires:       python-traitlets >= 5.1
 Requires:       (python-bleach without python-bleach = 5.0.0)
 Requires:       (python-mistune >= 2.0.3 with python-mistune < 4)
-Recommends:     pandoc
+Recommends:     pandoc >= 2.9.2
 Recommends:     python-tornado >= 6.1
 Suggests:       %{name}-latex
 Suggests:       python-qtwebengine-qt5 >= 5.15
@@ -83,7 +83,7 @@ BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipywidgets >= 7.5}
 BuildRequires:  %{python_module nbconvert = %{version}}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 7}
 %endif
 %python_subpackages
 
