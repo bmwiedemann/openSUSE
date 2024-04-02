@@ -25,6 +25,7 @@ Group:          System/X11/Utilities
 URL:            https://gitlab.com/nick87720z/tint2
 Source0:        https://gitlab.com/nick87720z/%{name}/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 Source1:        tint2conf.1
+Patch0:         glib.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
@@ -52,7 +53,7 @@ specifically made for Openbox3 but should also work with other window managers.
 %lang_package
 
 %prep
-%autosetup -n %{name}-v%{version}
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
 %cmake -DCMAKE_INSTALL_DOCDIR=%{_defaultdocdir}/%{name}

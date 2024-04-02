@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 29 17:09:32 UTC 2024 - Christian Ludwig <suse_idp@exomail.to>
+
+- Added glib.patch:
+  Fix segfault of tint2 with new version of glib2.
+  See https://gitlab.com/nick87720z/tint2/-/issues/4
+  
+-------------------------------------------------------------------
 Fri Feb 23 08:44:18 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 17.1.3
