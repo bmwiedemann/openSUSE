@@ -7,4 +7,25 @@
     <comment>new dependency for jupyter-collaboration</comment>
     <requestid>1140722</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>58c8e1b66ff6edc82a7e801c6e8525a8</srcmd5>
+    <version>0.8.17</version>
+    <time>1712068847</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.8.17
+  * Update yrs 0.18.2 by @davidbrochart in #92
+- Releases 0.8.7 to 0.8.16
+  * Export Subscription by @davidbrochart in #90
+  * Fix possibly undefined _subscriptions by @davidbrochart in #88
+  * Remove warning about project not ready for production by
+    @davidbrochart in #82
+  * Keep subscription references by @davidbrochart in #85
+  * Fix doc observe by @davidbrochart in #87
+  * Improve Doc.get return value type by @davidbrochart in #80
+  * Add Doc.get() by @davidbrochart in #77
+  * Add leading underscore to Python files by @davidbrochart in #75
+  * Add update property to TransactionEvent by @davidbrochart in
+    #72</comment>
+    <requestid>1163596</requestid>
+  </revision>
 </revisionlist>

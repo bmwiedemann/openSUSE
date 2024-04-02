@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycrdt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,23 @@
 
 
 Name:           python-pycrdt
-Version:        0.8.6
+Version:        0.8.17
 Release:        0
 Summary:        Python bindings for Yrs
 License:        MIT
 URL:            https://github.com/jupyter-server/pycrdt
 Source0:        pycrdt-%{version}.tar.xz
 Source1:        vendor.tar.xz
+BuildRequires:  %{python_module maturin >= 1.4.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module maturin >= 1.4.0}
-BuildRequires:  %{python_module pip}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 7.4.2 with %python-pytest < 8}
 #BuildRequires: %%{python_module pydantic >= 2.5.2 with %%python-pydantic < 3}
 BuildRequires:  %{python_module y-py >= 0.7.0~a1}
+BuildRequires:  %{python_module objsize}
 # /SECTION
 %python_subpackages
 

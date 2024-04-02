@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar 29 19:13:03 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.8.17
+  * Update yrs 0.18.2 by @davidbrochart in #92
+- Releases 0.8.7 to 0.8.16
+  * Export Subscription by @davidbrochart in #90
+  * Fix possibly undefined _subscriptions by @davidbrochart in #88
+  * Remove warning about project not ready for production by
+    @davidbrochart in #82
+  * Keep subscription references by @davidbrochart in #85
+  * Fix doc observe by @davidbrochart in #87
+  * Improve Doc.get return value type by @davidbrochart in #80
+  * Add Doc.get() by @davidbrochart in #77
+  * Add leading underscore to Python files by @davidbrochart in #75
+  * Add update property to TransactionEvent by @davidbrochart in
+    #72
+
+-------------------------------------------------------------------
 Mon Jan 22 18:40:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.8.6
