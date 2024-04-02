@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 31 08:55:51 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- raft 0.22.1:
+  * fix usages of uninitialized memory
+  * fix double-free of entries batch
+  * updates to documentation and tests
+
+-------------------------------------------------------------------
 Tue Feb 20 21:17:16 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - raft 0.22.0 - new upstream https://github.com/cowsql/raft

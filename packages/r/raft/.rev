@@ -184,4 +184,12 @@
 drop-in replacement of canonical/raft, no longer used by dqlite but will be used by cowsql</comment>
     <requestid>1149173</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3cfa3d6c3710fa456c92f9525ebd024a</srcmd5>
+    <version>0.22.1</version>
+    <time>1712068976</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1163772</requestid>
+  </revision>
 </revisionlist>

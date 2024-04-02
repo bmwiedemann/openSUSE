@@ -19,7 +19,7 @@
 
 %define raft_sover 0
 Name:           raft
-Version:        0.22.0
+Version:        0.22.1
 Release:        0
 Summary:        Asynchronous C implementation of the Raft consensus protocol
 License:        LGPL-3.0-only WITH LGPL-3.0-linking-exception
@@ -81,6 +81,9 @@ autoreconf -fiv
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
+
+%check
+%make_build check
 
 %ldconfig_scriptlets -n libraft%{raft_sover}
 
