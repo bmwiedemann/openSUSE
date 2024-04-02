@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 30 10:30:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.26.1:
+  * Does not start keyboard manager if there is no tty
+  * Change menu information text to dim
+  * Handle --no-build and --watch args
+  * build(deps): bump github.com/opencontainers/image-spec
+  * Unwrap error message.
+  * Include error message in pull warning/errors
+
+-------------------------------------------------------------------
 Sat Mar 23 10:34:25 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.26.0:
