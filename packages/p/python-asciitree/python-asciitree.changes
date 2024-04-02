@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 29 14:18:47 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Nov 23 23:06:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - The tests need pytest for discovery 
