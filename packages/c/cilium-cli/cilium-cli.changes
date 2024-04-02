@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sat Mar 30 10:36:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- rename executable to 'cilium' to match upstream docs
+  * keep a link to `cilium-cli` around for backwards compatibility
+- add completion subpackages
+- Update to version 0.16.4:
+  * Prepare for v0.16.4 release
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.57.1
+  * helm: fix KPR autodetection value
+  * errors: add [no-error-logs] exception for issue caused by fqdn
+    bug.
+  * connectivity: add support for regex based log exceptions.
+  * chore(deps): update dependency cilium/cilium to v1.15.3
+  * refactor: Remove unused constants in defaults.go.
+  * refactor: Move default Helm release name to sysdump package.
+  * style: Reorganize parameters struct to enhance readability.
+  * fix: Add WaitDuration from defaults for hubble enable|disable
+    for cilium install|uninstall --wait.
+  * feat: Add helmReleaseName to Hubble uninstall pre-phase of the
+    core uninstall.
+  * feat: Add helmReleaseName to hubble disable parameters.
+  * style: Improve log message formatting. Make
+    consistent/conventional.
+  * feat: Add customizable Helm release name for Cilium
+  * ci: fix installation on AKS
+  * ci: avoid overlapping pod and service CIDRs on AKS
+  * chore(deps): update docker.io/library/golang:1.22.1-alpine3.19
+    docker digest to 0466223
+  * status: Add --interactive flag
+  * connectivity: explicitly wait for ingress service creation
+  * connectivity: don't pre-populate the ingress service map
+  * renovate:: Pick up github.com/cilium/cilium prereleases
+  * connectivity: fix flow validation with fully-qualified DNS
+    names
+  * Ignore "Unsupported L2 protocol" to known drops
+  * Improve Makefile
+  * defaults: Move Version and HelmRepository from const to var
+  * gha: configure fully-qualified DNS names as external targets
+  * connectivity: configure fully-qualified DNS names as external
+    targets
+  * connectivity: configure Host header for fully-qualified DNS
+    names
+  * connectivity: fix invalid CNP name with fully-qualified DNS
+    names
+  * connectivity: remove domain references from FQDN policy name
+  * chore(deps): update module github.com/docker/docker to
+    v25.0.5+incompatible [security]
+  * fix(deps): update module github.com/prometheus/common to
+    v0.51.0
+  * connectivity: don't hard-code ingress service NodePorts
+  * tests: Add exceptions for error logs check
+  * Update stable release to v0.16.3
+
+-------------------------------------------------------------------
 Tue Mar 19 06:55:32 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.3:
