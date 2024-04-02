@@ -1,0 +1,16 @@
+References: https://github.com/csound/csound/issues/985
+https://bugzilla.opensuse.org/show_bug.cgi?id=45347
+
+Index: csound-6.18.1/util1/CMakeLists.txt
+===================================================================
+--- csound-6.18.1.orig/util1/CMakeLists.txt
++++ csound-6.18.1/util1/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ #extra utilities
+ 
+ make_utility(scsort      sortex/smain.c)
+-make_utility(extract     sortex/xmain.c)
++make_utility(csound-extract     sortex/xmain.c)
+ 
+ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_CLANG OR MSVC)
+     make_utility(cs         csd_util/cs.c)

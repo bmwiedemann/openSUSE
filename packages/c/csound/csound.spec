@@ -2,6 +2,7 @@
 # spec file for package csound
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +19,15 @@
 
 %define py3version %(pkg-config python3 --modversion)
 %define support_fltk 1
-%bcond_with python
-
 %if 0%{?suse_version} > 1500
 %bcond_with java
 %else
 %bcond_with java
 %endif
-
 %define maj 6
 %define min 0
-
+%global luaver %(lua -v | sed -r 's/Lua ([[:digit:]]+\\.[[:digit:]]+).*/\\1/')
+%bcond_with python
 Name:           csound
 Version:        6.18.1
 Release:        0
@@ -37,7 +36,6 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://www.csounds.com
 Source0:        https://github.com/csound/csound/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-#Source0:        %{name}-%{version}.tar.xz
 Source1:        README.SUSE
 Source2:        COPYING_gpl2+.txt
 # Default to using pulseaudio instead of portaudio
@@ -45,6 +43,7 @@ Patch2:         csound-6.08-default-pulse.patch
 # Use xdg-open to open a browser to view the manual
 Patch4:         csound-6.08-xdg-open.patch
 Patch5:         csound-rename-sndinfo.patch
+Patch6:         csound-rename-extract.patch
 BuildRequires:  alsa-devel
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -55,9 +54,6 @@ BuildRequires:  flex
 BuildRequires:  fluidsynth-devel
 BuildRequires:  gcc-c++
 BuildRequires:  jack-devel
-%if %{with java}
-BuildRequires:  java-devel-openjdk
-%endif
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_locale-devel
@@ -68,17 +64,18 @@ BuildRequires:  libsndfile-devel
 BuildRequires:  lua-devel
 BuildRequires:  portaudio-devel
 BuildRequires:  swig
+Recommends:     %{name}-lang
+%if %{with java}
+BuildRequires:  java-devel-openjdk
+%endif
 %if %{with python}
 BuildRequires:  python3-devel
 %endif
-%if %support_fltk
+%if %{support_fltk}
 BuildRequires:  fltk-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 %endif
-Recommends:     %{name}-lang
-
-%global luaver %(lua -v | sed -r 's/Lua ([[:digit:]]+\\.[[:digit:]]+).*/\\1/')
 
 %description
 Csound is a software synthesis program. It is modular and
@@ -86,6 +83,7 @@ supports an unlimited amount of oscillators and filters.
 
 %package -n libcsnd6-%{maj}_%{min}
 Summary:        Computer sound synthesis and composition library
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 
 %description -n libcsnd6-%{maj}_%{min}
@@ -95,6 +93,7 @@ filters.
 
 %package -n libcsound64-%{maj}_%{min}
 Summary:        Computer sound synthesis and composition library
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 
 %description -n libcsound64-%{maj}_%{min}
@@ -104,6 +103,7 @@ filters.
 
 %package java-bindings
 Summary:        Java bindings for the Csound sound synthesis and composition library
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 
 %description java-bindings
@@ -113,6 +113,7 @@ filters.
 
 %package plugins
 Summary:        Plugins for csound
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 
 %description plugins
@@ -120,6 +121,7 @@ Plugins for csound
 
 %package -n python3-csound
 Summary:        Csound opcodes for python
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 
 %description -n python3-csound
@@ -136,12 +138,13 @@ HRTF datafiles and Soundfont for csound
 
 %package devel
 Summary:        Development files for Csound
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
+Requires:       libcsnd6-%{maj}_%{min} = %{version}
+Requires:       libcsound64-%{maj}_%{min} = %{version}
 %if %{with java}
 Requires:       %{name}-java-bindings = %{version}
 %endif
-Requires:       libcsnd6-%{maj}_%{min} = %{version}
-Requires:       libcsound64-%{maj}_%{min} = %{version}
 
 %description devel
 Development files for Csound, a sound synthesis program.
@@ -188,39 +191,41 @@ cp -v OOps/README.md README.OOps
 %fdupes -s %{buildroot}
 %find_lang %{name}%{maj}
 
-%post -n libcsnd6-%{maj}_%{min} -p /sbin/ldconfig
-%postun -n libcsnd6-%{maj}_%{min} -p /sbin/ldconfig
-
-%post -n libcsound64-%{maj}_%{min} -p /sbin/ldconfig
-%postun -n libcsound64-%{maj}_%{min} -p /sbin/ldconfig
-
-%post java-bindings -p /sbin/ldconfig
-%postun java-bindings -p /sbin/ldconfig
+%ldconfig_scriptlets -n libcsnd6-%{maj}_%{min}
+%ldconfig_scriptlets -n libcsound64-%{maj}_%{min}
+%ldconfig_scriptlets java-bindings
 
 %files
 %doc AUTHORS README.md README.SUSE Release_Notes README.OOps
 %license COPYING COPYING_gpl2+.txt COPYING.PostgreSQL
 %{_bindir}/*
+%{_bindir}/csound-extract
 
 %files -n libcsnd6-%{maj}_%{min}
+%license COPYING COPYING_gpl2+.txt COPYING.PostgreSQL
 %{_libdir}/libcsnd6.so.%{maj}.%{min}
 
 %files -n libcsound64-%{maj}_%{min}
+%license COPYING COPYING_gpl2+.txt COPYING.PostgreSQL
 %{_libdir}/libcsound64.so.%{maj}.%{min}
 
 %if %{with java}
 %files java-bindings
+%license COPYING COPYING_gpl2+.txt COPYING.PostgreSQL
 %{_libdir}/lib_jcsound6.so
 %{_libdir}/csnd6.jar
 %endif
 
 %files plugins
+%license COPYING COPYING_gpl2+.txt COPYING.PostgreSQL
 %{_libdir}/csound/
 
 %files samples
+%license COPYING COPYING_gpl2+.txt COPYING.PostgreSQL
 %{_datadir}/samples/
 
 %files -n python3-csound
+%license COPYING COPYING_gpl2+.txt COPYING.PostgreSQL
 %if 0%{?suse_version} > 1500
 %{python_sitearch}/ctcsound.py
 %else
@@ -228,10 +233,12 @@ cp -v OOps/README.md README.OOps
 %endif
 
 %files devel
+%license COPYING COPYING_gpl2+.txt COPYING.PostgreSQL
 %{_includedir}/csound/
 %{_libdir}/libcs*.so
 %{_datadir}/cmake/Csound/
 
 %files lang -f %{name}%{maj}.lang
+%license COPYING COPYING_gpl2+.txt COPYING.PostgreSQL
 
 %changelog
