@@ -363,4 +363,13 @@
   * Fix minor build issue (#374).</comment>
     <requestid>1157079</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>dac2fc1bae5698235997fe1d92b3b035</srcmd5>
+    <version>4.2.3</version>
+    <time>1712068665</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.2.3:
+  * Added a missing check in the JPC codec (#381).</comment>
+    <requestid>1163808</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 31 20:57:24 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.2.3:
+  * Added a missing check in the JPC codec (#381).
+
+-------------------------------------------------------------------
 Tue Mar 12 05:12:23 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.2.2:
