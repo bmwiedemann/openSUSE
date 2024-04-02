@@ -745,4 +745,13 @@
     <comment>Sync changelog with Leap/SLE.</comment>
     <requestid>1131258</requestid>
   </revision>
+  <revision rev="93" vrev="4">
+    <srcmd5>2d1aab89e5d3e4e9f1ae19799a4acebd</srcmd5>
+    <version>1.10.2</version>
+    <time>1712068792</time>
+    <user>anag+factory</user>
+    <comment>- Add missing supplements(bsc#1220391):
+  + NMA subpackage: Main package and gnome-control-center (forwarded request 1163467 from JonathanKang)</comment>
+    <requestid>1163502</requestid>
+  </revision>
 </revisionlist>
