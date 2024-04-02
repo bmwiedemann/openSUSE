@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Mar 30 10:11:37 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.7:
+  * What's Changed
+    - [v1.28] Bump k8s dependencies to support k8s v1.28 by
+      @chiukapoor in #3472
+    - [v1.28] go generate by @chiukapoor in #3507
+    - [release/v1.5] go generate by @github-actions in #3513
+    - fix the bug that delete_local_data is dropped by @jiaqiluo in
+      #3511
+    - [release/v1.5] go generate by @github-actions in #3517
+    - [release/v1.5] go generate by @github-actions in #3530
+    - Update README with latest versions by @thatmidwesterncoder in
+      #3528
+    - Backport v1.5.6 changes into the 1.5.7 release candidate line
+      by @thatmidwesterncoder in #3526
+    - [release/v1.5] go generate by @github-actions in #3533
+    - Restart kube-apiserver in all CP nodes after changing the Pod
+      Security Admission Configuration by @jiaqiluo in #3531
+    - Revert "Merge pull request #3531 from
+      jiaqiluo/fix-kube-apiserver" by @jiaqiluo in #3537
+    - [release/v1.5] go generate by @github-actions in #3541
+    - [v1.5] switch KDM branch to release-v2.8 by @jiaqiluo in
+      #3542
+  * Kubernetes version
+    - v1.28.7-rancher1-1 (default)
+    - v1.27.11-rancher1-1
+    - v1.26.14-rancher1-1
+    - v1.25.16-rancher2-3
+
+-------------------------------------------------------------------
 Sat Mar 16 18:38:54 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.5.6:
