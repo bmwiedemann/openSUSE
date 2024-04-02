@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 30 10:26:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.5:
+  * fix cosign (#17656)
+  * Bump version to 2.10.5 (#17654)
+  * Merge pull request from GHSA-jhwx-mhww-rgc3
+  * fix: elements should be optional (#17424) (#17510)
+
+-------------------------------------------------------------------
 Mon Mar 18 09:46:03 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.10.4:
