@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 29 13:57:43 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Fix build error in Leap 15.6.
+
+-------------------------------------------------------------------
 Fri Mar  8 14:09:30 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip failing tests with dummy video driver on SDL2

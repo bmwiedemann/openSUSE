@@ -773,4 +773,12 @@
     * Add pygame-pr4169-videodummytests.patch gh#pygame/pygame#4169</comment>
     <requestid>1157037</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>9b8affc78b655cb33cbafa2024ec3eca</srcmd5>
+    <version>2.5.2</version>
+    <time>1712069035</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1164049</requestid>
+  </revision>
 </revisionlist>

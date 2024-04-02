@@ -55,6 +55,7 @@ BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(x11)
 Requires:       fontconfig
 Requires:       python-numpy
