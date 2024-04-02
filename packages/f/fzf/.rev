@@ -721,4 +721,12 @@ varienvironment able.
     <comment></comment>
     <requestid>1158763</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>6d2588a101c33f60d2614544e1ec44fc</srcmd5>
+    <version>0.48.1</version>
+    <time>1712069192</time>
+    <user>anag+factory</user>
+    <comment>- Revendor</comment>
+    <requestid>1163994</requestid>
+  </revision>
 </revisionlist>
