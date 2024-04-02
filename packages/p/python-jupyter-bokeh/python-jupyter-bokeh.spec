@@ -17,10 +17,10 @@
 
 
 %define skip_python39 1
-# .0 s get truncated 
-%define distver 4
+# .0 s get truncated
+%define distver 4.0.1
 Name:           python-jupyter-bokeh
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        A Jupyter extension for rendering Bokeh content
 License:        MIT
@@ -34,9 +34,9 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
+Requires:       jupyter-bokeh = %{version}-%{release}
 Requires:       (python-bokeh >= 3 with python-bokeh < 4)
 Requires:       (python-ipywidgets >= 8 with python-ipywidgets < 9)
-Requires:       jupyter-bokeh = %{version}-%{release}
 Provides:       python-jupyter_bokeh = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test requirements

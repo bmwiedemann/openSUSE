@@ -7,4 +7,13 @@
     <comment>Supersede: distver is truncated </comment>
     <requestid>1155574</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5f608cf08d985a978ab33aadb6734125</srcmd5>
+    <version>4.0.1</version>
+    <time>1712068834</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.1
+  * Javascript update and conda bump gh#bokeh/jupyter_bokeh#200</comment>
+    <requestid>1163568</requestid>
+  </revision>
 </revisionlist>
