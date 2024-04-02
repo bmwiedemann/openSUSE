@@ -18,12 +18,10 @@
 
 %define lname libcowsql0
 Name:           cowsql
-Version:        1.15.4
+Version:        1.15.6
 Release:        0
 Summary:        Embeddable, replicated and fault tolerant SQL engine
 License:        LGPL-3.0-only WITH LGPL-3.0-linking-exception
-# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
-Group:          https://github.com/cowsql/cowsql
 URL:            https://github.com/cowsql/cowsql
 Source:         https://github.com/cowsql/cowsql/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
@@ -86,6 +84,9 @@ autoreconf -fiv
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %ldconfig_scriptlets -n %{lname}
+
+%check
+%make_build check
 
 %files devel
 %license LICENSE

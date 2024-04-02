@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 31 09:05:19 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.15.6:
+  * leader: Fix double-frees
+  * More raft protocol errors are translated into sqlite errors
+  * Improved handling of SQLITE_DIRECT_OVERFLOW_READ
+
+-------------------------------------------------------------------
 Tue Feb 20 21:39:39 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cowsql 1.15.4, fork of canonical/dqlite, working with cowsql/raft
