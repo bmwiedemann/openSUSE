@@ -1,4 +1,146 @@
 -------------------------------------------------------------------
+Sat Mar 30 17:16:29 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.2.0:
+  * Improved Access Requests UI
+    The access requests page of the web UI will be backed by a
+    paginated API, ensuring fast load times even on clusters with
+    many access requests.
+    Additionally, the UI allows you to search for access requests,
+    sort them based on various attributes, and includes several new
+    filtering options.
+  * Zero-downtime web asset rollout
+    Teleport 15.2 changes the way that web assets are served and
+    cached, which will allow multiple compatible versions of the
+    Teleport Proxy to run behind the same load balancer.
+  * Workload Identity MVP
+    With Teleport 15.2, Machine ID can bootstrap and issue identity
+    to services across multiple computing environments and
+    organizational boundaries. Workload Identity issues
+    SPIFFE-compatible x509 certificates that can be used for mTLS
+    between services.
+  * Support for Kubernetes 1.29+
+    The Kubernetes project is deprecating the SPDY protocol for
+    streaming commands (kubectl exec, kubectl port-forward, etc)
+    and replacing it with a new websocket-based subprotocol.
+    Teleport 15.2.0 will support the new protocol to ensure
+    compatibility with newer Kubernetes clusters.
+  * Automatic database access requests
+    Both tsh db connect and tsh proxy db will offer the option to
+    submit an access request if the user attempts to connect to a
+    database that they don't already have access to.
+  * GCP console access via Workforce Identity Federation
+    Teleport administrators will be able to setup access to GCP web
+    console through Workforce Identity Federation using Teleport as
+    a SAML identity provider.
+  * IaC support for OpenSSH nodes
+    Users will be able to register OpenSSH nodes in the cluster
+    using Terraform and Kubernetes Operator.
+  * Access requests start time
+    Users submitting access requests via web UI will be able to
+    request specific access start time up to a week in advance.
+  * Terraform and Operator support for agentless SSH nodes
+    The Teleport Terraform provider and Kubernetes operator now
+    support declaring agentless OpenSSH and OpenSSH EC2 ICE
+    servers. You can follow this guide to register OpenSSH agents
+    with infrastructure as code.
+    Setting up EC2 ICE automatic discovery with IaC will come in a
+    future update.
+  * Operator and CRDs can be deployed separately
+    The teleport-operator and teleport-cluster charts now support
+    deploying only the CRD, the CRD and the operator, or only the
+    operator.
+    From the teleport-cluster Helm chart:
+      operator:
+        enabled: true|false
+        installCRDs: always|never|dynamic
+    From the teleport-operator Helm chart:
+      enabled: true|false
+      installCRDs: always|never|dynamic
+    In dynamic mode (by default), the chart will install CRDs if
+    the operator is enabled, but will not remove the CRDs if you
+    temporarily disable the operator.
+  * Operator now propagates labels
+    Kubernetes CR labels are now copied to the Teleport resource
+    when applicable.
+    This allows you to configure RBAC for operator-created
+    resources, and to filter Teleport resources more easily.
+  * Terraform provider no longer forces resource re-creation on
+    version change
+    Teleport v15 introduced two Terraform provider changes:
+    - setting the resource version is now mandatory
+    - a resource version change triggers the resource re-creation
+      to ensure defaults were correctly set
+    The second change was too disruptive, especially for roles, as
+    they cannot be deleted if a user or an access list references
+    them. Teleport 15.2 lifts this restriction and allows version
+    change without forcing the resource deletion.
+    Another change to ensure resource defaults are correctly set
+    during version upgrades will happen in v16.
+  * Other improvements and fixes
+    - Fixed "Invalid URI" error in Teleport Connect when starting
+      mongosh from database connection tab. #40033
+    - Adds support for easily exporting the SPIFFE CA using tls
+      auth export --type tls-spiffe and the /webapi/auth/export
+      endpoint. #40007
+    - Update Rust to 1.77.0, enable RDP font smoothing. #39995
+    - The role, server and token Teleport operator CRs now display
+      additional information when listed with kubectl get. #39993
+    - Improve performance of filtering resources via predicate
+      expressions. #39972
+    - Fixes a bug that prevented CA import when a SPIFFE CA was
+      present. #39958
+    - Fix a verbosity issue that caused the
+      teleport-kube-agent-updater to output debug logs by default.
+      #39953
+    - Reduce default Jamf inventory page size, allow custom values
+      to be provided. #39933
+    - AWS IAM Roles are now filterable in the web UI when launching
+      a console app. #39911
+    - The teleport-cluster Helm chart now supports using the Amazon
+      Athena event backend. #39907
+    - Correctly show the users allowed logins when accessing leaf
+      resources via the root cluster web UI. #39887
+    - Improve performance of resource filtering via labels and
+      fuzzy search. #39791
+    - Enforce optimistic locking for AuthPreferences,
+      ClusterNetworkingConfig, SessionRecordingConfig. #39785
+    - Fix potential issue with some resources expiry being set to
+      01/01/1970 instead of never. #39773
+    - Update default access request TTLs to 1 week. #39509
+    - Fixed an issue where creating or updating an access list with
+      Admin MFA would fail in the WebUI. #3827
+
+-------------------------------------------------------------------
+Fri Mar 29 19:31:04 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.1.10:
+  * Fixed possible phishing links which could result in code
+    execution with install and join scripts. #39837
+  * Fixed MFA checks not being prompted when joining a session.
+    #39814
+  * Added support for Kubernetes websocket streaming subprotocol v5
+    connections. #39770
+  * Fixed a regression causing MFA prompts to not show up in
+    Teleport Connect. #39739
+  * Fixed broken SSO login landing page on certain versions of
+    Google Chrome. #39723
+  * Teleport Connect now shows specific error messages instead of
+    generic "access denied". #39720
+  * Added audit events for database auto user provisioning. #39665
+  * Updated Electron to v29 in Teleport Connect. #39657
+  * Added automatic access request support for tsh db login, tsh db
+    connect and tsh proxy db. #39617
+  * Fixed a bug in Teleport Cloud causing the hosted ServiceNow
+    plugin to crash when setting up the integration. #39603
+  * Fixed a bug of the discovery script failing when jq was not
+    installed. #39599
+  * Ensured that audit events are emitted whenever the
+    authentication preferences, cluster networking config, or
+    session recording config are modified. #39522
+  * Database object labels will now support templates. #39496
+
+-------------------------------------------------------------------
 Tue Mar 19 20:27:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 15.1.9:
