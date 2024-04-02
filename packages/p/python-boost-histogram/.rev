@@ -51,4 +51,18 @@
     <comment></comment>
     <requestid>1117669</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cbcf8a0a1f51ed5ca1b254aef27e9932</srcmd5>
+    <version>1.4.1</version>
+    <time>1712069049</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.1:
+  * NumPy 2 support.
+  * 32-bit Windows Python 3.12 wheel added (matching NumPy).
+  * Support filling Integer axes with unsigned integers
+  * Avoid triggering NumPy 2 dev release install on Python 3.12.
+
+- Update to 1.1.0:</comment>
+    <requestid>1164091</requestid>
+  </revision>
 </revisionlist>
