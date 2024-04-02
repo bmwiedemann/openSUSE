@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Tue Apr  2 08:55:01 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.5.2
+  * Changed: Qt6/KF6-only now
+  * Changed: register app at user session D-Bus (new dep: KF6DBusAddons)
+  * Changed: use KCrash (new dep: KF6Crash)
+
+-------------------------------------------------------------------
+Tue Nov 14 18:57:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init skladnik

@@ -1,0 +1,13 @@
+<package name="skladnik" project="openSUSE:Factory">
+  <title>Sokoban-like game</title>
+  <description>Skladnik is an implementation of the Japanese warehouse keeper game “sokoban”.
+
+The idea is that you are a warehouse keeper trying to push crates to their proper
+locations in a warehouse. The problem is that you cannot pull the crates or step
+over them. If you are not careful, some of the crates can get stuck in wrong
+places and/or block your way.
+
+</description>
+  <devel project="KDE:Extra" package="skladnik"/>
+  <url>https://apps.kde.org/skladnik</url>
+</package>
