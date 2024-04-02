@@ -1,0 +1,7 @@
+<package name="gnunet" project="openSUSE:Factory">
+  <title>Security focused Peer-to-Peer Framework</title>
+  <description>GNUnet is peer-to-peer framework focusing on security. The first and primary application for GNUnet is anonymous file-sharing. GNUnet is currently developed by a worldwide group of independent free software developers.
+
+GNUnet is a part of the GNU project (http://www.gnu.org/).</description>
+  <devel project="filesharing" package="gnunet"/>
+</package>
