@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package matrix-synapse
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -159,12 +159,12 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.98.0
+Version:        1.103.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
-License:        Apache-2.0
+License:        AGPL-3.0-or-later
 Group:          Productivity/Networking/Instant Messenger
-URL:            https://github.com/matrix-org/synapse
+URL:            https://github.com/element-hq/synapse
 Source0:        %{pkgname}-%{version}.tar.xz
 Source1:        vendor.tar.zst
 Source47:       matrix-synapse-user.conf
@@ -183,6 +183,7 @@ Patch1:         bump-dependencies.patch
 Source100:      10719-Fix-instert-of-duplicate-key-into-event_json.patch
 BuildRequires:  %{use_python}-base >= 3.8
 BuildRequires:  %{use_python}-pip
+BuildRequires:  %{use_python}-poetry-core >= 1.1.0
 BuildRequires:  %{use_python}-setuptools
 BuildRequires:  %{use_python}-wheel
 BuildRequires:  cargo
@@ -192,7 +193,6 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  unzip
-BuildRequires:  (%{use_python}-poetry-core >= 1.1.0 with %{use_python}-poetry-core =< 1.8.1)
 %{?systemd_ordering}
 %{sysusers_requires}
 %requires_peq   %{use_python}-base

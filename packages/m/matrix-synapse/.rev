@@ -888,4 +888,12 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment></comment>
     <requestid>1155032</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>2ef0b4b64b2f269ef886631a12ef23fd</srcmd5>
+    <version>1.103.0</version>
+    <time>1712069008</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1163981</requestid>
+  </revision>
 </revisionlist>

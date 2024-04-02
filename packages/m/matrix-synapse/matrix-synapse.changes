@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Mar 27 12:14:05 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Moved to Element maintained fork as matrix has archived their version
+- Update to 1.103.0
+  - Features
+    - Add a new List Accounts v3 Admin API with improved deactivated
+      user filtering capabilities. (#16874)
+    - Include Retry-After header by default per MSC4041. Contributed
+      by @clokep. (#16947)
+  - Bugfixes
+    - Fix joining remote rooms when a module uses the on_new_event
+      callback. This callback may now pass partial state events
+      instead of the full state for remote rooms. Introduced in
+      v1.76.0. (#16973)
+    - Fix performance issue when joining very large rooms that can
+      cause the server to lock up. Introduced in v1.100.0.
+      Contributed by @ggogel. (#16968)
+  - Improved Documentation
+    - Add HAProxy example for single port operation to reverse proxy
+      documentation. Contributed by Georg Pfuetzenreuter (@tacerus).
+      (#16768)
+    - Improve the documentation around running Complement tests with
+      new configuration parameters. (#16946)
+    - Add docs on upgrading from a very old version. (#16951)
+
+For changes in older version since 1.98.0, see
+https://github.com/element-hq/synapse/releases
+
+-------------------------------------------------------------------
 Fri Mar  1 23:54:12 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - bump setuptools-rust to 1.9.0
