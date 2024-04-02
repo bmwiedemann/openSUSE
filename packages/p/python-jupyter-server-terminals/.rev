@@ -59,4 +59,13 @@
 - Skip testing on python39</comment>
     <requestid>1155951</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4e0645984bced5f00b581274e6c1e8a9</srcmd5>
+    <version>0.5.3</version>
+    <time>1712068836</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.5.3
+  * Maintenance and upkeep improvements</comment>
+    <requestid>1163574</requestid>
+  </revision>
 </revisionlist>

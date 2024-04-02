@@ -26,9 +26,9 @@
 %bcond_with test
 %endif
 
-%define distversion 0.5.2
+%define distversion 0.5.3
 Name:           python-jupyter-server-terminals%{psuffix}
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        A Jupyter Server Extension Providing Terminals
 License:        BSD-3-Clause
