@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  1 17:31:28 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.64
+  * Fix issue with casting in C++ environment.
+  * Fix issue with ASCII string upper and lower helpers.
+
+-------------------------------------------------------------------
 Sat Mar 23 06:13:32 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.63
