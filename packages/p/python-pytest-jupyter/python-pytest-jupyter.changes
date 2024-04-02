@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 29 19:05:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.1
+  * Update event loop handling #75 (@blink1073)
+  * Maintenance and upkeep improvements
+
+-------------------------------------------------------------------
 Tue Mar  5 15:20:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Skip python 3.9 flavor: python39-ipython is no longer available.

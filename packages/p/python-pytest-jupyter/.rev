@@ -42,4 +42,14 @@
     <comment></comment>
     <requestid>1155315</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a3164505c3fe74d22e29a3eec88363c8</srcmd5>
+    <version>0.9.1</version>
+    <time>1712068660</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.1
+  * Update event loop handling #75 (@blink1073)
+  * Maintenance and upkeep improvements</comment>
+    <requestid>1163583</requestid>
+  </revision>
 </revisionlist>
