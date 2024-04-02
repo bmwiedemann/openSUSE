@@ -1,0 +1,5 @@
+<package name="gnunet-fuse" project="openSUSE:Factory">
+  <title>GNUnet FUSE interface</title>
+  <description>GNUnet-fuse allows you to mount directories published on GNUnet.</description>
+  <devel project="filesharing" package="gnunet-fuse"/>
+</package>
