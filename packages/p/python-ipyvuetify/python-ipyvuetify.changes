@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 29 17:24:53 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.9.1
+  * fix: dark_effective should always be set, even when dark ==
+    null
+- Release 1.9.0
+  * feat: improve dark detection and add dark_effective (#296)
+  * fix: theme initialisation with Voilà lab template (#196)
+- Add avoidnpm.patch
+
+-------------------------------------------------------------------
 Thu Mar  7 11:02:21 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39: no longer supported since ipython 8.19 (through

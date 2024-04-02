@@ -18,13 +18,15 @@
 
 %define skip_python39 1
 Name:           python-ipyvuetify
-Version:        1.8.10
+Version:        1.9.1
 Release:        0
 Summary:        Jupyter widgets based on vuetify UI components
 License:        MIT
 URL:            https://github.com/mariobuikhuizen/ipyvuetify
 Source0:        https://files.pythonhosted.org/packages/source/i/ipyvuetify/ipyvuetify-%{version}.tar.gz
 Source1:        https://github.com/widgetti/ipyvuetify/raw/v%{version}/examples/Examples.ipynb
+# PATCH-FIX-OPENSUSE avoid-npm.patch code@bnavigator.de
+Patch0:         avoidnpm.patch
 BuildRequires:  %{python_module jupyter-packaging >= 0.7.9}
 BuildRequires:  %{python_module jupyterlab >= 3}
 BuildRequires:  %{python_module pip}
@@ -72,8 +74,10 @@ Jupyter widgets based on vuetify UI components
 This package provides the jupyterlab extension.
 
 %prep
-%setup -q -n ipyvuetify-%{version}
-chmod -x ipyvuetify/labextension/package.json jupyter-vuetify.json README.md
+%autosetup -p1 -n ipyvuetify-%{version}
+chmod -x prefix/share/jupyter/labextensions/jupyter-vuetify/package.json \
+         prefix/etc/nbconfig/notebook.d/jupyter-vuetify.json \
+         README.md
 
 %build
 %pyproject_wheel

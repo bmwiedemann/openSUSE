@@ -59,4 +59,18 @@
   ipyvue)</comment>
     <requestid>1155868</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5634ee7e489106cb4da5eb2f793180a5</srcmd5>
+    <version>1.9.1</version>
+    <time>1712068826</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.9.1
+  * fix: dark_effective should always be set, even when dark ==
+    null
+- Release 1.9.0
+  * feat: improve dark detection and add dark_effective (#296)
+  * fix: theme initialisation with Voilà lab template (#196)
+- Add avoidnpm.patch</comment>
+    <requestid>1163563</requestid>
+  </revision>
 </revisionlist>
