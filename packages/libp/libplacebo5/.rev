@@ -9,4 +9,12 @@
 Required by ffmpeg-6 after https://build.opensuse.org/request/show/1101501 makes it into Factory. Don't merge until the ffmpeg changes are in Factory. </comment>
     <requestid>1101928</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>941ee94fa15d6eab05a90ddc0c402118</srcmd5>
+    <version>5.264.1</version>
+    <time>1712068663</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1163692</requestid>
+  </revision>
 </revisionlist>

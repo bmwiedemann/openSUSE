@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 28 10:22:06 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Add %{?sle15_python_module_pythons} to make libplacebo5 build with
+  python 3.11 on Leap15
+
+-------------------------------------------------------------------
 Wed Aug  2 08:14:00 UTC 2023 - llyyr <llyyr.public@gmail.com>
 
 - Fix libplacebo5-devel and plplay5 conflict with libplacebo-devel

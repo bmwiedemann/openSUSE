@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%{?sle15_python_module_pythons}
 %define libname libplacebo
 %define sover   264
 Name:           libplacebo5
@@ -31,8 +32,8 @@ BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  meson >= 0.63.0
 BuildRequires:  pkgconfig
-BuildRequires:  python3-Jinja2
-BuildRequires:  python3-glad2
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module glad2}
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(dovi)
 BuildRequires:  pkgconfig(glfw3)
