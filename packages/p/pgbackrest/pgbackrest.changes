@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Mar 29 09:05:56 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.51
+  * Bug Fixes:
+    + Skip zero-length files for block incremental delta restore. 
+    + Fix performance regression in storage list. 
+    + Fix progress logging when file size changes during backup. 
+  * Improvements:
+    + Improved support for dual stack connections.
+    + Make meson the primary build system.
+    + Detect files that have not changed during non-delta incremental backup.
+    + Prevent invalid recovery when backup_label removed. 
+    + Improve archive-push WAL segment queue handling. 
+    + Limit resume functionality to full backups. 
+    + Update resume functionality for block incremental. 
+    + Allow --version and --help for version and help. 
+    + Add detailed backtrace to autoconf/make build.
+  * Documentation Improvements:
+    + Update references to recovery.conf. (Reviewed by Stefan Fercot. Suggested by Stephen Frost.)
+
+-------------------------------------------------------------------
 Wed Jan 24 08:00:32 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to version 2.50
