@@ -1,23 +1,55 @@
 -------------------------------------------------------------------
+Mon Apr  1 17:51:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.5.9:
+  Improvements:
+  * Update utf8proc to v2.9.0, supporting Unicode 15.1.
+  * Also use lightweight tags in the Refs line of the diff view. (#1235)
+  * Support %(text) in all views with a text column. (#1275)
+  * Use HTTPS for GitHub clone URLs. (#1310[3])
+  * Move default log view options to tigrc.
+  * Allow to go to stage view without Enter. (#1284)
+  * Add new "prefetch" reference type for refs created by git maintenance
+    (hidden in default config). (#1318)
+  * Show the selected commit in the blame view title window.
+  * Improve the blob view experience.
+  * Clear keybinding from all keymaps (unbind) with bind generic <key> none.
+  Bug fixes:
+  * Fix "dangling pointer" warning. (#1268)
+  * Don't use array size in function arguments. (#1269)
+  * Fix rpmbuild -ta. (#1276)
+  * Initialise struct timezone. (#1291)
+  * Fix NULL dereference at startup. (#1293)
+  * Enforce a blank before view scroll percentage.
+  * Fix refresh-mode periodic not updating branch labels. (#1270)
+  * Fix display non-ascii character. (#1299)
+  * Fix readline echo when stdin is redirected. (#1229)
+  * Fix tig blame --reverse. (#1300)
+  * Fix status view lockup.
+  * Fix untracked changes and chunk staging behaviour in plain stage view.
+  * Reset state variables when selecting a commit with no reference.
+  * Fix parsing of git ls-tree for submodules. (#1282)
+
+-------------------------------------------------------------------
 Mon Feb  6 07:18:45 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.5.8:
   Improvements:
   * Update utf8proc to v2.8.0, supporting Unicode 15.
-  * Support editing from the pager and the log (-p) views. (#1243[1])
+  * Support editing from the pager and the log (-p) views. (#1243)
   * Adjust build for native Apple Silicon.
-  * Autoscroll the pager view while loading. (#1223[2])
-  * Automatically show next diff in the status view. (#413[3], #469[4])
+  * Autoscroll the pager view while loading. (#1223)
+  * Automatically show next diff in the status view. (#413, #469)
   * Replace Unknown author with Not Committed Yet.
-  * Allow use of regular expressions for coloring. (#1249[5])
-  * Add support for option word-diff-regex. (#1252[6])
-  * Include original blob name in temporary filename. (#1254[7])
+  * Allow use of regular expressions for coloring. (#1249)
+  * Add support for option word-diff-regex. (#1252)
+  * Include original blob name in temporary filename. (#1254)
   Bug fixes:
-  * Use %(file_old) for old filename in the blame view. (#1226[8])
-  * Correctly report which version of libncurses was linked. (#1240[9], #1241[10])
-  * Fix stage view closing when holding the ] key. (#1245[11])
+  * Use %(file_old) for old filename in the blame view. (#1226)
+  * Correctly report which version of libncurses was linked. (#1240, #1241])
+  * Fix stage view closing when holding the ] key. (#1245)
   * Make tests work from a path with symlinks.
-  * Fix encoding of very long lines. (#1227[12])
+  * Fix encoding of very long lines. (#1227)
   * Fix diffstat color for tig log -p.
   * Clean IO before closing a view or quitting.
 
