@@ -386,4 +386,13 @@ Update to 5.3.4</comment>
     <comment></comment>
     <requestid>1155313</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>853101cd4d70dd78e38ee622d2d58850</srcmd5>
+    <version>8.6.1</version>
+    <time>1712068657</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.6.1
+  * Update Release Scripts #1016 (@blink1073)</comment>
+    <requestid>1163569</requestid>
+  </revision>
 </revisionlist>
