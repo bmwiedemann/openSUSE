@@ -257,4 +257,20 @@
   validity of the package version number.</comment>
     <requestid>1120632</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8707489929811c3bef772fc3a9112f9d</srcmd5>
+    <version>5.10.3</version>
+    <time>1712068659</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.10.3
+  * Revert PR #378 (Simplify NotebookNotary._data_dir_default) #397
+    (@krassowski)
+- Release 5.10.2
+  * Restore usage of npm token #395 (@blink1073)
+- Release 5.10.0
+  * Maintenance and upkeep improvements
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1163581</requestid>
+  </revision>
 </revisionlist>

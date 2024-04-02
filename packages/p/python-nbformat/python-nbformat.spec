@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbformat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %bcond_without libalternatives
+%{?sle15_python_module_pythons}
 Name:           python-nbformat
-Version:        5.9.2
+Version:        5.10.3
 Release:        0
 Summary:        The Jupyter Notebook format
 License:        BSD-3-Clause
@@ -49,13 +50,13 @@ BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 # SECTION test requirements
 BuildRequires:  %{python_module fastjsonschema}
 BuildRequires:  %{python_module jsonschema > 2.6}
 BuildRequires:  %{python_module jupyter_core}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module testpath}
 BuildRequires:  %{python_module traitlets >= 5.1}
 BuildRequires:  %{pythons}
@@ -70,7 +71,7 @@ This package provides the python interface.
 
 %prep
 %autosetup -p1 -n nbformat-%{version}
-sed -i -e 's/--color=yes//' -e 's/\@\@\@/%{version}/' pyproject.toml
+sed -i -e 's/"--color=yes", //' -e 's/\@\@\@/%{version}/' pyproject.toml
 
 %build
 %pyproject_wheel

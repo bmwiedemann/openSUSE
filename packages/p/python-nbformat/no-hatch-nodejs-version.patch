@@ -2,8 +2,10 @@
  pyproject.toml |    7 ++-----
  1 file changed, 2 insertions(+), 5 deletions(-)
 
---- a/pyproject.toml
-+++ b/pyproject.toml
+Index: nbformat-5.10.3/pyproject.toml
+===================================================================
+--- nbformat-5.10.3.orig/pyproject.toml
++++ nbformat-5.10.3/pyproject.toml
 @@ -1,10 +1,10 @@
  [build-system]
 -requires = ["hatchling>=1.5", "hatch-nodejs-version"]
@@ -17,7 +19,7 @@
  description = "The Jupyter Notebook format"
  license = { file = "LICENSE" }
  keywords = ["Interactive", "Interpreter", "Shell", "Web"]
-@@ -58,9 +58,6 @@ test = [
+@@ -62,9 +62,6 @@ test = [
  [project.scripts]
  jupyter-trust = "nbformat.sign:TrustNotebookApp.launch_instance"
  

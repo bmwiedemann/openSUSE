@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 29 18:51:43 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.10.3
+  * Revert PR #378 (Simplify NotebookNotary._data_dir_default) #397
+    (@krassowski)
+- Release 5.10.2
+  * Restore usage of npm token #395 (@blink1073)
+- Release 5.10.0
+  * Maintenance and upkeep improvements
+
+-------------------------------------------------------------------
+Thu Mar 28 12:37:01 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Oct 26 18:38:02 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Actually remove pep440 from test requirements
