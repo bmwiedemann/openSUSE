@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 10 14:55:26 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Remove constraints file because of improved memory usage
+- Edit shebang lines for nvcc_wrapper and kokkos_launch_compiler because of rpm errors 
+
+-------------------------------------------------------------------
 Wed Dec  6 16:28:45 UTC 2023 - Cezary Skrzyński <czars1988@gmail.com> - 4.2.00
 
 - Update to new upstream release 4.2.00:
