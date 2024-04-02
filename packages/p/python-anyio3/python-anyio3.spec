@@ -1,7 +1,7 @@
 #
-# spec file for package python-anyio
+# spec file for package python-anyio3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,14 @@ URL:            https://github.com/agronholm/anyio
 Source:         https://files.pythonhosted.org/packages/source/a/anyio/anyio-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM see gh#agronholm/anyio#626
 Patch2:         tests-test_fileio.py-don-t-follow-symlinks-in-dev.patch
-BuildRequires:  %{python_module idna >= 2.8}
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module exceptiongroup if %python-base < 3.11}
+BuildRequires:  %{python_module idna >= 2.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil >= 5.9}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module sniffio >= 1.1}
 BuildRequires:  %{python_module toml}
-BuildRequires:  %{python_module exceptiongroup if %python-base < 3.11}
 BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros >= 20210127.3a18043
@@ -42,7 +42,6 @@ BuildRequires:  %{python_module hypothesis >= 4.0}
 BuildRequires:  %{python_module mock >= 4.0 if %python-base < 3.8}
 BuildRequires:  %{python_module pytest >= 7.0}
 BuildRequires:  %{python_module pytest-mock >= 3.6.1}
-BuildRequires:  %{python_module trio >= 0.16}
 BuildRequires:  %{python_module trustme}
 # /SECTION
 BuildRequires:  fdupes
@@ -57,6 +56,7 @@ Requires:       python-typing_extensions
 Provides:       python-anyio = %{version}-%{release}
 Obsoletes:      python-anyio < 3.7.1
 Conflicts:      python-anyio >= 4
+Conflicts:      python-trio >= 0.25
 Suggests:       python-trio >= 0.16
 BuildArch:      noarch
 %python_subpackages
@@ -93,10 +93,12 @@ donttest+=" or (TestTLSStream and test_ragged_eofs)"
 %if 0%{?suse_version} < 1550
 donttest+=" or (test_send_eof_not_implemented)"
 %endif
-donttest+=" or (test_exception_group and trio)"
 # Fail with python 3.12
-donttest+=" or (test_properties and trio)"
 donttest+=" or (test_properties and asyncio)"
+# not compatible with trio 0.25+
+donttest+=" or trio"
+donttest+=" or test_plugin"
+donttest+=" or (test_pytest_plugin and async)"
 %pytest -m "not network" -k "not (${donttest:4})" -ra
 
 %files %{python_files}

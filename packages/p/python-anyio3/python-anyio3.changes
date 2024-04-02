@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  1 11:12:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Conflict and don't test with trio 0.25+: Not compatible
+
+-------------------------------------------------------------------
 Fri Feb  9 11:35:50 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Rename to python-anyio3 in order to provide legacy package for
