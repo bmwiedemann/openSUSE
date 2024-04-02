@@ -22,7 +22,7 @@
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -30,8 +30,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
-# PATCH-FIX-UPSTREAM 0001-filter-utils-fix-handling-of-targetless-smart-filters.patch alarrosa@suse.com -- Fix any mic only working when bluetooth is set to HSF/HFP profile
-Patch0:         0001-filter-utils-fix-handling-of-targetless-smart-filters.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz
@@ -55,6 +53,9 @@ BuildRequires:  pkgconfig(libpipewire-0.3) >= %{pipewire_minimum_version}
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-sphinx_rtd_theme
+BuildRequires:  python3-breathe
 #!BuildIgnore:  pipewire-session-manager
 # Setup ALSA devices if PipeWire handles PulseAudio or JACK connections.
 Requires:       (%{name}-audio if (pipewire-pulseaudio or pipewire-jack))
@@ -77,8 +78,17 @@ external tools for managing PipeWire.
 
 %lang_package
 
+%package doc
+Summary:        Wireplumber Session / policy manager documentation
+Group:          Development/Libraries/C and C++
+BuildArch:      noarch
+
+%description doc
+This package contains documentation for the WirePlumber
+session/policy manager for PipeWire.
+
 %package audio
-Summary:        Session / policy manager implementation for PipeWire (audio support)
+Summary:        Enable audio support in PipeWire / WirePlumber
 Group:          Development/Libraries/C and C++
 Requires:       %{libwireplumber} = %{version}
 Requires:       %{name} = %{version}
@@ -156,7 +166,7 @@ popd
 export CC=gcc-9
 export CXX=g++-9
 %endif
-%meson -Ddoc=disabled \
+%meson -Ddoc=enabled \
        -Dsystem-lua=true \
        -Delogind=disabled
 %meson_build
@@ -252,6 +262,10 @@ fi
 %{_libdir}/libwireplumber-%{apiver}.so
 %{_libdir}/pkgconfig/wireplumber-%{apiver}.pc
 %{_datadir}/gir-1.0/Wp-%{apiver}.gir
+
+%files doc
+%{_datadir}/doc/wireplumber/html/
+%exclude %{_datadir}/doc/wireplumber/examples
 
 %files -n typelib-1_0-Wp-%{apiver_str}
 %{_libdir}/girepository-1.0/Wp-%{apiver}.typelib
