@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Mar 27 14:11:25 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.0.9 → 3.0.10
+
+-------------------------------------------------------------------
+Wed Mar 27 14:04:40 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Clippy fixes
+
+-------------------------------------------------------------------
+Wed Mar 27 13:57:50 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- sudo is required
+
+-------------------------------------------------------------------
+Wed Mar 27 13:53:39 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix error handling
+
+  Make sure the real command that is called through sudo is
+  displayed. Also fix that the runas information is really used
+
+-------------------------------------------------------------------
+Wed Mar 27 11:05:47 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Exit on remove if there is an error
+
+  The remove sequence when used with --container or --vm deregisters
+  all apps associated with the container or VM first. If there is
+  an error on this deregistration, exit early and do not try to
+  delete the container/vm
+
+-------------------------------------------------------------------
+Mon Mar 25 12:10:45 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update URL in spec file
+
+  Point to OSInside Organisation
+
+-------------------------------------------------------------------
 Mon Mar 25 11:58:55 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 3.0.8 → 3.0.9

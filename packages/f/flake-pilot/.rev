@@ -14,4 +14,29 @@ documentation at:
 https://github.com/OSInside/flake-pilot?tab=readme-ov-file#flake-pilot</comment>
     <requestid>1161365</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a0500f56da144c69b4b0eb90c14ee7f4</srcmd5>
+    <version>3.0.10</version>
+    <time>1712069031</time>
+    <user>anag+factory</user>
+    <comment>- Bump version: 3.0.9 → 3.0.10
+
+- Clippy fixes
+
+- sudo is required
+
+- Fix error handling
+  Make sure the real command that is called through sudo is
+  displayed. Also fix that the runas information is really used
+
+- Exit on remove if there is an error
+  The remove sequence when used with --container or --vm deregisters
+  all apps associated with the container or VM first. If there is
+  an error on this deregistration, exit early and do not try to
+  delete the container/vm
+
+- Update URL in spec file
+  Point to OSInside Organisation</comment>
+    <requestid>1164042</requestid>
+  </revision>
 </revisionlist>

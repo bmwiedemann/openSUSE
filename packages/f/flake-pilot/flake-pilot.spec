@@ -23,7 +23,7 @@
 # SOFTWARE.
 #
 Name:           flake-pilot
-Version:        3.0.9
+Version:        3.0.10
 Release:        0
 Summary:        Launcher for flake applications
 License:        MIT
@@ -31,13 +31,14 @@ License:        MIT
 Packager:       Marcus Schaefer <marcus.schaefer@elektrobit.com>
 %endif
 Group:          System/Management
-Url:            https://github.com/schaefi/pilot
+Url:            https://github.com/OSInside/flake-pilot
 Source0:        %{name}.tar.gz
 Source1:        cargo_config
 Source2:        %{name}-rpmlintrc
 %if 0%{?debian} || 0%{?ubuntu}
 Requires:       golang-github-containers-common
 %endif
+Requires:       sudo
 Requires:       rsync
 Requires:       tar
 BuildRequires:  python3-docutils
@@ -68,6 +69,7 @@ Summary:        Podman pilot
 Group:          System/Management
 Requires:       rsync
 Requires:       podman
+Requires:       sudo
 
 %description -n flake-pilot-podman
 Launcher for OCI containers based applications through podman
@@ -85,6 +87,7 @@ Requires:       firecracker
 Requires:       xz
 Requires:       e2fsprogs
 Requires:       socat
+Requires:       sudo
 
 %description -n flake-pilot-firecracker
 Launcher and service tools for KVM VM based applications
