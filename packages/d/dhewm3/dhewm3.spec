@@ -1,7 +1,7 @@
 #
 # spec file for package dhewm3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,16 @@
 
 
 Name:           dhewm3
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        DOOM 3 source port
 License:        GPL-3.0-only
-URL:            https://github.com/dhewm/dhewm3
-Source0:        https://github.com/dhewm/%{name}/archive/%{version}.tar.gz
+URL:            https://dhewm3.org/
+Source0:        https://github.com/dhewm/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         dhewm3-fix-desktop-files.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(sdl2)
 BuildRequires:  pkgconfig(libcurl)
@@ -42,6 +44,7 @@ Unlike the original DOOM 3, dhewm3 uses:
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 cd neo
@@ -52,10 +55,24 @@ cd neo
 cd neo
 %cmake_install
 
+cd ..
+install -Dpm 644 dist/linux/share/metainfo/org.dhewm3.Dhewm3.metainfo.xml %{buildroot}/%{_datadir}/metainfo/org.dhewm3.Dhewm3.metainfo.xml
+install -Dpm 644 dist/linux/share/icons/hicolor/128x128/apps/org.dhewm3.Dhewm3.png %{buildroot}/%{_datadir}/icons/hicolor/128x128/apps/org.dhewm3.Dhewm3.png
+install -Dpm 644 dist/linux/share/icons/hicolor/256x256/apps/org.dhewm3.Dhewm3.png %{buildroot}/%{_datadir}/icons/hicolor/256x256/apps/org.dhewm3.Dhewm3.png
+install -Dpm 644 dist/linux/share/icons/hicolor/scalable/apps/org.dhewm3.Dhewm3.svg %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/org.dhewm3.Dhewm3.svg
+install -Dpm 644 dist/linux/share/applications/org.dhewm3.Dhewm3.desktop %{buildroot}%{_datadir}/applications/org.dhewm3.Dhewm3.desktop
+install -Dpm 644 dist/linux/share/applications/org.dhewm3.Dhewm3.d3xp.desktop %{buildroot}%{_datadir}/applications/org.dhewm3.Dhewm3.d3xp.desktop
+
+%check
+
 %files
-%doc README.md
+%doc README.md Changelog.md Configuration.md
 %license COPYING.txt
 %{_bindir}/%{name}
 %{_libdir}/%{name}
+%{_datadir}/applications/org.dhewm3.Dhewm3.desktop
+%{_datadir}/applications/org.dhewm3.Dhewm3.d3xp.desktop
+%{_datadir}/icons/hicolor/*/apps/org.dhewm3.Dhewm3.*
+%{_datadir}/metainfo/org.dhewm3.Dhewm3.metainfo.xml
 
 %changelog
