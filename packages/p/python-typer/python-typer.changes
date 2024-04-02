@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 29 09:29:31 UTC 2024 - Matthias Bach <marix@marix.org> - 0.11.1
+
+- Update to upstream version 0.10.1
+  * Internal and dependency changes
+- Fix missing requirement specification on
+  python-typing_extensions.
+
+-------------------------------------------------------------------
 Mon Mar 25 21:08:07 UTC 2024 - Matthias Bach <marix@marix.org> - 0.10.0
 
 - Update to upstream version 0.10.0

@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-typer
-Version:        0.10.0
+Version:        0.11.1
 Release:        0
 Summary:        Typer, build great CLIs. Easy to code. Based on Python type hints
 License:        MIT
@@ -29,7 +29,7 @@ Source:         https://files.pythonhosted.org/packages/source/t/typer/typer-%{v
 Patch1:         set-proper-pythonpath-for-tutorial-script-tests.patch
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pdm}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rich}
@@ -37,7 +37,8 @@ BuildRequires:  %{python_module shellingham}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-click >= 7.1
+Requires:       python-click >= 8.0.0
+Requires:       python-typing_extensions >= 3.7.4.3
 Recommends:     python-colorama
 Recommends:     python-rich
 Recommends:     python-shellingham

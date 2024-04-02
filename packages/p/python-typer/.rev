@@ -115,4 +115,15 @@
   * Fix preserving case in enum values.</comment>
     <requestid>1161563</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7b4bfae4ef10bb14c0c6186c65d43e05</srcmd5>
+    <version>0.11.1</version>
+    <time>1712068820</time>
+    <user>anag+factory</user>
+    <comment>- Update to upstream version 0.10.1
+  * Internal and dependency changes
+- Fix missing requirement specification on
+  python-typing_extensions.</comment>
+    <requestid>1163546</requestid>
+  </revision>
 </revisionlist>
