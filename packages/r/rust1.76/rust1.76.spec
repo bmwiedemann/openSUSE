@@ -1,5 +1,5 @@
 #
-# spec file for package rust1.75
+# spec file for package rust1.76
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019 Luke Jones, luke@ljones.dev
@@ -28,7 +28,7 @@
 #
 # ⚠️   11 or greater is required for a number of linker flags to be supported in sle.
 #
-%global gcc_version 12
+%global gcc_version 13
 %endif
 
 #KEEP NOSOURCE DEBUGINFO
@@ -89,6 +89,19 @@ Obsoletes:      %{1}1.62%{?2:-%{2}}
 %endif
 
 %global rust_triple %{rust_arch}-unknown-linux-%{abi}
+
+# Web Assembly targets
+%define rust_wasm_targets %{?with_wasm32:,wasm32-unknown-unknown%{?with_wasi:,wasm32-wasi}}
+
+# Base Rust targets for all architectures
+%define rust_base_targets %{rust_triple}%{rust_wasm_targets}
+
+# For x86-64 add the x86_64-unknown-none target
+%ifarch x86_64
+%define rust_target_list %{rust_base_targets},x86_64-unknown-none
+%else
+%define rust_target_list %{rust_base_targets}
+%endif
 
 # All sources and bootstraps are fetched form here
 %global dl_url https://static.rust-lang.org/dist
@@ -541,8 +554,7 @@ PATH_TO_LLVM_PROFILER=`echo %{_libdir}/clang/??/lib/linux/libclang_rt.profile-*.
 
 ./configure \
   --build=%{rust_triple} --host=%{rust_triple} \
-  %{!?with_wasm32: --target=%{rust_triple}} \
-  %{?with_wasm32: --target=%{rust_triple},wasm32-unknown-unknown%{?with_wasi:,wasm32-wasi}} \
+  --target %{rust_target_list} \
   %{?with_wasi: --set target.wasm32-wasi.wasi-root=%{_datadir}/wasi-sysroot/ } \
   --prefix=%{_prefix} \
   --bindir=%{_bindir} \
@@ -734,6 +746,11 @@ python3 ./x.py test --target=%{rust_triple} \
 %{rustlibdir}/wasm32-wasi/lib/self-contained/*.o
 %{rustlibdir}/wasm32-wasi/lib/self-contained/*.a
 %endif
+%endif
+%ifarch x86_64
+%dir %{rustlibdir}/x86_64-unknown-none
+%dir %{rustlibdir}/x86_64-unknown-none/lib
+%{rustlibdir}/x86_64-unknown-none/lib/*.rlib
 %endif
 
 # Seems to have been removed in 1.73
