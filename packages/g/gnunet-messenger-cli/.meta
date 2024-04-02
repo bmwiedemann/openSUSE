@@ -1,0 +1,8 @@
+<package name="gnunet-messenger-cli" project="openSUSE:Factory">
+  <title>Terminal application using the GNUnet Messenger service</title>
+  <description>A terminal application using the GNUnet Messenger service.
+
+</description>
+  <devel project="filesharing" package="gnunet-messenger-cli"/>
+  <url>https://www.gnunet.org/</url>
+</package>
