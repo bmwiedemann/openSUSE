@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 29 14:17:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.23:
+  * Fix breakage with QEMU 8.2.2
+  * Change behaviour of --kconfig, that will always override
+    the .config if present (since there is not reason to use
+    --kconfig and not update the .config).
+  * It is now possible to force the legacy cgroup v1 using the
+    option -a "SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1": the vng
+    init script will mimic systemd behavior and mount cgroup v1,
+    instead of v2.
+- Drop qemu-remove-unnecessary-serial-none-arg.patch
+
+-------------------------------------------------------------------
 Thu Mar 28 08:05:50 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - qemu 8.2.2 compatibility
