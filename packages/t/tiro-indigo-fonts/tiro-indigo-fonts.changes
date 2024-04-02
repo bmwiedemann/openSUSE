@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  1 01:41:32 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Use zstd instead of xz for compression
+
+-------------------------------------------------------------------
 Mon Aug  8 05:26:44 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 initial commit

@@ -1,7 +1,7 @@
 #
 # spec file for package tiro-indigo-fonts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,9 @@ Summary:        Tiro Fonts for some of the major Indian writing systems
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/TiroTypeworks/Indigo
-Source0:        Indigo-%{version}.tar.xz
+Source0:        Indigo-%{version}.tar.zst
 BuildRequires:  fontpackages-devel
+BuildRequires:  zstd
 Requires:       tiro-bangla-fonts
 Requires:       tiro-devahindi-fonts
 Requires:       tiro-devamarathi-fonts
@@ -152,6 +153,8 @@ install -Dm 644 -t %{buildroot}%{_ttfontsdir} fonts/*/OTF/*.otf
 %reconfigure_fonts_scriptlets -n tiro-tamil-fonts
 
 %reconfigure_fonts_scriptlets -n tiro-telugu-fonts
+
+%check
 
 %files
 
