@@ -35,7 +35,7 @@
 %define skip_python39 1
 %{?sle15_python_module_pythons}
 Name:           python-ipython%{psuffix}
-Version:        8.21.0
+Version:        8.22.2
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -45,7 +45,7 @@ Source:         https://files.pythonhosted.org/packages/source/i/ipython/ipython
 Source1:        https://raw.githubusercontent.com/jupyter/qtconsole/4.0.0/qtconsole/resources/icon/JupyterConsole.svg
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 51.0.0}
+BuildRequires:  %{python_module setuptools >= 61.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
@@ -58,7 +58,7 @@ Requires:       python-matplotlib-inline
 Requires:       python-pexpect >= 4.3
 Requires:       python-pygments >= 2.4.0
 Requires:       python-stack-data
-Requires:       python-traitlets >= 5
+Requires:       python-traitlets >= 5.13.0
 Requires:       (python-prompt_toolkit >= 3.0.41 with python-prompt_toolkit < 3.1)
 %if %{python_version_nodots} < 311
 Requires:       python-exceptiongroup

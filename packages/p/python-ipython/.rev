@@ -1516,4 +1516,38 @@
 </comment>
     <requestid>1147879</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>324df9c41687031364a3ecf20317d7c8</srcmd5>
+    <version>8.22.2</version>
+    <time>1712068656</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.22.2
+  * Fix recently introduced bug with the store magic.
+  * Fix issues with multiple call to
+    matplotlib.pyplot.switch_backend
+  * Fix crashing IPython when some tracebacks encounter dynamically
+    evaluated code.
+  * IPython 8.22.1 increase the minimal traitlets version, and
+    8.22.2 fix a critical bug on emscripten preventing to use some
+    magics like %matplotlib on jupyter-light.
+  * As usual you can find the full list of PRs on GitHub under the
+    8.22 milestone.
+  ## API changes
+  * One of the largest change is the update the mimehooks and
+    inspector API, see 14342. It should be backward compatible, but
+    many hooks now receive a single object with many fields
+    allowing us flexibility to update the API later.
+  ## Packaging changes
+  * Thanks to @mkoppe, we are slowly getting rid of setup.py
+    finally migrating to pyproject.toml. There is still quite a bit
+    of work, and please open an issue if you encounter any problem.
+  ## Deprecation
+  * A number of unused functions have been marked deprecated or
+    pending deprecation. Please let us know if you encounter any of
+    those deprecation messages for us to adjust the removal
+    timeline.
+
+  ## Changes</comment>
+    <requestid>1163560</requestid>
+  </revision>
 </revisionlist>
