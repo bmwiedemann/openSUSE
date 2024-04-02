@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb 18 10:52:15 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 307:
+  * Mass SPICE replacement
+  * Pre-formatted Block Device storage pool support
+- Changes from 306:
+  * Machines: Action to Replace SPICE devices
+  * Machines: Create external snapshots when supported
+
+-------------------------------------------------------------------
 Wed Jan 31 11:22:14 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - Update to 305:
@@ -14,6 +24,13 @@ Fri Dec 29 10:40:33 UTC 2023 - Adam Majer <adam.majer@suse.de> - 304
   * Change "Add disk" default behavior
   * Add SSH keys to VM creation dialog
   * Performance and stability improvements
+
+-------------------------------------------------------------------
+Fri Dec 15 13:45:22 UTC 2023 - Dario Faggioli <dfaggioli@suse.com>
+
+- Depend from a new meta-subpackage (qemu-spice) that the qemu
+  package now makes available for everyone that needs all the qemu
+  modules necessary for using SPICE (such as, us)
 
 -------------------------------------------------------------------
 Fri Sep  8 13:32:04 UTC 2023 - Adam Majer <adam.majer@suse.de> - 298

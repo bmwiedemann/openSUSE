@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-machines
-Version:        305
+Version:        307
 Release:        0
 Summary:        Cockpit user interface for virtual machines
 License:        LGPL-2.1-or-later AND MIT
@@ -41,10 +41,7 @@ Requires:       libvirt-daemon-kvm
 %endif
 Requires:       libvirt-client
 Requires:       libvirt-dbus >= 1.2.0
-Requires:       qemu-block-curl
-Requires:       qemu-chardev-spice
-Requires:       qemu-hw-display-qxl
-Requires:       qemu-hw-usb-redirect
+Requires:       qemu-spice
 Requires:       virt-install
 # Optional components
 Recommends:     libosinfo
