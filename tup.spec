@@ -1,7 +1,7 @@
 #
 # spec file for package tup
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,17 @@
 
 
 Name:           tup
-Version:        0.7.11
+Version:        0.8
 Release:        0
 Summary:        File-based build system
 License:        GPL-2.0-only
 URL:            http://gittup.org/tup/
 Source0:        https://github.com/gittup/tup/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source99:       %{name}.rpmlintrc
-Patch0:         tup-add_archs.patch
 BuildRequires:  awk
 BuildRequires:  pkgconfig
 BuildRequires:  vim
 BuildRequires:  pkgconfig(fuse3)
-BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libpcre2-posix)
 Requires:       vim
 
 %description
