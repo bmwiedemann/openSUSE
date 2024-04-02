@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 30 04:59:13 UTC 2024 - William Brown <william.brown@suse.com>
+
+- Change xz to zst for better compression ratios
+- Remove unneeded cargo config
+- Tidy up spec with cargo-packaging macros
+
+-------------------------------------------------------------------
 Fri Mar 22 23:49:38 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Add requires and licenses to completion packages

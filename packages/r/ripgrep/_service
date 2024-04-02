@@ -12,11 +12,11 @@
     </service>
     <service name="recompress" mode="disabled">
         <param name="file">*.tar</param>
-        <param name="compression">gz</param>
+        <param name="compression">zst</param>
     </service>
     <service name="cargo_vendor" mode="disabled">
         <param name="srcdir">ripgrep</param>
-        <param name="compression">xz</param>
+        <param name="compression">zst</param>
         <param name="update">true</param>
     </service>
     <service name="cargo_audit" mode="disabled">

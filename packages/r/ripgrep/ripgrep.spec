@@ -24,14 +24,12 @@ Summary:        A search tool that combines ag with grep
 License:        MIT AND Unlicense
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/BurntSushi/ripgrep
-Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.xz
-Source2:        cargo_config
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 Source999:      README.suse-maint.md
-BuildRequires:  cargo
+BuildRequires:  cargo-packaging
 BuildRequires:  pkgconf
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.31
 BuildRequires:  pkgconfig(libpcre2-posix)
 
 %description
@@ -74,16 +72,12 @@ The official fish completion script for ripgrep, generated during the build.
 %prep
 %autosetup -p1 -a1
 
-install -d -m 0755 .cargo
-cp %{SOURCE2} .cargo/config
-
 %build
-export RUSTFLAGS=%{rustflags}
-cargo build --release --features 'pcre2' %{?_smp_mflags}
+%{cargo_build} --features 'pcre2'
 
 %install
-export RUSTFLAGS=%{rustflags}
-cargo install --path . --features 'pcre2' --root=%{buildroot}%{_prefix}
+install -D -d -m 0755 %{buildroot}%{_bindir}
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/rg %{buildroot}%{_bindir}/rg
 
 # remove residue crate file
 rm -f %{buildroot}%{_prefix}/.crates*
