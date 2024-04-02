@@ -1,0 +1,2 @@
+addFilter("libextractor-plugins-exiv2\..* shlib-unversioned-lib")
+addFilter("libextractor-plugins-ole2\..* shlib-unversioned-lib")

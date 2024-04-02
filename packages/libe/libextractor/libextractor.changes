@@ -1,0 +1,247 @@
+-------------------------------------------------------------------
+Mon Apr  1 07:19:30 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- split file format plugins into individual packages for user
+  control, dependency limitation and security reasons
+- remove unneeded build dependencies
+- update license to GPL 2 and 3 or later
+- enable apparmor support
+- drop libextractor-1.7-segfault.patch
+
+-------------------------------------------------------------------
+Sat Mar 23 21:36:18 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix libextractor-lang not installable, move to extract-lang
+
+-------------------------------------------------------------------
+Sun Dec 17 13:04:14 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.13:
+  * Misc. fixes to build system and code to support more recent libexiv2.
+  * Revive REAL plugin
+  * Revive ELF plugin
+  * Removing plugins depending on buggy, unstable libffmpeg library
+- drop libextractor-1.11-exiv2-0.28.patch, upstream
+
+-------------------------------------------------------------------
+Sun Oct 15 15:40:40 UTC 2023 - seife+obs@b1-systems.com
+
+- update to version 1.11:
+  * mask SIGPIPE to avoid test case failure with latest librpm
+    (#6709)
+  * fix test case failures (#6613)
+  * fixed some code that called deprecated libav routines
+  * fixed missing initialization of duration in Opus extractor
+  * fix invalid read for malformed DVI files (#5846)
+  * fix build issue with exiv2-0.27 (#5820)
+  * consistently use AS_IF and AS_CASE in configure.ac
+- remove obsolete libextractor-1.8-exiv2-0.27.patch
+- reformat libextractor-1.7-segfault.patch so it applies again
+- add libextractor-1.11-exiv2-0.28.patch for new exiv2-0.28 APIs
+
+-------------------------------------------------------------------
+Wed May 15 21:41:08 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Build with mpeg2
+- Add libextractor-1.8-exiv2-0.27.patch
+
+-------------------------------------------------------------------
+Wed Feb 20 21:27:59 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.9:
+  * translation updates
+  * Fix possible out-of-bounds read in libextractor_common in case
+    of iconv() failure
+  * Fix NULL dereference in OLE2 extractor (for malformed input)
+  * do not export non-public functions from API
+- includes changes from 1.8:
+  * Fix missing 0-terminator on corrupted ZIP files
+
+-------------------------------------------------------------------
+Sun Jul 29 09:30:09 UTC 2018 - aloisio@gmx.com
+
+- Added libextractor-1.7-segfault.patch to fix segfault during
+  build
+
+-------------------------------------------------------------------
+Sat Jul 14 20:29:23 UTC 2018 - astieger@suse.com
+
+- update to 1.7:
+  * Fix potential infinite loop in mpeg extractor.
+  * Fix build issue with FFmpeg 4.0
+  * Fixing length calculation error in unzip logic reported
+  * Fixing NULL pointer issues in GIF, IT, NSFE, S3M, SID and XM
+    plugins, caused (except for GIF) by signed/unsigned confusion.
+  * Fix integer overflows in DVI extractor 
+
+-------------------------------------------------------------------
+Mon Oct 16 20:41:35 UTC 2017 - astieger@suse.com
+
+- update to 1.6:
+  * Fix various issues, including security relevant code fixes
+  * build with -std=c99 to fix build
+
+-------------------------------------------------------------------
+Thu Oct 12 19:50:46 UTC 2017 - astieger@suse.com
+
+- update to 1.5
+- add upstream signing key and verify source signature
+- various spec file fixes for distribution standards
+
+-------------------------------------------------------------------
+Mon Aug 14 17:56:49 UTC 2017 - avvissu@yandex.by
+
+- Update to stable 1.4
+- Remove _service file
+
+-------------------------------------------------------------------
+Fri Jun 02 09:21:37 UTC 2017 - avvissu@yandex.by
+
+- Update to version 1.3+rsv37257:
+  * tolerate apparmor errors if not supported by Kernel
+  * trying to fix #4055
+  * updated French translation
+  * fix path detection for -ltdl check
+  * simple hack for PDF support
+  * fixing #4167 (untested)
+  * trying to fix #4436
+  * doxygen fixes
+- Add _service file
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Thu Jun 25 10:07:55 UTC 2015 - avvissu@yandex.ru
+
+- Update to 1.3
+- Drop: libextractor-1.2_giflib-5.1.0.patch
+- Add %BUILD_ORIG macro to build in Packman 
+- Add BuildRequires: pkgconfig(gstreamer-plugins-base-1.0)
+- Use pkgconfig in package names
+- Add package for plugins
+- Add %info_{add,del} macro
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Thu May 28 00:00:00 UTC 2015 - avvissu@yandex.ru
+
+- Fix build on openSUSE > 13.2 (libextractor-1.2_giflib-5.1.0.patch)
+
+-------------------------------------------------------------------
+Thu Dec 19 23:15:47 UTC 2013 - sleep_walker@suse.cz
+- bump to 1.2
+  * Increase select() timeout, handle timeout case better.
+  * Required external installation of libltdl.
+  * Check for presence of tidyNodeGetValue in libtidy.
+  * Updated Dutch translation.
+  * Fix build with libavcodec >= 54.25.0.
+- removing libextractor-ffmpeg-2.0.patch as it is not needed anymore
+
+-------------------------------------------------------------------
+Sat Jul 27 12:24:28 UTC 2013 - i@margueirte.su
+
+- update version 1.1
+  * xpdf plugin obsoleted
+  * qt thumbnail plugin obsoleted
+  * applefile plugin obsoleted
+  * asf plugin obsoleted
+  * elf plugin obsoleted
+  * flv plugin obsoleted
+  * mkv plugin obsoleted
+  * mp3 plugin obsoleted (thus all the id3 plugins)
+  * real plugin obsoleted
+  * tar plugin obsoleted
+  * see http://lists.gnu.org/archive/html/gnunet-svn/2012-08/msg00217.html
+- html plugin disabled, 'coz we don't have htmltidy.
+- jpeg plugin doesn't work for lower versions. (< 1230)
+- gstreamer plugin disabled, 'coz it's experimental.
+
+-------------------------------------------------------------------
+Thu May 31 00:00:00 UTC 2012 - Manfred.Tremmel@iiv.de
+
+- ffmpeg calls are outdated, compile against ffmpeg_oldabi
+
+-------------------------------------------------------------------
+Thu Dec  1 17:39:18 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.6.3
+- This release fixes various minor bugs, in particular better handling of
+  malloc failures and more robust handling of malformed inputs in various
+  plugins.
+
+-------------------------------------------------------------------
+Sun Mar 14 00:00:00 UTC 2010 - toni@links2linux.de
+
+- update to 0.6.1
+- This release fixes a problem with LE not finding its plugins under
+  certain conditions. It also fixes an IPC issue under FreeBSD which
+  caused some plugins to not work.
+
+-------------------------------------------------------------------
+Thu Jan 14 00:00:00 UTC 2010 - toni@links2linux.de
+
+- update to 0.6.0
+- new so-name ==> libextractor3
+- renamed libextractor to extractor
+- removed static library
+- This release adds out-of-process execution for plugins and improves
+  the quality and quantity of the extracted meta data for many formats.
+- It breaks API compatibility.
+
+-------------------------------------------------------------------
+Tue Oct 20 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 0.5.23
+- This release adds support for librpm 4.7 and uses an external version of
+  libexiv2 for improved and more up-to-date EXIV2 support.
+
+-------------------------------------------------------------------
+Sat Feb 21 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 0.5.22
+- added install-info macros, moved info pages to devel package
+
+-------------------------------------------------------------------
+Sun Nov  2 00:00:00 UTC 2008 - toni@links2linux.de
+
+- update to 0.5.21
+
+-------------------------------------------------------------------
+Tue Jul 15 00:00:00 UTC 2008 - toni@links2linux.de
+
+- update to 0.5.20c
+
+-------------------------------------------------------------------
+Sun Apr 27 00:00:00 UTC 2008 - toni@links2linux.de
+
+- update to 0.5.20b
+
+-------------------------------------------------------------------
+Tue Apr 15 00:00:00 UTC 2008 - toni@links2linux.de
+
+- update to 0.5.20a
+
+-------------------------------------------------------------------
+Sun Mar 23 00:00:00 UTC 2008 - toni@links2linux.de
+
+- update to 0.5.20
+
+-------------------------------------------------------------------
+Sun Jan 13 00:00:00 UTC 2008 - toni@links2linux.de
+
+- update to 0.5.19a
+
+-------------------------------------------------------------------
+Mon Jan  7 00:00:00 UTC 2008 - toni@links2linux.de
+
+- update to 0.5.19
+
+-------------------------------------------------------------------
+Sun Sep  2 00:00:00 UTC 2007 - toni@links2linux.de
+
+- buildOpenSUSE-10.3, fixed BuildRequires
+
+-------------------------------------------------------------------
+Mon Jun 25 00:00:00 UTC 2007 - toni@links2linux.de
+
+- initial build 0.5.18
+

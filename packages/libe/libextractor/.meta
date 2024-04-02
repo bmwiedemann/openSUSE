@@ -1,0 +1,19 @@
+<package name="libextractor" project="openSUSE:Factory">
+  <title>Library to Extract Metadata from Files</title>
+  <description>Using libextractor, you can extract metadata from files of arbitrary
+types. Supported file formats include HTML, PDF, DVI, PS, MP3, OGG,
+WAV, JPEG, GIF, PNG, TIFF, RPM, ZIP, TAR, ELF, REAL, RIFF (AVI), MPEG,
+QT, and ASF. Also, various additional MIME types are detected.
+
+Helper libraries perform the extraction. It is extendable by linking
+against external extractors for additional file types.
+
+The goal is to provide developers of indexing tools with a universal
+library to obtain simple keywords to match against queries.
+libextractor contains a shell command &quot;extract&quot; that, similar to the
+well-known &quot;file&quot; command, can extract metadata from a file and print
+the results to stdout.
+</description>
+  <devel project="filesharing" package="libextractor"/>
+  <url>http://savannah.gnu.org/projects/libextractor</url>
+</package>

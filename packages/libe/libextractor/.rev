@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d80b4821c74c82bf31d14be29df4f726</srcmd5>
+    <version>1.13</version>
+    <time>1712068811</time>
+    <user>anag+factory</user>
+    <comment>Dependency for gnunet, see SR#1161617 for csound change.
+
+In this version: version fix, plugins are split out for security reasons and to give the user more control.
+</comment>
+    <requestid>1163910</requestid>
+  </revision>
+</revisionlist>
