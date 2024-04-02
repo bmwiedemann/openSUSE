@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package lua-cassowary
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_without test
 %define flavor @BUILD_FLAVOR@
 %define mod_name cassowary
@@ -25,11 +26,12 @@ Summary:        A Lua port of the cassowary constraint solver engine
 License:        Apache-2.0
 Group:          Development/Languages/Other
 URL:            https://github.com/sile-typesetter/cassowary.lua
-Source:         cassowary.lua-%{version}.tar.xz
-BuildRequires:  lua-macros
-BuildRequires:  %{flavor}-penlight
-BuildRequires:  %{flavor}-luarocks
+Source:         cassowary.lua-%{version}.tar.zst
 BuildRequires:  %{flavor}-devel
+BuildRequires:  %{flavor}-luarocks
+BuildRequires:  %{flavor}-penlight
+BuildRequires:  lua-macros
+BuildRequires:  zstd
 %if %{with test}
 BuildRequires:  %{flavor}-busted
 %endif
@@ -57,7 +59,6 @@ and find the values of unknown variables which satisfy those inequalities.
 
 %install
 %luarocks_install *.rock
-
 
 %if %{with test}
 %check
