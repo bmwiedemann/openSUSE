@@ -227,7 +227,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        14.0.1+git9355
+Version:        14.0.1+git9687
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -410,6 +410,8 @@ Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
 Patch60:        gcc44-textdomain.patch
 Patch61:        gcc44-rename-info-files.patch
+# Patches for embedded newlib
+Patch100:       newlib-gcn-iolock.diff
 
 Summary:        Testsuite results
 License:        SUSE-Public-Domain
@@ -537,6 +539,10 @@ ln -s newlib-4.4.0.20231231/newlib .
 %patch -P 51
 %patch -p1 -P 60 -P 61
 
+%if 0%{?nvptx_newlib:1}%{?amdgcn_newlib:1}
+%patch -p1 -P 100
+%endif
+
 #test patching end
 
 %build
@@ -637,7 +643,7 @@ export _POSIX2_VERSION=199209
 mkdir -p target-tools/bin
 ln -s /usr/bin/llvm-ar-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-ar
 ln -s /usr/bin/llvm-mc-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-as
-ln -s /usr/bin/lld target-tools/bin/amdgcn-amdhsa-ld
+ln -s /usr/bin/lld-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-ld
 ln -s /usr/bin/llvm-nm-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-nm
 ln -s /usr/bin/llvm-ranlib-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-ranlib
 export PATH="`pwd`/target-tools/bin:$PATH"

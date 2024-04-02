@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 27 12:13:22 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Update to trunk head, 0b02da5b99e89347f5f8bf875ec8318f84, git9687
+- Fix install link to amdgcn-amdhsa-ld.
+
+-------------------------------------------------------------------
+Mon Mar 25 14:50:07 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Add newlib-gcn-iolock.diff to fix locking for I/O on gcn offload
+  targets.
+
+-------------------------------------------------------------------
+Mon Mar 18 14:32:42 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Remove timezone Recommends from the libstdc++6 package.  [boo#1221601]
+
+-------------------------------------------------------------------
 Wed Mar 13 08:17:35 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Revert libgccjit dependency change.  [boo#1220724]

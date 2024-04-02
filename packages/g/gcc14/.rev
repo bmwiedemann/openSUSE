@@ -26,4 +26,18 @@
 - Fix libgccjit dependency, the corresponding compiler isn't required.</comment>
     <requestid>1157436</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0b01922a513491915e9ac83c1dd0f65f</srcmd5>
+    <version>14.0.1+git9687</version>
+    <time>1712068798</time>
+    <user>anag+factory</user>
+    <comment>- Update to trunk head, 0b02da5b99e89347f5f8bf875ec8318f84, git9687
+- Fix install link to amdgcn-amdhsa-ld.
+
+- Add newlib-gcn-iolock.diff to fix locking for I/O on gcn offload
+  targets.
+
+- Remove timezone Recommends from the libstdc++6 package.  [boo#1221601]</comment>
+    <requestid>1163280</requestid>
+  </revision>
 </revisionlist>
