@@ -75,23 +75,3 @@ Index: VirtualBox-7.0.14/src/apps/VBoxUSB_DevRules/VBoxUSB_DevRules.cpp
 +        return 1;
 +}
 +
-Index: VirtualBox-7.0.14/src/VBox/Installer/linux/VBoxCreateUSBNode.sh
-===================================================================
---- VirtualBox-7.0.14.orig/src/VBox/Installer/linux/VBoxCreateUSBNode.sh
-+++ VirtualBox-7.0.14/src/VBox/Installer/linux/VBoxCreateUSBNode.sh
-@@ -47,12 +47,13 @@ case "$do_remove" in
-       exit 0
-   fi
-   case "$group" in "") group="vboxusers";; esac
--  mkdir /dev/vboxusb -m 0750 2>/dev/null
-+  mkdir /dev/vboxusb -m 0660 2>/dev/null
-   chown root:$group /dev/vboxusb 2>/dev/null
--  mkdir "$devdir" -m 0750 2>/dev/null
-+  mkdir "$devdir" -m 0660 2>/dev/null
-   chown root:$group "$devdir" 2>/dev/null
-   mknod "$devpath" c $1 $2 -m 0660 2>/dev/null
-   chown root:$group "$devpath" 2>/dev/null
-+  chmod 0660 "$devpath" 2 > /dev/null
-   ;;
-   1)
-   rm -f "$devpath"

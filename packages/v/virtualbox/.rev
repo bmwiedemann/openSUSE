@@ -2581,4 +2581,20 @@ Linux hosts and guests: fix for building kernel modules against Linux 5.0. Thank
     <comment></comment>
     <requestid>1163382</requestid>
   </revision>
+  <revision rev="274" vrev="7">
+    <srcmd5>17c08537ae783e554c5a31467576cb38</srcmd5>
+    <version>7.0.14</version>
+    <time>1712068691</time>
+    <user>anag+factory</user>
+    <comment>- Setting 0660 as permissions of /dev/vboxusb directory itself was preventing
+  access to this directory by any non-root user, even if member of vboxusers.
+  This results in VBox UI failing to enable USB passthrough.
+  Fix issue by removing all the workarounds for /dev/vboxusb/* as they should
+  no longer be required.
+
+I have verified that with this USB passhtrough works on today's TW (real machine), as well as Leap 15.5 (on a VM)  and today's Leap 15.6 beta (unfortunately, I couldn't get a nested VM to work on 15.6 at all -- but with this fix the UI can enumerate USB devices at least).  
+
+Without this fix, VBox always shows &quot;VirtualBox is not currently allowed to access USB devices. You can change this by adding your user to vboxusers [....]&quot;, and the UI cannot enumerate USB devices at all. (forwarded request 1163957 from javispedro)</comment>
+    <requestid>1163976</requestid>
+  </revision>
 </revisionlist>

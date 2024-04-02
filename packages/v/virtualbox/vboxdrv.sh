@@ -60,10 +60,6 @@ fi
 
 [ -r /etc/default/virtualbox ] && . /etc/default/virtualbox
 
-chmod "${DEVICE_MODE}" /etc/vboxusb/
-chmod "${DEVICE_MODE}" /etc/vboxusb/*
-chmod "${DEVICE_MODE}" /etc/vboxusb/*/*
-
 begin_msg()
 {
     test -n "${2}" && echo "${SCRIPTNAME}: ${1}."

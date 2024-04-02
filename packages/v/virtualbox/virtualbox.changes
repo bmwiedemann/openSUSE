@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr  1 16:12:39 UTC 2024 - Javier de San Pedro <dev.rpm@javispedro.com>
+
+- Setting 0660 as permissions of /dev/vboxusb directory itself was preventing
+  access to this directory by any non-root user, even if member of vboxusers.
+  This results in VBox UI failing to enable USB passthrough.
+  Fix issue by removing all the workarounds for /dev/vboxusb/* as they should
+  no longer be required.
+
+-------------------------------------------------------------------
 Thu Mar 28 17:26:16 UTC 2024 - Larry Finger <Larry.Finger@gmail.com>
 
 - The location of vboxconfig is wrong. Add file fixes_for_vboxconfig.patch
