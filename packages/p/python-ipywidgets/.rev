@@ -193,4 +193,18 @@ The failing packages have been resolved</comment>
     <comment>- Skip python39: no longer supported since ipython 8.19</comment>
     <requestid>1155325</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cf0c95775a8a6e7a22c34c7fa74023a7</srcmd5>
+    <version>8.1.2</version>
+    <time>1712068830</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.1.2
+  * Bump systeminformation from 5.18.3 to 5.21.8 in /ui-tests by
+    @dependabot in #3837
+  * Try to use manager's latexTypesetter if window.MathJax is not
+    defined by @bollwyvl in #3847
+  * fix: restoring widgets from saved state is broken since v8 in
+    Lab by @mariobuikhuizen in #3866</comment>
+    <requestid>1163567</requestid>
+  </revision>
 </revisionlist>
