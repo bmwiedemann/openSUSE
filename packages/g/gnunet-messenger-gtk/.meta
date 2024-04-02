@@ -1,0 +1,8 @@
+<package name="gnunet-messenger-gtk" project="openSUSE:Factory">
+  <title>GUI for GNUnet Messenger service</title>
+  <description>A GTK based UI using the GNUnet Messenger service
+
+</description>
+  <devel project="filesharing" package="gnunet-messenger-gtk"/>
+  <url>https://www.gnunet.org/</url>
+</package>
