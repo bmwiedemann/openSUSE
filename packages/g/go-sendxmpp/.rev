@@ -194,4 +194,24 @@
     SCRAM authentication (via go-xmpp v0.1.2).</comment>
     <requestid>1156683</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bde4d06a7d35f44b108a6ea8d9abaf5b</srcmd5>
+    <version>0.9.0</version>
+    <time>1712068823</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.0:
+  Changed:
+  * Properly close stream if Ctrl+C is pressed in interactive mode.
+  * Properly close stream if Ctrl+C is pressed in listening mode.
+  * Print OS, architecture and go version for flag --version.
+  * Improve closing of connection (via go-xmpp v0.1.4).
+  * Don't send stanzas that exceed the size limit provided by
+    XEP-0478 (requires go-xmpp &gt;= v0.1.4).
+  * Fixed hanging forever in stream close if the server doesn't
+    reply with a closing stream element (via go-xmpp &gt;= v0.1.4).
+  Added:
+  * New command line flag ssdp-off to disable XEP-0474: SASL SCRAM
+    Downgrade Protection (requires go-xmpp &gt;= v0.1.4).</comment>
+    <requestid>1163539</requestid>
+  </revision>
 </revisionlist>

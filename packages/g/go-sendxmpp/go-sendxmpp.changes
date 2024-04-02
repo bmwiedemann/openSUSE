@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar 29 14:06:47 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.0:
+  Changed:
+  * Properly close stream if Ctrl+C is pressed in interactive mode.
+  * Properly close stream if Ctrl+C is pressed in listening mode.
+  * Print OS, architecture and go version for flag --version.
+  * Improve closing of connection (via go-xmpp v0.1.4).
+  * Don't send stanzas that exceed the size limit provided by
+    XEP-0478 (requires go-xmpp >= v0.1.4).
+  * Fixed hanging forever in stream close if the server doesn't
+    reply with a closing stream element (via go-xmpp >= v0.1.4).
+  Added:
+  * New command line flag ssdp-off to disable XEP-0474: SASL SCRAM
+    Downgrade Protection (requires go-xmpp >= v0.1.4).
+
+-------------------------------------------------------------------
 Sun Mar 10 07:17:16 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.4:
