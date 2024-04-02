@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 29 12:38:51 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.7.6:
+  * [Sec] Potential heap out-of-bounds read or write past sample
+    end with malformed sustain loops in SymMOD files.
+  * MED: Transposed samples were playing too low in some files
+    (e.g. mix94.mmd1).
+  * OKT: Some files with garbage at the end were rejected
+    (e.g. katharsis - piano lesson.okta).
+  * Compressor DMO: It was possible that the plugin would not
+    behave as intended at mix rates above 500 kHz.
+  * Avoid re-allocating the loop state map contents on every
+    playthrough of the module.
+- Run test suite during package build
+
+-------------------------------------------------------------------
 Sun Mar 17 17:39:54 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.7.5:

@@ -834,4 +834,23 @@ Changes in 0.5.3:
     calculate the correct subsong to jump to.</comment>
     <requestid>1158797</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>d59f153d359addf2988005b30ff24d53</srcmd5>
+    <version>0.7.6</version>
+    <time>1712068655</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.6:
+  * [Sec] Potential heap out-of-bounds read or write past sample
+    end with malformed sustain loops in SymMOD files.
+  * MED: Transposed samples were playing too low in some files
+    (e.g. mix94.mmd1).
+  * OKT: Some files with garbage at the end were rejected
+    (e.g. katharsis - piano lesson.okta).
+  * Compressor DMO: It was possible that the plugin would not
+    behave as intended at mix rates above 500 kHz.
+  * Avoid re-allocating the loop state map contents on every
+    playthrough of the module.
+- Run test suite during package build</comment>
+    <requestid>1163533</requestid>
+  </revision>
 </revisionlist>

@@ -21,7 +21,7 @@
 %define libopenmpt_modplug_version 0.8.9.0
 
 Name:           libopenmpt
-Version:        0.7.5
+Version:        0.7.6
 Release:        0
 Summary:        C++ and C library to decode tracker music files
 License:        BSD-3-Clause
@@ -111,11 +111,14 @@ autoreconf -fvi
     --with-flac \
     --with-portaudio \
     --with-sdl2
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
+
+%check
+%make_build check
 
 %post -n %{libopenmpt} -p /sbin/ldconfig
 %postun -n %{libopenmpt} -p /sbin/ldconfig
