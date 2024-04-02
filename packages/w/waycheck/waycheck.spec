@@ -1,7 +1,7 @@
 #
 # spec file for package waycheck
 #
-# Copyright (c) 2023 Neal Gompa
+# Copyright (c) Neal Gompa
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global qt6_minver 6.5
 
 Name:           waycheck
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        GUI that displays protocols implemented by a Wayland compositor
 

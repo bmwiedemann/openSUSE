@@ -73,4 +73,16 @@
   + Clarify recommended display length and screenshot types in metainfo.xml</comment>
     <requestid>1153937</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1ce068e9900cac40453a64000e9ca55a</srcmd5>
+    <version>1.2.0</version>
+    <time>1712068974</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.0
+  + Update &quot;Upstream&quot; protocol list to wayland-protocols v1.34
+  + Add KDE &quot;Screen edge&quot; protocol
+  + Add Gamescope protocols 🐸
+  + Clean up Meson post-install script</comment>
+    <requestid>1163742</requestid>
+  </revision>
 </revisionlist>
