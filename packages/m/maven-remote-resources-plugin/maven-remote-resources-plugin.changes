@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue Apr  2 09:10:09 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.2.0
+  * New features and improvements
+    + MRRESOURCES-145 - Avoid overwriting the generated file with
+      the same content
+    + MRRESOURCES-143 - Maven 3.6.3 as minimum requirements
+  * Bug Fixes
+    + MRRESOURCES-135 - Show projectTimespan year in UTC
+  * Dependency updates
+    + MRRESOURCES-144 - Bump org.codehaus.plexus:plexus-resources
+      from 1.2.0 to 1.3.0
+    + MRRESOURCES-136 - Bump
+      org.apache.maven.plugins:maven-plugins from 40 to 41
+    + MRRESOURCES-142 - Bump commons-io:commons-io from 2.14.0
+      to 2.15.1
+    + MRRESOURCES-142 - Bump commons-io from 2.13.0 to 2.14.0
+    + MRRESOURCES-140 - Bump plexus-utils from 3.5.1 to 4.0.0 and
+      plexus-xml 3.0.0
+    + MRRESOURCES-139 - Bump Bump maven-archiver from 3.6.0
+      to 3.6.1
+    + MRRESOURCES-138 - Bump maven-filtering from 3.3.0 to 3.3.1
+    + MRRESOURCES-137 - Bump commons-io from 2.11.0 to 2.13.0
+    + MRRESOURCES-136 - Upgrade Parent to 40
+  * Maintenance
+    + MNG-6829 - Replace any StringUtils#isEmpty(String) and
+      #isNotEmpty(String)
+- Changes of version 3.1.0
+  * Breaking changes
+    + MRRESOURCES-134 - Introduce aggregate goal instead of
+      runOnlyAtExecutionRoot parameter
+  * New features and improvements
+    + MRRESOURCES-126 - Get rid of legacy
+    + MRRESOURCES-122 - Java 8 as minimum
+  * Bug Fixes
+    + MRRESOURCES-121 - some dependencies are now ignored"
+    + Fix site "usage" page
+  * Dependency updates
+    + MRRESOURCES-127 - Upgrade to parent POM 39
+    + Bump plexus-resources from 1.1.0 to 1.2.0
+    + Bump commons-io from 2.6 to 2.11.0
+    + Bump maven-common-artifact-filters from 3.2.0 to 3.3.2
+    + Bump apache/maven-gh-actions-shared from 2 to 3
+    + Bump maven-plugins from 36 to 37
+    + Bump slf4j-simple from 1.7.32 to 1.7.36
+  * Maintenance
+    + MRRESOURCES-133 - configure system requirements history
+    + MRRESOURCES-129 - Extends IT - add case from issue
+    + MRRESOURCES-131 - Fix ITs for Maven 4
+    + MRRESOURCES-130 - Refresh download page
+    + MRRESOURCES-132 - Dependency improvements
+    + Get rid of build warnings and obvious typo
+    + run build only with maven '3.6.x' and '3.8.x'
+- Changes of version 3.0.0
+  * What's Changed
+    + Upgrade to maven 3.x and avoid using deprecated API
+    + MRRESOURCES-119 Update plugin to 3.x
+- Removed patch:
+  * 0001-Port-to-Maven-3.patch
+    + not needed any more, since the changes were integrated
+
+-------------------------------------------------------------------
 Wed Feb 21 10:50:43 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -26,7 +88,7 @@ Wed May 11 06:47:20 UTC 2022 - Fridrich Strba <fstrba@suse.com>
     + MNGSITE-328 - use sha1 checksum instead of md5
     + MRRESOURCES-100 - Upgrade maven-filtering to 3.1.1
     + MRRESOURCES-99 - Upgrade of plexus-interpolation to 1.24.
-    + MRRESOURCES-97] Upgrade maven-shared-components parent to
+    + MRRESOURCES-97 - Upgrade maven-shared-components parent to
       version 30
     + MPOM-95 - updated parent pom location
     + MNGSITE-243 - Fixed link to How to use Mirros for Repositories

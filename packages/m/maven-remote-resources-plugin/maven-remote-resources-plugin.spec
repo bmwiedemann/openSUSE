@@ -18,14 +18,13 @@
 
 %bcond_with tests
 Name:           maven-remote-resources-plugin
-Version:        1.7.0
+Version:        3.2.0
 Release:        0
 Summary:        Maven Remote Resources Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugins/maven-remote-resources-plugin/
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
-Patch0:         0001-Port-to-Maven-3.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -38,23 +37,21 @@ BuildRequires:  mvn(org.apache.maven.shared:maven-common-artifact-filters)
 BuildRequires:  mvn(org.apache.maven.shared:maven-filtering)
 BuildRequires:  mvn(org.apache.maven:maven-archiver)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
-BuildRequires:  mvn(org.apache.maven:maven-compat)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
+BuildRequires:  mvn(org.apache.maven:maven-model-builder)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.apache.maven:maven-settings)
-BuildRequires:  mvn(org.apache.velocity:velocity)
+BuildRequires:  mvn(org.apache.velocity:velocity-engine-core)
 BuildRequires:  mvn(org.codehaus.modello:modello-maven-plugin)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-interpolation)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-resources)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
+BuildRequires:  mvn(org.eclipse.aether:aether-api)
+BuildRequires:  mvn(org.eclipse.aether:aether-util)
 BuildArch:      noarch
 %if %{with tests}
-BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.apache.maven.plugin-testing:maven-plugin-testing-harness)
-BuildRequires:  mvn(org.apache.maven.shared:maven-verifier)
-BuildRequires:  mvn(org.apache.maven.wagon:wagon-provider-api)
-BuildRequires:  mvn(org.apache.velocity:velocity)
+BuildRequires:  mvn(org.apache.maven.shared:maven-verifier) >= 1.9
+BuildRequires:  mvn(org.apache.maven.surefire:surefire-junit4)
 %endif
 
 %description
@@ -74,7 +71,8 @@ API documentation for %{name}.
 
 %prep
 %setup -q
-%patch -P 0 -p1
+
+%pom_remove_dep :plexus-xml
 
 %build
 %{mvn_build} \
@@ -82,6 +80,7 @@ API documentation for %{name}.
     -f \
 %endif
     -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
 %endif
