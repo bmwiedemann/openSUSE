@@ -69,4 +69,30 @@
   * Don't test on python39</comment>
     <requestid>1155896</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>01a9a576d27a979a15f8e614964cf46d</srcmd5>
+    <version>2.0.11</version>
+    <time>1712068839</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.0.11
+  ## Enhancements made
+  * Make user's cursor &quot;tooltip-on-hover&quot; faster and wider #259
+    (@jzhang20133)
+  ## Bugs fixed
+  * Fix releaser #268 (@davidbrochart)
+  * Fix slow room opening #264 (@davidbrochart)
+  * Use WebSocket _room_id attribute directly #266 (@davidbrochart)
+- Release 2.0.6
+  ## Enhancements made
+  * Make user's cursor &quot;tooltip-on-hover&quot; faster and wider #259
+    (@jzhang20133)
+  ## Bugs fixed
+  * Fix slow room opening #264 (@davidbrochart)
+- Release 2.0.5
+  * Fix concurrent room initialization #255 (@davidbrochart)
+- Release 2.0.4
+  * adding awareness event when open and close websockets #246
+    (@jzhang20133)</comment>
+    <requestid>1163578</requestid>
+  </revision>
 </revisionlist>

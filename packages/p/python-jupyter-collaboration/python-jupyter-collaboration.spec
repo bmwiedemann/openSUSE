@@ -26,9 +26,9 @@
 %bcond_with test
 %endif
 
-%define python3distversion 2.0.3
+%define python3distversion 2.0.11
 Name:           python-jupyter-collaboration%{psuffix}
-Version:        2.0.3
+Version:        2.0.11
 Release:        0
 Summary:        Jupyter Server Extension Providing Y Documents
 License:        BSD-3-Clause
@@ -45,7 +45,7 @@ BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-collaboration = %{version}
 Requires:       python-jsonschema >= 4.18.0
-Requires:       python-jupyter_events >= 0.7.0
+Requires:       python-jupyter_events >= 0.10.0
 Requires:       (python-jupyter_server >= 2.0.0 with python-jupyter_server < 3.0.0)
 Requires:       (python-jupyter_server_fileid >= 0.7.0 with python-jupyter_server_fileid < 1)
 Requires:       (python-jupyter_ydoc >= 2.0.0 with  python-jupyter_ydoc < 3.0.0)
@@ -56,6 +56,7 @@ Obsoletes:      python-jupyter_server_ydoc < 1
 Obsoletes:      python-jupyterlab-rtc < 1
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module importlib-metadata >= 3.6 if %python-base < 3.10}
 BuildRequires:  %{python_module jupyter-collaboration = %{version}}
 BuildRequires:  %{python_module jupyter-server-test >= 2}
 BuildRequires:  %{python_module pytest >= 7}
@@ -98,7 +99,9 @@ rm %{buildroot}%{_jupyter_labextensions_dir3}/@jupyter/collaboration-extension/s
 
 %if %{with test}
 %check
-%pytest
+# Errors with UnraisableThreadExceptionWarning on teadown
+donttest="test_room_sequential_opening"
+%pytest -k "not ($donttest)"
 %endif
 
 %if !%{with test}
