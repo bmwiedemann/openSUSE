@@ -25,6 +25,8 @@ Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pylsp-pr543-pylint3.1.patch gh#python-lsp/python-lsp-server#531
+Patch0:         pylsp-pr543-pylint3.1.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -44,7 +46,7 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pydocstyle >= 6.3.0 with %python-pydocstyle < 6.4.0}
-BuildRequires:  %{python_module pylint >= 2.5.0 with %python-pylint < 3.1}
+BuildRequires:  %{python_module pylint >= 3.1 with %python-pylint < 4}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lsp-jsonrpc >= 1.1.0 with %python-python-lsp-jsonrpc < 2}
 BuildRequires:  %{python_module rope >= 1.2.0}
@@ -65,8 +67,8 @@ Suggests:       python-autopep8 >= 2.0.4
 Conflicts:      python-autopep8 >= 2.1.0
 Suggests:       python-pydocstyle >= 6.3.0
 Conflicts:      python-pydocstyle >= 6.4.0
-Suggests:       python-pylint >= 2.5.0
-Conflicts:      python-pylint >= 3.1
+Suggests:       python-pylint >= 3.1
+Conflicts:      python-pylint >= 4
 Suggests:       python-rope >= 1.2.0
 Suggests:       python-yapf >= 0.33
 Suggests:       python-whatthepatch >= 1.0.2

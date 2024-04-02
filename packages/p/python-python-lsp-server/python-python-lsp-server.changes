@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 29 10:50:31 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add pylsp-pr543-pylint3.1.patch
+  gh#python-lsp/python-lsp-server#531
+
+-------------------------------------------------------------------
 Sat Mar 16 12:52:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10.1:

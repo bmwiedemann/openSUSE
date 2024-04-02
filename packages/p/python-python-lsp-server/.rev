@@ -318,4 +318,14 @@
   * Community maintained replacement for</comment>
     <requestid>1158465</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>8c476dcdebf07cffdedaff8ef1bea958</srcmd5>
+    <version>1.10.1</version>
+    <time>1712068818</time>
+    <user>anag+factory</user>
+    <comment>- Add pylsp-pr543-pylint3.1.patch
+  gh#python-lsp/python-lsp-server#531
+</comment>
+    <requestid>1163540</requestid>
+  </revision>
 </revisionlist>
