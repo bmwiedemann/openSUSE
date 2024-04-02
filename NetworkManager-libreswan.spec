@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-libreswan
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,8 +37,8 @@ BuildRequires:  pkgconfig(libnma) >= 1.2.0
 BuildRequires:  pkgconfig(libnma-gtk4) >= 1.8.33
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 
-Requires:       NetworkManager
 Requires:       /usr/sbin/ipsec
+Requires:       NetworkManager
 Supplements:    (NetworkManager and /usr/sbin/ipsec)
 Provides:       NetworkManager-openswan = %{version}
 Obsoletes:      NetworkManager-openswan < %{version}
@@ -56,6 +56,7 @@ Obsoletes:      NetworkManager-openswan-gnome < %{version}
 Provides:       %{name}-gnome = %{version}
 Obsoletes:      %{name}-gnome
 Supplements:    (%{name} and NetworkManager-applet)
+Supplements:    (%{name} and gnome-control-center)
 
 %description -n NetworkManager-applet-libreswan
 This package contains software for integrating VPN capabilities
