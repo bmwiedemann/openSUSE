@@ -1,7 +1,7 @@
 #
 # spec file for package ledmon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ledmon
-Version:        0.97
+Version:        1.0.0
 Release:        0
 Summary:        Enclosure LED Utilities
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -26,8 +26,11 @@ URL:            https://github.com/intel/ledmon/
 Source0:        https://github.com/intel/ledmon/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         harden_ledmon.service.patch
 BuildRequires:  autoconf
+BuildRequires:  autoconf-archive
 BuildRequires:  automake
+BuildRequires:  check-devel
 BuildRequires:  libsgutils-devel
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libpci)

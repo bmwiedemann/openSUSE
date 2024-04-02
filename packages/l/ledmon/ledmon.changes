@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Mar 28 04:28:18 UTC 2024 - Nicholas Yang <nicholas.yang@suse.com>
+
+- Update to version 1.0.0:
+
+  Enhancements
+
+    lib: introduce library (not enabled in this build)
+    tests: migrate tests to pytest
+    Introduce "make check" option
+    Allow disabling documentation installation
+    Add minimal Nvme subsystem support
+    Allow choosing output format from get-slot
+    Rework handling --help option
+    Update manual
+
+  Bug fixes
+
+    Fix log severity, messages and level detection
+    Ledctl: skip slot state check for set locate_off
+    ci: Compile with tests and library enabled
+    configure.ac: build library when "--enbable-test"
+    Allow setting multiple LEDs per slot on SES
+    Prevent compiler from optimizing out security checks
+    Fix compilation warnings
+    Add compiler defenses flags
+    Add support for clang compiler
+    utils.c: remove duplicated "-c" short parameter
+    Remove parsing ALLOWLIST and EXCLUDELIST using regex
+    ledctl: Fix exit ledctl with test flag
+
+-------------------------------------------------------------------
 Thu May 18 03:50:57 UTC 2023 - Nicholas Yang <nicholas.yang@suse.com>
 
 - Update to version 0.97:
