@@ -697,4 +697,25 @@
     edge #15782 (@krassowski)</comment>
     <requestid>1156028</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9c1d389a3d07e38fc14f6146391871dd</srcmd5>
+    <version>4.1.5</version>
+    <time>1712068837</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.1.5
+  * Fix Theme color is not applied to Toolbar Button #15957
+    (@FoSuCloud)
+  * Uses the browser window's selection as the default search query
+    #15834 (@JasonWeill)
+  * Show outline on the full item in file browser, only when needed
+    #15860 (@krassowski)
+  * Short-circuit selectItemByName() if already selected #15970
+    (@krassowski)
+  * Fix browser-test.js #15892 (@fcollonval)
+  * Avoid concurrency when computing the items in notebook toolbar
+    #15954 (@brichet)
+  * Fixes filter for Chinese, other non-ASCII filenames #15935
+    (@JasonWeill)</comment>
+    <requestid>1163576</requestid>
+  </revision>
 </revisionlist>

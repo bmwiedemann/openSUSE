@@ -18,7 +18,7 @@
 
 %define skip_python39 1
 Name:           python-jupyterlab
-Version:        4.1.4
+Version:        4.1.5
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause

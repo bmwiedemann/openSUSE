@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar 29 18:29:54 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.1.5
+  * Fix Theme color is not applied to Toolbar Button #15957
+    (@FoSuCloud)
+  * Uses the browser window's selection as the default search query
+    #15834 (@JasonWeill)
+  * Show outline on the full item in file browser, only when needed
+    #15860 (@krassowski)
+  * Short-circuit selectItemByName() if already selected #15970
+    (@krassowski)
+  * Fix browser-test.js #15892 (@fcollonval)
+  * Avoid concurrency when computing the items in notebook toolbar
+    #15954 (@brichet)
+  * Fixes filter for Chinese, other non-ASCII filenames #15935
+    (@JasonWeill)
+
+-------------------------------------------------------------------
 Thu Mar  7 15:22:29 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.1.4
