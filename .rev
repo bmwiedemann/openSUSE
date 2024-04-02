@@ -57,4 +57,16 @@
 - drop update-tests.patch (upstream)</comment>
     <requestid>1138673</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2142f292ae67461a7434a118cb0224c0</srcmd5>
+    <version>0.3.1</version>
+    <time>1712069056</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.1:
+  * Add repository property to pyproject.toml
+  * Add homepage url and readme for pypi
+  * Remove upper bound from Python version specifier
+  * Fix dependency manifest and CI</comment>
+    <requestid>1164116</requestid>
+  </revision>
 </revisionlist>

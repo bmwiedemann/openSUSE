@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-didyoumean
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Plugin to enable git-like did-you-mean feature in python-click
 License:        MIT
@@ -57,6 +57,7 @@ export LANG=en_US.UTF-8
 
 %files %{python_files}
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/click_didyoumean
+%{python_sitelib}/click_didyoumean-%{version}.dist-info
 
 %changelog
