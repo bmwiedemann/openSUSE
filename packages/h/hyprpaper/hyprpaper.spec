@@ -1,7 +1,7 @@
 #
 # spec file for package hyprpaper
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global __builder ninja
 Name:           hyprpaper
 Summary:        Wayland wallpaper utility with IPC controls
-Version:        0.4.0
+Version:        0.6.0
 Release:        0
 License:        BSD-3-Clause
 URL:            https://github.com/hyprwm/hyprpaper
@@ -30,14 +30,16 @@ BuildRequires:  gcc-c++
 BuildRequires:  ninja
 BuildRequires:  pkgconfig(gtk-layer-shell-0)
 BuildRequires:  pkgconfig(hyprland-protocols)
+BuildRequires:  pkgconfig(hyprlang) >= 0.2.0
 BuildRequires:  pkgconfig(libglvnd)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libmagic)
+BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
 BuildRequires:  pkgconfig(wayland-server) >= 1.20.0
-BuildRequires:  pkgconfig(wlroots) >= 0.15.0
+BuildRequires:  pkgconfig(wlroots) >= 0.16.0
 BuildRequires:  pkgconfig(xwaylandproto)
 
 %description

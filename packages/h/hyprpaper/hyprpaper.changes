@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Apr  1 07:54:24 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 0.6.0:
+  Notes for packagers
+  * new dependency: hyprlang
+  Changes
+  * hyprpaper now uses hyprlang for config parsing
+  * A config file is no longer required
+  * Webp is now supported
+  * Big-endian systems are now supported
+  MRs
+  * doc(README): Write about required dependencies by @arijit79 in #111
+  * Fix nix build, update flake.lock by @AtaraxiaSjel in #112
+  * Add webp support by @tobiichi3227 in #113
+  * missing libwebp-devel for fedora by @condor0010 in #114
+  * fix: check path is empty by @tobiichi3227 in #116
+  * fix: build failed in big-endian system by @tobiichi3227 in #117
+  * Nix: add hyprlang by @fufexan in #121
+
+  update to version 0.5.0:
+  Changes
+  * fix: Read absolute path of symlinks
+  * internal: fix duplicate include of math
+  * feat: add splash_offset
+  * readme: update opensuse deps
+  * render: always draw a black background first
+  * ipc: allow multiple read from IPC
+  * fix: respect PREFIX in Makefile
+  * surface: set fully opaque
+  MRs
+  * fix: Read absolute path of symlinks by @slowsage in #90
+  * dupliacate include of math by @LamprosPitsillos in #95
+  * add "splash_offset" by @MightyPlaza in #98
+  * Update README.md by @uncomfyhalomacro in #99
+  * Always draw a black background behind the wallpaper by 
+    @FakeMichau in #100
+  * Allow multiple read from IPC + some refactor by @cylian914 in #102
+  * fix: respect PREFIX in Makefile by @czadowanie in #106
+
+-------------------------------------------------------------------
 Fri Oct 13 14:20:20 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@uncomfyhalomacro.pl>
 
 - Update to version 0.4.0:
