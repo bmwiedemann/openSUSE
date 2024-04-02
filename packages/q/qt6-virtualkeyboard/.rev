@@ -199,4 +199,13 @@
     <comment>Qt 6.6.3. Not built yet (forwarded request 1162337 from krop)</comment>
     <requestid>1162402</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>f195bf65522be737898b75abe8d84490</srcmd5>
+    <version>6.6.3</version>
+    <time>1712068662</time>
+    <user>anag+factory</user>
+    <comment>- Fix description of libQt6VirtualKeyboard6
+- Make the lib depend on the inputcontext plugin (boo#1222158)</comment>
+    <requestid>1163656</requestid>
+  </revision>
 </revisionlist>

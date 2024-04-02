@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-virtualkeyboard
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,10 +65,11 @@ QML files and plugins from the Qt 6 VirtualKeyboard module.
 
 %package -n libQt6VirtualKeyboard6
 Summary:        Qt 6 VirtualKeyboard library
+Requires:       %{name} >= %{version}
 
 %description -n libQt6VirtualKeyboard6
-The Qt SVG module provides functionality for displaying SVG images
-as a widget, and to create SVG files using drawing commands.
+Qt VirtualKeyboard provides an input framework and reference keyboard frontend
+for Qt 6.
 
 %package -n qt6-virtualkeyboard-devel
 Summary:        Qt 6 VirtualKeyboard library - Development files
@@ -90,8 +91,8 @@ Requires:       cmake(Qt6VirtualKeyboard) = %{real_version}
 This package provides private headers of libQt6VirtualKeyboard that do not have
 any ABI or API guarantees.
 
-### Private only library ###
 
+### Private only library ###
 %package -n libQt6HunspellInputMethod6
 Summary:        Qt 6 HunspellInputMethod private library
 
@@ -181,7 +182,6 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledTcime
 %{_qt6_mkspecsdir}/modules/qt_lib_virtualkeyboardsettings_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_virtualkeyboard_private.pri
 %{_qt6_pkgconfigdir}/Qt6VirtualKeyboardSettings.pc
-
 
 ### Private only library ###
 

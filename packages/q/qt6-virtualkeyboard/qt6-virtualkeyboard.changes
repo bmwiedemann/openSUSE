@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 29 20:59:03 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix description of libQt6VirtualKeyboard6
+- Make the lib depend on the inputcontext plugin (boo#1222158)
+
+-------------------------------------------------------------------
 Tue Mar 26 14:27:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.3:
