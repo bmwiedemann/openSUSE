@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Apr  1 09:10:00 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8
+  Backwards incompatibility with variants:
+  * The FUSE overlay variants have been removed in favor of
+    explicit variants. If you use variants on version v0.7.11 or
+    earlier, you may need to update your Tupfiles. See
+    https://gittup.org/tup/ex_explicit_variants.html for more
+    details.
+  New features:
+  * 'import' keyword to set a Tupfile variable to an environment
+    variable.
+  * 'tup compiledb' can create a compile_commands.json for
+    third-party tools to see compilation commands.
+  * 'tup commandline' shows the commandline used to compile a
+    file.
+  * 'tup generate' can support building in a separate build
+    directory (if the project supports building with variants).
+  * 'tup generate' can take an output list to limit what the
+    script generates (ie: a partial build script).
+  * A single Lua state is now re-used during parsing and doesn't
+    need to be reinitialized for every Lua-based Tupfile.
+  * Internal mtime tracking is now at nanosecond resolution
+    (where supported by the OS) instead of 1-second intervals.
+  Dependency updates:
+  * Internal Lua version is now 5.4.6
+  * Internal SQLite version is now 3.45.2
+  * Internal PCRE version is now PCRE2 10.42
+  * External PCRE dependency is now libpcre2 instead of libpcre
+    (default unless built with CONFIG_TUP_USE_SYSTEM_PCRE=n in
+    which case the internal version is used)
+  Bug fixes:
+  * Fixed a bug that results in tup_entry_rm called on tupid X,
+    which still has refcount=1
+  * ^o rules that fail with a monitor autoupdate no longer cause
+    infinite loops
+  * Deleted files are now removed from the transient_list.
+- Drop tup-add_archs.patch (no longer necessary)
+- Drop tup.rpmlintrc
+
+-------------------------------------------------------------------
 Sat May 15 19:18:48 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.7.11
