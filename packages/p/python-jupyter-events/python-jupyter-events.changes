@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 29 18:22:29 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.10.0
+  * Enable adding listeners to event before the event is registered
+    #97 (@Zsailer)
+
+-------------------------------------------------------------------
 Tue Feb  6 15:15:02 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add jupyter_events-py312-taskname.patch because we patched
