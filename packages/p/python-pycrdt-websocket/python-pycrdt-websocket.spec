@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycrdt-websocket
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-pycrdt-websocket
-Version:        0.12.6
+Version:        0.12.7
 Release:        0
 Summary:        WebSocket connector for pycrdt
 License:        MIT
@@ -31,13 +31,13 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiosqlite >= 0.18.0
 Requires:       python-anyio >= 3.6.2
-Requires:       python-pycrdt >= 0.8.1
+Requires:       python-pycrdt >= 0.8.7
 Provides:       python-pycrdt_websocket = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module aiosqlite >= 0.18.0}
 BuildRequires:  %{python_module anyio >= 3.6.2}
-BuildRequires:  %{python_module pycrdt >= 0.8.1}
+BuildRequires:  %{python_module pycrdt >= 0.8.7}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module uvicorn}

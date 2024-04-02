@@ -7,4 +7,13 @@
     <comment>requirement for jupyter-collaboration v2</comment>
     <requestid>1140723</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4727da192365b5b0b12db524b9d736a7</srcmd5>
+    <version>0.12.7</version>
+    <time>1712068848</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.12.7
+  * Maintenance and upkeep improvements</comment>
+    <requestid>1163598</requestid>
+  </revision>
 </revisionlist>
