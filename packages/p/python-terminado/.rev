@@ -190,4 +190,13 @@
   * drop Python 3.7</comment>
     <requestid>1135501</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b755ff0a0cb63a1d45212cd8223de38d</srcmd5>
+    <version>0.18.1</version>
+    <time>1712069023</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.1
+  * Maintenance and upkeep improvements</comment>
+    <requestid>1163601</requestid>
+  </revision>
 </revisionlist>
