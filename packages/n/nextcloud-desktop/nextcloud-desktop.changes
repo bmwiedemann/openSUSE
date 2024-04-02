@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 29 06:49:34 UTC 2024 - Natasha Ament <stacheldrahtje@gmail.com>
+
+- Update to version 3.12.3:
+  * use the proper name when reading system exclude config file by 
+    (gh#nextcloud/desktop#6586)
+  * context menu: do not recursively check pin and availability 
+    states by (gh#nextcloud/desktop#6587)
+  * properly compute if a folder is top level or child extern 
+    mounted by (gh#nextcloud/desktop#6590)
+  * adjust AppImage build script to the new build image 
+    by (gh#nextcloud/desktop#6591)
+
+-------------------------------------------------------------------
 Tue Mar 26 07:35:37 UTC 2024 - Max Lin <mlin@suse.com>
 
 - No longer needed .ini file on Leap 15.6 since Leap 15.6 have
