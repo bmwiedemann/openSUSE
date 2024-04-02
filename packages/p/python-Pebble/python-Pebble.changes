@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 22 21:01:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.7:
+  * issue #96: handle race condition under different interpreters
+  * issue #125: handle frozen classes as exceptions
+  * issue #127: handle unexpected errors when reading from pipe in
+                process decorators
+  * issue #128: allow different context from `multiprocessing` ones
+
+-------------------------------------------------------------------
 Wed Dec 27 13:52:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.6:

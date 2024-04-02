@@ -138,4 +138,12 @@
   * issue #124: handle `BaseException` in pools' workers</comment>
     <requestid>1135314</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8d496efb308cca53b7d25f05a0c40b41</srcmd5>
+    <version>5.0.7</version>
+    <time>1712068865</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1163617</requestid>
+  </revision>
 </revisionlist>
