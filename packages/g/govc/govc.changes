@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 30 10:19:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.36.2:
+  * chore: Update version.go for v0.36.2
+  * govc: snapshot.tree json output to stdout
+  * fix: endpoint url to bypass lookup service if envoy sidecar
+    enabled
+  * api: Add Downloadendpoint field in the library item file struct
+
+-------------------------------------------------------------------
 Sat Mar 16 16:47:13 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.36.1:
