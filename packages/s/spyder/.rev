@@ -684,4 +684,25 @@ rename the package from spyder3 to spyder.
     <comment></comment>
     <requestid>1154298</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>92abab51f9596c30b988eec230c71b7f</srcmd5>
+    <version>5.5.3</version>
+    <time>1712068818</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.5.3
+  * Fix critical error when starting IPython console kernels on
+    macOS and Linux in conda environments.
+- Release 5.5.2
+  * Activate environment for consoles that run in the same
+    environment as Spyder.
+  * Fix IPython kernel hangs when using a different graphic backend
+    than Inline.
+  * Fix check for updates mechanism when running Spyder from a
+    conda installation.
+- Add spyder-pr21939-qtawesome1.3.patch gh#spyder-ide/spyder#21939
+  but also allow 1.2
+- Add spyder-pr21942-pylint3.1.patch gh#spyder-ide/spyder#21942
+</comment>
+    <requestid>1163542</requestid>
+  </revision>
 </revisionlist>
