@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  2 05:32:45 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Apllied a patch(bsc#1220949,bsc#1221873)
+  * s390-tools-sles15sp6-01-parse-ipl-device-for-activation.patch
+
+-------------------------------------------------------------------
 Fri Mar 15 16:45:58 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a patch (bsc#1221072) 
