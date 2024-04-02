@@ -543,4 +543,12 @@
     <comment>- Update to 3.8.3:</comment>
     <requestid>1158270</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>6825c58a34d05ef22146ece5ef6717ec</srcmd5>
+    <version>3.9.1</version>
+    <time>1712068967</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.9.1</comment>
+    <requestid>1163726</requestid>
+  </revision>
 </revisionlist>
