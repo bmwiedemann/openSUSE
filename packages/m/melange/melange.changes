@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat Mar 30 10:14:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.10:
+  * chore: CRAN -> R
+  * docs(cran): Add build pipeline
+  * fix(cran): Support passing source dir as package
+  * chore(cran): Remove (now known) redundant fetch/install
+    pipelines
+  * feat(pipelines): Add support for fetching, building, and
+    installing R packages from CRAN
+  * Change dependency for python to be python-Maj.Min-base.
+  * build(deps): bump google.golang.org/api from 0.170.0 to 0.171.0
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump github.com/charmbracelet/log
+  * skip mounting resolv.conf for the docker runner
+  * build(deps): bump github.com/docker/docker
+  * Propagate user from image configuration
+  * build(deps): bump cloud.google.com/go/storage from 1.39.0 to
+    1.39.1
+  * build(deps): bump github.com/google/go-containerregistry
+  * build(deps): bump docker/login-action from 3.0.0 to 3.1.0
+  * build(deps): bump actions/checkout from 4.1.1 to 4.1.2
+  * build(deps): bump github.com/kubescape/go-git-url from 0.0.28
+    to 0.0.30
+  * build(deps): bump google.golang.org/api from 0.169.0 to 0.170.0
+  * build(deps): bump dagger.io/dagger from 0.10.1 to 0.10.2
+  * Switch to new octo-sts action (#1088)
+  * Move "executing:" logging to debug
+  * Keep symbols tables for fips builds
+  * Fix quotes
+  * pipelines/go: prefer to use netgo and osusergo by default
+  * pipelines/go/install: also trimpath like build
+  * pipelines/go: Strip by default
+  * pipelines/go: bump GOAMD64 to v2
+  * pipelines/go: allow setting microarchitecture level settings
+  * Update pkg/build/pipeline.go
+  * open debug session in the specific workdir
+  * Add Harden Runner audit configs
+  * appease linter
+  * build(deps): bump gitlab.alpinelinux.org/alpine/go from 0.9.0
+    to 0.10.0
+  * build(deps): bump google.golang.org/api from 0.168.0 to 0.169.0
+  * build(deps): bump github.com/kubescape/go-git-url from 0.0.27
+    to 0.0.28
+  * feat(pipelines): Add cargo build for rust packages
+  * WIP: remove files from SBOM
+  * Bump apko
+  * document builtin substitutions
+  * build(deps): bump gitlab.alpinelinux.org/alpine/go
+  * fix test.environment jsonschema struct tag
+
+-------------------------------------------------------------------
 Sun Mar 17 08:04:49 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.9:
