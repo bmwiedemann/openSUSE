@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 29 19:27:43 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7.0
+  * added ability to adjust the uCox parameter.
+  * allow setting the combined waveforms strength.
+  * enable libout123 by default if found.
+  * improved the ALSA backend.
+
+-------------------------------------------------------------------
 Tue Jan 16 18:48:19 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.6.2
