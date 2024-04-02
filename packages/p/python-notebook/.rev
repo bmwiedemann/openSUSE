@@ -362,4 +362,13 @@
 - Skip python39: jupyterlab no longer available (due to ipython)</comment>
     <requestid>1156027</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0a4e34a1fa47ca3a1128f940fc3fb305</srcmd5>
+    <version>7.1.2</version>
+    <time>1712068842</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.1.2
+  * Maintenance and upkeep improvements</comment>
+    <requestid>1163582</requestid>
+  </revision>
 </revisionlist>

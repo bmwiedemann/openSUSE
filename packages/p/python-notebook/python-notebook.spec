@@ -33,8 +33,9 @@ BuildArch:      noarch
 %else
 %bcond_with libalternatives
 %endif
+
 Name:           python-notebook%{psuffix}
-Version:        7.1.1
+Version:        7.1.2
 Release:        0
 Summary:        Jupyter Notebook interface
 License:        BSD-3-Clause
@@ -109,6 +110,7 @@ This package provides the jupyter components.
 %autosetup -p1 -n notebook-%{version}
 # We don't want to run selenium tests
 rm -rf notebook/tests/selenium
+sed -i 's/"--color=yes", //' pyproject.toml
 
 %build
 %if !%{with test}
