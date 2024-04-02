@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 29 18:20:02 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.7.2
+  * Update Release Scripts #396 (@blink1073)
+  * Enforce pytest 7 #393 (@blink1073)
+
+-------------------------------------------------------------------
 Tue Mar  5 15:14:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Skip tests for python 3.9: python-ipython is no longer available.

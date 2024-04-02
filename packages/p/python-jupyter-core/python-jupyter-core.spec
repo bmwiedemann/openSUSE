@@ -33,7 +33,7 @@
 %endif
 
 Name:           python-jupyter-core%{psuffix}
-Version:        5.7.1
+Version:        5.7.2
 Release:        0
 Summary:        Base package on which Jupyter projects rely
 License:        BSD-3-Clause
@@ -68,8 +68,8 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module jupyter-core = %{version}}
+BuildRequires:  %{python_module pytest >= 7 with %python-pytest < 8}
 BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
 
