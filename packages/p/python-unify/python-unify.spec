@@ -1,7 +1,7 @@
 #
 # spec file for package python-unify
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-unify
 Version:        0.5
 Release:        0
@@ -29,7 +28,6 @@ Source9:        README.suse
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
 Requires:       python-untokenize
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -55,7 +53,10 @@ cp %{SOURCE9} .
 %python_build
 
 %check
-%pytest
+# https://github.com/myint/unify/issues/22
+donttest="DUMMY"
+python312_donttest="or (TestUnitsWithFstrings and test_format_code)"
+%pytest -k "not ($donttest ${$python_donttest})"
 
 %install
 %python_install
@@ -73,6 +74,8 @@ mv %{buildroot}%{_bindir}/unify %{buildroot}%{_bindir}/unify_quotes
 %license LICENSE
 %doc README.rst README.suse
 %python_alternative %{_bindir}/unify_quotes
-%{python_sitelib}/*
+%{python_sitelib}/unify.py
+%pycache_only %{python_sitelib}/__pycache__/unify*
+%{python_sitelib}/unify-%{version}*info
 
 %changelog

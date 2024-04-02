@@ -41,4 +41,14 @@
     <comment></comment>
     <requestid>806962</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9e53522c8ea2106d152968f5b783a981</srcmd5>
+    <version>0.5</version>
+    <time>1712069032</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1161717 from mcalabkova
+
+- Skip failing tests on Python 3.12</comment>
+    <requestid>1164043</requestid>
+  </revision>
 </revisionlist>

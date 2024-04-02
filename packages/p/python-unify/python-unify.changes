@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 19 12:44:31 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Skip failing tests on Python 3.12
+
+-------------------------------------------------------------------
 Mon May 18 09:10:41 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
