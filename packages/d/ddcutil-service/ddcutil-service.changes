@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr  1 18:07:41 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
+
+- 1.0.3
+  - Reduce unnecessary logging.
+  - Improve the description of the service's signals in ddcutil-service.1.
+  - Correct the typo in option name --perfer-drm (it was mistakenly called --prefer-dma).
+  - For simple VCP-features, only return the low-byte, for some VDUs the high-byte might contain junk.
+
+-------------------------------------------------------------------
 Thu Feb 29 06:37:06 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Version 1.0.2

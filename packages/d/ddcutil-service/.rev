@@ -15,4 +15,17 @@
     <comment></comment>
     <requestid>1156257</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dee2869278932ba6db7a43705f004ccc</srcmd5>
+    <version>1.0.3</version>
+    <time>1712069006</time>
+    <user>anag+factory</user>
+    <comment>- 1.0.3
+  - Reduce unnecessary logging.
+  - Improve the description of the service's signals in ddcutil-service.1.
+  - Correct the typo in option name --perfer-drm (it was mistakenly called --prefer-dma).
+  - For simple VCP-features, only return the low-byte, for some VDUs the high-byte might contain junk.
+</comment>
+    <requestid>1163980</requestid>
+  </revision>
 </revisionlist>
