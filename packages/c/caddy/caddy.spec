@@ -66,8 +66,6 @@ go build ./cmd/%{name}
 # execute the binary as a basic check
 ./%{name} --help
 
-%sysusers_generate_pre %{SOURCE7} %{name} %{name}.conf
-
 %install
 install -d %{buildroot}/%{_sbindir}
 install -D -p -m 0755 %{name} %{buildroot}%{_bindir}/%{name}
@@ -89,6 +87,8 @@ install -D -p -m 0644 %{SOURCE4} %{buildroot}%{_datadir}/%{name}/index.html
 # bash completion
 install -D -p -m 0644 %{SOURCE5} %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 install -D -p -m 0644 %{SOURCE6} %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
+
+%sysusers_generate_pre %{SOURCE7} %{name} %{name}.conf
 
 %pre -f %{name}.pre
 %service_add_pre %{name}.service

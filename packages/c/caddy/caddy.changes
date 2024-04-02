@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 31 12:39:10 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix --no-check build
+
+-------------------------------------------------------------------
 Tue Feb  6 13:22:22 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:

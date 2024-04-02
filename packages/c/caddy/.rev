@@ -377,4 +377,12 @@
     <comment></comment>
     <requestid>1144656</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>acbc90a36865ede279d97e10d0a75860</srcmd5>
+    <version>2.7.6</version>
+    <time>1712068996</time>
+    <user>anag+factory</user>
+    <comment>Fix --no-check build (forwarded request 1163784 from bmwiedemann)</comment>
+    <requestid>1163949</requestid>
+  </revision>
 </revisionlist>
