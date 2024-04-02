@@ -49,7 +49,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-astropy%{psuffix}
-Version:        6.0.0
+Version:        6.0.1
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -62,7 +62,7 @@ Source100:      python-astropy-rpmlintrc
 # https://docs.astropy.org/en/v6.0/install.html#requirements
 BuildRequires:  %{python_module Cython >= 3 with %python-Cython < 3.1}
 BuildRequires:  %{python_module devel >= 3.9}
-BuildRequires:  %{python_module extension-helpers}
+BuildRequires:  %{python_module extension-helpers >= 1.0}
 BuildRequires:  %{python_module numpy-devel >= 1.25 with %python-numpy-devel < 2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
@@ -73,9 +73,9 @@ BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 3.13
-Requires:       python-astropy-iers-data >= 0.2023.10.30.0.29.53
+Requires:       python-astropy-iers-data >= 0.2024.2.26.0.28.55
 Requires:       python-packaging >= 19.0
-Requires:       python-pyerfa >= 2.0
+Requires:       python-pyerfa >= 2.0.1.1
 Requires:       (python-numpy >= 1.22 with python-numpy < 2)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -144,6 +144,7 @@ BuildRequires:  %{python_module pytest-mpl}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module sgp4 >= 2.3}
 BuildRequires:  %{python_module skyfield >= 1.20 if %python-base < 3.11}
+BuildRequires:  %{python_module threadpoolctl}
 # /SECTION
 %endif
 %python_subpackages

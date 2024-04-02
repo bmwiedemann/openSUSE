@@ -2067,4 +2067,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1161727</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>07d6a545768a427f5079e7d6bc8337cc</srcmd5>
+    <version>6.0.1</version>
+    <time>1712068831</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.0.1
+  ## Bug Fixes
+  ### astropy.coordinates
+  * Previously passing a SkyCoord instance to the
+    BaseCoordinateFrame separation() or separation_3d() methods
+    could produce wrong results, depending on what additional frame
+    attributes were defined on the SkyCoord, but now SkyCoord input
+    can be used safely. [#15659]
+  * Distance now accepts as parallax any angle-like value. This
+    includes types like Column which have a unit but are not
+    Quantity subclasses. [#15712]
+  * The new default for the class method SkyCoord.from_name() is to
+    look for coordinates first in SIMBAD, then in NED, and then in
+    VizieR, instead of having no specific order. [#16046]
+  ### astropy.io.ascii
+  * Reading of CDS header files with multi-line descriptions where
+    the continued line started with a number was broken. This is
+    now fixed. [#15617]
+  * Ensure that the names of mixin columns are properly propagated
+    as labels for the MRT format. [#15848]
+  * Fixed reading IPAC tables for long column type on some
+    platforms, e.g., Windows. [#15992]
+  ### astropy.io.fits
+  * Fix TDISP parsing for floating numbers. [#16007]
+  * Fix a crash when calling FITS writeto methods with stdout as
+    the output stream. [#16008]
+  * Fix TDISP parsing for floating numbers in formats ES / EN.
+    [#16015]
+  ### astropy.stats
+  * Fix a spurious warning when calling sigma_clipped_stats on a</comment>
+    <requestid>1163558</requestid>
+  </revision>
 </revisionlist>
