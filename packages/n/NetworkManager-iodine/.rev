@@ -88,4 +88,13 @@
   touches the build system.</comment>
     <requestid>1146784</requestid>
   </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>1390dd184afe81acbed2befce0c6b03c</srcmd5>
+    <version>1.2.0</version>
+    <time>1712068797</time>
+    <user>anag+factory</user>
+    <comment>- Add missing supplements(bsc#1220391):
+  + NMA subpackage: Main package and gnome-control-center (forwarded request 1163475 from JonathanKang)</comment>
+    <requestid>1163510</requestid>
+  </revision>
 </revisionlist>

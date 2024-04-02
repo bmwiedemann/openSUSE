@@ -52,6 +52,7 @@ Requires:       %{name} = %{version}-%{release}
 Provides:       %{name}-gnome = %{version}
 Obsoletes:      %{name}-gnome
 Supplements:    (%{name} and NetworkManager-applet)
+Supplements:    (%{name} and gnome-control-center)
 
 %description -n NetworkManager-applet-iodine
 A network manager VPN plugin that allows you to tunnel your connection

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 28 07:55:28 UTC 2024 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add missing supplements(bsc#1220391):
+  + NMA subpackage: Main package and gnome-control-center
+
+-------------------------------------------------------------------
 Thu Feb 15 09:58:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add NetworkManager-iodine-pkgconf-2.1.0.patch: Fix
