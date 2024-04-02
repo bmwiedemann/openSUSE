@@ -242,4 +242,13 @@ add: README.FAQ to answer some questions about Noto Fonts packaging
     <comment></comment>
     <requestid>1153755</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>65ce71587423b55adc258bf83541a2da</srcmd5>
+    <version>20240401</version>
+    <time>1712068666</time>
+    <user>anag+factory</user>
+    <comment>- Update to 20240401
+  * Fix Oriya interpolation issues</comment>
+    <requestid>1163820</requestid>
+  </revision>
 </revisionlist>
