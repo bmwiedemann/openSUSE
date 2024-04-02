@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar 28 15:03:18 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.1.1:
+  * New features
+    - nxpcrypto:
+      - add RSA-PSS support
+    - nxpdevhsm:
+      - support external devhsm provisioning
+  * Bugfixes
+    - dk6prog:
+      - fix DK6 operations
+    - nxpdevhsm:
+      - fix buffer address MC56
+    - nxpele:
+      - fix write fuse
+    - nxpimage:
+      - add advanced params setting to configurations
+        (padding, keys, timestamp, etc.)
+      - fix manifest hash digest KW45/K32W1
+
+-------------------------------------------------------------------
 Tue Mar 26 11:33:45 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python-spsdk-remove_pypemicro.patch to remove dependency on

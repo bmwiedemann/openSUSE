@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-spsdk
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Unified, reliable and easy to use SW library working across NXP MCU portfolio
 License:        BSD-3-Clause
