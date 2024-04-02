@@ -21,7 +21,7 @@
 %define lib_x509   libmbedx509-1
 %define _rname     mbedtls
 Name:           mbedtls-2
-Version:        2.28.7
+Version:        2.28.8
 Release:        0
 Summary:        Libraries for crypto and SSL/TLS protocols
 License:        Apache-2.0 OR GPL-2.0-or-later
@@ -135,8 +135,19 @@ LD_LIBRARY_PATH=%{buildroot}%{_libdir} \
 %doc ChangeLog README.md
 %dir %{_includedir}/mbedtls
 %dir %{_includedir}/psa
+%dir %{_includedir}/everest
+%dir %{_includedir}/everest/kremlib
+%dir %{_includedir}/everest/kremlin
+%dir %{_includedir}/everest/kremlin/internal
+%dir %{_includedir}/everest/vs2010
+%{_libdir}/pkgconfig/*.pc
 %{_includedir}/mbedtls/*.h
 %{_includedir}/psa/*.h
+%{_includedir}/everest/*.h
+%{_includedir}/everest/kremlib/*.h
+%{_includedir}/everest/kremlin/*.h
+%{_includedir}/everest/kremlin/internal/*.h
+%{_includedir}/everest/vs2010/*.h
 %{_libdir}/libmbedtls.so
 %{_libdir}/libmbedcrypto.so
 %{_libdir}/libmbedx509.so
