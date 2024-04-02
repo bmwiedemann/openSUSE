@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package lua-linenoise
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,10 +34,11 @@ Summary:        Lua binding for the linenoise command line library
 License:        MIT
 Group:          Development/Languages/Other
 URL:            https://github.com/hoelzro/lua-linenoise
-Source:         lua-linenoise-%{version}.tar.xz
-BuildRequires:  lua-macros
-BuildRequires:  %{flavor}-luarocks
+Source:         lua-linenoise-%{version}.tar.zst
 BuildRequires:  %{flavor}-devel
+BuildRequires:  %{flavor}-luarocks
+BuildRequires:  lua-macros
+BuildRequires:  zstd
 Requires:       %{flavor}
 %lua_provides
 %if "%{flavor}" == ""
@@ -63,6 +64,8 @@ things like UTF-8 support and ANSI terminal escape sequence detection.
 
 %install
 %luarocks_install "%{mod_name}-%{rock_version}.linux-%{luarock_arch}.rock"
+
+%check
 
 %files
 %{lua_archdir}
