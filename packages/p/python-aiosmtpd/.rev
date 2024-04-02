@@ -124,4 +124,14 @@
 </comment>
     <requestid>1157868</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>d281ef2418645b171d89b6fffa514112</srcmd5>
+    <version>1.4.5</version>
+    <time>1712068996</time>
+    <user>anag+factory</user>
+    <comment>- Reenable tests for tumbleweed and Leap. Adds the
+  python-pytest-asyncio build requirements for tests and ignore some
+  tests that are failing for Leap but not for Factory.</comment>
+    <requestid>1163947</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  1 12:22:50 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Reenable tests for tumbleweed and Leap. Adds the
+  python-pytest-asyncio build requirements for tests and ignore some
+  tests that are failing for Leap but not for Factory.
+
+-------------------------------------------------------------------
 Thu Mar 14 07:06:26 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file.

@@ -39,6 +39,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module atpublic}
 BuildRequires:  %{python_module attrs}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
@@ -74,10 +75,16 @@ sed -i '/--cov=/d' pytest.ini
 %python_clone -a %{buildroot}%{_bindir}/aiosmtpd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if 0%{?sle_version} && 0%{?sle_version} >= 150400
 %check
-%pytest
+ignore=""
+
+%if 0%{?sle_version}
+# One of the tests in this file breaks the tests client state for
+# Leap, so it's ignored for now.
+ignore="--ignore aiosmtpd/tests/test_server.py"
 %endif
+
+%pytest $ignore
 
 %post
 %python_install_alternative aiosmtpd
