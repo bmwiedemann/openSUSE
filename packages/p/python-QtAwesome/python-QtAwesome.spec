@@ -1,7 +1,7 @@
 #
 # spec file for package python-QtAwesome
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 %{?sle15_python_module_pythons}
-%define skip_python2 1
 Name:           python-QtAwesome
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        FontAwesome icons in PyQt and PySide applications
 License:        MIT
 URL:            https://github.com/spyder-ide/qtawesome
 Source:         https://files.pythonhosted.org/packages/source/Q/QtAwesome/QtAwesome-%{version}.tar.gz
 BuildRequires:  %{python_module QtPy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest-xvfb}
@@ -39,8 +40,9 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-QtPy
+Provides:       python-qtawesome = %{version}-%{release}
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,10 +58,10 @@ library by Rick Blommers.
 dos2unix CHANGELOG.md README.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/qta-browser
 
@@ -75,7 +77,8 @@ dos2unix CHANGELOG.md README.md
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGELOG.md README.md
-%{python_sitelib}/*
+%{python_sitelib}/qtawesome
+%{python_sitelib}/QtAwesome-%{version}.dist-info
 %python_alternative %{_bindir}/qta-browser
 
 %changelog
