@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 25 09:07:45 UTC 2024 - Elisei Roca <eroca@suse.com>
+
+- Update to version 3.5.12:
+  * version: bump up to 3.5.12
+  * Bump golang.org/x/crypto to v0.17+ to address CVE-2023-48795
+  * test: fix TestHashKVWhenCompacting: ensure all goroutine finished
+  * print error log when creating peer listener failed
+  * mvcc: Printing etcd backend database related metrics inside scheduleCompaction function
+  * dependency: update go version to 1.20.13
+  * commit bbolt transaction if there is any pending deleting operations
+  * add tests to test tx delete consistency.
+  * Don't flock snapshot files
+  * Backport adding digest for etcd base image.
+  * Add a unit tests and missing flags in etcd help.
+  * Add missing flag in etcd help.
+  * Backport testutils.ExecuteUntil to 3.5 branch
+  * member replace e2e test
+  * Check if be is nil to avoid panic when be is overriden with nil by recoverSnapshotBackend on line 517
+  * Don't redeclare err and snapshot variable, fixing validation of consistent index and closing database on defer
+  * test: enable gofail in release e2e test.
+  * [3.5] backport health check e2e tests.
+  * tests: Extract e2e cluster setup to separate package
+
+-------------------------------------------------------------------
 Tue Feb  6 08:11:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop go_provides macro: it is guarded by if suse_version <= 1110,
@@ -293,7 +317,7 @@ Thu Apr 28 13:35:37 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
   this allows the user to easily add things like "--enable-v2=true"
 
 -------------------------------------------------------------------
-Wed Apr 20 13:18:23 UTC 2022 - eroca@suse.com
+Wed Apr 20 13:18:23 UTC 2022 - Elisei Roca <eroca@suse.com>
 
 - Update to version 3.5.3:
   https://github.com/etcd-io/etcd/compare/v3.5.2...v3.5.3
