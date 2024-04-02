@@ -2082,6 +2082,9 @@ unsorted:
   - cifs-utils-devel 
   - cil 
   - cilium-cli 
+  - cilium-cli-bash-completion 
+  - cilium-cli-fish-completion 
+  - cilium-cli-zsh-completion 
   - cim-schema 
   - cinema 
   - cinema-lang 
@@ -7224,6 +7227,12 @@ unsorted:
   - gnumeric-devel 
   - gnumeric-doc 
   - gnumeric-lang 
+  - gnunet 
+  - gnunet-devel 
+  - gnunet-fuse 
+  - gnunet-lang 
+  - gnunet-messenger-cli 
+  - gnunet-messenger-gtk 
   - gnuplot 
   - gnuplot-doc 
   - gnuradio 
@@ -7517,8 +7526,6 @@ unsorted:
   - google-noto-sans-soyombo-fonts 
   - google-noto-sans-sundanese-fonts 
   - google-noto-sans-sylotinagri-fonts 
-  - google-noto-sans-symbols-fonts 
-  - google-noto-sans-symbols2-fonts 
   - google-noto-sans-syriac-fonts 
   - google-noto-sans-syriaceastern-fonts 
   - google-noto-sans-syriacwestern-fonts 
@@ -12177,7 +12184,7 @@ unsorted:
   - libcroco-devel 
   - libcrossguid0 
   - libcryptmount-devel 
-  - libcrypto52 
+  - libcrypto53 
   - libcryptopp-devel 
   - libcryptopp8_9_0 
   - libcryptsetup-devel 
@@ -12542,6 +12549,27 @@ unsorted:
   - libext2fs-devel-32bit 
   - libext2fs-devel-static 
   - libext2fs2-32bit 
+  - libextractor 
+  - libextractor-devel 
+  - libextractor-lang 
+  - libextractor-plugins 
+  - libextractor-plugins-archive 
+  - libextractor-plugins-base 
+  - libextractor-plugins-exiv2 
+  - libextractor-plugins-flac 
+  - libextractor-plugins-gif 
+  - libextractor-plugins-gstreamer 
+  - libextractor-plugins-html 
+  - libextractor-plugins-jpeg 
+  - libextractor-plugins-mime 
+  - libextractor-plugins-mpeg 
+  - libextractor-plugins-ogg 
+  - libextractor-plugins-ole2 
+  - libextractor-plugins-rpm 
+  - libextractor-plugins-thumbnailgtk 
+  - libextractor-plugins-tiff 
+  - libextractor3 
+  - libextractor_common1 
   - libexttextcat-devel 
   - libexttextcat-tools 
   - libf2c0 
@@ -13013,6 +13041,57 @@ unsorted:
   - libgnt-devel 
   - libgnt0 
   - libgnuastro20 
+  - libgnunetarm2 
+  - libgnunetblock0 
+  - libgnunetblockgroup0 
+  - libgnunetcadet7 
+  - libgnunetchat 
+  - libgnunetchat-devel 
+  - libgnunetconsensus0 
+  - libgnunetcore0 
+  - libgnunetcoretesting0 
+  - libgnunetcurl0 
+  - libgnunetdatacache0 
+  - libgnunetdatastore1 
+  - libgnunetdht4 
+  - libgnunetdid0 
+  - libgnunetdns0 
+  - libgnunetfs2 
+  - libgnunetgns0 
+  - libgnunetgnsrecord0 
+  - libgnunetgnsrecordjson0 
+  - libgnunethello0 
+  - libgnunetidentity1 
+  - libgnunetjson0 
+  - libgnunetmessenger0 
+  - libgnunetmessengertesting0 
+  - libgnunetnamecache0 
+  - libgnunetnamestore0 
+  - libgnunetnatauto0 
+  - libgnunetnatnew2 
+  - libgnunetnse0 
+  - libgnunetpeerstore0 
+  - libgnunetpq5 
+  - libgnunetreclaim0 
+  - libgnunetregex3 
+  - libgnunetregexblock1 
+  - libgnunetrest0 
+  - libgnunetrevocation0 
+  - libgnunetscalarproduct0 
+  - libgnunetsecretsharing0 
+  - libgnunetset0 
+  - libgnunetseti0 
+  - libgnunetsetu0 
+  - libgnunetsq0 
+  - libgnunetstatistics2 
+  - libgnunettesting1 
+  - libgnunettransportapplication0 
+  - libgnunettransportcommunicator0 
+  - libgnunettransportcore0 
+  - libgnunettransportmonitor0 
+  - libgnunettransporttesting2-0 
+  - libgnunetutil16 
+  - libgnunetvpn0 
   - libgnuradio-3_10_9 
   - libgnuradio-funcube-devel 
   - libgnuradio-funcube3_10_0 
@@ -14290,7 +14369,7 @@ unsorted:
   - libnfc-devel 
   - libnfc-tools 
   - libnfc6 
-  - libnfdumplibnfdump-1_7_3 
+  - libnfdumplibnfdump-1_7_4 
   - libnfnetlink-devel 
   - libnfnetlink0-32bit 
   - libnfs-devel 
@@ -14354,6 +14433,9 @@ unsorted:
   - libnsl-devel 
   - libnsl1 
   - libnsl1-32bit 
+  - libnss_gns2 
+  - libnss_gns4-2 
+  - libnss_gns6-2 
   - libnss_nis2 
   - libnss_slurm2 
   - libnss_usrfiles2-32bit 
@@ -15768,7 +15850,7 @@ unsorted:
   - libssh2-1-32bit 
   - libssh2-devel 
   - libssh4-32bit 
-  - libssl55 
+  - libssl56 
   - libssr-glinject 
   - libsss_certmap-devel 
   - libsss_idmap-devel 
@@ -16005,7 +16087,7 @@ unsorted:
   - libtinyxml2-9 
   - libtirpc-devel 
   - libtirpc3-32bit 
-  - libtls28 
+  - libtls29 
   - libtntdb-devel 
   - libtntdb5 
   - libtolua++-5_1-1 
@@ -17615,6 +17697,8 @@ unsorted:
   - marisa-devel 
   - markdownpart 
   - markdownpart-lang 
+  - marknote 
+  - marknote-lang 
   - mate-applet-appmenu 
   - mate-applet-dock 
   - mate-applet-dock-lang 
@@ -17914,8 +17998,6 @@ unsorted:
   - maven-surefire-report-plugin 
   - maven-surefire-report-plugin-bootstrap 
   - maven-test-tools 
-  - maven-verifier 
-  - maven-verifier-javadoc 
   - maven-wagon-file 
   - maven-wagon-ftp 
   - maven-wagon-http 
@@ -25495,6 +25577,7 @@ unsorted:
   - python310-o2sclpy 
   - python310-oauthlib 
   - python310-objgraph 
+  - python310-objsize 
   - python310-oci-sdk 
   - python310-octave-kernel 
   - python310-odfpy 
@@ -28983,6 +29066,7 @@ unsorted:
   - python311-nxapi-plumbing 
   - python311-o2sclpy 
   - python311-objgraph 
+  - python311-objsize 
   - python311-oci-sdk 
   - python311-octave-kernel 
   - python311-odfpy 
@@ -32504,6 +32588,7 @@ unsorted:
   - python312-o2sclpy 
   - python312-oauthlib 
   - python312-objgraph 
+  - python312-objsize 
   - python312-oci-sdk 
   - python312-octave-kernel 
   - python312-odfpy 
@@ -33738,6 +33823,7 @@ unsorted:
   - python312-unicodecsv 
   - python312-unicodedata2 
   - python312-unidiff 
+  - python312-unify 
   - python312-uniseg 
   - python312-unittest-mixins 
   - python312-unittest-xml-reporting 
@@ -33966,7 +34052,6 @@ unsorted:
   - python39-32bit 
   - python39-WSME 
   - python39-Wand 
-  - python39-anyio3 
   - python39-audioread 
   - python39-autobahn 
   - python39-base 
@@ -33978,7 +34063,6 @@ unsorted:
   - python39-dfwinreg 
   - python39-doc 
   - python39-doc-devhelp 
-  - python39-falcon 
   - python39-idle 
   - python39-librosa 
   - python39-mitmproxy-wireguard 
@@ -33990,12 +34074,10 @@ unsorted:
   - python39-pony 
   - python39-pycapnp 
   - python39-pydash 
-  - python39-pydle 
   - python39-pygit2 
   - python39-pypandoc 
   - python39-pyrad 
   - python39-python-for-android 
-  - python39-python-lsp-server 
   - python39-pyvmomi 
   - python39-rss2email 
   - python39-scikit-umfpack 
@@ -34003,7 +34085,6 @@ unsorted:
   - python39-testsuite 
   - python39-tk 
   - python39-tools 
-  - python39-unify 
   - pyzo 
   - pyzologo 
   - q4wine 
@@ -34536,7 +34617,6 @@ unsorted:
   - qt6-tools-qdoc 
   - qt6-uitools-devel 
   - qt6-uitools-private-devel 
-  - qt6-virtualkeyboard 
   - qt6-virtualkeyboard-devel 
   - qt6-virtualkeyboard-docs-html 
   - qt6-virtualkeyboard-docs-qch 
@@ -35919,6 +35999,8 @@ unsorted:
   - skelcd-openSUSE-non-OSS 
   - ski 
   - skkdic-extra 
+  - skladnik 
+  - skladnik-lang 
   - skopeo 
   - skopeo-bash-completion 
   - skopeo-fish-completion 
@@ -47232,6 +47314,7 @@ unsorted:
   - wire 
   - wireguard-tools 
   - wireplumber-devel 
+  - wireplumber-doc 
   - wireshark 
   - wireshark-devel 
   - wireshark-plugin-libvirt 
