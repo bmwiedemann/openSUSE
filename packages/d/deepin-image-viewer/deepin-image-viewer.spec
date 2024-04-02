@@ -32,10 +32,7 @@ Group:          Productivity/Graphics/Viewers
 URL:            https://github.com/linuxdeepin/deepin-image-viewer
 Source0:        https://github.com/linuxdeepin/deepin-image-viewer/archive/%{version}/%{name}-%{version}.tar.gz
 Source99:       %{name}.appdata.xml
-%if 0%{?suse_version} > 1500
-# PATCH-FIX-UPSTREAM update-libraw-api.patch hillwood@opensuse.org - Update api for libraw
 Patch0:         update-libraw-api.patch
-%endif
 BuildRequires:  deepin-gettext-tools
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base

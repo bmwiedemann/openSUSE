@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 29 09:06:33 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Refactor update-libraw-api.patch make it works between openSUSE
+  products
+
+-------------------------------------------------------------------
 Sat Jan 28 07:26:47 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add update-libraw-api.patch, update api for libraw 

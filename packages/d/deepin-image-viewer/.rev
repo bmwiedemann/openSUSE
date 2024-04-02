@@ -79,4 +79,12 @@
 - Drop fix-library-link.patch (forwarded request 1061715 from hillwood)</comment>
     <requestid>1061716</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4ad657bf24eb2d9630bdb0bb7fc9fbfd</srcmd5>
+    <version>5.9.9</version>
+    <time>1712068955</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1163697</requestid>
+  </revision>
 </revisionlist>
