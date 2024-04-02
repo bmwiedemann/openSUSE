@@ -15,4 +15,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1145063</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8b61320f377a8210ab1a7e39343d97ac</srcmd5>
+    <version>2.0.7</version>
+    <time>1712069058</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.0.7:
+  * Update Pegasus Focuscube
+  * New driver for DIY dew controllaer cheapodc
+  * Weather interface refactor
+  * Driver for Wnaderer Box and Cover products
+  * Initial release of Alluno TCS2 driver
+</comment>
+    <requestid>1164121</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  2 12:12:28 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.7:
+  * Update Pegasus Focuscube
+  * New driver for DIY dew controllaer cheapodc
+  * Weather interface refactor
+  * Driver for Wnaderer Box and Cover products
+  * Initial release of Alluno TCS2 driver
+
+-------------------------------------------------------------------
 Thu Feb  1 07:20:31 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.0.6:

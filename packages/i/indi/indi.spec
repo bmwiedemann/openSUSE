@@ -22,13 +22,13 @@
 
 %define so_ver 2
 Name:           indi
-Version:        2.0.6
+Version:        2.0.7
 Release:        0
 Summary:        Instrument Neutral Distributed Interface
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Astronomy
 URL:            https://www.indilib.org/
-Source0:        https://github.com/indilib/indi/archive/v%{version}.tar.gz#/indi-%{version}.tar.gz
+Source0:        https://github.com/indilib/indi/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        indi-rpmlintrc
 BuildRequires:  cmake
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
