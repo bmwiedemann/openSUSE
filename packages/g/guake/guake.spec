@@ -23,7 +23,7 @@ Version:        3.10
 Release:        0
 Summary:        Drop-down terminal for GNOME
 License:        GPL-2.0-or-later
-URL:            http://guake-project.org/
+URL:            https://guake.github.io/
 Source0:        https://files.pythonhosted.org/packages/source/g/guake/guake-%{version}.tar.gz
 # Needed to install desktop app supporting files to FHS location; the PyPI
 # source misses this, being geared towards installing everything to python module dir
