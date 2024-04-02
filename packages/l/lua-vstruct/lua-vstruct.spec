@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package lua-vstruct
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,16 +20,17 @@
 %define mod_name vstruct
 %define rock_version 2.1.1-1
 
-Version:        2.1.1+git2
+Version:        2.2.0
 Release:        0
 Summary:        Lua library to manipulate binary data
 License:        MIT
 Group:          Development/Languages/Other
 URL:            https://github.com/ToxicFrog/vstruct
-Source:         %{mod_name}-%{version}.tar.xz
-BuildRequires:  lua-macros
-BuildRequires:  %{flavor}-luarocks
+Source:         %{mod_name}-%{version}.tar.zst
 BuildRequires:  %{flavor}-devel
+BuildRequires:  %{flavor}-luarocks
+BuildRequires:  lua-macros
+BuildRequires:  zstd
 Requires:       %{flavor}
 %lua_provides
 %if "%{flavor}" == ""
@@ -52,6 +53,8 @@ A Lua library for packing and unpacking binary data, supporting arbitrary
 
 %install
 %luarocks_install *.rock
+
+%check
 
 %files
 %{lua_noarchdir}/%{mod_name}

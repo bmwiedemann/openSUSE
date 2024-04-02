@@ -16,4 +16,14 @@
 </comment>
     <requestid>1061055</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c0a8e8500c698b1b02f7a514621adc46</srcmd5>
+    <version>2.2.0</version>
+    <time>1712068861</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.2.0
+  * Backreference support added
+- Switch from xz compression to zstd</comment>
+    <requestid>1163830</requestid>
+  </revision>
 </revisionlist>
