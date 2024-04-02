@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 01 12:50:47 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1711720670.566a51a5:
+  * Bump d3-time-format from 2.1.1 to 4.1.0
+  * Remove obsolete FIXME in OpenQA::Worker
+  * Use signatures in complete OpenQA::Worker
+  * worker: Extract method 'store_package_list'
+
+-------------------------------------------------------------------
 Thu Mar 28 14:32:52 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1711634904.3738335c:
