@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 30 08:28:56 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to 1.62.1:
+  * Send load balancing hint HTTP request header
+  * Fixed: Kubernetes operator proxies should not accept subnet routes
+
+-------------------------------------------------------------------
 Thu Mar 14 03:13:54 UTC 2024 - rrahl0@proton.me
 
 - update to 1.62.0:
