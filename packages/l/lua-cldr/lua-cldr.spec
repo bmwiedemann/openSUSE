@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package lua-cldr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,12 @@ Summary:        Unicode CLDR data and Lua interface
 License:        MIT AND Unicode-TOU
 Group:          Development/Languages/Other
 URL:            https://github.com/alerque/cldr-lua
-Source0:        %{mod_name}-lua-%{version}.tar.xz
-BuildRequires:  lua-macros
+Source0:        %{mod_name}-lua-%{version}.tar.zst
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luarocks
 BuildRequires:  %{flavor}-penlight
+BuildRequires:  lua-macros
+BuildRequires:  zstd
 %lua_provides
 Requires:       %{flavor}
 Requires:       %{flavor}-penlight
@@ -56,6 +57,8 @@ repository of locale data available.
 
 %install
 %luarocks_install *.rock
+
+%check
 
 %files
 %license %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc/LICENSE
