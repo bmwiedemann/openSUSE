@@ -87,4 +87,13 @@ This depends on recently checked into tw rpmlint whitelisting - should be &quot;
   - NMA subpackage: Main package and NMA (forwarded request 1130476 from gmbr3)</comment>
     <requestid>1130774</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>56f54a98592e13a148cfd8b9ab3d0bef</srcmd5>
+    <version>1.2.16</version>
+    <time>1712068793</time>
+    <user>anag+factory</user>
+    <comment>- Add missing supplements(bsc#1220391):
+  + NMA subpackage: Main package and gnome-control-center (forwarded request 1163469 from JonathanKang)</comment>
+    <requestid>1163504</requestid>
+  </revision>
 </revisionlist>
