@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 29 14:13:52 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.1:
+  * Fix skip escaping some unicode math symbols #109
+  * Fix functions crashing with libqalculate 5 #117
+
+-------------------------------------------------------------------
 Sat Apr 29 08:15:57 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.2.0:

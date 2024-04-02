@@ -146,4 +146,14 @@
   * Fix memory leak from #66</comment>
     <requestid>1083618</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>047ddaee7c786b77cb5b82e1be505e72</srcmd5>
+    <version>2.2.1</version>
+    <time>1712068816</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.2.1:
+  * Fix skip escaping some unicode math symbols #109
+  * Fix functions crashing with libqalculate 5 #117</comment>
+    <requestid>1163544</requestid>
+  </revision>
 </revisionlist>
