@@ -7,4 +7,13 @@
     <comment>New package see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/RCBCUEVNJNU5VKXU4JHHQSPTVZQFJMBS/</comment>
     <requestid>1148370</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>48a1ecc7ce76c7aa9b8619ad5f0087e0</srcmd5>
+    <version>0.16.0</version>
+    <time>1712069027</time>
+    <user>anag+factory</user>
+    <comment>- Reflow spec file.
+- Skip a test broken by new trio.</comment>
+    <requestid>1164000</requestid>
+  </revision>
 </revisionlist>

@@ -1,5 +1,5 @@
 #
-# spec file for package python-Hypercorn
+# spec file for package python-hypercorn
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -17,7 +17,6 @@
 
 
 # avoid taskgroup backports
-%define skip_python39 1
 %define skip_python310 1
 Name:           python-hypercorn
 Version:        0.16.0
@@ -26,21 +25,21 @@ Summary:        A ASGI Server based on Hyper libraries and inspired by Gunicorn
 License:        MIT
 URL:            https://github.com/pgjones/hypercorn/
 Source:         https://github.com/pgjones/hypercorn/archive/refs/tags/%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  %{python_module exceptiongroup >= 1.1.0}
 BuildRequires:  %{python_module h11}
 BuildRequires:  %{python_module h2 >= 3.1.0}
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  %{python_module priority}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-trio}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module trio >= 0.22.0}
 BuildRequires:  %{python_module wsproto >= 0.14.0}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-exceptiongroup >= 1.1.0
 Requires:       python-h11
 Requires:       python-h2 >= 3.1.0
@@ -64,9 +63,6 @@ sed -i 's/--no-cov-on-fail//' pyproject.toml
 %build
 %pyproject_wheel
 
-%check
-%pytest
-
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}
@@ -75,10 +71,9 @@ sed -i 's/--no-cov-on-fail//' pyproject.toml
 %python_expand chmod -x %{buildroot}/%{$python_sitelib}/hypercorn/protocol/h11.py
 %python_expand chmod -x %{buildroot}/%{$python_sitelib}/hypercorn/protocol/h2.py
 
-%files %{python_files}
-%{python_sitelib}/hypercorn
-%{python_sitelib}/hypercorn-%{version}.dist-info
-%python_alternative %{_bindir}/hypercorn
+%check
+# Broken with new trio
+%pytest -k 'not test_startup_failure'
 
 %post
 %python_install_alternative hypercorn
@@ -86,5 +81,9 @@ sed -i 's/--no-cov-on-fail//' pyproject.toml
 %postun
 %python_uninstall_alternative hypercorn
 
+%files %{python_files}
+%{python_sitelib}/hypercorn
+%{python_sitelib}/hypercorn-%{version}.dist-info
+%python_alternative %{_bindir}/hypercorn
 
 %changelog
