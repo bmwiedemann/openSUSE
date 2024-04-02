@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Mar 31 09:58:03 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.2.15:
+  * Fix for fixed-order NLO results (enabled using QCD_NLO_Mode:
+    Fixed_Order).
+- Changes from version 2.2.14:
+  * Fix: Reinstate clustering in OneHEvent to fix physics issue.
+- Changes from version 2.2.13:
+  * New:
+    - Expand pilot technology to scale setting (using the new
+      PILOT scale setter) and to loop generators (using the
+      process Pilot_Loop_Generator setting) !564 !461
+    - Allow to not read in partonic decay data, e.g. if one wants
+      to select a single B or D decay !537
+  * Technical/performance improvements:
+    - Make sure that HepMC3 output only correctly reports two beam
+      particles !572
+    - Use consistent order of weight names in HepMC3 output as in
+      HepMC2 output !459
+    - Resurrect HepMC3_Short output format !512
+    - Adapt pilot run strategy to be compatible with (adapted)
+      external RNG !497
+    - Fix memory leak in fusing hooks !403
+  * Fixes of runtime issues:
+    - Fix for missing tau spin correlations !574
+    - Fix crash when using a neutron-neutron beam setup !553
+    - Fix PDF book-keeping issues in the event output when using
+      the pilot run !508 !532
+    - Fix potential unit (e.g. MeV vs. GeV) inconsistency for
+      correlated subevents !512
+    - Throw exception instead of silently reweighting AlphaS input
+      scales where it is not appropriate !455
+    - Fix crash when using weighted event generation without any
+      on-the-fly variations !473
+    - Reset non-perturbative event phases after Retry_Event,
+      removing the occurence of spurious tau decays !526
+- Add SHERPA-MC-swig-noruntime.patch: Drop `-noruntime` from swig
+  command line as it has been deprecated since version 4.0 and
+  dropped from 4.2.x.
+
+-------------------------------------------------------------------
 Thu Jun 30 13:10:22 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add Git-Clone URL

@@ -1,7 +1,7 @@
 #
 # spec file for package SHERPA-MC
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _lto_cflags %{nil}
 
 Name:           SHERPA-MC
-Version:        2.2.12
+Version:        2.2.15
 Release:        0
 Summary:        MC event generator for Simulation of High-Energy Reactions of PArticles
 License:        GPL-2.0-or-later AND GPL-3.0-only
@@ -32,6 +32,8 @@ Source:         https://www.hepforge.org/downloads/sherpa/%{name}-%{version}.tar
 Patch0:         SHERPA-MC-no-return-in-non-void-function.patch
 # PATCH-FIX-UPSTREAM SHERPA-MC-ignore-distutils-deprecation-warning.patch badshah400@gmail.com -- Disable deprecation warning when importing distutils from python3.10, so that autotools can still work
 Patch1:         SHERPA-MC-ignore-distutils-deprecation-warning.patch
+# PATCH-FIX-UPSTREAM SHERPA-MC-swig-noruntime.patch badshah400@gmail.com -- Drop `-noruntime` from swig command line
+Patch2:         SHERPA-MC-swig-noruntime.patch
 BuildRequires:  HepMC-devel >= 3.0
 BuildRequires:  LHAPDF-devel
 BuildRequires:  Rivet-devel

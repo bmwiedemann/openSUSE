@@ -1,0 +1,11 @@
+Index: SHERPA-MC-2.2.15/m4/ax_swig_multi_module_support.m4
+===================================================================
+--- SHERPA-MC-2.2.15.orig/m4/ax_swig_multi_module_support.m4
++++ SHERPA-MC-2.2.15/m4/ax_swig_multi_module_support.m4
+@@ -52,5 +52,5 @@
+ AU_ALIAS([SWIG_MULTI_MODULE_SUPPORT], [AX_SWIG_MULTI_MODULE_SUPPORT])
+ AC_DEFUN([AX_SWIG_MULTI_MODULE_SUPPORT],[
+         AC_REQUIRE([AX_PKG_SWIG])
+-        SWIG="$SWIG -noruntime"
++        SWIG="$SWIG"
+ ])
