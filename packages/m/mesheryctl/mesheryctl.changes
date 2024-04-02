@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Mar 30 10:30:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.40:
+  * General
+    - Relationship between AWS FieldExport and k8s resources.
+      @RipulHandoo (#10535)
+    - Add meshery-nighthawk helm chart @lekaf974 (#10581)
+  * Meshery CLI
+    - feat: Mesheryctl Connections command @RipulHandoo (#10516)
+  * Meshery UI
+    - Improve some UI elements in dashboard @sudhanshutech (#10628)
+    - UI Extension: GitHub Action - Performance Analysis
+      @leecalcote (#10625)
+    - [RTK] Migrate User component to rtk @dottharun (#10270)
+    - fix(MesheryPatterns): update designs data when updating
+      information through info modal @dragon-slayer875 (#10620)
+  * Documentation
+    - feat(docs): add error code name to search link (#10635)
+      @elasticspoon (#10638)
+    - [DOCS] replace backticks with bold formatting @iArchitSharma
+      (#10633)
+    - [Docs]: Updating Docs for Contributing to Model Relationships
+      @pandeyshubham03 (#10627)
+    - Suggested Reading added in default Layout @iArchitSharma
+      (#10611)
+
+-------------------------------------------------------------------
+Sat Mar 30 10:18:07 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.39:
+  * Meshery UI
+    - Revert "Bump react-dom from 17.0.2 to 18.2.0 in /ui"
+      @Yashsharma1911 (#10622)
+
+-------------------------------------------------------------------
 Tue Mar 26 07:26:47 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.38:
