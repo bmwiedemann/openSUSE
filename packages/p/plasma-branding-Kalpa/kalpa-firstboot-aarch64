@@ -7,10 +7,10 @@ run_task() {
     local label="$2"
     shift 2
 
-    qdbus-qt5 $dbusRef setLabelText "$label"
+    qdbus6 $dbusRef setLabelText "$label"
 
     if eval "$@"; then
-        qdbus-qt5 $dbusRef Set "" value "$step"
+        qdbus6 $dbusRef Set "" value "$step"
     else
         kdialog --error "Operation Failed: $label"
         exit 1
@@ -24,4 +24,4 @@ run_task 4 "Installing Ark" /usr/bin/flatpak install --user --noninteractive fla
 
 run_task 5 "Cleaning up" rm -f ~/.config/autostart/kalpa-firstboot.desktop
 
-qdbus-qt5 $dbusRef close
+qdbus6 $dbusRef close

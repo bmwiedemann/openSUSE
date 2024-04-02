@@ -18,7 +18,7 @@
 
 
 Name:           plasma-branding-Kalpa
-Version:        20231227
+Version:        20240401
 Release:        0
 Summary:        Kalpa Desktop default settings
 License:        BSD-3-Clause
