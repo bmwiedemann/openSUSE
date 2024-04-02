@@ -33,4 +33,15 @@
 - Fix missing dependency on lua-macros (boo#1205612)</comment>
     <requestid>1061048</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f8fb507e08c12418b74c8418ca88fcf3</srcmd5>
+    <version>0.1.5+git6</version>
+    <time>1712068862</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.1.5+git6
+  * Update to Unicode 15.1
+- Switch from xz compression to zstd
+</comment>
+    <requestid>1164035</requestid>
+  </revision>
 </revisionlist>

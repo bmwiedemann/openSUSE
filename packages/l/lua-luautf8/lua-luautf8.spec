@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package lua-luautf8
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name luautf8
-%define rock_version 0.1.5-1
+%define rock_version 0.1.5-2
 %ifarch %{ix86}
  %define luarock_arch x86
 %else
@@ -28,16 +28,17 @@
   %define luarock_arch %{_arch}
  %endif
 %endif
-Version:        0.1.5
+Version:        0.1.5+git6
 Release:        0
 Summary:        A utf-8 support module for Lua and LuaJIT
 License:        MIT
 Group:          Development/Languages/Other
 URL:            https://github.com/starwing/luautf8
-Source:         %{mod_name}-%{version}.tar.xz
-BuildRequires:  lua-macros
+Source:         %{mod_name}-%{version}.tar.zst
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luarocks
+BuildRequires:  lua-macros
+BuildRequires:  zstd
 Requires:       %{flavor}
 %lua_provides
 %if "%{flavor}" == ""
@@ -63,6 +64,8 @@ test in lua test suite2.
 
 %install
 %luarocks_install "%{mod_name}-%{rock_version}.linux-%{luarock_arch}.rock"
+
+%check
 
 %files
 %{lua_archdir}
