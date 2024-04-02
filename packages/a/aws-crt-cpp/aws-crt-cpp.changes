@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 28 10:34:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.26.4
+  * Basic version of variant type using C++11 by @SergeyRyabinin in (#599)
+- from version 0.26.3
+  * Add in-place constructor and emplace method
+    to optional by @SergeyRyabinin in (#600)
+  * Latest submodules by @sbSteveK in (#601)
+
+-------------------------------------------------------------------
 Mon Feb 19 14:51:54 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.26.2
