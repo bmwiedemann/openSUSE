@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Mar 30 12:13:23 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240330.3473a5ba:
+  * Dev: behave: Addd functional test for previous commit
+  * Dev: bootstrap: Give a warning when detecting $SSH_AUTH_SOCK but not use --use-ssh-agent option
+
+-------------------------------------------------------------------
+Wed Mar 27 08:04:12 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240327.74a899fc:
+  * Dev: ui_context: make help subcommands to exit with 0 (#1374)
+
+-------------------------------------------------------------------
+Mon Mar 25 08:29:51 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240325.bb913aba:
+  * Dev: behave: Adjust functional test for previous commit
+  * Fix: sh: Return the value of AuthorizationError.diagnose if it is not None
+
+-------------------------------------------------------------------
+Fri Mar 15 07:03:07 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240315.053594ab:
+  * Dev: unittest: Adjust unit test for previous commit
+  * Dev: bootstrap: Remove unused ssh_remote related code
+  * Dev: unittest: Adjust unit test for previous commit
+  * Dev: bootstrap: Remove unused function bootstrap.append_unique
+  * Dev: ssh_key: Extract duplicate code about list keys from ssh-agent to a function
+  * Dev: bootstrap: Refactor qdevice user parsing and finding
+
+-------------------------------------------------------------------
 Wed Mar 13 14:26:02 UTC 2024 - XLiang@suse.com
 
 - Update to version 4.6.0+20240313.8278d949:
