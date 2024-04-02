@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 30 04:03:52 UTC 2024 - william.brown@suse.com
+
+- Update to version 1.1.0~rc16~git7.8a1b7b5:
+  * Require kanidm-unixd before kanidm-unixd-tasks (#2687)
+
+-------------------------------------------------------------------
 Tue Mar 26 01:59:01 UTC 2024 - william.brown@suse.com
 
 - Update to version 1.1.0~rc16~git6.e51d0de:
