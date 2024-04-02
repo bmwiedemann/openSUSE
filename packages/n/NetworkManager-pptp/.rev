@@ -431,4 +431,13 @@
   - NMA subpackage: Main package and NMA (forwarded request 1130479 from gmbr3)</comment>
     <requestid>1130777</requestid>
   </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>55218580e0f3b813a7f63a9d29f80063</srcmd5>
+    <version>1.2.12</version>
+    <time>1712068795</time>
+    <user>anag+factory</user>
+    <comment>- Add missing supplements(bsc#1220391):
+  + NMA subpackage: Main package and gnome-control-center (forwarded request 1163471 from JonathanKang)</comment>
+    <requestid>1163506</requestid>
+  </revision>
 </revisionlist>

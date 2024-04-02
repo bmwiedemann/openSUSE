@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-pptp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,7 @@ Provides:       %{name}-frontend = %{version}
 Provides:       %{name}-gnome = %{version}
 Obsoletes:      %{name}-gnome
 Supplements:    (%{name} and NetworkManager-applet)
+Supplements:    (%{name} and gnome-control-center)
 
 %description -n NetworkManager-applet-pptp
 NetworkManager-pptp provides VPN support to NetworkManager for PPTP.
