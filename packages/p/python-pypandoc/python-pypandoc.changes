@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  3 06:35:39 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing tex style amsmath.sty to BuildRequires. 
+
+-------------------------------------------------------------------
 Thu Mar 14 23:54:12 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.13:

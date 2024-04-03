@@ -34,6 +34,7 @@ BuildRequires:  pandoc
 BuildRequires:  python-rpm-macros
 BuildRequires:  texlive-latex-bin
 BuildRequires:  texlive-xcolor
+BuildRequires:  tex(amsmath.sty)
 BuildRequires:  tex(bookmark.sty)
 Requires:       pandoc
 Suggests:       ghc-citeproc

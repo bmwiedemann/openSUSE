@@ -74,4 +74,12 @@
 - Switch to pyproject macros.</comment>
     <requestid>1158104</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c3b5a021a671aedc27ad0a208bf90503</srcmd5>
+    <version>1.13</version>
+    <time>1712157636</time>
+    <user>anag+factory</user>
+    <comment>- Add missing tex style amsmath.sty to BuildRequires.</comment>
+    <requestid>1164268</requestid>
+  </revision>
 </revisionlist>
