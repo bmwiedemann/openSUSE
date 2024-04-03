@@ -44,6 +44,7 @@ BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-annotations)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-container-default)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
 BuildRequires:  mvn(org.codehaus.plexus:plexus:pom:)
 BuildRequires:  mvn(org.jdom:jdom2)
 BuildRequires:  mvn(org.ow2.asm:asm) >= 7
@@ -86,6 +87,9 @@ rm -rf plexus-container-default/src/test/java/org/codehaus/plexus/hierarchy
 # ASM dependency was changed to "provided" in XBean 4.x, so we need to provide ASM
 %pom_add_dep org.ow2.asm:asm:5.0.3:runtime plexus-container-default
 %pom_add_dep org.ow2.asm:asm-commons:5.0.3:runtime plexus-container-default
+
+%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 plexus-container-default
+%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 plexus-component-metadata
 
 # Generate OSGI info
 %pom_xpath_inject "pom:project" "

@@ -35,10 +35,11 @@ Source100:      %{name}-build.tar.xz
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  guava
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  junit
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-utils
+BuildRequires:  plexus-xml
 BuildRequires:  xbean
 BuildArch:      noarch
 %if %{with tests}
@@ -78,7 +79,7 @@ Group:          Documentation/HTML
 %setup -q -n %{name}-%{name}-%{version} -a100
 
 mkdir -p lib
-build-jar-repository -s lib plexus/classworlds plexus/utils guava/guava junit xbean/xbean-reflect
+build-jar-repository -s lib plexus/classworlds plexus/utils plexus/xml guava/guava junit xbean/xbean-reflect
 %if %{with tests}
 build-jar-repository -s lib objectweb-asm/asm objectweb-asm/asm-commons hamcrest/core
 %endif
@@ -96,6 +97,9 @@ rm -rf plexus-container-default/src/test/java/org/codehaus/plexus/hierarchy
 # ASM dependency was changed to "provided" in XBean 4.x, so we need to provide ASM
 %pom_add_dep org.ow2.asm:asm:5.0.3:runtime plexus-container-default
 %pom_add_dep org.ow2.asm:asm-commons:5.0.3:runtime plexus-container-default
+
+%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 plexus-container-default
+%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 plexus-component-metadata
 
 # Generate OSGI info
 %pom_xpath_inject "pom:project" "
