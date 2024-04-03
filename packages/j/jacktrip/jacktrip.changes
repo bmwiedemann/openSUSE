@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  3 08:14:20 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.2.5:
+  * (fixed) VS Mode only admins could join new sessions starting up
+  * (fixed) VS Mode only ask for feedback if you've joined a session
+  * (updated) VS Mode updates to support self hosted virtual studios
+
+-------------------------------------------------------------------
 Thu Mar 14 20:02:03 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.2.4:
