@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 25 14:20:17 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Help dependcy resolver to identify package split done with bash-sh 
+
+-------------------------------------------------------------------
 Wed Feb 28 13:52:24 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Harden bash to be compiled with gcc 14 (boo#1220564)

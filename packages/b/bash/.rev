@@ -1979,4 +1979,12 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
   * Add patch bash-5.2-gcc14.patch</comment>
     <requestid>1152946</requestid>
   </revision>
+  <revision rev="191" vrev="12">
+    <srcmd5>18d522b29d4d56a0a5087b1fbfe3a095</srcmd5>
+    <version>5.2.MACRO</version>
+    <time>1712157490</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1163955</requestid>
+  </revision>
 </revisionlist>
