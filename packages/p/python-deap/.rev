@@ -54,4 +54,14 @@
     'from itertools import repeat'</comment>
     <requestid>1130509</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5ec6508d4beafdc3c58465cb7c299d01</srcmd5>
+    <version>1.4.1</version>
+    <time>1712157631</time>
+    <user>anag+factory</user>
+    <comment>- Add missing C++ compiler to BuildRequires.
+- Switch to pyproject macros.
+- Stop skipping tests.</comment>
+    <requestid>1164248</requestid>
+  </revision>
 </revisionlist>
