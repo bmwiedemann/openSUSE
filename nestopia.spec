@@ -1,8 +1,8 @@
 #
 # spec file for package nestopia
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2018-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           nestopia
-Version:        1.52.0
+Version:        1.52.1
 Release:        0
 Summary:        Nintendo Entertainment System/Famicom emulator
 License:        GPL-2.0-or-later
@@ -53,23 +53,16 @@ autoreconf -fiv
   --docdir=%{_docdir}/%{name} \
   --enable-gui \
   --enable-doc
-
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
-%if 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%endif
+%check
 
 %files
-%doc ChangeLog readme.html README.md
 %license COPYING
+%doc ChangeLog readme.html README.md
 %{_docdir}/%{name}
 %{_bindir}/%{name}
 %{_datadir}/%{name}
