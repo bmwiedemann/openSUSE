@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr  1 03:44:52 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 42
+  * Issue #317: Correct handling of large amounts of solib data
+  * Issue #399: Suppor for the LoongArch architecture
+  * Issue #397: Correct symlinks if the out-directory is a
+    relative path
+  * OSX: Replace the lldb-engine/parser with a macho-parser and a
+    mach-engine for improved performance (~20x)
+
+-------------------------------------------------------------------
 Mon Apr 24 12:39:15 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 41:
