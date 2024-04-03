@@ -1196,4 +1196,34 @@
   * Literal strings that include braces could change the C code</comment>
     <requestid>1158961</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>0544dbc634fe1043b3c13d759f48f003</srcmd5>
+    <version>3.0.10</version>
+    <time>1712157518</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.10:
+  * Cython generated incorrect self-casts when directly calling
+    final methods of subtypes.
+  * Internal C names generated from C function signatures could
+    become too long for MSVC.
+  * The noexcept warnings could be misleading in some cases.
+  * The @cython.ufunc implementation could generate incomplete C
+    code.
+  * The libcpp.complex declarations could result in incorrect C++
+    code. Patch by Raffi Enficiaud.
+  * Several tests were adapted to work with both NumPy 1.x and
+    2.0. Patch by Matti Picus.
+  * C compiler warnings when the freelist implementation is
+    disabled (e.g. on PyPy) were fixed. It can now be disabled
+    explicitly with the C macro guard CYTHON_USE_FREELISTS=0.
+  * Some C macro guards for feature flags were missing from the
+    NOGIL Python configuration.
+  * Some recently added builtins were unconditionally looked up
+    at module import time (if used by user code) that weren't
+    available on all Python versions and could thus fail the
+    import.
+  * A performance hint regarding exported pxd declarations was
+    improved.</comment>
+    <requestid>1164069</requestid>
+  </revision>
 </revisionlist>
