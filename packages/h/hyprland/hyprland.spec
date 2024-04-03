@@ -20,13 +20,12 @@
 %bcond_without devel
 
 Name:           hyprland
-Version:        0.37.1
+Version:        0.38.0
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
 URL:            https://hyprland.org/
 Source0:        %{name}-%{version}.tar.xz
-Patch1:         fixed-missing-return-statement.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 11
 BuildRequires:  git
@@ -83,7 +82,7 @@ It supports multiple layouts, fancy effects, has a very flexible IPC
 model allowing for a lot of customization, and more.
 
 %package wallpapers
-Summary:        Hyprland wallpapers 
+Summary:        Hyprland wallpapers
 BuildArch:      noarch
 
 %description wallpapers

@@ -1,4 +1,128 @@
 -------------------------------------------------------------------
+Tue Apr  2 15:46:34 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.38.0:
+  + New features:
+    - config/workspace: added workspace selectors
+    - hyprctl: add missing commands to usage (#5211)
+    - input: Add options to set tablet's active area (#5199)
+    - input: add misc:hide_cursor_on_key_press
+    - keybinds: add Dispatchers for "force float" and "force tiling"
+      (non-toggle) (#5137)
+    - keybinds: add binds:disable_keybind_grabbing
+    - layers: add animation direction overrides
+    - renderer: add support for gles3.2 screen shaders
+    - screenshader: add screen_size uniform
+    - socket2: add pin event
+    - tablet: Add left_handed option for tablets (#5178)
+  + Fixes:
+    - CGradientValueData: fix toString() method (#5220)
+    - IME/TI: Fixes and refactoring
+    - IME: Fix ime popup coordinates and artifacts (#5373)
+    - IME: Refactor and fixup popups
+    - IME: don't assert on lock mismatch, just fix it
+    - IME: fix crashes with destroyed text-inputs
+    - animations: Fix animation issue in
+      focusworkspaceoncurrentmonitor (#5202)
+    - animations: Fix incorrect animation when manually moving a
+      window when its being created (#5141)
+    - animations: fix layer slide with fade
+    - animvar: fixup update callbacks and cleanup
+    - avar: fix warp onEnd conditions
+    - avar: minor fixes
+    - build: fix builds without pch (#5198)
+    - core: Fix resizeparams (#5262)
+    - core: fix fullscreen + floating focus change (#5291)
+    - core: fix missing workspace events during swapping (#5251)
+    - deco: fix groupbar offset (#5364)
+    - dispatchers: fix swap workspaces wrong positioning of floating
+      windows (#5328)
+    - format: fix format
+    - hyprctl: fix plugin list on no plugins (#5357)
+    - hyprpm: add missing newline (#5207)
+    - ime: fix build without pch
+    - input: Fix incorrect keyboard focus taken when no window was
+      present (#5337)
+    - input: fix crash with text-input-v1 (#5234)
+    - keybinds: Fix exit trigger by moving it to monitor.frame
+      (#5240)
+    - layers: fix bottom slide animation (#5307)
+    - master: fix moving fullscreen workspace and remove duplicate
+      code (#5131)
+    - reenderer: Add 1 border damage to fix number rounding issues
+      (#5343)
+    - renderer/animations: Fix various inaccurate damage tracking
+      issues and offsets (#5297)
+    - renderer: Fix layer and window damage sometimes missing 1 frame
+      (#5370)
+    - renderer: Fix rendering when swiping workspaces (#5367)
+    - renderer: minor fixes to misaligned reported surface rendering
+    - renderer: minor fixups for misaligned surface rendering offsets
+    - scripts: fix asan patch
+    - swipe: fix nullptr in onSwipeUpdate (#5191)
+    - tablet: minor focus fixes
+    - textinput: fix ime when opening multiple windows (#5281)
+    - textinput: fix typo (#5365)
+    - windowrules: Fix resizeparams parsing. (#5206)
+    - workspace: fix integer overflow in selector parser (#5177)
+    - workspace: fix selectors with special:
+  + Other:
+    - IME: Improve handling of text-input and ime-relay (#5147)
+    - IME: guard unfocused TIs in leave
+    - animationmgr: use realpos and size for border damage
+    - animations: simplify window loop
+    - compositor: remove windows from fading out on destroy
+    - config: Config error limit/hyprctl (#5165)
+    - config: be a bit louder in the disabled log warning
+    - constraint: do not disable constraints in destroy
+    - constraint: set active flag before propagating props
+    - core: ensure m_pLastMonitor validity over unsafe state
+    - core: match all workspace rules instead of the first one only
+      (#5340)
+    - cursormgr: don't set x theme in changeTheme
+    - cursormgr: initialize size to 0
+    - cursormgr: log theme loading failures
+    - cursormgr: scale hotspot with buffer
+    - dispatchers: open special ws on active monitor instead of mouse
+      monitor (#5330)
+    - hyprctl: output json with --batch if requested (#5277)
+    - hyprpm: avoid crashes on corrupted headers
+    - hyprpm: log shell in build without fails
+    - input: Only limit drag resizes (#5164)
+    - input: focus window on mouse down on groupbar (#5224)
+    - layer-shell: render popups above everything
+    - layers: don't change workspace on layer restore focus (#5308)
+    - layershell: release all mouse buttons before focus on new ls
+      (#5219)
+    - layershell: update render pos and size in arrange
+    - layout: improve initial size prediction for floating
+    - master: Make master workspace orientation rule dynamic (#5339)
+    - opengl: minor adjustment to getPreferredReadFormat
+    - opengl: report shader compilation errors from screen_shader
+      (#5138)
+    - refactor: move window.hpp to desktop/
+    - renderer: allow blurring ls popups
+    - renderer: disable surface adjustments for misaligned reported
+      when manual resizing
+    - renderer: don't render window on other mons during anim in
+    - renderer: don't translate surface box on interactive resizes
+      with non-updated sizes
+    - renderer: dont render fullscreen special on wrong monitor
+      (#5249)
+    - renderer: forward decl for b_pch=false (#5250)
+    - screenShader: allow camel for screensize
+    - socket2: sanitize data for newlines
+    - swipe: Touchscreen workspace swipe (#4489)
+    - text-input: reset lock counter on surface destroy
+    - textinput: send deactivate on disable ti
+    - window: assign surface on create
+    - window: set config only when both props end anims
+    - xwayland: assign wlr_surface on associate
+
+- Removed "fixed-missing-return-statement.patch" as the issue has
+  been fixed upstream.
+
+-------------------------------------------------------------------
 Wed Mar 20 12:47:48 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Add hyprland-wallpapers subpackage: Wallpapers too large are
