@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-kombu
-Version:        5.3.5
+Version:        5.3.6
 Release:        0
 Summary:        AMQP Messaging Framework for Python
 License:        BSD-3-Clause
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module Pyro5}
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module amqp >= 5.1.1}
 BuildRequires:  %{python_module azure-identity >= 1.12.0}
-BuildRequires:  %{python_module boto3 >= 1.9.12}
+BuildRequires:  %{python_module boto3 >= 1.26.143}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pycurl >= 7.43.0.2}

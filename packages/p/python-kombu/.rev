@@ -927,4 +927,27 @@
 </comment>
     <requestid>1145098</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>cb7eda8d20f2aa44c546163c6a02d8b8</srcmd5>
+    <version>5.3.6</version>
+    <time>1712157651</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.3.6:
+  * boto3&gt;=1.26.143
+  * Always convert azureservicebus namespace to fully qualified
+  * Pin pytest-sugar to latest version 1.0.0
+  * Upgrade to pytest v8 that removed nose compatibility
+  * fix warning for usage of utcfromtimestamp
+  * Update pytest to 8.0.2
+  * Hotfix: Fix CI failures (limit redis to &lt;5.0.2 instead of
+  * Expose cancel callback from py-amqp channel.basic_consume
+  * Update mypy to 1.9.0
+  * Update pytest to 8.1.1
+  * Pin hypothesis to hypothesis&lt;7
+  * redis&gt;=4.5.2,&lt;5.0.2,!=4.5.5 -&gt; redis&gt;=4.5.2,!=5.0.2,!=4.5.5
+  * add escape hatch for custom JSON serialization
+  * Pin pytest-cov to latest version 5.0.0
+  * Added Changelog for v5.3.6</comment>
+    <requestid>1164300</requestid>
+  </revision>
 </revisionlist>
