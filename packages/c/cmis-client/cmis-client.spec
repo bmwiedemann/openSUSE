@@ -1,7 +1,7 @@
 #
 # spec file for package cmis-client
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define sover 0_5-5
-%define incname 0.5
+%define sover 0_6-6
+%define incname 0.6
 %define _name  libcmis
 Name:           cmis-client
-Version:        0.5.2
+Version:        0.6.2
 Release:        0
 Summary:        Sample CMIS client
-License:        MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later
+License:        GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/tdf/libcmis
 Source0:        https://github.com/tdf/%{_name}/releases/download/v%{version}/%{_name}-%{version}.tar.gz
