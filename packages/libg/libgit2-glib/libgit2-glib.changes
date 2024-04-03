@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  3 07:32:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libgit2-glib-include.patch: Fix build against libgit2 1.8.0.
+
+-------------------------------------------------------------------
 Sun Sep  3 19:50:15 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 1.2.0:

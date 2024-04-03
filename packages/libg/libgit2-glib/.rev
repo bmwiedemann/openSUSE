@@ -469,4 +469,12 @@
 - Drop bogus python3 BuildRequires: python3-base is sufficient.</comment>
     <requestid>1110832</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>5c18a420a373a16e97c64321ca456b5d</srcmd5>
+    <version>1.2.0</version>
+    <time>1712157640</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1164290</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libgit2-glib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,7 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/Libgit2-glib
 Source0:        %{name}-%{version}.tar.xz
+Patch0:         libgit2-glib-include.patch
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -36,7 +37,7 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.10.1
-BuildRequires:  pkgconfig(libgit2) >= 0.25.0
+BuildRequires:  pkgconfig(libgit2) >= 1.8.0
 BuildRequires:  pkgconfig(libssh2)
 
 %description
