@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  2 13:17:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 42.0.5:
+  * Update test vectors to match python-cryptography 42.0.5
+
+-------------------------------------------------------------------
 Thu Feb 22 17:19:18 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - update to 42.0.4:
