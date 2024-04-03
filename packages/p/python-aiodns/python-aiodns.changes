@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  2 09:42:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * Update test_query_ptr test to use address with PTR record
+  * Added a missing py.typed file for wheel
+  * Add Winloop as a valid EventLoop
+  * Add support for getaddrinfo
+  * Add support for getnameinfo
+
+-------------------------------------------------------------------
 Thu Dec 14 09:12:38 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
 
 - update to 3.1.1:

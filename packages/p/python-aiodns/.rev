@@ -96,4 +96,17 @@ for me important as dependency for XMPP client poezio, which is 7 years outdated
   * Add PEP-561 with py.typed</comment>
     <requestid>1133402</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e2603fd1ccc75135819d07198e1e5405</srcmd5>
+    <version>3.2.0</version>
+    <time>1712157516</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.0:
+  * Update test_query_ptr test to use address with PTR record
+  * Added a missing py.typed file for wheel
+  * Add Winloop as a valid EventLoop
+  * Add support for getaddrinfo
+  * Add support for getnameinfo</comment>
+    <requestid>1164066</requestid>
+  </revision>
 </revisionlist>
