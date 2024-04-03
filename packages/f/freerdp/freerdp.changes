@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Tue Mar 26 14:04:54 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim duplicate version number from package names; rename
+  uwac0-0-devel -> uwac0-devel, rdtk0-0-devel -> rdtk0-devel.
+- RPM groups updated.
+
+-------------------------------------------------------------------
+Tue Mar 26 09:16:26 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Drop conflicts with freerdp2:
+  * The freerdp2 package doesn't conflict with any freerdp3 package
+  * Now both can be installed simultaneously
+
+-------------------------------------------------------------------
+Tue Mar 19 07:18:13 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.4.0:
+  * fix a bug in RAIL mode not activating window focus (#9973)
+  * improve logging (#9969, #9943)
+  * OpenSSL <= 1.1.1 build fixes (#9897)
+  * improved help (#9899, #9905)
+  * improved MINGW support (#9914, #9915, #9919, #9964, #9965, #9920)
+  * fix right control ungrab for xfreerdp (#9960)
+  * fix RPATH option settings (#9963)
+  * fix SDL client screen updates (#9962, #9954)
+  * fix issues with childSession under windows (#9961, #9956, #9922)
+  * fix xfreerdp crash with +auth-only (#9947)
+  * fix windows printer channel (#9934)
+  * add support to enforce gateway policy (#9942)
+  * improve big endian support (#9927)
+  * ignore empty proxy environment variables (#9929)
+  * improve quoting support for command line (#9912)
+  * Improved image clipboard (xfreerdp, wlfreerdp) (#9873, #9826)
+  * Improved SDL client (#9875, #9887, #9883, #9878, #9792)
+  * Allow plugin loader to only use absolute paths (#9809)
+  * Improved TLS channel binding (#9838)
+  * Add GCC/clang attribute malloc wrapper WINPR_ATTR_MALLOC (#9863)
+  * Major clang-tidy code cleanups and bugfixes (#9799, #9834)
+  * Provide some defaults for wObject functions (#9799)
+  * Fix a bug in shadow with GFX breaking mstsc (#9818)
+  * Improved manpages and help (#9813, #9804)
+  * Blocking mode via transport IO interface (#9793)
+
+-------------------------------------------------------------------
+Fri Jan 19 13:53:59 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.2.0:
+  * Fix proxy module load check (#9777)
+  * Improve kerberos error logging (#9771)
+  * Add option to run client dynamic channel synchronous (#9764)
+  * Move huge struct to heap (#9763)
+  * Improved failure logging of license module (#9759)
+  * Improve server side gfx logging (#9757)
+  * Print shadow server help with printf instead of WLog (#9756)
+  * Fix SDL client timer initialization (#9754)
+  * Fix server peer message parsing (#9751)
+  * Enable NEON instructions if __ARM_NEON is defined (#9748)
+  * Add new proxy config file option TlsSecLevel (#9741)
+  * Improve android and mac os build scripts (#9735)
+  * Do not disable wayland support on BSD (#9730)
+  * Fix issues with assistance file parsing (#9727, #9728)
+  * Keyboard handling fixes for wayland client (#9725)
+  * Fix relative pkg-config file paths (#9720)
+  * Add new transport IO callback GetPublicKey (#9719)
+  * Fix wayland client scaling (#9715)
+
+-------------------------------------------------------------------
+Sat Jan  6 12:44:49 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.0:
+  * Fix a nasty bug with relative mouse movement (#9677)
+  * LibreSSL support enhancements (#9691, #9670)
+  * mbedTLS support enhancements (#9662)
+  * New and improved manpages (#9690, #9650)
+  * Unify CMake common options, add (optional) binary versioning and allow
+  * building rdtk and uwac as static dependencies (#9695)
+  * SDL client improvements (#9693, #9657, #9659, #9683, #9680, #9657, #9664, #9656)
+
+-------------------------------------------------------------------
+Tue Dec 19 13:56:15 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Remove freerdp-allow-compiling-with-old-c++-compiler.patch
+  Solve by requiring gcc12-c++ for older environments
+- Adjust Requires/Obsoletes
+- Merge %{name}-server-proxy%{libfreerdp_package}-devel with -devel
+
+-------------------------------------------------------------------
+Mon Dec 18 11:57:05 UTC 2023 - Joan Torres <joan.torres@suse.com>
+
+- Add freerdp-allow-compiling-with-old-c++-compiler.patch
+  * This allows building with older Leap versions which use gcc7-c++.
+
+- Use cups-devel instead of relying on pkgconfig.
+  * Older Leap versions were unable to find it that way.
+
+- Fix some package naming and versioning.
+
+-------------------------------------------------------------------
+Fri Dec 15 11:02:39 UTC 2023 - Joan Torres <joan.torres@suse.com>
+
+- Add sdl dependencies to build the sdl-freerdp client.
+  * This is due to the wlfreerdp client being deprecated.
+
+- Cleanup specfile.
+  * Rely preferably on pkgconfig to pull devel packages instead of 
+    hardcoding them.
+
+-------------------------------------------------------------------
+Thu Dec 14 07:23:30 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.0:
+  * Support for AAD/AVD authentication
+  * Support for websocket transport
+  * Support smartcard authentication (TLS and NLA)
+  * Full smartcard emulation support (login with certificate + key)
+  * Rewritten proxy, new module API
+  * New reference client based on SDL2 (work in progress)
+  * Rewritten logging, now parsing issues are all writing to the log so
+    that issues with protocol incompatibilities can be easier analyzed
+    by just turning on logging
+  * Full OpenSSL 3 support
+  * Internal implementations for RC4, MD4 and MD5 (required for non critical
+    parts in RDP but not part of more recend SSL libraries)
+  * Updated RDP protocol support
+  * Improved xfreerdp remote app support
+  * Reworked internal state machine for both client and server implementations
+  * Server implementations can now make use of connect-time network autodetection
+  * Improved clipboard handling, now also support server-to-client file transfer
+    (currently xfreerdp only)
+  * EnhancedRemoteApp support: Utilizing the more modern standard allows remote
+    apps with less glitches and window shadows
+  * Added client- and server-side handling for RDSTLS
+  * Support for the graphics redirection channel
+  * Full changelongs can be found at the following links:
+    + https://github.com/FreeRDP/FreeRDP/releases/tag/3.0.0-beta1
+    + https://github.com/FreeRDP/FreeRDP/releases/tag/3.0.0-beta2
+    + https://github.com/FreeRDP/FreeRDP/releases/tag/3.0.0-beta3
+    + https://github.com/FreeRDP/FreeRDP/releases/tag/3.0.0-beta4
+    + https://github.com/FreeRDP/FreeRDP/releases/tag/3.0.0-rc0
+    + https://github.com/FreeRDP/FreeRDP/releases/tag/3.0.0
+- Security fix:
+  - CVE-2023-40574, bsc#1214869
+  - CVE-2023-40575, bsc#1214870
+  - CVE-2023-40576, bsc#1214871
+- Drop upstreamed 0001-Make-H.264-codec-optional-during-runtime.patch.
+- Enable GSS again since gh#issues/4348 has been fixed.
+
+-------------------------------------------------------------------
 Thu Nov 16 08:59:58 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Fix winpr-devel dependencies. WinePRTargets-*.cmake defines
