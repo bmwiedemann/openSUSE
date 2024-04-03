@@ -16,7 +16,7 @@
 #
 
 
-%define sover	0_107
+%define sover	0_108
 %define bootstrap_with_gdmd 1
 %if %{bootstrap_with_gdmd}
 %if 0%{?suse_version} < 1550
@@ -29,7 +29,7 @@ BuildRequires:  dmd
 BuildRequires:  phobos-devel-static
 %endif
 Name:           dmd
-Version:        2.107.1
+Version:        2.108.0
 Release:        0
 Summary:        D Programming Language 2.0
 License:        BSL-1.0

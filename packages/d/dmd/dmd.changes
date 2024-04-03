@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  2 15:34:52 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.108.0
+  * Compiler changes
+    - Added .nameSig field to TypeInfo_Class in object.d
+    - Keywords like __FILE__ are always evaluated at the call site
+    - Hex strings now convert to integer arrays
+    - Add support for Interpolated Expression Sequences
+    - Named arguments for functions have been implemented and documented
+  * Library changes
+    - isForwardRange, isBidirectionalRange, and isRandomAccessRange now take an optional element type
+    - std.uni has been upgraded from Unicode 15.0.0 to 15.1.0
+
+-------------------------------------------------------------------
 Sat Mar 16 15:57:55 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Added rdmd run/build tool ( https://dlang.org/rdmd.html )
