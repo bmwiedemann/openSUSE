@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20240402" schemaversion="4.1">
+<image name="OBS__MicroOS___20240403" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20240402</productvar>
+      <productvar name="VERSION">20240403</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240402,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240403,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240402/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240403/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -888,6 +888,8 @@
       <repopackage name="ksysguardsystemstats6-data"/>
       <repopackage name="ksystemstats6"/>
       <repopackage name="ksystemstats6-lang"/>
+      <repopackage name="kuiviewer"/>
+      <repopackage name="kuiviewer-lang"/>
       <repopackage name="kuserfeedback-imports"/>
       <repopackage name="kuserfeedback-lang"/>
       <repopackage name="kwallet-tools"/>
@@ -1856,6 +1858,7 @@
       <repopackage name="libQt6Core5Compat6"/>
       <repopackage name="libQt6Core6"/>
       <repopackage name="libQt6DBus6"/>
+      <repopackage name="libQt6Designer6"/>
       <repopackage name="libQt6Gui6"/>
       <repopackage name="libQt6HunspellInputMethod6"/>
       <repopackage name="libQt6LabsAnimation6"/>
@@ -1907,6 +1910,7 @@
       <repopackage name="libQt6SpatialAudio6"/>
       <repopackage name="libQt6Sql6"/>
       <repopackage name="libQt6Svg6"/>
+      <repopackage name="libQt6SvgWidgets6"/>
       <repopackage name="libQt6Test6"/>
       <repopackage name="libQt6TextToSpeech6"/>
       <repopackage name="libQt6UiTools6"/>
@@ -2293,6 +2297,8 @@
       <repopackage name="man-pages-ru"/>
       <repopackage name="man-pages-zh_CN"/>
       <repopackage name="mandoc-bin"/>
+      <repopackage name="markdownpart"/>
+      <repopackage name="markdownpart-lang"/>
       <repopackage name="mbimcli-bash-completion"/>
       <repopackage name="mcelog"/>
       <repopackage name="mdadm"/>
@@ -2932,6 +2938,8 @@
       <repopackage name="susepaste-screenshot"/>
       <repopackage name="sushi"/>
       <repopackage name="sushi-lang"/>
+      <repopackage name="svgpart"/>
+      <repopackage name="svgpart-lang"/>
       <repopackage name="switcheroo-control"/>
       <repopackage name="syntax-highlighting"/>
       <repopackage name="syntax-highlighting-imports"/>

@@ -1247,6 +1247,8 @@ unsorted:
   - ballerburg 
   - baloo-widgets-devel 
   - baloo5-devel 
+  - baloo5-file 
+  - baloo5-file-lang 
   - baloo5-imports 
   - baloo5-kioslaves 
   - baloo5-kioslaves-lang 
@@ -2304,6 +2306,7 @@ unsorted:
   - coin-or-Clp-devel 
   - coin-or-CoinUtils-devel 
   - coin-or-Osi-devel 
+  - collada-dom-devel 
   - collectd 
   - collectd-plugin-amqp 
   - collectd-plugin-buddyinfo 
@@ -4036,6 +4039,7 @@ unsorted:
   - ffmpeg-6-libswscale-devel 
   - ffmpeg-6-mini-devel 
   - ffmpeg-6-mini-libs 
+  - ffmpegthumbs-kf5 
   - ffmsindex 
   - ffnvcodec-devel 
   - ffsb 
@@ -4305,8 +4309,13 @@ unsorted:
   - freerdp 
   - freerdp-devel 
   - freerdp-proxy 
+  - freerdp-proxy-plugins 
+  - freerdp-sdl 
   - freerdp-server 
   - freerdp-wayland 
+  - freerdp2-devel 
+  - freerdp2-proxy 
+  - freerdp2-server 
   - freesrp-devel 
   - freesrp-udev 
   - freetds-config 
@@ -8429,6 +8438,7 @@ unsorted:
   - i3lock-xlock-compat 
   - i3status 
   - i3status-rust 
+  - iamb 
   - iasimage 
   - ibacm 
   - ibdev2netdev 
@@ -9720,7 +9730,9 @@ unsorted:
   - kf6-syntax-highlighting-devel 
   - kf6-syntax-highlighting-imports 
   - kf6-threadweaver-devel 
+  - kfilemetadata5 
   - kfilemetadata5-devel 
+  - kfilemetadata5-lang 
   - kfind 
   - kfind-lang 
   - kfloppy 
@@ -9788,12 +9800,15 @@ unsorted:
   - kim-api 
   - kim-api-devel 
   - kim-api-examples 
+  - kimageformats 
   - kimageformats-eps 
   - kimagemapeditor 
   - kimagemapeditor-lang 
   - kimap-devel 
   - kinit-devel 
   - kio-devel 
+  - kio-extras5 
+  - kio-extras5-lang 
   - kio-stash 
   - kio-stash-lang 
   - kio_audiocd-devel 
@@ -10285,8 +10300,6 @@ unsorted:
   - kubrick 
   - kubrick-lang 
   - kucero 
-  - kuiviewer 
-  - kuiviewer-lang 
   - kunitconversion-devel 
   - kup-backup 
   - kup-backup-lang 
@@ -10324,6 +10337,7 @@ unsorted:
   - kwin6-devel 
   - kwindowsystem-devel 
   - kwrite 
+  - kwrited5 
   - kxml 
   - kxml-javadoc 
   - kxmlgui-devel 
@@ -10742,6 +10756,10 @@ unsorted:
   - libKChart6-3 
   - libKChart6-3-lang 
   - libKDb3-4 
+  - libKF5ActivitiesStats1 
+  - libKF5Baloo5 
+  - libKF5BalooEngine5 
+  - libKF5BalooEngine5-lang 
   - libKF5CalendarCore5 
   - libKF5Cddb5 
   - libKF5CompactDisc5 
@@ -10756,6 +10774,7 @@ unsorted:
   - libKF5JsEmbed5-lang 
   - libKF5KDELibs4Support5 
   - libKF5KDcraw5 
+  - libKF5KExiv2-15_0_0 
   - libKF5KHtml5 
   - libKF5KHtml5-lang 
   - libKF5MediaPlayer5 
@@ -10764,6 +10783,8 @@ unsorted:
   - libKF5NetworkManagerQt-devel 
   - libKF5NetworkManagerQt6 
   - libKF5Plotting5 
+  - libKF5Pty5 
+  - libKF5Pty5-lang 
   - libKF5PulseAudioQt4 
   - libKF5Sane6 
   - libKF5Su5 
@@ -11088,7 +11109,6 @@ unsorted:
   - libQt6DataVisualization6 
   - libQt6DataVisualizationQml6 
   - libQt6DeclarativeOpcua6 
-  - libQt6Designer6 
   - libQt6DesignerComponents6 
   - libQt6Graphs6 
   - libQt6Grpc6 
@@ -11471,9 +11491,8 @@ unsorted:
   - libargtable2-0 
   - libargtable2-devel 
   - libaria2-0 
-  - libarm_compute33 
-  - libarm_compute_core33 
-  - libarm_compute_graph33 
+  - libarm_compute35 
+  - libarm_compute_graph35 
   - libarmadillo12 
   - libarmnn33 
   - libarmnn33-opencl 
@@ -12091,8 +12110,8 @@ unsorted:
   - libcmap4 
   - libcmap4-32bit 
   - libcmh0 
-  - libcmis-0_5-5 
-  - libcmis-c-0_5-5 
+  - libcmis-0_6-6 
+  - libcmis-c-0_6-6 
   - libcmis-c-devel 
   - libcmis-devel 
   - libcmocka-cmake 
@@ -12113,6 +12132,7 @@ unsorted:
   - libcob4 
   - libcodec2-1_2-32bit 
   - libcogl-gles2-20 
+  - libcollada-dom2_5-dp0 
   - libcollectdclient-devel 
   - libcollectdclient1 
   - libcollection-devel 
@@ -12766,6 +12786,8 @@ unsorted:
   - libfreehand-tools 
   - libfreeimage3 
   - libfreeimageplus3 
+  - libfreerdp-server-proxy3-3 
+  - libfreerdp3-3 
   - libfreesrp0 
   - libfreetype6-32bit 
   - libfreexl1 
@@ -12980,7 +13002,6 @@ unsorted:
   - libgirara-gtk3-3 
   - libgirepository-1_0-1-32bit 
   - libgirepository-2_0-0 
-  - libgit2-1_8 
   - libgit2-devel 
   - libgit2-glib-1_0-0 
   - libgit2-glib-devel 
@@ -13714,6 +13735,7 @@ unsorted:
   - libkdsingleapplication1_1 
   - libkdsoap-server-qt6-2 
   - libkdsoap-server2 
+  - libkdsoap2 
   - libkdstatemachineeditor_core1 
   - libkdstatemachineeditor_debuginterfaceclient1 
   - libkdstatemachineeditor_debuginterfacesource-static 
@@ -13747,6 +13769,7 @@ unsorted:
   - libkeccak-devel 
   - libkeccak1 
   - libkeduvocdocument-devel 
+  - libkexiv2 
   - libkexiv2-devel 
   - libkexiv2-qt6-devel 
   - libkeybinder0 
@@ -13754,6 +13777,7 @@ unsorted:
   - libkgapi6-devel 
   - libkim-api2 
   - libkioarchive-devel 
+  - libkioarchive5 
   - libkioarchive6-devel 
   - libkipi-devel 
   - libkissfft-float131 
@@ -14085,6 +14109,7 @@ unsorted:
   - libmca_common_dstore1 
   - libmcpp0 
   - libmd-devel 
+  - libmd4c0 
   - libmdb3 
   - libmdbsql3 
   - libmdmp-devel 
@@ -14850,7 +14875,7 @@ unsorted:
   - libphdi-devel 
   - libphdi-tools 
   - libphdi1 
-  - libphobos2-0_107 
+  - libphobos2-0_108 
   - libphobos2-ldc102 
   - libphonenumber-devel 
   - libphysfs-devel 
@@ -14944,6 +14969,7 @@ unsorted:
   - libpoppler-devel 
   - libpoppler-glib-devel 
   - libpoppler-glib8-32bit 
+  - libpoppler-qt5-1 
   - libpoppler-qt5-devel 
   - libpoppler-qt6-devel 
   - libpoppler135-32bit 
@@ -15118,6 +15144,7 @@ unsorted:
   - libqmmp-devel 
   - libqmmp-plugins 
   - libqmmp2 
+  - libqmobipocket2 
   - libqoauth2 
   - libqobs-devel 
   - libqobs2 
@@ -15354,6 +15381,7 @@ unsorted:
   - librdkafka1 
   - librdmacm-utils 
   - librdmacm1-32bit 
+  - librdtk0-0 
   - libre20 
   - libreadline-java 
   - libreadline-java-javadoc 
@@ -16526,6 +16554,7 @@ unsorted:
   - libwiiuse0 
   - libwim15 
   - libwind0 
+  - libwinpr3-3 
   - libwireshark17 
   - libwiretap14 
   - libwlroots11 
@@ -17695,8 +17724,6 @@ unsorted:
   - mariadb-tools 
   - marisa 
   - marisa-devel 
-  - markdownpart 
-  - markdownpart-lang 
   - marknote 
   - marknote-lang 
   - mate-applet-appmenu 
@@ -18031,6 +18058,8 @@ unsorted:
   - mcpp-devel 
   - mcqd 
   - mcstrans 
+  - md4c 
+  - md4c-devel 
   - mda-lv2 
   - mdbook 
   - mdbtools 
@@ -19271,6 +19300,7 @@ unsorted:
   - ninja 
   - nintendo-gamecube-wiimote-udev-rules 
   - ninvaders 
+  - niri 
   - nitrogen 
   - nitrogen-lang 
   - nload 
@@ -20500,6 +20530,7 @@ unsorted:
   - patterns-wsl-base 
   - patterns-wsl-gui 
   - patterns-wsl-systemd 
+  - patterns-wsl-tmpfiles 
   - patterns-xfce-xfce_extra 
   - patterns-yast-devel_yast 
   - pavucontrol-qt 
@@ -24638,7 +24669,6 @@ unsorted:
   - python310-django-treebeard 
   - python310-django-upgrade 
   - python310-django-user-agents 
-  - python310-django-utils-six 
   - python310-django-webpack-loader 
   - python310-django-webtest 
   - python310-django-widget-tweaks 
@@ -26142,6 +26172,7 @@ unsorted:
   - python310-pytest-mpi 
   - python310-pytest-mpl 
   - python310-pytest-mypy 
+  - python310-pytest-mypy-testing 
   - python310-pytest-openfiles 
   - python310-pytest-order 
   - python310-pytest-percent 
@@ -27844,7 +27875,6 @@ unsorted:
   - python311-buttplug 
   - python311-bytecode 
   - python311-cPyparsing 
-  - python311-cached-property 
   - python311-cachelib 
   - python311-cachetools 
   - python311-cachey 
@@ -28171,7 +28201,6 @@ unsorted:
   - python311-django-treebeard 
   - python311-django-upgrade 
   - python311-django-user-agents 
-  - python311-django-utils-six 
   - python311-django-webpack-loader 
   - python311-django-webtest 
   - python311-django-widget-tweaks 
@@ -29429,7 +29458,6 @@ unsorted:
   - python311-pygame-devel 
   - python311-pygdbmi 
   - python311-pygerrit2 
-  - python311-pygit2 
   - python311-pyglet 
   - python311-pygls 
   - python311-pygments-ansi-color 
@@ -29607,6 +29635,7 @@ unsorted:
   - python311-pytest-mpi 
   - python311-pytest-mpl 
   - python311-pytest-mypy 
+  - python311-pytest-mypy-testing 
   - python311-pytest-openfiles 
   - python311-pytest-order 
   - python311-pytest-percent 
@@ -31652,7 +31681,6 @@ unsorted:
   - python312-django-treebeard 
   - python312-django-upgrade 
   - python312-django-user-agents 
-  - python312-django-utils-six 
   - python312-django-webpack-loader 
   - python312-django-webtest 
   - python312-django-widget-tweaks 
@@ -33146,6 +33174,7 @@ unsorted:
   - python312-pytest-mpi 
   - python312-pytest-mpl 
   - python312-pytest-mypy 
+  - python312-pytest-mypy-testing 
   - python312-pytest-openfiles 
   - python312-pytest-order 
   - python312-pytest-percent 
@@ -34052,13 +34081,11 @@ unsorted:
   - python39-32bit 
   - python39-WSME 
   - python39-Wand 
-  - python39-audioread 
   - python39-autobahn 
   - python39-base 
   - python39-base-32bit 
   - python39-curses 
   - python39-dbm 
-  - python39-deap 
   - python39-devel 
   - python39-dfwinreg 
   - python39-doc 
@@ -34073,9 +34100,6 @@ unsorted:
   - python39-plplot-pyqt5 
   - python39-pony 
   - python39-pycapnp 
-  - python39-pydash 
-  - python39-pygit2 
-  - python39-pypandoc 
   - python39-pyrad 
   - python39-python-for-android 
   - python39-pyvmomi 
@@ -34821,6 +34845,7 @@ unsorted:
   - rdma-core-devel-32bit 
   - rds-tools 
   - rds-tools-devel 
+  - rdtk0-devel 
   - re-devel 
   - re2-10-devel 
   - re2-devel 
@@ -36464,8 +36489,6 @@ unsorted:
   - svg-schema-doc 
   - svgcleaner 
   - svgcleaner-gui 
-  - svgpart 
-  - svgpart-lang 
   - svm-tools 
   - svn2git 
   - svxlink-server 
@@ -46837,7 +46860,7 @@ unsorted:
   - uuid-devel 
   - uuidd 
   - uvcdynctrl 
-  - uwac0-0-devel 
+  - uwac0-devel 
   - uwsc 
   - uwsgi 
   - uwsgi-emperor_pg 
@@ -47309,6 +47332,7 @@ unsorted:
   - wine-staging-devel-32bit 
   - winetricks 
   - winpr-devel 
+  - winpr2-devel 
   - winrs 
   - wipe 
   - wire 
