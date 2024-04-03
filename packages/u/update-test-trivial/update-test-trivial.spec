@@ -2,6 +2,7 @@
 # spec file for package update-test-trivial
 #
 # Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +13,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           update-test-trivial
-Version:        5.1
+Version:        5.2
 Release:        0
 Summary:        Package for testing the update stack during product development
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/YaST
+URL:            https://en.opensuse.org/openSUSE:Maintenance_team
 Source0:        %{name}.tar.bz2
 Source1:        baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source2:        update-test-trivial-rpmlintrc
 
 %description
 Package for testing the update stack during product development.
@@ -152,61 +154,63 @@ fi
 %build
 echo "Package: %{name}-%{version}-%{release}" > VERSION
 echo -n "Build date: " >> VERSION
-LANG=POSIX date -u >> VERSION
+LANG=POSIX date -ud @$SOURCE_DATE_EPOCH >> VERSION
 for readme in README.update-test*; do
     echo "---" >> $readme
     echo "Package Version : %{version}" >> $readme
     echo "Package Release : %{release}" >> $readme
     echo -n "Generated on    : " >> $readme
-    date >> $readme
+    date -ud @$SOURCE_DATE_EPOCH >> $readme
     echo >> $readme
     echo "  Remember to have a lot of fun!" >> $readme
 done
 
 %install
 
+%check
+
 %files
-%defattr(-,root,root)
-%doc README COPYRIGHT AUTHOR VERSION
+%license COPYRIGHT
+%doc README AUTHOR VERSION
 
 %files -n update-test-reboot-needed
-%defattr(-,root,root)
+%license COPYRIGHT
 %doc README.update-test-reboot-needed
 
 %files -n update-test-interactive
-%defattr(-,root,root)
+%license COPYRIGHT
 %doc README.update-test-interactive
 
 %files -n update-test-affects-package-manager
-%defattr(-,root,root)
+%license COPYRIGHT
 %doc README.update-test-affects-package-manager
 
 %files -n update-test-security
-%defattr(-,root,root)
+%license COPYRIGHT
 %doc README.update-test-security
 
 %files -n update-test-feature
-%defattr(-,root,root)
+%license COPYRIGHT
 %doc README.update-test-feature
 
 %files -n update-test-optional
-%defattr(-,root,root)
+%license COPYRIGHT
 %doc README.update-test-optional
 
 %files -n update-test-relogin-suggested
-%defattr(-,root,root)
+%license COPYRIGHT
 %doc README.update-test-relogin-suggested
 
 %files -n update-test-retracted
-%defattr(-,root,root)
+%license COPYRIGHT
 %doc README.update-test-retracted
 
 %files -n update-test-32bit-pkg
-%defattr(-,root,root)
+%license COPYRIGHT
 %doc README.update-test-32bit-pkg
 
 %files -n update-test-broken
-%defattr(-,root,root)
+%license COPYRIGHT
 %doc README.update-test-broken
 
 %changelog
