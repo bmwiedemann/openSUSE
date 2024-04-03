@@ -57,6 +57,7 @@ BuildRequires:  plexus-interpolation
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-velocity
+BuildRequires:  plexus-xml
 BuildRequires:  qdox
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
@@ -108,6 +109,10 @@ rm -rf $(find -type d -name itext)
 
 %pom_remove_dep -r :doxia-module-markdown
 
+for i in doxia-decoration-model doxia-doc-renderer doxia-integration-tools doxia-site-renderer; do
+  %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 ${i}
+done
+
 %{mvn_alias} :doxia-integration-tools org.apache.maven.shared:maven-doxia-tools
 
 %build
@@ -142,6 +147,7 @@ build-jar-repository -s lib \
     plexus/interpolation \
     plexus-metadata-generator \
     plexus/utils \
+    plexus/xml \
     plexus-velocity/plexus-velocity \
     qdox \
     velocity \
