@@ -150,4 +150,14 @@
 </comment>
     <requestid>1120478</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>93911bce6c2daa289fa8d3b25e3c3b5a</srcmd5>
+    <version>1.6.1</version>
+    <time>1712157567</time>
+    <user>anag+factory</user>
+    <comment>- add %sle15_python_module_pythons
+
+- Skip two recalcitrant tests.</comment>
+    <requestid>1164167</requestid>
+  </revision>
 </revisionlist>

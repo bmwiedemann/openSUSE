@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  9 15:44:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add %sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Tue Oct 24 12:14:40 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add few patches to fix tests (from gh#flask-admin/flask-admin#2328):
@@ -54,7 +59,7 @@ Fri Aug  6 07:41:36 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-new-wtforms.patch:
   * Support new WTForms.
-- Skip two recalcitrant tests. 
+- Skip two recalcitrant tests.
 
 -------------------------------------------------------------------
 Tue Jun  1 07:05:06 UTC 2021 - Matej Cepl <mcepl@suse.com>
