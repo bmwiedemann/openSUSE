@@ -56,6 +56,7 @@ BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-interactivity-api)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-velocity)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
 BuildRequires:  mvn(org.eclipse.aether:aether-impl)
 BuildRequires:  mvn(org.jdom:jdom2)
 BuildArch:      noarch
@@ -178,6 +179,13 @@ popd
 
 # Disable processing of test resources using ant
 %pom_remove_plugin org.apache.maven.plugins:maven-antrun-plugin archetype-common
+
+for i in \
+    archetype-common \
+    archetype-models/archetype-catalog \
+    archetype-models/archetype-descriptor; do
+  %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 ${i}
+done
 
 %build
 %{mvn_package} :archetype-models maven-archetype
