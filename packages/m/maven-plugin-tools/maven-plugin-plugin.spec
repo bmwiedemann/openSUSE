@@ -45,6 +45,7 @@ BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.apache.maven:maven-repository-metadata)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-velocity)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
 BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus)
 BuildRequires:  mvn(org.sonatype.plexus:plexus-build-api)
 Obsoletes:      %{name}-bootstrap
@@ -80,6 +81,10 @@ API documentation for %{name}.
 
 # Remove test dependencies because tests are skipped anyways.
 %pom_xpath_remove "pom:dependency[pom:scope='test']"
+
+for i in maven-plugin-report-plugin maven-plugin-tools-annotations maven-plugin-tools-api maven-plugin-tools-generators maven-script; do
+  %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 ${i}
+done
 
 %pom_remove_dep org.junit:junit-bom
 %pom_remove_dep :maven-plugin-tools-ant maven-plugin-plugin

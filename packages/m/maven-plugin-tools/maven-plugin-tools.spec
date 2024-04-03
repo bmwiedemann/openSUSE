@@ -49,6 +49,7 @@ BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-languages
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-velocity
+BuildRequires:  plexus-xml
 BuildRequires:  qdox
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
@@ -160,6 +161,10 @@ API documentation for %{name}.
 
 %pom_remove_dep net.sf.jtidy:jtidy maven-plugin-tools-generators
 
+for i in maven-plugin-report-plugin maven-plugin-tools-annotations maven-plugin-tools-api maven-plugin-tools-generators maven-script; do
+  %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 ${i}
+done
+
 %build
 mkdir -p lib
 build-jar-repository -s lib \
@@ -189,6 +194,7 @@ build-jar-repository -s lib \
     plexus-containers/plexus-component-annotations \
     plexus-languages/plexus-java \
     plexus/utils \
+    plexus/xml \
     plexus-velocity/plexus-velocity \
     qdox \
     slf4j/api \

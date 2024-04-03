@@ -42,6 +42,7 @@ BuildRequires:  maven-resolver-api
 BuildRequires:  plexus-build-api
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-velocity
+BuildRequires:  plexus-xml
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  unzip
@@ -72,6 +73,10 @@ artifact metadata and a generic help goal.
 # Remove test dependencies because tests are skipped anyways.
 %pom_xpath_remove "pom:dependency[pom:scope='test']"
 
+for i in maven-plugin-report-plugin maven-plugin-tools-annotations maven-plugin-tools-api maven-plugin-tools-generators maven-script; do
+  %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 ${i}
+done
+
 %pom_remove_dep org.junit:junit-bom
 %pom_remove_dep :maven-plugin-tools-ant maven-plugin-plugin
 %pom_remove_dep :maven-plugin-tools-beanshell maven-plugin-plugin
@@ -81,27 +86,28 @@ artifact metadata and a generic help goal.
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-	maven/maven-artifact \
-	maven/maven-core \
-	maven/maven-model \
-	maven/maven-plugin-api \
-	maven/maven-repository-metadata \
-	maven/maven-settings \
-	maven-plugin-tools/maven-plugin-annotations \
-	maven-plugin-tools/maven-plugin-tools-api \
-	maven-plugin-tools/maven-plugin-tools-generators \
+    maven/maven-artifact \
+    maven/maven-core \
+    maven/maven-model \
+    maven/maven-plugin-api \
+    maven/maven-repository-metadata \
+    maven/maven-settings \
+    maven-plugin-tools/maven-plugin-annotations \
+    maven-plugin-tools/maven-plugin-tools-api \
+    maven-plugin-tools/maven-plugin-tools-generators \
     maven-resolver/maven-resolver-api \
-	org.eclipse.sisu.inject \
-	org.eclipse.sisu.plexus \
+    org.eclipse.sisu.inject \
+    org.eclipse.sisu.plexus \
     plexus/plexus-build-api \
-	plexus/utils \
-	plexus-velocity/plexus-velocity
+    plexus/utils \
+    plexus/xml \
+    plexus-velocity/plexus-velocity
 
 %{mvn_file} :%{artifactId} %{base_name}/%{artifactId}
 pushd %{artifactId}
 %{ant} \
-	-Dtest.skip=true \
-	jar
+    -Dtest.skip=true \
+    jar
 popd
 %{mvn_artifact} pom.xml
 %{mvn_artifact} %{artifactId}/pom.xml %{artifactId}/target/%{artifactId}-%{version}.jar
