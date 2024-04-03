@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  3 07:12:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0+14:
+  + libide/gui: improve sidebar legibility.
+  + plugins/git: fix compilation issue with newer libgit2
+    (boo#1222185).
+
+-------------------------------------------------------------------
 Sat Mar 16 09:27:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:
