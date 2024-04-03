@@ -69,4 +69,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1163785</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b91eb0a792a356936c7056acdc3a6259</srcmd5>
+    <version>6.0</version>
+    <time>1712157579</time>
+    <user>anag+factory</user>
+    <comment>- Updated patterns for Plasma6
+- Bumped version to 6.0</comment>
+    <requestid>1164176</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %bcond_with betatest
 
 Name:           patterns-kalpa
-Version:        5.0
+Version:        6.0
 Release:        0
 Summary:        Patterns for openSUSE Kalpa
 License:        MIT
@@ -232,9 +232,9 @@ Requires:       systemd-icon-branding-openSUSE
 Requires:       udisks2
 Requires:       unzip
 Requires:       upower
+Requires:       usbutils
 Requires:       wget
 Requires:       xdg-utils
-Requires:       usbutils
 # Support ntfs drives
 Requires:       ntfs-3g
 Requires:       ntfsprogs
@@ -272,34 +272,34 @@ Requires:       konsole
 Requires:       partitionmanager
 
 # Add ksshaskpass5 (boo#1215407)
-Requires:       ksshaskpass5
+Requires:       ksshaskpass6
 
 # Recommended by kde_plasma
-Requires:       bluedevil5
-Requires:       breeze5-wallpapers
+Requires:       bluedevil6
+Requires:       breeze6-wallpapers
 Requires:       dolphin
 Requires:       kde-print-manager
-Requires:       kgamma5
-Requires:       kwrited5
-Requires:       phonon4qt5-backend-vlc
-Requires:       plasma-nm5
+Requires:       kgamma6
+Requires:       kwrited6
+Requires:       phonon-vlc-qt6
+Requires:       plasma6-nm
 
 # Manually pull in baloo5-file to better support desktip search functions/desktop integration
-Requires:       baloo5-file
+Requires:       kf6-baloo-file
 
 # For NetworkManager support of openVPN Connections
 Requires:       NetworkManager-openvpn
 Requires:       openvpn-auth-pam-plugin
-Requires:       plasma-nm5-openconnect
-Requires:       plasma-nm5-openvpn
+Requires:       plasma6-nm-openconnect
+Requires:       plasma6-nm-openvpn
 
-Requires:       kio-extras5
-Requires:       kwalletmanager5
-Requires:       pinentry-qt5
-Requires:       plasma5-addons
-Requires:       plasma5-pa
-Requires:       plasma5-session-wayland
-Requires:       sddm
+Requires:       kdeplasma6-addons
+Requires:       kio-extras
+Requires:       kwalletmanager
+Requires:       pinentry
+Requires:       plasma5-session
+Requires:       plasma6-pa
+Requires:       sddm-qt6
 
 # Additional Fonts to cover Unicode Symbols not provided by kde_plasma
 Requires:       noto-sans-math-fonts
@@ -308,21 +308,20 @@ Requires:       google-noto-sans-cjk-fonts
 # Recommends and Supplements won't work so pull in manually
 Requires:       discover-backend-flatpak
 Requires:       discover-backend-fwupd
-Requires:       kde-gtk-config5
-Requires:       kde-gtk-config5-gtk3
+Requires:       kde-gtk-config6
+Requires:       kde-gtk-config6-gtk3
 Requires:       plasma-browser-integration
-Requires:       plasma5-defaults-openSUSE
+# Requires:       plasma5-defaults-openSUSE
 Requires:       purpose
 Requires:       qqc2-desktop-style
-Requires:       sddm-theme-openSUSE
-Requires:       xdg-desktop-portal-kde
+Requires:       xdg-desktop-portal-kde6
 
 # Recommended by powerdevil5, but allow tlp as alternative
 Requires:       (power-profiles-daemon or tlp)
 Suggests:       power-profiles-daemon
 
 # Doesnt depend on PackageKit, but also works for other backends
-Requires:       discover-notifier
+Requires:       discover6-notifier
 
 # Spectacle to be able to take screenshots out of the box
 Requires:       spectacle
@@ -333,7 +332,7 @@ Requires:       kaccounts-providers
 Requires:       kio-gdrive
 
 # Default Plasma app to quickly use emojis
-Requires:       plasma5-desktop-emojier
+Requires:       plasma6-desktop-emojier
 Requires:       google-noto-coloremoji-fonts
 
 # Breeze GTK2, GTK3, and GTK4
@@ -345,15 +344,15 @@ Requires:       (gtk3-metatheme-breeze if gtk3)
 Requires:       oxygen5-sounds
 
 # Plasma system monitor
-Requires:       plasma5-systemmonitor
+Requires:       plasma6-systemmonitor
 
 # For seeing thumbnails in Dolphin
-Requires:       libqt5-qtimageformats
+Requires:       qt6-imageformats
 Requires:       ffmpegthumbs
 Requires:       kdegraphics-thumbnailers
 
 # For being able to change SDDM Settings
-Requires:       kcm_sddm
+Requires:       sddm-kcm6
 
 # Add for mounting network shares in userspace (boo#1210125)
 Requires:       kio-fuse
@@ -361,10 +360,10 @@ Requires:       kdenetwork-filesharing
 Requires:       kdnssd
 
 # Add kcm_flatpak for managing flatpak permissions (boo#1208256)
-Requires:       kcm_flatpak
+Requires:       flatpak-kcm6
 
 # Add pam_kwallet to unlock the password store automatically
-Requires:       pam_kwallet
+Requires:       pam_kwallet6
 
 # KDE Connect to communicate to phone devices
 Requires:       kdeconnect-kde
