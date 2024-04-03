@@ -3,9 +3,9 @@
         <param name="url">https://gitlab.torproject.org/tpo/core/arti.git</param>
         <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
         <param name="scm">git</param>
-        <param name="revision">arti-v1.1.12</param>
+        <param name="revision">arti-1.2.1</param>
         <param name="match-tag">*</param>
-        <param name="versionrewrite-pattern">arti-v(\d+\.\d+\.\d+)</param>
+        <param name="versionrewrite-pattern">arti-(\d+\.\d+\.\d+)</param>
         <param name="versionrewrite-replacement">\1</param>
         <param name="changesgenerate">enable</param>
     </service>
@@ -16,8 +16,8 @@
         <param name="compression">zst</param>
         <param name="update">true</param>
 
-        <!-- From
-        https://gitlab.torproject.org/tpo/core/arti/-/blob/3c44d849f4c3332ccbb86328392d54e7c1d8e9b6/maint/cargo_audit
+        <!-- 
+        From https://gitlab.torproject.org/tpo/core/arti/-/blob/2db5ccf16d2f977c073ba3f142513b920fb7b6a1/maint/cargo_audit
         -->
 
         <!--
@@ -38,6 +38,15 @@
         we only use it to verify signatures.
         -->
         <param name="i-accept-the-risk">RUSTSEC-2023-0071</param>
+
+
+        <!--
+        This is not a vulnerability but an unmaintained warning for
+        `generational-arena`. It is only used by arti-rpcserver (which is
+        experimental).
+        -->
+        <param name="i-accept-the-risk">RUSTSEC-2024-0014</param>
+        
     </service>
 
     <service name="cargo_audit" mode="manual">

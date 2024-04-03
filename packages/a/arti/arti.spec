@@ -17,25 +17,21 @@
 
 
 Name:           arti
-#               This will be set by osc services, that will run after this.
-Version:        1.1.12~0
+Version:        1.2.1~0
 Release:        0
 Summary:        An implementation of Tor, in Rust.
-#               If you know the license, put it's SPDX string here.
-#               Alternately, you can use cargo lock2rpmprovides to help generate this.
 License:        Apache-2.0 OR MIT
 URL:            https://gitlab.torproject.org/tpo/core/arti
 Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
-# Disable this line if you wish to support all platforms.
-# In most situations, you will likely only target tier1 arches for user facing components.
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
-An implementation of Tor, in Rust.
+An implementation of Tor, in Rust
 
 %prep
 %autosetup -p1 -a1
@@ -50,6 +46,8 @@ An implementation of Tor, in Rust.
 %{cargo_test}
 
 %files
+%doc CHANGELOG.md README.md
+%license LICENSE-APACHE LICENSE-MIT
 %{_bindir}/%{name}
 
 %changelog
