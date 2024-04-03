@@ -20,6 +20,6 @@ index a17dda9..fe963b9 100644
  brotli
 -colorthief
 +modern_colorthief
+ curl_cffi
  dateparser >= 1.1.4
  emoji
- keyring >= 21.6.0

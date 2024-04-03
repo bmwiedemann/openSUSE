@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Apr  1 03:09:56 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 1.41.1
+  * changes from 1.41.1
+    + A regression in Explorer, pinned servers list was no longer
+      cleared when it was refreshed
+    + Wrong chapters order in Perf Scan (FR) server
+    + [Servers] Added ComicExtra (EN)
+    + [Servers] Perf Scan (FR): Update
+    + [Servers] Mangas.in (ES: Update
+    + [Servers] Reaper Scans (EN): Update
+    + [L10n] Updated French, Russian, Spanish and Turkish
+      translations
+  * changes from 1.40.1
+    + [UX] Refined visuals taking advantage of the new
+      capabilities of GNOME 46
+    + [Servers] Added Lelmanga (FR)
+    + [Servers] Added Lelscan (FR)
+    + [Servers] Added Night scans (EN)
+    + [Servers] Comic Book Plus (EN): Fixed search
+    + [Servers] MANGA Plus by SHUEISHA: Update
+    + [Servers] MangaDex: Added Tags filter
+    + [Servers] MangaLib (RU): Update
+    + [Servers] Mangaowl (EN): Update
+    + [Servers] Jpmangas (FR): Disabled
+    + [Servers] Reaper Scans (pt_BR): Disabled
+    + [Servers] Scan FR: Disabled
+    + [Servers] Scan Manga (FR): Disabled
+    + [L10n] Updated French, Russian, Spanish and Turkish
+      translations 
+
+-------------------------------------------------------------------
 Fri Mar  8 18:58:41 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - switch runtime dep python-typing-extensions to python-typing_extensions

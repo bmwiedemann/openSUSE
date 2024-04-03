@@ -17,7 +17,7 @@
 
 
 Name:           Komikku
-Version:        1.39.0
+Version:        1.41.1
 Release:        0
 Summary:        A manga reader for GNOME
 License:        GPL-3.0-or-later
@@ -98,7 +98,7 @@ Keys features
 
 %files
 %license LICENSE
-%doc README.md CODE_OF_CONDUCT.md CONTRIBUTING.md
+%doc README.md CONTRIBUTING.md
 %{_bindir}/komikku
 %{_datadir}/applications/info.febvre.Komikku.desktop
 %{_datadir}/glib-2.0/schemas/info.febvre.Komikku.gschema.xml
