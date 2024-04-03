@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr  2 13:56:39 UTC 2024 - pgajdos@suse.com
+
+- version update to 1.4.12
+  * ctlib: Fix crash using ct_command with CS_MORE option
+  * defncopy: Use memory instead of temporary file
+  * defncopy: Fix MS column length for N(VAR)CHAR types
+  * defncopy: Quote strings and identifiers
+  * defncopy: Trim spaces around nullable flags
+  * defncopy: Fix for order of index recordset
+  * defncopy: Quote key index names
+  * defncopy: Add test for the applications
+- modified patches
+  % configure-return-void-fix.patch (refreshed)
+
+-------------------------------------------------------------------
 Mon Feb 26 08:44:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

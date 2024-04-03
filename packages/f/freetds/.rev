@@ -395,4 +395,12 @@ License labeling issues should be fixed.  The (hopefully) LGPL libraries and GPL
     <comment>Prepare for RPM 4.20 (forwarded request 1150709 from dimstar)</comment>
     <requestid>1150724</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c97bbcd65d27d5ea8297bc39b18e6471</srcmd5>
+    <version>1.4.12</version>
+    <time>1712157498</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1164160</requestid>
+  </revision>
 </revisionlist>
