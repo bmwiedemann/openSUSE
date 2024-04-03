@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  2 08:25:42 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix SMT control on powernv with the new kernel interface (bsc#1222163)
+  * Refresh ppc64_cpu-Clean-up-sysfs-smt-control-error-handling.patch
+
+-------------------------------------------------------------------
 Fri Feb  9 12:21:41 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Do not print an error when the kernel does not support sysfs smt interface

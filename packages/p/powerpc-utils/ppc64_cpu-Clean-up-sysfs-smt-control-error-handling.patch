@@ -1,26 +1,29 @@
-From 916a239f518e96c77c35a58db7f1dcc00e5fb5f0 Mon Sep 17 00:00:00 2001
+From 8d613e0e81561ce0b1d6ea834b07c73f5f9251a1 Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Fri, 9 Feb 2024 13:12:33 +0100
 Subject: [PATCH] ppc64_cpu: Clean up sysfs smt/control error handling
 
-When the kernel does not support the sysfs intercface do not report and
+When the kernel does not support the sysfs intercface do not report an
 arror, fall back to the old method silently.
 
 Suggested-by: Nathan Lynch<nathanl@linux.ibm.com>
 Signed-off-by: Michal Suchanek <msuchanek@suse.de>
 ---
-It has been suggested to also not try the old iterface in case of
-unknown error because it's unlikely to work but that would needlessly
-complicate the code.
+v3: retry is needed on ENODEV to support powernv
 ---
- src/ppc64_cpu.c | 18 ++++++++++++++----
- 1 file changed, 14 insertions(+), 4 deletions(-)
+ src/ppc64_cpu.c | 24 +++++++++++++++++++-----
+ 1 file changed, 19 insertions(+), 5 deletions(-)
 
 diff --git a/src/ppc64_cpu.c b/src/ppc64_cpu.c
-index c318928..759ceff 100644
+index c318928..688152b 100644
 --- a/src/ppc64_cpu.c
 +++ b/src/ppc64_cpu.c
-@@ -368,10 +368,20 @@ static int is_dscr_capable(void)
+@@ -364,14 +364,28 @@ static int is_dscr_capable(void)
+ 
+ /*
+  * Depends on kernel's CONFIG_HOTPLUG_CPU
++ * Return -1 for fatal error, -2 to retry.
+  */
  static int set_smt_control(int smt_state)
  {
  	if (set_attribute(SYS_SMT_CONTROL, "%d", smt_state)) {
@@ -34,10 +37,13 @@ index c318928..759ceff 100644
 +			 * The kernel does not have the interface.
 +			 * Try the old method.
 +			 */
-+				return -1;
++				return -2;
 +			case ENODEV:
-+			/* Setting SMT state not supported on the system. */
-+				return 0;
++			/*
++			 * Setting SMT state not supported by this interface.
++			 * eg. powernv
++			 */
++				return -2;
 +			default:
 +				perror(SYS_SMT_CONTROL);
 +				return -1;
@@ -45,6 +51,15 @@ index c318928..759ceff 100644
  	}
  	return 0;
  }
+@@ -405,7 +419,7 @@ static int do_smt(char *state, bool numeric)
+ 		}
+ 
+ 		/* Try using smt/control if failing, fall back to the legacy way */
+-		if (set_smt_control(smt_state))
++		if ((rc = set_smt_control(smt_state)) == -2)
+ 			rc = set_smt_state(smt_state);
+ 	}
+ 
 -- 
-2.43.0
+2.44.0
 
