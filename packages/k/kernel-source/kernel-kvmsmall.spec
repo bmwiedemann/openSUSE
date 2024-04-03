@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.8
-%define patchversion 6.8.1
-%define git_commit d922afa2ed7e029a09447a9cdd3a52de7fa2fef8
+%define patchversion 6.8.2
+%define git_commit 2eb0f0f67053d9d94ab7bc023cc977261c47ce8a
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -36,9 +36,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-kvmsmall
-Version:        6.8.1
+Version:        6.8.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gd922afa
+Release:        <RELEASE>.g2eb0f0f
 %else
 Release:        0
 %endif
