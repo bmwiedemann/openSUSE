@@ -86,4 +86,14 @@
   * Work correctly with GStreamer 1.18 and later (thanks to @ssssam)</comment>
     <requestid>1131695</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>ccbe90b22ede002a1e3ba66dfddd046c</srcmd5>
+    <version>3.0.1</version>
+    <time>1712157625</time>
+    <user>anag+factory</user>
+    <comment>- No more greedy globs in %files.
+- Switch back to ffmpeg 5.
+- Actually run fdupes.</comment>
+    <requestid>1164243</requestid>
+  </revision>
 </revisionlist>
