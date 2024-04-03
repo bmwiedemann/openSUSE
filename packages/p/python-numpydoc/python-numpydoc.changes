@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr  3 07:51:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * PERF: wrap inspect.getsourcelines with cache (#532).
+  * during tokenize, use UTF8 encoding on all platforms (#510).
+  * fix 'Alias for field number X' problem with NamedTuples
+  * DOC: Fix typos found by codespell (#514).
+  * DOC: Update link to mailing list (#518).
+  * Add Python 3.12 to classifiers (#529).
+  * Update release process (#534).
+  * Update release process (#535).
+
+-------------------------------------------------------------------
 Thu Feb 29 19:29:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.6.0
@@ -283,7 +296,7 @@ Tue Jul 23 17:56:18 UTC 2019 - Todd R <toddrme2178@gmail.com>
   * ENH: Just use obj
   * FIX: Opt-in, test, uniform styling, css
   * Add cross-reference links to parameter types
-  * ENH: Allow a trailing COMMA or PERIOD in a See Also function list block. 
+  * ENH: Allow a trailing COMMA or PERIOD in a See Also function list block.
   * FIX parsing of type-only return params
   * ENH: Added support for multiple functions+description
   * ENH: accept autoclass member options
@@ -292,13 +305,13 @@ Tue Jul 23 17:56:18 UTC 2019 - Todd R <toddrme2178@gmail.com>
     in a docstring
   * ENH Only print the index if it is necessary.
   * Clarify location of certain invalid docstrings.
-  * BUG: turn member descriptors into links 
+  * BUG: turn member descriptors into links
   * FIX: Escape chars in re
   * MNT Fix collections.abc imports
   * FIX pedantic handling of whitespace in reference regex
   * FIX remove duplicated citation back-references
   * Move arg and kwargs escaping to docscrape_sphinx
-  * Escape the * in *args and **kwargs 
+  * Escape the * in *args and **kwargs
 
 -------------------------------------------------------------------
 Sun Apr 29 04:11:15 UTC 2018 - arun@gmx.de
@@ -426,7 +439,7 @@ Fri Jan 20 21:04:08 UTC 2017 - toddrme2178@gmail.com
   * ENH : NumpyDocString subclass collections.Mapping
   * Support Yields section in traitsdoc too.
   * Support Yields section.
-  
+
 -------------------------------------------------------------------
 Thu May  7 18:52:25 UTC 2015 - benoit.monin@gmx.fr
 

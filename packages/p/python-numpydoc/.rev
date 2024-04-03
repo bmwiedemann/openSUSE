@@ -166,4 +166,24 @@
     * Pre-commit hook for running numpydoc validation #454</comment>
     <requestid>1154144</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3b0b619be6de0a6658d555c42d9188f8</srcmd5>
+    <version>1.7.0</version>
+    <time>1712157646</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.0:
+  * PERF: wrap inspect.getsourcelines with cache (#532).
+  * during tokenize, use UTF8 encoding on all platforms (#510).
+  * fix 'Alias for field number X' problem with NamedTuples
+  * DOC: Fix typos found by codespell (#514).
+  * DOC: Update link to mailing list (#518).
+  * Add Python 3.12 to classifiers (#529).
+  * Update release process (#534).
+  * Update release process (#535).
+
+  * ENH: Allow a trailing COMMA or PERIOD in a See Also function list block.
+  * BUG: turn member descriptors into links
+  * Escape the * in *args and **kwargs</comment>
+    <requestid>1164292</requestid>
+  </revision>
 </revisionlist>
