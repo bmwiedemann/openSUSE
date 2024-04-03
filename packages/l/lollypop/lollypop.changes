@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 02 18:14:10 UTC 2024 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.38:
+  * Fix startup notifications.
+  * Force revealing tracks on filtering (glgo#World/lollypop#2999).
+  * Remove remains of the pylast dependency.
+  * Lower default cover size for phones.
+
+-------------------------------------------------------------------
 Thu Dec 22 19:24:24 UTC 2022 - antoine.belvire@opensuse.org
 
 - Update to version 1.4.37:
