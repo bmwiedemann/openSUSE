@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-sec-dispatcher
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ BuildRequires:  plexus-cipher
 BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
+BuildRequires:  plexus-xml
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -58,9 +59,16 @@ API documentation for %{name}.
 cp %{SOURCE1} .
 cp %{SOURCE100} build.xml
 
+%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0
+
 %build
 mkdir -p lib
-build-jar-repository -s lib plexus/utils plexus/plexus-cipher plexus-containers/plexus-container-default javax.inject
+build-jar-repository -s lib \
+    plexus/utils \
+    plexus/xml \
+    plexus/plexus-cipher \
+    plexus-containers/plexus-container-default \
+    javax.inject
 %{ant} \
 %if %{without tests}
   -Dtest.skip=true \
