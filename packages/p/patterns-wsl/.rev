@@ -39,4 +39,20 @@
     <comment></comment>
     <requestid>1126934</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>eee88ba4f9f01e6200642b6e2a6aa61c</srcmd5>
+    <version>20240327</version>
+    <time>1712157545</time>
+    <user>anag+factory</user>
+    <comment>- Adjusting %{_tmpfilesdir}/wslg.conf to be provided by a new package
+  named patterns-wsl-tmpfiles which is required by patterns-wsl-systemd
+  * WSL uses '/etc/zypp/zypp.conf:solver.onlyRequires = true' by default
+
+- Update to version 20240322
+  * Adding scriptlet code to create %{_tmpfilesdir}/wslg.conf iff
+    it doesn't exist
+    - This should take care of missing /tmp/.X11-unix symlink after
+      the wsl_systemd pattern is installed, so it works 'out-of-the-box'</comment>
+    <requestid>1163142</requestid>
+  </revision>
 </revisionlist>

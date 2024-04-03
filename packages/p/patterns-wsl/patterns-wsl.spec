@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-wsl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           patterns-wsl
-Version:        20221221
+Version:        20240327
 Release:        0
 Summary:        Recommended packages for Windows Subsystem for Linux, WSL, WSLg
 License:        MIT
@@ -32,7 +32,6 @@ BuildArch:      noarch
 This is an internal package that is used to create the patterns as part
 of the installation source setup.  Installation of this package does
 not make sense.
-
 
 # ----
 
@@ -86,8 +85,8 @@ then
 fi
 
 %files base
-%dir /usr/share/doc/packages/patterns
-/usr/share/doc/packages/patterns/wsl_base.txt
+%dir %{_docdir}/patterns
+%{_docdir}/patterns/wsl_base.txt
 
 # ----
 
@@ -144,8 +143,8 @@ then
 fi
 
 %files gui
-%dir /usr/share/doc/packages/patterns
-/usr/share/doc/packages/patterns/wsl_gui.txt
+%dir %{_docdir}/patterns
+%{_docdir}/patterns/wsl_gui.txt
 
 # ----
 
@@ -158,6 +157,7 @@ Provides:       pattern-icon() = pattern-generic
 #Provides:       pattern-order() = ?
 Provides:       pattern-visible()
 Requires:       systemd
+Requires:       patterns-wsl-tmpfiles
 
 %description systemd
 This package contains the wsl_systemd pattern: adjusts or provides %{_sysconfdir}/wsl.conf and /sbin/init symlink where required.
@@ -217,8 +217,23 @@ then
 fi
 
 %files systemd
-%dir /usr/share/doc/packages/patterns
-/usr/share/doc/packages/patterns/wsl_systemd.txt
+%dir %{_docdir}/patterns
+%{_docdir}/patterns/wsl_systemd.txt
+
+# ----
+
+%package tmpfiles
+Summary:  Setup WSLg tmpfiles.d configuration
+Source0:  wslg.conf
+
+%description tmpfiles
+The package installs %{_tmpfilesdir}/wslg.conf so the proper symlink to /mnt/wslg/.X11-unix exists at boot.
+
+%post tmpfiles
+%tmpfiles_create %{_tmpfilesdir}/wslg.conf
+
+%files tmpfiles
+%{_tmpfilesdir}/wslg.conf
 
 # ----
 
@@ -227,11 +242,14 @@ fi
 %build
 
 %install
-mkdir -p %{buildroot}/usr/share/doc/packages/patterns/
-echo 'This file marks the pattern wsl_base to be installed.' > %{buildroot}/usr/share/doc/packages/patterns/wsl_base.txt
-mkdir -p %{buildroot}/usr/share/doc/packages/patterns/
-echo 'This file marks the pattern wsl_gui to be installed.' > %{buildroot}/usr/share/doc/packages/patterns/wsl_gui.txt
-mkdir -p %{buildroot}/usr/share/doc/packages/patterns/
-echo 'This file marks the pattern wsl_systemd to be installed.' > %{buildroot}/usr/share/doc/packages/patterns/wsl_systemd.txt
+mkdir -p %{buildroot}%{_docdir}/patterns/
+echo 'This file marks the pattern wsl_base to be installed.' > %{buildroot}%{_docdir}/patterns/wsl_base.txt
+mkdir -p %{buildroot}%{_docdir}/patterns/
+echo 'This file marks the pattern wsl_gui to be installed.' > %{buildroot}%{_docdir}/patterns/wsl_gui.txt
+mkdir -p %{buildroot}%{_docdir}/patterns/
+echo 'This file marks the pattern wsl_systemd to be installed.' > %{buildroot}%{_docdir}/patterns/wsl_systemd.txt
+mkdir -vp %{buildroot}%{_tmpfilesdir}
+install -Dm644 %{SOURCE0} %{buildroot}%{_tmpfilesdir}/wslg.conf
 
 %changelog
+
