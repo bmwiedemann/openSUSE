@@ -32,13 +32,13 @@ ExclusiveArch:  do-not-build
 
 %define _name   libproxy
 Name:           libproxy%{?dash}%{?name_suffix}
-Version:        0.5.3
+Version:        0.5.4
 Release:        0
 Summary:        Automatic proxy configuration management for applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://libproxy.github.io/libproxy/
-Source:         https://github.com/libproxy/libproxy/archive/refs/tags/%{version}.tar.gz
+Source:         %{_name}-%{version}.tar.zst
 Source99:       baselibs.conf
 BuildRequires:  meson
 BuildRequires:  sysuser-tools
@@ -183,7 +183,7 @@ rm      %{buildroot}%{_libdir}/pkgconfig/libproxy-1.0.pc
 
 %if "%{flavor}" == "client"
 %files -n libproxy1
-%{_libdir}/libproxy.so.1
+%{_libdir}/libproxy.so.*
 
 %files -n libpxbackend-1_0%{?mini}
 %dir %{_libdir}/libproxy

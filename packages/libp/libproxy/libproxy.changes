@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr  2 11:32:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.5.4:
+  + Add golang link to application page.
+  + Improve libproxy test coverage.
+  + Improve coverage.
+  + Specify library version more completely.
+  + Use the correct separator character for Windows ProxyOverride.
+  + Improve handling of Windows proxy settings.
+  + Add curl option to the generated config for backend instead.
+  + Set initial state to online.
+  + Windows: Detect scheme presence in proxy URLs more robustly.
+  + Fix broken WPAD proxy resolution.
+
+-------------------------------------------------------------------
 Tue Mar 19 01:59:20 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
 
 - Do not use %elif by now since SLE, Leap does not have an rpm
