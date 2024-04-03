@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr  2 15:03:20 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 10.2.0
+  - CVE-2024-2494
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v10-2-0-2024-04-02
+
+-------------------------------------------------------------------
 Thu Mar 21 15:30:22 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - CVE-2024-2494: remote: check for negative array lengths before
