@@ -1,7 +1,7 @@
 #
 # spec file for package remmina
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,18 +22,19 @@
 %bcond_with     remmina_kwallet
 %endif
 Name:           remmina
-Version:        1.4.33
+Version:        1.4.35
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://www.remmina.org/
-# Note the (new) . infront of version....
-Source0:        https://gitlab.com/Remmina/Remmina/-/archive/v.%{version}/Remmina-v.%{version}.tar.bz2
+Source0:        https://gitlab.com/Remmina/Remmina/-/archive/v%{version}/Remmina-v%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  cups-devel
+BuildRequires:  curl-devel
 BuildRequires:  ed
 BuildRequires:  fdupes
+BuildRequires:  fuse3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  libgcrypt-devel
@@ -47,7 +48,6 @@ BuildRequires:  pkgconfig(appindicator3-0.1)
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(avahi-glib)
 BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(freerdp2) >= 2.1.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gnutls)
@@ -65,7 +65,14 @@ BuildRequires:  pkgconfig(libvncserver)
 BuildRequires:  pkgconfig(spice-client-gtk-3.0)
 BuildRequires:  pkgconfig(vte-2.91)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
-BuildRequires:  pkgconfig(winpr2)
+%if 0%{?suse_version} > 1590
+BuildRequires:  pkgconfig(freerdp3) >= 3.0.0
+BuildRequires:  pkgconfig(winpr3)
+%else
+BuildRequires:  freerdp2-devel < 3.0.0
+BuildRequires:  freerdp2-server < 3.0.0
+BuildRequires:  winpr2-devel < 3.0.0
+%endif
 BuildRequires:  pkgconfig(xkbfile)
 Recommends:     %{name}-plugin-rdp
 Recommends:     %{name}-plugin-secret
@@ -187,8 +194,7 @@ This package provides a Remmina plugin for the GNOME keyring password manager.
 %lang_package
 
 %prep
-%setup -q -n Remmina-v.%{version}
-%autopatch -p1
+%autosetup -p1 -n Remmina-v%{version}
 sed -e 's|%{_bindir}/env bash|%{_bindir}/sh|' -i data/desktop/remmina-file-wrapper.in
 
 %build
@@ -203,6 +209,9 @@ export CFLAGS="$CFLAGS -fPIC"
 	-DWITH_NEWS=OFF \
 	-DWITH_KIOSK_SESSION=ON \
 	-DWITH_GVNC=ON \
+%if 0%{?suse_version} > 1590
+  -DWITH_FREERDP3=ON \
+%endif
 %if %{with remmina_kwallet}
 	-DWITH_KF5WALLET=ON \
 %else

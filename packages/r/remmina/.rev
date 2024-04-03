@@ -800,4 +800,26 @@
   * Fix crash cause by using freed memory (forwarded request 1117514 from iznogood)</comment>
     <requestid>1117520</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>7accd41ca3c9adeea60233aef781dac4</srcmd5>
+    <version>1.4.35</version>
+    <time>1712157543</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.35 stable release.
+- Update to version 1.4.34~git.20240221 (boo#1220149):
+  * Updated call to set FreeRDP_LoadBalanceInfo
+  * Revert setting loadbalanceinfo to the old method used before FreeRDP3
+  * Add FreeRDP version to cmake status messages
+  * FreeRDP3: Fix crash with disablepasswordstoring enabled
+  * [REM-3047] fix issue compiling with gcc-14
+  * Check if WINPR_ASSERT is defined
+  * Allow running an SSH command when connecting via ssh tunnel
+  * Fix build for openssl-1.1
+- Update to version 1.4.33~git.20240124:
+  * Add support for FreeRDP 3.x
+  * Allow Remmina to be built without FreeRDP
+  * Made file not empty to allow setting for Service Desk
+</comment>
+    <requestid>1164350</requestid>
+  </revision>
 </revisionlist>
