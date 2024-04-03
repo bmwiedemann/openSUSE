@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  3 09:21:48 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 24.02:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v24.02
+
+-------------------------------------------------------------------
 Tue Feb 20 10:17:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
