@@ -86,6 +86,8 @@ This package provides the GObject Introspection bindings for Pango.
 %package tools
 Summary:        Tools for pango, a library for text layout and rendering
 Group:          System/Libraries
+# for the 'gm' command used by 'pango-view --backend=ft2'
+Recommends:     GraphicsMagick
 
 %description tools
 Pango is a library for layout and rendering of text, with an emphasis

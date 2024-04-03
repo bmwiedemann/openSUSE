@@ -1189,4 +1189,14 @@
     <comment>Update for GNOME 46 (forwarded request 1156645 from dimstar)</comment>
     <requestid>1159421</requestid>
   </revision>
+  <revision rev="148" vrev="2">
+    <srcmd5>82d40efbe76c5f04d02beb39aaf20ba8</srcmd5>
+    <version>1.52.0</version>
+    <time>1712157534</time>
+    <user>anag+factory</user>
+    <comment>Added GraphicsMagick package as Recommends. The invocation of pango-view with the ft2 backend requires the gm command found in that package. 
+Without it, running 'pango-view --backend=ft2' results in this error:
+pango-view: When running GraphicsMagick 'gm display' command: Failed to execute child process “gm” (No such file or directory) (forwarded request 1163816 from bobbie424242)</comment>
+    <requestid>1164136</requestid>
+  </revision>
 </revisionlist>
