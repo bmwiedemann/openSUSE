@@ -1185,6 +1185,8 @@
     <package name="ktnef-debug-categories" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ktouch" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="ktouch-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
+    <package name="kuiviewer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kuiviewer-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kuserfeedback-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kuserfeedback-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kvm_stat" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
@@ -1565,6 +1567,7 @@
     <package name="libQt6Core5Compat6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt6Core6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6DBus6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libQt6Designer6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt6Gui6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6HunspellInputMethod6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt6LabsAnimation6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2060,6 +2063,7 @@
     <package name="libgiomm-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libgiomm-2_68-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgirepository-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libgit2-1_8" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="libgjs0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libglib-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libglibmm-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3085,6 +3089,8 @@
     <package name="mariadb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mariadb-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mariadb-errormessages" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="markdownpart" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="markdownpart-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mbimcli-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mbox-importer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mbox-importer-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3613,6 +3619,7 @@
     <package name="python311-attrs" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-base" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python311-base-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-cached-property" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-certifi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-cffi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-charset-normalizer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3679,6 +3686,7 @@
     <package name="python311-pycparser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-pycups" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-pycurl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="python311-pygit2" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-pyinotify" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-pysmbc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-python-dateutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
@@ -3935,6 +3943,8 @@
     <package name="susepaste-screenshot" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="sushi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="sushi-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="svgpart" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="svgpart-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="swell-foop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="swell-foop-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="switcheroo-control" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

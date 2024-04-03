@@ -71,8 +71,6 @@
     <package name="babeltrace" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="baloo-widgets" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="baloo-widgets-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="baloo5-file" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="baloo5-file-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="bash" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="bash-completion" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="bash-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
@@ -223,7 +221,6 @@
     <package name="fdupes" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="featherpad" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="ffmpegthumbs" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="ffmpegthumbs-kf5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="file" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="file-magic" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="filesystem" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
@@ -496,6 +493,7 @@
     <package name="keyutils" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kf5-kcm-fcitx" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kf6-attica" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="kf6-baloo-file" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kf6-baloo-imports" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kf6-baloo-kioslaves" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kf6-bluez-qt" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -592,12 +590,9 @@
     <package name="kf6-sonnet-imports" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kf6-syndication" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kf6-syntax-highlighting" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="kfilemetadata5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="kfilemetadata5-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kgamma6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kgamma6-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kglobalacceld6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="kimageformats" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kinfocenter6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kinfocenter6-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kinit" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -606,8 +601,6 @@
     <package name="kio-core" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kio-extras" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kio-extras-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="kio-extras5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="kio-extras5-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kio-fuse" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kio-gdrive" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kio-gdrive-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -661,7 +654,7 @@
     <package name="kwin6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kwin6-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kwin6-x11" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="kwrited5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="kwrited6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="lastlog2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="layer-shell-qt5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="layer-shell-qt6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -678,17 +671,13 @@
     <package name="libKDSoapWSDiscoveryClient0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKDcrawQt6-5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKExiv2Qt6-0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libKF5Activities5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libKF5ActivitiesStats1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="libKF5Activities5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libKF5Archive5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKF5Archive5-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKF5Attica5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libKF5Auth5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKF5Auth5-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKF5AuthCore5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libKF5Baloo5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libKF5BalooEngine5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libKF5BalooEngine5-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKF5BluezQt6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKF5Bookmarks5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKF5Bookmarks5-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -707,8 +696,6 @@
     <package name="libKF5Crash5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKF5DBusAddons5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKF5DBusAddons5-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libKF5DNSSD5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libKF5DNSSD5-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKF5Declarative5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKF5Declarative5-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKF5DocTools5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -728,15 +715,12 @@
     <package name="libKF5KCMUtils5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libKF5KCMUtils5-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libKF5KCMUtilsCore5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libKF5KExiv2-15_0_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKF5Kirigami2-5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKF5NewStuffCore5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libKF5Notifications5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKF5Notifications5-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKF5Plasma5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libKF5Prison5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libKF5Pty5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libKF5Pty5-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKF5Purpose5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKF5PurposeWidgets5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKF5QuickAddons5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -1351,14 +1335,11 @@
     <package name="libkdecorations2-6-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libkdecorations2private11" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libkdsoap-qt6-2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libkdsoap2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libkexiv2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libkexiv2-qt6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libkeyutils1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libkgapi6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libkgapi6-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libkgapi6-sasl2-kdexoauth2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libkioarchive5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libkioarchive6-6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libkmod2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libkpmcore12" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -1499,7 +1480,6 @@
     <package name="libpolkit-qt5-1-1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libpolkit-qt6-1-1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libpoppler-cpp0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libpoppler-qt5-1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libpoppler-qt6-3" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libpoppler135" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
@@ -1527,13 +1507,11 @@
     <package name="libqca-qt6-2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libqmi-glib5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libqmi-tools" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libqmobipocket2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libqpdf29" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libqrencode4" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libqrtr-glib0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libqt5-qtbase-platformtheme-gtk3" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libqt5-qtgraphicaleffects" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
-    <package name="libqt5-qtimageformats" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libqt5-qtquickcontrols" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libqt5-qtquickcontrols2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="libqt5-qtspeech-plugin-speechd" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -1938,11 +1916,10 @@
     <package name="phonon-vlc-qt5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="phonon-vlc-qt6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="phonon4qt5-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="phononsettings-qt5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="phononsettings-qt6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="phononsettings-qt5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="phononsettings-qt6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="pigz" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="pinentry" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
-    <package name="pinentry-qt5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="pipewire" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="pipewire-alsa" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="pipewire-jack" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -2118,13 +2095,14 @@
     <package name="sdbootutil" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="sdbootutil-rpm-scriptlets" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="sdbootutil-snapper" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="sddm" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="sddm-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="sddm-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="sddm-greeter-qt5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="sddm-greeter-qt6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="sddm-kcm6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="sddm-kcm6-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="sddm-qt6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="sddm-qt6-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="sddm-qt6-branding-upstream" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="sed" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="sed-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="selinux-autorelabel" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
