@@ -1052,4 +1052,17 @@
 - Drop patch skip_openssl_memleak_test.patch not needed anymore.</comment>
     <requestid>1149625</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>1ff7f6f7818a3344c0283d92e4e9d01b</srcmd5>
+    <version>42.0.5</version>
+    <time>1712157529</time>
+    <user>anag+factory</user>
+    <comment>- update to 42.0.5:
+  * Limit the number of name constraint checks that will be
+    performed in :mod:`X.509 path validation
+    &lt;cryptography.x509.verification&gt;` to protect against denial
+    of service attacks.
+  * Upgrade pyo3 version, which fixes building on PowerPC.</comment>
+    <requestid>1164122</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  2 13:19:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 42.0.5:
+  * Limit the number of name constraint checks that will be
+    performed in :mod:`X.509 path validation
+    <cryptography.x509.verification>` to protect against denial
+    of service attacks.
+  * Upgrade pyo3 version, which fixes building on PowerPC.
+
+-------------------------------------------------------------------
 Thu Feb 22 17:10:39 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - update to 42.0.4 (bsc#1220210, CVE-2024-26130):
