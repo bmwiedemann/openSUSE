@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Mar 29 19:08:48 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to version 8.4.0:
+  + When subsetting, place variation store at the end of “GDEF”
+    table to fix shaping issues with some versions of Adobe InDesign.
+  + Various build fixes
+- update to version 8.3.1:
+  + Fix hb_style_get_value() in fonts with “STAT” table
+  + Properly handle negative offsets in CFF table
+  + Update IANA Language Subtag Registry to 2024-03-07
+  + Subsetter now supports subsetting “BASE” table
+  + Subsetter will update “hhea” font metrics in sync with “OS/2”
+    ones.
+  + “--variations” option of “hb-subset” now supports leaving out
+    values that should be unchanged, e.g. “wght=:500:” will change
+    the default and keep max and min unchanged. It also supports
+    “*=drop” to to pin all axes to default location.
+  + Fix hb_ot_math_get_glyph_kerning() to match updated “MATH”
+    table spec.
+  + Support legacy MacRoman encoding in “cmap” table.
+  + Various build fixes.
+  + Various subsetting and instancing fixes.
+
+-------------------------------------------------------------------
 Sat Nov 11 16:50:08 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 8.3.0:

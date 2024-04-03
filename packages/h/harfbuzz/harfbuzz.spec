@@ -2,6 +2,7 @@
 # spec file for package harfbuzz
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           harfbuzz
-Version:        8.3.0
+Version:        8.4.0
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
@@ -28,15 +29,15 @@ BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  meson
 BuildRequires:  pkgconfig >= 0.28
-BuildRequires:  pkgconfig(cairo) >= 1.8.0
+BuildRequires:  pkgconfig(cairo) >= 1.10
 BuildRequires:  pkgconfig(cairo-ft)
 BuildRequires:  pkgconfig(freetype2) >= 12.0.6
-BuildRequires:  pkgconfig(glib-2.0) >= 2.19.1
+BuildRequires:  pkgconfig(glib-2.0) >= 2.30
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(graphite2) >= 1.2.0
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(icu-uc)
+BuildRequires:  pkgconfig(icu-uc) >= 49.0
 Conflicts:      cantarell-fonts < 0.0.23
 
 %description
@@ -133,21 +134,27 @@ This package contains the development files.
 %{_libdir}/libharfbuzz.so.0*
 
 %files -n libharfbuzz-cairo0
+%license COPYING
 %{_libdir}/libharfbuzz-cairo.so.0*
 
 %files -n libharfbuzz-icu0
+%license COPYING
 %{_libdir}/libharfbuzz-icu.so.0*
 
 %files -n libharfbuzz-gobject0
+%license COPYING
 %{_libdir}/libharfbuzz-gobject.so.0*
 
 %files -n libharfbuzz-subset0
+%license COPYING
 %{_libdir}/libharfbuzz-subset.so.0*
 
 %files -n typelib-1_0-HarfBuzz-0_0
+%license COPYING
 %{_libdir}/girepository-1.0/HarfBuzz-0.0.typelib
 
 %files tools
+%license COPYING
 %{_bindir}/hb-info
 %{_bindir}/hb-ot-shape-closure
 %{_bindir}/hb-shape
@@ -155,6 +162,7 @@ This package contains the development files.
 %{_bindir}/hb-view
 
 %files devel
+%license COPYING
 %doc AUTHORS README THANKS
 %{_includedir}/harfbuzz/
 %{_libdir}/*.so
