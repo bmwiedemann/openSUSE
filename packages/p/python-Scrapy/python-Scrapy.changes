@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Mar 25 14:12:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
-- update to 2.11.1 (bsc#1220514, CVE-2024-1892):
+- update to 2.11.1 (bsc#1220514, CVE-2024-1892, bsc#1221986):
   * Addressed `ReDoS vulnerabilities` (bsc#1220514, CVE-2024-1892)
     -  ``scrapy.utils.iterators.xmliter`` is now deprecated in favor of
        :func:`~scrapy.utils.iterators.xmliter_lxml`, which
@@ -18,7 +18,7 @@ Mon Mar 25 14:12:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
   *  :setting:`DOWNLOAD_MAXSIZE` and :setting:`DOWNLOAD_WARNSIZE` now also apply
      to the decompressed response body. Please, see the `7j7m-v7m3-jqm7 security
-     advisory`_ for more information.
+     advisory`_ for more information. (bsc#1221986)
 
      .. _7j7m-v7m3-jqm7 security advisory: https://github.com/scrapy/scrapy/security/advisories/GHSA-7j7m-v7m3-jqm7
 

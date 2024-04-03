@@ -232,4 +232,12 @@
   *  Added a missing note about backward-incompatible changes in</comment>
     <requestid>1161494</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>064ff5c510bb82c322dd88ddfede2009</srcmd5>
+    <version>2.11.1</version>
+    <time>1712157570</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1164153</requestid>
+  </revision>
 </revisionlist>
