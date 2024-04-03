@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Apr 03 09:37:08 UTC 2024 - xtexchooser@duck.com
+
+- Update to version 0.2.15:
+  * chore: release v0.2.15
+  * feat: full mouse click-through for windows
+  * docs(changelog): update changelog
+  * fix: windows smtc position
+  * fix: misuse of `windows-rs`
+  * ci: reset pkgrel after a pkgver bump
+  * docs(readme): intro windows user directories
+  * chore: release v0.2.14
+  * fix: do workarounds for windows-rs bug
+  * fix: duplicated import
+  * fix: wrong import path
+  * feat: initial support for Windows SMTC
+  * refactor: cleanup old code
+  * docs(install): build on windows
+  * build: make gettext, openssl, journald optional
+  * revert: vendored -> openssl
+  * refactor: define OS-specified helpers in a trait
+  * refactor: rename `list_player_names` to `list_players`
+  * refactor: extract `try_sync_track` and `reconnect_player` from `interop::*`
+  * build(deps): bump actions/checkout from 3 to 4
+  * build(deps): bump orhun/git-cliff-action from 2 to 3
+  * build(deps): bump actions/upload-artifact from 3 to 4
+  * Update dependabot.yml
+  * ci: Automatically update AUR PKGBUILD
+  * build(deps): bump documented from 0.3.0 to 0.4.0
+  * docs(readme): autoLyric `C/C++`
+  * refactor: use `bind_shortcut` in switch-passthrough
+  * chore(deps): bump dependencies
+  * build: reduce binary size
+  * docs(readme): musixfox-go released the required patch [ci skip]
+  * Revert "feat: select labels by origin/translation in theme"
+  * build(rpm): packit is no longer needed [ci skip]
+  * chore: example environment is no longer required [ci skip]
+  * docs(changelog): update changelog
+
+-------------------------------------------------------------------
+Sat Mar 30 23:07:10 UTC 2024 - xtexChooser <xtexchooser@duck.com>
+
+- Remove old rust ICE workaround
+
+-------------------------------------------------------------------
 Sat Mar 23 05:29:29 UTC 2024 - xtexchooser@duck.com
 
 - Update to version 0.2.13:

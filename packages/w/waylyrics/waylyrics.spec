@@ -17,7 +17,7 @@
 
 
 Name:           waylyrics
-Version:        0.2.13
+Version:        0.2.15
 Release:        0
 Summary:        The furry way to show desktop lyrics
 License:        MIT
@@ -32,12 +32,6 @@ BuildRequires:  gtk4-devel
 BuildRequires:  libgraphene-devel
 BuildRequires:  mimalloc-devel
 BuildRequires:  openssl-devel
-
-# Override "-C debuginfo=2" from cargo-packaging, to solve rustc SIGSEGV exception:
-#   error: rustc interrupted by SIGSEGV, printing backtrace
-#   /usr/lib/librustc_driver-16d66626a1fefc07.so(+0x7aafa6)[0x7fbd6ffaafa6]
-# Tested with rustc 1.75.0 (82e1608df 2023-12-21) by xtexChooser
-%global build_rustflags %build_rustflags -C debuginfo=0
 
 %description
 The furry way to show desktop lyrics, and simple universal desktop lyrics made with GTK4 and love.
