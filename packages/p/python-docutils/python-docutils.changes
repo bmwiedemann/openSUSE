@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 30 15:15:42 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Fix update-alternatives updates: docutils is the master but
+  rst2html from old installations can create update failures
+- Fix bytecode cache errors: Don't modify python scripts after
+  install
+
+-------------------------------------------------------------------
 Fri Feb 23 11:02:30 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Drop obsolete Requires & BuildRequires on python-packaging & python-xml
@@ -8,8 +16,8 @@ Fri Nov 10 02:31:29 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.20.1:
   * Include tox.ini and docutils.conf in the source package
-  * Docutils 0.20 is the last version supporting Python 3.7 and 3.8.
-  * Support Python 3.11 (patch #198 by Hugo van Kemenade).
+  * Docutils 0.20 is the last version supporting Python 3.7 and 3.8.
+  * Support Python 3.11 (patch #198 by Hugo van Kemenade).
   * New functions `rst2…()` for use as "console_scripts" `entry points`_.
   * Fix `previous_sibling()` method that led to invalid HTML in some cases
   * Fix bug #463. Spurious comma in deprecation warning.

@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-docutils
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -38,8 +38,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(pre):  update-alternatives
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-Pillow
 Recommends:     python-Pygments
 Recommends:     python-roman
@@ -69,7 +70,20 @@ sed -i "s|'tools/\(rst.*\)\.py'|'tools/\1'|" setup.py
 find . -name \*.mp4 -print -exec chmod -x '{}' \;
 
 # Actually seems to work with Python 3.6
-sed -i -e '/python_requires/s/7/6/' setup.py
+sed -i -e '/python_requires/ s/7/6/' setup.py
+
+# Remove shebang from non-executable files
+sed -i '1{/^#!/d}' \
+  docutils/__main__.py \
+  docutils/parsers/commonmark_wrapper.py \
+  docutils/parsers/recommonmark_wrapper.py \
+  docutils/utils/error_reporting.py \
+  docutils/utils/math/math2html.py \
+  docutils/utils/math/tex2unichar.py \
+  docutils/utils/smartquotes.py \
+  docutils/writers/_html_base.py \
+  docutils/writers/odf_odt/prepstyles.py \
+  docutils/writers/xetex/__init__.py
 
 %build
 %pyproject_wheel
@@ -80,17 +94,7 @@ sed -i -e '/python_requires/s/7/6/' setup.py
 for binary in docutils rst2html rst2latex rst2man rst2odt rst2odt_prepstyles rst2pseudoxml rst2s5 rst2xetex rst2xml rstpep2html rst2html4 rst2html5 ; do
     %python_clone -a %{buildroot}%{_bindir}/$binary
 done
-%{python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-# Remove shebang from non-executable files
-for i in code_analyzer error_reporting punctuation_chars smartquotes math/latex2mathml math/math2html math/tex2mathml_extern ; do
-    sed -i -e '1{\@^#! *%{_bindir}.*python@d}' %{buildroot}%{$python_sitelib}/docutils/utils/$i.py
-done
-for i in writers/xetex/__init__ writers/_html_base __main__ parsers/commonmark_wrapper parsers/recommonmark_wrapper ; do
-    sed -i -e '1{\@^#! *%{_bindir}.*python@d}' %{buildroot}%{$python_sitelib}/docutils/$i.py
-done
-}
-
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %check
@@ -99,14 +103,16 @@ done
 %endif
 
 %if !%{with test}
+# sometime ago rst2html was the master which would let fail the upgrade with master docutils in post below
+%pre
+update-alternatives --query rst2html >/dev/null 2>&1 && update-alternatives --quiet --remove-all rst2html ||:
+
 %post
-%{python_install_alternative docutils rst2html rst2latex rst2man rst2odt rst2odt_prepstyles rst2pseudoxml rst2s5 rst2xetex rst2xml rstpep2html rst2html4 rst2html5}
+%python_install_alternative docutils rst2html rst2latex rst2man rst2odt rst2odt_prepstyles rst2pseudoxml rst2s5 rst2xetex rst2xml rstpep2html rst2html4 rst2html5
 
 %postun
-%{python_uninstall_alternative docutils rst2html rst2latex rst2man rst2odt rst2odt_prepstyles rst2pseudoxml rst2s5 rst2xetex rst2xml rstpep2html rst2html4 rst2html5}
-%endif
+%python_uninstall_alternative docutils
 
-%if !%{with test}
 %files %{python_files}
 %license COPYING.txt licenses/*.txt
 %doc FAQ.txt HISTORY.txt README.txt THANKS.txt BUGS.txt docs/*
