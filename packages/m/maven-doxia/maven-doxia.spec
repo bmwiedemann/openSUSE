@@ -49,6 +49,7 @@ BuildRequires:  plexus-cli
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
+BuildRequires:  plexus-xml
 BuildRequires:  qdox
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
@@ -196,6 +197,11 @@ API documentation for %{name}.
 # requires network
 rm doxia-core/src/test/java/org/apache/maven/doxia/util/XmlValidatorTest.java
 
+%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 doxia-core
+for i in doxia-module-docbook-simple doxia-module-fml doxia-module-fo doxia-module-itext doxia-module-markdown doxia-module-xdoc doxia-module-xhtml doxia-module-xhtml5; do
+  %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 doxia-modules/${i}
+done
+
 %pom_disable_module doxia-module-itext doxia-modules
 %pom_disable_module doxia-module-markdown doxia-modules
 
@@ -226,6 +232,7 @@ build-jar-repository -s lib \
     plexus-containers/plexus-component-annotations \
     plexus-metadata-generator \
     plexus/utils \
+    plexus/xml \
     qdox \
     xbean/xbean-reflect \
     xmlgraphics-commons \
