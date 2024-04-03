@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 25 12:02:20 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- add healthcheck script
+
+-------------------------------------------------------------------
 Fri Mar  1 07:37:43 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Update entrypoint: add support for setting memory limits and refactor healthcheck user creation

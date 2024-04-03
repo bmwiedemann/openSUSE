@@ -50,7 +50,13 @@ COPY docker-entrypoint.sh /usr/local/bin/
 RUN set -euo pipefail; chmod 755 /usr/local/bin/docker-entrypoint.sh
 RUN set -euo pipefail; ln -s usr/local/bin/docker-entrypoint.sh / # backwards compat
 
-RUN set -euo pipefail; sed -i -e 's,exec gosu mysql ,exec setpriv --reuid=mysql --regid=mysql --clear-groups -- /bin/bash ,g' /usr/local/bin/docker-entrypoint.sh
+# healthcheck from https://github.com/MariaDB/mariadb-docker.git
+COPY healthcheck.sh /usr/local/bin/
+RUN set -euo pipefail; chmod 755 /usr/local/bin/healthcheck.sh
+
+COPY gosu /usr/local/bin/gosu
+RUN set -euo pipefail; chmod 755 /usr/local/bin/gosu
+
 RUN set -euo pipefail; sed -i -e 's,$(pwgen .*),$(openssl rand -base64 36),' /usr/local/bin/docker-entrypoint.sh
 
 # Ensure all logs goes to stdout
