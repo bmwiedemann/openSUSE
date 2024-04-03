@@ -70,6 +70,7 @@ BuildRequires:  plexus-interactivity-api
 BuildRequires:  plexus-io
 BuildRequires:  plexus-languages
 BuildRequires:  plexus-utils
+BuildRequires:  plexus-xml
 BuildRequires:  qdox
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
@@ -128,6 +129,8 @@ cp %{SOURCE1} build.xml
 %patch -P 1 -p1
 %patch -P 2 -p1
 
+%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0
+
 %pom_xpath_remove pom:project/pom:parent/pom:relativePath
 %pom_remove_dep :::test:
 
@@ -178,6 +181,7 @@ build-jar-repository -s lib \
     plexus-languages/plexus-java \
     plexus-metadata-generator \
     plexus/utils \
+    plexus/xml \
     qdox \
     xbean/xbean-reflect
 %{ant} -Dtest.skip=true jar
