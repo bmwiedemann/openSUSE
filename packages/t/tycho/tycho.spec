@@ -107,6 +107,7 @@ BuildRequires:  mvn(org.codehaus.plexus:plexus-compiler-manager)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-annotations)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
 BuildRequires:  mvn(org.eclipse.jdt:ecj)
 BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus)
 BuildRequires:  mvn(org.fedoraproject.xmvn:xmvn-api)
@@ -271,6 +272,25 @@ done
 %pom_disable_module org.fedoraproject.p2.tests fedoraproject-p2
 %pom_disable_module tycho-testing-harness
 %pom_remove_dep -r :::test
+
+for i in \
+    tycho-artifactcomparator \
+    tycho-compiler-plugin \
+    tycho-core \
+    tycho-metadata-model \
+    tycho-pomgenerator-plugin \
+    tycho-source-plugin \
+    tycho-testing-harness; do
+  %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 ${i}
+done
+
+for i in \
+    tycho-buildtimestamp-jgit \
+    tycho-custom-bundle-plugin \
+    tycho-pomless \
+    tycho-source-feature-plugin; do
+  %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 tycho-extras/${i}
+done
 
 # Bootstrap Build
 %if %{with bootstrap}
