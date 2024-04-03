@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 29 14:26:12 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.25.1:
+  + Fixes for GNOME Shell 46
+  + Drop support for GNOME Shell 45
+
+-------------------------------------------------------------------
 Tue Mar  5 14:02:45 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.25.0:

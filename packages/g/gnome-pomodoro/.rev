@@ -371,4 +371,14 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
     <comment>GNOME 46 (forwarded request 1159255 from dimstar)</comment>
     <requestid>1159434</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>8f86b177e791c95a1fee4b2f359bfbcb</srcmd5>
+    <version>0.25.1</version>
+    <time>1712157557</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.25.1:
+  + Fixes for GNOME Shell 46
+  + Drop support for GNOME Shell 45 (forwarded request 1163802 from mgorse)</comment>
+    <requestid>1164132</requestid>
+  </revision>
 </revisionlist>
