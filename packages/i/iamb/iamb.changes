@@ -1,0 +1,141 @@
+-------------------------------------------------------------------
+Fri Mar 29 04:52:29 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Build against system sqlite & openssl. Added openssl and
+  sqlite to BuildRequires. Bundled RusTLS is still usable with a
+  conditional for where it may be required.
+- Install manpages and new icons
+- Use upstream tarball
+- Update to version 0.0.9:
+  Features:
+  * Add commands for importing and exporting room keys
+  * Add support for desktop notifications
+  * Support notifications via terminal bell
+  * Support loading a TOML configuration
+  * Enable autolinking when rendering Markdown
+  * Support configuring user gutter width
+  * Support displaying shortcodes instead of Emojis in messages
+  Documentation:
+  * Add an icon for iamb
+  * Update manual pages to use mdoc(7) and list commands
+  * Add example of mapping "V" to toggle message selection mode
+  Fixes:
+  * Ignore key releases on platforms that support it
+  * Fix entering thread view when there's no messages yet
+  * Wait to log in before starting background tasks
+  * Reset message bar when `!` is passed with :cancel
+  * Fix image previews in replies
+  * Provide better error message for M_UNKNOWN_TOKEN
+  Building:
+  * Support linking against system OpenSSL
+
+-------------------------------------------------------------------
+Sun Mar 17 15:25:38 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Added desktop file
+
+-------------------------------------------------------------------
+Sun Mar 10 06:54:22 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Enabled tests
+- Update to version 0.0.8.e7f158f:
+  * Add support for custom key macros
+  * Add support for threads
+  * Load receipts for room before acquiring lock
+  * Update to ratatui-image@0.8.1
+
+-------------------------------------------------------------------
+Tue Mar 05 22:22:09 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.0.8.dd001af:
+  * Download rooms keys from backups if they exist
+  * Update to matrix-sdk@0.7.1
+
+-------------------------------------------------------------------
+Thu Feb 29 07:26:11 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.0.8.84bc6be:
+  * Support following the .well-known entries for a username's domain
+  * Pull in modalkit repository with a `Cargo.lock`
+  * Move LTO into its own "release-lto" profile
+  * Update README.md to add openSUSE Tumbleweed (♥)
+  * Update modalkit dependencies
+  * Indicate and sort on rooms with unread messages
+  * Support coloring entire message with the user color
+  * Fix truncation/padding for non-ASCII sender names
+  * Add a new `:chats` window that lists both DMs and Rooms
+
+-------------------------------------------------------------------
+Thu Feb 15 15:22:03 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.0.8.88af9bf:
+  * Fix crash on small image preview
+  * Fix not showing display names in already synced rooms
+  * Update to ratatui-image@0.4.3 to use native sixel lib
+  * Fix image preview offset
+  * Add support for previewing images in room scrollback
+  * feat: desktop file for GUI environment launchers
+  * Add support for logging in with SSO
+  * Support custom sorting for room and user lists
+  * Use mozilla-actions/sccache-action for caching builds
+  * Add new command for logging out of iamb session
+  * Reduce CPU usage by instead fetching read receipts after
+    related sync events
+  * Links should be "openable"
+  * Update modalkit for newer ratatui and crossterm
+  * Enable sending strikethrough text
+  * Update Cargo.lock file
+  * Support composing messages in an external editor
+  * Fix example config
+
+-------------------------------------------------------------------
+Mon Oct 02 09:02:51 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.0.8.c7864cb:
+  * Enable sending strikethrough text
+  * Update Cargo.lock file
+  * Support composing messages in an external editor
+  * Fix example config
+- Partially fixes iamb issue #149 related to username_display
+
+-------------------------------------------------------------------
+Sat Jul 08 17:13:27 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.0.8:
+  Added:
+  * Append suffix to download filenames to avoid overwrites
+  * Support uploading image attachments from clipboard
+  * Support leaving rooms
+  * Support hiding server part of username in message scrollback
+  * Restore opened tabs and windows upon restart
+  * Interpret newlines as line breaks when converting Markdown to
+    HTML
+  * Indicate when you're editing a message
+  * Support configuring which program :open runs
+  * Support sending and completing Emoji shortcodes in the message
+    bar
+  * Indicate number of members in room
+  * Show errors fetching space hierarchy when list is empty
+  * Indicate when there are new messages below scrollback
+    viewport
+  * Add manual pages
+  Changes:
+  * Show Git SHA information when printing version information
+   
+  Fixes:
+  * Tab completion panics for unrecognized commands
+  * Fix error message for undefined download directory
+  * Gracefully handle verification events that are unknown locally
+  * Use terminal window focus to determine when a message has
+    actually been seen
+  * ChatStore::set_receipts locks up app for bad connections
+  * Need fallback behaviour when dirs::download_dir returns None
+  * Code blocks get rendered without line breaks
+  * Remove trailing newlines in body
+  * Profile session token should only be readable by the user
+  * Handle sync failure after successful password entry
+
+-------------------------------------------------------------------
+Sun May  7 20:52:57 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Initial package for iamb for openSUSE

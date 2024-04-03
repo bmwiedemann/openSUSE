@@ -1,0 +1,5 @@
+<package name="iamb" project="openSUSE:Factory">
+  <title>A Matrix client for Vim addicts</title>
+  <description>iamb is a Matrix client for the terminal that uses Vim keybindings. This project is a work-in-progress, and there's still a lot to be implemented, but much of the basic client functionality is already present.</description>
+  <devel project="network:messaging:matrix" package="iamb"/>
+</package>
