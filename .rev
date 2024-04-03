@@ -367,4 +367,41 @@
   * doc: document uv_getnameinfo_t.{host|service} (Saúl Ibarra</comment>
     <requestid>1138765</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1551b6f67409458a648bce7972cb889e</srcmd5>
+    <version>1.48.0</version>
+    <time>1712157489</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1..48.0 
+  * CVE-2024-24806: Improper Domain Lookup that potentially leads
+    to SSRF attacks (bsc#1219724)
+  * misc: remove deprecated stalebot file
+  * misc: ignore libuv-release-tool files
+  * build,win: remove extraneous -lshell32
+  * build,win: work around missing uuid.dll on MinGW
+  * build: disable windows asan buildbot
+  * build: add .cache clangd folder to .gitignore
+  * build: re-enable msvc-asan job on CI
+  * linux: disable io_uring on hppa below kernel 6.1.51
+  * linux: remove HAVE_IFADDRS_H macro
+  * linux: fix bind/connect for abstract sockets
+  * linux: retry fs op if unsupported by io_uring
+  * linux: disable io_uring on ppc64 and ppc64le
+  * unix,win: utility for setting priority for thread
+  * unix,win: fix read past end of pipe name buffer
+  * unix,win: fix busy loop with zero timeout timers
+  * unix,win: reset the timer queue on stop
+  * unix: ignore ifaddrs with NULL ifa_addr
+  * unix: unbreak macOS &lt; 10.14
+  * unix: correct pwritev conditional
+  * unix: support full TCP keep-alive on Solaris
+  * unix: optimize uv__tcp_keepalive cpp directives
+  * freebsd: fix F_KINFO file path handling
+  * freebsd: fix build on non-intel archs
+  * aix: disable ipv6 link local
+  * aix,ibmi: use uv_interface_addresses instead of getifaddrs
+  * win: remove check for UV_PIPE_NO_TRUNCATE
+  * win: honor NoDefaultCurrentDirectoryInExePath env var</comment>
+    <requestid>1164081</requestid>
+  </revision>
 </revisionlist>

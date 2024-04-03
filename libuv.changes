@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Mar 14 02:46:20 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 1..48.0 
+  * CVE-2024-24806: Improper Domain Lookup that potentially leads
+    to SSRF attacks (bsc#1219724)
+  * misc: remove deprecated stalebot file
+  * misc: ignore libuv-release-tool files
+  * build,win: remove extraneous -lshell32
+  * build,win: work around missing uuid.dll on MinGW
+  * build: disable windows asan buildbot
+  * build: add .cache clangd folder to .gitignore
+  * build: re-enable msvc-asan job on CI
+  * linux: disable io_uring on hppa below kernel 6.1.51
+  * linux: remove HAVE_IFADDRS_H macro
+  * linux: fix bind/connect for abstract sockets
+  * linux: retry fs op if unsupported by io_uring
+  * linux: disable io_uring on ppc64 and ppc64le
+  * unix,win: utility for setting priority for thread
+  * unix,win: fix read past end of pipe name buffer
+  * unix,win: fix busy loop with zero timeout timers
+  * unix,win: reset the timer queue on stop
+  * unix: ignore ifaddrs with NULL ifa_addr
+  * unix: unbreak macOS < 10.14
+  * unix: correct pwritev conditional
+  * unix: support full TCP keep-alive on Solaris
+  * unix: optimize uv__tcp_keepalive cpp directives
+  * freebsd: fix F_KINFO file path handling
+  * freebsd: fix build on non-intel archs
+  * aix: disable ipv6 link local
+  * aix,ibmi: use uv_interface_addresses instead of getifaddrs
+  * win: remove check for UV_PIPE_NO_TRUNCATE
+  * win: honor NoDefaultCurrentDirectoryInExePath env var
+  * win: stop using deprecated names
+  * win: replace c99 comments with c89 comments
+  * win: fix ESRCH implementation
+  * win/spawn: optionally run executable paths with no file
+    extension
+  * test: don't run tcp_writealot under msan
+  * test: check if ipv6 link-local traffic is routable
+  * test: skip tcp-write-in-a-row on IBM i
+  * test: empty strings are not valid IDNA
+  * test_fs.c: Fix issue on 32-bit systems using btrfs
+  * idna: fix compilation warning
+  * pipe: add back error handling to connect / bind
+  * fix: always zero-terminate idna output
+  * fix: reject zero-length idna inputs
+  * doc: move cjihrig to emeriti
+  * doc: add very basic Security Policy document
+  * Merge pull request from GHSA-f74f-cvh7-c6q6
+- Remove ppc64-disable-liburing.patch because it was applied
+  in the current source code
+
+-------------------------------------------------------------------
 Mon Jan 15 07:45:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add ppc64-disable-liburing.patch (bsc#1218365)
