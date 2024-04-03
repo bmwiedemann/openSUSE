@@ -1,7 +1,7 @@
 #
 # spec file for package maven-file-management
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ BuildRequires:  maven-shared-utils
 BuildRequires:  modello >= 2.0.0
 BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-utils
+BuildRequires:  plexus-xml
 BuildRequires:  unzip
 BuildArch:      noarch
 
@@ -51,6 +52,8 @@ API documentation for %{name}.
 %setup -q -n file-management-%{version}
 cp %{SOURCE1} build.xml
 
+%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0
+
 %build
 mkdir -p lib
 build-jar-repository -s lib \
@@ -58,7 +61,8 @@ build-jar-repository -s lib \
 	maven-shared-io/maven-shared-io \
 	maven-shared-utils/maven-shared-utils \
 	plexus-containers/plexus-container-default \
-	plexus/utils
+	plexus/utils \
+	plexus/xml
 
 %{ant} \
 	jar javadoc
