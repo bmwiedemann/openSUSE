@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  2 06:57:32 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to release 6.0.1:
+  * Improve CI environment (#1061, #1091, #1109)
+  * Improve build system (#1060, #1069, #1108)
+
+-------------------------------------------------------------------
 Thu Nov  2 21:37:47 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.0.0

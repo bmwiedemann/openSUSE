@@ -1,7 +1,7 @@
 #
 # spec file for package msgpack-c
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           msgpack-c
-Version:        6.0.0
+Version:        6.0.1
 Release:        0
 Summary:        Object serialization library for cross-language communication
 License:        BSL-1.0
