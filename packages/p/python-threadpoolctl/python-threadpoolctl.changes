@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr  2 18:54:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.0:
+  * Added support for Python interpreters statically linked
+    against libc or linked against alternative implementations
+    of libc like musl
+  * Added support for Pyodide
+  * Extended FlexiBLAS support to be able to switch backend at
+    runtime.
+  * Added support for FlexiBLAS
+  * Fixed a bug where an unsupported library would be detected
+    because it shares a common prefix with one of the supported
+    libraries. Now the symbols are also checked to
+    identify the supported libraries.
+
+-------------------------------------------------------------------
 Fri Dec  8 16:25:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.0:

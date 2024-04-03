@@ -97,4 +97,23 @@
     manager (equivalent to `threadpoolctl.threadpool_limits()`).</comment>
     <requestid>1132143</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b9969d2afbd1edf010c2c89ba134c41c</srcmd5>
+    <version>3.4.0</version>
+    <time>1712157503</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.4.0:
+  * Added support for Python interpreters statically linked
+    against libc or linked against alternative implementations
+    of libc like musl
+  * Added support for Pyodide
+  * Extended FlexiBLAS support to be able to switch backend at
+    runtime.
+  * Added support for FlexiBLAS
+  * Fixed a bug where an unsupported library would be detected
+    because it shares a common prefix with one of the supported
+    libraries. Now the symbols are also checked to
+    identify the supported libraries.</comment>
+    <requestid>1164225</requestid>
+  </revision>
 </revisionlist>
