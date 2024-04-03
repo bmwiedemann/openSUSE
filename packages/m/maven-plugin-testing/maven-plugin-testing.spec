@@ -50,6 +50,7 @@ BuildRequires:  plexus-cli
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
+BuildRequires:  plexus-xml
 BuildRequires:  qdox
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
@@ -102,6 +103,10 @@ Framework to test Maven Plugins with Easymock objects.
 %pom_remove_plugin :maven-enforcer-plugin
 %pom_remove_plugin :maven-site-plugin
 
+for i in maven-plugin-testing-harness maven-plugin-testing-tools; do
+  %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 ${i}
+done
+
 sed -i -e "s/MockControl/IMocksControl/g" maven-test-tools/src/main/java/org/apache/maven/shared/tools/easymock/MockManager.java
 
 # needs network for some reason
@@ -143,6 +148,7 @@ build-jar-repository -s lib \
 	plexus-containers/plexus-component-annotations \
 	plexus-metadata-generator \
 	plexus/utils \
+	plexus/xml \
 	qdox \
 	xbean/xbean-reflect
 %{ant} \
