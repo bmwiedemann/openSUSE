@@ -1,0 +1,16 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa343c69b75391a459c10f2c7c6e5835</srcmd5>
+    <version>2.5.1+git20200104.c1e20b7</version>
+    <time>1712157553</time>
+    <user>anag+factory</user>
+    <comment>I'd like to submit this new package to Factory.
+
+The reason is that it will be needed when the openmw package (that is in Factory) will update to its next major version, probably sometimes in 2024.
+
+Current openmw git (which I build in my home repo) already depends on the COLLADA plugin from the OpenSceneGraph package. This plugin is not currently built because it depends on this new collada-dom package I'm submitting.
+If this package is accepted in Factory, I will submit an update to the OpenSceneGraph package so it builds its COLLADA plugin. Then, whenever the next major update of openmw is available it will just be a matter to add a dependency to this plugin to the openmw spec file (all that work is already done in my home repo).
+</comment>
+    <requestid>1163819</requestid>
+  </revision>
+</revisionlist>

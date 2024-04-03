@@ -1,0 +1,9 @@
+<package name="collada-dom" project="openSUSE:Factory">
+  <title></title>
+  <description>The COLLADA Document Object Model (DOM) is an application programming
+ interface (API) that provides a C++ object representation of a COLLADA XML
+ instance document.
+</description>
+  <devel project="graphics" package="collada-dom"/>
+  <url>https://github.com/rdiankov/collada-dom</url>
+</package>
