@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  3 11:31:49 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 13.5:
+  * Wrap file grid folder paths instead of truncate
+  * Fixed sync operation arrows for RTL layout
+  * Fixed FTP hang during connection (libcurl regression)
+  * Consider user-defined file time tolerance for DB comparisons
+  * Don't log folder pair paths if nothing to sync
+
+-------------------------------------------------------------------
 Thu Feb 29 13:56:14 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 13.4:

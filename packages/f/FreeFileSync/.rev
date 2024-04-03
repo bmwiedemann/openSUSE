@@ -265,4 +265,18 @@ It would be nice to have this application available in the default repos. </comm
 </comment>
     <requestid>1153252</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4e38ae8d0ccf9b3de2896bdc4d94ab2d</srcmd5>
+    <version>13.5</version>
+    <time>1712157681</time>
+    <user>anag+factory</user>
+    <comment>- Update to 13.5:
+  * Wrap file grid folder paths instead of truncate
+  * Fixed sync operation arrows for RTL layout
+  * Fixed FTP hang during connection (libcurl regression)
+  * Consider user-defined file time tolerance for DB comparisons
+  * Don't log folder pair paths if nothing to sync
+</comment>
+    <requestid>1164341</requestid>
+  </revision>
 </revisionlist>
