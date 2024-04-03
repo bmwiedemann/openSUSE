@@ -1,7 +1,7 @@
 #
 # spec file for package ComputeLibrary
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define so_ver 33
+%define so_ver 35
 # Disable validation tests by default due to opencl needing to be set up
 %bcond_with computelibrary_tests
 Name:           ComputeLibrary
-Version:        23.11
+Version:        24.02.1
 Release:        0
 Summary:        ARM Compute Library
 License:        MIT
@@ -46,14 +46,6 @@ A software library for computer vision and machine learning.
 The Compute Library is a collection of low-level functions optimized for Arm CPU and GPU architectures targeted at image processing, computer vision, and machine learning.
 Library part.
 
-%package -n libarm_compute_core%{so_ver}
-Summary:        ARM Compute Library - Core part
-
-%description -n libarm_compute_core%{so_ver}
-A software library for computer vision and machine learning.
-The Compute Library is a collection of low-level functions optimized for Arm CPU and GPU architectures targeted at image processing, computer vision, and machine learning.
-Library part.
-
 %package -n libarm_compute_graph%{so_ver}
 Summary:        ARM Compute Library - Graph part
 
@@ -66,7 +58,6 @@ Library part.
 Summary:        ARM Compute Library -- devel
 Requires:       %{name} = %{version}
 Requires:       libarm_compute%{so_ver} = %{version}
-Requires:       libarm_compute_core%{so_ver} = %{version}
 Requires:       libarm_compute_graph%{so_ver} = %{version}
 # stb headers are required
 Requires:       stb-devel
@@ -137,12 +128,12 @@ for pyfile in `ls %{buildroot}%{_bindir}/*.py`; do
   sed -i -e 's|#!%{_bindir}/env python|#!%{_bindir}/python3|' $pyfile
 done
 sed -i -e 's|#!%{_bindir}/python|#!%{_bindir}/python3|' %{buildroot}%{_bindir}/generate_build_files.py
+# Drop files which should not be in _bindir
+rm %{buildroot}%{_bindir}/BUILD.bazel
+rm %{buildroot}%{_bindir}/*.txt
 
 %post -n libarm_compute%{so_ver} -p /sbin/ldconfig
 %postun -n libarm_compute%{so_ver} -p /sbin/ldconfig
-
-%post -n libarm_compute_core%{so_ver} -p /sbin/ldconfig
-%postun -n libarm_compute_core%{so_ver} -p /sbin/ldconfig
 
 %post -n libarm_compute_graph%{so_ver} -p /sbin/ldconfig
 %postun -n libarm_compute_graph%{so_ver} -p /sbin/ldconfig
@@ -158,10 +149,6 @@ LD_LIBRARY_PATH="build/" build/tests/arm_compute_validation
 %files -n libarm_compute%{so_ver}
 %license LICENSE
 %{_libdir}/libarm_compute.so.%{so_ver}*
-
-%files -n libarm_compute_core%{so_ver}
-%license LICENSE
-%{_libdir}/libarm_compute_core.so.%{so_ver}*
 
 %files -n libarm_compute_graph%{so_ver}
 %license LICENSE

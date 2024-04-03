@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr  3 09:17:31 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 24.02.1:
+  * Drop libarm_compute_core.so
+  * Public patch release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v24.02.1
+- Skipped 24.02:
+  * Public major release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v24.02
+
+-------------------------------------------------------------------
 Thu Dec  7 09:05:47 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 23.11:
