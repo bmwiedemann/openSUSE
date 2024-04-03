@@ -7,4 +7,41 @@
     <comment></comment>
     <requestid>1140607</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>22452284c12fa9a5214586ef403050ab</srcmd5>
+    <version>1.0.1</version>
+    <time>1712157565</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.1:
+  * Fix --name option in &quot;store add file&quot; command
+  * Bump helm.sh/helm/v3 from 3.14.1 to 3.14.2
+  * Exit with status code 1 if cosign is not configured
+  * fix exit code on error @amartin120
+  * add registry flag to cli for sync @amartin120
+- update to 1.0.0:
+  * adding graphics @bgulla
+  * updated readme and removed roadmap @zackbradys
+  * updated/cleaned up install.sh @zackbradys
+  * remove deprecated commands @amartin120
+  * Bump helm.sh/helm/v3 from 3.14.0 to 3.14.1
+  * bug-fix: handle complex file names @amartin120
+  * add login command @amartin120
+  * update to add size totals and cosign bits to the info
+- update to 0.4.4:
+  * add annotations for registry @amartin120
+  * add annotations for key and platform @amartin120
+  * Flags passed from the CLI have a global effect on any image
+    UNLESS it has a (key/platform) specified on the individual
+    image. Individual image key/platform takes precedence.
+  * If you have `hauler.dev/key` and/or `hauler.dev/platform` at
+    the annotation level, it would work just like the CLI flag
+    and globally apply for everything except individual images
+    specifying otherwise.  Just like above.
+  * If you just so happen to provide both an annotation AND the
+    CLI flag for the same thing, the CLI flag wins.
+  * As for the `hauler.dev/registry` annotation, it will apply
+    globally unless the provided image reference already has a
+    registry specified in its name.</comment>
+    <requestid>1164155</requestid>
+  </revision>
 </revisionlist>

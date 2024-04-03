@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Tue Apr  2 14:55:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.1:
+  * Fix --name option in "store add file" command
+  * Bump helm.sh/helm/v3 from 3.14.1 to 3.14.2
+  * Exit with status code 1 if cosign is not configured
+  * fix exit code on error @amartin120
+  * add registry flag to cli for sync @amartin120
+- update to 1.0.0:
+  * adding graphics @bgulla
+  * updated readme and removed roadmap @zackbradys
+  * updated/cleaned up install.sh @zackbradys
+  * remove deprecated commands @amartin120
+  * Bump helm.sh/helm/v3 from 3.14.0 to 3.14.1
+  * bug-fix: handle complex file names @amartin120
+  * add login command @amartin120
+  * update to add size totals and cosign bits to the info
+- update to 0.4.4:
+  * add annotations for registry @amartin120
+  * add annotations for key and platform @amartin120
+  * Flags passed from the CLI have a global effect on any image
+    UNLESS it has a (key/platform) specified on the individual
+    image. Individual image key/platform takes precedence.
+  * If you have `hauler.dev/key` and/or `hauler.dev/platform` at
+    the annotation level, it would work just like the CLI flag
+    and globally apply for everything except individual images
+    specifying otherwise.  Just like above.
+  * If you just so happen to provide both an annotation AND the
+    CLI flag for the same thing, the CLI flag wins.
+  * As for the `hauler.dev/registry` annotation, it will apply
+    globally unless the provided image reference already has a
+    registry specified in its name.
+- update to 0.4.3:
+  * dep bumps for security vuln fixes @amartin120
+  * check tag to determine pre-release @amartin120
+  * Update install.sh for file cleaning @clemenko
+  * add platform flag for image add and sync @amartin120
+  * bump cosign version to v2.2.2+carbide.2 @amartin120
+  * improve cosign setup @amartin120
+  * updated archive default name @zackbradys
+  * add license file @amartin120
+  * adjust to make registry and fileserver subcommands
+  * add fileserver option for `store serve` @amartin120
+
+-------------------------------------------------------------------
+Tue Apr 02 13:41:54 UTC 2024 - dmueller@suse.com
+
+- Update to version 1.0.1:
+  * Fix --name option in "store add file" command
+  * Bump helm.sh/helm/v3 from 3.14.1 to 3.14.2
+  * Exit with status code 1 if cosign is not configured
+  * reverting changes for logos (#189)
+  * adding graphics
+  * fix exit code on error
+  * add registry flag to cli for sync
+  * updated readme and removed roadmap
+  * updated/cleaned up install.sh
+  * remove deprecated commands
+  * Bump helm.sh/helm/v3 from 3.14.0 to 3.14.1
+  * bug-fix: handle complex file names
+  * add login command
+  * update to add size totals and cosign bits to the info command
+  * switch the 'apply the registry override first in a image sync
+  * switch the 'not a multi-arch image' log message to be debug
+  * fix whitspace issue
+  * add better logging for save
+  * add annotations for registry
+  * add annotations for key and platform
+  * dep bumps for security vuln fixes
+  * check tag to determine pre-release
+  * Update install.sh
+  * Update install.sh for file cleaning
+  * clean up makefile
+  * remove extra debug statement
+  * another fix for the unit test gh action
+  * add platform flag for image add and sync
+  * adjust unit test gh action for latest updates
+  * bump cosign version to v2.2.2+carbide.2
+  * improve cosign setup
+  * updated archive default name
+  * add license file
+  * adjust to make registry and fileserver subcommands
+  * add fileserver option for `store serve`
+  * added homebrew install instructions
+  * updated hauler version and automated default version
+
+-------------------------------------------------------------------
 Mon Jan 22 12:19:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - Initial package (0.4.2)

@@ -1,7 +1,7 @@
 #
 # spec file for package hauler
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           hauler
-Version:        0.4.2
-%global git_commit f982f51d577e44838efd8de5b7da3806793a92be
+Version:        1.0.1
+%global git_commit bb2a8bfbeca0f33998e0015e6f0cfeaa7ec3dc93
 Release:        0
 Summary:        Airgap Swiss Army Knife
 License:        Apache-2.0
@@ -26,9 +26,11 @@ Group:          System/Management
 URL:            https://github.com/rancherfederal/hauler
 Source:         %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-BuildRequires:  golang(API) = 1.21
+ExclusiveArch:  x86_64 aarch64
+BuildRequires:  cosign
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
+BuildRequires:  golang(API) = 1.21
 
 %description
 Rancher Government Hauler simplifies the airgap experience without requiring
@@ -47,6 +49,13 @@ non-image OCI Artifacts.
 
 %build
 export CGO_ENABLED=1
+mkdir -p cmd/hauler/binaries/
+%ifarch aarch64
+cp -p %{_bindir}/cosign cmd/hauler/binaries/cosign-linux-arm64
+%endif
+%ifarch x86_64
+cp -p %{_bindir}/cosign cmd/hauler/binaries/cosign-linux-amd64
+%endif
 # s -w -X {{ .Env.vpkg }}.gitVersion={{ .Version }} -X {{ .Env.vpkg }}.gitCommit={{ .ShortCommit }} -X {{ .Env.vpkg }}.gitTreeState={{if .IsGitDirty}}dirty{{else}}clean{{end}} -X {{ .Env.vpkg }}.buildDate={{ .Date }}
 go build -o hauler -mod=vendor -buildmode=pie -trimpath -ldflags "-s -w -X github.com/rancherfederal/hauler/internal/version.gitVersion=%{version} \
     -X github.com/rancherfederal/hauler/internal/version.gitCommit=%{git_commit} \
