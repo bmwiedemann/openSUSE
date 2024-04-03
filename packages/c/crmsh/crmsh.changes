@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr 03 03:33:06 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240403.3ed4d839:
+  * Dev: unittest: Adjust unit test for previous commit
+  * Dev: behave: Adjust functional test for previous commit
+  * Fix: ui_node: When `utils.list_cluster_nodes` return None, try to get ip list from corosync.conf
+
+-------------------------------------------------------------------
+Mon Apr 01 08:00:47 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240401.d4bf74c8:
+  * Dev: unittest: Adjust unit test for previous commit
+  * Dev: bootstrap: Add all nodes' keys to qnetd authroized_keys even init
+  * Fix: bootstrap: fix NameError
+  * Dev: qdevice: Refactor init_qdevice function
+  * Dev: qdevice: Add all nodes' keys to qnetd authorized_keys
+  * Fix: ui_node: prevent traceback on node online
+  * Fix: ui_node: prevent traceback on node standby
+
+-------------------------------------------------------------------
 Sat Mar 30 12:13:23 UTC 2024 - XLiang@suse.com
 
 - Update to version 4.6.0+20240330.3473a5ba:
