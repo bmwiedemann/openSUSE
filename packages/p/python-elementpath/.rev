@@ -239,4 +239,32 @@
   * Fix typed value of ElementNode() if self.elem.text is None</comment>
     <requestid>1103086</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b185a3117ce61e28784dc5092276ff32</srcmd5>
+    <version>4.4.0</version>
+    <time>1712157516</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.4.0:
+  * Improve stand-alone XPath functions builder (issue #70)
+  * Update tokens and parsers __repr__
+  * Fix static typing protocols to work with etree and XSD elements
+  * Change the purpose of the evaluation with a dynamic schema
+    context
+  * Add a tox.ini testenv with Python 3.13 pre-releases
+  * Fix dynamic context initialization with lxml a non-root element
+    (issue #71)
+  * Fix XP30+ function fn:function-lookup
+  * Fix XP30+ fn:unparsed-text, fn:unparsed-text-lines and
+    fn:unparsed-text-available
+  * Drop support for Python 3.7
+  * Add *uri* and *fragment* options to dynamic context
+  * Make context root node not mandatory (issue #63)
+  * Add function objects constructor (issue #70)
+
+  * Add etree.py module with a safe XML parser (ported from xmlschema)
+  * Fix wildcard selection of attributes (issue #35)
+  * Add other XSD builtin atomic types
+  * Integrate pull requests and fix bug on predicate selector</comment>
+    <requestid>1164068</requestid>
+  </revision>
 </revisionlist>

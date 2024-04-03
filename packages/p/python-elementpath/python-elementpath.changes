@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr  2 09:45:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.0:
+  * Improve stand-alone XPath functions builder (issue #70)
+  * Update tokens and parsers __repr__
+  * Fix static typing protocols to work with etree and XSD elements
+  * Change the purpose of the evaluation with a dynamic schema
+    context
+  * Add a tox.ini testenv with Python 3.13 pre-releases
+  * Fix dynamic context initialization with lxml a non-root element
+    (issue #71)
+  * Fix XP30+ function fn:function-lookup
+  * Fix XP30+ fn:unparsed-text, fn:unparsed-text-lines and
+    fn:unparsed-text-available
+  * Drop support for Python 3.7
+  * Add *uri* and *fragment* options to dynamic context
+  * Make context root node not mandatory (issue #63)
+  * Add function objects constructor (issue #70)
+
+-------------------------------------------------------------------
 Wed Aug  9 07:43:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.5:
@@ -61,7 +81,7 @@ Tue Sep 27 19:18:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * Add support for Python 3.11
 - update to v3.0.0 (2022-07-16)
   * Transition to full XPath node implementation (more memory usage but better control and overall faster)
-  * Add etree.py module with a safe XML parser (ported from xmlschema) 
+  * Add etree.py module with a safe XML parser (ported from xmlschema)
 
 -------------------------------------------------------------------
 Sat Jun  4 14:00:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -115,7 +135,7 @@ Tue May 18 21:45:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Resolve ambiguities with operators and statements that are also names
   * Merge with XPath 3.0/3.1 develop (to be completed)
   * Add tests and apply small fixes to TDOP parser
-  * Fix wildcard selection of attributes (issue #35) 
+  * Fix wildcard selection of attributes (issue #35)
 
 -------------------------------------------------------------------
 Mon Feb  1 22:10:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -151,7 +171,7 @@ Wed Oct  7 04:05:09 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
   * Hotfix for issue #30
   * Extensive testing with W3C XPath 2.0 tests (~98% passed)
   * Split context variables from in-scope variables (types)
-  * Add other XSD builtin atomic types 
+  * Add other XSD builtin atomic types
 
 -------------------------------------------------------------------
 Wed Jun 24 03:51:04 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
@@ -160,7 +180,7 @@ Wed Jun 24 03:51:04 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
   * Fix XPathContext to let the subclasses replace the XPath nodes iterator function
   * Fix tokenizer and parsers for ambiguities between symbols and names
   * Improve XPath context and axes processing
-  * Integrate pull requests and fix bug on predicate selector 
+  * Integrate pull requests and fix bug on predicate selector
 
 -------------------------------------------------------------------
 Mon Apr  6 08:06:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
