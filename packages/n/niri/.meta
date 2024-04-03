@@ -1,0 +1,9 @@
+<package name="niri" project="openSUSE:Factory">
+  <title>Scrollable-tiling Wayland compositor</title>
+  <description>A scrollable-tiling Wayland compositor.
+
+Windows are arranged in columns on an infinite strip going to the right.
+Opening a new window never causes existing windows to resize.</description>
+  <devel project="X11:Wayland" package="niri"/>
+  <url>https://github.com/YaLTeR/niri</url>
+</package>
