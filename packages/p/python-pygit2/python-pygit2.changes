@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 30 23:08:16 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * pygit2-Upgrade_to_libgit2_v1_8_0.patch (gh#libgit2/pygit2@6d539d76b53b)
+    + Backport of upstream commit to build with libgit2 1.8.x
+    + Apply only if libgit2-devel >= 1.8
+    + Fixes build in Factory
+
+-------------------------------------------------------------------
 Fri Mar  1 10:14:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14.1:

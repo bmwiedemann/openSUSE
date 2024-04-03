@@ -429,4 +429,16 @@
   * Deprecate `ReferenceType.LISTALL`, use `ReferenceType.ALL`</comment>
     <requestid>1153847</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>24ea8f582f0c12e2cfda116b8db76dc0</srcmd5>
+    <version>1.14.1</version>
+    <time>1712157655</time>
+    <user>anag+factory</user>
+    <comment>- Added patch:
+  * pygit2-Upgrade_to_libgit2_v1_8_0.patch (gh#libgit2/pygit2@6d539d76b53b)
+    + Backport of upstream commit to build with libgit2 1.8.x
+    + Apply only if libgit2-devel &gt;= 1.8
+    + Fixes build in Factory</comment>
+    <requestid>1164267</requestid>
+  </revision>
 </revisionlist>
