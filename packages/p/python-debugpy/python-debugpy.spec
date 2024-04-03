@@ -82,7 +82,7 @@ rm -r src/debugpy/_vendored
 cp -r src/debugpy/_vendored_clean src/debugpy/_vendored
 pushd src/debugpy/_vendored/pydevd/pydevd_attach_to_process/linux_and_mac/
 # see /src/debugpy/_vendored/pydevd/pydevd_attach_to_process/add_code_to_python_process.py::get_target_filename
-pyarch=$(python3 -c 'import platform; print(platform.machine())')
+%{python_expand pyarch=$($python -c 'import platform; print(platform.machine())')}
 g++ %{optflags} -shared -o ../attach_${pyarch}.so -fPIC -nostartfiles attach.cpp
 # if on intel architectures, use the default upstream names
 %ifarch x86_64

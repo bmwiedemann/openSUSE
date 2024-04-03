@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 28 12:55:24 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Fix build error in Leap.
+
+-------------------------------------------------------------------
 Thu Feb 15 16:18:57 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip attach_pid tests that fails in OBS run environment bsc#1219921
