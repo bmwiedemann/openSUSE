@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  3 12:22:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 45+12 (identifies as 45.1, but no git tag
+  present, boo#1222276).
+  + Support gnome 46.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Mar  7 15:12:01 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Build gpaste with gcc13 on Leap 15

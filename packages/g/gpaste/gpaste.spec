@@ -20,7 +20,7 @@
 %global __requires_exclude typelib\\(Clutter|St\\)
 %global alt_name GPaste
 Name:           gpaste
-Version:        45
+Version:        45+12
 Release:        0
 Summary:        Clipboard management system for GNOME
 License:        BSD-2-Clause
@@ -44,7 +44,7 @@ BuildRequires:  pkgconfig(gcr-4)
 BuildRequires:  pkgconfig(gdk-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.58.0
-BuildRequires:  pkgconfig(gjs-1.0) >= 1.54.0
+BuildRequires:  pkgconfig(gjs-1.0) >= 1.78.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(gnome-keybindings)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.58.0
