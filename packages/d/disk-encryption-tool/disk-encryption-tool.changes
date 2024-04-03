@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 28 15:22:41 UTC 2024 - lnussel@suse.com
+
+- Update to version 1+git20240328.c4935cc:
+  * Check rd.encrypt systemd credential
+  * Add support for TPM PIN
+  * Add support for jeos-config
+  * Merge jeos module diskencrypt into enroll
+  * Add editorconfig
+  * Fix indent
+
+-------------------------------------------------------------------
 Tue Feb 13 16:51:11 UTC 2024 - lnussel@suse.com
 
 - Update to version 1+git20240213.68c965a:

@@ -28,7 +28,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           disk-encryption-tool
-Version:        1+git20240213.68c965a%{git_version}
+Version:        1+git20240328.c4935cc%{git_version}
 Release:        0
 Summary:        Tool to reencrypt kiwi raw images
 License:        MIT
@@ -63,7 +63,6 @@ ln -s ../lib/dracut/modules.d/95disk-encryption-tool/disk-encryption-tool %build
 ln -s ../lib/dracut/modules.d/95disk-encryption-tool/generate-recovery-key %buildroot/usr/bin
 install -D -m 644 jeos-firstboot-diskencrypt-override.conf \
 	%{buildroot}/usr/lib/systemd/system/jeos-firstboot.service.d/jeos-firstboot-diskencrypt-override.conf
-install -D -m 644 jeos-firstboot-diskencrypt %buildroot/usr/share/jeos-firstboot/modules/diskencrypt
 install -D -m 644 jeos-firstboot-enroll %buildroot/usr/share/jeos-firstboot/modules/enroll
 
 %files
@@ -75,7 +74,6 @@ install -D -m 644 jeos-firstboot-enroll %buildroot/usr/share/jeos-firstboot/modu
 /usr/lib/dracut/modules.d/95disk-encryption-tool
 %dir /usr/share/jeos-firstboot
 %dir /usr/share/jeos-firstboot/modules
-/usr/share/jeos-firstboot/modules/diskencrypt
 /usr/share/jeos-firstboot/modules/enroll
 %dir /usr/lib/systemd/system/jeos-firstboot.service.d
 /usr/lib/systemd/system/jeos-firstboot.service.d/jeos-firstboot-diskencrypt-override.conf
