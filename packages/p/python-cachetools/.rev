@@ -197,4 +197,14 @@
   * Various documentation improvements.</comment>
     <requestid>1124987</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a58ad5b0653c549d58116ca9967d785a</srcmd5>
+    <version>5.3.3</version>
+    <time>1712157528</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.3.3:
+  * Documentation improvements.
+  * Update CI environment.</comment>
+    <requestid>1164117</requestid>
+  </revision>
 </revisionlist>
