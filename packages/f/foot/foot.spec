@@ -1,7 +1,7 @@
 #
 # spec file for package foot
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} < 1550
 %define _distconfdir %{_sysconfdir}
 %endif
 Name:           foot
-Version:        1.16.2
+Version:        1.17.0
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT
@@ -81,7 +82,6 @@ users an easy way to theme foot.
 	-Dime=true \
 	-Dterminfo=enabled \
 	-Dterminfo-base-name=foot-extra \
-	-Dtests=false \
 	-Dthemes=true \
 	-Dutmp-backend=libutempter \
 	-Dutmp-default-helper-path=%{_libexecdir}/utempter/utempter
@@ -90,6 +90,9 @@ users an easy way to theme foot.
 %install
 %meson_install
 rm -r %{buildroot}/%{_datadir}/doc/%{name}/
+
+%check
+%meson_test
 
 %files
 %license LICENSE

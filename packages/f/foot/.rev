@@ -517,4 +517,32 @@
     <comment></comment>
     <requestid>1153442</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ca544a7c81d67c45cf35081bf6c544d0</srcmd5>
+    <version>1.17.0</version>
+    <time>1712157605</time>
+    <user>anag+factory</user>
+    <comment>- Update to v1.17.0:
+  * foot.ini options:
+    * Added main.resize-by-cells option, enabled by default, that constrains
+      the size of floating windows to multiples of the cell size.
+    * Key bindings now support custom modifiers other than
+      Ctrl / Shift / Alt / Super.
+    * Added key-bindings.pipe-command-output option to copy the last command's
+      output to clipboard.
+    * ARGB color values that don't specify the alpha value now default
+      to opaque rather than transparent.
+    * key-bindings.font-increase and font-decrease now include
+      Ctrl+wheel up and Ctrl+wheel down by default, in addition to the existing
+      Ctrl-+ and Ctrl+-.
+  * Added support for opening an existing PTY, e.g. a VM console.
+  * Unicode input mode now accepts input from the numpad as well,
+    numlock is ignored.
+  * Various changes related to ANSI escape sequences, foot-extra terminfo,
+    Kitty keyboard protocol implementation, and sixels.
+  * Fixed various crashes.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.17.0 for more details.
+- Fix rpmlint warning no-%check-section.</comment>
+    <requestid>1164183</requestid>
+  </revision>
 </revisionlist>
