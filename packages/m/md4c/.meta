@@ -1,0 +1,18 @@
+<package name="md4c" project="openSUSE:Factory">
+  <title>C Markdown parser</title>
+  <description>MD4C is Markdown parser implementation in C, with the following features:
+- Compliance: Generally, MD4C aims to be compliant to the latest version of CommonMark specification.
+- Extensions: MD4C supports some commonly requested and accepted extensions.
+- Compactness: MD4C parser is implemented in one source file and one header
+file.
+- Embedding: MD4C parser is easy to reuse in other projects.
+- Push model: MD4C parses the complete document and calls few callback
+functions provided by the application to inform it about a start/end of every block, a start/end of every span, and with any textual contents.
+- Encoding: MD4C by default expects UTF-8 encoding of the input document.
+
+This package provides the md2html utility.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="md4c"/>
+  <url>https://github.com/mity/md4c</url>
+</package>
