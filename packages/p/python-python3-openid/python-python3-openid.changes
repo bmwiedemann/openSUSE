@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 28 05:55:04 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Use %{?sle15allpythons} to build with both python 3.6 and 3.11
+- Do not BuildRequires python311-mysqlslient for testing on Leap15
+  since python311-mysqlclient is not available
+- Add BuildRequires python-dbm to tests
+
+-------------------------------------------------------------------
 Sun Jun 25 08:27:11 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons

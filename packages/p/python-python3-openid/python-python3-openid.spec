@@ -16,7 +16,7 @@
 #
 
 
-%{?sle15_python_module_pythons}
+%{?sle15allpythons}
 # tests are partly broken
 %bcond_without     test
 Name:           python-python3-openid
@@ -35,7 +35,10 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module defusedxml}
+BuildRequires:  %{python_module dbm}
+%if 0%{?suse_version} > 1500
 BuildRequires:  %{python_module mysqlclient}
+%endif
 BuildRequires:  %{python_module psycopg2}
 %endif
 %python_subpackages
