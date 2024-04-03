@@ -100,4 +100,22 @@
     has been changed from a comma to nothing.</comment>
     <requestid>1160838</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6dce68d8b0072334e50e0fd31d6edc70</srcmd5>
+    <version>0.11.1</version>
+    <time>1712157644</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.11.1:
+  * Fix :class:`mizani.palettes.brewer_pal` to return exact colors
+    in the when the requested colors are less than or equal to
+    those in the palette.
+  * Add all matplotlib colormap and make them avalaible from
+    :class:`~mizani.palettes.cmap_pal` and
+    :class:`~mizani.palettes.cmap_d_pal` (:issue:`39`).
+  * Added :class:`~mizani.breaks.breaks_symlog` to calculate
+    breaks for the symmetric logarithm transformation.
+  * The default `big_mark` for :class:`~mizani.labels.label_number`
+    has been changed from a comma to nothing.</comment>
+    <requestid>1164285</requestid>
+  </revision>
 </revisionlist>
