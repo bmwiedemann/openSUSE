@@ -47,6 +47,7 @@ BuildRequires:  mvn(org.codehaus.plexus:plexus-archiver)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-interpolation)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-io)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
 BuildRequires:  mvn(org.eclipse.aether:aether-api)
 BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus)
 BuildRequires:  mvn(org.eclipse.sisu:sisu-maven-plugin)
@@ -71,6 +72,7 @@ This package provides %{summary}.
 %pom_remove_dep jaxen:jaxen
 %pom_add_dep commons-io:commons-io
 %pom_add_dep commons-codec:commons-codec
+%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0
 
 %build
 %{mvn_build} -f -- \

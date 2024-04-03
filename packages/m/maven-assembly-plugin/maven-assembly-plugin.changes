@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  2 17:21:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Add dependency on plexus-xml where relevant
+  * this will be needed for smooth upgrade to plexus-utils 4.0.0
+
+-------------------------------------------------------------------
 Wed Feb 21 10:49:51 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
