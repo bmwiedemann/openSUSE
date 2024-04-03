@@ -1,7 +1,7 @@
 #
 # spec file for package lyx
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,22 @@
 #
 
 
+%if 0%{?suse_version} >= 1600
+%bcond_without qt6
+%endif
+
 Name:           lyx
-Version:        2.3.7
+Version:        2.4.0~RC4
 Release:        0
 Summary:        WYSIWYM (What You See Is What You Mean) document processor
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            http://www.lyx.org/
-Source:         ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/lyx-%{version}-1.tar.xz
+Source:         http://ftp.lyx.org/pub/lyx/devel/lyx-2.4/lyx-%{version}.tar.xz
 Source1:        lyxrc.dist
 Source2:        lyx.keyring
-Source3:        ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/lyx-%{version}-1.tar.xz.sig
+Source3:        http://ftp.lyx.org/pub/lyx/devel/lyx-2.4/lyx-%{version}.tar.xz.sig
 Source4:        README.SUSE
-# PATCH-FIX-UPSTREAM to satisfy rpmlint - use #! /usr/bin/python as shebang
-# See: https://www.lyx.org/trac/changeset/cac27076ead10684270520670adc6bd004793361/lyxgit
-# Upstream also made change to python3 in master. Because 2.3.1 is compatible with both
-# python2 and 3 we follow and switch to python3
-Patch0:         correct-shebang.patch
-# PATCH-FIX-UPSTREAM remove_python_shebang.patch mcepl@suse.com
-# remove all instances of python2 shebang lines
-Patch1:         remove_python_shebang.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
@@ -51,6 +47,19 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
+%if %{with qt6}
+BuildRequires:  qt6-gui-private-devel
+BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Core5Compat)
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6PrintSupport)
+BuildRequires:  pkgconfig(Qt6Sql)
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Xml)
+%else
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
@@ -61,6 +70,7 @@ BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
+%endif
 #!BuildIgnore: lyx
 Requires:       %{name}-fonts
 Requires:       ImageMagick
@@ -141,30 +151,27 @@ BuildArch:      noarch
 A collection of Math symbol fonts for LyX.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
-#hack for tumbleweed and for 2.3.7 only: fix build failure
-#to be removed with lyx 2.4 as it already contains the fix
-%if 0%{?suse_version} > 1500
-if [[ %{version} = 2.3.7 ]]; then
-    sed -i '/static.*zoom_/s@static @@' src/frontends/qt4/GuiView.h
-fi
-%endif
-#./autogen.sh
 TEXMF=%{_datadir}/texmf
 %configure \
     --enable-build-type=rel \
-    --enable-qt5 \
     --without-included-boost \
     --without-aspell \
     --with-hunspell \
-    --with-enchant
+    --with-enchant \
+%if %{with qt6}
+    --enable-qt6
+%else
+    --enable-qt5
+%endif
 make %{?_smp_mflags}
 
 %install
 TEXMF=%{_datadir}/texmf
-make install DESTDIR=%{buildroot} TEXMF=$TEXMF
+%make_install TEXMF=$TEXMF
+%python3_fix_shebang
 
 # some defaults
 install -p -m644 -D %{SOURCE1} %{buildroot}%{_datadir}/lyx/lyxrc.dist
@@ -189,8 +196,6 @@ ln -s %{_datadir}/lyx/tex $RPM_BUILD_ROOT$TEXMF/tex/latex/lyx
 install -m 0755 -d %{buildroot}%{_fontsdir}/lyx
 mv %{buildroot}%{_datadir}/lyx/fonts/*.ttf %{buildroot}%{_fontsdir}/lyx/
 rm -rf %{buildroot}%{_datadir}/lyx/fonts
-
-install -p -D -m 0644 lib/appdata.xml %{buildroot}%{_datadir}/appdata/lyx.appdata.xml
 
 install -p -D -m 0644 lib/scripts/bash_completion %{buildroot}%{_datadir}/bash-completion/completions/lyx
 
@@ -217,7 +222,7 @@ install -p -D -m 0644 lib/scripts/bash_completion %{buildroot}%{_datadir}/bash-c
 %{_bindir}/lyxclient
 %{_bindir}/tex2lyx
 %{_datadir}/applications/lyx.desktop
-%{_datadir}/appdata/lyx.appdata.xml
+%{_datadir}/metainfo/org.lyx.LyX.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %dir %{_datadir}/texmf
 %dir %{_datadir}/texmf/tex
@@ -233,6 +238,5 @@ install -p -D -m 0644 lib/scripts/bash_completion %{buildroot}%{_datadir}/bash-c
 %dir %{_fontsdir}/lyx
 %{_fontsdir}/lyx/*.ttf
 %doc lib/fonts/BaKoMaFontLicense.txt
-%doc lib/fonts/ReadmeBaKoMa4LyX.txt
 
 %changelog
