@@ -333,4 +333,38 @@ Bug Fixes:
   * Fix building c-ares without thread support. PR #700</comment>
     <requestid>1151588</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>959b207ad7c609b84849690914c70446</srcmd5>
+    <version>1.28.1</version>
+    <time>1712157512</time>
+    <user>anag+factory</user>
+    <comment>- c-ares 1.28.1
+Features:
+  * Emit warnings when deprecated c-ares functions are used.
+    This can be disabled by passing a compiler definition of
+    `CARES_NO_DEPRECATED`. [PR #732]
+  * Add function `ares_search_dnsrec()` to search for records
+    using the new DNS record data structures. [PR #719]
+  * Rework internals to pass around `ares_dns_record_t` instead of
+    binary data, this introduces new public functions of
+    `ares_query_dnsrec()` and `ares_send_dnsrec()`. [PR #730]
+Changes:
+  * tests: when performing simulated queries, reduce timeouts
+    to make tests run faster
+  * Replace configuration file parsers with memory-safe parser. [PR #725]
+  * Remove `acountry` completely, the manpage might still get
+    installed otherwise. [Issue #718]
+Bugfixes:
+  * CMake: don't overwrite global required libraries/definitions/includes
+    which could cause build errors for projects chain building c-ares.
+    [Issue #729]
+  * On some platforms, `netinet6/in6.h` is not included by `netinet/in.h`
+    and needs to be included separately. [PR #728]
+  * Fix a potential memory leak in `ares_init()`. [Issue #724]
+  * Some platforms don't have the `isascii()` function.
+    Implement as a macro. [PR #721]
+  * CMake: Fix Chain building if CMAKE runtime paths not set
+  * NDots configuration should allow a value of zero. [PR #735]</comment>
+    <requestid>1164057</requestid>
+  </revision>
 </revisionlist>

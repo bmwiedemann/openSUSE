@@ -26,7 +26,7 @@
 %endif
 
 Name:           c-ares%pkg_suffix
-Version:        1.27.0
+Version:        1.28.1
 Release:        0
 Summary:        Library for asynchronous name resolves
 License:        MIT
@@ -91,7 +91,7 @@ to build packages that depend on c-ares.
 %endif
 
 %prep
-%autosetup -p1 -n c-ares-%{version}
+%autosetup -n c-ares-%{version}
 
 %build
 %cmake \
