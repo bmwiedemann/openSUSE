@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Apr  3 01:30:20 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 8.0.0:
+  * Add functions: 
+    + apply_catch, apply_if, apply_if_not_none, eq_cmp, gt_cmp
+    + gte_cmp, in_range_cmp, is_equal_cmp, is_equal_with_cmp
+    + is_instance_of_cmp, is_match_cmp, is_match_with_cmp
+    + is_monotone_cmp, lt_cmp, lte_cmp
+  * Rename function thru to apply.
+  * Changed zip_, unzip, zip_with, unzip_with and to_pairs to accept
+    iterables of tuples instead of lists and return lists of tuples
+    instead of lists of lists.
+  * Fixed bug in divide, multiply, and subtract that returned the wrong
+    result when 0 was used as one of the operation values.
+  * Fix bug in function wrappers that incorrectly computed the number of
+    arguments the wrapped function could handle.
+  * Fix bug in set_ where the incorrect object type, list instead of dict,
+    was initialized on class attributes.
+  * Drop support for Python 3.7.
+  * Fix typing for chaining interface for methods that use varargs.
+  * Fix typing for find_index and find_last_index by allowing predicate
+    argument to be callback shorthand values.
+  * Fix typing for difference_by, intersection_by, union_by, uniq_by,
+    and xor_by by allowing iteratee argument to be `Any`. 
+  * Fix missing install dependency, typing-extensions, for package.
+  * Add type annotations to package.
+  * Change behavior of to_dict to not using dict() internally.
+  * Change behavior of slugify to remove single-quotes from output.
+  * Add support for negative indexes in get path keys.
+- Switch to autosetup macro.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue Mar  5 09:17:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch package to modern Python Stack on SLE-15
