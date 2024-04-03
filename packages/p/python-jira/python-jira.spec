@@ -17,7 +17,7 @@
 
 
 Name:           python-jira
-Version:        3.6.0
+Version:        3.8.0
 Release:        0
 Summary:        Python library for interacting with JIRA via REST APIs
 License:        BSD-3-Clause

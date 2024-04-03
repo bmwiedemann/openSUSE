@@ -235,4 +235,20 @@
     <comment>- add Pillow dependency</comment>
     <requestid>1160942</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a8a63f2378039635b0a2d5fde5076850</srcmd5>
+    <version>3.8.0</version>
+    <time>1712157648</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.8.0:
+  * Add goal field to update/create sprint (#1806) @zbarahal
+  * add backward compatibility for createmeta_issuetypes &amp;
+    createmeta_fieldtypes (#1838) @paminov
+- update to 3.7.0:
+  * add Release Process doc
+  * Improve handling of Jira's retry-after handling
+  * ISSUE-1836: Add `Dashboard` Support
+  * Update createmeta warning with new method names</comment>
+    <requestid>1164275</requestid>
+  </revision>
 </revisionlist>

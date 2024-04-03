@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr  3 07:24:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.0:
+  * Add goal field to update/create sprint (#1806) @zbarahal
+  * add backward compatibility for createmeta_issuetypes &
+    createmeta_fieldtypes (#1838) @paminov
+- update to 3.7.0:
+  * add Release Process doc
+  * Improve handling of Jira's retry-after handling
+  * ISSUE-1836: Add `Dashboard` Support
+  * Update createmeta warning with new method names
+
+-------------------------------------------------------------------
 Sat Mar 23 12:17:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add Pillow dependency
