@@ -24,6 +24,7 @@
 # Disable tests, they are very slow/halt on many arch
 %bcond_with     tests
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-pyzmq
 Version:        25.1.2
 Release:        0
