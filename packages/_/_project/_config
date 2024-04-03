@@ -2746,6 +2746,7 @@ BuildFlags: onlybuild:python-async_generator
 BuildFlags: onlybuild:python-atspi
 BuildFlags: onlybuild:python-attrs
 BuildFlags: onlybuild:python-bcrypt
+BuildFlags: onlybuild:python-breathe
 BuildFlags: onlybuild:python-build
 BuildFlags: onlybuild:python-calver
 BuildFlags: onlybuild:python-certifi
