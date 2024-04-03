@@ -1344,4 +1344,12 @@
     <comment>KDE release gear 24.02.1 (forwarded request 1159650 from krop)</comment>
     <requestid>1160182</requestid>
   </revision>
+  <revision rev="169" vrev="2">
+    <srcmd5>98ed764fc071d20ebb4e3c260e742a62</srcmd5>
+    <version>24.02.1</version>
+    <time>1712157524</time>
+    <user>anag+factory</user>
+    <comment>- Add a couple recommended plugins to preview files in kate</comment>
+    <requestid>1164099</requestid>
+  </revision>
 </revisionlist>

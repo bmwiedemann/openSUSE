@@ -56,6 +56,9 @@ BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Requires:       kate-plugins = %{version}
+Recommends:     kuiviewer
+Recommends:     markdownpart
+Recommends:     svgpart
 Obsoletes:      kate5 < %{version}
 Provides:       kate5 = %{version}
 
