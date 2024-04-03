@@ -69,7 +69,7 @@ install -d -m 755 %{buildroot}%{_libdir}
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 %doc README.md
-%if %suse_version >= 1500
+%if 0%{?suse_version} >= 1500
 %license LICENSE*
 %else
 %doc LICENSE*
