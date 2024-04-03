@@ -80,6 +80,7 @@ BuildRequires:  plexus-interpolation
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-sec-dispatcher >= 2.0
 BuildRequires:  plexus-utils
+BuildRequires:  plexus-xml
 BuildRequires:  qdox
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
@@ -149,6 +150,7 @@ Requires:       plexus-containers-component-annotations
 Requires:       plexus-interpolation
 Requires:       plexus-sec-dispatcher
 Requires:       plexus-utils
+Requires:       plexus-xml
 Requires:       sisu-inject
 Requires:       sisu-plexus
 Requires:       slf4j
@@ -216,6 +218,11 @@ sed -i "s/distributionName=.*/distributionName=Apache\ Maven/" `find -name build
 
 %pom_xpath_remove pom:parent/pom:relativePath
 
+for i in maven-compat maven-core maven-embedder maven-model maven-model-builder maven-plugin-api maven-resolver-provider maven-settings-builder
+do
+  %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 $i
+done
+
 %{mvn_alias} :maven-resolver-provider :maven-aether-provider
 
 %build
@@ -247,6 +254,7 @@ build-jar-repository -s lib \
     plexus/plexus-cipher \
     plexus/plexus-sec-dispatcher \
     plexus/utils \
+    plexus/xml \
     qdox \
     slf4j/api \
     slf4j/simple \
@@ -322,6 +330,7 @@ build-jar-repository -p %{buildroot}%{homedir}/lib \
     plexus/interpolation \
     plexus/plexus-sec-dispatcher \
     plexus/utils \
+    plexus/xml \
     plexus-containers/plexus-component-annotations \
     slf4j/api \
     slf4j/jcl-over-slf4j
