@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  3 11:14:34 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- switch to C++14 to fix build with new GoogleTest 1.14.0
+  add rnp-v0.17.0-cpp14-googletest.patch
+
+-------------------------------------------------------------------
 Sat Jan 20 09:52:21 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build after SHA-1 cutoff date

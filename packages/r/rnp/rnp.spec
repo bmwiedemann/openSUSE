@@ -30,6 +30,7 @@ Patch0:         rnp-v0.17.0-disable-static.patch
 Patch2:         rnp-v0.17.0-system-sexp.patch
 Patch3:         rnp-v0.17.0-tests.patch
 Patch4:         rnp-v0.17.0-test-SHA1-cutoff.patch
+Patch5:         rnp-v0.17.0-cpp14-googletest.patch
 BuildRequires:  cmake >= 3.18
 BuildRequires:  gcc-c++
 BuildRequires:  gpg2 >= 2.2
