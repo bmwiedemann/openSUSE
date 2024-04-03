@@ -1,4 +1,242 @@
 -------------------------------------------------------------------
+Tue Apr  2 07:07:58 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.1:
+  Features:
+  * Database queries can now be written in
+    PRQL. When executing a query with ;,
+    if the query starts with from, it will be treated as PRQL.
+    The pipeline structure of PRQL queries is more desirable for
+    interactive use since lnav can make better suggestions and
+    show previews of the stages of the pipeline.
+  * Log partitions can automatically be created by defining a log
+    message pattern in a log format. Under a format definition,
+    add an entry into the "partitions" object in a format definition.
+    The "pattern" property specifies the regular expression to match
+    against a line in a file that matches the format. If a match is
+    found, the partition name will be set to the value(s) captured
+    by the regex. To restrict matches to certain files, you can add
+    a "paths" array whose object elements contain a "glob" property
+    that will be matched against file names.
+  Interface changes:
+  * When using PRQL in the database query prompt (;),
+    the preview pane will show the results for the pipeline
+    stage the cursor is within along with the results of
+    the previous stage (if there is one). The preview
+    works on a limited data set, so the preview results
+    may differ from the final results.
+  * Changed the breadcrumb bar styling to space things out
+    more and make the divisions between items clearer.
+  * The ESC key can now be used to exit the files/filters
+    configuration panel instead of q. This should make
+    it easier to avoid accidentally exiting lnav.
+  * Added some default help text for the command prompt.
+  * Suggestions are now shown for some commands and can
+    be accepted by pressing the right arrow key. For
+    example, after typing in :filter-in the current
+    search term for the view will be suggested (if
+    one is active).
+  * The focused line should be preserved more reliably in
+    the LOG/TEXT views.
+  * In the LOG view, the current partition name (as set
+    with the :partition-name command) is shown as the
+    first breadcrumb in the breadcrumb bar. And, when
+    that breadcrumb is selected, you can select another
+    partition to jump to.
+  * The { / } hotkeys, :next-section, and :prev-section
+    commands now work in the LOG view and take you to the
+    next/previous partition.
+  * The DB view now defaults to not showing bar charts.
+  Breaking changes:
+  * Many of the lesser used column in the log format tables
+    (e.g. log_tags) have been moved to after the columns
+    defined by the format. These columns are usually NULL
+    and are a distraction when previewing queries.
+- Add lnav-0.12.1-fixbuild.patch:
+  Fix compiler warning-as-error about return from functions
+
+-------------------------------------------------------------------
+Tue Apr  2 07:06:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.0:
+  Features:
+  * Added a Gantt Chart view to visualize operations over time
+    based on the "opid" in log messages. The view shows
+    the operation IDs, a description of the operation captured
+    from log messages, and a bar representing the period of
+    time that the operation was running.
+  * Added the :sh command and -e option to execute a shell
+    command-line and display its output within lnav. The
+    captured output will be displayed in the TEXT view. The
+    lines from stdout and stderr are recorded separately so
+    that the lines from stderr can be shown in the theme's
+    "error" highlight. The time that the lines were received
+    are also recorded internally so that the "time-offset"
+    display (enabled by pressing Shift + T) can be shown
+    and the "jump to slow-down" hotkeys (s/Shift + S)
+    work. Since the line-by-line timestamps are recorded
+    internally, they will not interfere with timestamps that
+    are in the commands output.
+  * Added a :cd command to change lnav's current directory.
+  * Added support for automatically converting files that are
+    in a format not natively supported by lnav. The new
+    converter section in a log format definition allows you
+    to specify how a file type can be detected and converted.
+    The built-in PCAP support in lnav is implemented using
+    this mechanism.
+  * Added a shell_exec() SQLite function that executes a
+    command-line with the user's $SHELL and returns the
+    output.
+  * Added support for custom URL schemes that are handled by an
+    lnav script. Schemes can be defined under
+    /tuning/url-schemes. See the main docs for more details.
+  * Added docker:// and podman:// URL schemes that can be
+    used to tail the logs for containers (e.g.
+    docker://my-container) or files within a container (e.g.
+    docker://my-serv/var/log/dpkg.log). Containers mentioned
+    in a "Compose" configuration file can be tailed by using
+    compose as the host name with the path to the configuration
+    file (e.g. docker://compose/compose.yaml).
+  * Added an :annotate command that can trigger a call-out
+    to a script to analyze a log message and generate an
+    annotation that is attached to the message. The script
+    is executed asynchronously, so it will not block input
+    and the result is saved in the session. Annotations are
+    defined in the /log/annotations configuration property.
+  * Timestamps with numeric timezone offsets (or Z) are now
+    automatically converted to the local time zone. For
+    example, a timestamp ending in -03:00 will be treated
+    as three hours behind UTC and then adjusted to the local
+    timezone. This feature can be disabled by setting the
+    /log/date-time/convert-zoned-to-local configuration
+    property to false. Timestamps without a zone or have
+    a symbolic zone name (e.g. PDT) are not converted.
+  * Added the SQLite JSON functions to the online help.
+  * Added config get and config blame management CLI
+    commands to get the current configuration and the file
+    locations where the configuration options came from.
+  * When piping data into lnav's stdin, the input used to
+    only be written to a single file without any rotation.
+    Now, the input is written to a directory of rotating files.
+    The same is true for the command-lines executed through the
+    new :sh command. The piped data can be managed using the
+    new piper commands in the management CLI.
+  * The $LNAV_HOME_DIR and $LNAV_WORK_DIR environment
+    variables are now defined inside lnav and refer to
+    the location of the user's configuration directory and
+    the directory where cached data is stored, respectively.
+  * The <pre> and <img> tags are now recognized in
+    Markdown files.
+  * The style attribute in <span> tags is now supported.
+    The following CSS properties and values are supported:
+      * color and background-color with CSS color names
+      * font-weight with a value of bold or bolder
+      * text-decoration with underline
+      * border-left and border-right with the solid,
+        dashed and dotted line styles and colors.
+  * Added an options column to the lnav_views table
+    to allow more control over overlays.
+  * Added a "Dracula" theme as described at:
+    https://draculatheme.com
+  * Multi-line block comments (i.e. /* ... */) and strings
+    are now recognized and styled as appropriate.
+  * Added error and data columns to the fstat()
+    table-valued-function. The error column is non-NULL
+    if there is a problem accessing the file. The data
+    contains the contents of the file, as such, it is
+    hidden by default.
+  * Added a log format for Redis.
+  * The :eval command will now treat its argument(s) as a
+    script, allowing multiple commands to be executed.
+  * Added a timezone() SQL function for converting a timestamp
+    to a target timezone.
+  * Added a :convert-time-to command that converts the
+    timestamp of the focused log message to the given timezone.
+  * Added the :set-file-timezone and :clear-file-timezone
+    commands to set the timezone for log messages that don't
+    include a zone in their timestamp.
+  * Added the options_path and options columns to the
+    lnav_file table so you can see what options are applied
+    to a file. Currently, the only option is the default
+    timezone that is set by the :set-file-timezone command.
+  * Added the config file-options management command that
+    can be used to examine the options that will be applied
+    to a given file.
+  * When viewing a diff, the sections of the diff for each
+    file is recognized and shown in the breadcrumb bar. So,
+    you can see the file the focused line is in. You can
+    also jump to a particular file by focusing on the
+    breadcrumb bar, selecting the crumb, and then selecting
+    the desired file.
+  * Binary files are now displayed as a hex dump with ASCII
+    representation (where applicable).
+  * Added a log_msg_line() SQL function that will return the
+    line number of the start of the currently focused
+    message in the log view.
+  * Added a log_msg_values column to the all_logs SQL
+    table that contains a JSON object with the top 5 values
+    for the fields extracted from the log message.
+  * Added :next-section and :prev-section commands for
+    moving to the next and previous section of a document.
+    For example, the next section in a man page or JSON
+    array. The default keymap has been changed to bind
+    the curly brace keys to these commands.
+  * Added Nextcloud log format from Adam Monsen.
+  * Added GitHub Event Log format for files from gharchive.org.
+    It makes a good example of a JSON-Lines format.
+  Bug Fixes:
+  * Binary data piped into stdin should now be treated the same
+    as if it was in a file that was passed on the command-line.
+  * The -I option is now recognized in the management CLI
+    (i.e. when you run lnav with the -m flag).
+  * Fields in the bro and w3c log formats that were hidden are
+    now saved in the session and restored.
+  * A warning will now be issued if a timestamp in a log format's
+    sample message does not match completely. Warnings in the
+    configuration can be viewed by passing the -W flag.
+  * Importing from regex101.com broke due to some changes in the
+    API.
+  * The details overlay for a log message no longer shows keys
+    for unknown JSON properties. These extra fields are now
+    shown with the proper jget(log_raw_text, '/...') SQL
+    expression needed to retrieve the value.
+  * Improved text-wrapping when rendering Markdown.
+  Interface changes:
+  * The breadcrumb bar hotkey is moving to backtick `
+    instead of ENTER.
+  * The DB view now uses the "alt-text" theme style to draw
+    alternating rows instead of being hard-coded to bold. The
+    alternation is also now done in groups of two rows instead
+    of only a single row. Numbers are also rendered using the
+    "number" theme style as well.
+  * The log message overlay in the LOG view is now limited
+    2/3rds of the height. You can focus on the overlay panel
+    by pressing CTRL-]. The "alt-text" theme style is also
+    used to draw the overlay contents now as well. (The
+    overlay is used to display the parser details, comments,
+    and annotations.)
+  * The { and } keys have been changed from moving
+    through the "location history" to moving to the previous
+    and next section in a document.
+  * Added indent guidelines when structured data is detected.
+  Breaking changes:
+  * Removed the -w command-line option. This option was
+    useful when stdin was not automatically preserved. Since
+    the data is now stored (and cleaned up) as well as being
+    spread across multiple files, this option doesn't make
+    sense anymore.
+  * The -t command-line flag behaves a little differently
+    behind the scenes now. Timestamps will always be
+    recorded for each line piped into lnav. This flag means
+    that the data should be treated as a log file instead of
+    plain text.
+  * Data piped into lnav is now stored in the work
+    directory instead of the stdin-captures dot-lnav
+    directory.
+  * Changed the "Bunyan" log format name from bunyan to
+    bunyan_log to be consistent with other format names.
+
+-------------------------------------------------------------------
 Mon Jul  3 06:32:06 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.11.2:
@@ -14,7 +252,7 @@ Mon Jul  3 06:32:06 UTC 2023 - Michael Vetter <mvetter@suse.com>
     field should automatically be determined by the observed
     values.
   * Added bunyan log format from Tobias Gruetzmacher.
-  * Added cloudlare log format from @minusf[1].
+  * Added cloudlare log format
   * Number fields used in a JSON log format line-format
     array now default to being right-aligned. Also, added
     prefix and suffix to line-format elements so a

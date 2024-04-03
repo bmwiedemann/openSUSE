@@ -2,7 +2,7 @@
 #
 # spec file for package lnav
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2010-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc6-c++
 %endif
 Name:           lnav
-Version:        0.11.2
+Version:        0.12.1
 Release:        0
 Summary:        Logfile Navigator
 License:        BSD-2-Clause
@@ -35,6 +35,7 @@ URL:            https://lnav.org
 #Git-Clone:     https://github.com/tstack/lnav.git
 Source:         https://github.com/tstack/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        lnav.desktop
+Patch0:         lnav-0.12.1-fixbuild.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libcurl-devel
