@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  1 18:21:06 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Add "-DBUILD_KCM_MOUSE_X11=OFF" for s390x
+- Move touchpad and mouse configuration to all (also for s390x)
+
+-------------------------------------------------------------------
 Tue Mar 26 18:06:11 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.3:

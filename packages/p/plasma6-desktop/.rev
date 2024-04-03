@@ -23,4 +23,13 @@
     <comment>Plasma 6.0.3. The release actually builds this time! (After other distros already found major issues...) (forwarded request 1162359 from Vogtinator)</comment>
     <requestid>1162443</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e93ef47fd66b072d7d0349c0b05812ee</srcmd5>
+    <version>6.0.3</version>
+    <time>1712157519</time>
+    <user>anag+factory</user>
+    <comment>- Add &quot;-DBUILD_KCM_MOUSE_X11=OFF&quot; for s390x
+- Move touchpad and mouse configuration to all (also for s390x) (forwarded request 1164074 from AdaLovelace)</comment>
+    <requestid>1164076</requestid>
+  </revision>
 </revisionlist>

@@ -233,7 +233,8 @@ Plasma 6 Input Method Backend for SCIM (Smart Chinese/Common Input Method) suppo
 %build
 %cmake_kf6 \
 %ifarch s390x
-  -DBUILD_KCM_TOUCHPAD_X11:BOOL=FALSE
+  -DBUILD_KCM_TOUCHPAD_X11:BOOL=FALSE \
+  -DBUILD_KCM_MOUSE_X11=OFF 
 %endif
 
 %kf6_build
@@ -242,9 +243,7 @@ Plasma 6 Input Method Backend for SCIM (Smart Chinese/Common Input Method) suppo
 %kf6_install
 
 # no devel files needed here
-%ifnarch s390x
 rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
-%endif
 
 %find_lang %{name} --all-name --with-html
 
@@ -282,6 +281,8 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_applicationsdir}/kcmspellchecking.desktop
 %{_kf6_applicationsdir}/kde-mimeapps.list
 %{_kf6_applicationsdir}/org.kde.knetattach.desktop
+%{_kf6_applicationsdir}/kcm_mouse.desktop
+%{_kf6_applicationsdir}/kcm_touchpad.desktop
 %{_kf6_appstreamdir}/*.xml
 %{_kf6_bindir}/kaccess
 %{_kf6_bindir}/knetattach
@@ -302,6 +303,7 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_plugindir}/attica_kde.so
 %{_kf6_plugindir}/kf6/kded/device_automounter.so
 %{_kf6_plugindir}/kf6/kded/keyboard.so
+%{_kf6_plugindir}/kf6/kded/kded_touchpad.so
 %{_kf6_plugindir}/kf6/krunner/
 %dir %{_kf6_plugindir}/plasma/kcms/desktop/
 %{_kf6_plugindir}/plasma/kcms/desktop/kcm_krunnersettings.so
@@ -313,6 +315,11 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %if %{with gamecontroller_kcm}
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_gamecontroller.so
 %endif
+%dir %{_kf6_plugindir}/plasma/kcminit
+%{_kf6_plugindir}/plasma/kcminit/kcm_mouse_init.so
+%{_kf6_plugindir}/plasma/kcminit/kcm_touchpad_init.so
+%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mouse.so
+%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_touchpad.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_kded.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_keyboard.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_keys.so
@@ -345,21 +352,13 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_sharedir}/polkit-1/actions/org.kde.kcontrol.kcmclock.policy
 %{_kf6_sharedir}/solid/
 %{_kf6_libexecdir}/kauth/kcmdatetimehelper
+%{_kf6_iconsdir}/hicolor/*/devices/input-touchpad.*
+%{_kf6_sharedir}/kcmmouse/
+%{_kf6_notificationsdir}/kcm_touchpad.notifyrc
 %exclude %{_kf6_plasmadir}/emoji/
 %ifnarch s390 s390x
-%{_kf6_applicationsdir}/kcm_mouse.desktop
-%{_kf6_applicationsdir}/kcm_touchpad.desktop
 %{_kf6_bindir}/kapplymousetheme
 %{_kf6_bindir}/kcm-touchpad-list-devices
-%{_kf6_iconsdir}/hicolor/*/devices/input-touchpad.*
-%{_kf6_notificationsdir}/kcm_touchpad.notifyrc
-%{_kf6_plugindir}/kf6/kded/kded_touchpad.so
-%dir %{_kf6_plugindir}/plasma/kcminit
-%{_kf6_plugindir}/plasma/kcminit/kcm_mouse_init.so
-%{_kf6_plugindir}/plasma/kcminit/kcm_touchpad_init.so
-%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mouse.so
-%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_touchpad.so
-%{_kf6_sharedir}/kcmmouse/
 %endif
 
 %files emojier
