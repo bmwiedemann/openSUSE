@@ -1,7 +1,7 @@
 #
 # spec file for package libssh2_org
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,10 @@ Source3:        libssh2_org.keyring
 Patch0:         libssh2-ocloexec.patch
 # PATCH-FIX-UPSTREAM bsc#1218127 CVE-2023-48795: Add 'strict KEX' to fix Terrapin Attack
 Patch1:         libssh2_org-CVE-2023-48795.patch
+# PATCH-FIX-SUSE bsc#1218971 Always add extension indicators to kex_algorithms
+Patch2:         libssh2_org-CVE-2023-48795-ext.patch
+# PATCH-FIX-UPSTREAM bsc#1221622 Test ETM feature in remote end's config when receiving data
+Patch3:         libssh2_org-ETM-remote.patch
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
@@ -83,10 +87,10 @@ export CFLAGS="%{optflags} -DOPENSSL_LOAD_CONF"
     --with-libssl-prefix=%{_prefix} \
     --with-libz=%{_prefix}
 
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
@@ -96,11 +100,9 @@ rm -f %{buildroot}%{_libdir}/*.la %{buildroot}%{_libdir}/*.a
 %postun -n libssh2-1 -p /sbin/ldconfig
 
 %files -n libssh2-1
-%defattr(-,root,root)
 %{_libdir}/libssh2.so.1*
 
 %files -n libssh2-devel
-%defattr(-,root,root)
 %doc NEWS docs/BINDINGS.md docs/HACKING.md docs/TODO
 %{_libdir}/libssh2.so
 %{_includedir}/*.h

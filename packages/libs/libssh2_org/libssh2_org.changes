@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr  2 16:48:26 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix an issue with Encrypt-then-MAC family. [bsc#1221622]
+  * Test the ETM feature in the remote end's configuration when
+    receiving data. Upstream issue: #1331.
+  * Add libssh2_org-ETM-remote.patch
+
+-------------------------------------------------------------------
+Fri Feb  9 14:55:47 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Always add the KEX pseudo-methods "ext-info-c" and "kex-strict-c-v00@openssh.com"
+  when configuring custom method list. [bsc#1218971, CVE-2023-48795]
+  * The strict-kex extension is announced in the list of available
+    KEX methods. However, when the default KEX method list is modified
+    or replaced, the extension is not added back automatically.
+  * Add libssh2_org-CVE-2023-48795-ext.patch
+
+-------------------------------------------------------------------
 Tue Dec 19 11:25:35 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Security fix: [bsc#1218127, CVE-2023-48795]
