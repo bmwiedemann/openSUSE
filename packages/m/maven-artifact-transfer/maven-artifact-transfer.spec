@@ -48,6 +48,7 @@ BuildRequires:  plexus-cli
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
+BuildRequires:  plexus-xml
 BuildRequires:  qdox
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
@@ -105,6 +106,7 @@ build-jar-repository -s lib \
 	plexus-containers/plexus-component-annotations \
 	plexus-metadata-generator \
 	plexus/utils \
+	plexus/xml \
 	qdox \
 	slf4j/api \
 	slf4j/simple \
