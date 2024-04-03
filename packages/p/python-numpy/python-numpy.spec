@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-numpy
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -86,6 +86,10 @@ Source99:       python-numpy-rpmlintrc
 Patch0:         numpy-buildfix.patch
 # PATCH-FIX-OPENSUSE numpy-1.9.0-remove-__declspec.patch -- fix for spurious compiler warnings that cause build failure
 Patch1:         numpy-1.9.0-remove-__declspec.patch
+# PATCH-FIX-UPSTREAM https://github.com/numpy/numpy/pull/26151
+Patch2:         0001-BUG-Fix-test_impossible_feature_enable-failing-witho.patch
+# PATCH-FIX-UPSTREAM https://github.com/numpy/meson/pull/12
+Patch3:         0001-feature-module-Fix-handling-of-multiple-conflicts-pe.patch
 BuildRequires:  %{python_module Cython >= 3.0}
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module devel}
@@ -139,7 +143,7 @@ BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
@@ -332,7 +336,6 @@ test_failok+=" or (test_multinomial_pvals_float32)"
 %endif
 %ifarch %{arm}
 # https://github.com/numpy/numpy/issues/24001
-test_failok+=" or (test_cpu_features and test_impossible_feature_enable)"
 test_failok+=" or (test_cpu_features and test_features)"
 test_failok+=" or (test_umath and test_unary_spurious_fpexception)"
 %endif
