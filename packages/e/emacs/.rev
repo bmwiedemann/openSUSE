@@ -1942,4 +1942,12 @@ Now one could consider building emacs with gsettings support (both debian and fe
 - Port patch emacs-24.4-ps-bdf.patch</comment>
     <requestid>1161379</requestid>
   </revision>
+  <revision rev="184" vrev="2">
+    <srcmd5>840985772af5137de4aa8e85c581b6a3</srcmd5>
+    <version>29.3</version>
+    <time>1712157513</time>
+    <user>anag+factory</user>
+    <comment>- Fix the temporary parking path by using %{version} (hint from Andre Barros)</comment>
+    <requestid>1164060</requestid>
+  </revision>
 </revisionlist>

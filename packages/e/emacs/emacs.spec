@@ -607,7 +607,7 @@ make install DESTDIR=%{buildroot} systemdunitdir=%{_userunitdir}
 rm -vf %{buildroot}%{_libexecdir}/emacs/%{version}/${configuration}/*.pdmp
 %if %{with nativecomp}
 pushd native-lisp/
-    ln -sf ../parking.*/usr/lib64/emacs/29.1/native-lisp/* .
+    ln -sf ../parking.*/usr/lib64/emacs/%{version}/native-lisp/* .
 popd
 %endif
 for pdmp in emacs-nox emacs-gtk emacs-x11 emacs-wayland
