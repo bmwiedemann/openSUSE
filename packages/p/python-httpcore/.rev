@@ -184,4 +184,14 @@
   * Fix SSL context for connections using the &quot;wss&quot; scheme</comment>
     <requestid>1160938</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e7722bb7060c3943e89c1767890354c5</srcmd5>
+    <version>1.0.5</version>
+    <time>1712157507</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.5:
+  * Handle `EndOfStream` exception for anyio backend.
+  * Allow trio `0.25.*` series in package dependancies.</comment>
+    <requestid>1164272</requestid>
+  </revision>
 </revisionlist>

@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-httpcore%{psuffix}
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        Minimal low-level Python HTTP client
 License:        BSD-3-Clause

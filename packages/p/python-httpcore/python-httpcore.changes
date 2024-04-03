@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  3 07:04:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.5:
+  * Handle `EndOfStream` exception for anyio backend.
+  * Allow trio `0.25.*` series in package dependancies.
+
+-------------------------------------------------------------------
 Tue Mar 19 07:11:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.4:
