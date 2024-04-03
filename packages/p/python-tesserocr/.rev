@@ -172,4 +172,18 @@
     <comment>- Update to 2.6.2 (no user-facing changes)</comment>
     <requestid>1123701</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>06849bd4ad98924eef64df146e1485b7</srcmd5>
+    <version>2.6.3</version>
+    <time>1712157614</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.6.3:
+  * Clarified the comments for tessdata path
+  * skip unit test for GetComponentImages if Pillow is missing
+  * Build with C++17 for Tesseract&gt;=5.3.4
+
+  (which should be required by tesseract 4.0+ and not older versions).
+* Documentation fixes and other minor improvments</comment>
+    <requestid>1164224</requestid>
+  </revision>
 </revisionlist>

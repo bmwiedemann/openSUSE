@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr  2 18:53:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.3:
+  * Clarified the comments for tessdata path
+  * skip unit test for GetComponentImages if Pillow is missing
+  * Build with C++17 for Tesseract>=5.3.4
+
+-------------------------------------------------------------------
 Tue Nov  7 01:04:01 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to 2.6.2 (no user-facing changes)
@@ -155,7 +163,7 @@ Thu Jun  1 18:06:25 UTC 2017 - 9@cirno.systems
 
 v2.2.1
 * Fixed setup bug that affects gcc versions with no -std=c++11 option support
-  (which should be required by tesseract 4.0+ and not older versions). 
+  (which should be required by tesseract 4.0+ and not older versions).
 
 -------------------------------------------------------------------
 Sun May 28 15:39:24 UTC 2017 - 9@cirno.systems
@@ -170,7 +178,7 @@ v2.2.0
   - file_to_text and image_to_text functions now also accept the oem attribute as above.
 * Fixed segfault on API Init* failure
 * Fixed segfault when pixa_to_list returns NULL
-* Documentation fixes and other minor improvments 
+* Documentation fixes and other minor improvments
 
 -------------------------------------------------------------------
 Sat Apr  1 03:18:38 UTC 2017 - 9@cirno.systems
