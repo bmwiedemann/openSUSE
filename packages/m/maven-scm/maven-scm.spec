@@ -49,6 +49,7 @@ BuildRequires:  mvn(org.codehaus.modello:modello-maven-plugin)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-container-default)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
 BuildRequires:  mvn(org.eclipse.jgit:org.eclipse.jgit)
 BuildRequires:  mvn(org.eclipse.jgit:org.eclipse.jgit.ssh.jsch)
 BuildRequires:  mvn(org.sonatype.plexus:plexus-sec-dispatcher)
@@ -110,6 +111,8 @@ sed -i "s/org\.apache\.commons\.lang\./org.apache.commons.lang3./" \
 %pom_add_dep org.eclipse.jgit:org.eclipse.jgit.ssh.jsch maven-scm-providers/maven-scm-providers-git/maven-scm-provider-jgit
 
 %pom_xpath_remove "pom:build/pom:pluginManagement/pom:plugins/pom:plugin[pom:artifactId = 'maven-plugin-plugin']/pom:version" maven-scm-plugin
+
+%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0
 
 # Put TCK tests into a separate sub-package
 %{mvn_package} :%{name}-provider-cvstest test
