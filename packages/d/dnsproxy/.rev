@@ -247,4 +247,16 @@
   * Pull request 321: all: upd go, deps (forwarded request 1145320 from VaiTon)</comment>
     <requestid>1145323</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c805274e40a8874e6f8fa0eff91c595c</srcmd5>
+    <version>0.66.1</version>
+    <time>1712157606</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.66.1:
+  * DNS64-mapped PTR requests now checked for possible resolving recursion.
+  
+- Update to version 0.66.0:
+  * API Changes (forwarded request 1164159 from VaiTon)</comment>
+    <requestid>1164182</requestid>
+  </revision>
 </revisionlist>
