@@ -18,7 +18,7 @@
 
 %define somajor 1
 Name:           libuv
-Version:        1.47.0
+Version:        1.48.0
 Release:        0
 Summary:        Asychronous I/O support library
 License:        MIT
@@ -29,8 +29,6 @@ Source1:        https://dist.libuv.org/dist/v%{version}/libuv-v%{version}.tar.gz
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Patch1:         fix_tests.patch
-# PATCH-FIX-UPSTREAM: gh#libuv/libuv#4285
-Patch2:         ppc64-disable-liburing.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
