@@ -930,4 +930,22 @@ Most projects for this reason don't even carry the generated configure script in
     <comment></comment>
     <requestid>1158885</requestid>
   </revision>
+  <revision rev="122" vrev="3">
+    <srcmd5>10fc64c82767d4858ffa75e3df8bbd99</srcmd5>
+    <version>5.0</version>
+    <time>1712157537</time>
+    <user>anag+factory</user>
+    <comment>- Fix runtime issues with v6.8 kernel (bsc#1222249)
+    New patch: get-shm_flag-defines-from-the-appropriate-include-file-for-linux-6.8-kernel.patch
+    New patch: pr31373-deal-with-the-removal-of-strlcpy-from-linux-6.8.patch
+- Fix gcc14 build errors (bsc#1221706)
+    New patch: bpf-translate.cxx-fix-build-against-upcoming-gcc14.patch
+    New patch: pr31288-build-with-gcc14-cont.patch
+    New patch: pr31288-build-with-gcc14.patch
+    New patch: staprun-fix-build-against-upcoming-gcc14.patch
+    New patch: stapvirt.c-more-gcc-14-werror-calloc-transposed-args-compatibility.patch
+    
+</comment>
+    <requestid>1164227</requestid>
+  </revision>
 </revisionlist>

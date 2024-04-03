@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr  2 17:32:02 UTC 2024 - Tony Jones <tonyj@suse.com>
+
+- Fix runtime issues with v6.8 kernel (bsc#1222249)
+    New patch: get-shm_flag-defines-from-the-appropriate-include-file-for-linux-6.8-kernel.patch
+    New patch: pr31373-deal-with-the-removal-of-strlcpy-from-linux-6.8.patch
+
+-------------------------------------------------------------------
+Thu Mar 28 01:06:45 UTC 2024 - Tony Jones <tonyj@suse.com>
+
+- Fix gcc14 build errors (bsc#1221706)
+    New patch: bpf-translate.cxx-fix-build-against-upcoming-gcc14.patch
+    New patch: pr31288-build-with-gcc14-cont.patch
+    New patch: pr31288-build-with-gcc14.patch
+    New patch: staprun-fix-build-against-upcoming-gcc14.patch
+    New patch: stapvirt.c-more-gcc-14-werror-calloc-transposed-args-compatibility.patch
+    
+-------------------------------------------------------------------
 Fri Mar  8 15:56:21 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using
