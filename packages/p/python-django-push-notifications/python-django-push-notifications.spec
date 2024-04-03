@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-push-notifications
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,9 @@ Release:        0
 Summary:        Django package to send push notifications to mobile devices
 License:        MIT
 URL:            https://github.com/jazzband/django-push-notifications
-Source:         https://github.com/jazzband/django-push-notifications/archive/%{version}.tar.gz#/django-push-notifications-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django-push-notifications/django-push-notifications-%{version}.tar.gz
 Patch0:         support-new-apns2.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.11
@@ -69,6 +69,7 @@ export PYTHONPATH="$(pwd)"
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/push_notifications
+%{python_sitelib}/django_push_notifications-%{version}.dist-info
 
 %changelog

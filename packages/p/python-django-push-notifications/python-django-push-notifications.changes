@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  3 03:41:59 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- No more greedy globs in %files.
+- Switch back to PyPi tarball, and use setuptools_scm.
+
+-------------------------------------------------------------------
 Wed Nov 29 12:14:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.2:

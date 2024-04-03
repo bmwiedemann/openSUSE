@@ -49,4 +49,13 @@
   * Support new apsn2 that no longer exports init_context.</comment>
     <requestid>1129794</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1a2760a58cd3624f0d1c974eec97be64</srcmd5>
+    <version>3.0.2</version>
+    <time>1712157633</time>
+    <user>anag+factory</user>
+    <comment>- No more greedy globs in %files.
+- Switch back to PyPi tarball, and use setuptools_scm.</comment>
+    <requestid>1164251</requestid>
+  </revision>
 </revisionlist>
