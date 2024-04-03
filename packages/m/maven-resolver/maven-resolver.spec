@@ -40,6 +40,7 @@ BuildRequires:  jcl-over-slf4j
 BuildRequires:  maven-wagon-provider-api
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-utils
+BuildRequires:  plexus-xml
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  slf4j
@@ -212,6 +213,7 @@ build-jar-repository -s lib \
   org.eclipse.sisu.plexus \
   plexus-classworlds \
   plexus/utils \
+  plexus/xml \
   slf4j/api
 %if %{with tests}
 build-jar-repository -s lib \
