@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Mar 29 10:39:40 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to version 7:
+  + Encryption support has been extended, with server-side key backup
+    and account recovery.
+  + Messages that failed to send can now be retried or discarded.
+  + Messages can be reported to server admins for moderation.
+  + Room details are now considered complete, with the addition of room
+    address management, permissions, and version upgrade.
+  + A new member menu appears when clicking on an avatar in the room history.
+    It offers a quick way to do many actions related to that person, including
+    opening a direct chat with them and moderating them.
+  + Pills are clickable and allow to directly go to a room or member profile.
+  + improvements on the accessibility front, for better navigability with a
+    screen reader.
+
+- add %suse_update_desktop_file as the wiki instructs
+- enable dependency updating in cargo_vendor
+- increase vm memory to 20G
+
+-------------------------------------------------------------------
 Fri Jan 19 08:18:52 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - update to version 6:

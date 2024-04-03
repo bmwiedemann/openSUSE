@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1142826</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>216cba0acf888991076ce604582a70f4</srcmd5>
+    <version>7.beta</version>
+    <time>1712157559</time>
+    <user>anag+factory</user>
+    <comment>increase libadwaita version (forwarded request 1163824 from rrahl0)</comment>
+    <requestid>1164133</requestid>
+  </revision>
 </revisionlist>

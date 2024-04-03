@@ -8,7 +8,7 @@
   </disk>
     <physicalmemory>
       <!-- Maximal used memory: 13976 Mbyte -->
-      <size unit="G">16</size>
+      <size unit="G">20</size>
     </physicalmemory>
   </hardware>
   <hostlabel exclude="true">SLOW_CPU</hostlabel>
