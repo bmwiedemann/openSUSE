@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr  2 12:14:33 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- update to v0.9.0:
+  * Build system changed to Meson from Autotools
+  * Add --argv0
+    https://github.com/containers/bubblewrap/issues/91
+  * --symlink is now idempotent, meaning it succeeds if the symlink already
+    exists and already has the desired target 
+  * Clarify security considerations in documentation
+  * Clarify documentation for --cap-add
+  * Report a better error message if mount(2) fails with ENOSPC
+  * Fix a double-close on error reading from --args, --seccomp or
+    --add-seccomp-fd argument
+  * Improve memory allocation behaviour
+
+-------------------------------------------------------------------
 Mon Mar 27 16:39:05 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to v0.8.0:

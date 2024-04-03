@@ -1,7 +1,7 @@
 #
 # spec file for package bubblewrap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 Name:           bubblewrap
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Core execution tool for unprivileged containers
 License:        LGPL-2.0-or-later
 Group:          Productivity/Security
 URL:            https://github.com/containers/bubblewrap
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc
 BuildRequires:  git
 BuildRequires:  libcap-devel
 BuildRequires:  libtool
 BuildRequires:  libxslt
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libselinux)
 
@@ -59,12 +58,11 @@ sed -i '1s/env //' demos/bubblewrap-shell.sh demos/userns-block-fd.py
 %endif
 
 %build
-env NOCONFIGURE=1 ./autogen.sh
-%configure --disable-silent-rules --with-priv-mode=none
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install DESTDIR=%{buildroot} INSTALL="install -p -c"
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
