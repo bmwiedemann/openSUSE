@@ -48,6 +48,7 @@ BuildRequires:  osgi-core
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-utils
+BuildRequires:  plexus-xml
 BuildRequires:  slf4j
 BuildRequires:  testng
 BuildRequires:  unzip
@@ -107,6 +108,8 @@ for i in inject plexus; do
 done
 %pom_change_dep :org.eclipse.sisu.inject org.eclipse.sisu:org.eclipse.sisu.inject:%{version} %{name}-plexus
 
+%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 %{name}-plexus
+
 %build
 mkdir -p lib
 build-jar-repository -s lib \
@@ -118,6 +121,7 @@ build-jar-repository -s lib \
   junit \
   osgi-core/osgi.core \
   plexus/utils \
+  plexus/xml \
   plexus/classworlds \
   plexus-containers/plexus-component-annotations \
   slf4j/api \
@@ -132,9 +136,9 @@ install -pm 0644 %{name}-plexus/target/org.eclipse.sisu.plexus-%{version}.jar %{
 
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-%mvn_install_pom %{name}-inject/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.inject.pom
+%{mvn_install_pom} %{name}-inject/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.inject.pom
 %add_maven_depmap org.eclipse.sisu.inject.pom org.eclipse.sisu.inject.jar -f inject
-%mvn_install_pom %{name}-plexus/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.plexus.pom
+%{mvn_install_pom} %{name}-plexus/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.plexus.pom
 %add_maven_depmap org.eclipse.sisu.plexus.pom org.eclipse.sisu.plexus.jar -f plexus -a org.sonatype.sisu:sisu-inject-plexus
 
 # javadoc
