@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  3 11:37:47 UTC 2024 - pgajdos@suse.com
+
+- version update to 3.9
+  * Add viewport in HTML output (@patrick-g).
+  * Fix Markdown lists (Jendrik Seipp).
+
+-------------------------------------------------------------------
 Tue Jun 20 07:30:33 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.8:
