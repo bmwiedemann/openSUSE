@@ -90,6 +90,8 @@ cp -p %{SOURCE1} LICENSE
 %pom_remove_dep :sisu-guice modello-core
 %pom_add_dep com.google.inject:guice modello-core
 
+%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 modello-core
+
 %pom_remove_dep :jackson-bom
 
 %pom_disable_module modello-plugin-jackson modello-plugins

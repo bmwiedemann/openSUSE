@@ -41,6 +41,7 @@ BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
+BuildRequires:  plexus-xml
 BuildRequires:  sisu-plexus
 BuildRequires:  unzip
 Requires:       aopalliance
@@ -52,6 +53,7 @@ Requires:       plexus-build-api
 Requires:       plexus-classworlds
 Requires:       plexus-containers-component-annotations
 Requires:       plexus-utils
+Requires:       plexus-xml
 Requires:       sisu-inject
 Requires:       sisu-plexus
 BuildArch:      noarch
@@ -85,6 +87,8 @@ cp -p %{SOURCE1} LICENSE
 %pom_remove_dep :sisu-guice modello-core
 %pom_add_dep com.google.inject:guice modello-core
 
+%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 modello-core
+
 %pom_remove_dep :jackson-bom
 
 %pom_disable_module modello-plugin-jackson modello-plugins
@@ -117,6 +121,7 @@ build-jar-repository -s lib \
     plexus/cli \
     plexus/plexus-build-api \
     plexus/utils \
+    plexus/xml \
     plexus-containers/plexus-component-annotations \
     plexus-metadata-generator \
     qdox
@@ -166,7 +171,7 @@ done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # script
-%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:org.eclipse.sisu.plexus:org.eclipse.sisu.inject:google-guice:aopalliance:atinject:plexus-containers/plexus-component-annotations:plexus/classworlds:plexus/utils:plexus/plexus-build-api:guava %{name} true
+%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:org.eclipse.sisu.plexus:org.eclipse.sisu.inject:google-guice:aopalliance:atinject:plexus-containers/plexus-component-annotations:plexus/classworlds:plexus/utils:plexus/xml:plexus/plexus-build-api:guava %{name} true
 
 %files -f .mfiles
 %license LICENSE
