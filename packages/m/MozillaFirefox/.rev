@@ -6686,4 +6686,22 @@
     after-free</comment>
     <requestid>1160726</requestid>
   </revision>
+  <revision rev="424" vrev="1">
+    <srcmd5>761b4c129a8c942141c6b87b41f72b83</srcmd5>
+    <version>124.0.2</version>
+    <time>1712262248</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Firefox 124.0.2
+  https://www.mozilla.org/en-US/firefox/124.0.2/releasenotes/
+  * Fixed an issue where users with a large amount of bookmarks would
+    be unable to restore a bookmarks backup. (bmo#1884308)
+  * Fixed an issue that would cause open Firefox windows
+    to go blank or crash during video playback on sites such as
+    Netflix. (bmo#1883932)
+  * Fixed a crash that affected Linux AArch64 builds. (bmo#1866396)
+  * Fixed an issue where some users experienced difficulties loading
+    webpages due to changes made to the default AppArmor configuration
+    shipping in Ubuntu 24.04. (bmo#1884347)</comment>
+    <requestid>1164364</requestid>
+  </revision>
 </revisionlist>
