@@ -423,4 +423,16 @@
     <comment></comment>
     <requestid>1137505</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7288cc80a14ca15d4586aa24f532d886</srcmd5>
+    <version>3.1.1</version>
+    <time>1712262413</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.1.1:
+  * Fixed end of chapter cut off when chapter starts with page 
+    break.
+  * Fixed incorrect text wrapping in tables.
+  * Fixed a performance issue with OPDS catalogs. (forwarded request 1164455 from Dead_Mozay)</comment>
+    <requestid>1164572</requestid>
+  </revision>
 </revisionlist>
