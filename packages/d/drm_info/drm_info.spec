@@ -25,7 +25,7 @@ URL:            https://gitlab.freedesktop.org/emersion/drm_info
 Source0:        https://gitlab.freedesktop.org/emersion/drm_info/-/archive/v%{version}/%{name}-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc
 BuildRequires:  libdrm-devel
-BuildRequires:  libjson-c-devel
+BuildRequires:  libjson-c-devel >= 0.14
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pciutils-devel

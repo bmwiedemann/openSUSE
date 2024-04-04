@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 28 06:58:19 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- require json-c >= 0.14 to avoid build failures
+
+-------------------------------------------------------------------
 Tue Mar 26 14:40:52 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.6.0:
