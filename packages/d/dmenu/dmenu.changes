@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 24 18:54:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3:
+  * fix leak when getline fails
+  * readstdin: allocate amount of items
+  * readstdin: reduce memory-usage
+  * fix BadMatch error when embedding on some windows
+  * drw: minor improvement to the nomatches cache
+  * remove options target
+
+-------------------------------------------------------------------
 Thu Jan  5 19:36:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2:
@@ -12,7 +23,7 @@ Thu Jan  5 19:36:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * fix UB with the function iscntrl()
   * avoid redraw when there's no change
   * inputw: improve correctness and startup performance
-  * signifcantly improve performance on large strings 
+  * signifcantly improve performance on large strings
 
 -------------------------------------------------------------------
 Wed May 11 11:41:00 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
@@ -51,7 +62,7 @@ Mon Aug 31 16:11:30 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Aug 17 11:04:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- update to 4.9 
+- update to 4.9
   * Use slow path if stdin is a tty
   * Use bold for keyboard shortcuts in dmenu.1
   * Fix cursor drawn position with wide glyphs
@@ -97,7 +108,7 @@ Sun Apr 15 00:12:26 UTC 2018 - gutaper@gmail.com
 Fri Feb  9 13:52:15 UTC 2018 - crrodriguez@opensuse.org
 
 - dmenu-optflags.patch: Fix optflags handling
-- Fix BuildRequires not to use xorg-x11-devel  
+- Fix BuildRequires not to use xorg-x11-devel
 
 -------------------------------------------------------------------
 Wed Jul 26 10:12:54 UTC 2017 - sleep_walker@opensuse.org
@@ -118,7 +129,7 @@ Mon Nov  9 07:46:13 UTC 2015 - sleep_walker@opensuse.org
 -------------------------------------------------------------------
 Fri Jul  3 11:03:03 UTC 2015 - mimi.vx@gmail.com
 
-- spec cleaned with spec-cleaner 
+- spec cleaned with spec-cleaner
 
 -------------------------------------------------------------------
 Tue May 15 13:11:38 UTC 2012 - seiler@b1-systems.de
@@ -148,4 +159,4 @@ Mon Oct 03 12:20:42 UTC 2007 - sschober@suse.de
 -------------------------------------------------------------------
 Mon Jul 27 12:20:42 UTC 2007 - sschober@suse.de
 
-- initial packaging.  
+- initial packaging.
