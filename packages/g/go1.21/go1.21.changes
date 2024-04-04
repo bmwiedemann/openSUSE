@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr  3 15:35:16 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21.9 (released 2024-04-03) includes a security fix to the
+  net/http package, as well as bug fixes to the linker, and the
+  go/types and net/http packages.
+  Refs boo#1212475 go1.21 release tracking
+  CVE-2023-45288
+  * go#65387 go#65051 boo#1221400 security: fix CVE-2023-45288 net/http, x/net/http2: close connections when receiving too many headers
+  * go#66254 net/http: http2 round tripper nil pointer dereference causes panic causing deadlock
+  * go#66326 cmd/compile: //go:build file version ignored when using generic function from package "slices" in Go 1.21
+  * go#66411 cmd/link: bad carrier sym for symbol runtime.elf_savegpr0.args_stackmap on ppc64le
+
+-------------------------------------------------------------------
 Tue Mar  5 17:38:51 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.21.8 (released 2024-03-05) includes security fixes to the
