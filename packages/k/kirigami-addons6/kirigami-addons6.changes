@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr  2 08:17:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.1.0
+  * New FormCard delegate: FormColorDelegate
+  * New delegate container: FormCardDialog
+  * Fixed a newline bug in the AboutKDE component
+  * The default size of MessageDialog was decreased
+  * Fixed the autoplay of the video delegate for the maximized
+    album component
+
+-------------------------------------------------------------------
 Tue Mar  5 12:13:44 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 1.0.1
