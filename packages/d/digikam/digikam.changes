@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  2 21:52:10 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 8.3.0:
+  https://www.digikam.org/news/2024-03-17-8.3.0_release_announcement/
+- Rebase 0001-Look-for-each-akonadi-component-separately.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 22:17:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Drop the KDE PIM build dependencies until digikam starts using Qt6

@@ -7,11 +7,11 @@ Subject: [PATCH] Look for each akonadi component separately
  core/cmake/rules/RulesKDEFramework.cmake | 9 +++------
  1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/core/cmake/rules/RulesKDEFramework.cmake b/core/cmake/rules/RulesKDEFramework.cmake
-index 6100334..8a18288 100644
---- a/core/cmake/rules/RulesKDEFramework.cmake
-+++ b/core/cmake/rules/RulesKDEFramework.cmake
-@@ -37,12 +37,9 @@ endif()
+Index: digikam-8.3.0/core/cmake/rules/RulesKDEFramework.cmake
+===================================================================
+--- digikam-8.3.0.orig/core/cmake/rules/RulesKDEFramework.cmake
++++ digikam-8.3.0/core/cmake/rules/RulesKDEFramework.cmake
+@@ -37,14 +37,9 @@ endif()
  
  if(ENABLE_AKONADICONTACTSUPPORT)
  
@@ -21,12 +21,11 @@ index 6100334..8a18288 100644
 -                                            AkonadiContact      # For KDE Mail Contacts support.
 -                                            Contacts            # API for contacts/address book data.
 -    )
+-    find_package(KPim${QT_VERSION_MAJOR}Akonadi ${AKONADI_MIN_VERSION} QUIET)
+-    find_package(KPim${QT_VERSION_MAJOR}AkonadiContact ${AKONADI_MIN_VERSION} QUIET)
 +    find_package(KF${QT_VERSION_MAJOR}Akonadi ${AKONADI_MIN_VERSION} REQUIRED)
 +    find_package(KF${QT_VERSION_MAJOR}AkonadiContact ${AKONADI_MIN_VERSION} REQUIRED) # For KDE Mail Contacts support.
 +    find_package(KF${QT_VERSION_MAJOR}Contacts ${AKONADI_MIN_VERSION} REQUIRED) # API for contacts/address book data.
  
  endif()
  
--- 
-2.41.0
-
