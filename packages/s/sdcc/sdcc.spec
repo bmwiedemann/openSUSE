@@ -44,6 +44,7 @@ BuildRequires:  lyx
 BuildRequires:  makeinfo
 BuildRequires:  ncurses-devel
 BuildRequires:  python3-base
+BuildRequires:  texlive-amsmath
 BuildRequires:  texlive-babel-english
 BuildRequires:  texlive-epstopdf
 BuildRequires:  texlive-fancyhdr

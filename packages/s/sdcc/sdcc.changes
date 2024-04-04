@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  3 13:49:43 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Fix build for Tumbleweed (missing amstext.sty file)
+
+-------------------------------------------------------------------
 Mon Feb 26 13:08:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
