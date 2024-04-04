@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr  4 08:06:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.1:
+  + Require only rustc 1.70.
+  + Fix framerate comparison.
+  + Filter out more IR cameras.
+  + Update translations.
+
+-------------------------------------------------------------------
 Fri Mar 15 21:02:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:

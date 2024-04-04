@@ -25,4 +25,16 @@ New package for GNOME</comment>
     <comment>GNOME 46 (forwarded request 1158301 from dimstar)</comment>
     <requestid>1159467</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>26eb85120d2848d991d00ba09cec5d61</srcmd5>
+    <version>46.1</version>
+    <time>1712262404</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.1:
+  + Require only rustc 1.70.
+  + Fix framerate comparison.
+  + Filter out more IR cameras.
+  + Update translations. (forwarded request 1164508 from dimstar)</comment>
+    <requestid>1164564</requestid>
+  </revision>
 </revisionlist>
