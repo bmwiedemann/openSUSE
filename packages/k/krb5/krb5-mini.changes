@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 10:07:57 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Add crypto-policies support [bsc#1211301]
+  * Update krb5.conf in vendor-files.tar.bz2
+
+-------------------------------------------------------------------
 Tue Oct  3 11:29:23 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add explicit this-is-only-for-build-envs requires to krb5-mini

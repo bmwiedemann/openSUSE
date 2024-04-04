@@ -1,7 +1,7 @@
 #
 # spec file for package krb5
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,10 @@ BuildRequires:  pkgconfig(libverto)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(ss)
 BuildRequires:  pkgconfig(systemd)
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+BuildRequires:  crypto-policies
+Requires:       crypto-policies
+%endif
 Conflicts:      krb5-mini
 Obsoletes:      krb5-plugin-preauth-pkinit-nss
 
@@ -226,6 +230,11 @@ install -m 600 %{vendorFiles}/kdc.conf %{buildroot}%{_datadir}/kerberos/krb5kdc/
 install -m 600 %{vendorFiles}/kadm5.acl %{buildroot}%{_datadir}/kerberos/krb5kdc/
 install -m 600 %{vendorFiles}/kadm5.dict %{buildroot}%{_datadir}/kerberos/krb5kdc/
 
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+# Default include on this directory
+ln -sv %{_sysconfdir}/crypto-policies/back-ends/krb5.config %{buildroot}%{_sysconfdir}/krb5.conf.d/crypto-policies
+%endif
+
 # all libs must have permissions 0755
 for lib in `find %{buildroot}/%{_libdir}/ -type f -name "*.so*"`
 do
@@ -365,6 +374,9 @@ done
 %doc %{krb5docdir}/README
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/krb5.conf
 %dir %{_sysconfdir}/krb5.conf.d
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+%config(noreplace,missingok) %{_sysconfdir}/krb5.conf.d/crypto-policies
+%endif
 %{_libdir}/libgssapi_krb5.*
 %{_libdir}/libgssrpc.so.*
 %{_libdir}/libk5crypto.so.*

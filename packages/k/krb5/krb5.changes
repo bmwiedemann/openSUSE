@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 10:07:57 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Add crypto-policies support [bsc#1211301]
+  * Update krb5.conf in vendor-files.tar.bz2
+
+-------------------------------------------------------------------
 Wed Dec 20 23:18:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.21.2 (bsc#1218211, CVE-2023-39975):

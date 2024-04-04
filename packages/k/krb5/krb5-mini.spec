@@ -1,7 +1,7 @@
 #
 # spec file for package krb5-mini
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,6 +51,10 @@ BuildRequires:  pkgconfig(com_err)
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libverto)
 BuildRequires:  pkgconfig(ncurses)
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+BuildRequires:  crypto-policies
+Requires:       crypto-policies
+%endif
 Requires(post): %fillup_prereq
 Requires:       this-is-only-for-build-envs
 Conflicts:      krb5
@@ -157,6 +161,11 @@ mkdir -p %{buildroot}/%{_datadir}/kerberos/krb5/user
 install -m 600 %{vendorFiles}/kdc.conf %{buildroot}%{_datadir}/kerberos/krb5kdc/
 install -m 600 %{vendorFiles}/kadm5.acl %{buildroot}%{_datadir}/kerberos/krb5kdc/
 install -m 600 %{vendorFiles}/kadm5.dict %{buildroot}%{_datadir}/kerberos/krb5kdc/
+
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+# Default include on this directory
+ln -sv %{_sysconfdir}/crypto-policies/back-ends/krb5.config %{buildroot}%{_sysconfdir}/krb5.conf.d/crypto-policies
+%endif
 
 # all libs must have permissions 0755
 for lib in `find %{buildroot}/%{_libdir}/ -type f -name "*.so*"`
@@ -269,6 +278,9 @@ sed -i "s/%{_lto_cflags}//" %{buildroot}%{_bindir}/krb5-config
 %doc %{krb5docdir}/README
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/krb5.conf
 %dir %{_sysconfdir}/krb5.conf.d
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+%config(noreplace,missingok) %{_sysconfdir}/krb5.conf.d/crypto-policies
+%endif
 %config(noreplace) %{_sysconfdir}/logrotate.d/krb5-server
 %{_fillupdir}/sysconfig.*
 %{_unitdir}/kadmind.service
