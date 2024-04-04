@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Apr  3 15:35:18 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.22.2 (released 2024-04-03) includes a security fix to the
+  net/http package, as well as bug fixes to the compiler, the go
+  command, the linker, and the encoding/gob, go/types, net/http,
+  and runtime/trace packages.
+  Refs boo#1218424 go1.22 release tracking
+  CVE-2023-45288
+  * go#66298 go#65051 boo#1221400 security: fix CVE-2023-45288 net/http, x/net/http2: close connections when receiving too many headers
+  * go#65858 cmd/compile: unreachable panic with GODEBUG=gotypesalias=1
+  * go#66060 cmd/link: RISC-V external link, failed to find text symbol for HI20 relocation
+  * go#66076 cmd/compile: out-of-bounds panic with uint32 conversion and modulus operation in Go 1.22.0 on arm64
+  * go#66134 cmd/compile: go test . results in CLOSURE ... <unknown line number>: internal compiler error: assertion failed
+  * go#66137 cmd/go: go 1.22.0: go test throws errors when processing folders not listed in coverpkg argument
+  * go#66178 cmd/compile: ICE: panic: interface conversion: ir.Node is *ir.ConvExpr, not *ir.IndexExpr
+  * go#66201 runtime/trace: v2 traces contain an incorrect timestamp scaling factor on Windows
+  * go#66255 net/http: http2 round tripper nil pointer dereference causes panic causing deadlock
+  * go#66256 cmd/go: git shallow fetches broken at CL 556358
+  * go#66273 crypto/x509: Certificate no longer encodable using encoding/gob in Go1.22
+  * go#66412 cmd/link: bad carrier sym for symbol runtime.elf_savegpr0.args_stackmap on ppc64le
+
+-------------------------------------------------------------------
 Tue Mar  5 17:38:51 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.22.1 (released 2024-03-05) includes security fixes to the
