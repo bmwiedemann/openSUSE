@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>615dbe61c6e0601f07b67b4d96696eaa</srcmd5>
+    <version>0.12.0</version>
+    <time>1712262302</time>
+    <user>anag+factory</user>
+    <comment>This is a new package that was split out of python-typer following upstream's split of the source distribution.
+
+This SR will be followed with SRs for the equally split out python-typer-cli, and finally an updated python-typer that will depend on this and python-typer-cli.
+
+I tested the upgrade path and this will not break anybody relying on the package.</comment>
+    <requestid>1164422</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Mon Apr  1 08:48:55 UTC 2024 - Matthias Bach <marix@marix.org> - 0.12.0
+
+- Provide ustream version 0.12.0
+  * Extract core functionality into a separate slim package.
+- Add set-proper-pythonpath-for-tutorial-script-tests.patch to fix
+  issues with import failures in tests.
+
