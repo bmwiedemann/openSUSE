@@ -1,7 +1,7 @@
 #
 # spec file for package parlatype
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define c_lib   libparlatype7
 Name:           parlatype
-Version:        4.0
+Version:        4.1
 Release:        0
 Summary:        GNOME audio player for transcriptions
 License:        GPL-3.0-or-later
@@ -27,11 +27,12 @@ URL:            https://gkarsay.github.io/parlatype/
 Source:         https://github.com/gkarsay/parlatype/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  AppStream-devel
 BuildRequires:  automake
-BuildRequires:  glib2-devel >= 2.58
+BuildRequires:  glib2-devel >= 2.70
 BuildRequires:  gobject-introspection-devel
-BuildRequires:  gtk4-devel
+BuildRequires:  gtk4-devel >= 4.10
 BuildRequires:  intltool
 BuildRequires:  iso-codes-devel
+BuildRequires:  libadwaita-devel >= 1.4
 BuildRequires:  libtool
 BuildRequires:  meson >= 0.47.2
 BuildRequires:  pkgconfig
@@ -68,7 +69,7 @@ Parlatype ships its own library, libparlatype, which provides a GStreamer backen
 %setup -q
 
 %build
-%meson -Ddeepspeech=false -Dpocketsphinx=false
+%meson -Dpocketsphinx=false
 %meson_build
 
 %install

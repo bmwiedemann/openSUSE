@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr  4 05:58:04 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.1:
+  * New: dependency on libadwaita-1 (>= 1.4),
+    rewritten preferences dialog
+  * New: raised GTK dependency (>= 4.10)
+  * New: raised GLib dependency (>= 2.70)
+  * New: theme selector (copied from GNOME Text Editor)
+  * Fix: no deprecations as of GTK 4.10
+  * Fix: F10 toggles primary menu (regression from v4.0)
+  * Fix: show value of playback speed (regression from v4.0)
+  * Fix: some leftovers from migrating to GTK 4
+    (GObject Introspection, python example)
+  * Removed: win32 (MS Windows) support
+  * Removed: Mozilla DeepSpeech support
+  * Added and updated translations
+
+-------------------------------------------------------------------
 Sun Nov 26 18:32:46 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.0:
