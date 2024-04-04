@@ -122,6 +122,9 @@ Patch103:       openssh-6.6p1-privsep-selinux.patch
 Patch104:       openssh-6.6p1-keycat.patch
 Patch105:       openssh-6.6.1p1-selinux-contexts.patch
 Patch106:       openssh-7.6p1-cleanup-selinux.patch
+# PATCH-FIX-OPENSUSE bsc#1211301 Add crypto-policies support
+Patch107:       openssh-9.6p1-crypto-policies.patch
+Patch108:       openssh-9.6p1-crypto-policies-man.patch
 BuildRequires:  audit-devel
 BuildRequires:  automake
 BuildRequires:  groff
@@ -209,6 +212,7 @@ securely connect to your server.
 %package server-config-rootlogin
 Summary:        Config to permit root logins to sshd
 Group:          Productivity/Networking/SSH
+Requires:       crypto-policies >= 20220824
 Requires:       %{name}-server = %{version}-%{release}
 
 %description server-config-rootlogin
@@ -220,6 +224,7 @@ ssh-copy-id(1).
 %package clients
 Summary:        SSH (Secure Shell) client applications
 Group:          Productivity/Networking/SSH
+Requires:       crypto-policies >= 20220824
 Requires:       %{name}-common = %{version}-%{release}
 Provides:       openssh:%{_bindir}/ssh
 
@@ -371,6 +376,13 @@ mv %{buildroot}%{_sysconfdir}/ssh/sshd_config %{buildroot}%{_distconfdir}/ssh/
 mv %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/50-permit-root-login.conf %{buildroot}%{_distconfdir}/ssh/sshd_config.d/50-permit-root-login.conf
 %endif
 
+install -m 644 ssh_config_suse %{buildroot}%{_sysconfdir}/ssh/ssh_config.d/50-suse.conf
+%if %{defined _distconfdir}
+install -m 644 sshd_config_suse_cp %{buildroot}%{_distconfdir}/ssh/sshd_config.d/40-suse-crypto-policies.conf
+%else
+install -m 644 sshd_config_suse_cp %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/40-suse-crypto-policies.conf
+%endif
+
 %if 0%{?suse_version} < 1550
 # install firewall definitions
 mkdir -p %{buildroot}%{_fwdefdir}
@@ -388,7 +400,7 @@ install -D -m 0755 %{SOURCE9} %{buildroot}%{_sbindir}/sshd-gen-keys-start
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE14} %{buildroot}%{_sysusersdir}/sshd.conf
 
-rm %{buildroot}/usr/libexec/ssh/ssh-keycat
+rm %{buildroot}%{_libexecdir}/ssh/ssh-keycat
 #rm -r %{buildroot}/usr/lib/debug/.build-id
 
 # the hmac hashes - taken from openssl
@@ -488,11 +500,16 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %if %{defined _distconfdir}
 %attr(0755,root,root) %dir %{_distconfdir}/ssh
 %attr(0755,root,root) %dir %{_distconfdir}/ssh/sshd_config.d
-%attr(0640,root,root) %{_distconfdir}/ssh/sshd_config
+%attr(0640,root,root) %config(noreplace) %{_distconfdir}/ssh/sshd_config
 %attr(0644,root,root) %{_pam_vendordir}/sshd
 %else
-%attr(0640,root,root) %{_sysconfdir}/ssh/sshd_config
+%attr(0640,root,root) %config(noreplace) %{_sysconfdir}/ssh/sshd_config
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/pam.d/sshd
+%endif
+%if %{defined _distconfdir}
+%attr(0600,root,root) %config(noreplace) %{_distconfdir}/ssh/sshd_config.d/40-suse-crypto-policies.conf
+%else
+%attr(0600,root,root) %config(noreplace) %{_sysconfdir}/ssh/sshd_config.d/40-suse-crypto-policies.conf
 %endif
 %attr(0644,root,root) %{_unitdir}/sshd.service
 %attr(0644,root,root) %{_sysusersdir}/sshd.conf
@@ -520,6 +537,7 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 
 %files clients
 %dir %attr(0755,root,root) %{_sysconfdir}/ssh/ssh_config.d
+%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/ssh/ssh_config.d/50-suse.conf
 %if %{defined _distconfdir}
 %attr(0644,root,root) %{_distconfdir}/ssh/ssh_config
 %else

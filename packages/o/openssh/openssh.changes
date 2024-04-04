@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr  2 11:23:05 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use %config(noreplace) for sshd_config . In any case, it's
+  recommended to drop a file in sshd_config.d instead of editing
+  sshd_config (bsc#1221063)
+- Use %{_libexecdir} when removing ssh-keycat instead of the
+  hardcoded path so it works in TW and SLE.
+
+-------------------------------------------------------------------
+Mon Mar  4 09:57:06 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Add crypto-policies support [bsc#1211301]
+  * Add patches:
+    - openssh-9.6p1-crypto-policies.patch
+    - openssh-9.6p1-crypto-policies-man.patch
+
+-------------------------------------------------------------------
 Sun Feb 25 18:26:23 UTC 2024 - Hans Petter Jansson <hpj@suse.com>
 
 - Update to openssh 9.6p1:

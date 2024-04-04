@@ -1752,4 +1752,12 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
     can be sent without acceptance from the peer. In cases where this (forwarded request 1150500 from hpjansson)</comment>
     <requestid>1150501</requestid>
   </revision>
+  <revision rev="171" vrev="2">
+    <srcmd5>f035914399167f5479228758ae1e01c4</srcmd5>
+    <version>9.6p1</version>
+    <time>1712262287</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1164536</requestid>
+  </revision>
 </revisionlist>
