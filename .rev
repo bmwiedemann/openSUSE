@@ -858,4 +858,12 @@
   * h2load: Add --sni option</comment>
     <requestid>1159004</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>f5635dc3f449567fa1445691fbfb267e</srcmd5>
+    <version>1.61.0</version>
+    <time>1712262273</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1164560</requestid>
+  </revision>
 </revisionlist>
