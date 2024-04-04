@@ -17,6 +17,7 @@
 
 
 %define oldpython python
+%{?sle15_python_module_pythons}
 Name:           python-M2Crypto
 Version:        0.40.0
 Release:        0

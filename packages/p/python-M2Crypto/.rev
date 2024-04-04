@@ -826,4 +826,13 @@ Update to 0.36.0:
     <comment>- Disable broken tests with openssl 3.2, bsc#1217782</comment>
     <requestid>1141318</requestid>
   </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>4f69835faadfcaeec0cbdbc7f19ac217</srcmd5>
+    <version>0.40.0</version>
+    <time>1712262276</time>
+    <user>anag+factory</user>
+    <comment>- Build for modern python stack on SLE/Leap
+</comment>
+    <requestid>1164400</requestid>
+  </revision>
 </revisionlist>

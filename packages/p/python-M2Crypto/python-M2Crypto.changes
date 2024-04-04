@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  3 09:22:02 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build for modern python stack on SLE/Leap
+
+-------------------------------------------------------------------
 Wed Jan 24 17:00:29 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable broken tests with openssl 3.2, bsc#1217782
