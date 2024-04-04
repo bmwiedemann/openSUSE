@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 27 16:22:57 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.94.6
+
+- Update 2.94.6
+  Fix JSON-LD generation for single & chunked HTML (#622)
+
+-------------------------------------------------------------------
+Mon Mar 25 13:29:01 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.94.5
+
+- Update 2.94.5
+  Fix #617: Put task and webpage both into "about" (#620)
+
+-------------------------------------------------------------------
+Mon Mar 25 10:47:46 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.94.4
+
+- Update 2.94.4
+  Add additional entries for JSON-LD which creates pointers to all enabled formats (#612)
+
+-------------------------------------------------------------------
 Mon Mar 25 06:55:54 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.94.3
 
 - Update 2.94.3
