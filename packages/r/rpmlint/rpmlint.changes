@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 03 10:55:05 UTC 2024 - wolfgang.frisch@suse.com
+
+- Update to version 2.5.0+git20240403.33599c3:
+  * dbus-services: power-profiles-daemon: reinstate legacy D-Bus whitelisting (bsc#1219957)
+  * Revert "dbus-services: Still provide old GDM whitelisting (bsc#1218922)"
+
+-------------------------------------------------------------------
 Mon Mar 25 14:01:12 UTC 2024 - wolfgang.frisch@suse.com
 
 - Update to version 2.5.0+git20240325.982d664:
