@@ -269,6 +269,8 @@ LD_LIBRARY_PATH=%{buildroot}%{p_libdir}:$LD_LIBRARY_PATH %{buildroot}%{p_bindir}
 LD_LIBRARY_PATH=%{buildroot}%{p_libdir}:$LD_LIBRARY_PATH %{buildroot}%{p_bindir}/gpmetis copter2.graph 4
 LD_LIBRARY_PATH=%{buildroot}%{p_libdir}:$LD_LIBRARY_PATH %{buildroot}%{p_bindir}/graphchk 4elt.graph
 popd
+cd graphs # cleanup after tests:
+rm test.mgraph.part.4 metis.mesh.epart.2 metis.mesh.npart.2 copter2.graph.part.4 mdual.graph.iperm
 
 %if %{without hpc}
 %post -n %libname -p /sbin/ldconfig

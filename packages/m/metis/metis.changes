@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  3 07:48:00 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Cleanup after tests
+
+-------------------------------------------------------------------
 Fri Feb 23 10:17:53 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
