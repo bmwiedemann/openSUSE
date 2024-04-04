@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package meson
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -35,7 +35,7 @@
 %bcond_with     setuptools
 %bcond_without  mono
 Name:           meson%{name_ext}
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -181,7 +181,7 @@ This package provides meson.build syntax highlighting support for
 Vim/NeoVim.
 
 %prep
-%setup -q -n meson-%{version}
+%autosetup -N -n meson-%{version}
 %patch -P 0 -p1
 %patch -P 1 -p1
 %if !%{with setuptools}

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Mar 13 07:29:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.4.0:
+  + Added support for build_tgt, custom_tgt, and custom_idx to
+    certain FS module functions.
+  + Meson now reads the project version of cmake subprojects.
+  + ndebug setting now controls C++ stdlib assertions.
+  + stldebug gains Clang support.
+  + New unset() method on environment objects.
+  + File object now has full_path() method.
+  + New numpy custom dependency.
+  + depends kwarg now supported by compiler.preprocess().
+  + Added preserve_paths keyword argument to qt module functions.
+  + Bindgen will now use Meson's heuristic for what is a C++
+    header.
+  + Overriding bindgen language setting.
+  + Bindgen now uses the same C/C++ std as the project as a whole.
+  + Tests now abort on errors by default under more sanitizers.
+  + Use custom_target as test executable.
+  + Support for Texas Instruments C6000 C/C++ compiler.
+
+-------------------------------------------------------------------
+Tue Mar 12 12:33:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.4.0rc2:
+  Changelog to follow with final release.
+- Rebase get_llvm_tool_names-llvm18.patch.
+
+-------------------------------------------------------------------
+Tue Mar 12 12:32:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.4.0rc1:
+  Changelog to follow with final release.
+
+-------------------------------------------------------------------
 Mon Mar 11 22:48:56 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add get_llvm_tool_names-llvm18.patch to accept LLVM 18.1.

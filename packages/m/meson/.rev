@@ -923,4 +923,12 @@
     <comment>Not yet jumping to 1.4 - need GNOME 46 for that</comment>
     <requestid>1157507</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>d8f4d65f3d0dbc752387692b30b5fae0</srcmd5>
+    <version>1.4.0</version>
+    <time>1712262292</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1164244</requestid>
+  </revision>
 </revisionlist>
