@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 04 14:33:10 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1712128988.6990dcde:
+  * Update eslint-plugin-prettier to 5.0.0
+  * Bump prettier from 2.3.2 to 3.2.5
+  * Fix docker compose V2 usage
+  * Bump @humanwhocodes/object-schema from 2.0.2 to 2.0.3
+  * Switch to docker compose subcommand
+  * Improve info about auto-restart behavior involving `auto_clone_regex`
+  * Bump d3-time from 1.1.0 to 3.1.0
+
+-------------------------------------------------------------------
 Mon Apr 01 12:50:47 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1711720670.566a51a5:
