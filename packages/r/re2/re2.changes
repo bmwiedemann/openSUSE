@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  3 20:30:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2024-04-01:
+  * Fix SIGSEGV if Match is called before Compile
+  * remove unsuppressable stderr message when compiling an empty
+    re2.Filter
+
+-------------------------------------------------------------------
 Fri Mar  1 16:20:16 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2024-03-01:
