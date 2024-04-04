@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Apr  4 08:50:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.5.2:
+  * Crowned our new Web Awesome brand icon
+  * Waved our new Font Awesome brand icon
+  * Finally added the new Bluesky brand icon
+  * Added a new commissioned JXL for Jira brand icon
+  * A batch of new icons, including: caduceus, gluten-free, and
+    reflect-both icons
+  * Signaled a new circle-wifi and commissioned circle-wifi-group
+    icons
+  * New commissioned file-cad, ant, and baby bottle icons
+  * Locked in some table-related icons, including: table-cells-lock,
+    table-cells-column-lock, and table-cells-row-lock
+  * Updated the Kickstarter brand icon
+  * Updated the Upwork brand icon
+  * Fixed an issue where calendar-lines in Sharp Regular wasn't
+    actually sharp
+  * Fixed the duotone styling of printer, fax, and shredder
+  * Fixed spacing in the location-check icon
+  * Fixed an issue with the SVG of face-kiss-beam
+  * Filled in some missing icons in the arrow-to/from-bracket
+    icon series
+  * Update the TypeScript definition for Library.add() to allow
+    an array of icon defintions
+  * Animation CSS custom property --fa-rotate-by now has a correct
+    default value of 0
+  * Fixed some Less variable issues with --fa-bounce
+
+-------------------------------------------------------------------
 Wed Dec 27 20:53:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.5.1:
