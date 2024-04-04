@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Apr 03 18:27:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.10.1:
+  * update base image for gitsign to one with shell available
+    (#484)
+
+-------------------------------------------------------------------
+Wed Apr 03 18:25:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.10.0:
+  * Bump actions/cache from 4.0.1 to 4.0.2 (#478)
+  * Bump actions/checkout from 4.1.1 to 4.1.2 (#476)
+  * Bump anchore/sbom-action from 0.15.9 to 0.15.10 (#480)
+  * Bump github.com/coreos/go-oidc/v3 from 3.9.0 to 3.10.0 (#479)
+  * Bump github.com/docker/docker (#477)
+  * Bump github.com/go-git/go-git/v5 (#481)
+  * Bump github.com/go-jose/go-jose/v3 from 3.0.2 to 3.0.3 (#468)
+  * Bump github.com/go-openapi/runtime from 0.27.1 to 0.28.0 (#469)
+  * Bump github.com/go-openapi/strfmt from 0.22.2 to 0.23.0 (#471)
+  * Bump github.com/go-openapi/swag from 0.22.9 to 0.23.0 (#470)
+  * Bump github.com/sigstore/sigstore from 1.8.2 to 1.8.3 (#482)
+  * Bump golang.org/x/crypto from 0.20.0 to 0.21.0 (#474)
+  * Bump golang.org/x/oauth2 from 0.17.0 to 0.18.0 (#472)
+  * Bump google.golang.org/protobuf from 1.32.0 to 1.33.0 (#473)
+  * Bump gopkg.in/go-jose/go-jose.v2 from 2.6.1 to 2.6.3 (#467)
+  * add gitsign image (#483)
+
+-------------------------------------------------------------------
 Sat Mar 16 16:23:02 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.9.0:
