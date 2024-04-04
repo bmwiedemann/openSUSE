@@ -748,4 +748,41 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
   * Added support for reading DX10 BC4 DDS images</comment>
     <requestid>1140356</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>5e3d7d344c1518c0737120a391ceaa57</srcmd5>
+    <version>10.3.0</version>
+    <time>1712262242</time>
+    <user>anag+factory</user>
+    <comment>- update to 10.3.0 (bsc#1222262, CVE-2024-28219):
+  * CVE-2024-28219: Use strncpy to avoid buffer overflow #7928
+    [radarhere, hugovk]
+  * Deprecate eval(), replacing it with lambda_eval() and
+    unsafe_eval() #7927 [radarhere, hugovk]
+  * Raise ValueError if seeking to greater than offset-sized
+    integer in TIFF #7883 [radarhere]
+  * Add --report argument to __main__.py to omit supported
+    formats #7818 [nulano, radarhere, hugovk]
+  * Added RGB to I;16, I;16L, I;16B and I;16N conversion #7918,
+    #7920 [radarhere]
+  * Fix editable installation with custom build backend and
+    configuration options #7658 [nulano, radarhere]
+  * Fix putdata() for I;16N on big-endian #7209 [Yay295, hugovk,
+    radarhere]
+  * Determine MPO size from markers, not EXIF data #7884
+    [radarhere]
+  * Improved conversion from RGB to RGBa, LA and La #7888
+    [radarhere]
+  * Support FITS images with GZIP_1 compression #7894 [radarhere]
+  * Use I;16 mode for 9-bit JPEG 2000 images #7900 [scaramallion,
+    radarhere]
+  * Raise ValueError if kmeans is negative #7891 [radarhere]
+  * Remove TIFF tag OSUBFILETYPE when saving using libtiff #7893
+    [radarhere]
+  * Raise ValueError for negative values when loading P1-P3 PPM
+    images #7882 [radarhere]
+  * Added reading of JPEG2000 palettes #7870 [radarhere]
+  * Added alpha_quality argument when saving WebP images #7872
+    [radarhere]</comment>
+    <requestid>1164299</requestid>
+  </revision>
 </revisionlist>
