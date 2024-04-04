@@ -864,7 +864,7 @@ egl_platforms=x11,wayland
 %endif
 %if "%{flavor}" == "drivers"
 %if %{video_codecs}
-            -Dvideo-codecs=h264dec,h264enc,h265dec,h265enc,vc1dec \
+            -Dvideo-codecs=all \
 %endif
 %if %{gallium_loader}
             -Dgallium-vdpau=enabled \

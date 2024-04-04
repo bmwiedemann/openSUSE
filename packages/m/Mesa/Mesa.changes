@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  3 06:55:12 UTC 2024 - Fei Yang <io@feiyang.eu.org>
+
+- fix missing free codecs in builds with non-free codecs enabled
+
+-------------------------------------------------------------------
 Tue Mar 26 01:44:52 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - enable vulkan-beta meson flag for vulkan video support (suggested
