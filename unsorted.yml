@@ -2556,6 +2556,7 @@ unsorted:
   - cpu-x-fish-completion 
   - cpu-x-lang 
   - cpu-x-zsh-completion 
+  - cpufetch 
   - cpuid 
   - cpulimit 
   - cpuminer 
@@ -4233,6 +4234,9 @@ unsorted:
   - foot-extra-terminfo 
   - foot-themes 
   - forge-parent 
+  - forgejo 
+  - forgejo-apparmor 
+  - forgejo-selinux 
   - forkbomb 
   - forkstat 
   - forkstat-bash-completion 
@@ -6832,6 +6836,7 @@ unsorted:
   - git-absorb 
   - git-absorb-bash-completion 
   - git-absorb-fish-completion 
+  - git-absorb-nushell-completion 
   - git-absorb-zsh-completion 
   - git-annex 
   - git-annex-bash-completion 
@@ -8209,6 +8214,7 @@ unsorted:
   - hdsploader 
   - hdspmixer 
   - headmore 
+  - headscale 
   - healpix 
   - healpix_cxx-devel 
   - health-check 
@@ -12359,7 +12365,7 @@ unsorted:
   - libdico2 
   - libdict-devel 
   - libdict1_0 
-  - libdigikamcore8_2_0 
+  - libdigikamcore8_3_0 
   - libdirac_decoder0 
   - libdirac_decoder0-32bit 
   - libdirac_encoder0 
@@ -14090,18 +14096,18 @@ unsorted:
   - libmbd-mvapich2-devel 
   - libmbd-openmpi4 
   - libmbd-openmpi4-devel 
-  - libmbedcrypto15 
-  - libmbedcrypto15-x86-64-v3 
+  - libmbedcrypto16 
+  - libmbedcrypto16-x86-64-v3 
   - libmbedcrypto7 
   - libmbedcrypto7-x86-64-v3 
   - libmbedtls14 
   - libmbedtls14-x86-64-v3 
-  - libmbedtls20 
-  - libmbedtls20-x86-64-v3 
+  - libmbedtls21 
+  - libmbedtls21-x86-64-v3 
   - libmbedx509-1 
   - libmbedx509-1-x86-64-v3 
-  - libmbedx509-6 
-  - libmbedx509-6-x86-64-v3 
+  - libmbedx509-7 
+  - libmbedx509-7-x86-64-v3 
   - libmbim-devel 
   - libmbus 
   - libmbus-devel 
@@ -20432,8 +20438,6 @@ unsorted:
   - parzip 
   - pass-import 
   - pass-otp 
-  - passt 
-  - passt-selinux 
   - passwdqc 
   - passwdqc-devel 
   - password-store 
@@ -26503,7 +26507,6 @@ unsorted:
   - python310-scikit-learn 
   - python310-scikit-sound 
   - python310-scikit-sparse 
-  - python310-scikit-umfpack 
   - python310-scipy 
   - python310-scipy-gnu-hpc 
   - python310-scipy_1_11_4-gnu-hpc 
@@ -26834,6 +26837,7 @@ unsorted:
   - python310-typeguard 
   - python310-typepy 
   - python310-typer 
+  - python310-typer-slim 
   - python310-types-humanfriendly 
   - python310-types-python-dateutil 
   - python310-typing-inspect 
@@ -29955,7 +29959,6 @@ unsorted:
   - python311-scikit-learn 
   - python311-scikit-sound 
   - python311-scikit-sparse 
-  - python311-scikit-umfpack 
   - python311-scipy 
   - python311-scipy-gnu-hpc 
   - python311-scipy_1_11_4-gnu-hpc 
@@ -30277,6 +30280,7 @@ unsorted:
   - python311-typeguard 
   - python311-typepy 
   - python311-typer 
+  - python311-typer-slim 
   - python311-types-humanfriendly 
   - python311-types-python-dateutil 
   - python311-typing-inspect 
@@ -33502,7 +33506,6 @@ unsorted:
   - python312-scikit-learn 
   - python312-scikit-sound 
   - python312-scikit-sparse 
-  - python312-scikit-umfpack 
   - python312-scipy 
   - python312-scipy-gnu-hpc 
   - python312-scipy_1_11_4-gnu-hpc 
@@ -33831,6 +33834,7 @@ unsorted:
   - python312-typeguard 
   - python312-typepy 
   - python312-typer 
+  - python312-typer-slim 
   - python312-types-humanfriendly 
   - python312-types-python-dateutil 
   - python312-typing-inspect 
@@ -34093,18 +34097,15 @@ unsorted:
   - python39-idle 
   - python39-librosa 
   - python39-mitmproxy-wireguard 
-  - python39-mypy 
   - python39-omni-camera 
   - python39-pivy 
   - python39-plplot 
   - python39-plplot-pyqt5 
-  - python39-pony 
   - python39-pycapnp 
   - python39-pyrad 
   - python39-python-for-android 
   - python39-pyvmomi 
   - python39-rss2email 
-  - python39-scikit-umfpack 
   - python39-stdeb 
   - python39-testsuite 
   - python39-tk 
