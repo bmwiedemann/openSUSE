@@ -32,7 +32,7 @@
 %define mkspecsdir %{_qt6_mkspecsdir}
 %endif
 Name:           kdsoap%{pkg_suffix}
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        A Qt-based client-side and server-side SOAP component
 # No "or later" clause, licenses specified explicitly
@@ -142,8 +142,14 @@ rm -r %{buildroot}%{_datadir}
 # the pri files are only installed for documentation purpose
 %doc README.md kdsoap.pri kdwsdl2cpp.pri
 %{_bindir}/kdwsdl2cpp%{pkg_suffix}
+%if 0%{?qt5}
 %{_includedir}/KDSoapClient/
 %{_includedir}/KDSoapServer/
+%endif
+%if 0%{?qt6}
+%{_includedir}/KDSoapClient-Qt6/
+%{_includedir}/KDSoapServer-Qt6/
+%endif
 %{_libdir}/cmake/KDSoap%{pkg_suffix}
 %{_libdir}/libkdsoap%{pkg_suffix}.so
 %{_libdir}/libkdsoap-server%{pkg_suffix}.so

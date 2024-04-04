@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar 17 09:18:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * buildsystem - Add co-installability of Qt5 and Qt6 headers
+    back.
+    Installs Qt6 headers into their own subdirectory so client
+    code still works, but can be co-installed with Qt5 again.
+  * Add KDSoapClientInterface::setMessageAddressingProperties()
+    so that WS-Addressing support can be used with WSDL-generated
+    services (issue #254)
+  * Don't require a SOAP action in order to write addressing
+    properties (also issue #254)
+  * WSDL parser / code generator changes, applying to both client
+    and server side
+  * Improve -import-path
+
+-------------------------------------------------------------------
 Wed Feb  7 16:53:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Fix package docs
@@ -6,7 +23,7 @@ Wed Feb  7 16:53:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
 -------------------------------------------------------------------
 Thu Jan 25 15:44:05 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
 
-- Fix build to handle changes in (open)SUSE specific cmake macros, 
+- Fix build to handle changes in (open)SUSE specific cmake macros,
   no user visible changes
 
 -------------------------------------------------------------------
