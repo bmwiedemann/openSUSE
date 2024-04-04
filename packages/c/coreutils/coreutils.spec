@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package coreutils
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -30,7 +30,7 @@
 %global psuffix %{nil}
 %endif
 Name:           coreutils%{?psuffix}
-Version:        9.4
+Version:        9.5
 Release:        0
 Summary:        GNU Core Utilities
 License:        GPL-3.0-or-later
@@ -50,12 +50,6 @@ Patch100:       coreutils-build-timeout-as-pie.patch
 Patch112:       coreutils-getaddrinfo.patch
 # Assorted fixes
 Patch113:       coreutils-misc.patch
-# Upstream gnulib commits (squashed) to fix gnulib seg.faults
-# if there is no session:
-# https://debbugs.gnu.org/cgi/bugreport.cgi?bug=65617
-Patch114:       gnulib-readutmp.patch
-# Upstream gnulib patch to fix crash when gdm is in use. [bsc#1215361]
-Patch115:       gnulib-readutmp-under-gdm.patch
 # Skip 2 valgrind'ed sort tests on ppc/ppc64 which would fail due to
 # a glibc issue in mkstemp.
 Patch300:       coreutils-skip-some-sort-tests-on-ppc.patch
@@ -70,7 +64,8 @@ Patch501:       coreutils-test_without_valgrind.patch
 # tests: skip tests/rm/ext3-perf.sh temporarily as it hangs on OBS.
 Patch810:       coreutils-skip-tests-rm-ext3-perf.patch
 Patch900:       coreutils-tests-workaround-make-fdleak.patch
-Patch920:       coreutils-9.4.split-CVE-2024-0684.patch
+# Upstream gnulib patch for coreutils-9.5.
+Patch920:       coreutils-fix-gnulib-time_r-tests.patch
 BuildRequires:  automake
 BuildRequires:  gmp-devel
 BuildRequires:  hostname
@@ -158,8 +153,6 @@ This package contains the documentation for the GNU Core Utilities.
 %endif
 %patch -P 112
 %patch -P 113
-%patch -P 114 -p1
-%patch -P 115 -p1
 
 %patch -P 300
 
@@ -174,7 +167,7 @@ This package contains the documentation for the GNU Core Utilities.
 
 %patch -P 810
 %patch -P 900
-%patch -P 920 -p1
+%patch -P 920
 
 # ================================================
 %build

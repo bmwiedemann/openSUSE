@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Mon Apr  1 18:07:16 UTC 2024 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- Update to 9.5:
+  Bug fixes:
+  * chmod -R now avoids a race where an attacker may replace a traversed file
+    with a symlink, causing chmod to operate on an unintended file.
+    [This bug was present in "the beginning".]
+  * cp, mv, and install no longer issue spurious diagnostics like "failed
+    to preserve ownership" when copying to GNU/Linux CIFS file systems.
+    They do this by working around some Linux CIFS bugs.
+  * cp --no-preserve=mode will correctly maintain set-group-ID bits
+    for created directories.  Previously on systems that didn't support ACLs,
+    cp would have reset the set-group-ID bit on created directories.
+    [bug introduced in coreutils-8.20]
+  * join and uniq now support multi-byte characters better.
+    For example, 'join -tX' now works even if X is a multi-byte character,
+    and both programs now treat multi-byte characters like U+3000
+    IDEOGRAPHIC SPACE as blanks if the current locale treats them so.
+  * numfmt options like --suffix no longer have an arbitrary 127-byte limit.
+    [bug introduced with numfmt in coreutils-8.21]
+  * mktemp with --suffix now better diagnoses templates with too few X's.
+    Previously it conflated the insignificant --suffix in the error.
+    [bug introduced in coreutils-8.1]
+  * sort again handles thousands grouping characters in single-byte locales
+    where the grouping character is greater than CHAR_MAX.  For e.g. signed
+    character platforms with a 0xA0 (aka &nbsp) grouping character.
+    [bug introduced in coreutils-9.1]
+  * split --line-bytes with a mixture of very long and short lines
+    no longer overwrites the heap (CVE-2024-0684).
+    [bug introduced in coreutils-9.2]
+  * tail no longer mishandles input from files in /proc and /sys file systems,
+    on systems with a page size larger than the stdio BUFSIZ.
+    [This bug was present in "the beginning".]
+  * timeout avoids a narrow race condition, where it might kill arbitrary
+    processes after a failed process fork.
+    [bug introduced with timeout in coreutils-7.0]
+  * timeout avoids a narrow race condition, where it might fail to
+    kill monitored processes immediately after forking them.
+    [bug introduced with timeout in coreutils-7.0]
+  * wc no longer fails to count unprintable characters as parts of words.
+    [bug introduced in textutils-2.1]
+  Changes in behavior:
+  * base32 and base64 no longer require padding when decoding.
+    Previously an error was given for non padded encoded data.
+  * base32 and base64 have improved detection of corrupted encodings.
+    Previously encodings with non zero padding bits were accepted.
+  * basenc --base16 -d now supports lower case hexadecimal characters.
+    Previously an error was given for lower case hex digits.
+  * cp --no-clobber, and mv -n no longer exit with failure status if
+    existing files are encountered in the destination.  Instead they revert
+    to the behavior from before v9.2, silently skipping existing files.
+  * ls --dired now implies long format output without hyperlinks enabled,
+    and will take precedence over previously specified formats or hyperlink
+    mode.
+  * numfmt will accept lowercase 'k' to indicate Kilo or Kibi units on input,
+    and uses lowercase 'k' when outputting such units in '--to=si' mode.
+  * pinky no longer tries to canonicalize the user's login location by default,
+    rather requiring the new --lookup option to enable this often slow feature.
+  * wc no longer ignores encoding errors when counting words.
+    Instead, it treats them as non white space.
+  New features:
+  * chgrp now accepts the --from=OWNER:GROUP option to restrict changes to files
+    with matching current OWNER and/or GROUP, as already supported by chown(1).
+  * chmod adds support for -h, -H,-L,-P, and --dereference options, providing
+    more control over symlink handling.  This supports more secure handling of
+    CLI arguments, and is more consistent with chown, and chmod on other
+    systems.
+  * cp now accepts the --keep-directory-symlink option (like tar), to preserve
+    and follow existing symlinks to directories in the destination.
+  * cp and mv now accept the --update=none-fail option, which is similar
+    to the --no-clobber option, except that existing files are diagnosed,
+    and the command exits with failure status if existing files.
+    The -n,--no-clobber option is best avoided due to platform differences.
+  * env now accepts the -a,--argv0 option to override the zeroth argument
+    of the command being executed.
+  * mv now accepts an --exchange option, which causes the source and
+    destination to be exchanged.  It should be combined with
+    --no-target-directory (-T) if the destination is a directory.
+    The exchange is atomic if source and destination are on a single
+    file system that supports atomic exchange; --exchange is not yet
+    supported in other situations.
+  * od now supports printing IEEE half precision floating point with -t fH,
+    or brain 16 bit floating point with -t fB, where supported by the compiler.
+  * tail now supports following multiple processes, with repeated --pid options.
+  Improvements:
+  * cp,mv,install,cat,split now read and write a minimum of 256KiB at a time.
+    This was previously 128KiB and increasing to 256KiB was seen to increase
+    throughput by 10-20% when reading cached files on modern systems.
+  * env,kill,timeout now support unnamed signals. kill(1) for example now
+    supports sending such signals, and env(1) will list them appropriately.
+  * SELinux operations in file copy operations are now more efficient,
+    avoiding unneeded MCS/MLS label translation.
+  * sort no longer dynamically links to libcrypto unless -R is used.
+    This decreases startup overhead in the typical case.
+  * wc is now much faster in single-byte locales and somewhat faster in
+    multi-byte locales.
+- coreutils-9.4.split-CVE-2024-0684.patch: Remove now-upstream patch.
+- gnulib-readutmp-under-gdm.patch: Likewise.
+- gnulib-readutmp.patch: Likewise.
+- coreutils-i18n.patch: Remove multi-byte patches for join and uniq, as the
+  upstream version now handles those tests.
+  Pull in gnulib module mbchar manually, as it is a dependency of mbfile,
+  but dropped out of the upstream dependency chain.
+- coreutils-misc.patch: Remove change for gnulib-tests/test-isnanl.h.
+- coreutils-fix-gnulib-time_r-tests.patch: Add upstream gnulib patch to skip
+  French test if TZ='Europe/Paris' does not work.
+
+-------------------------------------------------------------------
 Mon Feb 26 10:48:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

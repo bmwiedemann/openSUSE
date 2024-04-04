@@ -1,38 +1,8 @@
 ---
- gnulib-tests/test-isnanl.h |    5 +++--
  tests/help/help-version.sh |    1 +
  tests/other-fs-tmpdir      |    3 +++
- 3 files changed, 7 insertions(+), 2 deletions(-)
+ 2 files changed, 4 insertions(+)
 
-Index: gnulib-tests/test-isnanl.h
-===================================================================
---- gnulib-tests/test-isnanl.h.orig
-+++ gnulib-tests/test-isnanl.h
-@@ -47,7 +47,7 @@ main ()
-   /* Quiet NaN.  */
-   ASSERT (isnanl (NaNl ()));
- 
--#if defined LDBL_EXPBIT0_WORD && defined LDBL_EXPBIT0_BIT
-+#if defined LDBL_EXPBIT0_WORD && defined LDBL_EXPBIT0_BIT && 0
-   /* A bit pattern that is different from a Quiet NaN.  With a bit of luck,
-      it's a Signalling NaN.  */
-   {
-@@ -98,6 +98,7 @@ main ()
-       { LDBL80_WORDS (0xFFFF, 0x83333333, 0x00000000) };
-     ASSERT (isnanl (x.value));
-   }
-+#if 0
-   /* isnanl should return something for noncanonical values.  */
-   { /* Pseudo-NaN.  */
-     static memory_long_double x =
-@@ -125,6 +126,6 @@ main ()
-     ASSERT (isnanl (x.value) || !isnanl (x.value));
-   }
- #endif
--
-+#endif
-   return 0;
- }
 Index: tests/help/help-version.sh
 ===================================================================
 --- tests/help/help-version.sh.orig
