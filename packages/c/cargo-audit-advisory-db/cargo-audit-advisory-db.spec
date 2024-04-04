@@ -1,7 +1,7 @@
 #
 # spec file for package cargo-audit-advisory-db
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cargo-audit-advisory-db
-Version:        20231219
+Version:        20240330
 Release:        0
 Summary:        A database of known security issues for Rust depedencies
 License:        CC0-1.0

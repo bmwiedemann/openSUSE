@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 30 04:06:18 UTC 2024 - william.brown@suse.com
+
+- Update to version 20240330:
+  * Assigned (#1924)
+  * Add an unmaintained crate advisory for yaml-rust (#1922)
+  * Assigned RUSTSEC-2023-0085 to hpack (#1920)
+  * Add hpack panics (#1919)
+  * Assigned RUSTSEC-2024-0021 to eyre, RUSTSEC-2023-0084 to hpack (#1916)
+  * eyre: Parts of Report are dropped as the wrong type during downcast (#1918)
+  * Add security advisory for unmaintained hpack crate (#1915)
+  * update RUSTSEC-2024-0020 with additional information (#1913)
+  * Assigned RUSTSEC-2024-0020 to whoami (#1912)
+  * Add advisory for stack buffer overflow with whoami (#1911)
+
+-------------------------------------------------------------------
 Tue Dec 19 02:11:18 UTC 2023 - william.brown@suse.com
 
 - Update to version 20231219:
