@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Apr  4 09:47:27 UTC 2024 - pgajdos@suse.com
+
+- version update to 1.61.0
+  * Fixes CVE-2024-28182 [bsc#1221399]
+  * nghttpx: Shutdown h3 stream read with trailer as well by @tatsuhiro-t in #2087
+  * Checkout with submodules by @jonaski in #2093
+  * Respect BUILD_STATIC_LIBS and add option for tests by @jonaski in #2092
+  * build(deps): bump golang.org/x/net from 0.21.0 to 0.22.0 by @dependabot in #2097
+  * Workaround llvm issue on github ubuntu runner by @tatsuhiro-t in #2098
+  * docker: Use copy --link by @tatsuhiro-t in #2099
+  * Nghttpx header idle timeout by @tatsuhiro-t in #2100
+  * nghttpx: Fix frontend-header-timeout does not work in config file by @tatsuhiro-t in #2101
+  * Rewrite hexdump by @tatsuhiro-t in #2102
+  * Switch to distroless/base-nossl by @tatsuhiro-t in #2103
+  * Bump ngtcp2 by @tatsuhiro-t in #2105
+  * nghttpx: Simplify quic connection close handling by @tatsuhiro-t in #2106
+  * build(deps): bump github.com/quic-go/quic-go from 0.41.0 to 0.42.0 by @dependabot in #2107
+  * autotools: Use tar-ustar automake option by @tatsuhiro-t in #2108
+  * Automate release process by @tatsuhiro-t in #2109
+  * autotools: Switch to tar-pax by @tatsuhiro-t in #2110
+  * nghttpx: Drop a UDP datagram from well-known port by @tatsuhiro-t in #2111
+  * nghttpx: Fix port byte order by @tatsuhiro-t in #2112
+  * h2load: Allow host header to be overridden by @tatsuhiro-t in #2113
+  * nghttpx: Rework QUIC stateless reset packet size by @tatsuhiro-t in #2114
+  * nghttpx: More QUIC prohibited ports by @tatsuhiro-t in #2115
+  * Add actions/stale by @tatsuhiro-t in #2116
+  * nghttpx: Discard UDP datagram that is too short to be a valid QUIC packet by @tatsuhiro-t in #2117
+  * nghttp: Support SSLKEYLOGFILE by @tatsuhiro-t in #2119
+  * No rfc7540 priority fix by @tatsuhiro-t in #2120
+  * Further reduce Stateless reset emission by @tatsuhiro-t in #2122
+  * nghttpx: Rework Connection ID construction by @tatsuhiro-t in #2124
+  * Nghttpx faster worker lookup by @tatsuhiro-t in #2125
+  * nghttpx: Split thread into worker_process and thread by @tatsuhiro-t in #2126
+  * bpf: Drop bad QUIC packet by @tatsuhiro-t in #2127
+  * cmake: check SSL_provide_quic_data when ENABLE_HTTP3 is ON by @jimmy-park in #2128
+  * nghttpx: Allocate 3 bits for QUIC configuration in Connection ID by @tatsuhiro-t in #2129
+  * nghttpx: Migrate to ares_getaddrinfo by @tatsuhiro-t in #2132
+  * Bump munit by @tatsuhiro-t in #2131
+  * nghttpx: Fix error message by @tatsuhiro-t in #2133
+  * nghttpd: Fix read stall by @tatsuhiro-t in #2134
+
+-------------------------------------------------------------------
+Wed Apr  3 10:31:13 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- gcc7.patch: Fix compilation for SLE-15 (jsc#PED-8206)
+
+-------------------------------------------------------------------
 Mon Mar 18 12:59:00 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update keyring with current key 
