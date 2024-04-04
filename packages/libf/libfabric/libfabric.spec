@@ -17,10 +17,17 @@
 
 
 #
-%define git_ver .0.e43589a5113a
+%define git_ver .0.f67fad269327
+
+%ifarch aarch64 %power64 x86_64 s390x
+%if 0%{?suse_version} > 1530
+%define with_ucx 1
+%endif
+%define with_efa 1
+%endif
 
 Name:           libfabric
-Version:        1.20.1
+Version:        1.21.0
 Release:        0
 Summary:        User-space RDMA Fabric Interfaces
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -40,6 +47,13 @@ BuildRequires:  libpsm2-devel
 BuildRequires:  fdupes
 BuildRequires:  librdmacm-devel
 BuildRequires:  libtool
+%if 0%{?with_ucx}
+BuildRequires:  libucm-devel
+BuildRequires:  libucp-devel
+ # 1.10 Needed for UCS_MEMORY_TYPE_UNKNOWN
+BuildRequires:  libucs-devel >= 1.10
+BuildRequires:  libuct-devel
+%endif
 BuildRequires:  pkg-config
 %define lib_major 1
 
@@ -73,6 +87,12 @@ autoreconf -fi
 # defaults: with-dlopen and without-valgrind can be over-rode:
 %configure %{?_without_dlopen} %{?_with_valgrind} \
 	--enable-sockets --enable-verbs --enable-usnic \
+%if 0%{?with_efa}
+        --enable-efa \
+%endif
+%if 0%{?with_ucx}
+        --enable-ucx \
+%endif
 %ifarch x86_64
     --enable-psm2 \
     --enable-psm3 \
@@ -127,6 +147,9 @@ rm -f %{buildroot}%{_libdir}/*.la
 %{_includedir}/rdma/fi_ext_usnic.h
 %ifarch x86_64
 %{_includedir}/rdma/fi_ext_psm2.h
+%endif
+%if 0%{?with_efa}
+%{_includedir}/rdma/fi_ext_efa.h
 %endif
 %{_mandir}/man3/*
 %{_mandir}/man7/*
