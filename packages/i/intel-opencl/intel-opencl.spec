@@ -23,13 +23,14 @@
 %endif
 
 Name:           intel-opencl
-Version:        24.05.28454.6
+Version:        24.09.28717.12
 Release:        1%{?dist}
 Summary:        Intel Graphics Compute Runtime for OpenCL
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/intel/compute-runtime
 Source0:        https://github.com/intel/compute-runtime/archive/%{version}/compute-runtime-%{version}.tar.gz
+Patch0:         0001-fix-handle-not-aligned-gtt-size-reported-by-i915.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 %if %{with level_zero}
