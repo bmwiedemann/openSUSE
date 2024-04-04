@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Apr  2 21:08:17 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.104.0
+  - Features
+    - Add an OIDC config to specify extra parameters for the
+      authorization grant URL. IT can be useful to pass an ACR
+      value for example. (#16971)
+    - Add support for OIDC provider returning JWT. (#16972, #17031)
+  - Bugfixes
+    - Fix regression when using OIDC provider. Introduced in
+      v1.104.0rc1. (#17031)
+    - Fix a bug which meant that, under certain circumstances, we
+      might never retry sending events or to-device messages over
+      federation after a failure. (#16925)
+    - Fix various long-standing bugs which could cause incorrect
+      state to be returned from /sync in certain situations.
+      (#16949)
+    - Fix case in which m.fully_read marker would not get updated.
+      Contributed by @SpiritCroc. (#16990)
+    - Fix bug which did not retract a user's pending knocks at
+      rooms when their account was deactivated. Contributed by
+      @hanadi92. (#17010)
+  - Updates to the Docker image
+    - Updated start.py to generate config using the correct user ID
+      when running as root (fixes #16824, #15202). (#16978)
+  - Improved Documentation
+    - Add a query to force a refresh of a remote user's device list
+      to the "Useful SQL for Admins" documentation page. (#16892)
+    - Minor grammatical corrections to the upgrade documentation.
+      (#16965)
+    - Fix the sort order for the documentation version picker, so
+      that newer releases appear above older ones. (#16966)
+    - Remove recommendation for a specific poetry version from
+      contributing guide. (#17002)
+  - Internal Changes
+    - Improve lock performance when a lot of locks are all waiting
+      for a single lock to be released. (#16840)
+    - Update power level default for public rooms. (#16907)
+    - Improve event validation. (#16908)
+    - Multi-worker-docker-container: disable log buffering.
+      (#16919)
+    - Refactor state delta calculation in /sync handler. (#16929)
+    - Clarify docs for some room state functions. (#16950)
+    - Specify IP subnets in canonical form. (#16953)
+    - As done for SAML mapping provider, let's pass the module API
+      to the OIDC one so the mapper can do more logic in its code.
+      (#16974)
+    - Allow containers building on top of Synapse's Complement
+      container is use the included PostgreSQL cluster. (#16985)
+    - Raise poetry-core version cap to 1.9.0. (#16986)
+    - Patch the db conn pool sooner in tests. (#17017)
+- cleaned up TODOs in the poetry section and bumped the minimum
+  versions to what is available in TW
+
+-------------------------------------------------------------------
 Wed Mar 27 12:14:05 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - Moved to Element maintained fork as matrix has archived their version
@@ -26,6 +81,11 @@ Wed Mar 27 12:14:05 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 For changes in older version since 1.98.0, see
 https://github.com/element-hq/synapse/releases
+
+-------------------------------------------------------------------
+Fri Mar 22 00:28:47 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- allow newer poetry-core after bump in TW
 
 -------------------------------------------------------------------
 Fri Mar  1 23:54:12 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>

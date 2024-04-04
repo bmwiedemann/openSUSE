@@ -21,29 +21,24 @@
 # NOTE: Keep this is in the same order as pyproject.toml.
 %if %{with use_poetry_for_dependencies}
 %global Jinja2_version                3.1.2
-# TODO: 10.1.0
-%global Pillow_version                10.0.1
+%global Pillow_version                10.2.0
 %global PyYAML_version                6.0.1
-# TODO: 23.10
-%global Twisted_version               22.10.0
 %global attrs_version                 23.1.0
 %global bcrypt_version                4.0.1
 %global bleach_version                5.0.1
 %global canonicaljson_version         2.0.0
-%global cryptography_version          41.0.7
+# TODO: 42.0.5
+%global cryptography_version          42.0.4
 %global immutabledict_version         3.0.0
 %global idna_version                  3.6
 %global ijson_version                 3.2.3
 %global jsonschema_version            4.20.0
 %global matrix_common_version         1.3.0
 %global matrix_common_max_version     2
-# TODO: 1.0.7
-%global msgpack_version               1.0.5
+%global msgpack_version               1.0.7
 %global netaddr_version               0.9.0
-# TODO: 8.13.26
-%global phonenumbers_version          8.13.18
-# TODO: 0.19.0
-%global prometheus_client_version     0.17.0
+%global phonenumbers_version          8.13.33
+%global prometheus_client_version     0.20.0
 %global psutil_version                2.0.0
 %global pyOpenSSL_version             23.3.0
 %global pyasn1_version                0.5.1
@@ -55,28 +50,23 @@
 %global sortedcontainers_version      2.4.0
 %global systemd_version               234
 %global typing_extensions_version     4.1.1
-# TODO: 23.11
-%global treq_version                  22.2.0
+%global treq_version                  23.11.0
 %global unpaddedbase64_version        2.1.0
 %global matrix_synapse_ldap3_version  0.3.0
 %global packaging_version             23.2
-# TODO: 2.9.9
-%global psycopg2_version              2.9.7
-# TODO             7.3.1
-%global pysaml2_version               7.2.1
+%global psycopg2_version              2.9.9
+%global pysaml2_version               7.3.1
 %global Authlib_version               1.2.1
 %global lxml_version                  4.9.3
 %global sentry_sdk_version            1.36.0
 %global PyJWT_version                 2.4.0
 %global jaeger_client_version         4.8.0
 %global opentracing_version           2.4.0
-# TODO: 2.2.3
-%global hiredis_version               2.2.2
+%global hiredis_version               2.2.3
 %global txredisapi_version            1.4.9
 %global Pympler_version               1.0.1
 %global pydantic_version              1.9.1
-# TODO: 2.12
-%global pyicu_version                 2.11
+%global pyicu_version                 2.12
 %else
 # some version locks based on poetry.lock
 %global Jinja2_version                3.0
@@ -159,7 +149,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.103.0
+Version:        1.104.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
