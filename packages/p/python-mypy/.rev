@@ -126,4 +126,15 @@ reveal_type(Context[MyBot]().bot)
     <comment></comment>
     <requestid>1163260</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>031dbac19a6fd7f458008cb778732b2d</srcmd5>
+    <version>1.9.0</version>
+    <time>1712262389</time>
+    <user>anag+factory</user>
+    <comment>- Add patch workaround-parenthesized-context-managers.patch:
+  * Work around parenthesized context managers issue.
+- Stop skipping tests under Python 3.6.
+- Drop -x argument to pytest.</comment>
+    <requestid>1164520</requestid>
+  </revision>
 </revisionlist>

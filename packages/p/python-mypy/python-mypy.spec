@@ -35,6 +35,8 @@ Source2:        https://files.pythonhosted.org/packages/source/t/types-psutil/ty
 # License Source3: Apache-2.0. Only for the test suite, not packaged here.
 Source3:        https://files.pythonhosted.org/packages/source/t/types-setuptools/types-setuptools-%{types_setuptools_version}.tar.gz
 Source99:       python-mypy-rpmlintrc
+# PATCH-FIX-UPSTREAM gh#python/mypy#16949
+Patch0:         workaround-parenthesized-context-managers.patch
 BuildRequires:  %{python_module exceptiongroup}
 BuildRequires:  %{python_module mypy_extensions >= 1.0.0}
 BuildRequires:  %{python_module pip}
@@ -51,7 +53,7 @@ Requires:       python-typing_extensions >= 3.10
 Requires:       (python-tomli >= 1.1.0 if python-base < 3.11)
 Requires:       (python-typed-ast >= 1.4.0 if python-base < 3.8)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       mypy = %{version}
 Obsoletes:      mypy < %{version}
@@ -138,8 +140,6 @@ export MYPYC_OPT_LEVEL=2
 if [ $(getconf LONG_BIT) -ne 64 ]; then
   # gh#python/mypy#11148
   donttest+=" or testSubclassSpecialize or testMultiModuleSpecialize"
-  # fails only in python36 (EOL)
-  python36_donttest+=" or testIntOps"
 fi
 # the fake test_module is not in the modulepath without pytest-xdist
 # or with pytest-xdist >= 2.3 -- https://github.com/python/mypy/issues/11019
@@ -148,7 +148,7 @@ donttest+=" or teststubtest"
 donttest+=" or testMathOps or testFloatOps"
 # fails on Python 3.11.4, see gh#python/mypy#15446. Patch db5b5af1201fff03465b0684d16b6489a62a3d78 does not apply clean, better wait for a new upstream version
 donttest+=" or PEP561Suite"
-%pytest -n auto -k "not (testallexcept ${donttest} ${$python_donttest})" -x
+%pytest -n auto -k "not (testallexcept ${donttest})"
 %endif
 
 %post
@@ -162,7 +162,7 @@ donttest+=" or PEP561Suite"
 %license LICENSE
 %{python_sitelib}/mypy
 %{python_sitelib}/mypyc
-%{python_sitelib}/mypy-%{version}*-info
+%{python_sitelib}/mypy-%{version}.dist-info
 %python_alternative %{_bindir}/dmypy
 %python_alternative %{_bindir}/mypy
 %python_alternative %{_bindir}/mypyc
