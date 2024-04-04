@@ -84,4 +84,13 @@
   * No significant changes.</comment>
     <requestid>1158386</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9f8fa4563a16941c9e6eb203233b62d8</srcmd5>
+    <version>3.4.0</version>
+    <time>1712262271</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.4.0:
+  * Better type hints for NonDataProperty.</comment>
+    <requestid>1164373</requestid>
+  </revision>
 </revisionlist>
