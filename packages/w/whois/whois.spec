@@ -1,7 +1,7 @@
 #
 # spec file for package whois
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           whois
-Version:        5.5.21
+Version:        5.5.22
 Release:        0
 Summary:        Intelligent WHOIS client
 License:        GPL-2.0-or-later
@@ -62,7 +62,7 @@ bash command line completion support for whois.
 # the signature is on the Debian .dsc. Extract the checksums and verify against source
 echo "`grep -A1 "Checksums-Sha256" %{SOURCE2} | grep %{name}_%{version}.tar.xz | cut -d\  -f2`  %{SOURCE0}" | sha256sum -c
 
-%autosetup -p1 -n %{name}
+%autosetup -p1
 
 %build
 %make_build all mkpasswd HAVE_LIBIDN2=1 HAVE_ICONV=1 \

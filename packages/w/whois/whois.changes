@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr  2 16:44:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.5.22:
+  * Fixed a segmentation fault with --no-recursion.
+  * Updated the .bm and .vi TLD servers.
+  * Removed 4 new gTLDs which are no longer active.
+
+-------------------------------------------------------------------
 Sat Mar  2 10:52:07 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 5.5.21:
@@ -95,7 +103,7 @@ Mon Oct 17 06:39:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
     is not one anymore. (Closes: #1021110)
   * Renamed whois.arnes.si to whois.register.si in the list of RIPE-like
     servers.
-  * Added the hiding string for whois.auda.org.au. 
+  * Added the hiding string for whois.auda.org.au.
 
 -------------------------------------------------------------------
 Fri Apr  8 16:47:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -103,7 +111,7 @@ Fri Apr  8 16:47:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 - update to 5.5.13:
   * Added the .sd TLD server.
   * Updated the list of new gTLDs.
-  * Added the Turkish translation, contributed by Oğuz Ersen. 
+  * Added the Turkish translation, contributed by Oğuz Ersen.
 
 -------------------------------------------------------------------
 Thu Feb 24 17:05:27 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
@@ -126,7 +134,7 @@ Tue Jan  4 16:35:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Updated the .pro, .vu and .xxx TLD servers.
   * Updated the list of new gTLDs.
   * Removed 7 new gTLDs which are no longer active.
- 
+
 -------------------------------------------------------------------
 Mon Jul  5 07:44:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
@@ -136,7 +144,7 @@ Mon Jul  5 07:44:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Updated the charset for whois.lacnic.net, whois.ax, whois.cira.ca
     and whois.dns.pt.
   * Fixed reporting an older version number when using --version.
- 
+
 -------------------------------------------------------------------
 Fri Apr 02 06:36:03 UTC 2021 - Wang Jun <jgwang@suse.com>
 
@@ -159,7 +167,7 @@ Fri Feb 19 23:44:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 5.5.8:
   * Added the .xn--4dbrk0ce (.ישראל, Israel) TLD server.
   * Updated the .ie and .az TLD servers.
-  * Updated the list of new gTLDs. 
+  * Updated the list of new gTLDs.
 
 -------------------------------------------------------------------
 Sun Oct 18 17:57:41 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -469,8 +477,8 @@ Thu Jan 22 15:24:05 UTC 2015 - andreas.stieger@gmx.de
 -------------------------------------------------------------------
 Sat Dec  6 18:25:49 UTC 2014 - crrodriguez@opensuse.org
 
-- whois-nobsdsource.patch: get rid of warnings about 
-  BSD_SOURCE deprecatation , just define GNU_SOURCE 
+- whois-nobsdsource.patch: get rid of warnings about
+  BSD_SOURCE deprecatation , just define GNU_SOURCE
   globally instead of any other C library feature macro.
 
 -------------------------------------------------------------------
@@ -481,7 +489,7 @@ Thu Nov 13 21:20:56 UTC 2014 - andreas.stieger@gmx.de
   * Added the .xn--d1alf (.мкд, Macedonia) and .xn--node (.გე,
     Georgia) TLD servers.
   * Updated the list of new gTLDs.
-- make perl requirements explict. 
+- make perl requirements explict.
 - In 13.1, perl(autodie) is provided by the main perl package, do
   not look at the alternative in perl-autodie.
 
@@ -721,18 +729,18 @@ Tue Mar 22 10:15:42 UTC 2011 - puzel@novell.com
 -------------------------------------------------------------------
 Wed Dec  1 12:01:09 UTC 2010 - puzel@novell.com
 
-- update to whois-5.0.10 
+- update to whois-5.0.10
   * updated IPv4 allocations and TLD servers
 
 -------------------------------------------------------------------
 Fri Oct  1 09:31:39 UTC 2010 - puzel@novell.com
 
-- build with iconv support (bnc#642681) 
+- build with iconv support (bnc#642681)
 
 -------------------------------------------------------------------
 Mon Aug  9 07:29:02 UTC 2010 - puzel@novell.com
 
-- update to whois-5.0.7 
+- update to whois-5.0.7
   * Added new IPv4 allocations.
   * Added the new TLD servers.
   * Updated the .bd, .bo, .cm, .co, .cu, .dz, .gr, .hk, .lb,
@@ -744,18 +752,18 @@ Mon Jul 19 12:59:52 UTC 2010 - puzel@novell.com
 - update to whois-5.0.6
 
   * Added new IPv4 allocations.
-  * Stop using inet_pton to parse IP addresses because it does 
+  * Stop using inet_pton to parse IP addresses because it does
     not work when a netmask length is specified.
   * Updated translations.
 
 -------------------------------------------------------------------
 Mon Jan  4 13:17:27 UTC 2010 - puzel@novell.com
 
-- update to whois-5.0.0 
-  * Added optional support for automatically transcoding the 
+- update to whois-5.0.0
+  * Added optional support for automatically transcoding the
     output of servers.
   * Automatically add --show-handles to queries for .dk domains.
-  * Normalize the querystring and convert it to punycode even if a 
+  * Normalize the querystring and convert it to punycode even if a
     server is specified on the command line.
   * Updated the .id, .is, .my, .sb and .tj TLD servers.
   * Removed the .mm, .pw, .sr and .tp TLD servers.
@@ -840,7 +848,7 @@ Fri Sep 12 10:48:46 CEST 2008 - anosek@suse.cz
 -------------------------------------------------------------------
 Sun Mar 16 01:29:51 CET 2008 - crrodriguez@suse.de
 
-- fix file-in-lang errors 
+- fix file-in-lang errors
 
 -------------------------------------------------------------------
 Wed Mar  5 17:16:49 CET 2008 - anosek@suse.cz
@@ -919,7 +927,7 @@ Fri Sep  9 22:42:49 CEST 2005 - schwab@suse.de
 -------------------------------------------------------------------
 Fri Jul 29 20:00:28 CEST 2005 - anicka@suse.cz
 
-- update to 4.7.5 
+- update to 4.7.5
 
 -------------------------------------------------------------------
 Thu Jan 13 17:40:36 CET 2005 - postadal@suse.cz
@@ -976,7 +984,7 @@ Mon Aug 12 15:28:06 CEST 2002 - postadal@suse.cz
 
 - update to 4.5.29:
   * updated LANIC and telstra IP allocations
-  * updated mkpasswd  
+  * updated mkpasswd
   * fixes
 
 -------------------------------------------------------------------
@@ -1021,7 +1029,7 @@ Fri May 19 08:53:16 CEST 2000 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Thu Mar 30 09:42:51 CEST 2000 - nadvornik@suse.cz
 
-- update to 4.4.12 
+- update to 4.4.12
 - added BuildRoot
 - added %{_mandir} macro
 
