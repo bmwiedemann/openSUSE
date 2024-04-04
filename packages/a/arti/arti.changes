@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  4 15:40:41 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update constraints to build on more workers (especially for aarch64)
+
+-------------------------------------------------------------------
 Tue Apr  2 16:34:04 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Added LICENSE-APACHE and LICENSE-MIT to %files

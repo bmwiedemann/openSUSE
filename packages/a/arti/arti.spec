@@ -25,6 +25,7 @@ URL:            https://gitlab.torproject.org/tpo/core/arti
 Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
+BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
@@ -37,6 +38,7 @@ An implementation of Tor, in Rust
 %autosetup -p1 -a1
 
 %build
+%limit_build -m 4100
 %{cargo_build}
 
 %install
