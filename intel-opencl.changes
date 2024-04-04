@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr  4 10:55:18 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Added 0001-fix-handle-not-aligned-gtt-size-reported-by-i915.patch
+  * This patch fixes an issue when the i915 kernel driver reports a 
+    gtt address space which is not 48 bits (bsc#1222141)
+
+-------------------------------------------------------------------
+Thu Apr  4 08:51:52 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 24.09.28717.12
+  * No changelog was made available. 
+
+-------------------------------------------------------------------
 Thu Mar 21 07:24:18 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Move libze_intel_gpu into it's own package
