@@ -247,4 +247,13 @@
   * Fixed silent crash on file extension in uppercase.</comment>
     <requestid>1150567</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a7e01da873b5a10aa3190c85def741ba</srcmd5>
+    <version>1.12.6</version>
+    <time>1712262380</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.12.6:
+  * Added Italian translation #186</comment>
+    <requestid>1164487</requestid>
+  </revision>
 </revisionlist>
