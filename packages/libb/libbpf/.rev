@@ -172,4 +172,12 @@
   * uprobe support for symbols versioning;</comment>
     <requestid>1128704</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4409cddee36c1f68d460edfb7a9c28d8</srcmd5>
+    <version>1.4.0</version>
+    <time>1712262282</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1164453</requestid>
+  </revision>
 </revisionlist>

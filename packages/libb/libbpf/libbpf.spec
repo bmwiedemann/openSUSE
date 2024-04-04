@@ -1,7 +1,7 @@
 #
 # spec file for package libbpf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover_major 1
 %define libname libbpf%{sover_major}
 Name:           libbpf
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        C library for managing eBPF programs and maps
 License:        LGPL-2.1-only
