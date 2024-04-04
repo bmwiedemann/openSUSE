@@ -17,9 +17,9 @@
 
 
 Name:           git-absorb
-Version:        0.6.12
+Version:        0.6.13
 Release:        0
-Summary:        git commit --fixup, but automatic 
+Summary:        git commit --fixup, but automatic
 License:        BSD-3-Clause
 URL:            https://github.com/tummychow/git-absorb
 Source0:        %{name}-%{version}.tar.zst
@@ -34,8 +34,8 @@ fixup! commits
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
-Requires:       bash-completion
 Requires:       %{name} = %{version}
+Requires:       bash-completion
 Supplements:    (%{name} and bash)
 BuildArch:      noarch
 
@@ -50,6 +50,15 @@ BuildArch:      noarch
 
 %description fish-completion
 The official fish completion script for git-absorb, generated during the build.
+
+%package nushell-completion
+Summary:        Nushell Completion for %{name}
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and nushell)
+BuildArch:      noarch
+
+%description nushell-completion
+The official nushell completion script for git-absorb, generated during the build.
 
 %package zsh-completion
 Summary:        ZSH Completion for %{name}
@@ -69,15 +78,16 @@ The official zsh completion script for git-absorb, generated during the build.
 %install
 %{cargo_install}
 
-
 install -D Documentation/git-absorb.1 %{buildroot}%{_mandir}/man1/git-absorb.1
 chmod -x %{buildroot}%{_mandir}/man1/git-absorb.1
 TARGETBIN=target/release/git-absorb
 $TARGETBIN --gen-completions bash > git-absorb.bash
 $TARGETBIN --gen-completions fish > git-absorb.fish
+$TARGETBIN --gen-completions nushell > git-absorb.nushell
 $TARGETBIN --gen-completions zsh > git-absorb.zsh
 install -Dm 644 git-absorb.bash %{buildroot}%{_datadir}/bash-completion/completions/git-absorb
 install -Dm 644 git-absorb.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/git-absorb.fish
+install -Dm 644 git-absorb.nushell %{buildroot}%{_datadir}/nushell/completions/git-absorb.nu
 install -Dm 644 git-absorb.zsh %{buildroot}%{_datadir}/zsh/site-functions/_git-absorb
 
 %check
@@ -97,9 +107,12 @@ install -Dm 644 git-absorb.zsh %{buildroot}%{_datadir}/zsh/site-functions/_git-a
 %license LICENSE.md
 %{_datadir}/fish
 
+%files nushell-completion
+%license LICENSE.md
+%{_datadir}/nushell
+
 %files zsh-completion
 %license LICENSE.md
 %{_datadir}/zsh
 
 %changelog
-
