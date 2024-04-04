@@ -309,4 +309,12 @@
   * FUNCTIONALITY:  add message type 'missing' to handle case that some .info file is missing. Goal is to enable mechanism for user's job to continue in the presence of errors.</comment>
     <requestid>1147566</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>8d49233a0ed94e6237f327b0dad279c8</srcmd5>
+    <version>2.0+git.20240123.d981242</version>
+    <time>1712262400</time>
+    <user>anag+factory</user>
+    <comment>- Fix incorrectly set permissions (boo#1222234)</comment>
+    <requestid>1164555</requestid>
+  </revision>
 </revisionlist>

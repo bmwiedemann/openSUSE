@@ -58,7 +58,6 @@ rm -rf %{buildroot}%{_datadir}/%{name}/tests/
 find %{buildroot}%{_datadir}/%{name}/support-scripts/ -name "*.pm" -exec chmod -x {} \;
 
 %files
-%defattr(644,root,root)
 %config %{_sysconfdir}/lcovrc
 %{_mandir}/man1/lcov.1%{?ext_man}
 %{_mandir}/man1/genhtml.1%{?ext_man}
