@@ -28,4 +28,26 @@ https://www.kernel.org/doc/html/latest/filesystems/fsverity.html </comment>
     <comment></comment>
     <requestid>1118055</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e3f28712a1d01dbb78894380712f3a1f</srcmd5>
+    <version>1.6</version>
+    <time>1712262392</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6:
+  * Eliminated the dependency on `pandoc` for installing the
+    manual page.
+  * Updated the documentation to reflect recent kernel changes,
+    including the kernel adding support for more Merkle tree
+    block sizes, IMA adding support for fs-verity, and btrfs
+    adding support for fs-verity.
+  * Updated the documentation to refer to the new fsverity
+    mailing list.
+  * Fixed a C++ compatibility issue in `libfsverity.h`.
+  * `fsverity measure` now follows standard command line syntax
+    for arguments beginning with hyphens.  I.e.,
+    `fsverity measure --foo` now treats `--foo` as
+  * an (unsupported) option, not a filename.  To operate on a
+    file actually named `--foo`, use `fsverity measure -- --foo`.</comment>
+    <requestid>1164524</requestid>
+  </revision>
 </revisionlist>

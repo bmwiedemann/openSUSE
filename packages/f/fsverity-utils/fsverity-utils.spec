@@ -1,7 +1,7 @@
 #
 # spec file for package fsverity-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,13 @@
 
 
 Name:           fsverity-utils
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        Userspace utilities for fs-verity
 License:        MIT
 Group:          System/Filesystems
 URL:            https://www.kernel.org/doc/html/latest/filesystems/fsverity.html
 Source0:        https://git.kernel.org/pub/scm/fs/fsverity/%{name}.git/snapshot/%{name}-%{version}.tar.gz
-# manpage pregenerated from "make install-man" to avoid pandoc build
-# dependency. pandoc is huge and unavailable on some architectures.
-Source1:        fsverity.1
 BuildRequires:  gcc
 BuildRequires:  kernel-headers
 BuildRequires:  libopenssl-devel
@@ -67,9 +64,6 @@ and library files.
 	INCDIR=%{_includedir} \
 	LIBDIR=%{_libdir} \
 	MANDIR=%{_mandir}
-
-# see Source note...
-install -D -m 644 -t %{buildroot}/%{_mandir}/man1 %{SOURCE1}
 
 rm %{buildroot}/%{_libdir}/libfsverity.a
 
