@@ -22,7 +22,7 @@
 %bcond_without  apparmor
 
 Name:           podman
-Version:        4.9.3
+Version:        5.0.1
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -59,19 +59,20 @@ Recommends:     apparmor-parser
 # requirement for `podman machine`
 Recommends:     gvisor-tap-vsock
 Requires:       catatonit >= 0.1.7
-# Needs a network backend
-Requires:       (netavark or cni-plugins)
-# Force netavark on ALP
-%if 0%{suse_version} >= 1600 && !0%{?is_opensuse}
-Requires:       netavark
-%else
-# Prefer netavark for fresh installations (bsc#1217828)
-Suggests:       netavark
-%endif
 Requires:       conmon >= 2.0.24
 Requires:       fuse-overlayfs
 Requires:       iptables
 Requires:       libcontainers-common >= 20230214
+%if 0%{?sle_version} <= 150500
+# Build podman with CNI support for SLE-15-SP5 and lower
+Requires:       (netavark or cni-plugins)
+# We still want users with fresh installation to start off
+# with Netavark but if they already have cni-plugins installed
+# and are attempting a migration, it's better to continue with cni
+Suggests:       netavark
+%else
+Requires:       netavark
+%endif
 # use crun on Tumbleweed & ALP for WASM support
 %if 0%{suse_version} >= 1600
 # crun is only available for selected archs (because of criu)
@@ -83,7 +84,7 @@ Requires:       runc >= 1.0.1
 %else
 Requires:       runc >= 1.0.1
 %endif
-Requires:       slirp4netns >= 0.4.0
+Requires:       passt
 Requires:       timezone
 Suggests:       katacontainers
 
@@ -142,7 +143,22 @@ when `%{_bindir}/%{name}sh is set as a login shell or set as os.Args[0].
 
 %build
 # Build podman
-BUILDFLAGS="-buildmode=pie" PREFIX=%{_prefix} %make_build
+BUILDTAGS="$(hack/apparmor_tag.sh) \
+    $(hack/btrfs_installed_tag.sh) \
+    $(hack/btrfs_tag.sh) \
+    $(hack/systemd_tag.sh) \
+    $(hack/libsubid_tag.sh) \
+    exclude_graphdriver_devicemapper \
+    seccomp"
+
+%if 0%{?sle_version} <= 150500
+# Podman >= 5.0.0 disables CNI support by default,
+# update buildtags to build podman with CNI support
+# for SLE-15-SP5 and lower.
+BUILDTAGS="cni $BUILDTAGS"
+%endif
+
+BUILDFLAGS="-buildmode=pie" BUILDTAGS="$BUILDTAGS" PREFIX=%{_prefix} %make_build
 
 # Build manpages
 %make_build docs
@@ -152,7 +168,9 @@ BUILDFLAGS="-buildmode=pie" PREFIX=%{_prefix} %make_build
 # Updates must be tested manually.
 
 %install
-%make_install PREFIX=%{_prefix} LIBEXECDIR=%{_libexecdir} install.completions install.docker
+%make_install PREFIX=%{_prefix} LIBEXECDIR=%{_libexecdir} ETCDIR=%{_sysconfdir} \
+    install.completions \
+    install.docker
 
 # remove the user tmpfile on SLE/Leap as it cannot handle them
 %if 0%{?suse_version} == 1500
@@ -219,6 +237,7 @@ install -m 0644 -t %{buildroot}%{_prefix}/lib/modules-load.d/ %{SOURCE1}
 %files docker
 %{_bindir}/docker
 %{_tmpfilesdir}/podman-docker.conf
+%{_sysconfdir}/profile.d/%{name}-docker.*
 %if 0%{?suse_version} > 1500
 %{_user_tmpfilesdir}/podman-docker.conf
 %dir %{_user_tmpfilesdir}
