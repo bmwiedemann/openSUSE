@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr  3 08:40:14 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 2.5:
+  * Add support for io_uring_prep_cmd_sock()
+  * Add support for application allocated ring memory, for placing rings
+    in huge mem. Available through io_uring_queue_init_mem().
+  * Add support for registered ring fds
+  * Various documentation updates
+  * Various fixes
+- Remove (they are upstream)
+  * test-io_uring_register-fix-errno-confusion-and-new-e.patch
+  * tests-don-t-expect-multishot-recv-overflow-backloggi.patch
+- Add
+  * test-recv-multishot-wait-for-the-right-amount-of-CQE.patch (to fix test
+    errors on the 6.8.2 kernel)
+  * test-no-mmap-inval-0-return-is-fine-too.patch (fix the test)
+
+-------------------------------------------------------------------
 Mon Dec  4 16:39:29 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on 32-bit x86

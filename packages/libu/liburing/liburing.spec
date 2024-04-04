@@ -1,7 +1,7 @@
 #
 # spec file for package liburing
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %define lname   liburing2
 Name:           liburing
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        Linux-native io_uring I/O access library
 License:        (GPL-2.0-only AND LGPL-2.1-or-later) OR MIT
 Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.dk/cgit/liburing
 Source:         https://git.kernel.dk/cgit/liburing/snapshot/%{name}-%{version}.tar.bz2
-Patch0:         test-io_uring_register-fix-errno-confusion-and-new-e.patch
-Patch1:         tests-don-t-expect-multishot-recv-overflow-backloggi.patch
+Patch0:         test-recv-multishot-wait-for-the-right-amount-of-CQE.patch
+Patch1:         test-no-mmap-inval-0-return-is-fine-too.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  procps
