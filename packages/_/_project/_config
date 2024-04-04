@@ -612,6 +612,9 @@ Prefer: -kquickimageeditor-devel
 # have choice for cmake(KDecoration2) >= MACRO: kdecoration6-devel libkdecoration2-devel
 Prefer: -libkdecoration2-devel
 
+# have choice  for cmake(FreeRDP) >= 2.10: freerdp-devel freerdp2-devel
+Prefer: -freerdp-devel
+
 #---
 
 Preinstall: aaa_base filesystem attr bash bash-sh coreutils diffutils
