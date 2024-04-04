@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Apr 04 16:56:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.75.0:
+  * chore: update syft to latest v1.1.1 (#1784)
+  * fix: enable http timeout (#1777)
+  * chore(deps): update bootstrap tools to latest versions (#1781)
+  * chore(deps): update bootstrap tools to latest versions (#1776)
+  * chore(deps): bump gorm.io/gorm from 1.25.8 to 1.25.9 (#1775)
+  * fix: make bootstrap-tools failed (#1739)
+  * fix: use "path/filepath" to build file path (#1767)
+  * update release token from readonly to write token (#1768)
+  * chore(deps): bump anchore/sbom-action from 0.15.9 to 0.15.10
+    (#1771)
+  * chore(deps): update Syft to v1.1.0 (#1769)
+  * chore(deps): bump google.golang.org/protobuf from 1.31.0 to
+    1.33.0 (#1750)
+  * chore(deps): bump github.com/glebarez/sqlite from 1.10.0 to
+    1.11.0 (#1751)
+  * chore(deps): bump fountainhead/action-wait-for-check from 1.1.0
+    to 1.2.0 (#1753)
+  * chore(deps): bump gorm.io/gorm from 1.25.7 to 1.25.8 (#1756)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#1754)
+  * chore(deps): update bootstrap tools to latest versions (#1758)
+  * chore(deps): bump actions/cache from 4.0.1 to 4.0.2 (#1761)
+  * updating credentials to scoped permissions (#1755)
+  * dont warn on golang devel version (#1752)
+  * chore(deps): bump docker/login-action from 3.0.0 to 3.1.0
+    (#1748)
+  * chore(deps): bump peter-evans/create-pull-request from 6.0.1 to
+    6.0.2 (#1746)
+  * chore(deps): bump actions/checkout from 4.1.1 to 4.1.2 (#1747)
+  * chore(code-comments): typo (#1745)
+  * chore: slice loop replace (#1738)
+  * chore(deps): update Syft to v1.0.1 (#1742)
+  * chore(deps): bump github.com/anchore/syft from 1.0.0 to 1.0.1
+    (#1743)
+  * chore(deps): bump github.com/docker/docker (#1744)
+  * chore(deps): bump anchore/sbom-action from 0.15.8 to 0.15.9
+    (#1740)
+  * chore(deps): bump github.com/charmbracelet/lipgloss from 0.9.1
+    to 0.10.0 (#1741)
+  * chore(deps): bump actions/cache from 4.0.0 to 4.0.1 (#1735)
+  * chore(deps): bump github.com/stretchr/testify from 1.8.4 to
+    1.9.0 (#1736)
+  * chore(deps): bump github.com/anchore/syft (#1734)
+  * chore(deps): bump peter-evans/create-pull-request from 6.0.0 to
+    6.0.1 (#1733)
+  * chore: update syft source providers (#1727)
+
+-------------------------------------------------------------------
 Sat Mar 16 14:01:10 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.74.7:
