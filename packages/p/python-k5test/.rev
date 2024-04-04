@@ -31,4 +31,19 @@
     <comment></comment>
     <requestid>1081479</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b429c66d233af0781a2b9d1d87ba449e</srcmd5>
+    <version>0.10.4</version>
+    <time>1712262241</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.10.4:
+  * Use OIDC for PyPI release
+  * Include both license files
+  * Fix MIT start_kadmind
+  * Set max_renewable_life to 1 week for the MIT KDC
+  * Bump version for next release
+
+- Update to v0.10.3</comment>
+    <requestid>1164287</requestid>
+  </revision>
 </revisionlist>

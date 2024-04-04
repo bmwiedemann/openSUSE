@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  3 07:49:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.4:
+  * Use OIDC for PyPI release
+  * Include both license files
+  * Fix MIT start_kadmind
+  * Set max_renewable_life to 1 week for the MIT KDC
+  * Bump version for next release
+
+-------------------------------------------------------------------
 Fri Apr 21 12:27:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -11,7 +21,7 @@ Thu Apr 13 22:42:22 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Tue Nov  8 17:14:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v0.10.3 
+- Update to v0.10.3
   * Remove no longer valid reference by @stanislavlevin in #23
 - Update to v0.10.2
   * Remove redundant wheel dep from pyproject.toml by @mgorny in #19
