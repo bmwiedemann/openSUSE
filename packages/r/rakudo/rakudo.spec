@@ -1,7 +1,7 @@
 #
 # spec file for package rakudo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rakudo
-Version:        2022.07
+Version:        2024.02
 Release:        2.1
 Summary:        Raku (formerly Perl 6) implemenation that runs on MoarVM
 License:        Artistic-2.0
@@ -25,19 +25,30 @@ Group:          Development/Languages/Other
 URL:            https://rakudo.org/
 Source0:        rakudo-%{version}.tar.gz
 Patch0:         rakudo-test-log.diff
-Patch1:         rakudo-fix-module-installation.diff
 %if !0%{?rhel_version}
 BuildRequires:  fdupes
 %endif
-BuildRequires:  moarvm-devel >= 2022.07
-BuildRequires:  nqp >= 2022.07
+BuildRequires:  moarvm-devel >= 2024.02
+BuildRequires:  nqp >= 2024.02
 BuildRequires:  perl(Archive::Tar)
 BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(IPC::Cmd)
 BuildRequires:  perl(YAML::Tiny)
-Provides:       perl6 = %{version}-%{release}
-Requires:       moarvm >= 2022.07
-Requires:       nqp >= 2022.07
+Provides:       raku = %{version}-%{release}
+Provides:       raku(CompUnit::Repository::Staging)
+Provides:       raku(MoarVM::Profiler)
+Provides:       raku(MoarVM::SIL)
+Provides:       raku(MoarVM::SL)
+Provides:       raku(MoarVM::Spesh)
+Provides:       raku(NativeCall)
+Provides:       raku(NativeCall::Types)
+Provides:       raku(NativeCall::Compiler::GNU)
+Provides:       raku(NativeCall::Compiler::MSVC)
+Provides:       raku(Pod::To::Text)
+Provides:       raku(RakuDoc::To::Text)
+Provides:       raku(Test)
+Requires:       moarvm >= 2024.02
+Requires:       nqp >= 2024.02
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %ifarch s390x
 BuildRequires:  libffi-devel

@@ -2,7 +2,7 @@ diff --git a/tools/templates/Makefile-backend-common.in b/tools/templates/Makefi
 index 57396c6df..0688cbe59 100644
 --- a/tools/templates/Makefile-backend-common.in
 +++ b/tools/templates/Makefile-backend-common.in
-@@ -126,7 +126,7 @@
+@@ -145,7 +145,7 @@
  @backend_prefix@-stresstest: @backend_prefix@-stresstest@bpm(HARNESS_TYPE)@
  
  @backend_prefix@-coretest5: @backend_prefix@-all
@@ -10,7 +10,7 @@ index 57396c6df..0688cbe59 100644
 +	PERL5LIB=lib5 @bpm(HARNESS5)@ --archive=make-test.tar $(COMMON_TEST_DIRS) @bsm(SPECIFIC_TEST_DIRS)@ || { mkdir results && cd results && tar xf ../make-test.tar && find . -type f -exec echo '{}' \; -exec cat '{}' \; ; false ; }
  
  # Run the spectests that we know work.
- @backend_prefix@-spectest5: @backend_prefix@-testable $(SPECTEST_DATA)
+ @backend_prefix@-spectest5: @backend_prefix@-testable
 diff --git a/lib5/TAP/Harness/Archive.pm b/lib5/TAP/Harness/Archive.pm
 new file mode 100644
 index 000000000..23810ba2d

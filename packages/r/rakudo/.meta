@@ -2,5 +2,5 @@
   <title>Perl 6 implemenation that runs on Parrot</title>
   <description>Rakudo Perl 6, or just Rakudo, is an implementation of the Perl 6 
 specification that runs on the Parrot virtual machine.</description>
-  <devel project="devel:languages:perl6" package="rakudo"/>
+  <devel project="devel:languages:raku" package="rakudo"/>
 </package>
