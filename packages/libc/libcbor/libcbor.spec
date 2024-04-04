@@ -1,7 +1,7 @@
 #
-# spec file for package libcbor-doc
+# spec file for package libcbor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 %define socurrent  0
-%define sorevision 10
-%define soage      2
+%define sorevision 11
+%define soage      0
 %define lname   libcbor%{socurrent}_%{sorevision}
 %global flavor @BUILD_FLAVOR@%{nil}
 
@@ -38,7 +38,7 @@ Name:           libcbor-doc
 %else
 Name:           libcbor
 %endif
-Version:        0.10.2
+Version:        0.11.0
 Release:        0
 Summary:        Library for parsing Concise Binary Object Representation (CBOR)
 License:        MIT
@@ -138,6 +138,7 @@ cp %{SOURCE1} %{buildroot}%{_mandir}/man3
 %{_includedir}/cbor/internal/*.h
 %{_libdir}/libcbor.so
 %{_libdir}/pkgconfig/libcbor.pc
+%{_libdir}/cmake
 %endif
 
 %changelog
