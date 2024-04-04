@@ -19,17 +19,21 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           skaffold
-Version:        2.10.1
+Version:        2.11.0
 Release:        0
 Summary:        Easy and Repeatable Kubernetes Development
 License:        Apache-2.0
 URL:            https://github.com/GoogleContainerTools/skaffold
 Source:         skaffold-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.17
+BuildRequires:  go >= 1.22
 
 %description
-Skaffold is a command line tool that facilitates continuous development for Kubernetes applications. You can iterate on your application source code locally then deploy to local or remote Kubernetes clusters. Skaffold handles the workflow for building, pushing and deploying your application. It also provides building blocks and describe customizations for a CI/CD pipeline.
+Skaffold is a command line tool that facilitates continuous development for
+Kubernetes applications. You can iterate on your application source code
+locally then deploy to local or remote Kubernetes clusters. Skaffold handles
+the workflow for building, pushing and deploying your application. It also
+provides building blocks and describe customizations for a CI/CD pipeline.
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
@@ -71,12 +75,14 @@ BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || dat
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-X github.com/GoogleContainerTools/skaffold/pkg/skaffold/version.version=%{version} -X github.com/GoogleContainerTools/skaffold/pkg/skaffold/version.buildDate=$BUILD_DATE" \
-   -o bin/skaffold ./cmd/skaffold
+   -ldflags=" \
+   -X github.com/GoogleContainerTools/skaffold/pkg/skaffold/version.version=%{version} \
+   -X github.com/GoogleContainerTools/skaffold/pkg/skaffold/version.buildDate=$BUILD_DATE" \
+   -o bin/%{name} ./cmd/%{name}
 
 %install
 # Install the binary.
-install -D -m 0755 bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
 
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
