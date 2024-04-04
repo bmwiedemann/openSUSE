@@ -1,4 +1,25 @@
 --------------------------------------------------------------------
+Thu Apr 4 12:58:01 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#704
+- ensure crypto-policies postinstall script is run (bsc#1222235)
+- 17.120
+
+--------------------------------------------------------------------
+Wed Apr 3 14:26:58 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#702
+- Require Mesa-dri
+- 17.119
+
+--------------------------------------------------------------------
+Wed Apr 3 09:44:05 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#703
+- etc: update module.config to match 6.9
+- 17.118
+
+--------------------------------------------------------------------
 Wed Mar 20 17:18:03 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#700

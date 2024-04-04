@@ -292,7 +292,7 @@ BuildRequires:  noto-sans-fonts
 %ifarch ia64 %ix86 x86_64
 BuildRequires:  libsmbios_c2
 %endif
-BuildRequires:  Mesa
+BuildRequires:  Mesa-dri
 BuildRequires:  Mesa-libEGL1
 BuildRequires:  Mesa-libGL1
 BuildRequires:  aaa_base
@@ -668,7 +668,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.117
+Version:        17.120
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
