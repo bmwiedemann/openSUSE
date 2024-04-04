@@ -16,13 +16,13 @@
 #
 
 
-%define lib_tls     libmbedtls20
-%define lib_crypto  libmbedcrypto15
-%define lib_x509    libmbedx509-6
+%define lib_tls     libmbedtls21
+%define lib_crypto  libmbedcrypto16
+%define lib_x509    libmbedx509-7
 %define lib_everest libeverest
 %define lib_p256m   libp256m
 Name:           mbedtls
-Version:        3.5.2
+Version:        3.6.0
 Release:        0
 Summary:        Libraries for crypto and SSL/TLS protocols
 License:        Apache-2.0 OR GPL-2.0-or-later
@@ -150,6 +150,7 @@ LD_LIBRARY_PATH=%{buildroot}%{_libdir} \
 %{_libdir}/libmbedtls.so
 %{_libdir}/libmbedcrypto.so
 %{_libdir}/libmbedx509.so
+%{_libdir}/pkgconfig/*.pc
 
 %files -n %{lib_tls}
 %license LICENSE
