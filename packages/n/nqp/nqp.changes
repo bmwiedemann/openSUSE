@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Mar 27 16:20:59 CET 2024 - nine@detonation.org
+
+- update to version 2024.02
+  * Add optional positional parameter to archetypes method
+  * Make unsigned comparison ops available
+  * Add nqp::chown() op
+  * Add `comment` token to the grammar
+  * Set `.node` for statements
+  * Make compilation errors more informative
+  * Add support for RakuAST::Origin::Match
+  * Provide access to QAST::Block's cuid counter for RakuAST
+  * Provide current compiler via $*HLL-COMPILER
+  * Fix back-references when there are aliases
+  * Remove unused apply_transcoding compiler function
+  * Remove unused transcode compiler option
+  * Add nqp::syscall, nqp::register, nqp::delegate ops
+  * Introduce nqp::track and nqp::guard
+  * Use  nqp::const::HLL_xxx constants instead of magic numbers
+  * Add all SIG_ELEM constants as nqp::const::xx constants
+  * Only add unique types to the typecache
+  * Add support for TWEAK method
+  * Fix issue with multi_methods in NQPParametricRoleHOW
+  * Implement locking on NQP(Class|ConcreteRole)HOW
+  * Make the positional on "method_table" optional
+  * Make the positional on "(is_)array_type" optional
+  * Make the positional on "role_typecheck_list" optional
+  * Make the positional on "mro" optional
+  * Make the positional on "BUILD(ALL)PLAN" optional
+  * Create nqp::const::EDGE_xxx connstants
+  * Remove dead base64 decoding logic
+  * Add nqp::const::MVM_reg_xxx constants
+  * (is_)array_type don't need any positional argument
+
+-------------------------------------------------------------------
 Sat Oct  1 12:32:30 CEST 2022 - nine@detonation.org
 
 - update to version 2022.07
