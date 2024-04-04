@@ -28,7 +28,6 @@ Source0:        https://github.com/sivel/%{name}/archive/v%{version}.tar.gz#/%{n
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
 BuildRequires:  python3-setuptools
-Requires:       python3-setuptools
 BuildArch:      noarch
 
 %description

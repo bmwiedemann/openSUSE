@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  3 14:49:35 UTC 2024 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- do not require setuptools, it is not needed anymore
+
+-------------------------------------------------------------------
 Fri Apr  9 20:44:06 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to version 2.1.3: [bsc#1184526]
