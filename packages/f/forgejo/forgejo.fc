@@ -1,0 +1,5 @@
+/usr/bin/forgejo		--	gen_context(system_u:object_r:forgejo_exec_t,s0)
+
+/var/lib/forgejo(/.*)?		gen_context(system_u:object_r:forgejo_var_lib_t,s0)
+
+/var/log/forgejo(/.*)?		gen_context(system_u:object_r:forgejo_log_t,s0)

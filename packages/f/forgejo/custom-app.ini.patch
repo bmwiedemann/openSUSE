@@ -1,0 +1,177 @@
+Index: gitea-1.21.3/custom/conf/app.example.ini
+===================================================================
+--- gitea-1.21.3.orig/custom/conf/app.example.ini
++++ gitea-1.21.3/custom/conf/app.example.ini
+@@ -44,7 +44,7 @@
+ APP_NAME = ; Gitea: Git with a cup of tea
+ ;;
+ ;; RUN_USER will automatically detect the current user - but you can set it here change it if you run locally
+-RUN_USER = ; git
++RUN_USER = ; forgejo
+ ;;
+ ;; Application run mode, affects performance and debugging: "dev" or "prod", default is "prod"
+ ;; Mode "dev" makes Gitea easier to develop and debug, values other than "dev" are treated as "prod" which is for production use.
+@@ -273,15 +273,17 @@ RUN_USER = ; git
+ ;; $ openssl pkcs12 -in cert.pfx -out cert.pem -nokeys
+ ;; $ openssl pkcs12 -in cert.pfx -out key.pem -nocerts -nodes
+ ;; Paths are relative to CUSTOM_PATH
+-;CERT_FILE = https/cert.pem
+-;KEY_FILE = https/key.pem
++CERT_FILE = /etc/forgejo/https/cert.pem
++KEY_FILE = /etc/forgejo/https/key.pem
+ ;;
+ ;; Root directory containing templates and static files.
+ ;; default is the path where Gitea is executed
+ ;STATIC_ROOT_PATH = ; Will default to the built-in value _`StaticRootPath`_
++STATIC_ROOT_PATH = /usr/share/forgejo
+ ;;
+ ;; Default path for App data
+ ;APP_DATA_PATH = data ; relative paths will be made absolute with _`AppWorkPath`_
++APP_DATA_PATH = /var/lib/forgejo/data
+ ;;
+ ;; Enable gzip compression for runtime-generated content, static resources excluded
+ ;ENABLE_GZIP = false
+@@ -293,6 +295,7 @@ RUN_USER = ; git
+ ;;
+ ;; PPROF_DATA_PATH, use an absolute path when you start gitea as service
+ ;PPROF_DATA_PATH = data/tmp/pprof ; Path is relative to _`AppWorkPath`_
++PPROF_DATA_PATH = /var/lib/forgejo/data/tmp/pprof
+ ;;
+ ;; Landing page, can be "home", "explore", "organizations", "login", or any URL such as "/org/repo" or even "https://anotherwebsite.com"
+ ;; The "login" choice is not a security measure but just a UI flow change, use REQUIRE_SIGNIN_VIEW to force users to log in.
+@@ -368,7 +371,7 @@ USER = root
+ ;; SQLite Configuration
+ ;;
+ ;DB_TYPE = sqlite3
+-;PATH= ; defaults to data/forgejo.db
++;PATH= /var/lib/forgejo/data/gitea.db ; defaults to data/forgejo.db
+ ;SQLITE_TIMEOUT = ; Query timeout defaults to: 500
+ ;SQLITE_JOURNAL_MODE = ; defaults to sqlite database default (often DELETE), can be used to enable WAL mode. https://www.sqlite.org/pragma.html#pragma_journal_mode
+ ;;
+@@ -561,14 +564,14 @@ ENABLE = true
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;; Root path for the log files - defaults to %(GITEA_WORK_DIR)/log
+-;ROOT_PATH =
++ROOT_PATH = /var/log/forgejo
+ ;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;; Main Logger
+ ;;
+ ;; Either "console", "file" or "conn", default is "console"
+ ;; Use comma to separate multiple modes, e.g. "console, file"
+-MODE = console
++MODE = console, file
+ ;;
+ ;; Either "Trace", "Debug", "Info", "Warn", "Error" or "None", default is "Info"
+ LEVEL = Info
+@@ -904,7 +907,7 @@ LEVEL = Info
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;; Root path for storing all repository data. By default, it is set to %(APP_DATA_PATH)s/gitea-repositories.
+ ;; A relative path is interpreted as _`AppWorkPath`_/%(ROOT)s
+-;ROOT =
++ROOT = /var/lib/forgejo/repositories
+ ;;
+ ;; The script type this server supports. Usually this is `bash`, but some users report that only `sh` is available.
+ ;SCRIPT_TYPE = bash
+@@ -1014,7 +1017,7 @@ LEVEL = Info
+ ;ENABLED = true
+ ;;
+ ;; Path for uploads. Defaults to `data/tmp/uploads` (content gets deleted on gitea restart)
+-;TEMP_PATH = data/tmp/uploads
++TEMP_PATH = /var/lib/forgejo/data/tmp/uploads
+ ;;
+ ;; Comma-separated list of allowed file extensions (`.zip`), mime types (`text/plain`) or wildcard type (`image/*`, `audio/*`, `video/*`). Empty value or `*/*` allows all types.
+ ;ALLOWED_TYPES =
+@@ -1368,7 +1371,7 @@ LEVEL = Info
+ ;ISSUE_INDEXER_TYPE = bleve
+ ;;
+ ;; Issue indexer storage path, available when ISSUE_INDEXER_TYPE is bleve
+-;ISSUE_INDEXER_PATH = indexers/issues.bleve ; Relative paths will be made absolute against _`AppWorkPath`_.
++;ISSUE_INDEXER_PATH = /var/lib/forgejo/indexers/issues.bleve ; Relative paths will be made absolute against _`AppWorkPath`_.
+ ;;
+ ;; Issue indexer connection string, available when ISSUE_INDEXER_TYPE is elasticsearch (e.g. http://elastic:password@localhost:9200) or meilisearch (e.g. http://:apikey@localhost:7700)
+ ;ISSUE_INDEXER_CONN_STR =
+@@ -1395,7 +1398,7 @@ LEVEL = Info
+ ;REPO_INDEXER_TYPE = bleve
+ ;;
+ ;; Index file used for code search. available when `REPO_INDEXER_TYPE` is bleve
+-;REPO_INDEXER_PATH = indexers/repos.bleve
++;REPO_INDEXER_PATH = /var/lib/forgejo/indexers/repos.bleve
+ ;;
+ ;; Code indexer connection string, available when `REPO_INDEXER_TYPE` is elasticsearch. i.e. http://elastic:changeme@localhost:9200
+ ;REPO_INDEXER_CONN_STR =
+@@ -1429,6 +1432,7 @@ LEVEL = Info
+ ;;
+ ;; data-dir for storing persistable queues and level queues, individual queues will default to `queues/common` meaning the queue is shared.
+ ;DATADIR = queues/ ; Relative paths will be made absolute against `%(APP_DATA_PATH)s`.
++DATADIR = /var/lib/forgejo/queues/
+ ;;
+ ;; Default queue length before a channel queue will block
+ ;LENGTH = 100000
+@@ -1752,7 +1756,7 @@ LEVEL = Info
+ ;; redis: `redis://127.0.0.1:6379/0?pool_size=100&idle_timeout=180s`
+ ;; redis-cluster: `redis+cluster://127.0.0.1:6379/0?pool_size=100&idle_timeout=180s`
+ ;; mysql: go-sql-driver/mysql dsn config string, e.g. `root:password@/session_table`
+-;PROVIDER_CONFIG = data/sessions ; Relative paths will be made absolute against _`AppWorkPath`_.
++;PROVIDER_CONFIG = /var/lib/forgejo/data/sessions ; Relative paths will be made absolute against _`AppWorkPath`_.
+ ;;
+ ;; Session cookie name
+ ;COOKIE_NAME = i_like_gitea
+@@ -1839,7 +1843,7 @@ LEVEL = Info
+ ;;
+ ;; Path for attachments. Defaults to `attachments`. Only available when STORAGE_TYPE is `local`
+ ;; Relative paths will be resolved to `${AppDataPath}/${attachment.PATH}`
+-;PATH = attachments
++PATH = /var/lib/forgejo/data/attachments
+ ;;
+ ;; Minio endpoint to connect only available when STORAGE_TYPE is `minio`
+ ;MINIO_ENDPOINT = localhost:9000
+@@ -1857,7 +1861,7 @@ LEVEL = Info
+ ;MINIO_LOCATION = us-east-1
+ ;;
+ ;; Minio base path on the bucket only available when STORAGE_TYPE is `minio`
+-;MINIO_BASE_PATH = attachments/
++;MINIO_BASE_PATH = /var/lib/forgejo/attachments/
+ ;;
+ ;; Minio enabled ssl only available when STORAGE_TYPE is `minio`
+ ;MINIO_USE_SSL = false
+@@ -2428,10 +2432,10 @@ LEVEL = Info
+ ;;
+ ;STORAGE_TYPE = local
+ ;; override the minio base path if storage type is minio
+-;MINIO_BASE_PATH = packages/
++;MINIO_BASE_PATH = /var/lib/forgejo/packages/
+ ;;
+ ;; Path for chunked uploads. Defaults to APP_DATA_PATH + `tmp/package-upload`
+-;CHUNKED_UPLOAD_PATH = tmp/package-upload
++;CHUNKED_UPLOAD_PATH = /var/lib/forgejo/tmp/package-upload
+ ;;
+ ;; Maximum count of package versions a single owner can have (`-1` means no limits)
+ ;LIMIT_TOTAL_OWNER_COUNT = -1
+@@ -2498,10 +2502,10 @@ LEVEL = Info
+ ;STORAGE_TYPE = local
+ ;;
+ ;; Where your lfs files reside, default is data/lfs.
+-;PATH = data/repo-archive
++;PATH = /var/lib/forgejo/data/repo-archive
+ ;;
+ ;; override the minio base path if storage type is minio
+-;MINIO_BASE_PATH = repo-archive/
++;MINIO_BASE_PATH = /var/lib/forgejo/repo-archive/
+ 
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+@@ -2521,10 +2525,10 @@ LEVEL = Info
+ ;STORAGE_TYPE = local
+ ;;
+ ;; Where your lfs files reside, default is data/lfs.
+-;PATH = data/lfs
++;PATH = /var/lib/forgejo/data/lfs
+ ;;
+ ;; override the minio base path if storage type is minio
+-;MINIO_BASE_PATH = lfs/
++;MINIO_BASE_PATH = /var/lib/forgejo/lfs/
+ 
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

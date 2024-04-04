@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Thu Mar 28 06:58:20 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- increase golang dep to 1.22, to imitate the CI/CD of forgejo
+- revise how the apparmor package gets build + add selinux
+
+-------------------------------------------------------------------
+Sat Mar 23 21:21:28 UTC 2024 - Richard Rahl <user@localhost>
+
+- update to 1.21.8-0:
+  * Fix /api/v1/{owner}/{repo}/issue_templates which was always failing with a
+    500 error.
+  * Prevent error 500 on /user/settings/security when SignedUser has a linked
+    account from a deactivated authentication source.
+  * Fix error 500 when pushing release to an empty repo.
+  * Fix incorrect rendering csv file when file size is larger than UI.CSV.MaxFileSize.
+  * Fix error 500 when deleting account with incorrect password or unsupported login type.
+  * handle user-defined name anchors like [Link](#link) linking to <a name="link"></a>Link.
+  * Use correct head commit for CODEOWNER.
+  * Fix manual merge button.
+  * Make meilisearch do exact search for issues.
+  * Fix PR creation via api between branches of same repo with head field namespaced.
+
+-------------------------------------------------------------------
+Fri Mar  8 07:35:29 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- add apparmor profile leeched off of the gitea packaging
+
+- update to 1.21.7-0:
+  * Fix tarball/zipball download bug.
+  * Ensure HasIssueContentHistory takes into account comment_id.
+  * The google.golang.org/protobuf module was bumped to version v1.33.0 to fix
+    a bug in the google.golang.org/protobuf/encoding/protojson package which
+    could cause the Unmarshal function to enter an infinite loop when handling
+    some invalid inputs
+
+-------------------------------------------------------------------
+Fri Feb  9 10:07:58 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- initial packaging

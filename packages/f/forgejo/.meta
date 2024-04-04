@@ -1,0 +1,8 @@
+<package name="forgejo" project="openSUSE:Factory">
+  <title></title>
+  <description>Forgejo is a self-hosted lightweight software forge.
+
+Take back control of your software development process, self-host your projects and get everyone involved in delivering quality software on the same page. </description>
+  <devel project="devel:tools:scm" package="forgejo"/>
+  <url>https://forgejo.org</url>
+</package>
