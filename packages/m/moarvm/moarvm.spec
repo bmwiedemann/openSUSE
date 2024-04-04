@@ -1,7 +1,7 @@
 #
 # spec file for package moarvm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%global mvrel 2022.07
+%global mvrel 2024.02
 Name:           moarvm
 Version:        %mvrel
 Release:        4.1

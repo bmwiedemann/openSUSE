@@ -348,4 +348,12 @@ Added information about the removal to the corresponding changelog entry.</comme
     <comment></comment>
     <requestid>1150111</requestid>
   </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>8b217ff3f2684e0011e4935e3891ecd4</srcmd5>
+    <version>2024.02</version>
+    <time>1712262313</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1164395</requestid>
+  </revision>
 </revisionlist>

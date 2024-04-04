@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Mar 27 16:15:02 CET 2024 - nine@detonation.org
+
+- update to version 2024.02
+
++ Add a bunch of *_u stuff
++ Add syscall that returns stat times in integer nanoseconds
++ Add stat repr and related syscalls
++ Use JFS64 instead of TinyMT64 as our PRNG
++ Add ops for unix domain sockets
++ log reason when not inlining into inlined bb
++ callercode no longer prevents inlining
++ Fix nqp::objprimunsigned handling of unsigned or sized integers
++ Speedup creating sha1 digest string
++ Speedup VMArray's deserialize()...
++ Jit nqp::rand_(i|n)
++ Use right size for a lit_str_idx in JIT and spesh
++ Update to Unicode 15.0 [ebefe261]
++ Protect the two property code lookup hashes being set up with a mutex
++ Add unsigned comparison ops (eq, ne, (l|g)(e|t))
++ Add chown op
++ Reset errno to error of latest call to mkdir
++ Remove the fixed size allocator (FSA)
++ use correct format string in spesh log skip line
++ Use 2-char-at-a-time version of jeaiii's itoa
+
+-------------------------------------------------------------------
 Fri Feb 23 09:26:23 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
