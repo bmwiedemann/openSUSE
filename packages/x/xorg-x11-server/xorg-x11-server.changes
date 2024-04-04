@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr  4 08:13:19 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Security update 21.1.12
+  This release addresses the following 4 security issues:
+  * CVE-2024-31080
+  * CVE-2024-31081
+  * CVE-2024-31082
+  * CVE-2024-31083
+  Additionally it provides a way to disable byte-swapped clients either by
+  command line flag or config option. This allows to turn off byte swapping
+  code that has been a source of security problems lately.
+
+-------------------------------------------------------------------
 Mon Feb 26 12:16:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

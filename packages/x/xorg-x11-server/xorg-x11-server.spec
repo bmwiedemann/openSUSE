@@ -36,14 +36,14 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        21.1.11
+Version:        21.1.12
 Release:        0
 URL:            http://xorg.freedesktop.org/
 Summary:        X
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Source0:        https://xorg.freedesktop.org/archive/individual/xserver/xorg-server-%{version}.tar.gz
-Source10:       https://xorg.freedesktop.org/archive/individual/xserver/xorg-server-%{version}.tar.gz.sig
+Source0:        https://xorg.freedesktop.org/archive/individual/xserver/xorg-server-%{version}.tar.xz
+Source10:       https://xorg.freedesktop.org/archive/individual/xserver/xorg-server-%{version}.tar.xz.sig
 Source11:       xorg-x11-server.keyring
 Source1:        sysconfig.displaymanager.template
 Source2:        README.updates

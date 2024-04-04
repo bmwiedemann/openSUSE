@@ -4078,4 +4078,20 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     <comment></comment>
     <requestid>1151681</requestid>
   </revision>
+  <revision rev="429" vrev="1">
+    <srcmd5>554738930ec3d5dcbfee8360816195d8</srcmd5>
+    <version>21.1.12</version>
+    <time>1712262286</time>
+    <user>anag+factory</user>
+    <comment>- Security update 21.1.12
+  This release addresses the following 4 security issues:
+  * CVE-2024-31080
+  * CVE-2024-31081
+  * CVE-2024-31082
+  * CVE-2024-31083
+  Additionally it provides a way to disable byte-swapped clients either by
+  command line flag or config option. This allows to turn off byte swapping
+  code that has been a source of security problems lately.</comment>
+    <requestid>1164516</requestid>
+  </revision>
 </revisionlist>
