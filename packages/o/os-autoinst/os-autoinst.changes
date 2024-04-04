@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 04 13:16:00 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1712236552.dd5d6dd:
+  * Remove obsolete qemu options
+  * Mock diag to check output
+  * Remove comment
+  * Ensure cleanup of temp dir
+  * Move exit_code_from_test_results to Runner.pm
+  * setup-multimachine: Retry package installation up to 3 times
+  * Avoid errors in `get_job_autoinst_vars` due to not using FQDNs
+
+-------------------------------------------------------------------
 Thu Mar 28 18:59:51 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1711652383.cfe799d:
