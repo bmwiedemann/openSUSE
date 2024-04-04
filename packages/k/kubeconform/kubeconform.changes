@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 03 17:29:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.4:
+  * Update Golang to 1.21.4
+  * openapi2jsonschema.py now correctly fails if no FILE is passed
+    (#244)
+  * Update Readme.md (#232)
+  * Update Go and Goreleaser to 1.20, update dependencies (#231)
+  * Avoid unnecessary type conversions (#222)
+  * Force Draft version of JsonSchema (#221)
+
+-------------------------------------------------------------------
 Sun Sep 17 18:32:50 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.6.3:

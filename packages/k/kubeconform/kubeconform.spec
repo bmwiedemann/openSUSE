@@ -1,7 +1,7 @@
 #
 # spec file for package kubeconform
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,15 @@
 #
 
 
-%global provider_prefix github.com/yannh/kubeconform
-%global import_path     %{provider_prefix}
-
 Name:           kubeconform
-Version:        0.6.3
+Version:        0.6.4
 Release:        0
 Summary:        A fast Kubernetes manifests validator, with support for custom resources
 License:        Apache-2.0
 URL:            https://github.com/yannh/kubeconform/
-Source0:        https://github.com/yannh/kubeconform/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.17
+BuildRequires:  go >= 1.21
 
 %description
 Kubeconform is a Kubernetes manifests validation tool. It is inspired by, contains
@@ -46,7 +43,10 @@ improvements:
 %autosetup -a1
 
 %build
-go build -buildmode=pie -mod=vendor -o bin/ .../.
+go build \
+   -mod=vendor \
+   -buildmode=pie \
+   -o bin/ .../.
 
 %install
 install -D -m 0755 ./bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
