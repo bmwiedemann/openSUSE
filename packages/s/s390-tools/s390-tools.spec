@@ -155,6 +155,11 @@ Patch912:       s390-tools-ALP-zdev-live.patch
 Patch913:       s390-tools-sles15sp6-kdump-initrd-59-zfcp-compat-rules.patch
 Patch914:       s390-tools-sles15sp6-genprotimg-makefile.patch
 Patch915:       s390-tools-sles15sp6-01-parse-ipl-device-for-activation.patch
+### SE-tooling: New IBM host-key subject locality (s390-tools)
+Patch916:       s390-tools-sles15sp5-01-rust-pv-support-Armonk-in-IBM-signing-key-subject.patch
+Patch917:       s390-tools-sles15sp6-02-genprotimg-support-Armonk-in-IBM-signing-key-subject.patch
+Patch918:       s390-tools-sles15sp6-03-libpv-support-Armonk-in-IBM-signing-key-subject.patch
+Patch919:       s390-tools-sles15sp6-04-pvattest-Fix-root-ca-parsing.patch
 ###
 
 BuildRequires:  curl-devel

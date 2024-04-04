@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr  4 03:51:55 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- SE-tooling: New IBM host-key subject locality (s390-tools) (bsc#1222282)
+  * s390-tools-sles15sp5-01-rust-pv-support-Armonk-in-IBM-signing-key-subject.patch
+  * s390-tools-sles15sp6-02-genprotimg-support-Armonk-in-IBM-signing-key-subject.patch
+  * s390-tools-sles15sp6-03-libpv-support-Armonk-in-IBM-signing-key-subject.patch
+  * s390-tools-sles15sp6-04-pvattest-Fix-root-ca-parsing.patch 
+
+-------------------------------------------------------------------
 Tue Apr  2 05:32:45 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Apllied a patch(bsc#1220949,bsc#1221873)
