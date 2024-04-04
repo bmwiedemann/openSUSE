@@ -43,7 +43,7 @@ ExclusiveArch:  do_not_build
 # These packages are found and can be used by spack, %{_sysconfdir}/spack/packages-yaml
 # needs to be updated when one of these packages is updated or uninstalled.
 # Distinguish between packages we recommend and packages which
-%define spack_trigger_recommended_packages autoconf bash bison bzip2 libzip-devel cmake-full ccache cpio diffutils findutils flex git-lfs info make makeinfo m4 ncurses-devel libtool libcurl-devel libopenssl-devel perl-base pkgconf pkg-config python3-base tar xz xz-devel patchelf
+%define spack_trigger_recommended_packages autoconf bash bison bzip2 libzip-devel cmake-full ccache cpio diffutils findutils flex git-lfs info make makeinfo m4 ncurses-devel libtool libcurl-devel libopenssl-devel perl-base pkgconf pkg-config python3-base tar xz xz-devel
 
 %define spack_trigger_recommended_compilers  gcc gcc-c++ gcc-fortran
 
@@ -109,8 +109,10 @@ Requires:       sudo
 Requires:       tar
 Requires:       unzip
 Requires:       xz
+Requires:       (patchelf if (product(SUSE_SLE) >= 15.6 or product(Leap) or product(openSUSE)))
 Recommends:     %spack_trigger_recommended_packages %spack_trigger_recommended_compilers
 Recommends:     lua-lmod
+Recommends:     patchelf
 Requires:       (hwloc if hwloc-devel)
 Requires:       (hwloc-devel if hwloc)
 %else

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  4 07:14:54 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Make `patchelf` a mandatory dependency on products where it
+  is always available.
+
+-------------------------------------------------------------------
 Fri Mar 15 13:35:51 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Update Spack to version 0.21.2

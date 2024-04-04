@@ -487,4 +487,12 @@
   BCI-style base container by default (bsc#1221503). (forwarded request 1158547 from eeich)</comment>
     <requestid>1158555</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>ff9692722c872dc13a0efbe9480e37c0</srcmd5>
+    <version>0.21.2</version>
+    <time>1712262423</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1164612</requestid>
+  </revision>
 </revisionlist>
