@@ -221,4 +221,15 @@
     <comment></comment>
     <requestid>1149628</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>a3404a3fd0b9bb957fdd8be46f61f87b</srcmd5>
+    <version>unknown</version>
+    <time>1712262311</time>
+    <user>anag+factory</user>
+    <comment>- Update GNOME extension for GNOME shell 46 support
+  * add 0174-Fix-compatibility-issues-with-Gnome-shell-46.patch
+  * add 0175-Change-README.rst-to-refer-to-metadata.json.in-for-g.patch
+  * add 0176-metadata.json.in-change-compatible-gnome-shell-versi.patch</comment>
+    <requestid>1164390</requestid>
+  </revision>
 </revisionlist>

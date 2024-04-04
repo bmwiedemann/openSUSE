@@ -1,0 +1,26 @@
+From 84ab675b305603e8af6832d76803cbf155dca3e6 Mon Sep 17 00:00:00 2001
+From: Hedayat Vatankhah <hedayat.fwd@gmail.com>
+Date: Wed, 27 Mar 2024 14:54:05 +0330
+Subject: [PATCH 176/176] metadata.json.in: change compatible gnome-shell
+ version to 46
+
+---
+ data/metadata.json.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/metadata.json.in b/data/metadata.json.in
+index ddbd0a5..bdcdade 100644
+--- a/data/metadata.json.in
++++ b/data/metadata.json.in
+@@ -10,7 +10,7 @@
+     "gettext-domain": "hamster-shell-extension",
+     "settings-schema": "org.gnome.shell.extensions.project-hamster",
+     "shell-version": [
+-        "45"
++        "46"
+     ],
+     "url": "https://github.com/projecthamster/hamster-shell-extension.git",
+     "uuid": @UUID@
+-- 
+2.44.0
+

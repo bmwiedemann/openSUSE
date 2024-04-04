@@ -21,7 +21,7 @@
 # ext_gnome_version: latest GNOME shell version supported
 # min_gnome_version: earliest GNOME shell version supported
 %if 0%{?suse_version} >= 1550
-%global ext_gnome_version 45
+%global ext_gnome_version 46
 %global min_gnome_version 45
 %else
 %if 0%{?sle_version} >= 150400
@@ -137,6 +137,10 @@ Patch170:       0170-prefs.js-re-implement-for-GNOME-45.patch
 Patch171:       0171-metadata.json.in-GNOME-45-support.patch
 Patch172:       0172-README.rst-fixup-GNOME-shell-compatiblility.patch
 Patch173:       0173-Replace-global.log-by-console.log.patch
+# GNOME 46
+Patch174:       0174-Fix-compatibility-issues-with-Gnome-shell-46.patch
+Patch175:       0175-Change-README.rst-to-refer-to-metadata.json.in-for-g.patch
+Patch176:       0176-metadata.json.in-change-compatible-gnome-shell-versi.patch
 
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -282,6 +286,10 @@ cd hamster-shell-extension-%{ext_version}
 %patch -P 171 -p1
 %patch -P 172 -p1
 %patch -P 173 -p1
+# GNOME 46 support
+%patch -P 174 -p1
+%patch -P 175 -p1
+%patch -P 176 -p1
 
 %endif # suse_version >= 1600
 %endif # sle_version >= 150400
