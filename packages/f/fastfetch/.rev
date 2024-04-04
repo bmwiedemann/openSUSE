@@ -367,4 +367,22 @@ Bugfixes:
     * Improve stability; print more useful error message; avoid misuse (PublicIP / Weather)</comment>
     <requestid>1161283</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>58a2e0b83c8fd0f78623bd888bc06053</srcmd5>
+    <version>2.9.0</version>
+    <time>1712262374</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.9.0:
+  Features:
+    * Support Lxterminal version detection (Terminal, Linux)
+    * Support weston-terminal version and font detection (TerminalFont, Linux)
+    * Support am package manager detection (Packages, Linux)
+    * Support network prefix length detection for IPv6 (LocalIP)
+    * Display all IPs when multiple IPs are assigned to the same interface (LocalIP)
+    * Add option --localip-show-prefix-len to show network prefix length for both IPv4 and IPv6. Defaults to true (LocalIP)
+  Bugfixes:
+    * Fix network prefix length detection when the value is greater than 24 (LocalIP, Linux)
+    * For xfce4-terminal, use system mono font if no config file is found (TerminalFont, Linux)</comment>
+    <requestid>1164456</requestid>
+  </revision>
 </revisionlist>
