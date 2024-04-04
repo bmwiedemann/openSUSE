@@ -652,11 +652,3 @@
 %{_unitdir}/user@.service.d/10-login-barrier.conf
 %{_unitdir}/user@0.service.d/10-login-barrier.conf
 %{xinitconfdir}/xinitrc.d/50-systemd-user.sh
-%if %{with split_usr}
-/bin/systemctl
-/sbin/halt
-/sbin/init
-/sbin/poweroff
-/sbin/reboot
-/sbin/shutdown
-%endif

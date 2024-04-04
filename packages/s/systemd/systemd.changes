@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Apr  3 07:03:59 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Move systemd-repart from experimental to udev.
+
+-------------------------------------------------------------------
+Fri Mar 22 11:28:59 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Add 0001-Drop-support-for-efivar-SystemdOptions.patch (bsc#1220338)
+
+  Upstream deprecated it and plan to drop it in the future.
+
+  Let's get ahead and drop it now as this feature is unlikely to be used on SUSE
+  distros and it might be used to gain access to encrypted SLEM systems with
+  unattended disk unlock and with secure boot disabled.
+
+-------------------------------------------------------------------
+Thu Mar 21 13:37:16 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- The following patches have been merged into SUSE/v255 branch hence removed
+  from the OBS project.
+
+  5006-cgroup-Add-EffectiveMemoryMax-EffectiveMemoryHigh-an.patch
+  5007-test-Convert-rlimit-test-to-subtest-of-generic-limit.patch
+  5008-test-Add-effective-cgroup-limits-testing.patch
+  5009-cgroup-Restrict-effective-limits-with-global-resourc.patch
+  5010-cgroup-Rename-effective-limits-internal-table.patch
+
+- Import commit 56b53b17bcd8311dfb53f05b359b2812593883ab
+
+  56b53b17bc cgroup: Rename effective limits internal table (jsc#PED-5659)
+  7c9202317c cgroup: Restrict effective limits with global resource provision (jsc#PED-5659)
+  da858e68eb test: Add effective cgroup limits testing (jsc#PED-5659)
+  2f013357a5 test: Convert rlimit test to subtest of generic limit testing (jsc#PED-5659)
+  0a3ea7f367 cgroup: Add EffectiveMemoryMax=, EffectiveMemoryHigh= and EffectiveTasksMax= properties (jsc#PED-5659)
+
+-------------------------------------------------------------------
+Wed Mar 20 17:31:16 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Drop split_usr build conditional since both split-usr and unmerged-usr
+  supports have been removed since v255.
+
+- Don't use the "Patch:" directive with a suffix number as since the suffix
+  doesn't serve any purpose.
+
+-------------------------------------------------------------------
 Mon Mar 18 20:14:57 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Import commit be772961ada05afab21a72e225d28c26ef9fb1ea (merge of v255.4)

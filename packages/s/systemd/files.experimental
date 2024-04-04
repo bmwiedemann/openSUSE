@@ -6,16 +6,10 @@
 %dir %{_prefix}/lib/pcrlock.d/500-separator.pcrlock.d
 %dir %{_prefix}/lib/pcrlock.d/700-action-efi-exit-boot-services.pcrlock.d
 %dir %{_sysconfdir}/systemd/oomd.conf.d
-%dir %{_systemd_util_dir}/repart
-%dir %{_systemd_util_dir}/repart/definitions
-%dir %{_systemd_util_dir}/repart/definitions/confext.repart.d
-%dir %{_systemd_util_dir}/repart/definitions/portable.repart.d
-%dir %{_systemd_util_dir}/repart/definitions/sysext.repart.d
 %if %{with sd_boot}
 %dir %{_unitdir}/initrd.target.wants
 %endif
 %{_bindir}/oomctl
-%{_bindir}/systemd-repart
 %{_bindir}/systemd-vmspawn
 %if %{with sd_boot}
 %{_bindir}/ukify
@@ -38,7 +32,6 @@
 %{_mandir}/man5/oomd.conf.5.gz
 %{_mandir}/man5/oomd.conf.d.5.gz
 %{_mandir}/man5/org.freedesktop.oom1.5.gz
-%{_mandir}/man5/repart.d.5.gz
 %{_mandir}/man5/systemd.pcrlock.5.gz
 %{_mandir}/man5/systemd.pcrlock.d.5.gz
 %{_mandir}/man5/sysupdate.d.5.gz
@@ -65,8 +58,6 @@
 %{_mandir}/man8/systemd-pcrphase-sysinit.service.8.gz
 %{_mandir}/man8/systemd-pcrphase.service.8.gz
 %endif
-%{_mandir}/man8/systemd-repart.8.gz
-%{_mandir}/man8/systemd-repart.service.8.gz
 %{_mandir}/man8/systemd-storagetm.8.gz
 %{_mandir}/man8/systemd-storagetm.service.8.gz
 %{_mandir}/man8/systemd-sysupdate-reboot.service.8.gz
@@ -94,17 +85,6 @@
 %{_prefix}/lib/pcrlock.d/950-shutdown.pcrlock
 %{_prefix}/lib/pcrlock.d/990-final.pcrlock
 %{_systemd_util_dir}/oomd.conf
-%{_systemd_util_dir}/repart/definitions/confext.repart.d/10-root.conf
-%{_systemd_util_dir}/repart/definitions/confext.repart.d/20-root-verity.conf
-%{_systemd_util_dir}/repart/definitions/confext.repart.d/30-root-verity-sig.conf
-%{_systemd_util_dir}/repart/definitions/portable.repart.d/10-root.conf
-%{_systemd_util_dir}/repart/definitions/portable.repart.d/20-root-verity.conf
-%{_systemd_util_dir}/repart/definitions/portable.repart.d/30-root-verity-sig.conf
-%{_systemd_util_dir}/repart/definitions/sysext.repart.d/10-root.conf
-%{_systemd_util_dir}/repart/definitions/sysext.repart.d/20-root-verity.conf
-%{_systemd_util_dir}/repart/definitions/sysext.repart.d/30-root-verity-sig.conf
-%{_systemd_util_dir}/system/initrd-root-fs.target.wants/systemd-repart.service
-%{_systemd_util_dir}/system/sysinit.target.wants/systemd-repart.service
 %{_systemd_util_dir}/systemd-bsod
 %{_systemd_util_dir}/systemd-measure
 %{_systemd_util_dir}/systemd-oomd
@@ -155,7 +135,6 @@
 %{_unitdir}/systemd-pcrphase-sysinit.service
 %{_unitdir}/systemd-pcrphase.service
 %endif
-%{_unitdir}/systemd-repart.service
 %{_unitdir}/systemd-storagetm.service
 %{_unitdir}/systemd-sysupdate-reboot.service
 %{_unitdir}/systemd-sysupdate-reboot.timer

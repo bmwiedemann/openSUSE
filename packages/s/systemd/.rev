@@ -7129,4 +7129,37 @@ handle manual pages that consist only of a .so directive such as
 - Courtesy of spec formatters, remove redundant %defattr.</comment>
     <requestid>1159582</requestid>
   </revision>
+  <revision rev="419" vrev="2">
+    <srcmd5>bda5a96a8119b353322374e5aba6bfa6</srcmd5>
+    <version>255.4</version>
+    <time>1712262244</time>
+    <user>anag+factory</user>
+    <comment>- Move systemd-repart from experimental to udev.
+
+- Add 0001-Drop-support-for-efivar-SystemdOptions.patch (bsc#1220338)
+  Upstream deprecated it and plan to drop it in the future.
+  Let's get ahead and drop it now as this feature is unlikely to be used on SUSE
+  distros and it might be used to gain access to encrypted SLEM systems with
+  unattended disk unlock and with secure boot disabled.
+
+- The following patches have been merged into SUSE/v255 branch hence removed
+  from the OBS project.
+  5006-cgroup-Add-EffectiveMemoryMax-EffectiveMemoryHigh-an.patch
+  5007-test-Convert-rlimit-test-to-subtest-of-generic-limit.patch
+  5008-test-Add-effective-cgroup-limits-testing.patch
+  5009-cgroup-Restrict-effective-limits-with-global-resourc.patch
+  5010-cgroup-Rename-effective-limits-internal-table.patch
+- Import commit 56b53b17bcd8311dfb53f05b359b2812593883ab
+  56b53b17bc cgroup: Rename effective limits internal table (jsc#PED-5659)
+  7c9202317c cgroup: Restrict effective limits with global resource provision (jsc#PED-5659)
+  da858e68eb test: Add effective cgroup limits testing (jsc#PED-5659)
+  2f013357a5 test: Convert rlimit test to subtest of generic limit testing (jsc#PED-5659)
+  0a3ea7f367 cgroup: Add EffectiveMemoryMax=, EffectiveMemoryHigh= and EffectiveTasksMax= properties (jsc#PED-5659)
+
+- Drop split_usr build conditional since both split-usr and unmerged-usr
+  supports have been removed since v255.
+- Don't use the &quot;Patch:&quot; directive with a suffix number as since the suffix
+  doesn't serve any purpose.</comment>
+    <requestid>1164306</requestid>
+  </revision>
 </revisionlist>

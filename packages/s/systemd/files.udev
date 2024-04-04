@@ -22,6 +22,13 @@
 %dir %{_sysconfdir}/udev/iocost.conf.d
 %dir %{_sysconfdir}/udev/rules.d
 %dir %{_systemd_util_dir}/network
+%if %{without bootstrap}
+%dir %{_systemd_util_dir}/repart
+%dir %{_systemd_util_dir}/repart/definitions
+%dir %{_systemd_util_dir}/repart/definitions/confext.repart.d
+%dir %{_systemd_util_dir}/repart/definitions/portable.repart.d
+%dir %{_systemd_util_dir}/repart/definitions/sysext.repart.d
+%endif
 %dir %{_systemd_util_dir}/system-sleep
 %dir %{_udevhwdbdir}
 %dir %{_udevrulesdir}
@@ -40,6 +47,9 @@
 %{_bindir}/systemd-cryptsetup
 %endif
 %{_bindir}/systemd-hwdb
+%if %{without bootstrap}
+%{_bindir}/systemd-repart
+%endif
 %{_bindir}/udevadm
 %if %{without bootstrap}
 %{_datadir}/bash-completion/completions/bootctl
@@ -66,6 +76,7 @@
 %{_mandir}/man5/modules-load.d.5.gz
 %{_mandir}/man5/pstore.conf.5.gz
 %{_mandir}/man5/pstore.conf.d.5.gz
+%{_mandir}/man5/repart.d.5.gz
 %{_mandir}/man5/sleep.conf.d.5.gz
 %{_mandir}/man5/systemd-sleep.conf.5.gz
 %{_mandir}/man5/timesyncd.conf.5.gz
@@ -117,6 +128,8 @@
 %{_mandir}/man8/systemd-random-seed.service.8.gz
 %{_mandir}/man8/systemd-remount-fs.8.gz
 %{_mandir}/man8/systemd-remount-fs.service.8.gz
+%{_mandir}/man8/systemd-repart.8.gz
+%{_mandir}/man8/systemd-repart.service.8.gz
 %{_mandir}/man8/systemd-rfkill.8.gz
 %{_mandir}/man8/systemd-rfkill.service.8.gz
 %{_mandir}/man8/systemd-rfkill.socket.8.gz
@@ -160,7 +173,22 @@
 %{_systemd_util_dir}/network/99-default.link
 %{_systemd_util_dir}/ntp-units.d/80-systemd-timesync.list
 %{_systemd_util_dir}/pstore.conf
+%if %{without bootstrap}
+%{_systemd_util_dir}/repart/definitions/confext.repart.d/10-root.conf
+%{_systemd_util_dir}/repart/definitions/confext.repart.d/20-root-verity.conf
+%{_systemd_util_dir}/repart/definitions/confext.repart.d/30-root-verity-sig.conf
+%{_systemd_util_dir}/repart/definitions/portable.repart.d/10-root.conf
+%{_systemd_util_dir}/repart/definitions/portable.repart.d/20-root-verity.conf
+%{_systemd_util_dir}/repart/definitions/portable.repart.d/30-root-verity-sig.conf
+%{_systemd_util_dir}/repart/definitions/sysext.repart.d/10-root.conf
+%{_systemd_util_dir}/repart/definitions/sysext.repart.d/20-root-verity.conf
+%{_systemd_util_dir}/repart/definitions/sysext.repart.d/30-root-verity-sig.conf
+%endif
 %{_systemd_util_dir}/sleep.conf
+%if %{without bootstrap}
+%{_systemd_util_dir}/system/initrd-root-fs.target.wants/systemd-repart.service
+%{_systemd_util_dir}/system/sysinit.target.wants/systemd-repart.service
+%endif
 %{_systemd_util_dir}/systemd-backlight
 %{_systemd_util_dir}/systemd-battery-check
 %if %{without bootstrap}
@@ -341,6 +369,9 @@
 %endif
 %{_unitdir}/systemd-random-seed.service
 %{_unitdir}/systemd-remount-fs.service
+%if %{without bootstrap}
+%{_unitdir}/systemd-repart.service
+%endif
 %{_unitdir}/systemd-rfkill.service
 %{_unitdir}/systemd-rfkill.socket
 %{_unitdir}/systemd-suspend-then-hibernate.service
@@ -358,7 +389,4 @@
 %if %{without bootstrap}
 %{_unitdir}/veritysetup-pre.target
 %{_unitdir}/veritysetup.target
-%endif
-%if %{with split_usr}
-/sbin/udevadm
 %endif
