@@ -58,4 +58,18 @@
     <comment>GNOME 46 (forwarded request 1158141 from dimstar)</comment>
     <requestid>1159443</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>acac01f5010deeb5b46c4f62836842a6</srcmd5>
+    <version>46.1</version>
+    <time>1712262406</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.1:
+  + Fix fill-space option not being applied when changing the
+    orientation in print preview.
+  + Fix PNGs not being available when browsing images on SMB
+    shares.
+  + Don't animate switching between images with the mouse fwd/back
+    buttons. (forwarded request 1164513 from dimstar)</comment>
+    <requestid>1164567</requestid>
+  </revision>
 </revisionlist>

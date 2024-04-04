@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  4 08:16:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.1:
+  + Fix fill-space option not being applied when changing the
+    orientation in print preview.
+  + Fix PNGs not being available when browsing images on SMB
+    shares.
+  + Don't animate switching between images with the mouse fwd/back
+    buttons.
+
+-------------------------------------------------------------------
 Fri Mar 15 07:08:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:
