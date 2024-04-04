@@ -21,14 +21,14 @@
 %define archive_name sealed-secrets
 
 Name:           kubeseal
-Version:        0.26.0
+Version:        0.26.2
 Release:        0
 Summary:        CLI for encrypting secrets to SealedSecrets
 License:        Apache-2.0
 URL:            https://github.com/bitnami-labs/sealed-secrets
 Source:         %{archive_name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.17
+BuildRequires:  go >= 1.21
 
 %description
 Problem: "I can manage all my K8s config in git, except Secrets."
