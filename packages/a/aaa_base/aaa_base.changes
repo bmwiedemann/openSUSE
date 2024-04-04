@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 02 11:16:55 UTC 2024 - lnussel@suse.com
+
+- Update to version 84.87+git20240402.16596d1:
+  * add alacritty to DIR_COLORS
+  * Make sure tput it present before resetting TERM
+  * Add mc helpers for both tcsh and bash resources
+  * Do not overwrite escape sequences for xterm like
+  * Check for valid TERM
+
+-------------------------------------------------------------------
 Fri Feb 02 12:55:26 UTC 2024 - ro@suse.com
 
 - Update to version 84.87+git20240202.9526d46:

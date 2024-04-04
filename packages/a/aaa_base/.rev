@@ -4126,4 +4126,17 @@
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1221818</comment>
     <requestid>1160121</requestid>
   </revision>
+  <revision rev="498" vrev="1">
+    <srcmd5>940240a3afc4032cbd0c0d43983d0113</srcmd5>
+    <version>84.87+git20240402.16596d1</version>
+    <time>1712262237</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 84.87+git20240402.16596d1:
+  * add alacritty to DIR_COLORS
+  * Make sure tput it present before resetting TERM
+  * Add mc helpers for both tcsh and bash resources
+  * Do not overwrite escape sequences for xterm like
+  * Check for valid TERM</comment>
+    <requestid>1164080</requestid>
+  </revision>
 </revisionlist>
