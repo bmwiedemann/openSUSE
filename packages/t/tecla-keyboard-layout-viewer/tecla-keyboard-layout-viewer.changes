@@ -23,7 +23,33 @@ Tue Jan 16 13:23:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
   + Add --version command line option.
   + Fix blurry keys.
   + Fix crash on unknown keymap.
+    (bsc#1220208)
   + Updated translations.
+- Remove tecla-return-NULL-if-no-xkb_keymap.patch:
+  Since the patch is a upstream backporing and is released in this
+  update.
+- Remove tecla-handle-TeclaModel-constructor-returning-NULL.patch:
+  Since the patch is a upstream backporing and is released in this
+  update.
+
+-------------------------------------------------------------------
+Fri Jan 12 17:59:06 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add tecla-return-NULL-if-no-xkb_keymap.patch:
+  Backporting d6760195 from upstream, Fix tecla crash in Czech(QWERTY)
+  keyboard in SLE. avoid to return NULL if no xkb_keymap could be
+  created due to does not know about the given name/variant.
+  (bsc#1220208)
+
+-------------------------------------------------------------------
+Thu Jan 11 17:50:12 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add tecla-handle-TeclaModel-constructor-returning-NULL.patch:
+  Backporting 931112ae from upstream, Fix tecla crash in Czech(QWERTY)
+  keyboard in SLE. This might be the case if an unknown keymap name
+  is passed as a commandline argument. We ATM just show a window with
+  empty keys.
+  (bsc#1220208)
 
 -------------------------------------------------------------------
 Sat Sep 16 15:34:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
