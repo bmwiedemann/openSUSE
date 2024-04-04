@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Apr  3 17:35:46 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.42:
+  * General
+    - edge annotation arrow head color @aabidsofi19 (#10667)
+    - Fix Edge Annotation Relation @aabidsofi19 (#10665)
+  * Meshery CLI
+    - feat: generate relationship docs @RipulHandoo (#10670)
+  * Meshery UI
+    - Bump eslint from 8.52.0 to 8.57.0 in /ui @dependabot (#10654)
+    - upgrade tar from 6.1.15 to 6.2.1 @deepak4566 (#10647)
+    - Bump @babel/traverse from 7.23.9 to 7.24.1 in /ui @dependabot
+      (#10656)
+    - Bump cypress from 13.6.4 to 13.7.1 in /provider-ui
+      @dependabot (#10659)
+    - chore: replace dashboard popup image @dragon-slayer875
+      (#10668)
+    - fix: dashboard charts @aabidsofi19 (#10669)
+  * Maintenance
+    - Bump eslint from 8.52.0 to 8.57.0 in /ui @dependabot (#10654)
+    - Bump fortio.org/fortio from 1.63.2 to 1.63.5 @dependabot
+      (#10653)
+    - Bump github.com/gosimple/slug from 1.13.1 to 1.14.0
+      @dependabot (#10651)
+    - Bump @babel/traverse from 7.23.9 to 7.24.1 in /ui @dependabot
+      (#10656)
+    - Bump cypress from 13.6.4 to 13.7.1 in /provider-ui
+      @dependabot (#10659)
+  * Documentation
+    - Remove meshery-perf references @lekaf974 (#10644)
+    - feat: generate relationship docs @RipulHandoo (#10670)
+  * Security
+    - upgrade tar from 6.1.15 to 6.2.1 @deepak4566 (#10647)
+
+-------------------------------------------------------------------
+Wed Apr  3 17:22:33 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.41:
+  * General
+    - update parent child rels @aabidsofi19 (#10649)
+  * Meshery UI
+    - Bump postcss from 8.4.31 to 8.4.38 in /ui @dependabot
+      (#10657)
+    - Bump @mui/icons-material from 5.14.19 to 5.15.14 in
+      /provider-ui @dependabot (#10660)
+    - Bump eslint-config-next from 14.1.3 to 14.1.4 in /provider-ui
+      @dependabot (#10661)
+  * Maintenance
+    - Bump gorm.io/gorm from 1.25.5 to 1.25.9 @dependabot (#10655)
+    - Bump postcss from 8.4.31 to 8.4.38 in /ui @dependabot
+      (#10657)
+    - Bump @mui/icons-material from 5.14.19 to 5.15.14 in
+      /provider-ui @dependabot (#10660)
+    - Bump eslint-config-next from 14.1.3 to 14.1.4 in /provider-ui
+      @dependabot (#10661)
+  * Documentation
+    - hide radio buttons on api-ref @vishalvivekm (#10664)
+    - fix docs search field @vishalvivekm (#10650)
+
+-------------------------------------------------------------------
 Sat Mar 30 10:30:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.40:
