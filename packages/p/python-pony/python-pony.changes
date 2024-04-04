@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  4 11:06:06 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Do not run test_json, it fails with sqlite 3.45 gh#ponyorm/pony#704
+
+-------------------------------------------------------------------
 Fri Feb 16 16:52:02 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Disable python312 build: upstream is very adamant about not

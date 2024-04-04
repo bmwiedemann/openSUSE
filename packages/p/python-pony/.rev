@@ -108,4 +108,12 @@
     <comment></comment>
     <requestid>1147165</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>0f2382aecd64d0b1547dd1318d69133f</srcmd5>
+    <version>0.7.17</version>
+    <time>1712262421</time>
+    <user>anag+factory</user>
+    <comment>- Do not run test_json, it fails with sqlite 3.45 gh#ponyorm/pony#704</comment>
+    <requestid>1164571</requestid>
+  </revision>
 </revisionlist>
