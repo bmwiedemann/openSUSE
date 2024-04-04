@@ -1,7 +1,7 @@
 #
 # spec file for package xca
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2023 Jonathan Brielmaier <jbrielmaier@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           xca
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        An RSA key and certificate management tool
 License:        BSD-3-Clause
@@ -33,6 +33,7 @@ BuildRequires:  libqt5-linguist
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Help)
 BuildRequires:  pkgconfig(Qt5Sql)
@@ -92,11 +93,12 @@ Bash completion script for %{name}.
 %license COPYRIGHT
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_datadir}/icons/hicolor/*/apps/*%{name}.png
 %{_datadir}/icons/hicolor/*/mimetypes/x-xca-*.png
 %{_datadir}/mime/packages/%{name}.xml
 %{_datadir}/pixmaps/%{name}*
 %{_datadir}/%{name}
+%{_datadir}/metainfo/*.xml
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files bash-completion

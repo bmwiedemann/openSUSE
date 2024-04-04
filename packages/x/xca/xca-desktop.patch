@@ -1,10 +1,10 @@
-diff --git a/misc/xca.desktop b/misc/xca.desktop
-index 2cdd7a9..89bc823 100644
---- a/misc/xca.desktop
-+++ b/misc/xca.desktop
-@@ -13,5 +13,5 @@ Comment[pt_BR]=Interface gráfica para gerenciar e emitir Certificados X.509
+Index: xca-2.6.0/misc/xca.desktop
+===================================================================
+--- xca-2.6.0.orig/misc/xca.desktop
++++ xca-2.6.0/misc/xca.desktop
+@@ -15,5 +15,5 @@ Comment[it]=Interfaccia grafica per gene
  Exec=xca %F
- Icon=xca
+ Icon=de.hohnstaedt.xca
  Terminal=false
 -Categories=Application;Utility;Qt;
 +Categories=Utility;DesktopUtility;

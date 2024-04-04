@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Apr  3 11:43:34 UTC 2024 - pgajdos@suse.com
+
+- version update to 2.6.0
+  * Export certificates for ovpn file
+  * SHA1 based MAC for PKCS12
+  * Support legacy keys
+    and automatically transform them if possible.
+  * Renew Certificate freeze XCA
+  * paste an encrypted private key results in a crash
+  * Fix crash when deleting CA certificates
+  * add flatpak build information and github action
+  * Subject Alternative Name not filled by all CN
+  * Improve import: Finish multi import when empty
+  * Add File extensions in Info.plist supported by XCA
+  * Quick view of certificates without trying to open XCA
+  * pass private key password
+  * Export PEM + Key in one File
+  * Impossible to import PKCS#12 (RC40_CBC)
+  * Make XCA AppStore compliant with -DAPPSTORE_COMPLIANT=ON
+- modified patches
+  % xca-desktop.patch (refreshed)
+
+-------------------------------------------------------------------
 Thu Nov 16 07:58:48 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Fix build error in Leap.
