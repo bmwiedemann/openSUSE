@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  4 08:02:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.0.1:
+  + loaders/utils: Register SIGSYS handler as early as possible for
+    better debugging for unallowed syscalls.
+  + sandbox: Allow membarrier, open, stat syscalls.
+
+-------------------------------------------------------------------
 Mon Mar 18 08:06:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.0.0:
