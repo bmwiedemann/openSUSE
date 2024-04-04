@@ -18,7 +18,7 @@
 
 %define repo github.com/ipfs/kubo
 Name:           kubo
-Version:        0.26.0
+Version:        0.27.0
 Release:        0
 Summary:        IPFS implementation in Go
 License:        MIT
@@ -32,7 +32,7 @@ Patch0:         https://github.com/ipfs/kubo/pull/10243.patch
 
 BuildRequires:  git
 # >= 1.14.4 is ambiguous
-BuildRequires:  go1.20
+BuildRequires:  go1.21
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zstd
 Requires:       fuse
@@ -63,6 +63,8 @@ cp cmd/ipfs/ipfs %{buildroot}%{_bindir}
 cat << EOF >>  %{buildroot}%{_userunitdir}/ipfs.service
 [Unit]
 Description=InterPlanetary File System (IPFS) daemon
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 ExecStart=/usr/bin/ipfs daemon
@@ -74,6 +76,8 @@ EOF
 cat << EOF >> %{buildroot}%{_unitdir}/ipfs@.service
 [Unit]
 Description=InterPlanetary File System (IPFS) daemon
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 User=%i

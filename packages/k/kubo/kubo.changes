@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr  4 17:15:55 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.27.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.27.0
+  * Gateway: support for /api/v0 is deprecated
+  * IPNS resolver cache's TTL can now be configured via Ipns.MaxCacheTTL
+  * RPC client: deprecated DHT API, added Routing API
+  * Deprecated DHT commands removed from /api/v0/dht
+  * Repository migrations are now trustless
+
+- Let .service files wait for network-online.target (boo#1222194)
+
+-------------------------------------------------------------------
 Sat Jan 27 15:44:31 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to 0.26.0 - for details see

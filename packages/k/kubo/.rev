@@ -80,4 +80,19 @@ now with fixed build</comment>
   * Commands ipfs key sign and ipfs key verify</comment>
     <requestid>1142196</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5d87132c3ad2076056ecafca930f9f79</srcmd5>
+    <version>0.27.0</version>
+    <time>1712262436</time>
+    <user>anag+factory</user>
+    <comment>Let .service files wait for network-online.target (boo#1222194)
+- Update to 0.27.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.27.0
+  * Gateway: support for /api/v0 is deprecated
+  * IPNS resolver cache's TTL can now be configured via Ipns.MaxCacheTTL
+  * RPC client: deprecated DHT API, added Routing API
+  * Deprecated DHT commands removed from /api/v0/dht
+  * Repository migrations are now trustless</comment>
+    <requestid>1165002</requestid>
+  </revision>
 </revisionlist>
