@@ -445,4 +445,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1149619</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b1171d5b276506525391d33b13feadac</srcmd5>
+    <version>23.2.5</version>
+    <time>1712262285</time>
+    <user>anag+factory</user>
+    <comment>- Security update 23.2.5 
+  This release contains the 3 security fixes that actually apply to
+  Xwayland reported in the security advisory of April 3rd 2024
+  * CVE-2024-31080
+  * CVE-2024-31081
+  * CVE-2024-31083
+  Additionally, it also contains a couple of other fixes, a copy/paste
+  error in the DeviceStateNotify event and a fix to enable buttons with
+  pointer gestures for backward compatibility with legacy X11 clients.</comment>
+    <requestid>1164509</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr  4 08:07:32 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Security update 23.2.5 
+  This release contains the 3 security fixes that actually apply to
+  Xwayland reported in the security advisory of April 3rd 2024
+  * CVE-2024-31080
+  * CVE-2024-31081
+  * CVE-2024-31083
+  Additionally, it also contains a couple of other fixes, a copy/paste
+  error in the DeviceStateNotify event and a fix to enable buttons with
+  pointer gestures for backward compatibility with legacy X11 clients.
+
+-------------------------------------------------------------------
 Thu Feb 15 17:13:03 UTC 2024 - Joan Torres <joan.torres@suse.com>
 
 - Don't provide xorg-x11-server-source
