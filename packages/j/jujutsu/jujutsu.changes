@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Apr  4 05:15:23 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.16.0:
+  * Deprecations
+    - jj move was deprecated in favor of jj squash.
+  * Breaking changes
+    - The git_head template keyword now returns an optional value
+      instead of a list of 0 or 1 element.
+    - The jj sparse set --edit/--reset flags were split up into jj
+      sparse edit/reset subcommands respectively.
+    - The jj sparse subcommands now parse and print patterns as
+      workspace-relative paths.
+    - The jj log command no longer uses the default revset when a
+      path is specified.
+  * New features
+    - Config now supports rgb hex colors (in the form #rrggbb)
+      wherever existing color names are supported.
+    - ui.default-command now accepts multiple string arguments, for
+      more complex default jj commands.
+    - Graph node symbols are now configurable via templates
+      * templates.log_node
+      * templates.op_log_node
+    - jj log now includes synthetic nodes in the graph where some
+      revisions were elided.
+    - jj squash now accepts --from and --into (also aliased as
+      --to) if -r is not specified. It can now be used for all use
+      cases where jj move could previously be used. The --from
+      argument accepts a revset that resolves to more than one
+      revision.
+    - Commit templates now support immutable keyword.
+    - New template function coalesce(content, ..) is added.
+    - Timestamps are now shown in local timezone and without
+      milliseconds and timezone offset by default.
+    - jj git push now prints messages from the remote.
+    - jj branch list now supports a --conflicted/-c option to show
+      only conflicted branches.
+    - jj duplicate and jj abandon can now take more than a single
+      -r argument, for consistency with other commands.
+    - jj branch list now allows combining -r REVISIONS/NAMES and -a
+      options.
+    - --all is now named --all-remotes for jj branch list
+    - There is a new global --quiet flag to silence commands'
+      non-primary output.
+    - jj split now supports a --siblings/-s option that splits the
+      target revision into siblings with the same parents and
+      children.
+    - new function working_copies() for revsets to show the working
+      copy commits of all workspaces.
+  * Fixed bugs
+    - None
+
+-------------------------------------------------------------------
 Sat Mar 16 17:29:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.15.1:
