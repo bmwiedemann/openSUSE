@@ -17,7 +17,7 @@
 
 
 Name:           python-opentelemetry-exporter-otlp-proto-common
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        OpenTelemetry Protobuf encoding
 License:        Apache-2.0
@@ -27,13 +27,13 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module opentelemetry-proto == 1.23.0}
-BuildRequires:  %{python_module opentelemetry-sdk == 1.23.0}
+BuildRequires:  %{python_module opentelemetry-proto = %{version}}
+BuildRequires:  %{python_module opentelemetry-sdk = %{version}}
 BuildRequires:  %{python_module opentelemetry-test-utils}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-opentelemetry-proto == 1.23.0
+Requires:       python-opentelemetry-proto = %{version}
 BuildArch:      noarch
 %python_subpackages
 
