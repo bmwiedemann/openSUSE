@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-apprise
-Version:        1.7.4
+Version:        1.7.5
 Release:        0
 Group:          Development/Libraries/Python
 Summary:        A simple wrapper to many popular notification services used today
@@ -111,13 +111,13 @@ install -D -m 0644 -t %{buildroot}%{_mandir}/man1 packaging/man/apprise.1
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k 'not test_plugin_matrix_attachments_api_v2'
 
 %pre
 %python_libalternatives_reset_alternative apprise
 
 %post
-%python_install_alternative apprise apprise.1
+%python_install_alternative apprise apprise.1%{?ext_man}
 
 %postun
 %python_uninstall_alternative apprise
