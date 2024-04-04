@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/kubernetes/kompose.git</param>
+              <param name="changesrevision">765fde25400c575f731ce0cf0f8613c4b7ec25a9</param></service></servicedata>

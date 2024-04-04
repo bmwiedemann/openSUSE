@@ -1,7 +1,7 @@
 #
 # spec file for package kompose
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kompose
-Version:        1.30.0
+Version:        1.32.0
 Release:        0
 Summary:        Go from Docker Compose to Kubernetes
 License:        Apache-2.0
@@ -39,7 +39,7 @@ kompose is a tool to help users who are familiar with docker-compose move to Kub
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Requires:       bash-completion
-Supplements:    packageand(%{name}:bash)
+Supplements:    (%{name} and bash)
 BuildArch:      noarch
 
 %description bash-completion
@@ -71,10 +71,12 @@ mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
 # Install the bash autocomplete file
 install -Dm 644 %{name}-autocomplete.sh %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 
+%check
+
 %files
 %{_bindir}/%{name}
 %license LICENSE
-%doc CHANGELOG.md README.md
+%doc README.md
 
 %files bash-completion
 %{_datadir}/bash-completion

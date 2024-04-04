@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Thu Apr 04 05:52:39 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.32.0:
+  * docs: update installation page to have arm64 mention by @cdrage
+    in #1736
+  * chore(deps)(deps): bump golang.org/x/net from 0.15.0 to 0.17.0
+    by @dependabot in #1734
+  * chore(deps)(deps): bump github.com/google/go-cmp from 0.5.9 to
+    0.6.0 by @dependabot in #1733
+  * fix e2e test by @AhmedGrati in #1737
+  * chore(deps)(deps): bump k8s.io/apimachinery from 0.28.2 to
+    0.28.3 by @dependabot in #1742
+  * fix: make transforming more deterministic by @AhmedGrati in
+    #1744
+  * fix: env_file configmap name length by @ThijsBroersen in #1743
+  * chore(deps)(deps): bump github.com/docker/docker from
+    23.0.3+incompatible to 24.0.7+incompatible by @dependabot in
+    #1747
+  * chore(deps)(deps): bump github.com/compose-spec/compose-go from
+    1.19.0 to 1.20.0 by @dependabot in #1740
+  * chore(deps)(deps): bump golang.org/x/tools from 0.13.0 to
+    0.14.0 by @dependabot in #1723
+  * remove status field from generated yaml by @shubhindia in #1746
+  * chore: add warning when no service is selected by @AhmedGrati
+    in #1750
+  * chore(deps)(deps): bump github.com/spf13/cobra from 1.7.0 to
+    1.8.0 by @dependabot in #1756
+  * test: add unit-test for PR 1743 v2 by @AhmedGrati in #1752
+  * feat: Add COMPOSE_FILE env variable by @AhmedGrati in #1753
+  * fix: disable annotations when flag
+    --with-kompose-annotation=false is specified by @AhmedGrati in
+    #1754
+  * fix: lowercase resources names by @AhmedGrati in #1755
+  * chore(deps)(deps): bump k8s.io/api from 0.28.2 to 0.28.4 by
+    @dependabot in #1762
+  * chore(deps)(deps): bump golang.org/x/tools from 0.14.0 to
+    0.15.0 by @dependabot in #1760
+  * chore(deps)(deps): bump github.com/compose-spec/compose-go from
+    1.20.0 to 1.20.1 by @dependabot in #1761
+  * deleted CHANGELOG.md by @kundan2707 in #1765
+  * updated link for daemonset by @kundan2707 in #1767
+  * chore(deps)(deps): bump github.com/compose-spec/compose-go from
+    1.20.1 to 1.20.2 by @dependabot in #1768
+  * Removed fedora installation instruction from installation.md by
+    @utkarsh-singh1 in #1774
+  * chore(deps)(deps): bump github.com/containerd/containerd from
+    1.6.18 to 1.6.26 by @dependabot in #1791
+  * chore(ci)(deps): bump actions/upload-artifact from 3 to 4 by
+    @dependabot in #1784
+  * chore(deps)(deps): bump golang.org/x/tools from 0.15.0 to
+    0.16.1 by @dependabot in #1781
+  * chore(ci)(deps): bump actions/setup-go from 4 to 5 by
+    @dependabot in #1776
+  * chore(deps)(deps): bump github.com/spf13/cast from 1.5.1 to
+    1.6.0 by @dependabot in #1769
+  * fix issue #1683 by @realgam3 in #1684
+  * feat(1765): remove useless keys from the output yml by
+    @martinjirku in #1775
+  * Initialize OpenVEX feed by @dipesh-rawat in #1787
+  * test: fix e2e tests for configmap pod test by @AhmedGrati in
+    #1801
+  * Add new examples to kompose by @cdrage in #1803
+  * 2024 copyright change by @cdrage in #1805
+  * change wording for redis leader by @cdrage in #1804
+  * Add Labels for CronJob #1795 by @realgam3 in #1806
+  * 1.32.0 Release by @cdrage in #1811
+
+-------------------------------------------------------------------
+Thu Apr 04 05:39:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.31.2:
+  * 1.31.2 Release (#1735)
+  * only add namespace if specified (#1731)
+
+-------------------------------------------------------------------
+Thu Apr 04 05:34:37 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.31.1:
+  * 1.31.1 Release (#1726)
+  * bug: fixes bug with error out with using kompose convert with
+    no -f (#1725)
+
+-------------------------------------------------------------------
+Thu Apr 04 05:01:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.31.0:
+  * 1.31.0 Release (#1714)
+  * Apply suggestions from code review
+  * chore(deps)(deps): bump gotest.tools/v3 from 3.5.0 to 3.5.1
+    (#1710)
+  * fix: typo
+  * fix: removing unused property
+  * test: adding tests for convert
+  * Delete output.yaml
+  * Adding support for --profile cmd option
+
+-------------------------------------------------------------------
 Tue Jul 18 13:53:42 UTC 2023 - Stefan Weiberg <opensuse@hibiki.eu>
 
 - Fix spec to require go >= 1.18
