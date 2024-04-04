@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr  3 07:19:28 UTC 2024 - pgajdos@suse.com
+
+- version update to 0.73.1
+  * Bug fixes:
+    - Fix https://issues.redhat.com/browse/RHEL-27657
+    - subject-py: Fix memory leak
+  * Others:
+    - MergedTransaction: Calculate RPM difference between two same versions as no-op
+    - Onboard packit tests
+    - Add virtual destructor to TransactionItem
+
+-------------------------------------------------------------------
 Thu Feb 15 08:42:33 UTC 2024 - pgajdos@suse.com
 
 - version update to 0.73.0
