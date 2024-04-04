@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 27 20:39:57 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update config-ini to version 0.2.7.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sun Nov  5 18:06:09 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update config-ini to version 0.2.7.0.
