@@ -29,7 +29,7 @@ BuildRequires:
 %description
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %configure
@@ -38,8 +38,8 @@ BuildRequires:
 %install
 %make_install
 
-%post
-%postun
+%check
+%make_build check
 
 %files
 %license COPYING
