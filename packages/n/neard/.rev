@@ -116,4 +116,12 @@
   + Addresses boo#1219314. (forwarded request 1146778 from dimstar)</comment>
     <requestid>1158024</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>db879d832c781e579c721db8ba0c9c3f</srcmd5>
+    <version>0.19</version>
+    <time>1712262316</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1164397</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 
 Name:           neard
-Version:        0.18
+Version:        0.19
 Release:        0
 Summary:        NFC for Linux
 License:        GPL-2.0-only
