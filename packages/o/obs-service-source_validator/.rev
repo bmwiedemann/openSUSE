@@ -675,4 +675,13 @@ last submission had wrong tar ball for unknown reason</comment>
     <comment></comment>
     <requestid>1142980</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>34dc499449d910f5295dd7fb6996a918</srcmd5>
+    <version>0.35</version>
+    <time>1712262307</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.35:
+  * Modifications in line with latest cargo vendor tool</comment>
+    <requestid>1164389</requestid>
+  </revision>
 </revisionlist>
