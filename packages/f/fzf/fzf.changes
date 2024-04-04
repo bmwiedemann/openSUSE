@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr  4 19:01:56 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.49.0:
+  * Ingestion performance improved by around 40% (more or less
+    depending on options)
+  * --info=hidden and --info=inline-right will no longer hide the
+    horizontal separator by default. This gives you more
+    flexibility in customizing the layout.
+  * Added two environment variables exported to the child
+    processes. FZF_PREVIEW_LABEL and FZF_BORDER_LABEL.
+  * Renamed track action to track-current to highlight the
+    difference between the global tracking state set by --track and
+    a one-off tracking action. track is still available as an
+    alias.
+  * Added untrack-current and toggle-track-current actions
+  * Bug fixes and minor improvements
+
+-------------------------------------------------------------------
 Mon Apr  1 21:34:56 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Revendor
