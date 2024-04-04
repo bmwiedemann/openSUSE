@@ -538,4 +538,12 @@
     <comment>- Generate auctex-13.3-auto-TL-2024.tar.xz for TeXLive 2024</comment>
     <requestid>1162284</requestid>
   </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>3ec080a4a763a294c486eb206f1c1610</srcmd5>
+    <version>13.3</version>
+    <time>1712262306</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1164387</requestid>
+  </revision>
 </revisionlist>

@@ -56,6 +56,7 @@ URL:            https://www.gnu.org/software/auctex
 # PATCH-FEATURE-UPSTREAM dvips.patch
 Patch0:         dvips.patch
 Patch1:         auctex-13.1-expand.patch
+Patch2:         ignore-errors.patch
 BuildArch:      noarch
 
 %description
@@ -80,6 +81,7 @@ you cannot use this package for XEmacs.
 %setup -n auctex-%{version}
 %patch -P0
 %patch -P1
+%patch -P2
 
 %build
     unset ${!LC_*}

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 27 10:37:32 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch ignore-errors.patch
+  * Allow to scan *all* style files 
+- Refresh auctex-13.3-auto-TL-2024.tar.xz
+
+-------------------------------------------------------------------
 Tue Mar 26 12:28:14 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Generate auctex-13.3-auto-TL-2024.tar.xz for TeXLive 2024 
