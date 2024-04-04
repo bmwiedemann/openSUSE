@@ -1,7 +1,7 @@
 #
 # spec file for package trippy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           trippy
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        A network diagnostic tool
 License:        Apache-2.0
 Group:          Productivity/Networking/Diagnostic
-Url:            https://github.com/fujiapple852/trippy
+URL:            https://github.com/fujiapple852/trippy
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        cargo_config
-BuildRequires:	cargo-packaging
+BuildRequires:  cargo-packaging
 
 %description
 Trippy combines the functionality of traceroute and ping and is designed
@@ -34,7 +33,6 @@ to assist with the analysis of networking issues.
 
 %prep
 %autosetup -a 1
-install -D -m 644 %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Apr 03 15:57:37 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Remove deprecated cargo_config
+- Use upstream changelogs instead of generated ones from _service
+- Update to version 0.10.0:
+  Added:
+  * Added support for calculating and displaying jitter
+  * Added support for customizing columns
+  * Added support for reordering and toggling column visibility in
+    Tui
+  * Added support for dublin ECMP routing for IPv6/udp
+  * Added support for IPinfo flavoured mmdb files
+  * Added support for IPv4->IPv6 and IPv6->IPv4 DNS fallback modes
+  * Added TUN based simulation tests
+  * Added support for last src port (S) and last dest port (P)
+    custom columns
+  * Added support for last sequence (Q) custom columns
+  * Added support for more named theme colors
+  Changed:
+  * Ensure paris and dublin ECMP strategy are only used with
+    supported protocols
+  * Restrict flows to paris and dublin ECMP strategies
+  * Improved Tui table column layout logic
+  * Use exclusive reference &mut for all Socket operations
+  * Reduced maximum sequence per round from 1024 to 512
+  Fixed
+  * Fixed off-by-one bug in max-rounds calculation
+  * Fixed panic with expand-hosts-max Tui command
+  * Fixed failure to parse generated config file on Windows
+  * Fixed tracer panic for icmp TimeExceeded "Fragment reassembly
+    time exceeded" packets
+  * Fixed tracer not discarding unrelated icmp packets for udp and
+    tcp protocols
+  * Fixed incorrect minimum packet size for IPv6
+  * Fixed permission denied error reading configuration file from
+    snap installation
+
+-------------------------------------------------------------------
 Thu Feb 29 01:17:28 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to version 0.9.0:
