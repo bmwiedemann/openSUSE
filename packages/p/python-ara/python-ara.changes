@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  3 14:32:36 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.7.1
+  * Address deprecation of yaml.dump in ruamel.yaml when generating
+    the default server settings.yaml file (#524)
+  * Don't use setuptools/pkg_resources to retrieve the version of ara
+    since it is not always installed by default.
+
+-------------------------------------------------------------------
 Sat Nov 25 14:02:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.0:
