@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr  4 08:40:08 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.16238.4
+  * No changelog was made available
+- Update spirv_llvm_translator to 2221771c28dc224d5d560faf6a2cd73f8ecf713d
+- Removed 0001-Backport-to-17-Update-LongConstantCompositeINTEL-to-.patch
+  * No longer needed
+
+-------------------------------------------------------------------
 Tue Mar 12 07:06:59 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.0.15985.7

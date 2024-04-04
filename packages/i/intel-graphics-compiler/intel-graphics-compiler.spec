@@ -18,10 +18,10 @@
 
 %global llvm_commit llvmorg-14.0.5
 %global opencl_clang_commit cf95b338d14685e4f3402ab1828bef31d48f1fd6
-%global spirv_llvm_translator_commit 493353d7fdc655f9f31abc874dd0adef7dd241c1
+%global spirv_llvm_translator_commit 2221771c28dc224d5d560faf6a2cd73f8ecf713d
 %global vc_intrinsics_commit v0.16.0
 Name:           intel-graphics-compiler
-Version:        1.0.15985.7
+Version:        1.0.16238.4
 Release:        1%{?dist}
 Summary:        Intel Graphics Compiler for OpenCL
 License:        MIT
@@ -33,7 +33,6 @@ Source2:        https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/%{
 Source3:        https://github.com/llvm/llvm-project/archive/%{llvm_commit}/llvm-project.tar.gz
 Source4:        https://github.com/intel/vc-intrinsics/archive/%{vc_intrinsics_commit}/vc-intrinsics.zip
 Patch0:         0001-Use-patch-instead-of-git-to-apply-opencl-clang-patch.patch
-Patch1:         0001-Backport-to-17-Update-LongConstantCompositeINTEL-to-.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  flex
@@ -125,9 +124,6 @@ pushd opencl-clang
 %patch -P 0 -p1
 popd
 tar -xzf %{_sourcedir}/spirv-llvm-translator.tar.gz -C llvm-spirv --strip-components=1
-pushd llvm-spirv
-%patch -P 1 -p1
-popd
 popd
 
 mkdir igc
