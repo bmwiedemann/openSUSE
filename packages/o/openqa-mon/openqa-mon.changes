@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Apr 04 08:58:20 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 1.2.1:
+  * Bump version to 1.2.1
+  * Update go dependencies
+  * Add template for container jobs on O3
+  * Quit if there are no jobs to display
+  * Add filter for non-production runs
+  * Update meta-file to recent changes
+  * Add 15-SP6 WSL
+  * Update SLEM to Container MU
+  * Add 15-SP6
+  * Remove wicked
+
+-------------------------------------------------------------------
+Mon Mar 18 14:11:57 UTC 2024 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Add libnotify-tools as recommended package for notifications
+- Disable obs_scm service
+
+-------------------------------------------------------------------
+Mon Mar 18 13:58:29 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 1.2.0:
+  * Remove the ALP config files
+
+-------------------------------------------------------------------
 Wed Dec 20 15:21:04 UTC 2023 - felix.niederwanger@suse.de
 
 - Update to version 1.2.0:
