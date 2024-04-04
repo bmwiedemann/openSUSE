@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 31 18:28:24 UTC 2024 - chris@computersalat.de
+
+- fix deps
+  * BuildRequires:  golang-packaging
+    is not available for RedHat & Co 
+  * build: upgrade go version from 1.19 to 1.21
+    https://gitlab.com/gitlab-org/cli/-/releases
+
+-------------------------------------------------------------------
 Fri Mar 08 16:53:10 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.37.0:
