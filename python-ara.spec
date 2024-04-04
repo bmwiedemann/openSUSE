@@ -1,7 +1,7 @@
 #
 # spec file for package python-ara
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 # plugin for Ansible package
 %define pythons python3
 Name:           python-ara
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        ARA Records Ansible
 License:        GPL-3.0-or-later
@@ -43,7 +43,7 @@ Requires:       python-cliff
 Requires:       python-pbr
 Requires:       python-requests >= 2.14.2
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-Django >= 3.2
 Recommends:     python-django-cors-headers
 Recommends:     python-django-filter
