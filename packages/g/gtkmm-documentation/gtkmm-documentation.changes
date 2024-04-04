@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr  3 13:37:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop zh_CN translations for now: makes the build fail.
+
+-------------------------------------------------------------------
+Mon Mar 18 12:13:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.10.1:
+  + Update the "Event signals" section.
+  + Mention Cambalache instead of Glade.
+  + Add notes regarding widget destructor behaviour vs gtkmm3.
+  + Remove AUTHORS and add general information to README.md.
+  + Menus and Toolbars: Replace mention of non-existing class
+    Gtk::EventControllerClick for Gtk::GestureClick.
+  + Add the PrintDialog section.
+
+-------------------------------------------------------------------
 Sat Apr  1 23:58:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.10.0:

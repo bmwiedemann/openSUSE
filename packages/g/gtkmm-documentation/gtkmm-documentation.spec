@@ -1,7 +1,7 @@
 #
 # spec file for package gtkmm-documentation
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gtkmm-documentation
-Version:        4.10.0
+Version:        4.10.1
 Release:        0
 Summary:        C++ Bindings for GTK+ -- Documentation
 License:        GFDL-1.2-only AND GPL-2.0-or-later
 Group:          Documentation/Other
 URL:            https://gtkmm.org
-Source0:        https://download.gnome.org/sources/gtkmm-documentation/4.10/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source99:       %{name}-rpmlintrc
 
 BuildRequires:  c++_compiler
@@ -64,6 +64,8 @@ freely combined to quickly create complex user interfaces.
 
 %prep
 %autosetup
+# Drop chinese translation - falis the build
+sed -i '/zh_CN/d' docs/tutorial/LINGUAS
 
 %build
 %meson
@@ -76,9 +78,11 @@ freely combined to quickly create complex user interfaces.
 rm -r %{buildroot}%{_datadir}/doc/gtkmm-4.0/tutorial/html
 %find_lang gtkmm-tutorial %{?no_lang_C}
 
+%check
+
 %files -n gtkmm4-tutorial
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README.md
+%doc ChangeLog NEWS README.md
 %{_datadir}/help/C/gtkmm-tutorial/
 
 %files -n gtkmm4-tutorial-lang -f gtkmm-tutorial.lang
