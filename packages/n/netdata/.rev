@@ -4408,4 +4408,12 @@ Other Notable Changes
     correctly in Podman containers. The script now accurately</comment>
     <requestid>1158803</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>a17a67b49ecdbd30048fa5076457875c</srcmd5>
+    <version>1.45.1</version>
+    <time>1712341712</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1165644</requestid>
+  </revision>
 </revisionlist>

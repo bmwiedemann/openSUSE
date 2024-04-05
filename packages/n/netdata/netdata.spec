@@ -19,8 +19,11 @@
 %define netdata_user    netdata
 %define netdata_group   netdata
 %define godplugin_version 0.58.1
+
+%define __builder ninja
+
 Name:           netdata
-Version:        1.44.3
+Version:        1.45.1
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
@@ -28,17 +31,17 @@ License:        Apache-2.0 AND BSD-2-Clause AND GPL-3.0-or-later AND MIT AND BSD
 Group:          System/Monitoring
 URL:            http://my-netdata.io/
 Source0:        https://github.com/netdata/%{name}/releases/download/v%{version}/%{name}-v%{version}.tar.gz
-Source1:        https://github.com/netdata/go.d.plugin/archive/v%{godplugin_version}.tar.gz#/go.d.plugin-v%{godplugin_version}.tar.gz
-Source2:        vendor.tar.gz
-Source3:        netdata-rpmlintrc
+Source1:        vendor.tar.gz
+Source2:        netdata-rpmlintrc
 Patch0:         netdata-logrotate-su.patch
 BuildRequires:  c++_compiler
+BuildRequires:  cmake
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  judy-devel
-BuildRequires:  m4
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  snappy-devel
 BuildRequires:  golang(API) >= 1.21
@@ -56,6 +59,7 @@ BuildRequires:  pkgconfig(libwebsockets)
 BuildRequires:  pkgconfig(openssl)
 # Broken with current upstream protobuf - uses bundled copy
 # BuildRequires:  pkgconfig(protobuf)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(yajl)
 BuildRequires:  pkgconfig(yaml-0.1)
@@ -76,15 +80,6 @@ BuildRequires:  python311
 %endif
 %ifarch %ix86 x86_64 aarch64
 BuildRequires:  pkgconfig(xenstat)
-%endif
-%if 0%{?suse_version} > 1550
-Recommends:     python3
-Recommends:     python3-PyMySQL
-Recommends:     python3-psycopg2
-%else
-Recommends:     python311
-Recommends:     python311-PyMySQL
-Recommends:     python311-psycopg2
 %endif
 BuildRequires:  pkgconfig(libipmimonitoring)
 Provides:       group(%{netdata_group})
@@ -154,6 +149,7 @@ Enhances:       iw
 Suggests:       sudo
 Enhances:       netdata
 Provides:       netdata:%{_libexecdir}/%{name}/plugins.d/charts.d.plugin
+BuildArch:      noarch
 
 %description plugin-chartsd
 This plugin adds a selection of additional collectors written in
@@ -167,8 +163,8 @@ Wireless access point statistics.
 %{_libexecdir}/%{name}/plugins.d/charts.d.dryrun-helper.sh
 %{_libexecdir}/%{name}/charts.d/
 %defattr(0644,root,%{netdata_user},0644)
-%{_libdir}/%{name}/conf.d/charts.d.conf
-%{_libdir}/%{name}/conf.d/charts.d/
+%{_prefix}/lib/%{name}/conf.d/charts.d.conf
+%{_prefix}/lib/%{name}/conf.d/charts.d/
 
 %package plugin-pythond
 Summary:        The python.d metrics collection plugin for the Netdata Agent
@@ -181,6 +177,7 @@ Requires:       python311
 %endif
 Suggests:       sudo
 Provides:       netdata:%{_libexecdir}/%{name}/plugins.d/python.d.plugin
+BuildArch:      noarch
 
 %description plugin-pythond
 This plugin adds a selection of additional collectors written in
@@ -194,8 +191,8 @@ versions instead of the Python versions.
 %{_libexecdir}/%{name}/plugins.d/python.d.plugin
 %{_libexecdir}/%{name}/python.d
 %defattr(0640,root,%{netdata_user},0640)
-%{_libdir}/%{name}/conf.d/python.d.conf
-%{_libdir}/%{name}/conf.d/python.d
+%{_prefix}/lib/%{name}/conf.d/python.d.conf
+%{_prefix}/lib/%{name}/conf.d/python.d
 
 %package plugin-go
 Summary:        The go.d metrics collection plugin for the Netdata Agent
@@ -221,8 +218,8 @@ want it installed.
 # CAP_NET_RAW needed for ping collector
 %caps(cap_net_admin,cap_net_raw=eip) %{_libexecdir}/%{name}/plugins.d/go.d.plugin
 %defattr(0644,root,%{netdata_user},0644)
-%{_libdir}/%{name}/conf.d/go.d.conf
-%{_libdir}/%{name}/conf.d/go.d
+%{_prefix}/lib/%{name}/conf.d/go.d.conf
+%{_prefix}/lib/%{name}/conf.d/go.d
 
 %package plugin-apps
 Summary:        The per-application metrics collection plugin for the Netdata Agent
@@ -242,7 +239,7 @@ per-user metrics without using cgroups.
 # CAP_DAC_READ_SEARCH and CAP_SYS_PTRACE needed for data collection by the plugin.
 %caps(cap_dac_read_search,cap_sys_ptrace=ep) %{_libexecdir}/%{name}/plugins.d/apps.plugin
 %defattr(0644,root,%{netdata_user},0644)
-%{_libdir}/%{name}/conf.d/apps_groups.conf
+%{_prefix}/lib/%{name}/conf.d/apps_groups.conf
 
 %package plugin-slabinfo
 Summary:        The slabinfo metrics collector for the Netdata Agent
@@ -297,49 +294,90 @@ metrics exposed through debugfs.
 # CAP_DAC_READ_SEARCH required for data collection.
 %caps(cap_dac_read_search=ep) %attr(0750,root,%{netdata_user}) %{_libexecdir}/%{name}/plugins.d/debugfs.plugin
 
+%package plugin-logs-management
+Summary:        The logs-management plugin for the Netdata Agent
+Requires:       netdata = %{version}
+Enhances:       netdata
+Provides:       netdata:%{_libexecdir}/%{name}/plugins.d/logs-management.plugin
+
+%description plugin-logs-management
+This plugin allows the Netdata Agent to collect logs from the system
+and parse them to extract metrics.
+
+%files plugin-logs-management
+%defattr(0644,root,%{netdata_user},0755)
+%{_prefix}/lib/%{name}/conf.d/logsmanagement.d.conf
+%{_prefix}/lib/%{name}/conf.d/logsmanagement.d
+%defattr(0750,root,%{netdata_user},0750)
+# CAP_DAC_READ_SEARCH and CAP_SYSLOG needed for data collection.
+%caps(cap_dac_read_search,cap_syslog=ep) %attr(0750,root,%{netdata_user}) %{_libexecdir}/%{name}/plugins.d/logs-management.plugin
+
+%package plugin-network-viewer
+Summary:        The network viewer plugin for the Netdata Agent
+Requires:       netdata = %{version}
+Enhances:       netdata
+Provides:       netdata:%{_libexecdir}/%{name}/plugins.d/network-viewer.plugin
+
+%description plugin-network-viewer
+This plugin allows the Netdata Agent to provide network connection
+mapping functionality for use in netdata Cloud.
+
+%files plugin-network-viewer
+%defattr(0750,root,%{netdata_user},0750)
+# CAP_SYS_ADMIN, CAP_SYS_PTRACE and CAP_DAC_READ_SEARCH needed for data collection.
+%caps(cap_sys_admin,cap_sys_ptrace,cap_dac_read_search=ep) %attr(0750,root,%{netdata_user}) %{_libexecdir}/%{name}/plugins.d/network-viewer.plugin
+
+%package plugin-systemd-journal
+Summary:        The systemd-journal plugin for the Netdata Agent
+Requires:       netdata = %{version}
+Enhances:       netdata
+Provides:       netdata:%{_libexecdir}/%{name}/plugins.d/systemd-journal.plugin
+
+%description plugin-systemd-journal
+This plugin allows the Netdata Agent to present entries from the systemd
+journal on Netdata Cloud or the local Agent Dashboard.
+
+%files plugin-systemd-journal
+%defattr(0750,root,%{netdata_user},0750)
+# CAP_DAC_READ_SEARCH required for data collection.
+%caps(cap_dac_read_search=ep) %attr(0750,root,%{netdata_user}) %{_libexecdir}/%{name}/plugins.d/systemd-journal.plugin
+
 %prep
 %autosetup -n %{name}-v%{version} -p1
-sed -i 's,%{_bindir}/env bash,/bin/bash,' claim/%{name}-claim.sh.in
+sed -i 's,%{_bindir}/env bash,/bin/bash,' src/claim/%{name}-claim.sh.in
 
 %if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
 %if 0%{?suse_version} > 1550
-sed -i 's,^pybinary=.*,pybinary=%{_bindir}/python3,' collectors/python.d.plugin/python.d.plugin.in
+sed -i 's,^pybinary=.*,pybinary=%{_bindir}/python3,' src/collectors/python.d.plugin/python.d.plugin.in
 %else
-sed -i 's,^pybinary=.*,pybinary=%{_bindir}/python3.11,' collectors/python.d.plugin/python.d.plugin.in
+sed -i 's,^pybinary=.*,pybinary=%{_bindir}/python3.11,' src/collectors/python.d.plugin/python.d.plugin.in
 %endif
 
-tar -xf %{SOURCE1}
-tar -xf %{SOURCE2} -C go.d.plugin-%{godplugin_version}
+tar -xf %{SOURCE1} -C src/go/collectors/go.d.plugin
 %endif
 
 %build
 export GOFLAGS=-mod=vendor
-%configure \
-    --docdir="%{_docdir}/%{name}-%{version}" \
-    --enable-plugin-nfacct \
-    --enable-plugin-freeipmi \
-    --enable-plugin-cups \
-    --with-math \
-    --with-user=%{netdata_user} \
-    %{?conf}
-%make_build
-
-%if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
-cd go.d.plugin-%{godplugin_version}
-go vet ./...
-
-go build -ldflags='-s -w' \
 %ifnarch ppc64
-    -buildmode=pie \
+    export GOFLAGS="$GOFLAGS -buildmode=pie"
 %endif
-    -o bin/go.d.plugin github.com/netdata/go.d.plugin/cmd/godplugin
-%endif
+
+# Agent-Cloud Link and the Prometheus exporter require protobuf,
+# which is broken with openSUSE’s version (too new).
+# Bundled protobuf requires Abseil, which this build system
+# will fetch from a Git repo.
+# They explicitly disable disconnected mode.
+%cmake \
+    -DENABLE_PLUGIN_EBPF=False \
+    -DENABLE_ACLK=False -DENABLE_EXPORTER_PROMETHEUS_REMOTE_WRITE=False \
+    -DNETDATA_USER=%{netdata_user} \
+    -DCMAKE_INSTALL_PREFIX=/
+%cmake_build
 
 %install
-%make_install
-find %{buildroot} -name .keep -delete
-install -D -m 0644 system/systemd/%{name}.service %{buildroot}%{_unitdir}/%{name}.service
-install -D -m 0644 system/logrotate/%{name} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
+%cmake_install
+install -D -m 0644 %{buildroot}%{_prefix}/lib/%{name}/system/systemd/%{name}.service %{buildroot}%{_unitdir}/%{name}.service
+install -D -m 0644 %{buildroot}%{_prefix}/lib/%{name}/system/logrotate/%{name} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 install -D -m 0644 system/%{name}.conf %{buildroot}%{_sysconfdir}/%{name}/%{name}.conf
 
 ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
@@ -356,24 +394,25 @@ sed -i 's|%{_prefix}/lib|%{_libdir}|' %{buildroot}%{_libexecdir}/%{name}/edit-co
 # Disable statistics by default.
 touch %{buildroot}%{_sysconfdir}/%{name}/.opt-out-from-anonymous-statistics
 
-%if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
-pushd go.d.plugin-%{godplugin_version}
-
-install -d -m 0755 %{buildroot}/%{_libdir}/%{name}/conf.d
-cp -a config/* %{buildroot}/%{_libdir}/%{name}/conf.d
-
-install -m0755 -p bin/go.d.plugin %{buildroot}%{_libexecdir}/%{name}/plugins.d/go.d.plugin
-popd
-%endif
-
 install -m 755 -d %{buildroot}%{_localstatedir}/cache/%{name}
 install -m 755 -d %{buildroot}%{_localstatedir}/log/%{name}
 install -m 755 -d %{buildroot}%{_localstatedir}/lib/%{name}/registry
 
+rm %{buildroot}%{_sysconfdir}/%{name}/netdata-updater.conf
+rm -r %{buildroot}%{_prefix}/lib/%{name}/system
 rm %{buildroot}%{_libexecdir}/%{name}/install-service.sh
-rm -r %{buildroot}%{_libdir}/%{name}/system
 
-%fdupes %{buildroot}%{_libdir} %{buildroot}%{_libexecdir} %{buildroot}%{_datadir}
+# This is a suid binary that is supposed to allow Netdata to run
+# some privileged commands. The list of commands is restricted,
+# but it looks for them in PATH. That means it trivially allows
+# running arbitrary programs.
+# Obviously, packaging such a thing in working condition is a very
+# bad idea.
+rm %{buildroot}%{_libexecdir}/%{name}/plugins.d/ndsudo
+
+%fdupes %{buildroot}/lib %{buildroot}%{_libexecdir} %{buildroot}%{_datadir}
+
+%check
 
 %pre
 getent group %{netdata_group} >/dev/null || \
@@ -411,23 +450,18 @@ getent passwd %{netdata_user} >/dev/null || \
 %{_libexecdir}/%{name}/plugins.d/xenstat.plugin
 %endif
 
-%dir %{_libdir}/%{name}
-%dir %{_libdir}/%{name}/conf.d
-%dir %{_libdir}/%{name}/conf.d/log2journal.d
-%dir %{_libdir}/%{name}/conf.d/logsmanagement.d
-%{_libdir}/%{name}/conf.d/ebpf.d
-%{_libdir}/%{name}/conf.d/health.d
-%{_libdir}/%{name}/conf.d/statsd.d
-%{_libdir}/%{name}/conf.d/vnodes
-%{_libdir}/%{name}/conf.d/ebpf.d.conf
-%{_libdir}/%{name}/conf.d/exporting.conf
-%{_libdir}/%{name}/conf.d/health_alarm_notify.conf
-%{_libdir}/%{name}/conf.d/health_email_recipients.conf
-%{_libdir}/%{name}/conf.d/ioping.conf
-%{_libdir}/%{name}/conf.d/stream.conf
-%{_libdir}/%{name}/conf.d/log2journal.d/*.yaml
-%{_libdir}/%{name}/conf.d/logsmanagement.d/*.conf
-%{_libdir}/%{name}/conf.d/logsmanagement.d.conf
+%dir %{_prefix}/lib/%{name}
+%dir %{_prefix}/lib/%{name}/conf.d
+%dir %{_prefix}/lib/%{name}/conf.d/schema.d
+%{_prefix}/lib/%{name}/conf.d/health.d
+%{_prefix}/lib/%{name}/conf.d/statsd.d
+%{_prefix}/lib/%{name}/conf.d/vnodes
+%{_prefix}/lib/%{name}/conf.d/exporting.conf
+%{_prefix}/lib/%{name}/conf.d/health_alarm_notify.conf
+%{_prefix}/lib/%{name}/conf.d/health_email_recipients.conf
+%{_prefix}/lib/%{name}/conf.d/ioping.conf
+%{_prefix}/lib/%{name}/conf.d/stream.conf
+%{_prefix}/lib/%{name}/conf.d/schema.d/*.json
 
 %{_sbindir}/%{name}
 %{_sbindir}/%{name}-claim.sh

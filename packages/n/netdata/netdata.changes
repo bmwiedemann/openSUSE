@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 28 16:51:13 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.45.1
+See https://github.com/netdata/netdata/releases/tag/v1.45.0
+and https://github.com/netdata/netdata/releases/tag/v1.45.1
+- Build system switched to CMake. There are some issues with it,
+  see https://github.com/netdata/netdata/discussions/17287
+- Disabled Agent-Cloud-Link and Prometheus exporter due to build
+  system woes and incompatible protobuf on openSUSE.
+- go.d.plugin is now bundled with each Netdata release
+- Added plugins:
+  * logs-management
+  * network-viewer
+  * systemd-journal
+
+-------------------------------------------------------------------
 Sun Mar 17 18:16:15 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.44.3 (go.d.plugin 0.58.1)
