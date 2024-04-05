@@ -7,9 +7,9 @@ It also adds openSUSE branding to the about screen.
 
 --- a/src/qmplay2/YouTubeDL.cpp
 +++ b/src/qmplay2/YouTubeDL.cpp
-@@ -434,29 +434,9 @@
+@@ -467,29 +467,9 @@
      QString program = m_ytDlPath;
- 
+
  #ifndef Q_OS_WIN
 -    QFile ytDlFile(program);
 -    if (ytDlFile.open(QFile::ReadOnly))
@@ -25,7 +25,7 @@ It also adds openSUSE branding to the about screen.
 -                program = pythonCmd;
 -            }
 -#ifdef Q_OS_MACOS
--            else if (QFileInfo("/usr/local/bin/" + pythonCmd).isExecutable())
+-            else if (QFileInfo(QString("/usr/local/bin/" + pythonCmd)).isExecutable())
 -            {
 -                args.prepend(program);
 -                program = "/usr/local/bin/" + pythonCmd;
@@ -38,7 +38,7 @@ It also adds openSUSE branding to the about screen.
 +    args.prepend(program);
 +    program = "python3";
  #endif
- 
+
      m_process.start(program, args);
 
 --- a/src/gui/AboutWidget.cpp

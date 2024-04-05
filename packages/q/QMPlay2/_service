@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="versionprefix">24.04.02</param>
+    <param name="url">https://github.com/zaps166/QMPlay2.git</param>
+    <param name="revision">f1e5bd81a6d1a097946dde25b5d6078c39d15e0b</param>
+    <param name="scm">git</param>
+    <param name="submodules">enable</param>
+    <param name="changesgenerate">disable</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>

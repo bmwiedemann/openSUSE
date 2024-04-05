@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Apr 05 00:19:56 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 24.04.02:
+  * improve restoring playback position feature and make it enabled by default,
+  * remove possibility to move files from playlist using middle mouse button,
+  * minor RadioBrowser improvement for some server errors,
+  * fix executing FFmpeg process in downloader on Qt6,
+  * fix opening multiple files in QMPlay2 on Windows,
+  * set accurate seeking enabled but default,
+  * minor Vulkan fixes for old hardware,
+  * set Ctrl+Q as default close key,
+  * full Qt6 support on Windows,
+  * other minor fixes.
+- Adjusted 0001-add-opensuse-customizations.patch for the new
+  version
+- Switch to generating tarball directly from git to harden package
+  against supply chain attacks
+
+-------------------------------------------------------------------
 Sat Mar 16 17:25:23 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 24.03.16
@@ -97,7 +116,7 @@ Sun Jun 18 10:27:31 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
    * fix YouTube live streams,
    * other minor changes.
 - Adjusted 0001-add-opensuse-customizations.patch for the new
-  version.
+  version
 
 -------------------------------------------------------------------
 Sun Jun  4 14:07:47 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
