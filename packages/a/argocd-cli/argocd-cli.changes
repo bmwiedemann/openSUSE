@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 05 06:06:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.6:
+  * Bump version to 2.10.6 (#17744)
+  * fix(security): use Chainguard fork of git-urls (#17732)
+    (#17735)
+  * fix: fix calculating patch for respect ignore diff feature
+    (#17693)
+  * fix(ui): Fix color generation for pod name in logs viewer.
+    Fixes #17704 (#17706) (#17710)
+  * chore(deps): bump webpack-dev-middleware from 5.3.1 to 5.3.4 in
+    /ui (#17598) (#17686)
+
+-------------------------------------------------------------------
 Sat Mar 30 10:26:14 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.10.5:
