@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr  5 00:50:37 UTC 2024 - William Brown <william.brown@suse.com>
+
+- Remove cargo_config that is now part of vendor.tar
+
+-------------------------------------------------------------------
+Thu Apr 04 00:31:58 UTC 2024 - william.brown@suse.com
+
+- bsc#1222175 - prevent stripping debug info
+- Update to version 1.2.0+5:
+  * Prevent stripping debuginfo in release by default (#7)
+
+-------------------------------------------------------------------
 Mon Aug 14 04:47:50 UTC 2023 - william.brown@suse.com
 
 - Update to version 1.2.0+4:

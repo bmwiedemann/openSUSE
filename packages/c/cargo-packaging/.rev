@@ -99,4 +99,12 @@ provides from elf metadata of vendored deps
     <comment></comment>
     <requestid>1103769</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>788d8f788229f12f0d4d3d935eeb0972</srcmd5>
+    <version>1.2.0+5</version>
+    <time>1712341526</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1165382</requestid>
+  </revision>
 </revisionlist>
