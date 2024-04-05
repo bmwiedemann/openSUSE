@@ -1309,4 +1309,12 @@ Pushing GNOME 45.rc packages</comment>
     <comment></comment>
     <requestid>1162833</requestid>
   </revision>
+  <revision rev="168" vrev="34">
+    <srcmd5>fb6033f309b1e3e9288a566ce96c1d0f</srcmd5>
+    <version>0.8</version>
+    <time>1712341469</time>
+    <user>anag+factory</user>
+    <comment>- Tag hardening patches as PATCH-FEATURE-OPENSUSE (forwarded request 1164608 from dimstar)</comment>
+    <requestid>1164965</requestid>
+  </revision>
 </revisionlist>

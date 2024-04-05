@@ -97,7 +97,9 @@ Patch25:        0006-man-add-missing-bshell.1-symlink.patch
 Patch26:        0007-Ship-avahi-discover-1-bssh-1-and-bvnc-1-also-for-GTK.patch
 # PATCH-FIX-UPSTREAM 0009-fix-bytestring-decoding-for-proper-display.patch mgorse@suse.com -- fix bytestring decoding for proper display.
 Patch27:        0009-fix-bytestring-decoding-for-proper-display.patch
+# PATCH-FEATURE-OPENSUSE
 Patch28:        harden_avahi-daemon.service.patch
+# PATCH-FEATURE-OPENSUSE
 Patch29:        harden_avahi-dnsconfd.service.patch
 # PATCH-FIX-UPSTREAM avahi-CVE-2023-1981.patch boo#1210328 mgorse@suse.com -- emit error if requested service is not found.
 Patch30:        avahi-CVE-2023-1981.patch
@@ -418,10 +420,6 @@ Obsoletes:      avahi-glib2-utils-gtk < %{version}
 %description -n avahi-utils-gtk
 Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
-
-
-
-
 
 # This is the avahi-discover command, only provided for the primary python3 flavor
 

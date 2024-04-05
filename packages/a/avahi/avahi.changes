@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  4 13:44:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Tag hardening patches as PATCH-FEATURE-OPENSUSE
+
+-------------------------------------------------------------------
 Tue Mar 26 02:28:37 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add avahi-CVE-2023-38471.patch: Extract host name using
