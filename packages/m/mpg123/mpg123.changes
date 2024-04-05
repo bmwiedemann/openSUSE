@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr  4 18:13:12 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.32.6
+  build:
+  * Detect forced 64 bit offsets on a dual-mode system that used
+    to default to 32 bits and drop ambiguous suffix-less symbols
+    in that case. This avoids subtle ABI breakage (causing
+    memory corruption) with existing binaries and instead has
+    them fail during runtime linking. You trigger that when
+    having -D_FILE_OFFSET_BITS=64 in your compiler flags during
+    mpg123 build.
+
+-------------------------------------------------------------------
 Sun Feb 18 10:01:29 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.32.5
