@@ -96,4 +96,13 @@
   * cmd: fix version print if no `@` is present</comment>
     <requestid>1143747</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>11d91087e4c5ecc0f53365247fb2f36e</srcmd5>
+    <version>0.2.2</version>
+    <time>1712341684</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.2.2:
+  * go: Update dependencies</comment>
+    <requestid>1165538</requestid>
+  </revision>
 </revisionlist>
