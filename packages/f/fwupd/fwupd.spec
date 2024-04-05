@@ -127,10 +127,10 @@ BuildRequires:  pkgconfig(efivar) >= 33
 %ifarch %{ix86} x86_64
 BuildRequires:  pkgconfig(libsmbios_c) >= 2.3.0
 %endif
-%if %{with efi_fw_update}
 Obsoletes:      dbxtool <= 8
-Obsoletes:      fwupdate <= 12
 Provides:       dbxtool
+%if %{with efi_fw_update}
+Obsoletes:      fwupdate <= 12
 %ifarch x86_64 aarch64
 Requires:       shim >= 11
 Requires:       udisks2
@@ -317,8 +317,8 @@ rm -fr %{buildroot}%{_datadir}/fish
 %if %{with efi_fw_update}
 %{_bindir}/fwupdagent
 %{_bindir}/fwupdate
-%{_bindir}/dbxtool
 %endif
+%{_bindir}/dbxtool
 %{_sbindir}/rc%{name}
 %{_sbindir}/rcfwupd-offline-update
 %{_sbindir}/rcfwupd-refresh

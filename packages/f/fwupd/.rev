@@ -692,4 +692,14 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>1157434</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>6d07b1b271e0a1242b220ea688653b12</srcmd5>
+    <version>1.9.15</version>
+    <time>1712341530</time>
+    <user>anag+factory</user>
+    <comment>- dbxtool is built unconditionally on all architectures: move it
+  out of the condition in the files section and also
+  unconditionally provide/obsolete the old version. (forwarded request 1165430 from dimstar)</comment>
+    <requestid>1165431</requestid>
+  </revision>
 </revisionlist>

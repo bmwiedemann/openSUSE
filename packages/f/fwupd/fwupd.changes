@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  5 07:08:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- dbxtool is built unconditionally on all architectures: move it
+  out of the condition in the files section and also
+  unconditionally provide/obsolete the old version.
+
+-------------------------------------------------------------------
 Tue Mar 12 07:53:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.9.15:
