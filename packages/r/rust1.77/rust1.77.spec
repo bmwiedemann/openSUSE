@@ -306,7 +306,7 @@ Requires:       glibc-devel
 # Rustc doesn't really do much without Cargo, but you know, if you wanna yolo that ...
 Recommends:     cargo
 # For static linking
-Suggests:       glibc-devel-static
+Recommends:     glibc-devel-static
 
 %if %{with wasi}
 BuildRequires:  wasi-libc
@@ -326,11 +326,6 @@ Requires:       gcc%{gcc_version}
 BuildRequires:  gcc-c++
 Requires:       gcc
 %endif
-# Clang gives better errors than gcc during a compilation, and it keeps everything
-# within llvm ecosystem.
-Suggests:       clang
-# lld is significantly faster than gold for linking, so users may wish to preference it.
-Suggests:       lld
 %endif
 
 # CMake and Ninja required to drive the bundled llvm build.

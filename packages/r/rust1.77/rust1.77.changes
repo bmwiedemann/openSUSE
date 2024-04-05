@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  5 00:12:29 UTC 2024 - William Brown <william.brown@suse.com>
+
+- Remove suggests as they do nothing.
+
+-------------------------------------------------------------------
 Fri Mar 29 05:18:21 UTC 2024 - William Brown <william.brown@suse.com>
 
 - bsc#1222047 - update gcc minimum to 13 for SLE
