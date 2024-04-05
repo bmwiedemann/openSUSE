@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Fri Apr 5 11:20:29 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#72
+- deal with systems where /tmp is a symlink (bsc#1221603)
+- 2.16
+
+--------------------------------------------------------------------
 Wed Mar 20 15:28:07 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#71
