@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr  4 11:31:02 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.4.9
+  * New TLS1.2-only variant of 20230317 policy (#4483)
+  * ci: add asan runs under gcc (#4402)
+  * fix: Adds non_exhaustive flag to FingerprintType
+  * fix: refactor rust bindings fingerprint methods (#4474)
+  * example(bindings): client hello cb example (#4385)
+  * feat: getter for TLS1.2 master secrets (#4470)
+  * bindings: ensure CFLAGS includes come after build script includes (#4475)
+  * bindings: mark Connection as Sync (#4467)
+  * Make S2N_CERT_AUTH_OPTIONAL the default for clients (#4390)
+  * fix(test): narrow valgrind suppressions (#4369)
+  * fix: pedantic memory leak in handshake test (#4463)
+  * chore(bindings): release 0.1.7 (#4462)
+
+-------------------------------------------------------------------
 Fri Mar 22 09:19:59 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.4.8
