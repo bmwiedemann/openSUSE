@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr  4 09:08:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.5:
+  * Fix setting `synth.chorus.speed` to its minimum value being
+    reported as out of range
+  * Fix a regression causing libinstpatch and libsndfile not to
+    be discovered on Windows
+  * Fix Pipewire audio driver not cleanly being destroy
+  * Fix selection logic for XG drum banks
+  * Add cmake flag `FLUID_HOST_COMPILER` to allow overriding
+    default host compiler required during compilation
+  * LASH support has been deprecated
+
+-------------------------------------------------------------------
 Wed Jan 24 09:33:28 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Drop the leftover directory for the old system-wide service
@@ -95,7 +109,7 @@ Thu Mar 24 07:06:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Prevent Modulation Envelope from being stuck in decay phase, causing
     detuned voices and potentially other audible glitches for some soundfonts
   * Fix a compilation issue with recent glib
-  
+
 -------------------------------------------------------------------
 Sun Feb  6 12:52:36 UTC 2022 - Tom Mbrt <tom.mbrt@googlemail.com>
 
@@ -185,7 +199,7 @@ Tue Mar 16 21:30:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Rapidly changing channel panning could have caused audible artifacts (#768).
   * Fix a use-after-free when loading malformed soundfonts (#808). Affects all
     versions back to at least 1.1.2.
-  * The number of allowed LADSPA effect units has been increased. 
+  * The number of allowed LADSPA effect units has been increased.
 
 -------------------------------------------------------------------
 Fri Jan 29 18:07:55 UTC 2021 - Tom Mbrt <tom.mbrt@googlemail.com>
@@ -213,7 +227,7 @@ Mon Oct 19 11:05:56 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Refresh spec-file via spec-cleaner and manual optimizations.
 - Add Requires:fluid-soundfont-gm.
-- Add user fluidsynth and group audio. 
+- Add user fluidsynth and group audio.
 - Add files: fluidsynth.conf and fluidsynth.service.
 
 -------------------------------------------------------------------
@@ -351,7 +365,7 @@ Fri Apr 19 07:59:57 UTC 2019 - Tom Mbrt <tom.mbrt@googlemail.com>
 Sat Feb 23 08:44:53 UTC 2019 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to 2.0.4:
-  * introduce verbose error reporting for `fluid_settings_*` functions 
+  * introduce verbose error reporting for `fluid_settings_*` functions
   * avoid undefined behavior when `fopen()` directories
   * improve compatibility with FreeBSD and DragonFlyBSD (#508, thanks to @t6)
   * fix build when cross compiling (#501)
@@ -529,7 +543,7 @@ Wed Sep  6 09:27:00 UTC 2017 - tom.mbrt@googlemail.com
 -------------------------------------------------------------------
 Sun Nov 22 16:47:50 UTC 2015 - idonmez@suse.com
 
-- Add baselibs.conf as a source file 
+- Add baselibs.conf as a source file
 
 -------------------------------------------------------------------
 Sun Nov 22 09:33:11 UTC 2015 - tom.mbrt@googlemail.com
@@ -557,7 +571,7 @@ Fri Sep 21 22:50:34 UTC 2012 - zaitor@opensuse.org
 -------------------------------------------------------------------
 Mon Jun  4 14:25:26 UTC 2012 - toddrme2178@gmail.com
 
-- Added 32-bit compatibility library (needed by 
+- Added 32-bit compatibility library (needed by
   gstreamer-0_10-plugins-buzztard-32bit )
 
 -------------------------------------------------------------------
@@ -599,7 +613,7 @@ Mon Oct 11 15:47:49 UTC 2010 - oliver.bengs@opensuse.org
 
 - Updated to version 1.1.3:
   + Compilation with LADSPA enabled was broken in 1.1.2
-  + Multichannel output broken when double precision was used 
+  + Multichannel output broken when double precision was used
   + Doxygen settings
   + Fix build problem with scummvm
   + Optimize by not starting unused threads with multicore rendering
@@ -623,9 +637,9 @@ Fri Apr  2 08:09:19 UTC 2010 - davejplater@gmail.com
   This is a rather major bug fix release to version 1.1.0.
   FluidSynth 1.1.0 - "A More Solid Fluid", see Changes page for details.
   http://fluidsynth.resonance.org/trac/wiki/ChangeLog1_1_0
-  This is the result of a 6 month development cycle and is the most 
+  This is the result of a 6 month development cycle and is the most
   significant release since 1.0.0!
-  
+
 -------------------------------------------------------------------
 Mon Jul 27 15:53:19 CEST 2009 - tiwai@suse.de
 
