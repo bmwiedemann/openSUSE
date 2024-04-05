@@ -125,4 +125,13 @@
 </comment>
     <requestid>1156029</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>75c0788f34c2253489206530ba2a76dc</srcmd5>
+    <version>17.0.6</version>
+    <time>1712341455</time>
+    <user>anag+factory</user>
+    <comment>- Use old conflicts/provides for python3-clang on Leap.
+</comment>
+    <requestid>1164599</requestid>
+  </revision>
 </revisionlist>
