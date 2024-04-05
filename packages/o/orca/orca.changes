@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr  4 08:13:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.1:
+  + Fix issue causing flat review clicking to fail in some Gtk
+    apps.
+  + Fix regression in SayAll upon page load.
+  + Fix presentation of new radio button groups.
+  + Avoid triggering crash in Pidgin.
+  + Fix issue in which Orca appeared to hang when where am I was
+    used immediately after page load of a large document.
+
+-------------------------------------------------------------------
 Thu Mar 21 14:11:58 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

@@ -1371,4 +1371,19 @@
     <comment></comment>
     <requestid>1160378</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>00c15985afbd06a5d9083afdd4d3292e</srcmd5>
+    <version>46.1</version>
+    <time>1712341447</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.1:
+  + Fix issue causing flat review clicking to fail in some Gtk
+    apps.
+  + Fix regression in SayAll upon page load.
+  + Fix presentation of new radio button groups.
+  + Avoid triggering crash in Pidgin.
+  + Fix issue in which Orca appeared to hang when where am I was
+    used immediately after page load of a large document. (forwarded request 1164511 from dimstar)</comment>
+    <requestid>1164565</requestid>
+  </revision>
 </revisionlist>
