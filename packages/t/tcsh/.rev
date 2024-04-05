@@ -1093,4 +1093,15 @@
 - Port patch tcsh-6.22.02-local-dotlock.dif</comment>
     <requestid>1157873</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>7d63dab35737a89b04d68b0862bdd5a3</srcmd5>
+    <version>6.24.12</version>
+    <time>1712341548</time>
+    <user>anag+factory</user>
+    <comment>- Update to tcsh 6.24.12 - 2024-04-05
+  * Fix history merge and add a test for it (Werner Fink, Kimmo Suominen)
+- Remove patch tcsh-6.24.10-history-merge.dif now solved upstream
+- Port patch tcsh-6.22.02-local-dotlock.dif (corrected offsets)</comment>
+    <requestid>1165473</requestid>
+  </revision>
 </revisionlist>

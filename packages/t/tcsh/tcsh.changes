@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr  5 09:08:30 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to tcsh 6.24.12 - 2024-04-05
+  * Fix history merge and add a test for it (Werner Fink, Kimmo Suominen)
+- Remove patch tcsh-6.24.10-history-merge.dif now solved upstream
+- Port patch tcsh-6.22.02-local-dotlock.dif (corrected offsets)
+
+-------------------------------------------------------------------
 Thu Mar 14 07:30:23 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Update to tcsh 6.24.11 - 2024-03-14
