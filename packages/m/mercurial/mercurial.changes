@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr  4 12:12:21 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Mercurial 6.7.2
+
+  Exceptional release following a large performance regression when
+  cloning.
+
+  * phases: avoid a potentially costly dictionary interation in some case
+  * phases: update the phase set as we go during retract boundary
+  * bundle2: make the "hgtagsfnodes" part advisory 
+
+-------------------------------------------------------------------
 Thu Mar 21 11:29:37 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 6.7.1
