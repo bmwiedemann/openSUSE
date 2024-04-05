@@ -1,4 +1,730 @@
 -------------------------------------------------------------------
+Fri Apr  5 13:01:05 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Obsolete old velociraptor-kafka-humio-gateway package
+
+-------------------------------------------------------------------
+Wed Apr 03 14:21:30 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 0.7.0.4.git74.3426c0a:
+  * Fix services artifact symbol pid not found error
+  * chattrsnoop: correct read size for flags
+  * chattrsnoop: fix wrong FS_IOC_SETFLAGS value for ppc
+  * chattrsnoop: fix do_vfs_ioctl kprobe failure
+
+-------------------------------------------------------------------
+Wed Apr  3 13:54:19 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Remove nodejs sources from main spec file. 
+
+-------------------------------------------------------------------
+Tue Apr 02 21:52:32 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 0.7.0.4.git68.ad1f4e5:
+  * Fix undefined binary.NativeEndian build errors
+- Add llvm16-libclang13 dependency for SLE 15 SP5 and above
+
+-------------------------------------------------------------------
+Tue Apr  2 12:02:12 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Disable eBPF for SLE 15 SP2
+
+-------------------------------------------------------------------
+Sun Mar 31 23:38:18 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Fix builds for SLE 15 SP3 and SLE 12
+  * Revert to gzip compression instead of zstd for go modules
+
+-------------------------------------------------------------------
+Mon Mar 25 17:19:16 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 0.7.0.4.git66.eea7659:
+  * dnssnoop: fix loading protocol from ip header on s390
+  * dnssnoop: fix htons() so it works on s390 too
+  * Fix systemd Services artifact missing events
+  * chattrsnoop: replace global variables with locals
+  * tcpsnoop: fix garbled results on s390
+  * chattrsnoop: fix immutable attribute set on s390
+  * chattrsnoop: fix bpf_probe_read for s390
+  * tcpsnoop: remove unused filtering code
+  * Add artifact to collect new files without owner
+  * bpf plugins: set a logger callback
+- Add CVE-2024-28849-follow-redirects-drop-proxy-authorization.patch
+  (bsc#1221456)
+
+-------------------------------------------------------------------
+Thu Feb 29 18:48:52 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Reintroduce system-user-velociraptor package due to client %pre
+  and %postun scripts depending on velociraptor user and group.
+
+-------------------------------------------------------------------
+Tue Feb 27 22:37:09 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Obsolete old system-user-velociraptor package.
+- Use zst compression for go modules.
+
+-------------------------------------------------------------------
+Thu Feb 22 20:11:34 UTC 2024 - doreilly@suse.com
+
+- Update to version 0.7.0.4.git47.0f8a4de1:
+  * Rename SUSE specific artifacts to have SUSE prefix
+  * Add SUSE.Linux.Events.NewZeroSizeLogFile artifact
+  * Move NewFiles artifact to SUSE
+  * Move ImmutableFile artifact to SUSE
+  * Make ImmutableFile artifact consistent with others
+  * Fix absolute path case in ExecutableFiles artifact
+  * Add client monitoring artifact for RPMs
+  * Add artifact to collect new hidden files
+  * Add artifact to monitor ssh authorized_keys files
+  * Fix split_records error on older clients
+  * Add hash fields to Linux.Events.ProcessExecutions
+  * Add artifact to collect systemd service events
+  * Fix SystemLogins artifacts file extensions
+  * Add SUSE.Linux.Events.Timers artifact
+  * Fix audit filter key typo in Linux.Events.NewFiles
+  * Add server artifact to delete old client data on server
+  * Add SUSE.Linux.Sys.At artifact
+  * chattrsnoop: include full error details in logs
+  * chattrsnoop: handle os.Stat() error properly
+  * chattrsnoop: don't log.Fatal() on hash error
+  * Fix Linux.Events.ImmutableFile not showing hash in GUI
+  * SUSE.Linux.Events.Crontab: Add task execution artifacts
+  * Raise client connection log level to ERROR
+  * sdjournal: Correctly seek to current tail
+- Remove verbose flag from client config
+ 
+-------------------------------------------------------------------
+Thu Feb 22 15:56:44 UTC 2024 - doreilly@suse.com
+
+- Update to version 0.7.0.4.git6.7b40b8b:
+  * go.mod: increase go version to 1.19
+
+-------------------------------------------------------------------
+Thu Feb 22 13:19:14 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Use clang16 for SLE 15 SP4 and above.
+
+-------------------------------------------------------------------
+Thu Jan 18 15:36:50 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Fixed Debian %postun scripts being used for other distros.
+
+-------------------------------------------------------------------
+Wed Dec 20 21:08:36 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Added workaround for missing Maintainers tag in Debian-based packages.
+  obs-service-format_spec_file strips the Packager tag from the spec file
+  before committing.  The build service replaces it with its own.  debbuild
+  expects the Packager field to be present to generate the Maintainers tag
+  in the output but it only receives the "cleaned" spec file.
+
+-------------------------------------------------------------------
+Tue Dec 19 21:53:37 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Added Recommends: auditd
+  - Technically not *required* but Velociraptor's audit client enables
+    audit and then listens on the multicast socket.  Without a listener
+    on the unicast socket, the kernel will spam the system log with events.
+
+-------------------------------------------------------------------
+Tue Dec 19 19:29:06 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Fixed debian packaging:
+  * /etc/sysconfig -> /etc/default
+  * %postun for systemd service cleanup
+  * Note: obs-service-format_spec_file strips the Packager tag that
+    debbuild uses to generate the Maintainer tag
+
+-------------------------------------------------------------------
+Tue Dec 19 14:24:44 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Fix %SOURCE references.
+
+-------------------------------------------------------------------
+Fri Dec 15 22:35:01 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Temporarily use the NODE_MODULES BEGIN/END form of the node_modules
+  service due to a bug in debbuild preventing Debian builds from succeeding.
+
+-------------------------------------------------------------------
+Fri Dec 15 19:32:04 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.7.0.4.git4.c1b68a5b:
+  * hash: fix nil pointer dereference panic
+  * velociraptor: add dummy main function for mage
+- Removed patch:
+  * velociraptor-golang-mage-vendoring.diff
+- Rebased patch:
+  * velociraptor-reproducible-timestamp.diff
+- Switched to using go_modules and node_modules source services
+  * Eliminated bespoke vendoring scripts.
+- Pulled sysuser definition into the velociraptor package.
+
+-------------------------------------------------------------------
+Tue Dec  5 13:54:03 UTC 2023 - Darragh O'Reilly <doreilly@suse.com>
+
+- Remove PrivateTmp and PrivateDevices settings in velociraptor-client.service (SENS-70)
+
+-------------------------------------------------------------------
+Wed Nov 15 18:17:04 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.7.0.4.git0.e09a0df8:
+  * Add additional sanitization to HTML templates on JS side. (#2) (#3077) (CVE-2023-5950)
+  * vql/linux/sdjournal: Fix open/close lifetimes
+  * vql/linux/audit: fix shutdown races
+  * vql/linux/audit: fix goroutine lifetimes
+  * vql/linux/audit: limit messageQueue to within runService
+  * vql/linux/audit: add auditService.Log()
+  * vql/linux/audit: pull parts of shutdown into shutdown watcher
+  * vql/linux/audit: remove unnecessary error handling for reassembler
+  * vql/linux/audit: remove unused waitgroup from main event loop
+  * vql/linux/audit: handle top-level cancelation properly
+  * vql/linux/audit: make explicit that goroutines in the main errgroup don't return errors
+  * vql/linux/audit: make stats reporting separate from debug prints
+  * vql/linux/audit: simplify polling in listener
+  * vql/linux/audit: tests, check various rule scenarios
+  * vql/linux/audit: Add more client failure test cases
+  * vql/linux/audit: Fix audit client lifecycle
+  * vql/linux/audit: Change listener lifecycle to enable testing
+  * vql/linux/audit: Fix DeleteRule in mock client
+  * vql/linux/audit: Fix typo causing double-lock in notifyMissingRule
+  * vql/linux/audit: Close reassembler if NewListenerBytes fails
+  * vql/linux/audit: limit messageQueue scope to within runService
+  * vql/linux/audit: Make messageQueue lifetime more apparent
+  * vql/linux/audit: mainEventLoop shouldn't exit on canceled context
+  * vql/linux/audit: Clean up context handling in shutdown goroutine
+  * vql/linux/audit: fix test suite handling
+  * bpf: only build libbpf in the go generate stage
+  * bpf: add libbpf/include/uapi to the include path for bpf.h
+
+-------------------------------------------------------------------
+Fri Nov  3 01:36:35 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Enabled builds on CentOS 7/8 (currently without eBPF, needs llvm)
+- Enabled builds on Ubuntu 20.04 and 22.04 (23.* pending OBS changes)
+- Enabled builds on Debian 11, 12, Unstable, Testing, and Next
+- Limit server builds to x86_64 until esbuild issue is sorted
+
+-------------------------------------------------------------------
+Tue Oct 31 20:07:16 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version sensor-base-0.7.0~git0.602f673:
+  * vql/linux/audit: fix staticcheck checks
+  * vql/linux/audit: gofumpt -extra
+  * vql/linux/audit: don't overload EAGAIN
+  * vql/linux/audit: actually add test cases
+  * cronsnoop: fix panic when crontab has empty line
+  * SUSE: Add docker-compose environment
+  * SUSE: add Docker files
+  * SUSE: Do build tests on every pull request
+  * Github: Run build workflow on each pull request
+  * vql/functions/hash: cache results on Linux
+  * rpm: introduce rpm vql plugin
+  * Add Linux.Sys.Bash to Server.Monitor.Shell artifact
+  * Updating the NewFiles and ProcessStatuses Artifacts
+  * vql/linux/cronsnoop: Add cronsnoop() plugin
+  * Extend audit artifacts to use new interface
+  * vql/linux/audit: rearchitect plugin for scalability
+  * vql/linux/audit: use go-libaudit v2 for live audit message processing
+  * file_store/directory/listener_bytes: Add listener to use serialized interface
+  * utils/refcount: add simple refcount implementation
+  * file_store/directory/buffer: add direct-serialized interface
+  * Add artifact to monitor user group updates (#24)
+  * Linux.Events.ProcessExecutions: catch 32-bit execve calls
+  * Add custom artifacts for login and logout attempts recorded by auditd
+  * vql/linux/bpflib: add sample vmlinux.h includes for test builds
+  * vql/linux/bpf/chattrsnoop: Add plugin to catch changes to inode attributes
+  * vql/linux/bpf/dnssnoop: Add dnssnoop() plugin
+  * vql/linux/bpf/tcpsnoop: Add tcpsnoop plugin
+  * vql/linux/bpf: add support to add bpf plugins for Linux
+  * SSHLogin: require _TRANSPORT != 'kernel' from watch_journal()
+  * SUSE: Add SSHLogin artifacts
+  * Update the Linux.Events.SSHLogin artifact to scan the systemd journal
+  * Update the Linux.Syslog.SSHLogin artifact to scan the systemd journal
+  * Add parser to read systemd journal on Linux
+  * Linux.Detection.ImmutableFiles: Enumerate immutable files under a path
+  * linux: add lsattr() function to enumerate file attributes
+  * github/workflows/linux: do apt-get update to refresh package lists
+  * github: run testcases on Linux builds in new workflow
+  * Add systemd-dev as build dependency for github workflow
+  * magefile.go: use current architecture for Linux builds
+  * build: update to mage 0.15
+  * Update tool dependencies on each build (#2987) (#2989)
+  * Various Bugfixes  (#2981)
+  * Fixed IPv6 formatting in Windows.Forensics.UserAccessLogs (#2980)
+  * Add Yara device scanning (#44) (#2978)
+  * Added a sample bash script for offline collector generation. (#2975)
+  * Implemented a fix for Windows.Timeline.Prefetch (#2974)
+  * Include MAC addresses in client host dashboard (#2943)
+  * logscale: fix stats_interval parameter handling (#2973)
+  * Update Lnk.yaml (#2972)
+  * [Snyk] Upgrade: @babel/core, @babel/plugin-transform-react-jsx, @babel/runtime (#2970)
+  * add suspicious field and targeted default (#2971)
+  * Add filesystem type to data returned by file accessor on Unix (#2967)
+  * [Snyk] Upgrade axios-retry from 3.6.1 to 3.7.0 (#2963)
+  * Implemented a writeback service to manage the writeback file. (#2966)
+  * [Snyk] Upgrade axios-retry from 3.6.0 to 3.6.1 (#2949)
+  * Added FAT accessor for parsing FAT filesystems (#2961)
+  * [Snyk] Upgrade recharts from 2.7.3 to 2.8.0 (#2950)
+  * [Snyk] Upgrade axios from 1.4.0 to 1.5.0 (#2951)
+  * Fix device major/minor number calculations (#2958)
+  * Relay hunt creation errors to the Hunts API (#2953)
+  * [Snyk] Upgrade: @babel/core, @babel/runtime (#2948)
+  * Improve various bits of VQL documentation (#2945)
+  * Update bluemonday dependency. (#2941)
+  * Users testcases (#2942)
+  * Order columns in hostname flatten output (#2939)
+  * Add a generic hostsfile artifact (#2930)
+  * Report process names as well as pid for errors (#2937)
+  * Send hard coded labels in periodic client info updates (#2935)
+  * [Snyk] Upgrade ace-builds from 1.24.0 to 1.24.1 (#2932)
+  * Add Modify() method to client info manager. (#2933)
+  * Remove unused parameter by Bloodhound artifact (#2924)
+  * [Snyk] Upgrade ace-builds from 1.23.4 to 1.24.0 (#2928)
+  * Fix AptSources deb822 parsing bug and add deb822 test  (#2926)
+  * Bugfixes: Artifact bugs due to FullPath->OSPath refactor (#2923)
+  * [Snyk] Upgrade: @babel/core, @babel/runtime (#2917)
+  * fix: upgrade recharts from 2.7.2 to 2.7.3
+  * Update the config file docs.
+  * Bugfix: Include tool versions from root org (#2913)
+  * Fix issues in AptSources artifact and support deb822 format (#2851)
+  * Disable compatibility with URL style paths (#2912)
+  * [Snyk] Upgrade: @fortawesome/fontawesome-svg-core, @fortawesome/free-solid-svg-icons (#2907)
+  * Added Windows.ETW.FileCreation (#2905)
+  * Various documentation improvements (#2904)
+  * [Snyk] Upgrade interactjs from 1.10.17 to 1.10.18 (#2902)
+  * Update to latest SQLiteHunter (#2901)
+  * [Snyk] Upgrade axios-retry from 3.5.1 to 3.6.0 (#2900)
+  * Fix URL for VelociraptorWindowsMSI (#2868)
+  * Allow embedded config to come from an external file (#2899)
+  * Add OriginalFileName to Name regex search for better hunting (#2895)
+  * Bugfix: Allow serve url to be set without materializing (#2894)
+  * Bugfix: accessors should provide their underlying file (#2893)
+  * Shuffle the list of URLs (#2888)
+  * Create Mutants.yaml (#2877)
+  * Added profile_memory() and profile_goroutines() VQL functions (#2887)
+  * [Snyk] Upgrade ace-builds from 1.23.3 to 1.23.4 (#2883)
+  * Create Notification.yaml (#2878)
+  * Fix the issue of full cpus/ram when handling corrupted org (#2886)
+  * [Snyk] Upgrade ace-builds from 1.23.2 to 1.23.3 (#2854)
+  * Fix copy-pasted comment in Admin.Client.Uninstall artifact (#2872)
+  * Create Windows.Detection.Registry.yaml (#2861)
+  * [Snyk] Upgrade @babel/core from 7.22.8 to 7.22.9 (#2862)
+  * fix: upgrade humanize-duration from 3.28.0 to 3.29.0
+  * fix test
+  * Bugfix: Hunt creation with labels
+  * Bugfix: CreateCollector bug in uploading to the cloud (#2852)
+  * [Snyk] Upgrade ace-builds from 1.23.1 to 1.23.2 (#2850)
+  * Merge fix for ntfs library, add back KapeTriage SDS target (#2849)
+  * Encode download filename in UTF8 to support better i8n (#2848)
+  * [Snyk] Upgrade @babel/core from 7.22.6 to 7.22.8 (#2846)
+  * [Snyk] Upgrade axios-retry from 3.5.0 to 3.5.1 (#2847)
+  * Bugfix: Add Cell From Flow adapted to new flow widgets (#2844)
+  * Feature/humio plugin (#2617)
+  * [Snyk] Upgrade @babel/runtime from 7.22.5 to 7.22.6 (#2841)
+  * Implemented memory protections for notebook cell calculations (#2842)
+  * Added search term label:none for unlabeled clients. (#2840)
+  * Incorporate SQLiteHunter project (#2839)
+  * Add RDP cache (#43) (#2838)
+  * Leave collection behind when uploading to cloud (#2834)
+  * Added a VSS accessor to automatically diff files from different vss (#2833)
+  * Added query debug endpoint at http://localhost:6060/debug/query (#2832)
+  * Fixed bug in KapeFiles Extract (#2830)
+  * Various bug fixes (#2829)
+  * [Snyk] Upgrade axios-retry from 3.5.0 to 3.5.1 (#2827)
+  * [Snyk] Upgrade ace-builds from 1.23.0 to 1.23.1 (#2826)
+  * Implement src IP filtering for the GUI (#2825)
+  * Refactor code to wrap gopsutils (#2824)
+  * Extended Client Event GUI to allow specifying max_wait (#2821)
+  * Bump word-wrap from 1.2.3 to 1.2.4 in /gui/velociraptor (#2820)
+  * Bugfix: Max Wait deadline was reset when a query returned a row (#2819)
+  * Implemented better uploads UI for notebooks  (#2816)
+  * [Snyk] Upgrade ace-builds from 1.22.1 to 1.23.0 (#2812)
+  * Modified glob() to return the globs that hit the result. (#2813)
+  * [Snyk] Upgrade ace-builds from 1.22.0 to 1.22.1 (#2786)
+  * Update ServiceCreationComspec.yaml (#2806)
+  * [Snyk] Upgrade recharts from 2.7.1 to 2.7.2 (#2809)
+  * [Snyk] Security upgrade @babel/core from 7.22.5 to 7.22.6 (#2787)
+  * [Snyk] Upgrade recharts from 2.6.2 to 2.7.1 (#2794)
+  * Bump semver from 5.7.1 to 5.7.2 in /gui/velociraptor (#2803)
+  * Bugfix: Update GUI shell interface to use the new GetClientFlows API. (#2802)
+  * RPM packaging: architecture autodetection & spec compliance (#2797)
+  * Debian packaging: architecture autodetection & spec compliance (#2796)
+  * Added Linux.Forensics.Journal artifact (#2799)
+  * Bring back highlight for urgent collections. (#2795)
+  * Update flow list view to use paged table (#2791)
+  * Add lnk and test refresh (#2790)
+  * Report total number of matching clients in search (#2789)
+  * Rebuild the index from the client info snapshot (#2781)
+  * [Snyk] Upgrade: @babel/core, @babel/plugin-syntax-flow, @babel/plugin-transform-react-jsx, @babel/runtime (#2783)
+  * Update Favicons.yaml (#2780)
+  * Write client info database to a snapshot  (#2776)
+  * Added an S3 accessor (#2774)
+  * Removed unknown parameter 'Separator' from options in call of Artifac… (#2773)
+  * Trimmed Spaces around labels in labels.go (#2771)
+  * Bugfix: Allow `user_grant` to set roles through the policy (#2769)
+  * [Snyk] Upgrade @popperjs/core from 2.11.7 to 2.11.8 (#2758)
+  * Introduces the `really_do_it` argument to `org_delete` (#2767)
+  * Audit user creation and user role modifications. (#2766)
+  * Update Bam.yaml due to a dead link. Previous link is dead due to a website restructuring. (#2763)
+  * [Snyk] Upgrade styled-components from 5.3.10 to 5.3.11 (#2759)
+  * [Snyk] Upgrade: @babel/core, @babel/plugin-transform-react-jsx, @babel/runtime (#2757)
+  * Update and rename Kerbroasting.yaml to Kerberoasting.yaml (#2754)
+  * Bugfix: Org admin should see all orgs (#2753)
+  * [Snyk] Upgrade ace-builds from 1.21.1 to 1.22.0 (#2750)
+  * Correct UI typo and update translations (#2748)
+  * Correct `scope` plugin reference typo (#2747)
+  * [Snyk] Upgrade axios-retry from 3.4.0 to 3.5.0 (#2743)
+  * Log error messages during rekeying (#2745)
+  * [Snyk] Upgrade ace-builds from 1.21.0 to 1.21.1 (#2738)
+  * Bump fast-xml-parser from 4.1.3 to 4.2.4 in /gui/velociraptor (#2739)
+  * Bugfix: Sort flows before fetching them into the GUI (#2740)
+  * Bump vite from 4.1.4 to 4.1.5 in /gui/velociraptor (#2736)
+  * [Snyk] Upgrade ace-builds from 1.20.0 to 1.21.0 (#2733)
+  * [Snyk] Upgrade qs from 6.11.1 to 6.11.2 (#2734)
+  * Allow in place updating of simple result sets (#2732)
+  * [Snyk] Upgrade recharts from 2.6.0 to 2.6.2 (#2727)
+  * [Snyk] Upgrade ace-builds from 1.19.0 to 1.20.0 (#2728)
+  * Update NetstatEnriched.yaml (#2724)
+  * Update NetstatEnriched (#2723)
+  * Added a leveldb plugin and parser for Chrome Session Storage. (#2722)
+  * [Snyk] Upgrade recharts from 2.5.0 to 2.6.0 (#2720)
+  * Allow SQLite files to be copied always. (#2719)
+  * Add Linux.SuSE.Packages artifact (#2712)
+  * Ehancement: Add Source field to Windows.Applicaiton.History to show sync status (#2716)
+  * Revert "Add SyncStatus to History.yaml" (#2715)
+  * Add SyncStatus to History.yaml (#2714)
+  * Propagate default hunt expiry from the config to the GUI (#2713)
+  * [Snyk] Upgrade ace-builds from 1.18.0 to 1.19.0 (#2709)
+  * [Snyk] Upgrade react-bootstrap from 1.6.6 to 1.6.7 (#2710)
+  * Updated the SQLECmd artifact to support MacOS and Linux (#2708)
+  * Bugfix: http_client parameters did not handle url().Query objects (#2706)
+  * [Snyk] Upgrade @babel/core from 7.21.5 to 7.21.8 (#2704)
+  * Linux.RHEL.Packages: Silence dnf output (#2703)
+  * Allow the inventory service to disable external fetching  (#2701)
+  * S3_Upload: Adding KMS and Prefix arguments (#2699)
+  * [Snyk] Upgrade: @babel/core, @babel/plugin-transform-react-jsx, @babel/runtime (#2693)
+  * http_client(): Don't drop responses with empty Content (#2696)
+  * Treat Tool name+version as a unique tool. (#2697)
+  * Updated Windows.KapeFiles.Targets to support multiple drives (#2692)
+  * Added tgz support to the unzip() plugin. (#2691)
+  * Bugfix: SkipVerify did not remove custom verification function. (#2690)
+  * [Snyk] Upgrade axios from 1.3.6 to 1.4.0 (#2686)
+  * Fix typo in vi.jsx (#2684)
+  * Update Vietnamese language (#2681)
+  * Copy scope responder when calling an VQL function.  (#2682)
+  * Added Vietnamese translation (#2680)
+  * Bugfix: Miscounting total rows (#2679)
+  * [Snyk] Upgrade axios from 1.3.5 to 1.3.6 (#2672)
+  * Added a Certs authenticator (#2678)
+  * [Snyk] Upgrade ace-builds from 1.17.0 to 1.18.0 (#2674)
+  * [Snyk] Upgrade styled-components from 5.3.9 to 5.3.10 (#2677)
+  * Block collections in locked down servers  (#2667)
+  * Allow additional event artifacts to be specified in client config. (#2664)
+  * add fixed decoded data output as preview_upload method (#2663)
+  * [Snyk] Upgrade ace-builds from 1.16.0 to 1.17.0 (#2662)
+  * Added context menu for downloading VFS files. (#2659)
+  * Bugfix: Total row count was inaccurate (#2658)
+  * Refactored vfs widget (#2657)
+  * Refactored VFS download GUI (#2656)
+  * Add filters for hunting to Windows.System.Powershell.ModuleAnalysisCache (#2655)
+  * Improved the artifact import GUI  (#2654)
+  * Modify Windows.EventLogs.ScheduledTasks (#2652)
+  * [Snyk] Upgrade axios from 1.3.4 to 1.3.5 (#2650)
+  * Fix typo - "filesyste" to "filesystem" (#2649)
+  * Added binary parser for appcompatcache (#2645)
+  * Improved eslint score (#2642)
+  * Added a more complete text viewer implementation (#2641)
+  * [Snyk] Upgrade react-datetime-picker from 4.2.0 to 4.2.1 (#2640)
+  * [Snyk] Upgrade: @babel/core, @babel/plugin-syntax-flow (#2637)
+  * [Snyk] Upgrade moment-timezone from 0.5.42 to 0.5.43 (#2638)
+  * Added a filter to the artifact search screen (#2639)
+  * Add network usage transfer summary suggestion (#2636)
+  * Extend http_client() to support SMB urls. (#2635)
+  * Handle client crashes by reporting to the server (#2634)
+  * [Snyk] Upgrade: @fortawesome/fontawesome-svg-core, @fortawesome/free-solid-svg-icons (#2633)
+  * [Snyk] Upgrade @popperjs/core from 2.11.6 to 2.11.7 (#2626)
+  * [Snyk] Upgrade moment-timezone from 0.5.41 to 0.5.42 (#2627)
+  * Initial implementation of alerting framework. (#2631)
+  * Update tool definitions to support expected_hash and version  (#2629)
+  * Update test certs (#2625)
+  * Refactored repository service. (#2624)
+  * Forward audit events to a server artifact (#2623)
+  * Document vql plugin and function permissions (#2620)
+  * Added a lockdown mode to the server config. (#2619)
+  * Added a VQL function upload_smb() (#2618)
+  * Added upload_azure() function (#2616)
+  * Added the EXPLAIN keyword (#2614)
+  * [Snyk] Upgrade ace-builds from 1.15.3 to 1.16.0 (#2612)
+  * [Snyk] Upgrade recharts from 2.4.3 to 2.5.0 (#2613)
+  * Create monitoring_logs.go (#2611)
+  * [Snyk] Upgrade @babel/core from 7.21.0 to 7.21.3 (#2609)
+  * Add UserAccessLogs and formatting fix (#2607)
+  * Bugfix: Preparing flow export from server artifact flows (#2606)
+  * [Snyk] Upgrade styled-components from 5.3.8 to 5.3.9 (#2605)
+  * Refactor launcher to split writing record and queuing message (#2604)
+  * Added an SMB accessor (#2601)
+  * Uplift client id validation to the client info manager (#2598)
+  * Refactor launcher service to use a storage dependency (#2597)
+  * Update Amcache.yaml (#2596)
+  * Rework table filtering UI (#2595)
+  * Splunk Configuration Details (#2594)
+  * Implement TLS certificate pinning and Fallback Address (#2585)
+  * [Snyk] Upgrade qs from 6.11.0 to 6.11.1 (#2593)
+  * Fixed bug in grok library (#2592)
+  * Add functionality to get efi variables (#2583)
+  * Bugfix: Flow Deletion did not remove uploaded bulk files. (#2589)
+  * Added hunt_update() VQL function to allow stopping/starting hunt (#2587)
+  * Protect CryptCATAdmin functions behind dangerous api flag (#2586)
+  * Close the WinVerifyTrust structure regardless of error. (#2584)
+  * Added DISABLE_DANGEROUS_API_CALLS parameter (#2582)
+  * [Snyk] Upgrade ace-builds from 1.15.2 to 1.15.3 (#2580)
+  * [Snyk] Upgrade styled-components from 5.3.7 to 5.3.8 (#2581)
+  * Bugfix: Trace file generator regression (#2579)
+  * Restrict VerifyFileSignature to only run on a single thread. (#2578)
+  * Dedudplicate labels in GUI (#2577)
+  * Build(deps): Bump github.com/crewjam/saml from 0.4.12 to 0.4.13 (#2575)
+  * Suppress logging to files for admin commands (#2571)
+  * Add client id to client monitoring events  (#2569)
+  * Added START_HUNT permission to control who can start a hunt (#2566)
+  * Added automated translations for missing terms (#2565)
+  * More work on pedump vql function (#2557)
+  * Add a hunt reconstruct command to recover hunt objects from logs. (#2556)
+  * Bugfix: When exporting a sparse file also export the idx file. (#2555)
+  * [Snyk] Upgrade moment-timezone from 0.5.40 to 0.5.41 (#2553)
+  * Added pe_dump VQL function  (#2554)
+  * Bugfix: Race condition in minions (#2552)
+  * Bugfix: Fixed bug in fifo plugin. (#2550)
+  * Support reading raw devices with the file accessor. (#2549)
+  * Bugfix: Lstat of device using NTFS accessor (#2547)
+  * Refactored path handling in auth handlers (#2546)
+  * Fixed base path bug (#2545)
+  * Bugfix: Do not require repack to load a valid config (#2543)
+  * Fixed incorrect usage of HTTP transport that broke in go1.19.6 (#2536)
+  * Disabled http2 client. (#2535)
+  * Build With go 1.19 (#2534)
+  * Fix bug in template (#2533)
+  * Prepare for 0.6.8-rc2 (#2529)
+  * Bugfix: Parsing OSPath from list of components (#2528)
+  * Bugfix: notebook export did not include uploads (#2527)
+  * Bugfix: Client delete in non-root org did not invalidate cache (#2525)
+  * Add 'Headers' to output
+  * Sync KapeFiles.Targets artifact (#2522)
+  * Allow http_client() to handle cookies. (#2520)
+  * [Snyk] Upgrade ace-builds from 1.15.1 to 1.15.2 (#2519)
+  * Added some Linux artifacts (#2514)
+  * Refactoring side panel navigation as "main menu" navigation, tweaked the hamburger button (#2497)
+  * Add Windows.Registry.PuttyHostKeys (#2516)
+  * [Snyk] Security upgrade styled-components from 5.3.6 to 5.3.7 (#2491)
+  * [Snyk] Upgrade ace-builds from 1.15.0 to 1.15.1 (#2504)
+  * Update ModuleAnalysisCache.yaml (#2512)
+  * Update description formatting (#2509)
+  * Add first round of yara context updates (#2505)
+  * Trigger client and server monitoring table rebuild (#2501)
+  * Added more uploader tests (#2500)
+  * Bugfix: Notebook Uploader so it reports filestore components. (#2499)
+  * Added a max_row_buffer_size parameter (#2498)
+  * Revamped the Metadata UI (#2496)
+  * Added new artifact parameter type: server_metadata (#2494)
+  * Bugfix: Server artifact running should use parent context for save (#2493)
+  * Deduplicate glob hits (#2490)
+  * Hex column types did not required hex encoding (#2488)
+  * Pass collection_context to server artifact runner directly. (#2487)
+  * [Snyk] Security upgrade is-svg from 4.3.2 to 4.4.0 (#2485)
+  * Additional button labels, alt text for screen readers (#2486)
+  * Reload inventory service from an event artifact (#2484)
+  * Client summary react call should be ignored if call was cancelled. (#2483)
+  * Record the client's install time in the writeback file. (#2482)
+  * Fix bug in uploading of sparse files. (#2481)
+  * Adding eslint support (#2480)
+  * Explicitly set the data length in FileBuffer messages (#2479)
+  * Adding label names to various buttons for accessibility (#2474)
+  * Fixed x86 autoruns tool definition (#2477)
+  * Use a more compact flow_id for hunts. (#2472)
+  * Reuse the same session id for all flows in the same hunt. (#2471)
+  * Implemented file_nocase for Linux and Darwin (#2468)
+  * Bugfix: Timestamp detection assumed entire cell is a timestamp (#2467)
+  * Implemented utf8 preserving Zip encoding. (#2464)
+  * Bump golang.org/x/net from 0.5.0 to 0.7.0 (#2462)
+  * Refactored repack functionality into a VQL function (#2461)
+  * [Snyk] Upgrade axios from 1.2.5 to 1.2.6 (#2460)
+  * [Snyk] Upgrade ace-builds from 1.14.0 to 1.15.0 (#2455)
+  * [Snyk] Upgrade axios from 1.2.4 to 1.2.5 (#2456)
+  * Fix crashes when parsing malformed PE and OLE files. (#2457)
+  * Allow redirect when changing org selection (#2453)
+  * [Snyk] Upgrade axios from 1.2.3 to 1.2.4 (#2448)
+  * Store client path components in the uploads metadata (#2451)
+  * Bugfix: syslog and csv watchers did not initialize scope (#2450)
+  * Bugfix: missing rows in VFS ListDirectory (#2449)
+  * Updated mail plugin to support skip_verify (#2447)
+  * Fixed some race conditions (#2446)
+  * [Snyk] Upgrade axios-retry from 3.3.1 to 3.4.0 (#2445)
+  * Refactor and reimplement the pool client. (#2444)
+  * Update ClientInfo message for pool client (#2442)
+  * [Snyk] Upgrade: @babel/plugin-transform-react-jsx, @babel/runtime (#2440)
+  * Track tool definitions by defining artifact (#2439)
+  * [Snyk] Upgrade axios-retry from 3.3.1 to 3.4.0 (#2438)
+  * Refactored event monitoring to not use globals (#2437)
+  * Update WDigest.yaml (#2434)
+  * Refactor and add tests for Linux.Remediation.Quarantine (#2433)
+  * Reworked split_records() and parse_records_with_regex() (#2431)
+  * [Snyk] Upgrade axios from 1.2.2 to 1.2.3 (#2429)
+  * [Snyk] Upgrade react-datetime-picker from 4.1.1 to 4.2.0 (#2430)
+  * minor changed to PSlist and DllList (#2428)
+  * Fixed GUI to handle tables with varying columns per row. (#2425)
+  * Split Windows.Sys.Users into two different artifacts (#2424)
+  * Added progress reporting to offline collector (#2423)
+  * Allow client side collections to be traced. (#2422)
+  * [Snyk] Upgrade humanize-duration from 3.27.3 to 3.28.0 (#2421)
+  * Added a tempfile based materializer to have safe queries (#2420)
+  * Update Process.yaml (#2419)
+  * Brought back the pool client (#2418)
+  * Update Process.yaml (#2417)
+  * [Snyk] Upgrade recharts from 2.3.1 to 2.3.2 (#2416)
+  * Uploads are now deduplicated on store_as_name. (#2415)
+  * Enrich SRUM artifact with the Username as well as SID (#2413)
+  * Implemented a preview Column renderer (#2412)
+  * [Snyk] Upgrade recharts from 2.3.0 to 2.3.1 (#2411)
+  * Add PSList filters (#2407)
+  * Put back the extra ForemanCheckin message on each post (#2410)
+  * Send ClientInfo messages all the time (#2409)
+  * Implement limits on server artifacts (#2406)
+  * Support backwards compatibility comms with older clients. (#2405)
+  * Implement collection limits on client (#2403)
+  * Update go.yml (#2401)
+  * Read flow object from storage for System.Flow.Completion (#2400)
+  * Refactor client flow context manager (#2399)
+  * [Snyk] Upgrade @babel/core from 7.20.7 to 7.20.12 (#2396)
+  * Bump ua-parser-js from 0.7.32 to 0.7.33 in /gui/velociraptor (#2398)
+  * utils/time.jsx: fix handling of nanosecond-resolution timestamps (#2397)
+  * Memory uplift (#39) (#2394)
+  * http_comms: create ring buffer temporary file in the same directory (#2393)
+  * Update server artifact runner to use FlowRequests (#2392)
+  * Added new client message type FlowRequest (#2391)
+  * Allow default timezone to be specified on commandline (#2388)
+  * [Snyk] Upgrade axios from 1.2.1 to 1.2.2 (#2387)
+  * Verify FILESYSTEM_WRITE permission on copy() function (#2384)
+  * Apply Minimum TLS version to the API server (#2383)
+  * [Snyk] Upgrade: @babel/core, @babel/plugin-transform-react-jsx, @babel/runtime (#2382)
+  * [Snyk] Security upgrade recharts from 2.2.0 to 2.3.0 (#2381)
+  * Update and rename Server.Alerts.ProcessCreation.yaml to ProcessCreati… (#2380)
+  * Update collection artifacts_with_results during execution (#2379)
+  * Process monitoring messages with the new comms protocol. (#2378)
+  * Create Windows.Detection.ProcessCreation (#2362)
+  * Create Server.Alerts.ProcessCreation.yaml (#2363)
+  * Fix time factor in FlowStat (#2377)
+  * Refactored comms between client and server (#2375)
+  * Update Splunk Artifact and notebook cells (#2374)
+  * Allow for dynamic base_path (#2365)
+  * Update ParentProcess.yaml (#2369)
+  * Refactor: TLS config is now consitant for all TLS servers (#2367)
+  * Bump json5 from 1.0.1 to 1.0.2 in /gui/velociraptor (#2366)
+  * [Snyk] Upgrade ace-builds from 1.13.2 to 1.14.0 (#2361)
+  * Add rate limits for client connections. (#2360)
+  * Batch client log messages into JSONL groups (#2359)
+  * Added client manager to keep track of all queries in the same flow. (#2358)
+  * [Snyk] Upgrade ace-builds from 1.13.1 to 1.13.2 (#2356)
+  * Added a client plugin vfs_ls (#2355)
+  * Correct uninstall args for RPM based agents (#2354)
+  * Fix download link colors in themes (#2349)
+  * Theme fixes (#2346)
+  * Refactored hunt and collection export code (#2347)
+  * Use pageable tables for the VFS (#2343)
+  * Compress all assets with brotli and serve them already compressed. (#2342)
+  * Add BinaryRename update (#2341)
+  * Vite improvements (#2340)
+  * Update History.yaml (#2339)
+  * Migrate GUI from create-react-app (CRA) to Vite (#2332)
+  * Fix Linux.Sys.LastUserLogin (#2333)
+  * Use 'auto' accessor to prevent issues with uploads (#2331)
+  * Refactored audit logging (#2328)
+  * Fix typo - 'Passowrd' to 'Password' (#2327)
+  * Disable escape to close artifact editor (#2324)
+  * Add starlark,yaml,xml, and float params (#2323)
+  * Bump express from 4.17.2 to 4.18.2 in /gui/velociraptor (#2321)
+  * [Snyk] Upgrade moment-timezone from 0.5.38 to 0.5.39 (#2319)
+  * More fixes for Windows.System.VAD (#2317)
+  * Bugfix: When org is not specified this JS code raised (#2315)
+  * Fixed typo in VAD PR (#2313)
+  * Add VAD protection message, status and type for completeness (#2312)
+  * Bugfix: Do not materialize the VAD array in Windows.System.VAD (#2310)
+  * Bugfix: Reset crypto cache when client is deleted (#2308)
+  * Fixed Windows.Sys.Users artifact. (#2306)
+  * Theme fixes and improvements (#2305)
+  * Added an --msi flag to the config repack command (#2304)
+  * Fix golden tests (#2302)
+  * [Snyk] Upgrade ace-builds from 1.12.5 to 1.13.0 (#2301)
+  * Bump decode-uri-component from 0.2.0 to 0.2.2 in /gui/velociraptor (#2299)
+  * Fix freebsd build (#2298)
+  * Bugfix: Collector timeout was set in ns (#2297)
+  * Added write_jsonl plugin. (#2296)
+  * Bugfix: Export notebook to zip broken (#2295)
+  * Theme fixes (#2291)
+  * User admin management screeb (#2212)
+  * Use 'HuntDescription' value for hunt() 'description' value (#2289)
+  * Add shaded container around artifact description content (#2287)
+  * ACE editor font corrections (#2285)
+  * Ensure reserved user names can not be used (#2284)
+  * Theme fixes and improvements (#2283)
+  * Fix example for dummy proxy in documentation (#2281)
+  * Bugfix: uploads.json in the flow download refered to filestore paths (#2282)
+  * Bugfix: Downloading CSV from table breaks with error. (#2280)
+  * Theme fixes and improvements (#2278)
+  * Upgrade Velociraptor's yara plugin to support yara 4.2.3 (#2277)
+  * Fixed the Windows.KapeFiles.Extract artifact (#2275)
+  * [Snyk] Upgrade ace-builds from 1.12.4 to 1.12.5 (#2269)
+  * Added code to automatically reformat VQL in notebook. (#2271)
+  * Bugfix: http_client was unable to open unix domain sockets (#2270)
+  * [Snyk] Upgrade ace-builds from 1.12.3 to 1.12.4 (#2264)
+  * Bugfix: Minions should not start the ServerMonitoringService (#2260)
+  * Made threshold for sparse file expansions configurable. (#2259)
+  * Bugfix: Export download supports expanding sparse files (#2258)
+  * Bugfix: Do not expand sparse files when importing (#2257)
+  * Bugfix: Store client specific dashboard in client space. (#2255)
+  * Bugfix: Dashboard refresh button did not refresh it (#2254)
+  * Return EOF from timed result set when reading past the end (#2253)
+  * Fix context management in event table updates. (#2252)
+  * Bugfix: Dashboard refresh button did not refresh it (#2251)
+  * Theme fixes (#2250)
+  * Bump loader-utils from 1.4.1 to 1.4.2 in /gui/velociraptor (#2249)
+  * Fixed bug in line splitting in execve() plugin (#2248)
+  * Fixed bug in VQL Drilldown view (#2246)
+  * Update Server.Import.PreviousReleases (#2245)
+  * Update colors in tree widget to match theme (#2243)
+  * Font adjustments in themes (#2242)
+  * Refactor the Windows.NTFS.MFT artifact for back compatibility (#2241)
+  * Theme improvements and alignment (#2240)
+  * Update user delete VQL and grant (#2238)
+  * Refactored Org to OrgRecord protobuf  (#2237)
+  * Update parse_mft() and parse_usn() to allow drive prefix. (#2236)
+  * Add choice to config wizard for allow list (#2234)
+  * Bugfix: Allow client metadata with , (#2233)
+  * [Snyk] Upgrade ace-builds from 1.12.0 to 1.12.3 (#2230)
+  * Propagate user's prefered timezone for export tables (#2232)
+  * MappingNameRegex fix (#2231)
+  * More documentation of the config file. (#2228)
+  * Bump loader-utils from 1.4.0 to 1.4.1 in /gui/velociraptor (#2225)
+  * users: AddUserToOrg needs GetUserWithHashes or it will remove passwor… (#2227)
+  * Refactored user management code into a separate module. (#2224)
+  * [Snyk] Upgrade ace-builds from 1.11.1 to 1.12.0 (#2221)
+  * [Snyk] Upgrade moment-timezone from 0.5.37 to 0.5.38 (#2222)
+  * Added an LRU for ACL manager (#2223)
+  * Enforce an allow list on plugins, functions and accessors (#2214)
+  * tests: fix binary copying in CollectorSetupTest (#2210)
+  * Update protobuf generation script (#2213)
+  * Linux quarantine (#2211)
+  * Bugfix: Flush server artifact logs into storage frequently (#2207)
+  * Fix HTTP Params/Add HTTP Method Validation (#2203)
+  * Bugfix: Sync NTFS (#2206)
+  * file_store: handle watching artifacts with named sources (#2204)
+  * Add Provider and ProviderRegex (#2198)
+  * Bugfix: sparse files were not properly detected. (#2200)
+  * Add timestamp_field, hostname_field, and hostname param to splunk_upload (#2187)
+- Removed velociraptor-kafka-humio-gateway package.
+  * kafka-humio-gateway was dropped in favor of the new upstream LogScale plugin
+
+-------------------------------------------------------------------
 Tue Jul 18 09:31:19 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - require the group / user only in the server build
@@ -22,7 +748,7 @@ Tue May  9 01:25:01 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
 - Provide sysuser template for velociraptor user and group.
 
 -------------------------------------------------------------------
-Mon May 08 20:21:03 UTC 2023 - jeffm@suse.com
+Mon May 08 20:21:03 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
 
 - Update to version 0.6.7.5~git78.2bef6fc:
   * bpf: fix path to vmlinux.h
@@ -715,7 +1441,8 @@ Fri Jul 15 00:00:39 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
 -------------------------------------------------------------------
 Thu May 12 20:15:26 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
 
-- Update to upstream 0.6.4-2:
+- Update to upstream 0.6.4.2~git16.e1b7fc0:
+  * Rebase on 0.6.4-2
   * Reset nanny when client connection failed. (#1780)
   * Fix artifacts that use yara parameters to specify yara type (#1779)
   * Update release for bugfixes 0.6.4-2

@@ -3,11 +3,13 @@ Subject: magefile: use stable timestamps for build
 
 In order to create reprodicible builds, we can't have timestamps that vary
 without anything else changing.
-diff --git a/magefile.go b/magefile.go
-index 16badc2b..76011657 100644
---- a/magefile.go
-+++ b/magefile.go
-@@ -428,10 +428,18 @@ func build_gui_files() error {
+---
+ magefiles/magefile.go |   12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+--- a/magefiles/magefile.go
++++ b/magefiles/magefile.go
+@@ -472,10 +472,18 @@ func build_gui_files() error {
  }
  
  func flags() string {

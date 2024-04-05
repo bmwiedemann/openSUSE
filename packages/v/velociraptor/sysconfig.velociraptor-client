@@ -6,4 +6,4 @@
 #
 # Options for velociraptor-client
 #
-VELOCIRAPTOR_CLIENT_OPTS="-v"
+VELOCIRAPTOR_CLIENT_OPTS=""

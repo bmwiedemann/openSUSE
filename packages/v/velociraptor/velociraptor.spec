@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package velociraptor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,32 +21,43 @@
 %if "%{flavor}" == "client"
 %define build_client 1
 %define build_server 0
-%define build_kafka_humio_gateway 0
 %define name_suffix -client
 %define make_target linux_bare
-%define config_perms %attr(0600, root, root)
-%define state_dir_perms %attr(0700, root, root)
+%define config_perms 0600, root, root
+%define state_dir_perms 0700, root, root
 %else
-%define build_kafka_humio_gateway 1
 %define build_server 1
 %define build_client 0
 %define name_suffix %{nil}
 %define make_target linux
-%define config_perms %attr(0640, root, velociraptor)
-%define state_dir_perms %attr(0700, velociraptor, velociraptor)
+%define config_perms 0640, root, velociraptor
+%define state_dir_perms 0700, velociraptor, velociraptor
 %endif
 
 %define projname velociraptor
-%define vendor_version 0.6.7.5~git77.997aa73
 %define vmlinux_h_version 5.14.21150400.22-150400-default
 
-# SLE 15 SP2 / Leap 15.2 or newer gets eBPF
+# SLE 15 SP3 / Leap 15.3 or newer gets eBPF
 # Earlier versions don't have a usable eBPF and the
 # release doesn't easily build llvm13
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150200
 %bcond_without bpf
-%else
-%bcond_with bpf
+%endif
+%if "%{_vendor}" == "debbuild"
+%bcond_without bpf
+%endif
+%if 0%{?rhel}
+# RHEL can do BPF but we need llvm for it
+%bcond_without bpf
+%endif
+
+%if "%{_vendor}" == "debbuild"
+%define _unitdir /usr/lib/systemd/system
+%endif
+
+# Older SLE releases and debbuild don't support uppercase VERSION macro
+%if "%{_vendor}" == "debbuild" || 0%{?sle_version} < 150000
+%define VERSION %{version}
 %endif
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
@@ -60,7 +71,7 @@
 %endif
 
 Name:           velociraptor%{name_suffix}
-Version:        0.6.7.5~git81.01be570
+Version:        0.7.0.4.git74.3426c0a
 Release:        0
 %if %{build_server}
 Summary:        Endpoint visibility and collection tool
@@ -70,52 +81,111 @@ Summary:        Endpoint visibility and collection tool (endpoint only)
 Group:          System/Monitoring
 License:        AGPL-3.0-only
 URL:            https://github.com/Velocidex/velociraptor
-Source:         %{projname}-%{version}.tar.xz
-Source1:        vendor-golang-%{vendor_version}.tar.xz
-Source2:        vendor-golang-kafka-humio-gateway-%{vendor_version}.tar.xz
-Source3:        vendor-nodejs-%{vendor_version}.tar.xz
-Source4:        vmlinux.h-%{vmlinux_h_version}.tar.xz
-Source5:        velociraptor.service
-Source6:        velociraptor-server.config.placeholder
-Source7:        velociraptor-client.service
-Source8:        velociraptor-client.config.placeholder
-Source9:        update-vendoring.sh
-Source10:       sysconfig.velociraptor
-Source11:       sysconfig.velociraptor-client
-Source12:       %{projname}.obsinfo
-Source13:       system-user-velociraptor.sysusers
-Source14:       velociraptor-kafka.sysusers
-Source15:       velociraptor-kafka-humio-gateway.service
-Source16:       sysconfig.velociraptor-kafka-humio-gateway
-Patch1:         velociraptor-golang-mage-vendoring.diff
-Patch2:         vendor-build-fixes-for-SLE12.patch
-Patch3:         sdjournal-build-fix-for-SLE12.patch
-Patch4:         velociraptor-reproducible-timestamp.diff
+Source:         %{projname}-%{version}.tar.gz
+Source1:        velociraptor-go_modules.tar.gz
+Source2:        vmlinux.h-%{vmlinux_h_version}.tar.xz
+Source3:        velociraptor.service
+Source4:        velociraptor-server.config.placeholder
+Source5:        velociraptor-client.service
+Source6:        velociraptor-client.config.placeholder
+Source7:        sysconfig.velociraptor
+Source8:        sysconfig.velociraptor-client
+Source9:        %{projname}.obsinfo
+Source10:       system-user-velociraptor.sysusers
+Source11:       velociraptor-nodejs.spec.inc
+
+%include %{_sourcedir}/velociraptor-nodejs.spec.inc
+
+Patch1:         vendor-build-fixes-for-SLE12.patch
+Patch2:         sdjournal-build-fix-for-SLE12.patch
+Patch3:         velociraptor-reproducible-timestamp.diff
+# CVE-2024-28849 - bsc#1221456 - follow-redirects: Drop Proxy-Athorization across hosts
+Patch4:         CVE-2024-28849-follow-redirects-drop-proxy-authorization.patch
 BuildRequires:  fileb0x
+%if 0%{?suse_version}
 BuildRequires:  golang-packaging
-BuildRequires:  mage
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) >= 1.18
+BuildRequires:  golang(API) >= 1.19
 BuildRequires:  pkgconfig(libsystemd)
+%endif
+%if "%{_vendor}" == "debbuild"
+BuildRequires:  golang >= 2:1.19~0
+BuildRequires:  libsystemd-dev
+BuildRequires:  pkg-config
+%endif
+%if 0%{?rhel}
+BuildRequires:  golang >= 1.19
+BuildRequires:  python3
+BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
+%endif
 %if %{build_server}
+BuildRequires:  local-npm-registry
 BuildRequires:  nodejs >= 18
 BuildRequires:  npm >= 18
 %endif
 %if %{with bpf}
-# clang15 causes libbpfgo to crash immediately
+%if 0%{?suse_version}
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 BuildRequires:  clang16
+BuildRequires:  llvm16
+%if 0%{?sle_version} > 150400
+BuildRequires:  llvm16-libclang13
+%endif
+%else
+BuildRequires:  clang13
+BuildRequires:  llvm13
+%endif
 BuildRequires:  libelf-devel
 BuildRequires:  libzstd-devel
-BuildRequires:  libzstd-devel
-BuildRequires:  llvm16
 BuildRequires:  zlib-devel
 %endif
-ExclusiveArch:  x86_64 ppc64le aarch64 s390x
+%if "%{_vendor}" == "debbuild"
+BuildRequires:  clang
+BuildRequires:  libelf-dev
+BuildRequires:  libzstd-dev
+BuildRequires:  llvm
+BuildRequires:  zlib1g-dev
+%endif
+%if 0%{?rhel}
+BuildRequires:  clang >= 13
+BuildRequires:  libelf-devel
+BuildRequires:  libzstd-devel
+BuildRequires:  llvm >= 13
+BuildRequires:  zlib-devel
+%endif
+%endif
 %if %{build_server}
 BuildRequires:  sysuser-tools
 Requires:       group(velociraptor)
 Requires:       user(velociraptor)
+Obsoletes:      velociraptor-kafka-humio-gateway < %{version}
 %{?sysusers_requires}
+%endif
+
+%if 0%{?suse_version}
+%if %{build_server}
+ExclusiveArch:  x86_64
+%endif
+%else
+%if %{build_server}
+ExclusiveArch:  do_not_build
+%else
+ExclusiveArch:  x86_64 ppc64le aarch64 s390x
+%endif
+%endif
+
+%if 0%{?rhel}
+# RHEL builds aren't working yet
+ExclusiveArch:  do_not_build
+%endif
+
+# Not *required* but without it, we spam the system log
+Recommends:     auditd
+
+%if "%{vendor}" == "debbuild"
+%define mtag Packager: https://www.suse.com
+%mtag
 %endif
 
 %if %{build_server}
@@ -143,18 +213,6 @@ This package provides a shared system user for all velociraptor components
 
 %endif
 
-%if %{build_kafka_humio_gateway}
-%package kafka-humio-gateway
-Summary:        Gateway between Kafka and Humio for Velociraptor Artifacts
-Version:        0.6.7.5~git81.01be570
-Requires:       group(velociraptor-kafka)
-Requires:       user(velociraptor-kafka)
-
-%description kafka-humio-gateway
-This tool is used to consume events generated by the Kafka Velociraptor plugin
-and post them to a Humio cluster.
-%endif
-
 %if %{build_client}
 %description
 Velociraptor is a tool for collecting host based state information
@@ -169,16 +227,23 @@ console, please install the 'velociraptor' package.
 %endif
 
 %prep
-%setup -q -a 1 -a 2 -a 3 -a 4 -n %{projname}-%{version}
-%autopatch -p1
+%setup -q -a 1 -a 2 -n %{projname}-%{VERSION}
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 # Set the version to something more specific than <next-tag>-dev
-sed -ie "s/\(VERSION *= \).*/\1 \"%{version}\"/" constants/constants.go
+sed -ie "s/\([[:space:]]VERSION *= \).*/\1 \"%{VERSION}\"/" constants/constants.go
 
 %if %{with bpf}
 mkdir -p third_party/libbpfgo/output
 
-cp vmlinux.h-%{vmlinux_h_version}/vmlinux-%{_arch}.h \
+arch=%{_arch}
+if test "$arch" = "amd64"; then
+	arch=x86_64
+fi
+
+cp vmlinux.h-%{vmlinux_h_version}/vmlinux-${arch}.h \
    third_party/libbpfgo/output/vmlinux.h
 %endif
 
@@ -187,26 +252,37 @@ cp vmlinux.h-%{vmlinux_h_version}/vmlinux-%{_arch}.h \
 # removing them outright.
 # rm -rf artifacts/definitions/Windows
 
+%if %{build_server}
+pushd gui/velociraptor
+rm -f package-lock.json
+local-npm-registry %{_sourcedir} install
+popd
+%patch -P 4 -p1
+%endif
+
 %build
 
-# Reproductible builds need stable timestamps
-timestamp=$(date -Iseconds --utc --date=@$(grep mtime: %{SOURCE12}|sed -e 's/mtime: //'))
-git_commit=$(grep commit: %{SOURCE12}|sed -e 's/commit: //g')
+# Reproducible builds need stable timestamps
+timestamp=$(date -Iseconds --utc --date=@$(grep mtime: %{SOURCE9}|sed -e 's/mtime: //'))
+git_commit=$(grep commit: %{SOURCE9}|sed -e 's/commit: //g')
 
 export VELOCIRAPTOR_BUILD_TIME=$timestamp
 export VELOCIRAPTOR_GIT_HEAD=$git_commit
 
 %if %{build_server}
 (cd gui/velociraptor ; npm run build)
-%sysusers_generate_pre %{SOURCE13} velociraptor-user
+%sysusers_generate_pre %{SOURCE10} velociraptor-user
 %endif
 
-make %{make_target} BUILD_LIBBPFGO=%{with bpf} GIT=echo
-
-%if %{build_kafka_humio_gateway}
-(cd contrib/kafka-humio-gateway; go build -o %{name}-kafka-humio-gateway)
-%sysusers_generate_pre %{SOURCE16} kafka-user
+%if 0%{?suse_version}
+LLVM_STRIP=llvm-strip
+%else
+LLVM_STRIP=llvm-strip
 %endif
+
+CLANG=clang
+
+PATH=$PATH:/usr/sbin make %{make_target} BUILD_BPF_PLUGINS=%{with bpf} CLANG=$CLANG STRIP=$LLVM_STRIP
 
 %install
 install -D -d -m 0750 %buildroot/%{_sysconfdir}/velociraptor
@@ -215,35 +291,29 @@ install -D -d -m 0700 %buildroot/%{_sharedstatedir}/%{name}/logs
 install -D -d -m 0700 %buildroot/%{_sharedstatedir}/%{name}/tmp
 
 %if %{build_server}
-service_file_source=%{SOURCE5}
-config_file_source=%{SOURCE6}
-sysconfig_file_source=%{SOURCE10}
+service_file_source=%{SOURCE3}
+config_file_source=%{SOURCE4}
+sysconfig_file_source=%{SOURCE7}
 config_file=server.config
 
-install -D -m 0644 %{SOURCE13} %{buildroot}%{_sysusersdir}/system-user-velociraptor.conf
+install -D -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/system-user-velociraptor.conf
 %else
-service_file_source=%{SOURCE7}
-config_file_source=%{SOURCE8}
-sysconfig_file_source=%{SOURCE11}
+service_file_source=%{SOURCE5}
+config_file_source=%{SOURCE6}
+sysconfig_file_source=%{SOURCE8}
 config_file=client.config
 %endif
 
-install -D -m 0644 "$service_file_source" %{buildroot}%{_unitdir}/%{name}.service
+%if 0%{?suse_version}
 install -D -m 0644 "$sysconfig_file_source" %{buildroot}%{_fillupdir}/sysconfig.%{name}
-install -D -m 0640 "$config_file_source" "%{buildroot}%{_sysconfdir}/velociraptor/$config_file"
-install -D -m 0755 output/velociraptor-v%{version}-linux-* %buildroot/%{_bindir}/%{name}
-
-%if %{build_kafka_humio_gateway}
-install -D -m 0644 %{SOURCE15} %{buildroot}%{_unitdir}/
-install -D -m 0644 %{SOURCE16} %{buildroot}%{_fillupdir}/
-install -D -m 0755 contrib/kafka-humio-gateway/velociraptor-kafka-humio-gateway %buildroot/%{_bindir}
-install -D -m 0644 contrib/kafka-humio-gateway/sample-config.yml \
-		   %buildroot/%{_datadir}/velociraptor-kafka-humio-gateway/sample-config.yml
-install -D -m 0644 %{SOURCE14} %{buildroot}%{_sysusersdir}/velociraptor-kafka.conf
-install -D -d -m 0750 %{buildroot}%{_sysconfdir}/velociraptor-kafka-humio-gateway
-install -D -m 0640 contrib/kafka-humio-gateway/sample-config.yml \
-		   %buildroot/%{_sysconfdir}/velociraptor-kafka-humio-gateway/transport.yml
 %endif
+%if "%{vendor}" == "debbuild"
+install -D -m 0644 "$sysconfig_file_source" %{buildroot}/%{_sysconfdir}/default/%{name}
+%endif
+
+install -D -m 0644 "$service_file_source" %{buildroot}%{_unitdir}/%{name}.service
+install -D -m 0640 "$config_file_source" "%{buildroot}%{_sysconfdir}/velociraptor/$config_file"
+install -D -m 0755 output/velociraptor-v%{VERSION}-linux-* %buildroot/%{_bindir}/%{name}
 
 %files
 %defattr(-, root, root)
@@ -251,16 +321,30 @@ install -D -m 0640 contrib/kafka-humio-gateway/sample-config.yml \
 %doc README.md
 %{_bindir}/%{name}
 %{_unitdir}/%{name}.service
+%if 0%{?suse_version}
 %{_fillupdir}/sysconfig.%{name}
+%endif
+%if "%{vendor}" == "debbuild"
+%{_sysconfdir}/default/%{name}
+%endif
 
 %dir %attr(-, root, velociraptor) %{_sysconfdir}/velociraptor
 
-%config(noreplace) %{config_perms} %{_sysconfdir}/velociraptor/*.config
-%dir %{state_dir_perms} %{_sharedstatedir}/%{name}
-%dir %{state_dir_perms} %{_sharedstatedir}/%{name}/data
-%dir %{state_dir_perms} %{_sharedstatedir}/%{name}/logs
-%dir %{state_dir_perms} %{_sharedstatedir}/%{name}/tmp
+%config(noreplace) %attr(%{config_perms}) %{_sysconfdir}/velociraptor/*.config
+%dir %attr(%{state_dir_perms}) %{_sharedstatedir}/%{name}
+%dir %attr(%{state_dir_perms}) %{_sharedstatedir}/%{name}/data
+%dir %attr(%{state_dir_perms}) %{_sharedstatedir}/%{name}/logs
+%dir %attr(%{state_dir_perms}) %{_sharedstatedir}/%{name}/tmp
 
+%if %{build_server}
+%files -n system-user-velociraptor
+%defattr(-, root, root)
+%{_sysusersdir}/system-user-velociraptor.conf
+
+%pre -n system-user-velociraptor -f velociraptor-user.pre
+%endif
+
+%if 0%{?suse_version}
 %pre
 %service_add_pre %{name}.service
 
@@ -273,42 +357,22 @@ install -D -m 0640 contrib/kafka-humio-gateway/sample-config.yml \
 
 %postun
 %service_del_postun %{name}.service
-
-%if %{build_server}
-%pre -n system-user-velociraptor -f velociraptor-user.pre
-
-%files -n system-user-velociraptor
-%defattr(-, root, root)
-%{_sysusersdir}/system-user-velociraptor.conf
 %endif
 
-%if %{build_kafka_humio_gateway}
-%files kafka-humio-gateway
-%defattr(-, root, root)
-%license LICENSE
-%doc contrib/kafka-humio-gateway/README.md
-%{_bindir}/velociraptor-kafka-humio-gateway
-%dir %{_datadir}/velociraptor-kafka-humio-gateway
-%{_datadir}/velociraptor-kafka-humio-gateway/sample-config.yml
-%{_sysusersdir}/velociraptor-kafka.conf
-%{_unitdir}/velociraptor-kafka-humio-gateway.service
-%{_fillupdir}/sysconfig.velociraptor-kafka-humio-gateway
-%dir %attr(750, root, velociraptor-kafka) %{_sysconfdir}/velociraptor-kafka-humio-gateway
-%config(noreplace) %attr(0640, root, velociraptor-kafka) %{_sysconfdir}/velociraptor-kafka-humio-gateway/transport.yml
-
-%pre kafka-humio-gateway -f kafka-user.pre
-%service_add_pre velociraptor-kafka-humio-gateway.service
-
-%post kafka-humio-gateway
-%{fillup_only -s kafka-humio-gateway}
-%service_add_post velociraptor-kafka-humio-gateway.service
-
-%preun kafka-humio-gateway
-%service_del_preun velociraptor-kafka-humio-gateway.service
-
-%postun kafka-humio-gateway
-%service_del_postun velociraptor-kafka-humio-gateway.service
-
+%if "%{_vendor}" == "debbuild"
+%postun
+# Automatically added by dh_installsystemd/13.11.4
+if [ "$1" = remove ] && [ -d /run/systemd/system ] ; then
+	systemctl --system daemon-reload >/dev/null || true
+fi
+# End automatically added section
+# Automatically added by dh_installsystemd/13.11.4
+if [ "$1" = "purge" ]; then
+	if [ -x "/usr/bin/deb-systemd-helper" ]; then
+		deb-systemd-helper purge 'velociraptor-client.service' >/dev/null || true
+	fi
+fi
+# End automatically added section
 %endif
 
 %changelog

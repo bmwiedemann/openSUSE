@@ -7,6 +7,7 @@ UMask=0027
 User=velociraptor
 Group=velociraptor
 EnvironmentFile=-/etc/sysconfig/velociraptor
+EnvironmentFile=-/etc/default/velociraptor
 Environment=TMPDIR=/var/lib/velociraptor/tmp
 ExecStart=/usr/bin/velociraptor frontend --verbose --config /etc/velociraptor/server.config $VELOCIRAPTOR_OPTS
 
