@@ -1,7 +1,7 @@
 #
-# spec file for package php8
+# spec file
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,8 +40,8 @@
 %define psuffix %{nil}
 %endif
 
-%global apiver            20220829
-%global zendver           20220829
+%global apiver            20230831
+%global zendver           20230831
 %define extension_dir     %{_libdir}/%{php_name}/extensions
 %define php_sysconf       %{_sysconfdir}/%{php_name}
 
@@ -57,7 +57,7 @@
 %bcond_without	sodium
 
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.2.17
+Version:        8.3.4
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        MIT AND PHP-3.01
@@ -85,7 +85,8 @@ Patch2:         php-php-config.patch
 # SUSE specific ini defaults
 Patch3:         php-ini.patch
 # use of the system timezone database
-Patch4:         php-systzdata-v23.patch
+# https://git.remirepo.net/cgit/rpms/scl-php83/php.git/plain/php-8.3.0-systzdata-v24.patch
+Patch4:         php-systzdata-v24.patch
 # adjust upstream systemd unit to SUSE needs
 Patch5:         php-systemd-unit.patch
 # PATCH-FEATURE-OPENSUSE use ordered input files for reproducible /usr/bin/phar.phar
@@ -279,7 +280,7 @@ Requires:       %{apache_mmn}
 Requires:       apache2-prefork
 Requires:       php = %{version}
 Requires(post): %{_sbindir}/a2enmod
-Requires(preun): %{_sbindir}/a2enmod
+Requires(preun):%{_sbindir}/a2enmod
 Provides:       mod_php_any = %{version}
 Provides:       php-sapi = %{version}
 Obsoletes:      mod_php_any < %{version}

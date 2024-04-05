@@ -1,39 +1,89 @@
 -------------------------------------------------------------------
-Tue Mar 19 06:04:43 UTC 2024 - pgajdos@suse.com
+Tue Mar 19 06:17:22 UTC 2024 - pgajdos@suse.com
 
-- version update to 8.2.17
+- version update to 8.3.4
   * This is a bug fix release.
 
 -------------------------------------------------------------------
-Wed Mar  6 09:57:38 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+Wed Mar  6 19:39:24 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Use the system default cipher list instead of hardcoded values
   by using crypto-policies. [bsc#1211301]
   * Use the --with-system-ciphers configure option.
 
 -------------------------------------------------------------------
-Fri Feb 16 07:57:56 UTC 2024 - pgajdos@suse.com
+Fri Feb 16 07:20:02 UTC 2024 - pgajdos@suse.com
 
-- version update to 8.2.16
-  * This is a bug fix release.
+- version update to 8.3.3
+  * A bugfix release.
 - modified patches
   % php-build-reproducible-phar.patch (refreshed)
 
 -------------------------------------------------------------------
-Thu Jan 18 18:01:47 UTC 2024 - pgajdos@suse.com
+Thu Jan 18 18:06:25 UTC 2024 - pgajdos@suse.com
 
-- version update to 8.2.15
+- version update to 8.3.2
   * This is a bug fix release.
 - modified patches
   % php-ar-flags.patch (refreshed)
   % php-build-reproducible-phar.patch (refreshed)
 
 -------------------------------------------------------------------
-Tue Jan  2 11:40:49 UTC 2024 - pgajdos@suse.com
+Wed Dec 27 17:54:25 UTC 2023 - Manu Maier <mmanu84@outlook.de>
 
-- version update to 8.2.14
+- version update to 8.3.1
   * This is a bug fix release.
-    https://www.php.net/ChangeLog-8.php#8.2.14
+    https://www.php.net/ChangeLog-8.php#8.3.1
+
+-------------------------------------------------------------------
+Fri Nov 24 11:04:42 UTC 2023 - pgajdos@suse.com
+
+- version update to 8.3.0
+  * https://www.php.net/releases/8.3/en.php
+  * Typed class constants
+  * Dynamic class constant fetch
+  * New #[\Override] attribute
+  * Deep-cloning of readonly properties
+  * New json_validate() function
+  * New Randomizer::getBytesFromString() method
+  * New Randomizer::getFloat() and Randomizer::nextFloat() methods
+  * New DOMElement::getAttributeNames(), 
+        DOMElement::insertAdjacentElement(), 
+        DOMElement::insertAdjacentText(), 
+        DOMElement::toggleAttribute(), 
+        DOMNode::contains(), DOMNode::getRootNode(), 
+        DOMNode::isEqualNode(), DOMNameSpaceNode::contains(), and 
+        DOMParentNode::replaceChildren() methods.
+  * New IntlCalendar::setDate(), 
+        IntlCalendar::setDateTime(), 
+        IntlGregorianCalendar::createFromDate(), and
+        IntlGregorianCalendar::createFromDateTime() methods.
+  * New ldap_connect_wallet(), and ldap_exop_sync() functions.
+  * New mb_str_pad() function.
+  * New posix_sysconf(), posix_pathconf(), posix_fpathconf(), 
+        and posix_eaccess() functions.
+  * New ReflectionMethod::createFromMethodName() method.
+  * New socket_atmark() function.
+  * New str_increment(), str_decrement(), 
+    and stream_context_set_options() functions.
+  * New ZipArchive::getArchiveFlag() method.
+  * Support for generation EC keys with custom EC parameters in
+    OpenSSL extension.
+  * New INI setting zend.max_allowed_stack_size to set the maximum
+    allowed stack size.
+  * php.ini now supports fallback/default value syntax.
+  * Anonymous classes can now be readonly.
+  * https://www.php.net/ChangeLog-8.php#PHP_8_3
+- modified patches
+  % php-ar-flags.patch (refreshed)
+  % php-build-reproducible-phar.patch (refreshed)
+  % php-ini.patch (refreshed)
+- modified sources
+  % php8.keyring
+- deleted patches
+  - php-systzdata-v23.patch
+- added patches
+  + php-systzdata-v24.patch
 
 -------------------------------------------------------------------
 Fri Nov 24 09:20:44 UTC 2023 - pgajdos@suse.com
