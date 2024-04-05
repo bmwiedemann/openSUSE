@@ -679,8 +679,13 @@ Summary:        Python bindings for libclang
 Group:          Development/Libraries/Python
 Requires:       libclang%{_soclang} >= %{version}
 Requires:       python3-base
+%if %{suse_version} > 1500
 Conflicts:      %{python3_sitelib}/clang/
 Provides:       %{python3_sitelib}/clang/
+%else
+Conflicts:      %{python3_sitearch}/clang/
+Provides:       %{python3_sitearch}/clang/
+%endif
 BuildArch:      noarch
 
 %description -n python3-clang%{_sonum}

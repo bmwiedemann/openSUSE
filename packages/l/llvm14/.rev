@@ -236,4 +236,13 @@ disable the corresponding tests.
 </comment>
     <requestid>1156032</requestid>
   </revision>
+  <revision rev="19" vrev="14">
+    <srcmd5>541b990a2f4a62b25022385c35ca6427</srcmd5>
+    <version>14.0.6</version>
+    <time>1712341654</time>
+    <user>anag+factory</user>
+    <comment>- Use old conflicts/provides for python3-clang on Leap.
+</comment>
+    <requestid>1164602</requestid>
+  </revision>
 </revisionlist>
