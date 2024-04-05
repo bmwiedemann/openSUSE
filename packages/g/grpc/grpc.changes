@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  3 09:05:38 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- abseil-cpp 20240116 in SP5 can't be used with gcc7 when using 
+  -DCMAKE_CXX_STANDARD=17 since it tries to use the <filesystem>
+  header file so revert last change to "switch build
+  compiler back to default on SLE-15" to use gcc12 again.
+
+-------------------------------------------------------------------
 Sun Mar 10 11:59:06 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.62.1

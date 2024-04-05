@@ -639,4 +639,12 @@ fixed in that other package, after which it will trickle down.</comment>
     <comment>- Update to release 1.62.1</comment>
     <requestid>1156709</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>79497b35d3d86aa9621865e05ac1506e</srcmd5>
+    <version>1.62.1</version>
+    <time>1712341479</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1165375</requestid>
+  </revision>
 </revisionlist>

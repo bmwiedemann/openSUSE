@@ -34,6 +34,11 @@ Patch5:         Fix-compilation-on-RHEL-7-ppc64le-gcc-4.8.patch
 BuildRequires:  abseil-cpp-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc12-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 BuildRequires:  opencensus-proto-source
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcares) >= 1.19.1
@@ -139,6 +144,12 @@ popd
 rm -Rf third_party/abseil-cpp/
 
 %build
+%if 0%{?suse_version} < 1550
+export CC=gcc-12
+export CXX=g++-12
+%endif
+%define _lto_cflags %nil
+
 # protoc is invoked strangely; make it happy with this dir or it will assert()
 mkdir -p third_party/protobuf/src
 
