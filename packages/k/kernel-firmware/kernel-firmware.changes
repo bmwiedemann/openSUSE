@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  4 13:42:49 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Drop duplicated WHENCE from kernel-firmware-* subpackages (bsc#1222319)
+
+-------------------------------------------------------------------
 Mon Mar 25 10:44:58 UTC 2024 - tiwai@suse.com
 
 - Update to version 20240322 (git commit 9a6a0cc195c1):

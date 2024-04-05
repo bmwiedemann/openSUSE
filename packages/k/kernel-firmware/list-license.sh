@@ -5,10 +5,6 @@
 # usage: list-license.sh < licenses.list
 #
 
-for f in files-*; do
-    echo '%license WHENCE' >> $f
-done
-
 while read first topic licenses; do
     case "$first" in
 	\#*) continue;;
