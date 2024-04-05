@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr  5 00:54:48 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 1.1.16
+  * This release fixes a failure to build with the recent libXaw 1.0.16
+    release due to a change introduced in xdm 1.1.15 to address gcc 14
+    build issues.
+
+-------------------------------------------------------------------
 Sun Mar 24 08:32:09 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to release 1.1.15

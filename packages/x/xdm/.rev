@@ -1083,4 +1083,15 @@
 -  supersedes u_gcc14-fix.patch</comment>
     <requestid>1161094</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>3c53d6478894f595774de05097463a47</srcmd5>
+    <version>1.1.16</version>
+    <time>1712341527</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.1.16
+  * This release fixes a failure to build with the recent libXaw 1.0.16
+    release due to a change introduced in xdm 1.1.15 to address gcc 14
+    build issues.</comment>
+    <requestid>1165383</requestid>
+  </revision>
 </revisionlist>
