@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr  2 06:50:39 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 0.27.1:
+  * Use uppercase for metavars in the help message.
+  * Improve the test suite.
+    + Make it possible to use pytest as the test harness.
+    + Skip glibc-supported C.* locales.
+
+  Remove switch-to-pytest.patch
+
+  update to version 0.27
+  * Recognize the “markdown-text” message flag.
+  * Drop support for Python < 3.6.
+  * Make “-j auto” take CPU affinity into account.
+  * Stop using deprecated abc.abstractproperty().
+  * Improve documentation:
+    + Update Docutils homepage URL. 
+
+-------------------------------------------------------------------
 Mon Nov 22 05:39:58 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch switch-to-pytest.patch:
