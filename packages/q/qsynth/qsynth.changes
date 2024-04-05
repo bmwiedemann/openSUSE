@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  2 06:19:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Require pipewire at build time
+- Recommend the -lang subpackage
+- Add upstream change to fix the system tray icon (boo#1222200)
+  * 0001-Fixed-system-tray-icon-to-a-32x32-pixmap.patch
+
+-------------------------------------------------------------------
+Sat Mar 16 13:56:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.13:
+  * Add PipeWire (pw_init) support.
+
+-------------------------------------------------------------------
 Sat Dec 16 08:43:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.12:

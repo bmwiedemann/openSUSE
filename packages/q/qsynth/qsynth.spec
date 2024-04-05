@@ -1,7 +1,7 @@
 #
 # spec file for package qsynth
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2014 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,15 @@
 
 
 Name:           qsynth
-Version:        0.9.12
+Version:        0.9.13
 Release:        0
 Summary:        Graphical User Interface for fluidsynth
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://qsynth.sourceforge.net/qsynth-index.html
 Source:         https://sourceforge.net/projects/qsynth/files/qsynth/%{version}/qsynth-%{version}.tar.gz
-Patch1:         qsynth-fix_desktop_file.patch
+Patch0:         qsynth-fix_desktop_file.patch
+Patch1:         0001-Fixed-system-tray-icon-to-a-32x32-pixmap.patch
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
@@ -36,6 +37,9 @@ BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(fluidsynth) >= 2.0.0
+BuildRequires:  pkgconfig(libpipewire-0.3)
+# lang provides are not automatically detected due to the install location
+Recommends:     qsynth-lang
 
 %description
 Qsynth is a fluidsynth GUI front-end application written in C++ around the Qt5
@@ -63,12 +67,11 @@ toolkit using Qt Designer.
 %{_datadir}/icons/*/*/apps/org.rncbc.qsynth.png
 %{_datadir}/icons/hicolor/scalable/apps/org.rncbc.qsynth.svg
 %{_datadir}/metainfo
-%{_datadir}/qsynth
-%exclude %{_datadir}/qsynth/translations
 %{_mandir}/man1/qsynth.1%{ext_man}
 %{_mandir}/fr/man1/qsynth.1%{ext_man}
 
 %files lang -f %{name}.lang
+%dir %{_datadir}/qsynth
 %{_datadir}/qsynth/translations
 
 %changelog
