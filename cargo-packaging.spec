@@ -1,7 +1,7 @@
 #
 # spec file for package cargo-packaging
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cargo-packaging
-Version:        1.2.0+4
+Version:        1.2.0+5
 Release:        0
 Summary:        Macros and tools to assist with cargo and rust packaging
 License:        MPL-2.0
@@ -25,7 +25,6 @@ Group:          Development/Languages/Rust
 URL:            https://github.com/Firstyear/cargo-packaging
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
 Requires:       cargo
 Requires:       cargo-auditable
 Requires:       zstd
@@ -40,8 +39,6 @@ that follows upstream rust's best practices.
 
 %prep
 %autosetup -a1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 cargo build --offline --release
