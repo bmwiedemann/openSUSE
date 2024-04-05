@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 12.0.2
-%define short_version 12.0
+%define real_version 13.0.0
+%define short_version 13.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
 #
@@ -39,18 +39,15 @@ ExclusiveArch:  do_not_build
 %endif
 
 # Private QML imports
-%global __requires_exclude qt6qmlimport\\((AssetsLibraryBackend|BackendApi|CameraGeometry|CollectionEditorBackend|ConnectionsEditorEditorBackend|content|ContentLibraryBackend|EffectMakerBackend|GridGeometry|HelperWidgets|ItemLibraryBackend|LandingPage|LightUtils|LineGeometry|MaterialBrowserBackend|MaterialToolBarAction|MouseArea3D|NewProjectDialog|ProjectType|QtQuickDesignerColorPalette|QtQuickDesignerTheme|SelectionBoxGeometry|StatesEditor|StudioControls|StudioFonts|StudioTheme|TextureToolBarAction|ToolBar|WebFetcher).*
+%global __requires_exclude qt6qmlimport\\((AssetsLibraryBackend|BackendApi|CameraGeometry|CollectionDetails|CollectionEditor|CollectionEditorBackend|ConnectionsEditorEditorBackend|content|ContentLibraryBackend|DataModels|EffectComposerBackend|EffectMakerBackend|ExampleCheckout|GridGeometry|HelperWidgets|ItemLibraryBackend|LandingPage|LightUtils|LineGeometry|MaterialBrowserBackend|MaterialToolBarAction|MouseArea3D|NewProjectDialog|projectmodel|ProjectType|QtQuickDesignerColorPalette|QtQuickDesignerTheme|SelectionBoxGeometry|StatesEditor|StudioControls|StudioFonts|StudioHelpers|StudioTheme|StudioWindowManager|TextureToolBarAction|ToolBar|UiTour|WebFetcher|WelcomeScreen).*
 
 # Has mocks for quite a few components, which are only pulled in when actually used
 %global __requires_exclude_from %{_datadir}/qtcreator/qml/qmlpuppet/
 
-# Building docs causes a llvm crash on 15.4 (reproducible with different versions)
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150400
 %bcond_without docs
-%endif
 
 Name:           %{pkgname_prefix}-creator
-Version:        12.0.2
+Version:        13.0.0
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -87,6 +84,9 @@ BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  qt6-core-private-devel >= %{qt_min_version}
 BuildRequires:  qt6-gui-private-devel >= %{qt_min_version}
 BuildRequires:  qt6-qml-private-devel >= %{qt_min_version}
+BuildRequires:  qt6-qmlcompiler-private-devel >= %{qt_min_version}
+BuildRequires:  qt6-qmldom-devel-static >= %{qt_min_version}
+BuildRequires:  qt6-qt5compat-devel >= %{qt_min_version}
 BuildRequires:  qt6-quick-private-devel >= %{qt_min_version}
 BuildRequires:  qt6-quick3d-private-devel >= %{qt_min_version}
 BuildRequires:  qt6-quick3dassetimport-private-devel >= %{qt_min_version}
@@ -106,6 +106,7 @@ BuildRequires:  cmake(Qt6OpenGLWidgets) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt_min_version}
+BuildRequires:  cmake(Qt6QuickWidgets) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Quick3D) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Quick3DAssetImport) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Quick3DAssetUtils) >= %{qt_min_version}
@@ -119,6 +120,7 @@ BuildRequires:  cmake(Qt6SvgWidgets) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Tools) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt_min_version}
+BuildRequires:  pkgconfig(libsecret-1)
 # Explicitly require qt6-sql-sqlite (needed by help system).
 Requires:       qt6-sql-sqlite
 Recommends:     cmake-doc-qhelp
@@ -178,7 +180,8 @@ rm -r src/shared/qbs
   -DBUILD_TESTING:BOOL=OFF \
   -DQTC_SEPARATE_DEBUG_INFO:BOOL=OFF \
   -DBUILD_LIBRARY_QLITEHTML:BOOL=ON \
-  -DBUILD_HELPVIEWERBACKEND_QTWEBENGINE:BOOL=OFF
+  -DBUILD_HELPVIEWERBACKEND_QTWEBENGINE:BOOL=OFF \
+  -DWITH_QMLDESIGNER:BOOL=ON
 
 %if 0%{?qt6}
 %{qt6_build}
