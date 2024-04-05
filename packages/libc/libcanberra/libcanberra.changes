@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  4 12:56:22 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Don't recommend the gtk modules unconditionally. They already have
+  conditional supplements.
+- Switch from packageand(x:y) to boolean dependencies
+- Use %license
+
+-------------------------------------------------------------------
 Mon Mar  4 09:03:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Stabilize build:

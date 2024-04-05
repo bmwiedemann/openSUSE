@@ -92,8 +92,6 @@ libcanberra from GTK+ 3 applications.
 %package gtk-module-common
 Summary:        Portable sound event library -- Common Files for GTK+ Modules
 Group:          System/Libraries
-Recommends:     %{name}-gtk2-module
-Recommends:     %{name}-gtk3-module
 
 %description gtk-module-common
 libcanberra is an implementation of the XDG Sound Theme and Name
@@ -108,7 +106,7 @@ modules.
 Summary:        Portable sound event library -- GTK+ 2 Module
 Group:          System/Libraries
 Requires:       %{name}-gtk-module-common = %{version}
-Supplements:    packageand(libcanberra0:gtk2)
+Supplements:    (libcanberra0 and gtk2)
 
 %description gtk2-module
 libcanberra is an implementation of the XDG Sound Theme and Name
@@ -123,7 +121,7 @@ event sounds.
 Summary:        Portable sound event library -- GTK+ 3 Module
 Group:          System/Libraries
 Requires:       %{name}-gtk-module-common = %{version}
-Supplements:    packageand(libcanberra0:gtk3)
+Supplements:    (libcanberra0 and gtk3)
 
 %description gtk3-module
 libcanberra is an implementation of the XDG Sound Theme and Name
@@ -248,7 +246,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun gtk3-0 -p /sbin/ldconfig
 
 %files -n libcanberra0
-%doc README LGPL
+%doc README
+%license LGPL
 %{_libdir}/libcanberra.so.*
 %dir %{_libdir}/libcanberra-%{version}/
 %{_libdir}/libcanberra-%{version}/libcanberra-alsa.so
