@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  5 06:37:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Make webkit2gtk optional.
+  + Fix freeze when libreoffice is missing.
+  + Fix tick position for fullscreen video.
+  + Misc cleanup.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Jan 16 17:29:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Convert to source service for easier updating.

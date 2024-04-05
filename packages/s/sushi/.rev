@@ -477,4 +477,17 @@
     <comment>- Convert to source service for easier updating. (forwarded request 1139266 from dimstar)</comment>
     <requestid>1139283</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>c75deef28908f2957fc0a3730e140655</srcmd5>
+    <version>46.0</version>
+    <time>1712341668</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.0:
+  + Make webkit2gtk optional.
+  + Fix freeze when libreoffice is missing.
+  + Fix tick position for fullscreen video.
+  + Misc cleanup.
+  + Updated translations. (forwarded request 1165417 from dimstar)</comment>
+    <requestid>1165421</requestid>
+  </revision>
 </revisionlist>
