@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  5 13:51:18 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fetch the tarball from internet archives in order to have at least
+  some trackability of the sources after the main domain disappeared
+
+-------------------------------------------------------------------
 Wed Feb 21 10:56:08 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

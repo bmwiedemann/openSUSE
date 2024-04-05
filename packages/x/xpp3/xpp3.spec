@@ -22,10 +22,9 @@ Release:        0
 Summary:        XML Pull Parser
 License:        Apache-1.1
 Group:          Development/Libraries/Java
-URL:            http://www.extreme.indiana.edu/xgws/xsoap/xpp/mxp1/index.html
-# The http://www.extreme.indiana.edu/dist/java-repository/xpp3/distributions/ does not exist any
-# more. So we used our cached tarball
-Source0:        xpp3-%{version}_src.tgz
+# The http://www.extreme.indiana.edu/ does not exist anymore
+URL:            https://web.archive.org/web/20201024082744/http://www.extreme.indiana.edu/xgws/xsoap/xpp/mxp1/index.html
+Source0:        https://web.archive.org/web/20201024082744/http://www.extreme.indiana.edu/dist/java-repository/xpp3/distributions/xpp3-%{version}_src.tgz
 Source1:        https://repo1.maven.org/maven2/xpp3/xpp3/%{version}/xpp3-%{version}.pom
 Source2:        https://repo1.maven.org/maven2/xpp3/xpp3_min/%{version}/xpp3_min-%{version}.pom
 Source3:        https://repo1.maven.org/maven2/xpp3/xpp3_xpath/%{version}/xpp3_xpath-%{version}.pom

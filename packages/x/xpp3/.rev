@@ -165,4 +165,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148643</requestid>
   </revision>
+  <revision rev="24" vrev="9">
+    <srcmd5>6fb6bd4173488751ba562d46d16d9feb</srcmd5>
+    <version>1.1.4c</version>
+    <time>1712341725</time>
+    <user>anag+factory</user>
+    <comment>Trackability of the sources 'improved'</comment>
+    <requestid>1165657</requestid>
+  </revision>
 </revisionlist>
