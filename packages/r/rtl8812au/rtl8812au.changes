@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 24 20:56:47 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 5.13.6+git20240320.8be3a1d
+  * fix build errors on Linux 6.8.1
+  * update docs and readme
+
+-------------------------------------------------------------------
+Fri Feb 23 11:56:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Jan 30 21:11:09 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 5.13.6+git20240119.3b921c0
