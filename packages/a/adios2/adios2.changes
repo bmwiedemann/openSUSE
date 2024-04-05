@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 04 00:00:00 UTC 2024 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.10.0
+
+- Added ADIOS2 v2.10.0:
+  * Release notes: https://github.com/ornladios/ADIOS2/releases/tag/v2.10.0
+  * New Python High Level API.
+  * Inclusion of campaign manager feature.
+  * Many bugfixes are included in this patch release.
+- Dropped patch 0001-cmake-set-correct-soname.patch
+- Dropped patch 0002-fix-test-post-install.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 10:00:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
