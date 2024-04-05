@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  3 20:18:07 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Use old conflicts/provides for python3-clang on Leap.
+
+-------------------------------------------------------------------
 Wed Mar  6 03:20:24 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Explicitly define PYTHON3_EXECUTABLE, since python 3.11 is being
