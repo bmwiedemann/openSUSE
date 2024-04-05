@@ -18,25 +18,24 @@
 
 
 # MANUAL: Make sure you update this each time you update runc.
-%define git_version 51d5e94601ceffbbd85688df1c928ecccbfa4685
-%define git_short   51d5e94601ce
+%define git_version 275e6d85f78a9d0a90d9a714ba5f667561a4b0b9
+%define git_short   275e6d85f78a
 
 %define project github.com/opencontainers/runc
 
 Name:           runc
-Version:        1.1.12
+# RPM doesn't handle semver rc releases nicely, so for rc releases we need to
+# do something different.
+%define upstream_version 1.2.0-rc.1
+Version:        1.2.0~rc1
 Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/opencontainers/runc
-Source0:        https://github.com/opencontainers/runc/releases/download/v%{version}/runc.tar.xz#/runc-%{version}.tar.xz
-Source1:        https://github.com/opencontainers/runc/releases/download/v%{version}/runc.tar.xz.asc#/runc-%{version}.tar.xz.asc
+Source0:        https://github.com/opencontainers/runc/releases/download/v%{upstream_version}/runc.tar.xz#/runc-%{upstream_version}.tar.xz
+Source1:        https://github.com/opencontainers/runc/releases/download/v%{upstream_version}/runc.tar.xz.asc#/runc-%{upstream_version}.tar.xz.asc
 Source2:        runc.keyring
-# SUSE-FIX-UPSTREAM: Backport of <https://github.com/opencontainers/runc/pull/4219>. bsc#1221050
-Patch10:        0001-bsc1221050-libct-seccomp-patchbpf-rm-duplicated-code.patch
-Patch11:        0002-bsc1221050-seccomp-patchbpf-rename-nativeArch-linuxA.patch
-Patch12:        0003-bsc1221050-seccomp-patchbpf-always-include-native-ar.patch
 BuildRequires:  diffutils
 BuildRequires:  fdupes
 BuildRequires:  go
@@ -58,7 +57,7 @@ Obsoletes:      docker-runc_50a19c6
 ExcludeArch:    s390
 
 # Construct "git describe --dirty --long --always".
-%define git_describe v%{version}-0-g%{git_short}
+%define git_describe v%{upstream_version}-0-g%{git_short}
 
 %description
 runc is a CLI tool for spawning and running containers according to the OCI
@@ -67,7 +66,7 @@ of Docker. It was originally designed to be a replacement for LXC within Docker,
 and has grown to become a separate project entirely.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{upstream_version}
 %autopatch -p1
 
 %build

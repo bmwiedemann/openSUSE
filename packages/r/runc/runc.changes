@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  4 05:04:27 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc v1.2.0~rc1. Upstream changelog is available from
+  <https://github.com/opencontainers/runc/releases/tag/v1.2.0-rc.1>.
+- Remove upstreamed patches.
+  - 0001-bsc1221050-libct-seccomp-patchbpf-rm-duplicated-code.patch
+  - 0002-bsc1221050-seccomp-patchbpf-rename-nativeArch-linuxA.patch
+  - 0003-bsc1221050-seccomp-patchbpf-always-include-native-ar.patch
+
+-------------------------------------------------------------------
 Thu Mar 21 03:46:48 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Add upstream patch <https://github.com/opencontainers/runc/pull/4219> to
