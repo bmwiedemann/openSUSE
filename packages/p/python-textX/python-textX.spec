@@ -17,31 +17,31 @@
 
 
 Name:           python-textX
-Version:        3.1.1
+Version:        4.0.1
 Release:        0
 Summary:        Meta-language for DSL implementation inspired by Xtext
 License:        MIT
 URL:            https://textx.github.io/textX/stable/
 Source:         https://github.com/igordejanovic/textX/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if 0%{?sle_version} == 150200 || 0%{?sle_version} == 150300
-BuildRequires:  python2-xml
-%endif
 Requires:       python-Arpeggio >= 2.0.0
 Recommends:     python-click >= 7.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Obsoletes:      %{name}-doc
 BuildArch:      noarch
 # SECTION tests
 BuildRequires:  %{python_module Arpeggio >= 2.0.0}
 BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module click >= 7.0}
 BuildRequires:  %{python_module html5lib}
+BuildRequires:  %{python_module installer}
 BuildRequires:  %{python_module memory_profiler}
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -63,8 +63,6 @@ ambiguities, unlimited lookahead, interpreter style of work.
 %prep
 %setup -q -n textX-%{version}
 sed -i '0,/#!\/usr\/bin\/env/ d' examples/hello_world/hello.py
-# do not hardcode deps
-sed -i -e 's:click==:click>=:g' setup.py
 
 %build
 %pyproject_wheel
@@ -74,36 +72,22 @@ tests/functional/registration/projects/data_dsl \
 tests/functional/registration/projects/flow_dsl \
 tests/functional/registration/projects/flow_codegen ; do
     pushd $dir
-    %pyproject_wheel
+    python3 -m build -wn
     popd
 done
 
 %install
 %pyproject_install
-for dir in tests/functional/subcommands/example_project \
-tests/functional/registration/projects/types_dsl \
-tests/functional/registration/projects/data_dsl \
-tests/functional/registration/projects/flow_dsl \
-tests/functional/registration/projects/flow_codegen ; do
-    pushd $dir
-    %pyproject_install
-    popd
-done
+mkdir tmp-modules
+find tests/functional -name '*.whl' -exec python3 -m installer -d tmp-modules {} \;
 %python_expand install -m 0644 textx/textx.tx %{buildroot}%{$python_sitelib}/textx/
 %python_clone -a %{buildroot}%{_bindir}/textx
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/textx
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
 export LC_ALL=C.UTF-8
-# textx executable is update-alternative'd
-%pytest -k 'not test_subcommand'
-%python_expand rm -r %{buildroot}%{$python_sitelib}/data_dsl*
-%python_expand rm -r %{buildroot}%{$python_sitelib}/flow_codegen*
-%python_expand rm -r %{buildroot}%{$python_sitelib}/flow_dsl*
-%python_expand rm -r %{buildroot}%{$python_sitelib}/types_dsl*
-%python_expand rm -r %{buildroot}%{$python_sitelib}/textX_subcommand_test*
-%python_expand rm -r %{buildroot}%{$python_sitelib}/textx_subcommand_test*
+export PYTHONPATH=$(ls -1d tmp-modules/usr/lib/python3.*/site-packages)
+%pytest
 
 %post
 %python_install_alternative textx
@@ -112,10 +96,10 @@ export LC_ALL=C.UTF-8
 %python_uninstall_alternative textx
 
 %files %{python_files}
-%{python_sitelib}/textx
-%{python_sitelib}/textX-%{version}.dist-info
-%python_alternative %{_bindir}/textx
 %license LICENSE.txt
 %doc AUTHORS.md CHANGELOG.md README.md
+%python_alternative %{_bindir}/textx
+%{python_sitelib}/textx
+%{python_sitelib}/textx-%{version}.dist-info
 
 %changelog

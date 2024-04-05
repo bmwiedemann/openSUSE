@@ -256,4 +256,25 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1146195</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>bb12d70390f85423fdbc7d511fc82eac</srcmd5>
+    <version>4.0.1</version>
+    <time>1712341667</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.1:
+  * Use flit-core for test projects.
+  * Removed word boundary from INT rule regex.
+  * Removed Python support for 3.6 and 3.7. The minimal supported version
+    is 3.8.
+  * Migrated to pyproject.toml for project configuration.
+  * Migrated to importlib for language/generator registration/discovery as
+    setuptools pkg_resources is deprecated and unsupported from Python 3.12.
+  * Added dependency to `importlib-metadata` backward compatibility
+    package for Python versions &lt; 3.10.
+  * Relaxed dependency for click to accept 8.x.
+  * Use flit for package building and publishing.
+- Use build and installer for the test projects so we do not pollute the
+  build root.</comment>
+    <requestid>1165411</requestid>
+  </revision>
 </revisionlist>
