@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 28 15:56:09 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.5.6:
+  * Introduce a new stable parameter ZSTD_c_targetCBlockSize, 
+    enabling the division of blocks into smaller segments to
+    enhance initial byte delivery speed for congested networks
+  * library allows allow ganular binary size selection
+- drop zstd-pr-3961.patch, merged upstream
+
+-------------------------------------------------------------------
 Thu Mar 14 07:13:30 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Backport PAC/BTI fix for aarch64 

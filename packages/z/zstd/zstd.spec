@@ -16,14 +16,14 @@
 #
 
 
+%define libname libzstd1
 %if 0%{?suse_version} <= 1500
 %define with_gzip 0
 %else
 %define with_gzip 1
 %endif
-%define libname libzstd1
 Name:           zstd
-Version:        1.5.5
+Version:        1.5.6
 Release:        0
 Summary:        Zstandard compression tools
 License:        BSD-3-Clause AND GPL-2.0-only
@@ -34,8 +34,6 @@ Source1:        https://github.com/facebook/zstd/releases/download/v%{version}/%
 Source2:        zstd.keyring
 Source99:       baselibs.conf
 Patch1:         pzstd.1.patch
-# PATCH-FIX-UPSTREAM - https://github.com/facebook/zstd/pull/3961
-Patch2:         zstd-pr-3961.patch
 BuildRequires:  gcc
 # C++ is needed for pzstd only
 BuildRequires:  gcc-c++
@@ -90,16 +88,16 @@ targeting faster compression than zlib at comparable ratios.
 
 Needed for compiling programs that link with the library.
 
-%if %with_gzip
+%if %{with_gzip}
 %package gzip
 Summary:        zstd and zlib based gzip drop-in
 Group:          Productivity/Archiving/Compression
+Requires:       %{name} >= %{version}
 Conflicts:      busybox-gzip
 Conflicts:      gzip
 Conflicts:      alternative(gzip)
 Provides:       gzip
 Provides:       alternative(gzip)
-Requires:       %{name} >= %{version}
 
 %description gzip
 Zstd, short for Zstandard, is a lossless compression algorithm,
@@ -132,14 +130,13 @@ export CXXFLAGS="%{optflags} -std=c++11"
 %make_install V=1 VERBOSE=1 prefix=%{_prefix} libdir=%{_libdir}
 install -D -m755 contrib/pzstd/pzstd %{buildroot}%{_bindir}/pzstd
 install -D -m644 programs/zstd.1 %{buildroot}%{_mandir}/man1/pzstd.1
-%if %with_gzip
+%if %{with_gzip}
 ln -s zstd %{buildroot}/%{_bindir}/gzip
 ln -s zstd %{buildroot}/%{_bindir}/gunzip
 ln -s zstdcat %{buildroot}/%{_bindir}/zcat
 %endif
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %license COPYING LICENSE
@@ -164,10 +161,12 @@ ln -s zstdcat %{buildroot}/%{_bindir}/zcat
 %{_libdir}/libzstd.so
 
 %files -n lib%{name}-devel-static
+%license COPYING LICENSE
 %{_libdir}/libzstd.a
 
-%if %with_gzip
+%if %{with_gzip}
 %files gzip
+%license COPYING LICENSE
 %{_bindir}/gzip
 %{_bindir}/gunzip
 %{_bindir}/zcat
