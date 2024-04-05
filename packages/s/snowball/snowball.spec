@@ -1,7 +1,7 @@
 #
 # spec file for package snowball
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,11 @@ License:        BSD-3-Clause
 URL:            https://snowballstem.org
 Source:         https://github.com/snowballstem/snowball/archive/v%{version}.tar.gz#/snowball-%{version}.tar.gz
 Source1:        libstemmer.ver
+# PATCH-FIX-OPENSUSE
 Patch0:         build-options.diff
+# PATCH-FIX-OPENSUSE
 Patch1:         shared-library.diff
+# PATCH-FIX-OPENSUSE
 Patch2:         python-dist.diff
 Provides:       libstemmer-tools = %{version}-%{release}
 

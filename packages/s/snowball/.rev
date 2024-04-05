@@ -28,4 +28,12 @@
   that upstreams static-only-library maintains any kind of ABI. (forwarded request 1117030 from dimstar)</comment>
     <requestid>1117451</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c5695637a1027afba66c6519ad450c41</srcmd5>
+    <version>2.2.0</version>
+    <time>1712341466</time>
+    <user>anag+factory</user>
+    <comment>- Properly tag patches as PATCH-FIX-OPENSUSE. (forwarded request 1164606 from dimstar)</comment>
+    <requestid>1164963</requestid>
+  </revision>
 </revisionlist>
