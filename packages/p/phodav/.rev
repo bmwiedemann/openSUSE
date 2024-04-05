@@ -47,4 +47,12 @@
     <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002683 from dimstar)</comment>
     <requestid>1003210</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>21d0b41b65d77d17d090a0d3041a168e</srcmd5>
+    <version>3.0</version>
+    <time>1712341528</time>
+    <user>anag+factory</user>
+    <comment>- Tag hardening patch as PATCH-FEATURE-OPENSUSE. (forwarded request 1165416 from dimstar)</comment>
+    <requestid>1165420</requestid>
+  </revision>
 </revisionlist>

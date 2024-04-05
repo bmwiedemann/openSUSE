@@ -1,7 +1,7 @@
 #
 # spec file for package phodav
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        LGPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing
 URL:            https://wiki.gnome.org/phodav
 Source0:        https://download.gnome.org/sources/%{name}/%{version}/%{name}-%{version}.tar.xz
+# PATCH-FEATURE-OPENSUSE
 Patch0:         harden_spice-webdavd.service.patch
 
 BuildRequires:  asciidoc
