@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  5 06:57:08 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add fix-zstd-1.5.6.patch to work with zstd-1.5.6
+
+-------------------------------------------------------------------
 Tue Mar  5 13:37:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows us to eliminate usage of deprecated

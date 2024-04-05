@@ -122,4 +122,12 @@
     <comment></comment>
     <requestid>1156845</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>16fa833c084d87dd4e25f7079016261e</srcmd5>
+    <version>0.22.0</version>
+    <time>1712341555</time>
+    <user>anag+factory</user>
+    <comment>Add fix-zstd-1.5.6.patch to work with zstd-1.5.6</comment>
+    <requestid>1165428</requestid>
+  </revision>
 </revisionlist>

@@ -26,12 +26,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/indygreg/python-zstandard
 Source:         https://files.pythonhosted.org/packages/source/z/zstandard/zstandard-%{version}.tar.gz
 Patch0:         feature-detection.patch
+Patch1:         fix-zstd-1.5.6.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  libzstd-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  zstd = 1.5.5
+BuildRequires:  zstd = 1.5.6
 Requires:       python-cffi >= 1.11
 Requires:       zstd
 Conflicts:      python-zstd
