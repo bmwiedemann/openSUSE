@@ -740,4 +740,12 @@ Note: This was reported for Leap, therefore please consider to backport this pro
     <comment></comment>
     <requestid>1102132</requestid>
   </revision>
+  <revision rev="90" vrev="5">
+    <srcmd5>d545e9f4d0c2c90a723e36d8e1b94b6e</srcmd5>
+    <version>1.4.6</version>
+    <time>1712341470</time>
+    <user>anag+factory</user>
+    <comment>- Tag hardening patch as PATCH-FEATURE-OPENSUSE. (forwarded request 1164609 from dimstar)</comment>
+    <requestid>1164966</requestid>
+  </revision>
 </revisionlist>

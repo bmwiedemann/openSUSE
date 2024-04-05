@@ -1,7 +1,7 @@
 #
 # spec file for package colord
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ URL:            https://github.com/hughsie/colord/
 Source0:        https://www.freedesktop.org/software/colord/releases/%{name}-%{version}.tar.xz
 Source1:        https://www.freedesktop.org/software/colord/releases/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+# PATCH-FEATURE-OPENSUSE
 Patch0:         harden_colord.service.patch
 # Apparmor profile
 Source3:        usr.lib.colord
