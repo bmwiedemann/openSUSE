@@ -1365,4 +1365,12 @@ New stable release</comment>
     <comment>GNOME 46 (forwarded request 1158706 from dimstar)</comment>
     <requestid>1159502</requestid>
   </revision>
+  <revision rev="176" vrev="2">
+    <srcmd5>71ea7877b725ac5007f0e7d258d4a2de</srcmd5>
+    <version>46.0</version>
+    <time>1712341467</time>
+    <user>anag+factory</user>
+    <comment>- Properly tag patches as PATCH-FIX-SLE. (forwarded request 1164605 from dimstar)</comment>
+    <requestid>1164964</requestid>
+  </revision>
 </revisionlist>

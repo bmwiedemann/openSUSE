@@ -29,13 +29,21 @@ URL:            https://wiki.gnome.org/Apps/Evince
 Source0:        %{name}-%{version}.tar.zst
 # PATCH-FIX-SLE alarrosa@suse.com - Reverse upstream bump of synctex required version to build with texlive 2017
 Patch0:         0001-reversed-synctex-Annotate-more-functions-that-wraps-formatting-strings.patch
+# PATCH-FIX-SLE
 Patch1:         0002-reversed-synctex-Sync-against-upstream-synctex.patch
+# PATCH-FIX-SLE
 Patch2:         0003-reversed-cut-n-paste-Annotate-functions-that-wraps-formatting-strings.patch
+# PATCH-FIX-SLE
 Patch3:         0001-reversed-synctex-Move-_GNU_SOURCE-to-the-top-of-the-source-code.patch
+# PATCH-FIX-SLE
 Patch4:         0002-reversed-synctex-Remove-unused-labels.patch
+# PATCH-FIX-SLE
 Patch5:         0003-reversed-synctex-Silence-error-when-no-synctex-file-is-present.patch
+# PATCH-FIX-SLE
 Patch6:         0004-reversed-synctex-Annotate-functions-that-wrap-vfprintf.patch
+# PATCH-FIX-SLE
 Patch7:         0005-reversed-synctex-Fix-compilation.patch
+# PATCH-FIX-SLE
 Patch8:         0006-reversed-synctex-Update-from-version-1.18-to-1.21.patch
 
 BuildRequires:  c_compiler
