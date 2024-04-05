@@ -19,7 +19,7 @@
 %global _sonum  18
 %global _minor  %{_sonum}.1
 %global _soname %{_minor}%{?_sosuffix}
-%global _patch_level 2
+%global _patch_level 3
 %global _relver %{_minor}.%{_patch_level}
 %global _version %_relver%{?_rc:rc%_rc}
 %global _tagver %_relver%{?_rc:-rc%_rc}
@@ -725,8 +725,13 @@ Summary:        Python bindings for libclang
 Group:          Development/Libraries/Python
 Requires:       libclang%{_soclang} >= %{version}
 Requires:       python3-base
+%if %{suse_version} > 1500
 Conflicts:      %{python3_sitelib}/clang/
 Provides:       %{python3_sitelib}/clang/
+%else
+Conflicts:      %{python3_sitearch}/clang/
+Provides:       %{python3_sitearch}/clang/
+%endif
 BuildArch:      noarch
 
 %description -n python3-clang%{_sonum}
@@ -1105,6 +1110,8 @@ export LD_LIBRARY_PATH=%{sourcedir}/build/%{_lib}
     -DLLVM_ENABLE_PER_TARGET_RUNTIME_DIR:BOOL=OFF \
     -DLLVM_INCLUDE_BENCHMARKS:BOOL=OFF \
     -DCLANG_FORCE_MATCHING_LIBCLANG_SOVERSION:BOOL=OFF \
+    -DCLANG_CONFIG_FILE_SYSTEM_DIR="%{_sysconfdir}/clang" \
+    -DCLANG_CONFIG_FILE_USER_DIR="~/.config/clang" \
     -DCOMPILER_RT_USE_LIBCXX:BOOL=OFF \
     -DLIBCXX_INCLUDE_BENCHMARKS:BOOL=OFF \
 %if %{with libcxx}
