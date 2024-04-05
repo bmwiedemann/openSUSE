@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr  3 09:23:53 UTC 2024 - pgajdos@suse.com
+
+- version update to 2.6.0
+  * remove use of pointers to 32bit values
+  * Cleaning up cmake and enabled more warnings.
+  * start using const on internal arguments
+  * Some srtp_driver fixes
+  * remove travis reference from README.md
+  * meson.build: implement mbedtls support
+  * iv length is constant so set only once
+  * Add x86 SIMD optimizations to crypto datatypes
+  * Add a missing typedef for stream list ctx
+  * cmake: Rename TEST_APPS as LIBSRTP_TEST_APPS option
+  * cmake: Support configuring as subproject
+
+-------------------------------------------------------------------
 Tue Apr 25 12:33:30 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Enable running the regression tests:

@@ -92,4 +92,12 @@
     https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=460534</comment>
     <requestid>1082936</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>adbc0986fe2123028a23766b1ba7285b</srcmd5>
+    <version>2.6.0</version>
+    <time>1712341481</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1165376</requestid>
+  </revision>
 </revisionlist>
