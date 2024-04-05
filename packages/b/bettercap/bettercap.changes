@@ -1,0 +1,178 @@
+-------------------------------------------------------------------
+Fri Apr  5 12:31:33 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Remove the empty %check section.
+  rpmlint issued an misleading warning/recommendation.
+  * https://github.com/rpm-software-management/rpmlint/commit/d7da573e63844648107a3c1a076cddbf13f7df8a
+  * https://github.com/rpm-software-management/rpmlint/pull/1222
+
+-------------------------------------------------------------------
+Fri Apr  5 09:45:28 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Add %check section to prevent rpmlint warnings
+
+-------------------------------------------------------------------
+Sat Mar 23 19:18:09 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Add libnetfilter_queue1 to Requires
+
+-------------------------------------------------------------------
+Sat Aug 21 13:36:22 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.32.0
+  New Features
+  * new: new -pcap-buf-size option to set a custom pcap buffer size.
+  * new: centralized pcap capture configuration management.
+  * add wifi fake authentication attack.
+  * add channel hopping attack.
+  * added Windows basepath to UI setup.
+  Fixes
+  * Various changes and fixes.
+  * Fix arp.spoof not sending replies.
+  * fix: checking boundaries when parsing WPS vendor extensions.
+  Misc
+  * Add DESTDIR variable.
+  * nothing but import format change.
+  * make import statement clean.
+  * Support for ch177 .
+  * Further tests for mapping dot11 frequencies to channels as.
+    ch177 was not discovered correctly based on freq.
+
+-------------------------------------------------------------------
+Sat May 22 13:55:52 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.31.1
+  * Bugfix release
+
+-------------------------------------------------------------------
+Sat Apr 17 16:17:33 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.31.0
+  New Features
+  * gateway.change event for MITM monitoring.
+  * ticker now broadcasts a tick event.
+  * wifi.probe to send fake client probe requests.
+  * session scripts can now include other scripts via require('file')
+  * new -script allows to run JS code to instrument session.
+  * implemented icmpv6 rogue router advertisement.
+  * experimental ipv6 ndp spoofer.
+  * net.sniff now supports ipv6.
+  * basic ipv6 support.
+  * module parameters now accept that will be resolved to the
+    interface IP address.
+  * detection and parsing of deauthentication frames as
+    wifi.deauthentication events.
+  * new -caplets-path argument to specify an alternative caplets
+    base path.
+  Fixes
+  * fixed a 'ble.recon off' panic on linux.
+  * handle disconnection (nil gateway) in routes monitor.
+  * refactored routing logic (fixes #701).
+  * do not trigger deauth events for frames sent by client
+    stations or unknown access points.
+  * small fix or general refactoring i did not bother commenting.
+  * do not override req.Hostname in http proxy module script.
+  * fixed a panic in net.show.meta when rendeing open ports.
+  * don't print wifi.client.probe we generate.
+  * fixed vm locking.
+  * using static url for qemu.
+  * keep track of ipv6 packets.
+  * collect additional frames for stations with key material.
+  * using iw if available to get supported wifi frequencies.
+  * returning error when neither iw or iwconfig are found.
+  * updated gatt library which fixes some linux issues.
+  * do not add unhandled dns types to dns spoofing packets.
+  Misc
+  * moved example script in dedicated repo
+  * using script to detect karma attacks
+
+-------------------------------------------------------------------
+Sun Apr 11 19:18:28 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.30.2
+  - Bugfix release
+- Update to version 2.30
+  New Features
+  * new c2 module, first draft
+  Fixes
+  * Fix bug in target parsing
+  * fix: updated readline, using syscall package instead of
+    constants
+  * fix: better phrasing
+  * fix: added sasl authentication support for the c2 module
+  Misc
+  * Add start/stop callbacks to packet proxy
+  * Delete .deepsource.toml
+  * Remove unnecessary comparison with bool
+  * Remove unnecessary guard around delete
+  * Add .deepsource.toml
+- Update to version 2.29
+  New Features
+  * gps module can use both serial and gpsd
+  Fixes
+  * fix: do not close serial port if nil
+  * network: remove mutex lock that breaks webui and api
+  * go vet fixes
+  * wifi.go: dont claim read lock until it is needed
+  * fix slice memory allocation optimization
+  * network: optimize wifi locking and include memory
+    allocation optimization
+  * Fix content type parsing error, improve regexp search
+    performance, strip header names and values.
+  * Set Content-Type for PAC and WPAD file
+  Misc
+  * misc: updated the version of go used to compile releases
+  * Remove proxy-side TLD spoofing.
+  * Update HTTP header regexp selector.
+  * misc: removed useless badges from the README
+  * misc: updated dependencies
+
+-------------------------------------------------------------------
+Fri Jul  3 15:52:54 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.28
+  New Features
+  * Implemented a way to not send deauthentication and/or
+    association packets to AP's for which key material was already
+    acquired
+  Fixes
+  * Make domain matches in the dns.spoof module case insensitive
+  * Update mysql_server.go
+  * Fix sslstrip & some related issues in http(s).proxy and
+    dns.spoof
+  * Fix problem with the client ip in https.proxy as described in
+    bettercap/caplets#45
+  * modules/arp_spoof: use net.IP to compare addresses
+  Misc
+  * Fix conflict with last commit
+
+-------------------------------------------------------------------
+Wed Apr  8 19:21:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.27
+  New Features
+  * new: added new http.proxy.redirect and https.proxy.redirect
+    parameters to optionally disable iptables port redirection
+  * View HTTP Basic authorization credentials when sniffing
+  Fixes
+  * fix: logging error when read from websocket fails
+  * fix: using iw instead of iwconfig whenever possible
+  * fix: fixed a bug with wifi.recon.channel clear when
+    wifi.interface is nil (fixes #661)
+  * fix: fixed gateway regexp for macOS (closes #645)
+  * Update iw txpower syntax to only use int
+  * Fix iw txpower syntax
+  * Correcting content-length for stripped response body
+  * modules/wifi: Fix handle activation when monitor device is
+    already set up
+  * modules/wifi: fix SetSnapLen error message text
+  * modules/ble: swap error returns
+  * caplets: Swap Error Returns
+  * tls: fix CertConfigFromModule() return order
+  * tls: fix CreateCertificate() return order
+  * modules/events_stream: fix dropped error
+
+-------------------------------------------------------------------
+Sat Oct 26 09:26:13 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 2.26.1

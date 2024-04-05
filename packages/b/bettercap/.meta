@@ -1,0 +1,9 @@
+<package name="bettercap" project="openSUSE:Factory">
+  <title>Swiss army knife for network attacks and monitoring</title>
+  <description>The Swiss Army knife for WiFi, Bluetooth Low Energy, wireless HID hijacking and
+Ethernet networks reconnaissance and MITM attacks.
+
+</description>
+  <devel project="network:utilities" package="bettercap"/>
+  <url>https://www.bettercap.org/</url>
+</package>
