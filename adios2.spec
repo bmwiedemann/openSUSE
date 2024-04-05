@@ -1,5 +1,5 @@
 #
-# spec file for package adios2
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -18,8 +18,8 @@
 
 %define flavor @BUILD_FLAVOR@%{nil}
 %define major_ver 2
-%define minor_ver 9
-%define patch_ver 2
+%define minor_ver 10
+%define patch_ver 0
 # Name the suffix of the pkg
 %if "%{flavor}" != "%{nil}"
   %define pkg_suffix -%{flavor}
@@ -64,10 +64,6 @@ Group:          Productivity/Scientific/Other
 URL:            https://adios2.readthedocs.io/en/
 Source0:        ADIOS2-%{version}.tar.gz
 Source1:        adios2-rpmlintrc
-# https://github.com/ornladios/ADIOS2/pull/3585
-Patch0:         0001-cmake-set-correct-soname.patch
-# https://github.com/ornladios/ADIOS2/pull/3586
-Patch1:         0002-fix-test-post-install.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -166,7 +162,7 @@ source %{pkg_prefix}/bin/mpivars.sh
 %files -n %{shlib}
 %license Copyright.txt
 %{pkg_libdir}/*.so.*
-%{pkg_libdir}/adios2-evpath-modules-2_9
+%{pkg_libdir}/adios2-evpath-modules-%{major_ver}_%{minor_ver}
 
 %files devel
 %doc Contributing.md ReadMe.md
