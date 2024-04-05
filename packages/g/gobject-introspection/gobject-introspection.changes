@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  4 08:14:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.80.1:
+  + Require Python 3.8 when running mypy.
+  + Ensure that POSIX types follow the target architecture.
+  + Look for finish functions inside the list of constructors.
+
+-------------------------------------------------------------------
 Sat Mar  9 19:06:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.80.0:

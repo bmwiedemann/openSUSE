@@ -17,7 +17,7 @@
 
 
 Name:           gobject-introspection
-Version:        1.80.0
+Version:        1.80.1
 Release:        0
 # FIXME: Find a way to identify if we need python3-gobject or python-gobject from gi-find-deps.sh.
 Summary:        GObject Introspection Tools

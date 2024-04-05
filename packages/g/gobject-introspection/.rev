@@ -2120,4 +2120,15 @@
     <comment>Update for GNOME 46 (forwarded request 1156642 from dimstar)</comment>
     <requestid>1159418</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>c18ab0dec223ca1c17a585fa70718308</srcmd5>
+    <version>1.80.1</version>
+    <time>1712341448</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.80.1:
+  + Require Python 3.8 when running mypy.
+  + Ensure that POSIX types follow the target architecture.
+  + Look for finish functions inside the list of constructors. (forwarded request 1164512 from dimstar)</comment>
+    <requestid>1164566</requestid>
+  </revision>
 </revisionlist>
