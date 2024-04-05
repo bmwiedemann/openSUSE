@@ -7,4 +7,14 @@
     <comment>Add marknote to openSUSE:Factory</comment>
     <requestid>1163945</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d9831c6ad03c5184c67cc40a94d393f7</srcmd5>
+    <version>1.1.1</version>
+    <time>1712341648</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.1.1.
+
+Depends on sr#1164320</comment>
+    <requestid>1164344</requestid>
+  </revision>
 </revisionlist>

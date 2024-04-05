@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr  3 11:32:17 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.1.1
+  * Broader Markdown support. Marknote can now display images and
+    task lists in the editor
+  * Export to PDF, HTML and ODT
+  * New command bar to give access to essential actions
+  * Markdown to use the newly introduced FormCardDialog from
+    KirigamiAddons
+- Added the md4c build dependency
+
+-------------------------------------------------------------------
 Mon Apr  1 10:26:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Init marknote
