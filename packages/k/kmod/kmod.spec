@@ -1,7 +1,7 @@
 #
 # spec file for package kmod
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 Name:           kmod
 %define lname	libkmod2
-Version:        31
+Version:        32
 Release:        0
 Summary:        Utilities to load modules into the kernel
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -41,14 +41,6 @@ Patch3:         0009-libkmod-Implement-filtering-of-unsupported-modules-o.patch
 Patch4:         0010-modprobe-Implement-allow-unsupported-modules.patch
 Patch5:         0011-Do-not-filter-unsupported-modules-when-running-a-van.patch
 Patch6:         0012-modprobe-print-unsupported-status.patch
-Patch7:         configure-Detect-openssl-sm3-support.patch
-Patch8:         man-depmod.d-Fix-incorrect-usr-lib-search-path.patch
-Patch9:         usr-lib-modprobe.patch
-Patch10:        kmod-Add-pkgconfig-file-with-kmod-compile-time-confi.patch
-Patch11:        tools-depmod-fix-Walloc-size.patch
-Patch12:        libkmod-remove-pkcs7-obj_to_hash_algo.patch
-Patch13:        usr-lib-modules.patch
-Patch14:        configure-Check-that-provided-paths-are-absolute.patch
 Patch16:        no-stylesheet-download.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -151,6 +143,7 @@ rm -f "$b/%_libdir"/*.la
 mkdir -p "$b/%_sbindir" "$b/sbin"
 for i in depmod insmod lsmod modinfo modprobe rmmod; do
 	ln -s "%_bindir/kmod" "$b/%_sbindir/$i"
+	rm "$b/%_bindir/$i"
 %if 0%{?suse_version} < 1550
 	ln -s "%_bindir/kmod" "$b/sbin/$i"
 %endif

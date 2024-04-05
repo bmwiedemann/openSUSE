@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr  4 15:13:53 UTC 2024 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to release 32
+  * Drop python bindings
+  * Remove unmaintained experimental tool
+- Drop upstreamed patches
+  * configure-Detect-openssl-sm3-support.patch
+  * man-depmod.d-Fix-incorrect-usr-lib-search-path.patch
+  * usr-lib-modprobe.patch
+  * kmod-Add-pkgconfig-file-with-kmod-compile-time-confi.patch
+  * tools-depmod-fix-Walloc-size.patch
+  * libkmod-remove-pkcs7-obj_to_hash_algo.patch
+  * usr-lib-modules.patch
+  * configure-Check-that-provided-paths-are-absolute.patch
+- Refresh no-stylesheet-download.patch
+
+-------------------------------------------------------------------
 Wed Dec  6 20:00:12 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Add upstream fixes since v31

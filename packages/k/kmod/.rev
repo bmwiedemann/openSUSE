@@ -738,4 +738,12 @@ Kernel:stable/kernel-source#kernel-default succeeds with this</comment>
     <comment></comment>
     <requestid>1131540</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>a97e77499427fb626779c3e7750fea47</srcmd5>
+    <version>32</version>
+    <time>1712341479</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1165374</requestid>
+  </revision>
 </revisionlist>
