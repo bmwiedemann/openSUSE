@@ -1,6 +1,27 @@
 -------------------------------------------------------------------
-Thu Mar 21 13:12:24 UTC 2024 - Ivan Ivanov <ivan.ivanov@suse.com>
+Fri Apr  5 08:24:33 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
+- Update to a43358b (2024-03-27):
+  * firmware: sdram: Implement get_info for 2711
+    See: raspberrypi/linux#6045
+  * Revert "firmware: sdram: Implement get_info for 2711"
+    This reverts commit f762e4a
+  * firmware: sdram: Implement get_info for 2711
+    See: raspberrypi/linux#6045
+  * firmware: sdram: Handle mode registers and refresh updates in sdram driver
+    See: #1854
+  * firmware: arm_loader: mailbox: Optionally return extended board rev
+    See: #1831
+  * firmware: arm_loader: Set dma-channel-mask as well as brcm,dma-channel-mask
+  * firmware: board_info: Add Compute Module 5 model info string
+  * firmware: arm_loader: Move non-kernels back to 512KB
+    See: #1868
+  * firmware: Increase DATA_READY_TIMEOUT in sdhost.h
+  * firmware: arm_loader/bootloader: Add HAT+ support
+  * firmware: hat_lib: Avoid an I2C double-close
+-------------------------------------------------------------------
+Thu Mar 21 13:12:24 UTC 2024 - Ivan Ivanov <ivan.ivanov@suse.com>
+ 
 - Enable v3d "Broadcom V3D DRM Driver" (bsc#1218780).
   See also: https://docs.mesa3d.org/drivers/v3d.html
 
