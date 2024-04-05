@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Apr 05 06:30:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.56.2:
+  * Conditionally set log level of s3 bucket encryption warning
+    (#2878)
+  * Add flag for disabling dependent modules identification in
+    json-render (#2918)
+
+-------------------------------------------------------------------
+Fri Apr 05 06:22:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.56.1:
+  * terragrunt-info parsing improvement (#2901)
+
+-------------------------------------------------------------------
+Fri Apr 05 06:18:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.56.0:
+  * Add step to test terragrunt with latest terraform version
+    (#3035)
+  * Downgrading latest officially supported version of Terraform to
+    1.5.x (#2936)
+
+-------------------------------------------------------------------
 Wed Apr 03 17:01:20 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.55.21:
