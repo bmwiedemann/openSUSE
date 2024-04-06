@@ -1354,6 +1354,7 @@ unsorted:
   - berkeleylm 
   - berkeleylm-javadoc 
   - bestplugins 
+  - bettercap 
   - beust-jcommander 
   - beust-jcommander-javadoc 
   - bff 
@@ -3222,10 +3223,6 @@ unsorted:
   - dkms-bash-completion 
   - dkms-zsh-completion 
   - dlpack-devel 
-  - dlt-daemon 
-  - dlt-daemon-devel 
-  - dlt-examples 
-  - dlt-tools 
   - dlt-viewer 
   - dm-zoned-tools 
   - dmd 
@@ -9609,6 +9606,7 @@ unsorted:
   - kernel-docs-html 
   - kernel-firmware 
   - kernel-firmware-nvidia-gsp-G06 
+  - kernel-firmware-nvidia-gspx-G06 
   - kernel-install-tools 
   - kernel-kvmsmall 
   - kernel-kvmsmall-devel 
@@ -11391,10 +11389,10 @@ unsorted:
   - libada7-32bit 
   - libaddrxlat-devel 
   - libaddrxlat3 
-  - libadios2-2_9 
-  - libadios2-mpich-2_9 
-  - libadios2-mvapich2-2_9 
-  - libadios2-openmpi4-2_9 
+  - libadios2-2_10 
+  - libadios2-mpich-2_10 
+  - libadios2-mvapich2-2_10 
+  - libadios2-openmpi4-2_10 
   - libadlmidi-devel 
   - libadms0 
   - libadns-devel 
@@ -12381,7 +12379,6 @@ unsorted:
   - libdlm 
   - libdlm-devel 
   - libdlm3 
-  - libdlt2 
   - libdmapsharing-3_0-2 
   - libdmapsharing-devel 
   - libdmapsharing3-devel 
@@ -12886,8 +12883,6 @@ unsorted:
   - libgammaray-qt6-3_0_0 
   - libgammaray-shared-3_0_0 
   - libgammaray-shared-qt6-3_0_0 
-  - libganesha_nfsd-devel 
-  - libganesha_nfsd3_3 
   - libgap8 
   - libgarcon-branding-upstream 
   - libgarcon-devel 
@@ -14475,8 +14470,6 @@ unsorted:
   - libnsync1 
   - libnsync_cpp1 
   - libntfs-3g-devel 
-  - libntirpc-devel 
-  - libntirpc3_3 
   - libntk1 
   - libntl44 
   - libntlm-devel 
@@ -19219,10 +19212,13 @@ unsorted:
   - netdata-plugin-debugfs 
   - netdata-plugin-freeipmi 
   - netdata-plugin-go 
+  - netdata-plugin-logs-management 
+  - netdata-plugin-network-viewer 
   - netdata-plugin-nfacct 
   - netdata-plugin-perf 
   - netdata-plugin-pythond 
   - netdata-plugin-slabinfo 
+  - netdata-plugin-systemd-journal 
   - netdate 
   - netdiscover 
   - netease-cloud-music-gtk 
@@ -19270,15 +19266,6 @@ unsorted:
   - nfoview-lang 
   - nfs-client-provisioner 
   - nfs-client-provisioner-k8s-yaml 
-  - nfs-ganesha 
-  - nfs-ganesha-ceph 
-  - nfs-ganesha-mount-9P 
-  - nfs-ganesha-nullfs 
-  - nfs-ganesha-proxy 
-  - nfs-ganesha-rados-grace 
-  - nfs-ganesha-rados-urls 
-  - nfs-ganesha-rgw 
-  - nfs-ganesha-vfs 
   - nfs4-acl-tools 
   - nfsidmap-devel 
   - nfswatch 
@@ -19437,6 +19424,7 @@ unsorted:
   - nut-drivers-net 
   - nvdock 
   - nvidia-open-driver-G06-signed-default-devel 
+  - nvidia-open-driver-G06-signed-kmp-default 
   - nvidia-texture-tools 
   - nvimpager 
   - nvimpager-zsh-completion 
@@ -34947,7 +34935,6 @@ unsorted:
   - restic 
   - restic-bash-completion 
   - restic-zsh-completion 
-  - restund 
   - retext 
   - retro-gtk 
   - retro-gtk-devel 
@@ -46961,7 +46948,6 @@ unsorted:
   - velero-zsh-completion 
   - velociraptor 
   - velociraptor-client 
-  - velociraptor-kafka-humio-gateway 
   - velocity 
   - velocity-custom-parser-example 
   - velocity-demo 
