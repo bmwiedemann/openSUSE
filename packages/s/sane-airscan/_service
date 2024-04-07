@@ -1,0 +1,14 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/alexpevzner/sane-airscan.git</param>
+    <param name="scm">git</param>
+    <param name="revision">0.99.29</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">disable</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="set_version" mode="manual" />
+</services>
