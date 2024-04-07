@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  1 03:11:17 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.99038
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99038  Feb 29 2024 Alexander Nalobin
+      - Fix whois servers for some CentralNic tlds
+
+-------------------------------------------------------------------
 Tue Aug  9 03:09:39 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.99037
