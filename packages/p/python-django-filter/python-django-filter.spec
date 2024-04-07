@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-filter
-Version:        23.5
+Version:        24.2
 Release:        0
 Summary:        Reusable Django app to allow users to filter queryset dynamically
 License:        BSD-3-Clause

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Apr  7 08:48:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.2:
+  * Fixed a regression in v23.4 where callable choices were
+    incorrectly evaluated at filter instantiation, on Django
+    versions prior to 5.0. Thanks to Craig de Stigter for the
+    report and reproduce.
+  * Fixed a regression in v23.4 where callable choices were
+    incorrectly evaluated at filter instantiation, on Django
+    versions prior to 5.0.
+  * Updated supported Python and Django versions, and resolved
+    upcoming Django deprecations. Required versions are now at
+    least Python 3.8 and Django 4.2. Thanks to Michael
+    Manganiello.
+  * Updated supported Python and Django versions, and resolved
+    upcoming Django deprecations.
+  * Required versions are now at least Python 3.8 and Django 4.2.
+  * Allowed passing a FilterSet class to the filterset_factory().
+  * Set empty default value of filterset data to MultiValueDict.
+  * Preserve list values passed to the data dict in CSV widgets.
+  * Updates French and Ukrainian localisations. Thanks to
+    Weblate.
+  * Updates French and Ukrainian localisations.
+
+-------------------------------------------------------------------
 Mon Feb 05 17:00:00 UTC 2024 - Christian Keil <keil@dfn-cert.de>
 
 - Switch to Python 3.11 build.
@@ -44,7 +69,7 @@ Thu Aug 25 02:26:12 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 -------------------------------------------------------------------
 Fri May  6 06:15:52 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove unneeded BuildRequires on mock. 
+- Remove unneeded BuildRequires on mock.
 
 -------------------------------------------------------------------
 Sun Jan  9 01:19:18 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
@@ -61,8 +86,8 @@ Sun Dec 26 07:35:28 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 Mon Mar 15 12:25:35 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to 2.4.0
-  * Added a MaxValueValidator to the form field for NumberFilter. 
-    This prevents a potential DoS attack if numbers with very large 
+  * Added a MaxValueValidator to the form field for NumberFilter.
+    This prevents a potential DoS attack if numbers with very large
     exponents were subsequently converted to integers.
   * Added testing against Django 3.1 and Python 3.9.
 
@@ -70,7 +95,7 @@ Mon Mar 15 12:25:35 UTC 2021 - Markéta Machová <mmachova@suse.com>
 Tue Jun  9 09:42:22 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 2.3.0
- * Fixed import of FieldDoesNotExist. 
+ * Fixed import of FieldDoesNotExist.
  * Added testing against Django 3.0
  * Declared support for, and added testing against, Python 3.8
  * Fix filterset multiple inheritance bug
@@ -90,7 +115,7 @@ Mon Sep 16 09:33:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Wed Apr 10 12:05:22 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- added fix_tests.patch - better compactibility with django 2.2 
+- added fix_tests.patch - better compactibility with django 2.2
 
 -------------------------------------------------------------------
 Wed Feb 27 13:42:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
@@ -117,7 +142,7 @@ Thu Nov 22 12:00:37 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 Wed Dec 20 10:17:23 UTC 2017 - fbergmann@suse.com
 
 - Update to version 1.1.0
-  
+
   * Add Deprecations for 2.0 (#792)
   * Improve IsoDateTimeField test clarity (#790)
   * Fix form attr references in tests (#789)

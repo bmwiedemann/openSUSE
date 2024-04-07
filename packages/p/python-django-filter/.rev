@@ -128,4 +128,38 @@
     <comment></comment>
     <requestid>1144825</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ff0efd81a08bb448dfd957e904b71918</srcmd5>
+    <version>24.2</version>
+    <time>1712520796</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.2:
+  * Fixed a regression in v23.4 where callable choices were
+    incorrectly evaluated at filter instantiation, on Django
+    versions prior to 5.0. Thanks to Craig de Stigter for the
+    report and reproduce.
+  * Fixed a regression in v23.4 where callable choices were
+    incorrectly evaluated at filter instantiation, on Django
+    versions prior to 5.0.
+  * Updated supported Python and Django versions, and resolved
+    upcoming Django deprecations. Required versions are now at
+    least Python 3.8 and Django 4.2. Thanks to Michael
+    Manganiello.
+  * Updated supported Python and Django versions, and resolved
+    upcoming Django deprecations.
+  * Required versions are now at least Python 3.8 and Django 4.2.
+  * Allowed passing a FilterSet class to the filterset_factory().
+  * Set empty default value of filterset data to MultiValueDict.
+  * Preserve list values passed to the data dict in CSV widgets.
+  * Updates French and Ukrainian localisations. Thanks to
+    Weblate.
+  * Updates French and Ukrainian localisations.
+
+- Remove unneeded BuildRequires on mock.
+  * Added a MaxValueValidator to the form field for NumberFilter.
+    This prevents a potential DoS attack if numbers with very large
+ * Fixed import of FieldDoesNotExist.
+- added fix_tests.patch - better compactibility with django 2.2</comment>
+    <requestid>1165941</requestid>
+  </revision>
 </revisionlist>
