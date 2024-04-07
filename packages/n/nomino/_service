@@ -1,5 +1,5 @@
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/yaa110/nomino.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
@@ -8,18 +8,18 @@
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service> 
-  <service name="cargo_vendor" mode="disabled">
+  <service name="cargo_vendor" mode="manual">
     <param name="srcdir">nomino</param>
     <param name="compression">zst</param>
     <param name="update">true</param>
   </service>
-  <service name="cargo_audit" mode="disabled">
+  <service name="cargo_audit" mode="manual">
     <param name="srcdir">nomino</param>
   </service>
 </services>

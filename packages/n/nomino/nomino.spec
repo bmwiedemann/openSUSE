@@ -1,7 +1,7 @@
 #
 # spec file for package nomino
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nomino
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        Batch rename utility for developers
 License:        Apache-2.0 OR MIT
@@ -37,6 +37,9 @@ nomino is a batch rename utility for developers
 
 %install
 %{cargo_install}
+
+%check
+%{cargo_test}
 
 %files
 %license LICENSE-APACHE LICENSE-MIT
