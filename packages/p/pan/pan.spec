@@ -1,7 +1,7 @@
 #
 # spec file for package pan
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pan
-Version:        0.155
+Version:        0.157
 Release:        0
 Summary:        A Newsreader for GNOME
 License:        GPL-2.0-or-later
@@ -67,6 +67,8 @@ NOCONFIGURE=1 ./autogen.sh
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 
+%check
+
 %files
 %license COPYING COPYING-DOCS
 %doc AUTHORS NEWS README.org
@@ -76,6 +78,7 @@ NOCONFIGURE=1 ./autogen.sh
 %{_datadir}/applications/*.%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/*.%{name}.png
 %{_datadir}/metainfo/*.%{name}.metainfo.xml
+%{_datadir}/pan/
 
 %files lang -f %{name}.lang
 

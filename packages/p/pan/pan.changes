@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr  3 07:28:24 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.157:
+  * Building Pan with autotools is now deprecated.
+  * Install png icon files. This is required to fix some Gtk warnings.
+  * Always display one part article.
+  * Enable compilation with GnuTLS by default.
+  * Fixed GPG segfault, hopefully.
+  * Added support for Gemini URLs in text.
+  * Add Interlingue translation.
+  * Updated translations.
+- Add empty %check section as recommended by rpmlint.
+
+-------------------------------------------------------------------
 Sun Nov 12 21:03:05 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.155:
