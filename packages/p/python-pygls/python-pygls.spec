@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pygls
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        A pythonic generic language server
 License:        Apache-2.0
