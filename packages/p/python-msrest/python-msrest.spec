@@ -16,10 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-msrest
 Version:        0.7.1
 Release:        0
@@ -29,16 +26,20 @@ Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/msrest
 Source:         https://files.pythonhosted.org/packages/source/m/msrest/msrest-%{version}.zip
 Source1:        LICENSE.md
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-core >= 1.24.0
 Requires:       python-certifi >= 2017.4.17
 Requires:       python-isodate >= 0.6.0
-Requires:       python-requests < 3.00
-Requires:       python-requests >= 2.16
 Requires:       python-requests-oauthlib >= 0.5.0
+Requires:       (python-requests >= 2.16 with python-requests < 3.00)
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-msrest < 0.7.1
+%endif
 BuildArch:      noarch
 
 %python_subpackages
@@ -52,14 +53,13 @@ Swagger is a powerful open source framework: http://swagger.io
 cp %{SOURCE1} LICENSE.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE.md
 %{python_sitelib}/msrest
