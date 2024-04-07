@@ -2727,4 +2727,12 @@ thanks to the upstream 926 merge. (forwarded request 1108011 from dmdiss)</comme
   (bsc#1220084)</comment>
     <requestid>1154197</requestid>
   </revision>
+  <revision rev="205" vrev="6">
+    <srcmd5>2389bab80aa39f62e27f83f1f21d3e57</srcmd5>
+    <version>3.1.7</version>
+    <time>1712520273</time>
+    <user>anag+factory</user>
+    <comment>Use full URLs for source tarball and signature. (forwarded request 1165684 from badshah400)</comment>
+    <requestid>1165715</requestid>
+  </revision>
 </revisionlist>

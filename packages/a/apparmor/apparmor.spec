@@ -60,8 +60,8 @@ Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://launchpad.net/apparmor
-Source0:        apparmor-%{version}.tar.gz
-Source1:        apparmor-%{version}.tar.gz.asc
+Source0:        https://launchpad.net/apparmor/3.1/%{version}/+download/apparmor-%{version}.tar.gz
+Source1:        https://launchpad.net/apparmor/3.1/%{version}/+download/apparmor-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 
 Source5:        update-trans.sh

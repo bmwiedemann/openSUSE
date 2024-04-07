@@ -24,8 +24,8 @@ Summary:        Utility library for AppArmor
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://launchpad.net/apparmor
-Source0:        apparmor-%{version}.tar.gz
-Source1:        apparmor-%{version}.tar.gz.asc
+Source0:        https://launchpad.net/apparmor/3.1/%{version}/+download/apparmor-%{version}.tar.gz
+Source1:        https://launchpad.net/apparmor/3.1/%{version}/+download/apparmor-%{version}.tar.gz.asc
 BuildRequires:  bison
 BuildRequires:  dejagnu
 BuildRequires:  flex
