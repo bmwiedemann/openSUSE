@@ -18,20 +18,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-requests-mock
-Version:        1.11.0
+Version:        1.12.1
 Release:        0
 Summary:        Module to mock out responses from the requests package
 License:        Apache-2.0
 URL:            https://github.com/jamielennox/requests-mock
 Source:         https://files.pythonhosted.org/packages/source/r/requests-mock/requests-mock-%{version}.tar.gz
 BuildRequires:  %{python_module fixtures}
-BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module purl}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.3}
 BuildRequires:  %{python_module requests-futures}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 %if 0%{suse_version} >= 1550 || (0%{?suse_version} == 1500 && 0%{?sle_version} >= 154000)
@@ -41,7 +40,6 @@ BuildRequires:  python3-dbm
 %endif
 BuildRequires:  fdupes
 Requires:       python-requests >= 2.3
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -64,7 +62,7 @@ You should checkout the docs for more information.
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS README.rst ChangeLog
+%doc README.rst
 %{python_sitelib}/requests_mock
 %{python_sitelib}/requests_mock-%{version}.dist-info
 

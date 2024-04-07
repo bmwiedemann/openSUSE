@@ -322,4 +322,24 @@
 - Switch to pyproject macros.</comment>
     <requestid>1157421</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5a559926eec17af50c714a7c30729bc0</srcmd5>
+    <version>1.12.1</version>
+    <time>1712520276</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.12.1:
+  * Set python_requires to &gt;3 to prevent installation in python2
+    deployments.
+- update to 1.12.0:
+  * Remove py2
+  * Allow `raw` parameter to accept callable like body elements
+  * Improve type definition of `Mocker.__call__`
+  * Drop PBR Support
+  * fix(mocker.pyi): fix Mocker class type hints
+  * Remove unused `six` dependency
+
+- switch to run tests with pytest
+  * Use unittest.mock if available.</comment>
+    <requestid>1165815</requestid>
+  </revision>
 </revisionlist>
