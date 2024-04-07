@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Sat Apr  6 12:08:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.12.0:
+  * pybind11 now supports compiling for NumPy 2.
+    However, if you experience issues you can define
+    PYBIND11_NUMPY_1_ONLY to disable the new support for now, but
+    this will be removed in the future. #5050
+  * pybind11/gil_safe_call_once.h was added (it needs to be
+    included explicitly). The primary use case is GIL-safe
+    initialization of C++ static variables. #4877
+  * Support move-only iterators in py::make_iterator,
+    py::make_key_iterator, py::make_value_iterator. #4834
+  * Two simple py::set_error() functions were added and the
+    documentation was updated accordingly. In particular,
+    py::exception<>::operator() was deprecated (use one of the
+    new functions instead). The documentation for py::exception<>
+    was further updated to not suggest code that may result in
+    undefined behavior. #4772
+  * Removes potential for Undefined Behavior during process
+    teardown. #4897
+  * Improve compatibility with the nvcc compiler (especially CUDA
+    12.1/12.2). #4893
+  * pybind11/numpy.h now imports NumPy's multiarray and _internal
+    submodules with paths depending on the installed version of
+    NumPy (for compatibility with NumPy 2). #4857
+  * Builtins collections names in docstrings are now consistently
+    rendered in lowercase (list, set, dict, tuple), in accordance
+    with PEP 585. #4833
+  * Added py::typing::Iterator<T>, py::typing::Iterable<T>. #4832
+  * Render py::function as Callable in docstring. #4829
+  * Also bump PYBIND11_INTERNALS_VERSION for MSVC, which unlocks
+    two new features without creating additional
+    incompatibilities. #4819
+  * Guard against crashes/corruptions caused by modules built
+    with different MSVC versions. #4779
+  * A long-standing bug in the handling of Python multiple
+    inheritance was fixed. See PR #4762 for the rather complex
+    details. #4762
+  * Fix bind_map with using declarations. #4952
+  * Qualify py::detail::concat usage to avoid ADL selecting one
+    from somewhere else, such as modernjson's concat. #4955
+  * Use new PyCode API on Python 3.12+. #4916
+  * Minor cleanup from warnings reported by Clazy. #4988
+  * Remove typing and duplicate class_ for
+    KeysView/ValuesView/ItemsView. #4985
+  * Use PyObject_VisitManagedDict() and
+    PyObject_ClearManagedDict() on Python 3.13 and newer. #4973
+  * Update make_static_property_type() to make it compatible with
+    Python 3.13. #4971
+  * Render typed iterators for make_iterator, make_key_iterator,
+    make_value_iterator. #4876
+  * Add several missing type name specializations. #5073
+  * Change docstring render for py::buffer, py::sequence and
+    py::handle (to Buffer, Sequence, Any). #4831
+  * Fixed base_enum.__str__ docstring. #4827
+  * Enforce single line docstring signatures. #4735
+  * Special 'typed' wrappers now available in typing.h to
+    annotate tuple, dict, list, set, and function. #4259
+  * Create handle_type_name specialization to type-hint variable
+    length tuples. #5051
+  * Setting PYBIND11_FINDPYTHON to OFF will force the old
+    FindPythonLibs mechanism to be used. #5042
+  * Skip empty PYBIND11_PYTHON_EXECUTABLE_LAST for the first
+    cmake run. #4856
+  * Fix FindPython mode exports & avoid pkg_resources if
+    importlib.metadata available. #4941
+  * Python_ADDITIONAL_VERSIONS (classic search) now includes
+    3.12.
+  * pybind11.pc is now relocatable by default as long as install
+    destinations are not absolute paths. #4830
+  * Correctly detect CMake FindPython removal when used as a
+    subdirectory. #4806
+  * Don't require the libs component on CMake 3.18+ when using
+    PYBIND11_FINDPYTHON (fixes manylinux builds). #4805
+  * pybind11_strip is no longer automatically applied when
+    CMAKE_BUILD_TYPE is unset. #4780
+  * Support DEBUG_POSFIX correctly for debug builds. #4761
+  * Hardcode lto/thin lto for Emscripten cross-compiles. #4642
+  * Upgrade maximum supported CMake version to 3.27 to fix
+    CMP0148 warnings. #4786
+
+-------------------------------------------------------------------
 Mon Sep  4 19:14:31 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.11.1

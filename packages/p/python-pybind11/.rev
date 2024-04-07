@@ -231,4 +231,41 @@
     <comment></comment>
     <requestid>1112607</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>dba1e0e21a17208f02e03736766ec578</srcmd5>
+    <version>2.12.0</version>
+    <time>1712520275</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.12.0:
+  * pybind11 now supports compiling for NumPy 2.
+    However, if you experience issues you can define
+    PYBIND11_NUMPY_1_ONLY to disable the new support for now, but
+    this will be removed in the future. #5050
+  * pybind11/gil_safe_call_once.h was added (it needs to be
+    included explicitly). The primary use case is GIL-safe
+    initialization of C++ static variables. #4877
+  * Support move-only iterators in py::make_iterator,
+    py::make_key_iterator, py::make_value_iterator. #4834
+  * Two simple py::set_error() functions were added and the
+    documentation was updated accordingly. In particular,
+    py::exception&lt;&gt;::operator() was deprecated (use one of the
+    new functions instead). The documentation for py::exception&lt;&gt;
+    was further updated to not suggest code that may result in
+    undefined behavior. #4772
+  * Removes potential for Undefined Behavior during process
+    teardown. #4897
+  * Improve compatibility with the nvcc compiler (especially CUDA
+    12.1/12.2). #4893
+  * pybind11/numpy.h now imports NumPy's multiarray and _internal
+    submodules with paths depending on the installed version of
+    NumPy (for compatibility with NumPy 2). #4857
+  * Builtins collections names in docstrings are now consistently
+    rendered in lowercase (list, set, dict, tuple), in accordance
+    with PEP 585. #4833
+  * Added py::typing::Iterator&lt;T&gt;, py::typing::Iterable&lt;T&gt;. #4832
+  * Render py::function as Callable in docstring. #4829
+  * Also bump PYBIND11_INTERNALS_VERSION for MSVC, which unlocks
+    two new features without creating additional</comment>
+    <requestid>1165773</requestid>
+  </revision>
 </revisionlist>

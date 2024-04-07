@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-pybind11
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 %define plainpython python
 %{?sle15_python_module_pythons}
 Name:           python-pybind11%{psuffix}
-Version:        2.11.1
+Version:        2.12.0
 Release:        0
 Summary:        Module for operability between C++11 and Python
 License:        BSD-3-Clause
@@ -55,7 +55,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 %if %{with test}
 BuildRequires:  %{python_module numpy}
