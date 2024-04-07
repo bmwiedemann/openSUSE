@@ -1,8 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr  6 19:18:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.0:
+  * bpo-36786: Run compileall in parallel during "make install"
+  * bpo-40692: Run more test_concurrent_futures tests (GH-20239)
+  * gh-105931: Fix surprising compileall stripdir behaviour
+    (GH-108671)
+  * GH-84559: Deprecate fork being the multiprocessing default.
+  * bpo-40447: accept all path-like objects in
+  * Fix missing space with help for -m compileall -o
+
+-------------------------------------------------------------------
 Sat Jan  7 17:08:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.2:
-  * Improved tests 
+  * Improved tests
   * switch to pyproject.toml
 
 -------------------------------------------------------------------

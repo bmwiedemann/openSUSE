@@ -25,4 +25,21 @@
   * switch to pyproject.toml</comment>
     <requestid>1056805</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1f31a49c02a8145128ba0f88c4e3b29a</srcmd5>
+    <version>0.8.0</version>
+    <time>1712520703</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.8.0:
+  * bpo-36786: Run compileall in parallel during &quot;make install&quot;
+  * bpo-40692: Run more test_concurrent_futures tests (GH-20239)
+  * gh-105931: Fix surprising compileall stripdir behaviour
+    (GH-108671)
+  * GH-84559: Deprecate fork being the multiprocessing default.
+  * bpo-40447: accept all path-like objects in
+  * Fix missing space with help for -m compileall -o
+
+  * Improved tests</comment>
+    <requestid>1165871</requestid>
+  </revision>
 </revisionlist>

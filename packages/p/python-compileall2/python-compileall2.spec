@@ -1,7 +1,7 @@
 #
 # spec file for package python-compileall2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-compileall2
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        Enhanced Python `compileall` module
 License:        Python-2.0
 URL:            https://github.com/fedora-python/compileall2
 Source:         https://files.pythonhosted.org/packages/source/c/compileall2/compileall2-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/fedora-python/compileall2/master/LICENSE
 Source2:        https://raw.githubusercontent.com/fedora-python/compileall2/master/test_compileall2.py
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -41,7 +39,7 @@ Enhanced Python `compileall` module.
 
 %prep
 %setup -q -n compileall2-%{version}
-cp %{SOURCE1} %{SOURCE2} .
+cp -p %{SOURCE2} .
 
 %build
 export LANG=en_US.UTF-8
