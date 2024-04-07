@@ -7,4 +7,20 @@
     <comment>Another component for the Azure SDK</comment>
     <requestid>1003915</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5f44b2d4fa51208a4ea49266f2451b0d</srcmd5>
+    <version>1.0.1</version>
+    <time>1712520398</time>
+    <user>anag+factory</user>
+    <comment>- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Add Obsoletes for old python3 package on SLE-15
+  + Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+  + Update name for dist directory in %files section (forwarded request 1164699 from glaubitz)</comment>
+    <requestid>1165098</requestid>
+  </revision>
 </revisionlist>
