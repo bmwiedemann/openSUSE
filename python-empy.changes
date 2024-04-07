@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr  6 18:53:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1:
+  * Add support for extension markup `@((...))`, `@[[...]]`,
+   `@{{...}}`, `@<...>`, etc., with custom callbacks retained for
+   backward compatibility; add `@[match]` control support; add
+   interpreter cores for overriding interpreter behavior; add more
+   command line option toggles; add notion of verbose/brief errors;
+   more uniform error message formatting; various documentation
+   updates.
+
+-------------------------------------------------------------------
 Wed Dec 27 09:29:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.1:
