@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar  6 03:06:27 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.4.0
+   see /usr/share/doc/packages/perl-Carp-Assert-More/Changes
+
+  2.4.0   Mon Mar  4 21:54:07 CST 2024
+          [ENHANCEMENTS]
+          New function assert_arrayref_all() calls an assertion function for every element in the array.
+              my $aref_of_counts = get_counts();
+              assert_arrayref_all( $aref, \&assert_positive_integer, 'Counts are positive' );
+          assert_context_scalar() now provides a default message of
+          "function_name must be called in scalar context".
+          assert_context_nonvoid() now provide a default message of
+          "function_name must not be called in void context".
+
+-------------------------------------------------------------------
 Thu Jun  1 03:06:19 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.3.0
