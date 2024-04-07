@@ -76,4 +76,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1146655</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>65b894e2964a4b233df5ff06bd64c277</srcmd5>
+    <version>16.12.1</version>
+    <time>1712520284</time>
+    <user>anag+factory</user>
+    <comment>- update to 16.12.1:
+  * Restore functionality in .isdir and .isfile.
+  * Added .is_dir and .is_file for parity with pathlib.
+    Deprecates .isdir and .isfile.
+  * Inlined some types.
+  * Fix iterdir - it also accepts match. Ref #220.
+  * Add type annotation for iterdir.</comment>
+    <requestid>1165959</requestid>
+  </revision>
 </revisionlist>

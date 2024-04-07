@@ -27,7 +27,7 @@
 %define modname path
 %{?sle15_python_module_pythons}
 Name:           python-path%{psuffix}
-Version:        16.10.0
+Version:        16.12.1
 Release:        0
 Summary:        A module wrapper for os.path
 License:        MIT
@@ -48,6 +48,7 @@ Obsoletes:      python-path.py < %{version}-%{release}
 %if %{with test}
 # use a multibuild test flavor so that there is no circular dependency with pytest
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module path >= %{version}}
 %endif
 %python_subpackages
 
