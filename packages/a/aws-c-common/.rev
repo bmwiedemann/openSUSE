@@ -24,4 +24,12 @@
   * Accept all RFC3339-compliant timestamps</comment>
     <requestid>1158911</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>92c0a53e7f7c7b6eac8eaa2495ba6cde</srcmd5>
+    <version>0.9.15</version>
+    <time>1712520630</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1165448</requestid>
+  </revision>
 </revisionlist>

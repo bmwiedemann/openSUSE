@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr  4 15:35:28 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.15
+  * Claim range for aws-crt-kotlin by @aajtodd in (#1095)
+  * Remove unused external headers by @TingDaoK in (#1097)
+  * Best Effort Thread Pinning to CPU_ID by @waahm7 in (#1096)
+  * Add support for WIN ARM64 by @alfred2g in (#1092)
+  * Better vectorization and crc64. Cleaned up cmake and
+    added better runtime cpu detection by @JonathanHenson in (#1083)
+  * Avoid overallocating for strings by @DmitriyMusatkin in (#1099)
+
+-------------------------------------------------------------------
 Mon Mar 18 08:27:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.14:
