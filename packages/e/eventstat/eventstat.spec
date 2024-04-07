@@ -1,7 +1,7 @@
 #
 # spec file for package eventstat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           eventstat
-Version:        0.05.01
+Version:        0.06.00
 Release:        0
 Summary:        Kernel event states monitoring tool
 License:        GPL-2.0-or-later

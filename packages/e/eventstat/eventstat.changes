@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 17 17:44:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.06.00:
+  * eventstat: the Init Function should be annotated as "Kernel
+    Init Function"
+  * eventstat: report all cumulative events
+
+-------------------------------------------------------------------
 Fri Mar 17 17:12:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.05.01:
