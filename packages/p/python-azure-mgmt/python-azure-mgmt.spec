@@ -16,10 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-azure-mgmt
 Version:        4.0.0
 Release:        0
@@ -29,7 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt/azure-mgmt-%{version}.zip
 Source1:        LICENSE.txt
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -42,6 +41,7 @@ Requires:       python-azure-mgmt-apimanagement
 Requires:       python-azure-mgmt-app
 Requires:       python-azure-mgmt-appcomplianceautomation
 Requires:       python-azure-mgmt-appconfiguration
+Requires:       python-azure-mgmt-appcontainers
 Requires:       python-azure-mgmt-applicationinsights
 Requires:       python-azure-mgmt-appplatform
 Requires:       python-azure-mgmt-attestation
@@ -64,6 +64,7 @@ Requires:       python-azure-mgmt-cognitiveservices
 Requires:       python-azure-mgmt-commerce
 Requires:       python-azure-mgmt-communication
 Requires:       python-azure-mgmt-compute
+Requires:       python-azure-mgmt-confidentialledger
 Requires:       python-azure-mgmt-confluent
 Requires:       python-azure-mgmt-connectedvmware
 Requires:       python-azure-mgmt-consumption
@@ -98,7 +99,8 @@ Requires:       python-azure-mgmt-devspaces
 Requires:       python-azure-mgmt-devtestlabs
 Requires:       python-azure-mgmt-digitaltwins
 Requires:       python-azure-mgmt-dns
-Requires:       python-azure-mgmt-documentdb
+Requires:       python-azure-mgmt-dnsresolver
+Requires:       python-azure-mgmt-dynatrace
 Requires:       python-azure-mgmt-edgegateway
 Requires:       python-azure-mgmt-edgeorder
 Requires:       python-azure-mgmt-education
@@ -155,6 +157,7 @@ Requires:       python-azure-mgmt-networkanalytics
 Requires:       python-azure-mgmt-networkcloud
 Requires:       python-azure-mgmt-networkfunction
 Requires:       python-azure-mgmt-newrelicobservability
+Requires:       python-azure-mgmt-nginx
 Requires:       python-azure-mgmt-notificationhubs
 Requires:       python-azure-mgmt-nspkg
 Requires:       python-azure-mgmt-oep
@@ -174,6 +177,7 @@ Requires:       python-azure-mgmt-quota
 Requires:       python-azure-mgmt-rdbms
 Requires:       python-azure-mgmt-recoveryservices
 Requires:       python-azure-mgmt-recoveryservicesbackup
+Requires:       python-azure-mgmt-recoveryservicesdatareplication
 Requires:       python-azure-mgmt-recoveryservicessiterecovery
 Requires:       python-azure-mgmt-redhatopenshift
 Requires:       python-azure-mgmt-redis
@@ -187,6 +191,7 @@ Requires:       python-azure-mgmt-resourcegraph
 Requires:       python-azure-mgmt-resourcehealth
 Requires:       python-azure-mgmt-resourcemover
 Requires:       python-azure-mgmt-scheduler
+Requires:       python-azure-mgmt-scvmm
 Requires:       python-azure-mgmt-search
 Requires:       python-azure-mgmt-security
 Requires:       python-azure-mgmt-securitydevops
@@ -223,7 +228,11 @@ Requires:       python-azure-mgmt-voiceservices
 Requires:       python-azure-mgmt-web
 Requires:       python-azure-mgmt-webpubsub
 Requires:       python-azure-mgmt-workloadmonitor
+Requires:       python-azure-mgmt-workloads
 Conflicts:      python-azure-sdk <= 2.0.0
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-azure-mgmt < 4.0.0
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -243,15 +252,15 @@ All packages in this bundle have been tested with Python 2.7, 3.4, 3.5, 3.6 and 
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-%{version}
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/azure_mgmt-*.egg-info
+%{python_sitelib}/azure_mgmt-*.dist-info
 
 %changelog

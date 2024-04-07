@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Apr  4 12:53:17 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Add Obsoletes for old python3 package on SLE-15
+  + Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+  + Update name for dist directory in %files section
+
+-------------------------------------------------------------------
+Sun Mar 10 18:50:03 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-appcontainers
+  + python-azure-mgmt-confidentialledger
+  + python-azure-mgmt-dnsresolver
+  + python-azure-mgmt-dynatrace
+  + python-azure-mgmt-nginx
+  + python-azure-mgmt-recoveryservicesdatareplication
+  + python-azure-mgmt-scvmm
+  + python-azure-mgmt-workloads
+- Remove deprecated packages from the Azure SDK from Requires
+  + python-azure-mgmt-documentdb
+
+-------------------------------------------------------------------
 Fri Mar  1 10:38:19 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add additional packages from the Azure SDK to Requires
