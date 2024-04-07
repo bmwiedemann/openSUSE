@@ -25,4 +25,19 @@
   * bugfixes over 4.0, no dedicated changelog available</comment>
     <requestid>1135239</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>225e88622cd15b8cf1004f029bd49973</srcmd5>
+    <version>4.1</version>
+    <time>1712520700</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.1:
+  * Add support for extension markup `@((...))`, `@[[...]]`,
+   `@{{...}}`, `@&lt;...&gt;`, etc., with custom callbacks retained for
+   backward compatibility; add `@[match]` control support; add
+   interpreter cores for overriding interpreter behavior; add more
+   command line option toggles; add notion of verbose/brief errors;
+   more uniform error message formatting; various documentation
+   updates.</comment>
+    <requestid>1165864</requestid>
+  </revision>
 </revisionlist>
