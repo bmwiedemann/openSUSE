@@ -78,4 +78,19 @@
     HISTORY.rst file provided with this package (forwarded request 1103880 from glaubitz)</comment>
     <requestid>1103884</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7da68dc8f881918767bc46e88bb43ca2</srcmd5>
+    <version>1.1.0</version>
+    <time>1712522328</time>
+    <user>anag+factory</user>
+    <comment>- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Use primary Python version on Tumbleweed
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+  + Update name for dist directory in %files section (forwarded request 1164960 from glaubitz)</comment>
+    <requestid>1165353</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package azure-cli-telemetry
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,13 @@
 #
 
 
+%if 0%{?suse_version} >= 1600
+%define pythons %{primary_python}
+%else
+%define pythons python311
+%endif
+%global _sitelibdir %{%{pythons}_sitelib}
+
 Name:           azure-cli-telemetry
 Version:        1.1.0
 Release:        0
@@ -25,17 +32,19 @@ Group:          System/Management
 URL:            https://github.com/Azure/azure-cli
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cli-telemetry/azure-cli-telemetry-%{version}.tar.gz
 Source1:        LICENSE.txt
+BuildRequires:  %{pythons}-azure-nspkg >= 3.0.0
+BuildRequires:  %{pythons}-pip
+BuildRequires:  %{pythons}-setuptools
+BuildRequires:  %{pythons}-wheel
 BuildRequires:  azure-cli-nspkg
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-azure-nspkg >= 3.0.0
-BuildRequires:  python3-setuptools
+Requires:       %{pythons}-applicationinsights < 0.12
+Requires:       %{pythons}-applicationinsights >= 0.11.1
+Requires:       %{pythons}-azure-nspkg >= 3.0.0
+Requires:       %{pythons}-portalocker < 3.0
+Requires:       %{pythons}-portalocker >= 1.6
 Requires:       azure-cli-nspkg
-Requires:       python3-applicationinsights < 0.12
-Requires:       python3-applicationinsights >= 0.11.1
-Requires:       python3-azure-nspkg >= 3.0.0
-Requires:       python3-portalocker < 3.0
-Requires:       python3-portalocker >= 1.6
 Conflicts:      azure-cli < 2.0.0
 
 BuildArch:      noarch
@@ -54,21 +63,21 @@ This package includes:
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-cli-telemetry-%{version}
-python3 setup.py build
+%pyproject_wheel
 
 %install
-python3 setup.py install --root=%{buildroot} --prefix=%{_prefix} --install-lib=%{python3_sitelib}
-%fdupes %{buildroot}%{python3_sitelib}
-rm -rf %{buildroot}%{python3_sitelib}/azure/cli/__init__.*
-rm -rf %{buildroot}%{python3_sitelib}/azure/cli/__pycache__
-rm -rf %{buildroot}%{python3_sitelib}/azure/__init__.*
-rm -rf %{buildroot}%{python3_sitelib}/azure/__pycache__
+%pyproject_install
+%fdupes %{buildroot}%{_sitelibdir}
+rm -rf %{buildroot}%{_sitelibdir}/azure/cli/__init__.*
+rm -rf %{buildroot}%{_sitelibdir}/azure/cli/__pycache__
+rm -rf %{buildroot}%{_sitelibdir}/azure/__init__.*
+rm -rf %{buildroot}%{_sitelibdir}/azure/__pycache__
 
 %files
 %defattr(-,root,root,-)
 %doc HISTORY.rst README.rst
 %license LICENSE.txt
-%{python3_sitelib}/azure/cli/telemetry
-%{python3_sitelib}/azure_cli_telemetry-*.egg-info
+%{_sitelibdir}/azure/cli/telemetry
+%{_sitelibdir}/azure_cli_telemetry-*.dist-info
 
 %changelog
