@@ -16,10 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-adal
 Version:        1.2.7
 Release:        0
@@ -30,13 +27,18 @@ URL:            https://github.com/AzureAD/azure-activedirectory-library-for-pyt
 Source:         https://files.pythonhosted.org/packages/source/a/adal/adal-%{version}.tar.gz
 Source1:        HISTORY.txt
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyJWT >= 1.0.0
 Requires:       python-cryptography >= 1.1.0
 Requires:       python-python-dateutil >= 2.1.0
 Requires:       python-requests >= 2.0.0
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-adal < 1.2.7
+%endif
 BuildArch:      noarch
 
 %python_subpackages
@@ -50,16 +52,15 @@ Azure Active Directory (AAD) in order to access AAD protected web resources.
 cp %{SOURCE1} HISTORY.txt
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc HISTORY.txt README.md
 %{python_sitelib}/adal
-%{python_sitelib}/adal-*.egg-info
+%{python_sitelib}/adal-*.dist-info
 
 %changelog
