@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 22 16:12:36 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.19
+   see /usr/share/doc/packages/perl-HTTP-Tinyish/Changes
+
+  0.19  2024-03-08 14:30:05 PST
+          - Specify :raw for IPC::Run3 to force binary on Windows #24
+
+-------------------------------------------------------------------
 Tue Jun 21 03:06:57 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.18

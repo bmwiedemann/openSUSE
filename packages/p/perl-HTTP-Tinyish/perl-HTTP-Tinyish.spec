@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Tinyish
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name HTTP-Tinyish
 Name:           perl-HTTP-Tinyish
-Version:        0.18
+Version:        0.190.0
 Release:        0
+# 0.19 -> normalize -> 0.190.0
+%define cpan_version 0.19
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTTP::Tiny compatible HTTP client wrappers
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -38,6 +40,13 @@ Requires:       perl(File::Which)
 Requires:       perl(HTTP::Tiny) >= 0.055
 Requires:       perl(IPC::Run3)
 Requires:       perl(parent)
+Provides:       perl(HTTP::Tinyish) = %{version}
+Provides:       perl(HTTP::Tinyish::Base)
+Provides:       perl(HTTP::Tinyish::Curl)
+Provides:       perl(HTTP::Tinyish::HTTPTiny)
+Provides:       perl(HTTP::Tinyish::LWP)
+Provides:       perl(HTTP::Tinyish::Wget)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -50,7 +59,7 @@ restrictive environment where you need to be able to download CPAN modules
 without an HTTPS support in built-in HTTP library.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
