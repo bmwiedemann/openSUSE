@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr  4 13:16:37 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Use primary Python version on Tumbleweed
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+  + Update name for dist directory in %files section
+
+-------------------------------------------------------------------
 Thu Jul 14 12:44:50 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add missing python-rpm-macros package to BuildRequires

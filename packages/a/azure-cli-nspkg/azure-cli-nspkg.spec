@@ -1,7 +1,7 @@
 #
 # spec file for package azure-cli-nspkg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,13 @@
 #
 
 
+%if 0%{?suse_version} >= 1600
+%define pythons %{primary_python}
+%else
+%define pythons python311
+%endif
+%global _sitelibdir %{%{pythons}_sitelib}
+
 Name:           azure-cli-nspkg
 Version:        3.0.4
 Release:        0
@@ -25,11 +32,13 @@ Group:          System/Management
 URL:            https://github.com/Azure/azure-cli
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cli-nspkg/azure-cli-nspkg-%{version}.tar.gz
 Source1:        LICENSE.txt
+BuildRequires:  %{pythons}-azure-nspkg >= 3.0.0
+BuildRequires:  %{pythons}-pip
+BuildRequires:  %{pythons}-setuptools
+BuildRequires:  %{pythons}-wheel
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-azure-nspkg >= 3.0.0
-BuildRequires:  python3-setuptools
-Requires:       python3-azure-nspkg >= 3.0.0
+Requires:       %{pythons}-azure-nspkg >= 3.0.0
 Conflicts:      azure-cli < 2.0.0
 
 BuildArch:      noarch
@@ -48,17 +57,17 @@ It provides the necessary files for other packages to extend the azure cli names
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-cli-nspkg-%{version}
-python3 setup.py build
+%pyproject_wheel
 
 %install
-python3 setup.py install --root=%{buildroot} --prefix=%{_prefix} --install-lib=%{python3_sitelib}
-%fdupes %{buildroot}%{python3_sitelib}
+%pyproject_install
+%fdupes %{buildroot}%{_sitelibdir}
 
 %files
 %defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE.txt
-%{python3_sitelib}/azure/cli
-%{python3_sitelib}/azure_cli_nspkg-*.egg-info
+%{_sitelibdir}/azure/cli
+%{_sitelibdir}/azure_cli_nspkg-*.dist-info
 
 %changelog

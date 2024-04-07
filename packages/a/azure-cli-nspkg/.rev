@@ -47,4 +47,19 @@
     <comment></comment>
     <requestid>989155</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>2665470e0ea98352305e94f1372f4bf2</srcmd5>
+    <version>3.0.4</version>
+    <time>1712522326</time>
+    <user>anag+factory</user>
+    <comment>- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Use primary Python version on Tumbleweed
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+  + Update name for dist directory in %files section (forwarded request 1164959 from glaubitz)</comment>
+    <requestid>1165352</requestid>
+  </revision>
 </revisionlist>
