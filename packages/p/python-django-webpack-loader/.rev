@@ -129,4 +129,15 @@
     <comment></comment>
     <requestid>1163237</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9ab096333b4cd208e15e7048bfb34167</srcmd5>
+    <version>3.1.0</version>
+    <time>1712520796</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.0:
+  * Support `webpack_asset` template tag to render transformed
+    assets URL: `{% webpack_asset 'path/to/original/file' %} ==
+    &quot;/static/assets/resource-3c9e4020d3e3c7a09c68.txt&quot;`</comment>
+    <requestid>1165939</requestid>
+  </revision>
 </revisionlist>
