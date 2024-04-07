@@ -16,10 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-azure-datalake-store
 Version:        0.0.53
 Release:        0
@@ -30,19 +27,19 @@ URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-datalake-store/azure-datalake-store-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-cffi
-Requires:       python-msal < 2
-Requires:       python-msal >= 1.16.0
-%ifpython2
-Requires:       python-futures
-%endif
 Requires:       python-requests >= 2.20.0
+Requires:       (python-msal >= 1.16.0 with python-msal < 2)
 Conflicts:      python-azure-sdk <= 2.0.0
-
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-azure-datalake-store < 0.0.53
+%endif
 BuildArch:      noarch
 
 %python_subpackages
@@ -60,10 +57,10 @@ This package has been tested with Python 2.7, 3.3, 3.4 and 3.5.
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-datalake-store-%{version}
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %{python_expand # delete common files
 rm -rf %{buildroot}%{$python_sitelib}/azure/__init__.*
@@ -73,11 +70,10 @@ rm -rf %{buildroot}%{$python_sitelib}/samples/__pycache__
 }
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc HISTORY.rst README.rst
 %license LICENSE.txt
 %{python_sitelib}/azure/datalake/
 %{python_sitelib}/samples/
-%{python_sitelib}/azure_datalake_store-*.egg-info
+%{python_sitelib}/azure_datalake_store-*.dist-info
 
 %changelog
