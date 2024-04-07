@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  6 12:11:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * :bug:`32` Fix dangling compatibility issues with pytest
+    version 8.x. Thanks to Alex Gaynor for the patch!
+
+-------------------------------------------------------------------
 Wed May 31 19:43:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.1:

@@ -127,4 +127,14 @@
     somehow!</comment>
     <requestid>1090085</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cbf79c676e139ee869e7349377992eaa</srcmd5>
+    <version>2.0.2</version>
+    <time>1712520274</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.2:
+  * :bug:`32` Fix dangling compatibility issues with pytest
+    version 8.x. Thanks to Alex Gaynor for the patch!</comment>
+    <requestid>1165772</requestid>
+  </revision>
 </revisionlist>
