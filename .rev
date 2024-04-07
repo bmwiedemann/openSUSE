@@ -141,4 +141,17 @@
   * WCS.pipeline now is a list of Step instances instead of</comment>
     <requestid>1131736</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9e7309a12d2d45e92a72da5cc2f0b1ed</srcmd5>
+    <version>0.21.0</version>
+    <time>1712520798</time>
+    <user>anag+factory</user>
+    <comment>- Actually declare the minimum version requirement for
+  asdf-wcs-schemas.
+- update to 0.21.0:
+  * Add a minimum version requirement for asdf-wcs-schemas.
+  * Fix WCS.__str__ for instances without transforms.
+</comment>
+    <requestid>1165967</requestid>
+  </revision>
 </revisionlist>
