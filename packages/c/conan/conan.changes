@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  4 07:44:40 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.2.2:
+  * Fix: Avoid issues with recipe `print(..., file=fileobj)`
+    (gh#conan-io/conan#15934).
+  * Fix: Fix broken calls to `print(x, file=y)` with duplicate
+    keyword arguments (gh#conan-io/conan#15912).
+  * Bugfix: Fix handling of `tools.build:defines` for multiconfig
+    CMake (gh#conan-io/conan#15924).
+
+-------------------------------------------------------------------
 Sun Mar 24 17:22:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.1:
