@@ -17,7 +17,7 @@
 
 
 Name:           swayimg
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        Image viewer for Sway/Wayland
 License:        MIT
@@ -61,6 +61,8 @@ opening the image directly in a terminal window.
 
 %install
 %meson_install
+
+%check
 
 %files
 %license LICENSE

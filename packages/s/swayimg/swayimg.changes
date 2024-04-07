@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr  7 00:15:37 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.2
+  * Fixed bug with displaying image on empty Sway workspace;
+  * Fixed crash on delete last file;
+  * Fixed long-press key handling;
+  * Fixed drawing on uninitialized surface;
+  * Fixed crash on decoding some GIF images;
+  * Added Truevision TGA format support.
+
+-------------------------------------------------------------------
 Mon Feb  5 10:27:15 UTC 2024 - Jakob Lorenz <onlyjak0b@mailbox.org>
 
 - Set version correctly
