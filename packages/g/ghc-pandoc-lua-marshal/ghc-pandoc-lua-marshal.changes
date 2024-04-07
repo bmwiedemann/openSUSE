@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 29 17:56:57 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.2.6.
+  ## 0.2.6
+
+  Released 2024-03-29.
+
+  -   Fixed a bug that caused problems with empty Block lists in
+      the `content` attributes of *Div*, *Figure*, and *BlockQuote*
+      elements.
+
+-------------------------------------------------------------------
 Mon Mar  4 12:45:10 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update pandoc-lua-marshal to version 0.2.5.
