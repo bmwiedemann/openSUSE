@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  4 15:38:20 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.17
+  * Additional logging for default credentials chain by @jamesbornholt in (#231)
+  * Remove unused test files by @jmklix in (#232)
+
+-------------------------------------------------------------------
 Tue Feb 20 11:12:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
