@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr  7 13:03:20 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Actually declare the minimum version requirement for
+  asdf-wcs-schemas.
+
+-------------------------------------------------------------------
+Sun Apr  7 09:03:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.21.0:
+  * Add a minimum version requirement for asdf-wcs-schemas.
+  * Fix WCS.__str__ for instances without transforms.
+
+-------------------------------------------------------------------
 Thu Dec  7 22:39:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.20.0:
