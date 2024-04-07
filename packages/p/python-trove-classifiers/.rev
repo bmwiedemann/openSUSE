@@ -105,4 +105,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1160958</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1f1038ce8d97dbf089b2270d06a7a720</srcmd5>
+    <version>2024.3.25</version>
+    <time>1712520282</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.3.25:
+  * added more trove classifiers</comment>
+    <requestid>1165861</requestid>
+  </revision>
 </revisionlist>
