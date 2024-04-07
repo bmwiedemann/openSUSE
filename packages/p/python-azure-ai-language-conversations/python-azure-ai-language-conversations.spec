@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-ai-language-conversations
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,23 @@
 #
 
 
+%define realversion 1.1.0
+
+%{?sle15_python_module_pythons}
 Name:           python-azure-ai-language-conversations
-Version:        1.1.0
+Version:        1.1.0.0
 Release:        0
 Summary:        Microsoft Azure Conversational Language Understanding Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-ai-language-conversations/azure-ai-language-conversations-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-ai-language-conversations/azure-ai-language-conversations-%{realversion}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-ai-language-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-ai-nspkg >= 1.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -39,8 +44,10 @@ Requires:       (python-azure-core >= 1.24.0 with python-azure-core < 2.0.0)
 Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
 Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
 Conflicts:      python-azure-sdk <= 2.0.0
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-azure-ai-language-conversations < 1.1.0.0
+%endif
 BuildArch:      noarch
-%{?sle15_python_module_pythons}
 %python_subpackages
 
 %description
@@ -53,14 +60,14 @@ intents (intention behind a user utterance) and custom entities. You can also us
 (language apps like Question Answering, Luis, and Conversation).
 
 %prep
-%setup -q -n azure-ai-language-conversations-%{version}
+%setup -q -n azure-ai-language-conversations-%{realversion}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-ai-language-conversations-%{version}
-%python_build
+install -m 644 %{SOURCE1} %{_builddir}/azure-ai-language-conversations-%{realversion}
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %{python_expand # delete common files
 rm -rf %{buildroot}%{$python_sitelib}/azure/ai/language/__init__.*
@@ -75,6 +82,6 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 %doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/ai/language/conversations
-%{python_sitelib}/azure_ai_language_conversations-*.egg-info
+%{python_sitelib}/azure_ai_language_conversations-*.dist-info
 
 %changelog
