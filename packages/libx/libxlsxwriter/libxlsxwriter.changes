@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr  7 00:29:49 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Remove find_minizip.patch -- merged upstream
+- Update URL and source name
+- Update to version 1.1.7:
+  * Bump .so version to 6
+  * Added quote_prefix format property
+  * Added support for signed VBA projects
+  * Fix worksheet password hashing algorithm for long passwords
+    Replace/fix the worksheet protection password algorithm so that
+    is works correctly for strings over 24 chars
+  * Fix cmake minizip version check
+  * Fix for buffer overflow with utf-8 strings in data validation
+  * Fix for range in text type conditional format
+  * Fix 32bit multiply with overflow issue for images
+  * Added support for building Zig library
+
+-------------------------------------------------------------------
 Fri Feb 23 01:52:43 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Add find_minizip.patch -- upstream patches to fix usage of system
