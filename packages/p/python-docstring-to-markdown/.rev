@@ -44,4 +44,15 @@
 - Update to version 0.11</comment>
     <requestid>1128730</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>efeae2bff26f17d792ed9d598cee64bd</srcmd5>
+    <version>0.15</version>
+    <time>1712520702</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.15:
+  * Fix multi-line links and incorrect dunder escapes in code
+- update to 0.14:
+  * Add plain text and cPython docstring support</comment>
+    <requestid>1165868</requestid>
+  </revision>
 </revisionlist>
