@@ -71,4 +71,16 @@
 </comment>
     <requestid>1042819</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>af64eab60ca253c0ad1841148083b7e6</srcmd5>
+    <version>0.3.1</version>
+    <time>1712520702</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.1:
+  * Python 3.12 officially supported
+  * Emit the function name when Python callback fails
+
+- Update to version 0.3.0</comment>
+    <requestid>1165870</requestid>
+  </revision>
 </revisionlist>

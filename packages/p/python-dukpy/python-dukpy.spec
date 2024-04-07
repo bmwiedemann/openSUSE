@@ -1,7 +1,7 @@
 #
 # spec file for package python-dukpy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-dukpy
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        JavaScript interpreter for Python
 License:        MIT
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module webassets}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-webassets
 %python_subpackages
 
