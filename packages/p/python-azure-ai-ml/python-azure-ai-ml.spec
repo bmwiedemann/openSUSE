@@ -16,10 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-azure-ai-ml
 Version:        1.13.0
 Release:        0
@@ -48,13 +45,16 @@ BuildRequires:  %{python_module marshmallow >= 3.5}
 BuildRequires:  %{python_module msrest >= 0.6.18}
 BuildRequires:  %{python_module opencensus-ext-azure < 2.0.0}
 BuildRequires:  %{python_module pathspec >= 0.9.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydash >= 6.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module strictyaml < 2.0.0}
 BuildRequires:  %{python_module tqdm < 5.0.0}
 BuildRequires:  %{python_module typing-extensions >= 4.0.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  unzip
 Requires:       python-PyJWT < 3.0.0
 Requires:       python-PyYAML >= 5.1.0
 Requires:       python-applicationinsights <= 0.11.10
@@ -77,11 +77,11 @@ Requires:       python-pydash
 Requires:       python-strictyaml
 Requires:       python-tqdm
 Requires:       python-typing-extensions >= 4.0.1
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Conflicts:      python-azure-sdk <= 2.0.0
 Suggests:       python-mldesigner
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-azure-ai-ml < 1.13.0
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -101,10 +101,10 @@ This package has been tested with Python 3.6, 3.7, 3.8, 3.9 and 3.10.
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-ai-ml-%{version}
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %{python_expand # delete common files
 rm -rf %{buildroot}%{$python_sitelib}/azure/ai/__init__.*
@@ -117,6 +117,6 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 %doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/ai/ml
-%{python_sitelib}/azure_ai_ml-*.egg-info
+%{python_sitelib}/azure_ai_ml-*.dist-info
 
 %changelog
