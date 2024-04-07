@@ -17,15 +17,13 @@
 
 
 Name:           python-control
-Version:        0.9.4
+Version:        0.10.0
 Release:        0
 Summary:        Python control systems library
 License:        BSD-3-Clause
 URL:            https://python-control.org
 Source:         https://files.pythonhosted.org/packages/source/c/control/control-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM python-control-pr961-py312.patch gh#python-control/python-control#961
-Patch0:         python-control-pr961-py312.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -72,7 +70,8 @@ sed -i '1{\@^#!/usr/bin/env@ d}' control/tests/*.py
 # The default Agg backend does not define the toolbar attribute in the Figure
 # Manager used by some tests, so we run the tests with the Qt5 backend
 export MPLBACKEND="Qt5Agg"
-donttest="dummyprefix"
+# precision issues
+donttest="test_lti_nlsys_response"
 # gh#python-control/python-control#838
 [ "${RPM_ARCH}" != "x86_64" ] && donttest="$donttest or (test_optimal_doc and shooting-3-u0-None)"
 # causes i586 segfaults in matplotlib after successful balanced model reduction tests

@@ -325,4 +325,41 @@
   at the moment</comment>
     <requestid>1143985</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>39ce63f5b69c6ee45b86468fce5b5e75</srcmd5>
+    <version>0.10.0</version>
+    <time>1712520637</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.10.0
+  * Multivariable interconnect functionality by @murrayrm in #881
+  * Remove NumPy matrix class by @murrayrm in #913
+  * I/O system class restructuring by @murrayrm in #916
+  * Documentation fixes by @KybernetikJo in #919, #921, #922, #923
+  * Add two MRAC siso examples by @KybernetikJo in #914
+  * Time response plots by @murrayrm in #920
+  * Print a connection table for interconnected systems by
+    @sawyerbfuller in #925
+  * Update frequency response plots to use _response/_plot pattern
+    by @murrayrm in #924
+  * create_statefbk_iosystem and optimal control enhancements by
+    @murrayrm in #930
+  * Add unit test illustrating issue #935 + add method keyword for
+    tf2ss by @murrayrm in #937
+  * Vectorize optimal control cost calculation by @urpok23 in #940
+  * Improved speed of ctrb and obsv functions by @Jpickard1 in #941
+  * Fix sphinx bug (erroneous use of class template) by @murrayrm
+    in #943
+  * Fix bug in matched transformation + address other issues in
+    #950 by @murrayrm in #951
+  * Fix typo in header of Hinf example by @jrforbes in #946
+  * Fix typo in stochresp.py by @alex-damjanovic in #945
+  * Fix TimeResponseData.to_pandas() to handle zero state case by
+    @murrayrm in #958
+  * Update pole/zero and root locus plots to use _map/_plot pattern
+    by @murrayrm in #953
+  * Fix CI warnings by @murrayrm in #955
+  * Support Python 3.12, bump minimum support according to SPEC 0
+    by @bnavigator in #961 (forwarded request 1165670 from bnavigator)</comment>
+    <requestid>1165672</requestid>
+  </revision>
 </revisionlist>

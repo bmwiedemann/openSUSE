@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Apr  5 14:22:32 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.10.0
+  * Multivariable interconnect functionality by @murrayrm in #881
+  * Remove NumPy matrix class by @murrayrm in #913
+  * I/O system class restructuring by @murrayrm in #916
+  * Documentation fixes by @KybernetikJo in #919, #921, #922, #923
+  * Add two MRAC siso examples by @KybernetikJo in #914
+  * Time response plots by @murrayrm in #920
+  * Print a connection table for interconnected systems by
+    @sawyerbfuller in #925
+  * Update frequency response plots to use _response/_plot pattern
+    by @murrayrm in #924
+  * create_statefbk_iosystem and optimal control enhancements by
+    @murrayrm in #930
+  * Add unit test illustrating issue #935 + add method keyword for
+    tf2ss by @murrayrm in #937
+  * Vectorize optimal control cost calculation by @urpok23 in #940
+  * Improved speed of ctrb and obsv functions by @Jpickard1 in #941
+  * Fix sphinx bug (erroneous use of class template) by @murrayrm
+    in #943
+  * Fix bug in matched transformation + address other issues in
+    #950 by @murrayrm in #951
+  * Fix typo in header of Hinf example by @jrforbes in #946
+  * Fix typo in stochresp.py by @alex-damjanovic in #945
+  * Fix TimeResponseData.to_pandas() to handle zero state case by
+    @murrayrm in #958
+  * Update pole/zero and root locus plots to use _map/_plot pattern
+    by @murrayrm in #953
+  * Fix CI warnings by @murrayrm in #955
+  * Support Python 3.12, bump minimum support according to SPEC 0
+    by @bnavigator in #961
+  * Fix typos in pzmap.py by @matejkarasek in #962
+  * Fix examples to work with SciPy 1.12 by @bnavigator in #965
+  * Fix config test for missing old key warning by @bnavigator in
+    #972
+  * Implementation of system norms by @henriks76 in #971, #976
+  * Updated gram() to support discrete-time systems by @billtubbs
+    in #969
+  * Update unit test infrastructure by @murrayrm in #981, #986
+  * Remove external/ directory by @murrayrm in #983
+  * Reimplementation of 2D phase plots by @murrayrm in #980
+  * Update readthedocs to Python 3.12 by @murrayrm in #985
+  * Fix warning messages in tests; update rlocus/pzmap limits by
+    @murrayrm in #984
+  * Allow passing and saving of params in time responses by
+    @murrayrm in #982
+- Drop python-control-pr961-py312.patch
+
+-------------------------------------------------------------------
 Sun Feb  4 10:46:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add python-control-pr961-py312.patch for python 312 support
