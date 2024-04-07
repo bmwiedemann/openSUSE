@@ -262,4 +262,23 @@
     they now decode</comment>
     <requestid>1142769</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>deb3beb7bfdc6760921a2f16bcf40905</srcmd5>
+    <version>2.19.2</version>
+    <time>1712520706</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.19.2:
+  * http_headers documentation
+  * fix tag name creation
+  * added http_headers
+  * solidfied the Python3 only mindset
+  * brought man page up to date
+  * create dummy loa document on-the-fly with very-basic pdf
+    content
+- update to 2.19.0:
+  * CHANGELOG.md pushed to
+  * typo introduced before
+  * purge_cache test - was chasing a different bug</comment>
+    <requestid>1165873</requestid>
+  </revision>
 </revisionlist>

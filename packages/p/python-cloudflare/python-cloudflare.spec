@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cloudflare
-Version:        2.17.0
+Version:        2.19.2
 Release:        0
 Summary:        Python wrapper for the Cloudflare v4 API
 License:        MIT

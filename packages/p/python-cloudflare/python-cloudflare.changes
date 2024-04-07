@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr  6 19:26:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19.2:
+  * http_headers documentation
+  * fix tag name creation
+  * added http_headers
+  * solidfied the Python3 only mindset
+  * brought man page up to date
+  * create dummy loa document on-the-fly with very-basic pdf
+    content
+- update to 2.19.0:
+  * CHANGELOG.md pushed to
+  * typo introduced before
+  * purge_cache test - was chasing a different bug
+
+-------------------------------------------------------------------
 Tue Jan 30 12:08:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.17.0:
