@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 22 16:39:06 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-Spreadsheet-XLSX/Changes
+
+  0.18
+
+      - fix RT #117166: unformatted date values can no longer be retrieved, thx to lherschi
+
+-------------------------------------------------------------------
 Thu Nov  4 03:06:26 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.17
