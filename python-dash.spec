@@ -19,9 +19,9 @@
 # We can't test currenty, see below.
 %bcond_with test
 %define skip_python39 1
-%define distver 2.16
+%define distver 2.16.1
 Name:           python-dash
-Version:        2.16.0
+Version:        2.16.1
 Release:        0
 Summary:        Python framework for building reactive web-apps
 License:        MIT
