@@ -16,6 +16,13 @@
 #
 
 
+%if 0%{?suse_version} >= 1600
+%define pythons %{primary_python}
+%else
+%define pythons python311
+%endif
+%global _sitelibdir %{%{pythons}_sitelib}
+
 Name:           azure-cli-core
 Version:        2.58.0
 Release:        0
@@ -26,45 +33,44 @@ URL:            https://github.com/Azure/azure-cli
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cli-core/azure-cli-core-%{version}.tar.gz
 Source1:        LICENSE.txt
 Patch0:         acc_disable-update-check.patch
+BuildRequires:  %{pythons}-azure-nspkg >= 3.0.0
+BuildRequires:  %{pythons}-pip
+BuildRequires:  %{pythons}-setuptools
+BuildRequires:  %{pythons}-wheel
 BuildRequires:  azure-cli-nspkg
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-azure-nspkg >= 3.0.0
-BuildRequires:  python3-setuptools
+Requires:       %{pythons}-PyJWT >= 2.1.0
+Requires:       %{pythons}-argcomplete < 4.0
+Requires:       %{pythons}-argcomplete >= 3.1.1
+Requires:       %{pythons}-azure-mgmt-core < 2.0.0
+Requires:       %{pythons}-azure-mgmt-core >= 1.2.0
+Requires:       %{pythons}-azure-nspkg >= 3.0.0
+Requires:       %{pythons}-cryptography
+Requires:       %{pythons}-humanfriendly < 11.0
+Requires:       %{pythons}-humanfriendly >= 10.0
+Requires:       %{pythons}-jmespath
+Requires:       %{pythons}-knack < 1.0.0
+Requires:       %{pythons}-knack >= 0.11.0
+Requires:       %{pythons}-msal < 2.0.0
+Requires:       %{pythons}-msal >= 1.26.0
+Requires:       %{pythons}-msal-extensions < 2.0.0
+Requires:       %{pythons}-msal-extensions >= 1.0.0
+Requires:       %{pythons}-msrestazure < 0.7.0
+Requires:       %{pythons}-msrestazure >= 0.6.4
+Requires:       %{pythons}-packaging >= 20.9
+Requires:       %{pythons}-paramiko < 4.0.0
+Requires:       %{pythons}-paramiko >= 2.0.8
+Requires:       %{pythons}-pip
+Requires:       %{pythons}-pkginfo >= 1.5.0.1
+Requires:       %{pythons}-psutil < 6.0
+Requires:       %{pythons}-psutil >= 5.9
+Requires:       %{pythons}-pyOpenSSL >= 17.1.0
+Requires:       %{pythons}-requests < 3.0.0
+Requires:       %{pythons}-requests >= 2.25.1
+Requires:       %{pythons}-wheel >= 0.30.0
 Requires:       azure-cli-nspkg
 Requires:       azure-cli-telemetry >= 1.1.0
-Requires:       python3-PyJWT >= 2.1.0
-Requires:       python3-argcomplete < 4.0
-Requires:       python3-argcomplete >= 3.1.1
-Requires:       python3-azure-mgmt-core < 2.0.0
-Requires:       python3-azure-mgmt-core >= 1.2.0
-Requires:       python3-azure-nspkg >= 3.0.0
-Requires:       python3-cryptography
-Requires:       python3-humanfriendly < 11.0
-Requires:       python3-humanfriendly >= 10.0
-Requires:       python3-jmespath
-Requires:       python3-knack < 1.0.0
-Requires:       python3-knack >= 0.11.0
-Requires:       python3-msal < 2.0.0
-Requires:       python3-msal >= 1.26.0
-Requires:       python3-msal-extensions < 2.0.0
-Requires:       python3-msal-extensions >= 1.0.0
-Requires:       python3-msrestazure < 0.7.0
-Requires:       python3-msrestazure >= 0.6.4
-Requires:       python3-packaging >= 20.9
-Requires:       python3-paramiko < 4.0.0
-Requires:       python3-paramiko >= 2.0.8
-Requires:       python3-pip
-Requires:       python3-pkginfo >= 1.5.0.1
-Requires:       python3-psutil < 6.0
-Requires:       python3-psutil >= 5.9
-Requires:       python3-pyOpenSSL >= 17.1.0
-Requires:       python3-requests < 3.0.0
-Requires:       python3-requests >= 2.25.1
-Requires:       python3-wheel >= 0.30.0
-%if %{python3_version_nodots} < 34
-Requires:       python-enum34 >= 1.0.4
-%endif
 Conflicts:      azure-cli < 2.0.0
 
 BuildArch:      noarch
@@ -77,21 +83,21 @@ Microsoft Azure CLI Core Module
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-cli-core-%{version}
-python3 setup.py build
+%pyproject_wheel
 
 %install
-python3 setup.py install --root=%{buildroot} --prefix=%{_prefix} --install-lib=%{python3_sitelib}
-%fdupes %{buildroot}%{python3_sitelib}
-rm -rf %{buildroot}%{python3_sitelib}/azure/cli/__init__.*
-rm -rf %{buildroot}%{python3_sitelib}/azure/cli/__pycache__
-rm -rf %{buildroot}%{python3_sitelib}/azure/__init__.*
-rm -rf %{buildroot}%{python3_sitelib}/azure/__pycache__
+%pyproject_install
+%fdupes %{buildroot}%{_sitelibdir}
+rm -rf %{buildroot}%{_sitelibdir}/azure/cli/__init__.*
+rm -rf %{buildroot}%{_sitelibdir}/azure/cli/__pycache__
+rm -rf %{buildroot}%{_sitelibdir}/azure/__init__.*
+rm -rf %{buildroot}%{_sitelibdir}/azure/__pycache__
 
 %files
 %defattr(-,root,root,-)
 %doc HISTORY.rst README.rst
 %license LICENSE.txt
-%{python3_sitelib}/azure/cli/core
-%{python3_sitelib}/azure_cli_core-*.egg-info
+%{_sitelibdir}/azure/cli/core
+%{_sitelibdir}/azure_cli_core-*.dist-info
 
 %changelog
