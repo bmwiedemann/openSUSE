@@ -1,7 +1,7 @@
 #
 # spec file for package perl-B-Hooks-EndOfScope
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name B-Hooks-EndOfScope
 Name:           perl-B-Hooks-EndOfScope
-Version:        0.26
+Version:        0.280.0
 Release:        0
+# 0.28 -> normalize -> 0.280.0
+%define cpan_version 0.28
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Execute code after a scope finished compilation
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -37,6 +39,10 @@ Requires:       perl(Hash::Util::FieldHash)
 Requires:       perl(Module::Implementation) >= 0.05
 Requires:       perl(Sub::Exporter::Progressive) >= 0.001006
 Requires:       perl(Variable::Magic) >= 0.48
+Provides:       perl(B::Hooks::EndOfScope) = %{version}
+Provides:       perl(B::Hooks::EndOfScope::PP) = %{version}
+Provides:       perl(B::Hooks::EndOfScope::XS) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -44,7 +50,7 @@ This module allows you to execute code when perl finished compiling the
 surrounding scope.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

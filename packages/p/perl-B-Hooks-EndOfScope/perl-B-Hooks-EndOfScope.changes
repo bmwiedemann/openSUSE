@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar  1 03:06:14 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.28
+   see /usr/share/doc/packages/perl-B-Hooks-EndOfScope/Changes
+
+  0.28      2024-03-01 00:10:15Z
+    - revert Variable::Magic->Variable::OnDestruct change; Variable::Magic will
+      start working again in perl 5.39.9. (Graham Knop, PR#10)
+
+  0.27      2024-02-27 23:48:24Z
+    - switched from Variable::Magic to Variable::OnDestruct in the XS
+      implementation (Graham Knop, PR#9)
+    - add optional prereqs to metadata to help prereq analysis tools (RT#151992)
+
+-------------------------------------------------------------------
 Tue Feb 22 03:06:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.26
