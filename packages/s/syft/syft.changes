@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Apr 04 16:55:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.1.1:
+  * chore(deps): update tools to latest versions (#2744)
+  * chore(deps): bump golang.org/x/net from 0.22.0 to 0.23.0
+    (#2747)
+  * chore: update anchore/packageurl-go to use latest commits
+    (#2746)
+  * feat: cataloger for PHP Pecl and PEAR packages (#2604)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.11.0 to
+    5.12.0 (#2743)
+  * chore(deps): update tools to latest versions (#2741)
+  * fix: conan poco project cpe (#2740)
+  * chore(deps): bump github.com/distribution/reference from 0.5.0
+    to 0.6.0 (#2738)
+  * chore(deps): bump anchore/sbom-action from 0.15.9 to 0.15.10
+    (#2737)
+  * fix: panic scanning binaries without symtab (#2739)
+  * chore: remove useless code (#2716)
+  * chore(deps): bump google.golang.org/protobuf from 1.31.0 to
+    1.33.0 (#2731)
+  * chore(deps): bump github/codeql-action from 3.24.8 to 3.24.9
+    (#2732)
+  * chore(deps): update tools to latest versions (#2733)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.5.5 to
+    6.5.6 (#2734)
+  * update release token from readonly to write token (#2735)
+
+-------------------------------------------------------------------
 Tue Mar 26 07:19:30 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.1.0:
