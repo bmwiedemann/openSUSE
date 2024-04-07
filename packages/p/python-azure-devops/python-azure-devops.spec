@@ -18,10 +18,7 @@
 
 %define realversion 7.1.0b4
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-azure-devops
 Version:        7.1.0~b4
 Release:        0
@@ -31,18 +28,19 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Microsoft/vsts-python-api
 Source:         https://files.pythonhosted.org/packages/source/a/azure-devops/azure-devops-%{realversion}.tar.gz
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module msrest >= 0.7.1}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest < 0.8.0
-Requires:       python-msrest >= 0.7.1
-Provides:       python-vsts = %{realversion}
-Obsoletes:      python-vsts < %{realversion}
-
+Requires:       (python-msrest >= 0.7.1 with python-msrest < 0.8.0)
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-azure-devops < 7.1.0~b4
+%endif
 BuildArch:      noarch
 
 %python_subpackages
@@ -54,10 +52,10 @@ Python wrapper around the Azure DevOps 5.x APIs
 %setup -q -n azure-devops-%{realversion}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %{python_expand # delete common files
 rm -rf %{buildroot}%{$python_sitelib}/azure/__init__.*
@@ -67,6 +65,6 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 %files %{python_files}
 %license LICENSE.txt
 %{python_sitelib}/azure/devops
-%{python_sitelib}/azure_devops-*.egg-info
+%{python_sitelib}/azure_devops-*.dist-info
 
 %changelog
