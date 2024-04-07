@@ -16,6 +16,13 @@
 #
 
 
+%if 0%{?suse_version} >= 1600
+%define pythons %{primary_python}
+%else
+%define pythons python311
+%endif
+%global _sitelibdir %{%{pythons}_sitelib}
+
 # Define just "test" as a package in _multibuild file to distinguish test
 # instructions here
 %if "@BUILD_FLAVOR@" == ""
@@ -44,114 +51,116 @@ Patch1:         ac_use-python3-by-default.patch
 %if 0%{?_test}
 BuildRequires:  %{short_name} = %{version}
 %else
+BuildRequires:  %{pythons}-pip
+BuildRequires:  %{pythons}-wheel
 BuildRequires:  azure-cli-command-modules-nspkg >= 2.0
 BuildRequires:  azure-cli-core = %{version}
 BuildRequires:  azure-cli-nspkg >= 3.0.3
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       %{pythons}-Fabric >= 3.2.2
+Requires:       %{pythons}-PyGithub >= 1.38
+Requires:       %{pythons}-PyNaCl >= 1.5.0
+Requires:       %{pythons}-PyYAML >= 5.1
+Requires:       %{pythons}-antlr4-python3-runtime >= 4.13.1
+Requires:       %{pythons}-azure-appconfiguration >= 1.1.1
+Requires:       %{pythons}-azure-batch >= 14.1.0
+Requires:       %{pythons}-azure-cosmos >= 3.0.2
+Requires:       %{pythons}-azure-data-tables >= 12.4.0
+Requires:       %{pythons}-azure-datalake-store >= 0.0.49
+Requires:       %{pythons}-azure-graphrbac >= 0.60.0
+Requires:       %{pythons}-azure-keyvault-administration >= 4.4.0~b2
+Requires:       %{pythons}-azure-keyvault-certificates >= 4.7.0
+Requires:       %{pythons}-azure-keyvault-keys >= 4.9.0~b3
+Requires:       %{pythons}-azure-keyvault-secrets >= 4.7.0
+Requires:       %{pythons}-azure-mgmt-advisor >= 9.0.0
+Requires:       %{pythons}-azure-mgmt-apimanagement >= 4.0.0
+Requires:       %{pythons}-azure-mgmt-appconfiguration >= 3.0.0
+Requires:       %{pythons}-azure-mgmt-appcontainers >= 2.0.0
+Requires:       %{pythons}-azure-mgmt-applicationinsights >= 1.0.0
+Requires:       %{pythons}-azure-mgmt-authorization >= 4.0.0
+Requires:       %{pythons}-azure-mgmt-batch >= 17.2.0
+Requires:       %{pythons}-azure-mgmt-batchai >= 7.0.0b1
+Requires:       %{pythons}-azure-mgmt-billing >= 6.0.0
+Requires:       %{pythons}-azure-mgmt-botservice >= 2.0.0b3
+Requires:       %{pythons}-azure-mgmt-cdn >= 12.0.0
+Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 13.5.0
+Requires:       %{pythons}-azure-mgmt-compute >= 30.4.0
+Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.1.0
+Requires:       %{pythons}-azure-mgmt-containerregistry >= 10.3.0
+Requires:       %{pythons}-azure-mgmt-containerservice >= 29.1.0
+Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.4.0
+Requires:       %{pythons}-azure-mgmt-databoxedge >= 1.0.0
+Requires:       %{pythons}-azure-mgmt-datalake-store >= 0.5.0
+Requires:       %{pythons}-azure-mgmt-datamigration >= 10.0.0
+Requires:       %{pythons}-azure-mgmt-devtestlabs >= 2.2
+Requires:       %{pythons}-azure-mgmt-dns >= 8.0.0
+Requires:       %{pythons}-azure-mgmt-eventgrid >= 10.2.0
+Requires:       %{pythons}-azure-mgmt-eventhub >= 10.1.0
+Requires:       %{pythons}-azure-mgmt-extendedlocation >= 1.0.0b2
+Requires:       %{pythons}-azure-mgmt-hdinsight >= 9.0.0
+Requires:       %{pythons}-azure-mgmt-imagebuilder >= 1.3.0
+Requires:       %{pythons}-azure-mgmt-iotcentral >= 10.0.0b1
+Requires:       %{pythons}-azure-mgmt-iothub >= 3.0.0
+Requires:       %{pythons}-azure-mgmt-iothubprovisioningservices >= 1.1.0
+Requires:       %{pythons}-azure-mgmt-keyvault >= 10.3.0
+Requires:       %{pythons}-azure-mgmt-kusto >= 0.3.0
+Requires:       %{pythons}-azure-mgmt-loganalytics >= 13.0.0
+Requires:       %{pythons}-azure-mgmt-managedservices >= 1.0
+Requires:       %{pythons}-azure-mgmt-managementgroups >= 1.0.0
+Requires:       %{pythons}-azure-mgmt-maps >= 2.0.0
+Requires:       %{pythons}-azure-mgmt-marketplaceordering >= 1.1.0
+Requires:       %{pythons}-azure-mgmt-media >= 9.0
+Requires:       %{pythons}-azure-mgmt-monitor >= 5.0.0
+Requires:       %{pythons}-azure-mgmt-msi >= 7.0.0
+Requires:       %{pythons}-azure-mgmt-netapp >= 10.1.0
+Requires:       %{pythons}-azure-mgmt-policyinsights >= 1.1.0b4
+Requires:       %{pythons}-azure-mgmt-privatedns >= 1.0.0
+Requires:       %{pythons}-azure-mgmt-rdbms >= 10.2.0b12
+Requires:       %{pythons}-azure-mgmt-recoveryservices >= 2.5.0
+Requires:       %{pythons}-azure-mgmt-recoveryservicesbackup >= 8.0.0
+Requires:       %{pythons}-azure-mgmt-redhatopenshift >= 1.4.0
+Requires:       %{pythons}-azure-mgmt-redis >= 14.3.0
+Requires:       %{pythons}-azure-mgmt-reservations >= 2.0.0
+Requires:       %{pythons}-azure-mgmt-resource >= 23.1.0~b2
+Requires:       %{pythons}-azure-mgmt-search >= 9.0
+Requires:       %{pythons}-azure-mgmt-security >= 5.0.0
+Requires:       %{pythons}-azure-mgmt-servicebus >= 8.2.0
+Requires:       %{pythons}-azure-mgmt-servicefabric >= 1.0.0
+Requires:       %{pythons}-azure-mgmt-servicefabricmanagedclusters >= 1.0.0
+Requires:       %{pythons}-azure-mgmt-servicelinker >= 1.2.0~b1
+Requires:       %{pythons}-azure-mgmt-signalr >= 2.0.0~b1
+Requires:       %{pythons}-azure-mgmt-sql >= 4.0.0b15
+Requires:       %{pythons}-azure-mgmt-sqlvirtualmachine >= 1.0.0b5
+Requires:       %{pythons}-azure-mgmt-storage >= 21.1.0
+Requires:       %{pythons}-azure-mgmt-synapse >= 2.1.0b5
+Requires:       %{pythons}-azure-mgmt-trafficmanager >= 1.0.0
+Requires:       %{pythons}-azure-mgmt-web >= 7.2.0
+Requires:       %{pythons}-azure-monitor-query >= 1.2.0
+Requires:       %{pythons}-azure-multiapi-storage >= 1.2.0
+Requires:       %{pythons}-azure-storage-common >= 1.4
+Requires:       %{pythons}-azure-synapse-accesscontrol >= 0.5.0
+Requires:       %{pythons}-azure-synapse-artifacts >= 0.18.0
+Requires:       %{pythons}-azure-synapse-managedprivateendpoints >= 0.4.0
+Requires:       %{pythons}-azure-synapse-spark >= 0.2.0
+Requires:       %{pythons}-chardet >= 5.2.0
+Requires:       %{pythons}-colorama >= 0.4.4
+Requires:       %{pythons}-distro
+Requires:       %{pythons}-javaproperties >= 0.5.1
+Requires:       %{pythons}-jsondiff >= 2.0.0
+Requires:       %{pythons}-packaging >= 20.9
+Requires:       %{pythons}-pycomposefile >= 0.0.29
+Requires:       %{pythons}-pygments >= 2.4
+Requires:       %{pythons}-scp >= 0.13.2
+Requires:       %{pythons}-semver >= 2.13.0
+Requires:       %{pythons}-six >= 1.10.0
+Requires:       %{pythons}-sshtunnel >= 0.1.4
+Requires:       %{pythons}-urllib3
+Requires:       %{pythons}-websocket-client >= 1.3.1
+Requires:       %{pythons}-xmltodict >= 0.12
 Requires:       azure-cli-command-modules-nspkg >= 2.0
 Requires:       azure-cli-core = %{version}
 Requires:       azure-cli-nspkg >= 3.0.3
-Requires:       python3-Fabric >= 3.2.2
-Requires:       python3-PyGithub >= 1.38
-Requires:       python3-PyNaCl >= 1.5.0
-Requires:       python3-PyYAML >= 5.1
-Requires:       python3-antlr4-python3-runtime >= 4.13.1
-Requires:       python3-azure-appconfiguration >= 1.1.1
-Requires:       python3-azure-batch >= 14.1.0
-Requires:       python3-azure-cosmos >= 3.0.2
-Requires:       python3-azure-data-tables >= 12.4.0
-Requires:       python3-azure-datalake-store >= 0.0.49
-Requires:       python3-azure-graphrbac >= 0.60.0
-Requires:       python3-azure-keyvault-administration >= 4.4.0~b2
-Requires:       python3-azure-keyvault-certificates >= 4.7.0
-Requires:       python3-azure-keyvault-keys >= 4.9.0~b3
-Requires:       python3-azure-keyvault-secrets >= 4.7.0
-Requires:       python3-azure-mgmt-advisor >= 9.0.0
-Requires:       python3-azure-mgmt-apimanagement >= 4.0.0
-Requires:       python3-azure-mgmt-appconfiguration >= 3.0.0
-Requires:       python3-azure-mgmt-appcontainers >= 2.0.0
-Requires:       python3-azure-mgmt-applicationinsights >= 1.0.0
-Requires:       python3-azure-mgmt-authorization >= 4.0.0
-Requires:       python3-azure-mgmt-batch >= 17.2.0
-Requires:       python3-azure-mgmt-batchai >= 7.0.0b1
-Requires:       python3-azure-mgmt-billing >= 6.0.0
-Requires:       python3-azure-mgmt-botservice >= 2.0.0b3
-Requires:       python3-azure-mgmt-cdn >= 12.0.0
-Requires:       python3-azure-mgmt-cognitiveservices >= 13.5.0
-Requires:       python3-azure-mgmt-compute >= 30.4.0
-Requires:       python3-azure-mgmt-containerinstance >= 10.1.0
-Requires:       python3-azure-mgmt-containerregistry >= 10.3.0
-Requires:       python3-azure-mgmt-containerservice >= 29.1.0
-Requires:       python3-azure-mgmt-cosmosdb >= 9.4.0
-Requires:       python3-azure-mgmt-databoxedge >= 1.0.0
-Requires:       python3-azure-mgmt-datalake-store >= 0.5.0
-Requires:       python3-azure-mgmt-datamigration >= 10.0.0
-Requires:       python3-azure-mgmt-devtestlabs >= 2.2
-Requires:       python3-azure-mgmt-dns >= 8.0.0
-Requires:       python3-azure-mgmt-eventgrid >= 10.2.0
-Requires:       python3-azure-mgmt-eventhub >= 10.1.0
-Requires:       python3-azure-mgmt-extendedlocation >= 1.0.0b2
-Requires:       python3-azure-mgmt-hdinsight >= 9.0.0
-Requires:       python3-azure-mgmt-imagebuilder >= 1.3.0
-Requires:       python3-azure-mgmt-iotcentral >= 10.0.0b1
-Requires:       python3-azure-mgmt-iothub >= 3.0.0
-Requires:       python3-azure-mgmt-iothubprovisioningservices >= 1.1.0
-Requires:       python3-azure-mgmt-keyvault >= 10.3.0
-Requires:       python3-azure-mgmt-kusto >= 0.3.0
-Requires:       python3-azure-mgmt-loganalytics >= 13.0.0
-Requires:       python3-azure-mgmt-managedservices >= 1.0
-Requires:       python3-azure-mgmt-managementgroups >= 1.0.0
-Requires:       python3-azure-mgmt-maps >= 2.0.0
-Requires:       python3-azure-mgmt-marketplaceordering >= 1.1.0
-Requires:       python3-azure-mgmt-media >= 9.0
-Requires:       python3-azure-mgmt-monitor >= 5.0.0
-Requires:       python3-azure-mgmt-msi >= 7.0.0
-Requires:       python3-azure-mgmt-netapp >= 10.1.0
-Requires:       python3-azure-mgmt-policyinsights >= 1.1.0b4
-Requires:       python3-azure-mgmt-privatedns >= 1.0.0
-Requires:       python3-azure-mgmt-rdbms >= 10.2.0b12
-Requires:       python3-azure-mgmt-recoveryservices >= 2.5.0
-Requires:       python3-azure-mgmt-recoveryservicesbackup >= 8.0.0
-Requires:       python3-azure-mgmt-redhatopenshift >= 1.4.0
-Requires:       python3-azure-mgmt-redis >= 14.3.0
-Requires:       python3-azure-mgmt-reservations >= 2.0.0
-Requires:       python3-azure-mgmt-resource >= 23.1.0~b2
-Requires:       python3-azure-mgmt-search >= 9.0
-Requires:       python3-azure-mgmt-security >= 5.0.0
-Requires:       python3-azure-mgmt-servicebus >= 8.2.0
-Requires:       python3-azure-mgmt-servicefabric >= 1.0.0
-Requires:       python3-azure-mgmt-servicefabricmanagedclusters >= 1.0.0
-Requires:       python3-azure-mgmt-servicelinker >= 1.2.0~b1
-Requires:       python3-azure-mgmt-signalr >= 2.0.0~b1
-Requires:       python3-azure-mgmt-sql >= 4.0.0b15
-Requires:       python3-azure-mgmt-sqlvirtualmachine >= 1.0.0b5
-Requires:       python3-azure-mgmt-storage >= 21.1.0
-Requires:       python3-azure-mgmt-synapse >= 2.1.0b5
-Requires:       python3-azure-mgmt-trafficmanager >= 1.0.0
-Requires:       python3-azure-mgmt-web >= 7.2.0
-Requires:       python3-azure-monitor-query >= 1.2.0
-Requires:       python3-azure-multiapi-storage >= 1.2.0
-Requires:       python3-azure-storage-common >= 1.4
-Requires:       python3-azure-synapse-accesscontrol >= 0.5.0
-Requires:       python3-azure-synapse-artifacts >= 0.18.0
-Requires:       python3-azure-synapse-managedprivateendpoints >= 0.4.0
-Requires:       python3-azure-synapse-spark >= 0.2.0
-Requires:       python3-chardet >= 5.2.0
-Requires:       python3-colorama >= 0.4.4
-Requires:       python3-distro
-Requires:       python3-javaproperties >= 0.5.1
-Requires:       python3-jsondiff >= 2.0.0
-Requires:       python3-packaging >= 20.9
-Requires:       python3-pycomposefile >= 0.0.29
-Requires:       python3-pygments >= 2.4
-Requires:       python3-scp >= 0.13.2
-Requires:       python3-semver >= 2.13.0
-Requires:       python3-six >= 1.10.0
-Requires:       python3-sshtunnel >= 0.1.4
-Requires:       python3-urllib3
-Requires:       python3-websocket-client >= 1.3.1
-Requires:       python3-xmltodict >= 0.12
 Provides:       azure-cli-acr = 2.2.9
 Obsoletes:      azure-cli-acr < 2.2.9
 Provides:       azure-cli-acs = 2.4.4
@@ -296,7 +305,7 @@ done
 set -x
 %else
 install -m 644 %{SOURCE1} %{_builddir}/azure-cli-%{version}
-python3 setup.py build
+%pyproject_wheel
 %endif
 
 %install
@@ -304,15 +313,15 @@ python3 setup.py build
 # disable debug packages in package test to prevent error about missing files
 %define debug_package %{nil}
 %else
-python3 setup.py install --root=%{buildroot} --prefix=%{_prefix} --install-lib=%{python3_sitelib}
+%pyproject_install
 install -DTm644 %{buildroot}%{_bindir}/az.completion.sh %{buildroot}%{_datadir}/bash-completion/completions/az
-%fdupes %{buildroot}%{python3_sitelib}
-rm -rf %{buildroot}%{python3_sitelib}/azure/cli/command_modules/__init__.*
-rm -rf %{buildroot}%{python3_sitelib}/azure/cli/command_modules/__pycache__
-rm -rf %{buildroot}%{python3_sitelib}/azure/cli/__init__.*
-rm -rf %{buildroot}%{python3_sitelib}/azure/cli/__pycache__
-rm -rf %{buildroot}%{python3_sitelib}/azure/__init__.*
-rm -rf %{buildroot}%{python3_sitelib}/azure/__pycache__
+%fdupes %{buildroot}%{_sitelibdir}
+rm -rf %{buildroot}%{_sitelibdir}/azure/cli/command_modules/__init__.*
+rm -rf %{buildroot}%{_sitelibdir}/azure/cli/command_modules/__pycache__
+rm -rf %{buildroot}%{_sitelibdir}/azure/cli/__init__.*
+rm -rf %{buildroot}%{_sitelibdir}/azure/cli/__pycache__
+rm -rf %{buildroot}%{_sitelibdir}/azure/__init__.*
+rm -rf %{buildroot}%{_sitelibdir}/azure/__pycache__
 %endif
 
 %files
@@ -325,8 +334,8 @@ rm -rf %{buildroot}%{python3_sitelib}/azure/__pycache__
 %exclude /usr/bin/az.bat
 %exclude /usr/bin/az.completion.sh
 %exclude /usr/bin/azps.ps1
-%{python3_sitelib}/azure/cli
-%{python3_sitelib}/azure_cli-*.egg-info
+%{_sitelibdir}/azure/cli
+%{_sitelibdir}/azure_cli-*.dist-info
 %endif
 
 %changelog
