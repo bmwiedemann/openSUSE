@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 22 16:35:15 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.017
+   see /usr/share/doc/packages/perl-Perl-Version/Changes
+
+  1.017 2024-03-09T01:36:13Z
+  	* fix encoding argment to read_line ("Odd number" warning), from
+  	Andreas Hadjiprocopis (#11)
+
+-------------------------------------------------------------------
 Fri Mar  8 22:56:30 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

@@ -18,9 +18,10 @@
 
 %define cpan_name Perl-Version
 Name:           perl-Perl-Version
-Version:        1.16.0
+Version:        1.17.0
 Release:        0
-%define cpan_version 1.016
+# 1.017 -> normalize -> 1.17.0
+%define cpan_version 1.017
 License:        Artistic-2.0
 Summary:        Parse and manipulate Perl version strings
 URL:            https://metacpan.org/release/%{cpan_name}
