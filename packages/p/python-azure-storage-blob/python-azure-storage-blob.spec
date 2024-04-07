@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-storage-blob
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-azure-storage-blob
 Version:        12.19.0
 Release:        0
@@ -30,25 +27,27 @@ URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-storage-blob/azure-storage-blob-%{version}.tar.gz
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-storage-nspkg >= 3.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-common >= 1.1.5
-Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.28.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-azure-storage-common < 3.0.0
-Requires:       python-azure-storage-common >= 2.1.0
 Requires:       python-azure-storage-nspkg >= 3.0.0
 Requires:       python-cryptography >= 2.1.4
 Requires:       python-isodate >= 0.6.1
+Requires:       (python-azure-core >= 1.28.0 with python-azure-core < 2.0.0)
+Requires:       (python-azure-storage-common >= 2.1.0 with python-azure-storage-common < 3.0.0)
 Requires:       (python-typing_extensions >= 4.3.0)
 %if "%{python_flavor}" == "python2"
 Requires:       python-futures
 %endif
 Conflicts:      python-azure-sdk <= 2.0.0
 Conflicts:      python-azure-storage <= 0.36.0
-
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-azure-storage-blob < 12.19.0
+%endif
 BuildArch:      noarch
 
 %python_subpackages
@@ -69,10 +68,10 @@ Blob storage is ideal for:
 %setup -q -n azure-storage-blob-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %{python_expand # delete common files
 rm -rf %{buildroot}%{$python_sitelib}/azure/storage/__init__.*
@@ -82,10 +81,9 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 }
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc CHANGELOG.md README.md
 %license LICENSE
 %{python_sitelib}/azure/storage/blob
-%{python_sitelib}/azure_storage_blob-*.egg-info
+%{python_sitelib}/azure_storage_blob-*.dist-info
 
 %changelog
