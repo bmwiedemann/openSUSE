@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr  7 09:10:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.3:
+  * Exclude google-auth 2.24.0 and 2.25.0
+  * [Many APIs] Require google-api-core>=1.34.1
+  * fix ValueError in test__validate_universe_domain
+
+-------------------------------------------------------------------
 Fri Feb  9 12:01:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11.1:

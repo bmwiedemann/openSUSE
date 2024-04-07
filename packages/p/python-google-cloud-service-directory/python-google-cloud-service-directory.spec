@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-service-directory
-Version:        1.11.1
+Version:        1.11.3
 Release:        0
 Summary:        Google Cloud Service Directory API client library
 License:        Apache-2.0

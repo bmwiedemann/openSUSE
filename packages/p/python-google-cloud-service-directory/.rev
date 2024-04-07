@@ -25,4 +25,15 @@
   * Add google-auth as a direct dependency</comment>
     <requestid>1151463</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1219e918bb34cda66a1dd114f5d41e79</srcmd5>
+    <version>1.11.3</version>
+    <time>1712520807</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.11.3:
+  * Exclude google-auth 2.24.0 and 2.25.0
+  * [Many APIs] Require google-api-core&gt;=1.34.1
+  * fix ValueError in test__validate_universe_domain</comment>
+    <requestid>1165952</requestid>
+  </revision>
 </revisionlist>
