@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 30 16:56:00 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update math-functions to version 0.3.4.4.
+  ## Changes in 0.3.4.4
+
+    * Support for future versions of GHC. Monoid and Monad instances now have
+      canonical form
+
+-------------------------------------------------------------------
 Wed Oct 18 12:11:41 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update math-functions to version 0.3.4.3.
