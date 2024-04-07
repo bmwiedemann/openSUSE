@@ -16,10 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-msal-extensions
 Version:        1.1.0
 Release:        0
@@ -29,13 +26,16 @@ Group:          Development/Languages/Python
 URL:            https://github.com/AzureAD/microsoft-authentication-library-for-python
 Source:         https://files.pythonhosted.org/packages/source/m/msal-extensions/msal-extensions-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-msal < 2.0.0
-Requires:       python-msal >= 0.4.1
-Requires:       python-portalocker < 3.0
-Requires:       python-portalocker >= 1.0
+Requires:       (python-msal >= 0.4.1 with python-msal < 2.0.0)
+Requires:       (python-portalocker >= 1.0 with python-portalocker < 3.0)
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-msal-extensions < 1.1.0
+%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module msal < 2.0.0}
@@ -58,15 +58,15 @@ This packages contains additional extensions.
 %setup -q -n msal-extensions-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.md
 %{python_sitelib}/msal_extensions
-%{python_sitelib}/msal_extensions-*.egg-info
+%{python_sitelib}/msal_extensions-*.dist-info
 
 %changelog
