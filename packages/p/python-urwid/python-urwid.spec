@@ -18,11 +18,11 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-urwid
-Version:        2.5.3
+Version:        2.6.10
 Release:        0
 Summary:        A full-featured console (xterm et al.) user interface library
 License:        LGPL-2.1-or-later
-URL:            http://urwid.org
+URL:            https://github.com/urwid/urwid
 Source:         https://files.pythonhosted.org/packages/source/u/urwid/urwid-%{version}.tar.gz
 BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module devel}
@@ -33,9 +33,10 @@ BuildRequires:  %{python_module wcwidth}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 Requires:       python-curses
-Requires:       python-wcwidth
 Requires:       python-typing_extensions
+Requires:       python-wcwidth
 %python_subpackages
 
 %description
@@ -62,7 +63,7 @@ find urwid -name "*.py" | xargs sed -i '1 { /^#!/ d }'
 
 %install
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pyunittest discover -v
@@ -70,7 +71,7 @@ find urwid -name "*.py" | xargs sed -i '1 { /^#!/ d }'
 %files %{python_files}
 %license COPYING
 %doc README.rst
-%{python_sitearch}/urwid
-%{python_sitearch}/urwid-%{version}.dist-info
+%{python_sitelib}/urwid
+%{python_sitelib}/urwid-%{version}.dist-info
 
 %changelog

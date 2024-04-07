@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sat Apr  6 17:38:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.10:
+  * `ScrollBar`: fully support `__length_hint__` if not `Sized`
+- update to 2.6.9:
+  * Support relative scroll for `ListBox`
+  * Absolute scrolling calculation is resource-hungry and can
+    cause serious issues on the long lists.
+  * This change also rework calculation allowing to use
+    `ScrollBar` with `TreeList` (users should prevent infinite
+    load cycle on lazy-load self).
+  * Support `` key reading for sgrmouse
+  * Historically  key reading was not implemented due to `` for
+    buttons 1-3 is handled by the most GUI terminal emulators
+    itself.
+  * Fix regression in `TreeWidget`: original widget can be
+    overridden
+- update to 2.6.8:
+  * Fix regression: Overlay not accepted relative positioning
+- update to 2.6.7:
+  * Fix `MainLoop.watch_pipe` regression for the callback outcome
+    not `False`
+- update to 2.6.6:
+  * Fix Columns sizing and pack behavior
+- update to 2.6.5:
+  * Allow `wcwidth` to select unicode version
+  * `TreeWidget`: do not use deprecated API in
+    `update_expanded_icon`
+- update to 2.6.4:
+  * Fix regression from 2.6.1: `ListBox` used for tree
+    implementation.
+- update to 2.6.3:
+  * Fix regression from 2.6.2: weight can be `float`
+- update to 2.6.2:
+  * Feature: support `Widget` instance as `Frame` focus part in
+    constructor
+  * Feature: `EventLoop.run_in_executor` should accept `**kwargs`
+  * Feature: extend validation for `Columns` and `Pile`
+  * Fix: nonstandard display typing issues
+  * Fix: Text pack for `layout` without `pack`
+  * Fix: `ListBox` render crash if empty elements in tail
+- update to 2.6.1:
+  * Fix a scenario with ellipsis wrap not fit in screen columns
+- update to 2.6.0:
+  * ### Compiled C extension is not used anymore.
+  * It became a blocker for the future correct Unicode support
+    and caused pain for some of end users building package
+    separately.
+  * Fix regression in the `LineBox._w`: should be a property
+  * Fix ellipsis encoding in the text layout
+  * Fix ListBox `MAX_LEFT`/`MAX_RIGHT` report for `keypress` as
+    unhandled
+
+-------------------------------------------------------------------
 Tue Feb 27 15:20:40 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add missing runtime requirement typing_extensions
@@ -69,7 +123,7 @@ Mon Feb 20 08:41:44 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Mon Nov  8 12:13:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- add dependency for python 2 builds 
+- add dependency for python 2 builds
 
 -------------------------------------------------------------------
 Tue Oct 12 10:28:44 UTC 2021 - pgajdos@suse.com
@@ -213,7 +267,7 @@ Tue Mar  8 20:13:34 UTC 2016 - freitag@opensuse.org
  * Fix for BarGraph hlines sort order (by Heiko Noordhof)
  * Fix for final output not appearing on exit with some terminals
    now that extra newline was removed (by Jared Winborne)
- * Fix for a resizing bug in raw_display (by Esteban null) 
+ * Fix for a resizing bug in raw_display (by Esteban null)
 
 -------------------------------------------------------------------
 Thu May 14 13:09:33 UTC 2015 - benoit.monin@gmx.fr
@@ -386,7 +440,7 @@ Fri Jul 20 23:32:04 UTC 2012 - p.drouand@gmail.com
 Sat Jun  9 03:18:07 UTC 2012 - highwaystar.ru@gmail.com
 
 - python3 package added
-- spec file improved 
+- spec file improved
 
 -------------------------------------------------------------------
 Thu Dec 08 22:31:27 UTC 2011 - pascal.bleser@opensuse.org
