@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 25 17:26:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.3.1:
+  * allow override of expand in open()
+  * root handling in local file paths, fix for windows
+  * coroutines throttle to stream pool rather than batches
+  * write transactions in simplecache
+  * allow deep nested refs in referenceFS/parquet
+  * Fixes bug (#1476) that made open_files ignore expand=False
+  * remove extra calling mapper contains
+  * connection retry for SMB
+  * zip64 should be on is allowZip64 is
+
+-------------------------------------------------------------------
 Fri Mar  8 16:12:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2024.2.0

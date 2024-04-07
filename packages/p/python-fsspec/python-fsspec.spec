@@ -29,7 +29,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fsspec%{psuffix}
-Version:        2024.2.0
+Version:        2024.3.1
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
