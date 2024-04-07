@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 22 16:10:10 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.38
+   see /usr/share/doc/packages/perl-Expect/Changes
+
+  1.38 2024-03-08
+      - Fix to fix to timeout code
+
+  1.37 2024-03-07
+      - Fix to timeout code
+
+  1.36 2024-02-23
+      - Made timeouts optional and added qr// regex support
+
+-------------------------------------------------------------------
 Mon Mar  4 12:54:07 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
