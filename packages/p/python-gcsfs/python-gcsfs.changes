@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr  7 09:00:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.3.1:
+  * fix expiration= for sign()
+  * do populate dircache in ls()
+  * allow passing extra options to mkdir
+  * credentials docs
+  * retry in bulk rm
+  * clean up loop on close
+
+-------------------------------------------------------------------
 Fri Mar  8 16:17:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2024.2.0

@@ -188,4 +188,18 @@
 - Update to 2024.2.0 * doc for passing tokens (#603)</comment>
     <requestid>1157040</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ce38ca7ebc8ae699cfef2d37c16f7af9</srcmd5>
+    <version>2024.3.1</version>
+    <time>1712520792</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.3.1:
+  * fix expiration= for sign()
+  * do populate dircache in ls()
+  * allow passing extra options to mkdir
+  * credentials docs
+  * retry in bulk rm
+  * clean up loop on close</comment>
+    <requestid>1165945</requestid>
+  </revision>
 </revisionlist>

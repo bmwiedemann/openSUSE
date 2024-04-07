@@ -17,7 +17,7 @@
 
 
 Name:           python-gcsfs
-Version:        2024.2.0
+Version:        2024.3.1
 Release:        0
 Summary:        Filesystem interface over GCS
 License:        BSD-3-Clause
@@ -45,13 +45,14 @@ BuildArch:      noarch
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module decorator > 4.1.2}
-BuildRequires:  %{python_module fsspec == %{version}}
+BuildRequires:  %{python_module fsspec = %{version}}
 BuildRequires:  %{python_module fusepy}
 BuildRequires:  %{python_module google-api-core}
 BuildRequires:  %{python_module google-api-python-client}
 BuildRequires:  %{python_module google-auth >= 1.2}
 BuildRequires:  %{python_module google-auth-oauthlib}
 BuildRequires:  %{python_module google-cloud-storage}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
@@ -99,7 +100,7 @@ donttest="test_fuse"
 # finds an existing path on the non-first multiflavor test runs"
 donttest+=" or test_mkdir_with_path"
 # no http error (which is expected) without network
-donttest+=" or test_credentials_from_raw_token"
+donttest+=" or test_credentials_from_raw_token or test_sign"
 %pytest -rfEs -k "not ($donttest)"
 
 %files %{python_files}
