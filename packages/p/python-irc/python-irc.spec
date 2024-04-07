@@ -19,7 +19,7 @@
 %define modname irc
 %{?sle15_python_module_pythons}
 Name:           python-irc
-Version:        20.3.1
+Version:        20.4.0
 Release:        0
 Summary:        A set of Python modules for IRC support
 License:        LGPL-2.1-or-later

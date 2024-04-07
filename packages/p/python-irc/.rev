@@ -307,4 +307,15 @@ Dependencies:
 - Update to 19.0.1</comment>
     <requestid>1137300</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e47a6c565ac9880fc62a5f446e34a018</srcmd5>
+    <version>20.4.0</version>
+    <time>1712520706</time>
+    <user>anag+factory</user>
+    <comment>- update to 20.4.0:
+  * Replace deprecated ssl.wrap_socket with
+    SSLContext.wrap_socket and update examples in connection.py
+    docs.</comment>
+    <requestid>1165874</requestid>
+  </revision>
 </revisionlist>
