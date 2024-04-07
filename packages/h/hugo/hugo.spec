@@ -53,6 +53,15 @@ BuildArch:      noarch
 %description bash-completion
 The official bash completion script for %{name}, generated during the build.
 
+%package zsh-completion
+Summary:        ZSH Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+The official zsh completion script for %{name}, generated during the build.
+
 %prep
 %autosetup -a 1
 
@@ -81,11 +90,17 @@ install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
 mkdir -p "%{buildroot}/%{_mandir}/man1"
 install -D -m 0644 man/%{name}*.1 "%{buildroot}/%{_mandir}/man1"
 
-# Build the bash autocomplete file
-%{buildroot}/%{_bindir}/%{name} completion bash > %{name}-autocomplete.sh
+# Build the shell autocomplete files
+%{buildroot}/%{_bindir}/%{name} completion bash > %{name}-autocomplete.bash
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{name}-autocomplete.zsh
 
-# Install the bash autocomplete file
-install -Dm 644 %{name}-autocomplete.sh %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+# Install the shell autocomplete files
+install -Dm 644 %{name}-autocomplete.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -Dm 644 %{name}-autocomplete.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
+
+%check
+# execute the binary as a basic check
+./%{name} --help
 
 %files
 %doc README.md
@@ -95,5 +110,8 @@ install -Dm 644 %{name}-autocomplete.sh %{buildroot}%{_datadir}/bash-completion/
 
 %files bash-completion
 %{_datadir}/bash-completion
+
+%files zsh-completion
+%{_datadir}/zsh
 
 %changelog

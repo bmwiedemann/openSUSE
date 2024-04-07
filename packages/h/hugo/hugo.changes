@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr  5 18:35:47 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Add basic %check to execute binary --help
+
+-------------------------------------------------------------------
+Fri Apr  5 15:54:07 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- added zsh completion package
+- added %check section in spec file following rpmlint warning
+
+-------------------------------------------------------------------
 Wed Mar 20 16:19:42 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.124.1:

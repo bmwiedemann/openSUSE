@@ -1082,4 +1082,13 @@
   * Fix regression for outputs defined in front matter for term pages (forwarded request 1159941 from jfkw)</comment>
     <requestid>1159951</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>c8c7098c29b21317f6b6ebee8e3cbf16</srcmd5>
+    <version>0.124.1</version>
+    <time>1712520655</time>
+    <user>anag+factory</user>
+    <comment>- Packaging improvements:
+  * Add basic %check to execute binary --help (forwarded request 1165708 from jfkw)</comment>
+    <requestid>1165709</requestid>
+  </revision>
 </revisionlist>
