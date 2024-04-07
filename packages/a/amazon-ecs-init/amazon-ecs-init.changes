@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  5 14:33:17 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use full URL for sources.
+- Use %license to mark LICENSE file.
+
+-------------------------------------------------------------------
 Tue Feb 20 11:12:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1,7 +1,7 @@
 #
 # spec file for package amazon-ecs-init
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Summary:        Amazon EC2 Container Service Initialization
 License:        Apache-2.0
 Group:          System Environment/Base
 URL:            https://github.com/aws/amazon-ecs-init
-Source0:        %{name}-%{version}-1.tar.gz
+Source0:        https://github.com/aws/amazon-ecs-init/archive/refs/tags/v%{version}-1.tar.gz#/%{name}-%{version}-1.tar.gz
 Source1:        %{short_name}.service
 Patch0:         reproducible.patch
 Patch1:         use-agent-container-built-in-certs.patch
@@ -168,7 +168,8 @@ echo 0 > %{buildroot}/%{_localstatedir}/cache/ecs/state
 %defattr(-,root,root,-)
 %dir %{_sysconfdir}/ecs
 %dir %{_localstatedir}/cache/ecs
-%doc CONTRIBUTING.md LICENSE NOTICE README.md
+%license LICENSE
+%doc CONTRIBUTING.md NOTICE README.md
 %config(noreplace) %{_sysconfdir}/ecs/ecs.config
 %config(noreplace) %{_sysconfdir}/ecs/ecs.config.json
 %{_mandir}/man*/*
