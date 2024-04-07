@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  6 07:57:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.3:
+  * Don't raise UnusedElementError when used has more elems than
+    Grammar
+
+-------------------------------------------------------------------
 Sun Jan  7 19:54:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.2:

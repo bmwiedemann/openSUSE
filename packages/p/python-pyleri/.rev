@@ -26,4 +26,14 @@
   * Fixed bug with recursion in Prio element. (issue #18)</comment>
     <requestid>1137430</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d0caecb918c6c78ff633b6d9729a0c4d</srcmd5>
+    <version>1.4.3</version>
+    <time>1712520669</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.3:
+  * Don't raise UnusedElementError when used has more elems than
+    Grammar</comment>
+    <requestid>1165757</requestid>
+  </revision>
 </revisionlist>
