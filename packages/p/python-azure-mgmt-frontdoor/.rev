@@ -75,4 +75,22 @@
 - Update Requires from setup.py (forwarded request 1088519 from glaubitz)</comment>
     <requestid>1088522</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8a32115100902fb515c2ad6e635e598a</srcmd5>
+    <version>1.1.0</version>
+    <time>1712520483</time>
+    <user>anag+factory</user>
+    <comment>- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Add Obsoletes for old python3 package on SLE-15
+  + Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+  + Update name for dist directory in %files section
+- Drop setting default file attributes in %files section
+- Use modern RPM macros to express version dependencies (forwarded request 1164793 from glaubitz)</comment>
+    <requestid>1165189</requestid>
+  </revision>
 </revisionlist>
