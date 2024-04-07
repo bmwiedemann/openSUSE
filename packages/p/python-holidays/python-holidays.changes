@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr  2 16:19:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.46:
+  * Fix Romanian language strings: replace U+015F with proper
+    U+0219
+  * Update (c) in file headers and LICENSE
+  * Update Australia holidays
+  * Update Makefile clean action
+  * Update US tests: Day After Thanksgiving
+  * Update United Kingdom holidays: fix observed New Year's Day
+    in Scotland
+  * Update tests: use assertIsInstance
+  * Fix README layout (attempt 1)
+  * Add file header pre-commit check
+  * Add package build tests
+  * Unify file headers after recent update
+
+-------------------------------------------------------------------
 Tue Mar 19 05:57:14 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.45:

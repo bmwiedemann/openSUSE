@@ -228,4 +228,25 @@
 - Add missing BuildRequires on importlib-metadata.</comment>
     <requestid>1159181</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b7dcf7f7813b68b570c52aa2063d5f58</srcmd5>
+    <version>0.46</version>
+    <time>1712520707</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.46:
+  * Fix Romanian language strings: replace U+015F with proper
+    U+0219
+  * Update (c) in file headers and LICENSE
+  * Update Australia holidays
+  * Update Makefile clean action
+  * Update US tests: Day After Thanksgiving
+  * Update United Kingdom holidays: fix observed New Year's Day
+    in Scotland
+  * Update tests: use assertIsInstance
+  * Fix README layout (attempt 1)
+  * Add file header pre-commit check
+  * Add package build tests
+  * Unify file headers after recent update</comment>
+    <requestid>1165875</requestid>
+  </revision>
 </revisionlist>
