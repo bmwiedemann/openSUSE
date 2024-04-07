@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Thu Apr  4 10:59:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.125.1
+  * Support for assigned private IP and single stack IPV6 feature for Network Load Balancer Service
+  * Support for Configuration API in Email Delivery Service
+  * Support for the status field in creating data source resource for Cloud Guard Service
+  * Support for TLSv1.3 in Load Balancer Service
+  * Support for sending mails via HTTPS for Email Delivery Service
+- from version 2.125.0
+  * Support for creating and updating a refreshable clone with auto-refresh
+    for an Autonomous Database in the Database service
+  * Support for symmetric hashing in the Network Load Balancer service
+  * Support for creating and deploying helm command specifications in the DevOps Service
+  * Support for uninstalling helm chart when deleting an Oracle Kubernetes Stage through the DevOps Service
+  * Support for collecting metrics and filter plugin with Unified Monitoring Agent (UMA) in the Logging service
+  * Support for reading logs from head position after agent restart in the Logging service
+  * Support for monitoring MySQL HeatWave clusters in Database Management Service
+  * Support for multiple severities in an alarm in the Monitoring service
+  * The properties `DisplayName` and `Description` were made required in the model
+    `CreateUnifiedAgentConfigurationDetails` in the Logging service
+  * The property `RecordInput` was made required in the model `OperationalMetricsSource` in the Logging service
+- from version 2.124.2
+  * Support for standalone Oracle HTTP server discovery and monitoring in the Stack Monitoring service
+  * Support for attribute management for traces in the Application Performance Monitoring service
+  * Support for async jobs and document translations in the AI language service
+- from version 2.124.1
+  * Support for new development license type on dedicated infrastructure in the Database service
+  * Support for placement parameters on Autonomous Container Database create operation in the Database service
+  * Support for autoscaling on model deployment in the Data Science service
+- from version 2.124.0
+  * Support for Linux capabilities configuration for the containers in the Container Instances service
+  * Support for service platforms in the Oracle Store Platform Gateway service
+  * Support for whisper models and delete job operation in the Speech service
+  * Support for new SQL insight content types in news reports in the Operations Insights service
+  * Support for launching virtual machines with multiple volumes in the Compute service
+  * The property `CapacityPlanningResources` has been made optional in the
+    model `NewsContentTypes` in the Operations Insights service
+- from version 2.123.0
+  * Support for specifying dialog version when creating skills entities in the Digital Assistant service
+  * Support for bulk creation of skill entities in the Digital Assistant service
+  * Support for training skill query entities in the Digital Assistant service
+  * Support for cascading delete of skill custom entities in the Digital Assistant service
+  * Support for creating autonomous dataguard associations in the Database service
+  * Support for auto generation of secrets in the Secret Management service
+  * Support for cluster placement groups in Cloud Exadata Infrastructure in the Database service
+  * Support for retrieving previous logs of the container in the Container Instances service
+  * Support for queue sources in the Connector Hub service
+  * Support for automatic key rotation in the Key Management Service
+  * Support for downloading operator activity reports and assignment
+    healthchecks in the Operator Access Control service
+  * Support for operator requesting access in the future time in the Operator Access Control service
+  * Support for forwarding hypervisor logs in the Operator Access Control service
+  * Support for asynchronous data asset export in the Data Catalog service
+  * Support for launch with multiple volumes for virtual machines in the Compute Service
+  * Support for tagging in Database Management service
+  * Support for default retries on operations of the Connector Hub service
+  * Property `max_cpu_core_count` was removed from models `UpdateAutonomousDatabaseDetails`,
+    `CreateRefreshableAutonomousDatabaseCloneDetails`, `CreateCrossRegionDisasterRecoveryDetails`,
+    `CreateCrossRegionAutonomousDatabaseDataGuardDetails`, `CreateAutonomousDatabaseFromBackupTimestampDetails`,
+    `CreateAutonomousDatabaseFromBackupDetails`, `CreateAutonomousDatabaseDetails`, `CreateAutonomousDatabaseCloneDetails`,
+    `CreateAutonomousDatabaseBase`, `AutonomousDatabase`, `AutonomousDatabaseSummary` in the Database service
+  * Property `key_id` in model `CreateSecretDetails` is made required in the Vault service
+  * Model `DatabaseConnectionCredentailsByName` was renamed to
+    `DatabaseConnectionCredentialsByName` in the Database service
+- from version 2.122.0
+  * Support for calling Oracle Cloud Infrastructure services in the me-dcc-doha-1 region
+  * Support for Secure Desktops service
+  * Support for enabling and disabling Simultaneous Multithreading (SMT) for virtual machines in the Compute service
+  * Support for Bring Your Own Container Jobs (BYOC v2) in the Data Science service
+  * Support for expanded language translation in the AI Language service
+  * Support for additional flags for ignoring transliteration and text length
+    to be considered for determining dominant language in the AI Language service
+  * The model `PreTrainedPhiModelDetails` was removed in the AI Language service
+  * The field `system_tags` has changed type from `dict(str, object)` to `dict(str, dict(str, object))`
+    in the models `endpoint`, `endpoint_summary`, `model`, `model_summary`, `project`, and `project_summary`
+    in the AI Language service
+- Drop patch to support older pytest versions
+  * ops_fixture-order.patch
+
+-------------------------------------------------------------------
 Wed Mar  6 14:47:20 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Add %{?sle15_python_module_pythons}
