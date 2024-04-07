@@ -116,4 +116,13 @@
   * fix some issues with the sphinx config</comment>
     <requestid>1157752</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0e7c572a14dc9bd02dd9033945838bbb</srcmd5>
+    <version>3.7.0</version>
+    <time>1712520695</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.7.0:
+  * reduce importtime</comment>
+    <requestid>1165774</requestid>
+  </revision>
 </revisionlist>
