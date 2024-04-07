@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-core
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-core
 Version:        1.4.0
 Release:        0
@@ -30,16 +27,19 @@ URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-core/azure-mgmt-core-%{version}.zip
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.26.2
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
+Requires:       (python-azure-core >= 1.26.2 with python-azure-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
-
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-azure-mgmt-core < 1.4.0
+%endif
 BuildArch:      noarch
 
 %python_subpackages
@@ -59,11 +59,11 @@ be installed automatically when you install other SDKs.
 %build
 # Required for Python2 builds
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %{python_expand # delete common files
 rm -rf %{buildroot}%{$python_sitelib}/azure/mgmt/__init__.*
@@ -73,10 +73,9 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 }
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc CHANGELOG.md README.md
 %license LICENSE.md
 %{python_sitelib}/azure/mgmt/core
-%{python_sitelib}/azure_mgmt_core-*.egg-info
+%{python_sitelib}/azure_mgmt_core-*.dist-info
 
 %changelog
