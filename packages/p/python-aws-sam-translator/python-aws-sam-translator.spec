@@ -27,14 +27,12 @@
 %define skip_python2 1
 %endif
 Name:           python-aws-sam-translator
-Version:        1.85.0
+Version:        1.87.0
 Release:        0
 Summary:        AWS SAM template to AWS CloudFormation template translator
 License:        Apache-2.0
 URL:            https://github.com/awslabs/serverless-application-model
 Source:         https://github.com/awslabs/serverless-application-model/archive/v%{version}.tar.gz#/serverless-application-model-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#aws/serverless-application-model#3538
-Patch0:         no-more-utcnow-in-metrics.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
