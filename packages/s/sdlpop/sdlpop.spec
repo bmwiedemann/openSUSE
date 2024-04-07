@@ -33,6 +33,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(sdl2)
+ExcludeArch:    s390x
 
 %description
 SDLPoP is an open-source port of Prince of Persia 1,
