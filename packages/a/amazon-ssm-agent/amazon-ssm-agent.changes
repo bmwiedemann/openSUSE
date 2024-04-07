@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr  5 09:13:49 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.217.0
+  * Add alternative outputs for agent package generation scripts
+  * Add support for Oracle 8.8 & 8.9, Rocky 8.8 & 8.9,
+    AlmaLinux 8.8 & 8.9, and RHEL 8.9 & 9.3
+  * Fix flaky integration test
+  * Fix setup-cli error code for non English systems
+  * Set IPR creds expiry to 30 mins for ssm agent worker
+  * Switch installer package manager from rpm to yum on OSes that support yum
+  * Upgrade GoLang to version 1.21.8
+- from version 3.3.131.0
+  * Add integration tests for control channel and data channel module
+  * Remove data channel and control channel acknowledgement
+    functionality in MGS Interactor
+- from version 3.2.2303.0
+  * Add integration tests for control channel module
+  * Revert data channel and control channel acknowledgement
+    functionality in MGS Interactor
+  * Update Greengrass component minor version to 1.2.4
+
+-------------------------------------------------------------------
 Tue Feb 13 14:11:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.40.0
