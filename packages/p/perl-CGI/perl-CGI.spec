@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CGI
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,10 @@
 
 %define cpan_name CGI
 Name:           perl-CGI
-Version:        4.600.0
+Version:        4.640.0
 Release:        0
-%define cpan_version 4.60
+# 4.64 -> normalize -> 4.640.0
+%define cpan_version 4.64
 License:        Artistic-2.0
 Summary:        Handle Common Gateway Interface requests and responses
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -34,9 +35,11 @@ BuildRequires:  perl(HTML::Entities) >= 3.69
 BuildRequires:  perl(Test::More) >= 0.98
 BuildRequires:  perl(Test::NoWarnings)
 BuildRequires:  perl(Test::Warn) >= 0.3
+BuildRequires:  perl(URI) >= 1.76
 BuildRequires:  perl(parent) >= 0.225
 Requires:       perl(File::Temp) >= 0.17
 Requires:       perl(HTML::Entities) >= 3.69
+Requires:       perl(URI) >= 1.76
 Requires:       perl(parent) >= 0.225
 Provides:       perl(CGI)
 Provides:       perl(CGI::Carp) = %{version}
@@ -46,9 +49,9 @@ Provides:       perl(CGI::HTML::Functions)
 Provides:       perl(CGI::MultipartBuffer)
 Provides:       perl(CGI::Pretty) = %{version}
 Provides:       perl(CGI::Push)
-Provides:       perl(CGI::Util) = 4.590.0
+Provides:       perl(CGI::Util) = %{version}
 Provides:       perl(Fh) = %{version}
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
