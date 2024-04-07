@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 22 18:36:41 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Remove fix-test.patch, fixed upstream
+
+-------------------------------------------------------------------
+Sun Jan 21 03:07:12 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.204
+   see /usr/share/doc/packages/perl-Email-Valid/Changes
+
+  1.204     2024-01-20 16:40:53-05:00 America/New_York
+          - replace IO::CaptureOutput with Capture::Tiny (thanks, Jim Keenan)
+          - fix detection of null MX (thanks, Arne Johannessen)
+
+-------------------------------------------------------------------
 Wed Aug 24 09:33:38 UTC 2022 - Tina Müller <tina.mueller@suse.com>
 
 - Add fix-test.patch, see

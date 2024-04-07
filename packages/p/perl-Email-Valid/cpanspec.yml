@@ -4,9 +4,7 @@
 #sources:
 #  - source1
 #  - source2
-patches:
-  # https://github.com/Perl-Email-Project/Email-Valid/issues/53
-  fix-test.patch: -p1
+#patches:
 #  bar.patch:
 #preamble: |-
 # BuildRequires:  gcc-c++

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Email-Valid
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,29 @@
 
 %define cpan_name Email-Valid
 Name:           perl-Email-Valid
-Version:        1.203
+Version:        1.204.0
 Release:        0
+# 1.204 -> normalize -> 1.204.0
+%define cpan_version 1.204
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Check validity of Internet email addresses
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-Patch0:         fix-test.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(IO::CaptureOutput)
+BuildRequires:  perl(Capture::Tiny)
 BuildRequires:  perl(Mail::Address)
 BuildRequires:  perl(Net::DNS)
 BuildRequires:  perl(Net::Domain::TLD) >= 1.65
 BuildRequires:  perl(Test::More) >= 0.96
-Requires:       perl(IO::CaptureOutput)
+Requires:       perl(Capture::Tiny)
 Requires:       perl(Mail::Address)
 Requires:       perl(Net::DNS)
 Requires:       perl(Net::Domain::TLD) >= 1.65
+Provides:       perl(Email::Valid) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -49,7 +52,7 @@ deliverable without attempting delivery (for details, see at
 http://perldoc.perl.org/perlfaq9.html#How-do-I-check-a-valid-mail-address).
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
