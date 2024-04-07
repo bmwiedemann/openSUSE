@@ -68,4 +68,20 @@
     Refer to :ref:`installation` docs.</comment>
     <requestid>1142778</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>74e8538af8b765abf8ffa811c6bbafb9</srcmd5>
+    <version>3.3.7</version>
+    <time>1712520708</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.3.7:
+  * Pass :meth:`~import_export.mixins.BaseExportMixin.get_export_
+    resource_kwargs` to Resource constructor
+    :meth:`~import_export.admin.ExportMixin.export_action`
+  * Fix issue with model class passed to Resource constructor
+    crashing on export
+  * Fix indentation for skip_row docstring
+  * Return kwargs` by default from :meth:`~import_export.mixins.B
+    aseImportExportMixin.get_resource_kwargs`</comment>
+    <requestid>1165877</requestid>
+  </revision>
 </revisionlist>

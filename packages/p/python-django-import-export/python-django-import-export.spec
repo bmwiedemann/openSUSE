@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-import-export
-Version:        3.3.6
+Version:        3.3.7
 Release:        0
 Summary:        Django data importing and exporting
 License:        BSD-2-Clause

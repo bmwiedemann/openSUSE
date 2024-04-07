@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr  6 19:39:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.7:
+  * Pass :meth:`~import_export.mixins.BaseExportMixin.get_export_
+    resource_kwargs` to Resource constructor
+    :meth:`~import_export.admin.ExportMixin.export_action`
+  * Fix issue with model class passed to Resource constructor
+    crashing on export
+  * Fix indentation for skip_row docstring
+  * Return kwargs` by default from :meth:`~import_export.mixins.B
+    aseImportExportMixin.get_resource_kwargs`
+
+-------------------------------------------------------------------
 Tue Jan 30 12:23:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.6:
