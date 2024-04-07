@@ -18,9 +18,10 @@
 
 %define cpan_name UUID
 Name:           perl-UUID
-Version:        0.320.0
+Version:        0.330.0
 Release:        0
-%define cpan_version 0.32
+# 0.33 -> normalize -> 0.330.0
+%define cpan_version 0.33
 License:        Artistic-2.0
 Summary:        Universally Unique Identifier library for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -29,9 +30,12 @@ Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CPAN::Meta)
-BuildRequires:  perl(Devel::CheckLib)
-BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
-BuildRequires:  perl(Text::Patch)
+BuildRequires:  perl(Devel::CheckLib) >= 1.14
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.06
+BuildRequires:  perl(List::Util) >= 1.29
+BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(Try::Tiny)
+BuildRequires:  perl(version) >= 0.77
 Provides:       perl(UUID) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
@@ -48,11 +52,15 @@ communication between the servers, and without fear of a name clash.
 The generated UUIDs can be reasonably expected to be unique within a
 system, and unique across all systems, and are compatible with those
 created by the Open Software Foundation (OSF) Distributed Computing
-Environment (DCE) utility uuidgen.
+Environment (DCE).
 
-All generated UUIDs are either type 1 from *UUID::generate_time()*, or type
-4 from *UUID::generate_random()*. And all are variant 1, meaning compliant
-with the OSF DCE standard as described in RFC4122.
+All generated UUIDs are either version 1, 4, 6, or version 7. And all are
+variant 1, meaning compliant with the OSF DCE standard as described in
+RFC4122.
+
+Versions 6, 7, and 8 are not standardized. They are presented here as
+proposed in RFC4122bis, version 14, and may change in the future.
+RFC4122bis is noted to replace RFC4122, if approved.
 
 %prep
 %autosetup  -n %{cpan_name}-%{cpan_version}
@@ -70,7 +78,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README util
+%doc Changes NOTES README
 %license LICENSE
 
 %changelog
