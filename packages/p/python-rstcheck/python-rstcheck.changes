@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr  6 12:24:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.1:
+  * Remove unused pre python 3.8 compatibility code
+  * Drop support for sphinx v4
+  * Added `__main__.py` to enable command-line execution via
+    python -m rstcheck
+
+-------------------------------------------------------------------
 Thu Mar  7 04:27:59 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 6.2.0:
