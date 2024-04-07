@@ -1,7 +1,7 @@
 #
 # spec file for package libayatana-appindicator
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,13 @@
 %define sover 1
 %bcond_without mono
 Name:           libayatana-appindicator
-Version:        0.5.91
+Version:        0.5.93
 Release:        0
 Summary:        Ayatana application indicators library
 License:        GPL-3.0-only AND LGPL-2.0-only AND LGPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://github.com/AyatanaIndicators/libayatana-appindicator
-Source:         https://github.com/AyatanaIndicators/libayatana-appindicator/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/AyatanaIndicators/libayatana-appindicator/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE libayatana-appindicator-fix-mono-dir.patch hrvoje.senjan@gmail.com -- Fix location of .pc files.
 Patch0:         libayatana-appindicator-fix-mono-dir.patch
 BuildRequires:  cmake
@@ -140,29 +140,29 @@ appindicator%{?psuffix} library.
 
 %files -n libayatana-appindicator%{?psuffix:%{psuffix}-}%{sover}
 %license COPYING*
-%doc README
+%doc README.md ChangeLog
 %{_libdir}/libayatana-appindicator%{?psuffix}.so.%{sover}*
 
 %files -n typelib-1_0-AyatanaAppIndicator%{?psuffix}-0_1
 %license COPYING*
-%doc README
+%doc README.md
 %{_libdir}/girepository-1.0/AyatanaAppIndicator%{?psuffix}-0.1.typelib
 
 %if %{with mono}
 %files -n ayatana-appindicator%{?psuffix}-sharp
 %license COPYING*
-%doc README
+%doc README.md
 %{_libdir}/ayatana-appindicator%{?psuffix}-sharp-0.1/
 
 %files -n ayatana-appindicator%{?psuffix}-sharp-devel
 %license COPYING*
-%doc README
+%doc README.md
 %{_libdir}/pkgconfig/ayatana-appindicator%{?psuffix}-sharp-0.1.pc
 %endif
 
 %files -n libayatana-appindicator%{?psuffix}-devel
 %license COPYING*
-%doc README
+%doc README.md
 %{_includedir}/libayatana-appindicator%{?psuffix}-0.1/
 %{_libdir}/libayatana-appindicator%{?psuffix}.so
 %{_libdir}/pkgconfig/ayatana-appindicator%{?psuffix}-0.1.pc
