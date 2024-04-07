@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 28 04:03:13 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update tls to version 2.0.2.
+  ## Version 2.0.2
+
+  * Client checks sessionMaxEarlyDataSize to decide 0-RTT
+  * Client checks the resumption cipher properly.
+
+-------------------------------------------------------------------
+Tue Mar 26 05:57:23 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update tls to version 2.0.1 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Mar  1 03:31:34 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update tls to version 2.0.1 revision 1.
