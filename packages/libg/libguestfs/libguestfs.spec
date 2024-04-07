@@ -33,6 +33,8 @@ Source101:      README
 
 # Patches
 Patch1:         use-rtc-driftfix-slew-for-x86-only.patch
+Patch2:         Split-chown-parameter-on-character.patch
+Patch3:         Initialise-bar-fp-as-NULL.patch
 
 BuildRequires:  bison
 BuildRequires:  file-devel

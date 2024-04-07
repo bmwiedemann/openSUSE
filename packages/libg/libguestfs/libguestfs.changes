@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 29 13:13:41 MDT 2024 - carnold@suse.com
+
+- Upstream bug fixes
+  Split-chown-parameter-on-character.patch
+  Initialise-bar-fp-as-NULL.patch
+
+-------------------------------------------------------------------
 Mon Feb  5 14:24:08 MST 2024 - carnold@suse.com
 
 - bsc#1206361 - SLES 15 SP5 Beta2 - virt-customize ssh-inject fails
