@@ -16,10 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-msrestazure
 Version:        0.6.4
 Release:        0
@@ -29,14 +26,17 @@ Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/msrestazure
 Source:         https://files.pythonhosted.org/packages/source/m/msrestazure/msrestazure-%{version}.tar.gz
 Source1:        LICENSE.md
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-adal < 2.0.0
-Requires:       python-adal >= 0.6.0
-Requires:       python-msrest < 2.0.0
-Requires:       python-msrest >= 0.6.0
 Requires:       python-six
+Requires:       (python-adal >= 0.6.0 with python-adal < 2.0.0)
+Requires:       (python-msrest >= 0.6.0 with python-msrest < 2.0.0)
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-msrestazure < 0.6.4
+%endif
 BuildArch:      noarch
 
 %python_subpackages
@@ -49,17 +49,16 @@ AutoRest swagger generator Python client runtime. Azure-specific module.
 cp %{SOURCE1} LICENSE.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files  %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE.md
 %{python_sitelib}/msrestazure
-%{python_sitelib}/msrestazure-*.egg-info
+%{python_sitelib}/msrestazure-*.dist-info
 
 %changelog
