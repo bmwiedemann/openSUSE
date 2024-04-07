@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Pod-AsciiDoctor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Pod-AsciiDoctor
 Name:           perl-Pod-AsciiDoctor
-Version:        0.102001
+Version:        0.102002
 Release:        0
 License:        Apache-2.0
 Summary:        Convert from POD to AsciiDoc
@@ -28,7 +28,7 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build) >= 0.280000
+BuildRequires:  perl(Module::Build) >= 0.28
 BuildRequires:  perl(Path::Tiny)
 BuildRequires:  perl(Pod::Parser) >= 1.65
 BuildRequires:  perl(Test::More) >= 0.88
