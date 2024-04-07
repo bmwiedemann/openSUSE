@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mixedreality-authentication
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+
+%{?sle15_python_module_pythons}
 Name:           python-azure-mixedreality-authentication
 Version:        1.0.0b1
 Release:        0
@@ -30,16 +28,19 @@ Source:         https://files.pythonhosted.org/packages/source/a/azure-mixedreal
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-mixedreality-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.4.0
-Requires:       python-msrest >= 0.5.0
 Requires:       python-azure-mixedreality-nspkg >= 1.0.0
+Requires:       python-msrest >= 0.5.0
+Requires:       (python-azure-core >= 1.4.0 with python-azure-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
-
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-azure-mixedreality-authentication < 1.0.0b1
+%endif
 BuildArch:      noarch
 
 %python_subpackages
@@ -56,10 +57,10 @@ token from the STS that can be used to access Mixed Reality services.
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-mixedreality-authentication-%{version}
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %{python_expand # delete common files
 rm -rf %{buildroot}%{$python_sitelib}/azure/mixedreality/__init__.*
@@ -69,10 +70,9 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 }
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/mixedreality/authentication
-%{python_sitelib}/azure_mixedreality_authentication-*.egg-info
+%{python_sitelib}/azure_mixedreality_authentication-*.dist-info
 
 %changelog
