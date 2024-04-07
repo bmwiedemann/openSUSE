@@ -27,7 +27,13 @@ Summary(de):    Ein RSA-Schlüssel- und -Zertifikat-Managementprogramm
 URL:            https://www.hohnstaedt.de/xca/
 Source:         https://github.com/chris2511/xca/releases/download/RELEASE.%{version}/%{name}-%{version}.tar.gz
 Patch0:         %{name}-desktop.patch
-BuildRequires:  gcc-c++
+%if 0%{?suse_version} <= 1600
+BuildRequires: gcc12
+BuildRequires: gcc12-c++
+%else
+BuildRequires: gcc
+BuildRequires: gcc-c++
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
 BuildRequires:  libtool
@@ -76,6 +82,10 @@ Bash completion script for %{name}.
 %autopatch -p1
 
 %build
+%if 0%{?suse_version} <= 1600
+export CC=gcc-12
+export CXX=g++-12
+%endif
 %if 0%{?suse_version} <= 1600
 %cmake
 %cmake_build
