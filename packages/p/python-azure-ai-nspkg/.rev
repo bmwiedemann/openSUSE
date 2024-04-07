@@ -25,4 +25,20 @@
   + Use canonical %{python_sitelib} path in %files section (forwarded request 864339 from glaubitz)</comment>
     <requestid>864386</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7841cd463f94c659e09d9f0e81106045</srcmd5>
+    <version>1.0.0</version>
+    <time>1712520333</time>
+    <user>anag+factory</user>
+    <comment>- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Add Obsoletes for old python3 package on SLE-15
+  + Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+  + Update name for dist directory in %files section (forwarded request 1164625 from glaubitz)</comment>
+    <requestid>1165024</requestid>
+  </revision>
 </revisionlist>
