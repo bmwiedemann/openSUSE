@@ -660,4 +660,18 @@
     concerns.</comment>
     <requestid>1159130</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>67f8e60c25500ff108c6a7ce92386b62</srcmd5>
+    <version>25.1.0</version>
+    <time>1712520283</time>
+    <user>anag+factory</user>
+    <comment>- update to 25.1.0:
+  * Replace ExceptionRaisedContext with ExceptionTrap.
+  * When completion is unavailable, exit with non-zero status and
+    emit message to stderr.
+  * Removed check for config in XDG_DATA_HOME on Linux systems.
+  * In platform config support, remove support for Windows XP,
+    now 10 years sunset.</comment>
+    <requestid>1165958</requestid>
+  </revision>
 </revisionlist>

@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-keyring%{psuffix}
-Version:        24.3.1
+Version:        25.1.0
 Release:        0
 Summary:        System keyring service access from Python
 License:        MIT
@@ -41,6 +41,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-SecretStorage >= 3.2
 Requires:       python-jaraco.classes
+Requires:       python-jaraco.context
+Requires:       python-jaraco.functools
 Requires:       python-jeepney >= 0.4.2
 Requires(post): update-alternatives
 Requires(postun): update-alternatives

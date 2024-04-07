@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr  6 19:38:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 25.1.0:
+  * Replace ExceptionRaisedContext with ExceptionTrap.
+  * When completion is unavailable, exit with non-zero status and
+    emit message to stderr.
+  * Removed check for config in XDG_DATA_HOME on Linux systems.
+  * In platform config support, remove support for Windows XP,
+    now 10 years sunset.
+
+-------------------------------------------------------------------
 Sat Mar 16 09:03:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.3.1:
