@@ -33,4 +33,22 @@
 - Remove temporary version override (forwarded request 926570 from glaubitz)</comment>
     <requestid>926584</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1976f4aa0d4cf23a9a93f8b018db3891</srcmd5>
+    <version>1.1.0</version>
+    <time>1712520491</time>
+    <user>anag+factory</user>
+    <comment>- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Add Obsoletes for old python3 package on SLE-15
+  + Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+  + Update name for dist directory in %files section
+- Drop setting default file attributes in %files section
+- Use modern RPM macros to express version dependencies (forwarded request 1164803 from glaubitz)</comment>
+    <requestid>1165199</requestid>
+  </revision>
 </revisionlist>
