@@ -207,4 +207,34 @@
   * Fix #976 from envvars parse True/False as booleans (#983)</comment>
     <requestid>1137645</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0f78df1cd5e371a7e4d3b611f0366aeb</srcmd5>
+    <version>3.2.5</version>
+    <time>1712520704</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.5:
+  * `_bypass_evaluation` showing in end-user settings (#1071).
+  * dependabot alert 21 about Django (on tests) (#1067).
+  * include load with relative root path (#1049).
+  * Add `@get` converter to alias existing keys (#1040).
+  * fix wrong info about validation trigger on insantiation
+  * fix incorrect combination of TOML table and inline table
+  * Fix mkdocs warnings for cleaner build output (#1061).
+  * Add dynaconf API to docs with mkdocstrings (#1058).
+  * fix argument `env` in Validation at validation.md (#1051).
+  * fix click help syntax error (#1041).
+  * replace dead link to flask subclassing page (#1031).
+  * Add explicit Dynaconf instantiation to sample code (#1022).
+  * Fix the syntax errors in the sample program. (#1027).
+  * Replace lint and formatting tools with ruff (#1074).
+  * Replace/Update release script (#1078).
+  * add &quot;typos&quot; tool and run it in codebase/docs (#1063).
+  * fix create-release-commit.sh permission.
+  * fix shell script in release.yml (2).
+  * fix shell script in release.yml.
+  * move release workflow to GitHub actions (partial) (#1043).
+  * Fix misspelled variable name (#1032).
+  * Fix misspelled GitHub action names on main.yml (#1033).</comment>
+    <requestid>1165872</requestid>
+  </revision>
 </revisionlist>

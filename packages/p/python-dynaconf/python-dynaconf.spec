@@ -17,7 +17,7 @@
 
 
 Name:           python-dynaconf
-Version:        3.2.4
+Version:        3.2.5
 Release:        0
 Summary:        The dynamic configurator for your Python Project
 License:        MIT
@@ -37,7 +37,7 @@ Requires:       python-setuptools
 Requires:       python-toml
 Suggests:       python-Django
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django}
