@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 22 16:33:49 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.278
+   see /usr/share/doc/packages/perl-PPI/Changes
+
+  1.278   2024-03-11 02:20:06Z
+  	- Add support for new octal number syntax (GH#295) (Branislav Branislav
+        Zahradník)
+
+-------------------------------------------------------------------
 Fri Mar  8 22:55:48 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides
