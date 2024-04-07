@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 22 16:18:14 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.36
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.36  2024-03-06
+    - Updated Bootstrap from version 4 to 5. (sergiotarxz)
+    - Improved Morbo to restart on deleted files. (hernan604)
+
+-------------------------------------------------------------------
 Fri Mar  8 22:43:58 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides
