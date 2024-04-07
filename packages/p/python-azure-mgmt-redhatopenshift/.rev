@@ -91,4 +91,22 @@
     CHANGELOG.md file provided with this package (forwarded request 1116416 from glaubitz)</comment>
     <requestid>1116428</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>502561275400af4a99832f8be5796216</srcmd5>
+    <version>1.4.0</version>
+    <time>1712520545</time>
+    <user>anag+factory</user>
+    <comment>- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Add Obsoletes for old python3 package on SLE-15
+  + Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+  + Update name for dist directory in %files section
+- Drop setting default file attributes in %files section
+- Use modern RPM macros to express version dependencies (forwarded request 1164862 from glaubitz)</comment>
+    <requestid>1165256</requestid>
+  </revision>
 </revisionlist>
