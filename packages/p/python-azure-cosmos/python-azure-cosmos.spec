@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-cosmos
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-azure-cosmos
 Version:        4.5.1
 Release:        0
@@ -29,14 +26,17 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cosmos/azure-cosmos-%{version}.tar.gz
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.23.0
 Requires:       python-azure-nspkg >= 3.0.0
+Requires:       (python-azure-core >= 1.23.0 with python-azure-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
-
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-azure-cosmos < 4.5.1
+%endif
 BuildArch:      noarch
 
 %python_subpackages
@@ -50,10 +50,10 @@ see the Microsoft Azure [link](https://docs.microsoft.com/en-us/azure/cosmos-db/
 %setup -q -n azure-cosmos-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %{python_expand # delete common files
 rm -rf %{buildroot}%{$python_sitelib}/azure/__init__.*
@@ -61,10 +61,9 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 }
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc CHANGELOG.md README.md
 %license LICENSE
 %{python_sitelib}/azure/cosmos
-%{python_sitelib}/azure_cosmos-*.egg-info
+%{python_sitelib}/azure_cosmos-*.dist-info
 
 %changelog
