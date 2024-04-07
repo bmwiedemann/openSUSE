@@ -567,4 +567,13 @@
   * Use importlib.metadata on Python 3.10+</comment>
     <requestid>1138686</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>6999baeee0bda6bd233a911b6649c9ca</srcmd5>
+    <version>4.6.0</version>
+    <time>1712520791</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.6.0:
+  * Test python 3.10 and 3.11</comment>
+    <requestid>1165942</requestid>
+  </revision>
 </revisionlist>
