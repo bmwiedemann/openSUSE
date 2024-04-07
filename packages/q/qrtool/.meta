@@ -1,0 +1,6 @@
+<package name="qrtool" project="openSUSE:Factory">
+  <title>An utility for encoding or decoding QR code </title>
+  <description>qrtool is a command-line utility for encoding or decoding QR code.</description>
+  <devel project="X11:Utilities" package="qrtool"/>
+  <url>https://github.com/sorairolake/qrtool</url>
+</package>
