@@ -16,10 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-azure-sdk
 Version:        4.0.0
 Release:        0
@@ -157,7 +154,6 @@ Requires:       python-azure-storage-file-datalake
 Requires:       python-azure-storage-file-share
 Requires:       python-azure-storage-nspkg
 Requires:       python-azure-storage-queue
-Requires:       python-azure-synapse
 Requires:       python-azure-synapse-accesscontrol
 Requires:       python-azure-synapse-artifacts
 Requires:       python-azure-synapse-managedprivateendpoints
@@ -168,6 +164,9 @@ Requires:       python-azure-template
 Requires:       python-msal
 Requires:       python-msal-extensions
 Requires:       python-msrest
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-azure-sdk < 4.0.0
+%endif
 BuildArch:      noarch
 %python_subpackages
 
