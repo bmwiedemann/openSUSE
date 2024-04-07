@@ -24,4 +24,21 @@
   + Switch to explicit namespace packages on Python 3 (PEP 420) (forwarded request 864364 from glaubitz)</comment>
     <requestid>864419</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3e4b52a2c5e9bc6106bbf434d5b760da</srcmd5>
+    <version>1.0.0</version>
+    <time>1712520402</time>
+    <user>anag+factory</user>
+    <comment>- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Add Obsoletes for old python3 package on SLE-15
+  + Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+  + Update name for dist directory in %files section
+- Drop setting default file attributes in %files section (forwarded request 1164704 from glaubitz)</comment>
+    <requestid>1165103</requestid>
+  </revision>
 </revisionlist>
