@@ -22,7 +22,7 @@
 %endif
 
 Name:           grafana
-Version:        10.3.3
+Version:        10.3.5
 Release:        0
 Summary:        The open-source platform for monitoring and observability
 License:        AGPL-3.0-only
@@ -38,7 +38,6 @@ Source4:        Makefile
 Source5:        0001-Add-source-code-reference.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
-BuildRequires:  golang-packaging
 BuildRequires:  wire
 BuildRequires:  golang(API) >= 1.21
 Requires(post): %fillup_prereq
@@ -63,29 +62,21 @@ dashboards and data with teams.
 %setup -q -T -D -a 1 -n grafana-%{version}
 
 %build
-%goprep github.com/grafana/grafana
-# Manual build in order to inject ldflags so grafana correctly displays
-# the version in the footer of each page.  Note that we're only injecting
-# main.version, not main.commit or main.buildstamp as is done in the upstream
-# build.go, because we don't have access to the git commit history here.
-# (The %%gobuild macro can't take quoted strings; they get split up when
-# expanded to $extra_flags in process_build() in /usr/lib/rpm/golang.sh.)
-export IMPORTPATH="github.com/grafana/grafana"
-export BUILDFLAGS="-v -p 4 -x -buildmode=pie -mod=vendor"
-export GOPATH=%{_builddir}/go:%{_builddir}/contrib
-export GOBIN=%{_builddir}/go/bin
-wire gen -tags 'oss' ./pkg/server ./pkg/cmd/grafana-cli/runner
-go install $BUILDFLAGS -ldflags '-X main.version=%{version}' $IMPORTPATH/pkg/cmd/...
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
+wire gen -tags 'oss' ./pkg/server
+go build -o . -ldflags '-X main.version=%{version}' ./pkg/cmd/...
 
 %install
-%goinstall
 
 # install binaries and service
+install -Dm755 %{name} %{buildroot}%{_libexecdir}/%{name}/%{name}
+install -Dm755 %{name}-server %{buildroot}%{_libexecdir}/%{name}/%{name}-server
+install -Dm755 %{name}-cli %{buildroot}%{_libexecdir}/%{name}/%{name}-cli
 install -Dm644 {packaging/rpm/systemd/,%{buildroot}%{_unitdir}/}%{name}-server.service
 install -dm755 %{buildroot}%{_sbindir}
-install -dm755 %{buildroot}%{_libexecdir}/%{name}
 install -m755 --target-directory=%{buildroot}%{_sbindir} packaging/wrappers/%{name}*
-mv --target-directory=%{buildroot}%{_libexecdir}/%{name} %{buildroot}/%{_bindir}/%{name}*
 
 # create "rc symlink" (https://en.opensuse.org/openSUSE:Systemd_packaging_guidelines#rc_symlink)
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-server

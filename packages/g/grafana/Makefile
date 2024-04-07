@@ -10,7 +10,7 @@ clean:
 	rm -f $(NAME)-*.tar $(NAME)-*.tar.gz
 
 tar:
-	osc service disabledrun
+	osc service manualrun
 	@version=$$( awk '/^Version:/ {print $$2}' $(SPEC) ) && \
 	echo "Package version is $$version" && \
 	basename=$(NAME)-$$version && \

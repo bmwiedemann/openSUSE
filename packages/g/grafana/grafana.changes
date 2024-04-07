@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Apr 03 09:07:16 UTC 2024 - witold.bedyk@suse.com
+
+- Packaging improvements:
+  * Changed deprecated `disabled` service mode to `manual`
+  * Drop golang-packaging macros
+  * Drop explicit mod=vendor as it is enabled automatically
+
+- Update to version 10.3.5:
+  Bugfixes:
+  * Security CVE-2024-1313: Require same organisation when
+    deleting snapshots (bsc#1222155)
+  * Alerting: Marshal incoming json.RawMessage in diff
+  * Postgres: Allow disabling SNI on SSL-enabled connections
+  * Elasticsearch: Fix legend for alerting, expressions and
+    previously frontend queries
+  * Alerting: Fix preview getting the correct queries from the form
+  * Dashboard: Fix issue where out-of-view shared query panels
+    caused blank dependent panels
+
+- Update to version 10.3.4:
+  Breaking change:
+  * Domain validation between the response token id `hd` claim and
+    the `allowed_domains` configuration setting for Google OAuth
+    has been improved. This feature can be disabled through the
+    configuration toggle `validate_hd`. Anyone using the legacy
+    Google OAuth configuration should disable this validation if
+    the ID Token response doesn't have the HD parameter.
+
+  Bugfixes:
+  * LDAP: Fix LDAP users authenticated via auth proxy not being
+    able to use LDAP active sync
+  * Tempo: Add template variable interpolation for filters
+  * Elasticsearch: Fix adhoc filters not applied in frontend mode
+  * Dashboards: Fixes issue where panels would not refresh if time
+    range updated while in panel view mode
+  * AuthProxy: Invalidate previous cached item for user when
+    changes are made to any header
+  * LibraryPanels/RBAC: Fix issue where folder scopes weren't being
+    correctly inherited
+  * LibraryPanels: Fix issue with repeated library panels
+  * Plugins: Don't auto prepend app sub url to plugin asset paths
+  * Elasticsearch: Set middlewares from Grafana's
+    httpClientProvider
+  * Folders: Fix failure to update folder in SQLite
+  * Loki/Elastic: Assert queryfix value to always be string
+
+-------------------------------------------------------------------
 Thu Feb 29 11:25:49 UTC 2024 - daniel@molkentin.de
 
 - Update to version 10.3.3:
