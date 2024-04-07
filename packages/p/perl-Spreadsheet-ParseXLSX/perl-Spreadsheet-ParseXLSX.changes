@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar 22 16:38:21 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.35
+   see /usr/share/doc/packages/perl-Spreadsheet-ParseXLSX/Changes
+
+  0.35  2024-03-19
+        - don't rely on use mro (#14)
+  0.34  2024-03-13
+        - Merge pull request #13 from nrdvana/master
+        - Fix memory leak between Sheet and Cell, and related to XML::Twig
+        - Unit test to verify workbook garbage collection
+  0.33  2024-03-08
+        - performance fix computing merged cells
+  0.32  2024-03-08
+        - Require minimum version of Archive::Zip
+
+-------------------------------------------------------------------
 Fri Mar  8 23:04:21 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

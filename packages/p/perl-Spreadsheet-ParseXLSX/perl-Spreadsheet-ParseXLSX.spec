@@ -18,9 +18,10 @@
 
 %define cpan_name Spreadsheet-ParseXLSX
 Name:           perl-Spreadsheet-ParseXLSX
-Version:        0.310.0
+Version:        0.350.0
 Release:        0
-%define cpan_version 0.31
+# 0.35 -> normalize -> 0.350.0
+%define cpan_version 0.35
 License:        MIT
 Summary:        Parse XLSX files
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -28,28 +29,34 @@ Source0:        https://cpan.metacpan.org/authors/id/N/NU/NUDDLEGG/%{cpan_name}-
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Archive::Zip)
+BuildRequires:  perl(Archive::Zip) >= 1.34
 BuildRequires:  perl(Crypt::Mode::CBC)
 BuildRequires:  perl(Crypt::Mode::ECB)
 BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(Graphics::ColorUtils)
 BuildRequires:  perl(OLE::Storage_Lite)
 BuildRequires:  perl(Spreadsheet::ParseExcel)
+BuildRequires:  perl(Spreadsheet::ParseExcel::Cell)
 BuildRequires:  perl(Spreadsheet::ParseExcel::Utility)
+BuildRequires:  perl(Spreadsheet::ParseExcel::Worksheet)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(XML::Twig)
-Requires:       perl(Archive::Zip)
+Requires:       perl(Archive::Zip) >= 1.34
 Requires:       perl(Crypt::Mode::CBC)
 Requires:       perl(Crypt::Mode::ECB)
 Requires:       perl(Digest::SHA)
 Requires:       perl(Graphics::ColorUtils)
 Requires:       perl(OLE::Storage_Lite)
 Requires:       perl(Spreadsheet::ParseExcel)
+Requires:       perl(Spreadsheet::ParseExcel::Cell)
+Requires:       perl(Spreadsheet::ParseExcel::Worksheet)
 Requires:       perl(XML::Twig)
 Provides:       perl(Spreadsheet::ParseXLSX) = %{version}
+Provides:       perl(Spreadsheet::ParseXLSX::Cell) = %{version}
 Provides:       perl(Spreadsheet::ParseXLSX::Decryptor) = %{version}
 Provides:       perl(Spreadsheet::ParseXLSX::Decryptor::Agile) = %{version}
 Provides:       perl(Spreadsheet::ParseXLSX::Decryptor::Standard) = %{version}
+Provides:       perl(Spreadsheet::ParseXLSX::Worksheet) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 
