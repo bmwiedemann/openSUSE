@@ -76,4 +76,16 @@
   * Add section with `Known limitations / FAQ` to the README</comment>
     <requestid>1155784</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>01a2e2e6313fbbb3be48ab470019923c</srcmd5>
+    <version>6.2.1</version>
+    <time>1712520696</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.2.1:
+  * Remove unused pre python 3.8 compatibility code
+  * Drop support for sphinx v4
+  * Added `__main__.py` to enable command-line execution via
+    python -m rstcheck</comment>
+    <requestid>1165817</requestid>
+  </revision>
 </revisionlist>
