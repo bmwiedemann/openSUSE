@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-core-experimental
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,12 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define realversion 1.0.0b3
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-azure-core-experimental
 Version:        1.0.0~b3
 Release:        0
@@ -30,18 +28,21 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-core-experimental/azure-core-experimental-%{realversion}.zip
 Source1:        LICENSE.txt
-BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
-BuildRequires:  %{python_module azure-core >= 1.25.0}
 BuildRequires:  %{python_module azure-core < 2.0.0}
+BuildRequires:  %{python_module azure-core >= 1.25.0}
+BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-azure-core >= 1.25.0
-Requires:       python-azure-core < 2.0.0
 Requires:       python-azure-nspkg >= 3.0.0
+Requires:       (python-azure-core >= 1.25.0 with python-azure-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
-
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-azure-core-experimental < 1.0.0~b3
+%endif
 BuildArch:      noarch
 
 %python_subpackages
@@ -58,10 +59,10 @@ to use azure core experimental library in production environment.
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-core-experimental-%{realversion}
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %{python_expand # delete common files
 rm -rf %{buildroot}%{$python_sitelib}/azure/__init__.*
@@ -69,10 +70,9 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 }
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/core/experimental
-%{python_sitelib}/azure_core_experimental-*.egg-info
+%{python_sitelib}/azure_core_experimental-*.dist-info
 
 %changelog
