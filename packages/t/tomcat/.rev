@@ -1011,4 +1011,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>Require(post) util-linux in packages that have script running runuser</comment>
     <requestid>1155428</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>d68f6fd9d7bd5158d59aa392ec48e91f</srcmd5>
+    <version>9.0.87</version>
+    <time>1712520672</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1165770</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Fri Apr  5 14:24:14 UTC 2024 - Ricardo Mestre <ricardo.mestre@suse.com>
+
+- Update to Tomcat 9.0.87
+  * Fixed CVEs:
+    + CVE-2024-24549: Improved request header validation for HTTP/2 stream 
+      (bsc#1221386)
+    + CVE-2024-23672: Ensure that WebSocket connection closure completes if 
+      the connection is closed when the server side has used the proprietary 
+      suspend/resume feature to suspend the connection (bsc#1221385)
+  * Catalina
+    + Fix:  Minor performance improvement for building filter chains. Based 
+      on ideas from #702 by Luke Miao. (remm)
+    + Fix:  Align error handling for Writer and OutputStream. Ensure use of 
+      either once the response has been recycled triggers a 
+      NullPointerException provided that discardFacades is configured with 
+      the default value of true. (markt)
+    + Fix:  68692: The standard thread pool implementations that are configured
+      using the Executor element now implement ExecutorService for better 
+      support NIO2. (remm)
+    + Fix:  68495: When restoring a saved POST request after a successful FORM 
+      authentication, ensure that neither the URI, the query string nor the 
+      protocol are corrupted when restoring the request body. (markt)
+    + Fix:  68721: Workaround a possible cause of duplicate class definitions 
+      when using ClassFileTransformers and the transformation of a class also
+      triggers the loading of the same class. (markt)
+    + Fix:  The rewrite valve should not do a rewrite if the output is 
+      identical to the input. (remm)
+    + Update:  Add a new valveSkip (or VS) rule flag to the rewrite valve to 
+      allow skipping over the next valve in the Catalina pipeline. (remm)
+    + Fix:  Correct JPMS and OSGi meta-data for tomcat-enbed-core.jar by 
+      removing reference to org.apache.catalina.ssi package that is no longer 
+      included in the JAR. Based on pull request #684 by Jendrik Johannes. 
+      (markt)
+    + Fix:  Fix ServiceBindingPropertySource so that trailing \r\n sequences 
+      are correctly removed from files containing property values when 
+      configured to do so. Bug identified by Coverity Scan. (markt)
+    + Add:  Add improvements to the CSRF prevention filter including the 
+      ability to skip adding nonces for resource name and subtree URL patterns.
+      (schultz)
+    + Fix:  Review usage of debug logging and downgrade trace or data dumping 
+      operations from debug level to trace. (remm)
+    + Fix:  68089: Further improve the performance of request attribute 
+      access for ApplicationHttpRequest and ApplicationRequest. (markt)
+    + Fix:  68559: Allow asynchronous error handling to write to the 
+      response after an error during asynchronous processing. (markt)
+  * Coyote
+    + Fix:  Improve the HTTP/2 stream prioritisation process. If a stream 
+      uses all of the connection windows and still has content to write, it 
+      will now be added to the backlog immediately rather than waiting until 
+      the write  attempt for the remaining content. (markt)
+    + Fix:  Make asynchronous error handling more robust. Ensure that once 
+      a connection is marked to be closed, further asynchronous processing 
+      cannot change that. (markt)
+    + Fix:  Make asynchronous error handling more robust. Ensure that once 
+      the call to AsyncListener.onError() has returned to the container, only 
+      container threads can access the AsyncContext. This protects against 
+      various race conditions that woudl otherwise occur if application threads
+      continued to access the AsyncContext.
+    + Fix:  Review usage of debug logging and downgrade trace or data 
+      dumping operations from debug level to trace. In particular, most of the 
+      HTTP/2 debug logging has been changed to trace level. (remm)
+    + Fix:  Add support for user provided SSLContext instances configured 
+      on SSLHostConfigCertificate instances. Based on pull request #673 
+      provided by Hakan Altındağ. (markt)
+    + Fix:  Improve the Tomcat Native shutdown process to reduce the likelihood
+      of a JVM crash during Tomcat shutdown. (markt)
+    + Fix:  Partial fix for 68558: Cache the result of converting to String 
+      for request URI, HTTP header names and the request Content-Type value to 
+      improve performance by reducing repeated byte[] to String conversions. 
+      (markt)
+    + Fix:  Improve error reporting to HTTP/2 clients for header processing 
+      errors by reporting problems at the end of the frame where the error was 
+      detected rather than at the end of the headers. (markt)
+    + Fix:  Remove the remaining reference to a stream once the stream has 
+      been recycled. This makes the stream eligible for garbage collection 
+      earlier and thereby improves scalability. (markt)
+  * Jasper
+    + Add:  Add support for specifying Java 22 (with the value 22) as the 
+      compiler source and/or compiler target for JSP compilation. If used with 
+      an  Eclipse JDT compiler version that does not support these values, a 
+      warning will be logged and the default will used. (markt)
+    + Fix:  68546: Generate optimal size and types for JSP imports maps, as 
+      suggested by John Engebretson. (remm)
+    + Fix:  Review usage of debug logging and downgrade trace or data 
+      dumping operations from debug level to trace. (remm)
+  * Cluster
+    + Fix:  Avoid updating request count stats on async. (remm)
+  * WebSocket
+    + Fix:  Correct a regression in the fix for 66508 that could cause an 
+      UpgradeProcessor leak in some circumstances. (markt)
+    + Fix:  Review usage of debug logging and downgrade trace or data dumping
+      operations from debug level to trace. (remm)
+    + Fix:  Ensure that WebSocket connection closure completes if the 
+      connection is closed when the server side has used the proprietary 
+      suspend/resume feature to suspend the connection. (markt)
+  * Web applications
+    + Add:  Add support for responses in JSON format from the examples 
+      application RequestHeaderExample. (schultz)
+  * Other
+    + Add:  Improvements to French translations. (remm)
+    + Add:  Improvements to Japanese translations by tak7iji. (markt)
+    + Update:  Update Checkstyle to 10.13.0. (markt)
+    + Update:  Update JSign to 6.0. (markt)
+    + Update:  Add strings for debug level messages. (remm)
+    + Update:  Update Tomcat Native to 1.3.0. (markt)
+    + Add:  Improvements to French translations. (remm)
+    + Add:  Improvements to Japanese translations by tak7iji. (markt)
+
+-------------------------------------------------------------------
 Wed Mar  6 07:18:06 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Add missing Requires(post): util-linux to have runuser into post
