@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  5 08:37:19 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.14.7
+  * Skip rsa8192.badssl.com test to fix CI by @waahm7 in (#635)
+
+-------------------------------------------------------------------
 Fri Mar 22 09:27:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.14.6
