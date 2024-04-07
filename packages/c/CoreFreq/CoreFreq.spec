@@ -1,7 +1,7 @@
 #
 # spec file for package CoreFreq
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,21 @@
 
 
 Name:           CoreFreq
-Version:        1.96.5
+Version:        1.97.1
 Release:        0
 Summary:        CPU monitoring software for 64-bit processors
 License:        GPL-2.0-or-later
 URL:            https://github.com/cyring/CoreFreq
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source100:      corefreqd.service
+Source101:      preamble
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
 Requires:       CoreFreq-kmp
-ExclusiveArch:  x86_64
+ExclusiveArch:  x86_64 aarch64
 %systemd_ordering
-%kernel_module_package -x preempt
+%kernel_module_package -p preamble -x preempt 64kb
 
 %description
 A CPU monitoring software with BIOS-like functionalities for
@@ -47,6 +48,9 @@ Dhyana).
 %install
 export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=updates
+
+mkdir -p %{buildroot}%{_bindir} %{buildroot}%{_unitdir} %{buildroot}%{_sbindir}
+
 PREFIX=%{buildroot}%{_prefix} make install
 
 cp %{SOURCE100} %{buildroot}%{_unitdir}
@@ -73,5 +77,7 @@ ln -s service %{buildroot}%{_sbindir}/rccorefreqd
 
 %postun
 %service_del_postun corefreqd.service
+
+%check
 
 %changelog

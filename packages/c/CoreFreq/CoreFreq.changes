@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  5 20:44:18 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- added preamble file for %kernel_module_package macro
+- update to 1.97.1
+  * added aarch64 support
+  * upstream did not provide a summary changelog. Full list of commits:
+    https://github.com/cyring/CoreFreq/compare/1.96.5...1.97.1
+
+-------------------------------------------------------------------
 Sat Jul  1 08:52:38 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.96.5
