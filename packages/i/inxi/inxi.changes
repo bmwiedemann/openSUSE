@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 04 14:17:02 UTC 2024 - malcolmlewis@opensuse.org
+
+- Updated to version 3.3.33-1+3:
+  + A quick point release, one critical bug fix, and a few new
+    features and enhancements.
+  + Code cleanup.
+- Add service to pull from git and avoid tarball release.
+- Adjust spec file for service use.
+
+-------------------------------------------------------------------
 Wed Feb  7 12:32:44 UTC 2024 - malcolmlewis@opensuse.org
 
 - Updated to version 3.3.33:
