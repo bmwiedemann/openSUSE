@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr  5 14:18:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.0
+  ## New and updated wrappers
+  * Bugfix ab13bd by @KybernetikJo in #200
+  * Add ab04md by @KybernetikJo in #201
+  * Add sb10yd by @KybernetikJo in #203
+  * Implement MB02ED by @saasaa in #214
+  ## Maintenance and upkeep improvements
+  * Refactor init.py by @KybernetikJo in #205
+  * Change analysis.py to numpydoc style by @KybernetikJo in #206
+  * Change synthesis.py to numpydoc style by @KybernetikJo in #212
+  * Change math.py to numpydoc style by @KybernetikJo in #211
+  * Change transform.py to numpydoc style by @KybernetikJo in #213
+  * Enable Python 3.12, drop Python <3.9 by @bnavigator in #227
+  * Update to SLICOT v5.9 by @bnavigator in #231
+
+-------------------------------------------------------------------
 Thu Apr 27 19:50:47 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.5.4

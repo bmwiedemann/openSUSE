@@ -1,7 +1,7 @@
 #
 # spec file for package python-slycot
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           python-slycot
-Version:        0.5.4
+Version:        0.6.0
 Release:        0
 Summary:        A wrapper for the SLICOT control and systems library
 License:        BSD-3-Clause AND GPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/python-control/Slycot
 Source0:        https://files.pythonhosted.org/packages/source/s/slycot/slycot-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scikit-build >= 0.15}
