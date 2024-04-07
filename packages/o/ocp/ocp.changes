@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  5 09:31:30 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.109
+  Bugfix release
+  * Remove a gcc warning when compiling boot/psetting.c
+  * validate_xdg_dir_absolute() allocates a byte short when
+    building the string buffer in one of the code-paths.
+
+-------------------------------------------------------------------
 Mon Apr  1 19:23:06 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.2.108

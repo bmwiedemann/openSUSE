@@ -17,7 +17,7 @@
 
 
 Name:           ocp
-Version:        0.2.108
+Version:        0.2.109
 Release:        0
 Summary:        Open Cubic Player for MOD/S3M/XM/IT/MIDI music files
 # Code is GPL-2.0-or-later, Graphics and animations are CC-BY-3.0
@@ -109,6 +109,8 @@ mv license.txt license-videos.txt
 rm -Rv %{buildroot}%{_datadir}/doc/ocp/
 # install images and animations
 cp -pv CPPIC*.TGA CPANI*.DAT %{buildroot}%{_datadir}/%{name}/data
+
+%check
 
 %files
 %license COPYING license-images.txt license-videos.txt
