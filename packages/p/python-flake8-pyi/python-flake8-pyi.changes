@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr  7 09:02:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.3.1:
+  * Y064: Use simpler syntax to define final literal types.
+  * For example, use `x: Final = 42` instead of `x:
+    Final[Literal[42]]`
+  * Y065: Don't use bare `Incomplete` in parameter and return
+    annotations.
+  * Y090: Fix false positive for `tuple[Unpack[Ts]]`.
+
+-------------------------------------------------------------------
 Mon Mar 25 17:31:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.3.0:

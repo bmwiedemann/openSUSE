@@ -362,4 +362,18 @@ Other changes:
     described in PEP 484.</comment>
     <requestid>1161521</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f8e1d6517b9cb44931cdc20c4671594f</srcmd5>
+    <version>24.3.1</version>
+    <time>1712520794</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.3.1:
+  * Y064: Use simpler syntax to define final literal types.
+  * For example, use `x: Final = 42` instead of `x:
+    Final[Literal[42]]`
+  * Y065: Don't use bare `Incomplete` in parameter and return
+    annotations.
+  * Y090: Fix false positive for `tuple[Unpack[Ts]]`.</comment>
+    <requestid>1165947</requestid>
+  </revision>
 </revisionlist>

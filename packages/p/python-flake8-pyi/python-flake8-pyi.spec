@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flake8-pyi
-Version:        24.3.0
+Version:        24.3.1
 Release:        0
 Summary:        A plugin for flake8 to enable linting .pyi files
 License:        MIT
