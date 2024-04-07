@@ -8373,6 +8373,7 @@ unsorted:
   - hugin 
   - hugo 
   - hugo-bash-completion 
+  - hugo-zsh-completion 
   - human-theme-gtk 
   - humanity-icon-theme 
   - hunspell 
@@ -15614,6 +15615,7 @@ unsorted:
   - libsaml12 
   - libsamplerate-devel 
   - libsamplerate0-32bit 
+  - libsane-airscan1 
   - libsane1-32bit 
   - libsanlock1 
   - libsass-3_6_6-1 
@@ -16806,7 +16808,7 @@ unsorted:
   - libxls-tools 
   - libxlsreader8 
   - libxlsxwriter-devel 
-  - libxlsxwriter5 
+  - libxlsxwriter6 
   - libxmi0 
   - libxml++-2_6-2 
   - libxml++-3_0-1-32bit 
@@ -24154,6 +24156,7 @@ unsorted:
   - python310-azure-mgmt-rdbms 
   - python310-azure-mgmt-recoveryservices 
   - python310-azure-mgmt-recoveryservicesbackup 
+  - python310-azure-mgmt-recoveryservicesdatareplication 
   - python310-azure-mgmt-recoveryservicessiterecovery 
   - python310-azure-mgmt-redhatopenshift 
   - python310-azure-mgmt-redis 
@@ -24248,6 +24251,7 @@ unsorted:
   - python310-backcall 
   - python310-backoff 
   - python310-backports.entry_points_selectable 
+  - python310-backports.tarfile 
   - python310-baron 
   - python310-base 
   - python310-base-32bit 
@@ -27705,6 +27709,7 @@ unsorted:
   - python311-azure-mgmt-rdbms 
   - python311-azure-mgmt-recoveryservices 
   - python311-azure-mgmt-recoveryservicesbackup 
+  - python311-azure-mgmt-recoveryservicesdatareplication 
   - python311-azure-mgmt-recoveryservicessiterecovery 
   - python311-azure-mgmt-redhatopenshift 
   - python311-azure-mgmt-redis 
@@ -27799,6 +27804,7 @@ unsorted:
   - python311-backcall 
   - python311-backoff 
   - python311-backports.entry_points_selectable 
+  - python311-backports.tarfile 
   - python311-baron 
   - python311-base-32bit 
   - python311-base58 
@@ -31168,6 +31174,7 @@ unsorted:
   - python312-azure-mgmt-rdbms 
   - python312-azure-mgmt-recoveryservices 
   - python312-azure-mgmt-recoveryservicesbackup 
+  - python312-azure-mgmt-recoveryservicesdatareplication 
   - python312-azure-mgmt-recoveryservicessiterecovery 
   - python312-azure-mgmt-redhatopenshift 
   - python312-azure-mgmt-redis 
@@ -31262,6 +31269,7 @@ unsorted:
   - python312-backcall 
   - python312-backoff 
   - python312-backports.entry_points_selectable 
+  - python312-backports.tarfile 
   - python312-baron 
   - python312-base 
   - python312-base-32bit 
@@ -34256,6 +34264,7 @@ unsorted:
   - qqwing-devel 
   - qrencode 
   - qrencode-devel 
+  - qrtool 
   - qrupdate 
   - qrupdate-devel 
   - qrupdate-static 
@@ -35621,6 +35630,8 @@ unsorted:
   - samplicator 
   - samtools 
   - samurai 
+  - sane-airscan 
+  - sane-airscan-devel 
   - sane-backends-32bit 
   - sane-backends-devel 
   - sane-backends-devel-32bit 
