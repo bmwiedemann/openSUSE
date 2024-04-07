@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 21 03:09:56 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.2207
+   see /usr/share/doc/packages/perl-Moose/Changes
+
+  2.2207   2024-01-21
+
+    [TESTS]
+
+    - remove test dependency on Test::CleanNamespaces (#184, Graham Knop)
+
+-------------------------------------------------------------------
 Mon Jul 24 03:07:01 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.2206
