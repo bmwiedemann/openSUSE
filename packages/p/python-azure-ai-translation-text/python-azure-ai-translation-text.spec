@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-ai-translation-text
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,12 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define realversion 1.0.0b1
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-azure-ai-translation-text
 Version:        1.0.0~b1
 Release:        0
@@ -30,21 +28,24 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-ai-translation-text/azure-ai-translation-text-%{realversion}.zip
 Source1:        LICENSE.txt
-BuildRequires:  %{python_module azure-ai-translation-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-ai-nspkg >= 1.0.0}
+BuildRequires:  %{python_module azure-ai-translation-nspkg >= 1.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-azure-ai-translation-nspkg >= 1.0.0
 Requires:       python-azure-ai-nspkg >= 1.0.0
-Requires:       python-azure-common < 2.0.0
-Requires:       python-azure-common >= 1.1
-Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.24.0
+Requires:       python-azure-ai-translation-nspkg >= 1.0.0
 Requires:       python-msrest >= 0.7.1
+Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
+Requires:       (python-azure-core >= 1.24.0 with python-azure-core < 2.0.0)
 Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
 Conflicts:      python-azure-sdk <= 2.0.0
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-azure-ai-translation-text < 1.0.0~b1
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -66,10 +67,10 @@ Use the Text Translation client library for Python to:
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-ai-translation-text-%{realversion}
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %{python_expand # delete common files
 rm -rf %{buildroot}%{$python_sitelib}/azure/ai/__init__.*
@@ -82,6 +83,6 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 %doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/ai/translation/text
-%{python_sitelib}/azure_ai_translation_text-*.egg-info
+%{python_sitelib}/azure_ai_translation_text-*.dist-info
 
 %changelog
