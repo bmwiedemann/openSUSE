@@ -41,6 +41,7 @@ Patch20:        cpio-close_files_after_copy.patch
 Patch21:        cpio-pattern-file-sigsegv.patch
 Patch23:        paxutils-rtapelib_mtget.patch
 Patch25:        cpio-fix_truncation_check.patch
+Patch26:        fix-gcc14.patch
 BuildRequires:  autoconf >= 2.71
 BuildRequires:  automake
 #Requires(post): %{xinstall_info_prereq}

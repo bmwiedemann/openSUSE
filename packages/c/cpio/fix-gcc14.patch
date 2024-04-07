@@ -1,0 +1,14 @@
+Index: cpio-2.15/src/util.c
+===================================================================
+--- cpio-2.15.orig/src/util.c
++++ cpio-2.15/src/util.c
+@@ -47,6 +47,9 @@
+ extern int errno;
+ #endif
+
++int tape_eof( int tape_des);
++int tape_eod( int tape_des);
++
+ /* Write `output_size' bytes of `output_buffer' to file
+    descriptor OUT_DES and reset `output_size' and `out_buff'.  */
+
