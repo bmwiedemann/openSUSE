@@ -19,7 +19,7 @@
 %define goflags "-buildmode=pie -trimpath -mod=vendor -modcacherw"
 %define sname cli
 Name:           gh
-Version:        2.46.0
+Version:        2.47.0
 Release:        0
 Summary:        The official CLI for GitHub
 License:        MIT
@@ -29,7 +29,7 @@ Source1:        vendor.tar.gz
 BuildRequires:  fish
 BuildRequires:  git-core
 BuildRequires:  zstd
-BuildRequires:  golang(API) >= 1.18
+BuildRequires:  golang(API) >= 1.22
 # This is needed for some tests
 BuildRequires:  openssh-clients
 BuildRequires:  openssh-common
@@ -90,7 +90,8 @@ install -d %{buildroot}%{_mandir}/man1/
 cp share/man/man1/* %{buildroot}%{_mandir}/man1
 
 %check
-GOFLAGS=%{goflags} make test
+# Some tests are skipped because they require network access cli/cli#8928
+GOFLAGS=%{goflags} go test ./... -skip="TestRunInspect|TestJSONOutput|TestNewSigstoreVerifier|TestRunVerify|TestTUFRootVerify"
 
 %files
 %doc README.md

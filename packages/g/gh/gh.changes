@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Apr 04 11:43:53 UTC 2024 - pdostal@suse.com
+
+- Update to version 2.47.0:
+  * Bump go-gh to v2.8.0 and go mod tidy
+  * build(deps): bump github.com/sigstore/protobuf-specs from 0.3.0 to 0.3.1
+  * Bump glamour to v0.7.0 and go mod tidy
+  * build(deps): bump github.com/google/go-containerregistry
+  * build(deps): bump github.com/gorilla/websocket from 1.5.0 to 1.5.1
+  * build(deps): bump google.golang.org/grpc from 1.61.0 to 1.61.1
+  * Rely on go.mod go version in all workflows (#8911)
+  * Upgrade to Go 1.22 (#8836)
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump gopkg.in/go-jose/go-jose.v2 from 2.6.1 to 2.6.3
+  * gh-attestation cmd integration (#8698)
+  * fix segfault in `gh repo rename`
+  * Bump go-gh to 2.7.0
+  * Fix typo in auth switch help example
+
+-------------------------------------------------------------------
 Fri Mar 22 18:45:10 UTC 2024 - pdostal@suse.com
 
 - Update to version 2.46.0:
