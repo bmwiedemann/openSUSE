@@ -203,4 +203,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1157356</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8a832607f480d935658bf05b2aa61482</srcmd5>
+    <version>1.63.0</version>
+    <time>1712520804</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.63.0:
+  * Add `api_version` field to `ServiceOptions` in
+    `google/api/client.proto`
+  * Add `LOCATION_POLICY_VIOLATED` enum to `ErrorReason` in
+    `google/api/error_reason.proto`
+  * Add `rest_reference_documentation_uri` field to
+    `ServiceOptions` in `google/api/client.proto`</comment>
+    <requestid>1165953</requestid>
+  </revision>
 </revisionlist>
