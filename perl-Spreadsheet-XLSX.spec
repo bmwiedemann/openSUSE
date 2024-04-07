@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Spreadsheet-XLSX
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Spreadsheet-XLSX
 Name:           perl-Spreadsheet-XLSX
-Version:        0.17
+Version:        0.180.0
 Release:        0
-Summary:        Perl extension for reading MS Excel 2007 files;
+# 0.18 -> normalize -> 0.180.0
+%define cpan_version 0.18
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Perl extension for reading MS Excel 2007 files
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AS/ASB/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/A/AS/ASB/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -34,6 +36,10 @@ BuildRequires:  perl(Test::NoWarnings)
 BuildRequires:  perl(Test::Warnings)
 Requires:       perl(Archive::Zip) >= 1.18
 Requires:       perl(Spreadsheet::ParseExcel)
+Provides:       perl(Spreadsheet::XLSX) = %{version}
+Provides:       perl(Spreadsheet::XLSX::Fmt2007) = %{version}
+Provides:       perl(Spreadsheet::XLSX::Utility2007) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -43,7 +49,7 @@ quirks, but not all. It populates the classes from Spreadsheet::ParseExcel
 for interoperability; including Workbook, Worksheet, and Cell.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
