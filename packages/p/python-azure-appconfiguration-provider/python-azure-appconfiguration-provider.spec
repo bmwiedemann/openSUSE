@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-appconfiguration-provider
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,7 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+
+%{?sle15_python_module_pythons}
 Name:           python-azure-appconfiguration-provider
 Version:        1.1.0
 Release:        0
@@ -26,19 +27,20 @@ Source:         https://files.pythonhosted.org/packages/source/a/azure-appconfig
 BuildRequires:  %{python_module azure-core >= 1.24.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module isodate >= 0.6.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-azure-core >= 1.25.0
-Requires:       python-azure-core < 2.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-msrest >= 0.6.21
-Requires:       python-azure-appconfiguration < 2.0.0
-Requires:       python-azure-appconfiguration >= 1.4.0
-Requires:       python-azure-keyvault-secrets < 5.0.0
-Requires:       python-azure-keyvault-secrets >= 4.3.0
+Requires:       (python-azure-appconfiguration >= 1.4.0 with python-azure-appconfiguration < 2.0.0)
+Requires:       (python-azure-core >= 1.25.0 with python-azure-core < 2.0.0)
+Requires:       (python-azure-keyvault-secrets >= 4.3.0 with python-azure-keyvault-secrets < 5.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
-
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-azure-appconfiguration-provider < 1.1.0
+%endif
 BuildArch:      noarch
 
 %python_subpackages
@@ -55,10 +57,10 @@ Configuration store in a managed way.
 %setup -q -n azure-appconfiguration-provider-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %{python_expand # delete common files
 rm -rf %{buildroot}%{$python_sitelib}/azure/__init__.*
@@ -70,6 +72,6 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 %license LICENSE
 %dir %{python_sitelib}/azure/appconfiguration
 %{python_sitelib}/azure/appconfiguration/provider
-%{python_sitelib}/azure_appconfiguration_provider-*.egg-info
+%{python_sitelib}/azure_appconfiguration_provider-*.dist-info
 
 %changelog
