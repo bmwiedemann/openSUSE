@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar 22 16:40:36 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.64
+   see /usr/share/doc/packages/perl-Variable-Magic/Changes
+
+  0.64    2024-03-18 23:20 UTC
+          This is a maintenance release. The code contains no functional change.
+          Satisfied users of version 0.63 can skip this update.
+          + Add : Contributing guidelines are now listed in the new
+                  CONTRIBUTING file.
+          + Fix : [RT #151104] : fix for t/18-opinfo.t broken under blead
+                  Some optimization in core made t/18-opinfo.t fail since perl
+                  5.39.7, but that was reverted before 5.40 was released.
+                  This fix will make this test pass even when the optimization
+                  is reinstantiated after release freeze.
+                  Thanks David Mitchell for reporting and providing a fix.
+
+-------------------------------------------------------------------
 Wed Sep 21 03:06:58 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.63

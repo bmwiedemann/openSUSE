@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Variable-Magic
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,19 @@
 
 %define cpan_name Variable-Magic
 Name:           perl-Variable-Magic
-Version:        0.63
+Version:        0.640.0
 Release:        0
+# 0.64 -> normalize -> 0.640.0
+%define cpan_version 0.64
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Associate user-defined magic to variables from Perl
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/V/VP/VPIT/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/V/VP/VPIT/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Variable::Magic) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -44,7 +48,7 @@ or '$^W', the '%ENV' and '%SIG' hashes, the '@ISA' array, 'vec()' and
 underlying C API, and this module gives you direct access to it.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
@@ -59,6 +63,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README samples
+%doc Changes CONTRIBUTING README samples
 
 %changelog
