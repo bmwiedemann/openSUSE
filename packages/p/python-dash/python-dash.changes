@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr  6 19:11:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.16.1:
+  * #2783 Remove dynamic loading.
+
+-------------------------------------------------------------------
 Wed Mar  6 21:03:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Fix truncated version requirement for python3dist(dash)

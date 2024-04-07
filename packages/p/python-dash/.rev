@@ -137,4 +137,13 @@ Also, update to 2.2.0.</comment>
     <comment></comment>
     <requestid>1155757</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e7d9921667b2059fbc6590885774835c</srcmd5>
+    <version>2.16.1</version>
+    <time>1712520722</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.16.1:
+  * #2783 Remove dynamic loading.</comment>
+    <requestid>1165938</requestid>
+  </revision>
 </revisionlist>
