@@ -1,7 +1,7 @@
 #
 # spec file for package pari
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,13 @@
 #
 
 
-%global desc \
-PARI/GP is a computer algebra system designed for computations\
-in number theory (factorizations, algebraic number theory, elliptic\
-curves) and other entities like matrices, polynomials,\
-power series, algebraic numbers, and transcendental functions.\
-%nil
 # See
 # http://pari.math.u-bordeaux.fr/archives/pari-dev-1211/msg00006.html
 # for details on the SO versioning.
 %global sover 8
 %global lname   libpari-gmp-tls%sover
 Name:           pari
-Version:        2.15.4
+Version:        2.15.5
 Release:        0
 Summary:        Computer Algebra System for computations in Number Theory
 License:        GPL-2.0-only
@@ -50,16 +44,23 @@ BuildRequires:  texlive-luatexbase
 BuildRequires:  texlive-tex-bin
 BuildRequires:  xorg-x11-proto-devel
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  tex(amsmath.sty)
 
 %description
-%desc
+PARI/GP is a computer algebra system designed for computations
+in number theory (factorizations, algebraic number theory, elliptic
+curves) and other entities like matrices, polynomials,
+power series, algebraic numbers, and transcendental functions.
 
 %package gp
 Summary:        Frontend to the PARI Computer Algebra System
 Group:          Productivity/Scientific/Math
 
 %description gp
-%desc
+PARI/GP is a computer algebra system designed for computations
+in number theory (factorizations, algebraic number theory, elliptic
+curves) and other entities like matrices, polynomials,
+power series, algebraic numbers, and transcendental functions.
 
 %package doc
 Summary:        Documentation for the PARI Computer Algebra System
@@ -67,30 +68,29 @@ Group:          Documentation/Other
 BuildArch:      noarch
 
 %description doc
-%desc
-
-This package contains the documentation and examples for the PARI Computer Algebra System.
+This package contains the documentation and examples for the PARI
+Computer Algebra System.
 
 %package -n %lname
 Summary:        Shared library for the PARI Computer Algebra System
-# This is used by the data packages to avoid having a too-old version of libpari:
 Group:          System/Libraries
+# This is used by the data packages to avoid having a too-old version of libpari:
 Provides:       libpari-gmp = %version
 
 %description -n %lname
-%desc
-
+PARI/GP is a computer algebra system designed for computations
+in number theory.
 This package contains shared library for the PARI CAS.
 
 %package devel
-Summary:        Development files for the PARI Computer Algebra System
+Summary:        Headers for the PARI Computer Algebra System
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
 %description devel
-%desc
-
-This package contains development files for the PARI CAS.
+PARI/GP is a computer algebra system designed for computations
+in number theory.
+This package contains C API headers for the PARI CAS.
 
 %prep
 %autosetup
@@ -129,8 +129,7 @@ install -Dm0644 doc/*.pdf %buildroot%_defaultdocdir/%name
 rm -rf %buildroot%_datadir/%name/doc
 mv %buildroot%_datadir/%name/examples %buildroot%_defaultdocdir/%name
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files gp
 %doc AUTHORS CHANGES* README* NEW

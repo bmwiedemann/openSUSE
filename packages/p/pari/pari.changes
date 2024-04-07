@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr  7 06:28:29 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.15.5
+  * Fix a memory corruption when using `strjoin([1])`
+- Explicitly buildrequire amsmath.sty to fix a build failure.
+
+-------------------------------------------------------------------
 Sun Jul 16 11:04:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.15.4:
