@@ -1,0 +1,15 @@
+---
+ configure.ac |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/configure.ac
++++ b/configure.ac	2024-04-05 12:06:03.419144263 +0000
+@@ -184,7 +184,7 @@ AS_IF([test "$with_session_tracking" = "
+ AS_IF([test "$with_session_tracking" = "none"], with_session_tracking=no)
+ # check value
+ AS_IF([! (echo "$with_session_tracking" | grep -q -E "^(systemd|consolekit|no)$")],
+-        AC_MSG_ERROR([--with-session-tracking must be systemd/consolekit/no, not $with_session_tracking]))
++        AC_MSG_ERROR([--with-session-tracking must be systemd/consolekit/no not $with_session_tracking]))
+ # add conditionals and subtitution
+ AM_CONDITIONAL(SESSION_TRACKING_CK, test "$with_session_tracking" = "consolekit")
+ AM_CONDITIONAL(SESSION_TRACKING_SYSTEMD, test "$with_session_tracking" = "systemd")

@@ -163,4 +163,16 @@ logind (bnc#853492) (forwarded request 212963 from gary_lin)</comment>
     <comment>Prepare for RPM 4.20 (forwarded request 1148237 from dimstar)</comment>
     <requestid>1148253</requestid>
   </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>353648eafca343226e457657a65e33cf</srcmd5>
+    <version>0.5.0</version>
+    <time>1712520636</time>
+    <user>anag+factory</user>
+    <comment>- Add patch rfkill_even_size.patch
+  * Change size check to only fail if less than RFKILL_EVENT_SIZE_V1
+    as new fields are being added to the struct
+- Add patch configure_err_message.patch 
+  * Do not use comma in AC_MSG_ERROR() as this is used for exit status</comment>
+    <requestid>1165661</requestid>
+  </revision>
 </revisionlist>

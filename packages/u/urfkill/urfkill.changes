@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:12:52 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch rfkill_even_size.patch
+  * Change size check to only fail if less than RFKILL_EVENT_SIZE_V1
+    as new fields are being added to the struct
+- Add patch configure_err_message.patch 
+  * Do not use comma in AC_MSG_ERROR() as this is used for exit status
+
+-------------------------------------------------------------------
 Tue Feb 20 15:44:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

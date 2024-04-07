@@ -1,0 +1,28 @@
+From 2e9f3c0de869d30359c3b14ce6804625c5c4464d Mon Sep 17 00:00:00 2001
+From: William Wilson <william.wilson@canonical.com>
+Date: Wed, 31 Mar 2021 16:10:27 -0500
+Subject: [PATCH] Change size check to only fail if less than
+ RFKILL_EVENT_SIZE_V1 as new fields are being added to the struct
+
+---
+ src/urf-arbitrator.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/urf-arbitrator.c b/src/urf-arbitrator.c
+index ac9b958..677c901 100644
+--- a/src/urf-arbitrator.c
++++ b/src/urf-arbitrator.c
+@@ -587,7 +587,12 @@ urf_arbitrator_startup (UrfArbitrator *arbitrator,
+ 			break;
+ 		}
+ 
+-		if (len != RFKILL_EVENT_SIZE_V1) {
++		/* There has been a change in the kernel that allows for an extra
++                 * byte in the rfkill event struct that tracks a reason field.
++		 * see commit id 14486c82612a177cb910980c70ba900827ca0894 for
++                 * more information
++		 */
++		if (len < RFKILL_EVENT_SIZE_V1) {
+ 			g_warning("Wrong size of RFKILL event\n");
+ 			continue;
+ 		}

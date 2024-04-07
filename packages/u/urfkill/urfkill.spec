@@ -1,7 +1,7 @@
 #
 # spec file for package urfkill
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        GPL-2.0-or-later
 Group:          System/Daemons
 Source:         https://github.com/lcp/urfkill/archive/%{name}-%{version}.tar.gz
 Patch0:         urfkill-change-default-user.patch
+Patch1:         configure_err_message.patch
+Patch2:         rfkill_even_size.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -114,7 +116,8 @@ getent passwd urfkill >/dev/null || useradd -r -g urfkill -d /var/lib/urfkill -s
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING NEWS README
+%license COPYING
+%doc AUTHORS NEWS README
 %dir %{_libexecdir}/urfkill
 %{_libexecdir}/urfkill/urfkilld
 %{_datadir}/dbus-1/interfaces/*.xml
