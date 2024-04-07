@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  6 19:02:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.11:
+  * https://github.com/wannesm/dtaidistance/compare/v2.3.10...v2.3.11
+- drop cython3.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Aug 31 09:10:04 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream cython3.patch

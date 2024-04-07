@@ -55,4 +55,14 @@
     <comment></comment>
     <requestid>1108782</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4cd453e4a5451b0a498e613aa16e5131</srcmd5>
+    <version>2.3.11</version>
+    <time>1712520712</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.3.11:
+  * https://github.com/wannesm/dtaidistance/compare/v2.3.10...v2.3.11
+- drop cython3.patch (upstream)</comment>
+    <requestid>1165867</requestid>
+  </revision>
 </revisionlist>
