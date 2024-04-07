@@ -581,4 +581,12 @@
   * Support for forwarding Hypervisor logs.</comment>
     <requestid>1158003</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>f204117a36b446b8ddc7235497d54586</srcmd5>
+    <version>3.38.1</version>
+    <time>1712520626</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1165366</requestid>
+  </revision>
 </revisionlist>
