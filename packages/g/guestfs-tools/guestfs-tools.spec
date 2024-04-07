@@ -42,6 +42,9 @@ URL:            http://libguestfs.org/
 Source0:        http://download.libguestfs.org/guestfs-tools/%{source_directory}/%{name}-%{version}.tar.gz
 Source1:        http://download.libguestfs.org/guestfs-tools/%{source_directory}/%{name}-%{version}.tar.gz.sig
 
+Patch1:         Update-virt-customize-generated-files.patch
+Patch2:         Initialise-bar-fp-as-NULL.patch
+
 %if 0%{patches_touch_autotools}
 BuildRequires:  autoconf
 BuildRequires:  automake

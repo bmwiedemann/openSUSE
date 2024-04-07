@@ -111,4 +111,12 @@
     <comment>Add Jira request number to changelog. No code change.</comment>
     <requestid>1137602</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>0b48e9c0a19bfcce83b4ec4b310b367f</srcmd5>
+    <version>1.52.0</version>
+    <time>1712520651</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1165710</requestid>
+  </revision>
 </revisionlist>
