@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr  6 17:27:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.11.0:
+  * Fix tests on Python 3.13.0a5. Patch by Jelle Zijlstra.
+  * Fix the runtime behavior of type parameters with defaults
+  * Fix minor discrepancy between error messages produced by
+    `typing` and `typing_extensions` on Python 3.10.
+  * When `include_extra=False`, `get_type_hints()` now strips
+    `ReadOnly` from the annotation.
+
+-------------------------------------------------------------------
 Wed Feb 28 07:10:15 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - update to 4.10.0:
