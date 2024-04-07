@@ -39,7 +39,7 @@
 # ----
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.0+git20240225.77c41071
+Version:        6.0+git20240406.e2d97e37
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -297,6 +297,8 @@ done
 %postun
 %service_del_postun %{name}.service
 %service_del_postun %{name}.socket
+
+%check
 
 %files
 %doc docs/README.md docs/CHANGELOG.md

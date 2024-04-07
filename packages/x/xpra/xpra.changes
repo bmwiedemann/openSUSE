@@ -1,4 +1,321 @@
 -------------------------------------------------------------------
+Sat Apr 06 23:03:01 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.0+git20240406.e2d97e37:
+  * make version checks more robust
+  * simplify: strget only returns strings
+  * more resilient lookup of version info
+  * move 'get_processor_name' to a reusable function
+  * #4187 missing video fallback calls
+  * #2467 proper resource cleanup
+  * also accept differences in alpha
+  * #4187 'konsole' is a text application
+  * we may want to drop the alpha channel
+  * skip warning about hard to find amf elements
+  * add keycloak validation of authentication groups support
+  * only expose native types (ie: strings) via info
+  * accel_version is never None
+  * none of these shortcuts require X11
+  * validate hostname before sending it back
+  * make it easier to test using temporary redirect
+  * better docstring: this applies to all servers
+  * 'LOCAL_MODIFICATIONS' is expected to be a number
+  * when scaling, always repaint the whole window
+  * generic yuv format handling
+  * cosmetic
+  * free the WebpBufferWrapper as soon as it has been consumed
+  * #4167 query the scale factor each time
+  * #4167 blit to scaled size
+  * #2467 fix MacOS native OpenGL initialization
+  * #4181 most WM sadly no longer support StatusIcon nowadays
+  * support opengl display attributes in non-gtk specific format
+  * we have to destroy the window to avoid leak warnings
+  * #4167 need vertex array to validate program on MacOS
+  * less confusing formatting
+  * get the full OS name using wmi, if available
+  * #3483 make it easier to trigger locking issues
+  * shadow servers may initialize codecs in parallel
+  * log more information about the thread currently holding the lock
+  * unbreak regular shadow servers
+  * #2467 load default cursor from png, better than black square
+  * libSvt is used by libavif
+  * get_version() must always return a tuple
+  * use the same smarter version parser as the decoder
+  * better debug logging
+  * #4182 remove 'long' type
+  * wait longer, needed with slow CI runs
+  * also test libyuv and libavif
+  * #3884 call SelectXFSelectionInput on the root window
+  * add stricter type hints
+  * prefer strongly typed method
+  * #4182 simplify
+  * must have a valid gl context to call cleanup functions
+  * catch individual cleanup errors
+  * try to ensure no programs or vertex arrays are active during cleanup
+  * verify program id is valid
+  * use the correct way to add compile args
+  * simplified / updated latest
+  * switches are unique, sort them just once
+  * bail out if we can't change directory
+  * build using InnoSetup 6.x
+  * with opengl=force, continue despite validation warnings
+  * install more 'browser_cookie3' dependencies as packages
+  * pillow 10.3.0
+
+-------------------------------------------------------------------
+Sun Mar 31 16:35:27 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.0+git20240331.738c8038:
+  * there's also 'vah264lpenc'
+  * make it possible to (not) prefer Gtk.StatusIcon
+  * Cython 3.0.10
+  * set unused alpha to opaque, just in case
+  * cosmetic
+  * fixup 9bb4776fc199439d0f64ded75cd14b9a56101502
+  * try harder to ensure 'bcrypt' is bundled on macos
+  * show paramiko and bcrypt info
+
+-------------------------------------------------------------------
+Fri Mar 29 13:27:00 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.0+git20240329.c7f2d049:
+  * RHEL 8 ships libvpx 1.7
+  * #3964 some hardware encoders can pad and round up
+  * wait longer for pinentry to terminate
+  * add type hints
+  * #3964 enable libva hardware encoders
+  * no python 3.13 in 'ubuntu-latest'
+  * #3964 ensure NV12 encoded streams are decoded the same as YUV420P
+  * #3964 warn if the overrides are missing
+  * also build test with Python 3.13
+  * add YUV444P conversions
+  * fix linter warning
+  * simplify by bumping the version requirements
+  * fix: updated deps for libspng0 and libopenh264
+  * fix: updated deps for libspng0 and libopenh264
+  * #2467 generate separate shaders for each pixel format
+  * don't assume TEX_Y is zero, it's confusing
+  * log failing shader source with line numbers
+  * try to honour the quality value
+  * better warnings when picture format is invalid
+  * don't buffer frames, leak them
+  * #3964 choose a csc mode and expose it
+  * YUV444P to RGB so we can paint vp8/vp9 YUV444P frames without opengl
+  * handle YUV444P decoding
+  * more details on decoder failures
+  * #3964 multiple options per encoding
+  * #3964 implement 'save-to-file' so we can inspect the stream
+  * #3964 make it possible to honour the encoding specified
+  * missing attributes should raise a AttributeError
+  * delay instantiation of paint context manager
+  * cleanup
+  * #3964 don't use damage
+  * #3964 stop the gstreamer pipeline when damage events stop
+  * add logging of directly queued frames
+  * refactor gstreamer video encoding selection
+  * no need to reconfigure when the actual quality was not changed
+  * try harder to guess the display to shadow
+  * split dual-use function
+  * only expose selection owner if we have a value
+  * better heuristics for guessing X11 display state
+  * stray comma
+  * #3964 support mode options
+  * type hints
+  * doh: forgot to add shadow configure gui
+  * re-use text function
+  * #3964 include d3d11 plugins
+  * making it look less gray (less like it is disabled)
+  * #3964 bundle gst-inspect-1.0 via the wrapper tool
+  * cx_Freeze uses splitext, which doesn't work for gst-launch-1.0.exe
+  * #4100 also de-duplicate gstreamer dylibs
+  * #3964 include test video sinks
+  * #3964 use more standard location for 'gst-plugin-scanner'
+  * #3964 move list of capture elements to platform code
+  * remove some gtk2 remnants
+  * #4064 move shadow server configuration to its own gui
+  * #3964 filter out plugins not installed
+
+-------------------------------------------------------------------
+Wed Mar 20 16:46:46 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.0+git20240320.3451df55:
+  * None cannot be used as a test value
+  * skip verifying the main thread
+  * #4129 try to prevent loading X11 bindings when using portal / remotedesktop shadow modes
+  * don't start a display when we don't find one to shadow
+  * make it easier to send progress to stderr
+  * use the same datatype everywhere for RGB modes
+  * #4092 point users to the pyxdg bug
+  * move all src size validation earlier, in one place
+
+-------------------------------------------------------------------
+Mon Mar 18 14:11:29 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.0+git20240316.b696eb87:
+  * #4165 nm api can return an int instead of an object?
+  * #4100 non-opengl case needs a yuv-to-rgb csc option
+  * choose the csc option with the best score
+  * simplify: any supports empty sets and will return False
+  * reduce missing video pipelines log spam
+  * just filter out any non alphanumeric characters for now
+  * add missing changelog entry
+  * race condition: input thread must wait for curses_init() to complete
+  * aioquic 1.0.0
+  * sockname may actually be a tuple or list
+  * include more debugging details
+  * #3754 add (unused) callback for wrap_buffer utility function
+  * cosmetic
+  * minor linter warnings
+  * avoid None value dereference
+  * this link should not expire
+  * #4163 rename to prevent conflicts
+  * record the build type
+  * one more temporary ugly fix
+  * show the files preventing us from removing a directory
+  * #4100 avoid DLL errors: don't ship these plugins
+  * #4100 show disk usage during build
+  * #4162 dialogs must be destroyed before we can continue
+  * remove duplicate imports
+  * stronger type hints
+  * hide the dialog before trying to close it
+  * cosmetic type hints
+  * type hints for signal handlers
+  * splash subprocess should never wait for input
+  * #4161 log 'nocsc' warning just once per encoding / window
+  * only warn once per window when no video options are found
+  * never wait for input in a subprocess
+  * oops: no stdin on MS Windows
+  * add wrapper for gst-launch-1.0
+  * cosmetic
+  * add full backtrace at debug level
+  * take the first match
+  * workaround for cx_Freeze not packaging zeroconf properly
+  * use 'mdns' logger, don't bother trying avahi on MacOS or win32
+  * better wrapper script
+  * type hints for return values
+  * log loading of pycuda top level package
+  * delete dead symlinks, error out if 'agent.default' is not a symlink
+  * get_console_position must return a pair
+  * only skip old options if we don't have a new one
+  * use argv passed in
+  * use wrappers to ensure the environment is configured before importing the gi bindings
+  * delay gtk import so win32 program context has time to setup gi import environment
+  * handle invalid timeout argument more gracefully
+  * oops: match renaming
+  * #4064 we have to use program_context early on MS Windows
+  * fix unit tests that rely on named arguments
+  * type hints and cosmetic pycharm warnings
+  * the bindings already return strings
+  * ensure 'sock' is always defined (pedantic)
+  * positional arguments gone wrong
+  * consistency in naming arguments
+  * ctypes requires byte strings
+  * this method cannot handle any kwargs
+  * oops: match refactoring
+  * remove debug logging, use strings for all paths
+  * noerr takes a callable, not a return value
+  * simplify: 'which' now always return a string
+  * make pycharm's linter happier
+  * fix circular import
+  * minor type hints and pycharm warning fixes
+  * log the prompt
+  * exception handler logging potentially wrong socket information
+  * python signal handlers take two arguments
+  * type hint fixes
+  * fix draw passthrough stripping of unused alpha channel
+  * avoid sending a warning notification for missing server log
+  * add type hint for download callback
+  * workaround for '.' in package names (ie: autoconf2.13
+  * #4100 skip ssl cert post-install step with light builds
+  * derp
+  * handle missing stderr more gracefully
+  * find_spec throws exceptions
+  * simplify: remove some duplication
+  * tify up: move tlb files to their own directory
+  * #4100 use an alias to simplify: '--without-encoders'
+  * only exit if the token is invalid, not when missing
+  * stronger type: mmap_filename should always be a string
+  * return empty caps when disabled
+  * #4100 try to only show the subcommands actually available
+  * #4100 nacl fixup
+  * #4100 pillow indirectly needs libsharpyuv
+  * #4100 split pillow encoder and decoder
+  * delay logger import
+  * #4100 don't print scary warnings with 'light' builds
+  * #4100 doh: typo
+  * stop splash when showing a notification
+  * use the warning summary if that's all we have
+  * make the opengl texture / viewport size limit configuable
+  * add some debug logging, with the ResponseType constants
+  * fix password prompt causing client exit
+  * fix deprecation warnings
+  * avoid errors during authentication
+  * avoid parsing errors when socket options contain dict values for 'auth'
+  * cosmetic logging tweaks
+  * libtiff needs libjbig and libLerc
+  * #4100 Pillow needs libopenjp2
+  * #4100 split gstreamer so we can install audio without video
+  * byref returns a POINTER, but addressof does not?
+  * always show all options, add tooltip to explain why some aren't available
+  * #4100 we still need the audio executable in light builds
+  * fixup cfd23b1605c8aebe4d4d2eee845a93f884971677: accept more iterables
+  * #4100 fix non-light builds config bundling
+  * don't show warnings when running with older config files
+  * remove duplicates
+  * #4100 the 'start session' dialog does not require the server components
+  * #4100 rename to 'Light', remove more bits
+  * #4100 lightweight builds, initial cut
+  * support same arguments as when calling loader directly
+  * use the correct toggle
+  * #4157 allow scheduling of more keys changed events as soon as we execute the timer function
+  * add QUIC, rename SSL to TLS in link
+  * #4157 add toggle to skip verifying modifier state
+  * simplify
+  * don't bother trying to load X11 components on MacOS
+  * prettier output
+  * if we fail to import the x11 backend, revert changes to GDK_BACKEND
+  * include brotli dylibs explicitly
+
+-------------------------------------------------------------------
+Wed Feb 28 15:40:50 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.0+git20240228.5ab86d11:
+  * set the GStreamer env vars earlier in the wrapper script
+  * #4125 make it possible to specify backtrace expressions using env var
+  * doh: typo
+  * we need libxxhash, include it explicitly
+  * we don't need to bundle ffmpeg since 20bb5f04233dc650022bc67d5904566d1b158af9
+  * #4098 abstract sockets only work on Linux, AFAIK
+  * desktop geometry changes need an X11 context manager to move the windows
+  * remove pointless method, call 'get_printer_definitions' directly
+  * silence another gtk deprecation warning
+  * fixup typo breakage introduced in 13288d42587ca532e5a0e8e0a235207002bd6f7d
+  * method returns a boolean
+  * missed from 0211a3f25ccf257e6be5e85d9a78c71c9bb6b088
+  * strip out unhelpful values from distro strings
+  * don't query 'linux_distribution' on MacOS or MS Windows
+  * bundle dbus on win32, but still not on macos
+  * add missing soft dependency
+  * simplify
+  * remove duplicated line
+  * check both ends support the feature
+  * re-add some of the type hints reverted in 5bec0e8a1544fb265ef7f018f235486398777649
+  * more correct check: 'file' should be a dict
+  * Revert "use shlex for quoting"
+  * newer version use a proper namespace
+  * cosmetic
+  * use 'file' logger for 'send-file' control command
+  * consistency: only check the size
+  * #4106 try harder to identify an existing ibus-daemon
+  * #4106 basic command pid tracking
+  * #4098 don't try to 'touch' abstract sockets
+  * client wrongly claiming file download is not available
+  * typo caused 'subcommands' to go missing
+  * fix some deprecation warnings
+  * type hints were too strict, caught by cythonize-more
+  * new wrapper since comtypes 1.3
+
+-------------------------------------------------------------------
 Sun Feb 25 21:02:57 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 6.0+git20240225.77c41071:
