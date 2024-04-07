@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 22 16:19:02 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20240313
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  20240313
+    - Update from Mozilla repository to 2024-03-13
+    - Added certificates:
+      - Telekom Security TLS ECC Root 2020
+        sha256: 578af4ded0853f4e5998db4aeaf9cbea8d945f60b620a38d1a3c13b2bc7ba8e1
+      - Telekom Security TLS RSA Root 2023
+        sha256: efc65cadbb59adb6efe84da22311b35624b71b3b1ea0da8b6655174ec8978646
+
+-------------------------------------------------------------------
 Fri Mar  8 22:44:16 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides
