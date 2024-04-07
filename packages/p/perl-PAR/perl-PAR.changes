@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar  5 03:09:01 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.020
+   see /usr/share/doc/packages/perl-PAR/Changes
+
+  1.020  2024-03-04
+
+  - restructure _extract_inc(): always add XS DLLs in
+    PAR_TEMP/inc to PAR::Heavy::FullCache, ie. even if PAR_TEMP/inc
+    already exists (hence we don't need to extract the zip), cf. #11
+
+  - bump minimum perl version to 5.8.9 everywhere
+
+-------------------------------------------------------------------
 Thu Nov  2 03:07:21 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.019
