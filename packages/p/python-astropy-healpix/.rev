@@ -59,4 +59,14 @@
     or latitude is NaN or infinite. [#208]</comment>
     <requestid>1135247</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>84994f88402735054541bdfa5de76d6c</srcmd5>
+    <version>1.0.3</version>
+    <time>1712520711</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.3:
+  * Fixed compatibility with upcoming astropy 6.1.0 and numpy
+    2.0.0 releases.</comment>
+    <requestid>1165865</requestid>
+  </revision>
 </revisionlist>

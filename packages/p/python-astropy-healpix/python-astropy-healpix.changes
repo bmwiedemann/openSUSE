@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  6 18:54:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.3:
+  * Fixed compatibility with upcoming astropy 6.1.0 and numpy
+    2.0.0 releases.
+
+-------------------------------------------------------------------
 Wed Dec 27 09:35:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.2:
