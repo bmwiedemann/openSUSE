@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr  6 18:52:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.9:
+  * `autojit`: fix jax when kwargs are used
+  * `autojit`: simplify torch and python compiler
+  * torch: alias min/max to amin/amax
+
+-------------------------------------------------------------------
 Tue Jan 30 12:16:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.8:

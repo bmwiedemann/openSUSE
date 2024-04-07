@@ -86,4 +86,15 @@
   * Alias jax.scipy</comment>
     <requestid>1142773</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fb2d5d9417a9a1a9209f2533e39bc340</srcmd5>
+    <version>0.6.9</version>
+    <time>1712520710</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.9:
+  * `autojit`: fix jax when kwargs are used
+  * `autojit`: simplify torch and python compiler
+  * torch: alias min/max to amin/amax</comment>
+    <requestid>1165863</requestid>
+  </revision>
 </revisionlist>
