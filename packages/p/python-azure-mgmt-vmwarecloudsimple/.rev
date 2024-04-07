@@ -15,4 +15,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>853994</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cd55454d76b34b5188cfb4e8c3e9339a</srcmd5>
+    <version>0.2.0</version>
+    <time>1712520589</time>
+    <user>anag+factory</user>
+    <comment>- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Add Obsoletes for old python3 package on SLE-15
+  + Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+  + Update name for dist directory in %files section
+- Use modern RPM macros to express version dependencies (forwarded request 1164906 from glaubitz)</comment>
+    <requestid>1165299</requestid>
+  </revision>
 </revisionlist>
