@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-nspkg
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-nspkg
 Version:        3.0.2
 Release:        0
@@ -30,13 +27,17 @@ URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-nspkg/azure-mgmt-nspkg-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-nspkg >= 3.0.0
 Conflicts:      python-azure-sdk <= 2.0.0
-
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-azure-mgmt-nspkg < 3.0.2
+%endif
 BuildArch:      noarch
 
 %python_subpackages
@@ -53,19 +54,17 @@ It provides the necessary files for other packages to extend the azure.mgmt name
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-nspkg-%{version}
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand mkdir -p %{buildroot}%{$python_sitelib}/azure/mgmt
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE.txt
-%dir %{python_sitelib}/azure/mgmt
-%python2_only %{python_sitelib}/azure/mgmt
-%{python_sitelib}/azure_mgmt_nspkg-*.egg-info
+%{python_sitelib}/azure/mgmt
+%{python_sitelib}/azure_mgmt_nspkg-*.dist-info
 
 %changelog
