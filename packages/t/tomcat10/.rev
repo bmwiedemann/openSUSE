@@ -101,4 +101,12 @@
     <comment>Require(post) util-linux in packages that have script running runuser</comment>
     <requestid>1155429</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7e21a5a983b116304b400ca091e3348f</srcmd5>
+    <version>10.1.20</version>
+    <time>1712520676</time>
+    <user>anag+factory</user>
+    <comment>security fixes</comment>
+    <requestid>1165816</requestid>
+  </revision>
 </revisionlist>
