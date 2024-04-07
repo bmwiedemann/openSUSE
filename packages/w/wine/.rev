@@ -5117,4 +5117,18 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 9.5 release</comment>
     <requestid>1161096</requestid>
   </revision>
+  <revision rev="436" vrev="1">
+    <srcmd5>7ae6ab99f56eea4ac99c8901c0d5485a</srcmd5>
+    <version>9.6</version>
+    <time>1712520738</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 9.6 release
+  - Support for advanced AVX features in register contexts.
+  - More Direct2D effects work.
+  - Support for RSA OAEP padding in BCrypt.
+  - Interpreted mode fixes in WIDL.
+  - Various bug fixes.
+- update staging to 9.6 release</comment>
+    <requestid>1165935</requestid>
+  </revision>
 </revisionlist>
