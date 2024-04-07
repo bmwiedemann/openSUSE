@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr  6 19:10:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15:
+  * Fix multi-line links and incorrect dunder escapes in code
+- update to 0.14:
+  * Add plain text and cPython docstring support
+
+-------------------------------------------------------------------
 Sat Nov 25 13:06:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13:
