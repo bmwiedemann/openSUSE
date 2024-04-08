@@ -17,7 +17,7 @@
 
 
 Name:           yast2-perl-bindings
-Version:        5.0.2
+Version:        5.0.4
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
