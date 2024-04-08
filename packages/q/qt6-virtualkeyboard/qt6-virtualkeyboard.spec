@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.6.3
-%define short_version 6.6
+%define real_version 6.7.0
+%define short_version 6.7
 %define tar_name qtvirtualkeyboard-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-virtualkeyboard%{?pkg_suffix}
-Version:        6.6.3
+Version:        6.7.0
 Release:        0
 Summary:        Framework for writing or integrating input methods and engines for Qt 6
 License:        GPL-3.0-only
@@ -65,7 +65,7 @@ QML files and plugins from the Qt 6 VirtualKeyboard module.
 
 %package -n libQt6VirtualKeyboard6
 Summary:        Qt 6 VirtualKeyboard library
-Requires:       %{name} >= %{version}
+Requires:       qt6-virtualkeyboard >= %{version}
 
 %description -n libQt6VirtualKeyboard6
 Qt VirtualKeyboard provides an input framework and reference keyboard frontend

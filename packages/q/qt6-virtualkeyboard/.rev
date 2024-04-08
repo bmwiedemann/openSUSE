@@ -208,4 +208,12 @@
 - Make the lib depend on the inputcontext plugin (boo#1222158)</comment>
     <requestid>1163656</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>264e8a5acb0cbe27fcd9107539d1a353</srcmd5>
+    <version>6.7.0</version>
+    <time>1712590682</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.7.0. qtwebengine is still building (forwarded request 1164304 from krop)</comment>
+    <requestid>1165809</requestid>
+  </revision>
 </revisionlist>
