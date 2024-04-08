@@ -72,8 +72,8 @@ the system default theme,background etc.
 
 %build
 %if 0%{?build_openSUSE}
+# The compat link actually exists but lets keep openSUSEdefault
 sed -i -e 's:SLEdefault:openSUSEdefault:g' preferences
-sed -i -e 's:1920x1080.png:1920x1080.jpg:g' preferences
 %endif
 
 %install

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  8 09:39:15 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Do not substitute png to jpg for default wallpaper
+  Details at https://github.com/openSUSE/branding/pull/149
+- Keep openSUSEDefault although SLEDefault compat symlink exist
+
+-------------------------------------------------------------------
 Thu Mar 14 09:27:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Make sure flavor is never defined without content, but at least

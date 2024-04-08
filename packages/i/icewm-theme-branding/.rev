@@ -150,4 +150,12 @@ icewm-theme-branding icewm-config-upstream</comment>
   actually supported and worked by accident. (forwarded request 1157913 from dimstar)</comment>
     <requestid>1157964</requestid>
   </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>15c6328d13f67a02b26cc20bdce644c4</srcmd5>
+    <version>1.2.5</version>
+    <time>1712590644</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166129</requestid>
+  </revision>
 </revisionlist>
