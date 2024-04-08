@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.6.3
-%define short_version 6.6
+%define real_version 6.7.0
+%define short_version 6.7
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -37,7 +37,7 @@
 %bcond_without system_tiff
 %endif
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.6.3
+Version:        6.7.0
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -50,7 +50,7 @@ Patch100:       rtc-dont-use-h264.patch
 #
 # Chromium/blink don't support PowerPC and zSystems and build fails on
 # 32 bits archs (https://bugreports.qt.io/browse/QTBUG-102143)
-ExclusiveArch:  aarch64 x86_64 riscv64
+ExclusiveArch:  aarch64 x86_64 %x86_64 riscv64
 BuildRequires:  Mesa-KHR-devel
 BuildRequires:  bison
 # Not pulled automatically on Leap
@@ -297,6 +297,7 @@ Requires:       libQt6WebEngineQuick6 = %{version}
 Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6Qml) = %{real_version}
 Requires:       cmake(Qt6Quick) = %{real_version}
+Requires:       cmake(Qt6WebChannelQuick) = %{real_version}
 Requires:       cmake(Qt6WebEngineCore) = %{real_version}
 
 %description -n qt6-webenginequick-devel
@@ -406,6 +407,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
 %{_qt6_datadir}/resources/
 %{_qt6_translationsdir}/qtwebengine_locales/
 %{_qt6_libexecdir}/QtWebEngineProcess
+%{_qt6_libexecdir}/webenginedriver
 %{_qt6_pluginsdir}/designer/libqwebengineview.so
 
 %files imports
