@@ -40,7 +40,7 @@
 %endif
 %bcond_with tpm
 Name:           gnutls
-Version:        3.8.4
+Version:        3.8.5
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
