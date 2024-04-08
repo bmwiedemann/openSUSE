@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  8 10:41:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Thu Dec 14 09:18:25 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
 
 - update to 23.2.3:
@@ -161,5 +166,5 @@ Mon May  8 21:15:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Mon Jan 23 04:22:53 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Initial release of 22.2.0. 
+- Initial release of 22.2.0.
 
