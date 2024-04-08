@@ -18,7 +18,7 @@
 
 
 Name:           distribution-logos-openSUSE
-Version:        20240207
+Version:        20240404
 Release:        0
 Summary:        Logos for openSUSE Distros
 License:        CC-BY-SA-4.0
@@ -38,7 +38,7 @@ Summary:        Logos for openSUSE Leap
 Conflicts:      distribution-logos
 Obsoletes:      distribution-logos
 Provides:       distribution-logos
-Removepathpostfixes:.Leap
+Removepathpostfixes: .Leap
 BuildArch:      noarch
 
 %description Leap
@@ -49,7 +49,7 @@ Summary:        Logos for openSUSE Leap Micro
 Conflicts:      distribution-logos
 Obsoletes:      distribution-logos
 Provides:       distribution-logos
-Removepathpostfixes:.LeapMicro
+Removepathpostfixes: .LeapMicro
 BuildArch:      noarch
 
 %description LeapMicro
@@ -62,7 +62,7 @@ Summary:        Logos for openSUSE Tumbleweed
 Conflicts:      distribution-logos
 Obsoletes:      distribution-logos
 Provides:       distribution-logos
-Removepathpostfixes:.Tumbleweed
+Removepathpostfixes: .Tumbleweed
 BuildArch:      noarch
 
 %description Tumbleweed
@@ -73,7 +73,7 @@ Summary:        Logos for openSUSE Kubic
 Conflicts:      distribution-logos
 Obsoletes:      distribution-logos
 Provides:       distribution-logos
-Removepathpostfixes:.Kubic
+Removepathpostfixes: .Kubic
 BuildArch:      noarch
 
 %description Kubic
@@ -84,7 +84,7 @@ Summary:        Logos for openSUSE MicroOS
 Conflicts:      distribution-logos
 Obsoletes:      distribution-logos
 Provides:       distribution-logos
-Removepathpostfixes:.MicroOS
+Removepathpostfixes: .MicroOS
 BuildArch:      noarch
 
 %description MicroOS
@@ -95,7 +95,7 @@ Summary:        Logos for openSUSE Aeon
 Conflicts:      distribution-logos
 Obsoletes:      distribution-logos
 Provides:       distribution-logos
-Removepathpostfixes:.Aeon
+Removepathpostfixes: .Aeon
 BuildArch:      noarch
 
 %description Aeon

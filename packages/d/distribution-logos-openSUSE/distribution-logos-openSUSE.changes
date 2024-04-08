@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 04 14:28:34 UTC 2024 - lubos.kocman@suse.com
+
+- Update to version 20240404:
+  * Turn apple-touch-icon into round square ones
+  * SLES Compatability supply apple-touch-icon for Leap, LeapMicro, TW
+  * Delete dist/package directory
+  * fix source mismatch with package name
+
+-------------------------------------------------------------------
 Mon Feb 26 16:47:41 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Add handling for Leap Micro 6.X and Leap 16.X
