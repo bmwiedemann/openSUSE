@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package branding-openSUSE
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019 Stasiek Michalski <hellcp@opensuse.org>.
@@ -20,7 +20,7 @@
 %define theme_name openSUSE
 %define theme_version tumbleweed
 %define theme_version_clean Tumbleweed
-%define date 20230227
+%define date 20240405
 
 %ifarch x86_64 %{ix86}
 %define gfxboot 1
@@ -41,6 +41,7 @@ BuildRequires:  GraphicsMagick
 BuildRequires:  distribution-logos-openSUSE-Tumbleweed
 BuildRequires:  fdupes
 BuildRequires:  fribidi
+BuildRequires:  optipng
 %if 0%{?suse_version} >= 1550
 # rsvg-convert used to be packaged together with rsvg-view in one package. With the removal
 # of the rsvg-view program, this package was renamed to rsvg-convert (which is more fitting)
@@ -212,7 +213,8 @@ ln -s -f %{theme_name}-default-static.xml %{buildroot}%{_datadir}/wallpapers/%{t
 %fdupes -s %{buildroot}%{_datadir}/wallpapers/
 %fdupes -s %{buildroot}%{_datadir}/YaST2/theme/current/wizard/
 
-%suse_update_desktop_file %{buildroot}%{_datadir}/wallpapers/openSUSEdefault/metadata.desktop
+# compatability for binaries utilizing SLES branding (such as cockpit)
+ln -s -f openSUSEdefault %{buildroot}%{_datadir}/wallpapers/SLEdefault
 
 %if 0%{?grub2} < 1
 rm -rf %{buildroot}%{_datadir}/grub2
@@ -262,6 +264,7 @@ gfxboot --update-theme %{theme_name}
 %dir %{_datadir}/gnome-background-properties/
 %{_datadir}/gnome-background-properties/wallpaper-branding-openSUSE.xml
 %{_datadir}/wallpapers/
+%{_datadir}/wallpapers/SLEdefault
 
 %files -n yast2-qt-branding-%{theme_name}
 %dir %{_datadir}/YaST2

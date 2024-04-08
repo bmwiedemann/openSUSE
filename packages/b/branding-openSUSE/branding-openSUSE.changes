@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr  4 14:43:58 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Use png for wallpapers for Tumbleweed
+- SLES seems to be using png
+- Using a compat symlink wallpapers/openSUSEdefault-> wallpapers/SLEdefault
+  allows running certain apps without rebuild. Such as cockpit.
+- Use optipng -o5 to compress files (has to be reflected in spec) 
+- Bump date
+
+-------------------------------------------------------------------
 Thu Feb 15 09:27:32 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
 
 - Remove update-alternatives usage, we don't have dynamic
