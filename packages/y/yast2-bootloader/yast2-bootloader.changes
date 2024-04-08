@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  5 08:08:09 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
+
+- Follow up of previous change to use even more precise wording
+  (bsc#1219989,bsc#1222353)
+- 5.0.8
+
+-------------------------------------------------------------------
 Fri Mar 15 10:11:13 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
 
 - Improve warnings and help text for secure boot on s390 to reflect
