@@ -1,6 +1,5 @@
 [Desktop Entry]
 Categories=Qt;Development;Documentation;
-Encoding=UTF-8
 Exec=assistant6
 Name=Qt 6 Assistant
 GenericName=Document Browser
@@ -9,5 +8,3 @@ MimeType=application/x-assistant;
 Terminal=false
 Type=Application
 Icon=assistant6
-
-

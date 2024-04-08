@@ -1,6 +1,5 @@
 [Desktop Entry]
 Categories=Qt;Development;GUIDesigner;
-Encoding=UTF-8
 Exec=designer6
 Name=Qt 6 Designer
 GenericName=Interface Designer
@@ -9,5 +8,3 @@ MimeType=application/x-designer;
 Icon=designer6
 Terminal=false
 Type=Application
-
-

@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.6.3
-%define short_version 6.6
+%define real_version 6.7.0
+%define short_version 6.7
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.6.3
+Version:        6.7.0
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # TODO Check if it's still valid
@@ -295,13 +295,9 @@ This library does not have any ABI or API guarantees.
 # CMake files are not needed for plugins (except for Qt6UiPlugin)
 rm %{buildroot}%{_qt6_cmakedir}/Qt6Designer/*Plugin{Config,Targets}*.cmake
 
-# Unused file. There are no private headers for this library
-rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_linguist_private.pri
-
 # This doesn't look useful
 rm -r %{buildroot}%{_qt6_includedir}/QtQDocCatch*
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6QDocCatch*
-rm %{buildroot}%{_qt6_pkgconfigdir}/Qt6QDocCatch*.pc
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qdoccatch*.pri
 rm %{buildroot}%{_qt6_descriptionsdir}/QDocCatch*.json
 
