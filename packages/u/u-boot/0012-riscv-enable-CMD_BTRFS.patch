@@ -1,4 +1,4 @@
-From 3c34df27f60b3e933cce6c953e568690e9d50632 Mon Sep 17 00:00:00 2001
+From a15af4953dfbc7b28a82b3d93f40b3d1e71a1622 Mon Sep 17 00:00:00 2001
 From: Guillaume Gardet <guillaume.gardet@arm.com>
 Date: Wed, 5 Apr 2023 14:27:09 +0200
 Subject: [PATCH] riscv: enable CMD_BTRFS
@@ -9,10 +9,10 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/boot/Kconfig b/boot/Kconfig
-index be576696c44..a71a6a7dfc1 100644
+index 701e60922a..b399250691 100644
 --- a/boot/Kconfig
 +++ b/boot/Kconfig
-@@ -815,7 +815,7 @@ config DISTRO_DEFAULTS
+@@ -863,7 +863,7 @@ config DISTRO_DEFAULTS
  	select CMD_SYSBOOT
  	select HUSH_PARSER
  	select SYS_LONGHELP

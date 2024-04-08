@@ -1,4 +1,4 @@
-From 3949514f593647ace1a752ceddce988dfb4e0534 Mon Sep 17 00:00:00 2001
+From cceebda5bf2920d53faf610219ffaf404e28cf25 Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Sun, 3 Jul 2022 18:25:39 +0200
 Subject: [PATCH] cmd: boot: add brom cmd to reboot to FEL mode
@@ -16,7 +16,7 @@ Signed-off-by: Michal Suchanek <msuchanek@suse.de>
  4 files changed, 67 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm/include/asm/arch-sunxi/cpu.h b/arch/arm/include/asm/arch-sunxi/cpu.h
-index 768c6572d6b..86f4b1a103c 100644
+index 768c6572d6..86f4b1a103 100644
 --- a/arch/arm/include/asm/arch-sunxi/cpu.h
 +++ b/arch/arm/include/asm/arch-sunxi/cpu.h
 @@ -22,4 +22,15 @@
@@ -36,10 +36,10 @@ index 768c6572d6b..86f4b1a103c 100644
 +
  #endif /* _SUNXI_CPU_H */
 diff --git a/arch/arm/mach-sunxi/Kconfig b/arch/arm/mach-sunxi/Kconfig
-index a4a8d8e9445..acebc4ee339 100644
+index fe89aec6b9..5b532701df 100644
 --- a/arch/arm/mach-sunxi/Kconfig
 +++ b/arch/arm/mach-sunxi/Kconfig
-@@ -1099,6 +1099,22 @@ source "board/sunxi/Kconfig"
+@@ -1116,6 +1116,22 @@ source "board/sunxi/Kconfig"
  
  endif
  
@@ -63,10 +63,10 @@ index a4a8d8e9445..acebc4ee339 100644
  	bool "Enable DIPs detection for CHIP board"
  	select SUPPORT_EXTENSION_SCAN
 diff --git a/arch/arm/mach-sunxi/board.c b/arch/arm/mach-sunxi/board.c
-index 11a49418225..7a4291f4838 100644
+index f4dbb2a740..2586fd801d 100644
 --- a/arch/arm/mach-sunxi/board.c
 +++ b/arch/arm/mach-sunxi/board.c
-@@ -315,7 +315,30 @@ uint32_t sunxi_get_boot_device(void)
+@@ -314,7 +314,30 @@ uint32_t sunxi_get_boot_device(void)
  	return -1;		/* Never reached */
  }
  
@@ -97,7 +97,7 @@ index 11a49418225..7a4291f4838 100644
  uint32_t sunxi_get_spl_size(void)
  {
  	struct boot_file_head *egon_head = (void *)SPL_ADDR;
-@@ -457,6 +480,7 @@ u32 spl_mmc_boot_mode(struct mmc *mmc, const u32 boot_device)
+@@ -456,6 +479,7 @@ u32 spl_mmc_boot_mode(struct mmc *mmc, const u32 boot_device)
  
  void board_init_f(ulong dummy)
  {
@@ -106,7 +106,7 @@ index 11a49418225..7a4291f4838 100644
  
  #if defined CONFIG_MACH_SUN6I || defined CONFIG_MACH_SUN8I_H3
 diff --git a/cmd/boot.c b/cmd/boot.c
-index d7c7db449c5..111c9d94090 100644
+index d7c7db449c..111c9d9409 100644
 --- a/cmd/boot.c
 +++ b/cmd/boot.c
 @@ -47,6 +47,7 @@ static int do_go(struct cmd_tbl *cmdtp, int flag, int argc, char *const argv[])

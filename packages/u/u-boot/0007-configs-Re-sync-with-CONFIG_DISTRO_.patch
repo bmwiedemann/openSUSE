@@ -1,4 +1,4 @@
-From fadb3a2b4644e55e9707defc4cc34e5dac9c8952 Mon Sep 17 00:00:00 2001
+From 92d87f4b5d3541985c75834001786f1dd3ea8e58 Mon Sep 17 00:00:00 2001
 From: Matthias Brugger <mbrugger@suse.com>
 Date: Wed, 29 Jan 2020 09:56:06 +0100
 Subject: [PATCH] configs: Re-sync with CONFIG_DISTRO_DEFAULTS
@@ -18,10 +18,10 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  5 files changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/configs/sandbox64_defconfig b/configs/sandbox64_defconfig
-index 6c488bac2b3..de19fcb0e38 100644
+index 3be9a00a85..19b7f94d63 100644
 --- a/configs/sandbox64_defconfig
 +++ b/configs/sandbox64_defconfig
-@@ -88,7 +88,6 @@ CONFIG_CMD_REGULATOR=y
+@@ -89,7 +89,6 @@ CONFIG_CMD_REGULATOR=y
  CONFIG_CMD_AES=y
  CONFIG_CMD_TPM=y
  CONFIG_CMD_TPM_TEST=y
@@ -30,32 +30,32 @@ index 6c488bac2b3..de19fcb0e38 100644
  CONFIG_CMD_CRAMFS=y
  CONFIG_CMD_EXT4_WRITE=y
 diff --git a/configs/sandbox_defconfig b/configs/sandbox_defconfig
-index bc5bcb2a623..e0bab6fb6db 100644
+index 4ad10363e9..6706714fad 100644
 --- a/configs/sandbox_defconfig
 +++ b/configs/sandbox_defconfig
-@@ -121,7 +121,6 @@ CONFIG_CMD_REGULATOR=y
- CONFIG_CMD_AES=y
+@@ -124,7 +124,6 @@ CONFIG_CMD_AES=y
  CONFIG_CMD_TPM=y
  CONFIG_CMD_TPM_TEST=y
+ CONFIG_CMD_SCMI=y
 -CONFIG_CMD_BTRFS=y
  CONFIG_CMD_CBFS=y
  CONFIG_CMD_CRAMFS=y
  CONFIG_CMD_EROFS=y
 diff --git a/configs/socfpga_arria10_defconfig b/configs/socfpga_arria10_defconfig
-index c35a360a557..4695e23fd02 100644
+index 6d27deebd5..150180edb4 100644
 --- a/configs/socfpga_arria10_defconfig
 +++ b/configs/socfpga_arria10_defconfig
-@@ -69,3 +69,5 @@ CONFIG_DESIGNWARE_APB_TIMER=y
+@@ -67,3 +67,5 @@ CONFIG_DESIGNWARE_APB_TIMER=y
  CONFIG_USB=y
  CONFIG_USB_DWC2=y
  # CONFIG_SPL_WDT is not set
 +# CONFIG_CMD_BTRFS is not set
 +# CONFIG_FS_BTRFS is not set
 diff --git a/configs/turris_mox_defconfig b/configs/turris_mox_defconfig
-index c9815b612f0..dfc22ee0d22 100644
+index c62e0d04c9..36237199e2 100644
 --- a/configs/turris_mox_defconfig
 +++ b/configs/turris_mox_defconfig
-@@ -49,7 +49,6 @@ CONFIG_CMD_CACHE=y
+@@ -48,7 +48,6 @@ CONFIG_CMD_CACHE=y
  CONFIG_CMD_TIME=y
  CONFIG_CMD_AES=y
  CONFIG_CMD_HASH=y
@@ -64,7 +64,7 @@ index c9815b612f0..dfc22ee0d22 100644
  CONFIG_MAC_PARTITION=y
  CONFIG_OF_LIST="armada-3720-turris-mox armada-3720-ripe-atlas"
 diff --git a/configs/turris_omnia_defconfig b/configs/turris_omnia_defconfig
-index 65d4a296e72..9398d022f88 100644
+index 29148402a1..0f7c49ce7d 100644
 --- a/configs/turris_omnia_defconfig
 +++ b/configs/turris_omnia_defconfig
 @@ -73,7 +73,6 @@ CONFIG_CMD_CACHE=y

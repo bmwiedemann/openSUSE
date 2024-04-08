@@ -186,7 +186,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2024.01
+%define archive_version 2024.04
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -216,7 +216,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 %endif
-Version:        2024.01
+Version:        2024.04
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
@@ -247,13 +247,6 @@ Patch0013:      0013-Disable-timer-check-in-file-loading.patch
 Patch0014:      0014-Enable-EFI-and-ISO-partitions-suppo.patch
 Patch0015:      0015-cmd-boot-add-brom-cmd-to-reboot-to-.patch
 Patch0016:      0016-cmd-boot-add-brom-cmd-to-reboot-to-.patch
-Patch0017:      0017-rpi5-add-initial-memory-map-for-bcm.patch
-Patch0018:      0018-rpi5-Use-devicetree-as-alternative-.patch
-Patch0019:      0019-rpi5-Use-devicetree-to-retrieve-boa.patch
-Patch0020:      0020-bcm2835-Dynamically-calculate-bytes.patch
-Patch0021:      0021-mmc-bcmstb-Add-support-for-bcm2712-.patch
-Patch0022:      0022-configs-rpi_arm64-enable-SDHCI-BCMS.patch
-Patch0023:      0023-configs-rpi_arm64-build-position-in.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison

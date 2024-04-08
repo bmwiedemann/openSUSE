@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr  5 09:34:32 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2024.04:
+  * Full changelog available at:
+    https://source.denx.de/u-boot/u-boot/-/compare/v2024.01...v2024.04
+- Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2024.04
+  * Patches dropped:
+  0017-rpi5-add-initial-memory-map-for-bcm.patch
+  0018-rpi5-Use-devicetree-as-alternative-.patch
+  0019-rpi5-Use-devicetree-to-retrieve-boa.patch
+  0020-bcm2835-Dynamically-calculate-bytes.patch
+  0021-mmc-bcmstb-Add-support-for-bcm2712-.patch
+  0022-configs-rpi_arm64-enable-SDHCI-BCMS.patch
+  0023-configs-rpi_arm64-build-position-in.patch
+
+-------------------------------------------------------------------
 Wed Feb 14 10:09:59 UTC 2024 - Matthias Brugger <mbrugger@suse.com>
 
 Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2024.01

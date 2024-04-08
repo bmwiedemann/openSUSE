@@ -1,4 +1,4 @@
-From 2d10fd4128213277d885dfb46970d3396bcdb5a8 Mon Sep 17 00:00:00 2001
+From db9bff8fbbf91acf096ef96d79407cce5ea5a5f0 Mon Sep 17 00:00:00 2001
 From: Andy Yan <andy.yan@rock-chips.com>
 Date: Tue, 6 Feb 2018 09:51:12 +0800
 Subject: [PATCH] cmd: boot: add brom cmd to reboot to brom dnl mode
@@ -12,7 +12,7 @@ Signed-off-by: Michal Suchanek <msuchanek@suse.de>
  2 files changed, 21 insertions(+)
 
 diff --git a/arch/arm/include/asm/arch-rockchip/boot_mode.h b/arch/arm/include/asm/arch-rockchip/boot_mode.h
-index 6b2a610cf4c..bcdf4420cfc 100644
+index 6b2a610cf4..bcdf4420cf 100644
 --- a/arch/arm/include/asm/arch-rockchip/boot_mode.h
 +++ b/arch/arm/include/asm/arch-rockchip/boot_mode.h
 @@ -19,6 +19,7 @@
@@ -24,7 +24,7 @@ index 6b2a610cf4c..bcdf4420cfc 100644
  #endif
  
 diff --git a/cmd/boot.c b/cmd/boot.c
-index 14839c1cedc..d7c7db449c5 100644
+index 14839c1ced..d7c7db449c 100644
 --- a/cmd/boot.c
 +++ b/cmd/boot.c
 @@ -44,16 +44,36 @@ static int do_go(struct cmd_tbl *cmdtp, int flag, int argc, char *const argv[])
