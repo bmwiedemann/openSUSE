@@ -55,4 +55,14 @@
     <comment></comment>
     <requestid>814866</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>32e9ff03d262425b27e812c1b70b9904</srcmd5>
+    <version>4.1.0</version>
+    <time>1712590842</time>
+    <user>anag+factory</user>
+    <comment>- Run tests in a copy of the examples folder to do not modify
+  sources. bsc#1222349
+- Fix rpmlint issues</comment>
+    <requestid>1166183</requestid>
+  </revision>
 </revisionlist>

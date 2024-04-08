@@ -1,7 +1,7 @@
 #
 # spec file for package python-praatio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-praatio
 Version:        4.1.0
 Release:        0
@@ -54,8 +52,9 @@ with  transcripts and associated audio file and some other tools for
 use with praat.
 
 %prep
-%setup -q -n praatIO-%{version}
+%autosetup -p1 -n praatIO-%{version}
 sed -i 's/\r$//' examples/files/mary.TextGrid
+chmod a-x examples/files/*.wav
 
 %build
 %python_build
@@ -65,11 +64,16 @@ sed -i 's/\r$//' examples/files/mary.TextGrid
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest examples/test/*.py
+# The tests create new files, so copying the folder to do not modify
+# anything, bsc#1222349
+cp -rf examples examples-copy
+%pytest examples-copy/test/*.py
+rm -rf examples-copy
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/praatio
+%{python_sitelib}/praatio-%{version}*-info
 
 %files -n %{name}-doc
 %license LICENSE
