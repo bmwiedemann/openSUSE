@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 04 15:23:00 UTC 2024 - Christian Keil <keil@dfn-cert.de>
+
+- Add Python 3.11 build.
+
+-------------------------------------------------------------------
 Thu Jan 11 03:17:05 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros.

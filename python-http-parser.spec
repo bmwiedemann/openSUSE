@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15allpythons}
 Name:           python-http-parser
 Version:        0.9.0
 Release:        0
