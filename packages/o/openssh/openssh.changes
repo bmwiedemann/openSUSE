@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Apr  5 11:10:18 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add missing bugzilla/CVE references to the changelog
+
+-------------------------------------------------------------------
+Thu Apr  4 12:23:13 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from SLE which was missing in Factory:
+  * Mon Jun  7 20:54:09 UTC 2021 - Hans Petter Jansson <hpj@suse.com>
+- Add openssh-mitigate-lingering-secrets.patch (bsc#1186673), which
+  attempts to mitigate instances of secrets lingering in memory
+  after a session exits. (bsc#1213004 bsc#1213008) 
+- Rebase patch:
+  * openssh-6.6p1-privsep-selinux.patch
+
+-------------------------------------------------------------------
+Tue Apr  2 13:07:43 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+   
+- Rebase openssh-7.7p1-fips.patch (bsc#1221928) 
+  Remove OPENSSL_HAVE_EVPGCM-ifdef, which is no longer supported by
+  upstream
+
+-------------------------------------------------------------------
 Tue Apr  2 11:23:05 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use %config(noreplace) for sshd_config . In any case, it's
@@ -27,7 +50,8 @@ Sun Feb 25 18:26:23 UTC 2024 - Hans Petter Jansson <hpj@suse.com>
     protocol by sending extra messages prior to the commencement of
     encryption, and deleting an equal number of consecutive messages
     immediately after encryption starts. A peer SSH client/server
-    would not be able to detect that messages were deleted.
+    would not be able to detect that messages were deleted
+    (bsc#1217950, CVE-2023-48795).
   * ssh-agent(1): when adding PKCS#11-hosted private keys while
     specifying destination constraints, if the PKCS#11 token returned
     multiple keys then only the first key had the constraints applied.
@@ -279,14 +303,14 @@ Wed Sep 27 06:28:57 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 -------------------------------------------------------------------
 Fri Jul 21 02:48:58 UTC 2023 - Simon Lees <sflees@suse.de>
 
-- Update to openssh 9.3p2 (bsc#1213504, CVE-2023-38408):
+- Update to openssh 9.3p2:
   Security
   ========
 
-  Fix CVE-2023-38408 - a condition where specific libaries loaded via
+  Fix a condition where specific libaries loaded via
   ssh-agent(1)'s PKCS#11 support could be abused to achieve remote
   code execution via a forwarded agent socket if the following
-  conditions are met:
+  conditions are met (bsc#1213504, CVE-2023-38408):
 
   * Exploitation requires the presence of specific libraries on
     the victim system.
@@ -1042,7 +1066,7 @@ Tue Sep 28 17:50:57 UTC 2021 - Hans Petter Jansson <hpj@suse.com>
 
     Depending on system configuration, inherited groups may allow
     AuthorizedKeysCommand/AuthorizedPrincipalsCommand helper programs to
-    gain unintended privilege.
+    gain unintended privilege (bsc#1190975, CVE-2021-41617).
 
     Neither AuthorizedKeysCommand nor AuthorizedPrincipalsCommand are
     enabled by default in sshd_config(5).
@@ -1241,7 +1265,7 @@ Tue Sep 28 17:50:57 UTC 2021 - Hans Petter Jansson <hpj@suse.com>
   * ssh-agent(1): fixed a double-free memory corruption that was
     introduced in OpenSSH 8.2 . We treat all such memory faults as
     potentially exploitable. This bug could be reached by an attacker
-    with access to the agent socket.
+    with access to the agent socket (bsc#1183137, CVE-2021-28041)
 
   = Potentially-incompatible changes
   * ssh(1), sshd(8): this release changes the first-preference signature
@@ -2270,7 +2294,9 @@ Tue Oct  9 11:01:40 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
   * openssh-7.7p1-fips.patch
   * openssh-7.7p1-cavstest-ctr.patch
   * openssh-7.7p1-cavstest-kdf.patch
-  * openssh-7.7p1-fips_checks.patch
+  * openssh-7.7p1-fips_checks.patch . Close the right
+    filedescriptor to avoid fd leads, and also close fdh in
+    read_hmac (bsc#1209536).
   * openssh-7.7p1-seed-prng.patch
   * openssh-7.7p1-systemd-notify.patch
   * openssh-7.7p1-gssapi_key_exchange.patch

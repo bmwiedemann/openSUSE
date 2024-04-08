@@ -114,7 +114,7 @@ Index: openssh-9.3p2/sshd.c
  	if (privsep_chroot) {
  		/* Change our root directory */
 @@ -602,6 +606,9 @@ privsep_postauth(struct ssh *ssh, Authct
- {
+ 
  #ifdef DISABLE_FD_PASSING
  	if (1) {
 +#elif defined(WITH_SELINUX)

@@ -116,6 +116,7 @@ Patch49:        openssh-do-not-send-empty-message.patch
 Patch50:        openssh-openssl-3.patch
 Patch51:        wtmpdb.patch
 Patch52:        logind_set_tty.patch
+Patch54:        openssh-mitigate-lingering-secrets.patch
 Patch100:       fix-missing-lz.patch
 Patch102:       openssh-7.8p1-role-mls.patch
 Patch103:       openssh-6.6p1-privsep-selinux.patch
