@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-subprocess
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pytest-subprocess
 Version:        1.5.0
 Release:        0

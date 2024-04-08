@@ -16,4 +16,13 @@
   * metadata updates</comment>
     <requestid>1160805</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>74a1d60a4f6b3c70adb97ba1fc62bfba</srcmd5>
+    <version>1.1.2</version>
+    <time>1712590826</time>
+    <user>anag+factory</user>
+    <comment>- add sle15_python_module_pythons
+- package license</comment>
+    <requestid>1166147</requestid>
+  </revision>
 </revisionlist>

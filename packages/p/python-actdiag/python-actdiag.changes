@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  8 10:32:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Thu Jan 18 04:31:47 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros.

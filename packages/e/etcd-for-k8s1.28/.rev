@@ -16,4 +16,12 @@ https://github.com/kubernetes/kubernetes/blob/v1.28.2/build/dependencies.yaml#L6
     <comment></comment>
     <requestid>1141296</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3f30b031569a70b2d6e63c967499a8e0</srcmd5>
+    <version>3.5.12</version>
+    <time>1712590837</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166179</requestid>
+  </revision>
 </revisionlist>

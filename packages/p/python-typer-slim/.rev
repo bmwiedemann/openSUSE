@@ -11,4 +11,15 @@ This SR will be followed with SRs for the equally split out python-typer-cli, an
 I tested the upgrade path and this will not break anybody relying on the package.</comment>
     <requestid>1164422</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>19743a56f22c4c15139a5909b645b6a7</srcmd5>
+    <version>0.12.1</version>
+    <time>1712590781</time>
+    <user>anag+factory</user>
+    <comment>- Update to upstream version 0.12.1
+  * No functional changes, only changes to upstream package
+    structure.
+</comment>
+    <requestid>1166087</requestid>
+  </revision>
 </revisionlist>

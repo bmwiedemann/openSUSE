@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.6.3
-%define short_version 6.6
+%define real_version 6.7.0
+%define short_version 6.7
 %define tar_name qtopcua-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-opcua%{?pkg_suffix}
-Version:        6.6.3
+Version:        6.7.0
 Release:        0
 Summary:        Qt wrapper for existing OPC UA stacks
 # src/plugins/opcua is GPL-3.0-or-later, rest is dual licensed
@@ -59,8 +59,8 @@ Architecture) on top of a 3rd party OPC UA stack.
 
 %package -n libQt6OpcUa6
 Summary:        Qt 6 OpcUa Client Library
-Recommends:     %{name} = %{version}
-Recommends:     %{name}-imports = %{version}
+Recommends:     qt6-opcua = %{version}
+Recommends:     qt6-opcua-imports = %{version}
 
 %description -n libQt6OpcUa6
 Qt 6 OpcUa Client Library.
@@ -85,7 +85,7 @@ ABI or API guarantees.
 
 %package imports
 Summary:        Qt 6 OpcUa QML files and plugins
-Requires:       %{name} = %{version}
+Requires:       qt6-opcua = %{version}
 
 %description imports
 QML files and plugins from the Qt 6 OpcUa module.
@@ -139,10 +139,11 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6OpcUa.so.*
 
 %files devel
+%{_qt6_bindir}/qopcuaxmldatatypes2cpp
 %{_qt6_cmakedir}/Qt6/FindOpen62541.cmake
-%{_qt6_cmakedir}/Qt6/FindUacpp.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtOpcUaTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6OpcUa/
+%{_qt6_cmakedir}/Qt6QtOpcUaTools/
 %{_qt6_descriptionsdir}/OpcUa.json
 %{_qt6_includedir}/QtOpcUa
 %{_qt6_libdir}/libQt6OpcUa.prl

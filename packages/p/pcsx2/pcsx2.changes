@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Fri Mar 29 13:14:41 UTC 2024 - i@guoyunhe.me
+
+- Update to version 1.7.5656~git20240329:
+  * GS/DX: Fix ALT+ENTER causing mode switch
+  * GS/OGL: Fix recursive macro compile error
+  * GSDevice: Improve IsEffective() test
+
+-------------------------------------------------------------------
+Fri Mar 29 12:41:14 UTC 2024 - i@guoyunhe.me
+
+- Update to version 1.7.5654~git20240329:
+  * GS: Remove reduced-depth-range hack
+  * GS: Remove DSB feature
+  * Config: Allow the use of portable.txt (#10984)
+  * Qt: Remove Speed Limiter setting
+  * GameDB: Various fixes
+  * CDVD: fix sceCdReadConsoleID on bios v1.70 and up
+  * GS: Purge GSinit() and GSshutdown()
+  * OSD: Minor adjustment to basic blending notification
+  * GS/Metal: Fix Wunused-const-variable warning.
+  * GS: Improve state load determinism
+  * GS/HW: Improve accuracy of RGB_ONLY AFAIL
+  * GSDevice: Add separate RGB/A blend factors
+  * GS: Use SRC1_COLOR instead of SRC1_ALPHA for DSB
+  * GS: Remove separate alpha pass fallback
+  * GS/HW: Cleanup blend function, update blend levels.
+  * GS/HW: Detect shuffles reshaping the target
+  * GS:MTL: RTA correction shader is used to scale textures
+  * GS:MTL: Formatting
+  * GS: Treat rta as a bit flag
+  * GS/HW: RTA improvements and enhancements
+
+-------------------------------------------------------------------
+Mon Mar 25 13:30:14 UTC 2024 - i@guoyunhe.me
+
+- Remove unneeded build requires kgconfig(gtk+-3.0) and duplicated
+  build requires pkgconfig(liblzma)
+- Update to version 1.7.5641~git20240324:
+  * ci: Bump the ci-deps group with 5 updates (#10944)
+  * GS/HW: Check both edges of current triangle for quads
+  * GS/HW: Compare dirty rects by valid bounds
+  * GS/HW: Improve channel + texture shuffle detection and processing
+  * CI: Set build-log-url for Flathub upload
+  * USB: Cleanup usb qemu.
+  * UnitTests: Only build SSE4 on Apple Silicon host
+  * CI: Swap to MacOS 14 runner
+  * deps: Build MoltenVK on MacOS
+  * Qt: Don't invoke quit() from closeEvent()
+  * Qt: Enable unifiedTitleAndToolBarOnMac for main window
+  * GS/HW: Make sure RTA doesn't correct when it can't
+  * CI:mac: Update to Xcode 15.2
+  * CI:mac: Set CMAKE_INSTALL_NAME_DIR
+  * CI:mac: Use shared cmake config variable
+  * CI: Support relative dirs in install scripts
+  * Qt: Fix main window stuck open after update
+  * README: Update docs link
+  * GameDB: Fix SSX On Tour NTSC-US patch
+  * Qt: Update docs link on setup wizard
+  * GameDB: Add some gshw fixes.
+  * Qt: Fix closing log window via taskbar
+  * GS/HW: Optimize RTA correction to reduce copies
+  * GS/HW: Improve how we handle texture shuffles with barriers.
+  * PAD: Update to latest controller database.
+  * UI: Rename screenshot size options
+  * GameDB: Various fixes
+  * GameDB: NTSC-J Fixes. (#10928)
+  * UI: Add the "points" unit in some RA-related strings (#10917)
+  * GS/HW: Decorrect targets for readbacks.
+  * GS/HW: Allow source is rt to use corrected alpha in most cases.
+  * GS/HW: Clean up Correct/Decorrect calls and functions.
+  * GS/HW: RTA Decorrect on Target Update.
+  * GS/HW: Adjust RTA shader precision.
+  * GS/HW: Check if channel shuffling actually needs decorrecting.
+  * GS/HW: Improve how we handle decorrection on texture shuffles.
+  * GS/HW: RTA checks for moves and DST matches and ICO CRC.
+  * GS/HW: Avoid corrections on new targets.
+  * GS/HW: Update TargetClear to work with RTA Correction.
+  * GS/HW: RTA Correction, implement on DATE.
+  * GS/HW: Make sure we don't multiply Cs if Ad is corrected.
+  * GS/HW: Decorrect Ad on sw blend in tfx shader.
+  * GS/HW: Avoid (Ad + 1) cases on RTA correction.
+  * GS/HW: Add support for Ad (RTA) correction.
+  * GS/HW: Improve shuffle width/height detection
+
+-------------------------------------------------------------------
 Sat Mar 16 04:43:48 UTC 2024 - i@guoyunhe.me
 
 - Added xpadneo recommends to support Xbox One/Series wireless controllers

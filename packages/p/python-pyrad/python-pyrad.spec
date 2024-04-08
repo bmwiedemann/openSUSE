@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyrad
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyrad
 Version:        2.4
 Release:        0
@@ -24,12 +23,17 @@ Summary:        RADIUS tools
 License:        BSD-3-Clause
 URL:            https://github.com/pyradius/pyrad
 Source0:        https://github.com/pyradius/pyrad/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#pyradius/pyrad#162
+Patch0:         use-correct-assertion-methods.patch
 BuildRequires:  %{python_module netaddr}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  netcfg
 BuildRequires:  python-rpm-macros
+Requires:       python-netaddr
 Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
@@ -40,13 +44,15 @@ It takes care of all the details like building RADIUS packets, sending
 them and decoding responses.
 
 %prep
-%setup -q -n pyrad-%{version}
+%autosetup -p1 -n pyrad-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+# Do not install the examples into site-packages
+%python_expand rm -r %{buildroot}%{$python_sitelib}/example
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,6 +60,7 @@ them and decoding responses.
 
 %files %{python_files}
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/pyrad
+%{python_sitelib}/pyrad-%{version}.dist-info
 
 %changelog

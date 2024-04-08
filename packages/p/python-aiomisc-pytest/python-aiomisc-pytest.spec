@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-aiomisc-pytest
 Version:        1.1.2
 Release:        0
@@ -50,6 +51,7 @@ This package contains a plugin for pytest.
 # pytest
 
 %files %{python_files}
+%license COPYING
 %doc README.md
 %pycache_only %{python_sitelib}/__pycache__/*.pyc
 %{python_sitelib}/aiomisc_pytest.py

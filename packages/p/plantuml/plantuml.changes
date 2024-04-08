@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Apr  7 16:18:17 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.24.4
+  * Implement Chen Notation for ER-diagrams.
+  * Add a tool-independent XMI format.
+  * feat: add %get_all_stdlib builtin function.
+  * fix: suppress @[start|end]uml on sunlust theme.
+  * How to extends a generic class.
+  * Negative values causing syntax error in robust "has" list.
+  * Activity Diagram: Style of multiline Box.
+  * Allow style for multi-line elements on Activity diagram.
+  * EIP standard library.
+- Update to version 1.24.2
+  * Update standard library.
+  * feat: add %get_all_theme builtin function.
+  * fix: update graphviz version check pattern.
+  * Add theme Sunlust.
+  * feat: Improve new Random function.
+  * Improve Chronology diagram management.
+  * add: Language Descriptor Improvement (adding action and
+    process).
+
+-------------------------------------------------------------------
 Wed Feb 21 21:00:54 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

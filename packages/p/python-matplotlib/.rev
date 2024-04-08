@@ -932,4 +932,12 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
     <comment></comment>
     <requestid>1155352</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>7c8aa359ac9b076dd208f67ff2b508ee</srcmd5>
+    <version>3.8.3</version>
+    <time>1712590702</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1163696</requestid>
+  </revision>
 </revisionlist>

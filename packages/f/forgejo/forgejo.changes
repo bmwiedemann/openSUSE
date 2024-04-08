@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr  5 18:39:07 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to 1.21.10-0:
+  * CVE-2023-45288 which permits an attacker to cause an HTTP/2 endpoint to
+    read arbitrary amounts of header data
+  * Fix to not remove repository avatars when the doctor runs with --fix
+    on the repository archives.
+  * Detect protected branch on branch rename.
+  * Don't delete inactive emails explicitly.
+  * Fix user interface when a review is deleted without refreshing.
+  * Fix paths when finding files via the web interface that were not escaped.
+  * Respect DEFAULT_ORG_MEMBER_VISIBLE setting when adding creator to org.
+  * Fix duplicate migrated milestones.
+  * Fix inline math blocks can't be preceeded/followed by alphanumerical
+    characters.
+
+-------------------------------------------------------------------
 Thu Mar 28 06:58:20 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - increase golang dep to 1.22, to imitate the CI/CD of forgejo

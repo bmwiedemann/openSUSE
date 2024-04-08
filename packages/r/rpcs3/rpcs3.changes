@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Fri Mar 29 14:20:30 UTC 2024 - i@guoyunhe.me
+
+- Update to version 0.0.31~git20240329:
+  * Fix savestate reload functionality
+  * Savestates/SPU: Partially publicize SPU-Compatible functionality
+  * SaveStates: Add error messages on screen
+  * rsx: Fix loading mid-draw call savestates
+  * LV2: Silence logging of semaphore
+  * PPU: Fix logging of sys_interrupt syscalls
+  * LV2: Silence logging of mutex and cond syscalls
+  * workaround Clang 18.1 crash
+  * fix compiler warnings
+  * main.cpp: remove outdated code for MSVC 19.27
+  * fix GCC warnings
+  * cmake: fix MSVC build
+  * llvm: update to 18
+  * rsx: Make overlay manager default lock-state exclusive
+  * rsx: Fix race conditions on removals
+  * rsx: Rewrite fragment shader invalidation test
+  * rsx: Fix memory range invalidation
+  * Fix audit crash in games where hash strategy is heavily used
+  * audio: allow to choose channel layouts
+  * Savestates/RSX: Save pending flip
+  * PPU: Fixup savestate prio bit usage
+  * util\serialization_ext.cpp: Fixup
+  * Savestates: safe saving while cellSaveData is active
+  * SPU LLVM: Fix Forwarding GPR stores savestate safety
+  * Thread.cpp: Reduce logging
+  * Savestates: Reduce logging
+  * SPU LLVM: Add assert for MFC abort
+  * Silence cellGemGetState
+  * Fixup emulation stopping
+  * vm: Fix writer lock leak
+  * rsx: Move SPIRV stuff into common code
+  * GL: fix segfault in GLGSRender::flip
+  * Add Legacy plugin to Building.md
+  * Remove Windows 7 reference
+  * Qt 6.6.3
+  * Savestates/PPU: Fix PRX relocations
+  * Savestates: Minor logging message
+  * Fix shutting down emulation while save-stating
+  * SPU: Make STOP a safe return instruction
+  * Savestates: Make locking SPU threads more reasonable
+  * PPU LLVM: Remove cast to constant
+  * Savestates/SPU: Extend RCHCNT safe returns
+  * Savestates: Save PPU running order
+  * Silence logging of cellScreenShot
+  * cellAudio: log backend channel count
+  * Qt: Rename Navigation controller to PS Move Navigation
+  * cellPad: simplify for loops
+  * cellPad: move getters to where they are actually needed
+  * cellMic: add nullptr check for data in cell_mic_read
+  * Fix some warnings
+  * Update miniupnpd to 2.3.6
+  * Update wolfssl to 5.7.0
+
+-------------------------------------------------------------------
+Mon Mar 25 13:49:42 UTC 2024 - i@guoyunhe.me
+
+- Update to version 0.0.31~git20240325:
+  * Savestates/SPU: Add RCHCNT as a safe return in compatiblity mode
+  * Fix ppu_thread::serialize_common
+  * Fixup Savestate Segfault
+  * Fixup Savestate Progress
+  * Reduce compression level to 8 for faster compression
+  * util\serialization_ext.cpp: Fix queued data with no output
+  * Fix NPD files decryption in decryption tool
+  * GUI: Progress Dialog On Save State Creation
+  * utils: Fix shared_ptr::store/exchange
+  * Add logging for CallFromMainThread
+  * PPU LLVM: Remove one external symbol resolve for BLR
+  * PPU LLVM: Use symbol resolver function to resolve functions
+  * PPU DisAsm: Fixup conditional indirect branches disasm
+  * Enable WOLFSSL_ALT_CERT_CHAINS
+
+-------------------------------------------------------------------
 Sat Mar 16 04:30:19 UTC 2024 - i@guoyunhe.me
 
 - Added xpadneo recommends to support Xbox One/Series wireless controllers

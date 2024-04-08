@@ -48,4 +48,12 @@
     <comment></comment>
     <requestid>1096282</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1b25e2b63f1c4fbb551fe17792b0a1af</srcmd5>
+    <version>0.4.7</version>
+    <time>1712590825</time>
+    <user>anag+factory</user>
+    <comment>- add sle15_python_module_pythons</comment>
+    <requestid>1166150</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr  8 10:39:33 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- update .spec file to set FORCE_HOST_GO env variable,
+  to force k8s build scripts use the local GOTOOLCHAIN version from the build pipeline
+  (i.e. GOTOOLCHAIN='auto')
+  * ref: https://github.com/kubernetes/kubernetes/blob/9791f0d1f39f3f1e0796add7833c1059325d5098/hack/lib/golang.sh#L507
+
+-------------------------------------------------------------------
+Mon Apr 08 08:12:59 UTC 2024 - priyanka.saggu@suse.com
+
+- Update to version 1.26.15:
+  * [CVE-2024-24786] Bump github.com/golang/protobuf v1.5.4, google.golang.org/protobuf v1.33.0
+  * [go] Bump images, dependencies and versions to go 1.21.8 / distroless-iptables to v0.4.6
+
+-------------------------------------------------------------------
 Mon Feb 26 08:34:46 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - add new patch to advance autoscaling v2 as the preferred API version, to fix bsc#1219964, CVE-2024-0793

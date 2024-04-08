@@ -1,7 +1,7 @@
 #
 # spec file for package rpi-imager
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rpi-imager
-Version:        1.8.3
+Version:        1.8.5
 Release:        0
 Summary:        Raspberry Pi Imaging Utility
 License:        Apache-2.0
@@ -25,6 +25,7 @@ Group:          Hardware/Other
 URL:            https://github.com/raspberrypi/rpi-imager
 Source:         https://github.com/raspberrypi/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  git
@@ -44,12 +45,21 @@ BuildRequires:  pkgconfig(Qt5QuickWidgets)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libcurl)
+ExcludeArch:    s390x
+Recommends:     polkit-gnome
 
 %description
+Raspberry Pi Imager is the quick and easy way to install Raspberry Pi OS and
+other operating systems to a microSD card, ready to use with your Raspberry
+Pi. Watch our 45-second video to learn how to install an operating system
+using Raspberry Pi Imager.
 
-Raspberry Pi Imager is the quick and easy way to install Raspberry Pi OS and other operating systems to a microSD card, ready to use with your Raspberry Pi. Watch our 45-second video to learn how to install an operating system using Raspberry Pi Imager.
+Download and install Raspberry Pi Imager to a computer with an SD card reader.
+Put the SD card you'll use with your Raspberry Pi into the reader and run
+Raspberry Pi Imager.
 
-Download and install Raspberry Pi Imager to a computer with an SD card reader. Put the SD card you'll use with your Raspberry Pi into the reader and run Raspberry Pi Imager.
+NOTE: Relies on polkit when run as regular user. It doesn't have to be
+      polkit-gnome, but it has a low install base overhead.
 
 %prep
 %autosetup -p1
@@ -68,9 +78,11 @@ cp icons/rpi-imager.png %{buildroot}%{_datadir}/icons/.
 
 pwd
 pushd linux
-desktop-file-install --dir %{buildroot}%{_datadir}/applications/ rpi-imager.desktop
-%suse_update_desktop_file rpi-imager -r Settings HardwareSettings
-%suse_update_desktop_file rpi-imager -G Imager
+desktop-file-install --dir %{buildroot}%{_datadir}/applications/ org.raspberrypi.rpi-imager.desktop
+%suse_update_desktop_file org.raspberrypi.rpi-imager -r Settings HardwareSettings
+%suse_update_desktop_file org.raspberrypi.rpi-imager -G Imager
+
+%fdupes %{buildroot}
 
 %files
 %doc README.md

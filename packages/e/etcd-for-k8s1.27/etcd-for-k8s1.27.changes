@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Apr 08 11:11:39 UTC 2024 - priyanka.saggu@suse.com
+
+- Update to version 3.5.12:
+  * Bump golang.org/x/crypto to v0.17+ to address CVE-2023-48795
+  * test: fix TestHashKVWhenCompacting: ensure all goroutine finished
+  * print error log when creating peer listener failed
+  * mvcc: Printing etcd backend database related metrics inside scheduleCompaction function
+  * dependency: update go version to 1.20.13
+  * commit bbolt transaction if there is any pending deleting operations
+  * add tests to test tx delete consistency.
+  * Don't flock snapshot files
+  * Backport adding digest for etcd base image.
+  * Add a unit tests and missing flags in etcd help.
+  * Add missing flag in etcd help.
+  * Backport testutils.ExecuteUntil to 3.5 branch
+  * member replace e2e test
+  * Check if be is nil to avoid panic when be is overriden with nil by recoverSnapshotBackend on line 517
+  * Don't redeclare err and snapshot variable, fixing validation of consistent index and closing database on defer
+  * test: enable gofail in release e2e test.
+  * [3.5] backport health check e2e tests.
+  * etcdserver: add linearizable_read check to readyz.
+  * etcd: Update go version to 1.20.12
+  * tests: Extract e2e cluster setup to separate package
+  * server: disable redirects in peer communication
+  * etcdserver: add metric counters for livez/readyz health checks.
+  * etcdserver: add livez and ready http endpoints for etcd.
+  * http health check bug fixes
+  * server: Split metrics and health code
+  * server: Cover V3 health with tests
+  * server: Refactor health checks
+  * server: Run health check tests in subtests
+  * server: Rename test case expect fields
+  * server: Use named struct initialization in healthcheck test
+  * Backport server: Don't follow redirects when checking peer urls.
+  * Backport embed: Add tracing integration test.
+  * Backport server: Have tracingExporter own resources it initialises.
+  * Backport server: Add sampling rate to distributed tracing.
+  * upgrade github.com/stretchr/testify,google.golang.org/genproto/googleapis/api,google.golang.org/grpc to make it consistent
+  * CVE-2023-47108: Backport go.opentelemetry.io/otel@v1.20.0 and go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc@v0.46.0
+  * github workflow: run arm64 tests on every push
+  * etcd: upgrade go version from 1.20.10 to 1.20.11
+
+-------------------------------------------------------------------
 Wed Jan 24 14:53:19 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 3.5.10:

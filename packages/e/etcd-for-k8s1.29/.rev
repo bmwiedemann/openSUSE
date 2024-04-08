@@ -9,4 +9,12 @@
 https://github.com/kubernetes/kubernetes/blob/v1.29.1/build/dependencies.yaml#L65</comment>
     <requestid>1141315</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5b3014e3ee4519a461a2a85ddafe7803</srcmd5>
+    <version>3.5.12</version>
+    <time>1712590830</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166175</requestid>
+  </revision>
 </revisionlist>

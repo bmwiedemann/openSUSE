@@ -93,4 +93,12 @@
 - Add patch support-python-312.patch, support Python 3.12.</comment>
     <requestid>1154477</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7e1f2cb1516c24987cd5dbaa153548f4</srcmd5>
+    <version>2.5.0</version>
+    <time>1712590794</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166107</requestid>
+  </revision>
 </revisionlist>

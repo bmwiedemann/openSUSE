@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1086753</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3e1cb95053c6d02e9799b50f1b3e6916</srcmd5>
+    <version>0.5.2</version>
+    <time>1712590810</time>
+    <user>anag+factory</user>
+    <comment>- add sle15_python_module_pythons</comment>
+    <requestid>1166143</requestid>
+  </revision>
 </revisionlist>

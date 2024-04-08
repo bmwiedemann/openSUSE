@@ -1,7 +1,7 @@
 #
 # spec file for package dynamips
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,19 +45,22 @@ simply a complementary tool to real labs for administrators of Cisco networks
 or people wanting to pass their CCNA/CCNP/CCIE exams.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %cmake \
 %ifarch x86_64
-	-DYNAMIPS_ARCH=amd64 \
+  -DYNAMIPS_ARCH=amd64 \
 %endif
-..
-%make_jobs
+  -DCMAKE_INSTALL_DOCDIR:STRING=%{_datadir}/doc/%{name} \
+%{nil}
+
+%cmake_build
 
 %install
 %cmake_install
+
+%check
 
 %files
 %{_bindir}/%{name}

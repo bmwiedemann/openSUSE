@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.6.3
-%define short_version 6.6
+%define real_version 6.7.0
+%define short_version 6.7
 %define tar_name qtquick3dphysics-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quick3dphysics%{?pkg_suffix}
-Version:        6.6.3
+Version:        6.7.0
 Release:        0
 Summary:        Qt 6 Quick3D Physics Extensions
 License:        GPL-3.0-only
@@ -46,7 +46,7 @@ BuildRequires:  cmake(Qt6Quick) = %{real_version}
 BuildRequires:  cmake(Qt6Quick3D) = %{real_version}
 #
 # Only arm and x86_64 are supported
-ExclusiveArch:  %{arm} aarch64 x86_64
+ExclusiveArch:  %{arm} aarch64 x86_64 %x86_64
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}

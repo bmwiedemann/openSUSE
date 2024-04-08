@@ -1,7 +1,7 @@
 #
 # spec file for package duplicity
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define _python3_version %{?python311_version}
 %endif
 Name:           duplicity
-Version:        2.1.4
+Version:        2.2.3
 Release:        0
 Summary:        Encrypted bandwidth-efficient backup using the rsync algorithm
 License:        GPL-3.0-or-later
@@ -64,7 +64,7 @@ links.
 
 %prep
 %setup -q
-sed -i -e 's|/usr/bin/env python3|/usr/bin/%{_python}|g' bin/duplicity
+sed -i -e 's|/usr/bin/env python3|/usr/bin/%{_python}|g' duplicity/__main__.py
 
 %build
 %if 0%{?suse_version} > 1500

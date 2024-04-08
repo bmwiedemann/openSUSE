@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 06 20:04:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.38.0:
+  * fix: updating golang version
+  * feat(checkout): Fixing bug with private forks
+  * refactor: Refactor code that returns buffer contents in tests
+  * chore: fix typo in trigger command docs
+  * chore: fix typo support -> supported
+
+-------------------------------------------------------------------
 Sun Mar 31 18:28:24 UTC 2024 - chris@computersalat.de
 
 - fix deps

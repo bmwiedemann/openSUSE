@@ -75,4 +75,20 @@
   * Bug fixes</comment>
     <requestid>971239</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2963907588680d4014732382ca09f15f</srcmd5>
+    <version>0.7.0</version>
+    <time>1712590776</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.0:
+  * Redesign the user interface and use latest GNOME patterns
+  * Inhibit suspension when playing
+  * Pause playback if the system enters power saver mode
+  * MPRIS: Implement Play, Pause and Stop methods in addition to PlayPause
+  * MPRIS: Implement Next and Prev methods for navigating presets
+  * Updated Pink Noise sample
+  * Changed train sound
+  * Added preference to always start on pause</comment>
+    <requestid>1166082</requestid>
+  </revision>
 </revisionlist>

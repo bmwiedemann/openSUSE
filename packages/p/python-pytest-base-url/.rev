@@ -24,4 +24,16 @@
 - Stop using greedy globbing in %files.</comment>
     <requestid>1093885</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d54a3d262d86eb6b80afcaa8f51903a0</srcmd5>
+    <version>2.1.0</version>
+    <time>1712590802</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.0:
+  * Drop support for python 3.7
+  * Add support for python 3.11 - 3.12
+  * Add support for pytest-metadata 3.x
+  * Switch to Hatch</comment>
+    <requestid>1166127</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Apr  7 19:57:35 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- rpi-imager only supports little-endian architectures, stop trying
+  to build for (big-endian) s390x
+
+-------------------------------------------------------------------
+Tue Feb 27 19:03:58 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding "Recommends: polkit-gnome" along with a NOTE in the description
+  since using the GUI as a non-root user will throw an error on the
+  destination device.
+
+-------------------------------------------------------------------
+Tue Feb 27 16:09:51 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- version 1.8.5
+  * Retry on HTTP/2 errors.
+  * Linux: Fix display of application name and icon on GNOME desktop environment.
+  * Disable Link Time Optimization as precaution against hard to trace bugs.
+
+- version 1.8.4
+  * OS customisation: Fixed first character being dropped when replacing existing password
+  * OS customisation: Impose character limits on usernames & hostnames
+  * i18n: Added Polish translation
+  * i18n: Updated Catalan, Japanese translations
+  * cli: Fixed local file passing via --repo
+
+-------------------------------------------------------------------
 Wed Nov 29 23:09:03 UTC 2023 - Mikhail Paulyshka <me@mixaill.net>
 
 - add lzma-devel as build dependency

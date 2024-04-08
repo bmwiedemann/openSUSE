@@ -29,6 +29,7 @@
 # avoid "lto1: internal compiler error" during build
 %global _lto_cflags %{nil}
 
+%{?sle15_python_module_pythons}
 Name:           python-yt%{psuffix}
 Version:        4.3.0
 Release:        0

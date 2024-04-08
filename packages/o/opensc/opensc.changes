@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  5 18:54:38 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to verion 0.25.1
+  General improvements
+  * Add missing file to dist tarball to build documentation.
+  minidriver
+  * Fix RSA decryption with PKCS#1 v1.5 padding.
+  * Fix crash when app is not set.
+
+-------------------------------------------------------------------
 Wed Mar 13 21:56:31 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Build with support for libeac (OpenPACE)

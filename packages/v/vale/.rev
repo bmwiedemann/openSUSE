@@ -634,4 +634,16 @@
   * feat: support `replace` in `capitalization` (forwarded request 1161222 from jfkw)</comment>
     <requestid>1161230</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>47cb1ce930608fe02516a1055aa7b48d</srcmd5>
+    <version>3.4.1</version>
+    <time>1712590807</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.4.1:
+  * fix: fallback to default config when syncing
+  * feat: add `capitalize` option in `substitution`
+  * fix: only match case for `ignorecase: true`
+  * docs: add demo screenshot [ci skip] (forwarded request 1166208 from jfkw)</comment>
+    <requestid>1166210</requestid>
+  </revision>
 </revisionlist>

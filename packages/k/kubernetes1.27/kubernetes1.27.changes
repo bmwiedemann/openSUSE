@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr  8 11:11:50 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- update .spec file to set FORCE_HOST_GO env variable,
+  to force k8s build scripts use the local GOTOOLCHAIN version from the build pipeline
+  (i.e. GOTOOLCHAIN='auto')
+  * ref: https://github.com/kubernetes/kubernetes/blob/9791f0d1f39f3f1e0796add7833c1059325d5098/hack/lib/golang.sh#L507
+
+-------------------------------------------------------------------
+Mon Apr 08 11:10:48 UTC 2024 - priyanka.saggu@suse.com
+
+- Update to version 1.27.12:
+  * keep existing PDB conditions when updating status
+  * remove --v arg from kubetest2-tester-ginkgo test args
+  * ci: bump kind to latest for kms jobs
+  * [go] Bump images, dependencies and versions to go 1.21.8 / distroless-iptables to v0.4.6
+  * [CVE-2024-24786] Bump github.com/golang/protobuf v1.5.4, google.golang.org/protobuf v1.33.0
+  * fix UT failure TestPrintIPAddressList
+  * e2e_node: replace `registry.k8s.io/stress:v1` with agnhost
+  * promote agnhost to v2.47
+  * fixing issue with GetCPUUsageNanoCores on Windows
+  * Fix cleanup of file subpaths
+  * etcd: Update to version 3.5.12
+  * build etcd image v3.5.12
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.21.18`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.27.12/build/dependencies.yaml#L96-L98
+
+-------------------------------------------------------------------
 Mon Feb 26 08:39:41 UTC 2024 - priyanka.saggu@suse.com
 
 - Update to version 1.27.11:

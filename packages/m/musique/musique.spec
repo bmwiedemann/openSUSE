@@ -55,13 +55,9 @@ It's about listening to beautiful music.
 %prep
 %autosetup -p1
 
-%if 0%{?suse_version} < 1500
-SOURCE_DATE="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
-export SOURCE_DATE_EPOCH="$(date -d "$SOURCE_DATE" '+%%s')"
-%endif
 # Remove build time references so build-compare can do its work
-FAKE_BUILDDATE="$(LC_ALL=C date -u -d "@${SOURCE_DATE_EPOCH}" '+%%b %%e %%Y')"
-sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/" src/aboutview.cpp
+YEAR=$(date -u -d "@${SOURCE_DATE_EPOCH}" +%Y)
+sed -i "s/^BUILD_YEAR =.*/BUILD_YEAR = $YEAR/" musique.pro
 
 %build
 %qmake6 \

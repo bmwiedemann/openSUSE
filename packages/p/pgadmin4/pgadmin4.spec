@@ -38,11 +38,12 @@
 %global python3_flask_migrate_min_version 4.0
 %global python3_flask_min_version 2.3
 %global python3_flask_paranoid_min_version 0.2.0
-%global python3_flask_security_too_min_version 5.2.0
+%global python3_flask_security_too_min_version 5.3.0
 %global python3_flask_socketio_min_version 5.3.0
 %global python3_flask_sqlalchemy_min_version 3.1
 %global python3_flask_wtf_min_version 1.2
 %global python3_httpagentparser_min_version 1.9
+%global python3_jsonformatter_min_version 0.3.2
 %global python3_google_api_python_client_min_version 2.0
 %global python3_google_auth_oauthlib_min_version 1.1.0
 %global python3_ldap3_min_version 2.5.1
@@ -68,7 +69,7 @@
 %global user_group_name pgadmin
 
 Name:           pgadmin4
-Version:        8.3
+Version:        8.5
 Release:        0
 Summary:        Management tool for PostgreSQL
 License:        PostgreSQL
@@ -119,6 +120,7 @@ BuildRequires:  %{python_module bcrypt >= %{python3_bcrypt_min_version}}
 BuildRequires:  %{python_module cryptography >= %{python3_cryptography_min_version}}
 BuildRequires:  %{python_module eventlet >= %{python3_eventlet_min_version}}
 BuildRequires:  %{python_module httpagentparser >= %{python3_httpagentparser_min_version}}
+BuildRequires:  %{python_module jsonformatter >= %{python3_jsonformatter_min_version}}
 BuildRequires:  %{python_module keyring >= %{python3_keyring_min_version}}
 BuildRequires:  %{python_module ldap3 >= %{python3_ldap3_min_version}}
 BuildRequires:  %{python_module passlib >= %{python3_passlib_min_version}}
@@ -163,6 +165,7 @@ Requires:       %{python_module bcrypt >= %{python3_bcrypt_min_version}}
 Requires:       %{python_module cryptography >= %{python3_cryptography_min_version}}
 Requires:       %{python_module eventlet >= %{python3_eventlet_min_version}}
 Requires:       %{python_module httpagentparser >= %{python3_httpagentparser_min_version}}
+Requires:       %{python_module jsonformatter >= %{python3_jsonformatter_min_version}}
 Requires:       %{python_module keyring >= %{python3_keyring_min_version}}
 Requires:       %{python_module ldap3 >= %{python3_ldap3_min_version}}
 Requires:       %{python_module passlib >= %{python3_passlib_min_version}}
@@ -178,7 +181,7 @@ Requires:       %{python_module typer >= %{python3_typer_min_version}}
 Requires:       %{python_module urllib3 < 2}
 Requires:       %{python_module user-agents >= %{python3_user_agents_min_version}}
 Requires:       system-user-pgadmin
-Requires(postun):system-user-pgadmin
+Requires(postun): system-user-pgadmin
 Suggests:       %{python_module mod_wsgi}
 Suggests:       %{name}-doc
 Recommends:     %{name}-cloud
@@ -286,6 +289,8 @@ sed -e 's@PYTHONSITELIB@%{python_sitelib}@g' <%{SOURCE9} > README.SUSE.uwsgi
 
 # speaklater isn't really used
 sed -i -e 's/^speaklater.*//' requirements.txt
+# The bumped requirement for cryptography 42.0.* isn't real and 41.0.* (which is what we have in SLE) should be enough
+sed -i -e 's/^cryptography==42\.0\.\*/cryptography==41.0.*/' requirements.txt
 
 # Remove dependency on yarn version for which there's not an available package
 sed -i -z -e 's/,\n *"packageManager": "yarn@3.6.4"//' web/package.json

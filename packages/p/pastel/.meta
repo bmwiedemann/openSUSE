@@ -1,0 +1,6 @@
+<package name="pastel" project="openSUSE:Factory">
+  <title>CLI to generate, analyze, convert and manipulate colors</title>
+  <description>pastel is a command-line tool to generate, analyze, convert and manipulate colors. It supports many different color formats and color spaces like RGB (sRGB), HSL, CIELAB, CIELCh as well as ANSI 8-bit and 24-bit representations.</description>
+  <devel project="graphics" package="pastel"/>
+  <url>https://github.com/sharkdp/pastel</url>
+</package>

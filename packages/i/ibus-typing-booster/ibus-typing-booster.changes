@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Thu Apr 04 15:48:42 UTC 2024 - maiku.fabian@gmail.com
+
+- Update to 2.25.4
+- Pass key which triggered cancel command to application
+  if self._min_char_complete == 0 and there are no candidates
+  (Resolves:  https://github.com/mike-fabian/ibus-typing-booster/issues/505)
+- Update emoji annotations from CLDR
+- Translation update from Weblate (ka 100%)
+
+-------------------------------------------------------------------
+Sat Feb 24 14:47:06 UTC 2024 - maiku.fabian@gmail.com
+
+- Update to 2.25.3
+- Add a feature to insert or remove RLM or LRM markers to
+  change the direction of a line of bidi text
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/500)
+
+-------------------------------------------------------------------
+Tue Feb 13 19:57:18 UTC 2024 - maiku.fabian@gmail.com
+
+- Update to 2.25.1
+- Make it possible to use keys with Unicode keysyms in keybindings
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/497)
+- Add hack to make space handling for punctuation work for kate and kwrite
+  (https://github.com/mike-fabian/ibus-typing-booster/issues/496)
+- Translation update from Weblate (pl 99.5%)
+
+-------------------------------------------------------------------
+Mon Feb 05 16:52:49 UTC 2024 - maiku.fabian@gmail.com
+
+- Update to 2.25.0
+- Add new combobox option “Record mode”
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/470)
+- Improve handling of “:” for fr_CA and add fr_CH to use the same rules as fr_FR
+  (Related: https://github.com/mike-fabian/ibus-typing-booster/issues/480)
+- Translation update from Weblate (bn 100%, de 100%, fr 100%, ja 99%, ka 100%, sv 100%, tr 100%)
+
+-------------------------------------------------------------------
+Sat Jan 27 21:00:05 UTC 2024 - maiku.fabian@gmail.com
+
+- Update to 2.24.12
+- Improve handling of punctuation marks when writing (French) French
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/480)
+
+-------------------------------------------------------------------
+Sat Jan 20 15:15:55 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fixes for %_ibus_libexecdir moving to %_libexecdir (bsc#1174075)
+
+-------------------------------------------------------------------
+Sat Jan 06 00:53:31 UTC 2024 - maiku.fabian@gmail.com
+
+- Update to 2.24.11
+- Really clear the preedit when it is empty, don’t just hide it
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/476)
+  Just hiding a non-empty preedit is not enough because of
+  IBus.PreeditFocusMode.COMMIT a non-empty preedit is still
+  committed on focus out, even when it is hidden.
+
+-------------------------------------------------------------------
+Fri Dec 29 22:55:34 UTC 2023 - maiku.fabian@gmail.com
+
+- Update to 2.24.9
+- Update the preedit to empty right after deleting surrounding text when reopening a preedit
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/474)
+- Improve do_reset()
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/473)
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/474)
+- Fix _record_in_database_and_push_context()
+- Avoid updating the preedit to empty or  hiding it if the preedit is already hidden or empty
+- Do not pass through a key release event if the corresponding key press event was handled
+- Remove two probably redundant calls to get_surrounding_text()
+- Hide and clear lookup table and aux in _update_ui_empty_input_try_completion() if no candidates are found
+- Make self._ibus_event_sleep_seconds settable via gsettings
+- Avoid more duplicate calls of _update_preedit()
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/473)
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/474)
+- Fix disappearing first characters or words in the web clients of WhatsApp and Telegram used in Firefox
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/473)
+- Update emoji annotations from CLDR
+
+-------------------------------------------------------------------
+Tue Dec 18 18:27:49 UTC 2023 - maiku.fabian@gmail.com
+
+- Update to 2.24.7
+- Hide and clear lookup table and aux in _update_ui_empty_input_try_completion() if no candidates are found
+- Make self._ibus_event_sleep_seconds settable via gsettings
+- Avoid more duplicate calls of _update_preedit()
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/474)
+- Fix disappearing first characters or words in the web clients of WhatsApp and Telegram used in Firefox
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/473)
+- Update emoji annotations from CLDR
+
+-------------------------------------------------------------------
+Tue Dec 05 09:27:18 UTC 2023 - maiku.fabian@gmail.com
+
+- Update to 2.24.5
+- Fix first character disappearing when compose was involved in WhatsApp and Telegram
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/471
+- Update emoji annotations from CLDR
+
+-------------------------------------------------------------------
+Wed Oct 18 16:50:36 UTC 2023 - maiku.fabian@gmail.com
+
+- Update to 2.24.4
+- Fix typos which prevented autosettings from working when the attempting
+  to autoset “avoidforwardkeyevent” or “addspaceoncommit”
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/469)
+
+-------------------------------------------------------------------
+Mon Oct 16 21:40:08 UTC 2023 - maiku.fabian@gmail.com
+
+- Update to 2.24.3
+- Adapt compose test cases to newest compose table
+- Parse compose sequence “<Multi_key> <slash> <slash> : "\\" backslash # REVERSE SOLIDUS”
+  correctly (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/467)
+- Avoid really *all* use of self.foreward_key_event() if the option self._avoid_forward_key_event is True
+- Avoid verbatim bidi formatting characters in the source code
+- Drop ibus-typing-booster-libX11-1.8.7.patch
+
+-------------------------------------------------------------------
 Sun Oct  8 16:26:56 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - fix factory build:

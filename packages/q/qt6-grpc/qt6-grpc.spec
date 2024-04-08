@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.6.3
-%define short_version 6.6
+%define real_version 6.7.0
+%define short_version 6.7
 %define short_name qtgrpc
 %define tar_name qtgrpc-everywhere-src
 %define tar_suffix %{nil}
@@ -28,17 +28,19 @@
 %endif
 #
 Name:           qt6-grpc%{?pkg_suffix}
-Version:        6.6.3
+Version:        6.7.0
 Release:        0
 Summary:        gRPC and Protobuf generator and bindings for Qt framework
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
+BuildRequires:  qt6-core-private-devel = %{version}
+BuildRequires:  qt6-network-private-devel = %{version}
 BuildRequires:  cmake(Qt6Core) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
 BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6QmlNetwork) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
 BuildRequires:  cmake(Qt6QuickControls2) = %{real_version}
 BuildRequires:  cmake(Qt6Widgets) = %{real_version}
@@ -77,6 +79,12 @@ Requires:       cmake(Qt6Grpc) = %{real_version}
 %description private-devel
 This package provides private headers of libQt6Grpc that do not have any
 ABI or API guarantees.
+
+%package imports
+Summary:        Qt 6 Grpc QML files and plugins
+
+%description imports
+QML files and plugins from the Qt 6 Grpc module.
 
 %package -n libQt6Protobuf6
 Summary:        Qt 6 Protobuf library
@@ -118,32 +126,50 @@ ABI or API guarantees.
 
 %if !%{qt6_docs_flavor}
 
+# CMake files are not needed for plugins
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
+
 %ldconfig_scriptlets -n libQt6Grpc6
 %ldconfig_scriptlets -n libQt6Protobuf6
+
+%files imports
+%{_qt6_qmldir}/QtGrpc/
 
 %files -n libQt6Grpc6
 %license LICENSES/*
 %{_qt6_libdir}/libQt6Grpc.so.*
+%{_qt6_libdir}/libQt6GrpcQuick.so.*
 
 %files devel
 %{_qt6_cmakedir}/Qt6/FindWrapgRPC.cmake
 %{_qt6_cmakedir}/Qt6/FindWrapgRPCPlugin.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtGrpcTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6Grpc/
+%{_qt6_cmakedir}/Qt6GrpcQuick/
 %{_qt6_cmakedir}/Qt6GrpcTools/
 %{_qt6_descriptionsdir}/Grpc.json
+%{_qt6_descriptionsdir}/GrpcQuick.json
 %{_qt6_includedir}/QtGrpc/
+%{_qt6_includedir}/QtGrpcQuick/
 %{_qt6_libdir}/libQt6Grpc.prl
 %{_qt6_libdir}/libQt6Grpc.so
+%{_qt6_libdir}/libQt6GrpcQuick.prl
+%{_qt6_libdir}/libQt6GrpcQuick.so
 %{_qt6_libexecdir}/qtgrpcgen
 %{_qt6_metatypesdir}/qt6grpc_*_metatypes.json
+%{_qt6_metatypesdir}/qt6grpcquick_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_grpc.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_grpcquick.pri
 %{_qt6_pkgconfigdir}/Qt6Grpc.pc
+%{_qt6_pkgconfigdir}/Qt6GrpcQuick.pc
 %exclude %{_qt6_includedir}/QtGrpc/%{real_version}
+%exclude %{_qt6_includedir}/QtGrpcQuick/%{real_version}
 
 %files private-devel
 %{_qt6_includedir}/QtGrpc/%{real_version}
+%{_qt6_includedir}/QtGrpcQuick/%{real_version}
 %{_qt6_mkspecsdir}/modules/qt_lib_grpc_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_grpcquick_private.pri
 
 %files -n libQt6Protobuf6
 %license LICENSES/*

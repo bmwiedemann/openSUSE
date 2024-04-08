@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun Apr  7 16:23:46 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.0
+  General
+  * Add python 3.12 support.
+  * Add read_only parameter for connection.
+  * Add encryption parameter to connect.
+  * Add use_datetime2 parameter to connect.
+  * Use utf-8 for connection properties.
+  * Implement batching in executemany based on optional batch_size
+    parameter. with default equal arraysize cursor attribute.
+  * Fix DBAPI-2.0 compliance - DataError must be a subclass of
+    DatabaseError.
+  * Fix DBAPI-2.0 compliance: rename batchsize cursor attribute to
+    arraysize.
+  * Implement DATETIMEOFFSET handling for stored procedures.
+  * Implement DATETIMEOFFSET handling for insert and select queries
+  * Return instance of datetime.datetime on select from
+    SQLDATETIM4, SQLDATETIME, SQLDATETIME2 columns.
+  Bug fixes
+  * Fix SQLDATETIME2 handling in convert_python_value().
+  * Use four digits for the year in SP args binding.
+  * Fix convert_python_value to work with datetime.date.
+  * Check if C compiler is installed if check for clock_gettime
+    fails.
+  * Add missing charset parameter in the _substitute_params method
+    when calling ensure_bytes.
+  * Fix empty, zero or None parameter substitution.
+  Internals
+  * Add tests for fetchall(), fetchmany(), fetchone() and next()
+    with SP.
+  * Require Cython>3.0.7.
+  * Use Cython 3 for compilation.
+  * Add SQLTIME and SQLDATETIME2 to convert_python_value.
+  * Use dbanydatecrack() function instead of dbdatecrack().
+  * Replace DEF with cdef enum for buffer array size
+  * Remove references to tox.
+  * Add tests for timeout in wait callback.
+  * Clean up some legacy FreeTDS shims.
+  * Add tests for tds_version parameter.
+  * Move check for clock_gettime to dev/ccompiler.py.
+  * Remove some Python2 remnants.
+  * Move FreeTDS version from workflow files to pyproject.toml.
+  * Move exceptions into separate module.
+  * Use strftime for date & time conversion.
+  * Simplify parameters quoting.
+  * Add tests for _quote_simple_value.
+
+-------------------------------------------------------------------
 Thu Dec 14 13:31:54 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.11

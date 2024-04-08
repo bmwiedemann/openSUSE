@@ -1,7 +1,7 @@
 #
 # spec file for package ipxe
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 
 Name:           ipxe
-Version:        1.21.1+git20231006.ff0f8604
+Version:        1.21.1+git20240329.764e34f
 Release:        0
 Summary:        A Network Boot Firmware
 License:        GPL-2.0-only
@@ -32,7 +32,6 @@ Group:          System/Boot
 URL:            https://ipxe.org/
 Source:         %{name}-%{version}.tar.xz
 Patch0:         syslinux-mtools.patch
-Patch1:         https://github.com/ipxe/ipxe/pull/1082.patch
 BuildRequires:  binutils-devel
 # Do not build i586 for Leap/SLE: no such port available
 %ifarch i586

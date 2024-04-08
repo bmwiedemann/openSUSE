@@ -65,4 +65,12 @@
     <comment>3.5.1</comment>
     <requestid>1084304</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>12beb46264b2adf661f9fd17b01c7eee</srcmd5>
+    <version>4.0.0</version>
+    <time>1712590708</time>
+    <user>anag+factory</user>
+    <comment>4.0.0 (once intergrated, xmvn must be rebuilt)</comment>
+    <requestid>1165669</requestid>
+  </revision>
 </revisionlist>

@@ -9,4 +9,12 @@
 Note: submitting from a git devel area for testing purposes</comment>
     <requestid>1090942</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9ca00d2112a48d28c66f60dfa9a9cf44</srcmd5>
+    <version>0.2</version>
+    <time>1712590845</time>
+    <user>anag+factory</user>
+    <comment>- Fix build with rpm 4.19</comment>
+    <requestid>1166118</requestid>
+  </revision>
 </revisionlist>

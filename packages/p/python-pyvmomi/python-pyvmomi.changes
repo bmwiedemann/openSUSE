@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  8 05:55:35 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add sle15 macro; disable python3.12 builds
+
+-------------------------------------------------------------------
 Thu Apr 14 06:43:18 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build

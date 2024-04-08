@@ -32,4 +32,15 @@
   * Drop support for Python 3.8 and numpy &lt; 1.22 (NEP29).</comment>
     <requestid>1108928</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ae945d28206c249b266fa04c838c5f0c</srcmd5>
+    <version>2023.8.30</version>
+    <time>1712590822</time>
+    <user>anag+factory</user>
+    <comment>- add sle15_python_module_pythons
+
+  * Drop support for Python 3.8 and numpy &lt; 1.22 (NEP29).
+- Clean spec file.</comment>
+    <requestid>1166140</requestid>
+  </revision>
 </revisionlist>

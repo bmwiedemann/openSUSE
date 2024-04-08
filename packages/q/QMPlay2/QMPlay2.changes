@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 07 20:06:24 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 24.04.07:
+  * fix wrong path separator on Windows after accepting file properties,
+  * fix file properties crash on Windows distribution (taglib bug),
+  * add hotkeys for playlist and info dock visibility,
+  * inhibit screensaver through D-Bus interface,
+  * don't show vizualizations by default,
+  * change hide menu hotkey to Shift+M,
+  * lock widgets by default,
+  * other minor fixes.
+
+-------------------------------------------------------------------
 Fri Apr 05 00:19:56 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 24.04.02:

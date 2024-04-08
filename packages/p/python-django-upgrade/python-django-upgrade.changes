@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Apr  7 09:08:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16.0:
+  * Remove the Django 5.0+ fixer that dropped .choices from model
+    field choices parameters. It was too unreliable because it
+    could break use for “DIY” enumeration types.
+  * Remove the Django 5.0+ fixer that dropped .choices from model
+    field choices parameters. It was too unreliable because it
+    could break use for “DIY” enumeration types.
+  * Add Django 1.10+ fixer to rewrite request.user functions that
+    changed to boolean attributes: is_authenticated and
+    is_anonymous.
+  * Add Django 1.10+ fixer to rewrite request.user functions that
+    changed to boolean attributes: is_authenticated and
+    is_anonymous.
+  * Add Django 2.0+ imports fixes for names moved from
+    django.core.urlresolvers to django.urls.
+  * Add Django 2.0+ imports fixes for names moved from
+    django.core.urlresolvers to django.urls.
+
+-------------------------------------------------------------------
 Sat Dec  2 16:25:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.15.0:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  6 10:37:17 UTC 2024 - Matthias Bach <marix@marix.org> - 0.12.1
+
+- Update to upstream version 0.12.1
+  * No functional changes, only changes to upstream package
+    structure.
+
+-------------------------------------------------------------------
 Mon Apr  1 08:48:55 UTC 2024 - Matthias Bach <marix@marix.org> - 0.12.0
 
 - Provide ustream version 0.12.0

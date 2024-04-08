@@ -66,4 +66,12 @@
   * Use non-deprecated assertion functions.</comment>
     <requestid>1139611</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e82105a3a815a05340b74ef463fea2b1</srcmd5>
+    <version>3.0.0</version>
+    <time>1712590810</time>
+    <user>anag+factory</user>
+    <comment>- add sle15_python_module_pythons</comment>
+    <requestid>1166142</requestid>
+  </revision>
 </revisionlist>

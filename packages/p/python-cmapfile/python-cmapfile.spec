@@ -1,7 +1,7 @@
 #
 # spec file for package python-cmapfile
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-cmapfile
 Version:        2023.8.30
 Release:        0
@@ -42,7 +43,7 @@ Requires:       python-oiffile >= 2021.6.6
 Requires:       python-scipy >= 1.5
 Requires:       python-tifffile >= 2021.11.2
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

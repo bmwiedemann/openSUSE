@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Apr  7 16:09:40 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.4.4
+  * Fix: Incorrect Path Resolution for Type Imports in TypeScript Declarations
+  * Fix: "Inferred type cannot be named" error caused by adding paths to tsconfig
+  * Fix: Incorrect parameter hint is highlighted when arguments contain spread syntax
+  * Fix: Fixed a regression related to determining argument index when spread elements are involved
+  * Fix: Directories dont check modified time when sending "change" event
+  * Fix: "Expression produces a union type that is too complex to represent" when using interfaces 
+         with large number of params for filtering and narrowing down certain keys
+  * Watch events Enhancements
+
+- Add empty %check section to the .spec
+
+-------------------------------------------------------------------
 Fri Mar 22 07:05:34 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.4.3:

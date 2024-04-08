@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  8 06:41:24 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 0.0.4+git0.b33d65a
+  * Remove superfluous /apps directory from index.theme
+
+-------------------------------------------------------------------
 Sat Feb 11 18:33:07 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Dependency adwaita-icon-theme needs to be explicit

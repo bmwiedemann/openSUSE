@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-typing-booster
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ibus-typing-booster
-Version:        2.24.2
+Version:        2.25.4
 Release:        0
 Summary:        An input completion utility
 License:        GPL-3.0-or-later
@@ -25,7 +25,6 @@ Group:          System/X11/Utilities
 URL:            https://mike-fabian.github.io/ibus-typing-booster/
 Source0:        https://github.com/mike-fabian/ibus-typing-booster/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://releases.pagure.org/inscript2/inscript2-20210820.tar.gz
-Patch0:         %{name}-libX11-1.8.7.patch
 BuildRequires:  AppStream
 BuildRequires:  appstream-glib
 BuildRequires:  dbus-1-x11
@@ -99,11 +98,10 @@ input method to speedup typing.
 ##extract inscript2 maps
 tar xzf %{SOURCE1}
 %endif
-%patch0 -p1
 
 %build
 export PYTHON=%{_bindir}/python3
-%configure --disable-static --libexecdir=%{_libdir}/ibus
+%configure --disable-static --libexecdir=%{_ibus_libexecdir}
 %make_build
 
 %install
@@ -217,8 +215,8 @@ fi
 %{_datadir}/icons/hicolor/128x128/apps/ibus-typing-booster.png
 %{_datadir}/icons/hicolor/256x256/apps/ibus-typing-booster.png
 %{_datadir}/icons/hicolor/scalable/apps/ibus-typing-booster.svg
-%{_libdir}/ibus/ibus-engine-typing-booster
-%{_libdir}/ibus/ibus-setup-typing-booster
+%{_ibus_libexecdir}/ibus-engine-typing-booster
+%{_ibus_libexecdir}/ibus-setup-typing-booster
 %{_datadir}/applications/*.desktop
 %{_datadir}/glib-2.0/schemas/org.freedesktop.ibus.engine.typing-booster.gschema.xml
 %if 0%{?suse_version} < 1550

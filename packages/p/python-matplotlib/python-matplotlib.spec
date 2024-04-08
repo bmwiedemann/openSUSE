@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-matplotlib
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -27,10 +27,9 @@ ExclusiveArch:  x86_64 aarch64
 %bcond_with test
 %endif
 %bcond_with ringdisabled
-
 %{?sle15_python_module_pythons}
 Name:           python-matplotlib%{psuffix}
-Version:        3.8.2
+Version:        3.8.3
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
@@ -69,6 +68,7 @@ BuildRequires:  pkgconfig(libpng) >= 1.2
 BuildRequires:  pkgconfig(tcl)
 # /SECTION
 # SECTION runtime
+Requires:       (python-numpy >= 1.21 with python-numpy < 2)
 Requires:       python-Cycler >= 0.10
 Requires:       python-FontTools >= 4.22.0
 Requires:       python-Pillow >= 8
@@ -77,7 +77,6 @@ Requires:       python-kiwisolver >= 1.3.1
 Requires:       python-packaging >= 20.0
 Requires:       python-pyparsing > 2.3.1
 Requires:       python-python-dateutil >= 2.7
-Requires:       (python-numpy >= 1.21 with python-numpy < 2)
 %if 0%{?python_version_nodots} < 310
 Requires:       python-importlib-resources >= 3.2.0
 %endif
@@ -88,23 +87,24 @@ BuildRequires:  %{python_module matplotlib = %{version}}
 BuildRequires:  %{python_module matplotlib-cairo = %{version}}
 BuildRequires:  %{python_module matplotlib-gtk3 = %{version}}
 BuildRequires:  %{python_module matplotlib-gtk4 = %{version}}
-%if 0%{?suse_version} > 1500
-BuildRequires:  %{python_module matplotlib-nbagg = %{version} if %python-base >= 3.10}
-%endif
 BuildRequires:  %{python_module matplotlib-qt5 = %{version}}
 BuildRequires:  %{python_module matplotlib-testdata = %{version}}
 BuildRequires:  %{python_module matplotlib-tk = %{version}}
 BuildRequires:  %{python_module matplotlib-web = %{version}}
-%if 0%{?suse_version} > 1500
-BuildRequires:  %{python_module matplotlib-wx = %{version}}
-%endif
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
+%if 0%{?suse_version} > 1500
+BuildRequires:  %{python_module matplotlib-nbagg = %{version} if %python-base >= 3.10}
+%endif
+%if 0%{?suse_version} > 1500
+BuildRequires:  %{python_module matplotlib-wx = %{version}}
+%endif
 # SECTION latex test dependencies
 BuildRequires:  %{python_module matplotlib-latex = %{version}}
+BuildRequires:  Mesa-dri
 BuildRequires:  ghostscript
 BuildRequires:  inkscape
 BuildRequires:  poppler-tools
@@ -114,16 +114,16 @@ BuildRequires:  %{python_module cairo >= 1.14.0}
 BuildRequires:  %{python_module cairocffi >= 0.8}
 # /SECTION cairo
 # SECTION nbagg backend tests
-%if !%{with ringdisabled} && 0%{?suse_version} > 1500
+%if %{without ringdisabled} && 0%{?suse_version} > 1500
 BuildRequires:  %{python_module nbconvert if %python-base >= 3.10}
 BuildRequires:  %{python_module nbformat if %python-base >= 3.10}
 %endif
 # /SECTION nbagg
 # SECTION qt backends: Only test PyQt5 in Minimal-X
 BuildRequires:  %{python_module qt5}
-%if !%{with ringdisabled}
-BuildRequires:  %{python_module PyQt6}
+%if %{without ringdisabled}
 %if 0%{?suse_version} > 1500
+BuildRequires:  %{python_module PyQt6}
 BuildRequires:  python3-pyside2
 BuildRequires:  python3-pyside6
 %endif
@@ -178,7 +178,6 @@ Requires:       python-gobject-cairo
 %description    gtk-common
 This package provides code common for the GTK3 and GTK4 backends
 for the %{name} plotting package
-
 
 %package        nbagg
 Summary:        Jupyter nbagg backend for %{name}
@@ -297,12 +296,12 @@ cp %{SOURCE1} mplsetup.cfg
 sed -i '/"certifi>=.*"/ d' pyproject.toml
 
 %build
-%if !%{with test}
+%if %{without test}
 %pyproject_wheel
 %endif
 
 %install
-%if !%{with test}
+%if %{without test}
 %pyproject_install
 %{python_expand sed -i -e "s/install matplotlib from source/install the $python-matplotlib-testdata package/" \
                       %{buildroot}%{$python_sitearch}/matplotlib/tests/__init__.py
@@ -360,7 +359,7 @@ $python -m pytest --pyargs matplotlib.tests \
 }
 %endif
 
-%if !%{with test}
+%if %{without test}
 %files %{python_files}
 %doc README.md
 %license LICENSE/

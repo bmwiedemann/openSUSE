@@ -843,6 +843,10 @@ Ignore: tcl:sqlite3-tcl
 Ignore: Mesa:Mesa-dri
 Ignore: Mesa:Mesa-gallium
 
+
+# Try to get LLVM out of critical build dep chains
+Ignore: libglvnd:Mesa-dri
+
 # udev: -full and -mini packages don't mingle well
 Prefer: libudev1:udev
 Conflict: libudev1:udev-mini

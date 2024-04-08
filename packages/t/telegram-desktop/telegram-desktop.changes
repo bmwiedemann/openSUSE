@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Apr  5 08:38:17 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.16.2
+  * Use IV by default for Telegraph and some Telegram links.
+  * Support IV links in bot web-apps.
+  * Some bug fixes.
+
+-------------------------------------------------------------------
+Wed Apr  3 06:09:38 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.16.1
+  * Show information about Fragment phone numbers and usernames.
+  * Fix jump to original story from a story repost.
+  * Fix old image display in viewer in some cases.
+  * Fix several crashes.
+
+- Updated to version 4.16.0
+  * Instant View on Windows 10+ and macOS.
+  * Allow scheduling messages in topics.
+  * Telegram Business: Links to Chats.
+  * Telegram Business: Custom Intro.
+  * Telegram Business: Chatbots.
+  * Sharing Revenue with Channel Owners.
+
+- Updated to version 4.15.7
+  * Test crashfix on Linux.
+
+- Updated to version 4.15.6
+  * Save the Instant View window geometry.
+  * Fix jump to anchors with accents in the Instant View.
+  * Fix possible crash in the ElasticScroll destructor.
+
+- Updated to version 4.15.5
+  * Fix a crash in Instant View article parsing.
+  * Support AirPods Mute/Unmute toggle in calls on macOS.
+  * Disable system proxy on Linux to check if it fixes crashes.
+
+- Updated to version 4.15.4
+  * Fix initial text color in dark mode Instant View on macOS.
+  * Fix non-English symbols encoding in Instant View on macOS.
+  * Fix sharing from Instant View on macOS.
+  * Fix crash with long messages on Linux.
+
+- Updated to version 4.15.3
+  * Instant View on Windows (with WebView2) and macOS.
+  * Allow scheduling messages in topics.
+  * Fix system proxy support on Linux.
+
+-------------------------------------------------------------------
 Wed Mar 13 07:51:48 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to version 4.15.2

@@ -33,4 +33,12 @@
     <comment>- Dependency adwaita-icon-theme needs to be explicit (forwarded request 1064419 from mauriziogalli)</comment>
     <requestid>1064422</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1ba562a9a80ce8c4a29b48d26913c790</srcmd5>
+    <version>0.0.4+git0.b33d65a</version>
+    <time>1712590790</time>
+    <user>anag+factory</user>
+    <comment>Update to version 0.0.4+git0.b33d65a (forwarded request 1166088 from jgwang)</comment>
+    <requestid>1166100</requestid>
+  </revision>
 </revisionlist>

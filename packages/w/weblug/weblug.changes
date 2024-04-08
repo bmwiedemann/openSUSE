@@ -1,10 +1,27 @@
 -------------------------------------------------------------------
+Fri Apr 05 07:46:26 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 0.5:
+  * Add unit test for the message body and headers
+  * Pass headers and body to subcommands
+  * Add key generation section
+  * Add note for reverse proxies
+  * Update section
+  * Remove self-signed TODO
+  * Add TLS test
+
+-------------------------------------------------------------------
 Fri Aug  4 08:24:46 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 - Packaging improvements:
   * _service obs_scm enable changesgenerate
   * BuildRequires: golang(API) >= 1.18 instead of pinned go1.18
   * Reformat changelog entries per 'osc vc' template
+
+-------------------------------------------------------------------
+Fri Aug  4 08:24:46 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Add changesgenerate to service file
 
 -------------------------------------------------------------------
 Tue Jun  6 09:44:24 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>

@@ -17,7 +17,7 @@
 
 
 Name:           typescript
-Version:        5.4.3
+Version:        5.4.4
 Release:        0
 Summary:        A language for application scale JavaScript development
 License:        Apache-2.0
@@ -53,6 +53,8 @@ for file in %{buildroot}%{_bindir}/ts* ; do
 done
 
 %fdupes %{buildroot}
+
+%check
 
 %files
 %license LICENSE.txt ThirdPartyNoticeText.txt

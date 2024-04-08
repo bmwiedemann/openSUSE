@@ -1,0 +1,13 @@
+Index: python-for-android-2024.01.21/pythonforandroid/pythonpackage.py
+===================================================================
+--- python-for-android-2024.01.21.orig/pythonforandroid/pythonpackage.py
++++ python-for-android-2024.01.21/pythonforandroid/pythonpackage.py
+@@ -432,7 +432,7 @@ def _extract_metainfo_files_from_package
+ 
+         if path_type != "wheel":
+             # Use a build helper function to fetch the metadata directly
+-            metadata = build.util.project_wheel_metadata(path)
++            metadata = build.util.project_wheel_metadata(path, isolated=False)
+             # And write it to a file
+             metadata_path = os.path.join(output_path, "built_metadata")
+             with open(metadata_path, 'w') as f:

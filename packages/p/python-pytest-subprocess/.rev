@@ -25,4 +25,14 @@
   * #105: Add program matcher.</comment>
     <requestid>1077664</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4b5849cea805642b672d01d8e95715a2</srcmd5>
+    <version>1.5.0</version>
+    <time>1712590827</time>
+    <user>anag+factory</user>
+    <comment>- add sle15_python_module_pythons
+
+  * #105: Add program matcher.</comment>
+    <requestid>1166148</requestid>
+  </revision>
 </revisionlist>

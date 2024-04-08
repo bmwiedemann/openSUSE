@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-typer-slim
-Version:        0.12.0
+Version:        0.12.1
 Release:        0
 Summary:        Typer, build great CLIs. Easy to code. Based on Python type hints
 License:        MIT
@@ -40,6 +40,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 8.0.0
 Requires:       python-typing_extensions >= 3.7.4.3
+Suggests:       python-rich
+Suggests:       python-shellingham
 Obsoletes:      python-typer < 0.12.0
 BuildArch:      noarch
 %python_subpackages
@@ -62,6 +64,10 @@ This package provides the Typer Python package required to build and run Typer-b
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+# The typer command is only meant to be provided by the full typer
+# package. It's unclear why it shows up here.
+%python_expand rm -rf %{buildroot}/%{_bindir}/typer
 
 %check
 # the completion tests fail as build runs in sh which is not supported

@@ -17,7 +17,7 @@
 #
 
 
-%{?sle15_python_module_pythons}
+%{?sle15allpythons}
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         mod_name relatorio
 Name:           python-relatorio

@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.6.3
-%define short_version 6.6
+%define real_version 6.7.0
+%define short_version 6.7
 %define tar_name qtwebview-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-webview%{?pkg_suffix}
-Version:        6.6.3
+Version:        6.7.0
 Release:        0
 Summary:        Qt 6 WebView library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -46,7 +46,7 @@ BuildRequires:  cmake(Qt6Quick) = %{real_version}
 BuildRequires:  cmake(Qt6WebEngineCore) = %{real_version}
 BuildRequires:  cmake(Qt6WebEngineQuick) = %{real_version}
 # Only available where qtwebengine is
-ExclusiveArch:  aarch64 x86_64 riscv64
+ExclusiveArch:  aarch64 x86_64 %x86_64 riscv64
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}

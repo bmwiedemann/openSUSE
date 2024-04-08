@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr  6 13:14:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change to restore binary compatibility (QTBUG-123997):
+  * 0001-Fix-ABI-breakage-wrt-QAudioSink-Source-stateChanged-.patch
+
+-------------------------------------------------------------------
+Tue Apr  2 13:39:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.7.0:
+  * https://www.qt.io/blog/qt-6.7-released
+
+-------------------------------------------------------------------
 Wed Mar 27 12:56:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Make libQt6Multimedia6 require the qtmultimedia plugins (related: boo#1222064)

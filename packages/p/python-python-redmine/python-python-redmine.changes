@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sun Apr  7 19:14:48 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.0
+  Deprecations:
+  * Requests version required >= 2.31.0
+  New Features:
+  * Pro Edition: RedmineUP Products plugin support
+  * Issue copying (see docs for details)
+  Improvements:
+  * dir(resource) and list(resource) now also show properties of
+    an object.
+  * Support for issues_assigned and issues_authored relations in
+    User object
+  * Original filename will be used as a filename for all uploaded
+    files if a path was provided and filename wasn't set.
+  * Pro Edition: Added support for RedmineUP Contact avatar
+    add/update operations (see docs for details).
+  * Pro Edition: Added support for RedmineUP DealCategory create(),
+    update(), delete() operations (see docs for details).
+  * Pro Edition: RedmineUP CrmQuery resource now supports
+    invoices and expenses relation attributes.
+  * PerformanceWarning will be issued when Python-Redmine does some
+    unnecessary redirects before the actual request is made.
+  Changes:
+  * Backwards Incompatible: API key is now being sent in the
+    X-Redmine-API-Key header instead of the key GET parameter which
+    makes things more secure in case of a failed connection, but
+    it might created issues for servers that don't do custom
+    request header forwarding by default, so be sure to check your
+    web server before upgrading (Issue #328 and Issue #330).
+  * Backwards Incompatible: User all operation now really returns
+    all users, i.e. not only active, but locked, registered and
+    anonymous as well instead of only returning just active users
+    in previous versions due to the respect to Redmine's standard
+    behaviour.
+  Bugfixes:
+  * Tests were failing on Python 3.12 (Issue #332).
+  * Some closed Issues weren't converted to Resource objects
+    using redmine.search().
+  * Pro Edition: RedmineUP Invoice resource order attribute was
+    returned as a dict instead of being converted to Resource
+    object.
+  * Pro Edition: RedmineUP CrmQuery resource deals and contacts
+    relation attributes didn't work.
+  * Pro Edition: RedmineUP DealStatus resource deals relation
+    attribute didn't work.
+  Documentation:
+  * Mentioned support for author_id in Issue's resource filter
+    operation.
+- Drop not longer needed patches
+  * 328.patch
+  * support-python-312.patch
+
+-------------------------------------------------------------------
 Mon Mar  4 02:06:37 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject and autosetup macros.

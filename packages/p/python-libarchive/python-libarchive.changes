@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  8 10:51:54 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Don't modify files at %check state, bsc#1222349
+- Do not distribute any test file.
+
+-------------------------------------------------------------------
 Wed Aug 12 09:31:58 UTC 2020 - pgajdos@suse.com
 
 - run test_read_symlinks but make README.rst to be a symlink to

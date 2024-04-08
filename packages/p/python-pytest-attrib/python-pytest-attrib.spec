@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-attrib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,13 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-attrib
 Version:        0.1.3
 Release:        0
 Summary:        Pytest plugin to select tests based on attributes
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://pypi.python.org/pypi/pytest-attrib/
+URL:            http://pypi.python.org/pypi/pytest-attrib/
 Source:         https://github.com/AbdealiJK/pytest-attrib/archive/%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -49,7 +48,7 @@ attributes of the class, and does not require the pytest.mark decorator.
 It offers features similar to the nose plugin nose-attrib.
 
 %prep
-%setup -q -n pytest-attrib-%{version}
+%autosetup -p1 -n pytest-attrib-%{version}
 rm setup.cfg
 
 %build
@@ -57,14 +56,15 @@ rm setup.cfg
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}/pytest_attrib
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+%pytest
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_attrib
+%{python_sitelib}/pytest_attrib-%{version}*-info
 
 %changelog

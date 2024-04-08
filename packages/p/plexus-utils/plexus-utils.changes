@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr  5 08:16:44 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 4.0.0
+  * Starting with version 4, XML classes (in
+    org.codehaus.plexus.util.xml and
+    org.codehaus.plexus.util.xml.pull) have been extracted to a
+    separate plexus-xml: if you need them, just use this new
+    artifact.
+  * Other changes:
+    + Fix false difference detected with
+      CachingOutputStream/CachingWriter when streams are flushed
+    + Dependency updates
+    + Switch to junit 5
+
+-------------------------------------------------------------------
 Wed May  3 11:08:12 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream vesion 3.5.1

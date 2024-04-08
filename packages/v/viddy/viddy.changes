@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Sun Apr  7 01:49:49 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Enable tests
+
+-------------------------------------------------------------------
+Sun Oct 15 09:17:20 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.0:
+  * Add --no-shell option
+  * Do not execute command when suspended
+  * Fix bug of switching time machine
+
+-------------------------------------------------------------------
+Tue Aug 29 13:35:19 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.3.7

@@ -210,4 +210,17 @@
     <comment></comment>
     <requestid>1089946</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>e867f54f9e88442ffb60a324435efec1</srcmd5>
+    <version>0.2.23</version>
+    <time>1712590788</time>
+    <user>anag+factory</user>
+    <comment>- Add empty %check section.
+- Set CMAKE_INSTALL_DOCDIR to work around incompatible changes
+  added to macros.cmake.
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+</comment>
+    <requestid>1166098</requestid>
+  </revision>
 </revisionlist>

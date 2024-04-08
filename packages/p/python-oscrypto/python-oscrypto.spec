@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-oscrypto
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -35,6 +33,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/wbond/oscrypto
 Source:         https://github.com/wbond/oscrypto/archive/%{version}.tar.gz#/oscrypto-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python312.patch gh#wbond/oscrypto#77
+Patch0:         python312.patch
 BuildRequires:  %{python_module asn1crypto >= 1.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -54,7 +54,7 @@ and KDFs using the OS crypto libraries. Does not require a compiler, and relies
 on the OS for patching. Works on Windows, OS X and Linux/BSD.
 
 %prep
-%setup -q -n oscrypto-%{version}
+%autosetup -p1 -n oscrypto-%{version}
 # /docs has a different readme.md file - should not overwrite main readme.md
 mv docs/readme.md docs/docs_readme.md
 
@@ -75,7 +75,8 @@ mv docs/readme.md docs/docs_readme.md
 %files %{python_files}
 %license LICENSE
 %doc readme.md changelog.md docs/*
-%{python_sitelib}/*
+%{python_sitelib}/oscrypto
+%{python_sitelib}/oscrypto-%{version}*-info
 %endif
 
 %changelog

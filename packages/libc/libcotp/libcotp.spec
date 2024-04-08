@@ -1,7 +1,7 @@
 #
 # spec file for package libcotp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 #
 
 
+%bcond_with criterion
+
 %define libsoname %{name}3
 Name:           libcotp
 Version:        3.0.0
@@ -29,7 +31,7 @@ Source1:        https://github.com/paolostivanin/libcotp/releases/download/v%{ve
 Source2:        %{name}.keyring
 BuildRequires:  cmake
 BuildRequires:  gcc
-%if 0%{?suse_version} >= 1600
+%if %{with criterion}
 %ifarch x86_64
 BuildRequires:  libcriterion-devel
 %endif
@@ -65,7 +67,7 @@ Pkg-config and header files for developing applications that use %{name}
 
 %build
 %cmake \
-%if 0%{?suse_version} >= 1600
+%if %{with criterion}
 %ifarch x86_64
   -DBUILD_TESTS=ON \
 %endif
@@ -77,7 +79,7 @@ Pkg-config and header files for developing applications that use %{name}
 %install
 %cmake_install
 
-%if 0%{?suse_version} >= 1600
+%if %{with criterion}
 %ifarch x86_64
 %check
 cd build

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr  8 12:39:13 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.4:
+  * fix: fix new deprecation note of Rust 2024 a70565e
+  * fix: fix quickfix fef3dfc
+  * fix: better fix message e0b5875
+
+-------------------------------------------------------------------
+Mon Apr  8 06:17:06 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.3:
+  * feat(lsp): run "source.fixAll.ast-grep" onsave #1021
+  * test: move the integration-test to test folder f2ff77a
+  * chore: cargo update 83394e9
+  * refactor: move logging and io out of on_apply_all_fix cd79cda
+
+-------------------------------------------------------------------
 Thu Mar 28 07:23:34 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.20.2:

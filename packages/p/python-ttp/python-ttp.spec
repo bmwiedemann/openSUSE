@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-ttp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-ttp%{psuffix}
 Version:        0.9.5
 Release:        0
@@ -51,7 +52,7 @@ BuildRequires:  %{python_module ttp-templates}
 %endif
 BuildRequires:  fdupes
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

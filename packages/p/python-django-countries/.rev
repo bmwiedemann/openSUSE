@@ -55,4 +55,17 @@ ISO 3166-1 alpha-2 country code.</comment>
   * Make full English country names work in database lookups, for</comment>
     <requestid>1129786</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>60a9ca1fa581ec092320fa8ce366671f</srcmd5>
+    <version>7.6.1</version>
+    <time>1712590752</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.6.1:
+  * Fix a TypeError when no country is selected, introduced in
+    the Django 5 fix.
+  * Replace deprecated pkg_resources.iter_entry_points with
+    importlib_metadata.
+  * Support Django 5.0.</comment>
+    <requestid>1165951</requestid>
+  </revision>
 </revisionlist>

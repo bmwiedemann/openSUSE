@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  8 05:55:19 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Disable tests since Criterion is not working after the update of
+  nanomsg to 1.2.1 (https://github.com/Snaipe/Criterion/issues/518).
+
+-------------------------------------------------------------------
 Wed Dec 13 08:53:29 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.0.0:

@@ -49,4 +49,13 @@
   libarchive/resources/README.rst (forwarded request 825957 from pgajdos)</comment>
     <requestid>826001</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>bb960940f8cc07ca12d927cd0dd5e921</srcmd5>
+    <version>0.4.7</version>
+    <time>1712590841</time>
+    <user>anag+factory</user>
+    <comment>- Don't modify files at %check state, bsc#1222349
+- Do not distribute any test file.</comment>
+    <requestid>1166159</requestid>
+  </revision>
 </revisionlist>

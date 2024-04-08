@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Apr  8 10:55:22 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- update .spec file to set FORCE_HOST_GO env variable,
+  to force k8s build scripts use the local GOTOOLCHAIN version from the build pipeline
+  (i.e. GOTOOLCHAIN='auto')
+  * ref: https://github.com/kubernetes/kubernetes/blob/9791f0d1f39f3f1e0796add7833c1059325d5098/hack/lib/golang.sh#L507
+
+
+-------------------------------------------------------------------
+Mon Apr 08 05:49:04 UTC 2024 - priyanka.saggu@suse.com
+
+- Update to version 1.29.3:
+  * remove --v arg from kubetest2-tester-ginkgo test args
+  * ci: bump kind to latest for kms jobs
+  * [go] Bump images, dependencies and versions to go 1.21.8 / distroless-iptables to v0.4.6
+  * [CVE-2024-24786] Bump github.com/golang/protobuf v1.5.4, google.golang.org/protobuf v1.33.0
+  * keep existing PDB conditions when updating status
+  * Validate restartable init container state transition
+  * Test that separation of streams work by using progress notifies
+  * Prevent watch cache starvation, by moving its watch to separate RPC and add a SeparateCacheWatchRPC feature flag to disable this behavior
+  * fix UT failure TestPrintIPAddressList
+  * etcd: Update to version 3.5.12
+  * build etcd image v3.5.12
+  * Fix race condition between external-resizer and kubelet
+  * codegen: don't nuke files if only verifying
+  * dra: increase timeout in setupFakeDRADriverGRPCServer to prevent tests to flake.
+  * e2e_node: replace `registry.k8s.io/stress:v1` with agnhost
+  * promote agnhost to v2.47
+  * fixing issue with GetCPUUsageNanoCores on Windows
+  * Fix cleanup of file subpaths
+  * Fix SELinux e2e tests: add label to observed metrics
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.21.18`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.29.3/build/dependencies.yaml#L119-L121 
+
+-------------------------------------------------------------------
 Mon Feb 26 09:02:38 UTC 2024 - priyanka.saggu@suse.com
 
 - Update to version 1.29.2:

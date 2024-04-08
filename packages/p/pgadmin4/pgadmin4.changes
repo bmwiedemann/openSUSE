@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Mon Apr  8 09:08:22 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- update to 8.5:
+  * supported database servers
+    - postgresql: 12, 13, 14, 15, and 16
+    - edb advanced server: 12, 13, 14, 15, and 16
+  * bundled postgresql utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 16.1
+  * New features
+    - Added support for provider, deterministic, version and RULES
+      parameter while creating collation.
+    - Added support for EDB Job Scheduler.
+    - Added support for viewing Log Based Clusters.
+    - Added support for UNIX socket in entrypoint.sh for Docker
+      implementation.
+  * Bug fixes
+    - Fixed an issue in Schema Diff where Columns with sequences
+      get altered unnecessarily.
+    - Fixed an issue where user was unable to share a newly
+      registered server.
+    - Bug fixes and improvements in pgAdmin CLI.
+    - Fixed an issue where the 'Save Password' option for SSH
+      tunneling password was consistently disabled.
+    - Fixed schema diff wrong query generation for table, foreign
+      table and sequence.
+    - Fixed an issue where table properties were not updating from
+      properties dialog.
+    - Fixed an issue where maximize icon is missing from query
+      tool panel.
+    - Fix an issue in table dialog where changing column name was
+      not syncing table constraints appropriately.
+    - Fixed rollback and commit button activation on execute
+      button click.
+    - Fixed an issue where taking backup of a shared server was
+      using server owner's user name.
+    - Fix an issue in editor where replace option in query tool
+      edit menu is not working on non-Mac OS.
+    - Fix an issue in editor where Format SQL shortcut and
+      multiline selection are not working.
+    - Fix an issue in editor where "Use Spaces?" Preference of
+      Editor is not working.
+    - Fixed an issue where Triggers, Rules, Indexes were absent
+      from the Schema Diff when comparing views.
+    - Fix an issue in query tool where toggle case of selected
+      text loses selection.
+    - Fix query tool autocomplete results when cursor is in
+      between the SQL query.
+    - Fix an issue in query tool where custom keyboard shortcuts
+      are not working for some.
+    - Fixed the issue where the update-user CLI command doesn't
+      change the password.
+    - Fixed issue related to email authentication of Two-factor
+      authentication.
+    - Fixed a remote code execution issue in the validate binary
+      path (boo#1222390, CVE-2024-3116).
+- update to 8.4:
+  * supported database servers
+    - postgresql: 12, 13, 14, 15, and 16
+    - edb advanced server: 12, 13, 14, 15, and 16
+  * bundled postgresql utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 16.1
+  * New features
+    - Allow preferences customization using a configuration file.
+    - Add support for JSON log format.
+    - Add --yes option for skipping the confirmation prompt while
+      deleting the user via CLI for scripting purpose.
+  * Housekeeping
+    - Upgrade CodeMirror from version 5 to 6.
+    - Added documentation for Dashboard's System Statistics tab.
+    - Separate the application name, branding & version information
+      from the configuration file.
+    - Upgrade python packages cryptography to 42.0.x and
+      Flask-Security-Too to 5.3.x.
+  * Bug fixes
+    - Fix multiple issues where PasswordExecCommand was not working
+      in server mode and PasswordExecCommand was not loaded when
+      importing servers.
+    - Fix the tabbed panel backward/forward shortcut for tabs.
+    - Fixed an issue where dependencies and dependents were not
+      showing if a composite type is used as an attribute in
+      another composite type.
+    - Fix an issue where constraint check control is enabled in the
+      edit table dialog.
+    - Fix an issue where the scripts created by generate script of
+      Schema diff for Table with sequence was not working earlier.
+    - Ensure that the OAuth2 session is logged out when users log
+      out from pgAdmin.
+    - Remove role related checks on the UI dashboard when
+      terminating session/query and let PostgreSQL take care of it.
+    - Fix an issue where type column in dependents/dependencies tab
+      is not showing correct label.
+    - Unsafe Deserialization and Remote Code Execution by an
+      Authenticated user in pgAdmin 4 (boo#1221172, CVE-2024-2044).
+- Replace the requirement for cryptography 42.0 to be satisfied
+  with 41.0 (which is the version we have in SLE) given that the
+  code using the cryptography module doesn't seem to really require
+  42.0 .
+
+-------------------------------------------------------------------
 Wed Feb 21 16:21:52 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - ExcludeArch: s390x

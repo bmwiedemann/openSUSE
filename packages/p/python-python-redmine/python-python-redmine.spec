@@ -17,24 +17,21 @@
 
 
 Name:           python-python-redmine
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Python library for the Redmine RESTful API
 License:        Apache-2.0
 URL:            https://python-redmine.com
 Source:         https://files.pythonhosted.org/packages/source/p/python-redmine/python-redmine-%{version}.tar.gz
-Patch0:         https://github.com/maxtepkeev/python-redmine/pull/328.patch
-# PATCH-FIX-UPSTREAM gh#maxtepkeev/python-redmine#332
-Patch1:         support-python-312.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests >= 2.28.2}
+BuildRequires:  %{python_module requests >= 2.31.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-requests >= 2.28.2
+Requires:       python-requests >= 2.31.0
 BuildArch:      noarch
 %python_subpackages
 

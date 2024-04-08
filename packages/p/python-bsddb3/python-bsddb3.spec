@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-bsddb3
 Version:        6.2.9
 Release:        0

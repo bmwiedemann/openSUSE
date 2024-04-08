@@ -200,4 +200,12 @@ use xorrisofs for creating iso
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1129136</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>45cb3bf304e2de39efdbbb4f297c47b8</srcmd5>
+    <version>1.21.1+git20240329.764e34f</version>
+    <time>1712590771</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1166047</requestid>
+  </revision>
 </revisionlist>

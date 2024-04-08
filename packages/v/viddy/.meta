@@ -1,0 +1,24 @@
+<package name="viddy" project="openSUSE:Factory">
+  <title>A modern watch command</title>
+  <description>Modern watch command.
+Features:
+* Basic features of original watch command:
+  + Execute command periodically, and display the result.
+  + color output.
+  + diff highlight.
+* Time machine mode:
+  + Rewind like video.
+  + Go to the past, and back to the future.
+* See output in pager.
+* Vim like keymaps.
+* Search text.
+* Suspend and restart execution.
+* Run command in precise intervals forcibly.
+* Support shell alias
+* Customize keymappings.
+* Customize color.
+
+</description>
+  <devel project="utilities" package="viddy"/>
+  <url>https://github.com/sachaos/viddy</url>
+</package>

@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           plexus-utils
-Version:        3.5.1
+Version:        4.0.0
 Release:        0
 Summary:        Plexus Common Utilities
 License:        Apache-1.1 AND Apache-2.0 AND xpp AND BSD-3-Clause AND SUSE-Public-Domain
@@ -25,10 +25,10 @@ Group:          Development/Libraries/Java
 URL:            https://codehaus-plexus.github.io/plexus-utils/
 Source0:        https://github.com/codehaus-plexus/%{name}/archive/%{name}-%{version}.tar.gz
 Source1:        %{name}-build.xml
-Source2:        http://apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
+BuildRequires:  plexus-xml
 BuildArch:      noarch
 
 %description
@@ -49,10 +49,8 @@ Javadoc for %{name}.
 %setup -q -n %{name}-%{name}-%{version}
 
 cp %{SOURCE1} build.xml
-cp %{SOURCE2} .
-
-%pom_remove_parent .
-%pom_xpath_inject "pom:project" "<groupId>org.codehaus.plexus</groupId>" .
+mkdir -p lib
+build-jar-repository -s lib plexus/xml
 
 %build
 %{ant} jar javadoc
@@ -63,7 +61,7 @@ install -dm 0755 %{buildroot}%{_javadir}/plexus
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/plexus/utils.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/plexus
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/plexus/utils.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/plexus/utils.pom
 %add_maven_depmap plexus/utils.pom plexus/utils.jar -a plexus:plexus-utils
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
@@ -71,10 +69,11 @@ cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%%license NOTICE.txt LICENSE-2.0.txt
+%doc README.md
+%license NOTICE.txt LICENSE.txt
 
 %files javadoc
 %{_javadocdir}/%{name}
-%license NOTICE.txt LICENSE-2.0.txt
+%license NOTICE.txt LICENSE.txt
 
 %changelog

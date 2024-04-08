@@ -1,2 +1,7 @@
 # We only provide part of the functionality, the old package still exists and depends on this
 addFilter("python\d+-typer-slim.noarch: W: obsolete-not-provided python\d+-typer")
+
+# These dependencies are optional and the package gracefully falls back if they are not present.
+# If full-fledged functionality is expected, python-typer should be used which pulls them in unconditionally.
+addFilter("python\d+-typer-slim.noarch: W: python-missing-require shellingham")
+addFilter("python\d+-typer-slim.noarch: W: python-missing-require rich")

@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Mon Apr 01 04:48:13 UTC 2024 - william.brown@suse.com
+
+- Remove 1082.patch which has an alternative merged upstream
+- Update to version 1.21.1+git20240329.764e34f:
+  * [http] Add error table entry for HTTP 404 Not Found error
+  * [tftp] Add error table entry for TFTP "file not found" error code
+  * [efi] Add error table entry for local filesystem EFI_NOT_FOUND error
+  * [efi] Report local file errors during download, rather than on opening
+  * [image] Allow opaque URI component to provide image name
+  * [build] Fix build failures with random versions of gcc
+  * [efi] Extract basic network settings from loaded image device path
+  * [efi] Add efi_path_mac() to parse a MAC address from an EFI device path
+  * [efi] Add support for driving EFI_MANAGED_NETWORK_PROTOCOL devices
+  * [efi] Allow for drivers to be located via child handles
+  * [efi] Add helper functions for service binding protocols
+  * [efi] Match chainloaded device by uppermost matching handle
+  * [efi] Set current working URI from our own device path URI, if present
+  * [efi] Add efi_path_uri() to parse a URI from an EFI device path
+  * [settings] Expose current working URI and directory URI via settings
+  * [efi] Pad transmit buffer length to work around vendor driver bugs
+  * [golan] Use ETH_HLEN for inline header size
+  * [build] Fix building on older versions of gcc
+  * [snp] Allocate additional padding for receive buffers
+  * [ucode] Add support for updating x86 microcode
+  * [bios] Provide a multiprocessor API for BIOS
+  * [librm] Add support for installing a startup IPI handler
+  * [efi] Provide a multiprocessor API for EFI
+  * [mp] Define an API for multiprocessor functions
+  * [efi] Update to current EDK2 headers
+  * [ci] Update action versions to silence GitHub warnings
+  * [efi] Do not report return status from efi_block_local()
+  * [block] Allow SAN boot device to be identified by filesystem label
+  * [block] Allow SAN boot device to be identified by an extra filename
+  * [block] Allow SAN boot device to be identified by UUID
+  * [efi] Add efi_path_guid() utility function
+  * [block] Allow for additional SAN boot parameters alongside filename
+  * [efi] Allow booting from local disks via the "sanboot" command
+  * [block] Allow for iteration over SAN device list in drive number order
+  * [efi] Generalise block device boot to support arbitrary EFI handles
+  * [efi] Use file system protocol to check for SAN boot filename existence
+  * [block] Use drive number as debug message stream ID
+  * [efi] Use long forms of device paths in debug messages
+  * [parseopt] Add parse_uuid() for parsing UUID command-line arguments
+  * [settings] Add parsing for UUID and GUID settings types
+  * [uuid] Add uuid_aton() to parse a UUID from a string
+  * [efi] Work around broken boot services table manipulation by UEFI shim
+  * [eap] Add support for the MS-CHAPv2 authentication method
+  * [eap] Allow MD5-Challenge authentication method to be disabled
+  * [eap] Add progress debug messages
+  * [efi] Ignore new LoongArch PC-relative relocations and relaxations
+  * [drivers] Sort PCI_ROM() entries numerically
+  * [crypto] Force inlining of trivial wrapper functions
+  * [crypto] Add implementation of MS-CHAPv2 authentication
+  * [crypto] Allow for multiple cross-signed certificate download attempts
+  * [crypto] Add x509_is_self_signed() helper function
+  * [crypto] Add x509_truncate() to truncate a certificate chain
+  * [list] Add list_for_each_entry_safe_continue()
+  * [list] Add list_is_head_entry()
+  * [build] Fix build failures with older versions of gcc
+  * [libc] Allow build_assert() failures to be ignored via NO_WERROR=1
+  * [bnxt] Add support for BCM957608
+  * [crypto] Add implementation of the DES cipher
+  * [test] Remove dummy initialisation vector for ECB-mode AES tests
+  * [crypto] Fix stray references to AES
+  * [tls] Tidy up error handling flow in tls_send_plaintext()
+  * [efi] Fix hang during ExitBootServices()
+  * [tls] Add ECDHE cipher suites
+  * [tls] Make key exchange algorithms selectable via build configuration
+  * [crypto] Add X25519 OID-identified algorithm and TLS named curve
+  * [tls] Add support for Ephemeral Elliptic Curve Diffie-Hellman key exchange
+  * [tls] Split out Diffie-Hellman parameter signature verification
+  * [tls] Generate key material after sending ClientKeyExchange
+  * [tls] Restructure construction of ClientHello message
+  * [crypto] Add an abstraction of an elliptic curve
+  * [crypto] Check for all-zeros result from X25519 key exchange
+  * [bnxt] Add support for additional chip IDs
+  * [crypto] Add X25519 key exchange algorithm
+  * [loong64] Replace broken big integer arithmetic implementations
+  * [crypto] Add bigint_swap() to conditionally swap big integers
+  * [crypto] Add bigint_copy() as a convenient wrapper macro
+  * [crypto] Allow multiplicand and multiplier to differ in size
+  * [libc] Replace linker_assert() with build_assert()
+  * [libc] Make static_assert() available via assert.h
+  * [build] Fix building with newer binutils
+  * [build] Remove unnecessary ".text" directives
+  * [eap] Add support for the MD5-Challenge authentication type
+  * [eap] Add support for sending an EAP identity
+  * [eap] Ignore any received EAP responses
+  * [build] Reduce scope of wildcard .gitignore rules
+  * [smbios] Support scanning for the 64-bit SMBIOS3 entry point
+  * [intel] Add PCI ID for I219-LM (23)
+  * [efi] Add potentially missing relocation types
+  * [efi] Fix Coverity warning about unintended sign extension
+  * [efi] Add relocation types generated by clang
+  * [build] Use SOURCE_DATE_EPOCH for FAT serial number if it exists
+  * [efi] Allow compiling elf2efi with clang
+  * [efi] Avoid modifying PE/COFF debug filename
+  * [efi] Extend PE header size to cover space up to first section
+  * [efi] Fix dependency list construction in EDK2 header import script
+  * [efi] Maximise image base address
+  * [efi] Do not assume canonical PE section ordering
+  * [efi] Treat 16-bit sections as hidden in hybrid binaries
+  * [efi] Place PE debug information in a hidden section
+  * [efi] Fix recorded overall size of headers in NT optional header
+  * [efi] Write out PE header only after writing sections
+  * [efi] Use load memory address as file offset for hybrid binaries
+  * [efi] Mark PE images as large address aware
+  * [efi] Set NXCOMPAT bit in PE header
+  * [efi] Treat writable sections as data sections
+  * [efi] Update to current EDK2 headers
+  * [cloud] Add utility script to read iPXE output from INT13CON partition
+  * [cloud] Add ability to overwrite existing AMI images
+  * [eapol] Limit number of EAPoL-Start packets transmitted per attempt
+  * [eapol] Delay EAPoL-Start while waiting for EAP to complete
+  * [pci] Require discovery of a PCI device when determining usable PCI APIs
+  * [pci] Check that ECAM configuration space is within reachable memory
+  * [pci] Cache ECAM mapping errors
+  * [pci] Handle non-zero starting bus in ECAM allocations
+  * [pci] Force completion of ECAM configuration space writes
+  * [iphone] Add missing va_start()/va_end() around reused argument list
+
+-------------------------------------------------------------------
 Mon Nov 20 12:32:04 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add 1082.patch to make ipxe.sdsk build reproducible (boo#1062303)

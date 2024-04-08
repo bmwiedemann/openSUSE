@@ -47,4 +47,17 @@
     <comment>- add missing six dependency declaration</comment>
     <requestid>930134</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>75afa4a91e03eb47532a30dd0e62268c</srcmd5>
+    <version>2.4</version>
+    <time>1712590769</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+- Do not install example directory into site-packages.
+- Add missing Requires on netaddr.
+- Add patch use-correct-assertion-methods.patch:
+  * Use non-removed assertion methods.</comment>
+    <requestid>1166046</requestid>
+  </revision>
 </revisionlist>

@@ -26,4 +26,12 @@
   * Reformat changelog entries per 'osc vc' template (forwarded request 1108368 from jfkw)</comment>
     <requestid>1108369</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>81a68843e4570f3602048e1cfcc13a5f</srcmd5>
+    <version>0.5</version>
+    <time>1712590707</time>
+    <user>anag+factory</user>
+    <comment>Remove older version archive, which got forgotten to be removed. (forwarded request 1165667 from ph03nix)</comment>
+    <requestid>1165694</requestid>
+  </revision>
 </revisionlist>

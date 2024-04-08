@@ -1,7 +1,7 @@
 #
 # spec file for package weblug
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           weblug
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        Simple webhook receiver program
 License:        MIT

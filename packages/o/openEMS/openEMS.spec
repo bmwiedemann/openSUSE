@@ -1,7 +1,7 @@
 #
 # spec file for package openEMS
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,7 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(fparser)
 BuildRequires:  pkgconfig(python3)
-ExcludeArch:    %{ix86}
+ExcludeArch:    %{ix86} s390x
 
 %description
 Electromagnetic field solver using the EC-FDTD method.

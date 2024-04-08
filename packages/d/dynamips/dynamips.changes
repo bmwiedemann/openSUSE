@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr  8 07:41:51 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add empty %check section.
+
+-------------------------------------------------------------------
+Mon Feb 26 15:49:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Set CMAKE_INSTALL_DOCDIR to work around incompatible changes
+  added to macros.cmake.
+
+-------------------------------------------------------------------
+Mon Feb 26 08:11:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Thu Jan 12 17:36:33 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.2.23

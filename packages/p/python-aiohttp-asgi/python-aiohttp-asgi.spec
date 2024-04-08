@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohttp-asgi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-aiohttp-asgi
 Version:        0.5.2
 Release:        0
@@ -23,6 +24,7 @@ Summary:        Adapter to running ASGI applications on aiohttp
 License:        Apache-2.0
 URL:            https://github.com/mosquito/aiohttp-asgi
 Source:         https://github.com/mosquito/aiohttp-asgi/archive/refs/tags/%{version}.tar.gz#/aiohttp-asgi-%{version}-gh.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module wheel}

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Apr  8 05:32:06 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2024.01.21:
+  * Update Lottie player version
+  * Remove distutils usage, as is not available anymore on Python 3.12
+  * enable json1 extenstion in sqlite3
+  * Bump pyjnius version to 1.6.1
+  * Add (now mandatory) .readthedocs.yaml file, add docs requirements.txt
+    and update sphinx conf
+  * Update Android gradle plugin to 8.1.1 and gradle to 8.0.2
+  * Add support for Python 3.11 and make it the default while building
+    hostpython3 and python3
+  * Remove redundant append into WHITELIST_PATTERNS
+  * sourceCompatibility 1.7 and targetCompatibility 1.7 are obsolete, use 1.8
+  * Update sdl2 deps to reflect the same targeted in kivy/kivy
+  * Initial support for PySide6 and Qt
+  * Bump Kivy version to 2.3.0
+  * Update OpenSSL version to 1.1.1w
+- Stop replacing pep517 in files, we have moved off of it
+- Remove patch switch-to-build-from-pep517.patch:
+  * Now included.
+- Add patch no-isolation-for-metadata-build.patch:
+  * However, we still don't need isolated builds.
+- Switch to pyproject macros.
+- Skip a test that breaks with Python 3.12.
+
+-------------------------------------------------------------------
 Tue Jan  9 22:09:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.09.16:

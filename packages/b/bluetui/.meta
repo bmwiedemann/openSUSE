@@ -1,0 +1,6 @@
+<package name="bluetui" project="openSUSE:Factory">
+  <title></title>
+  <description>TUI for managing bluetooth devices </description>
+  <devel project="hardware" package="bluetui"/>
+  <url>https://github.com/pythops/bluetui</url>
+</package>

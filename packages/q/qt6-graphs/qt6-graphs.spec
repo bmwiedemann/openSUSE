@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.6.3
-%define short_version 6.6
+%define real_version 6.7.0
+%define short_version 6.7
 %define tar_name qtgraphs-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-graphs%{?pkg_suffix}
-Version:        6.6.3
+Version:        6.7.0
 Release:        0
 Summary:        3D visualization module
 License:        GPL-3.0-only
@@ -38,6 +38,7 @@ BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-quick3d-private-devel
 BuildRequires:  qt6-quick3druntimerender-private-devel
+BuildRequires:  qt6-quickshapes-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}

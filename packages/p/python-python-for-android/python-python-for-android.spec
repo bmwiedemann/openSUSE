@@ -16,18 +16,17 @@
 #
 
 
-%define version_with_zeros 2023.02.10
+%define version_with_zeros 2024.01.21
 Name:           python-python-for-android
-Version:        2023.9.16
+Version:        2024.1.21
 Release:        0
 Summary:        Android APK packager for Python scripts and apps
 License:        MIT
 URL:            https://github.com/kivy/python-for-android
 Source:         https://github.com/kivy/python-for-android/archive/refs/tags/v%{version_with_zeros}.tar.gz#/python-for-android-%{version}.tar.gz
 Source1:        python-python-for-android-rpmlintrc
-# PATCH-FIX-UPSTREAM Switch to using build rather than pep517
-# Based on gh#kivy/python-for-android#2784, we do not need or want isolation
-Patch0:         switch-to-build-from-pep517.patch
+# PATCH-FIX-OPENSUSE We don't need or want isolation when determining metadata
+Patch0:         no-isolation-for-metadata-build.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -37,7 +36,7 @@ Requires:       python-build
 Requires:       python-colorama >= 0.3.3
 Requires:       python-toml
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     cmake
 Recommends:     python-pip
 Recommends:     python-setuptools
@@ -84,16 +83,11 @@ touch tests/__init__.py tests/recipes/__init__.py
 
 sed -i 's/from backports import tempfile/import tempfile/' tests/test_recipe.py
 
-sed -i 's/pep517<0.7.0/pep517/' setup.py tests/test_pythonpackage_basic.py
-
-# https://github.com/kivy/python-for-android/pull/2354
-sed -i "s/'pep517.',/'pep517',/" setup.py
-
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/python-for-android
 %python_clone -a %{buildroot}%{_bindir}/p4a
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/ci/ %{buildroot}%{$python_sitelib}/tests/
@@ -114,6 +108,8 @@ export PYTHONPATH=${PWD}:${PWD}/tests/
 skip_tests="test_get_dep_names_of_package or test_get_package_dependencies or test_venv or test_get_package_as_folder or test_extract_metainfo_files_from_package"
 # Unable to download NDK
 skip_tests="$skip_tests or (TestToolchainCL and test_create) or test_create_python_bundle"
+# Broken with 3.12 - https://github.com/kivy/python-for-android/issues/3002
+skip_tests="$skip_tests or (TestIcuRecipe and test_build_arch)"
 
 %pytest -rs tests -k "not ($skip_tests)"
 

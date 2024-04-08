@@ -199,4 +199,21 @@
   * feat: improve accept 441a548</comment>
     <requestid>1163252</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>92f25f556e1a47c093277612710c1449</srcmd5>
+    <version>0.20.4+0</version>
+    <time>1712590778</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.20.4:
+  * fix: fix new deprecation note of Rust 2024 a70565e
+  * fix: fix quickfix fef3dfc
+  * fix: better fix message e0b5875
+
+- Update to 0.20.3:
+  * feat(lsp): run &quot;source.fixAll.ast-grep&quot; onsave #1021
+  * test: move the integration-test to test folder f2ff77a
+  * chore: cargo update 83394e9
+  * refactor: move logging and io out of on_apply_all_fix cd79cda</comment>
+    <requestid>1166203</requestid>
+  </revision>
 </revisionlist>

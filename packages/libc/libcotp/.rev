@@ -143,4 +143,14 @@
 </comment>
     <requestid>1132822</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>6b354dc36a31614956d0fdf787161d92</srcmd5>
+    <version>3.0.0</version>
+    <time>1712590804</time>
+    <user>anag+factory</user>
+    <comment>- Disable tests since Criterion is not working after the update of
+  nanomsg to 1.2.1 (https://github.com/Snaipe/Criterion/issues/518).
+</comment>
+    <requestid>1166123</requestid>
+  </revision>
 </revisionlist>

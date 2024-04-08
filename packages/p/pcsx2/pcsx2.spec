@@ -17,7 +17,7 @@
 
 
 Name:           pcsx2
-Version:        1.7.5617~git20240315
+Version:        1.7.5656~git20240329
 Release:        0
 Summary:        Sony PlayStation 2 Emulator
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-only AND LGPL-3.0-only
@@ -53,7 +53,6 @@ BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libavcodec)
@@ -61,7 +60,6 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(liblz4)
-BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(libpulse)

@@ -28,4 +28,12 @@ nothing provides etcd-for-k8s1.27 needed by kubernetes-etcd-3.5.7.x86_64
     <comment></comment>
     <requestid>1141297</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4adde5be07d83e6ca33b94e94fa4fe71</srcmd5>
+    <version>3.5.12</version>
+    <time>1712590834</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166177</requestid>
+  </revision>
 </revisionlist>

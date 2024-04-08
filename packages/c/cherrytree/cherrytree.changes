@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 05 16:41:21 UTC 2024 - malcolmlewis@opensuse.org
+
+- Update to version 1.1.2+0:
+  + Fixed regression crash when deleting a node with children,
+    (gh#giuspen/cherrytree#2476).
+  + Fixed regression issue with search,
+    (gh#giuspen/cherrytree#2469).
+  * Fixed drop position of dragged text wrongly one position to the
+    left.
+  + Fixed html paste, (gh#giuspen/cherrytree#2474).
+  + README updated: Languages status.
+
+-------------------------------------------------------------------
 Fri Mar 29 00:19:18 UTC 2024 - malcolmlewis@opensuse.org
 
 - Update to version 1.1.1+2:

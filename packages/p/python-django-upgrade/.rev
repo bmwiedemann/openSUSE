@@ -101,4 +101,28 @@
   * Fix issue with ``@admin.register()`` checker</comment>
     <requestid>1130488</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bfd2b604ba8925e46d74efeda0853304</srcmd5>
+    <version>1.16.0</version>
+    <time>1712590751</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.16.0:
+  * Remove the Django 5.0+ fixer that dropped .choices from model
+    field choices parameters. It was too unreliable because it
+    could break use for “DIY” enumeration types.
+  * Remove the Django 5.0+ fixer that dropped .choices from model
+    field choices parameters. It was too unreliable because it
+    could break use for “DIY” enumeration types.
+  * Add Django 1.10+ fixer to rewrite request.user functions that
+    changed to boolean attributes: is_authenticated and
+    is_anonymous.
+  * Add Django 1.10+ fixer to rewrite request.user functions that
+    changed to boolean attributes: is_authenticated and
+    is_anonymous.
+  * Add Django 2.0+ imports fixes for names moved from
+    django.core.urlresolvers to django.urls.
+  * Add Django 2.0+ imports fixes for names moved from
+    django.core.urlresolvers to django.urls.</comment>
+    <requestid>1165950</requestid>
+  </revision>
 </revisionlist>

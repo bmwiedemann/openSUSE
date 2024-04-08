@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  8 09:53:55 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python312.patch from upstream to make it compatible with python
+  3.12. gh#wbond/oscrypto#77
+
+-------------------------------------------------------------------
 Tue Oct  4 22:15:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 1.3.0

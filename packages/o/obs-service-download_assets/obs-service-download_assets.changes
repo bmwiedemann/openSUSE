@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  8 08:42:48 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- Fix build with rpm 4.19
+
+-------------------------------------------------------------------
 Thu Jun 23 05:44:48 UTC 2022 - Adrian Schröter <adrian@suse.de>
 
 - initial package of version 0.2

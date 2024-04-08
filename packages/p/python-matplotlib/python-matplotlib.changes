@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Mar 23 12:09:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.3:
+  * Fix crash at exit for PGF backend
+
+-------------------------------------------------------------------
+Fri Mar 22 09:10:48 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Fri Mar 22 07:47:40 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Add explicit BuildRequires on Mesa-dri, needed to run tests
+
+-------------------------------------------------------------------
+Tue Mar 19 16:42:20 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not BuildRequire PyQt6 in SLE15. We don't want to include
+  the whole qt6 stack in SLE only for matplotlib tests.
+
+-------------------------------------------------------------------
 Tue Mar  5 18:06:28 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Don't build nbagg for python39: ipython not available anymore
@@ -549,7 +571,7 @@ Sun Dec 12 18:26:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Wed Dec  8 04:42:16 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Skip some broken tests with new pyparsing. 
+- Skip some broken tests with new pyparsing.
 
 -------------------------------------------------------------------
 Sat Oct 23 15:49:11 UTC 2021 - Axel Braun <axel.braun@gmx.de>
@@ -559,7 +581,7 @@ Sat Oct 23 15:49:11 UTC 2021 - Axel Braun <axel.braun@gmx.de>
   inkscape11.patch
   0001-FIX-Pillow-asarray-bug.patch
   0002-Dont-modify-arrays-when-masking-values-for-log.patch
- 
+
 -------------------------------------------------------------------
 Tue Jul 27 12:09:25 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
@@ -760,7 +782,7 @@ Thu Jan 14 20:19:32 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
   * fix reading from URL in imread
   * fix several regressions with new date epoch handling
   * fix some bad constrained and tight layout interactions with colorbars
-  * fix use of customized toolbars in TkAgg and WXAgg backends 
+  * fix use of customized toolbars in TkAgg and WXAgg backends
 - remove transparent_markers.pdf
 - fix rich rpm recommends
 - fix broken compilation of cache files
@@ -782,19 +804,19 @@ Thu Oct 22 08:59:30 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 Thu Jul 23 09:49:30 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Require Pillow
-- Bump dependency versions 
+- Bump dependency versions
 
 -------------------------------------------------------------------
 Mon Jul 20 21:10:29 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Work on unit testing
-  * Move architecture selection to bcond definition at top of 
+  * Move architecture selection to bcond definition at top of
     specfile. This makes it clear in the OBS web UI that the test
     flavor is only built for x86_64 and aarch64
   * do not build everything a second time during check (in-place)
   * instead use new subpackage testdata wich contains the baseline
     images created at regular build time
-  * use pytest-xvfb and %pytest macro 
+  * use pytest-xvfb and %pytest macro
     (buildroot path actually not required)
   * tidy test skip definitions
   * add python-gobject-Gdk to pass the gtk3 backend testso
@@ -1386,7 +1408,7 @@ Tue Jan 17 17:04:31 UTC 2017 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Fri Dec  2 12:15:46 UTC 2016 - sbahling@suse.com
 
-- update to version 1.5.3 
+- update to version 1.5.3
   * Changed default autorange behavior in boxplots (introduced with
     1.5.2)
 - Change BuildRequires and Recommends from python-Pillow to
@@ -1432,7 +1454,7 @@ Fri Oct 30 09:07:44 UTC 2015 - toddrme2178@gmail.com
   * Auto-redraw using the object-oriented API.
   * Most plotting functions now support labeled data API.
   * Color cycling has extended to all style properties.
-  * Four new perceptually uniform color maps, including the 
+  * Four new perceptually uniform color maps, including the
     soon-to-be default 'viridis'.
   * More included style sheets.
   * Many small plotting improvements.
@@ -1514,7 +1536,7 @@ Wed Sep 10 10:52:26 UTC 2014 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Thu Aug 28 14:10:38 UTC 2014 - dmueller@suse.com
 
-- adjust python-tz buildrequires to match runtime requires (python-pytz) 
+- adjust python-tz buildrequires to match runtime requires (python-pytz)
 
 -------------------------------------------------------------------
 Wed Aug 27 10:08:07 UTC 2014 - toddrme2178@gmail.com
@@ -1527,7 +1549,7 @@ Wed Aug 27 10:08:07 UTC 2014 - toddrme2178@gmail.com
 - Fixed issues with qt.  The qt5 backend is actually a generic
   qt backend, which the qt4 backend depends on.  So it needs to be
   available for the qt4 backend to work at all.  However, we need
-  to pull in the python-qt5 package to make it work, and that 
+  to pull in the python-qt5 package to make it work, and that
   package is only available for openSUSE > 13.1.  So we need to
   split the generic qt stuff, including the qt5 stuff, into a
   package both the qt4 and qt5 backends can depend on, and then
@@ -1540,7 +1562,7 @@ Tue Aug 26 12:26:40 UTC 2014 - toddrme2178@gmail.com
 - Update to 1.4.0
   * New colormap for red-green color blind users
   * Documentation changes
-    - Phil Elson rewrote of the documentation and userguide for both 
+    - Phil Elson rewrote of the documentation and userguide for both
         Legend and PathEffects.
   * New plotting features
     - Power-law normalization
@@ -1554,14 +1576,14 @@ Tue Aug 26 12:26:40 UTC 2014 - toddrme2178@gmail.com
     - Get a list of all tick labels (major and minor)
     - Separate horizontal/vertical axes padding support in ImageGrid
     - Support for skewed transformations
-    - Support for specifying properties of wedge and text in pie 
+    - Support for specifying properties of wedge and text in pie
       charts.
     - Fixed the direction of errorbar upper/lower limits
     - More consistent add-object API for Axes
     - Violin Plots
     - More `markevery` options to show only a subset of markers
     - Added size related functions to specialized `Collections`
-    - Fixed the mouse coordinates giving the wrong theta value in 
+    - Fixed the mouse coordinates giving the wrong theta value in
       Polar graph
     - Simple quiver plot for mplot3d toolkit
     - polar-plot r-tick locations
@@ -1572,27 +1594,27 @@ Tue Aug 26 12:26:40 UTC 2014 - toddrme2178@gmail.com
     - 'axes.titleweight'
     - 'axes.formatter.useoffset' added
   * XDG compliance
-    - Matplotlib now looks for configuration files (both rcparams and 
+    - Matplotlib now looks for configuration files (both rcparams and
       style) in XDG compliant locations.
   * 'style' package added
-    -  You can now easily switch between different styles using the 
+    -  You can now easily switch between different styles using the
        new 'style' package
   * Backends
     - Qt5 backend added
     - Qt4 backend
       + Rudolf Höfler changed the appearance of the subplottool.
-      + In the figure options dialog one can now choose to 
+      + In the figure options dialog one can now choose to
         (re-)generate a simple automatic legend.
-      + Interactive performance of the Qt4 backend has been 
+      + Interactive performance of the Qt4 backend has been
         dramatically improved under windows.
-      + The mapping of key-signals from Qt to values matplotlib 
+      + The mapping of key-signals from Qt to values matplotlib
         understands was greatly improved (For both Qt4 and Qt5).
     - Cairo backends
-      +  The Cairo backends are now able to use the cairocffi 
+      +  The Cairo backends are now able to use the cairocffi
         bindings, which are more actively maintained than the pycairo
         bindings.
     - Gtk3Agg backend
-      +  The Gtk3Agg backend now works on Python 3.x, if the cairocffi 
+      +  The Gtk3Agg backend now works on Python 3.x, if the cairocffi
         bindings are installed.
     - PDF backend
       +  Added context manager for saving to multi-page PDFs.
@@ -1600,13 +1622,13 @@ Tue Aug 26 12:26:40 UTC 2014 - toddrme2178@gmail.com
     - Text URLs supported by SVG backend
     - Anchored sizebar font
   * Sphinx extensions
-    -  The context directive in the plot_directive Sphinx extension 
-        can now accept an optional reset setting, which will cause the 
+    -  The context directive in the plot_directive Sphinx extension
+        can now accept an optional reset setting, which will cause the
         context  to be reset.
   * Widgets
     - Span Selector
-      * Added an option span_stays to SpanSelector which makes the 
-        selector rectangle stay on the axes after you release the 
+      * Added an option span_stays to SpanSelector which makes the
+        selector rectangle stay on the axes after you release the
         mouse.
   * GAE integration
     -  Matplotlib will now run on google app engine.
@@ -1621,12 +1643,12 @@ Wed Jul 16 14:42:54 UTC 2014 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Thu Apr 10 16:48:36 UTC 2014 - dmueller@suse.com
 
-- install LICENSE directory and fix license tag 
+- install LICENSE directory and fix license tag
 
 -------------------------------------------------------------------
 Wed Apr  9 09:18:56 UTC 2014 - dmueller@suse.com
 
-- add use-setuptools.diff: build against old setuptools as well 
+- add use-setuptools.diff: build against old setuptools as well
 
 -------------------------------------------------------------------
 Fri Mar 28 15:48:46 UTC 2014 - speilicke@suse.com
@@ -1695,12 +1717,12 @@ Wed Aug 21 05:25:57 UTC 2013 - highwaystar.ru@gmail.com
  * Better vertical text alignment and multi-line text
  * Left and right side axes titles
  * Improved manual contour plot label positioning
-- Configuration (rcParams) 
+- Configuration (rcParams)
  * Quickly find rcParams
  * Changes to font rcParams
 - Backends
  * WebAgg backend
- * Remember save directory 
+ * Remember save directory
 - Documentation and examples:
  * Numpydoc docstrings
  * Example reorganization
@@ -1710,8 +1732,8 @@ Wed Aug 21 05:25:57 UTC 2013 - highwaystar.ru@gmail.com
  * New setup script
  * XDG base directory support
  * Catch opening too many figures using pyplot
-- for API changes see 
-  http://matplotlib.org/api/api_changes.html#changes-in-1-3   
+- for API changes see
+  http://matplotlib.org/api/api_changes.html#changes-in-1-3
 - removed patches needed for python3 package
 
 -------------------------------------------------------------------
@@ -1731,7 +1753,7 @@ Mon Nov 12 04:24:19 UTC 2012 - highwaystar.ru@gmail.com
  * New hist functionality
  * Updated shipped dependencies
  * Face-centred colors in tripcolor plots
- * Hatching patterns in filled contour plots, with legends 
+ * Hatching patterns in filled contour plots, with legends
 - python3 package added
 
 -------------------------------------------------------------------
@@ -1768,17 +1790,17 @@ Wed Dec 14 08:56:13 UTC 2011 - highwaystar.ru@gmail.com
 - update to 1.1.0
  * module for drawing sankey diagrams;
  * environment for creating animated graphics – module animation;
- * automated positioning charts, labels, and axes on the canvas – a 
-   team tight_layout () will distribute them so that they are not 
+ * automated positioning charts, labels, and axes on the canvas – a
+   team tight_layout () will distribute them so that they are not
    people came to each other;
- *  Work on integration with PySide, although functional is still 
-    in the beta-version and it is recommended to continue using 
+ *  Work on integration with PySide, although functional is still
+    in the beta-version and it is recommended to continue using
     PyQt4;
  * improved mapping and positioning of the legend;
- * simplified work with three-dimensional graphs (module mplot3d), 
+ * simplified work with three-dimensional graphs (module mplot3d),
    also significantly expanded and updated documentation on mplot3d;
  * uniform markers;
- * completely removed the old module support Numerix, now all 
+ * completely removed the old module support Numerix, now all
    users must use Numpy;
  * fixes some bugs.
 - removed patches that now upstream
@@ -1796,7 +1818,7 @@ Tue Oct 11 12:27:54 UTC 2011 - jmatejek@suse.com
 -------------------------------------------------------------------
 Mon Aug 15 02:00:37 CEST 2011 - ro@suse.de
 
-- fix build for platform == linux3 
+- fix build for platform == linux3
 
 -------------------------------------------------------------------
 Mon Jan 24 12:58:1 UTC 2011 - toddrme2178@gmail.com
@@ -1804,14 +1826,14 @@ Mon Jan 24 12:58:1 UTC 2011 - toddrme2178@gmail.com
 - new version 1.0.1
 
   This is a bugfix release:
-  + Fixed error with Hammer projection. 
-  + Fixed the placement and angle of axis labels in 3D plots. 
+  + Fixed error with Hammer projection.
+  + Fixed the placement and angle of axis labels in 3D plots.
   + New rc parameters examples.download and examples.directory
     allow bypassing the download mechanism in get_sample_data.
   + Change Axis.set_view_interval() so that when updating an
     existing interval, it respects the orientation of that
     interval, and can enlarge but not reduce the interval.
-  + Handle NaN's correctly in path analysis routines.  
+  + Handle NaN's correctly in path analysis routines.
   + Fix bug in patch alpha handling, and in bar color kwarg
   + Return Qt4's default cursor when leaving the canvas
 
@@ -1875,7 +1897,7 @@ Sat Aug  9 00:00:00 UTC 2008 - werner.ho@gmx.de
 Tue Aug  5 00:00:00 UTC 2008 - werner.ho@gmx.de
 
 - new version 0.91.4
- 
+
 -------------------------------------------------------------------
 Wed Jul 16 00:00:00 CET 2008 - Andrea Florio <andrea@opensuse.org>
 

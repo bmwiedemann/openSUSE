@@ -188,4 +188,41 @@ https://github.com/yt-project/yt/releases.
 - Skip python39: no longer supported since ipython 8.19</comment>
     <requestid>1157041</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>47798ad5c9b5d92eb7422f8c5a09117a</srcmd5>
+    <version>4.3.0</version>
+    <time>1712590823</time>
+    <user>anag+factory</user>
+    <comment>- add sle15_python_module_pythons
+
+  * The angular momentum has been reversed compared to previous versions of yt.
+  * New frontend support for the code AMRVAC. Many thanks to Clement Robert
+  * Support for the AdaptaHOP halo finder code
+  * yt now supports geographic transforms and projections of data with
+  * annotations used to work for only a single point, they now work for multiple points
+  * cosmology calculations now have support for the relativistic energy density of the
+    universe, see `PR 1714 &lt;https://github.com/yt*project/yt/pull/1714&gt;`__.
+    This feature is accessible to cosmology datasets and was added to the Enzo frontend.
+  * the eps writer now allows for arrow rotation. this is accessible with
+    the ``rotate`` kwarg in the ``arrow`` function.
+  * allow for dynamic load balancing with parallel loading of timeseries
+  * show/hide colorbar and show/hide axes are now available for
+    ``ProfilePlot`` s. These functions were also moved from the PlotWindow to the
+  * add support for ipywidgets with an ``__ipython_display__`` method on the
+    FieldTypeContainer. Field variables, source, and the field array can be
+    viewed with this widget. See PRs `PR 1844 &lt;https://github.com/yt*project/yt/pull/1844&gt;`__
+    and `PR 1848 &lt;https://github.com/yt*project/yt/pull/1848&gt;`__,
+  * cut regions can now be made with ``exclude_`` and ``include_`` on a number of objects,
+    including above and below values, inside or outside regions, equal values, or nans.
+    See `PR 1964 &lt;https://github.com/yt*project/yt/pull/1964&gt;`__ and supporting
+  * previously aliased fluid vector fields in curvilinear geometries were not
+    converted to curvilinear coordinates, this was addressed in
+  * 2d polar and 3d cylindrical geometries now support annotate_quivers,
+    streamlines, line integral convolutions, see
+  * gradient fields are now supported in curvilinear geometries. See
+  * plotwindow colorbars now utilize mathtext in their labels,
+  * raise deprecation warning when using ``mylog.warn``. Instead use
+  * extend support of the ``marker``, ``text``, ``line`` and ``sphere`` annotation</comment>
+    <requestid>1166141</requestid>
+  </revision>
 </revisionlist>

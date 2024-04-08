@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  6 16:17:25 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.9
+  * fix a bug with CardRequestTimeoutException introduced in 2.0.8
+  * Minor changes
+
+-------------------------------------------------------------------
 Sat Mar  9 21:40:30 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.8

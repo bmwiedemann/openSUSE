@@ -16,7 +16,7 @@
 #
 
 
-%define gitea_version 1.21.8
+%define gitea_version 1.21.10
 %define forgejo_version 0
 %if 0%{?suse_version} > 1600
 # TW

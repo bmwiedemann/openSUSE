@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr  8 04:36:12 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+- Do not install example directory into site-packages.
+- Add missing Requires on netaddr.
+- Add patch use-correct-assertion-methods.patch:
+  * Use non-removed assertion methods.
+
+-------------------------------------------------------------------
 Mon Nov  8 10:30:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add missing six dependency declaration

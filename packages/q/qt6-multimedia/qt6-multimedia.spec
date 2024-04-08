@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.6.3
-%define short_version 6.6
+%define real_version 6.7.0
+%define short_version 6.7
 %define short_name qtmultimedia
 %define tar_name qtmultimedia-everywhere-src
 %define tar_suffix %{nil}
@@ -28,13 +28,15 @@
 %endif
 #
 Name:           qt6-multimedia%{?pkg_suffix}
-Version:        6.6.3
+Version:        6.7.0
 Release:        0
 Summary:        Qt 6 Multimedia libraries
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source1:        qt6-multimedia-rpmlintrc
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-ABI-breakage-wrt-QAudioSink-Source-stateChanged-.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
