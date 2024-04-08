@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.6.3
-%define short_version 6.6
+%define real_version 6.7.0
+%define short_version 6.7
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.6.3
+Version:        6.7.0
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -39,8 +39,9 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
+Patch0:         fix_builds_with_Werror.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
-Patch100:       0001-Tell-the-truth-about-private-API.patch
+Patch100:       0001-CMake-ELF-allow-using-Qt-s-full-version-number-in-th.patch
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
 Patch101:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
 %if 0%{?suse_version} == 1500
@@ -85,6 +86,7 @@ BuildRequires:  pkgconfig(libbrotlienc)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libturbojpeg)
 BuildRequires:  pkgconfig(libudev)
@@ -93,7 +95,6 @@ BuildRequires:  pkgconfig(mtdev)
 BuildRequires:  pkgconfig(odbc)
 BuildRequires:  pkgconfig(opengl)
 BuildRequires:  pkgconfig(openssl) >= 1.1.1
-BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(tslib)
@@ -771,24 +772,25 @@ sed -i '/zstd CONFIG/d' cmake/FindWrapZSTD.cmake
     -DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
     -DQT_BUILD_EXAMPLES:BOOL=TRUE \
     -DQT_BUILD_TESTS:BOOL=FALSE \
-    -DQT_CREATE_VERSIONED_HARD_LINK:BOOL=OFF \
-    -DQT_DISABLE_RPATH:BOOL=OFF \
+    -DQT_CREATE_VERSIONED_HARD_LINK:BOOL=FALSE \
+    -DQT_DISABLE_RPATH:BOOL=FALSE \
 %ifnarch ppc64
-    -DCMAKE_INTERPROCEDURAL_OPTIMIZATION:BOOL=ON \
+    -DCMAKE_INTERPROCEDURAL_OPTIMIZATION:BOOL=TRUE \
 %endif
-    -DFEATURE_enable_new_dtags:BOOL=ON \
-    -DFEATURE_journald:BOOL=ON \
-    -DFEATURE_libproxy:BOOL=ON \
-    -DFEATURE_reduce_relocations:BOOL=OFF \
-    -DFEATURE_relocatable:BOOL=OFF \
-    -DFEATURE_system_sqlite:BOOL=ON \
-    -DFEATURE_system_xcb_xinput:BOOL=ON \
-    -DFEATURE_xcb_native_painting:BOOL=ON \
+    -DFEATURE_elf_private_full_version=TRUE \
+    -DFEATURE_enable_new_dtags:BOOL=TRUE \
+    -DFEATURE_journald:BOOL=TRUE \
+    -DFEATURE_libproxy:BOOL=TRUE \
+    -DFEATURE_reduce_relocations:BOOL=FALSE \
+    -DFEATURE_relocatable:BOOL=FALSE \
+    -DFEATURE_system_sqlite:BOOL=TRUE \
+    -DFEATURE_system_xcb_xinput:BOOL=TRUE \
+    -DFEATURE_xcb_native_painting:BOOL=TRUE \
     -DINPUT_openssl:STRING=linked \
-    -DFEATURE_forkfd_pidfd:BOOL=OFF \
+    -DFEATURE_forkfd_pidfd:BOOL=FALSE \
 %if 0%{?with_gles}
     -DINPUT_opengl:STRING=es2 \
-    -DFEATURE_opengles3:BOOL=ON
+    -DFEATURE_opengles3:BOOL=TRUE
 %endif
 
 %{qt6_build}
@@ -816,7 +818,6 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_concurrent_private.pri
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_openglwidgets_private.pri
 
 # These files are only useful for the Qt continuous integration
-rm %{buildroot}%{_qt6_libexecdir}/android_*.sh
 rm %{buildroot}%{_qt6_libexecdir}/ensure_pro_file.cmake
 rm %{buildroot}%{_qt6_libexecdir}/qt-testrunner.py
 rm %{buildroot}%{_qt6_libexecdir}/sanitizer-testrunner.py

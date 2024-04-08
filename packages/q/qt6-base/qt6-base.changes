@@ -1,8 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr  2 13:39:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.7.0:
+  * https://www.qt.io/blog/qt-6.7-released
+- Replace 0001-Tell-the-truth-about-private-API.patch with
+  upstream change:
+  * 0001-CMake-ELF-allow-using-Qt-s-full-version-number-in-th.patch
+- Add upstream fix (QTBUG-123937):
+  * fix_builds_with_Werror.patch
+
+-------------------------------------------------------------------
 Tue Mar 26 14:25:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.3:
   * https://www.qt.io/blog/qt-6.6.3-released
+  * Includes fix for issue where the wasm component may access
+    QNetworkReply header data via a dangling pointer
+    (CVE-2024-30161, bsc#1221926, QTBUG-122893)
 - Make libQt6PrintSupport6 require qt6-printsupport-cups
   (boo#1221576)
 

@@ -1,0 +1,66 @@
+From bccbdc225505eb39458336922fa30f87fd81476a Mon Sep 17 00:00:00 2001
+From: Thiago Macieira <thiago.macieira@intel.com>
+Date: Thu, 21 Mar 2024 10:07:03 -0700
+Subject: [PATCH] CMake/ELF: allow using Qt's full version number in the
+ private tags
+
+We added the feature to tag private symbols using the Qt major version
+only, because us developers often move between versions and need to keep
+compiled code working, even when using private API (we're supposed to
+know what we're doing). Linux distributions, however, want to be told
+that something used private API and therefore needs to be rebuilt. See
+[1][2][3].
+
+Distributors will learn about this feature when updating Qt causes the
+existing patch to fail to apply.
+
+[1] https://build.opensuse.org/projects/openSUSE:Factory/packages/qt6-base/files/0001-Tell-the-truth-about-private-API.patch?expand=1
+[2] https://src.fedoraproject.org/rpms/qt6-qtbase/blob/rawhide/f/qtbase-tell-the-truth-about-private-API.patch
+[3] https://github.com/clearlinux-pkgs/qtbase/blob/main/tell-the-truth-about-private-api.patch
+
+Change-Id: I5f663c2f9f4149af84fefffd17bed69026f4038d
+Reviewed-by:  Alexey Edelev <alexey.edelev@qt.io>
+(cherry picked from commit e0940081bc7439d87d9ca41402a543a9c17fb857)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ cmake/QtFlagHandlingHelpers.cmake | 6 +++++-
+ configure.cmake                   | 6 ++++++
+ 2 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/QtFlagHandlingHelpers.cmake b/cmake/QtFlagHandlingHelpers.cmake
+index 28231cb564..32ce929e45 100644
+--- a/cmake/QtFlagHandlingHelpers.cmake
++++ b/cmake/QtFlagHandlingHelpers.cmake
+@@ -69,7 +69,11 @@ function(qt_internal_add_linker_version_script target)
+             endforeach()
+         endforeach()
+ 
+-        string(APPEND contents "\n};\nQt_${PROJECT_VERSION_MAJOR}_PRIVATE_API { qt_private_api_tag*;\n")
++        string(APPEND contents "\n};\nQt_${PROJECT_VERSION_MAJOR}")
++        if(QT_FEATURE_elf_private_full_version)
++            string(APPEND contents ".${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
++        endif()
++        string(APPEND contents "_PRIVATE_API { qt_private_api_tag*;\n")
+         if(arg_PRIVATE_HEADERS)
+             foreach(ph ${arg_PRIVATE_HEADERS})
+                 string(APPEND contents "    @FILE:${ph}@\n")
+diff --git a/configure.cmake b/configure.cmake
+index 037aab9b2d..19dd2bf34e 100644
+--- a/configure.cmake
++++ b/configure.cmake
+@@ -551,6 +551,12 @@ qt_feature("rpath" PUBLIC
+     CONDITION BUILD_SHARED_LIBS AND UNIX AND NOT WIN32 AND NOT ANDROID
+ )
+ qt_feature_config("rpath" QMAKE_PUBLIC_QT_CONFIG)
++qt_feature("elf_private_full_version" PRIVATE
++    LABEL "Use Qt's full version number in ELF version symbols"
++    AUTODETECT OFF
++    CONDITION BUILD_SHARED_LIBS AND UNIX AND NOT APPLE
++)
++qt_feature_config("elf_private_full_version" QMAKE_PRIVATE_QT_CONFIG)
+ qt_feature("force_asserts" PUBLIC
+     LABEL "Force assertions"
+     AUTODETECT OFF
+-- 
+2.44.0
+
