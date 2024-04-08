@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.6.3
-%define short_version 6.6
+%define real_version 6.7.0
+%define short_version 6.7
 %define tar_name qtquick3d-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quick3d%{?pkg_suffix}
-Version:        6.6.3
+Version:        6.7.0
 Release:        0
 Summary:        API for creating 3D content and 3D user interfaces based on Qt Quick
 License:        GPL-3.0-or-later
@@ -381,8 +381,8 @@ This library does not have any ABI or API guarantees.
 
 ### Static libraries ###
 
-# Embree only supports x86_64 and arm64
-%ifarch x86_64 aarch64
+# Embree only supports x86_64 %x86_64 and arm64
+%ifarch x86_64 %x86_64 aarch64
 %package -n qt6-bundledembree-devel-static
 Summary:        Qt6 BundledEmbree static library
 %requires_eq    qt6-core-private-devel
@@ -666,7 +666,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 
 ### Static libraries ###
 
-%ifarch x86_64 aarch64
+%ifarch x86_64 %x86_64 aarch64
 %files -n qt6-bundledembree-devel-static
 %{_qt6_cmakedir}/Qt6/FindWrapBundledEmbreeConfigExtra.cmake
 %{_qt6_cmakedir}/Qt6BundledEmbree/
