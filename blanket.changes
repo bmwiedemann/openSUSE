@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr  8 06:14:42 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.0:
+  * Redesign the user interface and use latest GNOME patterns
+  * Inhibit suspension when playing
+  * Pause playback if the system enters power saver mode
+  * MPRIS: Implement Play, Pause and Stop methods in addition to PlayPause
+  * MPRIS: Implement Next and Prev methods for navigating presets
+  * Updated Pink Noise sample
+  * Changed train sound
+  * Added preference to always start on pause
+
+-------------------------------------------------------------------
 Wed Apr 20 19:13:05 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.0:
