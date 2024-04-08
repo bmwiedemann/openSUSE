@@ -1,7 +1,7 @@
 #
 # spec file for package lttng-ust
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -108,9 +108,6 @@ applications using LTTng userspace tracing.
 %prep
 %autosetup -p1
 
-# Fix Python shebang.
-sed -i -e "1s|^#!.*$|#!%{_bindir}/python3|" tools/lttng-gen-tp
-
 %build
 export PYTHON=python3
 %configure \
@@ -124,6 +121,7 @@ export PYTHON=python3
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
+%python3_fix_shebang
 
 %post -n liblttng-ust%{sover} -p /sbin/ldconfig
 
