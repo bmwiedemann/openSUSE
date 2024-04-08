@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  5 08:50:34 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.1
+  * bugfix:``urllib3``: Fixed retry handling for IncompleteRead
+    exception raised by urllib3 2.x during data transfer
+
+-------------------------------------------------------------------
 Mon Mar  4 14:00:49 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Drop Provides for SLE 15 SP4 and openSUSE Leap 15.4 and later
