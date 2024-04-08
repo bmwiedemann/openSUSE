@@ -1724,4 +1724,21 @@
     <comment></comment>
     <requestid>1157508</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>b9aacb0b2ed5b12e69d017cc95cb4a16</srcmd5>
+    <version>4.13.0+git41.828c175c</version>
+    <time>1712590655</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.13.0+git41.828c175c:
+  * Fix: openstack-info: Ensure no newlines in openstack_ports
+  * nfsserver: fix &quot;server scope&quot; functionality for both potentially other dropins AND multiple ExecStart
+  * all agents: remove -S state/status that are either ignored, or give an error message in newer versions of Pacemaker
+  * portblock: accept numeric protocol from iptables
+  * spec: use /usr/sbin paths for Fedora 40+
+  * Support IPv6 with Azure load balncer. Using the  &quot;TCP6-LISTENER&quot; causes socat to listen in a dual-stack manner (bsc#1220997)
+  * Doc: Delay: Drop old comments
+  * Fix docker RA behavior when Docker isn't running
+  * galera: allow joiner to report non-Primary during initial IST</comment>
+    <requestid>1165659</requestid>
+  </revision>
 </revisionlist>
