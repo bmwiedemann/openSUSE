@@ -2,7 +2,7 @@
 <constraints>
   <hardware>
     <disk>
-      <size unit="G">18</size>
+      <size unit="G">20</size>
     </disk>
     <processors>4</processors>
   </hardware>
@@ -13,7 +13,7 @@
     </conditions>
     <hardware>
       <memory>
-        <size unit="G">5</size>
+        <size unit="G">9</size>
       </memory>
     </hardware>
   </overwrite>

@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.6.3
-%define short_version 6.6
+%define real_version 6.7.0
+%define short_version 6.7
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,14 +27,14 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.6.3
+Version:        6.7.0
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-declarative-rpmlintrc
-# PATCH-FIX-DOWNSTREAM
+# PATCH-FIX-OPENSUSE
 Patch0:         0001-qmlimportscanner-Include-module-versions-again.patch
 # PATCH-FIX-UPSTREAM kde#482580
 Patch3:         0001-Fix-PointHandler-rejecting-click-events-near-window-.patch
@@ -43,6 +43,7 @@ BuildRequires:  python3-base
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-opengl-private-devel
+BuildRequires:  qt6-svg-private-devel
 BuildRequires:  qt6-test-private-devel
 BuildRequires:  qt6-widgets-private-devel
 BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
@@ -119,13 +120,16 @@ Requires:       qt6-qmlcompiler-private-devel = %{version}
 Requires:       qt6-qmlcore-private-devel = %{version}
 Requires:       qt6-qmllocalstorage-private-devel = %{version}
 Requires:       qt6-qmlmodels-private-devel = %{version}
+Requires:       qt6-qmlnetwork-private-devel = %{version}
 Requires:       qt6-qmlworkerscript-private-devel = %{version}
 Requires:       qt6-quick-private-devel = %{version}
 Requires:       qt6-quickcontrols2-private-devel = %{version}
 Requires:       qt6-quickcontrols2impl-private-devel = %{version}
+Requires:       qt6-qmlxmllistmodel-private-devel = %{version}
 Requires:       qt6-quickdialogs2-private-devel = %{version}
 Requires:       qt6-quickdialogs2quickimpl-private-devel = %{version}
 Requires:       qt6-quickdialogs2utils-private-devel = %{version}
+Requires:       qt6-quickeffects-private-devel = %{version}
 Requires:       qt6-quicklayouts-private-devel = %{version}
 Requires:       qt6-quickparticles-private-devel = %{version}
 Requires:       qt6-quickshapes-private-devel = %{version}
@@ -337,6 +341,7 @@ License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6Qml6 = %{version}
 # Executables are required
 Requires:       qt6-declarative-tools = %{version}
+Requires:       qt6-qmlbuiltins-devel-static = %{version}
 Requires:       cmake(Qt6Network) = %{real_version}
 # qmldevtools is gone in 6.3
 Provides:       qt6-qmldevtools-devel-static = 6.3
@@ -800,6 +805,25 @@ ABI or API guarantees.
 
 ### Private only libraries ###
 
+%package -n libQt6QmlNetwork6
+Summary:        Qt 6 QmlNetwork library
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
+
+%description -n libQt6QmlNetwork6
+QML Binding for the QNetworkInformation C++ class.
+This library does not have any ABI or API guarantees.
+
+%package -n qt6-qmlnetwork-private-devel
+Summary:        Qt 6 QmlNetwork library - Development files
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
+Requires:       libQt6QmlNetwork6 = %{version}
+Requires:       qt6-network-devel = %{version}
+Requires:       qt6-qml-devel = %{version}
+
+%description -n qt6-qmlnetwork-private-devel
+Development files for the Qt 6 QmlNetwork library.
+This library does not have any ABI or API guarantees.
+
 %package -n libQt6QuickEffects6
 Summary:        Qt 6 QuickEffects library
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
@@ -879,6 +903,14 @@ Obsoletes:      qt6-packetprotocol-private-devel < 6.2.0
 
 %description -n qt6-packetprotocol-devel-static
 The Qt6 PacketProtocol static library.
+This library does not have any ABI or API guarantees.
+
+%package -n qt6-qmlbuiltins-devel-static
+Summary:        Qt 6 QmlBuiltins  static library
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
+
+%description -n qt6-qmlbuiltins-devel-static
+The Qt6 QmlBuiltins static library.
 This library does not have any ABI or API guarantees.
 
 %package -n qt6-qmldebug-devel-static
@@ -1006,6 +1038,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %ldconfig_scriptlets -n libQt6QmlCore6
 %ldconfig_scriptlets -n libQt6QmlLocalStorage6
 %ldconfig_scriptlets -n libQt6QmlModels6
+%ldconfig_scriptlets -n libQt6QmlNetwork6
 %ldconfig_scriptlets -n libQt6QmlWorkerScript6
 %ldconfig_scriptlets -n libQt6QmlXmlListModel6
 %ldconfig_scriptlets -n libQt6Quick6
@@ -1034,6 +1067,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %files imports
 %{_qt6_qmldir}/Qt/
 %{_qt6_qmldir}/QtCore/
+%{_qt6_qmldir}/QtNetwork/
 %{_qt6_qmldir}/QtQml/
 %{_qt6_qmldir}/QtQuick/
 %{_qt6_qmldir}/QtTest/
@@ -1055,6 +1089,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_bindir}/qmltc6
 %{_bindir}/qmltestrunner6
 %{_bindir}/qmltime6
+%{_bindir}/svgtoqml6
 %{_qt6_bindir}/qml
 %{_qt6_bindir}/qmldom
 %{_qt6_bindir}/qmleasing
@@ -1068,8 +1103,10 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_bindir}/qmltc
 %{_qt6_bindir}/qmltestrunner
 %{_qt6_bindir}/qmltime
+%{_qt6_bindir}/svgtoqml
 %{_qt6_libexecdir}/qmlcachegen
 %{_qt6_libexecdir}/qmlimportscanner
+%{_qt6_libexecdir}/qmljsrootgen
 %{_qt6_libexecdir}/qmltyperegistrar
 %{_qt6_pluginsdir}/qmllint/
 %{_qt6_pluginsdir}/qmltooling/
@@ -1330,6 +1367,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %files -n qt6-quick-devel
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtDeclarativeTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6Quick/
+%{_qt6_cmakedir}/Qt6QuickTools/
 %{_qt6_descriptionsdir}/Quick.json
 %{_qt6_includedir}/QtQuick/
 %{_qt6_libdir}/libQt6Quick.prl
@@ -1616,6 +1654,20 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 
 ### Private only libraries ###
 
+%files -n libQt6QmlNetwork6
+%{_qt6_libdir}/libQt6QmlNetwork.so.*
+
+%files -n qt6-qmlnetwork-private-devel
+%{_qt6_cmakedir}/Qt6QmlNetwork/
+%{_qt6_descriptionsdir}/QmlNetwork.json
+%{_qt6_includedir}/QtQmlNetwork/
+%{_qt6_libdir}/libQt6QmlNetwork.prl
+%{_qt6_libdir}/libQt6QmlNetwork.so
+%{_qt6_metatypesdir}/qt6qmlnetwork_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_qmlnetwork.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_qmlnetwork_private.pri
+%{_qt6_pkgconfigdir}/Qt6QmlNetwork.pc
+
 %files -n libQt6QuickEffects6
 %{_qt6_libdir}/libQt6QuickEffects.so.*
 
@@ -1663,6 +1715,17 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_metatypesdir}/qt6packetprotocolprivate_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_packetprotocol_private.pri
 
+%files -n qt6-qmlbuiltins-devel-static
+%{_qt6_cmakedir}/Qt6QmlBuiltins/
+%{_qt6_descriptionsdir}/QmlBuiltins.json
+%{_qt6_includedir}/QtQmlBuiltins/
+%{_qt6_libdir}/libQt6QmlBuiltins.prl
+%{_qt6_libdir}/libQt6QmlBuiltins.a
+%{_qt6_metatypesdir}/qt6qmlbuiltins_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_qmlbuiltins.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_qmlbuiltins_private.pri
+%{_qt6_pkgconfigdir}/Qt6QmlBuiltins.pc
+
 %files -n qt6-qmldebug-devel-static
 %{_qt6_cmakedir}/Qt6QmlDebugPrivate/
 %{_qt6_descriptionsdir}/QmlDebugPrivate.json
@@ -1700,6 +1763,9 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_qmltoolingsettings_private.pri
 
 %files -n qt6-qmltyperegistrar-devel-static
+# Expected development files
+%dir %{_qt6_archdatadir}/objects-RelWithDebInfo
+%{_qt6_archdatadir}/objects-RelWithDebInfo/QmlTypeRegistrarPrivate_resources_1/
 %{_qt6_cmakedir}/Qt6QmlTypeRegistrarPrivate/
 %{_qt6_descriptionsdir}/QmlTypeRegistrarPrivate.json
 %{_qt6_includedir}/QtQmlTypeRegistrar/
