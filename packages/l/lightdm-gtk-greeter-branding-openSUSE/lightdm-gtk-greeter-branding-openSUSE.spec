@@ -1,7 +1,7 @@
 #
 # spec file for package lightdm-gtk-greeter-branding-openSUSE
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Guido Berhoerster <gber@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,7 @@ Release:        0
 Summary:        openSUSE branding of lightdm-gtk-greeter
 License:        GPL-3.0-or-later
 Group:          System/X11/Displaymanagers
-Url:            https://launchpad.net/lightdm-gtk-greeter
+URL:            https://launchpad.net/lightdm-gtk-greeter
 Source0:        lightdm-gtk-greeter.conf
 Source1:        lightdm-gtk-greeter-opensuse.png
 BuildRequires:  lightdm
