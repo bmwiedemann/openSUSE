@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.6.3
-%define short_version 6.6
+%define real_version 6.7.0
+%define short_version 6.7
 %define short_name qtimageformats
 %define tar_name qtimageformats-everywhere-src
 %define tar_suffix %{nil}
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-imageformats%{?pkg_suffix}
-Version:        6.6.3
+Version:        6.7.0
 Release:        0
 Summary:        Qt 6 ImageFormat Plugins
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -38,6 +38,7 @@ Source99:       qt6-imageformats-rpmlintrc
 BuildRequires:  libtiff-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  pkgconfig(jasper)
 BuildRequires:  pkgconfig(libmng)
 BuildRequires:  pkgconfig(libwebp)
 %if "%{qt6_flavor}" == "docs"
@@ -52,9 +53,10 @@ Plugins for additional image formats: TIFF, MNG, TGA, WEBP, WBMP
 
 %package devel
 Summary:        Qt 6 ImageFormats - Development files
-Requires:       %{name} = %{version}
+Requires:       qt6-imageformats = %{version}
 Requires:       libtiff-devel
 Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       pkgconfig(jasper)
 Requires:       pkgconfig(libmng)
 Requires:       pkgconfig(libwebp)
 
