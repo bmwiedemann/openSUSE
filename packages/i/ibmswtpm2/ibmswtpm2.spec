@@ -1,7 +1,7 @@
 #
 # spec file for package ibmswtpm2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define suite ibmtss
-%define download_version 164-2020-192.2
+%define download_version 183-2024-03-27
 %ifarch    ppc ppc64 s390 s390x
 %define extra_ccflags -DBIG_ENDIAN_TPM=1
 %else
@@ -33,9 +33,6 @@ URL:            https://github.com/kgoldman/ibmswtpm2
 Source:         https://github.com/kgoldman/ibmswtpm2/archive/rev%{download_version}.tar.gz#/%{name}-%{download_version}.tar.gz
 Patch0:         makefile.patch
 Patch1:         ibmswtpm2-TcpServerPosix-Fix-use-of-uninitialized-value.patch
-Patch2:         ibmswtpm2-NVDynamic-Fix-use-of-uninitialized-value.patch
-# PATCH-FIX-UPSTREAM https://github.com/kgoldman/ibmswtpm2/pull/13
-Patch3:         ibmswtpm2-Add-support-for-OpenSSL-3.2.x.patch
 BuildRequires:  libopenssl-devel >= 1.0
 
 %description

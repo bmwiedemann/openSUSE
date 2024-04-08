@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr  4 08:55:49 UTC 2024 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to version 183-2024-03-27
+  * tpm: Updates to rev 180
+- Drop obsolete patches
+  * Drop ibmswtpm2-NVDynamic-Fix-use-of-uninitialized-value.patch - addressed upstream
+  * Drop ibmswtpm2-Add-support-for-OpenSSL-3.2.x.patch - merged upstream
+
+-------------------------------------------------------------------
 Tue Dec 12 14:06:34 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Add support for OpenSSL 3.2.x
