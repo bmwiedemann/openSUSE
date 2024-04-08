@@ -1,7 +1,7 @@
 #
 # spec file for package waf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           waf
-Version:        2.0.25
+Version:        2.0.26
 Release:        0
 Summary:        The Waf build system
 License:        BSD-3-Clause
@@ -55,6 +55,7 @@ EOF
 install -m 755 -D waf.wrapper %{buildroot}%{_bindir}/waf
 install -m 755 -d %{buildroot}%{_datadir}/waf/
 cp -pR ./zip/waflib %{buildroot}%{_datadir}/waf/
+%python3_fix_shebang
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
