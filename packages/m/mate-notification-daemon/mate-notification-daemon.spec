@@ -1,7 +1,7 @@
 #
 # spec file for package mate-notification-daemon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
-%define _version 1.26
+%define _version 1.28
+
 Name:           mate-notification-daemon
-Version:        1.26.1
+Version:        1.28.0
 Release:        0
 Summary:        Notification daemon for MATE
 License:        GPL-2.0-or-later
@@ -67,6 +68,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files
 %license COPYING
 %doc AUTHORS NEWS
+%config %{_sysconfdir}/xdg/autostart/%{name}.desktop
 %{_bindir}/mate-notification-properties
 %dir %{_libexecdir}/mate-notification-daemon/
 %{_libexecdir}/mate-notification-daemon/mate-notification-*

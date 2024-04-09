@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 26 12:08:49 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.0
+  * Translations update
+  * Fix positioning on Wayland when output is not at position 0, 0
+  * fix building with libxml 2.12.0
+  * applet: Do not override the process' text domain
+  * applet: Actually use translations
+
+-------------------------------------------------------------------
 Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.26.1:
