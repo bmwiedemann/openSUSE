@@ -702,4 +702,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
   unconditionally provide/obsolete the old version. (forwarded request 1165430 from dimstar)</comment>
     <requestid>1165431</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>18ed66e9ed21b34d4cb5aa755ea2b105</srcmd5>
+    <version>1.9.16</version>
+    <time>1712673992</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166099</requestid>
+  </revision>
 </revisionlist>

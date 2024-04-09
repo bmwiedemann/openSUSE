@@ -40,7 +40,7 @@
 %define docs 0
 
 Name:           fwupd
-Version:        1.9.15
+Version:        1.9.16
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -286,6 +286,9 @@ rm -fr %{buildroot}%{_datadir}/installed-tests
 %if %{without fish_support}
 rm -fr %{buildroot}%{_datadir}/fish
 %endif
+
+%check
+%meson_test
 
 %ldconfig_scriptlets -n libfwupd%{shlib_sover}
 

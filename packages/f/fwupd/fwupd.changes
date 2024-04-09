@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr  8 06:52:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.16:
+  + This release adds the following features:
+    - Prefer zstd over xz for metadata.
+    - Relicense a few remaining plugin files to LGPL-2.1+.
+  + This release fixes the following bugs:
+    - Correctly record UEFI success if adding ESRT nodes.
+    - Defer the DP Aux MST scanning on hotplug to workaround a
+      kernel bug.
+    - Do not do the post-update version check if the device
+      needs-reboot.
+    - Fix a fastboot warning when loading device.
+    - Fix a possible warning in fwupdmgr when excluding releases.
+    - Fix a qsi-dock warning when writing chunks.
+    - Ignore attribute-changed to work around a regression in
+      macOS.
+    - Ignore ZFS zvols when finding the default ESP.
+    - Mark Pluton TPMs as part of the main CPU.
+    - Put the fwupd-efi verbose debugging in the journal.
+    - Recognize zfsbootmenu in ESP detection heuristic.
+  + This release adds support for the following hardware:
+    - Acer T34 and U33 docks.
+    - Qualcomm Series 5 Gen 1 and Gen 2 and Series 3 Gen 1 and
+      Gen 2 devices.
+    - Several Puya SPI chips.
+    - VIA VL822 C0.
+
+-------------------------------------------------------------------
 Fri Apr  5 07:08:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - dbxtool is built unconditionally on all architectures: move it
