@@ -47,7 +47,8 @@ export PATH
 
 # HACK to make gclient much faster, do not download entire history
 sed -i "s/, '--progress']$/, '--progress', '--filter=tree:0']/" depot_tools/gclient_scm.py
-sed -i 's/remote or self.remote,$/remote or self.remote, "--depth=1", "--filter=tree:0"/' depot_tools/gclient_scm.py
+# googlesource these days likes to error out on tree:0 but it should not be needed
+sed -i 's/remote or self.remote,$/remote or self.remote, "--depth=1"/' depot_tools/gclient_scm.py
 
 # HACK I want to see progress from git checkout to ensure it does not hang
 sed -i 's/if quiet is None:$/if True:/' depot_tools/gclient_scm.py

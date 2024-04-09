@@ -201,7 +201,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        28.2.9
+Version:        28.2.10
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11%{!?with_system_minizip: AND Zlib}
@@ -1164,6 +1164,11 @@ myconf_gn+=' enable_message_center=false'
 myconf_gn+=' enable_system_notifications=false'
 myconf_gn+=' enable_supervised_users=false'
 myconf_gn+=' enable_compose=false'
+myconf_gn+=' enterprise_cloud_content_analysis=false'
+myconf_gn+=' enterprise_local_content_analysis=false'
+myconf_gn+=' enterprise_client_certificates=false'
+myconf_gn+=' enterprise_watermark=false'
+myconf_gn+=' enterprise_content_analysis=false'
 
 
 
@@ -1201,6 +1206,7 @@ myconf_gn+=' enable_perfetto_zlib=false'
 
 
 
+myconf_gn+=' dawn_complete_static_libs=true'
 myconf_gn+=" enable_library_cdms=false"
 myconf_gn+=" use_pulseaudio=true link_pulseaudio=true"
 myconf_gn+=" is_component_build=false"

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  4 20:35:05 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 28.2.10
+  * Fixed crash in Notification::Close() under libnotify 0.8.x with portal environment.
+  * Fixed usage of Storage.{get|set|clear}Cookies via the Chrome DevTools Protocol.
+  * Security fixes (bsc#1222035):
+    + Use after free in Angle (CVE-2024-2883)
+    + Type confusion in WebAssembly (CVE-2024-2887)
+    + Use after free in WebCodecs (CVE-2024-2886)
+
+-------------------------------------------------------------------
 Wed Mar 27 21:37:27 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 28.2.9
