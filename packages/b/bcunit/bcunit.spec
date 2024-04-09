@@ -19,7 +19,7 @@
 %define soname  libbcunit
 %define sover   1
 Name:           bcunit
-Version:        5.3.26
+Version:        5.3.36
 Release:        0
 Summary:        Provide C programmers basic testing functionality
 License:        LGPL-2.0-or-later
