@@ -95,4 +95,13 @@ now with fixed build</comment>
   * Repository migrations are now trustless</comment>
     <requestid>1165002</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>bd0c721d9021355e0d24ca8637368f15</srcmd5>
+    <version>0.27.0</version>
+    <time>1712674056</time>
+    <user>anag+factory</user>
+    <comment>Add kubo-0.27.0-CVE-2024-22189.patch to avoid
+  quic-go memory exhaustion attack (boo#1222479, CVE-2024-22189)</comment>
+    <requestid>1166258</requestid>
+  </revision>
 </revisionlist>
