@@ -740,4 +740,19 @@
   * fix some build warnings</comment>
     <requestid>1158893</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>0d303249f4d65f4699399435ab8ca7cb</srcmd5>
+    <version>1.12.3</version>
+    <time>1712674074</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.12.3:
+  * improve documentation / manpages
+  * add --reindex option to 'mu index'
+  * split off mu4e-complete-contact (for wider use)
+  * work around some mail rendering issues with some emacs version
+  * update some dependencies
+  * fix some build warnings on older emacsen
+  * fix musl build</comment>
+    <requestid>1166274</requestid>
+  </revision>
 </revisionlist>
