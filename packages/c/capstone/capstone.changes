@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  5 10:13:22 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build with distro %{optflags}
+
+-------------------------------------------------------------------
 Tue Jan  3 15:28:46 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Enable static library, and add libcapstone-devel-static subpackage

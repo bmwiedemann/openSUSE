@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
 %define sover   4
 Name:           capstone
@@ -80,14 +81,17 @@ This package contains the Capstone bindings for Python.
 %autosetup
 
 %build
-CAPSTONE_ARCHS="arm aarch64 mips powerpc sparc systemz x86" CAPSTONE_STATIC="yes" \
-  CFLAGS="%{optflags}" ./make.sh
+export CFLAGS="%{optflags}"
+CAPSTONE_ARCHS="arm aarch64 mips powerpc sparc systemz x86" \
+  LIBDIRARCH="%{_lib}" INCDIR="%{_includedir}" \
+  DESTDIR=%{buildroot} V=1 CAPSTONE_STATIC="yes" ./make.sh
 
 pushd bindings/python/
 %python3_build
 popd
 
 %install
+export CFLAGS="%{optflags}"
 CAPSTONE_ARCHS="arm aarch64 mips powerpc sparc systemz x86" \
   LIBDIRARCH="%{_lib}" INCDIR="%{_includedir}" \
   DESTDIR=%{buildroot} V=1 CAPSTONE_STATIC="yes" ./make.sh install
