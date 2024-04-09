@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 02 13:13:00 UTC 2024 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-7.12 (API & ABI are backwards compatible).
+- On x86 CPUs check using CPUID if CPU supports POPCNT.
+- CMakeLists.txt: Remove WITH_POPCNT=OFF option.
+- New dynamic/adaptive load balancing for AC algorithm.
+- LogarithmicIntegral.cpp: Fix infinite loop on Linux i386.
+- RiemannR.cpp: Fix infinite loop on Linux i386.
+- RiemannR.cpp: Faster and simpler RiemannR_inverse(x).
+
+-------------------------------------------------------------------
 Fri Mar 15 15:05:00 UTC 2024 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-7.11 (API & ABI are backwards compatible).
