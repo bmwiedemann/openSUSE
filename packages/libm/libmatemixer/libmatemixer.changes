@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 24 03:05:02 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.0
+  * Translations update
+  * Remove weak pointers on dispose
+
+-------------------------------------------------------------------
 Mon Nov 27 04:40:41 UTC 2023 - Mihai Moldovan <ionic@ionic.de>
 
 - Update to new upstream version 1.26.1:
