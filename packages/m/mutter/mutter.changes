@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  8 06:11:23 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add mutter-fix-front-buffer-lock.patch: Fix front buffer lock
+  error by an unnecessary ensure_fb_id call
+  (glgo#gnome/mutter!3674, bsc#1222409).
+
+-------------------------------------------------------------------
 Tue Mar 19 09:30:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:

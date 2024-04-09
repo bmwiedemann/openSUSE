@@ -38,6 +38,8 @@ Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
 Patch3:         mutter-fix-x11-restart.patch
 # PATCH-FIX-OPENSUSE 0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch glgo#GNOME/mutter#3302 bsc#1219546 alynx.zhou@suse.com -- Fix partial update on VT switch
 Patch4:         0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch
+# PATCH-FIX-UPSTREAM mutter-fix-front-buffer-lock.patch glgo#gnome/mutter!3674 bsc#1222409 alynx.zhou@suse.com -- Fix front buffer lock error
+Patch5:         mutter-fix-front-buffer-lock.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
@@ -149,6 +151,7 @@ applications that want to make use of the mutter library.
 %patch -P 2 -p1
 %patch -P 3 -p1
 %patch -P 4 -p1
+%patch -P 5 -p1
 %endif
 # SLE-only patches and translations.
 %if 0%{?sle_version}
