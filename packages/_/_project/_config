@@ -599,9 +599,6 @@ Prefer: -libsundials_core7-mvapich2 -libsundials_core7-openmpi4
 # have choice for (plasma-framework-desktoptheme or plasma6-framework-desktoptheme) needed by plasma-framework: libplasma6-desktoptheme plasma-framework-desktoptheme
 Prefer: -plasma-framework-desktoptheme
 
-# have choice for kwalletmanager needed by patterns-kde-kde_plasma: kwalletmanager kwalletmanager5
-Prefer: -kwalletmanager5
-
 # have choice for kaccounts-integration needed by libkaccounts6-2: kaccounts-integration kaccounts-integration-kf5
 Prefer: -kaccounts-integration-kf5
 
@@ -917,7 +914,7 @@ Prefer: chrony
 
 Prefer: -procps4
 
-# have choice for python39-sqlalchemy >= 1.4: python39-SQLAlchemy python39-SQLAlchemy1
+# have choice for python-sqlalchemy >= 1.4: python-SQLAlchemy python-SQLAlchemy1
 Prefer: -python310-SQLAlchemy1 -python311-SQLAlchemy1 -python312-SQLAlchemy1
 
 # have choice for (python36-qt5 or python36-PyQt6) needed by python36-pytest-qt
@@ -2395,6 +2392,7 @@ BuildFlags: onlybuild:openssl-1_0_0
 BuildFlags: onlybuild:openssl-1_1
 BuildFlags: onlybuild:openssl-3
 BuildFlags: onlybuild:openvswitch
+BuildFlags: onlybuild:optipng
 BuildFlags: onlybuild:opus
 BuildFlags: onlybuild:orc
 BuildFlags: onlybuild:oxygen-gtk2
