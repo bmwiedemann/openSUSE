@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 09 06:33:09 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1712593070.918a7f6d:
+  * Extend ESLint configuration to check recommended JavaScript rules
+  * Add explicit ESLint config for compatibility with ESLint 9.0.0
+  * t: Fix sporadic test failure in ui/13-admin.t
+  * Bump eslint from 8.57.0 to 9.0.0
+  * worker: Provide a sensible default for "critical load threshold"
+  * Dependency cron 2024-04-08
+
+-------------------------------------------------------------------
 Sat Apr 06 22:33:20 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1712303211.edc562a0:
