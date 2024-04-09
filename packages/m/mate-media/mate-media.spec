@@ -1,7 +1,7 @@
 #
 # spec file for package mate-media
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
-%define _version 1.26
+%define _version 1.28
+
 Name:           mate-media
-Version:        1.26.1
+Version:        1.28.1
 Release:        0
 Summary:        MATE Desktop multimedia stack
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -29,15 +30,22 @@ BuildRequires:  fdupes
 BuildRequires:  itstool
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  mate-control-center-devel >= %{_version}
+BuildRequires:  mate-panel >= %{_version}
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(gdk-wayland-3.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk-layer-shell-0)
+BuildRequires:  pkgconfig(gtk-layer-shell-0)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libmatemixer) >= %{_version}
 BuildRequires:  pkgconfig(libmatepanelapplet-4.0) >= %{_version}
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(mate-desktop-2.0)
+BuildRequires:  pkgconfig(wayland-client)
 Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
 
@@ -50,31 +58,32 @@ This package provides the Multimedia stack used by the MATE Desktop.
 %setup -q
 
 %build
-NOCONFIGURE=1 mate-autogen
-%configure \
-  --disable-static     \
-  --libexecdir=%{_libexecdir}/%{name} \
-  --disable-statusicon \
-  --enable-profiles
-%make_build
+%meson -Dwayland=true \
+       -Din-process=true
+%meson_build
 
 %install
-%make_install
+%meson_install
+
 %find_lang %{name} %{?no_lang_C}
 find %{buildroot} -type f -name "*.la" -delete -print
 %suse_update_desktop_file mate-volume-control
-%fdupes %{buildroot}%{_datadir}/
+%fdupes %{buildroot}%{_datadir}
 
 %files
 %license COPYING
 %doc AUTHORS NEWS README
 %{_bindir}/mate-volume-control
-%{_libexecdir}/mate-media/
+%{_bindir}/mate-volume-control-status-icon
+%{_libdir}/liblibmate-volume-control-applet.so
+#%{_libexecdir}/mate-media/
+%config %{_sysconfdir}/xdg/autostart/mate-volume-control-status-icon.desktop
 %{_datadir}/mate-media/
-%{_datadir}/dbus-1/services/org.mate.panel.applet.GvcAppletFactory.service
+%{_datadir}/mate-panel/applets/org.mate.applets.GvcApplet.mate-panel-applet.desktop
+#%{_datadir}/dbus-1/services/org.mate.panel.applet.GvcAppletFactory.service
 %dir %{_datadir}/mate-panel/
 %dir %{_datadir}/mate-panel/applets/
-%{_datadir}/mate-panel/applets/org.mate.applets.GvcApplet.mate-panel-applet
+#%{_datadir}/mate-panel/applets/org.mate.applets.GvcApplet.mate-panel-applet
 %{_datadir}/sounds/mate/
 %{_datadir}/applications/*.desktop
 %{_mandir}/man?/mate-volume-control-status-icon.?%{?ext_man}

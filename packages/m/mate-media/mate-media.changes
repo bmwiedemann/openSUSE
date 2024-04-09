@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 25 02:10:59 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.1
+  * Translations update
+  * meson: fix building wayland support
+  * add meson build support
+  * fix building with libxml 2.12.0
+  * Fix various instance checks
+  * applet: Do not override the process' text domain
+  * replace deprecated gtk_image_menu_item
+  * in-process: enable scrolling on icon as in out of process builds
+  * Wayland: fix slider rendering underneath fullscreen windows
+  * position popup slider properly in wayland and make wayland optional (#196)
+  * build: fix typo from last commit
+  * Applet: port to in-process for wayland support
+  * Distribute Meson build system
+
+-------------------------------------------------------------------
 Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.26.1:
