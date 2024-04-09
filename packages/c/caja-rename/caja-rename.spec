@@ -1,7 +1,7 @@
 #
 # spec file for package caja-rename
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,30 +31,46 @@ done \
 %{nil}
 %endif
 %define _name   cajarename
+%define _version 1.28
 Name:           caja-rename
-Version:        22.10.31
+Version:        24.2.1
 Release:        0
 Summary:        Batch renaming extension for Caja
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/tari01/caja-rename
-Source0:        https://github.com/tari01/caja-rename/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/tari01/caja-rename/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module polib}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  cmake
+BuildRequires:  cmake-extras
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
+BuildRequires:  hicolor-icon-theme
 # For directory owning.
 # Note that we cannot use python_module here. The package doesn't provide a
 # python3-caja virtual.
-BuildRequires:  python-caja
-BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libcaja-extension)
 Requires:       caja
-Requires:       python-caja
-Requires:       python3-gobject
-Requires:       python3-gobject-Gdk
-BuildArch:      noarch
 
 %description
+An extension for the Caja file browser allowing users to rename
+multiple files/folders in a single pass.
+
+The application can change the case, insert, replace and delete
+strings, as well as enumerate the selection. Any changes are
+instantly visible in the preview list. The user interface strives
+to be as simple as possible, without confusing advanced
+operations.
+
+%package -n caja-extension-rename
+Summary:        Rename extension for Caja
+Group:          Productivity/File utilities
+Requires:       %{name} = %{version}
+Requires:       caja >= %{_version}
+
+%description -n caja-extension-rename
 An extension for the Caja file browser allowing users to rename
 multiple files/folders in a single pass.
 
@@ -67,38 +83,26 @@ operations.
 %lang_package
 
 %prep
-%setup -q
-
-# Don't use env to call python.
-%{python_expand sed -i -e 's_^#!%{_bindir}/env python3$_#!%{__$python}_' 'data/usr/share/caja-python/extensions/caja-rename.py' }
-
-# Remove hashbangs on scripts installed into sitelib.
-find '%{_name}' -type 'f' -iname '*.py' -exec sed -i -e '0,/^\s*#!\s*\/.*$/d' '{}' '+'
-
-# Also remove executable flags.
-find '%{_name}' -type 'f' -iname '*.py' -exec chmod -x '{}' '+'
-chmod -x 'COPYING' 'README.md'
-find 'data/usr/share/%{_name}' -type 'f' -exec chmod -x '{}' '+'
+%autosetup -p1
 
 %build
-%python_build
+%cmake
+%cmake_build
 
 %install
-%python_install
-%python_compileall
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%cmake_install
 
-%find_lang %{_name}
+%find_lang %{name}
 
 %files
 %license COPYING
 %doc README.md
-%{python_sitelib}/%{_name}/
-%{python_sitelib}/%{_name}-%{version}*-info
-%{_datadir}/caja-python/extensions/%{name}.py
-%{_datadir}/%{_name}/
-%pycache_only %{python_sitelib}/%{_name}/__pycache__/*
+%{_datadir}/icons/hicolor/*/apps/%{name}.svg
 
-%files lang -f %{_name}.lang
+%files -n caja-extension-rename
+%{_libdir}/caja/extensions-2.0/lib%{name}.so
+%{_datadir}/caja/extensions/lib%{name}.caja-extension
+
+%files lang -f %{name}.lang
 
 %changelog
