@@ -10,10 +10,10 @@ Acked-by: David Disseldorp <ddiss@suse.de>
  src/perl/PMDA/Makefile.PL      | 2 +-
  3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/src/perl/LogImport/Makefile.PL b/src/perl/LogImport/Makefile.PL
-index a254f5ad5..2ec42f51a 100644
---- a/src/perl/LogImport/Makefile.PL
-+++ b/src/perl/LogImport/Makefile.PL
+Index: pcp-6.2.0/src/perl/LogImport/Makefile.PL
+===================================================================
+--- pcp-6.2.0.orig/src/perl/LogImport/Makefile.PL
++++ pcp-6.2.0/src/perl/LogImport/Makefile.PL
 @@ -15,7 +15,7 @@ if ($ENV{TARGET_OS} eq "mingw") {
  else {
      $ldfrom = "LogImport.o",
@@ -22,11 +22,11 @@ index a254f5ad5..2ec42f51a 100644
 +    $libs = ["-lpcp_import -lpcp"];
  }
  if ($ENV{TARGET_OS} eq "darwin") {
-     # standard ones, minus -arch ppc
-diff --git a/src/perl/MMV/Makefile.PL b/src/perl/MMV/Makefile.PL
-index 7a6787ded..1e4cea031 100644
---- a/src/perl/MMV/Makefile.PL
-+++ b/src/perl/MMV/Makefile.PL
+     $lddlflags = "-bundle -undefined dynamic_lookup";
+Index: pcp-6.2.0/src/perl/MMV/Makefile.PL
+===================================================================
+--- pcp-6.2.0.orig/src/perl/MMV/Makefile.PL
++++ pcp-6.2.0/src/perl/MMV/Makefile.PL
 @@ -15,7 +15,7 @@ if ($ENV{TARGET_OS} eq "mingw") {
  else {
      $ldfrom = "MMV.o";
@@ -35,11 +35,11 @@ index 7a6787ded..1e4cea031 100644
 +    $libs = ["-lpcp_mmv -lpcp"];
  }
  if ($ENV{TARGET_OS} eq "darwin") {
-     # standard ones, minus -arch ppc
-diff --git a/src/perl/PMDA/Makefile.PL b/src/perl/PMDA/Makefile.PL
-index d5c44615a..e2260c4b5 100644
---- a/src/perl/PMDA/Makefile.PL
-+++ b/src/perl/PMDA/Makefile.PL
+     $lddlflags = "-bundle -undefined dynamic_lookup";
+Index: pcp-6.2.0/src/perl/PMDA/Makefile.PL
+===================================================================
+--- pcp-6.2.0.orig/src/perl/PMDA/Makefile.PL
++++ pcp-6.2.0/src/perl/PMDA/Makefile.PL
 @@ -15,7 +15,7 @@ if ($ENV{TARGET_OS} eq "mingw") {
  else {
      $ldfrom = "local.o PMDA.o";
@@ -48,7 +48,4 @@ index d5c44615a..e2260c4b5 100644
 +    $libs = ["-lpcp_pmda -lpcp"];
  }
  if ($ENV{TARGET_OS} eq "darwin") {
-     # standard ones, minus -arch ppc
--- 
-2.35.3
-
+     $lddlflags = "-bundle -undefined dynamic_lookup";

@@ -44,11 +44,11 @@ References: bsc#1186511
  src/pmlogger/pmlogger_daily_report.service.in      |  4 ++--
  14 files changed, 54 insertions(+), 16 deletions(-)
 
-Index: pcp-5.3.7/src/include/builddefs.in
+Index: pcp-6.2.0/src/include/builddefs.in
 ===================================================================
---- pcp-5.3.7.orig/src/include/builddefs.in
-+++ pcp-5.3.7/src/include/builddefs.in
-@@ -944,6 +944,9 @@ PCP_GROUP_INSTALL = @pcp_group_install@
+--- pcp-6.2.0.orig/src/include/builddefs.in
++++ pcp-6.2.0/src/include/builddefs.in
+@@ -908,6 +908,9 @@ PCP_GROUP_INSTALL = @pcp_group_install@
  # systemd service type for logutil scripts
  SD_SERVICE_TYPE=@sd_service_type@
  

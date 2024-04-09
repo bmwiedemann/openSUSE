@@ -36,10 +36,10 @@ Signed-off-by: David Disseldorp <ddiss@suse.de>
  src/zabbix-agent/src/GNUmakefile    | 2 +-
  29 files changed, 55 insertions(+), 56 deletions(-)
 
-Index: pcp-5.3.7/src/genpmda/genpmda
+Index: pcp-6.2.0/src/genpmda/genpmda
 ===================================================================
---- pcp-5.3.7.orig/src/genpmda/genpmda
-+++ pcp-5.3.7/src/genpmda/genpmda
+--- pcp-6.2.0.orig/src/genpmda/genpmda
++++ pcp-6.2.0/src/genpmda/genpmda
 @@ -899,7 +899,7 @@ install: default
  	\$(INSTALL) -m 755 -d \$(PCP_VAR_DIR)/pmdas
  	\$(INSTALL) -m 755 -d \$(PMDADIR)
@@ -58,11 +58,11 @@ Index: pcp-5.3.7/src/genpmda/genpmda
  	\$(INSTALL) -m 755 -f $oflag/Install \$(PMDADIR)/Install
  	\$(INSTALL) -m 755 -f $oflag/Remove \$(PMDADIR)/Remove
  	\$(INSTALL) -m 644 -f $oflag/Makefile.install \$(PMDADIR)/Makefile
-Index: pcp-5.3.7/src/libpcp/src/GNUmakefile
+Index: pcp-6.2.0/src/libpcp/src/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/libpcp/src/GNUmakefile
-+++ pcp-5.3.7/src/libpcp/src/GNUmakefile
-@@ -138,7 +138,7 @@ endif
+--- pcp-6.2.0.orig/src/libpcp/src/GNUmakefile
++++ pcp-6.2.0/src/libpcp/src/GNUmakefile
+@@ -142,7 +142,7 @@ endif
  
  install : default
  ifneq ($(LIBTARGET),)
@@ -71,7 +71,7 @@ Index: pcp-5.3.7/src/libpcp/src/GNUmakefile
  	$(INSTALL) -m 644 $(LIBCONFIG) $(PCP_LIB_DIR)/pkgconfig/$(LIBCONFIG)
  endif
  ifneq ($(SYMTARGET),)
-@@ -147,7 +147,7 @@ ifneq ($(SYMTARGET),)
+@@ -151,7 +151,7 @@ ifneq ($(SYMTARGET),)
  	done
  endif
  ifneq ($(STATICLIBTARGET),)
@@ -80,11 +80,11 @@ Index: pcp-5.3.7/src/libpcp/src/GNUmakefile
  endif
  
  $(XFILES):
-Index: pcp-5.3.7/src/libpcp_fault/src/GNUmakefile
+Index: pcp-6.2.0/src/libpcp_fault/src/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/libpcp_fault/src/GNUmakefile
-+++ pcp-5.3.7/src/libpcp_fault/src/GNUmakefile
-@@ -155,7 +155,7 @@ endif
+--- pcp-6.2.0.orig/src/libpcp_fault/src/GNUmakefile
++++ pcp-6.2.0/src/libpcp_fault/src/GNUmakefile
+@@ -147,7 +147,7 @@ derive_parser.y: derive_parser.y.in fix_
  
  install : default
  ifneq ($(LIBTARGET),)
@@ -93,7 +93,7 @@ Index: pcp-5.3.7/src/libpcp_fault/src/GNUmakefile
  endif
  ifneq ($(SYMTARGET),)
  	for tt in $(SYMTARGET); do \
-@@ -163,7 +163,7 @@ ifneq ($(SYMTARGET),)
+@@ -155,7 +155,7 @@ ifneq ($(SYMTARGET),)
  	done
  endif
  ifneq ($(STATICLIBTARGET),)
@@ -102,10 +102,10 @@ Index: pcp-5.3.7/src/libpcp_fault/src/GNUmakefile
  endif
  	$(INSTALL) -m 644 $(TOPDIR)/src/include/pcp/fault.h $(PCP_INC_DIR)/fault.h
  
-Index: pcp-5.3.7/src/libpcp_gui/src/GNUmakefile
+Index: pcp-6.2.0/src/libpcp_gui/src/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/libpcp_gui/src/GNUmakefile
-+++ pcp-5.3.7/src/libpcp_gui/src/GNUmakefile
+--- pcp-6.2.0.orig/src/libpcp_gui/src/GNUmakefile
++++ pcp-6.2.0/src/libpcp_gui/src/GNUmakefile
 @@ -54,7 +54,7 @@ include $(BUILDRULES)
  
  install: default
@@ -124,10 +124,10 @@ Index: pcp-5.3.7/src/libpcp_gui/src/GNUmakefile
  endif
  
  default_pcp:	default
-Index: pcp-5.3.7/src/libpcp_import/src/GNUmakefile
+Index: pcp-6.2.0/src/libpcp_import/src/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/libpcp_import/src/GNUmakefile
-+++ pcp-5.3.7/src/libpcp_import/src/GNUmakefile
+--- pcp-6.2.0.orig/src/libpcp_import/src/GNUmakefile
++++ pcp-6.2.0/src/libpcp_import/src/GNUmakefile
 @@ -54,7 +54,7 @@ include $(BUILDRULES)
  
  install: default
@@ -146,10 +146,10 @@ Index: pcp-5.3.7/src/libpcp_import/src/GNUmakefile
  endif
  
  default_pcp: default
-Index: pcp-5.3.7/src/libpcp_mmv/src/GNUmakefile
+Index: pcp-6.2.0/src/libpcp_mmv/src/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/libpcp_mmv/src/GNUmakefile
-+++ pcp-5.3.7/src/libpcp_mmv/src/GNUmakefile
+--- pcp-6.2.0.orig/src/libpcp_mmv/src/GNUmakefile
++++ pcp-6.2.0/src/libpcp_mmv/src/GNUmakefile
 @@ -47,7 +47,7 @@ include $(BUILDRULES)
  
  install: default
@@ -168,11 +168,11 @@ Index: pcp-5.3.7/src/libpcp_mmv/src/GNUmakefile
  endif
  
  default_pcp: default
-Index: pcp-5.3.7/src/libpcp_pmcd/src/GNUmakefile
+Index: pcp-6.2.0/src/libpcp_pmcd/src/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/libpcp_pmcd/src/GNUmakefile
-+++ pcp-5.3.7/src/libpcp_pmcd/src/GNUmakefile
-@@ -73,7 +73,7 @@ include $(BUILDRULES)
+--- pcp-6.2.0.orig/src/libpcp_pmcd/src/GNUmakefile
++++ pcp-6.2.0/src/libpcp_pmcd/src/GNUmakefile
+@@ -69,7 +69,7 @@ include $(BUILDRULES)
  
  install : default
  ifeq "$(TARGET_OS)" "mingw"
@@ -181,10 +181,10 @@ Index: pcp-5.3.7/src/libpcp_pmcd/src/GNUmakefile
  endif
  
  ifeq "$(ENABLE_PROBES)" "true"
-Index: pcp-5.3.7/src/libpcp_pmda/src/GNUmakefile
+Index: pcp-6.2.0/src/libpcp_pmda/src/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/libpcp_pmda/src/GNUmakefile
-+++ pcp-5.3.7/src/libpcp_pmda/src/GNUmakefile
+--- pcp-6.2.0.orig/src/libpcp_pmda/src/GNUmakefile
++++ pcp-6.2.0/src/libpcp_pmda/src/GNUmakefile
 @@ -64,7 +64,7 @@ include $(BUILDRULES)
  
  install: default
@@ -203,10 +203,10 @@ Index: pcp-5.3.7/src/libpcp_pmda/src/GNUmakefile
  endif
  
  $(XFILES):
-Index: pcp-5.3.7/src/libpcp_trace/src/GNUmakefile
+Index: pcp-6.2.0/src/libpcp_trace/src/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/libpcp_trace/src/GNUmakefile
-+++ pcp-5.3.7/src/libpcp_trace/src/GNUmakefile
+--- pcp-6.2.0.orig/src/libpcp_trace/src/GNUmakefile
++++ pcp-6.2.0/src/libpcp_trace/src/GNUmakefile
 @@ -56,13 +56,13 @@ include $(BUILDRULES)
  
  install : default
@@ -223,11 +223,11 @@ Index: pcp-5.3.7/src/libpcp_trace/src/GNUmakefile
  endif
  
  default_pcp : default
-Index: pcp-5.3.7/src/libpcp_web/src/GNUmakefile
+Index: pcp-6.2.0/src/libpcp_web/src/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/libpcp_web/src/GNUmakefile
-+++ pcp-5.3.7/src/libpcp_web/src/GNUmakefile
-@@ -107,7 +107,7 @@ endif
+--- pcp-6.2.0.orig/src/libpcp_web/src/GNUmakefile
++++ pcp-6.2.0/src/libpcp_web/src/GNUmakefile
+@@ -111,7 +111,7 @@ endif
  install: default
  	$(INSTALL) -m 644 -t $(REWRITEVARDIR)/pmproxy_fixups.conf logrewrite.conf $(REWRITEDIR)/pmproxy_fixups.conf
  ifneq ($(LIBTARGET),)
@@ -236,7 +236,7 @@ Index: pcp-5.3.7/src/libpcp_web/src/GNUmakefile
  endif
  ifneq ($(SYMTARGET),)
  	for tt in $(SYMTARGET); do \
-@@ -115,7 +115,7 @@ ifneq ($(SYMTARGET),)
+@@ -119,7 +119,7 @@ ifneq ($(SYMTARGET),)
  	done
  endif
  ifneq ($(STATICLIBTARGET),)
@@ -245,10 +245,10 @@ Index: pcp-5.3.7/src/libpcp_web/src/GNUmakefile
  endif
  
  $(XFILES):
-Index: pcp-5.3.7/src/pmdas/cifs/GNUmakefile
+Index: pcp-6.2.0/src/pmdas/cifs/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/pmdas/cifs/GNUmakefile
-+++ pcp-5.3.7/src/pmdas/cifs/GNUmakefile
+--- pcp-6.2.0.orig/src/pmdas/cifs/GNUmakefile
++++ pcp-6.2.0/src/pmdas/cifs/GNUmakefile
 @@ -44,8 +44,8 @@ build-me: $(CMDTARGET) $(LIBTARGET)
  install: default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
@@ -260,10 +260,10 @@ Index: pcp-5.3.7/src/pmdas/cifs/GNUmakefile
  	@$(INSTALL_MAN)
  else
  build-me:
-Index: pcp-5.3.7/src/pmdas/docker/GNUmakefile
+Index: pcp-6.2.0/src/pmdas/docker/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/pmdas/docker/GNUmakefile
-+++ pcp-5.3.7/src/pmdas/docker/GNUmakefile
+--- pcp-6.2.0.orig/src/pmdas/docker/GNUmakefile
++++ pcp-6.2.0/src/pmdas/docker/GNUmakefile
 @@ -45,8 +45,8 @@ build-me:	$(CMDTARGET) $(LIBTARGET)
  install_pcp install:	default 
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
@@ -275,10 +275,10 @@ Index: pcp-5.3.7/src/pmdas/docker/GNUmakefile
  	@$(INSTALL_MAN)
  else
  build-me:
-Index: pcp-5.3.7/src/pmdas/hacluster/GNUmakefile
+Index: pcp-6.2.0/src/pmdas/hacluster/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/pmdas/hacluster/GNUmakefile
-+++ pcp-5.3.7/src/pmdas/hacluster/GNUmakefile
+--- pcp-6.2.0.orig/src/pmdas/hacluster/GNUmakefile
++++ pcp-6.2.0/src/pmdas/hacluster/GNUmakefile
 @@ -48,8 +48,8 @@ build-me: $(CMDTARGET) $(LIBTARGET)
  install: default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
@@ -290,10 +290,10 @@ Index: pcp-5.3.7/src/pmdas/hacluster/GNUmakefile
  	@$(INSTALL_MAN)
  else
  build-me:
-Index: pcp-5.3.7/src/pmdas/jbd2/GNUmakefile
+Index: pcp-6.2.0/src/pmdas/jbd2/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/pmdas/jbd2/GNUmakefile
-+++ pcp-5.3.7/src/pmdas/jbd2/GNUmakefile
+--- pcp-6.2.0.orig/src/pmdas/jbd2/GNUmakefile
++++ pcp-6.2.0/src/pmdas/jbd2/GNUmakefile
 @@ -57,8 +57,8 @@ build-me: $(LIBTARGET) $(CMDTARGET) $(HE
  install: default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
@@ -305,11 +305,11 @@ Index: pcp-5.3.7/src/pmdas/jbd2/GNUmakefile
  	$(INSTALL) -m 644 -t $(PCP_PMNS_DIR)/root_jbd2 root_jbd2 $(PCP_PMNSADM_DIR)/root_jbd2
  	$(INSTALL) -m 644 -t $(REWRITEVARDIR)/jbd2_kernel_ulong.conf jbd2_kernel_ulong.conf $(REWRITEDIR)/jbd2_kernel_ulong.conf
  	@$(INSTALL_MAN)
-Index: pcp-5.3.7/src/pmdas/kvm/GNUmakefile
+Index: pcp-6.2.0/src/pmdas/kvm/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/pmdas/kvm/GNUmakefile
-+++ pcp-5.3.7/src/pmdas/kvm/GNUmakefile
-@@ -55,10 +55,10 @@ build-me: $(LIBTARGET) $(CMDTARGET) $(HE
+--- pcp-6.2.0.orig/src/pmdas/kvm/GNUmakefile
++++ pcp-6.2.0/src/pmdas/kvm/GNUmakefile
+@@ -57,10 +57,10 @@ build-me: $(LIBTARGET) $(CMDTARGET) $(HE
  install: default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
  	$(INSTALL) -m 755 -d $(PMDATMPDIR)
@@ -320,12 +320,12 @@ Index: pcp-5.3.7/src/pmdas/kvm/GNUmakefile
 -	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(LIBTARGET) $(CMDTARGET) $(SCRIPTS) $(PMDAADMDIR)
 +	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(CMDTARGET) $(SCRIPTS) $(PMDAADMDIR)
  	$(INSTALL) -m 644 -t $(PCP_PMNS_DIR)/root_kvm root_kvm $(PCP_PMNSADM_DIR)/root_kvm
+ 	$(INSTALL) -m 644 -t $(REWRITEVARDIR)/kvm_fixups.conf kvm_fixups.conf $(REWRITEDIR)/kvm_fixups.conf
  	@$(INSTALL_MAN)
- else
-Index: pcp-5.3.7/src/pmdas/linux/GNUmakefile
+Index: pcp-6.2.0/src/pmdas/linux/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/pmdas/linux/GNUmakefile
-+++ pcp-5.3.7/src/pmdas/linux/GNUmakefile
+--- pcp-6.2.0.orig/src/pmdas/linux/GNUmakefile
++++ pcp-6.2.0/src/pmdas/linux/GNUmakefile
 @@ -89,11 +89,11 @@ build-me: $(LIBTARGET) $(CMDTARGET) $(HE
  install: default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
@@ -340,10 +340,10 @@ Index: pcp-5.3.7/src/pmdas/linux/GNUmakefile
  	$(INSTALL) -m 644 -t $(PCP_PMNS_DIR)/root_linux root_linux $(PCP_PMNSADM_DIR)/root_linux
  	$(INSTALL) -m 644 -t $(REWRITEVARDIR)/linux_proc_fs_nfsd_fixups.conf proc_fs_nfsd_fixups.conf $(REWRITEDIR)/linux_proc_fs_nfsd_fixups.conf
  	$(INSTALL) -m 644 -t $(REWRITEVARDIR)/linux_proc_net_snmp_migrate.conf proc_net_snmp_migrate.conf $(REWRITEDIR)/linux_proc_net_snmp_migrate.conf
-Index: pcp-5.3.7/src/pmdas/linux_proc/GNUmakefile
+Index: pcp-6.2.0/src/pmdas/linux_proc/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/pmdas/linux_proc/GNUmakefile
-+++ pcp-5.3.7/src/pmdas/linux_proc/GNUmakefile
+--- pcp-6.2.0.orig/src/pmdas/linux_proc/GNUmakefile
++++ pcp-6.2.0/src/pmdas/linux_proc/GNUmakefile
 @@ -73,10 +73,10 @@ build-me: root_proc $(LIBTARGET) $(CMDTA
  install: default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
@@ -357,10 +357,10 @@ Index: pcp-5.3.7/src/pmdas/linux_proc/GNUmakefile
  	$(INSTALL) -m 644 -t $(PCP_PMNS_DIR)/root_proc root_proc $(PCP_PMNSADM_DIR)/root_proc
  	$(INSTALL) -m 644 -t $(REWRITEVARDIR) $(LOGREWRITERS) $(REWRITEDIR)
  	@$(INSTALL_MAN)
-Index: pcp-5.3.7/src/pmdas/linux_xfs/GNUmakefile
+Index: pcp-6.2.0/src/pmdas/linux_xfs/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/pmdas/linux_xfs/GNUmakefile
-+++ pcp-5.3.7/src/pmdas/linux_xfs/GNUmakefile
+--- pcp-6.2.0.orig/src/pmdas/linux_xfs/GNUmakefile
++++ pcp-6.2.0/src/pmdas/linux_xfs/GNUmakefile
 @@ -57,8 +57,8 @@ build-me: $(LIBTARGET) $(CMDTARGET) $(HE
  install: default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
@@ -372,25 +372,10 @@ Index: pcp-5.3.7/src/pmdas/linux_xfs/GNUmakefile
  	$(INSTALL) -m 644 -t $(PCP_PMNS_DIR)/root_xfs root_xfs $(PCP_PMNSADM_DIR)/root_xfs
  	$(INSTALL) -m 644 -t $(REWRITEVARDIR) linux_xfs_migrate.conf linux_xfs_perdev_buffer.conf $(REWRITEDIR)
  	@$(INSTALL_MAN)
-Index: pcp-5.3.7/src/pmdas/linux_zfs/GNUmakefile
+Index: pcp-6.2.0/src/pmdas/nvidia/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/pmdas/linux_zfs/GNUmakefile
-+++ pcp-5.3.7/src/pmdas/linux_zfs/GNUmakefile
-@@ -49,8 +49,8 @@ build-me: $(LIBTARGET) $(CMDTARGET) $(HE
- install: default
- 	$(INSTALL) -m 755 -d $(PMDAADMDIR)
- 	$(INSTALL) -m 755 -d $(PMDATMPDIR)
--	$(INSTALL) -m 644 -t $(PMDATMPDIR) domain.h help help.dir help.pag root root_zfs $(PMDAADMDIR)
--	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(LIBTARGET) $(CMDTARGET) $(SCRIPTS) $(PMDAADMDIR)
-+	$(INSTALL) -m 644 -t $(PMDATMPDIR) domain.h help help.dir help.pag root root_zfs $(LIBTARGET) $(PMDAADMDIR)
-+	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(CMDTARGET) $(SCRIPTS) $(PMDAADMDIR)
- 	$(INSTALL) -m 644 -t $(PCP_PMNS_DIR)/root_zfs root_zfs $(PCP_PMNSADM_DIR)/root_zfs
- 	@$(INSTALL_MAN)
- else
-Index: pcp-5.3.7/src/pmdas/nvidia/GNUmakefile
-===================================================================
---- pcp-5.3.7.orig/src/pmdas/nvidia/GNUmakefile
-+++ pcp-5.3.7/src/pmdas/nvidia/GNUmakefile
+--- pcp-6.2.0.orig/src/pmdas/nvidia/GNUmakefile
++++ pcp-6.2.0/src/pmdas/nvidia/GNUmakefile
 @@ -37,9 +37,8 @@ include $(BUILDRULES)
  install:	default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
@@ -403,10 +388,10 @@ Index: pcp-5.3.7/src/pmdas/nvidia/GNUmakefile
  
  $(OBJECTS): domain.h
  
-Index: pcp-5.3.7/src/pmdas/pmcd/src/GNUmakefile
+Index: pcp-6.2.0/src/pmdas/pmcd/src/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/pmdas/pmcd/src/GNUmakefile
-+++ pcp-5.3.7/src/pmdas/pmcd/src/GNUmakefile
+--- pcp-6.2.0.orig/src/pmdas/pmcd/src/GNUmakefile
++++ pcp-6.2.0/src/pmdas/pmcd/src/GNUmakefile
 @@ -59,7 +59,7 @@ default: $(LIBTARGET)
  install: default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
@@ -416,25 +401,10 @@ Index: pcp-5.3.7/src/pmdas/pmcd/src/GNUmakefile
  
  include $(BUILDRULES)
  
-Index: pcp-5.3.7/src/pmdas/podman/GNUmakefile
+Index: pcp-6.2.0/src/pmdas/smart/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/pmdas/podman/GNUmakefile
-+++ pcp-5.3.7/src/pmdas/podman/GNUmakefile
-@@ -54,8 +54,8 @@ build-me: $(JSONSL_XFILES) $(LIBTARGET)
- install: default
- 	$(INSTALL) -m 755 -d $(PMDAADMDIR)
- 	$(INSTALL) -m 755 -d $(PMDATMPDIR)
--	$(INSTALL) -m 644 -t $(PMDATMPDIR) domain.h help help.dir help.pag root root_podman $(PMDAADMDIR)
--	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(LIBTARGET) $(CMDTARGET) $(SCRIPTS) $(PMDAADMDIR)
-+	$(INSTALL) -m 644 -t $(PMDATMPDIR) domain.h help help.dir help.pag root root_podman $(LIBTARGET) $(PMDAADMDIR)
-+	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(CMDTARGET) $(SCRIPTS) $(PMDAADMDIR)
- 	$(INSTALL) -m 644 -t $(PCP_PMNS_DIR)/root_podman root_podman $(PCP_PMNSADM_DIR)/root_podman
- 	@$(INSTALL_MAN)
- else
-Index: pcp-5.3.7/src/pmdas/smart/GNUmakefile
-===================================================================
---- pcp-5.3.7.orig/src/pmdas/smart/GNUmakefile
-+++ pcp-5.3.7/src/pmdas/smart/GNUmakefile
+--- pcp-6.2.0.orig/src/pmdas/smart/GNUmakefile
++++ pcp-6.2.0/src/pmdas/smart/GNUmakefile
 @@ -48,8 +48,8 @@ build-me: $(CMDTARGET) $(LIBTARGET)
  install: default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
@@ -446,10 +416,10 @@ Index: pcp-5.3.7/src/pmdas/smart/GNUmakefile
  	@$(INSTALL_MAN)
  else
  build-me:
-Index: pcp-5.3.7/src/pmdas/statsd/src/GNUmakefile
+Index: pcp-6.2.0/src/pmdas/statsd/src/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/pmdas/statsd/src/GNUmakefile
-+++ pcp-5.3.7/src/pmdas/statsd/src/GNUmakefile
+--- pcp-6.2.0.orig/src/pmdas/statsd/src/GNUmakefile
++++ pcp-6.2.0/src/pmdas/statsd/src/GNUmakefile
 @@ -68,8 +68,8 @@ build-me: $(RAGELTARGET).o $(CMDTARGET)
  install: default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
@@ -461,10 +431,10 @@ Index: pcp-5.3.7/src/pmdas/statsd/src/GNUmakefile
  
  CFILES += $(RFILES)
  
-Index: pcp-5.3.7/src/zabbix-agent/src/GNUmakefile
+Index: pcp-6.2.0/src/zabbix-agent/src/GNUmakefile
 ===================================================================
---- pcp-5.3.7.orig/src/zabbix-agent/src/GNUmakefile
-+++ pcp-5.3.7/src/zabbix-agent/src/GNUmakefile
+--- pcp-6.2.0.orig/src/zabbix-agent/src/GNUmakefile
++++ pcp-6.2.0/src/zabbix-agent/src/GNUmakefile
 @@ -43,7 +43,7 @@ install: default
  	$(INSTALL) -m 755 -d $(ZABBIX_DIR)
  	$(INSTALL) -m 755 -d $(MODULE_DIR)

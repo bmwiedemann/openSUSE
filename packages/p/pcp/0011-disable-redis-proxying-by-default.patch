@@ -1,0 +1,29 @@
+From 3bde240a2acc85e63e2f7813330713dd9b59386e Mon Sep 17 00:00:00 2001
+From: Nathan Scott <nathans@redhat.com>
+Date: Wed, 27 Mar 2024 14:51:28 +1100
+Subject: [PATCH] pmproxy: disable Redis protocol proxying by default
+
+If a redis-server has been locked down in terms of connections,
+we want to prevent pmproxy from being allowed to send arbitrary
+RESP commands to it.
+
+This protocol proxying doesn't affect PCP functionality at all,
+its more of a developer/sysadmin convenience when Redis used in
+cluster mode (relatively uncommon compared to localhost mode).
+---
+ src/pmproxy/pmproxy.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pmproxy/pmproxy.conf b/src/pmproxy/pmproxy.conf
+index e54891792e..4cbc1c96af 100644
+--- a/src/pmproxy/pmproxy.conf
++++ b/src/pmproxy/pmproxy.conf
+@@ -29,7 +29,7 @@ pcp.enabled = true
+ http.enabled = true
+ 
+ # support Redis protocol proxying
+-redis.enabled = true
++redis.enabled = false
+ 
+ # support SSL/TLS protocol wrapping
+ secure.enabled = true

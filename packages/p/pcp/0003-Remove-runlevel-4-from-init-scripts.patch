@@ -12,10 +12,10 @@ Acked-by: David Disseldorp <ddiss@suse.de>
  src/pmproxy/rc_pmproxy   |  2 +-
  5 files changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/src/pmcd/rc_pcp b/src/pmcd/rc_pcp
-index 228cf58fc..e1b05a51e 100644
---- a/src/pmcd/rc_pcp
-+++ b/src/pmcd/rc_pcp
+Index: pcp-6.2.0/src/pmcd/rc_pcp
+===================================================================
+--- pcp-6.2.0.orig/src/pmcd/rc_pcp
++++ pcp-6.2.0/src/pmcd/rc_pcp
 @@ -31,12 +31,12 @@
  # e.g. SuSE, where chkconfig is a perl script.
  ### BEGIN INIT INFO
@@ -35,10 +35,10 @@ index 228cf58fc..e1b05a51e 100644
  # Short-Description: Legacy control for PCP daemons
  # Description:       Legacy init script wrapper for the Performance Co-Pilot (PCP) daemons
  ### END INIT INFO
-diff --git a/src/pmcd/rc_pmcd b/src/pmcd/rc_pmcd
-index 37571e82c..f0dc662df 100644
---- a/src/pmcd/rc_pmcd
-+++ b/src/pmcd/rc_pmcd
+Index: pcp-6.2.0/src/pmcd/rc_pmcd
+===================================================================
+--- pcp-6.2.0.orig/src/pmcd/rc_pmcd
++++ pcp-6.2.0/src/pmcd/rc_pmcd
 @@ -27,7 +27,7 @@
  # Should-Start:      $network $remote_fs $syslog $time
  # Required-Stop:     $local_fs
@@ -48,45 +48,3 @@ index 37571e82c..f0dc662df 100644
  # Default-Stop:      0 1 6
  # Short-Description: Control pmcd (the collection daemon for PCP)
  # Description:       Configure and control pmcd (the collection daemon for the Performance Co-Pilot)
-diff --git a/src/pmie/rc_pmie b/src/pmie/rc_pmie
-index 983e3d575..545c35749 100644
---- a/src/pmie/rc_pmie
-+++ b/src/pmie/rc_pmie
-@@ -25,7 +25,7 @@
- # Should-Start: $local_fs $network $syslog $time $pmcd
- # Required-Stop: $remote_fs
- # Should-Stop:  $local_fs $network $syslog $pmcd
--# Default-Start:  2 3 4 5
-+# Default-Start:  2 3 5
- # Default-Stop:   0 1 6
- # Short-Description: Control pmie (performance inference engine for PCP)
- # Description:       Configure and control pmie (the performance inference engine for the Performance Co-Pilot)
-diff --git a/src/pmlogger/rc_pmlogger b/src/pmlogger/rc_pmlogger
-index 81aeb51a2..b64750b32 100644
---- a/src/pmlogger/rc_pmlogger
-+++ b/src/pmlogger/rc_pmlogger
-@@ -27,7 +27,7 @@
- # Should-Start:      $network $remote_fs $syslog $time $pmcd
- # Required-Stop:     $local_fs
- # Should-Stop:       $network $remote_fs $syslog $pmcd
--# Default-Start:     2 3 4 5
-+# Default-Start:     2 3 5
- # Default-Stop:      0 1 6
- # Short-Description: Control pmlogger (the performance metrics logger for PCP)
- # Description:       Configure and control pmlogger (the performance metrics logger for the Performance Co-Pilot)
-diff --git a/src/pmproxy/rc_pmproxy b/src/pmproxy/rc_pmproxy
-index 1ee71595d..7a732f72c 100644
---- a/src/pmproxy/rc_pmproxy
-+++ b/src/pmproxy/rc_pmproxy
-@@ -27,7 +27,7 @@
- # Should-Start: $local_fs $network $syslog $time $pmcd
- # Required-Stop: $remote_fs
- # Should-Stop:  $local_fs $network $syslog $pmcd
--# Default-Start:  2 3 4 5
-+# Default-Start:  2 3 5
- # Default-Stop:   0 1 6
- # Short-Description: Control pmproxy (the pmcd proxy daemon for PCP)
- # Description:       Configure and control pmproxy (the pmcd proxy daemon for the Performance Co-Pilot)
--- 
-2.35.3
-
