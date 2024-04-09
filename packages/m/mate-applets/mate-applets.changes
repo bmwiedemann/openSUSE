@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 26 13:40:57 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.0
+  * update translations
+  * replace deprecated gtk_image_menu_item*
+  * fix warning in ja,id,fr,tr,ko and sr translations
+
+-------------------------------------------------------------------
 Mon Jul 18 14:54:35 UTC 2022 - Mihai Moldovan <ionic@ionic.de>
 
 - Update to upstream version 1.26.1:

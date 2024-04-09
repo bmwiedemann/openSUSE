@@ -1,7 +1,7 @@
 #
 # spec file for package mate-applets
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define _version 1.26
+%define _version 1.28
 
 Name:           mate-applets
-Version:        1.26.1
+Version:        1.28.0
 Release:        0
 Summary:        A set of applets for the MATE Desktop
 License:        GFDL-1.1-only AND GPL-2.0-or-later
@@ -35,13 +35,14 @@ BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(gtksourceview-3.0)
+BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(gucharmap-2.90)
 BuildRequires:  pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(libmatepanelapplet-4.0)
 BuildRequires:  pkgconfig(libnl-genl-3.0)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libwnck-3.0)
+BuildRequires:  pkgconfig(mate-desktop-2.0) >= %{_version}
 BuildRequires:  pkgconfig(mate-settings-daemon) >= %{_version}
 BuildRequires:  pkgconfig(mateweather) >= 1.9.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.97
