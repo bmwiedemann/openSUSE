@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr  1 01:52:34 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update xmobar to version 0.48.
+  ## Version 0.48 (April, 2024)
+
+  - The `Kbd` monitor is now clickable (thanks, Enrico Maria)
+  - Fix zombie processes left by `<action>` tag and low battery action (thanks,
+    Ulrik)
+  - Fix plugins such as `Alsa` and `Com` not working when configuration is
+    recompiled (#657, ditto)
+  - New `Lock'` monitor with configurable labels (thanks, Enrico Maria)
+
+  ## Version 0.47.4 (March, 2024)
+
+  - Bug fixes (launching processes from self-compiled instances)
+
+-------------------------------------------------------------------
 Sun Mar  3 18:32:59 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update xmobar to version 0.47.4.

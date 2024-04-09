@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.47.4
+Version:        0.48
 Release:        0
 Summary:        A Minimalistic Text Based Status Bar
 License:        BSD-3-Clause
@@ -59,6 +59,8 @@ BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-extensible-exceptions-devel
 BuildRequires:  ghc-extensible-exceptions-prof
+BuildRequires:  ghc-extra-devel
+BuildRequires:  ghc-extra-prof
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-hinotify-devel
