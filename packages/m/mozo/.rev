@@ -185,4 +185,12 @@
   * only require gtk version 3.12 instead of 3.24 (forwarded request 1037097 from hillwood)</comment>
     <requestid>1037098</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7b07afd5481f86e79cf0c31f87f17302</srcmd5>
+    <version>1.28.0</version>
+    <time>1712674012</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1165568</requestid>
+  </revision>
 </revisionlist>
