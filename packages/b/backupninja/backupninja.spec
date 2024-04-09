@@ -1,7 +1,7 @@
 #
 # spec file for package backupninja
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        Lightweight, extensible meta-backup system
 License:        GPL-2.0-only
 Group:          Productivity/Archiving/Backup
 URL:            https://0xacab.org/liberate/backupninja
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{url}/-/archive/backupninja-%{version}/backupninja-backupninja-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        backupninja.service
 Source2:        backupninja.timer
 BuildRequires:  automake
