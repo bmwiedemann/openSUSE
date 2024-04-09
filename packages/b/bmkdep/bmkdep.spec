@@ -1,7 +1,7 @@
 #
 # spec file for package bmkdep
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,7 @@ Summary:        The NetBSD version of mkdep(1) tool
 License:        BSD-2-Clause
 Group:          Development/Tools/Building
 URL:            https://github.com/trociny/bmkdep
-Source:         %{name}-%{version}.tar.gz
-
+Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  bmake
 
 %description

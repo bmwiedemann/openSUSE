@@ -7,4 +7,12 @@
     <comment>bmkdep (NetBSD version of mkdep utility) constructs Makefile dependency list. It takes a set of flags for the C compiler and a list of C source files as arguments and constructs a set of include file dependencies which are written into the file &quot;.depend&quot;.</comment>
     <requestid>785864</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0af26df9b8ba22a5d3eda6579862a138</srcmd5>
+    <version>20140112</version>
+    <time>1712674068</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166303</requestid>
+  </revision>
 </revisionlist>
