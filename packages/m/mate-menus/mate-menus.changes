@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 24 03:34:29 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.0
+  * Translations update
+  * matemenu-tree: Fix crash when adding launcher from compact menu
+  * matemenu-tree: Fix build warning -Wsign-conversion
+  * fix test programs
+  * test-menu-spec: Fix build warning -Wmissing-field-initializers
+
+-------------------------------------------------------------------
 Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.26.1:
