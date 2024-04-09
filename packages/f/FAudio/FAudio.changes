@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  8 19:58:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.04:
+  * pkgconfig files now explicitly include the SDL2 dependency
+
+-------------------------------------------------------------------
 Mon Mar 18 08:41:39 UTC 2024 - ming li <mli@suse.com>
 
 - Update to 24.03:
@@ -10,7 +16,7 @@ Mon Mar 18 08:41:39 UTC 2024 - ming li <mli@suse.com>
     NativeAOT: Improve failure message when missing types in rd.xml
     Separated obj folder paths for NetFramework/NetStandard projects,
     fixes weird compiler conflicts
-    
+
 update to 24.02:
   * New Features:
     Update to FNA3D 24.02

@@ -432,4 +432,13 @@
     <comment>Update to version 24.03 (forwarded request 1158928 from simonlm)</comment>
     <requestid>1158943</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>cc32b15f7adf89b2d163034b3873fd75</srcmd5>
+    <version>24.04</version>
+    <time>1712674072</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.04:
+  * pkgconfig files now explicitly include the SDL2 dependency (forwarded request 1166262 from dirkmueller)</comment>
+    <requestid>1166302</requestid>
+  </revision>
 </revisionlist>
