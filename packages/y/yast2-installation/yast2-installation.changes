@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  3 13:39:37 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
+
+- Adapted call for connecting all discovered NVMe-over-Fabrics 
+  subsystems (bsc#1222246).
+- 5.0.8
+
+-------------------------------------------------------------------
 Wed Mar 13 14:41:14 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
 
 - Updated self-update URL in the documentation (jsc#PED-4839)
