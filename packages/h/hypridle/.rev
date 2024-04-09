@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>666ac225315c8d38c0ec1e0a1b33ae6b</srcmd5>
+    <version>0.1.1</version>
+    <time>1712674009</time>
+    <user>anag+factory</user>
+    <comment>Removed %_bindir from %files section</comment>
+    <requestid>1166356</requestid>
+  </revision>
+</revisionlist>
