@@ -1,0 +1,6 @@
+<package name="cmake-extras" project="openSUSE:Factory">
+  <title>A collection of add-ons for the CMake build tool</title>
+  <description>A collection of add-ons for the CMake build tool.</description>
+  <devel project="devel:tools:building" package="cmake-extras"/>
+  <url>https://gitlab.com/ubports/development/core/cmake-extras</url>
+</package>
