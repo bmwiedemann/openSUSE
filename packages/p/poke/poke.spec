@@ -2,6 +2,7 @@
 # spec file for package poke
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +17,9 @@
 #
 
 
-%define sover   0
+%define sover   1
 Name:           poke
-Version:        3.3
+Version:        4.0
 Release:        0
 Summary:        An interactive, extensible editor for binary data
 License:        GPL-3.0-or-later
@@ -31,13 +32,13 @@ BuildRequires:  gawk
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bdw-gc)
 BuildRequires:  pkgconfig(libnbd)
+Recommends:     mimehandler(x-scheme-handler/app)
 %if 0%{?suse_version} > 1500
 BuildRequires:  libtextstyle-devel
 BuildRequires:  pkgconfig(readline)
 %else
 BuildRequires:  readline-devel
 %endif
-Recommends:     mimehandler(x-scheme-handler/app)
 
 %description
 GNU poke is an interactive, extensible editor for binary data. Not limited to
@@ -84,7 +85,8 @@ Provides Vim support for %{name}.
 %build
 # jitter fails to build with LTO, disable it for now
 %define _lto_cflags %{nil}
-%configure --disable-static
+%configure \
+	--disable-static
 %make_build
 
 %install
@@ -92,20 +94,19 @@ Provides Vim support for %{name}.
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-# Don't run tests in parallel as it leads to deadlock
-make check
+%make_build check
 
-%post -n lib%{name}%{sover} -p /sbin/ldconfig
-%postun -n lib%{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{sover}
 
 %files
 %license COPYING
 %doc README AUTHORS NEWS
 %{_bindir}/%{name}
-%{_bindir}/poked
 %{_bindir}/pk-bin2poke
-%{_bindir}/pk-elfextractor
+%{_bindir}/pk-jojopatch
 %{_bindir}/pk-strings
+%{_bindir}/poked
+%{_bindir}/pokefmt
 %{_datadir}/%{name}
 %{_infodir}/%{name}.info%{?ext_info}
 %{_infodir}/%{name}.info-1%{?ext_info}
@@ -113,6 +114,7 @@ make check
 %{_infodir}/%{name}.info-3%{?ext_info}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man1/poked.1%{?ext_man}
+%{_datadir}/poke/pickles/
 
 %files devel
 %license COPYING

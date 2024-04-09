@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Apr  2 19:38:05 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.0
+  * Multiple updates to the user interface 
+  * now acknowledges the POKE_LOAD_PATH environment variable whose
+    value, if defined, gets prepended to the load_path when poke
+    starts.
+  * Use UID-specific socket to allow multiple instances running in
+    the system
+  * New utility pokefmt: simple template system
+  * Support customizing the poke prompt
+  * Multiple updates to the poke language
+  * New pickles:
+    + srec: Motorola SREC files
+    + orc: ORC data - stack unwinding format in Linux
+    + gcov: GCOV data (.gcda) and notes (.gcno) files
+    + base64: RFC 4648
+    + iscan, iscan-string: Icon-like scanning
+    + gpt: GUID partition tables
+    + jojodiff: JojoDiff binary patches
+    + linux: Linux kernel internal data structures
+  * Updates to existing pickles
+  * The ELF pickle is now a separate package
+  * The DWARF pickle is now a separate package
+
+-------------------------------------------------------------------
 Mon Aug 21 16:24:48 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.3:
