@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20240408" schemaversion="4.1">
+<image name="OBS__MicroOS___20240409" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20240408</productvar>
+      <productvar name="VERSION">20240409</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240408,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240409,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240408/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240409/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -277,6 +277,7 @@
       <repopackage name="dosfstools"/>
       <repopackage name="dracut"/>
       <repopackage name="dracut-ima"/>
+      <repopackage name="dracut-pcr-signature"/>
       <repopackage name="dracut-transactional-update"/>
       <repopackage name="drkonqi5"/>
       <repopackage name="drkonqi5-lang"/>
@@ -2975,6 +2976,7 @@
       <repopackage name="systemd-default-settings"/>
       <repopackage name="systemd-default-settings-branding-openSUSE"/>
       <repopackage name="systemd-default-settings-branding-SLE"/>
+      <repopackage name="systemd-experimental"/>
       <repopackage name="systemd-lang"/>
       <repopackage name="systemd-presets-branding-Aeon"/>
       <repopackage name="systemd-presets-branding-MicroOS"/>
