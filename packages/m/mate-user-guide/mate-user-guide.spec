@@ -1,7 +1,7 @@
 #
 # spec file for package mate-user-guide
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,17 @@
 #
 
 
-%define _version 1.26
+%define _version 1.28
+
 Name:           mate-user-guide
-Version:        1.26.2
+Version:        1.28.0
 Release:        0
 Summary:        User guide for the MATE desktop
 License:        GFDL-1.1-or-later
 Group:          Documentation/HTML
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+BuildRequires:  fdupes
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
@@ -50,6 +52,8 @@ NOCONFIGURE=1 mate-autogen
 %install
 %make_install
 %find_lang %{name} %{?no_lang_C}
+
+%fdupes %{buildroot}%{_datadir}
 
 %files
 %license COPYING
