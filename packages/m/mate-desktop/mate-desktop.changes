@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 23 13:47:00 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.2
+  * Translations update
+  * Distribute Meson build system
+  * Make MateImageMenuItem subclassable
+  * MateImageMenuItem: Remove unnecessary label field
+
+-------------------------------------------------------------------
 Thu Nov 23 01:34:25 UTC 2023 - Mihai Moldovan <ionic@ionic.de>
 
 - Update to new upstream version 1.26.2:

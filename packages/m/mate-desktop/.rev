@@ -275,4 +275,12 @@
 - Add xdg-desktop-portal config file to %files list.</comment>
     <requestid>1128494</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d1cb3a146c4a9eeb8a2a94e9068be7f5</srcmd5>
+    <version>1.28.2</version>
+    <time>1712674029</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1165590</requestid>
+  </revision>
 </revisionlist>

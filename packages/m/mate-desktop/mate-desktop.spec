@@ -1,7 +1,7 @@
 #
 # spec file for package mate-desktop
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,10 @@
 %define soname  libmate-desktop-2
 %define sover   17
 %define typelib typelib-1_0-MateDesktop-2_0
-%define _version 1.26
+%define _version 1.28
+
 Name:           mate-desktop
-Version:        1.26.2
+Version:        1.28.2
 Release:        0
 Summary:        Library with common API for various MATE modules
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
@@ -31,6 +32,7 @@ Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{vers
 Source1:        user-dirs-update-mate.desktop
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  mate-common >= %{_version}
+BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
 BuildRequires:  rsvg-convert
 BuildRequires:  update-desktop-files
@@ -60,9 +62,6 @@ Requires:       %{name}-gschemas >= %{version}
 This package contains the library with common API for various
 MATE modules.
 
-
-
-# Separate shared schemas to make MATE desktop applications usable standalone.
 %package -n %{typelib}
 Summary:        Common API for various MATE modules typelib
 License:        GPL-2.0-or-later
@@ -108,16 +107,17 @@ Requires:       %{soname}-%{sover} = %{version}
 This package contains the library with common API for various MATE modules.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-NOCONFIGURE=1 mate-autogen
-%configure \
-  --disable-static
-%make_build
+%meson -Dgtk-doc=true \
+       -Dintrospection=true \
+      %{nil}
+%meson_build
 
 %install
-%make_install
+%meson_install
+
 %find_lang %{name} %{?no_lang_C}
 find %{buildroot} -type f -name "*.la" -delete -print
 
