@@ -1,7 +1,7 @@
 #
 # spec file for package mate-session-manager
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
-%define _version 1.26
+%define _version 1.28
+
 Name:           mate-session-manager
-Version:        1.26.1
+Version:        1.28.0
 Release:        0
 Summary:        MATE Session Manager
 License:        GPL-2.0-or-later
@@ -56,7 +57,7 @@ Requires:       %{name}-gschemas >= %{version}
 # Make native styling in Qt5 happen.
 Requires:       libqt5-qtstyleplugins-platformtheme-gtk2
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
 
@@ -89,6 +90,7 @@ GSettings and applications used by the MIME system.
 %package gschemas
 Summary:        MATE Session Manager GSchemas
 %glib2_gsettings_schema_requires
+BuildArch:      noarch
 
 %description gschemas
 This package provides the GSettings schemas for

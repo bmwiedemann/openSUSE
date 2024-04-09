@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 26 11:59:59 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.0
+  * Translations update
+  * Revert "gsm-manager: use g_settings_schema_source_lookup ()"
+  * Add system desktop files item to automatic startup support
+  * main: fix double free on gl_renderer
+  * g_key_file_save_to_file () is available from glib 2.40
+  * gsm-manager: use g_settings_schema_source_lookup ()
+  * gsm-inhibit-dialog: Fix -Wimplicit-int-float-conversion warnings
+  * Fix build warnings about missing field initializer
+  * Fix implicit conversion changes signedness: 'gboolean' to 'guint'
+  * mate-session: fix memory leak
+  * configure.ac: The macro 'AC_HELP_STRING' is obsolete
+
+-------------------------------------------------------------------
 Tue Jun 20 07:43:10 UTC 2023 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 
 - 99mate-environment.sh: Assure that this file gets sourced during
