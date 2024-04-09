@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 26 12:23:53 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.1
+  * Translations update
+  * build: do enable systemd by default (but don't force it)
+  * fix a warning in japanese translations
+  * fix a warning in turkish translation
+  * Fix translations in help not built
+  * Fix meson configuration failure on URL keyword
+  * Distribute Meson build system
+
+-------------------------------------------------------------------
 Fri Nov 17 13:12:56 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.26.1

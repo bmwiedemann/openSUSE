@@ -1,7 +1,7 @@
 #
 # spec file for package mate-system-monitor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define _version 1.26
+%define _version 1.28
 
 Name:           mate-system-monitor
-Version:        1.26.1
+Version:        1.28.1
 Release:        0
 Summary:        MATE Desktop system monitor
 License:        GPL-2.0-or-later
@@ -32,6 +32,7 @@ Patch0:         %{name}-xdgsu.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  mate-common >= %{_version}
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  polkit-devel
 BuildRequires:  update-desktop-files
@@ -46,6 +47,7 @@ BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libwnck-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(systemd)
 Requires:       polkit
 %glib2_gsettings_schema_requires
 
@@ -61,19 +63,15 @@ resources such as CPU and memory.
 %autosetup -p1
 
 %build
-NOCONFIGURE=1 mate-autogen
-%configure \
-  --disable-static                    \
-  --disable-scrollkeeper              \
-  --libexecdir=%{_libexecdir}/%{name} \
-  --enable-systemd
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
+
 %find_lang %{name} %{?no_lang_C}
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/%{name}.desktop
-%fdupes %{buildroot}%{_datadir}/
+%fdupes %{buildroot}%{_datadir}
 
 %files
 %license COPYING

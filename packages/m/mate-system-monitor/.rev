@@ -197,4 +197,12 @@
   * Add preferences.ui in POTFILES.in (forwarded request 1127303 from hillwood)</comment>
     <requestid>1127304</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>1047ebf03ec463f3ce9a874134c392ae</srcmd5>
+    <version>1.28.1</version>
+    <time>1712674016</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1165575</requestid>
+  </revision>
 </revisionlist>
