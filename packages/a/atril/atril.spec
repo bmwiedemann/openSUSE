@@ -1,7 +1,7 @@
 #
 # spec file for package atril
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,16 @@
 %define typelib1 typelib-1_0-AtrilDocument-1_5_0
 %define typelib2 typelib-1_0-AtrilView-1_5_0
 %define sover   3
-%define _version 1.26
+%define _version 1.28
+
 Name:           atril
-Version:        1.26.1
+Version:        1.28.0
 Release:        0
 Summary:        MATE Desktop document viewer
 License:        GPL-2.0-only AND LGPL-2.0-only
 Group:          Productivity/Office/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM atril-Use-a-blank-line-at-most.patch robert.buj@gmail.com -- Needed, so that patch1 applies
-Patch0:         atril-Use-a-blank-line-at-most.patch
-# PATCH-FIX-UPSTREAM atril-comics-Use-libarchive-to-unpack-documents.patch robert.buj@gmail.com -- Fix CVE-2023-51698
-Patch1:         atril-comics-Use-libarchive-to-unpack-documents.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  mate-common >= %{_version}
@@ -53,6 +50,7 @@ BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libspectre)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(mate-desktop-2.0) >= %{_version}
 BuildRequires:  pkgconfig(poppler-glib) >= 0.22.0
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
