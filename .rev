@@ -50,4 +50,26 @@
     <comment></comment>
     <requestid>1118913</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>911eefa7d3f3f7d36f7c6fcbab5886c2</srcmd5>
+    <version>0.11.4</version>
+    <time>1712674065</time>
+    <user>anag+factory</user>
+    <comment>- Add patch use-correct-assertion-methods.patch:
+  * Use non-removed assertion methods.
+
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+
+- Update to 0.11.4
+  * Changed bit-mapping for `httpx` and `fastapi` integrations
+- Refresh patches for new version
+  * opencensus-pr1002-remove-mock.patch
+- Switch package to modern Python Stack on SLE-15
+  * Add %{?sle15_python_module_pythons}
+  * Drop %{?!python_module:%define python_module() python-%{**} python3-%{**}}</comment>
+    <requestid>1166270</requestid>
+  </revision>
 </revisionlist>
