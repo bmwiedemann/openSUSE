@@ -44,14 +44,15 @@
 %endif
 
 Name:           passt
-Version:        20240220.1e6f92b
+Version:        20240405.954589b
 Release:        0
 Summary:        User-mode networking daemons for virtual machines and namespaces
 License:        GPL-2.0-or-later AND BSD-3-Clause
 Group:          System/Daemons
 URL:            https://passt.top/
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 
+BuildRequires:  zstd
 BuildRequires:  gcc, make
 %if %{with selinux}
 BuildRequires:  checkpolicy, selinux-policy-devel
@@ -104,9 +105,16 @@ ln -sr %{buildroot}%{_mandir}/man1/pasta.1 %{buildroot}%{_mandir}/man1/pasta.avx
 %if %{with apparmor}
 pushd contrib/apparmor
 mkdir -p %{buildroot}%{_sysconfdir}/apparmor.d/abstractions
-install -m 0644 usr.bin.passt %{buildroot}%{_sysconfdir}/apparmor.d/
+install -m 0644 usr.bin.{passt,pasta} %{buildroot}%{_sysconfdir}/apparmor.d/
 install -m 0644 abstractions/{passt,pasta} %{buildroot}%{_sysconfdir}/apparmor.d/abstractions
 popd
+# apparmor doesn't apply different profiles
+# to symlinks, override here with hard links
+# https://github.com/containers/buildah/issues/5440
+ln -f passt %{buildroot}%{_bindir}/pasta
+%ifarch x86_64
+ln -f passt.avx2 %{buildroot}%{_bindir}/pasta.avx2
+%endif
 %endif
 
 %if %{with selinux}
@@ -117,6 +125,8 @@ install -p -m 644 -D passt.if %{buildroot}%{_datadir}/selinux/devel/include/dist
 install -p -m 644 -D pasta.pp %{buildroot}%{_datadir}/selinux/packages/%{name}/pasta.pp
 popd
 %endif
+
+%check
 
 %if %{with apparmor}
 %post
@@ -146,6 +156,7 @@ semodule -r pasta 2>/dev/null || :
 %dir %{_sysconfdir}/apparmor.d
 %dir %{_sysconfdir}/apparmor.d/abstractions/
 %config(noreplace) %{_sysconfdir}/apparmor.d/usr.bin.passt
+%config(noreplace) %{_sysconfdir}/apparmor.d/usr.bin.pasta
 %config(noreplace) %{_sysconfdir}/apparmor.d/abstractions/pas*
 %endif
 %{_mandir}/man1/passt.1*

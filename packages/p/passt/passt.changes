@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Apr  8 13:32:09 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
+
+- spec: Install separate apparmor profile for `pasta` (bsc#1221840).
+
+-------------------------------------------------------------------
+Mon Apr  8 11:41:54 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
+
+- spec: Override symlinks with hard links for apparmor
+    profiles to take effect. (bsc#1221840)
+    (https://github.com/containers/buildah/issues/5440)
+
+-------------------------------------------------------------------
+Mon Apr 08 08:39:24 UTC 2024 - dcermak@suse.com
+
+- Update to version 20240405.954589b:
+  * netlink: Ignore routes to link-local addresses for selecting interface
+  * util: Add helper to return name of address family
+  * netlink: Adjust interface index inside copied nexthop objects too
+  * apparmor: Fix access to procfs namespace entries in pasta's abstraction
+  * apparmor: Expand scope of @{run}/user access, allow writing PID files too
+  * apparmor: Add mount rule with explicit, empty source in passt abstraction
+  * README.md: Alpine, Guix and OpenSUSE now have packages for passt
+
+-------------------------------------------------------------------
+Tue Mar 26 10:45:43 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 20240326.4988e2b
+  * tcp: Unconditionally force ACK for all !SYN, !RST packets
+  * tcp: Never automatically add the ACK flag to RST packets
+  * tcp: Rearrange logic for setting ACK flag in tcp_send_flag()
+  * tcp: Split handling of DUP_ACK from ACK
+  * util: fix confusion between offset in the iovec array and in the entry
+  * netlink: Fix selection of template interface
+  * netlink: Fix handling of NLMSG_DONE in nl_route_dup()
+
+-------------------------------------------------------------------
 Thu Mar 14 09:40:51 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Switch macros to bcond_with/without for apparmor & selinux

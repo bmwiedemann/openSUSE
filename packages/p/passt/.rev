@@ -7,4 +7,12 @@
     <comment>New package required for buildah (and podman in the future)</comment>
     <requestid>1158057</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>af33f5fb7677d8888bd6bd34ea3313de</srcmd5>
+    <version>20240405.954589b</version>
+    <time>1712674000</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166238</requestid>
+  </revision>
 </revisionlist>
