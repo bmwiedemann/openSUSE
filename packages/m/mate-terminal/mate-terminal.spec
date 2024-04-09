@@ -1,7 +1,7 @@
 #
 # spec file for package mate-terminal
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,17 @@
 #
 
 
-%define _version 1.26
+%define _version 1.28
+
 Name:           mate-terminal
-Version:        1.26.1
+Version:        1.28.1
 Release:        0
 Summary:        MATE Desktop terminal emulator
 License:        GPL-3.0-or-later
 Group:          System/X11/Terminals
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+BuildRequires:  fdupes
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
@@ -59,8 +61,10 @@ NOCONFIGURE=1 mate-autogen
 
 %install
 %make_install
+
 %find_lang %{name} %{?no_lang_C}
 %suse_update_desktop_file %{name}
+%fdupes %{buildroot}%{_datadir}
 
 %files
 %license COPYING

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 26 13:26:23 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.1
+  * Translations update
+  * terminal-window: Factor CSDs into geometry hints
+  * Avoid unprocessed file URIs being pasted to the terminal.
+  * Tabs: only invoke naming dialog to doubleclick on tab header
+  * Support IDN in mailto scheme in hyperlink tooltips
+  * Add support for OSC 8 hyperlinks (HTML-like anchors)
+  * Refactoring:
+  * rename some url-related variables
+  * rename TerminalURLFlavour enum to TerminalURLFlavor
+
+-------------------------------------------------------------------
 Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.26.1:
