@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 08 17:06:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.56.3:
+  * Fixes slow destroy of config deeply nested in config hierarchy
+    (#3015)
+
+-------------------------------------------------------------------
 Fri Apr 05 06:30:56 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.56.2:
