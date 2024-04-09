@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr  8 08:41:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.5.5:
+  + Windows: Try all configured proxy resolution types.
+  + Cleanup curl.
+  + Add release option.
+  + Expose missing functions in symbol map.
+  + Fix crash during unload by.
+  + Log debug instead of warning on wpad pac failure.
+  + Fix refcounting in px_proxy_factory_copy.
+  + symver: Fix symbol map to be a valid tree.
+  + Fix free function for pxProxyFactory type.
+  + CodeQL badge and updated repology.
+  + meson: Don't build OSX plugin on iOS.
+
+-------------------------------------------------------------------
 Tue Apr  2 11:32:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.5.4:
