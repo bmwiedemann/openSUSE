@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  3 09:27:56 UTC 2024 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Switch to %autosetup in order to build with older rpm build
+
+-------------------------------------------------------------------
 Mon Feb  5 14:40:20 UTC 2024 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to 6.6.0

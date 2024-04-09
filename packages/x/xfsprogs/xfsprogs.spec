@@ -107,8 +107,7 @@ Scripts and systemd service files for background scrubbing of metadata
 on xfs filesystems.
 
 %prep
-%setup -q
-%patch 0 -p1
+%autosetup -p1
 
 %build
 aclocal -I m4

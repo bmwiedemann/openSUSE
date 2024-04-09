@@ -774,4 +774,16 @@ Signed-off-by: Anthony Iliopoulos &lt;ailiop@suse.com&gt;
 (🤖: Submission of xfsprogs via https://src.opensuse.org/pool/xfsprogs/pulls/8 by ailiopoulos)</comment>
     <requestid>1146453</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>dcb09ca2282820e66a5328edb9e3e667</srcmd5>
+    <version>6.6.0</version>
+    <time>1712673969</time>
+    <user>anag+factory</user>
+    <comment>Switch to %autosetup in order to build with older rpm build
+
+
+
+(🤖: Submission of xfsprogs via https://src.opensuse.org/pool/xfsprogs/pulls/9 by ailiopoulos)</comment>
+    <requestid>1166161</requestid>
+  </revision>
 </revisionlist>
