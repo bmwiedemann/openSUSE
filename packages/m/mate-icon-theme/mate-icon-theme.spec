@@ -1,7 +1,7 @@
 #
 # spec file for package mate-icon-theme
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define _version 1.26
+%define _version 1.28
 
 Name:           mate-icon-theme
-Version:        1.26.0
+Version:        1.28.0
 Release:        0
 Summary:        MATE icon theme
 License:        CC-BY-3.0 AND LGPL-3.0-only
