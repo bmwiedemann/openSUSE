@@ -146,4 +146,21 @@
   * contextvars are now persisted through AsyncToSync</comment>
     <requestid>1129812</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7e2dd4a973b970067cb9412fc1a6e7fa</srcmd5>
+    <version>3.8.1</version>
+    <time>1712673983</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.8.1:
+  * Fixes a regression in 3.8.0 affecting nested task cancellation
+    inside sync_to_async.
+  * Adds support for Python 3.12.
+  * Drops support for (end-of-life) Python 3.7.
+  * Fixes task cancellation propagation to subtasks when using
+    synchronous Django middleware.
+  * Allows nesting ``sync_to_async`` via ``asyncio.wait_for``.
+  * Corrects WSGI adapter handling of root path.
+  * Handles case where `&quot;client&quot;` is ``None`` in WsgiToAsgi adapter.</comment>
+    <requestid>1165940</requestid>
+  </revision>
 </revisionlist>

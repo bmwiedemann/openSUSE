@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr  7 08:43:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.1:
+  * Fixes a regression in 3.8.0 affecting nested task cancellation
+    inside sync_to_async.
+  * Adds support for Python 3.12.
+  * Drops support for (end-of-life) Python 3.7.
+  * Fixes task cancellation propagation to subtasks when using
+    synchronous Django middleware.
+  * Allows nesting ``sync_to_async`` via ``asyncio.wait_for``.
+  * Corrects WSGI adapter handling of root path.
+  * Handles case where `"client"` is ``None`` in WsgiToAsgi adapter.
+
+-------------------------------------------------------------------
 Wed Nov 29 13:04:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.7.2:
