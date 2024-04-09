@@ -1,7 +1,7 @@
 #
 # spec file for package mate-power-manager
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
-%define _version 1.26
+%define _version 1.28
+
 Name:           mate-power-manager
-Version:        1.26.1
+Version:        1.28.1
 Release:        0
 Summary:        MATE Desktop UPower policy management
 License:        GPL-2.0-only
@@ -27,6 +28,7 @@ URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  mate-common >= %{_version}
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  polkit-devel
 BuildRequires:  update-desktop-files
@@ -70,13 +72,12 @@ This package contains the documentation for atril
 %setup -q
 
 %build
-NOCONFIGURE=1 mate-autogen
-%configure \
-  --libexecdir=%{_libexecdir}/%{name}
-%make_build
+%meson -Dgnome-keyring=true
+%meson_build
 
 %install
-%make_install
+%meson_install
+
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
@@ -88,7 +89,7 @@ NOCONFIGURE=1 mate-autogen
 %{_bindir}/mate-power-preferences
 %{_bindir}/mate-power-statistics
 %{_sbindir}/mate-power-backlight-helper
-%{_libexecdir}/%{name}/
+%{_libexecdir}/*
 %{_datadir}/applications/mate-power-preferences.desktop
 %{_datadir}/applications/mate-power-statistics.desktop
 %{_datadir}/dbus-1/services/*.service
