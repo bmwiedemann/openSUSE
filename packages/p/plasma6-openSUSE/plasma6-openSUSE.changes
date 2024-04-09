@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  9 11:56:21 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Modify sddmtheme.diff to change the extension of the openSUSE
+  branding wallpaper from jpg to png since the extension was
+  changed in TW (boo#1222546)
+- Require the same wallpaper-branding version as used when building
+  to make sure the png file exists
+
+-------------------------------------------------------------------
 Tue Mar 26 18:06:20 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.3
