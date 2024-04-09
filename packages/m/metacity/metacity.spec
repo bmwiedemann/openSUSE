@@ -1,7 +1,7 @@
 #
 # spec file for package metacity
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,12 @@
 #
 
 
-%define soname  libmetacity
-%define sover   3
-%define _version 3.46
+%define soname   libmetacity
+%define sover    3
+%define _version 3.52
+
 Name:           metacity
-Version:        3.46.1
+Version:        3.52.0
 Release:        0
 Summary:        Window Manager for the MATE and GNOME Flashback desktops
 License:        GPL-2.0-or-later
