@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar 24 07:33:30 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.0
+  * Translation update
+  * Wl bgleaks fixes (#1763)
+  * wayland-background-dialog: fix two issues found by cppcheck
+  * wayland-background-dialog: ensure style provider is added only once
+  * eel-background: fix logic error in x11/wayland detection
+  * wayland-background-dialog: Preview images at original aspect ratio
+  * wayland-background-dialog: fix memory leaks
+  * wayland background dialog: fix build warning
+  * Make wayland background dialog more intuitive
+  * Manage desktop backgrounds when running in wayland
+  * wayland desktop: suppress spatial window warning
+  * Do not show "Organize Desktop by Name" when desktop icons are locked
+  * fix building with libxml 2.12.0
+- Drop caja-glib-2.54.patch
+
+-------------------------------------------------------------------
 Thu Nov 16 14:03:48 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.26.3

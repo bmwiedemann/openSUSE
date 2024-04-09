@@ -312,4 +312,12 @@ Add required conflicts tags</comment>
     <comment></comment>
     <requestid>1127300</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>3bbeb2dc7d6209084906f5d6151fa336</srcmd5>
+    <version>1.28.0</version>
+    <time>1712674040</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1165607</requestid>
+  </revision>
 </revisionlist>
