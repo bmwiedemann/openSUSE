@@ -62,7 +62,7 @@ Pixman is a pixel manipulation library for X and cairo.
        -Dloongson-mmi="disabled" \
        -Darm-simd="disabled" \
        -Dneon="disabled" \
-%ifarch %{arm}
+%ifarch aarch64
        -Da64-neon="enabled" \
 %else
        -Da64-neon="disabled" \

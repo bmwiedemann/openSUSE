@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  9 07:42:07 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- a64-neon is an aarch64 feature, not armv6/7
+
+-------------------------------------------------------------------
 Mon Feb 26 09:28:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Rework previous change
