@@ -251,4 +251,12 @@ Submit HEAD</comment>
     <comment>- Update to version 1.26.1.</comment>
     <requestid>1087414</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>0503afed5facda4c0ff8e47f0ca7677d</srcmd5>
+    <version>1.28.0</version>
+    <time>1712674030</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1165591</requestid>
+  </revision>
 </revisionlist>

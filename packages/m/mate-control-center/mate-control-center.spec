@@ -1,7 +1,7 @@
 #
 # spec file for package mate-control-center
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,14 @@
 #
 
 
-%define soname      libmate-window-settings
-%define sover       1
-%define soname_slab libmate-slab
-%define sover_slab  0
-%define _version    1.26
+%define   soname          libmate-window-settings
+%define   sover           1
+%define   soname_slab     libmate-slab
+%define   sover_slab      0
+%define   _version        1.28
+
 Name:           mate-control-center
-Version:        1.26.1
+Version:        1.28.0
 Release:        0
 Summary:        MATE Desktop control center
 License:        GPL-2.0-or-later
@@ -31,10 +32,16 @@ URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  mate-common
+BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
+BuildRequires:  pkgconfig(accountsservice)
 BuildRequires:  pkgconfig(atk)
+%ifnarch ppc64le s390x
+BuildRequires:  pkgconfig(ayatana-appindicator3-0.1)
+%endif
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
@@ -45,6 +52,7 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
+BuildRequires:  pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(libmarco-private) >= %{_version}
 BuildRequires:  pkgconfig(libmate-menu) >= %{_version}
 BuildRequires:  pkgconfig(libmatekbd)
@@ -56,6 +64,8 @@ BuildRequires:  pkgconfig(mate-desktop-2.0) >= %{_version}
 BuildRequires:  pkgconfig(mate-settings-daemon) >= %{_version}
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(polkit-gobject-1)
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(udisks2)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xext)
@@ -94,7 +104,6 @@ control center.
 %package devel
 Summary:        Header files for MATE Control Center
 Group:          Development/Libraries/X11
-Requires:       %{soname}%{sover} = %{version}
 
 %description devel
 The control center is MATE's main interface for configuration of various
@@ -102,40 +111,12 @@ aspects of your desktop.
 
 This package provides MATE control center development files.
 
-%package -n %{soname}%{sover}
-Summary:        Utility library for getting window manager settings
-Group:          System/Libraries
-
-%description -n %{soname}%{sover}
-This library is used by MATE control center to change preferences
-of window managers.
-
-%package -n %{soname_slab}%{sover_slab}
-Summary:        MATE Desktop libslab port
-Group:          System/Libraries
-
-%description -n %{soname_slab}%{sover_slab}
-This library makes it easy to create tile-based UI for MATE, as seen in
-gnome-main-menu.
-
-%package -n %{soname_slab}-devel
-Summary:        Header files for libslab
-Group:          Development/Libraries/X11
-Requires:       %{soname_slab}%{sover_slab} = %{version}
-
-%description -n %{soname_slab}-devel
-This library makes it easy to create tile-based UI for MATE, as seen in
-gnome-main-menu.
-
-This package provides libslab development files.
-
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-NOCONFIGURE=1 mate-autogen
 %configure \
   --disable-static        \
   --disable-update-mimedb
@@ -143,6 +124,7 @@ NOCONFIGURE=1 mate-autogen
 
 %install
 %make_install
+
 rm -f %{buildroot}%{_datadir}/applications/mimeinfo.cache
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
@@ -155,15 +137,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %suse_update_desktop_file mate-theme-installer
 %suse_update_desktop_file mate-default-applications-properties
 
-%fdupes -s %{buildroot}%{_datadir}/help/
-
-%post -n %{soname}%{sover} -p /sbin/ldconfig
-
-%postun -n %{soname}%{sover} -p /sbin/ldconfig
-
-%post -n %{soname_slab}%{sover_slab} -p /sbin/ldconfig
-
-%postun -n %{soname_slab}%{sover_slab} -p /sbin/ldconfig
+%fdupes -s %{buildroot}%{_datadir}
 
 %files
 %license COPYING
@@ -185,31 +159,15 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %exclude %{_sysconfdir}/xdg/menus/matecc.menu
 %dir %{_datadir}/desktop-directories
 %{_datadir}/desktop-directories/matecc.directory
-%dir %{_libdir}/window-manager-settings/
-%{_libdir}/window-manager-settings/libmarco.so
 %{_mandir}/man?/mate-*.?%{?ext_man}
 
 %files branding-upstream
 %dir %{_sysconfdir}/xdg/menus
 %config %{_sysconfdir}/xdg/menus/matecc.menu
 
-%files -n %{soname}%{sover}
-%{_libdir}/%{soname}.so.%{sover}*
-
 %files devel
-%{_includedir}/mate-window-settings-2.0/
-%{_libdir}/libmate-window-settings.so
 %{_libdir}/pkgconfig/mate-default-applications.pc
 %{_libdir}/pkgconfig/mate-keybindings.pc
-%{_libdir}/pkgconfig/mate-window-settings-2.0.pc
-
-%files -n %{soname_slab}%{sover_slab}
-%{_libdir}/%{soname_slab}.so.%{sover_slab}*
-
-%files -n %{soname_slab}-devel
-%{_libdir}/pkgconfig/mate-slab.pc
-%{_includedir}/%{soname_slab}/
-%{_libdir}/%{soname_slab}.so
 
 %files lang -f %{name}.lang
 
