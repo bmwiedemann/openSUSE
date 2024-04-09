@@ -29,6 +29,8 @@ License:        CC-BY-SA-3.0 AND LGPL-2.0-only AND LGPL-3.0-only AND OLDAP-2.8 A
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Evolution/
 Source0:        %{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM boo1221868.patch glgo#GNOME/evolution#2712
+Patch0:         boo1221868.patch
 
 BuildRequires:  bison
 BuildRequires:  bogofilter

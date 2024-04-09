@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  4 14:20:03 UTC 2024 - M K <tux93@opensuse.org>
+
+- Add boo1221868.patch, fixing a crash when hiding competed tasks
+  (boo#1221868, glgo#GNOME/evolution#2712)
+
+-------------------------------------------------------------------
 Fri Mar 15 07:14:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.52.0:

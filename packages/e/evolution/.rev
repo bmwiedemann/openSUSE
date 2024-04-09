@@ -2548,4 +2548,12 @@ New stable rel</comment>
     <comment>GNOME 46 (forwarded request 1158146 from dimstar)</comment>
     <requestid>1159459</requestid>
   </revision>
+  <revision rev="276" vrev="2">
+    <srcmd5>650cdf395448dba8851a866aa80400f6</srcmd5>
+    <version>3.52.0</version>
+    <time>1712673987</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166089</requestid>
+  </revision>
 </revisionlist>
