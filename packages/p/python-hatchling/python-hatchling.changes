@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  5 18:17:42 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.22.5:
+  * Fix reading metadata from source distributions when fields are
+    dynamic but not part of core metadata like entry points
+
+-------------------------------------------------------------------
 Sun Mar 24 13:16:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.22.4:
