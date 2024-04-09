@@ -277,4 +277,19 @@ To the multimedia:apps mantainer: the v0.23 brings and updated dependency on phy
     <comment></comment>
     <requestid>1152258</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e9ace574baa68e16e8753b6190041b06</srcmd5>
+    <version>1.14.1</version>
+    <time>1712673967</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.14.1:
+  * Fix invalid entry in AppData file (gh#otsaloma/gaupol#219).
+- Changes from 1.14:
+  * Change the icon for the toggle video player toolbar item to an
+    action icon (not mimetype) that has a symbolic version
+    available.
+  * Fix installation on Python &gt;= 3.12 by using distutils from
+    setuptools.</comment>
+    <requestid>1164231</requestid>
+  </revision>
 </revisionlist>

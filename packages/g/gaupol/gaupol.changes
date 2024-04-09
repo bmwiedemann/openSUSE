@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr  2 19:42:42 UTC 2024 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 1.14.1:
+  * Fix invalid entry in AppData file (gh#otsaloma/gaupol#219).
+- Changes from 1.14:
+  * Change the icon for the toggle video player toolbar item to an
+    action icon (not mimetype) that has a symbolic version
+    available.
+  * Fix installation on Python >= 3.12 by using distutils from
+    setuptools.
+
+-------------------------------------------------------------------
 Tue Feb 27 10:57:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
