@@ -1,7 +1,7 @@
 #
 # spec file for package mate-indicator-applet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define _version 1.26
+%define _version 1.28
 
 Name:           mate-indicator-applet
-Version:        1.26.0
+Version:        1.28.0
 Release:        0
 Summary:        Information from applications consistently on the panel
 License:        GPL-3.0-only AND LGPL-3.0-only

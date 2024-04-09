@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 26 13:43:24 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.0
+  * Translations update
+  * fix warnings in Arabic and Tamil translations
+  * build warning: AC_OUTPUT should be used without arguments
+
+-------------------------------------------------------------------
 Sat Aug 14 09:11:35 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.26.0
