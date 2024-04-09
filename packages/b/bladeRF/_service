@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/analogdevicesinc/no-OS.git</param>
+    <param name="scm">git</param>
+    <param name="revision">0bba46e6f6f75785a65d425ece37d0a04daf6157</param>
+    <param name="version">_none_</param>
+    <param name="filename">ad9361</param>
+    <param name="subdir">ad9361</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>
