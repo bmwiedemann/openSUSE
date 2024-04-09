@@ -16,19 +16,16 @@
 #
 
 
-%define _version 1.26
+%define _version 1.28
+
 Name:           engrampa
-Version:        1.26.1
+Version:        1.28.1
 Release:        0
 Summary:        MATE Desktop archive manager
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Archiving/Compression
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM engrampa-1.26.1-add-7zip-support.patch -- Add new 7-zip (7zz and 7zzs) project support (commit 6f49d2c7).
-Patch0:         engrampa-1.26.1-add-7zip-support.patch
-# PATCH-FIX-UPSTREAM engrampa-1.26.1-use-unar-instead-of-cpio-for-CPIO-archives.patch -- CVE-2023-52138: Use unar instead of cpio for CPIO archives (commit 8cd485a5)
-Patch1:         engrampa-1.26.1-use-unar-instead-of-cpio-for-CPIO-archives.patch
 BuildRequires:  caja >= %{_version}
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  mate-common >= %{_version}
@@ -38,6 +35,7 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libcaja-extension) >= %{_version}
+BuildRequires:  pkgconfig(libmagic)
 BuildRequires:  pkgconfig(sm)
 Recommends:     %{name}-lang
 # Formats that we likely want to support by default.
@@ -109,6 +107,7 @@ NOCONFIGURE=1 mate-autogen
 
 %install
 %make_install
+
 %find_lang %{name} %{?no_lang_C}
 find %{buildroot} -type f -name "*.la" -delete -print
 

@@ -216,4 +216,12 @@
   Use unar instead of cpio for CPIO archives (upstream commit 8cd485a5). (forwarded request 1155200 from hillwood)</comment>
     <requestid>1155201</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>21bb4dfb9b65e8071315cf3b50c8f07e</srcmd5>
+    <version>1.28.1</version>
+    <time>1712674044</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1165620 from hillwood)</comment>
+    <requestid>1165621</requestid>
+  </revision>
 </revisionlist>
