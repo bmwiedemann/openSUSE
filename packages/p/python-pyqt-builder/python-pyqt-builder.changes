@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr  9 07:36:05 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.16.0
+  * The project repository has been migrated to GitHub.
+  * PyQt-builder is now licensed under the BSD-2-Clause license.
+  * The project has now been migrated from setup.py to
+    setuptools_scm and pyproject.toml.
+  * The documentation is now hosted at Read the Docs.
+  * The QtQuickPhysics libraries added to Qt v6.6.0 are now
+    bundled.
+   * The QtQuickControls2 style libraries added to Qt v6.6.3 are
+     now bundled.
+  * The example in the documentation no longer uses deprecated
+    features that will be removed in SIP v7.
+  * The example is now PyQt6-based rather than PyQt5.
+  * The default ABI versions are now v12.13 and v13.6.
+
+-------------------------------------------------------------------
 Thu Jan 25 20:05:00 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.15.4

@@ -1,39 +1,26 @@
-Index: PyQt-builder-1.15.4/PKG-INFO
+Index: PyQt-builder-1.16.0/PKG-INFO
 ===================================================================
---- PyQt-builder-1.15.4.orig/PKG-INFO
-+++ PyQt-builder-1.15.4/PKG-INFO
-@@ -9,7 +9,7 @@ License: SIP
- Platform: X11
- Platform: macOS
- Platform: Windows
--Requires-Python: >=3.7
+--- PyQt-builder-1.16.0.orig/PKG-INFO
++++ PyQt-builder-1.16.0/PKG-INFO
+@@ -5,7 +5,7 @@ Summary: The PyQt build system
+ Author-email: Phil Thompson <phil@riverbankcomputing.com>
+ Project-URL: homepage, https://github.com/Python-PyQt/PyQt-builder
+ Classifier: License :: OSI Approved :: BSD License
+-Requires-Python: >=3.8
 +Requires-Python: >=3.6
- License-File: LICENSE
- License-File: LICENSE-GPL2
- License-File: LICENSE-GPL3
-Index: PyQt-builder-1.15.4/PyQt_builder.egg-info/PKG-INFO
+ Description-Content-Type: text/markdown
+ Requires-Dist: packaging
+ Requires-Dist: sip<7,>=6.7
+Index: PyQt-builder-1.16.0/pyproject.toml
 ===================================================================
---- PyQt-builder-1.15.4.orig/PyQt_builder.egg-info/PKG-INFO
-+++ PyQt-builder-1.15.4/PyQt_builder.egg-info/PKG-INFO
-@@ -9,7 +9,7 @@ License: SIP
- Platform: X11
- Platform: macOS
- Platform: Windows
--Requires-Python: >=3.7
-+Requires-Python: >=3.6
- License-File: LICENSE
- License-File: LICENSE-GPL2
- License-File: LICENSE-GPL3
-Index: PyQt-builder-1.15.4/setup.py
-===================================================================
---- PyQt-builder-1.15.4.orig/setup.py
-+++ PyQt-builder-1.15.4/setup.py
-@@ -48,7 +48,7 @@ setup(
-         name='PyQt-builder',
-         version=version,
-         license='SIP',
--        python_requires='>=3.7',
-+        python_requires='>=3.6',
-         install_requires=['packaging', 'sip >=6.7, <7'],
-         packages=find_packages(),
-         package_data={
+--- PyQt-builder-1.16.0.orig/pyproject.toml
++++ PyQt-builder-1.16.0/pyproject.toml
+@@ -13,7 +13,7 @@ description = "The PyQt build system"
+ readme = "README.md"
+ urls.homepage = "https://github.com/Python-PyQt/PyQt-builder"
+ dependencies = ["packaging", "sip >=6.7, <7"]
+-requires-python = ">=3.8"
++requires-python = ">=3.6"
+ classifiers = ["License :: OSI Approved :: BSD License"]
+ dynamic = ["version"]
+ 
