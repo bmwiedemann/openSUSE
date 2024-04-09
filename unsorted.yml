@@ -1819,10 +1819,17 @@ unsorted:
   - cairomm1_0-devel 
   - cairomm1_0-doc 
   - caja 
+  - caja-actions 
+  - caja-actions-devel 
+  - caja-actions-doc 
+  - caja-actions-lang 
   - caja-devel 
   - caja-dropbox-lang 
   - caja-engrampa 
+  - caja-extension-actions-menu 
+  - caja-extension-actions-tracker 
   - caja-extension-atril 
+  - caja-extension-av 
   - caja-extension-dropbox 
   - caja-extension-eiciel 
   - caja-extension-folder-color 
@@ -1830,6 +1837,7 @@ unsorted:
   - caja-extension-image-converter 
   - caja-extension-nextcloud 
   - caja-extension-open-terminal 
+  - caja-extension-rename 
   - caja-extension-sendto 
   - caja-extension-sendto-blueman 
   - caja-extension-sendto-devel 
@@ -2131,7 +2139,6 @@ unsorted:
   - clamav-milter 
   - clamtk 
   - clamtk-lang 
-  - clamz 
   - clang 
   - clang-devel 
   - clang-doc 
@@ -2233,6 +2240,7 @@ unsorted:
   - cm-devel 
   - cmake 
   - cmake-doc-qhelp 
+  - cmake-extras 
   - cmake-fedora 
   - cmake-fedora-modules 
   - cmake-full 
@@ -3335,7 +3343,6 @@ unsorted:
   - dracut-kiwi-oem-repart 
   - dracut-kiwi-overlay 
   - dracut-kiwi-verity 
-  - dracut-pcr-signature 
   - dracut-sshd 
   - dracut-tools 
   - dragonbox-devel 
@@ -8422,6 +8429,7 @@ unsorted:
   - hypre_2_20_0-gnu-mpich-hpc-devel 
   - hypre_2_20_0-gnu-mvapich2-hpc-devel 
   - hypre_2_20_0-gnu-openmpi4-hpc-devel 
+  - hypridle 
   - hyprland 
   - hyprland-devel 
   - hyprland-protocols-devel 
@@ -14064,14 +14072,12 @@ unsorted:
   - libmate-menu2 
   - libmate-panel-applet-4-1 
   - libmate-sensors-applet-plugin0 
-  - libmate-slab-devel 
-  - libmate-slab0 
-  - libmate-window-settings1 
   - libmatedict-devel 
   - libmatedict6 
   - libmatekbd-devel 
   - libmatekbd-lang 
-  - libmatekbd4 
+  - libmatekbd6 
+  - libmatekbdui6 
   - libmatemixer-devel 
   - libmatemixer-lang 
   - libmatemixer0 
@@ -14951,7 +14957,7 @@ unsorted:
   - libpocl2 
   - libpodofo-devel 
   - libpodofo2 
-  - libpoke0 
+  - libpoke1 
   - libpolkit-agent-1-0-32bit 
   - libpolkit-gobject-1-0-32bit 
   - libpolkit-qt5-1-devel 
@@ -20594,7 +20600,6 @@ unsorted:
   - pcp-pmda-memcache 
   - pcp-pmda-mic 
   - pcp-pmda-mounts 
-  - pcp-pmda-mssql 
   - pcp-pmda-mysql 
   - pcp-pmda-named 
   - pcp-pmda-netcheck 
@@ -20612,6 +20617,7 @@ unsorted:
   - pcp-pmda-postfix 
   - pcp-pmda-rabbitmq 
   - pcp-pmda-redis 
+  - pcp-pmda-resctrl 
   - pcp-pmda-roomtemp 
   - pcp-pmda-rsyslog 
   - pcp-pmda-samba 
@@ -22513,6 +22519,8 @@ unsorted:
   - poezio-doc 
   - poke 
   - poke-devel 
+  - poke-dwarf 
+  - poke-elf 
   - polaris 
   - policycoreutils-dbus 
   - policycoreutils-devel 
@@ -36617,7 +36625,6 @@ unsorted:
   - systemd-default-settings-branding-upstream 
   - systemd-devel 
   - systemd-doc 
-  - systemd-experimental 
   - systemd-generator-cron2timer 
   - systemd-homed 
   - systemd-inputmethod-generator 

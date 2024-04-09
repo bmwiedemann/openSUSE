@@ -170,6 +170,7 @@
     <package name="docbook_4" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="dosfstools" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="dracut" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="dracut-pcr-signature" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="dracut-transactional-update" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="dump-rmt" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="e2fsprogs" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -1771,6 +1772,7 @@
     <package name="systemd-default-settings" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="systemd-default-settings-branding-SLE" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="systemd-default-settings-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="systemd-experimental" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="systemd-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="systemd-presets-branding-Aeon" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="systemd-presets-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
