@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  9 09:23:58 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.27.6
+  * Bugfixes:
+    #9498: Files spookily out of sync in 1.27.5 
+- Update bundled dependencies as usual; the update of quic-go from
+  v0.41.0 to v0.42.0 will address CVE-2024-22189, see boo#1222487
+
+-------------------------------------------------------------------
 Tue Apr  2 08:54:01 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.27.5
