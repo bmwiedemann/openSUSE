@@ -122,4 +122,41 @@
   * Flush input buffer before prompt.</comment>
     <requestid>1157790</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>86252c2721a5c5d28f368e83e700a705</srcmd5>
+    <version>1.2.7+git20240406.6047bb2</version>
+    <time>1712679659</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjusting for https://github.com/rpm-software-management/rpmlint/pull/1222
+- Switching to %autosetup
+
+- Update to version 1.2.7+git20240406.6047bb2:
+  * Removed old hack to support jgm's stuff.
+  * Changed CFLAGS and LDFLAGS vars in build script to handle Guldo's exotic build configuration.
+  * Only return functions from `lpm.run`
+  * Fix `lpm.run` not returning executor function
+  * Added in logging, and fixed a bug
+  * Added in complex plugins, as well as split up command and run.
+  * Restructured functions to be more modular, and moved things to globals, so that they can easily be modified by plugins instead of as upvalues. (#105)
+  * Restructured functions to be more modular, and moved things to globals, so that they can easily be modified by plugins instead of as upvalues.
+
+- Update to version 1.2.7+git20240331.bbd5715:
+  * Fix dependency on mbedtls (#104)
+
+- Update to version 1.2.7+git20240329.dd06ba2:
+  * Updated SPEC to incude `checksum` at an addon level, and added in a warning when explicit repositories are specified, but not used.
+  * Changed separator to , from :, due to URLs. Sigh.
+  * Fixed handleization.
+
+- Update to version 1.2.7+git20240324.42394ee:
+  * Updated CHANGELOG.md.
+  * Abstrated out handleize.
+  * Changed how stubs are reported.
+  * Changed how ephemeral bottles work.
+
+- Update to version 1.2.6+git20240323.9fe3c05:
+  * Fixed issue with headers delivered in multiple reads.
+  * Added in ephemeral bottle count, so we only destruct the bottle when the lockfile reads 0.</comment>
+    <requestid>1166475</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 %define baseprogramname lite-xl
 Name:           lite-xl-plugin-manager
-Version:        1.2.4+git20240312.f677376
+Version:        1.2.7+git20240406.6047bb2
 Release:        0
 Summary:        A %{baseprogramname} plugin manager
 %if 0%{?suse_version} > 1500
@@ -54,9 +54,7 @@ Requires:       %{baseprogramname}
 * Conforms to SCPS3.
 
 %prep
-#%%autosetup
-%setup -q
-%patch -P 0
+%autosetup -p 0
 
 %build
 %meson -Dstatic=true

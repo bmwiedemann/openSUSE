@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Tue Apr  9 14:12:13 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adjusting for https://github.com/rpm-software-management/rpmlint/pull/1222
+- Switching to %autosetup
+
+-------------------------------------------------------------------
+Sat Apr 06 23:27:53 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.7+git20240406.6047bb2:
+  * Removed old hack to support jgm's stuff.
+  * Changed CFLAGS and LDFLAGS vars in build script to handle Guldo's exotic build configuration.
+  * Only return functions from `lpm.run`
+  * Fix `lpm.run` not returning executor function
+  * Added in logging, and fixed a bug
+  * Added in complex plugins, as well as split up command and run.
+  * Restructured functions to be more modular, and moved things to globals, so that they can easily be modified by plugins instead of as upvalues. (#105)
+  * Restructured functions to be more modular, and moved things to globals, so that they can easily be modified by plugins instead of as upvalues.
+
+-------------------------------------------------------------------
+Sun Mar 31 19:57:50 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.7+git20240331.bbd5715:
+  * Fix dependency on mbedtls (#104)
+
+-------------------------------------------------------------------
+Fri Mar 29 19:59:25 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.7+git20240329.dd06ba2:
+  * Updated SPEC to incude `checksum` at an addon level, and added in a warning when explicit repositories are specified, but not used.
+  * Changed separator to , from :, due to URLs. Sigh.
+  * Fixed handleization.
+
+-------------------------------------------------------------------
+Mon Mar 25 00:00:40 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.7+git20240324.42394ee:
+  * Updated CHANGELOG.md.
+  * Abstrated out handleize.
+  * Changed how stubs are reported.
+  * Changed how ephemeral bottles work.
+
+-------------------------------------------------------------------
+Sat Mar 23 19:55:18 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.6+git20240323.9fe3c05:
+  * Fixed issue with headers delivered in multiple reads.
+  * Added in ephemeral bottle count, so we only destruct the bottle when the lockfile reads 0.
+  * Should fix #100
+  * Ensures that we close read handles on files.
+
+-------------------------------------------------------------------
+Wed Mar 20 15:54:15 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.6+git20240320.57a17ae:
+  * Made sure we set the metatable corectly.
+  * Remove unecessary require.
+  * Updated CHANGELOG.md.
+  * Gave exec access to the internal environment, just like with plugins.
+  * Added in ability to execute string literals for ease of automation.
+
+-------------------------------------------------------------------
+Mon Mar 18 13:18:42 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.5+git20240317.829c8ec:
+  * Updated CHANGELOG.md.
+  * Ensured we close filehandles.
+  * Added in EXEFILE.
+  * Build zlib on windows.
+  * Added in a fix to detect windows consoles from cmd.exe.
+  * Fixed error on first pull.
+  * Update README.md
+
+-------------------------------------------------------------------
 Wed Mar 13 13:42:08 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 1.2.4+git20240312.f677376:
