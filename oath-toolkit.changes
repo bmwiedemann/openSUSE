@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  3 11:18:24 UTC 2024 - pgajdos@suse.com
+
+- version update to 2.6.11
+  * liboath: Handle invalid base32 encoded secrets.  Fixes: #41.
+  * Various build fixes including updated gnulib files.
+  * Improve compatibility with recent libxmlsec.
+
+-------------------------------------------------------------------
 Sun Jul  9 12:03:29 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.6.8
