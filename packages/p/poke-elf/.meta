@@ -1,0 +1,9 @@
+<package name="poke-elf" project="openSUSE:Factory">
+  <title>Plug-in for GNU poke for editing ELF files</title>
+  <description>poke-elf is a GNU poke pickle for editing ELF object files, executables, shared
+libraries and core dumps. It supports many architectures and extensions.
+
+</description>
+  <devel project="editors" package="poke-elf"/>
+  <url>https://www.jemarch.net/poke-elf.html</url>
+</package>
