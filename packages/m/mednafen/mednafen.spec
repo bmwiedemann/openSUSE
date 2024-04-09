@@ -17,12 +17,12 @@
 
 
 Name:           mednafen
-Version:        1.32.0
+Version:        1.32.1
 Release:        0
 Summary:        Multiple video game console emulator
 License:        GPL-2.0-only
 URL:            https://mednafen.github.io
-Source0:        https://mednafen.github.io/releases/files/%{name}-%{version}-UNSTABLE.tar.xz
+Source0:        https://mednafen.github.io/releases/files/%{name}-%{version}.tar.xz
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)

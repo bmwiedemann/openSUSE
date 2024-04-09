@@ -217,4 +217,13 @@ Fix build on i586.</comment>
   * https://mednafen.github.io/documentation/ChangeLog.txt</comment>
     <requestid>1139324</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>9bd1f6eff5a7c63fdd5c3ebdecbbdad8</srcmd5>
+    <version>1.32.1</version>
+    <time>1712674058</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 1.32.1
+  * https://mednafen.github.io/documentation/ChangeLog.txt</comment>
+    <requestid>1166261</requestid>
+  </revision>
 </revisionlist>
