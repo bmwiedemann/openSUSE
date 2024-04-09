@@ -1,7 +1,7 @@
 #
 # spec file for package mate-panel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,10 @@
 %define soname  libmate-panel-applet-4
 %define sover   1
 %define typelib typelib-1_0-MatePanelApplet-4_0
-%define _version 1.26
+%define _version 1.28
+
 Name:           mate-panel
-Version:        1.26.3
+Version:        1.28.0
 Release:        0
 Summary:        MATE Desktop Panel
 License:        GPL-2.0-or-later
@@ -29,8 +30,6 @@ URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 Source1:        %{name}-branding.gschema.override.in
 Source2:        baselibs.conf
-# PATCH-FIX-OPENSUSE mate-panel-layouts-suse.patch sor.alexei@meowr.ru -- Correct missing elements.
-Patch0:         mate-panel-layouts-suse.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  mate-common >= %{_version}
@@ -43,6 +42,7 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.50
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(gtk-layer-shell-0)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libmate-menu)
 BuildRequires:  pkgconfig(librsvg-2.0)
@@ -50,6 +50,7 @@ BuildRequires:  pkgconfig(libwnck-3.0)
 BuildRequires:  pkgconfig(mate-desktop-2.0) >= %{_version}
 BuildRequires:  pkgconfig(mateweather) >= %{_version}
 BuildRequires:  pkgconfig(sm)
+BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xrandr) >= 1.3
 Requires:       gsettings-backend-dconf
@@ -123,11 +124,11 @@ cp -a %{SOURCE1} zz-mate-panel-upream-branding.gschema.override
 
 %build
 NOCONFIGURE=1 mate-autogen
-%configure \
-  --libexecdir=%{_libexecdir}/%{name} \
-  --disable-static                    \
-  --enable-introspection              \
-  --disable-scrollkeeper
+%configure --libexecdir=%{_libexecdir}/%{name} \
+           --disable-static \
+           --enable-introspection \
+           --enable-wayland \
+           --disable-scrollkeeper
 %make_build
 
 %install
