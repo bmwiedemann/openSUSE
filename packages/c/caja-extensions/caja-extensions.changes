@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 24 08:08:41 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.0
+  * Add audio-video-properties plugin
+  * Update translations
+- Drop caja-extensions-gupnp-1.6.patch
+
+-------------------------------------------------------------------
 Thu Oct 20 13:56:33 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add caja-extensions-gupnp-1.6.patch: Support building against

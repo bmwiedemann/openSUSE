@@ -1,7 +1,7 @@
 #
 # spec file for package caja-extensions
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
-%define _version 1.26
+%define _version 1.28
+
 Name:           caja-extensions
-Version:        1.26.1
+Version:        1.28.0
 Release:        0
 Summary:        Set of extensions for Caja, the MATE file manager
 License:        GPL-2.0-or-later
@@ -27,20 +28,16 @@ Group:          Productivity/File utilities
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE caja-extensions_use-xdgsu.patch sor.alexei@meowr.ru -- Use xdg-su instead of a direct gksu call in caja-gksu.
 Patch0:         %{name}_use-xdgsu.patch
-# PATCH-FIX-UPSTREAM caja-extensions-gupnp-1.6.patch gh#mate-desktop#caja-extension#110 dimstar@opensuse.org -- Fix build with gupnp 1.6
-Patch1:         caja-extensions-gupnp-1.6.patch
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
+BuildRequires:  pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gupnp-1.6)
 BuildRequires:  pkgconfig(libcaja-extension) >= %{_version}
 BuildRequires:  pkgconfig(mate-desktop-2.0) >= %{_version}
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
-BuildRequires:  (pkgconfig(gupnp-1.6) or pkgconfig(gupnp-1.2))
-%else
-BuildRequires:  pkgconfig(gupnp-1.0)
-%endif
 
 %description
 Set of extensions for Caja, the MATE file manager.
@@ -203,6 +200,14 @@ Recommends:     caja-extension-xattr-tags-lang
 %description -n caja-extension-xattr-tags
 Caja-xattr-tags allows one to see tags stored on xattrs.
 
+%package -n caja-extension-av
+Summary:        Audio Video Properties plugin
+Requires:       caja >= %{_version}
+Recommends:     caja-extension-xattr-av-lang
+
+%description -n caja-extension-av
+caja-extension-av allows one to view Properties of audio and video files.
+
 %package common-lang
 # FIXME: consider using %%lang_package macro
 Summary:        Languages for Caja extensions
@@ -211,6 +216,7 @@ Provides:       caja-extension-open-terminal-lang = %{version}
 Provides:       caja-extension-sendto-lang = %{version}
 Provides:       caja-extension-share-lang = %{version}
 Provides:       caja-extension-wallpaper-lang = %{version}
+Provides:       caja-extension-xattr-av-lang = %{version}
 Provides:       caja-extension-xattr-tags-lang = %{version}
 BuildArch:      noarch
 
@@ -278,17 +284,25 @@ rm %{buildroot}%{_libdir}/caja-sendto/plugins/libnstgajim.so
 %{_mandir}/man?/caja-sendto.?%{?ext_man}
 
 %if 0%{?is_opensuse}
+%license COPYING
+%doc AUTHORS NEWS README
 %files -n caja-extension-sendto-gajim
 %{_libdir}/caja-sendto/plugins/libnstgajim.so
 %endif
 
 %files -n caja-extension-sendto-pidgin
+%license COPYING
+%doc AUTHORS NEWS README
 %{_libdir}/caja-sendto/plugins/libnstpidgin.so
 
 %files -n caja-extension-sendto-upnp
+%license COPYING
+%doc AUTHORS NEWS README
 %{_libdir}/caja-sendto/plugins/libnstupnp.so
 
 %files -n caja-extension-sendto-devel
+%license COPYING
+%doc AUTHORS NEWS README
 %{_includedir}/caja-sendto/
 %{_libdir}/pkgconfig/caja-sendto.pc
 %{_datadir}/gtk-doc/html/caja-sendto/
@@ -307,8 +321,16 @@ rm %{buildroot}%{_libdir}/caja-sendto/plugins/libnstgajim.so
 %{_libdir}/caja/extensions-2.0/libcaja-wallpaper.so
 
 %files -n caja-extension-xattr-tags
+%license COPYING
+%doc AUTHORS NEWS README
 %{_datadir}/caja/extensions/libcaja-xattr-tags.caja-extension
 %{_libdir}/caja/extensions-2.0/libcaja-xattr-tags.so
+
+%files -n caja-extension-av
+%license COPYING
+%doc AUTHORS NEWS README
+%{_datadir}/caja/extensions/libcaja-av.caja-extension
+%{_libdir}/caja/extensions-2.0/libcaja-av.so
 
 %files common-lang -f %{name}.lang
 
