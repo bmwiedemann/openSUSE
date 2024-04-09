@@ -1,7 +1,7 @@
 #
 # spec file for package mate-common
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
-%define _version 1.26
+%define _version 1.28
+
 Name:           mate-common
-Version:        1.26.0
+Version:        1.28.0
 Release:        0
 Summary:        Common scripts and macros to develop with MATE
 License:        GPL-3.0-or-later
@@ -41,12 +42,12 @@ Requires:       pkgconfig(gtk-doc)
 BuildArch:      noarch
 
 %description
-mate-common is an extension to autoconf, automake and libtool for
-the MATE desktop environment and MATE applications. mate-autogen,
-and several macros are included to help in MATE source trees.
+mate-common is an extension to autoconf, automake and libtool for the MATE
+desktop environment and MATE applications. mate-autogen, and several macros are
+included to help in MATE source trees.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
@@ -57,7 +58,7 @@ and several macros are included to help in MATE source trees.
 
 %files
 %license COPYING
-%doc AUTHORS
+%doc AUTHORS ChangeLog NEWS
 %{_bindir}/mate-doc-common
 %{_bindir}/mate-autogen
 %{_datadir}/aclocal/mate-code-coverage.m4

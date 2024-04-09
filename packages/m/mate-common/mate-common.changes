@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 23 13:41:35 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.0
+  * Add meson compilation support
+  * ci: use ubuntu jammy as docker
+
+-------------------------------------------------------------------
 Tue Aug 10 06:32:28 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.26.0

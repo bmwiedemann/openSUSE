@@ -110,4 +110,13 @@
     <comment></comment>
     <requestid>913142</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3ad5c38f29c24baa6e8b9de8ddd3ff5f</srcmd5>
+    <version>1.28.0</version>
+    <time>1712674045</time>
+    <user>anag+factory</user>
+    <comment>* Add meson compilation support
+  * ci: use ubuntu jammy as docker (forwarded request 1165634 from hillwood)</comment>
+    <requestid>1165635</requestid>
+  </revision>
 </revisionlist>
