@@ -27,7 +27,7 @@ BuildRequires:  git-core
 %define git_version %{nil}
 %endif
 Name:           sdbootutil
-Version:        1+git20240321.04bfbac%{git_version}
+Version:        1+git20240408.49e4021%{git_version}
 Release:        0
 Summary:        script to install shim with sd-boot
 License:        MIT
@@ -38,6 +38,9 @@ Requires:       jq
 Requires:       pcr-oracle
 Requires:       sed
 Requires:       systemd-boot
+# While systemd-pcrlock is in experimental
+Requires:       systemd-experimental
+Requires:       dracut-pcr-signature
 Supplements:    (systemd-boot and shim)
 Requires:       (%{name}-snapper if (snapper and btrfsprogs))
 ExclusiveArch:  aarch64 ppc64le riscv64 x86_64

@@ -174,4 +174,20 @@
   * Warning if make-policy do not register all PCRs (forwarded request 1161327 from lnussel)</comment>
     <requestid>1161328</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>33c79abc81b6d51f5555ba74b022f9cf</srcmd5>
+    <version>1+git20240408.49e4021</version>
+    <time>1712673973</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1+git20240408.49e4021:
+  * Update requirements
+  * Measure manually initrd if pcrlock fails
+  * Set SYSTEMD_LOG_LEVEL if verbose
+  * Only error out on empty machine-id when actually used
+  * feat: add basic boot assessment
+  * fix: use new os-release and machine-id files
+  * dracut call: --add-device belongs to --sysroot
+  * Make sdbootutil usable with no snapshot Systems (forwarded request 1166225 from lnussel)</comment>
+    <requestid>1166226</requestid>
+  </revision>
 </revisionlist>
