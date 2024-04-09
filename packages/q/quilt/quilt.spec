@@ -1,7 +1,7 @@
 #
 # spec file for package quilt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           quilt
-Version:        0.67
+Version:        0.68
 Release:        0
 Summary:        A Tool for Working with Many Patches
 License:        GPL-2.0-or-later
@@ -25,6 +25,7 @@ Group:          Development/Tools/Version Control
 BuildRequires:  diffstat
 BuildRequires:  ed
 BuildRequires:  emacs-nox
+BuildRequires:  xz
 Requires:       coreutils
 Requires:       diffstat
 Requires:       diffutils
@@ -36,13 +37,9 @@ Requires:       mktemp
 Requires:       patch
 Requires:       perl
 URL:            http://savannah.nongnu.org/projects/quilt
-Source:         %{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.xz
 Source1:        suse-start-quilt-mode.el
-Patch1:         avoid-warnings-with-grep-3.8.patch
-Patch2:         setup-document-the-limitation-of-spec-file-support.patch
-Patch81:        expand.diff
 Patch82:        quilt-support-vimdiff.patch
-Patch83:        test-faildiff-workaround-order-bug.patch
 Patch84:        suse-workaround-pseudo-release.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -51,9 +48,13 @@ Recommends:     /usr/bin/rpmbuild
 Recommends:     bzip2
 Recommends:     ed
 Recommends:     procmail
+Recommends:     unzip
 %endif
 %if 0%{?suse_version} > 1120
 Recommends:     xz
+%endif
+%if 0%{?suse_version} > 1210
+Recommends:     zstd
 %endif
 
 %description

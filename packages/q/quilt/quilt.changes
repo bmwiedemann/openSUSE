@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Mar 28 13:37:03 UTC 2024 - Jean Delvare <jdelvare@suse.com>
+
+- Update to version 0.68:
+  * Add support for zstd archives
+  * Documentation: Massive formatting update of the manual page
+  * Documentation: Reword some sections of the manual page
+  * Fix compatibility with GNU awk version 5.0.0 and later
+  * Test suite: Fix various race conditions (savannah#63651)
+  * patches: Find file name with a space in unapplied patches
+    (savannah#41708)
+  * pop: Hint at diff -z on failure
+  * setup: Better explain the limitation of spec file support
+  * Obsoletes avoid-warnings-with-grep-3.8.patch
+  * Obsoletes setup-document-the-limitation-of-spec-file-support.patch
+  * Obsoletes test-faildiff-workaround-order-bug.patch
+- Drop expand.diff. This extra command was written 19 years ago
+  but was never added upstream, and recent upstream changes broke
+  it. I never used it, I think we can live without it. If anyone
+  really misses the functionality then the patch should be sent
+  upstream and get properly reviewed there.
+- Recommend unzip, as the setup command may need it (bsc#1201950).
+- Recommend zstd when available, now that it is supported.
+
+-------------------------------------------------------------------
 Tue Feb 20 14:05:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

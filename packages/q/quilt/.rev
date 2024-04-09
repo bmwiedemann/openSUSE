@@ -595,4 +595,14 @@ patches/vrss.patch (forwarded request 226944 from jdelvare)</comment>
     <comment></comment>
     <requestid>1151866</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>65c0e5247fb6a01895c42e07c4414d59</srcmd5>
+    <version>0.68</version>
+    <time>1712674075</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.68.
+- Drop the non-upstream &quot;expand&quot; command.
+- Recommend unzip and zstd.</comment>
+    <requestid>1166315</requestid>
+  </revision>
 </revisionlist>
