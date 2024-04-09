@@ -1,7 +1,7 @@
 #
 # spec file for package caja-dropbox
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define _version 1.26
+%define _version 1.28
 
 Name:           caja-dropbox
-Version:        1.26.0
+Version:        1.28.0
 Release:        0
 Summary:        Dropbox client integrated into Caja
 License:        GPL-3.0-or-later
