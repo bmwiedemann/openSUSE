@@ -18,7 +18,7 @@
 #
 
 Name:       bitwarden
-Version:    2024.2.1
+Version:    2024.3.2
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
@@ -195,7 +195,7 @@ export PATH="%{_builddir}/cargo:$PATH"
 export RUSTC_BOOTSTRAP=1
 %endif
 export RUSTC_LOG='rustc_codegen_ssa::back::link=info'
-export RUSTFLAGS="%{build_rustflags} --verbose"
+export RUSTFLAGS="%{build_rustflags} --verbose -Cstrip=none"
 export CARGO_TERM_VERBOSE=true
 
 export ELECTRON_SKIP_BINARY_DOWNLOAD=1

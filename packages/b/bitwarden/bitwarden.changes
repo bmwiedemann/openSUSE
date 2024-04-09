@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  8 17:03:46 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 2024.3.2
+  * no changelog provided
+- Remove non-Linux stuff from rust vendor tarball
+- Work around missing debuginfo (bsc#1222175)
+
+-------------------------------------------------------------------
 Fri Mar  8 19:00:48 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 2024.2.1
