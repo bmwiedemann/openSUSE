@@ -1,7 +1,7 @@
 #
 # spec file for package skrooge
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2008 - 2012 Sascha Manns <saigkill@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@
 %bcond_with qtwebengine
 %endif
 Name:           skrooge
-Version:        2.31.0
+Version:        2.32.0
 Release:        0
 Summary:        A Personal Finance Management Tool
 License:        GPL-3.0-only
@@ -78,6 +78,7 @@ BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Designer)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Qml)
+BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5Sql)

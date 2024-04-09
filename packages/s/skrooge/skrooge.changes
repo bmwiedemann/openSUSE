@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr  9 01:45:33 UTC 2024 - Garret Wassermann <gwasser@gmail.com>
+
+- Update to 2.32.0
+  * Correction kde#475294: Import file dialog show file://
+  * Correction kde#475037: Dashboard: the font in "Income &
+    Expenditure" is too small and has a bad contrast
+  * Correction kde#478389: doc says pointed operations display a
+    half-filled square, but it's 3 horizontal dots
+  * Correction kde#477688: Problem with precision when doing
+    internal transfer of bitcoin
+  * Correction kde#480113: Skrooge: bookmarking a page adds a &
+    to the bookmark name
+  * Correction kde#481144: import tracker impossible, neither from
+    homebank (TAG / ETIQUETTE)
+  * Correction kde#481226: Improve compliance with messages HIG
+  * Correction kde#483212: Can't add links in properties
+  * Correction kde#482053: Difference in different Report-Selections
+
+-------------------------------------------------------------------
 Sun Oct 15 03:12:28 UTC 2023 - Garret Wassermann <gwasser@gmail.com>
 
 - Update to 2.31.0
