@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 27 12:40:56 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.0
+  * Translations update
+  * Fix implicit function declarations with libxml2 2.12
+  * tx: fix warning in Japanese translations
+
+-------------------------------------------------------------------
 Fri Aug 13 13:17:17 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.26.0
