@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 27 12:55:16 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.0
+  * Translations update
+  * configure.ac: The macro 'AC_HELP_STRING' is obsolete
+
+-------------------------------------------------------------------
 Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.26.2:
