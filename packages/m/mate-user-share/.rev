@@ -102,4 +102,12 @@
     <comment>- Make doc package noarch. (forwarded request 913557 from jengelh)</comment>
     <requestid>913579</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6ee31217aa9d6c1273481235f3e079fd</srcmd5>
+    <version>1.28.0</version>
+    <time>1712674014</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1165572</requestid>
+  </revision>
 </revisionlist>

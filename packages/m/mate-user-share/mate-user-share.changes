@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 31 07:38:58 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.0
+  * Translations update
+  * fix warnings in Galician and Lithuanian translations
+
+-------------------------------------------------------------------
 Sun Aug 22 10:58:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Make doc package noarch.
