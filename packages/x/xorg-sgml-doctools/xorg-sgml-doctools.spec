@@ -1,7 +1,7 @@
 #
 # spec file for package xorg-sgml-doctools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,14 @@
 
 
 Name:           xorg-sgml-doctools
-Version:        1.12
+Version:        1.12.1
 Release:        0
 Summary:        Set of SGML entities and XML/CSS style sheets for building X.org documentation
 License:        MIT
 Group:          Development/Tools/Building
 URL:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/doc/%{name}-%{version}.tar.bz2
-
-BuildRequires:  autoconf >= 2.60
-BuildRequires:  automake
-BuildRequires:  libtool
+Source0:        http://xorg.freedesktop.org/releases/individual/doc/%{name}-%{version}.tar.xz
+BuildRequires:  meson
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 # This was part of the xorg-x11-util-devel package up to version 7.6
@@ -44,16 +41,16 @@ X.Org packages.
 %setup -q
 
 %build
-autoreconf -fi
-%configure
-make %{?_smp_mflags}
+%{meson}
+%{meson_build}
 
 %install
-%make_install
+%{meson_install}
 
 %files
 %defattr(-,root,root)
-%doc COPYING README.md
+%doc README.md
+%license COPYING
 %{_datadir}/sgml/X11/
 %{_datadir}/pkgconfig/xorg-sgml-doctools.pc
 
