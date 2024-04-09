@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 24 02:56:10 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.0
+  * Translations update
+  * The url with 'www.' is a permanent redirect (308) to the url without it
+  * timezone: declare 'tzdir' as 'const char'
+
+-------------------------------------------------------------------
 Fri Nov 17 13:08:29 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.26.2
