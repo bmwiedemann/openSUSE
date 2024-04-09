@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  8 14:17:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move the recently added onedrive provider to the backend-goa
+  subpackage: onedrive support is integrated into the g-o-a
+  provider.
+
+-------------------------------------------------------------------
 Fri Mar 15 08:03:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.54.0:

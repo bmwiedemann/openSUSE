@@ -271,6 +271,10 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %{_datadir}/dbus-1/services/org.gtk.vfs.GoaVolumeMonitor.service
 %{_libexecdir}/%{name}/gvfsd-google
 %{_datadir}/%{name}/mounts/google.mount
+%if %{with onedrive}
+%{_libexecdir}/gvfs/gvfsd-onedrive
+%{_datadir}/gvfs/mounts/onedrive.mount
+%endif
 
 %files backends
 %doc monitor/udisks2/what-is-shown.txt
@@ -328,10 +332,6 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %endif
 %{_libexecdir}/%{name}/gvfsd-network
 %{_datadir}/%{name}/mounts/network.mount
-%if %{with onedrive}
-%{_libexecdir}/gvfs/gvfsd-onedrive
-%{_datadir}/gvfs/mounts/onedrive.mount
-%endif
 # allow priv ports for mounting nfs. Otherwise the nfs-service requires insecure (boo#1065864)
 %verify(not mode caps) %caps(cap_net_bind_service=+ep) %{_libexecdir}/%{name}/gvfsd-nfs
 %{_libexecdir}/%{name}/gvfsd-nfs
