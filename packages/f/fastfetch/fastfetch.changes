@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr  8 08:26:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.1:
+  * Support weston-terminal (missed commit in v2.9.0)
+    (TerminalFont, Linux)
+  * Support hyprcursor detection
+  * Fix `fastfetch --gen-config` raises SIGSEGV when
+    `~/.config/fastfetch` doesn't exist. Regression of `2.9.0`
+
+-------------------------------------------------------------------
 Thu Apr  4 04:54:12 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - update to 2.9.0:
@@ -164,10 +174,10 @@ Sun Jan 28 04:50:07 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 Sat Dec 23 08:15:55 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - update to version 2.4.0:
-  **BREAKING** 
-  We are deprecating flags based config files (will be removed in v3.0.0). 
-  We suggest you migrate to json based config files. 
-  One may use `-c /path/to/config.conf --gen-config` to migrate existing flag 
+  **BREAKING**
+  We are deprecating flags based config files (will be removed in v3.0.0).
+  We suggest you migrate to json based config files.
+  One may use `-c /path/to/config.conf --gen-config` to migrate existing flag
   based config files.
 
   Changes:
@@ -184,7 +194,7 @@ Sat Dec 23 08:15:55 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncom
     * Fix memory usage counting algorithm (Memory, macOS)
     * Fix the behavior of `--no-buffer` in Windows
     * Fix possible segfault in some devices (Display, Linux)
-    * Fix segfaults on first use of new images with Sixel flag (Image) 
+    * Fix segfaults on first use of new images with Sixel flag (Image)
 - update specfile:
   * add bash completion subpackage.
   * add fish completion subpackage.

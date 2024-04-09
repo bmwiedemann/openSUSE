@@ -385,4 +385,12 @@ Bugfixes:
     * For xfce4-terminal, use system mono font if no config file is found (TerminalFont, Linux)</comment>
     <requestid>1164456</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e17cc8a127989686bb5a37866676f38d</srcmd5>
+    <version>2.9.1</version>
+    <time>1712674058</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166264</requestid>
+  </revision>
 </revisionlist>
