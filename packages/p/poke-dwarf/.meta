@@ -1,0 +1,10 @@
+<package name="poke-dwarf" project="openSUSE:Factory">
+  <title>Plug-in for GNU poke for editing DWARF files</title>
+  <description>poke-dwarf is a GNU poke pickle for editing DWARF debugginf information. It
+covers Call Frame Information, DIE tree, debug types, expressions, and much
+more.
+
+</description>
+  <devel project="editors" package="poke-dwarf"/>
+  <url>https://www.jemarch.net/poke-dwarf.html</url>
+</package>
