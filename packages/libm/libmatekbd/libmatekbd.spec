@@ -1,7 +1,7 @@
 #
 # spec file for package libmatekbd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,11 @@
 
 
 %define typelib  typelib-1_0-Matekbd-1_0
-%define _version 1.26
-%define sover    4
+%define _version 1.28
+%define sover    6
+
 Name:           libmatekbd
-Version:        1.26.1
+Version:        1.28.0
 Release:        0
 Summary:        MATE Desktop keyboard configuration libraries
 License:        LGPL-2.1-or-later
@@ -66,10 +67,23 @@ Obsoletes:      %{name}1 < %{version}
 This package provides libmatekdb, an API to manage the keyboard in
 MATE Desktop applications.
 
+%package -n %{name}ui%{sover}
+Summary:        MATE Desktop keyboard configuration shared libraries
+Group:          System/Libraries
+Requires:       matekbd-common
+Recommends:     %{name}-lang
+Provides:       %{name} = %{version}
+# libmatekbd with a wrong sover was last used in openSUSE Leap 42.1.
+
+%description -n %{name}ui%{sover}
+This package provides libmatekdbui, an API to manage the keyboard in
+MATE Desktop applications.
+
 %package devel
 Summary:        MATE Desktop keyboard configuration development files
 Group:          Development/Libraries/X11
 Requires:       %{name}%{sover} = %{version}
+Requires:       %{name}ui%{sover} = %{version}
 Requires:       matekbd-common = %{version}
 
 %description devel
@@ -100,13 +114,20 @@ NOCONFIGURE=1 mate-autogen
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
-
 %postun -n %{name}%{sover} -p /sbin/ldconfig
+
+%post -n %{name}ui%{sover} -p /sbin/ldconfig
+%postun -n %{name}ui%{sover} -p /sbin/ldconfig
 
 %files -n %{name}%{sover}
 %license COPYING
 %doc AUTHORS ChangeLog
-%{_libdir}/*.so.%{sover}*
+%{_libdir}/%{name}.so.*
+
+%files -n %{name}ui%{sover}
+%license COPYING
+%doc AUTHORS ChangeLog
+%{_libdir}/%{name}ui.so.*
 
 %files -n matekbd-common
 %{_datadir}/glib-2.0/schemas/*.xml

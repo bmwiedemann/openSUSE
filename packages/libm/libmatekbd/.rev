@@ -179,4 +179,12 @@
     <comment>- Update to version 1.26.1.</comment>
     <requestid>1087417</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>78fb0d9daebd9add0c3ac410243c61bf</srcmd5>
+    <version>1.28.0</version>
+    <time>1712674043</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1165616 from hillwood)</comment>
+    <requestid>1165617</requestid>
+  </revision>
 </revisionlist>
