@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 25 07:40:17 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.0
+  * Translations update
+  * replace deprecated gtk_image_menu_item*
+  * dictionary applet: fix in-process build warning
+  * fix warnings in id, uk and ru translations
+  * wayland: dictionary applet: confine popup dialog to monitor dimensions
+  * wayland: dictionary: Make the panel applet usable in wayland
+  * Wayland: Fix position and behavior of dictionary applet popup window
+  * dictionary applet: allow building in-process
+  * Remove init_stock_icons code and replace gtk_drag_set_icon_stock with 
+    gtk_drag_set_icon_name
+  * mate-dictionary: Replace deprecated functions fix compilation warnings
+  * baobab-remote-connect-dialog: fix -Wformat-nonliteral warning
+  * logview: Replace deprecated functions fix compilation warnings
+
+-------------------------------------------------------------------
 Sun May 14 13:12:33 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.26.1

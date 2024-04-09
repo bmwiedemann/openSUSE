@@ -256,4 +256,12 @@
     <comment>- Add mate-desktop-gschemas as Requires for mate-dictionary (boo#1211327) (forwarded request 1087102 from hillwood)</comment>
     <requestid>1087103</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>afeffde0e76100b15191ba9aa2f89f53</srcmd5>
+    <version>1.28.0</version>
+    <time>1712674042</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1165609</requestid>
+  </revision>
 </revisionlist>

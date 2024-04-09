@@ -1,7 +1,7 @@
 #
 # spec file for package mate-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,11 @@
 
 %define soname_dict libmatedict
 %define sover_dict 6
-%define _version 1.26
+%define d_applet   0
+%define _version 1.28
 
 Name:           mate-utils
-Version:        1.26.1
+Version:        1.28.0
 Release:        0
 Summary:        MATE Desktop utilities
 License:        GFDL-1.1-only AND GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -39,16 +40,21 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-glib-1)
+BuildRequires:  pkgconfig(gdk-wayland-3.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk-doc)
+BuildRequires:  pkgconfig(gtk-layer-shell-0)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(libmatepanelapplet-4.0) >= %{_version}
+BuildRequires:  pkgconfig(mate-desktop-2.0) >= %{_version}
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(udisks2)
+BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(zlib)
@@ -195,11 +201,16 @@ sed -i 's/^\(IGNORE_HELP_LINGUAS =\)/\1 pt/' gsearchtool/help/Makefile.am
 
 %build
 NOCONFIGURE=1 mate-autogen
-%configure \
-  --disable-static                    \
-  --libexecdir=%{_libexecdir}/%{name} \
-  --with-x                            \
-  --enable-ipv6=yes
+%configure  --disable-static \
+            --libexecdir=%{_libexecdir}/%{name} \
+            --with-x \
+            --enable-ipv6=yes \
+            --enable-debug=yes \
+            --enable-wayland \
+            --enable-in-process \
+            --enable-gtk-doc \
+            --enable-gtk-doc-html \
+            --enable-gtk-doc-pdf
 %make_build
 
 %install
@@ -215,7 +226,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %suse_update_desktop_file mate-screenshot
 
 %post -n %{soname_dict}%{sover_dict} -p /sbin/ldconfig
-
 %postun -n %{soname_dict}%{sover_dict} -p /sbin/ldconfig
 
 %files -n mate-disk-image-mounter
@@ -241,18 +251,20 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc AUTHORS NEWS README.md ChangeLog
 %exclude %{_datadir}/help/C/mate-dictionary/
 %{_bindir}/mate-dictionary
-%{_datadir}/dbus-1/services/org.mate.panel.applet.DictionaryAppletFactory.service
+#%{_datadir}/dbus-1/services/org.mate.panel.applet.DictionaryAppletFactory.service
 %{_datadir}/glib-2.0/schemas/org.mate.dictionary.gschema.xml
 %{_datadir}/mate-dictionary/
 %dir %{_datadir}/mate-panel/
 %dir %{_datadir}/mate-panel/applets/
 %{_datadir}/mate-panel/applets/org.mate.DictionaryApplet.mate-panel-applet
-%dir %{_libexecdir}/mate-utils/
-%{_libexecdir}/mate-utils/mate-dictionary-applet
+#%dir %{_libexecdir}/mate-utils/
+#%{_libexecdir}/mate-utils/mate-dictionary-applet
 %{_datadir}/applications/mate-dictionary.desktop
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/mate-dictionary.appdata.xml
 %{_mandir}/man?/mate-dictionary.?%{?ext_man}
+%dir %{_libdir}/mate-utils
+%{_libdir}/mate-utils/libmate-dictionary-applet.so.*
 
 %files -n mate-screenshot
 %license COPYING*
@@ -296,12 +308,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/mate-dict/
 %{_datadir}/mate-dict/
 %{_libdir}/%{soname_dict}.so
+%{_libdir}/mate-utils/libmate-dictionary-applet.so
 %{_libdir}/pkgconfig/mate-dict.pc
 
 %files common-lang -f %{name}.lang
 %exclude %{_datadir}/help/*
 
 %files doc
-%doc %{_datadir}/help/*/*/
+%doc %{_datadir}/help/C/*/
 
 %changelog
