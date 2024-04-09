@@ -157,4 +157,38 @@
     containing non-ascii characters.</comment>
     <requestid>1100466</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>27af5e148e99ee1cf47a7f75c773e1e4</srcmd5>
+    <version>2.1.0</version>
+    <time>1712673984</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.0:
+  * #243: Added main_thread_only execmodel which is derived from
+    the thread execmodel and only executes remote_exec calls in the
+    main thread.
+  * Callers of remote_exec must use the returned channel to wait
+    for a task to complete before they call remote_exec again,
+    otherwise the remote_exec call will fail with a concurrent
+    remote_exec would cause deadlock error. The main_thread_only
+    execmodel provides solutions for #96 and
+    pytest-dev/pytest-xdist#620 (pending a new pytest-xdist
+    release).
+  * Also fixed init_popen_io to use closefd=False for shared stdin
+    and stdout file descriptors, preventing Bad file descriptor
+    errors triggered by test_stdouterrin_setnull.
+  * The library is now typed and the typing is exposed to
+    type-checkers.
+  * Re-exported Gateway, Channel, DumpError and LoadError from
+    execnet. The constructors are private.
+  * Fixed GatewayBase.join() timeout argument getting ignored.
+  * Removed support for Python 3.7.
+  * Added official support for Python 3.12.
+
+  * Current working directory is now restored when calling ``script/socketserver.py``.
+- add fix_apipkg.patch -- fixes tests with apipkg &gt; 1.4.0
+- Install a generated documentation
+- Build documentation with Sphinx
+- Initial packaging execnet 1.1 for openSUSE</comment>
+    <requestid>1165943</requestid>
+  </revision>
 </revisionlist>

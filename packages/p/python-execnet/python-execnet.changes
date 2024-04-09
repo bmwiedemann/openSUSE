@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Apr  7 08:59:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * #243: Added main_thread_only execmodel which is derived from
+    the thread execmodel and only executes remote_exec calls in the
+    main thread.
+  * Callers of remote_exec must use the returned channel to wait
+    for a task to complete before they call remote_exec again,
+    otherwise the remote_exec call will fail with a concurrent
+    remote_exec would cause deadlock error. The main_thread_only
+    execmodel provides solutions for #96 and
+    pytest-dev/pytest-xdist#620 (pending a new pytest-xdist
+    release).
+  * Also fixed init_popen_io to use closefd=False for shared stdin
+    and stdout file descriptors, preventing Bad file descriptor
+    errors triggered by test_stdouterrin_setnull.
+  * The library is now typed and the typing is exposed to
+    type-checkers.
+  * Re-exported Gateway, Channel, DumpError and LoadError from
+    execnet. The constructors are private.
+  * Fixed GatewayBase.join() timeout argument getting ignored.
+  * Removed support for Python 3.7.
+  * Added official support for Python 3.12.
+
+-------------------------------------------------------------------
 Mon Jul 24 20:13:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.2:
@@ -46,7 +71,7 @@ Tue Feb  2 09:57:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 1.8.0:
   * Dropped support for Python 3.4.
   * Fixed internal leak that should make ``execnet`` execute remote code in the main thread more often
-  * Current working directory is now restored when calling ``script/socketserver.py``. 
+  * Current working directory is now restored when calling ``script/socketserver.py``.
 
 -------------------------------------------------------------------
 Fri Aug 30 01:11:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
@@ -98,7 +123,7 @@ Tue Feb 12 14:25:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Wed Aug  8 11:32:26 UTC 2018 - mimi.vx@gmail.com
 
-- add fix_apipkg.patch -- fixes tests with apipkg > 1.4.0 
+- add fix_apipkg.patch -- fixes tests with apipkg > 1.4.0
 
 -------------------------------------------------------------------
 Sun Jul 15 23:10:06 UTC 2018 - mimi.vx@gmail.com
@@ -224,15 +249,15 @@ Wed Oct  9 17:25:37 UTC 2013 - p.drouand@gmail.com
 -------------------------------------------------------------------
 Tue Oct  8 09:35:02 UTC 2013 - mvyskocil@suse.com
 
-- Install a generated documentation 
+- Install a generated documentation
 
 -------------------------------------------------------------------
 Fri Oct  4 07:56:36 UTC 2013 - mvyskocil@suse.com
 
-- Build documentation with Sphinx 
+- Build documentation with Sphinx
 
 -------------------------------------------------------------------
 Thu Oct  3 12:38:43 UTC 2013 - mvyskocil@suse.com
 
-- Initial packaging execnet 1.1 for openSUSE 
+- Initial packaging execnet 1.1 for openSUSE
 
