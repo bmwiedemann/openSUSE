@@ -1,7 +1,7 @@
 #
 # spec file for package go-mod-upgrade
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           go-mod-upgrade
-Version:        0.9.1
+Version:        0.10.0
 Release:        0
 Summary:        Update outdated Go dependencies interactively
 License:        MIT
@@ -25,8 +25,8 @@ Group:          Development/Languages/Other
 URL:            https://github.com/oligot/go-mod-upgrade
 Source:         go-mod-upgrade-%{version}.tar.xz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.20
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API) >= 1.20
 %{go_nostrip}
 
 %description

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 08 13:56:12 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 0.10.0:
+  * Fix github action: go version should be at least 1.18
+  * Fix golangci-lint
+  * Fix goreleaser config
+  * Update golang.org/x/mod
+  * Corrects Go wiki link in README (#45)
+  * Add ignore flag (closes #42)
+
+-------------------------------------------------------------------
 Thu Aug 24 11:34:42 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 - First commit - v0.9.1

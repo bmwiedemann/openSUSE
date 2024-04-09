@@ -7,4 +7,18 @@
     <comment>Please include go-mod-upgrade in Tumbleweed</comment>
     <requestid>1108034</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a0c4aea55203382d47830bd5f050e339</srcmd5>
+    <version>0.10.0</version>
+    <time>1712674049</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.10.0:
+  * Fix github action: go version should be at least 1.18
+  * Fix golangci-lint
+  * Fix goreleaser config
+  * Update golang.org/x/mod
+  * Corrects Go wiki link in README (#45)
+  * Add ignore flag (closes #42) (forwarded request 1166222 from ph03nix)</comment>
+    <requestid>1166249</requestid>
+  </revision>
 </revisionlist>
