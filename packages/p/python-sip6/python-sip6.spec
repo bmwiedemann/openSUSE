@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sip6
-Version:        6.8.2
+Version:        6.8.3
 Release:        0
 Summary:        A Python bindings generator for C/C++ libraries
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
 Group:          Development/Libraries/Python
-URL:            https://www.riverbankcomputing.com/software/sip
+URL:            https://github.com/Python-SIP/sip
 Source0:        https://files.pythonhosted.org/packages/source/s/sip/sip-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module packaging}
@@ -53,7 +53,7 @@ Requires:       python-packaging
 Requires:       python-setuptools
 Requires:       (python-tomli if python-base < 3.11)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Conflicts:      python-sip-impl
 # boo#1190441: remove erroneously created non-devel python3X-sip metapackages.
 # In order not to remove SIPv4 and possible future packages, we have to explicitly
@@ -103,6 +103,9 @@ This package contains the documentation and example files.
 %python_clone -a %{buildroot}%{_bindir}/sip-wheel
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes -s doc
+
+%check
+# No upstream tests available. Appease rpmlint no-%%check-section
 
 %post devel
 %python_install_alternative sip-build sip-distinfo sip-install sip-module sip-sdist sip-wheel
