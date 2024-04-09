@@ -49,6 +49,8 @@ URL:            https://toolkit.translatehouse.org/
 Source:         https://files.pythonhosted.org/packages/source/t/%{modname}/%{modname}-%{version}.tar.gz
 Patch0:         xliff-xsd-no-network.patch
 Patch1:         sphinx-intersphinx.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-tests-Adjust-to-changed-aeidon-behavior.patch
 BuildRequires:  %{python_module Levenshtein >= 0.12}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module sphinx-bootstrap-theme}

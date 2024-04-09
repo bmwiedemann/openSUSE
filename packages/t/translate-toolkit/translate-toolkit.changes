@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  8 13:28:24 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add patch 0001-tests-Adjust-to-changed-aeidon-behavior.patch for
+  the new the "in-between" newline logic
+
+-------------------------------------------------------------------
 Sun Jan 14 17:35:37 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.12.1
