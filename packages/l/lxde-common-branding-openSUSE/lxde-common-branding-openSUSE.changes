@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  9 11:50:45 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Default Tumbleweed wallpaper is now png boo#1222543
+  align lxde-common-0.99.0-pcmanfm-default.patch
+
+-------------------------------------------------------------------
 Fri Mar  1 11:25:46 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

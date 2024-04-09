@@ -1,7 +1,7 @@
 #
 # spec file for package lxde-common-branding-openSUSE
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           lxde-common-branding-openSUSE
 Version:        12.1
 Release:        0
 Summary:        openSUSE branding for LXDE
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/GUI/LXDE
-Url:            http://www.opensuse.org
+URL:            http://www.opensuse.org
 Source0:        lxde-common-%{upstream_ver}.tar.xz
 Source1:        start-here-branding.svg
 Source2:        suse-logout.png
@@ -32,22 +32,22 @@ Patch1:         lxde-common-0.99.0-openbox-menu.patch
 Patch2:         lxde-common-0.99.0-lxpanel.patch
 Patch3:         lxde-common-0.99.0-lxde-logout.patch
 Patch4:         lxde-common-0.99.0-openbox-shortcut.patch
-Patch5:			lxde-common-0.99.0-use-Adwaita-as-default-theme.patch
+Patch5:         lxde-common-0.99.0-use-Adwaita-as-default-theme.patch
 # Apply after lxde-common-0.99.0-use-Adwaita-as-default-theme.patch
-Patch6:			lxde-common-0.99.0-openbox-titlebar-font.patch
+Patch6:         lxde-common-0.99.0-openbox-titlebar-font.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
 Requires:       desktop-data-openSUSE
+Requires:       gtk2-metatheme-adwaita
+Requires:       gtk3-metatheme-adwaita
+Requires:       openbox-adwaita-ob-theme
 Requires:       wallpaper-branding-openSUSE
-Requires:		gtk2-metatheme-adwaita
-Requires:		gtk3-metatheme-adwaita
-Requires:		openbox-adwaita-ob-theme
 # asigned to C-A-Escape in lxde-common-0.5.5-openbox-shortcut.patch but not installed by default
-Requires:		xkill
+Requires:       xkill
 Supplements:    packageand(lxde-common:branding-openSUSE)
 Provides:       lxde-common-branding = %{version}
-BuildRoot:      %{tmppath}/%{name}-%{version}-build
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Conflicts:      otherproviders(lxde-common-branding)
 
