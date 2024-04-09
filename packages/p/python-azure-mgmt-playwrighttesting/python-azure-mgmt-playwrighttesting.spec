@@ -16,11 +16,11 @@
 #
 
 
-%define realversion 1.0.0b1
+%define realversion 1.0.0b2
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-playwrighttesting
-Version:        1.0.0~b1
+Version:        1.0.0~b2
 Release:        0
 Summary:        Microsoft Azure MyService Management Client Library for Python
 License:        MIT
@@ -40,7 +40,6 @@ Requires:       python-azure-nspkg >= 3.0.0
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
 Requires:       (python-azure-mgmt-core >= 1.3.2 with python-azure-mgmt-core < 2.0.0)
 Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
-Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-mgmt-playwrighttesting < 1.0.0~b1

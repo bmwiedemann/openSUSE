@@ -141,6 +141,9 @@ Patch173:       0173-Replace-global.log-by-console.log.patch
 Patch174:       0174-Fix-compatibility-issues-with-Gnome-shell-46.patch
 Patch175:       0175-Change-README.rst-to-refer-to-metadata.json.in-for-g.patch
 Patch176:       0176-metadata.json.in-change-compatible-gnome-shell-versi.patch
+Patch177:       0177-metadata.json-re-add-GNOME-45-support.patch
+Patch178:       0178-todaysFactsWidget-Fix-broken-layout-in-GNOME-45.patch
+Patch179:       0179-todaysFactsWidget-Fix-broken-layout-in-GNOME-45-and-.patch
 
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -290,6 +293,9 @@ cd hamster-shell-extension-%{ext_version}
 %patch -P 174 -p1
 %patch -P 175 -p1
 %patch -P 176 -p1
+%patch -P 177 -p1
+%patch -P 178 -p1
+%patch -P 179 -p1
 
 %endif # suse_version >= 1600
 %endif # sle_version >= 150400

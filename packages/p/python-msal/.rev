@@ -275,4 +275,27 @@
   + Update name for dist directory in %files section (forwarded request 1164951 from glaubitz)</comment>
     <requestid>1165348</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d37979577574a4e42490017f37e9f24b</srcmd5>
+    <version>1.28.0</version>
+    <time>1712674101</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.28.0
+  * New feature: PublicClientApplication and ConfidentialClientApplication
+    have a new oidc_authority parameter that can be used to specify authority
+    of any generic OpenID Connect authority, typically the customized domain
+    for CIAM. (#676, #678)
+  * Dropping Python 2.7
+- from version 1.27.0
+  * New feature: remove_tokens_for_client() will remove tokens acquired
+    by acquire_token_for_client() (#640, #650, #666)
+  * Performance: Throughput of token-cache-hit happy path is roughly 2x faster (#644)
+  * Adjustment: MSAL no longer attempts to validate an ID token's time (#656, #657)
+  * Adjustment: Bump upstream broker dependency to 0.14.x
+  * Improvement: Better chance to remove accounts from broker (#651)
+  * Improvement: Cleaner console output when the http local server
+    is visited in https protocol (#546)
+  * Improvement: Reduce a bare except clause (#667) (forwarded request 1166290 from glaubitz)</comment>
+    <requestid>1166433</requestid>
+  </revision>
 </revisionlist>

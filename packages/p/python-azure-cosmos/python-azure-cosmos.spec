@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-cosmos
-Version:        4.5.1
+Version:        4.6.0
 Release:        0
 Summary:        Microsoft Azure Cosmos client library for Python
 License:        MIT
@@ -32,7 +32,8 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       (python-azure-core >= 1.23.0 with python-azure-core < 2.0.0)
+Requires:       python-typing_extensions >= 4.6.0
+Requires:       (python-azure-core >= 1.25.1 with python-azure-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-cosmos < 4.5.1

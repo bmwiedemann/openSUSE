@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-batch
-Version:        14.1.0
+Version:        14.2.0
 Release:        0
 Summary:        Microsoft Azure Batch Client Library
 License:        MIT

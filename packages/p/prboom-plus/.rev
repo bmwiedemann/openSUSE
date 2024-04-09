@@ -154,4 +154,12 @@ Can't really provide infinitely many versions!</comment>
     <comment>- Update to release 2.6.66</comment>
     <requestid>1123074</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>2512dd1f8b5d2194e1d6105aa872f88f</srcmd5>
+    <version>2.6.66</version>
+    <time>1712674083</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1166359</requestid>
+  </revision>
 </revisionlist>

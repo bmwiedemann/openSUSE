@@ -4,6 +4,7 @@
    #include <abstractions/consoles>
    #include <abstractions/nameservice>
    /etc/mtab                        r,
-   @{PROC}/[0-9]*/mounts            r,
+   @{PROC}/@{pid}/mounts            r,
+   @{PROC}/@{pid}/mountinfo         r,
    /usr/lib/nagios/plugins/check_disk rm,
 }

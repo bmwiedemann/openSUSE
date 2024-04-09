@@ -175,4 +175,15 @@
 - Drop setting default file attributes in %files section (forwarded request 1164737 from glaubitz)</comment>
     <requestid>1165136</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a86a4e82f6720c357f7cdce4c4e5b991</srcmd5>
+    <version>17.3.0</version>
+    <time>1712674092</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 17.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1166350 from glaubitz)</comment>
+    <requestid>1166385</requestid>
+  </revision>
 </revisionlist>

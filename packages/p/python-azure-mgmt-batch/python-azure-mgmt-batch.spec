@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-batch
-Version:        17.2.0
+Version:        17.3.0
 Release:        0
 Summary:        Microsoft Azure Batch Management Client Library
 License:        MIT

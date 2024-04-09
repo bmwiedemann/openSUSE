@@ -1,7 +1,7 @@
 #
 # spec file for package python-aliyun-python-sdk-core
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-aliyun-python-sdk-core
-Version:        2.14.0
+Version:        2.15.0
 Release:        0
 Summary:        The core module of Aliyun Python SDK
 License:        Apache-2.0
@@ -30,8 +30,8 @@ Source:         https://files.pythonhosted.org/packages/source/a/aliyun-python-s
 Source1:        ChangeLog.txt
 Patch1:         0001_Dont-use-vendored-dependencies.patch
 Patch2:         0002_Relax-jmespath-version-constraint.patch
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module cryptography >= 2.9.2}
 BuildRequires:  %{python_module jmespath >= 0.9.3}

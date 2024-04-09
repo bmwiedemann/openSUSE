@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  9 13:22:49 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Re-add GNOME 45 compatibility (gh#projecthamster/hamster-shell-extension#368)
+  * update code to GitHub develop branch (e3a4cb1)
+  * add 0177-metadata.json-re-add-GNOME-45-support.patch
+  * add 0178-todaysFactsWidget-Fix-broken-layout-in-GNOME-45.patch
+  * add 0179-todaysFactsWidget-Fix-broken-layout-in-GNOME-45-and-.patch
+
+-------------------------------------------------------------------
 Wed Apr  3 15:15:09 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update GNOME extension for GNOME shell 46 support

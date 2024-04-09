@@ -1360,4 +1360,12 @@
   * Include all the wallpaper sizes and use better resolution for the default (bsc#1209970) (forwarded request 1077434 from mauriziogalli)</comment>
     <requestid>1077438</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>34fdebec0e46c905c6605ca6b4ae0ac7</srcmd5>
+    <version>4.18.0+git1.8b02118</version>
+    <time>1712674118</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166455</requestid>
+  </revision>
 </revisionlist>

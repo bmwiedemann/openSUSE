@@ -99,4 +99,16 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164831 from glaubitz)</comment>
     <requestid>1165227</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>de35f3a8387ca3b6f25ffd92573f5dc0</srcmd5>
+    <version>3.2.0</version>
+    <time>1712674098</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 3.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1166338 from glaubitz)</comment>
+    <requestid>1166425</requestid>
+  </revision>
 </revisionlist>

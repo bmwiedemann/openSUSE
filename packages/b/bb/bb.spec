@@ -1,7 +1,7 @@
 #
 # spec file for package bb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,29 @@
 #
 
 
+%define src_ver 1.3rc1
 Name:           bb
-BuildRequires:  aalib-devel
-BuildRequires:  automake
-BuildRequires:  libmikmod-devel
-BuildRequires:  lzo-devel
-URL:            http://aa-project.sourceforge.net/bb/
+Version:        1.3~rc1
+Release:        0
 Summary:        Audio-Visual Demonstration for Text Terminal
 License:        GPL-2.0-or-later
 Group:          Amusements/Toys/Graphics
-Version:        1.3
-Release:        0
-Source:         bb-1.3rc1.tar.bz2
+URL:            https://aa-project.sourceforge.net/bb/
+Source:         https://downloads.sourceforge.net/aa-project/bb-%{src_ver}.tar.gz
 Patch0:         bb-1.3.0.diff
 Patch1:         bb-1.3.0-timer.diff
 Patch2:         warn.patch
 Patch3:         undefined-operation.diff
 Patch4:         bb-1.3.0-no-minilzo-or-builddates.patch
 Patch5:         bb-fix-linking.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  aalib-devel
+BuildRequires:  automake
+BuildRequires:  libmikmod-devel
+BuildRequires:  lzo-devel
 
 %description
 BB is a high quality audio-visual demonstration for your text terminal.
- It is a portable demo, so you can run it on plenty of operating
+It is a portable demo, so you can run it on plenty of operating
 systems and DOS.
 
 %prep
@@ -46,19 +46,18 @@ systems and DOS.
 
 %build
 autoreconf -fiv
-CFLAGS="$RPM_OPT_FLAGS -DDATADIR='\"/usr/share/bb/\"'" \
+CFLAGS="%{optflags} -DDATADIR='\"%{_datadir}/bb/\"'" \
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT
+%make_install
 
 %files
-%defattr(-,root,root)
 %doc README
-/usr/bin/bb
-%{_mandir}/man1/bb.1.gz
-%dir /usr/share/bb
-/usr/share/bb/*.s3m
+%{_bindir}/bb
+%{_mandir}/man1/bb.1%{?ext_man}
+%dir %{_datadir}/bb
+%{_datadir}/bb/*.s3m
 
 %changelog

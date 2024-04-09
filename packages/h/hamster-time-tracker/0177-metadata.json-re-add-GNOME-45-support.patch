@@ -1,0 +1,29 @@
+From 99d491a6e62b18a3745f85d93753cdab1a111c0a Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Thu, 4 Apr 2024 23:17:39 +0200
+Subject: [PATCH 177/179] metadata.json: re-add GNOME 45 support
+
+GNOME 45 had been removed from metadata.json in
+84ab675 ("metadata.json.in: change compatible gnome-shell version to 46").
+Re-add it.
+---
+ data/metadata.json.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/data/metadata.json.in b/data/metadata.json.in
+index bdcdade..0fcf71d 100644
+--- a/data/metadata.json.in
++++ b/data/metadata.json.in
+@@ -10,7 +10,8 @@
+     "gettext-domain": "hamster-shell-extension",
+     "settings-schema": "org.gnome.shell.extensions.project-hamster",
+     "shell-version": [
+-        "46"
++      "45",
++      "46"
+     ],
+     "url": "https://github.com/projecthamster/hamster-shell-extension.git",
+     "uuid": @UUID@
+-- 
+2.44.0
+

@@ -34,4 +34,12 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164884 from glaubitz)</comment>
     <requestid>1165278</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a413a6dfd69e3ec80d85dbcb1d86c468</srcmd5>
+    <version>2.0.0~b6</version>
+    <time>1712674104</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166444</requestid>
+  </revision>
 </revisionlist>

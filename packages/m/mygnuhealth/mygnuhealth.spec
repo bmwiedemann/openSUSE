@@ -34,7 +34,7 @@
 %endif
 
 Name:           mygnuhealth
-Version:        %{majorver}.0.2
+Version:        %{majorver}.0.3
 Release:        0
 Summary:        The personal health record for the GNU Health system
 License:        GPL-3.0-or-later

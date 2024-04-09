@@ -377,4 +377,12 @@ New patches:
     + monitoring-plugins-2.3.3-check_icmp.patch (GH #1807)</comment>
     <requestid>1152323</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>eb3093a6821a48d153d20460d788fa4d</srcmd5>
+    <version>2.3.5</version>
+    <time>1712674082</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166345</requestid>
+  </revision>
 </revisionlist>

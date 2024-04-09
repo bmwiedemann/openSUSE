@@ -1,0 +1,33 @@
+From cc353e25e01b0bbc51afe5067bf3df2b25c082ad Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 5 Apr 2024 15:51:44 +0200
+Subject: [PATCH 178/179] todaysFactsWidget: Fix broken layout in GNOME 45
+
+Using St.ScrollView.add_child() instead of St.ScrollView.add_actor()
+leads to broken layout in the ScrollView widget (zero vertical extension
+of rows). See
+https://github.com/projecthamster/hamster-shell-extension/issues/362#issuecomment-2038295073
+and follow-up comments.
+
+But unlike other St Widgets, ScrollView still supports the add_actor() method
+in GNOME 46. So keep using it.
+---
+ extension/widgets/todaysFactsWidget.js | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/extension/widgets/todaysFactsWidget.js b/extension/widgets/todaysFactsWidget.js
+index 1734cde..fe35ba2 100644
+--- a/extension/widgets/todaysFactsWidget.js
++++ b/extension/widgets/todaysFactsWidget.js
+@@ -48,7 +48,7 @@ class TodaysFactsWidget extends St.ScrollView {
+             reactive: true
+         });
+         this.factsBox.add_child(this.facts_widget);
+-        this.add_child(this.factsBox);
++        this.add_actor(this.factsBox);
+ 
+     }
+ 
+-- 
+2.44.0
+

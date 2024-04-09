@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  8 15:31:23 CEST 2024 - ro@suse.de
+
+- update apparmor profiles:
+  - check_load: allow to read /run/systemd/sessions/1 while we
+    still have to use "uptime" (upstream issue 1999)
+  - check_disk: allow to read /proc/pid/mountinfo 
+
+-------------------------------------------------------------------
 Tue Feb 27 15:19:55 UTC 2024 - Lars Vogdt <lars@linux-schulserver.de>
 
 - naming the renamed patches exactly, to make factory-auto happy:

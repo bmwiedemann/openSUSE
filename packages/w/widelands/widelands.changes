@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Mar 31 06:31:48 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.2:
+  * UI Plugins are add-ons that can add more functionality to
+    the user interface
+  * Naval Warfare preview: Invade foreign coasts using warships!
+  * This is included as a preview feature and needs to be
+    explicitly enabled in the game setup screen.
+  * Soldier garrisons for ports and headquarters
+  * Balancing changes to the Amazon economy
+  * Fifth scenario for the Frisian campaign
+  * More settings in the game setup screen, such as configurable
+    durations for timed win conditions
+  * Diplomacy handling for the computer players
+  * Stick pinned notes onto map fields to mark important points
+  * Hyperlinks let you navigate within the encyclopedia and to
+    the online help
+  * Easy maps publishing inside the editor
+  * High-resolution images for many more units
+  * Accessibility enhancements for many user interface components
+  * Expose more functionality to the add-ons and scenario
+    scripting interface
+  * Fixed many crashes and hangs and enhanced error handling
+- Drop widelands-fix-missing-include.patch, fixed upstream
+
+-------------------------------------------------------------------
 Thu Mar 30 07:38:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add widelands-fix-missing-include.patch: Add missing #include <cstdint>

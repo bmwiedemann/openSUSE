@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr  2 09:16:13 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Make filelist stricter, because it packaged
+  /usr/share/doc/packages, a result of the %configure macro
+  changing in TW from ``--docdir=/usr/share/doc`` to
+  ``--docdir=/usr/share/doc/packages``.
+
+-------------------------------------------------------------------
 Fri Nov  3 07:38:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.6.66

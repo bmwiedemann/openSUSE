@@ -498,4 +498,12 @@
 - Drop setting default file attributes in %files section (forwarded request 1164674 from glaubitz)</comment>
     <requestid>1165071</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>415eef43827b19455fb084747c3c1b71</srcmd5>
+    <version>1.30.1</version>
+    <time>1712674086</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166374</requestid>
+  </revision>
 </revisionlist>

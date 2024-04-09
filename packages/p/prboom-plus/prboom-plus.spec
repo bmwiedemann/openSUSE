@@ -1,7 +1,7 @@
 #
 # spec file for package prboom-plus
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -95,7 +95,7 @@ popd
 %files
 %_bindir/*
 %_datadir/doom/
-%_datadir/doc/*
+%_datadir/doc/packages/prboom*
 %_mandir/*/*
 %_datadir/applications/prboom-plus.desktop
 %_datadir/icons/hicolor/scalable/apps/prboom-plus.svg

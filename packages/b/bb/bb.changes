@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  8 14:39:57 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use full URL for source.
+- Miscellaneous specfile cleanups using spec-cleaner.
+
+-------------------------------------------------------------------
 Thu Feb 22 10:07:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

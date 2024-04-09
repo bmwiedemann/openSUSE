@@ -232,4 +232,16 @@
   * add 0176-metadata.json.in-change-compatible-gnome-shell-versi.patch</comment>
     <requestid>1164390</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>ca4eed52379aaaf919ff62ad185d8fc1</srcmd5>
+    <version>unknown</version>
+    <time>1712674119</time>
+    <user>anag+factory</user>
+    <comment>- Re-add GNOME 45 compatibility (gh#projecthamster/hamster-shell-extension#368)
+  * update code to GitHub develop branch (e3a4cb1)
+  * add 0177-metadata.json-re-add-GNOME-45-support.patch
+  * add 0178-todaysFactsWidget-Fix-broken-layout-in-GNOME-45.patch
+  * add 0179-todaysFactsWidget-Fix-broken-layout-in-GNOME-45-and-.patch</comment>
+    <requestid>1166456</requestid>
+  </revision>
 </revisionlist>
