@@ -805,4 +805,14 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
     <comment>GNOME 46 (forwarded request 1156863 from dimstar)</comment>
     <requestid>1159428</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>384b726d788f90fb1fd51065bbaa9ba7</srcmd5>
+    <version>3.48.2</version>
+    <time>1712673976</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.48.2:
+  + Fix support for fundamental (primitive) types, such as
+    Gst.Bitmask. (forwarded request 1166090 from dimstar)</comment>
+    <requestid>1166245</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  8 06:47:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.48.2:
+  + Fix support for fundamental (primitive) types, such as
+    Gst.Bitmask.
+
+-------------------------------------------------------------------
 Mon Mar 11 08:00:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.48.1:
