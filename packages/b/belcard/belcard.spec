@@ -19,7 +19,7 @@
 %define soname  libbelcard
 %define sover   1
 Name:           belcard
-Version:        5.3.26
+Version:        5.3.37
 Release:        0
 Summary:        C++ library to manipulate vCard standard format files
 License:        GPL-3.0-or-later
