@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  5 08:01:25 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.0
+  * Update translations
+- Drop mesonfix-061.patch, merged by upstream
+
+-------------------------------------------------------------------
 Tue Nov  7 09:11:07 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer

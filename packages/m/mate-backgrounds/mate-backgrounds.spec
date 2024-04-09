@@ -1,7 +1,7 @@
 #
 # spec file for package mate-backgrounds
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,13 @@
 
 %define _version 1.26
 Name:           mate-backgrounds
-Version:        1.26.0
+Version:        1.28.0
 Release:        0
 Summary:        A set of backgrounds packaged with the MATE desktop
 License:        GPL-2.0-only
 Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM mesonfix-061.patch bjorn.lie@gamil.com -- Fix build with meson 0.61 and newer
-Patch0:         mesonfix-061.patch
-
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  meson
 BuildArch:      noarch
