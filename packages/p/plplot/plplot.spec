@@ -1,7 +1,7 @@
 #
 # spec file for package plplot
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,8 +55,7 @@
 %define wx_shlib libplplotwxwidgets1
 # DONT SPLIT OUT plplot-tcltk-libs INTO INDIVIDUAL SHARED LIBS AS THEY ARE ALL REQUIRED TOGETHER AND THEIR SO NUMBERING CHANGE IN-STEP WITH EACH OTHER
 
-# Until we have sip for python 3.11
-#%%define pythons python310
+%define skip_python312 1
 
 Name:           plplot
 Version:        5.15.0
@@ -80,6 +79,8 @@ Patch4:         0001-Use-reentrant-libqhull_r-instead-of-deprecated-libqh.patch
 Patch5:         support-python3-pythondemos.patch
 # PATCH-FIX-UPSTREAM plplot-libharu-version-check.patch badshah400@gmail.com -- Include correct header for libharu version checks
 Patch6:         plplot-libharu-version-check.patch
+# PATCH-FIX-UPSTREAM plplot-pkgconfig-includedir.patch badshah400@gmail.com -- Fix includedir in pkgconfig files
+Patch7:         plplot-pkgconfig-includedir.patch
 # List based on build_ada in gcc.spec
 ExclusiveArch:  %ix86 x86_64 ppc ppc64 ppc64le s390 s390x ia64 aarch64 riscv64
 BuildRequires:  cmake >= 3.13.2
@@ -231,12 +232,6 @@ Octave, Python, Perl and Tcl.
 
 This package provides the files necessary for development with PLplot
 in C.
-
-%post devel
-/sbin/install-info %{_infodir}/plplotdoc.info %{_infodir}/dir
-
-%preun devel
-/sbin/install-info --delete %{_infodir}/plplotdoc.info %{_infodir}/dir
 
 %files devel -f %{_builddir}/%{name}.filelist.ocaml
 %license COPYING.LIB Copyright
@@ -1109,6 +1104,9 @@ sleep 5
 %{python_expand #Set the $python var
 # Define cmake common opts
 export CMAKE_COMMON_OPTS="-DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \
+-DDOC_DIR:PATH=%{_docdir}/%{name}-doc \
+-DCMAKE_INSTALL_MANDIR:PATH=%{_mandir} \
+-DCMAKE_INSTALL_INFODIR:PATH=%{_infodir} \
 -DENABLE_compiler_diagnostics=ON \
 -DPL_FREETYPE_FONT_PATH:PATH=\"%{_datadir}/fonts/truetype\" \
 -DUSE_RPATH:BOOL=OFF \
@@ -1213,10 +1211,6 @@ rm -f %{buildroot}%{_datadir}/%{name}%{version}/examples/tk/tk01
 #Remove cmake files for the examples since they don't work anyway due to presence of rpath
 rm -f %{buildroot}%{_datadir}/plplot%{version}/examples/CMakeLists.txt
 rm -fr %{buildroot}%{_datadir}/plplot%{version}/examples/cmake
-
-#Move doc files to appropriate location
-mkdir -p %{buildroot}%{_docdir}
-mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{_docdir}/%{name}-doc
 
 %if %{tk_enabled}
 #Grant executable permissions to example tk binaries with valid shebang

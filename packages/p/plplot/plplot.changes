@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr  8 05:34:11 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable python3.12 as it is not supported by upstream.
+- Fix doc pakcage location.
+
+-------------------------------------------------------------------
+Fri Jan 26 21:57:04 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add plplot-pkgconfig-includedir.patch: Use
+  CMAKE_INSTALL_FULL_<dir> macros to fix incorrect include and lib
+  dirs in pkgconfig file
+  (https://sourceforge.net/p/plplot/bugs/207/).
+
+-------------------------------------------------------------------
 Sun Jun 25 06:45:13 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Adapt specfile to build plplot against multiple python flavours.
