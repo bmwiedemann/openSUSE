@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-picklefield
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?sle15_python_module_pythons}
+%define upstream_version 3.1
 Name:           python-django-picklefield
 Version:        3.1.0
 Release:        0
@@ -25,7 +26,10 @@ License:        MIT
 URL:            https://github.com/gintas/django-picklefield
 Source:         https://github.com/gintas/django-picklefield/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.11
 BuildArch:      noarch
@@ -45,16 +49,18 @@ by Oliver Beattie.
 echo 'DEFAULT_AUTO_FIELD="django.db.models.AutoField"' >> tests/settings.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec -m django test -v2 --settings=tests.settings
 
 %files %{python_files}
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/picklefield
+%{python_sitelib}/django_picklefield-%{upstream_version}.dist-info
 
 %changelog
