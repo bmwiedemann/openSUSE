@@ -16,18 +16,23 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "bootstrap"
+%bcond_without bootstrap
+%else
+%bcond_with bootstrap
+%endif
 %global platform_version 1.8.2
 %global jupiter_version %{version}
 %global vintage_version %{version}
-%bcond_without console
-Name:           junit5
+%global base_name junit5
 Version:        5.8.2
 Release:        0
-Summary:        Java regression testing framework
 License:        EPL-2.0
 Group:          Development/Libraries/Java
 URL:            https://junit.org/junit5/
-Source0:        https://github.com/junit-team/junit5/archive/r%{version}/junit5-%{version}.tar.gz
+Source0:        https://github.com/junit-team/%{base_name}/archive/r%{version}/%{base_name}-%{version}.tar.gz
+Source1:        %{base_name}-build.tar.xz
 # Aggregator POM (used for packaging only)
 Source100:      aggregator.pom
 # Platform POMs
@@ -51,18 +56,26 @@ Source400:      https://repo1.maven.org/maven2/org/junit/vintage/junit-vintage-e
 # BOM POM
 Source500:      https://repo1.maven.org/maven2/org/junit/junit-bom/%{version}/junit-bom-%{version}.pom
 Patch0:         unreported-exception.patch
-BuildRequires:  asciidoc
+BuildRequires:  apiguardian
 BuildRequires:  fdupes
+BuildRequires:  opentest4j
+Requires:       javapackages-tools
+BuildArch:      noarch
+%if %{with bootstrap}
+Name:           %{base_name}-minimal
+Summary:        Java regression testing framework (minimal)
+BuildRequires:  ant
+BuildRequires:  javapackages-local >= 6
+%else
+Name:           %{base_name}
+Summary:        Java regression testing framework
+BuildRequires:  %{base_name}-minimal
+BuildRequires:  asciidoc
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.univocity:univocity-parsers)
+BuildRequires:  mvn(info.picocli:picocli)
 BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.apiguardian:apiguardian-api)
-BuildRequires:  mvn(org.opentest4j:opentest4j)
-BuildArch:      noarch
-%if %{with console}
-BuildRequires:  mvn(info.picocli:picocli)
-Requires:       javapackages-tools
 %endif
 
 %description
@@ -92,7 +105,7 @@ Requires:       %{name}-javadoc = %{version}-%{release}
 JUnit 5 User Guide.
 
 %prep
-%setup -q -n %{name}-r%{version}
+%setup -q -n %{base_name}-r%{version} -a1
 %patch -P 0 -p1
 find -name \*.jar -delete
 
@@ -131,16 +144,15 @@ done
 %pom_add_dep info.picocli:picocli:4.0.4 junit-platform-console
 %pom_add_dep com.univocity:univocity-parsers:2.9.1 junit-jupiter-params
 
-%if %{without console}
-# Disable the console modules
-%pom_disable_module junit-platform-console
-%pom_disable_module junit-platform-console-standalone
-%endif
-
-%{mvn_package} :aggregator __noinstall
 %{mvn_package} :junit-bom bom
+%{mvn_package} :aggregator __noinstall
 
 %build
+%if %{with bootstrap}
+mkdir -p lib
+build-jar-repository -s lib opentest4j/opentest4j apiguardian/apiguardian-api
+%{ant} package javadoc
+%else
 %{mvn_build} -f -- \
     -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
     -Dencoding=utf-8 -Dsource=8
@@ -149,21 +161,37 @@ done
 # still produces readable docs.
 asciidoc documentation/src/docs/asciidoc/index.adoc || :
 ln -s ../../javadoc/junit5 documentation/src/docs/api
+%endif
 
 %install
+%if %{with bootstrap}
+
+install -dm 0755 %{buildroot}%{_javadir}/%{base_name}
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{base_name}
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+for i in junit-platform-commons junit-jupiter-api; do
+    install -pm 0644 ${i}/target/${i}*.jar %{buildroot}%{_javadir}/%{base_name}/${i}.jar
+    %{mvn_install_pom} ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{base_name}/${i}.pom
+    %add_maven_depmap %{base_name}/${i}.pom %{base_name}/${i}.jar
+    cp -r ${i}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/${i}
+done
+
+%else
+
 %mvn_install
-%fdupes -s %{buildroot}%{_javadocdir}
+%jpackage_script org/junit/platform/console/ConsoleLauncher "" "" junit5:junit:opentest4j:picocli %{name} true
 %fdupes -s documentation/src/docs/
 
-%if %{with console}
-%jpackage_script org/junit/platform/console/ConsoleLauncher "" "" junit5:junit:opentest4j:picocli %{name} true
 %endif
 
+%fdupes -s %{buildroot}%{_javadocdir}
+
 %files -f .mfiles
-%if %{with console}
-%{_bindir}/%{name}
-%endif
 %license LICENSE.md LICENSE-notice.md
+
+%if %{without bootstrap}
+
+%{_bindir}/%{name}
 
 %files bom -f .mfiles-bom
 %license LICENSE.md LICENSE-notice.md
@@ -173,5 +201,13 @@ ln -s ../../javadoc/junit5 documentation/src/docs/api
 
 %files guide
 %doc documentation/src/docs/*
+
+%else
+
+%files javadoc
+%{_javadocdir}/%{name}
+%license LICENSE.md LICENSE-notice.md
+
+%endif
 
 %changelog

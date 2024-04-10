@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  9 20:21:54 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Split into two _multibuild packages so that we can use the
+  junit-jupiter-api pretty early in the build without creating
+  build cycles.
+
+-------------------------------------------------------------------
 Wed Feb 21 10:48:09 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
