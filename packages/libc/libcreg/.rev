@@ -71,4 +71,12 @@
     <comment>python 3.12 build fix</comment>
     <requestid>1144575</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6850dd59aeb9c2a5820ae3eff277dcee</srcmd5>
+    <version>20240303</version>
+    <time>1712764156</time>
+    <user>anag+factory</user>
+    <comment>- Update to snapshot 20240303:</comment>
+    <requestid>1166488</requestid>
+  </revision>
 </revisionlist>

@@ -20,33 +20,32 @@
 
 Name:           libcreg
 %define lname	libcreg1
-Version:        20210625
+Version:        20240303
 Release:        0
 Summary:        Library to access Windows 9x/Me REGF-type Registry files
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libcreg
 Source:         https://github.com/libyal/libcreg/releases/download/%version/libcreg-experimental-%version.tar.gz
-Source2:        https://github.com/libyal/libcreg/releases/download/%version/libcreg-experimental-%version.tar.gz.asc
 Source3:        %name.keyring
-BuildRequires:  %python_module devel
-BuildRequires:  %python_module setuptools
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse) >= 2.6
-BuildRequires:  pkgconfig(libbfio) >= 20201229
-BuildRequires:  pkgconfig(libcdata) >= 20200509
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libcfile) >= 20201229
-BuildRequires:  pkgconfig(libclocale) >= 20200913
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcpath) >= 20200623
-BuildRequires:  pkgconfig(libcsplit) >= 20200703
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(libfcache) >= 20200708
-BuildRequires:  pkgconfig(libfdata) >= 20201129
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libbfio) >= 20240313
+BuildRequires:  pkgconfig(libcdata) >= 20240103
+BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcfile) >= 20240106
+BuildRequires:  pkgconfig(libclocale) >= 20240107
+BuildRequires:  pkgconfig(libcnotify) >= 20240108
+BuildRequires:  pkgconfig(libcpath) >= 20240109
+BuildRequires:  pkgconfig(libcsplit) >= 20240110
+BuildRequires:  pkgconfig(libcthreads) >= 20240102
+BuildRequires:  pkgconfig(libfcache) >= 20240112
+BuildRequires:  pkgconfig(libfdata) >= 20240114
+BuildRequires:  pkgconfig(libuna) >= 20240130
 BuildRequires:  pkgconfig(python3)
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
@@ -106,26 +105,25 @@ grep ' '' ''local' config.log && exit 1
 mv %_builddir/rt/* %buildroot/
 find "%buildroot" -name '*.la' -delete
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*
-%{_libdir}/libcreg.so.*
+%_libdir/libcreg.so.*
 
 %files -n %name-tools
-%{_bindir}/creg*
-%{_mandir}/man1/creg*.1*
+%_bindir/creg*
+%_mandir/man1/creg*.1*
 
 %files -n %name-devel
-%{_includedir}/libcreg.h
-%{_includedir}/libcreg/
-%{_libdir}/libcreg.so
-%{_libdir}/pkgconfig/libcreg.pc
-%{_mandir}/man3/libcreg.3*
+%_includedir/libcreg.h
+%_includedir/libcreg/
+%_libdir/libcreg.so
+%_libdir/pkgconfig/libcreg.pc
+%_mandir/man3/libcreg.3*
 
 %files %python_files
 %license COPYING*
-%{python_sitearch}/pycreg.so
+%python_sitearch/pycreg.so
 
 %changelog
