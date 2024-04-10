@@ -1,0 +1,6 @@
+<package name="cvm-guest-attestation" project="openSUSE:Factory">
+  <title>Confidential computing cvm guest attestation</title>
+  <description>Confidential computing cvm guest attestation</description>
+  <devel project="Virtualization" package="cvm-guest-attestation"/>
+  <url>https://github.com/Azure/confidential-computing-cvm-guest-attestation</url>
+</package>

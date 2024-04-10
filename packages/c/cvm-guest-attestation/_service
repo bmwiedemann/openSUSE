@@ -1,0 +1,44 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="exclude">*/*.vcxproj</param>
+    <param name="exclude">.github</param>
+    <param name="exclude">.gitignore</param>
+    <param name="exclude">CODE_OF_CONDUCT.md</param>
+    <param name="exclude">README.md</param>
+    <param name="exclude">SECURITY.md</param>
+    <param name="exclude">SUPPORT.md</param>
+    <param name="exclude">aks-linux-sample</param>
+    <param name="exclude">client-library/src/Attestation/*.sh</param>
+    <param name="exclude">client-library/src/Attestation/AttestationClient/lib/DynamicLibrary/*.sh</param>
+    <param name="exclude">client-library/src/Attestation/AttestationClient/lib/DynamicLibrary/debian</param>
+    <param name="exclude">client-library/src/Attestation/AttestationClient/tests</param>
+    <param name="exclude">client-library/src/Attestation/LinuxTpm/.gitignore</param>
+    <param name="exclude">client-library/src/Attestation/LinuxTpm/testclient</param>
+    <param name="exclude">client-library/src/Attestation/LinuxTpm/tools/cmake</param>
+    <param name="exclude">client-library/src/Attestation/LinuxTpm/unittests</param>
+    <param name="exclude">client-library/src/docker</param>
+    <param name="exclude">client-library/src/external/jsoncpp-*</param>
+    <param name="exclude">cvm-attestation-sample-app/*.config</param>
+    <param name="exclude">cvm-attestation-sample-app/*.json</param>
+    <param name="exclude">cvm-attestation-sample-app/certs</param>
+    <param name="exclude">cvm-datadisk-enc-scripts</param>
+    <param name="exclude">cvm-platform-checker-exe</param>
+    <param name="exclude">cvm-securekey-release-app</param>
+    <param name="exclude">presentations</param>
+    <param name="exclude">tdx-attestation-app/*.sh</param>
+    <param name="exclude">tdx-attestation-app/.gitignore</param>
+    <param name="exclude">tdx-attestation-app/package</param>
+    <param name="filename">cvm-guest-attestation</param>
+    <param name="revision">b613bcdbed70bf19e0aa4c2d53e034c1d035ca91</param>
+    <param name="scm">git</param>
+    <param name="url">https://github.com/Azure/confidential-computing-cvm-guest-attestation.git</param>
+    <param name="versionformat">%cd.%h</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual">
+    <param name="basename">cvm-guest-attestation</param>
+  </service>
+</services>
