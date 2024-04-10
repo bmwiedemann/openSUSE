@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  2 13:21:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.2+5:
+  + Fix mingw32-clutter and replace_pwdutils tests.
+  + Update rpmprep to handle %patchN for rpm >= 4.20.
+- Drop fix_tests_needing_web_connection.patch: fixed upstream.
+- Convert to obs_scm service: there is no bootstrapping needed for
+  the tarball anyway, so using pristine git checkout is preferred.
+
+-------------------------------------------------------------------
 Thu Oct 26 11:54:41 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file

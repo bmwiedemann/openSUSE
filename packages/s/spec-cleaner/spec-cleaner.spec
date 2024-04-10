@@ -1,7 +1,7 @@
 #
 # spec file for package spec-cleaner
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Vincent Untz <vuntz@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,12 @@
 
 
 Name:           spec-cleaner
-Version:        1.2.2
+Version:        1.2.2+5
 Release:        0
 Summary:        .spec file cleaner
 License:        BSD-3-Clause
 URL:            https://github.com/rpm-software-management/spec-cleaner
-Source0:        https://github.com/rpm-software-management/spec-cleaner/archive/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: https://github.com/rpm-software-management/spec-cleaner/commit/fd0f64930a399dfcf4ff5d3e22a8ec9afa37043a
-Patch0:         fix_tests_needing_web_connection.patch
+Source0:        %{name}-%{version}.tar.zst
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pip
@@ -49,7 +47,7 @@ Alternative provider of format_spec_file functionality in order to allow
 user to use spec-cleaner rather than to stick to perl based format_spec_file.
 
 %prep
-%autosetup -p1 -n %{name}-%{name}-%{version}
+%autosetup -p1
 rm pytest.ini
 
 %build
@@ -79,7 +77,7 @@ python3 -m pytest -k "not webtest" tests/*-tests.py
 %{_prefix}/lib/obs/service/clean_spec_file
 %{_prefix}/lib/obs/service/clean_spec_file.service
 %{python3_sitelib}/spec_cleaner
-%{python3_sitelib}/spec_cleaner-%{version}*-info
+%{python3_sitelib}/spec_cleaner-*-info
 %{_datadir}/%{name}
 
 %files format_spec_file
