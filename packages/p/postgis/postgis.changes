@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr  9 16:56:54 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- fix man file names installation problem of last update
+
+-------------------------------------------------------------------
+Tue Mar 12 19:42:20 UTC 2024 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- upgrade to version 3.4.2
+  See full changelog since 3.4.1
+  https://git.osgeo.org/gitea/postgis/postgis/raw/tag/3.4.2/NEWS
+- add support postgresql16, drop postgresql11 no more supported.
+- adapt binaries distribution to place them in pg bin directory,
+  with alternatives support
+- refresh dependencies version
+- drop patch-tests-results.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 21:18:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add BuildRequire proj-devel instead of legacy name libproj-devel.

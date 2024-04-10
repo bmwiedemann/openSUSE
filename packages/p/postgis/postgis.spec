@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package postgis
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,16 @@
 %define         pg_name  @BUILD_FLAVOR@%{nil}
 %define         ext_name postgis
 %{pg_version_from_name}
-%define         main_version 3.3
+%define         main_version 3.4
 
 Name:           %{pg_name}-%{ext_name}
-Version:        3.3.4
+Version:        3.4.2
 Release:        0
 Summary:        Geographic Information Systems Extensions to PostgreSQL
 License:        GPL-2.0-or-later
 Group:          Productivity/Databases/Servers
 URL:            https://postgis.net/
 Source0:        https://download.osgeo.org/postgis/source/%{ext_name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM adapt the test warnings to fulfill tests
-Patch0:         patch-tests-results.patch
 BuildRequires:  %{pg_name}-llvmjit-devel
 BuildRequires:  %{pg_name}-server-devel
 BuildRequires:  cgal-devel
@@ -42,8 +40,8 @@ BuildRequires:  gdal-devel >= 3.0
 BuildRequires:  gtk2-devel
 BuildRequires:  libgeos-devel >= 3.7.0
 BuildRequires:  libjson-c-devel
-BuildRequires:  proj-devel >= 6.0.0
 BuildRequires:  libprotobuf-c-devel
+BuildRequires:  proj-devel >= 6.1.0
 # proj.db is required for ST_ functions and tests boo#1188129
 BuildRequires:  proj
 BuildRequires:  docbook-xsl-stylesheets
@@ -67,7 +65,7 @@ ExclusiveArch:  do_not_build
 # proj.db is required for ST_ functions and tests boo#1188129
 Requires:       proj
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Conflicts:      postgis2
 Provides:       postgis
 Conflicts:      %{pg_name}-address_standardizer
@@ -91,11 +89,14 @@ The postgis-utils package provides utilities for PostGIS.
 
 %prep
 %autosetup -p1 -n %{ext_name}-%{version}
-
 echo "pg_version is %{pg_version}"
 
 %build
+# since 3.4.0, we need to move again those to pg_config_bindir for alternatives
 %configure \
+    --bindir=%{pg_config_bindir} \
+    --datarootdir=%{pg_config_sharedir} \
+    --datadir=%{pg_config_sharedir} \
     --with-protobuf \
     --with-raster \
     --with-topology \
@@ -117,10 +118,9 @@ install -d -m 755 %{buildroot}%{pg_config_bindir}
 
 # install manpages format them as our pg packages
 install -d -m 755 %{buildroot}%{_mandir}/man1
-install -m 644 doc/man/pgsql2shp.1 %{buildroot}%{_mandir}/man1/pgsql2shp.1pg%{pg_version}
-install -m 644 doc/man/shp2pgsql.1 %{buildroot}%{_mandir}/man1/shp2pgsql.1pg%{pg_version}
 # fix shebang and install utils
-sed -i 's,^#!/usr/bin/env perl,#!/usr/bin/perl,g' utils/*.pl regress/*.pl
+sed -i 's,^#!/usr/bin/env perl,#!/usr/bin/perl,g' utils/*.pl regress/*.pl %{buildroot}%{pg_config_bindir}/postgis_restore
+rm utils/postgis_restore.pl
 install -m 755 utils/*.pl %{buildroot}%{pg_config_bindir}
 # remove .a and .la files
 rm -f %{buildroot}/%{_libdir}/*.la
@@ -132,8 +132,8 @@ rm -fr %{buildroot}%{_docdir}/%{pg_name}
 %fdupes -s %{buildroot}%{pg_config_sharedir}/extension
 %fdupes -s %{buildroot}%{pg_config_sharedir}/contrib
 
-# To avoid shm trouble we just skip tests for 9.6
-%if "%{pgname}" != "postgresql96"
+find %{buildroot}/%{_mandir}/man1/ -type f -printf "mv %%p %%ppg%{pg_version}\n" | bash -x
+
 %check
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -161,7 +161,6 @@ psql -d postgres -c "\dx"
 # Tests often failed one time, then retry.
 make check || make check || :
 pg_ctl -D "${PGDATA}" --mode="fast" stop
-%endif
 
 %postun
 %{_datadir}/postgresql/install-alternatives %pg_version
@@ -176,12 +175,20 @@ pg_ctl -D "${PGDATA}" --mode="fast" stop
 %{_datadir}/postgresql/install-alternatives %pg_version
 
 %files
-%license COPYING
-%doc ChangeLog README.postgis MIGRATION NEWS extensions/address_standardizer/README.address_standardizer
+%license COPYING LICENSE.TXT
+%doc ChangeLog CODE_OF_CONDUCT.md CONTRIBUTING.md NEWS README.postgis SECURITY.md extensions/address_standardizer/README.address_standardizer
 %{pg_config_pkglibdir}/*
 %{_mandir}/man1/pgsql2shp.1pg%{pg_version}.gz
+%{_mandir}/man1/pgtopo_export.1pg%{pg_version}.gz
+%{_mandir}/man1/pgtopo_import.1pg%{pg_version}.gz
+%{_mandir}/man1/postgis.1pg%{pg_version}.gz
+%{_mandir}/man1/postgis_restore.1pg%{pg_version}.gz
 %{_mandir}/man1/shp2pgsql.1pg%{pg_version}.gz
+%{pg_config_bindir}/pgtopo_export
+%{pg_config_bindir}/pgtopo_import
 %{pg_config_bindir}/pgsql2shp
+%{pg_config_bindir}/postgis
+%{pg_config_bindir}/postgis_restore
 %{pg_config_bindir}/raster2pgsql
 %{pg_config_bindir}/shp2pgsql
 %{pg_config_bindir}/shp2pgsql-gui
@@ -195,22 +202,20 @@ pg_ctl -D "${PGDATA}" --mode="fast" stop
 %{pg_config_sharedir}/extension/address_standardizer*
 
 %files utils
-%license COPYING
-%{pg_config_bindir}/create_undef.pl
+%license COPYING LICENSE.TXT
+%{pg_config_bindir}/create_extension_unpackage.pl
 %{pg_config_bindir}/create_or_replace_to_create.pl
+%{pg_config_bindir}/create_skip_signatures.pl
+%{pg_config_bindir}/create_spatial_ref_sys_config_dump.pl
+%{pg_config_bindir}/create_uninstall.pl
+%{pg_config_bindir}/create_unpackaged.pl
 %{pg_config_bindir}/create_upgrade.pl
-%{pg_config_bindir}/pgtopo_export
-%{pg_config_bindir}/pgtopo_import
-%{pg_config_bindir}/postgis_restore.pl
 %{pg_config_bindir}/profile_intersects.pl
 %{pg_config_bindir}/read_scripts_version.pl
 %{pg_config_bindir}/repo_revision.pl
-%{pg_config_bindir}/create_extension_unpackage.pl
-%{pg_config_bindir}/create_unpackaged.pl
-%{pg_config_bindir}/create_spatial_ref_sys_config_dump.pl
 %{pg_config_bindir}/test_estimation.pl
-%{pg_config_bindir}/test_joinestimation.pl
 %{pg_config_bindir}/test_geography_estimation.pl
 %{pg_config_bindir}/test_geography_joinestimation.pl
+%{pg_config_bindir}/test_joinestimation.pl
 
 %changelog

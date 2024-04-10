@@ -113,4 +113,21 @@ I welcome any suggestion of improvement of this beast ;-)</comment>
 </comment>
     <requestid>1153764</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>383d92475db196899823010db0581c0e</srcmd5>
+    <version>3.4.2</version>
+    <time>1712764152</time>
+    <user>anag+factory</user>
+    <comment>- fix man file names installation problem of last update
+- upgrade to version 3.4.2
+  See full changelog since 3.4.1
+  https://git.osgeo.org/gitea/postgis/postgis/raw/tag/3.4.2/NEWS
+- add support postgresql16, drop postgresql11 no more supported.
+- adapt binaries distribution to place them in pg bin directory,
+  with alternatives support
+- refresh dependencies version
+- drop patch-tests-results.patch
+</comment>
+    <requestid>1166494</requestid>
+  </revision>
 </revisionlist>
