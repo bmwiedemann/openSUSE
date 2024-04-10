@@ -784,4 +784,41 @@
    * [flake8-quotes] Avoid syntax errors due to invalid quotes (Q000, Q002)</comment>
     <requestid>1160627</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e53f551224e68460d833b084eb632550</srcmd5>
+    <version>0.3.5</version>
+    <time>1712764133</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.5
+ * Preview features
+   * [pylint] Implement modified-iterating-set (E4703) 
+   * [refurb] Implement for-loop-set-mutations (FURB142) 
+   * [refurb] Implement unnecessary-from-float (FURB164) 
+   * [refurb] Implement verbose-decimal-constructor (FURB157) 
+ * Rule changes
+   * [flake8-comprehensions] Handled special case for C401 which also matches C416 
+   * [flake8-pyi] Mark unaliased-collections-abc-set-import fix as &quot;safe&quot; for more cases in stub files (PYI025) 
+   * [numpy] Add row_stack to NumPy 2.0 migration rule 
+   * [pycodestyle] Allow cell magics before an import (E402) 
+   * [pycodestyle] Avoid blank line rules for the first logical line in cell 
+ * Configuration
+   * Respected nested namespace packages 
+   * [flake8-boolean-trap] Add setting for user defined allowed boolean trap 
+ * Bug fixes
+   * Correctly handle references in __all__ definitions when renaming symbols in autofixes 
+   * Track ranges of names inside __all__ definitions 
+   * [flake8-bugbear] Avoid false positive for usage after continue (B031) 
+   * [flake8-copyright] Accept commas in default copyright pattern 
+   * [flake8-datetimez] Allow f-strings with %z for DTZ007 
+   * [flake8-pytest-style] Fix PT014 autofix for last item in list 
+   * [flake8-quotes] Ignore Q000, Q001 when string is inside forward ref 
+   * [isort] Always place non-relative imports after relative imports 
+   * [isort] Respect Unicode characters in import sorting 
+   * [pyflakes] Fix F821 false negatives when from __future__ import annotations is active (attempt 2) 
+   * [pyflakes] Make unnecessary-lambda an always-unsafe fix 
+   * [pylint] Fixed false-positive on the rule PLW1641 (eq-without-hash) 
+   * [ruff] Fix panic in unused # noqa removal with multi-byte space (RUF100) 
+ * Documentation</comment>
+    <requestid>1166515</requestid>
+  </revision>
 </revisionlist>
