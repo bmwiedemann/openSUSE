@@ -31,4 +31,12 @@
     <comment>- Wrap default config in &lt;IfModule&gt; to avoid reload error (forwarded request 975249 from archie172)</comment>
     <requestid>975328</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7af0b07d5bd10a3fafa89cd06826e0b9</srcmd5>
+    <version>0.19.0</version>
+    <time>1712764211</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166661</requestid>
+  </revision>
 </revisionlist>

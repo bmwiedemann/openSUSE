@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Mar 25 14:01:29 UTC 2024 - pgajdos@suse.com
+
+- version update to 0.19.0
+  Enhancements:
+  * Support for HTTP-POST binding on Singe Logout endpoint.
+  * Update documentation.
+  Cleanup:
+  * Raise minimum Lasso version to 2.4, cleaning up legacy code for
+    compatibility with older versions, including the obsolete
+    `MellonIdPPublicKeyFile` setting which was not working with recent
+    Lasso versions.
+
+-------------------------------------------------------------------
+Mon Jul 31 21:02:37 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 0.18.1
+  * Logout endpoint should handle idP POST response
+  * mellon_create_metadata.sh: Fix compatibility with OpenSSL 3
+  * Add some clarification to the documentation
+  * Add encryption certificate to generated metadata
+- Changes in 0.18.0
+  * CVE-2021-3639 Redirect URL validation bypass - Version 0.17.0 and
+    older of mod_auth_mellon allows the redirect URL validation to be
+    bypassed by specifying an URL formatted as ///fishing-site.example.com/logout.html.
+    In this case, the browser would interpret the URL differently
+    than the APR parsing utility mellon uses and redirect to
+    fishing-site.example.com. This could be reproduced with:
+    https://rp.example.co.jp/mellon/logout?ReturnTo=///fishing-site.example.com/logout.html
+    This version fixes that issue by rejecting all URLs that start with "///".
+  * A new option MellonSessionIdleTimeout that represents the amount of
+    time a user can be inactive before the user's session times out in seconds.
+  * Several build-time fixes
+  * The CookieTest SameSite attribute was only set to None if mellon configure option
+    MellonCookieSameSite was set to something other than default. This is now fixed.
+- add libtool and xmlsec1-openssl-devel as new dependencies
+- set Buildarch to noarch for docs sub-package
+
+-------------------------------------------------------------------
 Thu May  5 17:38:16 UTC 2022 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Wrap default config in <IfModule> to avoid reload error
