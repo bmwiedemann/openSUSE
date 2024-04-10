@@ -769,4 +769,34 @@
     <comment></comment>
     <requestid>1152512</requestid>
   </revision>
+  <revision rev="92" vrev="77">
+    <srcmd5>8128f9e1597f81df2136a50059e5c2d8</srcmd5>
+    <version>unknown</version>
+    <time>1712764139</time>
+    <user>anag+factory</user>
+    <comment>- fix iXhash2-meta-rules.patch
+- update to patch release version 4.0.1
+  - Incompatibilities with some versions of perl and some perl modules
+    that have been released since the release of SpamAssassin 4.0.0
+  - Problems using cpan to install SpamAssassin when certain required
+    or optional modules are not already installed
+  - Support for space characters in the path name of some executables
+    used by certain plugins
+  - Improved handling of URL shortener link redirects
+  - Improved TxRep locking management
+  - Added Mail::SpamAssassin::Plugin::AuthRes plugin to use
+    Authentication-Results header fields in other plugins
+  - Added a Pyzor Perl implementation
+  - Perl crash when certain uri_detail rules processed some messages
+    with UTF-8 characters
+  - Inconsistent handling of newlines in header rules
+  - Text or HTML content placed in octet-stream attachments by
+    spammers to bypass SpamAssassin scanning
+  - Implemented TCP fallback for truncated DNS UDP replies
+- Refresh patch-URIDNSBL
+- Drop undocumented patch-SQL_ASCII_SORT breaking sqlite
+- Drop most of iXhash2-meta-rules.patch (additional services no longer exist)
+</comment>
+    <requestid>1166601</requestid>
+  </revision>
 </revisionlist>

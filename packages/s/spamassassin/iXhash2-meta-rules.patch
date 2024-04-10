@@ -1,50 +1,21 @@
---- Mail-SpamAssassin-4.0.0/iXhash2-4.00/iXhash2.cf.orig	2022-12-22 11:03:27.016843078 +0100
-+++ Mail-SpamAssassin-4.0.0/iXhash2-4.00/iXhash2.cf	2022-12-22 11:04:19.045110018 +0100
-@@ -1,15 +1,40 @@
- 
- # Note: loadplugin should really go into local.pre or so
+diff -u iXhash2-4.00/iXhash2.cf iXhash2-4.00_fix/iXhash2.cf
+--- iXhash2-4.00/iXhash2.cf	2019-04-30 16:49:39.000000000 +0200
++++ iXhash2-4.00_fix/iXhash2.cf	2024-04-10 10:25:00.975919467 +0200
+@@ -1,15 +1,8 @@
+-
+-# Note: loadplugin should really go into local.pre or so
 -loadplugin Mail::SpamAssassin::Plugin::iXhash2 iXhash2.pm
+-
+-ifplugin Mail::SpamAssassin::Plugin::iXhash2
 +loadplugin Mail::SpamAssassin::Plugin::iXhash2
  
- ifplugin Mail::SpamAssassin::Plugin::iXhash2
- 
--ixhashdnsbl   IXHASH_IX  ix.dnsbl.manitu.net.
--body          IXHASH_IX  eval:check_ixhash('IXHASH_IX')
+ ixhashdnsbl   IXHASH_IX  ix.dnsbl.manitu.net.
+ body          IXHASH_IX  eval:check_ixhash('IXHASH_IX')
 -describe      IXHASH_IX  http://www.ixhash.net/listinfo.html
--tflags        IXHASH_IX  net
--score         IXHASH_IX  1.5
--reuse         IXHASH_IX
-+ixhashdnsbl  __GENERIC_IXHASH  generic.ixhash.net.
-+body      __GENERIC_IXHASH  eval:check_ixhash('GENERIC_IXHASH')
-+tflags   __GENERIC_IXHASH  net
-+
-+ixhashdnsbl  __NIXSPAM_IXHASH  ix.dnsbl.manitu.net.
-+body      __NIXSPAM_IXHASH  eval:check_ixhash('NIXSPAM_IXHASH')
-+tflags   __NIXSPAM_IXHASH  net
-+
-+ixhashdnsbl  __SEM_IXHASH  ixhash.spameatingmonkey.net.
-+body      __SEM_IXHASH  eval:check_ixhash('SEM_IXHASH')
-+tflags   __SEM_IXHASH  net
-+
-+ixhashdnsbl __HOSTEUROPE_IXHASH  hosteurope.ixhash.net.
-+body        __HOSTEUROPE_IXHASH  eval:check_ixhash('HOSTEUROPE_IXHASH')
-+tflags      __HOSTEUROPE_IXHASH  net
-+
-+ixhashdnsbl __JUNKMAIL_IXHASH  ixhash.junkemailfilter.com.
-+body        __JUNKMAIL_IXHASH  eval:check_ixhash('JUNKMAIL_IXHASH')
-+tflags      __JUNKMAIL_IXHASH  net
-+
-+meta            IXHASH_X1       (__GENERIC_IXHASH + __NIXSPAM_IXHASH + __SEM_IXHASH + __HOSTEUROPE_IXHASH + __JUNKMAIL_IXHASH) == 1
-+describe        IXHASH_X1       iXhash listed on one server
-+score           IXHASH_X1       1.5
-+
-+meta            IXHASH_X2       (__GENERIC_IXHASH + __NIXSPAM_IXHASH + __SEM_IXHASH + __HOSTEUROPE_IXHASH + __JUNKMAIL_IXHASH) == 2
-+describe        IXHASH_X2       iXhash listed on two servers
-+score           IXHASH_X2       2.5
-+
-+meta            IXHASH_X3       (__GENERIC_IXHASH + __NIXSPAM_IXHASH + __SEM_IXHASH + __HOSTEUROPE_IXHASH + __JUNKMAIL_IXHASH) > 2
-+describe        IXHASH_X3       iXhash listed on more than two servers
-+score           IXHASH_X3       3.5
- 
- endif
- 
++describe      IXHASH_IX  https://www.nixspam.net/
+ tflags        IXHASH_IX  net
+ score         IXHASH_IX  1.5
+ reuse         IXHASH_IX
+-
+-endif
+-

@@ -20,10 +20,10 @@
 
 %define ix_version 4.00
 %define spd_version 2.61
-%define sa_version 4.0.0
+%define sa_version 4.0.1
 %define sa_float %(echo %{sa_version} | awk -F. '{ printf "%d.%03d%03d", $1, $2, $3 }')
 %define perl_float %(echo %{perl_version} | awk -F. '{ printf "%d.%03d", $1, $2 }')
-%define rules_revision 1905950
+%define rules_revision 1916528
 
 %define IXHASH iXhash2-%{ix_version}
 %define SPAMPD spampd-%{spd_version}
@@ -55,9 +55,9 @@ Source102:      spamassassin.keyring
 Source103:      %{name}-rpmlintrc
 Patch1:         patch-PgSQL
 Patch2:         patch-URIDNSBL
-Patch3:         patch-SQL_ASCII_SORT
 Patch6:         bnc#582111.diff
 Patch7:         basic-lint-without-sandbox.patch
+# PATCH-FIX-OPENSUSE adapt ixHash config to RPM package
 Patch10:        iXhash2-meta-rules.patch
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
@@ -226,10 +226,9 @@ via DNS using the domains given in the config file(s).
 tar -zxf %{SOURCE1} -C rules
 %patch -P 1
 %patch -P 2 -p1
-%patch -P 3
 %patch -P 6
 %patch -P 7 -p1
-%patch -P 10 -p1
+%patch -P 10 -p0
 cp %{SOURCE11} ./
 
 %build

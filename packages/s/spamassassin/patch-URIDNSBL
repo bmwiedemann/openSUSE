@@ -1,11 +1,10 @@
-Index: Mail-SpamAssassin-4.0.0/lib/Mail/SpamAssassin/Plugin/URIDNSBL.pm
-===================================================================
---- Mail-SpamAssassin-4.0.0.orig/lib/Mail/SpamAssassin/Plugin/URIDNSBL.pm
-+++ Mail-SpamAssassin-4.0.0/lib/Mail/SpamAssassin/Plugin/URIDNSBL.pm
-@@ -422,6 +422,8 @@ sub check_dnsbl {
-   while (my($uri, $info) = each %{$uris}) {
-     # we want to skip mailto: uris
-     next if ($uri =~ /^mailto:/i);
+diff -ur Mail-SpamAssassin-4.0.1/lib/Mail/SpamAssassin/Plugin/URIDNSBL.pm Mail-SpamAssassin-4.0.1_fix/lib/Mail/SpamAssassin/Plugin/URIDNSBL.pm
+--- Mail-SpamAssassin-4.0.1/lib/Mail/SpamAssassin/Plugin/URIDNSBL.pm	2024-03-26 05:52:09.000000000 +0100
++++ Mail-SpamAssassin-4.0.1_fix/lib/Mail/SpamAssassin/Plugin/URIDNSBL.pm	2024-04-09 15:42:31.054588924 +0200
+@@ -430,6 +430,8 @@
+     if ($conf->{uridnsbl_skip_mailto}) {
+       next if ($uri =~ /^mailto:/i);
+     }
 +    # we want to skip so-files, they are not url's
 +    next if ($uri =~ /\.so$/);
  
