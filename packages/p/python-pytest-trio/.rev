@@ -67,4 +67,12 @@
     <comment></comment>
     <requestid>1082427</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>a8263cac83305cfa93ed9b0a5b9754c4</srcmd5>
+    <version>0.8.0</version>
+    <time>1712764121</time>
+    <user>anag+factory</user>
+    <comment>- Remove not needed python-contextvars dependency</comment>
+    <requestid>1166615</requestid>
+  </revision>
 </revisionlist>
