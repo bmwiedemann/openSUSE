@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:29:28 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use full URL for Source.
+
+-------------------------------------------------------------------
 Thu Feb 22 08:08:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

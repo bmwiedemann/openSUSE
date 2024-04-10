@@ -1,7 +1,7 @@
 #
 # spec file for package jack-rack
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,10 @@ Name:           jack-rack
 Version:        1.4.7
 Release:        0
 Summary:        LADSPA Effects Rack for JACK
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            http://jack-rack.sf.net/
-Source:         %{name}-%{version}.tar.bz2
+URL:            https://jack-rack.sf.net/
+Source:         https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 Patch0:         jack-rack-undeprec.dif
 Patch1:         jack-rack-inc-fix.diff
 Patch3:         jack-rack-ld_fix.diff
