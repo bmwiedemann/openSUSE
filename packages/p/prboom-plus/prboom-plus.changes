@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  9 16:25:32 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid making /usr/share/doc/packages itself part of the RPM
+  following a change in the %cmake macro
+
+-------------------------------------------------------------------
 Tue Apr  2 09:16:13 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Make filelist stricter, because it packaged

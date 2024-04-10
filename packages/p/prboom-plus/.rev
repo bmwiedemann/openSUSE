@@ -162,4 +162,13 @@ Can't really provide infinitely many versions!</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1166359</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>e3c56225434ac1870fbff04c55fc0779</srcmd5>
+    <version>2.6.66</version>
+    <time>1712764154</time>
+    <user>anag+factory</user>
+    <comment>- Avoid making /usr/share/doc/packages itself part of the RPM
+  following a change in the %cmake macro</comment>
+    <requestid>1166487</requestid>
+  </revision>
 </revisionlist>

@@ -72,6 +72,7 @@ pushd prboom2/
 popd
 
 %install
+s="$PWD"
 pushd prboom2/
 %cmake_install
 # convenience symlink
@@ -81,6 +82,9 @@ install -Dm0644 ICONS/prboom-plus.svg "$b/%_datadir/icons/hicolor/scalable/apps/
 install -Dm0644 ICONS/prboom-plus.desktop "$b/%_datadir/applications/prboom-plus.desktop"
 install -Dm0644 ICONS/prboom-plus.bash "$b/%_datadir/bash-completion/completions/prboom-plus.bash"
 popd
+# TW switched doc location in %%cmake
+(cd "%buildroot"; find "./%_datadir/doc" -type d -name prboom-plus | cut -b2-) >"$s/doc.files"
+ls -al "$s/doc.files"
 
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
 %post
@@ -92,10 +96,9 @@ popd
 %icon_theme_cache_postun
 %endif
 
-%files
+%files -f doc.files
 %_bindir/*
 %_datadir/doom/
-%_datadir/doc/packages/prboom*
 %_mandir/*/*
 %_datadir/applications/prboom-plus.desktop
 %_datadir/icons/hicolor/scalable/apps/prboom-plus.svg
