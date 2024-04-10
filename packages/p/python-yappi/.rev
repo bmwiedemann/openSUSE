@@ -154,4 +154,13 @@
   * Fix various issues</comment>
     <requestid>1133551</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>835f295ae7d3d9c3b234c981ddce1d6e</srcmd5>
+    <version>1.6.0</version>
+    <time>1712764197</time>
+    <user>anag+factory</user>
+    <comment>- Remove not needed dependency python-contextvars
+</comment>
+    <requestid>1166625</requestid>
+  </revision>
 </revisionlist>

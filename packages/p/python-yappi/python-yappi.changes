@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 10 10:30:18 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed dependency python-contextvars
+
+-------------------------------------------------------------------
 Fri Dec 15 22:24:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.0:

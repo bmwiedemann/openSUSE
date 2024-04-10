@@ -1,7 +1,7 @@
 #
 # spec file for package python-yappi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@ Summary:        Yet Another Python Profiler
 License:        MIT
 URL:            https://github.com/sumerc/yappi
 Source:         https://files.pythonhosted.org/packages/source/y/yappi/yappi-%{version}.tar.gz
-BuildRequires:  %{python_module contextvars}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module gevent >= 20.6.2}
 BuildRequires:  %{python_module pip}
@@ -35,7 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
