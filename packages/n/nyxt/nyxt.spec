@@ -20,7 +20,7 @@
 # and possibly prone to security issues.
 %bcond_with webextensions
 Name:           nyxt
-Version:        3.11.5
+Version:        3.11.6
 Release:        0
 Summary:        Keyboard-oriented, Common Lisp extensible web-browser
 License:        BSD-3-Clause

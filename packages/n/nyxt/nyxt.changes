@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  9 15:45:32 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 3.11.6:
+  * Bug fixes
+    - Fix crash on common settings
+    - Fix warnings raised by pick-color (unbound)
+    - Fix hint-mode performance issues caused by Shadow DOMs hinting algorithm 
+
+-------------------------------------------------------------------
 Mon Mar 18 18:44:06 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 3.11.5:
