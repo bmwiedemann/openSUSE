@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr  7 16:45:21 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- mzdyn3m.lo no longer gets built for s390x, remove it from %files
+
+-------------------------------------------------------------------
 Fri Feb 23 11:29:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

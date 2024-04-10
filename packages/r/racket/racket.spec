@@ -1,7 +1,7 @@
 #
 # spec file for package racket
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012, 2013 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -271,6 +271,8 @@ install -m 0644 ../README %{buildroot}%{_docdir}/%{name}/README
 %ifarch ppc64 ppc64le s390x
 %{_libdir}/libracket3m*
 %{_libdir}/%{name}/buildinfo
+%endif
+%ifarch ppc64 ppc64le
 %{_libdir}/%{name}/mzdyn3m.lo
 %endif
 %{_mandir}/man1/mz*
