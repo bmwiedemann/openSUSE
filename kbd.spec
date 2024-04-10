@@ -21,7 +21,7 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%define legacy_folders amiga,atari,i386,include,mac,ppc,sun
+%define legacy_folders amiga,atari,include,mac,pine,ppc,sun
 
 Name:           kbd
 Version:        2.6.4
@@ -33,7 +33,6 @@ Group:          System/Console
 URL:            http://kbd-project.org/
 # repack_kbd.sh on https://www.kernel.org/pub/linux/utils/kbd/kbd-%%{version}.tar.xz
 Source:         %{name}-%{version}-repack.tar.xz
-Source1:        kbd_fonts.tar.bz2
 Source2:        suse-add.tar.bz2
 Source3:        README.SUSE
 Source4:        vlock.pamd
@@ -50,16 +49,19 @@ Source42:       convert-kbd-mac.sed
 Source43:       repack_kbd.sh
 Source44:       xml2lst.pl
 Source45:       genmap4systemd.sh
-Patch0:         kbd-1.15.2-prtscr_no_sigquit.patch
-# PATCH-FIX-UPSTREAM
+# PATCH-FEATURE-SUSE kbd-1.15.2-unicode_scripts.patch -- To be able to use bold, only fonts with 256 glyphs can be used. Therefore we prefer the font specified in /etc/sysconfig/console.
 Patch2:         kbd-1.15.2-unicode_scripts.patch
+# PATCH-FIX-SUSE kbd-1.15.2-docu-X11R6-xorg.patch jw@suse.de -- Mention all X11R6 paths in the documentation. Not upstreamable, the documentation is dead and frozen.
 Patch3:         kbd-1.15.2-docu-X11R6-xorg.patch
+# PATCH-FIX-UPSTREAM kbd-1.15.2-sv-latin1-keycode10.patch jw@suse.de bsc280988 -- It's impossible to press [CTRL]+[]] with sv keyboard. Fix that.
 Patch4:         kbd-1.15.2-sv-latin1-keycode10.patch
+# PATCH-FIX-UPSTREAM kbd-2.0.2-doshell-reference.patch pgajdos@suse.cz bsc675317 -- Drop doshell reference from openvt.1 man page.
 Patch10:        kbd-2.0.2-doshell-reference.patch
+# PATCH-FIX-OPENSUSE kbd-2.0.2-euro-unicode.patch pgajdos@suse.cz joehtg@joehtg.co.at boo360993 -- Use Unicode Euro symbol instead of the currency symbol. Not upstreamable as it breaks 8-bit environment using false ISO-8859-1 and ISO-8859-9 naps mapping currency to euro.
 Patch11:        kbd-2.0.2-euro-unicode.patch
+# PATCH-FIX-OPENSUSE kbd-2.0.2-fix-bashisms.patch ledest@gmail.com -- Fix bash specific code.
 Patch12:        kbd-2.0.2-fix-bashisms.patch
-# Patch13: adds xkb and legacy keymaps subdirs to loadkyes search path
-# (openSUSE FATE#318355, sle FATE#318426)
+# PATCH-FEATURE-SUSE kbd-1.15.5-loadkeys-search-path.patch openSUSE FATE#318355 sle FATE#318426 sndirsch@suse.com -- Add xkb and legacy keymaps subdirs to loadkyes search path.
 Patch13:        kbd-1.15.5-loadkeys-search-path.patch
 # PATCH-FEATURE-OPENSUSE kbdsettings-nox86.patch sbrabec@suse.cz -- Disable "bios" option for NumLock settings on non x86 platforms.
 Patch14:        kbdsettings-nox86.patch
@@ -79,13 +81,13 @@ BuildRequires:  pkgconfig
 BuildRequires:  suse-module-tools
 BuildRequires:  xkeyboard-config
 BuildRequires:  xz
-# Temporarily require -legacy
-Requires:       %{name}-legacy = %{version}-%{release}
 Requires(post): coreutils
-Requires(postun):coreutils
+Requires(postun): coreutils
 Requires(pre):  %fillup_prereq
 Provides:       vlock = 2.2.3
 Obsoletes:      vlock <= 2.2.3
+# Keymaps moved from kbd-legacy to kbd (bsc#1194609) after SLE15 SP6, Leap 15.6 before ALP 1.0
+Conflicts:      kbd-legacy < %{version}
 
 %description
 Load and save keyboard mappings. This is needed if you are not using
@@ -107,7 +109,7 @@ Please note that %{name}-legacy is not helpful without kbd.
 %define kbd %{_datadir}/kbd
 
 %prep
-%setup -q -a 1 -a 2 -n kbd-%{version}
+%setup -q -a 2 -n kbd-%{version}
 
 cp -fp %{SOURCE8} .
 cp -fp %{SOURCE9} .
@@ -164,12 +166,7 @@ mkdir -p %{buildroot}%{_sbindir}
 DOC=%{buildroot}%{_defaultdocdir}/kbd
 KBD=%{kbd}
 K=%{buildroot}$KBD
-mkdir -p $K/consolefonts
-# First install the fonts from the kbd_fonts directory
-# (allowing kbd to overwrite some of them)
 mkdir -p $DOC/fonts
-install -m 644 fonts/README $DOC/fonts/README.fonts
-install -m 644 fonts/*/* $K/consolefonts/
 # Now call kbd install
 echo "# Now call kbd install DESTDIR=%{buildroot} DATA_DIR=%{kbd} MAN_DIR=%{_mandir}"
 make DESTDIR=%{buildroot} DATA_DIR=%{kbd} MAN_DIR=%{_mandir} install
@@ -403,7 +400,12 @@ test -f /etc/pam.d/vlock.rpmsave && mv -v /etc/pam.d/vlock.rpmsave /etc/pam.d/vl
 #doc CREDITS README
 %{_fillupdir}/sysconfig.console
 %{_fillupdir}/sysconfig.keyboard
-%{kbd}
+%dir %{kbd}
+%{kbd}/consolefonts
+%{kbd}/consoletrans
+%dir %{kbd}/keymaps
+%{kbd}/keymaps/xkb
+%{kbd}/unimaps
 %exclude %{kbd}/keymaps/{%{legacy_folders}}
 %if 0%{?suse_version} < 1550
 /sbin/fbtest
@@ -523,8 +525,31 @@ test -f /etc/pam.d/vlock.rpmsave && mv -v /etc/pam.d/vlock.rpmsave /etc/pam.d/vl
 %{_prefix}/lib/systemd/system/kbdsettings.service
 %{_datadir}/systemd/kbd-model-map.xkb-generated
 %{_sbindir}/kbdsettings
+# Move legacy keymaps that have no acceptable xkb counterpart to kbd. (bsc#1194609)
+%dir %{kbd}/keymaps/i386
+%dir %{kbd}/keymaps/i386/include
+%dir %{kbd}/keymaps/i386/qwerty
+%{kbd}/keymaps/i386/qwerty/gr.map.gz
+%{kbd}/keymaps/i386/qwerty/ruwin_alt-UTF-8.map.gz
+%{kbd}/keymaps/i386/qwerty/tj_alt-UTF8.map.gz
+%{kbd}/keymaps/i386/qwerty/ua-utf.map.gz
+%{kbd}/keymaps/i386/include/linux-keys-bare.inc
+%{kbd}/keymaps/i386/include/linux-with-alt-and-altgr.inc
+%{kbd}/keymaps/i386/include/compose.inc
+%{kbd}/keymaps/i386/include/qwerty-layout.inc
 
 %files legacy
-%{kbd}/keymaps/{%{legacy_folders}}
+%{kbd}/keymaps/{%{legacy_folders},i386}
+%exclude %dir %{kbd}/keymaps/i386
+%exclude %dir %{kbd}/keymaps/i386/include
+%exclude %dir %{kbd}/keymaps/i386/qwerty
+%exclude %{kbd}/keymaps/i386/qwerty/gr.map.gz
+%exclude %{kbd}/keymaps/i386/qwerty/ruwin_alt-UTF-8.map.gz
+%exclude %{kbd}/keymaps/i386/qwerty/tj_alt-UTF8.map.gz
+%exclude %{kbd}/keymaps/i386/qwerty/ua-utf.map.gz
+%exclude %{kbd}/keymaps/i386/include/linux-keys-bare.inc
+%exclude %{kbd}/keymaps/i386/include/linux-with-alt-and-altgr.inc
+%exclude %{kbd}/keymaps/i386/include/compose.inc
+%exclude %{kbd}/keymaps/i386/include/qwerty-layout.inc
 
 %changelog

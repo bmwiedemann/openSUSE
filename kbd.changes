@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr  8 18:22:42 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
+
+- Move legacy keymaps that have no acceptable xkb counterpart and
+  its includes back to kbd. (bsc#1194609)
+- Stop requiring kbd-legacy. All YaST supported languages should
+  now have its keymaps in kbd.
+- Remove kbd-1.15.2-prtscr_no_sigquit.patch rejected by the
+  upstream. The problem is fixed for a long time, this is an
+  additional modification. (PED-7977,
+  https://github.com/legionus/kbd/pull/111):
+- Drop kbd_fonts.tar.bz2 containing just several 30 years old
+  inferior fonts with an unknown author and uncertain license.
+- Add structured comments to patches.
+
+-------------------------------------------------------------------
 Fri Mar  1 11:42:56 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - fix conversion of lowercase f in de-e1 keymap (boo#1207841)
