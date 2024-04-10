@@ -420,7 +420,6 @@
     <package name="kactivitymanagerd6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kactivitymanagerd6-lang" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kbd" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
-    <package name="kbd-legacy" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
     <package name="kcm_sddm" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kcm_sddm-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kconf_update5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->

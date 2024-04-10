@@ -486,7 +486,6 @@
     <package name="jq" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="json-glib-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="kbd" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="kbd-legacy" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="kdump" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="kernel-default" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="kernel-firmware-all" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->

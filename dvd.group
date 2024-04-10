@@ -874,7 +874,6 @@
     <package name="kate-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kate-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kbd" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="kbd-legacy" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="kbruch" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kbruch-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kcachegrind" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
