@@ -16,28 +16,27 @@
 #
 
 
+%define series 0.2.9
+%define src_name %{name}ad
 Name:           armagetron
-Version:        0.2.8.3.5
+Version:        %{series}.2.3
 Release:        0
 Summary:        OpenGL Game Similar to the Film Tron
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
-URL:            http://armagetronad.sourceforge.net
-Source:         https://sourceforge.net/projects/armagetronad/files/stable/%{version}/armagetronad-%{version}.src.tar.bz2
-Source1:        armagetron_add.tar.bz2
-# PATCH-FIX-OPENSUSE bmwiedemann -- fix build-compare
-Patch0:         reproducible.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
+URL:            https://www.armagetronad.org
+Source0:        https://launchpad.net/%{src_name}/%{series}/%{version}/+download/%{src_name}-%{version}.tbz
+Patch0:         armagetron-desktop-files-installdir.patch
 BuildRequires:  gcc-c++
+BuildRequires:  libSDL_image-devel
 BuildRequires:  libpng-devel
+BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  llvm-clang
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL_image)
 BuildRequires:  pkgconfig(SDL_mixer)
 BuildRequires:  pkgconfig(glu)
-BuildRequires:  pkgconfig(sdl)
 Requires(post): coreutils
 
 %description
@@ -49,10 +48,10 @@ to try to make your enemies hit the walls, while you avoid doing the
 same. Unlike glTron, this program does not require 3D hardware support.
 
 %prep
-%autosetup -p1 -a 1 -n armagetronad-%{version}
+%autosetup -p1 -n armagetronad-%{version}
 
 %build
-autoreconf -fi
+autoreconf -fvi
 # clang does not support lto yet
 %define _lto_cflags %{nil}
 tmpflags="%{optflags} -fPIE -pie"
@@ -71,41 +70,29 @@ tmpflags=${tmpflags/-fstack-protector-strong}
 	--disable-games \
 	--docdir=%{_docdir} \
 	CXXFLAGS="${tmpflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 # the uninstall_location trick was copied from Fedora. Thanks for debugging it :)
-make DESTDIR=%{buildroot} install uninstall_location=foobar
-mkdir -p %{buildroot}%{_datadir}/applications/
-install armagetron_add/*.desktop       %{buildroot}%{_datadir}/applications/
-mkdir -p %{buildroot}%{_datadir}/appdata
-install -m644 armagetron_add/Armagetron.appdata.xml %{buildroot}%{_datadir}/appdata/
-mkdir -p %{buildroot}%{_datadir}/pixmaps/
-install -Dm644 armagetron_add/README.SuSE %{buildroot}%{_docdir}/%{name}/README.SUSE
-pushd %{buildroot}
-mv %{buildroot}%{_datadir}/armagetronad/desktop/icons/large/armagetronad.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
-ln -s %{_datadir}/pixmaps/%{name}.png %{buildroot}%{_datadir}/armagetronad/desktop/icons/large/armagetronad.png
-popd
+%make_install uninstall_location=foobar
 # some cleanups
 rm %{buildroot}%{_sysconfdir}/armagetronad/rc.config
 rm %{buildroot}%{_sysconfdir}/armagetronad/settings_dedicated.cfg
-rm %{buildroot}%{_datadir}/armagetronad/language/update.py
 rm %{buildroot}%{_datadir}/armagetronad/scripts/relocate
-rm %{buildroot}%{_datadir}/armagetronad/desktop/*.desktop
+rm %{buildroot}%{_bindir}/armagetronad-master
 mv %{buildroot}%{_docdir}/armagetronad ./armagetron_doc
-%suse_update_desktop_file Armagetron Game ArcadeGame
+chmod -x %{buildroot}%{_datadir}/armagetronad/scripts/rcd_*
+%suse_update_desktop_file armagetronad Game ArcadeGame
 
 %files
 %license COPYING
 %doc README armagetron_doc/*
-%doc %{_docdir}/%{name}/README.SUSE
 %config %{_sysconfdir}/armagetronad
 %{_bindir}/armagetronad
-%{_datadir}/armagetronad
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/Armagetron.appdata.xml
-%attr(644,root,root) %{_datadir}/applications/*
-%{_datadir}/pixmaps/%{name}.png
+%{_datadir}/armagetronad/
+%{_datadir}/metainfo/armagetronad.appdata.xml
+%{_datadir}/applications/*
+%{_datadir}/pixmaps/*.png
 
 %post
 if [ ! -e %{_datadir}/armagetron/music/fire.xm ]; then

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Apr  5 17:06:07 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.2.9.2.3
+  * Fixed Bugs
+    - Sound trouble deja entendu (#130)
+    - Docker/Alpine: Crash in ZThread::ThreadOps::setPriority
+      (#138)
+    - Display lists keep rim wall lowered (#141)
+    - FPS display inaccurate (#143)
+    - Online play suddenly stopped working. (#145)
+    - Work around Ubuntu sending spurious window activation
+      messages (#68)
+    - Desktop/AppData/Icon files are installed in a wrong place
+      during make install (#73)
+    - Steam: No logging, does not work in pressure vessel (#77)
+    - Retina display not working correctly (#88)
+    - 0.2.9 clients lose connection on 0.4 server (#98)
+    - Window title sometimes SDL_APP (#102)
+    - Client sends quickly typed chat message with last character
+      missing (#106)
+    - Backslashes not escaped when saving to user.cfg (#110)
+    - Fix invulnerability bug handling (#111)
+    - error: use of undeclared identifier ‘finite’; did you mean
+      ‘isfinite’? (#120)
+    - User data saved in the wrong place on macOS (#125)
+  * New Features
+    - Make network trafic realtime priority (#137)
+    - Add AppImage zsync update data (#78)
+    - Provide docker image for the dedicated server (#79)
+    - Add macOS dmg bundling (#86)
+    - Integrate macOS build into pipeline (#87)
+    - Sign the application bundle (#89)
+- Drop reproducible.patch: no longer needed for series 0.2.9.
+- Add armagetron-desktop-files-installdir.patch: Fix install dirs
+  of desktop file, icon, and metainfo to standard locations.
+- Drop armagetron_add.tar.bz2: custom desktop integration files
+  and default configs are installed by upstream source.
+- Use full URL for source.
+
+-------------------------------------------------------------------
 Tue Feb 20 10:13:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

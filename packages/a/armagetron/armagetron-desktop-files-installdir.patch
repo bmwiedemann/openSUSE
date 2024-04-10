@@ -1,0 +1,55 @@
+Index: armagetronad-0.2.9.2.3/desktop/Makefile.am
+===================================================================
+--- armagetronad-0.2.9.2.3.orig/desktop/Makefile.am
++++ armagetronad-0.2.9.2.3/desktop/Makefile.am
+@@ -1,15 +1,16 @@
+ # include $(top_srcdir)/Makefile.paths
+ 
+-# desktop files location
+-desktopfiledir=${aa_datadir}/desktop
+-
+ # files for desktop integration
+-nobase_desktopfile_DATA=armagetronad.desktop \
+-	icons/16x16/armagetronad.png icons/32x32/armagetronad.png icons/48x48/armagetronad.png \
+-	armagetronad.appdata.xml
++desktopdir=@datadir@/applications
++desktop_DATA=armagetronad.desktop
++
++# icon files
++icondir=@datadir@/pixmaps
++icon_DATA=icons/48x48/armagetronad.png
++
++appdatadir=@datadir@/metainfo
++appdata_DATA=armagetronad.appdata.xml
+ 
+-EXTRA_DIST=icons/16x16/armagetronad.png\
+-           icons/32x32/armagetronad.png\
+-		   icons/48x48/armagetronad.png\
++EXTRA_DIST=icons/48x48/armagetronad.png\
+ 		   armagetronad.desktop.in\
+ 		   armagetronad.appdata.xml.in
+Index: armagetronad-0.2.9.2.3/desktop/armagetronad.desktop.in
+===================================================================
+--- armagetronad-0.2.9.2.3.orig/desktop/armagetronad.desktop.in
++++ armagetronad-0.2.9.2.3/desktop/armagetronad.desktop.in
+@@ -4,7 +4,7 @@ Name=@progtitle@@progtitle_server@
+ Exec=@progname@ %f
+ Comment=3d light cycle game
+ Comment[de]=dreidimensionales Lichtradspiel
+-Icon=@progid@
++Icon=@progname@
+ Terminal=@build_dedicated@
+ Categories=Game;ActionGame;
+ StartupNotify=@build_dedicated@
+Index: armagetronad-0.2.9.2.3/desktop/armagetronad.appdata.xml.in
+===================================================================
+--- armagetronad-0.2.9.2.3.orig/desktop/armagetronad.appdata.xml.in
++++ armagetronad-0.2.9.2.3/desktop/armagetronad.appdata.xml.in
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <component type="desktop-application">
+-  <id>@progid@.desktop</id>
++  <id>@progname@.desktop</id>
+   
+   <name>@progtitle@</name>
+   <summary>3D Lightcycle Game</summary>
