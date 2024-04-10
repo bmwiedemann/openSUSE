@@ -333,4 +333,12 @@ Using the old *changes file which is not in utf-8 as it's difficult get it accpt
     <comment></comment>
     <requestid>1143133</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>0dd561606eabc5e55a368ee9416ee425</srcmd5>
+    <version>4.3.8.2</version>
+    <time>1712764164</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166505</requestid>
+  </revision>
 </revisionlist>

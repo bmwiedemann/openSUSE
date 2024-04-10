@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr  7 18:23:59 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 4.3.8.2:
+  * fixed drawing pause button on closed door when restarting paused game
+  * added optional button to restart game (door, panel and touch variants)
+
+-------------------------------------------------------------------
 Tue Jan 30 17:09:20 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 4.3.8.1:
