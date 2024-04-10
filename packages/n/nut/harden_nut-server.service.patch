@@ -16,6 +16,6 @@ diff -purN a/scripts/systemd/nut-server.service.in b/scripts/systemd/nut-server.
 +ProtectControlGroups=true
 +RestrictRealtime=true
 +# end of automatic additions 
- EnvironmentFile=-@CONFPATH@/nut.conf
- SyslogIdentifier=%N
- # Note: foreground mode "-F" by default skips writing a PID file (and
+ # A busy server can be monitoring a lot of devices as well as replying
+ # to many clients. The "infinity" definition is actually capped by OS
+ # settings and hardcoded defaults; typically can be 65535+ nowadays.

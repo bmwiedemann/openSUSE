@@ -1,7 +1,7 @@
 #
 # spec file for package nut
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +55,7 @@
 %bcond_with libfreeipmi
 %endif
 Name:           nut
-Version:        2.8.1
+Version:        2.8.2
 Release:        0
 Summary:        Network UPS Tools Core (Uninterruptible Power Supply Monitoring)
 License:        GPL-2.0-or-later
@@ -383,6 +383,7 @@ cp -a docs/*.pdf %{buildroot}%{_docdir}/%{name}/
 # Not needed for packaged contents:
 rm -f %{buildroot}%{_docdir}/%{name}/packager-guide.*
 rm -f %{buildroot}%{_docdir}/%{name}/cables/Makefile*
+rm -f %{buildroot}%{_docdir}/%{name}/cables/*.txt-prepped
 
 # Create symlinks for man pages
 %fdupes -s %{buildroot}%{_mandir}
