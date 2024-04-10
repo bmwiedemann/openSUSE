@@ -169,4 +169,23 @@ Prefer: -waybar-branding-openSUSE
     <comment></comment>
     <requestid>1141482</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0f3e0a4d76e8deae3eadb4ec42e0206c</srcmd5>
+    <version>0.16.2</version>
+    <time>1712764145</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.16.2:
+  * Fix typo in spec file
+- Update to version 0.16.1:
+  * Screenshot_focused_output misses clipboard
+  * Change &quot;dpms&quot; to &quot;power&quot;
+  * Change workspace indicator to number, keep logo only on active workspace
+  * Increase lock timer duration
+  * Improve swaylock configuration
+  * Replace Fontawesome SUSE logo (f7d6) with openSUSE (e62b)
+  * Remove examples from NC config
+  * Use png for the default wallpaper on Tumbleweed (boo#1222545)
+</comment>
+    <requestid>1166493</requestid>
+  </revision>
 </revisionlist>

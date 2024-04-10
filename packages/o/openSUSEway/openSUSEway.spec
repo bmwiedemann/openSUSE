@@ -20,7 +20,7 @@
 %define waybar_version %(rpm -q --queryformat "%%{version}" waybar)
 
 Name:           openSUSEway
-Version:        0.16.0
+Version:        0.16.2
 Release:        0
 Summary:        The openSUSEway desktop environment meta package
 License:        MIT
@@ -71,8 +71,10 @@ Requires:       wl-clipboard
 
 # branding
 Requires:       waybar-branding-openSUSE
-Requires:       gfxboot-branding-openSUSE
 Requires:       sway-branding-openSUSE
+%ifarch x86_64 %{ix86}
+Requires:       gfxboot-branding-openSUSE
+%endif
 
 # xdg portals and utils
 Requires:       xdg-desktop-portal
@@ -217,6 +219,9 @@ install -D -p -m 644 .config/wob/wob.ini %{buildroot}%{_sysconfdir}/sway/wob/wob
 install -D -p -m 644 .config/swaync/config.json %{buildroot}%{_sysconfdir}/sway/swaync/config.json
 install -D -p -m 644 .config/swaync/style.css %{buildroot}%{_sysconfdir}/sway/swaync/style.css
 
+## swaylock
+install -D -p -m 644 .config/swaylock/openSUSEway.conf %{buildroot}%{_sysconfdir}/swaylock/openSUSEway.conf
+
 %pre -n openSUSEway
 # bug #1176195, don't force enviroment, cleaning up old installations
 test -e %{_sysconfdir}/profile.d/openSUSEway.sh && rm %{_sysconfdir}/profile.d/openSUSEway.sh || true
@@ -288,6 +293,9 @@ test -e %{_datadir}/wayland-sessions/sway.desktop.orig && \
 %dir %{_sysconfdir}/sway/swaync
 %config %{_sysconfdir}/sway/swaync/config.json
 %config %{_sysconfdir}/sway/swaync/style.css
+
+%dir %{_sysconfdir}/swaylock
+%config(noreplace) %{_sysconfdir}/swaylock/openSUSEway.conf
 
 %files -n waybar-branding-openSUSE
 %dir %{_sysconfdir}/xdg/waybar

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr  9 16:40:31 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.16.2:
+  * Fix typo in spec file
+
+-------------------------------------------------------------------
+Tue Apr  9 16:02:53 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.16.1:
+  * Screenshot_focused_output misses clipboard
+  * Change "dpms" to "power"
+  * Change workspace indicator to number, keep logo only on active workspace
+  * Increase lock timer duration
+  * Improve swaylock configuration
+  * Replace Fontawesome SUSE logo (f7d6) with openSUSE (e62b)
+  * Remove examples from NC config
+  * Use png for the default wallpaper on Tumbleweed (boo#1222545)
+
+-------------------------------------------------------------------
 Thu Jan 25 09:33:30 UTC 2024 - Denys Kondratenko <stdden@opensuse.org>
 
 - Update to version 0.16.0
