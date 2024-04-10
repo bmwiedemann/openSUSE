@@ -106,4 +106,38 @@ https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V21.md#21.4.0
   * libuv version 1.48.0</comment>
     <requestid>1147153</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>939388527a022cc40fcb905b8ab90216</srcmd5>
+    <version>21.7.2</version>
+    <time>1712764118</time>
+    <user>anag+factory</user>
+    <comment>- Update to 21.7.2:
+  * Assertion failed in node::http2::Http2Session::~Http2Session()
+    leads to HTTP/2 server crash (High) (bsc#1222244, CVE-2024-27983)
+  * HTTP Request Smuggling via Content Length Obfuscation
+    (Medium) (bsc#1222384, CVE-2024-27982)
+  * updated dependencies:
+    + llhttp version 9.2.1
+    + undici version 6.11.1 (bsc#1222530, bsc#1222603, 
+      CVE-2024-30260, CVE-2024-30261)
+- node-gyp-addon-gypi.patch: adapted for new unit test layouts
+
+- Update to 21.7.1
+  * revert &quot;test_runner: do not invoke after hook when test is empty&quot;
+  * lib: return directly if udp socket close before lookup
+- Changes in 21.7.0
+  * util.styleText(format, text): This function returns a
+    formatted text considering the format passed.
+  * support for multi-line values for .env file
+  * sea: support embedding assets
+  * vm: support using the default loader to handle dynamic import()
+  * crypto: implement crypto.hash()
+  * http2: add h2 compat support for appendHeader
+- versioned.patch, nodejs-libpath.patch: refreshed
+- c-ares-fixes.patch: upstreamed, removed
+
+
+- Add libalternative config for corepack</comment>
+    <requestid>1166607</requestid>
+  </revision>
 </revisionlist>

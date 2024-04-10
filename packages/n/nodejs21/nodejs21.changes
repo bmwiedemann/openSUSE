@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Apr  9 14:13:21 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 21.7.2:
+  * Assertion failed in node::http2::Http2Session::~Http2Session()
+    leads to HTTP/2 server crash (High) (bsc#1222244, CVE-2024-27983)
+  * HTTP Request Smuggling via Content Length Obfuscation
+    (Medium) (bsc#1222384, CVE-2024-27982)
+  * updated dependencies:
+    + llhttp version 9.2.1
+    + undici version 6.11.1 (bsc#1222530, bsc#1222603, 
+      CVE-2024-30260, CVE-2024-30261)
+
+- node-gyp-addon-gypi.patch: adapted for new unit test layouts
+
+-------------------------------------------------------------------
+Tue Apr  2 13:54:32 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 21.7.1
+  * revert "test_runner: do not invoke after hook when test is empty"
+  * lib: return directly if udp socket close before lookup
+
+- Changes in 21.7.0
+  * util.styleText(format, text): This function returns a
+    formatted text considering the format passed.
+  * support for multi-line values for .env file
+  * sea: support embedding assets
+  * vm: support using the default loader to handle dynamic import()
+  * crypto: implement crypto.hash()
+  * http2: add h2 compat support for appendHeader
+
+- versioned.patch, nodejs-libpath.patch: refreshed
+- c-ares-fixes.patch: upstreamed, removed
+
+-------------------------------------------------------------------
 Fri Feb 16 15:37:23 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - Update to 21.6.2: (security updates)
@@ -25,6 +59,10 @@ Mon Feb 12 14:51:32 UTC 2024 - Adam Majer <adam.majer@suse.de>
   * Support configurable snapshot through --build-snapshot-config flag
 
 - fix_ci_tests.patch: refreshed
+-------------------------------------------------------------------
+Sat Jan 27 10:09:34 UTC 2024 - xtex <xtexchooser@duck.com>
+
+- Add libalternative config for corepack
 
 -------------------------------------------------------------------
 Mon Jan  8 15:02:53 UTC 2024 - Adam Majer <adam.majer@suse.de>

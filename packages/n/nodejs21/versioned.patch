@@ -8,75 +8,75 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-v21.1.0/Makefile
+Index: node-v21.7.1/Makefile
 ===================================================================
---- node-v21.1.0.orig/Makefile
-+++ node-v21.1.0/Makefile
+--- node-v21.7.1.orig/Makefile
++++ node-v21.7.1/Makefile
 @@ -76,7 +76,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
  
 -NODE_EXE = node$(EXEEXT)
 +NODE_EXE = node21$(EXEEXT)
- NODE ?= ./$(NODE_EXE)
+ # Use $(PWD) so we can cd to anywhere before calling this
+ NODE ?= "$(PWD)/$(NODE_EXE)"
  NODE_G_EXE = node_g$(EXEEXT)
- NPM ?= ./deps/npm/bin/npm-cli.js
-Index: node-v21.1.0/tools/install.py
+Index: node-v21.7.1/tools/install.py
 ===================================================================
---- node-v21.1.0.orig/tools/install.py
-+++ node-v21.1.0/tools/install.py
-@@ -86,7 +86,7 @@ def uninstall(paths, dst):
-     try_remove(path, dst)
+--- node-v21.7.1.orig/tools/install.py
++++ node-v21.7.1/tools/install.py
+@@ -87,7 +87,7 @@ def uninstall(options, paths, dest):
+     try_remove(options, path, dest)
  
- def package_files(action, name, bins):
--  target_path = libdir() + '/node_modules/' + name + '/'
-+  target_path = libdir() + '/node_modules/' + name + '21/'
+ def package_files(options, action, name, bins):
+-  target_path = os.path.join(libdir(options), 'node_modules', name)
++  target_path = os.path.join(libdir(options), 'node_modules', name + '21')
  
    # don't install npm if the target path is a symlink, it probably means
    # that a dev version of npm is installed there
-@@ -106,19 +106,19 @@ def package_files(action, name, bins):
+@@ -108,19 +108,19 @@ def package_files(options, action, name,
      if action == uninstall:
-       action([link_path], 'bin/' + bin_name)
+       action(options, [link_path], os.path.join('bin', bin_name))
      elif action == install:
--      try_symlink('../' + libdir() + '/node_modules/' + name + '/' + bin_target, link_path)
-+      try_symlink('../' + libdir() + '/node_modules/' + name + '21/' + bin_target, link_path)
+-      try_symlink(options, os.path.join('..', libdir(options), 'node_modules', name, bin_target), link_path)
++      try_symlink(options, os.path.join('..', libdir(options), 'node_modules', name + '21', bin_target), link_path)
      else:
        assert 0  # unhandled action type
  
- def npm_files(action):
-   package_files(action, 'npm', {
+ def npm_files(options, action):
+   package_files(options, action, 'npm', {
 -    'npm': 'bin/npm-cli.js',
 -    'npx': 'bin/npx-cli.js',
 +    'npm21': 'bin/npm-cli.js',
 +    'npx21': 'bin/npx-cli.js',
    })
  
- def corepack_files(action):
-   package_files(action, 'corepack', {
+ def corepack_files(options, action):
+   package_files(options, action, 'corepack', {
 -    'corepack': 'dist/corepack.js',
 +    'corepack21': 'dist/corepack.js',
  #   Not the default just yet:
  #   'yarn': 'dist/yarn.js',
  #   'yarnpkg': 'dist/yarn.js',
-@@ -147,7 +147,7 @@ def subdir_files(path, dest, action):
+@@ -149,7 +149,7 @@ def subdir_files(options, path, dest, ac
+     action(options, files_in_path, subdir + os.path.sep)
  
- def files(action):
-   is_windows = sys.platform == 'win32'
--  output_file = 'node'
-+  output_file = 'node21'
-   output_prefix = 'out/Release/'
- 
-   if is_windows:
-@@ -189,7 +189,7 @@ def files(action):
+ def files(options, action):
+-  node_bin = 'node'
++  node_bin = 'node21'
+   if options.is_win:
+     node_bin += '.exe'
+   action(options, [os.path.join(options.build_dir, node_bin)], os.path.join('bin', node_bin))
+@@ -190,7 +190,7 @@ def files(options, action):
    if 'freebsd' in sys.platform or 'openbsd' in sys.platform:
-     action(['doc/node.1'], 'man/man1/')
+     action(options, ['doc/node.1'], 'man/man1/')
    else:
--    action(['doc/node.1'], 'share/man/man1/')
-+    action(['doc/node.1'], 'share/man/man1/node21.1')
+-    action(options, ['doc/node.1'], 'share/man/man1/')
++    action(options, ['doc/node.1'], 'share/man/man1/node21.1')
  
-   if 'true' == variables.get('node_install_npm'):
-     npm_files(action)
-@@ -325,28 +325,28 @@ def headers(action):
+   if 'true' == options.variables.get('node_install_npm'):
+     npm_files(options, action)
+@@ -333,28 +333,28 @@ def headers(options, action):
      'src/node_buffer.h',
      'src/node_object_wrap.h',
      'src/node_version.h',
@@ -85,27 +85,27 @@ Index: node-v21.1.0/tools/install.py
  
    # Add the expfile that is created on AIX
    if sys.platform.startswith('aix') or sys.platform == "os400":
--    action(['out/Release/node.exp'], 'include/node/')
-+    action(['out/Release/node.exp'], 'include/node21/')
+-    action(options, ['out/Release/node.exp'], 'include/node/')
++    action(options, ['out/Release/node.exp'], 'include/node21/')
  
--  subdir_files('deps/v8/include', 'include/node/', wanted_v8_headers)
-+  subdir_files('deps/v8/include', 'include/node21/', wanted_v8_headers)
+-  subdir_files(options, os.path.join(options.v8_dir, 'include'), 'include/node/', wanted_v8_headers)
++  subdir_files(options, os.path.join(options.v8_dir, 'include'), 'include/node21/', wanted_v8_headers)
  
-   if 'false' == variables.get('node_shared_libuv'):
--    subdir_files('deps/uv/include', 'include/node/', action)
-+    subdir_files('deps/uv/include', 'include/node21/', action)
+   if 'false' == options.variables.get('node_shared_libuv'):
+-    subdir_files(options, 'deps/uv/include', 'include/node/', action)
++    subdir_files(options, 'deps/uv/include', 'include/node21/', action)
  
-   if 'true' == variables.get('node_use_openssl') and \
-      'false' == variables.get('node_shared_openssl'):
--    subdir_files('deps/openssl/openssl/include/openssl', 'include/node/openssl/', action)
--    subdir_files('deps/openssl/config/archs', 'include/node/openssl/archs', action)
--    subdir_files('deps/openssl/config', 'include/node/openssl', action)
-+    subdir_files('deps/openssl/openssl/include/openssl', 'include/node21/openssl/', action)
-+    subdir_files('deps/openssl/config/archs', 'include/node21/openssl/archs', action)
-+    subdir_files('deps/openssl/config', 'include/node21/openssl', action)
+   if 'true' == options.variables.get('node_use_openssl') and \
+      'false' == options.variables.get('node_shared_openssl'):
+-    subdir_files(options, 'deps/openssl/openssl/include/openssl', 'include/node/openssl/', action)
+-    subdir_files(options, 'deps/openssl/config/archs', 'include/node/openssl/archs', action)
+-    subdir_files(options, 'deps/openssl/config', 'include/node/openssl', action)
++    subdir_files(options, 'deps/openssl/openssl/include/openssl', 'include/node21/openssl/', action)
++    subdir_files(options, 'deps/openssl/config/archs', 'include/node21/openssl/archs', action)
++    subdir_files(options, 'deps/openssl/config', 'include/node21/openssl', action)
  
-   if 'false' == variables.get('node_shared_zlib'):
-     action([
+   if 'false' == options.variables.get('node_shared_zlib'):
+     action(options, [
        'deps/zlib/zconf.h',
        'deps/zlib/zlib.h',
 -    ], 'include/node/')
@@ -113,10 +113,10 @@ Index: node-v21.1.0/tools/install.py
  
    if sys.platform == 'zos':
      zoslibinc = os.environ.get('ZOSLIB_INCLUDES')
-Index: node-v21.1.0/doc/node.1
+Index: node-v21.7.1/doc/node.1
 ===================================================================
---- node-v21.1.0.orig/doc/node.1
-+++ node-v21.1.0/doc/node.1
+--- node-v21.7.1.orig/doc/node.1
++++ node-v21.7.1/doc/node.1
 @@ -31,24 +31,24 @@
  .Dt NODE 1
  .
@@ -146,10 +146,10 @@ Index: node-v21.1.0/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-v21.1.0/src/node_main.cc
+Index: node-v21.7.1/src/node_main.cc
 ===================================================================
---- node-v21.1.0.orig/src/node_main.cc
-+++ node-v21.1.0/src/node_main.cc
+--- node-v21.7.1.orig/src/node_main.cc
++++ node-v21.7.1/src/node_main.cc
 @@ -94,6 +94,7 @@ int wmain(int argc, wchar_t* wargv[]) {
  // UNIX
  
@@ -158,11 +158,11 @@ Index: node-v21.1.0/src/node_main.cc
    return node::Start(argc, argv);
  }
  #endif
-Index: node-v21.1.0/tools/test.py
+Index: node-v21.7.1/tools/test.py
 ===================================================================
---- node-v21.1.0.orig/tools/test.py
-+++ node-v21.1.0/tools/test.py
-@@ -953,7 +953,7 @@ class Context(object):
+--- node-v21.7.1.orig/tools/test.py
++++ node-v21.7.1/tools/test.py
+@@ -954,7 +954,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm
      if arch == 'none':
@@ -171,10 +171,10 @@ Index: node-v21.1.0/tools/test.py
      else:
        name = 'out/%s.%s/node' % (arch, mode)
  
-Index: node-v21.1.0/node.gyp
+Index: node-v21.7.1/node.gyp
 ===================================================================
---- node-v21.1.0.orig/node.gyp
-+++ node-v21.1.0/node.gyp
+--- node-v21.7.1.orig/node.gyp
++++ node-v21.7.1/node.gyp
 @@ -24,8 +24,8 @@
      'node_shared_openssl%': 'false',
      'node_v8_options%': '',
@@ -186,10 +186,10 @@ Index: node-v21.1.0/node.gyp
      'node_intermediate_lib_type%': 'static_library',
      'node_builtin_modules_path%': '',
      'linked_module_files': [
-Index: node-v21.1.0/test/fixtures/errors/promise_unhandled_warn_with_error.snapshot
+Index: node-v21.7.1/test/fixtures/errors/promise_unhandled_warn_with_error.snapshot
 ===================================================================
---- node-v21.1.0.orig/test/fixtures/errors/promise_unhandled_warn_with_error.snapshot
-+++ node-v21.1.0/test/fixtures/errors/promise_unhandled_warn_with_error.snapshot
+--- node-v21.7.1.orig/test/fixtures/errors/promise_unhandled_warn_with_error.snapshot
++++ node-v21.7.1/test/fixtures/errors/promise_unhandled_warn_with_error.snapshot
 @@ -6,5 +6,5 @@
      at *
      at *
@@ -197,10 +197,10 @@ Index: node-v21.1.0/test/fixtures/errors/promise_unhandled_warn_with_error.snaps
 -(Use `node --trace-warnings ...` to show where the warning was created)
 +(Use `node21 --trace-warnings ...` to show where the warning was created)
  (node:*) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https:*nodejs.org*api*cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
-Index: node-v21.1.0/test/parallel/test-snapshot-warning.js
+Index: node-v21.7.1/test/parallel/test-snapshot-warning.js
 ===================================================================
---- node-v21.1.0.orig/test/parallel/test-snapshot-warning.js
-+++ node-v21.1.0/test/parallel/test-snapshot-warning.js
+--- node-v21.7.1.orig/test/parallel/test-snapshot-warning.js
++++ node-v21.7.1/test/parallel/test-snapshot-warning.js
 @@ -60,7 +60,7 @@ tmpdir.refresh();
      stderr(output) {
        let match = output.match(/Warning: test warning/g);
@@ -236,10 +236,10 @@ Index: node-v21.1.0/test/parallel/test-snapshot-warning.js
 +  match = warnings2.match(/Use `node21 --trace-warnings/g);
    assert.strictEqual(match.length, 1);
  }
-Index: node-v21.1.0/test/fixtures/errors/throw_error_with_getter_throw.snapshot
+Index: node-v21.7.1/test/fixtures/errors/throw_error_with_getter_throw.snapshot
 ===================================================================
---- node-v21.1.0.orig/test/fixtures/errors/throw_error_with_getter_throw.snapshot
-+++ node-v21.1.0/test/fixtures/errors/throw_error_with_getter_throw.snapshot
+--- node-v21.7.1.orig/test/fixtures/errors/throw_error_with_getter_throw.snapshot
++++ node-v21.7.1/test/fixtures/errors/throw_error_with_getter_throw.snapshot
 @@ -3,6 +3,6 @@
  throw {  * eslint-disable-line no-throw-literal
  ^
@@ -248,10 +248,10 @@ Index: node-v21.1.0/test/fixtures/errors/throw_error_with_getter_throw.snapshot
 +(Use `node21 --trace-uncaught ...` to show where the exception was thrown)
  
  Node.js *
-Index: node-v21.1.0/test/fixtures/errors/throw_undefined.snapshot
+Index: node-v21.7.1/test/fixtures/errors/throw_undefined.snapshot
 ===================================================================
---- node-v21.1.0.orig/test/fixtures/errors/throw_undefined.snapshot
-+++ node-v21.1.0/test/fixtures/errors/throw_undefined.snapshot
+--- node-v21.7.1.orig/test/fixtures/errors/throw_undefined.snapshot
++++ node-v21.7.1/test/fixtures/errors/throw_undefined.snapshot
 @@ -3,6 +3,6 @@
  throw undefined;
  ^
@@ -260,10 +260,10 @@ Index: node-v21.1.0/test/fixtures/errors/throw_undefined.snapshot
 +(Use `node21 --trace-uncaught ...` to show where the exception was thrown)
  
  Node.js *
-Index: node-v21.1.0/test/fixtures/errors/throw_null.snapshot
+Index: node-v21.7.1/test/fixtures/errors/throw_null.snapshot
 ===================================================================
---- node-v21.1.0.orig/test/fixtures/errors/throw_null.snapshot
-+++ node-v21.1.0/test/fixtures/errors/throw_null.snapshot
+--- node-v21.7.1.orig/test/fixtures/errors/throw_null.snapshot
++++ node-v21.7.1/test/fixtures/errors/throw_null.snapshot
 @@ -3,6 +3,6 @@
  throw null;
  ^
