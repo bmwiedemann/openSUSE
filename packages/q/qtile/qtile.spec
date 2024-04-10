@@ -57,6 +57,7 @@ BuildRequires:  pkgconfig(xwayland)
 Requires:       gdk-pixbuf-loader-rsvg
 Requires:       pango-tools
 Requires:       python3-cairocffi >= 0.9.0
+Requires:       python3-cairocffi-pixbuf
 Requires:       python3-cffi >= 1.1.0
 Requires:       python3-pywayland
 Requires:       python3-pywlroots
