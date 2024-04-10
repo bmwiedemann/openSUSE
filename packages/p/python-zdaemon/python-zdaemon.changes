@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 10 07:27:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- switch to modern python on sle15
+
+-------------------------------------------------------------------
 Tue Mar  5 06:08:56 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.0:
@@ -9,7 +14,7 @@ Tue Mar  5 06:08:56 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Wed Dec  7 22:49:00 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 4.4 
+- Update to version 4.4
   * Add support for Python 3.8, 3.9, 3.10, 3.11.
   * Drop support for Python 3.4.
   * Drop support for python setup.py test to run the tests. (#23)
@@ -115,7 +120,7 @@ Tue Apr 16 11:59:54 UTC 2013 - p.drouand@gmail.com
   + Drop Python 2.4 and 2.5 support.
 - Added url as source; add BuildRequires: unzip
   Please see http://en.opensuse.org/SourceUrls
- 
+
 -------------------------------------------------------------------
 Mon Jan 14 14:39:30 UTC 2013 - p.drouand@gmail.com
 
@@ -125,8 +130,8 @@ Mon Jan 14 14:39:30 UTC 2013 - p.drouand@gmail.com
    (e.g. Puppet) to tell if a process was running.
 - Update to 3.0.0 version:
   * Added an option, start-test-program to supply a test command to test
-    whether the program managed by zdaemon is up and operational, rather 
-    than just running. When starting a program, the start command doesn't 
+    whether the program managed by zdaemon is up and operational, rather
+    than just running. When starting a program, the start command doesn't
     return until the test passes. You could, for example, use this to wait
     until a web server is actually accepting connections.
   * Added a start-timeout option to error if a program takes too long to start.

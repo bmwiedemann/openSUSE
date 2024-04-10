@@ -199,4 +199,16 @@ Sorry I didn't realize it had a pending request until now. (forwarded request 22
 - No more greedy globs in %files.</comment>
     <requestid>1154973</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>1c5faf7a36837e029032a36ff8dce0a7</srcmd5>
+    <version>5.0</version>
+    <time>1712764188</time>
+    <user>anag+factory</user>
+    <comment>- switch to modern python on sle15
+
+- Update to version 4.4
+    whether the program managed by zdaemon is up and operational, rather
+    than just running. When starting a program, the start command doesn't</comment>
+    <requestid>1166582</requestid>
+  </revision>
 </revisionlist>

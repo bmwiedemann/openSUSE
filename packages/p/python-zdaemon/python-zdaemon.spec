@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %define modname zdaemon
 Name:           python-%{modname}
 Version:        5.0
