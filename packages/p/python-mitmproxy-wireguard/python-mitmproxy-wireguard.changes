@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  8 11:53:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequiring *-debuginfo sounds weird to start with: and since
+  recently, that python-maturin does not even produce binaries
+  anymore and thus also no debuginfo package.
+
+-------------------------------------------------------------------
 Mon Jan 29 21:34:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - build for modern python stack

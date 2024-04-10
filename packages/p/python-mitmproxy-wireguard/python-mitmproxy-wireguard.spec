@@ -30,7 +30,6 @@ Source2:        vendor.tar.zst
 Source3:        cargo_config
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module maturin >= 0.13.0}
-BuildRequires:  %{python_module maturin-debuginfo}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-rust}
 BuildRequires:  %{python_module wheel}
