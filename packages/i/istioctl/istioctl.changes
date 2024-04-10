@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr  9 06:29:43 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.21.1:
+  This release implements the security updates described in our 8th
+  of April post, ISTIO-SECURITY-2024-002 along with bug fixes to
+  improve robustness.
+  https://istio.io/latest/news/security/istio-security-2024-002/
+  * Fixed a bug where VirtualServices containing duplicate hosts
+    with different cases would cause routes to be rejected by
+    Envoy. (Issue #49368)
+  * Fixed an issue where commands relying on Envoy config dump
+    would not work due to the presence of ECDS config.
+  * Fixed an issue where telemetry EnvoyFilter resources were not
+    correctly pruned during the installation process. (Issue
+    #48126)
+  * Fixed an issue where pilot CPU consumption was abnormally high
+    when the in-cluster analysis was enabled. (Issue #49340)
+  * Fixed an issue where updating a ServiceEntry’s TargetPort would
+    not trigger an xDS push. (Issue #49878)
+
+-------------------------------------------------------------------
 Sat Mar 16 17:26:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - major update to 1.21.0:
