@@ -383,6 +383,8 @@ Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
 Patch21:        gdcflags.patch
 Patch23:        gcc13-bsc1216664.patch
 Patch24:        gcc13-sanitizer-remove-crypt-interception.patch
+Patch25:        gcc13-pr111731.patch
+Patch26:        gcc13-pr101523.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -2371,6 +2373,8 @@ ln -s newlib-4.3.0.20230120/newlib .
 %patch -P 21 -p1
 %patch -P 23 -p1
 %patch -P 24 -p1
+%patch -P 25 -p1
+%patch -P 26 -p1
 %patch -P 51
 %patch -P 60 -p1
 %patch -P 61 -p1
@@ -2476,7 +2480,7 @@ export _POSIX2_VERSION=199209
 mkdir -p target-tools/bin
 ln -s /usr/bin/llvm-ar-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-ar
 ln -s /usr/bin/llvm-mc-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-as
-ln -s /usr/bin/lld target-tools/bin/amdgcn-amdhsa-ld
+ln -s /usr/bin/lld-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-ld
 ln -s /usr/bin/llvm-nm-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-nm
 ln -s /usr/bin/llvm-ranlib-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-ranlib
 export PATH="`pwd`/target-tools/bin:$PATH"

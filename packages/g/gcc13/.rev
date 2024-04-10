@@ -306,4 +306,19 @@
     <comment>- Revert libgccjit dependency change.  [boo#1220724]</comment>
     <requestid>1157437</requestid>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>b9a3cdcdb7ff3278a9b9399f3951e31c</srcmd5>
+    <version>13.2.1+git8285</version>
+    <time>1712764113</time>
+    <user>anag+factory</user>
+    <comment>- Add gcc13-pr101523.patch to avoid combine spending too much
+  compile-time and memory doing nothing on s390x.  [boo#1188441]
+
+- Make requirement to lld version specific to avoid requiring the
+  meta-package.
+
+- Add gcc13-pr111731.patch to fix unwinding for JIT code.
+  [bsc#1221239]</comment>
+    <requestid>1166436</requestid>
+  </revision>
 </revisionlist>

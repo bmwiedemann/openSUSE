@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr  4 07:43:17 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Add gcc13-pr101523.patch to avoid combine spending too much
+  compile-time and memory doing nothing on s390x.  [boo#1188441]
+
+-------------------------------------------------------------------
+Wed Mar 27 12:11:03 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Make requirement to lld version specific to avoid requiring the
+  meta-package.
+
+-------------------------------------------------------------------
+Wed Mar 20 08:29:09 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Add gcc13-pr111731.patch to fix unwinding for JIT code.
+  [bsc#1221239] 
+
+-------------------------------------------------------------------
 Wed Mar 13 08:04:27 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Revert libgccjit dependency change.  [boo#1220724]

@@ -137,6 +137,8 @@ Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
 Patch21:        gdcflags.patch
 Patch23:        gcc13-bsc1216664.patch
 Patch24:        gcc13-sanitizer-remove-crypt-interception.patch
+Patch25:        gcc13-pr111731.patch
+Patch26:        gcc13-pr101523.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -255,14 +257,14 @@ BuildRequires:  llvm13
 %else
 BuildRequires:  llvm%{product_libs_llvm_ver}
 %endif
-BuildRequires:  lld
+BuildRequires:  lld%{product_libs_llvm_ver}
 %if %{suse_version} < 1550
 Requires:       llvm13
 %else
 Requires:       llvm%{product_libs_llvm_ver}
 %endif
 Requires:       cross-amdgcn-newlib-devel >= %{version}-%{release}
-Requires:       lld
+Requires:       lld%{product_libs_llvm_ver}
 # SLE12 does not fulfil build requirements for GCN, SLE15 SP1 does
 # technically also SLE12 SP5 but do not bother there
 %if %{suse_version} >= 1550 || 0%{?sle_version:%sle_version} >= 150100
@@ -364,6 +366,8 @@ ln -s newlib-4.3.0.20230120/newlib .
 %patch -P 21 -p1
 %patch -P 23 -p1
 %patch -P 24 -p1
+%patch -P 25 -p1
+%patch -P 26 -p1
 %patch -P 51
 %patch -P 60 -p1
 %patch -P 61 -p1
@@ -469,7 +473,7 @@ export _POSIX2_VERSION=199209
 mkdir -p target-tools/bin
 ln -s /usr/bin/llvm-ar-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-ar
 ln -s /usr/bin/llvm-mc-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-as
-ln -s /usr/bin/lld target-tools/bin/amdgcn-amdhsa-ld
+ln -s /usr/bin/lld-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-ld
 ln -s /usr/bin/llvm-nm-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-nm
 ln -s /usr/bin/llvm-ranlib-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-ranlib
 export PATH="`pwd`/target-tools/bin:$PATH"
@@ -893,7 +897,7 @@ rm -rf $RPM_BUILD_ROOT%{targetlibsubdir}
 mkdir -p $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin
 ln -s /usr/bin/llvm-ar-%{product_libs_llvm_ver}* $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ar
 ln -s /usr/bin/llvm-mc-%{product_libs_llvm_ver}* $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/as
-ln -s /usr/bin/lld $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ld
+ln -s /usr/bin/lld-%{product_libs_llvm_ver}* $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ld
 ln -s /usr/bin/llvm-nm-%{product_libs_llvm_ver}* $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/nm
 ln -s /usr/bin/llvm-ranlib-%{product_libs_llvm_ver}* $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ranlib
 ln -s %{_prefix}/amdgcn-amdhsa/bin/ar $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-ar

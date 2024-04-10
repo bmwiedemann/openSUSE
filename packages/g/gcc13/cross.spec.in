@@ -160,13 +160,13 @@ BuildRequires: llvm13
 %else
 BuildRequires: llvm%{product_libs_llvm_ver}
 %endif
-BuildRequires: lld
+BuildRequires: lld%{product_libs_llvm_ver}
 %if %{suse_version} < 1550
 Requires: llvm13
 %else
 Requires: llvm%{product_libs_llvm_ver}
 %endif
-Requires: lld
+Requires: lld%{product_libs_llvm_ver}
 Requires: cross-amdgcn-newlib-devel >= %{version}-%{release}
 # SLE12 does not fulfil build requirements for GCN, SLE15 SP1 does
 # technically also SLE12 SP5 but do not bother there
@@ -344,7 +344,7 @@ rm -rf $RPM_BUILD_ROOT%{targetlibsubdir}
 mkdir -p $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin
 ln -s /usr/bin/llvm-ar-%{product_libs_llvm_ver}* $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ar
 ln -s /usr/bin/llvm-mc-%{product_libs_llvm_ver}* $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/as
-ln -s /usr/bin/lld $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ld
+ln -s /usr/bin/lld-%{product_libs_llvm_ver}* $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ld
 ln -s /usr/bin/llvm-nm-%{product_libs_llvm_ver}* $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/nm
 ln -s /usr/bin/llvm-ranlib-%{product_libs_llvm_ver}* $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ranlib
 ln -s %{_prefix}/amdgcn-amdhsa/bin/ar $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-ar
