@@ -18,10 +18,10 @@
 
 %define so_ver 12
 Name:           cryptsetup
-Version:        2.7.1
+Version:        2.7.2
 Release:        0
 Summary:        Setup program for dm-crypt Based Encrypted Block Devices
-License:        LGPL-2.0-or-later AND SUSE-GPL-2.0-with-openssl-exception
+License:        CC-BY-SA-4.0 AND LGPL-2.0-or-later AND SUSE-GPL-2.0-with-openssl-exception
 Group:          System/Base
 URL:            https://gitlab.com/cryptsetup/cryptsetup/
 Source0:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.7/cryptsetup-%{version}.tar.xz
@@ -29,20 +29,22 @@ Source0:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.7/cryptsetu
 Source1:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.7/cryptsetup-%{version}.tar.sign
 Source2:        baselibs.conf
 Source3:        cryptsetup.keyring
-BuildRequires:  device-mapper-devel
-BuildRequires:  libjson-c-devel
-BuildRequires:  libpwquality-devel
-BuildRequires:  libselinux-devel
-BuildRequires:  libuuid-devel
+# FAQ.md is CC-BY-SA-4.0
+Source4:        https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt#/cc-by-sa-4.0.txt
 # 2.6.38 has the required if_alg.h
 BuildRequires:  linux-glibc-devel >= 2.6.38
 BuildRequires:  pkgconfig
-BuildRequires:  popt-devel
 BuildRequires:  suse-module-tools
 BuildRequires:  pkgconfig(blkid)
+BuildRequires:  pkgconfig(devmapper)
+BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libargon2)
+BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libssh)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(popt)
+BuildRequires:  pkgconfig(pwquality)
+BuildRequires:  pkgconfig(uuid)
 BuildRequires:  rubygem(asciidoctor)
 Requires(post): coreutils
 Requires(postun): coreutils
@@ -64,6 +66,7 @@ time via the config file %{_sysconfdir}/crypttab.
 
 %package ssh
 Summary:        Cryptsetup LUKS2 SSH token
+License:        LGPL-2.0-or-later AND SUSE-GPL-2.0-with-openssl-exception
 Group:          System/Base
 
 %description ssh
@@ -72,6 +75,7 @@ token connected to an SSH server.
 
 %package doc
 Summary:        Cryptsetup Documentation
+License:        CC-BY-SA-4.0 AND LGPL-2.0-or-later AND SUSE-GPL-2.0-with-openssl-exception
 Group:          Documentation/Man
 Supplements:    (cryptsetup and man)
 Supplements:    (cryptsetup and patterns-base-documentation)
@@ -82,6 +86,7 @@ Documentation and man pages for cryptsetup
 
 %package -n libcryptsetup%{so_ver}
 Summary:        Library for setting up dm-crypt Based Encrypted Block Devices
+License:        LGPL-2.0-or-later AND SUSE-GPL-2.0-with-openssl-exception
 Group:          System/Libraries
 Provides:       libcryptsetup%{so_ver}-hmac = %{version}
 Obsoletes:      libcryptsetup%{so_ver}-hmac < %{version}
@@ -95,10 +100,11 @@ time via the config file %{_sysconfdir}/crypttab.
 
 %package -n lib%{name}-devel
 Summary:        Header files for libcryptsetup
+# cryptsetup-devel last used 11.1
+License:        LGPL-2.0-or-later AND SUSE-GPL-2.0-with-openssl-exception
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libcryptsetup%{so_ver} = %{version}
-# cryptsetup-devel last used 11.1
 Provides:       cryptsetup-devel = %{version}
 Obsoletes:      cryptsetup-devel < %{version}
 
@@ -111,6 +117,7 @@ time via the config file %{_sysconfdir}/crypttab.
 
 %prep
 %autosetup -p1
+cp -v %{SOURCE4} .
 
 %build
 # force regeneration of manual pages from AsciiDoc
@@ -154,9 +161,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %posttrans
 %{?regenerate_initrd_posttrans}
 
-%post -n libcryptsetup%{so_ver} -p /sbin/ldconfig
-
-%postun -n libcryptsetup%{so_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libcryptsetup%{so_ver}
 
 %files
 %license COPYING*
@@ -170,11 +175,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %ghost %attr(700, -, -) %dir /run/cryptsetup
 
 %files lang -f %{name}.lang
+%license COPYING*
 
 %files -n libcryptsetup%{so_ver}
+%license COPYING*
 %{_libdir}/libcryptsetup.so.%{so_ver}*
 
 %files -n lib%{name}-devel
+%license COPYING*
 %doc docs/examples/
 %{_includedir}/libcryptsetup.h
 %{_libdir}/libcryptsetup.so
@@ -184,49 +192,51 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING*
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/libcryptsetup-token-ssh.so
-%{_mandir}/man8/cryptsetup-ssh.8.gz
+%{_mandir}/man8/cryptsetup-ssh.8%{?ext_man}
 %{_sbindir}/cryptsetup-ssh
 
 %files doc
+%license COPYING*
+%license cc-by-sa-4.0.txt
 %doc AUTHORS FAQ.md README.md docs/*ReleaseNotes docs/on-disk-format*.pdf
-%{_mandir}/man8/cryptsetup.8.gz
-%{_mandir}/man8/cryptsetup-benchmark.8.gz
-%{_mandir}/man8/cryptsetup-bitlkDump.8.gz
-%{_mandir}/man8/cryptsetup-bitlkOpen.8.gz
-%{_mandir}/man8/cryptsetup-close.8.gz
-%{_mandir}/man8/cryptsetup-config.8.gz
-%{_mandir}/man8/cryptsetup-convert.8.gz
-%{_mandir}/man8/cryptsetup-create.8.gz
-%{_mandir}/man8/cryptsetup-erase.8.gz
-%{_mandir}/man8/cryptsetup-isLuks.8.gz
-%{_mandir}/man8/cryptsetup-loopaesOpen.8.gz
-%{_mandir}/man8/cryptsetup-luksAddKey.8.gz
-%{_mandir}/man8/cryptsetup-luksChangeKey.8.gz
-%{_mandir}/man8/cryptsetup-luksConvertKey.8.gz
-%{_mandir}/man8/cryptsetup-luksDump.8.gz
-%{_mandir}/man8/cryptsetup-luksErase.8.gz
-%{_mandir}/man8/cryptsetup-luksFormat.8.gz
-%{_mandir}/man8/cryptsetup-luksHeaderBackup.8.gz
-%{_mandir}/man8/cryptsetup-luksHeaderRestore.8.gz
-%{_mandir}/man8/cryptsetup-luksKillSlot.8.gz
-%{_mandir}/man8/cryptsetup-luksOpen.8.gz
-%{_mandir}/man8/cryptsetup-luksRemoveKey.8.gz
-%{_mandir}/man8/cryptsetup-luksResume.8.gz
-%{_mandir}/man8/cryptsetup-luksSuspend.8.gz
-%{_mandir}/man8/cryptsetup-luksUUID.8.gz
-%{_mandir}/man8/cryptsetup-open.8.gz
-%{_mandir}/man8/cryptsetup-plainOpen.8.gz
-%{_mandir}/man8/cryptsetup-reencrypt.8.gz
-%{_mandir}/man8/cryptsetup-refresh.8.gz
-%{_mandir}/man8/cryptsetup-repair.8.gz
-%{_mandir}/man8/cryptsetup-resize.8.gz
-%{_mandir}/man8/cryptsetup-status.8.gz
-%{_mandir}/man8/cryptsetup-tcryptDump.8.gz
-%{_mandir}/man8/cryptsetup-tcryptOpen.8.gz
-%{_mandir}/man8/cryptsetup-token.8.gz
-%{_mandir}/man8/integritysetup.8.gz
-%{_mandir}/man8/veritysetup.8.gz
-%{_mandir}/man8/cryptsetup-fvault2Dump.8.gz
-%{_mandir}/man8/cryptsetup-fvault2Open.8.gz
+%{_mandir}/man8/cryptsetup.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-benchmark.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-bitlkDump.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-bitlkOpen.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-close.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-config.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-convert.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-create.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-erase.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-isLuks.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-loopaesOpen.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-luksAddKey.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-luksChangeKey.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-luksConvertKey.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-luksDump.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-luksErase.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-luksFormat.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-luksHeaderBackup.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-luksHeaderRestore.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-luksKillSlot.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-luksOpen.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-luksRemoveKey.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-luksResume.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-luksSuspend.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-luksUUID.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-open.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-plainOpen.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-reencrypt.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-refresh.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-repair.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-resize.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-status.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-tcryptDump.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-tcryptOpen.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-token.8%{?ext_man}
+%{_mandir}/man8/integritysetup.8%{?ext_man}
+%{_mandir}/man8/veritysetup.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-fvault2Dump.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-fvault2Open.8%{?ext_man}
 
 %changelog
