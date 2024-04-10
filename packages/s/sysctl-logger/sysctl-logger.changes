@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 10 03:34:05 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to v0.0.6
+  * Rephrase logging to clarify that it is unknown whether sysctl
+    change succeeded or failed
+
+-------------------------------------------------------------------
 Wed Mar  6 11:50:38 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to v0.0.5

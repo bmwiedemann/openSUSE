@@ -34,7 +34,7 @@
 %endif
 
 Name:           sysctl-logger
-Version:        0.0.5
+Version:        0.0.6
 Release:        0
 Summary:        A sysctl monitoring tool based on BPF
 License:        GPL-2.0-only
