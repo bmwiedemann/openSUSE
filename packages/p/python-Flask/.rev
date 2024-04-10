@@ -497,4 +497,12 @@
     options. :issue:`5391`</comment>
     <requestid>1144168</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>396c5d432cb07bb2ed4f0b3eeab0b5e8</srcmd5>
+    <version>3.0.2</version>
+    <time>1712764122</time>
+    <user>anag+factory</user>
+    <comment>- Remove not needed dependency python-contextvars</comment>
+    <requestid>1166616</requestid>
+  </revision>
 </revisionlist>

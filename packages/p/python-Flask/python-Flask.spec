@@ -35,7 +35,6 @@ BuildRequires:  %{python_module Jinja2 >= 3.1.2}
 BuildRequires:  %{python_module Werkzeug >= 3.0.0}
 BuildRequires:  %{python_module blinker >= 1.6.2}
 BuildRequires:  %{python_module click >= 8.1.3}
-BuildRequires:  %{python_module contextvars}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module importlib-metadata >= 3.6.0 if %python-base < 3.10}
 BuildRequires:  %{python_module itsdangerous >= 2.1.2}
