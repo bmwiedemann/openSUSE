@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Apr  8 11:55:06 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 0.9.4
+  + Changes from 0.9.4
+    * #402: Struct API glms_ray_at incorrect dir param
+    * dont use I macro defined in standard(fixes #404)
+    * #403: mat2x3: fix multiplication functions
+    * #405: mat2x4: fix multiplication functions
+    * #407: mat3x2: fix multiplication functions
+    * #408: mat3x4: fix multiplication functions
+    * #410: mat4x2: fix multiplication functions
+    * #411: mat4x3: fix multiplication functions
+    * docs: improve docs
+    * #412: separate SSE and SSE2
+    * make Fasth math work both on SSE and SSE2, make -0.0f run
+      on SSE + fast math
+    * make some failing test pass when fast math is on
+    * tests: dont validate nan and inf on fast math
+    * docs: add note to enable config where may not work is some
+      environments
+    * docs: alignment
+    * fix some doc typos & warnings 
+  + Changes from 0.9.2
+    * #378: win32, simd: ensure we are on msvc when checking
+      MSVC specific headers
+    * win32, tests: fix drand48() error on mingw
+    * #379: simd: min / max helpers
+    * docs: update read the docs package versions
+    * #381: add new functions for ivec2 and ivec3
+      (dot, norm, norm2, div, divs, mod...)
+    * #383: implement struct API for ivec2, ivec3, and ivec4
+    * #384: docs, fix typos
+    * #386: add additional CI via GitHub Actions
+    * #388: ci: Remove appveyor
+    * #387: suppress warnings
+    * #389: aabb2d: fix struct api
+    * #390: doc improvements
+    * #391: ci: Add ARM64 UWP for WindowsStore
+    * #392: aabb2d_zero, aabb2d_diagonal and aabb2d_size
+    * #395: use NDEBUG to check DEBUG mode, update cmake to
+      respect DEBUG
+    * suppress warnings: C4244: 'function': conversion from
+      'int' to 'float'
+    * test: fix ivec2 and ivec3 comparison and suppress warnings
+    * #398: allow passing const float* to make functions
+    * #397: clarify some rotation rules, update docs to explain
+      rotate() a bit more
+    * #399: some missing ray functions
+    * improving handling of very small vectors to prevent
+      instability and overflow
+    * build: add missing files
+    * fix some doc typos & warnings
+
+-------------------------------------------------------------------
 Mon Mar 18 08:23:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.2:
