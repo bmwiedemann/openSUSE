@@ -19,7 +19,7 @@
 %define sle_version 0
 Name:           SDL2
 %define lname   libSDL2-2_0-0
-Version:        2.30.1
+Version:        2.30.2
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib
@@ -130,13 +130,8 @@ perl -i -pe 's{\r\n}{\n}g' *.txt README.md
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 rm -fv "%buildroot/%_libdir/libSDL2.a"
-# Need to keep libSDL2main.a (empty lib), because it is referenced by
-# sdl2-config.cmake, and it seems like that .cmake file cannot be edited to
-# make SDL2::SDL2main a phony target with no file (just leads to more Makefile
-# errors down the road).
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license LICENSE.txt

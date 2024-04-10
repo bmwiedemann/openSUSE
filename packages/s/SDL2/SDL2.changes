@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr  2 08:47:20 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.30.2
+  * Fixed performance regression initialing controllers on Linux
+  * Added support for the 6-button SEGA Mega Drive Control Pad
+    for Nintendo Online
+  * Add support for MadCatz Saitek Side Panel Control Deck
+  * Added support for the Hori Fighting Stick EX2
+  * Added support for the Yawman Arrow flightstick
+  * Added a gamepad mapping for the Defender Joystick Cobra R4
+  * Fixed the gamepad mapping for the Sanwa Supply JY-P76USV
+    controller
+  * Allow using SDL_RWFromFile() with named pipes
+
+-------------------------------------------------------------------
 Wed Mar  6 07:45:37 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.30.1
