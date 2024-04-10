@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr 10 05:17:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.9:
+  * update minio chart location to bitnami
+  * Update kubectl version
+
+-------------------------------------------------------------------
+Wed Apr 10 05:16:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.8:
+  * add support for faasd
+
+-------------------------------------------------------------------
+Wed Apr 10 05:15:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.7:
+  * add support for regctl
+
+-------------------------------------------------------------------
 Sat Mar 16 14:51:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.6:
