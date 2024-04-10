@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Apr  9 17:06:06 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.64
+  ## ✨ Features
+
+  * Mark all threads as read button (https://github.com/matrix-org/matrix-react-sdk/pull/12378). Contributed by @dbkr.
+  * Video call meta space (https://github.com/matrix-org/matrix-react-sdk/pull/12297). Contributed by @toger5.
+  * Add leave room warning for last admin (https://github.com/matrix-org/matrix-react-sdk/pull/9452). Contributed by @Arnei.
+  * Iterate styles around Link new device via QR (https://github.com/matrix-org/matrix-react-sdk/pull/12356). Contributed by @t3chguy.
+  * Improve code-splitting of highlight.js and maplibre-gs libs (https://github.com/matrix-org/matrix-react-sdk/pull/12349). Contributed by @t3chguy.
+  * Use data-mx-color for rainbows (https://github.com/matrix-org/matrix-react-sdk/pull/12325). Contributed by @tulir.
+
+  ## 🐛 Bug Fixes
+
+  * Fix external guest access url for unencrypted rooms (https://github.com/matrix-org/matrix-react-sdk/pull/12345). Contributed by @toger5.
+  * Fix video rooms not showing share link button (https://github.com/matrix-org/matrix-react-sdk/pull/12374). Contributed by @toger5.
+  * Fix space topic jumping on hover/focus (https://github.com/matrix-org/matrix-react-sdk/pull/12377). Contributed by @t3chguy.
+  * Allow popping out a Jitsi widget to respect Desktop `web_base_url` config (https://github.com/matrix-org/matrix-react-sdk/pull/12376). Contributed by @t3chguy.
+  * Remove the Lazy Loading `InvalidStoreError` Dialogs (https://github.com/matrix-org/matrix-react-sdk/pull/12358). Contributed by @langleyd.
+  * Improve readability of badges and pills (https://github.com/matrix-org/matrix-react-sdk/pull/12360). Contributed by @robintown.
+
+
+
+- Version 1.11.63
+  This is a hotfix release to fix a couple of issues: one where the client would sometimes call the client/server API to set a push rule in a loop, and one where authentication was not sent for widgets when it should have been.
+  
+  ## 🐛 Bug Fixes
+  
+  * Revert "Make EC widget theme reactive - Update widget url when the theme changes" (https://github.com/matrix-org/matrix-react-sdk/pull/12383) in order to fix widgets that require authentication.
+  * Update to hotfixed js-sdk to fix an issue where Element could try to set a push rule in a loop.
+
+- Version 1.11.62
+  ## ✨ Features
+
+  * Change user permission by using a new apply button (https://github.com/matrix-org/matrix-react-sdk/pull/12346). Contributed by @florianduros.
+  * Mark as Unread (https://github.com/matrix-org/matrix-react-sdk/pull/12254). Contributed by @dbkr.
+  * Refine the colors of some more components (https://github.com/matrix-org/matrix-react-sdk/pull/12343). Contributed by @robintown.
+  * TAC: Order rooms by most recent after notification level (https://github.com/matrix-org/matrix-react-sdk/pull/12329). Contributed by @florianduros.
+  * Make EC widget theme reactive - Update widget url when the theme changes (https://github.com/matrix-org/matrix-react-sdk/pull/12295). Contributed by @toger5.
+  * Refine styles of menus, toasts, popovers, and modals (https://github.com/matrix-org/matrix-react-sdk/pull/12332). Contributed by @robintown.
+  * Element Call: fix widget shown while its still loading (`waitForIframeLoad=false`) (https://github.com/matrix-org/matrix-react-sdk/pull/12292). Contributed by @toger5.
+  * Improve Forward Dialog a11y by switching to roving tab index interactions (https://github.com/matrix-org/matrix-react-sdk/pull/12306). Contributed by @t3chguy.
+  * Call guest access link creation to join calls as a non registered user via the EC SPA (https://github.com/matrix-org/matrix-react-sdk/pull/12259). Contributed by @toger5.
+  * Use `strong` element to semantically denote visually emphasised content (https://github.com/matrix-org/matrix-react-sdk/pull/12320). Contributed by @t3chguy.
+  * Handle up/down arrow keys as well as left/right for horizontal toolbars for improved a11y (https://github.com/matrix-org/matrix-react-sdk/pull/12305). Contributed by @t3chguy.
+
+  ## 🐛 Bug Fixes
+
+  * https://github.com/matrix-org/matrix-react-sdk/pull/12369). Contributed by @RiotRobot.
+  * Fix incorrect check for private read receipt support (https://github.com/matrix-org/matrix-react-sdk/pull/12348). Contributed by @tulir.
+  * TAC: Fix hover state when expanded (https://github.com/matrix-org/matrix-react-sdk/pull/12337). Contributed by @florianduros.
+  * Fix the image view (https://github.com/matrix-org/matrix-react-sdk/pull/12341). Contributed by @robintown.
+  * Use correct push rule to evaluate room-wide mentions (https://github.com/matrix-org/matrix-react-sdk/pull/12318). Contributed by @t3chguy.
+  * Reset power selector on API failure to prevent state mismatch (https://github.com/matrix-org/matrix-react-sdk/pull/12319). Contributed by @t3chguy.
+  * Fix spotlight opening in TAC (https://github.com/matrix-org/matrix-react-sdk/pull/12315). Contributed by @florianduros.
+
+-------------------------------------------------------------------
 Thu Mar 14 21:58:28 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.61
