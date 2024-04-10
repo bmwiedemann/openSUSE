@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 26 11:21:22 UTC 2024 - Hannes Braun <apple.hannes@gmail.com>
+
+- Update to 0.16.5:
+  * Autotools build scripts, when configured with "--enable-libccd",
+    will now assign all the relevant colliders to the libccd. 
+    Before, it used to keep default collider for Box-Cylinder pair and 
+    that was inconsistent with other configuration methods (CMake and 
+    premake4). To obtain the old behavior configure as 
+    "--enable-libccd --with-box-cylinder=default".
+
+-------------------------------------------------------------------
 Mon Feb 26 12:43:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
