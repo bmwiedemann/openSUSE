@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  9 16:58:14 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Add backported CVE-2024-30260-undici-clear-proxy-authorization.patch (CVE-2024-30260 bsc#1222530)
+
+-------------------------------------------------------------------
 Thu Apr  4 20:35:05 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 28.2.10

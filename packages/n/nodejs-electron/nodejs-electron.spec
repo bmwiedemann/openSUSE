@@ -354,6 +354,7 @@ Patch3132:      v8-instance-type-inl-constexpr-used-before-its-definition.patch
 Patch3133:      swiftshader-llvm18-LLVMReactor-getInt8PtrTy.patch
 Patch3134:      swiftshader-llvm18-LLVMJIT-Host.patch
 Patch3135:      swiftshader-llvm18-LLVMJIT-CodeGenOptLevel.patch
+Patch3136:      CVE-2024-30260-undici-clear-proxy-authorization.patch
 
 BuildRequires:  brotli
 %if %{with system_cares}
