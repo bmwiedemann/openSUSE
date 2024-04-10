@@ -6,7 +6,7 @@ diff -urEbw pcmanfm-qt-1.1.0/config/pcmanfm-qt/lxqt/settings.conf.in pcmanfm-qt-
  DesktopShortcuts=Home, Trash, Computer, Network
  WallpaperMode=stretch
 -Wallpaper=@LXQT_SHARE_DIR@/wallpapers/waves-logo.png
-+Wallpaper=/usr/share/wallpapers/openSUSEdefault/contents/images/5120x3200.jpg
++Wallpaper=/usr/share/wallpapers/openSUSEdefault/contents/images/5120x3200.png
  BgColor=#000000
  FgColor=#ffffff
  ShadowColor=#000000

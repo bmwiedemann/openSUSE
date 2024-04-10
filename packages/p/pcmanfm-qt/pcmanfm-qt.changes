@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 10 11:46:15 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Adjust pcmanfm-qt-default-wallpaper.patch to use png boo#1222581
+  See details in https://github.com/openSUSE/branding/pull/149
+
+-------------------------------------------------------------------
 Wed Feb 21 07:12:31 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
