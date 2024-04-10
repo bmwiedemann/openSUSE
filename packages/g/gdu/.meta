@@ -1,0 +1,6 @@
+<package name="gdu" project="openSUSE:Factory">
+  <title>gdu</title>
+  <description>Fast disk usage analyzer with console interface written in Go</description>
+  <devel project="devel:languages:go" package="gdu"/>
+  <url>https://github.com/dundee/gdu</url>
+</package>
