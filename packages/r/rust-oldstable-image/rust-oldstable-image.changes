@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 10 05:02:54 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- rust 1.77 for stable, 1.76 for oldstable
+
+-------------------------------------------------------------------
 Mon Feb 26 11:01:40 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Switch to Rust 1.75
