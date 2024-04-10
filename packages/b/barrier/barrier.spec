@@ -1,7 +1,7 @@
 #
 # spec file for package barrier
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2018 Christian Mauderer <oss@c-mauderer.de>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,6 +17,7 @@
 #
 
 
+%define fs_version 1.5.10
 Name:           barrier
 Version:        2.4.0
 Release:        0
@@ -25,7 +26,7 @@ License:        GPL-2.0-or-later AND MIT
 URL:            https://github.com/debauchee/barrier
 Source0:        https://github.com/debauchee/barrier/archive/v%{version}/%{name}-%{version}.tar.gz
 # Gulrak filesystem https://github.com/gulrak/filesystem
-Source1:        filesystem-1.5.10.tar.gz
+Source1:        https://github.com/gulrak/filesystem/archive/refs/tags/v%{fs_version}.tar.gz#/filesystem-%{fs_version}.tar.gz
 Source2:        barriers.socket
 Source3:        barriers.service
 # https://github.com/debauchee/barrier/issues/1366
