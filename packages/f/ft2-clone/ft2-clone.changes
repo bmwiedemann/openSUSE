@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr  9 17:41:44 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.81
+  * Rewrote some of the MIDI init/close code, as it looked like
+    it could be buggy.
+- Update to version 1.80
+  * Doing note transpose on the whole song wouldn't count
+    overflowing notes properly (it would sometimes not show a
+    warning message first)
+
+-------------------------------------------------------------------
 Mon Mar 18 17:09:25 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.79
