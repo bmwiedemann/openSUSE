@@ -68,8 +68,6 @@ This package provides documentation for %{name}.
 
 %install
 %meson_install
-rm -f %{buildroot}%{_datadir}/dbus-1/system.d/net.hadess.PowerProfiles.conf
-rm -f %{buildroot}%{_datadir}/dbus-1/system-services/net.hadess.PowerProfiles.service
 %python3_fix_shebang
 
 %check
@@ -93,7 +91,9 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/net.hadess.PowerProfiles.se
 %{_bindir}/powerprofilesctl
 %{_libexecdir}/%{name}
 %{_unitdir}/%{name}.service
+%{_datadir}/dbus-1/system.d/net.hadess.PowerProfiles.conf
 %{_datadir}/dbus-1/system.d/org.freedesktop.UPower.PowerProfiles.conf
+%{_datadir}/dbus-1/system-services/net.hadess.PowerProfiles.service
 %{_datadir}/dbus-1/system-services/org.freedesktop.UPower.PowerProfiles.service
 %{_datadir}/polkit-1/actions/power-profiles-daemon.policy
 %ghost %dir %{_localstatedir}/lib/%{name}

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 30 20:01:51 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Revert "Remove duplicate DBus service files
+  net.hadess.PowerProfiles" workaround to boo#1222179 (see comment 
+  10).
+
+-------------------------------------------------------------------
 Wed Mar 13 10:12:35 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

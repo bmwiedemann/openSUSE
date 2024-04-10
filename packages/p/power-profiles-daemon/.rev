@@ -63,4 +63,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1159815</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>aac8e95ad836f1660338c9b199597490</srcmd5>
+    <version>0.20</version>
+    <time>1712764129</time>
+    <user>anag+factory</user>
+    <comment>- Revert &quot;Remove duplicate DBus service files
+  net.hadess.PowerProfiles&quot; workaround to boo#1222179 (see comment 
+  10).
+</comment>
+    <requestid>1166474</requestid>
+  </revision>
 </revisionlist>
