@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Wed Apr 10 10:54:02 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 3.2.5
+  * Bug
+    + SUREFIRE-2223: Surefire evaluates parameter jvm before skip
+    + SUREFIRE-2224: StatelessXmlReporter#getTestProblems() does
+      not properly reflect report schema structure
+    + SUREFIRE-2225: Surefire ITs fail when project directory
+      contains space
+    + SUREFIRE-2229: + REGRESSION] SUREFIRE-2224 causes stack trace
+      to be omitted for errors and failures
+    + SUREFIRE-2231: JaCoCo 0.8.11 fails with old TestNG releases on
+      Java 17+
+  * Improvement
+    + SUREFIRE-1345: Support flakyFailure and flakyError in
+      TestSuiteXmlParser
+    + SUREFIRE-2221: Document minimum supported Java version for
+      Toolchains
+- Upgrade to 3.2.3
+  * Bug
+    + SUREFIRE-2210: Additional class path ordering broken since
+      3.2.0
+    + SUREFIRE-2211: additionalClasspathElement with UNC path not
+      working with Maven Failsafe Plugin
+    + SUREFIRE-2212: OutOfMemoryError raised when parsing files with
+      huge stderr/stdout output in surefire-report-parser
+    + SUREFIRE-2220:
+      SurefireForkChannel#getForkNodeConnectionString() returns
+      invalid URI string if localHost resolves to IPv6 address
+  * Dependency upgrade
+    + SUREFIRE-2214: Upgrade to HtmlUnit 3.8.0
+    + SUREFIRE-2215: Upgrade to Parent 41
+    + SUREFIRE-2216: Upgrade plugins and components (in ITs)
+- Upgrade to 3.2.2
+  * Bug Fixes
+    + SUREFIRE-2205: Use maven-plugin-report-plugin only in plugins
+      modules
+    + SUREFIRE-2206: Downgrade plexus-xml to 3.0.0
+  * Dependency updates
+    + SUREFIRE-2208: Bump org.codehaus.plexus:plexus-java from 1.1.2
+      to 1.2.0
+- Upgrade to 3.2.1
+  * New features and improvements
+    + SUREFIRE-1124: Support forkNumber in environment variables
+    + SUREFIRE-2177: Use junit-bom instead of single JUnit 5
+      versions
+    + SUREFIRE-2179: Support adding additional Maven dependencies to
+      the test runtime classpath
+    + SUREFIRE-2178: clarify classpathDependencyExcludes
+    + SUREFIRE-2182: Log starter implementation on DEBUG level
+  * Bug Fixes
+    + SUREFIRE-2190: Fix module dependencies for compile only
+      dependencies
+  * Documentation updates
+    + Fix TestNG web site URL (#671) @sabi0
+- Upgrade to 3.1.2
+  * Changes
+    + SUREFIRE-2166: Use ChoiceFormat to selective render percentage
+      and elapsed time in SurefireReportRenderer
+    + Simplify serialization/deserialization of elapsed time
+      (SUREFIRE-2164 + SUREFIRE-2167)
+    + SUREFIRE-2169: Potential NPE in WrappedReportEntry when
+      #getElapsed() is called
+    + MNG-6829: Replace StringUtils#isEmpty(String) and
+      #isNotEmpty(String)
+- Upgrade to 3.1.0
+  * Sub-task
+    + SUREFIRE-2162: Document upcoming mojo and file names change
+  * Bug
+    + SUREFIRE-2140: Cannot release Surefire on Windows
+  * Improvement
+    + SUREFIRE-2153: Replace SurefireReportGenerator with a new
+      SurefireReportRenderer
+    + SUREFIRE-2160: Replace LocalizedProperties with (Custom)I18N
+      approach from MPIR
+  * Task
+    + SUREFIRE-2130: Rewrite several test classes in report
+      plugin for upcoming Doxia 2.0.0 stack
+- Upgrade to 3.0.0
+  * New features and improvements
+    + SUREFIRE-2154: Get rid of localRepository from surefire
+      mojo parameter, use Resolver API
+  * Bug Fixes
+    + SUREFIRE-2119: Sanitize failIfNoSpecifiedTests prefix in
+      failsafe
+    + SUREFIRE-2143: Fix reporting of skipped parameterized test
+  * Documentation updates
+    + SUREFIRE-2156: Refresh download page
+- Modifed patch:
+  * 0003-Port-to-TestNG-7.4.0.patch -> 0001-Port-to-TestNG-7.4.0.patch
+    + regenerate
+  * maven-surefire-bootstrap-resources.patch
+    + regenerate from maven build
+- Removed patches:
+  * 0001-Maven-3.patch
+  * 0002-Port-to-current-doxia.patch
+  * 0004-Port-to-current-maven-shared-utils.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
 Thu Feb 22 07:58:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 2.22.2

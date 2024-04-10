@@ -18,7 +18,7 @@
 
 %global base_name maven-surefire
 Name:           %{base_name}-provider-junit5
-Version:        2.22.2
+Version:        3.2.5
 Release:        0
 Summary:        JUnit 5 provider for Maven Surefire
 License:        Apache-2.0 AND CPL-1.0
@@ -27,16 +27,12 @@ URL:            https://maven.apache.org/surefire/
 Source0:        %{base_name}-%{version}.tar.xz
 Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        https://www.eclipse.org/legal/cpl-v10.html
-Patch0:         0001-Maven-3.patch
-Patch1:         0002-Port-to-current-doxia.patch
-Patch2:         0003-Port-to-TestNG-7.4.0.patch
-Patch3:         0004-Port-to-current-maven-shared-utils.patch
+Patch0:         0001-Port-to-TestNG-7.4.0.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.maven.surefire:common-java5)
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
-BuildRequires:  mvn(org.apiguardian:apiguardian-api)
 BuildRequires:  mvn(org.junit.platform:junit-platform-launcher)
 # PpidChecker relies on /usr/bin/ps to check process uptime
 Requires:       procps
@@ -57,46 +53,34 @@ Javadoc for %{name}.
 cp -p %{SOURCE1} %{SOURCE2} .
 
 %patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
+#patch -P 1 -p1
 
 # Disable strict doclint
 sed -i /-Xdoclint:all/d pom.xml
 
+%pom_remove_dep org.junit:junit-bom
+
 %pom_disable_module surefire-shadefire
-
-%pom_add_dep org.apiguardian:apiguardian-api::provided surefire-providers/surefire-junit-platform
-
 %pom_remove_dep -r org.apache.maven.surefire:surefire-shadefire
+
+# Help plugin is needed only to evaluate effective Maven settings.
+# For building RPM package default settings will suffice.
+%pom_remove_plugin :maven-help-plugin surefire-its
 
 # QA plugin useful only for upstream
 %pom_remove_plugin -r :jacoco-maven-plugin
+# Not wanted
+%pom_remove_plugin -r :maven-shade-plugin
 
-# Not in Fedora
+find -name *.java -exec sed -i -e s/org.apache.maven.surefire.shared.utils/org.apache.maven.shared.utils/ -e s/org.apache.maven.surefire.shared.io/org.apache.commons.io/ -e s/org.apache.maven.surefire.shared.lang3/org.apache.commons.lang3/ -e s/org.apache.maven.surefire.shared.compress/org.apache.commons.compress/ {} \;
+
+# Not packaged
 %pom_remove_plugin -r :animal-sniffer-maven-plugin
 # Complains
 %pom_remove_plugin -r :apache-rat-plugin
-%pom_remove_plugin -r :maven-enforcer-plugin
 # We don't need site-source
 %pom_remove_plugin :maven-assembly-plugin maven-surefire-plugin
 %pom_remove_dep -r ::::site-source
-
-%pom_xpath_set pom:mavenVersion 3.3.3
-%pom_remove_dep :maven-project maven-surefire-report-plugin
-%pom_remove_dep :maven-project maven-surefire-common
-%pom_remove_dep :maven-plugin-descriptor maven-surefire-common
-%pom_remove_dep :maven-toolchain maven-surefire-common
-
-%pom_xpath_remove -r "pom:execution[pom:id='shared-logging-generated-sources']"
-
-%pom_add_dep com.google.code.findbugs:jsr305 surefire-api
-
-%pom_remove_plugin -r :maven-shade-plugin
-%pom_remove_plugin -r :build-helper-maven-plugin
-
-%pom_add_dep org.apache.commons:commons-lang3::runtime maven-surefire-plugin
-%pom_add_dep commons-io:commons-io::runtime maven-surefire-plugin
 
 %build
 pushd surefire-providers/surefire-junit-platform

@@ -17,7 +17,7 @@
 
 
 Name:           maven-surefire
-Version:        2.22.2
+Version:        3.2.5
 Release:        0
 Summary:        Test framework project
 License:        Apache-2.0 AND CPL-1.0
@@ -27,18 +27,21 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        https://www.eclipse.org/legal/cpl-v10.html
 Source10:       %{name}-build.tar.xz
-Patch0:         0001-Maven-3.patch
-Patch1:         0002-Port-to-current-doxia.patch
-Patch2:         0003-Port-to-TestNG-7.4.0.patch
-Patch3:         0004-Port-to-current-maven-shared-utils.patch
+Patch0:         0001-Port-to-TestNG-7.4.0.patch
 Patch10:        %{name}-bootstrap-resources.patch
 BuildRequires:  ant
+BuildRequires:  apache-commons-cli
+BuildRequires:  apache-commons-compress
 BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
+BuildRequires:  atinject
 BuildRequires:  fdupes
+BuildRequires:  google-guice
+BuildRequires:  guava
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javacc
 BuildRequires:  javapackages-local
+BuildRequires:  jdom
 BuildRequires:  jsr-305
 BuildRequires:  junit
 BuildRequires:  maven-common-artifact-filters
@@ -50,9 +53,19 @@ BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
 BuildRequires:  maven-reporting-api
 BuildRequires:  maven-reporting-impl
+BuildRequires:  maven-resolver
 BuildRequires:  maven-shared-utils
 BuildRequires:  objectweb-asm
+BuildRequires:  plexus-classworlds
+BuildRequires:  plexus-cli
+BuildRequires:  plexus-i18n
+BuildRequires:  plexus-interpolation
 BuildRequires:  plexus-languages
+BuildRequires:  plexus-metadata-generator
+BuildRequires:  plexus-utils
+BuildRequires:  plexus-xml
+BuildRequires:  qdox
+BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  testng
 BuildRequires:  xmvn-install
@@ -133,47 +146,35 @@ Javadoc for %{name}.
 cp -p %{SOURCE1} %{SOURCE2} .
 
 %patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
+#patch -P 1 -p1
 %patch -P 10 -p1
 
 # Disable strict doclint
 sed -i /-Xdoclint:all/d pom.xml
 
+%pom_remove_dep org.junit:junit-bom
+
 %pom_disable_module surefire-shadefire
-
-%pom_disable_module surefire-junit-platform surefire-providers
-
 %pom_remove_dep -r org.apache.maven.surefire:surefire-shadefire
+
+# Help plugin is needed only to evaluate effective Maven settings.
+# For building RPM package default settings will suffice.
+%pom_remove_plugin :maven-help-plugin surefire-its
 
 # QA plugin useful only for upstream
 %pom_remove_plugin -r :jacoco-maven-plugin
+# Not wanted
+%pom_remove_plugin -r :maven-shade-plugin
 
-# Not in Fedora
+find -name *.java -exec sed -i -e s/org.apache.maven.surefire.shared.utils/org.apache.maven.shared.utils/ -e s/org.apache.maven.surefire.shared.io/org.apache.commons.io/ -e s/org.apache.maven.surefire.shared.lang3/org.apache.commons.lang3/ -e s/org.apache.maven.surefire.shared.compress/org.apache.commons.compress/ {} \;
+
+# Not packaged
 %pom_remove_plugin -r :animal-sniffer-maven-plugin
 # Complains
 %pom_remove_plugin -r :apache-rat-plugin
-%pom_remove_plugin -r :maven-enforcer-plugin
 # We don't need site-source
 %pom_remove_plugin :maven-assembly-plugin maven-surefire-plugin
 %pom_remove_dep -r ::::site-source
-
-%pom_xpath_set pom:mavenVersion 3.3.3
-%pom_remove_dep :maven-project maven-surefire-report-plugin
-%pom_remove_dep :maven-project maven-surefire-common
-%pom_remove_dep :maven-plugin-descriptor maven-surefire-common
-%pom_remove_dep :maven-toolchain maven-surefire-common
-
-%pom_xpath_remove -r "pom:execution[pom:id='shared-logging-generated-sources']"
-
-%pom_add_dep com.google.code.findbugs:jsr305 surefire-api
-
-%pom_remove_plugin -r :maven-shade-plugin
-%pom_remove_plugin -r :build-helper-maven-plugin
-
-%pom_add_dep org.apache.commons:commons-lang3::runtime maven-surefire-plugin
-%pom_add_dep commons-io:commons-io::runtime maven-surefire-plugin
 
 %build
 %{mvn_package} ":*tests*" __noinstall
@@ -184,33 +185,52 @@ sed -i /-Xdoclint:all/d pom.xml
 
 mkdir -p lib
 build-jar-repository -s -p lib \
-	apache-commons-lang3 \
-	commons-io \
-	javacc \
-	jsr-305 \
-	junit \
-	maven-common-artifact-filters/maven-common-artifact-filters \
-	maven-doxia/doxia-core \
-	maven-doxia/doxia-logging-api \
-	maven-doxia/doxia-sink-api \
-	maven-doxia-sitetools/doxia-site-renderer \
-	maven/maven-artifact \
-	maven/maven-compat \
-	maven/maven-core \
-	maven/maven-model \
-	maven/maven-plugin-api \
-	maven-plugin-tools/maven-plugin-annotations \
-	maven-reporting-api/maven-reporting-api \
-	maven-reporting-impl/maven-reporting-impl \
-	maven-shared-utils/maven-shared-utils \
-	objectweb-asm/asm \
-	org.eclipse.sisu.plexus \
-	plexus-languages/plexus-java \
-	testng
+    atinject \
+    apache-commons-lang3 \
+    commons-cli \
+    commons-compress \
+    commons-io \
+    guava/guava \
+    guice/google-guice \
+    javacc \
+    jdom2/jdom2 \
+    jsr-305 \
+    junit \
+    maven-common-artifact-filters/maven-common-artifact-filters \
+    maven-doxia/doxia-core \
+    maven-doxia/doxia-logging-api \
+    maven-doxia/doxia-sink-api \
+    maven-doxia-sitetools/doxia-site-renderer \
+    maven/maven-artifact \
+    maven/maven-compat \
+    maven/maven-core \
+    maven/maven-model \
+    maven/maven-plugin-api \
+    maven/maven-settings \
+    maven-plugin-tools/maven-plugin-annotations \
+    maven-reporting-api/maven-reporting-api \
+    maven-reporting-impl/maven-reporting-impl \
+    maven-resolver/maven-resolver-api \
+    maven-resolver/maven-resolver-util \
+    maven-shared-utils/maven-shared-utils \
+    objectweb-asm/asm \
+    org.eclipse.sisu.plexus \
+    org.eclipse.sisu.inject \
+    plexus-classworlds \
+    plexus/cli \
+    plexus-containers/plexus-component-annotations \
+    plexus-i18n/plexus-i18n \
+    plexus/interpolation \
+    plexus-languages/plexus-java \
+    plexus-metadata-generator \
+    plexus/utils \
+    plexus/xml \
+    qdox \
+    testng
 
 %{ant} \
-	-Dtest.skip=true \
-	package javadoc
+    -Dtest.skip=true \
+    package javadoc
 
 %{mvn_artifact} pom.xml
 %{mvn_artifact} surefire-providers/pom.xml
@@ -222,6 +242,9 @@ for module in \
     surefire-api \
     surefire-booter \
     surefire-grouper \
+    surefire-extensions-api \
+    surefire-extensions-spi \
+    surefire-shared-utils \
     maven-surefire-common \
     surefire-report-parser \
     maven-surefire-plugin \
