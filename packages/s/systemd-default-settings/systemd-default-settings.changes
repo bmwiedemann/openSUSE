@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 10 09:30:19 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import 0.10
+
+  5088997 SLE: Disable pids controller limit under user instances (jsc#SLE-10123)
+
+-------------------------------------------------------------------
 Thu Mar 28 14:59:51 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Import 0.9

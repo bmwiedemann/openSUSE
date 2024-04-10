@@ -20,7 +20,7 @@
 
 Name:           systemd-default-settings
 URL:            https://github.com/openSUSE/systemd-default-settings
-Version:        0.9
+Version:        0.10
 Release:        0
 Summary:        Generic SUSE Customization of systemd defaults
 License:        GPL-2.0-or-later

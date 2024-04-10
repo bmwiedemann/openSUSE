@@ -94,4 +94,13 @@
   bb859bf user@.service: Disable controllers by default (jsc#PED-2276)</comment>
     <requestid>1163360</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c6248ed12df29f85f5208d435351be82</srcmd5>
+    <version>0.10</version>
+    <time>1712764120</time>
+    <user>anag+factory</user>
+    <comment>- Import 0.10
+  5088997 SLE: Disable pids controller limit under user instances (jsc#SLE-10123)</comment>
+    <requestid>1166612</requestid>
+  </revision>
 </revisionlist>
