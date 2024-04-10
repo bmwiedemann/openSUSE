@@ -421,4 +421,13 @@
     <comment></comment>
     <requestid>1157673</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>b328c3b4d01f8d8d1f566d289f1af51a</srcmd5>
+    <version>3.36.0</version>
+    <time>1712764147</time>
+    <user>anag+factory</user>
+    <comment>- Add separate translations package
+</comment>
+    <requestid>1166489</requestid>
+  </revision>
 </revisionlist>

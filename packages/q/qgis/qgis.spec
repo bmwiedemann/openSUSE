@@ -193,6 +193,8 @@ Development packages for QGIS, including the C header files.
 %description sample-data
 QGIS sample data with raster, vector, gps files and a GRASS location from the Alaska area.
 
+%lang_package
+
 %prep
 %autosetup -p1 -n qgis-%{version}
 # Remove bad env and python version in grass plugin
@@ -263,6 +265,8 @@ mv qgis_sample_data %{sampledir}
 find %{sampledir} -depth \( -name .tmp -o -name .bash\* -o -name \*~ \) -exec rm -r {} +
 popd
 
+%find_lang %{name} --with-qt %{?no_lang_C}
+
 %fdupes -s %{buildroot}
 
 %post -p /sbin/ldconfig
@@ -277,6 +281,7 @@ popd
 %{_libdir}/qt5/plugins/sqldrivers/libqsqlspatialite.so
 %{_mandir}/man1/*
 %{_datadir}/qgis
+%exclude %{_datadir}/qgis/i18n/*
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/qgis.png
 # Own directories for icon size not provided by hicolor-icon-theme
@@ -325,5 +330,7 @@ popd
 %files sample-data
 %dir %{_datadir}/qgis
 %{_datadir}/qgis/%{sampledir}
+
+%files lang -f %{name}.lang
 
 %changelog
