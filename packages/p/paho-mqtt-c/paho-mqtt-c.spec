@@ -1,7 +1,7 @@
 #
 # spec file for package paho-mqtt-c
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,10 +56,6 @@ Development files for the the Paho MQTT C Client.
 
 %install
 %cmake_install
-# fix samples path
-mkdir -p %{buildroot}%{_docdir}/libpaho-mqtt-devel/samples
-mv %{buildroot}%{_datadir}/doc/"Eclipse Paho C"/* %{buildroot}%{_docdir}/libpaho-mqtt-devel/samples
-%fdupes -s %{buildroot}/%{_docdir}
 
 %post -n libpaho-mqtt%{sover} -p /sbin/ldconfig
 %postun -n libpaho-mqtt%{sover} -p /sbin/ldconfig
