@@ -348,4 +348,12 @@ Bugfixes
   and a crafted Cookie header is supplied, bsc#1219911 (forwarded request 1147162 from dspinella)</comment>
     <requestid>1147523</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>069d268b08a52418bad47fa5e7334365</srcmd5>
+    <version>2.4.15.6</version>
+    <time>1712764212</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166662</requestid>
+  </revision>
 </revisionlist>

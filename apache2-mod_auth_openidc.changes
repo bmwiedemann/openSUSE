@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 25 14:07:25 UTC 2024 - pgajdos@suse.com
+
+- version update to 2.4.15.6
+  03/14/2024
+  - fix userinfo refresh interval parsing; closes #1200; thanks @HolgerHees
+    avoid refreshing userinfo on each request until access token expiry
+  - store interval as JSON integer in session
+  - use SameSite=Lax when OIDCCookieSameSite is On (also by default) instead of
+    Strict as overriding from Lax to Strict does not work reliably anymore (Chrome)
+  - release 2.4.15.6
+  03/13/2024
+  - fix compilation without libhiredis; closes #1195 ; thanks @HolgerHees
+    conditionally define oidc_set_redis_connect_timeout
+  - fix `OIDCPassClaimsAs environment` bug introduced in 2.4.15.4; see #1196; thanks @HolgerHees
+  - release 2.4.15.5
+  03/12/2024
+  - release 2.4.15.4
+  - fix setting the default PCKE method to "none" in a multi-provider setup
+
+-------------------------------------------------------------------
 Fri Feb 16 16:57:57 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 2.4.15.3:
