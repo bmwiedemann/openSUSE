@@ -30,6 +30,7 @@ Patch1:         0001-addrconf-fix-fallback-lease-drop-bsc-1220996.patch
 Patch2:         0002-extensions-nbft-replace-nvme-show-nbft-with-nvme-nbf.patch
 Patch3:         0003-move-all-attribute-definitions-to-compiler-h.patch
 Patch4:         0004-hide-secrets-in-debug-log-bsc-1221194.patch
+Patch5:         0005-client-do-to-not-convert-sec-to-msec-twice-bsc-1222105.patch
 #
 # Upstream First - openSUSE Build Service Policy:
 #

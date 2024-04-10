@@ -1835,4 +1835,13 @@
     <comment></comment>
     <requestid>1159817</requestid>
   </revision>
+  <revision rev="100" vrev="4">
+    <srcmd5>04eb322408b77dc79fefcf8167df0a9e</srcmd5>
+    <version>0.6.74</version>
+    <time>1712764132</time>
+    <user>anag+factory</user>
+    <comment>- client: do not convert sec to msec twice (bsc#1222105)
+  [+ 0005-client-do-to-not-convert-sec-to-msec-twice-bsc-1222105.patch]</comment>
+    <requestid>1166514</requestid>
+  </revision>
 </revisionlist>
