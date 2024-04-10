@@ -260,4 +260,14 @@
 - Update to version 0.5b1:</comment>
     <requestid>1130307</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>3a6fcfcb1cd6c0efb2da3779093f9f19</srcmd5>
+    <version>0.12.1</version>
+    <time>1712764180</time>
+    <user>anag+factory</user>
+    <comment>- Add missing {Build,}Requires on importlib-metadata.
+- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1166531</requestid>
+  </revision>
 </revisionlist>
