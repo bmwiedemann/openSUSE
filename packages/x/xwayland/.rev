@@ -461,4 +461,14 @@
   pointer gestures for backward compatibility with legacy X11 clients.</comment>
     <requestid>1164509</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>eeffb2068c596709f87b4518f8dfae34</srcmd5>
+    <version>23.2.6</version>
+    <time>1712764127</time>
+    <user>anag+factory</user>
+    <comment>- Update to 23.2.6
+  * This is a quick bug fix release to address a regression
+    introduced by the fix for CVE-2024-31083 in xwayland-23.2.5.</comment>
+    <requestid>1166452</requestid>
+  </revision>
 </revisionlist>

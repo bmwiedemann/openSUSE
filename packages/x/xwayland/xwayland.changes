@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  9 13:30:07 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 23.2.6
+  * This is a quick bug fix release to address a regression
+    introduced by the fix for CVE-2024-31083 in xwayland-23.2.5.
+
+-------------------------------------------------------------------
 Thu Apr  4 08:07:32 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Security update 23.2.5 
