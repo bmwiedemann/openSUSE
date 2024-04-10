@@ -655,4 +655,12 @@ please use same ADI as https://build.opensuse.org/request/show/902766</comment>
   * Update `@vector-im/compound-design-tokens` in package.json (https://github.com/matrix-org/matrix-react-sdk/pull/12340).</comment>
     <requestid>1158107</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>227a4c0a0473c3ac3a0740d26d7cee5a</srcmd5>
+    <version>1.11.64</version>
+    <time>1712764208</time>
+    <user>anag+factory</user>
+    <comment>version 1.11.64</comment>
+    <requestid>1166637</requestid>
+  </revision>
 </revisionlist>
