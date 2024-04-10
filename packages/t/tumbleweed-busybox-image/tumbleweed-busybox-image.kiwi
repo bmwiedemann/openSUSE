@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<image schemaversion="6.5" name="tumbleweed-busybox-image" xmlns:suse_label_helper="com.suse.label_helper">
+<image schemaversion="7.4" name="tumbleweed-busybox-image">
   <description type="system">
     <author>Thorsten Kukuk</author>
     <contact>kukuk@suse.com</contact>
@@ -14,7 +14,7 @@
 	maintainer="Thorsten Kukuk &lt;kukuk@suse.com&gt;">
 	<subcommand execute="/bin/sh"/>
         <labels>
-          <suse_label_helper:add_prefix prefix="org.opensuse.tumbleweed.busybox">
+          <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper" prefix="org.opensuse.tumbleweed.busybox">
             <label name="org.opencontainers.image.title" value="openSUSE Busybox Container"/>
             <label name="org.opencontainers.image.description" value="Small image containing busybox."/>
             <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
@@ -38,7 +38,7 @@
   </repository>
   <packages type="bootstrap">
     <!-- Workaround for https://github.com/openSUSE/obs-build/issues/562 -->
-    <package name="busybox" replaces="kiwi-packagemanager:zypper"/>
+    <package name="busybox"/>
     <package name="busybox-adduser"/>
     <package name="busybox-attr"/>
     <package name="busybox-bc"/>

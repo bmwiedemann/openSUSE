@@ -158,4 +158,12 @@
     <comment>- Adjust for usrMerge: don't create /bin/su symlink (forwarded request 897245 from kukuk)</comment>
     <requestid>897246</requestid>
   </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>d9d14b9624c2e5f3c79a757c2f1e21ce</srcmd5>
+    <version>1.0.0</version>
+    <time>1712764136</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166579</requestid>
+  </revision>
 </revisionlist>
