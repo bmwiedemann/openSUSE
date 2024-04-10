@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr  7 15:21:48 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.08
+  * "Show tagged files only" in file windows (Shift-F4 or Ctrl-F4
+    (if system allows Ctrl function keys / Thanks to frank)
+  * Lots of UTF_8 improvements/bugfixes
+  * Improve compatibility with old unix systems / some minor fixes
+
+-------------------------------------------------------------------
 Sun Mar 17 11:56:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.07:
