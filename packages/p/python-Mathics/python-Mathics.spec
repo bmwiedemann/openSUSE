@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-Mathics
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Upstream no longer supports python2
 %define skip_python2 1
+# https://github.com/Mathics3/mathics-core/issues/743
 %define skip_python311 1
+# https://github.com/Mathics3/mathics-core/issues/932
+%define skip_python312 1
 %define pyname Mathics3
 Name:           python-Mathics%{psuffix}
 Version:        6.0.4
@@ -64,7 +67,7 @@ Requires:       python-requests
 Requires:       python-sympy >= 1.10.1
 Requires:       (python-Pillow >= 9.2 if python-base >= 3.7)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-scikit-image >= 0.17
 %if %{with test}
 # SECTION For tests
