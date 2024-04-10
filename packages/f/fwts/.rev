@@ -1110,4 +1110,26 @@
   * fwts-test: add regression tests for SKVL</comment>
     <requestid>1155106</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>67a0cacd6e94310338c552e1e5dc341f</srcmd5>
+    <version>24.03.00</version>
+    <time>1712764209</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 24.03.00:
+  * lib: fwts_version.h - update to V24.03.00
+  * debian: update changelog
+  * lib: fwts_acpi_tables: fix the build fail on armhf
+  * ACPICA: Update to version 20240322
+
+- Update to version 24.01.00:
+  * acpi: acpipld: add tests to check _PLD methods only on the connectable ports
+  * opal: fix the resource leak for cpus
+  * opal: fix the resource leak for process_dimm and process_mba
+  * acpi: srat: fix the untrusted loop bound warning
+
+- Update to version 24.01.00:
+  * opal: fix the resource leak for get_linux_mem_devices
+  * dmicheck: Don't check firmware version on anything but NVDIMM devices</comment>
+    <requestid>1166652</requestid>
+  </revision>
 </revisionlist>
