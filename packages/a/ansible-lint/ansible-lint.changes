@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 10 05:40:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.2.2:
+  * Bugfixes
+    - Raise exception while accessing rules by index (#4068)
+      @audgirka
+    - Update spdx license list (#4097) @ssbarnea
+    - Bump minimal version of black being required (#4089)
+      @ssbarnea
+    - Add systemctl get-default as acceptable command (#4087)
+      @konstruktoid
+    - Adding EDA tag to the required galaxy.yml tags (#4077)
+      @alisonlhart
+
+-------------------------------------------------------------------
 Sat Mar 16 16:26:34 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Require ruamel.yaml 0.18.5 like upstream specifies

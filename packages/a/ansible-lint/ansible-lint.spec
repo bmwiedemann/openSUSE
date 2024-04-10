@@ -40,7 +40,7 @@
 %global lib_name ansiblelint
 %{?python_enable_dependency_generator}
 Name:           ansible-lint
-Version:        24.2.1
+Version:        24.2.2
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
