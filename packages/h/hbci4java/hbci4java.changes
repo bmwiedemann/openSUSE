@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr 10 10:37:00 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- update to 3.1.79
+  * DECOUPLED nicht mehr als Default-Version und TAN-Prozess S
+    nur bei HKTAN ab Version 7
+  * Fallback auf HHDVersion.DEFAULT/DECCOUPLED, wenn nichts
+    angegeben ist. Gehe davon aus, dass das das TAN-Verfahren der
+    Zukunft bei den Banken ist.
+  * Bei der Dialoginitialisierung mit SCA und HKTAN7 per Decoupled
+    wurde im DE "TAN-Prozess" versehentlich "2" statt "S" gesendet.
+    Die Ermittlung, ob "S" verwenden muss, passierte, nachdem die
+    Nachricht bereits erstellt wurde.
+  * In DialogInitSCA fehlte das TAN2Step7 sodass bei HTKTAN-Version
+    7 gar kein HKTAN mitgesendet wurde.
+  * Erweitertes Logging bei der SCA
+  * see https://github.com/hbci4j/hbci4java/compare/hbci4j-core-3.1.76...hbci4j-core-3.1.79
+
+-------------------------------------------------------------------
 Wed Mar 20 18:06:59 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - update to 3.1.76
