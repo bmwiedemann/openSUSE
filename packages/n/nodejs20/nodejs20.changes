@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Apr  9 12:30:22 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 20.12.1:
+  * CVE-2024-27983 - Assertion failed in node::http2::Http2Session::~Http2Session()
+    leads to HTTP/2 server crash- (High) (bsc#1222244)
+  * CVE-2024-27982 - HTTP Request Smuggling via Content Length
+    Obfuscation- (Medium) (bsc#1222384)
+  * updated dependencies:
+    + llhttp version 9.2.1
+    + undici version 5.28.4 (bsc#1222530, bsc#1222603, 
+      CVE-2024-30260, CVE-2024-30261)
+
+- node-gyp-addon-gypi.patch: adapted for new unit test layouts
+- fix_ci_tests.patch: add benchmark fix
+
+-------------------------------------------------------------------
+Tue Apr  2 14:39:07 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 20.12.0:
+  * crypto: implement crypto.hash()
+  * util: add loading and parsing environment variables
+  * new connection attempt events: connectionAttempt,
+    connectionAttemptFailed, connectionAttemptTimeout
+  * sea: support embedding assets
+  * support configurable snapshot through --build-snapshot-config flag
+  * util.styleText(format, text): This function returns a formatted
+    text considering the format passed.
+  * vm: support using the default loader to handle dynamic import()
+
+- c-ares-fixes.patch: removed, upstreamed
+- nodejs-libpath.patch, versioned.patch: refreshed
+
+-------------------------------------------------------------------
 Fri Feb 16 16:04:46 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - Update to 20.11.1: (security updates)
@@ -11,7 +44,7 @@ Fri Feb 16 16:04:46 UTC 2024 - Adam Majer <adam.majer@suse.de>
   * (CVE-2024-21890, bsc#1219999) - Improper handling of wildcards in --allow-fs-read and --allow-fs-write (Medium)
   * (CVE-2024-22025, bsc#1220014) - Denial of Service by resource exhaustion in fetch() brotli decoding - (Medium)
   * undici version 5.28.3 (CVE-2024-24758, bsc#1220017)
-  * libuv version 1.48.0 (CVE-2024-24806, bsc#1219724)
+  * libuv version 1.48.0 (CVE-2024-24806, bsc#1220053)
 
 -------------------------------------------------------------------
 Mon Feb 12 14:27:04 UTC 2024 - Adam Majer <adam.majer@suse.de>

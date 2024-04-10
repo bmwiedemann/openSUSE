@@ -314,4 +314,37 @@ https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md#20.10.0
   * libuv version 1.48.0 (CVE-2024-24806, bsc#1219724)</comment>
     <requestid>1147152</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a27b41c9f55821fde6f0e4713c2dbbd6</srcmd5>
+    <version>20.12.1</version>
+    <time>1712764195</time>
+    <user>anag+factory</user>
+    <comment>- Update to 20.12.1:
+  * CVE-2024-27983 - Assertion failed in node::http2::Http2Session::~Http2Session()
+    leads to HTTP/2 server crash- (High) (bsc#1222244)
+  * CVE-2024-27982 - HTTP Request Smuggling via Content Length
+    Obfuscation- (Medium) (bsc#1222384)
+  * updated dependencies:
+    + llhttp version 9.2.1
+    + undici version 5.28.4 (bsc#1222530, bsc#1222603, 
+      CVE-2024-30260, CVE-2024-30261)
+- node-gyp-addon-gypi.patch: adapted for new unit test layouts
+- fix_ci_tests.patch: add benchmark fix
+
+- Update to 20.12.0:
+  * crypto: implement crypto.hash()
+  * util: add loading and parsing environment variables
+  * new connection attempt events: connectionAttempt,
+    connectionAttemptFailed, connectionAttemptTimeout
+  * sea: support embedding assets
+  * support configurable snapshot through --build-snapshot-config flag
+  * util.styleText(format, text): This function returns a formatted
+    text considering the format passed.
+  * vm: support using the default loader to handle dynamic import()
+- c-ares-fixes.patch: removed, upstreamed
+- nodejs-libpath.patch, versioned.patch: refreshed
+
+  * libuv version 1.48.0 (CVE-2024-24806, bsc#1220053)</comment>
+    <requestid>1166624</requestid>
+  </revision>
 </revisionlist>
