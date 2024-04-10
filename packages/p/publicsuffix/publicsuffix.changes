@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Apr 10 12:58:33 UTC 2024 - mpluskal@suse.com
+
+- Update to version 20240410:
+  * Removing `ravendb.me` (#1841)
+  * Updating psl: Adding myfritz.link (follow up PR#77) (#1761)
+  * Add `framer.ai` (#1831)
+  * chore: add `is-a.dev` (#1949)
+  * Add StackBlitz (#1939)
+  * Add `unison-services.cloud` (#1839)
+  * Add `is-cool.dev`, `is-local.org`, `is-not-a.dev` and `localplayer.dev` (#1672)
+  * Add grayjayleagues.com (#1742)
+  * Add `runcontainers.dev` for Libre IT Ltd (#1783)
+  * Add `heliohost.us`, `helioho.st`(#1825)
+  * Remove `123sait.ru` (#1844)
+  * Add MyDNS.JP Dynamic DNS Service (#1937)
+  * add `scrypted.io` (#1826)
+  * Add `darklang.io` (#1880)
+  * Update `cloudns.net` dynamic dns domains listing (#1593)
+  * Add wildcard to `snowflake.app` and `privatelink.snowflake.app` (#1743)
+  * Add `preview.csb.app` and `csb.app` (#1648)
+  * Add `nimsite.uk` (#1797)
+  * add getlocalcert.net domains (#1798)
+  * Add wadl.top (#1924)
+  * ADD: `can.re` (#1651)
+  * Add cdn77-storage.com and rsc.contentproxy9.cz (#1882)
+  * add `srv.us`, `xmit.co`
+  * Add at.emf.camp (#1955)
+  * util: gTLD data autopull updates for 2024-03-28T15:13:37 UTC (#1952)
+
+-------------------------------------------------------------------
 Thu Mar 28 14:43:13 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20240326:
