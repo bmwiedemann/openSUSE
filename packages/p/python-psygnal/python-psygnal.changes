@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr  3 07:38:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * refactor: change EmitLoopError message, and mechanism of info
+    gathering \#302 (tlambert03)
+  * feat: add signal aliases on SignalGroup \#299 (getzze)
+  * feat!: Rename `recursion_mode` to `reemission`.  Rename
+    `deferred` to `queued`.  Add `latest-only` mode.
+    \(technically breaking\) \#296 (tlambert03)
+
+-------------------------------------------------------------------
 Sat Mar 16 09:32:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.2:
