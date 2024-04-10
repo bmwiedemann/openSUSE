@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 10 09:22:37 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed python-contextvars dependency
+
+-------------------------------------------------------------------
 Fri Apr 21 12:32:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

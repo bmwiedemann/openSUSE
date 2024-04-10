@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-trio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pytest-trio
 Version:        0.8.0
@@ -29,13 +27,11 @@ Source:         https://github.com/python-trio/pytest-trio/archive/v%{version}.t
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-contextvars >= 2.1
 Requires:       python-outcome >= 1.1.0
 Requires:       python-pytest >= 7.2.0
 Requires:       python-trio >= 0.22.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module contextvars >= 2.1}
 BuildRequires:  %{python_module hypothesis >= 3.64}
 BuildRequires:  %{python_module outcome >= 1.1.0}
 # we really need newer pytest in tests than is required by the package
@@ -49,7 +45,7 @@ This is a pytest plugin to help you test projects that use Trio,
 a friendly library for concurrency and async I/O in Python.
 
 %prep
-%setup -q -n pytest-trio-%{version}
+%autosetup -p1 -n pytest-trio-%{version}
 
 rm pytest.ini
 rm pytest_trio/_tests/test_hypothesis_interaction.py
@@ -70,6 +66,7 @@ mv pytest_trio/_tests/ tests
 %files %{python_files}
 %doc README.rst
 %license LICENSE LICENSE.APACHE2 LICENSE.MIT
-%{python_sitelib}/*
+%{python_sitelib}/pytest_trio
+%{python_sitelib}/pytest_trio-%{version}*-info
 
 %changelog
