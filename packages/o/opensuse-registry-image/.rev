@@ -49,4 +49,12 @@
 - Follow rename of docker-distribution-registry to
   distribution-registry (following upstream namings).</comment>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>950d2519af5acee7b6ce9ce7e454db51</srcmd5>
+    <version>1.0.0</version>
+    <time>1712764187</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166578</requestid>
+  </revision>
 </revisionlist>

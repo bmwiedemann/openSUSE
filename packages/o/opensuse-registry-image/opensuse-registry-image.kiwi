@@ -2,7 +2,7 @@
 
 <!-- OBS-ExcludeArch: i586 s390 -->
 
-<image schemaversion="6.9" name="opensuse-registry-image" xmlns:suse_label_helper="com.suse.label_helper">
+<image schemaversion="7.4" name="opensuse-registry-image">
   <description type="system">
     <author>Thorsten Kukuk</author>
     <contact>kukuk@suse.com</contact>
@@ -28,7 +28,7 @@
           <argument name='/etc/registry/config.yml'/>
         </subcommand>
         <labels>
-          <suse_label_helper:add_prefix prefix="org.opensuse.registry">
+          <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper" prefix="org.opensuse.registry">
             <label name="org.opencontainers.image.title" value="openSUSE registry container"/>
             <label name="org.opencontainers.image.description" value="Image containing docker distribution registry."/>
             <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
