@@ -8,12 +8,10 @@ Subject: [PATCH] Fix compile issues caused by Imath being moved out of IlmBase
  src/Line.cc | 4 ++--
  2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/SConstruct b/SConstruct
-index 026efbf..7df6e03 100644
 --- a/SConstruct
 +++ b/SConstruct
-@@ -9,7 +9,7 @@ env['CCFLAGS'] = ['-Wall', '-Wextra', '-Wno-reorder', '-Wno-unused-parameter'] +
- env['LIBS'] = ['GLU', 'GL', 'protobuf', 'IL']
+@@ -12,7 +12,7 @@ else:
+ env['LIBS'] = ['GLU', 'GL', 'IL']
  env['CPPPATH'] = ['#', '#/src', '#/external/tinyXML', '#/external/flextGL/', '/usr/include/OpenEXR']
  
 -env.ParseConfig("pkg-config IlmBase --cflags --libs")
@@ -21,8 +19,6 @@ index 026efbf..7df6e03 100644
  env.ParseConfig("pkg-config libglfw --cflags --libs")
  env.ParseConfig("pkg-config ftgl --cflags --libs")
  env.ParseConfig("pkg-config sigc++-2.0 --cflags --libs")
-diff --git a/src/Line.cc b/src/Line.cc
-index 10a8193..6a07f02 100644
 --- a/src/Line.cc
 +++ b/src/Line.cc
 @@ -1,7 +1,7 @@
@@ -35,6 +31,3 @@ index 10a8193..6a07f02 100644
  
  bool Line::intersects(const Line& seg)
  {    
--- 
-2.33.0
-

@@ -1,7 +1,5 @@
-Index: pink-pony-1.4.1/SConstruct
-===================================================================
---- pink-pony-1.4.1.orig/SConstruct
-+++ pink-pony-1.4.1/SConstruct
+--- a/SConstruct
++++ b/SConstruct
 @@ -9,7 +9,7 @@ if 'CCFLAGS' in os.environ:
  	env['CCFLAGS'] = os.environ['CCFLAGS']
  else:
@@ -10,7 +8,7 @@ Index: pink-pony-1.4.1/SConstruct
 +env['LIBS'] = ['GLU', 'GL', 'IL']
  env['CPPPATH'] = ['#', '#/src', '#/external/tinyXML', '#/external/flextGL/', '/usr/include/OpenEXR']
  
- env.ParseConfig("pkg-config Imath --cflags --libs")
+ env.ParseConfig("pkg-config IlmBase --cflags --libs")
 @@ -17,6 +17,7 @@ env.ParseConfig("pkg-config libglfw --cf
  env.ParseConfig("pkg-config ftgl --cflags --libs")
  env.ParseConfig("pkg-config sigc++-2.0 --cflags --libs")

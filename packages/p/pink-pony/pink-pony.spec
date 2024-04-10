@@ -27,8 +27,8 @@ Source0:        https://github.com/ginkgo/pink-pony/archive/refs/tags/%{version}
 Patch0:         datadir.patch
 Patch1:         script.patch
 Patch2:         pink-pony-1.4.1.diff
-Patch3:         0001-Fix-compile-issues-caused-by-Imath-being-moved-out-o.patch
-Patch4:         pink-pony-1.4.1-protobuf.diff
+Patch3:         pink-pony-1.4.1-protobuf.diff
+Patch4:         0001-Fix-compile-issues-caused-by-Imath-being-moved-out-o.patch
 BuildRequires:  DevIL-devel
 BuildRequires:  SDL-devel
 BuildRequires:  SDL_mixer-devel
@@ -40,6 +40,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  scons
 BuildRequires:  pkgconfig(libglfw)
 BuildRequires:  pkgconfig(protobuf)
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 Requires:       pink-pony-data = %{version}
 
 %package data
@@ -69,8 +74,10 @@ The last pony standing wins the game.
 %patch -P 1 -p1
 %patch -P 2 -p1
 # apply patch3 and patch4 only on openSUSE Tumbleweed
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || (0%{?suse_version} == 1500 && 0%{?sle_version} > 150300)
 %patch -P 3 -p1
+%endif
+%if 0%{?suse_version} >= 1550
 %patch -P 4 -p1
 %endif
 
