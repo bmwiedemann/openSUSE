@@ -135,4 +135,12 @@
     <comment></comment>
     <requestid>1164203</requestid>
   </revision>
+  <revision rev="18" vrev="15">
+    <srcmd5>af0ec1eda66c22bf691e772c927406c7</srcmd5>
+    <version>1.6.0</version>
+    <time>1712764204</time>
+    <user>anag+factory</user>
+    <comment>fix build with maven-surefire 3.2.5</comment>
+    <requestid>1166646</requestid>
+  </revision>
 </revisionlist>

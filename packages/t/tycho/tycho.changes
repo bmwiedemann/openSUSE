@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 10 12:05:15 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * tycho-surefire3.patch
+    + fix build against maven-surefire 3.2.5
+
+-------------------------------------------------------------------
 Tue Apr  2 17:35:47 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on plexus-xml where relevant
