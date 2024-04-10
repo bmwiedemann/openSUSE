@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr  9 14:11:15 MDT 2024 - carnold@suse.com
+
+- Update to Xen 4.18.2 security bug fix release (bsc#1027519)
+  xen-4.18.2-testing-src.tar.bz2
+  * No upstream changelog found in sources or webpage
+- bsc#1221984 - VUL-0: CVE-2023-46842: xen: x86 HVM hypercalls may
+  trigger Xen bug check (XSA-454)
+- bsc#1222302 - VUL-0: CVE-2024-31142: xen: x86: Incorrect logic
+  for BTC/SRSO mitigations (XSA-455)
+- bsc#1222453 - VUL-0: CVE-2024-2201: xen: x86: Native Branch
+  History Injection (XSA-456)
+- Dropped patch contained in new tarball
+  65f83951-x86-mm-use-block_lock_speculation-in.patch
+
+-------------------------------------------------------------------
 Mon Mar 25 15:30:00 CET 2024 - jbeulich@suse.com
 
 - bsc#1221334 - VUL-0: CVE-2024-2193: xen: GhostRace: Speculative

@@ -2918,4 +2918,12 @@
     <comment>Update to Xen version 4.18.1. Includes security fixes for bsc#1221332 CVE-2023-28746 XSA-452, bsc#1221334 CVE-2024-2193 XSA-453</comment>
     <requestid>1162273</requestid>
   </revision>
+  <revision rev="343" vrev="1">
+    <srcmd5>9a35aaeadb307de2cd8fa31c4d0adf98</srcmd5>
+    <version>4.18.2_02</version>
+    <time>1712764134</time>
+    <user>anag+factory</user>
+    <comment>Update to Xen version 4.18.2. Includes security fixes for bsc#1221984 CVE-2023-46842 XSA-454, bsc#1222302 CVE-2024-31142 XSA-455, bsc#1222453 CVE-2024-2201 XSA-456</comment>
+    <requestid>1166538</requestid>
+  </revision>
 </revisionlist>

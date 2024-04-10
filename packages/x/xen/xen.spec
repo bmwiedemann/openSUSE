@@ -28,7 +28,7 @@
 
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
-%define xen_build_dir xen-4.18.1-testing
+%define xen_build_dir xen-4.18.2-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -119,12 +119,12 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.18.1_02
+Version:        4.18.2_02
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.18.1-testing-src.tar.bz2
+Source0:        xen-4.18.2-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source2:        mini-os.tar.bz2
 Source9:        xen.changes
@@ -154,7 +154,6 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
-Patch1:         65f83951-x86-mm-use-block_lock_speculation-in.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch
