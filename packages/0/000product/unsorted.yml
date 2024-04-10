@@ -201,6 +201,7 @@ unsorted:
   - OpenRGB-udev-rules 
   - OpenSceneGraph 
   - OpenSceneGraph-examples 
+  - OpenSceneGraph-plugin-collada 
   - OpenSceneGraph-plugin-gdal 
   - OpenSceneGraph-plugin-gstreamer 
   - OpenSceneGraph-plugin-opencascade 
@@ -2861,6 +2862,8 @@ unsorted:
   - cutterff 
   - cutterff-lang 
   - cvise 
+  - cvm-guest-attestation 
+  - cvm-guest-attestation-devel 
   - cvs 
   - cvs-doc 
   - cvsps 
@@ -4792,6 +4795,7 @@ unsorted:
   - gdouros-symbola-fonts 
   - gdouros-text-fonts 
   - gdouros-unidings-fonts 
+  - gdu 
   - geany 
   - geany-devel 
   - geany-doc 
@@ -9003,6 +9007,8 @@ unsorted:
   - javacc-manual 
   - javacc-maven-plugin 
   - javacc-maven-plugin-javadoc 
+  - javadoc-parser 
+  - javadoc-parser-javadoc 
   - javaewah 
   - javaewah-javadoc 
   - javahelp2 
@@ -9324,6 +9330,8 @@ unsorted:
   - junit5-bom 
   - junit5-guide 
   - junit5-javadoc 
+  - junit5-minimal 
+  - junit5-minimal-javadoc 
   - juniversalchardet 
   - juniversalchardet-javadoc 
   - jupyter-anywidget 
@@ -9483,6 +9491,7 @@ unsorted:
   - kawaii-player 
   - kbackup 
   - kbackup-lang 
+  - kbd-legacy 
   - kbdsniffd 
   - kbfs 
   - kbfs-git 
@@ -11654,6 +11663,7 @@ unsorted:
   - libayatana-indicator3-7 
   - libayatana-indicator3-devel 
   - libayatana-indicator7 
+  - libazguestattestation1 
   - libazurestorage7 
   - libb2-devel 
   - libb64 
@@ -22582,8 +22592,6 @@ unsorted:
   - postgresql11-plperl 
   - postgresql11-plpython 
   - postgresql11-pltcl 
-  - postgresql11-postgis 
-  - postgresql11-postgis-utils 
   - postgresql11-server 
   - postgresql11-server-devel 
   - postgresql11-test 
@@ -22690,6 +22698,8 @@ unsorted:
   - postgresql16-plr 
   - postgresql16-plr-doc 
   - postgresql16-pltcl 
+  - postgresql16-postgis 
+  - postgresql16-postgis-utils 
   - postgresql16-server-devel 
   - postgresql16-test 
   - postgresql16-timescaledb 
@@ -26553,6 +26563,7 @@ unsorted:
   - python310-shodan 
   - python310-shortuuid 
   - python310-show-in-file-manager 
+  - python310-shtab 
   - python310-sidecar 
   - python310-sidpy 
   - python310-sievelib 
@@ -30003,6 +30014,7 @@ unsorted:
   - python311-shodan 
   - python311-shortuuid 
   - python311-show-in-file-manager 
+  - python311-shtab 
   - python311-sidecar 
   - python311-sidpy 
   - python311-sievelib 
@@ -30605,7 +30617,6 @@ unsorted:
   - python312-MarkupPy 
   - python312-MarkupSafe 
   - python312-Markups 
-  - python312-Mathics 
   - python312-Mathics-Scanner 
   - python312-MechanicalSoup 
   - python312-MiniMock 
@@ -33557,6 +33568,7 @@ unsorted:
   - python312-shodan 
   - python312-shortuuid 
   - python312-show-in-file-manager 
+  - python312-shtab 
   - python312-sidecar 
   - python312-sidpy 
   - python312-sievelib 
@@ -34086,7 +34098,6 @@ unsorted:
   - python38-volatility3 
   - python39 
   - python39-32bit 
-  - python39-WSME 
   - python39-Wand 
   - python39-autobahn 
   - python39-base 
@@ -34099,11 +34110,8 @@ unsorted:
   - python39-doc-devhelp 
   - python39-idle 
   - python39-librosa 
-  - python39-mitmproxy-wireguard 
   - python39-omni-camera 
   - python39-pivy 
-  - python39-plplot 
-  - python39-plplot-pyqt5 
   - python39-pycapnp 
   - python39-rss2email 
   - python39-stdeb 
@@ -34181,6 +34189,7 @@ unsorted:
   - qemu-vhost-user-gpu 
   - qgis 
   - qgis-devel 
+  - qgis-lang 
   - qgis-plugin-grass 
   - qgis-sample-data 
   - qgit 
