@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- OBS-Profiles: @BUILD_FLAVOR@ -->
-<image schemaversion="7.2" name="openSUSE-MicroOS" displayname="openSUSE MicroOS">
+<image schemaversion="7.4" name="openSUSE-MicroOS" displayname="openSUSE MicroOS">
     <description type="system">
         <author>openSUSE Project</author>
         <contact>opensuse-factory@opensuse.org</contact>
@@ -667,7 +667,7 @@
         </type>
     </preferences>
     <repository type="rpm-md" >
-        <source path='obsrepositories:/'/>
+        <source path="obsrepositories:/"/>
     </repository>
     <packages type="image">
         <package name="live-add-yast-repos"/>
