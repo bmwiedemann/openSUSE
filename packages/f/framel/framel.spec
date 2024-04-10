@@ -20,7 +20,7 @@
 %define python_subpackage_only 1
 %define shlib lib%{name}8
 Name:           framel
-Version:        8.47.2
+Version:        8.47.3
 Release:        0
 Summary:        Library to manipulate Gravitational Wave Detector data in frame format
 License:        LGPL-2.1-or-later
