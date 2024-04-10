@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 10 05:38:53 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Remove versioned branding and explain why it must not be added again (bsc#1222579)
+- Add sway.rpmlintrc to mask the spurious versioned branding warning
+- Mask empty %check section rpmlint warning
+
+-------------------------------------------------------------------
 Wed Feb 28 00:56:07 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Fix broken package by declaring the actual version of branding package of sway which

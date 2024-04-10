@@ -1,0 +1,5 @@
+# Branding needs to be unversioned, otherwise it breaks other branding providers
+# such as openSUSEway (bsc#1222579)
+addFilter("branding-requires-unversioned")
+# sway does not need a %check section
+addFilter("no-%check-section")

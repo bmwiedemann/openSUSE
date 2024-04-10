@@ -16,7 +16,6 @@
 #
 
 
-%global  _branding_version 0.16.0
 Name:           sway
 Version:        1.9
 Release:        0
@@ -29,6 +28,7 @@ Source1:        https://github.com/swaywm/sway/releases/download/%{version}/%{na
 Source2:        https://emersion.fr/.well-known/openpgpkey/hu/dj3498u4hyyarh35rkjfnghbjxug6b19#/%{name}.keyring
 Source3:        sway-portals.conf
 Source4:        https://github.com/OctopusET/sway-contrib/archive/refs/tags/%{version}-contrib.0.tar.gz#/sway-contrib-%{version}.tar.gz
+Source5:        sway.rpmlintrc
 BuildRequires:  gcc-c++
 #BuildRequires:  libxslt-tools
 BuildRequires:  libevdev-devel
@@ -56,8 +56,9 @@ BuildConflicts: pkgconfig(wlroots) <= 0.16.0
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig(wlroots) >= 0.17.0
 BuildRequires:  pkgconfig(xkbcommon)
-# RPMLINT requires to have a version
-Requires:       %{name}-branding = %{_branding_version}
+# WARNING: do not set this to versioned, as it breaks other branding providers
+# such as openSUSEway (bsc#1222579)
+Requires:       %{name}-branding
 %if 0%{?suse_version}
 # I definitely recommend Xwayland
 Recommends:     xorg-x11-server-wayland
@@ -80,7 +81,7 @@ Group:          System/GUI/Other
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and branding-upstream)
 Conflicts:      %{name}-branding
-Provides:       %{name}-branding = %{_branding_version}
+Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
 #BRAND: /etc/sway/config contains upstream config and brand
 
