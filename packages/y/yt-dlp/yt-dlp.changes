@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  9 20:25:02 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2024.04.09
+  * Add new option --progress-delta, --impersonate,
+    --list-impersonate-targets, --no-break-on-existing.
+  * Infer acodec for single-codec containers
+  * Prevent RCE when using --exec with %q (CVE-2024-22423)
+
+-------------------------------------------------------------------
 Sun Mar 10 23:36:58 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2024.03.10
