@@ -6,7 +6,6 @@
   <packaging>pom</packaging>
   <modules>
     <module>junit-bom</module>
-    <module>junit-platform-commons</module>
     <module>junit-platform-console</module>
     <module>junit-platform-console-standalone</module>
     <module>junit-platform-engine</module>
@@ -16,7 +15,6 @@
     <module>junit-platform-suite-api</module>
     <module>junit-platform-suite-commons</module>
     <module>junit-jupiter</module>
-    <module>junit-jupiter-api</module>
     <module>junit-jupiter-engine</module>
     <module>junit-jupiter-migrationsupport</module>
     <module>junit-jupiter-params</module>
