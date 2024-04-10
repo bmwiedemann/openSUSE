@@ -32,13 +32,9 @@ Source0:        https://github.com/fedora-java/jurand/archive/refs/tags/%{versio
 Patch0:         jurand-cxx20.patch
 BuildRequires:  %{rb_default_ruby_suffix}-rubygem-asciidoctor
 BuildRequires:  diffutils
+BuildRequires:  gcc%{?with_gcc}-c++
 BuildRequires:  make
 BuildRequires:  xmlto
-%if 0%{?with_gcc:1}
-BuildRequires:  gcc%{with_gcc}-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 
 %description
 The tool can be used for patching .java sources in cases where using sed is
@@ -51,7 +47,7 @@ rather than applying simple regular expressions on the source code.
 
 %build
 
-%if 0%{?with_gcc:1}
+%if 0%{?with_gcc}
 export CXX=g++-%{with_gcc}
 export CC=gcc-%{with_gcc}
 %endif
@@ -66,7 +62,7 @@ export mandir=%{_mandir}/man7
 ./install.sh
 
 %check
-%if 0%{?with_gcc:1}
+%if 0%{?with_gcc}
 export CXX=g++-%{with_gcc}
 export CC=gcc-%{with_gcc}
 %endif
