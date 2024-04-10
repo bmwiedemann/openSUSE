@@ -190,4 +190,13 @@
   * Make sdbootutil usable with no snapshot Systems (forwarded request 1166225 from lnussel)</comment>
     <requestid>1166226</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e0a87b2bcbda82150cf66e68ee220e7d</srcmd5>
+    <version>1+git20240410.3325802</version>
+    <time>1712764125</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1+git20240410.3325802:
+  * fallback for machine-id (forwarded request 1166657 from lnussel)</comment>
+    <requestid>1166658</requestid>
+  </revision>
 </revisionlist>

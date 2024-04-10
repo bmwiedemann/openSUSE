@@ -27,7 +27,7 @@ BuildRequires:  git-core
 %define git_version %{nil}
 %endif
 Name:           sdbootutil
-Version:        1+git20240408.49e4021%{git_version}
+Version:        1+git20240410.3325802%{git_version}
 Release:        0
 Summary:        script to install shim with sd-boot
 License:        MIT
