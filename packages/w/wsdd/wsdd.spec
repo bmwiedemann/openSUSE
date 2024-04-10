@@ -17,7 +17,7 @@
 
 
 Name:           wsdd
-Version:        0.7.1
+Version:        0.8
 Release:        0
 Summary:        A Web Service Discovery host daemon
 License:        MIT
@@ -25,13 +25,12 @@ URL:            https://github.com/christgau/wsdd
 Source:         https://github.com/christgau/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
 Source1:        %{name}-init.sh
 Source2:        %{name}.service.in
+%if 0%{suse_version} >= 1599
 Source3:        %{name}.xml
+%endif
 Source4:        sysconfig.%{name}
 Source5:        %{name}.conf
 Source6:        %{name}-user.conf
-%if 0%{suse_version} < 1599
-Source7:        ws-discovery-udp.xml
-%endif
 Patch1:         %{name}-shebang.patch
 BuildRequires:  firewall-macros
 BuildRequires:  python-rpm-macros
@@ -69,10 +68,12 @@ install -m 644 -D man/wsdd.8 %{buildroot}/%{_mandir}/man8/wsdd.8
 install -m 755 -D %{SOURCE1} %{buildroot}%{_libexecdir}/wsdd-init.sh
 mkdir -p %{buildroot}%{_unitdir}
 sed 's#@LIBEXECDIR@#%{_libexecdir}#' %{SOURCE2} >%{buildroot}%{_unitdir}/wsdd.service
+%if 0%{?sle_version} <  150600
+install -m 644 -D etc/firewalld/services/wsdd.xml %{buildroot}%{_prefix}/lib/firewalld/services/wsdd.xml
+%else
 install -m 644 -D %{SOURCE3} %{buildroot}%{_prefix}/lib/firewalld/services/wsdd.xml
-%if 0%{suse_version} < 1599
-install -m 644 -D %{SOURCE7} %{buildroot}%{_prefix}/lib/firewalld/services/ws-discovery-udp.xml
 %endif
+install -m 644 -D etc/firewalld/services/wsdd-http.xml %{buildroot}%{_prefix}/lib/firewalld/services/wsdd-http.xml
 install -m 644 -D %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.wsdd
 install -m 755 -d %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
@@ -82,7 +83,9 @@ mkdir -p %{buildroot}/run/wsdd
 mkdir -p %{buildroot}%{_localstatedir}/lib/wsdd
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/
-%python3_fix_shebang
+%?python3_fix_shebang
+
+%check
 
 %pre -f %{name}.pre
 %service_add_pre wsdd.service
@@ -111,9 +114,7 @@ install -m 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/services
 %{_prefix}/lib/firewalld/services/wsdd.xml
-%if 0%{suse_version} < 1599
-%{_prefix}/lib/firewalld/services/ws-discovery-udp.xml
-%endif
+%{_prefix}/lib/firewalld/services/wsdd-http.xml
 %{_fillupdir}/sysconfig.%{name}
 %{_sysusersdir}/%{name}-user.conf
 %dir %attr(0755,wsdd,wsdd) %ghost /run/%{name}

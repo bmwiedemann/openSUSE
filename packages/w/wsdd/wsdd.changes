@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Apr  3 10:52:13 UTC 2024 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Fix build for SLE_15
+
+-------------------------------------------------------------------
+Sun Mar 31 14:32:53 UTC 2024 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Update to version 0.8
+  * Configuration files for firewalld added
+  * Show device type and allow filtering in API's list command
+  * Add option --metadata-timeout to set the timeout for the HTTP-based
+    metadata exchange
+  * The employed UUID is now read from /etc/{machine-id,hostid} before
+    falling by back to the UUID derivation from the host name.
+  * Handle addresses with zone id by ignoring the interface part
+  * Do not crash with asyncio future error when non-existing interface is
+    provided
+- Remove some bashism from wsdd-init.sh
+- Use the unmodified service files from wsdd for Leap 15.5 and below, else
+  reuse ws-discovery-udp service from firewalld
+
+-------------------------------------------------------------------
 Fri Feb 23 10:39:43 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

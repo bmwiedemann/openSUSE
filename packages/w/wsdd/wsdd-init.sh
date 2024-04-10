@@ -19,8 +19,7 @@ fi
 
 WSDD_INTERFACE_ARGS=""
 if [ "${WSDD_INTERFACES}" != "" ]; then
-  for intf in "${WSDD_INTERFACES[@]}"; do
-    echo ${intf}
+  for intf in ${WSDD_INTERFACES}; do
     WSDD_INTERFACE_ARGS="${WSDD_INTERFACE_ARGS} -i \"${intf}\""
   done
 fi

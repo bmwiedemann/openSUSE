@@ -2,6 +2,6 @@
 <service>
   <short>wsdd</short>
   <description>Web Service Discovery</description>
-  <port protocol="tcp" port="5357"/>
+  <include service="wsdd-http"/>
   <include service="ws-discovery-udp"/>
 </service>
