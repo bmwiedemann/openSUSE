@@ -58,6 +58,7 @@ cd src
 install -m 755 -D -t %{buildroot}/%{_libexecdir}/%{suite} tpm_server
 
 %files
+%license LICENSE
 %dir %{_libexecdir}/%{suite}
 %{_libexecdir}/%{suite}/tpm_server
 %doc ibmtpm.doc
