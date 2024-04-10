@@ -1,7 +1,7 @@
 #
 # spec file for package OpenSceneGraph
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,16 @@
 %endif
 
 %bcond_without asio
+
 %bcond_without dcmtk
 %bcond_without fox
 %bcond_without occt
 
 %if 0%{?suse_version} >= 1550
+%bcond_without collada
 %bcond_with    gtk2
 %else
+%bcond_with    collada
 %bcond_without gtk2
 %endif
 
@@ -89,6 +92,11 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(xrandr)
+%if %{with collada}
+BuildRequires:  collada-dom-devel
+BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_system-devel
+%endif
 %if %{with dcmtk}
 BuildRequires:  cmake(DCMTK)
 BuildRequires:  pkgconfig(icu-uc)
@@ -204,9 +212,9 @@ This package contains some plugins for OpenSceneGraph.
 %package plugin-ffmpeg
 Summary:        FFmpeg plugin for OpenSceneGraph
 Group:          Productivity/Graphics/Other
-Provides:       OpenSceneGraphPlugin(ext:mov)
-Provides:       OpenSceneGraphPlugin(ext:avi)
 Provides:       %{name}-plugins:%{_libdir}/osgPlugins-%{version}/osgdb_ffmpeg.so
+Provides:       OpenSceneGraphPlugin(ext:avi)
+Provides:       OpenSceneGraphPlugin(ext:mov)
 Conflicts:      %{name}-plugins < %{version}-%{release}
 
 %description plugin-ffmpeg
@@ -215,11 +223,24 @@ graphic applications.
 
 This package contains the FFmpeg plugin for OpenSceneGraph.
 
+%package plugin-collada
+Summary:        COLLADA plugin for OpenSceneGraph
+Group:          Productivity/Graphics/Other
+Provides:       %{name}-plugins:%{_libdir}/osgPlugins-%{version}/osgdb_dae.so
+Provides:       OpenSceneGraphPlugin(ext:dae)
+Conflicts:      %{name}-plugins < %{version}-%{release}
+
+%description plugin-collada
+The OpenSceneGraph is a graphics toolkit for the development of
+graphic applications.
+
+This package contains the COLLADA plugin for OpenSceneGraph.
+
 %package plugin-gdal
 Summary:        GDAL plugin for OpenSceneGraph
 Group:          Productivity/Graphics/Other
-Provides:       OpenSceneGraphPlugin(ext:gdal)
 Provides:       %{name}-plugins:%{_libdir}/osgPlugins-%{version}/osgdb_gdal.so
+Provides:       OpenSceneGraphPlugin(ext:gdal)
 Conflicts:      %{name}-plugins < %{version}-%{release}
 
 %description plugin-gdal
@@ -231,9 +252,9 @@ This package contains the GDAL plugin for OpenSceneGraph.
 %package plugin-gstreamer
 Summary:        GStreamer plugin for OpenSceneGraph
 Group:          Productivity/Graphics/Other
-Provides:       OpenSceneGraphPlugin(ext:mov)
-Provides:       OpenSceneGraphPlugin(ext:avi)
 Provides:       %{name}-plugins:%{_libdir}/osgPlugins-%{version}/osgdb_gstreamer.so
+Provides:       OpenSceneGraphPlugin(ext:avi)
+Provides:       OpenSceneGraphPlugin(ext:mov)
 Conflicts:      %{name}-plugins < %{version}-%{release}
 
 %description plugin-gstreamer
@@ -245,9 +266,9 @@ This package contains the GStreamer plugin for OpenSceneGraph.
 %package plugin-opencascade
 Summary:        OpenCASCADE plugin for OpenSceneGraph
 Group:          Productivity/Graphics/Other
-Provides:       OpenSceneGraphPlugin(ext:step)
-Provides:       OpenSceneGraphPlugin(ext:iges)
 Provides:       %{name}-plugins:%{_libdir}/osgPlugins-%{version}/osgdb_opencascade.so
+Provides:       OpenSceneGraphPlugin(ext:iges)
+Provides:       OpenSceneGraphPlugin(ext:step)
 Conflicts:      %{name}-plugins < %{version}-%{release}
 
 %description plugin-opencascade
@@ -259,8 +280,8 @@ This package contains the OpenCASCADE plugin for OpenSceneGraph.
 %package plugin-pdf
 Summary:        PDF plugin for OpenSceneGraph
 Group:          Productivity/Graphics/Other
-Provides:       OpenSceneGraphPlugin(ext:pdf)
 Provides:       %{name}-plugins:%{_libdir}/osgPlugins-%{version}/osgdb_pdf.so
+Provides:       OpenSceneGraphPlugin(ext:pdf)
 Conflicts:      %{name}-plugins < %{version}-%{release}
 
 %description plugin-pdf
@@ -285,10 +306,10 @@ This package contains some example applications built with OpenSceneGraph
 %prep
 %setup -q -n %{name}-%{name}-%{version}
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 %endif
-%patch2 -p1
+%patch -P 2 -p1
 
 for file in *.md *.txt; do
 	sed -i "s/\r//g" "$file"
@@ -296,6 +317,11 @@ done
 chmod 644 *.md *.txt
 
 %build
+%if %{with collada}
+  export COLLADA_DIR="%{_includedir}/collada-dom2.5/1.4"
+%endif
+# silence warning spam
+CXXFLAGS="-Wno-deprecated-copy"
 %cmake \
   -DCMAKE_RELWITHDEBINFO_POSTFIX="" \
   -DBUILD_OSG_EXAMPLES=ON \
@@ -336,12 +362,18 @@ mv %{buildroot}%{_datadir}/OpenSceneGraph \
 
 %files plugins
 %{_libdir}/osgPlugins-%{version}/*.so
+%exclude %{_libdir}/osgPlugins-%{version}/osgdb_dae*.so
 %exclude %{_libdir}/osgPlugins-%{version}/osgdb_ffmpeg*.so
 %exclude %{_libdir}/osgPlugins-%{version}/osgdb_gdal*.so
 %exclude %{_libdir}/osgPlugins-%{version}/osgdb_gstreamer*.so
 %exclude %{_libdir}/osgPlugins-%{version}/osgdb_opencascade*.so
 %exclude %{_libdir}/osgPlugins-%{version}/osgdb_ogr*.so
 %exclude %{_libdir}/osgPlugins-%{version}/osgdb_pdf*.so
+
+%if %{with collada}
+%files plugin-collada
+%{_libdir}/osgPlugins-%{version}/osgdb_dae*.so
+%endif
 
 %if %{with ffmpeg}
 %files plugin-ffmpeg
