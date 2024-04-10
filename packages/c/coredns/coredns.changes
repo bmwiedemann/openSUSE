@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 09 08:06:46 UTC 2024 - andrea.manzini@suse.com
+
+- Update to upstream head (git commit #5a52707):
+  * bump deps to address security issue CVE-2024-22189
+  * Return RcodeServerFailure when DNS64 has no next plugin (#6590)
+  * add plusserver to adopters (#6565)
+  * Change the log flags to be a variable that can be set prior to calling Run (#6546)
+  * Enable Prometheus native histograms (#6524)
+  * forward: respect context (#6483)
+  * add client labels to k8s plugin metadata (#6475)
+  * fix broken link in webpage (#6488)
+  * Repo controlled Go version (#6526)
+  * removed the mutex locks with atomic bool (#6525)
+- testsuite run during build (2 tests are skipped due to network requirement)
+- note: 1.11.2 was briefly tagged/released and then revoked https://github.com/coredns/coredns/issues/6454
+
+-------------------------------------------------------------------
 Tue Feb 27 06:52:31 UTC 2024 - andrea.manzini@suse.com
 
 - Update to version 1.11.2:
