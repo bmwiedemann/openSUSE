@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  3 11:28:54 UTC 2024 - pgajdos@suse.com
+
+- version update to 24.02.0
+  * Support DC NS (NoSession) APIs
+  * Support Symmetric Crypto SM3 & SM4
+  * Support Asymmetric Crypto SM2
+  * Support DC CompressBound APIs
+  * Bug Fixes. See Resolved section in README.md
+
+-------------------------------------------------------------------
 Wed Jan  3 10:37:20 UTC 2024 - Torsten Duwe <duwe@suse.com>
 
 - update to 23.11.0:
