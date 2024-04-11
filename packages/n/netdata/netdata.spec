@@ -18,12 +18,11 @@
 
 %define netdata_user    netdata
 %define netdata_group   netdata
-%define godplugin_version 0.58.1
 
 %define __builder ninja
 
 Name:           netdata
-Version:        1.45.1
+Version:        1.45.2
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
@@ -60,6 +59,7 @@ BuildRequires:  pkgconfig(openssl)
 # Broken with current upstream protobuf - uses bundled copy
 # BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(yajl)
 BuildRequires:  pkgconfig(yaml-0.1)

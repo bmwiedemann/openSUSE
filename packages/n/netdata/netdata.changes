@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Apr 10 23:26:18 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.45.2
+  * Improved PostgreSQL/MySQL local listener discovery to
+    automatically check for connections using both TCP and Unix
+    sockets, enabling support for passwordless Unix socket
+    connections
+    gh#netdata/netdata#17304
+    gh#netdata/netdata#17305
+  * Fixed an issue that prevented negative matching of host/chart
+    labels in alert configurations
+    gh#netdata/netdata#17290
+    gh#netdata/netdata#17292
+  * Improved go.d.plugin stability by preventing Netdata from
+    shutting down the entire plugin due to an issue with
+    registering jobs for unregistered modules
+    gh#netdata/netdata#17289
+  * Improved go.d.plugin HTTP requests now include a UserAgent
+    string, enhancing identification in server log
+    gh#netdata/netdata#17286
+  * Improved Nginx discovery in go.d.plugin by automatically trying
+    multiple status endpoints when discovering Nginx containers
+    gh#netdata/netdata#17285
+  * Fixed a go.d.plugin panic that could occur when using the
+    Unbound collector with TLS
+    gh#netdata/netdata#17283
+  * Fixed a libyaml linking issue
+    gh#netdata/netdata#17276
+  * Improved go.d.plugin configuration validation, preventing
+    unexpected or invalid options through dynamic configurations
+    gh#netdata/netdata#17269
+
+-------------------------------------------------------------------
 Thu Mar 28 16:51:13 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.45.1

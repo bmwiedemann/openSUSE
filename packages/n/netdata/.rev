@@ -4416,4 +4416,40 @@ Other Notable Changes
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1165644</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>76f4c12e8ed1a90baad964b2a0c7c709</srcmd5>
+    <version>1.45.2</version>
+    <time>1712857282</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.45.2
+  * Improved PostgreSQL/MySQL local listener discovery to
+    automatically check for connections using both TCP and Unix
+    sockets, enabling support for passwordless Unix socket
+    connections
+    gh#netdata/netdata#17304
+    gh#netdata/netdata#17305
+  * Fixed an issue that prevented negative matching of host/chart
+    labels in alert configurations
+    gh#netdata/netdata#17290
+    gh#netdata/netdata#17292
+  * Improved go.d.plugin stability by preventing Netdata from
+    shutting down the entire plugin due to an issue with
+    registering jobs for unregistered modules
+    gh#netdata/netdata#17289
+  * Improved go.d.plugin HTTP requests now include a UserAgent
+    string, enhancing identification in server log
+    gh#netdata/netdata#17286
+  * Improved Nginx discovery in go.d.plugin by automatically trying
+    multiple status endpoints when discovering Nginx containers
+    gh#netdata/netdata#17285
+  * Fixed a go.d.plugin panic that could occur when using the
+    Unbound collector with TLS
+    gh#netdata/netdata#17283
+  * Fixed a libyaml linking issue
+    gh#netdata/netdata#17276
+  * Improved go.d.plugin configuration validation, preventing
+    unexpected or invalid options through dynamic configurations
+    gh#netdata/netdata#17269</comment>
+    <requestid>1166729</requestid>
+  </revision>
 </revisionlist>
