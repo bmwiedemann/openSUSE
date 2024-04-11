@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 11 05:00:14 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.8:
+  * Kubernetes version
+    - v1.25.16-rancher2-3
+    - v1.26.15-rancher1-1
+    - v1.27.12-rancher1-1
+    - v1.28.8-rancher1-1 (default)
+
+-------------------------------------------------------------------
 Sat Mar 30 10:11:37 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.5.7:
