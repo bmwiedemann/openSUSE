@@ -35,6 +35,7 @@ This particular package contains the KDE patterns.
 
 
 
+
 ################################################################################
 
 %package devel_kde_frameworks
@@ -564,7 +565,7 @@ Recommends:     kwalletmanager
 Recommends:     pinentry-qt5
 # boo#1208684
 Recommends:     pam_kwallet6
-Recommends:     xwaylandvideobridge6
+Recommends:     xwaylandvideobridge
 
 %if 0%{?suse_version} > 1500
 # pipewire
@@ -673,9 +674,9 @@ Provides:       pattern-order() = 2400
 Obsoletes:      patterns-openSUSE-kde4_games < %{version}
 Obsoletes:      patterns-openSUSE-kde_games < %{version}
 Supplements:    (patterns-kde-kde and patterns-games-games)
-Recommends:     kpat
 Recommends:     kmahjongg
 Recommends:     kmines
+Recommends:     kpat
 Recommends:     kreversi
 Recommends:     ksudoku
 Suggests:       bovo
