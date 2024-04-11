@@ -1,0 +1,16 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+   <param name="changesgenerate">disable</param>
+   <param name="version">6.7.0~git</param>
+   <param name="url">git://code.qt.io/pyside/pyside-setup.git</param>
+   <param name="revision">6.7.0</param>
+   <param name="scm">git</param>
+   <param name="filename">pyside-setup-everywhere-src</param>
+  </service>
+  <service name="set_version" mode="disabled" />
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+   <param name="file">*.tar</param>
+   <param name="compression">xz</param>
+  </service>
+</services>

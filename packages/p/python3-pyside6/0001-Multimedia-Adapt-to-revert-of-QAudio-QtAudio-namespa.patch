@@ -1,0 +1,225 @@
+From 8daf9fb00fd805ce12a6ab18a9af7a5968b78a93 Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Tue, 9 Apr 2024 09:44:15 +0200
+Subject: [PATCH] Multimedia: Adapt to revert of QAudio->QtAudio namespace
+ renaming
+
+Partially revert 4d761eaaf852f8d82925e111150f25c0dd5f3e83.
+
+Adapt to qtmultimedia/7fcea568c9c64f3bcebda21f0df02aa0107dfd0c,
+reverting qtmultimedia/edaec2bf714c98d65f12c8ed9a2ffbd1603635a7.
+
+Task-number: QTBUG-123997
+Pick-to: 6.7
+Change-Id: Ibd0ad737293f4b9107909f37554c03f64bce5d1e
+---
+ .../multimedia/audiooutput/audiooutput.py     | 22 +++++++++----------
+ .../multimedia/audiosource/audiosource.py     | 16 +++++++-------
+ .../PySide6/QtMultimedia/CMakeLists.txt       |  2 +-
+ .../QtMultimedia/typesystem_multimedia.xml    |  8 +------
+ sources/pyside6/PySide6/glue/qtmultimedia.cpp |  3 ++-
+ sources/pyside6/libpyside/signalmanager.cpp   |  5 -----
+ 6 files changed, 23 insertions(+), 33 deletions(-)
+
+diff --git a/examples/multimedia/audiooutput/audiooutput.py b/examples/multimedia/audiooutput/audiooutput.py
+index 5219bf652..06d52f68a 100644
+--- a/examples/multimedia/audiooutput/audiooutput.py
++++ b/examples/multimedia/audiooutput/audiooutput.py
+@@ -10,7 +10,7 @@ from struct import pack
+ 
+ from PySide6.QtCore import (QByteArray, QIODevice, Qt, QSysInfo, QTimer,
+                             qWarning, Slot)
+-from PySide6.QtMultimedia import (QtAudio, QAudioFormat,
++from PySide6.QtMultimedia import (QAudio, QAudioFormat,
+                                   QAudioSink, QMediaDevices)
+ from PySide6.QtWidgets import (QApplication, QComboBox, QHBoxLayout, QLabel,
+                                QMainWindow, QPushButton, QSlider,
+@@ -209,7 +209,7 @@ class AudioTest(QMainWindow):
+ 
+     @Slot()
+     def pull_timer_expired(self):
+-        if self.m_audioSink is not None and self.m_audioSink.state() != QtAudio.StoppedState:
++        if self.m_audioSink is not None and self.m_audioSink.state() != QAudio.StoppedState:
+             bytes_free = self.m_audioSink.bytesFree()
+             data = self.m_generator.read(bytes_free)
+             if data:
+@@ -234,28 +234,28 @@ class AudioTest(QMainWindow):
+ 
+     @Slot()
+     def toggle_suspend_resume(self):
+-        if self.m_audioSink.state() == QtAudio.State.SuspendedState:
++        if self.m_audioSink.state() == QAudio.SuspendedState:
+             qWarning("status: Suspended, resume()")
+             self.m_audioSink.resume()
+             self.m_suspendResumeButton.setText(self.SUSPEND_LABEL)
+-        elif self.m_audioSink.state() == QtAudio.State.ActiveState:
++        elif self.m_audioSink.state() == QAudio.ActiveState:
+             qWarning("status: Active, suspend()")
+             self.m_audioSink.suspend()
+             self.m_suspendResumeButton.setText(self.RESUME_LABEL)
+-        elif self.m_audioSink.state() == QtAudio.State.StoppedState:
++        elif self.m_audioSink.state() == QAudio.StoppedState:
+             qWarning("status: Stopped, resume()")
+             self.m_audioSink.resume()
+             self.m_suspendResumeButton.setText(self.SUSPEND_LABEL)
+-        elif self.m_audioSink.state() == QtAudio.State.IdleState:
++        elif self.m_audioSink.state() == QAudio.IdleState:
+             qWarning("status: IdleState")
+ 
+     state_map = {
+-        QtAudio.State.ActiveState: "ActiveState",
+-        QtAudio.State.SuspendedState: "SuspendedState",
+-        QtAudio.State.StoppedState: "StoppedState",
+-        QtAudio.State.IdleState: "IdleState"}
++        QAudio.ActiveState: "ActiveState",
++        QAudio.SuspendedState: "SuspendedState",
++        QAudio.StoppedState: "StoppedState",
++        QAudio.IdleState: "IdleState"}
+ 
+-    @Slot(QtAudio.State)
++    @Slot("QAudio::State")
+     def handle_state_changed(self, state):
+         state = self.state_map.get(state, 'Unknown')
+         qWarning(f"state = {state}")
+diff --git a/examples/multimedia/audiosource/audiosource.py b/examples/multimedia/audiosource/audiosource.py
+index 40046f0a3..a78beb584 100644
+--- a/examples/multimedia/audiosource/audiosource.py
++++ b/examples/multimedia/audiosource/audiosource.py
+@@ -19,7 +19,7 @@ from typing import Optional
+ import PySide6
+ from PySide6.QtCore import QByteArray, QMargins, Qt, Slot, qWarning
+ from PySide6.QtGui import QPainter, QPalette
+-from PySide6.QtMultimedia import QtAudio, QAudioDevice, QAudioFormat, QAudioSource, QMediaDevices
++from PySide6.QtMultimedia import QAudio, QAudioDevice, QAudioFormat, QAudioSource, QMediaDevices
+ from PySide6.QtWidgets import (QApplication, QComboBox, QPushButton, QSlider, QVBoxLayout,
+                                QWidget, QLabel)
+ 
+@@ -164,10 +164,10 @@ class InputTest(QWidget):
+         self.m_audio_info = AudioInfo(format)
+ 
+         self.m_audio_input = QAudioSource(device_info, format)
+-        initial_volume = QtAudio.convertVolume(
++        initial_volume = QAudio.convertVolume(
+             self.m_audio_input.volume(),
+-            QtAudio.LinearVolumeScale,
+-            QtAudio.LogarithmicVolumeScale,
++            QAudio.LinearVolumeScale,
++            QAudio.LogarithmicVolumeScale,
+         )
+         self.m_volume_slider.setValue(int(round(initial_volume * 100)))
+         self.toggle_mode()
+@@ -196,10 +196,10 @@ class InputTest(QWidget):
+     def toggle_suspend(self):
+         # toggle suspend/resume
+         state = self.m_audio_input.state()
+-        if (state == QtAudio.SuspendedState) or (state == QtAudio.StoppedState):
++        if (state == QAudio.SuspendedState) or (state == QAudio.StoppedState):
+             self.m_audio_input.resume()
+             self.m_suspend_resume_button.setText("Suspend recording")
+-        elif state == QtAudio.ActiveState:
++        elif state == QAudio.ActiveState:
+             self.m_audio_input.suspend()
+             self.m_suspend_resume_button.setText("Resume recording")
+         # else no-op
+@@ -212,8 +212,8 @@ class InputTest(QWidget):
+ 
+     @Slot(int)
+     def slider_changed(self, value):
+-        linearVolume = QtAudio.convertVolume(
+-            value / float(100), QtAudio.LogarithmicVolumeScale, QtAudio.LinearVolumeScale
++        linearVolume = QAudio.convertVolume(
++            value / float(100), QAudio.LogarithmicVolumeScale, QAudio.LinearVolumeScale
+         )
+ 
+         self.m_audio_input.setVolume(linearVolume)
+diff --git a/sources/pyside6/PySide6/QtMultimedia/CMakeLists.txt b/sources/pyside6/PySide6/QtMultimedia/CMakeLists.txt
+index 61f52cc2b..5cac97ca9 100644
+--- a/sources/pyside6/PySide6/QtMultimedia/CMakeLists.txt
++++ b/sources/pyside6/PySide6/QtMultimedia/CMakeLists.txt
+@@ -12,6 +12,7 @@ ${QtMultimedia_GEN_DIR}/qaudioinput_wrapper.cpp
+ ${QtMultimedia_GEN_DIR}/qaudiooutput_wrapper.cpp
+ ${QtMultimedia_GEN_DIR}/qaudiosink_wrapper.cpp
+ ${QtMultimedia_GEN_DIR}/qaudiosource_wrapper.cpp
++${QtMultimedia_GEN_DIR}/qaudio_wrapper.cpp
+ ${QtMultimedia_GEN_DIR}/qcameraformat_wrapper.cpp
+ ${QtMultimedia_GEN_DIR}/qcameradevice_wrapper.cpp
+ ${QtMultimedia_GEN_DIR}/qcamera_wrapper.cpp
+@@ -28,7 +29,6 @@ ${QtMultimedia_GEN_DIR}/qmediatimerange_wrapper.cpp
+ ${QtMultimedia_GEN_DIR}/qmediatimerange_interval_wrapper.cpp
+ ${QtMultimedia_GEN_DIR}/qscreencapture_wrapper.cpp
+ ${QtMultimedia_GEN_DIR}/qsoundeffect_wrapper.cpp
+-${QtMultimedia_GEN_DIR}/qtaudio_wrapper.cpp
+ ${QtMultimedia_GEN_DIR}/qtvideo_wrapper.cpp
+ ${QtMultimedia_GEN_DIR}/qvideoframe_wrapper.cpp
+ ${QtMultimedia_GEN_DIR}/qvideoframeformat_wrapper.cpp
+diff --git a/sources/pyside6/PySide6/QtMultimedia/typesystem_multimedia.xml b/sources/pyside6/PySide6/QtMultimedia/typesystem_multimedia.xml
+index dc3534299..c4de5dc9a 100644
+--- a/sources/pyside6/PySide6/QtMultimedia/typesystem_multimedia.xml
++++ b/sources/pyside6/PySide6/QtMultimedia/typesystem_multimedia.xml
+@@ -8,7 +8,7 @@
+     <load-typesystem name="QtGui/typesystem_gui.xml" generate="no"/>
+     <load-typesystem name="QtNetwork/typesystem_network.xml" generate="no"/>
+ 
+-    <namespace-type name="QtAudio">
++    <namespace-type name="QAudio">
+         <enum-type name="Error"/>
+         <enum-type name="State"/>
+         <enum-type name="VolumeScale"/>
+@@ -64,9 +64,6 @@
+         </modify-argument>
+       </modify-function>
+       <modify-function signature="stop()" allow-thread="true"/>
+-      <!-- FIXME PYSIDE 7: Remove this (QT6_DECL_NEW_OVERLOAD_TAIL) -->
+-      <declare-function signature="state()const" return-type="QtAudio::State"/>
+-      <declare-function signature="error()const" return-type="QtAudio::Error"/>
+     </object-type>
+ 
+     <object-type name="QAudioSink">
+@@ -81,9 +78,6 @@
+         </modify-argument>
+       </modify-function>
+       <modify-function signature="stop()" allow-thread="true"/>
+-      <!-- FIXME PYSIDE 7: Remove this (QT6_DECL_NEW_OVERLOAD_TAIL) -->
+-      <declare-function signature="state()const" return-type="QtAudio::State"/>
+-      <declare-function signature="error()const" return-type="QtAudio::Error"/>
+     </object-type>
+ 
+     <object-type name="QCamera">
+diff --git a/sources/pyside6/PySide6/glue/qtmultimedia.cpp b/sources/pyside6/PySide6/glue/qtmultimedia.cpp
+index d193b1bd3..ac8434b97 100644
+--- a/sources/pyside6/PySide6/glue/qtmultimedia.cpp
++++ b/sources/pyside6/PySide6/glue/qtmultimedia.cpp
+@@ -2,6 +2,7 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ 
+ // @snippet qvideoframe-bits
++#include "object.h"
+ %BEGIN_ALLOW_THREADS
+ %RETURN_TYPE %0 = %CPPSELF.%FUNCTION_NAME(%1);
+ %END_ALLOW_THREADS
+@@ -23,5 +24,5 @@ const auto size = %CPPSELF.byteCount();
+ 
+ // @snippet qtaudio-namespace-compatibility-alias
+ Py_INCREF(pyType);
+-PyModule_AddObject(module, "QAudio", reinterpret_cast<PyObject *>(pyType));
++PyModule_AddObject(module, "QtAudio", reinterpret_cast<PyObject *>(pyType));
+ // @snippet qtaudio-namespace-compatibility-alias
+diff --git a/sources/pyside6/libpyside/signalmanager.cpp b/sources/pyside6/libpyside/signalmanager.cpp
+index 625e4a405..557f130e0 100644
+--- a/sources/pyside6/libpyside/signalmanager.cpp
++++ b/sources/pyside6/libpyside/signalmanager.cpp
+@@ -813,11 +813,6 @@ static PyObject *parseArguments(const QMetaMethod &method, void **args)
+     for (qsizetype i = 0; i < argsSize; ++i) {
+         void *data = args[i+1];
+         auto param = paramTypes.at(i);
+-#if QT_VERSION < QT_VERSION_CHECK(7, 0, 0)
+-        // Qt 6.7 renamed namespace "QAudio"->"QtAudio" except for signals
+-        if (param.startsWith("QAudio::"_ba))
+-            param.insert(1, 't');
+-#endif
+         Shiboken::Conversions::SpecificConverter converter(param.constData());
+         if (!converter) {
+             PyErr_SetString(PyExc_TypeError, msgCannotConvertParameter(method, i).constData());
+-- 
+2.44.0
+

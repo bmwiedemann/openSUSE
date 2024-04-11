@@ -17,7 +17,7 @@
 
 
 %define tar_name pyside-setup-everywhere-src
-%define short_version 6.6
+%define short_version 6.7
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%flavor" == ""
@@ -43,14 +43,17 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           %{mypython}-%{pyside_flavor}
-Version:        6.6.2
+Version:        6.7.0~git
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-%{version}-src/%{tar_name}-%{version}.tar.xz
+# Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-%%{version}-src/%%{tar_name}-%%{version}.tar.xz
+Source0:        %{tar_name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Always-link-to-python-libraries.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Multimedia-Adapt-to-revert-of-QAudio-QtAudio-namespa.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  %{mypython}-Sphinx
@@ -69,7 +72,10 @@ BuildRequires:  pkgconfig(libxslt)
 # /SECTION
 %if "%{pyside_flavor}" == "pyside6"
 # For the registry_existence test
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
+# Not available in 15.5
 BuildRequires:  %{mypython}-distro
+%endif
 BuildRequires:  %{mypython}-shiboken6-devel = %{version}
 # SECTION test_dependencies
 BuildRequires:  Mesa-dri
@@ -113,6 +119,7 @@ BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6Quick3D)
 BuildRequires:  cmake(Qt6QuickControls2)
+BuildRequires:  cmake(Qt6QuickTest)
 BuildRequires:  cmake(Qt6QuickWidgets)
 BuildRequires:  cmake(Qt6RemoteObjects)
 BuildRequires:  cmake(Qt6Scxml)
@@ -239,7 +246,7 @@ ctest_exclude_regex="smart_smart_pointer"
 %define xvfb_command xvfb-run -s "-screen 0 1600x1200x16 -ac +extension GLX +render -noreset" \\
 
 %define excluded_tests 1
-# Excluded tests (last update: 2024-03-27)
+# Excluded tests (last update: 2024-04-08)
 # QtWebEngineWidgets_pyside-474-qtwebengineview fails with 'ContextResult::kTransientFailure: Failed to send GpuControl.CreateCommandBuffer'
 # QtGui_qpen_test times out
 # QtMultimediaWidgets_qmultimediawidgets aborts
@@ -254,9 +261,9 @@ ctest_exclude_regex="QtWebEngineWidgets_pyside-474-qtwebengineview|QtGui_qpen_te
 %ifarch aarch64
 ctest_exclude_regex="$ctest_exclude_regex|registry_existence_test|QtWebEngineCore_web_engine_custom_scheme"
 %endif
-# Test broken by https://codereview.qt-project.org/c/pyside/pyside-setup/+/478366
-%ifarch aarch64 armv7l armv7hl
-ctest_exclude_regex="$ctest_exclude_regex|QtOpenGL_qopenglwindow_test"
+# python311-distro is unavailable in 15.5, skip registry_existence_test
+%if 0%{?sle_version} == 150500
+ctest_exclude_regex="$ctest_exclude_regex|registry_existence_test"
 %endif
 %endif
 

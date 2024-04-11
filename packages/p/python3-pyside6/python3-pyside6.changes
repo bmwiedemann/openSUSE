@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr  9 11:46:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-Multimedia-Adapt-to-revert-of-QAudio-QtAudio-namespa.patch
+
+-------------------------------------------------------------------
+Mon Apr  8 08:50:25 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Use a git snapshot to fix build with Qt 6.7 until a new release
+  is available
+
+-------------------------------------------------------------------
 Wed Mar 27 08:26:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Exclude a broken pyside test since Qt 6.6.3 release

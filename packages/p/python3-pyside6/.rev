@@ -224,4 +224,12 @@
     <comment>- Exclude a broken pyside test since Qt 6.6.3 release</comment>
     <requestid>1162846</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5df702f92e8f87579dc0fc6c18a246bb</srcmd5>
+    <version>6.7.0~git</version>
+    <time>1712857258</time>
+    <user>anag+factory</user>
+    <comment>Update to 6.7.0</comment>
+    <requestid>1166708</requestid>
+  </revision>
 </revisionlist>
