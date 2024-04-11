@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr  9 12:43:09 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.38.1:
+  + This release comes with a few backports from main to 0.38.0 to
+    fix a few issues and performance bugs.
+  + Backports:
+    - hyprerror: align 32-bit types after 4c79668 (#5375)
+    - renderer: block screen shader on screencopy
+    - input: allow focus to bottom layers on maximized in reserved
+    - renderer: avoid double-rendering ls-es on fadingOut
+    - CColor: fix getAsHex
+    - subsurface: init existing subsurfaces on children creations
+    - compositor: remove windows from fadingOut properly
+    - compositor: fix ghost fadingOut windows remaining after cleanup
+
+-------------------------------------------------------------------
 Tue Apr  2 15:46:34 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.38.0:

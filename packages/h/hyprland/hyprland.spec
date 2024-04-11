@@ -20,7 +20,7 @@
 %bcond_without devel
 
 Name:           hyprland
-Version:        0.38.0
+Version:        0.38.1
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
