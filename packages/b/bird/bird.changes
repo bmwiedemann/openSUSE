@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr  7 08:33:35 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.15.1
+  * OSPF: Fix regression in handling PtP links
+  * RPKI: Handle connection resets properly
+  * Static: Reject invalid combination of options
+  * Fix builds with limited set of protocols
+
+-------------------------------------------------------------------
 Wed Mar 13 13:42:22 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - log-commit.patch: fix crash in log_commit with empty log list
