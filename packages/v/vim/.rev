@@ -7534,4 +7534,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>1164506</requestid>
   </revision>
+  <revision rev="365" vrev="1">
+    <srcmd5>ef0fcefa623bb8c5dc67fdec633cd6d5</srcmd5>
+    <version>9.1.0301</version>
+    <time>1712857236</time>
+    <user>anag+factory</user>
+    <comment>- update to 9.1.0301 
+ *  Vim9: heredoc start may be recognized in string
+ *  Missing test for what patch v9.1.0285 fixes
+ *  Vim9: return type not set for a lambda assigned to script var
+ *  add runtime/doc/tags-* to ignore files 
+ *  Updated translation 
+ *  Update documentation
+ *  Patch 9.1.0296 causes too many issues
+ *  Fix a few issues with gvim.nsi
+ *  regexp: engines do not handle case-folding well
+ *  filetype: pip config files are not recognized
+ *  Text height function does not respect it's argument
+ *  filetype: lxqt config files are not recognized
+ *  filetype: XDG mimeapps.list file is not recognized
+ *  filetype: libreoffice config files are not recognized
+ *  filetype: xilinx files are not recognized
+ *  filetype: some TeX files are not recognized
+ *  Vim9: comment may be treated as heredoc start
+ *  Vim9: E1027 with defcompile for abstract methods
+ *  Still problems with cursor position for CTRL-D/U
+ *  fix inaccuracies in pandoc compiler 
+ *  make testclean is not able to delete failed screendumps
+ *  Update base-syntax, no curly-brace names in Vim9 script 
+ *  Several small issues in doc and tests
+ *  Finding highlighting attributes is inefficient
+ *  Update cuda keywords, remove uncommonly used enumeration constants
+ *  several issues with 'smoothscroll' support
+ *  filetype: roc files are not recognized
+ *  filetype: zathurarc files not recognized
+ *  Cannot highlight the Command-line</comment>
+    <requestid>1166707</requestid>
+  </revision>
 </revisionlist>

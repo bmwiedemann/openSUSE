@@ -1,4 +1,227 @@
 -------------------------------------------------------------------
+Wed Apr 10 18:44:04 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.0301 
+ *  Vim9: heredoc start may be recognized in string
+ *  Missing test for what patch v9.1.0285 fixes
+ *  Vim9: return type not set for a lambda assigned to script var
+ *  add runtime/doc/tags-* to ignore files 
+ *  Updated translation 
+ *  Update documentation
+ *  Patch 9.1.0296 causes too many issues
+ *  Fix a few issues with gvim.nsi
+ *  regexp: engines do not handle case-folding well
+ *  filetype: pip config files are not recognized
+ *  Text height function does not respect it's argument
+ *  filetype: lxqt config files are not recognized
+ *  filetype: XDG mimeapps.list file is not recognized
+ *  filetype: libreoffice config files are not recognized
+ *  filetype: xilinx files are not recognized
+ *  filetype: some TeX files are not recognized
+ *  Vim9: comment may be treated as heredoc start
+ *  Vim9: E1027 with defcompile for abstract methods
+ *  Still problems with cursor position for CTRL-D/U
+ *  fix inaccuracies in pandoc compiler 
+ *  make testclean is not able to delete failed screendumps
+ *  Update base-syntax, no curly-brace names in Vim9 script 
+ *  Several small issues in doc and tests
+ *  Finding highlighting attributes is inefficient
+ *  Update cuda keywords, remove uncommonly used enumeration constants
+ *  several issues with 'smoothscroll' support
+ *  filetype: roc files are not recognized
+ *  filetype: zathurarc files not recognized
+ *  Cannot highlight the Command-line
+ *  No pandoc syntax support
+ *  filetype: R history files are not recognized
+ *  filetype: keymap files are not recognized
+ *  autocmd may change cwd after :tcd and :lcd
+ *  Update syntax generator, autocmd event list parsing
+ *  Normalise builtin-function optional parameter formatting
+ *  Correctly distribute libsodium with the installer 
+ *  a few minor issues to fix
+ *  Test for TextChanged is still flaky with ASAN
+ *  Two tests in test_filechanged.vim are slow
+ *  File name entered in GUI dialog is ignored
+ *  fix :compiler leaving behind a g:makeprg variable 
+ *  Remove more fallback :CompilerSet definitions from compiler plugins 
+ *  filetype: earthfile files are not recognized
+ *  console dialog cannot save unnamed buffers
+ *  Fill in a few details regarding :enums 
+ *  Remove fallback :CompilerSet definition from compiler plugins
+ *  libgpm may delete some signal handlers
+ *  Improve the matching of contextual keywords
+ *  Vim9: Problem with lambda blocks in enums and classes
+ *  Test for TextChanged is flaky with ASAN
+ *  Vim9: protected class and funcrefs accessible outside the class
+ *  Problems with "zb" and scrolling to new topline with 'smoothscroll'
+ *  filetype not detected when editing remote files
+ *  sort filetype.txt in the alphabetical order 
+ *  Normal mode TextChanged isn't tested properly
+ *  half-page scrolling broke backward compatibility
+ *  Vim9: :call may not find imported class members
+ *  Finding autocmd events is inefficient
+ *  Vim9: no indication of script nr in stack trace of classes
+ *  [security]: Heap buffer overflow when calling complete_add() in 'cfu'
+ *  filetype: typespec files are not recognized
+ *  improve syntax highlighting for YAML
+ *  Vim9: segfault with static in super class
+ *  Filetype test fails
+ *  update syntax 
+ *  filetype: ldscripts cannot be recognized
+ *  filetype: rock_manifest and config.ld files are not recognized
+ *  filetype: yarn lock files are not recognized
+ *  filetype: bundle config files are not recognized
+ *  filetype: fontconfig files are not recognized
+ *  filetype: zsh theme, history and zunit files are not recognized
+ *  filetype: bash history files are not recognized
+ *  filetype: netrw history file is not recognized
+ *  filetype: octave history files are not recognized
+ *  filetype: mysql history files are not recognized
+ *  filetype: some python tools config files are not recognized
+ *  filetype: gnuplot history files are not recognised
+ *  filetype: jupyterlab and sublime config are not recognized
+ *  filetype: mplstyle files are not recognized
+ *  filetype: texlua files are not recognized
+ *  filetype: supertux files are not recognized
+ *  filetype: support for Intel HEX files is lacking
+ *  Vim9: string() output of enum is problematic
+ *  Conceal test fails when rightleft feature is disabled
+ *  Filetype may be undetected when SwapExists sets ft in other buf
+ *  TextChanged autocommand not triggered under some circumstances
+ *  ensure compiler! sets global options 
+ *  Distinguish Vim9 builtin object methods from namesake builtin functions 
+ *  add support for Debian specific @includes
+ *  Error E877 is not translated
+ *  fix path of uganda.nsis.txt in german.nsi file 
+ *  Two unrelated things are tested by a single test
+ *  Improve docs for empty(), len(), and string() on objects
+ *  Recording may still be wrong in Select mode
+ *  Not able to assign enum values to an enum static variable
+ *  test_matchparen not run in CI
+ *  cursor may move too many lines over "right" & "below" virt text
+ *  code duplication in loop to add active text properties
+ *  missing 'below' virt text if truncation precedes after/right text
+ *  lines following virt text (that fills the window)  might be truncated
+ *  Few typos in source and test files
+ *  Vim9: No enum support
+ *  Unnecessary multiplications in backspace code
+ *  Add translation for README.txt and uganda.txt 
+ *  regexp: verymagic cannot match before/after a mark
+ *  Possibility to include translated license and README.txt files 
+ *  Update README.txt and README.md 
+ *  Error on exit with EXITFREE and 'winfixbuf'
+ *  Half-page scrolling does not support smooth-scrolling
+ *  Update base-syntax, match empty blob and :abclear modifiers 
+ *  Duplicate condition in win_lbr_chartabsize()
+ *  allow TODO keywords in comments
+ *  add Static-Built-Using field 
+ *  add basic indent support 
+ *  page-wise scrolling does not support smooth-scrolling
+ *  Motif: leaking memory when mui_mch_dialog() fails
+ *  leaking memory in exe_newdict() on error
+ *  winfixbuf does not allow to re-edit current buffer
+ *  No autocommand when writing session file
+ *  Update java[CR]_JavaLang type lists 
+ *  Update README.md 
+ *  unused display_text_first boolean var in win_line()
+ *  Cannot use modifiers before :-Ntabmove
+ *  Redesigning the appearance of the vimrc settings page 
+ *  Backspace inserts spaces with virtual text and 'smarttab'
+ *  Update options.txt
+ *  build-error on GNU/Hurd
+ *  Recognise the inline kind of the {@return} tag 
+ *  Fix typo in netrw#NetWrite 
+ *  Update nsis installer and nsis docs 
+ *  update errorformat for dot and neato compiler 
+ *  leaking memory in add_user() on failure
+ *  gM not working correctly with virt text
+ *  `gj`/`gk` not skipping over outer virtual text lines
+ *  allow multibyte characters as breakpoint signs 
+ *  Not enough tests for the slice() function
+ *  Vim9: compound operators broken for lambdas in an object
+ *  Update base-syntax, remove old unused syntax groups. 
+ *  Vim9: problem evaluating negated boolean logic
+ *  Fix for Sodium version 1.0.19 and MinGW 
+ *  Recognise the {@snippet} documentation tag 
+ *  mingw complains about unknown escape sequence: '\l', fails with libsodium 
+ *  Update base-syntax, improve function definition highlighting 
+ *  filetype: support for gnuplot files is lacking
+ *  memleak with ex_drop, NULL dereference
+ *  gcc complains about uninitialized var
+ *  May leak memory in completion when ga_grow() fails
+ *  don't unnecessarily reload v:colornames dict
+ *  drop: don't rewind when editing the same file
+ *  Installer does not remove all files
+ *  complete_info() returns wrong order of items
+ *  Add minimal ftplugin 
+ *  Memory leak with "above" virttext and 'relativenumber'
+ *  filetype: no support for Vento files
+ *  Update base-syntax, disallow '.' at start of menu item names 
+ *  regenerate c_00 and markdown dumps
+ *  include missing changes
+ *  Respect no_plugin_maps and no_rust_maps globals 
+ *  Retrofit input/c.c. with TEST_SETUP
+ *  Support sourceable Vim configuration for syntax tests
+ *  Support embeddable Vim configuration for syntax tests
+ *  Recover some missed commas and periods in starting.txt
+ *  filetype: no support for Dafny files
+ *  Update base-syntax, improve :highlight command 
+ *  clarify close behaviour for :term
+ *  `goPackageComment` highlighting too broad
+ *  cursor pos wrong on mouse click after eol with 'rl', 've' and conceal
+ *  'wincolor' hl missing with 'rightleft', "below" virttext, 'nowrap'
+ *  Cursor pos wrong when clicking with conceal and wrap
+ *  Wrong display or screenpos() result when toggling diff mode
+ *  Can define function with invalid name inside 'formatexpr'
+ *  tools/rename.bat uses 'mv' and "move" 
+ *  make :h tag-! more consistent 
+ *  Update base-syntax, revert last change to vimUserFunc 
+ *  Update base-syntax, improve :echo and :execute highlighting 
+ *  no overflow check for string formatting
+ *  Cursor pos wrong when double-width chars are concealed
+ *  'wincolor' highlight missing with "below" virtual text
+ *  still another clipboard_working test
+ *  E1513 might be confusing
+ *  Coverity reports dead code
+ *  Cursor column wrong with 'virtualedit' and conceal
+ *  wrong window positions with 'winfix{width,height}'
+ *  'cursorline' and 'wincolor' hl missing with conceal and wrap
+ *  revert back the check for clipboard_working support
+ *  msgfmt ver. 0.22 forcibly converts text to UTF-8
+ *  add reference to matchbufline() at :h search()
+ *  More code can use ml_get_buf_len() instead of STRLEN()
+ *  Small split-move related improvements
+ *  Re-allow curwin == prevwin, but document it instead
+ *  current window number returned by tabpagewinnr may be outdated
+ *  too many STRLEN() calls
+ *  Update base-syntax, improve number matching 
+ *  Changing buffer in another window causes it to show matchparen
+ *  Internal error with blockwise getregion() in another buffer
+ *  Update Lithuanian translation of Vim tutor to v.1.7 
+ *  improve 'winfixbuf' docs 
+ *  Update Markdown syntax, add missing configs
+ *  Vim9: Importing an autoload imported script fails
+ *  Internal error when passing invalid position to getregion()
+ *  Calling STRLEN() to compute ml_line_textlen when not needed
+ *  problem with writing extended attributes on failure
+ *  Added Lithuanian translation of Tutor v. 1.4 by Laurynas Stančikas 
+ *  Recognise string templates 
+ *  Update base-syntax, improve :map highlighting 
+ *  expand() removes slash after env variable that ends with colon
+ *  Update base-syntax, improve :menu{,translate} highlighting 
+ *  Vim9: Add support for using a class type of itself in an object method
+ *  Crash in WinClosed after BufUnload closes other windows
+ *  'shortmess' "F" flag doesn't work properly with 'autoread'
+ *  Duplicate assignment in f_getregion()
+ *  Make 'wfb' failing to split still report E1513
+ *  remove executable bit from sh test file
+ *  can only get getregion() from current buffer
+ *  shm=F not respected when reloading buffer with 'autoread'
+ *  Text properties corrupted with fo+=aw and backspace
+ *  Update Italian translation for winfixbuf
+ *  Coverity complains about ignoring return value
+
+-------------------------------------------------------------------
 Sat Mar 30 10:27:47 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - spec.skeleton: add sample check section (W: no-%check-section)
