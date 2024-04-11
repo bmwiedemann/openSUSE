@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  8 03:14:11 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gnome-control-center-datetime-Avoid-emitting-the-time-changed-signal.patch:
+  Avoid emitting the time-changed signal
+  (bsc#1222149, bsc#1221799, glgo#GNOME/gnome-control-center#2943).
+
+-------------------------------------------------------------------
 Wed Mar 27 18:23:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0.1:
