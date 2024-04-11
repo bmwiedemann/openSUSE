@@ -18,15 +18,15 @@
 
 
 Name:           ugrep
-Version:        5.1.1
+Version:        5.1.4
 Release:        0
 Summary:        Universal grep: a feature-rich grep implementation with focus on speed
 License:        BSD-3-Clause
 Group:          Productivity/File utilities
 URL:            https://github.com/Genivia/ugrep
 Source:         https://github.com/Genivia/ugrep/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  c++_compiler
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(libbrotlidec)
@@ -38,6 +38,13 @@ BuildRequires:  pkgconfig(zlib)
 # the bzip3 version seems to old, the tests break with decompression errors
 %if 0%{?suse_version} > 1599
 BuildRequires:  pkgconfig(bzip3)
+%endif
+# lib/matcher_avx2.cpp is selected based on a runtime AVX2 check
+# lib/matcher_avx512bw.cpp is selected based on runtime AVX512BW check
+# Make OBS select an x86_64-v3 build host to reproducibly enable usage
+# without cross-compiling
+%ifarch x86_64
+#!BuildConstraint: hardware:cpu:flag x86-64-v3
 %endif
 
 %description
@@ -85,7 +92,6 @@ This package contains the fish completion for ugrep.
 
 %build
 %configure \
-	--disable-avx \
 	--enable-color \
 %if 0%{?suse_version} > 1599
 	--with-bzip3 \

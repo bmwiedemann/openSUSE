@@ -530,4 +530,12 @@
     <comment>ugrep 5.1.1 (forwarded request 1157056 from AndreasStieger)</comment>
     <requestid>1157057</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>f5ba0af45e9e6d12da0d921a1692cb60</srcmd5>
+    <version>5.1.4</version>
+    <time>1712857271</time>
+    <user>anag+factory</user>
+    <comment>ugrep 5.1.4</comment>
+    <requestid>1166721</requestid>
+  </revision>
 </revisionlist>

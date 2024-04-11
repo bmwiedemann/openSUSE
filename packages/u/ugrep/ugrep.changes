@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 10 20:14:21 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 5.1.4:   
+  * use statfs() with options --include-fs and --exclude-fs when
+    the preferred statvfs() is not available
+  * suppress --filter utility stderr messages when ugrep options
+    -s (--no-messages) and -q (--quiet) are used
+  * support the NO_COLOR environment variable to suppress color
+    output
+  * fix TUI scroll glitch in non-split screen, and other TUI fixes
+- enable SIMD code for faster matching on CPUs that support it
+  (while keeping build reproducible)
+
+-------------------------------------------------------------------
 Mon Mar 11 22:06:29 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 5.1.1:
