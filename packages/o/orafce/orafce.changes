@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 11 10:29:30 UTC 2024 - emiliano.langella@suse.com
+
+- Update to version 4.9.4+git0.6f3b83a:
+  * prepare for 4.9.4
+  * after any fclose call, the pointer FILE should not be used ever
+  * after any fclose call, the pointer FILE should not be used ever
+
+-------------------------------------------------------------------
 Thu Mar 07 12:13:12 UTC 2024 - emiliano.langella@suse.com
 
 - Update to version 4.9.3+git0.6adbd66:
