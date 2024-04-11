@@ -39,7 +39,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.58.0
+Version:        2.59.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -85,7 +85,7 @@ Requires:       %{pythons}-azure-mgmt-billing >= 6.0.0
 Requires:       %{pythons}-azure-mgmt-botservice >= 2.0.0b3
 Requires:       %{pythons}-azure-mgmt-cdn >= 12.0.0
 Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 13.5.0
-Requires:       %{pythons}-azure-mgmt-compute >= 30.4.0
+Requires:       %{pythons}-azure-mgmt-compute >= 30.6.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.1.0
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 10.3.0
 Requires:       %{pythons}-azure-mgmt-containerservice >= 29.1.0
@@ -116,7 +116,7 @@ Requires:       %{pythons}-azure-mgmt-msi >= 7.0.0
 Requires:       %{pythons}-azure-mgmt-netapp >= 10.1.0
 Requires:       %{pythons}-azure-mgmt-policyinsights >= 1.1.0b4
 Requires:       %{pythons}-azure-mgmt-privatedns >= 1.0.0
-Requires:       %{pythons}-azure-mgmt-rdbms >= 10.2.0b12
+Requires:       %{pythons}-azure-mgmt-rdbms >= 10.2.0b14
 Requires:       %{pythons}-azure-mgmt-recoveryservices >= 2.5.0
 Requires:       %{pythons}-azure-mgmt-recoveryservicesbackup >= 8.0.0
 Requires:       %{pythons}-azure-mgmt-redhatopenshift >= 1.4.0
@@ -127,7 +127,7 @@ Requires:       %{pythons}-azure-mgmt-search >= 9.0
 Requires:       %{pythons}-azure-mgmt-security >= 5.0.0
 Requires:       %{pythons}-azure-mgmt-servicebus >= 8.2.0
 Requires:       %{pythons}-azure-mgmt-servicefabric >= 1.0.0
-Requires:       %{pythons}-azure-mgmt-servicefabricmanagedclusters >= 1.0.0
+Requires:       %{pythons}-azure-mgmt-servicefabricmanagedclusters >= 2.0.0~b6
 Requires:       %{pythons}-azure-mgmt-servicelinker >= 1.2.0~b1
 Requires:       %{pythons}-azure-mgmt-signalr >= 2.0.0~b1
 Requires:       %{pythons}-azure-mgmt-sql >= 4.0.0b15
