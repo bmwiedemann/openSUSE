@@ -240,6 +240,7 @@ Patch1930:      u_xfree86-activate-GPU-screens-on-autobind.patch
 Patch1960:      u_sync-pci-ids-with-Mesa.patch
 
 Patch1218176:   u_miCloseScreen_check_for_null_pScreen_dev_private.patch
+Patch1222442:   U_render-Avoid-possible-double-free-in-ProcRenderAddGl.patch
 
 %description
 This package contains the X.Org Server.
@@ -397,6 +398,8 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch -P 1960 -p1
 
 %patch -P 1218176 -p1
+
+%patch -P 1222442 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):

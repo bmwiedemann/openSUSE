@@ -4094,4 +4094,14 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   code that has been a source of security problems lately.</comment>
     <requestid>1164516</requestid>
   </revision>
+  <revision rev="430" vrev="2">
+    <srcmd5>0dfe8e8d69ca2fc8e6203ef32d2f39e6</srcmd5>
+    <version>21.1.12</version>
+    <time>1712857224</time>
+    <user>anag+factory</user>
+    <comment>- U_render-Avoid-possible-double-free-in-ProcRenderAddGl.patch
+  * fixes regression for security fix for CVE-2024-31083 (bsc#1222312, 
+    boo#1222442, gitlab xserver issue #1659)</comment>
+    <requestid>1166666</requestid>
+  </revision>
 </revisionlist>

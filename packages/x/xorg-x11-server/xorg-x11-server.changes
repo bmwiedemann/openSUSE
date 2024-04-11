@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 10 13:20:43 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_render-Avoid-possible-double-free-in-ProcRenderAddGl.patch
+  * fixes regression for security fix for CVE-2024-31083 (bsc#1222312, 
+    boo#1222442, gitlab xserver issue #1659)
+
+-------------------------------------------------------------------
 Thu Apr  4 08:13:19 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Security update 21.1.12
