@@ -94,4 +94,40 @@
   * Fix crash by handling conflict markers corner cases properly</comment>
     <requestid>1144103</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>05515ef204c37c5f7d6e7280d406ae0a</srcmd5>
+    <version>3.1.0~0</version>
+    <time>1712857312</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.1.0:
+  * Aka --ignore-all-space, makes a b c be treated as equal to abc.
+
+- Update to 3.0.1:
+  * Before this release, we just removed all color from git --oneline
+    output. With this release, we now retain the existing color for
+    lines we have no special handling for. #62
+
+- Update to 3.0.0:
+  * Starting from now, here's how to integrate with git:
+    git config --global pager.diff riff
+    git config --global pager.show riff
+    git config --global pager.log riff
+    git config --global interactive.diffFilter &quot;riff --color=on&quot;
+  * Note that the interactive.diffFilter has changed.
+
+- Update to 2.32.0:
+  * Don't color output when piping
+
+- Update to 2.31.1:
+  * Fix a hang with large + / - sections
+
+- Update to 2.31.0:
+  * If you do git diff when there are conflict markers,
+    those conflict markers will now be helpfully highlighted.
+    See #56 and #57.
+
+    and riff will use them primarily
+  * Align diff file timestamp</comment>
+    <requestid>1166869</requestid>
+  </revision>
 </revisionlist>
