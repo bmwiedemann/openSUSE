@@ -1,7 +1,7 @@
 #
 # spec file for package decibels
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,18 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define lname   com.vixalien.decibels
+%define lname   org.gnome.Decibels
 %define sname   gi-typescript-definitions
-%define scommit eb2a87a25c5e2fb580b605fbec0bd312fe34c492
+%define scommit 94acb6307e8d467cd9b3e340a18431496636b8f6
 Name:           decibels
-Version:        0.1.7
+Version:        46.0
 Release:        0
 Summary:        Play audio files with a waveform
 License:        GPL-3.0-or-later
-URL:            https://github.com/vixalien/decibels
-Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+URL:            https://gitlab.gnome.org/GNOME/Incubator/decibels
+Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        https://gitlab.gnome.org/BrainBlasted/%{sname}/-/archive/%{scommit}/%{sname}-%{scommit}.tar.bz2
 BuildRequires:  appstream-glib
+BuildRequires:  blueprint-compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.62.0
@@ -34,6 +35,7 @@ BuildRequires:  typescript
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gjs-1.0)
 BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  typelib(Adw)
 Requires:       typelib(GstPlay)
 Provides:       bundled(gi-types)
 BuildArch:      noarch
@@ -57,6 +59,8 @@ tar -xf %{SOURCE1} --strip-components 1 -C gi-types
 %meson_install
 
 %find_lang %{lname}
+
+%check
 
 %files
 %license LICENCE
