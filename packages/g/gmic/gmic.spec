@@ -40,7 +40,7 @@
 %define gmic_datadir %{_datadir}/gmic
 
 Name:           gmic
-Version:        3.3.3
+Version:        3.3.5
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are
@@ -225,16 +225,6 @@ install -m 0755 gmic-qt/build/gmic_krita_qt %{buildroot}%{_bindir}/gmic_krita_qt
 %endif
 
 %suse_update_desktop_file -c gmic_qt "G'Mic Qt" "G'MIC Qt GUI" "gmic_qt %%F" gmic_qt "Qt;Graphics;Photography;"
-
-# Film color lookup tables
-install -d -m 0755 \
-    %{buildroot}%{_gimpplugindir} \
-    %{buildroot}%{gmic_datadir}/
-
-# Move gmic plugins out of the gimp plugin dir
-for file in gmic_cluts.gmz gmic_denoise_cnn.gmz ; do
-    mv %{buildroot}%{_libdir}/gimp/2.0/plug-ins/${file} %{buildroot}%{gmic_datadir}/
-done
 
 # This manpage isn't translated
 rm %{buildroot}%{_mandir}/fr/man1/gmic.1*
