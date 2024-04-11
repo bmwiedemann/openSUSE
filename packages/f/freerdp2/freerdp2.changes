@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  9 19:40:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to avoid unneeded dependencies when using winpr-devel:
+  * 0001-Don-t-add-winpr-cli-tools-to-exported-CMake-targets.patch
+
+-------------------------------------------------------------------
 Tue Apr  2 09:48:52 UTC 2024 - Joan Torres <joan.torres@suse.com>
 
 - Update Source0 URL to make it valid with the actual Source0.

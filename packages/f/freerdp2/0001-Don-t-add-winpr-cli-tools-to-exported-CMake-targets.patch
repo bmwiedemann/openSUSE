@@ -1,0 +1,43 @@
+From 8964e04720449f27d5e1ddfcd6dff01302f9b84e Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Tue, 9 Apr 2024 21:37:27 +0200
+Subject: [PATCH] Don't add winpr cli tools to exported CMake targets
+
+Adding CMake exports for executables means they'll be required at build time when
+another package needs 'cmake(WinPR)'.
+
+Besides, they get renamed after installation to allow coinstalling FreeRDP 2 and 3.
+---
+ winpr/tools/hash-cli/CMakeLists.txt     | 2 +-
+ winpr/tools/makecert-cli/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/winpr/tools/hash-cli/CMakeLists.txt b/winpr/tools/hash-cli/CMakeLists.txt
+index 9f8c7a8..b6d048f 100644
+--- a/winpr/tools/hash-cli/CMakeLists.txt
++++ b/winpr/tools/hash-cli/CMakeLists.txt
+@@ -43,7 +43,7 @@ set(${MODULE_PREFIX}_LIBS winpr)
+ 
+ target_link_libraries(${MODULE_NAME} ${${MODULE_PREFIX}_LIBS})
+ 
+-install(TARGETS ${MODULE_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT tools EXPORT WinPRTargets)
++install(TARGETS ${MODULE_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT tools)
+ 
+ if (WITH_DEBUG_SYMBOLS AND MSVC)
+ 	install(FILES ${CMAKE_BINARY_DIR}/${MODULE_NAME}.pdb DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT symbols)
+diff --git a/winpr/tools/makecert-cli/CMakeLists.txt b/winpr/tools/makecert-cli/CMakeLists.txt
+index 48fda5b..c7cf4bf 100644
+--- a/winpr/tools/makecert-cli/CMakeLists.txt
++++ b/winpr/tools/makecert-cli/CMakeLists.txt
+@@ -46,7 +46,7 @@ target_link_libraries(${MODULE_NAME} ${${MODULE_PREFIX}_LIBS} winpr)
+ 
+ set_property(TARGET ${MODULE_NAME} PROPERTY FOLDER "WinPR/Tools")
+ 
+-install(TARGETS ${MODULE_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT tools EXPORT WinPRTargets)
++install(TARGETS ${MODULE_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT tools)
+ if (WITH_DEBUG_SYMBOLS AND MSVC)
+     install(FILES ${CMAKE_PDB_BINARY_DIR}/${MODULE_NAME}.pdb DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT symbols)
+ endif()
+-- 
+2.44.0
+

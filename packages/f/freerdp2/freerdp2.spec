@@ -46,6 +46,8 @@ Source1:        freerdp2-rpmlintrc
 Patch0:         0001-Make-H.264-codec-optional-during-runtime.patch
 # PATCH-FIX-UPSTREAM CVE-2023-40574, CVE-2023-40575, CVE-2023-40576, bsc#1214869, bsc#1214870, bsc#1214871 -- yu.daike@suse.com
 Patch1:         freerdp-CVE-2023-40574-to-2023-40576.patch
+# PATCH-FIX-OPENSUSE -- Don't let 'cmake(WinPR)' require unneeded tools
+Patch2:         0001-Don-t-add-winpr-cli-tools-to-exported-CMake-targets.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
 BuildRequires:  ed
@@ -140,8 +142,6 @@ the equivalent WinPR implementation, without having to modify the code using it.
 Summary:        Windows Portable Runtime development files
 Group:          Development/Languages/C and C++
 Requires:       cmake >= 2.8
-# WinPRTargets-*.cmake defines targets for winpr-hash and winpr-makecert
-Requires:       freerdp2-server = %{version}-%{release}
 Requires:       libwinpr%{libfreerdp_package} = %{version}-%{release}
 Obsoletes:      libwinpr2-devel < %{version}-%{release}
 Provides:       libwinpr2-devel = %{version}-%{release}
