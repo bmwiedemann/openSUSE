@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 10 08:18:13 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.1
+  * Fix CVE-2024-3119: sngrep: buffer overflow due to improper
+    handling of 'Call-ID' and 'X-Call-ID' SIP headers.
+  * Fix CVE-2024-3120: sngrep: stack-buffer overflow due to
+    inadequate bounds checking when copying 'Content-Length' and
+    'Warning' headers into fixed-size buffers.
+
+-------------------------------------------------------------------
 Mon Dec 25 09:27:23 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versino 1.8.0
