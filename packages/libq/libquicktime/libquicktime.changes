@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 10 13:10:44 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix build with GCC 14, bsc#1221701
+  * fix-gcc14-build.patch
+
+-------------------------------------------------------------------
 Fri Mar  3 03:03:03 UTC 2023 - olaf@aepfle.de
 
 - Fix previous change, add version constraints for every

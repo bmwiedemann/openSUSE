@@ -1,7 +1,7 @@
 #
 # spec file for package libquicktime
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Group:          Development/Libraries/C and C++
 URL:            http://libquicktime.sf.net
 Source0:        %{name}-%{version}.tar.xz
 Source2:        baselibs.conf
+Patch0:         fix-gcc14-build.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -110,7 +111,7 @@ Tools for reading/writing quicktime movie files.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 echo 'HTML_TIMESTAMP=NO' >> doc/Doxyfile.in

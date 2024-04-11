@@ -1,0 +1,12 @@
+Index: libquicktime-1.2.4+git20180804.fff99cd/configure.ac
+===================================================================
+--- libquicktime-1.2.4+git20180804.fff99cd.orig/configure.ac
++++ libquicktime-1.2.4+git20180804.fff99cd/configure.ac
+@@ -282,6 +282,7 @@ have_lame="false"
+   AC_TRY_RUN([
+     #include <lame/lame.h>
+     #include <stdio.h>
++int
+     main()
+     {
+     int version_major;
