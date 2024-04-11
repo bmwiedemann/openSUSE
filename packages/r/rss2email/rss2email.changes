@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  5 05:15:29 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * fix-tests.patch
+    + upstream patch to replace a "c2 a0" utf-8 sequence in test
+      feed with a space. This caused html2text >=2024.2.25 to
+      produce a double space and break the tests.
+
+-------------------------------------------------------------------
 Mon Dec  5 07:33:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.14:

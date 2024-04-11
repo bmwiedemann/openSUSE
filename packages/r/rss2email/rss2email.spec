@@ -1,7 +1,7 @@
 #
 # spec file for package rss2email
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/rss2email/rss2email
 Source:         https://github.com/rss2email/rss2email/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         fix-tests.patch
 BuildRequires:  %{python_module feedparser >= 6.0.0}
 BuildRequires:  %{python_module html2text >= 3.0.1}
 BuildRequires:  %{python_module setuptools}
@@ -35,7 +36,7 @@ Requires:       python-feedparser >= 6.0.0
 Requires:       python-html2text >= 3.0.1
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %{?python_enable_dependency_generator}
 %python_subpackages
@@ -46,7 +47,7 @@ a crontab, watches RSS feeds and sends formatted email messages for new
 items.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %python_build
