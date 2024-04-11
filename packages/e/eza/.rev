@@ -497,4 +497,14 @@
   * Bump git2 from 0.18.2 to 0.18.3</comment>
     <requestid>1162823</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a7a0961b313b544e0cdd8263f05ec82f</srcmd5>
+    <version>0.18.10+0</version>
+    <time>1712857273</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.10:
+  Bug Fixes:
+  * Bump trycmd from 0.15.0 to 0.15.1</comment>
+    <requestid>1166763</requestid>
+  </revision>
 </revisionlist>
