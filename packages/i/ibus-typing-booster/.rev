@@ -1198,4 +1198,12 @@ Tue Jan  10 15:30:05 UTC 2017 - maiku.fabian@gmail.com
     <comment>- Drop ibus-typing-booster-libX11-1.8.7.patch (forwarded request 1166205 from hillwood)</comment>
     <requestid>1166206</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>04d7f32d47d9face939f6460b3b51fbd</srcmd5>
+    <version>2.25.6</version>
+    <time>1712857244</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166687</requestid>
+  </revision>
 </revisionlist>

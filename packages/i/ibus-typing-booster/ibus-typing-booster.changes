@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 10 16:44:13 UTC 2024 - maiku.fabian@gmail.com
+
+- Update to 2.25.6
+- If Shift+something is pressed and then released, do not swallow the release of the Shift key
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/504)
+- Decrease grid_row_spacing from 5 to 1 pixels to make the setup tool still fit on a 1024x768 pixel screen
+
+-------------------------------------------------------------------
 Thu Apr 04 15:48:42 UTC 2024 - maiku.fabian@gmail.com
 
 - Update to 2.25.4
@@ -117,7 +125,6 @@ Mon Oct 16 21:40:08 UTC 2023 - maiku.fabian@gmail.com
   correctly (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/467)
 - Avoid really *all* use of self.foreward_key_event() if the option self._avoid_forward_key_event is True
 - Avoid verbatim bidi formatting characters in the source code
-- Drop ibus-typing-booster-libX11-1.8.7.patch
 
 -------------------------------------------------------------------
 Sun Oct  8 16:26:56 UTC 2023 - Marguerite Su <i@marguerite.su>
