@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 11 06:50:01 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- tor 0.4.8.11
+  * Minor features and bugfixes
+  * See https://gitlab.torproject.org/tpo/core/tor/-/raw/release-0.4.8/ReleaseNotes
+
+-------------------------------------------------------------------
 Wed Feb 14 15:50:14 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Enables scrypt support unconditionally

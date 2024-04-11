@@ -1106,4 +1106,14 @@ nicer version with try-reload-or-restart</comment>
     <comment></comment>
     <requestid>1153959</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>44eb6f716a00c476c228edd4053e8dba</srcmd5>
+    <version>0.4.8.11</version>
+    <time>1712857305</time>
+    <user>anag+factory</user>
+    <comment>- tor 0.4.8.11
+  * Minor features and bugfixes
+  * See https://gitlab.torproject.org/tpo/core/tor/-/raw/release-0.4.8/ReleaseNotes</comment>
+    <requestid>1166822</requestid>
+  </revision>
 </revisionlist>
