@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  5 14:42:24 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use full URL for source.
+
+-------------------------------------------------------------------
 Tue Feb 20 10:59:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

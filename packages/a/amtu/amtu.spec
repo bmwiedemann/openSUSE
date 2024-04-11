@@ -1,7 +1,7 @@
 #
 # spec file for package amtu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define sfprj amtueal
 Name:           amtu
 URL:            https://sourceforge.net/projects/amtueal/
 Requires:       audit >= 1.2.9
@@ -24,7 +25,7 @@ Release:        0
 Summary:        Abstract Machine Test Utility
 License:        CPL-1.0
 Group:          Productivity/Security
-Source:         %{name}-%{version}.tar.gz
+Source:         https://downloads.sourceforge.net/%{sfprj}/%{name}-%{version}.tar.gz
 Patch0:         amtu-1.0.8_memsep_fclose_bnc523353.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  audit
