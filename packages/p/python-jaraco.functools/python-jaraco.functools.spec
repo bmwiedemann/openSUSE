@@ -26,7 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/jaraco.functools
 Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.functools/jaraco.functools-%{version}.tar.gz
 BuildRequires:  %{python_module jaraco.classes}
-BuildRequires:  %{python_module jaraco.packaging >= 9}
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 56}
@@ -34,7 +33,6 @@ BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-jaraco.packaging >= 9
 Requires:       python-more-itertools
 BuildArch:      noarch
 # SECTION test and docs

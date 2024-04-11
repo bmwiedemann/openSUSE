@@ -139,4 +139,12 @@
 - Update to v3.5.2</comment>
     <requestid>1136286</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4419c80a8fb244b20b315ffa438ed5f0</srcmd5>
+    <version>4.0.0</version>
+    <time>1712857223</time>
+    <user>anag+factory</user>
+    <comment>- remove jaraco.packaging as it is only needed for docs</comment>
+    <requestid>1166500</requestid>
+  </revision>
 </revisionlist>
