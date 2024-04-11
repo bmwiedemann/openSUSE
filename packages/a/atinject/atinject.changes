@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Apr 10 08:19:26 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.0.5 and switch to sources in
+  https://github.com/jakartaee/inject/
+  * Changes of 1.0.5:
+    + This switches the module name back to the java.inject that was
+      used by the 1.0.3 release with automatic module. This is a
+      multi-release jar
+  * Changes of 1.0.4:
+    + This is a 1.0.4 service release with a multi-release jar that
+      adds the module-info class to
+      META-INF/versions/9/module-info.class using the
+      https://github.com/moditect/moditect plugin for the
+      javax.inject module.
+  * Changes of 1.0.3:
+    + This release corrects the 1.0.2 release which was incorrectly
+      done from the master branch with the jakarta.* packages.
+    + It adds the Automatic-Module-Name=java.inject to the api jar
+      manifest.
+  * Changes of 1.0.2:
+    + A service release that addresses:
+      - #14, set Automatic-Module-Name to java.inject
+      - #15, add OSGi bundle headers
+  * Changes of 1.0.1:
+    + Add Automatic-Module-Name of jakarta.inject
+  * Changes of 1.0:
+    + First Injection API release for Jakarta EE
+- Remove unused sub-package tck
+- Removed patch:
+  * atinject-javadoc.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
 Sat Apr  2 18:23:08 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Alias to the new jakarta name
