@@ -22,4 +22,17 @@ I tested the upgrade path and this will not break anybody relying on the package
 </comment>
     <requestid>1166087</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>218561a5060c8b9873c840c7334a1e38</srcmd5>
+    <version>0.12.3</version>
+    <time>1712857245</time>
+    <user>anag+factory</user>
+    <comment>- Update to upstream version 0.12.3
+  * Fix Rich formatting with no commands.
+  * Improve column help display, ensure commands column width is
+    the same on all panels.
+  * Add support for an argument of type Optional[Tuple] and default
+    value None.</comment>
+    <requestid>1166688</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-typer-slim
-Version:        0.12.1
+Version:        0.12.3
 Release:        0
 Summary:        Typer, build great CLIs. Easy to code. Based on Python type hints
 License:        MIT

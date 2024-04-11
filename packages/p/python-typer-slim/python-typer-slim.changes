@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  9 20:00:21 UTC 2024 - Matthias Bach <marix@marix.org> - 0.12.3
+
+- Update to upstream version 0.12.3
+  * Fix Rich formatting with no commands.
+  * Improve column help display, ensure commands column width is
+    the same on all panels.
+  * Add support for an argument of type Optional[Tuple] and default
+    value None.
+
+-------------------------------------------------------------------
 Sat Apr  6 10:37:17 UTC 2024 - Matthias Bach <marix@marix.org> - 0.12.1
 
 - Update to upstream version 0.12.1
