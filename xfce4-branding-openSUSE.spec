@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-branding-openSUSE
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,13 +32,13 @@
 %define thunar_volman_version   %(rpm -q --queryformat '%%{VERSION}' thunar-volman)
 
 Name:           xfce4-branding-openSUSE
-Version:        4.18.0+git0.9a2f754
+Version:        4.18.0+git4.79f6d44
 Release:        0
 Summary:        openSUSE Branding of the Xfce Desktop Environment
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://github.com/openSUSE/xfce4-branding-openSUSE/tree/4.16
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 BuildRequires:  %{libxfce4ui_gtk3_libname}
 BuildRequires:  fdupes
 BuildRequires:  libgarcon-data
@@ -63,6 +63,7 @@ BuildRequires:  xfce4-settings
 BuildRequires:  xfdesktop
 BuildRequires:  xfwm4
 BuildRequires:  xfwm4-branding-upstream
+BuildRequires:  zstd
 BuildArch:      noarch
 
 %description
@@ -249,6 +250,14 @@ for dir in base "${overlay_version}"; do
     fi
 done
 
+# Installing default wallpapers symlinks
+mkdir -p %{buildroot}%{_datadir}/wallpapers
+%if 0%{?sle_version} == 150500 && 0%{?is_opensuse}
+cp -r ./wallpapers/leap %{buildroot}%{_datadir}/wallpapers/xfce
+%else
+cp -r ./wallpapers/tumbleweed %{buildroot}%{_datadir}/wallpapers/xfce
+%endif
+
 %files -n xfce4-panel-branding-openSUSE
 %license COPYING
 %dir %{_sysconfdir}/xdg/xfce4
@@ -289,7 +298,11 @@ done
 %license COPYING
 %dir %{_datadir}/wallpapers/xfce
 %{_datadir}/wallpapers/xfce/default.wallpaper
+%if 0%{?sle_version} == 150500 && 0%{?is_opensuse}
 %{_datadir}/wallpapers/xfce/*.jpg
+%else
+%{_datadir}/wallpapers/xfce/*.png
+%endif
 %dir %{_sysconfdir}/xdg/xfce4/xfconf/
 %config %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
 
