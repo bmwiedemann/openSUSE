@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr 10 20:33:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.14.4:
+  Helm v3.14.4 is a patch release. Users are encouraged to upgrade
+  for the best experience. Users are encouraged to upgrade for the
+  best experience.
+  * refactor: create a helper for checking if a release is
+    uninstalled 81c902a (Alex Petrov)
+  * fix: reinstall previously uninstalled chart with --keep-history
+    5a11c76 (Alex Petrov)
+  * chore: remove repetitive words fb3d880 (deterclosed)
+  * chore(deps): bump google.golang.org/protobuf from 1.31.0 to
+    1.33.0 01ac4a2 (dependabot[bot])
+  * chore(deps): bump github.com/docker/docker 138602d
+    (dependabot[bot])
+  * bug: add proxy support for oci getter aa7d953 (Ricardo
+    Maraschini)
+
+-------------------------------------------------------------------
 Sat Mar 16 16:49:46 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.14.3:
