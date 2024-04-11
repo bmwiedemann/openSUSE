@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 11 02:52:53 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 1.21.3:
+  * updated camera matrices
+  * color correction: properly refresh the curves displayed when
+    changing the active region
+  * camconst: updated raw_crop for Sony ILCE-7CR and ILCE-7RM5
+  * camconst: fixed bug in overriding raw_crop entries from the
+    user camconst.json
+
+-------------------------------------------------------------------
 Wed Mar 20 18:30:05 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 1.21.2:
