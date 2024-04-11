@@ -638,4 +638,50 @@
   * Fix incorrect regular expression with missing closing bracket (#2616) (forwarded request 1163396 from ph03nix)</comment>
     <requestid>1163397</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5b8509b1864e65b807624e502a14102a</srcmd5>
+    <version>3.73.0</version>
+    <time>1712857261</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.73.0:
+  * Add Wiz detector (#2691)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.18 (#2690)
+  * fix(deps): update golang.org/x/exp digest to 93d18d7 (#2688)
+  * Update README.md with Windows-specific Docker installation instructions (#2674)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.17 (#2686)
+  * fix(deps): update module github.com/go-ldap/ldap/v3 to v3.4.7 (#2684)
+  * fix(deps): update testcontainers-go monorepo to v0.30.0 (#2685)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.102.0 (#2682)
+  * Enrich Gitlab enumeration logging (#2678)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.16 (#2680)
+  * fix(deps): update golang.org/x/exp digest to c0f41cb (#2672)
+  * fix(deps): update module github.com/wasilibs/go-re2 to v1.5.2 (#2681)
+  * fix(deps): update module github.com/thezeroslave/zapsentry to v1.23.0 (#2667)
+  * fix(deps): update module golang.org/x/net to v0.24.0 (#2662)
+  * Handle inactive Slack account tokens (#2668)
+  * [bug] - Add ASCII validation check for base64 decoding (#2671)
+  * fix(deps): update module golang.org/x/oauth2 to v0.19.0 (#2670)
+  * chore: fix some typos (#2666)
+  * [chore] - update go-github dep manually (#2664)
+  * fix(deps): update module github.com/google/go-github/v57 to v61 (#2652)
+  * fix(deps): update module github.com/launchdarkly/go-server-sdk/v7 to v7.3.0 (#2660)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.14 (#2659)
+  * upgrade launchdarkly dep (#2650)
+  * chore: remove duplicate jiratoken.v2 detector (#2657)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.13 (#2655)
+  * fix(deps): update module github.com/thezeroslave/zapsentry to v1.22.1 (#2654)
+  * Add GitLab CI Pipeline Example in Documentation (#2601)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.12 (#2651)
+  * add GCP application default credentials detector (#2530)
+  * fix(deps): update module github.com/go-git/go-git/v5 to v5.12.0 (#2649)
+  * fix(deps): update module github.com/thezeroslave/zapsentry to v1.22.0 (#2648)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.11 (#2646)
+  * Add JupiterOne detector (#2446)
+  * fix(deps): update module cloud.google.com/go/storage to v1.40.0 (#2645)
+  * fix(deps): update module github.com/launchdarkly/go-server-sdk/v6 to v6.2.0 (#2638)
+  * Fix GitHub enumeration &amp; rate-limiting logic (#2625)
+  * build: fix 'toolchair not available' error (#2642)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.10 (#2636) (forwarded request 1166709 from ph03nix)</comment>
+    <requestid>1166712</requestid>
+  </revision>
 </revisionlist>
