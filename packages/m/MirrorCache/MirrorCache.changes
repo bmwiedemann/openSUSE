@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 04 10:32:53 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.074:
+  * Rework mirrors report generation
+  * fix files mtime descrepancy when syncing over http
+  * Fix metalink for small files
+  * fix serving linked folders when dest changes
+
+-------------------------------------------------------------------
 Thu Mar 07 15:21:08 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.073:
