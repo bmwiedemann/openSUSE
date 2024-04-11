@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-identity-broker
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Microsoft Azure Identity Broker plugin for Python
 License:        MIT
@@ -35,7 +35,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       (python-azure-identity >= 1.14.0 with python-azure-identity < 2.0.0)
+Requires:       (python-azure-identity >= 1.15.0 with python-azure-identity < 2.0.0)
 Requires:       (python-msal >= 1.25.0 with python-msal < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
