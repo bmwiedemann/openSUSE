@@ -26,7 +26,7 @@
 %define _pyb 3.11
 %endif
 Name:           lutris
-Version:        0.5.16
+Version:        0.5.17
 Release:        0
 Summary:        Manager for game installation and execution
 License:        GPL-3.0-or-later
@@ -46,20 +46,27 @@ Requires:       curl
 Requires:       fluid-soundfont-gm
 Requires:       p7zip
 Requires:       psmisc
+Requires:       python%{_py}-certifi
+Requires:       python%{_py}-distro
 Requires:       python%{_py}-Pillow
 Requires:       python%{_py}-PyYAML
-Requires:       python%{_py}-cssselect
 Requires:       python%{_py}-dbus-python
+Requires:       python%{_py}-protobuf
 # controller support
 Requires:       python%{_py}-evdev
 Requires:       python%{_py}-gobject
 Requires:       python%{_py}-gobject-Gdk
 Requires:       python%{_py}-lxml
 Requires:       python%{_py}-requests
+%if %{with discord}
+Requires:       python%{_py}-pypresence
+%endif
+%if %{with moddb}
+Requires:       python%{_py}-moddb
+%endif
 Requires:       xrandr
 # boo#1213440
 Recommends:     ca-certificates-steamtricks
-Recommends:     python%{_py}-distro
 Recommends:     winetricks
 BuildArch:      noarch
 

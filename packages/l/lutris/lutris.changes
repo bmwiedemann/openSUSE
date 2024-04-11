@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Apr 11 01:49:00 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- sync the requires with the setup.py and prepare at least the
+  requires for moddb and distro support 
+
+-------------------------------------------------------------------
+Thu Apr 11 01:39:38 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.5.17:
+  - Fix critical bug preventing completion of installs if the
+    script specifies a wine version
+  - Fix critical bug preventing Steam library sync
+  - Fix critical bug preventing game or runner uninstall in Flatpak
+  - Support for library sync to lutris.net, this allows to sync
+    games, play time and categories to multiple devices.
+  - Remove "Lutris" service view; with library sync the "Games"
+    view replaces it.
+  - Torturous and sadistic options for multi-GPUs that were half
+    broken and understood by no one have been replaced by a simple
+    GPU selector.
+  - EXPERIMENTAL support for umu, which allows running games with
+    Proton and Vessel. Using Proton in Lutris without umu is no
+    longer possible.
+  - Better and sensible sorting for games (sorting by playtime or
+    last played no longer needs to be reversed)
+  - Support the "Categories" command when you select multiple games
+  - Notification bar when your Lutris is no longer supported
+  - Improved error dialog.
+  - Add Vita3k runner (thanks @ItsAllAboutTheCode)
+  - Add Supermodel runner
+  - WUA files are now supported in Cemu
+  - "Show Hidden Games" now displays the hidden games in a separate
+    view, and re-hides them as soon as you leave it.
+  - Support transparent PNG files for custom banner and cover-art
+  - Images are now downloaded for manually added games.
+  - Deprecate 'exe', 'main_file' or 'iso' placed at the root of the
+    script, all lutris.net installers have been updated
+    accordingly.
+  - Deprecate libstrangle and xgamma support.
+  - Deprecate DXVK state cache feature (it was never used and is no
+    longer relevant to DXVK 2)
+
+-------------------------------------------------------------------
 Tue Jan 16 07:07:00 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.16:
