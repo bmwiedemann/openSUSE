@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-eventgrid
-Version:        4.18.0
+Version:        4.19.0
 Release:        0
 Summary:        Microsoft Azure Event Grid Client Library
 License:        MIT
