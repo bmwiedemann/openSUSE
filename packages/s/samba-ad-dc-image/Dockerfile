@@ -19,7 +19,7 @@ LABEL org.opensuse.reference="registry.opensuse.org/opensuse/samba-ad-dc:%%PKG_V
 
 COPY entrypoint.sh /entrypoint.sh
 
-RUN zypper --non-interactive install --no-recommends catatonit timezone system-user-mail system-user-nobody shadow samba-ad-dc krb5-server samba-winbind python3-dnspython ldb-tools && zypper clean && chmod 755 /entrypoint.sh
+RUN zypper --non-interactive install --no-recommends catatonit timezone system-user-mail system-user-nobody shadow samba-ad-dc krb5-server samba-winbind python3-dnspython ldb-tools tdb-tools && zypper clean && chmod 755 /entrypoint.sh
 RUN mkdir -p /var/lib/samba-ad-dc/sysvol && chmod 755 /var/lib/samba-ad-dc/sysvol
 
 EXPOSE 53/tcp

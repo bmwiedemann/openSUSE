@@ -24,4 +24,13 @@
   * samba-ad-dc: add ldb-tools to container</comment>
     <requestid>1146110</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>eda69f82dcf2ff58ac0ecdff202e37d0</srcmd5>
+    <version>unknown</version>
+    <time>1712857301</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1712673528.784e4d6:
+  * samba-ad-dc: add tdb-tools</comment>
+    <requestid>1166794</requestid>
+  </revision>
 </revisionlist>
