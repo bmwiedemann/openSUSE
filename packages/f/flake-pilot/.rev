@@ -39,4 +39,41 @@ https://github.com/OSInside/flake-pilot?tab=readme-ov-file#flake-pilot</comment>
   Point to OSInside Organisation</comment>
     <requestid>1164042</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>08b7c34833fef76123007b351c60e015</srcmd5>
+    <version>3.0.12</version>
+    <time>1712857296</time>
+    <user>anag+factory</user>
+    <comment>- Turn terminal flag setup into function
+
+- Bump version: 3.0.11 → 3.0.12
+
+- Fix race condition on connection check
+
+- set PS1 prompt via sci env
+
+- Add terminal settings for pty stdout in sci
+  disable ECHO
+
+- Fix invalid early exit condition
+
+- Bump version: 3.0.10 → 3.0.11
+
+- Fix build for Leap
+  Issues on the gcc side for static targets, disable
+  sci static build for older targets, e.g Leap
+
+- Prevent use of socat in firecracker-pilot
+  Do not shell out socat and use proper UnixListener/UnixStream
+  to do this job. This version of the commit works but I stumbled
+  across a few issues:
+  1. Permission denied when the UnixListener runs as user and the
+  firecracker process was called as root (run_as: root in the flake).
+  The former implementation ran socat via sudo in the same way as
+  the firecracker process. Thus if you register the flake to
+  run as root it can now also only be called as root, which is
+  acceptable.
+  2. The behavior in interactive sessions differs compared to socat.</comment>
+    <requestid>1166791</requestid>
+  </revision>
 </revisionlist>

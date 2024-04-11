@@ -23,7 +23,7 @@
 # SOFTWARE.
 #
 Name:           flake-pilot
-Version:        3.0.10
+Version:        3.0.12
 Release:        0
 Summary:        Launcher for flake applications
 License:        MIT
@@ -86,7 +86,6 @@ Requires:       rsync
 Requires:       firecracker
 Requires:       xz
 Requires:       e2fsprogs
-Requires:       socat
 Requires:       sudo
 
 %description -n flake-pilot-firecracker
@@ -124,16 +123,17 @@ mkdir -p .cargo
 cp %{SOURCE1} .cargo/config
 make build
 %ifnarch ppc64le
+%if 0%{?suse_version} && 0%{?suse_version} >= 1600
 make compile_sci_static
+%endif
 %endif
 
 %install
 make DESTDIR=%{buildroot}/ install
-%ifnarch ppc64le
-make DESTDIR=%{buildroot}/ install_sci_static
-%else
+
+test -f target/*-unknown-linux-gnu/static/sci && \
+make DESTDIR=%{buildroot}/ install_sci_static || \
 make DESTDIR=%{buildroot}/ install_sci
-%endif
 
 mkdir -p %{buildroot}/overlayroot
 mkdir -p %{buildroot}/usr/lib/flake-pilot

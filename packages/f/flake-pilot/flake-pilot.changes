@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Wed Apr 10 12:13:56 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Turn terminal flag setup into function
+
+-------------------------------------------------------------------
+Wed Apr 10 09:54:28 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.0.11 → 3.0.12
+
+-------------------------------------------------------------------
+Tue Apr 09 18:43:42 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix race condition on connection check
+
+-------------------------------------------------------------------
+Tue Apr 09 16:53:26 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- set PS1 prompt via sci env
+
+-------------------------------------------------------------------
+Tue Apr 09 16:41:34 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add terminal settings for pty stdout in sci
+
+  disable ECHO
+
+-------------------------------------------------------------------
+Tue Apr 09 12:35:08 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix invalid early exit condition
+
+-------------------------------------------------------------------
+Mon Apr 08 12:59:48 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.0.10 → 3.0.11
+
+-------------------------------------------------------------------
+Mon Apr 08 12:58:58 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix build for Leap
+
+  Issues on the gcc side for static targets, disable
+  sci static build for older targets, e.g Leap
+
+-------------------------------------------------------------------
+Wed Apr 03 22:48:44 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Prevent use of socat in firecracker-pilot
+
+  Do not shell out socat and use proper UnixListener/UnixStream
+  to do this job. This version of the commit works but I stumbled
+  across a few issues:
+
+  1. Permission denied when the UnixListener runs as user and the
+  firecracker process was called as root (run_as: root in the flake).
+  The former implementation ran socat via sudo in the same way as
+  the firecracker process. Thus if you register the flake to
+  run as root it can now also only be called as root, which is
+  acceptable.
+
+  2. The behavior in interactive sessions differs compared to socat.
+  When sci in the guest is called it creates a pty and all data
+  is copied to the vsock stream. The host connects via an UDS
+  socket to this data and we multiplex stdin->stream and
+  stream->stdout. When doing this with socat the behavior
+  is different in a way that e.g tabs are effectively interpreted
+  and the pty prompt allows for input on the same line when
+  my code now always needs a newline to renew the prompt.
+  I did not debug further what is needed to make this look
+  nicer.
+
+  This Fixes #8
+
+-------------------------------------------------------------------
 Wed Mar 27 14:11:25 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 3.0.9 → 3.0.10
