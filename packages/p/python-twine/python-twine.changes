@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 10 08:39:37 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add BuildRequires on python-jaraco.packaging that was pulled
+  by other Build Requires.
+
+-------------------------------------------------------------------
 Mon Mar 18 08:14:45 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 5.0.0:

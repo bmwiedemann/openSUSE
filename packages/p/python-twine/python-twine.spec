@@ -31,6 +31,7 @@ Patch0:         0001-remove-disable-socket-pytest-opt.patch
 Patch1:         skip-unsupported-Metadata-Version-test.patch
 BuildRequires:  %{python_module importlib-metadata >= 3.6}
 BuildRequires:  %{python_module jaraco.envs}
+BuildRequires:  %{python_module jaraco.packaging >= 9}
 BuildRequires:  %{python_module keyring >= 15.1}
 BuildRequires:  %{python_module munch}
 BuildRequires:  %{python_module pip}
