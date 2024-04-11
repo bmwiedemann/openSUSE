@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 10 16:09:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.11.1:
+  * Fixes:
+    - fix: Windows binary properly signed
+
+-------------------------------------------------------------------
 Wed Apr 03 17:02:24 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.11.0:
