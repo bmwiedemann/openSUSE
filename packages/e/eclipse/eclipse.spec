@@ -122,6 +122,7 @@ Patch35:        eclipse-CVE-2020-27225.patch
 Patch36:        eclipse-ant.patch
 Patch37:        reproducible-p2_timestamp.patch
 Patch38:        eclipse-CVE-2023-4218.patch
+Patch39:        new-atinject.patch
 BuildRequires:  ant >= 1.10.5
 BuildRequires:  ant-antlr
 BuildRequires:  ant-apache-bcel
@@ -536,6 +537,7 @@ tar --strip-components=1 -xf %{SOURCE1}
 %patch -P 37 -p1
 
 %patch -P 38 -p1
+%patch -P 39 -p1
 
 # Extend the objectweb-asm requirements
 sed -i -e 's/org\.objectweb\.asm\.tree;bundle-version="\[6\.0\.0,8\.0\.0)"/org\.objectweb\.asm\.tree;bundle-version="\[6\.0\.0,10\.0\.0)"/g' \
@@ -1035,6 +1037,7 @@ echo "%{version}-%{release}" > %{buildroot}%{_eclipsedir}/.pkgs/Distro%{?dist}
 %{_eclipsedir}/plugins/com.jcraft.jsch_*
 %{_eclipsedir}/plugins/com.sun.el.javax.el_*
 %{_eclipsedir}/plugins/javax.*
+%{_eclipsedir}/plugins/jakarta.*
 %{_eclipsedir}/plugins/org.apache.*
 %{_eclipsedir}/plugins/org.eclipse.ant.core_*
 %{_eclipsedir}/plugins/org.eclipse.compare_*
