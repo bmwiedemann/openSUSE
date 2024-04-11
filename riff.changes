@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Mar 18 21:58:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.1.0:
+  * Aka --ignore-all-space, makes a b c be treated as equal to abc.
+
+-------------------------------------------------------------------
+Mon Mar 18 08:04:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.0.1:
+  * Before this release, we just removed all color from git --oneline
+    output. With this release, we now retain the existing color for
+    lines we have no special handling for. #62
+
+-------------------------------------------------------------------
+Mon Mar  4 06:38:58 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.0.0:
+  * Starting from now, here's how to integrate with git:
+    git config --global pager.diff riff
+    git config --global pager.show riff
+    git config --global pager.log riff
+    git config --global interactive.diffFilter "riff --color=on"
+  * Note that the interactive.diffFilter has changed.
+
+-------------------------------------------------------------------
+Thu Feb 15 08:00:43 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.32.0:
+  * Don't color output when piping
+
+-------------------------------------------------------------------
+Mon Feb 12 19:27:24 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.31.1:
+  * Fix a hang with large + / - sections
+
+-------------------------------------------------------------------
+Thu Feb  8 06:52:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.31.0:
+  * If you do git diff when there are conflict markers,
+    those conflict markers will now be helpfully highlighted.
+    See #56 and #57.
+
+-------------------------------------------------------------------
 Mon Feb  5 06:34:13 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.30.1:
@@ -9,7 +54,7 @@ Thu Feb  1 15:39:57 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.30.0:
   * Option to put command line options in the RIFF environment variable
-	  and riff will use them primarily
+    and riff will use them primarily
   * --no-adds-only-special flag added
   * Improved --- and +++ headers highlighting
 
@@ -18,7 +63,7 @@ Wed Jan 31 04:59:39 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.20.1:
   * Fix losing part of the diff
-	* Align diff file timestamp
+  * Align diff file timestamp
 
 -------------------------------------------------------------------
 Tue Jan 30 05:44:36 UTC 2024 - Michael Vetter <mvetter@suse.com>
