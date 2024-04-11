@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Apr 11 06:55:00 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240411.9c4bf6c1:
+  * add doc/website-v1/news.adoc to .gitignore
+  * Dev: doc: update howto build the website (#1374)
+  * Dev: doc: add website target in Makefile (#1374)
+  * Dev: doc/toolchain: add asciidoc-py (#1374)
+  * Dev: doc/website-v1: add man-4.6 (#1374)
+  * Dev: doc/toolchain: implement adocaio (#1374)
+  * Dev: doc/website-v1: adapt to python3 (#1374)
+
+-------------------------------------------------------------------
+Thu Apr 11 03:59:16 UTC 2024 - nicholas.yang@suse.com
+
+- Update to version 4.6.0+20240411.bfd7f062:
+  * Dev: doc/toolchain: add asciidoctor (#1374)
+  * Dev: doc/toolchain: implement generating include statement for asciidoc (#1374)
+  * Dev: doc/toolchain: add Containerfile (#1374)
+  * Dev: doc/toolchain: implement adocxt (#1374)
+  * Dev: doc/toolchain: implement help2adoc (#1374)
+
+-------------------------------------------------------------------
 Sun Apr 07 09:46:37 UTC 2024 - XLiang@suse.com
 
 - Update to version 4.6.0+20240407.9eb2f755:
