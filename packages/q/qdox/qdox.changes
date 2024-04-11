@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr 10 14:08:25 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.1.
+  * Changes:
+    + clarify getComment() javadoc with regards to Standard doclet
+      inline and 
+    + Require Java 8 to run QDox (#171) 
+    + Replace hamcrest with assertj (#173)
+    + Upgrade to Mockito 4.11.0 with some small required code
+      changes (#174)
+    + implement JavaWildcardType.getLowerBounds and
+      JavaWildcardType.getUpperBounds 
+    + Fix unittests
+    + maven-gpg-plugin is not a managed plugin in oss-parent, move
+      it to build.plugins
+    + Fix the bug that does not allow the use of permits as field
+      names (#202)
+
+-------------------------------------------------------------------
 Tue Feb 20 13:46:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1,7 +1,7 @@
 #
 # spec file for package qdox
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qdox
-Version:        2.0.3
+Version:        2.1.0
 Release:        0
 Summary:        Tool to extract class/interface/method definitions from sources
 License:        Apache-2.0
@@ -31,7 +31,7 @@ BuildRequires:  byaccj
 BuildRequires:  fdupes
 BuildRequires:  java-cup-bootstrap
 BuildRequires:  java-devel
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jflex-bootstrap
 BuildArch:      noarch
 
@@ -76,7 +76,7 @@ jflex -d src/main/java/com/thoughtworks/qdox/parser/impl src/grammar/commentlexe
  byaccj -v -Jnorun -Jnoconstruct -Jclass=Parser -Jimplements=CommentHandler -Jsemantic=Value -Jpackage=com.thoughtworks.qdox.parser.impl -Jstack=500 ../../../../../../../grammar/parser.y
 )
 
-%ant jar javadoc
+%ant -Dproject.version=%{version} jar javadoc
 
 %install
 # jar
@@ -84,7 +84,7 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar -a qdox:qdox
 # javadoc
 mkdir -p %{buildroot}%{_javadocdir}/%{name}
