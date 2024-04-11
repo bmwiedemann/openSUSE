@@ -56,4 +56,25 @@
   * Added ``on_interrupt`` decorator.</comment>
     <requestid>1088462</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dce08cba79dcfebb44490be7328412c2</srcmd5>
+    <version>5.3.0</version>
+    <time>1712857222</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.3.0:
+  * Deprecate infer_compression, as it was used primarily for
+    deferring to the tar command.
+  * Enable 'transparent' compression in the tarfile context.
+  * Implemented tarfile using native functionality and avoiding
+    subprocessing, making it portable.
+  * Implement experimental _compose for composing context
+    managers. If you wish to use this function, please comment in
+    the issue regarding your thoughts on the ordering.
+  * Deprecate null context.
+  * Renamed tarball_context to tarball and deprecated
+    tarball_context compatibility shim.
+  * Disentangle pushd from tarball.
+  * Removed deprecated 'runner' parameter to tarball_context.</comment>
+    <requestid>1165957</requestid>
+  </revision>
 </revisionlist>

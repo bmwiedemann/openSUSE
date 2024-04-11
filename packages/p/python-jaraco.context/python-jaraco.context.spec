@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.context
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.context
-Version:        4.3.0
+Version:        5.3.0
 Release:        0
 Summary:        Tools to work with functools
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.context
 Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.context/jaraco.context-%{version}.tar.gz
+BuildRequires:  %{python_module backports.tarfile}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module portend}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-backports.tarfile
 BuildArch:      noarch
 %python_subpackages
 
@@ -39,8 +42,7 @@ jaraco.functools Tools for working with functools.
 Additional functools in the spirit of stdlib’s functools.
 
 %prep
-%setup -q -n jaraco.context-%{version}
-%autopatch -p1
+%autosetup -p1 -n jaraco.context-%{version}
 
 %build
 %pyproject_wheel
@@ -54,7 +56,7 @@ Additional functools in the spirit of stdlib’s functools.
 
 %files %{python_files}
 %license LICENSE
-%doc docs/*.rst README.rst CHANGES.rst
+%doc docs/*.rst README.rst NEWS.rst
 %{python_sitelib}/jaraco.context-%{version}*-info
 %dir %{python_sitelib}/jaraco
 %{python_sitelib}/jaraco/context.py*
