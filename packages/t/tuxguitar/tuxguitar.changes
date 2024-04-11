@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Apr 11 08:14:30 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Updated to new upstream release 1.6.2
+  * Remove VST plugin (#312)
+- Removed patch:
+  * 0009-no-vst.patch
+    + vst removed by upstream
+- Modified patches:
+  * 0001-tuxguitar-aarch64.patch
+  * 0002-tuxguitar-armv6hl.patch
+  * 0003-tuxguitar-armv7hl.patch
+  * 0004-tuxguitar-ppc64.patch
+  * 0005-tuxguitar-ppc64le.patch
+  * 0006-tuxguitar-riscv64.patch
+  * 0007-tuxguitar-s390x.patch
+  * 0008-tuxguitar-x86.patch
+  * 0010-no-lv2.patch -> 0009-no-lv2.patch
+  * 0011-no-fluidsynth.patch -> 0010-no-fluidsynth.patch
+  * 0012-default-soundfont.patch -> 0011-default-soundfont.patch
+  * 0013-startscript.patch -> 0012-startscript.patch
+  * 0014-desktop.patch -> 0013-desktop.patch
+    + Rediff to changed context and adapt to removal of vst
+
+-------------------------------------------------------------------
 Thu Mar 14 23:10:17 UTC 2024 - guiv42 <guiv42@tuta.io>
 
 - Modified patch 0013-startscript.patch

@@ -44,7 +44,7 @@
 %global bit x86
 %endif
 Name:           tuxguitar
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        A multitrack tablature editor and player written in Java-SWT
 License:        LGPL-2.1-or-later
@@ -59,12 +59,11 @@ Patch4:         0005-tuxguitar-ppc64le.patch
 Patch5:         0006-tuxguitar-riscv64.patch
 Patch6:         0007-tuxguitar-s390x.patch
 Patch7:         0008-tuxguitar-x86.patch
-Patch10:        0009-no-vst.patch
-Patch11:        0010-no-lv2.patch
-Patch12:        0011-no-fluidsynth.patch
-Patch20:        0012-default-soundfont.patch
-Patch21:        0013-startscript.patch
-Patch22:        0014-desktop.patch
+Patch11:        0009-no-lv2.patch
+Patch12:        0010-no-fluidsynth.patch
+Patch20:        0011-default-soundfont.patch
+Patch21:        0012-startscript.patch
+Patch22:        0013-desktop.patch
 BuildRequires:  alsa-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -123,7 +122,6 @@ find . \( -name "*.xml" -or -name "*.gradle"  -or -name "*.properties" -or -name
 # Also set the version in the "Help - About" dialog
 sed -i "s/static final String RELEASE_NAME =.*/static final String RELEASE_NAME = (TGApplication.NAME + \" %{version}\");/" desktop/TuxGuitar/src/org/herac/tuxguitar/app/view/dialog/about/TGAboutDialog.java
 
-%patch -P 10 -p1
 %if 0%{?suse_version} <= 1500
 %patch -P 11 -p1
 %endif

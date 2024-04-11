@@ -1,0 +1,24 @@
+From 61ac196ab83ce73d6c8efede692c832faf8fbcd0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Thu, 11 Apr 2024 08:31:15 +0200
+Subject: [PATCH 13/13] desktop
+
+---
+ .../common-linux/share/applications/tuxguitar.desktop           | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/desktop/build-scripts/common-resources/common-linux/share/applications/tuxguitar.desktop b/desktop/build-scripts/common-resources/common-linux/share/applications/tuxguitar.desktop
+index 1af409e2..1c141a1a 100644
+--- a/desktop/build-scripts/common-resources/common-linux/share/applications/tuxguitar.desktop
++++ b/desktop/build-scripts/common-resources/common-linux/share/applications/tuxguitar.desktop
+@@ -15,6 +15,6 @@ Type=Application
+ MimeType=audio/x-tuxguitar;audio/x-gtp;audio/x-ptb
+ Categories=AudioVideo;Audio
+ Exec=tuxguitar %F
+-Icon=/opt/tuxguitar/share/skins/Oxygen/icon.png
++Icon=tuxguitar
+ Terminal=false
+ StartupNotify=false
+-- 
+2.44.0
+

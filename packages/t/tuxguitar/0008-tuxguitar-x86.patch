@@ -1,6 +1,27 @@
-diff -rupN a/desktop/build-scripts/native-modules/tuxguitar-alsa-linux-x86/pom.xml b/desktop/build-scripts/native-modules/tuxguitar-alsa-linux-x86/pom.xml
---- a/desktop/build-scripts/native-modules/tuxguitar-alsa-linux-x86/pom.xml	1970-01-01 01:00:00.000000000 +0100
-+++ b/desktop/build-scripts/native-modules/tuxguitar-alsa-linux-x86/pom.xml	2024-01-27 22:58:03.420274713 +0100
+From c5840137f0ae6a0b186bb2ff86cc7cf6af6a0b03 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Thu, 11 Apr 2024 08:25:27 +0200
+Subject: [PATCH 08/13] tuxguitar-x86
+
+---
+ .../tuxguitar-alsa-linux-x86/pom.xml          | 132 ++++++
+ .../tuxguitar-fluidsynth-linux-x86/pom.xml    | 135 ++++++
+ .../tuxguitar-jack-linux-x86/pom.xml          | 142 ++++++
+ .../tuxguitar-synth-lv2-linux-x86/pom.xml     | 212 +++++++++
+ .../tuxguitar-linux-swt-x86/pom.xml           | 422 ++++++++++++++++++
+ desktop/pom.xml                               |  14 +
+ 6 files changed, 1057 insertions(+)
+ create mode 100644 desktop/build-scripts/native-modules/tuxguitar-alsa-linux-x86/pom.xml
+ create mode 100644 desktop/build-scripts/native-modules/tuxguitar-fluidsynth-linux-x86/pom.xml
+ create mode 100644 desktop/build-scripts/native-modules/tuxguitar-jack-linux-x86/pom.xml
+ create mode 100644 desktop/build-scripts/native-modules/tuxguitar-synth-lv2-linux-x86/pom.xml
+ create mode 100644 desktop/build-scripts/tuxguitar-linux-swt-x86/pom.xml
+
+diff --git a/desktop/build-scripts/native-modules/tuxguitar-alsa-linux-x86/pom.xml b/desktop/build-scripts/native-modules/tuxguitar-alsa-linux-x86/pom.xml
+new file mode 100644
+index 00000000..3fca23b6
+--- /dev/null
++++ b/desktop/build-scripts/native-modules/tuxguitar-alsa-linux-x86/pom.xml
 @@ -0,0 +1,132 @@
 +<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 +	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
@@ -134,9 +155,11 @@ diff -rupN a/desktop/build-scripts/native-modules/tuxguitar-alsa-linux-x86/pom.x
 +		</plugins>
 +	</build>
 +</project>
-diff -rupN a/desktop/build-scripts/native-modules/tuxguitar-fluidsynth-linux-x86/pom.xml b/desktop/build-scripts/native-modules/tuxguitar-fluidsynth-linux-x86/pom.xml
---- a/desktop/build-scripts/native-modules/tuxguitar-fluidsynth-linux-x86/pom.xml	1970-01-01 01:00:00.000000000 +0100
-+++ b/desktop/build-scripts/native-modules/tuxguitar-fluidsynth-linux-x86/pom.xml	2024-01-27 22:58:03.420274713 +0100
+diff --git a/desktop/build-scripts/native-modules/tuxguitar-fluidsynth-linux-x86/pom.xml b/desktop/build-scripts/native-modules/tuxguitar-fluidsynth-linux-x86/pom.xml
+new file mode 100644
+index 00000000..a1cf221e
+--- /dev/null
++++ b/desktop/build-scripts/native-modules/tuxguitar-fluidsynth-linux-x86/pom.xml
 @@ -0,0 +1,135 @@
 +<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 +	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
@@ -273,9 +296,11 @@ diff -rupN a/desktop/build-scripts/native-modules/tuxguitar-fluidsynth-linux-x86
 +		</plugins>
 +	</build>
 +</project>
-diff -rupN a/desktop/build-scripts/native-modules/tuxguitar-jack-linux-x86/pom.xml b/desktop/build-scripts/native-modules/tuxguitar-jack-linux-x86/pom.xml
---- a/desktop/build-scripts/native-modules/tuxguitar-jack-linux-x86/pom.xml	1970-01-01 01:00:00.000000000 +0100
-+++ b/desktop/build-scripts/native-modules/tuxguitar-jack-linux-x86/pom.xml	2024-01-27 22:58:03.420274713 +0100
+diff --git a/desktop/build-scripts/native-modules/tuxguitar-jack-linux-x86/pom.xml b/desktop/build-scripts/native-modules/tuxguitar-jack-linux-x86/pom.xml
+new file mode 100644
+index 00000000..55bf856c
+--- /dev/null
++++ b/desktop/build-scripts/native-modules/tuxguitar-jack-linux-x86/pom.xml
 @@ -0,0 +1,142 @@
 +<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 +	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
@@ -419,9 +444,11 @@ diff -rupN a/desktop/build-scripts/native-modules/tuxguitar-jack-linux-x86/pom.x
 +		</plugins>
 +	</build>
 +</project>
-diff -rupN a/desktop/build-scripts/native-modules/tuxguitar-synth-lv2-linux-x86/pom.xml b/desktop/build-scripts/native-modules/tuxguitar-synth-lv2-linux-x86/pom.xml
---- a/desktop/build-scripts/native-modules/tuxguitar-synth-lv2-linux-x86/pom.xml	1970-01-01 01:00:00.000000000 +0100
-+++ b/desktop/build-scripts/native-modules/tuxguitar-synth-lv2-linux-x86/pom.xml	2024-01-27 22:58:03.420274713 +0100
+diff --git a/desktop/build-scripts/native-modules/tuxguitar-synth-lv2-linux-x86/pom.xml b/desktop/build-scripts/native-modules/tuxguitar-synth-lv2-linux-x86/pom.xml
+new file mode 100644
+index 00000000..96615340
+--- /dev/null
++++ b/desktop/build-scripts/native-modules/tuxguitar-synth-lv2-linux-x86/pom.xml
 @@ -0,0 +1,212 @@
 +<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 +	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
@@ -635,157 +662,12 @@ diff -rupN a/desktop/build-scripts/native-modules/tuxguitar-synth-lv2-linux-x86/
 +		</plugins>
 +	</build>
 +</project>
-diff -rupN a/desktop/build-scripts/native-modules/tuxguitar-synth-vst-linux-x86/pom.xml b/desktop/build-scripts/native-modules/tuxguitar-synth-vst-linux-x86/pom.xml
---- a/desktop/build-scripts/native-modules/tuxguitar-synth-vst-linux-x86/pom.xml	1970-01-01 01:00:00.000000000 +0100
-+++ b/desktop/build-scripts/native-modules/tuxguitar-synth-vst-linux-x86/pom.xml	2024-01-27 22:58:03.420274713 +0100
-@@ -0,0 +1,143 @@
-+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-+		http://maven.apache.org/xsd/maven-4.0.0.xsd">
-+
-+	<parent>
-+		<artifactId>tuxguitar-pom</artifactId>
-+		<groupId>org.herac.tuxguitar</groupId>
-+		<version>SNAPSHOT</version>
-+		<relativePath>../../../</relativePath>
-+	</parent>
-+
-+	<modelVersion>4.0.0</modelVersion>
-+	<artifactId>tuxguitar-synth-vst-linux-x86</artifactId>
-+	<packaging>pom</packaging>
-+	<name>${project.artifactId}</name>
-+
-+	<properties>
-+		<tuxguitar.jni.cxx>g++</tuxguitar.jni.cxx>
-+		<tuxguitar.jni.rm>rm -f</tuxguitar.jni.rm>
-+		<tuxguitar.jni.ldpath>-L/usr/lib</tuxguitar.jni.ldpath>
-+		<tuxguitar.jni.header.path>-I${basedir}/../common-include</tuxguitar.jni.header.path>
-+
-+		<tuxguitar-synth-vst.client.vst.sdk>${basedir}/include</tuxguitar-synth-vst.client.vst.sdk>
-+
-+		<tuxguitar-synth-vst.client.so.path>${project.parent.relativePath}/TuxGuitar-synth-vst/src-client/</tuxguitar-synth-vst.client.so.path>
-+		<tuxguitar-synth-vst.client.so.cxx>${tuxguitar.jni.cxx}</tuxguitar-synth-vst.client.so.cxx>
-+		<tuxguitar-synth-vst.client.so.rm>${tuxguitar.jni.rm}</tuxguitar-synth-vst.client.so.rm>
-+		<tuxguitar-synth-vst.client.so.cflags>-I${tuxguitar-synth-vst.client.vst.sdk} -fPIC -fpermissive</tuxguitar-synth-vst.client.so.cflags>
-+		<tuxguitar-synth-vst.client.so.ldflags>-fPIC</tuxguitar-synth-vst.client.so.ldflags>
-+		<tuxguitar-synth-vst.client.so.ldlibs>-ldl -lX11 -lrt -lpthread</tuxguitar-synth-vst.client.so.ldlibs>
-+		<tuxguitar-synth-vst.client.so.ldpath>${tuxguitar.jni.ldpath}</tuxguitar-synth-vst.client.so.ldpath>
-+		<tuxguitar-synth-vst.client.so.binary.name>tuxguitar-synth-vst</tuxguitar-synth-vst.client.so.binary.name>
-+		<tuxguitar-synth-vst.client.so.binary.suffix>.bin</tuxguitar-synth-vst.client.so.binary.suffix>
-+		<tuxguitar-synth-vst.client.so.binary.os>_GNULinux</tuxguitar-synth-vst.client.so.binary.os>
-+	</properties>
-+
-+	<modules>
-+		<module>${project.parent.relativePath}/TuxGuitar-synth-vst</module>
-+	</modules>
-+
-+	<build>
-+		<plugins>
-+			<plugin>
-+				<groupId>org.apache.maven.plugins</groupId>
-+				<artifactId>maven-antrun-plugin</artifactId>
-+				<version>1.7</version>
-+				<executions>
-+					<execution>
-+						<id>compile-native</id>
-+						<phase>compile</phase>
-+						<goals>
-+							<goal>run</goal>
-+						</goals>
-+						<configuration>
-+							<target name="compile-native">
-+								<exec dir="${tuxguitar-synth-vst.client.so.path}" executable="make" failonerror="true" >
-+									<arg value="clean" />
-+									<env key="RM" value="${tuxguitar-synth-vst.client.so.rm}" />
-+									<env key="BINARY_NAME" value="${tuxguitar-synth-vst.client.so.binary.name}" />
-+									<env key="BINARY_SUFFIX" value="${tuxguitar-synth-vst.client.so.binary.suffix}" />
-+									<env key="BINARY_OS" value="${tuxguitar-synth-vst.client.so.binary.os}" />
-+								</exec>
-+								<exec dir="${tuxguitar-synth-vst.client.so.path}" executable="make" failonerror="true" >
-+									<env key="CXX" value="${tuxguitar-synth-vst.client.so.cxx}" />
-+									<env key="CFLAGS" value="${tuxguitar-synth-vst.client.so.cflags}" />
-+									<env key="LDFLAGS" value="${tuxguitar-synth-vst.client.so.ldflags}" />
-+									<env key="LDLIBS" value="${tuxguitar-synth-vst.client.so.ldlibs}" />
-+									<env key="LDPATH" value="${tuxguitar-synth-vst.client.so.ldpath}" />
-+									<env key="BINARY_NAME" value="${tuxguitar-synth-vst.client.so.binary.name}" />
-+									<env key="BINARY_SUFFIX" value="${tuxguitar-synth-vst.client.so.binary.suffix}" />
-+									<env key="BINARY_OS" value="${tuxguitar-synth-vst.client.so.binary.os}" />
-+								</exec>
-+							</target>
-+						</configuration>
-+					</execution>
-+
-+					<execution>
-+						<id>clean-native</id>
-+						<phase>clean</phase>
-+						<goals>
-+							<goal>run</goal>
-+						</goals>
-+						<configuration>
-+							<target name="clean-native">
-+								<exec dir="${tuxguitar-synth-vst.client.so.path}" executable="make" failonerror="true" >
-+									<arg value="clean" />
-+									<env key="RM" value="${tuxguitar-synth-vst.client.so.rm}" />
-+									<env key="BINARY_NAME" value="${tuxguitar-synth-vst.client.so.binary.name}" />
-+									<env key="BINARY_SUFFIX" value="${tuxguitar-synth-vst.client.so.binary.suffix}" />
-+									<env key="BINARY_OS" value="${tuxguitar-synth-vst.client.so.binary.os}" />
-+								</exec>
-+							</target>
-+						</configuration>
-+					</execution>
-+
-+					<execution>
-+						<id>native-module-copy</id>
-+						<phase>package</phase>
-+						<configuration>
-+							<target name="copy-files">
-+								<mkdir dir="${project.build.directory}/build" />
-+								<mkdir dir="${project.build.directory}/build/vst-client" />
-+
-+								<copy todir="${project.build.directory}/build/vst-client">
-+									<fileset file="${tuxguitar-synth-vst.client.so.path}/${tuxguitar-synth-vst.client.so.binary.name}${tuxguitar-synth-vst.client.so.binary.suffix}" />
-+								</copy>
-+								<chmod file="${project.build.directory}/build/vst-client/${tuxguitar-synth-vst.client.so.binary.name}${tuxguitar-synth-vst.client.so.binary.suffix}" perm="755" />
-+							</target>
-+						</configuration>
-+						<goals>
-+							<goal>run</goal>
-+						</goals>
-+					</execution>
-+				</executions>
-+			</plugin>
-+
-+			<plugin>
-+				<groupId>org.apache.maven.plugins</groupId>
-+				<artifactId>maven-dependency-plugin</artifactId>
-+				<version>3.5.0</version>
-+				<executions>
-+					<execution>
-+						<id>native-module-copy-libs</id>
-+						<phase>package</phase>
-+						<goals>
-+							<goal>copy</goal>
-+						</goals>
-+						<configuration>
-+							<artifactItems>
-+								<artifactItem>
-+									<groupId>${project.groupId}</groupId>
-+									<artifactId>tuxguitar-synth-vst</artifactId>
-+									<destFileName>tuxguitar-synth-vst.jar</destFileName>
-+									<outputDirectory>${project.build.directory}/build/share/plugins</outputDirectory>
-+								</artifactItem>
-+							</artifactItems>
-+						</configuration>
-+					</execution>
-+				</executions>
-+			</plugin>
-+		</plugins>
-+	</build>
-+</project>
-diff -rupN a/desktop/build-scripts/tuxguitar-linux-swt-x86/pom.xml b/desktop/build-scripts/tuxguitar-linux-swt-x86/pom.xml
---- a/desktop/build-scripts/tuxguitar-linux-swt-x86/pom.xml	1970-01-01 01:00:00.000000000 +0100
-+++ b/desktop/build-scripts/tuxguitar-linux-swt-x86/pom.xml	2024-01-27 22:58:03.420274713 +0100
-@@ -0,0 +1,427 @@
+diff --git a/desktop/build-scripts/tuxguitar-linux-swt-x86/pom.xml b/desktop/build-scripts/tuxguitar-linux-swt-x86/pom.xml
+new file mode 100644
+index 00000000..de47c028
+--- /dev/null
++++ b/desktop/build-scripts/tuxguitar-linux-swt-x86/pom.xml
+@@ -0,0 +1,422 @@
 +<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 +	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
 +		http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -1166,7 +1048,6 @@ diff -rupN a/desktop/build-scripts/tuxguitar-linux-swt-x86/pom.xml b/desktop/bui
 +				<module>../native-modules/tuxguitar-jack-linux-x86</module>
 +				<module>../native-modules/tuxguitar-fluidsynth-linux-x86</module>
 +				<module>../native-modules/tuxguitar-synth-lv2-linux-x86</module>
-+				<module>../native-modules/tuxguitar-synth-vst-linux-x86</module>
 +			</modules>
 +
 +			<build>
@@ -1194,11 +1075,7 @@ diff -rupN a/desktop/build-scripts/tuxguitar-linux-swt-x86/pom.xml b/desktop/bui
 +										<copy todir="${project.build.directory}/${project.finalName}/">
 +											<fileset dir="../native-modules/tuxguitar-synth-lv2-linux-x86/target/build" />
 +										</copy>
-+										<copy todir="${project.build.directory}/${project.finalName}/">
-+											<fileset dir="../native-modules/tuxguitar-synth-vst-linux-x86/target/build" />
-+										</copy>
 +										<chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" />
-+										<chmod file="${project.build.directory}/${project.finalName}/vst-client/*.bin" perm="755" />
 +										<!-- /PLUGINS FILES -->
 +									</target>
 +								</configuration>
@@ -1213,13 +1090,15 @@ diff -rupN a/desktop/build-scripts/tuxguitar-linux-swt-x86/pom.xml b/desktop/bui
 +		</profile>
 +	</profiles>
 +</project>
-diff -rupN a/desktop/pom.xml b/desktop/pom.xml
---- a/desktop/pom.xml	2024-01-27 22:57:56.896821320 +0100
-+++ b/desktop/pom.xml	2024-01-27 22:58:03.423608108 +0100
-@@ -498,6 +498,20 @@
+diff --git a/desktop/pom.xml b/desktop/pom.xml
+index a83afc2e..7ff2e6ba 100644
+--- a/desktop/pom.xml
++++ b/desktop/pom.xml
+@@ -491,6 +491,20 @@
+ 				<org.eclipse.swt.artifactId>org.eclipse.swt.gtk.linux.s390x</org.eclipse.swt.artifactId>
  			</properties>
  		</profile>
- 		<profile>
++		<profile>
 +			<id>platform-linux-swt-x86</id>
 +			<activation>
 +				<os>
@@ -1233,7 +1112,9 @@ diff -rupN a/desktop/pom.xml b/desktop/pom.xml
 +				<org.eclipse.swt.artifactId>org.eclipse.swt.gtk.linux.x86</org.eclipse.swt.artifactId>
 +			</properties>
 +		</profile>
-+		<profile>
+ 		<profile>
  			<id>platform-linux-x86_64</id>
  			<activation>
- 				<os>
+-- 
+2.44.0
+
