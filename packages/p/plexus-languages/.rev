@@ -47,4 +47,12 @@
     <comment>Build as multirelease modular jar</comment>
     <requestid>961198</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a0b695f54697d8a4235d478b41c6ff10</srcmd5>
+    <version>1.2.0</version>
+    <time>1712857264</time>
+    <user>anag+factory</user>
+    <comment>1.2.0 + fix build with new modular atinject</comment>
+    <requestid>1166716</requestid>
+  </revision>
 </revisionlist>

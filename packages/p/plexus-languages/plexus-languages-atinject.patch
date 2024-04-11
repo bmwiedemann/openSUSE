@@ -1,0 +1,10 @@
+--- plexus-languages-1.1.1/plexus-java/src/main/java9/module-info.java	2024-04-10 11:00:25.596880353 +0200
++++ plexus-languages-1.1.1/plexus-java/src/main/java9/module-info.java	2024-04-10 11:00:57.827095904 +0200
+@@ -20,6 +20,7 @@
+ {
+     requires com.thoughtworks.qdox;
+     requires org.objectweb.asm;
++    requires java.inject;
+     
+     exports org.codehaus.plexus.languages.java.jpms;
+     exports org.codehaus.plexus.languages.java.version;

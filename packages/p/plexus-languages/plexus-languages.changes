@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr 10 09:14:52 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.2.0
+  * Changes:
+    + Fail on duplicate modules on the module path
+    + Add java bytecode class file version detection
+    + Fix badge in README
+  * Documentation updates
+    + Fix typo module (#125) @Thihup
+    + Fix scm protocol
+
+-------------------------------------------------------------------
+Wed Apr 10 09:07:44 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * plexus-languages-atinject.patch
+    + Fix against multirelease version of atinject
+
+-------------------------------------------------------------------
 Sat Mar 12 07:26:31 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build as multirelease modular jar

@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-languages
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           plexus-languages
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        Plexus Languages
 License:        Apache-2.0
@@ -26,18 +26,17 @@ URL:            https://github.com/codehaus-plexus/plexus-languages
 Source0:        %{name}-%{version}.tar.xz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Source100:      plexus-java-build.xml
+Patch0:         plexus-languages-atinject.patch
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  qdox >= 2
 BuildRequires:  sisu-inject
-Requires:       java >= 1.7
-Requires:       mvn(com.thoughtworks.qdox:qdox)
-Requires:       mvn(org.ow2.asm:asm)
+Requires:       java >= 1.8
 BuildArch:      noarch
 
 %description
@@ -53,6 +52,7 @@ API documentation for %{name}.
 
 %prep
 %setup -q
+%patch -P 0 -p1
 
 cp %{SOURCE1} .
 cp %{SOURCE100} plexus-java/build.xml
@@ -74,9 +74,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 plexus-java/target/plexus-java-%{version}.jar %{buildroot}%{_javadir}/%{name}/plexus-java.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
-%add_maven_depmap %{name}/%{name}.pom
-install -pm 0644 plexus-java/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/plexus-java.pom
+%{mvn_install_pom} plexus-java/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/plexus-java.pom
 %add_maven_depmap %{name}/plexus-java.pom %{name}/plexus-java.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}/plexus-java
