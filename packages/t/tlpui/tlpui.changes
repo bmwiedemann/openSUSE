@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Tue Apr  9 21:41:33 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.6.5:
+  * Fix loading css for GTK greater 4.12 (gh#d4nj1/TLPUI#147).
+  * Improve appdata content.
+- Add empty %check section.
+
+-------------------------------------------------------------------
+Fri Feb  2 19:43:39 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.6.4:
+  * Remove toml dependency and optimize appdata.xml
+    (gh#d4nj1/TLPUI#143).
+- Add tlpui.rpmlintrc file to avoid "file-not-in-%lang" warnings.
+- Drop tlui-policy and associated pkexec commands from spec file:
+  now handled natively by upstream.
+
+-------------------------------------------------------------------
+Wed Nov 22 07:30:15 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.6.1:
+  * Updated translations.
+- Changes from version 1.6.0:
+  * Compatibility with TLP 1.6.
+  * Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 26 10:57:58 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.5.0-7:
+  * No release notes.
+
+-------------------------------------------------------------------
+Fri Aug  5 23:43:22 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.
+- Add polkit policy file tlpui.policy.

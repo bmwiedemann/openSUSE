@@ -1,0 +1,11 @@
+<package name="tlpui" project="openSUSE:Factory">
+  <title>A GTK user interface for TLP</title>
+  <description>TLPUI is a GTK user interface for TLP written in Python. The Python scripts in
+this project generate a GTK-UI to change TLP configuration files easily. It has
+the aim to protect users from setting bad configuration and to deliver a basic
+overview of all the valid configuration values.
+
+</description>
+  <devel project="hardware" package="tlpui"/>
+  <url>https://github.com/d4nj1/TLPUI</url>
+</package>
