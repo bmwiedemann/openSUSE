@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 11 04:59:48 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.56.5:
+  * Fixes destroy order for `apply -destroy` alias (#3011)
+  * build(deps): bump github.com/docker/docker (#3046)
+  * install.md: add for Gentoo, link to Repology (#3044)
+
+-------------------------------------------------------------------
+Wed Apr 10 17:35:24 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.56.4:
+  * Caching Terraform providers (#3001)
+  * chore: fix function names in comment (#3042)
+  * Fix TestTerragruntParallelism (#3045)
+  * Flaky tests fixes (#3041)
+
+-------------------------------------------------------------------
 Mon Apr 08 17:06:22 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.56.3:
