@@ -320,4 +320,13 @@
   * Add Russian translations</comment>
     <requestid>1147139</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>a597f4cff21a569169b7284aa6f04357</srcmd5>
+    <version>1.4.29</version>
+    <time>1712857270</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.29
+  * Add Malayalam and Swedish translations</comment>
+    <requestid>1166722</requestid>
+  </revision>
 </revisionlist>

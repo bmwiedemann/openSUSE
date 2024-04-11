@@ -17,7 +17,7 @@
 
 
 Name:           ibus-m17n
-Version:        1.4.28
+Version:        1.4.29
 Release:        0
 Summary:        The M17N engine for IBus platform
 License:        GPL-2.0-or-later
