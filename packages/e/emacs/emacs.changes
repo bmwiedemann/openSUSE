@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 11 06:13:45 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patch emacs-25.1-custom-fonts.patch
+  * include math.h for all kinds of fonts handling (boo#1222637) 
+- Modify patch emacs-27.1-Xauthority4server.patch
+  * Add After=graphical-session.target in emacs.service (boo#1222172)
+
+-------------------------------------------------------------------
 Tue Apr  2 08:54:52 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Fix the temporary parking path by using %{version} (hint from Andre Barros) 

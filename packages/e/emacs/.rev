@@ -1950,4 +1950,15 @@ Now one could consider building emacs with gsettings support (both debian and fe
     <comment>- Fix the temporary parking path by using %{version} (hint from Andre Barros)</comment>
     <requestid>1164060</requestid>
   </revision>
+  <revision rev="185" vrev="3">
+    <srcmd5>dd4372499cf86eab3f615e6e13886446</srcmd5>
+    <version>29.3</version>
+    <time>1712857240</time>
+    <user>anag+factory</user>
+    <comment>- Modify patch emacs-25.1-custom-fonts.patch
+  * include math.h for all kinds of fonts handling (boo#1222637) 
+- Modify patch emacs-27.1-Xauthority4server.patch
+  * Add After=graphical-session.target in emacs.service (boo#1222172)</comment>
+    <requestid>1166776</requestid>
+  </revision>
 </revisionlist>

@@ -5,13 +5,17 @@ Subject: Allow GNU Emacs server to open X Display
 even if the Xauthority file is not the default expected by XCloseDisplay()
 
 ---
- etc/emacs.service |    1 +
+ etc/emacs.service |    2 ++
  lisp/server.el    |   45 +++++++++++++++++++++++++++++++++++++++++++--
- 2 files changed, 44 insertions(+), 2 deletions(-)
+ 2 files changed, 45 insertions(+), 2 deletions(-)
 
 --- etc/emacs.service
-+++ etc/emacs.service	2023-08-01 07:24:44.856332618 +0000
-@@ -8,6 +8,7 @@ Documentation=info:emacs man:emacs(1) ht
++++ etc/emacs.service	2024-04-11 06:46:29.320172754 +0000
+@@ -5,9 +5,11 @@
+ [Unit]
+ Description=Emacs text editor
+ Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
++After=graphical-session.target
  
  [Service]
  Type=notify
@@ -20,7 +24,7 @@ even if the Xauthority file is not the default expected by XCloseDisplay()
  
  # Emacs will exit with status 15 after having received SIGTERM, which
 --- lisp/server.el
-+++ lisp/server.el	2024-02-02 07:50:00.878231817 +0000
++++ lisp/server.el	2024-04-11 06:17:17.692578500 +0000
 @@ -289,6 +289,11 @@ If nil, no instructions are displayed."
    "The directory in which to place the server socket.
  If local sockets are not supported, this is nil.")

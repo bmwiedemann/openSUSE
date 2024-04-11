@@ -6,7 +6,7 @@ Work around openSUSE bug #1016172
  2 files changed, 14 insertions(+), 5 deletions(-)
 
 --- lisp/dynamic-setting.el
-+++ lisp/dynamic-setting.el	2023-08-01 07:10:18.292217247 +0000
++++ lisp/dynamic-setting.el	2024-04-11 06:03:25.603986456 +0000
 @@ -33,6 +33,7 @@
  ;;; Customizable variables
  
@@ -39,15 +39,15 @@ Work around openSUSE bug #1016172
  	;; display, by clearing the font and face caches.  This will
  	;; cause all fonts to be recreated.
 --- src/xsettings.c
-+++ src/xsettings.c	2023-08-01 06:57:06.034741701 +0000
-@@ -58,6 +58,7 @@ typedef unsigned int CARD32;
- #include <fontconfig/fontconfig.h>
- #include "ftfont.h"
- #elif defined HAVE_XFT
-+#include <math.h>
- #include <X11/Xft/Xft.h>
- #endif
++++ src/xsettings.c	2024-04-11 06:04:36.790667318 +0000
+@@ -21,6 +21,7 @@ along with GNU Emacs.  If not, see <http
  
+ #include <float.h>
+ #include <limits.h>
++#include <math.h>
+ #include <fcntl.h>
+ 
+ #include <byteswap.h>
 @@ -839,7 +840,11 @@ apply_xft_settings (Display_Info *dpyinf
  #endif
    FcPatternGetInteger (pat, FC_LCD_FILTER, 0, &oldsettings.lcdfilter);
