@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 13 22:44:13 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1712854180.1bf0714:
+  * Adjust dependencies to support build of s390x packages
+  * setup-multimachine: Retry package installation up to 7 times
+  * Remove warning of uninitialized value
+  * Update codecov action to v4
+  * Unify size argument for disk creation
+
+-------------------------------------------------------------------
 Wed Apr 10 09:43:33 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1712742175.5de9696:
