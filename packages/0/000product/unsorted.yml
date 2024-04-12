@@ -8123,6 +8123,7 @@ unsorted:
   - hadolint 
   - haguichi 
   - haguichi-lang 
+  - halloy 
   - hamcrest 
   - hamcrest-javadoc 
   - hamlib 
@@ -8744,6 +8745,7 @@ unsorted:
   - ipcalc 
   - iperf 
   - iperf-devel 
+  - iperf2 
   - ipmctl 
   - ipmctl-devel 
   - ipmitool-bmc-snmp-proxy 
@@ -12612,7 +12614,7 @@ unsorted:
   - libexttextcat-devel 
   - libexttextcat-tools 
   - libf2c0 
-  - libf2fs_format8 
+  - libf2fs_format9 
   - libf3d2 
   - libfa1-32bit 
   - libfabric 
@@ -12898,7 +12900,7 @@ unsorted:
   - libgammaray-qt6-3_0_0 
   - libgammaray-shared-3_0_0 
   - libgammaray-shared-qt6-3_0_0 
-  - libgap8 
+  - libgap9 
   - libgarcon-branding-upstream 
   - libgarcon-devel 
   - libgarcon-doc 
@@ -15585,7 +15587,7 @@ unsorted:
   - librsb0 
   - librseq-devel 
   - librseq0 
-  - librssguard-4_6_3 
+  - librssguard-4_6_6 
   - librssguard-devel 
   - librsvg-2-2-32bit 
   - librsvg-devel 
@@ -19124,6 +19126,8 @@ unsorted:
   - neard 
   - neard-devel 
   - neatvnc-devel 
+  - nebula 
+  - nebula-cert 
   - nedit 
   - neix 
   - neko 
@@ -23636,6 +23640,7 @@ unsorted:
   - python310-PyICU 
   - python310-PyInstaller 
   - python310-PyJWT 
+  - python310-PyKCS11 
   - python310-PyKMIP 
   - python310-PyLaTeX 
   - python310-PyMeeus 
@@ -27205,6 +27210,7 @@ unsorted:
   - python311-PyHamcrest 
   - python311-PyICU 
   - python311-PyInstaller 
+  - python311-PyKCS11 
   - python311-PyKMIP 
   - python311-PyLaTeX 
   - python311-PyMeeus 
@@ -30656,6 +30662,7 @@ unsorted:
   - python312-PyICU 
   - python312-PyInstaller 
   - python312-PyJWT 
+  - python312-PyKCS11 
   - python312-PyKMIP 
   - python312-PyLaTeX 
   - python312-PyMeeus 

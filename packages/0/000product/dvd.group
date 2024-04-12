@@ -1976,7 +1976,7 @@
     <package name="libext2fs2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libexttextcat" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libexttextcat-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libf2fs9" supportstatus="unsupported"/> <!-- reason: dvd:f2fs-tools -->
+    <package name="libf2fs10" supportstatus="unsupported"/> <!-- reason: dvd:f2fs-tools -->
     <package name="libfa1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfastjson4" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
     <package name="libfcitx-config4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
