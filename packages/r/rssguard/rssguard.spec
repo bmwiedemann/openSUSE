@@ -1,7 +1,7 @@
 #
 # spec file for package rssguard
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libver  4_6_3
+%define libver  4_6_6
 Name:           rssguard
-Version:        4.6.3
+Version:        4.6.6
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 Group:          Productivity/Networking/News/Clients
@@ -26,24 +26,25 @@ License:        AGPL-3.0-or-later AND GPL-3.0-only
 URL:            https://github.com/martinrotter/rssguard
 Source0:        https://github.com/martinrotter/rssguard/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
-# PATCH-FIX-OPENSUSE rssguard-4.2.2-add_library_version.patch aloisio@gmx.com -- add version to shared library
-Patch0:         rssguard-4.2.2-add_library_version.patch
+# PATCH-FIX-OPENSUSE rssguard-4.6.6-add_library_version.patch aloisio@gmx.com -- add version to shared library
+Patch0:         rssguard-4.6.6-add_library_version.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-linguist
-BuildRequires:  libqt5-qtbase-common-devel
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core) >= 5.15
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Multimedia)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5WebEngine)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core) >= 6.3.0
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Multimedia)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6OpenGL)
+BuildRequires:  cmake(Qt6OpenGLWidgets)
+BuildRequires:  cmake(Qt6Qml)
+BuildRequires:  cmake(Qt6Sql)
+BuildRequires:  cmake(Qt6WebEngineWidgets)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(mpv)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
@@ -76,7 +77,7 @@ Shared library for %{name} to be used by external plugins.
 find src/librssguard -name "*.h" -exec chmod -x {} \;
 
 %build
-%cmake -DBUILD_WITH_QT6:BOOL=OFF
+%cmake -DBUILD_WITH_QT6:BOOL=ON -DENABLE_MEDIAPLAYER_LIBMPV:BOOL=ON -DUSE_SYSTEM_SQLITE:BOOL=ON
 %cmake_build
 
 %install

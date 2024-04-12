@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Apr 09 20:00:00 UTC 2024 - Alexey Rochev <equeim@gmail.com>
+
+- Update to version 4.6.6
+  * Fixed:
+    - Some fixes in this release.
+- Update to version 4.6.5
+  * No changelog
+- Update to version 4.6.4
+  * Added:
+    - Existing read/unread state is respected when some article gets "updated" (infamously happens for YouTube feeds). (#1279)
+    - NSIS installer was bit tweaked to warn about MSVC runtime. (#1306)
+    - iCalendar files (*.ics, *.ical) are now supported. Note that the support is rather basic.
+    - Added more ways of limitting amount of articles in each feed. (#1270, #1267)
+    - Added way to use old legacy article formatting in "lite" version. (#1286)
+    - New way of fetching articles - new "Source" -> "Built-in web browser with JavaScript support" which allows user to use built-in Chromium-based network stack to fetch feeds and other data. It allows even fetching of majority of JavaScript-powered websites. (#1313)
+    - More date/time strings for parsing some dates and times in articles.
+    - "Title" column in article list is not directly resizable too. Last visible column auto-stretches to fit remaining space. (#1319)
+  * Fixed:
+    - Fix freezing when feed uses crazy crazy loooong URL.
+    - Fix crash when forwarding e-mail via Gmail plugin.
+    - Add forgotten restriction when cleaning data. (a975714)
+    - ETag conditional loading of feeds was semi-broken. (#1314, #1296)
+    - All Unicode characters in feed URLs are now supported. (#1310)
+    - Reader mode was changing content for all opened browser tabs. (#1300)
+    - Some articles were displayed with broken HTML. (#1293)
+    - Size/position of all windows (including modal dialogs) is now guarded to not be out-of-screen-bounds. (#1281)
+    - No more crashes when adding some discovered feeds. (#1280)
+    - Main window pesky splitters saved with 0 position. (#1271)
+- Replace rssguard-4.2.2-add_library_version.patch with updated rssguard-4.6.6-add_library_version.patch
+- Build with Qt 6 instead of Qt 5
+
+-------------------------------------------------------------------
 Wed Dec 20 22:32:55 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to version 4.6.3
