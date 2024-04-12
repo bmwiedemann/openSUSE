@@ -71,6 +71,8 @@ Patch10:        %{name}-Revert-OvmfPkg-PlatformPei-Update-ReserveEmuVariable.pat
 Patch11:        %{name}-UefiCpuPkg-BaseXApicX2ApicLib-fix-CPUID_V2_EXTENDED_.patch
 # Bug 1219024 - SVVP test Check SMBIOS Table Specific Requirements fails
 Patch12:        %{name}-OvmfPkg-SmbiosPlatformDxe-tweak-fallback-release-dat.patch
+# Bug 1217704 - ovmf: reproducible builds problem in ovmf-riscv64-code.bin
+Patch13:        %{name}-EmbeddedPkg-Library-Support-SOURCE_DATE_EPOCH-in-Vir.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}

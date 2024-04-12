@@ -1,0 +1,36 @@
+From 441bc6b75c8edcfa825b324e05f7cd838feac2bb Mon Sep 17 00:00:00 2001
+From: "Lee, Chun-Yi" <jlee@suse.com>
+Date: Thu, 11 Apr 2024 19:36:30 +0800
+Subject: [PATCH] EmbeddedPkg/Library: Support SOURCE_DATE_EPOCH in
+ VirtualRealTimeClockLib for reproducible
+
+RISC-V ovmf used VirtualRealTimeClockLib but the default epoch is a
+compilation time. It causes that the RISC-V ovmf binary image is NOT
+reproducible.
+
+This patch added the support of SOURCE_DATE_EPOCH by printenv command.
+If SOURCE_DATE_EPOCH be found then we use it as BUILD_EPOCH. Otherwise
+we run date command for setting BUILD_EPOCH.
+
+For distributions want a reproducible RISC-V ovmf image, they should
+export SOURCE_DATE_EPOCH environment variable before building ovmf.
+
+References: https://reproducible-builds.org/docs/source-date-epoch/
+Signed-off-by: Lee, Chun-Yi <jlee@suse.com>
+---
+ .../Library/VirtualRealTimeClockLib/VirtualRealTimeClockLib.inf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/EmbeddedPkg/Library/VirtualRealTimeClockLib/VirtualRealTimeClockLib.inf b/EmbeddedPkg/Library/VirtualRealTimeClockLib/VirtualRealTimeClockLib.inf
+index 5d0f867eb6..0bd6bcee75 100644
+--- a/EmbeddedPkg/Library/VirtualRealTimeClockLib/VirtualRealTimeClockLib.inf
++++ b/EmbeddedPkg/Library/VirtualRealTimeClockLib/VirtualRealTimeClockLib.inf
+@@ -34,4 +34,4 @@
+ 
+ # Current usage of this library expects GCC in a UNIX-like shell environment with the date command
+ [BuildOptions]
+-  GCC:*_*_*_CC_FLAGS = -DBUILD_EPOCH=`date +%s`
++  GCC:*_*_*_CC_FLAGS = -DBUILD_EPOCH=`printenv SOURCE_DATE_EPOCH || date +%s` 
+-- 
+2.44.0
+

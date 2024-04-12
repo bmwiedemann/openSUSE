@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 11 16:15:03 UTC 2024 - Joey Lee <jlee@suse.com>
+
+- Add ovmf-EmbeddedPkg-Library-Support-SOURCE_DATE_EPOCH-in-Vir.patch
+  Support SOURCE_DATE_EPOCH in VirtualRealTimeClockLib for reproducible.
+  (bsc#1217704) 
+
+-------------------------------------------------------------------
 Fri Mar 22 09:17:00 UTC 2024 - Joey Lee <jlee@suse.com>
 
 - Removed EFI shell from 4mb x86_64 ovmf image because it has
