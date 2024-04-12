@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr 13 22:33:20 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1712957750.06bff133:
+  * Fix messed-up wrapping in comment about OBS-rsync terminology
+  * Fix typos in various places in our code (via codespell)
+  * Improve wording of licensing note in footer
+  * Fix typos in live.html.ep
+  * Use signatures and more compact coding style code handling needles
+  * Add test for redirection to job of last needle use/match without step
+  * Avoid warning when computing failed modules
+  * Fix warnings about using undefined values when computing needle details
+  * Avoid running into errors in search route when grep fails
+  * Avoid running into error when the settings file path is a directory
+
+-------------------------------------------------------------------
 Thu Apr 11 14:33:13 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1712826808.42c84738:
