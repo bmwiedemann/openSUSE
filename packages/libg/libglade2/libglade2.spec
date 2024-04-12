@@ -1,7 +1,7 @@
 #
 # spec file for package libglade2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,9 +74,7 @@ to compile and link applications that use libglade2.
 Summary:        Documentation for the Glade library
 Group:          Development/Libraries/GNOME
 Requires:       libglade-2_0-0 = %{version}
-%if 0%{?suse_version} >= 1120
 BuildArch:      noarch
-%endif
 
 %description doc
 This package contains documentation and examples for the Glade library.
@@ -94,9 +92,8 @@ make %{?_smp_mflags}
 %make_install
 mkdir -p %{buildroot}%{_libdir}/libglade/2.0
 find %{buildroot} -type f -name "*.la" -delete -print
-%if 0%{?suse_version} > 1020
 %fdupes %{buildroot}
-%endif
+%python3_fix_shebang
 
 %post -n libglade-2_0-0 -p /sbin/ldconfig
 %postun -n libglade-2_0-0 -p /sbin/ldconfig

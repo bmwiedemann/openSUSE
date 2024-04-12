@@ -198,4 +198,13 @@
     <comment></comment>
     <requestid>1129605</requestid>
   </revision>
+  <revision rev="30" vrev="30">
+    <srcmd5>318e0648d0bd4a2fffe1a20c0b5c8351</srcmd5>
+    <version>2.6.4</version>
+    <time>1712936020</time>
+    <user>anag+factory</user>
+    <comment>- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476] (forwarded request 1166775 from pgajdos)</comment>
+    <requestid>1166786</requestid>
+  </revision>
 </revisionlist>
