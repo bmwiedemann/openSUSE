@@ -316,4 +316,16 @@
     <comment></comment>
     <requestid>1123542</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>65d4a006371b1bd1626ba3f77e3c98d4</srcmd5>
+    <version>1.4.1</version>
+    <time>1712936123</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.1:
+  * This point release is made because of a backward incompatible
+    change in Qt6's font descriptions. It includes a workaround
+    which makes Qt5-based apps have correct fonts when fonts are
+    set by the Qt6-based LXQt 2.0.0.</comment>
+    <requestid>1167074</requestid>
+  </revision>
 </revisionlist>

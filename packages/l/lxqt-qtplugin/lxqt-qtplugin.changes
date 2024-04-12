@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 12 14:12:24 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.1:
+  * This point release is made because of a backward incompatible
+    change in Qt6's font descriptions. It includes a workaround
+    which makes Qt5-based apps have correct fonts when fonts are
+    set by the Qt6-based LXQt 2.0.0.
+
+-------------------------------------------------------------------
 Sun Nov  5 21:42:14 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 1.4.0:

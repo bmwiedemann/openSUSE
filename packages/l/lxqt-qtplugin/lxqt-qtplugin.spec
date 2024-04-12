@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-qtplugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-qtplugin
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        LXQt platform integration plugin for Qt 5
 License:        LGPL-2.1-or-later
@@ -39,8 +39,8 @@ BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xdg) >= 3.11.0
 BuildRequires:  pkgconfig(Qt5XdgIconLoader)
 BuildRequires:  pkgconfig(dbusmenu-qt5)
-BuildRequires:  pkgconfig(libfm-qt) >= %{version}
-BuildRequires:  pkgconfig(lxqt) >= %{version}
+BuildRequires:  pkgconfig(libfm-qt) >= 1.4.0
+BuildRequires:  pkgconfig(lxqt) >= 1.4.0
 %if 0%{?fedora_version}
 %requires_eq    qt5-qtbase-gui
 %else
