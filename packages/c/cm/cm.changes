@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 11 17:59:40 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.4.3
+  * FLINT3 support
+  * Add an upper bound on the permitted class number in ECPP, to
+    avoid choosing discriminants for which class polynomials
+    cannot be computed in reasonable time and with reasonable
+    memory.
+- Delete flint3.diff (obsolete)
+
+-------------------------------------------------------------------
 Sun Oct 22 04:06:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add flint3.diff to have the build succeed with flint-3.

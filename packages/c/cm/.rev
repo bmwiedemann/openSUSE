@@ -39,4 +39,12 @@
     <comment>- Add flint3.diff to have the build succeed with flint-3.</comment>
     <requestid>1119393</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7b62a779b57b5a85981c1bb8c9e8f805</srcmd5>
+    <version>0.4.3</version>
+    <time>1712936087</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 0.4.3</comment>
+    <requestid>1166925</requestid>
+  </revision>
 </revisionlist>

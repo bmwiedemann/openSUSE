@@ -1,7 +1,7 @@
 #
 # spec file for package cm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cm
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        Class polynomial computation via floating point approximations
 License:        GPL-3.0-or-later
@@ -27,7 +27,6 @@ URL:            https://www.multiprecision.org/cm/
 Source:         http://www.multiprecision.org/downloads/%name-%version.tar.gz
 Source2:        http://www.multiprecision.org/downloads/%name-%version.tar.gz.asc
 Source3:        %name.keyring
-Patch1:         flint3.diff
 BuildRequires:  flint-devel >= 3
 BuildRequires:  gmp-devel >= 4.3.2
 BuildRequires:  libtool
@@ -99,7 +98,7 @@ fi
 %files
 %_bindir/classpol
 %_bindir/cm
-%_bindir/ecpp
+%_bindir/ecpp*
 %_datadir/cm/
 %_infodir/cm.info*
 
