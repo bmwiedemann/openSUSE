@@ -1,7 +1,7 @@
 #
 # spec file for package gap-kbmag
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-kbmag
-Version:        1.5.10
+Version:        1.5.11
 Release:        0
 Summary:        GAP: Knuth-Bendix on Monoids and Automatic Groups
 License:        GPL-2.0-or-later
