@@ -18,16 +18,14 @@
 
 %define sover 5
 Name:           assimp
-Version:        5.3.1
+Version:        5.4.0
 Release:        0
 Summary:        Library to load and process 3D scenes from various data formats
 License:        BSD-3-Clause AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://www.assimp.org/
 Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-ColladaParser-check-values-length-5462.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.22
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  irrlicht-devel
@@ -74,7 +72,6 @@ engine-specific format for easy and fast every-day-loading.
 %build
 %cmake \
     -DASSIMP_IGNORE_GIT_HASH=ON \
-    -DASSIMP_BUILD_ZLIB=OFF \
     -DASSIMP_WARNINGS_AS_ERRORS=OFF \
     -DASSIMP_BUILD_ASSIMP_TOOLS=ON
 

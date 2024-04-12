@@ -220,4 +220,12 @@
 - Improved tests filtering</comment>
     <requestid>1146832</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8c28ecca7718ddb42b0440631b74e0ca</srcmd5>
+    <version>5.4.0</version>
+    <time>1712936028</time>
+    <user>anag+factory</user>
+    <comment>Update to 5.4.0</comment>
+    <requestid>1166862</requestid>
+  </revision>
 </revisionlist>
