@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr  4 15:40:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.26.6
+  * Disable jekyll on gh-pages by @sfod in (#608)
+  * Bump cal by @DmitriyMusatkin in (#611)
+- from version 0.26.5
+  * CRT version bump by @DmitriyMusatkin in (#609)
+
+-------------------------------------------------------------------
 Thu Mar 28 10:34:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.26.4
