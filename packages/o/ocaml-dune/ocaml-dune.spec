@@ -25,7 +25,7 @@
 %define     pkg ocaml-dune
 %global  _buildshell /bin/bash
 Name:           %pkg%nsuffix
-Version:        3.14.2
+Version:        3.15.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 License:        MIT
@@ -51,7 +51,6 @@ Group:          Development/Languages/OCaml
 BuildRequires:  ocaml-dune = %version
 BuildRequires:  ocamlfind(csexp)
 BuildRequires:  ocamlfind(pp)
-BuildRequires:  ocamlfind(result)
 Provides:       ocaml-dune-configurator == %version-%release
 Obsoletes:      ocaml-dune-configurator <  %version-%release
 Provides:       ocaml-dune-configurator-devel == %version-%release
