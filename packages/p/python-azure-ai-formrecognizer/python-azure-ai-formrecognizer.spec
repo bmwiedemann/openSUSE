@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-ai-formrecognizer
-Version:        3.3.2
+Version:        3.3.3
 Release:        0
 Summary:        Microsoft Azure Form Recognizer Client Library for Python
 License:        MIT
