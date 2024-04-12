@@ -18,17 +18,18 @@
 
 %define gopackagepath github.com/direnv/direnv
 Name:           direnv
-Version:        2.33.0
+Version:        2.34.0
 Release:        0
 Summary:        Environment switcher for shells
 License:        MIT
 Group:          Productivity/File utilities
 URL:            https://direnv.net/
 Source0:        https://github.com/direnv/direnv/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source1:        vendor.tar.zst
 BuildRequires:  fish
 BuildRequires:  go >= 1.6
 BuildRequires:  make
+BuildRequires:  zstd
 
 %description
 direnv knows how to hook into bash, zsh, tcsh and fish shell to load
