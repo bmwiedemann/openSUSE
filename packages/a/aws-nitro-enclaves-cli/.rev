@@ -42,4 +42,12 @@
   (bsc#1208555, CVE-2022-31394)</comment>
     <requestid>1069903</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d5390433f16d2706f9583f2bd760af6a</srcmd5>
+    <version>1.2.3~git11.d3d77e0</version>
+    <time>1712936107</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1167039</requestid>
+  </revision>
 </revisionlist>

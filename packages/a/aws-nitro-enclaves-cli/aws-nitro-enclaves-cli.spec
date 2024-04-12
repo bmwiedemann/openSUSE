@@ -19,7 +19,7 @@
 
 
 Name:           aws-nitro-enclaves-cli
-Version:        1.2.2~git0.4ccc639
+Version:        1.2.3~git11.d3d77e0
 Release:        0
 Summary:        Tools for managing enclaves
 License:        Apache-2.0
@@ -28,9 +28,8 @@ ExclusiveArch:  aarch64 x86_64
 Patch0:         %name.patch
 Source0:        %name-%version.tar.xz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
 Source3:        aws-nitro-enclaves-cli-rpmlintrc
-Source9:        aws-nitro-enclaves-sdk-bootstrap-746ec5d2713e539b94e651601b5c24ec1247c955.tar.xz
+Source9:        aws-nitro-enclaves-sdk-bootstrap-ac43d103ba0f98044bf760477c088f1dc6f3702d.tar.xz
 Requires(pre):  system-group-%ne_system_group = %version-%release
 Requires(post): coreutils
 Requires:       aws-nitro-enclaves-binaryblobs
@@ -113,8 +112,6 @@ _EOF_
   nitro-cli run-enclave --eif-path hello.eif --cpu-count 2 --memory 512 --debug-mode --attach-console
 _EOR_
 %install
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 %if 0%{?__debug_package}
 rustflags='-Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2'
 release=

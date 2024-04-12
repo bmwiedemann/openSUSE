@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  4 04:04:04 UTC 2024 - olaf@aepfle.de
+
+- Update to version 1.2.3~git11.d3d77e0 to get all the precious cargo
+  (bsc#1218501, CVE-2023-50711)
+
+-------------------------------------------------------------------
 Fri Mar  3 03:03:03 UTC 2023 - olaf@aepfle.de
 
 - Update to version 1.2.2~git0.4ccc639 to get all the precious cargo
