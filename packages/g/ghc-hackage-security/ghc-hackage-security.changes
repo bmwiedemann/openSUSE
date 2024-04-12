@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr  3 06:00:38 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hackage-security to version 0.6.2.6.
+  0.6.2.6
+  -------
+
+  * Drop flag `use-network-uri` and support for `network-2.5`.
+  * Fix build failure in testsuite with `tar-0.5`
+    ([PR #312](https://github.com/haskell/hackage-security/pull/312)).
+  * Tested with GHC 8.4 - 9.8.
+
+-------------------------------------------------------------------
 Wed Mar 20 06:09:35 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update hackage-security to version 0.6.2.5.
