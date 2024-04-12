@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 11 11:31:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.5.1:
+  + Reduce object inflation overhead in GType system usage.
+  + Avoid some allocations in hot paths.
+  + Avoid hashtables for resourcegroup items.
+  + Avoid use of weak pointers when unnecessary.
+
+-------------------------------------------------------------------
 Mon Mar  4 08:44:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.5.0:
