@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 12 08:17:13 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.7.0~dev2404081550
+  * Added support for Qt v6.7 (excluding any technical previews).
+  * Bug fixes.
+- Use not yet released development version: boo#1222514
+
+-------------------------------------------------------------------
 Thu Jan 25 20:44:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.6.1

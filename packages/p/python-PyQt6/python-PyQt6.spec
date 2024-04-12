@@ -19,15 +19,18 @@
 %define plainpython python
 %define mname PyQt6
 %define pyqt_build_for_qt6 1
+%define devversion 6.7.0.dev2404081550
 %{?sle15_python_module_pythons}
 Name:           python-%{mname}
-Version:        6.6.1
+Version:        6.7.0~dev2404081550
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqt
-Source:         https://files.pythonhosted.org/packages/source/P/PyQt6/PyQt6-%{version}.tar.gz
+# boo#1222514
+#Source:         https://files.pythonhosted.org/packages/source/P/PyQt6/PyQt6-%%{version}.tar.gz
+Source:         https://riverbankcomputing.com/pypi/packages/PyQt6/PyQt6-%{devversion}.tar.gz
 # PATCH-FIX-OPENSUSE - disable-rpaths.diff - Disable RPATH when building PyQt6.
 Patch0:         disable-rpaths.diff
 # PATCH-FIX-OPENSUSE - install binary dbus mainloop integration in arch dependent directory
@@ -47,11 +50,14 @@ BuildRequires:  qt6-base-devel
 BuildRequires:  qt6-macros
 BuildRequires:  cmake(Qt6Bluetooth)
 BuildRequires:  cmake(Qt6Designer)
+BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Help)
 BuildRequires:  cmake(Qt6Multimedia)
 BuildRequires:  cmake(Qt6MultimediaWidgets)
+BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Nfc)
-BuildRequires:  cmake(Qt6Positioning)
+BuildRequires:  cmake(Qt6OpenGL)
+BuildRequires:  cmake(Qt6OpenGLWidgets)
 %if %{?suse_version} >= 1550
 # no pdf headers in 15.X
 %ifarch aarch64 x86_64 riscv64
@@ -60,6 +66,8 @@ BuildRequires:  cmake(Qt6Pdf)
 BuildRequires:  cmake(Qt6PdfWidgets)
 %endif
 %endif
+BuildRequires:  cmake(Qt6Positioning)
+BuildRequires:  cmake(Qt6PrintSupport)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6QuickWidgets)
@@ -73,12 +81,17 @@ BuildRequires:  cmake(Qt6SerialPort)
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 155000
 BuildRequires:  cmake(Qt6SpatialAudio)
 %endif
+BuildRequires:  cmake(Qt6Sql)
 BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6SvgWidgets)
+BuildRequires:  cmake(Qt6Test)
 %if %{?suse_version} >= 1550
 BuildRequires:  cmake(Qt6TextToSpeech)
 %endif
 BuildRequires:  cmake(Qt6WebChannel)
 BuildRequires:  cmake(Qt6WebSockets)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
 %requires_ge    python-PyQt6-sip
 %requires_ge    python-dbus-python
 Provides:       python-qt6 = %{version}-%{release}
@@ -97,25 +110,49 @@ Requires:       qt6-base-devel
 Requires:       qt6-macros
 Requires:       cmake(Qt6Bluetooth)
 Requires:       cmake(Qt6Designer)
+Requires:       cmake(Qt6DBus)
 Requires:       cmake(Qt6Help)
 Requires:       cmake(Qt6Multimedia)
 Requires:       cmake(Qt6MultimediaWidgets)
+Requires:       cmake(Qt6Network)
 Requires:       cmake(Qt6Nfc)
+Requires:       cmake(Qt6OpenGL)
+Requires:       cmake(Qt6OpenGLWidgets)
+%if %{?suse_version} >= 1550
+# no pdf headers in 15.X
+%ifarch aarch64 x86_64 riscv64
+# qt6-pdf-devel is built in qt6-webengine with ExclusiveArch
+Requires:       cmake(Qt6Pdf)
+Requires:       cmake(Qt6PdfWidgets)
+%endif
+%endif
 Requires:       cmake(Qt6Positioning)
+Requires:       cmake(Qt6PrintSupport)
 Requires:       cmake(Qt6Qml)
 Requires:       cmake(Qt6Quick)
 Requires:       cmake(Qt6QuickWidgets)
-Requires:       cmake(Qt6RemoteObjects)
-Requires:       cmake(Qt6Sensors)
-Requires:       cmake(Qt6SerialPort)
-Requires:       cmake(Qt6Svg)
-Requires:       cmake(Qt6WebChannel)
-Requires:       cmake(Qt6WebSockets)
-Requires:       %plainpython(abi) = %{python_version}
-%if 0%{?suse_version} >= 1550
+%if %{?suse_version} >= 1550
 Requires:       cmake(Qt6Quick3D)
 Requires:       cmake(Qt6Quick3DRuntimeRender)
 %endif
+Requires:       cmake(Qt6RemoteObjects)
+Requires:       cmake(Qt6Sensors)
+Requires:       cmake(Qt6SerialPort)
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 155000
+Requires:       cmake(Qt6SpatialAudio)
+%endif
+Requires:       cmake(Qt6Sql)
+Requires:       cmake(Qt6Svg)
+Requires:       cmake(Qt6SvgWidgets)
+Requires:       cmake(Qt6Test)
+%if %{?suse_version} >= 1550
+Requires:       cmake(Qt6TextToSpeech)
+%endif
+Requires:       cmake(Qt6WebChannel)
+Requires:       cmake(Qt6WebSockets)
+Requires:       cmake(Qt6Widgets)
+Requires:       cmake(Qt6Xml)
+Requires:       %plainpython(abi) = %{python_version}
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 # If and which version of sip is required depends on the project trying
@@ -142,7 +179,7 @@ PyQt is a set of Python bindings for the Qt framework.
 This package contains programming examples for PyQt6.
 
 %prep
-%autosetup -p1 -n PyQt6-%{version}
+%autosetup -p1 -n PyQt6-%{devversion}
 dos2unix examples/quick/models/*/view.qml
 dos2unix examples/multimedia*/*/*.ui
 
@@ -168,7 +205,7 @@ dos2unix examples/multimedia*/*/*.ui
 export PYTHONDONTWRITEBYTECODE=1 # boo#1047218
 %{python_expand # there is no test suite. If it compiles and imports, it should be okay.
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python -c 'from PyQt6 import QtCore; assert QtCore.PYQT_VERSION_STR == "%{version}"'
+$python -c 'from PyQt6 import QtCore; assert QtCore.PYQT_VERSION_STR == "%{devversion}"'
 }
 
 %post devel
@@ -179,9 +216,9 @@ $python -c 'from PyQt6 import QtCore; assert QtCore.PYQT_VERSION_STR == "%{versi
 
 %files %{python_files}
 %license LICENSE
-%doc README NEWS ChangeLog
+%doc README.md NEWS ChangeLog
 %{python_sitearch}/PyQt6/
-%{python_sitearch}/PyQt6-%{version}.dist-info/
+%{python_sitearch}/PyQt6-%{devversion}.dist-info/
 %dir %{python_sitelib}/dbus
 %dir %{python_sitelib}/dbus/mainloop
 %{python_sitelib}/dbus/mainloop/pyqt6.py
@@ -204,7 +241,7 @@ $python -c 'from PyQt6 import QtCore; assert QtCore.PYQT_VERSION_STR == "%{versi
 %files %{python_files doc}
 %license LICENSE
 %{_docdir}/%{python_prefix}-%{mname}
-%exclude %{_docdir}/%{python_prefix}-%{mname}/README
+%exclude %{_docdir}/%{python_prefix}-%{mname}/README.md
 %exclude %{_docdir}/%{python_prefix}-%{mname}/NEWS
 %exclude %{_docdir}/%{python_prefix}-%{mname}/ChangeLog
 

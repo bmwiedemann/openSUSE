@@ -163,4 +163,12 @@ in order to avoid conflicts like boo#1192300</comment>
     <comment></comment>
     <requestid>1141575</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>39883a28a29b0a3ca3e929d34ccc56f0</srcmd5>
+    <version>6.7.0~dev2404081550</version>
+    <time>1712936107</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1167027</requestid>
+  </revision>
 </revisionlist>
