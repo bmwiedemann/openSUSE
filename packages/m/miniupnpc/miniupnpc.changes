@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr  7 20:49:20 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.2.6:
+  * includes charset="utf-8" in Content-Type
+  * fix memory allocation error in minissdpc.c
+  * Make User-Agent compliant.
+  * add new binary listdevices => upnp-listdevices
+
+- added %check section to run unit tests
+
+-------------------------------------------------------------------
 Sat Jul 15 15:18:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.5:

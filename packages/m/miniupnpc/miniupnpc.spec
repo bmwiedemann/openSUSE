@@ -1,7 +1,7 @@
 #
 # spec file for package miniupnpc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define soname 17
 Name:           miniupnpc
-Version:        2.2.5
+Version:        2.2.6
 Release:        0
 Summary:        Universal Plug'n'Play (UPnP) Client
 License:        BSD-3-Clause
@@ -115,9 +115,13 @@ chmod -x %{buildroot}%{_mandir}/man3/miniupnpc.3.gz
 %post   -n libminiupnpc%{soname} -p /sbin/ldconfig
 %postun -n libminiupnpc%{soname} -p /sbin/ldconfig
 
+%check
+%make_build test
+
 %files
 %{_bindir}/upnpc
 %{_bindir}/external-ip
+%{_bindir}/upnp-listdevices
 %{_mandir}/man3/miniupnpc.3%{?ext_man}
 
 %files -n libminiupnpc%{soname}
