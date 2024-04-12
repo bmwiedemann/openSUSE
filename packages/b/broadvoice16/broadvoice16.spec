@@ -1,7 +1,7 @@
 #
 # spec file for package broadvoice16
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Summary:        BroadVoice 16 Speech Codec
 License:        LGPL-2.1-only
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://www.broadcom.com/site-search?q=broadvoice
-Source0:        BroadVoice16OpenSource.v%{version}.zip
+Source0:        https://docs.broadcom.com/docs-and-downloads/docs/support/broadvoice/BroadVoice16OpenSource.v%{version}.zip
 Source1:        COPYING
 Source2:        README
 Source3:        README.SUSE
