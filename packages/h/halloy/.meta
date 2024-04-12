@@ -1,0 +1,6 @@
+<package name="halloy" project="openSUSE:Factory">
+  <title>IRC application written in Rust</title>
+  <description>Halloy is an open-source IRC client written in Rust, with the Iced GUI library. It aims to provide a simple and fast client for Mac, Windows, and Linux platforms.</description>
+  <devel project="network" package="halloy"/>
+  <url>https://github.com/squidowl/halloy</url>
+</package>
