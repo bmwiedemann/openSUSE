@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 10 14:48:23 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.8.6:
+  * Davix header parsing is case-sensitive for libcurl backend.
+  * libxml 2.12.0 breaks Gfal2/Davix listing.
+  * Incorrect IPv4 reported for HTTP-TPC transfers that don't send
+    "RemoteConnections" marker.
+  * [gh#cern-fts/davix#113] - Use sed in a more POSIX compliant
+    way.
+  * Long Authorization header xxxx token string print in Davix.
+  * [gh#cern-fts/davix#105] - Do not hardcode error numbers.
+  * [gh#cern-fts/davix#110] - Support the NVHPC compiler.
+- Empty %check section for rpmlint.
+
+-------------------------------------------------------------------
 Wed Nov 22 08:02:55 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.8.5:

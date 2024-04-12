@@ -1,7 +1,7 @@
 #
 # spec file for package davix
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define shlib lib%{name}0
 %define v_maj 0
 %define v_min 8
-%define v_pat 5
+%define v_pat 6
 Name:           davix
 Version:        %{v_maj}.%{v_min}.%{v_pat}
 Release:        0
@@ -77,6 +77,8 @@ applications using davix.
 
 # REMOVE NON-STD DOC FILES, TO BE CORRECTLY INSTALLED USING %%doc macro
 rm -fr %{buildroot}%{_datadir}/doc/davix
+
+%check
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
