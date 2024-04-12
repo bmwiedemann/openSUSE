@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 12 05:51:30 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Improve the OrdinalPodInterfaceName mechanism (bsc#1222699)
+  0001-Improve-the-handling-of-ordinal-pod-interface-name-for-upgrade.patch
+
+-------------------------------------------------------------------
 Wed Mar  6 07:45:30 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 1.2.0
