@@ -17,7 +17,7 @@
 
 
 Name:           pam-config
-Version:        2.11
+Version:        2.11+git.20240411
 Release:        0
 Summary:        Utility to modify common PAM configuration files
 License:        GPL-2.0-only
@@ -26,6 +26,9 @@ URL:            https://github.com/SUSE/pam-config
 Source:         %{name}-%{version}.tar.xz
 # Do not show some rpmlint errors.
 Source1:        pam-config-rpmlintrc
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  docbook-xsl-stylesheets
 PreReq:         pam >= 1.3.0
 Recommends:     pam_pwquality
 
@@ -40,6 +43,7 @@ add/adjust/remove other PAM modules and their options.
 %setup -q
 
 %build
+./autogen.sh
 %configure
 %make_build
 

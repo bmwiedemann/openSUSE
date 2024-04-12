@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/SUSE/pam-config.git</param>
+              
+<param name="changesrevision">e73a167a7d18cc62c09707ae84c87a4dd20de849</param></service>
+</servicedata>

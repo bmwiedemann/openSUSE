@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 11 08:55:34 UTC 2024 - kukuk@suse.com
+
+- Update to version 2.11+git.20240411:
+  * Configure Himmelblau correctly w/ other services present
+  * Configure other services correctly w/ Himmelblau present
+  * Himmelblau session is only optional
+
+-------------------------------------------------------------------
 Tue Feb 13 10:59:28 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.11

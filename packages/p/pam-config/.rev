@@ -806,4 +806,15 @@
   - pam_gnome_keyring: use options in AUTH [bsc#1219767]</comment>
     <requestid>1146373</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>d332d132c555b63cbab8c244556b42d0</srcmd5>
+    <version>2.11+git.20240411</version>
+    <time>1712936022</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.11+git.20240411:
+  * Configure Himmelblau correctly w/ other services present
+  * Configure other services correctly w/ Himmelblau present
+  * Himmelblau session is only optional</comment>
+    <requestid>1166807</requestid>
+  </revision>
 </revisionlist>
