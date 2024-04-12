@@ -1,7 +1,7 @@
 #
 # spec file for package nvtop
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020-2023 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,15 +18,16 @@
 
 
 Name:           nvtop
-Version:        3.0.2+31
+Version:        3.1.0
 Release:        0
-License:        GPL-3.0-or-later
 Summary:        A (h)top like task monitor for NVIDIA and AMD GPUs
+License:        GPL-3.0-or-later
 URL:            https://github.com/Syllo/nvtop
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libudev)
@@ -46,7 +47,7 @@ way.
 %build
 %cmake -DCMAKE_BUILD_TYPE=Release \
        -DNVML_RETRIEVE_HEADER_ONLINE=True
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install

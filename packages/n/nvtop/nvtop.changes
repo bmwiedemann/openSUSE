@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Apr 12 13:07:30 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 3.1.0:
+  * MSM: Ignore speedbin in id if exact id isn't found
+  * Add support for Adreno 750
+  * Fix save w/o config location path
+  * interface_options: handle both XDG_CONFIG_HOME and HOME being unset
+  * Prevent potential Ascend device name buffer overflow
+  * remove temp file
+  * fix issues for PR
+  * Toggle Panfrost's sysfs profiling hook after DRM handle is retrieved
+  * add ascend build script and README
+  * add ascend extract gpu info code
+  * GPU info bar option in F2 menu
+  * Save GPU info bar option to config file
+  * Fix related to pull request #248
+  * Refactor Panthor and Panfrost into library of shared code
+  * Add support for Mali CSF GPUs with the Panthor driver.
+  * Add Panfrost support for manual calculation of engine utilisation
+  * Add support for post-fdinfo processing calculation of utilisation
+  * Add support for Panfrost display of additional GPU properties
+  * Add display of additional GPU features
+  * Add support for Mali GPUs with the Panfrost driver
+
+-------------------------------------------------------------------
 Wed Oct 25 02:13:50 UTC 2023 - malcolmlewis@opensuse.org
 
 - Update to version 3.0.2+31:
