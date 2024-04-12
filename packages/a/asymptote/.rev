@@ -28,4 +28,12 @@
 - Add 0001-Fix-without-lsp-issue-379.patch</comment>
     <requestid>1102266</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9b45ee7aa862c10df51cdb2b8ec7f727</srcmd5>
+    <version>2.89</version>
+    <time>1712936086</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.89</comment>
+    <requestid>1166921</requestid>
+  </revision>
 </revisionlist>

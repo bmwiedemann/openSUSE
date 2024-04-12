@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 11 16:18:35 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.89
+  * Avoid broken dvisvgm reassign-clippaths optimization.
+  * Use a unique signature hash for identifying templated imports.
+  * Optimize dvisvgm output by default.
+- Delete 0001-Fix-without-lsp-issue-379.patch (merged)
+
+-------------------------------------------------------------------
 Sat Jun 24 12:24:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.86

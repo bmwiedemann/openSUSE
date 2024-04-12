@@ -1,7 +1,7 @@
 #
 # spec file for package asymptote
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with lsp
 Name:           asymptote
-Version:        2.86
+Version:        2.89
 Release:        0
 Summary:        2D & 3D TeX-Aware vector graphics language
 License:        LGPL-3.0-or-later
@@ -27,7 +27,6 @@ URL:            https://asymptote.sourceforge.io/
 
 #Git-Clone:     https://github.com/vectorgraphics/asymptote
 Source:         https://github.com/vectorgraphics/asymptote/archive/refs/tags/%version.tar.gz
-Patch1:         0001-Fix-without-lsp-issue-379.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
