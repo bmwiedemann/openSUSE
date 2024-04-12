@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 10 16:45:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.2.1:
+  Bugfixes
+  * Molecule uses ANSIBLE_FILTER_PLUGINS
+    (#4135 <https://github.com/ansible/molecule/pull/4135>)
+  * Set ANSIBLE_FORCE_COLOR sooner to fix missing color output in
+    tmux
+    (#4145 <https://github.com/ansible/molecule/pull/4145>)
+  * Fix symlinks creation in ansible provisioneer
+    (#4134 <https://github.com/ansible/molecule/pull/4134>)
+
+-------------------------------------------------------------------
 Thu Mar 21 19:49:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - ignore 5 tests that started to fail
