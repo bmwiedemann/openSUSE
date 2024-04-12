@@ -1,7 +1,7 @@
 #
 # spec file for package xfs_undelete
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xfs_undelete
-Version:        12.0
+Version:        14.0
 Release:        0
 Summary:        An undelete tool for the XFS filesystem
 License:        GPL-3.0-only
@@ -27,7 +27,7 @@ Source:         https://github.com/ianka/xfs_undelete/archive/refs/tags/v%{versi
 Requires:       coreutils
 Requires:       file
 Requires:       file-magic
-Requires:       tcl >= 8.6
+Requires:       tcl >= 8.5
 Requires:       tcllib
 BuildArch:      noarch
 
@@ -37,7 +37,7 @@ deleted. You may also specify a date or age since deletion, and file types
 to ignore or to recover exclusively.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 
@@ -49,6 +49,8 @@ mkdir -p %{buildroot}%{_sbindir}
 cp -a xfs_undelete %{buildroot}%{_sbindir}
 mkdir -p %{buildroot}%{_mandir}/man8
 gzip -c xfs_undelete.man >%{buildroot}%{_mandir}/man8/xfs_undelete.8.gz
+
+%check
 
 %files
 %license LICENSE

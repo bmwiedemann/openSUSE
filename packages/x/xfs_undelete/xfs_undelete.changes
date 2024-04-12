@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Apr  5 13:46:10 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- update to version 14.0:
+  * added support for version 2 inodes. This makes xfs_undelete find deleted
+      files on older XFS filesystems. Kudos to Vladimir Serbinenko
+  * small fixes
+- update to version 13.2:
+  * bugfix: listing the supported filetypes did not work with Tcl-8.5
+  * manpage fixes
+- update to version 13.1:
+  * bugfix: fix newly introduced private lmap function for Tcl-8.5 compatibility
+  * manpage and README fixes
+- update to version 13.0:
+  * added the -S option to ignore files larger than the specified size
+  * added the -x option to ignore the specified inode numbers
+  * define our own version of lmap if Tcl does not supply it.
+      This adds compatibility with Tcl-8.5, it seems.
+- update to version 12.1:
+  * bugfix: set UTC timezone when no timezone is set
+
+-------------------------------------------------------------------
 Tue Nov  8 12:48:45 UTC 2022 - Manfred Schwarb <manfred99@gmx.ch>
 
 - build separate xfs_undelete.changes file
