@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 10 09:43:33 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1712742175.5de9696:
+  * setup-multimachine: Retry package installation up to 7 times
+  * Remove warning of uninitialized value
+  * Update codecov action to v4
+  * Unify size argument for disk creation
+  * Mock diag to check output
+  * Remove comment
+  * Ensure cleanup of temp dir
+  * Move exit_code_from_test_results to Runner.pm
+
+-------------------------------------------------------------------
 Thu Apr 04 13:16:00 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1712236552.dd5d6dd:
