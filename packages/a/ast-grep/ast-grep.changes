@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 11 14:24:36 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.5:
+  * fix: add parse global util error 2482a86
+  * fix: ignore test 6c2cd46
+
+-------------------------------------------------------------------
 Mon Apr  8 12:39:13 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.20.4:

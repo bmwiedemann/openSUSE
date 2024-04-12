@@ -216,4 +216,14 @@
   * refactor: move logging and io out of on_apply_all_fix cd79cda</comment>
     <requestid>1166203</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2e7add70bda2157c97fcbc548d59d721</srcmd5>
+    <version>0.20.5+0</version>
+    <time>1712936062</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.20.5:
+  * fix: add parse global util error 2482a86
+  * fix: ignore test 6c2cd46</comment>
+    <requestid>1166897</requestid>
+  </revision>
 </revisionlist>
