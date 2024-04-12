@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-communication-chat
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Microsoft Azure Communication Chat Service Client Library for Python
 License:        MIT
