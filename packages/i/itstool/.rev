@@ -184,4 +184,13 @@
   * Performance improvements when using ITS params. (forwarded request 925724 from dirkmueller)</comment>
     <requestid>926172</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>43f923b86a6d814bbab801ea932c52ec</srcmd5>
+    <version>2.0.7</version>
+    <time>1712936029</time>
+    <user>anag+factory</user>
+    <comment>thanks
+- remove dependency on /usr/bin/python3 [bsc#1212476] (forwarded request 1166859 from pgajdos)</comment>
+    <requestid>1166865</requestid>
+  </revision>
 </revisionlist>

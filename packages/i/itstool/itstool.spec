@@ -1,7 +1,7 @@
 #
 # spec file for package itstool
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,16 +41,15 @@ what to translate and how to chunk it into messages using the W3C
 Internationalization Tag Set (ITS).
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-sed -i -e "/^echo.*import/s/python/python3/" configure
-export PYTHON=%{_bindir}/python3
+export PYTHON=$(realpath %{_bindir}/python3)
 %configure
 %make_build
 
 %install
-%make_install PYTHON=%{_bindir}/python3
+%make_install PYTHON=$(realpath %{_bindir}/python3)
 
 %files
 %license COPYING
