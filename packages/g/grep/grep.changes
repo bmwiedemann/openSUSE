@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 10 20:20:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- restore texinfo macros for SLE15
+
+-------------------------------------------------------------------
 Wed Aug 16 14:21:13 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - export CONFIG_SHELL=/bin/sh before running configure: results in
@@ -24,7 +29,7 @@ Thu Mar 30 07:41:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * With -P, \d now matches only ASCII digits, regardless of
     PCRE options/modes. The changes in grep-3.9 to make ^H and \w
     work properly had the undesirable side effect of making \d
-    also match e.g., the Arabic digits: ٠١٢٣٤٥٦٧٨٩.  
+    also match e.g., the Arabic digits: ٠١٢٣٤٥٦٧٨٩.
     With grep-3.9, -P '\d+' would match that ten-digit (20-byte)
     string. Now, to match such a digit, you would use \p{Nd}.
     Similarly, \D is now mapped to [^0-9].
@@ -51,7 +56,7 @@ Tue Sep 20 08:29:41 UTC 2022 - Andreas Schwab <schwab@suse.de>
 -------------------------------------------------------------------
 Sun Sep  4 10:13:04 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- GNU grep 3.8:
+- GNU grep 3.8 (jsc#PED-6579):
   * The -P option is now based on PCRE2 instead of the older PCRE
     (boo#1201803)
   * egrep and fgrep commands, deprecated since release 2.5.3 (2007), now
@@ -63,7 +68,7 @@ Sun Sep  4 10:13:04 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
     POSIXLY_CORRECT is set, since POSIX now allows the GNU behavior
   * In locales using UTF-8 encoding, the regular expression '.' no
     longer sometimes fails to match Unicode characters
-  * The -s option no longer suppresses "binary file matches" 
+  * The -s option no longer suppresses "binary file matches"
     messages.
 - doc: fix man page syntax errors (bsc#1201001)
 
@@ -75,7 +80,7 @@ Wed Aug  3 12:26:44 UTC 2022 - Andreas Schwab <schwab@suse.de>
 -------------------------------------------------------------------
 Tue May 24 19:42:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- use release keyring rather than full one for validation 
+- use release keyring rather than full one for validation
 
 -------------------------------------------------------------------
 Tue May 24 14:15:24 UTC 2022 - Stephan Kulow <coolo@suse.com>
@@ -85,7 +90,7 @@ Tue May 24 14:15:24 UTC 2022 - Stephan Kulow <coolo@suse.com>
 -------------------------------------------------------------------
 Tue Mar 15 21:51:41 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
-- Make profiling deterministic (bsc#1040589)
+- Make profiling deterministic (bsc#1040589, SLE-24115)
 
 -------------------------------------------------------------------
 Sat Feb 12 13:40:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -136,7 +141,7 @@ Mon Sep 28 08:54:47 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - grep 3.5:
   * message for matching binary files now sent to stderr, and changed
-  * --files-without-match (-L) behavior reverted to again succeed 
+  * --files-without-match (-L) behavior reverted to again succeed
     when a line is selected, not when a file is listed
   * various bug fixes
 - drop gnulib-test-avoid-FP-perror-strerror.patch, upstream
@@ -251,12 +256,12 @@ Wed Feb  8 09:56:26 UTC 2017 - mpluskal@suse.com
   * Improve performance for -E or -G pattern lists that are easily
     converted to -F format.
   * Fix performance regression with multiple patterns.
-  * When standard output is /dev/null, grep no longer fails when 
+  * When standard output is /dev/null, grep no longer fails when
     standard input is a file in the Linux /proc file system, or when
     standard input is a pipe and standard output is in append mode.
   * When grep -Fo finds matches of differing length, it could
     mistakenly print a shorter one.  Now it prints a longest one.
-- Drop upstreamed proc-lseek-glitch.patch 
+- Drop upstreamed proc-lseek-glitch.patch
 
 -------------------------------------------------------------------
 Mon Dec 12 16:51:24 UTC 2016 - schwab@suse.de
@@ -305,7 +310,7 @@ Fri Oct 28 13:01:39 UTC 2016 - astieger@suse.com
   * In multibyte locales, grep now handles leading "." in patterns
     more efficiently.
   * grep now prints a "FILENAME:LINENO: " prefix when diagnosing
-    an invalid regular expression that was read from an 
+    an invalid regular expression that was read from an
    '-f'-specified file.
 
 -------------------------------------------------------------------
@@ -324,56 +329,56 @@ Fri Apr 22 13:49:18 UTC 2016 - astieger@suse.com
 Fri Mar 11 09:30:02 UTC 2016 - mpluskal@suse.com
 
 - Update to 2.24
-  * grep -z would match strings it should not.  To trigger the bug, 
-    you'd have to use a regular expression including an anchor 
-    (^ or $) and a feature like a range or a backreference, causing 
+  * grep -z would match strings it should not.  To trigger the bug,
+    you'd have to use a regular expression including an anchor
+    (^ or $) and a feature like a range or a backreference, causing
     grep to forego its DFA matcher and resort to using re_search.
-    With a multibyte locale, that matcher could mistakenly match a 
-    string containing a newline. For example, this command: 
+    With a multibyte locale, that matcher could mistakenly match a
+    string containing a newline. For example, this command:
     printf 'a\nb\0' | LC_ALL=en_US.utf-8 grep -z '^[a-b]*b'
-    would mistakenly match and print all four input bytes.  After 
+    would mistakenly match and print all four input bytes.  After
     the fix, there is no match, as expected.
     [bug introduced in grep-2.7]
-  * grep -Pz now diagnoses attempts to use patterns containing ^ 
-    and $, instead of mishandling these patterns.  This problem 
-    seems to be inherent to the PCRE API; removing this limitation 
-    is on PCRE's maint/README wish list.  Patterns can continue to 
-    match literal ^ and $ by escaping them with \ (now needed even 
+  * grep -Pz now diagnoses attempts to use patterns containing ^
+    and $, instead of mishandling these patterns.  This problem
+    seems to be inherent to the PCRE API; removing this limitation
+    is on PCRE's maint/README wish list.  Patterns can continue to
+    match literal ^ and $ by escaping them with \ (now needed even
     inside [...]). [bug introduced in grep-2.5]
 
 -------------------------------------------------------------------
 Fri Feb  5 08:01:46 UTC 2016 - mpluskal@suse.com
 
 - Update to 2.23
-  * Binary files are now less likely to generate diagnostics and 
-    more likely to yield text matches.  grep now reports "Binary 
-    file FOO matches" and suppresses further output instead of 
-    outputting a line containing an encoding error; hence grep can 
-    now report matching text before a later binary match.  
-    Formerly, grep reported FOO to be binary when it found an 
-    encoding error in FOO before generating output for FOO, which 
-    meant it never reported both matching text and matching binary 
-    data; this was less useful for searching text containing 
-    encoding errors in non-matching lines. [bug introduced in 
+  * Binary files are now less likely to generate diagnostics and
+    more likely to yield text matches.  grep now reports "Binary
+    file FOO matches" and suppresses further output instead of
+    outputting a line containing an encoding error; hence grep can
+    now report matching text before a later binary match.
+    Formerly, grep reported FOO to be binary when it found an
+    encoding error in FOO before generating output for FOO, which
+    meant it never reported both matching text and matching binary
+    data; this was less useful for searching text containing
+    encoding errors in non-matching lines. [bug introduced in
     grep-2.21]
-  * grep -c no longer stops counting when finding binary data. 
+  * grep -c no longer stops counting when finding binary data.
     [bug introduced in grep-2.21]
-  * grep no longer outputs encoding errors in unibyte locales. For 
+  * grep no longer outputs encoding errors in unibyte locales. For
     example, if the byte '\x81' is not a valid character in a
-    unibyte locale, grep treats the byte as binary data. [bug 
+    unibyte locale, grep treats the byte as binary data. [bug
     introduced in grep-2.21]
-  * grep -oP is no longer susceptible to an infinite loop when 
-    processing invalid UTF8 just before a match. [bug introduced in 
+  * grep -oP is no longer susceptible to an infinite loop when
+    processing invalid UTF8 just before a match. [bug introduced in
     grep-2.22]
-  * --exclude and related options are now matched against trailing 
+  * --exclude and related options are now matched against trailing
     parts of command-line arguments, not against the entire
-    arguments. This partly reverts the --exclude-related change 
+    arguments. This partly reverts the --exclude-related change
     in 2.22. [bug introduced in grep-2.22]
-  * --line-buffer is no longer ineffective when combined with -l. 
+  * --line-buffer is no longer ineffective when combined with -l.
     [bug introduced in grep-2.5]
-  * -xw is now equivalent to -x more consistently, with -P and 
+  * -xw is now equivalent to -x more consistently, with -P and
     with backrefs.  [bug only partially fixed in grep-2.19]
-- Update info handling scriplets 
+- Update info handling scriplets
   * move from postun to preun
   * add dependeny for preun
 - Refresh partially upstreamed patch
@@ -429,7 +434,7 @@ Fri Nov 28 15:49:19 UTC 2014 - andreas.stieger@gmx.de
   * performance improved for rejecting data that cannot match even
     the first part of a nontrivial pattern.
   * performance improved for very long strings in patterns.
-  * If a file contains data improperly encoded for the current 
+  * If a file contains data improperly encoded for the current
     locale, and this is discovered before any of the file's contents
     are output, grep now treats the file as binary.
   * -P no longer reports an error and exits when given invalid UTF-8
@@ -440,9 +445,9 @@ Fri Nov 28 15:49:19 UTC 2014 - andreas.stieger@gmx.de
   * grep in a non-UTF8 multibyte locale could mistakenly match in
     the middle of a multibyte character when using a '^'-anchored
     alternate in a pattern, leading it to print non-matching lines.
-  * grep -F Y no longer fails to match in non-UTF8 multibyte locales 
+  * grep -F Y no longer fails to match in non-UTF8 multibyte locales
   * grep -E rejected unmatched ')', instead of treating it like '\)'.
-   
+
 - Changes in behavior:
   * The GREP_OPTIONS environment variable is now obsolescent
   * In locales with multibyte character encodings other than UTF-8,
@@ -491,7 +496,7 @@ Sat May 24 16:50:50 UTC 2014 - andreas.stieger@gmx.de
     patterns the same way the GNU regular expression matcher treats
     them, with respect to whether the errors can match parts of
     multibyte characters in data.
-  * grep -w no longer mishandles a potential match adjacent to a 
+  * grep -w no longer mishandles a potential match adjacent to a
     letter that takes up two or more bytes in a multibyte encoding.
     Similarly, the patterns '\<', '\>', '\b', and '\B' no longer
     mishandle word-boundary matches in multibyte locales.
@@ -501,7 +506,7 @@ Sat May 24 16:50:50 UTC 2014 - andreas.stieger@gmx.de
   * grep -P now works with -w and -x and backreferences. Before,
     echo aa|grep -Pw '(.)\1' would fail to match, yet
     echo aa|grep -Pw '(.)\2' would match.
-  * grep -Pw now works like grep -w in that the matched string has 
+  * grep -Pw now works like grep -w in that the matched string has
     to be preceded and followed by non-word components or the
     beginning and end of the line (as opposed to word boundaries
     before).  Before, this
@@ -510,7 +515,7 @@ Sat May 24 16:50:50 UTC 2014 - andreas.stieger@gmx.de
     per the documentation on how grep's -w works.
   * grep -i no longer mishandles patterns containing titlecase
     characters. For example, in a locale containing the titlecase
-    character 'ǈ' (U+01C8 LATIN CAPITAL LETTER L WITH SMALL LETTER 
+    character 'ǈ' (U+01C8 LATIN CAPITAL LETTER L WITH SMALL LETTER
     J), 'grep -i ǈ' now matches both 'Ǉ' (U+01C7 LATIN CAPITAL
     LETTER LJ) and 'ǉ' (U+01C9 LATIN SMALL LETTER LJ).
 - remove mb-non-UTF8-performance.patch, committed upstream
@@ -532,7 +537,7 @@ Sat Feb 22 19:19:46 UTC 2014 - andreas.stieger@gmx.de
 -------------------------------------------------------------------
 Wed Feb 19 10:32:43 UTC 2014 - mvyskocil@suse.com
 
-- update to 2.17 
+- update to 2.17
   * grep -i in a multibyte locale is now typically 10 times faster
     for patterns that do not contain \ or [
   * grep (without -i) in a multibyte locale is now up to 7 times faster
@@ -617,7 +622,7 @@ Fri Aug 24 20:29:59 CEST 2012 - pth@suse.de
     no output.  E.g., seq 2 | LC_ALL=en_US.utf8 grep -il '^$' would
     mistakenly print "(standard input)".  Related, seq 9 |
     LC_ALL=en_US.utf8 grep -in '^$' would print "2:4:6:8:10:12:14:16"
-    and exit 0.  Now it prints nothing and exits with status of 1. 
+    and exit 0.  Now it prints nothing and exits with status of 1.
     [bug introduced in grep-2.6]
 
   * 'grep' no longer falsely reports text files as being binary on
@@ -660,21 +665,21 @@ Mon May 21 18:19:15 UTC 2012 - tabraham@novell.com
 - Update to 2.12:
   * "echp P|grep --devices=skip P" once again prints P, as it did in
     2.10 [bug introduced in grep-2.11]
-  * grep no longer segfaults with -r --exclude-dir and no file 
+  * grep no longer segfaults with -r --exclude-dir and no file
     operand.  I.e., ":|grep -r --exclude-dir=D PAT" would segfault.
     [bug introduced in grep-2.11]
   * Recursive grep now uses fts for directory traversal, so it can
-    handle much-larger directories without reporting things like 
-    "Filename too long", and it can run much faster when dealing 
-    with large directory hierarchies. [bug present since the 
+    handle much-larger directories without reporting things like
+    "Filename too long", and it can run much faster when dealing
+    with large directory hierarchies. [bug present since the
     beginning]
-  * grep -E 'a{1000000000}' now reports an overflow error rather 
+  * grep -E 'a{1000000000}' now reports an overflow error rather
     than silently acting like grep -E 'a\{1000000000}'.
   * The -R option now has a long-option alias --dereference-recursive.
-  * The -r (--recursive) option now follows only command-line 
-    symlinks. Also, by default -r now reads a device only if it is 
-    named on the command line; this can be overridden with --devices.  
-    -R acts as before, so use -R if you prefer the old behavior of 
+  * The -r (--recursive) option now follows only command-line
+    symlinks. Also, by default -r now reads a device only if it is
+    named on the command line; this can be overridden with --devices.
+    -R acts as before, so use -R if you prefer the old behavior of
     following all symlinks and defaulting to reading all devices.
 
 -------------------------------------------------------------------
@@ -686,11 +691,11 @@ Thu Apr 19 17:43:06 CEST 2012 - meissner@suse.de
 Tue Mar 13 18:18:23 UTC 2012 - tabraham@novell.com
 
 - Update to 2.11:
-  * grep no longer dumps core on lines whose lengths do not fit in 
+  * grep no longer dumps core on lines whose lengths do not fit in
     'int'.  (e.g., lines longer than 2 GiB on a typical 64-bit host).
     Instead, grep either works as expected, or reports an error.
-    An error can occur if not enough main memory is available, or if 
-    the GNU C library's regular expression functions cannot handle 
+    An error can occur if not enough main memory is available, or if
+    the GNU C library's regular expression functions cannot handle
     such long lines.  [bug present since "the beginning"]
   * The -m, -A, -B, and -C options no longer mishandle context line
     counts that do not fit in 'int'.  Also, grep -c's counts are now
@@ -700,14 +705,14 @@ Tue Mar 13 18:18:23 UTC 2012 - tabraham@novell.com
     as if it were a text file.  For example, "grep x ." now reports a
     read error on most systems; formerly, it ignored the error.
     [bug introduced in grep-2.5]
-  * grep now exits with status 2 if a directory loop is found, instead 
-    of possibly exiting with status 0 or 1.  [bug introduced in 
+  * grep now exits with status 2 if a directory loop is found, instead
+    of possibly exiting with status 0 or 1.  [bug introduced in
     grep-2.3]
-  * The -s option now suppresses certain input error diagnostics that 
-    it formerly failed to suppress.  These include errors when closing 
-    the input, when lseeking the input, and when the input is also the 
+  * The -s option now suppresses certain input error diagnostics that
+    it formerly failed to suppress.  These include errors when closing
+    the input, when lseeking the input, and when the input is also the
     output.  [bug introduced in grep-2.4]
-  * On POSIX systems, commands like "grep PAT < FILE >> FILE" now report 
+  * On POSIX systems, commands like "grep PAT < FILE >> FILE" now report
     an error instead of looping.  [bug present since "the beginning"]
   * The --include, --exclude, and --exclude-dir options now handle
     command-line arguments more consistently.  --include and --exclude
@@ -717,7 +722,7 @@ Tue Mar 13 18:18:23 UTC 2012 - tabraham@novell.com
   * grep no longer rejects "grep -qr . > out", i.e., when run with -q
     and an input file is the same as the output file, since with -q
     grep generates no output, so there is no risk of infinite loop or
-    of an output-affecting race condition.  Thus, the use of the 
+    of an output-affecting race condition.  Thus, the use of the
     following options also disables the input-equals-output failure:
       --max-count=N (-m) (for N >= 2)
       --files-with-matches (-l)
@@ -727,7 +732,7 @@ Tue Mar 13 18:18:23 UTC 2012 - tabraham@novell.com
     invoked with the -r option.
   * grep no longer misinterprets some alternations involving anchors
     (^, $, \<  \>  \B, \b).  For example, grep -E "(^|\B)a" no
-    longer reports a match for the string "x a".  [bug present since 
+    longer reports a match for the string "x a".  [bug present since
     "the beginning"]
   * If no file operand is given, and a command-line -r or equivalent
     option is given, grep now searches the working directory.  Formerly
@@ -745,11 +750,11 @@ Tue Mar 13 18:18:23 UTC 2012 - tabraham@novell.com
 
 - changes from 2.10:
   * grep no longer mishandles high-bit-set pattern bytes on systems
-    where "char" is a signed type. [bug appears to affect only 
+    where "char" is a signed type. [bug appears to affect only
     MS-Windows]
-  * On POSIX systems, grep now rejects a command like 
-    "grep -r pattern . > out", in which the output file is also one 
-    of the inputs, because it can result in an "infinite" disk-filling 
+  * On POSIX systems, grep now rejects a command like
+    "grep -r pattern . > out", in which the output file is also one
+    of the inputs, because it can result in an "infinite" disk-filling
     loop. [bug present since "the beginning"]
 
 - removed fix-testsuite.diff obsoleted by this release
@@ -784,7 +789,7 @@ Tue Sep 27 12:42:54 CEST 2011 - dmueller@suse.de
 -------------------------------------------------------------------
 Wed Aug 10 03:17:41 UTC 2011 - crrodriguez@opensuse.org
 
-- Upgrade to version 2.9 
+- Upgrade to version 2.9
 * grep no longer clobbers heap for an ERE like '(^| )*( |$)'' )'
 * grep -P no longer aborts when PCRE's backtracking limit is exceeded
 * grep's interpretation of range expression is now more consistent
@@ -848,7 +853,7 @@ Thu Jun 11 21:46:26 CEST 2009 - coolo@novell.com
 -------------------------------------------------------------------
 Thu Jun  4 17:41:19 CEST 2009 - crrodriguez@suse.de
 
-- link pcre library dynamically 
+- link pcre library dynamically
 
 -------------------------------------------------------------------
 Wed Feb 11 14:09:00 CET 2009 - schwab@suse.de
@@ -991,7 +996,7 @@ Mon Jul 21 17:02:26 CEST 2003 - schwab@suse.de
 -------------------------------------------------------------------
 Fri Jun 20 02:29:15 CEST 2003 - ro@suse.de
 
-- build with current gettext 
+- build with current gettext
 
 -------------------------------------------------------------------
 Wed Apr 30 18:35:32 CEST 2003 - schwab@suse.de
@@ -1042,7 +1047,7 @@ Wed Apr  3 16:46:19 CEST 2002 - schwab@suse.de
 -------------------------------------------------------------------
 Wed Apr  3 16:21:16 CEST 2002 - ro@suse.de
 
-- build with current autoconf/automake 
+- build with current autoconf/automake
 
 -------------------------------------------------------------------
 Tue Feb  5 10:57:56 CET 2002 - schwab@suse.de

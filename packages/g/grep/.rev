@@ -782,4 +782,41 @@ also requires -fno-profile-values to avoid ~3 differing bits (forwarded request 
     <comment></comment>
     <requestid>1108777</requestid>
   </revision>
+  <revision rev="91" vrev="3">
+    <srcmd5>b7e5a699e183d81844b0615ae17fbc1e</srcmd5>
+    <version>3.11</version>
+    <time>1712936018</time>
+    <user>anag+factory</user>
+    <comment>- restore texinfo macros for SLE15
+
+    also match e.g., the Arabic digits: ٠١٢٣٤٥٦٧٨٩.
+- GNU grep 3.8 (jsc#PED-6579):
+  * The -s option no longer suppresses &quot;binary file matches&quot;
+- use release keyring rather than full one for validation
+- Make profiling deterministic (bsc#1040589, SLE-24115)
+  * --files-without-match (-L) behavior reverted to again succeed
+  * When standard output is /dev/null, grep no longer fails when
+- Drop upstreamed proc-lseek-glitch.patch
+    an invalid regular expression that was read from an
+  * grep -z would match strings it should not.  To trigger the bug,
+    you'd have to use a regular expression including an anchor
+    (^ or $) and a feature like a range or a backreference, causing
+    With a multibyte locale, that matcher could mistakenly match a
+    string containing a newline. For example, this command:
+    would mistakenly match and print all four input bytes.  After
+  * grep -Pz now diagnoses attempts to use patterns containing ^
+    and $, instead of mishandling these patterns.  This problem
+    seems to be inherent to the PCRE API; removing this limitation
+    is on PCRE's maint/README wish list.  Patterns can continue to
+    match literal ^ and $ by escaping them with \ (now needed even
+  * Binary files are now less likely to generate diagnostics and
+    more likely to yield text matches.  grep now reports &quot;Binary
+    file FOO matches&quot; and suppresses further output instead of
+    outputting a line containing an encoding error; hence grep can
+    now report matching text before a later binary match.
+    Formerly, grep reported FOO to be binary when it found an
+    encoding error in FOO before generating output for FOO, which
+    meant it never reported both matching text and matching binary</comment>
+    <requestid>1166714</requestid>
+  </revision>
 </revisionlist>

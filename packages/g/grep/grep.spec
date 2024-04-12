@@ -1,7 +1,7 @@
 #
 # spec file for package grep
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,10 @@ BuildRequires:  fdupes
 BuildRequires:  glibc-locale
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig(libpcre2-8)
+%if 0%{?suse_version} < 1550
+Requires(pre):  %{install_info_prereq}
+Requires(preun): %{install_info_prereq}
+%endif
 Provides:       base:%{_bindir}/grep
 
 %description
@@ -79,6 +83,14 @@ ln -sf %{_bindir}/grep %{buildroot}/bin/grep
 %endif
 %fdupes -s %{buildroot}
 %find_lang %{name}
+
+%if 0%{?suse_version} < 1550
+%post
+%install_info --info-dir=%{_infodir} %{_infodir}/grep.info%{ext_info}
+
+%preun
+%install_info_delete --info-dir=%{_infodir} %{_infodir}/grep.info%{ext_info}
+%endif
 
 %files
 %license COPYING
