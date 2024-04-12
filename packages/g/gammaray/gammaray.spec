@@ -39,6 +39,16 @@ Source:         https://github.com/KDAB/GammaRay/releases/download/v%{version}/%
 Patch0:         0001-Fix-doc-tools-detection.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         gammaray-gles.patch
+Patch2:         0001-Fix-Qt-6.6-build.patch
+Patch3:         0001-Repair-lack-of-classnames-in-Graphics-Scenes-or-Styl.patch
+Patch4:         0001-QuickSceneGraphModel-don-t-nest-row-insertion-remova.patch
+Patch5:         0001-Fix-gcc-13-warnings-about-references-to-temporaries.patch
+Patch6:         0001-Fix-3-bugs-detected-by-QAbstractItemModelTester.patch
+Patch7:         0001-Fix-two-issues-in-ObjectEnumModel-found-by-QAbstract.patch
+Patch8:         0001-2-more-QAbstractItemModelTester-fixes.patch
+Patch9:         0001-Unbreak-recursive-filtering-in-ObjectIdsFilterProxyM.patch
+Patch10:        0001-Enable-building-with-Qt-6.7.patch
+Patch11:        0001-Fix-build-on-6.7-for-after-QDeferredDeleteEvent-expo.patch
 BuildRequires:  binutils-devel
 BuildRequires:  cmake >= 3.16.0
 BuildRequires:  doxygen

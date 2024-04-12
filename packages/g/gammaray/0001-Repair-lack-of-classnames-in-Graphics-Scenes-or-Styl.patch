@@ -1,0 +1,48 @@
+From 91200e5e1cb8fa700cfd0546e2515a7995cce441 Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Wed, 8 Nov 2023 11:54:09 +0100
+Subject: [PATCH] Repair lack of classnames in "Graphics Scenes" or "Styles"
+ combobox
+
+Since Qt 6.3, QAbstractProxyModel::itemData() no longer calls data()
+but calls into the source model. So we need to reimplement it in order
+to use our data() reimplementation.
+
+(cherry picked from commit 06a89419845e74534a42dffaa0f0c7cd99a1694c)
+---
+ core/singlecolumnobjectproxymodel.cpp | 8 ++++++++
+ core/singlecolumnobjectproxymodel.h   | 2 ++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/core/singlecolumnobjectproxymodel.cpp b/core/singlecolumnobjectproxymodel.cpp
+index 05150ac..1aa8255 100644
+--- a/core/singlecolumnobjectproxymodel.cpp
++++ b/core/singlecolumnobjectproxymodel.cpp
+@@ -38,3 +38,11 @@ QVariant SingleColumnObjectProxyModel::data(const QModelIndex &proxyIndex, int r
+ 
+     return QIdentityProxyModel::data(proxyIndex, role);
+ }
++
++QMap<int, QVariant> SingleColumnObjectProxyModel::itemData(const QModelIndex &proxyIndex) const
++{
++    QMap<int, QVariant> map = QIdentityProxyModel::itemData(proxyIndex);
++    map[Qt::DisplayRole] = data(proxyIndex);
++    return map;
++}
++
+diff --git a/core/singlecolumnobjectproxymodel.h b/core/singlecolumnobjectproxymodel.h
+index 6dac2e0..ca25a47 100644
+--- a/core/singlecolumnobjectproxymodel.h
++++ b/core/singlecolumnobjectproxymodel.h
+@@ -52,6 +52,8 @@ public:
+      *         QVariant() if some anamoly occurs.
+      */
+     QVariant data(const QModelIndex &proxyIndex, int role = Qt::DisplayRole) const override;
++
++    QMap<int, QVariant> itemData(const QModelIndex &proxyIndex) const override;
+ };
+ }
+ 
+-- 
+2.44.0
+

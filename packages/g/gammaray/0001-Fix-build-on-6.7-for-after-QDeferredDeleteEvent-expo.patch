@@ -1,0 +1,246 @@
+From 8baa121ea1a2af0ffd81c6b2514b7e7d80d06cd5 Mon Sep 17 00:00:00 2001
+From: Matt <144846910+mattkdab@users.noreply.github.com>
+Date: Tue, 26 Mar 2024 12:55:26 -0400
+Subject: [PATCH] Fix build on 6.7 for after QDeferredDeleteEvent export
+ reversion (#957)
+
+In the next 6.7 release, this reversion will be done:
+https://codereview.qt-project.org/c/qt/qtbase/+/544223
+which will break building GammaRay against 6.7
+Use static_cast in an explicit specialization
+GammaRay::DynamicCast<QDeferredDeleteEvent *, QEvent>
+to avoid missing typeinfo errors from linker
+
+* Fix build on 6.7 for after QDeferredDeleteEvent export reversion
+
+* [pre-commit.ci] auto fixes from pre-commit.com hooks
+
+for more information, see https://pre-commit.ci
+
+* Followup #957: Remove unneeded include
+
+* Followup #957: check qt version before including qcoreevent_p
+
+* Followup #957: QtGlobal for version check
+
+* Followup #957: qt5 ci fix: include metatypedecl in metaprop
+
+* Followup #957: GuiPrivate -> CorePrivate, comment
+
+Requested by @redstrate
+
+* [pre-commit.ci] auto fixes from pre-commit.com hooks
+
+for more information, see https://pre-commit.ci
+
+* Followup #957: Remove now-unneeded additions
+
+Caught by Waqar in his review.
+
+---------
+
+Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+---
+ core/typetraits.h                            | 13 +++++++++++++
+ plugins/actioninspector/CMakeLists.txt       |  8 +++++++-
+ plugins/bluetooth/CMakeLists.txt             |  2 +-
+ plugins/openglsupport/CMakeLists.txt         |  2 +-
+ plugins/positioning/CMakeLists.txt           |  2 +-
+ plugins/qt3dinspector/CMakeLists.txt         |  1 +
+ plugins/quickwidgetsupport/CMakeLists.txt    |  2 +-
+ plugins/sceneinspector/CMakeLists.txt        |  1 +
+ plugins/textdocumentinspector/CMakeLists.txt |  2 +-
+ plugins/widgetinspector/CMakeLists.txt       |  1 +
+ plugins/wlcompositorinspector/CMakeLists.txt |  1 +
+ tests/CMakeLists.txt                         |  8 ++++++--
+ 12 files changed, 35 insertions(+), 8 deletions(-)
+
+diff --git a/core/typetraits.h b/core/typetraits.h
+index 20397af..4195e99 100644
+--- a/core/typetraits.h
++++ b/core/typetraits.h
+@@ -15,6 +15,11 @@
+ #define GAMMARAY_TYPETRAITS_H
+ 
+ #include <type_traits>
++#include <QtGlobal>
++// Needed for QDeferredDeleteEvent after Qt 6.7
++#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
++#include <private/qcoreevent_p.h>
++#endif
+ 
+ namespace GammaRay {
+ 
+@@ -27,6 +32,14 @@ Out DynamicCast(In *in)
+     return dynamic_cast<Out>(in);
+ }
+ 
++#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
++template<>
++inline QDeferredDeleteEvent *DynamicCast<QDeferredDeleteEvent *, QEvent>(QEvent *in)
++{
++    return static_cast<QDeferredDeleteEvent *>(in);
++}
++#endif
++
+ ///@cond internal
+ template<typename Out>
+ Out DynamicCast(void *)
+diff --git a/plugins/actioninspector/CMakeLists.txt b/plugins/actioninspector/CMakeLists.txt
+index 134c3d4..87ceeef 100644
+--- a/plugins/actioninspector/CMakeLists.txt
++++ b/plugins/actioninspector/CMakeLists.txt
+@@ -18,7 +18,13 @@ if(NOT GAMMARAY_CLIENT_ONLY_BUILD)
+         ${gammaray_actioninspector_plugin_srcs}
+     )
+ 
+-    target_link_libraries(gammaray_actioninspector_plugin Qt::Gui Qt::Widgets gammaray_core)
++    target_link_libraries(
++        gammaray_actioninspector_plugin
++        Qt::Gui
++        Qt::CorePrivate
++        Qt::Widgets
++        gammaray_core
++    )
+ endif()
+ 
+ # ui part
+diff --git a/plugins/bluetooth/CMakeLists.txt b/plugins/bluetooth/CMakeLists.txt
+index a5c2392..951000e 100644
+--- a/plugins/bluetooth/CMakeLists.txt
++++ b/plugins/bluetooth/CMakeLists.txt
+@@ -15,6 +15,6 @@ if(NOT GAMMARAY_CLIENT_ONLY_BUILD)
+         SOURCES
+         bluetooth.cpp
+     )
+-    target_link_libraries(gammaray_bluetooth gammaray_core Qt::Bluetooth)
++    target_link_libraries(gammaray_bluetooth gammaray_core Qt::Bluetooth Qt::CorePrivate)
+     set_target_properties(gammaray_bluetooth PROPERTIES DISABLE_PRECOMPILE_HEADERS ON)
+ endif()
+diff --git a/plugins/openglsupport/CMakeLists.txt b/plugins/openglsupport/CMakeLists.txt
+index e5614be..f610a46 100644
+--- a/plugins/openglsupport/CMakeLists.txt
++++ b/plugins/openglsupport/CMakeLists.txt
+@@ -15,7 +15,7 @@ if(NOT GAMMARAY_CLIENT_ONLY_BUILD)
+         SOURCES
+         openglsupport.cpp
+     )
+-    target_link_libraries(gammaray_openglsupport gammaray_core Qt::Gui)
++    target_link_libraries(gammaray_openglsupport gammaray_core Qt::Gui Qt::CorePrivate)
+     if(TARGET Qt6::OpenGL)
+         target_link_libraries(gammaray_openglsupport Qt6::OpenGL)
+     endif()
+diff --git a/plugins/positioning/CMakeLists.txt b/plugins/positioning/CMakeLists.txt
+index e19616a..8ea8bdd 100644
+--- a/plugins/positioning/CMakeLists.txt
++++ b/plugins/positioning/CMakeLists.txt
+@@ -16,7 +16,7 @@ if(NOT GAMMARAY_CLIENT_ONLY_BUILD)
+         SOURCES
+         ${gammaray_positioning_srcs}
+     )
+-    target_link_libraries(gammaray_positioning gammaray_core Qt::Positioning)
++    target_link_libraries(gammaray_positioning gammaray_core Qt::Positioning Qt::CorePrivate)
+     set_target_properties(gammaray_positioning PROPERTIES DISABLE_PRECOMPILE_HEADERS ON)
+ 
+     # proxy geo position info source factory
+diff --git a/plugins/qt3dinspector/CMakeLists.txt b/plugins/qt3dinspector/CMakeLists.txt
+index ab514d9..31bed03 100644
+--- a/plugins/qt3dinspector/CMakeLists.txt
++++ b/plugins/qt3dinspector/CMakeLists.txt
+@@ -33,6 +33,7 @@ if(NOT GAMMARAY_CLIENT_ONLY_BUILD)
+         gammaray_kitemmodels
+         Qt::3DInput
+         Qt::3DRender
++        Qt::CorePrivate
+     )
+     if(TARGET Qt::3DAnimation)
+         target_link_libraries(gammaray_3dinspector Qt::3DAnimation)
+diff --git a/plugins/quickwidgetsupport/CMakeLists.txt b/plugins/quickwidgetsupport/CMakeLists.txt
+index 99b1211..1dcbc19 100644
+--- a/plugins/quickwidgetsupport/CMakeLists.txt
++++ b/plugins/quickwidgetsupport/CMakeLists.txt
+@@ -16,5 +16,5 @@ if(NOT GAMMARAY_CLIENT_ONLY_BUILD)
+         SOURCES
+         ${gammaray_quickwidgetsupport_srcs}
+     )
+-    target_link_libraries(gammaray_quickwidgetsupport gammaray_core Qt::QuickWidgets)
++    target_link_libraries(gammaray_quickwidgetsupport gammaray_core Qt::QuickWidgets Qt::CorePrivate)
+ endif()
+diff --git a/plugins/sceneinspector/CMakeLists.txt b/plugins/sceneinspector/CMakeLists.txt
+index 8ebbfd8..2de614b 100644
+--- a/plugins/sceneinspector/CMakeLists.txt
++++ b/plugins/sceneinspector/CMakeLists.txt
+@@ -23,6 +23,7 @@ if(NOT GAMMARAY_CLIENT_ONLY_BUILD)
+     target_link_libraries(
+         gammaray_sceneinspector_plugin
+         Qt::Gui
++        Qt::CorePrivate
+         Qt::Widgets
+         gammaray_kitemmodels
+         gammaray_core
+diff --git a/plugins/textdocumentinspector/CMakeLists.txt b/plugins/textdocumentinspector/CMakeLists.txt
+index 1e5f3a9..655f351 100644
+--- a/plugins/textdocumentinspector/CMakeLists.txt
++++ b/plugins/textdocumentinspector/CMakeLists.txt
+@@ -17,7 +17,7 @@ if(NOT GAMMARAY_CLIENT_ONLY_BUILD)
+         ${gammaray_textdocumentinspector_srcs}
+     )
+     target_link_libraries(gammaray_textdocumentinspector gammaray_core)
+-    target_link_libraries(gammaray_textdocumentinspector Qt::Gui)
++    target_link_libraries(gammaray_textdocumentinspector Qt::Gui Qt::CorePrivate)
+ endif()
+ 
+ # ui plugin
+diff --git a/plugins/widgetinspector/CMakeLists.txt b/plugins/widgetinspector/CMakeLists.txt
+index 18b2897..019aa5d 100644
+--- a/plugins/widgetinspector/CMakeLists.txt
++++ b/plugins/widgetinspector/CMakeLists.txt
+@@ -30,6 +30,7 @@ if(NOT GAMMARAY_CLIENT_ONLY_BUILD)
+     target_link_libraries(
+         gammaray_widgetinspector_plugin
+         Qt::Gui
++        Qt::CorePrivate
+         Qt::Widgets
+         gammaray_kitemmodels
+         gammaray_core
+diff --git a/plugins/wlcompositorinspector/CMakeLists.txt b/plugins/wlcompositorinspector/CMakeLists.txt
+index 9d8c0e5..144d23b 100644
+--- a/plugins/wlcompositorinspector/CMakeLists.txt
++++ b/plugins/wlcompositorinspector/CMakeLists.txt
+@@ -31,6 +31,7 @@ if(NOT GAMMARAY_CLIENT_ONLY_BUILD)
+             gammaray_core
+             gammaray_kitemmodels
+             Qt::WaylandCompositor
++            Qt::CorePrivate
+             Wayland::Server
+         )
+ 
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 6057ffd..608b585 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -231,7 +231,7 @@ target_link_libraries(
+ 
+ gammaray_add_test(metaobjecttest metaobjecttest.cpp)
+ target_link_libraries(
+-    metaobjecttest gammaray_core
++    metaobjecttest Qt::CorePrivate gammaray_core
+ )
+ 
+ if(NOT GAMMARAY_CLIENT_ONLY_BUILD)
+@@ -257,7 +257,11 @@ target_link_libraries(
+ 
+ gammaray_add_test(propertyadaptortest propertyadaptortest.cpp)
+ target_link_libraries(
+-    propertyadaptortest gammaray_core Qt::Gui gammaray_shared_test_data
++    propertyadaptortest
++    gammaray_core
++    Qt::Gui
++    Qt::CorePrivate
++    gammaray_shared_test_data
+ )
+ 
+ if(HAVE_QT_WIDGETS)
+-- 
+2.44.0
+

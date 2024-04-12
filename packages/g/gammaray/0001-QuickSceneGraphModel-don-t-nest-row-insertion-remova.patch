@@ -1,0 +1,31 @@
+From ad1d799d213ef4a0364cce2e3b19ec2c378f9173 Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Thu, 9 Nov 2023 00:49:23 +0100
+Subject: [PATCH] QuickSceneGraphModel: don't nest row insertion/removal
+ signals
+
+Fixes #826
+
+(cherry picked from commit 73049a9d15c629a012eb4826c37d5ced59d13621)
+---
+ plugins/quickinspector/quickscenegraphmodel.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/quickinspector/quickscenegraphmodel.cpp b/plugins/quickinspector/quickscenegraphmodel.cpp
+index f9989e851..438f04585 100644
+--- a/plugins/quickinspector/quickscenegraphmodel.cpp
++++ b/plugins/quickinspector/quickscenegraphmodel.cpp
+@@ -257,9 +257,9 @@ void QuickSceneGraphModel::populateFromNode(QSGNode *node, bool emitSignals)
+                     beginInsertRows(myIndex, idx, idx);
+                 m_childParentMap[*j] = node;
+                 i = childList.insert(i, *j);
+-                populateFromNode(*j, false);
+                 if (emitSignals)
+                     endInsertRows();
++                populateFromNode(*j, false);
+             }
+             ++i;
+             ++j;
+-- 
+2.44.0
+

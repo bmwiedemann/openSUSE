@@ -1,0 +1,42 @@
+From 14c13f437e1957e36db4c0f3bd22e25e711e20d2 Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Thu, 9 Nov 2023 00:52:24 +0100
+Subject: [PATCH] Fix two issues in  ObjectEnumModel, found by
+ QAbstractItemModelTester
+
+- only column 0 has children
+- parent(invalid index) should be invalid index
+
+(cherry picked from commit 13abaef3b2bf7f31ff35dc16ce7820dc4ba5a8a9)
+---
+ core/objectenummodel.cpp | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/core/objectenummodel.cpp b/core/objectenummodel.cpp
+index f52288ed1..4e764ff1c 100644
+--- a/core/objectenummodel.cpp
++++ b/core/objectenummodel.cpp
+@@ -33,7 +33,7 @@ int ObjectEnumModel::rowCount(const QModelIndex &parent) const
+ {
+     if (!parent.isValid())
+         return SuperClass::rowCount(parent);
+-    if (parent.parent().isValid())
++    if (parent.parent().isValid() || parent.column() > 0)
+         return 0;
+     const QMetaEnum e = m_metaObject->enumerator(parent.row());
+     return e.keyCount();
+@@ -93,8 +93,9 @@ QModelIndex GammaRay::ObjectEnumModel::index(int row, int column, const QModelIn
+ 
+ QModelIndex GammaRay::ObjectEnumModel::parent(const QModelIndex &child) const
+ {
+-    // note: Qt4 doesn't have qintptr
+-    if (static_cast<qptrdiff>(child.internalId()) == -1)
++    if (!child.isValid())
++        return {};
++    if (static_cast<qintptr>(child.internalId()) == -1)
+         return SuperClass::parent(child);
+     return SuperClass::index(child.internalId(), 0, QModelIndex());
+ }
+-- 
+2.44.0
+

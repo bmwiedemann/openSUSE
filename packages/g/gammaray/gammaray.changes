@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr  6 20:20:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes:
+  * 0001-Fix-Qt-6.6-build.patch
+  * 0001-Repair-lack-of-classnames-in-Graphics-Scenes-or-Styl.patch
+  * 0001-QuickSceneGraphModel-don-t-nest-row-insertion-remova.patch
+  * 0001-Fix-gcc-13-warnings-about-references-to-temporaries.patch
+  * 0001-Fix-3-bugs-detected-by-QAbstractItemModelTester.patch
+  * 0001-Fix-two-issues-in-ObjectEnumModel-found-by-QAbstract.patch
+  * 0001-2-more-QAbstractItemModelTester-fixes.patch
+  * 0001-Unbreak-recursive-filtering-in-ObjectIdsFilterProxyM.patch
+  * 0001-Enable-building-with-Qt-6.7.patch
+  * 0001-Fix-build-on-6.7-for-after-QDeferredDeleteEvent-expo.patch
+
+-------------------------------------------------------------------
 Sat Nov 25 23:06:34 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add dependency for the matching shared libraries

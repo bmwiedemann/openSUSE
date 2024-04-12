@@ -1,0 +1,62 @@
+From f7bf40db5cd70972ca0597d096ca67c5a0b2a7b9 Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Fri, 10 Nov 2023 11:29:43 +0100
+Subject: [PATCH] 2 more QAbstractItemModelTester fixes
+
+- RemoteModel: parent(invalid) should be invalid
+- Delay restoring the QHeaderView until fully finishing the current
+  change
+
+Otherwise we got a "ChangeInFlight" assert because QHeaderView
+ends up calling QSFPM::sort() which emits layoutAboutToBeChanged,
+but the model tester hasn't seen the columnsInserted signal yet,
+when QHeaderView got it first.
+
+(cherry picked from commit 048b0493bd4e21f0d55bdd78468bd1cdaa016131)
+---
+ client/remotemodel.cpp | 4 +++-
+ ui/uistatemanager.cpp  | 6 +++++-
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/client/remotemodel.cpp b/client/remotemodel.cpp
+index dc51a8366..9e0ff3ba9 100644
+--- a/client/remotemodel.cpp
++++ b/client/remotemodel.cpp
+@@ -136,6 +136,8 @@ QModelIndex RemoteModel::index(int row, int column, const QModelIndex &parent) c
+ 
+ QModelIndex RemoteModel::parent(const QModelIndex &index) const
+ {
++    if (!index.isValid())
++        return {};
+     Node *currentNode = nodeForIndex(index);
+     Q_ASSERT(currentNode);
+     if (currentNode == m_root || currentNode->parent == m_root)
+@@ -158,7 +160,7 @@ int RemoteModel::rowCount(const QModelIndex &index) const
+         if (node->columnCount < 0) // not yet requested vs. in the middle of insertion
+             requestRowColumnCount(index);
+     }
+-    return qMax(0, node->rowCount); // if requestRowColumnCount is synchronoous, ie. changes rowCount (as in simple unit test), returning 0 above would cause ModelTest to see inconsistent data
++    return qMax(0, node->rowCount); // if requestRowColumnCount is synchronous, ie. changes rowCount (as in simple unit test), returning 0 above would cause ModelTest to see inconsistent data
+ }
+ 
+ int RemoteModel::columnCount(const QModelIndex &index) const
+diff --git a/ui/uistatemanager.cpp b/ui/uistatemanager.cpp
+index 07c12ae91..988b6b18e 100644
+--- a/ui/uistatemanager.cpp
++++ b/ui/uistatemanager.cpp
+@@ -555,7 +555,11 @@ void UIStateManager::saveHeaderState(QHeaderView *header)
+ 
+ void UIStateManager::headerSectionCountChanged()
+ {
+-    restoreHeaderState(qobject_cast<QHeaderView *>(sender()));
++    auto headerView = qobject_cast<QHeaderView *>(sender());
++    // Delay the call to restoreHeaderState to avoid multiple changes in flight at the QAIM level
++    // E.g. we might be here because of columnsInserted() (which just finished, but not all receivers were told yet)
++    // and restoring will sort() the model, which will emit layoutChanged(). Separate the two so QAbstractItemModelTester doesn't abort.
++    QMetaObject::invokeMethod(this, "restoreHeaderState", Qt::QueuedConnection, Q_ARG(QHeaderView *, headerView));
+ }
+ 
+ void UIStateManager::widgetResized(QWidget *widget)
+-- 
+2.44.0
+

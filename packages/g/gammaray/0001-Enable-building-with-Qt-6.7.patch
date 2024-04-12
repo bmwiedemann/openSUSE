@@ -1,0 +1,27 @@
+From 9674e01aa787e2168b9b983dec14db9df875986b Mon Sep 17 00:00:00 2001
+From: Matt Aber <matt.aber@kdab.com>
+Date: Mon, 5 Feb 2024 14:41:24 -0500
+Subject: [PATCH] Enable building with Qt 6.7
+
+(packager note: merged with upstream commit 45e025e3329d3be691ce80796315eb62dae60c66)
+---
+ core/metaobjectrepository.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/core/metaobjectrepository.cpp b/core/metaobjectrepository.cpp
+index bf4f4a5..5ae11c0 100644
+--- a/core/metaobjectrepository.cpp
++++ b/core/metaobjectrepository.cpp
+@@ -135,7 +135,9 @@ void MetaObjectRepository::initQObjectTypes()
+     MO_ADD_PROPERTY_RO(QDateTime, isNull);
+     MO_ADD_PROPERTY_RO(QDateTime, isValid);
+     MO_ADD_PROPERTY_RO(QDateTime, offsetFromUtc);
++#if QT_VERSION < QT_VERSION_CHECK(6, 7, 0)
+     MO_ADD_PROPERTY(QDateTime, timeZone, setTimeZone);
++#endif
+ 
+     MO_ADD_METAOBJECT0(QTimeZone);
+     MO_ADD_PROPERTY_RO(QTimeZone, comment);
+-- 
+2.44.0
+

@@ -1,0 +1,50 @@
+From 6b46413d04579cb2159a77b01e83bca148899626 Mon Sep 17 00:00:00 2001
+From: David Faure <david.faure@kdab.com>
+Date: Thu, 9 Nov 2023 20:13:28 +0100
+Subject: [PATCH] Fix 3 bugs detected by QAbstractItemModelTester
+
+(cherry picked from commit cc9af5742ef075d1f7dd633751b80154073ea23f)
+---
+ core/paintbuffermodel.cpp             | 4 ++--
+ plugins/modelinspector/modelmodel.cpp | 3 +++
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/core/paintbuffermodel.cpp b/core/paintbuffermodel.cpp
+index 096d40d3f..7bfa5826b 100644
+--- a/core/paintbuffermodel.cpp
++++ b/core/paintbuffermodel.cpp
+@@ -423,7 +423,7 @@ int PaintBufferModel::columnCount(const QModelIndex &parent) const
+ 
+ int PaintBufferModel::rowCount(const QModelIndex &parent) const
+ {
+-    if (!m_privateBuffer)
++    if (!m_privateBuffer || parent.column() > 0)
+         return 0;
+     if (parent.isValid()) {
+         const auto cmd = m_privateBuffer->commands.at(parent.row());
+@@ -441,7 +441,7 @@ QModelIndex PaintBufferModel::index(int row, int column, const QModelIndex &pare
+ 
+ QModelIndex PaintBufferModel::parent(const QModelIndex &child) const
+ {
+-    if (child.internalId() == TopLevelId)
++    if (!child.isValid() || child.internalId() == TopLevelId)
+         return {};
+     return createIndex(child.internalId(), 0, TopLevelId);
+ }
+diff --git a/plugins/modelinspector/modelmodel.cpp b/plugins/modelinspector/modelmodel.cpp
+index 55fa7647a..40319cb57 100644
+--- a/plugins/modelinspector/modelmodel.cpp
++++ b/plugins/modelinspector/modelmodel.cpp
+@@ -48,6 +48,9 @@ int ModelModel::rowCount(const QModelIndex &parent) const
+ 
+ QModelIndex ModelModel::parent(const QModelIndex &child) const
+ {
++    if (!child.isValid())
++        return {};
++
+     QAbstractItemModel *model = static_cast<QAbstractItemModel *>(child.internalPointer());
+     Q_ASSERT(model);
+     if (m_models.contains(model))
+-- 
+2.44.0
+

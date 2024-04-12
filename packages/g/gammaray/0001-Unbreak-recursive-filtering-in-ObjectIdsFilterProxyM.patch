@@ -1,0 +1,120 @@
+From 19b2fcddc0013e3fc628acfc1997edc7337aa525 Mon Sep 17 00:00:00 2001
+From: Milian Wolff <milian.wolff@kdab.com>
+Date: Mon, 4 Dec 2023 15:11:55 +0100
+Subject: [PATCH] Unbreak recursive filtering in ObjectIdsFilterProxyModel and
+ more
+
+The code tried to be compatible with older Qt and newer but failed
+to do so correctly. When a model only implemented `acceptRow` then
+that was never called by newer Qt.
+
+Instead, enforce all models to override `acceptRow` and prevent them
+from overriding `filterAcceptsRow` - instead add the dance there to
+make the code compatible to the old KRecursiveFilterProxyModel.
+
+This unbreaks the "ctrl+shift+click" picker dialog to not show all
+objects but really only those that are visible at the given position.
+
+(cherry picked from commit 4e5205c228769ddb6b5a0fc84280aa05783b70f8)
+---
+ common/recursiveproxymodelbase.cpp                 |  9 +++++++++
+ common/recursiveproxymodelbase.h                   | 14 ++++++--------
+ core/tools/resourcebrowser/resourcefiltermodel.cpp |  4 ++--
+ core/tools/resourcebrowser/resourcefiltermodel.h   |  2 +-
+ 4 files changed, 18 insertions(+), 11 deletions(-)
+
+diff --git a/common/recursiveproxymodelbase.cpp b/common/recursiveproxymodelbase.cpp
+index 0ce52a168..c29cb30eb 100644
+--- a/common/recursiveproxymodelbase.cpp
++++ b/common/recursiveproxymodelbase.cpp
+@@ -12,7 +12,16 @@
+ */
+ #include "recursiveproxymodelbase.h"
+ 
++#if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
+ bool RecursiveProxyModelBase::acceptRow(int sourceRow, const QModelIndex &sourceParent) const
+ {
++    // delegate to base class
+     return QSortFilterProxyModel::filterAcceptsRow(sourceRow, sourceParent);
+ }
++#endif
++
++bool RecursiveProxyModelBase::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
++{
++    // delegate to acceptRow
++    return acceptRow(sourceRow, sourceParent);
++}
+diff --git a/common/recursiveproxymodelbase.h b/common/recursiveproxymodelbase.h
+index 82cc66dd7..cb716f081 100644
+--- a/common/recursiveproxymodelbase.h
++++ b/common/recursiveproxymodelbase.h
+@@ -22,7 +22,7 @@
+  * NOTE: This class can be removed once we raise our minimum Qt version to 5.10 or above
+  */
+ 
+-#if QT_VERSION < QT_VERSION_CHECK(6, 6, 0)
++#if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)
+ #include <kde/krecursivefilterproxymodel.h>
+ #define GAMMARAY_PROXY_BASE_CLASS KRecursiveFilterProxyModel
+ #else
+@@ -30,12 +30,7 @@
+ #define GAMMARAY_PROXY_BASE_CLASS QSortFilterProxyModel
+ #endif
+ 
+-class GAMMARAY_COMMON_EXPORT RecursiveProxyModelBase : public
+-#if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)
+-                                                       KRecursiveFilterProxyModel
+-#else
+-                                                       QSortFilterProxyModel
+-#endif
++class GAMMARAY_COMMON_EXPORT RecursiveProxyModelBase : public GAMMARAY_PROXY_BASE_CLASS
+ {
+ public:
+ #if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)
+@@ -46,8 +41,11 @@ public:
+     {
+         setRecursiveFilteringEnabled(true);
+     }
+-#endif
+ 
+     virtual bool acceptRow(int sourceRow, const QModelIndex &sourceParent) const;
++#endif
++
++    // compat: always override acceptRow in subclasses
++    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const final;
+ };
+ #endif
+diff --git a/core/tools/resourcebrowser/resourcefiltermodel.cpp b/core/tools/resourcebrowser/resourcefiltermodel.cpp
+index 7e1ad8e55..cad4a5394 100644
+--- a/core/tools/resourcebrowser/resourcefiltermodel.cpp
++++ b/core/tools/resourcebrowser/resourcefiltermodel.cpp
+@@ -24,11 +24,11 @@ ResourceFilterModel::ResourceFilterModel(QObject *parent)
+ {
+ }
+ 
+-bool ResourceFilterModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
++bool ResourceFilterModel::acceptRow(int source_row, const QModelIndex &source_parent) const
+ {
+     const QModelIndex index = sourceModel()->index(source_row, 0, source_parent);
+     const QString path = index.data(ResourceModel::FilePathRole).toString();
+     if (path == QLatin1String(":/gammaray") || path.startsWith(QLatin1String(":/gammaray/")))
+         return false;
+-    return RecursiveProxyModelBase::filterAcceptsRow(source_row, source_parent);
++    return RecursiveProxyModelBase::acceptRow(source_row, source_parent);
+ }
+diff --git a/core/tools/resourcebrowser/resourcefiltermodel.h b/core/tools/resourcebrowser/resourcefiltermodel.h
+index 2e9d8c430..5bdbeedf0 100644
+--- a/core/tools/resourcebrowser/resourcefiltermodel.h
++++ b/core/tools/resourcebrowser/resourcefiltermodel.h
+@@ -22,7 +22,7 @@ class ResourceFilterModel : public RecursiveProxyModelBase
+     Q_OBJECT
+ public:
+     explicit ResourceFilterModel(QObject *parent = nullptr);
+-    bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;
++    bool acceptRow(int source_row, const QModelIndex &source_parent) const override;
+ };
+ }
+ 
+-- 
+2.44.0
+

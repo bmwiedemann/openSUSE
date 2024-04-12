@@ -200,4 +200,12 @@
     <comment>- Add dependency for the matching shared libraries (forwarded request 1128832 from Vogtinator)</comment>
     <requestid>1128880</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>4ff9f1e6802ee6d70f0fb11332785dd8</srcmd5>
+    <version>3.0.0</version>
+    <time>1712936050</time>
+    <user>anag+factory</user>
+    <comment>Cummulative fixes for gammaray</comment>
+    <requestid>1166876</requestid>
+  </revision>
 </revisionlist>
