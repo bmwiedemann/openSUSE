@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 12 12:03:53 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- Don't wipe everything in /var/log, only remove log files (this omits directories owned by packages)
+
+-------------------------------------------------------------------
 Thu Apr 11 06:57:38 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Pin rust & cargo version to prevent zypper up from upgrading to a newer rust
