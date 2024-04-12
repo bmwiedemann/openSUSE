@@ -545,4 +545,24 @@
 - Fix rpmlint warning no-%check-section.</comment>
     <requestid>1164183</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d974e35e7c9f1633b0f5d6883aaabe30</srcmd5>
+    <version>1.17.1</version>
+    <time>1712936082</time>
+    <user>anag+factory</user>
+    <comment>- Update to v1.17.1:
+  * foot.ini options:
+    * Added cursor.unfocused-style option to control the look of the cursor
+      when the window is not focused.
+    * Added key-bindings.quit option.
+  * Fixed syslog logging from foot-server to respect log level option.
+  * Fixed terminal to not shut down until the client application exits,
+    even if the client application closed the PTY.
+  * When closing the window, foot now sends SIGHUP to the client application
+    before SIGTERM and SIGKILL. Previously it only sent SIGTERM and SIGKILL.
+  * Fixed crash from malformed DECRQSS request.
+  * Added new themes - dracula-iterm, noirblaze, xterm.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.17.1 for more details.</comment>
+    <requestid>1166917</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 11 16:33:21 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.17.1:
+  * foot.ini options:
+    * Added cursor.unfocused-style option to control the look of the cursor
+      when the window is not focused.
+    * Added key-bindings.quit option.
+  * Fixed syslog logging from foot-server to respect log level option.
+  * Fixed terminal to not shut down until the client application exits,
+    even if the client application closed the PTY.
+  * When closing the window, foot now sends SIGHUP to the client application
+    before SIGTERM and SIGKILL. Previously it only sent SIGTERM and SIGKILL.
+  * Fixed crash from malformed DECRQSS request.
+  * Added new themes - dracula-iterm, noirblaze, xterm.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.17.1 for more details.
+
+-------------------------------------------------------------------
 Tue Apr  2 17:08:21 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
 
 - Fix rpmlint warning no-%check-section.
