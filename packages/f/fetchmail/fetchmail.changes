@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr  4 09:01:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.4.38:
+  * Tighten OpenSSL and wolfSSL version requirements again. See
+    README.SSL.
+  * Distributors providing older versions that they backport
+    security fixes for may want to patch socket.c but remember
+    to redirect support to your distribution's support channels.
+    The fetchmail maintainer only supports functionally
+    unmodified builds with publicly available SSL/TLS library
+    versions.
+  * fetchmail will refuse to build against OpenSSL 1.0.2 older
+    than 1.0.2u, or wolfSSL older than 5.6.2. It will warn about
+    OpenSSL older than 3.0.9, or between 3.1.0 and 3.1.4,
+    or wolfSSL older than 5.6.6.
+
+-------------------------------------------------------------------
 Wed Jan 17 00:33:48 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch fetchmailconf-no-more-future.patch:
@@ -7,21 +24,21 @@ Wed Jan 17 00:33:48 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Wed Mar  1 17:15:06 UTC 2023 - David Anes <david.anes@suse.com>
 
-- Update to 6.4.37: 
+- Update to 6.4.37:
   * TRANSLATIONS: language translations were updated:
     - sr [Serbian]
 
 -------------------------------------------------------------------
 Tue Feb  7 15:44:28 UTC 2023 - David Anes <david.anes@suse.com>
 
-- Update to 6.4.36: 
+- Update to 6.4.36:
   * TRANSLATIONS: language translations were updated:
     - cs, es, fr, ja, pl, ro, sq, sv
-    
+
 -------------------------------------------------------------------
 Sat Jan 21 15:14:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- disable opie support 
+- disable opie support
 
 -------------------------------------------------------------------
 Thu Jan  5 21:24:47 UTC 2023 - David Anes <david.anes@suse.com>
@@ -42,7 +59,7 @@ Mon Oct 17 09:33:53 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update to 6.4.34:
   * Bugfixes:
-    - When an SMTP receiver refuses delivery, a message would be 
+    - When an SMTP receiver refuses delivery, a message would be
       deleted from the mail store in spite of a softbounce option
       that is enabled.
 
@@ -63,7 +80,7 @@ Thu Sep  1 07:14:57 UTC 2022 - Matej Cepl <mcepl@suse.com>
 Wed Aug 31 15:47:06 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration to /usr/etc: Saving user changed configuration files
-  in /etc and restoring them while an RPM update. 
+  in /etc and restoring them while an RPM update.
 
 -------------------------------------------------------------------
 Sat Jul 30 19:10:08 UTC 2022 - Matej Cepl <mcepl@suse.com>
@@ -82,10 +99,10 @@ Mon Jul 18 08:26:23 UTC 2022 - David Anes <david.anes@suse.com>
 
 - update to 6.4.31
   * Bugfixes:
-    - Try to fix ./configure --with-ssl=... for systems that have 
-      multiple OpenSSL versions installed.  Issues reported by 
+    - Try to fix ./configure --with-ssl=... for systems that have
+      multiple OpenSSL versions installed.  Issues reported by
       Dennis Putnam.
-    - The netrc parser now reports its errors to syslog or logfile 
+    - The netrc parser now reports its errors to syslog or logfile
       when appropriate, previously it would always log to stderr.
     - Add error checking to .netrc parser.
   * Changes:
@@ -105,15 +122,15 @@ Thu Apr 28 10:16:07 UTC 2022 - David Anes <david.anes@suse.com>
 
 - update to 6.4.30:
   * Breaking changes:
-    - Bump wolfSSL minimum required version to 5.2.0 to pull in 
+    - Bump wolfSSL minimum required version to 5.2.0 to pull in
       security fix.
   * Changes:
-    - Using OpenSSL 1.* before 1.1.1n elicits a compile-time 
+    - Using OpenSSL 1.* before 1.1.1n elicits a compile-time
       warning.
-    - Using OpenSSL 3.* before 3.0.2  elicits a compile-time 
+    - Using OpenSSL 3.* before 3.0.2  elicits a compile-time
       warning.
-    - configure.ac was tweaked in order to hopefully fix 
-      cross-compilation issues  report, and different patch 
+    - configure.ac was tweaked in order to hopefully fix
+      cross-compilation issues  report, and different patch
       suggested
   * Translations.:
     - ro: Updated Romanian translation.
@@ -135,7 +152,7 @@ Thu Mar 10 07:15:19 UTC 2022 - David Anes <david.anes@suse.com>
 Fri Feb 25 18:13:26 UTC 2022 - David Anes <david.anes@suse.com>
 
 - update to 6.4.27:
-  * Bump wolfSSL minimum required version to 5.1.1 to pull in 
+  * Bump wolfSSL minimum required version to 5.1.1 to pull in
     security fix.
   * Updated romanian translation.
 
@@ -143,17 +160,17 @@ Fri Feb 25 18:13:26 UTC 2022 - David Anes <david.anes@suse.com>
 Wed Jan 12 10:39:18 UTC 2022 - David Anes <david.anes@suse.com>
 
 - fix [bsc#1194203]:
-  * Always create fetchmail group, even if the user is already 
-    present, as a leftover from Leap 15.2 upgrade. This may happen 
-    also if user is messing with groups/users directly or upgrading 
-    from even an older fetchmail versions. 
+  * Always create fetchmail group, even if the user is already
+    present, as a leftover from Leap 15.2 upgrade. This may happen
+    also if user is messing with groups/users directly or upgrading
+    from even an older fetchmail versions.
 
 -------------------------------------------------------------------
 Mon Dec 27 16:50:06 UTC 2021 - David Anes <david.anes@suse.com>
 
 - update to 6.4.26:
-  * When using wolfSSL 5.0.0, work around a bug that appears to hit 
-    wolfSSL when receiving handshake records while still in 
+  * When using wolfSSL 5.0.0, work around a bug that appears to hit
+    wolfSSL when receiving handshake records while still in
     SSL_peek(). Workaround is to read 1 byte and cache it, then
     call SSL_peek() again. This affects only some servers.
   * New serbian translation.
@@ -173,11 +190,11 @@ Sat Dec 11 23:23:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Bison 3.8 dropped yytoknum altogether, breaking compilation due to a
     warning workaround. Remove the cast of yytoknum to void.  This may cause
     a compiler warning to reappear with older Bison versions.
-  * OpenSSL 1.0.2: Workaround for systems that keep the expired DST Root CA X3 
-    certificate in its trust store because OpenSSL by default prefers the 
+  * OpenSSL 1.0.2: Workaround for systems that keep the expired DST Root CA X3
+    certificate in its trust store because OpenSSL by default prefers the
     untrusted certificate and fails.
   * For common ssh-based IMAP PREAUTH setups (i. e. those that use a plugin
-    - no matter its contents - and that set auth ssh), change the STARTTLS 
+    - no matter its contents - and that set auth ssh), change the STARTTLS
     error message to suggest sslproto '' instead.
     This is a commonly reported issue after the CVE-2021-39272 fix in 6.4.22.
 - drop fetchmail-bison-3.8.patch (upstream)
@@ -325,7 +342,7 @@ Sat May  8 19:55:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.4.19:
   * fetchmailconf: properly catch and report option parsing errors
-  * LMTP: do not try to validate the last component of a UNIX-domain LMTP socket 
+  * LMTP: do not try to validate the last component of a UNIX-domain LMTP socket
     as though it were a TCP port.
 
 -------------------------------------------------------------------
@@ -340,7 +357,7 @@ Tue Apr  6 02:13:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
     for -d option. This is to fail more gracefully on incomplete installs.
   * TLS code: remove OPENSSL_NO_DEPRECATED macros to avoid portability issues
     with OpenSSL v3 - these are for development purposes, not production.
-  * TLS futureproofing: use SSL_use_PrivateKey_file instead of 
+  * TLS futureproofing: use SSL_use_PrivateKey_file instead of
     SSL_use_RSAPrivateKey_file, the latter will be deprecated with OpenSSL v3,
     and the user's key file might be something else than RSA.
   * IMAP client: it used to leak memory for username and password when trying
@@ -378,15 +395,15 @@ Sat Dec 19 09:52:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 6.4.14:
   * sr:    Мирослав Николић (Miroslav Nikolić) [Serbian]
-  * Errors about lock file (= pidfile) creation could be lost in daemon 
-  configurations (-d option, or set daemon) when using syslog. Now they are also 
-  logged to syslog.  Found verifying a pidfile creation issue on 6.4.12 that was 
+  * Errors about lock file (= pidfile) creation could be lost in daemon
+  configurations (-d option, or set daemon) when using syslog. Now they are also
+  logged to syslog.  Found verifying a pidfile creation issue on 6.4.12 that was
   previously reported by Alex Hall of Automatic Distributors.
   * If the lock file cannot be removed (no write permission on directory), try
   to truncate it, and if that fails, report error.
   * If the pidfile was non-default, fetchmail -q or --quit would malfunction and
-  claim no other fetchmail were running, because it did not read the 
-  configuration files or merge the command line options, thus it would look for 
+  claim no other fetchmail were running, because it did not read the
+  configuration files or merge the command line options, thus it would look for
   the PID in the wrong file.
 
 -------------------------------------------------------------------
@@ -405,7 +422,7 @@ Fri Sep  4 20:22:16 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   # REGRESSION FIX:
   * configure: fetchmail 6.4.9 and 6.4.10 would miss checking for TLS v1.2 and
   TLS v1.3 support if AC_LIB_LINKFLAGS came up with something such as
-  /path/to/libssl.so, rather than -lssl. (For instance on FreeBSD) 
+  /path/to/libssl.so, rather than -lssl. (For instance on FreeBSD)
   * configure: fetchmail 6.4.9's configure was unable to pick up OpenSSL
   if it wasn't announced by pkg-config, for instance, on FreeBSD
 
@@ -428,7 +445,7 @@ Mon Aug 24 12:59:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   * Add a test program fm_realpath, and a t.realpath script, neither to be
     installed. These will test resolution of the current working directory.
   * TRANSLATION UPDATES
-  * Plug memory leaks when parts of the configuration (defaults, rcfile, command 
+  * Plug memory leaks when parts of the configuration (defaults, rcfile, command
     line) override one another.
   * fetchmail terminated the placeholder command string too late and included
     garbage from the heap at the end of the string. Workaround: don't use place-
@@ -436,27 +453,27 @@ Mon Aug 24 12:59:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
     Gitlab merge request !5 in order to fix an input buffer overrun.
     Faulty commit 418cda65f752e367fa663fd13884a45fcbc39ddd.
   * Fetchmail now checks for errors when trying to read the .idfile
-  * Fetchmail's error messages that reports that the defaults entry isn't the 
+  * Fetchmail's error messages that reports that the defaults entry isn't the
     first was made more precise. It could be misleading if there was a poll or
     skip statement before the defaults.
   * Fetchmail documentation was updated to require OpenSSL 1.1.1.
     OpenSSL 1.0.2 reached End Of Life status at the end of the year 2019.
-    Fetchmail will tolerate, but warn about, 1.0.2 for now on the assumption that 
+    Fetchmail will tolerate, but warn about, 1.0.2 for now on the assumption that
     distributors backport security fixes as the need arises.
     Fetchmail will also warn if another SSL library that is API-compatible
     with OpenSSL lacks TLS v1.3 support.
   * If the trust anchor is missing, fetchmail refers the user to README.SSL.
-  * The AC_DECLS(getenv) check was removed, its only user was broken and not 
+  * The AC_DECLS(getenv) check was removed, its only user was broken and not
     accounting for that AC_DECLS always defines HAVE_DECL_... to 0 or 1, so
-    fetchmail never declared a missing getenv() symbol (it was testing with 
+    fetchmail never declared a missing getenv() symbol (it was testing with
     #ifdef).  Remove the backup declaration. getenv is mandated by SUSv2 anyways.
-  * fetchmailconf now supports Python 3 and currently requires the "future" 
+  * fetchmailconf now supports Python 3 and currently requires the "future"
     package, see https://pypi.org/project/future/.
-  * fetchmailconf: The minimum supported version is now Python 2.7.13, but it is 
+  * fetchmailconf: The minimum supported version is now Python 2.7.13, but it is
     recommended to use at least 2.7.16 (due to its massive SSL updates).
     Older Python versions may check SSL certificates not strictly enough,
     which may cause fetchmail to complain later, if the certificate verify fails.
-  * fetchmailconf now autoprobes SSL-wrapped connections (ports 993 and 995 for 
+  * fetchmailconf now autoprobes SSL-wrapped connections (ports 993 and 995 for
     IMAP and POP3) as well and by preference.
   * fetchmailconf now defaults newly created users to "ssl" if either of the
     existing users sets ssl, or if the server has freshly been probed and
@@ -464,14 +481,14 @@ Mon Aug 24 12:59:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
     There is a caveat: adding a user to an existing server without probing it
     again may skip adding ssl. (This does not prevent STARTTLS.)
   * Fix three bugs in fetchmail.man (one unterminated string to .IP macro, one
-    line that ran into a .PP macro, .TH date format), and remove one .br request 
+    line that ran into a .PP macro, .TH date format), and remove one .br request
     from inside the table, which is unsupported by FreeBSD 12's mandoc(1) formatter.
   * Further man page fixes and additions by Chris Mayo and Gregor Zattler.
-  * When evaluating the need for STARTTLS in non-default configurations (SSL 
-    certificate validation turned off), fetchmail would only consider --sslproto 
+  * When evaluating the need for STARTTLS in non-default configurations (SSL
+    certificate validation turned off), fetchmail would only consider --sslproto
     tls1 as requiring STARTTLS, now all non-empty protocol versions do.
   * fetchmailconf now properly writes "no sslcertck" if sslcertck is disabled.
-  * fetchmailconf now catches and reports OS errors (including DNS errors) when 
+  * fetchmailconf now catches and reports OS errors (including DNS errors) when
     autoprobing.
   * fetchmailconf received a host of other bugfixes, see the Git commit log.
 
@@ -559,7 +576,7 @@ Fri Oct  4 12:41:35 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
   * fetchmail, when setting up TLS connections, now uses SSL_set_tlsext_host_name()
     to set up the SNI (Server Name Indication). Some servers (for instance
     googlemail) require SNI when using newer SSL protocols.
-  * Fetchmail now sets the expected hostname through OpenSSL 1.0.2's new 
+  * Fetchmail now sets the expected hostname through OpenSSL 1.0.2's new
     X509_VERIFY_PARAM_set1_host() function to enable OpenSSL's native certificate
     verification features.
   * fetchmail will drop the connection when fetching with IMAP and receiving an
@@ -606,7 +623,7 @@ Fri Oct  4 12:41:35 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
     (See sourceforge.net bug #780933)
   * Fetchmail currently uses 31-bit signed integers in several places
     where unsigned and/or wider types should have been used, for instance,
-    for mailbox sizes, and misreports sizes of 2 GibiB and beyond. 
+    for mailbox sizes, and misreports sizes of 2 GibiB and beyond.
     Fixing this requires C89 compatibility to be relinquished.
   * BSMTP is mostly untested and errors can cause corrupt output.
   * Sun Workshop 6 (SPARC) is known to miscompile the configuration file lexer in
@@ -652,14 +669,14 @@ Thu Mar 15 17:12:10 UTC 2018 - pmonrealgonzalez@suse.com
 -------------------------------------------------------------------
 Fri Mar  2 19:32:52 UTC 2018 - pmonrealgonzalez@suse.com
 
-- By default, the status messages are redirected to 
+- By default, the status messages are redirected to
   /var/log/fetchmail. The syslog option or no-logging are also
   available. (bsc#1033081)
 
 -------------------------------------------------------------------
 Thu Nov 23 13:43:10 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -878,7 +895,7 @@ Tue Aug 30 09:09:49 UTC 2011 - puzel@suse.com
 -------------------------------------------------------------------
 Mon Aug 22 09:12:13 UTC 2011 - puzel@novell.com
 
-- update to fetchmail-6.3.21 
+- update to fetchmail-6.3.21
  - critical bug fix
   - The IMAP client no longer inserts NUL bytes into the last line
     of a message when it is not closed with a LF or CRLF sequence.
@@ -959,7 +976,7 @@ Mon Dec 13 11:25:12 UTC 2010 - puzel@novell.com
 -------------------------------------------------------------------
 Mon Oct 11 08:37:09 UTC 2010 - puzel@novell.com
 
-- update to fetchmail-6.3.18 
+- update to fetchmail-6.3.18
  # SECURITY IMPROVEMENTS TO DEFANG X.509 CERTIFICATE ABUSE
   * Fetchmail now only accepts wildcard certificate common names
     and subject alternative names if they start with "*.". Previous
@@ -999,7 +1016,7 @@ Tue Aug 17 14:20:47 UTC 2010 - puzel@novell.com
 - update to fetchmail-6.3.17
  # SECURITY FIX
   * CVE-2010-1167: Fetchmail before release 6.3.17 did not properly
-    sanitize external input (mail headers and UID). 
+    sanitize external input (mail headers and UID).
  # FEATURES
   * Fetchmail now supports a --sslcertfile <file> option to
     specify a "CA bundle" file (a file that contains trusted CA
@@ -1023,33 +1040,33 @@ Tue Aug 17 14:20:47 UTC 2010 - puzel@novell.com
 -------------------------------------------------------------------
 Mon Apr 19 12:36:27 UTC 2010 - puzel@novell.com
 
-- add fetchmail-SA-2010-02.patch (bnc#597673) 
+- add fetchmail-SA-2010-02.patch (bnc#597673)
 
 -------------------------------------------------------------------
 Wed Apr 14 16:00:29 UTC 2010 - puzel@novell.com
 
-- make it possible change default fetchmailrc location using new 
-  sysconfig option 
+- make it possible change default fetchmailrc location using new
+  sysconfig option
 - do not change owner of fetchmailrc in post
 
 -------------------------------------------------------------------
 Wed Apr  7 11:33:04 UTC 2010 - puzel@novell.com
 
-- update to fetchmail-6.3.16 
+- update to fetchmail-6.3.16
  # BUG FIX
-  * Fix --interface option, broken in 6.3.15. 
+  * Fix --interface option, broken in 6.3.15.
  # CHANGE
   * Call OpenSSL_add_all_algorithms(). This is needed to support
-    non-mandatory algorithms in certificates. 
+    non-mandatory algorithms in certificates.
 
 -------------------------------------------------------------------
 Mon Mar 29 09:46:25 UTC 2010 - puzel@novell.com
 
-- update to fetchmail-6.3.15 
+- update to fetchmail-6.3.15
  # FEATURE
   * Fetchmail now supports a bad-header command line or rcfile
     option that takes exactly one argument, accept or reject
-    (default). 
+    (default).
  # BUG FIXES
   * In the rcfile, recognize "local" as abbreviation for
     "localdomains", as documented.
@@ -1062,16 +1079,16 @@ Mon Mar 29 09:46:25 UTC 2010 - puzel@novell.com
   * Set global flags in a consistent manner. Make --nosoftbounce and
     --nobounce work from command line (these used to work in rcfiles).
     Reported and fix confirmed working by N.J. Mann. (Sunil Shetye)
- 
+
 -------------------------------------------------------------------
 Fri Feb  5 11:32:55 UTC 2010 - puzel@novell.com
 
-- update to fetchmail-6.3.14 
+- update to fetchmail-6.3.14
  # SECURITY FIXES
   * SSL/TLS certificate information is now also reported properly
     on computers that consider the "char" type signed. Fixes
     malloc() buffer overrun.  Workaround for older versions: do not
-    use verbose mode.  
+    use verbose mode.
  # BUG FIXES
   * The IMAP client no longer skips messages from several IMAP
      servers including Dovecot if fetchmail's "idle" is in use.
@@ -1099,7 +1116,7 @@ Fri Feb  5 11:32:55 UTC 2010 - puzel@novell.com
     relevant because fetchmail would only read up to the maximum
     buffer size and leave the remainder of the string unread, going
     out of synch afterwards.
-  * Stricter validation of IMAP responses containing byte or 
+  * Stricter validation of IMAP responses containing byte or
     message counts.
 - fetchmail 6.3.13 :
  # REGRESSION FIXES
@@ -1139,7 +1156,7 @@ Fri Nov 13 14:10:16 UTC 2009 - puzel@novell.com
     message codes 400..599 and treat all of these as temporary error. This would
     cause messages to be left on the server even if softbounce was turned off.
     Reported by Thomas Jarosch.
-- drop fetchmail-6.3.11-fix-invalid-free.patch (fixed upstream) 
+- drop fetchmail-6.3.11-fix-invalid-free.patch (fixed upstream)
 
 
 -------------------------------------------------------------------
@@ -1170,7 +1187,7 @@ Thu Aug  6 11:35:50 UTC 2009 - puzel@novell.com
     drop the connection even if --sslcertck is not used, because NUL is not a
     valid character in legitimate DNS names.
     See fetchmail-SA-2009-01.txt for details, including a minimal patch.
-  
+
   # BUGFIXES
   * Remove the spurious message "message delimiter found while scanning headers".
     RFC-5322 syntax states that the delimiter is part of the body, and the body is
@@ -1182,7 +1199,7 @@ Thu Aug  6 11:35:50 UTC 2009 - puzel@novell.com
 -------------------------------------------------------------------
 Fri Jul  3 09:58:22 CEST 2009 - puzel@novell.com
 
-- update to 6.3.10 (final version) 
+- update to 6.3.10 (final version)
 
 -------------------------------------------------------------------
 Mon Jun  1 15:00:06 CEST 2009 - puzel@suse.cz
@@ -1270,7 +1287,7 @@ Tue Jul  1 11:53:19 CEST 2008 - puzel@suse.cz
 -------------------------------------------------------------------
 Tue Jun 17 13:20:08 CEST 2008 - puzel@suse.cz
 
-- kerberos (krb5) support enabled [bnc#353817] 
+- kerberos (krb5) support enabled [bnc#353817]
 
 -------------------------------------------------------------------
 Wed May 28 16:58:33 CEST 2008 - puzel@suse.cz
@@ -1283,23 +1300,23 @@ Thu May 22 17:44:06 CEST 2008 - puzel@suse.cz
 - fixed bnc#354291
   * caused segmentation fault when retrieving mail with long To:
     headers
-	
+
 -------------------------------------------------------------------
 Wed Apr 30 17:49:47 CEST 2008 - pcerny@suse.cz
 
-- added option to specify polling interval to init script 
+- added option to specify polling interval to init script
 
 -------------------------------------------------------------------
 Fri Mar 28 18:31:11 CET 2008 - pcerny@suse.cz
 
 - additional fix for bnc#246829
-  [fetchmail-6.3.8-starttls.patch -> 
+  [fetchmail-6.3.8-starttls.patch ->
    fetchmail-6.3.8-smtp_errors.patch]
 
 -------------------------------------------------------------------
 Wed Nov 28 14:53:25 CET 2007 - pv@suse.de
 
-- add PreReq pwdutils #327550 - yast2-mail fetchmail error 
+- add PreReq pwdutils #327550 - yast2-mail fetchmail error
 
 -------------------------------------------------------------------
 Thu Sep 27 20:50:39 CEST 2007 - pcerny@suse.de
@@ -1311,7 +1328,7 @@ Thu Sep 27 20:50:39 CEST 2007 - pcerny@suse.de
 -------------------------------------------------------------------
 Tue Sep 11 15:15:14 CEST 2007 - ro@suse.de
 
-- remove librsaref2-devel from buildrequires (unused) 
+- remove librsaref2-devel from buildrequires (unused)
 
 -------------------------------------------------------------------
 Fri Aug 31 18:09:04 CEST 2007 - pcerny@suse.cz
@@ -1346,7 +1363,7 @@ Thu Apr 19 14:15:51 CEST 2007 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Fri Mar 30 02:22:36 CEST 2007 - ro@suse.de
 
-- added pwdutils to buildreq 
+- added pwdutils to buildreq
 
 -------------------------------------------------------------------
 Tue Feb  6 15:01:38 CET 2007 - sbrabec@suse.cz
@@ -1448,7 +1465,7 @@ Mon Apr 25 17:13:23 CEST 2005 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Thu Feb  3 01:46:25 CET 2005 - ro@suse.de
 
-- fix build on older distributions 
+- fix build on older distributions
 
 -------------------------------------------------------------------
 Wed Jan 19 17:02:11 CET 2005 - sbrabec@suse.cz
@@ -1646,7 +1663,7 @@ Fri Jan  5 16:30:40 CET 2001 - bjacke@suse.de
 -------------------------------------------------------------------
 Wed Dec 20 16:37:10 CET 2000 - garloff@suse.de
 
-- pass --enable-NTLM to configure in order to enable M$ Exchange 
+- pass --enable-NTLM to configure in order to enable M$ Exchange
   compatible auth proto
 - explicitly specify the directories with --mandir etc ...
 - Use DESTDIR= instead of prefix to pass RPM_BUILD_ROOT
@@ -1660,7 +1677,7 @@ Mon Dec 18 15:25:28 CET 2000 - bjacke@suse.de
 -------------------------------------------------------------------
 Mon Dec 18 14:25:01 CET 2000 - ro@suse.de
 
-- Fix requires for fetchmailconf (again) 
+- Fix requires for fetchmailconf (again)
 
 -------------------------------------------------------------------
 Mon Dec 18 13:14:36 CET 2000 - bjacke@suse.de
@@ -1703,7 +1720,7 @@ Wed Mar  1 18:22:35 CET 2000 - werner@suse.de
 -------------------------------------------------------------------
 Thu Feb 24 15:24:19 CET 2000 - dipa@suse.de
 
-- update to fetchmail-5.3. update to fetchmail-5.3.00 
+- update to fetchmail-5.3. update to fetchmail-5.3.00
 
 -------------------------------------------------------------------
 Tue Feb 15 03:36:31 CET 2000 - bk@suse.de
@@ -1722,12 +1739,12 @@ Tue Feb  8 02:53:41 CET 2000 - bk@suse.de
 -------------------------------------------------------------------
 Tue Feb  1 09:23:01 CET 2000 - ro@suse.de
 
-- specfile typo 
+- specfile typo
 
 -------------------------------------------------------------------
 Tue Feb  1 00:36:53 CET 2000 - ro@suse.de
 
-- create man directory 
+- create man directory
 
 -------------------------------------------------------------------
 Mon Jan 31 19:39:32 CET 2000 - bk@suse.de
