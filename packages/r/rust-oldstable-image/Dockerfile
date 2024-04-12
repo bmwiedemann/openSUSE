@@ -50,3 +50,4 @@ RUN ln -sf $(ls /usr/bin/gcc-*|grep -P ".*gcc-[[:digit:]]+") /usr/local/bin/gcc
 # smoke test that gcc works
 RUN gcc --version
 RUN ${CC} --version
+COPY rust-and-cargo-pin.check /etc/zypp/systemCheck.d/rust-and-cargo-pin.check
