@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-iuh
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           osmo-iuh
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -140,14 +140,10 @@ if ! %make_build check; then
 %endif
 fi
 
-%post   -n libosmo-hnbap0 -p /sbin/ldconfig
-%postun -n libosmo-hnbap0 -p /sbin/ldconfig
-%post   -n libosmo-ranap7 -p /sbin/ldconfig
-%postun -n libosmo-ranap7 -p /sbin/ldconfig
-%post   -n libosmo-rua0 -p /sbin/ldconfig
-%postun -n libosmo-rua0 -p /sbin/ldconfig
-%post   -n libosmo-sabp1 -p /sbin/ldconfig
-%postun -n libosmo-sabp1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libosmo-hnbap0
+%ldconfig_scriptlets -n libosmo-ranap7
+%ldconfig_scriptlets -n libosmo-rua0
+%ldconfig_scriptlets -n libosmo-sabp1
 
 %files -n libosmo-hnbap0
 %license COPYING

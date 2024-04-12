@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 11 23:00:21 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5.1
+  * ranap_transp_layer_addr_decode2(): Fix decoding X.213 IPv4
+    address len=7
+  * iu_client: Use local variable to track conn_id
+  * iu_client: Handle empty CR and InitialUE Message in DATA.ind
+
+-------------------------------------------------------------------
 Wed Nov  1 20:41:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.5.0
