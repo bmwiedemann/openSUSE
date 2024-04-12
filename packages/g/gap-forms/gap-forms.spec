@@ -1,7 +1,7 @@
 #
 # spec file for package gap-forms
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-forms
-Version:        1.2.9
+Version:        1.2.11
 Release:        0
 Summary:        GAP: Sesquilinear and quadratic forms
 License:        GPL-2.0-or-later
@@ -35,12 +35,12 @@ This package can be used for work with sesquilinear and quadratic
 forms on finite vector spaces; objects that are used to describe
 polar spaces and classical groups. It provides:
 
-  * A way to create and use sesquilinear and quadratic forms on
-    finite vector spaces.
-  * An operation which finds an isometry between two forms of the
-    same type.
-  * An operation which returns the forms left invariant by a
-    matrix group.
+* A way to create and use sesquilinear and quadratic forms on finite
+  vector spaces.
+* An operation which finds an isometry between two forms of the same
+  type.
+* An operation which returns the forms left invariant by a matrix
+  group.
 
 %prep
 %autosetup -n forms-%version

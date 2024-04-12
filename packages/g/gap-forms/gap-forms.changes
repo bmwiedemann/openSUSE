@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 11 19:37:53 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.11
+  * Make BaseChangeHermitian faster for large matrices
+  * Make BaseChangeOrthogonalQuadratic faster for large matrices
+  * Make Forms_RESET compatible with FinInG
+
+-------------------------------------------------------------------
 Fri Nov 18 18:11:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.9
