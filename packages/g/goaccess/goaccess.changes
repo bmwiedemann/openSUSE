@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr 12 05:43:11 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.2:
+  * Added World Map to the Geo Location panel on the HTML report.
+  * Added additional non-official/standard HTTP status codes such
+    as Caddy's 0 HTTP status among others.
+  * Added support for '%z' on strptime for non-glibc systems,
+    such as musl libc in Alpine Linux (Docker container), enabling
+    the use of '--tz'
+  * Changed the '--hide/ignore-referrer' options to filter by
+    hostname directly without the use of wildcards, e.g.,
+    '--ignore-referrer=wiki.google.com'.
+  * Fixed inability to parse duplicate specifiers during log format parsing.
+  * Fixed regression which previously hindered the ability to
+    modify log, date, and time formats within the TUI dialog.
+    i.e., '# goaccess access.log -c'.
+  * Replaced 'remote_ip' with 'client_ip' for Caddy's JSON format,
+    allowing the use of trusted proxies.
+  * Updated Caddy JSON example log format to handle headers correctly.
+  * Updated Swedish i18n.
+
+-------------------------------------------------------------------
 Tue Feb  6 07:18:24 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.9.1:

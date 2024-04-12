@@ -20,7 +20,7 @@
 %global goaccess_services goaccess@.service goaccess@.timer
 
 Name:           goaccess
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        Apache Web Log Analyzer
 License:        GPL-2.0-or-later
@@ -78,7 +78,7 @@ install -m 0644 %{SOURCE11} %{buildroot}%{_unitdir}/goaccess@.timer
 
 %files -f %{name}.lang
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README README.SUSE.md TODO
+%doc AUTHORS ChangeLog NEWS README.md README.SUSE.md TODO
 %{_bindir}/goaccess
 %{_mandir}/man1/goaccess.1%{?ext_man}
 %dir %{_sysconfdir}/goaccess/

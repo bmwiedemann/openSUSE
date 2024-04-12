@@ -825,4 +825,29 @@
 	  empty log file.</comment>
     <requestid>1144461</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>36be663c9cc118355fc51bd6960a148c</srcmd5>
+    <version>1.9.2</version>
+    <time>1712936097</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.9.2:
+  * Added World Map to the Geo Location panel on the HTML report.
+  * Added additional non-official/standard HTTP status codes such
+    as Caddy's 0 HTTP status among others.
+  * Added support for '%z' on strptime for non-glibc systems,
+    such as musl libc in Alpine Linux (Docker container), enabling
+    the use of '--tz'
+  * Changed the '--hide/ignore-referrer' options to filter by
+    hostname directly without the use of wildcards, e.g.,
+    '--ignore-referrer=wiki.google.com'.
+  * Fixed inability to parse duplicate specifiers during log format parsing.
+  * Fixed regression which previously hindered the ability to
+    modify log, date, and time formats within the TUI dialog.
+    i.e., '# goaccess access.log -c'.
+  * Replaced 'remote_ip' with 'client_ip' for Caddy's JSON format,
+    allowing the use of trusted proxies.
+  * Updated Caddy JSON example log format to handle headers correctly.
+  * Updated Swedish i18n.</comment>
+    <requestid>1166954</requestid>
+  </revision>
 </revisionlist>
