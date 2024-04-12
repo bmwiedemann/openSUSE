@@ -1,7 +1,7 @@
 #
 # spec file for package lensfun
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -158,6 +158,7 @@ rm %{buildroot}%{python3_sitelib}/lensfun-*.egg
 mkdir -p %{buildroot}%{_localstatedir}/lib/lensfun-updates
 
 %fdupes %{buildroot}
+%python3_fix_shebang
 
 %check
 # ERROR: lensfun-0.3.4/tests/test_database.cpp:29:void test_DB_lens_search(lfFixture*, gconstpointer): 'lenses' should not be nullptr
