@@ -17,7 +17,7 @@
 
 
 Name:           update-alternatives
-Version:        1.22.5
+Version:        1.22.6
 Release:        0
 Summary:        Maintain symbolic links determining default commands
 License:        GPL-2.0-or-later

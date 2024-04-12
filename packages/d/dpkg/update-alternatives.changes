@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Apr 10 02:52:20 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to version 1.22.6.
+  The changelog for this version isn't very large, so it's provided in full:
+  * dpkg-deb: Fix up compressor parameters for default legacy format.
+  * Perl modules:
+    - Dpkg::Vendor::Debian: Make it possible to disable qa=-bug-implicit-func.
+    - Dpkg::Vendor::Debian: Unconditionally set qa bug-implicit-func.
+  * Documentation:
+    - man: Document dpkg versions supporting SOURCE_DATE_EPOCH for various
+      tools.
+  * Code internals:
+    - libdpkg: Use array access instead of pointer arithmetic for meminfo
+      parser.
+    - libdpkg: Use a macro to define the zstd default compression level.
+  * Build system:
+    - Test with minimal library dependencies in CI.
+    - Add gen-release script.
+  * Packaging:
+    - Fix typo in man page reference in changelog.
+  * Test suite:
+    - Refactor OpenPGP backend and commands list.
+    - Refactor certfile and keyfile filenames for OpenPGP test.
+    - Skip OpenPGP tests if the backend does not have a verify command.
+  * Localization:
+    - Fix typos in Swedish man pages translations.
+    - Fix typos in Swedish man pages translations.
+    - Update Dutch man pages translations.
+    - Update Portuguese man pages translations.
+    - Update German man pages translation.
+
+-------------------------------------------------------------------
 Mon Mar 11 03:51:46 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to version 1.22.5.
