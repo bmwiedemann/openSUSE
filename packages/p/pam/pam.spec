@@ -71,7 +71,7 @@
 #
 Name:           pam%{name_suffix}
 #
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        A Security Tool that Provides Authentication for Applications
 License:        GPL-2.0-or-later OR BSD-3-Clause
@@ -96,14 +96,6 @@ Source22:       postlogin-account.pamd
 Source23:       postlogin-password.pamd
 Source24:       postlogin-session.pamd
 Patch1:         pam-limit-nproc.patch
-# https://github.com/linux-pam/linux-pam/pull/739
-Patch2:         pam_env-fix_vendordir.patch
-# https://github.com/linux-pam/linux-pam/pull/740
-Patch3:		pam_env-fix-enable-vendordir-fallback.patch
-# https://github.com/linux-pam/linux-pam/pull/741
-Patch4:         pam_env-remove-escaped-newlines.patch
-# https://github.com/linux-pam/linux-pam/pull/744
-Patch5:         pam_unix-fix-password-aging-disabled.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  flex

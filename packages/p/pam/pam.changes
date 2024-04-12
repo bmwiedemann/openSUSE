@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 10 07:12:02 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.6.1
+  - pam_env: fixed --disable-econf --enable-vendordir support.
+  - pam_unix: do not warn if password aging is disabled.
+  - pam_unix: try to set uid to 0 before unix_chkpwd invocation.
+  - pam_unix: allow empty passwords with non-empty hashes.
+  - Multiple minor bug fixes, build fixes, portability fixes,
+    documentation improvements, and translation updates.
+- Remove backports:
+  - pam_env-fix_vendordir.patch
+  - pam_env-fix-enable-vendordir-fallback.patch
+  - pam_env-remove-escaped-newlines.patch
+  - pam_unix-fix-password-aging-disabled.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 17:30:24 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Use autosetup to prepare for RPM 4.20. 
