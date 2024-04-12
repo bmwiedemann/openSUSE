@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15allpythons}
 Name:           python-ftputil
 Version:        3.4
 Release:        0

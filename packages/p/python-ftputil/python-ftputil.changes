@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 10 14:20:00 UTC 2024 - Christian Keil <keil@dfn-cert.de>
+
+- Add Python 3.11 build.
+
+-------------------------------------------------------------------
 Tue Dec  4 12:48:16 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
