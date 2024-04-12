@@ -583,4 +583,15 @@
   * Match CPE_NAME for checking whether to show the registration dialog (bsc#1222034)</comment>
     <requestid>1162835</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>2522f0a2b28065b8e70d7838e5e14ae5</srcmd5>
+    <version>1.4.0</version>
+    <time>1712936037</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.0:
+  * Use d_styled in more places
+  * Add support for systemd credentials
+  * Order modules, read from /etc</comment>
+    <requestid>1166793</requestid>
+  </revision>
 </revisionlist>
