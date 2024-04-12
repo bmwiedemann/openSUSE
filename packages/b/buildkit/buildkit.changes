@@ -1,4 +1,540 @@
 -------------------------------------------------------------------
+Mon Apr 08 06:02:50 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 0.13.1:
+  * oci: make mounting oci socket optional
+  * git: ensure file-looking git refs aren't parsed as URLs
+  * remotecache: fix missing CheckDescriptor method
+  * solver: stub out sysSampler close
+  * fix(docs): add the containers feature enabling step
+  * ci: enable multi-platform lint only for upstream repo
+  * docs: replace references to the master branch with v0.13
+  * fix: windows getting started guide for uniformity
+  * dockerfile: add docs for --parents
+  * dockerfile: allow pivot point for --parents flag
+  * util: typo fix
+  * vendor: update github.com/tonistiigi/fsutil to 7525a1af2bb5
+  * ci(validate): temporarily disable archutil-arm64 job
+  * add loongarch support for buildkit archutil
+  * dockerfile: don't silently ignore --parents if not labs
+  * test: switch to golang.org/x/mod to check containerd version constraint
+  * move network sample to resources types
+  * vendor: update github.com/Masterminds/semver to v3.2.1
+  * gateway: mount metadata with nodev
+  * file: fix idmap passed to unpack when userns enabled
+  * file: use best-effort xattr behavior on unpacking
+  * docs: restructure flags/options for add, copy, run
+  * docs: typo in windows.md
+  * docs: add quick guide for macOS
+  * vendor: update github.com/pkg/profile to v1.7.0
+  * docs: add quick guide for windows
+  * vendor: update github.com/tonistiigi/go-actions-cache to a0b64f338598
+  * cache(gha): increase default timeout to 10m
+  * cache(gha): add timeout attr for cache export/import
+  * vendor: update go.etcd.io/bbolt to v1.3.9
+  * vendor: update github.com/spdx/tools-golang to v0.5.3
+  * vendor: update github.com/serialx/hashring to 22c0c7ab6b1b
+  * vendor: update github.com/containerd/fuse-overlayfs-snapshotter to 1.0.8
+  * DescriptorProviderPair: expose methods used by multiprovider
+  * util/multiprovider: Implement Info
+  * provenance: move types to a dedicated package
+  * dockerfile2llb: fix ci merge conflict
+  * Revert "util/multiprovider: Implement Info"
+  * Avoid applying `SOURCE_DATE_EPOCH` to base images
+  * dockerfile2llb: emit base image config
+  * Fix case where TESTFLAGS may be unset
+  * dockerfile: add excludepatterns feature to labs
+  * vendor: update github.com/tonistiigi/fsutil to 7a889f53dbf6
+  * vendor: OTEL v0.46.1 / v1.21.0
+  * vendor: golang.org/x/net v0.18.0
+  * set bridge name and subnet in appdefaults
+  * ci(test-os): split windows tests
+  * ci(test-os): merge windows and freebsd build
+  * dockerfile: cross build freebsd support
+  * remove accidental debug log
+  * ci(test-os): build binaries from dockerfile for windows
+  * dockerfile: binaries-for-test target
+  * dockerfile: cross build windows support
+  * ci: inherit secrets from the caller workflow
+  * secret mount: avoid setting `noexec` when an exec bit it set
+  * fix: typo
+  * add buildkitd.exe to windows binaries
+  * examples/dockerfile2llb: remove unused `-partial-metadata-file`
+  * ci: set codecov token
+  * exporter: use docker-spec instead of locally defined types
+  * dockerfile: bump xx to 1.4.0
+  * dockerfile: bump alpine to 3.19
+  * Dockerfile update stargz-snapshotter to v0.15.1
+  * vendor: github.com/containerd/stargz-snapshotter v0.15.1
+  * vendor: github.com/hashicorp/go-retryablehttp v0.7.5
+  * vendor: github.com/hanwen/go-fuse/v2 v2.4.0
+  * vendor: github.com/prometheus/procfs v0.12.0
+  * vendor: github.com/prometheus/client_golang v1.17.0
+  * vendor: github.com/urfave/cli v1.22.14
+  * vendor: github.com/containerd/continuity v0.4.3
+  * client: fix result history media type with dockerd moby
+  * hack: fix unbound variable
+  * CNI bridge firewall: avoid using `iptables` backend on rootless mode
+  * client: fix multiple exporter test for dockerd worker
+  * Dockerfile frontend: add Integration test for context from git
+  * Move Dockerfile copy/add --exclude implementation to Labs
+  * Add llb.WithExcludePatterns
+  * Integration test for Dockerfile --exclude option
+  * Dockerfile: Document exclude patterns on COPY and ADD commands
+  * Dockerfile frontend: expose exclude keyword to ADD and COPY commands
+  * dockerfile2llb: consistent progress for HTTP and Git ops with ADD
+  * exporter: make OnBuild omiteempty
+  * make sure iptables installed in release image
+  * Revert "temporarily use older frontend to unblock CI"
+  * util/multiprovider: Implement Info
+  * temporarily use older frontend to unblock CI
+  * add missing fallback from new frontend to daemon without sourceresolver
+  * Dockerfile: update Nydus Image Service to v2.2.4
+  * replace resolveimageconfig with generic sourcemetaresolver
+  * vendor: github.com/containerd/nydus-snapshotter v0.13.7
+  * vendor: google.golang.org/genproto/googleapis/rpc 49dd2c1f3d0b
+  * vendor: google.golang.org/grpc v1.59.0
+  * ci: validate archutil on arm64
+  * archutil: generate arch bins
+  * dockerfile(archutil): strip debug info
+  * dockerfile(archutil): mark the stack as non-executable for amd64
+  * dockerfile(archutil): bump to trixie
+  * archutil: validate
+  * archutil: move dockerfile to hack and update scripts
+  * keep local dns in resolv.conf when host network enabled
+  * Fix source police mutation for named context
+  * resolver: Limit auth handler isolation to push scopes
+  * resolver: Isolate auth token cache per session
+  * go.mod: update containerd to v1.7.13
+  * docs/rootless.md: move auxiliary information to the bottom
+  * vendor: github.com/docker/cli v25.0.3
+  * vendor: github.com/docker/docker v25.0.3
+  * test: add new content-cache exec mount tests
+  * exec: allow caller-controlled content-based cache
+  * exec: allow content-cache for root selected mounts
+  * exec: refactor content-based cache detection
+  * vendor: github.com/containerd/console v1.0.4
+  * vendor: github.com/docker/cli v25.0.2
+  * vendor: github.com/docker/docker v25.0.2
+  * Fix regression `/run/buildkit is inaccessible for socket user`
+  * Update fallback logic to only fallback with previous host
+  * chore(deps): bump actions/setup-go from 4 to 5
+  * chore(deps): bump nick-fields/retry from 2.9.0 to 3.0.0
+  * chore(deps): bump actions/cache from 3 to 4
+  * chore: refactor IsGitTransport to avoid duplication
+  * docs: make the warning about build arguments
+  * ci(docs-upstream): pin reusable workflow
+  * ci: bump gotest-annotations to fa6141aedf23596fb8bdcceab9cce8dadaa31bd9
+  * ci: bump actions/upload-artifact and actions/download-artifact to 4
+  * test: warn if testing dockerd worker without disabled features
+  * ci: bump codecov/codecov-action to v4
+  * ci: bump actions/github-script to v7
+  * ci(dockerd): bump docker to 25.0.2
+  * update runc to v1.1.12
+  * exec: add extra validation for submount sources
+  * executor: recheck mount stub path within root after container run
+  * llbsolver: make sure interactive container API validates entitlements
+  * gateway: pass executor with build and not access worker directly
+  * pb: add extra validation to protobuf types
+  * sourcepolicy: add validations for nil values
+  * exporter: add validation for platforms key value
+  * exporter: add validation for invalid platorm
+  * exporter: validate null config metadata from gateway
+  * Fix missing chown/chmod when using parents flag with ADD/COPY command
+  * Add --parents to commitMessage for ADD/COPY command
+  * chore: fix remotecache/v1/doc.go
+  * Add --chown and --chmod to commitMessage for ADD/COPY command
+  * update runc to v1.1.11
+  * Add test to check that `client.SolveOpt.LocalDirs` still works
+  * Replace usage of LocalDirs with LocalMounts in buildctl and examples
+  * Integration tests: use LocalMounts instead of deprecated LocalDirs
+  * chore: close solver resources on shutdown
+  * s3: fix deprecated EndpointResolver
+  * s3: rely on aws sdk v2 error types
+  * vendor: bump github.com/aws/aws-sdk-go-v2 deps
+  * vendor: github.com/docker/cli v25.0.1
+  * vendor: github.com/docker/docker v25.0.1
+  * chore: document CacheChains.Marshal
+  * chore: refactor item.validate for readability
+  * chore: add some doc-comments in remotecache
+  * chore: update CacheExporterTarget docs
+  * chore: remove unused cachechains parent link
+  * Do not include a cache mount's ID in the ExecOp's cachemap
+  * docs: tiny improvements
+  * chore: remove noisy rootlesskit cni log
+  * solver: use errors.Is when checking context.Cause()
+  * oci: fix error handling on submount calls
+  * Dockerfile: update dind script to latest version
+  * fix: typo
+  * ci: disable push if not upstream repo
+  * hack: use git context only for upstream repo
+  * chore: remove unnecessary locker from http source
+  * gateway: ensure that all process io is correctly closed
+  * history: wrap os.ErrNotExist errors
+  * dockerfile: validate order when linking stages
+  * vendor: github.com/docker/cli v25.0.0
+  * vendor: github.com/docker/docker v25.0.0
+  * dockerfile: allow errors with multiple source location
+  * dockerfile: add source location to circular dependency error
+  * CI: add oci-rootless-slirp4netns-detachnetns
+  * cniprovider: support `rootlesskit --detach-netns` (RootlessKit v2)
+  * vendor: github.com/docker/cli v25.0.0-rc.3
+  * vendor: github.com/docker/docker v25.0.0-rc.3
+  * vendor: github.com/moby/sys/mountinfo v0.7.1
+  * vendor: golang.org/x/sys v0.16.0
+  * vendor: github.com/google/uuid v1.5.0
+  * vendor: github.com/google/go-cmp v0.6.0
+  * test: add a test for cyclic merges
+  * scheduler: always edge merge in one direction
+  * progress: add panic for multiwriter cycles
+  * chore: update merging log message to include index
+  * chore: fix minor typos in scheduler_test.go
+  * docs: fix up named context docs
+  * filesync: append metadata for CopyToCaller
+  * docs: clarify here-document word quote variable expansion
+  * vendor: github.com/docker/cli v25.0.0-rc.2
+  * vendor: github.com/docker/docker v25.0.0-rc.2
+  * vendor: github.com/vbatts/tar-split v0.11.5
+  * vendor: github.com/containerd/containerd v1.7.12
+  * docs: fix copy/paste typo in Dockerfile reference
+  * solver: ensure each ref in the result map is evaluated
+  * rootless: use `~/.config/buildkit/cni.json`
+  * hack/test: allow ALPINE_VERSION to be set from env
+  * authors.Dockerfile: update to alpine 3.19
+  * cmd/buildkitd: show "bridge" net mode in `--help`
+  * add CNI bridge network provider
+  * test: add test case for multi-platform scratch
+  * docs: fix typo for eksctl
+  * fix lease management with flightcontrol
+  * go.mod: fix dependencies being in the wrong group
+  * vendor: github.com/docker/go-connections v0.5.0
+  * hack: add docker-compose file for development
+  * control: fix typo in exporter slice comment
+  * solver: avoid discarding nil refs entry
+  * gateway: avoid calling Definition on nil ref
+  * vendor: github.com/docker/cli v25.0.0-rc.1
+  * vendor: github.com/docker/docker v25.0.0-rc.1
+  * vendor: github.com/opencontainers/runc v1.1.11
+  * vendor: github.com/klauspost/compress v1.17.4
+  * exporter: use implicit ids for exporters
+  * solver: add cap for multiple exporters
+  * control: add multiple exporters
+  * exporter: add new id parameter to exporter instances
+  * session: add file send multiplexing
+  * exporter: pass inline cache directly to exporter
+  * exporter: make ParseKey platform parameter optional
+  * session: create helper type for exporter file output
+  * exporter: avoid modifying exporter inputs
+  * filesync: add doc comments in proto
+  * chore: remove function indirection for cache exporters
+  * dockerfile: mitigate flaky smoke test with timeout
+  * docs: clarify the purpose of the syntax parser directive
+  * Fix hardlink issue with whiteout deletes in the merge snapshotter.
+  * detect: refactor the default resource detector for detect
+  * vendor: github.com/docker/cli v25.0.0-beta.3
+  * vendor: github.com/docker/docker v25.0.0-beta.3
+  * vendor: github.com/felixge/httpsnoop v1.0.4
+  * vendor: golang.org/x/crypto v0.17.0
+  * vendor: golang.org/x/crypto v0.16.0
+  * vendor: golang.org/x/text v0.14.0
+  * vendor: golang.org/x/sys v0.15.0
+  * docs: mention trace logging in buildkitd.toml docs
+  * ci: remove timeout on image job
+  * tracing: allow the `Resource` to be set externally
+  * tests: enable previously skipped tests
+  * lint: set proper cache key for golangci-lint target
+  * ci(buildkit): set timeout to image job
+  * ci(test-os): retry logic for freebsd smoke tests step
+  * tests: enable integration test run on windows
+  * chore: remove WithFailFast option
+  * git: ensure that pin matches checked-out commit
+  * util: expose otel metrics through grpc and prometheus
+  * Dockerfile: bump up containerd to 1.7.11
+  * go.mod: bump up containerd to 1.7.11
+  * add gabriel-samfira to maintainers
+  * Add project processes guide
+  * fix/pr: fixes from pr review
+  * replace WithTimeout with WithTimeoutCause
+  * replace context.WithCancel with WithCancelCause
+  * make docs
+  * json-cache-metrics becomes debug-json-cache-metrics
+  * add an option to show JSON cache metrics
+  * chore: tidy up removal of digest algorithm
+  * Dockerfile: Bump up containerd to v1.7.10
+  * go.mod: bump up github.com/containerd/containerd to v1.7.10
+  * solver: use toSelectors to filter root paths instead of custom logic
+  * llbsolver: fix possible panic when setting event to nil
+  * ci(deps): upgrade containerd to v1.7.9
+  * ci(deps): upgrade OpenTelemetry libraries to v1.19.0 / v0.45.0
+  * Update docs/attestations/sbom-protocol.md
+  * docs: dockerfile instructions quick reference
+  * github: add issue reporting guide
+  * windows integration tests: plumbing work to be able to run on windows
+  * Update to go 1.21
+  * dockerfile: remove duplicate layer chains from provenance attestation
+  * fix bug that gen layer tar contains duplicated files
+  * Dockerfile: Bump up runc to 1.1.10
+  * docs: refresh dockerfile frontend reference
+  * String substitution in variable expansion
+  * docs: update builtctl.md to fix markdown links and typo
+  * buildctl: Add insecure config for registry-auth-tlscontext flag
+  * dockerfile2llb: filter unused paths for named contexts
+  * vendor: github.com/docker/cli v25.0.0-beta.1
+  * vendor: github.com/docker/docker v25.0.0-beta.1
+  * vendor: github.com/docker/go-connections fa09c952e3ea (v0.5.0-dev)
+  * vendor: github.com/opencontainers/runc v1.1.10
+  * vendor: github.com/docker/docker-credential-helpers v0.8.0
+  * vendor: github.com/go-logr/logr v1.2.4
+  * vendor: github.com/vbatts/tar-split v0.11.3
+  * vendor: github.com/opencontainers/runtime-spec v1.1.0
+  * vendor: github.com/cenkalti/backoff/v4 v4.2.1
+  * llbsolver: unmarshal protobuf objects into the provenance attestation correctly
+  * docs: fix warning callouts
+  * cache: set max batch size limit to prune
+  * ci(test-os): enable SSH keep alive in vagrant vm
+  * ci(validate): use target property to list all targets
+  * golangci-lint: increase timeout
+  * enable golangci-lint for supported platforms
+  * solver: allow debugging specific builder steps
+  * Update buildctl.md
+  * containerd: support custom shim path
+  * chore: update getTaskOpts to return multiple opts
+  * git: add missing RedactCredentials call in cache description
+  * docs: add a note that healthcheck --start-interval requires docker 25.0
+  * Whenever copying OCI Platform data, include OSVersion and OSFeatures
+  * hack: enable linting for freebsd
+  * hack: enable linting for windows
+  * chore: move linux-specific oci spec to spec_linux.go
+  * chore: remove unused functions for windows
+  * chore: fix windows variable naming issues
+  * chore: remove fmt.Errorf usage for windows
+  * docs: retarget dockerfile reference link
+  * ci: make test job depends on binaries one
+  * dockerfile: smoke tests for binaries
+  * frontend/dockerfile/dockerfile2llb: errmsg: quote build target
+  * vendor: github.com/containerd/containerd v1.7.8
+  * vendor: google.golang.org/grpc v1.58.3
+  * vendor: google.golang.org/protobuf v1.31.0
+  * vendor: golang.org/x/tools v0.10.0
+  * vendor: golang.org/x/sync v0.3.0
+  * vendor: golang.org/x/mod v0.11.0
+  * Add string trimming (#, %, ##, %%) in variable expansion
+  * test: add force-compression option for nydus case
+  * solver: fix nydus force compression for provenance
+  * fix typos
+  * containerd: normalize platform received from introspection API
+  * fix usage loss for snapshots with labels in MergeSnapshotter
+  * vendor: update nydus-snapshotter to v0.13.1
+  * ci(test-os): switch to macos-13 runner for freebsd job
+  * migrate to github.com/moby/sys/user
+  * vendor: google.golang.org/grpc v1.56.3
+  * vendor: google.golang.org/grpc v1.56.2
+  * ci: bump up golangci-lint to v1.55.0
+  * dockerfile2llb: Add a MainContext option to ConvertOpt
+  * buildkitd: use default config file location when run as root in rootless
+  * Dockerfile: bump up registry to v2.8.3
+  * Dockerfile: bump up CNI plugins to v1.3.0
+  * solver: fix printing progress messages after merged edges
+  * Fix broken link
+  * vendor: github.com/klauspost/compress v1.17.2
+  * client: refactor to extract prepareMounts
+  * exporter: refactor to clarify intent behind fs usage
+  * client: allow exposing fsutil.FS through SolveOpts
+  * session: modify FSSync provider to take fsutil.FS objects
+  * vendor: update fsutil to master@f09800878302
+  * Send hcsshim's options struct when running with hcsshim
+  * ci(test-os): increase vm boot time to 15m
+  * llbsolver: fix possible deadlock in history listen
+  * buildkitd: fix debug handler listener
+  * cache: fix cache leak
+  * Dockerfile: update xx to 1.3.0
+  * solver: minor typo in one of the logging messages
+  * Dockerfile: bump up nerdctl to v1.6.2
+  * chore: enable riscv64 build
+  * solver: fix possible concurrent map access on cache export
+  * Fix linting issue
+  * Use snapshot.Mountable as an argument type to readUser
+  * Move readUser code outside of the file package
+  * Remove the need for an exported Executor field
+  * Implement readUser on Windows
+  * Skip export of caches with no layers to OCI structures
+  * Correct package name for inline remote-cache source
+  * Revendor opencontainers/image-spec to v1.1.0-rc5
+  * chore: temporarily disable riscv64 build
+  * ci: fix docs upstream validation workflow
+  * README: BuildKit is now default in the Engine
+  * vendor: golang.org/x/net v0.17.0
+  * vendor: golang.org/x/crypto v0.14.0
+  * vendor: golang.org/x/text v0.13.0
+  * vendor: golang.org/x/sys v0.13.0
+  * Dockerfile: update containerd binary to v1.7.7
+  * Add Unikraft to the list of BuildKit users
+  * vendor: github.com/containerd/containerd v1.7.7
+  * vendor: golang.org/x/net v0.13.0
+  * vendor: golang.org/x/crypto v0.11.0, golang.org/x/text v0.11.0
+  * vendor: golang.org/x/sys v0.10.0
+  * vendor: github.com/stretchr/testify v1.8.4
+  * vendor: github.com/containerd/continuity v0.4.2
+  * solver: protect against nil rres upon errors
+  * ResolveImageConfig: Only fetch best matching config
+  * git: use custom giturl type to preserve original remote
+  * sshutil: refactor to allow parsing scp-style urls
+  * gateway: restore original filename in StatFile error message
+  * dockerfile: add --parents flag for COPY
+  * CI (containerd v1.6): bump up containerd to 1.6.24
+  * docs: mv .dockerignore help to context docs
+  * uploadprovider: avoid too big grpc messages on tar upload
+  * session: raise grpc message size limits for session endpoint
+  * filesync: split stream data into 3MB chunks to avoid message limits
+  * Bump up golangci-lint to 1.54.2
+  * Update go to 1.21
+  * docs: fix typo in nydus.md
+  * Rename cgroupNamespaceSupported, add details
+  * Don't support cgroupns on cgroups v1
+  * util/resolver: fillInsecureOpts don't return slice
+  * util/resolver: Http fallback in the same host
+  * util/resolver: Fix insecure mirrors
+  * Make output window configurable: BUILDKIT_TTY_LOG_LINES
+  * docs: fix incorrect option name in containerd runtime config
+  * ci(test): fix unhandled buildkitd tags
+  * solver: fix issue with double merged edges
+  * hack: update BUILDKIT_DEBUG handling
+  * dockerfile: introduce a debug variant for the buildkit docker image
+  * integration: set otel socket path through buildkit config
+  * chore: add todo note to remove runj specifics
+  * Add options to specify containerd runtime
+  * Ensure layers in the local content store on FileList API
+  * cache: don't skip unlazy without blob check
+  * docs/rootless: use Bottlerocket's API configurations
+  * solver: correctly set the content selector with multiple bind mounts references
+  * diff: gzip with custom level should be compressed by BuildKit's differ
+  * docs: note that gckeepstorage can take different types
+  * Revert "Update buildkitd.toml.md"
+  * ci(test-os): increase vm boot time to 10m
+  * hack(test): tidy create command and display invoked docker cmds
+  * ci(test): dedicated step to build integration-tests image
+  * create integration-tests bake target
+  * hack(test): opt to avoid building the integration tests image
+  * hack(dockerfile-frontend): remove daily release type
+  * hack: align syntax
+  * hack: progressFlag set not needed
+  * hack: cleanup buildx install
+  * hack(test): use trap to remove cache volume
+  * buildctl: propagate `SOURCE_DATE_EPOCH` from client env to build arg
+  * ci: update github actions to latest stable
+  * buildctl: Add configured TLS certificate to trust store when making calls to registry auth
+  * go fmt cache/blobs_nolinux.go
+  * exporter/containerimage: new option: rewrite-timestamp
+  * Move cache/converter.go to util/converter/converter.go
+  * dockerfile2llb: set default llb.Local when client is not available
+  * progressui: modify NewDisplay to accept io.Writer instead of console.File
+  * authprovider: Fix error return from Credentials when logger is nil
+  * Add Unikraft's kraft.yaml to list of LLB languages.
+  * ci(test-os): cross build freebsd binaries using the Dockerfile
+  * progress: add new quiet display mode
+  * docs: Add `[dns]` snippet to `buildkitd.toml` example file
+  * client: manually implement Wait backoffs
+  * docs(source): mention successful snapshots can be nil
+  * fix: return err when unable to hash
+  * migrate to github.com/distribution/reference v0.5.0
+  * Revert "buildctl: set max backoff delay to 1 second"
+  * ci: update github actions to latest stable
+  * lint: fix linting rules for logrus
+  * chore: use bklog instead of logrus
+  * fix: use sha256 for merge/diff op cache maps
+  * llb: avoid duplicate instances of sourcemaps in provenance
+  * fix: log context for future debugging
+  * fix(boltdb): close cache and history dbs on exit
+  * Cleanup args, rename jobDetails
+  * fix: check snapshot labels to avoid panic
+  * fix(metadata): close store on exit
+  * pull: fix possible negative blob pull time
+  * docs: fix slsa definition markup issues
+  * FreeBSD CI: cross-compile binaries
+  * util/progress: silence go test -race
+  * progressui: adds a json output that shows raw events for the solver status
+  * docker: cleanup fields in image definition
+  * test: git tag test should not sign tags
+  * git: centralize git cli operations
+  * deprecate frontend/dockerfile/dockerignore
+  * replace dockerfile/dockerignore with patternmatcher/ignorefile
+  * vendor: github.com/moby/patternmatcher v0.6.0
+  * git: avoid regexp for checking .git suffix
+  * git: update parsing to clarify between scp-style urls
+  * tests: tidy up gitutil testing structs
+  * git: update llb.Git doc comment
+  * hack: forward CGO_ENABLED into test container
+  * solver: fix possible race for provenance ResolveImageConfig
+  * solver: wrap gRPC codes.NotFound on unknown build ID
+  * ci: dump context on failure
+  * chore: fix git freebsd to match file names
+  * source: make sources pluggable
+  * Fix typo in README.md
+  * Implement executor on Windows
+  * chore: split vagrant provisioning
+  * buildkitd: add grpc.health.v1.Health service
+  * Dockerfile: RUNC_VERSION=v1.1.9
+  * go.mod: github.com/opencontainers/runc v1.1.9
+  * ci: add protolint validation
+  * lint: add protolint config
+  * chore: tidy up filesync encode headers handling
+  * docs: index annotations fail if index is not produced
+  * docs: update gcpolicy percentage to refer to total space
+  * docs: improve CacheMap developer documentation
+  * filesync: write closer err discarded
+  * Avoid unnecessary map allocation when writing progress
+  * Improve cache related trace logging.
+  * test: add HasFeatureCompat helper
+  * integration: fix rootless tests
+  * buildkitd: otel config and otel-socket-path flag
+  * tests: refactor integration test package
+  * test: use integration.Tmpdir consistently
+  * docs: removed labs ref for ADD checksum and git
+  * ci(test-os): bump actions
+  * tests: refactor Tmpdir as a test helper
+  * FreeBSD CI Run logs retention
+  * filesync: remove deprecated override-excludes
+  * integration: preserve existing environment variables when using sudo
+  * set tracing socket path to runtime dir
+  * executor: fix resource sampler goroutine leak
+  * docs: troubleshoot for `mount proc:/proc (via /proc/self/fd/6), flags: 0xe: operation not permitted`
+  * FreeBSD port
+  * examples: bump oci and containerd versions
+  * examples: remove no_containerd_worker build tag
+  * hack: add linting for multiple combinations of build tags
+  * chore: remove unused blobIDs for nydus compression
+  * chore: remove old no_{oci,containerd}_worker build tags
+  * nydus: fix missing imports
+  * frontend/dockerfile/dockerignore: remove hard-coded filename from error
+  * frontend/dockerfile/dockerignore: touch-up godoc and code
+  * frontend/dockerfile/dockerignore: cleanup unit test
+  * chore: clean up file copy logic backend logic
+  * filesync: append rather than replace grpc md.
+  * progress: don't modify ResetTime inputs
+  * vendor: github.com/docker/cli v24.0.5
+  * vendor: golang.org/x/net v0.10.0
+  * vendor: golang.org/x/text v0.9.0
+  * vendor: golang.org/x/sys v0.8.0
+  * vendor: github.com/sirupsen/logrus v1.9.3
+  * Add support for JSON formatted logs (#3133)
+  * Dedupe "containerd.io/uncompressed" constants and literals
+  * integration: missing env var to check feature compat
+  * vendor: github.com/docker/docker@master (afd4805)
+  * file: Fix incorrect handling of non-existent files in llbsolver's rmPath
+  * llb: Add tests for WithUser
+  * llb: Correct 'contexst' typo in State.Run function's documentation
+  * test: update pinned busybox image to 1.36
+  * executor/resource: stub out NewSysSampler on Windows
+  * vendor: github.com/docker/cli v24.0.4
+  * docs/build-repro.md: fix description about squashing
+  * vendor: github.com/docker/docker 8e51b8b59cb8 (master, v25.0.0-dev)
+  * test: update pinned alpine image to 3.18
+  * examples: create certs bake definition
+  * testutil: move CheckContainerdVersion to a separate package
+  * chore: update AUTHORS and mailmap
+  * Clarify the behavior of wildcards in .dockerignore file
+
+-------------------------------------------------------------------
 Thu Feb 01 16:36:18 UTC 2024 - dcermak@suse.com
 
 - Update to version 0.12.5:
