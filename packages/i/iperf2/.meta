@@ -1,0 +1,9 @@
+<package name="iperf2" project="openSUSE:Factory">
+  <title>iperf2</title>
+  <description>Iperf here is a means of measuring networks - capacity &amp; latency (including dual queue L4S) over sockets both TCP and UDP. The goals include maintaining an active iperf code base across a broad set of platforms and operating systems. This is a multi-threaded design that scales with the number of CPUs or cores within a system. It supports both high impact and low impact techniques to obtain and report network performance.
+
+About iperf 2 and iperf3: Read about the differences between these programs at
+https://iperf2.sourceforge.io/IperfCompare.html</description>
+  <devel project="network:utilities" package="iperf2"/>
+  <url>https://sourceforge.net/projects/iperf2/</url>
+</package>
