@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar 26 15:27:18 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.36.0
+  * Deprecate unused packageInfoFilenames
+  * Remove inconsistent error on missing subpackage path 
+  * Remove dub.internal.vibecompat.file : listDirectory 
+  * Remove logging from dub.dependency 
+  * Allow to load dub.selections.json before Project instantiation
+
+- Update to 1.35.0
+  * Don't wastefully execute everything via a shell
+  * Implemented recipe files for dub
+  * add --deep flag to dub build
+  * add dub describe --data=configs,builds
+  * interactively query for license, suggest SPDX licenses
+
+- Update to 1.34.0
+  * Fix flags Json serialization
+  * Cache json db
+  * support specifying --d-versions
+
+-------------------------------------------------------------------
 Thu Jul 20 20:38:02 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to 1.33.0 
