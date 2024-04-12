@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Thu Apr  4 18:40:00 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 2.4.59:
+  *) mod_deflate: Fixes and better logging for handling various
+     error and edge cases. [Eric Covener, Yann Ylavic, Joe Orton,
+     Eric Norris <enorris etsy.com>]
+
+  *) Add CGIScriptTimeout to mod_cgi. [Eric Covener]
+
+  *) mod_xml2enc: Tolerate libxml2 2.12.0 and later.  PR 68610
+     [ttachi <tachihara AT hotmail.com>]
+
+  *) mod_slotmem_shm: Use ap_os_is_path_absolute() to make it portable.
+     [Jean-Frederic Clere]
+
+  *) mod_ssl: Use OpenSSL-standard functions to assemble CA
+     name lists for SSLCACertificatePath/SSLCADNRequestPath.
+     Names will now be consistently sorted. PR 61574.
+     [Joe Orton]
+
+  *) mod_xml2enc: Update check to accept any text/ media type
+     or any XML media type per RFC 7303, avoiding
+     corruption of Microsoft OOXML formats.  PR 64339.
+     [Joseph Heenan <joseph.heenan fintechlabs.io>, Joe Orton]
+
+  *) mod_http2: v2.0.26 with the following fixes:
+     - Fixed `Date` header on requests upgraded from HTTP/1.1 (h2c). Fixes
+       <https://github.com/icing/mod_h2/issues/272>.
+     - Fixed small memory leak in h2 header bucket free. Thanks to
+       Michael Kaufmann for finding this and providing the fix.
+
+  *) htcacheclean: In -a/-A mode, list all files per subdirectory
+     rather than only one. PR 65091.
+     [Artem Egorenkov <aegorenkov.91 gmail.com>]
+
+  *) mod_ssl: SSLProxyMachineCertificateFile/Path may reference files
+     which include CA certificates; those CA certs are treated as if
+     configured with SSLProxyMachineCertificateChainFile.  [Joe Orton]
+
+  *) htpasswd, htdbm, dbmmanage: Update help&docs to refer to
+     "hashing", rather than "encrypting" passwords.
+     [Michele Preziuso <mpreziuso kaosdynamics.com>]
+
+  *) mod_ssl: Fix build with LibreSSL 2.0.7+. PR 64047.
+     [Giovanni Bechis, Yann Ylavic]
+
+  *) htpasswd: Add support for passwords using SHA-2.  [Joe Orton,
+     Yann Ylavic]
+
+  *) core: Allow mod_env to override system environment vars. [Joe Orton]
+
+  *) Allow mod_dav_fs to tolerate race conditions between PROPFIND and an
+     operation which removes a directory/file between apr_dir_read() and
+     apr_stat(). Current behaviour is to abort the connection which seems
+     inferior to tolerating (and logging) the error. [Joe Orton]
+
+  *) mod_ldap: HTML-escape data in the ldap-status handler.
+     [Eric Covener, Chamal De Silva]
+
+  *) mod_ssl: Disable the OpenSSL ENGINE API when OPENSSL_NO_ENGINE is set.
+     Allow for "SSLCryptoDevice builtin" if the ENGINE API is not available,
+     notably with OpenSSL >= 3.  PR 68080.  [Yann Ylavic, Joe Orton]
+
+  *) mod_ssl: Improve compatibility with OpenSSL 3, fix build warnings about
+     deprecated ENGINE_ API, honor OPENSSL_API_COMPAT setting while defaulting
+     to compatibitily with version 1.1.1 (including ENGINEs / SSLCryptoDevice).
+     [Yann Ylavic]
+
+  *) mod_ssl: release memory to the OS when needed. [Giovanni Bechis]
+
+  *) mod_proxy: Ignore (and warn about) enablereuse=on for ProxyPassMatch when
+     some dollar substitution (backreference) happens in the hostname or port
+     part of the URL.  [Yann Ylavic]
+
+  *) mod_proxy: Allow to set a TTL for how long DNS resolutions to backend
+     systems are cached. [Yann Ylavic]
+
+  *) mod_proxy: Add optional third argument for ProxyRemote, which
+     configures Basic authentication credentials to pass to the remote
+     proxy.  PR 37355.  [Joe Orton]
+
+-------------------------------------------------------------------
 Tue Feb 20 10:52:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
