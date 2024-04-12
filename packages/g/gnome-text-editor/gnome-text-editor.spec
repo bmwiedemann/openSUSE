@@ -17,14 +17,12 @@
 
 
 Name:           gnome-text-editor
-Version:        46.0
+Version:        46.1
 Release:        0
 Summary:        GNOME Text Editor
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/gnome-text-editor
 Source:         %{name}-%{version}.tar.zst
-# PATCH-FIX-UPSTREAM data-desktop-disable-DBusActivatable.patch glgo#GNOME/gnome-text-editor#661 -- Session restore does not work if launched from Apps Menu
-Patch1:         data-desktop-disable-DBusActivatable.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils

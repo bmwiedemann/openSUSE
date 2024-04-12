@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 11 11:27:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.1:
+  + Remove DBusActicatable=true from the .desktop file to fix an
+    issue where you could spawn Text Editor via D-Bus and not have
+    the session restored at startup.
+  + AppData fixes.
+  + Updated translations.
+- Drop data-desktop-disable-DBusActivatable.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Tue Mar 26 12:10:58 UTC 2024 - Elisei Roca <eroca@suse.com>
 
 - Add data-desktop-disable-DBusActivatable.patch: Fixes session

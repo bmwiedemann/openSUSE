@@ -299,4 +299,12 @@
   restore in GNOME 46.</comment>
     <requestid>1162933</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>26dbb3d39ce1e958a05ed73fbf76f002</srcmd5>
+    <version>46.1</version>
+    <time>1712936043</time>
+    <user>anag+factory</user>
+    <comment>Update to 46.1 (forwarded request 1166844 from dimstar)</comment>
+    <requestid>1166851</requestid>
+  </revision>
 </revisionlist>
