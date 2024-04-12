@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 11 11:06:26 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Run python tests in %check
+
+-------------------------------------------------------------------
 Fri Mar 17 22:11:35 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.25.0:

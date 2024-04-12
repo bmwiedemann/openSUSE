@@ -1,7 +1,7 @@
 #
 # spec file for package liblouis
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ BuildRequires:  libyaml-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
+BuildRequires:  python3-pytest
 Requires:       liblouis%{sover} = %{version}
 
 %description
@@ -152,6 +153,13 @@ popd
 
 %check
 make check %{_smp_mflags}
+
+# run python tests
+pushd python
+export LOUIS_TABLEPATH=%{buildroot}%{_datadir}/liblouis/tables
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
+python3 -m pytest -v
+popd
 
 %files -n liblouis%{sover}
 %license COPYING.LESSER

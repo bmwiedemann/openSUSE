@@ -516,4 +516,12 @@ not all subpackages need the full blurb. (forwarded request 530874 from jengelh)
     <comment></comment>
     <requestid>1132051</requestid>
   </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>4e0a9a70320d1b8a49ea567f17a07b58</srcmd5>
+    <version>3.25.0</version>
+    <time>1712936030</time>
+    <user>anag+factory</user>
+    <comment>- Run python tests in %check (forwarded request 1166860 from dgarcia)</comment>
+    <requestid>1166866</requestid>
+  </revision>
 </revisionlist>
