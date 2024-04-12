@@ -82,19 +82,8 @@ Python Imaging Library by Fredrik Lundh and Contributors.
 
 %check
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch} PYTHONDONTWRITEBYTECODE=1
-%if "%{_arch}" == "s390" || "%{_arch}" == "s390x"
-echo "WARNING ignoring tests completely due to https://github.com/python-pillow/Pillow/issues/1204 and segfault"
-%else
-%if "%{_arch}" == "ppc" || "%{_arch}" == "ppc64"
-$python selftest.py --installed || \
-echo "WARNING ignore failure https://github.com/python-pillow/Pillow/issues/1204"
-pytest-%{$python_bin_suffix} --ignore=_build.python2 --ignore=_build.python3 --ignore=_build.pypy3 -v || \
-echo "WARNING ignore failure https://github.com/python-pillow/Pillow/issues/1204"
-%else
 $python selftest.py --installed
 pytest-%{$python_bin_suffix} --ignore=_build.python2 --ignore=_build.python3 --ignore=_build.pypy3 -v -k 'not (test_stroke or test_stroke_multiline)'
-%endif
-%endif
 }
 
 %files %{python_files}

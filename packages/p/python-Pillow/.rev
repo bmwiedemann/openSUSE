@@ -785,4 +785,12 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     [radarhere]</comment>
     <requestid>1164299</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>f4dd6bf8827437977b36f4f81fe2f964</srcmd5>
+    <version>10.3.0</version>
+    <time>1712936023</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166812</requestid>
+  </revision>
 </revisionlist>

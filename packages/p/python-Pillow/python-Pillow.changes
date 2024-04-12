@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 10 12:07:32 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Reenable tests for s390x and ppc, bsc#1222553
+  gh#python-pillow/Pillow#1204
+
+-------------------------------------------------------------------
 Wed Apr  3 07:29:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.3.0 (bsc#1222262, CVE-2024-28219):
