@@ -685,4 +685,13 @@ New stable rel</comment>
     <comment>- Add 00514fb6.patch: Fix compatibility with libxml2 2.12.x. (forwarded request 1133093 from dimstar)</comment>
     <requestid>1133103</requestid>
   </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>f7de8671faedf0de923109e36e9a0878</srcmd5>
+    <version>1.6.6</version>
+    <time>1712936020</time>
+    <user>anag+factory</user>
+    <comment>- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476] (forwarded request 1166770 from pgajdos)</comment>
+    <requestid>1166785</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package gupnp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -125,6 +125,7 @@ sed -i 's|env python3|python3|' tools/gupnp-binding-tool
 mkdir -p %{buildroot}%{_docdir}/%{name}-%{sover}
 # Move docs from upstream docdir to openSUSE docdir standard
 mv %{buildroot}%{_datadir}/doc/%{name}-%{sover} %{buildroot}%{_docdir}
+%python3_fix_shebang
 
 %ldconfig_scriptlets -n libgupnp-%{soname}
 

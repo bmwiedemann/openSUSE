@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 11 06:55:52 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Thu Dec 14 12:47:50 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 00514fb6.patch: Fix compatibility with libxml2 2.12.x.
