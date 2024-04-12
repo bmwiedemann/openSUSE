@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 11 18:55:40 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 28.3.0
+  * Added proxy configuring support for requests made with net module from utility process.
+  * Fix out of bounds memory access in V8 (CVE-2024-3159 bsc#1222260)
+
+-------------------------------------------------------------------
 Wed Apr 10 18:21:32 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Add CVE-2024-30261-undici-fetch-integrity.patch (fixes CVE-2024-30261 bsc#1222603)
