@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-ggsn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _lto_cflags %nil
 Name:           osmo-ggsn
 %define lname   libgtp6
-Version:        1.10.2
+Version:        1.11.0
 Release:        0
 Summary:        GPRS Support Node
 License:        GPL-2.0-only AND LGPL-2.1-or-later

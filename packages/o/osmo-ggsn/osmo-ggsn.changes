@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 11 23:46:02 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.11.0
+  * gtp: Add net GTP cause values and a function to check for success
+
+-------------------------------------------------------------------
 Wed Nov  1 20:26:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.10.2
