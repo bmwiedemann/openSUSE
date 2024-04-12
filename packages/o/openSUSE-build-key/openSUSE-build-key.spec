@@ -33,6 +33,8 @@ Source:         key2rpmname
 # old 2048 key now no longer used
 # Source1:        gpg-pubkey-3dbdc284-53674dd4.asc
 Obsoletes:      gpg-pubkey-3dbdc284
+# old global openSUSE key, was errnously used for Slowroll
+Obsoletes:      gpg-pubkey-eae4fd92
 
 # openSUSE RSA 4096 key
 Source10:       gpg-pubkey-29b700a4-62b07e22.asc
@@ -67,6 +69,14 @@ Source13:       build-container-202304-d684afec-64390cff.asc
 Source14:       build-container-8fd6c337-63c94b45.pem
 Source15:       build-container-8fd6c337-63c94b45.asc
 
+# SLM 6.0 key (ALP / SLF1) RSA 4096 bit key
+Source16:       gpg-pubkey-09d9ea69-645b99ce.asc
+# 2024 SUSE Linux Enterprise 15 SP6 RSA 4096 bit key
+Source17:       gpg-pubkey-3fa1d6ce-63c9481c.asc
+# SLM 6.0 key (ALP / SLF1) RSA 4096 bit reserve key
+Source18:       gpg-pubkey-73f03759-626bd414.asc
+# 2024 SUSE Linux Enterprise 15 SP6 RSA 4096 bit reserve key
+Source19:       gpg-pubkey-d588dc46-63c939db.asc
 
 Source98:       security_at_suse_de.asc
 

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 10 12:59:49 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- SLM 6.0 key (ALP / SLF1) RSA 4096 bit key
+  - gpg-pubkey-09d9ea69-645b99ce.asc
+- 2024 SUSE Linux Enterprise 15 SP6 RSA 4096 bit key
+  - gpg-pubkey-3fa1d6ce-63c9481c.asc
+- SLM 6.0 key (ALP / SLF1) RSA 4096 bit reserve key
+  - gpg-pubkey-73f03759-626bd414.asc
+- 2024 SUSE Linux Enterprise 15 SP6 RSA 4096 bit reserve key
+  - gpg-pubkey-d588dc46-63c939db.asc
+- obsoleted a incorrectly used DSA1024 key (used in Slowroll).
+
+-------------------------------------------------------------------
 Tue Mar 26 08:28:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix import-openSUSE-build-key:set proper timer name to try to

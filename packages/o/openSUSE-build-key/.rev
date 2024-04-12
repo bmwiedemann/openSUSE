@@ -381,4 +381,20 @@ However, it would be good to have these out before we do switch. (forwarded requ
   suse-build-key-import.timer) (boo#1221948). (forwarded request 1161651 from dimstar)</comment>
     <requestid>1161679</requestid>
   </revision>
+  <revision rev="44" vrev="53">
+    <srcmd5>7c1f825dd777d055adc5748eb283e32f</srcmd5>
+    <version>1.0</version>
+    <time>1712936027</time>
+    <user>anag+factory</user>
+    <comment>- SLM 6.0 key (ALP / SLF1) RSA 4096 bit key
+  - gpg-pubkey-09d9ea69-645b99ce.asc
+- 2024 SUSE Linux Enterprise 15 SP6 RSA 4096 bit key
+  - gpg-pubkey-3fa1d6ce-63c9481c.asc
+- SLM 6.0 key (ALP / SLF1) RSA 4096 bit reserve key
+  - gpg-pubkey-73f03759-626bd414.asc
+- 2024 SUSE Linux Enterprise 15 SP6 RSA 4096 bit reserve key
+  - gpg-pubkey-d588dc46-63c939db.asc
+- obsoleted a incorrectly used DSA1024 key (used in Slowroll). (forwarded request 1166671 from msmeissn)</comment>
+    <requestid>1166854</requestid>
+  </revision>
 </revisionlist>
