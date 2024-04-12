@@ -1,0 +1,12 @@
+diff -rub nebula/Makefile nebula-patched/Makefile
+--- nebula/Makefile	2024-04-09 08:35:28.559936158 +0200
++++ nebula-patched/Makefile	2024-04-09 08:59:08.363591927 +0200
+@@ -96,7 +96,7 @@
+ 
+ release-boringcrypto: build/nebula-linux-$(shell go env GOARCH)-boringcrypto.tar.gz
+ 
+-BUILD_ARGS = -trimpath
++BUILD_ARGS = -trimpath -buildmode=pie
+ 
+ bin-windows: build/windows-amd64/nebula.exe build/windows-amd64/nebula-cert.exe
+ 	mv $? .

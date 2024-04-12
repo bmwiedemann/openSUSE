@@ -1,0 +1,6 @@
+<package name="nebula" project="openSUSE:Factory">
+  <title></title>
+  <description> A scalable overlay networking tool with a focus on performance, simplicity and security</description>
+  <devel project="network:vpn" package="nebula"/>
+  <url>https://github.com/slackhq/nebula</url>
+</package>

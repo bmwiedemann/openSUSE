@@ -1,0 +1,30 @@
+[Unit]
+Description=Nebula overlay networking tool
+Wants=basic.target network-online.target nss-lookup.target time-sync.target
+After=basic.target network.target network-online.target
+Before=sshd.service
+AssertDirectoryNotEmpty=/etc/nebula
+
+[Service]
+Type=notify
+NotifyAccess=main
+SyslogIdentifier=nebula
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStart=/usr/sbin/nebula -config /etc/nebula/config.yml
+Restart=always
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+PrivateDevices=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+RestrictRealtime=true
+# give permission to TUN
+BindPaths=/dev/net/tun
+DeviceAllow=/dev/net/tun rw
+
+[Install]
+WantedBy=multi-user.target
