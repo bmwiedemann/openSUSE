@@ -95,4 +95,15 @@
   * improve disk-usage in susedata output</comment>
     <requestid>1162949</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1e780dfaba9a75728dfc8400f3a65fd6</srcmd5>
+    <version>0.4.4</version>
+    <time>1712936051</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.4
+  * supports also schema version 0.2 now
+  * supports specifing add-on media product builds (versus OS)
+  * supports overwriting package (from) information in updatinfo</comment>
+    <requestid>1166882</requestid>
+  </revision>
 </revisionlist>
