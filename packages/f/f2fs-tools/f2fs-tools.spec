@@ -1,7 +1,7 @@
 #
 # spec file for package f2fs-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,11 @@
 #
 
 
+%define libf2_so_ver 10
+%define libf2_format_so_ver 9
+
 Name:           f2fs-tools
-Version:        1.15.0
+Version:        1.16.0
 Release:        0
 Summary:        Utilities for the Flash-friendly Filesystem (F2FS)
 License:        GPL-2.0-only AND LGPL-2.1-only
@@ -37,22 +40,21 @@ Supplements:    filesystem(f2fs)
 Utilities needed to create and maintain so-called Flash-Friendly (F2)
 filesystems.
 
-%package -n libf2fs9
+%package -n libf2fs%libf2_so_ver
 Summary:        Library to manipulate F2 filesystems
 Group:          System/Libraries
 
-%description -n libf2fs9
+%description -n libf2fs%libf2_so_ver
 This package contains a shared library used for manipulation of F2
 filesystems.
 
-%package -n libf2fs_format8
+%package -n libf2fs_format%libf2_format_so_ver
 Summary:        Library to create F2 filesystems
 Group:          System/Libraries
 
-%description -n libf2fs_format8
+%description -n libf2fs_format%libf2_format_so_ver
 This package contains a shared library to format F2 filesystems.
 
-%if 0%{?suse_version} < 1550
 %package compat
 Summary:        f2fs utility compatibility symlinks
 Group:          System/Filesystems
@@ -61,13 +63,12 @@ BuildArch:      noarch
 %description compat
 This subpackage contains symbolic links /sbin/fsck.* and /sbin/mkfs.*
 needed for programs that assume these locations.
-%endif
 
 %package devel
 Summary:        Development files for f2fs
 Group:          Development/Languages/C and C++
-Requires:       libf2fs9 = %version-%release
-Requires:       libf2fs_format8 = %version-%release
+Requires:       libf2fs%libf2_so_ver = %version-%release
+Requires:       libf2fs_format%libf2_format_so_ver = %version-%release
 
 %description devel
 This package contains development files for %name.
@@ -88,27 +89,27 @@ rm -f "%buildroot/%_sbindir/sg_write_buffer"
 
 mkdir -p "%buildroot/sbin" "%buildroot/%_includedir"
 %if 0%{?suse_version} < 1550
-ln -sf "%_sbindir"/{defrag.f2fs,dump.f2fs,f2fstat,fibmap.f2fs,fsck.f2fs,mkfs.f2fs,parse.f2fs,resize.f2fs,sload.f2fs} "%buildroot/sbin/"
+for i in defrag.f2fs dump.f2fs fibmap.f2fs fsck.f2fs mkfs.f2fs parse.f2fs resize.f2fs sload.f2fs; do
+	ln -sf "%_sbindir/$i" "%buildroot/sbin/"
+done
 %endif
 # for android-tools… this is of course totally untested.
 # The shared library for example has a "main" symbol :-/
 cp -a include/f2fs_fs.h mkfs/f2fs_format_utils.h \
 	"%buildroot/%_includedir/"
 
-%post   -n libf2fs9 -p /sbin/ldconfig
-%postun -n libf2fs9 -p /sbin/ldconfig
-%post   -n libf2fs_format8 -p /sbin/ldconfig
-%postun -n libf2fs_format8 -p /sbin/ldconfig
+%ldconfig -n libf2fs%libf2_so_ver
+%ldconfig -n libf2fs_format%libf2_format_so_ver
 
 %files
 %license COPYING
 %_sbindir/*
 %_mandir/man8/*
 
-%files -n libf2fs9
+%files -n libf2fs%libf2_so_ver
 %_libdir/libf2fs.so.*
 
-%files -n libf2fs_format8
+%files -n libf2fs_format%libf2_format_so_ver
 %_libdir/libf2fs_format.so.*
 
 %if 0%{?suse_version} < 1550

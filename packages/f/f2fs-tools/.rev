@@ -179,4 +179,12 @@
     <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1053827 from lnussel)</comment>
     <requestid>1055739</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3ca59a669de3fa1aca5f81d150cf5c01</srcmd5>
+    <version>1.16.0</version>
+    <time>1712936085</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.16.0:</comment>
+    <requestid>1166926</requestid>
+  </revision>
 </revisionlist>
