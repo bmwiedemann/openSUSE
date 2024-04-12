@@ -30,7 +30,7 @@
     <rpm-check-signatures>false</rpm-check-signatures>
     <rpm-excludedocs>false</rpm-excludedocs>
     <locale>en_US</locale>
-    <keytable>us.map.gz</keytable>
+    <keytable>us</keytable>
     <hwclock>utc</hwclock>
   </preferences>
   <repository type="rpm-md">

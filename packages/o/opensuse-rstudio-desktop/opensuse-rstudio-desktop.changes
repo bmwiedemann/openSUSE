@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 10 07:31:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix keytable entry: we need to specify us, not us.map.gz.
+
+-------------------------------------------------------------------
 Fri Mar 27 09:19:29 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable build on aarch64
