@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 11 08:16:20 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.1.1
+    - Visual adjustments and optimization of the graphical user interface.
+    - Fixed rarely occurring problems in connection with the browser used.
+    - Textual adjustments.
+    - Fixed READER messages in the SDK when using unknown cards or when
+      the connection to the card is unstable.
+
+-------------------------------------------------------------------
 Thu Feb 29 14:15:15 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
