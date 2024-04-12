@@ -18,7 +18,7 @@
 
 %define boost_min_version 1.67
 Name:           wesnoth
-Version:        1.17.25
+Version:        1.18.0
 Release:        0
 Summary:        Fantasy Turn-Based Strategy Game
 License:        EPL-1.0 AND GPL-2.0-or-later
@@ -40,6 +40,7 @@ BuildRequires:  libboost_chrono1_75_0-devel
 BuildRequires:  libboost_coroutine1_75_0-devel
 BuildRequires:  libboost_date_time1_75_0-devel
 BuildRequires:  libboost_filesystem1_75_0-devel
+BuildRequires:  libboost_graph1_75_0-devel
 BuildRequires:  libboost_iostreams1_75_0-devel
 BuildRequires:  libboost_locale1_75_0-devel
 BuildRequires:  libboost_program_options1_75_0-devel
@@ -53,6 +54,7 @@ BuildRequires:  libboost_chrono-devel >= %{boost_min_version}
 BuildRequires:  libboost_coroutine-devel >= %{boost_min_version}
 BuildRequires:  libboost_date_time-devel >= %{boost_min_version}
 BuildRequires:  libboost_filesystem-devel >= %{boost_min_version}
+BuildRequires:  libboost_graph-devel >= %{boost_min_version}
 BuildRequires:  libboost_iostreams-devel >= %{boost_min_version}
 BuildRequires:  libboost_locale-devel >= %{boost_min_version}
 BuildRequires:  libboost_program_options-devel >= %{boost_min_version}
