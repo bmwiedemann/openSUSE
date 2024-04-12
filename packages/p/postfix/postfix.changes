@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  5 01:44:30 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Move qshape(1) out of -doc, install it as a binary with the main package
+
+-------------------------------------------------------------------
 Tue Mar  5 16:46:16 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.8.6
