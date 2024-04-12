@@ -23,4 +23,12 @@
     <comment>- Make the build reproducible by killing off dates.</comment>
     <requestid>1143116</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c560e6369450c647775516874fe3c4b5</srcmd5>
+    <version>4.13.0</version>
+    <time>1712936089</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 4.13</comment>
+    <requestid>1166935</requestid>
+  </revision>
 </revisionlist>

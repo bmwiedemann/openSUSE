@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 23 22:12:54 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.13
+  * Change gac to respect CC and CXX environment variables if set
+    (to override the C/C++ compiler it invokes)
+  * Support package extensions (see the manual section
+    "Extensions Provided by a Package")
+  * Use gap-anupq package for computing isomorphism of p-groups
+    if it is available
+  * Speed up ``AsList``, ``AsSet`` and ``ElementsStabChain`` for
+    permutation groups, by not sorting the list returned by
+    ``ElementsStabChain`` (in accordance with its documentation,
+    which never promised this)
+
+-------------------------------------------------------------------
 Wed Jan 31 19:10:01 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Make the build reproducible by killing off dates.
