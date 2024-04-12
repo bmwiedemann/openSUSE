@@ -1,7 +1,7 @@
 #
 # spec file for package jack
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -135,9 +135,6 @@ communicate with jack clients/servers.
 %setup -q -n %{name}2-%{version}
 %autopatch -p1
 
-#Change python script headers to python3
-for i in `grep -rl "%{_bindir}/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
-
 %build
 %define _lto_cflags %{nil}
 export CFLAGS="%{optflags} -ggdb -fPIC"
@@ -170,6 +167,7 @@ mv %{buildroot}%{_datadir}/jack-audio-connection-kit %{buildroot}%{_docdir}
 %endif
 
 %fdupes -s %{buildroot}%{_docdir}
+%python3_fix_shebang
 
 %post -n libjack%{sonum} -p /sbin/ldconfig
 %postun -n libjack%{sonum} -p /sbin/ldconfig

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 11 09:20:55 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Fri May 19 17:26:12 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Provide jack-daemon as an implementation-agnostic virtual name.

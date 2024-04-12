@@ -633,4 +633,12 @@ Update the waf code to the 2.0 series in order to work under python3.7 taken fro
     <comment></comment>
     <requestid>1088564</requestid>
   </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>87990361929941b4245b7f5b0adad5fa</srcmd5>
+    <version>1.9.22</version>
+    <time>1712936025</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166834</requestid>
+  </revision>
 </revisionlist>
