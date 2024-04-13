@@ -4,13 +4,13 @@
   <attribute namespace="OBS" name="ApprovedRequestSource"/>
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
-  boo#0: '20240411'
+  boo#0: '20240412'
   boo#1172073: '20240205'
   boo#1207390: '20240411'
   boo#1207940: '20240411'
   boo#1209053: '20240129'
   boo#1209728: '20240115'
-  boo#1216660: '20240411'
+  boo#1216660: '20240412'
   boo#1217029: '20240411'
   boo#1217683: '20240309'
   boo#1218131: '20240318'
@@ -18,13 +18,13 @@
   boo#1218565: '20240107'
   boo#1218847: '20240126'
   boo#1218954: '20240119'
-  boo#1219132: '20240411'
+  boo#1219132: '20240412'
   boo#1219135: '20240124'
   boo#1219139: '20240129'
   boo#1219188: '20240128'
   boo#1219242: '20240205'
   boo#1219284: '20240222'
-  boo#1219384: '20240411'
+  boo#1219384: '20240412'
   boo#1219401: '20240216'
   boo#1219481: '20240322'
   boo#1219529: '20240204'
@@ -287,9 +287,9 @@ products:
     - x86_64
   - opensuse-rmt-server-image:
     - x86_64
-#  - opensuse-rstudio-desktop:
+  - opensuse-rstudio-desktop:
 #    - x86_64
-  - opensuse-rstudio-server:
+#  - opensuse-rstudio-server:
     - x86_64
   - opensuse-spamassassin-image:
     - x86_64
@@ -555,10 +555,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20240412'
 published: '20240411'
 publishing: '20240411'
-testing: '20240411'
+testing: '20240412'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
