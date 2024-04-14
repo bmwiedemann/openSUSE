@@ -26,7 +26,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           transactional-update
-Version:        4.6.0
+Version:        4.6.5
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -226,15 +226,19 @@ done
 
 %pre -n tukit
 %systemd_pre create-dirs-from-rpmdb.service
+%systemd_pre prepare-nextroot-for-softreboot.service
 
 %post -n tukit
 %systemd_post create-dirs-from-rpmdb.service
+%systemd_post prepare-nextroot-for-softreboot.service
 
 %preun -n tukit
 %systemd_preun create-dirs-from-rpmdb.service
+%systemd_preun prepare-nextroot-for-softreboot.service
 
 %postun -n tukit
 %systemd_postun_with_restart create-dirs-from-rpmdb.service
+%systemd_postun_with_restart prepare-nextroot-for-softreboot.service
 
 %pre -n tukitd
 %systemd_pre tukitd.service
@@ -291,6 +295,8 @@ done
 %{_sbindir}/tukit
 %{_sbindir}/create_dirs_from_rpmdb
 %{_unitdir}/create-dirs-from-rpmdb.service
+%{_libexecdir}/prepare-nextroot-for-softreboot
+%{_unitdir}/prepare-nextroot-for-softreboot.service
 %{_distconfdir}/tukit.conf
 %{_mandir}/man5/tukit.conf.5.gz
 
@@ -322,5 +328,7 @@ done
 
 %files zypp-config
 %config(noreplace) %{_sysconfdir}/zypp/systemCheck.d/transactional-update.check
+
+%check
 
 %changelog
