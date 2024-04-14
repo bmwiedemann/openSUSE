@@ -2131,4 +2131,12 @@
   + Look for finish functions inside the list of constructors. (forwarded request 1164512 from dimstar)</comment>
     <requestid>1164566</requestid>
   </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>905d9c7170d18621aea684e6a348b499</srcmd5>
+    <version>1.80.1</version>
+    <time>1713088434</time>
+    <user>anag+factory</user>
+    <comment>- gi-find-deps.sh: further expand on the java script scanner. (forwarded request 1167036 from dimstar)</comment>
+    <requestid>1167123</requestid>
+  </revision>
 </revisionlist>

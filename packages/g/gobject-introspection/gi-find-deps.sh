@@ -102,7 +102,7 @@ function javascript_requires {
 	done
   # some javascript code imports gi like this (seen since GNOME 43, e.g. GNOME Maps)
   # import 'gi://GeocodeGlib?version=2.0'
-        for module in $(grep -h -P -o "[']gi://([^']+)" $1 | sed "s|'gi://||"); do
+        for module in $(grep -h -P -o "['\"]gi://([^'\"]+)" $1 | sed "s|['\"]gi://||"); do
                 split_name_versionjs_gi_name_version $module
                 print_req_prov
         done
@@ -221,6 +221,9 @@ while read file; do
 			case $(file -b $file) in
 				*[Pp]ython*script*)
 					python_requires "$file"
+					;;
+				*JavaScript*source*)
+		                        javascript_requires "$file"
 					;;
 				*ELF*)
 					gresources_requires "$file"
