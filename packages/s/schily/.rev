@@ -450,4 +450,12 @@ make glibc-2.34 happy</comment>
     <comment>- Update to release 2023.09.26</comment>
     <requestid>1125374</requestid>
   </revision>
+  <revision rev="49" vrev="49">
+    <srcmd5>13f09b72246bff1f43fd06d836ec7ce1</srcmd5>
+    <version>unknown</version>
+    <time>1713088425</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2024.03.21</comment>
+    <requestid>1167037</requestid>
+  </revision>
 </revisionlist>

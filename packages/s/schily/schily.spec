@@ -1,7 +1,7 @@
 #
 # spec file for package schily
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 # grep -Pir 'define\s+VERSION|strvers'
-%define rver	2023-09-28
-%global box_version	2023.09.28
+%define rver	2024-03-21
+%global box_version	2024.03.21
 %global cdr_version	3.02~a10
 %global sccs_version	5.09
 %global smake_version	1.6
@@ -104,7 +104,7 @@ Summary:        A program to generate tag files for ex/vi
 License:        BSD-2-Clause AND CDDL-1.0 AND GPL-2.0-only AND GPL-2.0-or-later AND BSD-3-Clause AND HPND AND ISC
 Group:          Development/Tools/Building
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %description ctags
 Ctags makes a tags file for ex(1) from the specified C, Pascal,
@@ -362,7 +362,7 @@ Provides:       mt
 Obsoletes:      star-rmt
 Provides:       star-rmt:/usr/bin/smt
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %description mt
 The mt/smt program sends commands to a local or a remote magnetic
@@ -376,7 +376,7 @@ Provides:       rmt
 Obsoletes:      star-rmt
 Provides:       star-rmt:/usr/bin/srmt
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %description rmt
 rmt is a program that can be used by e.g. star and ufsdump

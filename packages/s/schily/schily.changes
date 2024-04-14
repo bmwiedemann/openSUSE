@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 12 10:45:32 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2024.03.21
+  * mkisofs: produce less scrollback when logging progress to ttys.
+
+-------------------------------------------------------------------
 Sun Nov 12 23:22:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2023.09.26
