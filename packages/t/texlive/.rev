@@ -1146,4 +1146,14 @@
     <comment>Update to TeXLive 2024, third</comment>
     <requestid>1160632</requestid>
   </revision>
+  <revision rev="95" vrev="98">
+    <srcmd5>979d9c77680396e9f3a4a688d9b86c98</srcmd5>
+    <version>unknown</version>
+    <time>1713088428</time>
+    <user>anag+factory</user>
+    <comment>- Add patch source-dvipdfm-x.dif
+  * dvipdfmx: repeated inclusion of the same image did not share
+    the image data, but had separate copies for each inclusion.</comment>
+    <requestid>1167063</requestid>
+  </revision>
 </revisionlist>

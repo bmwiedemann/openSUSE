@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 12 13:10:45 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch source-dvipdfm-x.dif
+  * dvipdfmx: repeated inclusion of the same image did not share
+    the image data, but had separate copies for each inclusion. 
+
+-------------------------------------------------------------------
 Thu Mar 21 13:47:14 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch source-luacore.dif

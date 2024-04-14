@@ -264,6 +264,8 @@ Patch17:        source-64.dif
 Patch18:        source-a2ping.dif
 Patch19:        source-dvipng.dif
 Patch21:        source-ppc64.dif
+# PATCH-FIX-UPSTREAM
+Patch22:        source-dvipdfm-x.dif
 # PATCH-FIX-SUSE Make biber work with our perl
 Patch42:        biblatex-encoding.dif
 Patch43:        biblatex-ms-encoding.dif
@@ -4243,6 +4245,7 @@ This package is required by the package texlive-biber-bin.
 %patch -P18 -p0 -b .a2p
 %patch -P19 -p0 -b .dvipng
 %patch -P21 -p0 -b .ppcelf
+%patch -P22 -p0 -b .sameimg
 pushd libs/luajit/LuaJIT-src/
 #Missed patch ppc and risc
 %patch -P106 -p1 -b .arm64
