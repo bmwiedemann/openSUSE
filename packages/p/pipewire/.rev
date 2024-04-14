@@ -1014,4 +1014,12 @@ Build tested.
   from the BuildRequires section.</comment>
     <requestid>1160422</requestid>
   </revision>
+  <revision rev="110" vrev="3">
+    <srcmd5>5fbbf9e0653413708c1d89c1f34f0d0e</srcmd5>
+    <version>1.0.4</version>
+    <time>1713088418</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166928</requestid>
+  </revision>
 </revisionlist>

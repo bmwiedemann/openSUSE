@@ -194,7 +194,7 @@ This package provides the PipeWire shared library.
 Summary:        PipeWire libjack replacement libraries
 Group:          Development/Libraries/C and C++
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %description libjack-%{apiver_str}
 PipeWire is a server and user space API to deal with multimedia pipelines.
@@ -293,7 +293,6 @@ This package contains X11 bell support for PipeWire.
 %package spa-plugins-%{spa_ver_str}
 Summary:        Plugins For PipeWire SPA
 Group:          Productivity/Multimedia/Other
-Suggests:       pipewire-libjack-%{apiver_str}
 
 %description spa-plugins-%{spa_ver_str}
 PipeWire is a server and user space API to deal with multimedia pipelines.
@@ -313,6 +312,30 @@ Some of its features include:
  * Arbirary input/output behaviour.
 
 This package provides plugins for extending PipeWire SPA's functionality.
+
+%package spa-plugins-%{spa_ver_str}-jack
+Summary:        SPA Plugin to use PipeWire as jack client
+Group:          Productivity/Multimedia/Other
+Requires:       jack
+
+%description spa-plugins-%{spa_ver_str}-jack
+PipeWire is a server and user space API to deal with multimedia pipelines.
+
+Some of its features include:
+
+ * Unlimited input/output ports;
+ * Per port format enumeration and negotiation;
+ * Enumeration/configuration of per port parameters;
+ * Application controlled buffer allocation with option to let the plugin
+   Allocate memory;
+ * Arbitrary buffer metadata;
+ * Buffers are passed around by id which is very fast and avoids the need
+   for refcounting;
+ * Synchronous and asynchronous processing;
+ * All api is designed to work without any allocations;
+ * Arbirary input/output behaviour.
+
+This package provides the SPA plugin to connect Pipewire to a JACK server
 
 %package devel
 Summary:        Development Files For PipeWire, A Multimedia Framework
@@ -676,7 +699,6 @@ fi
 %if %{with use_ffmpeg}
 %{_libdir}/spa-%{spa_ver}/ffmpeg/
 %endif
-%{_libdir}/spa-%{spa_ver}/jack/
 %if %{with libcamera}
 %{_libdir}/spa-%{spa_ver}/libcamera/
 %endif
@@ -797,6 +819,9 @@ fi
 
 %files jack
 %config %{_sysconfdir}/ld.so.conf.d/pipewire-jack-%{_arch}.conf
+
+%files spa-plugins-%{spa_ver_str}-jack
+%{_libdir}/spa-%{spa_ver}/jack/
 
 %files lang -f %{name}.lang
 

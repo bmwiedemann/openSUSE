@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 11 09:32:10 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Move the jack spa plugin from the pipewire-spa-plugins-0_2
+  package to a new pipewire-spa-plugins-0_2-jack package. This
+  allows to not Suggest the pipewire-libjack package from 
+  pipewire-spa-plugins-0_2 since that's only used to connect
+  pipewire as a client to a jack server which is not common at all
+  (boo#1222253).
+
+-------------------------------------------------------------------
 Tue Mar 19 07:42:26 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Avoid %if %{pkg_vcmp gcc < 8}, instead replicate the condition
