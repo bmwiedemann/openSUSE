@@ -1,7 +1,7 @@
 #
 # spec file for package SDL_gfx
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define lname	libSDL_gfx15
+%define lname	libSDL_gfx16
 Name:           SDL_gfx
-Version:        2.0.26
+Version:        2.0.27
 Release:        0
 Summary:        SDL Graphics Routines for Primitives and Other Support Functions
 License:        Zlib
@@ -26,8 +26,11 @@ Group:          Development/Libraries/X11
 URL:            http://www.ferzkopp.net/wordpress/2016/01/02/sdl_gfx-sdl2_gfx/
 Source:         http://www.ferzkopp.net/Software/SDL_gfx-2.0/%name-%version.tar.gz
 Source2:        baselibs.conf
+#https://sourceforge.net/p/sdlgfx/code/HEAD/tree/ChangeLog
+BuildRequires:  automake
 BuildRequires:  dos2unix
-BuildRequires:  pkgconfig
+BuildRequires:  libtool
+BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(sdl)
 
 %description
@@ -61,25 +64,23 @@ provided basic drawing routines such as lines, circles or polygons and
 SDL_rotozoom which implemented a interpolating rotozoomer for SDL
 surfaces. The current components of the SDL_gfx library are:
 
-- Graphic Primitives (SDL_gfxPrimitves.h)
-
-- Rotozoomer (SDL_rotozoom.h)
-
-- Framerate control (SDL_framerate.h)
-
-- MMX image filters (SDL_imageFilter.h)
+* Graphic Primitives (SDL_gfxPrimitves.h)
+* Rotozoomer (SDL_rotozoom.h)
+* Framerate control (SDL_framerate.h)
+* MMX image filters (SDL_imageFilter.h)
 
 The library is backwards compatible to the above mentioned code. It is
 written in plain C and can be used in C++ code.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+autoreconf -fi
 # MMX code has a problem with uninitialized variables; we would only turn it
 # on for x86_64 anyway - but that one can use SSE instead.
 %configure --disable-static --disable-mmx
-make %{?_smp_mflags}
+%make_build
 dos2unix README
 chmod 644 LICENSE AUTHORS ChangeLog NEWS README
 
@@ -87,13 +88,12 @@ chmod 644 LICENSE AUTHORS ChangeLog NEWS README
 %make_install
 find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license LICENSE
 %doc AUTHORS ChangeLog NEWS README
-%_libdir/libSDL_gfx.so.15*
+%_libdir/libSDL_gfx.so.[0-9]*
 
 %files -n libSDL_gfx-devel
 %_includedir/SDL/
