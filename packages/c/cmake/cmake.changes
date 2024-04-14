@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Apr 12 06:09:54 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- update to 3.29.2
+  * Fix regression on reconfigure with unnormalized
+    -DCMAKE_<LANG>_COMPILER=
+  * CMakePackageConfigHelpers: Restore undocumented
+    PACKAGE_PREFIX_DIR variable
+  * Swift: Ninja: Remove module dependency for executables
+  * FindJasper: Fix Jasper::Jasper IMPORTED_CONFIGURATIONS
+  * FindOpenSSL: Update layout for Shining Light Productions
+
+-------------------------------------------------------------------
+Thu Apr  4 12:17:57 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- update to 3.29.1
+  * IntelLLVM: Revert accidental use of -external:I with Fortran
+    compilers
+  * libuv: process: de-duplicate conditions for using kqueue
+  * ctest: Restore enforcement of RESOURCE_LOCK test property
+  * try_compile(): Include languages with _ or - when passing linker vars
+  * Swift: Add CMAKE_LINKER_TYPE support
+  * FindMatlab: R2024a version map
+
+-------------------------------------------------------------------
 Thu Mar 21 19:24:26 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - update  to 3.29
@@ -27,6 +51,14 @@ Wed Feb 14 16:46:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
   * cmake-zerojvm.patch
     + fix JVM detection on JDKs with ZERO virtual machine, like
       java-21-openjdk for armv6l
+
+-------------------------------------------------------------------
+Fri Jan 19 19:25:29 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Revert the linker flags revert. Instead of increasing differences
+  between SLE/Leap and Tumbleweed and risking silent breakage of
+  dozens of packages due to underlinking, fix the one failing
+  package.
 
 -------------------------------------------------------------------
 Fri Jan 19 15:26:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
