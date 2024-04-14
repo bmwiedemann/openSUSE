@@ -301,4 +301,16 @@
 - python3 package added</comment>
     <requestid>1133632</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6157e30e3ba9c20b9a61246822af40b2</srcmd5>
+    <version>3.11.0</version>
+    <time>1713088595</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.11.0:
+  * h5py is now compatible with Numpy 2.0
+  * New methods :meth:`.Group.visit_links` and
+    :meth:`.Group.visititems_links`
+    that include links when visiting groups (:pr:`2360`).</comment>
+    <requestid>1167623</requestid>
+  </revision>
 </revisionlist>

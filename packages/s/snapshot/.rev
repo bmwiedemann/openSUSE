@@ -37,4 +37,14 @@ New package for GNOME</comment>
   + Update translations. (forwarded request 1164508 from dimstar)</comment>
     <requestid>1164564</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aac1ed663c6878482ed1ef2698fa5ca4</srcmd5>
+    <version>46.2</version>
+    <time>1713088439</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.2:
+  + Disable portal.
+  + Always use prefered caps. (forwarded request 1166996 from dimstar)</comment>
+    <requestid>1167120</requestid>
+  </revision>
 </revisionlist>

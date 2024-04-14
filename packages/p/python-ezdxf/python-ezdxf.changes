@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sat Apr  6 19:40:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * NEW: `ezdxf` requires Python 3.9 or newer
+  * NEW: support for the [[SPATIAL_FILTER]] entity.
+  * This is the basic requirement to support clipping of block
+    references and XREFs aka the [[XCLIP]] command in CAD
+    applications
+  * NEW: `ezdxf.xclip` module for adding 2D clipping paths to
+    block references and XREFs
+  * replicates the [[XCLIP]] command
+  * NEW: support for the [[IMAGE]] entity in the [[drawing add-
+    on]], added by [[mbway]]
+  * supported by these backends:
+  * [[PyQtBackend]]
+  * [[MatplotlibBackend]]
+  * [[PyMuPdfBackend]]
+  * NEW: the `ezdxf draw` command supports additional backends by
+    option `--backend {matplotlib,qt,mupdf,custom_svg}`, added by
+  * NEW: `ezdxf.colors.RGBA` class
+  * NEW: support for font-name synonyms, find macOS fonts on
+    Windows/Linux and vice vesa
+  * NEW: additional font search directory added for macOS
+    `/System/Library/Fonts/` by [[ru4ert]]
+  * the cache version number has been increased so that the
+    fontmanger-cache is automatically rebuilt
+  * NEW: `MeshBuilder.render_3dsolid()`, create [[3DSOLID]]
+    entities from simple polyhedrons (experimental)
+  * NEW: `Auditor` fixes non-existing linetypes in layers,
+    replaced by `Continuous`
+  * NEW: export and load DXF documents as JSON encoded tags
+  * `ezdxf.document.export_json_tags()`
+  * `ezdxf.document.load_json_tags()`
+  * CHANGE: renamed `Image.boundray_path_ocs()` to
+    `Image.pixel_boundary_path()`
+  * CHANGE: refactoring of the [[RecorderBackend]]
+  * CHANGE: replaced `ezdxf.math.linspace` by `numpy.linspace`
+  * CHANGE: replaced functions `gauss_jordan_solver()`,
+    `gauss_jordan_inverse()`, `gauss_vector_solver()` and
+    `gauss_matrix_solver()` by a `numpy` based solution
+  * moved replaced functions to module `ezdxf.math.legacy`
+  * CHANGE: replaced `LUDecomposition` class by `NumpySolver`
+    class
+  * moved `LUDecomposition` to module `ezdxf.math.legacy`
+  * CHANGE: `MeshData.vertices` has to be a list of `Vec3`
+  * CHANGE: renamed `ClippingPolygon2d` to
+    `ConvexClippingPolygon2d`
+  * CHANGE: The Cython extensions have been reverted to pure
+    Cython code and removed low-level C++ classes to make it
+    easier to maintain, but with a small performance penalty.
+  * REMOVE: untested and incorrect implementation of
+    `ezdxf.math.BezierSurface`
+  * BUGFIX: Restore lost links between `LAYOUT` and
+    `BLOCK_RECORD` entities
+  * BUGFIX: `NumpyPath2d` could contain 3d vertices
+  * BUGFIX: DXF attribute `invisible` wasn't exported
+  * BUGFIX: catch exceptions of the `draw` command when required
+    dependencies are not installed
+
+-------------------------------------------------------------------
 Wed Feb 21 10:29:01 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.1.4:
@@ -24,10 +84,10 @@ Thu Jun  3 13:35:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Sat Jan 16 07:57:51 UTC 2021 - andy great <andythe_great@pm.me>
 
-- Disable build for python36 because scipy dep. 
+- Disable build for python36 because scipy dep.
 - Update to version 0.15.1
   * NEW: Spline.audit() audit support for the SPLINE entity
-  * NEW: The recover module tolerates malformed group codes and 
+  * NEW: The recover module tolerates malformed group codes and
     value tags.
   * Changed the Matrix44.matrix attribute in the Python implementation
     to a “private” attribute Matrix44._matrix, because this attribute
@@ -36,121 +96,121 @@ Sat Jan 16 07:57:51 UTC 2021 - andy great <andythe_great@pm.me>
   * BUGFIX: invalid vertex subscript access in dxf2code add-on
   * BUGFIX: cubic_bezier_from_ellipse() recognizes full ellipses
   * BUGFIX: cubic_bezier_from_arc() recognizes full circles
-  * BUGFIX: pickle support for C-extensions Vec2, Vec3, Matrix44 
+  * BUGFIX: pickle support for C-extensions Vec2, Vec3, Matrix44
     and Bezier4P
   * BUGFIX: attribute error when exporting matrices in the MATERIAL
-    entity 
+    entity
 - Updates for version 0.15
   * NEW: linetype support for matplotlib- and pyqt drawing backend
   * NEW: HATCH island support for matplotlib- and pyqt drawing backend
-  * NEW: basic HATCH pattern support for matplotlib- and pyqt 
+  * NEW: basic HATCH pattern support for matplotlib- and pyqt
     drawing backend
   * NEW: Font support for matplotlib- and pyqt drawing backend
   * NEW: POINT mode support for matplotlib- and pyqt drawing backend,
     relative point size is not supported
   * NEW: Proxy graphic support for the drawing add-on
-  * NEW: recover misplaced tags of the AcDbEntity subclass 
+  * NEW: recover misplaced tags of the AcDbEntity subclass
     (color, layer, linetype, ...), supported by all loading modes
   * NEW: ezdxf.addons.geo module, support for the __geo_interface__,
     see docs and tutorial
-  * NEW: GeoData.setup_local_grid() setup geo data for CRS similar 
+  * NEW: GeoData.setup_local_grid() setup geo data for CRS similar
     to EPSG:3395 World Mercator
   * NEW: MLINE support but without line break and fill break (gaps)
     features
-  * NEW: Bezier.flattening() adaptive recursive flattening 
+  * NEW: Bezier.flattening() adaptive recursive flattening
     (approximation)
-  * NEW: Bezier4P.flattening() adaptive recursive flattening 
+  * NEW: Bezier4P.flattening() adaptive recursive flattening
     (approximation)
-  * NEW: Path.flattening() adaptive recursive flattening 
+  * NEW: Path.flattening() adaptive recursive flattening
     (approximation)
-  * NEW: Circle.flattening() approximation determined by a max. 
+  * NEW: Circle.flattening() approximation determined by a max.
     sagitta value
-  * NEW: Arc.flattening() approximation determined by a max. 
+  * NEW: Arc.flattening() approximation determined by a max.
     sagitta value
-  * NEW: ConstructionArc.flattening() approximation determined by 
+  * NEW: ConstructionArc.flattening() approximation determined by
     a max. sagitta value
   * NEW: ezdxf.math.distance_point_line_3d()
-  * NEW: ConstructionEllipse.flattening() adaptive recursive 
+  * NEW: ConstructionEllipse.flattening() adaptive recursive
     flattening (approximation)
-  * NEW: Ellipse.flattening() adaptive recursive flattening 
+  * NEW: Ellipse.flattening() adaptive recursive flattening
     (approximation)
-  * NEW: BSpline.flattening() adaptive recursive flattening 
+  * NEW: BSpline.flattening() adaptive recursive flattening
     (approximation)
-  * NEW: Spline.flattening() adaptive recursive flattening 
+  * NEW: Spline.flattening() adaptive recursive flattening
     (approximation)
-  * NEW: matplotlib.qsave(), ltype argument to switch between 
-    matplotlib dpi based linetype rendering and AutoCAD like 
+  * NEW: matplotlib.qsave(), ltype argument to switch between
+    matplotlib dpi based linetype rendering and AutoCAD like
     drawing units based linetype rendering
-  * NEW: Solid.vertices() returns OCS vertices in correct order 
+  * NEW: Solid.vertices() returns OCS vertices in correct order
     (also Trace)
-  * NEW: Solid.wcs_vertices() returns WCS vertices in correct order 
+  * NEW: Solid.wcs_vertices() returns WCS vertices in correct order
     (also Trace)
   * NEW: Face3D.wcs_vertices() compatibility interface to SOLID and
     TRACE
-  * NEW: Hatch.paths.external_paths() returns iterable of external 
+  * NEW: Hatch.paths.external_paths() returns iterable of external
     boundary paths
-  * NEW: Hatch.paths.outermost_paths() returns iterable of outer 
+  * NEW: Hatch.paths.outermost_paths() returns iterable of outer
     most boundary paths
-  * NEW: Hatch.paths.default_paths() returns iterable of default 
+  * NEW: Hatch.paths.default_paths() returns iterable of default
     boundary paths
   * NEW: Hatch.paths.rendering_paths() returns iterable of paths to
     process for rendering
   * NEW: Drawing.units property to get/set document/modelspace units
   * NEW: ezdxf.new() argument units to setup document and modelspace
-    units and $MEASUREMENT setting and the linetype setup is based on 
+    units and $MEASUREMENT setting and the linetype setup is based on
     this $MEASUREMENT setting.
   * NEW: pattern.load(measurement, factor) load scaled hatch pattern
   * NEW: Path.from_hatch_boundary_path()
-  * NEW: odafc.export_dwg() new replace option to delete existing 
+  * NEW: odafc.export_dwg() new replace option to delete existing
     DWG files
   * NEW: Style table entry supports extended font data
-  * NEW: Point.virtual_entities(), yield POINT entities as DXF 
+  * NEW: Point.virtual_entities(), yield POINT entities as DXF
     primitives
   * NEW: ezdxf.render.point, support module for Point.virtual_entities()
-  * NEW: Optional Cython implementation of some low level math 
+  * NEW: Optional Cython implementation of some low level math
     classes: Vec2, Vec3, Matrix44, Bezier4P
   * NEW: support for complex linetypes for the Importer add-on
   * CHANGE: Optimized infrastructure for loading DXF attributes
-  * CHANGE: Hatch.set_pattern_fill() uses HEADER variable 
-    $MEASUREMENT to determine the default scaling of predefined 
+  * CHANGE: Hatch.set_pattern_fill() uses HEADER variable
+    $MEASUREMENT to determine the default scaling of predefined
     hatch pattern.
-  * CHANGE: fix invalid linetype setup - new linetype scaling like 
+  * CHANGE: fix invalid linetype setup - new linetype scaling like
     common CAD applications
-  * CHANGE: ezdxf.colors module will consolidate all 
+  * CHANGE: ezdxf.colors module will consolidate all
     color/transparency related features
-  * CHANGE: renamed ezdxf.math.Vector to Vec3, but Vector remains 
+  * CHANGE: renamed ezdxf.math.Vector to Vec3, but Vector remains
     as synonym
   * DEPRECATED: ezdxf.tools.rgb module replaced by ezdxf.colors
   * REMOVED: deprecated DXFEntity.transform_to_wcs() interface, use
     DXFEntity.transform(ucs.matrix)
   * REMOVED: deprecated Hatch.edit_boundary() context manager, use
     Hatch.paths attribute
-  * REMOVED: deprecated Hatch.get_gradient() method, use 
+  * REMOVED: deprecated Hatch.get_gradient() method, use
     Hatch.gradient attribute
   * REMOVED: deprecated Hatch.edit_gradient() context manager, use
     Hatch.gradient attribute
   * REMOVED: deprecated Hatch.edit_pattern() context manager, use
     Hatch.pattern attribute
-  * REMOVED: deprecated Hatch.get_seed_points() method, use 
+  * REMOVED: deprecated Hatch.get_seed_points() method, use
     Hatch.seeds attribute
-  * REMOVED: unnecessary argument non_uniform_scaling from 
+  * REMOVED: unnecessary argument non_uniform_scaling from
     Insert.explode()
-  * REMOVED: unnecessary argument non_uniform_scaling from 
+  * REMOVED: unnecessary argument non_uniform_scaling from
     Insert.virtual_entities()
-  * REMOVED: deprecated Spline.edit_data() context manager, use 
+  * REMOVED: deprecated Spline.edit_data() context manager, use
     fit_points, control_points, knots and weights attributes
   * BUGFIX: ezdxf.math.has_clockwise_orientation() returns True for
     counter-clock wise and vice versa
   * BUGFIX: default color for HATCH is 256 (by layer)
   * BUGFIX: fixed broken complex linetype setup
-  * BUGFIX: validate loaded handle seed 
+  * BUGFIX: validate loaded handle seed
 
 -------------------------------------------------------------------
 Thu Nov 12 12:22:33 UTC 2020 - Marketa Machova <mmachova@suse.com>
 
 - Update to 0.14.2
   * Recover Module added to provide a more stable and reliable DXF loading function.
-  * Support for the start- and end width attributes of LWPOLYLINE and 2D POLYLINE 
+  * Support for the start- and end width attributes of LWPOLYLINE and 2D POLYLINE
     vertices to draw banded 2D lines.
   * Many bugfixes and smaller improvements
 

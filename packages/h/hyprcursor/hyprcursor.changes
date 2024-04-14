@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Apr 13 17:27:14 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to 0.1.7:
+  + A small patch to fix 0.1.6's accidental toml / theme finding
+    regressions
+  + Fixes:
+    - lib: fixes to toml manifest searching and extensions when
+      packing
+    - lib: fixed missing overrides
+    - lib: fixed manifest reading permission issues
+    - lib: round hotspots in getShapes
+
+- Changes from update 0.1.6:
+  + A small patch to hyprcursor to fix some permission issues and add
+    a few stuff KDE requested.
+    (This release is ABI-compatible with 0.1.5)
+  + New stuff:
+    - Added user-defined logging
+    - Added a raw data API
+    - Added support for .toml wherever .hl is used
+  + Fixes:
+    - Fixed up permission issues on themes
+
+- Changes from update 0.1.5:
+  + A small update to fix a few minor annoyances.
+  + New stuff:
+    - lib: avoid arithmetic on void*
+    - util: wrap paths in quotes in shell invocations
+    - lib: accept theme names for lookup
+    - lib: set size to 0 for svg images
+
+- Dropped "fix_include_dir_permissions.patch" as the fix has been
+  included upstream.
+
+-------------------------------------------------------------------
 Sat Mar 16 19:45:21 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Initial packaging of verion 0.1.4

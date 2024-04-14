@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Apr 13 09:44:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.37.0:
+  * chore: Update version.go for v0.37.0
+  * vcsim: toggle Content Library cached fields in sync and evict
+    calls
+  * govc: Add library.evict command
+  * vcsim: add ExtensionManager.FindExtension method
+  * build(deps): add vcsim to rpm
+  * govc: add default output formatting for namespace commands
+  * fix: make cns.Client independent of vim25.Client
+  * api: use RetrievePropertiesEx in mo package functions
+  * vcsim: RetrievePropertiesEx & ContinueRetrievePropertiesEx
+  * api: change RetrieveProperties to collect results in batches
+  * feat: Add VAPI bindings for guest namespaces and virtual
+    machine classes
+  * build(deps): enable rpm builds and add archs
+  * api: move vim25.Client.UseServiceVersion to soap.Client
+  * api: Expose vSphere API to evict subscribed content library
+  * fix: vcsim: re-parent children in ResourcePool.Destroy
+  * vcsim: add TaskHistoryCollector support
+  * Remove deprecation for task.Wait and task.WaitForResult
+  * govc: snapshot.tree json output to stdout
+  * fix: endpoint url to bypass lookup service if envoy sidecar
+    enabled
+  * api: Add Downloadendpoint field in the library item file struct
+  * vcsim: add TaskManager.CreateTask support
+  * vcsim: add ExtensionManager support
+  * build(deps): bump google.golang.org/protobuf in /hack/tools
+  * Add support for SHA256 thumbprint based vCenter authentication
+  * fix: lookup client to use envoy sidecar url if enabled
+  * docs: update CHANGELOG
+  * docs: update CONTRIBUTORS
+
+-------------------------------------------------------------------
 Wed Apr 03 17:20:08 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.36.3:

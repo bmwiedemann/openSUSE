@@ -1,7 +1,7 @@
 #
 # spec file for package python-osprofiler
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           python-osprofiler
-Version:        3.4.3
+Version:        4.1.0
 Release:        0
 Summary:        OpenStack Profiler Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/osprofiler
-Source0:        https://files.pythonhosted.org/packages/source/o/osprofiler/osprofiler-3.4.3.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/osprofiler/osprofiler-4.1.0.tar.gz
+# https://review.opendev.org/c/openstack/osprofiler/+/860412
+Patch0:         0001-Add-default-port-to-Elasticsearch-connection-url.patch
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-WebOb >= 1.7.1
@@ -31,8 +33,9 @@ BuildRequires:  python3-ddt
 BuildRequires:  python3-docutils
 BuildRequires:  python3-elasticsearch
 BuildRequires:  python3-importlib-metadata
+BuildRequires:  python3-opentelemetry-exporter-otlp
 BuildRequires:  python3-oslo.concurrency >= 3.26.0
-BuildRequires:  python3-oslo.config
+BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.log
 BuildRequires:  python3-oslo.utils >= 3.33.0
 BuildRequires:  python3-pymongo
@@ -56,7 +59,7 @@ Requires:       python3-PrettyTable >= 0.7.2
 Requires:       python3-WebOb >= 1.7.1
 Requires:       python3-importlib-metadata
 Requires:       python3-oslo.concurrency >= 3.26.0
-Requires:       python3-oslo.config
+Requires:       python3-oslo.config >= 5.2.0
 Requires:       python3-oslo.log
 Requires:       python3-oslo.utils >= 3.33.0
 %if 0%{?suse_version}
@@ -83,7 +86,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for OSProfiler.
 
 %prep
-%autosetup -p1 -n osprofiler-3.4.3
+%autosetup -p1 -n osprofiler-4.1.0
 %py_req_cleanup
 
 %build
@@ -98,7 +101,8 @@ PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
-python3 -m stestr.cli run --black-regex '(^osprofiler.tests.unit.drivers.test_jaeger.JaegerTestCase.*$)'
+rm osprofiler/tests/unit/drivers/test_jaeger.py  # causes import error, --exclude-regex in the next line isn't enough
+%{openstack_stestr_run} --exclude-regex '(^osprofiler.tests.unit.drivers.test_jaeger.JaegerTestCase.*$)'
 
 %files -n python3-osprofiler
 %license LICENSE

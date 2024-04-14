@@ -40,4 +40,12 @@
     <comment>- Remove test BuildRequires, a different package runs the tests.</comment>
     <requestid>930814</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>4fe711f247a1f267c5a1606b45a39596</srcmd5>
+    <version>2.4.0</version>
+    <time>1713088502</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1167540</requestid>
+  </revision>
 </revisionlist>

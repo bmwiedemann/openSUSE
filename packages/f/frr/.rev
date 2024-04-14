@@ -231,4 +231,20 @@
     <comment></comment>
     <requestid>1145085</requestid>
   </revision>
+  <revision rev="30" vrev="10">
+    <srcmd5>6cf90d7387d6e851e8cca19b27c7bfef</srcmd5>
+    <version>8.4</version>
+    <time>1713088504</time>
+    <user>anag+factory</user>
+    <comment>- add
+  0019-bgpd-fix-error-handling-when-receiving-BGP-Prefix-SID-attribute.patch:
+  * Apply upstream fix on error handling when receiving BGP Prefix
+    SID attribute (bsc#1222518,CVE-2024-31948,gh#FRRouting/frr#15628)
+
+- Migration of PAM settings to /usr/lib/pam.d.
+  [+ 0001-disable-zmq-test.patch]
+- enable verbose make rules
+- Cleanup spec file</comment>
+    <requestid>1167542</requestid>
+  </revision>
 </revisionlist>

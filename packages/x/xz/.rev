@@ -765,9 +765,7 @@
     <version>5.4.6</version>
     <time>1711630025</time>
     <user>anag+factory</user>
-    <comment>REVERT.
-
-5.6.0 and 5.6.1 are backdoored.</comment>
+    <comment>downgrade</comment>
     <requestid>1163302</requestid>
   </revision>
   <revision rev="88" vrev="1">
@@ -784,5 +782,28 @@
     <time>1711635443</time>
     <user>dimstar_suse</user>
     <comment>Fix versioned provides of liblzma</comment>
+  </revision>
+  <revision rev="90" vrev="3">
+    <srcmd5>05a358d5885ee991694f49f26d66fc3f</srcmd5>
+    <version>5.6.1.revertto5.4</version>
+    <time>1713088437</time>
+    <user>anag+factory</user>
+    <comment>- revert the switch to tar_scm which dropped the signature
+  validation
+- switch back to tarballs because the upstream tarballs are not
+  gone
+- reinstanciate keyring from Lasse
+- go back to the last release signed by Lasse (5.4.2)
+- revert multibuild, drop service and rpmlintrc
+- use real_ver for the Source, move everything else back to
+  %version like before the hectic XZ downgrade
+- remove payload setting, we are using zstd now
+
+- Switch to using tar_scm for fetching the sources as the upstream
+  tarballs on github are gone
+- introduce _multibuild to allow building the translations outside
+  of Ring0 and everything else in Ring0
+- add rpmlintrc to silence harmless warnings</comment>
+    <requestid>1167536</requestid>
   </revision>
 </revisionlist>

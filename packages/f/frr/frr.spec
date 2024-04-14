@@ -57,6 +57,7 @@ Patch15:        0015-bgpd-Treat-EOR-as-withdrawn-to-avoid-unwanted-handli.patch
 Patch16:        0016-bgpd-Ignore-handling-NLRIs-if-we-received-MP_UNREACH.patch
 Patch17:        0017-bgpd-Fix-use-beyond-end-of-stream-of-labeled-unicast.patch
 Patch18:        0018-bgpd-Flowspec-overflow-issue.patch
+Patch19:        0019-bgpd-fix-error-handling-when-receiving-BGP-Prefix-SID-attribute.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison >= 2.7

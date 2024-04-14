@@ -74,4 +74,13 @@
     <comment></comment>
     <requestid>1154007</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3317ea25dbba52b366a751713125ce23</srcmd5>
+    <version>1.62.1</version>
+    <time>1713088596</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.62.1:
+  * sync with grpcio</comment>
+    <requestid>1167622</requestid>
+  </revision>
 </revisionlist>

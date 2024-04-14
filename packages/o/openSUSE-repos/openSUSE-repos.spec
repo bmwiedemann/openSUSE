@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSE-repos
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2022 Neal Gompa <ngompa13@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@ ExclusiveArch:  do_not_build
 %global flavor @BUILD_FLAVOR@%nil
 
 %define with_nvidia 1
-%if 0%{?is_opensuse} && 0%{?suse_version} >= 1550
+%if 0%{?is_opensuse} && 0%{?suse_version} > 1600
 # Tumbleweed
 %if "%flavor" == "openSUSE-repos-Tumbleweed"
 %define theme Tumbleweed
@@ -48,8 +48,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 
-%if 0%{?sle_version}
-# Leap
+# LeapMicro 6.0 does not have sle_version any more
 %if 0%{?is_leapmicro}
 %if "%flavor" == "openSUSE-repos-LeapMicro"
 %define theme LeapMicro
@@ -59,6 +58,8 @@ ExclusiveArch:  do_not_build
 %define with_nvidia 0
 %endif
 %else
+# Leap
+%if 0%{?sle_version}
 %if "%flavor" == "openSUSE-repos-Leap"
 %define theme Leap
 %define branding leap
@@ -75,7 +76,7 @@ Name:           openSUSE-repos
 %else
 Name:           openSUSE-repos-%{theme}
 %endif
-Version:        20240327.09add4e
+Version:        20240412.89bd714
 Release:        0
 Summary:        openSUSE package repositories
 License:        MIT

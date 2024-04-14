@@ -27,7 +27,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           lighttpd
-Version:        1.4.75
+Version:        1.4.76
 Release:        0
 Summary:        A Secure, Fast, Compliant, and Very Flexible Web Server
 License:        BSD-3-Clause
@@ -39,6 +39,7 @@ Source2:        %{name}.sysconfig
 Source3:        %{name}.keyring
 Source7:        lighttpd.logrotate
 Patch0:         harden_lighttpd.service.patch
+BuildRequires:  autoconf
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  iputils
 BuildRequires:  krb5-devel
@@ -197,6 +198,7 @@ A module to provide PAM authentication in lighttpd.
 
 %build
 export CFLAGS="%{optflags} -W -Wmissing-prototypes -Wmissing-declarations -Wpointer-arith -Wchar-subscripts -Wformat=2 -Wbad-function-cast -std=gnu99 -fstack-protector"
+autoreconf -fiv
 %configure                      \
     --bindir=%{_sbindir}        \
     --libdir=%{_libdir}/%{name} \

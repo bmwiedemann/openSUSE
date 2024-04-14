@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 12 07:14:22 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Rebase patch used in Backports:
+  * 0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch
+- Fix duplicated Source3 when building in Backports
+- Define a use_system_rnnoise definition instead of checking
+  the distribution version several times across the spec file.
+- Use the system rnnoise in 15.5 and 15.6 too since they have
+  the same version as in Factory.
+- Use gcc12 when compiler_upgrade or compiler_downgrade are set
+- Set -DDESKTOP_APP_DISABLE_DBUS_INTEGRATION=ON only up to 15.5 .
+  15.6 should have recent libraries to enable dbus integration
+- Define BOOST_NO_STD_ALLOCATOR to fix a FTBFS in 15.6
+
+-------------------------------------------------------------------
 Fri Apr  5 08:38:17 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to version 4.16.2

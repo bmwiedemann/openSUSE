@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr 12 17:02:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.19.0:
+  * `to_ssh` in `VerifyingKey` and `SigningKey`, supports Ed25519
+    keys only
+  * Support for twisted Brainpool curves
+  * Fix curve equation in glossary
+  * Documentation for signature encoding and signature decoding
+    functions
+  * Officially support Python 3.11 and 3.12
+  * Small updates to test suite to make it work with 3.11 and
+    3.12 and new releases of test dependencies
+  * Dropped the internal `_rwlock` module as it's unused
+  * Added mutation testing to CI, lots of speed-ups to the test
+    suite to make it happen
+  * Removal of unnecessary `six.b` literals (Alexandre Detiste)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -96,7 +114,7 @@ Sun Dec 20 09:21:59 UTC 2020 - Dirk Müller <dmueller@suse.com>
   * `VerifyingKey.precompute()` supports `lazy` argument to delay
   precomputation to the first time the key is used to verify a signature.
   * Make created signatures correct when the hash used is bigger than the curve
-  order bit size and the curve order is not a multiple of 8 
+  order bit size and the curve order is not a multiple of 8
   * Speed up library load time by calculating the generator point multiplication
   tables the first time the points are used, not when they are initialised.
 

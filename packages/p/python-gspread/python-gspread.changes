@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Apr 14 07:36:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.0:
+  * types can be obtained using mypy to type code using gspread
+  * Add a new method to authenticate using API key for public
+    spreadsheets
+  * Add py.typed marker
+  * Improve back-off client
+  * Add new auth method API key
+  * Bugfix/add set timeout
+  * Fix wrapper `cast_to_a1_notation`
+  * fix error message readability
+  * Add missing method `import_csv()`
+  * Add user friendly message when we can't override a test
+    cassette
+  * Allow "warning" type protected ranges
+  * Improce README and documentation with value render options
+
+-------------------------------------------------------------------
 Wed Feb  7 20:12:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.1:

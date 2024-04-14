@@ -26,6 +26,6 @@ if command -v zypper > /dev/null; then
     zypper -n clean
 fi
 
-rm -rf /var/log/zypp
+rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 
 exit 0

@@ -7,4 +7,15 @@
     <comment></comment>
     <requestid>1133772</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>23ad70e279bf8eeb24b3a308e6bc9102</srcmd5>
+    <version>2.14.3</version>
+    <time>1713088593</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.14.3:
+  * deps: [Many APIs] Require google-api-core&gt;=1.34.1 (#12307) (be87bc4)
+  * fix ValueError in test__validate_universe_domain
+  * Allow users to explicitly configure universe domain</comment>
+    <requestid>1167626</requestid>
+  </revision>
 </revisionlist>

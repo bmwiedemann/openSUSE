@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-djangorestframework%{psuffix}
-Version:        3.14.0
+Version:        3.15.1
 Release:        0
 Summary:        A REST Framework for Django
 License:        BSD-2-Clause
@@ -74,6 +74,8 @@ authentication and permission policies out of the box.
 
 # Remove pytest params incompatible with older pytest on Leap
 sed -i '/addopts/d' setup.cfg
+# Remove pytest params breaking Tumbleweed
+sed -i '/filterwarnings/d' setup.cfg
 
 %build
 %pyproject_wheel

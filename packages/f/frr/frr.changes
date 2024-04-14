@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 10 18:59:00 UTC 2024 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- add
+  0019-bgpd-fix-error-handling-when-receiving-BGP-Prefix-SID-attribute.patch:
+  * Apply upstream fix on error handling when receiving BGP Prefix
+    SID attribute (bsc#1222518,CVE-2024-31948,gh#FRRouting/frr#15628)
+
+-------------------------------------------------------------------
 Thu Feb  8 06:55:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide user/group symbol for user created during pre.
@@ -84,7 +92,7 @@ Mon Apr  3 14:00:27 UTC 2023 - Marius Tomaschewski <mt@suse.com>
 -------------------------------------------------------------------
 Fri Jan 13 12:27:58 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
-- Migration of PAM settings to /usr/lib/pam.d. 
+- Migration of PAM settings to /usr/lib/pam.d.
 
 -------------------------------------------------------------------
 Fri Nov 11 13:04:52 UTC 2022 - Marius Tomaschewski <mt@suse.com>
@@ -246,7 +254,7 @@ Fri Jan  8 08:08:08 UTC 2021 - olaf@aepfle.de
 Tue Dec 22 10:54:56 UTC 2020 - Rubén Torrero Marijnissen <rtorreromarijnissen@suse.com>
 
 - Disable ZeroMQ tests due to sporadic timeouts during package builds (bsc#1180217)
-  [+ 0001-disable-zmq-test.patch] 
+  [+ 0001-disable-zmq-test.patch]
 
 -------------------------------------------------------------------
 Wed Nov  4 19:17:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
@@ -285,7 +293,7 @@ Wed May  6 16:07:32 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 -------------------------------------------------------------------
 Tue Apr  7 21:38:12 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
-- enable verbose make rules 
+- enable verbose make rules
 - enable grpc support. new subpackage libfrrgrpc_pb0, new BR:
   pkgconfig(grpc)
 - enable config rollbacks. new BR: pkgconfig(sqlite3)
@@ -362,7 +370,7 @@ Wed Jan 15 20:34:50 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 -------------------------------------------------------------------
 Wed Jan 15 14:34:59 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
-- Cleanup spec file 
+- Cleanup spec file
 
 -------------------------------------------------------------------
 Sun Jan 12 09:40:39 UTC 2020 - Martin Hauke <mardnh@gmx.de>

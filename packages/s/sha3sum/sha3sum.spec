@@ -1,7 +1,7 @@
 #
 # spec file for package sha3sum
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           sha3sum
-Version:        1.2.2
+Version:        1.2.3.1
 Release:        0
 Summary:        SHA-3 and Keccak checksum utility
 License:        ISC
 Group:          Productivity/Security
-URL:            https://github.com/maandree/sha3sum
-Source:         https://github.com/maandree/sha3sum/archive/%version.tar.gz
+URL:            https://codeberg.org/maandree/sha3sum
+Source:         https://codeberg.org/maandree/sha3sum/archive/%version.tar.gz
+Patch1:         0001-build-repair-wrong-order-of-link-arguments.patch
+BuildRequires:  c_compiler
 BuildRequires:  libkeccak-devel >= 1.2
 Conflicts:      perl-Digest-SHA3
 
@@ -34,13 +36,13 @@ RawSHAKE checksum utilities
 A subset of Keccak was specified by NIST as SHA-3 (Secure Hash Algorithm 3).
 
 %prep
-%setup -q
+%autosetup -p1 -n %name
 
 %build
-%make_build CFLAGS="%{optflags}"
+%make_build -r CC="%__cc" CFLAGS="%optflags"
 
 %install
-%make_install PREFIX="%{_prefix}"
+%make_install PREFIX="%_prefix"
 # packaged via macro
 rm -rvf %buildroot/%_datadir/licenses/%name
 
@@ -50,7 +52,7 @@ rm -rvf %buildroot/%_datadir/licenses/%name
 %files
 %license LICENSE
 %doc README
-%{_bindir}/*
-%{_mandir}/man1/*.1%{?ext_man}
+%_bindir/*
+%_mandir/man1/*.1*
 
 %changelog

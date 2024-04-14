@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 12 11:48:56 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add patch no-six.patch to clean-up the unneeded six dependency.
+
+-------------------------------------------------------------------
 Wed Nov 29 12:43:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2:

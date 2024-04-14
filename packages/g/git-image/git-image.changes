@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 12 12:03:53 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- Don't wipe everything in /var/log, only remove log files (this omits directories owned by packages)
+
+-------------------------------------------------------------------
 Mon Feb 26 14:59:04 UTC 2024 - Tan Néau <tan.neau@suse.com>
 
 - Add openssh-client to allow to clone git repos over ssh

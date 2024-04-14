@@ -17,31 +17,33 @@
 #
 
 
+%define plainpython python
 %{?sle15_python_module_pythons}
 Name:           python-typer
-Version:        0.11.1
+Version:        0.12.3
 Release:        0
 Summary:        Typer, build great CLIs. Easy to code. Based on Python type hints
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/tiangolo/typer
 Source:         https://files.pythonhosted.org/packages/source/t/typer/typer-%{version}.tar.gz
-Patch1:         set-proper-pythonpath-for-tutorial-script-tests.patch
-BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module coverage}
+Source2:        %{name}-rpmlintrc
 BuildRequires:  %{python_module pdm}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module rich}
-BuildRequires:  %{python_module shellingham}
-BuildRequires:  %{python_module typing_extensions}
+BuildRequires:  %{python_module typer-slim}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-click >= 8.0.0
-Requires:       python-typing_extensions >= 3.7.4.3
-Recommends:     python-colorama
-Recommends:     python-rich
-Recommends:     python-shellingham
+# Work around Python dependency not being auto-added as there are no modules provided
+Requires:       %{plainpython}(abi) = %{python_version}
+Requires:       python-click
+Requires:       python-rich
+Requires:       python-shellingham
+Requires:       python-typer-slim >= %version
+Requires:       python-typing_extensions
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+# both packages provide /usr/bin/typer
+Conflicts:      erlang
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,7 +53,10 @@ Typer is a library for building CLI applications based on Python 3.6+ type hints
 Based on type hints, Typer enables great editor support and completion for developers.
 With automatic help and completion, Typer makes CLIs easy to use for users.
 
-This package provides the Typer Python package required to build and run Typer-based CLI applications.
+This package provides the Typer Python package and ensures all dependencies required
+for full functionality are provided. In addition, it provides the command "typer"
+which allows users to run scripts not using typer with the same command line comfort
+as those that do.
 
 %prep
 %setup -q -n typer-%{version}
@@ -62,16 +67,27 @@ This package provides the Typer Python package required to build and run Typer-b
 
 %install
 %pyproject_install
+
+# Remove files that were already installed by typer-slim
+%python_expand rm -r %{buildroot}%{$python_sitelib}/typer
+
+%python_clone -a %{buildroot}/%{_bindir}/typer
+
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# the completion tests fail as build runs in sh which is not supported
-%pytest -k 'not test_show_completion and not test_install_completion'
+# There are no tests in the python package as it only pulls dependencies
+
+%post
+%python_install_alternative typer
+
+%postun
+%python_uninstall_alternative typer
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/typer
+%python_alternative %{_bindir}/typer
 %{python_sitelib}/typer-%{version}*-info
 
 %changelog

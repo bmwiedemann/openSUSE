@@ -1,7 +1,7 @@
 #
 # spec file for package python-bobo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bobo
 Version:        2.4.0
 Release:        0
@@ -24,13 +23,14 @@ Summary:        Web application framework for the impatient
 License:        ZPL-2.1
 URL:            http://bobo.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/b/bobo/bobo-%{version}.tar.gz
+#PATCH-FIX-UPSTREAM part of https://github.com/zopefoundation/bobo/pull/23 Drop support for Python 2.7 up to 3.6.
+Patch:          drop-py27.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-WebOb
-Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,7 +46,7 @@ middle-ware or application-specific libraries.
 Bobo builds on other frameworks, most notably WSGI and WebOb.
 
 %prep
-%setup -q -n bobo-%{version}
+%autosetup -p1 -n bobo-%{version}
 
 %build
 %python_build
@@ -65,6 +65,8 @@ Bobo builds on other frameworks, most notably WSGI and WebOb.
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %python_alternative %{_bindir}/bobo
-%{python_sitelib}/*
+%{python_sitelib}/bobo*.py
+%{python_sitelib}/bobo-%{version}*info
+%pycache_only %{python_sitelib}/__pycache__/bobo*.pyc
 
 %changelog

@@ -22,7 +22,7 @@
 
 Name:           kanku
 # Version gets set by obs-service-tar_scm
-Version:        0.16.2
+Version:        0.17.0
 Release:        0
 License:        GPL-3.0-only
 Summary:        Development and continuous integration
@@ -65,7 +65,7 @@ BuildRequires:  perl(Moose)
 BuildRequires:  perl(MooseX::App)
 BuildRequires:  perl(MooseX::Singleton)
 BuildRequires:  perl(Net::IP)
-BuildRequires:  perl(Net::OBS::Client) >= 0.1.0
+BuildRequires:  perl(Net::OBS::Client) >= 0.1.2
 BuildRequires:  perl(Libssh::Session)
 BuildRequires:  perl(Path::Class)
 BuildRequires:  perl(Plack)
@@ -97,6 +97,7 @@ Requires:       kanku-scheduler = %{version}
 Requires:       kanku-triggerd = %{version}
 Requires:       kanku-web = %{version}
 Requires:       kanku-worker = %{version}
+Requires:       kanku-iptables = %{version}
 
 %description
 kanku is a utility for integration of kiwi images built
@@ -117,7 +118,7 @@ e.g. to prepare development environments or run simple tests.
 
 %install
 %make_install DOCDIR=%{_defaultdocdir}/kanku/
-mkdir -p %{buildroot}/%{_sysusersdir}/system-user-%{kanku_user}.conf
+mkdir -p %{buildroot}/%{_sysusersdir}
 cp dist/system-user-%{kanku_user}.conf %{buildroot}/%{_sysusersdir}/system-user-%{kanku_user}.conf
 %fdupes %{buildroot}/opt/kanku/share
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rckanku-web
@@ -125,6 +126,7 @@ ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rckanku-worker
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rckanku-dispatcher
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rckanku-scheduler
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rckanku-triggerd
+ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rckanku-iptables
 
 %check
 # FIXME
@@ -137,7 +139,6 @@ ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rckanku-triggerd
 %package common
 Summary:        Common files for kanku
 
-Recommends:     apache2
 Recommends:     osc
 Recommends:     perl(IO::Uncompress::UnXz)
 Recommends:     perl(YAML::PP::LibYAML)
@@ -167,7 +168,7 @@ Requires:       perl(Moose)
 Requires:       perl(MooseX::App)
 Requires:       perl(MooseX::Singleton)
 Requires:       perl(Net::IP)
-Requires:       perl(Net::OBS::Client)
+Requires:       perl(Net::OBS::Client) >= 0.1.2
 Requires:       perl(Libssh::Session)
 Requires:       perl(Path::Class)
 Requires:       perl(Sys::Virt)
@@ -253,7 +254,6 @@ common config and lib files used in kanku
 /usr/lib/kanku/lib/Kanku/Util/
 /usr/lib/kanku/lib/Kanku/Util.pm
 /usr/lib/kanku/lib/Kanku/Task/
-/usr/lib/kanku/lib/OpenStack/
 /usr/lib/kanku/lib/Kanku/Config.pm
 %dir /usr/lib/kanku/lib/Kanku/Config/
 /usr/lib/kanku/lib/Kanku/Config/Defaults.pm
@@ -294,6 +294,7 @@ Requires:       (perl(Passwd::Keyring::Gnome) if gnome-keyring)
 Requires:       (perl(Passwd::Keyring::KDEWallet) if kwalletd5)
 Requires:       perl(IO::Interactive)
 Requires:       perl(Net::AMQP::RabbitMQ)
+Requires:       openssh-clients
 
 %description cli
 Command line client for kanku, mainly used for setup tasks
@@ -399,6 +400,8 @@ Requires:       server(smtp)
 %else
 Requires:       smtp_daemon
 %endif
+Recommends:     apache2
+Recommends:     rabbitmq-server-plugins
 
 %description web
 WebUI for kanku using perl Dancer
@@ -496,6 +499,7 @@ Requires:       kanku-common-server = %{version}
 Requires:       perl(Net::AMQP::RabbitMQ)
 Requires(pre):  sudo
 Recommends:     rabbitmq-server
+Recommends:     openvswitch
 
 %description dispatcher
 A dispatcher for kanku based on RabbitMQ.
@@ -579,7 +583,7 @@ Summary:        Url wrapper for kanku:// urls
 Requires:       desktop-file-utils
 Requires:       kanku-cli = %{version}
 Requires:       shared-mime-info
-Obsoletes:      kanku-url-wrapper
+Obsoletes:      kanku-url-wrapper =< 0.11.0
 
 %description urlwrapper
 A URL wrapper to start kanku from kanku:// urls in the browser.
@@ -610,8 +614,46 @@ update-desktop-database
 %dir /usr/share/icons/hicolor/64x64/apps
 /usr/share/icons/hicolor/64x64/apps/kanku.png
 
+%package iptables
+Summary: Store and restore kanku iptables rules
+# Requires: /usr/lib/kanku/network-setup.pl
+Requires: kanku-common
+
+%description iptables
+kanku-iptables.service is required to store/restore iptables rules for
+kanku guests which are using the 'autostart' flag.
+
+%post iptables
+%systemd_post kanku-iptables.service
+
+%preun iptables
+%systemd_preun kanku-iptables.service
+
+%postun iptables
+%systemd_postun_with_restart kanku-iptables.service
+
+%files iptables
+%{_unitdir}/kanku-iptables.service
+%{_sbindir}/rckanku-iptables
+
 %changelog
 
 %changelog cli
 
 %changelog common
+
+%changelog common-server
+
+%changelog web
+
+%changelog dispatcher
+
+%changelog urlwrapper
+
+%changelog scheduler
+
+%changelog triggerd
+
+%changelog iptables
+
+%changelog worker

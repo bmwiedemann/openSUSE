@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr 13 00:28:28 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Rebase 0001-Only-export-necessary-symbols.-Fixes-105.patch against
+  1.6
+- Update to version 1.6:
+  * Fix jinx-mode reentrancy issue #gh/minad/jinx#158
+  * Ensure that directory local variables work correctly with Jinx.
+    It is possible to turn Jinx on or off via dir-locals,
+    and also configure the language and local words.
+  * jinx-mod: Add global ref Qcons
+  * jinx-next: Unfold hidden misspelling
+
+-------------------------------------------------------------------
 Mon Mar 25 18:16:35 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Update to version 1.4:

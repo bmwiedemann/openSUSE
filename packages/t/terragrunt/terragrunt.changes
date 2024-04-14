@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 13 09:35:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.57.0:
+  * Support for Terraform 1.8 (#3052)
+  * docs: update terragrunt supported versions table (#3038)
+
+-------------------------------------------------------------------
 Thu Apr 11 04:59:48 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.56.5:

@@ -16,7 +16,7 @@ Signed-off-by: Björn Bidar <bjorn.bidar@thaodan.de>
  2 files changed, 18 insertions(+), 3 deletions(-)
 
 diff --git a/jinx-mod.c b/jinx-mod.c
-index ee534cd522bc121a64ecc431bb345498b48a6993..0e2901e476c06e15de404f2d9a7f2941032c9226 100644
+index 0e6a4e66f4f88a7f8d636a1beaddbe957d3f55a2..c999abd7e6b1668ab26585fc00c18511517412e9 100644
 --- a/jinx-mod.c
 +++ b/jinx-mod.c
 @@ -21,10 +21,25 @@ along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.  */
@@ -45,7 +45,7 @@ index ee534cd522bc121a64ecc431bb345498b48a6993..0e2901e476c06e15de404f2d9a7f2941
 +JINX_EXPORT int plugin_is_GPL_compatible;
  
  static EnchantBroker* broker = 0;
- static emacs_value Qt, Qnil;
+ static emacs_value Qt, Qnil, Qcons;
 @@ -171,7 +186,7 @@ static emacs_value jinx_suggest(emacs_env* env, ptrdiff_t jinx_unused(nargs),
      return list;
  }
@@ -56,10 +56,10 @@ index ee534cd522bc121a64ecc431bb345498b48a6993..0e2901e476c06e15de404f2d9a7f2941
          return 1; // Require Emacs binary compatibility
      emacs_env* env = runtime->get_environment(runtime);
 diff --git a/jinx.el b/jinx.el
-index 095ff372b65e5f3743e1dc1a944e8ea2eac8495b..66d901b29b4c50b2e2174b3bbcf0e32e57e714f6 100644
+index 7bfc8705f9f5bcd35c349ec140a3eb02fa098d93..5accf4a6b4c823b344e46eebb587a58a09751c96 100644
 --- a/jinx.el
 +++ b/jinx.el
-@@ -583,7 +583,7 @@ If CHECK is non-nil, always check first."
+@@ -582,7 +582,7 @@ If CHECK is non-nil, always check first."
                                     (or (locate-library c-name t)
                                         (error "Jinx: %s not found" c-name))))
                 (command

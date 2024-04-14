@@ -22,7 +22,9 @@
 %else
 %bcond_with static
 %endif
-%define _binary_payload w9.bzdio
+
+%global real_ver 5.4.2
+
 Name:           xz
 Version:        5.6.1.revertto5.4
 Release:        0
@@ -30,15 +32,15 @@ Summary:        A Program for Compressing Files with the Lempel–Ziv–Markov a
 License:        0BSD AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Archiving/Compression
 URL:            https://tukaani.org/xz/
-Source0:        https://github.com/tukaani-project/xz/releases/download/v5.4.6/xz-5.4.6.tar.gz
-Source1:        https://github.com/tukaani-project/xz/releases/download/v5.4.6/xz-5.4.6.tar.gz.sig
+Source0:        https://github.com/tukaani-project/xz/releases/download/v%{real_ver}/xz-%{real_ver}.tar.gz
+Source1:        https://github.com/tukaani-project/xz/releases/download/v%{real_ver}/xz-%{real_ver}.tar.gz.sig
 Source2:        baselibs.conf
-Source3:        https://tukaani.org/misc/jia_tan_pubkey.txt#/%{name}.keyring
+Source3:        https://tukaani.org/misc/lasse_collin_pubkey.txt#/xz.keyring
 Source4:        xznew
 Source5:        xznew.1
 BuildRequires:  pkgconfig
-Provides:       lzma = 5.4.6
-Obsoletes:      lzma < 5.4.6
+Provides:       lzma = %{version}
+Obsoletes:      lzma < %{version}
 %{?suse_build_hwcaps_libs}
 
 %description
@@ -54,13 +56,13 @@ The xz command is a program for compressing files.
   decompressing speed.
 * Very similar command line interface to what gzip and bzip2 have.
 
+
 %lang_package
 
 %package -n liblzma5
 Summary:        Lempel–Ziv–Markov chain algorithm compression library
 License:        0BSD
 Group:          System/Libraries
-Provides:       liblzma5 = 5.4.6
 
 %description -n liblzma5
 Library for encoding/decoding LZMA files.
@@ -69,11 +71,11 @@ Library for encoding/decoding LZMA files.
 Summary:        Development package for the LZMA library
 License:        0BSD
 Group:          Development/Libraries/C and C++
-Requires:       liblzma5 = 5.4.6
-Provides:       lzma-devel = 5.4.6
-Obsoletes:      lzma-devel < 5.4.6
-Provides:       lzma-alpha-devel = 5.4.6
-Obsoletes:      lzma-alpha-devel < 5.4.6
+Requires:       liblzma5 = %{version}
+Provides:       lzma-devel = %{version}
+Obsoletes:      lzma-devel < %{version}
+Provides:       lzma-alpha-devel = %{version}
+Obsoletes:      lzma-alpha-devel < %{version}
 
 %description devel
 This package contains the header files and libraries needed for
@@ -84,25 +86,27 @@ compiling programs using the LZMA library.
 Summary:        Static version of LZMA library
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
-Requires:       lzma-devel = 5.4.6
+Requires:       xz-devel = %{version}
 
 %description static-devel
 Static library for the LZMA library
 %endif
 
 %prep
-%autosetup -n xz-5.4.6
+%autosetup -n xz-%{real_ver}
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags} -D_REENTRANT -pipe -fPIE"
 export LDFLAGS="-Wl,-z,relro,-z,now -pie"
+
 # Either we build it without pic enabled, or we build one at a time
 %if %{with static}
 %configure \
   --with-pic \
   --docdir=%{_docdir}/%{name} \
   --disable-shared CONFIG_SHELL=/bin/sh
+
 %make_build
 cp ./src/liblzma/.libs/liblzma.a liblzma.a
 %endif
@@ -135,15 +139,6 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 
 %post -n liblzma5 -p /sbin/ldconfig
 %postun -n liblzma5 -p /sbin/ldconfig
-
-%files lang -f %{name}.lang
-%dir %{_mandir}/fr
-%dir %{_mandir}/de
-%dir %{_mandir}/ko
-%if 0%{?suse_version} == 1500
-%dir %{_mandir}/ro
-%dir %{_mandir}/uk
-%endif
 
 %files
 %license COPYING COPYING.GPLv2
@@ -196,6 +191,15 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 %{_mandir}/man1/xzless.1%{?ext_man}
 %{_mandir}/man1/xzmore.1%{?ext_man}
 %{_mandir}/man1/xznew.1%{?ext_man}
+
+%files lang -f %{name}.lang
+%dir %{_mandir}/fr
+%dir %{_mandir}/de
+%dir %{_mandir}/ko
+%if 0%{?suse_version} == 1500
+%dir %{_mandir}/ro
+%dir %{_mandir}/uk
+%endif
 
 %files -n liblzma5
 %{_libdir}/liblzma.so.5*

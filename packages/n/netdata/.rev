@@ -4452,4 +4452,23 @@ Other Notable Changes
     gh#netdata/netdata#17269</comment>
     <requestid>1166729</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>ac630e1ee673880bd6d2edab3faa1feb</srcmd5>
+    <version>1.45.3</version>
+    <time>1713088492</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.45.3
+  This release mitigates a security issue in ndsudo.
+  openSUSE packages are unaffected because they do not contain
+  the ndsudo tool—for security reasons.
+  See https://github.com/netdata/netdata/security/advisories/GHSA-pmhq-4cxq-wj93
+  * Resolved an issue that prevented the &quot;percentage&quot; option from
+    functioning correctly in alert lookups
+    gh#netdata/netdata#17391
+  * Increased the default minimum thread stack size to 1 MB to
+    address potential stability issues caused by the musl libc's
+    smaller default (128kB)
+    gh#netdata/netdata#17317</comment>
+    <requestid>1167150</requestid>
+  </revision>
 </revisionlist>

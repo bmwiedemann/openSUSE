@@ -227,4 +227,32 @@
   * cleanup POD in Kanku/Handler/CreateDomain</comment>
     <requestid>1146468</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>499c894629944a5a5f69c7418ea28ef0</srcmd5>
+    <version>0.17.0</version>
+    <time>1713088481</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.17.0:
+  * FEATURES
+    * [dist] new package 'kanku-iptables' (Store and restore kanku iptables rules)
+    * [dist] added x-scheme-handler kankus://
+    * [core] configurable SigAuth for http(s) dependent libraries, e.g.:
+      - `Kanku::Handler::OBSCheck`
+      - `Kanku::Handler::ImageDownload`
+      - `Kanku::Util::CurlHttpDownload`
+    * [dist] improvments for rpm/debian packages
+    * [test] updated libraries in base check
+    * [dist] new kanku job 'test' to create a vm running kanku test suite
+    * [handler] removed obsolete OpenStack handler and modules
+    * [handler] OBSCheck: setter for api_url for later use
+    * [handler] removed deprecated K::H::OBSDownload
+    * [templates] examples for Net::OBS::Client authentication
+    * [util] deleted Kanku::Util::HTTPMirror
+  * BUGFIXES
+    * [handler] fix skip_all_checks in OBSCheck
+    * [util] DoD: fixed auth problem
+    * [dist] fix mkdir for system-user-kankurun.conf
+    * [dist] more fixes for spec</comment>
+    <requestid>1167140</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 12 16:50:55 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240412.89bd714:
+  * Update opensuse-leap-micro-repoindex.xml
+
+-------------------------------------------------------------------
+Fri Apr 12 15:26:48 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240412.c2caafb:
+  * Drop specfile from git
+  * remove an extra slash in 'nvidia-slowroll-repoindex.xml' file
+  * deleted an extra slash in the repository files
+
+  * Ensure that LeapMicro flavor is built
+    also if sle_version is not set (6.X+)
+
+-------------------------------------------------------------------
 Wed Mar 27 09:14:09 UTC 2024 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20240327.09add4e:

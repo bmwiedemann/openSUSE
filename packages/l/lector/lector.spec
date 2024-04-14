@@ -1,7 +1,7 @@
 #
 # spec file for package lector
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,8 +37,8 @@ Requires:       python3-beautifulsoup4
 Requires:       python3-lxml
 Requires:       python3-qt5
 Requires:       python3-xmltodict
-Recommends:     python3-poppler-qt5
 Recommends:     python3-PyMuPDF
+Recommends:     python3-poppler-qt5
 BuildArch:      noarch
 
 %description
@@ -63,6 +63,8 @@ Currently supports:
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %fdupes -s %{buildroot}/%{_prefix}
+
+%python3_fix_shebang
 
 %files
 %defattr(-,root,root)

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Apr 12 16:22:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- revert the switch to tar_scm which dropped the signature
+  validation
+- switch back to tarballs because the upstream tarballs are not
+  gone
+- reinstanciate keyring from Lasse
+- go back to the last release signed by Lasse (5.4.2)
+- revert multibuild, drop service and rpmlintrc
+- use real_ver for the Source, move everything else back to
+  %version like before the hectic XZ downgrade
+- remove payload setting, we are using zstd now
+
+-------------------------------------------------------------------
+Thu Apr  4 07:16:46 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Switch to using tar_scm for fetching the sources as the upstream
+  tarballs on github are gone
+- introduce _multibuild to allow building the translations outside
+  of Ring0 and everything else in Ring0
+- add rpmlintrc to silence harmless warnings
+
+-------------------------------------------------------------------
 Thu Mar 28 13:51:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - restore a bigger version number so that update works

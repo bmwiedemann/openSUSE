@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  9 14:23:21 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add patch drop-py27.patch to get rid of six
+
+-------------------------------------------------------------------
 Thu Nov 11 08:38:20 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove test BuildRequires, a different package runs the tests. 

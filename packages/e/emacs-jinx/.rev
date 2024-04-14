@@ -40,4 +40,21 @@
   * jinx-correct: Ensure that word is saved without text properties (Fix #140)</comment>
     <requestid>1161543</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eede2196207808faeddbffee69ded807</srcmd5>
+    <version>1.6</version>
+    <time>1713088500</time>
+    <user>anag+factory</user>
+    <comment>- Rebase 0001-Only-export-necessary-symbols.-Fixes-105.patch against
+  1.6
+- Update to version 1.6:
+  * Fix jinx-mode reentrancy issue #gh/minad/jinx#158
+  * Ensure that directory local variables work correctly with Jinx.
+    It is possible to turn Jinx on or off via dir-locals,
+    and also configure the language and local words.
+  * jinx-mod: Add global ref Qcons
+  * jinx-next: Unfold hidden misspelling
+</comment>
+    <requestid>1167502</requestid>
+  </revision>
 </revisionlist>

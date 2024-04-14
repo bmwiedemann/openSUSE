@@ -1,8 +1,8 @@
 #
 # spec file for package hyprcursor
 #
-# Copyright (c) 2024 Florian "sp1rit" <sp1rit@disroot.org>
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Florian "sp1rit" <sp1rit@disroot.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,25 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define sover 0
 
 Name:           hyprcursor
-Version:        0.1.4
+Version:        0.1.7
 Release:        0
 Summary:        Library and utilities for the hyprland cursor format
 License:        BSD-3-Clause
 URL:            https://wiki.hyprland.org/hypr-ecosystem/hyprcursor/
 Source0:        %{name}-%{version}.tar.xz
-# can be dropped with the next release
-Patch1:         fix_include_dir_permissions.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(hyprlang) >= 0.4.2
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libzip)
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(tomlplusplus) >= 3.4.0
 
 %description
 Utilities for the hyprland cursor format.

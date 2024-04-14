@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 14 07:46:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.7:
+  * The release of v5.3.6 was missing the bumbversion commit so
+    v5.3.7 is only released to sync it back.
+
+-------------------------------------------------------------------
 Wed Apr  3 07:21:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3.6:

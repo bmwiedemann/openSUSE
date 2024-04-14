@@ -41,7 +41,7 @@ LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL usage="This container should only be used to build containers for daemons. Add your packages and enable services using systemctl."
 
-RUN set -euo pipefail; zypper -n in --no-recommends systemd gzip; zypper -n clean; rm -rf /var/log/*
+RUN set -euo pipefail; zypper -n in --no-recommends systemd gzip; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 CMD ["/usr/lib/systemd/systemd"]
 
 RUN mkdir -p /etc/systemd/system.conf.d/ && \

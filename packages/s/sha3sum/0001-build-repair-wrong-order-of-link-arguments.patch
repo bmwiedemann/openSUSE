@@ -1,0 +1,67 @@
+From 839aed0b45b47462b2e319b016153bdff91b125f Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Fri, 12 Apr 2024 13:35:43 +0200
+Subject: [PATCH] build: repair wrong order of link arguments
+References: https://codeberg.org/jengelh/sha3sum
+
+GNU Make gives *pattern rules* a higher precedence over *suffix
+rules*. It does not track whether rule commands came from built-in
+defaults or a file. As such, when the sha3sum program is to be built,
+the commands from ``%: %.o`` rather than ``.o:`` are executed.
+
+The implicit rule chosen for linking is therefore (as ``make -p``
+says):
+
+	LINK.o = $(CC) $(LDFLAGS) $(TARGET_ARCH)
+	%: %.o
+	#  recipe to execute (built-in):
+	        $(LINK.o) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+Now, it has long been the case that LDFLAGS is *not* meant for -l
+options, under *at least* GNU systems, if not others as well. LDLIBS
+is generally the right place to put it.
+
+Indeed, LDLIBS is also offered in the default rules used by BSD make
+and Solaris make.
+
+Fixes: #2, #3.
+---
+ Makefile  | 4 ++--
+ config.mk | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index bcd7f66..b8ea851 100644
+--- a/Makefile
++++ b/Makefile
+@@ -40,7 +40,7 @@ $(BIN:=.bo): $(HDR)
+ $(BIN): common.o
+ 
+ .o:
+-	$(CC) -o $@ $@.o common.o $(LDFLAGS)
++	$(CC) -o $@ $@.o common.o $(LDFLAGS) $(LDLIBS)
+ 
+ .c.o:
+ 	$(CC) -c -o $@ $< $(CFLAGS) $(CPPFLAGS)
+@@ -65,7 +65,7 @@ commands.h: Makefile
+ 	| sed 's/_(\(.*\))/_("\1", main_\1)/' | sed 's/\(main_.*\)-/\1_/' > $@
+ 
+ sha3sum-mcb: sha3sum-mcb.o common.o $(BIN:=.bo)
+-	$(CC) -o $@ sha3sum-mcb.o common.o $(BIN:=.bo) $(LDFLAGS)
++	$(CC) -o $@ sha3sum-mcb.o common.o $(BIN:=.bo) $(LDFLAGS) $(LDLIBS)
+ 
+ check: $(BIN)
+ 	./test
+diff --git a/config.mk b/config.mk
+index 62cbae7..da9de58 100644
+--- a/config.mk
++++ b/config.mk
+@@ -6,4 +6,4 @@ CC = c99
+ 
+ CPPFLAGS =
+ CFLAGS   =
+-LDFLAGS  = -lkeccak
++LDLIBS   = -lkeccak
+-- 
+2.44.0
+

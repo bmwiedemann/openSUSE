@@ -41,7 +41,7 @@ LABEL org.opensuse.release-stage="released"
 
 # endlabelprefix
 
-RUN set -euo pipefail; zypper -n in --no-recommends ruby3.3 ruby3.3-rubygem-bundler ruby3.3-devel util-linux curl git-core gcc-c++ sqlite3-devel make awk timezone; zypper -n clean; rm -rf /var/log/*
+RUN set -euo pipefail; zypper -n in --no-recommends ruby3.3 ruby3.3-rubygem-bundler ruby3.3-devel util-linux curl git-core gcc-c++ sqlite3-devel make awk timezone; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 ENV LANG="C.UTF-8"
 ENV RUBY_VERSION="%%rb_ver%%"
 ENV RUBY_MAJOR="%%rb_maj%%"

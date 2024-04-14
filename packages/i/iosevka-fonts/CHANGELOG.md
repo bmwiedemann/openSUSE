@@ -1,5 +1,69 @@
 ## Modifications since last major version
 
+### 29.1.0
+
+* Add support for naming override (#2275).
+* Fix broken glyphs for serifed variants of LATIN SMALL LETTER S WITH CURL (`U+1DF1E`).
+* Improve glyph visual for Bulgarian localization form for CYRILLIC CAPITAL LETTER EF (`U+0424`) under slab.
+* Make descender serif of CYRILLIC {CAPITAL|SMALL} LETTER KOPPA (`U+0480`..`U+0481`) appear under any serifed variants for `C`/`c`.
+* Make presence of descender serif automatic for LATIN CAPTITAL LETTER BETA (`U+A7B4`).
+* Remove tailless variants for TURNED GREEK SMALL LETTER IOTA (`U+2129`).
+* Make presence of top-right serif automatic for CYRILLIC SMALL LIGATURE EN GHE (`U+04A5`) under `cyrl/en`=`tailed-top-left-serifed`.
+* Fix broken geometry of tailed `i`/`l` under heavy oblique quasi-proportional.
+* Make Cyrillic Lower Em (`cv74`) use `flat-bottom-serifless` for sans and `flat-bottom-serifed` for slab by default.
+* Make Latin-1 Macron (`U+00AF`) slightly wider.
+* Add characters:
+  - MODIFIER LETTER LOWER RIGHT CORNER ANGLE (`U+A71A`).
+
+
+### 29.0.5
+
+* Fix side bearings of multi-dot punctuation (`U+10FB`, `U+2056`, `U+2058`..`205B`, `U+2E2A`..`U+2E2D`) under Quasi-Proportional.
+* Fix mapping of DENSE VERTICAL FILL (`U+1CC44`) and DENSE HORIZONTAL FILL (`U+1CC45`).
+* Fix glyph visuals:
+  - MATHEMATICAL RISING DIAGONAL (`U+27CB`).
+  - MATHEMATICAL FALLING DIAGONAL (`U+27CD`).
+  - CIRCLE WITH HORIZONTAL BAR (`U+29B5`).
+  - SOLIDUS WITH OVERBAR (`U+29F6`).
+  - SMALL VEE WITH UNDERBAR (`U+2A61`).
+* Add characters:
+  - LOWER RIGHT CORNER WITH DOT (`U+27D3`).
+  - UPPER LEFT CORNER WITH DOT (`U+27D4`).
+  - UP-POINTING GO-KART (`U+1CC00`) ... VERTICAL RESISTOR SEGMENT (`U+1CC0A`)  (Proposed for Unicode 16; L2/21-235).
+  - LEFT-POINTING DIODE (`U+1CC0E`) ... VERTICAL CAPACITOR (`U+1CC14`)  (Proposed for Unicode 16; L2/21-235).
+  - LOGIC GATE INVERTED INPUTS (`U+1CC17`) ... LOGIC GATE BUFFER WITH INVERTED INPUT (`U+1CC1A`)  (Proposed for Unicode 16; L2/21-235).
+  - LEFT-POINTING ENERGY WAVE (`U+1CC78`) ... DOWN-POINTING ENERGY WAVE (`U+1CC7B`)  (Proposed for Unicode 16; L2/21-235).
+  - WHITE LOWER LEFT POINTER (`U+1CC86`)  (Proposed for Unicode 16; L2/21-235).
+  - WHITE LOWER RIGHT POINTER (`U+1CC87`)  (Proposed for Unicode 16; L2/21-235).
+  - TWO RINGS ALIGNED HORIZONTALLY (`U+1CC88`)  (Proposed for Unicode 16; L2/21-235).
+  - LEFT-POINTING RACING CAR (`U+1CC97`) ... VERTICAL GO-KART (`U+1CC9D`)  (Proposed for Unicode 16; L2/21-235).
+  - TOP LEFT BLACK LEFT-POINTING SMALL TRIANGLE (`U+1CE07`)  (Proposed for Unicode 16; L2/21-235).
+* Add APL form for WHITE DIAMOND (`U+25C7`).
+
+
+### 29.0.4
+
+* Make `U+2980` respond to `VSAM`.
+  - `U+2AFC` will no longer respond to `VSAM`.
+
+
+### 29.0.3
+
+* Fix height of block quadrants (`U+2596`..`U+259F`) (#2240).
+* Fix the design of the ESTIMATED SYMBOL (`U+212E`) to match its spec (#2243).
+* Refine design of POWER SYMBOL (`U+23FB`) and HEAVY CHECK MARK (`U+2714`) (#2243).
+* Make `U+1FBBD`..`U+1FBBF` narrow by default.
+* Make LATIN {CAPITAL|SMALL} LETTER GHA (`U+01A2`..`U+01A3`) respond to variants of `q` (`cv41`).
+* Make the behavior of serifs of `U+027F` automatic.
+* Fix side bearings of `U+29E2` under Quasi-Proportional.
+* Fix width of PUNCTUATION SPACE (`U+2008`) under Quasi-Proportional.
+* Fix `percent`=`dots` glyphs for PER {MILLE|TEN THOUSAND} SIGN (`U+2030`..`U+2031`) under Quasi-Proportional when `NWID` is enabled.
+* Remove untagged variant selector for Cyrillic Capital Ef (`Ф`).
+* Fix glyph visual for COMBINING DOUBLE CIRCUMFLEX ABOVE (`U+1DCD`).
+* Fix variant assignment of `cv92` for `ss08` under slab.
+* Make `--c-like-chaining--` ligation group require at least three hyphen-minuses for hyphen chain.
+
+
 ### 29.0.2
 
 * Add characters:

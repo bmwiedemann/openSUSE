@@ -39,7 +39,7 @@ LABEL org.opensuse.release-stage="released"
 
 # endlabelprefix
 
-RUN set -euo pipefail; zypper -n in --no-recommends java-17-openjdk-devel git-core maven; zypper -n clean; rm -rf /var/log/*
+RUN set -euo pipefail; zypper -n in --no-recommends java-17-openjdk-devel git-core maven; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 ENV JAVA_BINDIR="/usr/lib64/jvm/java-17-openjdk-17/bin"
 ENV JAVA_HOME="/usr/lib64/jvm/java-17-openjdk-17"
 ENV JAVA_ROOT="/usr/lib64/jvm/java-17-openjdk-17"

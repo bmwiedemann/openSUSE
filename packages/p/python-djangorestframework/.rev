@@ -327,4 +327,12 @@
   * Leap 15 does not have python 3.11 build of python-Markdown</comment>
     <requestid>1157631</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>dfdde6d287b6c69301f514ac72759cca</srcmd5>
+    <version>3.15.1</version>
+    <time>1713088508</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1167552</requestid>
+  </revision>
 </revisionlist>

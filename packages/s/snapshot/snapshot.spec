@@ -19,7 +19,7 @@
 %define gstreamer_version 1.20
 
 Name:           snapshot
-Version:        46.1
+Version:        46.2
 Release:        0
 Summary:        Take pictures and videos
 License:        GPL-3.0-or-later
@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.75
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gtk4) >= 4.13.6
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.5.alpha
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.0
 ## Needed for camerabin
 BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0) >= %{gstreamer_version}
 ##

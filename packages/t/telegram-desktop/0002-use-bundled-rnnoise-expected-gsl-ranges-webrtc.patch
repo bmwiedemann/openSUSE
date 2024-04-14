@@ -44,13 +44,14 @@ diff -rup a/cmake/external/rnnoise/CMakeLists.txt b/cmake/external/rnnoise/CMake
  if (WIN32)
      target_include_directories(external_rnnoise SYSTEM
      INTERFACE
-@@ -40,9 +40,9 @@ elseif (APPLE)
- else()
-     target_include_directories(external_rnnoise SYSTEM
-     INTERFACE
--        /usr/local/include
-+        ${libs_loc}/rnnoise/include
+@@ -40,7 +40,11 @@ elseif (APPLE)
+         IMPORTED_LOCATION_DEBUG "${rnnoise_lib_loc}/Debug/librnnoise.a"
      )
+ else()
++    target_include_directories(external_rnnoise SYSTEM
++    INTERFACE
++        ${libs_loc}/rnnoise/include
++    )
 -    find_library(DESKTOP_APP_RNNOISE_LIBRARIES librnnoise.a REQUIRED)
 +    find_library(DESKTOP_APP_RNNOISE_LIBRARIES librnnoise.a HINTS "${rnnoise_lib_loc}" REQUIRED)
      set_target_properties(external_rnnoise PROPERTIES

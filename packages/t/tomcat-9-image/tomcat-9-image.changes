@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 12 12:03:53 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- Don't wipe everything in /var/log, only remove log files (this omits directories owned by packages)
+
+-------------------------------------------------------------------
 Thu Mar 07 08:49:15 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
 
 - First version of the Apache Tomcat 9 BCI

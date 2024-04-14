@@ -1,7 +1,85 @@
 -------------------------------------------------------------------
+Sat Apr 13 08:09:28 UTC 2024 - John Vandenberg <jayvdb@gmail.com>
+
+- Disable pytest filterwarnings which is breaking the test suite.
+
+-------------------------------------------------------------------
+Sun Apr  7 09:04:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.15.1:
+  * Django 5.0 and Python 3.12 support
+  * Use POST method instead of GET to perform logout in browsable API
+  * Added jQuery 3.7.1 support & dropped previous version
+  * Use str as default path converter
+  * Partial serializer should not have required fields
+  * Propagate 'default' from model field to serializer field.
+  * Allow to override child.run_validation call in ListSerializer
+  * Align SearchFilter behaviour to django.contrib.admin search
+  * Class name added to unknown field error
+  * Fix: Pagination response schemas.
+  * Fix choices in ChoiceField to support IntEnum
+  * Fix `SearchFilter` rendering search field with invalid value
+  * Fix OpenAPI Schema yaml rendering for `timedelta`
+  * Added Deprecation Warnings for CoreAPI
+  * Removed usage of `field.choices` that triggered full table load
+  * Permit mixed casing of string values for `BooleanField` validation
+  * Fixes `BrowsableAPIRenderer` for usage with `ListSerializer`.
+  * Change semantic of `OR` of two permission classes
+  * Remove dependency on `pytz`
+  * Make set_value a method within `Serializer`
+  * Fix URLPathVersioning reverse fallback
+  * Fix mapping for choice values
+  * Refactor read function to use context manager for file handling
+  * Fix: fallback on CursorPagination ordering if unset on the view
+  * Replaced `OrderedDict` with `dict`
+  * Implement `__eq__` for validators
+  * Ensure CursorPagination respects nulls in the ordering field
+  * Use ZoneInfo as primary source of timezone data
+  * Add username search field for TokenAdmin (#8927)
+  * Handle Nested Relation in SlugRelatedField when many=False
+  * Bump version of jQuery to 3.6.4 & updated ref links
+  * Support UniqueConstraint
+  * Fix Respect `can_read_model` permission in DjangoModelPermissions
+  * Add SimplePathRouter
+  * Re-prefetch related objects after updating
+  * Fix FilePathField required argument
+  * Raise ImproperlyConfigured exception if `basename` is not unique
+  * Use PrimaryKeyRelatedField pkfield in openapi
+  * replace partition with split in BasicAuthentication
+  * Fix BooleanField's allow_null behavior
+  * Handle Django's ValidationErrors in ListField
+  * Use autocomplete widget for user selection in Token admin
+  * Make browsable API compatible with strong CSP
+  * Avoid inline script execution for injecting CSRF token
+  * Register Django urls
+  * Implemented Verbose Name Translation for TokenProxy
+  * Properly handle OverflowError in DurationField deserialization
+  * Fix OpenAPI operation name plural appropriately
+  * Represent SafeString as plain string on schema rendering
+  * Fix 404 when page query parameter is empty string
+  * Fixes instance check in ListSerializer.to_representation
+  * FloatField will crash if the input is a number that is too big
+  * Add missing DurationField to SimpleMetada label_lookup
+  * Add support for Python 3.11
+  * Make request consistently available in pagination classes
+  * Possibility to remove trailing zeros on DecimalFields representation
+  * Add a method for getting serializer field name (OpenAPI)
+  * Add `__eq__` method for `OperandHolder` class
+  * Avoid importing `django.test` package when not testing
+  * Preserve exception messages for wrapped Django exceptions
+  * Include `examples` and `format` to OpenAPI schema of
+    CursorPagination (https://github.>
+  * Fix infinite recursion with deepcopy on Request
+  * Refactor: Replace try/except with contextlib.suppress()
+  * Minor fix to SerializeMethodField docstring
+  * Minor refactor: Unnecessary use of list() function
+  * Unnecessary list comprehension
+  * Use correct class to indicate present deprecation
+
+-------------------------------------------------------------------
 Tue Mar 12 11:15:28 UTC 2024 - Max Lin <mlin@suse.com>
 
-- Do not use python-Markdown in Leap 15
+- ggDo not use python-Markdown in Leap 15
   * Leap 15 does not have python 3.11 build of python-Markdown
 
 -------------------------------------------------------------------
@@ -28,10 +106,10 @@ Sat Sep 24 14:10:26 UTC 2022 - Markéta Machová <mmachova@suse.com>
 - Update to 3.14.0
   * Django 2.2 is no longer supported. [#8662]
   * Django 4.1 compatibility. [#8591]
-  * Don't evaluate DateTimeField.default_timezone when a custom 
+  * Don't evaluate DateTimeField.default_timezone when a custom
     timezone is set. [#8531]
   * Make relative URLs clickable in Browseable API. [#8464]
-  * Make ReturnDict support dict union operators on Python 3.9 and 
+  * Make ReturnDict support dict union operators on Python 3.9 and
     later. [#8302]
 - Drop merged patch 8530-update-tests-new-Pygments.patch
 
@@ -180,8 +258,8 @@ Thu Sep  9 20:41:44 UTC 2021 - Matej Cepl <mcepl@suse.com>
 Fri Feb 12 09:51:11 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.11.2
-  * Security: Drop urlize_quoted_links template tag in favour of 
-    Django's built-in urlize. Removes a XSS vulnerability for some 
+  * Security: Drop urlize_quoted_links template tag in favour of
+    Django's built-in urlize. Removes a XSS vulnerability for some
     kinds of content in the browsable API. (boo#1177205, CVE-2020-25626)
 
 -------------------------------------------------------------------
@@ -591,10 +669,10 @@ Sun Jan 11 12:40:06 UTC 2015 - p.drouand@gmail.com
 Thu Nov 29 17:07:49 UTC 2013 - david.bahid@emc.com
 
 - update to 2.3.12
-  * removed patch to removed unicode support to enable SLES11 
+  * removed patch to removed unicode support to enable SLES11
     not needed for SLES11 SP3 with python 2.6.8 and SP2 fails
     even if updated patch is applied (and SP3 fails with patch).
-  * Move to 2.3 base release for the restframework 
+  * Move to 2.3 base release for the restframework
     introduces the ViewSet and Router classes
     simplified generic view classes
     easier serializers
@@ -603,8 +681,8 @@ Thu Nov 29 17:07:49 UTC 2013 - david.bahid@emc.com
     file upload parser
     decimal field
     add reverse relationships to the fields option on a ModelSerializer class
-    get_related_field and get_nested_field method signatures have now changed 
-    mechanics of names and descriptions used in the browseable API are 
+    get_related_field and get_nested_field method signatures have now changed
+    mechanics of names and descriptions used in the browseable API are
       generated has been modified and cleaned up
   * see http://django-rest-framework.org/topics/2.3-announcement for more details
 - Remove django-rest-framework-no-unicode-literals.diff; older python

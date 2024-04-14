@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of ruby-3.3-image</comment>
     <requestid>1142698</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9d778fb679cb8c7932ef4c3e563b406b</srcmd5>
+    <version>unknown</version>
+    <time>1713088472</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1167116</requestid>
+  </revision>
 </revisionlist>

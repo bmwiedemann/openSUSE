@@ -221,4 +221,27 @@ The upstream has developed for a long time and waylyrics has been stable, althou
   * build: reduce binary size</comment>
     <requestid>1164324</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2951afe72d68311c7a5a306e4d5b6d44</srcmd5>
+    <version>0.2.17</version>
+    <time>1713088478</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.2.17:
+  * chore: release v0.2.17
+  * feat: restart in tray-icon for windows
+  * docs(readme): update missing translation
+  * fix: gtk4 freezes on `Window::close` on windows
+  * enhance: support LastUpdateTime on windows
+  * chore: switch to upstream `tray-icon`
+  * chore(deps): bump dependencies
+  * fix: feature gate for unix should be `cfg(unix)`
+  * chore: release v0.2.16
+  * feat: initial tray-icon support for windows
+  * chore(test): cleanup unused imports
+  * build(deps): bump h2 from 0.4.3 to 0.4.4
+  * docs(changelog): update changelog
+  * docs(readme): the only compatible player on windows
+  * build: add icon for win32 build</comment>
+    <requestid>1167132</requestid>
+  </revision>
 </revisionlist>

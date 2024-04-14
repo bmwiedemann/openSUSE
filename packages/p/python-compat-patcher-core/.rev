@@ -52,4 +52,12 @@
   * Drop support for Python2.7 and Python3.5</comment>
     <requestid>1129810</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>904677d88c228702421c41c6c151ab6e</srcmd5>
+    <version>2.2</version>
+    <time>1713088503</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1167541</requestid>
+  </revision>
 </revisionlist>

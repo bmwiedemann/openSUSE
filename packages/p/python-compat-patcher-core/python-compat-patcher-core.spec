@@ -1,7 +1,7 @@
 #
 # spec file for package python-compat-patcher-core
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,20 +25,20 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pakal/compat-patcher-core
 Source:         https://github.com/pakal/compat-patcher-core/archive/refs/tags/release-%{version}.tar.gz#/compat-patch-core-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pakal/compat-patcher-core/pull/3 Get rid of the six dependency
+Patch:          no-six.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  cookiecutter > 1.6.0
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 Suggests:       cookiecutter > 1.6.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module tomli}
 BuildRequires:  python3-pytest-cookies
 # /SECTION
@@ -48,7 +48,7 @@ BuildRequires:  python3-pytest-cookies
 Python patcher system to allow easy and lasting API compatibility.
 
 %prep
-%setup -q -n compat-patcher-core-release-%{version}
+%autosetup -p1 -n compat-patcher-core-release-%{version}
 
 %build
 %pyproject_wheel

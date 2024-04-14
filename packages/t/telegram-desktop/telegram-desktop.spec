@@ -23,9 +23,13 @@
 
 %define __builder ninja
 
-# gcc10 or higher is required
+# gcc12 or higher is required
 %if 0%{?suse_version} && ( 0%{?suse_version} < 1500 || ( 0%{?is_opensuse} && 0%{?suse_version} == 1500 && 0%{?sle_version} && 0%{?sle_version} <= 150600 ) )
 %bcond_without  compiler_upgrade
+%endif
+
+%if 0%{?suse_version} && 0%{?suse_version} > 01500 || (0%{?sle_version} && 0%{?sle_version} >= 150500)
+%bcond_without  use_system_rnnoise
 %endif
 
 %define _dwz_low_mem_die_limit  40000000
@@ -48,11 +52,11 @@ Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%
 Source1:        tg_owt-packager.py
 Source2:        tg_owt-packager.sh
 Source3:        tg_owt-master.zip
-%if 0%{?suse_version} > 01500
+%if %{with use_system_rnnoise}
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-use-bundled-webrtc.patch
 %else
-Source3:        rnnoise-git20210122.tar.gz
+Source4:        rnnoise-git20210122.tar.gz
 # PATCH-FIX-OPENSUSE
 Patch1:         0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch
 %endif
@@ -72,16 +76,11 @@ BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 BuildRequires:  enchant-devel
 BuildRequires:  ffmpeg-devel
-%if %{with compiler_upgrade}
-BuildRequires:  gcc10
-BuildRequires:  gcc10-c++
-%else
-%if %{with compiler_downgrade}
+%if %{with compiler_upgrade} || %{with compiler_downgrade}
 BuildRequires:  gcc12
 BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++
-%endif
 %endif
 BuildRequires:  glibc-devel
 BuildRequires:  libboost_program_options-devel
@@ -171,7 +170,7 @@ BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(portaudiocpp)
 BuildRequires:  pkgconfig(protobuf)
 # Use system rnnoise on TW, self-build on others
-%if 0%{?suse_version} > 01500
+%if %{with use_system_rnnoise}
 BuildRequires:  expect-devel
 BuildRequires:  range-v3-devel
 BuildRequires:  pkgconfig(gsl)
@@ -225,8 +224,8 @@ The service also provides APIs to independent developers.
 mkdir ../Libraries
 
 # If not TW, unpack rnnoise source
-%if 0%{?suse_version} <= 01500
-%setup -q -T -D -b 3 -n tdesktop-%{version}-full
+%if %{without use_system_rnnoise}
+%setup -q -T -D -b 4 -n tdesktop-%{version}-full
 mv ../rnnoise-git20210122 ../Libraries/rnnoise
 %endif
 
@@ -235,21 +234,19 @@ unzip -q %{SOURCE3}
 mv tg_owt-master Libraries/tg_owt
 
 %build
-%if %{with compiler_upgrade}
-export CC=gcc-10
-export CXX=g++-10
-%else
-%if %{with compiler_downgrade}
+%if %{with compiler_upgrade} || %{with compiler_downgrade}
 export CC=gcc-12
 export CXX=g++-12
 %endif
-%endif
 
 # Fix build failures due to not finding installed headers for xkbcommon and wayland-client
-export CXXFLAGS+="`pkg-config --cflags xkbcommon wayland-client`"
+export CXXFLAGS+="`pkg-config --cflags xkbcommon wayland-client` -DBOOST_NO_STD_ALLOCATOR"
+%if 0%{?suse_version} == 1500
+export CXXFLAGS+=" -DBOOST_NO_STD_ALLOCATOR"
+%endif
 
 # If not TW, build rnnoise
-%if 0%{?suse_version} <= 01500
+%if %{without use_system_rnnoise}
 pushd %{_builddir}/Libraries/rnnoise
 ./autogen.sh
 %configure
@@ -290,7 +287,7 @@ cd %{_builddir}/tdesktop-%{version}-full
       -DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=ON \
       -DDESKTOP_APP_USE_ENCHANT=ON \
 %endif
-%if 0%{?suse_version} && ( 0%{?suse_version} < 1500 || ( 0%{?is_opensuse} && 0%{?suse_version} == 1500 && 0%{?sle_version} && 0%{?sle_version} <= 150600 ) )
+%if 0%{?suse_version} && ( 0%{?suse_version} < 1500 || ( 0%{?is_opensuse} && 0%{?suse_version} == 1500 && 0%{?sle_version} && 0%{?sle_version} < 150600 ) )
       -DDESKTOP_APP_DISABLE_DBUS_INTEGRATION=ON \
 %endif
       -DTDESKTOP_API_ID=611335 \
@@ -302,13 +299,12 @@ cd %{_builddir}/tdesktop-%{version}-full
       -DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON \
       -DTDESKTOP_LAUNCHER_BASENAME=%{name} \
       -DDESKTOP_APP_SPECIAL_TARGET=""
-
 %cmake_build
 
 %install
 %cmake_install
 
-%if 0%{?suse_version} > 01500
+%if 0%{?suse_version} > 01500 || ( 0%{?is_opensuse} && 0%{?suse_version} == 1500 && 0%{?sle_version} && 0%{?sle_version} >= 150600 )
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.metainfo.xml
 %endif
 

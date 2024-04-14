@@ -16,7 +16,7 @@
 #
 
 
-%define pver 3.17.2285
+%define pver a869962f051504dd2c1dedeb3bc3d266c17070c1
 Name:           nomacs
 Version:        3.17.2295
 Release:        0
@@ -25,21 +25,21 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://nomacs.org/
 Source0:        https://github.com/nomacs/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://github.com/novomesk/nomacs-plugins/archive/%{pver}/nomacs-plugins-%{pver}.tar.gz 
+Source1:        https://github.com/v-tyrtov/nomacs-plugins/archive/%{pver}/nomacs-plugins-%{pver}.tar.gz 
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  lcov
-BuildRequires:  libqt5-linguist-devel >= 5.2
-BuildRequires:  opencv-qt5-devel >= 2.4.6
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  quazip-qt5-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.2
-BuildRequires:  pkgconfig(Qt5Network) >= 5.2
-BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.2
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.2
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2
+BuildRequires:  cmake(OpenCV)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  pkgconfig(exiv2) >= 0.26
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libraw) >= 0.17
@@ -79,6 +79,7 @@ pushd ImageLounge/
   -DCMAKE_BUILD_TYPE=Release                           \
   -DCMAKE_C_FLAGS='%{optflags} -fno-strict-aliasing'   \
   -DCMAKE_CXX_FLAGS='%{optflags} -fno-strict-aliasing' \
+  -DQT_VERSION_MAJOR=6                                 \
   -DUSE_SYSTEM_QUAZIP=ON                               \
   -DCMAKE_SHARED_LINKER_FLAGS=""                       \
   -DENABLE_TRANSLATIONS=ON
@@ -100,6 +101,8 @@ sed -i -E 's|(%{_datadir}.*)$|"\1"|' %{name}.lang
 
 # fix zero-length
 rm %{buildroot}%{_datadir}/nomacs/Image\ Lounge/themes/System.css
+
+%check
 
 %post -p /sbin/ldconfig
 

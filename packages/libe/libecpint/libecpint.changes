@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 03 14:18:54 UTC 2024 - kkaempf@suse.com
+
+- Update to version v1.0.7+git20230218.8e788d4:
+  * cmake: migrate C++ standard to targets
+    (gh#robashaw/libecpint#59)
+  * cerf instead of Faddeeva (gh#robashaw/libecpint#55)
+  * misc. build changes (gh#robashaw/libecpint#52)
+  * Update CMakeLists.txt.in (gh#robashaw/libecpint#54)
+  * Do not use `#cmakedefine` for `LIBECPINT_MAX_UNROL`
+    (gh#robashaw/libecpint#50)
+  * Fix quotation (gh#robashaw/libecpint#47)
+  * Avoids gtest installation, which is only required for tests
+    (gh#robashaw/libecpint#46)
+
+-------------------------------------------------------------------
 Tue Dec 14 21:51:56 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
 - Fix deps of devel package

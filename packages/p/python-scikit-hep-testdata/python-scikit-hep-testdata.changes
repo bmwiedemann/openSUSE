@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr  6 17:43:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.43:
+  * feat: add uproot-issue-40 data
+  * feat: add uproot-issue-861 data
+- update to 0.4.42:
+  * The main reason for this update is to check to see if
+    `PYPI_PASSWORD` is working yet. We had disabled it when we
+    thought there was a break-in, and consequently, we haven't
+    been pushing releases to PyPI since 0.4.39. Let's see if this
+    works.
+- update to 0.4.41:
+  * chore: update RNTuple files to RC2
+  * chore: update CI actions and add Dependabot
+
+-------------------------------------------------------------------
 Thu Mar 21 17:26:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.40:

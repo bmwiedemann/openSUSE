@@ -22,7 +22,7 @@
 %define __builder ninja
 
 Name:           netdata
-Version:        1.45.2
+Version:        1.45.3
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
@@ -403,11 +403,7 @@ rm -r %{buildroot}%{_prefix}/lib/%{name}/system
 rm %{buildroot}%{_libexecdir}/%{name}/install-service.sh
 
 # This is a suid binary that is supposed to allow Netdata to run
-# some privileged commands. The list of commands is restricted,
-# but it looks for them in PATH. That means it trivially allows
-# running arbitrary programs.
-# Obviously, packaging such a thing in working condition is a very
-# bad idea.
+# some privileged commands. Not packaged due to security concerns.
 rm %{buildroot}%{_libexecdir}/%{name}/plugins.d/ndsudo
 
 %fdupes %{buildroot}/lib %{buildroot}%{_libexecdir} %{buildroot}%{_datadir}

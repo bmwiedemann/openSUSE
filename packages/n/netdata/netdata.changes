@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 12 16:15:23 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.45.3
+  This release mitigates a security issue in ndsudo.
+  openSUSE packages are unaffected because they do not contain
+  the ndsudo tool—for security reasons.
+  See https://github.com/netdata/netdata/security/advisories/GHSA-pmhq-4cxq-wj93
+
+  * Resolved an issue that prevented the "percentage" option from
+    functioning correctly in alert lookups
+    gh#netdata/netdata#17391
+  * Increased the default minimum thread stack size to 1 MB to
+    address potential stability issues caused by the musl libc's
+    smaller default (128kB)
+    gh#netdata/netdata#17317
+
+-------------------------------------------------------------------
 Wed Apr 10 23:26:18 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.45.2

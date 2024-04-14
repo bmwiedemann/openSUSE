@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 12 10:50:49 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.3.1
+  * Build system updates only
+- Add 0001-build-repair-wrong-order-of-link-arguments.patch
+
+-------------------------------------------------------------------
 Sat Apr  2 15:14:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.2

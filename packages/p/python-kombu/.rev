@@ -950,4 +950,14 @@
   * Added Changelog for v5.3.6</comment>
     <requestid>1164300</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>e660c07c3dabb7c4f63c693503346255</srcmd5>
+    <version>5.3.7</version>
+    <time>1713088592</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.3.7:
+  * The release of v5.3.6 was missing the bumbversion commit so
+    v5.3.7 is only released to sync it back.</comment>
+    <requestid>1167624</requestid>
+  </revision>
 </revisionlist>

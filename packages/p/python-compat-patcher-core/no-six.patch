@@ -1,0 +1,174 @@
+Index: compat-patcher-core-release-2.2/src/compat_patcher_core/registry.py
+===================================================================
+--- compat-patcher-core-release-2.2.orig/src/compat_patcher_core/registry.py
++++ compat-patcher-core-release-2.2/src/compat_patcher_core/registry.py
+@@ -3,8 +3,6 @@ from __future__ import absolute_import,
+ import collections
+ import itertools
+ 
+-import six
+-
+ from compat_patcher_core.utilities import (
+     tuplify_software_version,
+     _import_attribute_from_dotted_string,
+@@ -30,7 +28,7 @@ class PatchingRegistry(object):
+         self, family_prefix, populate_callable=None, current_software_version=None
+     ):
+         assert family_prefix and isinstance(
+-            family_prefix, six.string_types
++            family_prefix, str
+         ), family_prefix
+         assert populate_callable is None or hasattr(
+             populate_callable, "__call__"
+@@ -47,10 +45,10 @@ class PatchingRegistry(object):
+         version of the software to be patched.
+         """
+         current_software_version = self._current_software_version
+-        if six.callable(current_software_version):
++        if callable(current_software_version):
+             current_software_version = current_software_version()
+         assert current_software_version is None or isinstance(
+-            current_software_version, (six.string_types, tuple, list)
++            current_software_version, (str, tuple, list)
+         ), current_software_version
+         return current_software_version
+ 
+@@ -109,7 +107,7 @@ class PatchingRegistry(object):
+         """
+ 
+         assert (
+-            isinstance(fixer_reference_version, six.string_types)
++            isinstance(fixer_reference_version, str)
+             and fixer_reference_version
+         ), fixer_reference_version  # eg. "1.9"
+         assert fixer_tags is None or isinstance(fixer_tags, list), fixer_tags
+@@ -325,12 +323,12 @@ class MultiPatchingRegistry(object):
+ 
+             original_registry_reference = registry_reference
+ 
+-            if isinstance(registry_reference, six.string_types):
++            if isinstance(registry_reference, str):
+                 registry_reference = _import_attribute_from_dotted_string(
+                     registry_reference
+                 )
+ 
+-            if six.callable(registry_reference):
++            if callable(registry_reference):
+                 registry_reference = registry_reference()
+ 
+             if not isinstance(registry_reference, PatchingRegistry):
+@@ -379,6 +377,4 @@ class MultiPatchingRegistry(object):
+                 pass
+         raise KeyError("Fixer %r not found in any patching registries" % fixer_id)
+ 
+-    get_relevant_fixer_ids = six.get_unbound_function(
+-        PatchingRegistry.get_relevant_fixer_ids
+-    )  # Unmodified
++    get_relevant_fixer_ids = PatchingRegistry.get_relevant_fixer_ids # Unmodified
+Index: compat-patcher-core-release-2.2/src/compat_patcher_core/runner.py
+===================================================================
+--- compat-patcher-core-release-2.2.orig/src/compat_patcher_core/runner.py
++++ compat-patcher-core-release-2.2/src/compat_patcher_core/runner.py
+@@ -2,8 +2,6 @@ from __future__ import absolute_import,
+ 
+ import functools
+ 
+-import six
+-
+ from compat_patcher_core.exceptions import SkipFixerException
+ 
+ 
+@@ -46,7 +44,7 @@ class PatchingRunner(object):
+         if name.startswith("include") or name.startswith("exclude"):
+             assert value in ("*", None) or (
+                 isinstance(value, (list, tuple))
+-                and all(isinstance(f, six.string_types) for f in value)
++                and all(isinstance(f, str) for f in value)
+             ), value
+ 
+         return value
+Index: compat-patcher-core-release-2.2/src/compat_patcher_core/utilities.py
+===================================================================
+--- compat-patcher-core-release-2.2.orig/src/compat_patcher_core/utilities.py
++++ compat-patcher-core-release-2.2/src/compat_patcher_core/utilities.py
+@@ -7,8 +7,6 @@ import sys
+ import types
+ import warnings as stdlib_warnings  # Do NOT import/use elsewhere than here!
+ 
+-import six
+-
+ 
+ def tuplify_software_version(version):
+     """
+@@ -17,10 +15,10 @@ def tuplify_software_version(version):
+     """
+     if version is None:
+         return version
+-    if isinstance(version, six.string_types):
++    if isinstance(version, str):
+         version = tuple(int(x) for x in version.split("."))
+     assert len(version) <= 5, version
+-    assert all(isinstance(x, six.integer_types) for x in version), version
++    assert all(isinstance(x, int) for x in version), version
+     return version
+ 
+ 
+@@ -33,7 +31,7 @@ def detuplify_software_version(version):
+         return version
+     if isinstance(version, (tuple, list)):
+         version = ".".join(str(number) for number in version)
+-    assert isinstance(version, six.string_types)
++    assert isinstance(version, str)
+     return version
+ 
+ 
+@@ -104,7 +102,7 @@ class PatchingUtilities(object):
+             if patch_injected_objects is True:
+                 patch_injected_objects = "__COMPAT_PATCHED__"  # Default marker name
+             assert not patch_injected_objects or isinstance(
+-                patch_injected_objects, six.string_types
++                patch_injected_objects, str
+             ), repr(patch_injected_objects)
+             self._patch_injected_objects = patch_injected_objects
+ 
+@@ -161,7 +159,7 @@ class PatchingUtilities(object):
+         """
+         assert attribute is not None
+         assert not self._is_simple_callable(attribute), attribute
+-        assert not isinstance(attribute, six.class_types), attribute
++        assert not isinstance(attribute, type), attribute
+ 
+         self._patch_injected_object(attribute)
+         setattr(target_object, target_attrname, attribute)
+@@ -217,7 +215,7 @@ class PatchingUtilities(object):
+         :param target_klassname: The name given to the new class in the object to patch
+         :param klass: The class to inject
+         """
+-        assert isinstance(klass, six.class_types), klass
++        assert isinstance(klass, type), klass
+ 
+         self._patch_injected_object(klass)
+         setattr(target_object, target_klassname, klass)
+Index: compat-patcher-core-release-2.2/tests/test_import_proxifier.py
+===================================================================
+--- compat-patcher-core-release-2.2.orig/tests/test_import_proxifier.py
++++ compat-patcher-core-release-2.2/tests/test_import_proxifier.py
+@@ -1,4 +1,4 @@
+-import sys, six
++import sys, urllib
+ 
+ from compat_patcher_core.import_proxifier import (
+     install_import_proxifier,
+@@ -90,8 +90,8 @@ def test_import_proxifier():
+ 
+     # We test_compatibility_with_other_custom_importers():
+     # Old versions of lib crashed with AssertionError due to wrong module name "six.moves.urllib_parse" set by six._importer
+-    register_module_alias("my_six_urllib_parse_alias", real_name="six.moves.urllib.parse")
+-    import my_six_urllib_parse_alias
++    register_module_alias("my_urllib_parse_alias", real_name="urllib.parse")
++    import my_urllib_parse_alias
+     # Re-overridden by our own importer on python3 only
+-    assert my_six_urllib_parse_alias.__name__ == "six.moves.urllib.parse" if six.PY3 else "six.moves.urllib_parse"
+-    assert my_six_urllib_parse_alias.urlencode(dict(name="h\xc3llo")) == "name=h%C3%83llo" if six.PY3 else "name=h%C3llo"
++    assert my_urllib_parse_alias.__name__ == "urllib.parse"
++    assert my_urllib_parse_alias.urlencode(dict(name="h\xc3llo")) == "name=h%C3%83llo"

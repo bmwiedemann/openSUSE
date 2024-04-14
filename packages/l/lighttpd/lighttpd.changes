@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 13 11:20:33 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.76:
+  * detect VU#421644 HTTP/2 CONTINUATION Flood
+  * issue trace and send GO_AWAY
+  * tarball is now more reproducible and verifiable
+
+-------------------------------------------------------------------
 Sat Mar 23 19:02:00 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.75:

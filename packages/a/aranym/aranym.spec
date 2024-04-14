@@ -23,8 +23,8 @@ Summary:        Atari Running on Any Machine
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Emulators/Other
 URL:            http://aranym.github.io/
-Source:         %{name}-%{version}.tar.gz
-Source1:        afros812.zip
+Source:         https://downloads.sourceforge.net/aranym/%{name}_%{version}.orig.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        https://downloads.sourceforge.net/aranym/afros812.zip
 Patch0:         pow10.patch
 Patch1:         lto.patch
 Patch2:         includes.patch

@@ -1,0 +1,5 @@
+# Upstream does not declare a dependency as it ships all files in both packages,
+# which scarily works with pip unless you start uninstalling one of the two packages.
+# We use files from python-typer-slim where they exist in both. Thus, we require
+# the dependency although it is not there upstream.
+addFilter("python\d+-typer.noarch: W: python-leftover-require python\d+-typer-slim")

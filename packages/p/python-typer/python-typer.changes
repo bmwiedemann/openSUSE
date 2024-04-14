@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Apr 12 15:28:57 UTC 2024 - Matthias Bach <marix@marix.org>
+
+- Add conflict declaration with Erlang as both packages provide
+  /usr/bin/typer
+
+-------------------------------------------------------------------
+Tue Apr  9 20:28:42 UTC 2024 - Matthias Bach <marix@marix.org> - 0.12.3
+
+- Update to upstream version 0.12.3
+  * Fix Rich formatting with no commands.
+  * Improve column help display, ensure commands column width is
+    the same on all panels.
+  * Add support for an argument of type Optional[Tuple] and default
+
+-------------------------------------------------------------------
+Sat Apr  6 13:05:09 UTC 2024 - Matthias Bach <marix@marix.org> - 0.12.1
+
+- Update to upstream version 0.12.1
+  * The core functionality has been extracted into
+    python-typer-slim.
+  * The typer command is now provided as part of the main typer
+    package.
+  * Formerly optional dependencies required for full
+    functionality are now automatically installed. If they are not
+    required, the slim package can be used.
+- Drop set-proper-pythonpath-for-tutorial-script-tests.patch as it
+  is now applied in python-typer-slim.
+
+-------------------------------------------------------------------
 Fri Mar 29 09:29:31 UTC 2024 - Matthias Bach <marix@marix.org> - 0.11.1
 
 - Update to upstream version 0.10.1

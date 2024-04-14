@@ -172,4 +172,27 @@
     <comment></comment>
     <requestid>1081939</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>14ec4850ac84df79e63f68aee7e5edbe</srcmd5>
+    <version>0.19.0</version>
+    <time>1713088490</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.19.0:
+  * `to_ssh` in `VerifyingKey` and `SigningKey`, supports Ed25519
+    keys only
+  * Support for twisted Brainpool curves
+  * Fix curve equation in glossary
+  * Documentation for signature encoding and signature decoding
+    functions
+  * Officially support Python 3.11 and 3.12
+  * Small updates to test suite to make it work with 3.11 and
+    3.12 and new releases of test dependencies
+  * Dropped the internal `_rwlock` module as it's unused
+  * Added mutation testing to CI, lots of speed-ups to the test
+    suite to make it happen
+  * Removal of unnecessary `six.b` literals (Alexandre Detiste)
+
+  order bit size and the curve order is not a multiple of 8</comment>
+    <requestid>1167154</requestid>
+  </revision>
 </revisionlist>

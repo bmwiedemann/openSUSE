@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 14 07:38:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.62.1:
+  * sync with grpcio
+
+-------------------------------------------------------------------
 Mon Feb 26 18:55:50 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Include in SLE 15 SP4 and later (jsc#PED-6697)

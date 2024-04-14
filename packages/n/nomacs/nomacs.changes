@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Apr 13 22:49:46 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Ported to Qt6
+- Remove unneeded BuildRequires:
+  * pkgconfig(Qt5Concurrent)
+  * pkgconfig(Qt5Network)
+  * pkgconfig(Qt5PrintSupport)
+  * pkgconfig(Qt5Svg)
+  * pkgconfig(Qt5Widgets)
+  * quazip-qt5-devel
+  * lcov
+  * libqt5-linguist-devel
+  * opencv-qt5-devel
+- Add ported Qt6 BuildRequires:
+  * hicolor-icon-theme
+  * cmake(OpenCV)
+  * cmake(Qt6Core)
+  * cmake(Qt6Core5Compat)
+  * cmake(Qt6Network)
+  * cmake(Qt6LinguistTools)
+  * cmake(Qt6PrintSupport)
+  * cmake(Qt6Concurrent)
+  * cmake(Qt6Svg)
+- Change source plugin to git v-tyrtov for support Qt6 build
+
+-------------------------------------------------------------------
 Thu Mar 14 09:22:59 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 3.17.2295

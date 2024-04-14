@@ -29,7 +29,10 @@ License:        GPL-2.0-only AND ISC
 Group:          Development/Libraries/Python
 URL:            https://github.com/coin3d/pivy
 Source0:        https://github.com/coin3d/pivy/archive/%{version}.tar.gz#/pivy-%{version}.tar.gz
+Patch0:         https://patch-diff.githubusercontent.com/raw/coin3d/pivy/pull/113.patch#/fix_python_312_replace_PyEval_CallObject.patch
+Patch1:         https://github.com/coin3d/pivy/commit/d3faf04b8770.patch#/fix_python_312_PyUnicode_usage.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc

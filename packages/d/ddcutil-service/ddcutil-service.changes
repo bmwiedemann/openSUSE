@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 12 22:50:44 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
+
+- 1.0.4
+  - Provide an API flag RETURN_RAW_VALUES which disables GetVcp high-byte masking of Simple Non-Continuous features.
+  - Provide the --return-raw-values command line option for the same purpose.
+
+-------------------------------------------------------------------
 Mon Apr  1 18:07:41 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
 
 - 1.0.3
