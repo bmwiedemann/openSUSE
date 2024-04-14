@@ -31591,6 +31591,7 @@ unsorted:
   - python312-devpi-server 
   - python312-dfVFS 
   - python312-dfdatetime 
+  - python312-dfwinreg 
   - python312-dialite 
   - python312-dictdiffer 
   - python312-dictknife 
@@ -34113,7 +34114,6 @@ unsorted:
   - python39-curses 
   - python39-dbm 
   - python39-devel 
-  - python39-dfwinreg 
   - python39-doc 
   - python39-doc-devhelp 
   - python39-idle 
