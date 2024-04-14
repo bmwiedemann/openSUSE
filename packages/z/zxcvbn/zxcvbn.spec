@@ -53,6 +53,7 @@ developing applications that use %{name}
 %autosetup -n %{name}-c-%{version}
 
 %build
+%set_build_flags
 %make_build
 
 %check

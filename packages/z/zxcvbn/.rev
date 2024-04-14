@@ -7,4 +7,12 @@
     <comment>new package that is future dependency of libreoffice-24.2.0 (into rings)</comment>
     <requestid>1154624</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>90089fe701126f2ee70daf4f62180d66</srcmd5>
+    <version>2.5</version>
+    <time>1713088427</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1167048</requestid>
+  </revision>
 </revisionlist>
