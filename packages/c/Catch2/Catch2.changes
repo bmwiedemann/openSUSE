@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Apr 10 13:38:14 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.5.4:
+  * Fixes:
+    - Fixed potential compilation error when asked to generate
+      random integers whose type did not match `std::(u)int*_t`.
+    - Added missing outlined destructor causing
+      `Wdelete-incomplete` when compiling against libstdc++ in
+      C++23 mode (gh#catchorg/Catch2#2852).
+    - Fixed regression where decomposing assertion with const
+      instance of `std::foo_ordering` would not compile.
+  * Improvements:
+    - Reintroduced support for GCC 5 and 6
+      (gh#catchorg/Catch2#2836).
+    - `CATCH_CONFIG_DEFAULT_REPORTER` can now be an arbitrary
+      reporter spec.
+    - Improved performance of generating 64bit random integers by
+      20+%.
+  * Miscellaneous:
+    - Significantly improved Conan in-tree recipe
+      (gh#catchorg/Catch2#2831).
+    - `DL_PATHS` in `catch_discover_tests` now supports multiple
+      arguments (gh#catchorg/Catch2#2852,
+      gh#catchorg/Catch2#2736).
+    - Fixed preprocessor logic for checking whether we expect
+      reproducible floating point results in tests.
+    - Improved the floating point tests structure to avoid
+      `Wunused` when the reproducibility tests are disabled
+      (gh#catchorg/Catch2#2845).
+
+-------------------------------------------------------------------
 Tue Mar 12 00:46:11 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.5.3:
