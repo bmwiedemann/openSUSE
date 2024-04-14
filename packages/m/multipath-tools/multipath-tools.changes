@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 11 15:22:02 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.9.8+88+suse.d504d83:
+  * Revert "libmultipath: fix max_sectors_kb on adding path"
+  (bsc#1222458)
+
+-------------------------------------------------------------------
 Tue Mar  5 20:19:12 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.9.8+87+suse.f72b9f3:
