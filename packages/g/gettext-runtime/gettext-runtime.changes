@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  4 09:10:05 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Add missing Requires: find to gettext-tools
+
+-------------------------------------------------------------------
 Mon Feb 26 14:57:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -89,6 +89,8 @@ License:        LGPL-2.1-or-later
 Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
 Requires:       xz
+# autopoint requires find
+Requires:       findutils
 %if %{without mini}
 Requires(post): info
 Requires(preun): info
