@@ -1,0 +1,37 @@
+From 817674bc542d7169c3d3ca687988c8619a210372 Mon Sep 17 00:00:00 2001
+From: danishprakash <danish.prakash@suse.com>
+Date: Wed, 10 Apr 2024 13:21:08 +0530
+Subject: [PATCH] containers.conf: SUSE: clear cni config dir for ALP
+
+This allows us to clear the cni_plugin_dirs when building
+for SUSE ALP since we don't ship cni anymore.
+
+https://github.com/containers/podman/issues/19327
+
+SUSE Bugs: bsc#1213556
+Signed-off-by: danishprakash <danish.prakash@suse.com>
+---
+ pkg/config/containers.conf | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/pkg/config/containers.conf b/pkg/config/containers.conf
+index 6e0044f6..e1b1b280 100644
+--- a/pkg/config/containers.conf
++++ b/pkg/config/containers.conf
+@@ -331,6 +331,13 @@ default_sysctls = [
+ 
+ # Path to directory where CNI plugin binaries are located.
+ #
++
++# SUSE: We don't ship CNI in SUSE ALP stream,
++# and so we modify this option at build time
++# conditionally. (bsc#1213556)
++# https://github.com/containers/podman/issues/19327
++cni_plugin_dirs = ["@LIBEXECDIR@/cni"]
++
+ #cni_plugin_dirs = [
+ #  "/usr/local/libexec/cni",
+ #  "/usr/libexec/cni",
+-- 
+2.43.0
+

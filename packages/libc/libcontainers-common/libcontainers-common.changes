@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr  8 15:15:18 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
+
+- Add patch to keep containers.conf modifications in sync with upstream (bsc#1213556)
+  + 0001-containers.conf-SUSE-clear-cni-config-dir-for-ALP.patch
+- Fallback to podman's default capabilities and journal driver via containers.conf
+- New release 20240408
+- bump bundled c/common to 0.58.0
+- bump bundled c/image to 5.30.0
+- bump bundled c/storage to 1.53.0
+
+-------------------------------------------------------------------
 Wed Mar 20 10:41:40 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - reenable SUSE registry key validation for new key.

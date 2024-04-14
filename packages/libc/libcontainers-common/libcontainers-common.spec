@@ -17,17 +17,17 @@
 
 
 # commonver - version from containers/common
-%define commonver 0.57.4
+%define commonver 0.58.0
 # storagever - version from containers/storage
-%define storagever 1.51.0
+%define storagever 1.53.0
 # imagever - version from containers/image
-%define imagever 5.29.2
+%define imagever 5.30.0
 # skopeover - version from containers/skopeo
-%define skopeover 1.14.2
+%define skopeover 1.15.0
 # https://github.com/containers/shortnames
 %define shortnamesver 2023.02.20
 Name:           libcontainers-common
-Version:        20240206
+Version:        20240408
 Release:        0
 Summary:        Configuration files common to github.com/containers
 License:        Apache-2.0
@@ -47,11 +47,11 @@ Source6:        registries.conf
 # https://github.com/containers/skopeo/blob/main/default.yaml but heavily modified
 Source7:        default.yaml
 Source8:        common-%{commonver}.tar.xz
-# https://github.com/containers/common/blob/main/pkg/config/containers.conf with custom settings
-Source9:        containers.conf
+Source9:        https://raw.githubusercontent.com/containers/common/v%{commonver}/pkg/config/containers.conf
 Source10:       %{name}.rpmlintrc
 Source11:       https://raw.githubusercontent.com/containers/shortnames/v%{shortnamesver}/shortnames.conf
 Source12:       openSUSE-policy.json
+Patch100:       0001-containers.conf-SUSE-clear-cni-config-dir-for-ALP.patch
 BuildRequires:  go-go-md2man
 Requires(post): %{_bindir}/sed
 # add SLE-specific mounts for only SLES systems
@@ -95,13 +95,20 @@ Conflicts:      libcontainers-openSUSE-policy
 This package ships the default /etc/containers/policy.json
 
 %prep
+cp %{SOURCE9} .
+# Apply CNI config on streams other than ALP (bsc#1213556)
+# https://github.com/containers/podman/issues/19327
+%if 0%{?suse_version} < 1600 && !0%{?is_opensuse}
+%patch -P100 -p3
+sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %_builddir/containers.conf
+%endif
+
 %setup -q -Tcq -b0 -b1 -b8
 # copy the LICENSE file in the build root
 cp %{SOURCE2} .
 
 %build
 cd ..
-pwd
 # compile containers/image manpages
 cd image-%{imagever}
 for md in docs/*.md
@@ -132,12 +139,6 @@ cat >>%{SOURCE5} <<EOL
 %{_sysconfdir}/zypp/credentials.d/SCCcredentials:%{_sysconfdir}/zypp/credentials.d/SCCcredentials
 EOL
 
-# Disable CNI related configs on ALP (bsc#1213556)
-# https://github.com/containers/podman/issues/19327
-%if 0%{?suse_version} >= 1600 && !0%{?is_opensuse}
-sed -i 's/cni_plugin_dirs = .*/\# cni_plugin_dirs = []/g' %{SOURCE9}
-%endif
-
 cd common-%{commonver}
 %make_build docs
 cd ..
@@ -160,8 +161,7 @@ install -D -m 0644 %{SOURCE5} %{buildroot}/%{_sysconfdir}/containers/mounts.conf
 install -D -m 0644 %{SOURCE6} %{buildroot}/%{_sysconfdir}/containers/registries.conf
 install -D -m 0644 %{SOURCE11} %{buildroot}/%{_sysconfdir}/containers/registries.conf.d/000-shortnames.conf
 install -D -m 0644 %{SOURCE7} %{buildroot}/%{_sysconfdir}/containers/registries.d/default.yaml
-sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE9}
-install -D -m 0644 %{SOURCE9} %{buildroot}/%{_datadir}/containers/containers.conf
+install -D -m 0644 %_builddir/containers.conf %{buildroot}/%{_datadir}/containers/containers.conf
 install -D -m 0644 common-%{commonver}/pkg/seccomp/seccomp.json %{buildroot}/%{_datadir}/containers/seccomp.json
 install -D -m 0644 common-%{commonver}/pkg/seccomp/seccomp.json %{buildroot}/%{_sysconfdir}/containers/seccomp.json
 
