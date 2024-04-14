@@ -716,4 +716,21 @@
     <comment>GNOME 46 (forwarded request 1158698 from dimstar)</comment>
     <requestid>1159496</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>71e99c24b21728bb61ed2162e3c58de2</srcmd5>
+    <version>3.50.1</version>
+    <time>1713088432</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.50.1:
+  + Fix translation domain in account dialogs.
+  + Fix OAuth 2.0 URI handler for some users.
+  + Fix crash in Kerberos/Fedora provider.
+  + Improved WebDAV support for Fastmail and mailbox.org.
+  + Fixes for WebDAV discovery.
+  + OAuth 2.0 PKCE support.
+  + Fix issues caught by static analysis.
+  + Update Microsoft Client ID.
+  + Updated translations. (forwarded request 1166998 from dimstar)</comment>
+    <requestid>1167121</requestid>
+  </revision>
 </revisionlist>
