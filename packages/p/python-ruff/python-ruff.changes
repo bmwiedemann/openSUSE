@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Apr 12 08:55:20 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.3.7
+ * Preview features
+   * [flake8-bugbear] Implement loop-iterator-mutation (B909) 
+   * [pylint] Implement rule to prefer augmented assignment (PLR6104) 
+   * [pylint] Implement bad-staticmethod-argument (PLW0211) 
+   * [pylint] Implement if-stmt-min-max (PLR1730, PLR1731) 
+   * [pyupgrade] Replace str,Enum multiple inheritance with StrEnum UP042 
+   * [refurb] Implement if-expr-instead-of-or-operator (FURB110) 
+   * [refurb] Implement int-on-sliced-str (FURB166) 
+   * [refurb] Implement write-whole-file (FURB103) 
+   * [refurb] Support itemgetter in reimplemented-operator (FURB118) 
+   * [flake8_comprehensions] Add sum/min/max to unnecessary comprehension check (C419) 
+ * Rule changes
+   * [pydocstyle] Require capitalizing docstrings where the first sentence is a single word (D403) 
+   * [pycodestyle] Ignore annotated lambdas in class scopes (E731) 
+   * [flake8-pyi] Various improvements to PYI034 
+   * [flake8-slots] Flag subclasses of call-based typing.NamedTuples as well as subclasses of collections.namedtuple() (SLOT002) 
+   * [pyflakes] Allow forward references in class bases in stub files (F821) 
+   * [pygrep-hooks] Improve blanket-noqa error message (PGH004) 
+ * CLI
+   * Support FORCE_COLOR env var 
+ * Configuration
+   * Support negated patterns in [extend-]per-file-ignores 
+ * Bug fixes
+   * Avoid TOCTOU errors in cache initialization 
+   * [pylint] Recode nan-comparison rule to W0177 
+   * [pylint] Reverse min-max logic in if-stmt-min-max 
+   * [flake8-import-conventions] Accept non-aliased (but correct) import in unconventional-import-alias (ICN001) 
+   * [flake8-quotes] Add semantic model flag when inside f-string replacement field 
+   * [pep8-naming] Recursively resolve TypeDicts for N815 violations 
+   * [flake8-quotes] Respect Q00* ignores in flake8-quotes rules 
+   * [flake8-simplify] Show negated condition in needless-bool diagnostics (SIM103) 
+   * [ruff] Use within-scope shadowed bindings in asyncio-dangling-task (RUF006) 
+   * [flake8-pytest-style] Fix single-tuple conversion in pytest-parametrize-values-wrong-type (PT007) 
+   * [flake8-return] Ignore assignments to annotated variables in unnecessary-assign (RET504) 
+   * [refurb] Do not allow any keyword arguments for read-whole-file in rb mode (FURB101) 
+   * [pylint] Don't recommend decorating staticmethods with @singledispatch (PLE1519, PLE1520) 
+   * [pydocstyle] Use section name range for all section-related docstring diagnostics 
+   * Respect # noqa directives on __all__ openers 
+
+-------------------------------------------------------------------
 Tue Apr  9 21:33:19 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.3.5
