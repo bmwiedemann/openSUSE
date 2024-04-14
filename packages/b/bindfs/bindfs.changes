@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 11 16:23:14 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.17.7
+  * Fixed compiler warnings during build
+
+-------------------------------------------------------------------
 Sat Nov 25 17:00:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.17.6:

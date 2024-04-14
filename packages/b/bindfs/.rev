@@ -234,4 +234,12 @@ no _service here, yo stupid bot</comment>
   * Support negative --{uid,gid}-offset (issue #142)</comment>
     <requestid>1128767</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ec31fba414ce80fd8d38248df711fcfa</srcmd5>
+    <version>1.17.7</version>
+    <time>1713088417</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.17.7</comment>
+    <requestid>1166911</requestid>
+  </revision>
 </revisionlist>
