@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,6 +54,7 @@ Patch12:        perl-reproducible.patch
 Patch13:        perl_skip_flaky_tests_powerpc.patch
 # PATCH-FIX-UPSTREAM unmerged https://www.nntp.perl.org/group/perl.perl5.porters/2018/12/msg253240.html
 Patch18:        perl-reproducible2.patch
+Patch19:        perl-locale-backport.diff
 BuildRequires:  db-devel
 BuildRequires:  gdbm-devel
 BuildRequires:  libbz2-devel
@@ -190,6 +191,7 @@ cp -p %{SOURCE3} .
 %patch -P 11
 %patch -P 12 -p1
 %patch -P 18
+%patch -P 19
 
 %build
 %define _lto_cflags %{nil}

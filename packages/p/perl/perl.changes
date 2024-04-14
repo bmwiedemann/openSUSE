@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 12 13:06:56 CEST 2024 - mls@suse.de
+
+- Revert commit 7af2d2037375d58e700f9e1b217efb2c4db66133 as suggested
+  by upstream perl
+  * fixed locale being clobbered by perl [bsc#1220195]
+  * new patch: perl-locale-backport.diff
+
+-------------------------------------------------------------------
 Tue Feb 27 15:21:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

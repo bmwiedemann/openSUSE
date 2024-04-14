@@ -1127,4 +1127,15 @@ I hope I got it right now. It export both 5.34.0 and 5.34.1 COMPAT. That should 
     <comment></comment>
     <requestid>1156073</requestid>
   </revision>
+  <revision rev="134" vrev="3">
+    <srcmd5>3cf349ca545d43f318c2319958c2647e</srcmd5>
+    <version>5.38.2</version>
+    <time>1713088407</time>
+    <user>anag+factory</user>
+    <comment>- Revert commit 7af2d2037375d58e700f9e1b217efb2c4db66133 as suggested
+  by upstream perl
+  * fixed locale being clobbered by perl [bsc#1220195]
+  * new patch: perl-locale-backport.diff</comment>
+    <requestid>1167043</requestid>
+  </revision>
 </revisionlist>
