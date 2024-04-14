@@ -1,7 +1,7 @@
 #
 # spec file for package gptfdisk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gptfdisk
-Version:        1.0.9
+Version:        1.0.10
 Release:        0
 Summary:        GPT partitioning and MBR repair software
 License:        GPL-2.0-only
@@ -26,11 +26,6 @@ URL:            http://rodsbooks.com/gdisk
 #Git-Clone:     https://git.code.sf.net/p/gptfdisk/code gptfdisk-code
 #Git-Web:       https://sourceforge.net/p/gptfdisk/code/ci/master/tree/
 Source:         https://downloads.sf.net/%name/%name-%version.tar.gz
-Patch1:         0001-Fix-failure-crash-of-sgdisk-when-compiled-with-lates.patch
-# PATCH-FIX-UPSTREAM gptfdisk-fix-null-pointer-dereference.patch bsc#1208877 alynx.zhou@suse.com -- Fix NULL pointer dereference in previous patch
-Patch2:         gptfdisk-fix-null-pointer-dereference.patch
-# PATCH-FIX-UPSTREAM https://bugs.gentoo.org/844073 https://sourceforge.net/p/gptfdisk/code/ci/6a8416cbd12d55f882bb751993b94f72d338d96f/
-Patch3:         gptfdisk-1.0.9-libuuid.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig(popt)

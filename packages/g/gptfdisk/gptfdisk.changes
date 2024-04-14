@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 11 19:44:38 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.10
+  * Fix failure & crash of sgdisk when compiled with latest popt
+  * Fix NULL dereference when duplicating string argument
+  * Allow partition dynamically allocated by --largest-new to be
+    referenced by other options
+  * Truncate decimal inputs (e.g. "9.5G" becomes "9G")
+  * New partition type codes from the Discoverable Partitions
+    Specification
+- Delete 0001-Fix-failure-crash-of-sgdisk-when-compiled-with-lates.patch
+  gptfdisk-1.0.9-libuuid.patch,
+  gptfdisk-fix-null-pointer-dereference.patch (merged)
+
+-------------------------------------------------------------------
 Thu Sep  7 08:44:04 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix UUID generation with util-linux >= 2.38:
