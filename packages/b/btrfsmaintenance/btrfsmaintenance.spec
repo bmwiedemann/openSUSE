@@ -1,7 +1,7 @@
 #
 # spec file for package btrfsmaintenance
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Summary:        Scripts for btrfs periodic maintenance tasks
 License:        GPL-2.0-only
 Group:          System/Base
 URL:            https://github.com/kdave/btrfsmaintenance
-Source0:        %{name}-%{version}.tar.bz2
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        btrfs-defrag-plugin.sh
 BuildRequires:  pkgconfig(systemd)
 Requires:       btrfsprogs

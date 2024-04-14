@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  8 18:17:13 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use full URL for Source0 (.gz compressed as upstream does not
+  ship .bz2 ones).
+
+-------------------------------------------------------------------
 Wed Feb 10 12:49:06 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Require libzypp plugin only if zypper is used (Required for e.g.
