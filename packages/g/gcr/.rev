@@ -407,4 +407,17 @@
     <comment>GNOME 46 (forwarded request 1159288 from dimstar)</comment>
     <requestid>1159544</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>315ed5b45329415fd24f44eeb73177d6</srcmd5>
+    <version>4.3.0</version>
+    <time>1713088433</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.3.0:
+  + certificate: Add API to retrieve version.
+  + Bump required GnuTLS version to 3.8.5.
+  + Avoid potential integer overflow spotted by UBSan&gt;
+  + Support GnuTLS as an alternative crypto backend.
+  + Updated translations. (forwarded request 1166999 from dimstar)</comment>
+    <requestid>1167122</requestid>
+  </revision>
 </revisionlist>

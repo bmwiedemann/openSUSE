@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 12 07:44:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.3.0:
+  + certificate: Add API to retrieve version.
+  + Bump required GnuTLS version to 3.8.5.
+  + Avoid potential integer overflow spotted by UBSan>
+  + Support GnuTLS as an alternative crypto backend.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar  4 07:42:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.2.1:
