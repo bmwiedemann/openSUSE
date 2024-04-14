@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 12 15:13:32 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update kiwi schema to 7.4 to be compatible with kiwi v10 (boo#1222243)
+
+-------------------------------------------------------------------
 Thu Feb 15 15:07:56 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
 
 - call sdbootutil --no-random-seed to avoid shipping random seed in the ESP

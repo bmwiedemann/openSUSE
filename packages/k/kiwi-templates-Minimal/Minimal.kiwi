@@ -2,7 +2,7 @@
 
 <!-- OBS-Profiles: @BUILD_FLAVOR@ -->
 
-<image schemaversion="6.1" name="openSUSE-Tumbleweed-Minimal" displayname="openSUSE Tumbleweed Minimal">
+<image schemaversion="7.4" name="openSUSE-Tumbleweed-Minimal" displayname="openSUSE Tumbleweed Minimal">
     <description type="system">
         <author>openSUSE Project</author>
         <contact>crc@suse.com</contact>
@@ -25,7 +25,6 @@
             image="oem"
             filesystem="btrfs"
             format="qcow2"
-            bootloader="grub2"
             firmware="uefi"
             efipartsize="33"
             kernelcmdline="rw quiet systemd.show_status=1 console=ttyS0,115200 console=tty0"
@@ -36,6 +35,7 @@
             btrfs_root_is_snapshot="true"
             bundle_format="%N-VM.%A-%M.%m.%p-%I"
         >
+            <bootloader name="grub2"/>
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -55,10 +55,9 @@
         <packagemanager>zypper</packagemanager>
         <rpm-excludedocs>true</rpm-excludedocs>
         <type
-            image="vmx"
+            image="oem"
             filesystem="btrfs"
             format="qcow2"
-            bootloader="custom"
             firmware="uefi"
             efipartsize="500"
             bootpartition="false"
@@ -70,6 +69,10 @@
             btrfs_root_is_snapshot="true"
             bundle_format="%N-VM.%A-%M.%m.%p-%I"
         >
+            <oemconfig>
+                <oem-resize>false</oem-resize>
+            </oemconfig>
+            <bootloader name="custom"/>
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -91,7 +94,6 @@
             image="oem"
             filesystem="btrfs"
             format="qcow2"
-            bootloader="grub2"
             firmware="uefi"
             efipartsize="33"
             kernelcmdline="rw quiet systemd.show_status=1 console=ttyS0,115200 console=tty0"
@@ -102,6 +104,7 @@
             btrfs_root_is_snapshot="true"
             bundle_format="%N-VM.%A-%M.%m.%p-%I"
         >
+            <bootloader name="grub2"/>
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -124,7 +127,6 @@
             image="oem"
             filesystem="btrfs"
             format="vmdk"
-            bootloader="grub2"
             firmware="uefi"
             efipartsize="33"
             kernelcmdline="rw quiet systemd.show_status=1 console=ttyS0,115200 console=tty0"
@@ -135,6 +137,7 @@
             btrfs_root_is_snapshot="true"
             bundle_format="%N-VM.%A-%M.%m.%p-%I"
         >
+            <bootloader name="grub2"/>
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -161,8 +164,6 @@
             image="oem"
             filesystem="xfs"
             format="qcow2"
-            boottimeout="1"
-            bootloader="grub2"
             firmware="uefi"
             efipartsize="33"
             kernelcmdline="rw quiet systemd.show_status=1 console=ttyS0,115200 console=tty0 net.ifnames=0"
@@ -171,6 +172,7 @@
             devicepersistency="by-uuid"
             bundle_format="%N-VM.%A-%M.%m.%p-%I"
         >
+            <bootloader name="grub2" timeout="1"/>
             <size unit="G">1</size>
         </type>
     </preferences>
@@ -184,8 +186,6 @@
             image="oem"
             filesystem="btrfs"
             format="vhdx"
-            boottimeout="10"
-            bootloader="grub2"
             firmware="uefi"
             efipartsize="33"
             kernelcmdline="rw quiet systemd.show_status=1 rootdelay=300 console=ttyS0,115200 console=tty0 earlyprintk=ttyS0,115200"
@@ -196,6 +196,7 @@
             btrfs_root_is_snapshot="true"
             bundle_format="%N-VM.%A-%M.%m.%p-%I"
         >
+            <bootloader name="grub2" timeout="10"/>
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -219,8 +220,6 @@
             image="oem"
             filesystem="btrfs"
             format="vhdx"
-            boottimeout="10"
-            bootloader="grub2"
             firmware="uefi"
             efipartsize="33"
             kernelcmdline="rw quiet systemd.show_status=1 rootdelay=300 console=ttyS0,115200 console=tty0 earlyprintk=ttyS0,115200"
@@ -231,6 +230,7 @@
             btrfs_root_is_snapshot="true"
             bundle_format="%N-VM.%A-%M.%m.%p-%I"
         >
+            <bootloader name="grub2" timeout="10"/>
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -255,7 +255,6 @@
             initrd_system="dracut"
             filesystem="btrfs"
             fsmountoptions="noatime,compress=lzo"
-            bootloader="grub2"
             firmware="efi"
             kernelcmdline="rw quiet systemd.show_status=1 console=ttyS0,115200 console=tty"
             bootpartition="false"
@@ -266,6 +265,7 @@
             editbootinstall="editbootinstall_rpi.sh"
             bundle_format="%N-Image.%A-%M.%m.%p-%I"
         >
+            <bootloader name="grub2"/>
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -304,11 +304,11 @@
         <package name="issue-generator"/> <!-- bsc#1084879 -->
         <package name="vim-small"/>
         <package name="haveged"/>
-        <package name="less" />
+        <package name="less"/>
         <package name="tar"/>
         <package name="parted"/>
         <package name="timezone"/>
-        <package name="iproute2"/> 
+        <package name="iproute2"/>
         <package name="openssh"/>
         <package name="rsync"/>
         <package name="dosfstools"/> <!-- For fscking /boot/efi -->
@@ -342,7 +342,7 @@
         <package name="jeos-firstboot &gt;= 1.2.0.0"/>
         <package name="fbiterm"/> <!-- Optionally used by jeos-firstboot for non-latin fonts -->
 
-        <!-- Not useful with Cloud --> 
+        <!-- Not useful with Cloud -->
         <package name="firewalld"/>
     </packages>
 
@@ -387,9 +387,9 @@
     </packages>
     <packages type="image" profiles="Cloud">
         <package name="cloud-init"/>
-        <package name="cloud-init-config-suse" />
+        <package name="cloud-init-config-suse"/>
         <package name="jeos-firstboot"/>
-        <package name="fbiterm"/> 
+        <package name="fbiterm"/>
         <package name="xfsprogs"/>
         <package name="kernel-default-base"/>
     </packages>
