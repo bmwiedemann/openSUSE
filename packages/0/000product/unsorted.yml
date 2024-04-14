@@ -9473,6 +9473,7 @@ unsorted:
   - kanku-common-server 
   - kanku-dispatcher 
   - kanku-doc 
+  - kanku-iptables 
   - kanku-scheduler 
   - kanku-triggerd 
   - kanku-urlwrapper 
@@ -9883,7 +9884,6 @@ unsorted:
   - kiwi-systemdeps-image-validation 
   - kiwi-systemdeps-iso-media 
   - kiwi-templates-Minimal 
-  - kiwi-tools 
   - kjobwidgets-devel 
   - kjournald 
   - kjournald-lang 
@@ -11191,7 +11191,7 @@ unsorted:
   - libSDL_bgi-suse9 
   - libSDL_gfx-devel 
   - libSDL_gfx-devel-32bit 
-  - libSDL_gfx15-32bit 
+  - libSDL_gfx16-32bit 
   - libSDL_image-1_2-0 
   - libSDL_image-devel 
   - libSDL_mixer-1_2-0 
@@ -22286,6 +22286,7 @@ unsorted:
   - pipewire-module-xrdp 
   - pipewire-modules-0_3-32bit 
   - pipewire-spa-plugins-0_2-32bit 
+  - pipewire-spa-plugins-0_2-jack 
   - pithos 
   - pitivi 
   - pitivi-lang 
@@ -32815,6 +32816,7 @@ unsorted:
   - python312-pipdeptree 
   - python312-pipreqs 
   - python312-pipx 
+  - python312-pivy 
   - python312-pkgconfig 
   - python312-pkginfo 
   - python312-pkgutil-resolve-name 
@@ -34117,7 +34119,6 @@ unsorted:
   - python39-idle 
   - python39-librosa 
   - python39-omni-camera 
-  - python39-pivy 
   - python39-pycapnp 
   - python39-stdeb 
   - python39-testsuite 
