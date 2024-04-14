@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package libssh
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -134,6 +134,9 @@ install -m644 %{SOURCE4} %{buildroot}%{_sysconfdir}/libssh/libssh_server.config
 %if 0%{?suse_version} > 1600
 sed -i '/^Include/ s|/etc|/usr/etc|' %{buildroot}%{_sysconfdir}/libssh/libssh_client.config
 sed -i '/^Include/ s|/etc|/usr/etc|' %{buildroot}%{_sysconfdir}/libssh/libssh_server.config
+# Don't change the path for crypto-policies libssh.config (bsc#1222716)
+sed -i '/^Include/ s|/usr/etc/crypto-policies|/etc/crypto-policies|' %{buildroot}%{_sysconfdir}/libssh/libssh_client.config
+sed -i '/^Include/ s|/usr/etc/crypto-policies|/etc/crypto-policies|' %{buildroot}%{_sysconfdir}/libssh/libssh_server.config
 %endif
 
 %endif
