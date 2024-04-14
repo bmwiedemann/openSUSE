@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 11 06:35:21 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
+
+- Fix duplicate loading of dropins. (boo#1222467)
+
+-------------------------------------------------------------------
 Fri Apr  5 11:10:18 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add missing bugzilla/CVE references to the changelog

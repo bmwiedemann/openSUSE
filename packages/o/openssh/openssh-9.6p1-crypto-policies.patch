@@ -29,21 +29,6 @@ Index: openssh-9.6p1/ssh_config_suse
 +# Uncomment this if you want to use .local domain
 +# Host *.local
 +
-Index: openssh-9.6p1/sshd_config
-===================================================================
---- openssh-9.6p1.orig/sshd_config
-+++ openssh-9.6p1/sshd_config
-@@ -17,6 +17,10 @@ Include /etc/ssh/sshd_config.d/*.conf
- # default value.
- Include /usr/etc/ssh/sshd_config.d/*.conf
- 
-+# To modify the system-wide sshd configuration, create a  *.conf  file under
-+#  /etc/ssh/sshd_config.d/  which will be automatically included below
-+Include /etc/ssh/sshd_config.d/*.conf
-+
- #Port 22
- #AddressFamily any
- #ListenAddress 0.0.0.0
 Index: openssh-9.6p1/sshd_config_suse_cp
 ===================================================================
 --- /dev/null
