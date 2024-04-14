@@ -1182,4 +1182,31 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
 - Move tukit.conf to correct package</comment>
     <requestid>1157610</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>23c10280de8344b7726d9b50e793f2bc</srcmd5>
+    <version>4.6.5</version>
+    <time>1713088436</time>
+    <user>anag+factory</user>
+    <comment>- Version 4.6.5
+  - Rework soft-reboot support introduced in 4.6.0:
+    - On transactional systems with systemd 254 the system could
+      hang with with a soft-reboot, as /var and /etc have to be
+      mounted in /run/nextroot explicitly. As a soft-reboot can
+      also be triggered by an admin the mounting of the
+      corresponding mount points was moved to a systemd service to
+      be independent of t-u itself.
+    - Support for systemd 255
+    - Don't decrease reboot level on multiple commands
+    - Various other bugfixes
+    - soft-reboot support is disabled by default now to gather more feedback
+  - libtukit: Fix kexec reboot method to boot kernel / initrd of next snapshot
+  - tukit: Don't clone lock file handle on exec [boo#1222411]
+  - t-u: Always use zypper of installed system [bsc#1221346]
+  - t-u: Remove remaining telemetrics references
+- Add prepare-nextroot-for-softreboot service
+- Add (empty) %check section
+
+Also requires https://build.opensuse.org/request/show/1167142.</comment>
+    <requestid>1167144</requestid>
+  </revision>
 </revisionlist>
