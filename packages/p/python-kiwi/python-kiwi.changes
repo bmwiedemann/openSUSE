@@ -1,4 +1,417 @@
 -------------------------------------------------------------------
+Thu Mar 28 16:27:08 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.9 → 10.0.10
+
+-------------------------------------------------------------------
+Wed Mar 27 17:44:16 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.8 → 10.0.9
+
+-------------------------------------------------------------------
+Wed Mar 27 17:42:26 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix setup of discoverable partitions
+
+  Make sure GUI is unique and typecode is set according to the
+  standard. This Fixes #2517
+
+-------------------------------------------------------------------
+Mon Mar 25 12:26:24 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Live ISO Wait for udev events after repart
+
+  Make sure to wait for the event queue to become empty after
+  the creation of the write partition. When kiwi calls the
+  code to create the write partition this emits new udev events.
+  It's important to wait for the event queue to become empty
+  to avoid a potential regression on the use of the device nodes.
+  In the processing of the events it can happen that a device
+  gets removed and re-added. If we don't want for udev
+  to process the entire queue it can happen that the
+  wrong block device is used. This wrong selection is only
+  possible because the way how hybrid ISOs are designed exposes
+  both, the disk and the partition for the root device with
+  the same label. This Fixes bsc#1213595
+
+-------------------------------------------------------------------
+Sat Mar 23 14:15:28 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.7 → 10.0.8
+
+-------------------------------------------------------------------
+Fri Mar 22 16:35:10 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix zipl setup for use with custom btrfs root vol
+
+  In the setup case that btrfs is used for the system and
+  the root partition is on a custom named volume (not /),
+  this information was not passed to the zipl bootloader
+  instance and this caused the mounting of the overall
+  root system to fail. This commit fixes it
+
+-------------------------------------------------------------------
+Fri Mar 22 10:33:04 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow ignore stanza in bootstrap
+
+  So far the <ignore> stanza was only effective when placed
+  as part of the type="image" packages section. This commit
+  allows to place it also to the type="bootstrap" packages.
+  This Fixes #2499
+
+-------------------------------------------------------------------
+Wed Mar 20 15:11:54 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.6 → 10.0.7
+
+-------------------------------------------------------------------
+Tue Mar 19 17:09:39 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for %v in bundle format
+
+  Allow a placeholder for the entire version text as
+  provided by the <version> section
+
+-------------------------------------------------------------------
+Tue Mar 19 15:38:45 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow bundle format to be set on the commandline
+
+  The bundle format is usually specified as part of the image
+  description in the bundle_format attribute. This commit also
+  allows to specify/overwrite the bundle format in the kiwi
+  result bundle command via the new --bundle-format option.
+  This Fixes #2509
+
+-------------------------------------------------------------------
+Tue Mar 19 08:48:09 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.5 → 10.0.6
+
+-------------------------------------------------------------------
+Mon Mar 18 16:34:54 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixup cleanup of zipl templates
+
+  Make sure temporary modifications to the zipl template
+  and config file are not effective in the later system.
+  This Fixes bsc#1221469
+
+-------------------------------------------------------------------
+Thu Mar 14 11:39:03 CET 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Revise system_update.rst
+
+-------------------------------------------------------------------
+Thu Mar 14 11:26:04 CET 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Revise system_prepare.rst
+
+-------------------------------------------------------------------
+Wed Mar 13 15:39:33 CET 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Revise system_create.rst
+
+-------------------------------------------------------------------
+Wed Mar 13 15:09:21 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.4 → 10.0.5
+
+-------------------------------------------------------------------
+Wed Mar 13 08:41:02 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Followup fix for use of /boot/zipl
+
+  The mounting of /boot/zipl is also only required if the
+  bootloader is set to grub2_s390x_emu
+
+-------------------------------------------------------------------
+Wed Mar 13 08:35:17 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update schema version in spec file
+
+-------------------------------------------------------------------
+Tue Mar 12 16:23:40 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop rpm-dir from allowed repository type
+
+  Using an arbitrary list of rpm packages as repository is a zypper
+  only feature, barely tested and from our pov not really needed
+  as a simple createrepo call turns any custom list of packages
+  into a clean rpm-md repo including metadata. This commit drops
+  rpm-dir from the list of allowed repository types and auto
+  converts those image descriptions which makes use of it. Please
+  note this does not prevent users from using flat package
+  directories with zypper, because the type argument in the
+  repository section is an optional attribute. In case there is
+  no type specification zypper auto-detects and handles the data
+  as it handles it. This Fixes #1926
+
+-------------------------------------------------------------------
+Tue Mar 12 15:36:20 CET 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Revise system_build.rst
+
+-------------------------------------------------------------------
+Tue Mar 12 12:35:12 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixup use of /boot/zipl
+
+  Only for the grub2_s390x_emu bootloader setup an optional boot
+  partition setup must be put to /boot/zipl rather than to /boot
+
+-------------------------------------------------------------------
+Mon Mar 11 15:23:02 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Lookup distro provided BLS entries for zipl
+
+  Check if there is already an entry file name produced by the
+  distribution logic/policy. If we can find an already present
+  entry name, prefer this name over the kiwi naming policy
+
+-------------------------------------------------------------------
+Mon Mar 11 14:58:39 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Install audit in s390 rawhide integration test
+
+-------------------------------------------------------------------
+Sun Mar 10 17:55:32 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.3 → 10.0.4
+
+-------------------------------------------------------------------
+Sat Mar 09 14:52:13 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Delete invalid EPEL repo from rawhide tests
+
+-------------------------------------------------------------------
+Fri Mar 08 16:31:12 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix s390 tools and grub requirement
+
+  On Fedora/RHEL this is named s390utils and there is no grub2
+
+-------------------------------------------------------------------
+Fri Mar 08 16:16:03 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added rawhide integration test
+
+-------------------------------------------------------------------
+Fri Mar 08 16:02:01 CET 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Temp commit
+
+-------------------------------------------------------------------
+Thu Mar 07 15:51:11 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.2 → 10.0.3
+
+-------------------------------------------------------------------
+Thu Mar 07 10:41:01 CET 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Revise image_size, kiwi
+
+-------------------------------------------------------------------
+Thu Mar 07 03:33:26 CET 2024 - Neal Gompa <neal@gompa.dev>
+
+- Ensure we use a compatible docopt-ng version
+
+  To ensure our trick to switch between docopt and docopt-ng works,
+  we need to have a higher minimum version for docopt-ng where
+  compatibility with the original docopt was restored.
+
+-------------------------------------------------------------------
+Wed Mar 06 21:05:26 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed delta_root build
+
+  The support for delta_root allows to build a delta container
+  image from a given base container. Due to the refactoring of
+  the kiwi code base using context managers no explicit deletion
+  of instances happens anymore. This uncovered a weakness of
+  the delta root code at the level of the overlay mount. At
+  the time of the umount there are still active temporary
+  mount handlers which keeps the mountpoint busy. In order to
+  fix this properly also the PackageManager factory is now
+  a context manager and the Repository factory received a
+  cleanup method which is called when the PackageManager goes
+  out of scope. This refactoring also fixes the busy state
+  when building deltas
+
+-------------------------------------------------------------------
+Wed Mar 06 10:42:14 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.1 → 10.0.2
+
+-------------------------------------------------------------------
+Wed Mar 06 10:39:31 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Don't use poetry publish
+
+  Publishing to pypi is done via pypa/gh-action-pypi-publish
+  and the respective auth token. Calling poetry publish does
+  not work because this is not authorized
+
+-------------------------------------------------------------------
+Wed Mar 06 10:23:43 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.0 → 10.0.1
+
+-------------------------------------------------------------------
+Wed Mar 06 10:19:09 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop ci-kiwi-9-compliant.yml
+
+  Delete this action as it existed in the intermediate state
+  prior the new major version v10.x.x
+
+-------------------------------------------------------------------
+Wed Mar 06 09:13:49 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add tzdata to Debian tests
+
+-------------------------------------------------------------------
+Wed Mar 06 09:08:29 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed sync script for test-image-rpi on Ubuntu
+
+-------------------------------------------------------------------
+Wed Mar 06 00:09:24 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Install language-pack-en for Ubuntu arm test
+
+-------------------------------------------------------------------
+Tue Mar 05 23:58:35 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Install locales-all for Debian tests
+
+-------------------------------------------------------------------
+Tue Mar 05 23:56:03 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Install language-pack-en for Debian tests
+
+-------------------------------------------------------------------
+Tue Mar 05 23:46:04 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix repo setup for Ubuntu arm test
+
+-------------------------------------------------------------------
+Tue Mar 05 23:38:20 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Install network stack for Debian test
+
+-------------------------------------------------------------------
+Tue Mar 05 23:31:29 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Request util-linux explicitly for Ubuntu tests
+
+-------------------------------------------------------------------
+Tue Mar 05 23:22:28 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add usr-is-merged to package list for bootstrap
+
+-------------------------------------------------------------------
+Tue Mar 05 23:15:42 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Install language-pack-en for Ubuntu tests
+
+-------------------------------------------------------------------
+Tue Mar 05 22:50:31 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move Ubuntu integration tests to Lunar
+
+-------------------------------------------------------------------
+Tue Mar 05 22:19:56 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update test-image-rpi for Ubuntu on arm
+
+  Do not install kiwi as test application
+
+-------------------------------------------------------------------
+Tue Mar 05 22:15:13 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix repo setup for Debian integration tests
+
+  Staging repo must be first for higher prio
+
+-------------------------------------------------------------------
+Tue Mar 05 22:07:44 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update test-image-docker-derived
+
+  Don't install kiwi as test application, use something
+  smaller, just vim
+
+-------------------------------------------------------------------
+Tue Mar 05 22:04:15 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move Debian build test from Buster to Bookworm
+
+  Move from Debian 11 to Debian 12 for integration testing
+
+-------------------------------------------------------------------
+Tue Mar 05 21:20:14 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move Ubuntu integration tests from Jammy to Mantic
+
+  Use Ubuntu 23.10 for the integration tests and move away from 22.04
+
+-------------------------------------------------------------------
+Tue Mar 05 21:12:47 CET 2024 - Neal Gompa <neal@gompa.dev>
+
+- Switch to Poetry and use pyproject.toml definitions
+
+  This allows kiwi to be built, developed, tested, and installed
+  through Poetry. This also raises the minimum Python version to 3.9.
+
+-------------------------------------------------------------------
+Tue Mar 05 21:11:29 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Delete test-image-microdnf
+
+  microdnf is dead and dnf5 took over
+
+-------------------------------------------------------------------
+Tue Mar 05 21:09:46 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Delete test-image-live-disk-v8
+
+  CentOS-8 is EOL and dropped from upstream kiwi
+
+-------------------------------------------------------------------
+Tue Mar 05 11:42:45 CET 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Revise image info
+
+-------------------------------------------------------------------
+Mon Mar 04 11:36:33 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for BLS zipl
+
+  Add support for <bootloader name="zipl" .../> to support BLS
+  based zipl configuration. This Fixes #2481
+
+-------------------------------------------------------------------
+Fri Mar 01 12:08:25 CET 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Review Build WSL container
+
+-------------------------------------------------------------------
+Fri Mar 01 11:45:11 CET 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Revise Build simple disk
+
+-------------------------------------------------------------------
+Thu Feb 29 16:04:24 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update v9 compliance action
+
+  put the cherry-pick tests into an extra script and
+  provide a skip list of commits for manual checking
+  if needed
+
+-------------------------------------------------------------------
 Thu Feb 29 15:36:41 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Fix activation of luks pool in the initrd
@@ -8,14 +421,6 @@ Thu Feb 29 15:36:41 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
   commit changes the activation procedure in a way that the
   generator created unit file systemd-cryptsetup@... is used
   This Fixes bsc#1219009
-
--------------------------------------------------------------------
-Thu Feb 29 09:49:39 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
-
-- Add changelog fix file for commit 31deb0
-
-  The commit used a wrong e-mail address which should not
-  land in the created changes file for the packaging
 
 -------------------------------------------------------------------
 Thu Feb 29 09:39:06 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
@@ -42,6 +447,141 @@ Wed Feb 28 10:42:17 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
   input console is set to: console. This Fixes bsc#1219074
 
 -------------------------------------------------------------------
+Wed Feb 28 10:31:38 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Catch error condition more specific
+
+  Only a KiwiCommandError is an exception we want to
+  catch and handle, everything else is a bug and should
+  not be masked
+
+-------------------------------------------------------------------
+Tue Feb 27 21:06:19 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add silent flag to CommandCapabilities
+
+  an instance of CommandCapabilities allows to check for specific
+  options of a command. If the parsing of options has failed a
+  warning message is created by default. Under certain circumstances
+  like the check for the --help option of setfiles, such a warning
+  message can be misleading information in the build log file.
+  Therefore the new silent flag allows to suppress the warning
+  message and the flag is used for the capabilities of the
+  setfiles utility. This Fixes #2350
+
+-------------------------------------------------------------------
+Tue Feb 27 20:45:54 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix documentation preferlvm example
+
+  The custom volumes example shows a faulty XML description.
+  This Fixes #2483
+
+-------------------------------------------------------------------
+Tue Feb 27 15:43:06 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move SystemPrepare to context manager
+
+  Change the SystemPrepare class to context manager.
+  All code using SystemPrepare was updated to the following
+  with statement:
+
+  with SystemPrepare(...) as system_prepare:
+  system_prepare.some_member()
+
+  This completes the refactoring from finalizers to
+  context managers and Fixes #2412
+
+-------------------------------------------------------------------
+Mon Feb 26 14:59:56 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fallback to built-in partition UUID table
+
+  If systemd-id128 is not found or failed use the kiwi built-in
+  table as defined by the UAPI group to assign the partition UUID
+
+-------------------------------------------------------------------
+Mon Feb 26 12:12:35 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move DiskFormat to context manager
+
+  Change the DiskFormat Factory to be a context manager.
+  All code using DiskFormat was updated to the following
+  with statement:
+
+  with DiskFormat(...).new as disk_format:
+  disk_format.some_member()
+
+  This is related to Issue #2412
+
+-------------------------------------------------------------------
+Sat Feb 24 15:42:00 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added requirement for xmltodict to spec
+
+  Actually the real issue to this defect seems to live in the
+  anymarkup source code. It seems that the import of xmltodict
+  at the beginning of the core module is optional, but later on
+  when handling XML xmltodict seems to be mandatory, see here:
+  https://github.com/bkabrda/anymarkup-core/blob/08896a8215819edcc413e3f2588518046
+  9a4c2ed/anymarkup_core/__init__.py#L210-L229. Because this
+  issue can result in a "ImportError: Can't parse xml: xmltodict not installed"
+  turning kiwi into a bad exit condition I propose to add
+  this python requirement to the kiwi spec as a workaround and
+  try fixing the anymarkup packaging and module setup upstream
+  in addition. To my knowledge all relevant distributions
+  provides xmltodict
+
+-------------------------------------------------------------------
+Sat Feb 24 15:37:22 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed type hint for pinch_system method
+
+  The PackageManager argument is allowed to be optional
+
+-------------------------------------------------------------------
+Sat Feb 24 10:57:32 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for discoverable partitions
+
+  Set PARTUUID according to systemd-id128 if applicable
+  This Fixes #1385
+
+-------------------------------------------------------------------
+Thu Feb 22 16:17:28 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move Repository to context manager
+
+  Change the Repository Factory to be a context manager.
+  All code using Repository was updated to the following
+  with statement:
+
+  with Repository(...).new as repo:
+  repo.some_member()
+
+  This is related to Issue #2412
+
+-------------------------------------------------------------------
+Thu Feb 22 14:48:39 CET 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Build LiveISO review
+
+-------------------------------------------------------------------
+Wed Feb 21 15:45:30 CET 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Buil KIS review
+
+-------------------------------------------------------------------
+Wed Feb 21 15:22:39 CET 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Build expandable disk review
+
+-------------------------------------------------------------------
+Wed Feb 21 11:52:22 CET 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Build container image review
+
+-------------------------------------------------------------------
 Wed Feb 21 10:21:48 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Allow terminal emulation setup from the cmdline
@@ -58,6 +598,77 @@ Wed Feb 21 10:21:48 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
   This is related to bsc#1218095
 
 -------------------------------------------------------------------
+Tue Feb 20 16:31:46 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed implementation for oem-shutdown
+
+  If specified oem-shutdown caused a reboot -f -p which is
+  a powerdown but not a graceful shutdown. This commit fixes
+  this by using systemctl halt for a clean shutdown.
+  This Fixes #2474
+
+-------------------------------------------------------------------
+Mon Feb 19 17:55:10 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move VolumeManager to context manager
+
+  Change the VolumeManager Factory to be a context manager.
+  All code using VolumeManager was updated to the following
+  with statement:
+
+  with VolumeManager(...).new as volume_manager:
+  volume_manager.some_member()
+
+  This is related to Issue #2412
+
+-------------------------------------------------------------------
+Mon Feb 19 16:33:24 CET 2024 - Dan Čermák <45594031+dcermak@users.noreply.github.com>
+
+- Refactor Command class
+
+  Command.run() currently has a bit of a confusing behavior: if raise_on_error is
+  False and the executable is not found, then a weird CommandT is returned (return
+  code is -1 and stdout+stderr is None). This makes it possible to hanlde command
+  not found errors separately, but it makes that needlessly verbose. So instead,
+  let's just return None in *this* special case.
+
+  That in turn uncovered, that in most cases when we set `raise_on_error=True`, we
+  actually want an error if the command is not present but no error if the command
+  fails to execute (e.g. because it returns -1 if you run `$cmd --version`). Hence we
+  introduce the flag `raise_on_command_not_found`, which causes an exception to
+  be raised if the command is not found. This makes it independent of the
+  `raise_on_error` flag.
+
+  Additionally, we add a small optimization: if command starts with /, then we
+  assume it's a full path and we omit the call to which (and just check whether it
+  exists).
+
+  Co-authored-by: Marcus Schäfer <marcus.schaefer@gmail.com>
+
+-------------------------------------------------------------------
+Mon Feb 19 16:17:00 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move ImageSystem to context manager
+
+  Change the ImageSystem class to context manager.
+  All code using ImageSystem was updated to the following
+  with statement:
+
+  with ImageSystem(...) as image_system:
+  image_system.some_member()
+
+  This is related to Issue #2412
+
+-------------------------------------------------------------------
+Mon Feb 19 13:46:30 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow empty cherry-picks for compliance test
+
+  If we cherry-pick from main to master the compliance check
+  will notice that a commit already exists. This is not an error
+  and we can allow to continue the picking via --allow-empty
+
+-------------------------------------------------------------------
 Mon Feb 19 12:05:45 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Followup fix for .profile.extra
@@ -65,6 +676,13 @@ Mon Feb 19 12:05:45 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
   Allow to source .profile.extra such that it is possible to
   read and act on e.g cmdline parameters. This is related to
   bsc#1218095
+
+-------------------------------------------------------------------
+Sun Feb 18 22:15:30 CET 2024 - Alexandre Detiste <alexandre.detiste@gmail.com>
+
+- Use unittest.mock from core python everywhere
+
+  mock was an independent module that has been merged into the Python standard library.
 
 -------------------------------------------------------------------
 Fri Feb 16 15:08:49 CET 2024 - David Cassany <dcassany@suse.com>
@@ -80,6 +698,54 @@ Fri Feb 16 15:08:49 CET 2024 - David Cassany <dcassany@suse.com>
   Signed-off-by: David Cassany <dcassany@suse.com>
 
 -------------------------------------------------------------------
+Fri Feb 16 15:02:52 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed MicroOS integration test
+
+  temporarily disable ignition/combustion/growpart and use
+  kiwi's resize code for testing, oem-resize set to true
+
+-------------------------------------------------------------------
+Thu Feb 15 10:08:01 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed kis documentation
+
+  The procedure to run qemu with a filesystem image as disk
+  was not quite correct.
+
+-------------------------------------------------------------------
+Wed Feb 14 15:42:39 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation about partition clones
+
+  Using the root_clone attribute comes with some requirements
+  and consequences. This commit documents them
+
+-------------------------------------------------------------------
+Wed Feb 14 15:18:56 CET 2024 - Fabian Vogt <fvogt@suse.de>
+
+- Improve documentation generation
+
+  With Sphinx >= 6.0.0, jQuery is no longer included but the rtd theme's search
+  functionality needs it. The theme was changed to load sphinxcontrib-jquery
+  automatically with https://github.com/readthedocs/sphinx_rtd_theme/pull/1399,
+  but kiwi broke this fix by loading the theme in the wrong way.
+  Now that the theme is loaded properly, the search functionality also works
+  with newer versions of sphinx again and the version pinning can be lifted.
+  This Fixes: #2462
+
+-------------------------------------------------------------------
+Wed Feb 14 12:51:58 CET 2024 - Fabian Vogt <fvogt@suse.de>
+
+- Allow specifying the filesystem for live image, also direct squashfs
+
+  Allow specifying the filesystem for live image, also direct squashfs
+
+  By setting <type image="iso" filesystem="FSTYPE" .../> it's now possible
+  to specify the filesystem used for live images. By using "squashfs", the
+  rootfs container is skipped entirely.
+
+-------------------------------------------------------------------
 Wed Feb 14 12:43:54 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Add support for reading .profile.extra in initrd
@@ -88,6 +754,388 @@ Wed Feb 14 12:43:54 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
   initrd, kiwi will import this additional environment file
   after the import of the standard /.profile file.
   This is related to bsc#1218095
+
+-------------------------------------------------------------------
+Wed Feb 14 09:50:08 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Don't run ci-kiwi-9-compliant action on forks
+
+-------------------------------------------------------------------
+Tue Feb 13 09:27:31 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix setup of UUID for btrfs
+
+  When setting up the UUID for a btrfs filesystem via btrfstune
+  it could happen that the call becomes interactive asking
+  a question and give a recommendation. All this is unwanted
+  and can be forced via the -f switch. This Fixes #2456
+
+-------------------------------------------------------------------
+Mon Feb 12 15:49:13 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move OCI to context manager
+
+  Change the OCI Factory to be a context manager.
+  All code using OCI was updated to the following
+  with statement:
+
+  with OCI(...).new as oci:
+  oci.some_member()
+
+  This is related to Issue #2412
+
+-------------------------------------------------------------------
+Mon Feb 12 15:11:35 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop destructor from CommandProcess
+
+  There is code that sends a SIGTERM to the process in case
+  there is no error code information. I believe in this case
+  sending SIGTERM will not kill the process (defunct) and I
+  also don't see in what good condition we would be entering
+  this state.
+
+-------------------------------------------------------------------
+Mon Feb 12 13:04:29 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed use of custom bootloader
+
+  In case no bootloader implementation by kiwi should be
+  used, users can specify the bootloader="custom" attribute.
+  Instead of skipping the bootloader stage in the builders
+  it is better to consistently create an instance of bootloader
+  but raise if a method of the bootloader interface is called
+  for which the custom bootloader has no implementation. This
+  commit adds the consistency bits.
+
+-------------------------------------------------------------------
+Mon Feb 12 10:37:21 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed scope of BootLoaderConfig instance
+
+  Due to the refactor of BootLoaderConfig into context managers
+  we had two instances of BootLoaderConfig. However, the first
+  instance holds data the second instance needs which caused an
+  issue. This commit makes sure there is one BootLoaderInstance
+  within the lifetime of required services
+
+-------------------------------------------------------------------
+Mon Feb 12 10:36:48 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow integration test to build outside of obs too
+
+-------------------------------------------------------------------
+Mon Feb 12 09:54:26 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Follow up fix for drop obsolete C tools from kiwi
+
+  The spec file make call to build the C code was forgotten
+  to be deleted
+
+-------------------------------------------------------------------
+Sun Feb 11 10:54:58 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop obsolete C tools from kiwi
+
+  For building custom initrd images kiwi provided some
+  optional helper tools. All these C written tools are
+  old and outdated and either not useful anymore or
+  replaced by other tools that are part of the distribution
+  matrix we support. Thus with the move to the next
+  major release those can go away. This also include the
+  package kiwi-tools which was used to provide them
+
+-------------------------------------------------------------------
+Wed Feb 07 10:36:34 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Several examples still pointed to Leap 15.3 repos, but we are
+  at Leap 15.5. Thus this commit shifts towards Leap 15.5
+
+-------------------------------------------------------------------
+Mon Feb 05 15:36:48 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Remove destructor from BootLoaderInstallGrub2
+
+  With MountManager as context manager the BootLoaderInstallGrub2
+  class doesn't need a destructor anymore. This is related
+  to Issue #2412
+
+-------------------------------------------------------------------
+Mon Feb 05 15:00:09 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Remove obsolete destructor from BootImageDracut
+
+  With MountManager as context manager the BootImageDracut
+  class doesn't need a destructor anymore. This is
+  related to Issue #2412
+
+-------------------------------------------------------------------
+Mon Feb 05 09:21:33 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move Raid Luks and Integrity to context manager
+
+  Change the RaidDevice, LuksDevice and IntegrityDevice classes
+  to context manager:
+
+  with RaidDevice(...) as raid:
+  raid.some_member()
+
+  with LuksDevice(...) as luks:
+  luks.some_member()
+
+  with IntegrityDevice(...) as integrity:
+  integrity.some_member()
+
+  In the context of the disk builder an ExitStack is used to
+  handle the new context manager based classes
+
+  This is related to Issue #2412
+
+-------------------------------------------------------------------
+Fri Feb 02 12:26:17 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix error message regarding ovftool
+
+  For ova support kiwi still uses the proprietary ovftool
+  from VMware. The error message if the tool could not be
+  found was broken and the link to the VMware page was also
+  outdated.
+
+-------------------------------------------------------------------
+Fri Feb 02 10:27:31 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop PDF build of the documentation
+
+  The kiwi.pdf file as provided in the kiwi-man-pages package
+  was never really used by our users but comes with a huge
+  dependency chain to LaTex. We provide the documentation
+  online as well as converted to DocBook from where all other
+  formats could be derived. Thus there is no need for us to
+  produce an extra PDF document which is imho never consulted.
+  In addition to this change also the contributing chapter has
+  been reworked. Due to recent changes and drop of obsolete
+  components from kiwi as well as the effort to move the development
+  setup to poetry, there is only one non python tool needed
+  for the development of kiwi. The check for this tool has been
+  moved into the Makefile and all other checks formerly done
+  in the helper/install_devel_packages script were deleted.
+
+-------------------------------------------------------------------
+Wed Jan 31 15:40:17 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix crypto LUKS integration test
+
+  The integration test build also encrypts /boot which requires
+  grub to open the LUKS pool using cryptomount. grub does not support
+  the argonID salted password hashes. Thus the integration test
+  description configures pbkdf2 instead
+
+-------------------------------------------------------------------
+Wed Jan 31 14:55:19 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use ExitStack for MountManagers
+
+-------------------------------------------------------------------
+Wed Jan 31 11:10:26 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Only pass appropriate bootloader arguments
+
+  When constructing a BootLoaderConfig instance only pass
+  arguments appropriate to the selected bootloader. It does
+  not hurt but it is bad style and unnecessary data and
+  code points if e.g grub relevant information is passed
+  when we actually setup systemd-boot
+
+-------------------------------------------------------------------
+Wed Jan 31 10:26:48 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix reading of os-release file
+
+  If the /etc/os-release file contains comments or spaces
+  python's csv reader will throw an exception. Thus this
+  data must be ripped out prior reading
+
+-------------------------------------------------------------------
+Tue Jan 30 17:36:28 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow to use Literal for all python versions
+
+-------------------------------------------------------------------
+Tue Jan 30 17:14:21 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Better error message on module import
+
+-------------------------------------------------------------------
+Tue Jan 30 11:48:26 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move Disk to context manager
+
+  Change the Disk class to be a context manager.
+  All code using Disk was updated to the following
+  with statement:
+
+  with Disk(...) as disk:
+  disk.some_member()
+
+  This is related to Issue #2412
+
+-------------------------------------------------------------------
+Fri Jan 26 21:36:49 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed test-image-rpi for TW
+
+  No need to pull in zypper plugin that does not resolve on TW
+
+-------------------------------------------------------------------
+Fri Jan 26 15:19:26 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  drop documentation for isolinux in API and user docs
+
+-------------------------------------------------------------------
+Fri Jan 26 11:35:07 CET 2024 - Dan Čermák <dcermak@suse.com>
+
+- Fix invalid escape sequence
+
+-------------------------------------------------------------------
+Fri Jan 26 11:34:56 CET 2024 - Dan Čermák <dcermak@suse.com>
+
+- Add missing assert call to install_test
+
+-------------------------------------------------------------------
+Fri Jan 26 11:34:27 CET 2024 - Dan Čermák <dcermak@suse.com>
+
+- Correct type hint of mbrid parameter
+
+-------------------------------------------------------------------
+Fri Jan 26 11:33:39 CET 2024 - Dan Čermák <dcermak@suse.com>
+
+- Convert BootLoaderConfigBase into an abstract base class
+
+-------------------------------------------------------------------
+Fri Jan 26 11:31:18 CET 2024 - Dan Čermák <dcermak@suse.com>
+
+- Convert BootLoaderConfig to free function
+
+  The class serves really no purpose except for creating another
+  namespace. This function now allows us to have more stricter type checking.
+
+-------------------------------------------------------------------
+Fri Jan 26 09:18:44 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- better function name
+
+-------------------------------------------------------------------
+Mon Jan 22 17:22:15 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop support for syslinux/isolinux
+
+  SYSLINUX has been abandoned for several years now, and it does not
+  even work with modern versions of the filesystems supported in kiwi.
+  This commit drops it and Fixes #2433
+
+-------------------------------------------------------------------
+Mon Jan 22 17:15:18 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update build tests
+
+  Delete use of syslinux/isolinux
+
+-------------------------------------------------------------------
+Fri Jan 19 16:56:24 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move BootLoaderConfig to context manager
+
+  Change the BootLoaderConfig class to be a context manager.
+  All code using BootLoaderConfig was updated to the following
+  with statement:
+
+  with BootLoaderConfig.new(...) as bootloader_config:
+  bootloader_config.some_member()
+
+  This is related to Issue #2412
+
+-------------------------------------------------------------------
+Fri Jan 19 14:12:15 CET 2024 - Dan Čermák <dcermak@suse.com>
+
+- [docs] make copyright year dynamic
+
+-------------------------------------------------------------------
+Fri Jan 19 14:09:33 CET 2024 - Dan Čermák <dcermak@suse.com>
+
+- Silence Shellcheck warning SC2004
+
+  It causes false positives in array expressions,
+  e.g. device_array[${device_index}]
+
+  (see: https://www.shellcheck.net/wiki/SC2004)
+
+-------------------------------------------------------------------
+Fri Jan 19 14:06:51 CET 2024 - Dan Čermák <dcermak@suse.com>
+
+- Quote shell variables to prevent word splitting
+
+  this fixes shellcheck warning SC2086
+  https://www.shellcheck.net/wiki/SC2086
+
+-------------------------------------------------------------------
+Thu Jan 18 16:16:24 CET 2024 - Dan Čermák <dcermak@suse.com>
+
+- Add type hints & doc to VolumeManagerBase & VolumeManagerBtrfs
+
+  Also add additional tests for test coverage of typing edge cases
+
+-------------------------------------------------------------------
+Thu Jan 18 14:37:08 CET 2024 - Dan Čermák <dcermak@suse.com>
+
+- Correct invalid escape sequence
+
+  \/ is not a valid escape sequence, it just needs to be forwarded to the shell
+
+-------------------------------------------------------------------
+Thu Jan 18 11:08:55 CET 2024 - Dan Čermák <dcermak@suse.com>
+
+- DiskBuilder: use ExitStack to unmount partitions
+
+-------------------------------------------------------------------
+Thu Jan 18 11:05:54 CET 2024 - Dan Čermák <dcermak@suse.com>
+
+- FileSystemBase & VolumeManagerBase: return a MountManager from sync_data
+
+  This allows us to unmount the filesystems via the returned context manager
+
+-------------------------------------------------------------------
+Thu Jan 18 11:04:33 CET 2024 - Dan Čermák <dcermak@suse.com>
+
+- Don't catch all exceptions in MountManager.umount
+
+-------------------------------------------------------------------
+Thu Jan 18 11:02:23 CET 2024 - Dan Čermák <dcermak@suse.com>
+
+- Implement a context manager interface for MountManager
+
+-------------------------------------------------------------------
+Wed Jan 17 21:53:33 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update Debian distro for integration tests
+
+  We require python >= 3.9
+
+-------------------------------------------------------------------
+Wed Jan 17 17:27:04 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor disk builder for use with context manager
+
+  In preparation to further context manager related changes
+  in VolumeManager, LuksDevice, RaidDevice and more the
+  disk builder code which uses these classes needs to be
+  refactored beforehand to allow switching to context
+  manager based cascading of the storage device classes.
+  This commit does the refactoring and is related to
+  Issue #2412
 
 -------------------------------------------------------------------
 Tue Jan 16 15:50:45 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
@@ -111,21 +1159,145 @@ Tue Jan 16 10:37:16 CET 2024 - Neal Gompa <neal@gompa.dev>
   anymore, so let's just use "linux"+"initrd" for everything now.
 
 -------------------------------------------------------------------
-Tue Jan 09 15:31:06 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+Mon Jan 15 17:57:51 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
-- Disable workflow runs from master
+- Don't create default entry for sd-boot loader.conf
 
-  The following github actions will be disabled from master
-  because they are expected to run from main:
+-------------------------------------------------------------------
+Mon Jan 15 16:44:22 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
-  - ci-publish-pages.yml
-  - ci-publish-to-pypi.yml
-  - ci-update-build-tests.yml
+- Type cleanup, no use of Any type in disk builder
+
+  Use proper Union declaration for system variable and add
+  consistency layer into Filesystem/VolumeManager classes to
+  meet the type declaration as well as to simplify further
+  refactoring on these classes
+
+-------------------------------------------------------------------
+Sat Jan 13 23:25:41 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Compat entry name for kernel-install in sd-boot
+
+  systemd-boot tools like kernel-install expect a certain
+  entry naming policy. This commit adapts kiwi to adapt to
+  this policy. The name for the default entry is constructed
+  out of the ID information from /etc/os-release followed
+  by the name of the kernel as it is represented by the
+  directory name in /lib/modules/... This Fixes #2417
+
+-------------------------------------------------------------------
+Sat Jan 13 13:47:50 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop SLE integration tests
+
+  The kiwi version for SLE is maintained in the git repos
+  * https://github.com/SUSE/kiwi_sle15
+  * https://github.com/SUSE/kiwi_sle12
+  and has its own set of QA integration tests in the internal
+  build service.
+
+-------------------------------------------------------------------
+Fri Jan 12 16:58:19 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Apply different cherry-pick strategy
+
+  cherry picking merge commits is not easily possible. Thus get
+  the list of commits and check if it can be applied in a series
+
+-------------------------------------------------------------------
+Fri Jan 12 16:11:45 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Reduce XSL transformation list
+
+  Minimum schema version to start with is v74
+  This Fixes #2368
+
+-------------------------------------------------------------------
+Fri Jan 12 09:39:18 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed custom ISO boot template
+
+  The archlinux integration test used a custom iso boot
+  template which still contained the terminal_setup variable.
+  This commit fixed the template to use the new terminal_input
+  and terminal_output variables
+
+-------------------------------------------------------------------
+Fri Jan 12 09:09:47 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Delete clicfs from documentation API
+
+-------------------------------------------------------------------
+Thu Jan 11 19:14:48 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move FileSystem to context manager
+
+  Change the FileSystem class to be a context manager. All code using
+  FileSystem was updated to the following with statement:
+
+  with FileSystem.new(...) as filesystem:
+  filesystem.some_member()
+
+  This is related to Issue #2412
+
+-------------------------------------------------------------------
+Thu Jan 11 09:46:23 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update unit test data to schema v8.0
+
+-------------------------------------------------------------------
+Thu Jan 11 09:30:07 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update major schema version from 7.6 -> 8.0
+
+  With the switch to schema v8.x we allow for non compatible
+  changes in regards to the v7.x stream. Thus this commit also
+  deletes the support for clicfs from the schema
+
+-------------------------------------------------------------------
+Thu Jan 11 09:23:52 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop clicfs support
+
+  clicfs was a fuse userspace implementation of an overlay
+  filesystem. Since overlayfs became the default overlay filesystem
+  there is no reason for kiwi to keep the clicfs support
+
+-------------------------------------------------------------------
+Wed Jan 10 12:10:47 CET 2024 - Dan Čermák <dcermak@suse.com>
+
+- Use obsrepositories for the CentOS 9 image
+
+  We were relying on the repos being parsed from the kiwi description but this can
+  cause problems and gives us less flexibility when it comes to fixing repository
+  setup issues.
+
+  This fixes https://github.com/OSInside/kiwi/issues/2335
+
+-------------------------------------------------------------------
+Tue Jan 09 15:36:13 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.22 → 10.0.0
+
+-------------------------------------------------------------------
+Tue Jan 09 15:35:22 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move workflow runs to main branch
+
+  Make sure all github actions runs from main
 
 -------------------------------------------------------------------
 Tue Jan 09 15:19:30 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.25.21 → 9.25.22
+
+-------------------------------------------------------------------
+Tue Jan 09 13:19:57 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add compliance action
+
+  Check if the commits of a pull request can be cherry-picked to
+  the master, which is the kiwi v9.x.x code stream.
 
 -------------------------------------------------------------------
 Tue Jan 09 11:18:30 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
@@ -180,6 +1352,20 @@ Thu Jan 04 13:05:39 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
   This commit fixes it such that the overwrite happens in the early
   initialize method which provides the environment for all code
   running in the dracut module. This is related to jira#PED-7180
+
+-------------------------------------------------------------------
+Sat Dec 30 14:49:15 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move LoopDevice class to context manager
+
+  Change the LoopDevice class to be a context manager.
+  All code using LoopDevice was updated to the following
+  with statement:
+
+  with LoopDevice(...) as loop_provider:
+  loop_provider.some_member()
+
+  This is related to Issue #2412
 
 -------------------------------------------------------------------
 Fri Dec 29 20:23:17 CET 2023 - Neal Gompa <neal@gompa.dev>

@@ -19,16 +19,17 @@
 
 # If they aren't provided by a system installed macro, define them
 %{!?_defaultdocdir: %global _defaultdocdir %{_datadir}/doc}
+
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 311
+%else
 %{!?__python3: %global __python3 /usr/bin/python3}
+%{!?python3_pkgversion:%global python3_pkgversion 3}
+%endif
 
 %if %{undefined python3_sitelib}
 %global python3_sitelib %(%{__python3} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
-%endif
-
-%if 0%{?el7}
-%global python3_pkgversion 36
-%else
-%{!?python3_pkgversion:%global python3_pkgversion 3}
 %endif
 
 %if 0%{?debian} || 0%{?ubuntu}
@@ -43,8 +44,8 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.25.22
-Provides:       kiwi-schema = 7.5
+Version:        10.0.10
+Provides:       kiwi-schema = 8.1
 Release:        0
 Url:            https://github.com/OSInside/kiwi
 Summary:        KIWI - Appliance Builder Next Generation
@@ -57,9 +58,6 @@ Group:          %{pygroup}
 Source:         %{name}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  gcc
-BuildRequires:  python%{python3_pkgversion}-%{develsuffix} >= 3.6
-BuildRequires:  python%{python3_pkgversion}-setuptools
 %if 0%{?fedora} || 0%{?suse_version}
 BuildRequires:  fdupes
 %endif
@@ -68,6 +66,32 @@ BuildRequires:  shadow
 %endif
 %if 0%{?debian} || 0%{?ubuntu}
 BuildRequires:  passwd
+%endif
+# Main build requirements
+BuildRequires:  gcc
+BuildRequires:  make
+BuildRequires:  python%{python3_pkgversion}-%{develsuffix} >= 3.9
+BuildRequires:  python%{python3_pkgversion}-build
+BuildRequires:  python%{python3_pkgversion}-installer
+BuildRequires:  python%{python3_pkgversion}-poetry-core >= 1.2.0
+BuildRequires:  python%{python3_pkgversion}-wheel
+# doc build requirements
+BuildRequires:  python%{python3_pkgversion}-docopt >= 0.6.2
+BuildRequires:  python%{python3_pkgversion}-lxml
+BuildRequires:  python%{python3_pkgversion}-requests
+BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-simplejson
+%if 0%{?suse_version}
+BuildRequires:  python%{python3_pkgversion}-Sphinx
+%else
+BuildRequires:  python%{python3_pkgversion}-sphinx
+%endif
+%if 0%{?debian} || 0%{?ubuntu}
+BuildRequires:  python%{python3_pkgversion}-sphinx-rtd-theme
+BuildRequires:  python%{python3_pkgversion}-yaml
+%else
+BuildRequires:  python%{python3_pkgversion}-sphinx_rtd_theme
+BuildRequires:  python%{python3_pkgversion}-PyYAML
 %endif
 
 %description
@@ -124,7 +148,6 @@ Requires:       dpkg
 Requires:       gnupg
 %endif
 # tools required by kiwi
-Requires:       kiwi-tools
 Requires:       mtools
 Requires:       rsync
 Requires:       tar >= 1.2.7
@@ -186,9 +209,6 @@ Provides:       kiwi-image:iso
 Requires:       checkmedia
 %endif
 Requires:       xorriso
-%ifarch %{ix86} x86_64
-Requires:       syslinux
-%endif
 Requires:       kiwi-systemdeps-core = %{version}-%{release}
 Requires:       kiwi-systemdeps-filesystems = %{version}-%{release}
 Requires:       kiwi-systemdeps-bootloaders = %{version}-%{release}
@@ -212,9 +232,6 @@ Recommends:     gfxboot
 Requires:       grub2-efi-x64
 %endif
 %endif
-%if ! (0%{?debian} || 0%{?ubuntu})
-Requires:       grub2
-%endif
 %ifarch %arm aarch64
 %if 0%{?fedora} || 0%{?rhel}
 Requires:       uboot-tools
@@ -224,7 +241,14 @@ Requires:       u-boot-tools
 %endif
 %endif
 %ifarch s390 s390x
+%if 0%{?fedora} || 0%{?rhel}
+Requires:       s390utils
+%else
 Requires:       s390-tools
+%if ! (0%{?debian} || 0%{?ubuntu})
+Requires:       grub2
+%endif
+%endif
 %endif
 Requires:       kiwi-systemdeps-core = %{version}-%{release}
 
@@ -363,10 +387,9 @@ Obsoletes:      python2-kiwi
 Conflicts:      python2-kiwi
 Conflicts:      kiwi-man-pages < %{version}
 Requires:       screen
-Requires:       python%{python3_pkgversion} >= 3.6
+Requires:       python%{python3_pkgversion} >= 3.9
 %if 0%{?ubuntu} || 0%{?debian}
 Requires:       python%{python3_pkgversion}-yaml
-Requires:       python%{python3_pkgversion}-typing-extensions
 %else
 Requires:       python%{python3_pkgversion}-PyYAML
 %endif
@@ -375,12 +398,7 @@ Requires:       python%{python3_pkgversion}-docopt
 Requires:       python%{python3_pkgversion}-lxml
 Requires:       python%{python3_pkgversion}-requests
 Requires:       python%{python3_pkgversion}-setuptools
-%if 0%{?rhel} || 0%{?fedora}
-Requires:       (python%{python3_pkgversion}-typing-extensions if python%{python3_pkgversion} < 3.8)
-%endif
-%if 0%{?suse_version}
-Requires:       (python%{python3_pkgversion}-typing_extensions if python%{python3_pkgversion} < 3.8)
-%endif
+Requires:       python%{python3_pkgversion}-xmltodict
 %if ! (0%{?rhel} && 0%{?rhel} < 8)
 Recommends:     kiwi-man-pages
 %endif
@@ -400,17 +418,6 @@ Recommends:     kiwi-systemdeps = %{version}-%{release}
 Python 3 library of the KIWI Image System. Provides an operating system
 image builder for Linux supported hardware platforms as well as for
 virtualization and cloud systems like Xen, KVM, VMware, EC2 and more.
-
-%package -n kiwi-tools
-Summary:        KIWI - Collection of Boot Helper Tools
-License:        GPL-3.0-or-later
-Group:          %{sysgroup}
-
-%description -n kiwi-tools
-This package contains a small set of helper tools used for the
-kiwi created initial ramdisk which is used to control the very
-first boot of an appliance. The tools are not meant to be used
-outside of the scope of kiwi appliance building.
 
 %if "%{_vendor}" != "debbuild"
 %ifarch %{ix86} x86_64
@@ -483,7 +490,11 @@ Requires:       xz
 Requires:       device-mapper
 %endif
 %ifarch s390 s390x
+%if 0%{?fedora} || 0%{?rhel}
+Requires:       s390utils
+%else
 Requires:       s390-tools
+%endif
 Requires:       parted
 %endif
 License:        GPL-3.0-or-later
@@ -615,33 +626,46 @@ Group:          %{sysgroup}
 Provides manual pages to describe the kiwi commands
 
 %prep
-%setup -q -n kiwi-%{version}
+%autosetup -n kiwi-%{version}
+
+# Temporarily switch things back to docopt for everything but Fedora 41+
+# FIXME: Drop this hack as soon as we can...
+%if ! (0%{?fedora} >= 41 || 0%{?rhel} >= 10)
+sed -e 's/docopt-ng.*/docopt = ">=0.6.2"/' -i pyproject.toml
+%endif
 
 # Drop shebang for kiwi/xml_parse.py, as we don't intend to use it
 # as an independent script
 sed -e "s|#!/usr/bin/env python||" -i kiwi/xml_parse.py
 
-%build
-# Build C-Tools
-make CFLAGS="${RPM_OPT_FLAGS}" tools
+# Build documentation
+make -C doc man
+
+# Build application wheel
+%{__python3} -m build --no-isolation --wheel
 
 %install
-# Install Python 3 version
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot} %{?is_deb:--install-layout=deb}
+# Install application
+%{__python3} -m installer --destdir %{buildroot} %{?is_deb:--no-compile-bytecode} dist/*.whl
 
-# Install C-Tools, man-pages, completion and kiwi default configuration
-make buildroot=%{buildroot}/ install
+%if 0%{?is_deb}
+# Fix where files were installed
+mv %{buildroot}%{_prefix}/local/* %{buildroot}%{_prefix}
+mv %{buildroot}%{_prefix}/lib/python3* %{buildroot}%{_prefix}/lib/python3
+%endif
+
+# Install man-pages, completion and kiwi default configuration
+make buildroot=%{buildroot}/ python=%{__python3} install
 
 # Install dracut modules
-make buildroot=%{buildroot}/ install_dracut
+make buildroot=%{buildroot}/ python=%{__python3} install_dracut
 
-# Install documentation in PDF format
-make buildroot=%{buildroot}/ docdir=%{_defaultdocdir}/ install_package_docs
+# Install documentation README / LICENSE
+make buildroot=%{buildroot}/ docdir=%{_defaultdocdir}/ python=%{__python3} install_package_docs
 
 # Create symlinks for correct binaries
 ln -sr %{buildroot}%{_bindir}/kiwi-ng %{buildroot}%{_bindir}/kiwi
 ln -sr %{buildroot}%{_bindir}/kiwi-ng %{buildroot}%{_bindir}/kiwi-ng-3
-ln -sr %{buildroot}%{_bindir}/kiwicompat %{buildroot}%{_bindir}/kiwicompat-3
 
 %if "%{_vendor}" != "debbuild"
 # kiwi pxeboot directory structure to be packed in kiwi-pxeboot
@@ -702,23 +726,15 @@ fi
 %dir %{_defaultdocdir}/python-kiwi
 %{_bindir}/kiwi
 %{_bindir}/kiwi-ng
-%{_bindir}/kiwicompat
 %{_bindir}/kiwi-ng-3*
-%{_bindir}/kiwicompat-3*
 %{python3_sitelib}/kiwi*
 %{_usr}/share/bash-completion/completions/kiwi-ng
 %{_defaultdocdir}/python-kiwi/LICENSE
 %{_defaultdocdir}/python-kiwi/README
 
 %files -n kiwi-man-pages
-%{_defaultdocdir}/python-kiwi/kiwi.pdf
 %config %_sysconfdir/kiwi.yml
 %doc %{_mandir}/man8/*
-
-%files -n kiwi-tools
-%{_bindir}/dcounter
-%{_bindir}/isconsole
-%{_bindir}/utimer
 
 %files -n dracut-kiwi-lib
 %{_usr}/lib/dracut/modules.d/99kiwi-lib
