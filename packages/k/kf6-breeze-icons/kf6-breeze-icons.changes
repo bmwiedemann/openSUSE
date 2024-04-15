@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:52:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Too many changes since 6.0.0, only listing bugfixes:
+  * Use magnifying glass iconography for zoom icons (kde#435671)
+  * Remove unneeded dark applets icons (kde#477289)
+  * Make process-stop-symbolic a symlink to the base icon (kde#482556)
+  * fix some 96px folder icons not using accent color (kde#478016)
+  * Add new icon for Skladnik BUG: 458214 (kde#458214)
+
+-------------------------------------------------------------------
 Wed Feb 21 19:27:41 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.0
