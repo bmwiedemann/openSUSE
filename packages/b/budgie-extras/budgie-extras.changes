@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 12 09:27:46 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fixes for vala building code incompatible with Werror
+
+-------------------------------------------------------------------
 Thu Dec 14 12:58:56 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Budgie Extras 1.7.1 "Tinker Tailor..."

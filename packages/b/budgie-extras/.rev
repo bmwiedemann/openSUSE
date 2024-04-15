@@ -184,4 +184,13 @@
 </comment>
     <requestid>1133097</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>43d180ee5d7de7301815bad32679b9f1</srcmd5>
+    <version>1.7.1</version>
+    <time>1713204864</time>
+    <user>anag+factory</user>
+    <comment>- Fixes for vala building code incompatible with Werror
+</comment>
+    <requestid>1167023</requestid>
+  </revision>
 </revisionlist>
