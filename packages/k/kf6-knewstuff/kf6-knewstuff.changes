@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:52:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * update version for new release
+  * Add extra ksnrc key to indicate the safety of installation
+  * Use Continue/Cancel style of question for overwrite dialog
+  * Change default sorting of entries to "Most Downloads"
+  * resultsstream: Delay the entry loading into the event look (kde#473472)
+  * resultsstream: handle query results assertively
+  * resultsstream: Allow for the members to be constant
+  * Unify default sizes (kde#482604)
+  * Fix the "working..." overlay for item installation (kde#483108)
+  * Remove the last uses of Qt5Compat.GraphicalEffects
+  * Refresh visible entry on uninstall (kde#476152)
+  * [qtquick/action] Add API to set transient parent for dialog (kde#479816)
+  * Fix link list dialog for installation button (kde#482349)
+  * Set questionAsker implicit sizes, set maxWidth to dialog width (kde#480338)
+- Drop patch, merged upstream:
+  * 0001-Fix-link-list-dialog-for-installation-button.patch
+
+-------------------------------------------------------------------
 Wed Mar 13 08:33:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream fix (kde#482349):
