@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 15 09:01:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * Don't add '+editable' to the editable version
+  * Custom version format for source="scm"
+  * Fallback_version config for scm version
+  * **vendor**: Update packaging to 24.0
+  * **vendors**: Update pyproject-metadata to 0.8.0rc1
+
+-------------------------------------------------------------------
 Tue Jan  9 15:03:22 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update dependencies

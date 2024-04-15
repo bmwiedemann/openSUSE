@@ -50,4 +50,17 @@
     <comment></comment>
     <requestid>1137759</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>304394406cbb590e818f0ad53a741189</srcmd5>
+    <version>2.2.0</version>
+    <time>1713205089</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.0:
+  * Don't add '+editable' to the editable version
+  * Custom version format for source=&quot;scm&quot;
+  * Fallback_version config for scm version
+  * **vendor**: Update packaging to 24.0
+  * **vendors**: Update pyproject-metadata to 0.8.0rc1</comment>
+    <requestid>1167773</requestid>
+  </revision>
 </revisionlist>
