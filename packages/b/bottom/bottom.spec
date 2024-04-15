@@ -1,7 +1,7 @@
 #
 # spec file for package bottom
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,7 @@ Source:         %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
+BuildRequires:  rust >= 1.70
 BuildRequires:  zstd
 
 %description
