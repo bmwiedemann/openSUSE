@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr 14 13:08:52 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+ - Update version tp 5.15.1
+   * feat: RandomStrategy AliveOnly
+   * Improve container image tags and timestamp
+   * Add delay_auth_write to Socks5 Client Advanced Config
+   * Add MaxMin TLS version support in TLS Setting
+   * feat: RandomStrategy AliveOnly
+   * Improve container image tags and timestamp
+   * Fixed an encrypted traffic's malleable vulnerability that allow 
+     integrity corruption by an attacker with a privileged network 
+     position to silently drop segments of traffic from an encrypted 
+     traffic stream.
+   * Update documents
+   * Fix bugs
+- Update vendor, fix CVE-2024-22189 boo#1222488
+
+-------------------------------------------------------------------
 Sun Dec  3 08:38:20 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.12.1

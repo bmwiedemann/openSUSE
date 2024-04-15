@@ -355,4 +355,25 @@
     <comment></comment>
     <requestid>1130554</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4d2fe39709a4bd3f9a45734c188a464f</srcmd5>
+    <version>5.15.1</version>
+    <time>1713205050</time>
+    <user>anag+factory</user>
+    <comment>- Update version tp 5.15.1
+   * feat: RandomStrategy AliveOnly
+   * Improve container image tags and timestamp
+   * Add delay_auth_write to Socks5 Client Advanced Config
+   * Add MaxMin TLS version support in TLS Setting
+   * feat: RandomStrategy AliveOnly
+   * Improve container image tags and timestamp
+   * Fixed an encrypted traffic's malleable vulnerability that allow 
+     integrity corruption by an attacker with a privileged network 
+     position to silently drop segments of traffic from an encrypted 
+     traffic stream.
+   * Update documents
+   * Fix bugs
+- Update vendor, fix CVE-2024-22189 boo#1222488 (forwarded request 1167661 from hillwood)</comment>
+    <requestid>1167662</requestid>
+  </revision>
 </revisionlist>
