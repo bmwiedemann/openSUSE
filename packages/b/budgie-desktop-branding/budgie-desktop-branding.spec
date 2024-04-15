@@ -1,8 +1,8 @@
 #
 # spec file for package budgie-desktop-branding
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2020 Callum Farmer <callumjfarmer13@gmail.com>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Callum Farmer <gmbr3@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define bversion %{nsuffix}
 %endif
 Name:           budgie-desktop-branding
-Version:        20220829.3
+Version:        20240412.1
 Release:        0
 Summary:        Branding of the Budgie Desktop Environment
 License:        CC-BY-SA-3.0 AND GPL-2.0-only
@@ -69,10 +69,18 @@ desktop environment.
 %if !0%{?is_backports}
 %package upstream
 Summary:        Upstream branding of the Budgie Desktop Environment
+License:        CC-BY-NC-SA-4.0
+URL:            https://github.com/BuddiesOfBudgie/fedora-budgie-desktop-defaults
 Requires:       adwaita-icon-theme
 Requires:       budgie-desktop
+Requires:       lightdm-slick-greeter
 Requires:       materia-gtk-theme
 Requires:       papirus-icon-theme
+Recommends:     MozillaFirefox
+Recommends:     gnome-software
+Recommends:     nemo
+Recommends:     parole
+Recommends:     rhythmbox
 Supplements:    (budgie-desktop and branding-upstream)
 Conflicts:      budgie-desktop-branding
 Provides:       budgie-desktop-branding = %{version}
@@ -94,7 +102,9 @@ desktop environment.
 %meson_install
 # openSUSE
 %if !0%{?is_backports}
-true
+%if 0%{?suse_version} < 1600
+sed -e 's-png-jpg-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/21_budgie_gnome_settings_%{nsuffix}.gschema.override
+%endif
 %else
 # SLE
 %if 0%{?sle_version} < 150300
@@ -111,7 +121,7 @@ sed -e 's-png-jpg-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/21_budgie_gnome
 
 %if "%{bversion}"=="%{nsuffix},upstream"
 %files upstream
-%license LICENSE LICENSE.CC-BY-SA-3.0
+%license subprojects/upstream/LICENSE
 %doc README.md
 %{_datadir}/glib-2.0/schemas/21_budgie_gnome_settings_upstream.gschema.override
 %endif

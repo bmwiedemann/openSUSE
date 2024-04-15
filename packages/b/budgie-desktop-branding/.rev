@@ -136,4 +136,15 @@
 </comment>
     <requestid>1000104</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7e7fe407c0d95e7efeb3374d0fdb553a</srcmd5>
+    <version>20240412.1</version>
+    <time>1713204867</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240412.1:
+  * Switch upstream to the new version
+  * TW background: use PNG instead of JPG
+</comment>
+    <requestid>1167034</requestid>
+  </revision>
 </revisionlist>
