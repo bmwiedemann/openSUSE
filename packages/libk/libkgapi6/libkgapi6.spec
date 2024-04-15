@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 5.246.0
+%define kf6_version 6.0.0
 %define qt6_version 6.6.0
 
 %define rname libkgapi
 %bcond_without released
 Name:           libkgapi6
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 Summary:        Extension for accessing Google data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
