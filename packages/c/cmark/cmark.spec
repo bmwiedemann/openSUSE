@@ -16,9 +16,9 @@
 #
 
 
-%define libname libcmark0_30_3
+%define libname libcmark0_31_0
 Name:           cmark
-Version:        0.30.3
+Version:        0.31.0
 Release:        0
 Summary:        CommonMark parsing and rendering library and program in C
 License:        BSD-2-Clause AND MIT AND CC-BY-SA-4.0
