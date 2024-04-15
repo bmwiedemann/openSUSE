@@ -18,7 +18,7 @@
 
 Name:           libfdatetime
 %define lname	libfdatetime1
-Version:        20240115
+Version:        20240415
 Release:        0
 Summary:        A library for date and time data types
 License:        LGPL-3.0-or-later
@@ -29,7 +29,7 @@ Source2:        https://github.com/libyal/libfdatetime/releases/download/%versio
 Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcerror) >= 20240413
 # Various notes: https://en.opensuse.org/libyal
 
 %description
@@ -66,8 +66,7 @@ grep '  local' config.log && exit 1
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*
