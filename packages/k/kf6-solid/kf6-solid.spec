@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-solid
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define rname solid
 %bcond_without released
 Name:           kf6-solid
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        KDE Desktop hardware abstraction
 License:        LGPL-2.1-or-later
