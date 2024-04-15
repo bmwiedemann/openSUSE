@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:52:28 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * update version for new release
+  * Don't search for QtDBus on Windows/macOS/Android
+  * Register KConfigPropertyMap to QML
+  * kconf_update: Also run .upd files if times match but done is empty (kde#483795)
+  * Add unittest that URL[$e] works, for bug 482889
+- Drop patch, merged upstream:
+  * 0001-kconf_update-Also-run-.upd-files-if-times-match-but-.patch
+
+-------------------------------------------------------------------
 Sat Mar 16 22:38:58 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix missing config migration (kde#483795):

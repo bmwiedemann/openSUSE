@@ -19,16 +19,16 @@
 %define qt6_version 6.6.0
 
 %define rname kconfig
-# Full KF6 version (e.g. 6.0.0)
+# Full KF6 version (e.g. 6.1.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kconfig
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        Advanced configuration system
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 URL:            https://www.kde.org
 Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
@@ -36,8 +36,6 @@ Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 Source99:       kf6-kconfig-rpmlintrc
-# https://invent.kde.org/frameworks/kconfig/-/merge_requests/283
-Patch1:         0001-kconf_update-Also-run-.upd-files-if-times-match-but-.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
