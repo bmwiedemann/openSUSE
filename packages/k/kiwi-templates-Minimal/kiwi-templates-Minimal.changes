@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 15 13:52:26 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Add kernel-firmware-bluetooth (bsc#1219216)
+
+-------------------------------------------------------------------
 Fri Apr 12 15:13:32 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update kiwi schema to 7.4 to be compatible with kiwi v10 (boo#1222243)
