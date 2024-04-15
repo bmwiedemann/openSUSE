@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr  9 18:08:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.2/
+- Changes since 24.02.1:
+  * Add hamburger menu action to all active views (kde#484171)
+  * Check only IXON when getting flow control state (kde#457924)
+  * Draw block cursor with antialiasing (kde#483197)
+  * Draw block cursor outline with MiterJoin (kde#483197)
+  * Fallback to home dir if initial working dir is inaccessible (kde#470262)
+  * Reshow configuration dialog after toggling borders (kde#479081)
+  * Fix getting FreeBSD process name (kde#480196)
+  * Avoid constructing QChar from non-BMP codepoints
+
+-------------------------------------------------------------------
 Tue Mar 19 15:26:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.1
