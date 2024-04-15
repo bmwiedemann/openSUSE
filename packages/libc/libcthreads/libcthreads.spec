@@ -18,7 +18,7 @@
 
 Name:           libcthreads
 %define lname	libcthreads1
-Version:        20240102
+Version:        20240413
 Release:        0
 Summary:        Library for C threads functions
 License:        LGPL-3.0-or-later
@@ -29,7 +29,7 @@ Source2:        https://github.com/libyal/libcthreads/releases/download/%version
 Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcerror) >= 20240413
 # Various notes: https://en.opensuse.org/libyal
 
 %description
@@ -70,8 +70,7 @@ grep '  local' config.log && exit 1
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING.LESSER
