@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:52:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Too many changes since 6.0.0, only listing bugfixes:
+  * Fix authentication prompt not being shown (kde#460944)
+  * [kfileplacesmodel] Remove wrong assert (kde#484160)
+  * KFileItem: when checking access use current user (kde#483436)
+  * Fix webshortcuts not giving searchprovider specific icon (kde#483164)
+  * KFileitem: Use internal permissions as best case scenario (kde#477526)
+  * connectionbackend: improve jumbo packet handling (kde#481311)
+  * Drop legacy keys for m_runOnDiscreteGpuBool (kde#481538)
+  * [knewfilemenu] Add window title for new file dialog (kde#482732)
+  * fix hide service menu items in context menu (kde#482216)
+  * [kterminallauncherjob] Inherit default process environment from parent (kde#482107)
+  * [knewfilemenu] Fix error handling when creating a folder that already exists (kde#482145)
+- Drop patch, merged upstream:
+  * 0001-kterminallauncherjob-Inherit-default-process-environ.patch
+
+-------------------------------------------------------------------
 Mon Mar 18 15:39:19 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix KTerminalLaucherJob (kde#482107, boo#1221637):
