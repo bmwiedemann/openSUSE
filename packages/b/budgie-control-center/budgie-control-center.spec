@@ -1,7 +1,7 @@
 #
 # spec file for package budgie-control-center
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           budgie-control-center
-Version:        1.3.0+0
+Version:        1.4.0+2
 Release:        0
 Summary:        Fork of GNOME Control Center for Budgie 10
-License:        GPL-2.0-or-later AND LGPL-3.0-or-later 
+License:        GPL-2.0-or-later AND LGPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/BuddiesOfBudgie/budgie-control-center
 Source0:        %{name}-%{version}.tar.xz
@@ -45,6 +45,7 @@ BuildRequires:  pkgconfig(goa-1.0)
 BuildRequires:  pkgconfig(gsound)
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(ibus-1.0)
+BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libnm)
@@ -54,7 +55,6 @@ BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libwacom)
 BuildRequires:  pkgconfig(malcontent-0)
-BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(mm-glib)
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(pwquality)
