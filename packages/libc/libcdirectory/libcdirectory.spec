@@ -18,7 +18,7 @@
 
 %define lname	libcdirectory1
 Name:           libcdirectory
-Version:        20240105
+Version:        20240414
 Release:        0
 Summary:        Library for Windows NT data types
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -29,21 +29,21 @@ Source2:        https://github.com/libyal/libcdirectory/releases/download/%versi
 Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20240101
-BuildRequires:  pkgconfig(libclocale) >= 20221218
-BuildRequires:  pkgconfig(libuna) >= 20230710
+BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libclocale) >= 20240414
+BuildRequires:  pkgconfig(libuna) >= 20240130
 # Various notes: https://en.opensuse.org/libyal
 
 %description
 Library to provide Windows NT data type support for the libyal family of libraries.
 libyal is typically used in digital forensic tools.
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library for Windows NT data types
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 Library to provide Windows NT data type support for the libyal family of libraries.
 libyal is typically used in digital forensic tools.
 
@@ -51,7 +51,7 @@ libyal is typically used in digital forensic tools.
 Summary:        Development files for libcdirectory
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{version}
+Requires:       %lname = %version
 
 %description devel
 Library to provide Windows NT data type support for the libyal family of libraries.  libyal is typically used in digital forensic tools.
@@ -70,21 +70,20 @@ grep '  local' config.log && exit 1
 
 %install
 %make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/libcdirectory.so.*
+%_libdir/libcdirectory.so.*
 
 %files devel
 %license COPYING*
-%{_includedir}/libcdirectory.h
-%{_includedir}/libcdirectory/
-%{_libdir}/libcdirectory.so
-%{_libdir}/pkgconfig/libcdirectory.pc
-%{_mandir}/man3/libcdirectory.3*
+%_includedir/libcdirectory.h
+%_includedir/libcdirectory/
+%_libdir/libcdirectory.so
+%_libdir/pkgconfig/libcdirectory.pc
+%_mandir/man3/libcdirectory.3*
 
 %changelog
