@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 14 20:37:31 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
+
+- added patch ip2unix-2.2.1-fix_out_of_range_string_view_access.patch
+
+-------------------------------------------------------------------
 Mon Aug 28 08:58:11 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
 
 - opt out from lto using _lto_clfags macro

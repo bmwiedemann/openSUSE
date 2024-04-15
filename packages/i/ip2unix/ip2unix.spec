@@ -1,7 +1,7 @@
 #
 # spec file for package ip2unix
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,7 @@ Summary:        Turn IP sockets into Unix domain sockets
 License:        LGPL-3.0-only
 URL:            https://github.com/nixcloud/ip2unix/
 Source0:        https://github.com/nixcloud/ip2unix/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         https://patch-diff.githubusercontent.com/raw/nixcloud/ip2unix/pull/35.patch#/ip2unix-2.2.1-fix_out_of_range_string_view_access.patch
 BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.47.0
