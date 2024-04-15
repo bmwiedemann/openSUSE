@@ -7,4 +7,12 @@
     <comment>Needed by Budgie 10.9</comment>
     <requestid>1143474</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>781e71d93348ec313c76d5ea1398d8de</srcmd5>
+    <version>4.19.3</version>
+    <time>1713204866</time>
+    <user>anag+factory</user>
+    <comment>libxfce4windowing 4.19.3 for Budgie 10.9.1</comment>
+    <requestid>1167024</requestid>
+  </revision>
 </revisionlist>

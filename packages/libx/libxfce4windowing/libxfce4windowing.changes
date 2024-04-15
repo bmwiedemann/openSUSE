@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 10 15:37:53 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to 4.19.3:
+  * Set initial workspace's group properly on X11
+  * Add XfwClientType to doc sections
+  * Add xfw_set_client_type() to doc sections
+  * Add xfw_set_client_type()
+  * Add an X11-specific header and xfw_window_get_xid()
+  * Remove xfw_(window|application)_get_id()
+  * Expose class ids in XfwWindow and XfwApplication
+  * Update ext-workspace protocol spec to current version
+  * XfwWindowX11: Improve monitor list management
+  * XfwWindowX11: Fix monitor management
+
+-------------------------------------------------------------------
 Wed Jan 31 14:29:49 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Add detailed versions for BuildRequires: based on configure.ac

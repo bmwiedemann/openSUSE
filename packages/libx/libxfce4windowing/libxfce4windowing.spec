@@ -26,7 +26,7 @@
 
 Name:           libxfce4windowing
 Summary:        Windowing concept abstraction library for X11 and Wayland
-Version:        4.19.2
+Version:        4.19.3
 Release:        0
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
@@ -160,7 +160,7 @@ find %{buildroot} -name "*.la" -print -delete
 %dir %{_includedir}/xfce4/
 %{_includedir}/xfce4/libxfce4windowing{,ui}/
 %{_libdir}/libxfce4windowing{,ui}-%{api}.so
-%{_libdir}/pkgconfig/libxfce4windowing{,ui}-%{api}.pc
+%{_libdir}/pkgconfig/libxfce4windowing{,-x11,ui}-%{api}.pc
 %{_datadir}/gir-1.0/Libxfce4windowing-%{api}.%{major}.gir
 %{_datadir}/gir-1.0/Libxfce4windowingui-%{api}.%{major}.gir
 
