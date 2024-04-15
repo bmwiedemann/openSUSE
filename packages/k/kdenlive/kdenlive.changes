@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  9 18:07:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.2/
+- Too many changes since 24.02.1, only listing bugfixes:
+  * When copy/paste effects from a group, only paste effects for the active clip (kde#421667)
+  * Fix: don't propose existing name for new sequence (kde#472753)
+  * Fix: cannot translate the "P" for Proxy in timeline (kde#471850)
+  * Fix white background and blank monitor on Windows after going back from fullscreen (kde#484081)
+  * Fix: cannot move compositions properly in timeline with Qt6 (kde#484062)
+
+-------------------------------------------------------------------
 Tue Mar 19 15:26:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.1
