@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:53:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * update version for new release
+  * cmake-generator: refactor XML optimizations
+  * cmake.xml: `has-target-names-after-kw` could be a list
+  * cmake.xml: updates for the recently released CMake 3.29
+  * cpp: Update Qt classes for Qt 6
+  * initial gprbuild references
+  * gprbuild: add license info
+  * add small GPR test file
+  * Add GPRbuild syntax
+  * Add common alternative names used in various markdown parsers for languages
+  * fix refs for stan
+  * Update 2 files
+  * use (?:sub){0,2} to work with all pcre versions
+  * Alternate Names for Definitions
+  * Fix implicit size -> int conversion
+
+-------------------------------------------------------------------
 Wed Feb 21 19:28:22 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.0
