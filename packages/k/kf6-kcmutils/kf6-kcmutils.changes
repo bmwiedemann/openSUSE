@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:52:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * update version for new release
+  * Better document KPluginModel
+  * Deprecate ContextualHelpButton in favor of the Kirigami version
+  * KCMLauncher: Fix up docs
+  * Port QML modules to declarative type registration
+  * ConfigModule: Fix imports and aliases in provided example
+  * SharedQmlEngine: Improve error reporting when loading main component
+  * SettingHighlighterPrivate: update highlight on target children changes
+  * qml: set domain for i18n strings
+
+-------------------------------------------------------------------
 Wed Feb 21 19:27:48 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.0
