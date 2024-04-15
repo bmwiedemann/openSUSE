@@ -45,6 +45,10 @@ Budgie Desktop View is the official Budgie desktop icons application / implement
 %autosetup
 
 %build
+# Handle poor vala code
+export CFLAGS="%{optflags} -Wno-error"
+# vala: Permit GNU C
+export CFLAGS="${CFLAGS} -Wno-pedantic"
 %meson -Dxdg-appdir=%{_distconfdir}/xdg/autostart
 %meson_build
 

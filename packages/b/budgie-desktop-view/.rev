@@ -93,4 +93,13 @@
 </comment>
     <requestid>1143372</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>4ced8ba7c2d02965c0f0166532082bef</srcmd5>
+    <version>1.3+0</version>
+    <time>1713204864</time>
+    <user>anag+factory</user>
+    <comment>- Fixes for vala building code incompatible with Werror
+</comment>
+    <requestid>1167022</requestid>
+  </revision>
 </revisionlist>

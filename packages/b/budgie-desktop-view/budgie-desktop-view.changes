@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 12 09:27:00 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fixes for vala building code incompatible with Werror
+
+-------------------------------------------------------------------
 Thu Feb  1 12:44:56 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move autostart back to %_distconfdir as aaa_base is fixed
