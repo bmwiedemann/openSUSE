@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:52:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * update version for new release
+  * [Extractor] Explicitly abort the transaction on early exit
+  * [WorkerPipe] Verify inputEnd() is signaled when parent process exits
+  * Some indexers need non-slash trailed path (kde#478854)
+  * Skip indexing KDE FS volumes unless user included (kde#460509)
+  * [tests/engine/singledbtest] Allow testing multiple databases
+  * ci: download .clang-format during CI runs
+  * [Extractor] Change to QCoreApplication
+  * ci: check clang-format during CI
+
+-------------------------------------------------------------------
 Tue Feb 27 17:52:32 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Don't rely on %systemd_user_* beginning with a newline
