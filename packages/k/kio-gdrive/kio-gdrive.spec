@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 5.240.0
+%define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.1
+%define kpim6_version 6.0.2
 
 %bcond_without released
 Name:           kio-gdrive
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 Summary:        Google Drive KIO slave for KDE applications
 License:        GPL-2.0-or-later
