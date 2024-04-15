@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 5.246.0
+%define kf6_version 6.0.0
 %define qt6_version 6.6.0
 %define plasma6_version 5.27.80
 
 %bcond_without released
 Name:           kweather
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Weather application for Plasma
