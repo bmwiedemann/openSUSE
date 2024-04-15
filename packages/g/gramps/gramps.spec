@@ -19,7 +19,7 @@
 
 %global __requires_exclude typelib\\(GtkosxApplication\\)|typelib\\(Gtkspell\\)|typelib\\(GConf\\)
 Name:           gramps
-Version:        5.2.0
+Version:        5.2.1
 Release:        0
 Summary:        Genealogical Research Software
 License:        GPL-2.0-or-later
@@ -98,7 +98,7 @@ rm -r %{buildroot}%{_datadir}/doc/%{name}/
 %dir %{_datadir}/metainfo
 %{_datadir}/applications/org.gramps_project.Gramps.desktop
 %{_datadir}/icons/hicolor/*/*/
-%{_datadir}/metainfo/org.gramps_project.Gramps.appdata.xml
+%{_datadir}/metainfo/org.gramps_project.Gramps.metainfo.xml
 %{_datadir}/mime/packages/org.gramps_project.Gramps.xml
 %{python3_sitelib}/%{name}/
 %{python3_sitelib}/%{name}-%{version}-*.egg-info
