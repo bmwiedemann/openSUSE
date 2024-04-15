@@ -518,4 +518,26 @@
 - bumped embedded golang.org/x/crypto/ssh to fix the Terrapin attack CVE-2023-48795 (bsc#1218207) (forwarded request 1143629 from msmeissn)</comment>
     <requestid>1143630</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cf7b10a817b93f4b01b49ebba9e070f6</srcmd5>
+    <version>2.2.4</version>
+    <time>1713205122</time>
+    <user>anag+factory</user>
+    <comment>- updated to 2.2.4 (jsc#SLE-23879)
+  * Bug Fixes
+    * Fixes for GHSA-88jx-383q-w4qc and GHSA-95pr-fxf5-86gv (#3661)
+      - CVE-2024-29902: Malicious attachments can cause system-wide denial of service (bsc#1222835)
+      - CVE-2024-29903: Malicious artifects can cause machine-wide denial of service (bsc#1222837)
+    * ErrNoSignaturesFound should be used when there is no signature attached to an image. (#3526)
+    * fix semgrep issues for dgryski.semgrep-go ruleset (#3541)
+    * Honor creation timestamp for signatures again (#3549)
+  * Features
+    * Adds Support for Fulcio Client Credentials Flow, and Argument to Set Flow Explicitly (#3578)
+  * Documentation
+    * add oci bundle spec (#3622)
+    * Correct help text of triangulate cmd (#3551)
+    * Correct help text of verify-attestation policy argument (#3527)
+    * feat: add OVHcloud MPR registry tested with cosign (#3639) (forwarded request 1167810 from msmeissn)</comment>
+    <requestid>1167811</requestid>
+  </revision>
 </revisionlist>
