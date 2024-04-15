@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Fri Apr 12 17:09:51 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add Conflicts for completion subpackages
+
+-------------------------------------------------------------------
+Thu Apr 11 13:17:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- fix version output of kubectl binary
+
+-------------------------------------------------------------------
+Sat Mar 16 18:18:05 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- update to version 4.15.0:
+  no changelog available, apparently
+
+-------------------------------------------------------------------
+Sat Jan 27 21:05:14 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add completions for kubectl that are actually usable
+
+-------------------------------------------------------------------
+Mon Jan  8 13:32:41 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package oc: the openshift command line utility

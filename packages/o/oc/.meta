@@ -1,0 +1,8 @@
+<package name="oc" project="openSUSE:Factory">
+  <title>OpenShift CLI</title>
+  <description>CLI for OpenShift or OKD kubernetes clusters, includes a kubectl binary
+
+With OpenShift Client CLI (oc), you can create applications and manage OpenShift resources. It is built on top of kubectl which means it provides its full capabilities to connect with any kubernetes compliant cluster, and on top adds commands simplifying interaction with an OpenShift cluster.</description>
+  <devel project="devel:kubic" package="oc"/>
+  <url>https://github.com/openshift/oc</url>
+</package>
