@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 10 06:06:05 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Update to trunk head, 109f1b28fc94c93096506e3df0c25e331, git9885
+- Package Modula-2 info files.
+- Install/Remove Modula-2 and D info files.
+
+-------------------------------------------------------------------
+Tue Apr  9 13:41:50 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Add gcc13-pr101523.patch to avoid combine spending too much
+  compile-time and memory doing nothing on s390x.  [boo#1188441]
+
+-------------------------------------------------------------------
 Wed Mar 27 12:13:22 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Update to trunk head, 0b02da5b99e89347f5f8bf875ec8318f84, git9687

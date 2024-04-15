@@ -40,4 +40,17 @@
 - Remove timezone Recommends from the libstdc++6 package.  [boo#1221601]</comment>
     <requestid>1163280</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>62e4e723ad849b285735882f126b7d1a</srcmd5>
+    <version>14.0.1+git9885</version>
+    <time>1713204676</time>
+    <user>anag+factory</user>
+    <comment>- Update to trunk head, 109f1b28fc94c93096506e3df0c25e331, git9885
+- Package Modula-2 info files.
+- Install/Remove Modula-2 and D info files.
+
+- Add gcc13-pr101523.patch to avoid combine spending too much
+  compile-time and memory doing nothing on s390x.  [boo#1188441]</comment>
+    <requestid>1166762</requestid>
+  </revision>
 </revisionlist>

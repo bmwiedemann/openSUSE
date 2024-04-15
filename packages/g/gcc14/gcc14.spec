@@ -206,7 +206,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        14.0.1+git9687
+Version:        14.0.1+git9885
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -384,6 +384,7 @@ Patch15:        gcc7-avoid-fixinc-error.diff
 Patch16:        gcc9-reproducible-builds.patch
 Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch19:        gcc11-gdwarf-4-default.patch
+Patch20:        gcc13-pr101523.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -2360,6 +2361,7 @@ ln -s newlib-4.4.0.20231231/newlib .
 %if %{suse_version} < 1550
 %patch -p1 -P 19
 %endif
+%patch -p1 -P 20
 %patch -P 51
 %patch -p1 -P 60 -P 61
 
@@ -3160,6 +3162,9 @@ mv %{buildroot}/%{_infodir}/gnat-style.info %{buildroot}/%{_infodir}/gnat-style%
 mv %{buildroot}/%{_infodir}/gnat_rm.info %{buildroot}/%{_infodir}/gnat_rm%{binsuffix}.info
 mv %{buildroot}/%{_infodir}/gnat_ugn.info %{buildroot}/%{_infodir}/gnat_ugn%{binsuffix}.info
 %endif
+%if %{build_m2}
+mv %{buildroot}/%{_infodir}/m2.info %{buildroot}/%{_infodir}/m2%{binsuffix}.info
+%endif
 
 cd ..
 %find_lang cpplib%{binsuffix}
@@ -3188,6 +3193,12 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc14-locale.lang
 %install_info --info-dir=%{_infodir} %{_infodir}/gnat_rm%{binsuffix}.info.gz
 %install_info --info-dir=%{_infodir} %{_infodir}/gnat_ugn%{binsuffix}.info.gz
 %endif
+%if %{build_d}
+%install_info --info-dir=%{_infodir} %{_infodir}/gdc%{binsuffix}.info.gz
+%endif
+%if %{build_m2}
+%install_info --info-dir=%{_infodir} %{_infodir}/m2%{binsuffix}.info.gz
+%endif
 
 %preun info
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/cpp%{binsuffix}.info.gz
@@ -3209,6 +3220,12 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc14-locale.lang
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/gnat-style%{binsuffix}.info.gz
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/gnat_rm%{binsuffix}.info.gz
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/gnat_ugn%{binsuffix}.info.gz
+%endif
+%if %{build_d}
+%install_info_delete --info-dir=%{_infodir} %{_infodir}/gdc%{binsuffix}.info.gz
+%endif
+%if %{build_m2}
+%install_info_delete --info-dir=%{_infodir} %{_infodir}/m2%{binsuffix}.info.gz
 %endif
 
 %files -f floatn-fixes.list
@@ -3867,6 +3884,9 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc14-locale.lang
 %endif
 %if %{build_d}
 %doc %{_infodir}/gdc%{binsuffix}.info*gz
+%endif
+%if %{build_m2}
+%doc %{_infodir}/m2%{binsuffix}.info*gz
 %endif
 
 %files -n cpp14

@@ -1,0 +1,46 @@
+From 5729ffad4db78b26f0d1f658a9fd695be5970550 Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Wed, 3 Apr 2024 12:58:26 +0200
+Subject: [PATCH] rtl-optimization/101523 - avoid re-combine after noop 2->2
+ combination
+To: gcc-patches@gcc.gnu.org
+
+The following avoids re-walking and re-combining the instructions
+between i2 and i3 when the pattern of i2 doesn't change.
+
+	PR rtl-optimization/101523
+	* combine.cc (try_combine): When the pattern of i2 doesn't
+	change do not re-start combining at i2 or an earlier insn which
+	had links or notes added.
+---
+ gcc/combine.cc | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/gcc/combine.cc b/gcc/combine.cc
+index a4479f8d836..ff25752cac4 100644
+--- a/gcc/combine.cc
++++ b/gcc/combine.cc
+@@ -4186,6 +4186,10 @@ try_combine (rtx_insn *i3, rtx_insn *i2, rtx_insn *i1, rtx_insn *i0,
+       adjust_for_new_dest (i3);
+     }
+ 
++  bool i2_unchanged = false;
++  if (rtx_equal_p (newi2pat, PATTERN (i2)))
++    i2_unchanged = true;
++
+   /* We now know that we can do this combination.  Merge the insns and
+      update the status of registers and LOG_LINKS.  */
+ 
+@@ -4752,6 +4756,9 @@ try_combine (rtx_insn *i3, rtx_insn *i2, rtx_insn *i1, rtx_insn *i0,
+   combine_successes++;
+   undo_commit ();
+ 
++  if (i2_unchanged)
++    return i3;
++
+   rtx_insn *ret = newi2pat ? i2 : i3;
+   if (added_links_insn && DF_INSN_LUID (added_links_insn) < DF_INSN_LUID (ret))
+     ret = added_links_insn;
+-- 
+2.35.3
+
