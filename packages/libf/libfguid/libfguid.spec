@@ -18,7 +18,7 @@
 
 Name:           libfguid
 %define lname	libfguid1
-Version:        20240116
+Version:        20240415
 Release:        0
 Summary:        A library for GUID/UUID data types
 License:        LGPL-3.0-or-later
@@ -29,7 +29,7 @@ Source2:        https://github.com/libyal/libfguid/releases/download/%version/li
 Source9:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libcerror) >= 20240413
 # Various notes: https://en.opensuse.org/libyal
 
 %description
@@ -45,7 +45,7 @@ A library for GUID/UUID data types. Part of the libyal family of libraries.
 %package devel
 Summary:        Development files for libfguid, a GUID/UUID data type library
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %{version}
+Requires:       %lname = %version
 
 %description devel
 A library for GUID/UUID data types.
@@ -64,19 +64,18 @@ grep '  local' config.log && exit 1
 
 %install
 %make_install
-rm -f "%{buildroot}/%{_libdir}"/*.la
+rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*
-%{_libdir}/libfguid.so.1*
+%_libdir/libfguid.so.1*
 
 %files devel
-%{_includedir}/libfguid*
-%{_libdir}/libfguid.so
-%{_libdir}/pkgconfig/libfguid.pc
-%{_mandir}/man3/libfguid.3*
+%_includedir/libfguid*
+%_libdir/libfguid.so
+%_libdir/pkgconfig/libfguid.pc
+%_mandir/man3/libfguid.3*
 
 %changelog
