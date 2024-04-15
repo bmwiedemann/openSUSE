@@ -18,7 +18,7 @@
 
 Name:           libcerror
 %define lname	libcerror1
-Version:        20240101
+Version:        20240413
 Release:        0
 Summary:        Library for C error functions
 License:        LGPL-3.0-or-later
@@ -71,8 +71,7 @@ grep '  local' config.log && exit 1
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING.LESSER
