@@ -1857,4 +1857,15 @@
   * Lower default cover size for phones.</comment>
     <requestid>1164230</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>e5b819f3269726ee6234ff1e7f3741cf</srcmd5>
+    <version>1.4.39</version>
+    <time>1713205055</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.39:
+  * Fix power management inhibition.
+  * Suggest newer 'yt-dlp' dependency over 'youtube-dl'.
+  * Fix playlist encoding.</comment>
+    <requestid>1167677</requestid>
+  </revision>
 </revisionlist>

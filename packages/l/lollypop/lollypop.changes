@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 14 11:34:31 UTC 2024 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.39:
+  * Fix power management inhibition.
+  * Suggest newer 'yt-dlp' dependency over 'youtube-dl'.
+  * Fix playlist encoding.
+
+-------------------------------------------------------------------
 Tue Apr 02 18:14:10 UTC 2024 - antoine.belvire@opensuse.org
 
 - Update to version 1.4.38:
