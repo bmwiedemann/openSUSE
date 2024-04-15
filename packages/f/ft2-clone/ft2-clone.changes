@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 12 18:14:27 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.82
+  * Fixed: MIDI was actually not working in v1.81.
+  * Fixed: Possible crash on startup or on exit (related to MIDI).
+
+-------------------------------------------------------------------
 Tue Apr  9 17:41:44 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.81
