@@ -19,7 +19,7 @@
 %global parent modello
 %global subname maven-plugin
 Name:           %{parent}-%{subname}
-Version:        2.1.2
+Version:        2.3.0
 Release:        0
 Summary:        Modello Maven Plugin
 License:        Apache-2.0 AND MIT
@@ -27,8 +27,9 @@ Group:          Development/Libraries/Java
 URL:            https://codehaus-plexus.github.io/modello/modello-maven-plugin
 Source0:        https://repo1.maven.org/maven2/org/codehaus/%{parent}/%{parent}/%{version}/%{parent}-%{version}-source-release.zip
 Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
-Patch0:         modello-cli-domasxpp3.patch
-Patch1:         0001-Revert-Switch-to-codehaus-plexus-build-api-1.2.0-345.patch
+Patch0:         0001-Fix-ModelloCli-after-moving-from-Plexus-to-JSR330.patch
+Patch1:         0002-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
+Patch2:         0003-Revert-Switch-to-codehaus-plexus-build-api-1.2.0-345.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
@@ -47,7 +48,6 @@ BuildRequires:  mvn(org.codehaus.modello:modello-plugin-stax) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-xdoc) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-xpp3) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-xsd) = %{version}
-BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.codehaus.plexus:plexus:pom:)
 BuildRequires:  mvn(org.sonatype.plexus:plexus-build-api)
@@ -81,10 +81,12 @@ API documentation for %{name}.
 %setup -q -n %{parent}-%{version}
 %patch -P 0 -p1
 %patch -P 1 -p1
+%patch -P 2 -p1
 cp -p %{SOURCE1} LICENSE
 
 %pom_remove_plugin :maven-site-plugin
 %pom_remove_plugin :maven-enforcer-plugin
+%pom_remove_plugin :sisu-maven-plugin
 
 %pom_remove_dep :plexus-xml modello-core
 %pom_remove_dep :sisu-guice modello-core

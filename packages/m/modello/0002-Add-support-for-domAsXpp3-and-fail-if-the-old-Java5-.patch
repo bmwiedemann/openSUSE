@@ -1,0 +1,50 @@
+From fa4864cc12b705ce55f3a01a71096223e920dc21 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Fri, 12 Apr 2024 09:37:47 +0200
+Subject: [PATCH 2/3] Add support for domAsXpp3 and fail if the old Java5
+ parameter is used
+
+---
+ .../java/org/codehaus/modello/ModelloCli.java     | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/modello-core/src/main/java/org/codehaus/modello/ModelloCli.java b/modello-core/src/main/java/org/codehaus/modello/ModelloCli.java
+index 19144947..579f56e3 100644
+--- a/modello-core/src/main/java/org/codehaus/modello/ModelloCli.java
++++ b/modello-core/src/main/java/org/codehaus/modello/ModelloCli.java
+@@ -121,11 +121,24 @@ public class ModelloCli {
+             System.exit(1);
+         }
+ 
++        if (StringUtils.equalsIgnoreCase(javaSource, "true") || StringUtils.equalsIgnoreCase(javaSource, "false")) {
++            // The old useJava5 parameter at this position
++            System.err.println("Missing required parameter: Java Source (replacing the old \"Use Java5\" parameter)");
++
++            usage();
++
++            System.exit(1);
++        }
++
+         parameters.setProperty(ModelloParameterConstants.OUTPUT_JAVA_SOURCE, javaSource);
+ 
+         if (args.length > 6) {
+             parameters.setProperty(ModelloParameterConstants.ENCODING, args[6]);
+         }
++
++        if (args.length > 7) {
++            parameters.setProperty(ModelloParameterConstants.DOM_AS_XPP3, args[7]);
++        }
+     }
+ 
+     // ----------------------------------------------------------------------
+@@ -134,6 +147,6 @@ public class ModelloCli {
+ 
+     private static void usage() {
+         System.err.println("Usage: modello <model> <outputType> <output directory> <modelVersion> <packageWithVersion>"
+-                + "<javaSource> [<encoding>]");
++                + " <javaSource> [<encoding> [<domAsXpp3>]]");
+     }
+ }
+-- 
+2.44.0
+

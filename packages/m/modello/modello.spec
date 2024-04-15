@@ -17,7 +17,7 @@
 
 
 Name:           modello
-Version:        2.1.2
+Version:        2.3.0
 Release:        0
 Summary:        Modello Data Model toolkit
 License:        Apache-2.0 AND MIT
@@ -26,28 +26,33 @@ URL:            https://codehaus-plexus.github.io/modello
 Source0:        https://repo1.maven.org/maven2/org/codehaus/%{name}/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
 Source100:      %{name}-build.tar.xz
-Patch0:         modello-cli-domasxpp3.patch
-Patch1:         0001-Revert-Switch-to-codehaus-plexus-build-api-1.2.0-345.patch
+Patch0:         0001-Fix-ModelloCli-after-moving-from-Plexus-to-JSR330.patch
+Patch1:         0002-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
+Patch2:         0003-Revert-Switch-to-codehaus-plexus-build-api-1.2.0-345.patch
 BuildRequires:  ant
 BuildRequires:  aopalliance
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  google-guice
 BuildRequires:  guava
+BuildRequires:  javadoc-parser
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsoup
+BuildRequires:  objectweb-asm
 BuildRequires:  plexus-build-api
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-containers-component-annotations
-BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
+BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
+BuildRequires:  slf4j
 BuildRequires:  unzip
 Requires:       aopalliance
 Requires:       atinject
 Requires:       google-guice
 Requires:       guava
+Requires:       javadoc-parser
 Requires:       javapackages-tools
 Requires:       plexus-build-api
 Requires:       plexus-classworlds
@@ -56,6 +61,7 @@ Requires:       plexus-utils
 Requires:       plexus-xml
 Requires:       sisu-inject
 Requires:       sisu-plexus
+Requires:       slf4j
 BuildArch:      noarch
 
 %description
@@ -78,16 +84,14 @@ API documentation for %{name}.
 %setup -q -a100
 %patch -P 0 -p1
 %patch -P 1 -p1
+%patch -P 2 -p1
 cp -p %{SOURCE1} LICENSE
 
 %pom_remove_plugin :maven-site-plugin
 %pom_remove_plugin :maven-enforcer-plugin
 
-%pom_remove_dep :plexus-xml modello-core
 %pom_remove_dep :sisu-guice modello-core
 %pom_add_dep com.google.inject:guice modello-core
-
-%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 modello-core
 
 %pom_remove_dep :jackson-bom
 
@@ -109,12 +113,10 @@ mkdir -p lib
 build-jar-repository -s lib \
     aopalliance \
     atinject \
-    commons-cli \
     guava/guava \
     guice/google-guice \
-    jdom2/jdom2 \
+    javadoc-parser \
     jsoup \
-    objectweb-asm/asm \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
     plexus/classworlds \
@@ -123,8 +125,7 @@ build-jar-repository -s lib \
     plexus/utils \
     plexus/xml \
     plexus-containers/plexus-component-annotations \
-    plexus-metadata-generator \
-    qdox
+    slf4j/api
 
 %{ant} \
   -Dtest.skip=true \
@@ -171,7 +172,7 @@ done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # script
-%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:org.eclipse.sisu.plexus:org.eclipse.sisu.inject:google-guice:aopalliance:atinject:plexus-containers/plexus-component-annotations:plexus/classworlds:plexus/utils:plexus/xml:plexus/plexus-build-api:guava %{name} true
+%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:objectweb-asm:org.eclipse.sisu.plexus:org.eclipse.sisu.inject:javadoc-parser:google-guice:aopalliance:atinject:plexus-containers/plexus-component-annotations:plexus/classworlds:plexus/utils:plexus/xml:plexus/plexus-build-api:guava:slf4j/api:slf4j/simple %{name} true
 
 %files -f .mfiles
 %license LICENSE

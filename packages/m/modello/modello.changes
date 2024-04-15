@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Apr 14 06:13:08 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstrem version 2.3.0
+  * Changes of version 2.3.0
+    + Kill off dead Plexus
+    + Fix for #366
+  * Changes of version 2.2.0
+    + Parse javadoc tags in xdoc generator (only @since is supported
+      atm)
+    + Use generic in Xpp3Reader for JDK 5+
+    + Get rid of usage deprecated Reader/WriterFactory
+    + Make spotless plugin work with Java 21
+    + Support java source property being discovered as 1.x
+    + Fix thread safety issues by not using singletons for
+      generators
+    + Improve discovering javaSource based on maven.compiler
+      properties, default as 8
+    + Switch Plexus Annotation to JSR-330
+    + Make spotless plugin work with Java 21
+- Modified patches:
+  * 0001-Revert-Switch-to-codehaus-plexus-build-api-1.2.0-345.patch
+    -> 0003-Revert-Switch-to-codehaus-plexus-build-api-1.2.0-345.patch
+  * modello-cli-domasxpp3.patch ->
+    0002-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
+    + rediff to changed context
+- Added patch:
+  * 0001-Fix-ModelloCli-after-moving-from-Plexus-to-JSR330.patch
+    + Fix for https://github.com/codehaus-plexus/modello/issues/434
+      submitted upstream
+
+-------------------------------------------------------------------
 Tue Apr  2 17:32:12 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on plexus-xml where relevant
