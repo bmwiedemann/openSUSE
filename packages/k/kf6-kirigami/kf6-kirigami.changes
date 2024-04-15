@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:52:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * update version for new release
+  * PromptDialog: Demote wrapper item from Control to Padding
+  * ListSectionHeader: Clean up and expand docs, add import alias for Controls
+  * PlatformTheme: Note where the disabled text color comes from
+  * ImageColors: make sure QML attached object is fetched from main thread
+  * Clarify that the default alignment for ActionToolbar is AlignLeft
+  * Fix up qualified properties access and doc examples, use appropriate enum
+    for TextEdit
+  * ContextualHelpButton: Fix up code style and qualified property access
+  * ContextualHelpButton: Use a specific and appropriate type for a property
+  * ContextualHelpButton: Sort out imports and improve docs
+  * padding: make sure to polish on completion (kde#477978)
+  * PlaceholderMessage: remove bad example using it as a loading indicator
+  * ContextualHelpButton: fix translated string usage
+  * Adopt ContextualHelpButton
+  * ApplicationItem & ApplicationWindow: Don't reserve space for overlaid vkbd
+  * ColumnView: Disable invisible (out-of-viewport) pages
+  * Make global drawer item keyboard navigable
+  * Respect QT_NO_XDG_DESKTOP_PORTAL (kde#482730)
+  * ColumnView: Add check args to clamp
+  * ColumnView: Use OutExpo for page animation
+  * Fix separator of OverlayDrawer in the header bar
+  * ScrollablePage: Workaround Qt flickable inertia being really low See
+  * Add Position paramenter for InlineMessage
+  * Handle URL inputs for pushDialogLayer (kde#481623)
+  * InlineMessage: Fix showing close button
+  * Handle null drawer as well
+  * Fix footer in layers (kde#480428)
+
+-------------------------------------------------------------------
 Wed Feb 21 19:27:58 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.0
