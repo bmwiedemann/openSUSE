@@ -17,13 +17,14 @@
 
 
 Name:           symbols-only-nerd-fonts
-Version:        3.1.1
+Version:        3.2.1
 Release:        0
 Summary:        A glyphs-only version of Nerd Fonts
-License:        MIT
+License:        Apache-2.0 AND CC-BY-4.0 AND MIT AND OFL-1.1-no-RFN AND SUSE-Freeware
 Group:          System/X11/Fonts
 URL:            https://github.com/ryanoasis/nerd-fonts
-Source:         https://github.com/ryanoasis/nerd-fonts/releases/download/v%{version}/NerdFontsSymbolsOnly.tar.xz
+Source:         %{url}/releases/download/v%{version}/NerdFontsSymbolsOnly.tar.xz#/%{name}-%{version}.tar.xz
+Source10:       https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v%{version}/license-audit.md
 BuildRequires:  fontpackages-devel
 BuildArch:      noarch
 %reconfigure_fonts_prereq
@@ -37,16 +38,18 @@ This package only contains the symbols without including a base font.
 
 %build
 
+%check
+
 %install
 install -d %{buildroot}%{_ttfontsdir} %{buildroot}%{_docdir}/%{name} %{buildroot}%{_licensedir}/%{name}
 install -m644 *.ttf %{buildroot}%{_ttfontsdir}
-install -m644 README.md %{buildroot}%{_docdir}/%{name}
+install -m644 -t %{buildroot}%{_docdir}/%{name} README.md %{SOURCE10}
 install -m644 LICENSE %{buildroot}%{_licensedir}/%{name}
 
 %reconfigure_fonts_scriptlets
 
 %files
-%doc README.md
+%doc README.md license-audit.md
 %license LICENSE
 %{_ttfontsdir}
 

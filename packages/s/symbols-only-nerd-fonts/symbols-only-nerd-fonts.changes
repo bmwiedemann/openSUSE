@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Apr 13 02:07:18 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Fix URL for license-audit.md
+- Update to 3.2.1
+  * Reorder some FontAwesome glyphs
+    - EE00 - EE0B shifted to EFC3 - EFCE
+    - F0E6 shifted to EFC2
+    - swap F219 with F29F and F167 with F16A
+
+-------------------------------------------------------------------
+Sun Apr  7 01:35:16 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Install license-audit.md and obtain as source.
+- Fix licenses to those mentioned in upstream's license-audit.md
+- Update to 3.2.0
+  * Add Ada icon
+  * Add Astro icon
+  * Add inverse Powerline arrow heads
+  * Add Prettier icon
+  * Update Codicons to 0.0.35
+  * Update Font Awesome to 6.5.1
+  * Update Font Logos to 1.2.0
+
+-------------------------------------------------------------------
 Mon Jan 29 17:05:57 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 3.1.1
@@ -10,6 +34,7 @@ Mon Jan 29 17:05:57 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
   - Update Font Logos to v1.1.1
  * Features
   - Update Windows icon to Windows 11
+
 -------------------------------------------------------------------
 Tue Jun  6 04:40:20 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 

@@ -15,4 +15,27 @@
     <comment></comment>
     <requestid>1142606</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>34f35e4d7e05f1ac17d5644d4187b048</srcmd5>
+    <version>3.2.1</version>
+    <time>1713205019</time>
+    <user>anag+factory</user>
+    <comment>- Fix URL for license-audit.md
+- Update to 3.2.1
+  * Reorder some FontAwesome glyphs
+    - EE00 - EE0B shifted to EFC3 - EFCE
+    - F0E6 shifted to EFC2
+    - swap F219 with F29F and F167 with F16A
+- Install license-audit.md and obtain as source.
+- Fix licenses to those mentioned in upstream's license-audit.md
+- Update to 3.2.0
+  * Add Ada icon
+  * Add Astro icon
+  * Add inverse Powerline arrow heads
+  * Add Prettier icon
+  * Update Codicons to 0.0.35
+  * Update Font Awesome to 6.5.1
+  * Update Font Logos to 1.2.0</comment>
+    <requestid>1167506</requestid>
+  </revision>
 </revisionlist>
