@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 13 09:52:36 UTC 2024 - christophe@krop.fr
+
+- Update to version 1.2.1:
+  * Better shellcheck tooling
+  * Use 1.2.99 for the Version in the development branch while
+    not releasing.
+  * Update ChangeLog
+  * Adapt the script the places the _MANUALPAGE and _USAGE
+    sections to handle the new quotes
+  * Quote all _MANUALPAGE and _USAGE openers to interpret them
+    as literals
+  * Made slightly misleading command example easier to
+    understand. (Hopefully)
+
+-------------------------------------------------------------------
 Thu Feb 01 09:48:12 UTC 2024 - sflees@suse.de
 
 - Update to version 1.2.0+20240130:
@@ -14,17 +29,17 @@ Tue Jan 30 03:49:59 UTC 2024 - Simon Lees <sflees@suse.de>
   * tests: Fix quoting issues in t-xdg-open.sh
   * xdg-open: Added a reporting issues section to xdg-open in the hopes
     that more issues will be attributed correctly
-  * xdg-mime: Added a secutity note on xdg-mime default to warn against confusing 
+  * xdg-mime: Added a secutity note on xdg-mime default to warn against confusing
     openers and runners
   * xdg-open: Added paragraph explaining the wiered return behaviour of xdg-open
   * xdg-email: shellcheck
   * xdg-mime: shellcheck
   * xdg-settings:  Add support for deeping-desktop browser setting in
     xdg-settings.
-  * all: Fix config.status warning about ignored --datarootdir setting 
+  * all: Fix config.status warning about ignored --datarootdir setting
   * all: Shellchecked xdg-utils-common.in
   * xdg-open: shellcheck
-  * xdg-mime: Create a generic implementation for KDE 
+  * xdg-mime: Create a generic implementation for KDE
   * all: Move to markdown for README's
   * xdg-mime: Improve Documentation around query file/default
   * xdg-open: Document not handling '-' at the start of filenames
@@ -33,7 +48,7 @@ Tue Jan 30 03:49:59 UTC 2024 - Simon Lees <sflees@suse.de>
   * xdg-open: use LC_ALL=C with URLs
   * xdg-open: Fix URI/URL handling
   * xdg-email: Remove default BROWSER logic, no longer needed
-  * xdg-mime: Improve synopsis 
+  * xdg-mime: Improve synopsis
   * xdg-settings: read KDE browser settings the right way around
   * xdg-open: Improve WSL support
   * xdg-mime: actually handle lists in mimeapps.list correctly
@@ -67,7 +82,7 @@ Fri Sep 29 08:50:42 UTC 2023 - Simon Lees <sflees@suse.de>
   * xdg-mime: If mimeapps.list is a symlink, retain the symlink (#7)
   * xdg-open: fix search_desktop_file's logic
   * xdg-open: handle local hostname in `file:` URLs
-  * xdg-desk-menu: Check if defaults file exists during installation 
+  * xdg-desk-menu: Check if defaults file exists during installation
   * xdg-su: Remove quotes for lxqt-sudo cmd arg
   * xdg-open: handle opening files when DE=flatpak
 
@@ -113,7 +128,7 @@ Mon Aug 30 08:54:16 UTC 2021 - jslaby@suse.cz
 -------------------------------------------------------------------
 Sat Apr 24 12:51:58 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
-- Add support-deepin-desktop.patch 
+- Add support-deepin-desktop.patch
 
 -------------------------------------------------------------------
 Wed Dec 30 15:09:47 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
@@ -206,9 +221,9 @@ Tue Nov 15 00:26:14 UTC 2016 - sflees@suse.de
 
 - Update to 20160610
   * Fixes for last update
-- boo#1004321 desktop files with a - are still valid, issue in 
+- boo#1004321 desktop files with a - are still valid, issue in
   common-vendor-dirs-in-desktop_to_binary.patch
-- boo#959912 Introduce LXQt support, renamed 
+- boo#959912 Introduce LXQt support, renamed
   fix-enlightenment-support.patch to fix-enlightenment-lxqt-support.patch
 
 -------------------------------------------------------------------
@@ -222,7 +237,7 @@ Fri May 20 04:54:39 UTC 2016 - sflees@suse.de
 - Fix issues related to xdg-open/xdg-mime generic code paths.
   * common-vendor-dirs-in-desktop_to_binary.patch
   * xdg-mime-return-existing-desktop-files.patch
-  
+
 -------------------------------------------------------------------
 Sat Feb  6 11:12:43 UTC 2016 - sor.alexei@meowr.ru
 
@@ -250,7 +265,7 @@ Sun Dec  6 10:23:11 UTC 2015 - jslaby@suse.com
 Thu Dec  3 17:08:12 UTC 2015 - ronisbr@gmail.com
 
 - Add patch `xdg-terminal-fix-gsettings.patch` to fix upstream
-  bfo#93231 
+  bfo#93231
 
 -------------------------------------------------------------------
 Tue Nov  3 10:55:15 UTC 2015 - jslaby@suse.com
@@ -421,7 +436,7 @@ Tue Jan 20 12:14:38 UTC 2015 - jslaby@suse.com
 -------------------------------------------------------------------
 Sun Dec 28 08:43:50 UTC 2014 - simon@simotek.net
 
-- add fix-enlightenment-support.patch 
+- add fix-enlightenment-support.patch
   * xdg-su and xdg-terminal both detected enlightenment then did nothing
   * xdg-su and xdg-terminal both use terminology rather then xterm now
 
@@ -532,12 +547,12 @@ Tue Jul 20 21:21:59 UTC 2010 - reddwarf@opensuse.org
 -------------------------------------------------------------------
 Sun Mar 28 17:43:15 UTC 2010 - andrea@opensuse.org
 
-- added xdg-utils-1.0.2-bnc591714.patch to fix bnc#591714 
+- added xdg-utils-1.0.2-bnc591714.patch to fix bnc#591714
 
 -------------------------------------------------------------------
 Thu Jan 14 18:01:21 UTC 2010 - andrea@opensuse.org
 
-- added LXDE support 
+- added LXDE support
 
 -------------------------------------------------------------------
 Sun Aug 16 13:43:52 CEST 2009 - aj@suse.de
@@ -553,20 +568,20 @@ Thu Feb  7 13:13:48 CET 2008 - dmueller@suse.de
 Mon Oct 22 14:25:40 CEST 2007 - stbinner@suse.de
 
 - update to 1.0.2:
-   * SVG icons are not supported but doc still mentioned SVG 
-   * xdg-email can now be used without any e-mail address 
+   * SVG icons are not supported but doc still mentioned SVG
+   * xdg-email can now be used without any e-mail address
    * do not use mktemp without arguments, it breaks on systems with
      certain older versions of mktemp
 
 -------------------------------------------------------------------
 Thu Sep 20 18:57:34 CEST 2007 - dmueller@suse.de
 
-- fix xdg-su outside KDE/GNOME (#309164) 
+- fix xdg-su outside KDE/GNOME (#309164)
 
 -------------------------------------------------------------------
 Thu Aug 30 11:35:02 CEST 2007 - dmueller@suse.de
 
-- fix xdg-su for XFCE (#304753) 
+- fix xdg-su for XFCE (#304753)
 
 -------------------------------------------------------------------
 Tue May 22 14:25:00 CEST 2007 - dmueller@suse.de
@@ -579,7 +594,7 @@ Mon Nov  6 09:48:46 CET 2006 - dmueller@suse.de
 - update to 1.0.1:
   * Several shell syntax issues causing failures on Ubuntu 6.10
   * Spurious output on stdout when running xdg-desktop-menu
-  * Non-ascii mailto URI handling of xdg-email on non-UTF8 locales 
+  * Non-ascii mailto URI handling of xdg-email on non-UTF8 locales
     under KDE
 
 -------------------------------------------------------------------
@@ -596,5 +611,5 @@ Wed Sep 27 11:58:49 CEST 2006 - dmueller@suse.de
 -------------------------------------------------------------------
 Thu Jun 22 13:27:51 CEST 2006 - dmueller@suse.de
 
-- Initial package (TP1) 
+- Initial package (TP1)
 

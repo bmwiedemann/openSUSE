@@ -519,4 +519,41 @@ https://build.opensuse.org/request/show/121743 (forwarded request 121894 from va
     <comment></comment>
     <requestid>1143271</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>b40177ee1ac9f1f890d6af3ca1c25f05</srcmd5>
+    <version>1.2.1</version>
+    <time>1713204856</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.1:
+  * Better shellcheck tooling
+  * Use 1.2.99 for the Version in the development branch while
+    not releasing.
+  * Update ChangeLog
+  * Adapt the script the places the _MANUALPAGE and _USAGE
+    sections to handle the new quotes
+  * Quote all _MANUALPAGE and _USAGE openers to interpret them
+    as literals
+  * Made slightly misleading command example easier to
+    understand. (Hopefully)
+
+  * xdg-mime: Added a secutity note on xdg-mime default to warn against confusing
+  * all: Fix config.status warning about ignored --datarootdir setting
+  * xdg-mime: Create a generic implementation for KDE
+  * xdg-mime: Improve synopsis
+  * xdg-desk-menu: Check if defaults file exists during installation
+- Add support-deepin-desktop.patch
+- boo#1004321 desktop files with a - are still valid, issue in
+- boo#959912 Introduce LXQt support, renamed
+  bfo#93231
+- add fix-enlightenment-support.patch
+- added xdg-utils-1.0.2-bnc591714.patch to fix bnc#591714
+- added LXDE support
+   * SVG icons are not supported but doc still mentioned SVG
+   * xdg-email can now be used without any e-mail address
+- fix xdg-su outside KDE/GNOME (#309164)
+- fix xdg-su for XFCE (#304753)
+  * Non-ascii mailto URI handling of xdg-email on non-UTF8 locales
+- Initial package (TP1)</comment>
+    <requestid>1167539</requestid>
+  </revision>
 </revisionlist>

@@ -17,14 +17,13 @@
 
 
 Name:           xdg-utils
-Version:        1.2.0+20240130
+Version:        1.2.1
 Release:        0
 Summary:        Utilities to uniformly interface desktop environments
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://www.freedesktop.org/wiki/Software/xdg-utils/
-# http://portland.freedesktop.org/download/xdg-utils-%%{version}.tar.gz
-Source:         xdg-utils-%{version}.tar.xz
+Source:         https://gitlab.freedesktop.org/xdg/xdg-utils/-/archive/v%{version}/xdg-utils-v%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE install-some-more-scripts.diff jslaby@suse.cz
 Patch0:         install-some-more-scripts.diff
 BuildRequires:  make
@@ -55,7 +54,7 @@ This means that:
    environment.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
 %configure
