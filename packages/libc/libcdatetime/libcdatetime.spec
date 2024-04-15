@@ -18,7 +18,7 @@
 
 %define lname	libcdatetime1
 Name:           libcdatetime
-Version:        20240104
+Version:        20240414
 Release:        0
 Summary:        Library for C date and time functions
 License:        LGPL-3.0-or-later
@@ -29,7 +29,7 @@ Source2:        https://github.com/libyal/libcdatetime/releases/download/%versio
 Source9:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcerror) >= 20240413
 # Various notes: https://en.opensuse.org/libyal
 
 %description

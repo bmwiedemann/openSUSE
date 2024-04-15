@@ -90,4 +90,12 @@
     <comment>- Specfile modernization</comment>
     <requestid>1157903</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d9cd125557d838d14387a6616e58822b</srcmd5>
+    <version>20240414</version>
+    <time>1713205033</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240414</comment>
+    <requestid>1167635</requestid>
+  </revision>
 </revisionlist>
