@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 5.246.0
+%define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.1
+%define kpim6_version 6.0.2
 
 %bcond_without released
 Name:           ksmtp
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 Summary:        Job-based library to send email through an SMTP server
 License:        LGPL-2.1-or-later
