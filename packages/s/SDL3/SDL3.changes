@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Thu Apr 11 16:15:42 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to preview release 3.1.1
+  * Fixed a crash when rendering lots of content using the Vulkan
+    renderer
+  * Fixed text input being delivered when SDL_StartTextInput()
+    has not been called
+  * Fixed a performance regression initializing controllers on Linux
+  * Separated the joystick power state into battery status and
+    percentage
+  * Added an optional user parameter to main callback entry points
+  * Case insensitive string comparison functions are no longer
+    affected by locale
+
+-------------------------------------------------------------------
+Fri Dec  2 21:18:51 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (3.0~git251.1a890808a) for build.opensuse.org

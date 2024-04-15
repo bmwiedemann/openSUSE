@@ -1,0 +1,5 @@
+<package name="SDL3" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="games" package="SDL3"/>
+</package>
