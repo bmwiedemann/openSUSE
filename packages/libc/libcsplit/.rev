@@ -149,4 +149,12 @@ Part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1139409</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e86f0e99b9ab08d97510b3840dc8b916</srcmd5>
+    <version>20240414</version>
+    <time>1713205037</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240414</comment>
+    <requestid>1167639</requestid>
+  </revision>
 </revisionlist>

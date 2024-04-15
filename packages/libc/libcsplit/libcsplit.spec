@@ -18,7 +18,7 @@
 
 Name:           libcsplit
 %define lname	libcsplit1
-Version:        20240110
+Version:        20240414
 Release:        0
 Summary:        Library for C split string functions
 License:        LGPL-3.0-or-later
@@ -29,7 +29,7 @@ Source2:        https://github.com/libyal/libcsplit/releases/download/%version/l
 Source9:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libcerror) >= 20240413
 # Various notes: https://en.opensuse.org/libyal
 
 %description
@@ -49,7 +49,7 @@ Part of the libyal family of libraries.
 %package devel
 Summary:        Development files for libcsplit, a C split string library
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %{version}
+Requires:       %lname = %version
 
 %description devel
 A library for C split string functions.
@@ -68,20 +68,19 @@ grep '  local' config.log && exit 1
 
 %install
 %make_install
-rm -f "%{buildroot}/%{_libdir}"/*.la
+rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*
-%{_libdir}/libcsplit.so.1*
+%_libdir/libcsplit.so.1*
 
 %files devel
 %license COPYING*
-%{_includedir}/libcsplit*
-%{_libdir}/libcsplit.so
-%{_libdir}/pkgconfig/libcsplit.pc
-%{_mandir}/man3/libcsplit.3*
+%_includedir/libcsplit*
+%_libdir/libcsplit.so
+%_libdir/pkgconfig/libcsplit.pc
+%_mandir/man3/libcsplit.3*
 
 %changelog
