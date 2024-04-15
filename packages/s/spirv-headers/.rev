@@ -322,4 +322,12 @@
 - Update to snapshot vulkan-sdk-1.3.275.0-19-g8b246ff</comment>
     <requestid>1156750</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>1b3dde74e07fef16a650decfa7953de4</srcmd5>
+    <version>1.6.1+sdk280</version>
+    <time>1713204849</time>
+    <user>anag+factory</user>
+    <comment>- Update to release SDK-1.3.280.0</comment>
+    <requestid>1167484</requestid>
+  </revision>
 </revisionlist>
