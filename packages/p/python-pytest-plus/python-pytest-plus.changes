@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 15 09:41:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.0:
+  * Collect pytest logs on CI
+  * Mention number of errors found
+
+-------------------------------------------------------------------
 Mon Jan 15 14:06:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.1:

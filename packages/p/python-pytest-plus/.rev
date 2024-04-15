@@ -48,4 +48,14 @@
   * Allow colon to be used in test id (#25)</comment>
     <requestid>1138875</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>41fb0f20b7f70cdc86100200a0fd0c58</srcmd5>
+    <version>0.7.0</version>
+    <time>1713205096</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.0:
+  * Collect pytest logs on CI
+  * Mention number of errors found</comment>
+    <requestid>1167783</requestid>
+  </revision>
 </revisionlist>

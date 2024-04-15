@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-plus
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        Extension for pytest to enforce minimum tests pass
 License:        MIT
