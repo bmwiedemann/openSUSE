@@ -21,7 +21,7 @@
 %if "%{flavor}" == "qt6"
 %define qt6 1
 %define pkg_suffix -qt6
-%define kf6_version 5.246.0
+%define kf6_version 6.0.0
 %define qt6_version 6.6.0
 %define library_name libKCompactDisc6
 %define so_suffix -5
@@ -34,7 +34,7 @@
 %endif
 %bcond_without released
 Name:           libkcompactdisc%{?pkg_suffix}
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 Summary:        CD drive library for KDE Platform
 License:        GPL-2.0-or-later
