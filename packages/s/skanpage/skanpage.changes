@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr  9 18:09:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.2/
+- Changes since 24.02.1:
+  * remove wrong unlock for scanning thread
+  * use qt6 syntax for parameters in signal
+  * safeguard against nullptr while saving document (kde#477439)
+  * set file dialog in PDF export view to save mode (kde#478296)
+  * fix share delegates
+  * fix error display for sharing window
+  * completely hide the device name when options are hidden
+
+-------------------------------------------------------------------
 Tue Mar 19 15:28:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.1
