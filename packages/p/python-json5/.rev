@@ -119,4 +119,14 @@ Required by the latest version of jupyter-jupyterlab-server</comment>
   * format with ruff</comment>
     <requestid>1161553</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cdebb7461d001cf25ea2a5d8d9da4bc2</srcmd5>
+    <version>0.9.25</version>
+    <time>1713205076</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.25:
+  * Explicitly specify the directory to use for the package in
+    pyproject.toml.</comment>
+    <requestid>1167722</requestid>
+  </revision>
 </revisionlist>

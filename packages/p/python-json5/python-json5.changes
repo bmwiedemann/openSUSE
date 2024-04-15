@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 15 06:16:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.25:
+  * Explicitly specify the directory to use for the package in
+    pyproject.toml.
+
+-------------------------------------------------------------------
 Mon Mar 25 20:18:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.24:
