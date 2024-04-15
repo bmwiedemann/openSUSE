@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr  9 18:08:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.2/
+- Changes since 24.02.1:
+  * Fix crash when choosing the default web engine (kde#484683)
+  * Ensure that popup windows are shown on Wayland (kde#477010)
+- Use KF6/Qt6 to build konqueror
+
+-------------------------------------------------------------------
 Tue Mar 19 15:26:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.1

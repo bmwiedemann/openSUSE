@@ -16,13 +16,15 @@
 #
 
 
+%define kf6_version 6.0.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           konqueror
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 Summary:        KDE File Manager and Browser
-# Note for legal: konqueror-17.04.2/webenginepart/autotests/webengine_testutils.h is Qt commercial OR GPL-3.0
-# but it is neither built nor installed in our package.
+# Note for legal: webenginepart/autotests/webengine_testutils.h is neither built nor installed in our package.
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/konqueror
 Source:         %{name}-%{version}.tar.xz
@@ -30,41 +32,45 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  libtidy-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KDED)
-BuildRequires:  cmake(KF5Activities)
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KDELibs4Support)
-BuildRequires:  cmake(KF5KHtml)
-BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5Su)
-BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Script)
-BuildRequires:  cmake(Qt5TextToSpeech)
-BuildRequires:  cmake(Qt5WebEngine)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  pkgconfig
+BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}
+BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
+BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
+BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
+BuildRequires:  cmake(KF6Su) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(PlasmaActivities)
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6TextToSpeech) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig(hunspell)
+BuildRequires:  pkgconfig(zlib)
 Requires:       webenginepart
-Recommends:     %{name}-plugins
+Recommends:     konqueror-plugins
 Recommends:     dolphin-part
-Obsoletes:      kde-baseapps5-libkonq < %{version}
-Provides:       kde-baseapps5-libkonq = %{version}
-Obsoletes:      kde-baseapps-libkonq < %{version}
-Provides:       kde-baseapps-libkonq = %{version}
-Obsoletes:      %{name}-libkonq < %{version}
-Provides:       %{name}-libkonq = %{version}
-Obsoletes:      kdebase4-libkonq
-Obsoletes:      libKF5Konq6 < 17.04
-Provides:       libKF5Konq6 = 17.04
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %x86_64 %{arm} aarch64 riscv64
+ExclusiveArch:  x86_64 %x86_64 aarch64 riscv64
 
 %description
 Konqueror allows you to manage your files and browse the web in a
@@ -74,11 +80,11 @@ unified interface.
 Summary:        KDE WebEngine web browser component
 
 %description -n webenginepart
-This package contains a HTML rendering engine for Konqueror that is based on QtWebEngine.
+This package contains a HTML rendering engine for Konqueror using Qt web engine.
 
 %package -n konqueror-plugins
 Summary:        KDE File Manager and Browser
-Requires:       %{name} = %{version}
+Requires:       konqueror = %{version}
 Obsoletes:      fsview5 < %{version}
 Provides:       fsview5 = %{version}
 Obsoletes:      konqueror5-plugins < %{version}
@@ -89,13 +95,7 @@ These plugins extend the functionality of Konqueror.
 
 %package  devel
 Summary:        KDE Konqueror Libraries: Build Environment
-Requires:       %{name} = %{version}
-Obsoletes:      kdebase4-devel
-# FIXME 4.x variants of DBus interfaces need to go to devel package
-Obsoletes:      kde-baseapps5-devel < %{version}
-Provides:       kde-baseapps5-devel = %{version}
-Obsoletes:      kde-baseapps-devel < %{version}
-Provides:       kde-baseapps-devel = %{version}
+Requires:       konqueror = %{version}
 Obsoletes:      libkonq-devel < %{version}
 Provides:       libkonq-devel = %{version}
 
@@ -108,159 +108,112 @@ Development package for the konqueror libraries.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+# No webkit anymore
+rm -r %{buildroot}%{_kf6_plugindir}/kwebkitpart
+
+%find_lang %{name} --with-html --all-name
 
 %ldconfig_scriptlets
 %ldconfig_scriptlets -n konqueror-plugins
 
 %files
 %license LICENSES/*
-%config %{_kf5_configdir}/autostart/konqy_preload.desktop
-%{_kf5_debugdir}/konqueror.categories
-%dir %{_kf5_sharedir}/konqsidebartng
-%dir %{_kf5_sharedir}/konqsidebartng/entries
-%dir %{_kf5_sharedir}/kcontrol
-%dir %{_kf5_sharedir}/kcontrol/pics
-%dir %{_kf5_plugindir}/konqueror_kcms
-%doc %lang(en) %{_kf5_htmldir}/en
-%{_datadir}/kcmcss/
-%{_kf5_applicationsdir}/kfmclient.desktop
-%{_kf5_applicationsdir}/kfmclient_dir.desktop
-%{_kf5_applicationsdir}/kfmclient_html.desktop
-%{_kf5_applicationsdir}/kfmclient_war.desktop
-%{_kf5_applicationsdir}/konqbrowser.desktop
-%{_kf5_applicationsdir}/bookmarks.desktop
-%{_kf5_applicationsdir}/kcm_bookmarks.desktop
-%{_kf5_applicationsdir}/org.kde.konqueror.desktop
-%{_kf5_appstreamdir}/org.kde.konqueror.appdata.xml
-%{_kf5_bindir}/kfmclient
-%{_kf5_bindir}/konqueror
-%{_kf5_configkcfgdir}/konqueror.kcfg
-%{_kf5_configdir}/useragenttemplatesrc
-%{_kf5_datadir}/kbookmark/
-%{_kf5_dbusinterfacesdir}/org.kde.Konqueror.Main.xml
-%{_kf5_dbusinterfacesdir}/org.kde.Konqueror.MainWindow.xml
-%{_kf5_iconsdir}/hicolor/*/*/konqueror.*
-%{_kf5_libdir}/libKF5Konq.so.*
-%{_kf5_libdir}/libkdeinit5_kfmclient.so
-%{_kf5_libdir}/libkdeinit5_konqueror.so
-%{_kf5_libdir}/libkonquerorprivate.so.*
-%{_kf5_plugindir}/konqueror_kcms/kcm_bookmarks.so
-%{_kf5_plugindir}/konqueror_kcms/kcm_konq.so
-%{_kf5_plugindir}/konqueror_kcms/kcm_performance.so
-%{_kf5_plugindir}/konqueror_kcms/khtml_appearance.so
-%{_kf5_plugindir}/konqueror_kcms/khtml_behavior.so
-%{_kf5_plugindir}/konqueror_kcms/khtml_cache.so
-%{_kf5_plugindir}/konqueror_kcms/khtml_filter.so
-%{_kf5_plugindir}/konqueror_kcms/khtml_general.so
-%{_kf5_plugindir}/konqueror_kcms/khtml_java_js.so
-%{_kf5_plugindir}/konqueror_kcms/khtml_tabs.so
-%{_kf5_plugindir}/konqueror_kcms/khtml_useragent.so
-%{_kf5_servicesdir}/org.kde.konqueror.desktop
-%{_kf5_sharedir}/kconf_update/webenginepart.upd
-%{_kf5_sharedir}/kcontrol/pics/onlyone.png
-%{_kf5_sharedir}/kcontrol/pics/overlapping.png
-%{_kf5_sharedir}/konqueror/
+%config %{_kf6_configdir}/autostart/konqy_preload.desktop
+%{_kf6_sharedir}/kcontrol/
+%doc %lang(en) %{_kf6_htmldir}/en
+%{_kf6_applicationsdir}/bookmarks.desktop
+%{_kf6_applicationsdir}/kcm_bookmarks.desktop
+%{_kf6_applicationsdir}/kfmclient.desktop
+%{_kf6_applicationsdir}/kfmclient_dir.desktop
+%{_kf6_applicationsdir}/kfmclient_html.desktop
+%{_kf6_applicationsdir}/kfmclient_war.desktop
+%{_kf6_applicationsdir}/konqbrowser.desktop
+%{_kf6_applicationsdir}/org.kde.konqueror.desktop
+%{_kf6_appstreamdir}/org.kde.konqueror.appdata.xml
+%{_kf6_bindir}/kfmclient
+%{_kf6_bindir}/konqueror
+%{_kf6_configdir}/useragenttemplatesrc
+%{_kf6_configkcfgdir}/konqueror.kcfg
+%{_kf6_datadir}/kbookmark/
+%{_kf6_dbusinterfacesdir}/org.kde.Konqueror.Main.xml
+%{_kf6_dbusinterfacesdir}/org.kde.Konqueror.MainWindow.xml
+%{_kf6_debugdir}/konqueror.categories
+%{_kf6_iconsdir}/hicolor/*/*/konqueror.*
+%{_kf6_libdir}/libKF6Konq.so.*
+%{_kf6_libdir}/libkonquerorprivate.so.*
+%dir %{_kf6_plugindir}/konqueror_kcms
+%{_kf6_plugindir}/konqueror_kcms/kcm_bookmarks.so
+%{_kf6_plugindir}/konqueror_kcms/kcm_history.so
+%{_kf6_plugindir}/konqueror_kcms/kcm_konq.so
+%{_kf6_plugindir}/konqueror_kcms/kcm_performance.so
+%{_kf6_plugindir}/konqueror_kcms/khtml_*.so
+%{_kf6_sharedir}/kcmcss/
+%{_kf6_sharedir}/kconf_update/webenginepart.upd
+%{_kf6_sharedir}/konqueror/
 
 %files -n webenginepart
-%dir %{_kf5_plugindir}/kf5/
-%dir %{_kf5_plugindir}/kf5/parts/
-%dir %{_kf5_sharedir}/webenginepart/
-%{_kf5_iconsdir}/hicolor/*/*/webengine.*
-%{_kf5_libdir}/libkwebenginepart.so
-%{_kf5_plugindir}/kf5/parts/webenginepart.so
-%{_kf5_sharedir}/webenginepart/error.html
+%{_kf6_iconsdir}/hicolor/*/*/webengine.*
+%{_kf6_libdir}/libkwebenginepart.so
+%{_kf6_plugindir}/kf6/parts/webenginepart.so
+%{_kf6_sharedir}/webenginepart/
 
 %files -n konqueror-plugins
-%config %{_kf5_configdir}/konqsidebartngrc
-%config %{_kf5_configdir}/translaterc
-%dir %{_kf5_plugindir}/kf5
-%dir %{_kf5_plugindir}/kf5/parts
-%dir %{_kf5_plugindir}/kf5/kio
-%dir %{_kf5_plugindir}/khtml
-%dir %{_kf5_plugindir}/khtml/kpartplugins
-%dir %{_kf5_plugindir}/dolphinpart
-%dir %{_kf5_plugindir}/dolphinpart/kpartplugins
-%dir %{_kf5_plugindir}/konqueror
-%dir %{_kf5_plugindir}/konqueror/kpartplugins
-%dir %{_kf5_plugindir}/kwebkitpart
-%dir %{_kf5_plugindir}/kwebkitpart/kpartplugins
-%dir %{_kf5_plugindir}/webenginepart
-%dir %{_kf5_plugindir}/webenginepart/kpartplugins
-%{_kf5_bindir}/fsview
-%{_kf5_bindir}/kcreatewebarchive
-%{_kf5_configkcfgdir}/kcreatewebarchive.kcfg
-%{_kf5_debugdir}/akregatorplugin.categories
-%{_kf5_debugdir}/fsview.categories
-%{_kf5_iconsdir}/*/*/actions/babelfish.*
-%{_kf5_iconsdir}/*/*/actions/imagegallery.png
-%{_kf5_iconsdir}/*/*/actions/webarchiver.*
-%{_kf5_iconsdir}/hicolor/*/apps/fsview.png
-%{_kf5_libdir}/libkonqsidebarplugin.so.*
-%{_kf5_plugindir}/akregatorkonqfeedicon.so
-%dir %{_kf5_plugindir}/kf5/kfileitemaction/
-%{_kf5_plugindir}/kf5/kfileitemaction/akregatorplugin.so
-%{_kf5_plugindir}/autorefresh.so
-%{_kf5_plugindir}/babelfishplugin.so
-%{_kf5_plugindir}/konqueror_kcms/kcm_history.so
-%{_kf5_plugindir}/kf5/parts/fsviewpart.so
-%{_kf5_plugindir}/kf5/parts/konq_sidebar.so
-%{_kf5_plugindir}/kf5/kio/bookmarks.so
-%{_kf5_plugindir}/khtmlsettingsplugin.so
-%{_kf5_plugindir}/konqueror_kget_browser_integration.so
-%{_kf5_plugindir}/uachangerplugin.so
-%{_kf5_plugindir}/webarchiverplugin.so
-%{_kf5_plugindir}/webarchivethumbnail.so
-%{_kf5_plugindir}/dolphinpart/kpartplugins/kimgallery.so
-%{_kf5_plugindir}/dolphinpart/kpartplugins/konq_shellcmdplugin.so
-%{_kf5_plugindir}/dolphinpart/kpartplugins/dirfilterplugin.so
-%{_kf5_plugindir}/khtml/kpartplugins/akregatorkonqfeediconkhtml_kpartplugins.so
-%{_kf5_plugindir}/khtml/kpartplugins/autorefreshkhtml_kpartplugins.so
-%{_kf5_plugindir}/khtml/kpartplugins/babelfishpluginkhtml_kpartplugins.so
-%{_kf5_plugindir}/khtml/kpartplugins/khtmlsettingspluginkhtml_kpartplugins.so
-%{_kf5_plugindir}/khtml/kpartplugins/konqueror_kget_browser_integrationkhtml_kpartplugins.so
-%{_kf5_plugindir}/khtml/kpartplugins/uachangerpluginkhtml_kpartplugins.so
-%{_kf5_plugindir}/khtml/kpartplugins/webarchiverpluginkhtml_kpartplugins.so
-%{_kf5_plugindir}/konqueror/kpartplugins/searchbarplugin.so
-%{_kf5_plugindir}/konqueror/sidebar/
-%{_kf5_plugindir}/kwebkitpart/kpartplugins/akregatorkonqfeediconkwebkitpart_kpartplugins.so
-%{_kf5_plugindir}/kwebkitpart/kpartplugins/autorefreshkwebkitpart_kpartplugins.so
-%{_kf5_plugindir}/kwebkitpart/kpartplugins/babelfishpluginkwebkitpart_kpartplugins.so
-%{_kf5_plugindir}/kwebkitpart/kpartplugins/khtmlsettingspluginkwebkitpart_kpartplugins.so
-%{_kf5_plugindir}/kwebkitpart/kpartplugins/konqueror_kget_browser_integrationkwebkitpart_kpartplugins.so
-%{_kf5_plugindir}/kwebkitpart/kpartplugins/uachangerpluginkwebkitpart_kpartplugins.so
-%{_kf5_plugindir}/kwebkitpart/kpartplugins/webarchiverpluginkwebkitpart_kpartplugins.so
-%{_kf5_plugindir}/webenginepart/kpartplugins/akregatorkonqfeediconwebenginepart_kpartplugins.so
-%{_kf5_plugindir}/webenginepart/kpartplugins/autorefreshwebenginepart_kpartplugins.so
-%{_kf5_plugindir}/webenginepart/kpartplugins/babelfishpluginwebenginepart_kpartplugins.so
-%{_kf5_plugindir}/webenginepart/kpartplugins/khtmlsettingspluginwebenginepart_kpartplugins.so
-%{_kf5_plugindir}/webenginepart/kpartplugins/konqueror_kget_browser_integrationwebenginepart_kpartplugins.so
-%{_kf5_plugindir}/webenginepart/kpartplugins/uachangerpluginwebenginepart_kpartplugins.so
-%{_kf5_plugindir}/webenginepart/kpartplugins/webarchiverpluginwebenginepart_kpartplugins.so
-%{_kf5_sharedir}/akregator/
-%{_kf5_sharedir}/kio_bookmarks/
-%{_kf5_sharedir}/konqsidebartng/entries/bookmarks.desktop
-%{_kf5_sharedir}/konqsidebartng/entries/fonts.desktop
-%{_kf5_sharedir}/konqsidebartng/entries/history.desktop
-%{_kf5_sharedir}/konqsidebartng/entries/home.desktop
-%{_kf5_sharedir}/konqsidebartng/entries/places.desktop
-%{_kf5_sharedir}/konqsidebartng/entries/remote.desktop
-%{_kf5_sharedir}/konqsidebartng/entries/root.desktop
-%{_kf5_sharedir}/konqsidebartng/entries/services.desktop
+%config %{_kf6_configdir}/konqsidebartngrc
+%config %{_kf6_configdir}/translaterc
+%{_kf6_bindir}/fsview
+%{_kf6_bindir}/kcreatewebarchive
+%{_kf6_configkcfgdir}/kcreatewebarchive.kcfg
+%{_kf6_debugdir}/akregatorplugin.categories
+%{_kf6_debugdir}/fsview.categories
+%{_kf6_iconsdir}/*/*/actions/babelfish.png
+%{_kf6_iconsdir}/*/*/actions/imagegallery.png
+%{_kf6_iconsdir}/*/*/actions/webarchiver.png
+%{_kf6_iconsdir}/hicolor/*/apps/fsview.png
+%{_kf6_libdir}/libkonqsidebarplugin.so.*
+%{_kf6_plugindir}/akregatorkonqfeedicon.so
+%{_kf6_plugindir}/autorefresh.so
+%{_kf6_plugindir}/babelfishplugin.so
+%dir %{_kf6_plugindir}/dolphinpart
+%dir %{_kf6_plugindir}/dolphinpart/kpartplugins
+%{_kf6_plugindir}/dolphinpart/kpartplugins/dirfilterplugin.so
+%{_kf6_plugindir}/dolphinpart/kpartplugins/kimgallery.so
+%{_kf6_plugindir}/dolphinpart/kpartplugins/konq_shellcmdplugin.so
+%dir %{_kf6_plugindir}/kf6/kfileitemaction/
+%{_kf6_plugindir}/kf6/kfileitemaction/akregatorplugin.so
+%{_kf6_plugindir}/kf6/kio/bookmarks.so
+%{_kf6_plugindir}/kf6/parts/fsviewpart.so
+%{_kf6_plugindir}/kf6/parts/konq_sidebar.so
+%{_kf6_plugindir}/webarchivethumbnail.so
+# webenginepart/kpartplugins/khtmlsettingspluginwebenginepart_kpartplugins.so is a symlink to this file
+%{_kf6_plugindir}/khtmlsettingsplugin.so
+%{_kf6_plugindir}/khtml/
+%dir %{_kf6_plugindir}/konqueror
+%dir %{_kf6_plugindir}/konqueror/kpartplugins
+%{_kf6_plugindir}/konqueror/kpartplugins/searchbarplugin.so
+%{_kf6_plugindir}/konqueror/sidebar/
+%{_kf6_plugindir}/konqueror_kget_browser_integration.so
+%{_kf6_plugindir}/uachangerplugin.so
+%{_kf6_plugindir}/webarchiverplugin.so
+%{_kf6_plugindir}/webenginepart/
+%{_kf6_sharedir}/akregator/
+%{_kf6_sharedir}/kio_bookmarks/
+%{_kf6_sharedir}/konqsidebartng/
 
 %files devel
-%{_kf5_cmakedir}/KF5Konq/
-%{_kf5_libdir}/libKF5Konq.so
-%{_kf5_libdir}/libkonqsidebarplugin.so
-%{_kf5_includedir}/
+%{_kf6_cmakedir}/KF6Konq/
+%{_kf6_includedir}/asyncselectorinterface.h
+%{_kf6_includedir}/*konq*.h
+%{_kf6_libdir}/libKF6Konq.so
+%{_kf6_libdir}/libkonqsidebarplugin.so
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en
 
 %changelog
