@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr  9 18:10:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.2/
+- Changes since 24.02.1:
+  * Resolve remote posts in the search box (kde#485080)
+  * In the case that login fails, fall back to showing the network error
+  * Comply with the flathub quality guidelines
+  * Add branding color
+  * Fix placeholder string in recent translation fix
+  * Fix untranslatable string, improve format
+  * Disable grouping follow notifications for now
+
+-------------------------------------------------------------------
 Wed Mar 27 08:31:06 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
 
 - Add qt6-webview dep to fix login (boo#1222024)

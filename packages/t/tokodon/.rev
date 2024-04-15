@@ -135,4 +135,12 @@
     <comment>- Add qt6-webview dep to fix login (boo#1222024)</comment>
     <requestid>1162847</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>77f3e57f8bed09dfb37c4eb3103ac8f0</srcmd5>
+    <version>24.02.2</version>
+    <time>1713205013</time>
+    <user>anag+factory</user>
+    <comment>KDE Release gear 24.02.2 (forwarded request 1166725 from krop)</comment>
+    <requestid>1167470</requestid>
+  </revision>
 </revisionlist>
