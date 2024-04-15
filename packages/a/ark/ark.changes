@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr  9 18:06:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.2/
+- Changes since 24.02.1:
+  * clirartest: drop addArgs test for RAR4
+  * clirarplugin: disable RAR4 compression method (kde#483748)
+  * Make clang-format happy
+  * Remove documentation that doesn't compile
+
+-------------------------------------------------------------------
 Tue Mar 19 15:25:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.1
