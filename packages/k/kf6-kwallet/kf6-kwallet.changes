@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:53:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * update version for new release
+  * [kwallet-query] Create QApplication before using i18n (kde#482017)
+  * Ensure correct exit status by adding returns after exits in QueryDriver
+
+-------------------------------------------------------------------
 Thu Feb 29 11:47:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Make kwalletd6 replace kwalletd5. Only one daemon can be installed.
