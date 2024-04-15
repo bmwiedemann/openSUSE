@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  9 18:09:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.2/
+- Changes since 24.02.1:
+  * Fix bug 485186:  Message Preview Pane Headers Area Lost Background (kde#485186)
+  * fix change layout when we print message
+  * Allow to change print layout when we export as pdf
+  * Rename methods
+  * Fix extract message (kde#484186)
+
+-------------------------------------------------------------------
 Tue Mar 19 15:27:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.1
