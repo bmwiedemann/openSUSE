@@ -391,6 +391,8 @@ Budgie Wallpaper Workspace Switcher is an application (applet) to show a differe
 %autosetup -p1
 
 %build
+# Handle poor vala code
+export CFLAGS="%{optflags} -Wno-error=return-type"
 %meson \
   -Dxdg-appdir=%{_distconfdir}/xdg/autostart \
   -Dwith-zeitgeist=false \
