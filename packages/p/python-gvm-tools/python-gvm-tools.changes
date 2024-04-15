@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 15 06:07:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.3.0:
+  * Ignore ruff cache from git
+  * Officially support Python 3.12
+  * Remove unused config for bandit
+  * Delete obsolete pylint config
+  * Update headers to new spdx copyright
+  * Update copyright to 2024
+
+-------------------------------------------------------------------
 Tue Feb 27 07:10:34 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Remove unneeded call to find -name '*.snap' | xargs rm

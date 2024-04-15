@@ -116,4 +116,18 @@
     <comment></comment>
     <requestid>1152066</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b47a8d666ef588c6e20a850cb3f59621</srcmd5>
+    <version>24.3.0</version>
+    <time>1713205074</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.3.0:
+  * Ignore ruff cache from git
+  * Officially support Python 3.12
+  * Remove unused config for bandit
+  * Delete obsolete pylint config
+  * Update headers to new spdx copyright
+  * Update copyright to 2024</comment>
+    <requestid>1167717</requestid>
+  </revision>
 </revisionlist>

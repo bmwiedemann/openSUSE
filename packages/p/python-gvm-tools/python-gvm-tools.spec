@@ -20,7 +20,7 @@
 %{?sle15_python_module_pythons}
 %global skip_python39 1
 Name:           python-gvm-tools
-Version:        24.1.0
+Version:        24.3.0
 Release:        0
 Summary:        Tools to control a GSM/GVM over GMP or OSP
 License:        GPL-3.0-or-later
