@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 5.246.0
+%define kf6_version 6.0.0
 %define qt6_version 6.6.0
 
 %define rname dragon
 %bcond_without released
 Name:           dragonplayer
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 Summary:        Multimedia Player
 License:        GPL-2.0-or-later
@@ -47,9 +47,9 @@ BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Phonon4Qt6)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-BuildRequires:  cmake(Phonon4Qt6)
 
 %description
 Dragon Player is a simple video player.
@@ -90,6 +90,7 @@ rm -r %{buildroot}%{_kf6_iconsdir}/oxygen
 %dir %{_kf6_sharedir}/solid/actions
 %{_kf6_sharedir}/solid/actions/dragonplayer-openaudiocd.desktop
 %{_kf6_sharedir}/solid/actions/dragonplayer-opendvd.desktop
+%{_kf6_mandir}/man1/dragon.1%{?ext_man}
 
 %files lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en/dragonplayer/
