@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Apr 13 09:32:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.0:
+  * fix: more robust go main version extraction (#2767)
+  * chore(deps): update tools to latest versions (#2768)
+  * fix: binary character in java version (#2766)
+  * chore(deps): update tools to latest versions (#2760)
+  * chore(deps): bump modernc.org/sqlite from 1.29.5 to 1.29.6
+    (#2761)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.5.6 to
+    6.5.8 (#2754)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.2 to
+    0.5.3 (#2755)
+  * chore(deps): bump github/codeql-action from 3.24.9 to 3.24.10
+    (#2756)
+  * chore(deps): bump golang.org/x/mod from 0.16.0 to 0.17.0
+    (#2751)
+  * Differentiate between JRE and JDK (#2748)
+  * chore(deps): bump golang.org/x/net from 0.23.0 to 0.24.0
+    (#2752)
+
+-------------------------------------------------------------------
 Thu Apr 04 16:55:06 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.1.1:
