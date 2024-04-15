@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Apr 13 02:01:37 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
+
+- Version 2.0.2
+  * Added a *refresh* annotation suffix for use with VCP-codes which cause multiple changes.
+  * Make manual adjustment of the ambient Light Level more accurate and responsive.
+  * Updates are sent to the VDU as sliders are dragged (rather than only on release).
+  * Fix exception on monitors that return invalid/unexpected combo-box VCP values.
+  * Fix exception on monitors with blank VCP value descriptions.
+  * When refresh is pressed, only auto adjust ambient brightness if auto-brightness is enabled.
+  * Don't automatically refresh on error, eliminate popup dialog loops.
+  * Eliminate deadlocks when exceptions occur.
+  * Cleanup the initialisation of the ddcutil-service connection.
+  * Add more caveats and limitations to the documentation.
+  * Fix manual ambient light slider when light meter is uninitialized.
+  * Promote Simple-Non-Continuous values whose metadata exceeds one-byte to two-byte Complex-NC.
+
+-------------------------------------------------------------------
 Tue Feb 27 21:11:53 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Version 2.0.1 
