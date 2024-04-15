@@ -209,4 +209,20 @@
     <comment></comment>
     <requestid>1163290</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>05f0d9562319e2e1cffb65f7ae2ecb1b</srcmd5>
+    <version>3.0.4</version>
+    <time>1713205029</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.4:
+  * Fixed an issue with django.SafeString and other classes
+    inheriting from str having read-only attribute errors
+  * The test suite was made compatible with pytest-ruff&gt;=0.3.0
+  * A `garden.yaml` file was added for use with the
+   `garden` command runner.
+  * The test suite was updated to avoid deprecated SQLALchemy APIs.
+   * The `jaraco.packaging.sphinx` documentation dependency was
+     removed.</comment>
+    <requestid>1167627</requestid>
+  </revision>
 </revisionlist>

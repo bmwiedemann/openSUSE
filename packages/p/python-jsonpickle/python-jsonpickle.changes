@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 14 08:29:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.4:
+  * Fixed an issue with django.SafeString and other classes
+    inheriting from str having read-only attribute errors
+  * The test suite was made compatible with pytest-ruff>=0.3.0
+  * A `garden.yaml` file was added for use with the
+   `garden` command runner.
+  * The test suite was updated to avoid deprecated SQLALchemy APIs.
+   * The `jaraco.packaging.sphinx` documentation dependency was
+     removed.
+
+-------------------------------------------------------------------
 Thu Mar 28 09:33:40 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Fix build error for Leap.
