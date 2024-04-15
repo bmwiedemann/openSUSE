@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:52:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * update version for new release
+  * Fix check whether RRULE UNTIL datetime is UTC
+  * Fix conversion of date-only icaltimetype to UTC QDateTime (kde#483707)
+  * MemoryCalendar: log details about duplicate events before asserting
+
+-------------------------------------------------------------------
 Wed Feb 21 19:27:47 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.0
