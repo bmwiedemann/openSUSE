@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 5.246.0
+%define kf6_version 6.0.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kbruch
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 Summary:        Application to excercise fractions
 License:        GPL-2.0-or-later
@@ -69,7 +69,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %license LICENSES/*
 %doc AUTHORS ChangeLog NEWS README
 %doc %lang(en) %{_kf6_htmldir}/en/kbruch/
-%doc %lang(en) %{_mandir}/man1/kbruch.1%{?ext_man}
+%doc %lang(en) %{_kf6_mandir}/man1/kbruch.1%{?ext_man}
 %{_kf6_applicationsdir}/org.kde.kbruch.desktop
 %{_kf6_appstreamdir}/org.kde.kbruch.appdata.xml
 %{_kf6_bindir}/kbruch
