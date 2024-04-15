@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 10 07:09:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.2:
+  + Fix fractional scaling beeing blury by setting
+    GDK_DEBUG=gl-no-fractional as default.
+  + Fix exposure times above 0.5 seconds not being displayed
+    correctly in properties.
+  + Fix page orientation from print preview dialog is not honored
+    for actual print.
+
+-------------------------------------------------------------------
 Thu Apr  4 08:16:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.1:

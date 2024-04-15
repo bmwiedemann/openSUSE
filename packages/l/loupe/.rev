@@ -72,4 +72,18 @@
     buttons. (forwarded request 1164513 from dimstar)</comment>
     <requestid>1164567</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5893d0dd20453e49ac0feb99b4b6bded</srcmd5>
+    <version>46.2</version>
+    <time>1713205084</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.2:
+  + Fix fractional scaling beeing blury by setting
+    GDK_DEBUG=gl-no-fractional as default.
+  + Fix exposure times above 0.5 seconds not being displayed
+    correctly in properties.
+  + Fix page orientation from print preview dialog is not honored
+    for actual print. (forwarded request 1166576 from dimstar)</comment>
+    <requestid>1167758</requestid>
+  </revision>
 </revisionlist>
