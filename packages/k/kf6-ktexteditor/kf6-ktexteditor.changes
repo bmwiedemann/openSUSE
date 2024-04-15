@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:52:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * update version for new release
+  * Fix argument hint placement
+  * Dont use activeView as save dialog parent (kde#484466)
+  * ensure only set stuff is saved
+  * Dont write useless entries to session config
+  * all tests work offscreen in the CI
+  * try to avoid crash in destructor
+  * try more offscreen
+  * ensure we don't crash if no view is active
+  * kateviewinternal: accept surrogate category character (kde#482864)
+  * use test mode with e.g. own temporary config files
+  * avoid using QChar constructor for key codes (kde#483631)
+  * remove obsolete option code
+  * Remove focus frame option (kde#483218)
+  * Fix duplicate folds occuring
+  * Fix support for folding in vi normal mode
+  * adapt test to hinting change
+  * Set full hinting instead to ensure the letters are aligned properly (kde#482659)
+  * try to save changes
+  * Optimize a mark-restoring condition after document reload
+
+-------------------------------------------------------------------
 Wed Feb 21 19:28:09 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.0
