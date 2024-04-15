@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr  9 18:08:32 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.2/
+- Changes since 24.02.1:
+  * Add context object to connect()
+  * Fix bug 484420:  Monochromatic icons in system tray not always used (kde#484420)
+  * Fix attachments not being automatically encrypted
+  * Fix translated shortcut
+  * Fix translated shortcut
+  * Fix extract messages (kde#484186)
+
+-------------------------------------------------------------------
 Tue Mar 19 15:26:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.1
