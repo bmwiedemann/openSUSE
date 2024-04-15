@@ -48,7 +48,7 @@ long-running applications.
 rm -frv external/
 
 %build
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || (0%{?suse_version} == 1500 && 0%{?sle_version} > 150400)
 export CFLAGS="%{optflags} -lsframe -lzstd"
 %endif
 %cmake

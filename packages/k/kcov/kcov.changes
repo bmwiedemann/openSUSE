@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 15 08:46:11 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Add -lsframe, -lzstd to build flags on Leap 15.5 and 15.6 build
+
+-------------------------------------------------------------------
 Mon Apr  1 03:44:52 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 42
