@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:53:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * update version for new release
+  * CheckIndicator: use Theme.View color, dont inherit parent
+  * delegates: Unify alignment and horizontal stretching of labels
+  * KQuickStyleItem: Replace manual loop with C++20 std::accumulate
+  * Remove unneeded CMake stuff
+  * Port away from deprecated ECMQMLModules
+  * Add type annotations to functions
+  * Qualify property lookups
+  * Use local Label component directly
+  * Use local property directly
+  * Avoid looking up non-Item properties via Item-based properties
+  * Avoid looking up non-Item properties via parent
+  * Remove unused import statements
+  * Declare dependencies on other QML modules
+  * [ToolTip] Use local Label instead of importing QQC2
+  * Completely disable animations when animations are globally disabled
+  * Localization support
+  * Add support for custom fonts in ToolButtons
+  * autotests: test TextFieldContextMenu
+  * Always use values from Kirigami.Theme as control palette (kde#479015)
+
+-------------------------------------------------------------------
 Wed Feb 21 19:28:17 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.0

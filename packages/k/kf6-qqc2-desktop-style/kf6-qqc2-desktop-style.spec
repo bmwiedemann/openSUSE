@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-qqc2-desktop-style
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define qt6_version 6.6.0
 
 %define rname qqc2-desktop-style
-# Full KF6 version (e.g. 6.0.0)
+# Full KF6 version (e.g. 6.1.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-qqc2-desktop-style
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        A Qt Quick Controls 2 Style for Desktop UIs
 License:        GPL-2.0-or-later
@@ -43,6 +43,7 @@ BuildRequires:  cmake(KF6KirigamiPlatform) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
@@ -53,6 +54,7 @@ Requires:       kf6-sonnet-imports >= %{_kf6_bugfix_version}
 # but looks better with it. By itself plasma6-workspace does not use
 # it (yet), so only install it with qt6-declarative-imports.
 Supplements:    (plasma6-workspace and qt6-declarative-imports)
+Obsoletes:      qqc2-desktop-style-lang < %{version}
 
 %description
 A Qt Quick Controls 2 style engine that uses the desktop style
@@ -67,6 +69,8 @@ This file contains cmake files to be used by projects that depend on
 qqc2-desktop-style.
 Usually not needed as it is only a runtime dependency.
 
+%lang_package
+
 %prep
 %autosetup -p1 -n %{rname}-%{version}
 
@@ -78,6 +82,8 @@ Usually not needed as it is only a runtime dependency.
 %install
 %kf6_install
 
+%find_lang %{name} --all-name --with-qt
+
 %files
 %license LICENSES/*
 %doc README.md
@@ -86,6 +92,8 @@ Usually not needed as it is only a runtime dependency.
 %{_kf6_plugindir}/kf6/kirigami/platform/org.kde.desktop.so
 %{_kf6_qmldir}/org/kde/desktop/
 %{_kf6_qmldir}/org/kde/qqc2desktopstyle/
+
+%files lang -f %{name}.lang
 
 %files devel
 %{_kf6_cmakedir}/KF6QQC2DesktopStyle/
