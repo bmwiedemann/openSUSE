@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 15 09:04:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * Fixed yaml tests running even when pyyaml is not installed
+  * Drop support for sphinx v4
+
+-------------------------------------------------------------------
 Thu Mar  7 03:31:02 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Initial release of 1.2.0 
+- Initial release of 1.2.0

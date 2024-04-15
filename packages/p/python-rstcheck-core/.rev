@@ -7,4 +7,16 @@
     <comment>- Initial release of 1.2.0</comment>
     <requestid>1155783</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7b2d0e2c864106315d23264b8330aedd</srcmd5>
+    <version>1.2.1</version>
+    <time>1713205093</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.1:
+  * Fixed yaml tests running even when pyyaml is not installed
+  * Drop support for sphinx v4
+
+- Initial release of 1.2.0</comment>
+    <requestid>1167776</requestid>
+  </revision>
 </revisionlist>

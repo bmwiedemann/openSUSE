@@ -17,7 +17,7 @@
 
 
 Name:           python-rstcheck-core
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Checks syntax of reStructuredText and code blocks nested within it
 License:        MIT
