@@ -274,4 +274,15 @@
   * Updated GitHub Actions versions.</comment>
     <requestid>1163291</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>325c13357f157b08a1a7c48695bfd483</srcmd5>
+    <version>8.15.0</version>
+    <time>1713205090</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.15.0:
+  * Rebuild wheels with QPDF 11.9.0.
+  * Relaxed dependency requirements on lxml, now that that project
+    is publishing wheels for less common platforms again.</comment>
+    <requestid>1167774</requestid>
+  </revision>
 </revisionlist>

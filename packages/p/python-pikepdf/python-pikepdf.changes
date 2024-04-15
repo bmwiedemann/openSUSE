@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 15 09:03:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.15.0:
+  * Rebuild wheels with QPDF 11.9.0.
+  * Relaxed dependency requirements on lxml, now that that project
+    is publishing wheels for less common platforms again.
+
+-------------------------------------------------------------------
 Thu Mar 28 10:43:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.14.0:
