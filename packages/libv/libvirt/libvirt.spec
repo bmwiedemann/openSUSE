@@ -337,6 +337,11 @@ Requires:       group(libvirt)
 # Needed by libvirt-guests init script.
 Requires:       gettext-runtime
 Requires:       bash-completion >= 2.0
+# virt-manager uses netcat for accessing spice and VNC servers running in
+# qemu processes. See boo#1222100 for details. Although libvirt does not
+# use netcat, it's in a good position to provide the dependency for
+# virt-manager. netcat-openbsd is a tiny package, so it's a tolerable hack.
+Requires:       netcat-openbsd
 
 %if %{with_apparmor}
 Recommends:     apparmor-abstractions
@@ -376,10 +381,6 @@ Server side daemon used to manage logs from virtual machine consoles
 %package daemon-proxy
 Summary:        Server side daemon providing libvirtd proxy
 Requires:       %{name}-libs = %{version}-%{release}
-# netcat is needed on the server side so that clients that have
-# libvirt < 6.9.0 can connect, but newer versions will prefer
-# virt-ssh-helper
-Recommends:     netcat-openbsd
 
 %description daemon-proxy
 Server side daemon providing functionality previously provided by

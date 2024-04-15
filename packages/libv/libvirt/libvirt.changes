@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 12 21:02:53 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- spec: Add 'Requires: netcat-openbsd' to libvirt-daemon-common
+  boo#1222100
+
+-------------------------------------------------------------------
 Tue Apr  2 15:03:20 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 10.2.0
