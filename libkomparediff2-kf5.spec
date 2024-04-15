@@ -1,7 +1,7 @@
 #
 # spec file for package libkomparediff2-kf5
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define rname libkomparediff2
 %bcond_without released
 Name:           libkomparediff2-kf5
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 Summary:        A library to compare files and strings
 License:        (GPL-2.0-or-later AND LGPL-2.0-or-later) AND BSD-2-Clause
