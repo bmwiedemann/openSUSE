@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:52:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * update version for new release
+  * [PopplerExtractorTest] Verify multicolumn PDF content (currently broken)
+  * [PopplerExtractorTest] Make tests data driven
+  * [PopplerExtractorTest] Move class declaration to source file
+  * plaintextextractor: autodetect encoding for text
+  * [PlainTextExtractor] Add plain text test file to coverage test
+  * [IndexerExtractorTest] Make tests data driven
+  * Add support for .mod/.s3m/.xm/.it Module Tracker formats meta data (kde#448182)
+  * plaintextextractor: Read file via QFile
+  * [PropertyInfo,TypeInfo] Move static data into scope of its class
+  * [PropertyInfo,TypeInfo] Avoid lookup from id during initilization
+  * [PropertyInfo,TypeInfo] Use QStringView for name in hash
+  * [TypeInfo] Use a hash table for faster fromName TypeInfo creation
+  * Move helper class for case-insensitive QHash lookup to separate file
+  * [TypeInfo] Make set of all types introspectable
+  * [TypeInfo] Improve performance and cleanup
+  * [TypeInfo] Add unit tests and benchmarks
+  * [TypeInfo] Extend documentation for KFileMetaData::TypeInfo
+  * [PlaintextExtractor] Fix possible truncation of last character
+  * [PlaintextExtractor] Verify handling files missing newline delimiters
+  * [PlaintextExtractor] Check countint of empty lines
+  * [IndexerExtractorTest] Actually verify content extraction is skipped
+  * [IndexerExtractorTest] Move class declaration to source file
+  * [CMake] Move mentions of KF Archive dependencies over to the extractors
+  * [CMake] Remove several leftover references to KF5
+  * Fix compilation error for krita extractor when KArchive isn't found
+
+-------------------------------------------------------------------
 Wed Feb 21 19:27:56 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.0
