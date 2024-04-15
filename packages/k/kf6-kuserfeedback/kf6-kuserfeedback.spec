@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-kuserfeedback
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 
 %define rname kuserfeedback
 
-# Full KF6 version (e.g. 6.0.0)
+# Full KF6 version (e.g. 6.1.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kuserfeedback
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        Framework for collecting feedback from application users
 License:        MIT
@@ -128,16 +128,7 @@ Conflicts:      kuserfeedback-devel
 Development files for kf6-kuserfeedback, a framework for collecting feedback from
 application users via telemetry and targeted surveys.
 
-%package lang 
-Summary:        Translations for package %{name}
-Requires:       %{name} = %{version}
-Provides:       %{name}-lang-all = %{version}
-# Same file names, needs to be fixed upstream
-Conflicts:      kuserfeedback-lang
-BuildArch:      noarch 
-
-%description lang 
-Provides translations for %{name}.
+%lang_package
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:53:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * update version for new release
+  * flatpatk: Use actual 6.6 runtime
+
+-------------------------------------------------------------------
 Tue Mar  5 11:03:30 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Move -lang conflicts to the -lang package
