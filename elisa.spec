@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 5.246.0
+%define kf6_version 6.0.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           elisa
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 Summary:        Music player and collection organizer
 License:        LGPL-3.0-or-later
@@ -31,8 +31,6 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM elisa-qtmultimedia.patch
-Patch1:         elisa-qtmultimedia.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  qt6-core-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6Baloo) >= %{kf6_version}
