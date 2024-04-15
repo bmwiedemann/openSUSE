@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:52:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * update version for new release
+  * Add missing Q_OBJECT to KCategorizedSortFilterProxyModel
+
+-------------------------------------------------------------------
 Wed Feb 21 19:28:00 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.0
