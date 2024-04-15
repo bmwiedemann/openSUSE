@@ -20,7 +20,7 @@
 
 %define lname	libcaes1
 Name:           libcaes
-Version:        20240114
+Version:        20240413
 Release:        0
 Summary:        Library for AES encryption
 License:        LGPL-3.0-or-later
@@ -29,12 +29,12 @@ URL:            https://github.com/libyal/libcaes
 Source:         https://github.com/libyal/libcaes/releases/download/%version/libcaes-alpha-%version.tar.gz
 Source2:        https://github.com/libyal/libcaes/releases/download/%version/libcaes-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %python_module devel
+BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcerror) >= 20240413
 BuildRequires:  pkgconfig(openssl) >= 1.0
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal

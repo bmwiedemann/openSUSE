@@ -182,4 +182,12 @@ part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>- Repair assertion that no bundling occurred</comment>
     <requestid>1157902</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>66e5c7fb1e127767fd4f310279a74411</srcmd5>
+    <version>20240413</version>
+    <time>1713205032</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240413</comment>
+    <requestid>1167633</requestid>
+  </revision>
 </revisionlist>
