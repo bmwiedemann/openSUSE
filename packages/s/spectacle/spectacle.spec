@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 5.246.0
+%define kf6_version 6.0.0
 %define plasma6_version 5.27.80
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           spectacle
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 Summary:        Screen Capture Program
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -114,7 +114,7 @@ screenshot capture program by KDE.
 
 %files
 %license LICENSES/*
-%doc %lang(en) %{_mandir}/man1/spectacle.1.gz
+%doc %lang(en) %{_kf6_mandir}/man1/spectacle.1%{?ext_man}
 %{_kf6_applicationsdir}/org.kde.spectacle.desktop
 %{_kf6_appstreamdir}/org.kde.spectacle.appdata.xml
 %{_kf6_bindir}/spectacle
