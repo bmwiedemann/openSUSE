@@ -18,7 +18,7 @@
 
 Name:           libfcache
 %define lname	libfcache1
-Version:        20240112
+Version:        20240414
 Release:        0
 Summary:        Library to provide generic file data cache functions
 License:        LGPL-3.0-or-later
@@ -29,9 +29,9 @@ Source2:        https://github.com/libyal/libfcache/releases/download/%version/l
 Source9:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdata) >= 20240103
-BuildRequires:  pkgconfig(libcerror) >= 20240101
-BuildRequires:  pkgconfig(libcthreads) >= 20240102
+BuildRequires:  pkgconfig(libcdata) >= 20240414
+BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libcthreads) >= 20240413
 # Various notes: https://en.opensuse.org/libyal
 
 %description
@@ -68,8 +68,7 @@ grep '  local' config.log && exit 1
 %make_install
 find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*
