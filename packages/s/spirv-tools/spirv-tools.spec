@@ -17,16 +17,16 @@
 
 
 %define _lto_cflags %nil
-%define lname libSPIRV-Tools-2024_1_rc1
+%define lname libSPIRV-Tools-2024_1
 
 Name:           spirv-tools
-Version:        2024.1~rc1
+Version:        2024.1
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Tools
-Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v2024.1.rc1.tar.gz
+Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v2024.1.tar.gz
 Source9:        baselibs.conf
 Patch1:         ver.diff
 BuildRequires:  bison
@@ -67,7 +67,7 @@ validator, and is used in the standalone tools whilst also enabling
 integration into other code bases directly.
 
 %prep
-%autosetup -p1 -n SPIRV-Tools-2024.1.rc1
+%autosetup -p1 -n SPIRV-Tools-2024.1
 find . -type f -name CMakeLists.txt -exec \
 	perl -i -pe 's{\@PACKAGE_VERSION\@}{%version}' CMakeLists.txt {} +
 
