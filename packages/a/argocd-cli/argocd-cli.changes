@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 15 11:03:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.7:
+  * fix: docker build fails due to "The repository
+    'http://deb.debian.org/debian buster-backports Release' does
+    not have a Release file."
+  * Bump version to 2.10.7 (#17831)
+  * Merge pull request from GHSA-2gvw-w6fj-7m3c
+
+-------------------------------------------------------------------
 Fri Apr 05 06:06:00 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.10.6:
