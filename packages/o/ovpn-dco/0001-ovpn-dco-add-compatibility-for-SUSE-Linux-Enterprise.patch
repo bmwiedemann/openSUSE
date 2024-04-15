@@ -1,0 +1,153 @@
+From 1410a8f45322789e6acbbf9a6f9b9dfe1ce9caa7 Mon Sep 17 00:00:00 2001
+From: Jeff Mahoney <jeffm@suse.com>
+Date: Wed, 10 Apr 2024 14:57:13 -0400
+Subject: [PATCH] ovpn-dco: add compatibility for SUSE Linux Enterprise and
+ openSUSE Leap
+
+SUSE Linux Enterprise and openSUSE Leap include backported features and
+fixes from later releases into earlier kernels similar to how RHEL does.
+
+This commit adds support for SLE and openSUSE Leap releases beginning with
+SLE15 SP2 / openSUSE Leap 15.2, both released in 2020.  SLE 12 SP5 uses
+Linux 4.12 and would require incorporating big changes in the atomics API
+introduced in Linux 4.19.
+
+openSUSE Tumbleweed tracks the latest upstream kernel and needs no
+compatibility shims.
+
+Signed-off-by: Jeff Mahoney <jeffm@suse.com>
+---
+ Makefile                   |  4 ++++
+ compat-include/net/gso.h   |  2 +-
+ drivers/net/ovpn-dco/tcp.c |  2 +-
+ linux-compat.h             | 29 ++++++++++++++++++-----------
+ 4 files changed, 24 insertions(+), 13 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index a1b8297..3db1152 100644
+--- a/Makefile
++++ b/Makefile
+@@ -18,10 +18,14 @@ DEPMOD := depmod -a
+ REVISION= $(shell	if [ -d "$(PWD)/.git" ]; then \
+ 				echo $$(git --git-dir="$(PWD)/.git" describe --always --dirty --match "v*" |sed 's/^v//' 2> /dev/null || echo "[unknown]"); \
+ 			fi)
++ifneq ("$(wildcard $(KERNEL_SRC)/include/generated/uapi/linux/suse_version.h)","")
++VERSION_INCLUDE = -include linux/suse_version.h
++endif
+ 
+ NOSTDINC_FLAGS += \
+ 	-I$(PWD)/include/ \
+ 	$(CFLAGS) \
++	$(VERSION_INCLUDE) \
+ 	-include $(PWD)/linux-compat.h \
+ 	-I$(PWD)/compat-include/
+ 
+diff --git a/compat-include/net/gso.h b/compat-include/net/gso.h
+index 2e41c8b..8f94ba7 100644
+--- a/compat-include/net/gso.h
++++ b/compat-include/net/gso.h
+@@ -11,7 +11,7 @@
+ 
+ #include <linux/version.h>
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 4, 10)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 4, 10) || SUSE_PRODUCT_CODE >= SUSE_PRODUCT(1, 15, 6, 0)
+ #include_next <net/gso.h>
+ #else
+ #include <linux/netdevice.h>
+diff --git a/drivers/net/ovpn-dco/tcp.c b/drivers/net/ovpn-dco/tcp.c
+index 929938e..e99d543 100644
+--- a/drivers/net/ovpn-dco/tcp.c
++++ b/drivers/net/ovpn-dco/tcp.c
+@@ -177,7 +177,7 @@ static void ovpn_tcp_write_space(struct sock *sk)
+ }
+ 
+ static bool ovpn_tcp_sock_is_readable(
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 15, 0) && RHEL_RELEASE_CODE < RHEL_RELEASE_VERSION(9, 0)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 15, 0) && RHEL_RELEASE_CODE < RHEL_RELEASE_VERSION(9, 0) && SUSE_PRODUCT_CODE < SUSE_PRODUCT(1, 15, 5, 0)
+ 				      const struct sock *sk
+ #else
+ 				      struct sock *sk
+diff --git a/linux-compat.h b/linux-compat.h
+index 21d47cd..26eb48f 100644
+--- a/linux-compat.h
++++ b/linux-compat.h
+@@ -14,14 +14,14 @@
+ #include <linux/version.h>
+ 
+ /*
+- *  Red Hat Enterprise Linux kernels provides helper macros for
+- *  detecting the distribution version.  This is needed here as
+- *  Red Hat backports features and changes from newer kernels
+- *  into the older kernel baseline.  Therefore the RHEL kernel
++ *  Red Hat Enterprise Linux and SUSE Linux Enterprise kernels provide
++ *  helper macros for detecting the distribution version.  This is needed
++ *  here as Red Hat and SUSE backport features and changes from newer kernels
++ *  into the older kernel baseline.  Therefore the RHEL and SLE kernel
+  *  features may not be correctly identified by the Linux kernel
+  *  version alone.
+  *
+- *  To be able to build ovpn-dco on non-RHEL kernels, we need
++ *  To be able to build ovpn-dco on non-RHEL/SLE kernels, we need
+  *  these helper macros defined.  And we want the result to
+  *  always be true, to not disable the other kernel version
+  *  checks
+@@ -33,6 +33,13 @@
+ #define RHEL_RELEASE_VERSION(m, n) 1
+ #endif
+ 
++#ifndef SUSE_PRODUCT_CODE
++#define SUSE_PRODUCT_CODE 0
++#endif
++#ifndef SUSE_PRODUCT
++#define SUSE_PRODUCT(pr, v, pl, aux) 1
++#endif
++
+ /* not part of any kernel yet */
+ #ifndef NLA_POLICY_MAX_LEN
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(5, 10, 0)
+@@ -48,7 +55,7 @@
+ 
+ #endif /* LINUX_VERSION_CODE < KERNEL_VERSION(6, 2, 0) && RHEL_RELEASE_CODE < RHEL_RELEASE_VERSION(9, 3) */
+ 
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 19, 0)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 19, 0) && SUSE_PRODUCT_CODE < SUSE_PRODUCT(1, 15, 5, 0)
+ 
+ /**
+  * commit 58caed3dacb4 renamed to netif_napi_add_tx_weight,
+@@ -56,13 +63,13 @@
+  */
+ #define netif_napi_add_tx_weight netif_tx_napi_add
+ 
+-#endif /* LINUX_VERSION_CODE < KERNEL_VERSION(5, 19, 0) */
++#endif /* LINUX_VERSION_CODE < KERNEL_VERSION(5, 19, 0) && SUSE_PRODUCT_CODE < SUSE_PRODUCT(1, 15, 5, 0) */
+ 
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 15, 0)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 15, 0) && SUSE_PRODUCT_CODE < SUSE_PRODUCT(1, 15, 5, 0)
+ 
+ #define sock_is_readable stream_memory_read
+ 
+-#endif /* LINUX_VERSION_CODE < KERNEL_VERSION(5, 15, 0) */
++#endif /* LINUX_VERSION_CODE < KERNEL_VERSION(5, 15, 0) && SUSE_PRODUCT_CODE < SUSE_PRODUCT(1, 15, 5, 0) */
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(5, 11, 0) && RHEL_RELEASE_CODE < RHEL_RELEASE_VERSION(8, 0)
+ 
+@@ -139,13 +146,13 @@ static inline void dev_sw_netstats_rx_add(struct net_device *dev, unsigned int l
+ 
+ #endif /* LINUX_VERSION_CODE < KERNEL_VERSION(5, 5, 0) */
+ 
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 0)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 0) && SUSE_PRODUCT_CODE < SUSE_PRODUCT(1, 15, 3, 0)
+ 
+ /* commit 895b5c9f206e renamed nf_reset to nf_reset_ct */
+ #undef nf_reset_ct
+ #define nf_reset_ct nf_reset
+ 
+-#endif /* LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 0) */
++#endif /* LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 0) && SUSE_PRODUCT_CODE < SUSE_PRODUCT(1, 15, 3, 0) */
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(5, 2, 0)
+ 
+-- 
+2.44.0
+

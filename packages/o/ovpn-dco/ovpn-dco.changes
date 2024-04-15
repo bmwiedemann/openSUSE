@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Fri Apr 12 16:19:12 UTC 2024 - Jeff Mahoney <jeffm@suse.com>
+
+- Added ovpn-dco-preamble as a Source file.
+- Fix spec file whitespace.
+
+-------------------------------------------------------------------
+Wed Apr 10 20:45:33 UTC 2024 - Jeff Mahoney <jeffm@suse.com> - 0.2.20240320~git0.2aa7f93
+
+- Disable builds on releases prior to SLE15 SP2 / Leap 15.2.
+
+-------------------------------------------------------------------
+Wed Apr 10 16:26:20 UTC 2024 - Jeff Mahoney <jeffm@suse.com> - 0.2.20240320~git0.2aa7f93
+
+- Initial packaging.
+- Patched for SLE/openSUSE Leap compatibility.
+- Added file:
+  - 0001-ovpn-dco-add-compatibility-for-SUSE-Linux-Enterprise.patch

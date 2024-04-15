@@ -1,0 +1,15 @@
+<package name="ovpn-dco" project="openSUSE:Factory">
+  <title>OpenVPN Data Channel Offload in the Linux kernel (ovpn-dco)</title>
+  <description>This package contains a Linux kernel module implementing the data channel of  the OpenVPN protocol in the Linux kernel.
+                                                                                 
+This kernel module allows OpenVPN to offload any data plane management to the Linux kernel, thus allowing it to exploit any Linux low level API, while avoiding expensive and slow payload transfer between kernel space and user space.
+
+** NOTE ** 
+ovpn-dco is currently under heavy development, therefore neither its userspace API nor the code itself is considered stable and may change radically over time.
+                                                                                 
+** Kernel compatibility **
+ovpn-dco is developed against the latest David Miller's net-next tree. However, a compat layer is provided to allow people to compile ovpn-dco against older kernel versions.                                                   
+</description>
+  <devel project="network:vpn" package="ovpn-dco"/>
+  <url>https://github.com/OpenVPN/ovpn-dco</url>
+</package>
