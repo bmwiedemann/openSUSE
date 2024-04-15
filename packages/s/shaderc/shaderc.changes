@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 12 17:08:42 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2024.0
+  * Explicitly use python3 in shebangs/scripts
+
+-------------------------------------------------------------------
 Fri Jan 19 13:04:49 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2023.8
