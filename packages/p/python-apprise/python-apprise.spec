@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-apprise
-Version:        1.7.5
+Version:        1.7.6
 Release:        0
 Group:          Development/Libraries/Python
 Summary:        A simple wrapper to many popular notification services used today

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 15 00:47:55 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 1.7.6:
+  Features:
+  * Chantify Support added
+  * Feishu Custom Bot Support added
+  * Added delay= switch to aprs:// plugin
+  * RocketChat Token Support
+  Bugfixes:
+  * Default locale logical compatibility with Python 3.12
+  * Fixed deprication warnings for Markdown extensions
+  * ntfy loaded topic count bugfix
+  * freemobile:// msg moved from GET parameters and into payload
+  * Honor overflow=truncate when sending attachments
+  * host parsed from user login (if present) for Emails
+
+-------------------------------------------------------------------
 Wed Apr  3 16:32:29 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 1.7.5:
