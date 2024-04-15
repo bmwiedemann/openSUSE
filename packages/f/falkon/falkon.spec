@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 5.246.0
+%define kf6_version 6.0.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           falkon
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 Summary:        Modern web browser
 License:        GPL-3.0-or-later
@@ -57,7 +57,7 @@ BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(xcb-util)
-# 2024-02-11 still fails to build with python deps
+# 2024.02.21 still fails to build with python deps
 # BuildRequires:  cmake(PySide6)
 # BuildRequires:  cmake(Shiboken6)
 # BuildRequires:  python3-devel
