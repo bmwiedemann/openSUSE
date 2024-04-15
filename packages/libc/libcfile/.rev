@@ -144,4 +144,12 @@ part of summer 2013 libyal refresh for opensuse 13.1</comment>
 - Modernize %post(un) section</comment>
     <requestid>1157906</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>499e637d04f35a2893836fd99d6a572e</srcmd5>
+    <version>20240414</version>
+    <time>1713205038</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240414</comment>
+    <requestid>1167640</requestid>
+  </revision>
 </revisionlist>
