@@ -20,7 +20,7 @@
 
 Name:           libfcrypto
 %define lname	libfcrypto1
-Version:        20240115
+Version:        20240414
 Release:        0
 Summary:        Library for encryption formats
 License:        LGPL-3.0-or-later
@@ -29,14 +29,14 @@ URL:            https://github.com/libyal/libfcrypto
 Source:         https://github.com/libyal/libfcrypto/releases/download/%version/libfcrypto-alpha-%version.tar.gz
 Source2:        https://github.com/libyal/libfcrypto/releases/download/%version/libfcrypto-alpha-%version.tar.gz.asc
 Source9:        %name.keyring
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %python_module devel
+BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.21
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcerror) >= 20240413
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 
@@ -70,7 +70,6 @@ applications that want to make use of libfcrypto.
 
 %build
 %{python_expand #
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --disable-rpath \
 	--enable-wide-character-type \
@@ -92,8 +91,7 @@ export PYTHON="$(cat lastpython)"
 # and that no longer works when using version-script
 make check || :
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*
