@@ -17,4 +17,15 @@
   * Add docstrings to functions, methods, classes, and packages</comment>
     <requestid>1135655</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b6b7e03d37ea5a01fb5331071f880961</srcmd5>
+    <version>0.0.7</version>
+    <time>1713205075</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.0.7:
+  * support pytest 8
+  * ruff related reformatting
+  * pin only new versions as legacy versions are untested</comment>
+    <requestid>1167718</requestid>
+  </revision>
 </revisionlist>

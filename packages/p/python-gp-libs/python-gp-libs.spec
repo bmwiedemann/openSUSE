@@ -1,7 +1,7 @@
 #
 # spec file for package python-gp-libs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           python-gp-libs
-Version:        0.0.5
+Version:        0.0.7
 Release:        0
 Summary:        Internal utilities for projects following git-pull python package spec
 License:        MIT
 URL:            https://gp-libs.git-pull.com
 Source:         https://files.pythonhosted.org/packages/source/g/gp-libs/gp_libs-%{version}.tar.gz
-BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module myst-parser}
+BuildRequires:  %{python_module docutils >= 0.20.1}
+BuildRequires:  %{python_module myst-parser >= 2.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.0.0}
 BuildRequires:  %{python_module wheel}
@@ -34,8 +34,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-rerunfailures}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-docutils
-Requires:       python-myst-parser
+Requires:       python-docutils >= 0.20.1
+Requires:       python-myst-parser >= 2.0.0
 BuildArch:      noarch
 %python_subpackages
 
