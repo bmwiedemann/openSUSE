@@ -34,4 +34,16 @@
 </comment>
     <requestid>1108122</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d3c858cd719789f8c4276b72357412a8</srcmd5>
+    <version>3.0</version>
+    <time>1713204861</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.0:
+  * Bump version to v3.0
+  * Cull a bunch of backgrounds
+  * Add CODEOWNERS for budgie-backgrounds
+</comment>
+    <requestid>1167018</requestid>
+  </revision>
 </revisionlist>
