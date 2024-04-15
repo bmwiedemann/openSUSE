@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr  9 18:09:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.2/
+- Changes since 24.02.1:
+  * Properly reset documentHasPassword
+  * Fix DocumentHasPassword check (kde#474888)
+  * Fix crash on closing Annot Window if spell checking is enabled (kde#483904)
+
+-------------------------------------------------------------------
 Tue Mar 19 16:08:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.1
