@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Apr  9 18:08:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.2/
+- Changes since 24.02.1:
+  * Add extractor script for Eurostar's Thalys PDF ticket variant
+  * Skip test with failing country detection on FreeBSD
+  * Add extractor script for VR mobile PDF tickets
+  * Consider berth number in VR ERA SSB ticket barcodes
+  * Fix ERA SSB date conversion
+  * Prettify data extracted from Eurostar ERA ELB barcodes
+  * Add extractor script for UK national railway pkpass files
+  * Don't override pkpass boarding pass child node results
+  * Extract Eurostar pkpass tickets
+  * Extract Eurostar PDF tickets
+  * Actually add the new Finnair extractor script
+  * fix: add amsbus e-ticket with reservation code only format
+  * fix: added the SPDX Header for `amsbus.cz` extractor
+  * Add `amsbus.cz` bus ticket extractor
+  * Add Finnair e-ticket extractor script
+  * fix: add SPDX headers
+  * fix: add moongate extractor to the .qrc list
+  * Add `moongate` event ticket extractor
+
+-------------------------------------------------------------------
 Tue Mar 19 15:26:33 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.1
