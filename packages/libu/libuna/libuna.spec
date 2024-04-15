@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package libuna
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -25,7 +25,7 @@
 %define lname libuna1
 
 Name:           libuna%psuffix
-Version:        20240130
+Version:        20240414
 Release:        0
 Summary:        Library to support Unicode and ASCII (byte string) conversions
 License:        LGPL-3.0-or-later
@@ -37,13 +37,13 @@ Source3:        libuna.keyring
 Source99:       libuna-rpmlintrc
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdatetime) >= 20240104
-BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcdatetime) >= 20240414
+BuildRequires:  pkgconfig(libcerror) >= 20240413
 %if "@BUILD_FLAVOR@" != "mini"
-BuildRequires:  pkgconfig(libcfile) >= 20240106
+BuildRequires:  pkgconfig(libcfile) >= 20240414
 %endif
-BuildRequires:  pkgconfig(libclocale) >= 20240107
-BuildRequires:  pkgconfig(libcnotify) >= 20240108
+BuildRequires:  pkgconfig(libclocale) >= 20240414
+BuildRequires:  pkgconfig(libcnotify) >= 20240414
 # Various notes: https://en.opensuse.org/libyal
 
 %description
@@ -109,8 +109,7 @@ rm -f "$b/%_libdir"/*.la
 rm -Rf "$b/%_bindir" "$b/%_mandir/man1"
 %endif
 
-%post   -n %lname%psuffix -p /sbin/ldconfig
-%postun -n %lname%psuffix -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname%psuffix
 
 %files -n %lname%psuffix
 %license COPYING
