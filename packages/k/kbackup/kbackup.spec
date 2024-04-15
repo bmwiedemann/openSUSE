@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 5.246.0
+%define kf6_version 6.0.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kbackup
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 Summary:        Backup program based on KDE Frameworks 5
 License:        GPL-2.0-only
@@ -74,7 +74,7 @@ Although GUI based, it also offers an automated, GUI-less mode.
 %license COPYING
 %doc README
 %doc %lang(en) %{_kf6_htmldir}/en/kbackup
-%doc %lang(en) %{_mandir}/man1/kbackup.1%{ext_man}
+%doc %lang(en) %{_kf6_mandir}/man1/kbackup.1%{ext_man}
 %{_datadir}/mime/packages/kbackup.xml
 %{_kf6_applicationsdir}/org.kde.kbackup.desktop
 %{_kf6_appstreamdir}/org.kde.kbackup.appdata.xml
