@@ -223,4 +223,12 @@
     <comment>- Update to release 2.26</comment>
     <requestid>1157391</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c40f06b0fc4231d59b796f834685031f</srcmd5>
+    <version>2.27</version>
+    <time>1713205049</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1167666</requestid>
+  </revision>
 </revisionlist>

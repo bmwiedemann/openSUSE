@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr  7 06:43:12 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.27
+  * email_lib: avoid splitting UTF-8 code units across lines
+  * imap: avoid emitting NIL for body-fld-lines
+  * php_mapi: expose default+anonymous ACEs to PHP programs
+  * zcore: expose new PR_EC_ENABLED_FEATURES_L property
+  * ews: implement updating folder permissions
+  * eml2mt: emit a hint if an Outlook .msg file is erroneously
+    passed to eml2mt
+
+-------------------------------------------------------------------
 Mon Mar 11 16:03:28 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.26
