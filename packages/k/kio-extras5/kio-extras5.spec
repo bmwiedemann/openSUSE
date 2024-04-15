@@ -19,7 +19,7 @@
 %define rname kio-extras-kf5
 %bcond_without released
 Name:           kio-extras5
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
