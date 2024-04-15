@@ -18,7 +18,7 @@
 
 
 Name:           difftastic
-Version:        0.56.1
+Version:        0.57.0
 Release:        0
 Summary:        A structural diff that understands syntax
 License:        Apache-2.0 AND MIT
