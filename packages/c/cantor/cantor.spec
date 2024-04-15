@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           cantor
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 Summary:        Worksheet GUI for mathematical software
 License:        GPL-2.0-or-later
