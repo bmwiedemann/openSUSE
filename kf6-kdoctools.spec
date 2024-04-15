@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-kdoctools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define qt6_version 6.6.0
 
 %define rname kdoctools
-# Full KF6 version (e.g. 6.0.0)
+# Full KF6 version (e.g. 6.1.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kdoctools
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        Tools to create documentation from DocBook
 License:        LGPL-2.1-or-later AND MIT
@@ -48,17 +48,13 @@ BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
+Provides:       kf6-kdoctools-doc = %{version}
+Obsoletes:      kf6-kdoctools-doc < %{version}
 # The XSL templates reference files in here
 Requires:       docbook-xsl-stylesheets
 
 %description
 Provides tools to generate documentation in various format from DocBook files.
-
-%package doc
-Summary:        HTML Documentation for kdoctools
-
-%description doc
-This package provides HTML documentation for kdoctools.
 
 %package -n libKF6DocTools6
 Summary:        Library to create documentation from DocBook
@@ -102,13 +98,13 @@ Development files.
 %{_kf6_datadir}/kdoctools/
 %{_kf6_bindir}/meinproc6
 %{_kf6_bindir}/checkXML6
+# The HTML files need to be in the main package or khelpcenter will have
+# display issues
+%{_kf6_htmldir}/*/
 %doc %lang(en) %{_kf6_mandir}/*/meinproc6.*
 %doc %lang(en) %{_kf6_mandir}/*/checkXML6.*
 %doc %lang(en) %{_kf6_mandir}/*/kf6options.*
 %doc %lang(en) %{_kf6_mandir}/*/qt6options.*
-
-%files doc
-%{_kf6_htmldir}/*/
 
 %files -n libKF6DocTools6
 %license LICENSES/*
