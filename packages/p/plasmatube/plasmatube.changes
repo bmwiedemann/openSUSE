@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr  9 18:09:52 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.2/
+- Changes since 24.02.1:
+  * Fix no audio in the PiP player
+  * Fix video controls touch input (kde#479976)
+  * Fix the video grid becoming unresponsive when flicking away the player (kde#480578)
+  * Restore maximized state when exiting fullscreen (kde#480851)
+  * Fix audio in certain videos no longer working
+  * Fix the video quality setting not actually doing anything (kde#475964)
+  * Fix the formats shown in the resolution box
+  * Save and load the last used source
+  * Use better picture-in-picture icon
+  * Word wrap the video description
+  * Hide view count on video grid items if it's not available
+
+-------------------------------------------------------------------
 Tue Mar 19 15:28:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.1
