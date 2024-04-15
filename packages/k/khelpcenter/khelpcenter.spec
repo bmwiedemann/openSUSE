@@ -1,7 +1,7 @@
 #
 # spec file for package khelpcenter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 5.246.0
+%define kf6_version 6.0.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           khelpcenter
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 Summary:        KDE Documentation Application
 License:        GPL-2.0-or-later

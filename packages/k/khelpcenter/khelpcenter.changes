@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr  9 18:08:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.2/
+- Changes since 24.02.1:
+  * Load documentation pages with KIO::HideProgressInfo
+  * Fix missing URL redirection implementation in web engine feeding from KIO
+  * Revert "Fix opening subpages of documentation"
+  * Fix opening subpages of documentation (kde#484176)
+  * Trigger Quirks mode for index/glossary/search HTML pages
+  * Unbreak endless invocation loop with "info" pages (kde#484977)
+  * Glossary pages: fix broken styling
+  * Fix outdated use of kdoctools5-common resources, kdoctools6-common now
+  * Contents & Glossary list: always activate entry on single click
+
+-------------------------------------------------------------------
 Tue Mar 19 16:04:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.1
