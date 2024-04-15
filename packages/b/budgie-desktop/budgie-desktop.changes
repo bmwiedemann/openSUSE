@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr 10 15:21:11 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 10.9.1+9:
+  * Disable C compiler warnings entirely
+  * daemon/notifications: Fix default notification action being
+    performed
+  * Use Enum DOWN instead of LEFT to scroll in a left-wards
+    direction
+  * Add am_cflags to ignore poorly generated C code from vala
+  * vapi: Update libxfce4windowing to 4.19.3
+  * Work around even more SNI noncompliance
+  * fix: workspace applet window icon click not performing
+    workspace switch
+  * fix: set budgie run dialog to skip pager and taskbar
+  * Update to 10.9.1
+  * Update translations for 10.9.1 release
+  * Create a man page for the sendto executable
+
+-------------------------------------------------------------------
 Thu Feb 15 17:51:15 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use magpie on Leap 15.6 aswell

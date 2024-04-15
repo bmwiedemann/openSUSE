@@ -2,9 +2,9 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/BuddiesOfBudgie/budgie-desktop.git</param>
-    <param name="revision">00ed13f242a663be720a25d0dfdf16ac83140813</param>
+    <param name="revision">bfab2ff411692404c318212c18b06a553f046e5a</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-pattern">v?(.*)|\+0</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="tar" mode="buildtime"/>
