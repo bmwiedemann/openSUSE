@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:53:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * update version for new release
+
+-------------------------------------------------------------------
 Sat Mar  9 16:23:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Move the purpose service files to a subpackage
