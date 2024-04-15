@@ -7,4 +7,12 @@
     <comment>KDE Frameworks 6.0.0</comment>
     <requestid>1150338</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e14c03b0b61b637f5f518d6d179c5c31</srcmd5>
+    <version>6.1.0</version>
+    <time>1713204715</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 6.1.0 (forwarded request 1166463 from krop)</comment>
+    <requestid>1167183</requestid>
+  </revision>
 </revisionlist>
