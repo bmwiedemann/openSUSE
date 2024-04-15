@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-kapidox
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define rname kapidox
 %bcond_without released
-# Full KF6 version (e.g. 6.0.0)
+# Full KF6 version (e.g. 6.1.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 Name:           kf6-kapidox
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        Scripts and data for building API documentation
 License:        BSD-2-Clause
