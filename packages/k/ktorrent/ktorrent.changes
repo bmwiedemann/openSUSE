@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr  9 18:09:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.2/
+- Changes since 24.02.1:
+  * Fix crash when system tray icon is disabled (kde#484577)
+  * Undo system tray bug workaround (kde#484598)
+
+-------------------------------------------------------------------
 Tue Mar 19 15:27:25 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.1

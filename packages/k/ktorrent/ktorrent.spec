@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 5.240.0
+%define kf6_version 6.0.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           ktorrent
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 Summary:        KDE BitTorrent Client
 License:        GPL-2.0-or-later
@@ -100,9 +100,9 @@ sed -i 's#1.71.0#1.66.0#' CMakeLists.txt
 %kf6_install
 
 # Add man pages from help2man edited.
-mkdir -p %{buildroot}%{_mandir}/man1
-cp -a %{SOURCE3} %{buildroot}%{_mandir}/man1
-cp -a %{SOURCE4} %{buildroot}%{_mandir}/man1
+mkdir -p %{buildroot}%{_kf6_mandir}/man1
+cp -a %{SOURCE3} %{buildroot}%{_kf6_mandir}/man1
+cp -a %{SOURCE4} %{buildroot}%{_kf6_mandir}/man1
 
 # Fix any .py files with shebangs and wrong permissions.
 find %{buildroot} -name "*.py" -perm 0644 -exec grep -l '#!' {} + | \
