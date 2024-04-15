@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:52:33 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * update version for new release
+  * Remove redundant QML_ELEMENT in KDeclarativeMouseEvent and WheelEvent
+  * Don't use kwidgetsaddons on Android
+  * Refactor kglobalaccel check
+  * Don't use kglobalaccel on Android
+  * Mark Android as supported
+  * Add Android CI
+  * Add dependency to QML module
+  * kquickcontrolsaddons: Drop QML import versions from doc example
+  * kquickcontrols: Remove superfluous no-op assignment
+  * kquickcontrols: Replace superfluous Text item and a semi-broken expression
+  * kquickcontrols: Reduce superfluous ternary
+  * kquickcontrols: Declare type of __previousSequence property as a string
+  * kquickcontrols: Uplift previousSequence property to the root component
+  * kquickcontrols: Drop QML import versions, fix up code style
+
+-------------------------------------------------------------------
 Wed Feb 21 19:27:53 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.0
