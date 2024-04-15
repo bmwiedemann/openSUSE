@@ -17,8 +17,8 @@
 
 
 Name:           gsoap
-%define lname	libgsoap-2_8_132
-Version:        2.8.132
+%define lname	libgsoap-2_8_133
+Version:        2.8.133
 Release:        0
 Summary:        Toolkit for SOAP/REST-based C/C++ server and client web service applications
 License:        SUSE-GPL-2.0+-with-openssl-exception
@@ -107,12 +107,12 @@ rm -f "$b/%_libdir"/*.la
 mkdir -p "$b/%_defaultdocdir"
 cp -a gsoap/doc "$b/%_defaultdocdir/%name"
 find "$b" -type f -name "*inconsolata*" -exec chmod a-x "{}" "+"
+find "$b/%_datadir" -name "*.o" -print -delete
 %if 0%{?fdupes:1}
 %fdupes %buildroot/%_prefix
 %endif
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files devel
 %_bindir/*soap*
