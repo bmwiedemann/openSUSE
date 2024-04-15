@@ -16,23 +16,19 @@
 #
 
 
-%global reltype release
+%global reltype milestones
 Name:           sisu
-Version:        0.3.5
+Version:        0.9.0.M2
 Release:        0
 Summary:        Eclipse dependency injection framework
 # sisu is EPL-1.0, bundled asm is BSD
 License:        BSD-3-Clause AND EPL-1.0
 Group:          Development/Libraries/Java
 URL:            https://www.eclipse.org/sisu/
-Source0:        https://github.com/eclipse/sisu.inject/archive/refs/tags/releases/%{version}.tar.gz#/sisu-inject-%{version}.tar.gz
-Source1:        https://github.com/eclipse/sisu.plexus/archive/refs/tags/releases/%{version}.tar.gz#/sisu-plexus-%{version}.tar.gz
+Source0:        https://github.com/eclipse/sisu.inject/archive/refs/tags/%reltype/%{version}.tar.gz#/sisu-inject-%{version}.tar.gz
+Source1:        https://github.com/eclipse/sisu.plexus/archive/refs/tags/%reltype/%{version}.tar.gz#/sisu-plexus-%{version}.tar.gz
 Source2:        %{name}-build.tar.xz
-Source100:      %{name}-inject.pom
-Source101:      %{name}-plexus.pom
-Patch0:         %{name}-OSGi-import-guava.patch
 Patch1:         %{name}-no-dependency-on-glassfish-servlet-api.patch
-Patch2:         %{name}-ignored-tests.patch
 Patch3:         %{name}-osgi-api.patch
 Patch4:         %{name}-reproducible-index.patch
 BuildRequires:  ant
@@ -44,6 +40,7 @@ BuildRequires:  google-guice
 BuildRequires:  guice-servlet
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  junit
+BuildRequires:  junit5-minimal
 BuildRequires:  osgi-core
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-containers-component-annotations
@@ -63,7 +60,6 @@ style dependency injection.
 %package        inject
 Summary:        Sisu inject
 Group:          Development/Libraries/Java
-Requires:       mvn(javax.enterprise:cdi-api)
 
 %description    inject
 This package contains %{summary}.
@@ -71,10 +67,7 @@ This package contains %{summary}.
 %package        plexus
 Summary:        Sisu Plexus
 Group:          Development/Libraries/Java
-Requires:       mvn(org.codehaus.plexus:plexus-classworlds)
-Requires:       mvn(org.codehaus.plexus:plexus-component-annotations)
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
-Requires:       mvn(org.eclipse.sisu:org.eclipse.sisu.inject) = %{version}
+Requires:       %{name}-inject = %{version}
 
 %description    plexus
 This package contains %{summary}.
@@ -88,37 +81,23 @@ This package contains %{summary}.
 
 %prep
 %setup -q -c -T
-tar xf %{SOURCE0} && mv sisu.inject-releases-%{version} sisu-inject
-tar xf %{SOURCE1} && mv sisu.plexus-releases-%{version} sisu-plexus
+tar xf %{SOURCE0} && mv sisu.inject-%{reltype}-%{version} sisu-inject
+tar xf %{SOURCE1} && mv sisu.plexus-%{reltype}-%{version} sisu-plexus
 tar xf %{SOURCE2}
 
-cp %{SOURCE100} sisu-inject/pom.xml
-cp %{SOURCE101} sisu-plexus/pom.xml
-
-%patch -P 0
 %patch -P 1
-%patch -P 2
 %patch -P 3
 %patch -P 4 -p1
-
-%pom_remove_dep :servlet-api sisu-inject
-
-for i in inject plexus; do
-  %pom_xpath_set -r /pom:project/pom:version %{version} %{name}-${i}
-done
-%pom_change_dep :org.eclipse.sisu.inject org.eclipse.sisu:org.eclipse.sisu.inject:%{version} %{name}-plexus
-
-%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 %{name}-plexus
 
 %build
 mkdir -p lib
 build-jar-repository -s lib \
   glassfish-annotation-api \
   google-guice-no_aop \
-  guice/guice-servlet \
   javax.enterprise.inject/cdi-api \
   javax.inject/atinject \
   junit \
+  junit5 \
   osgi-core/osgi.core \
   plexus/utils \
   plexus/xml \
@@ -131,20 +110,22 @@ build-jar-repository -s lib \
 %install
 # jar
 install -dm 0755 %{buildroot}%{_javadir}
-install -pm 0644 %{name}-inject/target/org.eclipse.sisu.inject-%{version}.jar %{buildroot}%{_javadir}/org.eclipse.sisu.inject.jar
-install -pm 0644 %{name}-plexus/target/org.eclipse.sisu.plexus-%{version}.jar %{buildroot}%{_javadir}/org.eclipse.sisu.plexus.jar
+install -pm 0644 %{name}-inject/org.eclipse.sisu.inject/target/org.eclipse.sisu.inject-%{version}.jar \
+    %{buildroot}%{_javadir}/org.eclipse.sisu.inject.jar
+install -pm 0644 %{name}-plexus/org.eclipse.sisu.plexus/target/org.eclipse.sisu.plexus-%{version}.jar \
+    %{buildroot}%{_javadir}/org.eclipse.sisu.plexus.jar
 
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-%{mvn_install_pom} %{name}-inject/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.inject.pom
+%{mvn_install_pom} %{name}-inject/org.eclipse.sisu.inject/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.inject.pom
 %add_maven_depmap org.eclipse.sisu.inject.pom org.eclipse.sisu.inject.jar -f inject
-%{mvn_install_pom} %{name}-plexus/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.plexus.pom
+%{mvn_install_pom} %{name}-plexus/org.eclipse.sisu.plexus/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.plexus.pom
 %add_maven_depmap org.eclipse.sisu.plexus.pom org.eclipse.sisu.plexus.jar -f plexus -a org.sonatype.sisu:sisu-inject-plexus
 
 # javadoc
 for i in inject plexus; do
   install -dm 0755 %{buildroot}%{_javadocdir}/%{name}/%{name}-${i}
-  cp -pr %{name}-${i}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/%{name}-${i}/
+  cp -pr %{name}-${i}/org.eclipse.sisu.${i}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/%{name}-${i}/
 done
 %fdupes -s %{buildroot}%{_javadocdir}
 

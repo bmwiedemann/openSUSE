@@ -1,6 +1,6 @@
---- sisu-inject/org.eclipse.sisu.inject/src/org/eclipse/sisu/inject/Implementations.java
-+++ sisu-inject/org.eclipse.sisu.inject/src/org/eclipse/sisu/inject/Implementations.java
-@@ -38,17 +38,6 @@ final class Implementations
+--- sisu-inject/org.eclipse.sisu.inject/src/main/java/org/eclipse/sisu/inject/Implementations.java	2024-04-09 19:53:29.797479006 +0200
++++ sisu-inject/org.eclipse.sisu.inject/src/main/java/org/eclipse/sisu/inject/Implementations.java	2024-04-09 19:59:23.506494426 +0200
+@@ -39,17 +39,6 @@
  
      static
      {
@@ -18,7 +18,7 @@
          boolean hasJsr250Priority;
          try
          {
-@@ -65,8 +54,6 @@ final class Implementations
+@@ -66,8 +55,6 @@
      // Constants
      // ----------------------------------------------------------------------
  
@@ -27,25 +27,26 @@
      private static final boolean HAS_JSR250_PRIORITY;
  
      // ----------------------------------------------------------------------
-@@ -106,7 +93,7 @@ final class Implementations
+@@ -107,8 +94,7 @@
  
-         // peek behind servlet/filter extension bindings when checking priority, so we can order them by rank
-         final Class<?> implementation =
--            binding.acceptTargetVisitor( HAS_GUICE_SERVLET && isPriority ? ServletFinder.THIS : ClassFinder.THIS );
-+            binding.acceptTargetVisitor( ClassFinder.THIS );
+         final Class<?> annotationSource =
+             // when looking for @Priority also consider annotations on providers (and servlets/filters if available)
+-            binding.acceptTargetVisitor( isPriority ? ( HAS_GUICE_SERVLET ? ServletFinder.THIS : ProviderFinder.THIS )
+-                                                    : ClassFinder.THIS );
++            binding.acceptTargetVisitor( isPriority ? ProviderFinder.THIS : ClassFinder.THIS );
  
          T annotation = null;
-         if ( null != implementation )
-@@ -215,45 +202,4 @@ final class Implementations
-             return binding.getPrivateElements().getInjector().getBinding( binding.getKey() ).acceptTargetVisitor( this );
+         if ( null != annotationSource )
+@@ -253,45 +239,4 @@
+             return binding.getProviderKey().getTypeLiteral().getRawType();
          }
      }
 -
 -    /**
--     * {@link ClassFinder} that can also peek behind servlet/filter bindings.
+-     * {@link ProviderFinder} that also returns servlet/filter implementations.
 -     */
 -    static final class ServletFinder
--        extends ClassFinder
+-        extends ProviderFinder
 -        implements com.google.inject.servlet.ServletModuleTargetVisitor<Object, Class<?>>
 -    {
 -        // ----------------------------------------------------------------------

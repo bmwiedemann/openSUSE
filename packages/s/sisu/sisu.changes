@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sun Apr 14 09:36:52 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream milestone 0.9.0.M2
+  * Changes of sisu.inject 0.9.0.M2
+    + Fix SpaceScanner to use latest ASM API version
+    + 3.7 is not an officially supported version therefore specify
+      3.8 instead
+    + Provide script to help upgrade embedded copy of ASM
+    + ASM_9_4
+    + Require Java 8
+    + Sisu specific PreConstruct/PreDestroy annotations
+    + Update build plugins
+    + ASM 9.5
+    + Align to latest Maven plugins
+    + Move release elements from oss-parent to local project
+    + Create a 'no_asm' jar at release time which doesn't embed ASM
+  * Changes of sisu.inject 9.0.M1
+    + Fix CDI related issues
+    + Build with Eclipse/Tycho 2.5.0 and Java 11
+    + Raise problem reporting logs to DEBUG, fixes #36
+    + Upgrade internal copy of ASM to 9.2
+    + Implement PathTypeConverter
+    + Add JUnit 5 annotations to InjectedTest setUp/tearDown
+    + Fix static parameters binding lookup
+    + Run injection tests against multiple versions of Guice
+    + Support using @priority on Providers
+    + Use read lock when subscribing to publishers…
+    + Cache binding lookups for single bean providers
+    + Use AtomicReferenceFieldUpdater as it works better for large
+      numbers of instances
+    + Enable Java CI workflow
+    + Enable CodeQL analysis
+    + Replace potentially-expensive regex with simple tokenizer
+    + Allow Main to boot with extra bindings
+    + Re-enable various resource-related unit tests
+    + Rework globber pattern strategy to avoid use of regex
+    + Use GlobberStrategy.PATTERN instead of regex for
+    ServiceBindings filtering
+  * Changes of sisu.plexus 0.9.0.M2
+    + Make build work with Java17
+    + Align to latest Maven plugins
+    + Move release elements from oss-parent to local project
+  * Changes of sisu.plexus 0.9.0.M1
+    + Align logback with sisu.inject
+    + Build with Eclipse/Tycho 2.5.0 and Java 11
+    + Support configuration of collections with complex generic
+      types
+    + Enable Java CI workflow
+    + Enable CodeQL analysis
+- Removed patches:
+  * sisu-OSGi-import-guava.patch
+  * sisu-ignored-tests.patch
+    + not needed with this version any more
+- Modified patches:
+  * sisu-no-dependency-on-glassfish-servlet-api.patch
+  * sisu-osgi-api.patch
+  * sisu-reproducible-index.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Tue Apr  2 17:34:47 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on plexus-xml where relevant

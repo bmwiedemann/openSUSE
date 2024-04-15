@@ -1,11 +1,11 @@
---- sisu-0.3.5/sisu-inject/org.eclipse.sisu.inject/src/org/eclipse/sisu/space/AbstractSisuIndex.java	2023-09-05 15:00:59.314655718 +0200
-+++ sisu-0.3.5/sisu-inject/org.eclipse.sisu.inject/src/org/eclipse/sisu/space/AbstractSisuIndex.java	2023-09-05 15:04:15.889547023 +0200
+--- sisu-0.3.5/sisu-inject/org.eclipse.sisu.inject/src/main/java/org/eclipse/sisu/space/AbstractSisuIndex.java	2023-09-05 15:00:59.314655718 +0200
++++ sisu-0.3.5/sisu-inject/org.eclipse.sisu.inject/src/main/java/org/eclipse/sisu/space/AbstractSisuIndex.java	2023-09-05 15:04:15.889547023 +0200
 @@ -158,7 +158,7 @@
              final BufferedWriter writer = new BufferedWriter( getWriter( INDEX_FOLDER + name ) );
              try
              {
 -                for ( final String line : table )
-+                for ( final String line : new java.util.TreeSet<String>( table ) )
++                for ( final String line : new TreeSet<String>( table ) )
                  {
                      writer.write( line );
                      writer.newLine();
