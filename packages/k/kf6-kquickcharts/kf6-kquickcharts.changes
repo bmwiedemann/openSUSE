@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:52:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * update version for new release
+  * Declare QML module dependencies
+  * Generate default set of GLSL shaders (kde#482988)
+  * examples: Remove separator from main page list items
+  * piechartnode: Rename updateTriangles to updateSegments
+  * piechartnode: Remove some unused stuff
+  * examples: Change "smooth" to "interpolate"
+  * piechart: Use the right amount of thickness for the chart
+  * linechart: Use fwidth of the point instead of sdf to avoid conditional fwidth (kde#434462)
+  * sdf: Allow specifying fwidth() to sdf_render()
+
+-------------------------------------------------------------------
 Wed Feb 21 19:28:07 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.0
