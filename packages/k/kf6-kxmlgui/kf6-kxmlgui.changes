@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:53:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * kkeysequencewidget: expose modifierOnlyAllowed
+  * Don't search for QtDBus on Windows/macOS
+  * Make sure that actions just added to the toolbar show up in the edit dialog
+  * update version for new release
+
+-------------------------------------------------------------------
 Wed Feb 21 19:28:16 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.0

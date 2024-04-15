@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-kxmlgui
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define qt6_version 6.6.0
 
 %define rname kxmlgui
-# Full KF6 version (e.g. 6.0.0)
+# Full KF6 version (e.g. 6.1.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kxmlgui
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        Framework for managing menu and toolbar actions
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
