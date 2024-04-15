@@ -1,0 +1,27 @@
+From a240e2005ec90456f5d0f3e461ae9852fdf371bb Mon Sep 17 00:00:00 2001
+From: Volker Krause <vkrause@kde.org>
+Date: Mon, 8 Apr 2024 17:52:18 +0200
+Subject: [PATCH] Work around event queue ordering changes in Qt 6.7
+
+There is no actual functional issue here, the test just relied on the
+previous ordering behavior.
+---
+ autotests/livedatamanagertest.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/autotests/livedatamanagertest.cpp b/autotests/livedatamanagertest.cpp
+index ebcc5f74..79a9f10c 100644
+--- a/autotests/livedatamanagertest.cpp
++++ b/autotests/livedatamanagertest.cpp
+@@ -161,7 +161,7 @@ private Q_SLOTS:
+         const auto resId = resMgr.batches()[0];
+         QCOMPARE(ldm.isRelevant(resId), true);
+         QCOMPARE(ldm.nextPollTimeForReservation(resId), 0);
+-        QTest::qWait(0);
++        QTest::qWait(1);
+ 
+         QCOMPARE(pkPassMgr.passes().size(), 1);
+         const auto pass = pkPassMgr.pass(pkPassMgr.passes()[0]);
+-- 
+2.44.0
+

@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 5.246.0
+%define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.1
+%define kpim6_version 6.0.2
 
 %bcond_without released
 Name:           itinerary
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 Summary:        Itinerary and boarding pass management application
 License:        LGPL-2.0-or-later
@@ -32,6 +32,8 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Work-around-event-queue-ordering-changes-in-Qt-6.7.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  shared-mime-info
 BuildRequires:  pkgconfig

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr  9 18:07:21 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.2/
+- Changes since 24.02.1:
+  * Add 24.02.2 release notes
+  * Fix journey section layout being messed up by Qt 6.7
+  * Remove unused kde/plasma-mobile version override
+  * Fix centering pkpass barcode alt texts
+  * Fix handling of departure disruptions
+  * Remove outdated information about APKs
+  * Prevent overly large pkpass footer images from messing up the layout
+  * Fix icons coloring for coach type icons
+  * Use release versions of all dependencies in Craft builds
+  * Use released Frameworks in Craft builds
+- Add upstream change:
+  * 0001-Work-around-event-queue-ordering-changes-in-Qt-6.7.patch
+
+-------------------------------------------------------------------
 Tue Mar 19 15:25:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.1
