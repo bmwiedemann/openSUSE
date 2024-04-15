@@ -1,0 +1,55 @@
+From f8269ca8d87f908cfcaa538c6d014b9dd9617171 Mon Sep 17 00:00:00 2001
+From: Rui Jia <jindui71@gmail.com>
+Date: Thu, 26 Oct 2023 00:35:18 +0800
+Subject: [PATCH 1/2] mkfs.ocfs2: verify the number of clusters
+
+When the calculated number of clusters exceeds UINT32_MAX,
+the result of mkfs.ocfs2 will be incorrect. Therefore, it
+is necessary to verify the calculated number of clusters,
+if it exceeds UINT32_ MAX outputs an error message and
+exits the program.
+
+Signed-off-by: Rui Jia <jindui71@gmail.com>
+---
+ mkfs.ocfs2/mkfs.c | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/mkfs.ocfs2/mkfs.c b/mkfs.ocfs2/mkfs.c
+index 932b9058d5ac..69af2bf00459 100644
+--- a/mkfs.ocfs2/mkfs.c
++++ b/mkfs.ocfs2/mkfs.c
+@@ -1689,7 +1689,7 @@ fill_defaults(State *s)
+ 	int sectsize;
+ 	uint64_t ret;
+ 	struct ocfs2_cluster_group_sizes cgs;
+-	uint64_t tmp;
++	uint64_t volume_size_in_clusters_tmp;
+ 
+ 	pagesize = getpagesize();
+ 
+@@ -1827,10 +1827,19 @@ fill_defaults(State *s)
+ 
+ 	s->cluster_size_bits = get_bits(s, s->cluster_size);
+ 
++	/* volume size in clusters must not exceed UINT32_MAX */
++	volume_size_in_clusters_tmp = s->volume_size_in_bytes >> s->cluster_size_bits;
++	if (volume_size_in_clusters_tmp > UINT32_MAX) {
++		com_err(s->progname, 0,
++			"The ocfs2 filesystem on device \"%s\" cannot be "
++			"larger than %"PRIu32" clusters\n",
++			s->device_name, UINT32_MAX);
++		exit(1);
++	}
++
+ 	/* volume size needs to be cluster aligned */
+-	s->volume_size_in_clusters = s->volume_size_in_bytes >> s->cluster_size_bits;
+-	tmp = (uint64_t)s->volume_size_in_clusters;
+-	s->volume_size_in_bytes = tmp << s->cluster_size_bits;
++	s->volume_size_in_clusters = volume_size_in_clusters_tmp;
++	s->volume_size_in_bytes = volume_size_in_clusters_tmp << s->cluster_size_bits;
+ 	s->volume_size_in_blocks = s->volume_size_in_bytes >> s->blocksize_bits;
+ 	
+ 	s->reserved_tail_size = 0;
+-- 
+2.35.3
+

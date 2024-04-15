@@ -1,0 +1,135 @@
+From 78060fac433ec659c168fb4dcea6fb087b0fffbf Mon Sep 17 00:00:00 2001
+From: Heming Zhao <heming.zhao@suse.com>
+Date: Tue, 26 Mar 2024 21:31:03 +0800
+Subject: [PATCH 2/2] fsck.ocfs2: add the ability to clear jbd2 errno
+
+For fsck, there is no chance to detect and clean jbd2 errno. Once jbd2
+errno has been set, ocfs2 always reports errno when mounting. This errno
+reporting confuses users.
+This patch adds the ability to detect & clear jbd2 errno for fsck.
+
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+---
+ fsck.ocfs2/journal.c | 73 +++++++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 66 insertions(+), 7 deletions(-)
+
+diff --git a/fsck.ocfs2/journal.c b/fsck.ocfs2/journal.c
+index 95262d327e91..6364426872cf 100644
+--- a/fsck.ocfs2/journal.c
++++ b/fsck.ocfs2/journal.c
+@@ -453,7 +453,8 @@ static errcode_t walk_journal(ocfs2_filesys *fs, int slot,
+ }
+ 
+ static errcode_t prep_journal_info(ocfs2_filesys *fs, int slot,
+-			           struct journal_info *ji)
++			           struct journal_info *ji,
++			           int check_dup, int force_read_jsb)
+ {
+ 	errcode_t err;
+ 
+@@ -479,10 +480,10 @@ static errcode_t prep_journal_info(ocfs2_filesys *fs, int slot,
+ 	}
+ 
+ 	if (!(ji->ji_cinode->ci_inode->id1.journal1.ij_flags &
+-	      OCFS2_JOURNAL_DIRTY_FL))
++	      OCFS2_JOURNAL_DIRTY_FL) && !force_read_jsb)
+ 		goto out;
+ 
+-	err = lookup_journal_block(fs, ji, 0, &ji->ji_jsb_block, 1);
++	err = lookup_journal_block(fs, ji, 0, &ji->ji_jsb_block, check_dup);
+ 	if (err)
+ 		goto out;
+ 
+@@ -641,7 +642,7 @@ errcode_t o2fsck_replay_journals(ocfs2_filesys *fs, int *replayed)
+ 		ji->ji_slot = i;
+ 
+ 		/* sets ji->ji_replay */
+-		err = prep_journal_info(fs, i, ji);
++		err = prep_journal_info(fs, i, ji, 1, 0);
+ 		if (err) {
+ 			printf("Slot %d seems to have a corrupt journal.\n",
+ 			       i);
+@@ -649,6 +650,11 @@ errcode_t o2fsck_replay_journals(ocfs2_filesys *fs, int *replayed)
+ 			continue;
+ 		}
+ 
++		if (ji->ji_jsb->s_errno) {
++			printf("Found jbd2 super block error status %d "
++				"on slot %d.\n", ji->ji_jsb->s_errno, i);
++		}
++
+ 		if (!ji->ji_replay) {
+ 			verbosef("slot %d is clean\n", i);
+ 			continue;
+@@ -1068,12 +1074,65 @@ bail:
+ 	return ret;
+ }
+ 
++static errcode_t ocfs2_clear_journal_errno(ocfs2_filesys *fs,
++				struct ocfs2_dinode *di,
++				int slot)
++{
++	errcode_t ret = 0;
++	struct journal_info ji;
++	journal_superblock_t *jsb;
++	int tmp_errno;
++
++	ji.ji_slot = slot;
++	ret = prep_journal_info(fs, slot, &ji, 0, 1);
++	if (ret) {
++		printf("Slot %d seems to have a corrupt journal.\n", slot);
++		goto bail;
++	}
++
++	jsb = ji.ji_jsb;
++	if (!jsb->s_errno)
++		goto bail;
++
++	tmp_errno = jsb->s_errno;
++	jsb->s_errno = 0;
++	ret = ocfs2_write_journal_superblock(fs,
++			ji.ji_jsb_block, (char *)jsb);
++	if (ret) {
++		com_err(whoami, ret, "while writing slot %d's jbd2 "
++				"super block, blkno:%lu",
++				slot, ji.ji_jsb_block);
++	}
++	printf("Clear jbd2 super block errno (%d) on slot %d\n",
++			tmp_errno, slot);
++
++bail:
++	return ret;
++}
++
+ errcode_t o2fsck_clear_journal_flags(o2fsck_state *ost)
+ {
+-	if (!ost->ost_has_journal_dirty)
+-		return 0;
++	errcode_t ret = 0;
+ 
+-	return handle_slots_system_file(ost->ost_fs,
++	if (ost->ost_has_journal_dirty) {
++		ret = handle_slots_system_file(ost->ost_fs,
+ 					JOURNAL_SYSTEM_INODE,
+ 					ocfs2_clear_journal_flag);
++		if (ret) {
++			printf("Clean journal flag failed\n");
++			goto out;
++		}
++	}
++
++	/* There is a special hack for forcibly clearing
++	 * jbd2 errno. */
++	ret = handle_slots_system_file(ost->ost_fs,
++					JOURNAL_SYSTEM_INODE,
++					ocfs2_clear_journal_errno);
++	if (ret) {
++		printf("Clean jbd2 flag failed\n");
++		goto out;
++	}
++out:
++	return ret;
+ }
+-- 
+2.35.3
+

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 15 02:44:00 UTC 2024 - Heming Zhao <heming.zhao@suse.com>
+
+- Update ocfs2-tools to latest code (78060fac433e)
+  * mkfs.ocfs2-verify-the-number-of-clusters.patch
+  * bsc1216834-fsck.ocfs2-add-the-ability-to-clear-jbd2-errno.patch
+
+-------------------------------------------------------------------
 Thu Mar 21 08:16:00 UTC 2024 - Heming Zhao <heming.zhao@suse.com>
 
 - Update patch to apply 'patch -p1' format (no code change)
