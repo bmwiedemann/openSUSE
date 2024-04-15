@@ -214,4 +214,16 @@
     Downgrade Protection (requires go-xmpp &gt;= v0.1.4).</comment>
     <requestid>1163539</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8b325448da8809bbc46fa7c3cb3706e7</srcmd5>
+    <version>0.10.0</version>
+    <time>1713205086</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.10.0:
+  * Fixed a race condition in receiving stanzas (requires go-xmpp &gt;= v0.1.5).
+  * Add support for SASL2 and BIND2 (via go-xmpp &gt;= v0.2.0).
+  * Add support for FAST authentication (via go-xmpp &gt;= v0.2.0).
+  * Add a warning when run by the user root.</comment>
+    <requestid>1167764</requestid>
+  </revision>
 </revisionlist>
