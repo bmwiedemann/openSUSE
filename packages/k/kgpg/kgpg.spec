@@ -15,12 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define kf6_version 5.246.0
+%define kf6_version 6.0.0
 %define qt6_version 6.4.0
 
 %bcond_without released
 Name:           kgpg
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 Summary:        Encryption Tool
 License:        GPL-2.0-or-later
