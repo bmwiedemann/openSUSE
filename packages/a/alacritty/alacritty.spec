@@ -32,6 +32,7 @@ BuildRequires:  freetype2-devel
 BuildRequires:  libxcb-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  pkgconfig
+BuildRequires:  rust >= 1.70
 BuildRequires:  scdoc
 BuildRequires:  update-desktop-files
 BuildRequires:  xclip
