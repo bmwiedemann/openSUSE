@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Apr  5 12:52:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * update version for new release
+  * ECMAddQch: drop trying to set IMPORTED on targets with installed config
+  * Fix DATAROOTDIR documentation for Windows
+  * Update documentation favicon
+  * macOS is the name of the Apple operating system
+  * Fix fetch translations tests in GitLab forks
+  * docs: Correct escape sequence for Python 3.12 or later
+  * Map some more language codes to the IDs supported by Google Play
+  * [ECMQmlModule] Add option to enable verbose compiler output
+  * Remove extraneous docs-build CI job that is no longer needed following
+    the switch of api.kde.org to Gitlab CI
+  * Set ECM_PREFIX at build time rather than at runtime (kde#485158)
+
+-------------------------------------------------------------------
 Wed Feb 21 19:27:41 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.0
