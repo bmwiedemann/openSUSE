@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  9 18:07:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.2/
+- Changes since 24.02.1:
+  * Don't overwrite valid date in eventDurationHint() (kde#483823)
+  * Remove EventViews::resourceColor() overload for an Akonadi::Item
+  * Agenda, Month: query collection color from calendar collection
+  * Prefer color stored in Akonadi over eventviewsrc
+  * Apply current view filter on the Todo model as well
+
+-------------------------------------------------------------------
 Tue Mar 19 15:25:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.1
