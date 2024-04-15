@@ -165,4 +165,29 @@
     <comment></comment>
     <requestid>1147632</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>302c5461b8ce150c51acc5ad4d18aa1a</srcmd5>
+    <version>1.4.0+2</version>
+    <time>1713204862</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.0+2:
+  * fix: FTBFS with incompatible-pointer-types
+  * Bump version
+  * Latest translations
+  * Add code and compilation option to support socket
+    SSH based connections
+  * Disable gnome-online-accounts due to latest upstream GOA
+  * support both sshd socket and services for remote login
+  * Hide remote desktop sharing support
+  * Latest translations
+  * Update to gvc version to resolve occasional pipewire crashes
+    when mute/unmute of microphone volume
+  * subprojects: Update gvc
+  * Replace deprecated license format
+  * Add the ability to toggle disabling touchpad whilst typing
+  * Update appdata fields
+  * Update wacom tester to actually launch budgie-control-center
+</comment>
+    <requestid>1167019</requestid>
+  </revision>
 </revisionlist>

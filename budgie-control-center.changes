@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Apr 10 15:27:02 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.4.0+2:
+  * fix: FTBFS with incompatible-pointer-types
+  * Bump version
+  * Latest translations
+  * Add code and compilation option to support socket
+    SSH based connections
+  * Disable gnome-online-accounts due to latest upstream GOA
+  * support both sshd socket and services for remote login
+  * Hide remote desktop sharing support
+  * Latest translations
+  * Update to gvc version to resolve occasional pipewire crashes
+    when mute/unmute of microphone volume
+  * subprojects: Update gvc
+  * Replace deprecated license format
+  * Add the ability to toggle disabling touchpad whilst typing
+  * Update appdata fields
+  * Update wacom tester to actually launch budgie-control-center
+
+-------------------------------------------------------------------
 Mon Feb 19 10:22:55 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Add LGPL-3.0-or-later based on legaldb review
