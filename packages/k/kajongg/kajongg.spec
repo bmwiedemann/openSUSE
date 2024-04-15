@@ -16,7 +16,7 @@
 #
 
 
-%define kf6_version 5.246.0
+%define kf6_version 6.0.0
 %define qt6_version 6.6.0
 
 %{?sle15_python_module_pythons}
@@ -28,7 +28,7 @@
 
 %bcond_without released
 Name:           kajongg
-Version:        24.02.1
+Version:        24.02.2
 Release:        0
 Summary:        4 Player Mahjongg game
 License:        GPL-2.0-or-later
