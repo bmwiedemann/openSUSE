@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20240414" schemaversion="4.1">
+<image name="OBS__openSUSE___20240415" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20240414</productvar>
+      <productvar name="VERSION">20240415</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20240414,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20240415,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20240414/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20240415/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1057,6 +1057,7 @@
       <repopackage name="kf6-purpose-lang"/>
       <repopackage name="kf6-purpose-services"/>
       <repopackage name="kf6-qqc2-desktop-style"/>
+      <repopackage name="kf6-qqc2-desktop-style-lang"/>
       <repopackage name="kf6-solid"/>
       <repopackage name="kf6-solid-tools"/>
       <repopackage name="kf6-sonnet"/>
@@ -1397,7 +1398,7 @@
       <repopackage name="libclutter-1_0-0"/>
       <repopackage name="libclutter-gst-3_0-0"/>
       <repopackage name="libclutter-gtk-1_0-0"/>
-      <repopackage name="libcmark0_30_3"/>
+      <repopackage name="libcmark0_31_0"/>
       <repopackage name="libcodec2-1_2"/>
       <repopackage name="libcogl-pango20"/>
       <repopackage name="libcogl20"/>
@@ -2723,7 +2724,7 @@
       <repopackage name="libspice-client-gtk-3_0-5"/>
       <repopackage name="libspice-server1"/>
       <repopackage name="libspiel-1_0"/>
-      <repopackage name="libSPIRV-Tools-2024_1_rc1"/>
+      <repopackage name="libSPIRV-Tools-2024_1"/>
       <repopackage name="libsqlite3-0"/>
       <repopackage name="libsqlite3-0-x86-64-v3"/>
       <repopackage name="libsratom-0-0"/>

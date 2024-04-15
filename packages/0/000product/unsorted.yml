@@ -299,6 +299,8 @@ unsorted:
   - SDL2_net-devel 
   - SDL2_sound-devel 
   - SDL2_ttf-devel 
+  - SDL3-devel 
+  - SDL3-devel-doc 
   - SDL_Pango-devel 
   - SDL_mixer-devel 
   - SDL_sound-devel 
@@ -9693,7 +9695,6 @@ unsorted:
   - kf6-kdesu-devel 
   - kf6-kdnssd-devel 
   - kf6-kdoctools-devel 
-  - kf6-kdoctools-doc 
   - kf6-kfilemetadata-devel 
   - kf6-kglobalaccel-devel 
   - kf6-kguiaddons-devel 
@@ -11186,6 +11187,7 @@ unsorted:
   - libSDL2_net-2_0-0 
   - libSDL2_sound2 
   - libSDL2_ttf-2_0-0 
+  - libSDL3-0 
   - libSDL_Pango1 
   - libSDL_bgi-devel 
   - libSDL_bgi-suse9 
@@ -11208,7 +11210,7 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2024_1_rc1-32bit 
+  - libSPIRV-Tools-2024_1-32bit 
   - libSRM0 
   - libSampleICC-devel 
   - libSampleICC2 
@@ -12045,8 +12047,6 @@ unsorted:
   - libcephfs2 
   - libcephsqlite 
   - libcephsqlite-devel 
-  - libceres-devel 
-  - libceres3 
   - libcerf-devel 
   - libcerf2 
   - libcerror-devel 
@@ -13220,7 +13220,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit 
   - libgsmsd8 
-  - libgsoap-2_8_132 
+  - libgsoap-2_8_133 
   - libgssapi3 
   - libgssdp-1_6-0-32bit 
   - libgssdp-devel 
@@ -19508,6 +19508,10 @@ unsorted:
   - obs-service-tar 
   - obs-service-tar_scm 
   - obs-service-verify_file 
+  - oc 
+  - oc-bash-completion 
+  - oc-fish-completion 
+  - oc-zsh-completion 
   - ocaml 
   - ocaml-astring 
   - ocaml-astring-devel 
@@ -20264,6 +20268,7 @@ unsorted:
   - ovn-docker 
   - ovn-host 
   - ovn-vtep 
+  - ovpn-dco-kmp-default 
   - owasp-modsecurity-crs 
   - owasp-modsecurity-crs-apache2 
   - owncloud-client 
