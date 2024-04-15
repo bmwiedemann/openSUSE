@@ -737,4 +737,21 @@ varienvironment able.
     <comment></comment>
     <requestid>1165093</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>3864db8b337e02be3bda0b2d19ffa79b</srcmd5>
+    <version>0.50.0</version>
+    <time>1713205061</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.50.0:
+  - Search performance optimization. You can observe 50%+
+    improvement in some scenarios.
+  - Added jump and jump-cancel events that are triggered when
+    leaving jump mode
+  - Added a new environment variable $FZF_KEY exported to the
+    child processes. It's the name of the last key pressed.
+  - fzf can be built with profiling options. See BUILD.md for
+    more information.
+  - Bug fixes</comment>
+    <requestid>1167679</requestid>
+  </revision>
 </revisionlist>

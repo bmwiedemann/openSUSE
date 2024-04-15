@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 14 17:27:27 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.50.0:
+  - Search performance optimization. You can observe 50%+
+    improvement in some scenarios.
+  - Added jump and jump-cancel events that are triggered when
+    leaving jump mode
+  - Added a new environment variable $FZF_KEY exported to the
+    child processes. It's the name of the last key pressed.
+  - fzf can be built with profiling options. See BUILD.md for
+    more information.
+  - Bug fixes
+
+-------------------------------------------------------------------
 Thu Apr  4 19:01:56 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.49.0:
