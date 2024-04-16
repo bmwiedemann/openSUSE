@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 16 08:07:38 UTC 2024 - Илья Индиго <13ilya@gmail.com>
+
+- Updated to 2.22
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/libmpdclient/v2.22/NEWS
+  * Changed license to BSD-2-Clause AND BSD-3-Clause.
+  * Removed the unmaintained Vala bindings.
+  * Added mpd_recv_replay_gain_status()
+  * Added support MPD protocol 0.24.0:
+    * tag "Mood", "TitleSort"
+    * "oneshot" consume state
+    * allow range in "playlistmove"
+    * commands "searchcount", "stickernames"
+    * added attribute for songs
+    * search: support constraint "added-since"
+    * command "save [create|replace|append]"
+
+-------------------------------------------------------------------
 Thu Feb 29 17:48:03 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

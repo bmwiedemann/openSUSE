@@ -18,12 +18,11 @@
 
 
 %define so_name 2
-%define vala_version %(rpm -q --queryformat='%{VERSION}' vala | sed 's/\.[0-9]*$//g')
 Name:           libmpdclient
-Version:        2.20
+Version:        2.22
 Release:        0
 Summary:        Library for interfacing the Music Player Daemon
-License:        BSD-3-Clause
+License:        BSD-2-Clause AND BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://musicpd.org/libs/libmpdclient
 Source0:        https://musicpd.org/download/libmpdclient/2/%{name}-%{version}.tar.xz
@@ -31,10 +30,9 @@ Source1:        doxygen-nodatetime-footer.html
 Patch0:         libmpdclient-doxygen_nodatetime.patch
 BuildRequires:  check-devel
 BuildRequires:  doxygen
-BuildRequires:  meson >= 0.37
+BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  vala
 
 %description
 A stable, documented, asynchronous API library for interfacing MPD (Music Player Daemon)
@@ -67,9 +65,6 @@ cp %{SOURCE1} %{_vpath_builddir}/doc/
 
 %install
 %meson_install
-mkdir -pv %{buildroot}%{_datadir}/vala-%{vala_version}/
-mv %{buildroot}%{_datadir}/vala/* %{buildroot}%{_datadir}/vala-%{vala_version}/
-rm -r %{buildroot}%{_datadir}/vala/
 mkdir -p %{buildroot}%{_docdir}/%{name}/
 mv %{buildroot}%{_datadir}/doc/%{name}/* %{buildroot}%{_docdir}/%{name}/
 
@@ -80,7 +75,7 @@ mv %{buildroot}%{_datadir}/doc/%{name}/* %{buildroot}%{_docdir}/%{name}/
 %postun -n %{name}%{so_name} -p /sbin/ldconfig
 
 %files -n %{name}%{so_name}
-%license COPYING
+%license LICENSES/BSD-2-Clause.txt LICENSES/BSD-3-Clause.txt
 %doc AUTHORS
 %{_libdir}/%{name}.so.*
 
@@ -89,7 +84,5 @@ mv %{buildroot}%{_datadir}/doc/%{name}/* %{buildroot}%{_docdir}/%{name}/
 %{_includedir}/mpd
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/libmpdclient.pc
-%dir %{_datadir}/vala-%{vala_version}/
-%{_datadir}/vala-%{vala_version}/*
 
 %changelog
