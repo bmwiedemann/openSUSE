@@ -755,4 +755,20 @@
   * fix musl build</comment>
     <requestid>1166274</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>62ffd2d7d87f903d21f91beb341195c8</srcmd5>
+    <version>1.12.4</version>
+    <time>1713290700</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.12.4:
+  * query when quitting emacs with unhandled marks in a headers buffer
+  * fix mime-handling
+  * update sent handling (simplifying it)
+  * some internal improvements
+  * number of small fixes / updates
+  * documentation updates
+  * re-enable a specific database lock; this makes indexing a bit slower,
+    but hopefully avoids some db corruption.</comment>
+    <requestid>1167921</requestid>
+  </revision>
 </revisionlist>

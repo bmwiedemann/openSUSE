@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 16 06:09:50 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.4:
+  * query when quitting emacs with unhandled marks in a headers buffer
+  * fix mime-handling
+  * update sent handling (simplifying it)
+  * some internal improvements
+  * number of small fixes / updates
+  * documentation updates
+  * re-enable a specific database lock; this makes indexing a bit slower,
+    but hopefully avoids some db corruption.
+
+-------------------------------------------------------------------
 Tue Apr  9 05:00:38 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.3:
