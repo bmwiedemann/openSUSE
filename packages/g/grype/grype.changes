@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 16 06:07:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.76.0:
+  * fix: adds ignore rules for kernel-headers indirect matches
+    (#1787)
+  * chore(deps): bump github.com/hashicorp/go-getter from 1.7.3 to
+    1.7.4 (#1805)
+  * chore: fix function name in comment (#1798)
+  * chore(deps): bump peter-evans/create-pull-request from 6.0.2 to
+    6.0.3 (#1802)
+  * chore(deps): update Syft to v1.2.0 (#1803)
+  * chore(deps): bump github.com/docker/docker (#1800)
+  * chore(deps): bump sigstore/cosign-installer from 3.4.0 to 3.5.0
+    (#1801)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.2 to
+    0.5.3 (#1791)
+  * test: fuzzy version comparison for java versions (#1788)
+  * chore: readme formats updated with sarif option (#1786)
+
+-------------------------------------------------------------------
 Thu Apr 04 16:56:26 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.75.0:
