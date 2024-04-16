@@ -43,7 +43,7 @@ Name:           lua-lmod
 Summary:        Lua-based Environment Modules used in HPC
 License:        MIT
 Group:          Development/Libraries/Other
-Version:        8.7.34
+Version:        8.7.37
 Release:        0
 URL:            https://github.com/TACC/Lmod
 Source0:        https://github.com/TACC/Lmod/archive/%{version}.tar.gz#$/%{name}-%{version}.tar.gz
@@ -58,7 +58,6 @@ BuildRequires:  %{lua_pref}-luaposix
 BuildRequires:  %{lua_pref}-luaterm
 BuildRequires:  bc
 BuildRequires:  procps
-BuildRequires:  rsync
 BuildRequires:  tcl
 # Do not require a lua interpreter directly, this will be handled implicitly
 Requires:       lua%{version_name_suffix %lua_version}-luafilesystem
