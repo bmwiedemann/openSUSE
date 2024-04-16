@@ -6586,4 +6586,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.8.5 (incl. CVE-2024-2201 fix) &amp; input fix &amp; iouring workaround reverted</comment>
     <requestid>1166746</requestid>
   </revision>
+  <revision rev="729" vrev="1">
+    <srcmd5>e1629d8faecc7a6fa79631ff83dea9f9</srcmd5>
+    <version>6.8.6</version>
+    <time>1713290596</time>
+    <user>anag+factory</user>
+    <comment>6.8.6</comment>
+    <requestid>1167734</requestid>
+  </revision>
 </revisionlist>
