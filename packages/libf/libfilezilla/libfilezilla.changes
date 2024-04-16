@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 16 08:34:10 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.47.0
+  * New features:
+    - PKCS#11 support, provided GnuTLS has been compiled with
+      PKCS#11 support enabled
+  * Bugfixes and minor changes:
+    - Added parameter to fz::remove_dir that allows returning an
+      error if the directory did not exist
+    - Add logging of aio reader/writers cannot be opened, fix return
+      value of reader when trying to read nothing
+    - HTTP: Delay sending subsequent requests after having
+      received a response with "Connection: close" set
+    - Listen sockets are now created with the SO_REUSEADDR
+      (SO_EXCLUSIVEADDRUSE on Windows) flag set
+    - Added cert_type::codesign as key purpose to certificate
+      request and creation functions in fz::tls_layer
+- Drop libfilezilla-fix-crash.patch, becuase now in upstream
+
+-------------------------------------------------------------------
 Wed Mar 27 15:13:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add libfilezilla-fix-crash.patch: Fix crash when uploading files

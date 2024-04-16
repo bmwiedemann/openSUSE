@@ -16,11 +16,11 @@
 #
 
 
-%define major		42
+%define major		43
 %define libname		%{name}%{major}
 %define develname	%{name}-devel
 Name:           libfilezilla
-Version:        0.46.0
+Version:        0.47.0
 Release:        0
 Summary:        C++ library for filezilla
 License:        GPL-2.0-or-later
@@ -28,8 +28,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://lib.filezilla-project.org/
 Source0:        https://download.filezilla-project.org/libfilezilla/%{name}-%{version}.tar.xz
 Patch0:         %{name}-date-time.patch
-# PATCH-FIX-UPSTREAM: https://svn.filezilla-project.org/filezilla/libfilezilla/trunk/lib/aio/reader.cpp?view=patch&r1=11064&r2=11095&sortby=date
-Patch1:         %{name}-fix-crash.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -79,6 +77,8 @@ Requires:       %{libname} = %{version}-%{release}
 
 %description -n	%{develname}
 Files needed for development with %{name}.
+
+
 
 
 

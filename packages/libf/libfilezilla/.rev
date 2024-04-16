@@ -474,4 +474,28 @@
 </comment>
     <requestid>1162955</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>c6779e48e9b9ea8d8976eca6e1a9c897</srcmd5>
+    <version>0.47.0</version>
+    <time>1713290708</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.47.0
+  * New features:
+    - PKCS#11 support, provided GnuTLS has been compiled with
+      PKCS#11 support enabled
+  * Bugfixes and minor changes:
+    - Added parameter to fz::remove_dir that allows returning an
+      error if the directory did not exist
+    - Add logging of aio reader/writers cannot be opened, fix return
+      value of reader when trying to read nothing
+    - HTTP: Delay sending subsequent requests after having
+      received a response with &quot;Connection: close&quot; set
+    - Listen sockets are now created with the SO_REUSEADDR
+      (SO_EXCLUSIVEADDRUSE on Windows) flag set
+    - Added cert_type::codesign as key purpose to certificate
+      request and creation functions in fz::tls_layer
+- Drop libfilezilla-fix-crash.patch, becuase now in upstream
+</comment>
+    <requestid>1168358</requestid>
+  </revision>
 </revisionlist>
