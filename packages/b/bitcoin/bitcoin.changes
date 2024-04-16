@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Apr 15 14:20:00 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 26.1:
+  * [doc] add manual pages for 26.1
+  * [doc] update release notes 26.1
+  * [build] bump version to 26.1 final
+  * ci, macos: Use `--break-system-packages` with Homebrew's python
+  * ci: Add workaround for Homebrew's python link error
+  * [doc] update manual pages for v26.1rc2
+  * [build] bump version to v26.1rc2
+  * update release notes 26.1
+  * fuzz: restrict fopencookie usage to Linux & FreeBSD
+  * test: make sure keypool sizes do not change on `getrawchangeaddress`/`getnewaddress` failures
+  * wallet: Avoid updating `ReserveDestination::nIndex` when `GetReservedDestination` fails
+  * p2p: Don't consider blocks mutated if they don't connect to known prev block
+  * [test] IsBlockMutated unit tests
+  * [validation] Cache merkle root and witness commitment checks
+  * [test] Add regression test for #27608
+  * [net processing] Don't process mutated blocks
+  * [validation] Merkle root malleation should be caught by IsBlockMutated
+  * [validation] Introduce IsBlockMutated
+  * [refactor] Cleanup merkle root checks
+  * [validation] Isolate merkle root checks
+  * test: Drop `x` modifier in `fsbridge::fopen` call for mingw builds
+  * rpc: keep .cookie if it was not generated
+  * [doc] add release notes for 26.1rc1
+  * [doc] update manual pages for 26.1rc1
+  * [build] bump version to 26.1rc1
+  * qt: 26.1rc1 translations update
+  * ci: Switch native macOS CI job to Xcode 15.0
+  * build: Fix `-Xclang -internal-isystem` option
+  * Use hardened runtime on macOS release builds.
+  * [test] import descriptor wallet with reorged parent + IsFromMe child in mempool
+  * [test] rescan legacy wallet with reorged parent + IsFromMe child in mempool
+  * snapshots: don't core dump when running -checkblockindex after `loadtxoutset`
+  * [log] mempool loading
+  * net: create I2P sessions with both ECIES-X25519 and ElGamal encryption
+  * [refactor] Add helper for iterating through mempool entries
+  * doc: update release notes for 26.x
+  * wallet: Fix use-after-free in WalletBatch::EraseRecords
+  * ci: Set `HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK` to avoid failures
+  * rpc: getwalletinfo, return wallet 'birthtime'
+  * test: coverage for wallet birth time interaction with -reindex
+  * wallet: fix legacy spkm default birth time
+  * wallet: birth time update during tx scanning
+  * refactor: rename FirstKeyTimeChanged to MaybeUpdateBirthTime
+  * fuzz: disable BnB when SFFO is enabled
+  * test: add coverage for BnB-SFFO restriction
+  * wallet: create tx, log resulting coin selection info
+  * wallet: skip BnB when SFFO is active
+  * test: add regression test for the getrawtransaction segfault
+  * rpc: fix getrawtransaction segfault
+  * ci: Use Ubuntu 24.04 Noble for asan
+  * ci: Use Ubuntu 24.04 Noble for tsan,tidy,fuzz
+  * doc: Missing additions to 26.0 release notes
+  * doc: add historical release notes for 26.0
+
+-------------------------------------------------------------------
 Sat Mar  9 08:54:52 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Use gcc13 on Leap 
