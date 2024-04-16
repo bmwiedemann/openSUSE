@@ -1,7 +1,7 @@
 #
 # spec file for package powermanga
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,10 @@ License:        GPL-3.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            http://linux.tlk.fr/games/Powermanga/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tgz
+# PATCH-FIX-UPSTREAM https://github.com/brunonymous/Powermanga/pull/3
 Patch0:         fix-exec-stack.patch
+# PATCH-FIX-UPSTREAM https://github.com/brunonymous/Powermanga/pull/3
+Patch1:         powermanga-fix-difficulty.patch
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme

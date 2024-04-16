@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 28 11:00:18 UTC 2024 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add powermanga-fix-difficulty.patch to enable changing the
+  difficulty
+
+-------------------------------------------------------------------
 Mon Oct 24 17:07:32 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Add fix-exec-stack.patch to disable executable stacks for i586
