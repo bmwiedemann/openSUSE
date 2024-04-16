@@ -18,7 +18,7 @@
 
 Name:           libfole
 %define lname	libfole1
-Version:        20240119
+Version:        20240416
 Release:        0
 Summary:        Library for Object Linking and Embedding (OLE) data types
 License:        LGPL-3.0-or-later
@@ -29,7 +29,7 @@ Source2:        https://github.com/libyal/libfole/releases/download/%version/lib
 Source9:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcerror) >= 20240413
 # Various notes: https://en.opensuse.org/libyal
 
 %description
@@ -70,8 +70,7 @@ grep '  local' config.log && exit 1
 %make_install
 find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*
