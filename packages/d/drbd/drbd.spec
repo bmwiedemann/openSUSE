@@ -59,6 +59,9 @@ Patch0020:   0020-drbd-do-not-allow-auto-demote-to-be-interrupted-by-s.patch
 Patch0021:   0021-compat-sock-Remove-sendpage-in-favour-of-sendmsg-MSG.patch
 Patch0022:   0022-compat-block-replace-fmode_t-with-a-block-specific-t.patch
 Patch0023:   0023-compat-genetlink-remove-userhdr-from-struct-genl_inf.patch
+Patch0024:   0024-compat-fixup-FMODE_READ-FMODE_WRITE-usage.patch
+Patch0025:   0025-compat-drdb-Convert-to-use-bdev_open_by_path.patch
+Patch0026:   0026-compat-gate-blkdev_-patches-behind-bdev_open_by_path.patch
 # suse special patch
 Patch1001:   bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch
 Patch1002:   suse-coccinelle.patch

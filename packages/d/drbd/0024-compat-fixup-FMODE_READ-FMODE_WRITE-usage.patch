@@ -1,0 +1,75 @@
+From 5a09ad97f57eb276dc1e9a84e1c82f11ce1fe1b7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christoph=20B=C3=B6hmwalder?=
+ <christoph.boehmwalder@linbit.com>
+Date: Thu, 4 Apr 2024 15:53:31 +0200
+Subject: [PATCH 1/3] compat: fixup FMODE_READ/FMODE_WRITE usage
+
+Fixes: 4a84d1d0 ("compat: block: replace fmode_t with a block-specific type for block open flags")
+---
+ .../cocci/blk_mode_t__no_present.cocci            | 15 +++++++++++++++
+ drbd/drbd-kernel-compat/gen_patch_names.c         |  6 +++---
+ drbd/drbd_nl.c                                    |  2 +-
+ 3 files changed, 19 insertions(+), 4 deletions(-)
+
+diff --git a/drbd/drbd-kernel-compat/cocci/blk_mode_t__no_present.cocci b/drbd/drbd-kernel-compat/cocci/blk_mode_t__no_present.cocci
+index 030723c817de..d1312a093ffe 100644
+--- a/drbd/drbd-kernel-compat/cocci/blk_mode_t__no_present.cocci
++++ b/drbd/drbd-kernel-compat/cocci/blk_mode_t__no_present.cocci
+@@ -17,3 +17,18 @@ identifier mode;
+ )
+   ...>
+   }
++
++@@
++@@
++// special case: bdev_open_by_path takes a blk_mode_t, so convert that too. I can't seem to get
++// coccinelle to match the "READ | WRITE" condition generically, so just hard code it.
++// NOTE: we use blkdev_get_by_path instead of bdev_open_by_path in some compat cases, so support that too.
++(
++bdev_open_by_path
++|
++blkdev_get_by_path
++)
++ (...,
++- BLK_OPEN_READ | BLK_OPEN_WRITE
+++ FMODE_READ | FMODE_WRITE
++ , ...)
+diff --git a/drbd/drbd-kernel-compat/gen_patch_names.c b/drbd/drbd-kernel-compat/gen_patch_names.c
+index b136acf3148a..86a7ce7a93ed 100644
+--- a/drbd/drbd-kernel-compat/gen_patch_names.c
++++ b/drbd/drbd-kernel-compat/gen_patch_names.c
+@@ -565,15 +565,15 @@ int main(int argc, char **argv)
+ 	patch(1, "block_device_operations_open", true, false,
+ 	      COMPAT_BLOCK_DEVICE_OPERATIONS_OPEN_TAKES_GENDISK, "takes_gendisk");
+ 
+-	patch(1, "blkdev_put", true, false,
+-	      COMPAT_BLKDEV_PUT_HAS_HOLDER, "has_holder");
+-
+ 	patch(1, "block_device_operations_release", true, false,
+ 	      COMPAT_BLOCK_DEVICE_OPERATIONS_RELEASE_TAKES_SINGLE_ARGUMENT, "takes_single_argument");
+ 
+ 	patch(1, "blk_mode_t", true, false,
+ 	      COMPAT_HAVE_BLK_MODE_T, "present");
+ 
++	patch(1, "blkdev_put", true, false,
++	      COMPAT_BLKDEV_PUT_HAS_HOLDER, "has_holder");
++
+ 	patch(1, "genl_info_userhdr", true, false,
+ 	      COMPAT_HAVE_GENL_INFO_USERHDR, "present");
+ 
+diff --git a/drbd/drbd_nl.c b/drbd/drbd_nl.c
+index d41ccfcd4bb2..a355f5d5feb1 100644
+--- a/drbd/drbd_nl.c
++++ b/drbd/drbd_nl.c
+@@ -2566,7 +2566,7 @@ static struct block_device *open_backing_dev(struct drbd_device *device,
+ 		const char *bdev_path, void *claim_ptr)
+ {
+ 	struct block_device *bdev = blkdev_get_by_path(bdev_path,
+-				  FMODE_READ | FMODE_WRITE,
++				  BLK_OPEN_READ | BLK_OPEN_WRITE,
+ 				  claim_ptr, NULL);
+ 	if (IS_ERR(bdev)) {
+ 		drbd_err(device, "open(\"%s\") failed with %ld\n",
+-- 
+2.44.0
+

@@ -1,3 +1,12 @@
+------------------------------------------------------------------
+Tue Apr 15 07:50:00 UTC 2024 - Glass Su <glass.su@suse.com>
+
+- drbd: fix build error against kernel v6.8.2 (boo#1222397)
+  * add upstream patches
+    + 0024-compat-fixup-FMODE_READ-FMODE_WRITE-usage.patch
+    + 0025-compat-drdb-Convert-to-use-bdev_open_by_path.patch
+    + 0026-compat-gate-blkdev_-patches-behind-bdev_open_by_path.patch
+
 -------------------------------------------------------------------
 Mon Feb 26 07:45:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 

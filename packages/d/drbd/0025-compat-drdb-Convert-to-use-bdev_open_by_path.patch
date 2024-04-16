@@ -1,0 +1,379 @@
+From 604f31ab14eeca9eddb42028de93bb89f3ae6515 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christoph=20B=C3=B6hmwalder?=
+ <christoph.boehmwalder@linbit.com>
+Date: Thu, 4 Apr 2024 16:27:51 +0200
+Subject: [PATCH 2/3] compat: drdb: Convert to use bdev_open_by_path()
+
+Equivalent to upstream Linux commit 75e27d373425
+("drdb [sic]: Convert to use bdev_open_by_path()"), plus a compat patch.
+---
+ .../cocci/bdev_open_by_path__no_present.cocci | 173 ++++++++++++++++++
+ drbd/drbd-kernel-compat/gen_patch_names.c     |   3 +
+ .../tests/have_bdev_open_by_path.c            |   8 +
+ drbd/drbd_int.h                               |   2 +
+ drbd/drbd_nl.c                                |  59 +++---
+ 5 files changed, 216 insertions(+), 29 deletions(-)
+ create mode 100644 drbd/drbd-kernel-compat/cocci/bdev_open_by_path__no_present.cocci
+ create mode 100644 drbd/drbd-kernel-compat/tests/have_bdev_open_by_path.c
+
+diff --git a/drbd/drbd-kernel-compat/cocci/bdev_open_by_path__no_present.cocci b/drbd/drbd-kernel-compat/cocci/bdev_open_by_path__no_present.cocci
+new file mode 100644
+index 000000000000..983f05080f79
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/cocci/bdev_open_by_path__no_present.cocci
+@@ -0,0 +1,173 @@
++@@
++@@
++struct drbd_backing_dev {
++...
++- struct bdev_handle *backing_bdev_handle;
++...
++- struct bdev_handle *md_bdev_handle;
++...
++}
++
++@@
++identifier handle;
++@@
++static void close_backing_dev(...,
++-	struct bdev_handle *handle
+++	struct block_device *bdev, void *holder
++	, ...
++ )
++{
++<...
++(
++- handle->bdev
+++ bdev
++|
++- bdev_release(handle)
+++ blkdev_put(bdev, holder)
++|
++- handle
+++ bdev
++)
++...>
++} 
++
++@@
++identifier device;
++struct bdev_handle *handle;
++identifier err;
++identifier new_disk_conf;
++@@
++// special case: when linking the meta_dev, we want to pass meta_claim_ptr to close instead of device
++err = link_backing_dev(..., new_disk_conf->meta_dev, ...);
++if (err) {
++	...
++	close_backing_dev(device,
++-		handle
+++		bdev, meta_claim_ptr
++	, ...);
++	...
++}
++
++@@
++identifier ldev;
++struct bdev_handle *handle;
++identifier device;
++@@
++// generic close_backing_dev usage
++close_backing_dev(device,
++(
++- ldev->backing_bdev_handle
+++ ldev->backing_bdev, device
++|
++- ldev->md_bdev_handle
+++ ldev->md_bdev,
+++ ldev->md.meta_dev_idx < 0 ? (void *)device : (void *)drbd_m_holder
++|
++- handle
+++ bdev, device
++)
++, ...);
++
++@@
++identifier handle;
++@@
++- struct bdev_handle *
+++ struct block_device *
++open_backing_dev(...)
++{
++...
++- struct bdev_handle *handle = bdev_open_by_path(
+++ struct block_device *bdev = blkdev_get_by_path(
++...);
++<...
++(
++IS_ERR
++|
++PTR_ERR
++)
++ (
++- handle
+++ bdev
++ )
++...>
++return
++- handle
+++ bdev
++;
++}
++
++@@
++identifier handle;
++identifier err;
++@@
++static int link_backing_dev(...,
++-	struct bdev_handle *handle
+++	struct block_device *bdev
++ )
++{
++...
++int err = bd_link_disk_holder(
++-	handle->bdev
+++	bdev
++	, ...);
++if (err) {
++-	bdev_release(handle);
++	...
++}
++...
++}
++
++@@
++identifier device;
++expression bd;
++identifier handle;
++@@
++// generic link_backing_dev usage
++link_backing_dev(device, bd,
++-	handle
+++	bdev
++ )
++
++@@
++identifier handle;
++@@
++// generic open_backing_dev usage
++{
++...
++- struct bdev_handle *handle;
+++ struct block_device *bdev;
++<...
++(
++- handle
+++ bdev
++= open_backing_dev(...);
++|
++IS_ERR(
++- handle
+++ bdev
++ )
++)
++...>
++}
++
++@@
++struct drbd_backing_dev *nbc;
++identifier handle;
++@@
++(
++- nbc->backing_bdev = handle->bdev;
++- nbc->backing_bdev_handle = handle;
+++ nbc->backing_bdev = bdev;
++|
++- nbc->md_bdev = handle->bdev;
++- nbc->md_bdev_handle = handle;
+++ nbc->md_bdev = bdev;
++)
++
++@@
++identifier handle;
++identifier nbc;
++@@
++// only this one comparison exists in the code, just special-case it instead of implementing the generic case
++- handle != nbc->backing_bdev_handle
+++ bdev != nbc->backing_bdev
+diff --git a/drbd/drbd-kernel-compat/gen_patch_names.c b/drbd/drbd-kernel-compat/gen_patch_names.c
+index 86a7ce7a93ed..d6fe75a80cf6 100644
+--- a/drbd/drbd-kernel-compat/gen_patch_names.c
++++ b/drbd/drbd-kernel-compat/gen_patch_names.c
+@@ -559,6 +559,9 @@ int main(int argc, char **argv)
+ 	patch(1, "__bio_add_page", true, false,
+ 	      COMPAT_HAVE___BIO_ADD_PAGE, "present");
+ 
++	patch(1, "bdev_open_by_path", true, false,
++	      COMPAT_HAVE_BDEV_OPEN_BY_PATH, "present");
++
+ 	patch(1, "blkdev_get_by_path", true, false,
+ 	      COMPAT_BLKDEV_GET_BY_PATH_HAS_HOLDER_OPS, "has_holder_ops");
+ 
+diff --git a/drbd/drbd-kernel-compat/tests/have_bdev_open_by_path.c b/drbd/drbd-kernel-compat/tests/have_bdev_open_by_path.c
+new file mode 100644
+index 000000000000..92266de0b15b
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/tests/have_bdev_open_by_path.c
+@@ -0,0 +1,8 @@
++/* { "version": "v6.7", "commit": "e719b4d156749f02eafed31a3c515f2aa9dcc72a", "comment": "introduce bdev_open_by_* functions", "author": "Jan Kara <jack@suse.cz>", "date": "Wed Sep 27 11:34:07 2023 +0200" } */
++
++#include <linux/blkdev.h>
++
++struct bdev_handle *foo(const char *path, blk_mode_t mode, void *holder,
++		const struct blk_holder_ops *hops) {
++	return bdev_open_by_path(path, mode, holder, hops);
++}
+diff --git a/drbd/drbd_int.h b/drbd/drbd_int.h
+index cf593c09cda1..a41b228cb13b 100644
+--- a/drbd/drbd_int.h
++++ b/drbd/drbd_int.h
+@@ -700,7 +700,9 @@ struct drbd_md {
+ 
+ struct drbd_backing_dev {
+ 	struct block_device *backing_bdev;
++	struct bdev_handle *backing_bdev_handle;
+ 	struct block_device *md_bdev;
++	struct bdev_handle *md_bdev_handle;
+ 	struct drbd_md md;
+ 	struct disk_conf __rcu *disk_conf; /* RCU, for updates: resource->conf_update */
+ 	sector_t known_size; /* last known size of that backing device */
+diff --git a/drbd/drbd_nl.c b/drbd/drbd_nl.c
+index a355f5d5feb1..6a48287e251e 100644
+--- a/drbd/drbd_nl.c
++++ b/drbd/drbd_nl.c
+@@ -94,7 +94,7 @@ atomic_t drbd_genl_seq = ATOMIC_INIT(2); /* two. */
+ 
+ DEFINE_MUTEX(notification_mutex);
+ 
+-/* used blkdev_get_by_path, to claim our meta data device(s) */
++/* used bdev_open_by_path, to claim our meta data device(s) */
+ static char *drbd_m_holder = "Hands off! this is DRBD's meta data device.";
+ 
+ static void drbd_adm_send_reply(struct sk_buff *skb, struct genl_info *info)
+@@ -2535,14 +2535,14 @@ bool want_bitmap(struct drbd_peer_device *peer_device)
+ 	return want_bitmap;
+ }
+ 
+-static void close_backing_dev(struct drbd_device *device, struct block_device *bdev,
+-	void *holder, bool do_bd_unlink)
++static void close_backing_dev(struct drbd_device *device,
++		struct bdev_handle *handle, bool do_bd_unlink)
+ {
+-	if (!bdev)
++	if (!handle)
+ 		return;
+ 	if (do_bd_unlink)
+-		bd_unlink_disk_holder(bdev, device->vdisk);
+-	blkdev_put(bdev, holder);
++		bd_unlink_disk_holder(handle->bdev, device->vdisk);
++	bdev_release(handle);
+ }
+ 
+ void drbd_backing_dev_free(struct drbd_device *device, struct drbd_backing_dev *ldev)
+@@ -2553,33 +2553,33 @@ void drbd_backing_dev_free(struct drbd_device *device, struct drbd_backing_dev *
+ 	drbd_dax_close(ldev);
+ 
+ 	close_backing_dev(device,
+-			  ldev->md_bdev,
+-			  ldev->md.meta_dev_idx < 0 ? (void *)device : (void *)drbd_m_holder,
++			  ldev->md_bdev_handle,
+ 			  ldev->md_bdev != ldev->backing_bdev);
+-	close_backing_dev(device, ldev->backing_bdev, device, true);
++	close_backing_dev(device, ldev->backing_bdev_handle, true);
+ 
+ 	kfree(ldev->disk_conf);
+ 	kfree(ldev);
+ }
+ 
+-static struct block_device *open_backing_dev(struct drbd_device *device,
++static struct bdev_handle *open_backing_dev(struct drbd_device *device,
+ 		const char *bdev_path, void *claim_ptr)
+ {
+-	struct block_device *bdev = blkdev_get_by_path(bdev_path,
++	struct bdev_handle *handle = bdev_open_by_path(bdev_path,
+ 				  BLK_OPEN_READ | BLK_OPEN_WRITE,
+ 				  claim_ptr, NULL);
+-	if (IS_ERR(bdev)) {
++	if (IS_ERR(handle)) {
+ 		drbd_err(device, "open(\"%s\") failed with %ld\n",
+-				bdev_path, PTR_ERR(bdev));
++				bdev_path, PTR_ERR(handle));
+ 	}
+-	return bdev;
++	return handle;
+ }
+ 
+ static int link_backing_dev(struct drbd_device *device,
+-		const char *bdev_path, struct block_device *bdev)
++		const char *bdev_path, struct bdev_handle *handle)
+ {
+-	int err = bd_link_disk_holder(bdev, device->vdisk);
++	int err = bd_link_disk_holder(handle->bdev, device->vdisk);
+ 	if (err) {
++		bdev_release(handle);
+ 		drbd_err(device, "bd_link_disk_holder(\"%s\", ...) failed with %d\n",
+ 				bdev_path, err);
+ 	}
+@@ -2590,22 +2590,22 @@ static int open_backing_devices(struct drbd_device *device,
+ 		struct disk_conf *new_disk_conf,
+ 		struct drbd_backing_dev *nbc)
+ {
+-	struct block_device *bdev;
++	struct bdev_handle *handle;
+ 	void *meta_claim_ptr;
+ 	int err;
+ 
+-	bdev = open_backing_dev(device, new_disk_conf->backing_dev, device);
+-	if (IS_ERR(bdev))
++	handle = open_backing_dev(device, new_disk_conf->backing_dev, device);
++	if (IS_ERR(handle))
+ 		return ERR_OPEN_DISK;
+ 
+-	err = link_backing_dev(device, new_disk_conf->backing_dev, bdev);
++	err = link_backing_dev(device, new_disk_conf->backing_dev, handle);
+ 	if (err) {
+ 		/* close without unlinking; otherwise error path will try to unlink */
+-		close_backing_dev(device, bdev, device, false);
++		close_backing_dev(device, handle, false);
+ 		return ERR_OPEN_DISK;
+ 	}
+-
+-	nbc->backing_bdev = bdev;
++	nbc->backing_bdev = handle->bdev;
++	nbc->backing_bdev_handle = handle;
+ 
+ 	/* meta_claim_ptr: device, if claimed exclusively; shared drbd_m_holder,
+ 	 * if potentially shared with other drbd minors
+@@ -2620,22 +2620,23 @@ static int open_backing_devices(struct drbd_device *device,
+ 	 * should check it for you already; but if you don't, or
+ 	 * someone fooled it, we need to double check here)
+ 	 */
+-	bdev = open_backing_dev(device, new_disk_conf->meta_dev, meta_claim_ptr);
+-	if (IS_ERR(bdev))
++	handle = open_backing_dev(device, new_disk_conf->meta_dev, meta_claim_ptr);
++	if (IS_ERR(handle))
+ 		return ERR_OPEN_MD_DISK;
+ 
+ 	/* avoid double bd_claim_by_disk() for the same (source,target) tuple,
+ 	 * as would happen with internal metadata. */
+-	if (bdev != nbc->backing_bdev) {
+-		err = link_backing_dev(device, new_disk_conf->meta_dev, bdev);
++	if (handle != nbc->backing_bdev_handle) {
++		err = link_backing_dev(device, new_disk_conf->meta_dev, handle);
+ 		if (err) {
+ 			/* close without unlinking; otherwise error path will try to unlink */
+-			close_backing_dev(device, bdev, meta_claim_ptr, false);
++			close_backing_dev(device, handle, false);
+ 			return ERR_OPEN_MD_DISK;
+ 		}
+ 	}
+ 
+-	nbc->md_bdev = bdev;
++	nbc->md_bdev = handle->bdev;
++	nbc->md_bdev_handle = handle;
+ 	return NO_ERROR;
+ }
+ 
+-- 
+2.44.0
+
