@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-aliyun-python-sdk-core
-Version:        2.15.0
+Version:        2.15.1
 Release:        0
 Summary:        The core module of Aliyun Python SDK
 License:        Apache-2.0
