@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 16 12:38:57 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+-  Update to 1.4.0:
+  * Full changelog: https://github.com/parallaxsecond/parsec/compare/1.4.0-rc2...1.4.0
+- Simplify libstdc++-devel handling for Leap 15.x
+
+-------------------------------------------------------------------
+Tue Apr 16 10:12:19 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Fix build on Leap 15.6
+  * installed the corresponding libstdc++-devel to avoid the -lstdc++ not found
+
+-------------------------------------------------------------------
 Thu Mar 28 15:23:19 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.4.0-rc2:
