@@ -18,7 +18,7 @@
 
 %define lname	libeconf0
 Name:           libeconf
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Enhanced config file parser ala systemd
 License:        LGPL-2.1-or-later
@@ -52,6 +52,14 @@ This package contains all necessary include files and libraries needed
 to develop applications that needs to read configuration files from
 different locations.
 
+%package devel-static
+Summary:        Static library for libeconf
+Group:          Development/Libraries/C and C++
+Requires:       libeconf-devel = %{version}
+
+%description devel-static
+This package contains libeconf.a static library.
+
 %package utils
 Summary:        Command line interface for libeconf
 Group:          System/Base
@@ -80,6 +88,9 @@ and /etc.
 %files -n %{lname}
 %license LICENSE
 %{_libdir}/libeconf.so.*
+
+%files devel-static
+%{_libdir}/libeconf.a
 
 %files devel
 %{_includedir}/*.h

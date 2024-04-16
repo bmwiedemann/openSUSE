@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 12 10:47:39 UTC 2024 - schubi@suse.com
+
+- Update to version 0.6.3:
+  * Fix build with musl libc on ppc64le (#198)
+  * Creating static library with new package libeconf-devel-static.
+    This is needed for building package util-linux and btrfsprogs.  
+
+-------------------------------------------------------------------
 Wed Mar 06 11:02:00 UTC 2024 - schubi@suse.com
 
 - Update to version 0.6.2:
