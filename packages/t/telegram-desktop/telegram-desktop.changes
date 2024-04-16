@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 16 06:40:25 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.16.7
+  * Reimplement file open confirmations.
+
+-------------------------------------------------------------------
 Fri Apr 12 07:14:22 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Rebase patch used in Backports:
@@ -12,6 +18,32 @@ Fri Apr 12 07:14:22 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 - Set -DDESKTOP_APP_DISABLE_DBUS_INTEGRATION=ON only up to 15.5 .
   15.6 should have recent libraries to enable dbus integration
 - Define BOOST_NO_STD_ALLOCATOR to fix a FTBFS in 15.6
+
+-------------------------------------------------------------------
+Wed Apr 10 07:35:12 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.16.6
+  * Show custom emoji preview on long press.
+  * Fix resume chat bot button disappearance.
+  * Fix GIF files playback. (regression in 4.16.3.beta)
+
+-------------------------------------------------------------------
+Tue Apr  9 08:08:59 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.16.5
+  * Fix editing privacy for groups and channels invitations.
+  * Possible fix for the network unresponsiveness after sleep.
+  * Possible fix for wide range of memory allocator crashes on Linux.
+
+-------------------------------------------------------------------
+Mon Apr  8 06:04:27 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.16.4
+  * Bug fixes and other minor improvements.
+
+- Updated to version 4.16.3
+  * Improve media upload speed.
+  * Update FFmpeg to 6.1.1.
 
 -------------------------------------------------------------------
 Fri Apr  5 08:38:17 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
