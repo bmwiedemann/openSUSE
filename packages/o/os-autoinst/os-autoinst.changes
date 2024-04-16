@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 16 06:47:13 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1713192574.e11bad8:
+  * Update OpenQA/Isotovideo/Utils.pm
+  * Update t/34-git.t
+  * Fix updating CASEDIR/NEEDLE_DIR git cache for default branch
+  * t: Improve error report in 26-video_stream.t
+  * Adjust dependencies to support build of s390x packages
+  * setup-multimachine: Retry package installation up to 7 times
+
+-------------------------------------------------------------------
 Sat Apr 13 22:44:13 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1712854180.1bf0714:
