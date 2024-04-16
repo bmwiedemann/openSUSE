@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 15 20:09:30 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 2.45:
+  * project: Check if dotgit exists w/out symlink check
+  * git: raise soft version to 2.7.4
+  * git: raise hard version to 1.7.9
+  * docs: release: add recent git/python/ssh/debian info
+  * main: Stringify project name in error_info
+
+-------------------------------------------------------------------
 Sat Mar 16 09:01:39 UTC 2024 - sebix@sebix.at
 
 - Update to version 2.44:
