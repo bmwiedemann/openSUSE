@@ -1118,7 +1118,6 @@ unsorted:
   - awf-gtk4 
   - awkward-devel 
   - aws-c-auth-devel 
-  - aws-c-cal 
   - aws-c-cal-devel 
   - aws-c-common-devel 
   - aws-c-compression-devel 
@@ -6894,6 +6893,7 @@ unsorted:
   - gitk 
   - gitleaks 
   - gitolite 
+  - gitoxide 
   - gitsign 
   - gitslave 
   - gitslave-doc 
@@ -12496,6 +12496,7 @@ unsorted:
   - libecholib1_3 
   - libecm1 
   - libeconf-devel 
+  - libeconf-devel-static 
   - libeconf-utils 
   - libecpg6 
   - libecpg6-32bit 
@@ -12700,7 +12701,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla42 
+  - libfilezilla43 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -15030,6 +15031,7 @@ unsorted:
   - libprimesieve12 
   - libprofiler0 
   - libproj25 
+  - libprometheus-cpp0_12 
   - libprotobuf-c-devel 
   - libprotobuf-lite25_3_0-32bit 
   - libprotobuf-lite3_21_12 
@@ -22734,15 +22736,6 @@ unsorted:
   - powerman 
   - powerman-devel 
   - powermanga 
-  - powermock-api-easymock 
-  - powermock-api-mockito 
-  - powermock-api-support 
-  - powermock-common 
-  - powermock-core 
-  - powermock-javadoc 
-  - powermock-junit4 
-  - powermock-reflect 
-  - powermock-testng 
   - powerstat 
   - powerstat-bash-completion 
   - powertop 
@@ -22866,6 +22859,7 @@ unsorted:
   - prom2json 
   - prometheus-blackbox_exporter 
   - prometheus-client-model-source 
+  - prometheus-cpp-devel 
   - prometheus-ha_cluster_exporter 
   - prometheus-postgres_exporter 
   - prometheus-sap_host_exporter 
@@ -26697,7 +26691,6 @@ unsorted:
   - python310-starlette 
   - python310-statsd 
   - python310-statsmodels 
-  - python310-stdeb 
   - python310-stestr 
   - python310-stevedore 
   - python310-stomp.py 
@@ -30146,7 +30139,6 @@ unsorted:
   - python311-starlette 
   - python311-statsd 
   - python311-statsmodels 
-  - python311-stdeb 
   - python311-stestr 
   - python311-stevedore 
   - python311-stomp.py 
@@ -34125,7 +34117,6 @@ unsorted:
   - python39-librosa 
   - python39-omni-camera 
   - python39-pycapnp 
-  - python39-stdeb 
   - python39-testsuite 
   - python39-tk 
   - python39-tools 
@@ -34961,6 +34952,8 @@ unsorted:
   - resolv_wrapper 
   - resource-agents 
   - resource-agents-zfs 
+  - resources 
+  - resources-lang 
   - resteasy 
   - resteasy-atom-provider 
   - resteasy-client 
@@ -47756,6 +47749,7 @@ unsorted:
   - xom 
   - xom-demo 
   - xom-javadoc 
+  - xone-kmp-default 
   - xonotic 
   - xonotic-data 
   - xonotic-server 
