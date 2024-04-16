@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 15 22:21:28 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.15.3:
+  * gopls: update go.mod for v0.15.3-pre.2
+  * gopls/internal/server: don't reset views if configuration did not change
+  * gopls: update go.mod for v0.15.3-pre.1
+  * gopls/internal/cache: add debug assertions to refine golang/go#66732
+  * gopls/internal/cache: analysis: repair start/end and refine bug report
+  * gopls/internal/cache: avoid panic when the primary diagnostic is broken
+  * internal/check: filter out too-new Go versions for type checking
+  * gopls/internal/cache: fix crash in snapshot.Analyze with patch versions
+  * gopls/internal/server: filter diagnostics to "best" views
+  * internal/imports: fix two "nil pointer in interface" bugs
+  * all: add replace directive to help stage the v0.15.3 release
+  * gopls: fix test failures due to quoting of names in go/types errors
+
+-------------------------------------------------------------------
 Mon Mar 11 20:48:17 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.15.2:

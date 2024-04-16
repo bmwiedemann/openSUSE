@@ -122,4 +122,24 @@
   * gopls/internal/cache: prune broken edges to command-line-arguments pkgs (forwarded request 1159982 from jfkw)</comment>
     <requestid>1159983</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bc86253638679db8bb71bab7ad44eba7</srcmd5>
+    <version>0.15.3</version>
+    <time>1713290665</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.15.3:
+  * gopls: update go.mod for v0.15.3-pre.2
+  * gopls/internal/server: don't reset views if configuration did not change
+  * gopls: update go.mod for v0.15.3-pre.1
+  * gopls/internal/cache: add debug assertions to refine golang/go#66732
+  * gopls/internal/cache: analysis: repair start/end and refine bug report
+  * gopls/internal/cache: avoid panic when the primary diagnostic is broken
+  * internal/check: filter out too-new Go versions for type checking
+  * gopls/internal/cache: fix crash in snapshot.Analyze with patch versions
+  * gopls/internal/server: filter diagnostics to &quot;best&quot; views
+  * internal/imports: fix two &quot;nil pointer in interface&quot; bugs
+  * all: add replace directive to help stage the v0.15.3 release
+  * gopls: fix test failures due to quoting of names in go/types errors (forwarded request 1167899 from jfkw)</comment>
+    <requestid>1167900</requestid>
+  </revision>
 </revisionlist>
