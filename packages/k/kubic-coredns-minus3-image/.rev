@@ -8,4 +8,15 @@
 (container image for `coredns-minus3` package)</comment>
     <requestid>1102864</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1f24be579a44796fa59d4a4f4641f902</srcmd5>
+    <version>1.0.0</version>
+    <time>1713290724</time>
+    <user>anag+factory</user>
+    <comment>- Drop hwclock entry: this is not supported on containers.
+- Fix keytable entry: we need to specify us, not us.map.gz.
+
+- Initial Packaging (forwarded request 1167977 from dimstar)</comment>
+    <requestid>1167988</requestid>
+  </revision>
 </revisionlist>
