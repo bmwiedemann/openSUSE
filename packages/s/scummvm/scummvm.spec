@@ -20,7 +20,7 @@
 %bcond_without libmpeg2
 %bcond_without mad
 Name:           scummvm
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 Summary:        Interpreter for several adventure games
 License:        GPL-3.0-or-later
