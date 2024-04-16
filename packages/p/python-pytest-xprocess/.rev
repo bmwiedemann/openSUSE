@@ -82,4 +82,16 @@ python-Werkzeug 2.0.1 (currently in Staging:F)</comment>
   * Remove dependency on `py`</comment>
     <requestid>1114844</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d19b4210ae9bba4bf704b95d306b5451</srcmd5>
+    <version>1.0.1</version>
+    <time>1713290592</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.1:
+  * Add missing test suite files to source distribution
+  * ProcessStarter.pattern is now optional. Users may provide
+    either ProcessStarter.pattern or ProcessStarter.callback or
+    both.</comment>
+    <requestid>1167778</requestid>
+  </revision>
 </revisionlist>
