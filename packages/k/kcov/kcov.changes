@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 16 11:23:38 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- legaldb scan: Add APSL-2.0
+  for kcov-42/src/engines/osx/mach_exc.defs 
+
+-------------------------------------------------------------------
 Mon Apr 15 08:46:11 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add -lsframe, -lzstd to build flags on Leap 15.5 and 15.6 build

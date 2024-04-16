@@ -20,7 +20,7 @@ Name:           kcov
 Version:        42
 Release:        0
 Summary:        Code coverage tool without special compilation options
-License:        GPL-2.0-only
+License:        APSL-2.0 AND GPL-2.0-only
 Group:          Development/Tools/Other
 URL:            https://github.com/SimonKagstrom/kcov
 Source0:        https://github.com/SimonKagstrom/kcov/archive/v%{version}.tar.gz
