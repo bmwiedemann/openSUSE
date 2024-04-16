@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Apr 14 20:24:47 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2024.5:
+  + sepolicy: Fix publicity mismatch for
+    ostree_sepolicy_host_enabled
+  + main: Ignore SIGPIPE when printing version
+  + otcore: Drop config load print
+  + bootloader/grub2: Don't do anything if we have static configs
+  + sysroot: Turn on bootloader-naming-2 by default
+  + kargs: parse spaces in kargs input and keep quotes
+  + Ensure boot directory is open before accessing it for early
+    pruning
+  + checkout: Always replace existing content with overlay mode
+
+-------------------------------------------------------------------
 Sat Mar  2 19:23:07 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2024.4:
