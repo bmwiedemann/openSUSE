@@ -1,3 +1,12 @@
+Mon Apr 15 07:46:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop hwclock entry: this is not supported on containers.
+
+-------------------------------------------------------------------
+Wed Apr 10 07:31:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix keytable entry: we need to specify us, not us.map.gz.
+
 -------------------------------------------------------------------
 Tue Jul 21 12:44:24 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
