@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 16 15:49:04 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20240416.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20240416
+  * Simplify `truffleruby+graalvm-dev` build definition re: download redirect by @mislav in #2361
+  * Add TruffleRuby and TruffleRuby GraalVM 24.0.1 by @eregon in #2365
+
+-------------------------------------------------------------------
 Tue Mar 19 23:43:57 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20240319.
