@@ -49,7 +49,7 @@ Patch1:         gtk3-revert-forced-xftdpi.patch
 BuildRequires:  cups-devel >= 1.7
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
-BuildRequires:  gettext-tools-mini >= 0.19.7
+BuildRequires:  gettext-devel >= 0.19.7
 BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
