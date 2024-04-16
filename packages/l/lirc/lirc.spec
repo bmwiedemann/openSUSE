@@ -1,7 +1,7 @@
 #
 # spec file for package lirc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -258,6 +258,10 @@ rm -rf contrib/.release-process.txt.swp
 rm -rf %{buildroot}/%{_datadir}/lirc/lirc-%{version}.tar.gz %{buildroot}/%{_datadir}/lirc/python-pkg
 %fdupes -s %{buildroot}
 %fdupes -s .
+%python3_fix_shebang
+%if %{suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}%{python3_sitearch}/lirc-setup/*
+%endif
 
 %post -n liblirc_client0 -p /sbin/ldconfig
 %post -n liblirc_driver0 -p /sbin/ldconfig

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 26 08:47:23 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang{,_path} macros, [bsc#1212476]
+
+-------------------------------------------------------------------
 Wed May  3 14:13:16 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Remove ProtectClock hardening. This causes more pain then it
