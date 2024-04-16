@@ -718,4 +718,25 @@
     (@JasonWeill)</comment>
     <requestid>1163576</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>297d095bd869dac1d9b5b56385a68f7a</srcmd5>
+    <version>4.1.6</version>
+    <time>1713290629</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.1.6
+  * Fix outputarea collapse expand #16124 (@FoSuCloud)
+  * Disable placeholder for password input #16128 (@Alanhou1222)
+  * Fix for existing shortcuts getting triggered while edit
+    shortcut #16126 (@Susilkessav)
+  * Use smart scroll in debugger to minimize distraction #16084
+    (@krassowski)
+  * Store the real position of the item in reactive toolbar #16111
+    (@brichet)
+  * Fix extension installation on Windows #16064 (@fcollonval)
+  * Removes dotted outline from active code cell #16070
+    (@JasonWeill)
+  * Long items should not wrap #15844 (@mdietz94)
+  * Fix manager isDisposed is not set #15997 (@fcollonval)</comment>
+    <requestid>1167857</requestid>
+  </revision>
 </revisionlist>

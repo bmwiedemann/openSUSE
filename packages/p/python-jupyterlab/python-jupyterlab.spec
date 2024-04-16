@@ -16,9 +16,8 @@
 #
 
 
-%define skip_python39 1
 Name:           python-jupyterlab
-Version:        4.1.5
+Version:        4.1.6
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
@@ -34,7 +33,7 @@ BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module httpx >= 0.25.0}
 BuildRequires:  %{python_module importlib-metadata >= 4.8.3 if %python-base < 3.10}
 BuildRequires:  %{python_module importlib-resources >= 1.4 if %python-base < 3.9}
-BuildRequires:  %{python_module ipykernel}
+BuildRequires:  %{python_module ipykernel >= 6.5.0}
 BuildRequires:  %{python_module jupyter-lsp >= 2.0.0}
 BuildRequires:  %{python_module jupyter_core}
 BuildRequires:  %{python_module jupyter_server >= 2.4.0 with %python-jupyter_server < 3}
@@ -42,7 +41,7 @@ BuildRequires:  %{python_module jupyterlab_server >= 2.19.0 with %python-jupyter
 BuildRequires:  %{python_module notebook_shim >= 0.2}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module tomli if %python-base < 3.11}
+BuildRequires:  %{python_module tomli >= 1.2.2 if %python-base < 3.11}
 BuildRequires:  %{python_module tornado >= 6.2.0}
 BuildRequires:  %{python_module traitlets}
 BuildRequires:  fdupes
@@ -56,7 +55,7 @@ Requires:       jupyter-jupyterlab = %{version}
 Requires:       python-Jinja2 >= 3.0.3
 Requires:       python-async_lru >= 1.0.0
 Requires:       python-httpx >= 0.25.0
-Requires:       python-ipykernel
+Requires:       python-ipykernel >= 6.5.0
 Requires:       python-jupyter-lsp >= 2.0.0
 Requires:       python-jupyter_core
 Requires:       python-notebook_shim >= 0.2
@@ -67,7 +66,7 @@ Requires:       (python-importlib-metadata >= 4.8.3 if python-base < 3.10)
 Requires:       (python-importlib-resources >= 1.4 if python-base < 3.9)
 Requires:       (python-jupyter_server >= 2.4.0 with python-jupyter_server < 3)
 Requires:       (python-jupyterlab_server >= 2.19.0 with python-jupyterlab_server < 3)
-Requires:       (python-tomli if python-base < 3.11)
+Requires:       (python-tomli >= 1.2.2 if python-base < 3.11)
 Suggests:       python-jupyter-collaboration >= 1
 Provides:       python-jupyter_jupyterlab = %{version}
 Obsoletes:      python-jupyter_jupyterlab < %{version}
