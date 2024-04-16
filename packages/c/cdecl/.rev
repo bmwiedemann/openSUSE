@@ -570,4 +570,12 @@
     <comment>- Update to release 16.2</comment>
     <requestid>1142732</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>fb77a32b9e4225be9f9d7a13c5f2217d</srcmd5>
+    <version>16.3</version>
+    <time>1713290751</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 16.3</comment>
+    <requestid>1168363</requestid>
+  </revision>
 </revisionlist>

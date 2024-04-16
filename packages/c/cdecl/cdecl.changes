@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 16 13:42:07 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 16.3
+  * Better destructor parameter error message
+  * Support for defining a type more than once
+  * Support for multiple conflicting declarations
+
+-------------------------------------------------------------------
 Tue Jan 30 08:32:33 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 16.2
