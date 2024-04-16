@@ -1,7 +1,7 @@
 #
 # spec file for package tlpui
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,12 @@ Name:           tlpui
 Version:        1.6.5
 Release:        0
 Summary:        A GTK user interface for TLP
-License:        GPL-2.0-or-later AND CC-BY-SA-4.0
+License:        CC-BY-SA-4.0 AND GPL-2.0-or-later
 URL:            https://github.com/d4nj1/TLPUI
 Source0:        %{url}/archive/refs/tags/%{name}-%{version}.tar.gz
 Source2:        %{name}.rpmlintrc
-BuildRequires:  update-desktop-files
+# PATCH-FIX-UPSTREAM tlpui-application-name-fix.patch gh#d4nj1/TLPUI#149 badshah400@gmail.com -- Align application name with .desktop filename for correct icons in desktop overviews
+Patch0:         tlpui-application-name-fix.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  polkit
@@ -34,9 +35,10 @@ BuildRequires:  python3-pip
 BuildRequires:  python3-poetry
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
+BuildRequires:  update-desktop-files
+Requires:       python3-PyYAML
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
-Requires:       python3-PyYAML
 Requires:       tlp
 BuildArch:      noarch
 
@@ -47,7 +49,7 @@ the aim to protect users from setting bad configuration and to deliver a basic
 overview of all the valid configuration values.
 
 %prep
-%autosetup -n TLPUI-%{name}-%{version}
+%autosetup -p1 -n TLPUI-%{name}-%{version}
 
 %build
 %pyproject_wheel

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 14 09:50:41 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add tlpui-application-name-fix.patch: Align application name
+  with .desktop filename for correct icons in desktop overviews
+  (gh#d4nj1/TLPUI#149); patch sent upstream.
+
+-------------------------------------------------------------------
 Tue Apr  9 21:41:33 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.6.5:

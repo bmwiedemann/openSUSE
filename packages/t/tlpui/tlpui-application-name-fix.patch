@@ -1,0 +1,13 @@
+diff --git a/tlpui/__main__.py b/tlpui/__main__.py
+index a328604..d926d77 100755
+--- a/tlpui/__main__.py
++++ b/tlpui/__main__.py
+@@ -18,7 +18,7 @@ Gtk.StyleContext.add_provider_for_screen(
+ )
+ 
+ # Set window properties
+-GLib.set_prgname('tlp-ui')
++GLib.set_prgname('tlpui')
+ Gdk.set_program_class('Tlp-UI')
+ 
+ # Apply custom scalable icons to icon theme
