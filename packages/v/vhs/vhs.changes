@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 16 05:18:49 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update _service to use manual instead of deprecated disabled
+- Update to version 0.7.2:
+  * Fix vhs serve mode
+  * Update log dependency
+  * Fix app crash when there is repeated SLEEP at the end of the
+    "lines" slice
+  * Refactor Lexer, Parser, Token into packages
+
+-------------------------------------------------------------------
 Wed Feb 14 06:37:43 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Enabled completions for bash, zsh and fish.
