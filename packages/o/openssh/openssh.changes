@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 15 13:21:50 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- openssh-8.0p1-gssapi-keyex.patch: Added missing struct initializer,
+  added missing parameter (bsc#1222840)
+
+-------------------------------------------------------------------
+Fri Apr 12 10:04:45 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Make openssh-server recommend the openssh-server-config-rootlogin
+  package in SLE in order to keep the same behaviour of previous
+  SPs where the PermitRootLogin default was set to yes
+  (bsc#1221005).
+- Fix crypto-policies requirement to be set by openssh-server, not
+  the config-rootlogin subpackage.
+- Add back %config(noreplace) tag for more config files that were
+  already set like this in previous SPs.
+
+-------------------------------------------------------------------
 Thu Apr 11 06:35:21 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
 
 - Fix duplicate loading of dropins. (boo#1222467)

@@ -190,7 +190,11 @@ clients.
 Summary:        SSH (Secure Shell) server
 Group:          Productivity/Networking/SSH
 Requires:       %{name}-common = %{version}-%{release}
+Requires:       crypto-policies >= 20220824
 Recommends:     audit
+%if 0%{?suse_version} == 1500
+Recommends:     openssh-server-config-rootlogin
+%endif
 Requires(pre):  findutils
 Requires(pre):  grep
 Requires(post): %fillup_prereq
@@ -213,7 +217,6 @@ securely connect to your server.
 %package server-config-rootlogin
 Summary:        Config to permit root logins to sshd
 Group:          Productivity/Networking/SSH
-Requires:       crypto-policies >= 20220824
 Requires:       %{name}-server = %{version}-%{release}
 
 %description server-config-rootlogin
@@ -485,7 +488,7 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %attr(0755,root,root) %dir %{_distconfdir}/ssh/ssh_config.d
 %else
 %attr(0755,root,root) %dir %{_sysconfdir}/ssh
-%attr(0600,root,root) %{_sysconfdir}/ssh/moduli
+%attr(0600,root,root) %config(noreplace) %{_sysconfdir}/ssh/moduli
 %attr(0755,root,root) %dir %{_sysconfdir}/ssh/ssh_config.d
 %endif
 %attr(0444,root,root) %{_mandir}/man1/ssh-keygen.1*
@@ -533,7 +536,7 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %if %{defined _distconfdir}
 %{_distconfdir}/ssh/sshd_config.d/50-permit-root-login.conf
 %else
-%{_sysconfdir}/ssh/sshd_config.d/50-permit-root-login.conf
+%config(noreplace) %{_sysconfdir}/ssh/sshd_config.d/50-permit-root-login.conf
 %endif
 
 %files clients
@@ -542,7 +545,7 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %if %{defined _distconfdir}
 %attr(0644,root,root) %{_distconfdir}/ssh/ssh_config
 %else
-%attr(0644,root,root) %{_sysconfdir}/ssh/ssh_config
+%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/ssh/ssh_config
 %endif
 %attr(0755,root,root) %{_bindir}/ssh
 %attr(0755,root,root) %{_bindir}/scp*

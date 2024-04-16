@@ -151,7 +151,7 @@ Index: openssh-9.6p1/auth2-gss.c
 + * The 'gssapi_keyex' userauth mechanism.
 + */
 +static int
-+userauth_gsskeyex(struct ssh *ssh)
++userauth_gsskeyex(struct ssh *ssh, const char *method)
 +{
 +	Authctxt *authctxt = ssh->authctxt;
 +	int r, authenticated = 0;
@@ -213,12 +213,13 @@ Index: openssh-9.6p1/auth2-gss.c
  	else
  		logit("GSSAPI MIC check failed");
  
-@@ -333,6 +377,12 @@ input_gssapi_mic(int type, u_int32_t ple
+@@ -333,6 +377,13 @@ input_gssapi_mic(int type, u_int32_t ple
  	return 0;
  }
  
 +Authmethod method_gsskeyex = {
 +	"gssapi-keyex",
++	"NULL",
 +	userauth_gsskeyex,
 +	&options.gss_authentication
 +};
