@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 16 07:47:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop hwclock entry: this is not supported on containers.
+- Fix keytable entry: we need to specify us, not us.map.gz.
+
+-------------------------------------------------------------------
 Thu Aug  4 07:03:44 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable 32-bit Arm since kubernetes is not available
