@@ -90,4 +90,16 @@
   * Add type annotation for iterdir.</comment>
     <requestid>1165959</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1caaef447f4f55cb773acf9191b2cb25</srcmd5>
+    <version>16.14.0</version>
+    <time>1713290591</time>
+    <user>anag+factory</user>
+    <comment>- update to 16.14.0:
+  * Add .symlink_to and .hardlink_to.
+  * Add .cwd method and deprecated .getcwd.
+  * Create 'absolute' method and deprecate 'abspath'.
+  * In readlink, prefer the display path to the substitute path.</comment>
+    <requestid>1167772</requestid>
+  </revision>
 </revisionlist>

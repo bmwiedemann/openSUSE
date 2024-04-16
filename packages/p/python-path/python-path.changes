@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 15 08:25:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 16.14.0:
+  * Add .symlink_to and .hardlink_to.
+  * Add .cwd method and deprecated .getcwd.
+  * Create 'absolute' method and deprecate 'abspath'.
+  * In readlink, prefer the display path to the substitute path.
+
+-------------------------------------------------------------------
 Sat Apr  6 12:08:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 16.12.1:
