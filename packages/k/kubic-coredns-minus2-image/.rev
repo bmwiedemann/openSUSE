@@ -8,4 +8,12 @@
 (container image for `coredns-minus2` package)</comment>
     <requestid>1102863</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e21c9ae460abb0410db64257357e0391</srcmd5>
+    <version>1.0.0</version>
+    <time>1713290720</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1167983</requestid>
+  </revision>
 </revisionlist>
