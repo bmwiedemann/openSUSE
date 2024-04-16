@@ -1,0 +1,9 @@
+<package name="prometheus-cpp" project="openSUSE:Factory">
+  <title>prometheus-cpp</title>
+  <description>Prometheus client library for C++
+
+  This is only here for weakforced. If you want it for other packages, and especially if you want to submit it into the distribution. You will become the maintainer of the package.
+  </description>
+  <devel project="server:mail" package="prometheus-cpp"/>
+  <url>https://github.com/jupp0r/prometheus-cpp</url>
+</package>
