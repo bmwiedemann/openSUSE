@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-crcmod
 Version:        1.7
 Release:        0

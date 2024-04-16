@@ -57,4 +57,12 @@
 - Stop using greedy globs in %files.</comment>
     <requestid>1139637</requestid>
   </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>e9663697d16e9a10ecc6404270e6961c</srcmd5>
+    <version>1.7</version>
+    <time>1713290726</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1167990</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 16 09:35:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Switch package to modern Python Stack on SLE-15
+  + Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Jan 18 08:02:47 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros.
