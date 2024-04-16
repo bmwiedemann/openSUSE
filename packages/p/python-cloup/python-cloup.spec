@@ -1,7 +1,7 @@
 #
 # spec file for package python-cloup
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-cloup
-Version:        3.0.3
+Version:        3.0.5
 Release:        0
 Summary:        Option groups, constraints, subcommand sections and help themes for Click
 License:        BSD-3-Clause
