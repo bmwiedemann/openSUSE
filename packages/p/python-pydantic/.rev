@@ -342,4 +342,12 @@
   * Fix issue `unittest.mock` deprecation warnings</comment>
     <requestid>1158460</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>8a0ea2535813b85c0d470f64f4f98fe9</srcmd5>
+    <version>2.6.4</version>
+    <time>1713290644</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.6.3 (bsc#1222806, CVE-2024-3772):</comment>
+    <requestid>1167847</requestid>
+  </revision>
 </revisionlist>

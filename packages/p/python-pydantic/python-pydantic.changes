@@ -9,7 +9,7 @@ Sat Mar 16 11:56:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Mar  7 03:28:00 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Update to 2.6.3:
+- Update to 2.6.3 (bsc#1222806, CVE-2024-3772):
   * Fix inheriting `Field` annotations in dataclasses
   * Fix warning for tuple of wrong size in `Union`
   * Fix `computed_field` JSON serializer `exclude_none` behavior
