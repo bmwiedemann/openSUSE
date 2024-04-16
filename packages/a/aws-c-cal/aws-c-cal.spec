@@ -19,7 +19,7 @@
 %define library_version 1.0.0
 %define library_soversion 0unstable
 Name:           aws-c-cal
-Version:        0.6.10
+Version:        0.6.11
 Release:        0
 Summary:        AWS C99 wrapper for cryptography primitives
 License:        Apache-2.0
@@ -77,9 +77,6 @@ export LD_LIBRARY_PATH=%{_builddir}/%{name}-%{version}/build
 
 %post -n lib%{name}%{library_soversion} -p /sbin/ldconfig
 %postun -n lib%{name}%{library_soversion} -p /sbin/ldconfig
-
-%files
-%{_bindir}/*
 
 %files -n lib%{name}%{library_soversion}
 %doc README.md
