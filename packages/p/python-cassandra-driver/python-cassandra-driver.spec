@@ -18,7 +18,7 @@
 
 %bcond_without python2
 Name:           python-cassandra-driver
-Version:        3.28.0
+Version:        3.29.1
 Release:        0
 Summary:        Python driver for Cassandra
 License:        Apache-2.0
@@ -26,6 +26,8 @@ URL:            https://github.com/datastax/python-driver
 Source:         https://github.com/datastax/python-driver/archive/%{version}.tar.gz
 # https://datastax-oss.atlassian.net/browse/PYTHON-1299
 Patch0:         python-cassandra-driver-no-mock.patch
+# if CASS_DRIVER_NO_EXTENSIONS=1, import throws DependencyException https://datastax-oss.atlassian.net/browse/PYTHON-1383
+Patch1:         python-cassandra-driver-test_libevreactor-DependencyException.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Twisted}
@@ -34,21 +36,16 @@ BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module geomet >= 0.1}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module pure-sasl}
+BuildRequires:  %{python_module pyasyncore if %python-base >= 3.12}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.9}
 BuildRequires:  %{python_module sure}
 BuildRequires:  fdupes
 BuildRequires:  libev-devel
 BuildRequires:  python-rpm-macros
-%if 0%{?suse_version} >= 1600
-# The classic "if %%python-base > 3.11" made the build unresolvable (at least for me). Sorry for this, feel free to rewrite.
-BuildRequires:  python312-pyasyncore
-%endif
 Requires:       python-Cython
 Requires:       python-geomet >= 0.1
-Requires:       python-six >= 1.9
 Recommends:     python-Twisted
 Recommends:     python-eventlet
 Recommends:     python-gevent

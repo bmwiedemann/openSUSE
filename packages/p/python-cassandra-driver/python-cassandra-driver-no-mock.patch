@@ -1,8 +1,8 @@
-Index: python-driver-3.26.0/tests/unit/advanced/cloud/test_cloud.py
+Index: python-driver-3.29.1/tests/unit/advanced/cloud/test_cloud.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/advanced/cloud/test_cloud.py
-+++ python-driver-3.26.0/tests/unit/advanced/cloud/test_cloud.py
-@@ -16,7 +16,7 @@ import unittest
+--- python-driver-3.29.1.orig/tests/unit/advanced/cloud/test_cloud.py
++++ python-driver-3.29.1/tests/unit/advanced/cloud/test_cloud.py
+@@ -15,7 +15,7 @@ import unittest
  from cassandra import DriverException
  from cassandra.datastax import cloud
  
@@ -11,10 +11,10 @@ Index: python-driver-3.26.0/tests/unit/advanced/cloud/test_cloud.py
  
  from tests import notwindows
  
-Index: python-driver-3.26.0/tests/unit/advanced/test_insights.py
+Index: python-driver-3.29.1/tests/unit/advanced/test_insights.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/advanced/test_insights.py
-+++ python-driver-3.26.0/tests/unit/advanced/test_insights.py
+--- python-driver-3.29.1.orig/tests/unit/advanced/test_insights.py
++++ python-driver-3.29.1/tests/unit/advanced/test_insights.py
 @@ -16,7 +16,7 @@
  import unittest
  
@@ -24,10 +24,10 @@ Index: python-driver-3.26.0/tests/unit/advanced/test_insights.py
  import sys
  
  from cassandra import ConsistencyLevel
-Index: python-driver-3.26.0/tests/unit/advanced/test_policies.py
+Index: python-driver-3.29.1/tests/unit/advanced/test_policies.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/advanced/test_policies.py
-+++ python-driver-3.26.0/tests/unit/advanced/test_policies.py
+--- python-driver-3.29.1.orig/tests/unit/advanced/test_policies.py
++++ python-driver-3.29.1/tests/unit/advanced/test_policies.py
 @@ -13,7 +13,7 @@
  # limitations under the License.
  import unittest
@@ -37,11 +37,11 @@ Index: python-driver-3.26.0/tests/unit/advanced/test_policies.py
  
  from cassandra.pool import Host
  from cassandra.policies import RoundRobinPolicy
-Index: python-driver-3.26.0/tests/unit/cqlengine/test_connection.py
+Index: python-driver-3.29.1/tests/unit/cqlengine/test_connection.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/cqlengine/test_connection.py
-+++ python-driver-3.26.0/tests/unit/cqlengine/test_connection.py
-@@ -20,7 +20,7 @@ from cassandra.cluster import _ConfigMod
+--- python-driver-3.29.1.orig/tests/unit/cqlengine/test_connection.py
++++ python-driver-3.29.1/tests/unit/cqlengine/test_connection.py
+@@ -18,7 +18,7 @@ from cassandra.cluster import _ConfigMod
  from cassandra.cqlengine import connection
  from cassandra.query import dict_factory
  
@@ -50,10 +50,10 @@ Index: python-driver-3.26.0/tests/unit/cqlengine/test_connection.py
  
  
  class ConnectionTest(unittest.TestCase):
-Index: python-driver-3.26.0/tests/unit/io/test_asyncioreactor.py
+Index: python-driver-3.29.1/tests/unit/io/test_asyncioreactor.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/io/test_asyncioreactor.py
-+++ python-driver-3.26.0/tests/unit/io/test_asyncioreactor.py
+--- python-driver-3.29.1.orig/tests/unit/io/test_asyncioreactor.py
++++ python-driver-3.29.1/tests/unit/io/test_asyncioreactor.py
 @@ -10,7 +10,7 @@ except (ImportError, SyntaxError):
  from tests import is_monkey_patched, connection_class
  from tests.unit.io.utils import TimerCallback, TimerTestMixin
@@ -63,10 +63,10 @@ Index: python-driver-3.26.0/tests/unit/io/test_asyncioreactor.py
  
  import unittest
  import time
-Index: python-driver-3.26.0/tests/unit/io/test_asyncorereactor.py
+Index: python-driver-3.29.1/tests/unit/io/test_asyncorereactor.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/io/test_asyncorereactor.py
-+++ python-driver-3.26.0/tests/unit/io/test_asyncorereactor.py
+--- python-driver-3.29.1.orig/tests/unit/io/test_asyncorereactor.py
++++ python-driver-3.29.1/tests/unit/io/test_asyncorereactor.py
 @@ -13,7 +13,7 @@
  # limitations under the License.
  import unittest
@@ -76,10 +76,10 @@ Index: python-driver-3.26.0/tests/unit/io/test_asyncorereactor.py
  import socket
  import cassandra.io.asyncorereactor as asyncorereactor
  from cassandra.io.asyncorereactor import AsyncoreConnection
-Index: python-driver-3.26.0/tests/unit/io/test_eventletreactor.py
+Index: python-driver-3.29.1/tests/unit/io/test_eventletreactor.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/io/test_eventletreactor.py
-+++ python-driver-3.26.0/tests/unit/io/test_eventletreactor.py
+--- python-driver-3.29.1.orig/tests/unit/io/test_eventletreactor.py
++++ python-driver-3.29.1/tests/unit/io/test_eventletreactor.py
 @@ -19,7 +19,7 @@ from tests.unit.io.utils import TimerTes
  from tests import notpypy, EVENT_LOOP_MANAGER
  
@@ -89,10 +89,10 @@ Index: python-driver-3.26.0/tests/unit/io/test_eventletreactor.py
  
  try:
      from cassandra.io.eventletreactor import EventletConnection
-Index: python-driver-3.26.0/tests/unit/io/test_geventreactor.py
+Index: python-driver-3.29.1/tests/unit/io/test_geventreactor.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/io/test_geventreactor.py
-+++ python-driver-3.26.0/tests/unit/io/test_geventreactor.py
+--- python-driver-3.29.1.orig/tests/unit/io/test_geventreactor.py
++++ python-driver-3.29.1/tests/unit/io/test_geventreactor.py
 @@ -23,7 +23,7 @@ try:
  except ImportError:
      GeventConnection = None  # noqa
@@ -102,10 +102,10 @@ Index: python-driver-3.26.0/tests/unit/io/test_geventreactor.py
  
  
  skip_condition = GeventConnection is None or EVENT_LOOP_MANAGER != "gevent"
-Index: python-driver-3.26.0/tests/unit/io/test_libevreactor.py
+Index: python-driver-3.29.1/tests/unit/io/test_libevreactor.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/io/test_libevreactor.py
-+++ python-driver-3.26.0/tests/unit/io/test_libevreactor.py
+--- python-driver-3.29.1.orig/tests/unit/io/test_libevreactor.py
++++ python-driver-3.29.1/tests/unit/io/test_libevreactor.py
 @@ -13,7 +13,7 @@
  # limitations under the License.
  import unittest
@@ -115,10 +115,10 @@ Index: python-driver-3.26.0/tests/unit/io/test_libevreactor.py
  import weakref
  import socket
  
-Index: python-driver-3.26.0/tests/unit/io/test_twistedreactor.py
+Index: python-driver-3.29.1/tests/unit/io/test_twistedreactor.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/io/test_twistedreactor.py
-+++ python-driver-3.26.0/tests/unit/io/test_twistedreactor.py
+--- python-driver-3.29.1.orig/tests/unit/io/test_twistedreactor.py
++++ python-driver-3.29.1/tests/unit/io/test_twistedreactor.py
 @@ -13,7 +13,7 @@
  # limitations under the License.
  
@@ -128,36 +128,36 @@ Index: python-driver-3.26.0/tests/unit/io/test_twistedreactor.py
  
  from cassandra.connection import DefaultEndPoint
  
-Index: python-driver-3.26.0/tests/unit/io/utils.py
+Index: python-driver-3.29.1/tests/unit/io/utils.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/io/utils.py
-+++ python-driver-3.26.0/tests/unit/io/utils.py
-@@ -28,7 +28,7 @@ from functools import wraps
+--- python-driver-3.29.1.orig/tests/unit/io/utils.py
++++ python-driver-3.29.1/tests/unit/io/utils.py
+@@ -27,7 +27,7 @@ import random
+ from functools import wraps
  from itertools import cycle
- import six
- from six import binary_type, BytesIO
+ from io import BytesIO
 -from mock import Mock
 +from unittest.mock import Mock
  
  import errno
  import logging
-Index: python-driver-3.26.0/tests/unit/test_cluster.py
+Index: python-driver-3.29.1/tests/unit/test_cluster.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/test_cluster.py
-+++ python-driver-3.26.0/tests/unit/test_cluster.py
+--- python-driver-3.29.1.orig/tests/unit/test_cluster.py
++++ python-driver-3.29.1/tests/unit/test_cluster.py
 @@ -16,7 +16,7 @@ import unittest
  import logging
- import six
+ import socket
  
 -from mock import patch, Mock
 +from unittest.mock import patch, Mock
  
  from cassandra import ConsistencyLevel, DriverException, Timeout, Unavailable, RequestExecutionException, ReadTimeout, WriteTimeout, CoordinationFailure, ReadFailure, WriteFailure, FunctionFailure, AlreadyExists,\
      InvalidRequest, Unauthorized, AuthenticationFailed, OperationTimedOut, UnsupportedOperation, RequestValidationException, ConfigurationException, ProtocolVersion
-Index: python-driver-3.26.0/tests/unit/test_concurrent.py
+Index: python-driver-3.29.1/tests/unit/test_concurrent.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/test_concurrent.py
-+++ python-driver-3.26.0/tests/unit/test_concurrent.py
+--- python-driver-3.29.1.orig/tests/unit/test_concurrent.py
++++ python-driver-3.29.1/tests/unit/test_concurrent.py
 @@ -16,7 +16,7 @@
  import unittest
  
@@ -166,26 +166,26 @@ Index: python-driver-3.26.0/tests/unit/test_concurrent.py
 +from unittest.mock import Mock
  import time
  import threading
- from six.moves.queue import PriorityQueue
-Index: python-driver-3.26.0/tests/unit/test_connection.py
+ from queue import PriorityQueue
+Index: python-driver-3.29.1/tests/unit/test_connection.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/test_connection.py
-+++ python-driver-3.26.0/tests/unit/test_connection.py
+--- python-driver-3.29.1.orig/tests/unit/test_connection.py
++++ python-driver-3.29.1/tests/unit/test_connection.py
 @@ -13,7 +13,7 @@
  # limitations under the License.
  import unittest
  
 -from mock import Mock, ANY, call, patch
 +from unittest.mock import Mock, ANY, call, patch
- import six
- from six import BytesIO
+ from io import BytesIO
  import time
-Index: python-driver-3.26.0/tests/unit/test_control_connection.py
+ from threading import Lock
+Index: python-driver-3.29.1/tests/unit/test_control_connection.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/test_control_connection.py
-+++ python-driver-3.26.0/tests/unit/test_control_connection.py
-@@ -17,7 +17,7 @@ import unittest
- import six
+--- python-driver-3.29.1.orig/tests/unit/test_control_connection.py
++++ python-driver-3.29.1/tests/unit/test_control_connection.py
+@@ -15,7 +15,7 @@
+ import unittest
  
  from concurrent.futures import ThreadPoolExecutor
 -from mock import Mock, ANY, call
@@ -193,10 +193,10 @@ Index: python-driver-3.26.0/tests/unit/test_control_connection.py
  
  from cassandra import OperationTimedOut, SchemaTargetType, SchemaChangeType
  from cassandra.protocol import ResultMessage, RESULT_KIND_ROWS
-Index: python-driver-3.26.0/tests/unit/test_endpoints.py
+Index: python-driver-3.29.1/tests/unit/test_endpoints.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/test_endpoints.py
-+++ python-driver-3.26.0/tests/unit/test_endpoints.py
+--- python-driver-3.29.1.orig/tests/unit/test_endpoints.py
++++ python-driver-3.29.1/tests/unit/test_endpoints.py
 @@ -12,7 +12,7 @@ import itertools
  
  from cassandra.connection import DefaultEndPoint, SniEndPoint, SniEndPointFactory
@@ -206,10 +206,10 @@ Index: python-driver-3.26.0/tests/unit/test_endpoints.py
  
  
  def socket_getaddrinfo(*args):
-Index: python-driver-3.26.0/tests/unit/test_metadata.py
+Index: python-driver-3.29.1/tests/unit/test_metadata.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/test_metadata.py
-+++ python-driver-3.26.0/tests/unit/test_metadata.py
+--- python-driver-3.29.1.orig/tests/unit/test_metadata.py
++++ python-driver-3.29.1/tests/unit/test_metadata.py
 @@ -15,7 +15,7 @@ import unittest
  
  from binascii import unhexlify
@@ -217,12 +217,12 @@ Index: python-driver-3.26.0/tests/unit/test_metadata.py
 -from mock import Mock
 +from unittest.mock import Mock
  import os
- import six
  import timeit
-Index: python-driver-3.26.0/tests/unit/test_policies.py
+ 
+Index: python-driver-3.29.1/tests/unit/test_policies.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/test_policies.py
-+++ python-driver-3.26.0/tests/unit/test_policies.py
+--- python-driver-3.29.1.orig/tests/unit/test_policies.py
++++ python-driver-3.29.1/tests/unit/test_policies.py
 @@ -15,7 +15,7 @@
  import unittest
  
@@ -230,38 +230,38 @@ Index: python-driver-3.26.0/tests/unit/test_policies.py
 -from mock import Mock, patch, call
 +from unittest.mock import Mock, patch, call
  from random import randint
- import six
- from six.moves._thread import LockType
-Index: python-driver-3.26.0/tests/unit/test_protocol.py
+ from _thread import LockType
+ import sys
+Index: python-driver-3.29.1/tests/unit/test_protocol.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/test_protocol.py
-+++ python-driver-3.26.0/tests/unit/test_protocol.py
-@@ -15,7 +15,7 @@
+--- python-driver-3.29.1.orig/tests/unit/test_protocol.py
++++ python-driver-3.29.1/tests/unit/test_protocol.py
+@@ -14,7 +14,7 @@
+ 
  import unittest
  
- import six
 -from mock import Mock
 +from unittest.mock import Mock
  
  from cassandra import ProtocolVersion, UnsupportedOperation
  from cassandra.protocol import (
-Index: python-driver-3.26.0/tests/unit/test_response_future.py
+Index: python-driver-3.29.1/tests/unit/test_response_future.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/test_response_future.py
-+++ python-driver-3.26.0/tests/unit/test_response_future.py
-@@ -18,7 +18,7 @@ from collections import deque
+--- python-driver-3.29.1.orig/tests/unit/test_response_future.py
++++ python-driver-3.29.1/tests/unit/test_response_future.py
+@@ -17,7 +17,7 @@ import unittest
+ from collections import deque
  from threading import RLock
  
- import six
 -from mock import Mock, MagicMock, ANY
 +from unittest.mock import Mock, MagicMock, ANY
  
  from cassandra import ConsistencyLevel, Unavailable, SchemaTargetType, SchemaChangeType, OperationTimedOut
  from cassandra.cluster import Session, ResponseFuture, NoHostAvailable, ProtocolVersion
-Index: python-driver-3.26.0/tests/unit/test_resultset.py
+Index: python-driver-3.29.1/tests/unit/test_resultset.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/test_resultset.py
-+++ python-driver-3.26.0/tests/unit/test_resultset.py
+--- python-driver-3.29.1.orig/tests/unit/test_resultset.py
++++ python-driver-3.29.1/tests/unit/test_resultset.py
 @@ -15,7 +15,7 @@ from cassandra.query import named_tuple_
  
  import unittest
@@ -271,23 +271,23 @@ Index: python-driver-3.26.0/tests/unit/test_resultset.py
  
  from cassandra.cluster import ResultSet
  
-Index: python-driver-3.26.0/tests/unit/test_timestamps.py
+Index: python-driver-3.29.1/tests/unit/test_timestamps.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/test_timestamps.py
-+++ python-driver-3.26.0/tests/unit/test_timestamps.py
+--- python-driver-3.29.1.orig/tests/unit/test_timestamps.py
++++ python-driver-3.29.1/tests/unit/test_timestamps.py
 @@ -14,7 +14,7 @@
  
  import unittest
  
 -import mock
 +from unittest import mock
- import six
  
  from cassandra import timestamps
-Index: python-driver-3.26.0/tests/unit/utils.py
+ from threading import Thread, Lock
+Index: python-driver-3.29.1/tests/unit/utils.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/utils.py
-+++ python-driver-3.26.0/tests/unit/utils.py
+--- python-driver-3.29.1.orig/tests/unit/utils.py
++++ python-driver-3.29.1/tests/unit/utils.py
 @@ -15,7 +15,7 @@
  from concurrent.futures import Future
  from functools import wraps
@@ -297,10 +297,10 @@ Index: python-driver-3.26.0/tests/unit/utils.py
  
  
  def mock_session_pools(f):
-Index: python-driver-3.26.0/tests/unit/test_host_connection_pool.py
+Index: python-driver-3.29.1/tests/unit/test_host_connection_pool.py
 ===================================================================
---- python-driver-3.26.0.orig/tests/unit/test_host_connection_pool.py
-+++ python-driver-3.26.0/tests/unit/test_host_connection_pool.py
+--- python-driver-3.29.1.orig/tests/unit/test_host_connection_pool.py
++++ python-driver-3.29.1/tests/unit/test_host_connection_pool.py
 @@ -14,7 +14,7 @@
  
  import unittest

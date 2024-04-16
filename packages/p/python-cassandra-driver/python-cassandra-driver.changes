@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 15 09:17:49 UTC 2024 - pgajdos@suse.com
+
+- added patches
+  if CASS_DRIVER_NO_EXTENSIONS=1, import throws DependencyException
+  + python-cassandra-driver-test_libevreactor-DependencyException.patch
+
+-------------------------------------------------------------------
+Wed Apr 10 14:32:27 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.29.1
+  * Add support for Python 3.9 through 3.12, drop support for 3.7
+  * Removal of dependency on six module
+  * Raise explicit exception when deserializing a vector with a 
+    subtype that isn’t a constant size
+- Rebased python-cassandra-driver-no-mock.patch
+
+-------------------------------------------------------------------
 Thu Feb  8 09:38:13 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Fix tests on Python 3.12
