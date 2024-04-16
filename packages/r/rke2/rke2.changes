@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 14 08:13:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- rework spec to include lots of upstream ldflags and fix
+  boo#1222696
+
+-------------------------------------------------------------------
 Thu Mar 21 19:39:43 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.29.3+rke2r1:

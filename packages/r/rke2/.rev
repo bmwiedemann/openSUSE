@@ -135,4 +135,12 @@
     <comment></comment>
     <requestid>1160465</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>47b465842045aada1ae652b6f17c392f</srcmd5>
+    <version>1.29.3+rke2r1</version>
+    <time>1713290635</time>
+    <user>anag+factory</user>
+    <comment>rework spec to include lots of upstream ldflags and uses fixes from boo#1222696</comment>
+    <requestid>1167917</requestid>
+  </revision>
 </revisionlist>
