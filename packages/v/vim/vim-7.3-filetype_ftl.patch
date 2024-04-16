@@ -1,19 +1,22 @@
-Index: vim-8.2.2411/runtime/filetype.vim
+Index: vim-9.1.0330/runtime/filetype.vim
 ===================================================================
---- vim-8.2.2411.orig/runtime/filetype.vim
-+++ vim-8.2.2411/runtime/filetype.vim
-@@ -2312,3 +2312,7 @@ endfunc
- " Restore 'cpoptions'
- let &cpo = s:cpo_save
- unlet s:cpo_save
-+
+--- vim-9.1.0330.orig/runtime/filetype.vim
++++ vim-9.1.0330/runtime/filetype.vim
+@@ -2313,6 +2313,10 @@ au BufNewFile,BufRead *.stp			setf stp
+ " Standard ML
+ au BufNewFile,BufRead *.sml			setf sml
+ 
 +" FreeMarker templates
 +au BufNewFile,BufRead *.ftl     setf ftl
 +
-Index: vim-8.2.2411/runtime/syntax/ftl.vim
++
+ " Sratus VOS command macro
+ au BufNewFile,BufRead *.cm			setf voscm
+ 
+Index: vim-9.1.0330/runtime/syntax/ftl.vim
 ===================================================================
 --- /dev/null
-+++ vim-8.2.2411/runtime/syntax/ftl.vim
++++ vim-9.1.0330/runtime/syntax/ftl.vim
 @@ -0,0 +1,36 @@
 +" Vim syntax file
 +" Language:	FreeMarker Template Language (FTL)

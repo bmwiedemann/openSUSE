@@ -7571,4 +7571,41 @@ always built-in because vim has direct perl dependencies anyway.
  *  Cannot highlight the Command-line</comment>
     <requestid>1166707</requestid>
   </revision>
+  <revision rev="366" vrev="1">
+    <srcmd5>a2b4b0483788bdcb0d0266bdd7355a7a</srcmd5>
+    <version>9.1.0330</version>
+    <time>1713290589</time>
+    <user>anag+factory</user>
+    <comment>- update to 9.1.0330
+- refreshed vim-7.3-filetype_ftl.patch
+ * v9.1.0327 contains an unrelated change
+ * String interpolation fails for Dict type
+ * CI fails with t_?? test
+ * No support for using $XDG_CONFIG_HOME
+ * filetype: some requirements files are not recognized
+ * filetype: CMakeCache.txt files not recognized
+ * Update base-syntax, fix nested function folding 
+ * filetype: some json files are not recognized
+ * include new compiler, use it for '*.custom.yaml' files 
+ * filetype: cabal config files may not be recognized
+ * don't set compiler, update a comment for vimdoc compiler 
+ * filetype: some mail tools not recognized
+ * Garbled output on serial terminals with XON/XOFF flow control
+ * Recognise non-ASCII identifiers 
+ * Wrong cursor position after using setcellwidths()
+ * Using heredoc in string not tested with :execute
+ * use explicit version tags for macos runners 
+ * filetype: translate shell config files are not recognized
+ * filetype: matplotlibrc files are not recognized
+ * Update base-syntax, add legacy header folding
+ * filetype: some sh and confini files not recognized
+ * filetype: a few more dosini files are not recognized
+ * Line continuation is not detected for 'set' command 
+ * Vim9: Can define a class in a function
+ * fix highlighting import string followed by some comment 
+ * Crash when using heredoc with comment in command block
+ * heredocs are not supported for :commands
+ * filetype: Some config files are not recognized</comment>
+    <requestid>1167771</requestid>
+  </revision>
 </revisionlist>

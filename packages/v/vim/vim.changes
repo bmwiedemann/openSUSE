@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Apr 15 08:47:30 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.0330
+- refreshed vim-7.3-filetype_ftl.patch
+ * v9.1.0327 contains an unrelated change
+ * String interpolation fails for Dict type
+ * CI fails with t_?? test
+ * No support for using $XDG_CONFIG_HOME
+ * filetype: some requirements files are not recognized
+ * filetype: CMakeCache.txt files not recognized
+ * Update base-syntax, fix nested function folding 
+ * filetype: some json files are not recognized
+ * include new compiler, use it for '*.custom.yaml' files 
+ * filetype: cabal config files may not be recognized
+ * don't set compiler, update a comment for vimdoc compiler 
+ * filetype: some mail tools not recognized
+ * Garbled output on serial terminals with XON/XOFF flow control
+ * Recognise non-ASCII identifiers 
+ * Wrong cursor position after using setcellwidths()
+ * Using heredoc in string not tested with :execute
+ * use explicit version tags for macos runners 
+ * filetype: translate shell config files are not recognized
+ * filetype: matplotlibrc files are not recognized
+ * Update base-syntax, add legacy header folding
+ * filetype: some sh and confini files not recognized
+ * filetype: a few more dosini files are not recognized
+ * Line continuation is not detected for 'set' command 
+ * Vim9: Can define a class in a function
+ * fix highlighting import string followed by some comment 
+ * Crash when using heredoc with comment in command block
+ * heredocs are not supported for :commands
+ * filetype: Some config files are not recognized
+ * Filler lines not checked properly in get_scroll_overlap()
+ * include ftplugin support 
+ * add include to ftplugin 
+ * mention :argded for :argedit
+ * crash when 'textwidth' > MAX_INT
+ * typo in intro.txt
+ * Overlong translation files may cause repo to become "dirty"
+ * configure: msgfmt hardcoded
+ * add vimdoc
+ * clarify behaviour or :argadd and :argedit
+ * filetype: texdoc config files is not recognized
+ * filetype: x11vnc config file is not recognized
+ * filetype: some history files are not recognized
+ * add Matchit support
+ * filetype: cgdb config file is not recognized
+ * add basic indent support
+ * add matchit support
+ * filetype: some protocol buffer files not recognized
+ * filetype: blueprint files are not recognized
+ * Improve Vim9 and legacy-script comment highlighting 
+
+-------------------------------------------------------------------
 Wed Apr 10 18:44:04 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.1.0301 
