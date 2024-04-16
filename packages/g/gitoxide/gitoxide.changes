@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Tue Apr 16 07:45:12 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.35.0:
+  * add gix status --ignored support
+  * add gix status --index-worktree-renames
+  * gix status with submodule and rewrite support.
+  * add gix is-clean|is-changed
+  * gix submodules list --dirty-suffix for dirty-information
+  * add gix commit describe --dirty-suffix
+
+-------------------------------------------------------------------
+Thu Mar 07 21:52:40 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Specfile to modern rust, add copyright and cleanup
+- Update to version 0.34.0:
+  * add gix clean --patterns-for-entries|-m to help with wildcards.
+  * basic gix clean
+  * Allow the -n argument as no-op to make them more compatible.
+  * Fix clippy lints
+  * Add back line wrapping simplify Usage Variants
+  * Tell clap that ein is named ein
+  * Copy over code from gix to generate completions for ein as well
+  * Fix indenting by removing formatting on the config str
+  * Reserve 50 characters for the config name
+  * Bring back old implementation from 65e6496 - this also removes
+    terminal_size, although its not large
+  * Use chunks_exact where possible
+- Updates from version 0.33.0:
+  * Add rev parse --reference. It's similar to git rev-parse
+    --symbolic-full-name.
+  * mark gix::interrupt::init_handler() as unsafe
+- Updates from version 0.32.0:
+  * gix rev parse --format to provide different versions of the
+    same content.
+  * in --trace mode, greatly increase message-buffer size.
+  * set binary name for completions
+  * rename GITOXIDE_* environment variables to GIX_#
+  * Add thediff::resource_cache() low-level utility for rapid
+    in-memory diffing of combinations of resources.
+  * In gix read http.sslVerify config value and pass it to
+    gix-transport.
+  * Remove dead code from non-existent "lean-cli" feature
+  * Replace all docsrs config by the document-features feature
+  * Add basic connectivity check
+  * Allow to print a tree without prettification, using
+    tree-style --raw.
+  * Automatically enforce strict mode if -c options are given on
+    the command-line.
+- Updates from version 0.31.0:
+  * add shell completions for bash
+  * User decides completion output
+  * gix status auto-writes changed indices.
+  * This prevents expensive operations to re-occour.
+  * gix status -s/--statistics to obtain additional information on
+    what happened.
+- Updates from version 0.30.0:
+  * gix status with basic index-worktree comparison
+  * gix free index from-list and gix index from-tree gain
+    --skip-hash.
+  * both ein and gix now share some code via the gitoxide library.
+    This can slightly improve compile times as well, even though it
+    wasn't measured.
+- Updates from version 0.29.0:
+  * gix submodule subcommand for simple submodule listing and
+    information retrieval
+  * gix index entries --recurse-subomdules to also list submodules.
+  * gix index entries with styles and pathspecs.
+  * use real pathspecs where it was supported before.
+  * add gix commit verify-signature to do something akin to git ...
+    --show-signature.
+- Updates from version 0.28.0:
+  * add simple CLI for gix archive
+- Updates from version 0.27.0:
+  * list commit-graph entries by graph traversal, move commit-graph
+    up to gix level.
+  * gix --trace to also print tree-like instrumentation
+  * gix fetch --open-negotiation-graph[=limit]
+  * gix fetch --negotiation-info to provide additional information
+    about the negotiation phase.
+  * bit revision list --svg to create a visual graph of commits.
+- Updates from version 0.26.0:
+  * gix attributes validate to validate attributes and ignore
+    against git as baseline.
+  * --statistics for gix excludes query
+  * gix attribute query as something similar to git check-attrs.
+  * no-repo index from-list to create an index with empty files
+    from the given list.
+  * add pro-forma library to allow feature documentation of
+    gitoxide on docs.rs
+- Updates from version 0.25.0:
+  * A maintenance release without user-facing changes, just to
+    fix installation
+- Updates from version 0.24.0:
+  * gix index entries also prints attributes.
+  * gix clone and gix fetch with controls for shallow repositories.
+  * ein t trace-path know accepts the trace-file alias.
+  * printing to stdout for commands that don't show progress is
+    greatly improved. Previously it would have to lock stdout on
+    each write, now this is done only once.
+  * opening repositories without 'strict' mode also ignores
+    IO errors. These will instead be logged, but won't make it
+    impossible to open an otherwise fine repository.
+  * turn gix free index entries into gix index entries.
+- Updates from version 0.23.0:
+  * ein tool query - a git analytics engine. A tool to build and
+    efficiently maintain a database of information contained in
+    a git repository, preferably the kind of information that is
+    expensive to obtain, in order to facilitate queries that would
+    be prohibitive without an accelerating data structure.
+  * gix tree entries with rev-spec support.
+- Updates from version 0.22.0:
+  * A maintenance release without user-facing changes.
+
+-------------------------------------------------------------------
+Fri Feb 10 14:33:38 UTC 2023 - Luna D Dragon <luna.dragon@suse.com>
+
+- Chore
+    + upgrade to clap 4.1
+- New Features
+    + gix clone <url> is now permitted without specifying a destination directory.
+    + Note that the implementation doesn't take into account potential redirects and renames
+    + as it's implemented only with the first URL it sees (not the redirected ones).
+    + make more HTTP options available
+    + http.schannelCheckRevoke
+
