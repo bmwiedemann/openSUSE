@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.1.1
-%define mfr_revision   29
+%define mfr_revision   30
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
@@ -54,6 +54,8 @@ Patch4:         ImageMagick-filter.t-disable-Contrast.patch
 #%%ifarch s390x
 Patch5:         ImageMagick-s390x-disable-tests.patch
 #%%endif
+# https://github.com/ImageMagick/ImageMagick/issues/7230
+Patch6:         ImageMagick-wmflite-detection.patch
 BuildRequires:  chrpath
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
@@ -274,8 +276,11 @@ HTML documentation for ImageMagick library and scene examples.
 %ifarch s390x
 %patch -P 5 -p1
 %endif
+%patch -P 6 -p1
 
 %build
+# PATCH 6
+autoreconf -fiv
 # bsc#1088463
 %if %{urw_base35_fonts}
 sed -i 's:type1:otf:'      config/type-urw-base35.xml.in
@@ -306,7 +311,7 @@ export CXXFLAGS="%{optflags} -O0"
   --with-gs-font-dir=%{_datadir}/fonts/ghostscript \
 %endif
   --with-perl \
-  --with-perl-options="INSTALLDIRS=vendor %{?perl_prefix} CC='gcc -L$PWD/magick/.libs' LDDLFLAGS='-shared -L$PWD/magick/.libs'" \
+  --with-perl-options="INSTALLDIRS=vendor INSTALLVENDORARCH=%{perl_vendorarch} INSTALLVENDORMAN3DIR=/usr/share/man/man3" \
   --disable-static \
   --with-gvc \
 %if %{with ddjvuapi}
@@ -376,6 +381,7 @@ ln -s ./MagickWand %{buildroot}%{_includedir}/ImageMagick-%{maj}/wand
 # these will be included via %%doc
 rm -r %{buildroot}%{_datadir}/doc/ImageMagick-%{maj}/
 rm %{buildroot}%{_libdir}/*.la
+rm -r %{buildroot}/usr/lib/perl5/*linux-thread-multi*/
 # remove RPATH from perl module
 perl_module=$(find %{buildroot}%{_prefix}/lib/perl5 -name '*.so')
 chmod 755 $perl_module

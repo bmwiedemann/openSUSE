@@ -1,7 +1,16 @@
-Index: ImageMagick-7.1.1-29/config/policy-secure.xml
+Index: ImageMagick-7.1.1-30/config/policy-secure.xml
 ===================================================================
---- ImageMagick-7.1.1-29.orig/config/policy-secure.xml
-+++ ImageMagick-7.1.1-29/config/policy-secure.xml
+--- ImageMagick-7.1.1-30.orig/config/policy-secure.xml
++++ ImageMagick-7.1.1-30/config/policy-secure.xml
+@@ -62,7 +62,7 @@
+   <policy domain="resource" name="disk" value="1GiB"/>
+   <!-- Set the maximum length of an image sequence.  When this limit is
+        exceeded, an exception is thrown. -->
+-  <policy domain="resource" name="list-length" value="32"/>
++  <policy domain="resource" name="list-length" value="128"/>
+   <!-- Set the maximum width of an image.  When this limit is exceeded, an
+        exception is thrown. -->
+   <policy domain="resource" name="width" value="8KP"/>
 @@ -83,17 +83,19 @@
    <!-- Replace passphrase for secure distributed processing -->
    <!-- <policy domain="cache" name="shared-secret" value="secret-passphrase" stealth="true"/> -->

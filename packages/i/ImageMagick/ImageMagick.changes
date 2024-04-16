@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 15 10:19:07 UTC 2024 - pgajdos@suse.com
+
+- relax list-length resource limit, fixes build of python-Wand
+  % ImageMagick-configuration-SUSE.patch
+
+-------------------------------------------------------------------
+Mon Apr  8 14:44:40 UTC 2024 - pgajdos@suse.com
+
+- version update to 7.1.1.30
+  * install perl module into user-specified prefix by @bugfood in #7192
+  * Fix bmp option to bypass file size check by @OnTheList-1 in #7194
+  * add support for encoding/decoding ultrahdr images by @aayushsoni111 in #7198
+  * Updates to uhdr.c by @aayushsoni111 in #7217
+- added patches
+  fix https://github.com/ImageMagick/ImageMagick/issues/7230
+  + ImageMagick-wmflite-detection.patch
+
+-------------------------------------------------------------------
 Fri Mar 22 10:32:38 UTC 2024 - pgajdos@suse.com
 
 - allow stdin/stdout

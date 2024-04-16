@@ -3852,4 +3852,22 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   % ImageMagick-configuration-SUSE.patch (forwarded request 1160619 from pgajdos)</comment>
     <requestid>1160620</requestid>
   </revision>
+  <revision rev="294" vrev="1">
+    <srcmd5>e72d176a8ad61246696ce37d6505ccb8</srcmd5>
+    <version>7.1.1.30</version>
+    <time>1713290593</time>
+    <user>anag+factory</user>
+    <comment>- relax list-length resource limit, fixes build of python-Wand
+  % ImageMagick-configuration-SUSE.patch
+
+- version update to 7.1.1.30
+  * install perl module into user-specified prefix by @bugfood in #7192
+  * Fix bmp option to bypass file size check by @OnTheList-1 in #7194
+  * add support for encoding/decoding ultrahdr images by @aayushsoni111 in #7198
+  * Updates to uhdr.c by @aayushsoni111 in #7217
+- added patches
+  fix https://github.com/ImageMagick/ImageMagick/issues/7230
+  + ImageMagick-wmflite-detection.patch</comment>
+    <requestid>1167789</requestid>
+  </revision>
 </revisionlist>
