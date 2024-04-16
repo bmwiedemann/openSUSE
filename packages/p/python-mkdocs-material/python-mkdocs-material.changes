@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 16 05:32:39 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.18:
+  * Refactored tooltips implementation to fix positioning issues
+  * Fixed #7044 Rendering glitch when hovering contributor avatar
+    in Chrome
+  * Fixed #7043 Highlighted lines in code blocks cutoff on mobile
+  * Fixed #6910 Incorrect position of tooltip for page status in
+    sidebar
+  * Fixed #6760 Incorrect position and overly long tooltip in
+    tables
+  * Fixed #6488 Incorrect position and cutoff tooltip in content
+    tabs
+
+-------------------------------------------------------------------
 Wed Apr  3 16:57:33 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.17:
