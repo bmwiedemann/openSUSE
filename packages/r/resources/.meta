@@ -1,0 +1,6 @@
+<package name="resources" project="openSUSE:Factory">
+  <title>Monitor your system resources and processes</title>
+  <description>Resources is a simple yet powerful monitor for your system resources and processes, written in Rust and using GTK 4 and libadwaita for its GUI.</description>
+  <devel project="X11:Utilities" package="resources"/>
+  <url>https://github.com/nokyan/resources</url>
+</package>
