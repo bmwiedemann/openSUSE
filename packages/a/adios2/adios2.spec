@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package adios2
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -62,7 +62,7 @@ Summary:        The Adaptable IO System (ADIOS2)
 License:        Apache-2.0
 Group:          Productivity/Scientific/Other
 URL:            https://adios2.readthedocs.io/en/
-Source0:        ADIOS2-%{version}.tar.gz
+Source0:        https://github.com/ornladios/ADIOS2/archive/refs/tags/v%{version}.tar.gz#/ADIOS2-%{version}.tar.gz
 Source1:        adios2-rpmlintrc
 BuildRequires:  cmake
 BuildRequires:  fdupes
