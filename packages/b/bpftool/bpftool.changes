@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 11 07:02:33 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to version 7.4.0
+  * Kernel configuration options related to bpfilter (namely: CONFIG_BPFILTER
+  * and CONFIG_BPFILTER_UMH) are no longer checked with bpftool feature probe
+  * More information displayed for BPF links
+  * Generate shadow variables for struct_ops maps in program skeletons
+  * Mark orphaned programs as such when listing programs
+  * Recognize arena map types (a09e203) and global variables
+  * Support the addr_space_cast instruction in the disassembler for translated
+    programs
+  * In the mirror repository, fix the detection of clang-bpf-co-re (for
+    skeletons support) for some clang versions
+  * Displaying PIDs for processes holding references to BPF links when listing
+    links with bpftool link list on older kernels broke in v7.3.0, because the
+    internal program pid_iter would fail to load
+
+-------------------------------------------------------------------
 Tue Nov 28 07:24:46 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to version 7.3.0
