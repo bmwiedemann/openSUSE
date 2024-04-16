@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 16 10:10:21 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Build with gcc13 on Leap 15
+
+-------------------------------------------------------------------
 Fri Feb 23 08:05:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with recent cmake macro change (DOCDIR): do not install
