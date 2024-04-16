@@ -19,7 +19,7 @@
 
 %define sover   0
 Name:           opus
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Audio Codec Library
 License:        BSD-3-Clause
@@ -78,6 +78,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libopus.so.%{sover}*
 
 %files -n libopus-devel
+%license COPYING
 %doc AUTHORS README
 %{_libdir}/libopus.so
 %{_includedir}/opus
