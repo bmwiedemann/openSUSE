@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr 13 17:12:17 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.7
+  * Re-enabled debug info and potentially fixed some rare bug in
+    ball target computation. Also, as a workaround, if the ball
+    has an illegal target it returns to the paddle instead of
+    getting lost.
+  * Fixed mini game Invaders: It unintentionally resembled
+    Outbreak. Now, you need to survive each wave by clearing a
+    certain number of invaders. The game ends when an Invader
+    reaches the paddle.
+  * gettext c-format issue fixed.
+  * New levelset 'JustGoForIt'.
+
+-------------------------------------------------------------------
 Sat Jan 27 17:36:46 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 1.1.6
