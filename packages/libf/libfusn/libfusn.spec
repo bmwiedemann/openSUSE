@@ -18,21 +18,21 @@
 
 Name:           libfusn
 %define lname	libfusn1
-Version:        20240123
+Version:        20240416
 Release:        0
 Summary:        Library for Update Sequence Number (USN) Journal data types
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libfusn
 Source:         https://github.com/libyal/libfusn/releases/download/%version/libfusn-experimental-%version.tar.gz
-#Source2:        https://github.com/libyal/libfusn/releases/download/%version/libfusn-experimental-%version.tar.gz.asc
+Source2:        https://github.com/libyal/libfusn/releases/download/%version/libfusn-experimental-%version.tar.gz.asc
 Source9:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20240101
-BuildRequires:  pkgconfig(libcnotify) >= 20240108
-BuildRequires:  pkgconfig(libfdatetime) >= 20240115
-BuildRequires:  pkgconfig(libuna) >= 20230710
+BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libcnotify) >= 20240414
+BuildRequires:  pkgconfig(libfdatetime) >= 20240414
+BuildRequires:  pkgconfig(libuna) >= 20240414
 # Various notes: https://en.opensuse.org/libyal
 
 %description
@@ -73,8 +73,7 @@ grep '  local' config.log && exit 1
 %make_install
 find "%buildroot" -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*
