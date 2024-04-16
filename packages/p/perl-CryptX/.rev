@@ -128,4 +128,15 @@
 </comment>
     <requestid>1156468</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>9e41971f3acd8c0a1256083ea6136564</srcmd5>
+    <version>0.80.0</version>
+    <time>1713290645</time>
+    <user>anag+factory</user>
+    <comment>Add missing CVE and Bugzilla references in the (old) changelog, 
+so the bots can find them
+
+- updated to 0.062 (fix CVE-2018-25099, bsc#1221528)</comment>
+    <requestid>1168005</requestid>
+  </revision>
 </revisionlist>

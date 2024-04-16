@@ -176,7 +176,7 @@ Thu Dec  6 15:30:04 UTC 2018 - Stephan Kulow <coolo@suse.com>
 -------------------------------------------------------------------
 Thu Nov  8 06:10:28 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
-- updated to 0.062
+- updated to 0.062 (fix CVE-2018-25099, bsc#1221528)
    see /usr/share/doc/packages/perl-CryptX/Changes
 
   0.062   2018-10-30
