@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 15 16:26:00 UTC 2024 - malcolmlewis@opensuse.org
+
+- Updated to version 3.3.34:
+  + This is a nice point release that corrects and updates numerous
+    smaller, and larger, features. Most pressing in terms of
+    numbers affected was the failure to detect in display, non
+    console, for Wayland without Xwayland running.
+
+-------------------------------------------------------------------
 Thu Apr 04 14:17:02 UTC 2024 - malcolmlewis@opensuse.org
 
 - Updated to version 3.3.33-1+3:
