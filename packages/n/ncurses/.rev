@@ -4490,4 +4490,29 @@
   * ncurses-6.4.dif</comment>
     <requestid>1161411</requestid>
   </revision>
+  <revision rev="261" vrev="34">
+    <srcmd5>8f08bc7d50a1509e9534f1ccf57c754b</srcmd5>
+    <version>unknown</version>
+    <time>1713290570</time>
+    <user>anag+factory</user>
+    <comment>- Add ncurses patch 20240414
+  + build/bug-fix for check-size feature (reports by Sam James, Gabriele
+    Balducci).
+- Add ncurses patch 20240413
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + provide for padding in check-size feature, using new_prescr() to
+    pass interim SCREEN pointer.
+  + complete change for opaque options (Gentoo #928973, cf: 20231021).
+  + update package /debian/rules and related lintian overrides
+  + revise progs.priv.h to provide for NC_ISATTY reuse
+
+- Add ncurses patch 20240330
+  + remove masking of ISIG in cbreak() (report by Benno Schulenberg).
+  + modify test/test_mouse.c to use curses api for raw/noraw.
+  &gt; improved configure macros from other program development:
+    + build-fix for clang on Solaris
+    + suppress filename/timestamp in gzip'd manpages (suggested for
+      byacc by Andrin Geiger)</comment>
+    <requestid>1167744</requestid>
+  </revision>
 </revisionlist>
