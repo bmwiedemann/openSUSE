@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Apr 11 02:55:05 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Fix the compatibility issue with bash-completion 2.12
+  (bsc#1221849)
+  * 0001-util-bash-completion-Fix-for-bash-completion-2.12.patch
+
+-------------------------------------------------------------------
+Fri Mar 29 01:58:00 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix os name is used for root file system mount (bsc#1220949)
+  * 0001-10_linux-Ensure-persistence-of-root-file-system-moun.patch
+
+-------------------------------------------------------------------
+Wed Mar 27 04:51:33 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix LPAR falls into grub shell after installation with lvm (bsc#1221866)
+  * 0001-ofdisk-Enhance-canonical-path-handling-for-bootpath.patch
+
+-------------------------------------------------------------------
+Mon Mar 25 02:20:38 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Correct the erroneous sequence in determining GRUB_FS and GRUB_DEVICE
+  (bsc#1221904)
+  * grub2-pass-corret-root-for-nfsroot.patch
+
+-------------------------------------------------------------------
+Fri Mar 22 06:01:13 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix memdisk becomes the default boot entry, resolving no graphic display
+  device error in guest vnc console (bsc#1221779)
+  * grub2-xen-pv-firmware.cfg 
+
+-------------------------------------------------------------------
+Wed Mar 20 06:16:45 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Cleanup spec file to adhere to update-bootloader-rpm-macros definition
+  entirely (bsc#1218241)
+
+-------------------------------------------------------------------
+Tue Mar 19 07:08:02 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add grub2-bsc1220338-key_protector-implement-the-blocklist.patch
+  to implement a blocklist in the key protector and check the
+  unwanted UEFI variables (bsc#1220338)
+
+-------------------------------------------------------------------
 Mon Mar  4 08:57:36 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update grub2-change-bash-completion-dir.patch to support bash

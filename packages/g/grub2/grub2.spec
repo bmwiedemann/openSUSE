@@ -393,6 +393,10 @@ Patch199:       0001-squash-ieee1275-ofpath-enable-NVMeoF-logical-device-.patch
 Patch200:       0001-ofdisk-enhance-boot-time-by-focusing-on-boot-disk-re.patch
 Patch201:       0002-ofdisk-add-early_log-support.patch
 Patch202:       0001-disk-Optimize-disk-iteration-by-moving-memdisk-to-th.patch
+Patch203:       grub2-bsc1220338-key_protector-implement-the-blocklist.patch
+Patch204:       0001-ofdisk-Enhance-canonical-path-handling-for-bootpath.patch
+Patch205:       0001-10_linux-Ensure-persistence-of-root-file-system-moun.patch
+Patch206:       0001-util-bash-completion-Fix-for-bash-completion-2.12.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -456,12 +460,7 @@ BuildArch:      noarch
 %endif
 Requires:       %{name} = %{version}
 Requires(post): %{name} = %{version}
-%if 0%{?update_bootloader_requires:1}
-%update_bootloader_requires
-%else
-Requires:       perl-Bootloader
-Requires(post): perl-Bootloader
-%endif
+%{?update_bootloader_requires}
 
 %description %{grubarch}
 The GRand Unified Bootloader (GRUB) is a highly configurable and customizable
@@ -510,12 +509,7 @@ Requires:       efibootmgr
 Requires(post): efibootmgr
 Requires:       %{name} = %{version}
 Requires(post): %{name} = %{version}
-%if 0%{?update_bootloader_requires:1}
-%update_bootloader_requires
-%else
-Requires:       perl-Bootloader >= 0.706
-Requires(post): perl-Bootloader >= 0.706
-%endif
+%{?update_bootloader_requires}
 %{?fde_tpm_update_requires}
 Provides:       %{name}-efi = %{version}-%{release}
 Obsoletes:      %{name}-efi < %{version}-%{release}
@@ -1120,51 +1114,7 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %if ! 0%{?only_efi:1}
 
 %post %{grubarch}
-%if 0%{?update_bootloader_check_type_reinit_post:1}
-%update_bootloader_check_type_reinit_post grub2
-%else
-# To check by current loader settings
-if [ -f %{_sysconfdir}/sysconfig/bootloader ]; then
-  . %{_sysconfdir}/sysconfig/bootloader
-fi
-
-# If the grub is the current loader, we'll handle the grub2 testing entry
-if [ "x${LOADER_TYPE}" = "xgrub" ]; then
-
-  exec >/dev/null 2>&1
-
-  # check if entry for grub2's core.img exists in the config
-  # if yes, we will correct obsoleted path and update grub2 stuff and config to make it work
-  # if no, do nothing
-  if [ -f /boot/grub/menu.lst ]; then
-
-    # If grub config contains obsolete core.img path, remove and use the new one
-    if /usr/bin/grep -l "^\s*kernel\s*.*/boot/%{name}/core.img" /boot/grub/menu.lst; then
-      /sbin/update-bootloader --remove --image /boot/%{name}/core.img || true
-      /sbin/update-bootloader --add --image /boot/%{name}/i386-pc/core.img --name "GNU GRUB 2" || true
-    fi
-
-    # Install grub2 stuff and config to make the grub2 testing entry to work with updated version
-    if /usr/bin/grep -l "^\s*kernel\s*.*/boot/%{name}/i386-pc/core.img" /boot/grub/menu.lst; then
-      # Determine the partition with /boot
-      BOOT_PARTITION=$(df -h /boot | sed -n '2s/[[:blank:]].*//p')
-      # Generate core.img, but don't let it be installed in boot sector
-      %{name}-install --no-bootsector $BOOT_PARTITION || true
-      # Create a working grub2 config, otherwise that entry is un-bootable
-      /usr/sbin/grub2-mkconfig -o /boot/%{name}/grub.cfg
-    fi
-  fi
-
-elif [ "x${LOADER_TYPE}" = "xgrub2" ]; then
-
-  # It's enought to call update-bootloader to install grub2 and update it's config
-  # Use new --reinit, if not available use --refresh
-  # --reinit: install and update bootloader config
-  # --refresh: update bootloader config
-  /sbin/update-bootloader --reinit 2>&1 | grep -q 'Unknown option: reinit' &&
-  /sbin/update-bootloader --refresh || true
-fi
-%endif
+%{?update_bootloader_check_type_reinit_post:%update_bootloader_check_type_reinit_post grub2}
 
 %posttrans %{grubarch}
 %{?update_bootloader_posttrans}
@@ -1178,38 +1128,7 @@ fi
 %fde_tpm_update_post grub2-efi
 %endif
 
-%if 0%{?update_bootloader_check_type_reinit_post:1}
-%update_bootloader_check_type_reinit_post grub2-efi
-%else
-# To check by current loader settings
-if [ -f %{_sysconfdir}/sysconfig/bootloader ]; then
-  . %{_sysconfdir}/sysconfig/bootloader
-fi
-
-if [ "x${LOADER_TYPE}" = "xgrub2-efi" ]; then
-
-  if [ -d /boot/%{name}-efi ]; then
-    # Migrate settings to standard prefix /boot/grub2
-    for i in custom.cfg grubenv; do
-      [ -f /boot/%{name}-efi/$i ] && cp -a /boot/%{name}-efi/$i /boot/%{name} || :
-    done
-
-  fi
-
-  # It's enough to call update-bootloader to install grub2 and update it's config
-  # Use new --reinit, if not available use --refresh
-  # --reinit: install and update bootloader config
-  # --refresh: update bootloader config
-  /sbin/update-bootloader --reinit 2>&1 | grep -q 'Unknown option: reinit' &&
-  /sbin/update-bootloader --refresh || true
-fi
-
-if [ -d /boot/%{name}-efi ]; then
-  mv /boot/%{name}-efi /boot/%{name}-efi.rpmsave
-fi
-
-exit 0
-%endif
+%{?update_bootloader_check_type_reinit_post:%update_bootloader_check_type_reinit_post grub2-efi}
 
 %posttrans %{grubefiarch}
 %{?update_bootloader_posttrans}
@@ -1219,40 +1138,6 @@ exit 0
 
 %preun
 %service_del_preun grub2-once.service
-# We did not add core.img to grub1 menu.lst in new update-bootloader macro as what
-# the old %%post ever did, then the %%preun counterpart which removed the added core.img
-# entry from old %%post can be skipped entirely if having new macro in use.
-%if ! 0%{?update_bootloader_posttrans:1}%{?only_efi:1}
-if [ $1 = 0 ]; then
-  # To check by current loader settings
-  if [ -f %{_sysconfdir}/sysconfig/bootloader ]; then
-    . %{_sysconfdir}/sysconfig/bootloader
-  fi
-
-  if [ "x${LOADER_TYPE}" = "xgrub" ]; then
-
-    exec >/dev/null 2>&1
-
-    if [ -f /boot/grub/menu.lst ]; then
-
-      # Remove grub2 testing entry in menu.lst if has any
-      for i in /boot/%{name}/core.img /boot/%{name}/i386-pc/core.img; do
-        if /usr/bin/grep -l "^\s*kernel\s*.*$i" /boot/grub/menu.lst; then
-          /sbin/update-bootloader --remove --image "$i" || true
-        fi
-      done
-    fi
-
-    # Cleanup config, to not confuse some tools determining bootloader in use
-    rm -f /boot/%{name}/grub.cfg
-
-    # Cleanup installed files
-    # Unless grub2 provides grub2-uninstall, we don't remove any file because
-    # we have no idea what's been installed. (And a blind remove is dangerous
-    # to remove user's or other package's file accidently ..)
-  fi
-fi
-%endif
 
 %postun
 %service_del_postun grub2-once.service
