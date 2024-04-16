@@ -1271,4 +1271,19 @@ Fixed macro (as commented) (forwarded request 885296 from susnux)</comment>
     <comment></comment>
     <requestid>1161479</requestid>
   </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>b1a31e4582d988e4d5450dc0a9f51918</srcmd5>
+    <version>44.1</version>
+    <time>1713290586</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 44.1:
+  + Feature: New archive dialog: allow to choose a location without
+    changing name.
+  + Bugfixes:
+    - Fixed adding multiple files on a 'drop' event.
+    - Show the options dialog when adding files in batch mode.
+    - Appdata: Add 44.0 release.
+  + Updated translations. (forwarded request 1166577 from dimstar)</comment>
+    <requestid>1167759</requestid>
+  </revision>
 </revisionlist>

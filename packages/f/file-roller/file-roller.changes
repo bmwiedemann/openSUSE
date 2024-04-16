@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 10 07:11:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 44.1:
+  + Feature: New archive dialog: allow to choose a location without
+    changing name.
+  + Bugfixes:
+    - Fixed adding multiple files on a 'drop' event.
+    - Show the options dialog when adding files in batch mode.
+    - Appdata: Add 44.0 release.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 25 15:18:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 44:
