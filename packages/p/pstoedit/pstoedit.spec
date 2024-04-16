@@ -1,7 +1,7 @@
 #
 # spec file for package pstoedit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pstoedit
-Version:        4.00
+Version:        4.01
 Release:        0
 Summary:        PostScript and PDF Converter
 License:        GPL-2.0-or-later
@@ -94,8 +94,6 @@ for CRLFFILE in doc/readme.txt examples/figtext.ps ; do
 done
 
 %build
-# we are patching configure.ac
-sh autogen.sh
 # --without-swf: lacking libming package
 %configure \
 	--disable-static \
@@ -124,8 +122,6 @@ rm -rf %{buildroot}/usr/share/doc/%{name}
 %{_libdir}/pstoedit/*.so
 %{_datadir}/%{name}
 %{_mandir}/man?*/*.*
-# Remove +x attribute from doc files
-%defattr(0644, root, root, 0755)
 %license copying
 %doc examples doc/readme.txt
 %doc doc/*.htm doc/%{name}.pdf
