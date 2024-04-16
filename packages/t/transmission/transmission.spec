@@ -46,7 +46,11 @@ Patch0:         harden_transmission-daemon.service.patch
 BuildRequires:  alts
 BuildRequires:  cmake
 BuildRequires:  fdupes
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  gettext-tools
 BuildRequires:  libb64-devel
 BuildRequires:  libcurl-devel >= 7.28.0
@@ -159,6 +163,10 @@ sed -i 's/if(INSTALL_DOC)/if(FALSE)/' CMakeLists.txt
 cp %{SOURCE1} .
 
 %build
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 # Turning INSTALL_DOC off breaks the package because it doesn't install
 # transmission.1 manpage, argh!
 %cmake \

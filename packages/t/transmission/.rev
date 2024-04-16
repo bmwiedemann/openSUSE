@@ -1088,4 +1088,12 @@
   also disables installing the man pages.</comment>
     <requestid>1149978</requestid>
   </revision>
+  <revision rev="106" vrev="6">
+    <srcmd5>bc7d21302d6bfeecc2d3811750643daa</srcmd5>
+    <version>4.0.5</version>
+    <time>1713290733</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1168028</requestid>
+  </revision>
 </revisionlist>
