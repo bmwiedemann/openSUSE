@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 16 05:52:58 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Set RuntimeDirectory to offer a location for Unix sockets at /run/nginx
+
+-------------------------------------------------------------------
 Sun Mar  3 10:24:27 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
 
 - logrotate: don't fail if service not running

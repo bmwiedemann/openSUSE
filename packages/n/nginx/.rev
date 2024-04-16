@@ -1073,4 +1073,12 @@
     <comment>- logrotate: don't fail if service not running</comment>
     <requestid>1154408</requestid>
   </revision>
+  <revision rev="87" vrev="4">
+    <srcmd5>957e75daf839a91e6327deb19c4a65cc</srcmd5>
+    <version>1.25.4</version>
+    <time>1713290601</time>
+    <user>anag+factory</user>
+    <comment>- Set RuntimeDirectory to offer a location for Unix sockets at /run/nginx</comment>
+    <requestid>1167915</requestid>
+  </revision>
 </revisionlist>

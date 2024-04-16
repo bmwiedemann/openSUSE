@@ -4,6 +4,7 @@ After=network-online.target remote-fs.target nss-lookup.target
 Wants=network-online.target
 
 [Service]
+RuntimeDirectory=nginx
 PIDFile=/run/nginx.pid
 ExecStartPre=/usr/sbin/nginx -t
 ExecStart=/usr/sbin/nginx -g "daemon off;"
