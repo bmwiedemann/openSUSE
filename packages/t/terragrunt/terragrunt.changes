@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 15 18:32:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.57.1:
+  * Fixes module requests routing with provider caching (#3057)
+  * Improved test for checking aws errors (#3058)
+  * Updated terragrunt command execution in parallel tests (#3054)
+
+-------------------------------------------------------------------
 Sat Apr 13 09:35:09 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.57.0:
