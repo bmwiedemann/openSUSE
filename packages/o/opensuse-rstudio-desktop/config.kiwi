@@ -31,7 +31,6 @@
     <rpm-excludedocs>false</rpm-excludedocs>
     <locale>en_US</locale>
     <keytable>us</keytable>
-    <hwclock>utc</hwclock>
   </preferences>
   <repository type="rpm-md">
     <source path="obsrepositories:/"/>
