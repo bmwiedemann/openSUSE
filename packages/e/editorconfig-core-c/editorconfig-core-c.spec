@@ -2,6 +2,7 @@
 # spec file for package editorconfig-core-c
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           editorconfig-core-c
-Version:        0.12.6
+Version:        0.12.7
 Release:        0
 Summary:        EditorConfig core library written in C
 License:        BSD-2-Clause AND BSD-3-Clause
@@ -25,8 +26,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://editorconfig.org/
 Source:         https://github.com/editorconfig/editorconfig-core-c/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-Patch0:         editorconfig-core-c-0.12.1-install_paths.patch
-Patch1:         editorconfig-core-c-0.12.1-no_timestamp.patch
 BuildRequires:  cmake >= 3.5.1
 BuildRequires:  doxygen
 BuildRequires:  pkgconfig
@@ -87,15 +86,17 @@ This package contains files for developing and building with %{name}
 %build
 %cmake \
 	-DLIB_SUFFIX=%{_lib} \
-	-DINSTALL_HTML_DOC=ON
+	%{nil}
 %make_build
 
 %install
 %cmake_install
 find %{buildroot}/%{_libdir} -type f -name "*.a" -print -delete
 
-%post -n libeditorconfig0 -p /sbin/ldconfig
-%postun -n libeditorconfig0 -p /sbin/ldconfig
+%check
+%ctest
+
+%ldconfig_scriptlets -n libeditorconfig0
 
 %files -n editorconfig
 %license LICENSE
@@ -110,7 +111,6 @@ find %{buildroot}/%{_libdir} -type f -name "*.a" -print -delete
 %files -n libeditorconfig-devel
 %license LICENSE
 %doc CONTRIBUTORS README.md
-%{_docdir}/libeditorconfig-devel
 %{_includedir}/editorconfig
 %{_libdir}/libeditorconfig.so
 %{_mandir}/man3/editorconfig*

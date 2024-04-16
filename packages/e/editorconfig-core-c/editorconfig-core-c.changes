@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 14 07:34:33 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.12.7:
+  * Fix pointer overflow in STRING_CAT
+  * Fix a few more stack buffer overflows
+- drop HTML docs and editorconfig-core-c-0.12.1-install_paths.patch
+- drop editorconfig-core-c-0.12.1-no_timestamp.patch, upstream
+
+-------------------------------------------------------------------
 Tue May  2 20:28:06 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - editorconfig-core-c 0.12.6:
