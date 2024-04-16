@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Paste
-Version:        3.8.0
+Version:        3.9.0
 Release:        0
 Summary:        Tools for using a Web Server Gateway Interface stack
 License:        MIT

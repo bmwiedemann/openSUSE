@@ -395,4 +395,14 @@
   * remove most python2 compatibility</comment>
     <requestid>1160836</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>bf636b1353b6bfbcdd7cc0383f6f50c0</srcmd5>
+    <version>3.9.0</version>
+    <time>1713290576</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.9.0:
+  * misc bugs + please pyflakes
+  * Remove unused format_environ method in watchthreads APP</comment>
+    <requestid>1167719</requestid>
+  </revision>
 </revisionlist>

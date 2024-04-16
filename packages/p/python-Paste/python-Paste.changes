@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 15 06:11:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.9.0:
+  * misc bugs + please pyflakes
+  * Remove unused format_environ method in watchthreads APP
+
+-------------------------------------------------------------------
 Fri Mar 22 20:46:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.8.0:
