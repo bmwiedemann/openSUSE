@@ -1,7 +1,7 @@
 #
 # spec file for package earlyoom
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %global _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           earlyoom
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Early OOM Daemon for Linux
 License:        MIT
@@ -31,6 +31,7 @@ URL:            https://github.com/rfjakob/%{name}
 Source0:        https://github.com/rfjakob/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.sysconfig
 # Inject pre-build earlyoom.1, built on x86_64 machine, as pandoc does not exist on all archs
+# pandoc MANPAGE.md -s -t man > earlyoom.1
 Source2:        earlyoom.1
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
@@ -45,9 +46,7 @@ below critical level, it will kill the largest process (highest oom_score).
 
 %prep
 %autosetup -p1
-# Test if our pre-build earloom.1 is newer than README.md; if not, fail
-# in case of fail, rebuild the earlyoom.1 out of the build system using
-#     pandoc MANPAGE.md -s -t man > earlyoom.1
+# Test if our pre-build earloom.1 is newer than README.md; if not, fail.
 test %{SOURCE2} -nt README.md
 
 # Fix defaults file location

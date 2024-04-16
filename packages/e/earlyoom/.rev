@@ -144,4 +144,20 @@
 </comment>
     <requestid>993117</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3ed5f4dea2adf9f3615cf82c1c77c260</srcmd5>
+    <version>1.8</version>
+    <time>1713290676</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 1.8
+  * Changed file earlyoom.1 (MANPAGE.md -s -t man &gt; earlyoom.1).
+  * https://github.com/rfjakob/earlyoom#changelog  
+  * Introduce user mem total / meminfo_t.UserMemTotal and
+    calculate MemAvailablePercent.
+  * Added NO_COLOR support.
+  * Fixed handling of processes with a zombie main thread.
+  * Added --sort-by-rss. This will select a process to kill acc
+    to the largest RSS instead of largest oom_score.</comment>
+    <requestid>1167929</requestid>
+  </revision>
 </revisionlist>
