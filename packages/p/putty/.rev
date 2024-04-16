@@ -252,4 +252,12 @@
   * Fix CVE-2023-48795 [boo#1218128]</comment>
     <requestid>1133917</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d220c756fc02218f18e06da7e13ce3ef</srcmd5>
+    <version>0.81</version>
+    <time>1713290655</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 0.81</comment>
+    <requestid>1167888</requestid>
+  </revision>
 </revisionlist>
