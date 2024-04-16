@@ -21,7 +21,7 @@
 # your live system before submitting an update.
 %bcond_with     test
 Name:           spyder
-Version:        5.5.3
+Version:        5.5.4
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -29,10 +29,6 @@ Group:          Development/Languages/Python
 URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder-rpmlintrc
-# PATCH-FIX-UPSTREAM spyder-pr21939-qtawesome1.3.patch gh#spyder-ide/spyder#21939
-Patch1:         spyder-pr21939-qtawesome1.3.patch
-# PATCH-FIX-UPSTREAM spyder-pr21942-pylint3.1.patch gh#spyder-ide/spyder#21942
-Patch2:         spyder-pr21942-pylint3.1.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.7
@@ -81,12 +77,12 @@ Requires:       python3-watchdog
 Requires:       python3-whatthepatch
 Requires:       python3-yapf
 Requires:       (python3-QDarkStyle >= 3.2.0 with python3-QDarkStyle < 3.3.0)
-Requires:       (python3-QtAwesome >= 1.2.1 with python3-QtAwesome < 1.4)
+Requires:       (python3-QtAwesome >= 1.3.1 with python3-QtAwesome < 1.4)
 Requires:       (python3-ipython >= 8.13 with python3-ipython < 9)
 Requires:       (python3-jedi >= 0.17.2 with python3-jedi < 0.20)
 Requires:       (python3-pylint >= 3.1 with python3-pylint < 4)
 Requires:       (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
-Requires:       (python3-python-lsp-server >= 1.10.0 with python3-python-lsp-server < 1.11)
+Requires:       (python3-python-lsp-server >= 1.11.0 with python3-python-lsp-server < 1.12)
 Requires:       (python3-qtconsole >= 5.5.1 with python3-qtconsole < 5.6.0)
 Requires:       (python3-spyder-kernels >= 2.5.1 with python3-spyder-kernels < 2.6)
 Recommends:     %{name}-dicom
@@ -176,12 +172,12 @@ BuildRequires:  python3-yapf
 BuildRequires:  xdpyinfo
 BuildRequires:  xvfb-run
 BuildRequires:  (python3-QDarkStyle >= 3.2 with python3-QDarkStyle < 3.3)
-BuildRequires:  (python3-QtAwesome >= 1.2.1 with python3-QtAwesome < 1.4)
+BuildRequires:  (python3-QtAwesome >= 1.3.1 with python3-QtAwesome < 1.4)
 BuildRequires:  (python3-ipython >= 8.13 with python3-ipython < 9)
 BuildRequires:  (python3-jedi >= 0.17.2 with python3-jedi < 0.20)
 BuildRequires:  (python3-pylint >= 3.1 with python3-pylint < 4)
 BuildRequires:  (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
-BuildRequires:  (python3-python-lsp-server >= 1.10 with python3-python-lsp-server < 1.11)
+BuildRequires:  (python3-python-lsp-server >= 1.11 with python3-python-lsp-server < 1.12)
 BuildRequires:  (python3-qtconsole >= 5.5.1 with python3-qtconsole < 5.6)
 BuildRequires:  (python3-spyder-kernels >= 2.5.1 with python3-spyder-kernels < 2.6)
 # /SECTION
@@ -273,6 +269,8 @@ sed \
 # Upstream brings its fixed versions for pyls, qdarksstyle and spyder-kernels for its
 # test environment, but we want to test against installed packages.
 rm -r external-deps/*
+
+sed -i "s/installer = 'pip'/installer = 'openSUSE RPM'/" spyder/__init__.py
 
 %build
 %python3_pyproject_wheel
