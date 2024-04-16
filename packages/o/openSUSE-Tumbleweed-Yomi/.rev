@@ -178,4 +178,15 @@ different profiles.</comment>
 </comment>
     <requestid>962145</requestid>
   </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>89bb741db1b066093d1bdbe86f6e4476</srcmd5>
+    <version>1.0.0</version>
+    <time>1713290607</time>
+    <user>anag+factory</user>
+    <comment>- Remove size field in the pxeboot image
+- Add &quot;man&quot; package because python3-salt
+- Upgrade to schemaversion 7.4
+</comment>
+    <requestid>1168016</requestid>
+  </revision>
 </revisionlist>

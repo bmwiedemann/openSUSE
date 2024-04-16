@@ -2,7 +2,7 @@
 
 <!-- OBS-Profiles: @BUILD_FLAVOR@ -->
 
-<image schemaversion="7.1" name="openSUSE-Tumbleweed-Yomi" displayname="openSUSE Tumbleweed Yomi">
+<image schemaversion="7.4" name="openSUSE-Tumbleweed-Yomi" displayname="openSUSE Tumbleweed Yomi">
   <description type="system">
     <author>openSUSE Project</author>
     <contact>crc@suse.com</contact>
@@ -50,12 +50,12 @@
     <type image="oem"
 	  filesystem="ext4"
 	  initrd_system="dracut"
-	  bootloader="grub2"
 	  firmware="efi"
 	  installpxe="true"
 	  kernelcmdline="rd.kiwi.ramdisk ramdisk_size=2097152"
 	  >
-      <size unit="G">2</size>
+      <bootloader name="grub2"/>
+      <!-- <size unit="G">2</size> -->
       <oemconfig>
         <oem-skip-verify>true</oem-skip-verify>
         <oem-unattended>true</oem-unattended>
@@ -96,6 +96,7 @@
     <package name="iproute2"/>
     <package name="openssh"/>
     <package name="rsync"/>
+    <package name="man"/> <!-- python3-salt -->
     <package name="salt-minion"/>
     <package name="live-add-yast-repos"/>
 
