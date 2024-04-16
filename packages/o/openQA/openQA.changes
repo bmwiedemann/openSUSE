@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 16 06:33:16 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1713195688.98057f9b:
+  * dist: Allow build on s390x after verification
+  * Create unit files to auto restart services after minion update
+
+-------------------------------------------------------------------
 Sat Apr 13 22:33:20 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1712957750.06bff133:

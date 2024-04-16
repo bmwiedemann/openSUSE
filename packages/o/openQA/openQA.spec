@@ -78,7 +78,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1712957750.06bff133
+Version:        4.6.1713195688.98057f9b
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -160,10 +160,6 @@ Development package pulling in all build+test dependencies except chromedriver f
 %package devel
 Summary:        Development package pulling in all build+test dependencies
 Requires:       %{devel_requires}
-%ifarch s390x
-# missing chromedriver dependency
-ExclusiveArch:  do_not_build
-%endif
 
 %description devel
 Development package pulling in all build+test dependencies.
@@ -664,6 +660,8 @@ fi
 %{_localstatedir}/lib/openqa/script
 %{_localstatedir}/lib/openqa/tests
 %{_datadir}/openqa/script/openqa-check-devel-repo
+%{_unitdir}/openqa-minion-restart.service
+%{_unitdir}/openqa-minion-restart.path
 
 %files worker
 %{_datadir}/openqa/lib/OpenQA/CacheService/
