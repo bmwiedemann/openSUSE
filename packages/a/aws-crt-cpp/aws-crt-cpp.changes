@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 15 11:24:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.26.8
+  * Bump s2n version to v1.4.11 to support ecdsa521p
+    with TLS1.3 by @alfred2g in (#614)
+- from version 0.26.7
+  * Updated crypto bindings to include SHA1 and AES for
+    use in C++ SDK by @JonathanHenson in (#470)
+
+-------------------------------------------------------------------
 Thu Apr  4 15:40:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.26.6
