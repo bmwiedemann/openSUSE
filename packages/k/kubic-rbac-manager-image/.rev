@@ -38,4 +38,12 @@
     <comment>- Re-add busybox-findutils</comment>
     <requestid>909765</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>de806f67b7fc45850658d5fe3df3cba5</srcmd5>
+    <version>1.0.0</version>
+    <time>1713290715</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1167959</requestid>
+  </revision>
 </revisionlist>
