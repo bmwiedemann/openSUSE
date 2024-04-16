@@ -257,4 +257,19 @@ preparation for submit to SUSE. Remove %defattr(-,root,root,-) in %files</commen
     <comment>Prepare for RPM 4.20 (forwarded request 1152223 from dimstar)</comment>
     <requestid>1152294</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>abbea0c4a5ae5bc989f20bf11e48ee96</srcmd5>
+    <version>1.14.15</version>
+    <time>1713290735</time>
+    <user>anag+factory</user>
+    <comment>Add reproducible.patch to avoid build-time race (boo#1102408)
+
+Workaround variations in build results between -j1 and -j4 builds.
+
+Compilation time on 4-core VM increases from 211 to 322 seconds,
+while 1-core VM remains at 519 s.
+
+This patch applies to go1.15, go1.14 and go1.13 packages. (forwarded request 1167936 from bmwiedemann)</comment>
+    <requestid>1168336</requestid>
+  </revision>
 </revisionlist>

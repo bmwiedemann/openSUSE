@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 15 18:00:45 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to avoid build-time race (boo#1102408)
+
+-------------------------------------------------------------------
 Tue Feb 27 11:32:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

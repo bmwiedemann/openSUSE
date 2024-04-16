@@ -154,6 +154,7 @@ Patch8:         gcc6-go.patch
 Patch9:         gcc7-go.patch
 # PATCH-FIX-UPSTREAM prefer /etc/hosts over DNS when /etc/nsswitch.conf not present boo#1172868 gh#golang/go#35305
 Patch12:        go1.x-prefer-etc-hosts-over-dns.patch
+Patch13:        reproducible.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # boostrap
 %if %{with gccgo}
@@ -248,6 +249,7 @@ Go runtime race detector libraries. Install this package if you wish to use the
 %patch -P 9 -p1
 %endif
 %endif
+%patch -P 13 -p1
 
 cp %{SOURCE4} .
 
