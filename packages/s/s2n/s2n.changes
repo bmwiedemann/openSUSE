@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 15 11:09:16 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.4.11
+  * chore(bindings): release 0.2.2 (#4497)
+  * feat(binding): add key update request api (#4469)
+  * tests: Serialization feature with post-handshake features (#4489)
+  * fix: add missing TLS1.3 p521 sig schemes (#4496)
+  * fix: correct broken early data test (#4494)
+  * fix: better errors for all client auth failures (#4492)
+- from version 1.4.10
+  * feat: add s2n_peek_buffered (#4490)
+  * feat: reduce read syscalls to improve performance (#4485)
+  * feat: connection serialization (#4468)
+  * chore(bindings): release 0.2.1 (#4486)
+  * fix(bindings): print cargo commands to stdout (#4482)
+
+-------------------------------------------------------------------
 Thu Apr  4 11:31:02 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.4.9
