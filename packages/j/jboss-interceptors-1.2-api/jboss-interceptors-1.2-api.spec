@@ -1,7 +1,7 @@
 #
 # spec file for package jboss-interceptors-1.2-api
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global namedversion %{version}%{?namedreltag}
 %global oname jboss-interceptors-api_1.2_spec
 Name:           jboss-interceptors-1.2-api
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Java EE Interceptors 1.2 API
 License:        CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0
