@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr  1 11:03:05 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.11.0
+  * Remove the rope_rename plugin. People that were using it need
+    to install the pylsp-rope third-party plugin instead.
+  * Add support for Pylint 3.1
+- Drop pylsp-pr543-pylint3.1.patch
+
+-------------------------------------------------------------------
 Fri Mar 29 10:50:31 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add pylsp-pr543-pylint3.1.patch

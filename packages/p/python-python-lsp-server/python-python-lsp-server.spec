@@ -19,14 +19,12 @@
 %{?sle15_python_module_pythons}
 
 Name:           python-python-lsp-server
-Version:        1.10.1
+Version:        1.11.0
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pylsp-pr543-pylint3.1.patch gh#python-lsp/python-lsp-server#531
-Patch0:         pylsp-pr543-pylint3.1.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}

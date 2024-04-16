@@ -328,4 +328,16 @@
 </comment>
     <requestid>1163540</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>b753a0c9abc061700d90d4672b891702</srcmd5>
+    <version>1.11.0</version>
+    <time>1713290638</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.11.0
+  * Remove the rope_rename plugin. People that were using it need
+    to install the pylsp-rope third-party plugin instead.
+  * Add support for Pylint 3.1
+- Drop pylsp-pr543-pylint3.1.patch (forwarded request 1167872 from bnavigator)</comment>
+    <requestid>1167873</requestid>
+  </revision>
 </revisionlist>
