@@ -151,4 +151,13 @@
     <comment></comment>
     <requestid>1113320</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>19ff79d54a7515f66f21b8a86515360a</srcmd5>
+    <version>0.10.1</version>
+    <time>1713357954</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip a misbehaving test that can cause segfaults.
+- Drop back to ffmpeg 5.</comment>
+    <requestid>1168449</requestid>
+  </revision>
 </revisionlist>

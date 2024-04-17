@@ -1,7 +1,7 @@
 #
 # spec file for package python-librosa
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,7 +71,7 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module resampy >= 0.2.2}
 BuildRequires:  %{python_module samplerate}
-BuildRequires:  ffmpeg
+BuildRequires:  ffmpeg-5
 # /SECTION
 %python_subpackages
 
@@ -103,20 +103,33 @@ export LIBROSA_DATA_DIR=$PWD/librosa-pooch-cache
 donttest="test_display"
 # fails with current Tumbleweed
 donttest+=" or test_pyin_multi_center"
+# causes interpreter SEGVs in some situations
+donttest+=" or test_piptrack_errors"
 # Overflow on 32-bit
-if [ $(getconf LONG_BIT) -eq 32 ]; then
-    donttest+=" or test_tempo or test_hybrid_cqt or test_stft_winsizes"
-    donttest+=" or test_istft_reconstruction or test_trim"
-    donttest+=" or test_multichannel"
-    donttest+=" or test_time_stretch_multi"
-    donttest+=" or test_piptrack_properties"
-    donttest+=" or test_pitch_shift_multi"
-    donttest+=" or test_split_multi"
-    donttest+=" or test_hpss_multi"
-    donttest+=" or test_nn_filter_multi"
-    donttest+=" or (test_nnls_multiblock and 256)"
-    donttest+=" or (test_rms and (4096 or 4097))"
-fi
+# can not use "ifarch" when BuildArch is set to noarch
+%if "%_arch" != "x86_64" && "%_arch" != "aarch64" && "%_arch" != "ppc64le"
+donttest+=" or test_tempo or test_hybrid_cqt or test_stft_winsizes"
+donttest+=" or test_istft_reconstruction or test_trim"
+donttest+=" or test_multichannel"
+donttest+=" or test_time_stretch_multi"
+donttest+=" or test_piptrack_properties"
+donttest+=" or test_pitch_shift_multi"
+donttest+=" or test_split_multi"
+donttest+=" or test_hpss_multi"
+donttest+=" or test_nn_filter_multi"
+donttest+=" or (test_nnls_multiblock and 256)"
+donttest+=" or (test_rms and (4096 or 4097))"
+donttest+=" or test_tonnetz_audio"
+%endif
+%if "%_arch" == "aarch64"
+donttest+=" or test_piptrack_errors"
+donttest+=" or test_match_events_onesided"
+donttest+=" or test_yin"
+donttest+=" or test_yin_tone"
+%endif
+%if "%_arch" == "ppc64le"
+donttest+=" or test_cqt"
+%endif
 # Flaky segfaults when run in parallel, upstream does not test with xdist
 notparallel="test_piptrack"
 notparallel+=" or (test_onset_strength_audio and chroma_stft)"

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 17 03:42:24 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip a misbehaving test that can cause segfaults.
+- Drop back to ffmpeg 5.
+
+-------------------------------------------------------------------
 Sun Sep 24 17:38:22 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Remove pooch upper pin, upstream removed it already for last
