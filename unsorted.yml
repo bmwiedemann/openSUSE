@@ -8437,9 +8437,12 @@ unsorted:
   - hypre_2_20_0-gnu-openmpi4-hpc-devel 
   - hypridle 
   - hyprland 
+  - hyprland-bash-completion 
   - hyprland-devel 
+  - hyprland-fish-completion 
   - hyprland-protocols-devel 
   - hyprland-wallpapers 
+  - hyprland-zsh-completion 
   - hyprlang-devel 
   - hyprpaper 
   - hyprshot 
@@ -18406,6 +18409,7 @@ unsorted:
   - modello-javadoc 
   - modello-maven-plugin 
   - modello-maven-plugin-javadoc 
+  - modello-test 
   - modem-manager-gui 
   - modem-manager-gui-lang 
   - moditect 
@@ -30756,6 +30760,7 @@ unsorted:
   - python312-WSME 
   - python312-WTForms 
   - python312-WTForms-lang 
+  - python312-Wand 
   - python312-WebOb 
   - python312-WebTest 
   - python312-Werkzeug 
@@ -32650,6 +32655,7 @@ unsorted:
   - python312-oletools 
   - python312-olm 
   - python312-omemo-dr 
+  - python312-omni-camera 
   - python312-onigurumacffi 
   - python312-onnx 
   - python312-onnxconverter-common 
@@ -32959,6 +32965,7 @@ unsorted:
   - python312-pybugz 
   - python312-pycairo 
   - python312-pycairo-devel 
+  - python312-pycapnp 
   - python312-pycares 
   - python312-pycdio 
   - python312-pycdlib 
@@ -34104,7 +34111,6 @@ unsorted:
   - python38-volatility3 
   - python39 
   - python39-32bit 
-  - python39-Wand 
   - python39-autobahn 
   - python39-base 
   - python39-base-32bit 
@@ -34114,9 +34120,6 @@ unsorted:
   - python39-doc 
   - python39-doc-devhelp 
   - python39-idle 
-  - python39-librosa 
-  - python39-omni-camera 
-  - python39-pycapnp 
   - python39-testsuite 
   - python39-tk 
   - python39-tools 

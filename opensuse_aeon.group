@@ -1609,6 +1609,7 @@
     <package name="poppler-tools" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="popt-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="power-profiles-daemon" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="powerprofilesctl-bash-completion" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="presage-data" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="procps" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="procps-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
