@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 16 13:34:55 UTC 2024 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.563.g4900899a:
+  * feat(dracut): add option to disable automatic guessing of output file (bsc#1213648)
+
+-------------------------------------------------------------------
 Mon Mar 18 08:18:21 UTC 2024 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.560.g145cde90:

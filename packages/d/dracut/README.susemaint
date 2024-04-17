@@ -311,6 +311,7 @@ PR      Commit message
 ----    --------------
 2342    fix(systemd-sysext): handle confexts and correct extensions search path
 2404    fix(multipath): explicitly check if hostonly_cmdline is yes
+2448    feat(dracut): add option to disable automatic guessing of output file
 2451    fix(base): correct handling of quiet in loginit
 2524    fix(dracut.sh): abort if Bash is in POSIX mode
 2526    fix(systemd-pcrphase): rename systemd-pcrphase binary to systemd-pcrextend
