@@ -8,8 +8,8 @@
   <flavor>a20-olinuxinomicro</flavor>
   <flavor>am335xevm</flavor>
   <flavor>am57xxevm</flavor>
-  <flavor>avnetultra96rev1</flavor>
   <flavor>arndale</flavor>
+  <flavor>avnetultra96rev1</flavor>
   <flavor>bananapi</flavor>
   <flavor>bananapim2plush3</flavor>
   <flavor>bananapim2zero</flavor>
@@ -37,6 +37,7 @@
   <flavor>melea1000</flavor>
   <flavor>merriia80optimus</flavor>
   <flavor>microchipmpfsicicle</flavor>
+  <flavor>milkvduo</flavor>
   <flavor>mt7623nbpir2</flavor>
   <flavor>mvebudb-88f3720</flavor>
   <flavor>mvebudbarmada8k</flavor>
@@ -99,8 +100,8 @@
   <flavor>turrisomnia</flavor>
   <flavor>udoo</flavor>
   <flavor>udooneo</flavor>
-  <flavor>xilinxzynqvirt</flavor>
   <flavor>xilinxzynqmpvirt</flavor>
   <flavor>xilinxzynqmpzcu102rev10</flavor>
+  <flavor>xilinxzynqvirt</flavor>
   <flavor>zynqzturnv5</flavor>
 </multibuild>
