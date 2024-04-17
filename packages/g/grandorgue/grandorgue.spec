@@ -19,7 +19,7 @@
 %define version_suffix 1
 
 Name:           grandorgue
-Version:        3.14.0
+Version:        3.14.1
 Release:        0
 Summary:        Virtual Pipe Organ Software
 License:        GPL-2.0-or-later
@@ -31,6 +31,7 @@ BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libcurl-devel
 BuildRequires:  libxslt-tools
 BuildRequires:  po4a
 BuildRequires:  update-desktop-files
@@ -47,7 +48,6 @@ BuildRequires:  pkgconfig(rtmidi)
 BuildRequires:  pkgconfig(wavpack)
 BuildRequires:  pkgconfig(yaml-cpp)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  libcurl-devel
 Recommends:     grandorgue-demo
 
 %package demo
