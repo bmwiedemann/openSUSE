@@ -16,10 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-aliyun-python-sdk-core
 Version:        2.15.1
 Release:        0
@@ -30,7 +27,9 @@ Source:         https://files.pythonhosted.org/packages/source/a/aliyun-python-s
 Source1:        ChangeLog.txt
 Patch1:         0001_Dont-use-vendored-dependencies.patch
 Patch2:         0002_Relax-jmespath-version-constraint.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module cryptography >= 2.9.2}
@@ -43,6 +42,9 @@ Requires:       python-cryptography >= 2.9.2
 Requires:       python-jmespath >= 0.9.3
 Requires:       python-requests
 Requires:       python-six
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-aliyun-python-sdk-core < 2.15.1
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,15 +59,16 @@ cp %{SOURCE1} ChangeLog.txt
 rm -rf aliyunsdkcore/vendored
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc ChangeLog.txt README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/aliyunsdkcore
+%{python_sitelib}/aliyun_python_sdk_core-%{version}.dist-info
 
 %changelog
