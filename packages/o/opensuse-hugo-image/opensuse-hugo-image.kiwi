@@ -1,48 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <!-- OBS-ExcludeArch: i586 s390 -->
-
-<image schemaversion="6.9" name="opensuse-hugo-image" xmlns:suse_label_helper="com.suse.label_helper">
-  <description type="system">
-    <author>Alexandre Vicenzi</author>
-    <contact>alexandre.vicenzi@suse.com</contact>
-    <specification>Image containing Hugo for openSUSE.</specification>
-  </description>
-  <preferences>
-    <type
-      image="docker"
-      derived_from="obsrepositories:/opensuse/busybox#latest">
-      <containerconfig
-        name="opensuse/hugo"
-        tag="latest"
-        workingdir="/src"
-        additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%"
-        maintainer="Alexandre Vicenzi &lt;alexandre.vicenzi@suse.com&gt;">
-        <entrypoint execute="/usr/bin/hugo"/>
-        <expose>
-          <port number='1313'/>
-        </expose>
-        <labels>
-          <suse_label_helper:add_prefix prefix="org.opensuse.hugo">
-            <label name="org.opencontainers.image.title" value="openSUSE Hugo container"/>
-            <label name="org.opencontainers.image.description" value="Image containing Hugo for openSUSE."/>
-            <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
-            <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
-            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/hugo:%PKG_VERSION%-%RELEASE%"/>
-            <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
-          </suse_label_helper:add_prefix>
-        </labels>
-        <history author="Alexandre Vicenzi &lt;alexandre.vicenzi@suse.com&gt;">openSUSE hugo container</history>
-      </containerconfig>
-    </type>
-    <version>1.0.0</version>
-    <packagemanager>zypper</packagemanager>
-    <rpm-excludedocs>true</rpm-excludedocs>
-  </preferences>
-  <repository>
-    <source path="obsrepositories:/"/>
-  </repository>
-  <packages type="bootstrap">
-    <package name="hugo"/>
-  </packages>
+<image schemaversion="7.4" name="opensuse-hugo-image">
+    <description type="system">
+        <author>Alexandre Vicenzi</author>
+        <contact>alexandre.vicenzi@suse.com</contact>
+        <specification>Image containing Hugo for openSUSE.</specification>
+    </description>
+    <preferences>
+        <type image="docker" derived_from="obsrepositories:/opensuse/busybox#latest">
+            <containerconfig name="opensuse/hugo" tag="latest" workingdir="/src" additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%" maintainer="Alexandre Vicenzi &lt;alexandre.vicenzi@suse.com&gt;">
+                <entrypoint execute="/usr/bin/hugo"/>
+                <expose>
+                    <port number="1313"/>
+                </expose>
+                <labels>
+                    <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper" prefix="org.opensuse.hugo">
+                        <label name="org.opencontainers.image.title" value="openSUSE Hugo container"/>
+                        <label name="org.opencontainers.image.description" value="Image containing Hugo for openSUSE."/>
+                        <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
+                        <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
+                        <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/hugo:%PKG_VERSION%-%RELEASE%"/>
+                        <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
+                    </suse_label_helper:add_prefix>
+                </labels>
+                <history author="Alexandre Vicenzi &lt;alexandre.vicenzi@suse.com&gt;">openSUSE hugo container</history>
+            </containerconfig>
+        </type>
+        <version>1.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <rpm-excludedocs>true</rpm-excludedocs>
+    </preferences>
+    <repository>
+        <source path="obsrepositories:/"/>
+    </repository>
+    <packages type="bootstrap">
+        <package name="hugo"/>
+    </packages>
 </image>
