@@ -1,7 +1,43 @@
 -------------------------------------------------------------------
+Wed Apr 17 10:29:37 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.47:
+  * Meshery CLI
+    - Ripul handoo/mesheryctl/args error @RipulHandoo (#10726)
+    - [Chore] Update copyright holder in project license
+      @leecalcote (#10729)
+    - [CI] fix: Mesheryctl lint checks failing test @singh1203
+      (#10643)
+    - Revert "Fix mesheryctl publish to remote provider command"
+      @Yashsharma1911 (#10715)
+    - Fix mesheryctl publish to remote provider command
+      @Yashsharma1911 (#10714)
+  * Meshery UI
+    - feat: enhance deployment flow @aabidsofi19 (#10733)
+    - expose remote provider capabilities @Aseem22 (#10575)
+    - ui bugs and enchanment @captain-Akshay (#10641)
+    - chore(Popup): change primary button color @dragon-slayer875
+      (#10727)
+    - Bump tar from 6.1.15 to 6.2.1 in /ui @dependabot (#10718)
+  * Maintenance
+    - [Chore] Update copyright holder in project license
+      @leecalcote (#10729)
+    - change integration output path to `_models` collection
+      @vishalvivekm (#10717)
+    - Bump tar from 6.1.15 to 6.2.1 in /ui @dependabot (#10718)
+    - [CI] fix: Mesheryctl lint checks failing test @singh1203
+      (#10643)
+  * Documentation
+    - Missing "s" in hyperlink @leecalcote (#10737)
+    - Fix the docs to import designs in meshery @11happy (#10676)
+    - [Chore] Update copyright holder in project license
+      @leecalcote (#10729)
+    - Reduced font size to 0.9rem in  @abhishekmmgn (#10722)
+
+-------------------------------------------------------------------
 Sat Apr 13 09:39:50 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
-- update to 0 7.46:
+- update to 0.7.46:
   * General
     - [Cleanup] Remove unnecessary files added by publish workflow
       @Yashsharma1911 (#10684)
