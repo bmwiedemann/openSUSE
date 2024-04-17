@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 17 07:44:23 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.0.4:
+  * Fixed “import sth from mymodule is compiles and trying to see module sthfrommymodule” (#23148)
+  * Fixed “Operations on inline toOpenArray len return a wrong result” (#23280)
+  * Fixed “Nimsuggest segfault with invalid assignment to table” (#22753)
+  The complete list of changes is available here: https://github.com/nim-lang/Nim/compare/v2.0.2...v2.0.4
+- Updated atlas tarball to 0.8.0
+
+-------------------------------------------------------------------
 Wed Dec 20 08:04:09 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.0.2:

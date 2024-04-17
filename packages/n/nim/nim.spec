@@ -1,7 +1,7 @@
 #
 # spec file for package nim
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define _atlas_version 0.6.2
+%define _atlas_version 0.8.0
 
 Name:           nim
-Version:        2.0.2
+Version:        2.0.4
 Release:        0
 Summary:        A statically typed compiled systems programming language
 License:        MIT
