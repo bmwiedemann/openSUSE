@@ -1091,4 +1091,41 @@
   * Add basic %check to execute binary --help (forwarded request 1165708 from jfkw)</comment>
     <requestid>1165709</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>ad01e32a4687380b0d3a9648453e0d3a</srcmd5>
+    <version>0.125.0</version>
+    <time>1713357944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.125.0:
+  * docs: Regen docshelper
+  * Fix server rebuilds when adding a content file on Linux
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.2.0 to 2.2.1
+  * Add Luminance to Color
+  * hugolib: Add an asciidoc rebuild test case
+  * Pass .RenderShortcodes' Page to render hooks as .PageInner
+  * build(deps): bump google.golang.org/protobuf from 1.31.0 to 1.33.0
+  * helpers: Fix TrimShortHTML when used with AsciiDoc content
+  * github: Add a &quot;free space&quot; step on Ubuntu
+  * helpers: Add BenchmarkTrimShortHTML
+  * github: Update actions
+  * github: Format GitHub actions files
+  * hugolib: Display server address after each rebuild
+  * resources/page: Add taxonomies Page method
+  * commands: Adjust completions
+  * completion: Improve existing argument completions, add many more
+  * Upgrade to Go 1.22.2
+  * build(deps): bump golang.org/x/tools from 0.19.0 to 0.20.0
+  * github: Fix CI build
+  * all: Fix duplicate words in comments
+  * build(deps): bump golang.org/x/net from 0.23.0 to 0.24.0
+  * build(deps): bump github.com/getkin/kin-openapi from 0.123.0 to 0.124.0
+  * all: Typo fixes
+  * babel: Run go fmt
+  * babel: Close file before removing
+  * bump golang.org/x/mod from 0.16.0 to 0.17.0
+  * hugolib: Fix regression for blank summaries
+  * Fix sectionPagesMenu for pages in root level
+  * resources/page: Escape hash sign in permalinks (forwarded request 1168425 from jfkw)</comment>
+    <requestid>1168426</requestid>
+  </revision>
 </revisionlist>

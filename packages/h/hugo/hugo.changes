@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Apr 16 20:40:43 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.125.0:
+  * docs: Regen docshelper
+  * Fix server rebuilds when adding a content file on Linux
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.2.0 to 2.2.1
+  * Add Luminance to Color
+  * hugolib: Add an asciidoc rebuild test case
+  * Pass .RenderShortcodes' Page to render hooks as .PageInner
+  * build(deps): bump google.golang.org/protobuf from 1.31.0 to 1.33.0
+  * helpers: Fix TrimShortHTML when used with AsciiDoc content
+  * github: Add a "free space" step on Ubuntu
+  * helpers: Add BenchmarkTrimShortHTML
+  * github: Update actions
+  * github: Format GitHub actions files
+  * hugolib: Display server address after each rebuild
+  * resources/page: Add taxonomies Page method
+  * commands: Adjust completions
+  * completion: Improve existing argument completions, add many more
+  * Upgrade to Go 1.22.2
+  * build(deps): bump golang.org/x/tools from 0.19.0 to 0.20.0
+  * github: Fix CI build
+  * all: Fix duplicate words in comments
+  * build(deps): bump golang.org/x/net from 0.23.0 to 0.24.0
+  * build(deps): bump github.com/getkin/kin-openapi from 0.123.0 to 0.124.0
+  * all: Typo fixes
+  * babel: Run go fmt
+  * babel: Close file before removing
+  * bump golang.org/x/mod from 0.16.0 to 0.17.0
+  * hugolib: Fix regression for blank summaries
+  * Fix sectionPagesMenu for pages in root level
+  * resources/page: Escape hash sign in permalinks
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.1.1 to 2.2.0
+  * build(deps): bump github.com/yuin/goldmark from 1.7.0 to 1.7.1
+  * tpl/strings: Improve type checking
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/cloudfront
+  * build(deps): bump golang.org/x/net from 0.22.0 to 0.23.0
+  * tpl/tplimpl: Improve youtube shortcode
+  * errors: Return error from cast.ToStringE() consistently
+  * tpl/tplimpl: Improve embedded opengraph template
+  * tpl/strings: Create strings.Diff template function
+  * Fix resource bundling for overlapping page.md vs page.txt
+  * tpl/tplimpl: Optionally exclude content from sitemap
+  * tpl/tplimpl: Remove trailing slash from void elements
+  * tpl/tplimpl: Update RSS template
+  * tpl/tplimpl: Update schema template
+  * resources: Use different cache key when copying resources
+  * Fix panic with debug.Dump with Page when running the server
+  * tpl/tplimpl: Update Google Analytics template and config
+  * hugolib: Conditionally suppress .Site.Author deprecation notice
+  * resources/page: Fix GoDoc comment
+  * markup/asciidocext: Add Level to Heading struct
+
+-------------------------------------------------------------------
 Fri Apr  5 18:35:47 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
