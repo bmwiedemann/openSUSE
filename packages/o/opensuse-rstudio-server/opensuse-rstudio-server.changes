@@ -1,3 +1,8 @@
+-------------------------------------------------------------------
+Wed Apr 17 13:27:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Scripted update to schema v74.
+
 Mon Apr 15 07:46:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop hwclock entry: this is not supported on containers.
