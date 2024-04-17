@@ -41,10 +41,14 @@ BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.codehaus.modello:modello-core) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-converters) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-dom4j) = %{version}
+BuildRequires:  mvn(org.codehaus.modello:modello-plugin-jackson) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-java) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-jdom) = %{version}
+BuildRequires:  mvn(org.codehaus.modello:modello-plugin-jsonschema) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-sax) = %{version}
+BuildRequires:  mvn(org.codehaus.modello:modello-plugin-snakeyaml) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-stax) = %{version}
+BuildRequires:  mvn(org.codehaus.modello:modello-plugin-velocity) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-xdoc) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-xpp3) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-xsd) = %{version}
@@ -88,35 +92,24 @@ cp -p %{SOURCE1} LICENSE
 %pom_remove_plugin :maven-enforcer-plugin
 %pom_remove_plugin :sisu-maven-plugin
 
-%pom_remove_dep :plexus-xml modello-core
 %pom_remove_dep :sisu-guice modello-core
 %pom_add_dep com.google.inject:guice modello-core
 
-%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 modello-core
+%pom_change_dep -r :velocity-engine-core :velocity
 
 %pom_remove_dep :jackson-bom
 
-%pom_disable_module modello-plugin-jackson modello-plugins
-%pom_disable_module modello-plugin-jsonschema modello-plugins
-%pom_disable_module modello-plugin-snakeyaml modello-plugins
-%pom_disable_module modello-plugin-velocity modello-plugins
-%pom_remove_dep :modello-plugin-jackson modello-maven-plugin
-%pom_remove_dep :modello-plugin-jsonschema modello-maven-plugin
-%pom_remove_dep :modello-plugin-snakeyaml modello-maven-plugin
-%pom_remove_dep :modello-plugin-velocity modello-maven-plugin
-
-rm -f modello-maven-plugin/src/main/java/org/codehaus/modello/maven/ModelloVelocityMojo.java
-
-%pom_disable_module modello-test
-
 %build
 pushd %{name}
+%{mvn_file} :{*} %{parent}/@1
 %{mvn_build} -f -- -Dsource=8
 popd
 
 %install
 pushd %{name}
+
 %mvn_install
+
 popd
 %fdupes -s %{buildroot}%{_javadocdir}
 

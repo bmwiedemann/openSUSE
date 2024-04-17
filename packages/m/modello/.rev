@@ -105,4 +105,12 @@
     <comment>2.3.0</comment>
     <requestid>1167612</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>8033b9abec5b7b710fc937d4ee3e6c89</srcmd5>
+    <version>2.3.0</version>
+    <time>1713363682</time>
+    <user>dimstar_suse</user>
+    <comment>We are able to build all modules without cycles</comment>
+    <requestid>1168541</requestid>
+  </revision>
 </revisionlist>

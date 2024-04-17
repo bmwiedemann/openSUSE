@@ -35,33 +35,39 @@ BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  google-guice
 BuildRequires:  guava
+BuildRequires:  jackson-core
 BuildRequires:  javadoc-parser
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsoup
+BuildRequires:  junit
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-build-api
 BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-containers-component-annotations
+BuildRequires:  plexus-compiler
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  slf4j
+BuildRequires:  snakeyaml
 BuildRequires:  unzip
+BuildRequires:  velocity
 Requires:       aopalliance
 Requires:       atinject
 Requires:       google-guice
 Requires:       guava
+Requires:       jackson-core
 Requires:       javadoc-parser
 Requires:       javapackages-tools
 Requires:       plexus-build-api
 Requires:       plexus-classworlds
-Requires:       plexus-containers-component-annotations
 Requires:       plexus-utils
 Requires:       plexus-xml
 Requires:       sisu-inject
 Requires:       sisu-plexus
 Requires:       slf4j
+Requires:       snakeyaml
+Requires:       velocity
 BuildArch:      noarch
 
 %description
@@ -72,6 +78,16 @@ Modello generates code from a simple model format based on a plugin
 architecture, various types of code and descriptors can be generated
 from the single model, including Java POJOs, XML
 marshallers/unmarshallers, XSD and documentation.
+
+%package test
+Summary:        Modello Test Package
+Group:          Development/Libraries/Java
+Requires:       %{name} = %{version}
+
+%description test
+Modello Test Package contains the basis to create Modello generator
+unit-tests, including sample models and xml files to test every
+feature for every plugin.
 
 %package javadoc
 Summary:        Javadoc for %{name}
@@ -93,20 +109,10 @@ cp -p %{SOURCE1} LICENSE
 %pom_remove_dep :sisu-guice modello-core
 %pom_add_dep com.google.inject:guice modello-core
 
+# This builds correctly with the older velocity 1.x and avoids build cycles
+%pom_change_dep -r :velocity-engine-core :velocity
+
 %pom_remove_dep :jackson-bom
-
-%pom_disable_module modello-plugin-jackson modello-plugins
-%pom_disable_module modello-plugin-jsonschema modello-plugins
-%pom_disable_module modello-plugin-snakeyaml modello-plugins
-%pom_disable_module modello-plugin-velocity modello-plugins
-%pom_remove_dep :modello-plugin-jackson modello-maven-plugin
-%pom_remove_dep :modello-plugin-jsonschema modello-maven-plugin
-%pom_remove_dep :modello-plugin-snakeyaml modello-maven-plugin
-%pom_remove_dep :modello-plugin-velocity modello-maven-plugin
-
-rm -f modello-maven-plugin/src/main/java/org/codehaus/modello/maven/ModelloVelocityMojo.java
-
-%pom_disable_module modello-test
 
 %build
 mkdir -p lib
@@ -115,17 +121,21 @@ build-jar-repository -s lib \
     atinject \
     guava/guava \
     guice/google-guice \
+    jackson-core \
     javadoc-parser \
     jsoup \
+    junit \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
     plexus/classworlds \
     plexus/cli \
+    plexus-compiler \
     plexus/plexus-build-api \
     plexus/utils \
     plexus/xml \
-    plexus-containers/plexus-component-annotations \
-    slf4j/api
+    slf4j/api \
+    snakeyaml \
+    velocity
 
 %{ant} \
   -Dtest.skip=true \
@@ -134,37 +144,23 @@ build-jar-repository -s lib \
 %install
 # jars
 install -dm 0755 %{buildroot}%{_javadir}/%{name}
-
-for i in core; do
-  install -pm 0644 %{name}-${i}/target/%{name}-${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}-${i}.jar
-done
-
-for i in converters dom4j java jdom sax stax xdoc xml xpp3 xsd; do
-  install -pm 0644 %{name}-plugins/%{name}-plugin-${i}/target/%{name}-plugin-${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}-plugin-${i}.jar
-done
-
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-
-for i in core; do
-  %{mvn_install_pom} %{name}-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-${i}.pom
-  %add_maven_depmap %{name}/%{name}-${i}.pom %{name}/%{name}-${i}.jar
-done
-
-for i in converters dom4j java jdom sax stax xdoc xml xpp3 xsd; do
-  %{mvn_install_pom} %{name}-plugins/%{name}-plugin-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-plugin-${i}.pom
-  %add_maven_depmap %{name}/%{name}-plugin-${i}.pom %{name}/%{name}-plugin-${i}.jar
-done
-
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 
-for i in core; do
+for i in core test; do
+  install -pm 0644 %{name}-${i}/target/%{name}-${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}-${i}.jar
+  %{mvn_install_pom} %{name}-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-${i}.pom
+  %add_maven_depmap %{name}/%{name}-${i}.pom %{name}/%{name}-${i}.jar -f ${i}
   install -dm 0755 %{buildroot}%{_javadocdir}/%{name}/%{name}-${i}
   cp -pr %{name}-${i}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/%{name}-${i}/
 done
 
-for i in converters dom4j java jdom sax stax xdoc xml xpp3 xsd; do
+for i in converters dom4j java jdom sax stax xdoc xml xpp3 xsd jackson jsonschema snakeyaml velocity; do
+  install -pm 0644 %{name}-plugins/%{name}-plugin-${i}/target/%{name}-plugin-${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}-plugin-${i}.jar
+  %{mvn_install_pom} %{name}-plugins/%{name}-plugin-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-plugin-${i}.pom
+  %add_maven_depmap %{name}/%{name}-plugin-${i}.pom %{name}/%{name}-plugin-${i}.jar
   install -dm 0755 %{buildroot}%{_javadocdir}/%{name}/%{name}-plugin-${i}
   cp -pr %{name}-plugins/%{name}-plugin-${i}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/%{name}-plugin-${i}/
 done
@@ -172,11 +168,14 @@ done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # script
-%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:objectweb-asm:org.eclipse.sisu.plexus:org.eclipse.sisu.inject:javadoc-parser:google-guice:aopalliance:atinject:plexus-containers/plexus-component-annotations:plexus/classworlds:plexus/utils:plexus/xml:plexus/plexus-build-api:guava:slf4j/api:slf4j/simple %{name} true
+%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:objectweb-asm:org.eclipse.sisu.plexus:org.eclipse.sisu.inject:jackson-core:javadoc-parser:google-guice:aopalliance:atinject:plexus-containers/plexus-component-annotations:plexus/classworlds:plexus/utils:plexus/xml:plexus/plexus-build-api:guava:slf4j/api:slf4j/simple:snakeyaml:velocity %{name} true
 
-%files -f .mfiles
+%files -f .mfiles -f .mfiles-core
 %license LICENSE
 %{_bindir}/*
+
+%files test -f .mfiles-test
+%license LICENSE
 
 %files javadoc
 %license LICENSE
