@@ -115,4 +115,12 @@ Required to allow builds to complete.</comment>
     <comment>- Update to release 20240310</comment>
     <requestid>1156752</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>929c3c64560e39c2d1b73b548565feb5</srcmd5>
+    <version>20240417</version>
+    <time>1713357972</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20240417</comment>
+    <requestid>1168484</requestid>
+  </revision>
 </revisionlist>

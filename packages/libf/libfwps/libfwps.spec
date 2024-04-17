@@ -18,7 +18,7 @@
 
 Name:           libfwps
 %define lname	libfwps1
-Version:        20240310
+Version:        20240417
 Release:        0
 Summary:        Library for Windows Property Store data types
 License:        LGPL-3.0-or-later
@@ -32,15 +32,15 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libcdata) >= 20240103
-BuildRequires:  pkgconfig(libcerror) >= 20240101
-BuildRequires:  pkgconfig(libclocale) >= 20240107
-BuildRequires:  pkgconfig(libcnotify) >= 20240108
-BuildRequires:  pkgconfig(libcthreads) >= 2024012
-BuildRequires:  pkgconfig(libfdatetime) >= 20240115
-BuildRequires:  pkgconfig(libfguid) >= 20240116
-BuildRequires:  pkgconfig(libfole) >= 20240119
-BuildRequires:  pkgconfig(libuna) >= 20240130
+BuildRequires:  pkgconfig(libcdata) >= 20240414
+BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libclocale) >= 20240414
+BuildRequires:  pkgconfig(libcnotify) >= 20240414
+BuildRequires:  pkgconfig(libcthreads) >= 20240413
+BuildRequires:  pkgconfig(libfdatetime) >= 20240415
+BuildRequires:  pkgconfig(libfguid) >= 20240415
+BuildRequires:  pkgconfig(libfole) >= 20240416
+BuildRequires:  pkgconfig(libuna) >= 20240414
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 
@@ -88,8 +88,7 @@ grep ' '' ''local' config.log && exit 1
 mv "%_builddir/rt"/* %buildroot/
 find "%buildroot" -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*

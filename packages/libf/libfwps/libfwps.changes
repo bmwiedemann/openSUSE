@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 17 07:01:09 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240417
+  * Added support for reading float64 time values
+    (and converting other types to it)
+
+-------------------------------------------------------------------
 Sun Mar 10 17:58:38 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20240310
