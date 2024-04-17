@@ -82,6 +82,8 @@ rm -rf %{buildroot}
 
 %files -n libgtkhotkey-devel
 %defattr(-,root,root,-)
+%dir %{_datadir}/gtk-doc
+%dir %{_datadir}/gtk-doc/html
 %doc %{_datadir}/gtk-doc/html/gtkhotkey
 %{_includedir}/gtkhotkey-1.0/
 %{_libdir}/libgtkhotkey.so

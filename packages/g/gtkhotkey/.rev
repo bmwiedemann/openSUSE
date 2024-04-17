@@ -73,4 +73,12 @@
     <comment>Prepare for RPM 4.20</comment>
     <requestid>1145239</requestid>
   </revision>
+  <revision rev="11" vrev="18">
+    <srcmd5>89643ec3c5b97a5eaebceb864c172983</srcmd5>
+    <version>0.2.1</version>
+    <time>1713363624</time>
+    <user>dimstar_suse</user>
+    <comment>- Own %{_datadir}/gtk-doc and %{_datadir}/gtk-doc/html: fix build. (forwarded request 1168551 from dimstar)</comment>
+    <requestid>1168556</requestid>
+  </revision>
 </revisionlist>

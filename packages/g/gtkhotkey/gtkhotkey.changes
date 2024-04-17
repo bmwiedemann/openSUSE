@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 17 13:02:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own %{_datadir}/gtk-doc and %{_datadir}/gtk-doc/html: fix build.
+
+-------------------------------------------------------------------
 Thu Feb  8 15:58:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Prepare for RPM 4.20: use autosetup.
