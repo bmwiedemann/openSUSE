@@ -166,4 +166,12 @@ Fixes:
     <comment>- Update to version 11.2.</comment>
     <requestid>1146416</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>dd3c6aa716eaa654036760819640ebfc</srcmd5>
+    <version>11.2</version>
+    <time>1713357946</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>1168427</requestid>
+  </revision>
 </revisionlist>

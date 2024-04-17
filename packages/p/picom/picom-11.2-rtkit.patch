@@ -1,0 +1,543 @@
+--- a/src/config.h
++++ b/src/config.h
+@@ -152,6 +152,8 @@ typedef struct options {
+ 	bool no_x_selection;
+ 	/// Window type option override.
+ 	win_option_t wintype_option[NUM_WINTYPES];
++	/// Whether to set realtime scheduling policy for the compositor process.
++	bool use_realtime_scheduling;
+ 
+ 	// === VSync & software optimization ===
+ 	/// VSync method to use;
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -66,7 +66,7 @@ endif
+ if get_option('dbus')
+ 	cflags += ['-DCONFIG_DBUS']
+ 	deps += [dependency('dbus-1', required: true)]
+-	srcs += [ 'dbus.c' ]
++	srcs += [ 'dbus.c', 'rtkit.c' ]
+ endif
+ 
+ if get_option('xrescheck')
+--- a/src/options.c
++++ b/src/options.c
+@@ -184,6 +184,8 @@ static const struct picom_option picom_o
+                                                                              "you want to attach a debugger to picom"},
+     {"no-ewmh-fullscreen"          , no_argument      , 803, NULL          , "Do not use EWMH to detect fullscreen windows. Reverts to checking if a "
+                                                                              "window is fullscreen based only on its size and coordinates."},
++    {"realtime"                    , no_argument      , 804, NULL          , "Enable realtime scheduling. This might reduce latency, but might also cause "
++                                                                             "other issues. Disable this if you see the compositor being killed."},
+ };
+ // clang-format on
+ 
+@@ -750,6 +752,7 @@ bool get_cfg(options_t *opt, int argc, c
+ 			break;
+ 		P_CASEBOOL(802, debug_mode);
+ 		P_CASEBOOL(803, no_ewmh_fullscreen);
++		P_CASEBOOL(804, use_realtime_scheduling);
+ 		default: usage(argv[0], 1); break;
+ #undef P_CASEBOOL
+ 		}
+--- a/src/picom.c
++++ b/src/picom.c
+@@ -33,9 +33,6 @@
+ #include <xcb/render.h>
+ #include <xcb/sync.h>
+ #include <xcb/xfixes.h>
+-#ifdef __OpenBSD__
+-#include <pthread.h>
+-#endif
+ 
+ #include <ev.h>
+ #include <test.h>
+@@ -67,6 +64,7 @@
+ #include "file_watch.h"
+ #include "list.h"
+ #include "options.h"
++#include "rtkit.h"
+ #include "statistics.h"
+ #include "uthash_extra.h"
+ #include "vblank.h"
+@@ -1547,8 +1545,9 @@ static bool redirect_start(session_t *ps
+ 			    (enum vblank_scheduler_type)ps->o.debug_options.force_vblank_scheduler;
+ 		}
+ 		log_info("Using vblank scheduler: %s.", vblank_scheduler_str[scheduler_type]);
+-		ps->vblank_scheduler = vblank_scheduler_new(
+-		    ps->loop, &ps->c, session_get_target_window(ps), scheduler_type);
++		ps->vblank_scheduler =
++		    vblank_scheduler_new(ps->loop, &ps->c, session_get_target_window(ps),
++		                         scheduler_type, ps->o.use_realtime_scheduling);
+ 		if (!ps->vblank_scheduler) {
+ 			return false;
+ 		}
+@@ -2594,46 +2593,6 @@ err:
+ 	return NULL;
+ }
+ 
+-/// Switch to real-time scheduling policy (SCHED_RR) if possible
+-///
+-/// Make picom realtime to reduce latency, and make rendering times more predictable to
+-/// help pacing.
+-///
+-/// This requires the user to set up permissions for the real-time scheduling. e.g. by
+-/// setting `ulimit -r`, or giving us the CAP_SYS_NICE capability.
+-void set_rr_scheduling(void) {
+-	int priority = sched_get_priority_min(SCHED_RR);
+-
+-	int ret;
+-	struct sched_param param;
+-
+-#ifndef __OpenBSD__
+-	ret = sched_getparam(0, &param);
+-#else
+-	int old_policy;
+-	ret = pthread_getschedparam(pthread_self(), &old_policy, &param);
+-#endif
+-
+-	if (ret != 0) {
+-		log_debug("Failed to get old scheduling priority");
+-		return;
+-	}
+-
+-	param.sched_priority = priority;
+-
+-#ifndef __OpenBSD__
+-	ret = sched_setscheduler(0, SCHED_RR, &param);
+-#else
+-	ret = pthread_setschedparam(pthread_self(), SCHED_RR, &param);
+-#endif
+-
+-	if (ret != 0) {
+-		log_info("Failed to set real-time scheduling priority to %d.", priority);
+-		return;
+-	}
+-	log_info("Set real-time scheduling priority to %d", priority);
+-}
+-
+ /**
+  * Destroy a session.
+  *
+@@ -2825,7 +2784,10 @@ static void session_destroy(session_t *p
+  * @param ps current session
+  */
+ static void session_run(session_t *ps) {
+-	set_rr_scheduling();
++	if (ps->o.use_realtime_scheduling) {
++		set_rr_scheduling();
++	}
++
+ 	// In benchmark mode, we want draw_timer handler to always be active
+ 	if (ps->o.benchmark) {
+ 		ev_timer_set(&ps->draw_timer, 0, 0);
+--- /dev/null
++++ b/src/rtkit.c
+@@ -0,0 +1,245 @@
++// SPDX-License-Identifier: BSD-3-Clause
++// Copyright 2009 Lennart Poettering
++// Copyright 2010 David Henningsson <diwic@ubuntu.com>
++// Copyright (c) Yuxuan Shui <yshuiv7@gmail.com>
++
++// Imported from https://github.com/heftig/rtkit/blob/master/rtkit.c
++
++#include <errno.h>
++#include <string.h>
++#include <sys/resource.h>
++#include <sys/types.h>
++#include <unistd.h>
++
++#if defined(__linux__)
++#include <sys/syscall.h>
++#elif defined(__NetBSD__)
++#include <lwp.h>
++#elif defined(__FreeBSD__)
++#include <sys/thr.h>
++#elif defined(__DragonFly__)
++#include <sys/lwp.h>
++#endif
++
++#include "log.h"
++#include "rtkit.h"
++#include "utils.h"
++
++#define RTKIT_SERVICE_NAME "org.freedesktop.RealtimeKit1"
++#define RTKIT_OBJECT_PATH "/org/freedesktop/RealtimeKit1"
++#define RTKIT_INTERFACE "org.freedesktop.RealtimeKit1"
++
++static inline long compat_gettid(void) {
++	long ret = -1;
++#if defined(__linux__)
++	ret = (pid_t)syscall(SYS_gettid);
++#elif defined(__NetBSD__)
++	ret = _lwp_self();
++#elif defined(__FreeBSD__)
++	long lwpid;
++	thr_self(&lwpid);
++	ret = lwpid;
++#elif defined(__DragonFly__)
++	ret = lwp_gettid();
++#endif
++	return ret;
++}
++
++static bool
++rtkit_get_int_property(DBusConnection *connection, const char *propname, long long *propval) {
++	DBusMessage *m = NULL, *r = NULL;
++	DBusMessageIter iter, subiter;
++	dbus_int64_t i64;
++	dbus_int32_t i32;
++	DBusError error;
++	int current_type;
++	int ret = 0;
++	const char *interfacestr = RTKIT_INTERFACE;
++
++	dbus_error_init(&error);
++
++	m = dbus_message_new_method_call(RTKIT_SERVICE_NAME, RTKIT_OBJECT_PATH,
++	                                 "org.freedesktop.DBus.Properties", "Get");
++	if (!m) {
++		ret = -ENOMEM;
++		goto finish;
++	}
++
++	if (!dbus_message_append_args(m, DBUS_TYPE_STRING, &interfacestr,
++	                              DBUS_TYPE_STRING, &propname, DBUS_TYPE_INVALID)) {
++		ret = -ENOMEM;
++		goto finish;
++	}
++
++	r = dbus_connection_send_with_reply_and_block(connection, m, -1, &error);
++	if (!r) {
++		goto finish;
++	}
++
++	if (dbus_set_error_from_message(&error, r)) {
++		goto finish;
++	}
++
++	ret = -EBADMSG;
++	dbus_message_iter_init(r, &iter);
++	while ((current_type = dbus_message_iter_get_arg_type(&iter)) != DBUS_TYPE_INVALID) {
++		if (current_type == DBUS_TYPE_VARIANT) {
++			dbus_message_iter_recurse(&iter, &subiter);
++
++			while ((current_type = dbus_message_iter_get_arg_type(&subiter)) !=
++			       DBUS_TYPE_INVALID) {
++
++				if (current_type == DBUS_TYPE_INT32) {
++					dbus_message_iter_get_basic(&subiter, &i32);
++					*propval = i32;
++					ret = 0;
++				}
++
++				if (current_type == DBUS_TYPE_INT64) {
++					dbus_message_iter_get_basic(&subiter, &i64);
++					*propval = i64;
++					ret = 0;
++				}
++
++				dbus_message_iter_next(&subiter);
++			}
++		}
++		dbus_message_iter_next(&iter);
++	}
++
++finish:
++	if (m) {
++		dbus_message_unref(m);
++	}
++	if (r) {
++		dbus_message_unref(r);
++	}
++	if (dbus_error_is_set(&error)) {
++		log_debug("Couldn't get property %s from rtkit: (dbus) %s", propname,
++		          error.message);
++		dbus_error_free(&error);
++		return false;
++	}
++	if (ret != 0) {
++		log_debug("Couldn't get property %s from rtkit: %s", propname, strerror(-ret));
++		return false;
++	}
++
++	return true;
++}
++
++static bool rtkit_get_rttime_usec_max(DBusConnection *connection, long long *retval) {
++	return rtkit_get_int_property(connection, "RTTimeUSecMax", retval);
++}
++
++static inline void free_dbus_connection(DBusConnection **connection) {
++	if (*connection) {
++		dbus_connection_close(*connection);
++		dbus_connection_unref(*connection);
++		*connection = NULL;
++	}
++}
++
++static inline void free_dbus_message(DBusMessage **message) {
++	if (*message) {
++		dbus_message_unref(*message);
++		*message = NULL;
++	}
++}
++
++bool rtkit_make_realtime(long thread, int priority) {
++	cleanup(free_dbus_message) DBusMessage *m = NULL;
++	cleanup(free_dbus_message) DBusMessage *r = NULL;
++	dbus_uint64_t u64;
++	dbus_uint32_t u32;
++	DBusError error;
++	int ret = 0;
++	long long rttime_usec_max = 0;
++	bool succeeded = true;
++
++	dbus_error_init(&error);
++
++	cleanup(free_dbus_connection) DBusConnection *connection =
++	    dbus_bus_get_private(DBUS_BUS_SYSTEM, &error);
++	if (dbus_error_is_set(&error)) {
++		log_info("Couldn't get system bus: %s", error.message);
++		dbus_error_free(&error);
++		return false;
++	}
++	dbus_connection_set_exit_on_disconnect(connection, false);
++
++	if (thread == 0) {
++		thread = compat_gettid();
++	}
++
++	if (!rtkit_get_rttime_usec_max(connection, &rttime_usec_max)) {
++		log_debug("Couldn't get RTTimeUSecMax from rtkit.");
++		return false;
++	}
++	if (rttime_usec_max <= 0) {
++		log_debug("Unreasonable RTTimeUSecMax from rtkit: %lld", rttime_usec_max);
++		return false;
++	}
++
++#if defined(RLIMIT_RTTIME)
++	struct rlimit old_rlim, new_rlim;
++	// For security reasons, rtkit requires us to set RLIMIT_RTTIME before it will
++	// give us realtime priority.
++	if (getrlimit(RLIMIT_RTTIME, &old_rlim) != 0) {
++		log_debug("Couldn't get RLIMIT_RTTIME.");
++		return false;
++	}
++	new_rlim = old_rlim;
++	new_rlim.rlim_cur = min3(new_rlim.rlim_max, (rlim_t)rttime_usec_max, 100000);        // 100ms
++	new_rlim.rlim_max = new_rlim.rlim_cur;
++	if (setrlimit(RLIMIT_RTTIME, &new_rlim) != 0) {
++		log_debug("Couldn't set RLIMIT_RTTIME.");
++		return false;
++	}
++#endif
++
++	m = dbus_message_new_method_call(RTKIT_SERVICE_NAME, RTKIT_OBJECT_PATH,
++	                                 RTKIT_INTERFACE, "MakeThreadRealtime");
++	if (!m) {
++		ret = -ENOMEM;
++		goto finish;
++	}
++
++	u64 = (dbus_uint64_t)thread;
++	u32 = (dbus_uint32_t)priority;
++
++	if (!dbus_message_append_args(m, DBUS_TYPE_UINT64, &u64, DBUS_TYPE_UINT32, &u32,
++	                              DBUS_TYPE_INVALID)) {
++		ret = -ENOMEM;
++		goto finish;
++	}
++
++	r = dbus_connection_send_with_reply_and_block(connection, m, -1, &error);
++	if (!r) {
++		goto finish;
++	}
++
++	if (dbus_set_error_from_message(&error, r)) {
++		goto finish;
++	}
++
++	ret = 0;
++
++finish:
++	if (dbus_error_is_set(&error)) {
++		log_info("Couldn't make thread realtime with rtkit: (dbus) %s", error.message);
++		dbus_error_free(&error);
++		succeeded = false;
++	} else if (ret != 0) {
++		log_info("Couldn't make thread realtime with rtkit: %s", strerror(-ret));
++		succeeded = false;
++	}
++#if defined(RLIMIT_RTTIME)
++	if (!succeeded) {
++		// Restore RLIMIT_RTTIME
++		setrlimit(RLIMIT_RTTIME, &old_rlim);
++	}
++#endif
++
++	return succeeded;
++}
+--- /dev/null
++++ b/src/rtkit.h
+@@ -0,0 +1,20 @@
++// SPDX-License-Identifier: MPL-2.0
++// Copyright (c) Yuxuan Shui <yshuiv7@gmail.com>
++
++#pragma once
++#include <stdbool.h>
++#include <sys/types.h>
++
++#ifdef CONFIG_DBUS
++
++#include <dbus/dbus.h>
++
++bool rtkit_make_realtime(long thread, int priority);
++
++#else
++
++static inline bool rtkit_make_realtime(pid_t thread attr_unused, int priority attr_unused) {
++	return false;
++}
++
++#endif
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -1,8 +1,10 @@
++#include <pthread.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <sys/uio.h>
+ 
+ #include "compiler.h"
++#include "rtkit.h"
+ #include "string_utils.h"
+ #include "test.h"
+ #include "utils.h"
+@@ -272,4 +274,45 @@ void rolling_quantile_pop_front(struct r
+ 	}
+ }
+ 
++/// Switch to real-time scheduling policy (SCHED_RR) if possible
++///
++/// Make picom realtime to reduce latency, and make rendering times more predictable to
++/// help pacing.
++///
++/// This requires the user to set up permissions for the real-time scheduling. e.g. by
++/// setting `ulimit -r`, or giving us the CAP_SYS_NICE capability.
++void set_rr_scheduling(void) {
++	static thread_local bool already_tried = false;
++	if (already_tried) {
++		return;
++	}
++	already_tried = true;
++
++	int priority = sched_get_priority_min(SCHED_RR);
++
++	if (rtkit_make_realtime(0, priority)) {
++		log_info("Set realtime priority to %d with rtkit.", priority);
++		return;
++	}
++
++	// Fallback to use pthread_setschedparam
++	struct sched_param param;
++	int old_policy;
++	int ret = pthread_getschedparam(pthread_self(), &old_policy, &param);
++
++	if (ret != 0) {
++		log_info("Couldn't get old scheduling priority.");
++		return;
++	}
++
++	param.sched_priority = priority;
++
++	ret = pthread_setschedparam(pthread_self(), SCHED_RR, &param);
++
++	if (ret != 0) {
++		log_info("Couldn't set real-time scheduling priority to %d.", priority);
++		return;
++	}
++	log_info("Set real-time scheduling priority to %d.", priority);
++}
+ // vim: set noet sw=8 ts=8 :
+--- a/src/utils.h
++++ b/src/utils.h
+@@ -391,6 +391,7 @@ void rolling_quantile_destroy(struct rol
+ int rolling_quantile_estimate(struct rolling_quantile *rq, struct rolling_window *elements);
+ void rolling_quantile_push_back(struct rolling_quantile *rq, int x);
+ void rolling_quantile_pop_front(struct rolling_quantile *rq, int x);
++void set_rr_scheduling(void);
+ 
+ // Some versions of the Android libc do not have timespec_get(), use
+ // clock_gettime() instead.
+--- a/src/vblank.c
++++ b/src/vblank.c
+@@ -47,6 +47,7 @@ struct vblank_scheduler {
+ 	xcb_window_t target_window;
+ 	enum vblank_scheduler_type type;
+ 	bool vblank_event_requested;
++	bool use_realtime_scheduling;
+ };
+ 
+ struct present_vblank_scheduler {
+@@ -92,6 +93,7 @@ struct sgi_video_sync_vblank_scheduler {
+ struct sgi_video_sync_thread_args {
+ 	struct sgi_video_sync_vblank_scheduler *self;
+ 	int start_status;
++	bool use_realtime_scheduling;
+ 	pthread_mutex_t start_mtx;
+ 	pthread_cond_t start_cnd;
+ };
+@@ -183,6 +185,12 @@ static void *sgi_video_sync_thread(void
+ 		goto start_failed;
+ 	}
+ 
++	log_init_tls();
++
++	if (args->use_realtime_scheduling) {
++		set_rr_scheduling();
++	}
++
+ 	pthread_mutex_lock(&args->start_mtx);
+ 	args->start_status = 0;
+ 	pthread_cond_signal(&args->start_cnd);
+@@ -256,6 +264,7 @@ static bool sgi_video_sync_scheduler_ini
+ 	auto args = (struct sgi_video_sync_thread_args){
+ 	    .self = self,
+ 	    .start_status = -1,
++	    .use_realtime_scheduling = base->use_realtime_scheduling,
+ 	};
+ 	bool succeeded = true;
+ 	pthread_mutex_init(&args.start_mtx, NULL);
+@@ -541,8 +550,8 @@ void vblank_scheduler_free(struct vblank
+ }
+ 
+ struct vblank_scheduler *
+-vblank_scheduler_new(struct ev_loop *loop, struct x_connection *c,
+-                     xcb_window_t target_window, enum vblank_scheduler_type type) {
++vblank_scheduler_new(struct ev_loop *loop, struct x_connection *c, xcb_window_t target_window,
++                     enum vblank_scheduler_type type, bool use_realtime_scheduling) {
+ 	size_t object_size = vblank_scheduler_ops[type].size;
+ 	auto init_fn = vblank_scheduler_ops[type].init;
+ 	if (!object_size || !init_fn) {
+@@ -555,6 +564,7 @@ vblank_scheduler_new(struct ev_loop *loo
+ 	self->target_window = target_window;
+ 	self->c = c;
+ 	self->loop = loop;
++	self->use_realtime_scheduling = use_realtime_scheduling;
+ 	init_fn(self);
+ 	return self;
+ }
+--- a/src/vblank.h
++++ b/src/vblank.h
+@@ -40,8 +40,8 @@ typedef enum vblank_callback_action (*vb
+ bool vblank_scheduler_schedule(struct vblank_scheduler *self, vblank_callback_t cb,
+                                void *user_data);
+ struct vblank_scheduler *
+-vblank_scheduler_new(struct ev_loop *loop, struct x_connection *c,
+-                     xcb_window_t target_window, enum vblank_scheduler_type type);
++vblank_scheduler_new(struct ev_loop *loop, struct x_connection *c, xcb_window_t target_window,
++                     enum vblank_scheduler_type type, bool use_realtime_scheduling);
+ void vblank_scheduler_free(struct vblank_scheduler *);
+ 
+ bool vblank_handle_x_events(struct vblank_scheduler *self);

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 16 20:14:15 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add picom-11.2-rtkit.patch: Support setting realtime priority
+  using rtkit (commits 7bbf316a7d54334c97ae2055238db7b772562ec5,
+  23d4d31d1f477591d7830712a1e53764e875955f,
+  615924cc4af317cc3062cef6cf4c784bca7d77c0,
+  dc3271e81bce422b4e43123a465fc8634b8fdaf4).
+
+-------------------------------------------------------------------
+Mon Apr 15 05:27:20 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- do not install /etc/xdg/autostart/picom.desktop
+  * fix boo#1222766
+
+-------------------------------------------------------------------
 Tue Feb 13 13:23:17 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 11.2:

@@ -24,6 +24,8 @@ License:        MIT AND MPL-2.0
 Group:          System/X11/Utilities
 URL:            https://github.com/yshui/picom
 Source:         https://github.com/yshui/picom/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM picom-11.2-rtkit.patch yshuiv7@gmail.com -- Support setting realtime priority using rtkit.
+Patch0:         picom-11.2-rtkit.patch
 BuildRequires:  asciidoc
 BuildRequires:  c_compiler
 BuildRequires:  hicolor-icon-theme
@@ -54,6 +56,7 @@ BuildRequires:  pkgconfig(xcb-sync)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xext)
+Recommends:     rtkit
 Obsoletes:      compton <= 0.1.0
 Provides:       compton = %{version}
 
@@ -74,6 +77,8 @@ and fade animations.
 install -d %{buildroot}%{_datadir}/icons/hicolor/{48x48,scalable}/apps
 install -m644 media/icons/48x48/compton.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/%{name}.png
 install -m644 media/compton.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+# Fix boo#1222766
+rm %{buildroot}%{_sysconfdir}/xdg/autostart/%{name}.desktop
 
 %check
 %meson --reconfigure -Dunittest=true
@@ -82,10 +87,9 @@ install -m644 media/compton.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/a
 %files
 %license LICENSES/MPL-2.0 LICENSES/MIT COPYING
 %doc CONTRIBUTORS README.md picom.sample.conf
-%{_bindir}/*
+%{_bindir}/%{name}*
 %{_datadir}/icons/hicolor/*/apps/%{name}*
 %{_datadir}/applications/%{name}.desktop
-%config %{_sysconfdir}/xdg/autostart/%{name}.desktop
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man1/%{name}-trans.1%{?ext_man}
 
