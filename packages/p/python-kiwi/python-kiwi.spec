@@ -44,7 +44,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        10.0.10
+Version:        10.0.12
 Provides:       kiwi-schema = 8.1
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -724,11 +724,13 @@ fi
 
 %files -n python%{python3_pkgversion}-kiwi
 %dir %{_defaultdocdir}/python-kiwi
+%dir %{_usr}/share/kiwi
 %{_bindir}/kiwi
 %{_bindir}/kiwi-ng
 %{_bindir}/kiwi-ng-3*
 %{python3_sitelib}/kiwi*
 %{_usr}/share/bash-completion/completions/kiwi-ng
+%{_usr}/share/kiwi/xsl_to_v74/
 %{_defaultdocdir}/python-kiwi/LICENSE
 %{_defaultdocdir}/python-kiwi/README
 

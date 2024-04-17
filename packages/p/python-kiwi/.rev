@@ -2373,4 +2373,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1164990</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>af3576bddfafe212dc57943cff74faa9</srcmd5>
+    <version>10.0.12</version>
+    <time>1713357923</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 10.0.11 → 10.0.12
+
+- Drop concept of volumes_mounted_initially
+  The volume mount should be the same process no matter
+  if it happens for the first time or subsequently
+
+- Fixed mountpoint to use for read-only property
+  Make sure get_mountpoint() is used to retrieve the correct
+  mountpoint for the root entry point. Using the self.mountpoint
+  member is not always correct
+
+- Prevent extra volume mount/umount on btrfs
+  For setting up the read-only property an extra mount of the
+  btrfs sub-volumes was issued. However, all volumes are mounted
+  at that time. Thus it's not required to mount them again, resulting
+  in a busy state because of the auto-snapshot mounts which does
+  not get umounted and keeps a busy state until the lazy umount
+  kicks in. This Fixes #2529
+
+- Fix typo in documentation main page
+  Superfluous format sequence
+
+- Added another search path for signed EFI binaries
+  Add /usr/lib/grub/*-efi-signed to search for shim signed EFI
+  binaries too. This Fixes #2525
+
+- Bump version: 10.0.10 → 10.0.11
+
+- Add schema upgrade opportunity for old schemas
+  kiwi files using a schema version &lt; 7.4 are no longer supported</comment>
+    <requestid>1168512</requestid>
+  </revision>
 </revisionlist>

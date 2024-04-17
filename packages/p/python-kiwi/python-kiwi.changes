@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Wed Apr 17 12:28:35 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.11 → 10.0.12
+
+-------------------------------------------------------------------
+Mon Apr 15 18:49:53 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop concept of volumes_mounted_initially
+
+  The volume mount should be the same process no matter
+  if it happens for the first time or subsequently
+
+-------------------------------------------------------------------
+Mon Apr 15 18:33:40 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed mountpoint to use for read-only property
+
+  Make sure get_mountpoint() is used to retrieve the correct
+  mountpoint for the root entry point. Using the self.mountpoint
+  member is not always correct
+
+-------------------------------------------------------------------
+Mon Apr 15 16:43:21 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Prevent extra volume mount/umount on btrfs
+
+  For setting up the read-only property an extra mount of the
+  btrfs sub-volumes was issued. However, all volumes are mounted
+  at that time. Thus it's not required to mount them again, resulting
+  in a busy state because of the auto-snapshot mounts which does
+  not get umounted and keeps a busy state until the lazy umount
+  kicks in. This Fixes #2529
+
+-------------------------------------------------------------------
+Tue Apr 09 14:13:08 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix typo in documentation main page
+
+  Superfluous format sequence
+
+-------------------------------------------------------------------
+Mon Apr 08 12:12:19 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added another search path for signed EFI binaries
+
+  Add /usr/lib/grub/*-efi-signed to search for shim signed EFI
+  binaries too. This Fixes #2525
+
+-------------------------------------------------------------------
+Thu Apr 04 17:17:42 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.10 → 10.0.11
+
+-------------------------------------------------------------------
+Wed Apr 03 14:09:00 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add schema upgrade opportunity for old schemas
+
+  kiwi files using a schema version < 7.4 are no longer supported
+  by kiwi >= v10.x.x. Thus this commit provides the required
+  XSL stylesheets to upgrade older schemas to v74 such that they
+  can be consumed by the latest kiwi version. The needed xsltproc
+  instruction is placed on the main page of the documentation.
+
+-------------------------------------------------------------------
+Wed Apr 03 13:42:07 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Delete kiwi compat mode
+
+  The compat mode allowed a kiwi v7 legacy argument translation
+  and is obsolete since a long time
+
+-------------------------------------------------------------------
+Wed Apr 03 12:27:02 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make excludes in bootstrap effective for dnf
+
+  Followup fix to really use the ignore information in the dnf
+  package manager implementation. This Fixes #2499
+
+-------------------------------------------------------------------
 Thu Mar 28 16:27:08 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.0.9 → 10.0.10
