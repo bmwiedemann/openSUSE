@@ -97,7 +97,7 @@
     <rpm-check-signatures>false</rpm-check-signatures>
     <rpm-excludedocs>true</rpm-excludedocs>
     <locale>en_US</locale>
-    <keytable>us.map.gz</keytable>
+    <keytable>us</keytable>
   </preferences>
 
   <repository type='rpm-md'>

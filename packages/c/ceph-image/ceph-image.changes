@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 10 07:30:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix keytable entry: we need to specify us, not us.map.gz.
+
+-------------------------------------------------------------------
 Thu Aug 19 15:22:20 UTC 2021 - Mike Latimer <mlatimer@suse.com>
 
 - Replace patterns-server-enterprise-fips with patterns-base-fips (which
