@@ -372,4 +372,14 @@
     <comment></comment>
     <requestid>916760</requestid>
   </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>d645369cbee060d663b707287b9f053d</srcmd5>
+    <version>0.95.9</version>
+    <time>1713357968</time>
+    <user>dimstar_suse</user>
+    <comment>- Use png for default wallpaper as SLES, TW, Leap 15.6+ are using png
+  * Article https://news.opensuse.org/2024/04/09/common-wallpaper-path/  
+  * Updated style inside theme.tar.bz and symlinks in spec</comment>
+    <requestid>1168490</requestid>
+  </revision>
 </revisionlist>

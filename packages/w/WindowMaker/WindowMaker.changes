@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 17 08:40:25 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Use png for default wallpaper as SLES, TW, Leap 15.6+ are using png
+  * Article https://news.opensuse.org/2024/04/09/common-wallpaper-path/  
+  * Updated style inside theme.tar.bz and symlinks in spec
+
+-------------------------------------------------------------------
 Fri Sep  3 14:48:40 UTC 2020 - max+suse@dnzm.nl
 
 - Added build requirements which result in broader image support and UTF-8/RTL
