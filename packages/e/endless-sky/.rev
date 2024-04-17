@@ -95,4 +95,23 @@
     <comment></comment>
     <requestid>1126994</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cf2f78eab69dc8189ad97ef0c3e51c43</srcmd5>
+    <version>0.10.6</version>
+    <time>1713363632</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.6
+  * The Gatling Turret and Javelin Turret now each require one
+    crew member.
+  * The timer ship in &quot;Sad Archie&quot; has been given the &quot;ramming&quot;
+    personality to improve its consistency.
+  * Animated ship and planet sprites are now correctly rendered in
+    the hail panel instead of not being rendered at all or being
+    rendered at a high frame rate.
+  * Gave the stock Dreadnought its fourth Torpedo Launcher back
+    that it had lost in a previous release to make room for a
+    bigger battery; it didn't need the bigger battery.
+</comment>
+    <requestid>1168570</requestid>
+  </revision>
 </revisionlist>
