@@ -4,7 +4,7 @@
 <!-- So that Dockerfile builds derived from this use the project paths -->
 <!-- OBS-Imagerepo: obsrepositories:/ -->
 
-<image schemaversion="6.5" name="opensuse-tumbleweed-image" xmlns:suse_label_helper="com.suse.label_helper">
+<image schemaversion="7.4" name="opensuse-tumbleweed-image">
   <description type="system">
     <author>Fabian Vogt</author>
     <contact>fvogt@suse.com</contact>
@@ -17,13 +17,9 @@
   </profiles>
   <preferences profiles="docker">
     <type image="docker">
-      <containerconfig
-        name="opensuse/tumbleweed"
-        tag="latest"
-        additionaltags="%OS_VERSION_ID%,%OS_VERSION_ID%.%RELEASE%"
-        maintainer="Fabian Vogt &lt;fvogt@suse.com&gt;">
+      <containerconfig name="opensuse/tumbleweed" tag="latest" additionaltags="%OS_VERSION_ID%,%OS_VERSION_ID%.%RELEASE%" maintainer="Fabian Vogt &lt;fvogt@suse.com&gt;">
         <labels>
-          <suse_label_helper:add_prefix prefix="org.opensuse.base">
+          <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper" prefix="org.opensuse.base">
             <label name="org.opencontainers.image.title" value="openSUSE Tumbleweed Base Container"/>
             <label name="org.opencontainers.image.description" value="Image containing a minimal environment for containers based on openSUSE Tumbleweed."/>
             <label name="org.opencontainers.image.version" value="%OS_VERSION_ID%.%RELEASE%"/>
