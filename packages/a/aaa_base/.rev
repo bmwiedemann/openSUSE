@@ -4139,4 +4139,14 @@
   * Check for valid TERM</comment>
     <requestid>1164080</requestid>
   </revision>
+  <revision rev="499" vrev="1">
+    <srcmd5>2a875554c956d6850c2d99e2b513b5e1</srcmd5>
+    <version>84.87+git20240415.e6815bf</version>
+    <time>1713357897</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20240415.e6815bf:
+  * drop obsolete 50-default-s390.conf (bsc#1211721)
+  * fix typo in alljava.csh and drop stderr redirection</comment>
+    <requestid>1167849</requestid>
+  </revision>
 </revisionlist>

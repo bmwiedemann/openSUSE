@@ -33,7 +33,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20240402.16596d1%{git_version}
+Version:        84.87+git20240415.e6815bf%{git_version}
 Release:        0
 Summary:        openSUSE Base Package
 License:        GPL-2.0-or-later
@@ -112,10 +112,6 @@ systems.
 %install
 %make_install
 mkdir -p %{buildroot}/etc/sysctl.d
-case "$RPM_ARCH" in
-	s390*) ;;
-	*) rm -f %{buildroot}/usr/lib/sysctl.d/50-default-s390.conf ;;
-esac
 #
 # make sure it does not creep in again
 test -d %{buildroot}/root/.gnupg && exit 1

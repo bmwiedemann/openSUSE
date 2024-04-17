@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 15 15:49:43 UTC 2024 - lnussel@suse.com
+
+- Update to version 84.87+git20240415.e6815bf:
+  * drop obsolete 50-default-s390.conf (bsc#1211721)
+  * fix typo in alljava.csh and drop stderr redirection
+
+-------------------------------------------------------------------
 Tue Apr 02 11:16:55 UTC 2024 - lnussel@suse.com
 
 - Update to version 84.87+git20240402.16596d1:
