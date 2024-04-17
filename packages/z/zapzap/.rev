@@ -42,4 +42,13 @@
   * Update de.po #58</comment>
     <requestid>1150576</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>51bf5e42ec1e31855223adfe153112ac</srcmd5>
+    <version>5.3</version>
+    <time>1713357965</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.3:
+ * Update eu.po #64</comment>
+    <requestid>1168457</requestid>
+  </revision>
 </revisionlist>
