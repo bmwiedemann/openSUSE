@@ -1,0 +1,12 @@
+diff -Pdpru filezilla-3.67.0.orig/src/interface/verifyhostkeydialog.cpp filezilla-3.67.0/src/interface/verifyhostkeydialog.cpp
+--- filezilla-3.67.0.orig/src/interface/verifyhostkeydialog.cpp	2024-03-07 05:30:02.000000000 +0100
++++ filezilla-3.67.0/src/interface/verifyhostkeydialog.cpp	2024-04-17 14:19:34.512320678 +0200
+@@ -60,7 +60,7 @@ void CVerifyHostkeyDialog::ShowVerificat
+ 	inner->Add(new wxStaticText(box, nullID, _("Host:")));
+ 	inner->Add(new wxStaticText(box, nullID, LabelEscape(host)));
+ 	inner->Add(new wxStaticText(box, nullID, _("Hostkey algorithm:")));
+-	inner->Add(new wxStaticText(box, nullID, notification.hostKeyAlgorithm.empty() ? _("Unknown") : LabelEscape(notification.hostKeyAlgorithm)));
++	inner->Add(new wxStaticText(box, nullID, notification.hostKeyAlgorithm.empty() ? wxString(_("Unknown")) : wxString(LabelEscape(notification.hostKeyAlgorithm))));
+ 	inner->Add(new wxStaticText(box, nullID, _("Fingerprints:")));
+ 	inner->Add(new wxStaticText(box, nullID, LabelEscape(notification.hostKeyFingerprint)));
+ 

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 17 12:31:51 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.67.0
+  * Fixed vulnerabilities:
+    - SFTP: Fixed PuTTY ECDSA NIST P-521 private key recovery 
+      vulnerability (CVE-2024-31497).
+      If you use NIST P-521 keys to connect to SSH/SFTP servers,
+      you should regenerate them and revoke the previous ones.
+    - Official binaries are now built against GnuTLS 3.8.4
+  * Bugfixes and minor changes:
+    - Updated to libfilezilla 0.47.0
+- Fix boo#1222871 - (CVE-2024-31497)
+- Add filezilla-verifyhostkeydialog.patch to fix build error.
+- Add filezilla-sftp_crypt_info_dlg.patch to fix build error.
+
+-------------------------------------------------------------------
 Mon Feb 26 08:20:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

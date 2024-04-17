@@ -1,0 +1,12 @@
+diff -Pdpru filezilla-3.67.0.orig/src/interface/sftp_crypt_info_dlg.cpp filezilla-3.67.0/src/interface/sftp_crypt_info_dlg.cpp
+--- filezilla-3.67.0.orig/src/interface/sftp_crypt_info_dlg.cpp	2024-03-09 05:30:02.000000000 +0100
++++ filezilla-3.67.0/src/interface/sftp_crypt_info_dlg.cpp	2024-04-17 14:29:08.105201893 +0200
+@@ -28,7 +28,7 @@ void CSftpEncryptioInfoDialog::ShowDialo
+ 	{
+ 		auto [box, inner] = lay.createStatBox(main, _("Server host key"), 2);
+ 		inner->Add(new wxStaticText(box, nullID, _("Algorithm:")));
+-		inner->Add(new wxStaticText(box, nullID, pNotification->hostKeyAlgorithm.empty() ? _("Unknown") : LabelEscape(pNotification->hostKeyAlgorithm)));
++		inner->Add(new wxStaticText(box, nullID, pNotification->hostKeyAlgorithm.empty() ? wxString(_("Unknown")) : wxString(LabelEscape(pNotification->hostKeyAlgorithm))));
+ 		inner->Add(new wxStaticText(box, nullID, _("Fingerprints:")));
+ 		inner->Add(new wxStaticText(box, nullID, LabelEscape(pNotification->hostKeyFingerprint)));
+ 	}
