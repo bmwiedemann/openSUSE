@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 17 13:36:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Scripted update to kiwi schema v74.
+
+-------------------------------------------------------------------
 Mon Feb 20 12:27:08 UTC 2023 - Neal Gompa <ngompa13@gmail.com>
 
 - Add curl, tar, gzip, bzip2, xz, and zstd to make useful for GitHub Actions pipelines

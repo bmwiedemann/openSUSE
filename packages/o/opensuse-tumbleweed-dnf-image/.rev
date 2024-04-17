@@ -15,4 +15,12 @@
     <comment>- Add curl, tar, gzip, bzip2, xz, and zstd to make useful for GitHub Actions pipelines</comment>
     <requestid>1066820</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>73d536461a55cefd41aedcafeea197fa</srcmd5>
+    <version>1.0.0</version>
+    <time>1713363626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1168573</requestid>
+  </revision>
 </revisionlist>
