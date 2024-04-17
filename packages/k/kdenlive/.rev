@@ -1084,4 +1084,12 @@ I would be grateful.
     <comment>KDE Release gear 24.02.2 (forwarded request 1166725 from krop)</comment>
     <requestid>1167312</requestid>
   </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>bb05b083fea37a7561d5db5ef84cbf83</srcmd5>
+    <version>24.02.2</version>
+    <time>1713357961</time>
+    <user>dimstar_suse</user>
+    <comment>- Require the Qt6 MLT modules (boo#1222915)</comment>
+    <requestid>1168466</requestid>
+  </revision>
 </revisionlist>

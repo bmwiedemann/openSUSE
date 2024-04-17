@@ -76,6 +76,7 @@ BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(mlt++-7) >= %{mlt_version}
 BuildRequires:  pkgconfig(mlt-framework-7) >= %{mlt_version}
 BuildRequires:  pkgconfig(x11)
+Requires:       libmlt7-module-qt6
 Requires:       melt >= 7
 # Required at runtime
 Requires:       qt6-declarative-imports >= %{qt6_version}
