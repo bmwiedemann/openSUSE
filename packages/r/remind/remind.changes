@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Wed Apr 10 12:10:06 UTC 2024 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.3 Patch 6 - 2024-04-02
+
+* NEW FILE: Add [$SysInclude]/holidays/pt.rem - Portuguese holidays, courtesy
+  of Joop Kiefte.
+
+* BUG FIX: remind: Fix compile error on systems that don't support inotify(7).
+
+* BUG FIX: remind: Fix test failures on FreeBSD.  On FreeBSD, you have to copy
+  the result of getenv() or else a subsequent setenv() can change the stored
+  value.
+
+* VERSION 4.3 Patch 5 - 2024-04-01
+
+* IMPROVEMENT: remind: Use inotify to detect reminder file changes
+  even in regular daemon mode (-zn where n>0).
+
+* INTERNAL IMPROVEMENTS: Rearrange and refactor some code.
+
+* FIXES: Various fixes and improvements to man pages.
+
+* BUG FIX: remind: Handle queued "SPECIAL COLOR" reminders correctly.
+
+* BUG FIX: remind: Preserve the value of $DefaultColor that was in effect
+  when a reminder was queued; restore it before issuing the queued reminder.
+
+* VERSION 4.3 Patch 4 - 2024-03-25
+
+* NEW FEATURE: remind: Add the new "multitrig" function, which is how "trig"
+  should have worked in the first place.  See man page for details.
+
+* IMPROVEMENT: tkremind: Make errors in your reminders file stand out more
+  prominently.
+
+* IMPROVEMENT: tkremind: If you click on an error in the "Errors..." popup,
+  tkremind will open a text editor on the offending file and line.
+
+* IMPROVEMENT: tkremind: Format the "Queue..." output better and make queue
+  items clickable; clicking on a queue item opens a text editor on the
+  corresponding file and line.
+
+* IMPROVEMENT: Add a standard [$SysInclude]/moonphases.rem file to display
+  moon phases on your calendar.
+
+* IMPROVEMENT: Clean up the demo code in www/ and add PDF output.
+
+* BUG FIX: tkremind: Correctly handle filenames containing spaces and other
+  characters that tend to confuse the shell.
+
+* BUG FIX: tkremind: Raise dialog boxes after errors so that they
+  remain visible.
+
+* CLEANUP: tkremind: Remove some dead code.
+
+* VERSION 4.3 Patch 3 - 2024-03-18
+
+* IMPROVEMENT: tkremind: Update icon to include a white border so it shows
+  up better on dark backgrounds.
+
+* IMPROVEMENT: C code: Fix a number of cppcheck static-analysis warnings.
+
+* IMPROVEMENT: remind: Update the "-zj" protocol to include a queue-id for
+  each queued reminder and add the DEL client command to delete a specific
+  item from the queue.  Used by tkremind to implement "don't remind me about
+  this again today."
+
+* MINOR NEW FEATURE: Add a "-ds" debugging flag to print out expression-parsing
+  stack high-water marks on exit.  This esoteric feature is of no use to
+  anyone but the Remind author.
+
+* IMPROVEMENT: tkremind: Stop using the deprecated tk_dialog command in favor
+  of the newer tk_messageBox command.
+
+* IMPROVEMENT: remind: In server mode, try to minimize redraws by
+  consuming inotify events until at least 0.2s elapses without an
+  event appearing.
+
+* BUG FIX: tkremind:  The "Don't remind me about this again today" feature
+  was unreliable and only worked for reminders created with TkRemind itself.
+  It has been made more reliable and works with any reminder.
+
+* BUG FIX: remind: Make it a syntax error if a local OMIT in a REM statement
+  is not followed by at least one weekday name. 
+
+-------------------------------------------------------------------
 Wed Mar  6 14:08:39 UTC 2024 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - 
