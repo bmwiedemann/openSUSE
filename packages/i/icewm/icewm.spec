@@ -190,7 +190,7 @@ patch -p1 -i %{PATCH99}
 # And use proper branding
 wallpaper="openSUSEdefault"
 sed -i \
-    -e "s:BRANDING_PICTURE:%{_datadir}/wallpapers/$wallpaper/contents/images/1920x1080.jpg:" \
+    -e "s:BRANDING_PICTURE:%{_datadir}/wallpapers/$wallpaper/contents/images/1920x1080.png:" \
     src/preferences
 %endif
 
