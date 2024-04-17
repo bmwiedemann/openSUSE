@@ -92,7 +92,7 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-install-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
-BuildRequires:  mvn(org.apache.maven.surefire:maven-surefire-common) >= 2.22.1
+BuildRequires:  mvn(org.apache.maven.surefire:maven-surefire-common) >= 3
 BuildRequires:  mvn(org.apache.maven.surefire:surefire-api)
 BuildRequires:  mvn(org.apache.maven.surefire:surefire-junit3)
 BuildRequires:  mvn(org.apache.maven.surefire:surefire-testng-utils)

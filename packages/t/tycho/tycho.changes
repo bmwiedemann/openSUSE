@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 17 12:49:52 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Require at least maven-surefire 3 for build
+
+-------------------------------------------------------------------
 Wed Apr 10 12:05:15 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
