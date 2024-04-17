@@ -1,7 +1,7 @@
 #
 # spec file for package python-aliyun-python-sdk-alimt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-aliyun-python-sdk-alimt
 Version:        3.2.0
 Release:        0
@@ -28,13 +25,18 @@ License:        Apache-2.0
 URL:            http://develop.aliyun.com/sdk/python
 Source:         https://files.pythonhosted.org/packages/source/a/aliyun-python-sdk-alimt/aliyun-python-sdk-alimt-%{version}.tar.gz
 Source1:        ChangeLog.txt
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module aliyun-python-sdk-core >= 2.11.5}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-aliyun-python-sdk-core >= 2.11.5
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-aliyun-python-sdk-alimt < 3.2.0
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,15 +48,16 @@ The alimt module of Aliyun Python SDK.
 cp %{SOURCE1} ChangeLog.txt
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc ChangeLog.txt README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/aliyunsdkalimt
+%{python_sitelib}/aliyun_python_sdk_alimt-%{version}.dist-info
 
 %changelog
