@@ -3559,6 +3559,8 @@
     <package name="power-profiles-daemon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="powerdevil6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="powerdevil6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="powerprofilesctl-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="powerprofilesctl-zsh-completion" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ppp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pptp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pragha" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
