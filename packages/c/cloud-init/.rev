@@ -1178,4 +1178,12 @@
     environment</comment>
     <requestid>1163386</requestid>
   </revision>
+  <revision rev="99" vrev="10">
+    <srcmd5>ef1c2f663d427ccc3e9fb8331515b755</srcmd5>
+    <version>23.3</version>
+    <time>1713357919</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1168393</requestid>
+  </revision>
 </revisionlist>

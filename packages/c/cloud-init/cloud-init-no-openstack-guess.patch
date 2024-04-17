@@ -1,0 +1,35 @@
+--- tools/ds-identify.orig
++++ tools/ds-identify
+@@ -95,7 +95,7 @@ DI_MAIN=${DI_MAIN:-main}
+ DI_BLKID_EXPORT_OUT=""
+ DI_GEOM_LABEL_STATUS_OUT=""
+ DI_DEFAULT_POLICY="search,found=all,maybe=all,notfound=${DI_DISABLED}"
+-DI_DEFAULT_POLICY_NO_DMI="search,found=all,maybe=all,notfound=${DI_ENABLED}"
++DI_DEFAULT_POLICY_NO_DMI="search,found=all,maybe=all,notfound=${DI_DISABLED}"
+ DI_DMI_BOARD_NAME=""
+ DI_DMI_CHASSIS_ASSET_TAG=""
+ DI_DMI_PRODUCT_NAME=""
+@@ -1261,12 +1261,6 @@ dscheck_OpenStack() {
+         return ${DS_FOUND}
+     fi
+ 
+-    # LP: #1715241 : arch other than intel are not identified properly.
+-    case "$DI_UNAME_MACHINE" in
+-        i?86|x86_64) :;;
+-        *) return ${DS_MAYBE};;
+-    esac
+-
+     return ${DS_NOT_FOUND}
+ }
+ 
+--- tests/unittests/test_ds_identify.py.orig
++++ tests/unittests/test_ds_identify.py
+@@ -574,7 +574,7 @@ class TestDsIdentify(DsIdentifyBase):
+ 
+         nova does not identify itself on platforms other than intel.
+            https://bugs.launchpad.net/cloud-init/+bugs?field.tag=dsid-nova"""
+-
++        return
+         data = copy.deepcopy(VALID_CFG["OpenStack"])
+         del data["files"][P_PRODUCT_NAME]
+         data.update(

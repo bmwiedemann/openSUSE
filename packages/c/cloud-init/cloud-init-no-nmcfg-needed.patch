@@ -1,0 +1,27 @@
+--- cloudinit/net/network_manager.py.orig
++++ cloudinit/net/network_manager.py
+@@ -9,7 +9,6 @@
+ import configparser
+ import io
+ import itertools
+-import os
+ import uuid
+ from typing import Optional
+ 
+@@ -401,7 +400,6 @@ def available(target=None):
+     # It is imported here to avoid circular import
+     from cloudinit.distros import uses_systemd
+ 
+-    config_present = os.path.isfile(subp.target_path(target, path=NM_CFG_FILE))
+     nmcli_present = subp.which("nmcli", target=target)
+     service_active = True
+     if uses_systemd():
+@@ -410,7 +408,7 @@ def available(target=None):
+         except subp.ProcessExecutionError:
+             service_active = False
+ 
+-    return config_present and bool(nmcli_present) and service_active
++    return bool(nmcli_present) and service_active
+ 
+ 
+ # vi: ts=4 expandtab

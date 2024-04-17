@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr  9 16:00:13 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Update cloud-init-no-openstack-guess.patch
+  + Do not enable cloud-init on systems where there is no DMI just
+    because no data source has been found. No data source means
+    cloud-init will not run.
+
+-------------------------------------------------------------------
+Fri Apr  5 18:01:39 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-no-nmcfg-needed.patch (bsc#1221726)
+  + Do not require a NetworkManager config file in order to detect
+    NetworkManager as the renderer
+
+-------------------------------------------------------------------
+Fri Apr  5 14:27:16 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-no-openstack-guess.patch (bsc#1222113)
+  + Do not guess if we are running on OpenStack or not. Only recognize
+    the known markers and enable cloud-init if we know for sure.
+
+-------------------------------------------------------------------
 Thu Mar 28 12:22:05 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Add  cloud-init-ds-deterministic.patch (bsc#1221132)

@@ -43,8 +43,12 @@ Patch8:        cloud-init-lint-fixes.patch
 Patch9:        cloud-init-pckg-reboot.patch
 # FIXME
 Patch10:       cloud-init-skip-empty-conf.patch
-# FIXME (ttps://github.com/canonical/cloud-init/issues/5075)
+# FIXME (https://github.com/canonical/cloud-init/commit/d0f00bd54649e527d69ad597cbcad6efa8548e58)
 Patch11:       cloud-init-ds-deterministic.patch
+# FIXME https://github.com/canonical/cloud-init/issues/5152 adn LP#1715241
+Patch12:       cloud-init-no-openstack-guess.patch
+# FIXME upstream comit 812df5038
+Patch13:       cloud-init-no-nmcfg-needed.patch
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 # pkg-config is needed to find correct systemd unit dir
@@ -154,6 +158,8 @@ Documentation and examples for cloud-init tools
 %patch -P 9
 %patch -P 10
 %patch -P 11
+%patch -P 12
+%patch -P 13
 
 # patch in the full version to version.py
 version_pys=$(find . -name version.py -type f)
