@@ -73,4 +73,12 @@
 - Enable lastlog2-import</comment>
     <requestid>1074910</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>f99bbf18f1e4a1ac071fbdfefb9a3192</srcmd5>
+    <version>20230214</version>
+    <time>1713357901</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1168356</requestid>
+  </revision>
 </revisionlist>

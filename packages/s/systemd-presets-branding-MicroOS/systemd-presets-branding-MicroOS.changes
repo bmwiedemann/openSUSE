@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 12 16:13:00 UTC 2024 - Ignaz Forster <iforster@suse.com>
+
+- On a transactional system make sure that /var and /etc are
+  mounted on a soft-reboot, the system may hang otherwise.
+  Implemented in prepare-nextroot-for-softreboot.service
+
+-------------------------------------------------------------------
 Tue Mar 28 07:57:46 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove tallow (package got dropped long ago)
