@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Tue Apr 16 14:11:00 UTC 2024 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 4.5.1
+  * Fix text rendering in Configuration -> Command Expansion when the 
+    command ends in whitespace 
+    (Thanks Joran LEREEC for reporting this issue)
+
+- from 4.5.0
+  Note: this release is backward-compatible, but does include updates 
+  to the header files.
+  If you are using any NEB modules in your monitoring solution, you will 
+  need to recompile them with the new nagios-4.5.0 headers to avoid 
+  segmentation faults.
+
+  ENHANCEMENTS
+  * Add event_handler_period configuration option to hosts and services (#913)
+  * Add external commands CHANGE_HOST_EVENT_HANDLER_TIMEPERIOD 
+    and CHANGE_SVC_EVENT_HANDLER_TIMEPERIOD (#913)
+  * Added support for separating your build directory from your 
+    source directory (#867)
+
+- from older versions:
+  * Fix missing macros when running performance data commands (#904)
+  * Fix broken logo images in status pages (regression from 4.4.12) (#917)
+  * Clean up most compiler warnings on GCC and clang (#901)
+  * Fix incorrect HTML entity escaping in CGIs (#907, #902)
+  * Fix issue where predictive dependency checks were not being scheduled for services (#908)
+  * Fix several typos (#898, #884)
+  * Fix incorrect error message in preflight check (#865)
+  * Fix use-after-free in qh_deregister_handler (#866)
+  * Fix memory leak in qh_deregister_handler (#866)
+  * Fix mismatched host/service behavior when changing from SOFT to HARD state (#891)
+  * Minor performance improvements in CGI utility functions (#866)
+  * Fix memory leak in nagiostats.c when using -c, -s, -d, or -D multiple times (#888)
+  * Improve service scheduling at startup (#887)
+  * Fixed check_attempts remaining high during a HARD service recovery (#837)
+  * Fixed memory leak in NERD (#872)
+  * Fixed crash when checking for updates using SSL
+
+- removed patches:
+  * nagios-4.1.0-add_KOHANNA.conf - not supported any longer
+  * nagios-fix_encoding_trends.cgi.patch - fixed upstream
+- refreshed patches: 
+  * nagios-disable_phone_home.patch - disable page tour in cgi.cfg
+  * nagios-random_data.patch - rebase
+  * nagios-4.0.6-remove-date-time.patch - rebase
+  * nagios-4.4.3-enable-ppc64le.patch - rebase
+  * nagios-output-length.patch - rebase
+- removed scripts and configs:
+  * nagios-exec-start-post - obsolete (fixes bsc#1202929)
+  * nagios-exec-start-pre  - obsolete (fixes bsc#1202929)
+  * nagios_systemd         - integrated in nagios.service
+  * nagios-4.1.0-add_KOHANNA.conf - unsupported
+- updated nagios.service
+  * use correct commandline options
+  * add ExecStopPost to remove the command file
+  * get rid of EnvironmentFile
+- reduce amount of rpmlintrc exceptions
+- use service file for downloading the sources 
+- require procps (ps) for building
+- recommend traceroute (for WAP -> statuswml.cgi & traceroute.cgi)
+- Nagios plugins can be found under http://nagios-plugins.org/ now.
+- use /run/nagios instead of /var/run/nagios as tmp-dir
+- create and own /run/nagios as ghost directory
+- substitute the distribution path names more general in nagios.cfg
+- use symlink to /sbin/service for rcnagios instead of adjusted startup file
+- package readme file for exfoliation theme
+- package nagios-qh.rb (Query Handler interface example) in nagios-contrib
+- run check macro and test the shipped nagios.cfg
+
+-------------------------------------------------------------------
 Thu Feb 22 13:55:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

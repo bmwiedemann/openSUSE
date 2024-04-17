@@ -1,7 +1,8 @@
-diff --unified -r nagios-4.4.7-orig/base/utils.c nagios-4.4.7/base/utils.c
---- nagios-4.4.7-orig/base/utils.c	2022-04-14 16:19:37.000000000 +0200
-+++ nagios-4.4.7/base/utils.c	2022-05-13 19:58:24.615532600 +0200
-@@ -3322,142 +3322,6 @@
+Index: nagios-4.5.1/base/utils.c
+===================================================================
+--- nagios-4.5.1.orig/base/utils.c
++++ nagios-4.5.1/base/utils.c
+@@ -3330,142 +3330,6 @@ int check_for_nagios_updates(int force,
  
  /* checks for updates at api.nagios.org */
  int query_update_api(void) {
@@ -13,7 +14,6 @@ diff --unified -r nagios-4.4.7-orig/base/utils.c nagios-4.4.7/base/utils.c
 -	char recv_buf[1024];
 -	int report_install = FALSE;
 -	char *ptr = NULL;
--	int current_line = 0;
 -	int buf_index = 0;
 -	int in_header = TRUE;
 -	char *var = NULL;
@@ -62,8 +62,8 @@ diff --unified -r nagios-4.4.7-orig/base/utils.c nagios-4.4.7/base/utils.c
 -	}
 -
 -#ifdef HAVE_SSL
--	SSL *ssl;
--	SSL_CTX *ctx;
+-	SSL *ssl = NULL;
+-	SSL_CTX *ctx = NULL;
 -
 -	int result = my_ssl_connect(api_server, 443, &sd, &ssl, &ctx, 2);
 -	if(sd > 0 && result != ERROR) {
@@ -78,7 +78,9 @@ diff --unified -r nagios-4.4.7-orig/base/utils.c nagios-4.4.7/base/utils.c
 -
 -		/* close connection */
 -		SSL_free(ssl);
+-#if OPENSSL_VERSION_NUMBER < 0x10100000
 -		SSL_CTX_free(ctx);
+-#endif
 -		close(sd);
 -#else 
 -	my_tcp_connect(api_server, 80, &sd, 2);
@@ -100,7 +102,6 @@ diff --unified -r nagios-4.4.7-orig/base/utils.c nagios-4.4.7/base/utils.c
 -		while((ptr = get_next_string_from_buf(recv_buf, &buf_index, sizeof(recv_buf)))) {
 -
 -			strip(ptr);
--			current_line++;
 -
 -			if(!strcmp(ptr, "")) {
 -				in_header = FALSE;
@@ -143,4 +144,17 @@ diff --unified -r nagios-4.4.7-orig/base/utils.c nagios-4.4.7/base/utils.c
 -
  	return OK;
  	}
+ 
+Index: nagios-4.5.1/sample-config/cgi.cfg.in
+===================================================================
+--- nagios-4.5.1.orig/sample-config/cgi.cfg.in
++++ nagios-4.5.1/sample-config/cgi.cfg.in
+@@ -285,7 +285,7 @@ refresh_rate=90
+ # PAGE TOUR
+ # Enable page tour for helpful tips and tricks on various pages
+ 
+-#enable_page_tour=1
++enable_page_tour=0
+ 
+ 
  

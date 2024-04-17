@@ -1,7 +1,7 @@
-Index: nagios-4.4.2/cgi/archivejson.c
+Index: nagios-4.5.1/cgi/archivejson.c
 ===================================================================
---- nagios-4.4.2.orig/cgi/archivejson.c
-+++ nagios-4.4.2/cgi/archivejson.c
+--- nagios-4.5.1.orig/cgi/archivejson.c
++++ nagios-4.5.1/cgi/archivejson.c
 @@ -761,7 +761,7 @@ int main(void) {
  				json_result(query_time, THISCGI, 
  				svm_get_string_from_value(cgi_data.query, valid_queries), 
@@ -11,10 +11,10 @@ Index: nagios-4.4.2/cgi/archivejson.c
  				RESULT_SUCCESS, ""));
  		json_object_append_object(json_root, "data", 
  				json_help(archive_json_help));
-Index: nagios-4.4.2/cgi/objectjson.c
+Index: nagios-4.5.1/cgi/objectjson.c
 ===================================================================
---- nagios-4.4.2.orig/cgi/objectjson.c
-+++ nagios-4.4.2/cgi/objectjson.c
+--- nagios-4.5.1.orig/cgi/objectjson.c
++++ nagios-4.5.1/cgi/objectjson.c
 @@ -1130,7 +1130,7 @@ int main(void) {
  				json_result(query_time, THISCGI, 
  				svm_get_string_from_value(cgi_data.query, valid_queries), 
@@ -24,10 +24,10 @@ Index: nagios-4.4.2/cgi/objectjson.c
  				RESULT_SUCCESS, ""));
  		json_object_append_object(json_root, "data", json_help(object_json_help));
  		break;
-Index: nagios-4.4.2/cgi/statusjson.c
+Index: nagios-4.5.1/cgi/statusjson.c
 ===================================================================
---- nagios-4.4.2.orig/cgi/statusjson.c
-+++ nagios-4.4.2/cgi/statusjson.c
+--- nagios-4.5.1.orig/cgi/statusjson.c
++++ nagios-4.5.1/cgi/statusjson.c
 @@ -1135,7 +1135,7 @@ int main(void) {
  				json_result(query_time, THISCGI, 
  				svm_get_string_from_value(cgi_data.query, valid_queries), 

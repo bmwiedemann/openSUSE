@@ -1,7 +1,7 @@
 # The name of that package is used since years - no need to change it for this new 'policy'
 addFilter("name-repeated-in-summary.*Nagios")
 # avoid FollowSymlinks in apache configuration
-addFilter("files-duplicated-waste");
+# addFilter("files-duplicated-waste");
 addFilter("files-duplicate.*/usr/share/nagios/.*");
 addFilter("devel-file-in-non-devel-package.*/usr/lib.*/libnagios.a");
 # we have an own rcnagios file that adds additional features otherwise missing if we would
@@ -11,6 +11,6 @@ addFilter("suse-missing-rclink.*nagios.*");
 # of the package - so ignore it here as we create the dir via tmpfiles.d
 addFilter("tmpfile-not-in-filelist.*/var/run/nagios");
 # not using the macro should not be a problem if we call the service directly:
-addFilter("postin-without-tmpfile-creation.*/usr/lib/tmpfiles.d/nagios.conf");
+#addFilter("postin-without-tmpfile-creation.*/usr/lib/tmpfiles.d/nagios.conf");
 # see boo#961115 - CVE-2016-0726
 addFilter("zero-length.*/etc/nagios/htpasswd.users");

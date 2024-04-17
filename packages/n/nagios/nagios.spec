@@ -21,6 +21,9 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
 %endif
+%if ! %{defined _rundir}
+  %define _rundir %{_localstatedir}/run
+%endif
 
 %if 0%{?suse_version} >= 1230
 %bcond_without systemd
@@ -29,7 +32,7 @@
 %endif
 
 Name:           nagios
-Version:        4.4.7
+Version:        4.5.1
 Release:        0
 Summary:        The Nagios Network Monitor
 License:        GPL-2.0-or-later
@@ -37,12 +40,10 @@ Group:          System/Monitoring
 URL:            http://www.nagios.org/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        rc%{name}
-Source2:        %{name}-exec-start-pre
 Source3:        %{name}.sysconfig
 Source4:        suse.de-nagios
 Source5:        nagios.8
 Source6:        nagiosstats.8
-Source7:        nagios-exec-start-post
 Source8:        upgrade_nagios.sh
 Source9:        upgrade_nagios.8
 Source10:       %{name}-README.SuSE
@@ -52,8 +53,6 @@ Source13:       %{name}.tmpfiles
 Source14:       %{name}-archive.timer
 Source15:       %{name}-archive.service
 Source20:       %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM unescape hex characters in CGI input - avoid addional '+'
-Patch3:         nagios-fix_encoding_trends.cgi.patch
 # PATCH-FIX-UPSTREAM return 1 in int main()
 Patch4:         nagios-random_data.patch
 # PATCH-FIX-OPENSUSE disable Nagios online update checks for distributed packages
@@ -62,8 +61,6 @@ Patch11:        nagios-disable_phone_home.patch
 Patch14:        nagios-4.0.6-remove-date-time.patch
 # PATCH-FIX-OPENSUSE patch to not truncate performance data
 Patch16:        nagios-output-length.patch
-# PATCH-FIX-OPENSUSE use KOHANNA if available
-Patch17:        nagios-4.1.0-add_KOHANNA.conf
 # PATCH-FIX-UPSTREAM allow ppc64le builds in contrib Makefile
 Patch18:        nagios-4.4.3-enable-ppc64le.patch
 BuildRequires:  doxygen
@@ -80,11 +77,11 @@ BuildRequires:  nagios-rpm-macros
 BuildRequires:  net-tools
 BuildRequires:  openssl-devel
 BuildRequires:  pcre-devel
+BuildRequires:  procps
 BuildRequires:  unzip
 BuildRequires:  zlib-devel
 %if %{with systemd}
 BuildRequires:  pkgconfig(systemd)
-Source100:      nagios_systemd
 %{?systemd_ordering}
 %else
 Recommends:     cron
@@ -101,6 +98,7 @@ Recommends:     %{name}-www
 Recommends:     monitoring-tools
 Recommends:     icinga-monitoring-tools
 Recommends:     %{name}-plugins
+Recommends:     traceroute
 Requires(pre):  system-user-nagios
 %else
 Requires(pre):  shadow-utils
@@ -124,10 +122,11 @@ specify.
 
 The actual service checks are performed by separate "plugin" programs
 which return the status of the checks to Nagios. The plugins are
-available at http://sourceforge.net/projects/nagiosplug
+available at http://nagios-plugins.org/.
 
 This package provides core programs for Nagios. The web interface,
-documentation, and development files are built as separate packages
+documentation, and development files are built as separate packages.
+
 
 %package www
 Summary:        Provides the HTML and CGI files for the Nagios web interface
@@ -161,8 +160,8 @@ specify.
 Several CGI programs are included with Nagios in order to allow you to
 view the current service status, problem history, notification history,
 and log file via the web. This package provides the HTML and CGI files
-for the Nagios web interface. In addition, HTML documentation is
-included in this package.
+for the Nagios web interface.
+
 
 %package theme-exfoliation
 Summary:        Nagios Core web interface
@@ -174,6 +173,7 @@ BuildArch:      noarch
 %description theme-exfoliation
 Exfoliation is a simple makeover for the Nagios Core web interface. It consists
 of two folders that overlay on a stock Nagios installation.
+
 
 %package www-dch
 Summary:        HTML and CGI files that do not call home
@@ -198,6 +198,7 @@ package.
 
 Note: The HTML pages use 'side' and 'main' and frame targets.
 
+
 %package contrib
 Summary:        Files from the contrib directory
 Group:          Development/Tools/Other
@@ -206,6 +207,7 @@ BuildArch:      noarch
 
 %description contrib
 This package contains all the files from the contrib directory
+
 
 %package devel
 Summary:        Development files for Nagios
@@ -224,15 +226,14 @@ specify.
 This package provides include files that Nagios-related applications
 may compile against.
 
+
 %prep
 %setup -q
 %if 0%{?suse_version} < 01500
-%patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 11 -p1
 %patch -P 14 -p1
 %patch -P 16 -p1
-%patch -P 17 -p1
 %patch -P 18 -p1
 %else
 %autopatch -p1
@@ -255,8 +256,11 @@ for f in $(find . -type f) ; do
     mv ${F} ${f}
 done
 popd 1>/dev/null
+sed -i "s|/usr/bin/env ruby|%{_bindir}/ruby|g" contrib/nagios-qh.rb
+mv contrib/exfoliation/readme.txt README_Theme_Exfoliation.txt
 
 %build
+export PATH_TO_TRACEROUTE="%{_sbindir}/traceroute"; \
 %configure \
 	--prefix=%{_prefix} \
 	--exec-prefix=%{_sbindir} \
@@ -283,6 +287,7 @@ popd 1>/dev/null
 	--with-template-extinfo \
 	--with-perlcache \
 	--enable-event-broker
+
 #
 # make daemonchk.cgi and event handlers
 #
@@ -325,9 +330,9 @@ install -m644 lib/*.h %{buildroot}/%{_includedir}/%{name}/lib
 find sample-config/ -name "*.in" -delete
 find sample-config/ -name "*.in.orig" -delete
 sed -e 's|command_file=.*|command_file=%{nagios_command_file}|g' \
-    -e 's|log_file=/var/lib/nagios/nagios.log|log_file=%{nagios_logdir}/nagios.log|g' \
-    -e 's|log_archive_path=/var/lib/nagios/archives|log_archive_path=%{nagios_logdir}/archives|g' \
-    -e 's|#query_socket=/var/lib/nagios/rw/nagios.qh|query_socket=%{nagios_localstatedir}/nagios.qh|g' \
+    -e 's|/var/lib/nagios/nagios.log|%{nagios_logdir}/nagios.log|g' \
+    -e 's|/var/lib/nagios/archives|%{nagios_logdir}/archives|g' \
+    -e 's|/var/lib/nagios/rw/nagios.qh|%{nagios_localstatedir}/nagios.qh|g' \
     -e 's|^lock_file=.*|lock_file=%nslockfile|g' \
     %{buildroot}/%{nagios_sysconfdir}/nagios.cfg > %{buildroot}%{_sysconfdir}/%{name}/nagios.cfg.tmp
 mv %{buildroot}/%{nagios_sysconfdir}/nagios.cfg.tmp %{buildroot}%{_sysconfdir}/%{name}/nagios.cfg
@@ -344,24 +349,24 @@ install -Dm644 lib/libnagios.a %{buildroot}%{_libdir}/libnagios.a
 #
 # init-script
 %if %{with systemd}
-install -D -m0755 %{SOURCE100} %{buildroot}%{_sbindir}/rc%{name}
-install -D -m0755 %{SOURCE2}  %{buildroot}/%{nagios_libdir}/%{name}-exec-start-pre
-install -D -m0755 %{SOURCE7}  %{buildroot}/%{nagios_libdir}/%{name}-exec-start-post
+ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 install -D -m0644 %{SOURCE12} %{buildroot}/%{_unitdir}/%{name}.service
 install -D -m0644 %{SOURCE13} %{buildroot}/%{_prefix}/lib/tmpfiles.d/%{name}.conf
 %else
 install -D -m 0755 %{SOURCE1} %{buildroot}%{_sysconfdir}/init.d/%{name}
 ln -sf ../../etc/init.d/%{name} %{buildroot}%{_sbindir}/rc%{name}
 touch %{buildroot}%{nslockfile}
-%endif
 # sysconfig script
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.%{name}
+%endif
 # install cronjob (gzip' the logfiles)
 %if %{with systemd}
 sed -e 's|__NAGIOS_USER__|%{nagios_user}|g' \
     -e 's|__NAGIOS_GROUP__|%{nagios_group}|g' %{SOURCE4} > %{buildroot}%{_sbindir}/nagios-archive
 install -Dm0644 %{SOURCE14} %{buildroot}/%{_unitdir}/nagios-archive.timer
 install -Dm0644 %{SOURCE15} %{buildroot}/%{_unitdir}/nagios-archive.service
+# created via tmpfilesd - create here for ghosting it
+mkdir -p %{buildroot}%{_rundir}/%{name}
 %else
 mkdir %{buildroot}%{_sysconfdir}/cron.weekly
 sed -e 's|__NAGIOS_USER__|%{nagios_user}|g' \
@@ -391,17 +396,26 @@ install -m644 %{SOURCE9} %{buildroot}%{_mandir}/man8/upgrade_nagios.8
 rm -f %{buildroot}/%{_sbindir}/convertcfg
 rm -f %{buildroot}/%{_sbindir}/mini_epn
 rm -f %{buildroot}/%{_sbindir}/new_mini_epn
-# move exfoliation theme to separate folder
+# create exfoliation theme in separate folder
 mkdir -p %{buildroot}%{_datadir}/nagios-themes/exfoliation
-mv %{buildroot}%{nagios_datadir}/{stylesheets,images} %{buildroot}%{_datadir}/nagios-themes/exfoliation/
+cp -a %{buildroot}%{nagios_datadir}/* %{buildroot}%{_datadir}/nagios-themes/exfoliation/
+rm -rf %{buildroot}%{_datadir}/nagios-themes/exfoliation/{stylesheets,images}
+mv -fv contrib/exfoliation/{stylesheets,images} %{buildroot}%{_datadir}/nagios-themes/exfoliation/
+rmdir contrib/exfoliation
 %fdupes %{buildroot}%{_datadir}/nagios-themes/exfoliation/
-mkdir -p %{buildroot}%{nagios_datadir}/{stylesheets,images}
-cp -rf html/stylesheets/* %{buildroot}%{nagios_datadir}/stylesheets/
-cp -rf html/images/* %{buildroot}%{nagios_datadir}/images/
+
+
+%check
+NAGIOS_CFGFILE=$(mktemp /tmp/nagios.cfg-XXXXXX)
+sed -e 's|/var/|%{buildroot}/var/|g' \
+	-e 's|/etc/|%{buildroot}/etc/|g' %{buildroot}%{nagios_sysconfdir}/nagios.cfg > "$NAGIOS_CFGFILE"
+%{buildroot}%{_sbindir}/nagios -v "$NAGIOS_CFGFILE"
+rm "$NAGIOS_CFGFILE"
+
 
 %if %{with systemd}
 %pre
-%service_add_pre %{name}.service %{name}-archive.service %{name}-archive.timer
+  %service_add_pre %{name}.service %{name}-archive.service %{name}-archive.timer
 %endif
 
 %post
@@ -423,37 +437,36 @@ else
   fi
 fi
 %if %{with systemd}
-%service_add_post %{name}.service %{name}-archive.service %{name}-archive.timer
-systemd-tmpfiles --create %{_prefix}/lib/tmpfiles.d/%{name}.conf
-%fillup_only
+  %service_add_post %{name}.service %{name}-archive.service %{name}-archive.timer
+  systemd-tmpfiles --create %{_prefix}/lib/tmpfiles.d/%{name}.conf
 %else
 %{fillup_and_insserv %{name}}
 %if 0%{?sles_version} != 11
-%set_permissions /etc/cron.weekly/
+  %set_permissions /etc/cron.weekly/
 %endif
 %endif
 %if 0%{?sles_version} != 11
-%set_permissions /var/spool/nagios/
+  %set_permissions /var/spool/nagios/
 %endif
 
 %preun
 %if %{with systemd}
-%service_del_preun %{name}.service %{name}-archive.service %{name}-archive.timer
+  %service_del_preun %{name}.service %{name}-archive.service %{name}-archive.timer
 %else
-%stop_on_removal %{name}
+  %stop_on_removal %{name}
 %endif
 
 %postun
 %if %{with systemd}
-%service_del_postun %{name}.service %{name}-archive.service %{name}-archive.timer
+  %service_del_postun %{name}.service %{name}-archive.service %{name}-archive.timer
 %else
-%restart_on_update %{name}
-%{insserv_cleanup}
+  %restart_on_update %{name}
+  %{insserv_cleanup}
 %endif
 
 %verifyscript
 %if ! %{with systemd}
-%verify_permissions -e /etc/cron.weekly/
+  %verify_permissions -e /etc/cron.weekly/
 %endif
 %verify_permissions -e /var/spool/nagios/
 
@@ -480,11 +493,7 @@ if [ ${1:-0} -eq 1 ]; then
       %{_sbindir}/a2enmod authz_user >/dev/null 
       %{_sbindir}/a2enmod version >/dev/null 
       # enable php in apache config
-      %if 0%{?sle_version} == 120000 
-        %{_sbindir}/a2enmod php5 >/dev/null || :
-      %else
-        %{_sbindir}/a2enmod php >/dev/null || :
-      %endif
+      %{_sbindir}/a2enmod php >/dev/null || :
   fi
   %if %{with systemd}
   %{_bindir}/systemctl try-restart apache2
@@ -496,11 +505,11 @@ fi
 %post www-dch
 # Update ?
 if [ ${1:-0} -eq 1 ]; then
-%if %{with systemd}
-%{_bindir}/systemctl try-restart apache2
-%else
-%restart_on_update apache2
-%endif
+  %if %{with systemd}
+    %{_bindir}/systemctl try-restart apache2
+  %else
+    %restart_on_update apache2
+  %endif
 fi
 
 %post theme-exfoliation
@@ -526,19 +535,17 @@ fi
 %dir %{nagios_plugindir}
 %exclude %{nagios_cgidir}/*
 %{_mandir}/man8/%{name}*
-%attr(0755,root,root) %{_sbindir}/rc%{name}
+%{_sbindir}/rc%{name}
 %attr(0755,root,root) %{_sbindir}/upgrade_nagios
 %{_mandir}/man8/upgrade_nagios.8*
-%{_fillupdir}/sysconfig.%{name}
 %if %{with systemd}
-%attr(0755,root,root) %{nagios_libdir}/%{name}-exec-start-pre
-%attr(0755,root,root) %{nagios_libdir}/%{name}-exec-start-post
 %{_unitdir}/%{name}.service
 %{_prefix}/lib/tmpfiles.d/%{name}.conf
 %attr(0755,root,root) %{_sbindir}/nagios-archive
 %{_unitdir}/nagios-archive.timer
 %{_unitdir}/nagios-archive.service
 %else
+%{_fillupdir}/sysconfig.%{name}
 %attr(0755,root,root) %{_sysconfdir}/init.d/%{name}
 %ghost %dir %{nslockfile_dir}
 %attr(0644,%{nagios_user},%{nagios_group}) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) %{nslockfile}
@@ -550,6 +557,7 @@ fi
 %config(noreplace) %{nagios_sysconfdir}/*.cfg
 %config(noreplace) %{nagios_sysconfdir}/objects/*.cfg
 %ghost %config(missingok,noreplace) %attr(0644,%{nagios_user},%{nagios_group}) %{nagios_logdir}/config.err
+%ghost %dir %{_rundir}/%{name}
 # directories with special handling:
 %attr(0755,root,%{nagios_command_group})           %dir %{nagios_sysconfdir}
 %attr(0755,root,%{nagios_command_group})           %dir %{nagios_sysconfdir}/objects
@@ -578,6 +586,7 @@ fi
 
 %files theme-exfoliation
 %defattr(0644,root,root,0755)
+%doc README_Theme_Exfoliation.txt
 %dir %{_datadir}/nagios-themes
 %{_datadir}/nagios-themes/exfoliation/
 
@@ -589,7 +598,7 @@ fi
 
 %files contrib 
 %defattr(-,root,root)
-%doc contrib/README
+%doc contrib/README contrib/nagios-qh.rb
 %dir %{nagios_eventhandlerdir}
 %attr(0755,root,root) %{nagios_eventhandlerdir}/*
 

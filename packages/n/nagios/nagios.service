@@ -3,7 +3,7 @@ Description=Network Monitor Nagios
 After=syslog.target network.target
 
 [Service]
-# added automatically, for details please see
+# for details of the additional system hardening configuration please see
 # https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 ProtectSystem=full
 ProtectHome=true
@@ -12,15 +12,12 @@ ProtectKernelTunables=true
 ProtectKernelModules=true
 ProtectControlGroups=true
 RestrictRealtime=true
-# end of automatic additions 
-EnvironmentFile=/etc/sysconfig/nagios
-ExecStartPre=/usr/lib/nagios/nagios-exec-start-pre
+# end of system hardening
 ExecStartPre=/usr/sbin/nagios -v /etc/nagios/nagios.cfg
-ExecStart=/usr/sbin/nagios /etc/nagios/nagios.cfg
-ExecStartPost=/usr/lib/nagios/nagios-exec-start-post
+ExecStart=/usr/sbin/nagios -d /etc/nagios/nagios.cfg
+ExecStopPost=/usr/bin/rm -f /var/spool/nagios/nagios.cmd
 ExecReload=/usr/sbin/nagios -v /etc/nagios/nagios.cfg
-ExecReload=/bin/kill -HUP $MAINPID
-ExecReload=/usr/lib/nagios/nagios-exec-start-post
+ExecReload=kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
