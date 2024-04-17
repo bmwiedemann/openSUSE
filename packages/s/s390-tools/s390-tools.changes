@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Apr 16 16:55:05 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file for x86_64
+  * Recommends: s390-tools-genprotimg-data 
+
+-------------------------------------------------------------------
+Tue Apr 16 07:48:20 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file for s390-tools-genprotimg-data-*.noarch.rpm
+  * Removed the dependency on it on x86_64 platform
+  * Updated the Summary and Description of the *.noarch.rpm (bsc#1222675) 
+
+-------------------------------------------------------------------
+Fri Apr 12 15:28:09 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Updated the .spec file to enable Secure Execution in the Cloud (bsc#1222675)
+  * Creates a s390-tools-genprotimg-data-*.noarch.rpm package which includes
+    s390x bootload binaries for x86_64: 
+    - /lib/s390-tools/stage3.bin
+    - /usr/share/s390-tools/genprotimg/stage3a.bin
+    - /usr/share/s390-tools/genprotimg/stage3b_reloc.bin
+  * Excludes the above binaries from the (main) s390-tools-*.s390x.rpm
+  * Requires: s390-tools-genprotimg-data 
+
+-------------------------------------------------------------------
 Thu Apr  4 03:51:55 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - SE-tooling: New IBM host-key subject locality (s390-tools) (bsc#1222282)

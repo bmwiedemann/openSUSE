@@ -181,7 +181,7 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  systemd-devel
 BuildRequires:  tcpd-devel
 BuildRequires:  zlib-devel-static
-### x86_64
+### s390x
 %ifarch s390x
 BuildRequires:  kernel-zfcpdump
 BuildRequires:  qclib-devel-static
@@ -195,12 +195,15 @@ BuildRequires:  openssl
 # Don't build with pie to avoid problems with zipl
 #!BuildIgnore:  gcc-PIE
 Requires:       coreutils
+Requires:       procps
+Requires:       util-linux
+%ifarch s390x
 Requires:       gawk
 Requires:       perl-base
-Requires:       procps
 Requires:       rsync
+Requires:       s390-tools-genprotimg-data
 Requires:       tar
-Requires:       util-linux
+%endif
 Requires(post): %fillup_prereq
 Requires(post): permissions
 Requires(pre):  shadow
@@ -209,20 +212,27 @@ Provides:       s390utils:/sbin/dasdfmt
 Provides:       group(cpacfstats)
 Provides:       group(ts-shell)
 Provides:       group(zkeyadm)
+%ifarch x86_64
+Recommends:     s390-tools-genprotimg-data
+%endif
+###
 ExclusiveArch:  s390x x86_64
 
 %description
 This package contains the tools (s390x, x86_64) needed to use Linux on IBM z Systems
-and exploit many of the various capabilities of the hardware or z/VM.
-For example:
+and exploit many of the various capabilities of the hardware or z/VM. For example:
+
  - s390x
 dasdfmt  - low-level format tool for ECKD DASD
 fdasd	 - partitions ECKD DASDs with z/OS compatible disk layout
 zipl     - boot loader and dump DASD initializer
 zgetdump - tool to get linux system dumps from DASD
+
  - x86_64
 genprotimg - create a protected virtualization image
 pvattest   - create, perform, and verify protected virtualization attestation measurements
+
+Note: The package requires - s390-tools-genprotimg-data-*.noarch.rpm - installed
 
 %package -n osasnmpd
 Summary:        OSA-Express SNMP subagent
@@ -332,6 +342,19 @@ re-IPL volume. If the currently configured FCP re-IPL path becomes
 unavailable, the toolset checks for operational paths to the same
 volume. If available, it reconfigures the FCP re-IPL settings to use an
 operational path.
+
+%package genprotimg-data
+Summary:        Auxiliary data used by genprotimg
+License:        MIT
+Group:          System/Boot
+BuildArch:      noarch
+
+%description genprotimg-data
+The genprotimg allows preparing and analyzing boot images
+in the realm of IBM Secure Execution on a trusted environment,
+such as the laptop of an admin by limiting the build targets
+depending on the defined or detected host architecture.
+This package provides auxiliary data used by genprotimg.
 
 ### *** s390x ************************************************************************* ###
 %ifarch s390x
@@ -719,6 +742,10 @@ done
 %dir /etc/mdevctl.d/scripts.d/
 %dir /etc/mdevctl.d/scripts.d/callouts/
 ###
+%exclude /lib/s390-tools/stage3.bin
+%exclude %{_datadir}/s390-tools/genprotimg/stage3a.bin
+%exclude %{_datadir}/s390-tools/genprotimg/stage3b_reloc.bin
+###
 
 %files -n osasnmpd -f %{_builddir}/%{name}.osasnmp
 %{_libexecdir}/net-snmp/agents/osasnmpd
@@ -764,6 +791,12 @@ done
 %{_prefix}/lib/udev/chreipl-fcp-mpath-try-change-ipl-path
 %{_udevrulesdir}/70-chreipl-fcp-mpath.rules
 %{_mandir}/man7/chreipl-fcp-mpath.7%{?ext_man}
+
+### genprotimg
+%files genprotimg-data
+/lib/s390-tools/stage3.bin
+%{_datadir}/s390-tools/genprotimg/stage3a.bin
+%{_datadir}/s390-tools/genprotimg/stage3b_reloc.bin
 
 ### _endif
 ### *** !s390x ************************************************************************* ###
