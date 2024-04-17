@@ -13,9 +13,8 @@ description: |-
 sources:
   - perl-SDL.rpmlintrc
 patches:
-  https://patch-diff.githubusercontent.com/raw/PerlGameDev/SDL/pull/304.patch: -p1
-#  foo.patch: -p1
-#  bar.patch:
+  https://patch-diff.githubusercontent.com/raw/PerlGameDev/SDL/pull/304.patch: -p1 PATCH-FIX-UPSTREAM 304.patch -- based on PR 304
+  https://patch-diff.githubusercontent.com/raw/PerlGameDev/SDL/pull/308.patch: -p1 PATCH-FIX-UPSTREAM 308.patch -- based on PR 308
 preamble: |-
  BuildRequires:  Mesa-devel
  BuildRequires:  libSDL-devel

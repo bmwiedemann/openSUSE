@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 15 18:43:39 UTC 2024 - munix9@googlemail.com
+
+- Add 308.patch: Fix reference-counting in set_event_filter
+  (gh#PerlGameDev/SDL#308).
+
+-------------------------------------------------------------------
 Tue Aug  8 14:59:43 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 304.patch: Fix build with Perl 5.35 (gh#PerlGameDev/SDL#304).

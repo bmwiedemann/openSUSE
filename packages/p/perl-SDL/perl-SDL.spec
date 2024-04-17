@@ -1,7 +1,7 @@
 #
 # spec file for package perl-SDL
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,10 @@ URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/F/FR/FROGGS/%{cpan_name}-%{version}.tar.gz
 Source1:        perl-SDL.rpmlintrc
 Source2:        cpanspec.yml
+# PATCH-FIX-UPSTREAM 304.patch -- based on PR 304
 Patch0:         https://patch-diff.githubusercontent.com/raw/PerlGameDev/SDL/pull/304.patch
+# PATCH-FIX-UPSTREAM 308.patch -- based on PR 308
+Patch1:         https://patch-diff.githubusercontent.com/raw/PerlGameDev/SDL/pull/308.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Alien::SDL) >= 1.446
