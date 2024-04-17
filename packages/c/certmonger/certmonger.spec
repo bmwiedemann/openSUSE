@@ -1,7 +1,7 @@
 #
 # spec file for package certmonger
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 Stasiek Michalski <stasiek@michalski.cc>.
 #
 # All modifications and additions to the file contributed by third parties

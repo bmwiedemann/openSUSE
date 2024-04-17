@@ -7,6 +7,41 @@ Mon Mar 18 13:52:53 UTC 2024 - David Mulder <dmulder@suse.com>
 Wed Dec 13 08:48:02 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to 0.79.19
+  * getcert: add-scep-ca: fix help for --ca-cert and --ra-cert
+  * Don't restrict tokens to CKM_RSA_X_509
+  * Updated translations from Weblate
+- Update to 0.79.18
+  * Rename DBus service and conf files to match canonical name
+  * Add missing .TP tags in getcert-resubmit man page
+  * migrated to SPDX license
+  * Include owner and perms in getcert list output
+  * Don't require an NSS database in cm_certread_n_parse
+  * Add new certs to internal token, try harder to remove on renewal
+- Update to 0.79.17
+  * Respect LDFLAGS settings defined by user
+  * Switch to CA user when saving NSS certificates
+  * Translated using Weblate (German)
+  * Translated using Weblate (Georgian)
+- Update to 0.79.16
+  * Add a PEM validity checker and validate SCEP CA files
+  * Fix implicit declaration of function ‘PEM_read_bio_X509’
+  * Don't include "NEW" in certificate signing requests
+  * Verify that the AES-128 is used for encrypting the local CA
+  * Replace DER-encoded test file with a base64-encoded one
+  * Correct a bad date in the spec changelog
+  * Switch to https URLs for Sources, etc.
+  * Remove dependency on SHA-1
+  * tests: Test that the CA constraint DER encoding is correct
+  * Disable DSA in the RPM spec
+  * Manually build the srpm for the copr CI
+  * Require jansson >= 2.12
+  * Mark the current directory as a safe git directory
+  * Fix usage of PKCS#7 ASN1 attribute retrieval for SCEP keygen
+  * Translated using Weblate (Chinese (Simplified) (zh_CN))
+  * Translated using Weblate (Georgian)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Chinese (Simplified) (zh_CN))
+  * Translated using Weblate (Hungarian)
 - Removed 0001-Disable-DSA-in-the-RPM-spec.patch
 - Added 0001-Update-tests-to-be-compatible-with-OpenSSL-3.2.patch
 
