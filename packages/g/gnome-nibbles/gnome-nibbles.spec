@@ -17,7 +17,7 @@
 
 
 Name:           gnome-nibbles
-Version:        4.0.3
+Version:        4.0.4
 Release:        0
 Summary:        Worm Game for GNOME
 License:        GPL-3.0-or-later

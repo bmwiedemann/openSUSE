@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 17 06:36:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.0.4:
+  + Fix compile issue with vala >= 0.57.
+  + Fix / work around for issue #69 (segfault at game start).
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 15 07:10:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.0.3:
