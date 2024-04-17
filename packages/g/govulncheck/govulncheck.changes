@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Apr 16 20:29:47 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.1.0:
+  * internal/openvex: add vex types
+  * internal/sarif: compute relative paths for findings
+  * internal/sarif: remove unused field
+  * go.mod: update golang.org/x dependencies
+  * internal/sarif,internal/scan,internal/traces: clean up tests
+  * internal/sarif: add region part of the physical location
+  * internal/sarif: add code flows
+  * cmd/govulncheck: clean up test
+  * cmd/govulncheck: make test case config data
+  * cmd/govulncheck: add comment capability to fixups
+  * cmd/govulncheck: remove unnecessary fixups
+  * cmd/govulncheck: make fixup part of a test case
+  * cmd/govulncheck: extract stdlib into special test case
+  * cmd/govulncheck: restore parallelism for tests
+  * cmd/govulncheck: add nogomod test case
+  * cmd/govulncheck: restructure testdata tests
+  * cmd/govulncheck: add sarif test for binaries
+  * internal/sarif: add stacks
+  * internal/sarif: add result message
+  * internal/vulncheck: get correctly package for instantiated functions
+  * internal/sarif: add result stubs to run object
+  * internal/govulncheck: add scan mode to config
+  * internal/vulncheck: delete only synthetic nodes not related to generics
+  * internal/scan: add more info to validation errors
+  * internal/sarif: add rules
+  * internal/scan: fix name of the error variable
+  * internal/sarif: add handler
+  * internal/scan: add sarif flag
+  * internal/scan: add types for format, show, mode, and scan flags
+  * go.mod: update golang.org/x dependencies
+  * internal/vulncheck: use proper stdlib check when loading packages
+  * internal/vulncheck,internal/scan: sort messages where needed
+  * internal/scan: introduce format flag
+  * internal/vulncheck: manipulate packages from PackageGraph
+  * internal/vulncheck: do not have stdlibModule as global
+  * cmd/govulncheck: make sure filepath are cross-platform
+  * internal/govulncheck: fix up some comments
+  * internal/vulncheck: add relative paths for vendored paths
+  * internal/vulncheck: emit relative paths for call findings
+  * internal/vulncheck, internal/scan: improve stdlib reporting
+  * go.mod: update golang.org/x dependencies
+  * all: remove bash checks
+  * all: do go mod tidy test inside unit tests
+
+-------------------------------------------------------------------
 Wed Mar 06 20:44:38 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.0.4:

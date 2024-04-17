@@ -80,4 +80,41 @@
   * internal/govulncheck: briefly explain streaming JSON</comment>
     <requestid>1155753</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0369ca8862ff6a46fa1ef2fe72a81758</srcmd5>
+    <version>1.1.0</version>
+    <time>1713357942</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0:
+  * internal/openvex: add vex types
+  * internal/sarif: compute relative paths for findings
+  * internal/sarif: remove unused field
+  * go.mod: update golang.org/x dependencies
+  * internal/sarif,internal/scan,internal/traces: clean up tests
+  * internal/sarif: add region part of the physical location
+  * internal/sarif: add code flows
+  * cmd/govulncheck: clean up test
+  * cmd/govulncheck: make test case config data
+  * cmd/govulncheck: add comment capability to fixups
+  * cmd/govulncheck: remove unnecessary fixups
+  * cmd/govulncheck: make fixup part of a test case
+  * cmd/govulncheck: extract stdlib into special test case
+  * cmd/govulncheck: restore parallelism for tests
+  * cmd/govulncheck: add nogomod test case
+  * cmd/govulncheck: restructure testdata tests
+  * cmd/govulncheck: add sarif test for binaries
+  * internal/sarif: add stacks
+  * internal/sarif: add result message
+  * internal/vulncheck: get correctly package for instantiated functions
+  * internal/sarif: add result stubs to run object
+  * internal/govulncheck: add scan mode to config
+  * internal/vulncheck: delete only synthetic nodes not related to generics
+  * internal/scan: add more info to validation errors
+  * internal/sarif: add rules
+  * internal/scan: fix name of the error variable
+  * internal/sarif: add handler
+  * internal/scan: add sarif flag
+  * internal/scan: add types for format, show, mode, and scan flags (forwarded request 1168420 from jfkw)</comment>
+    <requestid>1168421</requestid>
+  </revision>
 </revisionlist>
