@@ -4820,4 +4820,24 @@ oddjob-gpupdate isn't blocked)</comment>
     <comment></comment>
     <requestid>1164328</requestid>
   </revision>
+  <revision rev="475" vrev="1">
+    <srcmd5>0835a7be9c276fe667d40afa3ee0a7ee</srcmd5>
+    <version>2.5.0+git20240416.97c8fad</version>
+    <time>1713357917</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.0+git20240416.97c8fad:
+  * pam-modules: whitelist pam_oslogin_admin.so (bsc#1222457)
+  * Revert &quot;pam-modules: whitelist pam_lastlog2 now moved to util-linux (bsc#1222329)&quot;
+  * Clarify what the real intent is of this check
+  * openSUSE: Add netdata user/group
+  * Add forgejo group and user
+  * remove comment in setup.cfg
+  * test: mocked package in test_xinetd.py
+- Update to version 2.5.0+git20240408.62c3097:
+  * dbus-services: whitelist dnf5daemon-server (bsc#1218327)
+- Update to version 2.5.0+git20240405.5171234:
+  * pam-modules: whitelist pam_lastlog2 now moved to util-linux (bsc#1222329)
+</comment>
+    <requestid>1168340</requestid>
+  </revision>
 </revisionlist>
