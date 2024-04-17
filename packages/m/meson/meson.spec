@@ -80,10 +80,10 @@ BuildRequires:  cups-devel
 BuildRequires:  distribution-release
 BuildRequires:  flex
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000
-BuildRequires:  gcc12-c++
-BuildRequires:  gcc12-fortran
-BuildRequires:  gcc12-obj-c++
-BuildRequires:  gcc12-objc
+BuildRequires:  gcc13-c++
+BuildRequires:  gcc13-fortran
+BuildRequires:  gcc13-obj-c++
+BuildRequires:  gcc13-objc
 %else
 BuildRequires:  gcc-c++ >= 12
 BuildRequires:  gcc-fortran >= 12
@@ -265,13 +265,13 @@ done < meson.egg-info/SOURCES.txt
 %check
 
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000
-# Use gcc-12 for clang-tidy
+# Use gcc-13 for clang-tidy
 install -d -m 0755 bin
-ln -s /usr/bin/cpp-12 bin/cpp
-ln -s /usr/bin/g++-12 bin/c++
-ln -s /usr/bin/g++-12 bin/g++
-ln -s /usr/bin/gcc-12 bin/cc
-ln -s /usr/bin/gcc-12 bin/gcc
+ln -s /usr/bin/cpp-13 bin/cpp
+ln -s /usr/bin/g++-13 bin/c++
+ln -s /usr/bin/g++-13 bin/g++
+ln -s /usr/bin/gcc-13 bin/cc
+ln -s /usr/bin/gcc-13 bin/gcc
 export PATH="${PWD}/bin:${PATH}"
 c++ --version
 
