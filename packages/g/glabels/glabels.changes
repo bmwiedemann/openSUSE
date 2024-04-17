@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 17 13:01:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own %{_datadir}/gtk-doc and %{_datadir}/gtk-doc/html: fix build.
+
+-------------------------------------------------------------------
 Mon Nov  6 16:09:59 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer

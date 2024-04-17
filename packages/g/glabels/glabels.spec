@@ -1,7 +1,7 @@
 #
 # spec file for package glabels
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -120,6 +120,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libglabels-3.0.pc
 %{_libdir}/pkgconfig/libglbarcode-3.0.pc
 %{_libdir}/*.so
+%dir %{_datadir}/gtk-doc
+%dir %{_datadir}/gtk-doc/html
 %{_datadir}/gtk-doc/html/libglabels-3.0/
 %{_datadir}/gtk-doc/html/libglbarcode-3.0/
 
