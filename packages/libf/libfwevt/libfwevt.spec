@@ -18,7 +18,7 @@
 
 %define lname	libfwevt1
 Name:           libfwevt
-Version:        20240101
+Version:        20240416
 Release:        0
 Summary:        Library for Windows XML Event Log (EVTX) data types
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -29,14 +29,14 @@ Source2:        https://github.com/libyal/libfwevt/releases/download/%version/li
 Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdata) >= 20230108
-BuildRequires:  pkgconfig(libcerror) >= 20220101
-BuildRequires:  pkgconfig(libcnotify) >= 20220108
-BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libfdatetime) >= 20220112
-BuildRequires:  pkgconfig(libfguid) >= 20220113
-BuildRequires:  pkgconfig(libfvalue) >= 20220120
-BuildRequires:  pkgconfig(libuna) >= 20230710
+BuildRequires:  pkgconfig(libcdata) >= 20240414
+BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libcnotify) >= 20240414
+BuildRequires:  pkgconfig(libcthreads) >= 20240413
+BuildRequires:  pkgconfig(libfdatetime) >= 2024015
+BuildRequires:  pkgconfig(libfguid) >= 20240415
+BuildRequires:  pkgconfig(libfvalue) >= 20240415
+BuildRequires:  pkgconfig(libuna) >= 2024014
 # Various notes: https://en.opensuse.org/libyal
 
 %description
@@ -77,8 +77,7 @@ grep '  local' config.log && exit 1
 %make_install
 find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*
