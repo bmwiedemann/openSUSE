@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 12 14:11:58 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.9.1:
+  * Use default decoration layout for screenshots.
+- Changes from version 1.9.0:
+  * Correct title case, reword subtitles, remove periods.
+  * Use proper arrow character.
+  * Fix drag and drop for folders.
+  * Appstream data improvements.
+  * Updated translations.
+- Empty %check section as recommended by rpmlint.
+
+-------------------------------------------------------------------
 Wed Nov 22 07:49:23 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.8.0:

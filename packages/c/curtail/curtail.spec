@@ -1,7 +1,7 @@
 #
 # spec file for package curtail
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           curtail
-Version:        1.8.0
+Version:        1.9.1
 Release:        0
 Summary:        A simple and useful image compressor
 License:        GPL-3.0-or-later
@@ -59,6 +59,8 @@ modes with an option to whether keep or not metadata of images.
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
+
+%check
 
 %files
 %license COPYING
