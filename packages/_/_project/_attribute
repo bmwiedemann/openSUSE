@@ -150,7 +150,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20240416</value>
+    <value>20240417</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -163,22 +163,22 @@ products:
   container:
   - butane-image:
     - x86_64
-  - ceph-grafana-image:
-    - x86_64
+#  - ceph-grafana-image:
+#    - x86_64
 #  - ceph-image:
 #    - x86_64
-  - csi-attacher-image:
-    - x86_64
-  - csi-livenessprobe-image:
-    - x86_64
-  - csi-node-driver-registrar-image:
-    - x86_64
-  - csi-provisioner-image:
-    - x86_64
-  - csi-resizer-image:
-    - x86_64
-  - csi-snapshotter-image:
-    - x86_64
+#  - csi-attacher-image:
+#    - x86_64
+#  - csi-livenessprobe-image:
+#    - x86_64
+#  - csi-node-driver-registrar-image:
+#    - x86_64
+#  - csi-provisioner-image:
+#    - x86_64
+#  - csi-resizer-image:
+#    - x86_64
+#  - csi-snapshotter-image:
+#    - x86_64
   - distribution-image:
     - x86_64
   - git-image:
@@ -249,8 +249,8 @@ products:
     - x86_64
   - kubic-rbac-manager-image:
     - x86_64
-  - kubic-velero-image:
-    - x86_64
+#  - kubic-velero-image:
+#    - x86_64
   - kubic-weave-kube-image:
     - x86_64
   - kubic-weave-npc-image:
@@ -271,8 +271,8 @@ products:
     - x86_64
   - opensuse-mariadb-client-image:
     - x86_64
-  - opensuse-mariadb-image:
-    - x86_64
+#  - opensuse-mariadb-image:
+#    - x86_64
   - opensuse-minidlna-image:
     - x86_64
   - opensuse-nfs-server-image:
@@ -287,8 +287,8 @@ products:
     - x86_64
   - opensuse-registry-image:
     - x86_64
-  - opensuse-rmt-server-image:
-    - x86_64
+#  - opensuse-rmt-server-image:
+#    - x86_64
   - opensuse-rstudio-desktop:
     - x86_64
   - opensuse-rstudio-server:
@@ -297,8 +297,8 @@ products:
     - x86_64
   - opensuse-squid-image:
     - x86_64
-  - opensuse-toolbox-image:
-    - x86_64
+#  - opensuse-toolbox-image:
+#    - x86_64
   - opensuse-tumbleweed-image:docker:
     - x86_64
   - opensuse-tumbleweed-dnf-image:docker-dnf:
@@ -309,20 +309,20 @@ products:
     - x86_64
   - php8-nginx-image:
     - x86_64
-  - prometheus-webhook-snmp-image:
-    - x86_64
+#  - prometheus-webhook-snmp-image:
+#    - x86_64
   - trivy-image:
     - x86_64
   - tumbleweed-busybox-image:
     - x86_64
   - aeon-self-installer:
     - x86_64
-  - busybox-image:
-    - x86_64
-  - micro-image:
-    - x86_64
-  - minimal-image:
-    - x86_64
+#  - busybox-image:
+#    - x86_64
+#  - micro-image:
+#    - x86_64
+#  - minimal-image:
+#    - x86_64
   containerfile:
   - 389-ds-container:
     - x86_64
@@ -482,8 +482,8 @@ products:
     - x86_64
   - kiwi-images-vagrant:virtualbox:
     - x86_64
-  - kiwi-images-wsl:
-    - x86_64
+#  - kiwi-images-wsl:
+#    - x86_64
   - kiwi-templates-Minimal:MS-HyperV:
     - x86_64
   - kiwi-templates-Minimal:Cloud:
