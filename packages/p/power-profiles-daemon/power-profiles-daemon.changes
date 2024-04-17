@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Apr 17 10:01:27 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop BuildRequires on python-pylint by disabling pylint option
+  during configure.
+- Split out bash-completion into own package:
+  powerprofilesctl-bash-completion.
+
+-------------------------------------------------------------------
+Tue Apr  9 10:48:35 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.21:
+  * power-profiles-daemon is now battery-state aware and some
+    drivers use a more power efficient state when using the
+    balanced profile on battery.
+  * Various fixes for the powerprofilesctl command line tool when
+    using the launch or version commands.
+  * Generate manual page for powerprofilesctl and shell
+    completions.
+  * Improved daemon command line interface for debugging, see
+    `--help-debug` for more information.
+  * More restrictive systemd service lockdown settings.
+  * Various code optimizations.
+- Drop python3-shebang.patch: no longer required since
+  %python3_fix_shebang is used anyway.
+- New BuildRequires: cmake, pkgconfig(bash-completion),
+  python3-argparse-manpage, python3-pylint, python3-shtab.
+- New Requires: bash-completion, python3-gobject.
+- Build completions for zsh shell and split off new package
+  powerprofilesctl-zsh-completion to be automatically installed
+  when both zsh and power-profiles-daemon are installed.
+
+-------------------------------------------------------------------
 Sat Mar 30 20:01:51 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Revert "Remove duplicate DBus service files

@@ -74,4 +74,19 @@
 </comment>
     <requestid>1166474</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>824fc842589f571b2e43bf3faf7a0316</srcmd5>
+    <version>0.21</version>
+    <time>1713357922</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop BuildRequires on python-pylint by disabling pylint option  during configure.
+- Split out bash-completion into own package: powerprofilesctl-bash-completion.
+- Update to version 0.21
+- Drop python3-shebang.patch: no longer required since %python3_fix_shebang is used anyway.
+- Build completions for zsh shell and split off new package
+  powerprofilesctl-zsh-completion to be automatically installed
+  when both zsh and power-profiles-daemon are installed.
+</comment>
+    <requestid>1168511</requestid>
+  </revision>
 </revisionlist>
