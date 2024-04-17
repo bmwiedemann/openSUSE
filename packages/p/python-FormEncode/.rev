@@ -173,4 +173,13 @@
   * The method field_is_empty was added to</comment>
     <requestid>1133654</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>1f2715fdecdda7095cb094978c0c7622</srcmd5>
+    <version>2.1.0</version>
+    <time>1713357902</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded dependency on six
+  * https://github.com/formencode/formencode/commit/98e9e97e</comment>
+    <requestid>1168357</requestid>
+  </revision>
 </revisionlist>
