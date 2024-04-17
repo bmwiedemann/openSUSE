@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Tue Apr 16 17:04:36 UTC 2024 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.39.1:
+  + Fixes:
+    - constraint: Fix xwl cursor locking for scaled monitors (#5587)
+    - hyprpm: minor fixes to hyprpm for shallow and versioned clones
+    - misc: fix autocompletions for meson (hyprctl/hyprpm)
+    - notifications: fix notifications on manually rotated monitor
+      (#5599)
+  + Other:
+    - CI: unshallow on checkout before sourcing the tarball
+    - cursor: add hyprcursor loggers
+    - build: Unbreak build on FreeBSD by adjusting dependencies
+      (#5595)
+    - hyprpm: checkout branch and rev separately
+    - hyprpm: err out on missing runtime deps
+    - input: send an empty relative event after constraint motion
+      events
+    - window: remove input ref on unmap
+
+- Dropped "bash-completion-install-dir.patch" as it has been included
+  upstream.
+
+-------------------------------------------------------------------
+Mon Apr 15 09:57:22 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.39.0:
+  + New features:
+    - hyprctl: Add shell completions (#5404)
+    - hyprpm: add shell completions (#5423)
+    - hyprpm: add support for minimum versions
+    - layouts: add missing include
+    - monitor: add workspace null check to visible flag
+    - renderer: Add dimaround layer rule (#4643)
+    - swipe: add events
+    - workspace: Add count group flag in windowCount workspace
+      selector prop (#5499)
+    - workspacerules: add back on-created-empty functionality (#5452)
+  + Fixes:
+    - CColor: fix getAsHex
+    - IME: fix IME popup mouse inputs (again) (#5417)
+    - IME: fix blurry ime on scaled
+    - IME: fix crash on restarting IME (#5428)
+    - IME: fix incorrect popup damage (#5383)
+    - IME: fix race condition on closing window (#5455)
+    - compositor: fix ghost fadingOut windows remaining after cleanup
+    - configmgr: fix header priority
+    - constraint: fix possible uaf on double destruction
+    - core: fix compile without pch
+    - core: fix some crash conditions around workspace ptrs in
+      CWindow
+    - core: fix visibility flags in moveWorkspaceToMonitor
+    - hooksystem: Fix miscalculation in comment (#5442)
+    - hooksystem: manually map trampoline addresses
+    - hyprctl: fix fish completions
+    - hyprctl: fix grammar mistakes in completions
+    - hyprctl: fix zsh completions
+    - hyprpm: fix wlroots path (#5567)
+    - input: fix focus on maximized bg surfaces
+    - input: fixup background layer checking on maximized
+    - keybinds: fix spammy warning
+    - macros: fix no pch warning
+    - master: fix center resizing (#5394)
+    - master: fix crash (#5472)
+    - master: fix full height when all windows master (#5549)
+    - master: fix swapped workspaces (#5397)
+    - master: fix workspace orientation not being restored after
+      workspace rule no longer applies (#5463)
+    - opengl: fix modif in blur
+    - renderer: some fixes for renderModif
+    - window: fix invalid last workspace id
+    - workspace: fix crash on destruction of compositor (#5495)
+    - workspace: fix special unnamed workspace rules (#5390)
+    - workspacerules: fix workspace rule loops (#5433)
+  + Other:
+    - Workspace/core: Refactor workspace storage (#5380)
+    - blur: block modif only on no new optimize
+    - compositor: move wl_display_destroy_clients (#5498)
+    - compositor: remove windows from fadingOut properly
+    - config: Don't override fullscreen opacity if only two opacities
+      are provided (#5512)
+    - config: verify string length in wrv2 before calling back
+    - core: Event loop rework (#5466)
+    - core: assert attempted UAFs in windowExists
+    - core: simplify sanityCheckWorkspaces
+    - cursor: Fallback to xcursor if failed to render hyprcursor
+      (#5534)
+    - damageSurface: don't correct smallVec twice
+    - deps: move from wlroots to wlroots-hyprland
+    - eventloop: move timers to an event loop fd
+    - hooksystem: attempt allocating pages in linear order
+    - hyprctl: improve help pages (#5385)
+    - hyprctl: print monitor disabled status (#5525)
+    - hyprerror: align 32-bit types after 4c79668 (#5375)
+    - hyprpm: Improve Hyprpm Update Performance (#5530)
+    - hyprpm: Use proper path to update repo when processing user
+      provided revision (#5414)
+    - hyprpm: ignore version checks for shallow clones
+    - hyprpm: install shell completions
+    - hyprpm: print more info on build failures
+    - inhibitor: always destroy on window unmap
+    - input: Dont set active monitor when simulating mouse movement
+      (#5465)
+    - input: Option for handling off-window axis events (#4177)
+    - input: allow focus to bottom layers on maximized in reserved
+    - input: don't remove pinned focus on workspace change (#5486)
+    - layers: separate anim configs for open/close (#5421)
+    - master: guard window in moveWindowTo
+    - monitor: check for invalid workspaces in onConnect
+    - monitor: unset visible flag from ws on disconnect
+    - opengl: log framebuffer errors
+    - popups: more safety in damage checking
+    - props: Allow setting per-window fullscreen opacity (#5470)
+    - props: Parse border color props as gradient (#5513)
+    - renderer: avoid double-rendering ls-es on fadingOut
+    - renderer: block screen shader on screencopy
+    - renderer: render back layer for workspace-less passes
+    - scripts: switch to branch --show-current for branch in
+      generateVersion
+    - subsurface: init existing subsurfaces on children creations
+    - swipe: nuke numbered
+    - window: always unref workspace on unmap
+    - workspaces: add visible flag
+    - workspace: remove lastFocusedWindow on unmap
+    - workspace: remove monitor and visible flags on inert
+    - workspace: update windows when selector match could change
+      (#5533)
+
+- Added "bash-completion-install-dir.patch"
+
+-------------------------------------------------------------------
 Tue Apr  9 12:43:09 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.38.1:

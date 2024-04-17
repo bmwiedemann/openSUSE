@@ -20,7 +20,7 @@
 %bcond_without devel
 
 Name:           hyprland
-Version:        0.38.1
+Version:        0.39.1
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
@@ -39,8 +39,8 @@ BuildRequires:  pkgconfig(gbm) >= 17.1.0
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(hwdata)
-BuildRequires:  pkgconfig(hyprcursor)
-BuildRequires:  pkgconfig(hyprlang)
+BuildRequires:  pkgconfig(hyprcursor) >= 0.1.7
+BuildRequires:  pkgconfig(hyprlang) >= 0.3.2
 BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.118
 BuildRequires:  pkgconfig(libinput) >= 1.14.0
@@ -99,12 +99,45 @@ This package contains the neccessary files that are required to
 build plugins for hyprland.
 %endif
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+The official bash completion script for %{name}.
+
+%package fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Requires:       %{name}
+Requires:       fish
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description fish-completion
+The official fish completion script for %{name}.
+
+%package zsh-completion
+Summary:        ZSH Completion for %{name}
+Group:          System/Shells
+Requires:       %{name}
+Requires:       zsh
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+The official zsh completion script for %{name}.
+
 %prep
 %autosetup -p1
 
 %build
 %meson \
-	 -Dwlroots:xcb-errors=%{?with_xcb_errors:enabled}%{!?with_xcb_errors:disabled}
+	 -Dwlroots-hyprland:xcb-errors=%{?with_xcb_errors:enabled}%{!?with_xcb_errors:disabled}
 %meson_build
 
 %install
@@ -137,5 +170,22 @@ rm -rf %{buildroot}/%{_includedir}/wlr/
 %{_includedir}/%{name}
 %{_datadir}/pkgconfig/%{name}.pc
 %endif
+
+%files bash-completion
+%dir %{_datadir}/bash-completion/
+%{_datadir}/bash-completion/hyprctl
+%{_datadir}/bash-completion/hyprpm
+
+%files fish-completion
+%dir %{_datadir}/fish/
+%dir %{_datadir}/fish/vendor_completions.d/
+%{_datadir}/fish/vendor_completions.d/hyprctl.fish
+%{_datadir}/fish/vendor_completions.d/hyprpm.fish
+
+%files zsh-completion
+%dir %{_datadir}/zsh/
+%dir %{_datadir}/zsh/site-functions/
+%{_datadir}/zsh/site-functions/_hyprctl
+%{_datadir}/zsh/site-functions/_hyprpm
 
 %changelog
