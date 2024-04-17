@@ -1,7 +1,7 @@
 #
 # spec file for package python-configshell-fb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-configshell-fb
 Version:        1.1.30
@@ -26,15 +25,15 @@ License:        Apache-2.0
 Group:          Development/Libraries/Python
 URL:            https://github.com/open-iscsi/configshell-fb
 Source:         %{name}-%{version}.tar.xz
+#PATCH-FIX-UPSTREAM https://github.com/open-iscsi/configshell-fb/pull/74 six is unneeded
+Patch:          no-six.patch
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       %{_bindir}/env
 Requires:       python-pyparsing
-Requires:       python-six
 Requires:       python-urwid
 Provides:       python-configshell = %{version}-%{release}
 Obsoletes:      python-configshell < %{version}
@@ -66,7 +65,7 @@ rtslib, and configshell, or stick with all non-fb versions, since they are
 no longer strictly compatible.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 %python_build
@@ -76,7 +75,9 @@ no longer strictly compatible.
 %fdupes %{buildroot}
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/configshell
+%{python_sitelib}/configshell_fb
+%{python_sitelib}/configshell_fb-%{version}*info
 %doc README.md
 
 %changelog

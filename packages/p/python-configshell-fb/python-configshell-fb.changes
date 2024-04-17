@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 16 12:25:42 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add no-six.patch to get rid of unneeded six dependency
+
+-------------------------------------------------------------------
 Sun Jul  2 15:23:07 UTC 2023 - Lee Duncan <lduncan@suse.com>
 
 - Upgrade to latest upstream version v1.1.30:
