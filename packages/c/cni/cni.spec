@@ -22,21 +22,20 @@
 %define         cni_bin_dir  %{_libexecdir}/cni
 %define         cni_doc_dir  %{_docdir}/cni
 Name:           cni
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        Container Network Interface - networking for Linux containers
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/containernetworking/cni
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        99-loopback.conf
 Source2:        vendor.tar.gz
-# PATCH-FIX-UPSTREAM bsc#1206711
-Patch0:         0001-fix-upstream-CVE-2021-38561.patch
 BuildRequires:  golang-packaging
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  golang(API) >= 1.21
+BuildRequires:  zstd
 Requires(post): %fillup_prereq
 Recommends:     cni-plugins
 %{?systemd_requires}
@@ -51,10 +50,7 @@ the container is deleted. Because of this focus, CNI has a wide
 range of support and the specification is simple to implement.
 
 %prep
-%autosetup -a2 -N
-pushd vendor/golang.org/x/text
-%autopatch -p1
-popd
+%autosetup -a2
 
 %build
 export GOFLAGS=-mod=vendor
@@ -89,7 +85,7 @@ install -m 755 -d "%{buildroot}%{cni_doc_dir}"
 %{fillup_only -n %{name}}
 
 %files
-%doc CONTRIBUTING.md README.md DCO
+%doc README.md
 %license LICENSE
 %dir %{cni_etc_dir}
 %dir %{cni_etc_dir}/net.d

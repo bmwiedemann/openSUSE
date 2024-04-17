@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 16 13:27:50 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Remove 0001-fix-upstream-CVE-2021-38561.patch, patch has been merged into
+  golang.org/x/text version 0.3.7, vendored bundle now contains 0.14.0
+- Stop shipping development files DCO & CONTRIBUTING.md
+- New upstream release 1.2.0 with spec 1.1.0:
+ * GC verb
+ * STATUS verb
+ * Version negotiation
+
+-------------------------------------------------------------------
 Mon Oct  9 09:40:04 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - Bump BuildRequired golang version to >= 1.21, fixes bsc#1216006
