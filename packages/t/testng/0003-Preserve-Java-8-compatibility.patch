@@ -1,0 +1,445 @@
+From 9b3e583a38c5c7cdea761e687ee07dfdca6b2e40 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Tue, 16 Apr 2024 09:16:42 +0200
+Subject: [PATCH 3/4] Preserve Java 8 compatibility
+
+---
+ .../main/java/org/testng/util/Strings.java    |  2 +-
+ .../org/testng/internal/PackageUtils.java     | 13 ++++--
+ .../main/java/org/testng/internal/Utils.java  |  4 +-
+ .../protocols/BundledResourceProcessor.java   | 12 ++++--
+ .../internal/protocols/FileProcessor.java     | 11 +++--
+ .../src/main/java/org/testng/SuiteRunner.java |  3 +-
+ .../src/main/java/org/testng/TestRunner.java  | 18 ++++----
+ .../testng/internal/DataProviderLoader.java   | 13 +++++-
+ .../org/testng/internal/NoOpTestClass.java    | 41 ++++++++++---------
+ .../main/java/org/testng/internal/Yaml.java   |  2 +-
+ .../org/testng/reporters/VerboseReporter.java | 10 ++++-
+ .../org/testng/xml/TestNGContentHandler.java  | 11 +++--
+ 12 files changed, 92 insertions(+), 48 deletions(-)
+
+diff --git a/testng-collections/src/main/java/org/testng/util/Strings.java b/testng-collections/src/main/java/org/testng/util/Strings.java
+index 452f56f2..5ec081bf 100644
+--- a/testng-collections/src/main/java/org/testng/util/Strings.java
++++ b/testng-collections/src/main/java/org/testng/util/Strings.java
+@@ -33,7 +33,7 @@ public final class Strings {
+     if (list.isEmpty()) {
+       return true;
+     }
+-    return list.stream().allMatch(t -> t == null || t.isBlank());
++    return list.stream().allMatch(t -> t == null || t.trim().isEmpty());
+   }
+ 
+   private static final Map<String, String> ESCAPE_HTML_MAP = Maps.newLinkedHashMap();
+diff --git a/testng-core-api/src/main/java/org/testng/internal/PackageUtils.java b/testng-core-api/src/main/java/org/testng/internal/PackageUtils.java
+index 6669fb6a..e45ad73c 100644
+--- a/testng-core-api/src/main/java/org/testng/internal/PackageUtils.java
++++ b/testng-core-api/src/main/java/org/testng/internal/PackageUtils.java
+@@ -1,12 +1,12 @@
+ package org.testng.internal;
+ 
+-import static java.nio.charset.StandardCharsets.UTF_8;
+-
+ import java.io.File;
+ import java.io.IOException;
++import java.io.UnsupportedEncodingException;
+ import java.net.URL;
+ import java.net.URLDecoder;
+ import java.util.Collection;
++import java.util.Collections;
+ import java.util.Iterator;
+ import java.util.List;
+ import java.util.Objects;
+@@ -114,7 +114,7 @@ public class PackageUtils {
+   private static Function<ClassLoader, Stream<URL>> asURLs(String packageDir) {
+     return cl -> {
+       try {
+-        Iterator<URL> iterator = cl.getResources(packageDir).asIterator();
++        Iterator<URL> iterator = Collections.list(cl.getResources(packageDir)).iterator();
+         return StreamSupport.stream(
+             Spliterators.spliteratorUnknownSize(iterator, Spliterator.ORDERED), false);
+       } catch (IOException e) {
+@@ -129,7 +129,12 @@ public class PackageUtils {
+       return true;
+     }
+ 
+-    String fileName = URLDecoder.decode(url.getFile(), UTF_8);
++    String fileName;
++    try {
++      fileName = URLDecoder.decode(url.getFile(), "UTF-8");
++    } catch (UnsupportedEncodingException e) {
++      fileName = new String();
++    }
+ 
+     for (String classpathFrag : classpathFragments) {
+       String path = classpathFrag + lastFragment;
+diff --git a/testng-core-api/src/main/java/org/testng/internal/Utils.java b/testng-core-api/src/main/java/org/testng/internal/Utils.java
+index 174c8ef3..30cf8b30 100644
+--- a/testng-core-api/src/main/java/org/testng/internal/Utils.java
++++ b/testng-core-api/src/main/java/org/testng/internal/Utils.java
+@@ -275,7 +275,7 @@ public final class Utils {
+       LOG.error("Couldn't find resource on the class path: " + resourceName);
+       return;
+     }
+-    try (inputStream) {
++    try {
+       try (FileOutputStream outputStream = new FileOutputStream(file)) {
+         int nread;
+         byte[] buffer = new byte[4096];
+@@ -283,6 +283,8 @@ public final class Utils {
+           outputStream.write(buffer, 0, nread);
+         }
+       }
++    } finally {
++      inputStream.close();
+     }
+   }
+ 
+diff --git a/testng-core-api/src/main/java/org/testng/internal/protocols/BundledResourceProcessor.java b/testng-core-api/src/main/java/org/testng/internal/protocols/BundledResourceProcessor.java
+index 79d0626b..b48f7523 100644
+--- a/testng-core-api/src/main/java/org/testng/internal/protocols/BundledResourceProcessor.java
++++ b/testng-core-api/src/main/java/org/testng/internal/protocols/BundledResourceProcessor.java
+@@ -1,7 +1,6 @@
+ package org.testng.internal.protocols;
+ 
+-import static java.nio.charset.StandardCharsets.UTF_8;
+-
++import java.io.UnsupportedEncodingException;
+ import java.lang.reflect.Method;
+ import java.net.URL;
+ import java.net.URLConnection;
+@@ -33,8 +32,13 @@ class BundledResourceProcessor extends Processor {
+       Method thisMethod = url.openConnection().getClass().getDeclaredMethod("getFileURL", params);
+       Object[] paramsObj = {};
+       URL fileUrl = (URL) thisMethod.invoke(connection, paramsObj);
+-      return findClassesInDirPackage(
+-          packageOnly, included, excluded, URLDecoder.decode(fileUrl.getFile(), UTF_8), recursive);
++      String decoded;
++      try {
++        decoded = URLDecoder.decode(fileUrl.getFile(), "UTF-8");
++      } catch (UnsupportedEncodingException e) {
++        decoded = new String();
++      }
++      return findClassesInDirPackage(packageOnly, included, excluded, decoded, recursive);
+     } catch (Exception ex) {
+       // ignore - probably not an Eclipse OSGi bundle
+     }
+diff --git a/testng-core-api/src/main/java/org/testng/internal/protocols/FileProcessor.java b/testng-core-api/src/main/java/org/testng/internal/protocols/FileProcessor.java
+index 12b93a0e..e85fdc88 100644
+--- a/testng-core-api/src/main/java/org/testng/internal/protocols/FileProcessor.java
++++ b/testng-core-api/src/main/java/org/testng/internal/protocols/FileProcessor.java
+@@ -1,7 +1,6 @@
+ package org.testng.internal.protocols;
+ 
+-import static java.nio.charset.StandardCharsets.UTF_8;
+-
++import java.io.UnsupportedEncodingException;
+ import java.net.URL;
+ import java.net.URLDecoder;
+ import java.util.List;
+@@ -10,11 +9,17 @@ class FileProcessor extends Processor {
+ 
+   @Override
+   public List<String> process(Input input, URL url) {
++    String decoded;
++    try {
++      decoded = URLDecoder.decode(url.getFile(), "UTF-8");
++    } catch (UnsupportedEncodingException e) {
++      decoded = new String();
++    }
+     return findClassesInDirPackage(
+         input.getPackageWithoutWildCards(),
+         input.getIncluded(),
+         input.getExcluded(),
+-        URLDecoder.decode(url.getFile(), UTF_8),
++        decoded,
+         input.isRecursive());
+   }
+ }
+diff --git a/testng-core/src/main/java/org/testng/SuiteRunner.java b/testng-core/src/main/java/org/testng/SuiteRunner.java
+index 452e5711..dfa87c80 100644
+--- a/testng-core/src/main/java/org/testng/SuiteRunner.java
++++ b/testng-core/src/main/java/org/testng/SuiteRunner.java
+@@ -818,8 +818,7 @@ public class SuiteRunner implements ISuite, ISuiteRunnerListener {
+ 
+     TestListenersContainer(List<ITestListener> listeners, ITestListener exitCodeListener) {
+       this.listeners.addAll(listeners);
+-      this.exitCodeListener =
+-          Objects.requireNonNullElseGet(exitCodeListener, () -> new ITestListener() {});
++      this.exitCodeListener = exitCodeListener != null ? exitCodeListener : new ITestListener() {};
+     }
+   }
+ }
+diff --git a/testng-core/src/main/java/org/testng/TestRunner.java b/testng-core/src/main/java/org/testng/TestRunner.java
+index 8f8085c0..b051d8ac 100644
+--- a/testng-core/src/main/java/org/testng/TestRunner.java
++++ b/testng-core/src/main/java/org/testng/TestRunner.java
+@@ -7,6 +7,7 @@ import java.lang.reflect.Method;
+ import java.util.ArrayList;
+ import java.util.Arrays;
+ import java.util.Collection;
++import java.util.Collections;
+ import java.util.Comparator;
+ import java.util.Date;
+ import java.util.List;
+@@ -557,11 +558,13 @@ public class TestRunner
+   }
+ 
+   private static ITestNGMethod[] beforeClassConfigMethods(ITestClass tc) {
+-    return ITestClassConfigInfo.allBeforeClassMethods(tc).toArray(ITestNGMethod[]::new);
++    List<ITestNGMethod> methodsList = ITestClassConfigInfo.allBeforeClassMethods(tc);
++    return methodsList.toArray(new ITestNGMethod[methodsList.size()]);
+   }
+ 
+   private static ITestNGMethod[] afterClassConfigMethods(ITestClass tc) {
+-    return ITestClassConfigInfo.allAfterClassMethods(tc).toArray(ITestNGMethod[]::new);
++    List<ITestNGMethod> methodsList = ITestClassConfigInfo.allAfterClassMethods(tc);
++    return methodsList.toArray(new ITestNGMethod[methodsList.size()]);
+   }
+ 
+   private ITestNGMethod[] computeAndGetAllTestMethods() {
+@@ -1045,11 +1048,12 @@ public class TestRunner
+ 
+   @Override
+   public List<IConfigurationListener> getConfigurationListeners() {
+-    return m_configurationListeners.stream()
+-        .map(ClassBasedWrapper::wrap)
+-        .distinct()
+-        .map(ClassBasedWrapper::unWrap)
+-        .collect(Collectors.toUnmodifiableList());
++    return Collections.unmodifiableList(
++        m_configurationListeners.stream()
++            .map(ClassBasedWrapper::wrap)
++            .distinct()
++            .map(ClassBasedWrapper::unWrap)
++            .collect(Collectors.toList()));
+   }
+ 
+   private void logFailedTest(ITestResult tr, boolean withinSuccessPercentage) {
+diff --git a/testng-core/src/main/java/org/testng/internal/DataProviderLoader.java b/testng-core/src/main/java/org/testng/internal/DataProviderLoader.java
+index 8f27cf32..85aeb936 100644
+--- a/testng-core/src/main/java/org/testng/internal/DataProviderLoader.java
++++ b/testng-core/src/main/java/org/testng/internal/DataProviderLoader.java
+@@ -2,6 +2,8 @@ package org.testng.internal;
+ 
+ import java.io.IOException;
+ import java.io.InputStream;
++import java.util.ArrayList;
++import java.util.List;
+ import org.testng.log4testng.Logger;
+ 
+ public class DataProviderLoader extends ClassLoader {
+@@ -29,7 +31,16 @@ public class DataProviderLoader extends ClassLoader {
+ 
+     byte[] classBytes;
+     try {
+-      classBytes = in.readAllBytes();
++      List<Byte> byteList = new ArrayList<>();
++      int byteRead;
++      while ((byteRead = in.read()) != -1) {
++        byteList.add((byte) byteRead);
++      }
++      classBytes = new byte[byteList.size()];
++      int i = 0;
++      for (Byte b : byteList) {
++        classBytes[i++] = b;
++      }
+     } catch (IOException e) {
+       throw new ClassNotFoundException("ERROR reading class file" + e);
+     }
+diff --git a/testng-core/src/main/java/org/testng/internal/NoOpTestClass.java b/testng-core/src/main/java/org/testng/internal/NoOpTestClass.java
+index bb3feb3b..dc406f92 100644
+--- a/testng-core/src/main/java/org/testng/internal/NoOpTestClass.java
++++ b/testng-core/src/main/java/org/testng/internal/NoOpTestClass.java
+@@ -1,6 +1,7 @@
+ package org.testng.internal;
+ 
+ import java.util.ArrayList;
++import java.util.Arrays;
+ import java.util.List;
+ import org.testng.ITestClass;
+ import org.testng.ITestNGMethod;
+@@ -39,16 +40,16 @@ public class NoOpTestClass implements ITestClass, IObject {
+ 
+   public NoOpTestClass(ITestClass testClass) {
+     m_testClass = testClass.getRealClass();
+-    m_beforeSuiteMethods = List.of(testClass.getBeforeSuiteMethods());
+-    m_beforeTestConfMethods = List.of(testClass.getBeforeTestConfigurationMethods());
++    m_beforeSuiteMethods = Arrays.asList(testClass.getBeforeSuiteMethods());
++    m_beforeTestConfMethods = Arrays.asList(testClass.getBeforeTestConfigurationMethods());
+     m_beforeGroupsMethods = testClass.getBeforeGroupsMethods();
+-    m_beforeClassMethods = List.of(testClass.getBeforeClassMethods());
+-    m_beforeTestMethods = List.of(testClass.getBeforeTestMethods());
+-    m_afterSuiteMethods = List.of(testClass.getAfterSuiteMethods());
+-    m_afterTestConfMethods = List.of(testClass.getAfterTestConfigurationMethods());
+-    m_afterGroupsMethods = List.of(testClass.getAfterGroupsMethods());
+-    m_afterClassMethods = List.of(testClass.getAfterClassMethods());
+-    m_afterTestMethods = List.of(testClass.getAfterTestMethods());
++    m_beforeClassMethods = Arrays.asList(testClass.getBeforeClassMethods());
++    m_beforeTestMethods = Arrays.asList(testClass.getBeforeTestMethods());
++    m_afterSuiteMethods = Arrays.asList(testClass.getAfterSuiteMethods());
++    m_afterTestConfMethods = Arrays.asList(testClass.getAfterTestConfigurationMethods());
++    m_afterGroupsMethods = Arrays.asList(testClass.getAfterGroupsMethods());
++    m_afterClassMethods = Arrays.asList(testClass.getAfterClassMethods());
++    m_afterTestMethods = Arrays.asList(testClass.getAfterTestMethods());
+     m_instances = IObject.objects(testClass, true);
+     m_instanceHashes = IObject.instanceHashCodes(testClass);
+     m_xmlTest = testClass.getXmlTest();
+@@ -56,35 +57,35 @@ public class NoOpTestClass implements ITestClass, IObject {
+   }
+ 
+   public void setBeforeTestMethods(ITestNGMethod[] beforeTestMethods) {
+-    m_beforeTestMethods = List.of(beforeTestMethods);
++    m_beforeTestMethods = Arrays.asList(beforeTestMethods);
+   }
+ 
+   public void setAfterTestMethod(ITestNGMethod[] afterTestMethods) {
+-    m_afterTestMethods = List.of(afterTestMethods);
++    m_afterTestMethods = Arrays.asList(afterTestMethods);
+   }
+ 
+   /** @return Returns the afterClassMethods. */
+   @Override
+   public ITestNGMethod[] getAfterClassMethods() {
+-    return m_afterClassMethods.toArray(ITestNGMethod[]::new);
++    return m_afterClassMethods.toArray(new ITestNGMethod[m_afterClassMethods.size()]);
+   }
+ 
+   /** @return Returns the afterTestMethods. */
+   @Override
+   public ITestNGMethod[] getAfterTestMethods() {
+-    return m_afterTestMethods.toArray(ITestNGMethod[]::new);
++    return m_afterTestMethods.toArray(new ITestNGMethod[m_afterTestMethods.size()]);
+   }
+ 
+   /** @return Returns the beforeClassMethods. */
+   @Override
+   public ITestNGMethod[] getBeforeClassMethods() {
+-    return m_beforeClassMethods.toArray(ITestNGMethod[]::new);
++    return m_beforeClassMethods.toArray(new ITestNGMethod[m_beforeClassMethods.size()]);
+   }
+ 
+   /** @return Returns the beforeTestMethods. */
+   @Override
+   public ITestNGMethod[] getBeforeTestMethods() {
+-    return m_beforeTestMethods.toArray(ITestNGMethod[]::new);
++    return m_beforeTestMethods.toArray(new ITestNGMethod[m_beforeTestMethods.size()]);
+   }
+ 
+   /** @return Returns the testMethods. */
+@@ -95,22 +96,22 @@ public class NoOpTestClass implements ITestClass, IObject {
+ 
+   @Override
+   public ITestNGMethod[] getBeforeSuiteMethods() {
+-    return m_beforeSuiteMethods.toArray(ITestNGMethod[]::new);
++    return m_beforeSuiteMethods.toArray(new ITestNGMethod[m_beforeSuiteMethods.size()]);
+   }
+ 
+   @Override
+   public ITestNGMethod[] getAfterSuiteMethods() {
+-    return m_afterSuiteMethods.toArray(ITestNGMethod[]::new);
++    return m_afterSuiteMethods.toArray(new ITestNGMethod[m_afterSuiteMethods.size()]);
+   }
+ 
+   @Override
+   public ITestNGMethod[] getBeforeTestConfigurationMethods() {
+-    return m_beforeTestConfMethods.toArray(ITestNGMethod[]::new);
++    return m_beforeTestConfMethods.toArray(new ITestNGMethod[m_beforeTestConfMethods.size()]);
+   }
+ 
+   @Override
+   public ITestNGMethod[] getAfterTestConfigurationMethods() {
+-    return m_afterTestConfMethods.toArray(ITestNGMethod[]::new);
++    return m_afterTestConfMethods.toArray(new ITestNGMethod[m_afterTestConfMethods.size()]);
+   }
+ 
+   /** @return all @Configuration methods that should be invoked before certain groups */
+@@ -122,7 +123,7 @@ public class NoOpTestClass implements ITestClass, IObject {
+   /** @return all @Configuration methods that should be invoked after certain groups */
+   @Override
+   public ITestNGMethod[] getAfterGroupsMethods() {
+-    return m_afterGroupsMethods.toArray(ITestNGMethod[]::new);
++    return m_afterGroupsMethods.toArray(new ITestNGMethod[m_afterGroupsMethods.size()]);
+   }
+ 
+   /** @see org.testng.internal.IObject#getInstanceHashCodes() */
+diff --git a/testng-core/src/main/java/org/testng/internal/Yaml.java b/testng-core/src/main/java/org/testng/internal/Yaml.java
+index da3d2141..eb0e37f1 100644
+--- a/testng-core/src/main/java/org/testng/internal/Yaml.java
++++ b/testng-core/src/main/java/org/testng/internal/Yaml.java
+@@ -140,7 +140,7 @@ public final class Yaml {
+ 
+   /** Convert a XmlTest into YAML */
+   private static void toYaml(StringBuilder result, XmlTest t) {
+-    String sp2 = " ".repeat(2);
++    String sp2 = new String("  ");
+     result.append("  ").append("- name: ").append(t.getName()).append("\n");
+ 
+     maybeAdd(result, sp2, "verbose", t.getVerbose(), XmlSuite.DEFAULT_VERBOSE);
+diff --git a/testng-core/src/main/java/org/testng/reporters/VerboseReporter.java b/testng-core/src/main/java/org/testng/reporters/VerboseReporter.java
+index 450c5525..747802fc 100644
+--- a/testng-core/src/main/java/org/testng/reporters/VerboseReporter.java
++++ b/testng-core/src/main/java/org/testng/reporters/VerboseReporter.java
+@@ -206,7 +206,7 @@ public class VerboseReporter implements IConfigurationListener, ITestListener {
+       sb.append(" ms");
+       if (!Utils.isStringEmpty(tm.getDescription())) {
+         sb.append("\n");
+-        sb.append(" ".repeat(Math.max(0, identLevel)));
++        sb.append(repeatString(" ", Math.max(0, identLevel)));
+         sb.append(tm.getDescription());
+       }
+       if (tm.getInvocationCount() > 1) {
+@@ -271,6 +271,14 @@ public class VerboseReporter implements IConfigurationListener, ITestListener {
+     return buf.toString();
+   }
+ 
++  private static String repeatString(String str, int count) {
++    StringBuilder sb = new StringBuilder();
++    for (int i = 0; i < count; i++) {
++      sb.append(str);
++    }
++    return sb.toString();
++  }
++
+   @Override
+   public String toString() {
+     return "VerboseReporter{" + "suiteName=" + suiteName + '}';
+diff --git a/testng-core/src/main/java/org/testng/xml/TestNGContentHandler.java b/testng-core/src/main/java/org/testng/xml/TestNGContentHandler.java
+index 74c1e10a..463d8467 100644
+--- a/testng-core/src/main/java/org/testng/xml/TestNGContentHandler.java
++++ b/testng-core/src/main/java/org/testng/xml/TestNGContentHandler.java
+@@ -5,6 +5,7 @@ import static org.testng.internal.Utils.isStringBlank;
+ import java.io.File;
+ import java.io.IOException;
+ import java.io.InputStream;
++import java.io.UnsupportedEncodingException;
+ import java.net.HttpURLConnection;
+ import java.net.MalformedURLException;
+ import java.net.URI;
+@@ -12,7 +13,6 @@ import java.net.URISyntaxException;
+ import java.net.URL;
+ import java.net.URLConnection;
+ import java.net.URLDecoder;
+-import java.nio.charset.StandardCharsets;
+ import java.util.ArrayList;
+ import java.util.List;
+ import java.util.Map;
+@@ -158,8 +158,13 @@ public class TestNGContentHandler extends DefaultHandler {
+ 
+   private static boolean isMalformedFileSystemBasedSystemId(String systemId) {
+     try {
+-
+-      URL url = new URL(URLDecoder.decode(systemId, StandardCharsets.UTF_8).trim());
++      String decoded;
++      try {
++        decoded = URLDecoder.decode(systemId, "UTF-8");
++      } catch (UnsupportedEncodingException e) {
++        decoded = new String();
++      }
++      URL url = new URL(decoded.trim());
+       if (url.getProtocol().equals("file")) {
+         File file = new File(url.getFile());
+         boolean isDirectory = file.isDirectory();
+-- 
+2.44.0
+

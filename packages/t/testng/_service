@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/cbeust/testng.git</param>
-		<param name="revision">7.4.0</param>
+		<param name="revision">7.10.1</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="exclude">bin*</param>
 		<param name="exclude">gradle*</param>

@@ -17,27 +17,26 @@
 
 
 Name:           testng
-Version:        7.4.0
+Version:        7.10.1
 Release:        0
 Summary:        Java-based testing framework
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://testng.org/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        pom.xml
+Source1:        https://repo1.maven.org/maven2/org/testng/testng/%{version}/testng-%{version}.pom
 Source2:        %{name}-build.xml
 Patch0:         0001-Avoid-accidental-javascript-in-javadoc.patch
 Patch1:         0002-Replace-bundled-jquery-with-CDN-link.patch
-Patch2:         testng-CVE-2022-4065.patch
+Patch2:         0003-Preserve-Java-8-compatibility.patch
 BuildRequires:  ant
 BuildRequires:  beust-jcommander
-BuildRequires:  bsh2
 BuildRequires:  fdupes
 BuildRequires:  google-guice
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsr-305
-BuildRequires:  junit
-BuildRequires:  snakeyaml
+BuildRequires:  slf4j
+BuildRequires:  snakeyaml >= 2.0
 BuildArch:      noarch
 
 %description
@@ -55,25 +54,19 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q
+cp %{SOURCE1} pom.xml
+cp %{SOURCE2} build.xml
+cp -p testng-core/src/main/java/*.dtd.html testng-core/src/main/resources/
 
 %patch -P 0 -p1
 %patch -P 1 -p1
 %patch -P 2 -p1
 
-sed 's/@VERSION@/%{version}/' %{SOURCE1} > pom.xml
-cp %{SOURCE2} build.xml
-
-# remove any bundled libs, but not test resources
-find ! -path "*/test/*" -name *.jar -print -delete
-find -name *.class -delete
-
-sed -i -e 's/DEV-SNAPSHOT/%{version}/' src/main/java/org/testng/internal/Version.java
-
-cp -p ./src/main/java/*.dtd.html ./src/main/resources/.
+%pom_remove_dep org.webjars:jquery
 
 %build
 mkdir -p lib
-build-jar-repository -s lib ant/ant beust-jcommander bsh2/bsh google-guice jsr305 junit snakeyaml
+build-jar-repository -s lib beust-jcommander guice/google-guice jsr-305 slf4j/api snakeyaml
 %{ant} jar javadoc
 
 %install

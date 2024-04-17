@@ -1,17 +1,17 @@
-From bce3019741aeb785658b23095ae408a6c2d8ca35 Mon Sep 17 00:00:00 2001
+From acd7f374502cbbde54f1dd43cde1c4faa5d4139a Mon Sep 17 00:00:00 2001
 From: Michael Simacek <msimacek@redhat.com>
 Date: Wed, 31 May 2017 13:44:36 +0200
-Subject: [PATCH 1/2] Avoid accidental javascript in javadoc
+Subject: [PATCH 1/4] Avoid accidental javascript in javadoc
 
 ---
- src/main/java/org/testng/xml/TestNGContentHandler.java | 4 +++-
+ .../src/main/java/org/testng/xml/TestNGContentHandler.java    | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/src/main/java/org/testng/xml/TestNGContentHandler.java b/src/main/java/org/testng/xml/TestNGContentHandler.java
-index b74572a..7c490e9 100644
---- a/src/main/java/org/testng/xml/TestNGContentHandler.java
-+++ b/src/main/java/org/testng/xml/TestNGContentHandler.java
-@@ -250,7 +250,9 @@ public class TestNGContentHandler extends DefaultHandler {
+diff --git a/testng-core/src/main/java/org/testng/xml/TestNGContentHandler.java b/testng-core/src/main/java/org/testng/xml/TestNGContentHandler.java
+index a1f64c00..74c1e10a 100644
+--- a/testng-core/src/main/java/org/testng/xml/TestNGContentHandler.java
++++ b/testng-core/src/main/java/org/testng/xml/TestNGContentHandler.java
+@@ -328,7 +328,9 @@ public class TestNGContentHandler extends DefaultHandler {
      }
    }
  
@@ -23,5 +23,5 @@ index b74572a..7c490e9 100644
      if (start) {
        m_currentLanguage = attributes.getValue("language");
 -- 
-2.20.1
+2.44.0
 

@@ -1,4 +1,186 @@
 -------------------------------------------------------------------
+Tue Apr 16 13:27:19 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 7.10.1
+  * Changes of 7.10.1
+    + Fix for #3110
+  * Changes of 7.10.0
+    + Clean-up deprecated code
+    + Minor discrepancy fixes
+    + Deleting TestNG eclipse plugin specific classes
+    + Code clean-up
+    + Remove deprecated JUnit related support in TestNG
+    + Handle exceptions in emailable Reporter
+    + Add wrapperbot and update workflow order
+    + Support ITestNGFactory customisation
+    + Streamline data provider listener invocation
+    + Streamline Guice Module creation in concurrency.
+    + Copy test result attributes when unexpected failures
+    + chore: use explicit dependency versions instead of
+      refreshVersions
+    + Remove Ant
+    + Support ordering of listeners
+    + Add errorprone
+    + Allow custom thread pool executors to be wired in.
+    + Allow data providers to be non cacheable
+    + Use Locks instead of synchronised keyword
+    + Document pgp artifact signing keys
+    + Add Unique Id for all test class instances
+    + Adding issue management workflows
+    + Map object to configurations
+    + Allow listeners to be disabled at runtime
+    + Streamline Data Provider execution
+    + Test case failure
+    + Honour inheritance when parsing listener factories
+    + Fixing flaky tests
+    + Tweaks around accessing SuiteResult
+    + Streamline random generation
+    + Minor refactoring around RunOrder enum
+    + Streamline dependencies for configurations
+  * Changes of 7.9.0
+    + GitHub 2913
+    + Test Results as artifacts for failed runs
+    + Minor code clean-ups
+    + Fixing the Github CI yaml file
+    + Fixing data races
+    + Dont honour params specified in suite-file tag
+    + Decouple SuiteRunner and TestRunner
+    + Disable Native DI for BeforeSuite methods
+    + Streamline running Parallel Dataproviders+retries
+    + Remove extra whitespace in log for
+      Configuration.createMethods()
+    + Added the link for TestNG Documentation's GitHub Repo in
+      README.md
+    + FirstTimeOnlyConfig methods + Listener invocations
+    + #2974: Add overrideGroupsFromCliInParentChildXml test
+    + Ensure thread safety for attribute access
+    + Add @inherited to the Listeners annotation
+    + Restrict Group inheritance to Before|AfterGroups
+    + Ensure ITestResult injected to @AfterMethod is apt
+    + Support suite level thread pools for data provider
+    + Minor Code tweaks
+    + Favour CompletableFuture instead of PoolService
+    + Favour FutureTask for concurrency support
+    + Shared Threadpool for normal/datadriven tests.
+    + Abort for invalid combinations
+  * Changes of 7.8.0
+    + XmlTest index is not set for test suites invoked with YAML
+    + Listener's onAfterClass is called before @afterclass
+      configuration methods are executed.
+    + After upgrading to TestNG 7.5.0, setting ITestResult.status
+      to FAILURE doesn't fail the test anymore
+    + JUnitReportReporter should capture the test case output at
+      the test case level
+    + [Feature] Allow test classes to define "configfailurepolicy"
+      at a per class level
+    + TestNG.xml doesn't honour Parallel value of a clone
+    + before configuration and before invocation should be 'SKIP'
+      when beforeMethod is 'skip'
+    + Test listeners specified in parent testng.xml file are not
+      included in testng-failed.xml file
+    + Discrepancies with DataProvider and Retry of failed tests
+    + Skipped Tests with DataProvider appear as failed
+    + testng-results xml reports config skips from base classes as
+      ignored
+    + Feature: Check that specific object present in List
+    + Upgrade snakeyaml to 2.0
+    + [Feature] Not exception but warning if some (not all) of the
+      given test names are not found in suite files.
+    + [Feature] Generate testng-results.xml per test suite
+  * Changes of 7.7.1
+    + Streamline overloaded assertion methods for Groovy
+  * Changes of 7.7.0
+    + Replace FindBugs by SpotBugs
+    + Gradle: Drop forUseAtConfigurationTime()
+    + Added ability to provide custom message to
+      assertThrows\expectThrows methods
+    + Fix issue 2801 - Only resolve hostname once
+    + [SECURITY] Fix Zip Slip Vulnerability (bsc#1205628,
+      CVE-2022-4065)
+    + GITHUB-2807 - Failsafe buildStackTrace
+    + Prevent overlogging of debug msgs in Graph impl
+    + Streamline dataprovider invoking in abstract classes
+    + Streamline TestResult due to expectedExceptions
+    + Unexpected test runs count with retry analyzer
+    + Make PackageUtils compliant with JPMS
+    + Ability to retry a data provider during failures
+    + Refactoring
+    + Fixing bug with DataProvider retry
+    + Add config key for callback discrepancy behavior
+    + Upgrading versions
+    + Fix #2770: FileAlreadyExistsException on copy
+    + JarFileUtils.delete(File f) throw actual exception (instead
+      of FileNotFound) when file cannot be deleted #2825
+    + GITHUB-2830 - Failsafe parameter.toString
+    + Changing assertion message of the osgitest
+    + hidden spotbugs in release #2829
+    + Enhancing the Matrix
+    + Avoid Compilation errors on Semeru JDK flavour.
+    + Add addition yml extension
+    + Support getting dependencies info for a test
+    + Honour regex in dependsOnMethods
+    + Ensure All tests run all the time
+    + Deprecate support for running Spock Tests
+    + Streamline dependsOnMethods for configurations
+    + Ensure ITestContext available for JUnit4 tests
+    + Deprecate support for running JUnit tests
+  * Changes of 7.6.1
+    + Fix Files.copy() such that parent dirs are created
+    + Remove deprecated utility methods
+    + Fix typos
+  * Changes of 7.6.0
+    + Remove redundant Parameter implementation
+    + Upgrade to JDK11
+    + Move SimpleBaseTest to be Kotlin based
+    + Restore testnames when using suites in suite.
+    + Moving ClassHelperTests into Kotlin
+    + IHookable and IConfigurable callback discrepancy
+    + Minor refactoring
+    + Add additional condition for assertEqualsNoOrder
+    + beforeConfiguration() listener method should be invoked for
+      skipped configurations as well
+    + #2734 keep the initial order of listeners
+    + SuiteRunner could not be initial by default Configuration
+    + Enable Dataprovider failures to be considered.
+    + BeforeGroups should run before any matched test
+    + Fix possible StringIndexOutOfBoundsException exception in
+      XmlReporter
+    + DataProvider: possibility to unload dataprovider class, when
+      done with it
+    + fix possibilty that AfterGroups method is invoked before all
+      tests
+    + fix equals implementation for WrappedTestNGMethod
+    + Upgrade dependencies, Upgrade to JDK17
+    + Wire-In listeners consistently
+    + Streamline AfterClass invocation
+    + Show FQMN for tests in console
+    + Fix 2725
+- Modified patches:
+  * 0001-Avoid-accidental-javascript-in-javadoc.patch
+  * 0002-Replace-bundled-jquery-with-CDN-link.patch
+    + regenerate for the current version
+- Added patch:
+  * 0003-Preserve-Java-8-compatibility.patch
+    + restore the possibility to build with --release 8
+- Removed patches:
+  * 0003-Upgrade-snakeyaml-to-2.0.patch
+  * 0004-vuln-fix-Zip-Slip-Vulnerability.patch
+    + integrated in this version
+
+-------------------------------------------------------------------
+Mon Apr 15 18:07:44 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patches:
+  * 0001-Avoid-accidental-javascript-in-javadoc.patch
+  * 0002-Replace-bundled-jquery-with-CDN-link.patch
+  * testng-CVE-2022-4065.patch ->
+    0004-vuln-fix-Zip-Slip-Vulnerability.patch
+    + re-cherry-pick and rediff in git
+- Added patch:
+  * 0003-Upgrade-snakeyaml-to-2.0.patch
+    + Fix build against snakeyaml >= 2.0
+
+-------------------------------------------------------------------
 Wed Feb 21 17:12:29 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

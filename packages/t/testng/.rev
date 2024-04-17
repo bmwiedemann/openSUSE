@@ -39,4 +39,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148817</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2119da1f9dfa2cbaca1dd42975d5f75d</srcmd5>
+    <version>7.10.1</version>
+    <time>1713357930</time>
+    <user>dimstar_suse</user>
+    <comment>7.10.1</comment>
+    <requestid>1168376</requestid>
+  </revision>
 </revisionlist>
