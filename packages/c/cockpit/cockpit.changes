@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 16 12:11:05 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Do not require setroubleshoot in cockpit-selinux on Leap.
+  It's not there
+
+-------------------------------------------------------------------
 Mon Mar  4 13:24:23 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - cockpit.pam: respect /etc/cockpit/disallowed-users
