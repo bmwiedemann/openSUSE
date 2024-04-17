@@ -1,7 +1,7 @@
 #
 # spec file for package WindowMaker
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,7 +76,7 @@ programmers from around the world.
 Window Maker has a stable user interface since many years and comes
 with a powerful GUI configuration editor called WPrefs, which removes
 the need to edit text-based config files by hand. It supports running
-dockapps which make everyday tasks such as monitoring system 
+dockapps which make everyday tasks such as monitoring system
 performance and battery usage, mounting devices or connecting to the
 internet very easy. Please see the features section for more specifics
 on what Window Maker can do, and how it compares with other popular
@@ -146,7 +146,7 @@ find $RPM_BUILD_ROOT/usr/share/%{name}/Themes -type f -exec chmod 644 {} \;
 find $RPM_BUILD_ROOT/usr/share/%{name}/Themes -type d -exec chmod 755 {} \;
 # use default openSUSE wallpaper in SUSE theme
 pushd %{buildroot}/usr/share/%{name}/Themes/SUSE.themed/
-ln -sf /usr/share/wallpapers/openSUSEdefault/contents/images/1600x1200.jpg default.jpg
+ln -sf /usr/share/wallpapers/openSUSEdefault/contents/images/1600x1200.png default.png
 popd
 #----------------------------------------------------------------------
 # not packaged
@@ -171,7 +171,8 @@ cd ..
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS BUGFORM BUGS COPYING COPYING.WTFPL ChangeLog FAQ
+%license COPYING COPYING.WTFPL
+%doc AUTHORS BUGFORM BUGS ChangeLog FAQ
 %doc NEWS README* TODO
 %doc menu_orig
 %dir /etc/X11/%{name}
