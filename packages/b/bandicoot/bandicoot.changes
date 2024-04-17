@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 12 13:48:36 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.13.0:
+  * No linux specific fixes.
+- Changes from version 1.12.2:
+  * Fix for OpenCL kernel compilation on devices that don't
+    support float64
+- Changes from version 1.12.2:
+  * Add compatibility container functions: .front(), .back(),
+    .size(), .clear(), .empty()
+  * Fix bug in two-dimensional CUDA grid size computation
+- Empty %check section to satisfy rpmlint.
+
+-------------------------------------------------------------------
 Wed Nov 29 10:05:04 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.
