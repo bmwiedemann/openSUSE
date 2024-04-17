@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Apr 16 18:01:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.26.0:
+  * New Feature
+    - push releases to all the possible images at dockerhub by
+      @jLopezbarb in #4129
+    - add depot.dev as a valid builder by @AdrianPedriza in #4106
+    - Add Branch column to preview environment list command output
+      by @jvc5546 in #4176
+    - Improve experience for overnight okteto up sessions, and
+      syntching timeouts by @andreafalzetti in #4172
+    - feat: add environment from pods from envfrom field by
+      @jLopezbarb in #4194
+    - feat: add okteto local credentials by env var by @jLopezbarb
+      in #4196
+    - [Compose] Allow setting K8S labels from docker-compose.yml by
+      @andreafalzetti in #4204
+    - feat: add compose.yml and compose.yaml naming by @jLopezbarb
+      in #4209
+    - feat: add events for build using manifest by @jLopezbarb in
+      #4205
+    - Initialize test command by @maroshii in #4216
+    - [Backport release-2.26] feat: add deploy insights by
+      @github-actions in #4224
+  * - Bug Fix
+    - fix: missing whitespace on spinner by @jLopezbarb in #4143
+    - fix: logger on different output formats by @jLopezbarb in
+      #4152
+    - fix: json build output by @jLopezbarb in #4157
+    - Fix panic in okteto up when using remote deploy by
+      @andreafalzetti in #4177
+    - fix: double warning on --insecure-skip-tls-verify by
+      @jLopezbarb in #4171
+    - fix: context insecure is maintained until deleted the context
+      by @jLopezbarb in #4174
+    - refactor: rewrite error log by @jLopezbarb in #4182
+    - fix: realpath on mac by @jLopezbarb in #4181
+    - [Hybrid] Improve process management by @andreafalzetti in
+      #4185
+    - Fix okteto endpoints namespace detection from okteto.yml by
+      @andreafalzetti in #4186
+    - fix: clean manifest path in remote deploy to fix regression
+      by @andreafalzetti in #4195
+    - Remove "Build section is not defined in your okteto manifest"
+      info me… by @pchico83 in #4210
+    - Smart Build fixes and improvements by @ifbyol in #4203
+    - fix: add CORS PNA support to browser login by @jpf-okteto in
+      #4212
+    - fix: run remote on buildkit by @jLopezbarb in #4214
+    - DEV-258: Changed command used to get the latest commit for a
+      folder by @ifbyol in #4219
+    - fix: e2e test by @jLopezbarb in #4221
+    - [Backport release-2.26] fix: log on ui by @github-actions in
+      #4230
+    - [Backport release-2.26] fix: skip volume mount translation
+      into okteto manifest build by @github-actions in #4236
+    - [Backport release-2.26] fix: repo with double url by
+      @github-actions in #4238
+
+-------------------------------------------------------------------
 Tue Mar 26 07:20:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.25.4:
