@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Apr 16 13:55:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstrem version 2.2
+  * Changes of 2.2
+    + Define default scalar style as PLAIN (for polyglot Maven)
+    + Add missing 'exports org.yaml.snakeyaml.inspector' to
+      module-info.java
+  * Changes of 2.1
+    + Heavy Allocation in Emitter.analyzeScalar(String) due to Regex
+      Overhead. Fixes 1075.
+    + Use identity in toString() for sequences to avoid
+      OutOfMemoryError. Fixes 1064.
+    + NumberFormatException from SnakeYAML due to int overflow for
+      corrupt YAML version. Fixes 1061.
+    + Document size limit should be applied to single document not
+      the whole input stream. Fixes 1065.
+    + Detect invalid Unicode code point (thanks to Tatu Saloranta).
+      Fixes 576.
+    + Remove Trusted*Inspector classes from main sources tree
+  * Changes of 2.0
+    + Rollback to Java 7 target. Fixes 570.
+    + Add module-info.java. Fixes 495.
+    + Migrate to Java 8
+    + Remove many deprecated constructors
+    + Remove long deprecated methods in FlowStyle
+    + Do not allow global tags by default. Fixes 565.
+    + Yaml.LoadAs() signature to support Class<? super T> type
+      instead of Class<T>. Fixes 556.
+    + CustomClassLoaderConstructor takes LoaderOptions
+    + Check input parameters for non-null values
+- Removed patch:
+  * 0003-Fix-ReaderBomTest.patch
+    + not needed
+- Modified patches:
+  * 0001-replace-bundled-base64coder-with-java.util.Base64.patch ->
+    0001-Remove-external-Base64Coder-and-use-provided-Base64.patch
+    + use the patch integrated for inclusion in 2.3
+  * 0002-Replace-bundled-gdata-java-client-classes-with-commo.patch
+    + regenerate and fix tests
+
+-------------------------------------------------------------------
 Wed Feb 21 17:28:08 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
