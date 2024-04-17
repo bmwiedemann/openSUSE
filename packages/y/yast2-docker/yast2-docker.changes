@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 11 09:10:02 UTC 2024 - Martin Vidner <mvidner@suse.com>
+
+- Fix Internal Error with docker 25.0.0 due to VirtualSize removal
+  from images API (bsc#1222668, gh#yast/yast-docker#32)
+- 5.0.1
+
+-------------------------------------------------------------------
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
 - 5.0.0 (bsc#1185510)
