@@ -1,4 +1,211 @@
 -------------------------------------------------------------------
+Tue Apr 16 06:33:05 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- Changes for 26.2.4
+  * asn1: An ASN.1 module that contains named BIT STRING values
+              would fail to compiled if both the BER and JER
+              back-ends were enabled.
+  * Compiler: In rare circumstances, the compiler code generate
+              unsafe code for a bit syntax match.
+  * Compiler: In rare circumstances, binary matches that were
+              supposed to succeed failed.
+  * Compiler: Fixed a bug where a fun's environment could be
+              overridden by an argument in some cases.
+  * Crypto: Fix building with --enable-fips with OpenSSL 3 on
+              MacOS.
+  * Debugger: Guards with nested record expression could wrongly
+              evaluate to false.
+  * Diameter: Reduce the impact of calling service_info by not
+              counting the binaries (on the heap) info, This is done
+              by introducing an option, bins_info, which controls
+              this.
+  * erts: Fixed CPU quota determination for cgroup version 2
+  * erts: Fix faulty reduction counting in exiting process which
+               could cause it to do unnecessary yielding.
+  * erts: Fix bug in re:run/3 where if an invalid UTF-8 subject
+               was given, re:run could get stuck in an infinite loop.
+               Bug was introduced in Erlang/OTP 22.1.
+  * erts: On AArch64 (ARM64), Erlang code using bit syntax
+               construction compiled using Erlang/OTP 24 could crash
+               the runtime system when run in Erlang/OTP 26.2.3.
+  * erts: Calling erlang:trace/3 with first argument one of
+               ports, processes, existing_ports, existing_processes,
+               existing or all, could cause emulator crash if a dirty
+               scheduler was executing a simultaneous trace action.
+  * erts: Fixed an integer overflow when the monotonic time unit
+               reported by the operating system was greater than 10
+               and lower than 100 microseconds.
+  * erts: Fix option reuseaddr for FreeBSD 14
+  * erts: When a traced process executing on a dirty scheduler
+               received an exit signal, the dirty scheduler could use
+               the wrong thread specific data which could lead to a
+               crash.
+  * erts: Fixed a more or less harmless bug that caused time
+               correction of Erlang monotonic time to become slightly
+               off on Windows platforms when QueryPerformanceCounter()
+               was used as OS monotonic time source.
+
+               erlang:system_info(os_monotonic_time_source) now also
+               returns information about used resolution which not
+               always corresponds to the resolution of the OS
+               monotonic time source.
+  * erts: When using IPv6, classic gen_udp failed to add (group)
+               membership (drop was used instead).
+  * erts: Fix bug on Windows where "Unknown event: 2" would be
+               printed to the console.
+  * erts: Checks for monotonicity of monotonic time have been
+               improved so that Erlang and OS monotonic time are
+               checked separately.
+  * erts: For severe errors, when the `socket` module terminates
+               the Erlang VM, now an erl_crash.dump is produced, to
+               facilitate post mortem debugging.
+  * kernel: When using IPv6, classic gen_udp failed to add (group)
+               membership (drop was used instead).
+  * kernel: The check in inet_res of the RD bit has been relaxed
+               slightly.
+  * ssh: With this change, owner and group file attributes
+               decoding is fixed and results with value of integer
+               type.
+  * ssl: Cleanup and close all connections in DTLS when the
+               listen socket owner dies.
+               Improved IPv6 handling in DTLS.
+  * ssl: Fixed a crash in dtls accept.
+  * stdlib: Attempting to use the maybe construct in a macro
+               argument could crash the compiler.
+
+- Changes for 26.2.3
+  * otp: Quote uninstall path in registry when installing on
+               windows.
+  * compiler: In rare circumstances, an unsafe optimization could
+               cause the compiler to generate incorrect code for list
+               matching.
+  * compiler: Fix the compilation server to restart if the
+               applications in its lib dir changes inbetween erlc
+               invokations.
+  * crypto: Fix compile error when OPENSSL_NO_DES is defined.
+  * crypto: The function crypto:pbkdf2_hmac will no longer block
+               the main schedulers. If the iteration count or block
+               size parameters are such that the function is likely to
+               take a long time to execute, the function will be
+               scheduled to run on a dirty CPU scheduler.
+  * erts: Fixed compile warning in erl_nif.c for gcc-13.
+  * erts: Fix C++ compile error for macros enif_select_read and
+               friends.
+  * erts: Fixed a name clash on Solaris that prevented the JIT
+               from being built.
+  * erts: Fix termcap detection on solaris.
+  * erts: Fix heap corruption bug that could cause runaway memory
+               consumption due to circular offheap list at process
+               exit. Other symptoms may also be possible. Bug exists
+               since OTP 25.0.
+  * erts: Do not clear tracing in old module instance if load
+               fails with 'not_purged'.
+  * erts: When exceeding the `max_heap_size` limit in a garbage
+               collection initiated by some bit syntax operations, the
+               process would not always terminate immediately.
+  * erts: The code server could be hanging if a module with
+               on_load function was loaded at the same time as another
+               module was purged using erlang:purge_module directly.
+  * erts: A process optimized for parallel signal delivery could
+               under some circumstances lose wakeup information. That
+               is, the processes was not woken up to take care of the
+               signal, so the signal would not be taken care of until
+               the process was woken by another signal. Only processes
+               configured with message_queue_data set to off_heap
+               utilize this optimization.
+  * erts: Fix segfault when generating crashdump containing a fun
+               places in persistent_term storage.
+  * erts: By default the JIT is disabled on Intel Macs, because
+               of annoying poups on macOS Sonoma. It is now possible
+               to explicitly enable the JIT on Intel Macs. Here is
+               how: ./configure --enable-jit
+  * kernel: Fix performance bug when using io:fread to read from
+               standard_io. This regression was introduced in OTP
+               26.0.
+  * kernel: A bug in the code server could cause it to crash in
+               some concurrent scenarios. This bug was introduced in
+               26.1.
+  * kernel: Fixed gen_udp:open/2 type spec to include already
+               supported module socket address types.
+  * kernel: Fix reading of password for ssh client when in
+               user_interactive mode.
+  * odbc: Use spec for API doc
+  * public_key: Hostname prefix with X number of dots should not be
+               accepted.
+  * ssh: With this change, acceptor_sup is not started for ssh
+               client as it is not needed in that role.
+  * ssh: With this change, more secure algorithms are preferred
+               by ssh and documentation is updated to reflect that.
+  * ssh: With this change, KEX strict terminal message is
+               emitted with debug verbosity.
+  * ssh: Fix reading of password for ssh client when in
+               user_interactive mode.
+  * ssl: ssl:prf/5, will start working instead of hanging in a
+               TLS-1.3 context if called appropriately. Note that the
+               implementation has changed and in OTP-27 a more
+               adequate API will be documented.
+  * ssl: Server name verification didn't work if a connection
+               was made with IP-address as a string.
+  * ssl: The fallback after "dh" ssl option was undefined was to
+               get "dh" from ssl options again. This is clearly wrong
+               and now changed to the documented fallback "dhfile" ssl
+               option.
+  * ssl: Correct default value selection for DTLS. Will only
+               affect users linked with really old version of
+               cryptolib library.
+  * ssl: Adhere elliptic curves with RFC 8422 pre TLS-1.3, that
+               is Edwards curves are added to curves that can be used
+               for key exchange, and documentation and implementation
+               of eccs/0,1 are aligned.
+  * ssl: Improve alert reason when ecdhe_rsa key_exchange does
+               not have any common curves to use
+  * stdlib: The help texts shown by argparse will now display
+               sub-command arguments in the correct order.
+  * stdlib: Clarified the argparse documentation regarding the
+               user-defined help template.
+  * stdlib: Fix shell expansion to not crash when expanding invalid
+               using invalid atoms.
+  * wx: Add option to silence wx depracation macros.
+
+- Changes for 26.2.2
+  * common_test: Fix how CT finds Erlang/OTP releases for compatability
+               testing. This functionality is only used to test
+               Erlang/OTP.
+  * erl_interface: Fix bug where the system installed openssl/md5.h would
+               be confused with the vendored md5.h.
+  * erts: 32-bit runtime systems on most Unix like platforms
+               could crash if a BIF timer was set with a huge timeout
+               of more than 68 years into the future. In order for the
+               crash to occur, the huge timer (at a later time than
+               when it was set) had to become the nearest active timer
+               set on the specific scheduler on which it was set. This
+               could not happen on a system with only one scheduler
+               since there would always be shorter timers in the
+               system.
+
+               Setting a timer larger than 49 days on Windows could
+               under rare circumstances cause the timeout to be
+               delayed.
+  * erts: Fix bug where the system installed openssl/md5.h would
+               be confused with the vendored md5.h.
+  * erts: The JIT has now been disabled on x86 Macs to prevent
+               annoying the "verifying shm-xyz" popups introduced in
+               MacOS Sonoma.
+               ARM Macs are unaffected.
+  * erts: Garbage collection of a process on a dirty scheduler
+               could collide with signal handling for that process
+               causing a crash of the runtime system. This bug was
+               introduced in OTP 25.3.2.8 and OTP 26.2.
+  * kernel: Fix group (that is the shell) to properly handle when
+               an get_until callback function returned {done, eof, []}
+               when an eof was detected.
+  * ssh: With this change, Curve25519 and Curve448 KEX methods
+               become most preferred (related to RFC8731).
+  * ssl: Legacy name handling could cause interop problems
+               between TLS-1.3/1.2 client and TLS-1.2 server.
+- Fix for bsc#1222591
+
+-------------------------------------------------------------------
 Thu Feb 22 11:41:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
