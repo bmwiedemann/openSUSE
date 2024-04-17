@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 14 08:33:03 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.6.5:
+  * LLVM 18 compatibility.
+- Drop upstream incorporated patch:
+  0001-Port-to-LLVM-Clang-Git-release-18.x-as-of-2024-02-05.patch
+
+-------------------------------------------------------------------
 Thu Mar 21 14:21:26 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:

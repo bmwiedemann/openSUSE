@@ -17,15 +17,13 @@
 
 
 Name:           CastXML
-Version:        0.6.4
+Version:        0.6.5
 Release:        0
 Summary:        C-family Abstract Syntax Tree XML Output
 License:        Apache-2.0
 URL:            https://github.com/CastXML/CastXML
-Source0:        https://github.com/CastXML/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Port-to-LLVM-Clang-Git-release-18.x-as-of-2024-02-05.patch
 BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
