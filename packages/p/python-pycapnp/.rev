@@ -42,4 +42,12 @@
   * Prevent race condition in example code (#305)</comment>
     <requestid>1103726</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8fd00e8a56cfb3b20edc33fc24a859d3</srcmd5>
+    <version>2.0.0</version>
+    <time>1713357963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1168460</requestid>
+  </revision>
 </revisionlist>
