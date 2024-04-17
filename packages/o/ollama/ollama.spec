@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           ollama
-Version:        0.1.27
+Version:        0.1.31
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -30,7 +31,7 @@ BuildRequires:  cmake >= 3.24
 BuildRequires:  gcc-c++ >= 11.4.0
 BuildRequires:  git
 BuildRequires:  sysuser-tools
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.22
 
 %{sysusers_requires}
 

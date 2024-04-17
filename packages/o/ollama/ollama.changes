@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Tue Apr 16 10:52:25 UTC 2024 - bwiedemann@suse.com
+
+- Update to version 0.1.31:
+  * Backport MacOS SDK fix from main
+  * Apply 01-cache.diff
+  * fix: workflows
+  * stub stub
+  * mangle arch
+  * only generate on changes to llm subdirectory
+  * only generate cuda/rocm when changes to llm detected
+  * Detect arrow keys on windows (#3363)
+  * add license in file header for vendored llama.cpp code (#3351)
+  * remove need for `$VSINSTALLDIR` since build will fail if `ninja` cannot be found (#3350)
+  * change `github.com/jmorganca/ollama` to `github.com/ollama/ollama` (#3347)
+  * malformed markdown link (#3358)
+  * Switch runner for final release job
+  * Use Rocky Linux Vault to get GCC 10.2 installed
+  * Revert "Switch arm cuda base image to centos 7"
+  * Switch arm cuda base image to centos 7
+  * Bump llama.cpp to b2527
+  * Fix ROCm link in `development.md`
+  * adds ooo to community integrations (#1623)
+  * Add cliobot to ollama supported list (#1873)
+  * Add Dify.AI to community integrations (#1944)
+  * enh: add ollero.nvim to community applications (#1905)
+  * Add typechat-cli to Terminal apps (#2428)
+  * add new Web & Desktop link in readme for alpaca webui (#2881)
+  * Add LibreChat to Web & Desktop Apps (#2918)
+  * Add Community Integration: OllamaGUI (#2927)
+  * Add Community Integration: OpenAOE (#2946)
+  * Add Saddle (#3178)
+  * tlm added to README.md terminal section. (#3274)
+  * Update README.md (#3288)
+  * Update README.md (#3338)
+  * Integration tests conditionally pull
+  * add support for libcudart.so for CUDA devices (adds Jetson support)
+  * llm: prevent race appending to slice (#3320)
+  * Bump llama.cpp to b2510
+  * Add Testcontainers into Libraries section (#3291)
+  * Revamp go based integration tests
+  * rename `.gitattributes`
+  * Bump llama.cpp to b2474
+  * Add docs for GPU selection and nvidia uvm workaround
+  * doc: faq gpu compatibility (#3142)
+  * Update faq.md
+  * Better tmpdir cleanup
+  * Update faq.md
+  * update `faq.md`
+  * dyn global
+  * llama: remove server static assets (#3174)
+  * add `llm/ext_server` directory to `linguist-vendored` (#3173)
+  * Add Radeon gfx940-942 GPU support
+  * Wire up more complete CI for releases
+  * llm,readline: use errors.Is instead of simple == check (#3161)
+  * server: replace blob prefix separator from ':' to '-' (#3146)
+  * Add ROCm support to linux install script (#2966)
+  * .github: fix model and feature request yml (#3155)
+  * .github: add issue templates (#3143)
+  * fix: clip memory leak
+  * Update README.md
+  * add `OLLAMA_KEEP_ALIVE` to environment variable docs for `ollama serve` (#3127)
+  * Default Keep Alive environment variable (#3094)
+  * Use stdin for term discovery on windows
+  * Update ollama.iss
+  * restore locale patch (#3091)
+  * token repeat limit for prediction requests (#3080)
+  * Fix iGPU detection for linux
+  * add more docs on for the modelfile message command (#3087)
+  * warn when json format is expected but not mentioned in prompt (#3081)
+  * Adapt our build for imported server.cpp
+  * Import server.cpp as of b2356
+  * refactor readseeker
+  * Add docs explaining GPU selection env vars
+  * chore: fix typo (#3073)
+  * fix gpu_info_cuda.c compile warning (#3077)
+  * use `-trimpath` when building releases (#3069)
+  * relay load model errors to the client (#3065)
+  * Update troubleshooting.md
+  * update llama.cpp submodule to `ceca1ae` (#3064)
+  * convert: fix shape
+  * Avoid rocm runner and dependency clash
+  * fix `03-locale.diff`
+  * Harden for deps file being empty (or short)
+  * Add ollama executable peer dir for rocm
+  * patch: use default locale in wpm tokenizer (#3034)
+  * only copy deps for `amd64` in `build_linux.sh`
+  * Rename ROCm deps file to avoid confusion (#3025)
+  * add `macapp` to `.dockerignore`
+  * add `bundle_metal` and `cleanup_metal` funtions to `gen_darwin.sh`
+  * tidy cleanup logs
+  * update llama.cpp submodule to `77d1ac7` (#3030)
+  * disable gpu for certain model architectures and fix divide-by-zero on memory estimation
+  * Doc how to set up ROCm builds on windows
+  * Finish unwinding idempotent payload logic
+  * update llama.cpp submodule to `c2101a2` (#3020)
+  * separate out `isLocalIP`
+  * simplify host checks
+  * add additional allowed hosts
+  * Update docs `README.md` and table of contents
+  * add allowed host middleware and remove `workDir` middleware (#3018)
+  * decode ggla
+  * convert: fix default shape
+  * fix: allow importing a model from name reference (#3005)
+  * update llama.cpp submodule to `6cdabe6` (#2999)
+  * Update api.md
+  * Revert "adjust download and upload concurrency based on available bandwidth" (#2995)
+  * cmd: tighten up env var usage sections (#2962)
+  * default terminal width, height
+  * Refined ROCm troubleshooting docs
+  * Revamp ROCm support
+  * update go to 1.22 in other places (#2975)
+  * docs: Add LLM-X to Web Integration section (#2759)
+  * fix some typos (#2973)
+  * Convert Safetensors to an Ollama model (#2824)
+  * Allow setting max vram for workarounds
+  * cmd: document environment variables for serve command
+  * Add Odin Runes, a Feature-Rich Java UI for Ollama, to README (#2440)
+  * Update api.md
+  * Add NotesOllama to Community Integrations (#2909)
+  * Added community link for Ollama Copilot (#2582)
+  * use LimitGroup for uploads
+  * adjust group limit based on download speed
+  * add new LimitGroup for dynamic concurrency
+  * refactor download run
+
+-------------------------------------------------------------------
+Wed Mar 06 23:51:28 UTC 2024 - computersemiexpert@outlook.com
+
+- Update to version 0.1.28:
+  * Fix embeddings load model behavior (#2848)
+  * Add Community Integration: NextChat (#2780)
+  * prepend image tags (#2789)
+  * fix: print usedMemory size right (#2827)
+  * bump submodule to `87c91c07663b707e831c59ec373b5e665ff9d64a` (#2828)
+  * Add ollama user to video group
+  * Add env var so podman will map cuda GPUs
+
+-------------------------------------------------------------------
 Tue Feb 27 08:33:15 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Edit description, answer _what_ the package is and use nominal
