@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 16 07:44:10 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.6.1
+  * Fix build for python3.12
+- Regenerated vendor.tar.zst
+
+-------------------------------------------------------------------
 Tue Oct 10 18:10:14 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - initial commit

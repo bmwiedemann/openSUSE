@@ -1,7 +1,7 @@
 #
 # spec file for package python-omni-camera
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           python-omni-camera
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        A library for querying and capturing from cameras
 License:        MIT
-URL:            https://github.com/IntQuant/Camerata 
+URL:            https://github.com/IntQuant/Camerata
 Source:         https://files.pythonhosted.org/packages/source/o/omni-camera/omni_camera-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        cargo_config
-BuildRequires:  cargo-packaging
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module maturin}
+BuildRequires:  %{python_module pip}
+BuildRequires:  cargo-packaging
+BuildRequires:  clang
 BuildRequires:  fdupes
-BuildRequires:  clang 
+BuildRequires:  python-rpm-macros
 Suggests:       python-pilow
 ExclusiveArch:  %{rust_tier1_arches}
 %python_subpackages
@@ -40,7 +40,7 @@ A library for querying and capturing from cameras, based on nokhwa crate.
 
 %prep
 %autosetup -a1 -p1 -n omni_camera-%{version}
-mkdir .cargo
+mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
