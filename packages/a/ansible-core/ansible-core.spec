@@ -38,12 +38,13 @@
 %endif
 
 Name:           ansible-core
-Version:        2.16.5
+Version:        2.16.6
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
 URL:            https://ansible.com/
-Source:         https://files.pythonhosted.org/packages/source/a/ansible-core/ansible-core-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/a/ansible-core/ansible_core-%{version}.tar.gz#/ansible_core-%{version}.tar.gz
+Source1:        ansible_core-%{version}.tar.gz.sha256
 BuildArch:      noarch
 
 # cannot be installed with ansible < 3 or ansible-base
@@ -103,7 +104,7 @@ modules can be written in any language and are transferred to managed machines
 automatically.
 
 %prep
-%setup -q -n ansible-core-%{version}
+%setup -q -n ansible_core-%{version}
 
 for file in .git_keep .travis.yml ; do
   find . -name "$file" -delete
