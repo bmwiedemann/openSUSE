@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Tue Apr 16 15:40:53 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Remove MacOS-specific scripts
+- Add %python3_fix_shebang_path to fix Python script packaging
+- Update to version 20240416:
+  - Features
+    #4216 Compose: Hide MixMaster chain if chain is empty
+    Expando upgrade
+    version: bold labels
+  - Contrib
+    mutt_oauth2.py: Detect recipient for oauth automatically
+    mutt_oauth2.py: imap_oauth_refresh_command does not need options
+  - Bug Fixes
+    #4210 mbox: fix sorting for mbox_resync()
+    #4241 only wrap after first address in header lines
+    status: reset Buffer before reuse
+    history: truncate file before writing over it
+    notmuch: strip leading / from short path
+    Fix smtp client $envelope_from_address possible dangling pointer
+    Fix non-printable keyname printing to use <octal> syntax
+    Filter Arabic Letter Mark due to display corruption
+    Loosen imap_open_mailbox() SELECT response data parsing
+    Change mailto_allow to be exact match only
+    Fix mutt_read_rfc822_line() to use is_email_wsp()
+    Improve pattern compiler whitespace skipping
+    Fix gpgme crash when listing keys in a public key block
+    Add SigInt handler for pattern functions
+    Fix some mailbox prompts to use mailbox history ring
+    Improve GPGME inline processing
+    Reset SIGPIPE signal handler in child process before exec()
+    Filter headers passed via the command line
+    Remove trailing slashes when opening maildir/mh mailboxes
+    Fix mutt_paddstr() to properly filter unprintable chars
+    Minor fixes to match_body_patterns()
+    Fix mutt_ts_capability() fallback list loop
+    Ensure SIGALRM interrupts connect() in batch mode
+    Tighten $query_command parsing to allow empty name field
+  - Changed Config
+    #4224 config: add L10N support
+    New: set compose_confirm_detach_first = yes
+    Prevent the accidental deletion of the composed message
+    Changed: set reply_regex = "^((re)(\\[[0-9]+\\])*:[ \t]*)*"
+    Regex to match message reply subjects like 're: '
+    Changed: set pager = ""
+    External command for viewing messages, or empty to use NeoMutt's
+  - Translations
+    100% Czech
+    100% German
+    100% Lithuanian
+    100% Serbian
+    100% Slovak
+    99% Turkish
+    l10n: document functions
+    config: add L10N support
+  - Docs
+    Clarify the manual section on POP3 support
+    Document the <1234> key syntax for bind
+    Document $sendmail invocation behavior
+    Clarify -H usage in batch mode is not a "pass through" option
+  - Build
+    test: remove unnecessary setting of TZ var
+    build: make conn/getdomain.c dependent on DOMAIN
+    Improve w3m invocation for manual.txt generation
+    Include <term.h> before invoking tigetstr() and tigetflag()
+    Enable CodeQL for python
+  - Code
+    factor out buf_make()
+    drop dupe signal_init() on startup
+    Convert mutt_create_alias() and helpers to use buffer pool
+    Factor out match_body_patterns() to make resolve_types() simpler
+    Rewrite mutt_apply_replace() to use buffers
+- Update to version 20240329:
+  - Bug Fixes
+    #4185 c441f59 Fix memory leak in trash_append()
+    #4189 Fix off-by-one error in %b with notmuch
+    #4190 Zero-out mailbox counters on delete
+    #4204 colour: honour the normal colour
+    #4205 match folder-hook also against mailbox name (fixes #4201)
+    wrap colour in
+    history: fix saving file
+    history: improve error message format
+  - Docs
+    #4182 docs: -C: Fix some accidents
+    #4188 Update oauth2 README
+    #4193 Update oauth2 README
+    fix typos, lots of tidying
+    tidy license info
+  - Build
+    #4196 use FreeBSD 14.0 in Cirrus CI
+    actions: update cpu count
+    actions: use codeql v3
+  - Code
+    #4186 Buffer refactoring: make_entry()
+    address: tidy config handling
+    coverage: buf, slist
+    graphviz: link labels
+    tidy buf_strcpy() calls
+    tidy char buffers
+    test: default timezone to UTC
+- Update to version 20240201:
+  - Features
+    #4134 Command-line Crypto (neomutt -C)
+  - Bug Fixes
+    #4065 track new-mail check time per mailbox
+    #4141 fix(change-folder): don't exclude notmuch
+    #4147 envelope: manage subject/real_subj together
+    #4155 fix parsing of $REPLYTO
+    #4158 status: fix refresh after sync-mailbox
+    #4166 Fix two memory leaks in notmuch support
+    progress: fix percentages
+  - Translations
+    100% Czech
+    100% German
+    100% Lithuanian
+    100% Serbian
+    100% Slovak
+    100% Turkish
+  - Docs
+    #4172 Several fixes for the manual pages
+  - Code
+    #4142 add mutt_time_now()
+    #4146 config: factor out R_ flags
+    #4154 file: upgrade mutt_file_fopen/fclose()
+    #4159 upgrade mutt_str_append_item() to use struct Buffer
+    #4161 maildir: encapsulate the header cache
+    #4162 remove mutt_str_dequote_comment()
+    #4165 bufferize mutt_str_inline_replace() as buf_inline_replace()
+    #4167 bufferize mutt_strn_rfind() as buf_rfind()
+    #4168 replace buf_len() checks with buf_is_empty()
+    config: drop unused flags
+    use message_new()/message_free()
+    Reconsider the config type bitmap entirely
+
+-------------------------------------------------------------------
 Thu Dec 28 18:26:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 20231221:

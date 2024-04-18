@@ -1,7 +1,7 @@
 #
 # spec file for package neomutt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           neomutt
-Version:        20231221
+Version:        20240416
 Release:        0
 Summary:        A command line mail reader (or MUA), a fork of Mutt with added features
 License:        GPL-2.0-or-later
@@ -110,6 +110,13 @@ make %{?_smp_mflags}
 
 %find_lang neomutt
 
+# Remove MacOS-specific files
+rm -rf %{buildroot}%{_datadir}/%{name}/account-command/macos-keychain/
+
+# Fix Python interpreter path
+# https://en.opensuse.org/openSUSE:Packaging_Python#Dependency_on_/usr/bin/python3
+%python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/oauth2/*
+
 %files
 %config(noreplace) %{_sysconfdir}/neomuttrc
 %license %{_docdir}/%{name}/LICENSE.md
@@ -133,18 +140,15 @@ make %{?_smp_mflags}
 %dir %{_datadir}/%{name}/
 %dir %{_datadir}/%{name}/account-command/
 %dir %{_datadir}/%{name}/account-command/gpg-json/
-%dir %{_datadir}/%{name}/account-command/macos-keychain/
 %doc %{_datadir}/%{name}/account-command/README.md
 %{_datadir}/%{name}/account-command/gpg-json/credentials.sh
 %doc %{_datadir}/%{name}/account-command/gpg-json/README.md
-%{_datadir}/%{name}/account-command/macos-keychain/keychain.py
-%doc %{_datadir}/%{name}/account-command/macos-keychain/README.md
 
 %files contrib
 %dir %{_datadir}/%{name}/oauth2/
 %dir %{_datadir}/%{name}/vim-keys/
 %{_datadir}/%{name}/oauth2/mutt_oauth2.py
-%doc %{_datadir}/%{name}/oauth2/mutt_oauth2.py.README
+%doc %{_datadir}/%{name}/oauth2/README.md
 %doc %{_datadir}/%{name}/vim-keys/vim-keys.rc
 %doc %{_datadir}/%{name}/vim-keys/README.md
 
