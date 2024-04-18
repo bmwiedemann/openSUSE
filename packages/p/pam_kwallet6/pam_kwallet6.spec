@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           pam_kwallet6
-Version:        6.0.3
+Version:        6.0.4
 Release:        0
 Summary:        A PAM Module for KWallet signing
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
@@ -51,9 +51,9 @@ Requires:       pam_kwallet6-common = %{version}
 Requires(post): coreutils
 Requires(post): pam
 Requires(post): pam-config
-Requires(postun):coreutils
-Requires(postun):pam
-Requires(postun):pam-config
+Requires(postun): coreutils
+Requires(postun): pam
+Requires(postun): pam-config
 Provides:       pam_kwallet = %{version}
 Obsoletes:      pam_kwallet < %{version}
 
