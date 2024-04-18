@@ -18,16 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-api-python-client
-Version:        2.116.0
+Version:        2.126.0
 Release:        0
 Summary:        Google APIs Python Client
 License:        Apache-2.0
 URL:            https://github.com/google/google-api-python-client
 Source:         https://files.pythonhosted.org/packages/source/g/google-api-python-client/google-api-python-client-%{version}.tar.gz
 BuildRequires:  %{python_module google-api-core >= 1.31.5}
-BuildRequires:  %{python_module google-auth >= 1.19.0}
-BuildRequires:  %{python_module google-auth-httplib2 >= 0.1.0}
-BuildRequires:  %{python_module httplib2 >= 0.15.0}
+BuildRequires:  %{python_module google-auth >= 1.32.0}
+BuildRequires:  %{python_module google-auth-httplib2 >= 0.2.0}
+BuildRequires:  %{python_module httplib2 >= 0.19.0}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -36,9 +36,9 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-google-api-core >= 1.31.5
-Requires:       python-google-auth >= 1.19.0
-Requires:       python-google-auth-httplib2 >= 0.1.0
-Requires:       python-httplib2 >= 0.15.0
+Requires:       python-google-auth >= 1.32.0
+Requires:       python-google-auth-httplib2 >= 0.2.0
+Requires:       python-httplib2 >= 0.19.0
 Requires:       python-uritemplate >= 3.0.1
 # Package renamed in SLE 12, do not remove Provides, Obsolete directives
 # until after SLE 12 EOL

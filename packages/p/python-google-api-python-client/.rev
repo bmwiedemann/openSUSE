@@ -1020,4 +1020,41 @@ eplacement for google-api-python-client, follow our naming convention</comment>
   * **youtube:** Update the api</comment>
     <requestid>1143812</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>f07e7fa0987bf1dda23af6f747aad4d1</srcmd5>
+    <version>2.126.0</version>
+    <time>1713471200</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.126.0
+  * **advisorynotifications:** Update the api
+  * **aiplatform:** Update the api
+  * **alertcenter:** Update the api
+  * **analyticsadmin:** Update the api
+  * **androidmanagement:** Update the api
+  * **androidpublisher:** Update the api
+  * **cloudsupport:** Update the api
+  * **compute:** Update the api
+  * **compute:** Update the api
+  * **container:** Update the api
+  * **content:** Update the api
+  * **content:** Update the api
+  * **contentwarehouse:** Update the api
+  * **discoveryengine:** Update the api
+  * **discoveryengine:** Update the api
+  * **dlp:** Update the api
+  * **documentai:** Update the api
+  * **integrations:** Update the api
+  * **integrations:** Update the api
+  * **marketingplatformadmin:** Update the api
+  * **monitoring:** Update the api
+  * **paymentsresellersubscription:** Update the api
+  * **searchads360:** Update the api
+  * **securitycenter:** Update the api
+  * **trafficdirector:** Update the api
+  * **verifiedaccess:** Update the api
+  * **youtube:** Update the api
+  * Added Added syntax highlighting to README (#2384)
+  * **dataportability:** Update the api (forwarded request 1168803 from glaubitz)</comment>
+    <requestid>1168804</requestid>
+  </revision>
 </revisionlist>
