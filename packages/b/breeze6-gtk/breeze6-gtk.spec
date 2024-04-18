@@ -31,14 +31,15 @@
 
 %bcond_without released
 Name:           breeze6-gtk
-Version:        6.0.3
+Version:        6.0.4.1
+%define _plasma6_bugfix 6.0.4
 Release:        0
 Summary:        GTK+ theme matching KDE's Breeze
 License:        LGPL-2.1-only
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/6.0.4/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/6.0.4/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  %{python_module pycairo}
