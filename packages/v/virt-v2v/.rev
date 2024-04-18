@@ -103,4 +103,12 @@
     <comment></comment>
     <requestid>1143557</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>aa9bd9a2e6ad3ae40e55028d358f8029</srcmd5>
+    <version>2.4.0</version>
+    <time>1713471236</time>
+    <user>anag+factory</user>
+    <comment>Spec file changes to improve support for converting windows and vmware guests and remote operation.</comment>
+    <requestid>1168910</requestid>
+  </revision>
 </revisionlist>

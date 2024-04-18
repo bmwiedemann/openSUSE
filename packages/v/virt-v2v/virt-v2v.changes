@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 18 10:06:56 MDT 2024 - carnold@suse.com
+
+- bsc#1223093 - virt-v2v needs nbdkit and libnbd on SLE15-SP6 to
+  function correctly
+  Add Requires on libnbd and all nbdkit packages. The nbdkit
+  packages are required for remote execution.
+  Added Requires on btrfsprogs
+
+-------------------------------------------------------------------
+Fri Mar 29 13:18:43 MDT 2024 - carnold@suse.com
+
+- Add Requires on gptfdisk and libguestfs-winsupport for
+  converting windows VMs.
+
+-------------------------------------------------------------------
 Fri Jan 19 14:58:36 UTC 2024 - olaf@aepfle.de
 
 - Relax the openssh requirement. Options passed to scp are known

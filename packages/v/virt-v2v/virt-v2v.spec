@@ -63,18 +63,22 @@ Requires:       %{_bindir}/gawk
 Requires:       %{_bindir}/gzip
 Requires:       %{_bindir}/qemu-nbd
 Requires:       %{_bindir}/virsh
+Requires:       btrfsprogs
 Requires:       curl
+Requires:       gptfdisk
 Requires:       guestfs-tools >= 1.42
+Requires:       libguestfs-winsupport
 Requires:       libguestfs0 >= 1.42
+Requires:       libnbd
+Requires:       nbdkit
+Requires:       nbdkit-curl-plugin
+Requires:       nbdkit-nbd-plugin
+Requires:       nbdkit-python-plugin
+Requires:       nbdkit-ssh-plugin
+Requires:       nbdkit-vddk-plugin
 Requires:       openssh-clients
 Requires:       ovmf
 Requires:       unzip
-Recommends:     nbdkit
-Recommends:     nbdkit-curl-plugin
-Recommends:     nbdkit-nbd-plugin
-Recommends:     nbdkit-python-plugin
-Recommends:     nbdkit-ssh-plugin
-Recommends:     nbdkit-vddk-plugin
 # Build only for architectures that have a kernel
 ExclusiveArch:  x86_64 ppc64le s390x aarch64 riscv64
 %if 0%{patches_touch_autotools}
