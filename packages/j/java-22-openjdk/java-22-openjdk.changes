@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Thu Apr 18 14:57:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-22.0.1+8 (April 2024 CPU)
+  * Security fixes
+    + JDK-8315708, CVE-2024-21012, bsc#1222987: Enhance HTTP/2
+      client usage
+    + JDK-8318340: Improve RSA key implementations
+    + JDK-8319851, CVE-2024-21011, bsc#1222979: Improve exception
+      logging
+    + JDK-8322122, CVE-2024-21068, bsc#1222983: Enhance generation
+      of addresses
+  * Other changes
+    + JDK-8314164: java/net/HttpURLConnection/
+      /HttpURLConnectionExpectContinueTest.java fails intermittently
+      in timeout
+    + JDK-8314275: Incorrect stepping in switch
+    + JDK-8317299: safepoint scalarization doesn't keep track of 
+      the depth of the JVM state
+    + JDK-8317804: com/sun/jdi/JdwpAllowTest.java fails on Alpine 
+      3.17 / 3.18
+    + JDK-8318158: RISC-V: implement roundD/roundF intrinsics
+    + JDK-8318603: Parallelize sun/java2d/marlin/ClipShapeTest.java
+    + JDK-8318696: Do not use LFS64 symbols on Linux
+    + JDK-8319382: com/sun/jdi/JdwpAllowTest.java shows failures on 
+      AIX if prefixLen of mask is larger than 32 in IPv6 case
+    + JDK-8320890: [AIX] Find a better way to mimic dl handle 
+      equality
+    + JDK-8321151: JDK-8294427 breaks Windows L&F on all older 
+      Windows versions
+    + JDK-8321374: Add a configure option to explicitly set 
+      CompanyName property in VersionInfo resource for Windows
+      exe/dll
+    + JDK-8321408: Add Certainly roots R1 and E1
+    + JDK-8321480: ISO 4217 Amendment 176 Update
+    + JDK-8321489: Update LCMS to 2.16
+    + JDK-8321815: Shenandoah: gc state should be synchronized to 
+      java threads only once per safepoint
+    + JDK-8321972: test runtime/Unsafe/InternalErrorTest.java 
+      timeout on linux-riscv64 platform
+    + JDK-8322092: Bump version numbers for 22.0.1
+    + JDK-8322098: os::Linux::print_system_memory_info enhance the 
+      THP output with 
+      /sys/kernel/mm/transparent_hugepage/hpage_pmd_size
+    + JDK-8322159: ThisEscapeAnalyzer crashes for erroneous code
+    + JDK-8322163: runtime/Unsafe/InternalErrorTest.java fails on 
+      Alpine after JDK-8320886
+    + JDK-8322417: Console read line with zero out should zero out 
+      when throwing exception
+    + JDK-8322725: (tz) Update Timezone Data to 2023d
+    + JDK-8322772: Clean up code after JDK-8322417
+    + JDK-8322783: prioritize /etc/os-release over 
+      /etc/SuSE-release in hs_err/info output
+    + JDK-8322790: RISC-V: Tune costs for shuffles with no 
+      conversion
+    + JDK-8322945: Problemlist runtime/CompressedOops/
+      /CompressedClassPointers.java on AIX
+    + JDK-8323021: Shenandoah: Encountered reference count always 
+      attributed to first worker thread
+    + JDK-8323065: Unneccesary CodeBlob lookup in 
+      CompiledIC::internal_set_ic_destination
+    + JDK-8323086: Shenandoah: Heap could be corrupted by oom 
+      during evacuation
+    + JDK-8323154: C2: assert(cmp != nullptr && cmp->Opcode() == 
+      Op_Cmp(bt)) failed: no exit test
+    + JDK-8323170: j2dbench is using outdated  javac source/target 
+      to be able to build by itself
+    + JDK-8323210: Update the usage of cmsFLAGS_COPY_ALPHA
+    + JDK-8323331: fix typo hpage_pdm_size
+    + JDK-8323428: Shenandoah: Unused memory in regions compacted 
+      during a full GC should be mangled
+    + JDK-8323515: Create test alias "all" for all test roots
+    + JDK-8323637: Capture hotspot replay files in GHA
+    + JDK-8323657: Compilation of snippet results in VerifyError at 
+      runtime with --release 9 (and above)
+    + JDK-8323664: java/awt/font/JNICheck/FreeTypeScalerJNICheck.java
+      still fails with JNI warning on some Windows configurations
+    + JDK-8323675: Race in jdk.javadoc-gendata
+    + JDK-8323920: Change milestone to fcs for all releases
+    + JDK-8323964: runtime/Thread/ThreadCountLimit.java fails 
+      intermittently on AIX
+    + JDK-8324041: ModuleOption.java failed with update release 
+      versioning scheme
+    + JDK-8324050: Issue store-store barrier after re-materializing 
+      objects during deoptimization
+    + JDK-8324280: RISC-V: Incorrect implementation in 
+      VM_Version::parse_satp_mode
+    + JDK-8324347: Enable "maybe-uninitialized" warning for 
+      FreeType 2.13.1
+    + JDK-8324598: use mem_unit when working with sysinfo memory 
+      and swap related information
+    + JDK-8324637: [aix] Implement support for reporting swap space 
+      in jdk.management
+    + JDK-8324647: Invalid test group of lib-test after JDK-8323515
+    + JDK-8324659: GHA: Generic jtreg errors are not reported
+    + JDK-8324753: [AIX] adjust os_posix after JDK-8318696
+    + JDK-8324937: GHA: Avoid multiple test suites per job
+    + JDK-8325074: ZGC fails assert(index == 0 || 
+      is_power_of_2(index)) failed: Incorrect load shift: 11
+    + JDK-8325150: (tz) Update Timezone Data to 2024a
+    + JDK-8325203: System.exit(0) kills the launched 3rd party 
+      application
+    + JDK-8325213: Flags introduced by configure script are not 
+      passed to ADLC build
+    + JDK-8325313: Header format error in TestIntrinsicBailOut 
+      after JDK-8317299
+    + JDK-8325326: [PPC64] Don't relocate in case of allocation 
+      failure
+    + JDK-8325470: [AIX] use fclose after fopen in read_psinfo
+    + JDK-8325496: Make TrimNativeHeapInterval a product switch
+    + JDK-8325590: Regression in round-tripping UTF-16 strings 
+      after JDK-8311906
+    + JDK-8325672: C2: allocate PhaseIdealLoop::_loop_or_ctrl from 
+      C->comp_arena()
+    + JDK-8325876: crashes in docker container tests on 
+      Linuxppc64le Power8 machines
+    + JDK-8326000: Remove obsolete comments for class 
+      sun.security.ssl.SunJSSE
+    + JDK-8326101: [PPC64] Need to bailout cleanly if creation of 
+      stubs fails when code cache is out of space
+    + JDK-8326360: Update the Zlib version in 
+      open/src/java.base/share/legal/zlib.md to 1.3
+    + JDK-8326638: Crash in 
+      PhaseIdealLoop::remix_address_expressions due to unexpected
+      Region instead of Loop
+    + JDK-8327391: Add SipHash attribution file
+- Modified patches:
+  * PStack-808293.patch
+  * disable-doclint-by-default.patch
+  * fips.patch
+  * java-22-openjdk.spec
+  * java-atk-wrapper-security.patch
+  * loadAssistiveTechnologies.patch
+  * memory-limits.patch
+  * multiple-pkcs11-library-init.patch
+  * reproducible-properties.patch
+  * system-pcsclite.patch
+  * zero-ranges.patch
+    + rediff to apply without fuzz
+
+-------------------------------------------------------------------
 Fri Mar 15 14:45:03 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of OpenJDK 22 release

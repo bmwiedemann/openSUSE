@@ -1,6 +1,6 @@
 --- a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/tools/PStack.java
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/tools/PStack.java
-@@ -101,7 +101,8 @@ public class PStack extends Tool {
+@@ -101,7 +101,8 @@ public void run(PrintStream out, Debugger dbg) {
                 if (jthread != null) {
                    jthread.printThreadInfoOn(out);
                 }
@@ -10,7 +10,7 @@
                    ClosestSymbol sym = f.closestSymbolToPC();
                    Address pc = f.pc();
                    out.print(pc + "\t");
-@@ -183,10 +184,19 @@ public class PStack extends Tool {
+@@ -183,10 +184,19 @@ public void run(PrintStream out, Debugger dbg) {
                           }
                        }
                    }

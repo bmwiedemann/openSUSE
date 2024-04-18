@@ -1,6 +1,6 @@
 --- a/src/jdk.javadoc/share/classes/jdk/javadoc/internal/doclets/toolkit/BaseConfiguration.java
 +++ b/src/jdk.javadoc/share/classes/jdk/javadoc/internal/doclets/toolkit/BaseConfiguration.java
-@@ -795,7 +795,7 @@ public abstract class BaseConfiguration {
+@@ -631,7 +631,7 @@ public void initDocLint(List<String> opts, Set<String> customTagNames) {
              }
          } else {
              // no -Xmsgs options of any kind, use default
@@ -11,7 +11,7 @@
          if (!customTagNames.isEmpty()) {
 --- a/test/langtools/jdk/javadoc/tool/doclint/DocLintTest.java
 +++ b/test/langtools/jdk/javadoc/tool/doclint/DocLintTest.java
-@@ -150,12 +150,12 @@ public class DocLintTest {
+@@ -150,12 +150,12 @@ void run() throws Exception {
              files = List.of(new TestJFO("Test.java", code));
  
              test(List.of(htmlVersion),
@@ -28,7 +28,7 @@
  
  //            test(List.of("-Xdoclint:none"),
  //                    Main.Result.OK,
-@@ -178,8 +178,8 @@ public class DocLintTest {
+@@ -178,8 +178,8 @@ void run() throws Exception {
                      EnumSet.of(Message.DL_WRN14));
  
              test(List.of(htmlVersion, rawDiags, "-private"),

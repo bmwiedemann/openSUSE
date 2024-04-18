@@ -1,6 +1,6 @@
---- jdk22u-jdk-22-36/make/autoconf/lib-bundled.m4	2024-03-15 16:01:46.767610222 +0100
-+++ jdk22u-jdk-22-36/make/autoconf/lib-bundled.m4	2024-03-15 16:01:55.957616058 +0100
-@@ -41,6 +41,7 @@
+--- a/make/autoconf/lib-bundled.m4
++++ b/make/autoconf/lib-bundled.m4
+@@ -41,6 +41,7 @@ AC_DEFUN_ONCE([LIB_SETUP_BUNDLED_LIBS],
    LIB_SETUP_ZLIB
    LIB_SETUP_LCMS
    LIB_SETUP_HARFBUZZ
@@ -8,7 +8,7 @@
  ])
  
  ################################################################################
-@@ -309,3 +310,41 @@
+@@ -309,3 +310,41 @@ AC_DEFUN_ONCE([LIB_SETUP_HARFBUZZ],
    AC_SUBST(HARFBUZZ_CFLAGS)
    AC_SUBST(HARFBUZZ_LIBS)
  ])
@@ -50,9 +50,9 @@
 +
 +  AC_SUBST(USE_EXTERNAL_PCSCLITE)
 +])
---- jdk22u-jdk-22-36/make/autoconf/spec.gmk.in	2024-03-15 16:01:46.767610222 +0100
-+++ jdk22u-jdk-22-36/make/autoconf/spec.gmk.in	2024-03-15 16:03:08.207661924 +0100
-@@ -813,6 +813,7 @@
+--- a/make/autoconf/spec.gmk.in
++++ b/make/autoconf/spec.gmk.in
+@@ -814,6 +814,7 @@ TAR_SUPPORTS_TRANSFORM := @TAR_SUPPORTS_TRANSFORM@
  # Build setup
  USE_EXTERNAL_LIBJPEG := @USE_EXTERNAL_LIBJPEG@
  USE_EXTERNAL_LIBGIF := @USE_EXTERNAL_LIBGIF@
@@ -60,9 +60,9 @@
  USE_EXTERNAL_LIBZ := @USE_EXTERNAL_LIBZ@
  LIBZ_CFLAGS := @LIBZ_CFLAGS@
  LIBZ_LIBS := @LIBZ_LIBS@
---- jdk22u-jdk-22-36/make/modules/java.smartcardio/Lib.gmk	2024-03-15 16:01:46.850943608 +0100
-+++ jdk22u-jdk-22-36/make/modules/java.smartcardio/Lib.gmk	2024-03-15 16:01:55.957616058 +0100
-@@ -30,12 +30,12 @@
+--- a/make/modules/java.smartcardio/Lib.gmk
++++ b/make/modules/java.smartcardio/Lib.gmk
+@@ -30,12 +30,12 @@ include LibCommon.gmk
  $(eval $(call SetupJdkLibrary, BUILD_LIBJ2PCSC, \
      NAME := j2pcsc, \
      CFLAGS := $(CFLAGS_JDKLIB), \
@@ -78,8 +78,8 @@
      LIBS_windows := winscard.lib, \
  ))
  
---- jdk22u-jdk-22-36/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c	2024-03-15 16:01:47.044277064 +0100
-+++ jdk22u-jdk-22-36/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c	2024-03-15 16:01:55.957616058 +0100
+--- a/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c
++++ b/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c
 @@ -36,6 +36,7 @@
  
  #include "pcsc_md.h"
@@ -88,7 +88,7 @@
  void *hModule;
  FPTR_SCardEstablishContext scardEstablishContext;
  FPTR_SCardConnect scardConnect;
-@@ -47,6 +48,7 @@
+@@ -47,6 +48,7 @@ FPTR_SCardListReaders scardListReaders;
  FPTR_SCardBeginTransaction scardBeginTransaction;
  FPTR_SCardEndTransaction scardEndTransaction;
  FPTR_SCardControl scardControl;
@@ -96,7 +96,7 @@
  
  /*
   * Throws a Java Exception by name
-@@ -75,6 +77,7 @@
+@@ -75,6 +77,7 @@ static void throwIOException(JNIEnv *env, const char *msg)
      throwByName(env, "java/io/IOException", msg);
  }
  
@@ -104,7 +104,7 @@
  static void *findFunction(JNIEnv *env, void *hModule, char *functionName) {
      void *fAddress = dlsym(hModule, functionName);
      if (fAddress == NULL) {
-@@ -85,9 +88,11 @@
+@@ -85,9 +88,11 @@ static void *findFunction(JNIEnv *env, void *hModule, char *functionName) {
      }
      return fAddress;
  }
@@ -116,14 +116,14 @@
      const char *libName = (*env)->GetStringUTFChars(env, jLibName, NULL);
      if (libName == NULL) {
          throwNullPointerException(env, "PCSC library name is null");
-@@ -141,4 +146,5 @@
+@@ -141,4 +146,5 @@ JNIEXPORT void JNICALL Java_sun_security_smartcardio_PlatformPCSC_initialize
  #else
      scardControl          = (FPTR_SCardControl)         findFunction(env, hModule, "SCardControl132");
  #endif // __APPLE__
 +#endif
  }
---- jdk22u-jdk-22-36/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.h	2024-03-15 16:01:47.044277064 +0100
-+++ jdk22u-jdk-22-36/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.h	2024-03-15 16:01:55.960949394 +0100
+--- a/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.h
++++ b/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.h
 @@ -23,6 +23,8 @@
   * questions.
   */
@@ -133,7 +133,7 @@
  typedef LONG (*FPTR_SCardEstablishContext)(DWORD dwScope,
                  LPCVOID pvReserved1,
                  LPCVOID pvReserved2,
-@@ -111,3 +113,41 @@
+@@ -111,3 +113,41 @@ extern FPTR_SCardListReaders scardListReaders;
  extern FPTR_SCardBeginTransaction scardBeginTransaction;
  extern FPTR_SCardEndTransaction scardEndTransaction;
  extern FPTR_SCardControl scardControl;

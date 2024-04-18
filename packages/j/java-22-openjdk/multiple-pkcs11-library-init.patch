@@ -1,6 +1,6 @@
---- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Config.java	2023-04-01 12:03:26.147543172 +0200
-+++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Config.java	2023-04-01 12:03:45.455660866 +0200
-@@ -52,6 +52,7 @@
+--- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Config.java
++++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Config.java
+@@ -52,6 +52,7 @@ final class Config {
      static final int ERR_HALT       = 1;
      static final int ERR_IGNORE_ALL = 2;
      static final int ERR_IGNORE_LIB = 3;
@@ -8,7 +8,7 @@
  
      // same as allowSingleThreadedModules but controlled via a system property
      // and applied to all providers. if set to false, no SunPKCS11 instances
-@@ -1037,6 +1038,7 @@
+@@ -1037,6 +1038,7 @@ private void parseHandleStartupErrors(String keyword) throws IOException {
          handleStartupErrors = switch (val) {
              case "ignoreAll" -> ERR_IGNORE_ALL;
              case "ignoreMissingLibrary" -> ERR_IGNORE_LIB;
@@ -16,9 +16,9 @@
              case "halt" -> ERR_HALT;
              default -> throw excToken("Invalid value for handleStartupErrors:");
          };
---- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java	2023-04-01 12:03:26.147543172 +0200
-+++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java	2023-04-01 12:07:19.664979695 +0200
-@@ -184,26 +184,37 @@
+--- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
++++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
+@@ -184,26 +184,37 @@ private static <T> T checkNull(T obj) {
                  String nssLibraryDirectory = config.getNssLibraryDirectory();
                  String nssSecmodDirectory = config.getNssSecmodDirectory();
                  boolean nssOptimizeSpace = config.getNssOptimizeSpace();

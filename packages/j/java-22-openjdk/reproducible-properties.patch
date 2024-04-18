@@ -1,6 +1,6 @@
 --- a/src/java.base/share/classes/java/util/Properties.java
 +++ b/src/java.base/share/classes/java/util/Properties.java
-@@ -955,7 +955,7 @@ public class Properties extends Hashtable<Object,Object> {
+@@ -955,7 +955,7 @@ private static void writeDateComment(BufferedWriter bw) throws IOException {
          if (sysPropVal != null && !sysPropVal.isEmpty()) {
              writeComments(bw, sysPropVal);
          } else {

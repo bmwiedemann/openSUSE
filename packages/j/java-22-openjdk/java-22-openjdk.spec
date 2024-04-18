@@ -33,8 +33,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      22
 %global interimver      0
-#global updatever       0
-%global buildver        36
+%global updatever       1
+%global buildver        8
 %global openjdk_repo    jdk22u
 %global openjdk_tag     jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}-%{buildver}
@@ -100,6 +100,9 @@
 %global package_version %{featurever}.%{interimver}.%{?updatever:%{updatever}}%{!?updatever:0}.%{?patchver:%{patchver}}%{!?patchver:0}~%{buildver}
 %endif
 %global NSS_LIBDIR %(pkg-config --variable=libdir nss)
+%if 0%{?gcc_version} < 7
+%global with_gcc 7
+%endif
 %bcond_with zero
 %if ! %{with zero}
 %global with_systemtap 1
@@ -178,6 +181,8 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
+BuildRequires:  gcc%{?with_gcc}
+BuildRequires:  gcc%{?with_gcc}-c++
 BuildRequires:  giflib-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  java-ca-certificates
@@ -230,13 +235,6 @@ Provides:       jre1.6.x
 Provides:       jre1.7.x
 Provides:       jre1.8.x
 Provides:       jre1.9.x
-%endif
-%if 0%{?suse_version} < 1500
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%else
-BuildRequires:  gcc >= 7
-BuildRequires:  gcc-c++ >= 7
 %endif
 %if %{with_system_lcms}
 BuildRequires:  liblcms2-devel
@@ -450,11 +448,11 @@ mkdir -p %{buildoutputdir}
 pushd %{buildoutputdir}
 
 bash ../configure \
-%if 0%{?suse_version} < 1500
-    CPP=cpp-7 \
-    CXX=g++-7 \
-    CC=gcc-7 \
-    NM=gcc-nm-7 \
+%if 0%{?with_gcc}
+    CPP="cpp-%{with_gcc}" \
+    CXX="g++-%{with_gcc}" \
+    CC="gcc-%{with_gcc}" \
+    NM="gcc-nm-%{with_gcc}" \
 %endif
 %if %{is_release}
     --with-version-pre="" \

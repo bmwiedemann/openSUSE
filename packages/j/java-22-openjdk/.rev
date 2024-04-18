@@ -7,4 +7,12 @@
     <comment>Build 36 is the official OpenJDK 22 release</comment>
     <requestid>1159653</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3d295ef11ae4399e2a0d4f1d0f318bc0</srcmd5>
+    <version>22.0.1.0</version>
+    <time>1713471224</time>
+    <user>anag+factory</user>
+    <comment>April 2024 CPU</comment>
+    <requestid>1168901</requestid>
+  </revision>
 </revisionlist>
