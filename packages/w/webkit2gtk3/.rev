@@ -1695,4 +1695,12 @@
   CVE-2023-42843.</comment>
     <requestid>1163500</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>e70b430dfd47defa4418c8173788e121</srcmd5>
+    <version>2.44.1</version>
+    <time>1713471056</time>
+    <user>anag+factory</user>
+    <comment>Add a CVE reference (forwarded request 1168626 from mgorse)</comment>
+    <requestid>1168634</requestid>
+  </revision>
 </revisionlist>

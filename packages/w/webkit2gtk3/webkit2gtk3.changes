@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 16 16:42:31 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.44.1:
+  + Fix handling of lifetime of web view child dialogs in GTK4.
+  + Do not schedule layer flushes when drawing area size is empty.
+  + Fix videos with alpha when using the DMA-BUF sink.
+  + Fix the build with USE_GBM=OFF.
+  + Fix the build in 32bit platforms
+  + Fix several crashes and rendering issues.
+- Drop webkit2gtk3-271108.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Wed Mar 20 12:19:12 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Use WebAssembly on aarch64. It is the upstream default and no
@@ -203,7 +215,7 @@ Thu Sep 28 08:47:58 UTC 2023 - Marcus Meissner <meissner@suse.com>
 -------------------------------------------------------------------
 Fri Sep 15 19:04:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update to version 2.42.0 (boo#1218033):
+- Update to version 2.42.0 (boo#1218033 boo#1222905):
   + New renderer based on DMA-BUF shared buffers.
   + Add new permission request to handle DOM paste access requests.
   + Add API to configure experimental features at runtime.
@@ -211,7 +223,7 @@ Fri Sep 15 19:04:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
     for data storage.
   + GBM is no longer required for WebGL implementation.
   + Security fixes: CVE-2023-39928, CVE-2023-41074, CVE-2023-32359,
-    CVE-2023-42890, CVE-2014-1745.
+    CVE-2023-42890, CVE-2014-1745, CVE-2024-23226.
 
 -------------------------------------------------------------------
 Mon Sep 11 15:02:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
