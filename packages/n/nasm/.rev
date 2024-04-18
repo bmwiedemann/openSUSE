@@ -382,4 +382,18 @@
     <comment></comment>
     <requestid>1165442</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>519b7a417e9ed2c7083a7ee89ec97f9c</srcmd5>
+    <version>2.16.03</version>
+    <time>1713470881</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.16.03:
+  * Fix building from git in a separate directory from the source.
+  * Remove some irrelevant files from the source distribution.
+  * Make the documentation stronger that -O0 or -O1 are probably
+    not what the user wants. See section 2.1.24.
+  * Fix configure --enable-lto build option.
+  * Update the included RPM .spec file.</comment>
+    <requestid>1168699</requestid>
+  </revision>
 </revisionlist>

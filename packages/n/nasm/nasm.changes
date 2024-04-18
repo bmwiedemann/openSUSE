@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 18 05:41:15 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.16.03:
+  * Fix building from git in a separate directory from the source.
+  * Remove some irrelevant files from the source distribution.
+  * Make the documentation stronger that -O0 or -O1 are probably
+    not what the user wants. See section 2.1.24.
+  * Fix configure --enable-lto build option.
+  * Update the included RPM .spec file.
+
+-------------------------------------------------------------------
 Fri Apr  5 05:48:27 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.16.02:
