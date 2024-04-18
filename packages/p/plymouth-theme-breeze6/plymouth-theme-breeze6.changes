@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 17 08:19:24 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.4.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.4.1
+- Changes since 6.0.3:
+  * Fix ECM dep version
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Mar 26 18:06:55 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.3:
