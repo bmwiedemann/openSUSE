@@ -15,7 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+# The implementation of python 3.11 support begins from SLE15-SP4
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150300
+%bcond_with gpgtest
+%else
+%bcond_without gpgtest
+%endif
+%{?sle15_python_module_pythons}
 %define distversion 3.7.0
 Name:           bmap-tools
 Version:        3.7
@@ -35,7 +41,9 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Provides:       python-bmaptools = %{version}-%{release}
 # SECTION test
+%if %{with gpgtest}
 BuildRequires:  %{python_module gpg}
+%endif
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
 # /SECTION
@@ -78,6 +86,7 @@ install -m644 docs/man1/bmaptool.1 %{buildroot}/%{_mandir}/man1
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
 %check
+%if %{with gpgtest}
 # extend signing key expiration for reproducible builds
 export GNUPGHOME=$PWD/tests/test-data/gnupg
 echo 'expire
@@ -88,6 +97,10 @@ expire
 save' | gpg --command-fd=0 --batch --edit-key 927FF9746434704C5774BE648D49DFB1163BDFB4
 # no /sys/module/zfs/ in obs test environment: returns false instead of IOError
 %pytest -k "not test_is_zfs_configuration_compatible_unreadable_file"
+%else
+# there is no gpg built with python 3.11 in Leap15/SLE15
+%pytest -k "not test_is_zfs_configuration_compatible_unreadable_file and not test_valid_signature"
+%endif
 
 %post
 %{python_install_alternative bmaptool bmaptool.1}
