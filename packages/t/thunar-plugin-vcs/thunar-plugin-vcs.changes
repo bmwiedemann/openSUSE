@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 29 10:08:55 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Undo the last change. Issue has to be resolved in libserf.
+  See boo#1221211 and boo#1222938
+
+-------------------------------------------------------------------
 Sun Mar 10 14:19:06 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update build requirements; i.e. require openssl < 3 for Leap 15.6

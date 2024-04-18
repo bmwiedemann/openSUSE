@@ -37,9 +37,6 @@ BuildRequires:  pkgconfig(gthread-2.0) >= 2.18.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
 BuildRequires:  pkgconfig(thunarx-3) >= 1.2.0
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
-BuildRequires:  pkgconfig(libopenssl) < 3
-%endif
 Requires:       thunar >= 1.7.0
 Recommends:     %{name}-lang = %{version}
 Provides:       %{plugin_name} = %{version}
