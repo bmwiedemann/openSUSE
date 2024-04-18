@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Apr 17 08:13:28 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.4
+- Changes since 6.0.3:
+  * update version for new release
+  * kcm: Fix kcm shows a blank main display after removing a printer
+  * kcm/qml: Fix non-scrollable Printer Settings page
+  * libkcups/DeviceModel: Use better user-facing terminology
+  * kcm/FindPrinter: Fix for both types of manual printer setup
+  * kcm/FindPrinter: Fix manual driver selection for direct devices
+  * kcm/qml: Remove PlasmaComponents imports
+  * kcm/FindPrinter: Fix connection list highlight
+  * kcm/qml: Remove PlasmaComponents3
+  * kcm/MakeModel: Remove PlasmaComponents/PlasmaExtras
+  * kcm/Drivers: Fix double highlighted list item
+  * kcm/BaseDevice: Add Banner and uri helpers
+  * kcm: Fix constraint on make/model (driver) selection dialog
+  * kcm/FindPrinter: Fix double highlighted list item
+  * kcm: Add a debug; Use the CUPS printer-uri
+  * revert premature appstream update
+  * update version for new release
+  * kcm: Handle recommended drivers not found scenario (kde#482409)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Mar 26 18:06:22 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.3:
