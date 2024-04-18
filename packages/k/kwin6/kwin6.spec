@@ -29,15 +29,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwin6
-Version:        6.0.3.1
-%global _plasma6_bugfix 6.0.3
+Version:        6.0.4
 Release:        0
 Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/6.0.3/%{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/6.0.3/%{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
@@ -136,7 +135,7 @@ Requires:       qt6-multimedia-imports >= %{qt6_version}
 # /SECTION
 # For post and verifyscript
 Requires(post): permissions
-Requires(verify):permissions
+Requires(verify): permissions
 # For displaying full monitor vendor names
 Recommends:     hwdata
 # xorg-x11-server-wayland is required by plasma6-session-wayland, but not kwin6 itself
