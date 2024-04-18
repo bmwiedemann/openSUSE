@@ -33,8 +33,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      17
 %global interimver      0
-%global updatever       10
-%global buildver        7
+%global updatever       11
+%global buildver        9
 %global openjdk_repo    jdk17u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
