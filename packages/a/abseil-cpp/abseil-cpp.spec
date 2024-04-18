@@ -21,7 +21,7 @@
 %global with_gcc 7
 %endif
 Name:           abseil-cpp
-Version:        20240116.1
+Version:        20240116.2
 Release:        0
 Summary:        C++11 libraries which augment the C++ stdlib
 License:        Apache-2.0
@@ -80,13 +80,10 @@ export CXX="g++-%{with_gcc}"
 %cmake_install
 %fdupes %{buildroot}/%{_prefix}
 
-# SLE12 doed not define this macro
-%if %{undefined ldconfig_scriptlets}
-%post -n %{lname} -p /sbin/ldconfig
-%postun  -n %{lname} -p /sbin/ldconfig
-%else
+%check
+%ctest
+
 %ldconfig_scriptlets -n %{lname}
-%endif
 
 %files -n %{lname}
 %license LICENSE
