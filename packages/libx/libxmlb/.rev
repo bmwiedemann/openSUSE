@@ -167,4 +167,12 @@ Needed for future versions of fwupd</comment>
     - Rebuild the XbMachine parser to support 'and' and 'or'</comment>
     <requestid>1137237</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a14a2ebdac46dbb7547ad40b6aa84e9b</srcmd5>
+    <version>0.3.18</version>
+    <time>1713470885</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1168793</requestid>
+  </revision>
 </revisionlist>
