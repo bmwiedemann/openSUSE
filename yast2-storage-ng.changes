@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 17 15:56:25 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
+
+- Optionally add the encryption status in the device description
+  (gh#openSUSE/agama#1155)
+- 5.0.12
+
+-------------------------------------------------------------------
 Wed Apr  3 09:52:32 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - GuidedProposal: fixed a problem related to the :bigger_resize
