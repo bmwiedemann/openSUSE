@@ -16,98 +16,126 @@
 #
 
 
-%define         flavor  @BUILD_FLAVOR@%{nil}
-
-%if "%{flavor}" == ""
-%define openssl3 1
-%define provider 0
-%endif
-
-%if "%{flavor}" == "openssl1"
-%define openssl3 0
-%define provider 0
-%endif
-
-%if "%{flavor}" == "engine"
-%define openssl3 1
-%define provider 0
-%endif
-
-%if "%{flavor}" == "provider"
-%define openssl3 1
-%define provider 1
-%endif
-
 %global enginesdir %(pkg-config --variable=enginesdir libcrypto)
 %global modulesdir %(pkg-config --variable=modulesdir libcrypto)
 
+%global sslengcnf %{_sysconfdir}/ssl/engines3.d
+%global sslengdef %{_sysconfdir}/ssl/engdef3.d
+
+%define         flavor  @BUILD_FLAVOR@%{nil}
+
+%if "%{flavor}" == ""
 Name:           openssl-ibmca
+%endif
+
+%if "%{flavor}" == "engine"
+Name:           openssl-ibmca-engine
+%endif
+
+%if "%{flavor}" == "provider"
+Name:           openssl-ibmca-provider
+%endif
+
+%if "%{flavor}" == "openssl1_1"
+%global sslengcnf %{_sysconfdir}/ssl/engines1.1.d
+%global sslengdef %{_sysconfdir}/ssl/engdef1.1.d
+Name:           openssl1_1-ibmca
+%endif
+
 Version:        2.4.1
 Release:        0
 Summary:        The IBMCA OpenSSL dynamic engine
 License:        Apache-2.0
 Group:          Hardware/Other
 URL:            https://github.com/opencryptoki/openssl-ibmca
-Source:         https://github.com/opencryptoki/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/opencryptoki/openssl-ibmca/archive/v%{version}.tar.gz#/openssl-ibmca-%{version}.tar.gz
 Source1:        engine_section.txt
 Source2:        _multibuild
 ###
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  libtool
+###
+%if "%{flavor}" != "openssl1_1"
 BuildRequires:  libica-devel >= 4.0.0
 BuildRequires:  libica-tools >= 4.0.0
-BuildRequires:  libtool
-Requires:       libica4 >= 4
-%if %{openssl3}
-BuildRequires:  openssl-devel > 3.0.0
-Requires:       openssl > 3.0.0
+BuildRequires:  libopenssl-3-devel
+BuildRequires:  libopenssl3
+Requires:       libica4 >= 4.0.0
+Requires:       libopenssl3
 %else
-BuildRequires:  openssl-devel
-Requires:       openssl
+BuildRequires:  libica-openssl1_1-devel
+BuildRequires:  libica-openssl1_1-tools
+BuildRequires:  libopenssl-1_1-devel
+BuildRequires:  libopenssl1_1
+BuildRequires:  openssl
+Requires:       libica4-openssl1_1
+Requires:       libopenssl1_1
 %endif
+###
 ExclusiveArch:  s390x
+
+%if "%{flavor}" == "openssl1_1"
+Patch001:       openssl1-rename-libica-files.patch
+%endif
 
 %description
 This package contains a shared object OpenSSL dynamic engine which interfaces
 to libica, a library enabling the IBM s390/x CPACF crypto instructions.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n openssl-ibmca-%{version}
  ./bootstrap.sh
 
 %build
 export CFLAGS="%{optflags}"
 export CPPFLAGS="%{optflags}"
 
-%if %{provider}
-  %configure \
+%if "%{flavor}" == ""
+%configure \
+  --libdir=%{modulesdir}
+  mkdir -p %{buildroot}/%{enginesdir}
+%endif
+
+%if "%{flavor}" == "engine"
+%configure \
+  --disable-provider \
+  --libdir=%{enginesdir}
+%endif
+
+%if "%{flavor}" == "provider"
+%configure \
   --disable-engine \
   --libdir=%{modulesdir}
-%else
-  %configure \
-  --disable-provider \
+%endif
+
+%if "%{flavor}" == "openssl1_1"
+%configure \
   --libdir=%{enginesdir}
 %endif
 
 %make_build
 
 %install
-%if %{provider}
-#
-###
-#
-%else
 # Update the sample config file so that the dynamic path points
 # to the correct version of the engines directory.
+%if "%{flavor}" != "provider"
 sed -i -e "/^dynamic_path/s, = .*/, = %{enginesdir}/," src/engine/openssl.cnf.sample
 %endif
 
 %make_install
-%if %{provider}
-rm -f %{buildroot}/%{modulesdir}/ibmca-provider.la
-%else
-rm -f %{buildroot}/%{enginesdir}/ibmca.la
+
+%if "%{flavor}" == "openssl1_1"
+rm -f %{buildroot}/%{enginesdir}/ibmca-provider.*
 %endif
+
+%if "%{flavor}" == ""
+mkdir -p %{buildroot}/%{enginesdir}
+mv %{buildroot}/%{modulesdir}/ibmca.* %{buildroot}/%{enginesdir}/
+%endif
+
+rm -f %{buildroot}/%{enginesdir}/ibmca*.la
+rm -f %{buildroot}/%{modulesdir}/ibmca*.la
 
 # This file contains the declaration of the ibmca engine section. It
 # needs to be on the "real" file system when the postinstall scriptlet
@@ -127,45 +155,55 @@ grep -v "^#" src/engine/openssl.cnf.sample | \
 %post
 #Original fix for bsc#942839 was to update on first install
 #For bsc#966139 update if openssl_def not found
-SSLENGCNF=%{_sysconfdir}/ssl/engines.d
-SSLENGDEF=%{_sysconfdir}/ssl/engdef.d
 
-%if %{openssl3}
-  mkdir -p ${SSLENGCNF}
-  mkdir -p ${SSLENGDEF}
+mkdir -p %{sslengcnf}
+mkdir -p %{sslengdef}
+cp -p %{_datadir}/%{name}/openssl-ibmca.sectiondef.txt %{sslengcnf}/openssl-ibmca.cnf
+cp -p %{_datadir}/%{name}/openssl-ibmca.enginedef.cnf %{sslengdef}/openssl-ibmca.cnf
+
+%if "%{flavor}" == ""
+   cp -p /usr/share/doc/packages/openssl-ibmca/ibmca-engine-opensslconfig /usr/share/doc/packages/openssl-ibmca/ibmca-engine-opensslconfig.orig
+   sed -e 's/ossl-modules/engines-3/' /usr/share/doc/packages/openssl-ibmca/ibmca-engine-opensslconfig.orig > /usr/share/doc/packages/openssl-ibmca/ibmca-engine-opensslconfig
+   rm /usr/share/doc/packages/openssl-ibmca/ibmca-engine-opensslconfig.orig
 %endif
 
-cp -p %{_datadir}/%{name}/openssl-ibmca.sectiondef.txt ${SSLENGCNF}/openssl-ibmca.cnf
-cp -p %{_datadir}/%{name}/openssl-ibmca.enginedef.cnf ${SSLENGDEF}/openssl-ibmca.cnf
-
 %postun
-SSLENGCNF=%{_sysconfdir}/ssl/engines.d
-SSLENGDEF=%{_sysconfdir}/ssl/engdef.d
 if [ $1 -eq 0 ]; then # last uninstall
-  rm -f ${SSLENGCNF}/openssl-ibmca.cnf
-  rm -f ${SSLENGDEF}/openssl-ibmca.cnf
+  rm -f %{sslengcnf}/openssl-ibmca.cnf
+  rm -f %{sslengdef}/openssl-ibmca.cnf
 fi
 
 %files
 %license LICENSE
 %doc ChangeLog
 %doc README.md
-%doc src/engine/openssl.cnf.sample
-%doc src/engine/ibmca-engine-opensslconfig.in
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/openssl-ibmca.sectiondef.txt
 %{_datadir}/%{name}/openssl-ibmca.enginedef.cnf
-%if %{openssl3}
-  %if %{provider}
+%if "%{flavor}" == ""
+    %doc src/engine/ibmca-engine-opensslconfig
+    %doc src/provider/ibmca-provider-opensslconfig
+    %doc src/engine/openssl.cnf.sample
+    %{enginesdir}/ibmca.*
+    %{modulesdir}/ibmca-provider.*
+    %{_mandir}/man5/ibmca.5%{?ext_man}
+    %{_mandir}/man5/ibmca-provider.5%{?ext_man}
+%endif
+%if "%{flavor}" == "provider"
+    %doc src/provider/ibmca-provider-opensslconfig
     %{modulesdir}/ibmca-provider.*
     %{_mandir}/man5/ibmca-provider.5%{?ext_man}
-  %else
+%endif
+%if "%{flavor}" == "engine"
+    %doc src/engine/ibmca-engine-opensslconfig
+    %doc src/engine/openssl.cnf.sample
     %{enginesdir}/ibmca.*
     %{_mandir}/man5/ibmca.5%{?ext_man}
-  %endif
-%else
-  %{enginesdir}/ibmca.*
-  %{_mandir}/man5/ibmca.5%{?ext_man}
+%endif
+%if "%{flavor}" == "openssl1_1"
+    %doc src/engine/openssl.cnf.sample
+    %{enginesdir}/ibmca.*
+    %{_mandir}/man5/ibmca.5%{?ext_man}
 %endif
 
 %changelog

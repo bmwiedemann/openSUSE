@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Apr 17 14:04:14 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file
+- Changed the package names
+  +-------------+---------------------------------+--------------------------+
+  |  Flavor     | Package name                    | Note                     |
+  +-------------+---------------------------------+--------------------------+
+  |  ''         | openssl-ibmca                   | Both engine and provider |
+  |  openssl1_1 | openssl1_1-ibmca                | openssl1 flavor          |
+  |  engine     | openssl-ibmca-engine            | Only engine              |
+  |  provider   | openssl-ibmca-provider          | Only provider            |
+  +-------------+---------------------------------+--------------------------+
+
+-------------------------------------------------------------------
+Wed Apr 17 08:41:08 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch for openssl1_1 (bsc#1221627)
+  * openssl1-rename-libica-files.patch
+
+-------------------------------------------------------------------
+Tue Apr  9 14:08:05 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Re-implemented flavors (openssl3, engine, provider) (bsc#1221627) 
+  +------------+---------------------------------+--------------------------+ 
+  |  Flavor    | Package name                    | Note                     |
+  +------------+---------------------------------+--------------------------+ 
+  |  ''        | openssl-ibmca                   | openssl1 flavor          |
+  |  engine    | openssl3-ibmca-engine           | Only engine              |
+  |  provider  | openssl3-ibmca-provider         | Only provider            |
+  |  openssl3  | openssl3-ibmca                  | Both engine and provider |        
+  +------------+---------------------------------+--------------------------+ 
+- Changing/editing 'dynamic_path' after the installation on the target system 
+  * From /usr/lib64/ossl-modules to /usr/lib64/engines-3 in
+    /usr/share/doc/packages/openssl3-ibmca/ibmca-engine-opensslconfig
+    for openssl3 flavor
+
+-------------------------------------------------------------------
+Thu Apr  4 07:02:23 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file (bsc#1221627)
+  * Removed the flavors
+  * Removed 'muiltibuild' environment
+  * Removed the 'provider' logic
+
+-------------------------------------------------------------------
 Mon Mar 18 19:18:47 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Updated the .spec file (bsc#1218933, bsc#1221627)
