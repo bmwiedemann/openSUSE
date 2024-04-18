@@ -2631,4 +2631,17 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
   on SLE11.  Use the regular language compilers for testing.</comment>
     <requestid>1159816</requestid>
   </revision>
+  <revision rev="177" vrev="7">
+    <srcmd5>345bcbc0569bac73a8283bea029be1b0</srcmd5>
+    <version>13.2</version>
+    <time>1713470882</time>
+    <user>anag+factory</user>
+    <comment>- Maintenance script qa.sh:
+  * Add PR31648 KFAIL.
+  * Handle yama ptrace_scope == 1.
+- Patches added (bsc#1220490):
+  * fixup-gdb-6.6-buildid-locate-rpm.patch
+</comment>
+    <requestid>1168788</requestid>
+  </revision>
 </revisionlist>
