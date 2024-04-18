@@ -17,14 +17,16 @@
 
 
 Name:           dracut-pcr-signature
-Version:        0.3+1
+Version:        0.3+5
 Release:        0
 Summary:        Dracut module to import PCR signatures
 License:        GPL-2.0-or-later
 URL:            https://github.com/aplanas/dracut-pcr-signature
 Source:         %{name}-%{version}.tar.xz
-Requires:       dracut
+BuildRequires:  rpm-config-SUSE
+BuildRequires:  pkgconfig(dracut)
 BuildArch:      noarch
+Conflicts:      grub2
 
 %description
 Dracut module to import PCR signatures.  This will make possible the
@@ -42,6 +44,15 @@ mkdir -p %buildroot/usr/lib/dracut/modules.d/50pcr-signature
 cp module-setup.sh %buildroot/usr/lib/dracut/modules.d/50pcr-signature
 cp pcr-signature.sh %buildroot/usr/lib/dracut/modules.d/50pcr-signature
 cp pcr-signature.conf %buildroot/usr/lib/dracut/modules.d/50pcr-signature
+
+%post
+%regenerate_initrd_post
+
+%posttrans
+%regenerate_initrd_posttrans
+
+%postun
+%regenerate_initrd_post
 
 %files
 %license LICENSE

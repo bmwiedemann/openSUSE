@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 17 12:29:01 UTC 2024 - aplanas@suse.com
+
+- Update to version 0.3+5:
+  * Generate the initrd after installation
+  * Temporaly conflict with GRUB2
+  * Small fix for comment
+
+-------------------------------------------------------------------
+Tue Apr 16 17:19:57 UTC 2024 - aplanas@suse.com
+
+- Update to version 0.3+2:
+  * Do not hard fail when error in mount
+
+-------------------------------------------------------------------
 Fri Apr 12 18:01:58 UTC 2024 - aplanas@suse.com
 
 - Update to version 0.3+1:
