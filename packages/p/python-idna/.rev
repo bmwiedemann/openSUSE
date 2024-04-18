@@ -193,4 +193,14 @@ update to version v2.5
   * Added security reporting protocol for project</comment>
     <requestid>1129063</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ca5fa2619730ae3bfc4c316f250f031e</srcmd5>
+    <version>3.7</version>
+    <time>1713470881</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.7 (bsc#1222842, CVE-2024-3651):
+  * Fix issue where specially crafted inputs to encode() could take
+    exceptionally long amount of time to process. [CVE-2024-3651]</comment>
+    <requestid>1168783</requestid>
+  </revision>
 </revisionlist>

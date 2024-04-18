@@ -1,7 +1,7 @@
 #
 # spec file for package python-idna
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-idna
-Version:        3.6
+Version:        3.7
 Release:        0
 Summary:        Internationalized Domain Names in Applications (IDNA)
 License:        BSD-3-Clause
@@ -46,7 +46,7 @@ for the “encodings.idna” module that comes with the Python standard
 library but currently only supports the older 2003 specification.
 
 %prep
-%setup -q -n idna-%{version}
+%autosetup -p1 -n idna-%{version}
 
 %build
 %pyproject_wheel
@@ -61,6 +61,7 @@ library but currently only supports the older 2003 specification.
 %files %{python_files}
 %license LICENSE.md
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/idna
+%{python_sitelib}/idna-%{version}*-info
 
 %changelog

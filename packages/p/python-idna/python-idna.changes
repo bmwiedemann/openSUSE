@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 18 07:30:37 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- update to 3.7 (bsc#1222842, CVE-2024-3651):
+  * Fix issue where specially crafted inputs to encode() could take
+    exceptionally long amount of time to process. [CVE-2024-3651]
+
+-------------------------------------------------------------------
 Mon Nov 27 08:56:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6:
