@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Apr 10 12:48:01 UTC 2024 - i@guoyunhe.me
+
+- Update to version 0.0.31~git20240409:
+  * SPU Analyzer: Do not terminate blocks on BRA
+  * cellRtc: review fixes
+  * cellRtc: remove wrong duplicate pos++
+  * cellRtc: implement Rfc3339 part of cellRtcParseDateTime
+  * cellRtc: simplify some disassembly code
+  * Remove git brew package from macOS CI script (#15407)
+  * cellGame: add some more error checks
+  * cellCamera: fix config from_string
+  * lv2_socket: reset queue after move
+  * cellGame: Enable disc insert/eject based on disc mount state
+  * Update curl to 8.7.1
+  * Update soundtouch to  2.3.3
+  * Update SDL to 2.30.2
+  * Update FAudio to 20.04
+  * Fix typo in lv2_socket_native
+  * Fix changelog size hack
+  * Savestates/Network: Feign connection failure on startup
+  * Fix updater message
+  * Savestates/SPU: Fix MFC commands abort
+  * SPU Debugger: Implement viewing block hash on request
+  * SPU LLVM: Fix store elimination within common blocks
+  * Replace some URLs
+  * Updater: Add RPCS3's Patreon link to update dialog
+  * PPU Loader: Fix unload of HLEd PRX modules
+  * PPU LLVM: Fix leak of modules outside dev_flash/sys/internal
+  * SPU LLVM: Postpone runtime worker threads init
+  * PPU LLVM: Unify memory limit for PRX and Overlay files
+  * PPU LLVM: Fix memory leak on precompilation
+  * use the pass manager instead of the legacy one
+
+-------------------------------------------------------------------
 Fri Mar 29 14:20:30 UTC 2024 - i@guoyunhe.me
 
 - Update to version 0.0.31~git20240329:
