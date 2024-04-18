@@ -8,9 +8,10 @@
 
   <property name="project.groupId" value="com.google.errorprone"/>
   <property name="project.artifactId" value="error_prone_annotations"/>
-  <property name="project.version" value="2.11.0"/>
+  <!-- <property name="project.version" value="2.26.1"/> -->
 
-  <property name="compiler.source" value="1.8"/>
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
@@ -41,6 +42,7 @@
            encoding="UTF-8"
            optimize="false"
            deprecation="true"
+           release="${compiler.release}"
            target="${compiler.target}"
            verbose="false"
            fork="false"
@@ -48,6 +50,23 @@
       <src>
         <pathelement location="${build.srcDir}"/>
       </src>
+      <exclude name="**/module-info.java"/>
+    </javac>
+    <javac destdir="${build.outputDir}"
+           nowarn="false"
+           debug="true"
+           encoding="UTF-8"
+           optimize="false"
+           deprecation="true"
+           release="9"
+           target="9"
+           verbose="false"
+           fork="false"
+           source="9">
+      <src>
+        <pathelement location="${build.srcDir}"/>
+      </src>
+      <include name="**/module-info.java"/>
     </javac>
     <copy todir="${build.outputDir}">
       <fileset dir="${build.resourceDir}">
@@ -98,7 +117,20 @@
          basedir="${build.outputDir}"
          excludes="**/package.html">
       <manifest>
-		<attribute name="Automatic-Module-Name" value="com.google.errorprone.annotations"/>
+		<attribute name="Bundle-Description" value="Error Prone is a static analysis tool for Java that catches common programming mistakes at compile-time."/>
+		<attribute name="Bundle-DocURL" value="https://errorprone.info/error_prone_annotations"/>
+		<attribute name="Bundle-License" value="&quot;Apache 2.0&quot;;link=&quot;http://www.apache.org/licenses/LICENSE-2.0.txt&quot;"/>
+		<attribute name="Bundle-ManifestVersion" value="2"/>
+		<attribute name="Bundle-Name" value="error-prone annotations"/>
+		<attribute name="Bundle-SymbolicName" value="com.google.errorprone.annotations"/>
+		<attribute name="Bundle-Version" value="${project.version}"/>
+		<attribute name="Export-Package" value="com.google.errorprone.annotations.concurrent;version=&quot;${project.version}&quot;,com.google.errorprone.annotations;uses:=&quot;javax.lang.model.element&quot;;version=&quot;${project.version}&quot;"/>
+		<attribute name="Import-Package" value="javax.lang.model.element"/>
+		<attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
+		<attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
+		<attribute name="JavaPackages-Version" value="${project.version}"/>
+		<attribute name="Multi-Release" value="true"/>
+		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
       </manifest>
     </jar>
   </target>

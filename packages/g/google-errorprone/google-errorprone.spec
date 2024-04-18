@@ -1,7 +1,7 @@
 #
 # spec file for package google-errorprone
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global source_name error-prone
 Name:           google-errorprone
-Version:        2.11.0
+Version:        2.26.1
 Release:        0
 Summary:        Google Error Prone
 License:        Apache-2.0
@@ -27,6 +27,7 @@ URL:            https://errorprone.info
 Source0:        %{source_name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  mvn(biz.aQute.bnd:bnd-maven-plugin)
 BuildRequires:  mvn(com.google.auto.service:auto-service)
 BuildRequires:  mvn(com.google.auto.service:auto-service-annotations)
 BuildRequires:  mvn(com.google.code.gson:gson)
@@ -98,7 +99,7 @@ This package contains the API documentation for %{name}.
 %{mvn_file} ":error_prone_{*}" %{name}/@1
 
 %build
-%{mvn_build} -f
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install

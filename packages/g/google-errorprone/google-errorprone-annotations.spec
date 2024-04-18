@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package google-errorprone-annotations
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global artifactId error_prone_annotations
 %global group_name google-errorprone
 Name:           %{group_name}-annotations
-Version:        2.11.0
+Version:        2.26.1
 Release:        0
 Summary:        error-prone annotations
 License:        Apache-2.0
@@ -30,7 +30,8 @@ Source0:        %{source_name}-%{version}.tar.xz
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  java-devel >= 9
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -49,14 +50,10 @@ This package contains the API documentation for %{name}.
 %prep
 %setup -q -n %{source_name}-%{version}
 cp %{SOURCE1} annotations/build.xml
-%pom_remove_parent annotations
-%pom_xpath_inject pom:project "
-    <groupId>com.google.errorprone</groupId>
-    <version>2.11.0</version>" annotations
 
 %build
 pushd annotations
-%{ant} jar javadoc
+%{ant} -Dproject.version=%{version} jar javadoc
 popd
 
 %install
@@ -65,7 +62,7 @@ install -d -m 0755 %{buildroot}%{_javadir}/%{group_name}
 install -p -m 0644 annotations/target/%{artifactId}-%{version}.jar %{buildroot}%{_javadir}/%{group_name}/annotations.jar
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}/%{group_name}
-install -pm 644 annotations/pom.xml %{buildroot}%{_mavenpomdir}/%{group_name}/annotations.pom
+%{mvn_install_pom} annotations/pom.xml %{buildroot}%{_mavenpomdir}/%{group_name}/annotations.pom
 %add_maven_depmap %{group_name}/annotations.pom %{group_name}/annotations.jar
 # javadoc
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}

@@ -1,7 +1,274 @@
 -------------------------------------------------------------------
+Mon Apr 15 05:13:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.26.1
+  * Changes of version 2.26.1:
+    + Fixes the module name: from 'com.google.errorprone.annotation'
+      to 'com.google.errorprone.annotations'. Amends the OSGi build
+      not to include 'Automatic-Module-Name' in the MANIFEST.MF for the
+      'annotations' project.
+  * Changes of version 2.26.0:
+    + The 'annotations' artifact now includes a module-info.java for
+      Java Platform Module System support.
+    + Disabled checks passed to -XepPatchChecks are now ignored,
+      instead of causing a crash.
+    + New checks:
+      - SystemConsoleNull: Null-checking System.console() is not a
+        reliable way to detect if the console is connected to a
+        terminal.
+      - EnumOrdinal: Discourage uses of Enum.ordinal()
+    + Closed issues:
+      - Add module-info.java #2649
+      - 2.19.x: Exception thrown when a disabled check is passed to
+        -XepPatchChecks #3908
+      - Ignore disabled checks passed to -XepPatchChecks #4028
+      - feat: add jpms definition for annotations #4311
+      - Add the 'compile' goal for 'compile-java9' #4314
+  * Changes of version 2.25.0:
+    + New checks:
+      - JUnitIncompatibleType: Detects incompatible types passed to
+        an assertion, similar to TruthIncompatibleType
+      - RedundantSetterCall: Detects fields set twice in the same
+        chained expression. Generalization of previous
+        ProtoRedundantSet check to also handle AutoValue.
+    + Closed issues:
+      - Crash in UnnecessaryStringBuilder #4195
+      - Fix typos #4224
+      - Add support for specifying badEnclosingTypes for BadImport
+        via flags #4228
+      - Some BugPattern docs are missing code examples #4248
+      - Remove incorrect statement from BugPattern index doc #4249
+      - Do not report NonFinalStaticField findings for fields
+        modified in @BeforeAll methods #4251
+  * Changes of version 2.24.1:
+    + Add an assertion to try to help debug #4225
+  * Changes of version 2.24.0:
+    + New checks:
+      - MultipleNullnessAnnotations: Discourage multiple nullness
+        annotations
+      - NullableTypeParameter: Discourage nullness annotations on
+        type parameters
+      - NullableWildcard: Discourage nullness annotations on
+        wildcards
+      - SuperCallToObjectMethod: Generalization of
+        SuperEqualsIsObjectEquals, now covers hashCode
+  * Changes of version 2.23.0:
+    + New checks: DuplicateDateFormatField, NonFinalStaticField,
+      StringCharset, StringFormatWithLiteral,
+      SuperEqualsIsObjectEquals
+    + Bug fixes and improvements: #3897, #4114, #4123
+  * Changes of version 2.22.0:
+    + New checks:
+      - ClosingStandardOutputStreams: Prevents accidentally closing
+        System.{out,err} with try-with-resources
+      - TruthContainsExactlyElementsInUsage: containsExactly is
+        preferred over containsExactlyElementsIn when creating new
+        iterables
+      - UnnecessaryAsync: detects unnecessary use of async
+        primitives in local (and hence single-threaded) scopes
+      - ReturnAtTheEndOfVoidFunction: detects unnecessary return
+        statements at the end of void functions
+      - MultimapKeys: Suggests using keySet() instead of iterating
+        over Multimap.keys(), which does not collapse duplicates
+    + Bug fixes and improvements:
+      - Don't complain about literal IP addresses in
+        AddressSelection
+      - Prevent SuggestedFixes#renameMethod from modifying return
+        type declaration
+      - Fix UnusedVariable false positives for private record
+        parameters
+      - When running in conservative mode, no longer assume that
+        implementations of Map.get, etc. return null
+      - CanIgnoreReturnValueSuggester: Support additional exempting
+        method annotations
+      - UnusedVariable: exclude junit5's @RegisterExtension
+      - Support running all available patch checks
+      - Upgrade java-diff-utils 4.0 -> 4.12
+      - Flag unused Refaster template parameters
+      - Support @SuppressWarnings("all")
+      - Prevent Refaster UMemberSelect from matching method
+        parameters
+      - MissingDefault : Don't require // fall out comments on
+        expression switches
+      - Skip UnnecessaryLambda findings for usages in enhanced for
+        loops
+      - Fix bug where nested MissingBraces violations' suggested
+        fixes result in broken code
+      - Add support for specifying exemptPrefixes/exemptNames for
+        UnusedVariable via flags
+      - UnusedMethod: Added exempting variable annotations
+  * Changes of version 2.21.1:
+    + Handle overlapping ranges in suppressedRegions
+    + Add AddressSelection to discourage APIs that convert a
+      hostname to a single address
+  * Changes of version 2.21.0:
+    + New Checkers:
+      - AttemptedNegativeZero: Prevents accidental use of -0, which
+        is the same as 0. The floating-point negative zero is -0.0.
+      - ICCProfileGetInstance: Warns on uses of
+        ICC_Profile.getInstance(String), due to JDK-8191622.
+      - MutableGuiceModule: Fields in Guice modules should be final.
+      - NullableOptional: Discourages @Nullable-annotated Optionals.
+      - OverridingMethodInconsistentArgumentNamesChecker: Arguments
+        of overriding method are inconsistent with overridden
+        method.
+    + Fixed issues:
+      - Avoid MemberName IOOBE on lambda parameters inside
+        overriding methods #3976
+      - Improve LockOnNonEnclosingClassLiteral documentation #3986
+      - Security scan reported high CVE for
+        com.google.guava:guava:31.1-jre #4001
+      - Upgrade guava to 32.0.1 #4002
+      - Proposal: checker to prevent other checkers from calling
+        javac methods that changed across JDKs #4026
+      - Add support in ASTHelpersSuggestions for getEnclosedElements
+        #4027
+  * Changes of version 2.20.0:
+    + This release is compatible with early-access builds of JDK 21.
+    + New Checkers: InlineTrivialConstant, UnnecessaryStringBuilder,
+      BanClassLoader, DereferenceWithNullBranch, DoNotUseRuleChain,
+      LockOnNonEnclosingClassLiteral, MissingRefasterAnnotation,
+      NamedLikeContextualKeyword, NonApiType
+    + Fixes issues:
+      - Introduce MissingRefasterAnnotation checker #2232
+      - Fix minor typo in URepeated #2243
+      - Drop unused constant Template#AUTOBOXING_DEFAULT #2997
+      - Introduce command-line flag -XepAllSuggestionsAsWarnings
+        #3301
+      - JDK21 compatibility #3843
+      - Add OSGi runtime metadata to error-prone's MANIFEST.MF files
+        #3903
+      - Use EISOP Checker Framework version 3.34.0-eisop1 #3918
+      - NotJavadoc pattern does not allow Javadoc on module
+        declarations #3923
+      - ErrorProneInjector incorrectly picks up the no-args
+        constructor #3931
+      - Several high CVEs related to dependency
+        com.google.protobuf:protobuf-java:3.19.2 #3945
+      - Upgrade protobuf-java to 3.19.6 #3946
+  * Changes of version 2.19.1:
+    + This release fixes a binary compatibility issue when running
+      on JDK 11
+  * Changes of version 2.19.0:
+    + New Checkers: NotJavadoc, StringCaseLocaleUsage,
+      UnnecessaryTestMethodPrefix
+    + Fixes issues:
+      - Exclude inner classes annotated with @Nested from
+        ClassCanBeStatic rule #956
+      - Optimize VisitorState#getSymbolFromName #3504
+      - ClassCanBeStatic: Exclude JUnit @Nested classes #3654
+      - BadImport: flag static import of newInstance methods #3703
+      - Support given for enforcing DirectInvocationOnMock: issue
+        3396 #3731
+      - Handle yield statement case in ASTHelpers#targetType #3737
+      - Should ASTHelpers.getSymbol(Tree) be annotated with
+        @Nullable? #3760
+      - Fix '@' character in javadoc code snippets #3779
+      - Replace guava cache with caffeine #3796
+      - Discourage APIs locale-dependent APIs like
+        String.to{Lower,Upper}Case #3809
+      - Introduce StringCaseLocaleUsage check #3813
+  * Changes of version 2.18.0:
+    + New Checkers: InjectOnBugCheckers, LabelledBreakTarget,
+      UnusedLabel, YodaCondition
+    + Fixes issues:
+      - @SuppressWarnings("InlineFormatString") doesn't work #1650
+      - Refaster: support method invocation type argument inlining
+        #2706
+      - java.lang.IllegalArgumentException: Cannot edit synthetic
+        AST nodes with specific record constructor #3404
+      - Rename class to match filename #3493
+      - Optimize VisitorState#getSymbolFromName #3504
+      - refactor: refactor bad smell UnusedLabel #3519
+      - LambdaFunctionalInterface crash with
+        IllegalArgumentException when processing an enum constructor
+        taking a lambda #3579
+      - Fix JDK 20-ea build compatibility #3610
+      - UngroupedOverloads: ignore generated constructors #3632
+      - [errorprone 2.17.0] NPE in
+        StatementSwitchToExpressionSwitch.analyzeSwitchTree #3638
+      - StatementSwitchToExpressionSwitch: handle empty statement
+        blocks #3645
+      - StatementSwitchToExpressionSwitch: only trigger on
+        compatible target versions #3646
+      - Fix Finalize bugpattern to match protected finalize() #3652
+      - Make MemoizeConstantVisitorStateLookups check suppressible
+        #3690
+  * Changes of version 2.17.0:
+    + New Checkers: AvoidObjectArrays, Finalize, IgnoredPureGetter,
+      ImpossibleNullComparison, MathAbsoluteNegative, NewFileSystem,
+      StatementSwitchToExpressionSwitch, UnqualifiedYield
+    + Fixed issues:
+      - InvalidParam warning on Javadoc for Java record components
+        #2321
+      - UnusedMethod flags @JsonValue methods as unused #3144
+      - UnusedMethod: Add more JPA lifecycle annotations or make
+        annotations configurable #3297
+      - UnusedMethod: Support additional exempting method
+        annotations #3428
+      - Have InvalidParam support records #3437
+      - Fix -XepDisableAllWarnings flag when passed on its own #3462
+      - ASTHelpersSuggestions does not flag call to packge() on
+        com.sun.tools.javac.code.Symbol.ClassSymbol #3482
+      - @SupressWarnings on record compact constructor causes crash
+        #3494
+  * Changes of version 2.16.0:
+    + New Checkers: ASTHelpersSuggestions,
+      CanIgnoreReturnValueSuggester, LenientFormatStringValidation,
+      UnnecessarilyUsedValue
+    + Fixed issues:
+      - Avoid using non-ASCII Unicode characters outside of comments
+        and literals #3092
+      - NullPointerException thrown during analysis #3220
+      - NPE analysing new style switch statement (2.14.0) #3225
+      - ImmutableChecker handles null types #3267
+      - Drop pre-JDK 11 logic from Refaster's Inliner class #3441
+  * Changes of version 2.15.0:
+    + New Checkers: BuilderReturnThis,
+      CanIgnoreReturnValueSuggester, CannotMockFinalClass,
+      CannotMockFinalMethod, DirectInvocationOnMock, ExtendsObject,
+      MockNotUsedInProduction, NoCanIgnoreReturnValueOnClasses,
+      NullArgumentForNonNullParameter, SelfAlwaysReturnsThis,
+      UnsafeWildcard, UnusedTypeParameter
+  * Changes of version 2.14.0:
+    + New checkers: BanJNDI,  EmptyTopLevelDeclaration,
+      ErroneousBitwiseExpression,
+      FuzzyEqualsShouldNotBeUsedInEqualsMethod, Interruption,
+      NullableOnContainingClass
+  * Changes of version 2.13.1:
+    + Fix a crash in UnnecessaryBoxedVariable
+    + Include the unicode character in the diagnostic message
+  * Changes of version 2.13.0:
+    + Handle all annotations with the simple name Generated in
+      -XepDisableWarningsInGeneratedCode
+    + Reconcile BugChecker#isSuppressed with suppression handling in
+      ErrorProneScanner
+    + Fix a bug in enclosingPackage
+    + Improve performance of fix application
+    + Implicitly treat @AutoBuilder setter methods as
+      @CanIgnoreReturnValue.
+    + Remove some obsolete checks
+      (PublicConstructorForAbstractClass, HashCodeToString)
+  * Changes of version 2.12.1:
+    + This release adds an infrastructure optimization to AppliedFix
+      source code processing.
+  * Changes of version 2.12.0:
+    + New checks: BoxedPrimitiveEquality, DoubleBraceInitialization,
+      IgnoredPureGetter, LockOnBoxedPrimitive, IncorrectMainMethod,
+      LongDoubleConversion, RobolectricShadowDirectlyOn,
+      StaticAssignmentOfThrowable, UnnecessaryLongToIntConversion,
+      Varifier
+
+-------------------------------------------------------------------
 Tue Sep 19 11:00:56 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Do not require maven-javadoc-plugin that we don't use
+
+-------------------------------------------------------------------
+Thu May  4 11:40:47 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
 
 -------------------------------------------------------------------
 Mon Mar  7 14:17:02 UTC 2022 - Fridrich Strba <fstrba@suse.com>
