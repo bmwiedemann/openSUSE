@@ -355,4 +355,13 @@
 - rename pci_ids-unsupported* to pci_ids-supported* files</comment>
     <requestid>1159672</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1beee8fae00de0e5e3426af5b77bfb23</srcmd5>
+    <version>550.76</version>
+    <time>1713471199</time>
+    <user>anag+factory</user>
+    <comment>- Update to 550.76
+  * addresse boo#1222972</comment>
+    <requestid>1168796</requestid>
+  </revision>
 </revisionlist>
