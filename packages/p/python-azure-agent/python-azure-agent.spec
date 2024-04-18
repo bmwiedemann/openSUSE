@@ -232,6 +232,13 @@ cp -r tests %{buildroot}/%{python_sitelib}/azurelinuxagent
 
 %pre
 %service_add_pre waagent.service
+# Handle the case when the -config-* package is not installed, we want to
+# preserver the previousl config file that was flavor customized during
+# image build
+if [ -e /etc/waagent.conf ]; then
+    cp /etc/waagent.conf /etc/waagent.conf.bak
+fi
+
 %if 0%{?suse_version} > 1500
 # Prepare for migration to /usr/etc; save any old .rpmsave
 for i in logrotate.d/waagent ; do
@@ -239,11 +246,22 @@ for i in logrotate.d/waagent ; do
 done
 %endif
 
-%if 0%{?suse_version} > 1500
 %posttrans
+# Do not clobber the config if it was installed from a config package, but
+# put the oldfile back if we do not have another config file
+if [ ! -e /etc/waagent.conf ]; then
+    if [ -e /etc/waagent.conf.bak ]; then
+        mv /etc/waagent.conf.bak /etc/waagent.conf
+    # Making the assumption that the rpmsave file was generated because of
+    # of the previously broken package upgrade.
+    elif [ -e /etc/waagent.conf.rpmsave ]; then
+        cp /etc/waagent.conf.rpmsave /etc/waagent.conf
+    fi
+fi
+%if 0%{?suse_version} > 1500
 # Migration to /usr/etc, restore just created .rpmsave
 for i in logrotate.d/waagent ; do
-   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
 %endif
 

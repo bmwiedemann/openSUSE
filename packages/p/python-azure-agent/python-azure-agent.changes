@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 10 22:53:47 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Keep the existing config file (bsc#1222620)
+  + During separation of the config file into subpackages it was forgotten
+    that on update of the main package the previously provided config file
+    would be removed. SInce we do not know which flavor of our images the
+    package is being upgraded on, preserve the previously existing config
+    file. This will orphan the file if non of the -config-* packages gets
+    installed. 
+
+-------------------------------------------------------------------
 Tue Feb 20 20:07:51 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Do not force wicked dependency for networking, allow NM in SLE Micro 5.5
