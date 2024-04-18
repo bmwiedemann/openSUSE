@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 18 06:08:39 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 9.0.1:
+  * Fix CMake Javadoc and source jar builds
+  * Fix Java SstFileMetaData to prevent throwing
+    java.lang.NoSuchMethodError
+
+-------------------------------------------------------------------
 Tue Mar 19 20:47:00 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 9.0.0:
