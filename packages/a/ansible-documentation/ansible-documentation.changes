@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 16 10:38:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.16.6:
+  * Add Ansible 9.4.0 porting guide. (#1238)
+  * ci: refresh dev dependencies (#1214)
+
+-------------------------------------------------------------------
 Wed Mar 27 19:51:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.16.5:
