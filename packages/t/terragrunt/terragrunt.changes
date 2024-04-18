@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 17 10:15:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.57.2:
+  * Fixed handling of dependency outputs when json log format is
+    enabled (#3049)
+  * Fixed 'inputs' typo in docs (#3061)
+
+-------------------------------------------------------------------
 Mon Apr 15 18:32:09 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.57.1:
