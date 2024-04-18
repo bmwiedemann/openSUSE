@@ -1,19 +1,19 @@
-From af44e01f471a3b64c8f33c5e4be359e3c83f56f2 Mon Sep 17 00:00:00 2001
+From 3ea6d6dfd2eb120ffee4c44ff51b7e9e7a9097a6 Mon Sep 17 00:00:00 2001
 From: Thomas Blume <Thomas.Blume@suse.com>
 Date: Thu, 28 Mar 2024 13:32:46 +0100
 Subject: [PATCH] parse ipl device for activation
 
 ported from dracut modules
 ---
- zdev/dracut/95zdev/parse-dasd.sh | 13 +++++++--
- zdev/dracut/95zdev/parse-zfcp.sh | 50 ++++++++++++++++++++------------
- 2 files changed, 42 insertions(+), 21 deletions(-)
+ zdev/dracut/95zdev/parse-dasd.sh | 15 ++++++++---
+ zdev/dracut/95zdev/parse-zfcp.sh | 46 +++++++++++++++++++-------------
+ 2 files changed, 39 insertions(+), 22 deletions(-)
 
 diff --git a/zdev/dracut/95zdev/parse-dasd.sh b/zdev/dracut/95zdev/parse-dasd.sh
-index a97801f..55a2d01 100644
+index a97801f..eb2fa64 100644
 --- a/zdev/dracut/95zdev/parse-dasd.sh
 +++ b/zdev/dracut/95zdev/parse-dasd.sh
-@@ -27,9 +27,16 @@ zdev_vinfo() {
+@@ -27,9 +27,18 @@ zdev_vinfo() {
  
  zdev_parse_rd_dasd() {
      local _zdev_dasd _zdev_dasd_list
@@ -24,7 +24,9 @@ index a97801f..55a2d01 100644
 +    if ! getargbool 0 'rd.dasd' \
 +        && [[ -f /sys/firmware/ipl/ipl_type ]] \
 +        && [[ $(< /sys/firmware/ipl/ipl_type) == "ccw" ]]; then
-+        _zdev_dasd_list="$(< /sys/firmware/ipl/device)"
++        read -r _ccw < /sys/firmware/ipl/device
++
++        chzdev --offline --existing --enable --active dasd "$_ccw"
 +    else
 +        for _zdev_dasd in $(getargs rd.dasd -d 'rd_DASD='); do
 +            _zdev_dasd_list="${_zdev_dasd_list:+${_zdev_dasd_list},}$_zdev_dasd"
@@ -34,19 +36,15 @@ index a97801f..55a2d01 100644
  }
  
 diff --git a/zdev/dracut/95zdev/parse-zfcp.sh b/zdev/dracut/95zdev/parse-zfcp.sh
-index 715aa00..4c2f990 100644
+index 715aa00..6279beb 100644
 --- a/zdev/dracut/95zdev/parse-zfcp.sh
 +++ b/zdev/dracut/95zdev/parse-zfcp.sh
-@@ -12,25 +12,39 @@
+@@ -12,25 +12,33 @@
  
  zdev_zfcp_base_args="--no-settle --yes --no-root-update --force"
  
 -for zdev_zfcp_arg in $(getargs rd.zfcp -d 'rd_ZFCP='); do
-+# autodetect active bootdev from zipl device
-+if ! getargbool 0 'rd.zfcp' \
-+    && [[ -f /sys/firmware/ipl/ipl_type ]] \
-+    && [[ $(< /sys/firmware/ipl/ipl_type) == "fcp" ]]; then
-     (
+-    (
 -        IFS_SAVED="$IFS"
 -        IFS="," # did not work in front of built-in set command below
 -        # shellcheck disable=SC2086
@@ -55,7 +53,17 @@ index 715aa00..4c2f990 100644
 -        IFS="$IFS_SAVED"
 -        echo "rd.zfcp ${zdev_zfcp_arg} :" | zdev_vinfo
 -        if [ "$#" -eq 1 ]; then
--            # shellcheck disable=SC2086
++# autodetect active bootdev from zipl device
++if ! getargbool 0 'rd.zfcp' \
++    && [[ -f /sys/firmware/ipl/ipl_type ]] \
++    && [[ $(< /sys/firmware/ipl/ipl_type) == "fcp" ]]; then
++        chzdev --offline --existing --enable --active zfcp-host 2>&1 | zdev_vinfo
++else
++    for zdev_zfcp_arg in $(getargs rd.zfcp -d 'rd_ZFCP='); do
++        (
++            IFS_SAVED="$IFS"
++            IFS="," # did not work in front of built-in set command below
+             # shellcheck disable=SC2086
 -            chzdev --enable --persistent $zdev_zfcp_base_args \
 -                   zfcp-host "$args" 2>&1 | zdev_vinfo
 -        else
@@ -63,19 +71,8 @@ index 715aa00..4c2f990 100644
 -            chzdev --enable --persistent $zdev_zfcp_base_args \
 -                   zfcp-lun "$args" 2>&1 | zdev_vinfo
 -        fi
-+        read -r _wwpn < /sys/firmware/ipl/wwpn
-+        read -r _lun < /sys/firmware/ipl/lun
-+        read -r _ccw < /sys/firmware/ipl/device
-+
-+        chzdev --enable --persistent zfcp-lun "$_ccw:$_wwpn:$_lun" 2>&1 | zdev_vinfo
-     )
+-    )
 -done
-+else
-+    for zdev_zfcp_arg in $(getargs rd.zfcp -d 'rd_ZFCP='); do
-+        (
-+            IFS_SAVED="$IFS"
-+            IFS="," # did not work in front of built-in set command below
-+            # shellcheck disable=SC2086
 +            set -- $zdev_zfcp_arg
 +            IFS=":" args="$*"
 +            IFS="$IFS_SAVED"

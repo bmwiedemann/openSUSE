@@ -878,4 +878,12 @@ Build succeeded on IBS (in a home project).</comment>
     <comment>Amended the .spec file for x86_64. Recommends: s390-tools-genprotimg-data</comment>
     <requestid>1168394</requestid>
   </revision>
+  <revision rev="76" vrev="8">
+    <srcmd5>c5f70f67caead8dd75f24f26233bef98</srcmd5>
+    <version>2.31.0</version>
+    <time>1713471204</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1168819</requestid>
+  </revision>
 </revisionlist>

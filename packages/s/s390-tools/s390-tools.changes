@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 18 11:05:53 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied an updated patch (bsc#1220949,bsc#1221873)
+  * s390-tools-sles15sp6-01-parse-ipl-device-for-activation.patch 
+
+-------------------------------------------------------------------
 Tue Apr 16 16:55:05 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file for x86_64
