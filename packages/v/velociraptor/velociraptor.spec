@@ -103,7 +103,6 @@ Patch3:         velociraptor-reproducible-timestamp.diff
 Patch4:         CVE-2024-28849-follow-redirects-drop-proxy-authorization.patch
 BuildRequires:  fileb0x
 %if 0%{?suse_version}
-BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  golang(API) >= 1.19
 BuildRequires:  pkgconfig(libsystemd)
@@ -164,15 +163,23 @@ Obsoletes:      velociraptor-kafka-humio-gateway < %{version}
 %endif
 
 %if 0%{?suse_version}
-%if %{build_server}
-ExclusiveArch:  x86_64
-%endif
+# SLE12 doesn't support sysusers
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
+Requires(pre):  pwdutils
+%define pre_create_group 1
 %else
+Requires:       group(velociraptor)
+%endif
+%endif
+
 %if %{build_server}
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+ExclusiveArch:  x86_64
+%else
 ExclusiveArch:  do_not_build
+%endif
 %else
 ExclusiveArch:  x86_64 ppc64le aarch64 s390x
-%endif
 %endif
 
 %if 0%{?rhel}
@@ -182,6 +189,10 @@ ExclusiveArch:  do_not_build
 
 # Not *required* but without it, we spam the system log
 Recommends:     auditd
+
+%if 0%{?_project:1} && (0%{?suse_version} > 1500 || 0%{?sle_version} > 150000)
+Provides:       %{name}(project:%_project)
+%endif
 
 %if "%{vendor}" == "debbuild"
 %define mtag Packager: https://www.suse.com
@@ -346,6 +357,10 @@ install -D -m 0755 output/velociraptor-v%{VERSION}-linux-* %buildroot/%{_bindir}
 
 %if 0%{?suse_version}
 %pre
+%if 0%{?pre_create_group}
+# create velociraptor group if it doesn't exist
+groupadd -f -r velociraptor  2>/dev/null || :
+%endif
 %service_add_pre %{name}.service
 
 %post

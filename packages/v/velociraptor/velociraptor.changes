@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 17 21:53:20 UTC 2024 - Jeff Mahoney <jeffm@suse.com>
+
+- Fix unresolveable Debian group-velociraptor dependency.
+
+-------------------------------------------------------------------
+Wed Apr 17 15:52:52 UTC 2024 - Jeff Mahoney <jeffm@suse.com>
+
+- Restore velociraptor group for client
+- Add %{name}(project:%_project) Provides for SLE15 and newer
+- Fixed SLE12-SP5 build
+
+-------------------------------------------------------------------
 Fri Apr  5 13:01:05 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Obsolete old velociraptor-kafka-humio-gateway package
