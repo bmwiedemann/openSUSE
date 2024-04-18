@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 17 13:12:55 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.1
+  * test: Add missing setjmp()
+  * test: Add prototype for Xmureallocarray to silence warning
+
+-------------------------------------------------------------------
 Mon Mar 25 01:54:21 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.2.0

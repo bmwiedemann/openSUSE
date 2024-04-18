@@ -17,7 +17,7 @@
 
 
 Name:           libXmu
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Miscellaneous utility routines for X
 License:        MIT
