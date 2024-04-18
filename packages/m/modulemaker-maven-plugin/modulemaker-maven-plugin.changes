@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Thu Apr 18 12:34:17 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 1.11
+  * Changes:
+    + Make injecting compatible to immutable builds.
+    + Fix class name.
+    + Fix invocation order.
+
+-------------------------------------------------------------------
+Wed Mar  8 01:14:02 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial packaging with v1.9

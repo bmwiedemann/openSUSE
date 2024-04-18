@@ -1,0 +1,6 @@
+<package name="modulemaker-maven-plugin" project="openSUSE:Factory">
+  <title>A Maven plugin for creating a module-info.class</title>
+  <description>This plugin allows the creation of a module-info.class for projects on Java 6 to Java 8 where a module-info.java file cannot be compiled.</description>
+  <devel project="Java:packages" package="modulemaker-maven-plugin"/>
+  <url>https://github.com/raphw/modulemaker-maven-plugin</url>
+</package>
