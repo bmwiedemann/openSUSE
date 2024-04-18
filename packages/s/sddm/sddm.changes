@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 16 13:44:51 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add various fixes from upstream PRs:
+  * 0001-Fix-terminal-clearing.patch
+  * 0001-Redesign-login-shell-use-in-session-scripts.patch
+  * 0001-Use-xrdb-to-set-Xcursor.theme.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 11:17:45 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 0.21.0:

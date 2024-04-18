@@ -59,6 +59,12 @@ Source20:       sddm.pam
 Source21:       sddm-autologin.pam
 Source22:       sddm-greeter.pam
 # Patch0-100: PATCH-FIX-UPSTREAM
+# https://github.com/sddm/sddm/pull/1779
+Patch50:        0001-Redesign-login-shell-use-in-session-scripts.patch
+# Part of https://github.com/sddm/sddm/pull/1896
+Patch51:        0001-Fix-terminal-clearing.patch
+# https://github.com/sddm/sddm/pull/1904
+Patch52:        0001-Use-xrdb-to-set-Xcursor.theme.patch
 # Patch100-?: PATCH-FIX-OPENSUSE
 Patch101:       0001-Write-the-daemon-s-PID-to-a-file-on-startup.patch
 Patch102:       0001-Set-XAUTHLOCALHOSTNAME-in-sessions.patch

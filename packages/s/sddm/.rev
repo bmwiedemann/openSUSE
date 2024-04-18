@@ -790,4 +790,12 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
 - Remove leftover sddm.obsinfo file (forwarded request 1151251 from Vogtinator)</comment>
     <requestid>1151254</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>0580278bb0367261d8a688e9e6eb9fb3</srcmd5>
+    <version>0.21.0</version>
+    <time>1713471045</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1168481</requestid>
+  </revision>
 </revisionlist>
