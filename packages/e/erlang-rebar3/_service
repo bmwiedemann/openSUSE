@@ -4,12 +4,12 @@
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
-    <param name="revision">3.18.0</param>
+    <param name="revision">b28f3b55e046d9b4bdfc1aca34d7d6cc9f9ae502</param>
   </service>
   <service mode="disabled" name="set_version" />
   <service mode="buildtime" name="tar"/>
   <service mode="buildtime" name="recompress">
     <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">zst</param>
   </service>
 </services>

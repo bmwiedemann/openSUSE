@@ -1,4 +1,174 @@
 -------------------------------------------------------------------
+Wed Apr 10 20:27:18 UTC 2024 - pirateclip@protonmail.com
+
+- Use zstd instead of xz (because of the incident...)
+
+- Update to version 3.23.0:
+  * back to git-based versioning
+  * Fix release workflow permissions
+  * Bump to 3.23.0
+  * bring back erlware_commons version hotfix
+  * Manual patch to make builds work
+  * Bump Relx and Erlware Commons
+  * undef fix
+  * Update apps/rebar/test/rebar_dir_SUITE.erl
+  * Update apps/rebar/test/rebar_dir_SUITE.erl
+  * REBAR_SRC_DIRS and REBAR_APP_DIRS fix
+  * zsh aliases, aliases CLI fix, zsh test update
+  * typo and dialyzer fix
+  * zsh completion gen
+  * Eliminate use of experimental function code:lib_dir/2
+  * fix tests for new leaner clean runs
+  * Only call install_deps if 'clean' impacts deps
+  * Fix clean hooks when override are presents
+  * Mark plugin as experimental
+  * Only use Unicode modifier for erlang format
+  * Filter away un-supported functions
+  * Add Unicode modifier
+  * Use 4-space formatting, fix nesting (for tests)
+  * Fix types for otp_lib_dir and source_root
+  * Use 4-space formatting, fix nesting
+  * Do not disable logging
+  * Make log_level entry in rebar.app work again
+  * ct assertions and skip, backward comp, cmpl fix
+  * `as` cmpl fixed, `do` cmpl, key rename
+  * debug msg
+  * Initial version of the Manifest plugin.
+  * completion provider
+  * Append . to --eval arg if missing
+  * Fix MacOS CI workflows
+  * Fix handling of or in prereleases, add tests
+  * Fall back to reading versions from hex metadata
+  * Handle 'or' in versions in a primitive manner
+  * Add missing doc. for `incremental` on Dialyzer analysis
+  * Dedupe compiler DAG edge insertion for artifacts
+  * rebar_utils: add metadata to primary logger config
+  * Fix unicode output printed as charlist
+  * Rename option to 'shell_hooks_env'
+  * Add new 'env' key to config options
+  * Fix macOS CI workflow issues
+  * Ease pre-pull request CI in forks
+  * Prevent xref issue when analysis runs on generated code
+  * Add (to output) Dialyzer info. about invalid_contract
+  * Test command `rebar3 alias`'s implementation
+  * Act on review comment: reduce chances of collision
+  * Increase chances of running tests on the latest 25
+  * Prefer GitHub actions' syntax to shell's
+  * Add command `rebar3 alias`
+  * ShellArgs default should be [] (not undefined)
+  * Fix for `rebar3 shell` in Erlang 26 when ShellArgs==undefined
+  * Updated the arity for the dialyzer no-warn.
+  * Added missing punctuation.
+  * Improved wording.
+  * Updated help string for user_drv_args.
+  * Tweaked the log message to be a little more accurate.
+  * Ensure an Erlang 26 custom shell's args are passed.
+  * Protect against undefined information
+  * Complete the previous commit with some specific tests
+  * Un-break the interface (add back a removed function)
+  * back to git-based versioning
+  * Rework argument parsing in do/as providers
+  * Bump to 3.22.1
+  * Add app name to "OTP release ~ts or later is required" msg
+  * debug brew in CI
+  * Defer hostname check to OTP when supported
+  * Print diagnostic when failing to get VSN with Git
+  * Add simple Erlang LS config
+  * Back to git-based versioning
+  * Bump to 3.22.0
+  * Fixup: rich compiler output in warnings
+  * Avoid setting encoding on Erlang/OTP 26
+  * Support CRLF in shell ENV files
+  * Richer and colorized compiler output
+  * Move the compiler rich error format code to a standalone module
+  * Attempt to support legible compiler error messages
+  * Hotfix erlware_commons config script
+  * Back to git-based versioning
+  * Bump to 3.21.0
+  * Match Dialyzer defaults
+  * Support OTP-26, Deprecate OTP-23 support.
+  * bumping a bunch of deps in getting ready for OTP26
+  * Maintain cth_log_redirect default in CT runs
+  * Lift Ubuntu runner in CI for Nightly and Publish
+  * Change license template to markdown
+  * incremental incremental Dialyzer PLTs
+  * rebar3_dialyzer_format: Add missing messages
+  * Add types and docs to rebar_parallel
+  * Add rebar_parallel pool, use in DAG scans
+  * rebar_prv_compile: dereference files when copying them
+  * Add test case for copying ct `_SUITE_data` in app/test
+  * Update apps/rebar/src/rebar_prv_shell.erl
+  * fix help shell output, --eval is misindeted
+  * Ignore _vendor folder
+  * Ignore only _build and _checkouts
+  * Do not ignore everything starting with underscore recursively
+  * Add RTX_LOG macro option to top-level rebar.config
+  * Fix missing dot
+  * Bump certifi to 2.10.0
+  * scope local install VSN variable
+  * pkgs command should support empty lists
+  * Rebar 3.20.0
+  * Respect HEX_MIRROR environment variable
+  * Prevent CI from using 25.1
+  * Warn of EUnit issues on OTP-25.1
+  * Use shell:start_interactive to start shell if available
+  * Do not send empty If-None-Match in tarball request
+  * Respect rebar_packages_cdn set in rebar.config
+  * Add support for dialyzer --incremental when available
+  * Do not dereference symbolic links in win32 when using cp_r
+  * Add tests for rebar_file_utils:cp_r
+  * Pass a proplist as option argument instead of a boolean
+  * Dereference symbolic links when copying files from ct data folder
+  * Reduce warnings
+  * Vendor all dependencies, make bootstrap use them
+  * Migrate to an umbrella structure
+  * Improve `shell --eval` error messages
+  * Add --eval option to `shell`
+  * Rebar 3.19.0
+  * Bump Relx to 4.7.0
+  * Fix syntax error typo
+  * Store offline in state and use it where possible
+  * Properly carry overlay_vars settings for files in relx
+  * add regression case for pruning artifacts
+  * Track and match MIB file build artifacts in DAG
+  * Fix extension matching in compiler DAG
+  * please OTP-25 dialyzer, which is smarter about no_return()
+  * Support OTP 23..25 inclusively
+  * Support plugins in experimental vendor provider
+  * Revert changes in src/vendored/
+  * Intercept download and needs_update in rebar_fetch
+  * Fixup: typos
+  * Add --offline option and REBAR_OFFLINE environment variable
+  * Going for more profiles than default and prod
+  * give deps for shelltests
+  * Rebuild modified local plugins
+  * normalize debug output
+  * Skip upgrades on locally-defined plugins
+  * Prevent non-umbrella project-local plugins
+  * Local plugins can't declare project plugins
+  * Fix local plugin external plugin dependency
+  * Add support for project-local plugins
+  * fix the argument preceence
+  * make dialyzer happy
+  * use depth 10 to support longer cert chains
+  * Experimental vendoring provider
+  * Attempt to find apps in git subdirs (sparse checkouts)
+  * Add euint --test flag
+  * Replace an unconfigured call to global config paths
+  * add REBAR_CACHE_DIR support to global plugins
+  * Fix global cache config overriding
+  * Error out on unknown templates in 'new' command
+  * Fix a typo
+  * Bump certifi to 2.9.0
+  * add a log in the needs_update
+  * Use SPDX id for license in template and test
+  * Rephrase and and reinstate default branch warning
+  * Fix overwrite of local commits when no remote changes
+  * Use default branch for git and git_subdir resources
+  * switch to newer erlef/setup-beam from gleam's
+  * switch default branch to main
+
+-------------------------------------------------------------------
 Thu Feb 22 08:37:35 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

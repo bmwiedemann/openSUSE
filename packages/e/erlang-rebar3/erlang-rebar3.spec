@@ -23,18 +23,19 @@
 %endif
 %endif
 Name:           erlang-rebar3
-Version:        3.18.0
+Version:        3.23.0
 Release:        0
 Summary:        Tool for working with Erlang projects
 License:        Apache-2.0
 Group:          Development/Tools/Building
 URL:            https://github.com/erlang/rebar3
-Source:         rebar3-%{version}.tar.xz
+Source:         rebar3-%{version}.tar.zst
 Patch0:         add-rebar3-escript.patch
 Patch1:         erlang-rebar3-0001-Skip-deps.patch
 BuildRequires:  erlang >= 22
 BuildRequires:  erlang-erlware_commons
 BuildRequires:  erlang-providers
+BuildRequires:  zstd
 Requires:       erlang
 Requires:       erlang-erlware_commons
 Requires:       erlang-providers
