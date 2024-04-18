@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 17 16:17:31 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.17.2:
+  * OSC notifications with invalid UTF-8 strings are now ignored.
+  * Fixed various crashes.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.17.2 for more details.
+
+-------------------------------------------------------------------
 Thu Apr 11 16:33:21 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.17.1:

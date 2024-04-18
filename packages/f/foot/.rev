@@ -565,4 +565,15 @@
   * See https://codeberg.org/dnkl/foot/releases/tag/1.17.1 for more details.</comment>
     <requestid>1166917</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>5dc92ec8a1211b6952ed48abda8b7c50</srcmd5>
+    <version>1.17.2</version>
+    <time>1713471134</time>
+    <user>anag+factory</user>
+    <comment>- Update to v1.17.2:
+  * OSC notifications with invalid UTF-8 strings are now ignored.
+  * Fixed various crashes.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.17.2 for more details.</comment>
+    <requestid>1168636</requestid>
+  </revision>
 </revisionlist>
