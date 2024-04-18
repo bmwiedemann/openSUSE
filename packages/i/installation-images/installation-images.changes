@@ -1,4 +1,13 @@
 --------------------------------------------------------------------
+Wed Apr 17 12:11:29 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#706
+- memtest86+ package change: memtest.bin is now in /usr/lib
+  (bsc#1221221)
+- add menu entry for memtest.efi on x86_64
+- 17.121
+
+--------------------------------------------------------------------
 Thu Apr 4 12:58:01 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#704
