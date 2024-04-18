@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  4 14:56:40 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add source 20_memtest86
+  * replace similar file from package grub2
+- don't install files in /boot. The OS needs to stay in /usr
+
+-------------------------------------------------------------------
 Mon Jan 15 10:58:15 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Change spec license to GPL-2.0-only

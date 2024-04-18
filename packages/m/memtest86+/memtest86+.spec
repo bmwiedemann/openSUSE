@@ -25,6 +25,7 @@ License:        GPL-2.0-only
 Group:          System/Boot
 URL:            https://www.memtest.org
 Source:         https://github.com/memtest86plus/memtest86plus/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1:        20_memtest86
 #!BuildIgnore:  gcc-PIE
 Provides:       lilo:/boot/memtest.bin
 Obsoletes:      memtest86 <= 3.2
@@ -55,15 +56,18 @@ cd build32
 make
 
 %install
+# Script to generate memtest86+ menu entry
+mkdir -p %{buildroot}/%{_sysconfdir}/grub.d
+install -m 755 %{SOURCE1} %{buildroot}/%{_sysconfdir}/grub.d/
 %ifarch x86_64
 cd build64
 %else
 cd build32
 %endif
 install -Dpm 0644 memtest.bin \
-  %{buildroot}/boot/memtest.bin
+  %{buildroot}%{_prefix}/lib/memtest86/memtest.bin
 install -Dpm 0644 memtest.efi \
-  %{buildroot}/boot/efi/EFI/memtest86/memtest.efi
+  %{buildroot}%{_prefix}/lib/memtest86/memtest.efi
 export BRP_PESIGN_FILES="*.efi"
 
 %post
@@ -76,10 +80,9 @@ export BRP_PESIGN_FILES="*.efi"
 %license LICENSE
 %doc README.md
 %doc doc
-/boot/memtest.bin
-%dir /boot/efi
-%dir /boot/efi/EFI
-%dir /boot/efi/EFI/memtest86
-/boot/efi/EFI/memtest86/memtest.efi
+%dir %{_prefix}/lib/memtest86
+%{_prefix}/lib/memtest86/memtest.*
+%dir %{_sysconfdir}/grub.d
+%config(noreplace) %{_sysconfdir}/grub.d/20_memtest86
 
 %changelog
