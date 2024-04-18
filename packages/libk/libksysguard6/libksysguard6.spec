@@ -28,7 +28,7 @@
 # Latest ABI-stable Plasma (e.g. 5.8 in KF6, but 5.8.95 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           libksysguard6
-Version:        6.0.3
+Version:        6.0.4
 Release:        0
 Summary:        Task management and system monitoring library
 License:        GPL-2.0-or-later
@@ -101,7 +101,7 @@ Summary:        Task management and system monitoring library -- plugins
 Requires:       libksysguard6 = %{version}
 # For post and verifyscript
 Requires(post): permissions
-Requires(verify):permissions
+Requires(verify): permissions
 Conflicts:      kdebase4-workspace < 5.3.0
 Conflicts:      ksysguard5 < 5.21.80
 Provides:       libksysguard5-plugins = %{version}
