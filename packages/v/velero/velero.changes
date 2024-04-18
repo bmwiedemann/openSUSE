@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 17 10:15:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.13.2:
+  * Add changelog for v1.13.2
+  * Bump Golang version, and bump protobuf version.
+  * Empty the list before next round of listing
+  * Upgrade codecov action to v4
+  * issue 7535: don't exclude resources in MustHave list during
+    restore
+  * Bump up the versions of severel Kubernetes-related libs
+
+-------------------------------------------------------------------
 Sun Mar 17 09:10:32 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.13.1:
