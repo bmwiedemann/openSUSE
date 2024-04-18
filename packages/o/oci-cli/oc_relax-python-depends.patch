@@ -1,6 +1,6 @@
-diff -Nru oci-cli-3.38.1.orig/requirements.txt oci-cli-3.38.1/requirements.txt
---- oci-cli-3.38.1.orig/requirements.txt	2024-04-02 07:39:29.000000000 +0200
-+++ oci-cli-3.38.1/requirements.txt	2024-04-04 13:18:32.988643564 +0200
+diff -Nru oci-cli-3.39.1.orig/requirements.txt oci-cli-3.39.1/requirements.txt
+--- oci-cli-3.39.1.orig/requirements.txt	2024-04-16 10:33:42.000000000 +0200
++++ oci-cli-3.39.1/requirements.txt	2024-04-18 14:04:51.410499047 +0200
 @@ -2,47 +2,47 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
@@ -18,7 +18,7 @@ diff -Nru oci-cli-3.38.1.orig/requirements.txt oci-cli-3.38.1/requirements.txt
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.125.1
+-oci==2.125.3
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.11.0
@@ -38,7 +38,7 @@ diff -Nru oci-cli-3.38.1.orig/requirements.txt oci-cli-3.38.1/requirements.txt
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.125.1
++oci>=2.125.3
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.11.0
@@ -82,18 +82,18 @@ diff -Nru oci-cli-3.38.1.orig/requirements.txt oci-cli-3.38.1/requirements.txt
 +prompt-toolkit>=3.0.29
  setuptools>65.5.1; python_version > '3.6'
 -setuptools==59.6.0; python_version == '3.6'
-+setuptools>=59.6.0; python_version == '3.6'
++setuptools>=59.6.0; python_version >= '3.6'
  # this is required because of python 3.6 requests dependency version bound
  urllib3<=1.26.15
-diff -Nru oci-cli-3.38.1.orig/setup.py oci-cli-3.38.1/setup.py
---- oci-cli-3.38.1.orig/setup.py	2024-04-02 07:39:29.000000000 +0200
-+++ oci-cli-3.38.1/setup.py	2024-04-04 13:17:45.541463383 +0200
+diff -Nru oci-cli-3.39.1.orig/setup.py oci-cli-3.39.1/setup.py
+--- oci-cli-3.39.1.orig/setup.py	2024-04-16 10:33:42.000000000 +0200
++++ oci-cli-3.39.1/setup.py	2024-04-18 14:13:32.618481796 +0200
 @@ -30,23 +30,23 @@
      readme = f.read()
  
  requires = [
--    'oci==2.125.1',
-+    'oci>=2.125.1',
+-    'oci==2.125.3',
++    'oci>=2.125.3',
      'arrow>=1.0.0',
      'certifi',
 -    'click==8.0.4',
