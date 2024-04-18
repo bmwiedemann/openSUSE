@@ -3,7 +3,9 @@
 		<param name="scm">git</param>
 		<param name="url">https://github.com/eclipse/jetty.toolchain.git</param>
 		<param name="revision">jetty-artifact-remote-resources-1.2</param>
-		<param name="versionformat">1.2</param>
+		<param name="match-tag">jetty-artifact-remote-resources-*</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">jetty-artifact-remote-resources-(.*)</param>
 		<param name="subdir">jetty-artifact-remote-resources</param>
 		<param name="filename">jetty-artifact-remote-resources</param>
 	</service>

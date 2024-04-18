@@ -15,4 +15,12 @@
     <comment>bsc#1197642</comment>
     <requestid>967928</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>037530e90d73687fd2c78907f64cde02</srcmd5>
+    <version>1.2</version>
+    <time>1713471132</time>
+    <user>anag+factory</user>
+    <comment>sanitize</comment>
+    <requestid>1168639</requestid>
+  </revision>
 </revisionlist>

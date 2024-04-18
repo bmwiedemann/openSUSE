@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  2 12:26:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Sanitize a bit the source service and regenerate tarball
+
+-------------------------------------------------------------------
 Fri Apr  8 21:59:29 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not require mvn(log4j:log4j) for build (bsc#1197642)
