@@ -30,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-workspace
-Version:        6.0.3
+Version:        6.0.4
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
@@ -310,7 +310,7 @@ Requires:       plasma6-session = %{version}
 Requires:       xf86-input-libinput
 Requires:       xorg-x11-server
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       kdebase4-session = %{version}
 Obsoletes:      kdebase4-session < %{version}
 Provides:       plasma5-session = %{version}
