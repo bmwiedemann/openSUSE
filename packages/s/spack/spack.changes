@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 18 06:54:54 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Add lsb-release and zstd as new requires to match upstream
+  prerequisites.
+
+-------------------------------------------------------------------
 Thu Apr  4 07:14:54 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Make `patchelf` a mandatory dependency on products where it

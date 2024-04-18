@@ -102,6 +102,7 @@ Requires:       git
 Requires:       gpg2
 Requires:       gzip
 Requires:       libbz2-devel
+Requires:       lsb-release
 Requires:       make
 Requires:       patch
 Requires:       polkit
@@ -109,6 +110,7 @@ Requires:       sudo
 Requires:       tar
 Requires:       unzip
 Requires:       xz
+Requires:       zstd
 Requires:       (patchelf if (product(SUSE_SLE) >= 15.6 or product(Leap) or product(openSUSE)))
 Recommends:     %spack_trigger_recommended_packages %spack_trigger_recommended_compilers
 Recommends:     lua-lmod
