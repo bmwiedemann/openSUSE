@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 17 08:13:23 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.4
+- Changes since 6.0.3:
+  * Handler: fix a memory leak
+  * Handler: don't parent notification to `this` after co_await
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Mar 26 18:06:19 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.3:
