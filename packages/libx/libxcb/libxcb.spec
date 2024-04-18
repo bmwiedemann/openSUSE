@@ -23,7 +23,7 @@
 %bcond_without python2
 %endif
 Name:           libxcb
-Version:        1.16.1
+Version:        1.17.0
 Release:        0
 Summary:        X11 core protocol C library
 License:        MIT

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 17 12:49:57 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 1.17.0
+  * tests: fix -Werror=discarded-qualifiers errors in check_public.c
+  * xcb_popcount: Use __builtin_popcount if compiler supports it
+  * Add xcb-dri3 dependency to xcb-present.pc.in
+  * configure.ac: Require xcb-proto >= 1.17.0
+  * Always write C code in UTF-8
+
+-------------------------------------------------------------------
 Tue Mar 19 13:15:30 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - bug-262309_xcb-xauthlocalhostname.diff, 

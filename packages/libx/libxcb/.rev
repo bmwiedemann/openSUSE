@@ -399,4 +399,17 @@
   * fixed build against GCC 14 (boo#1221703)</comment>
     <requestid>1159559</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c3d4393f9034f5cde5ffb786fc06d520</srcmd5>
+    <version>1.17.0</version>
+    <time>1713470876</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.17.0
+  * tests: fix -Werror=discarded-qualifiers errors in check_public.c
+  * xcb_popcount: Use __builtin_popcount if compiler supports it
+  * Add xcb-dri3 dependency to xcb-present.pc.in
+  * configure.ac: Require xcb-proto &gt;= 1.17.0
+  * Always write C code in UTF-8</comment>
+    <requestid>1168557</requestid>
+  </revision>
 </revisionlist>
