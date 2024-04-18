@@ -1,6 +1,6 @@
 --- a/src/hotspot/cpu/zero/globals_zero.hpp
 +++ b/src/hotspot/cpu/zero/globals_zero.hpp
-@@ -52,9 +52,9 @@ define_pd_global(intx,  InitArrayShortSize,   0);
+@@ -54,9 +54,9 @@ define_pd_global(intx,  InitArrayShortSize,   0);
  #define DEFAULT_STACK_SHADOW_PAGES (5 LP64_ONLY(+1) DEBUG_ONLY(+3))
  #define DEFAULT_STACK_RESERVED_PAGES (0)
  

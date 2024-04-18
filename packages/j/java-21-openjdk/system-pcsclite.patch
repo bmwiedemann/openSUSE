@@ -8,7 +8,7 @@
  ])
  
  ################################################################################
-@@ -304,3 +305,41 @@ AC_DEFUN_ONCE([LIB_SETUP_HARFBUZZ],
+@@ -309,3 +310,41 @@ AC_DEFUN_ONCE([LIB_SETUP_HARFBUZZ],
    AC_SUBST(HARFBUZZ_CFLAGS)
    AC_SUBST(HARFBUZZ_LIBS)
  ])
@@ -52,7 +52,7 @@
 +])
 --- a/make/autoconf/spec.gmk.in
 +++ b/make/autoconf/spec.gmk.in
-@@ -776,6 +776,7 @@ TAR_SUPPORTS_TRANSFORM:=@TAR_SUPPORTS_TRANSFORM@
+@@ -806,6 +806,7 @@ TAR_SUPPORTS_TRANSFORM:=@TAR_SUPPORTS_TRANSFORM@
  # Build setup
  USE_EXTERNAL_LIBJPEG:=@USE_EXTERNAL_LIBJPEG@
  USE_EXTERNAL_LIBGIF:=@USE_EXTERNAL_LIBGIF@
@@ -96,7 +96,7 @@
  
  /*
   * Throws a Java Exception by name
-@@ -75,6 +77,7 @@ void throwIOException(JNIEnv *env, const char *msg)
+@@ -75,6 +77,7 @@ static void throwIOException(JNIEnv *env, const char *msg)
      throwByName(env, "java/io/IOException", msg);
  }
  
@@ -104,7 +104,7 @@
  static void *findFunction(JNIEnv *env, void *hModule, char *functionName) {
      void *fAddress = dlsym(hModule, functionName);
      if (fAddress == NULL) {
-@@ -85,9 +88,11 @@ void *findFunction(JNIEnv *env, void *hModule, char *functionName) {
+@@ -85,9 +88,11 @@ static void *findFunction(JNIEnv *env, void *hModule, char *functionName) {
      }
      return fAddress;
  }

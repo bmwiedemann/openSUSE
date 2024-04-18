@@ -1,6 +1,6 @@
 --- a/src/java.desktop/share/classes/java/awt/Toolkit.java
 +++ b/src/java.desktop/share/classes/java/awt/Toolkit.java
-@@ -602,7 +602,11 @@ public abstract class Toolkit {
+@@ -598,7 +598,11 @@ public abstract class Toolkit {
                  toolkit = new HeadlessToolkit(toolkit);
              }
              if (!GraphicsEnvironment.isHeadless()) {

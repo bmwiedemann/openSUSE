@@ -1,5 +1,3 @@
-diff --git a/make/autoconf/build-aux/pkg.m4 b/make/autoconf/build-aux/pkg.m4
-index 5f4b22bb27f..1ca9f5b8ffe 100644
 --- a/make/autoconf/build-aux/pkg.m4
 +++ b/make/autoconf/build-aux/pkg.m4
 @@ -179,3 +179,19 @@ else
@@ -22,9 +20,6 @@ index 5f4b22bb27f..1ca9f5b8ffe 100644
 +
 +AS_VAR_IF([$1], [""], [$5], [$4])dnl
 +])dnl PKG_CHECK_VAR
-diff --git a/make/autoconf/lib-sysconf.m4 b/make/autoconf/lib-sysconf.m4
-new file mode 100644
-index 00000000000..f48fc7f7e80
 --- /dev/null
 +++ b/make/autoconf/lib-sysconf.m4
 @@ -0,0 +1,87 @@
@@ -115,8 +110,6 @@ index 00000000000..f48fc7f7e80
 +  AC_SUBST(USE_SYSCONF_NSS)
 +  AC_SUBST(NSS_LIBDIR)
 +])
-diff --git a/make/autoconf/libraries.m4 b/make/autoconf/libraries.m4
-index a1fc81564b1..ebad69d9dcf 100644
 --- a/make/autoconf/libraries.m4
 +++ b/make/autoconf/libraries.m4
 @@ -35,6 +35,7 @@ m4_include([lib-std.m4])
@@ -127,7 +120,7 @@ index a1fc81564b1..ebad69d9dcf 100644
  
  ################################################################################
  # Determine which libraries are needed for this configuration
-@@ -134,6 +135,7 @@ AC_DEFUN_ONCE([LIB_SETUP_LIBRARIES],
+@@ -128,6 +129,7 @@ AC_DEFUN_ONCE([LIB_SETUP_LIBRARIES],
    LIB_SETUP_X11
  
    LIB_TESTS_SETUP_GTEST
@@ -135,11 +128,9 @@ index a1fc81564b1..ebad69d9dcf 100644
  
    BASIC_JDKLIB_LIBS=""
    BASIC_JDKLIB_LIBS_TARGET=""
-diff --git a/make/autoconf/spec.gmk.in b/make/autoconf/spec.gmk.in
-index 0f85917814e..9419562b654 100644
 --- a/make/autoconf/spec.gmk.in
 +++ b/make/autoconf/spec.gmk.in
-@@ -867,6 +867,11 @@ INSTALL_SYSCONFDIR=@sysconfdir@
+@@ -874,6 +874,11 @@ INSTALL_SYSCONFDIR=@sysconfdir@
  # Libraries
  #
  
@@ -151,8 +142,6 @@ index 0f85917814e..9419562b654 100644
  USE_EXTERNAL_LCMS:=@USE_EXTERNAL_LCMS@
  LCMS_CFLAGS:=@LCMS_CFLAGS@
  LCMS_LIBS:=@LCMS_LIBS@
-diff --git a/make/modules/java.base/Gendata.gmk b/make/modules/java.base/Gendata.gmk
-index 9e5cfe2d0fc..434ade8e182 100644
 --- a/make/modules/java.base/Gendata.gmk
 +++ b/make/modules/java.base/Gendata.gmk
 @@ -98,3 +98,17 @@ $(GENDATA_JAVA_SECURITY): $(BUILD_TOOLS_JDK) $(GENDATA_JAVA_SECURITY_SRC) $(REST
@@ -173,8 +162,6 @@ index 9e5cfe2d0fc..434ade8e182 100644
 +TARGETS += $(GENDATA_NSS_FIPS_CFG)
 +
 +################################################################################
-diff --git a/make/modules/java.base/Lib.gmk b/make/modules/java.base/Lib.gmk
-index 1e0f66726d0..59fe923f2c5 100644
 --- a/make/modules/java.base/Lib.gmk
 +++ b/make/modules/java.base/Lib.gmk
 @@ -163,6 +163,29 @@ ifeq ($(call isTargetOsType, unix), true)
@@ -207,8 +194,6 @@ index 1e0f66726d0..59fe923f2c5 100644
  ################################################################################
  # Create the symbols file for static builds.
  
-diff --git a/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java b/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java
-index 10093137151..b023c63ae58 100644
 --- a/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java
 +++ b/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java
 @@ -31,6 +31,7 @@ import java.security.SecureRandom;
@@ -1130,8 +1115,6 @@ index 10093137151..b023c63ae58 100644
      }
  
      // Return the instance of this class or create one if needed.
-diff --git a/src/java.base/share/classes/java/security/Security.java b/src/java.base/share/classes/java/security/Security.java
-index 671529f71a1..af632936921 100644
 --- a/src/java.base/share/classes/java/security/Security.java
 +++ b/src/java.base/share/classes/java/security/Security.java
 @@ -34,6 +34,7 @@ import java.net.URL;
@@ -1253,9 +1236,6 @@ index 671529f71a1..af632936921 100644
          InputStream is = null;
          try {
              if (masterFile != null && masterFile.exists()) {
-diff --git a/src/java.base/share/classes/java/security/SystemConfigurator.java b/src/java.base/share/classes/java/security/SystemConfigurator.java
-new file mode 100644
-index 00000000000..9d26a54f5d4
 --- /dev/null
 +++ b/src/java.base/share/classes/java/security/SystemConfigurator.java
 @@ -0,0 +1,232 @@
@@ -1491,9 +1471,6 @@ index 00000000000..9d26a54f5d4
 +        }
 +    }
 +}
-diff --git a/src/java.base/share/classes/jdk/internal/access/JavaSecuritySystemConfiguratorAccess.java b/src/java.base/share/classes/jdk/internal/access/JavaSecuritySystemConfiguratorAccess.java
-new file mode 100644
-index 00000000000..3f3caac64dc
 --- /dev/null
 +++ b/src/java.base/share/classes/jdk/internal/access/JavaSecuritySystemConfiguratorAccess.java
 @@ -0,0 +1,31 @@
@@ -1528,8 +1505,6 @@ index 00000000000..3f3caac64dc
 +    boolean isSystemFipsEnabled();
 +    boolean isPlainKeySupportEnabled();
 +}
-diff --git a/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java b/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java
-index 919d758a6e3..b1e5fbaf84a 100644
 --- a/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java
 +++ b/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java
 @@ -43,6 +43,7 @@ import java.io.PrintStream;
@@ -1564,8 +1539,6 @@ index 919d758a6e3..b1e5fbaf84a 100644
 +        return javaSecuritySystemConfiguratorAccess;
 +    }
  }
-diff --git a/src/java.base/share/classes/module-info.java b/src/java.base/share/classes/module-info.java
-index 06b141dcf22..e8cbf7f15d7 100644
 --- a/src/java.base/share/classes/module-info.java
 +++ b/src/java.base/share/classes/module-info.java
 @@ -158,6 +158,7 @@ module java.base {
@@ -1576,8 +1549,6 @@ index 06b141dcf22..e8cbf7f15d7 100644
          jdk.jartool,
          jdk.jlink,
          jdk.jfr,
-diff --git a/src/java.base/share/classes/sun/security/provider/SunEntries.java b/src/java.base/share/classes/sun/security/provider/SunEntries.java
-index f036a411f1d..1e9de933bd9 100644
 --- a/src/java.base/share/classes/sun/security/provider/SunEntries.java
 +++ b/src/java.base/share/classes/sun/security/provider/SunEntries.java
 @@ -38,6 +38,7 @@ import java.util.HashMap;
@@ -1872,8 +1843,6 @@ index f036a411f1d..1e9de933bd9 100644
  
          /*
           * Certificates
-diff --git a/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java b/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java
-index 539ef1e8ee8..435f57e3ff2 100644
 --- a/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java
 +++ b/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java
 @@ -27,6 +27,7 @@ package sun.security.rsa;
@@ -1978,11 +1947,9 @@ index 539ef1e8ee8..435f57e3ff2 100644
          addA(p, "AlgorithmParameters", "RSASSA-PSS",
                  "sun.security.rsa.PSSParameters", null);
      }
-diff --git a/src/java.base/share/conf/security/java.security b/src/java.base/share/conf/security/java.security
-index 5149edba0e5..8227d650a03 100644
 --- a/src/java.base/share/conf/security/java.security
 +++ b/src/java.base/share/conf/security/java.security
-@@ -86,6 +86,17 @@ security.provider.tbd=Apple
+@@ -85,6 +85,17 @@ security.provider.tbd=Apple
  #endif
  security.provider.tbd=SunPKCS11
  
@@ -2048,7 +2015,7 @@ index 5149edba0e5..8227d650a03 100644
  #
  # Controls compatibility mode for JKS and PKCS12 keystore types.
  #
-@@ -332,6 +384,13 @@ package.definition=sun.misc.,\
+@@ -336,6 +388,13 @@ package.definition=sun.misc.,\
  #
  security.overridePropertiesFile=true
  
@@ -2062,9 +2029,6 @@ index 5149edba0e5..8227d650a03 100644
  #
  # Determines the default key and trust manager factory algorithms for
  # the javax.net.ssl package.
-diff --git a/src/java.base/share/conf/security/nss.fips.cfg.in b/src/java.base/share/conf/security/nss.fips.cfg.in
-new file mode 100644
-index 00000000000..55bbba98b7a
 --- /dev/null
 +++ b/src/java.base/share/conf/security/nss.fips.cfg.in
 @@ -0,0 +1,8 @@
@@ -2076,8 +2040,6 @@ index 00000000000..55bbba98b7a
 +
 +attributes(*,CKO_SECRET_KEY,CKK_GENERIC_SECRET)={ CKA_SIGN=true }
 +
-diff --git a/src/java.base/share/lib/security/default.policy b/src/java.base/share/lib/security/default.policy
-index 86d45147709..22fd8675503 100644
 --- a/src/java.base/share/lib/security/default.policy
 +++ b/src/java.base/share/lib/security/default.policy
 @@ -130,6 +130,7 @@ grant codeBase "jrt:/jdk.charsets" {
@@ -2097,9 +2059,6 @@ index 86d45147709..22fd8675503 100644
      permission java.security.SecurityPermission "putProviderProperty.*";
      permission java.security.SecurityPermission "clearProviderProperties.*";
      permission java.security.SecurityPermission "removeProviderProperty.*";
-diff --git a/src/java.base/share/native/libsystemconf/systemconf.c b/src/java.base/share/native/libsystemconf/systemconf.c
-new file mode 100644
-index 00000000000..ddf9befe5bc
 --- /dev/null
 +++ b/src/java.base/share/native/libsystemconf/systemconf.c
 @@ -0,0 +1,236 @@
@@ -2339,9 +2298,6 @@ index 00000000000..ddf9befe5bc
 +}
 +
 +#endif
-diff --git a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSKeyImporter.java b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSKeyImporter.java
-new file mode 100644
-index 00000000000..48d6d656a28
 --- /dev/null
 +++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSKeyImporter.java
 @@ -0,0 +1,457 @@
@@ -2802,9 +2758,6 @@ index 00000000000..48d6d656a28
 +        }
 +    }
 +}
-diff --git a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSTokenLoginHandler.java b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSTokenLoginHandler.java
-new file mode 100644
-index 00000000000..f8d505ca815
 --- /dev/null
 +++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSTokenLoginHandler.java
 @@ -0,0 +1,149 @@
@@ -2958,8 +2911,6 @@ index 00000000000..f8d505ca815
 +    }
 +}
 \ No newline at end of file
-diff --git a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java
-index 6b26297b1b4..7ee5e07756c 100644
 --- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java
 +++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java
 @@ -37,6 +37,8 @@ import javax.crypto.*;
@@ -2981,20 +2932,20 @@ index 6b26297b1b4..7ee5e07756c 100644
      private static final String PUBLIC = "public";
      private static final String PRIVATE = "private";
      private static final String SECRET = "secret";
-@@ -401,8 +406,10 @@ abstract class P11Key implements Key, Length {
+@@ -401,9 +406,10 @@ abstract class P11Key implements Key, Length {
                      new CK_ATTRIBUTE(CKA_EXTRACTABLE),
          });
  
--        boolean keySensitive = (attrs[0].getBoolean() ||
--                attrs[1].getBoolean() || !attrs[2].getBoolean());
+-        boolean keySensitive =
 +        boolean exportable = plainKeySupportEnabled && !algorithm.equals("DH");
 +        boolean keySensitive = (!exportable &&
-+            (attrs[0].getBoolean() ||
-+             attrs[1].getBoolean() || !attrs[2].getBoolean()));
+                 (attrs[0].getBoolean() && P11Util.isNSS(session.token)) ||
+-                attrs[1].getBoolean() || !attrs[2].getBoolean();
++                attrs[1].getBoolean() || !attrs[2].getBoolean());
  
          return switch (algorithm) {
              case "RSA" -> P11RSAPrivateKeyInternal.of(session, keyID, algorithm,
-@@ -454,7 +461,8 @@ abstract class P11Key implements Key, Length {
+@@ -455,7 +461,8 @@ abstract class P11Key implements Key, Length {
  
          public String getFormat() {
              token.ensureValid();
@@ -3004,13 +2955,11 @@ index 6b26297b1b4..7ee5e07756c 100644
                  return null;
              } else {
                  return "RAW";
-@@ -1624,4 +1632,3 @@ final class SessionKeyRef extends PhantomReference<P11Key> {
+@@ -1625,4 +1632,3 @@ final class SessionKeyRef extends PhantomReference<P11Key> {
          this.clear();
      }
  }
 -
-diff --git a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
-index 5cd6828d293..bae49c4e8a9 100644
 --- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
 +++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
 @@ -26,6 +26,9 @@
@@ -3106,7 +3055,7 @@ index 5cd6828d293..bae49c4e8a9 100644
                      return new SunPKCS11(new Config(newConfigName));
                  }
              });
-@@ -325,9 +386,19 @@ public final class SunPKCS11 extends AuthProvider {
+@@ -336,9 +397,19 @@ public final class SunPKCS11 extends AuthProvider {
              // request multithreaded access first
              initArgs.flags = CKF_OS_LOCKING_OK;
              PKCS11 tmpPKCS11;
@@ -3128,7 +3077,7 @@ index 5cd6828d293..bae49c4e8a9 100644
              } catch (PKCS11Exception e) {
                  if (debug != null) {
                      debug.println("Multi-threaded initialization failed: " + e);
-@@ -342,8 +413,9 @@ public final class SunPKCS11 extends AuthProvider {
+@@ -353,8 +424,9 @@ public final class SunPKCS11 extends AuthProvider {
                  } else {
                      initArgs.flags = 0;
                  }
@@ -3140,7 +3089,7 @@ index 5cd6828d293..bae49c4e8a9 100644
              }
              p11 = tmpPKCS11;
  
-@@ -1389,11 +1461,52 @@ public final class SunPKCS11 extends AuthProvider {
+@@ -1400,11 +1472,52 @@ public final class SunPKCS11 extends AuthProvider {
          }
  
          @Override
@@ -3193,7 +3142,7 @@ index 5cd6828d293..bae49c4e8a9 100644
              try {
                  return newInstance0(param);
              } catch (PKCS11Exception e) {
-@@ -1750,6 +1863,9 @@ public final class SunPKCS11 extends AuthProvider {
+@@ -1761,6 +1874,9 @@ public final class SunPKCS11 extends AuthProvider {
          try {
              session = token.getOpSession();
              p11.C_Logout(session.id());
@@ -3203,8 +3152,6 @@ index 5cd6828d293..bae49c4e8a9 100644
              if (debug != null) {
                  debug.println("logout succeeded");
              }
-diff --git a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Token.java b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Token.java
-index 3378409ca1c..7602a92a252 100644
 --- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Token.java
 +++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Token.java
 @@ -33,6 +33,7 @@ import java.lang.ref.*;
@@ -3250,8 +3197,6 @@ index 3378409ca1c..7602a92a252 100644
          }
      }
  
-diff --git a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java
-index 4b06daaf264..55e14945469 100644
 --- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java
 +++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java
 @@ -49,6 +49,9 @@ package sun.security.pkcs11.wrapper;
@@ -3506,8 +3451,6 @@ index 4b06daaf264..55e14945469 100644
 +    }
 +}
  }
-diff --git a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11Exception.java b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11Exception.java
-index 920422376f8..6aa308fa5f8 100644
 --- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11Exception.java
 +++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11Exception.java
 @@ -215,6 +215,14 @@ public class PKCS11Exception extends Exception {
@@ -3525,8 +3468,6 @@ index 920422376f8..6aa308fa5f8 100644
      /**
       * Constructor taking the error code (the CKR_* constants in PKCS#11) and
       * extra info for error message.
-diff --git a/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java b/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java
-index 7f8c4dba002..e65b11fc3ee 100644
 --- a/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java
 +++ b/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java
 @@ -34,6 +34,7 @@ import java.security.ProviderException;
@@ -3793,9 +3734,6 @@ index 7f8c4dba002..e65b11fc3ee 100644
  
      }
  }
-diff --git a/test/jdk/sun/security/pkcs11/fips/NssdbPin.java b/test/jdk/sun/security/pkcs11/fips/NssdbPin.java
-new file mode 100644
-index 00000000000..ce01c655eb8
 --- /dev/null
 +++ b/test/jdk/sun/security/pkcs11/fips/NssdbPin.java
 @@ -0,0 +1,349 @@
@@ -4148,9 +4086,6 @@ index 00000000000..ce01c655eb8
 +                "2nd line with garbage");
 +    }
 +}
-diff --git a/test/jdk/sun/security/pkcs11/fips/VerifyMissingAttributes.java b/test/jdk/sun/security/pkcs11/fips/VerifyMissingAttributes.java
-new file mode 100644
-index 00000000000..87f1ad04505
 --- /dev/null
 +++ b/test/jdk/sun/security/pkcs11/fips/VerifyMissingAttributes.java
 @@ -0,0 +1,77 @@
@@ -4231,4 +4166,3 @@ index 00000000000..87f1ad04505
 +        }
 +    }
 +}
-

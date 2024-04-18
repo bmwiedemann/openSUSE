@@ -1,6 +1,6 @@
 --- a/src/jdk.javadoc/share/classes/jdk/javadoc/internal/doclets/toolkit/BaseConfiguration.java
 +++ b/src/jdk.javadoc/share/classes/jdk/javadoc/internal/doclets/toolkit/BaseConfiguration.java
-@@ -795,7 +795,7 @@ public abstract class BaseConfiguration {
+@@ -785,7 +785,7 @@ public abstract class BaseConfiguration {
              }
          } else {
              // no -Xmsgs options of any kind, use default
