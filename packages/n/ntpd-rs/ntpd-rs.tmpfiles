@@ -1,0 +1,4 @@
+#Type Path                     Mode User            Group
+d     /var/lib/ntpd-rs         0700 ntpd-rs         ntpd-rs
+d     /var/lib/ntpd-rs-observe 0700 ntpd-rs-observe ntpd-rs-observe
+d     /run/ntpd-rs             0700 ntpd-rs-observe ntpd-rs-observe

@@ -1,0 +1,3 @@
+#Type Name            ID GECOS                  Home                     Shell
+u     ntpd-rs         -  "ntpd-rs user"         /var/lib/ntpd-rs         /sbin/nologin
+u     ntpd-rs-observe -  "ntpd-rs-observe user" /var/lib/ntpd-rs-observe /sbin/nologin

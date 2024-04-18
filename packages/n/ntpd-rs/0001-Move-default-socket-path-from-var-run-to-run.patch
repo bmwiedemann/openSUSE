@@ -1,0 +1,151 @@
+From e1ed2aeabdf3f2366b7c2a1322fb493ee32ebd8d Mon Sep 17 00:00:00 2001
+From: Fabio Valentini <decathorpe@gmail.com>
+Date: Thu, 14 Mar 2024 18:05:57 +0100
+Subject: [PATCH] Move default socket path from /var/run to /run
+
+---
+ config/nts.client.toml                     | 2 +-
+ docs/examples/conf/ntp.toml.default        | 2 +-
+ docs/guide/exporting-metrics.md            | 2 +-
+ ntp-proto/test-keys/unsafe.nts.client.toml | 2 +-
+ ntp-proto/test-keys/unsafe.nts.server.toml | 2 +-
+ ntp.server.toml                            | 2 +-
+ ntp.toml                                   | 2 +-
+ ntpd/src/ctl.rs                            | 2 +-
+ nts-pool-ke/unsafe.nts.client.toml         | 2 +-
+ nts-pool-ke/unsafe.nts.server.toml         | 2 +-
+ 10 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/config/nts.client.toml b/config/nts.client.toml
+index 46adc44..c87fc94 100644
+--- a/config/nts.client.toml
++++ b/config/nts.client.toml
+@@ -1,7 +1,7 @@
+ [observability]
+ # Other values include trace, debug, warn and error
+ log-level = "info"
+-observation-path = "/var/run/ntpd-rs/observe"
++observation-path = "/run/ntpd-rs/observe"
+ 
+ # See https://docs.ntpd-rs.pendulum-project.org/man/ntp.toml.5/ on how to set up certificates
+ [[source]]
+diff --git a/docs/examples/conf/ntp.toml.default b/docs/examples/conf/ntp.toml.default
+index 0cc6d79..36b2048 100644
+--- a/docs/examples/conf/ntp.toml.default
++++ b/docs/examples/conf/ntp.toml.default
+@@ -6,7 +6,7 @@ log-level = "info"
+ ## daemon while it is running. You can use the `ntp-ctl` or prometheus based
+ ## `ntp-metrics-exporter` binaries for some default options to read from the
+ ## observe socket.
+-observation-path = "/var/run/ntpd-rs/observe"
++observation-path = "/run/ntpd-rs/observe"
+ 
+ ## The sources section allows configuring sources, you may configure multiple of
+ ## these blocks to add more sources to your configuration.
+diff --git a/docs/guide/exporting-metrics.md b/docs/guide/exporting-metrics.md
+index 5f94fb1..ad24ffd 100644
+--- a/docs/guide/exporting-metrics.md
++++ b/docs/guide/exporting-metrics.md
+@@ -21,7 +21,7 @@ When installed through cargo or from source, two things need to be configured ma
+ The observability socket can be enabled by adding the following to the configuration:
+ ```toml
+ [observability]
+-observation-path = "/var/run/ntpd-rs/observe"
++observation-path = "/run/ntpd-rs/observe"
+ ```
+ 
+ Next, configure your system to run the ntp-metrics-exporter binary as a service. For systemd based systems, an example is provided below.
+diff --git a/ntp-proto/test-keys/unsafe.nts.client.toml b/ntp-proto/test-keys/unsafe.nts.client.toml
+index 7e91fb5..8435ddd 100644
+--- a/ntp-proto/test-keys/unsafe.nts.client.toml
++++ b/ntp-proto/test-keys/unsafe.nts.client.toml
+@@ -1,7 +1,7 @@
+ [observability]
+ # Other values include trace, debug, warn and error
+ log-level = "info"
+-observation-path = "/var/run/ntpd-rs/observe"
++observation-path = "/run/ntpd-rs/observe"
+ 
+ # uses an unsecure certificate!
+ [[source]]
+diff --git a/ntp-proto/test-keys/unsafe.nts.server.toml b/ntp-proto/test-keys/unsafe.nts.server.toml
+index 0bf6acb..8a81037 100644
+--- a/ntp-proto/test-keys/unsafe.nts.server.toml
++++ b/ntp-proto/test-keys/unsafe.nts.server.toml
+@@ -1,7 +1,7 @@
+ [observability]
+ # Other values include trace, debug, warn and error
+ log-level = "info"
+-observation-path = "/var/run/ntpd-rs/observe"
++observation-path = "/run/ntpd-rs/observe"
+ 
+ # the server will get its time from the NTP pool
+ [[source]]
+diff --git a/ntp.server.toml b/ntp.server.toml
+index 7203098..97c0605 100644
+--- a/ntp.server.toml
++++ b/ntp.server.toml
+@@ -1,7 +1,7 @@
+ [observability]
+ # Other values include trace, debug, warn and error
+ log-level = "info"
+-observation-path = "/var/run/ntpd-rs/observe"
++observation-path = "/run/ntpd-rs/observe"
+ 
+ # Pool servers from ntppool.org. See http://www.pool.ntp.org/join.html
+ # for more information
+diff --git a/ntp.toml b/ntp.toml
+index 7dd28f2..3ae7327 100644
+--- a/ntp.toml
++++ b/ntp.toml
+@@ -1,7 +1,7 @@
+ [observability]
+ # Other values include trace, debug, warn and error
+ log-level = "info"
+-observation-path = "/var/run/ntpd-rs/observe"
++observation-path = "/run/ntpd-rs/observe"
+ 
+ # Pool servers from ntppool.org. See http://www.pool.ntp.org/join.html
+ # for more information
+diff --git a/ntpd/src/ctl.rs b/ntpd/src/ctl.rs
+index 0724f82..81c0a55 100644
+--- a/ntpd/src/ctl.rs
++++ b/ntpd/src/ctl.rs
+@@ -184,7 +184,7 @@ pub async fn main() -> std::io::Result<ExitCode> {
+             let observation = config
+                 .observability
+                 .observation_path
+-                .unwrap_or_else(|| PathBuf::from("/var/run/ntpd-rs/observe"));
++                .unwrap_or_else(|| PathBuf::from("/run/ntpd-rs/observe"));
+ 
+             match options.format {
+                 Format::Plain => print_state(Format::Plain, observation).await,
+diff --git a/nts-pool-ke/unsafe.nts.client.toml b/nts-pool-ke/unsafe.nts.client.toml
+index 45df468..2847018 100644
+--- a/nts-pool-ke/unsafe.nts.client.toml
++++ b/nts-pool-ke/unsafe.nts.client.toml
+@@ -4,7 +4,7 @@
+ [observability]
+ # Other values include trace, debug, warn and error
+ log-level = "info"
+-observation-path = "/var/run/ntpd-rs/observe"
++observation-path = "/run/ntpd-rs/observe"
+ 
+ # See https://docs.ntpd-rs.pendulum-project.org/man/ntp.toml.5/ on how to set up certificates
+ [[source]]
+diff --git a/nts-pool-ke/unsafe.nts.server.toml b/nts-pool-ke/unsafe.nts.server.toml
+index 5d60c5b..b9fb04e 100644
+--- a/nts-pool-ke/unsafe.nts.server.toml
++++ b/nts-pool-ke/unsafe.nts.server.toml
+@@ -4,7 +4,7 @@
+ [observability]
+ # Other values include trace, debug, warn and error
+ log-level = "info"
+-observation-path = "/var/run/ntpd-rs/observe"
++observation-path = "/run/ntpd-rs/observe"
+ 
+ # the server will get its time from the NTP pool
+ [[source]]
+-- 
+2.44.0
+

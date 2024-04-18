@@ -1,0 +1,11 @@
+<package name="ntpd-rs" project="openSUSE:Factory">
+  <title>Full-featured implementation of NTP with NTS support</title>
+  <description>A full-featured implementation of the Network Time Protocol,
+including support for NTS (Network Time Security).
+
+It includes both client and server support.
+
+</description>
+  <devel project="network:time" package="ntpd-rs"/>
+  <url>https://tweedegolf.nl/en/pendulum</url>
+</package>

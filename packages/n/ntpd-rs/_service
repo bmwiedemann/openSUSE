@@ -1,0 +1,6 @@
+<services>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srcdir">ntpd-rs-*</param>
+  </service>
+</services>
+

@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Tue Apr 16 18:33:12 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.1.2
+- Add patch:
+  * 0001-Move-default-socket-path-from-var-run-to-run.patch
