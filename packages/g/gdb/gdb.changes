@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 18 08:21:00 UTC 2024 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Add PR31648 KFAIL.
+  * Handle yama ptrace_scope == 1.
+
+-------------------------------------------------------------------
+Wed Apr 10 08:22:47 UTC 2024 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (bsc#1220490):
+  * fixup-gdb-6.6-buildid-locate-rpm.patch
+
+-------------------------------------------------------------------
 Wed Mar 20 09:53:08 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Avoid using a %gcc macro to support using gcc 4.8 for building

@@ -243,6 +243,7 @@ Patch1009:      fixup-gdb-6.3-gstack-20050411.patch
 Patch1010:      fixup-gdb-6.3-attach-see-vdso-test.patch
 Patch1011:      fixup-gdb-lineno-makeup-test.patch
 Patch1012:      fixup-gdb-rhbz1261564-aarch64-hw-watchpoint-test.pat.patch
+Patch1013:      fixup-gdb-6.6-buildid-locate-rpm.patch
 
 # openSUSE specific
 
@@ -760,6 +761,7 @@ find -name "*.info*"|xargs rm -f
 %patch -P 1010 -p1
 %patch -P 1011 -p1
 %patch -P 1012 -p1
+%patch -P 1013 -p1
 
 %patch -P 1100 -p1
 %patch -P 1101 -p1

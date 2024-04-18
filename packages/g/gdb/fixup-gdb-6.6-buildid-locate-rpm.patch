@@ -1,0 +1,39 @@
+From 95ef5612ccbf31696e05e8699196eb7dd1c78918 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 9 Mar 2024 11:48:38 +0100
+Subject: [PATCH] fixup
+
+---
+ gdb/configure    | 1 +
+ gdb/configure.ac | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/gdb/configure b/gdb/configure
+index a4e6de5bdbd..304e90ab07b 100755
+--- a/gdb/configure
++++ b/gdb/configure
+@@ -17920,6 +17920,7 @@ else
+ #include <rpm/rpmlib.h>
+ #include <dlfcn.h>
+ #include <errno.h>
++#include <string.h>
+ 
+ int
+ main ()
+diff --git a/gdb/configure.ac b/gdb/configure.ac
+index 831ecbb136b..845710f9098 100644
+--- a/gdb/configure.ac
++++ b/gdb/configure.ac
+@@ -206,6 +206,7 @@ if test "x$with_rpm" != "xno"; then
+ #include <rpm/rpmlib.h>
+ #include <dlfcn.h>
+ #include <errno.h>
++#include <string.h>
+   ]], [[
+     void *h;
+     const char *const *rpmverp;
+
+base-commit: 6ff01b957d8b1bb00484e9c0f2c695f27e0bb7cd
+-- 
+2.35.3
+
