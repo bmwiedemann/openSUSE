@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 15 10:51:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- move pmlogger_daily into main package (bsc#1222815)
+- fix compile flags conflusion
+
+-------------------------------------------------------------------
 Wed Apr  3 14:49:06 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Add fix for bsc#1222121:
@@ -973,7 +979,7 @@ Fri Sep  7 10:39:49 UTC 2018 - kkaempf@suse.com
   sysmacros.patch
   0003-pcp-legacy-init-lsb.patch
   0007-Honor-CFLAGS-in-qmake.patch
-  
+
 - new
   0002-Remove-CPAN-rpaths.patch
   0003-pcp-legacy-init-lsb.patch
@@ -989,7 +995,7 @@ Mon Aug  6 09:30:46 UTC 2018 - schwab@suse.de
 -------------------------------------------------------------------
 Thu Nov 23 13:41:01 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -2022,7 +2028,7 @@ Thu Feb 11 00:44:51 UTC 2010 - jengelh@medozas.de
 -------------------------------------------------------------------
 Wed Jun 10 10:55:48 CEST 2009 - coolo@novell.com
 
-- filter out -fomit-frame-pointer to fix build 
+- filter out -fomit-frame-pointer to fix build
 
 -------------------------------------------------------------------
 Tue Jun  9 17:10:20 CEST 2009 - coolo@novell.com
@@ -2032,12 +2038,12 @@ Tue Jun  9 17:10:20 CEST 2009 - coolo@novell.com
 -------------------------------------------------------------------
 Wed Feb 25 20:21:59 CET 2009 - crrodriguez@suse.de
 
-- fix build with GCC44, #ident is a deprecated GCC extension 
+- fix build with GCC44, #ident is a deprecated GCC extension
 
 -------------------------------------------------------------------
 Thu Nov  6 17:23:58 CET 2008 - ro@suse.de
 
-- fix build failure in obs 
+- fix build failure in obs
 
 -------------------------------------------------------------------
 Tue Oct  7 16:42:23 CEST 2008 - kukuk@suse.de
@@ -2053,7 +2059,7 @@ Thu Aug 28 23:28:57 CEST 2008 - cthiel@suse.de
 Wed Dec  5 02:33:52 CET 2007 - ro@suse.de
 
 - fix build with gcc-4.3
-  (package could possibly be updated anyway) 
+  (package could possibly be updated anyway)
 
 -------------------------------------------------------------------
 Thu Jul 12 16:28:26 CEST 2007 - rw@suse.de
@@ -2120,7 +2126,7 @@ Tue Mar 16 07:19:24 CET 2004 - nashif@suse.de
 Wed Nov  5 17:08:13 CET 2003 - ro@suse.de
 
 - package according to permissions.secure and add run_permissions
-- don't build as root 
+- don't build as root
 
 -------------------------------------------------------------------
 Mon Jul 21 15:43:49 CEST 2003 - nashif@suse.de
@@ -2137,18 +2143,18 @@ Thu Jun 19 07:10:26 CEST 2003 - nashif@suse.de
 Fri Apr 11 00:52:01 CEST 2003 - ro@suse.de
 
 - fix build with coreutils
-  (deprecated calling syntax for head,tail,sort) 
+  (deprecated calling syntax for head,tail,sort)
 
 -------------------------------------------------------------------
 Mon Jan 20 15:16:34 CET 2003 - ro@suse.de
 
-- make it compile with latest glibc (pcp-2.2.2-st_mtime.patch) 
+- make it compile with latest glibc (pcp-2.2.2-st_mtime.patch)
 
 -------------------------------------------------------------------
 Mon Dec  2 18:15:37 CET 2002 - ro@suse.de
 
 - include errno.h where needed
-- use yacc instead of bison for now (make it compile) 
+- use yacc instead of bison for now (make it compile)
 
 -------------------------------------------------------------------
 Fri Aug 16 18:18:55 CEST 2002 - nashif@suse.de
@@ -2163,7 +2169,7 @@ Thu Apr 25 11:40:56 CEST 2002 - coolo@suse.de
 -------------------------------------------------------------------
 Fri Feb 15 18:31:58 CET 2002 - nashif@suse.de
 
-- fix bug #13321: made init script pmie LSB compliant 
+- fix bug #13321: made init script pmie LSB compliant
 	- Added header note
 	- Status returns correct value
 - Fixed pcp init script: status did not work
@@ -2221,7 +2227,7 @@ Thu Nov 30 15:29:22 MET 2000 - nashif@suse.de
 -------------------------------------------------------------------
 Wed Nov 29 18:15:47 CET 2000 - ro@suse.de
 
-- move rcscript to etc/init.d 
+- move rcscript to etc/init.d
 
 -------------------------------------------------------------------
 Sun Nov 26 18:29:28 MET 2000 - nashif@suse.de
