@@ -1,0 +1,29 @@
+From e3dbd0eed64938a79d82a6916dee3925297ac082 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 18 Apr 2024 10:10:15 +0800
+Subject: [PATCH] firstboot: replace ALP with a neutral name
+
+The script may be used in the system other than ALP. Replace "ALP" with
+"This system".
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ firstboot/fde | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/firstboot/fde b/firstboot/fde
+index 0f94829..a4e5c15 100755
+--- a/firstboot/fde
++++ b/firstboot/fde
+@@ -228,7 +228,7 @@ function fde_choose_protection {
+ 
+     FDE_PROTECTION=""
+ 
+-    message="ALP can be installed with an encrypted root and boot partition. Please choose the desired protection method(s) or press Cancel to install without encryption"
++    message="This system can be installed with an encrypted root and boot partition. Please choose the desired protection method(s) or press Cancel to install without encryption"
+     options+=(pass 'Pass phrase' on)
+ 
+     if ! tpm_present_and_working; then
+-- 
+2.35.3
+

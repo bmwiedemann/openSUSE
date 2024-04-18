@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 18 05:39:44 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-bsc1222970-firstboot-replace-ALP.patch to replace
+  "ALP" with "This system" (bsc#1222970)
+- Add fde-tools-bsc1223002-firstboot-disable-ccid.patch to disable
+  the non-functional ccid option (bsc#1223002)
+
+-------------------------------------------------------------------
 Wed Mar 13 08:54:37 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add json-c to BuildRequires to build on openSUSE Leap 15.5

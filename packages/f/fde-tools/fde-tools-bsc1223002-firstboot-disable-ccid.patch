@@ -1,0 +1,30 @@
+From 10672433c10ce391f126f426f86eb85fc4dffa73 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 18 Apr 2024 10:13:30 +0800
+Subject: [PATCH] firstboot: disable the ccid option
+
+Since ccid token is still not supported, disable the option until we
+really implement it.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ firstboot/fde | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/firstboot/fde b/firstboot/fde
+index a4e5c15..4911b32 100755
+--- a/firstboot/fde
++++ b/firstboot/fde
+@@ -237,7 +237,8 @@ function fde_choose_protection {
+     	options+=(tpm 'Stored inside the TPM chip' on)
+     fi
+ 
+-    options+=(ccid 'Stored inside a CCID capable token' off)
++    # Disable the ccid option until we really implement it
++    # options+=(ccid 'Stored inside a CCID capable token' off)
+ 
+     while true; do
+         d --title "Full Disk Encryption" --checklist \
+-- 
+2.35.3
+

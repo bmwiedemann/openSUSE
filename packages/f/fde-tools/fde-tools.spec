@@ -33,6 +33,8 @@ Patch0:         fde-tools-firstboot-alp-snapshot.patch
 Patch1:         fde-tools-bsc1213945-set-rsa-key-size.patch
 Patch2:         fde-tools-change-rpm-macro-dir.patch
 Patch3:         fde-tools-bsc1220160-conditional-requires.patch
+Patch4:         fde-tools-bsc1222970-firstboot-replace-ALP.patch
+Patch5:         fde-tools-bsc1223002-firstboot-disable-ccid.patch
 BuildRequires:  help2man
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcryptsetup)
