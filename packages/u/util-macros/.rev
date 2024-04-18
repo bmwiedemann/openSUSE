@@ -70,4 +70,13 @@
     will need to be updated to use this macro - that is in progress now.)</comment>
     <requestid>1065590</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eab3e9d230cf70ba374e7cf4a93fd56c</srcmd5>
+    <version>1.20.1</version>
+    <time>1713470878</time>
+    <user>anag+factory</user>
+    <comment>- update to release 1.20.1
+  * Remove unnecessary escape</comment>
+    <requestid>1168560</requestid>
+  </revision>
 </revisionlist>
