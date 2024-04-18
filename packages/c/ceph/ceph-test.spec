@@ -138,7 +138,7 @@
 # main package definition
 #################################################################################
 Name: ceph-test
-Version: 16.2.15.68+gbb20a17289a
+Version: 16.2.15.74+gc5dd01a91d8
 Release: 0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch: 2
@@ -154,7 +154,7 @@ License: LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group: System/Filesystems
 %endif
 URL: http://ceph.com/
-Source0: %{?_remote_tarball_prefix}ceph-16.2.15-68-gbb20a17289a.tar.bz2
+Source0: %{?_remote_tarball_prefix}ceph-16.2.15-74-gc5dd01a91d8.tar.bz2
 %if 0%{?suse_version}
 Source92: ceph-rpmlintrc
 Source93: checkin.sh
@@ -599,7 +599,7 @@ This package contains Ceph benchmarks and test tools.
 %if 0%{?suse_version}
 %endif
 %prep
-%autosetup -p1 -n ceph-16.2.15-68-gbb20a17289a
+%autosetup -p1 -n ceph-16.2.15-74-gc5dd01a91d8
 
 %build
 # Disable lto on systems that do not support symver attribute

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 10 00:30:25 UTC 2024 - Tim Serong <tserong@suse.com>
+
+- Update to 16.2.15-74-gc5dd01a91d8:
+  + Fix FTBFS on GCC 14 (boo#1222493)
+
+-------------------------------------------------------------------
 Tue Mar 19 06:35:43 UTC 2024 - Tim Serong <tserong@suse.com>
 
 - Update to 16.2.15-68-gbb20a17289a:
