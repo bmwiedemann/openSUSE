@@ -313,4 +313,12 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1152224 from dimstar)</comment>
     <requestid>1152295</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>9d368a0b95eb20279e0f165ed4608525</srcmd5>
+    <version>1.15.15</version>
+    <time>1713471049</time>
+    <user>anag+factory</user>
+    <comment>Add reproducible.patch to avoid build-time race (boo#1102408) (forwarded request 1168495 from opensusedemobmw2)</comment>
+    <requestid>1168529</requestid>
+  </revision>
 </revisionlist>
