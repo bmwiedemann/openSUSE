@@ -200,4 +200,16 @@ tested locally, new features working as expected</comment>
 </comment>
     <requestid>1094956</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>67ba2ef97fe12a92c2c16697c48a4926</srcmd5>
+    <version>2.15</version>
+    <time>1713471137</time>
+    <user>anag+factory</user>
+    <comment>- remove unneeded %check section
+- update to 2.15: 
+  * unlock indicator: display current keyboard layout when
+    user types password (with --show-keyboard-layout flag).
+</comment>
+    <requestid>1168647</requestid>
+  </revision>
 </revisionlist>
