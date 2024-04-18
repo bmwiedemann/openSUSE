@@ -1,0 +1,10 @@
+<package name="libowfat" project="openSUSE:Factory">
+  <title>A reimplementation of libdjb</title>
+  <description>libowfat is a library of general purpose APIs extracted from Dan
+Bernstein's software, reimplemented and covered by the GNU General
+Public License Version 2 (no later versions).
+
+</description>
+  <devel project="devel:libraries:c_c++" package="libowfat"/>
+  <url>https://www.fefe.de/libowfat/</url>
+</package>
