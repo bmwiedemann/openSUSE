@@ -1,4 +1,839 @@
 -------------------------------------------------------------------
+Thu Apr 18 05:19:14 UTC 2024 - llyyr@yukari.in
+
+- Update to version 0.38.0+git20240418.2f8038c59885:
+  * vo_gpu_next: invalidate cache object if requested by libplacebo
+  * stats.lua: display short decoder name if not generic one is used
+  * player/command: add track-list/N/decoder
+  * stats.lua: filter input bindings by typing them
+  * terminal-win: support mouse input events
+  * terminal-win: implement terminal_get_size2
+  * terminal-win: implement terminal_set_mouse_input
+  * terminal: add terminal_set_mouse_input function
+  * terminal-unix: style fix
+  * vo_{tct,sixel,kitty}: implement mouse support
+  * terminal-unix: ignore unhandled mouse CSI sequences
+  * terminal-unix: support mouse escape codes
+  * sd_ass: add `sub-vsfilter-bidi-compat` to enable vsfilter bidi compat
+  * sd_ass: fix margins for all styles when overriding PlayResX
+  * sd_ass: replace ifdef with explicit version check
+  * DOCS: document --show-in-taskbar option
+  * w32_common: implement --show-in-taskbar option
+  * x11_common: implement --show-in-taskbar option
+  * x11_common: detect wm support for _NET_WM_STATE_SKIP_TASKBAR
+  * stats.lua: inherit OSD styles
+  * DOCS/input: minor typo correction
+  * osc: add playlist_media_title option
+  * dec_sub: fix locking for sub_ass_get_extradata
+  * input: make mp_input_queue_cmd return a meaningful value
+  * dec_sub: don't use recursive mutex
+  * dec_sub: fix locking for sub_is_{primary,secondary}_visible
+  * input: don't use recursive mutex
+  * input: avoid unnecessary recursive locks
+  * input: remove mp prefix for static functions
+  * input: fix locking of mp_input_bind_key
+  * options: fix runtime update of teletext-page
+  * sub/sd_lavc: check decoder output type for dvb and arib
+  * sub/lavc_conv: set dvb teletext and arib caption output type to ASS
+  * sub/lavc_conv: take sd context as a parameter for lavc_conv_create
+  * Update VERSION
+  * Release 0.38.0
+  * Revert "ao_coreaudio: switch to ao_read_data_nonblocking()"
+  * test: add an encoding test with libmpv
+  * player/misc: fix audio-only fallback when video init fails
+  * player/command: remove codec-info and use track-list directly
+  * player: avoid busy looping during reinit_sub
+  * demux_mkv: print chapter timestamp with constant length
+  * demux_mkv: add BCP 47 language tags support
+  * github/issue_template: remove question template
+  * stats.lua: add codec profile
+  * player/loadfile: add codec profile to print_stream()
+  * player/command: add video-codec-info and audio-codec-info
+  * wayland: fix segfault in surface_handle_enter due to memory read
+  * osxbundle: use arg list instead of a string for signing subprocess call
+  * wayland: check if scale actually changes in scaling events
+  * wayland: only perform a rescale if window is on one output
+  * demux_mkv: don't warn if yaw/pitch projection is set to 0
+  * demux_mkv: remove not needed v_projection_pose_roll_set
+  * demux_mkv: corrected direction of ProjectionPoseRoll rotation
+  * TOOLS/lua/autoload: fix allow extending ext sets from script-opts
+  * vo_gpu_next: rotate target crop
+  * msg: use fwrite
+  * msg: use defines for hide/restore cursor code
+  * wayland: apply keepaspect options to wayland configure bounds
+  * wayland: avoid unneeded calls to xdg_toplevel state functions
+  * wayland: enforce a state change after a reconfigure
+  * msg: don't keep status line in partial
+  * vo_gpu_next: set target resolution to crop value
+  * stats.lua: remove unused variables
+  * stats.lua: use '➜' (U+279C) instead '→' (U+2192)
+  * mac/log: fix use after free when freeing mpv handle
+  * af_scaletempo2: prioritize louder channels for similarity measure
+  * test: support format refs for multiple ffmpeg versions
+  * test: update format refs for new major ffmpeg version
+  * DOCS/man/mpv: correct description of F8/F9 keybinds
+  * command: don't use OSD_ASS_0 when converting lists to strings
+  * mac/vulkan: add support for frame timing via presentation feedback
+  * mac/window: fix window pinch gesture and modify current-window-scale
+  * various: make filter internal function names more descriptive
+  * ao: rename playthread to ao_thread
+  * vo_gpu_next: keep target params in priv instead of alocating it
+  * player/lua: fix trailing whitespace for mp.log output
+  * stats.lua: fix scrolling for page 2
+  * Revert "vo_dmabuf_wayland: assume counter-clockwise rotations"
+  * bstr: change bstr0_s to bstr0_lit, restrict it only for string literals
+  * vo_tct: reduce lut_item size and generate it without snprintf
+  * vo_tct: use fwrite when appropriate
+  * win32: change fputs to fwrite wrapper
+  * vo_tct: add synchronized output support
+  * vo_tct: add --vo-tct-buffering option
+  * misc/bstr: add bstr0_s for static initialization
+  * vo_tct: write frame fully instead of every pixel
+  * terminal-win: add more control codes support in non-VT mode
+  * vulkan: use pl_vk_inst_create
+  * DOCS/man/vo: document vo_caca's hardcoded keybinds
+  * DOCS/man/options: mention the impact of --hwdec-codecs on startup time
+  * DOCS/man: unify flag option descriptions
+  * vo: add win32 context menu support
+  * ao_pipewire: fix delay calculation
+  * mac/remote: use event type as key state for proper mapping in function
+  * mac/apphub: fix opening several files at once via Finder or App icon
+  * mac/common: reuse hidpi window scale frame calculation helper
+  * mac/window: cleanup unfsContentFrame usage and make it none optional
+  * mac/window: fix unfs window size retrieval
+  * audio/ad_spdif: utilize defined freeing function for AVIOContext
+  * audio/ad_spdif: specify media type and sample rate in output codecpar
+  * ci/build-mingw64: enable the SPDIF muxer
+  * ao_coreaudio: register hotplug_cb in normal init() as well
+  * ao_pipewire: support set_pause
+  * ao_wasapi: support set_pause
+  * ao_avfoundation: support set_pause
+  * ao: set_pause for pull based ao
+  * demux: fix seek ranges of images
+  * player/loadfile: set track->forced_select outside of compare_track
+  * mac/app: add some verbose logging for app startup and file handling
+  * mac/apphub: only instantiate log and option when in Application mode
+  * mac/menu: remove redundant quit func and use identical command func
+  * mac/app: cleanup and optimise App launch and termination
+  * mac/apphub: move opening url into AppHub
+  * mac/app: use new open url App event to simplify open file event handling
+  * mac/log: fallback to system logger if no mp_log is yet available
+  * mac/app: rewrite App c main function, startup and termination in swift
+  * mac/app: rewrite Application class in swift
+  * wayland_common: set mouse position on pointer enter
+  * mpv.desktop: translate to Italian
+  * ao_pipewire: fix buffer size calculation
+  * ao_pipewire: fix nframes calculation
+  * ao_alsa: fix snd_config memory leak
+  * video: also reset video-sync state when resetting video state
+  * mac/view: fix cursor visibility when toggling fullscreen
+  * mac: cleanup swift bridge header imports and unify them
+  * mac/apphub: make DnD behaviour on bundle icon configurable
+  * mac/log: rename log functions and cleanup class
+  * mac: use LogHelper directly instead of mp_log
+  * mac: rename mpvHandle to mpv
+  * mac: remove now unnecessary objective-c forwarding
+  * mac/apphub: move cocoa-cb into AppHub
+  * mac/apphub: move menu bar into AppHub
+  * mac/app: remove unused Application flag
+  * mac/apphub: move mac options into AppHub
+  * mac/apphub: move app icon into AppHub
+  * mac: cleanup mac headers and include preprocessors
+  * win32: fix native key repeat support
+  * DOCS/options: document key autorepeat defaults
+  * ao_coreaudio: handle latency change on hotplug
+  * ao_avfoundation: initial avfoundation ao support
+  * af_scaletempo2: fix false reporting of frame availability
+  * vo_gpu: support video-target-params
+  * vo_direct3d: support video-target-params
+  * vo_xv: support video-target-params
+  * meson: improve option descriptions
+  * meson: refine dependencies of many feature checks
+  * meson: remove some unneeded features from list
+  * DOCS: update for new --pulse-latency-hacks defaults
+  * demux_mkv: support V_FFV1 tag
+  * player/command: optimize duplicated property search in command_init
+  * ci/mingw: use GAS for vulkan loader
+  * mac/event: only initialise an EventHelper when necessary
+  * mac/touchbar: use AppHub directly instead of the singleton
+  * mac/remote: use AppHub directly instead of the singleton
+  * mac/touchbar: use EventHelper for event handling
+  * mac/touchbar: move touch bar into AppHub
+  * mac/remote: use EventHelper for event handling
+  * mac/touchbar: fix devision by 0
+  * mac/remote: fix devision by 0
+  * cocoa-cb: use EventHelper for event handling
+  * cocoa-cb: use a separate mpv_handle for cocoa-cb to simplify shutdown
+  * mac/apphub: migrate remaining events functionality to new AppHub
+  * mac/event: add helper to subscribe to mpv events and property changes
+  * hwdec/vulkan: enable the stable AV1 extension
+  * ci/msys2: fix vulkan package name
+  * ao_pulse: reenable latency hacks by default
+  * player/command: fix udata talloc parent
+  * mac/libmpv: remove unused functions
+  * mac: optimise and shorten some code
+  * mac/option: remove now unused computed option variables
+  * mac/option: rename option structs to properly represent their content
+  * mac/libmpv: remove mac option handling in favour of option handler
+  * mac/option: make option helper none optional
+  * mac/option: make option helper vo struct independent
+  * mac/option: optimise option pointer access
+  * mac/option: remove unused and obsolete variables
+  * mac/option: move option functionality from mpv helper to option helper
+  * mac/type: move c<>swift type bridging into a dedicated type helper
+  * meson: conditionalize searching for ANGLE's EGL
+  * meson: get rid of 'egl-helpers' feature
+  * meson: fix EGL version check
+  * video/egl_helpers: fix fallback logic for EGL_KHR_create_context
+  * video/egl_helpers: log error for eglCreateContext
+  * options: add --input-commands option
+  * console.lua: complete fixed precision properties
+  * test: fflush output stream before abort
+  * m_property: add `>` for fixed precision floating-point expansion
+  * osc.lua: escape text
+  * command: add escape-ass
+  * input: remove max active section limit
+  * input: raise maximum key down limit to 16
+  * stats.lua: use term-size as terminal output size
+  * player/command: add term-size/[w,h] property
+  * stats.lua: fix and unify scroll hint
+  * stats.lua: use term_ellipsis for page 4
+  * stats.lua: truncate long lines for the terminal
+  * stats.lua: use scroll function for page 2 and 0
+  * stats.lua: refactor page 4 scrolling into function
+  * stats.lua: add more information in audio section
+  * msg: clear buffered status_line on flush
+  * msg: simplify the line_skip calculation
+  * TOOLS: add an interface-changes generator script
+  * DOCS: document the new way to handle interface changes
+  * meson: remove winmm dependency for win32 desktop target
+  * win32: increase hires timer resolution
+  * win32: avoid multi byte string to wide conversion if not needed
+  * win32: add puts/fputs wrappers
+  * win32: optimize mp_vfprintf a little
+  * misc/bstr: add bstr_to_wchar for win32
+  * player/main: move terminal_uninit to the end
+  * win32: cache GetConsoleMode state for stdout/stderr
+  * win32: don't touch buffering options
+  * win32-console-wrapper: fix printf specifiers
+  * win32: don't pass std handles if they are attached to console
+  * DOCS/options: improve wording of dither-depth
+  * af_lavcac3enc: fix memory leak on 2ch audio
+  * various: use thread safe mp_strerror()
+  * image_writer: refactor screenshot write functions
+  * image_writer: fix TOCTOU in screenshot filename generation
+  * Revert "osdep/io: ignore 'x' mode for mp_fopen"
+  * repack: add restrict qualifier to src/dst pointers
+  * win32: resolve dropped shell links (Windows shortcuts)
+  * win32: implement shell link target resolving
+  * video/image_writer: attach MDVC metadata and CLLI metadata
+  * builtin.conf: remove debanding from the high-quality profile
+  * input.conf: add `b` to toggle debanding
+  * vo_gpu_next: make `dither-depth=auto` mean 8 bpc for non-d3d11 SDR
+  * vulkan: remove color_depth stub
+  * osdep/main-fn-win: fix implicit conversion warning
+  * osdep/threads: fix warning: initializer element is not constant
+  * ao_lavc: fix warning: ISO C forbids forward references to 'enum' types
+  * vo_gpu_next: fix -Wembedded-directive warning
+  * video/out/gpu/spirv: fix warning: zero size arrays are an extension
+  * common/msg: fix warning: void function should not return void expression
+  * common/msg: fix warning: use of non-standard escape character '\e'
+  * options/m_config: fix no newline at end of file
+  * various: fix -Wold-style-declaration warning
+  * video/out/placebo/utils: fix -Wignored-qualifiers warning
+  * demux/cache: fix -Wtype-limits warnings
+  * meson: bump warning level to 2
+  * vo_gpu_next: don't render ASS subtitles at HDR colorspace
+  * mac/touchbar: simplify item and view creation
+  * mac/touchbar: optimise time item update
+  * mac/touchbar: optimise constraint calculation
+  * mac/touchbar: use DateComponentsFormatter for time formatting
+  * mac/touchbar: simplify update items logic
+  * mac/touchbar: take playback speed into account for rate limiting
+  * mac/touchbar: rewrite touch bar in swift
+  * win32: remove all NC area on Windows 10 with --title-bar=no
+  * win32: add helper function to check Windows 10 build number
+  * osc: add missing window controls for --title-bar=no
+  * win32: adjust top border offset when title bar is disabled
+  * win32: add DWMWA_VISIBLE_FRAME_BORDER_THICKNESS definition
+  * win32: use dpi aware GetSystemMetricsForDpi
+  * win32: update maximized state when leaving fullscreen
+  * win32: fix window maximized state after setting window size
+  * various: use static assertions where appropriate
+  * DOCS/options: --x11-name sets the instance name, not the class's
+  * demux: add a format-name property
+  * wayland_common: respect compositor's preferenced size on state change
+  * DOCS/options: clarify --autofit-larger effect
+  * wayland_common: always use the current geometry for prepare_resize
+  * x11_common: unmaximize window on runtime geometry change
+  * win32: support runtime geometry update
+  * x11_common: fix window x/y position when updating geometry on runtime
+  * github/issue_template: add note about --profile=fast and --hwdec
+  * gpu-next: add support for --dither-depth=auto
+  * d3d11: get real on the wire bits per color channel
+  * d3d11: add mp_get_dxgi_output_desc
+  * mac/view: optimise drag and drop event handling
+  * mac/input: optimise scroll wheel event handling
+  * mac/input: move scroll wheel event handling into input helper
+  * mac/input: optimise mouse movement enabled check
+  * mac/input: fix switched mouse forward and back button
+  * mac/input: move mouse event handling into input helper
+  * ao_coreaudio: stop audio unit after idle timeout
+  * stream: enable caching for sockets, pipes and FIFOs
+  * vo_{drm,wlshm}: make query_format checks more correct
+  * vo_drm: add support for YUYV format
+  * vo_{drm,wlshm,x11}: add support for video-target-params
+  * vo: move target_params into responsibility of VO
+  * context_drm_egl: log fallback correctly
+  * vo_drm: add support for BGR formats
+  * vo_drm: use native matching pixel format for XRGB2101010
+  * mac/input: add missing special keys
+  * mac/input: add simplified mp_keymap init
+  * mac/input: remove wrongly mapped modifier keys
+  * mac/event: move key event handling to input helper and optimise it
+  * mac/input: define AltGr mask as static NSEvent.ModifierFlags variable
+  * mac/events: remove redundant functions and optimise input helper usage
+  * mac/helper: move input ctx related functionality into new input helper
+  * mac/events: move input ctx related functionality into new input helper
+  * wayland_common: move WAYLAND_DISPLAY check above vo_wayland_state init
+  * wayland_common: require WAYLAND_DISPLAY to be set for initialization
+  * vo_gpu/vo_gpu_next: fix transparency in glx
+  * meson: fix ios-gl hwdec build
+  * vo_gpu: fix broken chroma plane for rotated semi-planar formats
+  * path: don't load any files if --no-config is passed
+  * DOCS/tech-overview.txt: add builtin.conf to etc/ description
+  * DOCS/tech-overview.txt: update for merged pull/push glue code
+  * DOCS/tech-overview.txt: add vo_gpu_next reference
+  * DOCS/tech-overview.txt: add a section for the new filter framework
+  * DOCS/tech-overview.txt: update for removed stream inputs
+  * DOCS/tech-overview.txt: update for split m_config.c/h
+  * DOCS/tech-overview.txt: fix function/member/header names
+  * ad_spdif: update deprecated FF_PROFILE_DTS_HD_HRA definition
+  * options: remove trailing whitespaces
+  * options: remove --focus-on-open and add --focus-on
+  * stats.lua: display video parameters after filtering
+  * vf_format: add hdr10plus sub-parameter to format video filter
+  * mp_image: add Dolby Vision metadata mapping
+  * csputils: add missing PL_COLOR_SYSTEM names
+  * mp_image: add mp_image_params_static_equal for finer comparision
+  * wayland: always rescale geometry if in a fullscreen/maximized state
+  * filters/f_lavfi: rename channellayout to ch_layout
+  * swresample: stop using deprecated {in,out}_channel_layout options
+  * filters/f_lavfi: handle removed AV_OPT_TYPE_CHANNEL_LAYOUT
+  * ad_spdif: handle const buf pointee in avio_alloc_context
+  * osxbundle: avoid running `codesign` with deprecated `--deep` argument
+  * vo_gpu_next: infer target parameters
+  * vo_gpu_next: add support for video-target-params
+  * vo: add video-target-params property
+  * player/command: fix video-params/[average-bpp, alpha] when hw decoding
+  * mp_image: add imgfmt_name to mp_image_params
+  * meson: remove main function from libmpv build
+  * osxbundle: activate Game Mode with App bundle
+  * mac/menu: add explicit menu type instead of an inferred type
+  * mac/menu: make menu creation recursive to allow nested submenus
+  * mac/menu: move conditional Bundle menu items into config
+  * mac/menu: keep track of menu items with dynamic actions
+  * mac/menu: merge file and url config properties
+  * mac/menu: properly guard playlist array access
+  * mac/menu: attach menu config to menu item for direct access
+  * mac/menu: replace app.command usage with event.command
+  * mac/menu: fix touch bar menu item
+  * mac/menu: rename Preferences to Settings for consistency with macOS
+  * mac/menu: remove duplicate key assignment Undo/Zoom
+  * mac/menu: optimise loading files function
+  * mac/menu: replace deprecated openFile() usage
+  * mac/menu: remove unnecessary alert config fields and alert
+  * mac/menu: rewrite menu bar in swift
+  * mac/app: remove unused function
+  * github/workflows: generate html and pdf in docs job as well
+  * DOCS/man/input.rst: fix incorrect syntax
+  * mac/vulkan: directly retrieve current render size without caching
+  * mac/vulkan: workaround for MoltenVK problem that causes flicker
+  * github/workflows: update actions/upload-artifact to v4
+  * ad_spdif: handle deprecated FF_PROFILE_* definitions
+  * wayland_common: fix pointer serial conflict
+  * video/filter: add field order support for built in deinterlacers
+  * f_auto_filters: pass field parity to lavfi bwdif deinterlacers
+  * options: add --deinterlace-field-parity option
+  * wayland: fix missing lround in cursor surface
+  * wayland: guess the first hidpi frame better
+  * Revert "player: reset av state on speed changes"
+  * player/video: subtract frame_time from delay when ao_chain starts audio
+  * player/audio: also adjust apts by audio speed in audio_start_ao
+  * test/test_utils: add mp_msg_set_max_level stub
+  * ci/mingw: update dependency versions
+  * ci/mingw: add dav1d decoder
+  * ci/mingw: enable nvdec
+  * demux_lavf: always find stream info for avif files
+  * vo_gpu_next: render subtitles at video colorspace
+  * sub: add flag if sub_bitmap should be rendered in video color space
+  * DOCS/options: fix Vulkan typo
+  * vo_gpu: add missing PL_COLOR_TRC_ST428 case in lcms
+  * wayland_common: toplevel resize fixes
+  * w32_common: make dragging asynchronous
+  * w32_common: re-add fullscreen check when start dragging
+  * input: centralize VO dragging
+  * wayland_common: implement VOCTRL_BEGIN_DRAGGING
+  * w32_common: implement VOCTRL_BEGIN_DRAGGING
+  * x11_common: implement VOCTRL_BEGIN_DRAGGING
+  * command: add begin-vo-dragging command
+  * Revert "player: add ao-volume option, to set the system volume at startup"
+  * sd_ass: fix use-after-free in ft->event_format
+  * wayland_common: fix type of dnd_action
+  * wayland_common: fix initialization order issue with protocols
+  * wayland_common: fix DND read error handling
+  * wayland_common: read DND data in larger chunks
+  * wayland_common: log if DND fails
+  * wayland_common: free DND resources on shutdown and error
+  * cocoa-cb: render on main queue instead of dedicated queue
+  * mac/vulkan: set NSView as layer delegate like recommended by MoltenVK
+  * osxbundle: fix bundling when homebrew is not installed
+  * mac/vulkan: remove old deprecated VK_MVK_macos_surface extension remains
+  * various: avoid function pointer casts
+  * misc/jni: reduce duplication in mapping struct
+  * misc/jni: introduce macros for deleting references
+  * misc/jni: general code cleanup and refactor
+  * ao_audiotrack: refactor JNI class retrieval
+  * ao_audiotrack: remove two dead variables
+  * ao_audiotrack: fix missing check for passthrough support
+  * osdep/mac: make mac naming of files, folders and function consistent
+  * wayland: drop some unneeded curly braces (no-op)
+  * wayland: drop buffer scale for cursor as well
+  * wayland: rename configured to geometry_configured (no-op)
+  * wayland: fix check for set_surface_scaling
+  * sd_ass: don't wrongly recognize \pos as \p
+  * build: fix build when disabling cocoa-cb
+  * mac: remove unnecessary metal layer colour space update
+  * mac: set layer content scale on init
+  * cocoa-cb: remove pre-allocation and initialise only when used
+  * console.lua: fix blurry cursor when --osd-blur is set
+  * stats.lua: fix blurry graphs when --osd-blur is set
+  * DOCS/options: clarify --sub-blur and --osd-blur options
+  * vo_gpu_next: simplify pl_clear_mode enum mapping
+  * ci: clone repos with shallow submodules
+  * vo_gpu_next: add --border-background option
+  * vo_gpu_next: support --background option
+  * vo_gpu: pre-multiply alpha when dealing with background colors
+  * vo_gpu/vo_gpu_next: rework --alpha into --background option
+  * player: rename --background to --background-color
+  * vo_gpu/vo_gpu_next: set ctx->opts.want_alpha in specific functions
+  * hwdec/dmabuf_interop: reduce magic constant use
+  * hwdec/dmabuf_interop_gl: migrate to EXT_EGL_image_storage on desktop GL
+  * hwdec/dmabuf_interop_gl: refactor texture creation
+  * hwdec/dmabuf_interop_gl: restyle macros to fit line length
+  * video: don't define IMGFMT_VULKAN conditionally
+  * osd_libass: update the OSD bar's dent and border size
+  * DOCS/options: make --scale documentation more consistent
+  * wayland: remove old sway/wlroots hack
+  * player/audio: remove misleading comment about delay
+  * player: reset av state on speed changes
+  * player: remove speed adjustment from playing_audio_pts
+  * ci: add explicit build test for ffmpeg 4.4
+  * DOCS: move ALSA option documentation to ao.rst
+  * DOCS/options: clarify the impact of --audio-buffer
+  * DOCS/options: remove lavrresample reference
+  * DOCS/options: remove --alsa-device
+  * DOCS/ao: update SDL ao version reference
+  * vo_gpu_next: fix win32 io wrap
+  * player/main: don't set the main thread name
+  * Revert "ci/mingw: pin Vulkan version again"
+  * DOCS: add `insert` commands and args to interface-changes
+  * input/player: add loadfile/loadlist insert-at command
+  * player: change insert_next to insert_at
+  * input: add insert-next support for drag-and-drop
+  * player: add loadlist insert-next commands
+  * player: add loadfile insert-next commands
+  * DOCS/man: remove outdated softvol entry
+  * player: add ao-volume option, to set the system volume at startup
+  * ao: don't clip floating point formats at non-unity gain
+  * osdep/io: add mp_unlink()
+  * sub: fix LRC lines with multiple timestamps
+  * ci: add OpenBSD
+  * ci: fix typing in lint-commit-msg.py
+  * image_writer: cleanup leftover files if image writing fails
+  * player: set hidpi-window-scale to no by default
+  * DOCS/options: clarify hidpi-window-scale
+  * player/command: handle runtime toggling of hidpi-window-scale
+  * win32: clean up hidpi window scale behavior
+  * x11: clean up hidpi-window-scale behavior
+  * vo_gpu: use fbo texture height for fragment coordinate calculation
+  * test: add missing libplacebo dependency
+  * github/workflows: add macOS 14 arm runner with most recent xcode
+  * github/workflows: add vulkan, mujs and urchadet to macOS dependencies
+  * github/workflows: link macOS artifacts in comments
+  * github/workflows: bundle macOS App and upload it as artifact
+  * mac: code consistency changes
+  * osxbundle: use dylib script directly instead of in a subprocess
+  * osxbundle: add homebrew vulkan loader location to search path
+  * osxbundle: resolve loader_path on rpath retrieval
+  * osxbundle: remove unused import
+  * osxbundle: fix syntax warning with python 3.12
+  * meson: add custom target for macOS App bundling
+  * ao_wasapi: scale queried AO volume to (0, 100)
+  * ao_wasapi: address premature buffer fills in exclusive mode
+  * player: fix watch later config comments when ignoring path
+  * player/loadfile: rewrite sub autoselection logic
+  * github/workflows: update cross-platform-actions to v0.23.0
+  * command: fix sub-seek while paused without a video
+  * command: don't add SUB_SEEK_OFFSET twice with sub-seek
+  * options/path: move path utility functions to misc/path_utils
+  * osdep/io: move I/O utility functions to misc/io_utils
+  * osdep/io: ignore 'x' mode for mp_fopen
+  * vo_gpu: fix fragment coordinate calculation when dithering
+  * vo_gpu: fix fragment coordinate calculation when drawing checkerboard
+  * x11_common: handle window dragging in ButtonPress event
+  * various: make mentions of macOS consistent
+  * DOCS: make mentions of macOS consistent
+  * DOCS/man: document Ctrl+WHEEL_UP/WHEEL_DOWN keybinds
+  * input.conf: bind Ctrl+WHEEL_UP/DOWN to video-zoom
+  * DOCS/mpv: update ancient profiles config example
+  * osxbundle: add optional source path argument
+  * osxbundle: remove old version retrieval fallback
+  * osxbundle: bundle vulkan driver and layers
+  * vo: make libmpv last in the auto-probing order for cocoa-cb only
+  * encode_lavc: don't use deprecated `avcodec_close`
+  * af_lavcac3enc: don't use deprecated `avcodec_close`
+  * wayland_common: update pointer serial on pointer_enter
+  * cocoa-cb: lock CGLContext on uninit and manual redraw
+  * github/workflows: switch back to luajit for macos
+  * vo_gpu_next: fix some lut-related memory leaks
+  * vo_gpu_next: move gpu-next opts to specific sub option
+  * vo: remove VOCTRL_SET_EQUALIZER and simplify into UPDATE_VIDEO
+  * wayland_common: drop shape device check when spawning cursor
+  * wayland_common: properly determine has_keyboard_input
+  * wayland_common: handle scroll accumulation for each seat
+  * wayland_common: handle keyboard state per seat
+  * wayland_common: set cursor visibility for all seats for voctrl
+  * wayland_common: handle removal of seats
+  * wayland_common: prevent cursor_seat stale reference
+  * wayland_common: handle cursor_shape_device per seat
+  * wayland_common: drop unnecessary xdg_toplevel null check
+  * wayland_common: implement multi-seat support
+  * wayland_common: indentation nit
+  * vulkan/context_win: make --alpha work and runtime changeable
+  * opengl/context_win: make --alpha runtime changeable
+  * d3d11: make --alpha runtime changeable
+  * opengl/context_win: make --alpha=yes work
+  * d3d11: set window to transparent if --alpha=yes is specified
+  * w32_common: add function to control window transparency state
+  * command: add window-id to MPV_EVENT_VIDEO_RECONFIG property change
+  * DOCS/man: add description of display-names property for wayland
+  * vo_gpu_next: don't add 0 width/height sub bitmaps to pl_overlay
+  * osdep/threads-posix: fix headers for OpenBSD build
+  * DOCS: document --input-preprocess-wheel option
+  * input: add --input-preprocess-wheel option
+  * DOCS/lua: clarify `repeatable` and `complex` for `add_key_binding`
+  * m_option: fix memory leak in parse_obj_settings_list
+  * demux_mkv: don't return null bstr with size specified
+  * demux_mkv: error if needed compression settings were not found
+  * demux_mkv: fix memory leak on invalid blocks
+  * ao_pipewire: add support for SPDIF formats
+  * ao_pipewire: don't interpret unknown formats
+  * DOCS/options: mention that sub-clear-on-seek can now break things
+  * player/sub: attempt to detect animated subtitles
+  * vo_gpu_next: move the frame->redraw check for blended subtitles
+  * player/sub: avoid wasteful subtitle redraws
+  * dec_sub: expand sub packet caching
+  * vo: ensure that frames are not eaten on reconfig
+  * Reapply "video: remove another redundant wakeup"
+  * Revert "vo: remove frame timing check from vo_still_displaying()"
+  * ci/lint: add Reapply to the no prefix whitelist
+  * mac/remote: simplify cover retrieval
+  * mac/remote: remove unnecessary nowPlayingInfo variable
+  * mac/remote: add album and artist info
+  * mac/remote: add seek support
+  * mac/remote: add chapter title info
+  * mac/remote: add media-title info
+  * mac/remote: add playback rate info
+  * mac/remote: add duration and current position info
+  * mac/remote: remove make current observer when stopped
+  * mac/remote: replace command handler with generic handler function config
+  * mac/remote: simplify repeatable key logic
+  * mac/remote: move configs to initialiser for new MediaPlayer shorthands
+  * mac/remote: move class local struct and enum definition to extension
+  * mac/remote: use explicit struct instead of generic array for configs
+  * DOCS/man: more words about --teletext-page
+  * sub: allow setting lavc txt_page special values via teletext_page
+  * ci/mingw: pin Vulkan version again
+  * x11_common: fix Xft.dpi detection ignoring --hidpi-window-scale
+  * README: mention libplacebo subproject integration
+  * meson: set default options for libplacebo if using subproject
+  * osdep: fix infinite loop when cancelling subprocess
+  * various: replace dead links in comments
+  * wayland: don't press keys again when releasing modifiers
+  * demux: clarify the meaning of still_image
+  * hwdec_drmprime: check for AV_PIX_FMT_P210 before using it
+  * demux_mkv: add tags for A_MPEG/L1(mp1) audio
+  * js: complex key-binding: send also key_text
+  * wayland: set current_output on surface leave if applicable
+  * demux_mkv: set only image flag and ignore still_image
+  * demux_mkv: increase probing size for still image
+  * sd_lavc: support secondary subs properly
+  * console.lua: move functions to strip common characters
+  * f_output_chain: prevent double free of child filters
+  * stats.lua: use deinterlace-active property instead
+  * player/command: add deinterlace-active property
+  * player: add an auto option to deinterlace
+  * vo_vdpau: cosmetic changes to timings
+  * ao_sndio: add missing config.h include
+  * github/workflows: ignore more files from build workflow
+  * demux_mf: detect webp
+  * Revert "demux: put type2format into codec_tags with helper functions"
+  * player: remove all rpi-specific code
+  * audio: rename ao_read_data_unlocked
+  * player: ensure runtime updates of certain rendering options
+  * github/workflows: revert to github-script@v6
+  * vo_vdpau: fix timing for nanoseconds
+  * command: add load-input-conf
+  * input: make parse_config_file return bool
+  * input: remove unused parameter from parse_config_file
+  * command: add load-config-file
+  * wayland_common: warn if scrolling will be broken
+  * wayland_common: add touch listener boilerplate
+  * wayland_common: prefer axis_value120 if supported
+  * wayland_common: properly handle high resolution scrolling
+  * DOCS/mpv: document how mf:// URLs are formed
+  * demux_mf: explain why a printf format is unsupported
+  * demux_mf: remove code repetition
+  * x11_common: support --title-bar
+  * demux_mkv: detect images by reading blocks and timecodes
+  * Revert "demux_mkv: check if the video codec is an image"
+  * wayland: look for "default" cursor as well as "left_ptr"
+  * meson: bump libplacebo required version to 6.338.2
+  * io: add mp_save_file
+  * vo_gpu_next: save cache to separate files
+  * stream: increase max_size to INT_MAX minus padding
+  * hwdec_drmprime: add P010 and P210 support
+  * hwdec_aimagereader: handle lack of JNI gracefully
+  * common: don't force terminal log buffer to small size
+  * version.h.in: bump copyright year
+  * vo: change vo_frame duration to double
+  * vo_dmabuf_wayland: scale smarter in hidpi situations
+  * wayland: don't rescale dimensions if hidpi-window-scale is disabled
+  * wayland: drop buffer_scale use for viewporter
+  * vo: ensure a dropped frame is always freed
+  * all: add missing repr assignments
+  * github/workflows: update actions package versions
+  * osdep/timer: update documentation and test for mp_time_ns
+  * options/m_option: suppress warning about validate function call
+  * ad_spdif: fix DTS 44.1khz passthrough playback
+  * player/command: don't reselect demux stream on only UPDATE_OSD
+  * player/video: force vo reconfigure on color parameters change
+  * f_lavfi: use libplacebo utils instead of mp_csp_*
+  * vo_gpu_next: simplify after recent changes
+  * csputils: replace more primitives with pl_
+  * csputils: replace mp_chroma_location with pl_chroma_location
+  * csputils: replace mp_alpha_type with pl_alpha_mode
+  * csputils: replace mp_colorspace with pl_color_space
+  * command: do a normal seek instead of a refresh seek when switching vo
+  * f_auto_filters: use bwdif_cuda for deinterlacing with cuda hwdec
+  * osdep/io: expand path before LoadLibrary
+  * osc: add osc-windowcontrols_title option
+  * Revert "player/video: loosen logic checks for adjust_sync"
+  * bash-completion: parse the mpv options lazily
+  * f_auto_filters: change fallback deinterlace to bwdif
+  * sub: add `--sub-lavc-o` option
+  * win32: stop waiting for messages if the window is destroyed
+  * msg: reset status_lines when setting --really-quiet
+  * player: remove --term-remaining-playtime option
+  * command: restore lang after track reload
+  * command: minor m_property_strdup_ro style changes
+  * stats.lua: display the current GPU context
+  * command: export current-gpu-context property
+  * player/command: reselect track after UPDATE_SUB_HARD
+  * chmap: mp_image_pool: drop stale mentions of Libav in comments
+  * common: stream: don't mention Libav in errors/warnings
+  * TOOLS/autocrop.lua: drop Libav mention
+  * DOCS/*: remove mentions of Libav
+  * console.lua: highlight the selected suggestion in the terminal
+  * libplacebo: fix out-of-bounds read with --really-quiet
+  * scripting: don't observe properties with type nil
+  * osc: don't autohide mouse cursor when hovering over windowcontrols title
+  * TOOLS/lua/autoload: skip loading when playback is aborted
+  * DOCS: reorder --volume-max documentation to where --volume is
+  * DOCS: add documentation for --volume-gain options
+  * command: add osd display for volume-gain
+  * audio: add --volume-gain options to control volume in decibels
+  * sub: fix sub-seek and sub-step -1 with unknown duration subs
+  * demux_lavf: detect ico as images
+  * wayland_common: guard against negative configure sizes
+  * command: fix bitrate unit capitalization
+  * stats.lua: make capitalization consistent across pages
+  * win32: change to alphanumeric mode on the first keypress
+  * win32: default to alphanumeric input when the IME is first initialized
+  * win32: move IME candidate window to video window
+  * win32: handle WM_UNICHAR
+  * win32: re-enable IME
+  * filter_sdh: optimize get_char_bytes
+  * terminal: don't print escape sequence if not tty
+  * terminal-unix: don't install handler before pipe
+  * terminal-unix: move all processing out of sighandler
+  * console.lua: style log lines in the terminal
+  * terminal-unix: don't set `SA_RESETHAND` for SIGTERM/SIGQUIT
+  * Revert "github/workflows: don't install angleproject on msys2"
+  * github/workflows: disable MSYS 32-bit builds
+  * wayland: accept active modifiers even if they aren't physically held
+  * wayland: don't ignore key modifiers if they were consumed
+  * DOCS/mpv: the playback position is not remembered after poweroff
+  * player: add forced choice to subs-with-matching-audio
+  * scripting: add mp.input
+  * filter_sdh: fix incorrect placement of null terminator
+  * filter_sdh: sanitize get_char_bytes heuristic to avoid overflow
+  * ao_null: fix reset() implementation
+  * github/workflows: don't install angleproject on msys2
+  * demux_lavf: remove `fix_editlists` hack for mp4
+  * f_lavfi: provide color_space and color_range params for lavfi
+  * x11_common: prefer Xft.dpi for HiDPI scaling
+  * x11_common: allow DPI scale in unit of 0.5
+  * msg: return zero length if bstr_split_utf8 fails
+  * vo_gpu_next: respect d3d11 swapchain output format preference
+  * README: specify the meaning of "not too ancient Linux"
+  * README: recommend --profile=fast for crappy GPUs
+  * DOCS/options: note that --geometry doesn't fully work on wayland
+  * console.lua: expand ~/ in file completion
+  * msg: improve term_disp_width to support unicode
+  * ci/build-freebsd: use march=native for QEMU hosted build
+  * player/video: set video_out to NULL before broadcasting events
+  * command: allow changing --gpu-api and --gpu-context at runtime
+  * DOCS/ao: change wrong note on which driver is preferred
+  * console.lua: hide the cursor when unfocused
+  * console.lua: don't reinsert completion_append after cycling
+  * DOCS/man: remove "Linux desktop issues" section
+  * vo_sdl: support the focused property
+  * DOCS/man: use the correct directive type for "Warning" admonitions
+  * win32: add support for --input-cursor-passthrough option
+  * screenshot: remove artificial limit on the number of screenshots taken
+  * DOCS/options: fix documentation for --force-window window size
+  * various: use correct PATH_MAX for win32
+  * osdep: clarify and rename a constant on win32
+  * various: fix capitalization of 'GitHub'
+  * msg: reduce nesting in mp_msg_flush_status_line
+  * msg: keep status line on the end of file
+  * console.lua: refactor find_common_prefix
+  * mac: add support for --input-cursor-passthrough option
+  * DOCS/options: fix --image-display-duration's documentation
+  * DOCS/interface-changes: add --secondary-sub-ass-override
+  * common/av_log: do not assume AVClass.item_name is always set
+  * mac: add support for --auto-window-resize option
+  * mac: update geometry/autofit opts on runtime
+  * win32: opt in to the windows segment heap
+  * win32: support long file paths
+  * osc: allow disabling special mouse wheel behavior
+  * terminal-unix: enable the cursor after ctrl+z
+  * options: add --secondary-sub-ass-override
+  * lua: don't return a second value from successful format_json
+  * command: support passing scale to `keypress`
+  * input: add value argument for mp_input_put_key_artificial
+  * OSC: fix indentation and stray whitepace
+  * sd_ass: remove unneeded ontop variable
+  * player: refactor secondary subtitle options and properties
+  * DOCS/options: fix documentation for replaygain-clip
+  * demux_mkv: add HDMV Text subtitles to subtitle codec list
+  * demux_mkv: check that subtitle type is set before accessing it
+  * hwdec_drmprime: try and declare support for weird forked ffmpeg formats
+  * hwtransfer: actually treat hardware formats as supported input formats
+  * w32_common: remove executable bit from file
+  * mac: add support for drag-and-drop option
+  * console.lua: clear the suggestions when you move the cursor
+  * console.lua: complete current-tracks sub-properties
+  * console.lua: implement case-insensitive completion
+  * mac: add support for window-id property
+  * demux/codec_tags: add jxl/jpegxl extension mapping to image codecs
+  * options: add --secondary-sub-pos
+  * Revert "OSC: Remove merriment"
+  * OSC: Remove merriment
+  * playlist: correctly populate playlist-path with the --playlist option
+  * github/issue_template: unify spellings
+  * github/issue_template: request uploading attachments to github
+  * github/issue_template: unify requested information across templates
+  * sub: don't busy loop if the player is paused for cache
+  * etc/mpv.desktop: add audio/vnd.wave and video/vnd.avi
+  * w32_common: rename some camelCase struct member names to snake_case
+  * win32: temporarily disable aero shake while dragging hack is active
+  * win32: stop fullscreen window from moving while dragging hack is active
+  * x11_common: fix compose key handling
+  * filter_sdh: add full width parentheses to the enclosures string
+  * filter_sdh: add --sub-filter-sdh-enclosures option
+  * filter_sdh: combine skip_bracketed and skip_parenthesized
+  * player/command: make new overlay-add arguments actually optional
+  * player/command: add ability to scale overlay
+  * console.lua: cycle through completions
+  * console: automatically determine the font_hw_ratio
+  * DOCS/interface-changes: document renaming of MP_KEY_BACK
+  * win32: properly handle WM_XBUTTONUP and WM_XBUTTONDOWN
+  * input: add missing forward media key
+  * console.lua: simplify the condition to print to the terminal
+  * m_option: respect pathlist seperator when printing
+  * mpv.desktop: add keywords
+  * image_writer: default to lossless AVIF screenshots
+  * image_writer: add missing mp_image_params in convert_image
+  * image_writer: print screenshot format in verbose log
+  * image_writer: use common format selection for AVIF screenshots
+  * Revert "github/workflows: install xxhash on msys2"
+  * Revert "ci/mingw: use vulkan-loader v1.3.266"
+  * meson: use subprocess-dummy.c fallback when fork func doesn't exist
+  * ao_wasapi: clean GUID definitions
+  * ao_wasapi: fix MP3 GUID
+  * input: fix double click handling
+  * mac: report modifier keys on precise scrolling
+  * mac: fix initial window size and position when already maximized
+  * github/workflows: install xxhash on msys2
+  * playloop: use a 16:9 ratio with --force-window
+  * ci: remove dvbin from freebsd run
+  * meson: enable dvbin by default again
+  * meson: fix check for dvbin availability
+  * ci/tumbleweed: don't enable shaderc
+  * build: only directly link shaderc and spirv-cross on windows
+  * vo_gpu: fix ra_fbo stack-use-after-scope
+  * common/av_log: use bstr for log callback
+  * vo_kitty: init all fields of struct sigaction before using it
+  * ra_pl: add missing initializer
+  * ao_sndio: remove duplicated condition
+  * vo: don't pass VADRMPRIMESurfaceDescriptor by value
+  * wayland: simplify reading data
+  * mp_image: remove local params copy from mp_image_setfmt
+  * ta: inline OOM checks
+  * player/command: don't pass mp_image_params by value
+  * vo_gpu: don't pass gl_user_shader_hook by value
+  * vo_gpu: don't pass mp_pass_perf by value
+  * vo_gpu: don't pass ra_fbo by value
+  * Reapply "osdep/meson: add libplacebo include dir to swift compile"
+  * Revert "osdep/meson: add libplacebo include dir to swift compile"
+  * ci: remove leftover libplacebo subproject options
+  * meson: move mpv.com target after mpv.exe to avoid meson version warning
+  * ci/msys2: remove libplacebo.wrap
+  * ci: update mpv.com path again
+  * meson: generate .com in the same place as the .exe if possible
+  * DOCS/options: clarify --spirv-compiler
+  * build: restrict git describe to top level source directory
+  * options: add --osd-bar-border-size
+  * DOCS/mpv: quotes in mpv.conf don't escape backslash
+  * options: add secondary-sub-delay
+  * vaapi: bump vaapi info callback to verbose messages
+  * vaapi: add missing NULL check
+  * DOCS/options: remove the mention of cocoa and its removed backend
+  * mac: fix a race condition when updating the window title
+  * mac: fix libmpv usage without embedding
+  * mac: cleanup some unused and unneeded code
+  * osdep/io: add PRINTF_ATTRIBUTE for printf overrides
+  * meson: add missing _GNU_SOURCE in check
+  * meson: adjust win32 defines
+  * meson: don't define __USE_MINGW_ANSI_STDIO
+  * sdl_gamepad: add version check for SDL_HINT_JOYSTICK_THREAD
+  * ci/build-macos: enable Werror to catch issues quicker
+  * osdep/macosx: add default switch cases to suppress Wswitch
+  * ao_coreaudio_chmap: suppress vla warning
+  * various: replace some OOM handling
+  * ao/coreaudio_exclusive: fix segfault when changing formats
+  * meson: also expose present_sync for VT-only after a96d04f19d73
+  * player: remove shared-script-properties property
+  * vo: add params mutex
+  * vaapi: add support for vaapi-win32
+  * vaapi: pass module into create()
+  * d3d11: expose mp_get_dxgi_adapter and mp_dxgi_validate_adapter
+  * d3d11: rename d3d11 adapter to DXGI adapter
+
+-------------------------------------------------------------------
 Tue Nov 21 19:02:57 UTC 2023 - llyyr.public@gmail.com
 
 - Remove 0001-Revert-meson-bump-required-version-to-0.62.patch:

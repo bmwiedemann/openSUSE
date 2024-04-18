@@ -1,7 +1,7 @@
 #
 # spec file for package mpv
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2015 Packman Team <packman@links2linux.de>
 # Copyright (c) 2012 Jiri Slaby <jslaby@suse.de>
 # Copyright (c) 2011-2012 Pascal Bleser <pascal.bleser@opensuse.org>
@@ -21,7 +21,7 @@
 
 %define lname   libmpv2
 Name:           mpv
-Version:        0.37.0+git20231121.2a57a6ee
+Version:        0.38.0+git20240418.2f8038c59885
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
@@ -96,8 +96,8 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       hicolor-icon-theme
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun):hicolor-icon-theme
-Requires(postun):update-desktop-files
+Requires(postun): hicolor-icon-theme
+Requires(postun): update-desktop-files
 # Used via LUA scripts
 Recommends:     yt-dlp
 Conflicts:      mpv-plugin-mpris < 0.4
