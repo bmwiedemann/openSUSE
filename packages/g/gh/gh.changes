@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Apr 17 14:42:00 UTC 2024 - pdostal@suse.com
+
+- Update to version 2.48.0:
+  * Update install_linux.md (#8950)
+  * Remove unnecessary --help comment
+  * Fix `go` directive in `go.mod` (#8956)
+  * Use `filepath.Join` to support different platforms
+  * Run `go mod tidy`
+  * Refactor into table tests
+  * Explain `--skip-ssh-key` usage in long doc
+  * Tidy `go.mod`
+  * Fix cache contention in Go CI jobs
+  * Fix `attestation` cmd offline unit test failure (#8933)
+  * Change subcommands default to be more user friendly
+  * Add unit test, update naming, ensure DSSE envelope is in-toto
+  * Updates from linter feedback
+  * Add support to `attestation` command for more predicate types.
+  * Close zip file in run view tests
+  * Ensure run log cache creates cache dir if it doesn't exist
+  * Test `--skip-ssh-key` is captured correctly
+  * Add test to verify skipped SSH key prompts
+  * Add `--skip-ssh-key` to options
+  * Add `SkipSSHKey` field to `LoginOptions`
+  * Add tests for non-happy field paths
+  * Fix api cache test
+  * Use testify in git url tests
+  * Ensure cache dir is always available in RunLogCache
+  * Remove RunLogCache interface
+  * Use real Run Log Cache in run view tests
+  * Capture error on Run Log Cache Exists
+  * Rework Run Log Cache so that cache dir is injected
+  * Expose CacheDir on Config
+  * Minorly refactor scheme normalization in git ParseURL
+  * Test for parsing error in git ParseURL
+  * Remove naked returns from git ParseURL
+  * Fix parsing IPv6 remote URLs (#8893)
+  * Add codeowners entry for the GitHub TUF root included in the `attestation` command set (#8919)
+  * Add comment to explain `showSelectedReposInfo` assignment
+  * Rename const to avoid CodeQL error
+  * Add tests to verify `numSelectedRepos` is populated when necessary
+  * Populate `numSelectedRepos` only if needed
+  * build(deps): bump google.golang.org/grpc from 1.61.1 to 1.61.2
+  * Run defers in queue
+  * Resolve PR comments
+  * Wrap JSON arrays, objects in array with --slurp
+  * Resolve PR comments
+  * Clarify --merge-pages docs
+  * Replace --paginate-all with --merge-pages
+  * Resolve test issues
+  * Add more JSON merge tests
+  * Move jsonmerge package to internal
+  * Merge JSON responses from `gh api`
+  * Add tests for `FindByRepo`
+  * Apply suggestions from code review
+  * Improve error message returned by `FindByRepo`
+  * Add test cases to verify exported JSON has non-zero `numSelectedRepos`
+  * Populate `numSelectedRepos` in non-interactive mode, if explicitly selected
+  * Anchor the log filename to the start
+  * Add pr url pattern
+  * Test pr url lock
+  * update example for deeply nested array update
+  * allow multiple items in nested array
+
+-------------------------------------------------------------------
 Thu Apr 04 11:43:53 UTC 2024 - pdostal@suse.com
 
 - Update to version 2.47.0:

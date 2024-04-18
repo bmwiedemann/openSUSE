@@ -19,7 +19,7 @@
 %define goflags "-buildmode=pie -trimpath -mod=vendor -modcacherw"
 %define sname cli
 Name:           gh
-Version:        2.47.0
+Version:        2.48.0
 Release:        0
 Summary:        The official CLI for GitHub
 License:        MIT
@@ -91,7 +91,7 @@ cp share/man/man1/* %{buildroot}%{_mandir}/man1
 
 %check
 # Some tests are skipped because they require network access cli/cli#8928
-GOFLAGS=%{goflags} go test ./... -skip="TestRunInspect|TestJSONOutput|TestNewSigstoreVerifier|TestRunVerify|TestTUFRootVerify"
+GOFLAGS=%{goflags} go test ./... -skip="TestRunInspect|TestJSONOutput|TestNewSigstoreVerifier|TestRunVerify|TestTUFRootVerify|TestNewLiveSigstoreVerifier"
 
 %files
 %doc README.md
