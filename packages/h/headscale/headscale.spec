@@ -1,7 +1,7 @@
 #
 # spec file for package headscale
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,6 @@ install -D -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/%{name}/config-derp.yaml
 install -D -m 644 %{SOURCE5} %{buildroot}/%{_distconfdir}/%{name}/config-example.yaml
 install -D -m 644 %{SOURCE6} %{buildroot}/%{_distconfdir}/%{name}/derp-example.yaml
 %endif
-
 
 %pre
 %service_add_pre %{name}.service
