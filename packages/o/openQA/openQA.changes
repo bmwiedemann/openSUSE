@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 18 14:33:18 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1713441124.ce4c4187:
+  * Avoid messing with `PRODUCTDIR` if `CASEDIR`/`NEEDLES_DIR` are from Git
+  * Ensure the Git cache cleanup is happening according to local settings
+  * style: Fix not-clickable links
+
+-------------------------------------------------------------------
 Tue Apr 16 06:33:16 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1713195688.98057f9b:
