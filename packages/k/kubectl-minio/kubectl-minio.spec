@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-minio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,6 +71,7 @@ zsh command line completion support for %{name}.
 %build
 go build \
    -mod=vendor \
+   -buildmode=pie \
    -ldflags="-s -w -X github.com/minio/kubectl-minio/cmd.version=v%{version}" \
    -o bin/%{name} .
 
