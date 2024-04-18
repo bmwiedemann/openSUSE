@@ -3849,4 +3849,20 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1158236</requestid>
   </revision>
+  <revision rev="271" vrev="2">
+    <srcmd5>6969717e9732bdb7cc5b90f8dc791e09</srcmd5>
+    <version>8.2.2</version>
+    <time>1713470885</time>
+    <user>anag+factory</user>
+    <comment>- Backports and bugfixes:
+  * hw/net/net_tx_pkt: Fix overrun in update_sctp_checksum() (bsc#1222841, CVE-2024-3567)
+  * hw/virtio/virtio-crypto: Protect from DMA re-entrancy bugs (bsc#1222843, CVE-2024-3446)
+  * hw/char/virtio-serial-bus: Protect from DMA re-entrancy bugs (bsc#1222843, CVE-2024-3446)
+  * hw/display/virtio-gpu: Protect from DMA re-entrancy bugs (bsc#1222843, CVE-2024-3446)
+  * hw/virtio: Introduce virtio_bh_new_guarded() helper (bsc#1222843, CVE-2024-3446)
+  * hw/sd/sdhci: Do not update TRNMOD when Command Inhibit (DAT) is set (bsc#1222845, CVE-2024-3447)
+  * hw/nvme: Use pcie_sriov_num_vfs() (bsc#1220065, CVE-2024-26328)
+</comment>
+    <requestid>1168800</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 18 09:08:17 UTC 2024 - dfaggioli@suse.com
+
+- Backports and bugfixes:
+  * hw/net/net_tx_pkt: Fix overrun in update_sctp_checksum() (bsc#1222841, CVE-2024-3567)
+  * hw/virtio/virtio-crypto: Protect from DMA re-entrancy bugs (bsc#1222843, CVE-2024-3446)
+  * hw/char/virtio-serial-bus: Protect from DMA re-entrancy bugs (bsc#1222843, CVE-2024-3446)
+  * hw/display/virtio-gpu: Protect from DMA re-entrancy bugs (bsc#1222843, CVE-2024-3446)
+  * hw/virtio: Introduce virtio_bh_new_guarded() helper (bsc#1222843, CVE-2024-3446)
+  * hw/sd/sdhci: Do not update TRNMOD when Command Inhibit (DAT) is set (bsc#1222845, CVE-2024-3447)
+  * hw/nvme: Use pcie_sriov_num_vfs() (bsc#1220065, CVE-2024-26328)
+
+-------------------------------------------------------------------
 Fri Mar 15 12:51:27 UTC 2024 - dfaggioli@suse.com
 
 - Update to version 8.2.2. Full changelog here:
