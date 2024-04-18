@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/coreos/coreos-installer</param>
+              <param name="changesrevision">555533a454c393b37e5de9f7439ba0626775ddf8</param></service></servicedata>
