@@ -1,7 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr 16 06:49:32 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.45.3.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.45.3 (f271cf9)
+  * Build
+    ~ deps
+      + bump org.graalvm.sdk:nativeimage from 23.1.2 to 24.0.0
+        (09ca844)
+      + bump org.apache.maven.plugins:maven-jar-plugin (12316ca)
+      + bump org.apache.maven.plugins:maven-gpg-plugin (3420859)
+      + bump org.apache.maven.plugins:maven-source-plugin (14f27ec)
+      + bump org.apache.maven.plugins:maven-gpg-plugin (139e914)
+      + bump org.apache.maven.plugins:maven-compiler-plugin
+        (607d48c)
+      + bump org.apache.maven.plugins:maven-gpg-plugin (c556f08)
+
+-------------------------------------------------------------------
 Wed Mar 13 09:11:38 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
-- Update ro v3.45.2.0
+- Update to v3.45.2.0
   * Features
     ~ sqlite
       + upgrade to sqlite 3.45.2 (c56fbf1)
