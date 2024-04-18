@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 17 07:14:59 UTC 2024 - Илья Индиго <13ilya@gmail.com>
+
+- Updated to 1.25.5
+  * Changed nginx.keyring to Roman Arutyunyan’s PGP public key.
+  * https://nginx.org/en/CHANGES
+  * Added virtual servers in the stream module.
+  * Fixed the ngx_stream_pass_module.
+  * Fixed the "deferred", "accept_filter", and "setfib" parameters
+    of the "listen" directive in the stream module.
+  * Added cache line size detection for some architectures.
+
+-------------------------------------------------------------------
 Tue Apr 16 05:52:58 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Set RuntimeDirectory to offer a location for Unix sockets at /run/nginx

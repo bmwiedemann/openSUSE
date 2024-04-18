@@ -1081,4 +1081,19 @@
     <comment>- Set RuntimeDirectory to offer a location for Unix sockets at /run/nginx</comment>
     <requestid>1167915</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>7c9ab566d2db62fc37f6554980cb4cbd</srcmd5>
+    <version>1.25.5</version>
+    <time>1713471041</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 1.25.5
+  * Changed nginx.keyring to Roman Arutyunyan’s PGP public key.
+  * https://nginx.org/en/CHANGES
+  * Added virtual servers in the stream module.
+  * Fixed the ngx_stream_pass_module.
+  * Fixed the &quot;deferred&quot;, &quot;accept_filter&quot;, and &quot;setfib&quot; parameters
+    of the &quot;listen&quot; directive in the stream module.
+  * Added cache line size detection for some architectures.</comment>
+    <requestid>1168473</requestid>
+  </revision>
 </revisionlist>
