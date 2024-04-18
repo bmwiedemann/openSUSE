@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Tue Apr 16 15:03:28 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240411.81041cf0b:
+- libcrmcommon: Avoid use-after-free in mark_xml_changes()
+- libcrmcommon: Mark parents dirty in pcmk__mark_xml_created()
+
+-------------------------------------------------------------------
+Tue Apr 16 14:46:08 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240410.ae4b38ab5:
+- scheduler: deprecate Nagios and Upstart resources even if built with --enable-compat-2.0 (gh#ClusterLabs/pacemaker#3417)
+
+-------------------------------------------------------------------
+Tue Apr 16 13:54:16 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240410.74b7a09c5:
+- tools: New crm_resource --list-options=primitive option (gh#ClusterLabs/pacemaker#3399)
+- libcrmcommon: Use PCMK_VALUE_VERSION as option type (gh#ClusterLabs/pacemaker#3399)
+- libcrmcommon: Use PCMK_VALUE_TIMEOUT as option type (gh#ClusterLabs/pacemaker#3399)
+- libcrmcommon: Use PCMK_VALUE_SCORE as option type (gh#ClusterLabs/pacemaker#3399)
+- libcrmcommon: Use PCMK_VALUE_NONNEGATIVE_INTEGER as opt type (gh#ClusterLabs/pacemaker#3399)
+- libcrmcommon: Use PCMK_VALUE_DURATION as option type (gh#ClusterLabs/pacemaker#3399)
+- schemas: Allow more types in options API schema
+- fencer: Deprecate metadata CLI option (gh#ClusterLabs/pacemaker#3399)
+- crm_resource: New --list-options=fencing option (gh#ClusterLabs/pacemaker#3399)
+- schemas: Allow options in crm_resource output
+- scheduler: warn if multiple top-level rules are used
+
+-------------------------------------------------------------------
+Mon Apr 15 12:27:11 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240408.78e71e024:
+- scheduler: correctly log resource IDs of the deprecated classes (gh#ClusterLabs/pacemaker#3415)
+
+-------------------------------------------------------------------
+Mon Apr 15 09:24:08 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240404.4eedfe810:
+- libcib: Don't incorrectly expand "++" and "+=" in XML attr values (gh#ClusterLabs/pacemaker#3413)
+- cts-cli: Update for pcmk__inject_failcount() setting integer value (gh#ClusterLabs/pacemaker#3413)
+- libpacemaker: pcmk__inject_failcount should set an integer value (gh#ClusterLabs/pacemaker#3413)
+- scheduler: improve message for empty location rules
+- scheduler: improve error checking in pcmk__new_location()
+- schemas: restructure rule schema for planned incompatible changes
+- scheduler: log unknown nodes in location constraints (gh#ClusterLabs/pacemaker#3409, CLBZ#5415)
+- scheduler: correct lifetime deprecation warning (gh#ClusterLabs/pacemaker#3409)
+- tools: honor rules when getting utilization attributes with crm_resource (gh#ClusterLabs/pacemaker#3409)
+- scheduler: deprecate support for default instance attributes (gh#ClusterLabs/pacemaker#3409)
+- CIB: deprecate support for node attribute expressions beneath op and op_defaults
+- scheduler: use default timeout (20s) if user configures 0 (gh#ClusterLabs/pacemaker#3409)
+- tools: use better value for crm_resource --force-* timeout (gh#ClusterLabs/pacemaker#3409)
+- tools: crm_resource should ignore resource meta-attribute node expressions (gh#ClusterLabs/pacemaker#3409)
+- fencer: deprecate node attribute expressions in fence device meta-attributes
+- CIB: deprecate support for multiple rules within a single location constraint
+- scheduler: accept empty attribute name in node attribute expressions
+
+-------------------------------------------------------------------
+Thu Apr 11 17:08:58 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240401.39cf7437c:
+- fencer: always format time_t values as long long (gh#ClusterLabs/pacemaker#3407)
+- libcrmcommon: Escape some chars in XML attribute text output
+- scheduler: Add PCMK__XA_GRANTED to ticket_state XML.
+- tools: Fix the arguments annotation for ticket-constraints.
+- schemas: Change the type of a ticket's id attribute.
+- libcrmcommon: Escape newlines and tabs in XML attribute values
+- libcrmcommon: handle invalid match in pcmk__replace_submatches()
+- cts-lab: Parse log watch timestamps on exerciser side
+
+-------------------------------------------------------------------
+Fri Apr 05 07:24:43 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240325.88621b8b8:
+- libcrmcommon: Revert daemon metadata output to pre-3e84f934 (gh#ClusterLabs/pacemaker#3398)
+
+-------------------------------------------------------------------
+Fri Apr 05 07:15:52 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240325.c71f81e91:
+- Pacemaker Explained: action-specific timeouts are `timeout` type now (gh#ClusterLabs/pacemaker#3385)
+- fencer: correctly parse action-specific timeouts with units (gh#ClusterLabs/pacemaker#3385)
+- cts-fencing: test for parsing action-specific timeouts with units (gh#ClusterLabs/pacemaker#3385)
+- fencer: log the units of fencing timeouts and delays (gh#ClusterLabs/pacemaker#3385)
+- fencer: log the correct unit of action-specific timeouts (gh#ClusterLabs/pacemaker#3385)
+- fencer: respect per-device watchdog fencing timeout from any query result (gh#ClusterLabs/pacemaker#3385)
+- fencer: prevent watchdog fencing targeting an offline node from timing out on insufficient `stonith-timeout` (gh#ClusterLabs/pacemaker#3385)
+- fencer: prevent watchdog fencing from timing out on insufficient per-device fencing timeout (gh#ClusterLabs/pacemaker#3385)
+- fencer: prevent watchdog fencing from timing out on insufficient `stonith-timeout` (gh#ClusterLabs/pacemaker#3385)
+- fencer: prevent an in-progress watchdog fencing from timing out on query timeout (gh#ClusterLabs/pacemaker#3385)
+- fencer: make an `on` action for an offline target of watchdog fencing fail (gh#ClusterLabs/pacemaker#3385)
+- fencer: ask an online target of watchdog fencing to acknowledge an `on` action (gh#ClusterLabs/pacemaker#3385)
+- fencer: log the correct value of `stonith-watchdog-timeout` (gh#ClusterLabs/pacemaker#3385)
+- fencer: log for an offline target of watchdog fencing correctly (gh#ClusterLabs/pacemaker#3385)
+- fencer: functionize checking whether a fencing action should be done with watchdog (gh#ClusterLabs/pacemaker#3385)
+
+-------------------------------------------------------------------
+Fri Apr 05 07:05:18 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240321.03099e938:
+- libcrmcommon: NULL-check strdup() in pcmk__register_message() (gh#ClusterLabs/pacemaker#3394)
+- libcrmcommon: NULL-check strdup() in pcmk__register_format() (gh#ClusterLabs/pacemaker#3394)
+- libpacemaker: Correctly free graphs and synapses (gh#ClusterLabs/pacemaker#3394)
+- libcrmcommon: Initialize some variables (gh#ClusterLabs/pacemaker#3394)
+- libcrmcommon: Avoid dumping core in pcmk__mem_assert()
+- HealthSMART:fix the description of temp_lower_limit (gh#ClusterLabs/pacemaker#3392)
+
+-------------------------------------------------------------------
+Wed Apr 03 15:38:04 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240306.56e6b6818:
+- cibsecret: Use 'ps axww' to avoid truncating issue (gh#ClusterLabs/pacemaker#3384)
+
+-------------------------------------------------------------------
+Wed Mar 20 16:56:52 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240305.2cdec7080:
+- libcrmcommon: Bump feature set for crm_ticket formatted output
+- tools: Use formatted output in the rest of crm_ticket.
+- tools: Convert crm_ticket -G to formatted output.
+- tools: Convert crm_ticket -q/-c to formatted output.
+- schemas: Add a schema for crm_ticket.
+
+-------------------------------------------------------------------
+Mon Mar 18 13:43:55 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240305.100c58ea0:
+- libcrmcommon: Escape XML non-printing characters correctly as hex
+- libcrmcommon: Drop "Couldn't parse XML" error messages
+- libcrmcommon: pcmk__xml_read() recovery works for stdin (gh#ClusterLabs/pacemaker#3361)
+- libcrmcommon: Don't try to parse XML from bad .bz2 file (gh#ClusterLabs/pacemaker#3361)
+
+-------------------------------------------------------------------
 Thu Mar 14 11:15:30 UTC 2024 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.1.7+20240304.d18a497eb:
@@ -8,10 +140,10 @@ Thu Mar 14 11:15:30 UTC 2024 - Yan Gao <ygao@suse.com>
 Thu Mar 14 10:35:21 UTC 2024 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.1.7+20240304.d7bf4680c:
-- libcrmcommon: Use free_xml in html_free_priv.
-- libcrmcommon:  Free error strings in html/xml outputters.
-- libcrmcommon: Free text/curses private list data.
-- tools: Fix argument validation for crm_attribute update.
+- libcrmcommon: Use free_xml in html_free_priv. (gh#ClusterLabs/pacemaker#3380)
+- libcrmcommon:  Free error strings in html/xml outputters. (gh#ClusterLabs/pacemaker#3380)
+- libcrmcommon: Free text/curses private list data. (gh#ClusterLabs/pacemaker#3380)
+- tools: Fix argument validation for crm_attribute update. (gh#ClusterLabs/pacemaker#3379)
 - pacemaker-fenced: improve pcmk_host_list help
 - libcrmcommon, fencer: Fix some option defaults
 - tools: crm_attribute --list-options --all

@@ -2247,4 +2247,41 @@
   %python3_fix_shebang_path macro, [bsc#1212476] (forwarded request 1158030 from yan_gao)</comment>
     <requestid>1158031</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>84502e657ce3f7f6bf96f1aaeebfaaba</srcmd5>
+    <version>2.1.7+20240411.81041cf0b</version>
+    <time>1713471003</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.1.7+20240411.81041cf0b:
+- libcrmcommon: Avoid use-after-free in mark_xml_changes()
+- libcrmcommon: Mark parents dirty in pcmk__mark_xml_created()
+
+- Update to version 2.1.7+20240410.ae4b38ab5:
+- scheduler: deprecate Nagios and Upstart resources even if built with --enable-compat-2.0 (gh#ClusterLabs/pacemaker#3417)
+
+- Update to version 2.1.7+20240410.74b7a09c5:
+- tools: New crm_resource --list-options=primitive option (gh#ClusterLabs/pacemaker#3399)
+- libcrmcommon: Use PCMK_VALUE_VERSION as option type (gh#ClusterLabs/pacemaker#3399)
+- libcrmcommon: Use PCMK_VALUE_TIMEOUT as option type (gh#ClusterLabs/pacemaker#3399)
+- libcrmcommon: Use PCMK_VALUE_SCORE as option type (gh#ClusterLabs/pacemaker#3399)
+- libcrmcommon: Use PCMK_VALUE_NONNEGATIVE_INTEGER as opt type (gh#ClusterLabs/pacemaker#3399)
+- libcrmcommon: Use PCMK_VALUE_DURATION as option type (gh#ClusterLabs/pacemaker#3399)
+- schemas: Allow more types in options API schema
+- fencer: Deprecate metadata CLI option (gh#ClusterLabs/pacemaker#3399)
+- crm_resource: New --list-options=fencing option (gh#ClusterLabs/pacemaker#3399)
+- schemas: Allow options in crm_resource output
+- scheduler: warn if multiple top-level rules are used
+
+- Update to version 2.1.7+20240408.78e71e024:
+- scheduler: correctly log resource IDs of the deprecated classes (gh#ClusterLabs/pacemaker#3415)
+
+- Update to version 2.1.7+20240404.4eedfe810:
+- libcib: Don't incorrectly expand &quot;++&quot; and &quot;+=&quot; in XML attr values (gh#ClusterLabs/pacemaker#3413)
+- cts-cli: Update for pcmk__inject_failcount() setting integer value (gh#ClusterLabs/pacemaker#3413)
+- libpacemaker: pcmk__inject_failcount should set an integer value (gh#ClusterLabs/pacemaker#3413)
+- scheduler: improve message for empty location rules
+- scheduler: improve error checking in pcmk__new_location()
+- schemas: restructure rule schema for planned incompatible changes</comment>
+    <requestid>1168817</requestid>
+  </revision>
 </revisionlist>
