@@ -1,7 +1,7 @@
 #
 # spec file for package python-meson-python
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,42 +18,30 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-meson-python
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 Summary:        Meson Python build backend (PEP 517)
 License:        MIT
 URL:            https://github.com/mesonbuild/meson-python
 Source0:        https://files.pythonhosted.org/packages/source/m/meson_python/meson_python-%{version}.tar.gz
-# for the test suite
-Source1:        https://files.pythonhosted.org/packages/py3/t/tomli/tomli-2.0.1-py3-none-any.whl
-Source2:        https://files.pythonhosted.org/packages/py3/p/pyproject_metadata/pyproject_metadata-0.7.1-py3-none-any.whl
-Source3:        https://files.pythonhosted.org/packages/py3/p/packaging/packaging-23.0-py3-none-any.whl
-Source4:        https://files.pythonhosted.org/packages/py3/t/typing_extensions/typing_extensions-4.4.0-py3-none-any.whl
 # PATCH-FEATURE-OPENSUSE mesonpy-trim-deps.patch code@bnavigator.de
 Patch11:        mesonpy-trim-deps.patch
-# PATCH-FEATURE-OPENSUSE mesonpy-no-wheel-rebuild.patch code@bnavigator.de
-Patch12:        mesonpy-no-wheel-rebuild.patch
-# PATCH-FEATURE-OPENSUSE
-Patch14:        no-build-isolation-in-test.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyproject-metadata >= 0.7.1}
 BuildRequires:  %{python_module tomli >= 1.0.0 if %python-base < 3.11}
-BuildRequires:  %{python_module typing-extensions >= 3.7.4 if %python-base < 3.10}
 BuildRequires:  fdupes
-BuildRequires:  meson >= 0.63.3
+BuildRequires:  meson >= 1.2.3
 BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
-Requires:       meson >= 0.63.3
-Requires:       python-pyproject-metadata >= 0.7.1
 %if 0%{python_version_nodots} >= 312
-Requires:       python-setuptools
+Requires:       meson >= 1.2.3
+%else
+Requires:       meson >= 0.63.3
 %endif
+Requires:       python-pyproject-metadata >= 0.7.1
 %if 0%{python_version_nodots} < 311
 Requires:       python-tomli >= 1.0.0
-%endif
-%if 0%{python_version_nodots} < 310
-Requires:       python-typing-extensions >= 3.7.4
 %endif
 # SECTION test
 BuildRequires:  %{python_module GitPython}
@@ -62,7 +50,6 @@ BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools-wheel}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  patchelf
 # /SECTION
@@ -70,7 +57,10 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Python build backend (PEP 517) for Meson projects.
+meson-python is a Python build backend built on top of the Meson build system.
+It enables using Meson for the configuration and build steps of Python packages.
+meson-python is best suited for building Python packages containing extension
+modules implemented in languages such as C, C++, Cython, Fortran, Pythran, or Rust.
 
 %prep
 %autosetup -p1 -n meson_python-%{version}
@@ -83,10 +73,9 @@ Python build backend (PEP 517) for Meson projects.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export MESONPY_FORCE_LOCAL_LIB=1
-export PIP_FIND_LINKS="%{python3_sitelib}/../wheels"
-%python_expand cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} build/
-%pytest
+# test suite path issues
+donttest="test_vendored_meson"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE
