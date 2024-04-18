@@ -31,7 +31,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-desktop
-Version:        6.0.3
+Version:        6.0.4
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
@@ -234,7 +234,7 @@ Plasma 6 Input Method Backend for SCIM (Smart Chinese/Common Input Method) suppo
 %cmake_kf6 \
 %ifarch s390x
   -DBUILD_KCM_TOUCHPAD_X11:BOOL=FALSE \
-  -DBUILD_KCM_MOUSE_X11=OFF 
+  -DBUILD_KCM_MOUSE_X11=OFF
 %endif
 
 %kf6_build

@@ -32,4 +32,12 @@
 - Move touchpad and mouse configuration to all (also for s390x) (forwarded request 1164074 from AdaLovelace)</comment>
     <requestid>1164076</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5e9fcc2f322ef942bc041b6e122fa363</srcmd5>
+    <version>6.0.4</version>
+    <time>1713471099</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.0.4(.1) (forwarded request 1168499 from Vogtinator)</comment>
+    <requestid>1168758</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Apr 17 08:13:12 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.4
+- Changes since 6.0.3:
+  * update version for new release
+  * applets/kickoff: fix invalid mimeData from item delegates (kde#485485)
+  * applets/taskmanager: show text more often for traditional Task Manager (kde#483070)
+  * foldermodel: Export urls to the Desktop Portal on drag and copy
+  * Add floating margin to panel highlight indicator (kde#485112)
+  * FolderView: Do not clear hover when moving mouse over items (kde#483581)
+  * applets/kickoff: Disable reusing items (kde#445512)
+  * Desktop: check containment availability first before `usedInAccentColor`
+  * Revert "applets/taskmanager: simplify right press handling" (kde#482813)
+  * kcms/mouse: Sync values when layout becomes enabled
+  * revert premature appstream update
+  * update version for new release
+  * gamecontroller: Do SDL_Init later.
+  * gamecontroller: Do less SDL polling when there aren't devices yet.
+  * update version for new release
+
+-------------------------------------------------------------------
 Mon Apr  1 18:21:06 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Add "-DBUILD_KCM_MOUSE_X11=OFF" for s390x
