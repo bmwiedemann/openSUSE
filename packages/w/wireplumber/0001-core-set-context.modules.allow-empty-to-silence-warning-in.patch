@@ -1,0 +1,28 @@
+From 7856124df0ebd28e259ce5b84b186cc4c859acd7 Mon Sep 17 00:00:00 2001
+From: George Kiagiadakis <george.kiagiadakis@collabora.com>
+Date: Wed, 3 Apr 2024 11:52:18 +0300
+Subject: [PATCH] core: set context.modules.allow-empty to silence warning in
+ pw_context
+
+See https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/cddea858d9e8894d777b1830d76db18e57791e29
+
+Closes: #620
+---
+ lib/wp/core.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/wp/core.c b/lib/wp/core.c
+index 9de0e69b..7e59447a 100644
+--- a/lib/wp/core.c
++++ b/lib/wp/core.c
+@@ -330,6 +330,7 @@ wp_core_constructed (GObject *object)
+ 
+       /* disable loading of a configuration file in pw_context */
+       wp_properties_set (self->properties, PW_KEY_CONFIG_NAME, "null");
++      wp_properties_set (self->properties, "context.modules.allow-empty", "true");
+     }
+ 
+     /* properties are fully stored in the pw_context, no need to keep a copy */
+-- 
+GitLab
+

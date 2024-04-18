@@ -30,6 +30,9 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
+Patch0:         0001-core-set-context.modules.allow-empty-to-silence-warning-in.patch
+Patch1:         0002-monitor-utils-clear-cam-data-after-creating-nodes.patch
+Patch2:         0003-monitors_bluez-fix-BAP-device-set-node-naming.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz

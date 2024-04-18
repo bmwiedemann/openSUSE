@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 15 07:54:54 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to silence a warning on pipewire
+  (since 1.0.5):
+  * 0001-core-set-context.modules.allow-empty-to-silence-warning-in.patch
+- Add patch from upstream to fix a dangling reference to a device:
+  * 0002-monitor-utils-clear-cam-data-after-creating-nodes.patch
+- Add patch from upstream to fix BAP node naming:
+  * 0003-monitors_bluez-fix-BAP-device-set-node-naming.patch
+
+-------------------------------------------------------------------
 Mon Apr  1 07:53:59 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.5.1:
