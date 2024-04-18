@@ -559,4 +559,12 @@
     <comment>Erase the existence of tzdata-java8 from the memory of mankind</comment>
     <requestid>1155902</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>2d77d07823a04c698204e56dd64b81f6</srcmd5>
+    <version>11.0.23.0</version>
+    <time>1713471012</time>
+    <user>anag+factory</user>
+    <comment>April 2024 CPU</comment>
+    <requestid>1168869</requestid>
+  </revision>
 </revisionlist>
