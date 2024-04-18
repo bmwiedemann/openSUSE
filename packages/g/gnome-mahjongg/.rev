@@ -241,4 +241,18 @@
     <comment> (forwarded request 1113524 from iznogood)</comment>
     <requestid>1113611</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>6c6fb4852737bb385a1adcd0be867a60</srcmd5>
+    <version>3.40.1</version>
+    <time>1713471217</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.40.1:
+  + Only create a single timer (prevent 100% CPU usage).
+  + Store untranslated tile layout name in settings.
+  + Update 'moves left' on tile match and restart.
+  + Always show number of moves left.
+  + Update AppStream metadata.
+  + Updated translations. (forwarded request 1168855 from dimstar)</comment>
+    <requestid>1168887</requestid>
+  </revision>
 </revisionlist>
