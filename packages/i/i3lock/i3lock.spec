@@ -1,7 +1,7 @@
 #
 # spec file for package i3lock
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2014 B1 Systems GmbH, Vohburg, Germany.
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -20,7 +20,7 @@
 
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 Name:           i3lock
-Version:        2.14.1
+Version:        2.15
 Release:        0
 Summary:        Screen Locker for the i3 Window Manager
 License:        BSD-3-Clause

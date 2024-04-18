@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 17 18:40:52 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- remove unneeded %check section
+
+-------------------------------------------------------------------
+Fri Apr 12 03:55:03 UTC 2024 - ming li <mli@suse.com>
+
+- update to 2.15: 
+  * unlock indicator: display current keyboard layout when
+    user types password (with --show-keyboard-layout flag).
+
+-------------------------------------------------------------------
 Fri Jun 23 19:51:33 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 2.14.1:
