@@ -1,4 +1,122 @@
 -------------------------------------------------------------------
+Wed Apr 17 16:34:39 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to guava 33.1.0
+  * Changes of version 33.1.0:
+    + Updated our Error Prone dependency to 2.26.1, which includes
+      a JPMS-ready jar of annotations. If you use the Error Prone
+      annotations in a modular build of your own code, you may need
+      to add a requires line for them.
+    + base: Added a Duration overload for
+      Suppliers.memoizeWithExpiration.
+    + base: Deprecated the remaining two overloads of
+      Throwables.propagateIfPossible. They won't be deleted, but we
+      recommend migrating off them.
+    + cache: Fixed a bug that could cause false "recursive load"
+      reports during refresh.
+    + graph: Changed the return types of transitiveClosure() and
+      reachableNodes() to Immutable* types. reachableNodes() already
+      returned an immutable object (even though that was not
+      reflected in the declared return type); transitiveClosure()
+      used to return a mutable object. The old signatures remain
+      available, so this change does not break binary compatibility.
+    + graph: Changed the behavior of views returned by graph
+      accessor methods that take a graph element as input: They now
+      throw IllegalStateException when that element is removed from
+      the graph.
+    + hash: Optimized Checksum-based hash functions for Java 9+.
+    + testing: Exposed FakeTicker Duration methods to Android users.
+    + util.concurrent: Deprecated the constructors of
+      UncheckedExecutionException and ExecutionError that don't
+      accept a cause. We won't remove these constructors, but we
+      recommend migrating off them, as users of those classes often
+      assume that instances will contain a cause.
+    + util.concurrent: Improved the correctness of racy accesses for
+      J2ObjC users.
+  * Changes of version 33.0.0:
+    + This version of guava-android contains some package-private
+      methods whose signature includes the Java 8 Collector API.
+      This is a test to identify any problems before we expose those
+      methods publicly to users. Please report any problems that you
+      encounter.
+    + Changed various classes to catch Exception instead of
+      RuntimeException even when only RuntimeException is
+      theoretically possible. This can help code that throws
+      undeclared exceptions, as some bytecode rewriters (e.g.,
+      Robolectric) and languages (e.g., Kotlin) do.
+    + Added an Automatic-Module-Name to failureaccess, Guava's one
+      strong runtime dependency.
+    + reflect: In guava-android only, removed
+      Invokable.getAnnotatedReturnType() and
+      Parameter.getAnnotatedType(). These methods never worked in an
+      Android VM, and to reflect that, they were born @Deprecated,
+      @Beta, and @DoNotCall. They're now preventing us from rolling
+      out some new Android compatibility testing. This is the only
+      binary-incompatible change in this release, and it should have
+      no effect in practice. Still, we bump the major version number
+      to follow Semantic Versioning.
+    + util.concurrent: Changed our implementations to avoid eagerly
+      initializing loggers during class loading. This can help
+      performance, especially under Android.
+  * Changes of version 32.1.3:
+    + Changed Gradle Metadata to include dependency versions
+      directly. This may address "Could not find some-dependency"
+      errors that some users have reported (which might be a result
+      of users' excluding guava-parent).
+    + collect: Changed Multisets.unmodifiableMultiset(set)
+      .removeIf(predicate) to throw an exception always, even if
+      nothing matches predicate.
+    + graph: Fixed the behavior of Graph/ValueGraph views for a node
+      when that node is removed from the graph.
+    + io: Fixed Files.createTempDir and FileBackedOutputStream under
+      Windows services, a rare use case. (The fix actually covers
+      only Java 9+ because Java 8 would require an additional
+      approach. Let us know if you need support under Java 8.)
+    + net: Made MediaType.parse allow and skip over whitespace
+      around the / and = separator tokens in addition to the ;
+      separator, for which it was already being allowed.
+    + util.concurrent: Tweaked Futures.getChecked
+      constructor-selection behavior: The method continues to prefer
+      to call constructors with a String parameter, but now it
+      breaks ties based on whether the constructor has a Throwable
+      parameter. Beyond that, the choice of constructor remains
+      undefined. (For this and other reasons, we discourage the use
+      of getChecked.)
+  * Changes of version 32.1.2:
+    + Removed the section of our Gradle metadata that caused Gradle
+      to report conflicts with listenablefuture.
+    + Changed our Maven project to avoid affecting which version of
+      Mockito our Gradle users see.
+    + collect: Under J2CL, exposed ImmutableList and ImmutableSet
+      methods copyOf and of for JavaScript usage.
+    + net: Optimized InternetDomainName construction.
+  * Changes of version 32.1.1:
+    + Fixed our broken Gradle metadata from 32.1.0. Sorry again for
+      the trouble. If you use Gradle, please still read the release
+      notes from that version: You may still see errors from the new
+      checking that the metadata enables, and the release notes
+      discuss how to fix those errors.
+  * Changes of version 32.1.0:
+    + collect: Tweaked more nullness annotations.
+    + hash: Enhanced crc32c() to use Java's hardware-accelerated
+      implementation where available.
+    + util.concurrent: Added Duration-based default methods to
+      ListeningExecutorService.
+    + Began updating Javadoc to focus less on APIs that have been
+      superseded by additions to the JDK. We're also looking to add
+      more documentation that directs users to JDK equivalents for
+      our APIs. Further PRs welcome!
+    + Fixed some problems with using Guava from a Java Agent.
+      (But we don't test that configuration, and we don't know how
+      well we'll be able to keep it working.)
+    + Fixed BootstrapMethodError when using CacheBuilder from a
+      custom system class loader. (As with the previous item,
+      we're not sure how well we'll be able to keep this use case
+      working.)
+    + Suppressed a harmless unusable-by-js warning seen by users of
+      guava-gwt.
+
+-------------------------------------------------------------------
 Tue Mar 12 18:57:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix version mismatch in the ant build files.

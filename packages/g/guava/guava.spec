@@ -17,7 +17,7 @@
 
 
 Name:           guava
-Version:        32.0.1
+Version:        33.1.0
 Release:        0
 Summary:        Google Core Libraries for Java
 License:        Apache-2.0 AND CC0-1.0
@@ -28,7 +28,7 @@ Source1:        %{name}-build.tar.xz
 BuildRequires:  ant
 BuildRequires:  checker-qual
 BuildRequires:  fdupes
-BuildRequires:  google-errorprone-annotations
+BuildRequires:  google-errorprone-annotations >= 2.21.0
 BuildRequires:  j2objc-annotations
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsr-305
@@ -66,8 +66,6 @@ find . -name '*.jar' -delete
 %pom_disable_module guava-tests
 
 %pom_remove_plugin -r :animal-sniffer-maven-plugin
-# Downloads JDK source for doc generation
-%pom_remove_plugin :maven-dependency-plugin guava
 
 %pom_xpath_inject /pom:project/pom:build/pom:plugins/pom:plugin/pom:configuration/pom:instructions "<_nouses>true</_nouses>" guava/pom.xml
 
@@ -81,7 +79,7 @@ find . -name '*.jar' -delete
 %build
 mkdir -p lib
 build-jar-repository -s lib junit jsr-305 google-errorprone/annotations checker-qual j2objc-annotations
-%{ant} -Dtest.skip=true package javadoc
+%{ant} -Dproject.version=%{version} -Dtest.skip=true package javadoc
 
 %install
 # jars

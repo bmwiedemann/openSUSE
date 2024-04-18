@@ -87,4 +87,12 @@
     <comment>fix versions in jar manifest</comment>
     <requestid>1157419</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f717cddcc8cdf89ff1b7c8a12dd42e08</srcmd5>
+    <version>33.1.0</version>
+    <time>1713471131</time>
+    <user>anag+factory</user>
+    <comment>33.1.0</comment>
+    <requestid>1168638</requestid>
+  </revision>
 </revisionlist>
