@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Apr 18 09:52:24 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.125.3
+  * Support for calling Oracle Cloud Infrastructure services in the me-abudhabi-3 region
+  * Support for new Image resource for an Autonomous Database in the Database service
+  * Support for creating Autonomous Container Database using Autonomous
+    Database Software Image in the Database service
+  * Support for new dedicated AI cluster unit shape in the Generative AI service
+  * Support for Chat API for LLM models in the Generative AI service
+  * Support for network security groups (NSGs) in the Redis service
+  * Support for custom public egress on model deployments in the Data Science service
+  * Support for a new data transfer parameter for AWS S3 bucket in the Database Migration service
+  * Support for Oracle Process Automation instance start and stop
+    operations in the Process Automation service
+  * Support for healthcare Natural Language Processing (NLP) in the AI Language service
+  * Support for identification and de-identification of Private Health
+    Information (PHI) service in the AI Language service
+  * Support for multilingual content for using machine learning models in the AI Language service
+  * Support for usage statements in cost management in the Usage service
+- from version 2.125.2
+  * Support for calling Oracle Cloud Infrastructure services in the ap-dcc-gazipur-1 region
+  * Support for the DNS-based backend health check in the Network Load Balancer service
+  * Support for Fail Open in the Network Load Balancer service
+  * Support for adding and updating Instant failover in the Network Load Balancer service
+  * Support for adding and updating source type and resource category
+    for resource types in the Stack Monitoring service
+  * Support for searching resources based on resource category, source type,
+    multiple compartments, multiple lifecycle states in the Stack Monitoring service
+  * Support for filtering listed resources based on lifecycle status in the Stack Monitoring service
+  * Support for creating tasks with new config parameters in the Stack Monitoring service
+  * Support for Composite Resource Principal integration in the Data Flow service
+
+-------------------------------------------------------------------
 Thu Apr  4 10:59:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.125.1
