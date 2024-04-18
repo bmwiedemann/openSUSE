@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 10 18:54:55 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Switch to Python 3.11 build in SLE 15 SP4 and openSUSE Leap 15.4 and
+  later (jsc#PCT-371)
+
+-------------------------------------------------------------------
 Fri Apr  5 09:04:00 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.87.0

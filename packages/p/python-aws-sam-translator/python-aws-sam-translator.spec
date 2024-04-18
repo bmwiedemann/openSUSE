@@ -23,9 +23,7 @@
 %else
 %bcond_without test
 %endif
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-aws-sam-translator
 Version:        1.87.0
 Release:        0
@@ -47,6 +45,9 @@ Requires(postun): update-alternatives
 BuildArch:      noarch
 %if 0%{?suse_version} < 1500
 BuildRequires:  python
+%endif
+%if 0%{?sle_version} >= 150400
+Obsoletes:      python3-aws-sam-translator < %{version}
 %endif
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 5.4}
