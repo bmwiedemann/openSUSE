@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 18 00:07:11 UTC 2024 - David Disseldorp <ddiss@suse.de>
+
+- Update to release v1.7.0
+  * New on disk forat feature - per member 64-bit bitmap of regions
+    with btree nodes, to accelerate recovering by scanning for
+    btree nodes.
+  * mount: canonicalize device path for single device node
+  * Topology repair now uses nodes found by scanning to fill holes
+  * mount: Handle multi-device with 1 device node
+
+-------------------------------------------------------------------
 Mon Mar  4 01:54:50 UTC 2024 - David Disseldorp <ddiss@suse.de>
 
 - Update to release v1.6.4
