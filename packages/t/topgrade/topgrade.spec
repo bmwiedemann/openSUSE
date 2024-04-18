@@ -1,7 +1,7 @@
 #
 # spec file for package topgrade
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           topgrade
-Version:        13.0.0
+Version:        14.0.1
 Release:        0
 Summary:        Upgrade all the things
 License:        GPL-3.0-only
@@ -25,7 +25,6 @@ Group:          Productivity/Other
 URL:            https://github.com/%{name}-rs/%{name}
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  zstd
 ExclusiveArch:  %{rust_tier1_arches}
@@ -36,7 +35,6 @@ To remedy this, Topgrade detects which tools you use and runs the appropriate co
 
 %prep
 %autosetup -a1
-install -D -m 644 %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}

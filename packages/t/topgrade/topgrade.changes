@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Apr 15 09:20:49 UTC 2024 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Uppate to version 14.0.1:
+  * workflows(homebrew): replace Homebrew/actions/bump-formulae with Homebrew/actions/bump-packages (#656)
+  * chore: fix file name typo[skip ci] (#657)
+  * docs: add doc on how to do a new release (#658)
+  * feat: skip breaking changes notification with env var (#659)
+  * Follow up to the follow up in #616 (#660)
+  * fix vscode extensions update step (#650)
+  * Fix system updates for Nobara (#661)
+  * chore: release v14.0.1 (#662)
+- Update to version 14.0.0:
+  * fix: omz remote execution if ZSH is not present (#592)
+  * chore: update issue template label (#596)
+  * Added Bun packages step (#599)
+  * docs: fix typo in config.example.toml (#603)
+  * docs: migration and breaking changes (#606)
+  * revert git pushing functionalities (#615)
+  * refactor: cleanup for #615 (#616)
+  * Make zinit and zi use parallel updates (#614)
+  * Bun packages fixes (#617)
+  * chore(deps): bump all deps (#618)
+  * Add option to ignore containers to pull (#613)
+  * Update config.example.toml (#621)
+  * feat: inform users of breaking changes on first run (#619)
+  * fix: remove deprecated brew option '--ignore-pinned' (#629)
+  * Skip nix upgrade-nix when Nix is installed in a nix profile (#622)
+  * refactor: update pip if extern managed and global.break-system-packages is true (#634)
+  * feat(pipx-update): add quiet flag for pipx upgrade-all on version 1.4.0+ (#635)
+  * fix(os) consider Fedora Kinoite to be the Fedora Silverblue distribution (#638)
+  * Added an Audit step for FreeBSD and DragonFly packagees. (#640)
+  * chore(deps): bump h2 from 0.3.22 to 0.3.24 (#645)
+  * fix: oh-my-zsh step issue #646 (#647)
+  * chore: release v14.0.0 (#652)
+
+-------------------------------------------------------------------
 Thu Nov 16 08:03:45 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 13.0.0:
