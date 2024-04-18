@@ -1,7 +1,7 @@
 #
 # spec file for package xcb-proto
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define dirsuffix 1.16.0
+%define dirsuffix 1.17.0
 %if 0%{?suse_version} >= 1500
 %bcond_with python2
 %else

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 17 12:46:58 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.17.0
+  * Add DRI3ImportSyncobj and DRI3FreeSyncobj
+  * Add PresentPixmapSynced and PresentCapabilitySyncobj
+  * Use simply quote signs
+  * Fix typo in "heirarchy"
+
+-------------------------------------------------------------------
 Sat Aug 26 14:40:29 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.16.0

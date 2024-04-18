@@ -200,4 +200,16 @@
   * add PresentOptionAsyncMayTear</comment>
     <requestid>1106057</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ef1f749d39f9f8e1ca65c0edfda69634</srcmd5>
+    <version>7.6_1.17.0</version>
+    <time>1713470874</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.17.0
+  * Add DRI3ImportSyncobj and DRI3FreeSyncobj
+  * Add PresentPixmapSynced and PresentCapabilitySyncobj
+  * Use simply quote signs
+  * Fix typo in &quot;heirarchy&quot;</comment>
+    <requestid>1168542</requestid>
+  </revision>
 </revisionlist>
