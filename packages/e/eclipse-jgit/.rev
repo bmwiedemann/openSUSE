@@ -135,4 +135,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148900</requestid>
   </revision>
+  <revision rev="18" vrev="13">
+    <srcmd5>787a0e1745c6ea70d746f650f2894b35</srcmd5>
+    <version>5.11.0</version>
+    <time>1713471209</time>
+    <user>anag+factory</user>
+    <comment>Do not depend on mockito</comment>
+    <requestid>1168846</requestid>
+  </revision>
 </revisionlist>
