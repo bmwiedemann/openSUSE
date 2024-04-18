@@ -75,4 +75,12 @@
   * drop upstream rust-use-libc-Ioctl-type-for-ioctl-request-argument.patch (forwarded request 1154476 from ddiss)</comment>
     <requestid>1154583</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5b12a22d0229e3b6981312a79de6c4ab</srcmd5>
+    <version>1.7.0</version>
+    <time>1713471238</time>
+    <user>anag+factory</user>
+    <comment>- Update to release v1.7.0</comment>
+    <requestid>1168908</requestid>
+  </revision>
 </revisionlist>
