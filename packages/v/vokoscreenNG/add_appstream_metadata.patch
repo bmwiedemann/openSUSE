@@ -1,29 +1,13 @@
-From 0a3784095ecca582f7eb09551ceb34c309d83637 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
-Date: Mon, 6 Jul 2020 15:14:26 +0200
-Subject: [PATCH] Add better integration for Linux
-
-Add AppStream metadata, add installation target.
----
- src/applications/INFO                     |  1 +
- src/applications/vokoscreenNG.appdata.xml | 45 +++++++++++++++++++++++
- src/vokoscreenNG.pro                      | 25 +++++++++++++
- 3 files changed, 71 insertions(+)
- create mode 100644 src/applications/vokoscreenNG.appdata.xml
-
-diff --git a/src/applications/INFO b/src/applications/INFO
-index 4195de8f..1c1bd870 100644
---- a/src/applications/INFO
-+++ b/src/applications/INFO
+diff -Nur vokoscreenNG-4.1.0/src/applications/INFO new/src/applications/INFO
+--- vokoscreenNG-4.1.0/src/applications/INFO	2024-03-26 23:08:34.000000000 +0100
++++ new/src/applications/INFO	2024-04-17 15:50:15.937913807 +0200
 @@ -1,2 +1,3 @@
 +vokoscreenNG.appdata.xml
  vokoscreenNG.desktop
  vokoscreenNG.png
-diff --git a/src/applications/vokoscreenNG.appdata.xml b/src/applications/vokoscreenNG.appdata.xml
-new file mode 100644
-index 00000000..883f4ae2
---- /dev/null
-+++ b/src/applications/vokoscreenNG.appdata.xml
+diff -Nur vokoscreenNG-4.1.0/src/applications/vokoscreenNG.appdata.xml new/src/applications/vokoscreenNG.appdata.xml
+--- vokoscreenNG-4.1.0/src/applications/vokoscreenNG.appdata.xml	1970-01-01 01:00:00.000000000 +0100
++++ new/src/applications/vokoscreenNG.appdata.xml	2024-04-17 15:50:15.937913807 +0200
 @@ -0,0 +1,45 @@
 +<?xml version="1.0" encoding="UTF-8"?>
 +<component type="desktop">
@@ -70,13 +54,12 @@ index 00000000..883f4ae2
 +  <url type="donation">https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html</url>
 +  <developer_name>Volker Kohaupt</developer_name>
 +</component>
-diff --git a/src/vokoscreenNG.pro b/src/vokoscreenNG.pro
-index 69bc5a33..fdf7fd07 100644
---- a/src/vokoscreenNG.pro
-+++ b/src/vokoscreenNG.pro
-@@ -58,6 +58,31 @@ isEmpty(QMAKE_LRELEASE) {
- }    
- system($$QMAKE_LRELEASE language/*.ts)
+diff -Nur vokoscreenNG-4.1.0/src/vokoscreenNG.pro new/src/vokoscreenNG.pro
+--- vokoscreenNG-4.1.0/src/vokoscreenNG.pro	2024-03-26 23:08:34.000000000 +0100
++++ new/src/vokoscreenNG.pro	2024-04-17 15:50:15.937913807 +0200
+@@ -66,6 +66,31 @@
+ win32:message($$QMAKE_LRELEASE)
+ win32:system($$QMAKE_LRELEASE translations.pri)
  
 +unix:!macx {
 +  isEmpty(PREFIX) {
@@ -105,3 +88,4 @@ index 69bc5a33..fdf7fd07 100644
 +
  # Clean target
  QMAKE_CLEAN += $$TARGET */*~
+ 

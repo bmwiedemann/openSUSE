@@ -17,7 +17,7 @@
 
 
 Name:           vokoscreenNG
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        Screencast creator
 License:        GPL-2.0-only
@@ -27,12 +27,12 @@ Source:         https://github.com/vkohaupt/%{name}/archive/%{version}.tar.gz#/%
 # PATCH-FIX-UPSTREAM - Add AppStream metadata - PR#94
 Patch0:         add_appstream_metadata.patch
 BuildRequires:  appstream-glib
-BuildRequires:  gstreamer-devel >= 1.12.5
-BuildRequires:  libqt5-linguist
+BuildRequires:  gstreamer-devel >= 1.22.8
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt6Core) >= 6.5.0
+BuildRequires:  pkgconfig(Qt6Core) >= 6.6.0
 BuildRequires:  pkgconfig(Qt6DBus)
 BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Linguist)
 BuildRequires:  pkgconfig(Qt6Multimedia)
 BuildRequires:  pkgconfig(Qt6Network)
 BuildRequires:  pkgconfig(Qt6Test)
@@ -45,6 +45,8 @@ Requires:       pulseaudio
 %else
 Requires:       pulseaudio-daemon
 %endif
+# Required for Wayland
+Recommends:     xdg-desktop-portal-wlr
 # Required for vorbis and opus audio
 Requires:       gstreamer-plugins-base
 # Required for mkv, avi, webm, mp4, vp8 video and flac audio
