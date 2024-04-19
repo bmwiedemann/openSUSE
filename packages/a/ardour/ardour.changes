@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Apr 15 11:46:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 8.6.0.
+  * Fix crash when using jack2
+  * Fix a drawing bug
+
+-------------------------------------------------------------------
+Thu Apr 11 19:04:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 8.5.0. Check https://ardour.org/whatsnew.html for the
+  full list of changes
+  Improvements:
+  * Improvements to AAF import support.
+  * Make it easier to use Ardour --gdb on linux by handling SIG32
+    automatically.
+  * Do not include hidden plugin in plugin-list.
+  * Use session-file version as part of backup file names in
+    backup/ folder.
+  * General MIDI MIDNAM file now includes drum names.
+  * Display grid lines for triplets/quintuplets/septuplets.
+  * When nudging a single control point, locate to the new
+    position to make the time/position clear.
+  * Add support for pitch bend to Reasonable Synth.
+  Bug Fixes:
+  * Fix Snapping quintuplets and septuplets 2x factor grid: fix
+    quintuplets 2x factor (septuplets still don't draw properly).
+  * Add missing horizontal separator after last track header.
+  * Work around itstools bug #9648.
+  * Fix undefined symbol when built with VST3 disabled.
+  * Disable broken septuplet option.
+  * Adding new route in front now works as intended (#9651).
+  * Fix jump to next/prev bar.
+  * Discard untitled sessions even when not quitting Ardour.
+  * Refilling buffers after edits now avoids gaps in audio data.
+  * Set correct Timecode widget name.
+  * Half-baked automation-point nudge.
+  * Fix loading session by relative path.
+  * Accumulate IO port-change signals return values.
+  * Prevent crashes when trying to add/remove IOPlug ports.
+  * Fix a -Wincompatible-pointer-types.
+  * Ellipsize inactive track-header name-label (#9674).
+  * Prevent double-click on the pianoroll to toggle track height.
+  * Clarify that there are no archive file format options.
+  * Fix crashing file dialogs - fdopen(3) requires
+    _POSIX_C_SOURCE.
+  * Set default time domain to Audiotime to sidestep various
+    MusicTime issues.
+  * Fix solo controller for Monitor bus.
+  * Fix potential memory corruption in AVX512f DSP.
+
+-------------------------------------------------------------------
 Wed Feb 21 09:33:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 8.4.0. Check https://ardour.org/whatsnew.html for the
