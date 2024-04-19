@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 19 12:34:20 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix build in Leap 15.6 whose 6.4 kernel includes
+  backported features from 6.5:
+  * fix-15.6.patch
+
+-------------------------------------------------------------------
 Sun Mar 24 20:56:47 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 5.13.6+git20240320.8be3a1d

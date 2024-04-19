@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 19 13:47:21 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.34.1:
+  * Wayland KDE: Fix window background blur not adapting when window is grown.
+    Also fix turning it on and off not working. (#7351)
+  * Wayland GNOME: Draw the titlebar buttons without using a font (#7349)
+  * Fix a regression in the previous release that caused incorrect font
+    selection when using variable fonts on Linux (#7361)
+
+-------------------------------------------------------------------
 Mon Apr 15 13:35:17 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.34.0:

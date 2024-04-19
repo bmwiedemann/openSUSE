@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 17 08:29:26 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.16.8
+  * Fix in-app playing of some video and audio files.
+  * Fix crash on Linux opening chats with custom backgrounds.
+  * Fix crash on quit after using scheduled messages.
+
+-------------------------------------------------------------------
 Tue Apr 16 06:40:25 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to version 4.16.7

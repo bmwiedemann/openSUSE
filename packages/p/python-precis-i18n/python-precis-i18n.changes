@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 19 11:23:20 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Dec 27 15:12:17 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update specfile for PEP517 and python packaging best practices

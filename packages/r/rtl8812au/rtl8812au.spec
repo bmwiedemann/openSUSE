@@ -33,6 +33,8 @@ Source2:        LICENSE
 Patch0:         fix-backported-ndo_select_queue.patch
 # PATCH-FIX-OPENSUSE fix-backported-update_mgmt_frame_registrations.patch
 Patch1:         fix-backported-update_mgmt_frame_registrations.patch
+# PATCH-FIX-OPENSUSE fix-15.6.patch
+Patch2:         fix-15.6.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  bc
 BuildRequires:  binutils
@@ -72,6 +74,10 @@ https://github.com/maurossi/rtl8812au/ .
 
 %if 0%{?sle_version} == 150300
 %patch -P 1 -p1
+%endif
+
+%if 0%{?sle_version} == 150600
+%patch -P 2 -p1
 %endif
 
 set -- *

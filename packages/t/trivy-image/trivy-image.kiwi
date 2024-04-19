@@ -17,7 +17,7 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
 <!-- OBS-AddTag: opensuse/trivy:%%trivy_version%% opensuse/trivy:%%trivy_version%%-%RELEASE% opensuse/trivy:latest -->
 <!-- OBS-Imagerepo: obsrepositories:/ -->
 
-<image schemaversion="6.5" name="trivy-image" xmlns:suse_label_helper="com.suse.label_helper">
+<image schemaversion="7.4" name="trivy-image" xmlns:suse_label_helper="com.suse.label_helper">
   <description type="system">
     <author>openSUSE Project</author>
     <contact>https://www.suse.com/</contact>

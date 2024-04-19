@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 19 11:25:39 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Fix Leap15 build
+  * Add %{?sle15_python_module_pythons}
+  * Run build_metadata.py and install_metadata.py with a
+    specific executable python flavor
+
+-------------------------------------------------------------------
 Tue Dec  5 19:28:42 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.8.4:

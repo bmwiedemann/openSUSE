@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 19 10:31:30 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- Bump kiwi schema version
+
+-------------------------------------------------------------------
 Fri Apr 12 12:03:53 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - Don't wipe everything in /var/log, only remove log files (this omits directories owned by packages)

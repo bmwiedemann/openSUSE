@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 15 18:02:14 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- Updated to Xdebug 3.3.2
+  * Fixed issue #2216: With PHP8.3 and Apache 2.4.58 error_reporting()
+    causing Apache process to hang
+  * Fixed issue #2230: Crash when xdebug and blackfire extensions are
+    active
+  * Fixed issue #2233: High and continuous Apache server CPU use
+
+-------------------------------------------------------------------
 Thu Dec 14 19:35:03 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Updated to Xdebug 3.3.1

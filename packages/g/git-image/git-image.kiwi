@@ -17,7 +17,7 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
 <!-- OBS-AddTag: opensuse/git:%%git_version%% opensuse/git:%%git_version%%-%RELEASE% opensuse/git:latest -->
 <!-- OBS-Imagerepo: obsrepositories:/ -->
 
-<image schemaversion="6.5" name="git-image" xmlns:suse_label_helper="com.suse.label_helper">
+<image schemaversion="7.4" name="git-image" xmlns:suse_label_helper="com.suse.label_helper">
   <description type="system">
     <author>openSUSE Project</author>
     <contact>https://www.suse.com/</contact>

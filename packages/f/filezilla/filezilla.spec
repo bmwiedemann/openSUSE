@@ -57,7 +57,6 @@ BuildRequires:  pkgconfig(nettle) >= 3.1
 BuildRequires:  pkgconfig(sqlite3) >= 3.7.0
 # See boo#966384 filezilla fails to start
 Requires:       libpugixml1 >= 1.7
-Recommends:     %{name}-lang
 # upstream use gnutls 3.8.0
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(gnutls) >= 3.7.9

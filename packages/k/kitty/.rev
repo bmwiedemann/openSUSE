@@ -564,4 +564,17 @@
     * Linux: Fix for a regression in 0.32.0 that caused some CJK fonts to not</comment>
     <requestid>1167826</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e89763e3cd579ab34eb00ff2db466a6a</srcmd5>
+    <version>0.34.1</version>
+    <time>1713547000</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.34.1:
+  * Wayland KDE: Fix window background blur not adapting when window is grown.
+    Also fix turning it on and off not working. (#7351)
+  * Wayland GNOME: Draw the titlebar buttons without using a font (#7349)
+  * Fix a regression in the previous release that caused incorrect font
+    selection when using variable fonts on Linux (#7361)</comment>
+    <requestid>1169218</requestid>
+  </revision>
 </revisionlist>

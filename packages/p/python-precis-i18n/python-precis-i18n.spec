@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 %define _name   precis_i18n
 Name:           python-precis-i18n
 Version:        1.1.0

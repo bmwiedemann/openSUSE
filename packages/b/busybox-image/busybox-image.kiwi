@@ -17,7 +17,7 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
 <!-- OBS-AddTag: opensuse/bci/bci-busybox:%OS_VERSION_ID_SP% opensuse/bci/bci-busybox:%OS_VERSION_ID_SP%.%RELEASE% opensuse/bci/bci-busybox:latest -->
 <!-- OBS-Imagerepo: obsrepositories:/ -->
 
-<image schemaversion="6.5" name="busybox-image" xmlns:suse_label_helper="com.suse.label_helper">
+<image schemaversion="7.4" name="busybox-image" xmlns:suse_label_helper="com.suse.label_helper">
   <description type="system">
     <author>openSUSE Project</author>
     <contact>https://www.suse.com/</contact>

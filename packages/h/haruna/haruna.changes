@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 19 13:21:57 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.1.0
+  Features:
+  * Setting to open playlist items with single click
+  Bugfixes:
+  * Video opening in a separate window when using mpv version
+    0.38.0
+  * Mute reseting when opening a new file
+  * Playing item in playlist is no longer bold, it made text
+    hard to read under certain conditions
+
+-------------------------------------------------------------------
 Tue Mar 26 13:42:00 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.0.2

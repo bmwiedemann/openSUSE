@@ -1,0 +1,13 @@
+Index: 8812au-20210629/os_dep/linux/ioctl_cfg80211.c
+===================================================================
+--- 8812au-20210629.orig/os_dep/linux/ioctl_cfg80211.c
++++ 8812au-20210629/os_dep/linux/ioctl_cfg80211.c
+@@ -8458,7 +8458,7 @@ static int cfg80211_rtw_tdls_mgmt(struct
+ #else
+ 	u8 *peer,
+ #endif
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 5, 0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 4, 0))
+ 	int link_id,
+ #endif
+ 	u8 action_code,

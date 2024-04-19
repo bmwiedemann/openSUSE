@@ -1,9 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 18 16:20:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommend filezilla-lang: the -lang package, as generated
+  by %lang_package, already contains more sophisticated
+  supplements.
+
+-------------------------------------------------------------------
 Wed Apr 17 12:31:51 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.67.0
   * Fixed vulnerabilities:
-    - SFTP: Fixed PuTTY ECDSA NIST P-521 private key recovery 
+    - SFTP: Fixed PuTTY ECDSA NIST P-521 private key recovery
       vulnerability (CVE-2024-31497).
       If you use NIST P-521 keys to connect to SSH/SFTP servers,
       you should regenerate them and revoke the previous ones.

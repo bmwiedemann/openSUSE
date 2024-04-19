@@ -21,8 +21,8 @@
 # Build only one time
 %define pythons %{primary_python}
 %else
-# Requires at least python 3.10
-%define pythons python310
+# Build only with python 3.11
+%{?sle15_python_module_pythons}
 %endif
 Name:           gajim
 Version:        1.8.4
@@ -46,9 +46,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-generators >= 20220912
 BuildRequires:  python-rpm-macros >= 20220912
 BuildRequires:  update-desktop-files
-Requires:       %{python3_dist gssapi}
-Requires:       %{python3_dist omemo-dr}
-Requires:       %{python3_dist qrcode}
+Requires:       %{python_flavor}-gssapi
+Requires:       %{python_flavor}-omemo-dr
+Requires:       %{python_flavor}-qrcode
 Requires:       %{python_flavor}-gobject-Gdk
 Requires:       %{python_flavor}-gobject-cairo
 Requires:       ca-certificates-mozilla
@@ -89,11 +89,11 @@ sed -i '/^Keywords/d' data/org.gajim.Gajim.desktop.in
 
 %build
 %pyproject_wheel
-./pep517build/build_metadata.py -o dist/metadata
+python%{python_bin_suffix} ./pep517build/build_metadata.py -o dist/metadata
 
 %install
 %pyproject_install
-./pep517build/install_metadata.py dist/metadata --prefix=%{buildroot}%{_prefix}
+python%{python_bin_suffix} ./pep517build/install_metadata.py dist/metadata --prefix=%{buildroot}%{_prefix}
 
 mkdir -p %{buildroot}%{_datadir}/
 mv %{buildroot}{%{python_sitelib}/%{name}/data,%{_datadir}/%{name}}/

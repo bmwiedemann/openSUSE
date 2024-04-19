@@ -17,7 +17,7 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
 <!-- OBS-AddTag: opensuse/registry:%%registry_version%% opensuse/registry:%%registry_version%%-%RELEASE% opensuse/registry:latest -->
 <!-- OBS-Imagerepo: obsrepositories:/ -->
 
-<image schemaversion="6.5" name="registry-image" xmlns:suse_label_helper="com.suse.label_helper">
+<image schemaversion="7.4" name="registry-image" xmlns:suse_label_helper="com.suse.label_helper">
   <description type="system">
     <author>openSUSE Project</author>
     <contact>https://www.suse.com/</contact>
