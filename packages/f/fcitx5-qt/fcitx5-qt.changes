@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 18 07:26:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.1.5
+  * Bring back qt5 quick phrase editor
+  * use deleteLater on QFileSystemWatcher when watching fcitx 4
+    file
+  * [trans] Update Translation
+  * Make Qt4 off by default, but Qt6 on by default
+  * fix no-x11 build
+  * Use native coordinates when operating wayland protocol objects
+  * Fix wrong target name
+- Spec cleanup
+- Enable Qt6 builds on Leap 15
+
+-------------------------------------------------------------------
 Mon Feb  5 10:58:01 UTC 2024 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.4

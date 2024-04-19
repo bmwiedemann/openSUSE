@@ -21,37 +21,47 @@
 %else
 %define build_qt4 0
 %endif
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1500
 %define build_qt6 1
 %else
 %define build_qt6 0
 %endif
 Name:           fcitx5-qt
-Version:        5.1.4
+Version:        5.1.5
 Release:        0
 Summary:        Qt library and IM module for fcitx5
 License:        BSD-3-Clause AND LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5-qt
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libqt5-qtbase-private-headers-devel
-BuildRequires:  libqt5-qtx11extras-devel
-BuildRequires:  libxcb-devel
-BuildRequires:  libxkbcommon-devel
+BuildRequires:  libQt5Gui-private-headers-devel
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcb)
+BuildRequires:  pkgconfig(xkbcommon)
 %if %{build_qt4}
 BuildRequires:  libqt4-devel
 %endif
 %if %{build_qt6}
-BuildRequires:  qt6-base-devel
-BuildRequires:  qt6-base-private-devel
-BuildRequires:  qt6-waylandclient-devel
+BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-waylandclient-private-devel
+BuildRequires:  qt6-waylandglobal-private-devel
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6WaylandClient)
+BuildRequires:  cmake(Qt6Widgets)
 %endif
 
 %description
@@ -149,35 +159,41 @@ This package provides development files for fcitx5-qt.
 %setup -q
 
 %build
-ARGS=""
-%if !%{build_qt4}
-ARGS="$ARGS -DENABLE_QT4=OFF"
+ARGS="-DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir}"
+%if %{build_qt4}
+ARGS="$ARGS -DENABLE_QT4=ON"
 %endif
+%if !%{build_qt6}
+ARGS="$ARGS -DENABLE_QT6=OFF"
+%endif
+
 %if %{build_qt6}
-ARGS="$ARGS -DENABLE_QT6=ON"
+%cmake_qt6 $ARGS
+%qt6_build
+%else
+%cmake $ARGS
+%cmake_build
 %endif
-%cmake -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir} $ARGS
-%make_build
 
 %install
+%if %{build_qt6}
+%qt6_install
+%else
 %cmake_install
-%find_lang %{name}
-%fdupes -s %{buildroot}
-
-%if %{build_qt4}
-%post -n libFcitx5Qt4DBusAddons1 -p /sbin/ldconfig
-%postun -n libFcitx5Qt4DBusAddons1 -p /sbin/ldconfig
 %endif
 
-%post -n libFcitx5Qt5DBusAddons1 -p /sbin/ldconfig
-%post -n libFcitx5Qt5WidgetsAddons2 -p /sbin/ldconfig
-%postun -n libFcitx5Qt5DBusAddons1 -p /sbin/ldconfig
-%postun -n libFcitx5Qt5WidgetsAddons2 -p /sbin/ldconfig
+%find_lang %{name}
+
+%fdupes %{buildroot}
+
+%if %{build_qt4}
+%ldconfig_scriptlets -n libFcitx5Qt4DBusAddons1
+%endif
+%ldconfig_scriptlets -n libFcitx5Qt5DBusAddons1
+%ldconfig_scriptlets -n libFcitx5Qt5WidgetsAddons2
 %if %{build_qt6}
-%post -n libFcitx5Qt6DBusAddons1 -p /sbin/ldconfig
-%postun -n libFcitx5Qt6DBusAddons1 -p /sbin/ldconfig
-%post -n libFcitx5Qt6WidgetsAddons2 -p /sbin/ldconfig
-%postun -n libFcitx5Qt6WidgetsAddons2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libFcitx5Qt6DBusAddons1
+%ldconfig_scriptlets -n libFcitx5Qt6WidgetsAddons2
 %endif
 
 %files -n fcitx5-qt5 -f %{name}.lang
@@ -186,6 +202,9 @@ ARGS="$ARGS -DENABLE_QT6=ON"
 %{_bindir}/fcitx5-qt5-immodule-probing
 %{_libexecdir}/fcitx5-qt5-gui-wrapper
 %{_datadir}/applications/org.fcitx.fcitx5-qt5-gui-wrapper.desktop
+%dir %{_libdir}/fcitx5
+%dir %{_libdir}/fcitx5/qt5
+%{_libdir}/fcitx5/qt5/libfcitx-quickphrase-editor5.so
 %{_libdir}/qt5/plugins/platforminputcontexts/libfcitx5platforminputcontextplugin.so
 
 %if %{build_qt6}
