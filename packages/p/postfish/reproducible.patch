@@ -1,0 +1,23 @@
+Date: 2024-04-17
+Author: Bernhard M. Wiedemann <bmwiedemann suse de>
+
+In https://github.com/FFTW/fftw3/issues/337
+I learned that fftwf-wisdom does build-time benchmarking
+so some amount of nondeterminism got into postfish-wisdomrc.
+By using -e (estimate mode), this becomes determistic.
+
+See https://reproducible-builds.org/ for why this matters.
+
+Index: postfish-svn17492/Makefile
+===================================================================
+--- postfish-svn17492.orig/Makefile
++++ postfish-svn17492/Makefile
+@@ -58,7 +58,7 @@ distclean: clean
+ 	$(CC) -M $(CFLAGS) $< > $@.$$$$; sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; rm -f $@.$$$$
+ 
+ postfish-wisdomrc:
+-	fftwf-wisdom -v -o postfish-wisdomrc \
++	fftwf-wisdom -e -v -o postfish-wisdomrc \
+ 	rif32 rof32 rib32 rob32 \
+ 	rif64 rof64 rib64 rob64 \
+ 	rif128 rof128 rib128 rob128 \

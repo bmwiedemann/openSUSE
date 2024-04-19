@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 17 08:26:40 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch for deterministic wisdomrc
+
+-------------------------------------------------------------------
 Thu Feb 29 14:42:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

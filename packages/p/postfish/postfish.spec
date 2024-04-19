@@ -27,6 +27,7 @@ Source:         %{name}-%{version}.tar.bz2
 Patch0:         happy-gcc43.diff
 Patch1:         bnc_536201_fclose.patch
 Patch2:         postfish-gtk2.19.7.patch
+Patch3:         reproducible.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  fftw3-devel
 BuildRequires:  gtk2-devel
