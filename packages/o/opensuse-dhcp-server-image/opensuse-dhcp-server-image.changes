@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 17 14:48:26 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update kiwi schemaversion to 7.4
+
+-------------------------------------------------------------------
 Wed Jan 19 23:54:06 UTC 2022 - Noah Kalish <noah@spacemule.net>
 
 - Removed quotes from DHCP_INTERFACES in entrypoint to 
