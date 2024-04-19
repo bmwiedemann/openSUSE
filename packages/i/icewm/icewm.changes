@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 18 16:58:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommends icewm-lang: the -lang package has already more
+  sophisticated supplements. The various sub-packages require
+  icewm, and thus get the supplements satisfied indirectly.
+
+-------------------------------------------------------------------
 Tue Apr 16 08:39:00 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Change DesktopBackgroundImage from .jpg to .png (boo#1222877)

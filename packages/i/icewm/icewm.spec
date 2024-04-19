@@ -1,7 +1,7 @@
 #
 # spec file for package icewm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,10 +63,9 @@ Requires:       icewm-bin
 Requires:       imlib2-loaders
 Requires:       xdg-menu
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # If you have the choice, prefer the big one.
 Recommends:     icewm-default
-Recommends:     icewm-lang = %{version}
 Recommends:     xclock
 # For locking you need xscreensaver
 Recommends:     xscreensaver
@@ -122,7 +121,6 @@ Group:          System/GUI/Other
 Requires:       adwaita-icon-theme
 Requires:       icewm
 Requires:       update-alternatives
-Recommends:     icewm-lang
 Provides:       icewm-bin
 
 %description default
@@ -137,7 +135,6 @@ Summary:        Window Manager with a Taskbar -- Lite Version
 Group:          System/GUI/Other
 Requires:       icewm
 Requires:       update-alternatives
-Recommends:     icewm-lang
 Provides:       icewm-bin
 
 %description lite
