@@ -96,4 +96,20 @@ This depends on recently checked into tw rpmlint whitelisting - should be &quot;
   + NMA subpackage: Main package and gnome-control-center (forwarded request 1163469 from JonathanKang)</comment>
     <requestid>1163504</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3df89ebbed3029ce1c254b4ddb032043</srcmd5>
+    <version>1.2.20</version>
+    <time>1713546797</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.20:
+  + Support setting &quot;leftmodecfgclient&quot; to &quot;no&quot;
+  + Support for the &quot;type&quot;, &quot;hostaddrfamily&quot; and
+    &quot;clientaddrfamily&quot;, &quot;leftsubnet&quot; and &quot;rightcert&quot; parameters.
+- Changes from version 1.2.18:
+  + Drop libnm-glib compatibility (NetworkManager &lt; 1.0).
+  + Add support for the &quot;authby&quot;, &quot;dpdaction&quot;, &quot;dpddelay&quot;,
+    &quot;dpdtimeout&quot;, &quot;ipsec-interface&quot; parameters.
+  * Updated translations. (forwarded request 1168860 from dimstar)</comment>
+    <requestid>1168888</requestid>
+  </revision>
 </revisionlist>
