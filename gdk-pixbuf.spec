@@ -1,7 +1,7 @@
 #
 # spec file for package gdk-pixbuf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://www.gnome.org/
 
-# A filefrom the test suite is correctly identified by clamav to be a
+# A file from the test suite is correctly identified by clamav to be a
 # malicious BC.Gif.Exploit.Agent-1425366.Agent. This is an intentional part of
 # the test suite to ensure it has no negative side effects. Change the Source0
 # from tar.xz to zip to bypass clamav scanning on SLE.
@@ -152,6 +152,8 @@ touch %{buildroot}%{_libdir}/gdk-pixbuf-2.0/%{gdk_pixbuf_binary_version}/loaders
 %if "%{_lib}" == "lib64"
   mv %{buildroot}%{_bindir}/gdk-pixbuf-query-loaders %{buildroot}%{_bindir}/gdk-pixbuf-query-loaders-64
   mv %{buildroot}%{_mandir}/man1/gdk-pixbuf-query-loaders.1 %{buildroot}%{_mandir}/man1/gdk-pixbuf-query-loaders-64.1
+  sed -i 's|gdk_pixbuf_query_loaders=${bindir}/gdk-pixbuf-query-loaders|gdk_pixbuf_query_loaders=${bindir}/gdk-pixbuf-query-loaders-64|' \
+     %{buildroot}%{_libdir}/pkgconfig/gdk-pixbuf-2.0.pc
 %endif
 # Install rpm macros
 mkdir -p %{buildroot}%{_rpmmacrodir}

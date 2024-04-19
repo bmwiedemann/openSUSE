@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 15 13:29:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix path to gdk-pixbuf-query-loader in pkg-config file: we rename
+  the loader to be multi-arch compatible and thus also need to
+  adjust the .pc file to have build-systems find it.
+
+-------------------------------------------------------------------
 Wed Oct 26 11:58:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.42.10:

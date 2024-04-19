@@ -765,4 +765,14 @@
     <comment>New upstream release (forwarded request 1031331 from iznogood)</comment>
     <requestid>1031452</requestid>
   </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>7675d81312faba00719a1790e5c6cb69</srcmd5>
+    <version>2.42.10</version>
+    <time>1713546812</time>
+    <user>anag+factory</user>
+    <comment>- Fix path to gdk-pixbuf-query-loader in pkg-config file: we rename
+  the loader to be multi-arch compatible and thus also need to
+  adjust the .pc file to have build-systems find it. (forwarded request 1168866 from dimstar)</comment>
+    <requestid>1168891</requestid>
+  </revision>
 </revisionlist>
