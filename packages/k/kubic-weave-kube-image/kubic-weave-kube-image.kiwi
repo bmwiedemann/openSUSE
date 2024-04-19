@@ -2,7 +2,7 @@
 
 <!-- OBS-ExcludeArch: i586 s390 armv6hl armv7hl -->
 
-<image schemaversion="6.9" name="kubic-weave-kube-image" xmlns:suse_label_helper="com.suse.label_helper">
+<image schemaversion="7.4" name="kubic-weave-kube-image">
   <description type="system">
     <author>Thorsten Kukuk</author>
     <contact>kukuk@suse.com</contact>
@@ -19,7 +19,7 @@
         maintainer="Thorsten Kukuk &lt;kukuk@suse.com&gt;">
         <subcommand execute="/home/weave/launch.sh"/>
         <labels>
-          <suse_label_helper:add_prefix prefix="org.opensuse.kubic.weave-kube">
+          <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper" prefix="org.opensuse.kubic.weave-kube">
             <label name="org.opencontainers.image.title" value="openSUSE Kubic weave-kube container"/>
             <label name="org.opencontainers.image.description" value="Image containing weave-kube for openSUSE Kubic."/>
             <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
