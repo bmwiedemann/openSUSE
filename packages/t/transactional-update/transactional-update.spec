@@ -26,7 +26,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           transactional-update
-Version:        4.6.5
+Version:        4.6.6
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -169,9 +169,6 @@ autoreconf -fiv
 %if (%{defined sle_version} && %{undefined is_susecasp}) || 0%{?suse_version} == 1600
 sed -i 's/^UPDATE_METHOD=.*/UPDATE_METHOD=up/' etc/transactional-update.conf
 %endif
-
-# Temporarily disable soft-reboot until it's working reliably
-sed -i 's/^REBOOT_ALLOW_SOFT_REBOOT=.*/REBOOT_ALLOW_SOFT_REBOOT=false/' etc/tukit.conf
 
 %install
 %make_install

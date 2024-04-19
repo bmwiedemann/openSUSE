@@ -1209,4 +1209,17 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
 Also requires https://build.opensuse.org/request/show/1167142.</comment>
     <requestid>1167144</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>0abde0a20a93900b171a457e99fbd13e</srcmd5>
+    <version>4.6.6</version>
+    <time>1713546814</time>
+    <user>anag+factory</user>
+    <comment>- Version 4.6.6  
+  - soft-reboot: Fix inverted logic of soft-reboot detection
+  - soft-reboot: Don't use D-Bus for snapper call - it may be shutting down already
+  - soft-reboot: Remove unused variable
+  - doc: Document configuration file snippets for tukit.conf
+- Remove script to disable soft-reboot support - this is the default for now anyway</comment>
+    <requestid>1168900</requestid>
+  </revision>
 </revisionlist>
