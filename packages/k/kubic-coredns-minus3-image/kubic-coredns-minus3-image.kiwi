@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- OBS-ExcludeArch: i586 s390 armv6hl armv7hl -->
-<image schemaversion="6.5" name="kubic-coredns-minus3-image" xmlns:suse_label_helper="com.suse.label_helper">
+<image schemaversion="7.4" name="kubic-coredns-minus3-image">
   <description type="system">
     <author>Priyanka Saggu</author>
     <contact>priyanka.saggu@suse.com</contact>
@@ -22,7 +22,7 @@
         <entrypoint execute="/usr/sbin/coredns"/>
         <subcommand clear="true"/>
 	<labels>
-          <suse_label_helper:add_prefix prefix="org.opensuse.kubic.coredns">
+          <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper" prefix="org.opensuse.kubic.coredns">
             <label name="org.opencontainers.image.title" value="openSUSE Kubic coredns container"/>
             <label name="org.opencontainers.image.description" value="Image containing coredns for openSUSE Kubic."/>
             <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
