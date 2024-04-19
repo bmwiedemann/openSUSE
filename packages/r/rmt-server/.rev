@@ -1256,4 +1256,19 @@ PubCloud:
 - Fix for local import of packages with special characters (bsc#1213002)</comment>
     <requestid>1156024</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>db1b3071c6e1aca8313f13fa9fb718a7</srcmd5>
+    <version>2.16</version>
+    <time>1713546974</time>
+    <user>anag+factory</user>
+    <comment>--------------------------------------------------------------------
+Thu April 11 15:22:00 UTC 2024 - Felix Schnizlein &lt;fschnizlein@suse.com&gt;
+- Version 2.16 :
+  * Support bzip2 compressed repositories (bsc#1222122)
+  * Remove automatic backup generation for repodata within repository. .old_repodata
+    directories are obsolete and can be removed savely.
+  * Add support for debian repositories using flat or nested structures (jsc#PED-3684)
+    * make sure yum that can read repomd.xml correctly is installed (bsc#1221223)</comment>
+    <requestid>1169095</requestid>
+  </revision>
 </revisionlist>
