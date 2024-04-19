@@ -17,7 +17,7 @@
 
 
 Name:           gqrx
-Version:        2.17.4
+Version:        2.17.5
 Release:        0
 Summary:        Software defined radio receiver
 License:        GPL-3.0-only
