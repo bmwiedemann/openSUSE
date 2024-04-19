@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 19 05:20:47 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.11:
+  * Fix clippy lints
+  * Enable the rule only for NetBSD.
+  * Build aarch64, arm without libgit2
+
+-------------------------------------------------------------------
 Thu Apr 11 06:16:11 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.10:
