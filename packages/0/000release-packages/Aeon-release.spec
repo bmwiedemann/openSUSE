@@ -308,6 +308,11 @@ EOF
 
 
 %post
+# Aeon is a base product, link it properly
+if [ ! -e %{_sysconfdir}/products.d/baseproduct ]; then
+    ln -sf Aeon.prod %{_sysconfdir}/products.d/baseproduct
+fi
+
 
 %files
 %defattr(644,root,root,755)
