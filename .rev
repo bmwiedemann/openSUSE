@@ -104,4 +104,25 @@
     <comment></comment>
     <requestid>1124147</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3aa3110a649579e2d5728f7599fddd3b</srcmd5>
+    <version>2.0.1.4</version>
+    <time>1713546972</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.1.4:
+  * compatibility with numpy 2.0
+
+  * erfa_generator now also generates a test_ufunc.py file
+    that runs all the C code tests on the ufuncs, thus
+    verifying the code wrapping worked correctly. As part of
+    that, the ability to give specific output file names has
+    been removed, as it was not used. (Note: these changes
+  * Improved the setup machinery to ensure a proper
+    configuration of the embedded liberfa [gh-53] (see also
+  * Improve version testing [gh-53] (see issue gh-52 for
+  * Make pyerfa build reproducible [gh-46] (see issue gh-45
+- allow updating liberfa
+- initial package v1.7.0</comment>
+    <requestid>1169090</requestid>
+  </revision>
 </revisionlist>
