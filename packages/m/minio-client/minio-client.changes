@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Apr 19 04:49:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240418T164529Z:
+  * Breaking changes to encryption related flags
+    Existing encrypt flag parsing was broken - to fix this, the
+    current release renames some flags:
+      --encrypt → --enc-c
+      --encrypt-s3 → --enc-s3
+      --encrypt-kms → --enc-kms
+    These flags now only accept RawBase64 encoded keys and the
+    flags may be repeated. The older flags will no longer be
+    accepted.
+    The --continue flag has been removed as it was behaving in an
+    insecure way and it was decided to completely remove it.
+    For more information on flag usage, run mc with the --help for
+    a command that accepts such flags, for e.g. mc cp --help.
+    For further information on the changes see the original pull
+    request #4882
+  Changes:
+  * cosmetic: Hide mc admin bucket and its subcommands visible
+    (#4905)
+  * upgrade deps to latest releases (#4904)
+  * Large MC Update (new encryption flags, functional test suite,
+    removal of session code, minor cleanup, vuln. updates ) (#4882)
+  * Move `mc idp ldap accesskey create --login` to `mc idp ldap
+    accesskey create-with-login` (#4894)
+  * fix: build on linux/mips64 (#4899)
+  * Update version for govulncheck (#4898)
+  * Move ilm-tier-info to use lipgloss/table (#4892)
+  * Use lipgloss's table package for ilm-tier-ls (#4890)
+
+-------------------------------------------------------------------
 Sat Mar 30 15:55:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240330T152952Z:
