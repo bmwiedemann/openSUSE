@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 18 19:03:13 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.37.1:
+  * chore: Update version.go for v0.37.1
+  * bugfix: Exclude ServerGUID from MOR comparison in WaitEx
+
+-------------------------------------------------------------------
 Sat Apr 13 09:44:00 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.37.0:
