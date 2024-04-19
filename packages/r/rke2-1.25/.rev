@@ -39,4 +39,15 @@
     <comment></comment>
     <requestid>1158607</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a8d440cd5316483340cc2526f64a6d03</srcmd5>
+    <version>1.25.16+rke2r2</version>
+    <time>1713546832</time>
+    <user>anag+factory</user>
+    <comment>- add Conflicts for all kubernetes-1.*-kubelet-common packages, to avoid conflicts due to /var/lib/kubelet
+- rework spec to include lots of upstream ldflags and use fixes from boo#1222696
+- add server and agent systemd unit and environment files
+- own directories that are created when running rke2</comment>
+    <requestid>1168886</requestid>
+  </revision>
 </revisionlist>
