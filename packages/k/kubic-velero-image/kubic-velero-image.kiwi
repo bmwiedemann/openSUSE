@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<image schemaversion="6.9" name="kubic-velero-image" xmlns:suse_label_helper="com.suse.label_helper">
+<image schemaversion="7.4" name="kubic-velero-image">
   <description type="system">
     <author>Richard Brown</author>
     <contact>rbrown@suse.com</contact>
@@ -19,7 +19,7 @@
         <entrypoint execute="velero"/>
         <subcommand clear="true"/>
         <labels>
-          <suse_label_helper:add_prefix prefix="org.opensuse.kubic.velero">
+          <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper" prefix="org.opensuse.kubic.velero">
             <label name="org.opencontainers.image.description" value="velero running on a Tumbleweed container guest"/>
             <label name="org.opencontainers.image.title" value="Kubic velero container"/>
             <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
