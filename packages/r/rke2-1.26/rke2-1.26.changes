@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 18 12:53:37 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add Conflicts for all `kubernetes-1.*-kubelet-common` packages,
+  to avoid conflicts due to /var/lib/kubelet
+
+-------------------------------------------------------------------
+Mon Apr 15 19:04:46 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- rework spec to include lots of upstream ldflags and use fixes
+  from boo#1222696
+- add server and agent systemd unit and environment files
+- own directories that are created when running rke2
+
+-------------------------------------------------------------------
 Thu Mar 21 19:39:21 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.26.15+rke2r1:
