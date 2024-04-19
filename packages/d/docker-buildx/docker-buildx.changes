@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Apr 18 19:02:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.0:
+  Notable changes
+  * build: set record provenance in metadata file #2280
+  * bake: add git authentication support for remote definitions
+    #2363
+  * driver: add ephemeral-storage and scheduler name options to
+    kubernetes driver #2370 #2415
+  * new default-load driver-opt can be set for container and k8s
+    instances on buildx create to load build results to Docker by
+    default #2259
+  * build: printing with --print=lint uses BuildKit formatter #2404
+    #2406 #2417
+  * build: allow status code responses for --print that set exit
+    code for process #2408
+  * bake: add indexof hcl func #2384
+  * build: metrics now measure idle time, export image, run
+    operations, image transfers for image source operations during
+    build #2402 #2373 #2298 #2317 #2316 #2271
+  * build: metrics to the docker context endpoint does not require
+    experimental anymore #2344
+  * compose spec support has been updated to v2.0.2 #2391
+  * build: builds with --print are now marked as internal and don't
+    get recorded in build history #2416
+  * fix --load flag used together output definitions from file with
+    bake #2336
+  * fix build from stdin when experimental mode enabled #2394
+  * fix possible issue where delegated traces could be duplicated
+    #2362
+  * fix JSON formatting for custom build --print commands #2374
+
+-------------------------------------------------------------------
 Wed Mar 13 06:58:40 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.13.1:
