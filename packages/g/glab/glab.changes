@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 18 19:37:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.39.0:
+  * feat: Add new command to run Pipeline Triggers
+  * fix(deps): update github.com/xanzy/go-gitlab to v0.101.0
+  * fix(issue list): change output flag back to output-format
+  * fix(test): update test data for updated
+    github.com/xanzy/go-gitlab
+  * fix: Getting the last pipeline is broken with merged results
+  * fix: update "glab ci run-trig" to use new go-gitlab functions
+  * refactor: Moving sanitize function to utilities
+
+-------------------------------------------------------------------
 Sat Apr 06 20:04:09 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.38.0:
@@ -13,7 +26,7 @@ Sun Mar 31 18:28:24 UTC 2024 - chris@computersalat.de
 
 - fix deps
   * BuildRequires:  golang-packaging
-    is not available for RedHat & Co 
+    is not available for RedHat & Co
   * build: upgrade go version from 1.19 to 1.21
     https://gitlab.com/gitlab-org/cli/-/releases
 
