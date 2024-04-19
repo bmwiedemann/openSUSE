@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           hubble
-Version:        0.13.2
+Version:        0.13.3
 Release:        0
 Summary:        Network, Service & Security Observability for Kubernetes using eBPF
 License:        Apache-2.0

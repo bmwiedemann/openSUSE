@@ -7,4 +7,12 @@
     <comment>new package hubble: Network, Service &amp; Security Observability for Kubernetes using eBPF</comment>
     <requestid>1161447</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a33308aca2c1bbbe2c18c96684dd0d92</srcmd5>
+    <version>0.13.3</version>
+    <time>1713546820</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1168874</requestid>
+  </revision>
 </revisionlist>

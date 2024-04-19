@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 18 13:16:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.3:
+  * Modify version to 0.13.3
+  * Modify changelog for 0.13.3 release
+  * chore(deps): update docker/setup-buildx-action action to v3.3.0
+  * chore(deps): update dependency helm/helm to v3.14.4
+  * chore(deps): update github/codeql-action action to v3.24.10
+  * chore(deps): update dependency cilium/cilium to v1.15.3
+  * vendor: update cilium to v1.15.3
+  * chore(deps): update github/codeql-action action to v3.24.9
+  * chore(deps): update github/codeql-action action to v3.24.8
+  * chore(deps): update golang stable
+  * chore(deps): update all github action dependencies
+  * chore(deps): update all github action dependencies
+  * Prepare for 0.13.3
+
+-------------------------------------------------------------------
 Sat Mar 23 10:53:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package hubble: Network, Service & Security Observability for
