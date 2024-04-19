@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 19 07:47:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- update kiwi schemaversion to 7.4
+
+-------------------------------------------------------------------
 Thu Aug  4 07:05:06 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable 32-bit Arm since kubernetes is not available
