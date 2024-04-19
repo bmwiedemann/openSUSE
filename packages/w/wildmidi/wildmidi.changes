@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 11 16:19:15 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.6
+  * A lot of player cleanup and refactoring.
+  * Ability to choose which audio output backends to include in the
+    build system: see the cmake script for the relevant WANT_???
+    options. Player's --help command line switch lists the available
+    backends.
+  * Improved pkg-config file generation in cmake script.
+  * Other minor source clean-ups.
+  * CMake project clean-ups. Cmake v3.4 or newer is now required.
+
+-------------------------------------------------------------------
 Sat Jan 14 13:03:50 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.4.5
