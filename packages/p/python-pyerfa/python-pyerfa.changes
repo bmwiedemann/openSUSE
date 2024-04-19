@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 19 09:27:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1.4:
+  * compatibility with numpy 2.0
+
+-------------------------------------------------------------------
 Wed Nov  8 01:29:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.0.1.1
@@ -45,11 +51,11 @@ Tue May 18 10:45:34 UTC 2021 - Ben Greiner <code@bnavigator.de>
   * erfa.dt_eraLDBODY has been corrected to ensure that the 'pv'
     entry is now of type erfa.dt_pv, so that cross-assignments with
     that dtype work correctly. [gh-74]
-  * erfa_generator now also generates a test_ufunc.py file 
-    that runs all the C code tests on the ufuncs, thus 
-    verifying the code wrapping worked correctly. As part of 
-    that, the ability to give specific output file names has 
-    been removed, as it was not used. (Note: these changes 
+  * erfa_generator now also generates a test_ufunc.py file
+    that runs all the C code tests on the ufuncs, thus
+    verifying the code wrapping worked correctly. As part of
+    that, the ability to give specific output file names has
+    been removed, as it was not used. (Note: these changes
     have no effect on use of PyERFA.) [gh-71]
 
 -------------------------------------------------------------------
@@ -90,13 +96,13 @@ Fri Nov 20 22:50:57 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 - 1.7.1
   * Bundled liberfa version update to v1.7.1.
   * Now it is possible to build against system liberfa [gh-39].
-  * Improved the setup machinery to ensure a proper 
-    configuration of the embedded liberfa [gh-53] (see also 
+  * Improved the setup machinery to ensure a proper
+    configuration of the embedded liberfa [gh-53] (see also
     https://github.com/liberfa/erfa/pull/73).
-  * Improve version testing [gh-53] (see issue gh-52 for 
+  * Improve version testing [gh-53] (see issue gh-52 for
     rationale).
   * Reworked version management [gh-57].
-  * Make pyerfa build reproducible [gh-46] (see issue gh-45 
+  * Make pyerfa build reproducible [gh-46] (see issue gh-45
     for rationale).
   * Improved docstring titles [gh-47].
   * Most of the CI has been moved to GitHub Actions.
@@ -110,11 +116,11 @@ Fri Sep 25 08:33:49 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Fri Jul 10 10:00:25 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- allow updating liberfa 
+- allow updating liberfa
 
 -------------------------------------------------------------------
 Mon Jul  6 12:07:16 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- initial package v1.7.0 
+- initial package v1.7.0
 - pyerfa-pr39-usesystemerfa.patch: gh#liberfa/pyerfa#39 to be able
   to use the system provided erfa gh#liberfa/pyerfa#38
