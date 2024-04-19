@@ -15,4 +15,12 @@
     <comment>- Fix parsing of environment variables (whitespaces in values) (forwarded request 855916 from kukuk)</comment>
     <requestid>855932</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>70f1697116304445d661ad85b18a318a</srcmd5>
+    <version>1.0.0</version>
+    <time>1713546912</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169023</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 17 14:55:21 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update kiwi schemaversion to 7.4
+
+-------------------------------------------------------------------
 Mon Dec 14 18:37:03 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fix parsing of environment variables (whitespaces in values)
