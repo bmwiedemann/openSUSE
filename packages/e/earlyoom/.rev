@@ -160,4 +160,12 @@
     to the largest RSS instead of largest oom_score.</comment>
     <requestid>1167929</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>c03f21163a8352e1e53d38f3199e0543</srcmd5>
+    <version>1.8</version>
+    <time>1713546886</time>
+    <user>anag+factory</user>
+    <comment>- Removed -p flag from configuration (ineffective for systemd unit).</comment>
+    <requestid>1169160</requestid>
+  </revision>
 </revisionlist>
