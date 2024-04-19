@@ -22,7 +22,7 @@
 %bcond_without  apparmor
 
 Name:           podman
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -63,7 +63,7 @@ Requires:       conmon >= 2.0.24
 Requires:       fuse-overlayfs
 Requires:       iptables
 Requires:       libcontainers-common >= 20230214
-%if 0%{?sle_version} <= 150500
+%if 0%{?sle_version} && 0%{?sle_version} <= 150500
 # Build podman with CNI support for SLE-15-SP5 and lower
 Requires:       (netavark or cni-plugins)
 # We still want users with fresh installation to start off
@@ -151,7 +151,7 @@ BUILDTAGS="$(hack/apparmor_tag.sh) \
     exclude_graphdriver_devicemapper \
     seccomp"
 
-%if 0%{?sle_version} <= 150500
+%if 0%{?sle_version} && 0%{?sle_version} <= 150500
 # Podman >= 5.0.0 disables CNI support by default,
 # update buildtags to build podman with CNI support
 # for SLE-15-SP5 and lower.

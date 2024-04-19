@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 18 09:52:56 UTC 2024 - danish.prakash@suse.com
+
+- spec: Fix incorrect conditional that included TW while requiring the legacy
+    network backend for podman, meant only for SP5 and below.
+- Update to version 5.0.2:
+  * Bump to v5.0.2
+  * Update release notes for v5.0.2
+  * Emergency fix (well, skip) for failing bud tests
+  * swagger fix infinitive recursion on some types
+  * install swagger from source
+  * Update go-swagger version
+  * [v5.0] Bump c/common to v0.58.2
+  * fix "concurrent map writes" in network ls compat endpoint
+  * Fix relabeling failures with Z/z volumes on Mac
+  * Packit: Enable CentOS Stream 10 update job
+  * Bump to v5.0.2-dev
+
+-------------------------------------------------------------------
 Wed Apr  3 17:43:41 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 5.0.1:

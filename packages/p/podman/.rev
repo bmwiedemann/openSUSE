@@ -1112,4 +1112,13 @@ Update to version 4.7.1 (forwarded request 1115956 from danishprakash)</comment>
     <comment></comment>
     <requestid>1164498</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>29c42288df045eda8b313641e4b0febd</srcmd5>
+    <version>5.0.2</version>
+    <time>1713546817</time>
+    <user>anag+factory</user>
+    <comment>- spec: Fix incorrect conditional while requiring network backend
+- Update to version 5.0.2 (forwarded request 1168805 from danishprakash)</comment>
+    <requestid>1168940</requestid>
+  </revision>
 </revisionlist>
