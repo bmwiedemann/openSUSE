@@ -66,4 +66,12 @@
     <comment>- Reenable i586 builds (forwarded request 999419 from lukasstraub)</comment>
     <requestid>999533</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>a55aea720f37fed7310fab7fa4f89cc8</srcmd5>
+    <version>1.0.0</version>
+    <time>1713546917</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169029</requestid>
+  </revision>
 </revisionlist>
