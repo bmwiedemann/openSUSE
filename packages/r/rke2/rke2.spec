@@ -25,7 +25,7 @@
 %define kubernetes_version_next 1.30
 # check the upstream dependency file and adapt according to the 'golang: upstream version'
 # https://raw.githubusercontent.com/kubernetes/kubernetes/${KUBERNETES_VERSION}/build/dependencies.yaml
-# curl -sL https://raw.githubusercontent.com/kubernetes/kubernetes/${KUBERNETES_VERSION}/build/dependencies.yaml | yq e '.dependencies[] | select(.name == "golang: upstream version").version
+# curl -sL https://raw.githubusercontent.com/kubernetes/kubernetes/${KUBERNETES_VERSION}/build/dependencies.yaml | yq e '.dependencies[] | select(.name == "golang: upstream version").version'
 # example:
 # result of the command 1.21.8 => golang_version go1.21 (including go prefix, without patch version)
 # result of the command 1.21.8 => min_required_golang_minor_version 1.21.8
@@ -40,11 +40,37 @@ License:        Apache-2.0
 URL:            https://github.com/rancher/rke2
 Source0:        rke2-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Source2:        rke2-agent.env
+Source3:        rke2-agent.service
+Source4:        rke2-server.env
+Source5:        rke2-server.service
 BuildRequires:  %{golang_version} >= %{min_required_golang_minor_version}
+BuildRequires:  fdupes
 BuildRequires:  git
 Provides:       rke2 = %{version}-%{release}
 Conflicts:      rke2 < %{kubernetes_version_major_minor}
 Conflicts:      rke2 >= %{kubernetes_version_next}
+
+# /var/lib/kubelet is also packaged in kubernetes1.XX-kubelet-common
+Conflicts:      kubernetes1.17-kubelet-common
+Conflicts:      kubernetes1.18-kubelet-common
+Conflicts:      kubernetes1.19-kubelet-common
+Conflicts:      kubernetes1.20-kubelet-common
+Conflicts:      kubernetes1.21-kubelet-common
+Conflicts:      kubernetes1.22-kubelet-common
+Conflicts:      kubernetes1.23-kubelet-common
+Conflicts:      kubernetes1.24-kubelet-common
+Conflicts:      kubernetes1.25-kubelet-common
+Conflicts:      kubernetes1.26-kubelet-common
+Conflicts:      kubernetes1.27-kubelet-common
+Conflicts:      kubernetes1.28-kubelet-common
+Conflicts:      kubernetes1.29-kubelet-common
+Conflicts:      kubernetes1.30-kubelet-common
+Conflicts:      kubernetes1.31-kubelet-common
+Conflicts:      kubernetes1.32-kubelet-common
+
+# if iptables is missing, the nginx-controller pod does not start
+Requires:       iptables
 
 %description
 RKE2, also known as RKE Government, is Rancher's next-generation Kubernetes
@@ -61,6 +87,11 @@ To meet these goals, RKE2 does the following:
 
 %prep
 %autosetup -p 1 -a 1 -n %{directory_name}-%{version}
+
+cp %{SOURCE2} .
+cp %{SOURCE3} .
+cp %{SOURCE4} .
+cp %{SOURCE5} .
 
 %build
 
@@ -94,11 +125,63 @@ go build \
 
 %install
 # Install the binary.
-install -D -m 0755 %{binary_name} "%{buildroot}/%{_bindir}/%{binary_name}"
+install -D -m 0755 %{binary_name} %{buildroot}/%{_bindir}/%{binary_name}
+
+# systemd unit and env files
+install -D -m 0644 rke2-agent.service %{buildroot}/%{_unitdir}/rke2-agent.service
+install -D -m 0644 rke2-agent.env %{buildroot}/%{_unitdir}/rke2-agent.env
+install -D -m 0644 rke2-server.service %{buildroot}/%{_unitdir}/rke2-server.service
+install -D -m 0644 rke2-server.env %{buildroot}/%{_unitdir}/rke2-server.env
+
+# configuration directory
+install -d -m 0755 %{buildroot}/%{_sysconfdir}/cni/
+install -d -m 0755 %{buildroot}/%{_sysconfdir}/cni/net.d/
+install -d -m 0755 %{buildroot}/%{_sysconfdir}/rancher/
+install -d -m 0755 %{buildroot}/%{_sysconfdir}/rancher/node/
+install -d -m 0755 %{buildroot}/%{_sysconfdir}/rancher/%{binary_name}/
+install -d -m 0750 %{buildroot}/%{_sharedstatedir}/kubelet/
+install -d -m 0755 %{buildroot}/%{_sharedstatedir}/rancher/
+install -d -m 0755 %{buildroot}/%{_sharedstatedir}/rancher/%{binary_name}/
+install -d -m 0755 %{buildroot}/%{_localstatedir}/log/containers/
+install -d -m 0755 %{buildroot}/%{_localstatedir}/log/pods/
+
+%fdupes %{buildroot}/%{_unitdir}/
+
+%check
+
+%pre
+%service_add_pre rke2-agent.service
+%service_add_pre rke2-server.service
+
+%post
+%service_add_post rke2-agent.service
+%service_add_post rke2-server.service
+
+%preun
+%service_del_preun rke2-agent.service
+%service_del_preun rke2-server.service
+
+%postun
+%service_del_postun rke2-agent.service
+%service_del_postun rke2-server.service
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{binary_name}
+%{_unitdir}/%{binary_name}-agent.env
+%{_unitdir}/%{binary_name}-agent.service
+%{_unitdir}/%{binary_name}-server.env
+%{_unitdir}/%{binary_name}-server.service
+%dir %config %{_sysconfdir}/cni/
+%dir %config %{_sysconfdir}/cni/net.d/
+%dir %config %{_sysconfdir}/rancher/
+%dir %config %{_sysconfdir}/rancher/node/
+%dir %config %{_sysconfdir}/rancher/rke2/
+%dir %attr(750,root,root) %{_sharedstatedir}/kubelet/
+%dir %{_sharedstatedir}/rancher/
+%dir %{_sharedstatedir}/rancher/rke2/
+%dir %{_localstatedir}/log/containers/
+%dir %{_localstatedir}/log/pods/
 
 %changelog
