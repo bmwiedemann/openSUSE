@@ -15,4 +15,12 @@
     <comment>- Do not build on 32-bit arm (armv6/7) (forwarded request 821052 from Guillaume_G)</comment>
     <requestid>821053</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>80873e8c421dc18d5bc13272ea6da872</srcmd5>
+    <version>1.0.0</version>
+    <time>1713546919</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169030</requestid>
+  </revision>
 </revisionlist>

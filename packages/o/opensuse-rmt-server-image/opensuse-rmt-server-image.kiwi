@@ -2,7 +2,7 @@
 
 <!-- OBS-ExcludeArch: i586 s390 armv6l armv6hl armv7l armv7hl -->
 
-<image schemaversion="6.9" name="opensuse-rmt-server-image" xmlns:suse_label_helper="com.suse.label_helper">
+<image schemaversion="7.4" name="opensuse-rmt-server-image">
   <description type="system">
     <author>Thorsten Kukuk</author>
     <contact>kukuk@suse.com</contact>
@@ -28,7 +28,7 @@
           <env name="LANG" value="en"/>
         </environment>
         <labels>
-          <suse_label_helper:add_prefix prefix="org.opensuse.rmt-server">
+          <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper" prefix="org.opensuse.rmt-server">
             <label name="org.opencontainers.image.title" value="openSUSE RMT server container"/>
             <label name="org.opencontainers.image.description" value="Image containing system debugging utilities."/>
             <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
