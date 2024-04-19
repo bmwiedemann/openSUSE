@@ -1977,4 +1977,17 @@ those sources for i586 on its own.</comment>
     <time>1711360609</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="278" vrev="276">
+    <srcmd5>c952c126b7ea64a5da2eeb1a5ab01f66</srcmd5>
+    <version>unknown</version>
+    <time>1713526518</time>
+    <user>RBrownFactory</user>
+    <comment>Treat Aeon as a baseproduct</comment>
+  </revision>
+  <revision rev="279" vrev="277">
+    <srcmd5>c35263b5960ca0d5c22f64b3365fc4d9</srcmd5>
+    <version>unknown</version>
+    <time>1713529399</time>
+    <user>RBrownFactory</user>
+  </revision>
 </revisionlist>
