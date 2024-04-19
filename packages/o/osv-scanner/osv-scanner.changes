@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Apr 19 04:46:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.7.2:
+  * Changelog for v1.7.2 (#932)
+  * GR: Use deps.dev schema for graph definition in tests (#911)
+  * ci: ensure snapshots are always cleaned up (#903)
+  * test: clean up image snapshots (#923)
+  * Fix paths in test snapshots (#930)
+  * Fix regression for go call analysis in 1.7.0 (#926)
+  * fix(deps): update osv-scanner minor (#918)
+  * chore(deps): lock file maintenance (#919)
+  * Ignore stdlib vuln (#920)
+  * GR: Test `MatchVuln()` (#912)
+  * GR: resolve tests & mock client (#909)
+  * GR: Parse paths in npmrc auth fields correctly (#901)
+  * Fix rust call analysis by explicitly disabling stripping of
+    debug info (#908)
+  * fix(deps): update osv-scanner minor (#895)
+  * chore(deps): update golang:1.21-alpine3.19 docker digest to
+    ed8ce6c (#905)
+  * chore(deps): update workflows (#906)
+  * chore(deps): lock file maintenance (#898)
+  * test: clean and sort snapshots (#904)
+  * Add new vuln for failing test (#900)
+  * GR: Tests for npm relaxer (#894)
+  * GR: Add simple test for package-lock.json writing (#891)
+  * chore(deps): update workflows (#886)
+  * fix(deps): update osv-scanner minor (#885)
+  * update deps.dev/util/maven (#892)
+  * Make MockHTTPServer for tests (#888)
+  * GR: Add tests for npmrc & npm registry api (#879)
+  * Update github action docs to v1.7.1 (#881)
+  * Use stable deps.dev v3 API (#882)
+  * test: pin alpine image to exact sha (#880)
+  * test: change how snapshot matchers are called and update
+    example name for consistency (#866)
+  * [docs] Fix the HTTP link for downloading offline database.
+    (#877)
+  * fix(renovate): constrain go to 1.21 and do not update golang
+    (#874)
+  * ci: harden workflow permissions (#872)
+  * chore(deps): Bump github.com/docker/docker from
+    25.0.3+incompatible to 25.0.5+incompatible (#878)
+
+-------------------------------------------------------------------
 Wed Mar 20 06:19:45 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.7.1:
