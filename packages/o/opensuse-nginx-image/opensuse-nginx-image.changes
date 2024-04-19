@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 17 14:55:41 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update kiwi schemaversion to 7.4
+
+-------------------------------------------------------------------
 Mon Aug  2 08:36:14 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Re-add busybox-findutils since ca-certificates no longer requires
