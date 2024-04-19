@@ -8,4 +8,12 @@
 (container image for `kube-scheduler-minus2` package)</comment>
     <requestid>1102859</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fb98065130d65689a6ce2ac8ae4553a5</srcmd5>
+    <version>1.0.0</version>
+    <time>1713546946</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169099</requestid>
+  </revision>
 </revisionlist>
