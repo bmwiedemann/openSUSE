@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 18 19:28:50 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix mounting encrypted drives (kde#485507, boo#1222980):
+  * 0001-udisks-Return-empty-string-for-root-clearTextPath.patch
+
+-------------------------------------------------------------------
 Fri Apr  5 12:53:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.1.0

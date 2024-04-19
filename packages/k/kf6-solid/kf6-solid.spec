@@ -31,6 +31,8 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-udisks-Return-empty-string-for-root-clearTextPath.patch
 BuildRequires:  bison
 BuildRequires:  doxygen
 BuildRequires:  fdupes
