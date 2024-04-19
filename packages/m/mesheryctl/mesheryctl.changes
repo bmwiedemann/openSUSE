@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 19 04:47:59 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.49:
+  * Meshery UI
+    - Disable permission check for now @dragon-slayer875 (#10749)
+    - Fix wrong key in permission constant file for preferences
+      @Yashsharma1911 (#10748)
+
+-------------------------------------------------------------------
+Thu Apr 18 19:06:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.48:
+  * Meshery UI
+    - Meshery UI permissions addition/fix @dragon-slayer875
+      (#10728)
+
+-------------------------------------------------------------------
 Wed Apr 17 10:29:37 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.47:
