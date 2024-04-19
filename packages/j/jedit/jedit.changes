@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 19 04:22:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * jedit-doclet.patch
+    + add -notimestamp parameter to javadoc for reproducible
+      builds
+
+-------------------------------------------------------------------
 Wed Feb 21 11:55:45 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
