@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 18 14:53:17 UTC 2024 - Ignaz Forster <iforster@suse.com>
+
+- Version 4.6.6  
+  - soft-reboot: Fix inverted logic of soft-reboot detection
+  - soft-reboot: Don't use D-Bus for snapper call - it may be
+    shutting down already
+  - soft-reboot: Remove unused variable
+  - doc: Document configuration file snippets for tukit.conf
+- Remove script to disable soft-reboot support - this is the
+  default for now anyway
+
+-------------------------------------------------------------------
 Fri Apr 12 15:36:13 UTC 2024 - Ignaz Forster <iforster@suse.com>
 
 - Version 4.6.5
