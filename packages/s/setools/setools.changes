@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Apr 18 13:21:48 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Fix build for 15.4 and 15.5:
+  - Minimum required python version is 3.11, so building only for python311 
+  - Remove dependency for networkx: 0001-Make-networkx-optional-again-Fixes-125.patch 
+
+-------------------------------------------------------------------
+Thu Mar 21 14:06:13 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 4.5.0:
+  - User Visible Changes
+    * Add graphical results for information flow analysis and domain
+      transition analysis, available in apol, sedta, and seinfoflow.
+    * Add tooltips, What's This?, and detail popups in apol to help
+      cross-referencing query and analysis results along with
+      context-sensitive help.
+  - Under The Hood Changes
+    * Rework apol to fully generate the UI programmatically.
+    * Update apol to PyQt6
+    * Replace deprecated uses of pkg_resources and distutils.
+    * Begin adding unit tests for apol UI.
+  - Updated Dependencies
+    SETools now higher minimum versions of the following dependencies:
+    * Python 3.10
+    * NetworkX 2.6
+    * PyQt6
+    * Cython 0.29.14
+  - New Dependencies
+    * pygraphviz (for seinfoflow, sedta, apol)
+
+-------------------------------------------------------------------
 Mon Dec 11 08:09:10 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 4.4.4:

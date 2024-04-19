@@ -1,7 +1,7 @@
 #
 # spec file for package setools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,11 @@
 #
 
 
-# As soon as python38 is introduced as flavor, we need this:
-%{?!python3_primary_provider:%define python3_primary_provider %{lua: \
-l,c = posix.readlink("/usr/bin/python3") \
-flavor = l:gsub("%.", ""):sub(0,-1) \
-print(rpm.expand("%{?" .. flavor .. "_prefix}%{!?" .. flavor .. "_prefix:python3}")) \
-}}
-# Skip every flavor except for the primary_provider
+%define python3_primary_provider python311
 %define pythons %python3_primary_provider
 
 Name:           setools
-Version:        4.4.4
+Version:        4.5.0
 Release:        0
 URL:            https://github.com/SELinuxProject/setools
 Summary:        Policy analysis tools for SELinux
@@ -34,13 +28,15 @@ License:        GPL-2.0-only
 Group:          System/Management
 Source:         https://github.com/SELinuxProject/setools/releases/download/%{version}/%{name}-%{version}.tar.bz2
 Source2:        README.SUSE
+# can be removed again when this is fixed upstream: https://github.com/SELinuxProject/setools/issues/125
+Patch0:         0001-Make-networkx-optional-again-Fixes-125.patch
+BuildRequires:  %{python_module Cython >= 0.29.14}
+BuildRequires:  %{python_module devel >= 3.10}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  libselinux-devel
 BuildRequires:  libsepol-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Cython
-BuildRequires:  python3-devel >= 3.4
-BuildRequires:  python3-setuptools
 Requires:       setools-console = %{version}-%{release}
 Requires:       setools-gui = %{version}-%{release}
 
@@ -73,8 +69,12 @@ This package includes the following console tools:
 Summary:        Python bindings for SELinux policy analysis
 License:        LGPL-2.0-only
 Group:          Development/Languages/Python
-Requires:       python3 >= 3.4
-Requires:       python3-setuptools
+Requires:       %{python3_primary_provider} >= 3.10
+Requires:       %{python3_primary_provider}-setuptools
+# require python-networkx on tumbleweed
+%if 0%{?suse_version} > 1600
+Requires:       %{python3_primary_provider}-networkx
+%endif
 Obsoletes:      python-setools < %{version}-%{release}
 Provides:       python-setools = %{version}-%{release}
 %if "%{python3_primary_provider}" != "python3"
@@ -90,9 +90,9 @@ libraries designed to facilitate SELinux policy analysis.
 Summary:        Policy analysis graphical tools for SELinux
 License:        GPL-2.0-only
 Group:          System/Base
-Requires:       python3-networkx
-Requires:       python3-qt5
-Requires:       python3-setools = %{version}
+Requires:       %{python3_primary_provider}-PyQt6
+Requires:       %{python3_primary_provider}-pygraphviz
+Requires:       %{python3_primary_provider}-setools = %{version}
 
 %description gui
 SETools is a collection of graphical tools, command-line tools, and
@@ -112,12 +112,12 @@ This package includes the following graphical tools:
 %install
 %python_install
 install -m 644 -D %{SOURCE2} %{buildroot}%{_docdir}/%{name}/README.SUSE
-%fdupes -s %{buildroot}%{python3_sitearch}
+%fdupes -s %{buildroot}%{python_sitearch}
 
 %files -n %{python3_primary_provider}-setools
 %defattr(-,root,root,-)
-%{python3_sitearch}/setools
-%{python3_sitearch}/setools-%{version}*-info
+%{python_sitearch}/setools
+%{python_sitearch}/setools-%{version}*-info
 %dir %{_docdir}/%{name}/
 %{_docdir}/%{name}/*
 
@@ -144,7 +144,7 @@ install -m 644 -D %{SOURCE2} %{buildroot}%{_docdir}/%{name}/README.SUSE
 
 %files gui
 %defattr(-,root,root,-)
-%{python3_sitearch}/setoolsgui
+%{python_sitearch}/setoolsgui
 %{_bindir}/apol
 %{_mandir}/man1/apol.1.gz
 
