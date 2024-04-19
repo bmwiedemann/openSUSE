@@ -2,7 +2,7 @@
 
 <!-- OBS-ExcludeArch: i586 s390 -->
 
-<image schemaversion="6.9" name="opensuse-dovecot-image" xmlns:suse_label_helper="com.suse.label_helper">
+<image schemaversion="7.4" name="opensuse-dovecot-image">
   <description type="system">
     <author>Thorsten Kukuk</author>
     <contact>kukuk@suse.com</contact>
@@ -33,7 +33,7 @@
           <volume name="/var/spool/vmail"/>
         </volumes>
         <labels>
-          <suse_label_helper:add_prefix prefix="org.opensuse.dovecot">
+          <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper" prefix="org.opensuse.dovecot">
             <label name="org.opencontainers.image.title" value="Dovecot secure IMAP and POP3 server"/>
             <label name="org.opencontainers.image.description" value="Image containing Dovecot IMAP daemon."/>
             <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
