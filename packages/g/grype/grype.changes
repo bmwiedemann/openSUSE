@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 19 05:44:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.77.0:
+  * config: add config opt in golang pseudo version main module
+    comparison  (#1816)
+  * chore(deps): bump actions/upload-artifact from 4.3.1 to 4.3.2
+    (#1814)
+  * feat: modify metadata structure for providers' pull date
+    (#1795)
+  * fix: add linux and libc-dev headers ignore rules for debian
+    packages (#1809)
+  * chore(deps): bump peter-evans/create-pull-request from 6.0.3 to
+    6.0.4 (#1808)
+  * feat: add html template (#1806)
+  * fix: use Go main module version (#1797)
+
+-------------------------------------------------------------------
 Tue Apr 16 06:07:59 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.76.0:
