@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  4 13:56:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Properly tag patches.
+
+-------------------------------------------------------------------
 Thu Dec  7 09:45:46 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - mozjs115 requires gcc >= 8.1, icu >= 73.1. Specify them in spec.

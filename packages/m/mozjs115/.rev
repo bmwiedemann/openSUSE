@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>1131632</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>6a72731b700374cc475559b992ac6f10</srcmd5>
+    <version>115.4.0</version>
+    <time>1713546801</time>
+    <user>anag+factory</user>
+    <comment>- Properly tag patches. (forwarded request 1168862 from dimstar)</comment>
+    <requestid>1168890</requestid>
+  </revision>
 </revisionlist>

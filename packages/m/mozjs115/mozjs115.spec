@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package mozjs115
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2023 Frantisek Zatloukal <fzatlouk@redhat.com>
 # Copyright (c) 2014 Wolfgang Rosenauer
 #
@@ -54,21 +54,29 @@ Source2:        https://ftp.mozilla.org/pub/firefox/releases/%{version}esr/KEY#/
 Source3:        known_failures.txt
 
 # Patches from mozjs78, rebased for mozjs91:
+# PATCH-FIX-OPENSUSE
 Patch01:        fix-soname.patch
+# PATCH-FIX-OPENSUSE
 Patch02:        copy-headers.patch
+# PATCH-FIX-OPENSUSE
 Patch03:        tests-increase-timeout.patch
+# PATCH-FIX-OPENSUSE
 Patch09:        icu_sources_data.py-Decouple-from-Mozilla-build-system.patch
+# PATCH-FIX-OPENSUSE
 Patch10:        icu_sources_data-Write-command-output-to-our-stderr.patch
-# Build fixes - https://hg.mozilla.org/mozilla-central/rev/ca36a6c4f8a4a0ddaa033fdbe20836d87bbfb873
+# PATCH-FIX-UPSTREAM --https://hg.mozilla.org/mozilla-central/rev/ca36a6c4f8a4a0ddaa033fdbe20836d87bbfb873
 Patch12:        emitter.patch
-# Build fixes
+# PATCH-FIX-OPENSUSE
 Patch13:        init_patch.patch
+# PATCH-FIX-OPENSUSE
 Patch14:        remove-sloppy-m4-detection-from-bundled-autoconf.patch
-# TODO: Check with mozilla for cause of these fails and re-enable spidermonkey compile time checks if needed
+# PATCH-FIX-UPSTREAM -- Check with mozilla for cause of these fails and re-enable spidermonkey compile time checks if needed
 Patch15:        spidermonkey_checks_disable.patch
-# s390x/ppc64 fixes, TODO: file bug report upstream?
+# PATCH-FIX-UPSTREAM -- s390x/ppc64 fixes, TODO: file bug report upstream?
 Patch18:        spidermonkey_style_check_disable_s390x.patch
+# PATCH-FIX-OPENSUSE
 Patch19:        0001-Skip-failing-tests-on-ppc64-and-s390x.patch
+# PATCH-FIX-OPENSUSE
 Patch20:        Fix-i586-float-math.patch
 
 BuildRequires:  autoconf213
