@@ -2,7 +2,7 @@
 
 <!-- OBS-ExcludeArch: i586 s390 armv6hl armv7hl -->
 
-<image schemaversion="6.9" name="kubic-kube-proxy-minus1-image" xmlns:suse_label_helper="com.suse.label_helper">
+<image schemaversion="7.4" name="kubic-kube-proxy-minus1-image">
   <description type="system">
     <author>Richard Brown</author>
     <contact>rbrown@suse.com</contact>
@@ -19,7 +19,7 @@
         maintainer="Richard Brown &lt;rbrown@suse.com&gt;">
         <subcommand execute="/bin/sh"/>
         <labels>
-          <suse_label_helper:add_prefix prefix="org.opensuse.kubic.kube-proxy">
+          <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper" prefix="org.opensuse.kubic.kube-proxy">
             <label name="org.opencontainers.image.title" value="openSUSE Kubic kube-proxy container"/>
             <label name="org.opencontainers.image.description" value="Image containing kube-proxy for openSUSE Kubic."/>
             <label name="org.opencontainers.image.version" value="v%PKG_VERSION%-%RELEASE%"/>
