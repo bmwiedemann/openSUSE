@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 19 07:46:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- update kiwi schemaversion to 7.4
+
+-------------------------------------------------------------------
 Tue Apr 16 09:38:34 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Drop hwclock entry: this is not supported on containers.
