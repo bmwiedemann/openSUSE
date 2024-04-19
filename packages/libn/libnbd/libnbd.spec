@@ -1,7 +1,7 @@
 #
 # spec file for package libnbd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,19 @@
 %define sover 0
 
 Name:           libnbd
-Version:        1.18.1
+Version:        1.18.4
 Release:        0
 Summary:        NBD client library in userspace
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.com/nbdkit/libnbd
 Source0:        %{name}-%{version}.tar.bz2
-Patch0:         4451e5b6-CVE-2023-5871.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  ocaml-findlib
-BuildRequires:  pkg-config
 BuildRequires:  ocaml-rpm-macros
+BuildRequires:  pkg-config
 BuildRequires:  ocaml(compiler)
 BuildRequires:  perl(Pod::Man)
 BuildRequires:  perl(Pod::Simple)

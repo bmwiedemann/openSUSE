@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Thu Apr 18 20:01:31 UTC 2024 - jfehlig@suse.com
+
+- Update to version 1.18.4:
+  * Version 1.18.4.
+  * tests/connect-uri: Remove -DPIDFILE, generate it implicitly
+  * rust: Make the struct Cookie internal field fully public
+  * interop/block-status-64.c: Fix skip path under valgrind
+  * Revert "valgrind: Add suppression for liblzma bug"
+  * ocaml: Add ocamlfind -package to ocamldoc invocation
+  * info/can.c: Assert that 'can' variable is set
+  * info: Fix error message
+  * info: Add note that --can/--is/--has are synonyms
+  * info: Handle failure of call to file
+  * fuzzing: Add a comment that the libfuzzer test is unmaintained
+  * Version 1.18.3.
+  * tests/opt-info.c: Free string returned by nbd_get_export_name
+  * valgrind: Add suppression for liblzma bug
+  * info: Try harder to report contents from nbd-server
+  * copy: Add test for server without meta context support
+  * api: Fix nbd_can_meta_context for server that lacks meta contexts
+  * copy, info: Treat can_meta_context failures as unsupported
+  * configure: Copy bash-completions test from nbdkit
+  * podwrapper: Ignore check on older versions of Perl
+  * podwrapper: Allow = (POD directive) followed by bare URL
+  * podwrapper: Check for bare URLs and suggest replacement with L<> links
+  * podwrapper: Move long lines and cross-reference checks earlier
+  * tests: Missed another C test which didn't use NBDKIT
+  * tests: Use $NBDKIT instead of plain 'nbdkit'
+  * tests: Use 'source ./function.sh' consistently in this directory
+  * ocaml/tests: Add replacement for Bytes.set_int64_be
+  * ocaml/tests: Add explicit dependency on ocaml_test_config.cm{o,x}
+  * build: Define the minimum required version of OCaml as 4.05
+  * generator: Remove definition of sort_uniq
+  * configure: Annotate OCaml tests by version of OCaml
+  * ci: Skip certain deadlocking nbd-server tests on Alpine 3.19
+  * docs: Clarify description of block size constraints
+  * ocaml: tests: Compute srcdir centrally in Ocaml_test_config module
+  * ocaml: tests: Use @NBDKIT@ instead of hard coding nbdkit
+  * python: tests: Use $NBDKIT instead of hard coding nbdkit
+  * python: Various fixes to the Python tests and test wrapper
+  * tests: Use wait_for_pidfile instead of open-coded loops
+  * tests: Define NBD_SERVER in config.h and use it for requires tests
+  * tests: Define QEMU_NBD in config.h and use it for requires tests
+  * maint: Be more consistent about using ./configure-defined @NBDKIT@
+  * maint: Be more consistent about using ./configure-defined @QEMU_NBD@
+  * interop: Prefer exporting QEMU_STORAGE_DAEMON through tests/functions.sh
+  * interop: Use nbd-server FORCEDTLS mode
+  * interop: Test write, flush and zero operations
+  * interop: Add nbd-server flush flag
+  * interop: Remove -DNEEDS_TMPFILE
+  * maint: Use @LN_S@ autoconf macro in preference to writing out 'ln -s'
+  * tests: connect-uri: Choose random port for TCP connections at runtime
+  * tests: connect-uri: Change how Unix domain sockets are generated
+  * docs: Fix accidental double line in SECURITY file
+  * bash: Make nbdfuse and nbdublk installation conditional
+  * Version 1.18.2.
+  * ocaml: Nullify custom block before releasing runtime lock
+  * ocaml: Use Gc.finalize instead of a C finalizer
+  * ci: Update to latest lcitool
+  * rust: Avoid compiler warning about unused import
+  * docs: Mention CVE-2023-5871
+  * New mailing list archives
+  * fuzzing: We need to disable Rust bindings when building fuzzer version
+  * tests: Check behavior of nbd_set_strict_mode(STRICT_AUTO_FLAG)
+  * docs: Fix incorrect xref in libnbd-release-notes for 1.18
+  * generator: Fix assertion in ext-mode BLOCK_STATUS, CVE-2023-5871
+  * Drop patch 4451e5b6-CVE-2023-5871.patch, which is now included
+    in the stable-1.18 branch
+
+-------------------------------------------------------------------
 Tue Dec 12 12:12:12 UTC 2023 - ohering@suse.de
 
 - Use ocaml-rpm-macros to track OCaml ABI
