@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 17 14:55:50 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update kiwi schemaversion to 7.4
+
+-------------------------------------------------------------------
 Tue Apr  5 12:37:28 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop dependency on openldap2-ppolicy-check-password: this package
