@@ -1,7 +1,7 @@
 #
 # spec file for package nbdkit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %global broken_test_arches %{arm} aarch64
 
 Name:           nbdkit
-Version:        1.36.1
+Version:        1.36.5
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
@@ -172,6 +172,7 @@ Requires:       %{name}-server = %{version}-%{release}
 
 %description example-plugins
 This package contains example plugins for %{name}.
+
 
 
 

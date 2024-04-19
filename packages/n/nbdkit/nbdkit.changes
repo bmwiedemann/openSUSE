@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Thu Apr 18 20:11:38 UTC 2024 - jfehlig@suse.com
+
+- Update to version 1.36.5:
+  * Version 1.36.5.
+  * tests: Add test-blkio.sh to unconditional EXTRA_DIST rule
+  * Revert "valgrind: Add suppression for liblzma bug"
+  * vddk: Move "Unknown error" information to the manual
+  * ocaml Add better comments to the example plugin
+  * ocaml: Simplify pread operation
+  * ocaml: Define a struct handle to hold the OCaml handle
+  * ocaml: Add OCaml version to --dump-plugin output
+  * ocaml: Print callback name when an exception is printed
+  * ocaml: Combine all exception printing into a single macro
+  * ocaml: Try to fix cross-references in NBDKit(3)
+  * cc: Separate two examples in the synopsis
+  * tests: luks: Skip valgrind
+  * eval: Check that get_size method is provided
+  * lua, tcl: Error out if script parameter is not supplied
+  * python: Fix crash if script parameter is missing
+  * perl: Fix crash if script parameter is missing
+  * rust: Fix the MSRV check during CI
+  * Rust: fix a clippy::clone_assign lint
+  * ci: cirrus: Use --break-system-packages with 'pip install'
+  * vddk: Document that VDDK 8.0.2+ is broken with RHEL 8
+  * Version 1.36.4.
+  * valgrind: Add suppression for liblzma bug
+  * luks: Fix infinite loop on error path
+  * docs: Add example of exporting a variable in --run
+  * vddk: Move read-only example / explanation to NOTES section
+  * vddk: Expand the first example into something runnable
+  * vddk: Update VDDK support matrix again
+  * benchmark: fio needs "$uri" to be exported
+  * tests: Only clean test-old-plugins-*.sh on distclean
+  * tests: Rename pycodestyle.sh to test-pycodestyle.sh
+  * rust: Add const {} around thread_local initializers
+  * rust: Raise MSRV to 1.59.0
+  * rust: Split out clippy and documentation generation from tests
+  * rust: Run the test script with bash and add a license notice
+  * common/protocol: Error out if generate-protostrings.sh fails
+  * example2, partitioning, split: Reject block devices
+  * configure: Check that bash is sufficiently new
+  * configure: Use consistent capitalization in --help output
+  * configure: python: Remove unnecessary quoting
+  * configure: perl: Improve message output in test
+  * configure: Past tense, Python 2 has now been deprecated
+  * configure: Move linuxdisk test next to other ext2 tests
+  * configure: Fix some comment headings
+  * configure: Move dlsym & dladdr tests together
+  * vddk: Tested VDDK up to 8.0.2
+  * podwrapper: Ignore check on older versions of Perl
+  * podwrapper: Allow = (POD directive) followed by bare URL
+  * zero: Point to various alternatives to this plugin
+  * podwrapper: Check for bare URLs and suggest replacement with L<> links
+  * podwrapper: Move long lines and cross-reference checks earlier
+  * docs: Replace some bare URLs with L<>
+  * plugins/S3: Fix zero callback
+  * S3: Convert docstring to the triple double-quoted string form
+  * S3: Reorder code lines for improved clarity
+  * S3: Make tests to run on Windows (avoid using /dev/urandom)
+  * S3: Correct spelling
+  * Correct minimum block size for S3 plugin
+  * common/replacements/win32: Make windmc tool optional
+  * common/replacements/win32: Only build nbdkit-cat.mc derived files once
+  * tests: Fix tests to work with srcdir != builddir
+  * common/bitmaps: Fix tests when srcdir != builddir
+  * tests: Add some documentation to test-read-password-plugin.c
+  * Version 1.36.3.
+  * Update file nbdkit-fua-filter.pod
+  * ssh: Print the failed path in error message
+  * ci: Update to latest lcitool
+  * partition: Suggest alternate partition-sectorsize
+  * partition: Don't call nbdkit_error twice on error path
+  * exportname: Fix markup for linking to other man pages
+  * file: Fix markup when referencing dir= option from dirfd= docs
+  * configure: Fix initialization from incompatible pointer type
+  * Version 1.36.2.
+  * cdi: Mention qcow2dec filter for extracting qcow2 format images
+  * cdi: Use a quay.io image instead of docker://
+  * cdi: Use docker-dir (instead of oci-dir) when saving pulled image
+  * New mailing list archives
+  * New mailing list email address
+  * server: Declare maximum supported plugin API version
+  * server: Print SOEXT ("so" or "dll") in nbdkit --dump-config output
+  * server: Small tidy up of globals
+  * golang: Fix linker on macOS
+  * server/internal.h: Simplify generated code used for dynamic handle checks
+  * server: Add magic values to important structs
+  * server/threadlocal.c: Inline and simplify threadlocal_pop_context
+  * server/backend.c: Use calloc when creating context struct
+  * tests: Simplify by replacing qemu-io with nbdsh
+  * tests/test-pattern.sh: Fix quoting of heredoc
+  * pattern: Accurately update b & offset in loop
+  * tests/test-log-script-info.sh: Check /bin/sh is bash for this test
+
+-------------------------------------------------------------------
 Wed Oct 25 19:34:49 UTC 2023 - jfehlig@suse.com
 
 - Update to version 1.36.1:

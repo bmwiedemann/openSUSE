@@ -1,7 +1,7 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="filename">nbdkit</param>
-    <param name="revision">v1.36.1</param>
+    <param name="revision">v1.36.5</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://gitlab.com/nbdkit/nbdkit.git</param>
@@ -10,9 +10,9 @@
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>
