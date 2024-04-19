@@ -8,4 +8,12 @@
 (container image for `etcd-minus2` package)</comment>
     <requestid>1102861</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4990cafa91e904c5b4a68fb0e33f4e50</srcmd5>
+    <version>1.0.0</version>
+    <time>1713546966</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169117</requestid>
+  </revision>
 </revisionlist>
