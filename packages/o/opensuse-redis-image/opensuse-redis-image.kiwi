@@ -2,7 +2,7 @@
 
 <!-- OBS-ExcludeArch: i586 s390 -->
 
-<image schemaversion="6.9" name="opensuse-redis-image" xmlns:suse_label_helper="com.suse.label_helper">
+<image schemaversion="7.4" name="opensuse-redis-image">
   <description type="system">
     <author>Thorsten Kukuk</author>
     <contact>kukuk@suse.com</contact>
@@ -29,7 +29,7 @@
           <volume name="/data"/>
         </volumes>
         <labels>
-          <suse_label_helper:add_prefix prefix="org.opensuse.redis">
+          <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper" prefix="org.opensuse.redis">
             <label name="org.opencontainers.image.title" value="openSUSE redis container"/>
             <label name="org.opencontainers.image.description" value="Image containing redis database."/>
             <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
