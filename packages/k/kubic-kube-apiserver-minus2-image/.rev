@@ -8,4 +8,12 @@
 (container image for `kube-apiserver-minus2` package)</comment>
     <requestid>1102853</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>52e9610135f477d799127766f2cd85d5</srcmd5>
+    <version>1.0.0</version>
+    <time>1713546958</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169110</requestid>
+  </revision>
 </revisionlist>
