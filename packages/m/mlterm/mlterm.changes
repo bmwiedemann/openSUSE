@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 19 07:55:23 UTC 2024 - pgajdos@suse.com
+
+- drop wnn subpackage (https://build.opensuse.org/request/show/1166015)
+  (FreeWnn seem to be no longer maintained)
+
+-------------------------------------------------------------------
 Thu Jul 13 14:36:09 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Disable wayland backend on 15.4 - fails to build.

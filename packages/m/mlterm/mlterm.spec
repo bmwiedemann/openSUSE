@@ -1,7 +1,7 @@
 #
 # spec file for package mlterm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,6 @@ Source10:       %{name}.desktop
 Patch0:         etc.patch
 BuildRequires:  ccache
 BuildRequires:  coreutils
-BuildRequires:  fwnn-devel
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  scim-devel
@@ -179,14 +178,6 @@ Provides:       locale(uim:ja;ko;ar;he)
 %description uim
 A plugin to use the uim input methods directly from mlterm.
 
-%package wnn
-Summary:        Wnn plugin for mlterm
-Group:          System/X11/Terminals
-Provides:       locale(scim:ja;ko;ar;he)
-
-%description wnn
-A plugin to use the wnn input methods directly from mlterm.
-
 %prep
 %setup -q
 %autopatch -p1
@@ -212,7 +203,6 @@ pushd $i
   --enable-m17nlib \
   --enable-ibus \
   --enable-fcitx \
-  --enable-wnn \
   --enable-scim \
   --enable-uim \
   --with-tools=mlclient,mlcc,mlfc,mlmenu,mlterm-zoom,mlimgloader,mlconfig \
@@ -334,8 +324,5 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files uim
 %{_libdir}/mlterm/libim-uim*.so
-
-%files wnn
-%{_libdir}/mlterm/libim-wnn*.so
 
 %changelog

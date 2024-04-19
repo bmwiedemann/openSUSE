@@ -814,4 +814,13 @@
     <comment>- Disable wayland backend on 15.4 - fails to build. (forwarded request 1098547 from michals)</comment>
     <requestid>1099041</requestid>
   </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>7a90d9434c40d0797fa3beb124297a5a</srcmd5>
+    <version>3.9.3</version>
+    <time>1713546929</time>
+    <user>anag+factory</user>
+    <comment>- drop wnn subpackage (https://build.opensuse.org/request/show/1166015)
+  (FreeWnn seem to be no longer maintained)</comment>
+    <requestid>1169072</requestid>
+  </revision>
 </revisionlist>
