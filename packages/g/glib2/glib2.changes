@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  2 16:17:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require dbus-launch only if dbus-service is wanted. This helps
+  with stripping down container-only builds
+
+-------------------------------------------------------------------
 Mon Mar 18 12:25:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fold typelib-1_0-GioUnix-2_0 into typeib-1_0-Gio-2_0: gjs loads
@@ -847,7 +853,7 @@ Thu Jul  7 11:59:36 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
   + Use a numeric space (U+2007) for padding with some
     `g_date_time_format()` placeholders.
   + Fix a slow memory leak in `GSocketClient` when using long-lived
-    `GCancellable`s. 
+    `GCancellable`s.
 
 -------------------------------------------------------------------
 Sun Jul  3 23:43:59 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>

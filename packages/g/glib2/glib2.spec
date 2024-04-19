@@ -232,7 +232,7 @@ Group:          System/Libraries
 # bnc#555605: shared-mime-info is required by libgio to properly detect mime types, but not during build
 #!BuildIgnore:  shared-mime-info
 # bnc#678518: libgio interacts with others by means of dbus-launch
-Requires:       %{_bindir}/dbus-launch
+Requires:       (%{_bindir}/dbus-launch if dbus-service)
 Requires:       %{name}-tools
 Requires:       gio-branding = %{version}
 Requires:       shared-mime-info

@@ -2223,4 +2223,15 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
     <comment>GNOME 46 (forwarded request 1159738 from dimstar)</comment>
     <requestid>1159740</requestid>
   </revision>
+  <revision rev="277" vrev="2">
+    <srcmd5>5eebe03fa45bb25923cbfba99fc27d07</srcmd5>
+    <version>2.80.0</version>
+    <time>1713546798</time>
+    <user>anag+factory</user>
+    <comment>- require dbus-launch only if dbus-service is wanted. This helps
+  with stripping down container-only builds
+
+    `GCancellable`s. (forwarded request 1168861 from dimstar)</comment>
+    <requestid>1168889</requestid>
+  </revision>
 </revisionlist>
