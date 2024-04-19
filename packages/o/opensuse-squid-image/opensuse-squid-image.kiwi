@@ -2,7 +2,7 @@
 
 <!-- OBS-ExcludeArch: i586 s390 -->
 
-<image schemaversion="6.9" name="opensuse-squid-image" xmlns:suse_label_helper="com.suse.label_helper">
+<image schemaversion="7.4" name="opensuse-squid-image">
   <description type="system">
     <author>Thorsten Kukuk</author>
     <contact>kukuk@suse.com</contact>
@@ -27,7 +27,7 @@
           <env name="SQUID_LOG_DIR" value="/var/log/squid"/>
 	</environment>
         <labels>
-          <suse_label_helper:add_prefix prefix="org.opensuse.squid">
+          <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper" prefix="org.opensuse.squid">
             <label name="org.opencontainers.image.title" value="openSUSE squid container"/>
             <label name="org.opencontainers.image.description" value="Image containing squid."/>
             <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>

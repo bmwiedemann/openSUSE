@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 17 14:56:34 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update kiwi schemaversion to 7.4
+
+-------------------------------------------------------------------
 Fri Jun  5 10:49:22 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Remove "--" from the package list to separate pkgs from
