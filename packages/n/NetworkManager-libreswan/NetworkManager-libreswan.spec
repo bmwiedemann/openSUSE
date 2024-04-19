@@ -17,7 +17,7 @@
 
 
 Name:           NetworkManager-libreswan
-Version:        1.2.16
+Version:        1.2.20
 Release:        0
 Summary:        Libreswan VPN client plugin for NetworkManager
 License:        GPL-2.0-or-later
@@ -82,7 +82,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS
+%doc AUTHORS NEWS
 %{_datadir}/dbus-1/system.d/nm-libreswan-service.conf
 %{_libdir}/NetworkManager/libnm-vpn-plugin-libreswan.so
 %{_vpnservicedir}/nm-libreswan-service.name

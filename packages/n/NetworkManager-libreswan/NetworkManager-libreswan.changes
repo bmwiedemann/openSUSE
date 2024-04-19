@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 18 13:12:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.20:
+  + Support setting "leftmodecfgclient" to "no"
+  + Support for the "type", "hostaddrfamily" and
+    "clientaddrfamily", "leftsubnet" and "rightcert" parameters.
+- Changes from version 1.2.18:
+  + Drop libnm-glib compatibility (NetworkManager < 1.0).
+  + Add support for the "authby", "dpdaction", "dpddelay",
+    "dpdtimeout", "ipsec-interface" parameters.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Thu Mar 28 07:55:28 UTC 2024 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add missing supplements(bsc#1220391):
