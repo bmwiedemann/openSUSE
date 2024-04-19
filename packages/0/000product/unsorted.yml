@@ -2507,6 +2507,7 @@ unsorted:
   - coredns-for-k8s1.28-extras 
   - coredns-for-k8s1.29 
   - coredns-for-k8s1.29-extras 
+  - coreos-installer 
   - corepack20 
   - corepack21 
   - coreutils-single 
@@ -13317,7 +13318,6 @@ unsorted:
   - libguestfs-rescue 
   - libguestfs-rsync 
   - libguestfs-typelib-Guestfs-1_0 
-  - libguestfs-winsupport 
   - libguestfsd 
   - libguile-cairo0 
   - libguile-srfi-srfi-1-v-3-3 
@@ -14338,7 +14338,6 @@ unsorted:
   - libnauty-2_8_8 
   - libnbcompat-devel 
   - libnbcompat0 
-  - libnbd 
   - libnbd-bash-completion 
   - libnbd-devel 
   - libnblib_gmx0 
@@ -14785,6 +14784,7 @@ unsorted:
   - libout123-0-32bit 
   - libovf-glib-devel 
   - libovn-23_03-0 
+  - libowfat-devel 
   - libowncloudsync-devel 
   - libowncloudsync0 
   - libp11-devel 
@@ -18416,6 +18416,8 @@ unsorted:
   - moditect-javadoc 
   - modsecurity 
   - modsecurity-devel 
+  - modulemaker-maven-plugin 
+  - modulemaker-maven-plugin-javadoc 
   - modulemd-validator 
   - moe 
   - mojave-gtk-theme 
@@ -19413,6 +19415,8 @@ unsorted:
   - ntp 
   - ntp-dcf77-tools 
   - ntp-doc 
+  - ntpd-rs 
+  - ntpd-rs-common 
   - ntpsec 
   - ntpsec-devel 
   - ntpsec-doc 
