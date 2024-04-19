@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<image schemaversion="6.5" name="kubic-pause-image" xmlns:suse_label_helper="com.suse.label_helper">
+<image schemaversion="7.4" name="kubic-pause-image">
   <description type="system">
     <author>Fabian Vogt</author>
     <contact>fvogt@suse.com</contact>
@@ -14,7 +14,7 @@
         maintainer="Fabian Vogt &lt;fvogt@suse.com&gt;">
         <entrypoint execute="/usr/bin/pause"/>
         <labels>
-          <suse_label_helper:add_prefix prefix="org.opensuse.kubic.pause">
+          <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper" prefix="org.opensuse.kubic.pause">
             <label name="org.opencontainers.image.vendor" value="openSUSE Project"/>
             <label name="org.opencontainers.image.url" value="https://www.opensuse.org/"/>
             <label name="org.opencontainers.image.title" value="openSUSE Kubic Pause Container"/>
