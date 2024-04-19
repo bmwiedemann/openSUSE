@@ -2,7 +2,7 @@
 
 <!-- OBS-ExcludeArch: i586 s390 -->
 
-<image schemaversion="6.9" name="opensuse-spamassassin-image" xmlns:suse_label_helper="com.suse.label_helper">
+<image schemaversion="7.4" name="opensuse-spamassassin-image">
   <description type="system">
     <author>Thorsten Kukuk</author>
     <contact>kukuk@suse.com</contact>
@@ -26,7 +26,7 @@
           <volume name="/etc/spamassassin"/>
         </volumes>
         <labels>
-          <suse_label_helper:add_prefix prefix="org.opensuse.spamassassin">
+          <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper" prefix="org.opensuse.spamassassin">
             <label name="org.opencontainers.image.title" value="spamassassin container"/>
             <label name="org.opencontainers.image.description" value="Image containing spamassassin daemon."/>
             <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>

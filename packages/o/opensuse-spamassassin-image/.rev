@@ -43,4 +43,12 @@
   * Add certificates for sa-update/wget (forwarded request 950117 from kukuk)</comment>
     <requestid>950118</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>32526a3a9c347ae42a950779c000d355</srcmd5>
+    <version>1.0.0</version>
+    <time>1713546906</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169017</requestid>
+  </revision>
 </revisionlist>
