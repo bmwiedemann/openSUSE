@@ -8,4 +8,12 @@
 (container image for `kube-controller-manager-minus3` package)</comment>
     <requestid>1102856</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ffbc407c9f3f35fcfe05dc554b1d3e8b</srcmd5>
+    <version>1.0.0</version>
+    <time>1713546953</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169105</requestid>
+  </revision>
 </revisionlist>
