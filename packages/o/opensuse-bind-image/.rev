@@ -52,4 +52,12 @@
     <comment>- Enable debug mode only if DEBUG=1 is set (forwarded request 1037032 from kukuk)</comment>
     <requestid>1037033</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>db3220398635ce25c97e4c5fbe6f9259</srcmd5>
+    <version>1.0.0</version>
+    <time>1713546921</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169033</requestid>
+  </revision>
 </revisionlist>

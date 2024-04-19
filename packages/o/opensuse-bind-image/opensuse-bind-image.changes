@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 17 14:48:13 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update kiwi schemaversion to 7.4
+
+-------------------------------------------------------------------
 Fri Nov 18 15:58:53 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Enable debug mode only if DEBUG=1 is set
