@@ -105,4 +105,12 @@
   * Update entrypoint.sh (add SMTP_TLS_WRAPPERMODE)</comment>
     <requestid>1147548</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>2f8f079826837baec2b12f7bc148ebd8</srcmd5>
+    <version>1.0.0</version>
+    <time>1713546924</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169035</requestid>
+  </revision>
 </revisionlist>
