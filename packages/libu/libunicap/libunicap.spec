@@ -1,7 +1,7 @@
 #
 # spec file for package libunicap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,7 @@ Patch8:         libunicap-0.9.12-arraycmp.patch
 Patch9:         libunicap-0.9.12-datadirname.patch
 Patch10:        libunicap-bz641623.patch
 Patch12:        libunicap-0.9.12-memerrs.patch
+Patch13:        libunicap-de-encoding.patch
 BuildRequires:  alsa-lib-devel
 BuildRequires:  gettext
 BuildRequires:  gtk-doc >= 1.4
@@ -69,6 +70,7 @@ BuildRequires:  libv4l-devel
 BuildRequires:  libtool
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d
+
 %description
 Unicap provides a uniform interface to video capture devices. It allows
 applications to use any supported video capture device via a single API.
@@ -103,6 +105,7 @@ contains the API documentation of the library, too.
 %prep
 %setup -q -n %{name}-%{version}
 %autopatch -p1
+
 %build
 mkdir -p m4
 autoreconf -fiv

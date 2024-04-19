@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 17 13:15:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libunicap-de-encoding.patch: Fix build with recent gettext:
+  the po files must contain valid charset information.
+
+-------------------------------------------------------------------
 Fri Jun  5 09:12:57 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Fix Factory build, add patches from Fedora:
