@@ -1,0 +1,204 @@
+--- a/src/main/java/org/mockito/internal/debugging/LocationImpl.java
++++ b/src/main/java/org/mockito/internal/debugging/LocationImpl.java
+@@ -12,14 +12,12 @@ import org.mockito.internal.exceptions.stacktrace.DefaultStackTraceCleaner;
+ import org.mockito.invocation.Location;
+ 
+ import java.io.Serializable;
+-import java.lang.StackWalker.Option;
+-import java.lang.StackWalker.StackFrame;
+ import java.util.Collections;
++import java.util.Arrays;
+ import java.util.List;
+ import java.util.function.Function;
+ import java.util.function.Predicate;
+ import java.util.stream.Collectors;
+-import java.util.stream.Stream;
+ 
+ class LocationImpl implements Location, Serializable {
+     private static final long serialVersionUID = 2954388321980069195L;
+@@ -37,8 +35,6 @@ class LocationImpl implements Location, Serializable {
+      */
+     private static final int BUFFER_SIZE = 16;
+ 
+-    private static final StackWalker STACK_WALKER = stackWalker();
+-
+     private static final String PREFIX = "-> at ";
+ 
+     private static final StackTraceCleaner CLEANER =
+@@ -51,7 +47,7 @@ class LocationImpl implements Location, Serializable {
+      * per element). By assigning these Functions and Predicates to variables, we can
+      * avoid the memory allocation.
+      */
+-    private static final Function<StackFrame, StackFrameMetadata> toStackFrameMetadata =
++    private static final Function<StackTraceElement, StackFrameMetadata> toStackFrameMetadata =
+             MetadataShim::new;
+ 
+     private static final Predicate<StackFrameMetadata> cleanerIsIn = CLEANER::isIn;
+@@ -87,15 +83,14 @@ class LocationImpl implements Location, Serializable {
+     }
+ 
+     private static StackFrameMetadata getStackFrame(boolean isInline) {
+-        return stackWalk(
+-                stream ->
+-                        stream.map(toStackFrameMetadata)
+-                                .skip(FRAMES_TO_SKIP)
+-                                .filter(cleanerIsIn)
+-                                .skip(isInline ? 1 : 0)
+-                                .findFirst()
+-                                .orElseThrow(
+-                                        () -> new MockitoException(noStackTraceFailureMessage())));
++        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
++        return Arrays.stream(stackTraceElements)
++                .skip(FRAMES_TO_SKIP)
++                .map(toStackFrameMetadata)
++                .filter(cleanerIsIn)
++                .skip(isInline ? 1 : 0)
++                .findFirst()
++                .orElseThrow(() -> new MockitoException(noStackTraceFailureMessage()));
+     }
+ 
+     private static boolean usingDefaultStackTraceCleaner() {
+@@ -120,63 +115,48 @@ class LocationImpl implements Location, Serializable {
+      * ensure there are no non-Mockito frames at the top of the stack trace.
+      */
+     private static int framesToSkip() {
+-        return stackWalk(
+-                stream -> {
+-                    List<String> metadata =
+-                            stream.map(toStackFrameMetadata)
+-                                    .map(StackFrameMetadata::getClassName)
+-                                    .collect(Collectors.toList());
+-                    return metadata.indexOf(LocationImpl.class.getName());
+-                });
+-    }
+-
+-    private static <T> T stackWalk(Function<Stream<StackFrame>, T> function) {
+-        return (T) STACK_WALKER.walk(function);
+-    }
+-
+-    private static StackWalker stackWalker() {
+-        return StackWalker.getInstance(
+-                Collections.singleton(Option.SHOW_REFLECT_FRAMES), BUFFER_SIZE);
++        List<String> stackTraceElements = Arrays.asList(Thread.currentThread().getStackTrace()).stream().map(x -> x.getClassName()).collect(Collectors.toList());
++        return stackTraceElements.indexOf(LocationImpl.class.getName()) + 1;
+     }
+ 
+     private static final class MetadataShim implements StackFrameMetadata, Serializable {
+         private static final long serialVersionUID = 8491903719411428648L;
+-        private final StackFrame stackFrame;
++        private final StackTraceElement ste;
+ 
+-        private MetadataShim(StackFrame stackFrame) {
+-            this.stackFrame = stackFrame;
++        private MetadataShim(StackTraceElement ste) {
++            this.ste = ste;
+         }
+ 
+         @Override
+         public String getClassName() {
+-            return stackFrame.getClassName();
++            return ste.getClassName();
+         }
+ 
+         @Override
+         public String getMethodName() {
+-            return stackFrame.getMethodName();
++            return ste.getMethodName();
+         }
+ 
+         @Override
+         public String getFileName() {
+-            return stackFrame.getFileName();
++            return ste.getFileName();
+         }
+ 
+         @Override
+         public int getLineNumber() {
+-            return stackFrame.getLineNumber();
++            return ste.getLineNumber();
+         }
+ 
+         @Override
+         public String toString() {
+-            return stackFrame.toString();
++            return ste.toString();
+         }
+ 
+         /**
+          * Ensure that this type remains serializable.
+          */
+         private Object writeReplace() {
+-            return new SerializableShim(stackFrame.toStackTraceElement());
++            return new SerializableShim(ste);
+         }
+     }
+ 
+--- a/src/main/java/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java
++++ b/src/main/java/org/mockito/internal/stubbing/defaultanswers/ReturnsDeepStubs.java
+@@ -54,7 +54,7 @@ public class ReturnsDeepStubs implements Answer<Object>, Serializable {
+         MockCreationSettings<?> mockSettings = MockUtil.getMockSettings(invocation.getMock());
+ 
+         Class<?> rawType = returnTypeGenericMetadata.rawType();
+-        final var emptyValue = ReturnsEmptyValues.returnCommonEmptyValueFor(rawType);
++        final Object emptyValue = ReturnsEmptyValues.returnCommonEmptyValueFor(rawType);
+         if (emptyValue != null) {
+             return emptyValue;
+         }
+--- a/src/main/java/org/mockito/plugins/DoNotMockEnforcer.java
++++ b/src/main/java/org/mockito/plugins/DoNotMockEnforcer.java
+@@ -57,7 +57,7 @@ public interface DoNotMockEnforcer extends DoNotMockEnforcerWithType {
+         return null;
+     }
+ 
+-    private String recursiveCheckDoNotMockAnnotationForType(Class<?> type) {
++    default String recursiveCheckDoNotMockAnnotationForType(Class<?> type) {
+         // Object and interfaces do not have a super class
+         if (type == null) {
+             return null;
+--- a/src/main/java/org/mockito/plugins/MockitoPlugins.java
++++ b/src/main/java/org/mockito/plugins/MockitoPlugins.java
+@@ -43,7 +43,7 @@ public interface MockitoPlugins {
+      * @since 2.10.0
+      * @deprecated Please use {@link #getMockMaker(String)} with {@link org.mockito.MockMakers#INLINE} instead.
+      */
+-    @Deprecated(since = "5.6.0", forRemoval = true)
++    @Deprecated
+     MockMaker getInlineMockMaker();
+ 
+     /**
+--- a/subprojects/junit-jupiter/src/main/java/org/mockito/junit/jupiter/MockitoExtension.java
++++ b/subprojects/junit-jupiter/src/main/java/org/mockito/junit/jupiter/MockitoExtension.java
+@@ -171,12 +171,12 @@ public class MockitoExtension implements BeforeEachCallback, AfterEachCallback,
+         do {
+             annotation = findAnnotation(currentContext.getElement(), MockitoSettings.class);
+ 
+-            if (currentContext.getParent().isEmpty()) {
++            if (currentContext.getParent() == null || !currentContext.getParent().isPresent()) {
+                 break;
+             }
+ 
+             currentContext = currentContext.getParent().get();
+-        } while (annotation.isEmpty() && currentContext != context.getRoot());
++        } while ((annotation == null || !annotation.isPresent()) && currentContext != context.getRoot());
+ 
+         return annotation;
+     }
+--- a/subprojects/junit-jupiter/src/main/java/org/mockito/junit/jupiter/resolver/CompositeParameterResolver.java
++++ b/subprojects/junit-jupiter/src/main/java/org/mockito/junit/jupiter/resolver/CompositeParameterResolver.java
+@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ParameterContext;
+ import org.junit.jupiter.api.extension.ParameterResolutionException;
+ import org.junit.jupiter.api.extension.ParameterResolver;
+ 
++import java.util.Arrays;
+ import java.util.List;
+ import java.util.Optional;
+ 
+@@ -17,7 +18,7 @@ public class CompositeParameterResolver implements ParameterResolver {
+     private final List<ParameterResolver> delegates;
+ 
+     public CompositeParameterResolver(final ParameterResolver... delegates) {
+-        this.delegates = List.of(delegates);
++        this.delegates = Arrays.asList(delegates);
+     }
+ 
+     @Override

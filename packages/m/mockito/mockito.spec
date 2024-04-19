@@ -17,37 +17,42 @@
 
 
 Name:           mockito
-Version:        1.10.19
+Version:        5.11.0
 Release:        0
 Summary:        A Java mocking framework
 License:        MIT
 Group:          Development/Libraries/Java
 URL:            http://%{name}.org
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         fixup-ant-script.patch
-Patch1:         fix-bnd-config.patch
-Patch2:         %{name}-matcher.patch
-# Workaround for NPE in setting NamingPolicy in cglib
-Patch3:         setting-naming-policy.patch
-# because we have old objenesis
-Patch4:         fix-incompatible-types.patch
-Patch5:         remove-hardcoded-source-target.patch
-BuildRequires:  ant
-BuildRequires:  aqute-bnd
-BuildRequires:  cglib
-BuildRequires:  dos2unix
+# build with maven instead of gradle
+Source2:        aggregator.pom
+Source3:        https://repo1.maven.org/maven2/org/mockito/mockito-core/%{version}/mockito-core-%{version}.pom
+Source4:        https://repo1.maven.org/maven2/org/mockito/mockito-junit-jupiter/%{version}/mockito-junit-jupiter-%{version}.pom
+Patch0:         use-unbundled-asm.patch
+Patch1:         keep-source-target-8.patch
 BuildRequires:  fdupes
-BuildRequires:  hamcrest
-BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local >= 6
-BuildRequires:  junit
-BuildRequires:  objenesis
-BuildRequires:  unzip
+BuildRequires:  maven-local
+BuildRequires:  mvn(junit:junit)
+BuildRequires:  mvn(net.bytebuddy:byte-buddy)
+BuildRequires:  mvn(net.bytebuddy:byte-buddy-agent)
+BuildRequires:  mvn(net.bytebuddy:byte-buddy-dep)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
+BuildRequires:  mvn(org.junit.jupiter:junit-jupiter-api)
+BuildRequires:  mvn(org.objenesis:objenesis)
+BuildRequires:  mvn(org.opentest4j:opentest4j)
 BuildArch:      noarch
 
 %description
 Mockito is a mocking framework. It lets you write tests. Tests
 produce clean verification errors.
+
+%package junit-jupiter
+Summary:        Mockito JUnit 5 support
+Group:          Development/Libraries/Java
+Requires:       %{name} = %{version}-%{release}
+
+%description junit-jupiter
+Mockito JUnit 5 support.
 
 %package javadoc
 Summary:        Javadocs for %{name}
@@ -57,55 +62,89 @@ Group:          Documentation/HTML
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q
-dos2unix `find -name *.java`
-%patch -P 0
-%patch -P 1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
+%autosetup -p1
 
-%pom_add_dep net.sf.cglib:cglib:3.1 maven/mockito-core.pom
-find . -name "*.java" -exec sed -i "s|org\.%{name}\.cglib|net\.sf\.cglib|g" {} +
-mkdir -p lib/compile lib/build lib/run lib/repackaged
+cp %{SOURCE2} aggregator.pom
+cp %{SOURCE3} pom.xml
+cp %{SOURCE4} subprojects/junit-jupiter/pom.xml
 
-%pom_xpath_remove 'target[@name="javadoc"]/copy' build.xml
+# Compatibility alias
+%{mvn_alias} org.%{name}:%{name}-core org.%{name}:%{name}-all
+
+%pom_add_dep junit:junit
+%pom_add_dep net.bytebuddy:byte-buddy-dep
+%pom_remove_dep org.objenesis:objenesis
+%pom_add_dep org.objenesis:objenesis
+%pom_add_dep org.opentest4j:opentest4j
+
+%pom_remove_dep org.junit.jupiter:junit-jupiter-api subprojects/junit-jupiter
+%pom_add_dep org.junit.jupiter:junit-jupiter-api subprojects/junit-jupiter
+
+mkdir -p src/main/resources/mockito-extensions
+echo 'member-accessor-module' > src/main/resources/mockito-extensions/org.mockito.plugins.MemberAccessor
+echo 'mock-maker-subclass' > src/main/resources/mockito-extensions/org.mockito.plugins.MockMaker
+
+# see gradle/mockito-core/inline-mock.gradle
+%pom_xpath_inject 'pom:project' '
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-antrun-plugin</artifactId>
+      <version>any</version>
+      <executions>
+        <execution>
+          <phase>process-classes</phase>
+          <configuration>
+            <target>
+              <copy file="${project.build.outputDirectory}/org/mockito/internal/creation/bytebuddy/inject/MockMethodDispatcher.class"
+                    tofile="${project.build.outputDirectory}/org/mockito/internal/creation/bytebuddy/inject/MockMethodDispatcher.raw"/>
+            </target>
+          </configuration>
+          <goals>
+            <goal>run</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-jar-plugin</artifactId>
+      <version>any</version>
+      <configuration>
+        <excludes>
+          <exclude>org/mockito/internal/creation/bytebuddy/inject/*.class</exclude>
+        </excludes>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
+'
+
+%{mvn_package} :aggregator __noinstall
 
 %build
-build-jar-repository lib/compile objenesis cglib junit hamcrest/core
-ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 jar javadoc prepare.poms
+%{mvn_build} -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    -Dmaven.compiler.release=8 \
+%endif
+    -Dmaven.compiler.source=8 -Dmaven.compiler.target=8 -Dsource=8 \
+    -Dproject.build.sourceEncoding=UTF-8 -f aggregator.pom
 
-echo "-reproducible: true" >> conf/%{name}-core.bnd
-echo "-noextraheaders: true" >> conf/%{name}-core.bnd
-echo "-snapshot: SNAPSHOT" >> conf/%{name}-core.bnd
-
-# Convert to OSGi bundle
-bnd wrap \
- --version %{version} \
- --output target/%{name}-core-%{version}.bar \
- --properties conf/%{name}-core.bnd \
- target/%{name}-core-%{version}.jar
-mv target/%{name}-core-%{version}.bar target/%{name}-core-%{version}.jar
+%{mvn_package} org.mockito:mockito-junit-jupiter junit-jupiter
 
 %install
-# jar
-install -dm 0755 %{buildroot}%{_javadir}/%{name}
-install -pm 0644 target/%{name}-core-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}-core.jar
-# pom
-install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-%{mvn_install_pom} target/%{name}-core.pom %{buildroot}%{_mavenpomdir}/%{name}/%{name}-core.pom
-%add_maven_depmap %{name}/%{name}-core.pom %{name}/%{name}-core.jar -a org.%{name}:%{name}-all
-# javadoc
-install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
-cp -pr target/javadoc/* %{buildroot}%{_javadocdir}/%{name}/
+%mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%license LICENSE NOTICE
+%license LICENSE
+%doc README.md doc/design-docs/custom-argument-matching.md
 
-%files javadoc
-%{_javadocdir}/%{name}
-%license LICENSE NOTICE
+%files junit-jupiter -f .mfiles-junit-jupiter
+
+%files javadoc -f .mfiles-javadoc
+%license LICENSE
 
 %changelog

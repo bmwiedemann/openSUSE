@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Apr 19 07:18:58 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 5.11.0
+- Changes of the 5.x line
+  * Mockito 5 is making core changes to ensure compatibility with
+    future JDK versions.
+  * Switch the Default MockMaker to mockito-inline (not applicable
+    to mockito-android)
+    + Mockito 2.7.6 introduced the mockito-inline mockmaker based on
+      the "inline bytecode" principle, offering compatibility
+      advantages over the subclass mockmaker.
+    + This change avoids JDK restrictions, such as violating module
+      boundaries and leaking subclass creation.
+  * Legitimate use cases for the subclass mockmaker
+    + scenarios where the inline mockmaker does not function, such
+      as on Graal VM's native image.
+    + Additionally, if avoiding mocking final classes, the subclass
+      mockmaker remains a viable option, although issues may arise
+      on JDK 17+.
+    + Mockito aims to support both mockmakers, allowing users to
+      choose based on their requirements.
+  * Update the Minimum Supported Java Version to 11
+    + Mockito 4 supports Java 8 and above, but Mockito 5 raises the
+      minimum supported Java version to 11.
+    + Community member @reta contributed to this change.
+    + Users still on JDK 8 can continue using Mockito 4, with
+      minimal API differences between versions.
+  * New type() Method on ArgumentMatcher
+    + The ArgumentMatcher interface now includes a new type() method
+      to support varargs methods, addressing previous limitations.
+    + Users can now differentiate between matching calls with any
+      exact number of arguments or match any number of arguments.
+    + Mockito 5 provides a default implementation of the new method,
+      ensuring backward compatibility.
+    + No obligation for users to implement the new method; Mockito 5
+      considers Void.type by default for varargs handling.
+    + ArgumentCaptor is now fully type-aware, enabling capturing
+      specific subclasses on a generic method.
+- Removed patches:
+  * fix-bnd-config.patch
+  * fix-incompatible-types.patch
+  * fixup-ant-script.patch
+  * mockito-matcher.patch
+  * remove-hardcoded-source-target.patch
+  * setting-naming-policy.patch
+    + not needed by this version
+- Added patches:
+  * keep-source-target-8.patch
+    + make the code again buildable with --release 8
+  * use-unbundled-asm.patch
+    + adapt to our change of byte-buddy, where it does not bundle
+      asm, but uses objectweb-asm as external library
+
+-------------------------------------------------------------------
 Wed Feb 21 21:43:21 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
