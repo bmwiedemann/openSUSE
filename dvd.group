@@ -1970,7 +1970,7 @@
     <package name="libestr0" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
     <package name="libetebase0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libetonyek-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libev4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libev4" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="libevdev2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libevdocument3-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libevent-2_1-7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3606,7 +3606,6 @@
     <package name="purge-kernels-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="purpose" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="purpose-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="python-tqdm-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python3-apparmor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="python3-audit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python3-brlapi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3626,7 +3625,7 @@
     <package name="python3-tdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python3-tevent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python311" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="python311-Automat" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-Automat" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-Babel" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-Brotli" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-Cycler" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -3638,9 +3637,9 @@
     <package name="python311-PySocks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-PyYAML" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-Pygments" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="python311-Twisted" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-Twisted-tls" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-anyio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-Twisted" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python311-Twisted-tls" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python311-anyio" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-apipkg" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-appdirs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-argcomplete" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
@@ -3653,11 +3652,10 @@
     <package name="python311-certifi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-cffi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-charset-normalizer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python311-click" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-click" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-cmdln" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="python311-comm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-configobj" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="python311-constantly" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-constantly" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-contextvars" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-contourpy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-cryptography" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3665,41 +3663,35 @@
     <package name="python311-curses" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python311-dbm" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python311-dbus-python" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="python311-debugpy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-decorator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python311-distro" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python311-dnspython" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-entrypoints" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-dnspython" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-executing" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-extras" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="python311-freetype-py" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-fs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-gevent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-gevent" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-gmpy2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-gobject" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python311-gobject-Gdk" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python311-gobject-cairo" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="python311-greenlet" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-greenlet" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-gssapi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-h11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-h2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-hpack" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-httpcore" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-httpx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-hyperframe" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-hyperlink" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-h11" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python311-h2" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python311-hpack" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python311-httpcore" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python311-httpx" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python311-hyperframe" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python311-hyperlink" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-idna" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-immutables" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python311-incremental" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-incremental" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-iniconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-ipaddr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="python311-ipykernel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-ipyparallel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-ipython" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-jedi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-jmespath" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python311-jupyter-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-jupyter-core" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-kiwisolver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python311-libvirt-python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
@@ -3707,15 +3699,14 @@
     <package name="python311-linux-procfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python311-looseversion" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-lxml" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-markdown-it-py" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-markdown-it-py" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-matplotlib" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-matplotlib-inline" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-mdurl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-mdurl" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-mpmath" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-msgpack" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-munkres" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-mysqlclient" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="python311-nest-asyncio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-netaddr" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-networkx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-nftables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3728,7 +3719,6 @@
     <package name="python311-parso" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-pexpect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="python311-pip" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="python311-platformdirs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-ply" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-prompt_toolkit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-psutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
@@ -3741,7 +3731,7 @@
     <package name="python311-pyasn1-modules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python311-pybind11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-pycairo" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="python311-pycares" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-pycares" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-pycparser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-pycups" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-pycurl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3757,38 +3747,37 @@
     <package name="python311-python-slugify" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python311-pytz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-pyudev" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="python311-pyzmq" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-pyzmq" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-reportlab" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-requests" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-requests-gssapi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-rich" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-rich" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-rpm" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-scipy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-scour" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="python311-selinux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python311-semanage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-service_identity" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-service_identity" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-setools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-setuptools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python311-simplejson" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-simplejson" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-six" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="python311-sniffio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-sniffio" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-speechd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-stack-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-sympy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-text-unidecode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python311-tomli" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python311-tornado6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-tqdm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-tornado6" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-traitlets" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-typing_extensions" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-typing_extensions" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-ufoLib2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-unicodedata2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-urllib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-wcwidth" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-zope.event" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python311-zope.interface" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python311-zope.event" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python311-zope.interface" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-zopfli" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-zypp-plugin" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="qalculate-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3944,6 +3933,7 @@
     <package name="sendmail" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
     <package name="sensors" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="sessreg" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="setools-console" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="setserial" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="setxkbmap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="sg3_utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
