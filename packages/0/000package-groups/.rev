@@ -1997,4 +1997,11 @@ those sources for i586 on its own.</comment>
     <user>dimstar_suse</user>
     <comment>block setools-console, huge dep chain</comment>
   </revision>
+  <revision rev="281" vrev="279">
+    <srcmd5>e62343515d60a1e1edb3300927373589</srcmd5>
+    <version>unknown</version>
+    <time>1713601676</time>
+    <user>dimstar_suse</user>
+    <comment>Add back selinux-console</comment>
+  </revision>
 </revisionlist>

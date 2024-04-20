@@ -149,7 +149,7 @@ dvd:
   - gnumeric: [locked]
   - marble: [locked]
   - seamonkey: [locked]
-  - setools-console: [locked]
+  - python311-jupyter-core: [locked]
   - ruby3.1-rubygem-grpc: [locked]
   - systemd-presets-branding-CAASP: [locked]
   - texlive: [locked]
