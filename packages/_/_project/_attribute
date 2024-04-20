@@ -164,8 +164,8 @@ products:
   container:
   - aeon-self-installer:
     - x86_64
-#  - busybox-image:
-#    - x86_64
+  - busybox-image:
+    - x86_64
   - butane-image:
     - x86_64
 #  - ceph-grafana-image:
@@ -254,16 +254,16 @@ products:
     - x86_64
   - kubic-rbac-manager-image:
     - x86_64
-#  - kubic-velero-image:
-#    - x86_64
+  - kubic-velero-image:
+    - x86_64
   - kubic-weave-kube-image:
     - x86_64
   - kubic-weave-npc-image:
     - x86_64
-#  - micro-image:
-#    - x86_64
-#  - minimal-image:
-#    - x86_64
+  - micro-image:
+    - x86_64
+  - minimal-image:
+    - x86_64
   - opensuse-bind-image:
     - x86_64
   - opensuse-dhcp-server-image:
@@ -280,14 +280,14 @@ products:
     - x86_64
   - opensuse-mariadb-client-image:
     - x86_64
-#  - opensuse-mariadb-image:
-#    - x86_64
-#  - opensuse-minidlna-image:
-#    - x86_64
+  - opensuse-mariadb-image:
+    - x86_64
+  - opensuse-minidlna-image:
+    - x86_64
   - opensuse-nfs-server-image:
     - x86_64
-#  - opensuse-nginx-image:
-#    - x86_64
+  - opensuse-nginx-image:
+    - x86_64
   - opensuse-openldap-image:
     - x86_64
   - opensuse-postfix-image:
@@ -296,8 +296,8 @@ products:
     - x86_64
   - opensuse-registry-image:
     - x86_64
-#  - opensuse-rmt-server-image:
-#    - x86_64
+  - opensuse-rmt-server-image:
+    - x86_64
   - opensuse-rstudio-desktop:
     - x86_64
   - opensuse-rstudio-server:
@@ -306,8 +306,8 @@ products:
     - x86_64
   - opensuse-squid-image:
     - x86_64
-#  - opensuse-toolbox-image:
-#    - x86_64
+  - opensuse-toolbox-image:
+    - x86_64
   - opensuse-tumbleweed-image:docker:
     - x86_64
   - opensuse-tumbleweed-dnf-image:docker-dnf:
@@ -316,8 +316,8 @@ products:
     - x86_64
   - opensuse-wsdd-image:
     - x86_64
-#  - php8-nginx-image:
-#    - x86_64
+  - php8-nginx-image:
+    - x86_64
 #  - prometheus-webhook-snmp-image:
 #    - x86_64
   - trivy-image:
