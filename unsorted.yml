@@ -342,6 +342,7 @@ unsorted:
   - WSL-DistroLauncher 
   - WSL-DistroLauncher-debug 
   - WebKitGTK-4.0-lang 
+  - WebKitGTK-6.0-lang 
   - WindowMaker-devel 
   - WindowMaker-themes 
   - WoeUSB 
@@ -1279,6 +1280,7 @@ unsorted:
   - bash-completion-devel 
   - bash-completion-doc 
   - bash-devel 
+  - bash-doc 
   - bash-git-prompt 
   - bash-legacybin 
   - bash-loadables 
@@ -2513,6 +2515,7 @@ unsorted:
   - coreos-installer 
   - corepack20 
   - corepack21 
+  - coreutils-doc 
   - coreutils-single 
   - coreutils-testsuite 
   - corosync 
@@ -2605,6 +2608,7 @@ unsorted:
   - crispy-doom-bash-completion 
   - criterion 
   - criterion-lang 
+  - criu 
   - criu-devel 
   - criu-plugin-amdgpu 
   - crmsh 
@@ -3275,13 +3279,16 @@ unsorted:
   - docbook_3 
   - docbook_5 
   - docbook_5-doc 
+  - docker-bash-completion 
   - docker-bench-security 
+  - docker-buildx 
   - docker-compose 
   - docker-compose-switch 
   - docker-credential-secretservice 
   - docker-fish-completion 
   - docker-lock 
   - docker-machine-driver-kvm2 
+  - docker-rootless-extras 
   - docker-zsh-completion 
   - docker_auth 
   - docparser-devel 
@@ -4938,6 +4945,7 @@ unsorted:
   - ghc-Diff-devel 
   - ghc-Diff-doc 
   - ghc-Diff-prof 
+  - ghc-Glob 
   - ghc-Glob-devel 
   - ghc-Glob-doc 
   - ghc-Glob-prof 
@@ -4957,18 +4965,23 @@ unsorted:
   - ghc-IfElse-devel 
   - ghc-IfElse-doc 
   - ghc-IfElse-prof 
+  - ghc-JuicyPixels 
   - ghc-JuicyPixels-devel 
   - ghc-JuicyPixels-doc 
   - ghc-JuicyPixels-prof 
+  - ghc-OneTuple 
   - ghc-OneTuple-devel 
   - ghc-OneTuple-doc 
   - ghc-OneTuple-prof 
+  - ghc-Only 
   - ghc-Only-devel 
   - ghc-Only-doc 
   - ghc-Only-prof 
+  - ghc-QuickCheck 
   - ghc-QuickCheck-devel 
   - ghc-QuickCheck-doc 
   - ghc-QuickCheck-prof 
+  - ghc-SHA 
   - ghc-SHA-devel 
   - ghc-SHA-doc 
   - ghc-SHA-prof 
@@ -4980,6 +4993,7 @@ unsorted:
   - ghc-ShellCheck-devel 
   - ghc-ShellCheck-doc 
   - ghc-ShellCheck-prof 
+  - ghc-StateVar 
   - ghc-StateVar-devel 
   - ghc-StateVar-doc 
   - ghc-StateVar-prof 
@@ -4995,8 +5009,10 @@ unsorted:
   - ghc-adjunctions-devel 
   - ghc-adjunctions-doc 
   - ghc-adjunctions-prof 
+  - ghc-aeson 
   - ghc-aeson-devel 
   - ghc-aeson-doc 
+  - ghc-aeson-pretty 
   - ghc-aeson-pretty-devel 
   - ghc-aeson-pretty-doc 
   - ghc-aeson-pretty-prof 
@@ -5009,9 +5025,11 @@ unsorted:
   - ghc-alsa-mixer-devel 
   - ghc-alsa-mixer-doc 
   - ghc-alsa-mixer-prof 
+  - ghc-ansi-terminal 
   - ghc-ansi-terminal-devel 
   - ghc-ansi-terminal-doc 
   - ghc-ansi-terminal-prof 
+  - ghc-ansi-terminal-types 
   - ghc-ansi-terminal-types-devel 
   - ghc-ansi-terminal-types-doc 
   - ghc-ansi-terminal-types-prof 
@@ -5019,27 +5037,35 @@ unsorted:
   - ghc-ansi-wl-pprint-devel 
   - ghc-ansi-wl-pprint-doc 
   - ghc-ansi-wl-pprint-prof 
+  - ghc-appar 
   - ghc-appar-devel 
   - ghc-appar-doc 
   - ghc-appar-prof 
+  - ghc-array 
   - ghc-array-devel 
   - ghc-array-doc 
   - ghc-array-prof 
+  - ghc-asn1-encoding 
   - ghc-asn1-encoding-devel 
   - ghc-asn1-encoding-doc 
   - ghc-asn1-encoding-prof 
+  - ghc-asn1-parse 
   - ghc-asn1-parse-devel 
   - ghc-asn1-parse-doc 
   - ghc-asn1-parse-prof 
+  - ghc-asn1-types 
   - ghc-asn1-types-devel 
   - ghc-asn1-types-doc 
   - ghc-asn1-types-prof 
+  - ghc-assoc 
   - ghc-assoc-devel 
   - ghc-assoc-doc 
   - ghc-assoc-prof 
+  - ghc-async 
   - ghc-async-devel 
   - ghc-async-doc 
   - ghc-async-prof 
+  - ghc-attoparsec 
   - ghc-attoparsec-aeson 
   - ghc-attoparsec-aeson-devel 
   - ghc-attoparsec-aeson-doc 
@@ -5055,6 +5081,8 @@ unsorted:
   - ghc-aws-devel 
   - ghc-aws-doc 
   - ghc-aws-prof 
+  - ghc-base 
+  - ghc-base-compat 
   - ghc-base-compat-batteries 
   - ghc-base-compat-batteries-devel 
   - ghc-base-compat-batteries-doc 
@@ -5064,6 +5092,7 @@ unsorted:
   - ghc-base-compat-prof 
   - ghc-base-devel 
   - ghc-base-doc 
+  - ghc-base-orphans 
   - ghc-base-orphans-devel 
   - ghc-base-orphans-doc 
   - ghc-base-orphans-prof 
@@ -5072,16 +5101,19 @@ unsorted:
   - ghc-base-unicode-symbols-devel 
   - ghc-base-unicode-symbols-doc 
   - ghc-base-unicode-symbols-prof 
+  - ghc-base16-bytestring 
   - ghc-base16-bytestring-devel 
   - ghc-base16-bytestring-doc 
   - ghc-base16-bytestring-prof 
   - ghc-base64 
+  - ghc-base64-bytestring 
   - ghc-base64-bytestring-devel 
   - ghc-base64-bytestring-doc 
   - ghc-base64-bytestring-prof 
   - ghc-base64-devel 
   - ghc-base64-doc 
   - ghc-base64-prof 
+  - ghc-basement 
   - ghc-basement-devel 
   - ghc-basement-doc 
   - ghc-basement-prof 
@@ -5089,6 +5121,7 @@ unsorted:
   - ghc-bencode-devel 
   - ghc-bencode-doc 
   - ghc-bencode-prof 
+  - ghc-bifunctors 
   - ghc-bifunctors-devel 
   - ghc-bifunctors-doc 
   - ghc-bifunctors-prof 
@@ -5096,6 +5129,7 @@ unsorted:
   - ghc-bimap-devel 
   - ghc-bimap-doc 
   - ghc-bimap-prof 
+  - ghc-binary 
   - ghc-binary-devel 
   - ghc-binary-doc 
   - ghc-binary-orphans 
@@ -5103,15 +5137,19 @@ unsorted:
   - ghc-binary-orphans-doc 
   - ghc-binary-orphans-prof 
   - ghc-binary-prof 
+  - ghc-bitvec 
   - ghc-bitvec-devel 
   - ghc-bitvec-doc 
   - ghc-bitvec-prof 
+  - ghc-blaze-builder 
   - ghc-blaze-builder-devel 
   - ghc-blaze-builder-doc 
   - ghc-blaze-builder-prof 
+  - ghc-blaze-html 
   - ghc-blaze-html-devel 
   - ghc-blaze-html-doc 
   - ghc-blaze-html-prof 
+  - ghc-blaze-markup 
   - ghc-blaze-markup-devel 
   - ghc-blaze-markup-doc 
   - ghc-blaze-markup-prof 
@@ -5137,9 +5175,11 @@ unsorted:
   - ghc-byteable-devel 
   - ghc-byteable-doc 
   - ghc-byteable-prof 
+  - ghc-byteorder 
   - ghc-byteorder-devel 
   - ghc-byteorder-doc 
   - ghc-byteorder-prof 
+  - ghc-bytestring 
   - ghc-bytestring-devel 
   - ghc-bytestring-doc 
   - ghc-bytestring-prof 
@@ -5171,9 +5211,11 @@ unsorted:
   - ghc-call-stack-devel 
   - ghc-call-stack-doc 
   - ghc-call-stack-prof 
+  - ghc-case-insensitive 
   - ghc-case-insensitive-devel 
   - ghc-case-insensitive-doc 
   - ghc-case-insensitive-prof 
+  - ghc-cassava 
   - ghc-cassava-devel 
   - ghc-cassava-doc 
   - ghc-cassava-megaparsec 
@@ -5181,9 +5223,11 @@ unsorted:
   - ghc-cassava-megaparsec-doc 
   - ghc-cassava-megaparsec-prof 
   - ghc-cassava-prof 
+  - ghc-cborg 
   - ghc-cborg-devel 
   - ghc-cborg-doc 
   - ghc-cborg-prof 
+  - ghc-cereal 
   - ghc-cereal-devel 
   - ghc-cereal-doc 
   - ghc-cereal-prof 
@@ -5191,6 +5235,7 @@ unsorted:
   - ghc-cipher-aes-devel 
   - ghc-cipher-aes-doc 
   - ghc-cipher-aes-prof 
+  - ghc-citeproc 
   - ghc-citeproc-devel 
   - ghc-citeproc-doc 
   - ghc-citeproc-prof 
@@ -5210,6 +5255,7 @@ unsorted:
   - ghc-code-page-devel 
   - ghc-code-page-doc 
   - ghc-code-page-prof 
+  - ghc-colour 
   - ghc-colour-devel 
   - ghc-colour-doc 
   - ghc-colour-prof 
@@ -5217,11 +5263,14 @@ unsorted:
   - ghc-colourista-devel 
   - ghc-colourista-doc 
   - ghc-colourista-prof 
+  - ghc-commonmark 
   - ghc-commonmark-devel 
   - ghc-commonmark-doc 
+  - ghc-commonmark-extensions 
   - ghc-commonmark-extensions-devel 
   - ghc-commonmark-extensions-doc 
   - ghc-commonmark-extensions-prof 
+  - ghc-commonmark-pandoc 
   - ghc-commonmark-pandoc-devel 
   - ghc-commonmark-pandoc-doc 
   - ghc-commonmark-pandoc-prof 
@@ -5230,6 +5279,7 @@ unsorted:
   - ghc-commutative-semigroups-devel 
   - ghc-commutative-semigroups-doc 
   - ghc-commutative-semigroups-prof 
+  - ghc-comonad 
   - ghc-comonad-devel 
   - ghc-comonad-doc 
   - ghc-comonad-prof 
@@ -5238,8 +5288,10 @@ unsorted:
   - ghc-concurrent-output-devel 
   - ghc-concurrent-output-doc 
   - ghc-concurrent-output-prof 
+  - ghc-conduit 
   - ghc-conduit-devel 
   - ghc-conduit-doc 
+  - ghc-conduit-extra 
   - ghc-conduit-extra-devel 
   - ghc-conduit-extra-doc 
   - ghc-conduit-extra-prof 
@@ -5252,9 +5304,11 @@ unsorted:
   - ghc-constraints-devel 
   - ghc-constraints-doc 
   - ghc-constraints-prof 
+  - ghc-containers 
   - ghc-containers-devel 
   - ghc-containers-doc 
   - ghc-containers-prof 
+  - ghc-contravariant 
   - ghc-contravariant-devel 
   - ghc-contravariant-doc 
   - ghc-contravariant-prof 
@@ -5262,6 +5316,7 @@ unsorted:
   - ghc-control-monad-free-devel 
   - ghc-control-monad-free-doc 
   - ghc-control-monad-free-prof 
+  - ghc-cookie 
   - ghc-cookie-devel 
   - ghc-cookie-doc 
   - ghc-cookie-prof 
@@ -5301,21 +5356,27 @@ unsorted:
   - ghc-cryptohash-sha256-devel 
   - ghc-cryptohash-sha256-doc 
   - ghc-cryptohash-sha256-prof 
+  - ghc-crypton 
+  - ghc-crypton-connection 
   - ghc-crypton-connection-devel 
   - ghc-crypton-connection-doc 
   - ghc-crypton-connection-prof 
   - ghc-crypton-devel 
   - ghc-crypton-doc 
   - ghc-crypton-prof 
+  - ghc-crypton-x509 
   - ghc-crypton-x509-devel 
   - ghc-crypton-x509-doc 
   - ghc-crypton-x509-prof 
+  - ghc-crypton-x509-store 
   - ghc-crypton-x509-store-devel 
   - ghc-crypton-x509-store-doc 
   - ghc-crypton-x509-store-prof 
+  - ghc-crypton-x509-system 
   - ghc-crypton-x509-system-devel 
   - ghc-crypton-x509-system-doc 
   - ghc-crypton-x509-system-prof 
+  - ghc-crypton-x509-validation 
   - ghc-crypton-x509-validation-devel 
   - ghc-crypton-x509-validation-doc 
   - ghc-crypton-x509-validation-prof 
@@ -5339,21 +5400,27 @@ unsorted:
   - ghc-data-clist-devel 
   - ghc-data-clist-doc 
   - ghc-data-clist-prof 
+  - ghc-data-default 
+  - ghc-data-default-class 
   - ghc-data-default-class-devel 
   - ghc-data-default-class-doc 
   - ghc-data-default-class-prof 
   - ghc-data-default-devel 
   - ghc-data-default-doc 
+  - ghc-data-default-instances-containers 
   - ghc-data-default-instances-containers-devel 
   - ghc-data-default-instances-containers-doc 
   - ghc-data-default-instances-containers-prof 
+  - ghc-data-default-instances-dlist 
   - ghc-data-default-instances-dlist-devel 
   - ghc-data-default-instances-dlist-doc 
   - ghc-data-default-instances-dlist-prof 
+  - ghc-data-default-instances-old-locale 
   - ghc-data-default-instances-old-locale-devel 
   - ghc-data-default-instances-old-locale-doc 
   - ghc-data-default-instances-old-locale-prof 
   - ghc-data-default-prof 
+  - ghc-data-fix 
   - ghc-data-fix-devel 
   - ghc-data-fix-doc 
   - ghc-data-fix-prof 
@@ -5365,6 +5432,7 @@ unsorted:
   - ghc-dec-devel 
   - ghc-dec-doc 
   - ghc-dec-prof 
+  - ghc-deepseq 
   - ghc-deepseq-devel 
   - ghc-deepseq-doc 
   - ghc-deepseq-prof 
@@ -5381,6 +5449,7 @@ unsorted:
   - ghc-deriving-aeson-doc 
   - ghc-deriving-aeson-prof 
   - ghc-devel 
+  - ghc-digest 
   - ghc-digest-devel 
   - ghc-digest-doc 
   - ghc-digest-prof 
@@ -5388,6 +5457,7 @@ unsorted:
   - ghc-digits-devel 
   - ghc-digits-doc 
   - ghc-digits-prof 
+  - ghc-directory 
   - ghc-directory-devel 
   - ghc-directory-doc 
   - ghc-directory-prof 
@@ -5395,20 +5465,25 @@ unsorted:
   - ghc-disk-free-space-devel 
   - ghc-disk-free-space-doc 
   - ghc-disk-free-space-prof 
+  - ghc-distributive 
   - ghc-distributive-devel 
   - ghc-distributive-doc 
   - ghc-distributive-prof 
+  - ghc-djot 
   - ghc-djot-devel 
   - ghc-djot-doc 
   - ghc-djot-prof 
+  - ghc-dlist 
   - ghc-dlist-devel 
   - ghc-dlist-doc 
   - ghc-dlist-prof 
   - ghc-doc 
   - ghc-doc-index 
+  - ghc-doclayout 
   - ghc-doclayout-devel 
   - ghc-doclayout-doc 
   - ghc-doclayout-prof 
+  - ghc-doctemplates 
   - ghc-doctemplates-devel 
   - ghc-doctemplates-doc 
   - ghc-doctemplates-prof 
@@ -5432,6 +5507,7 @@ unsorted:
   - ghc-email-validate-devel 
   - ghc-email-validate-doc 
   - ghc-email-validate-prof 
+  - ghc-emojis 
   - ghc-emojis-devel 
   - ghc-emojis-doc 
   - ghc-emojis-prof 
@@ -5439,6 +5515,7 @@ unsorted:
   - ghc-entropy-devel 
   - ghc-entropy-doc 
   - ghc-entropy-prof 
+  - ghc-exceptions 
   - ghc-exceptions-devel 
   - ghc-exceptions-doc 
   - ghc-exceptions-prof 
@@ -5466,9 +5543,11 @@ unsorted:
   - ghc-fgl-devel 
   - ghc-fgl-doc 
   - ghc-fgl-prof 
+  - ghc-file-embed 
   - ghc-file-embed-devel 
   - ghc-file-embed-doc 
   - ghc-file-embed-prof 
+  - ghc-filepath 
   - ghc-filepath-bytestring 
   - ghc-filepath-bytestring-devel 
   - ghc-filepath-bytestring-doc 
@@ -5493,10 +5572,12 @@ unsorted:
   - ghc-fsnotify-devel 
   - ghc-fsnotify-doc 
   - ghc-fsnotify-prof 
+  - ghc-generically 
   - ghc-generically-devel 
   - ghc-generically-doc 
   - ghc-generically-prof 
   - ghc-ghc 
+  - ghc-ghc-bignum 
   - ghc-ghc-bignum-devel 
   - ghc-ghc-bignum-doc 
   - ghc-ghc-bignum-prof 
@@ -5504,6 +5585,7 @@ unsorted:
   - ghc-ghc-boot-devel 
   - ghc-ghc-boot-doc 
   - ghc-ghc-boot-prof 
+  - ghc-ghc-boot-th 
   - ghc-ghc-boot-th-devel 
   - ghc-ghc-boot-th-doc 
   - ghc-ghc-boot-th-prof 
@@ -5546,6 +5628,7 @@ unsorted:
   - ghc-glib-devel 
   - ghc-glib-doc 
   - ghc-glib-prof 
+  - ghc-gridtables 
   - ghc-gridtables-devel 
   - ghc-gridtables-doc 
   - ghc-gridtables-prof 
@@ -5557,6 +5640,7 @@ unsorted:
   - ghc-hackage-security-devel 
   - ghc-hackage-security-doc 
   - ghc-hackage-security-prof 
+  - ghc-haddock-library 
   - ghc-haddock-library-devel 
   - ghc-haddock-library-doc 
   - ghc-haddock-library-prof 
@@ -5564,9 +5648,11 @@ unsorted:
   - ghc-hadolint-devel 
   - ghc-hadolint-doc 
   - ghc-hadolint-prof 
+  - ghc-half 
   - ghc-half-devel 
   - ghc-half-doc 
   - ghc-half-prof 
+  - ghc-hashable 
   - ghc-hashable-devel 
   - ghc-hashable-doc 
   - ghc-hashable-prof 
@@ -5578,6 +5664,7 @@ unsorted:
   - ghc-haskeline-devel 
   - ghc-haskeline-doc 
   - ghc-haskeline-prof 
+  - ghc-haskell-lexer 
   - ghc-haskell-lexer-devel 
   - ghc-haskell-lexer-doc 
   - ghc-haskell-lexer-prof 
@@ -5605,6 +5692,7 @@ unsorted:
   - ghc-hlint-devel 
   - ghc-hlint-doc 
   - ghc-hlint-prof 
+  - ghc-hourglass 
   - ghc-hourglass-devel 
   - ghc-hourglass-doc 
   - ghc-hourglass-prof 
@@ -5692,6 +5780,7 @@ unsorted:
   - ghc-http-api-data-devel 
   - ghc-http-api-data-doc 
   - ghc-http-api-data-prof 
+  - ghc-http-client 
   - ghc-http-client-devel 
   - ghc-http-client-doc 
   - ghc-http-client-prof 
@@ -5699,6 +5788,7 @@ unsorted:
   - ghc-http-client-restricted-devel 
   - ghc-http-client-restricted-doc 
   - ghc-http-client-restricted-prof 
+  - ghc-http-client-tls 
   - ghc-http-client-tls-devel 
   - ghc-http-client-tls-doc 
   - ghc-http-client-tls-prof 
@@ -5714,6 +5804,7 @@ unsorted:
   - ghc-http-media-devel 
   - ghc-http-media-doc 
   - ghc-http-media-prof 
+  - ghc-http-types 
   - ghc-http-types-devel 
   - ghc-http-types-doc 
   - ghc-http-types-prof 
@@ -5729,15 +5820,19 @@ unsorted:
   - ghc-indexed-profunctors-devel 
   - ghc-indexed-profunctors-doc 
   - ghc-indexed-profunctors-prof 
+  - ghc-indexed-traversable 
   - ghc-indexed-traversable-devel 
   - ghc-indexed-traversable-doc 
+  - ghc-indexed-traversable-instances 
   - ghc-indexed-traversable-instances-devel 
   - ghc-indexed-traversable-instances-doc 
   - ghc-indexed-traversable-instances-prof 
   - ghc-indexed-traversable-prof 
+  - ghc-integer-conversion 
   - ghc-integer-conversion-devel 
   - ghc-integer-conversion-doc 
   - ghc-integer-conversion-prof 
+  - ghc-integer-logarithms 
   - ghc-integer-logarithms-devel 
   - ghc-integer-logarithms-doc 
   - ghc-integer-logarithms-prof 
@@ -5745,9 +5840,11 @@ unsorted:
   - ghc-invariant-devel 
   - ghc-invariant-doc 
   - ghc-invariant-prof 
+  - ghc-iproute 
   - ghc-iproute-devel 
   - ghc-iproute-doc 
   - ghc-iproute-prof 
+  - ghc-ipynb 
   - ghc-ipynb-devel 
   - ghc-ipynb-doc 
   - ghc-ipynb-prof 
@@ -5759,6 +5856,7 @@ unsorted:
   - ghc-iwlib-devel 
   - ghc-iwlib-doc 
   - ghc-iwlib-prof 
+  - ghc-jira-wiki-markup 
   - ghc-jira-wiki-markup-devel 
   - ghc-jira-wiki-markup-doc 
   - ghc-jira-wiki-markup-prof 
@@ -5790,6 +5888,7 @@ unsorted:
   - ghc-libmpd-devel 
   - ghc-libmpd-doc 
   - ghc-libmpd-prof 
+  - ghc-libyaml 
   - ghc-libyaml-devel 
   - ghc-libyaml-doc 
   - ghc-libyaml-prof 
@@ -5830,6 +5929,7 @@ unsorted:
   - ghc-megaparsec-devel 
   - ghc-megaparsec-doc 
   - ghc-megaparsec-prof 
+  - ghc-memory 
   - ghc-memory-devel 
   - ghc-memory-doc 
   - ghc-memory-prof 
@@ -5857,6 +5957,7 @@ unsorted:
   - ghc-microstache-devel 
   - ghc-microstache-doc 
   - ghc-microstache-prof 
+  - ghc-mime-types 
   - ghc-mime-types-devel 
   - ghc-mime-types-doc 
   - ghc-mime-types-prof 
@@ -5876,6 +5977,7 @@ unsorted:
   - ghc-monad-loops-devel 
   - ghc-monad-loops-doc 
   - ghc-monad-loops-prof 
+  - ghc-mono-traversable 
   - ghc-mono-traversable-devel 
   - ghc-mono-traversable-doc 
   - ghc-mono-traversable-prof 
@@ -5887,6 +5989,7 @@ unsorted:
   - ghc-mountpoints-devel 
   - ghc-mountpoints-doc 
   - ghc-mountpoints-prof 
+  - ghc-mtl 
   - ghc-mtl-devel 
   - ghc-mtl-doc 
   - ghc-mtl-prof 
@@ -5898,6 +6001,7 @@ unsorted:
   - ghc-netlink-devel 
   - ghc-netlink-doc 
   - ghc-netlink-prof 
+  - ghc-network 
   - ghc-network-bsd 
   - ghc-network-bsd-devel 
   - ghc-network-bsd-doc 
@@ -5921,12 +6025,15 @@ unsorted:
   - ghc-network-multicast-doc 
   - ghc-network-multicast-prof 
   - ghc-network-prof 
+  - ghc-network-uri 
   - ghc-network-uri-devel 
   - ghc-network-uri-doc 
   - ghc-network-uri-prof 
+  - ghc-old-locale 
   - ghc-old-locale-devel 
   - ghc-old-locale-doc 
   - ghc-old-locale-prof 
+  - ghc-old-time 
   - ghc-old-time-devel 
   - ghc-old-time-doc 
   - ghc-old-time-prof 
@@ -5938,6 +6045,7 @@ unsorted:
   - ghc-optparse-applicative-devel 
   - ghc-optparse-applicative-doc 
   - ghc-optparse-applicative-prof 
+  - ghc-ordered-containers 
   - ghc-ordered-containers-devel 
   - ghc-ordered-containers-doc 
   - ghc-ordered-containers-prof 
@@ -5945,6 +6053,7 @@ unsorted:
   - ghc-pager-devel 
   - ghc-pager-doc 
   - ghc-pager-prof 
+  - ghc-pandoc 
   - ghc-pandoc-devel 
   - ghc-pandoc-doc 
   - ghc-pandoc-lua-engine 
@@ -5960,6 +6069,7 @@ unsorted:
   - ghc-pandoc-server-devel 
   - ghc-pandoc-server-doc 
   - ghc-pandoc-server-prof 
+  - ghc-pandoc-types 
   - ghc-pandoc-types-devel 
   - ghc-pandoc-types-doc 
   - ghc-pandoc-types-prof 
@@ -5971,6 +6081,7 @@ unsorted:
   - ghc-parallel-devel 
   - ghc-parallel-doc 
   - ghc-parallel-prof 
+  - ghc-parsec 
   - ghc-parsec-devel 
   - ghc-parsec-doc 
   - ghc-parsec-numbers 
@@ -5986,6 +6097,7 @@ unsorted:
   - ghc-path-pieces-devel 
   - ghc-path-pieces-doc 
   - ghc-path-pieces-prof 
+  - ghc-pem 
   - ghc-pem-devel 
   - ghc-pem-doc 
   - ghc-pem-prof 
@@ -6009,6 +6121,7 @@ unsorted:
   - ghc-postgresql-simple-devel 
   - ghc-postgresql-simple-doc 
   - ghc-postgresql-simple-prof 
+  - ghc-pretty 
   - ghc-pretty-devel 
   - ghc-pretty-doc 
   - ghc-pretty-hex 
@@ -6016,6 +6129,7 @@ unsorted:
   - ghc-pretty-hex-doc 
   - ghc-pretty-hex-prof 
   - ghc-pretty-prof 
+  - ghc-pretty-show 
   - ghc-pretty-show-devel 
   - ghc-pretty-show-doc 
   - ghc-pretty-show-prof 
@@ -6023,6 +6137,7 @@ unsorted:
   - ghc-pretty-simple-devel 
   - ghc-pretty-simple-doc 
   - ghc-pretty-simple-prof 
+  - ghc-prettyprinter 
   - ghc-prettyprinter-ansi-terminal 
   - ghc-prettyprinter-ansi-terminal-devel 
   - ghc-prettyprinter-ansi-terminal-doc 
@@ -6034,9 +6149,11 @@ unsorted:
   - ghc-primes-devel 
   - ghc-primes-doc 
   - ghc-primes-prof 
+  - ghc-primitive 
   - ghc-primitive-devel 
   - ghc-primitive-doc 
   - ghc-primitive-prof 
+  - ghc-process 
   - ghc-process-devel 
   - ghc-process-doc 
   - ghc-process-prof 
@@ -6057,6 +6174,7 @@ unsorted:
   - ghc-quote-quot-devel 
   - ghc-quote-quot-doc 
   - ghc-quote-quot-prof 
+  - ghc-random 
   - ghc-random-devel 
   - ghc-random-doc 
   - ghc-random-prof 
@@ -6072,6 +6190,7 @@ unsorted:
   - ghc-reflection-devel 
   - ghc-reflection-doc 
   - ghc-reflection-prof 
+  - ghc-regex-base 
   - ghc-regex-base-devel 
   - ghc-regex-base-doc 
   - ghc-regex-base-prof 
@@ -6083,6 +6202,7 @@ unsorted:
   - ghc-regex-posix-devel 
   - ghc-regex-posix-doc 
   - ghc-regex-posix-prof 
+  - ghc-regex-tdfa 
   - ghc-regex-tdfa-devel 
   - ghc-regex-tdfa-doc 
   - ghc-regex-tdfa-prof 
@@ -6094,11 +6214,13 @@ unsorted:
   - ghc-resource-pool-devel 
   - ghc-resource-pool-doc 
   - ghc-resource-pool-prof 
+  - ghc-resourcet 
   - ghc-resourcet-devel 
   - ghc-resourcet-doc 
   - ghc-resourcet-prof 
   - ghc-rpm-macros 
   - ghc-rpm-macros-extra 
+  - ghc-safe 
   - ghc-safe-devel 
   - ghc-safe-doc 
   - ghc-safe-exceptions 
@@ -6110,6 +6232,7 @@ unsorted:
   - ghc-sandi-devel 
   - ghc-sandi-doc 
   - ghc-sandi-prof 
+  - ghc-scientific 
   - ghc-scientific-devel 
   - ghc-scientific-doc 
   - ghc-scientific-prof 
@@ -6121,9 +6244,11 @@ unsorted:
   - ghc-semaphore-compat-devel 
   - ghc-semaphore-compat-doc 
   - ghc-semaphore-compat-prof 
+  - ghc-semialign 
   - ghc-semialign-devel 
   - ghc-semialign-doc 
   - ghc-semialign-prof 
+  - ghc-semigroupoids 
   - ghc-semigroupoids-devel 
   - ghc-semigroupoids-doc 
   - ghc-semigroupoids-prof 
@@ -6135,6 +6260,7 @@ unsorted:
   - ghc-semver-devel 
   - ghc-semver-doc 
   - ghc-semver-prof 
+  - ghc-serialise 
   - ghc-serialise-devel 
   - ghc-serialise-doc 
   - ghc-serialise-prof 
@@ -6174,24 +6300,31 @@ unsorted:
   - ghc-skein-devel 
   - ghc-skein-doc 
   - ghc-skein-prof 
+  - ghc-skylighting 
+  - ghc-skylighting-core 
   - ghc-skylighting-core-devel 
   - ghc-skylighting-core-doc 
   - ghc-skylighting-core-prof 
   - ghc-skylighting-devel 
   - ghc-skylighting-doc 
+  - ghc-skylighting-format-ansi 
   - ghc-skylighting-format-ansi-devel 
   - ghc-skylighting-format-ansi-doc 
   - ghc-skylighting-format-ansi-prof 
+  - ghc-skylighting-format-blaze-html 
   - ghc-skylighting-format-blaze-html-devel 
   - ghc-skylighting-format-blaze-html-doc 
   - ghc-skylighting-format-blaze-html-prof 
+  - ghc-skylighting-format-context 
   - ghc-skylighting-format-context-devel 
   - ghc-skylighting-format-context-doc 
   - ghc-skylighting-format-context-prof 
+  - ghc-skylighting-format-latex 
   - ghc-skylighting-format-latex-devel 
   - ghc-skylighting-format-latex-doc 
   - ghc-skylighting-format-latex-prof 
   - ghc-skylighting-prof 
+  - ghc-socks 
   - ghc-socks-devel 
   - ghc-socks-doc 
   - ghc-socks-prof 
@@ -6207,9 +6340,11 @@ unsorted:
   - ghc-spdx-devel 
   - ghc-spdx-doc 
   - ghc-spdx-prof 
+  - ghc-split 
   - ghc-split-devel 
   - ghc-split-doc 
   - ghc-split-prof 
+  - ghc-splitmix 
   - ghc-splitmix-devel 
   - ghc-splitmix-doc 
   - ghc-splitmix-prof 
@@ -6217,6 +6352,7 @@ unsorted:
   - ghc-statistics-devel 
   - ghc-statistics-doc 
   - ghc-statistics-prof 
+  - ghc-stm 
   - ghc-stm-chans 
   - ghc-stm-chans-devel 
   - ghc-stm-chans-doc 
@@ -6224,9 +6360,11 @@ unsorted:
   - ghc-stm-devel 
   - ghc-stm-doc 
   - ghc-stm-prof 
+  - ghc-streaming-commons 
   - ghc-streaming-commons-devel 
   - ghc-streaming-commons-doc 
   - ghc-streaming-commons-prof 
+  - ghc-strict 
   - ghc-strict-devel 
   - ghc-strict-doc 
   - ghc-strict-prof 
@@ -6234,6 +6372,7 @@ unsorted:
   - ghc-string-conversions-devel 
   - ghc-string-conversions-doc 
   - ghc-string-conversions-prof 
+  - ghc-syb 
   - ghc-syb-devel 
   - ghc-syb-doc 
   - ghc-syb-prof 
@@ -6241,9 +6380,11 @@ unsorted:
   - ghc-tabular-devel 
   - ghc-tabular-doc 
   - ghc-tabular-prof 
+  - ghc-tagged 
   - ghc-tagged-devel 
   - ghc-tagged-doc 
   - ghc-tagged-prof 
+  - ghc-tagsoup 
   - ghc-tagsoup-devel 
   - ghc-tagsoup-doc 
   - ghc-tagsoup-prof 
@@ -6267,9 +6408,11 @@ unsorted:
   - ghc-tasty-rerun-devel 
   - ghc-tasty-rerun-doc 
   - ghc-tasty-rerun-prof 
+  - ghc-template-haskell 
   - ghc-template-haskell-devel 
   - ghc-template-haskell-doc 
   - ghc-template-haskell-prof 
+  - ghc-temporary 
   - ghc-temporary-devel 
   - ghc-temporary-doc 
   - ghc-temporary-prof 
@@ -6281,9 +6424,11 @@ unsorted:
   - ghc-terminfo-devel 
   - ghc-terminfo-doc 
   - ghc-terminfo-prof 
+  - ghc-texmath 
   - ghc-texmath-devel 
   - ghc-texmath-doc 
   - ghc-texmath-prof 
+  - ghc-text 
   - ghc-text-ansi 
   - ghc-text-ansi-devel 
   - ghc-text-ansi-doc 
@@ -6292,15 +6437,18 @@ unsorted:
   - ghc-text-builder-linear-devel 
   - ghc-text-builder-linear-doc 
   - ghc-text-builder-linear-prof 
+  - ghc-text-conversions 
   - ghc-text-conversions-devel 
   - ghc-text-conversions-doc 
   - ghc-text-conversions-prof 
   - ghc-text-devel 
   - ghc-text-doc 
+  - ghc-text-iso8601 
   - ghc-text-iso8601-devel 
   - ghc-text-iso8601-doc 
   - ghc-text-iso8601-prof 
   - ghc-text-prof 
+  - ghc-text-short 
   - ghc-text-short-devel 
   - ghc-text-short-doc 
   - ghc-text-short-prof 
@@ -6308,21 +6456,28 @@ unsorted:
   - ghc-text-zipper-devel 
   - ghc-text-zipper-doc 
   - ghc-text-zipper-prof 
+  - ghc-th-abstraction 
   - ghc-th-abstraction-devel 
   - ghc-th-abstraction-doc 
   - ghc-th-abstraction-prof 
+  - ghc-th-compat 
   - ghc-th-compat-devel 
   - ghc-th-compat-doc 
   - ghc-th-compat-prof 
+  - ghc-th-lift 
   - ghc-th-lift-devel 
   - ghc-th-lift-doc 
+  - ghc-th-lift-instances 
   - ghc-th-lift-instances-devel 
   - ghc-th-lift-instances-doc 
   - ghc-th-lift-instances-prof 
   - ghc-th-lift-prof 
+  - ghc-these 
   - ghc-these-devel 
   - ghc-these-doc 
   - ghc-these-prof 
+  - ghc-time 
+  - ghc-time-compat 
   - ghc-time-compat-devel 
   - ghc-time-compat-doc 
   - ghc-time-compat-prof 
@@ -6353,6 +6508,7 @@ unsorted:
   - ghc-timezone-series-devel 
   - ghc-timezone-series-doc 
   - ghc-timezone-series-prof 
+  - ghc-tls 
   - ghc-tls-devel 
   - ghc-tls-doc 
   - ghc-tls-prof 
@@ -6360,6 +6516,7 @@ unsorted:
   - ghc-tls-session-manager-devel 
   - ghc-tls-session-manager-doc 
   - ghc-tls-session-manager-prof 
+  - ghc-toml-parser 
   - ghc-toml-parser-devel 
   - ghc-toml-parser-doc 
   - ghc-toml-parser-prof 
@@ -6371,10 +6528,12 @@ unsorted:
   - ghc-torrent-devel 
   - ghc-torrent-doc 
   - ghc-torrent-prof 
+  - ghc-transformers 
   - ghc-transformers-base 
   - ghc-transformers-base-devel 
   - ghc-transformers-base-doc 
   - ghc-transformers-base-prof 
+  - ghc-transformers-compat 
   - ghc-transformers-compat-devel 
   - ghc-transformers-compat-doc 
   - ghc-transformers-compat-prof 
@@ -6385,12 +6544,15 @@ unsorted:
   - ghc-type-equality-devel 
   - ghc-type-equality-doc 
   - ghc-type-equality-prof 
+  - ghc-typed-process 
   - ghc-typed-process-devel 
   - ghc-typed-process-doc 
   - ghc-typed-process-prof 
+  - ghc-typst 
   - ghc-typst-devel 
   - ghc-typst-doc 
   - ghc-typst-prof 
+  - ghc-typst-symbols 
   - ghc-typst-symbols-devel 
   - ghc-typst-symbols-doc 
   - ghc-typst-symbols-prof 
@@ -6398,18 +6560,23 @@ unsorted:
   - ghc-uglymemo-devel 
   - ghc-uglymemo-doc 
   - ghc-uglymemo-prof 
+  - ghc-unicode-collation 
   - ghc-unicode-collation-devel 
   - ghc-unicode-collation-doc 
   - ghc-unicode-collation-prof 
+  - ghc-unicode-data 
   - ghc-unicode-data-devel 
   - ghc-unicode-data-doc 
   - ghc-unicode-data-prof 
+  - ghc-unicode-transforms 
   - ghc-unicode-transforms-devel 
   - ghc-unicode-transforms-doc 
   - ghc-unicode-transforms-prof 
+  - ghc-uniplate 
   - ghc-uniplate-devel 
   - ghc-uniplate-doc 
   - ghc-uniplate-prof 
+  - ghc-unix 
   - ghc-unix-compat 
   - ghc-unix-compat-devel 
   - ghc-unix-compat-doc 
@@ -6417,19 +6584,23 @@ unsorted:
   - ghc-unix-devel 
   - ghc-unix-doc 
   - ghc-unix-prof 
+  - ghc-unix-time 
   - ghc-unix-time-devel 
   - ghc-unix-time-doc 
   - ghc-unix-time-prof 
   - ghc-unliftio 
+  - ghc-unliftio-core 
   - ghc-unliftio-core-devel 
   - ghc-unliftio-core-doc 
   - ghc-unliftio-core-prof 
   - ghc-unliftio-devel 
   - ghc-unliftio-doc 
   - ghc-unliftio-prof 
+  - ghc-unordered-containers 
   - ghc-unordered-containers-devel 
   - ghc-unordered-containers-doc 
   - ghc-unordered-containers-prof 
+  - ghc-utf8-string 
   - ghc-utf8-string-devel 
   - ghc-utf8-string-doc 
   - ghc-utf8-string-prof 
@@ -6441,6 +6612,7 @@ unsorted:
   - ghc-uuid-devel 
   - ghc-uuid-doc 
   - ghc-uuid-prof 
+  - ghc-uuid-types 
   - ghc-uuid-types-devel 
   - ghc-uuid-types-doc 
   - ghc-uuid-types-prof 
@@ -6448,6 +6620,8 @@ unsorted:
   - ghc-vault-devel 
   - ghc-vault-doc 
   - ghc-vault-prof 
+  - ghc-vector 
+  - ghc-vector-algorithms 
   - ghc-vector-algorithms-devel 
   - ghc-vector-algorithms-doc 
   - ghc-vector-algorithms-prof 
@@ -6458,6 +6632,7 @@ unsorted:
   - ghc-vector-devel 
   - ghc-vector-doc 
   - ghc-vector-prof 
+  - ghc-vector-stream 
   - ghc-vector-stream-devel 
   - ghc-vector-stream-doc 
   - ghc-vector-stream-prof 
@@ -6509,6 +6684,7 @@ unsorted:
   - ghc-warp-tls-devel 
   - ghc-warp-tls-doc 
   - ghc-warp-tls-prof 
+  - ghc-witherable 
   - ghc-witherable-devel 
   - ghc-witherable-doc 
   - ghc-witherable-prof 
@@ -6544,6 +6720,8 @@ unsorted:
   - ghc-xhtml-devel 
   - ghc-xhtml-doc 
   - ghc-xhtml-prof 
+  - ghc-xml 
+  - ghc-xml-conduit 
   - ghc-xml-conduit-devel 
   - ghc-xml-conduit-doc 
   - ghc-xml-conduit-prof 
@@ -6554,6 +6732,7 @@ unsorted:
   - ghc-xml-hamlet-doc 
   - ghc-xml-hamlet-prof 
   - ghc-xml-prof 
+  - ghc-xml-types 
   - ghc-xml-types-devel 
   - ghc-xml-types-doc 
   - ghc-xml-types-prof 
@@ -6573,6 +6752,7 @@ unsorted:
   - ghc-xss-sanitize-devel 
   - ghc-xss-sanitize-doc 
   - ghc-xss-sanitize-prof 
+  - ghc-yaml 
   - ghc-yaml-devel 
   - ghc-yaml-doc 
   - ghc-yaml-prof 
@@ -6596,9 +6776,11 @@ unsorted:
   - ghc-yesod-static-devel 
   - ghc-yesod-static-doc 
   - ghc-yesod-static-prof 
+  - ghc-zip-archive 
   - ghc-zip-archive-devel 
   - ghc-zip-archive-doc 
   - ghc-zip-archive-prof 
+  - ghc-zlib 
   - ghc-zlib-devel 
   - ghc-zlib-doc 
   - ghc-zlib-prof 
@@ -6945,6 +7127,7 @@ unsorted:
   - gnome-icon-theme-extras 
   - gnome-icon-theme-symbolic 
   - gnome-info-collect 
+  - gnome-initial-setup-lang 
   - gnome-keyring-sharp 
   - gnome-keyring-sharp-devel 
   - gnome-keysign 
@@ -7038,6 +7221,7 @@ unsorted:
   - gnu-compilers-hpc-macros-devel 
   - gnu-crypto 
   - gnu-efi 
+  - gnu-free-fonts 
   - gnu-getopt 
   - gnu-getopt-javadoc 
   - gnu-netcat 
@@ -7932,6 +8116,7 @@ unsorted:
   - gv 
   - gvfs-devel 
   - gvim 
+  - gvisor-tap-vsock 
   - gwenhywfar 
   - gwenhywfar-devel 
   - gwenhywfar-gwenbuild 
@@ -8470,6 +8655,7 @@ unsorted:
   - influxdb-devel 
   - influxdb2 
   - influxdb2-devel 
+  - info-std 
   - info2html 
   - infos-creator-rpm 
   - ini4j 
@@ -9179,6 +9365,7 @@ unsorted:
   - jupyter-ipyevents 
   - jupyter-ipyevents-jupyterlab 
   - jupyter-ipyleaflet 
+  - jupyter-ipyparallel 
   - jupyter-ipyscales 
   - jupyter-ipysheet 
   - jupyter-ipytablewidgets 
@@ -9187,29 +9374,41 @@ unsorted:
   - jupyter-ipyvue-nbextension 
   - jupyter-ipyvuetify-nbextension 
   - jupyter-ipywebrtc 
+  - jupyter-jupyter_core-filesystem 
+  - jupyter-jupyterlab 
+  - jupyter-jupyterlab-filesystem 
   - jupyter-jupyterlab-ipyscales 
   - jupyter-jupyterlab-ipyvolume 
   - jupyter-jupyterlab-ipyvue 
   - jupyter-jupyterlab-ipyvuetify 
   - jupyter-jupyterlab-latex 
+  - jupyter-jupyterlab-pygments 
   - jupyter-jupyterlab-templates 
+  - jupyter-jupyterlab-widgets 
   - jupyter-lineup-widget 
+  - jupyter-lsp 
   - jupyter-matlab-kernel 
   - jupyter-matplotlib 
   - jupyter-matplotlib-jupyterlab 
+  - jupyter-nbclassic 
+  - jupyter-nbconvert 
   - jupyter-nbconvert-latex 
   - jupyter-nbdime 
   - jupyter-nbdime-jupyterlab 
+  - jupyter-notebook 
   - jupyter-notebook-filesystem 
+  - jupyter-notebook-shim 
   - jupyter-octave-kernel 
   - jupyter-panel 
   - jupyter-plotly 
   - jupyter-rpm-macros 
   - jupyter-server-fileid 
   - jupyter-server-mathjax 
+  - jupyter-server-terminals 
   - jupyter-sidecar-jupyterlab 
   - jupyter-threejs 
   - jupyter-threejs-jupyterlab 
+  - jupyter-widgetsnbextension 
   - jurand 
   - just 
   - just-bash-completion 
@@ -9364,6 +9563,7 @@ unsorted:
   - kddockwidgets-devel 
   - kddockwidgets-qt6-devel 
   - kde-fcstd-thumbnailer 
+  - kde-inotify-survey-lang 
   - kde-l10n-devel 
   - kde-oxygen-fonts 
   - kde-theme-dracula 
@@ -9371,6 +9571,7 @@ unsorted:
   - kdebugsettings-lang 
   - kdeclarative-devel 
   - kdeclarative-tools 
+  - kdeconnect-kde-lang 
   - kdeconnect-kde-zsh-completion 
   - kdecoration6-devel 
   - kded-devel 
@@ -9410,6 +9611,7 @@ unsorted:
   - kdiff3-lang 
   - kdiskmark 
   - kdnssd-framework-devel 
+  - kdnssd-lang 
   - kdoctools-devel 
   - kdsingleapplication-devel 
   - kdsingleapplication-qt6-devel 
@@ -9473,6 +9675,7 @@ unsorted:
   - keychain 
   - keyd 
   - keylightctl 
+  - keylime-ima-policy 
   - keysmith 
   - keysmith-lang 
   - keyutils-devel 
@@ -9536,6 +9739,7 @@ unsorted:
   - kf6-kpackage-devel 
   - kf6-kparts-devel 
   - kf6-kpeople-devel 
+  - kf6-kpeople-lang 
   - kf6-kplotting-devel 
   - kf6-kpty-devel 
   - kf6-kquickcharts-devel 
@@ -9648,6 +9852,7 @@ unsorted:
   - kio-devel 
   - kio-extras5 
   - kio-extras5-lang 
+  - kio-gdrive-lang 
   - kio-stash 
   - kio-stash-lang 
   - kio_audiocd-devel 
@@ -9820,6 +10025,7 @@ unsorted:
   - kpkpass-devel 
   - kplotting-devel 
   - kpmcore-devel 
+  - kpmcore-lang 
   - kproperty 
   - kproperty-devel 
   - kproperty-lang 
@@ -10939,6 +11145,7 @@ unsorted:
   - libQt63DQuickRender6 
   - libQt63DQuickScene2D6 
   - libQt63DRender6 
+  - libQt6Bluetooth6 
   - libQt6Bodymovin6 
   - libQt6Charts6 
   - libQt6ChartsQml6 
@@ -10949,15 +11156,20 @@ unsorted:
   - libQt6DesignerComponents6 
   - libQt6Graphs6 
   - libQt6Grpc6 
+  - libQt6Help6 
   - libQt6HttpServer6 
   - libQt6JsonRpc6 
   - libQt6LanguageServer6 
   - libQt6Location6 
   - libQt6Mqtt6 
+  - libQt6MultimediaWidgets6 
+  - libQt6Nfc6 
   - libQt6OpcUa6 
   - libQt6Pas-devel 
   - libQt6Pas6 
+  - libQt6Pdf6 
   - libQt6PdfQuick6 
+  - libQt6PdfWidgets6 
   - libQt6PositioningQuick6 
   - libQt6Protobuf6 
   - libQt6QmlCompiler6 
@@ -10965,13 +11177,16 @@ unsorted:
   - libQt6Quick3DIblBaker6 
   - libQt6Quick3DPhysics6 
   - libQt6Quick3DPhysicsHelpers6 
+  - libQt6RemoteObjects6 
   - libQt6RemoteObjectsQml6 
   - libQt6Scxml6 
   - libQt6ScxmlQml6 
   - libQt6SensorsQuick6 
   - libQt6SerialBus6 
+  - libQt6SerialPort6 
   - libQt6StateMachine6 
   - libQt6StateMachineQml6 
+  - libQt6WebSockets6 
   - libQt6WebViewQuick6 
   - libQtAV1 
   - libQtAVWidgets1 
@@ -13277,6 +13492,7 @@ unsorted:
   - libhidapi-libusb0 
   - libhinawa-devel 
   - libhinawa2 
+  - libhiredis1_1_0 
   - libhl1 
   - libhmac-devel 
   - libhmac-tools 
@@ -13948,7 +14164,9 @@ unsorted:
   - libmemcache0 
   - libmemcached 
   - libmemcached-devel 
+  - libmemcached11 
   - libmemcachedprotocol0 
+  - libmemcachedutil2 
   - libmemkind0 
   - libmenu-cache3 
   - libmesode-devel 
@@ -14157,6 +14375,7 @@ unsorted:
   - libnest2d-devel 
   - libnet-devel 
   - libnet-doc 
+  - libnet9 
   - libnetcdf-cxx4-gnu-hpc 
   - libnetcdf-cxx4-gnu-hpc-devel 
   - libnetcdf-cxx4_4_3_1-gnu-hpc 
@@ -15229,6 +15448,7 @@ unsorted:
   - librelp0 
   - librem6 
   - libreoffice-base-drivers-postgresql 
+  - libreoffice-branding-upstream 
   - libreoffice-calc-extensions 
   - libreoffice-gdb-pretty-printers 
   - libreoffice-glade 
@@ -17489,13 +17709,26 @@ unsorted:
   - mame 
   - mame-data 
   - mame-tools 
+  - man-pages 
+  - man-pages-cs 
+  - man-pages-da 
+  - man-pages-de 
+  - man-pages-el 
+  - man-pages-es 
   - man-pages-fi 
+  - man-pages-fr 
+  - man-pages-hu 
   - man-pages-id 
+  - man-pages-it 
   - man-pages-ko 
   - man-pages-mk 
   - man-pages-nb 
   - man-pages-nl 
+  - man-pages-pl 
+  - man-pages-posix 
+  - man-pages-pt_BR 
   - man-pages-ro 
+  - man-pages-ru 
   - man-pages-sr 
   - man-pages-sv 
   - man-pages-uk 
@@ -19130,6 +19363,7 @@ unsorted:
   - nnn-fish-completion 
   - nnn-zsh-completion 
   - no-more-secrets 
+  - nodejs-common 
   - nodejs-default 
   - nodejs-devel-default 
   - nodejs-electron 
@@ -19140,6 +19374,7 @@ unsorted:
   - nodejs20 
   - nodejs20-devel 
   - nodejs20-docs 
+  - nodejs21 
   - nodejs21-devel 
   - nodejs21-docs 
   - noisetorch 
@@ -19182,6 +19417,7 @@ unsorted:
   - npkg 
   - npm-default 
   - npm20 
+  - npm21 
   - npth-devel 
   - nqp 
   - nqptp 
@@ -20173,6 +20409,7 @@ unsorted:
   - pamixer 
   - pan 
   - pan-lang 
+  - pandoc-cli 
   - pango-devel 
   - pango-devel-32bit 
   - pango-tools 
@@ -20241,6 +20478,7 @@ unsorted:
   - partio 
   - partio-devel 
   - partio-doc 
+  - partitionmanager-lang 
   - parzip 
   - pass-import 
   - pass-otp 
@@ -20260,6 +20498,7 @@ unsorted:
   - patterns-base-32bit 
   - patterns-base-apparmor-32bit 
   - patterns-base-base-32bit 
+  - patterns-base-documentation 
   - patterns-base-enhanced_base-32bit 
   - patterns-base-fips 
   - patterns-base-minimal_base-32bit 
@@ -22352,6 +22591,7 @@ unsorted:
   - pommed 
   - pongix 
   - popeye 
+  - poppler-data 
   - poppler-data-devel 
   - popt-devel 
   - popt-devel-32bit 
@@ -22985,6 +23225,7 @@ unsorted:
   - python-swiftclient-doc 
   - python-tk 
   - python-tooz-doc 
+  - python-tqdm-bash-completion 
   - python-translationstring-doc 
   - python-xml 
   - python-zope.deprecation-doc 
@@ -26884,6 +27125,7 @@ unsorted:
   - python311-Authlib 
   - python311-BTrees 
   - python311-BTrees-devel 
+  - python311-Beaker 
   - python311-BitVector 
   - python311-Bottleneck 
   - python311-CCColUtils 
@@ -26938,6 +27180,7 @@ unsorted:
   - python311-Flask-WTF 
   - python311-Flask-doc 
   - python311-FormEncode 
+  - python311-Genshi 
   - python311-GitPython 
   - python311-Glances 
   - python311-Gloo 
@@ -27017,6 +27260,7 @@ unsorted:
   - python311-PyPDF3 
   - python311-PyPrind 
   - python311-PyQRCode 
+  - python311-PyQt6 
   - python311-PyQt6-3D 
   - python311-PyQt6-3D-devel 
   - python311-PyQt6-Charts 
@@ -27030,6 +27274,7 @@ unsorted:
   - python311-PyQt6-WebEngine-devel 
   - python311-PyQt6-devel 
   - python311-PyQt6-doc 
+  - python311-PyQt6-sip 
   - python311-PyRIC 
   - python311-PyRSS2Gen 
   - python311-PyRect 
@@ -27047,6 +27292,7 @@ unsorted:
   - python311-QDarkStyle 
   - python311-QR-Code-generator 
   - python311-QtAwesome 
+  - python311-QtPy 
   - python311-QtPy-test 
   - python311-RangeHTTPServer 
   - python311-RegexOrder 
@@ -27057,6 +27303,7 @@ unsorted:
   - python311-SQLAlchemy1 
   - python311-Scrapy 
   - python311-SecretStorage 
+  - python311-Send2Trash 
   - python311-Shapely 
   - python311-SimpleWebSocketServer 
   - python311-SoundCard 
@@ -27195,8 +27442,11 @@ unsorted:
   - python311-archmage 
   - python311-arf 
   - python311-argh 
+  - python311-argon2-cffi 
+  - python311-argon2-cffi-bindings 
   - python311-argparse_addons 
   - python311-args 
+  - python311-arrow 
   - python311-arviz 
   - python311-asciimatics 
   - python311-asciitree 
@@ -27222,7 +27472,9 @@ unsorted:
   - python311-astropy-iers-data 
   - python311-astunparse 
   - python311-asv 
+  - python311-async-lru 
   - python311-async_generator 
+  - python311-async_timeout 
   - python311-asyncclick 
   - python311-asyncpg 
   - python311-asyncssh 
@@ -27614,7 +27866,9 @@ unsorted:
   - python311-base-32bit 
   - python311-base58 
   - python311-bashate 
+  - python311-bcrypt 
   - python311-beartype 
+  - python311-beautifulsoup4 
   - python311-before-after 
   - python311-behave 
   - python311-bencode 
@@ -27638,6 +27892,7 @@ unsorted:
   - python311-bitstruct 
   - python311-bjoern 
   - python311-black 
+  - python311-bleach 
   - python311-blessed 
   - python311-blessings 
   - python311-blockdiag 
@@ -27697,6 +27952,7 @@ unsorted:
   - python311-cauldron-notebook 
   - python311-cbor 
   - python311-cbor2 
+  - python311-cchardet 
   - python311-cdflib 
   - python311-celery 
   - python311-celery-batches 
@@ -27776,6 +28032,7 @@ unsorted:
   - python311-colorspacious 
   - python311-colour 
   - python311-columnize 
+  - python311-comm 
   - python311-commentjson 
   - python311-compat-patcher-core 
   - python311-compileall2 
@@ -27868,9 +28125,11 @@ unsorted:
   - python311-ddg3 
   - python311-ddt 
   - python311-deap 
+  - python311-debugpy 
   - python311-deepdiff 
   - python311-deepmerge 
   - python311-defcon 
+  - python311-defusedxml 
   - python311-delegator.py 
   - python311-dennis 
   - python311-dep-logic 
@@ -28071,6 +28330,7 @@ unsorted:
   - python311-encore 
   - python311-enrich 
   - python311-entrypoint2 
+  - python311-entrypoints 
   - python311-environ-config 
   - python311-environmental-override 
   - python311-envisage 
@@ -28116,6 +28376,7 @@ unsorted:
   - python311-fastcluster 
   - python311-fasteners 
   - python311-fastimport 
+  - python311-fastjsonschema 
   - python311-fastnumbers 
   - python311-fastparquet 
   - python311-fastremap 
@@ -28182,6 +28443,7 @@ unsorted:
   - python311-fontPens 
   - python311-forbiddenfruit 
   - python311-formats 
+  - python311-fqdn 
   - python311-framel 
   - python311-freeipa 
   - python311-freezegun 
@@ -28330,6 +28592,7 @@ unsorted:
   - python311-hexdump 
   - python311-hid-parser 
   - python311-hijri-converter 
+  - python311-hiredis 
   - python311-hkdf 
   - python311-hl7apy 
   - python311-holidays 
@@ -28339,6 +28602,7 @@ unsorted:
   - python311-hstspreload 
   - python311-html2text 
   - python311-html5-parser 
+  - python311-html5lib 
   - python311-htmlmin 
   - python311-httmock 
   - python311-http-ece 
@@ -28412,21 +28676,26 @@ unsorted:
   - python311-ipydatawidgets 
   - python311-ipyevents 
   - python311-ipyfilechooser 
+  - python311-ipykernel 
   - python311-ipyleaflet 
   - python311-ipympl 
+  - python311-ipyparallel 
   - python311-ipyscales 
   - python311-ipysheet 
   - python311-ipytablewidgets 
+  - python311-ipython_genutils 
   - python311-ipyvolume 
   - python311-ipyvue 
   - python311-ipyvuetify 
   - python311-ipywebrtc 
+  - python311-ipywidgets 
   - python311-irc 
   - python311-isbnlib 
   - python311-isc_dhcp_leases 
   - python311-iso3166 
   - python311-iso8601 
   - python311-isodate 
+  - python311-isoduration 
   - python311-isort 
   - python311-itemadapter 
   - python311-itemloaders 
@@ -28472,6 +28741,7 @@ unsorted:
   - python311-jschema-to-python 
   - python311-jsmin 
   - python311-json-rpc 
+  - python311-json5 
   - python311-json_tricks 
   - python311-jsondiff 
   - python311-jsonformatter 
@@ -28482,6 +28752,7 @@ unsorted:
   - python311-jsonref 
   - python311-jsonrpclib-pelix 
   - python311-jsonschema-format 
+  - python311-jsonschema-format-nongpl 
   - python311-jsonschema-path 
   - python311-jsonschema-spec 
   - python311-jsonschema417 
@@ -28492,18 +28763,30 @@ unsorted:
   - python311-junit-xml 
   - python311-junitxml 
   - python311-junos-eznc 
+  - python311-jupyter 
   - python311-jupyter-bokeh 
+  - python311-jupyter-client 
   - python311-jupyter-collaboration 
+  - python311-jupyter-core 
+  - python311-jupyter-events 
   - python311-jupyter-kernel-test 
+  - python311-jupyter-lsp 
   - python311-jupyter-packaging 
+  - python311-jupyter-server 
   - python311-jupyter-server-fileid 
   - python311-jupyter-server-mathjax 
+  - python311-jupyter-server-terminals 
   - python311-jupyter-server-test 
   - python311-jupyter-sphinx 
   - python311-jupyter-ydoc 
+  - python311-jupyter_console 
+  - python311-jupyterlab 
+  - python311-jupyterlab-pygments 
+  - python311-jupyterlab-server 
   - python311-jupyterlab-server-openapi 
   - python311-jupyterlab-server-test 
   - python311-jupyterlab-templates 
+  - python311-jupyterlab-widgets 
   - python311-jwcrypto 
   - python311-k5test 
   - python311-kafka-python 
@@ -28720,6 +29003,7 @@ unsorted:
   - python311-miniupnpc 
   - python311-misaka 
   - python311-mistletoe 
+  - python311-mistune 
   - python311-mistune2 
   - python311-mitmproxy 
   - python311-mitmproxy-rs 
@@ -28791,9 +29075,13 @@ unsorted:
   - python311-napalm-procurve 
   - python311-natsort 
   - python311-nautilus-devel 
+  - python311-nbclassic 
+  - python311-nbclient 
+  - python311-nbconvert 
   - python311-nbdime 
   - python311-nbdime-git 
   - python311-nbdime-hg 
+  - python311-nbformat 
   - python311-nbsmoke 
   - python311-nbsphinx 
   - python311-nbval 
@@ -28804,6 +29092,7 @@ unsorted:
   - python311-ndjson 
   - python311-ndtiff 
   - python311-neovim 
+  - python311-nest-asyncio 
   - python311-nested-lookup 
   - python311-net-snmp 
   - python311-netCDF4 
@@ -28825,6 +29114,8 @@ unsorted:
   - python311-noiseprotocol 
   - python311-nornir 
   - python311-nose2 
+  - python311-notebook 
+  - python311-notebook-shim 
   - python311-nox 
   - python311-npTDMS 
   - python311-nptyping 
@@ -28903,6 +29194,7 @@ unsorted:
   - python311-osmviz 
   - python311-ospd-openvas 
   - python311-outcome 
+  - python311-overrides 
   - python311-ovirt-engine-sdk 
   - python311-pa-ringbuffer 
   - python311-padaos 
@@ -28934,6 +29226,7 @@ unsorted:
   - python311-pandas-sql-other 
   - python311-pandas-test 
   - python311-pandas-xml 
+  - python311-pandocfilters 
   - python311-panel 
   - python311-panflute 
   - python311-papermill 
@@ -29023,6 +29316,7 @@ unsorted:
   - python311-pkgutil-resolve-name 
   - python311-plaster 
   - python311-plaster-pastedeploy 
+  - python311-platformdirs 
   - python311-platformio 
   - python311-plette 
   - python311-plotly 
@@ -29070,9 +29364,11 @@ unsorted:
   - python311-progress 
   - python311-progressbar 
   - python311-progressbar2 
+  - python311-prometheus-client 
   - python311-promise 
   - python311-proselint 
   - python311-proto-plus 
+  - python311-protobuf 
   - python311-proton-client 
   - python311-proton-core 
   - python311-proton-vpn-api-core 
@@ -29161,6 +29457,7 @@ unsorted:
   - python311-pycountry 
   - python311-pycrdt 
   - python311-pycrdt-websocket 
+  - python311-pycryptodome 
   - python311-pycryptodomex 
   - python311-pyct 
   - python311-pycxx 
@@ -29226,6 +29523,7 @@ unsorted:
   - python311-pylev 
   - python311-pylibacl 
   - python311-pylibfdt 
+  - python311-pylibmc 
   - python311-pylineclip 
   - python311-pylink-square 
   - python311-pylint 
@@ -29244,10 +29542,12 @@ unsorted:
   - python311-pymavlink 
   - python311-pymdown-extensions 
   - python311-pymediainfo 
+  - python311-pymemcache 
   - python311-pymetar 
   - python311-pymilter 
   - python311-pymisp 
   - python311-pymol 
+  - python311-pymongo 
   - python311-pymssql 
   - python311-pynamodb 
   - python311-pynetbox 
@@ -29449,6 +29749,7 @@ unsorted:
   - python311-python-jenkins 
   - python311-python-jose 
   - python311-python-jose-cryptography 
+  - python311-python-json-logger 
   - python311-python-jsonschema-objects 
   - python311-python-keycloak 
   - python311-python-louvain 
@@ -29554,6 +29855,7 @@ unsorted:
   - python311-qtcharts-qt5-api 
   - python311-qtcharts-qt5-doc 
   - python311-qtcharts-qt5-sip 
+  - python311-qtconsole 
   - python311-qtdatavis3d-qt5 
   - python311-qtdatavis3d-qt5-devel 
   - python311-qtdatavis3d-qt5-doc 
@@ -29585,6 +29887,7 @@ unsorted:
   - python311-recordclass 
   - python311-redbaron 
   - python311-redfish 
+  - python311-redis 
   - python311-reedsolo 
   - python311-regex 
   - python311-relatorio 
@@ -29626,7 +29929,9 @@ unsorted:
   - python311-retry_decorator 
   - python311-retrying 
   - python311-retryrequests 
+  - python311-rfc3339-validator 
   - python311-rfc3986 
+  - python311-rfc3986-validator 
   - python311-rfc3987 
   - python311-rfc6555 
   - python311-rich-click 
@@ -29694,6 +29999,7 @@ unsorted:
   - python311-screeninfo 
   - python311-screenplain 
   - python311-scripttest 
+  - python311-scrypt 
   - python311-scspell3k 
   - python311-sdnotify 
   - python311-seaborn 
@@ -29773,6 +30079,7 @@ unsorted:
   - python311-sortedcontainers 
   - python311-sortinghat 
   - python311-sounddevice 
+  - python311-soupsieve 
   - python311-sox 
   - python311-soxr 
   - python311-spake2 
@@ -29906,6 +30213,7 @@ unsorted:
   - python311-tensorpac 
   - python311-term-background 
   - python311-termcolor 
+  - python311-terminado 
   - python311-terminaltables 
   - python311-termstyle 
   - python311-tesserocr 
@@ -29935,6 +30243,7 @@ unsorted:
   - python311-time-travel 
   - python311-timeout-decorator 
   - python311-tinyarray 
+  - python311-tinycss2 
   - python311-tinydb 
   - python311-tinyrecord 
   - python311-tinyrpc 
@@ -29960,6 +30269,7 @@ unsorted:
   - python311-tox-no-internet 
   - python311-tox-wheel 
   - python311-tpfd 
+  - python311-tqdm 
   - python311-traceback2 
   - python311-traits 
   - python311-traitsui 
@@ -30029,6 +30339,7 @@ unsorted:
   - python311-untokenize 
   - python311-unyt 
   - python311-uproot 
+  - python311-uri-template 
   - python311-uritemplate 
   - python311-uritools 
   - python311-url-normalize 
@@ -30101,9 +30412,12 @@ unsorted:
   - python311-web.py 
   - python311-web_cache 
   - python311-webassets 
+  - python311-webcolors 
+  - python311-webencodings 
   - python311-weblate-language-data 
   - python311-weblate-schemas 
   - python311-webruntime 
+  - python311-websocket-client 
   - python311-websockets 
   - python311-websockify 
   - python311-wfuzz 
@@ -30113,6 +30427,7 @@ unsorted:
   - python311-wheezy.template 
   - python311-whichcraft 
   - python311-whitenoise 
+  - python311-widgetsnbextension 
   - python311-wikipedia 
   - python311-wirerope 
   - python311-wiring 
@@ -34568,6 +34883,7 @@ unsorted:
   - readline-devel 
   - readline-devel-32bit 
   - readline-devel-static 
+  - readline-doc 
   - readline5-devel 
   - readline6-devel 
   - reaim 
@@ -34588,6 +34904,7 @@ unsorted:
   - redfishtool 
   - redhat-overpass-fonts 
   - redhat-overpass-mono-fonts 
+  - redis 
   - redis++-devel 
   - redland 
   - redland-storage-postgresql 
@@ -34786,6 +35103,7 @@ unsorted:
   - rook-k8s-yaml 
   - rook-rookflex 
   - root-tail 
+  - rootlesskit 
   - rosegarden 
   - rott 
   - roundcubemail 
@@ -35764,6 +36082,7 @@ unsorted:
   - slf4j-reload4j 
   - slf4j-sources 
   - slib 
+  - slirp4netns 
   - slop 
   - slop-devel 
   - slrn 
