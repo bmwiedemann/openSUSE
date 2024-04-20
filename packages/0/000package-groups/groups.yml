@@ -12,20 +12,20 @@ OUTPUT:
       includes:
         - common_locks
   - opensuse_microos:
-      recommends: true
+      recommends: false
       require_all: true
       includes:
         - common_locks
         - opensuse_microos
         - opensuse_microos_desktop
   - opensuse_aeon:
-      recommends: true
+      recommends: false
       require_all: true
       includes:
         - common_locks
         - opensuse_aeon
   - opensuse_kalpa:
-      recommends: true
+      recommends: false
       require_all: true
       includes:
         - common_locks

@@ -2004,4 +2004,11 @@ those sources for i586 on its own.</comment>
     <user>dimstar_suse</user>
     <comment>Add back selinux-console</comment>
   </revision>
+  <revision rev="282" vrev="280">
+    <srcmd5>8105c39ff6d0a14e40b40d019442af9b</srcmd5>
+    <version>unknown</version>
+    <time>1713608065</time>
+    <user>dimstar_suse</user>
+    <comment>Add back selinux-console</comment>
+  </revision>
 </revisionlist>
