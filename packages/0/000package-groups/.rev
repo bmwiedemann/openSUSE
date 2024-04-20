@@ -1990,4 +1990,11 @@ those sources for i586 on its own.</comment>
     <time>1713529399</time>
     <user>RBrownFactory</user>
   </revision>
+  <revision rev="280" vrev="278">
+    <srcmd5>a20edab0a949fed2f219da5495008fa7</srcmd5>
+    <version>unknown</version>
+    <time>1713598397</time>
+    <user>dimstar_suse</user>
+    <comment>block setools-console, huge dep chain</comment>
+  </revision>
 </revisionlist>

@@ -149,6 +149,7 @@ dvd:
   - gnumeric: [locked]
   - marble: [locked]
   - seamonkey: [locked]
+  - setools-console: [locked]
   - ruby3.1-rubygem-grpc: [locked]
   - systemd-presets-branding-CAASP: [locked]
   - texlive: [locked]
