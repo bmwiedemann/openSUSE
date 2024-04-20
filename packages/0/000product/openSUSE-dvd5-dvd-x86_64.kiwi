@@ -3656,7 +3656,6 @@
       <repopackage name="purge-kernels-service"/>
       <repopackage name="purpose"/>
       <repopackage name="purpose-lang"/>
-      <repopackage name="python-tqdm-bash-completion"/>
       <repopackage name="python3-apparmor"/>
       <repopackage name="python3-audit"/>
       <repopackage name="python3-brlapi"/>
@@ -3694,7 +3693,6 @@
       <repopackage name="python311-charset-normalizer"/>
       <repopackage name="python311-click"/>
       <repopackage name="python311-cmdln"/>
-      <repopackage name="python311-comm"/>
       <repopackage name="python311-configobj"/>
       <repopackage name="python311-constantly"/>
       <repopackage name="python311-contextvars"/>
@@ -3705,11 +3703,9 @@
       <repopackage name="python311-Cycler"/>
       <repopackage name="python311-dbm"/>
       <repopackage name="python311-dbus-python"/>
-      <repopackage name="python311-debugpy"/>
       <repopackage name="python311-decorator"/>
       <repopackage name="python311-distro"/>
       <repopackage name="python311-dnspython"/>
-      <repopackage name="python311-entrypoints"/>
       <repopackage name="python311-executing"/>
       <repopackage name="python311-extras"/>
       <repopackage name="python311-FontTools"/>
@@ -3734,14 +3730,10 @@
       <repopackage name="python311-incremental"/>
       <repopackage name="python311-iniconfig"/>
       <repopackage name="python311-ipaddr"/>
-      <repopackage name="python311-ipykernel"/>
-      <repopackage name="python311-ipyparallel"/>
       <repopackage name="python311-ipython"/>
       <repopackage name="python311-jedi"/>
       <repopackage name="python311-Jinja2"/>
       <repopackage name="python311-jmespath"/>
-      <repopackage name="python311-jupyter-client"/>
-      <repopackage name="python311-jupyter-core"/>
       <repopackage name="python311-kiwisolver"/>
       <repopackage name="python311-ldap"/>
       <repopackage name="python311-libvirt-python"/>
@@ -3759,7 +3751,6 @@
       <repopackage name="python311-msgpack"/>
       <repopackage name="python311-munkres"/>
       <repopackage name="python311-mysqlclient"/>
-      <repopackage name="python311-nest-asyncio"/>
       <repopackage name="python311-netaddr"/>
       <repopackage name="python311-networkx"/>
       <repopackage name="python311-nftables"/>
@@ -3773,7 +3764,6 @@
       <repopackage name="python311-pexpect"/>
       <repopackage name="python311-Pillow"/>
       <repopackage name="python311-pip"/>
-      <repopackage name="python311-platformdirs"/>
       <repopackage name="python311-ply"/>
       <repopackage name="python311-prompt_toolkit"/>
       <repopackage name="python311-psutil"/>
@@ -3827,7 +3817,6 @@
       <repopackage name="python311-text-unidecode"/>
       <repopackage name="python311-tomli"/>
       <repopackage name="python311-tornado6"/>
-      <repopackage name="python311-tqdm"/>
       <repopackage name="python311-traitlets"/>
       <repopackage name="python311-Twisted"/>
       <repopackage name="python311-Twisted-tls"/>
@@ -3994,6 +3983,7 @@
       <repopackage name="sendmail"/>
       <repopackage name="sensors"/>
       <repopackage name="sessreg"/>
+      <repopackage name="setools-console"/>
       <repopackage name="setserial"/>
       <repopackage name="setxkbmap"/>
       <repopackage name="sg3_utils"/>
