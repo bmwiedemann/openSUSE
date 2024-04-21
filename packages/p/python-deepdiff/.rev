@@ -137,4 +137,26 @@
   * Fix tests dependent on toml by martin-kokos</comment>
     <requestid>1138688</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0b2ade956211e4480bac08e10435a521</srcmd5>
+    <version>7.0.1</version>
+    <time>1713724036</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.0.1:
+  * When verbose=2, return `new_path` when the `path` and
+    `new_path` are different (for example when ignore_order=True
+    and the index of items have changed).
+  * Dropping support for Python 3.7
+  * Introducing serialize to flat rows for delta objects.
+  * fixes the issue with hashing `datetime.date` objects
+    where it treated them as numbers instead of dates (fixes
+    #445).
+  * upgrading orjson to the latest version
+  * Fix for bug when diffing two lists with ignore_order and
+    providing compare_func
+  * Supporting Python 3.12 in the build process by Leo Sin
+  * Include type info and change the &quot;unknown&quot; value for flat
+    rows to something that is friendly for Postgres enums</comment>
+    <requestid>1169369</requestid>
+  </revision>
 </revisionlist>

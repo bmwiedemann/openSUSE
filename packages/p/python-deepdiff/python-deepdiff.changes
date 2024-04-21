@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Apr 20 13:56:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.1:
+  * When verbose=2, return `new_path` when the `path` and
+    `new_path` are different (for example when ignore_order=True
+    and the index of items have changed).
+  * Dropping support for Python 3.7
+  * Introducing serialize to flat rows for delta objects.
+  * fixes the issue with hashing `datetime.date` objects
+    where it treated them as numbers instead of dates (fixes
+    #445).
+  * upgrading orjson to the latest version
+  * Fix for bug when diffing two lists with ignore_order and
+    providing compare_func
+  * Supporting Python 3.12 in the build process by Leo Sin
+  * Include type info and change the "unknown" value for flat
+    rows to something that is friendly for Postgres enums
+
+-------------------------------------------------------------------
 Sun Jan 14 17:11:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.7.1:

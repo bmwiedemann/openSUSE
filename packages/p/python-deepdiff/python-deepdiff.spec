@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-deepdiff
-Version:        6.7.1
+Version:        7.0.1
 Release:        0
 Summary:        Deep Difference and Search of any Python object/data
 License:        MIT
@@ -30,17 +30,19 @@ BuildRequires:  %{python_module jsonpickle}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module ordered-set >= 4.1.0 with %python-ordered-set < 4.2}
 BuildRequires:  %{python_module orjson}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli-w}
 BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       (python-ordered-set >= 4.1.0 with python-ordered-set < 4.2)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-PyYAML
 Recommends:     python-click
 Recommends:     python-jsonpickle
@@ -61,10 +63,10 @@ within other objects, and hash any object based on their content.
 sed -i '1{/env python/d}' deepdiff/deephash.py deepdiff/diff.py deepdiff/search.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/deep
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -83,7 +85,7 @@ donttest="(TestCommands and (csv or group_by)) or (test_load_path_content and cs
 %license LICENSE
 %doc README.md AUTHORS.md
 %{python_sitelib}/deepdiff
-%{python_sitelib}/deepdiff-%{version}*-info
+%{python_sitelib}/deepdiff-%{version}.dist-info
 %python_alternative %{_bindir}/deep
 
 %changelog
