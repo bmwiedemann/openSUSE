@@ -24,9 +24,6 @@
 %else
 %define psuffix -%{flavor}
 %bcond_without test
-%if "%{flavor}" != "test-py39"
-%define skip_python39 1
-%endif
 %if "%{flavor}" != "test-py310"
 %define skip_python310 1
 %endif
@@ -56,7 +53,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numexpr >= 2.6.2}
-BuildRequires:  %{python_module numpy-devel >= 1.19}
+# See gh#PyTables/PyTables#1083
+BuildRequires:  %{python_module numpy-devel >= 1.19 with %python-numpy-devel < 2}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module py-cpuinfo}
@@ -77,7 +75,8 @@ BuildRequires:  %{python_module setuptools}
 %endif
 Requires:       python-Cython
 Requires:       python-numexpr >= 2.6.2
-Requires:       python-numpy >= 1.19
+# See gh#PyTables/PyTables#1083
+Requires:       (python-numpy >= 1.19 with python-numpy < 2)
 Requires:       python-packaging
 Requires:       python-py-cpuinfo
 # boo#1196682

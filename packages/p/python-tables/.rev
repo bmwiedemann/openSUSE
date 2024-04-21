@@ -237,4 +237,15 @@
     <comment></comment>
     <requestid>1149914</requestid>
   </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>b99476cb0f0c2c38fec6d1feb58f5b12</srcmd5>
+    <version>3.9.2</version>
+    <time>1713723982</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1169174 from bnavigator
+
+- Pin to numpy &lt; 2:  gh#PyTables/PyTables#1083
+  - Clean obsolete python39</comment>
+    <requestid>1169290</requestid>
+  </revision>
 </revisionlist>

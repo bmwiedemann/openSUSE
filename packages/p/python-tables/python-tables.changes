@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 19 12:01:41 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Pin to numpy < 2:  gh#PyTables/PyTables#1083
+- Clean obsolete python39
+
+-------------------------------------------------------------------
 Fri Feb 23 12:25:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use newly supported shrink{} on OBS to exclude python flavors
