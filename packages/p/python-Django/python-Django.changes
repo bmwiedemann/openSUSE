@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 18 06:39:36 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-safemimetext-set_payload.patch, to support python 3.11.9+
+  (gh#django/django@b231bcd19e57, bsc#1222880)
+
+-------------------------------------------------------------------
 Mon Mar  4 14:05:28 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 -  Update to 4.2.11 (CVE-2024-27351, bsc#1220358)
