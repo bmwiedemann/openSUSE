@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 20 15:44:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Added official support for Python 3.12 and PyPy 3.10
+  * Removed official support for Python 3.7
+  * Improved performance of ``itemloaders.utils.arg_to_iter``
+  * Fixed test expectations on recent Python versions
+
+-------------------------------------------------------------------
 Sat Jan  6 20:29:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:

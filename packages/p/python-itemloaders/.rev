@@ -39,4 +39,16 @@
 - Required by python-Scrapy 2.5.0</comment>
     <requestid>1137296</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b21efeede7170c192b249a1eb21fd4f7</srcmd5>
+    <version>1.2.0</version>
+    <time>1713724075</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * Added official support for Python 3.12 and PyPy 3.10
+  * Removed official support for Python 3.7
+  * Improved performance of ``itemloaders.utils.arg_to_iter``
+  * Fixed test expectations on recent Python versions</comment>
+    <requestid>1169389</requestid>
+  </revision>
 </revisionlist>
