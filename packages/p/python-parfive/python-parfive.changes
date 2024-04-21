@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 14 07:44:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Add a customizable callback function for when download completed
+  * Add callbacks for ftp downloads
+  * Drop Python 3.7 as it's EOL
+  * Only log get_ftp_size errors at INFO
+  * Fixes signal that only works in main thread of the main
+    interpreter
+  * fix aiohttp redirect @dreamflasher (#126)
+
+-------------------------------------------------------------------
 Wed Aug  2 03:16:15 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.0.2:
@@ -61,7 +73,7 @@ Tue Jun 23 07:39:57 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
     + Remove use of the deprecated loop= keyword argument to aiohttp.ClientSession. (#30)
     + Update the notebook detection function due to changes in tqdm (#36)
     + Reduce the number of parallel connections to 25 (5 parallel files, 5 parallel downloads per file). (#37)
-- Sprinkle in update-alternatives for parfive wrapper. 
+- Sprinkle in update-alternatives for parfive wrapper.
 
 -------------------------------------------------------------------
 Mon Aug 26 05:50:30 UTC 2019 - Jan Engelhardt <jengelh@inai.de>

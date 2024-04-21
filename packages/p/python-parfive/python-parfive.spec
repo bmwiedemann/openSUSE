@@ -1,7 +1,7 @@
 #
 # spec file for package python-parfive
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-parfive
-Version:        2.0.2
+Version:        2.1.0
 Release:        0
 Summary:        A HTTP and FTP parallel file downloader
 License:        MIT
@@ -44,7 +44,7 @@ BuildRequires:  %{python_module tqdm >= 4.27.0}
 Requires:       python-aiohttp
 Requires:       python-tqdm
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-aiofiles
 Recommends:     python-aioftp
 BuildArch:      noarch

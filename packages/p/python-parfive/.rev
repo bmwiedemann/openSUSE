@@ -72,4 +72,12 @@
 - Stop using greedy globs in %files.</comment>
     <requestid>1101876</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e0e5c5c62c2f625e9c8c9dcf08ec14ac</srcmd5>
+    <version>2.1.0</version>
+    <time>1713724125</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1169461</requestid>
+  </revision>
 </revisionlist>
