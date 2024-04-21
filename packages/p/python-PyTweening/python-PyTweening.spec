@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyTweening
-Version:        1.0.7
+Version:        1.2.0
 Release:        0
 Summary:        A collection of tweening / easing functions
 License:        BSD-3-Clause

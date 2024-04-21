@@ -45,4 +45,17 @@
 - Initial release of python-PyTweening 1.0.3</comment>
     <requestid>1137139</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>10d68ea4f7003cd955e78d1dad73534f</srcmd5>
+    <version>1.2.0</version>
+    <time>1713724142</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * Added iterators and got rid of the 0.0 to 1.0 range check.
+    Improved readme.
+  * Uploading more tween graphs
+  * Fix graph filenames in readme
+  * Updated readme</comment>
+    <requestid>1169475</requestid>
+  </revision>
 </revisionlist>
