@@ -53,4 +53,12 @@
   compile-time and memory doing nothing on s390x.  [boo#1188441]</comment>
     <requestid>1166762</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8455280c096b96705a055c34786ff1ba</srcmd5>
+    <version>14.0.1+git10008</version>
+    <time>1713723850</time>
+    <user>anag+factory</user>
+    <comment>- Update to trunk head, 7c2a9dbcc2c1cb1563774068c59d5e09e, git10008</comment>
+    <requestid>1169181</requestid>
+  </revision>
 </revisionlist>
