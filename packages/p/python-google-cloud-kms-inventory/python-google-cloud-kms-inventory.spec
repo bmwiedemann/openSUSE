@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-kms-inventory
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-kms-inventory
-Version:        0.2.2
+Version:        0.2.6
 Release:        0
 Summary:        Google Cloud Kms Inventory API client library
 License:        Apache-2.0
@@ -30,13 +30,14 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module google-api-core >= 1.34.0}
+BuildRequires:  %{python_module google-api-core >= 1.34.1}
 BuildRequires:  %{python_module google-cloud-kms >= 2.3.0}
 BuildRequires:  %{python_module proto-plus >= 1.22.3}
 BuildRequires:  %{python_module protobuf >= 3.19.5}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-google-api-core >= 1.34.0
+Requires:       python-google-api-core >= 1.34.1
+Requires:       python-google-auth
 Requires:       python-google-cloud-kms >= 2.3.0
 Requires:       python-proto-plus >= 1.22.3
 Requires:       python-protobuf >= 3.19.5

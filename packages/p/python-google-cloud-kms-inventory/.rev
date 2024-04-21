@@ -7,4 +7,18 @@
     <comment></comment>
     <requestid>1133773</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>640f3b31bc90e85b6928eb842f537317</srcmd5>
+    <version>0.2.6</version>
+    <time>1713724077</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2.6:
+  * Allow users to explicitly configure universe domain
+  * Add google-auth as a direct dependency
+  * Add staticmethod decorator to _get_client_cert_source
+    and _get_api_endpoint (27dceb9)
+  * Resolve AttributeError 'Credentials' object has no attribute
+    'universe_domain'</comment>
+    <requestid>1169385</requestid>
+  </revision>
 </revisionlist>

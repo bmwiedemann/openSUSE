@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 20 15:34:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.6:
+  * Allow users to explicitly configure universe domain
+  * Add google-auth as a direct dependency
+  * Add staticmethod decorator to _get_client_cert_source
+    and _get_api_endpoint (27dceb9)
+  * Resolve AttributeError 'Credentials' object has no attribute
+    'universe_domain'
+
+-------------------------------------------------------------------
 Sun Dec 17 20:25:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - run tests
