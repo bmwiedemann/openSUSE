@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Apr 20 20:57:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.04.15:
+  * Added support for PEP 723 (inline script metadata) with
+    `nox.project.load_toml`
+  * Added support for `micromamba`
+  * Added `venv_backend` property to sessions
+  * Added the ability to use `None` to remove environment
+    variables
+  * Added support for skipping sessions by default using
+    `default=False`
+  * Use static arguments instead of `**kwargs`
+  * Do not depend on `pipx` in Nox GitHub action
+  * Disallow `UV_SYSTEM_PYTHON`
+  * Ensure 'uv' always works in a uv venv
+  * Fixed missing f-string in `--help` message
+  * Don't error if not installing to passthrough
+  * Avoid mixing `venv` and `conda` from environment
+  * Skip test for conda env when `conda` isn't installed
+- drop support-tox-4.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Mar 15 21:08:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.03.02:

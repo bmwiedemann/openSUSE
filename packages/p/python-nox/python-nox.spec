@@ -16,17 +16,15 @@
 #
 
 
-%define skip_python2 1
-%define padded_version 2023.04.22
+%{?sle15_python_module_pythons}
+%global padded_version 2024.04.15
 Name:           python-nox
-Version:        2024.3.2
+Version:        2024.4.15
 Release:        0
 Summary:        Flexible test automation
 License:        Apache-2.0
 URL:            https://nox.thea.codes
 Source:         https://github.com/wntrblm/nox/archive/refs/tags/%{padded_version}.tar.gz#/nox-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#wntrblm/nox#687
-Patch0:         support-tox-4.patch
 BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
