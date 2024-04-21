@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr 20 13:46:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.18.4:
+  * resolves a critical low-level issue in dynamic type-checking
+    code generator for **nested tuple-in-dictionary type hints**
+- update to 0.18.3:
+  * Beartype 0.18.3 is for @iamrecursion and @sylvorg. May their
+    usernames live forever in `git log` infamy. In this release,
+    a few more bugs die.
+- update to 0.18.2:
+  * This patch release temporarily squelches (i.e., silences)
+    a low-level `assert`
+    statement erroneously performed during @beartype's dynamic
+    code generation loop.
+- update to 0.18.0:
+  * We're *finally* type-checking general-purpose Python containers.
+
+-------------------------------------------------------------------
 Fri Feb 16 12:38:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.17.2
