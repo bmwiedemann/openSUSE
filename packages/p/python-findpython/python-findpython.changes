@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 20 14:05:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.1:
+  * Ignore invalid version strinig from winreg
+- update to 0.6.0:
+  * Support find by implementation
+- update to 0.5.0:
+  * Add implementation property
+  * Drop support for python 3.7
+  * Find rye pythons with and without install directory
+
+-------------------------------------------------------------------
 Fri Jan  5 17:47:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - drop revert-back-to-pdm-pep517.patch:

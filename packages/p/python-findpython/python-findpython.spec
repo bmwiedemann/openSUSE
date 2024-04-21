@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-findpython
-Version:        0.4.1
+Version:        0.6.1
 Release:        0
 Summary:        Utility to find python versions on your system
 License:        MIT
@@ -36,7 +36,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module pytest}
 # /SECTION
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Requires:       python-packaging >= 20
 %python_subpackages
 
