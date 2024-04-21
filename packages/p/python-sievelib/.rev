@@ -54,4 +54,14 @@
   * Added support for OAUTHBEARER auth mechanism</comment>
     <requestid>1165754</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6225165ab54b16216c50d822a2564a54</srcmd5>
+    <version>1.4.0</version>
+    <time>1713724002</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.0:
+  * Ensure name uniqueness in filter set
+  * Added annotations</comment>
+    <requestid>1169323</requestid>
+  </revision>
 </revisionlist>

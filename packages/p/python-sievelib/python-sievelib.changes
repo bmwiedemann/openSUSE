@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 20 08:07:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * Ensure name uniqueness in filter set
+  * Added annotations
+
+-------------------------------------------------------------------
 Sat Apr  6 07:44:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.0:

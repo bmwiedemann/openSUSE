@@ -19,11 +19,11 @@
 
 %define modname sievelib
 Name:           python-%{modname}
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Client-side Sieve and Managesieve library written in Python
 License:        MIT
-URL:            https://pypi.python.org/pypi/sievelib
+URL:            https://github.com/tonioo/sievelib
 Source:         https://files.pythonhosted.org/packages/source/s/sievelib/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -32,6 +32,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Requires:       python-typing-extensions
 %python_subpackages
 
 %description
