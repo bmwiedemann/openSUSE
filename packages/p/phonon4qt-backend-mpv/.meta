@@ -1,0 +1,9 @@
+<package name="phonon4qt-backend-mpv" project="openSUSE:Factory">
+  <title>Phonon Backend using MPV Player(libmpv)</title>
+  <description>This is a fork of phonon-vlc, rewritten to work with libmpv instead of
+libVLC. libmpv supports less features than VLC but they are only
+related to memory streams and audio/video dumps. This backend should be
+a lightweight alternative to libVLC with less dependencies.</description>
+  <devel project="multimedia:libs" package="phonon4qt-backend-mpv"/>
+  <url>https://github.com/OpenProgger/phonon-mpv</url>
+</package>

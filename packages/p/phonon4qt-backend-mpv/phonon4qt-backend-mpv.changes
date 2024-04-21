@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Mon Apr  1 14:11:03 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.1.0
+  * Fix video rendering on screens with scale factor > 1.0
+  * Qt6 Port
+  * Fix use-after-free bug with mediaobjects
+  * Fix build for mpv>=0.35
+- Add _multibuild to support Qt6 flavour
+- Rename package
+
+-------------------------------------------------------------------
+Fri Sep  6 08:41:02 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.0.7
+  * Phonon 4.11 Support
+  * Dropped Support for Phonon < 4.11
+  * Now CMake 3.5 is required
+
+-------------------------------------------------------------------
+Wed Jun  5 16:31:00 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.0.6
+  * Silence more compiler warnings with clang
+  * Fix pkgconfig version for libmpv (thanks to luigino)
+  * Reworked audio/video detection, since Qt's mime-type
+    detection is broken on some environments
+
+-------------------------------------------------------------------
+Wed Apr 17 16:07:25 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Initial package (v0.0.5)
