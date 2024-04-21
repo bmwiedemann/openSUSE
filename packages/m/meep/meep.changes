@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr 16 07:14:07 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.28.0:
+  * Improved special field updates for r=0 in cylindrical 
+    coordinates 
+  * Geometric objects now have a label field that appears when 
+    Simulation.plot2D is called with label_geometry=True
+  * Various improvements and minor bug fixes and additional 
+    documentation.
+- Changes from version 1.27.0:
+  * Support for spectral extrapolation using Padé 
+    approximants (#2440).
+  * Support for periodic design regions of adjoint solver 
+    (#2465, #2518).
+  * Support for "unfiltering" a given set of design weights for 
+    adjoint optimization (#2462).
+  * MPB is no longer a required dependency 
+  * Bug fix for sources at in cylindrical coordinates
+  * Additional unit tests and documentation and various 
+    improvements and minor bug fixes
+
+-------------------------------------------------------------------
 Fri Mar 10 09:15:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.26.0:
