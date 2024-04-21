@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-whois
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           python-python-whois
-Version:        0.8.0
+Version:        0.9.3
 Release:        0
 Summary:        Whois querying and parsing of domain registration information
 License:        MIT
-URL:            https://bitbucket.org/richardpenman/pywhois
+URL:            https://github.com/richardpenman/whois
 Source:         https://files.pythonhosted.org/packages/source/p/python-whois/python-whois-%{version}.tar.gz
-Patch0:         remove-future-requirement.patch
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module simplejson}
 # /SECTION
 BuildRequires:  fdupes
-Suggests:       python-python-dateutil
+Requires:       python-python-dateutil
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,7 +57,8 @@ rm test/test_query.py
 %check
 # test_ipv4 test_ipv6 - online check
 # test_il_parse - online check
-%pytest -k 'not (test_ipv4 or test_ipv6 or test_il_parse)'
+# test_choose_server - online check
+%pytest -k 'not (test_ipv4 or test_ipv6 or test_il_parse or test_choose_server)'
 
 %files %{python_files}
 %doc README.rst

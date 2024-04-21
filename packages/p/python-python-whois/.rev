@@ -69,4 +69,18 @@
 - Stop using greedy globs in %files</comment>
     <requestid>1110429</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>98930803679a75bdb51b67f21364be98</srcmd5>
+    <version>0.9.3</version>
+    <time>1713724133</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.3:
+  * dateutil is required dependency
+  * remove futures reference
+  * remove support for python 2
+  * adding default TZ as UTC if none specified
+  * fix parsing whois response for jp domains
+- drop remove-future-requirement.patch (upstream)</comment>
+    <requestid>1169465</requestid>
+  </revision>
 </revisionlist>
