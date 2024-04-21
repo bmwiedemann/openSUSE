@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiorpcX
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-aiorpcX
-Version:        0.22.1
+Version:        0.23.1
 Release:        0
 Summary:        Generic async RPC implementation, including JSON-RPC
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/kyuupichan/aiorpcX
 Source:         https://github.com/kyuupichan/aiorpcX/archive/%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs
@@ -52,10 +52,10 @@ Generic async RPC implementation, including JSON-RPC
 rm tests/test_websocket.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -70,6 +70,7 @@ SKIP_TESTS="$SKIP_TESTS or test_cancel_remaining_on_group_with_stubborn_task"
 %files %{python_files}
 %doc README.rst
 %license LICENCE
-%{python_sitelib}/*
+%{python_sitelib}/aiorpcx
+%{python_sitelib}/aiorpcX-%{version}.dist-info
 
 %changelog
