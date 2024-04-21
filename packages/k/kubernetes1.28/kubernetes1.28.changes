@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr 18 11:21:45 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.28.9:
+  * Add envFrom to serviceaccount admission plugin
+  * update debian-base to bookworm-v1.0.2
+  * [go] Bump images, dependencies and versions to go 1.22.1 and distroless iptables / set-cap
+  * [CVE-2023-45288] .*: bump x/net to v0.23.0
+  * Use the right feature gate when updating uncertain volumes
+  * fix panic with SIGSEGV in kubeadm certs check-expiration
+  * hack/tools: bump honnef.co/go/tools to v0.4.6
+  * Serve watch without resourceVersion from cache and introduce a WatchFromStorageWithoutResourceVersion feature gate to allow serving watch from storage.
+  * fix aggregator path filtering to include /
+  * Filter aggregated apiservice gv
+  * Use DBG=1 for conformance verification
+  * build: use -trimpath in non-DBG mode
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.21.9`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.28.9/build/dependencies.yaml#L115-L117
+
+-------------------------------------------------------------------
 Mon Apr  8 11:04:15 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - update .spec file to set FORCE_HOST_GO env variable,
@@ -30,7 +51,7 @@ Mon Apr 08 06:23:49 UTC 2024 - priyanka.saggu@suse.com
   * build etcd image v3.5.12
 
 - Update .spec file to bump go version build requirements:
-  * `BuildRequires:  go >= 1.21.18`
+  * `BuildRequires:  go >= 1.21.8`
   * ref: https://github.com/kubernetes/kubernetes/blob/v1.28.8/build/dependencies.yaml#L115-L117
 
 -------------------------------------------------------------------

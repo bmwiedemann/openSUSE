@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package kubernetes1.28
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -22,7 +22,7 @@
 %define baseversionminus1 1.27
 
 Name:           kubernetes%{baseversion}
-Version:        1.28.8
+Version:        1.28.9
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -51,7 +51,7 @@ Patch4:         kubeadm-opensuse-flexvolume.patch
 Patch5:         revert-coredns-image-renaming.patch
 BuildRequires:  fdupes
 BuildRequires:  git
-BuildRequires:  go >= 1.21.8
+BuildRequires:  go >= 1.21.9
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
@@ -81,6 +81,7 @@ for management and discovery.
 
 
 # packages to build containerized control plane
+
 %package apiserver
 Summary:        Kubernetes apiserver for container image
 Group:          System/Management
@@ -173,7 +174,7 @@ Group:          System/Management
 Provides:       kubernetes-client-provider = %{version}
 Requires:       kubernetes%{baseversion}-client-common
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %description client
 Kubernetes client tools like kubectl.
