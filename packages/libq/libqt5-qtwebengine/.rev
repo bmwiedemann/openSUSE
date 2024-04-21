@@ -936,4 +936,13 @@ of the last blockers as we're still waiting for an upstream fix. (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1156408</requestid>
   </revision>
+  <revision rev="96" vrev="4">
+    <srcmd5>b267f76d2118af6ef60255853ff9886d</srcmd5>
+    <version>5.15.16</version>
+    <time>1713723912</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to fix build with libxml &gt;= 2.12:
+  * 0001-Fix-building-with-system-libxml2.patch</comment>
+    <requestid>1169239</requestid>
+  </revision>
 </revisionlist>

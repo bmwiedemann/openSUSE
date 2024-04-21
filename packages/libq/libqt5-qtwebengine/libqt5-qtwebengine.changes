@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 19 14:57:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix build with libxml >= 2.12:
+  * 0001-Fix-building-with-system-libxml2.patch
+
+-------------------------------------------------------------------
 Sat Feb 24 11:06:56 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop BuildRequire on libsrtp, qt builds a bundled copy.

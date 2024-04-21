@@ -62,6 +62,8 @@ Patch5:         qtwebengine-python3.patch
 Patch6:         sandbox_futex_time64.patch
 # PATCH-FIX-UPSTREAM -- python 3.11 fixes
 Patch7:         python311-fixes.patch
+# PATCH-FIX-UPSTREAM -- libxml 2.12 support
+Patch8:         0001-Fix-building-with-system-libxml2.patch
 ### Patch 50-99 are applied conditionally
 # PATCH-FIX-OPENSUSE -- allow building qtwebengine with ffmpeg5
 Patch50:        qtwebengine-ffmpeg5.patch
@@ -297,6 +299,7 @@ Examples for the libqt5-qtpdf module.
 %patch -P5 -p1
 %patch -P6 -p1
 %patch -P7 -p1
+%patch -P8 -p1
 
 # Replace the whole catapult folder rather than picking individual changes
 pushd src/3rdparty/chromium/third_party
