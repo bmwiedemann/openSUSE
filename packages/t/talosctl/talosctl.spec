@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           talosctl
-Version:        1.6.7
+Version:        1.7.0
 Release:        0
 Summary:        CLI to interact with Talos Linux
 License:        MPL-2.0
@@ -72,7 +72,7 @@ BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || dat
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-s -w -X github.com/siderolabs/talos/pkg/machinery/gendata.VersionSHA=v%{version} -X github.com/siderolabs/talos/pkg/version.Built=$BUILD_DATE" \
+   -ldflags=" -X github.com/siderolabs/talos/pkg/machinery/gendata.VersionSHA=v%{version} -X github.com/siderolabs/talos/pkg/version.Built=$BUILD_DATE" \
    -o bin/talosctl ./cmd/talosctl
 
 %install

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 19 15:22:33 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.7.0
+  Welcome to the v1.7.0 release of Talos!
+  https://www.talos.dev/v1.7/introduction/what-is-new/
+- do not strip aka remove -s -w ldflags
+
+-------------------------------------------------------------------
 Thu Mar 21 19:23:59 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.6.7:
