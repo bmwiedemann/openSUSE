@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 20 20:39:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.35.0:
+  * add `include_deprecated` option when fetching images by name
+  * raise warnings for the `ImagesClient.get_by_name` deprecation
+  * add `has_id_or_name` to `DomainIdentityMixin`
+  * invalid type for load balancer private network property
+
+-------------------------------------------------------------------
 Fri Jan  5 09:11:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.33.2:
