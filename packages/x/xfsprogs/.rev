@@ -786,4 +786,16 @@ Signed-off-by: Anthony Iliopoulos &lt;ailiop@suse.com&gt;
 (🤖: Submission of xfsprogs via https://src.opensuse.org/pool/xfsprogs/pulls/9 by ailiopoulos)</comment>
     <requestid>1166161</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>c4de7b3e2d2d53c676e6bb7af891b651</srcmd5>
+    <version>6.7.0</version>
+    <time>1713723860</time>
+    <user>anag+factory</user>
+    <comment>xfsprogs: update to v6.7.0
+
+Signed-off-by: Anthony Iliopoulos &lt;ailiop@suse.com&gt;
+
+(🤖: Submission of xfsprogs via https://src.opensuse.org/pool/xfsprogs/pulls/10 by ailiopoulos)</comment>
+    <requestid>1168933</requestid>
+  </revision>
 </revisionlist>

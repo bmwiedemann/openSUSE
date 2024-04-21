@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 18 19:13:22 UTC 2024 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.7.0
+  - xfsprogs: Several configure script updates
+  - xfs_io: Use system's SEEK_DATA and SEEK_HOLE definition
+  - xfsprogs: Remove platform_defs.h generation on build time
+  - xfs_db: Fix metadata read error due hardcoded initialization of bb_count
+  - xfsprogs: Request 64-bit time_t where possible
+  - xfsprogs: Remove use of LFS64 interfaces
+
+-------------------------------------------------------------------
 Wed Apr  3 09:27:56 UTC 2024 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Switch to %autosetup in order to build with older rpm build

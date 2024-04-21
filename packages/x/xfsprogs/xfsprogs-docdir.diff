@@ -1,8 +1,8 @@
-diff --git a/include/builddefs.in b/include/builddefs.in
-index 0bb364310d78..07775ac2d5e7 100644
---- a/include/builddefs.in
-+++ b/include/builddefs.in
-@@ -54,7 +54,7 @@ PKG_LIB_DIR	= @libdir@@libdirsuffix@
+Index: xfsprogs-6.7.0/include/builddefs.in
+===================================================================
+--- xfsprogs-6.7.0.orig/include/builddefs.in
++++ xfsprogs-6.7.0/include/builddefs.in
+@@ -55,7 +55,7 @@ PKG_LIBEXEC_DIR	= @libexecdir@/@pkg_name
  PKG_INC_DIR	= @includedir@/xfs
  DK_INC_DIR	= @includedir@/disk
  PKG_MAN_DIR	= @mandir@
