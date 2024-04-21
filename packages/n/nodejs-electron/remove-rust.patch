@@ -1,0 +1,52 @@
+Remove this dead code which brings a dependency on rustc
+
+--- src/components/BUILD.gn.orig	2024-03-27 16:30:09.189645288 +0100
++++ src/components/BUILD.gn	2024-03-28 23:11:14.847582213 +0100
+@@ -282,7 +282,6 @@ test("components_unittests") {
+     "//components/profile_metrics:unit_tests",
+     "//components/proxy_config:unit_tests",
+     "//components/push_notification:unit_tests",
+-    "//components/qr_code_generator:unit_tests",
+     "//components/query_parser:unit_tests",
+     "//components/reading_list/core:unit_tests",
+     "//components/reporting/client:unit_tests",
+--- src/chrome/test/BUILD.gn.orig	2024-03-27 16:37:20.829583999 +0100
++++ src/chrome/test/BUILD.gn	2024-03-28 23:15:36.696977127 +0100
+@@ -1765,8 +1765,6 @@ if (!is_android && !is_fuchsia) {
+       "//chrome/common/privacy_budget:test_support",
+       "//chrome/renderer",
+       "//chrome/renderer/companion/visual_query:browser_tests",
+-      "//chrome/services/qrcode_generator/public/cpp",
+-      "//chrome/services/qrcode_generator/public/mojom",
+       "//chrome/services/removable_storage_writer:lib",
+       "//chrome/test/data/webui:resources_grit",
+       "//chrome/test/data/webui/mojo:mojo_bindings",
+@@ -6818,7 +6816,6 @@ if (!is_fuchsia) {
+       "//chrome/common/themes:unit_tests",
+       "//chrome/renderer/companion/visual_query:unit_tests",
+       "//chrome/services/file_util:unit_tests",
+-      "//chrome/services/qrcode_generator/public/cpp",
+       "//components/account_id",
+       "//components/assist_ranker/proto",
+       "//components/autofill/content/browser:test_support",
+--- src/chrome/services/qrcode_generator/BUILD.gn.orig	2024-03-27 16:30:07.952978653 +0100
++++ src/chrome/services/qrcode_generator/BUILD.gn	2024-03-28 23:20:47.829864401 +0100
+@@ -15,8 +15,6 @@ source_set("qrcode_generator") {
+   deps = [
+     "//base",
+     "//chrome:strings",
+-    "//components/qr_code_generator",
+-    "//components/qr_code_generator:qr_code_generator_features",
+     "//components/vector_icons",
+     "//mojo/public/cpp/bindings",
+     "//net",
+--- src/chrome/services/qrcode_generator/public/cpp/BUILD.gn.orig	2024-03-27 16:30:07.952978653 +0100
++++ src/chrome/services/qrcode_generator/public/cpp/BUILD.gn	2024-03-28 23:22:28.019734555 +0100
+@@ -15,7 +15,6 @@ source_set("cpp") {
+     "//chrome:strings",
+     "//chrome/services/qrcode_generator",
+     "//chrome/services/qrcode_generator/public/mojom",
+-    "//components/qr_code_generator:qr_code_generator_features",
+     "//content/public/browser",
+     "//skia",
+   ]

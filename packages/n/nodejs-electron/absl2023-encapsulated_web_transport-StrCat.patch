@@ -1,0 +1,11 @@
+--- src/net/third_party/quiche/src/quiche/web_transport/encapsulated/encapsulated_web_transport.cc.old	2024-04-12 13:02:31.332129400 +0200
++++ src/net/third_party/quiche/src/quiche/web_transport/encapsulated/encapsulated_web_transport.cc	2024-04-12 23:25:18.357846900 +0200
+@@ -524,7 +524,7 @@ void EncapsulatedSession::OnFatalError(a
+ 
+ void EncapsulatedSession::OnWriteError(absl::Status error) {
+   OnFatalError(absl::StrCat(
+-      error, " while trying to write encapsulated WebTransport data"));
++      error.ToString(absl::StatusToStringMode::kWithEverything), " while trying to write encapsulated WebTransport data"));
+ }
+ 
+ EncapsulatedSession::InnerStream::InnerStream(EncapsulatedSession* session,

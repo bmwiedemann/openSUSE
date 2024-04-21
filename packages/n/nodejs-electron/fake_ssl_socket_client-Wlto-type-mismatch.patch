@@ -1,0 +1,20 @@
+Correct ODR violation due to ambiguous name.
+
+When this header is compiled by itself, `scoped_refptr` refers to the type declared in `base/memory/scoped_refptr.h`.
+When `third_party/webrtc/api/scoped_refptr.h` is included before, the name changes to refer to `::webrtc::scoped_refptr` instead,
+leading to mismatch across translation units. This is detected and reported by GCC.
+
+--- src/components/webrtc/fake_ssl_client_socket.h.old
++++ src/components/webrtc/fake_ssl_client_socket.h
+
+@@ -111,8 +111,8 @@ class FakeSSLClientSocket : public net::
+   // The callback passed to Connect().
+   net::CompletionOnceCallback user_connect_callback_;
+ 
+-  scoped_refptr<net::DrainableIOBuffer> write_buf_;
+-  scoped_refptr<net::DrainableIOBuffer> read_buf_;
++  ::scoped_refptr<net::DrainableIOBuffer> write_buf_;
++  ::scoped_refptr<net::DrainableIOBuffer> read_buf_;
+ };
+ 
+ }  // namespace webrtc

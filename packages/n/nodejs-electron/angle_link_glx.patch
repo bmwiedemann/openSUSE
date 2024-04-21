@@ -4,9 +4,9 @@ ANGLE supports this setting but it is not properly exposed in the GN build
 --- a/third_party/angle/BUILD.gn
 +++ b/third_party/angle/BUILD.gn
 @@ -138,6 +138,7 @@
-   }
+   ]
  
-   defines = [ angle_vma_version_define ]
+   defines = []
 +  defines+= ["ANGLE_LINK_GLX"]
  
    if (is_win) {

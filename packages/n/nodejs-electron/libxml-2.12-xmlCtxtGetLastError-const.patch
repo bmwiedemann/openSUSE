@@ -3,27 +3,18 @@ https://github.com/GNOME/libxml2/commit/61034116d0a3c8b295c6137956adc3ae55720711
 
 Make code compatible with both signatures
 
---- src/third_party/blink/renderer/core/xml/xslt_processor.h.orig	2023-11-15 19:51:53.839267200 +0000
-+++ src/third_party/blink/renderer/core/xml/xslt_processor.h	2023-11-18 12:29:54.948129800 +0000
-@@ -78,6 +78,7 @@ class XSLTProcessor final : public Scrip
+--- src/third_party/blink/renderer/core/xml/xslt_processor.h.orig	2024-04-02 09:53:19.064289800 +0000
++++ src/third_party/blink/renderer/core/xml/xslt_processor.h	2024-04-06 17:07:37.951981800 +0000
+@@ -77,6 +77,7 @@ class XSLTProcessor final : public Scrip
+ 
    void reset();
  
-   static void ParseErrorFunc(void* user_data, xmlError*);
-+  static void ParseErrorFunc(void* user_data, xmlError const*);
++  static void ParseErrorFunc(void* user_data, xmlError*);
+   static void ParseErrorFunc(void* user_data, const xmlError*);
    static void GenericErrorFunc(void* user_data, const char* msg, ...);
  
-   // Only for libXSLT callbacks
---- src/third_party/blink/renderer/core/xml/xslt_processor_libxslt.cc.orig	2023-11-15 19:51:53.839267200 +0000
-+++ src/third_party/blink/renderer/core/xml/xslt_processor_libxslt.cc	2023-11-18 15:17:13.507401500 +0000
-@@ -66,7 +66,7 @@ void XSLTProcessor::GenericErrorFunc(voi
-   // It would be nice to do something with this error message.
- }
- 
--void XSLTProcessor::ParseErrorFunc(void* user_data, xmlError* error) {
-+void XSLTProcessor::ParseErrorFunc(void* user_data, xmlError const *error) {
-   FrameConsole* console = static_cast<FrameConsole*>(user_data);
-   if (!console)
-     return;
+--- src/third_party/blink/renderer/core/xml/xslt_processor_libxslt.cc.orig	2024-04-02 09:53:19.064289800 +0000
++++ src/third_party/blink/renderer/core/xml/xslt_processor_libxslt.cc	2024-04-06 17:06:56.822190000 +0000
 @@ -92,6 +92,10 @@ void XSLTProcessor::ParseErrorFunc(void*
                                         nullptr)));
  }

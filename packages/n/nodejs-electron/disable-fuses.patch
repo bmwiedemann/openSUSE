@@ -2,9 +2,9 @@ Upstream allows some customization of runtime behavior by performing binary witc
 This cannot work with a systemwide electron, and any program depending on features gated behind a fuse would need additional patching anyway.
 This patch removes fuse switches from the binary and makes the makes the compiler able to optimize away any dependant code which is now dead.
 
---- src/electron/build/fuses/build.py.old	2022-09-22 10:38:21.630415700 +0200
-+++ src/electron/build/fuses/build.py	2022-09-25 19:02:31.522510400 +0200
-@@ -7,7 +7,9 @@
+--- src/electron/build/fuses/build.py.orig	2024-03-27 16:05:03.002778083 +0100
++++ src/electron/build/fuses/build.py	2024-03-27 20:08:44.765543587 +0100
+@@ -7,7 +7,9 @@ import sys
  
  dir_path = os.path.dirname(os.path.realpath(__file__))
  
@@ -15,7 +15,7 @@ This patch removes fuse switches from the binary and makes the makes the compile
  
  TEMPLATE_H = """
  #ifndef ELECTRON_FUSES_H_
-@@ -23,7 +25,7 @@
+@@ -21,7 +23,7 @@ TEMPLATE_H = """
  
  namespace electron::fuses {
  
@@ -24,7 +24,7 @@ This patch removes fuse switches from the binary and makes the makes the compile
  
  {getters}
  
-@@ -41,8 +43,6 @@
+@@ -42,8 +44,6 @@ TEMPLATE_CC = """
  
  namespace electron::fuses {
  
@@ -33,19 +33,31 @@ This patch removes fuse switches from the binary and makes the makes the compile
  {getters}
  
  }  // namespace electron:fuses
-@@ -71,12 +71,18 @@
+@@ -70,23 +70,18 @@ for fuse in fuses:
    index += 1
    initial_config += fuse_defaults[fuse]
    name = ''.join(word.title() for word in fuse.split('_'))
 -  getters_h += "FUSE_EXPORT bool Is{name}Enabled();\n".replace("{name}", name)
 -  getters_cc += """
 -bool Is{name}Enabled() {
+-#if DCHECK_IS_ON()
+-  // RunAsNode is checked so early that base::CommandLine isn't yet
+-  // initialized, so guard here to avoid a CHECK.
+-  if (base::CommandLine::InitializedForCurrentProcess()) {
+-    base::CommandLine* command_line = base::CommandLine::ForCurrentProcess();
+-    if (command_line->HasSwitch("{switch_name}")) {
+-      std::string switch_value = command_line->GetSwitchValueASCII("{switch_name}");
+-      return switch_value == "1";
+-    }
+-  }
+-#endif
 +  getters_h += """
 +constexpr bool INLINE_Is{name}Enabled() {
    return kFuseWire[{index}] == '1';
  }
+-""".replace("{name}", name).replace("{switch_name}", f"set-fuse-{fuse.lower()}").replace("{index}", str(index))
 +#define Is{name}Enabled INLINE_Is{name}Enabled
- """.replace("{name}", name).replace("{index}", str(index))
++""".replace("{name}", name).replace("{index}", str(index))
 +  getters_cc += """
 +#undef Is{name}Enabled
 +FUSE_EXPORT bool Is{name}Enabled() {
@@ -55,7 +67,7 @@ This patch removes fuse switches from the binary and makes the makes the compile
  
  def c_hex(n):
    s = hex(n)[2:]
-@@ -88,12 +94,13 @@
+@@ -98,12 +93,13 @@ def hex_arr(s):
      arr.append(c_hex(ord(char)))
    return ",".join(arr)
  

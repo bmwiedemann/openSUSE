@@ -1,0 +1,31 @@
+--- src/content/utility/speech/BUILD.gn.orig
++++ src/content/utility/speech/BUILD.gn
+@@ -10,7 +10,6 @@ source_set("speech_recognition_sandbox_h
+ 
+   deps = [
+     "//base",
+-    "//components/component_updater:component_updater",
+     "//components/soda:buildflags",
+     "//components/soda:constants",
+     "//sandbox/linux:sandbox_services",
+--- src/chrome/common/BUILD.gn.old
++++ src/chrome/common/BUILD.gn
+@@ -193,7 +193,6 @@ static_library("common_lib") {
+     "//chrome/installer/util:with_no_strings",
+     "//components/client_hints/common",
+     "//components/cloud_devices/common",
+-    "//components/component_updater",
+     "//components/content_settings/core/common",
+     "//components/crash/core/common",
+     "//components/device_signals/core/common:features",
+--- src/components/services/screen_ai/BUILD.gn.old
++++ src/components/services/screen_ai/BUILD.gn
+@@ -41,8 +41,6 @@ if (is_linux || is_chromeos) {
+ 
+     deps = [
+       "//base",
+-      "//components/component_updater",
+-      "//components/services/screen_ai/public/cpp:utilities",
+       "//sandbox/linux:sandbox_services",
+       "//ui/accessibility:ax_base",
+     ]

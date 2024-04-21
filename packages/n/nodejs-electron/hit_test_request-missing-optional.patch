@@ -1,0 +1,29 @@
+From 3a75d7f8dc3a08a38dd893031f8996b91a00764b Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jdapena@igalia.com>
+Date: Tue, 23 Jan 2024 17:55:15 +0000
+Subject: [PATCH] IWYU: usage of std::optional in hit_test_request.h requires
+ include
+
+Bug: 957519
+Change-Id: I1ec32af603720d13bfa4e22e20142459802284b4
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5227329
+Reviewed-by: Ian Kilpatrick <ikilpatrick@chromium.org>
+Commit-Queue: Ian Kilpatrick <ikilpatrick@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1250917}
+---
+ third_party/blink/renderer/core/layout/hit_test_request.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/third_party/blink/renderer/core/layout/hit_test_request.h b/third_party/blink/renderer/core/layout/hit_test_request.h
+index c33144dc975b6..38968126fe520 100644
+--- a/third_party/blink/renderer/core/layout/hit_test_request.h
++++ b/third_party/blink/renderer/core/layout/hit_test_request.h
+@@ -23,6 +23,8 @@
+ #ifndef THIRD_PARTY_BLINK_RENDERER_CORE_LAYOUT_HIT_TEST_REQUEST_H_
+ #define THIRD_PARTY_BLINK_RENDERER_CORE_LAYOUT_HIT_TEST_REQUEST_H_
+ 
++#include <optional>
++
+ #include "base/functional/callback.h"
+ #include "third_party/blink/renderer/platform/heap/garbage_collected.h"
+ #include "third_party/blink/renderer/platform/heap/member.h"

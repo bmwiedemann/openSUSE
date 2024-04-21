@@ -1,0 +1,81 @@
+Remove this unused component which brings a huge dependency on //third_party/dawn/native which we don't want to build
+
+--- src/content/utility/BUILD.gn.orig
++++ src/content/utility/BUILD.gn
+@@ -64,9 +64,6 @@ source_set("utility") {
+     "//services/data_decoder:lib",
+     "//services/data_decoder/public/cpp",
+     "//services/network:network_service",
+-    "//services/on_device_model:on_device_model_service",
+-    "//services/on_device_model/public/cpp",
+-    "//services/on_device_model/public/mojom",
+     "//services/service_manager/public/cpp",
+     "//services/service_manager/public/mojom",
+     "//services/shape_detection:lib",
+--- src/content/utility/services.cc.orig
++++ src/content/utility/services.cc
+@@ -31,7 +31,6 @@
+ #include "services/audio/service_factory.h"
+ #include "services/data_decoder/data_decoder_service.h"
+ #include "services/network/network_service.h"
+-#include "services/on_device_model/on_device_model_service.h"
+ #include "services/tracing/public/mojom/tracing_service.mojom.h"
+ #include "services/tracing/tracing_service.h"
+ #include "services/video_capture/public/mojom/video_capture_service.mojom.h"
+@@ -327,13 +326,6 @@ auto RunVideoCapture(
+   return service;
+ }
+ 
+-auto RunOnDeviceModel(
+-    mojo::PendingReceiver<on_device_model::mojom::OnDeviceModelService>
+-        receiver) {
+-  return std::make_unique<on_device_model::OnDeviceModelService>(
+-      std::move(receiver));
+-}
+-
+ #if BUILDFLAG(ENABLE_VR) && !BUILDFLAG(IS_ANDROID)
+ auto RunXrDeviceService(
+     mojo::PendingReceiver<device::mojom::XRDeviceService> receiver) {
+@@ -408,9 +400,6 @@ void RegisterMainThreadServices(mojo::Se
+   services.Add(RunTracing);
+   services.Add(RunVideoCapture);
+ 
+-  if (optimization_guide::features::CanLaunchOnDeviceModelService()) {
+-    services.Add(RunOnDeviceModel);
+-  }
+ 
+ #if BUILDFLAG(GOOGLE_CHROME_BRANDING) && BUILDFLAG(IS_CHROMEOS)
+   services.Add(RunShapeDetectionService);
+--- src/content/utility/utility_main.cc.old	2024-04-02 09:53:16.050958400 +0000
++++ src/content/utility/utility_main.cc	2024-04-07 17:41:04.823696600 +0000
+@@ -32,7 +32,6 @@
+ #include "sandbox/policy/mojom/sandbox.mojom.h"
+ #include "sandbox/policy/sandbox.h"
+ #include "sandbox/policy/sandbox_type.h"
+-#include "services/on_device_model/on_device_model_service.h"
+ #include "services/tracing/public/cpp/trace_startup.h"
+ #include "third_party/icu/source/common/unicode/unistr.h"
+ #include "third_party/icu/source/i18n/unicode/timezone.h"
+@@ -202,10 +201,6 @@ int UtilityMain(MainFunctionParams param
+           ? base::MessagePumpType::UI
+           : base::MessagePumpType::DEFAULT;
+ 
+-  if (parameters.command_line->GetSwitchValueASCII(switches::kUtilitySubType) ==
+-      on_device_model::mojom::OnDeviceModelService::Name_) {
+-    CHECK(on_device_model::OnDeviceModelService::PreSandboxInit());
+-  }
+ 
+ #if BUILDFLAG(IS_MAC)
+   auto sandbox_type =
+@@ -283,11 +278,6 @@ int UtilityMain(MainFunctionParams param
+     case sandbox::mojom::Sandbox::kAudio:
+       pre_sandbox_hook = base::BindOnce(&audio::AudioPreSandboxHook);
+       break;
+-    case sandbox::mojom::Sandbox::kOnDeviceModelExecution:
+-      on_device_model::OnDeviceModelService::AddSandboxLinuxOptions(
+-          sandbox_options);
+-      pre_sandbox_hook = base::BindOnce(&GpuPreSandboxHook);
+-      break;
+     case sandbox::mojom::Sandbox::kSpeechRecognition:
+       pre_sandbox_hook =
+           base::BindOnce(&speech::SpeechRecognitionPreSandboxHook);

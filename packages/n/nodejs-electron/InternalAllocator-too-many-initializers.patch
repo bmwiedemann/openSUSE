@@ -1,0 +1,55 @@
+From ee6e6d3e45af1f7210e144a17f14fb21a7e86588 Mon Sep 17 00:00:00 2001
+From: mikt <mikt@google.com>
+Date: Tue, 30 Jan 2024 03:09:24 +0000
+Subject: [PATCH] [PA] Fix InternalAllocator for GCC builds
+
+Internal Allocator has a few missing member functions, that are required
+as a part of named requirement Allocator.
+https://en.cppreference.com/w/cpp/named_req/Allocator
+
+It broke builds on GCC, so adding these to fix.
+https://crrev.com/c/5196856/comments/0c4bbfd9_6433016b
+
+Change-Id: Ifce5f3e47c94c7bb1e298ac4cd7d0d1e4c6de59c
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5231905
+Commit-Queue: Mikihito Matsuura <mikt@google.com>
+Reviewed-by: Kalvin Lee <kdlee@chromium.org>
+Reviewed-by: Takashi Sakamoto <tasak@google.com>
+Cr-Commit-Position: refs/heads/main@{#1253709}
+---
+ .../internal_allocator_forward.h              | 21 +++++++++++++++----
+ 1 file changed, 17 insertions(+), 4 deletions(-)
+
+diff --git a/base/allocator/partition_allocator/src/partition_alloc/internal_allocator_forward.h b/base/allocator/partition_allocator/src/partition_alloc/internal_allocator_forward.h
+index 45fec29f8cc93..b31a145ff6e99 100644
+--- a/base/allocator/partition_allocator/src/partition_alloc/internal_allocator_forward.h
++++ b/base/allocator/partition_allocator/src/partition_alloc/internal_allocator_forward.h
+@@ -27,11 +27,24 @@ PartitionRoot& InternalAllocatorRoot();
+ template <typename T>
+ class InternalAllocator {
+  public:
+-  // Member types required by allocator completeness requirements.
+   using value_type = T;
+-  using size_type = std::size_t;
+-  using difference_type = std::ptrdiff_t;
+-  using propagate_on_container_move_assignment = std::true_type;
++  using is_always_equal = std::true_type;
++
++  InternalAllocator() = default;
++
++  template <typename U>
++  InternalAllocator(const InternalAllocator<U>&) {}  // NOLINT
++
++  template <typename U>
++  InternalAllocator& operator=(const InternalAllocator<U>&) {
++    return *this;
++  }
++
++  template <typename U>
++  bool operator==(const InternalAllocator<U>&) {
++    // InternalAllocator<T> can free allocations made by InternalAllocator<U>.
++    return true;
++  }
+ 
+   value_type* allocate(std::size_t count);
+ 

@@ -1,0 +1,37 @@
+From 05a74771fed5491740588ec7b39ba64a7b710013 Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jdapena@igalia.com>
+Date: Thu, 1 Feb 2024 17:34:38 +0000
+Subject: [PATCH] GCC: avoid clash between getter and type in
+ grid_sizing_tree.h
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Rename GridSubsizingTree::GridItems getter to GetGridItems to avoid
+type clash.
+
+Bug: 819294
+Change-Id: I4112929d9f85dc4573002b429cc982d50085d3c9
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5224147
+Reviewed-by: Xianzhu Wang <wangxianzhu@chromium.org>
+Commit-Queue: Xianzhu Wang <wangxianzhu@chromium.org>
+Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+Cr-Commit-Position: refs/heads/main@{#1255116}
+---
+ .../core/layout/grid/grid_layout_algorithm.cc       | 13 +++++++------
+ .../renderer/core/layout/grid/grid_sizing_tree.h    |  2 +-
+ 2 files changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/third_party/blink/renderer/core/layout/grid/grid_sizing_tree.h b/third_party/blink/renderer/core/layout/grid/grid_sizing_tree.h
+index 45d55e2b36da4..2148ea9ea0657 100644
+--- a/third_party/blink/renderer/core/layout/grid/grid_sizing_tree.h
++++ b/third_party/blink/renderer/core/layout/grid/grid_sizing_tree.h
+@@ -188,7 +188,7 @@ class GridSizingSubtree
+         /* subtree_root */ grid_tree_->LookupSubgridIndex(subgrid_data));
+   }
+ 
+-  GridItems& GridItems() const {
++  ::blink::GridItems& GridItems() const {
+     DCHECK(grid_tree_);
+     return grid_tree_->At(subtree_root_).grid_items;
+   }

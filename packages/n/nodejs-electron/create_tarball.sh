@@ -103,6 +103,14 @@ if [ $? -ne 0 ]; then
     cleanup_and_exit 1
 fi
 
+echo '>>>>>> Generate DAWN_VERSION'
+python3 build/util/lastchange.py \
+    -s third_party/dawn --revision gpu/webgpu/DAWN_VERSION
+if [ $? -ne 0 ]; then
+    echo 'ERROR: lastchange.py -s third_party/dawn failed'
+    cleanup_and_exit 1
+fi
+
 popd
 
 echo ">>>>>> Apply electron-${ELECTRON_PKGVERSION} patches"
@@ -163,10 +171,8 @@ keeplibs=(
     base/third_party/superfasthash #Not a shared library.
     base/third_party/symbolize #Derived code, not vendored dependency.
     base/third_party/valgrind #Copy of a private header.
-    base/third_party/xdg_mime #Seems not to be available as a shared library.
     base/third_party/xdg_user_dirs #Derived code, not vendored dependency.
     chrome/third_party/mozilla_security_manager #Derived code, not vendored dependency.
-    courgette/third_party #Derived code, not vendored dependency.
     net/third_party/mozilla_security_manager #Derived code, not vendored dependency.
     net/third_party/nss #Derived code, not vendored dependency.
     net/third_party/quiche #Not available as a shared library yet. An old version is in Factory (google-quiche-source)
@@ -218,21 +224,18 @@ keeplibs=(
     third_party/emoji-segmenter #not available as a shared library
     third_party/fdlibm #derived code, not vendored dep
     third_party/hunspell #heavily forked version
-    third_party/iccjpeg #not in any distro
     third_party/inspector_protocol #integral part of chrome
     third_party/ipcz #not in any distro
     third_party/jstemplate #javascript
     third_party/khronos #Modified to add ANGLE definitions
     third_party/leveldatabase #use of private headers
-    third_party/libaddressinput #seems not to be available as a separate library
-    third_party/libaom #version in Factory is too old
+    third_party/libaom #15.5 is too old
     third_party/libaom/source/libaom/third_party/fastfeat
     third_party/libaom/source/libaom/third_party/SVT-AV1
     third_party/libaom/source/libaom/third_party/vector
     third_party/libaom/source/libaom/third_party/x86inc
-    third_party/libavif #leap too old
-    #third_party/libgav1 #Usage of private headers (ObuFrameHeader from utils/types.h) in VAAPI code only
-    third_party/libphonenumber #Depends on protobuf which cannot be unbundled
+    third_party/libavif #bleeding-edge nightly. try unbundling again when 1.1 gets released
+    third_party/libgav1 #Usage of private headers (ObuFrameHeader from utils/types.h)
     third_party/libsrtp #Needs to be built against boringssl, not openssl
     third_party/libsync #not yet in any distro
     third_party/libudev #Headers for a optional delay-loaded dependency
@@ -245,6 +248,7 @@ keeplibs=(
     third_party/libxcb-keysyms #Derived code, not vendored dep
     third_party/libxml/chromium #added chromium code
     third_party/libyuv #The version in Fedora is too old
+    third_party/lit #javacript
     third_party/lottie #javascript
     third_party/lss #Wrapper for linux ABI
     #third_party/maldoca #integral part of chrome, but not used in electron.
@@ -254,10 +258,7 @@ keeplibs=(
     third_party/metrics_proto #integral part of chrome
     third_party/modp_b64 #not in Factory or Rawhide. pkgconfig(stringencoders) Mageia, AltLinux, Debian have it
     third_party/node #javascript code
-    third_party/omnibox_proto #integral part of chrome
     third_party/one_euro_filter #not in any distro
-    third_party/openscreen #Integral part of chrome, needed even if you're building without.
-    third_party/openscreen/src/third_party/tinycbor #not in any distro
     third_party/ots #not available as a shared library. Fedora has the cli version as opentype-sanitizer
     #we don't build pdf support, removing it from tarball to save space
     #third_party/pdfium #Part of chrome, not available separately.
@@ -270,14 +271,10 @@ keeplibs=(
     third_party/perfetto/protos/third_party/chromium #derived code, not vendored dep
     third_party/pffft #not in any distro, also heavily patched
     third_party/polymer #javascript
-    third_party/private-join-and-compute #not in any distro, also heavily patched
-    third_party/private_membership #derived code, not vendored dep
     third_party/protobuf #Heavily forked. Apparently was officially unbundlable back in the GYP days, and may be again in the future.
-    third_party/puffin #integral part of chrome
+    third_party/re2 # fedora too old
     third_party/rnnoise #use of private headers
-    third_party/shell-encryption #not available on any distro, also heavily patched
     third_party/skia #integral part of chrome
-    third_party/smhasher #not in Rawhide or Factory. AltLinux has it (libsmhasher) CONSIDER UNBUNDLING if we have it
     third_party/speech-dispatcher #Headers for a delay-loaded optional dependency
     third_party/sqlite #heavily forked version
     third_party/swiftshader #not available as a shared library
@@ -290,9 +287,9 @@ keeplibs=(
     #third_party/tflite #Not used by electron, but chrome needs it.
     #third_party/tflite/src/third_party/eigen3
     #third_party/tflite/src/third_party/fft2d
-    third_party/vulkan-deps/spirv-headers #Leap too old
-    third_party/vulkan-deps/spirv-tools #Leap too old
-    third_party/vulkan-deps/vulkan-headers #Leap too old. CONSIDER UNBUNDLING when all distros have new enough vulkan sdk
+    third_party/vulkan-deps/spirv-headers #15.5 too old
+    third_party/vulkan-deps/spirv-tools #15.5 too old
+    third_party/vulkan-deps/vulkan-headers #15.5 too old. CONSIDER UNBUNDLING when all distros have new enough vulkan sdk
     third_party/vulkan_memory_allocator #not in Factory
     third_party/webgpu-cts #Javascript code. Needed even if you're building chrome without webgpu
     third_party/webrtc #Integral part of chrome
@@ -313,7 +310,6 @@ keeplibs=(
     third_party/x11proto #derived code, not vendored dep
     third_party/zlib/contrib/minizip #https://bugzilla.redhat.com/show_bug.cgi?id=2240599 https://github.com/zlib-ng/minizip-ng/issues/447
     third_party/zlib/google #derived code, not vendored dep
-    third_party/zxcvbn-cpp #not in any distro, also heavily patched
     url/third_party/mozilla #derived code, not vendored dep
     v8/src/third_party/siphash #derived code, not vendored dep
     v8/src/third_party/utf8-decoder #derived code, not vendored dep
@@ -333,6 +329,8 @@ find third_party/electron_node/deps/cares -type f ! -name "*.gn" -a ! -name "*.g
 find third_party/electron_node/deps/nghttp2 -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/openssl -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/v8 -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
+rm -rvf third_party/electron_node/deps/v8/tools
+ln -srv v8/tools -t third_party/electron_node/deps/v8/
 find third_party/electron_node/deps/zlib -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 
 

@@ -10,7 +10,7 @@
 		<jobs>6</jobs>
 	</hardware>
 	<overwrite>
-	 <conditions>
+		<conditions>
 			<arch>aarch64</arch>
 		</conditions>
 		<hardware>
@@ -20,8 +20,9 @@
 		</hardware>
 	</overwrite>
 	<overwrite>
-	 <conditions>
+		<conditions>
 			<arch>x86_64</arch>
+			<arch>riscv64</arch>
 		</conditions>
 		<hardware>
 			<memory>

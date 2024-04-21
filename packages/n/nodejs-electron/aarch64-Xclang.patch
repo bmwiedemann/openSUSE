@@ -1,0 +1,15 @@
+--- src/base/allocator/partition_allocator/src/partition_alloc/BUILD.gn.orig
++++ src/base/allocator/partition_allocator/src/partition_alloc/BUILD.gn
+@@ -292,12 +292,6 @@ if (is_clang_or_gcc) {
+       # but they're not backwards compatible. Use base::CPU::has_mte()
+       # beforehand to confirm or use indirect functions (ifuncs) to select
+       # an MTE-specific implementation at dynamic link-time.
+-      cflags = [
+-        "-Xclang",
+-        "-target-feature",
+-        "-Xclang",
+-        "+mte",
+-      ]
+     }
+   }
+ 

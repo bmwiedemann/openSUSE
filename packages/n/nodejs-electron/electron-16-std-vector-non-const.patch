@@ -23,7 +23,7 @@ Index: electron-17.1.0/chrome/browser/process_singleton_posix.cc
 +                     const std::vector<uint8_t> additional_data,
                       SocketReader* reader);
  
-  private:
+   // Called when the ProcessSingleton that owns this class is about to be
 @@ -684,7 +684,7 @@ void ProcessSingleton::LinuxWatcher::Sta
  void ProcessSingleton::LinuxWatcher::HandleMessage(
      const std::string& current_dir,

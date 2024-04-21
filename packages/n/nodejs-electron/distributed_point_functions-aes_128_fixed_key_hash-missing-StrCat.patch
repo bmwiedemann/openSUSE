@@ -1,0 +1,10 @@
+--- src/third_party/distributed_point_functions/code/dpf/aes_128_fixed_key_hash.cc.old	2024-04-02 11:53:27.644284500 +0200
++++ src/third_party/distributed_point_functions/code/dpf/aes_128_fixed_key_hash.cc	2024-04-02 22:24:29.350771600 +0200
+@@ -26,6 +26,7 @@
+ #include "absl/numeric/int128.h"
+ #include "absl/status/status.h"
+ #include "absl/status/statusor.h"
++#include "absl/strings/str_cat.h"
+ #include "absl/types/span.h"
+ #include "openssl/err.h"
+ 

@@ -1,0 +1,32 @@
+From 5b2d53797e5580cbfea00d732fe25a97c7048b5b Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jdapena@igalia.com>
+Date: Wed, 24 Jan 2024 06:46:33 +0000
+Subject: [PATCH] IWYU: missing include for std::optional usage in
+ race_network_request_write_buffer_manager.h
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Bug: 957519
+Change-Id: Id3a6c3cc3c1273208bde43b70a2bd298695f7cc4
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5223947
+Reviewed-by: Shunya Shishido <sisidovski@chromium.org>
+Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+Cr-Commit-Position: refs/heads/main@{#1251264}
+---
+ .../service_worker/race_network_request_write_buffer_manager.h  | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/content/common/service_worker/race_network_request_write_buffer_manager.h b/content/common/service_worker/race_network_request_write_buffer_manager.h
+index 0e7f17417dbd9..ad9ea1348a977 100644
+--- a/content/common/service_worker/race_network_request_write_buffer_manager.h
++++ b/content/common/service_worker/race_network_request_write_buffer_manager.h
+@@ -5,6 +5,8 @@
+ #ifndef CONTENT_COMMON_SERVICE_WORKER_RACE_NETWORK_REQUEST_WRITE_BUFFER_MANAGER_H_
+ #define CONTENT_COMMON_SERVICE_WORKER_RACE_NETWORK_REQUEST_WRITE_BUFFER_MANAGER_H_
+ 
++#include <optional>
++
+ #include "base/containers/span.h"
+ #include "content/common/content_export.h"
+ #include "mojo/public/cpp/system/data_pipe.h"

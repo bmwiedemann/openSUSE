@@ -962,4 +962,41 @@ to Staging:F with it</comment>
     <comment></comment>
     <requestid>1166931</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>9acea5d40c4f8d788332affdf69cbc93</srcmd5>
+    <version>29.3.1</version>
+    <time>1713723967</time>
+    <user>anag+factory</user>
+    <comment>- Update to electron 29.3.1
+  * ABI break: NODE_MODULE_VERSION is now 121
+  * Chromium 122.0.6261.156
+  * Node 20.9.0
+  * V8 12.2
+  * The deprecated gpu-process-crashed event on app has been removed.
+  * The deprecated renderer-process-crashed event on app and crashed
+    event on WebContents and &lt;webview&gt; have been removed.
+  * Added WebContentsView and BaseWindow, replacing the now-deprecated BrowserView APIs.
+  * Added new webUtils.getPathForFile method to replace File.path augmentation. 
+  * see https://www.electronjs.org/blog/electron-29-0 and https://github.com/electron/electron/releases/tag/v29.0.0 for more
+  * Security fixes for Angle (CVE-2024-3516) and Compositing (CVE-2024-3157)
+- Drop upstreamed patches
+  * atspi.patch
+  * chromium-117-blink-BUILD-mnemonic.patch
+  * local_frame-local_frame_client-incomplete-WebBackgroundResourceFetchAssets.patch
+  * node-upgrade-llhttp-to-8.patch
+  * policy_templates-deterministic.patch
+  * v8-hide-private-symbols.patch
+  * web_local_frame_client-incomplete-WebBackgroundResourceFetchAssets.patch
+- Add patches to fix build errors
+  * aarch64-Xclang.patch
+  * absl2023-encapsulated_web_transport-StrCat.patch
+  * boringssl-internal-addc-cxx.patch
+  * chromium-122-avoid-SFINAE-TypeConverter.patch
+  * chromium-122-BookmarkNode-missing-operator.patch
+  * distributed_point_functions-aes_128_fixed_key_hash-missing-StrCat.patch
+  * distributed_point_functions-evaluate_prg_hwy-signature.patch
+  * fake_ssl_socket_client-Wlto-type-mismatch.patch
+  * grid_sizing_tree-Wchanges-meaning.patch</comment>
+    <requestid>1169279</requestid>
+  </revision>
 </revisionlist>

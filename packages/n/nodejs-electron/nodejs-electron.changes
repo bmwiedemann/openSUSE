@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Fri Apr 19 20:11:24 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Update to electron 29.3.1
+  * ABI break: NODE_MODULE_VERSION is now 121
+  * Chromium 122.0.6261.156
+  * Node 20.9.0
+  * V8 12.2
+  * The deprecated gpu-process-crashed event on app has been removed.
+  * The deprecated renderer-process-crashed event on app and crashed
+    event on WebContents and <webview> have been removed.
+  * Added WebContentsView and BaseWindow, replacing the now-deprecated BrowserView APIs.
+  * Added new webUtils.getPathForFile method to replace File.path augmentation. 
+  * see https://www.electronjs.org/blog/electron-29-0 and https://github.com/electron/electron/releases/tag/v29.0.0 for more
+  * Security fixes for Angle (CVE-2024-3516) and Compositing (CVE-2024-3157)
+- Drop upstreamed patches
+  * atspi.patch
+  * chromium-117-blink-BUILD-mnemonic.patch
+  * local_frame-local_frame_client-incomplete-WebBackgroundResourceFetchAssets.patch
+  * node-upgrade-llhttp-to-8.patch
+  * policy_templates-deterministic.patch
+  * v8-hide-private-symbols.patch
+  * web_local_frame_client-incomplete-WebBackgroundResourceFetchAssets.patch
+- Add patches to fix build errors
+  * aarch64-Xclang.patch
+  * absl2023-encapsulated_web_transport-StrCat.patch
+  * boringssl-internal-addc-cxx.patch
+  * chromium-122-avoid-SFINAE-TypeConverter.patch
+  * chromium-122-BookmarkNode-missing-operator.patch
+  * distributed_point_functions-aes_128_fixed_key_hash-missing-StrCat.patch
+  * distributed_point_functions-evaluate_prg_hwy-signature.patch
+  * fake_ssl_socket_client-Wlto-type-mismatch.patch
+  * grid_sizing_tree-Wchanges-meaning.patch
+  * hit_test_request-missing-optional.patch
+  * InternalAllocator-too-many-initializers.patch
+  * mt21_util-flax-vector-conversions.patch
+  * plus_address_types-missing-optional.patch
+  * race_network_request_write_buffer_manager-missing-optional.patch
+  * resolution_monitor-missing-bitset.patch
+  * script_promise_resolver-explicit-specialization.patch
+  * search_engine_choice_service-missing-optional.patch
+  * system-yuv.patch
+- Replace abseil-remove-unused-targets.patch with chromium-122-abseil-shims.patch
+- Remove dead code from third_party/
+  * aom-vpx-no-thread-wrapper.patch
+  * remove-dawn.patch
+  * remove-openscreen.patch
+  * remove-password-manager-and-policy.patch
+  * remove-puffin.patch
+  * remove-rust.patch
+  * remove AFL-2.0, BSD-Protection and IJG from licence list,
+    because the relevant libraries (xdg-mime, bsdiff and iccjpeg)
+    are no longer shipped.
+- Leap, Fedora: use bundled re2
+  * drop replace-StringPiece-with-string_view.patch
+- Fedora 38: use bundled abseil
+  * drop pending_task_safety_flag-abseil-2022-nullability.patch
+  * drop thread_annotations-fix-build-with-system-abseil.patch
+- Leap 15.5: Reverse upstream changes to build with old wayland
+  * wayland-proto-31-cursor-shape.patch
+- Leap 15.5/6: Reverse upstream changes to build with old ffmpeg
+  * Cr122-ffmpeg-new-channel-layout.patch
+- aarch64: reduce debuginfo due to linker OOM
+
+-------------------------------------------------------------------
 Thu Apr 11 18:55:40 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 28.3.0

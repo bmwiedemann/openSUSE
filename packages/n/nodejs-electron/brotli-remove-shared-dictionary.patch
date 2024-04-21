@@ -64,6 +64,7 @@ This feature does not build with brotli < 1.1
               "CompressionDictionaryTransportBackend",
 -             base::FEATURE_ENABLED_BY_DEFAULT);
 +             base::FEATURE_DISABLED_BY_DEFAULT);
- 
- // When both this feature and the kCompressionDictionaryTransportBackend feature
- // are enabled, the following will happen:
+ const base::FeatureParam<CompressionDictionaryTransportBackendVersion>::Option
+     kCompressionDictionaryTransportBackendVersionOptions[] = {
+         {CompressionDictionaryTransportBackendVersion::kV1, "v1"},
+

@@ -1,0 +1,58 @@
+Remove this code which is disabled (media/base/media_switches.cc) and depends on a private header
+
+--- src/media/base/libaom_thread_wrapper.cc.old	2024-04-02 09:53:17.097624400 +0000
++++ src/media/base/libaom_thread_wrapper.cc	2024-04-08 17:15:53.578155000 +0000
+@@ -5,16 +5,8 @@
+ #include "base/logging.h"
+ #include "media/base/codec_worker_impl.h"
+ #include "media/base/libvpx_thread_wrapper.h"
+-#include "third_party/libaom/source/libaom/aom_util/aom_thread.h"
+ 
+ namespace media {
+ 
+-void InitLibAomThreadWrapper() {
+-  const AVxWorkerInterface interface =
+-      CodecWorkerImpl<AVxWorkerInterface, AVxWorkerImpl, AVxWorker,
+-                      AVxWorkerStatus, NOT_OK, OK,
+-                      WORK>::GetCodecWorkerInterface();
+-  CHECK(aom_set_worker_interface(&interface));
+-}
+ 
+ }  // namespace media
+--- src/media/base/libvpx_thread_wrapper.cc.old	2024-04-02 09:53:17.097624400 +0000
++++ src/media/base/libvpx_thread_wrapper.cc	2024-04-08 17:15:46.565471400 +0000
+@@ -5,17 +5,8 @@
+ #include "media/base/libvpx_thread_wrapper.h"
+ 
+ #include "media/base/codec_worker_impl.h"
+-#include "third_party/libvpx/source/libvpx/vpx_util/vpx_thread.h"
+ 
+ namespace media {
+ 
+-void InitLibVpxThreadWrapper() {
+-  const VPxWorkerInterface interface =
+-      CodecWorkerImpl<VPxWorkerInterface, VPxWorkerImpl, VPxWorker,
+-                      VPxWorkerStatus, NOT_OK, OK,
+-                      WORK>::GetCodecWorkerInterface();
+-
+-  CHECK(vpx_set_worker_interface(&interface));
+-}
+ 
+ }  // namespace media
+--- src/media/base/media.cc.old	2024-04-02 09:53:17.097624400 +0000
++++ src/media/base/media.cc	2024-04-08 17:16:15.369345800 +0000
+@@ -53,14 +53,8 @@ class MediaInitializer {
+ #endif  // BUILDFLAG(ENABLE_FFMPEG)
+ 
+ #if BUILDFLAG(ENABLE_LIBVPX)
+-    if (base::FeatureList::IsEnabled(kLibvpxUseChromeThreads)) {
+-      InitLibVpxThreadWrapper();
+-    }
+ #endif  // BUILDFLAG(ENABLE_LIBVPX)
+ #if BUILDFLAG(ENABLE_LIBAOM)
+-    if (base::FeatureList::IsEnabled(kLibaomUseChromeThreads)) {
+-      InitLibAomThreadWrapper();
+-    }
+ #endif  // BUILDFLAG(ENABLE_LIBAOM)
+   }
+ 

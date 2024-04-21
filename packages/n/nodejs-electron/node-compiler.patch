@@ -36,9 +36,9 @@ Disable various compiler configs (currently warning suppression). Like  chromium
 -    cflags_cc += [ "-Wno-sign-compare" ]
    }
  }
---- src/third_party/electron_node/deps/base64/BUILD.gn.orig
-+++ src/third_party/electron_node/deps/base64/BUILD.gn
-@@ -13,11 +13,6 @@ static_library("base64") {
+--- src/third_party/electron_node/deps/base64/BUILD.gn.orig	2024-03-27 16:38:36.306226966 +0100
++++ src/third_party/electron_node/deps/base64/BUILD.gn	2024-03-27 20:24:12.219928228 +0100
+@@ -21,11 +21,6 @@ static_library("base64") {
  
    public_configs = [ ":base64_config" ]
  
@@ -50,65 +50,65 @@ Disable various compiler configs (currently warning suppression). Like  chromium
  
    sources = [
      "base64/include/libbase64.h",
-@@ -75,7 +70,6 @@ source_set("base64_ssse3") {
-   defines = [ "HAVE_SSSE3=1" ]
+@@ -44,7 +39,6 @@ source_set("base64_ssse3") {
+     defines = [ "HAVE_SSSE3=1" ]
  
-   cflags = [ "-mssse3" ]
--  cflags_c = [ "-Wno-implicit-fallthrough" ]
+     cflags = [ "-mssse3" ]
+-    cflags_c = [ "-Wno-implicit-fallthrough" ]
+   }
  
-   sources = [ "base64/lib/arch/ssse3/ssse3_codec.c" ]
- }
-@@ -86,7 +80,6 @@ source_set("base64_sse41") {
-   defines = [ "HAVE_SSE41=1" ]
+   sources = [ "base64/lib/arch/ssse3/codec.c" ]
+@@ -57,7 +51,6 @@ source_set("base64_sse41") {
+     defines = [ "HAVE_SSE41=1" ]
  
-   cflags = [ "-msse4.1" ]
--  cflags_c = [ "-Wno-implicit-fallthrough" ]
+     cflags = [ "-msse4.1" ]
+-    cflags_c = [ "-Wno-implicit-fallthrough" ]
+   }
  
-   sources = [ "base64/lib/arch/sse41/sse41_codec.c" ]
- }
-@@ -100,7 +93,6 @@ source_set("base64_sse42") {
-   ]
+   sources = [ "base64/lib/arch/sse41/codec.c" ]
+@@ -74,7 +67,6 @@ source_set("base64_sse42") {
+     ]
  
-   cflags = [ "-msse4.2" ]
--  cflags_c = [ "-Wno-implicit-fallthrough" ]
+     cflags = [ "-msse4.2" ]
+-    cflags_c = [ "-Wno-implicit-fallthrough" ]
+   }
  
-   sources = [ "base64/lib/arch/sse42/sse42_codec.c" ]
- }
-@@ -111,7 +103,6 @@ source_set("base64_avx") {
-   defines = [ "HAVE_AVX=1" ]
+   sources = [ "base64/lib/arch/sse42/codec.c" ]
+@@ -87,7 +79,6 @@ source_set("base64_avx") {
+     defines = [ "HAVE_AVX=1" ]
  
-   cflags = [ "-mavx" ]
--  cflags_c = [ "-Wno-implicit-fallthrough" ]
+     cflags = [ "-mavx" ]
+-    cflags_c = [ "-Wno-implicit-fallthrough" ]
+   }
  
-   sources = [ "base64/lib/arch/avx/avx_codec.c" ]
- }
-@@ -122,10 +113,6 @@ source_set("base64_avx2") {
-   defines = [ "HAVE_AVX2=1" ]
+   sources = [ "base64/lib/arch/avx/codec.c" ]
+@@ -100,10 +91,6 @@ source_set("base64_avx2") {
+     defines = [ "HAVE_AVX2=1" ]
  
-   cflags = [ "-mavx2" ]
--  cflags_c = [
--    "-Wno-implicit-fallthrough",
--    "-Wno-implicit-function-declaration",
--  ]
+     cflags = [ "-mavx2" ]
+-    cflags_c = [
+-      "-Wno-implicit-fallthrough",
+-      "-Wno-implicit-function-declaration",
+-    ]
+   }
  
-   sources = [ "base64/lib/arch/avx2/avx2_codec.c" ]
- }
-@@ -136,7 +123,6 @@ source_set("base64_neon32") {
-   defines = [ "HAVE_NEON32=1" ]
+   sources = [ "base64/lib/arch/avx2/codec.c" ]
+@@ -116,7 +103,6 @@ source_set("base64_neon32") {
+     defines = [ "HAVE_NEON32=1" ]
  
-   cflags = [ "-mfpu=neon" ]
--  cflags_c = [ "-Wno-implicit-fallthrough" ]
+     cflags = [ "-mfpu=neon" ]
+-    cflags_c = [ "-Wno-implicit-fallthrough" ]
+   }
  
-   sources = [ "base64/lib/arch/neon32/neon32_codec.c" ]
- }
-@@ -146,7 +132,6 @@ source_set("base64_neon64") {
+   sources = [ "base64/lib/arch/neon32/codec.c" ]
+@@ -128,7 +114,6 @@ source_set("base64_neon64") {
+   if (target_cpu == "arm64") {
+     defines = [ "HAVE_NEON64=1" ]
  
-   defines = [ "HAVE_NEON64=1" ]
+-    cflags_c = [ "-Wno-implicit-fallthrough" ]
+   }
  
--  cflags_c = [ "-Wno-implicit-fallthrough" ]
- 
-   sources = [ "base64/lib/arch/neon64/neon64_codec.c" ]
- }
+   sources = [ "base64/lib/arch/neon64/codec.c" ]
 --- src/third_party/electron_node/deps/histogram/BUILD.gn.old
 +++ src/third_party/electron_node/deps/histogram/BUILD.gn
 @@ -1,12 +1,6 @@

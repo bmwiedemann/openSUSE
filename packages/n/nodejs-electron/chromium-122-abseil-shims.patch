@@ -1,0 +1,408 @@
+diff '--color=auto' -uprN src/build/linux/unbundle.old/absl_base.gn src/build/linux/unbundle/absl_base.gn
+--- src/build/linux/unbundle.old/absl_base.gn	2024-04-02 09:53:10.734295000 +0000
++++ src/build/linux/unbundle/absl_base.gn	2024-04-07 17:46:37.658214100 +0000
+@@ -13,6 +13,14 @@ pkg_config("system_absl_core_headers") {
+   packages = [ "absl_core_headers" ]
+ }
+ 
++pkg_config("system_absl_nullability") {
++  packages = [ "absl_nullability" ]
++}
++
++pkg_config("system_absl_prefetch") {
++  packages = [ "absl_prefetch" ]
++}
++
+ shim_headers("base_shim") {
+   root_path = "."
+   prefix = "absl/base/"
+@@ -60,8 +68,41 @@ source_set("core_headers") {
+   public_configs = [ ":system_absl_core_headers" ]
+ }
+ 
+-source_set("config_test") {
++shim_headers("nullability_shim") {
++  root_path = "."
++  prefix = "absl/base/"
++  headers = [
++    "nullability.h",
++  ]
++}
++
++source_set("nullability") {
++  deps = [ ":nullability_shim" ]
++  public_configs = [ ":system_absl_nullability" ]
+ }
+ 
++shim_headers("prefetch_shim") {
++  root_path = "."
++  prefix = "absl/base/"
++  headers = [
++    "prefetch.h",
++  ]
++}
++
++source_set("prefetch") {
++  deps = [ ":prefetch_shim" ]
++  public_configs = [ ":system_absl_prefetch" ]
++}
++
++source_set("no_destructor") {
++  # Dummy — unavailable with abseil 202308 aand chromium 122 does not use it
++}
++
++source_set("config_test") {
++}
++source_set("no_destructor_test") {
++}
++source_set("nullability_test") {
++}
+ source_set("prefetch_test") {
+ }
+diff '--color=auto' -uprN src/build/linux/unbundle.old/absl_container.gn src/build/linux/unbundle/absl_container.gn
+--- src/build/linux/unbundle.old/absl_container.gn	2024-04-02 09:53:10.734295000 +0000
++++ src/build/linux/unbundle/absl_container.gn	2024-04-07 17:12:25.979311400 +0000
+@@ -111,9 +111,19 @@ source_set("node_hash_set") {
+ 
+ source_set("common_policy_traits_test") {
+ }
++source_set("fixed_array_test") {
++}
++source_set("flat_hash_map_test") {
++}
++source_set("flat_hash_set_test") {
++}
+ source_set("inlined_vector_test") {
+ }
+ source_set("node_slot_policy_test") {
+ }
++source_set("raw_hash_set_allocator_test") {
++}
++source_set("raw_hash_set_test") {
++}
+ source_set("sample_element_size_test") {
+ }
+diff '--color=auto' -uprN src/build/linux/unbundle.old/absl_crc.gn src/build/linux/unbundle/absl_crc.gn
+--- src/build/linux/unbundle.old/absl_crc.gn	1970-01-01 00:00:00.000000000 +0000
++++ src/build/linux/unbundle/absl_crc.gn	2024-04-07 17:29:23.349823700 +0000
+@@ -0,0 +1,4 @@
++source_set("crc32c_test") {}
++source_set("crc_cord_state_test") {}
++source_set("crc_memcpy_test") {}
++source_set("non_temporal_memcpy_test") {}
+diff '--color=auto' -uprN src/build/linux/unbundle.old/absl_debugging.gn src/build/linux/unbundle/absl_debugging.gn
+--- src/build/linux/unbundle.old/absl_debugging.gn	2024-04-02 09:53:10.734295000 +0000
++++ src/build/linux/unbundle/absl_debugging.gn	2024-04-07 17:12:54.682550100 +0000
+@@ -45,3 +45,6 @@ source_set("symbolize") {
+   deps = [ ":symbolize_shim" ]
+   public_configs = [ ":system_absl_symbolize" ]
+ }
++
++source_set("stacktrace_test") {
++}
+diff '--color=auto' -uprN src/build/linux/unbundle.old/absl_flags.gn src/build/linux/unbundle/absl_flags.gn
+--- src/build/linux/unbundle.old/absl_flags.gn	2024-04-02 09:53:10.734295000 +0000
++++ src/build/linux/unbundle/absl_flags.gn	2024-04-07 17:14:21.789944600 +0000
+@@ -48,3 +48,5 @@ source_set("usage") {
+   deps = [ ":usage_shim" ]
+   public_configs = [ ":system_absl_flags_usage" ]
+ }
++
++source_set("flag_test") {}
+diff '--color=auto' -uprN src/build/linux/unbundle.old/absl_functional.gn src/build/linux/unbundle/absl_functional.gn
+--- src/build/linux/unbundle.old/absl_functional.gn	2024-04-02 09:53:10.734295000 +0000
++++ src/build/linux/unbundle/absl_functional.gn	2024-04-07 17:14:18.081948700 +0000
+@@ -46,4 +46,10 @@ source_set("function_ref") {
+   public_configs = [ ":system_absl_function_ref" ]
+ }
+ 
++source_set("overload") {
++  # Dummy — unavailable with abseil 202308 aand chromium 122 does not use it
++}
++
+ source_set("any_invocable_test") {}
++source_set("function_ref_test") {}
++source_set("overload_test") {}
+diff '--color=auto' -uprN src/build/linux/unbundle.old/absl_hash.gn src/build/linux/unbundle/absl_hash.gn
+--- src/build/linux/unbundle.old/absl_hash.gn	2024-04-02 09:53:10.734295000 +0000
++++ src/build/linux/unbundle/absl_hash.gn	2024-04-07 17:19:44.496916100 +0000
+@@ -16,6 +16,8 @@ source_set("hash") {
+   public_configs = [ ":system_absl_hash" ]
+ }
+ 
++source_set("hash_instantiated_test") {
++}
+ source_set("hash_test") {
+ }
+ source_set("low_level_hash_test") {
+diff '--color=auto' -uprN src/build/linux/unbundle.old/absl_log.gn src/build/linux/unbundle/absl_log.gn
+--- src/build/linux/unbundle.old/absl_log.gn	2024-04-02 09:53:10.734295000 +0000
++++ src/build/linux/unbundle/absl_log.gn	2024-04-07 17:45:56.568886800 +0000
+@@ -1,3 +1,67 @@
++import("//build/config/linux/pkg_config.gni")
++import("//build/shim_headers.gni")
++
++pkg_config("system_absl_absl_check") {
++  packages = [ "absl_absl_check" ]
++}
++
++pkg_config("system_absl_absl_log") {
++  packages = [ "absl_absl_log" ]
++}
++
++pkg_config("system_absl_die_if_null") {
++  packages = [ "absl_die_if_null" ]
++}
++
++pkg_config("system_absl_log") {
++  packages = [ "absl_log" ]
++}
++shim_headers("absl_check_shim") {
++  root_path = "."
++  prefix = "absl/log/"
++  headers = [ "absl_check.h" ]
++}
++
++source_set("absl_check") {
++  deps = [ ":absl_check_shim" ]
++  public_configs = [ ":system_absl_absl_check" ]
++}
++
++shim_headers("absl_log_shim") {
++  root_path = "."
++  prefix = "absl/log/"
++  headers = [ "absl_log.h" ]
++}
++
++source_set("absl_log") {
++  deps = [ ":absl_log_shim" ]
++  public_configs = [ ":system_absl_absl_log" ]
++}
++
++shim_headers("die_if_null_shim") {
++  root_path = "."
++  prefix = "absl/log/"
++  headers = [ "die_if_null.h" ]
++}
++
++source_set("die_if_null") {
++  deps = [ ":die_if_null_shim" ]
++  public_configs = [ ":system_absl_die_if_null" ]
++}
++
++shim_headers("log_shim") {
++  root_path = "."
++  prefix = "absl/log/"
++  headers = [ "log.h" ]
++}
++
++source_set("log") {
++  deps = [ ":log_shim" ]
++  public_configs = [ ":system_absl_log" ]
++}
++
++source_set("absl_check_test") {}
++source_set("absl_log_basic_test") {}
+ source_set("basic_log_test") {}
+ source_set("check_test") {}
+ source_set("die_if_null_test") {}
+@@ -11,3 +75,4 @@ source_set("log_sink_test") {}
+ source_set("log_streamer_test") {}
+ source_set("scoped_mock_log_test") {}
+ source_set("stripping_test") {}
++source_set("vlog_is_on_test") {}
+diff '--color=auto' -uprN src/build/linux/unbundle.old/absl_log_internal.gn src/build/linux/unbundle/absl_log_internal.gn
+--- src/build/linux/unbundle.old/absl_log_internal.gn	2024-04-02 09:53:10.734295000 +0000
++++ src/build/linux/unbundle/absl_log_internal.gn	2024-04-07 17:19:34.195045600 +0000
+@@ -1 +1,2 @@
++source_set("fnmatch_test") {}
+ source_set("stderr_log_sink_test") {}
+diff '--color=auto' -uprN src/build/linux/unbundle.old/absl_numeric.gn src/build/linux/unbundle/absl_numeric.gn
+--- src/build/linux/unbundle.old/absl_numeric.gn	2024-04-02 09:53:10.734295000 +0000
++++ src/build/linux/unbundle/absl_numeric.gn	2024-04-07 17:20:05.380981000 +0000
+@@ -30,3 +30,5 @@ source_set("int128") {
+   deps = [ ":int128_shim" ]
+   public_configs = [ ":system_absl_int128" ]
+ }
++
++source_set("int128_test") {}
+diff '--color=auto' -uprN src/build/linux/unbundle.old/absl_random.gn src/build/linux/unbundle/absl_random.gn
+--- src/build/linux/unbundle.old/absl_random.gn	2024-04-02 09:53:10.734295000 +0000
++++ src/build/linux/unbundle/absl_random.gn	2024-04-07 17:36:36.041139000 +0000
+@@ -1,6 +1,48 @@
+ import("//build/config/linux/pkg_config.gni")
+ import("//build/shim_headers.gni")
+ 
++pkg_config("system_absl_random_bit_gen_ref") {
++  packages = [ "absl_random_bit_gen_ref" ]
++}
++
++shim_headers("bit_gen_ref_shim") {
++  root_path = "."
++  prefix = "absl/random/"
++  headers = [ "bit_gen_ref.h" ]
++}
++
++source_set("bit_gen_ref") {
++  deps = [ ":bit_gen_ref_shim" ]
++  public_configs = [ ":system_absl_random_bit_gen_ref" ]
++}
++
++pkg_config("system_absl_random_distributions") {
++  packages = [ "absl_random_distributions" ]
++}
++
++shim_headers("distributions_shim") {
++  root_path = "."
++  prefix = "absl/random/"
++  headers = [
++    "bernoulli_distribution.h",
++    "beta_distribution.h",
++    "discrete_distribution.h",
++    "distributions.h",
++    "exponential_distribution.h",
++    "gaussian_distribution.h",
++    "log_uniform_int_distribution.h",
++    "poisson_distribution.h",
++    "uniform_int_distribution.h",
++    "uniform_real_distribution.h",
++    "zipf_distribution.h",
++  ]
++}
++
++source_set("distributions") {
++  deps = [ ":distributions_shim" ]
++  public_configs = [ ":system_absl_random_distributions" ]
++}
++
+ pkg_config("system_absl_random_random") {
+   packages = [ "absl_random_random" ]
+ }
+@@ -15,3 +57,4 @@ source_set("random") {
+   deps = [ ":random_shim" ]
+   public_configs = [ ":system_absl_random_random" ]
+ }
++
+diff '--color=auto' -uprN src/build/linux/unbundle.old/absl_status.gn src/build/linux/unbundle/absl_status.gn
+--- src/build/linux/unbundle.old/absl_status.gn	2024-04-02 09:53:10.734295000 +0000
++++ src/build/linux/unbundle/absl_status.gn	2024-04-07 17:20:21.398873800 +0000
+@@ -34,5 +34,7 @@ source_set("statusor") {
+   public_configs = [ ":system_absl_statusor" ]
+ }
+ 
++source_set("status_test") {
++}
+ source_set("statusor_test") {
+ }
+diff '--color=auto' -uprN src/build/linux/unbundle.old/absl_strings.gn src/build/linux/unbundle/absl_strings.gn
+--- src/build/linux/unbundle.old/absl_strings.gn	2024-04-02 09:53:10.734295000 +0000
++++ src/build/linux/unbundle/absl_strings.gn	2024-04-07 17:52:10.775957800 +0000
+@@ -9,6 +9,10 @@ pkg_config("system_absl_strings") {
+   packages = [ "absl_strings" ]
+ }
+ 
++pkg_config("system_absl_string_view") {
++  packages = [ "absl_string_view" ]
++}
++
+ pkg_config("system_absl_str_format") {
+   packages = [ "absl_str_format" ]
+ }
+@@ -59,8 +63,27 @@ source_set("str_format") {
+   public_configs = [ ":system_absl_str_format" ]
+ }
+ 
++shim_headers("string_view_shim") {
++  root_path = "."
++  prefix = "absl/strings/"
++  headers = [ "string_view.h" ]
++}
++
++source_set("string_view") {
++  deps = [ ":string_view_shim" ]
++  public_configs = [ ":system_absl_string_view" ]
++}
++
++source_set("has_ostream_operator") {
++  # Dummy — unavailable with abseil 202308 aand chromium 122 does not use it
++}
++
+ source_set("ascii_test") {
+ }
++source_set("char_formatting_test") {
++}
++source_set("charset_test") {
++}
+ source_set("cord_buffer_test") {
+ }
+ source_set("cord_data_edge_test") {
+@@ -85,8 +108,30 @@ source_set("cordz_update_scope_test") {
+ }
+ source_set("cordz_update_tracker_test") {
+ }
++source_set("damerau_levenshtein_distance_test") {
++}
++source_set("has_absl_stringify_test") {
++}
++source_set("has_ostream_operator_test") {
++}
+ source_set("match_test") {
+ }
++source_set("str_format_arg_test") {
++}
++source_set("str_format_bind_test") {
++}
++source_set("str_format_checker_test") {
++}
++source_set("str_format_convert_test") {
++}
++source_set("str_format_extension_test") {
++}
++source_set("str_format_output_test") {
++}
++source_set("str_format_parser_test") {
++}
++source_set("str_format_test") {
++}
+ source_set("str_replace_test") {
+ }
+ source_set("string_view_test") {
+diff '--color=auto' -uprN src/build/linux/unbundle.old/absl_synchronization.gn src/build/linux/unbundle/absl_synchronization.gn
+--- src/build/linux/unbundle.old/absl_synchronization.gn	2024-04-02 09:53:10.734295000 +0000
++++ src/build/linux/unbundle/absl_synchronization.gn	2024-04-07 17:26:28.412783500 +0000
+@@ -20,3 +20,6 @@ source_set("synchronization") {
+   deps = [ ":synchronization_shim" ]
+   public_configs = [ ":system_absl_synchronization" ]
+ }
++
++source_set("kernel_timeout_internal_test") {}
++source_set("waiter_test") {}
+diff '--color=auto' -uprN src/build/linux/unbundle.old/absl_time.gn src/build/linux/unbundle/absl_time.gn
+--- src/build/linux/unbundle.old/absl_time.gn	2024-04-02 09:53:10.734295000 +0000
++++ src/build/linux/unbundle/absl_time.gn	2024-04-07 17:26:42.305628700 +0000
+@@ -19,3 +19,5 @@ source_set("time") {
+   deps = [ ":time_shim" ]
+   public_configs = [ ":system_absl_time" ]
+ }
++
++source_set("time_test") {}
+diff '--color=auto' -uprN src/build/linux/unbundle.old/absl_utility.gn src/build/linux/unbundle/absl_utility.gn
+--- src/build/linux/unbundle.old/absl_utility.gn	2024-04-02 09:53:10.734295000 +0000
++++ src/build/linux/unbundle/absl_utility.gn	2024-04-07 17:26:54.834405600 +0000
+@@ -15,3 +15,5 @@ source_set("utility") {
+   deps = [ ":utility_shim" ]
+   public_configs = [ ":system_absl_utility" ]
+ }
++
++source_set("if_constexpr_test") {}
+diff '--color=auto' -uprN src/build/linux/unbundle.old/replace_gn_files.py src/build/linux/unbundle/replace_gn_files.py
+--- src/build/linux/unbundle.old/replace_gn_files.py	2024-04-02 09:53:10.734295000 +0000
++++ src/build/linux/unbundle/replace_gn_files.py	2024-04-07 17:29:53.274515100 +0000
+@@ -20,6 +20,7 @@ REPLACEMENTS = {
+   'absl_base': 'third_party/abseil-cpp/absl/base/BUILD.gn',
+   'absl_cleanup': 'third_party/abseil-cpp/absl/cleanup/BUILD.gn',
+   'absl_container': 'third_party/abseil-cpp/absl/container/BUILD.gn',
++  'absl_crc': 'third_party/abseil-cpp/absl/crc/BUILD.gn',
+   'absl_debugging': 'third_party/abseil-cpp/absl/debugging/BUILD.gn',
+   'absl_flags': 'third_party/abseil-cpp/absl/flags/BUILD.gn',
+   'absl_functional': 'third_party/abseil-cpp/absl/functional/BUILD.gn',
