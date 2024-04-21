@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Apr 18 01:33:22 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 1.0.0:
+  * Seat: don't set input color if no character input
+  * deps: update zig-wayland to fix aarch64 build
+  * Lock: ignore password submission before locked event
+  * auth: fix getting username on FreeBSD
+  * Lock: add -ignore-empty-password option
+  * docs: mention existence and usefulness of swayidle
+  * Output: don't destroy surface before role object
+  * docs: link mirrors in readme
+  * Lock: zero password buffer memory on backspace
+  * docs: resolve ambiguity in readme
+  * Lock: use an optional type for ready_fd
+  * build: update to Zig 0.11.0
+  * cli: fix -log-level since Zig 0.11.0
+  * Lock: delete last UTF-8 codepoint on backspace
+  * waylock: update help text
+  * Lock: add -ready-fd option
+  * docs: migrate to codeberg
+
+-------------------------------------------------------------------
 Sun Mar 17 09:51:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.5:

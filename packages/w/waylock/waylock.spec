@@ -16,15 +16,15 @@
 #
 
 
-%global _zig_wayland_ver   65475badb37fdfa06ac091554fdc81689a37a72a
-%global _zig_xkbcommon_ver 7b188de0ba794b52eb70340abf2469b858630816
+%global _zig_wayland_ver   73fed093301b2e5f58998aa4797ce952bd148676
+%global _zig_xkbcommon_ver 7e09b389373b060148c0ca050e0b525e118d91e7
 Name:           waylock
-Version:        0.6.5
+Version:        1.0.0
 Release:        0
 Summary:        Small screenlocker for Wayland compositors
 License:        ISC
 URL:            https://codeberg.org/ifreund/waylock
-Source0:        https://codeberg.org/ifreund/waylock/archive/v%{version}.tar.gz
+Source0:        https://codeberg.org/ifreund/waylock/releases/download/v%{version}/waylock-%{version}.tar.gz
 Source1:        waylock.pamd
 Source2:        https://isaacfreund.com/public_key.txt#/%{name}.keyring
 Source3:        https://codeberg.org/ifreund/waylock/releases/download/v%{version}/waylock-%{version}.tar.gz.sig
@@ -46,7 +46,7 @@ Screenlocker for Wayland compositors implementing ext-session-lock-v1.
 cause the session to be unlocked.)
 
 %prep
-%setup -n %{name}
+%autosetup
 
 # Replace with configuration that works in openSUSE
 cp %{SOURCE1} ./pam.d/waylock
