@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 12 17:03:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.13.4:
+  * Raise error on incompatible singleton timeout and mode args
+- update to 3.13.3:
+  * Make singleton class instance dict unique per subclass
+
+-------------------------------------------------------------------
 Mon Mar 25 17:29:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.13.2:
