@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiosqlite
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,27 +19,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiosqlite
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        AsyncIO Bridge to the Standard Python sqlite3 Module
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jreese/aiosqlite
 Source:         https://files.pythonhosted.org/packages/source/a/aiosqlite/aiosqlite-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
-%if 0%{?python_version_nodots} < 38
-Requires:       python-typing-extensions >= 4
-%endif
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module typing-extensions >= 4 if %python-base < 3.8}
-BuildRequires:  %{pythons}
-# /SECTION
 %python_subpackages
 
 %description
