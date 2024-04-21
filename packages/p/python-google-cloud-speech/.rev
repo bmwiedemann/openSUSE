@@ -234,4 +234,21 @@
   * Allow users to explicitly configure universe domain</comment>
     <requestid>1143975</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f559dc5311a8b9df16daf16c5a63c976</srcmd5>
+    <version>2.26.0</version>
+    <time>1713724102</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.26.0:
+  * add translation_config in RecognitionConfig message
+  * add API for writing BatchRecognize transcripts in SRT and VTT formats
+  * Require google-api-core&gt;=1.34.1
+  * fix ValueError in test__validate_universe_domain
+  * Add google-auth as a direct dependency
+  * Add staticmethod decorator to _get_client_cert_source and
+    _get_api_endpoint
+  * Resolve AttributeError 'Credentials' object has no attribute
+    'universe_domain'</comment>
+    <requestid>1169413</requestid>
+  </revision>
 </revisionlist>
