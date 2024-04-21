@@ -309,4 +309,24 @@
   * Improved inline code documentation for the crypto module</comment>
     <requestid>1064207</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d5389869fd39bf1ce4c3ef95a381b9b7</srcmd5>
+    <version>1.13.0</version>
+    <time>1713724021</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.13.0:
+  * Fix validation messages for validate_key and encrypt_key
+  * Added support for rediscluster via ext:redisclusternm
+  * Removed the need to install mock library to run tests
+
+- Actually correct BuildRequires.
+  * Fixed issue #180 - KeyError when loading deleted session
+- add glibc-locale dependency for tests
+  * Session cookies will now provide support for ``SameSite`` through the ``samesite`` option.
+ * Fix bug with cookie deletion on leap years. Patch contributed
+- minor spec improvement
+  * Added an optimization to the FileNamespaceContainer when used with
+    Session, such that the pickled contents of the file are not</comment>
+    <requestid>1169355</requestid>
+  </revision>
 </revisionlist>
