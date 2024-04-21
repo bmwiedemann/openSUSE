@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Apr 20 22:27:51 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.1.5
+  * A big focus in this release was on animations. I've animated
+    many more actions: window movement, resizing, and closing.
+  * Spring animations are now more robust: values and durations are
+    clamped more aggressively where it makes sense.
+  * Niri now has basic variable refresh rate (VRR) support.
+  * IPC improvements
+  * Added an allow-when-locked=true flag for spawn key bindings
+    that makes them work when the session is locked.
+  * Previous view position is now restored upon unfullscreening a
+    window.
+  * The SIGPIPE handler is now set to default in niri msg to
+    prevent panic backtraces from showing up when stdout is closed.
+  * The mouse cursor is now hidden upon touchscreen interaction.
+  * Corrected some DRM leasing behavior to fix crashes when DRM
+    leasing is unavailable and better handle hotplugging.
+  * Added an ease-out-quad easing curve.
+  * Fixed warp-mouse-to-focus not triggering when a window is
+    closed by unmapping its buffer.
+  * Fixed the horizontal touchpad gesture redrawing continuously
+    rather than only on touchpad events.
+  * Fixed overdamped spring instability being able to crash the
+    compositor.
+  * Added a microphone mute example bind to the default config.
+  
+-------------------------------------------------------------------
 Sun Jan 28 03:08:01 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Initial package
