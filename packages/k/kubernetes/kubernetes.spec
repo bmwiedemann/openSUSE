@@ -17,22 +17,22 @@
 
 
 # baseversion - base minor version (n) of kubernetes for this package
-%define baseversion 1.29
+%define baseversion 1.30
 
 # baseversionminus1 - previous base minor (n-1) version of kubernetes
-%define baseversionminus1 1.28
+%define baseversionminus1 1.29
 # versionminus1 - full previous base minor (n-1) version of kubernetes, including point revision
-%define versionminus1 1.28.8
+%define versionminus1 1.29.4
 
 # baseversionminus2 - previous base minor (n-2) version of kubernetes
-%define baseversionminus2 1.27
+%define baseversionminus2 1.28
 # versionminus2 - full previous base minor (n-2) version of kubernetes, including point revision
-%define versionminus2 1.27.12
+%define versionminus2 1.28.9
 
 # baseversionminus3 - previous base minor (n-3) version of kubernetes
-%define baseversionminus3 1.26
+%define baseversionminus3 1.27
 # versionminus3 - full previous base minor (n-3) version of kubernetes, including point revision
-%define versionminus3 1.26.15
+%define versionminus3 1.27.13
 
 
 # etcdversion - version of etcd
@@ -42,20 +42,20 @@
 # etcdversionminus2 - version of etcd for versionminus2
 %define etcdversionminus2 3.5.12
 # etcdversionminus3 - version of etcd for versionminus3
-%define etcdversionminus3 3.5.10
+%define etcdversionminus3 3.5.12
 
 
 # corednsversion - version of coredns
 %define corednsversion 1.11.1
 # corednsversionminus1 - version of coredns for versionminus1
-%define corednsversionminus1 1.10.1
+%define corednsversionminus1 1.11.1
 # corednsversionminus2 - version of coredns for versionminus2
 %define corednsversionminus2 1.10.1
 # corednsversionminus3 - version of coredns for versionminus3
-%define corednsversionminus3 1.9.3
+%define corednsversionminus3 1.10.1
 
 Name:           kubernetes
-Version:        1.29.3
+Version:        1.30.0
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
