@@ -41,7 +41,11 @@ Patch3:         qbittorrent-altpython.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libboost_system-devel >= 1.66
+%if 0%{?suse_version} > 1500
+BuildRequires:  libboost_system-devel
+%else
+BuildRequires:  libboost_system1_75_0-devel
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  cmake(Qt6Core) >= 6.2
