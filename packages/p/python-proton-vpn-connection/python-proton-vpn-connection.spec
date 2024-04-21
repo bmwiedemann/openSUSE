@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-proton-vpn-connection
-Version:        0.14.2
+Version:        0.14.4
 Release:        0
 Summary:        Proton VPN connection interface
 License:        GPL-3.0-or-later

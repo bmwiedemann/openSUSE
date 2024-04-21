@@ -17,4 +17,14 @@
 </comment>
     <requestid>1160680</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fad07f261024100aba2848239ebefa01</srcmd5>
+    <version>0.14.4</version>
+    <time>1713724135</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.14.4:
+  * Add WireGuard ports
+  * protonvpn-connection (0.14.3) unstable; urgency=medium</comment>
+    <requestid>1169467</requestid>
+  </revision>
 </revisionlist>
