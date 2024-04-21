@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zarr
-Version:        2.17.1
+Version:        2.17.2
 Release:        0
 Summary:        An implementation of chunked, compressed, N-dimensional arrays for Python
 License:        MIT
@@ -37,7 +37,7 @@ Requires:       python >= 3.8
 Requires:       python-asciitree
 Requires:       python-fasteners
 Requires:       python-numcodecs >= 0.10.0
-Requires:       python-numpy >= 1.21.1
+Requires:       python-numpy >= 1.23
 Suggests:       python-dbm
 Suggests:       python-ipytree
 Suggests:       python-msgpack
@@ -49,7 +49,7 @@ BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module fasteners}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module numcodecs >= 0.10.0}
-BuildRequires:  %{python_module numpy >= 1.21.1}
+BuildRequires:  %{python_module numpy >= 1.23}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages

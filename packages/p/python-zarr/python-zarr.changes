@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr 20 08:12:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.2:
+  * [v3] Dramatically reduce number of __contains__ requests in
+    favor of optimistically calling __getitem__ and handling any
+    error that may arise.
+  * [v3] Reuse the downloaded array metadata when creating an
+    Array.
+  * Optimize Array.info so that it calls getsize only once.
+  * Override IPython _repr_*_ methods to avoid expensive lookups
+    against object stores.
+  * FSStore now raises rather than return bad data.
+  * Add CI test environment for Python 3.12
+  * Bump minimum supported NumPy version to 1.23 (per spec 0000)
+
+-------------------------------------------------------------------
 Sat Mar 16 19:53:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.17.1

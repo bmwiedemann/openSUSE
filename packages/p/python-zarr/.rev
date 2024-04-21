@@ -131,4 +131,23 @@
     <comment></comment>
     <requestid>1159085</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f50bfe058832dec5b573d10b9ba96109</srcmd5>
+    <version>2.17.2</version>
+    <time>1713724003</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.17.2:
+  * [v3] Dramatically reduce number of __contains__ requests in
+    favor of optimistically calling __getitem__ and handling any
+    error that may arise.
+  * [v3] Reuse the downloaded array metadata when creating an
+    Array.
+  * Optimize Array.info so that it calls getsize only once.
+  * Override IPython _repr_*_ methods to avoid expensive lookups
+    against object stores.
+  * FSStore now raises rather than return bad data.
+  * Add CI test environment for Python 3.12
+  * Bump minimum supported NumPy version to 1.23 (per spec 0000)</comment>
+    <requestid>1169325</requestid>
+  </revision>
 </revisionlist>
