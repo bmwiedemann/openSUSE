@@ -244,4 +244,33 @@ The upstream has developed for a long time and waylyrics has been stable, althou
   * build: add icon for win32 build</comment>
     <requestid>1167132</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>56a6e2fa5f90ad7c598de5113ebece67</srcmd5>
+    <version>0.2.19</version>
+    <time>1713723997</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.2.19:
+  * chore: release v0.2.19
+  * fix(i18n): load i18n on windows
+  * fix: underscore not showing in display mode menu
+  * build: enable i18n for msvc build
+  * docs(build): gettext-rs on windows cannot builds out-of-box with MSVC
+  * fix: use '/' as splitte on searchbox creating
+  * feat: use song_search_detailed in search box to apply aliases
+  * enhance: apply alias for artist name on `netease`
+  * enhance: make fuzzy-match weight more than length based match
+  * enhance: fine-tune fuzzy match factor
+  * feat: convert zh-hans/zh-hant in fuzzy match with opencc
+  * chore: bump dependencies
+  * build(windows): add build script
+  * docs(changelog): update changelog
+
+- Update to version 0.2.18:
+  * chore: release v0.2.18
+  * fix: set paused as false after resumed to playing
+  * log: print control status at trace level
+  * feat: hide lyric on pause
+  * docs(changelog): update changelog</comment>
+    <requestid>1169316</requestid>
+  </revision>
 </revisionlist>
