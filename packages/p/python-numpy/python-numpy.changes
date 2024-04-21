@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Tue Apr 16 19:12:21 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.26.4
+  * NumPy 1.26.4 is a maintenance release that fixes bugs and
+    regressions discovered after the 1.26.3 release. The Python
+    versions supported by this release are 3.9-3.12. This is the
+    last planned release in the 1.26.x series.
+  * BUG: Restore missing asstr import
+  * MAINT: prepare 1.26.x for further development
+  * BUG: numpy.array_api: fix linalg.cholesky upper decomp...
+  * MAINT, BLD: Fix unused inline functions warnings on clang
+  * TST: Fix test_numeric on riscv64
+  * MAINT: add newaxis to __all__ in numpy.array_api
+  * BUG: Use large file fallocate on 32 bit linux platforms
+  * TST: Fix test_warning_calls on Python 3.12
+  * TST: Bump pytz to 2023.3.post1
+  * BUG: Fix AVX512 build flags on Intel Classic Compiler
+  * BLD: fix potential issue with escape sequences in __config__.py
+  * BLD: unvendor meson-python on 1.26.x and upgrade to
+    meson-python...
+  * MAINT: Include header defining backtrace
+  * BUG: Fix np.quantile([Fraction(2,1)], 0.5) (#24711)
+- Release 1.26.3
+  ## Compatibility
+  * f2py will no longer accept ambiguous -m and .pyf CLI
+    combinations. When more than one .pyf file is passed, an error
+    is raised. When both -m and a .pyf is passed, a warning is
+    emitted and the -m provided name is ignored.
+  ## Improvements
+  * f2py now handles common blocks which have kind specifications
+    from modules. This further expands the usability of intrinsics
+    like iso_fortran_env and iso_c_binding.
+  ## Pull requests merged
+  * MAINT: prepare 1.26.x for further development
+  * TYP: add None to __getitem__ in numpy.array_api
+  * BLD,BUG: quadmath required where available [f2py]
+  * BUG: alpha doesn't use REAL(10)
+  * BUG: Fix FP overflow error in division when the divisor is
+    scalar
+  * MAINT: Pin scipy-openblas version.
+  * BUG: Fix f2py to enable use of string optional inout argument
+  * BUG: Fix -fsanitize=alignment issue in
+    numpy/_core/src/multiarray/arraytypes.c.src
+  * TST: Explicitly pass NumPy path to cython during tests (also...
+  * BUG: fix issues with newaxis and linalg.solve in
+    numpy.array_api
+  * BUG: Disallow shadowed modulenames
+  * BUG: Handle common blocks with kind specifications from modules
+  * BUG: Fix moving compiled executable to root with f2py -c on
+    Windows
+  * BUG: Fix single to half-precision conversion on PPC64/VSX3
+  * TST: f2py: fix issue in test skip condition
+  * Revert "MAINT: Pin scipy-openblas version."
+  * MAINT: do not use long type
+  * TST: PyPy needs another gc.collect on latest versions
+  * MAINT: Bump conda-incubator/setup-miniconda from 2.2.0 to 3.0.1
+  * BLD: update vendored Meson for AIX shared library fix
+  * MAINT: Init base in cpu_avx512_kn
+  * BUG: Fix failing test_features on SapphireRapids
+  * BUG: Fix non-contiguous memory load when ARM/Neon is enabled
+  * MAINT,BUG: Never import distutils above 3.12 [f2py]
+  * MAINT: make the import-time check for old Accelerate more
+    specific
+  * MAINT: Bump actions/setup-node and
+    larsoner/circleci-artifacts-redirector-action
+  * BUG: avoid seg fault from OOB access in RandomState.set_state()
+  * BUG: Fix two errors related to not checking for failed
+    allocations
+  * BUG: Fix regression with f2py wrappers when modules and
+    subroutines...
+  * BUG: Fix build issues on SPR
+  * BLD: fix uninitialized variable warnings from
+    simd/neon/memory.h
+  * BUG: Handle iso_c_type mappings more consistently
+  * BUG: Fix module name bug in signature files [urgent] [f2py]
+  * BUG: Handle .pyf.src and fix SciPy [urgent]
+  * DOC: f2py rewrite with meson details
+  * BUG: Add external library handling for meson [f2py]
+  * MAINT: Run f2py's meson backend with the same python that
+    ran...
+  * MAINT: Update numpy/f2py/_backends from main.
+  * MAINT: Easy updates of f2py/*.py from main.
+  * MAINT: Update crackfortran.py and f2py2e.py from main
+
+-------------------------------------------------------------------
 Thu Mar 28 13:54:34 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix detection of some features:

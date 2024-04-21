@@ -17,8 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define ver 1.26.2
-%define _ver 1_26_2
+%define ver 1.26.4
+%define _ver 1_26_4
 %define pname python-numpy
 %define plainpython python
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
@@ -93,10 +93,9 @@ Patch3:         0001-feature-module-Fix-handling-of-multiple-conflicts-pe.patch
 BuildRequires:  %{python_module Cython >= 3.0}
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module meson-python >= 0.13}
+BuildRequires:  %{python_module meson-python >= 0.15 with %python-meson-python < 0.16}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyproject-metadata >= 0.7.1}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  cmake
 %if 0%{?suse_version} <= 1600
 BuildRequires:  gcc12
@@ -198,8 +197,15 @@ This package contains files for developing applications using numpy.
 %prep
 %autosetup -p1 -n numpy-%{version}
 # Fix non-executable scripts
-sed -i '1s/^#!.*$//' numpy/{compat/setup,distutils/{conv_template,cpuinfo,exec_command,from_template,setup,system_info},f2py/{__init__,auxfuncs,capi_maps,cb_rules,cfuncs,common_rules,crackfortran,diagnose,f2py2e,f90mod_rules,func2subr,rules,setup,use_rules},matrixlib/setup,setup,testing/{print_coercion_tables,setup}}.py
-sed -i '1s/^#!.*$//' numpy/random/_examples/cython/*.pyx
+sed -i '1{/^#!/d}'\
+  numpy/{distutils,f2py,ma,matrixlib,testing}/setup.py \
+  numpy/distutils/{conv_template,cpuinfo,from_template,system_info}.py \
+  numpy/f2py/{__init__,cfuncs,diagnose,crackfortran,f2py2e,rules}.py \
+  numpy/random/_examples/cython/extending{,_distributions}.pyx \
+  numpy/testing/print_coercion_tables.py
+chmod -x \
+  numpy/f2py/{crackfortran,f2py2e,rules}.py \
+  numpy/testing/{print_coercion_tables,setup}.py
 
 # force cythonization
 rm -f PKG-INFO
