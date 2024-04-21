@@ -164,4 +164,17 @@
 </comment>
     <requestid>1146140</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>142c0544974e5e009857349d373e155f</srcmd5>
+    <version>2.7.1</version>
+    <time>1713723975</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1168537 from mcalabkova
+
+- Update to 2.7.1
+    * Added customer juniper paramiko module as a dependency which 
+      supported aes128 and aes257 cipher #1299
+  - Create no-six.patch to get rid of six dependency.</comment>
+    <requestid>1169283</requestid>
+  </revision>
 </revisionlist>
