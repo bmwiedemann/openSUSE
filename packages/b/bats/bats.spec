@@ -1,7 +1,7 @@
 #
 # spec file for package bats
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define pname %{name}-core
 Name:           bats
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        Bash Automated Testing System
 License:        MIT
@@ -60,7 +60,7 @@ sed -i '1s|#!%{_bindir}/env bash|#!/bin/bash|' ./lib{,exec}/%{pname}/* ./bin/bat
 
 %files
 %license LICENSE.md
-%doc README.md
+%doc README.md SECURITY.md
 %{_bindir}/bats
 %{_prefix}/lib/%{pname}
 %if 0%{?suse_version} > 1500

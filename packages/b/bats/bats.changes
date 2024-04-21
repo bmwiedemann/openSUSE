@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 17 13:42:18 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.11.0:
+  * add security.md (#762)
+  * add dynamic test registration via bats_test_function (#349)
+  * add check that Bats is executed with Bash >= 3.2 (#873)
+  * Fixed:
+    + install.sh now works for deviating lib/ dirs (like lib32,lib64) (#487)
+    + catch unset BATS_TEST_SOURCE in lib/bats-core/tracing.bash so
+    + set -u/set -o nounset works as expected (#827)
+    + fix --gather-test-outputs-in fails on tests with multiple / (#789)
+    + install does not create unused /usr/share/bats anymore (#857)
+    + ensure IFS is unchanged in {setup,teardown}{_suite,_file,}, @test and free code (#879)
+    + junit formatter: remove ANSI Codes to avoid invalid XML character (#886)
+
+-------------------------------------------------------------------
 Sun Jul 16 18:41:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10.0:
