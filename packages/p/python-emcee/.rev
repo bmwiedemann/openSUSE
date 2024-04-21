@@ -56,4 +56,23 @@
   * Handling updated kstest interface in scipy 1.10</comment>
     <requestid>1061748</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a6022ca73a79d3ad17793cba2686638d</srcmd5>
+    <version>3.1.6</version>
+    <time>1713724040</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.6:
+  * Compat fix for older numpy versions
+- update to 3.1.5:
+  * Update blobs docs
+  * Fix integrated_time docstring
+  * Fixed DEMove Implementation
+  * Move proposals should match the dtype of original input
+  * Update the Read the Docs configuration
+  * Fix moves documentation typos
+  * Update EnsembleSampler docstring in ensemble.py
+  * Fix typo in assertion message
+  * MAINT: updates for numpy2 closes #509</comment>
+    <requestid>1169367</requestid>
+  </revision>
 </revisionlist>

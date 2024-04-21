@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr 20 13:53:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.6:
+  * Compat fix for older numpy versions
+- update to 3.1.5:
+  * Update blobs docs
+  * Fix integrated_time docstring
+  * Fixed DEMove Implementation
+  * Move proposals should match the dtype of original input
+  * Update the Read the Docs configuration
+  * Fix moves documentation typos
+  * Update EnsembleSampler docstring in ensemble.py
+  * Fix typo in assertion message
+  * MAINT: updates for numpy2 closes #509
+
+-------------------------------------------------------------------
 Sat Jan 28 14:36:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.4:
