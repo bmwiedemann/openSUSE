@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Apr 21 13:30:56 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to release 7.1.6
+  + Improved the pipeline management system. Non-limiter effects are placed before the limiter 
+    even if the last two plugins in the pipeline are a limiter followed by a level meter.
+  + Fixed a regression that prevented the level meters to be updated under certain conditions.
+  + Updated translations
+- update to release 7.1.5
+  + We now set monitor.passthrough = true in our virtual devices. This will allow latency offset 
+    to be properly applied by video players when PipeWire > 1.0.3 is released.
+- update to release 7.1.4
+  + EasyEffects will try to avoid moving to its virtual sources streams for which the user has 
+    set a custom target.object that is different from the mic EE is recording from. The stream 
+    has to be started when EE is already running for this logic to take effect.
+  + The equalizer can export basic APO preset files
+  + Our players/recorders tab will show the audio client binary name in the cases were no app name is defined.
+  + EasyEffects version can be shown in the command line through the option --version
+  + A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept in place until gtk developers fiz things on their side
+
+-------------------------------------------------------------------
 Fri Nov 10 10:43:33 UTC 2023 - Boris Manojlovic <boris@steki.net>
 
 - updated to latest release 7.1.3

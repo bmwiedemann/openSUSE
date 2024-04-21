@@ -1,7 +1,7 @@
 #
 # spec file for package easyeffects
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           easyeffects
-Version:        7.1.3
+Version:        7.1.6
 Release:        0
 Summary:        Audio effects for Pulseaudio applications
 License:        GPL-3.0-or-later
@@ -72,7 +72,7 @@ This package contains documentation of Audio effects for pipewire applications
 Provides translations for the "%{name}" package.
 
 %prep
-%setup -q
+%autosetup
 # we don't need this
 sed -i '/^meson.add_install_script/d' meson.build
 
