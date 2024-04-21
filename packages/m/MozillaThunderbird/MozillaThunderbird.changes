@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Apr 19 06:34:22 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 115.10.1
+  https://www.thunderbird.net/en-US/thunderbird/115.10.1/releasenotes/
+  * fixed hangup introduced with 115.10.0 (bmo#1891889)
+
+-------------------------------------------------------------------
+Sun Apr 14 11:09:32 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 115.10.0
+  https://www.thunderbird.net/en-US/thunderbird/115.10.0/releasenotes/
+  MFSA 2024-20 (bsc#1222535)
+  * CVE-2024-3852 (bmo#1883542)
+    GetBoundName in the JIT returned the wrong object
+  * CVE-2024-3854 (bmo#1884552)
+    Out-of-bounds-read after mis-optimized switch statement
+  * CVE-2024-3857 (bmo#1886683)
+    Incorrect JITting of arguments led to use-after-free during
+    garbage collection
+  * CVE-2024-2609 (bmo#1866100)
+    Permission prompt input delay could expire when not in focus
+  * CVE-2024-3859 (bmo#1874489)
+    Integer-overflow led to out-of-bounds-read in the OpenType sanitizer
+  * CVE-2024-3861 (bmo#1883158)
+    Potential use-after-free due to AlignedBuffer self-move
+  * CVE-2024-3863 (bmo#1885855)
+    Download Protections were bypassed by .xrm-ms files on Windows
+  * CVE-2024-3302 (bmo#1881183)
+    Denial of Service using HTTP/2 CONTINUATION frames
+  * CVE-2024-3864 (bmo#1888333)
+    Memory safety bug fixed in Firefox 125, Firefox ESR 115.10,
+    and Thunderbird 115.10
+
+-------------------------------------------------------------------
 Wed Mar 20 13:55:26 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - LLVM18 breaks building Thunderbird on Tumbleweed; add
