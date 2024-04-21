@@ -1,7 +1,7 @@
 #
 # spec file for package python-pingparsing
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pingparsing
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        CLI-tool/Python-library for parsing ping command output
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/thombashi/pingparsing
 Source:         https://github.com/thombashi/pingparsing/archive/v%{version}.tar.gz#/pingparsing-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#thombashi/pingparsing#47
-Patch0:         fix-requirements.patch
 BuildRequires:  %{python_module setuptools >= 38.3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-humanreadable >= 0.1.0
+Requires:       python-humanreadable >= 0.2
 Requires:       python-loguru >= 0.4.1
 Requires:       python-pyparsing >= 2.0.3
 Requires:       python-pytz >= 2018.9
@@ -40,7 +37,7 @@ Requires:       python-simplejson
 Requires:       python-subprocrunner >= 1.2.2
 Requires:       python-typepy >= 1.1.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module humanreadable >= 0.1.0}
