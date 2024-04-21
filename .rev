@@ -18,4 +18,14 @@
 - Add missing dependency PyCairo and pytest-asyncio</comment>
     <requestid>1161443</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bec36b39937518fb75222d50f996bbec</srcmd5>
+    <version>0.4.2</version>
+    <time>1713724141</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.2:
+  * Update to new interface
+  * Make necessary changes to support Wireguard protocol</comment>
+    <requestid>1169474</requestid>
+  </revision>
 </revisionlist>

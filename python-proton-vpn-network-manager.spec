@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-proton-vpn-network-manager
-Version:        0.4.0
+Version:        0.4.2
 Release:        0
 Summary:        Proton VPN library for NetworkManager
 License:        GPL-3.0-or-later
