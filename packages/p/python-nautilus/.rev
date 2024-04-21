@@ -254,4 +254,14 @@
     <comment></comment>
     <requestid>1096941</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8ca22fafc0fb13974d88626cf7c82f4e</srcmd5>
+    <version>4.0.1</version>
+    <time>1713724187</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.0.1:
+  + Fixed build failure due to underlinking.
+  + Fixed build failure with Python 3.13. (forwarded request 1169185 from dimstar)</comment>
+    <requestid>1169233</requestid>
+  </revision>
 </revisionlist>
