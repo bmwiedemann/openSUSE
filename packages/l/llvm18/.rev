@@ -78,4 +78,25 @@
 </comment>
     <requestid>1164981</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ce6372c4eb6068b6374dca26c143b0e2</srcmd5>
+    <version>18.1.4</version>
+    <time>1713723861</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 18.1.4.
+  * Fixes an issue with Arm64EC code generation where calls to some
+    intrinsics implemented in compiler-rt used the wrong name
+    mangling, eventually resulting in unresolved symbol errors
+    during linking.
+  * Fixed an incorrect poison-generating flag preservation in
+    `InstSimplify`. It will fix a miscompilation on RISCV, which
+    turns the incorrect `or disjoint` into an `add`.
+  * Save/restore routines for RV32E/RV64E are added to compiler-rt.
+  * Fix regressions introduced in LLVM 18.1.3 in MIPS atomicrmw
+    min/max codegen.
+- Include module files for libc++ in libc++-devel.
+- Rebase llvm-do-not-install-static-libraries.patch.
+</comment>
+    <requestid>1169036</requestid>
+  </revision>
 </revisionlist>

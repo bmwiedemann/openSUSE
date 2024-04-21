@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 18 21:22:11 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 18.1.4.
+  * Fixes an issue with Arm64EC code generation where calls to some
+    intrinsics implemented in compiler-rt used the wrong name
+    mangling, eventually resulting in unresolved symbol errors
+    during linking.
+  * Fixed an incorrect poison-generating flag preservation in
+    `InstSimplify`. It will fix a miscompilation on RISCV, which
+    turns the incorrect `or disjoint` into an `add`.
+  * Save/restore routines for RV32E/RV64E are added to compiler-rt.
+  * Fix regressions introduced in LLVM 18.1.3 in MIPS atomicrmw
+    min/max codegen.
+- Include module files for libc++ in libc++-devel.
+- Rebase llvm-do-not-install-static-libraries.patch.
+
+-------------------------------------------------------------------
 Thu Apr  4 14:31:53 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 18.1.3.

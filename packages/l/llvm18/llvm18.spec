@@ -19,7 +19,7 @@
 %global _sonum  18
 %global _minor  %{_sonum}.1
 %global _soname %{_minor}%{?_sosuffix}
-%global _patch_level 3
+%global _patch_level 4
 %global _relver %{_minor}.%{_patch_level}
 %global _version %_relver%{?_rc:rc%_rc}
 %global _tagver %_relver%{?_rc:-rc%_rc}
@@ -1117,6 +1117,7 @@ export LD_LIBRARY_PATH=%{sourcedir}/build/%{_lib}
 %if %{with libcxx}
     -DLIBCXX_ENABLE_SHARED=YES \
     -DLIBCXX_ENABLE_STATIC=NO \
+    -DLIBCXX_INSTALL_MODULES=ON \
     -DLIBCXXABI_ENABLE_SHARED=YES \
     -DLIBCXXABI_ENABLE_STATIC=NO \
     -DLIBCXXABI_USE_LLVM_UNWINDER:BOOL=OFF \
@@ -1730,10 +1731,13 @@ fi
 
 %files %{multisource libcxx_devel} libc++-devel
 %license CREDITS.TXT LICENSE.TXT
+%{_libdir}/libc++.modules.json
 %{_libdir}/libc++.so
 %{_libdir}/libc++experimental.a
 %dir %{_includedir}/c++/
 %{_includedir}/c++/v%{_socxx}
+%dir %{_datadir}/libc++/
+%{_datadir}/libc++/v%{_socxx}
 
 %files %{multisource libcxx_devel} libc++abi-devel
 %license CREDITS.TXT LICENSE.TXT
