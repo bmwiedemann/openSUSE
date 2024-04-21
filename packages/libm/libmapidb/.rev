@@ -31,4 +31,12 @@
     <comment>- Add forced symvers</comment>
     <requestid>994012</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d3364b59dbc9df6ba38226a3ce0517b3</srcmd5>
+    <version>20240420</version>
+    <time>1713724151</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240420</comment>
+    <requestid>1169481</requestid>
+  </revision>
 </revisionlist>

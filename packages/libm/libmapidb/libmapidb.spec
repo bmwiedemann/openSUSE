@@ -1,7 +1,7 @@
 #
 # spec file for package libmapidb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,21 @@
 
 Name:           libmapidb
 %define lname	libmapidb1
-Version:        20210421
+Version:        20240420
 Release:        0
 Summary:        Library for accessing the Exchange MAPI database format
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libmapidb
-Source:         %name-%version.tar.xz
-Patch1:         system-libs.patch
+Source:         https://github.com/libyal/%name/releases/download/%version/%name-experimental-%version.tar.gz
+Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libcnotify) >= 20240414
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 A library for accessing the Exchange MAPI database format
@@ -63,7 +64,6 @@ applications that want to make use of libmapidb.
 
 %build
 if [ ! -e configure ]; then ./autogen.sh; fi
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static LDFLAGS="-Wl,--version-script=$PWD/v.sym"
 %make_build
@@ -72,8 +72,7 @@ echo "V_%version { global: *; };" >v.sym
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*
