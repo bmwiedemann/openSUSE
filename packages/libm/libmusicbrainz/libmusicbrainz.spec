@@ -1,7 +1,7 @@
 #
 # spec file for package libmusicbrainz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source0:        https://github.com/metabrainz/libmusicbrainz/releases/download/r
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM musicbrainz-cmake-noglob.patch dimstar@opensuse.org -- do not use wildcards for dependencies
 Patch0:         musicbrainz-cmake-noglob.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         https://patch-diff.githubusercontent.com/raw/metabrainz/libmusicbrainz/pull/19.patch#/libmusicbrainz-libxml2.12.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  neon-devel

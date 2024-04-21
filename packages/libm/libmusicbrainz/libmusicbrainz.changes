@@ -1,3 +1,10 @@
+-------------------------------------------------------------------
+Thu Apr 18 09:42:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libmusicbrainz-libxml2.12.patch: Fix build against libxml
+  2.12.
+
+-------------------------------------------------------------------
 Sat Jul 10 07:49:54 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Copied libmusicbrainz5 package and fixed spec file to fix factory

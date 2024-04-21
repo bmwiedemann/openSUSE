@@ -166,4 +166,12 @@
   and gcc6-fix-errors.patch</comment>
     <requestid>905434</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>d81615e9a5b7716cee8d6632eeb84982</srcmd5>
+    <version>5.1.0</version>
+    <time>1713723907</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1168851</requestid>
+  </revision>
 </revisionlist>
