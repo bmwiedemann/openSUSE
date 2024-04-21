@@ -1,7 +1,7 @@
 #
 # spec file for package gtk2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -96,12 +96,6 @@ Requires(post): %{name}-tools >= 2.24.20
 # gtk+ can work without branding/data/translations. Built in defaults will be used then.
 Recommends:     %{name}-branding
 Recommends:     %{name}-data = %{version}
-# it's nice to have input modules for various locales installed by default
-Recommends:     %{name}-immodule-amharic = %{version}
-Recommends:     %{name}-immodule-inuktitut = %{version}
-Recommends:     %{name}-immodule-thai = %{version}
-Recommends:     %{name}-immodule-tigrigna = %{version}
-Recommends:     %{name}-immodule-vietnamese = %{version}
 Recommends:     gvfs
 # Provide %%{name} to make the lang and immodules packages installable
 Provides:       %{name} = %{version}
@@ -132,7 +126,7 @@ Summary:        Amharic input method for the GTK+ toolkit library v2
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools >= 2.24.20
-Requires(postun):%{name}-tools >= 2.24.20
+Requires(postun): %{name}-tools >= 2.24.20
 Provides:       locale(%{name}:am)
 
 %description immodule-amharic
@@ -147,7 +141,7 @@ Summary:        Inuktitut input method for the GTK+ toolkit library v2
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools >= 2.24.20
-Requires(postun):%{name}-tools >= 2.24.20
+Requires(postun): %{name}-tools >= 2.24.20
 Provides:       locale(%{name}:iu)
 
 %description immodule-inuktitut
@@ -162,7 +156,7 @@ Summary:        Multipress input method for the GTK+ toolkit library v2
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools >= 2.24.20
-Requires(postun):%{name}-tools >= 2.24.20
+Requires(postun): %{name}-tools >= 2.24.20
 
 %description immodule-multipress
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.
@@ -177,7 +171,7 @@ Summary:        Thai-Lao input method for the GTK+ toolkit library v2
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools >= 2.24.20
-Requires(postun):%{name}-tools >= 2.24.20
+Requires(postun): %{name}-tools >= 2.24.20
 Provides:       locale(%{name}:lo)
 Provides:       locale(%{name}:th)
 
@@ -193,7 +187,7 @@ Summary:        Tigrigna input methods for the GTK+ toolkit library v2
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools >= 2.24.20
-Requires(postun):%{name}-tools >= 2.24.20
+Requires(postun): %{name}-tools >= 2.24.20
 Provides:       %{name}-immodules-tigrigna = %{version}
 Provides:       locale(%{name}:ti)
 Obsoletes:      %{name}-immodules-tigrigna < %{version}
@@ -210,7 +204,7 @@ Summary:        Vietnamese input method for the GTK+ toolkit library v2
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools >= 2.24.20
-Requires(postun):%{name}-tools >= 2.24.20
+Requires(postun): %{name}-tools >= 2.24.20
 Provides:       locale(%{name}:vi)
 
 %description immodule-vietnamese
@@ -225,7 +219,7 @@ Summary:        X input method for the GTK+ toolkit library v2
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools >= 2.24.20
-Requires(postun):%{name}-tools >= 2.24.20
+Requires(postun): %{name}-tools >= 2.24.20
 Provides:       locale(%{name}:ja)
 Provides:       locale(%{name}:ko)
 Provides:       locale(%{name}:th)
@@ -242,7 +236,7 @@ This package provides an input method based on the X Input Method.
 Summary:        Auxiliary utilities for the GTK+ toolkit library v2
 Group:          System/Libraries
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %description tools
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.

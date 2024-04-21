@@ -1339,4 +1339,14 @@ Ensure nobody gets confused next time we want to update the version. (forwarded 
     <comment></comment>
     <requestid>1129920</requestid>
   </revision>
+  <revision rev="183" vrev="7">
+    <srcmd5>b79271491e88ba566570d8e21ab1337a</srcmd5>
+    <version>2.24.33</version>
+    <time>1713723903</time>
+    <user>anag+factory</user>
+    <comment>- Do not recommend the variuos -immodule-*: they have locale based
+  provides which makes zypper install them when the locales are
+  requested. (forwarded request 1169224 from dimstar)</comment>
+    <requestid>1169232</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 19 14:19:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommend the variuos -immodule-*: they have locale based
+  provides which makes zypper install them when the locales are
+  requested.
+
+-------------------------------------------------------------------
 Wed Nov 29 12:04:39 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add gtk2-check-attribute.patch (bsc#1217622): check for attribute
