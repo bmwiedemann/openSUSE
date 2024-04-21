@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 19 07:46:43 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add patches to adopt the "--target-platform" option when using
+  the newer pcr-oracle (bsc#1218390)
+  + fde-tools-bsc1218390-Switch-to-target-platform-when-available.patch
+  + fde-tools-bsc1218390-fix-tpm-present-with-the-newer-pcr-oracle.patch
+
+-------------------------------------------------------------------
 Thu Apr 18 05:39:44 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fde-tools-bsc1222970-firstboot-replace-ALP.patch to replace

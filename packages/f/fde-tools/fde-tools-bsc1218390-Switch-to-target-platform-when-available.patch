@@ -1,0 +1,144 @@
+From fcabeca594d090e4172b88ae5176c947b2dd7c45 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 1 Dec 2023 17:11:22 +0800
+Subject: [PATCH] Switch to "--target-platform" when available
+
+Check if pcr-oracle supports "--target-platform" and replace
+"--key-format" with "--target-platform" if the option is available.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ share/grub2        |  5 +++++
+ share/systemd-boot | 10 ++++++++++
+ share/tpm          | 37 +++++++++++++++++++++++++++----------
+ 3 files changed, 42 insertions(+), 10 deletions(-)
+
+Index: fde-tools-0.7.2/share/grub2
+===================================================================
+--- fde-tools-0.7.2.orig/share/grub2
++++ fde-tools-0.7.2/share/grub2
+@@ -34,6 +34,7 @@ alias bootloader_get_keyslots=grub_get_k
+ alias bootloader_remove_keyslots=grub_remove_keyslots
+ alias bootloader_wipe=grub_wipe
+ alias bootloader_rsa_sizes=grub_rsa_sizes
++alias bootloader_platform_parameters=grub_platform_parameters
+ 
+ ##################################################################
+ # Edit a variable in /etc/default/grub
+@@ -244,3 +245,7 @@ function grub_rsa_sizes {
+     # TPM 2.0 should at least support RSA2048.
+     echo "2048"
+ }
++
++function grub_platform_parameters {
++    echo "--target-platform tpm2.0"
++}
+Index: fde-tools-0.7.2/share/systemd-boot
+===================================================================
+--- fde-tools-0.7.2.orig/share/systemd-boot
++++ fde-tools-0.7.2/share/systemd-boot
+@@ -37,6 +37,7 @@ alias bootloader_get_keyslots=systemd_ge
+ alias bootloader_remove_keyslots=systemd_remove_keyslots
+ alias bootloader_wipe=systemd_wipe
+ alias bootloader_rsa_sizes=systemd_rsa_sizes
++alias bootloader_platform_parameters=systemd_platform_parameters
+ 
+ 
+ function not_implemented {
+@@ -183,3 +184,12 @@ function systemd_wipe {
+ function systemd_rsa_sizes {
+     echo "2048"
+ }
++
++##################################################################
++# This function shows the boot loader specific parameters for
++# pcr-oracle.
++##################################################################
++function systemd_platform_parameters {
++
++    echo "--target-platform systemd"
++}
+Index: fde-tools-0.7.2/share/tpm
+===================================================================
+--- fde-tools-0.7.2.orig/share/tpm
++++ fde-tools-0.7.2/share/tpm
+@@ -82,22 +82,40 @@ function tpm_get_rsa_key_size {
+     echo "$__fde_rsa_key_size"
+ }
+ 
++function tpm_platform_parameters {
++    declare -g __fde_platform_param
++
++    if [ -n "$__fde_platform_param" ]; then
++	echo "$__fde_platform_param"
++	return
++    fi
++
++    # Check if pcr-oracle supports "--target-platform"
++    if pcr-oracle --target-platform 2>&1 | grep -q "unrecognized option"; then
++	__fde_platform_param="--key-format tpm2.0"
++	echo "$__fde_platform_param"
++	return
++    fi
++
++    __fde_platform_param=$(bootloader_platform_parameters)
++    echo "$__fde_platform_param"
++}
++
+ function tpm_seal_key {
+ 
+     local secret=$1
+     local sealed_secret=$2
+ 
+-    local opt_rsa_bits=
++    local extra_opts=$(tpm_platform_parameters)
+     local rsa_size=$(tpm_get_rsa_key_size)
+ 
+     if [ -n "$rsa_size" -a "$rsa_size" -ne 2048 ]; then
+-	opt_rsa_bits="--rsa-bits ${rsa_size}"
++	extra_opts="${extra_opts} --rsa-bits ${rsa_size}"
+     fi
+ 
+     echo "Sealing secret against PCR policy covering $FDE_SEAL_PCR_LIST" >&2
+-    pcr-oracle ${opt_rsa_bits} \
++    pcr-oracle ${extra_opts} \
+ 			--input "$secret" --output "$sealed_secret" \
+-			--key-format tpm2.0 \
+ 			--algorithm "$FDE_SEAL_PCR_BANK" \
+ 			--from eventlog \
+ 			--stop-event "$FDE_STOP_EVENT" \
+@@ -151,19 +169,18 @@ function tpm_seal_secret {
+     local sealed_secret="$2"
+     local authorized_policy="$3"
+ 
+-    local opt_rsa_bits=
++    local extra_opts=$(tpm_platform_parameters)
+     local rsa_size=$(tpm_get_rsa_key_size)
+ 
+     if [ -n "$rsa_size" -a "$rsa_size" -ne 2048 ]; then
+-	opt_rsa_bits="--rsa-bits ${rsa_size}"
++	extra_opts="${extra_opts} --rsa-bits ${rsa_size}"
+     fi
+ 
+     # If we are expected to use an authorized policy, seal the secret
+     # against that, using pcr-oracle rather than the tpm2 tools
+     if [ -n "$authorized_policy" ]; then
+-	pcr-oracle ${opt_rsa_bits} \
++	pcr-oracle ${extra_opts} \
+ 			--authorized-policy "$authorized_policy" \
+-			--key-format tpm2.0 \
+ 			--input $secret \
+ 			--output $sealed_secret \
+ 			seal-secret
+@@ -246,8 +263,9 @@ function tpm_authorize {
+     sealed_key_file="$2"
+     signed_key_file="$3"
+ 
+-    pcr-oracle \
+-		--key-format tpm2.0 \
++    local extra_opts=$(tpm_platform_parameters)
++
++    pcr-oracle ${extra_opts} \
+ 		--algorithm "$FDE_SEAL_PCR_BANK" \
+                 --private-key "$private_key_file" \
+                 --from eventlog \

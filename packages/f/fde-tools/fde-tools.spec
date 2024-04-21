@@ -35,6 +35,8 @@ Patch2:         fde-tools-change-rpm-macro-dir.patch
 Patch3:         fde-tools-bsc1220160-conditional-requires.patch
 Patch4:         fde-tools-bsc1222970-firstboot-replace-ALP.patch
 Patch5:         fde-tools-bsc1223002-firstboot-disable-ccid.patch
+Patch6:         fde-tools-bsc1218390-Switch-to-target-platform-when-available.patch
+Patch7:         fde-tools-bsc1218390-fix-tpm-present-with-the-newer-pcr-oracle.patch
 BuildRequires:  help2man
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcryptsetup)

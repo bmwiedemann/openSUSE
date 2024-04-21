@@ -1,0 +1,51 @@
+From 63714d6ab724082b72abd07474bf52ef47e718d4 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 19 Apr 2024 15:02:50 +0800
+Subject: [PATCH] tpm: fix tpm-present with the newer pcr-oracle
+
+Modify tpm_test() to use the tpm2.0 key format for sealing and unsealing
+to be compatible with the newer pcr-oracle.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ share/tpm | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/share/tpm b/share/tpm
+index 47d72dc..4993351 100644
+--- a/share/tpm
++++ b/share/tpm
+@@ -182,6 +182,8 @@ function tpm_test {
+ 
+     key_size=$1
+ 
++    local extra_opts=$(tpm_platform_parameters)
++
+     secret=$(fde_make_tempfile secret)
+     dd if=/dev/zero of=$secret bs=$key_size count=1 status=none >&2
+ 
+@@ -193,18 +195,18 @@ function tpm_test {
+     dd if=/dev/zero of=$secret bs=$key_size count=1 status=none >&2
+ 
+     fde_trace "Testing TPM seal/unseal"
+-    pcr-oracle \
++    pcr-oracle ${extra_opts} \
+ 	--algorithm "$FDE_SEAL_PCR_BANK" \
+         --input "$secret" \
+         --output "$sealed_secret" \
+         --from current \
+         seal-secret "$FDE_SEAL_PCR_LIST"
+ 
+-    pcr-oracle \
++    pcr-oracle ${extra_opts} \
+ 	--algorithm "$FDE_SEAL_PCR_BANK" \
+         --input "$sealed_secret" \
+         --output "$recovered" \
+-        unseal-secret "$FDE_SEAL_PCR_LIST"
++        unseal-secret
+ 
+     if ! cmp "$secret" "$recovered"; then
+         fde_trace "BAD: Unable to recover original secret"
+-- 
+2.35.3
+
