@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-pykickstart
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 %global skip_python2 1
 
 Name:           python-%{mod_name}
-Version:        3.43
+Version:        3.53
 Release:        0
 Summary:        Python module for parsing and writing kickstart files
 Group:          Development/Libraries/Python

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Apr 20 21:21:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.53:
+  * Do some workflow maintenance
+  * Add RHEL 10 handler to master branch
+  * Add Fedora 41 support
+  * Update kickstart-docs.rst
+  * Add missing rhsm and syspurpose commands
+- update to 3.47:
+  * displaymode: Update description to describe behavior
+  * network: Move new options to Fedora 39
+- update to 3.46:
+  * Add conflict test between ostree sources
+  * Fix missing seen check for output generation
+  * Add new ostreecontainer command
+  * Check the conflicting commands automatically (vponcova)
+  * Fix tests for conflicting commands (vponcova)
+  * Add conflicting commands support (bcl)
+  * Fix handling of package section arguments in older versions
+- update to 3.45:
+  * Don't allow to use --sdboot and --extlinux together
+  * tests: add bootloader sdboot option (jeremy.linton)
+  * bootloader: Add systemd-boot support with --sdboot
+  * Add %changelog section to pykickstart.spec.in (jkonecny)
+  * Do not request sign for rc-release Makefile target (jkonecny)
+  * Do not require SPECFILE for rc-release (jkonecny)
+  * Add missing docs copy to scratch Makefile (jkonecny)
+  * Add support for Fedora 39 (vslavik)
+
+-------------------------------------------------------------------
 Tue Mar  7 09:15:48 UTC 2023 - pgajdos@suse.com
 
 - python-six is not required
@@ -6,7 +36,7 @@ Tue Mar  7 09:15:48 UTC 2023 - pgajdos@suse.com
 -------------------------------------------------------------------
 Wed Dec  7 20:54:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 3.34 
+- Update to version 3.34
   * Remove the auth and authconfig commands (pbrezina)
   The parse method is expected to return a value (vponcova)
   tests: unittest isn't used in handle_unicode anymore (bcl)
