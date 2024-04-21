@@ -17,7 +17,7 @@
 
 
 Name:           atuin
-Version:        18.0.1
+Version:        18.2.0
 Release:        0
 Summary:        Magical shell history
 License:        MIT
@@ -28,7 +28,7 @@ Source1:        vendor.tar.zst
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  cargo-packaging
-BuildRequires:  rust+cargo >= 1.59
+BuildRequires:  rust+cargo >= 1.67
 BuildRequires:  zstd
 
 %description

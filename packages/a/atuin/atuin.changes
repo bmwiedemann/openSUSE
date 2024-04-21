@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Apr 19 10:31:25 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 18.2.0:
+  Bug Fixes:
+  * Add missing description
+  * Allow empty search
+  * Pass search query in via env
+  * Pass search query in via env for Nushell
+  * Case insensitive hostname filtering
+  * Update atuin.nu to resolve 0.92 deprecation
+  * Detect preexec plugin using env ATUIN_PREEXEC_BACKEND
+  * Install script echo
+  * Report non-decodable errors correctly
+  * Do not use "return" to cancel initialization
+  * Use spawn_blocking for file access during async context
+  Documentation:
+  * Add security contact
+  * Add install instructions for cave/exherbo linux in README.md
+  * Describe the limitation of missing commands
+  * Add missing cli help text
+  Features:
+  * Process [C-h] and [C-?] as representations of backspace
+  * Allow specifying search query as an env var
+  * Check PG version before running migrations
+  * Add atuin prefix binding
+  * Update install.sh to support KDE Neon
+  * Add better search scoring
+  * Sync v2 default for new installs
+  * Add 'ctrl-a a' to jump to beginning of line
+  * Prevents stderr from going to the screen
+  * Add alias import
+  * Use _ble_exec_time_ata for duration even in bash < 5
+  * Add base structure
+  Miscellaneous Tasks:
+  * Add issue form
+  * Require atuin doctor in issue form
+  * Add section to issue form
+  * Add codespell support (config, workflow) and make it fix some
+    typos
+  Performance:
+  * Cache aliases and read straight from file
+- Updates from 18.1.0:
+  Bug Fixes
+  * Rework #1509 to recover from the preexec failure
+
+-------------------------------------------------------------------
 Thu Feb 15 03:02:28 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - omit feature 'check-update' instead of using the removed patch 0000-disable_update_check.patch
