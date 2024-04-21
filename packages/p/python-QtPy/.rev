@@ -211,4 +211,14 @@
     * Changes to QDesktop split</comment>
     <requestid>1127913</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>d97707d884ca386c851ca309674fac9e</srcmd5>
+    <version>2.4.1</version>
+    <time>1713723972</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1168476 from mlin7442
+
+fix the test flavor build on Leap 15</comment>
+    <requestid>1169282</requestid>
+  </revision>
 </revisionlist>

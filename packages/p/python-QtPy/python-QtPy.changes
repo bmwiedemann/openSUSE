@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 16 11:01:50 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Make sure to use pytest-3.11 on Leap15.6
+- To buildrequires python 3.11 version of pyside6 and pyside2
+
+-------------------------------------------------------------------
 Tue Nov 21 13:39:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add qt6.6-deprecations.patch to avoid deprecation warnings

@@ -34,7 +34,10 @@ BuildArch:      noarch
 %bcond_with pyside2
 %bcond_with pyside6
 %endif
-
+# make sure using pytest-3.11 on Leap 15.6
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150500
+%define python3_bin_suffix 3.11
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-QtPy%{psuffix}
 Version:        2.4.1
@@ -87,10 +90,18 @@ BuildRequires:  %{python_module PyQt6-WebEngine}
 %endif
 %endif
 %if %{with pyside2}
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150500
+BuildRequires:  %{python_module pyside2}
+%else
 BuildRequires:  python3-pyside2
 %endif
+%endif
 %if %{with pyside6}
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150500
+BuildRequires:  %{python_module pyside6}
+%else
 BuildRequires:  python3-pyside6
+%endif
 BuildRequires:  qt6-sql-sqlite
 %endif
 %endif
