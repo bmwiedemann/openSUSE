@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Apr 20 12:39:56 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 1.21.11-1:
+  * error 500 on tag creation when a workflow exists
+
+- update to 1.21.11-0:
+  * Fixed a privilege escalation through git push options that
+    allows any user to change the visibility of any repository they can see,
+    regardless of their level of access.
+  * Fixed a bug that allows user-supplied, non-sandboxed JavaScript to be run
+    from the same domain as the forge, via
+    /{owner}/{repo}/render/branch/{branch}/{filename} URLs.
+  * Close file in upload function
+  * Prevent registering runners for deleted repositories.
+    Prevents 500 Internal Server Error in admin interface.
+  * More reliable pagination support when migrating from gitbucket
+  * Fix automerge when used with actions
+
+- fix apparmor profile
+
+-------------------------------------------------------------------
 Fri Apr  5 18:39:07 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - update to 1.21.10-0:

@@ -20,8 +20,8 @@ echo "++++++++++++++++++++++++++++++++++++++++++++++"
 echo "extracting package-lock.json"
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
 
-tar xf forgejo-src-${VERSION}-0.tar.gz forgejo-src-${VERSION}-0/package-lock.json
-cp forgejo-src-${VERSION}-0/package-lock.json .
+tar xf forgejo-src-${VERSION}-1.tar.gz forgejo-src-${VERSION}-1/package-lock.json
+cp forgejo-src-${VERSION}-1/package-lock.json .
 
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
 echo "Downloading node_modules"
@@ -33,7 +33,7 @@ echo "++++++++++++++++++++++++++++++++++++++++++++++"
 echo "Cleanup Step"
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
 
-rm -r forgejo-src-${VERSION}-0
+rm -r forgejo-src-${VERSION}-1
 rm node_modules.sums
 
 echo "++++++++++++++++++++++++++++++++++++++++++++++"

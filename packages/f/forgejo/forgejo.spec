@@ -16,8 +16,8 @@
 #
 
 
-%define gitea_version 1.21.10
-%define forgejo_version 0
+%define gitea_version 1.21.11
+%define forgejo_version 1
 %if 0%{?suse_version} > 1600
 # TW
 %bcond_without selinux
@@ -180,10 +180,10 @@ semodule -r %{name} 2>/dev/null || :
 %{_bindir}/%{name}
 %{_bindir}/gitea
 %defattr(0660,root,forgejo,770)
-%config(noreplace) %{_sysconfdir}/%{name}/conf/app.ini
-%{_sysconfdir}/%{name}
 %{_localstatedir}/log/%{name}
 %defattr(0660,forgejo,forgejo,750)
+%config(noreplace) %{_sysconfdir}/%{name}/conf/app.ini
+%{_sysconfdir}/%{name}
 %{_datadir}/%{name}
 %{_sharedstatedir}/%{name}
 %{_sysusersdir}/%{name}.conf

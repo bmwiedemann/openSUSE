@@ -73,9 +73,9 @@ profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
   # Ugly!
   /usr/share/forgejo/.gitconfig rw,
   /usr/share/forgejo/.gitconfig.lock rw,
-  /usr/share/forgejo/.ssh/ rw,
-  /usr/share/forgejo/.ssh/* rw,
-  /usr/share/forgejo/.local/** rw,
+  /var/lib/forgejo/.ssh/ rw,
+  /var/lib/forgejo/.ssh/* rw,
+  /var/lib/forgejo/.local/** rw,
 
   # for writing access log file
   /var/log/forgejo/ rw,
