@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 20 14:07:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.20.0:
+  * Updated `Version.bump()` to add a `smart` argument,
+    which only bumps when `distance != 0`.
+
+-------------------------------------------------------------------
 Sat Feb 17 01:51:54 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - update to 1.19.2

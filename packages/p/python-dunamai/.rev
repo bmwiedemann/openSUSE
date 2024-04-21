@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1147255</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3390857fa9396a708fb8aaf3504a3be6</srcmd5>
+    <version>1.20.0</version>
+    <time>1713724057</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.20.0:
+  * Updated `Version.bump()` to add a `smart` argument,
+    which only bumps when `distance != 0`.</comment>
+    <requestid>1169374</requestid>
+  </revision>
 </revisionlist>
