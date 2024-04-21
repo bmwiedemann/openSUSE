@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 20 20:48:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.21.4:
+  * in google.cloud.kms.v1.PublicKey, pem field is always populated
+  * Require google-api-core>=1.34.1 (#12307) (be87bc4)
+  * fix ValueError in test__validate_universe_domain
+
+-------------------------------------------------------------------
 Mon Feb 26 23:39:52 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Include in SLE 15 SP4 and later (jsc#PED-6697)
