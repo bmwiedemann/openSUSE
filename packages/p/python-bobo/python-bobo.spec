@@ -21,11 +21,13 @@ Version:        2.4.0
 Release:        0
 Summary:        Web application framework for the impatient
 License:        ZPL-2.1
-URL:            http://bobo.readthedocs.io/
+URL:            https://bobo.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/b/bobo/bobo-%{version}.tar.gz
 #PATCH-FIX-UPSTREAM part of https://github.com/zopefoundation/bobo/pull/23 Drop support for Python 2.7 up to 3.6.
-Patch:          drop-py27.patch
+Patch0:         drop-py27.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-WebOb
@@ -49,12 +51,15 @@ Bobo builds on other frameworks, most notably WSGI and WebOb.
 %autosetup -p1 -n bobo-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/bobo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+# Upstream doesn't have any tests published
 
 %post
 %python_install_alternative bobo

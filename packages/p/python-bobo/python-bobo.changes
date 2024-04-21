@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 15 14:08:03 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up SPEC file.
+
+-------------------------------------------------------------------
 Tue Apr  9 14:23:21 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add patch drop-py27.patch to get rid of six
