@@ -1,7 +1,7 @@
 #
 # spec file for package python-Bottleneck
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%define skip_python2 1
 Name:           python-Bottleneck
-Version:        1.3.7
+Version:        1.3.8
 Release:        0
 Summary:        A collection of fast NumPy array functions
 License:        BSD-2-Clause AND BSD-3-Clause
@@ -26,12 +25,14 @@ URL:            https://github.com/pydata/bottleneck
 Source0:        https://files.pythonhosted.org/packages/source/B/Bottleneck/Bottleneck-%{version}.tar.gz
 Source99:       python-Bottleneck.rpmlintrc
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.16.0}
+BuildRequires:  %{python_module numpy-devel >= 1.16.0 with %python-numpy-devel < 2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.16.0
+Requires:       (python-numpy >= 1.16.0 with python-numpy < 2)
 %python_subpackages
 
 %description
@@ -42,10 +43,10 @@ Bottleneck is a collection of fast NumPy array functions written in C.
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -57,6 +58,6 @@ donttest="(move_test and test_move)"
 %license LICENSE
 %doc README.rst RELEASE.rst
 %{python_sitearch}/bottleneck/
-%{python_sitearch}/Bottleneck-%{version}*-info
+%{python_sitearch}/Bottleneck-%{version}.dist-info
 
 %changelog

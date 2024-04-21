@@ -120,4 +120,17 @@ This is a dependency of python-pandas.</comment>
   * Python 3.11 wheel available</comment>
     <requestid>1071886</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c2c13bfa8f385cdb5c92d7b9529fb4f9</srcmd5>
+    <version>1.3.8</version>
+    <time>1713724192</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1169156 from bnavigator
+
+- Update to 1.3.8
+    * Maintenance updates
+  - Pin to numpy &lt; 2: Fails to build otherwise. Upstream is working
+    on it.</comment>
+    <requestid>1169288</requestid>
+  </revision>
 </revisionlist>

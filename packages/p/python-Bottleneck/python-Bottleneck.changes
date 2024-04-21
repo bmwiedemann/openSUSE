@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 19 11:14:59 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.3.8
+  * Maintenance updates
+- Pin to numpy < 2: Fails to build otherwise. Upstream is working
+  on it.
+
+-------------------------------------------------------------------
 Tue Mar 14 22:42:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.7:
