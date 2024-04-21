@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr  7 05:56:55 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.8.8.
+  texmath (0.12.8.8)
+
+    * TeX reader: support unicode-math Greek symbols, e.g. `\Alpha` (#235).
+      This includes symbols like `\Alpha` and `\omicron` that weren't
+      defined in original TeX.
+
+    * Use typst-symbols 0.1.6
+
+-------------------------------------------------------------------
 Thu Mar 14 18:41:01 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update texmath to version 0.12.8.7.
