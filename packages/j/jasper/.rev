@@ -372,4 +372,12 @@
   * Added a missing check in the JPC codec (#381).</comment>
     <requestid>1163808</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>5a53a2e4515ecdd0a6fef41993c4f609</srcmd5>
+    <version>4.2.3</version>
+    <time>1713723994</time>
+    <user>anag+factory</user>
+    <comment>  * Added a missing check in the JPC codec (#381) bsc#1223155 (CVE-2024-31744)</comment>
+    <requestid>1169268</requestid>
+  </revision>
 </revisionlist>
