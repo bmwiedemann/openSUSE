@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Apr 16 16:56:50 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.3.0:
+  New changes:
+  * Better rendering performance due to the new wlroots rendering
+    API and gles2 renderer improvements.
+  * Finely-grained damage tracking leveraging the wlroots scene
+    graph API.
+  * Interactive resize of windows with the cursor from all
+    edges/corners.
+  * Basic tablet input support
+  * Only the tablet-v2 protocol is is supported, no pointer
+    emulation is done.
+  * Drawing with a tablet tool works in inkscape, libreoffice, etc.
+  * Rules system to apply settings to windows with a matching
+    app-id/title. See rule-add in the riverctl(1) man page.
+  * New -current-tags flag for send-to-output
+  * New -no-xwayland flag for starting river with xwayland disabled
+    even if built with support.
+  * New above, below and after <N> attach modes plus the ability to
+    configure attach mode per output with the new
+    output-attach-mode riverctl command.
+  * New -skip-floating flag for focus-view
+  * New scroll-factor input configuration option
+  * input-method-v2 and text-input-v3 protocols are supported, with
+    the exception of input-method popups.
+  * presentation-time protocol is supported.
+  * fractional-scale-v1 protocol is supported.
+  * cursor-shape-v1 protocol is supported.
+  * xdg-shell protocol version 5 is supported, up from version 2.
+  Breaking changes:
+  * River now honors the client-side vs server-side decoration
+    wishes of clients by default instead of attempting to force
+    server-side decorations everywhere. To approximate the old
+    behavior the command riverctl rule-add ssd may be used.
+  * The float-filter-add and csd-filter-add riverctl commands have
+    been removed, use rule-add instead and see the riverctl(1) man
+    page for documentation.
+  * The attach-mode riverctl command is deprecated and currently
+    aliased to the new default-attach-mode command. The alias may
+    be removed in the future.
+  * Rendering order has changed slightly and and is now based off
+    of focus order instead of window management stack order.
+  * Pointer constraints have been reimplemented and the new
+    implementation does less automatic warping of the cursor.
+  Packaging changes:
+  * wlroots 0.17.2 is required.
+  * The official upstream river repository has moved to codeberg
+
+-------------------------------------------------------------------
 Thu Jan  4 15:44:48 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Fix supplements in contrib package in the specfile.

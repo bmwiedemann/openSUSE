@@ -17,20 +17,16 @@
 
 
 Name:           river
-Version:        0.2.6
+Version:        0.3.0
 Release:        0
 Summary:        A dynamic tiling Wayland compositor
 License:        GPL-3.0-only
 URL:            https://github.com/riverwm/river
-Source0:        https://github.com/riverwm/river/releases/download/v%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/riverwm/river/releases/download/v%{version}/%{name}-%{version}.tar.gz.sig
+Source0:        https://codeberg.org/river/river/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source1:        https://codeberg.org/river/river/releases/download/v%{version}/%{name}-%{version}.tar.gz.sig
 Source2:        river-run.sh
 Source3:        river-portals.conf
 Source4:        https://isaacfreund.com/public_key.txt#/%{name}.keyring
-# Source4:        https://github.com/ifreund/zig-wayland/archive/%{_zig_wayland_commit}.tar.gz
-# Source5:        https://github.com/ifreund/zig-pixman/archive/%{_zig_pixman_commit}.tar.gz
-# Source6:        https://github.com/ifreund/zig-xkbcommon/archive/%{_zig_xkbcommon_commit}.tar.gz
-# Source7:        https://github.com/swaywm/zig-wlroots/archive/%{_zig_wlroots_commit}.tar.gz
 BuildRequires:  libevdev-devel
 BuildRequires:  libpixman-1-0-devel
 BuildRequires:  pkgconfig
@@ -52,8 +48,7 @@ BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
 BuildRequires:  pkgconfig(wayland-server) >= 1.20.0
-BuildRequires:  pkgconfig(wlroots) >= 0.16.0
-BuildConflicts: pkgconfig(wlroots) >= 0.17.0
+BuildRequires:  pkgconfig(wlroots) >= 0.17.2
 BuildRequires:  pkgconfig(xkbcommon)
 Recommends:     xorg-x11-server-wayland
 # To make Qt apps work somewhat okay on Wayland and auto use it

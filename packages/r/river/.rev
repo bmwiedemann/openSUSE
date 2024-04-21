@@ -275,4 +275,12 @@ Fix specfile to not let river own `/usr/share/pkgconfig`</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1138152</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>00527807a1d5f45c6e177067262756f4</srcmd5>
+    <version>0.3.0</version>
+    <time>1713723989</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169299</requestid>
+  </revision>
 </revisionlist>
