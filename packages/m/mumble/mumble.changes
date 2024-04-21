@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Apr 20 15:26:53 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- switch to source service generated tarball that has a number of
+  unused, bundled libraries removed. Patch the sources to not
+  require that they are present - add licenses.patch
+
+-------------------------------------------------------------------
+Sat Apr 20 11:07:09 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- mumble 1.5.629 (RC3)
+  * ReNameNoise as a replacement for RNNoise
+  * Accessibility across the entire application
+  * Add ability to record MP3s
+  * UI updates
+  * bug fixes
+- packaging changes:
+  * use system libraries where available and clean up dependencies
+  * move appdata to client package
+  * remove usage of tracy - mumble-unbundle-tracy.patch
+- drop patches:
+  * fix-pkg_get_variable.patch - reworked upstream
+  * mumble-1.5.517-qsystemlocaledate.patch - not needed
+  * reproducible.patch - merged
+  * mumble-leap-cxx17-filesystem.patch - not needed
+
+-------------------------------------------------------------------
 Thu Feb 22 12:38:25 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1,0 +1,31 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/mumble-voip/mumble.git</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">mumble</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">v1.5.629</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="manual">
+    <!-- throw away a number of unused, bundled libs -->
+    <param name="exclude">3rdparty/GL</param>
+    <param name="exclude">3rdparty/gsl</param>
+    <param name="exclude">3rdparty/march-override-*</param>
+    <param name="exclude">3rdparty/minhook</param>
+    <param name="exclude">3rdparty/nlohmann_json</param>
+    <param name="exclude">3rdparty/speexdsp-build</param>
+    <param name="exclude">3rdparty/speexdsp</param>
+    <param name="exclude">3rdparty/tracy</param>
+    <param name="exclude">3rdparty/xinputcheck*</param>
+    <!-- and the licence texts, see license.patch -->
+    <param name="exclude">3rdPartyLicenses</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

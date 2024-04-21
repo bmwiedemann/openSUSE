@@ -42,4 +42,12 @@
     <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
     <requestid>1150177</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8a0405456e7cbd4e427cb136ac4f749d</srcmd5>
+    <version>1.5.629</version>
+    <time>1713724006</time>
+    <user>anag+factory</user>
+    <comment>mumble 1.5.629 (RC3) - with the bundled libs / license clean-up</comment>
+    <requestid>1169390</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,534 @@
+Index: mumble-1.5.629/src/CMakeLists.txt
+===================================================================
+--- mumble-1.5.629.orig/src/CMakeLists.txt
++++ mumble-1.5.629/src/CMakeLists.txt
+@@ -12,8 +12,6 @@ option(qssldiffiehellmanparameters "Buil
+ 
+ option(zeroconf "Build support for zeroconf (mDNS/DNS-SD)." ON)
+ 
+-option(tracy "Enable the tracy profiler." OFF)
+-
+ option(bundled-gsl "Use the bundled GSL version instead of looking for one on the system" ON)
+ 
+ 
+@@ -192,23 +190,6 @@ if(qssldiffiehellmanparameters)
+ 	target_compile_definitions(shared PUBLIC "USE_QSSLDIFFIEHELLMANPARAMETERS")
+ endif()
+ 
+-# Note: We always include and link against Tracy but it is only enabled, if we set the TRACY_ENABLE cmake option
+-# to ON, before including the respective subdirectory
+-set(TRACY_ENABLE ${tracy} CACHE BOOL "" FORCE)
+-set(TRACY_ON_DEMAND ON CACHE BOOL "" FORCE)
+-# We force to build Tracy as a static library in order to not create a dependency on the respective .so file
+-# (can cause issues for packagers as that dependency is retained even though Tracy is disabled)
+-set(PREV_BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS})
+-set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+-add_subdirectory("${3RDPARTY_DIR}/tracy" "tracy" EXCLUDE_FROM_ALL)
+-disable_warnings_for_all_targets_in("${3RDPARTY_DIR}/tracy")
+-message(STATUS "Tracy: ${TRACY_ENABLE}")
+-
+-# Restore whatever BUILD_SHARED_LIBS was set to before
+-set(BUILD_SHARED_LIBS ${PREV_BUILD_SHARED_LIBS} CACHE BOOL "" FORCE)
+-
+-target_link_libraries(shared PUBLIC Tracy::TracyClient)
+-
+ # Add the GSL
+ if(bundled-gsl)
+ 	add_subdirectory("${3RDPARTY_DIR}/gsl" "${CMAKE_CURRENT_BINARY_DIR}/gsl" EXCLUDE_FROM_ALL)
+Index: mumble-1.5.629/src/murmur/AudioReceiverBuffer.cpp
+===================================================================
+--- mumble-1.5.629.orig/src/murmur/AudioReceiverBuffer.cpp
++++ mumble-1.5.629/src/murmur/AudioReceiverBuffer.cpp
+@@ -8,8 +8,6 @@
+ #include <algorithm>
+ #include <cassert>
+ 
+-#include <tracy/Tracy.hpp>
+-
+ AudioReceiver::AudioReceiver(ServerUser &receiver, Mumble::Protocol::audio_context_t context,
+ 							 const VolumeAdjustment &volumeAdjustment)
+ 	: m_receiver(receiver), m_context(context), m_volumeAdjustment(volumeAdjustment) {
+@@ -67,8 +65,6 @@ void AudioReceiverBuffer::addReceiver(co
+ 
+ void AudioReceiverBuffer::forceAddReceiver(ServerUser &receiver, Mumble::Protocol::audio_context_t context,
+ 										   bool includePositionalData, const VolumeAdjustment &volumeAdjustment) {
+-	ZoneScoped;
+-
+ 	std::vector< AudioReceiver > &receiverList = includePositionalData ? m_positionalReceivers : m_regularReceivers;
+ 	std::unordered_map< const ServerUser *, std::size_t > &userEntryIndices =
+ 		includePositionalData ? m_positionalReceiverIndices : m_regularReceiverIndices;
+@@ -93,8 +89,6 @@ void AudioReceiverBuffer::forceAddReceiv
+ }
+ 
+ void AudioReceiverBuffer::preprocessBuffer() {
+-	ZoneScoped;
+-
+ 	preprocessBuffer(m_regularReceivers);
+ 	preprocessBuffer(m_positionalReceivers);
+ }
+@@ -115,8 +109,6 @@ std::vector< AudioReceiver > &AudioRecei
+ }
+ 
+ void AudioReceiverBuffer::preprocessBuffer(std::vector< AudioReceiver > &receiverList) {
+-	ZoneScoped;
+-
+ #ifndef NDEBUG
+ 	// Sort the list such that entries with same receiver are next to each other
+ 	std::sort(receiverList.begin(), receiverList.end(), [](const AudioReceiver &lhs, const AudioReceiver &rhs) {
+Index: mumble-1.5.629/src/murmur/Server.cpp
+===================================================================
+--- mumble-1.5.629.orig/src/murmur/Server.cpp
++++ mumble-1.5.629/src/murmur/Server.cpp
+@@ -37,10 +37,6 @@
+ 
+ #include <boost/bind/bind.hpp>
+ 
+-#include "TracyConstants.h"
+-#include <tracy/Tracy.hpp>
+-#include <tracy/TracyC.h>
+-
+ #include <algorithm>
+ #include <cassert>
+ #include <vector>
+@@ -78,8 +74,6 @@ QSslSocket *SslServer::nextPendingSSLCon
+ 
+ 
+ Server::Server(int snum, QObject *p) : QThread(p) {
+-	tracy::SetThreadName("Main");
+-
+ 	bValid     = true;
+ 	iServerNum = snum;
+ #ifdef USE_ZEROCONF
+@@ -734,8 +728,6 @@ void Server::udpActivated(int socket) {
+ }
+ 
+ void Server::run() {
+-	tracy::SetThreadName("Audio");
+-
+ 	qint32 len;
+ #if defined(__LP64__)
+ 	unsigned char encbuff[Mumble::Protocol::MAX_UDP_PACKET_SIZE + 8];
+@@ -779,8 +771,6 @@ void Server::run() {
+ 	++nfds;
+ 
+ 	while (bRunning) {
+-		FrameMarkNamed(TracyConstants::UDP_FRAME);
+-
+ #ifdef Q_OS_UNIX
+ 		int pret = poll(fds.data(), nfds, -1);
+ 		if (pret <= 0) {
+@@ -854,8 +844,6 @@ void Server::run() {
+ #endif
+ 
+ 				// Capture only the processing without the polling
+-				ZoneScopedN(TracyConstants::UDP_PACKET_PROCESSING_ZONE);
+-
+ 				if (len == 0) {
+ 					break;
+ 				} else if (len == SOCKET_ERROR) {
+@@ -890,8 +878,6 @@ void Server::run() {
+ 					&& m_udpDecoder.decodePing(
+ 						gsl::span< Mumble::Protocol::byte >(encrypt, static_cast< std::size_t >(len)))
+ 					&& m_udpDecoder.getMessageType() == Mumble::Protocol::UDPMessageType::Ping) {
+-					ZoneScopedN(TracyConstants::PING_PROCESSING_ZONE);
+-
+ 					gsl::span< const Mumble::Protocol::byte > encodedPing =
+ 						handlePing(m_udpDecoder, m_udpPingEncoder, true);
+ 
+@@ -922,8 +908,6 @@ void Server::run() {
+ 						continue;
+ 					}
+ 				} else {
+-					ZoneScopedN(TracyConstants::DECRYPT_UNKNOWN_PEER_ZONE);
+-
+ 					// Unknown peer
+ 					foreach (ServerUser *usr, qhHostUsers.value(ha)) {
+ 						if (checkDecrypt(
+@@ -977,8 +961,6 @@ void Server::run() {
+ 							break;
+ 						}
+ 						case Mumble::Protocol::UDPMessageType::Ping: {
+-							ZoneScopedN(TracyConstants::UDP_PING_PROCESSING_ZONE);
+-
+ 							Mumble::Protocol::PingData pingData = m_udpDecoder.getPingData();
+ 							if (!pingData.requestAdditionalInformation && !pingData.containsAdditionalInformation) {
+ 								// At this point here, we only want to handle connectivity pings
+@@ -1008,8 +990,6 @@ void Server::run() {
+ }
+ 
+ bool Server::checkDecrypt(ServerUser *u, const unsigned char *encrypt, unsigned char *plain, unsigned int len) {
+-	ZoneScoped;
+-
+ 	QMutexLocker l(&u->qmCrypt);
+ 
+ 	if (u->csCrypt->isValid() && u->csCrypt->decrypt(encrypt, plain, len)) {
+@@ -1026,8 +1006,6 @@ bool Server::checkDecrypt(ServerUser *u,
+ }
+ 
+ void Server::sendMessage(ServerUser &u, const unsigned char *data, int len, QByteArray &cache, bool force) {
+-	ZoneScoped;
+-
+ #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+ 	if ((u.aiUdpFlag.loadRelaxed() == 1 || force) && (u.sUdpSocket != INVALID_SOCKET)) {
+ #else
+@@ -1140,8 +1118,6 @@ void Server::addListener(QHash< ServerUs
+ 
+ void Server::processMsg(ServerUser *u, Mumble::Protocol::AudioData audioData, AudioReceiverBuffer &buffer,
+ 						Mumble::Protocol::UDPAudioEncoder< Mumble::Protocol::Role::Server > &encoder) {
+-	ZoneScoped;
+-
+ 	// Note that in this function we never have to acquire a read-lock on qrwlVoiceThread
+ 	// as all places that call this function will hold that lock at the point of calling
+ 	// this function.
+@@ -1221,15 +1197,11 @@ void Server::processMsg(ServerUser *u, M
+ 		QHash< ServerUser *, VolumeAdjustment > cachedListeners;
+ 
+ 		if (u->qmTargetCache.contains(static_cast< int >(audioData.targetOrContext))) {
+-			ZoneScopedN(TracyConstants::AUDIO_WHISPER_CACHE_STORE);
+-
+ 			const WhisperTargetCache &cache = u->qmTargetCache.value(static_cast< int >(audioData.targetOrContext));
+ 			channel                         = cache.channelTargets;
+ 			direct                          = cache.directTargets;
+ 			cachedListeners                 = cache.listeningTargets;
+ 		} else {
+-			ZoneScopedN(TracyConstants::AUDIO_WHISPER_CACHE_CREATE);
+-
+ 			const unsigned int uiSession = u->uiSession;
+ 			qrwlVoiceThread.unlock();
+ 			qrwlVoiceThread.lockForWrite();
+@@ -1275,8 +1247,6 @@ void Server::processMsg(ServerUser *u, M
+ 		}
+ 	}
+ 
+-	ZoneNamedN(__tracy_scoped_zone2, TracyConstants::AUDIO_SENDOUT_ZONE, true);
+-
+ 	buffer.preprocessBuffer();
+ 
+ 	bool isFirstIteration = true;
+@@ -1300,8 +1270,6 @@ void Server::processMsg(ServerUser *u, M
+ 			if (isFirstIteration
+ 				|| !Mumble::Protocol::protocolVersionsAreCompatible(encoder.getProtocolVersion(),
+ 																	currentRange.begin->getReceiver().m_version)) {
+-				ZoneScopedN(TracyConstants::AUDIO_ENCODE);
+-
+ 				encoder.setProtocolVersion(currentRange.begin->getReceiver().m_version);
+ 
+ 				// We have to re-encode the "fixed" part of the audio message
+@@ -1318,9 +1286,7 @@ void Server::processMsg(ServerUser *u, M
+ 			audioData.volumeAdjustment = currentRange.begin->getVolumeAdjustment();
+ 
+ 			// Update data
+-			TracyCZoneN(__tracy_zone, TracyConstants::AUDIO_UPDATE, true);
+ 			gsl::span< const Mumble::Protocol::byte > encodedPacket = encoder.updateAudioPacket(audioData);
+-			TracyCZoneEnd(__tracy_zone);
+ 
+ 			// Clear TCP cache
+ 			tcpCache.clear();
+@@ -1683,8 +1649,6 @@ void Server::connectionClosed(QAbstractS
+ }
+ 
+ void Server::message(Mumble::Protocol::TCPMessageType type, const QByteArray &qbaMsg, ServerUser *u) {
+-	ZoneScopedN(TracyConstants::TCP_PACKET_PROCESSING_ZONE);
+-
+ 	if (!u) {
+ 		u = static_cast< ServerUser * >(sender());
+ 	}
+@@ -2354,8 +2318,6 @@ bool Server::canNest(Channel *newParent,
+ }
+ 
+ WhisperTargetCache Server::createWhisperTargetCacheFor(ServerUser &speaker, const WhisperTarget &target) {
+-	ZoneScoped;
+-
+ 	QMutexLocker qml(&qmCache);
+ 
+ 	WhisperTargetCache cache;
+Index: mumble-1.5.629/src/murmur/AudioReceiverBuffer.h
+===================================================================
+--- mumble-1.5.629.orig/src/murmur/AudioReceiverBuffer.h
++++ mumble-1.5.629/src/murmur/AudioReceiverBuffer.h
+@@ -14,8 +14,6 @@
+ #include <unordered_map>
+ #include <vector>
+ 
+-#include <tracy/Tracy.hpp>
+-
+ class AudioReceiver {
+ public:
+ 	AudioReceiver(ServerUser &receiver, Mumble::Protocol::audio_context_t context,
+@@ -74,8 +72,6 @@ public:
+ 	constexpr static const int maxDecibelDiff = 5;
+ 
+ 	template< typename Iterator > static ReceiverRange< Iterator > getReceiverRange(Iterator begin, Iterator end) {
+-		ZoneScoped;
+-
+ 		ReceiverRange< Iterator > range;
+ 		range.begin = begin;
+ 
+Index: mumble-1.5.629/src/murmur/TracyConstants.h
+===================================================================
+--- mumble-1.5.629.orig/src/murmur/TracyConstants.h
++++ /dev/null
+@@ -1,25 +0,0 @@
+-// Copyright 2021-2023 The Mumble Developers. All rights reserved.
+-// Use of this source code is governed by a BSD-style license
+-// that can be found in the LICENSE file at the root of the
+-// Mumble source tree or at <https://www.mumble.info/LICENSE>.
+-
+-#ifndef MUMBLE_MURMUR_TRACYCONSTANTS_H_
+-#define MUMBLE_MURMUR_TRACYCONSTANTS_H_
+-
+-namespace TracyConstants {
+-static constexpr const char *UDP_PACKET_PROCESSING_ZONE = "udp_packet_processing";
+-static constexpr const char *TCP_PACKET_PROCESSING_ZONE = "tcp_packet_processing";
+-static constexpr const char *PING_PROCESSING_ZONE       = "tcp_ping";
+-static constexpr const char *UDP_PING_PROCESSING_ZONE   = "udp_ping";
+-static constexpr const char *DECRYPT_UNKNOWN_PEER_ZONE  = "decrypt_unknown_peer";
+-
+-static constexpr const char *UDP_FRAME = "udp_frame";
+-
+-static constexpr const char *AUDIO_SENDOUT_ZONE         = "audio_send_out";
+-static constexpr const char *AUDIO_ENCODE               = "audio_encode";
+-static constexpr const char *AUDIO_UPDATE               = "audio_update";
+-static constexpr const char *AUDIO_WHISPER_CACHE_STORE  = "audio_whisper_cache_restore";
+-static constexpr const char *AUDIO_WHISPER_CACHE_CREATE = "audio_whisper_cache_create";
+-} // namespace TracyConstants
+-
+-#endif // MUMBLE_MURMUR_TRACYCONSTANTS_H_
+Index: mumble-1.5.629/docs/dev/Profiling.md
+===================================================================
+--- mumble-1.5.629.orig/docs/dev/Profiling.md
++++ /dev/null
+@@ -1,33 +0,0 @@
+-# Profiling
+-
+-Mumble comes with built-in support for the [Tracy](https://github.com/wolfpld/tracy) profiler. In order to activate the baked-in instrumentation, use
+-`-Dtracy=ON` when compiling Mumble. When using that option, you should see a line in the cmake output that says `TRACY_ENABLE: ON`.
+-
+-
+-## Instrumented parts
+-
+-Currently only the Mumble server is instrumented (can be profiled using Tracy).
+-
+-
+-## Instructions
+-
+-Once you have built Mumble with `-Dtracy=ON`, Mumble will act as a Tracy _client_ (in Tracy terms) which means that you can connect any Tracy _server_
+-to it. Most commonly, you'll want to use either the `profiler` or the `capture`. Both of these programs live in the tracy submodule
+-(`3rdparty/tracy/`) and can be built from there. For build instructions, see the
+-[Tracy Manual](https://github.com/wolfpld/tracy/releases/latest/download/tracy.pdf).
+-
+-The `profiler` is an interactive GUI that can be attached to a currently running Mumble instance to see the profiling data (more or less) in realtime
+-or you can open a previously recorded trace for analysis. Note that it is also possible to connect to a Mumble instance on a remote machine using this
+-tool. All that is required is that it is able to establish a TCP connection to the target machine.
+-
+-The `capture` tool has to be run on the same machine as the Mumble instance that shall be profiled. It is a command-line tool that will attach to a
+-running Tracy _client_ as soon as it is started. It will dump the captured data directly into a file, that can later on be opened in `profiler` for
+-further analysis. This tool is recommended when you want to profile over a longer period of time or you don't want to add the burden of sending all
+-profiling data out through the network, while Mumble is running.
+-
+-
+-## Notes
+-
+-- Profiling should generally be done in `Release` mode in order to obtain reasonable data
+-- If you are having issues connecting your Tracy _server_ to the Mumble server, you should not let it fork. The default behavior in release
+-  mode is to fork, but you can change that by using the `-fg` parameter when starting the server.
+Index: mumble-1.5.629/docs/dev/build-instructions/cmake_options.md
+===================================================================
+--- mumble-1.5.629.orig/docs/dev/build-instructions/cmake_options.md
++++ mumble-1.5.629/docs/dev/build-instructions/cmake_options.md
+@@ -224,11 +224,6 @@ Build binaries in a way that allows easi
+ Build tests.
+ (Default: ${packaging})
+ 
+-### tracy
+-
+-Enable the tracy profiler.
+-(Default: OFF)
+-
+ ### translations
+ 
+ Include languages other than English.
+Index: mumble-1.5.629/src/murmur/Messages.cpp
+===================================================================
+--- mumble-1.5.629.orig/src/murmur/Messages.cpp
++++ mumble-1.5.629/src/murmur/Messages.cpp
+@@ -26,8 +26,6 @@
+ #include <cassert>
+ #include <unordered_map>
+ 
+-#include <tracy/Tracy.hpp>
+-
+ #define RATELIMIT(user)                   \
+ 	if (user->leakyBucket.ratelimit(1)) { \
+ 		return;                           \
+@@ -163,8 +161,6 @@ bool isChannelEnterRestricted(Channel *c
+ }
+ 
+ void Server::msgAuthenticate(ServerUser *uSource, MumbleProto::Authenticate &msg) {
+-	ZoneScoped;
+-
+ 	if (uSource->sState == ServerUser::Authenticated && (msg.tokens_size() > 0 || !uSource->qslAccessTokens.empty())) {
+ 		// Process a change in access tokens for already authenticated users
+ 		QStringList qsl;
+@@ -651,8 +647,6 @@ void Server::msgAuthenticate(ServerUser
+ }
+ 
+ void Server::msgBanList(ServerUser *uSource, MumbleProto::BanList &msg) {
+-	ZoneScoped;
+-
+ 	MSG_SETUP(ServerUser::Authenticated);
+ 
+ 	QSet< Ban > previousBans, newBans;
+@@ -733,8 +727,6 @@ void Server::msgUDPTunnel(ServerUser *,
+ }
+ 
+ void Server::msgUserState(ServerUser *uSource, MumbleProto::UserState &msg) {
+-	ZoneScoped;
+-
+ 	MSG_SETUP(ServerUser::Authenticated);
+ 	VICTIM_SETUP;
+ 
+@@ -1193,8 +1185,6 @@ void Server::msgUserState(ServerUser *uS
+ }
+ 
+ void Server::msgUserRemove(ServerUser *uSource, MumbleProto::UserRemove &msg) {
+-	ZoneScoped;
+-
+ 	MSG_SETUP(ServerUser::Authenticated);
+ 	VICTIM_SETUP;
+ 
+@@ -1232,8 +1222,6 @@ void Server::msgUserRemove(ServerUser *u
+ }
+ 
+ void Server::msgChannelState(ServerUser *uSource, MumbleProto::ChannelState &msg) {
+-	ZoneScoped;
+-
+ 	MSG_SETUP(ServerUser::Authenticated);
+ 
+ 	Channel *c = nullptr;
+@@ -1516,8 +1504,6 @@ void Server::msgChannelState(ServerUser
+ }
+ 
+ void Server::msgChannelRemove(ServerUser *uSource, MumbleProto::ChannelRemove &msg) {
+-	ZoneScoped;
+-
+ 	MSG_SETUP(ServerUser::Authenticated);
+ 
+ 	Channel *c = qhChannels.value(msg.channel_id());
+@@ -1535,8 +1521,6 @@ void Server::msgChannelRemove(ServerUser
+ }
+ 
+ void Server::msgTextMessage(ServerUser *uSource, MumbleProto::TextMessage &msg) {
+-	ZoneScoped;
+-
+ 	MSG_SETUP(ServerUser::Authenticated);
+ 	QMutexLocker qml(&qmCache);
+ 
+@@ -1746,8 +1730,6 @@ void logACLs(Server *server, const Chann
+ 
+ 
+ void Server::msgACL(ServerUser *uSource, MumbleProto::ACL &msg) {
+-	ZoneScoped;
+-
+ 	MSG_SETUP(ServerUser::Authenticated);
+ 
+ 	Channel *c = qhChannels.value(msg.channel_id());
+@@ -1959,8 +1941,6 @@ void Server::msgACL(ServerUser *uSource,
+ }
+ 
+ void Server::msgQueryUsers(ServerUser *uSource, MumbleProto::QueryUsers &msg) {
+-	ZoneScoped;
+-
+ 	MSG_SETUP(ServerUser::Authenticated);
+ 
+ 	MumbleProto::QueryUsers reply;
+@@ -1988,8 +1968,6 @@ void Server::msgQueryUsers(ServerUser *u
+ }
+ 
+ void Server::msgPing(ServerUser *uSource, MumbleProto::Ping &msg) {
+-	ZoneScoped;
+-
+ 	MSG_SETUP_NO_UNIDLE(ServerUser::Authenticated);
+ 
+ 	QMutexLocker l(&uSource->qmCrypt);
+@@ -2019,8 +1997,6 @@ void Server::msgPing(ServerUser *uSource
+ }
+ 
+ void Server::msgCryptSetup(ServerUser *uSource, MumbleProto::CryptSetup &msg) {
+-	ZoneScoped;
+-
+ 	MSG_SETUP_NO_UNIDLE(ServerUser::Authenticated);
+ 
+ 	QMutexLocker l(&uSource->qmCrypt);
+@@ -2042,8 +2018,6 @@ void Server::msgContextActionModify(Serv
+ }
+ 
+ void Server::msgContextAction(ServerUser *uSource, MumbleProto::ContextAction &msg) {
+-	ZoneScoped;
+-
+ 	MSG_SETUP(ServerUser::Authenticated);
+ 
+ 	unsigned int session = msg.has_session() ? msg.session() : 0;
+@@ -2070,8 +2044,6 @@ QString convertWithSizeRestriction(const
+ }
+ 
+ void Server::msgVersion(ServerUser *uSource, MumbleProto::Version &msg) {
+-	ZoneScoped;
+-
+ 	RATELIMIT(uSource);
+ 
+ 	uSource->m_version = MumbleProto::getVersion(msg);
+@@ -2094,8 +2066,6 @@ void Server::msgVersion(ServerUser *uSou
+ }
+ 
+ void Server::msgUserList(ServerUser *uSource, MumbleProto::UserList &msg) {
+-	ZoneScoped;
+-
+ 	MSG_SETUP(ServerUser::Authenticated);
+ 
+ 	// The register permission is required on the root channel to be allowed to
+@@ -2171,8 +2141,6 @@ void Server::msgUserList(ServerUser *uSo
+ }
+ 
+ void Server::msgVoiceTarget(ServerUser *uSource, MumbleProto::VoiceTarget &msg) {
+-	ZoneScoped;
+-
+ 	MSG_SETUP_NO_UNIDLE(ServerUser::Authenticated);
+ 
+ 	int target = static_cast< int >(msg.id());
+@@ -2220,8 +2188,6 @@ void Server::msgVoiceTarget(ServerUser *
+ }
+ 
+ void Server::msgPermissionQuery(ServerUser *uSource, MumbleProto::PermissionQuery &msg) {
+-	ZoneScoped;
+-
+ 	MSG_SETUP_NO_UNIDLE(ServerUser::Authenticated);
+ 
+ 	Channel *c = qhChannels.value(msg.channel_id());
+@@ -2235,8 +2201,6 @@ void Server::msgCodecVersion(ServerUser
+ }
+ 
+ void Server::msgUserStats(ServerUser *uSource, MumbleProto::UserStats &msg) {
+-	ZoneScoped;
+-
+ 	MSG_SETUP_NO_UNIDLE(ServerUser::Authenticated);
+ 	VICTIM_SETUP;
+ 	const BandwidthRecord &bwr            = pDstServerUser->bwr;
+@@ -2324,8 +2288,6 @@ void Server::msgUserStats(ServerUser *uS
+ }
+ 
+ void Server::msgRequestBlob(ServerUser *uSource, MumbleProto::RequestBlob &msg) {
+-	ZoneScoped;
+-
+ 	MSG_SETUP_NO_UNIDLE(ServerUser::Authenticated);
+ 
+ 	int ntextures     = msg.session_texture_size();
+@@ -2376,8 +2338,6 @@ void Server::msgSuggestConfig(ServerUser
+ }
+ 
+ void Server::msgPluginDataTransmission(ServerUser *sender, MumbleProto::PluginDataTransmission &msg) {
+-	ZoneScoped;
+-
+ 	// A client's plugin has sent us a message that we shall delegate to its receivers
+ 
+ 	if (sender->m_pluginMessageBucket.ratelimit(1)) {
