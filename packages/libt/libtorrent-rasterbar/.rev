@@ -816,4 +816,14 @@
     <comment></comment>
     <requestid>1147577</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>bf077d173f91b35de15dbbc2a0b9edad</srcmd5>
+    <version>2.0.10</version>
+    <time>1713723957</time>
+    <user>anag+factory</user>
+    <comment>- Build against boost175 on Leap15
+  code-o-o#leap/features/issue/155
+</comment>
+    <requestid>1169256</requestid>
+  </revision>
 </revisionlist>

@@ -33,10 +33,17 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  cmake >= 3.12.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+%if 0%{?suse_version} > 1500
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_python3-devel
 BuildRequires:  libboost_random-devel
 BuildRequires:  libboost_system-devel
+%else
+BuildRequires:  libboost_chrono1_75_0-devel
+BuildRequires:  libboost_python-py3-1_75_0-devel
+BuildRequires:  libboost_random1_75_0-devel
+BuildRequires:  libboost_system1_75_0-devel
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
@@ -83,7 +90,11 @@ Summary:        Header files for libtorrent, a C++ implementation of the BitTorr
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{libver} = %{version}
 Requires:       gcc-c++
+%if 0%{?suse_version} > 1500
 Requires:       libboost_headers-devel
+%else
+Requires:       libboost_headers1_75_0-devel
+%endif
 Requires:       pkgconfig(openssl)
 Conflicts:      %{name}-%{_legacy}-devel
 
