@@ -34,8 +34,6 @@ Source0:        flannel-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        kube-flannel.yaml
 Requires:       iproute2
-# arp is used:
-Requires:       net-tools-deprecated
 Requires:       iptables
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.20

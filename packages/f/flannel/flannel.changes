@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 19 17:51:42 UTC 2024 - Jeff Mahoney <jeffm@suse.com>
+
+- Remove dependency on net-tools-deprecated.  It's not actually used.
+
+-------------------------------------------------------------------
 Wed Jan 31 13:05:53 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - sync `kube-flannel.yaml` manifest with upstream release, v0.24.2 (bsc#1218694)
