@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 20 13:41:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.6:
+  * Use raw byte string for regex; fixes SyntaxWarning in
+    Python 3.12 due to invalid escape sequence
+
+-------------------------------------------------------------------
 Thu Feb 29 03:25:54 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros.
