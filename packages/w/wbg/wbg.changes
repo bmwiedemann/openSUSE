@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 19 11:53:33 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Remove patches (fixed upstream)
+  * 0001-fix-mfd-noexec-seal.patch
+  * 0004-impl-layer-surface-closed-event.patch
+  * 0005-mark-surface-as-opaque.patch
+- Update to version 1.2.0:
+  Added
+  * We now hint to the compositor that the background is fully
+    opaque.
+  * SVG support.
+  Changed
+  * Image is now zoomed, rather than stretched.
+  Fixed
+  * Respect the layer_surface::closed() event.
+
+-------------------------------------------------------------------
 Tue Feb 20 15:17:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
