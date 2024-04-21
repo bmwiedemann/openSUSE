@@ -102,4 +102,20 @@
   * Fix invalid version number.</comment>
     <requestid>1064751</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1121fecce27714e0e07637cab49edaee</srcmd5>
+    <version>1.4.1</version>
+    <time>1713724139</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.1:
+  * Fix Pygemnts requirement in setup.py
+  * Change the output of the CLI logger to stderr
+  * Add support for Python 3.11
+  * Update help messages
+  * Update requirements
+- drop fix-requirements.patch (upstream)
+
+  * Fix invalid version number.</comment>
+    <requestid>1169473</requestid>
+  </revision>
 </revisionlist>

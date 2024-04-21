@@ -1,8 +1,19 @@
 -------------------------------------------------------------------
+Sun Apr 21 08:48:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.1:
+  * Fix Pygemnts requirement in setup.py
+  * Change the output of the CLI logger to stderr
+  * Add support for Python 3.11
+  * Update help messages
+  * Update requirements
+- drop fix-requirements.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Feb 13 04:12:07 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch fix-requirements.patch:
-  * Fix invalid version number. 
+  * Fix invalid version number.
 
 -------------------------------------------------------------------
 Mon Oct 25 19:39:25 UTC 2021 - Martin Hauke <mardnh@gmx.de>
