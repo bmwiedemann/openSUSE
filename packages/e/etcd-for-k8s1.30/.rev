@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>27db06107fc1312cc0358460f3d68b52</srcmd5>
+    <version>3.5.12</version>
+    <time>1713723923</time>
+    <user>anag+factory</user>
+    <comment>New Package - etcd-for-k8s1.30
+
+Initial package version 3.5.12:
+* Version specified in kubernetes v1.30.0 - https://github.com/kubernetes/kubernetes/blob/v1.30.0/build/dependencies.yaml#L65-L87</comment>
+    <requestid>1169207</requestid>
+  </revision>
+</revisionlist>
