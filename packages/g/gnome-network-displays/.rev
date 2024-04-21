@@ -35,4 +35,37 @@ This is more futureproof.
     <comment></comment>
     <requestid>966607</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f2e6810f31260f10c31c8c9adc6ef813</srcmd5>
+    <version>0.92.1</version>
+    <time>1713723938</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.92.1:
+  + Fix compilation in Fedora Koji
+- Changes from version 0.92.0:
+  + Migrate to gtk4.
+  + Use libportal to acquire screencast portal.
+  + Upstream Flatpak appdata updated and CI added.
+  + Dedupe sinks based on IP and P2P MAC instead of name.
+  + Fix various issues.
+- Changes from version 0.91.0
+  + Add support for Miracast over Infrastructure (MICE) protocol.
+  + Add support for Chromecast protocol.
+  + Add support for casting a virtual screen.
+  + Fix various issues.
+  + Updated translations.
+- Replace pkgconfig(gtk+-3.0) BuildRequires with pkgconfig(gtk4):
+  Follow upstreams port to gtk4.
+- Align BuildRequires with what meson checks for:
+  + Add pkgconfig(avahi-client), pkgconfig(avahi-gobject),
+    pkgconfig(gio-2.0), pkgconfig(gstreamer-1.0),
+    pkgconfig(gstreamer-pbutils-1.0), pkgconfig(json-glib-1.0),
+    pkgconfig(libadwaita-1), pkgconfig(libnm),
+    pkgconfig(libportal-gtk4), pkgconfig(libprotobuf-c), and
+    pkgconfig(libsoup-3.0).
+- Run test suite: add meson_test to check section.
+
+- Initial package</comment>
+    <requestid>1169236</requestid>
+  </revision>
 </revisionlist>
