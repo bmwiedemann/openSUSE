@@ -85,4 +85,13 @@
   + Clean up Meson post-install script</comment>
     <requestid>1163742</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f9f7e80ea5713d7a363783d0dc5f347f</srcmd5>
+    <version>1.2.1</version>
+    <time>1713724161</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.1
+  + Update &quot;Upstream&quot; protocol list to wayland-protocols v1.35</comment>
+    <requestid>1169493</requestid>
+  </revision>
 </revisionlist>
