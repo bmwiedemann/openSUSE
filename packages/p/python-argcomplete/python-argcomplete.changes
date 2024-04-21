@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 18 06:26:52 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.3.0 (bsc#1222880):
+  * Preserve compatibility with argparse option tuples of length 4.
+    This update is required to use argcomplete on Python 3.11.9+ or
+    3.12.3+.
+- update to 3.2.3:
+  * Allow register-python-argcomplete output to be used as lazy-loaded
+    zsh completion module (#475)
+    - Move debug_stream initialization to helper method to allow fd 9
+      behavior to be overridden in subclasses (#471)
+
+-------------------------------------------------------------------
 Tue Jan 30 12:07:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.2:

@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-argcomplete
-Version:        3.2.2
+Version:        3.3.0
 Release:        0
 Summary:        Bash tab completion for argparse
 License:        Apache-2.0
