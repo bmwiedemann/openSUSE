@@ -868,4 +868,21 @@ New upstream release</comment>
   + Updated translations. (forwarded request 1164514 from dimstar)</comment>
     <requestid>1164568</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>a604bd9f77a2cbe310275403843a01af</srcmd5>
+    <version>4.14.3</version>
+    <time>1713723890</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.14.3:
+  + GtkShortcutManager: Track the propagation phase of added
+    controllers.
+  + Accessibility: Implement GtkAccessibleRange for scrollbars.
+  + X11:
+    - Fix some confusing debug messages
+    - Drop a no-longer-relevant optimization that was interfering
+      with getting the current window manager capabilities.
+  + Tools: Support generating pdf in gtk4-rendernode-tool.
+  + Updated translations. (forwarded request 1169186 from dimstar)</comment>
+    <requestid>1169226</requestid>
+  </revision>
 </revisionlist>

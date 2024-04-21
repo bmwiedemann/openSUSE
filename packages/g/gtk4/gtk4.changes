@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 19 12:57:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.14.3:
+  + GtkShortcutManager: Track the propagation phase of added
+    controllers.
+  + Accessibility: Implement GtkAccessibleRange for scrollbars.
+  + X11:
+    - Fix some confusing debug messages
+    - Drop a no-longer-relevant optimization that was interfering
+      with getting the current window manager capabilities.
+  + Tools: Support generating pdf in gtk4-rendernode-tool.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Apr  4 08:17:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.14.2:
