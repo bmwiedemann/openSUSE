@@ -25,4 +25,12 @@ https://github.com/kubernetes/kubernetes/releases/tag/v1.29.1</comment>
     <comment></comment>
     <requestid>1166174</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2cf7e99179fad72278a04b0248e307d3</srcmd5>
+    <version>1.29.4</version>
+    <time>1713723927</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169209</requestid>
+  </revision>
 </revisionlist>

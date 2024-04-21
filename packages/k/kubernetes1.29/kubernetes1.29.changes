@@ -1,11 +1,37 @@
 -------------------------------------------------------------------
+Thu Apr 18 11:11:52 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.29.4:
+  * Add envFrom to serviceaccount admission plugin
+  * update debian-base to bookworm-v1.0.2
+  * [go] Bump images, dependencies and versions to go 1.21.9 and distroless iptables / set-cap
+  * [CVE-2023-45288] .*: bump x/net to v0.23.0
+  * Keep streams from being set up after closeAllStreamReaders is called
+  * Make websocket heartbeat test timing less flaky
+  * Avoid logging binary junk for frame write failure
+  * Use the right feature gate when updating uncertain volumes
+  * fix panic with SIGSEGV in kubeadm certs check-expiration
+  * retry policy creation for CRD type checking E2E test
+  * Undo double run of the TestWatchSemantics test to avoid hitting timeout
+  * apiserver/storage/cacher: decrease the running time of tests in the cacher package.
+  * Serve watch without resourceVersion from cache and introduce a WatchFromStorageWithoutResourceVersion feature gate to allow serving watch from storage.
+  * Ensure that initial events are sorted for WatchList
+  * fix aggregator path filtering to include /
+  * Filter aggregated apiservice gv
+  * Use DBG=1 for conformance verification
+  * build: use -trimpath in non-DBG mode
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.21.9`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.29.4/build/dependencies.yaml#L119-L121 
+
+-------------------------------------------------------------------
 Mon Apr  8 10:55:22 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - update .spec file to set FORCE_HOST_GO env variable,
   to force k8s build scripts use the local GOTOOLCHAIN version from the build pipeline
   (i.e. GOTOOLCHAIN='auto')
   * ref: https://github.com/kubernetes/kubernetes/blob/9791f0d1f39f3f1e0796add7833c1059325d5098/hack/lib/golang.sh#L507
-
 
 -------------------------------------------------------------------
 Mon Apr 08 05:49:04 UTC 2024 - priyanka.saggu@suse.com
