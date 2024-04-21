@@ -108,4 +108,3 @@ Index: VirtualBox-7.0.14/src/VBox/Additions/linux/sharedfolders/regops.c
  	up_read(&pTask->mm->mmap_sem);
              if (cPagesLocked == cPages) {
                  size_t cbRet = (cPages << PAGE_SHIFT) - offPg0;
-

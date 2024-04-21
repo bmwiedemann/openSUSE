@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 19 04:36:59 UTC 2024 - Larry Finger <Larry.Finger@gmail.com>
+
+- Fix build error on Factory;Staging due to libxml 2.12.6. Added file
+  libxml21206.patch.
+  Added file kernel-6.9.patch to fix builds on kernel 6.9.
+
+-------------------------------------------------------------------
 Mon Apr  1 16:12:39 UTC 2024 - Javier de San Pedro <dev.rpm@javispedro.com>
 
 - Setting 0660 as permissions of /dev/vboxusb directory itself was preventing

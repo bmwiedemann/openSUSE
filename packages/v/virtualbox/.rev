@@ -2597,4 +2597,12 @@ I have verified that with this USB passhtrough works on today's TW (real machine
 Without this fix, VBox always shows &quot;VirtualBox is not currently allowed to access USB devices. You can change this by adding your user to vboxusers [....]&quot;, and the UI cannot enumerate USB devices at all. (forwarded request 1163957 from javispedro)</comment>
     <requestid>1163976</requestid>
   </revision>
+  <revision rev="275" vrev="8">
+    <srcmd5>7a4e49609f1368f08a821b5aa4c83f06</srcmd5>
+    <version>7.0.14</version>
+    <time>1713723912</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169266</requestid>
+  </revision>
 </revisionlist>

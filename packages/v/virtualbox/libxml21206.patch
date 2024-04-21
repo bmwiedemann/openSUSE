@@ -1,0 +1,68 @@
+Index: VirtualBox-7.0.14/src/VBox/Runtime/r3/xml.cpp
+===================================================================
+--- VirtualBox-7.0.14.orig/src/VBox/Runtime/r3/xml.cpp
++++ VirtualBox-7.0.14/src/VBox/Runtime/r3/xml.cpp
+@@ -1856,11 +1856,10 @@ static void xmlParserBaseGenericError(vo
+     va_end(args);
+ }
+ 
+-static void xmlParserBaseStructuredError(void *pCtx, xmlErrorPtr error) RT_NOTHROW_DEF
++static void xmlStructuredErrorFunc(void *userData, const xmlError *error)  RT_NOTHROW_DEF
+ {
+-    NOREF(pCtx);
+-    /* we expect that there is always a trailing NL */
+-    LogRel(("XML error at '%s' line %d: %s", error->file, error->line, error->message));
++    NOREF(userData);
++    NOREF(error);
+ }
+ 
+ XmlParserBase::XmlParserBase()
+@@ -1870,7 +1869,7 @@ XmlParserBase::XmlParserBase()
+         throw std::bad_alloc();
+     /* per-thread so it must be here */
+     xmlSetGenericErrorFunc(NULL, xmlParserBaseGenericError);
+-    xmlSetStructuredErrorFunc(NULL, xmlParserBaseStructuredError);
++//    xmlSetStructuredErrorFunc(NULL, xmlStructuredErrorFunc);
+ }
+ 
+ XmlParserBase::~XmlParserBase()
+@@ -1931,7 +1930,7 @@ void XmlMemParser::read(const void *pvBu
+                                                   pcszFilename,
+                                                   NULL,       // encoding = auto
+                                                   options)))
+-        throw XmlError(xmlCtxtGetLastError(m_ctxt));
++        throw XmlError((xmlErrorPtr)xmlCtxtGetLastError(m_ctxt));
+ 
+     doc.refreshInternals();
+ }
+@@ -2191,7 +2190,7 @@ void XmlFileParser::read(const RTCString
+                                               pcszFilename,
+                                               NULL,       // encoding = auto
+                                               options)))
+-        throw XmlError(xmlCtxtGetLastError(m_ctxt));
++        throw XmlError((xmlErrorPtr)xmlCtxtGetLastError(m_ctxt));
+ 
+     doc.refreshInternals();
+ }
+Index: VirtualBox-7.0.14/src/libs/libxml2-2.12.6/include/vboxconfig.h
+===================================================================
+--- VirtualBox-7.0.14.orig/src/libs/libxml2-2.12.6/include/vboxconfig.h
++++ VirtualBox-7.0.14/src/libs/libxml2-2.12.6/include/vboxconfig.h
+@@ -387,7 +387,7 @@
+ #define PACKAGE_TARNAME ""
+ 
+ /* Define to the version of this package. */
+-#define PACKAGE_VERSION "2.6.30"
++#define PACKAGE_VERSION "2.12.6"
+ 
+ /* Define to 1 if the C compiler supports function prototypes. */
+ #define PROTOTYPES 1
+@@ -399,7 +399,7 @@
+ #undef SUPPORT_IP6
+ 
+ /* Version number of package */
+-#define VERSION "2.6.30"
++#define VERSION "2.12.6"
+ 
+ /* Determine what socket length (socklen_t) data type is */
+ #if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)

@@ -53,7 +53,7 @@ if [ "$?" -ne 0 ] ; then
         exit 1
 fi
 depmod -a
-modprobe -av vboxsf vboxguest vboxvideo
+modprobe -av vboxguest vboxvideo
 cd ../..
 rm -rf additions
 popd > /dev/null 2>&1
