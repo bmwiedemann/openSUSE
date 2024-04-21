@@ -1,7 +1,7 @@
 #
 # spec file for package python-subprocrunner
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-subprocrunner
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        A Python wrapper library for subprocess module
 License:        MIT

@@ -85,4 +85,19 @@
     <comment></comment>
     <requestid>1035281</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9bcea9d984dbda8e43bbba354e86e080</srcmd5>
+    <version>2.0.1</version>
+    <time>1713723999</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.1:
+  * Add `__all__` to `__init__.py`
+  * Update the package metadata
+  * Drop support for Python 3.6
+  * Add support for Python 3.11 and 3.12
+  * Fix type annotations
+
+- Update to version 2.0.0</comment>
+    <requestid>1169319</requestid>
+  </revision>
 </revisionlist>
