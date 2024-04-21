@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Chameleon
-Version:        4.5.2
+Version:        4.5.4
 Release:        0
 Summary:        Fast HTML/XML Template Compiler
 License:        BSD-3-Clause AND BSD-4-Clause AND Python-2.0 AND ZPL-2.1

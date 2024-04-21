@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 20 13:30:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.4:
+  * Fix an issue where $-sign interpolation escaping would not
+    work correctly when more than two such symbols appeared next
+    to each other.
+  * Minor optimization when rendering translations with a static
+    message id (don't need to test if it's non-empty).
+  * Fix a bug where a macro could not be used correctly to render
+    a translation name.
+
+-------------------------------------------------------------------
 Mon Mar 18 06:52:50 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing {Build,}Requires on importlib-metadata.
