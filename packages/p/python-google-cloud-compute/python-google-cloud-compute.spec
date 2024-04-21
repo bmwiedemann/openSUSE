@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-compute
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-compute
-Version:        1.15.0
+Version:        1.18.0
 Release:        0
 Summary:        Google Cloud Compute API client library
 License:        Apache-2.0
@@ -35,6 +35,7 @@ BuildRequires:  %{python_module protobuf >= 3.19.5}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-google-api-core >= 1.34.0
+Requires:       python-google-auth >= 2.14.1
 Requires:       python-proto-plus >= 1.22.3
 Requires:       python-protobuf >= 3.19.5
 BuildArch:      noarch
