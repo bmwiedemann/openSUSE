@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 20 11:35:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.4.12:
+  * Add the -original-name flag description to README.md
+  * Syntax error correction
+  * Add original-name flags for remaining original resource name
+
+-------------------------------------------------------------------
 Fri Feb 16 07:06:47 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.4.11:
