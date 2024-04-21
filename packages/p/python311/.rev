@@ -1264,4 +1264,16 @@ C API
       other entry or central directory (bsc#1221854, CVE-2024-0450).</comment>
     <requestid>1161081</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>dc03608f3ab4b01a1ff085163f17b549</srcmd5>
+    <version>3.11.9</version>
+    <time>1713723856</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1169083 from dgarcia
+
+- Add CVE-2023-52425-libexpat-2.6.0-backport.patch to fix tests with
+    patched libexpat below 2.6.0 that doesn't update the version number,
+    just in SLE.</comment>
+    <requestid>1169286</requestid>
+  </revision>
 </revisionlist>

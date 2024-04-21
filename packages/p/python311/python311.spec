@@ -94,7 +94,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.11.8
+Version:        3.11.9
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -165,15 +165,14 @@ Patch13:        skip_if_buildbot-extend.patch
 # Detect email address parsing errors and return empty tuple to
 # indicate the parsing error (old API)
 Patch14:        CVE-2023-27043-email-parsing-errors.patch
-# PATCH-FIX-UPSTREAM libexpat260.patch gh#python/cpython#115289
-# Fix tests for XMLPullParser with Expat 2.6.0
-Patch15:        libexpat260.patch
-# PATCH-FIX-UPSTREAM CVE-2023-6597-TempDir-cleaning-symlink.patch bsc#1219666 mcepl@suse.com
-# tempfile.TemporaryDirectory: fix symlink bug in cleanup (from gh#python/cpython!99930)
-Patch16:        CVE-2023-6597-TempDir-cleaning-symlink.patch
 # PATCH-FIX-UPSTREAM bsc1221260-test_asyncio-ResourceWarning.patch bsc#1221260 mcepl@suse.com
 # prevent ResourceWarning in test_asyncio tests
-Patch17:        bsc1221260-test_asyncio-ResourceWarning.patch
+Patch15:        bsc1221260-test_asyncio-ResourceWarning.patch
+# PATCH-FIX-OPENSUSE CVE-2023-52425-libexpat-2.6.0-backport.patch
+# This problem on libexpat is patched on SLE without version
+# update, this patch changes the tests to match the libexpat provided
+# by SUSE
+Patch16:        CVE-2023-52425-libexpat-2.6.0-backport.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -435,7 +434,6 @@ other applications.
 %patch -p1 -P 14
 %patch -p1 -P 15
 %patch -p1 -P 16
-%patch -p1 -P 17
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
