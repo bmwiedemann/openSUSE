@@ -143,4 +143,12 @@
     <comment>Do not depend on mockito</comment>
     <requestid>1168846</requestid>
   </revision>
+  <revision rev="19" vrev="14">
+    <srcmd5>bc68357935c592148c3f4cd4ce40ca71</srcmd5>
+    <version>5.11.0</version>
+    <time>1713724189</time>
+    <user>anag+factory</user>
+    <comment>Revert this since some things not in factory depend on the test artifacts</comment>
+    <requestid>1169530</requestid>
+  </revision>
 </revisionlist>

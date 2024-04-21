@@ -64,6 +64,7 @@ BuildRequires:  mvn(org.bouncycastle:bcpkix-jdk15on)
 BuildRequires:  mvn(org.bouncycastle:bcprov-jdk15on)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.eclipse.jetty:jetty-servlet)
+BuildRequires:  mvn(org.mockito:mockito-core)
 BuildRequires:  mvn(org.osgi:osgi.core)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.slf4j:slf4j-simple)
@@ -129,17 +130,6 @@ done
 # Don't build benchmark and coverage
 %pom_disable_module org.eclipse.jgit.benchmarks
 %pom_disable_module org.eclipse.jgit.coverage
-
-# Don't build tests
-%pom_disable_module org.eclipse.jgit.ant.test
-%pom_disable_module org.eclipse.jgit.http.test
-%pom_disable_module org.eclipse.jgit.lfs.test
-%pom_disable_module org.eclipse.jgit.ssh.apache.test
-%pom_disable_module org.eclipse.jgit.test
-%pom_disable_module org.eclipse.jgit.gpg.bc.test
-%pom_disable_module org.eclipse.jgit.lfs.server.test
-%pom_disable_module org.eclipse.jgit.pgm.test
-%pom_disable_module org.eclipse.jgit.ssh.jsch.test
 
 # Use newer Felix dep
 %pom_change_dep -r org.osgi:org.osgi.core org.osgi:osgi.core
