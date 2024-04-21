@@ -25,12 +25,12 @@
 %endif
 
 Name:           libxml2%{?dash}%{flavor}
-Version:        2.11.6
+Version:        2.12.6
 Release:        0
 License:        MIT
 Summary:        A Library to Manipulate XML Files
 URL:            https://gitlab.gnome.org/GNOME/libxml2
-Source0:        https://download.gnome.org/sources/%{name}/2.11/libxml2-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/2.12/libxml2-%{version}.tar.xz
 Source1:        baselibs.conf
 # W3C Conformance tests
 Source2:        https://www.w3.org/XML/Test/xmlts20080827.tar.gz
@@ -42,18 +42,7 @@ Patch0:         libxml2-python3-unicode-errors.patch
 # PATCH-FIX-UPSTREAM libxml2-python3-string-null-check.patch bsc#1065270 mgorse@suse.com
 # https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/15
 Patch1:         libxml2-python3-string-null-check.patch
-# PATCH-FIX-UPSTREAM CVE-2023-39615 bsc#1214768
-# https://gitlab.gnome.org/GNOME/libxml2/-/commit/d0c3f01e110d54415611c5fa0040cdf4a56053f9
-Patch2:         libxml2-CVE-2023-39615.patch
-# PATCH-FIX-UPSTREAM python312.patch
-# https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/226
-Patch3:         python312.patch
-# PATCH-FIX-UPSTREAM CVE-2023-45322 bsc#1216129
-# https://gitlab.gnome.org/GNOME/libxml2/-/commit/d39f78069dff496ec865c73aa44d7110e429bce9
-Patch4:         libxml2-CVE-2023-45322.patch
-# PATCH-FIX-UPSTREAM use-after-free in XMLReader bsc#1219576 david.anes@suse.com
-# https://gitlab.gnome.org/GNOME/libxml2/-/commit/1a66b176055d25ee635bf328c7b35b381db0b71d
-Patch5:         libxml2-CVE-2024-25062.patch
+
 #
 ### -- openSUSE patches range from 1000 to 1999 -- ###
 # PATCH-FIX-OPENSUSE

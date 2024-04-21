@@ -1,8 +1,132 @@
 -------------------------------------------------------------------
+Wed Apr 17 21:22:16 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- Update to version 2.12.6
+  * Regressions
+    - parser: Fix detection of duplicate attributes in XML namespace
+    - xmlreader: Fix xmlTextReaderConstEncoding
+    - html: Fix htmlCreatePushParserCtxt with encoding
+    - xmllint: Return error code if XPath returns empty nodeset
+- Update to version 2.12.5
+  * Security
+    - [CVE-2024-25062] xmlreader: Don't expand XIncludes when backtracking
+  * Regressions
+    - parser: Fix crash in xmlParseInNodeContext with HTML documents
+- Update to version 2.12.4
+  * Regressions
+   - parser: Fix regression parsing standalone declarations
+   - autotools: Readd --with-xptr-locs configuration option
+   - parser: Fix build --without-output
+   - parser: Don't grow or shrink pull parser memory buffers
+   - io: Fix memory lifetime issue with input buffers
+- Update to version 2.12.3
+  * Regressions
+    - parser: Fix namespaces redefined from default attributes
+  * Build fixes
+    - include: Rename XML_EMPTY helper macro
+    - include: Move declaration of xmlInitGlobals
+    - include: Add missing includes
+    - include: Move globals from xmlsave.h to parser.h
+    - include: Readd circular dependency between tree.h and parser.h
+- Drop libxml2-CVE-2024-25062.patch as it is part of upstream
+
+-------------------------------------------------------------------
 Sat Feb 10 10:56:46 UTC 2024 - David Anes <david.anes@suse.com>
 
 - Security fix (CVE-2024-25062, bsc#1219576) use-after-free in XMLReader
   * Added libxml2-CVE-2024-25062.patch 
+
+-------------------------------------------------------------------
+Tue Dec  5 20:20:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.12.2:
+  * Regressions:
+    - parser:
+      . Fix invalid free in xmlParseBalancedChunkMemoryRecover
+      . Make CRLF increment line number
+    - globals: Disable TLS in static Windows builds
+    - html: Reenable buggy detection of XML declarations
+    - tree: Fix regression when copying DTDs
+  * Build fixes
+    - build: Disable compiler TLS by default
+    - cmake: Update config.h.cmake.in
+    - tests: Fix tests --with-valid --without-xinclude
+
+-------------------------------------------------------------------
+Fri Nov 24 20:44:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to verson 2.12.1:
+  * Regressions:
+    - hash: Fix deletion of entries during scan
+    - parser: Only enable SAX2 if there are SAX2 element handlers
+  * Build fixes:
+    - autotools: Stop checking for snprintf
+    - dict: Fix '__thread' before 'static'
+    - fix: pthread weak references in globals.c
+    - tests: Fix build with older MSVC
+
+-------------------------------------------------------------------
+Fri Nov 17 09:07:44 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Bring back a patch that was mistakenly removed in the last update.
+  * Readded libxml2-make-XPATH_MAX_NODESET_LENGTH-configurable.patch 
+
+-------------------------------------------------------------------
+Thu Nov 16 13:14:41 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Removed patches (already in upstream):
+  * libxml2-CVE-2023-39615.patch
+  * libxml2-CVE-2023-45322.patch
+  * libxml2-make-XPATH_MAX_NODESET_LENGTH-configurable.patch
+  * python312.patch
+
+- Update to 2.12.0:
+  * Major changes:
+    - Most of the known issues leading to quadratic behavior in the
+      XML parser were fixed. Internal hash tables were rewritten to
+      reduce memory consumption.
+    - Starting with this release, it should be enough to add the
+      --with-legacy configuration option to provide maximum ABI
+      compatibility.
+    - libxml2 will now store global variables in thread-local
+      storage if supported by the compiler. This avoids allocating
+      the data lazily which can result in a fatal error condition.
+    - A new API function xmlCheckThreadLocalStorage was added so the
+      allocation can be checked earlier if compiler TLS is not
+      supported.
+    - To prepare for future improvements, some API functions now
+      expect or return a const xmlError struct.
+    - Several cyclic dependencies in public header files were fixed.
+    - Refactoring of the encoding code has been mostly completed.
+      Calling xmlSwitchEncoding from client code is now fully
+      supported, for example to override the encoding for the push
+      parser.
+    - When parsing data from memory, libxml2 will now stream data
+      chunk by chunk instead of copying the whole buffer (possibly
+      twice with encodings), reducing peak memory consumption 
+      considerably.
+    - A new API function xmlCtxtSetMaxAmplification was added to
+      allow parsing of files that would otherwise trigger the
+      billion laughs protection.
+    - Several bugs in the regex determinism checks were fixed.
+      Invalid XML Schemas which previous versions erroneously
+      accepted will now be rejected.
+
+  * Deprecations
+    - globals: Deprecate xmlLastError
+    - parser: Deprecate global parser options
+    - win32: Deprecate old Windows build system
+
+  * Bug fixes
+    - parser: Stop switching to ISO-8859-1 on encoding errors
+    - parser: Support encoded external PEs in entity values
+    - string: Fix UTF-8 validation in xmlGetUTF8Char
+    - SAX2: Allow multiple top-level elements
+    - parser: Update line number after coalescing text nodes
+    - parser: Check for truncated multi-byte sequences
+
+  * See the full changelog here:
+    - https://gitlab.gnome.org/GNOME/libxml2/-/releases/v2.12.0
 
 -------------------------------------------------------------------
 Thu Nov 16 12:44:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>

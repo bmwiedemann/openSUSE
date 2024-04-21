@@ -1077,4 +1077,12 @@
   * Added libxml2-CVE-2024-25062.patch</comment>
     <requestid>1145598</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>22a626227b2d3f2bf580d6c77821e7f9</srcmd5>
+    <version>2.12.6</version>
+    <time>1713723905</time>
+    <user>anag+factory</user>
+    <comment>Sync to latest version in devel to investigate possible issues in staging to fix them, @ana+factory</comment>
+    <requestid>1168784</requestid>
+  </revision>
 </revisionlist>

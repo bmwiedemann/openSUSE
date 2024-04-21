@@ -2,11 +2,19 @@
  xpath.c |   40 +++++++++++++++++++++++++++++-----------
  1 file changed, 29 insertions(+), 11 deletions(-)
 
-Index: libxml2-2.11.1/xpath.c
+Index: libxml2-2.12.0/xpath.c
 ===================================================================
---- libxml2-2.11.1.orig/xpath.c
-+++ libxml2-2.11.1/xpath.c
-@@ -115,14 +115,32 @@
+--- libxml2-2.12.0.orig/xpath.c
++++ libxml2-2.12.0/xpath.c
+@@ -25,6 +25,7 @@
+ #include <limits.h>
+ #include <string.h>
+ #include <stddef.h>
++#include <stdlib.h>
+ #include <math.h>
+ #include <float.h>
+ #include <ctype.h>
+@@ -106,14 +107,32 @@
  #define XPATH_MAX_STACK_DEPTH 1000000
  
  /*
@@ -44,7 +52,7 @@ Index: libxml2-2.11.1/xpath.c
  
  /*
   * XPATH_MAX_RECRUSION_DEPTH:
-@@ -3655,7 +3673,7 @@ xmlXPathNodeSetAddNs(xmlNodeSetPtr cur,
+@@ -3095,7 +3114,7 @@ xmlXPathNodeSetAddNs(xmlNodeSetPtr cur,
      } else if (cur->nodeNr == cur->nodeMax) {
          xmlNodePtr *temp;
  
@@ -53,7 +61,7 @@ Index: libxml2-2.11.1/xpath.c
              xmlXPathErrMemory(NULL, "growing nodeset hit limit\n");
              return(-1);
          }
-@@ -3713,7 +3731,7 @@ xmlXPathNodeSetAdd(xmlNodeSetPtr cur, xm
+@@ -3153,7 +3172,7 @@ xmlXPathNodeSetAdd(xmlNodeSetPtr cur, xm
      } else if (cur->nodeNr == cur->nodeMax) {
          xmlNodePtr *temp;
  
@@ -62,7 +70,7 @@ Index: libxml2-2.11.1/xpath.c
              xmlXPathErrMemory(NULL, "growing nodeset hit limit\n");
              return(-1);
          }
-@@ -3769,7 +3787,7 @@ xmlXPathNodeSetAddUnique(xmlNodeSetPtr c
+@@ -3209,7 +3228,7 @@ xmlXPathNodeSetAddUnique(xmlNodeSetPtr c
      } else if (cur->nodeNr == cur->nodeMax) {
          xmlNodePtr *temp;
  
@@ -71,7 +79,7 @@ Index: libxml2-2.11.1/xpath.c
              xmlXPathErrMemory(NULL, "growing nodeset hit limit\n");
              return(-1);
          }
-@@ -3862,7 +3880,7 @@ xmlXPathNodeSetMerge(xmlNodeSetPtr val1,
+@@ -3302,7 +3321,7 @@ xmlXPathNodeSetMerge(xmlNodeSetPtr val1,
  	} else if (val1->nodeNr == val1->nodeMax) {
  	    xmlNodePtr *temp;
  
@@ -80,7 +88,7 @@ Index: libxml2-2.11.1/xpath.c
                  xmlXPathErrMemory(NULL, "merging nodeset hit limit\n");
                  goto error;
              }
-@@ -3954,7 +3972,7 @@ xmlXPathNodeSetMergeAndClear(xmlNodeSetP
+@@ -3394,7 +3413,7 @@ xmlXPathNodeSetMergeAndClear(xmlNodeSetP
  	    } else if (set1->nodeNr >= set1->nodeMax) {
  		xmlNodePtr *temp;
  
@@ -89,7 +97,7 @@ Index: libxml2-2.11.1/xpath.c
                      xmlXPathErrMemory(NULL, "merging nodeset hit limit\n");
                      goto error;
                  }
-@@ -4015,7 +4033,7 @@ xmlXPathNodeSetMergeAndClearNoDupls(xmlN
+@@ -3455,7 +3474,7 @@ xmlXPathNodeSetMergeAndClearNoDupls(xmlN
  	    } else if (set1->nodeNr >= set1->nodeMax) {
  		xmlNodePtr *temp;
  
