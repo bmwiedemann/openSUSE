@@ -1288,4 +1288,29 @@
     <comment>GNOME 46 (forwarded request 1159272 from dimstar)</comment>
     <requestid>1159533</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>9ce6e3082f08de97a4b287ebd07e44c7</srcmd5>
+    <version>0.56.17</version>
+    <time>1713723901</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.56.17:
+  + Various improvements and bug fixes:
+     - codegen:
+       . Add missing initializers for private fields of
+         GSourceFuncs.
+       . Update array length variable passed to null-terminated ref
+         parameter.
+       . Properly pass through a null-terminated out argument.
+       . Refactor and cache parameter in loop.
+       . Only handle null-terminated array as such if there is no
+         length given.
+    - vala:
+      . Allow declaration of static nested methods (local
+        functions).
+      . Correctly use Path.build_path().
+      . Point to the invalid initializer on error.
+      . Report invalid type in property assignment attempt.
+      . Inherit important attributes for Property backing field. (forwarded request 1169195 from dimstar)</comment>
+    <requestid>1169231</requestid>
+  </revision>
 </revisionlist>

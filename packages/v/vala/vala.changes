@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr 19 13:04:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.56.17:
+  + Various improvements and bug fixes:
+     - codegen:
+       . Add missing initializers for private fields of
+         GSourceFuncs.
+       . Update array length variable passed to null-terminated ref
+         parameter.
+       . Properly pass through a null-terminated out argument.
+       . Refactor and cache parameter in loop.
+       . Only handle null-terminated array as such if there is no
+         length given.
+    - vala:
+      . Allow declaration of static nested methods (local
+        functions).
+      . Correctly use Path.build_path().
+      . Point to the invalid initializer on error.
+      . Report invalid type in property assignment attempt.
+      . Inherit important attributes for Property backing field.
+
+-------------------------------------------------------------------
 Thu Mar 14 09:19:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.56.16:
