@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 20 13:26:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.2:
+  * Remove optional dependency only required on unsupported
+    Python versions.
+  * Replace xunit-style setup with pytest fixtures.
+  * getPropertyValue now allows specifying a default value.
+
+-------------------------------------------------------------------
 Sat Nov 25 14:09:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.0:
