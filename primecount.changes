@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 17 15:40:00 UTC 2024 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-7.13 (API & ABI are backwards compatible).
+- CMakeLists.txt: New WITH_MULTIARCH option (default ON).
+- Sieve.hpp: New AVX512 popcount algorithm for x86 CPUs.
+- Sieve.hpp: New ARM SVE popcount algorithm.
+- int128.cmake: Improve int128_t support for Windows.
+- OpenMP.cmake: Improve LLVM/Clang OpenMP detection.
+- Add preliminary MSVC 128-bit support.
+
+-------------------------------------------------------------------
 Tue Apr 02 13:13:00 UTC 2024 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-7.12 (API & ABI are backwards compatible).
