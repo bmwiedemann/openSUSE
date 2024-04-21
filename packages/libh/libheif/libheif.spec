@@ -35,6 +35,7 @@ Group:          Productivity/Graphics/Other
 URL:            https://github.com/strukturag/libheif
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+Patch0:         https://patch-diff.githubusercontent.com/raw/strukturag/libheif/pull/1146.patch#/libheif-svtav1.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  fdupes
