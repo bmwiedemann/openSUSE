@@ -18,14 +18,14 @@
 
 %define lname	libfwevt1
 Name:           libfwevt
-Version:        20240416
+Version:        20240419
 Release:        0
 Summary:        Library for Windows XML Event Log (EVTX) data types
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libfwevt
-Source:         https://github.com/libyal/libfwevt/releases/download/%version/libfwevt-experimental-%version.tar.gz
-Source2:        https://github.com/libyal/libfwevt/releases/download/%version/libfwevt-experimental-%version.tar.gz.asc
+Source:         https://github.com/libyal/%name/releases/download/%version/%name-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/%name/releases/download/%version/%name-experimental-%version.tar.gz.asc
 Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
