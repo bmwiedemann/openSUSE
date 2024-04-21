@@ -19,7 +19,7 @@
 %global modname grpcio_status
 %{?sle15_python_module_pythons}
 Name:           python-grpcio-status
-Version:        1.62.1
+Version:        1.62.2
 Release:        0
 Summary:        Status proto mapping for gRPC
 License:        Apache-2.0
