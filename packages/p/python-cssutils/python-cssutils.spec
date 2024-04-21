@@ -1,7 +1,7 @@
 #
 # spec file for package python-cssutils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cssutils
-Version:        2.9.0
+Version:        2.10.2
 Release:        0
 Summary:        A CSS Cascading Style Sheets library for Python
 License:        LGPL-3.0-or-later
@@ -27,12 +27,14 @@ URL:            https://github.com/jaraco/cssutils
 Source0:        https://files.pythonhosted.org/packages/source/c/cssutils/cssutils-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,21 +44,11 @@ A Python package to parse and build CSS Cascading Style Sheets. DOM only, not an
 %prep
 %setup -q -n cssutils-%{version}
 
-# SECTION Generate a basic setup.py as upstream only supplies setup.cfg
-cat << EOF > setup.py
-import setuptools
-
-if __name__ == "__main__":
-    setuptools.setup()
-
-EOF
-# /SECTION
-
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/csscapture
 %python_clone -a %{buildroot}%{_bindir}/csscombine
 %python_clone -a %{buildroot}%{_bindir}/cssparse
@@ -75,7 +67,7 @@ EOF
 %python_alternative %{_bindir}/csscapture
 %python_alternative %{_bindir}/csscombine
 %python_alternative %{_bindir}/cssparse
-%{python_sitelib}/cssutils-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/cssutils-%{version}.dist-info
 %{python_sitelib}/cssutils/
 %{python_sitelib}/encutils/
 

@@ -287,4 +287,16 @@ This fixes the file conflict in factory (forwarded request 171294 from TheBlackC
 - new features:</comment>
     <requestid>1128742</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c6f2dea34cc0b1310625a085d691877d</srcmd5>
+    <version>2.10.2</version>
+    <time>1713724022</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.10.2:
+  * Remove optional dependency only required on unsupported
+    Python versions.
+  * Replace xunit-style setup with pytest fixtures.
+  * getPropertyValue now allows specifying a default value.</comment>
+    <requestid>1169356</requestid>
+  </revision>
 </revisionlist>
