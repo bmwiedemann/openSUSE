@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 19 14:03:32 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 3.0.0:
+  * New ext-session-lock-v1 support
+  * Switched from make to meson
+  * Added --layout option for loading custom XML layout files
+
+-------------------------------------------------------------------
 Sun May  7 07:11:10 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.1.0:
