@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Apr 20 15:29:44 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.125.2:
+  * Only add root sections to the section pages menu
+  * Fix partial rebuilds for SCSS fetched with GetMatch and similar Fixes #12395
+  * commands: Add gen chromastyles --lineNumbersTableStyle flag
+  * resources/images: Fix TestColorLuminance on s390x
+  * commands: Provide examples for chromastyles flags
+
+-------------------------------------------------------------------
+Thu Apr 18 08:34:20 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.125.1:
+  * tpl: Use erroridf for remote YouTube errors
+  * build: Fix `GLIBC_2.29' not found issue
+
+-------------------------------------------------------------------
 Tue Apr 16 20:40:43 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.125.0:

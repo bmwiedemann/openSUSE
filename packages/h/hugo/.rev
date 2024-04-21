@@ -1128,4 +1128,21 @@
   * resources/page: Escape hash sign in permalinks (forwarded request 1168425 from jfkw)</comment>
     <requestid>1168426</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>51c29a2be8c21246bc14234684468305</srcmd5>
+    <version>0.125.2</version>
+    <time>1713724084</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.125.2:
+  * Only add root sections to the section pages menu
+  * Fix partial rebuilds for SCSS fetched with GetMatch and similar Fixes #12395
+  * commands: Add gen chromastyles --lineNumbersTableStyle flag
+  * resources/images: Fix TestColorLuminance on s390x
+  * commands: Provide examples for chromastyles flags
+
+- Update to version 0.125.1:
+  * tpl: Use erroridf for remote YouTube errors
+  * build: Fix `GLIBC_2.29' not found issue (forwarded request 1169402 from jfkw)</comment>
+    <requestid>1169403</requestid>
+  </revision>
 </revisionlist>
