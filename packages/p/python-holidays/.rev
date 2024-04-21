@@ -249,4 +249,23 @@
   * Unify file headers after recent update</comment>
     <requestid>1165875</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6c35a8d518a795612f5903c118abcbd0</srcmd5>
+    <version>0.47</version>
+    <time>1713724074</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.47:
+  * Refactor some sequential holidays
+  * Add Jordan holidays
+  * Change contributors badge placement
+  * Update Australia holidays: fix Sovereign's Birthday dates in
+    WA
+  * Update Eid al-Fitr 2024 dates
+  * Update European Central Bank holidays
+  * Update Poland holidays: fix Ascension Day
+  * Update South Africa holidays: add public holiday on May 29,
+    2024
+  * Update contributing guidelines</comment>
+    <requestid>1169388</requestid>
+  </revision>
 </revisionlist>

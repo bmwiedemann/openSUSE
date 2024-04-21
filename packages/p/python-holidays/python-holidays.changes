@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr 20 15:39:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.47:
+  * Refactor some sequential holidays
+  * Add Jordan holidays
+  * Change contributors badge placement
+  * Update Australia holidays: fix Sovereign's Birthday dates in
+    WA
+  * Update Eid al-Fitr 2024 dates
+  * Update European Central Bank holidays
+  * Update Poland holidays: fix Ascension Day
+  * Update South Africa holidays: add public holiday on May 29,
+    2024
+  * Update contributing guidelines
+
+-------------------------------------------------------------------
 Tue Apr  2 16:19:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.46:
