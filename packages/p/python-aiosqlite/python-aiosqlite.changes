@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 20 13:51:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.0:
+  * Connection `.close()` method is now idempotent
+  * Performance improvements in connection thread and event loop
+  * Updated contributor guide
+  * Tested on Python 3.12
+  * Dropped support for Python 3.7
+
+-------------------------------------------------------------------
 Sun Jun 11 20:53:59 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.19.0

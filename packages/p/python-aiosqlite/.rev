@@ -46,4 +46,17 @@
     but later introduced for Python &lt; 3.8 due to a different case</comment>
     <requestid>1092488</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8bd0c01d93e72284e8918cb7ee4ea970</srcmd5>
+    <version>0.20.0</version>
+    <time>1713724033</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.20.0:
+  * Connection `.close()` method is now idempotent
+  * Performance improvements in connection thread and event loop
+  * Updated contributor guide
+  * Tested on Python 3.12
+  * Dropped support for Python 3.7</comment>
+    <requestid>1169366</requestid>
+  </revision>
 </revisionlist>
