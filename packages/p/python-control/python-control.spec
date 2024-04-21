@@ -24,6 +24,8 @@ License:        BSD-3-Clause
 URL:            https://python-control.org
 Source:         https://files.pythonhosted.org/packages/source/c/control/control-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM control-pr994-numpy2.patch gh#python-control/python-control#994
+Patch1:         control-pr994-numpy2.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}

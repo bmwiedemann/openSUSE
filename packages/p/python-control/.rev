@@ -362,4 +362,13 @@
     by @bnavigator in #961 (forwarded request 1165670 from bnavigator)</comment>
     <requestid>1165672</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>13d5535bdad6618d871974b644c07c47</srcmd5>
+    <version>0.10.0</version>
+    <time>1713724079</time>
+    <user>anag+factory</user>
+    <comment>- Add control-pr994-numpy2.patch
+  gh#python-control/python-control#994 (forwarded request 1169381 from bnavigator)</comment>
+    <requestid>1169382</requestid>
+  </revision>
 </revisionlist>
