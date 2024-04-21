@@ -85,4 +85,14 @@
 - No more greedy globs in %files.</comment>
     <requestid>1153078</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>98e9420c226b0a9f88beefdae9a141a9</srcmd5>
+    <version>1.1.6</version>
+    <time>1713724027</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.6:
+  * Use raw byte string for regex; fixes SyntaxWarning in
+    Python 3.12 due to invalid escape sequence</comment>
+    <requestid>1169362</requestid>
+  </revision>
 </revisionlist>
