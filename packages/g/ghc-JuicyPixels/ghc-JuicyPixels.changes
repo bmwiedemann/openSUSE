@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  9 17:25:05 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update JuicyPixels to version 3.3.8 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Nov  7 17:40:05 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update JuicyPixels to version 3.3.8 revision 1.
