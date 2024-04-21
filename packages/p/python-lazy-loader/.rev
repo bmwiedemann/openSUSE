@@ -23,4 +23,18 @@
   * Test on Python 3.12.0-beta.2</comment>
     <requestid>1131739</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6f6a9241393df701977efac47e206eef</srcmd5>
+    <version>0.4</version>
+    <time>1713724112</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4:
+  * ENH: Add require argument to load() to accept version
+    specifiers (#48).
+  * Add version as __version__ (#97).
+  * Avoid exception when __frame_data[&quot;code_context&quot;] is None
+    (#83).
+  * Make `lazy_load.load` partially thread-safe (#90).</comment>
+    <requestid>1169421</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 20 21:09:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4:
+  * ENH: Add require argument to load() to accept version
+    specifiers (#48).
+  * Add version as __version__ (#97).
+  * Avoid exception when __frame_data["code_context"] is None
+    (#83).
+  * Make `lazy_load.load` partially thread-safe (#90).
+
+-------------------------------------------------------------------
 Thu Dec  7 22:42:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3:

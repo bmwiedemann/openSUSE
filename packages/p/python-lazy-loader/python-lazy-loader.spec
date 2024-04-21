@@ -1,7 +1,7 @@
 #
 # spec file for package python-lazy-loader
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-lazy-loader
-Version:        0.3
+Version:        0.4
 Release:        0
 Summary:        Populate library namespace without incurring immediate import costs
 License:        BSD-3-Clause
@@ -26,6 +26,7 @@ Source:         https://files.pythonhosted.org/packages/source/l/lazy_loader/laz
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-lazy_loader = %{version}-%{release}
