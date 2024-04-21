@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Sat Apr 20 20:17:41 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u412 (icedtea-3.31.0)
+  * Security fixes
+    + JDK-8317507, JDK-8325348, CVE-2024-21094, bsc#1222986: C2
+      compilation fails with "Exceeded _node_regs array"
+    + JDK-8318340: Improve RSA key implementations
+    + JDK-8319851, CVE-2024-21011, bsc#1222979: Improve exception
+      logging
+    + JDK-8322114, CVE-2024-21085, bsc#1222984: Improve Pack 200
+      handling
+    + JDK-8322122, CVE-2024-21068, bsc#1222983: Enhance generation
+      of addresses
+  * Import of OpenJDK 8 u412 build 08
+    + JDK-8011180: Delete obsolete scripts
+    + JDK-8016451: Scary messages emitted by
+      build.tools.generatenimbus.PainterGenerator during build
+    + JDK-8021961: setAlwaysOnTop doesn't behave correctly in
+      Linux/Solaris under certain scenarios
+    + JDK-8023735: [TESTBUG][macosx]
+      runtime/XCheckJniJsig/XCheckJSig.java fails on MacOS X
+    + JDK-8074860: Structured Exception Catcher missing around
+      CreateJavaVM on Windows
+    + JDK-8079441: Intermittent failures on Windows with "Unexpected
+      exit from test [exit code: 1080890248]" (0x406d1388)
+    + JDK-8155590: Dubious collection management in
+      sun.net.www.http.KeepAliveCache
+    + JDK-8168518: rcache interop with krb5-1.15
+    + JDK-8183503: Update hotspot tests to allow for unique test
+      classes directory
+    + JDK-8186095: upgrade to jtreg 4.2 b08
+    + JDK-8186199: [windows] JNI_DestroyJavaVM not covered by SEH
+    + JDK-8192931: Regression test
+      java/awt/font/TextLayout/CombiningPerf.java fails
+    + JDK-8208655: use JTreg skipped status in hotspot tests
+    + JDK-8208701: Fix for JDK-8208655 causes test failures in CI
+      tier1
+    + JDK-8208706: compiler/tiered/
+      /ConstantGettersTransitionsTest.java fails to compile
+    + JDK-8213410: UseCompressedOops requirement check fails fails
+      on 32-bit system
+    + JDK-8222323: ChildAlwaysOnTopTest.java fails with
+      "RuntimeException: Failed to unset alwaysOnTop"
+    + JDK-8224768: Test ActalisCA.java fails
+    + JDK-8251155: HostIdentifier fails to canonicalize hostnames
+      starting with digits
+    + JDK-8251551: Use .md filename extension for README
+    + JDK-8268678: LetsEncryptCA.java test fails as Let’s Encrypt
+      Authority X3 is retired
+    + JDK-8270280: security/infra/java/security/cert/
+      /CertPathValidator/certification/LetsEncryptCA.java OCSP
+      response error
+    + JDK-8270517: Add Zero support for LoongArch
+    + JDK-8272708: [Test]: Cleanup: test/jdk/security/infra/java/
+      /security/cert/CertPathValidator/certification/BuypassCA.java
+      no longer needs ocspEnabled
+    + JDK-8276139: TestJpsHostName.java not reliable, better to
+      expand HostIdentifierCreate.java test
+    + JDK-8288132: Update test artifacts in QuoVadis CA interop
+      tests
+    + JDK-8297955: LDAP CertStore should use LdapName and not
+      String for DNs
+    + JDK-8301310: The SendRawSysexMessage test may cause a JVM
+      crash
+    + JDK-8308592: Framework for CA interoperability testing
+    + JDK-8312126: NullPointerException in CertStore.getCRLs after
+      8297955
+    + JDK-8315042: NPE in PKCS7.parseOldSignedData
+    + JDK-8315757: [8u] Add cacerts JTREG tests to GHA tier1 test
+      set
+    + JDK-8320713: Bump update version of OpenJDK: 8u412
+    + JDK-8321060: [8u] hotspot needs to recognise VS2022
+    + JDK-8321408: Add Certainly roots R1 and E1
+    + JDK-8322725: (tz) Update Timezone Data to 2023d
+    + JDK-8322750: Test "api/java_awt/interactive/
+      /SystemTrayTests.html" failed because A blue ball icon is
+      added outside of the system tray
+    + JDK-8323202: [8u] Remove get_source.sh and hgforest.sh
+    + JDK-8323640: [TESTBUG]testMemoryFailCount in jdk/internal/
+      /platform/docker/TestDockerMemoryMetrics.java always fail
+      because OOM killed
+    + JDK-8324530: Build error with gcc 10
+    + JDK-8325150: (tz) Update Timezone Data to 2024a
+  * Bug fixes
+    + Support make 4.4
+
+
+-------------------------------------------------------------------
 Thu Mar  7 12:58:44 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Do not recommend timezone-java8 (bsc#1213470)

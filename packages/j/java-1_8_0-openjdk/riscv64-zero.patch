@@ -35,7 +35,7 @@ Index: openjdk/common/autoconf/platform.m4
      *)
        AC_MSG_ERROR([unsupported cpu $1])
        ;;
-@@ -391,6 +397,7 @@ AC_DEFUN([PLATFORM_SETUP_LEGACY_VARS],
+@@ -397,6 +403,7 @@ AC_DEFUN([PLATFORM_SETUP_LEGACY_VARS],
      sparc*)  ZERO_ARCHDEF=SPARC ;;
      x86_64*) ZERO_ARCHDEF=AMD64 ;;
      x86)     ZERO_ARCHDEF=IA32  ;;
@@ -57,7 +57,7 @@ Index: openjdk/hotspot/src/os/linux/vm/os_linux.cpp
  #else
  #define DEFAULT_LIBPATH "/lib:/usr/lib"
 @@ -1960,6 +1960,10 @@ void * os::dll_load(const char *filename
-   #define EM_AARCH64	183
+   #define EM_LOONGARCH  258               /* LoongArch */
    #endif
  
 +  #ifndef EM_RISCV
@@ -68,17 +68,17 @@ Index: openjdk/hotspot/src/os/linux/vm/os_linux.cpp
      {EM_386,         EM_386,     ELFCLASS32, ELFDATA2LSB, (char*)"IA 32"},
      {EM_486,         EM_386,     ELFCLASS32, ELFDATA2LSB, (char*)"IA 32"},
 @@ -1982,6 +1986,7 @@ void * os::dll_load(const char *filename
-     {EM_PARISC,      EM_PARISC,  ELFCLASS32, ELFDATA2MSB, (char*)"PARISC"},
      {EM_68K,         EM_68K,     ELFCLASS32, ELFDATA2MSB, (char*)"M68k"},
      {EM_AARCH64,     EM_AARCH64, ELFCLASS64, ELFDATA2LSB, (char*)"AARCH64"},
+     {EM_LOONGARCH,   EM_LOONGARCH, ELFCLASS64, ELFDATA2LSB, (char*)"LoongArch"},
 +    {EM_RISCV,       EM_RISCV,   ELFCLASS64, ELFDATA2LSB, (char*)"RISCV"},
    };
  
    #if  (defined IA32)
 @@ -2014,6 +2019,8 @@ void * os::dll_load(const char *filename
-     static  Elf32_Half running_arch_code=EM_68K;
-   #elif  (defined AARCH64)
      static  Elf32_Half running_arch_code=EM_AARCH64;
+   #elif  (defined LOONGARCH)
+     static  Elf32_Half running_arch_code=EM_LOONGARCH;
 +#elif  (defined RISCV)
 +    static  Elf32_Half running_arch_code=EM_RISCV;
    #else
