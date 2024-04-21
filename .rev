@@ -98,4 +98,16 @@
   * private object not exported in top level module</comment>
     <requestid>1137007</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>27afe00558ab1979cdafdc1621069382</srcmd5>
+    <version>1.35.0</version>
+    <time>1713724093</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.35.0:
+  * add `include_deprecated` option when fetching images by name
+  * raise warnings for the `ImagesClient.get_by_name` deprecation
+  * add `has_id_or_name` to `DomainIdentityMixin`
+  * invalid type for load balancer private network property</comment>
+    <requestid>1169410</requestid>
+  </revision>
 </revisionlist>

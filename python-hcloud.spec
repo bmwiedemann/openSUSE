@@ -17,7 +17,7 @@
 
 
 Name:           python-hcloud
-Version:        1.33.2
+Version:        1.35.0
 Release:        0
 Summary:        Hetzner Cloud Python library
 License:        MIT
