@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 19 12:20:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.0:
+  * Release 1.1.0
+  * Add release notes for v1.1.0
+  * Use x- prefix for x-podman.mac_address
+  * Use "service.build.ulimits" when present instead of
+    "service.ulimits"
+  * FIX issue
+    https://github.com/containers/podman-compose/issues/704 -
+    Windows fix sock not working.
+- use obs_scm instead of PyPI tarball (that is broken again)
+
+-------------------------------------------------------------------
 Fri May  5 10:46:49 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-podman-compose
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %{?sle15_python_module_pythons}
 %global src_name podman-compose
 Name:           python-%{src_name}
-Version:        1.0.6
+Version:        1.1.0
 Release:        0
 Summary:        A script to run docker-compose using podman
 License:        GPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/containers/%{src_name}
-Source0:        https://files.pythonhosted.org/packages/source/p/%{src_name}/%{src_name}-%{version}.tar.gz
+Source0:        %{src_name}-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/containers/%{src_name}/v%{version}/LICENSE
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module python-dotenv}
@@ -37,7 +37,7 @@ Requires:       python-PyYAML
 Requires:       python-python-dotenv
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 Provides:       podman-compose = %{version}
 Obsoletes:      podman-compose < %{version}
