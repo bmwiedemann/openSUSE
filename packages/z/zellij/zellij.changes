@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Apr 20 09:20:37 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.40.0:
+  This release includes exciting new features as well as some long awaited and requested improvements.
+  * A new welcome screen
+  * A new filepicker
+  * Pipes
+  * Open floating panes at specific coordinates
+  * Rearrange tabs
+  * Disconnect other clients
+  * Plugin aliases
+  * New possible keys to bind
+  * Start session in the background
+  * Performance improvements
+  * for details checkout the official annonuncement https://zellij.dev/news/welcome-screen-pipes-filepicker
+
+  * Are you upgrading from an older version using a custom config file?
+    In order to take advantage of some of the new features (eg. the welcome-screen and filepicker), 
+    you'll need to swap the plugins section in your configuration file with the one from the default file.
+
+-------------------------------------------------------------------
 Thu Feb 15 04:53:56 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Change BuildRequires: rust+cargo -> cargo
