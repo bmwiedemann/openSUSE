@@ -19,7 +19,7 @@
 
 %define skip_python2 1
 Name:           python-junos-eznc
-Version:        2.7.0
+Version:        2.7.1
 Release:        0
 Summary:        Junos 'EZ' automation for non-programmers
 License:        Apache-2.0
@@ -32,6 +32,8 @@ Patch1:         python-junos-eznc-remove-yamlordereddictloader.patch
 Patch3:         python-junos-eznc-no-mock.patch
 # PATCH-FIX-OPENSUSE python-311.patch gh#Juniper/py-junos-eznc#1236
 Patch4:         python-311.patch
+# PATCH-FIX-UPSTREAM gh#Juniper/py-junos-eznc#1307 Don't require six
+Patch5:         no-six.patch
 BuildRequires:  %{python_module Jinja2 >= 2.7.1}
 BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module lxml >= 3.2.4}
@@ -45,7 +47,6 @@ BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scp >= 0.7.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module transitions}
 BuildRequires:  %{python_module yamlloader}
 BuildRequires:  fdupes
@@ -58,7 +59,6 @@ Requires:       python-paramiko >= 1.15.2
 Requires:       python-pyparsing
 Requires:       python-pyserial
 Requires:       python-scp >= 0.7.0
-Requires:       python-six
 Requires:       python-transitions
 BuildArch:      noarch
 %python_subpackages
