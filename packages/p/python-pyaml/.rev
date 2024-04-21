@@ -71,4 +71,16 @@
   * no upstream changelog</comment>
     <requestid>1137820</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fe7458dd7bc529d0b4a2174be981d4b4</srcmd5>
+    <version>24.4.0</version>
+    <time>1713724139</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.4.0:
+  * cli: suppress BrokenPipe tracebacks for closed stdout
+  * cli: support multi-doc input/output, add -l/--lines option
+    to pretty-print json logs and such
+  * README: correct simplier -&gt; simpler misspelling</comment>
+    <requestid>1169472</requestid>
+  </revision>
 </revisionlist>

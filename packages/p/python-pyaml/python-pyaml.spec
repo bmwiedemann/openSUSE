@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyaml
-Version:        23.12.0
+Version:        24.4.0
 Release:        0
 Summary:        Python module to produce formatted YAML-serialized data
 License:        WTFPL
@@ -34,7 +34,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Recommends:     python-Unidecode
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

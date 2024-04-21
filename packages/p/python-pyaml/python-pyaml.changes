@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 21 08:43:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.4.0:
+  * cli: suppress BrokenPipe tracebacks for closed stdout
+  * cli: support multi-doc input/output, add -l/--lines option
+    to pretty-print json logs and such
+  * README: correct simplier -> simpler misspelling
+
+-------------------------------------------------------------------
 Tue Jan  9 21:48:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.12.0:
