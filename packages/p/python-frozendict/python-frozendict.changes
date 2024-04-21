@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Apr 20 20:41:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.2:
+  * deepfreeze doesn't change anymore the original object,
+- update to 2.4.1:
+  * In deepfreeze, prefer registered conversions
+  * Some little fixing to typing
+  * Documentation typo
+
+-------------------------------------------------------------------
+Mon Nov 27 15:47:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.9:
+  * Various improvements to type hints
+  * Fix union of frozendict for python implementation
+  * Avoid storing empty singleton on class itself in python
+    implementation
+  * Now pure py implementation can be built also passing the
+    `FROZENDICT_PURE_PY` env var with value `1`
+  * Added type annotations to pyi interface file.
+  * Numerous improvements to `frozendict` type hints.
+  * Fixed a regression in sdist packages that made them not
+    working in the previous release
+  * Added monkeypatches to `json` and `orjson`, so you can
+    serialize `frozendict` directly
+  * Added muslinux builds
+
+-------------------------------------------------------------------
 Fri Jun  9 13:37:09 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
