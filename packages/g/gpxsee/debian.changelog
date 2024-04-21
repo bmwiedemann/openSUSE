@@ -1,3 +1,12 @@
+gpxsee (13.19) stable; urgency=low
+
+  * Added support for FIT course icons.
+  * Use propper GUI icons on Qt>=6.7 (Windows & Mac).
+  * Added support for GPX water temperature extension.
+  * Multiple minor map fixes (IMG & Mapsforge).
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 20 Apr 2024 21:38:39 +0200
+
 gpxsee (13.18) stable; urgency=low
 
   * Added support for arbitrary CRSs in GeoJSON files.

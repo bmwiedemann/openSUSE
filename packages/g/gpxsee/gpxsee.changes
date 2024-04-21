@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 20 21:32:42 CEST 2024 - tumic@cbox.cz
+
+- Update to version 13.19
+  * Added support for FIT course icons.
+  * Use propper GUI icons on Qt>=6.7 (Windows & Mac).
+  * Added support for GPX water temperature extension.
+  * Multiple minor map fixes (IMG & Mapsforge).
+
+-------------------------------------------------------------------
 Sat Mar 23 21:19:19 CET 2024 - tumic@cbox.cz
 
 - Update to version 13.18
