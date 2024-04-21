@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  9 14:49:48 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update cabal-plan to version 0.7.3.0 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Mar 12 15:06:06 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Jailbreak build for ghc-9.8.x.
