@@ -80,4 +80,14 @@
   * README and metadata updates</comment>
     <requestid>1132219</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ac9703c588b0808f2b6907375899973f</srcmd5>
+    <version>24.4.0</version>
+    <time>1713724144</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.4.0:
+  * Add more obvious sink_default_get/source_default_get wrappers
+    around server_info #81</comment>
+    <requestid>1169476</requestid>
+  </revision>
 </revisionlist>

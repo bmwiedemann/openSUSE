@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 21 08:57:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.4.0:
+  * Add more obvious sink_default_get/source_default_get wrappers
+    around server_info #81
+
+-------------------------------------------------------------------
 Sat Dec  9 10:01:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.5.2:

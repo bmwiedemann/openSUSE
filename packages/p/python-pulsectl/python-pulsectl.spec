@@ -1,7 +1,7 @@
 #
 # spec file for package python-pulsectl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           python-pulsectl
-Version:        23.5.2
+Version:        24.4.0
 Release:        0
 Summary:        Python high-level interface and ctypes-based bindings for PulseAudio (libpulse)
 License:        MIT
