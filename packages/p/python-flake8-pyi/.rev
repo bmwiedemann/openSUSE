@@ -376,4 +376,16 @@ Other changes:
   * Y090: Fix false positive for `tuple[Unpack[Ts]]`.</comment>
     <requestid>1165947</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1431eb523c0db6980e6a76416d46e17a</srcmd5>
+    <version>24.4.1</version>
+    <time>1713724029</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.4.1:
+  * Y066: When using if/else with `sys.version_info`,
+    put the code for new Python versions first.
+  * Fix Y026 false positive: allow simple assignment to `None` in
+    class scopes if the class is known to be an enum class.</comment>
+    <requestid>1169364</requestid>
+  </revision>
 </revisionlist>

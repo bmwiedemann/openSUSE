@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 20 13:45:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.4.1:
+  * Y066: When using if/else with `sys.version_info`,
+    put the code for new Python versions first.
+  * Fix Y026 false positive: allow simple assignment to `None` in
+    class scopes if the class is known to be an enum class.
+
+-------------------------------------------------------------------
 Sun Apr  7 09:02:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.3.1:
