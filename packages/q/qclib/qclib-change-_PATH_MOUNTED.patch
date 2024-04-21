@@ -1,0 +1,31 @@
+--- qclib-2.4.1.orig/query_capacity_hypfs.c	2023-12-17 23:06:06.000000000 +0100
++++ qclib-2.4.1.changed/query_capacity_hypfs.c	2024-04-19 17:07:09.007848701 +0200
+@@ -11,6 +11,7 @@
+ 
+ #include "query_capacity_data.h"
+ 
++#define	N_PATH_MOUNTED	"/proc/self/mounts"
+ 
+ #define QC_HYPFS_LPAR		"/s390_hypfs/diag_204"
+ #define QC_HYPFS_ZVM		"/s390_hypfs/diag_2fc"
+@@ -830,9 +831,9 @@
+ 	}
+ 	qc_debug(hdl, "Locate mount point of %s\n", fstype);
+ 	*mp = NULL;
+-	mounts = setmntent(_PATH_MOUNTED, "r");
++	mounts = setmntent(N_PATH_MOUNTED, "r");
+ 	if (!mounts) {
+-		qc_debug(hdl, "Error: Failed to open %s\n", _PATH_MOUNTED);
++		qc_debug(hdl, "Error: Failed to open %s\n", N_PATH_MOUNTED);
+ 		return -1;
+ 	}
+ 	while ((mntbuf = getmntent(mounts)) != NULL) {
+@@ -848,7 +849,7 @@
+ 	}
+ 	endmntent(mounts);
+ 	if (!*mp) {
+-		qc_debug(hdl, "%s not mounted according to '%s'\n", fstype, _PATH_MOUNTED);
++		qc_debug(hdl, "%s not mounted according to '%s'\n", fstype, N_PATH_MOUNTED);
+ 		return 1;
+ 	}
+ 	qc_debug(hdl, "%s mounted at '%s'\n", fstype, *mp);

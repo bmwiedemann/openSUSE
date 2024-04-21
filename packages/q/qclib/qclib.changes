@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr 19 11:55:09 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch to change the _PATH_MOUNTED (bsc#1222143)
+  * qclib-change-_PATH_MOUNTED.patch
+
+-------------------------------------------------------------------
+Mon Feb 12 16:48:47 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade to version 2.4.1 (jsc#PED-3285)
+  * Handle systems with `/sys/kernel/security/lockdown` enabled
+  * Consistency check: Fix accounting of reserved cores and CPUs
+  * Trace: Fix display of version information
+  * Doxygen config: Remove unused options 
+- Removed obsolete patch qclib-sys-kernel-security-lockdown-enabled.patch
+
+-------------------------------------------------------------------
 Wed Oct 25 06:16:21 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a patch(bsc#1216212,bsc#1214466)

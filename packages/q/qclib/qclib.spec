@@ -1,7 +1,7 @@
 #
 # spec file for package qclib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
 Name:           qclib
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Query Capacity library
 License:        BSD-3-Clause
@@ -37,7 +37,8 @@ BuildRequires:  glibc-devel
 %endif
 
 #
-Patch001:       qclib-sys-kernel-security-lockdown-enabled.patch
+### Patch001:       qclib-sys-kernel-security-lockdown-enabled.patch
+Patch001:       qclib-change-_PATH_MOUNTED.patch
 
 %description
 qclib provides a C API for extraction of system information for Linux on z
