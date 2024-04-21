@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 18 07:55:49 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- iconv-iso-2022-cn-ext.patch: iconv: ISO-2022-CN-EXT: fix out-of-bound
+  writes when writing escape sequence (CVE-2024-2961, bsc#1222992)
+
+-------------------------------------------------------------------
 Wed Mar 13 08:31:20 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - stdbit-builtins.patch: Use gcc __builtin_stdc_* builtins in stdbit.h if

@@ -3008,4 +3008,13 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   (bsc#1220441, BZ #23970) (forwarded request 1157904 from Andreas_Schwab)</comment>
     <requestid>1157905</requestid>
   </revision>
+  <revision rev="289" vrev="5">
+    <srcmd5>3d626812798da84657e33556b82e5c36</srcmd5>
+    <version>2.39</version>
+    <time>1713723917</time>
+    <user>anag+factory</user>
+    <comment>- iconv-iso-2022-cn-ext.patch: iconv: ISO-2022-CN-EXT: fix out-of-bound
+  writes when writing escape sequence (CVE-2024-2961, bsc#1222992) (forwarded request 1168903 from Andreas_Schwab)</comment>
+    <requestid>1168904</requestid>
+  </revision>
 </revisionlist>
