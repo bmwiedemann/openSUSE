@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr 19 11:04:18 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.26.1:
+  Added:
+  * sign commits using openpgp
+  * support ssh commit signing (when user.signingKey and gpg.format
+    = ssh of gitconfig are set; ssh-agent isn't yet supported)
+  * provide nightly builds (see NIGHTLIES.md)
+  * more version info in gitui -V and help popup (including git
+    hash)
+  * support core.commitChar filtering
+  * allow reset in branch popup
+  * respect configuration for remote when pushing
+  Changed:
+  * Make info and error message popups scrollable
+  * clarify x86_64 linux binary in artifact names:
+    gitui-linux-x86_64.tar.gz (formerly known as musl)
+  Fixes:
+  * add syntax highlighting support for more file types, e.g.
+    Typescript, TOML, etc.
+
+-------------------------------------------------------------------
 Thu Mar 14 00:50:22 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.25.1:
