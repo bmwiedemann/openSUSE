@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr 20 11:43:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.4.5:
+  * 2.4.5 adoption in cli (#2158)
+
+-------------------------------------------------------------------
+Sat Apr 20 11:37:05 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.4.4:
+  * 2.4.4 - adoption of talos distro on civo github and civo gitlab
+    management clusters (#2157)
+  * chore: add Akamai + k3s clouds choices & fix typo (#2139)
+
+-------------------------------------------------------------------
 Thu Mar 21 19:21:34 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.4.3:
