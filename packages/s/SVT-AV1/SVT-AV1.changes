@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 13 23:32:09 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0
+  * Changed the API signaling the End Of Stream (EOS) with the
+    last frame vs with an empty frame
+  * Removed the 3-pass VBR mode which changed the calling
+    mechanism of multi-pass VBR
+  * Improve the tradeoffs for the random access mode across
+    presets:
+  * Improved the compression efficiency of presets M9-M13 by 1-4%
+  * Replaced the 3-pass VBR with a 2-pass VBR
+  * Memory savings of 20-35% for LP 8 mode in preset M6 and below
+    and 1-5% in other modes/presets
+
+-------------------------------------------------------------------
 Tue Dec 12 09:46:46 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8.0

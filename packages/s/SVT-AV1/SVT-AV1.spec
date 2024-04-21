@@ -1,7 +1,7 @@
 #
 # spec file for package SVT-AV1
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           SVT-AV1
-Version:        1.8.0
+Version:        2.0.0
 Release:        0
 Summary:        An AV1 decoder/encoder for video streams
 License:        BSD-3-Clause-Clear
@@ -50,11 +50,11 @@ a work-in-progress targeting performance levels applicable to both VOD and Live
 encoding / transcoding video applications. The SVT-AV1 decoder implementation
 is targeting future codec research activities.
 
-%package -n libSvtAv1Enc1
+%package -n libSvtAv1Enc2
 Summary:        An AV1 decoder/encoder for video streams
 Group:          System/Libraries
 
-%description -n libSvtAv1Enc1
+%description -n libSvtAv1Enc2
 The Scalable Video Technology for AV1 (SVT-AV1 Encoder and Decoder) is an
 AV1-compliant encoder/decoder library core. The SVT-AV1 encoder development is
 a work-in-progress targeting performance levels applicable to both VOD and Live
@@ -65,7 +65,7 @@ is targeting future codec research activities.
 Summary:        Development files for %name
 Group:          Development/Libraries/C and C++
 Requires:       libSvtAv1Dec0 = %version
-Requires:       libSvtAv1Enc1 = %version
+Requires:       libSvtAv1Enc2 = %version
 
 %description    devel
 An AV1 encoder for video streams from Intel.
@@ -96,16 +96,14 @@ mkdir -p "$b"
 cp -a Docs README.md "$b/"
 %fdupes %buildroot/%_prefix
 
-%post   -n libSvtAv1Dec0 -p /sbin/ldconfig
-%postun -n libSvtAv1Dec0 -p /sbin/ldconfig
-%post   -n libSvtAv1Enc1 -p /sbin/ldconfig
-%postun -n libSvtAv1Enc1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libSvtAv1Dec0
+%ldconfig_scriptlets -n libSvtAv1Enc2
 
 %files -n libSvtAv1Dec0
 %license LICENSE.md PATENTS.md
 %_libdir/libSvtAv1Dec.so.*
 
-%files -n libSvtAv1Enc1
+%files -n libSvtAv1Enc2
 %license LICENSE.md PATENTS.md
 %_libdir/libSvtAv1Enc.so.*
 
