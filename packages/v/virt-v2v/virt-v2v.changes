@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 19 09:03:27 MDT 2024 - carnold@suse.com
+
+- Add Requires for dhcp-client
+- Add conditional x86_64 arch Requires for nbdkit-vddk-plugin
+
+-------------------------------------------------------------------
 Thu Apr 18 10:06:56 MDT 2024 - carnold@suse.com
 
 - bsc#1223093 - virt-v2v needs nbdkit and libnbd on SLE15-SP6 to

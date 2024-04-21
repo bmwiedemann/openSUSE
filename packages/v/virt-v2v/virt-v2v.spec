@@ -65,6 +65,7 @@ Requires:       %{_bindir}/qemu-nbd
 Requires:       %{_bindir}/virsh
 Requires:       btrfsprogs
 Requires:       curl
+Requires:       dhcp-client
 Requires:       gptfdisk
 Requires:       guestfs-tools >= 1.42
 Requires:       libguestfs-winsupport
@@ -75,7 +76,9 @@ Requires:       nbdkit-curl-plugin
 Requires:       nbdkit-nbd-plugin
 Requires:       nbdkit-python-plugin
 Requires:       nbdkit-ssh-plugin
+%ifarch x86_64
 Requires:       nbdkit-vddk-plugin
+%endif
 Requires:       openssh-clients
 Requires:       ovmf
 Requires:       unzip

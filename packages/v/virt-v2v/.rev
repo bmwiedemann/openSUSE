@@ -111,4 +111,12 @@
     <comment>Spec file changes to improve support for converting windows and vmware guests and remote operation.</comment>
     <requestid>1168910</requestid>
   </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>be26657fda563019bf8e8923baa6e468</srcmd5>
+    <version>2.4.0</version>
+    <time>1713723943</time>
+    <user>anag+factory</user>
+    <comment>Spec file changes to improve support for converting windows and vmware guests and remote operation.</comment>
+    <requestid>1169235</requestid>
+  </revision>
 </revisionlist>
