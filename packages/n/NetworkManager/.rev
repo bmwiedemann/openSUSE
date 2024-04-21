@@ -2283,4 +2283,16 @@ New stable release</comment>
     <comment>Revert NM to 1.44.x</comment>
     <requestid>1160054</requestid>
   </revision>
+  <revision rev="267" vrev="1">
+    <srcmd5>8c34ef90ee0f48dbe4b7103768e8a710</srcmd5>
+    <version>1.44.4</version>
+    <time>1713723894</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.44.4:
+  + Add the 'dns-change' dispatcher event.
+  + Various fixed related to IPv4 duplicate address detection.
+  + Fix support for OVS netdev datapath
+  + Fix handling of IPv6 hop limit (forwarded request 1169194 from dimstar)</comment>
+    <requestid>1169230</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 19 13:03:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.44.4:
+  + Add the 'dns-change' dispatcher event.
+  + Various fixed related to IPv4 duplicate address detection.
+  + Fix support for OVS netdev datapath
+  + Fix handling of IPv6 hop limit
+
+-------------------------------------------------------------------
 Sun Dec  3 07:39:25 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Add python3.6-in-sle.patch: SLE still takes python 3.6 as primary
