@@ -75,4 +75,17 @@
   * Switch to `main` branch.</comment>
     <requestid>1135263</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2c02c10351fe9d6ab6e2b44a4fee1f42</srcmd5>
+    <version>2.5.0</version>
+    <time>1713724057</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.5.0:
+  * Support detecting a shadowing folder as module name (as part
+    of A005). [asfaltboy]
+  * Add rule for lambda argument shadowing (A006). [cielavenir]
+  * Add rule for builtin module name shadowing (A005).
+    [asfaltboy]</comment>
+    <requestid>1169373</requestid>
+  </revision>
 </revisionlist>
