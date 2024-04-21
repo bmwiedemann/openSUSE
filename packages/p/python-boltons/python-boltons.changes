@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 20 13:54:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.0.0:
+  * Per the RFC in issue [#365][i339], boltons is now **Python 3
+    only**. 3.7+ for now.
+  * Added Python 3.12 support ([#361][i361])
+  * Fix [dictutils.OneToOne][dictutils.OneToOne]'s `update()`
+    behavior with empty iterables
+
+-------------------------------------------------------------------
 Tue Dec 26 15:18:11 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

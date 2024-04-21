@@ -108,4 +108,17 @@
     <comment></comment>
     <requestid>1135274</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0117a55e67f65a116a3e835598896b07</srcmd5>
+    <version>24.0.0</version>
+    <time>1713724035</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.0.0:
+  * Per the RFC in issue [#365][i339], boltons is now **Python 3
+    only**. 3.7+ for now.
+  * Added Python 3.12 support ([#361][i361])
+  * Fix [dictutils.OneToOne][dictutils.OneToOne]'s `update()`
+    behavior with empty iterables</comment>
+    <requestid>1169368</requestid>
+  </revision>
 </revisionlist>
