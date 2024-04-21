@@ -15,4 +15,28 @@
     <comment></comment>
     <requestid>1006871</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>37c1acef89dbed62f30ea4e6b8d8828b</srcmd5>
+    <version>1.7.0</version>
+    <time>1713724073</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.0:
+  * tomli dependency for Python versions &lt; 3.11, making use of
+    tomllib in the standard library with 3.11+ (#150).
+  * Support for pyi file extensions (and leave room for other
+    file extensions to be added, like maybe ipynb).
+  * Support for Google-style docstrings for class __init__
+    methods with new --style [sphinx|google] flag (#128).
+  * Include support for deleters when ignoring property
+    decorators (#126
+    &lt;https://github.com/econchick/interrogate/issues/126&gt;_).
+  * Support floats for --fail-under values (#114).
+  * toml dependency for all Python versions (#150).
+  * Add --ignore-overloaded-functions flag to ignore overload
+    decorators (#97) – thank you ErwinJunge (via #167) and
+    zackyancey.
+  * Support for Python 3.11 &amp; 3.12.
+  * Support for Python 3.6 &amp; 3.7.</comment>
+    <requestid>1169387</requestid>
+  </revision>
 </revisionlist>

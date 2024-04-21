@@ -1,7 +1,7 @@
 #
 # spec file for package python-interrogate
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-interrogate
-Version:        1.5.0
+Version:        1.7.0
 Release:        0
 Summary:        Interrogate a codebase for docstring coverage
 License:        MIT
@@ -33,9 +33,11 @@ Requires:       python-click
 Requires:       python-colorama
 Requires:       python-py
 Requires:       python-tabulate
-Requires:       python-toml
+%if 0%{python_version_nodots} < 311
+Requires:       python-tomli
+%endif
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module attrs}
@@ -45,7 +47,7 @@ BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module tabulate}
-BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module tomli if %python-version < 3.11}
 # /SECTION
 %python_subpackages
 
