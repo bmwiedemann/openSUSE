@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Apr 18 05:16:50 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.4.47 (includes a fix for boo#1222090):
+  * Patch oscrypto for linux binary by @mmerklinger in #518
+  * Bump pyinstaller version by @mmerklinger in #520
+  * Add common short version for help of CLI by @anotherbridge in
+    #509
+  * factory-reset(-app): remove --experimental flag by
+    @sosthene-nitrokey in #529
+  * fix: improve forwards compatibility with spsdk 2.1+ by @kmohrf
+    in #524
+  * Support spsdk 2.1 by @robin-nitrokey in #533
+- remove ExclusiveArch to not only build on x86_64 (thanks to
+  Guillaume Gardet for his SR)
+
+-------------------------------------------------------------------
+Tue Mar 26 09:20:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.4.46:
+  * Update spsdk to v2.0 by @daringer #499
+  * Add support for nkpk subcommand by @robin-nitrokey #500, #501,
+    #502, #505
+  * FIDO add support for Pin protocol v2 by @daringer #507
+- remove patch support-spsdk-2.0.patch as this was included
+  upstream (https://github.com/Nitrokey/pynitrokey/pull/499)
+
+-------------------------------------------------------------------
 Wed Jan 31 15:56:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add support-spsdk-2.0.patch: support spsdk 2.0

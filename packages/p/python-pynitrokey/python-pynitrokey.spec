@@ -23,7 +23,7 @@
 %endif
 
 Name:           python-pynitrokey
-Version:        0.4.45
+Version:        0.4.47
 Release:        0
 Summary:        Python Library for Nitrokey devices
 License:        Apache-2.0 OR MIT
@@ -31,8 +31,6 @@ URL:            https://github.com/Nitrokey/pynitrokey
 Source:         https://files.pythonhosted.org/packages/source/p/pynitrokey/pynitrokey-%{version}.tar.gz
 Source1:        LICENSE-MIT
 Source2:        LICENSE-APACHE
-# PATCH-FIX-UPSTREAM: support spsdk >= 2.0
-Patch1:         https://github.com/Nitrokey/pynitrokey/pull/499.patch#/support-spsdk-2.0.patch
 BuildRequires:  %{python_module click-aliases}
 BuildRequires:  %{python_module flit}
 BuildRequires:  %{python_module pip}
@@ -54,7 +52,7 @@ BuildRequires:  %{python_module nkdfu}
 BuildRequires:  %{python_module python-dateutil >= 2.7.0}
 BuildRequires:  %{python_module pyusb}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module spsdk >= 2.0 with %python-spsdk < 2.1}
+BuildRequires:  %{python_module spsdk >= 2.0 with %python-spsdk < 2.2}
 BuildRequires:  %{python_module tlv8}
 BuildRequires:  %{python_module tqdm}
 # "typing_extensions ~= 4.3.0"
@@ -89,12 +87,9 @@ Requires:       python-typing_extensions >= 4.3.0
 Requires:       python-urllib3 >= 1.26.7
 Requires:       (python-fido2 >= 1.1.0 with python-fido2 < 2)
 Requires:       (python-nethsm >= 0.5.0 with python-nethsm < 2)
-Requires:       (python-spsdk >= 2.0 with python-spsdk < 2.1)
+Requires:       (python-spsdk >= 2.0 with python-spsdk < 2.2)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-# only build for x86_64, as some dependencies are not available
-# for other architectures
-ExclusiveArch:  x86_64
 BuildArch:      noarch
 Provides:       nitropy = %{version}-%{release}
 %python_subpackages
