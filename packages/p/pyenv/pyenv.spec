@@ -19,7 +19,7 @@
 %define pyenv_dir      %{_libexecdir}/pyenv
 #
 Name:           pyenv
-Version:        2.3.36
+Version:        2.4.0
 Release:        0
 Summary:        Python Version Management
 License:        MIT
@@ -32,7 +32,10 @@ BuildRequires:  fdupes
 BuildRequires:  fish
 BuildRequires:  gcc
 BuildRequires:  make
+BuildRequires:  pkgconfig
 BuildRequires:  zsh
+#
+Requires:       pkgconfig
 #
 # Additional soft build requirements.
 # Use list from https://github.com/pyenv/pyenv/wiki#suggested-build-environment
@@ -43,20 +46,24 @@ Recommends:     automake
 Recommends:     bzip2
 Recommends:     findutils
 Recommends:     gcc
+#
 Recommends:     gdbm-devel
-Recommends:     libbz2-devel
-Recommends:     libffi-devel
-Recommends:     lzma-sdk-devel
-Recommends:     ncurses-devel
+Recommends:     gmp-devel
 Recommends:     openssl-devel
 Recommends:     patch
-Recommends:     readline5-devel
-Recommends:     sqlite3-devel
-Recommends:     tcl-devel
-Recommends:     tk-devel
-Recommends:     xz
-Recommends:     xz-devel
-Recommends:     zlib-devel
+Recommends:     readline-devel
+#
+Recommends:     pkgconfig(bzip2)
+Recommends:     pkgconfig(clzma)
+Recommends:     pkgconfig(expat)
+Recommends:     pkgconfig(libffi)
+Recommends:     pkgconfig(liblzma)
+Recommends:     pkgconfig(ncurses)
+Recommends:     pkgconfig(sqlite3)
+Recommends:     pkgconfig(tcl)
+Recommends:     pkgconfig(tk)
+Recommends:     pkgconfig(uuid)
+Recommends:     pkgconfig(zlib)
 
 %description
 pyenv lets the user switch between multiple versions of Python.
