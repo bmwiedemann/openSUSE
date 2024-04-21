@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 20 20:43:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.3:
+  * Add google-auth as a direct dependency (780c5f1)
+  * Add staticmethod decorator to _get_client_cert_source and
+    _get_api_endpoint
+  * Resolve AttributeError 'Credentials' object has no attribute
+    'universe_domain'
+  * Require google-api-core>=1.34.1
+  * fix ValueError in test__validate_universe_domain
+
+-------------------------------------------------------------------
 Sun Feb  4 10:06:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11.0:

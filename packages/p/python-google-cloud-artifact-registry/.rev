@@ -24,4 +24,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1161538</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ac2d31013389e3f808189eadf06c8db2</srcmd5>
+    <version>1.11.3</version>
+    <time>1713724100</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.11.3:
+  * Add google-auth as a direct dependency (780c5f1)
+  * Add staticmethod decorator to _get_client_cert_source and
+    _get_api_endpoint
+  * Resolve AttributeError 'Credentials' object has no attribute
+    'universe_domain'
+  * Require google-api-core&gt;=1.34.1
+  * fix ValueError in test__validate_universe_domain</comment>
+    <requestid>1169412</requestid>
+  </revision>
 </revisionlist>
