@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Fri Apr 19 13:38:06 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- For linux/s390x platform: disabled building kubernetes binaries with `-buildmode=pie`
+  * `-buildmode=pie` with "internal linking" is not yet supported on linux/s390x platform
+  * ref: https://github.com/golang/go/blob/a63907808d14679c723e566cb83acc76fc8cafc2/src/internal/platform/supported.go#L223-L232
+  * ref: https://github.com/golang/go/issues/64875#issuecomment-1870734528
+ 
+-------------------------------------------------------------------
+Thu Apr 18 13:14:38 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- initial package for Kubernetes v1.30.0 
+  * Full changelog - https://github.com/kubernetes/kubernetes/blob/v1.30.0/CHANGELOG/CHANGELOG-1.30.md
