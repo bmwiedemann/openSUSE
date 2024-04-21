@@ -1802,6 +1802,7 @@ BuildFlags: onlybuild:dnsmasq
 BuildFlags: onlybuild:docbook-xsl
 BuildFlags: onlybuild:docbook_4
 BuildFlags: onlybuild:docbook_5
+BuildFlags: onlybuild:doctest
 BuildFlags: onlybuild:dos2unix
 BuildFlags: onlybuild:dosfstools
 BuildFlags: onlybuild:dotconf
@@ -2746,6 +2747,7 @@ BuildFlags: onlybuild:python-async_generator
 BuildFlags: onlybuild:python-atspi
 BuildFlags: onlybuild:python-attrs
 BuildFlags: onlybuild:python-bcrypt
+BuildFlags: onlybuild:python-beniget
 BuildFlags: onlybuild:python-breathe
 BuildFlags: onlybuild:python-build
 BuildFlags: onlybuild:python-calver
@@ -2757,6 +2759,7 @@ BuildFlags: onlybuild:python-cmdln
 BuildFlags: onlybuild:python-constantly
 BuildFlags: onlybuild:python-construct
 BuildFlags: onlybuild:python-coverage
+BuildFlags: onlybuild:python-cppy
 BuildFlags: onlybuild:python-cryptography
 BuildFlags: onlybuild:python-cssselect
 BuildFlags: onlybuild:python-dbus-python
@@ -2777,6 +2780,7 @@ BuildFlags: onlybuild:python-flit-core
 BuildFlags: onlybuild:python-flit-core:primary
 BuildFlags: onlybuild:python-flit-scm
 BuildFlags: onlybuild:python-freezegun
+BuildFlags: onlybuild:python-gast
 BuildFlags: onlybuild:python-gi-docgen
 BuildFlags: onlybuild:python-gitdb
 BuildFlags: onlybuild:python-GitPython
@@ -2804,14 +2808,17 @@ BuildFlags: onlybuild:python-iniconfig
 BuildFlags: onlybuild:python-isodate
 BuildFlags: onlybuild:python-jsonpointer
 BuildFlags: onlybuild:python-k5test
+BuildFlags: onlybuild:python-kiwisolver
 BuildFlags: onlybuild:python-lark
 BuildFlags: onlybuild:python-libcst
 BuildFlags: onlybuild:python-libevdev
 BuildFlags: onlybuild:python-lxml
+BuildFlags: onlybuild:python-matplotlib
 BuildFlags: onlybuild:python-mccabe
 BuildFlags: onlybuild:python-meson-python
 BuildFlags: onlybuild:python-mypy
 BuildFlags: onlybuild:python-mypy_extensions
+BuildFlags: onlybuild:python-networkx
 BuildFlags: onlybuild:python-nose2
 BuildFlags: onlybuild:python-notify2
 BuildFlags: onlybuild:python-numpy
@@ -2819,6 +2826,7 @@ BuildFlags: onlybuild:python-olefile
 BuildFlags: onlybuild:python-outcome
 BuildFlags: onlybuild:python-packaging
 BuildFlags: onlybuild:python-packaging:primary
+BuildFlags: onlybuild:python-pandas
 BuildFlags: onlybuild:python-parameterized
 BuildFlags: onlybuild:python-pathspec
 BuildFlags: onlybuild:python-pbr
@@ -2839,13 +2847,16 @@ BuildFlags: onlybuild:python-pyOpenSSL
 BuildFlags: onlybuild:python-pyasn1
 BuildFlags: onlybuild:python-pyasn1-modules
 BuildFlags: onlybuild:python-pybeam
+BuildFlags: onlybuild:python-pybind11
 BuildFlags: onlybuild:python-pycairo
 BuildFlags: onlybuild:python-pycodestyle
 BuildFlags: onlybuild:python-pycparser
 BuildFlags: onlybuild:python-pycups
+BuildFlags: onlybuild:python-pydot
 BuildFlags: onlybuild:python-pyelftools
 BuildFlags: onlybuild:python-pyenchant
 BuildFlags: onlybuild:python-pyflakes
+BuildFlags: onlybuild:python-pygraphviz
 BuildFlags: onlybuild:python-pyjsparser
 BuildFlags: onlybuild:python-pyparsing
 BuildFlags: onlybuild:python-pyparsing:primary
@@ -2864,6 +2875,7 @@ BuildFlags: onlybuild:python-python-dateutil
 BuildFlags: onlybuild:python-python-dbusmock
 BuildFlags: onlybuild:python-python-magic
 BuildFlags: onlybuild:python-python-xlib
+BuildFlags: onlybuild:python-pythran
 BuildFlags: onlybuild:python-pytz
 BuildFlags: onlybuild:python-pytz-deprecation-shim
 BuildFlags: onlybuild:python-pyudev
@@ -2877,6 +2889,7 @@ BuildFlags: onlybuild:python-requests-gssapi
 BuildFlags: onlybuild:python-rpm-macros
 BuildFlags: onlybuild:python-rpm-packaging
 BuildFlags: onlybuild:python-rtslib-fb
+BuildFlags: onlybuild:python-scipy
 BuildFlags: onlybuild:python-semantic_version
 BuildFlags: onlybuild:python-service_identity
 BuildFlags: onlybuild:python-setuptools
@@ -2937,6 +2950,7 @@ BuildFlags: onlybuild:python39
 BuildFlags: onlybuild:python39:base
 BuildFlags: onlybuild:qca:qt5
 BuildFlags: onlybuild:qemu
+BuildFlags: onlybuild:qhull
 BuildFlags: onlybuild:qml-autoreqprov
 BuildFlags: onlybuild:qmlpluginexports:qt5
 BuildFlags: onlybuild:qrencode
@@ -3213,6 +3227,7 @@ BuildFlags: onlybuild:xprop
 BuildFlags: onlybuild:xrdb
 BuildFlags: onlybuild:xset
 BuildFlags: onlybuild:xsetroot
+BuildFlags: onlybuild:xsimd
 BuildFlags: onlybuild:xterm
 BuildFlags: onlybuild:xtrans   
 BuildFlags: onlybuild:xvfb-run
