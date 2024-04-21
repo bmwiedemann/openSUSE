@@ -198,4 +198,12 @@ See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00332.html</c
     <comment>Update Haskell ecosystem to GHC version 9.8.2.</comment>
     <requestid>1157275</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>96bcea72ca473e81447c4e5f6d2186cb</srcmd5>
+    <version>0.4.3.2</version>
+    <time>1713724178</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1169526</requestid>
+  </revision>
 </revisionlist>
