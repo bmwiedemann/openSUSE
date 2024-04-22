@@ -547,6 +547,20 @@
     <ignore name="libxfce4util-lang"/>
     <!-- OBS-IgnorePackage: xfwm4-lang -->
     <ignore name="xfwm4-lang"/>
+    <!-- OBS-IgnorePackage: xfce4-whiskermenu-plugin-lang -->
+    <ignore name="xfce4-whiskermenu-plugin-lang"/>
+    <!-- OBS-IgnorePackage: xfce4-appfinder-lang -->
+    <ignore name="xfce4-appfinder-lang"/>
+    <!-- OBS-IgnorePackage: xfce4-notifyd-lang -->
+    <ignore name="xfce4-notifyd-lang"/>
+    <!-- OBS-IgnorePackage: thunar-volman-lang -->
+    <ignore name="thunar-volman-lang"/>
+    <!-- OBS-IgnorePackage: xfconf-lang -->
+    <ignore name="xfconf-lang"/>
+    <!-- OBS-IgnorePackage: xfce4-pulseaudio-plugin-lang -->
+    <ignore name="xfce4-pulseaudio-plugin-lang"/>
+    <!-- OBS-IgnorePackage: xfce4-xkb-plugin-lang -->
+    <ignore name="xfce4-xkb-plugin-lang"/>
     <!-- OBS-IgnorePackage: exo-lang -->
     <ignore name="exo-lang"/>
     <!-- OBS-IgnorePackage: xfdesktop-lang -->

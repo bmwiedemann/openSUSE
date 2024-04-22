@@ -73,6 +73,13 @@ buildignore catfish-lang
 buildignore libxfce4ui-lang
 buildignore libxfce4util-lang
 buildignore xfwm4-lang
+buildignore xfce4-whiskermenu-plugin-lang
+buildignore xfce4-appfinder-lang
+buildignore xfce4-notifyd-lang
+buildignore thunar-volman-lang
+buildignore xfconf-lang
+buildignore xfce4-pulseaudio-plugin-lang
+buildignore xfce4-xkb-plugin-lang
 buildignore exo-lang
 buildignore xfdesktop-lang
 buildignore xfce4-power-manager-lang
