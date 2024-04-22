@@ -2721,8 +2721,10 @@ BuildFlags: onlybuild:publicsuffix
 BuildFlags: onlybuild:pulseaudio
 BuildFlags: onlybuild:python-Automat
 BuildFlags: onlybuild:python-Babel
+BuildFlags: onlybuild:python-Cycler
 BuildFlags: onlybuild:python-Cython
 BuildFlags: onlybuild:python-Cython0
+BuildFlags: onlybuild:python-FontTools
 BuildFlags: onlybuild:python-Genshi
 BuildFlags: onlybuild:python-Jinja2
 BuildFlags: onlybuild:python-Js2Py
@@ -2758,6 +2760,7 @@ BuildFlags: onlybuild:python-charset-normalizer
 BuildFlags: onlybuild:python-cmdln
 BuildFlags: onlybuild:python-constantly
 BuildFlags: onlybuild:python-construct
+BuildFlags: onlybuild:python-contourpy
 BuildFlags: onlybuild:python-coverage
 BuildFlags: onlybuild:python-cppy
 BuildFlags: onlybuild:python-cryptography
@@ -2780,6 +2783,7 @@ BuildFlags: onlybuild:python-flit-core
 BuildFlags: onlybuild:python-flit-core:primary
 BuildFlags: onlybuild:python-flit-scm
 BuildFlags: onlybuild:python-freezegun
+BuildFlags: onlybuild:python-fs
 BuildFlags: onlybuild:python-gast
 BuildFlags: onlybuild:python-gi-docgen
 BuildFlags: onlybuild:python-gitdb
@@ -2856,6 +2860,7 @@ BuildFlags: onlybuild:python-pydot
 BuildFlags: onlybuild:python-pyelftools
 BuildFlags: onlybuild:python-pyenchant
 BuildFlags: onlybuild:python-pyflakes
+BuildFlags: onlybuild:python-pyftpdlib
 BuildFlags: onlybuild:python-pygraphviz
 BuildFlags: onlybuild:python-pyjsparser
 BuildFlags: onlybuild:python-pyparsing
@@ -2864,6 +2869,7 @@ BuildFlags: onlybuild:python-pyproject-hooks
 BuildFlags: onlybuild:python-pyqt-builder
 BuildFlags: onlybuild:python-pyqt-rpm-macros
 BuildFlags: onlybuild:python-pyserial
+BuildFlags: onlybuild:python-pysendfile
 BuildFlags: onlybuild:python-pytest
 BuildFlags: onlybuild:python-pytest-asyncio
 BuildFlags: onlybuild:python-pytest-cov
@@ -2889,6 +2895,7 @@ BuildFlags: onlybuild:python-requests-gssapi
 BuildFlags: onlybuild:python-rpm-macros
 BuildFlags: onlybuild:python-rpm-packaging
 BuildFlags: onlybuild:python-rtslib-fb
+BuildFlags: onlybuild:python-scandir
 BuildFlags: onlybuild:python-scipy
 BuildFlags: onlybuild:python-semantic_version
 BuildFlags: onlybuild:python-service_identity
