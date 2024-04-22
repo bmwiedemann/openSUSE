@@ -67,7 +67,12 @@ buildignore glib2-lang
 buildignore thunar-lang
 buildignore xfce4-settings-lang
 buildignore xfce4-panel-lang
-buildignore xfce-terminal-lang
+buildignore xfce4-terminal-lang
+buildignore xfce4-session-lang
+buildignore catfish-lang
+buildignore libxfce4ui-lang
+buildignore libxfce4util-lang
+buildignore xfwm4-lang
 buildignore exo-lang
 buildignore xfdesktop-lang
 buildignore xfce4-power-manager-lang

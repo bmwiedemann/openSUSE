@@ -535,8 +535,18 @@
     <ignore name="xfce4-settings-lang"/>
     <!-- OBS-IgnorePackage: xfce4-panel-lang -->
     <ignore name="xfce4-panel-lang"/>
-    <!-- OBS-IgnorePackage: xfce-terminal-lang -->
-    <ignore name="xfce-terminal-lang"/>
+    <!-- OBS-IgnorePackage: xfce4-terminal-lang -->
+    <ignore name="xfce4-terminal-lang"/>
+    <!-- OBS-IgnorePackage: xfce4-session-lang -->
+    <ignore name="xfce4-session-lang"/>
+    <!-- OBS-IgnorePackage: catfish-lang -->
+    <ignore name="catfish-lang"/>
+    <!-- OBS-IgnorePackage: libxfce4ui-lang -->
+    <ignore name="libxfce4ui-lang"/>
+    <!-- OBS-IgnorePackage: libxfce4util-lang -->
+    <ignore name="libxfce4util-lang"/>
+    <!-- OBS-IgnorePackage: xfwm4-lang -->
+    <ignore name="xfwm4-lang"/>
     <!-- OBS-IgnorePackage: exo-lang -->
     <ignore name="exo-lang"/>
     <!-- OBS-IgnorePackage: xfdesktop-lang -->

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 22 12:41:09 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Fix tumbleweed live image, try to decrease size following the new
+  branding packages. Remove a few lang packages from xfce.
+
+-------------------------------------------------------------------
 Tue Mar 19 16:18:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Enable chronyd: syncronized time is something nice to have.
