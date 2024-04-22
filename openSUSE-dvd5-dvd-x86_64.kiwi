@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20240419" schemaversion="4.1">
+<image name="OBS__openSUSE___20240421" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20240419</productvar>
+      <productvar name="VERSION">20240421</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20240419,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20240421,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20240419/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20240421/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -327,6 +327,7 @@
       <repopackage name="desktop-translations"/>
       <repopackage name="device-mapper"/>
       <repopackage name="dhcp"/>
+      <repopackage name="dhcp-client"/>
       <repopackage name="dhcp-relay"/>
       <repopackage name="dhcp-server"/>
       <repopackage name="dialog"/>
@@ -711,11 +712,6 @@
       <repopackage name="gtk2-data"/>
       <repopackage name="gtk2-engine-hcengine"/>
       <repopackage name="gtk2-engine-murrine"/>
-      <repopackage name="gtk2-immodule-amharic"/>
-      <repopackage name="gtk2-immodule-inuktitut"/>
-      <repopackage name="gtk2-immodule-thai"/>
-      <repopackage name="gtk2-immodule-tigrigna"/>
-      <repopackage name="gtk2-immodule-vietnamese"/>
       <repopackage name="gtk2-immodule-xim"/>
       <repopackage name="gtk2-lang"/>
       <repopackage name="gtk2-metatheme-adwaita"/>
@@ -2771,7 +2767,7 @@
       <repopackage name="libsvn_auth_gnome_keyring-1-0"/>
       <repopackage name="libsvn_auth_kwallet-1-0"/>
       <repopackage name="libsvrcore0"/>
-      <repopackage name="libSvtAv1Enc1"/>
+      <repopackage name="libSvtAv1Enc2"/>
       <repopackage name="libswresample3_9"/>
       <repopackage name="libswresample4"/>
       <repopackage name="libswscale5_9"/>

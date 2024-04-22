@@ -325,6 +325,7 @@
     <package name="desktop-translations" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="device-mapper" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="dhcp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
+    <package name="dhcp-client" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="dhcp-relay" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
     <package name="dhcp-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
     <package name="dialog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -708,11 +709,6 @@
     <package name="gtk2-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gtk2-engine-hcengine" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gtk2-engine-murrine" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
-    <package name="gtk2-immodule-amharic" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="gtk2-immodule-inuktitut" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="gtk2-immodule-thai" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="gtk2-immodule-tigrigna" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="gtk2-immodule-vietnamese" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gtk2-immodule-xim" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gtk2-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gtk2-metatheme-adwaita" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1652,7 +1648,7 @@
     <package name="libSM6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libSPIRV-Tools-2024_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libSoundTouch1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libSvtAv1Enc1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libSvtAv1Enc2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libUsageEnvironment3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libX11-6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libX11-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

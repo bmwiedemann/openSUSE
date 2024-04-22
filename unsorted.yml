@@ -2512,6 +2512,8 @@ unsorted:
   - coredns-for-k8s1.28-extras 
   - coredns-for-k8s1.29 
   - coredns-for-k8s1.29-extras 
+  - coredns-for-k8s1.30 
+  - coredns-for-k8s1.30-extras 
   - coreos-installer 
   - corepack20 
   - corepack21 
@@ -3746,6 +3748,7 @@ unsorted:
   - etcd-for-k8s1.27 
   - etcd-for-k8s1.28 
   - etcd-for-k8s1.29 
+  - etcd-for-k8s1.30 
   - etcdctl 
   - etcdutl 
   - etckeeper 
@@ -7889,6 +7892,7 @@ unsorted:
   - gtk-doc-mkpdf 
   - gtk-key-theme-ctrluftw 
   - gtk-layer-shell-devel 
+  - gtk-session-lock-devel 
   - gtk-sharp-beans 
   - gtk-sharp-beans-devel 
   - gtk-sharp2 
@@ -7921,12 +7925,17 @@ unsorted:
   - gtk2-engine-thinice 
   - gtk2-engines 
   - gtk2-engines-devel 
+  - gtk2-immodule-amharic 
   - gtk2-immodule-amharic-32bit 
+  - gtk2-immodule-inuktitut 
   - gtk2-immodule-inuktitut-32bit 
   - gtk2-immodule-multipress 
   - gtk2-immodule-multipress-32bit 
+  - gtk2-immodule-thai 
   - gtk2-immodule-thai-32bit 
+  - gtk2-immodule-tigrigna 
   - gtk2-immodule-tigrigna-32bit 
+  - gtk2-immodule-vietnamese 
   - gtk2-immodule-vietnamese-32bit 
   - gtk2-immodule-xim-32bit 
   - gtk2-metatheme-adapta 
@@ -10313,6 +10322,17 @@ unsorted:
   - kubernetes1.29-kubelet-common 
   - kubernetes1.29-proxy 
   - kubernetes1.29-scheduler 
+  - kubernetes1.30-apiserver 
+  - kubernetes1.30-client 
+  - kubernetes1.30-client-bash-completion 
+  - kubernetes1.30-client-common 
+  - kubernetes1.30-client-fish-completion 
+  - kubernetes1.30-controller-manager 
+  - kubernetes1.30-kubeadm 
+  - kubernetes1.30-kubelet 
+  - kubernetes1.30-kubelet-common 
+  - kubernetes1.30-proxy 
+  - kubernetes1.30-scheduler 
   - kubescape 
   - kubeseal 
   - kubesec 
@@ -13290,6 +13310,7 @@ unsorted:
   - libgthread-2_0-0-32bit 
   - libgtk-2_0-0-32bit 
   - libgtk-3-0-32bit 
+  - libgtk-session-lock0 
   - libgtkd-3-0 
   - libgtkdatabox-0_9_3-1 
   - libgtkdatabox-devel 
@@ -14159,7 +14180,7 @@ unsorted:
   - libmediainfo0 
   - libmediawiki-devel 
   - libmedimport0 
-  - libmeep31 
+  - libmeep32 
   - libmemcache-devel 
   - libmemcache0 
   - libmemcached 
@@ -22169,6 +22190,8 @@ unsorted:
   - phodav-devel 
   - phonon-qt5-devel 
   - phonon-qt6-devel 
+  - phonon4qt5-backend-mpv 
+  - phonon4qt6-backend-mpv 
   - phoronix-test-suite 
   - photoqt 
   - photorec 
@@ -25650,8 +25673,8 @@ unsorted:
   - python310-numpy-devel 
   - python310-numpy-gnu-hpc 
   - python310-numpy-gnu-hpc-devel 
-  - python310-numpy_1_26_2-gnu-hpc 
-  - python310-numpy_1_26_2-gnu-hpc-devel 
+  - python310-numpy_1_26_4-gnu-hpc 
+  - python310-numpy_1_26_4-gnu-hpc-devel 
   - python310-numpydoc 
   - python310-nwdiag 
   - python310-nxapi-plumbing 
@@ -29132,8 +29155,8 @@ unsorted:
   - python311-numpy-devel 
   - python311-numpy-gnu-hpc 
   - python311-numpy-gnu-hpc-devel 
-  - python311-numpy_1_26_2-gnu-hpc 
-  - python311-numpy_1_26_2-gnu-hpc-devel 
+  - python311-numpy_1_26_4-gnu-hpc 
+  - python311-numpy_1_26_4-gnu-hpc-devel 
   - python311-numpydoc 
   - python311-nwdiag 
   - python311-nxapi-plumbing 
@@ -32643,8 +32666,8 @@ unsorted:
   - python312-numpy-devel 
   - python312-numpy-gnu-hpc 
   - python312-numpy-gnu-hpc-devel 
-  - python312-numpy_1_26_2-gnu-hpc 
-  - python312-numpy_1_26_2-gnu-hpc-devel 
+  - python312-numpy_1_26_4-gnu-hpc 
+  - python312-numpy_1_26_4-gnu-hpc-devel 
   - python312-numpydoc 
   - python312-nwdiag 
   - python312-nxapi-plumbing 
@@ -46581,6 +46604,7 @@ unsorted:
   - typelib-1_0-GstWebRTC-1_0 
   - typelib-1_0-Gtk-2_0 
   - typelib-1_0-GtkLayerShell-0_1 
+  - typelib-1_0-GtkSessionLock-0_1 
   - typelib-1_0-GtkSource-5 
   - typelib-1_0-GtkSpell-3_0 
   - typelib-1_0-Gucharmap-2_90 
