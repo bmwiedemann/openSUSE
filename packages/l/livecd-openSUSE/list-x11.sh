@@ -80,6 +80,10 @@ buildignore thunar-volman-lang
 buildignore xfconf-lang
 buildignore xfce4-pulseaudio-plugin-lang
 buildignore xfce4-xkb-plugin-lang
+buildignore libgarcon-lang
+buildignore lightdm-lang
+buildignore lightdm-gtk-greeter-lang
+buildignore mlocate-lang
 buildignore exo-lang
 buildignore xfdesktop-lang
 buildignore xfce4-power-manager-lang

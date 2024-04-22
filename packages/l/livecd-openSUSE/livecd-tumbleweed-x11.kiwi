@@ -561,6 +561,14 @@
     <ignore name="xfce4-pulseaudio-plugin-lang"/>
     <!-- OBS-IgnorePackage: xfce4-xkb-plugin-lang -->
     <ignore name="xfce4-xkb-plugin-lang"/>
+    <!-- OBS-IgnorePackage: libgarcon-lang -->
+    <ignore name="libgarcon-lang"/>
+    <!-- OBS-IgnorePackage: lightdm-lang -->
+    <ignore name="lightdm-lang"/>
+    <!-- OBS-IgnorePackage: lightdm-gtk-greeter-lang -->
+    <ignore name="lightdm-gtk-greeter-lang"/>
+    <!-- OBS-IgnorePackage: mlocate-lang -->
+    <ignore name="mlocate-lang"/>
     <!-- OBS-IgnorePackage: exo-lang -->
     <ignore name="exo-lang"/>
     <!-- OBS-IgnorePackage: xfdesktop-lang -->
