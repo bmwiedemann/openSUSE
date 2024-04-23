@@ -25,6 +25,8 @@ License:        BSD-3-Clause
 URL:            https://gitlab.xiph.org/xiph/rnnoise
 Source:         https://gitlab.xiph.org/xiph/rnnoise/-/archive/v%{version}/rnnoise-v%{version}.tar.gz
 Source1:        https://media.xiph.org/rnnoise/models/rnnoise_data-0b50c45.tar.gz
+# PATCH-FIX-UPSTREAM - https://github.com/xiph/rnnoise/issues/222
+Patch1:         372f7b4.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -52,7 +54,7 @@ RNNoise is a noise suppression library based on a recurrent neural network.
 This package holds the development files.
 
 %prep
-%autosetup -n %{name}-v%{version}
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
 cp -p %{SOURCE1} .
