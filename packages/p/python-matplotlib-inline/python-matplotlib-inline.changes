@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 21 22:22:11 UTC 2024 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.1.7
+  * Use short matplotlib backend name
+  * Add matplotlib.backend entry point
+  * Use pyproject.toml instead of setup.cfg
+- Use pyproject-based install
+
+-------------------------------------------------------------------
 Tue Mar  5 15:18:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Skip testing with python 3.9: python39-ipython is no longer
