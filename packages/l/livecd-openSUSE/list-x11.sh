@@ -95,6 +95,19 @@ buildignore groff
 buildignore libqt5-qttranslations
 buildignore plymouth
 buildignore 7zip
+
+buildignore bash-completion
+buildignore ethtool-bash-completion
+buildignore iproute2-bash-completion
+buildignore cpupower-bash-completion
+buildignore nvme-cli-bash-completion
+buildignore btrfsprogs-bash-completion
+buildignore firewalld-bash-completion
+buildignore kmod-bash-completion
+buildignore pulseaudio-bash-completion
+buildignore udisks2-bash-completion
+buildignore lightdm-bash-completion
+
 # On Leap it's a hard dep of dhcp-client, needed by NM.
 # On TW, NM uses the builtin DHCP client instead.
 if [ "$distro" = "tumbleweed" ]; then
