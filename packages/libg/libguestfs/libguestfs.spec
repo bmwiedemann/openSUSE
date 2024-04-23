@@ -406,6 +406,7 @@ Requires:       libguestfs >= 1.32
 BuildRequires:  ntfs-3g
 BuildRequires:  ntfsprogs
 BuildRequires:  rsync
+Requires:       ntfs-3g
 Provides:       guestfs-winsupport = %{version}
 Obsoletes:      guestfs-winsupport < %{version}
 
