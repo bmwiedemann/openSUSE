@@ -142,6 +142,7 @@
     <package name="docbook-xsl-stylesheets" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="docbook_4" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="docker" supportstatus="unsupported"/> <!-- reason: opensuse_microos:docker -->
+    <package name="docker-buildx" supportstatus="unsupported"/> <!-- reason: opensuse_microos:docker-buildx -->
     <package name="dolphin" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="dolphin-part" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="dosfstools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
