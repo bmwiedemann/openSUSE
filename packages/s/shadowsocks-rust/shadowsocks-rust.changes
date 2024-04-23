@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 22 14:26:29 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.18.3
+  * Support outbound_fwmark in server side to split outbound tunnel
+  * Default build for *-windows-* targets includes sswinservice
+  * local-fakedns: Add a basic implementation of Fake-DNS, which will
+    allocate IPs from pool for DNS queries. This experimental feature
+    could be useful when using local-tun, local-redir or other features
+    that could only receive IP destinations, the domain name that is
+    resolved by the Fake-DNS will be translated from IP back to domain
+    name when connecting to the remote
+  * Add launchd_udp_socket_name, launchd_tcp_socket_name to basic config format
+  * local-tun: Support tun_interface_destination configuration key
+  * Default logging framework changed to tracing-subscriber
+  * local: socks local server will support SOCKS5, SOCKS4a, HTTP proxy
+    protocols when local-http, local-socks4 features are enabled
+  * local: Support setting udp_mtu in configuration file to actively reject
+    packet.size > MTU
+  * Fix bugs
+- Add fix-boo-1223239.patch, fix CVE-2024-32650 boo#1223239
+
+-------------------------------------------------------------------
 Wed Dec 13 13:55:57 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Set permissions as 640 for /etc/shadowsocks (boo#1216372)
