@@ -173,6 +173,7 @@
       <repopackage name="docbook-xsl-stylesheets"/>
       <repopackage name="docbook_4"/>
       <repopackage name="docker"/>
+      <repopackage name="docker-buildx"/>
       <repopackage name="dolphin"/>
       <repopackage name="dolphin-part"/>
       <repopackage name="dosfstools"/>
