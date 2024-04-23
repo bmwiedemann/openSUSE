@@ -28,14 +28,16 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-matplotlib-inline%{psuffix}
-Version:        0.1.6
+Version:        0.1.7
 Release:        0
 Summary:        Inline Matplotlib backend for Jupyter
 License:        BSD-3-Clause
 URL:            https://github.com/ipython/matplotlib-inline
-Source:         https://files.pythonhosted.org/packages/source/m/matplotlib-inline/matplotlib-inline-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/m/matplotlib-inline/matplotlib_inline-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traitlets}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-traitlets
@@ -50,14 +52,14 @@ BuildRequires:  %{python_module matplotlib}
 Matplotlib Inline Back-end for IPython and Jupyter
 
 %prep
-%setup -q -n matplotlib-inline-%{version}
+%setup -q -n matplotlib_inline-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if ! %{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
