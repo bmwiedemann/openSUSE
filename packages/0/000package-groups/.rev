@@ -2011,4 +2011,12 @@ those sources for i586 on its own.</comment>
     <user>dimstar_suse</user>
     <comment>Add back selinux-console</comment>
   </revision>
+  <revision rev="283" vrev="281">
+    <srcmd5>245d5989342289d20074144c81a4d11d</srcmd5>
+    <version>unknown</version>
+    <time>1713867872</time>
+    <user>anag+factory</user>
+    <comment>docker-buildx needed by tests</comment>
+    <requestid>1169839</requestid>
+  </revision>
 </revisionlist>
