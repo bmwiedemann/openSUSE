@@ -252,4 +252,12 @@
     <comment>- skip python39 (nothing provides python39-branca)</comment>
     <requestid>1157928</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e3dfea02e182947be46cdd7c85932b20</srcmd5>
+    <version>1.4.1</version>
+    <time>1713891321</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169699</requestid>
+  </revision>
 </revisionlist>

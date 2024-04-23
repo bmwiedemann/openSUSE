@@ -26,17 +26,17 @@
 %endif
 %global skip_python39 1
 Name:           python-panel%{psuffix}
-Version:        1.3.8
+Version:        1.4.1
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/holoviz/panel
-Source:         https://files.pythonhosted.org/packages/source/p/panel/panel-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/py3/p/panel/panel-%{version}-py3-none-any.whl
 Source99:       python-panel-rpmlintrc
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module bleach}
-BuildRequires:  %{python_module bokeh >= 3.3.0}
+BuildRequires:  %{python_module bokeh >= 3.4.0}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module param >= 2.0.0}
 BuildRequires:  %{python_module pip}
@@ -50,7 +50,6 @@ BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  nodejs
 BuildRequires:  python-rpm-macros
-Requires:       jupyter-panel
 Requires:       python-Markdown
 Requires:       python-bleach
 Requires:       python-bokeh >= 3.2.0
@@ -66,6 +65,7 @@ Requires:       python-typing_extensions
 Requires:       python-xyzservices >= 2021.09.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Recommends:     jupyter-panel
 Recommends:     python-Pillow
 Recommends:     python-holoviews >= 1.16.0
 Recommends:     python-jupyterlab
@@ -77,18 +77,19 @@ BuildRequires:  %{python_module altair}
 BuildRequires:  %{python_module asyncio}
 BuildRequires:  %{python_module diskcache}
 BuildRequires:  %{python_module folium}
-BuildRequires:  %{python_module holoviews >= 1.16.0 if %python-base >= 3.10}
-BuildRequires:  %{python_module ipympl if %python-base >= 3.10}
-BuildRequires:  %{python_module ipython >= 7.0 if %python-base >= 3.10}
+BuildRequires:  %{python_module holoviews >= 1.16.0}
+BuildRequires:  %{python_module ipympl}
+BuildRequires:  %{python_module ipython >= 7.0}
 BuildRequires:  %{python_module panel = %{version}}
 BuildRequires:  %{python_module parameterized}
-BuildRequires:  %{python_module plotly >= 4.0 if %python-base >= 3.10}
+BuildRequires:  %{python_module plotly >= 4.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module streamz}
+BuildRequires:  unzip
 # Tests segfault
 # BuildRequires:  %%{python_module vtk}
 %endif
@@ -99,9 +100,12 @@ Panel is a Python library that lets you create custom interactive web apps and
 dashboards by connecting user-defined widgets to plots, images, tables, or
 text.
 
-%package -n jupyter-panel
+%package     -n jupyter-panel
 Summary:        Jupyter notebook and server cofiguration for python-panel
 Group:          Development/Languages/Python
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(panel) = %{version}
+Suggests:       python3-panel
 
 %description -n jupyter-panel
 Panel is a Python library that lets you create custom interactive web apps and
@@ -112,29 +116,20 @@ This package contains the notebook and server extension configuration common
 to all Python flavors.
 
 %prep
-%autosetup -p1 -n panel-%{version}
-# Do not try to rebuild the bundled npm stuff. We don't have network. Just use the shipped bundle.
-sed -i '/def _build_paneljs/ a \    return' setup.py
-# no color for pytest
-sed -i '/addopts/ s/--color=yes//' pyproject.toml
-for p in panel/tests/io/reload_module.py
-do \
-    [ -f $p -a ! -s $p ] || exit 1 && echo "# Empty module" > $p
-done
-for p in panel/dist/css/regular_table.css \
-  panel/dist/bundled/perspective/@finos/perspective-viewer@1.9.3/dist/css/variables.css
-do \
-    [ -f $p -a ! -s $p ] || exit 1 && echo "// Empty css" > $p
-done
+%setup -q -c -T
+%if %{with test}
+%python_expand mkdir -p build && unzip %{SOURCE0} -d build/
+%endif
+
+%build
+# not needed
 
 %if ! %{with test}
-%build
-%pyproject_wheel
-
 %install
-%pyproject_install
+%pyproject_install %{SOURCE0}
 %python_clone -a %{buildroot}%{_bindir}/panel
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+cp %{buildroot}%{python_sitelib}/panel-%{version}.dist-info/LICENSE.txt .
 %endif
 
 %if %{with test}
@@ -161,7 +156,7 @@ donttest="$donttest or test_pdf_local_file"
 # Don't test on 32-bit: asyncio is too flaky
 [ $(getconf LONG_BIT) -eq 32 ] && exit 0
 #
-%pytest -n auto -rsfE -k "not ($donttest)"
+%pytest build/panel -n auto -rsfE -k "not ($donttest)"
 %endif
 
 %post
@@ -173,16 +168,14 @@ donttest="$donttest or test_pdf_local_file"
 %if ! %{with test}
 %files %{python_files}
 %license LICENSE.txt
-%doc README.md
 %python_alternative %{_bindir}/panel
 %{python_sitelib}/panel
 %{python_sitelib}/panel-%{version}.dist-info
 
 %files -n jupyter-panel
 %license LICENSE.txt
-%_jupyter_config %{_jupyter_servextension_confdir}/panel-client-jupyter.json
-%_jupyter_config %{_jupyter_server_confdir}/panel-client-jupyter.json
-
+%{_jupyter_config} %{_jupyter_servextension_confdir}/panel-client-jupyter.json
+%{_jupyter_config} %{_jupyter_server_confdir}/panel-client-jupyter.json
 %endif
 
 %changelog

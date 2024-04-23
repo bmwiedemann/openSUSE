@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Sun Apr 21 22:22:11 UTC 2024 - Todd R <toddrme2178@gmail.com>
+
+- update to 1.4.1
+  + Enhancements
+    * Allow rendering raw `IPython.display` output in dashboard builder
+    * Improve snapping behavior and add undo functionality in dashboard builder UI)
+  + Bug Fixes
+    * Fix layout persistence issues in dashboard builder
+    * Ensure `Perspective` loads in notebooks and docs
+    * Allow full reset of dashboard builder layout
+    * Fix issues with `VTK` colormap serialization
+    * Allow `Tabulator` `HTMLTemplateFormatter` to reference multiple columns
+    * Fix loading spinner in converted app without template
+    * Avoid unnecessary rescroll on Column
+    * Fix dynamically updating description tooltips
+    * Ensure Perspective is fully loaded before attempting render)
+    * Ensure busy indicators are always reset
+- update to 1.4.0
+  + Features
+    * Add `EditableTemplate` to support dashboard builder UI in Jupyter
+    * Add `ChatAreaInput` as default text input widget for `ChatInterface`
+    * Add `NestedSelect` widget
+    * Add Panel tutorials
+    * Add `DateRangePicker` widget
+    * Add `Feed` layout and use it as layout for `ChatFeed`
+    * Add `WebP` pane
+    * Add `ButtonIcon`
+    * Add `Textual` pane
+  + Enhancements
+    * Improve `--autoreload` by using watchfiles and selectively reloading packages
+    * Load loading indicator from file instead of inlining
+    * Allow providing additional stylesheets in `card_params`
+    * Add `scroll` options to permanently toggle on layouts
+    * Allow choosing position of frozen columns on `Tabulator`
+    * Add help message on `ChatFeed`
+    * Ensure CSS can be applied to every aspect of `ChatMessage`
+    * Add HoloViz logos as `ChatMessage` avatars
+    * Add `gap` parameter to `FlexBox`
+    * Set default `step` of `DatetimeRangeSlider` to 1 minute
+    * Add support for passing objects reference to `FlexBox`
+    * Allow editable sliders to be embedded
+    * Add `message` into `css_classes` to `ChatMessage` markup
+    * Allow appending objects to the `ChatMessage` header & footer
+    * Add ability to declare icon label
+    * Add title and settings and fix datetime to `Perspective`
+    * Warn user if loading extension in VSCode or Colab without `jupyter_bokeh`
+    * Throttle updates to Boolean indicators
+    * Add `ParamRef` baseclass for `ParamFunction` and `ParamMethod`
+    * Add ability to Skip `Param<Ref|Function|Method>` updates
+    * Add `Param<Ref|Method|Function>` and `ReactiveExpr` to panes module
+    * Set up `param.rx` display accessor on import
+    * Allow using Carto tiles in `DeckGL`
+    * Improve `VTKJS` binary serialization
+    * Ensure component CSS is pre-loaded if possible, avoiding flicker on load
+  + Bug fixes
+    * Add resize handler for `FloatPanel`
+    * Fix serving of global template in notebook
+    * Ensure `Tabulator` renders in collapsed `Card`
+    * Fix issues with `VTK`, `VTKVolume` and `VTKJS` due to webgpu renderer
+    * Ensure `HTML` and other markup panes can be emptied
+    * Ensure collapsed `Card` does not cause stretching
+    * Ensure notebook preview always uses server resources
+    * Remove animation from loading spinner without spin
+    * Ensure model is only added/removed from Document once
+    * Ensure `loading_indicator` resets when configured with context manager
+    * Fix modal overflow and resizing issues
+    * Ensure that ripple matches notification size
+    * Fully re-render `CodeEditor` on render calls ensuring it displays correctly
+    * Ensure `FileDownload` button has correct height
+    * Ensure `HTML` model is redrawn if `stylesheets` is emptied
+    * Allow providing custom template
+    * Ensure `Debugger` renders without error
+    * Ensure pending writes are dispatched in order and only from correct thread
+    * Ensure layout reuses model if available
+    * Improved exception handler in unlocked message dispatch
+    * Fix display of interactive `Matplotlib`
+    * Ensure `Plotly` pane renders and hides correctly in `Card`
+    * Fix issues rendering widget components with `Fast` design
+    * Fix binary serialization from JS -> Pyodide
+    * Avoid overeager garbage collection
+    * Fix floating point error in `IntRangeSlider`
+    * Load JS modules from relative path
+    * Ensure no events are dispatched before the websocket is open
+    * Ensure `Markdown` parsing does not choke on partial links
+    * Fixes to ensure larger `PDF`s can be rendered
+    * Ensure `IPywidget` comms are only opened once
+    * Fixes for message handling in Jupyter Preview context
+    * Fix unnecessary loading of `ReactiveHTML` resources
+    * Ensure `Template.raw_css` has higher precedence than default template CSS
+    * Avoid asyncio event loop startup issues in some contexts
+    * Ensure column subset is retained on `Tabulator.style`
+    * Ensure bokeh mathjax bundle when mathjax extension is loaded in notebook
+- Switch to wheel to avoid npm attempting to rebuild resources.
+  This doesn't work without a network and needs brittle workarounds that can change between releases.
+- Update dependencies
+
+-------------------------------------------------------------------
 Thu Mar 14 10:08:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip python39 (nothing provides python39-branca)
