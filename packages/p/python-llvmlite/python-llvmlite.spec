@@ -18,6 +18,7 @@
 
 %define modname llvmlite
 %define         llvm_major 14
+%{?sle15_python_module_pythons}
 Name:           python-llvmlite
 # Note: this has to be in sync with Numba releases
 Version:        0.42.0

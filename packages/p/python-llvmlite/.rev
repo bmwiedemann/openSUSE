@@ -280,4 +280,12 @@ This version works with llvm 4.</comment>
 - Bump llvm_major from 8 to 9</comment>
     <requestid>1143748</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>162d48b289ca1c0d41b7d7bc93d9c545</srcmd5>
+    <version>0.42.0</version>
+    <time>1713891345</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169610</requestid>
+  </revision>
 </revisionlist>
