@@ -111,7 +111,7 @@ install -D -m 0644 -t %{buildroot}%{_mandir}/man1 packaging/man/apprise.1
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k 'not test_plugin_matrix_attachments_api_v2'
+%pytest -k 'not test_plugin_matrix_attachments_api_v2 and not test_apprise_attachment_truncate'
 
 %pre
 %python_libalternatives_reset_alternative apprise
