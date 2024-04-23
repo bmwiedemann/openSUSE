@@ -1,7 +1,7 @@
 #
 # spec file for package onednn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 
 %define libname libdnnl3
 Name:           onednn
-Version:        3.3.3
+Version:        3.4.1
 Release:        0
 Summary:        Intel Math Kernel Library for Deep Neural Networks
 License:        Apache-2.0

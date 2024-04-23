@@ -1,5 +1,28 @@
 -------------------------------------------------------------------
-Tue Dec 26 21:32:41 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+Fri Apr 19 17:27:48 UTC 2024 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to 3.4.1:
+  * Fixed an issue with caching and serialization of primitives in 
+    deterministic mode (7ed604a)
+  * Introduced memory descriptor serialization API 
+    (4cad420, 929a27a, 9b848c8)
+  * Fixed incorrect results in fp64 convolution and deconvolution 
+    on Intel GPUs based on Xe-LPG architecture (ebe77b5, 0b399ac, 
+    d748d64, 9f4f3d5, 21a8cae)
+  * Fixed incorrect results in reorder with large sizes on 
+    Intel CPUs and GPUs (69a111e, 4b72361, 74a343b)
+  * Reduced creation time for deconvolution primitive on 
+    Intel CPUs (bec487e, 1eab005)
+  * Fixed performance regression in deconvolution on 
+    Intel CPUs (fbe5b97, 1dd3c6a)
+  * Removed dangling symblols from static builds 
+    (e92c404, 6f5621a)
+  * Fixed crash during platform detection on some 
+    AArch64-based systems (406a079)
+  * Fixed performance regression in int8 deconvolution on 
+    Intel CPUs (7e50e15)
+  * Fixed handling of zero points for matmul in verbose 
+    logs converter (15c7916) 
 
 -------------------------------------------------------------------
 Fri Dec  1 04:33:49 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
