@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Apr 23 13:54:23 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.65
+  ## ✨ Features
+
+  * Make empty state copy for TAC depend on the value of the setting (https://github.com/matrix-org/matrix-react-sdk/pull/12419). Contributed by @dbkr.
+  * Linkify User Interactive Authentication errors (https://github.com/matrix-org/matrix-react-sdk/pull/12271). Contributed by @t3chguy.
+  * Add support for device dehydration v2 (https://github.com/matrix-org/matrix-react-sdk/pull/12316). Contributed by @uhoreg.
+  * Replace `SecurityCustomisations` with `CryptoSetupExtension` (https://github.com/matrix-org/matrix-react-sdk/pull/12342). Contributed by @thoraj.
+  * Add activity toggle for TAC (https://github.com/matrix-org/matrix-react-sdk/pull/12413). Contributed by @dbkr.
+  * Humanize spell check language labels (https://github.com/matrix-org/matrix-react-sdk/pull/12409). Contributed by @t3chguy.
+  * Call Guest Access, give user the option to change the acces level so they can generate a call link. (https://github.com/matrix-org/matrix-react-sdk/pull/12401). Contributed by @toger5.
+  * TAC: Release Announcement (https://github.com/matrix-org/matrix-react-sdk/pull/12380). Contributed by @florianduros.
+  * Show the call and share button if the user can create a guest link. (https://github.com/matrix-org/matrix-react-sdk/pull/12385). Contributed by @toger5.
+  * Add analytics for mark all threads unread (https://github.com/matrix-org/matrix-react-sdk/pull/12384). Contributed by @dbkr.
+  * Add `EventType.RoomEncryption` to the auto approve capabilities of Element Call widgets (https://github.com/matrix-org/matrix-react-sdk/pull/12386). Contributed by @toger5.
+
+  ## 🐛 Bug Fixes
+
+  * Fix link modal not shown after access upgrade (https://github.com/matrix-org/matrix-react-sdk/pull/12411). Contributed by @toger5.
+  * Fix thread navigation in timeline (https://github.com/matrix-org/matrix-react-sdk/pull/12412). Contributed by @florianduros.
+  * Fix inability to join a `knock` room via space hierarchy view (https://github.com/matrix-org/matrix-react-sdk/pull/12404). Contributed by @t3chguy.
+  * Focus the thread panel when clicking on an item in the TAC (https://github.com/matrix-org/matrix-react-sdk/pull/12410). Contributed by @dbkr.
+  * Fix space hierarchy tile busy state being stuck after join error (https://github.com/matrix-org/matrix-react-sdk/pull/12405). Contributed by @t3chguy.
+  * Fix room topic in-app links not being handled correctly on topic dialog (https://github.com/matrix-org/matrix-react-sdk/pull/12406). Contributed by @t3chguy.
+
+-------------------------------------------------------------------
 Tue Apr  9 17:06:06 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.64
