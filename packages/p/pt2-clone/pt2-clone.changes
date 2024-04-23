@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 22 19:09:13 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.69
+  * Hopefully fixed some stability issues with step-play
+    (enter/backspace key)
+  * Bugfix: Do not repeat step-play keys (enter/backspace)
+- Update to version 1.68
+  * Fixed some widget bugs when in "sample-zero" mode (sample = 00)
+    This would happen if you did a click-and-hold on sample length,
+    finetune, volume, loop, etc.
+
+-------------------------------------------------------------------
 Mon Mar 18 21:32:23 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.67
