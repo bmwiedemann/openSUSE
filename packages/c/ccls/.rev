@@ -153,4 +153,21 @@
 </comment>
     <requestid>1114535</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8b19c0d3e235f0e7dd7f6402547a515e</srcmd5>
+    <version>0.20240202</version>
+    <time>1713891333</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.20240202.
+  * Compatibility with LLVM 18.
+  * Disable -include b.hh =&gt; -include b.hh.{gch,pch} transition.
+    See https://maskray.me/blog/2023-07-16-precompiled-headers for
+    the behavior.
+- Remove obsolete patches:
+  * llvm16-optional-deprecation.patch
+  * llvm17-precompiled-preamble-build.patch
+- Thanks to Björn Bidar for the original patch!
+</comment>
+    <requestid>1169579</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package ccls
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ccls
-Version:        0.20220729
+Version:        0.20240202
 Release:        0
 Summary:        C/C++/ObjC language server
 # main package is Apache 2.0
@@ -26,8 +26,6 @@ License:        Apache-2.0 AND CC0-1.0 AND BSL-1.0
 Group:          Development/Tools/IDE
 URL:            https://github.com/MaskRay/ccls
 Source0:        %{URL}/archive/%{version}/%{name}-%{version}.tar.gz
-Patch0:         %{URL}/commit/6dc564f2a8608fff778a7d7e8ed0d5acd8d61e6b.patch#/llvm16-optional-deprecation.patch
-Patch1:         %{URL}/commit/ba38e13b93de1e8787b7e8a22b9a00d35b2b40f2.patch#/llvm17-precompiled-preamble-build.patch
 BuildRequires:  clang-devel >= 7.0
 BuildRequires:  cmake >= 3.8
 BuildRequires:  llvm-devel >= 7.0

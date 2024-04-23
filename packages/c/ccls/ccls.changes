@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 21 21:56:58 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.20240202.
+  * Compatibility with LLVM 18.
+  * Disable -include b.hh => -include b.hh.{gch,pch} transition.
+    See https://maskray.me/blog/2023-07-16-precompiled-headers for
+    the behavior.
+- Remove obsolete patches:
+  * llvm16-optional-deprecation.patch
+  * llvm17-precompiled-preamble-build.patch
+- Thanks to Björn Bidar for the original patch!
+
+-------------------------------------------------------------------
 Sat Sep 30 12:37:09 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Backport upstream patch llvm17-precompiled-preamble-build.patch
@@ -70,7 +83,7 @@ This release supports Clang 7~11.
 
 # Misc
 
-* Infer -target and --driver-mode from argv[0] #511 
+* Infer -target and --driver-mode from argv[0] #511
 * Support CMake variable `CLANG_LINK_CLANG_DYLIB` (some distributions use this to provide `libclang-cpp.so` instead of `libclang*.a` or `libclang*.so`. This option is needed to link against `libclang-cpp.so`)
 * `textDocument/documentSymbol`: support unopened files #548
 
