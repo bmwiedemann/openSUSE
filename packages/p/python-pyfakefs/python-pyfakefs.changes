@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Apr 21 08:45:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.1:
+  * fixed a regression from version 5.4.0 that incorrectly
+    handled files opened twice via file descriptor
+- update to 5.4.0
+  * Improves permission handling.
+  * added support for `O_NOFOLLOW` and `O_DIRECTORY` flags in
+    `os.open`
+  * added support for fake `os.dup`, `os.dup2` and `os.lseek`
+  * fixed a specific problem on reloading a pandas-related module
+  * added possibility for unload hooks for specific modules
+    use this also to reload django views (see #932)
+  * fixed `EncodingWarning` for Python >= 3.11 (see #957)
+    consider directory ownership while adding or removing
+    directory entries
+  * fixed handling of directory enumeration and search
+    permissions under Posix systems
+  * fixed creation of the temp directory in the fake file system
+    after a filesystem reset
+  * fixed handling of `dirfd` in `os.symlink` (see #968)
+  * add missing `follow_symlink` argument to `os.link` (see #973)
+  * fixed handling of missing attribute in `os.getxattr` (see
+  * fixed permission problem with `shutil.rmtree` if emulating
+    Windows under POSIX
+  * fixed handling of errors on opening files via file descriptor
+  * fixed handling of `umask` - it is now applied by default
+  * fixed behavior of `os.makedirs` (see #987)
+
+-------------------------------------------------------------------
 Sun Feb  4 12:23:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3.5:

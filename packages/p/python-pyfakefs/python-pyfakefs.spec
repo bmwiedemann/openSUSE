@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -27,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyfakefs%{psuffix}
-Version:        5.3.5
+Version:        5.4.1
 Release:        0
 Summary:        Fake file system that mocks the Python file system modules
 License:        Apache-2.0
