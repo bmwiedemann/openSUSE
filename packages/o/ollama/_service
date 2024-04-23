@@ -4,7 +4,7 @@
   <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/ollama/ollama.git</param>
     <param name="scm">git</param>
-    <param name="revision">v0.1.31</param>
+    <param name="revision">v0.1.32</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
@@ -18,4 +18,5 @@
   <service name="go_modules" mode="manual">
     <param name="compression">xz</param>
   </service>
+  <service name="set_version" mode="manual" />
 </services>

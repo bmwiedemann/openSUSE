@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Tue Apr 23 02:26:34 UTC 2024 - rrahl0@disroot.org
+
+- Update to version 0.1.32:
+  * scale graph based on gpu count
+  * Support unicode characters in model path (#3681)
+  * darwin: no partial offloading if required memory greater than system
+  * update llama.cpp submodule to `7593639` (#3665)
+  * fix padding in decode
+  * Revert "cmd: provide feedback if OLLAMA_MODELS is set on non-serve command (#3470)" (#3662)
+  * Added Solar example at README.md (#3610)
+  * Update langchainjs.md (#2030)
+  * Added MindsDB information (#3595)
+  * examples: add more Go examples using the API (#3599)
+  * Update modelfile.md
+  * Add llama2 / torch models for `ollama create` (#3607)
+  * Terminate subprocess if receiving `SIGINT` or `SIGTERM` signals while model is loading (#3653)
+  * app: gracefully shut down `ollama serve` on windows (#3641)
+  * types/model: add path helpers (#3619)
+  * update llama.cpp submodule to `4bd0f93` (#3627)
+  * types/model: make ParseName variants less confusing (#3617)
+  * types/model: remove (*Digest).Scan and Digest.Value (#3605)
+  * Fix rocm deps with new subprocess paths
+  * mixtral mem
+  * Revert "types/model: remove (*Digest).Scan and Digest.Value (#3589)"
+  * types/model: remove (*Digest).Scan and Digest.Value (#3589)
+  * types/model: remove DisplayLong (#3587)
+  * types/model: remove MarshalText/UnmarshalText from Digest (#3586)
+  * types/model: init with Name and Digest types (#3541)
+  * server: provide helpful workaround hint when stalling on pull (#3584)
+  * partial offloading
+  * refactor tensor query
+  * api: start adding documentation to package api (#2878)
+  * examples: start adding Go examples using api/ (#2879)
+  * Handle very slow model loads
+  * fix: rope
+  * Revert "build.go: introduce a friendlier way to build Ollama (#3548)" (#3564)
+  * build.go: introduce a friendlier way to build Ollama (#3548)
+  * update llama.cpp submodule to `1b67731` (#3561)
+  * ci: use go-version-file
+  * Correct directory reference in macapp/README (#3555)
+  * cgo quantize
+  * no blob create if already exists
+  * update generate scripts with new `LLAMA_CUDA` variable, set `HIP_PLATFORM` to avoid compiler errors (#3528)
+  * Docs: Remove wrong parameter for Chat Completion (#3515)
+  * no rope parameters
+  * add command-r graph estimate
+  * Fail fast if mingw missing on windows
+  * use an older version of the mac os sdk in release (#3484)
+  * Add test case for context exhaustion
+  * CI missing archive
+  * fix dll compress in windows building
+  * CI subprocess path fix
+  * Fix CI release glitches
+  * update graph size estimate
+  * Fix macOS builds on older SDKs (#3467)
+  * cmd: provide feedback if OLLAMA_MODELS is set on non-serve command (#3470)
+  * feat: add OLLAMA_DEBUG in ollama server help message (#3461)
+  * Revert options as a ref in the server
+  * default head_kv to 1
+  * fix metal gpu
+  * Bump to b2581
+  * Refined min memory from testing
+  * Release gpu discovery library after use
+  * Safeguard for noexec
+  * Detect too-old cuda driver
+  * Integration test improvements
+  * Apply 01-cache.diff
+  * Switch back to subprocessing for llama.cpp
+  * Simplify model conversion (#3422)
+  * fix generate output
+  * update memory calcualtions
+  * refactor model parsing
+  * Add chromem-go to community integrations (#3437)
+  * Update README.md (#3436)
+  * Community Integration: CRAG Ollama Chat (#3423)
+  * Update README.md (#3378)
+  * Community Integration: ChatOllama (#3400)
+  * Update 90_bug_report.yml
+  * Add gemma safetensors conversion (#3250)
+  * CI automation for tagging latest images
+  * Bump ROCm to 6.0.2 patch release
+  * CI windows gpu builds
+  * Update troubleshooting link
+  * fix: trim quotes on OLLAMA_ORIGINS
+
+- add set_version to automatically switch over to the newer version
+
+-------------------------------------------------------------------
 Tue Apr 16 10:52:25 UTC 2024 - bwiedemann@suse.com
 
 - Update to version 0.1.31:
