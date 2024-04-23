@@ -393,6 +393,7 @@ opensuse_microos:
   - kdump: [aarch64,ppc64le,s390x,x86_64] # needed by yast when the option to enable it is selected
   - docker: [aarch64,ppc64le,s390x,x86_64]  # container_host tests
   - docker-buildx: [aarch64,ppc64le,s390x,x86_64]  # container_host tests
+  - docker-rootless-extras: [aarch64,ppc64le,s390x,x86_64]  # container_host tests
   - suse-module-tools-scriptlets
 
 opensuse_microos_desktop:
