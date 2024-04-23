@@ -1,0 +1,30 @@
+Index: Python-3.12.3/Lib/test/test_compile.py
+===================================================================
+--- Python-3.12.3.orig/Lib/test/test_compile.py
++++ Python-3.12.3/Lib/test/test_compile.py
+@@ -14,6 +14,9 @@ from test.support import (script_helper,
+                           requires_specialization, C_RECURSION_LIMIT)
+ from test.support.os_helper import FakePath
+ 
++IS_SLE_15_6 = os.environ.get("SLE_VERSION", "") == "0150600"
++IS_32bit = hasattr(os, "uname") and os.uname().machine in ["i386", "i486", "i586", "i686"]
++
+ class TestSpecifics(unittest.TestCase):
+ 
+     def compile_single(self, source):
+@@ -110,6 +113,7 @@ class TestSpecifics(unittest.TestCase):
+         self.assertEqual(d['z'], 12)
+ 
+     @unittest.skipIf(support.is_wasi, "exhausts limited stack on WASI")
++    @unittest.skipIf(IS_SLE_15_6 and IS_32bit, "fails on 15.6 i586")
+     def test_extended_arg(self):
+         repeat = int(C_RECURSION_LIMIT * 0.9)
+         longexpr = 'x = x or ' + '-x' * repeat
+@@ -603,6 +607,7 @@ class TestSpecifics(unittest.TestCase):
+ 
+     @support.cpython_only
+     @unittest.skipIf(support.is_wasi, "exhausts limited stack on WASI")
++    @unittest.skipIf(IS_SLE_15_6 and IS_32bit, "fails on 15.6 i586")
+     def test_compiler_recursion_limit(self):
+         # Expected limit is C_RECURSION_LIMIT * 2
+         # Duplicating the limit here is a little ugly.

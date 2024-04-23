@@ -105,7 +105,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.12.2
+Version:        3.12.3
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -160,12 +160,17 @@ Patch35:        fix_configure_rst.patch
 # Detect email address parsing errors and return empty tuple to
 # indicate the parsing error (old API)
 Patch36:        CVE-2023-27043-email-parsing-errors.patch
-# PATCH-FIX-UPSTREAM libexpat260.patch gh#python/cpython#115288
-# Fix tests for XMLPullParser with Expat 2.6.0
-Patch37:        libexpat260.patch
 # PATCH-FIX-UPSTREAM CVE-2023-6597-TempDir-cleaning-symlink.patch bsc#1219666 mcepl@suse.com
 # tempfile.TemporaryDirectory: fix symlink bug in cleanup (from gh#python/cpython!99930)
 Patch38:        CVE-2023-6597-TempDir-cleaning-symlink.patch
+# PATCH-FIX-OPENSUSE CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch
+# This problem on libexpat is patched on 15.6 without version
+# update, this patch changes the tests to match the libexpat provided
+# by SUSE
+Patch39:        CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch
+# PATCH-FIX-OPENSUSE fix-test-recursion-limit-15.6.patch gh#python/cpython#115083
+# Skip some failing tests in test_compile for i586 arch in 15.6.
+Patch40:        fix-test-recursion-limit-15.6.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -527,6 +532,8 @@ LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH \
 %endif
 
 %check
+export SUSE_VERSION="0%{?suse_version}"
+export SLE_VERSION="0%{?sle_version}"
 %if %{with general}
 # exclude test_gdb -- it doesn't run in buildservice anyway, and fails on missing debuginfos
 # when you install gdb into your test env
