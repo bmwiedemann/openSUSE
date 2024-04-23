@@ -16,15 +16,15 @@
 #
 
 
+%define ghtag 4.0.7-post1
+%define mod_ver 4.0.7
 Name:           python-pykeepass
-Version:        4.0.7
+Version:        %{mod_ver}.post1
 Release:        0
 Summary:        Low-level library to interact with keepass databases
 License:        GPL-3.0-only
 URL:            https://github.com/libkeepass/pykeepass
-Source:         https://github.com/libkeepass/pykeepass/archive/refs/tags/v%{version}.tar.gz#/pykeepass-%{version}.tar.gz
-#Patch-Upstream: One test asks for module pykeepass.kdbx_parsing, which doesn't exist yet
-Patch0:         https://github.com/libkeepass/pykeepass/commit/4c8a1cc358e6ba24d9cb598963229f4999d6c70b.patch#/fix-upstream-test-case.patch
+Source:         https://github.com/libkeepass/pykeepass/archive/refs/tags/v%{ghtag}.tar.gz#/pykeepass-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyotp}
@@ -50,7 +50,7 @@ BuildRequires:  %{python_module pytest}
 This library allows you to write entries to a KeePass database
 
 %prep
-%autosetup -p1 -n pykeepass-%{version}
+%autosetup -p1 -n pykeepass-%{ghtag}
 sed -i '1{/^#!.*env python/d}' pykeepass/{pykeepass,deprecated,kdbx_parsing/kdbx*}.py
 
 %build
@@ -69,6 +69,6 @@ export PYTHONDONTWRITEBYTECODE=1
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/pykeepass/
-%{python_sitelib}/pykeepass-%{version}.dist-info/
+%{python_sitelib}/pykeepass-%{mod_ver}.dist-info/
 
 %changelog

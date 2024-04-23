@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 14 10:04:52 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.0.7.post1:
+  * Fix gnome secrets crashes on expiration date check with
+    missmatch of date format (gh#libkeepass/pykeepass#382).
+  * Fix missing pykeepass.kdbx_parsing when built with modern
+    tools (gh#libkeepass/pykeepass#378).
+  * Remove shebang line from pykeepass/deprecated.py
+    (gh#libkeepass/pykeepass#377).
+- Drop fix-upstream-test-case.patch: upstream committed.
+
+-------------------------------------------------------------------
 Wed Mar 27 06:34:37 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - Update to 4.0.7:
