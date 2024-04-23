@@ -1,7 +1,7 @@
 #
 # spec file for package yambar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,16 @@
 
 
 Name:           yambar
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        Modular statusbar for X11 and Wayland
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://codeberg.org/dnkl/yambar
-Source:         https://codeberg.org/dnkl/yambar/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.gz.sig
+# https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xb19964fbba09664cc81027ed5bbd4992c116573f
+Source2:        %{name}.keyring
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  meson >= 0.59
@@ -59,7 +62,7 @@ BuildRequires:  pkgconfig(yaml-0.1)
 Simplistic and highly configurable status panel for X and Wayland.
 
 %prep
-%setup -q -n %{name}
+%autosetup
 
 %package devel
 Summary:        Development files for %{name}
@@ -114,6 +117,7 @@ rm -rfv %{buildroot}%{_datadir}/doc/
 %{_mandir}/man5/yambar-modules-removables.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-river.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-script.5%{?ext_man}
+%{_mandir}/man5/yambar-modules-sway.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-sway-xkb.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-xkb.5%{?ext_man}
 %{_mandir}/man5/yambar-particles.5%{?ext_man}

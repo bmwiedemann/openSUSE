@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Apr 22 22:22:31 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Add keyring and signature for package.
+- Update to 1.11.0:
+  Added:
+  * battery: current smoothing, for improved discharge estimates.
+  * battery: scale option, for batteries that report 'charge' at a
+    different scale than 'current'.
+  * network: new quality tag (Wi-Fi only).
+  * Read alternative config from pipes and FIFOs (e.g. --config
+    /dev/stdin).
+  * Added overlay and background as possible layer values.
+  Changed:
+  * log-level: default to warning
+  * network: use dynlist instead of fixed name
+  Fixed:
+  * Compiler error ‘fmt’ may be used uninitialized.
+  * map: conditions failing to match when they contain multiple,
+    quoted tag values.
+  * Crash when hidden by an opaque window.
+  * Bar not resizing itself when the screen resolution is changed.
+  * i3/sway: incorrect empty/title state of workspaces.
+  * mem: state updated on each bar redraw.
+  * script: buffer overflow when reading large amounts of data.
+  * i3/sway: module fails when reloading config file.
+  * Worked around bug in gcc causing a compilation error.
+  * Miscalculation of list width in presence of empty particles.
+  * Log-level not respected by syslog.
+
+-------------------------------------------------------------------
 Thu Jul 20 09:09:52 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Remove _service file
