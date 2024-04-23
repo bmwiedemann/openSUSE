@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Mon Apr 22 23:29:23 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Add set-soversion.patch -- Upstream commit to set lib sover
+- Update to version 0.1.1:
+  * Handle esc-pair in atoms
+  * Use struct initializers instead of memset()
+  * Add unit test
+- Updates from version 0.1.0:
+  * Fix all memory leaks
+  * Initial commit
+  * Add incomplete parser
+  * Introduce buffer_steal
+  * Add missing NULL byte at end of strings
+  * Add support for single-quoted words
+  * Add support for double-quoted words
+  * Skip comments
+  * Add line number information
+  * Install headers
+
+-------------------------------------------------------------------
+Wed Sep  6 08:28:57 UTC 2023 - Hannes Braun <apple.hannes@gmail.com>
+
+- Initial package creation 
