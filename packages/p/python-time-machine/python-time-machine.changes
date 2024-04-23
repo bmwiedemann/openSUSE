@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 20 08:01:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.1:
+  * Fix segmentation fault when the first travel() call in a
+    process uses a timedelta.
+
+-------------------------------------------------------------------
 Thu Mar 14 08:17:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.14.0:

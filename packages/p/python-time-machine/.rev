@@ -154,4 +154,14 @@
   - Mock time.monotonic() and time.monotonic_ns().</comment>
     <requestid>1157878</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d7433aabf0e8b25258bd447d7a865572</srcmd5>
+    <version>2.14.1</version>
+    <time>1713891291</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.14.1:
+  * Fix segmentation fault when the first travel() call in a
+    process uses a timedelta.</comment>
+    <requestid>1169322</requestid>
+  </revision>
 </revisionlist>
