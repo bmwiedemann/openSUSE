@@ -89,4 +89,19 @@
 - Add skip-test_catch_handler_raises-for-older-311.patch</comment>
     <requestid>1129176</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6fd0e8013fc8d427402cd61939493985</srcmd5>
+    <version>1.2.1</version>
+    <time>1713891309</time>
+    <user>anag+factory</user>
+    <comment>- Fix tests with python 3.12.3, bsc#1223128
+- update to 1.2.1:
+  * Updated the copying of __notes__ to match CPython behavior
+  * Corrected the type annotation of the exception handler
+    callback to accept a BaseExceptionGroup instead of
+    BaseException
+  * Fixed type errors on Python &lt; 3.10 and the type annotation of
+    suppress()</comment>
+    <requestid>1169658</requestid>
+  </revision>
 </revisionlist>
