@@ -1,0 +1,11 @@
+<package name="ssh-pairing" project="openSUSE:Factory">
+  <title>Passwordless SSH key exchange through pairing</title>
+  <description>This tool allows to use pairing (like bluetooth, kde connect, ...) for exchanging public SSH keys, basically as alternative to ssh-copy-id.
+With this, setting up SSH authentication is more user friendly, as the user's public key does not need to be transferred to the server manually.
+It is arguably also more secure, as no passwords are involved, not even temporarily just to be able to ssh-copy-id.
+This tool is design to be used as part of some CLI or TUI, but can also be used manually.
+
+</description>
+  <devel project="devel:openSUSE:Factory" package="ssh-pairing"/>
+  <url>https://github.com/Vogtinator/ssh-pairing</url>
+</package>

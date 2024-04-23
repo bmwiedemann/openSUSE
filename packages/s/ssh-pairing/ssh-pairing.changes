@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Fri Apr 12 13:20:34 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 0.2:
+  * Ask for key import individually
+  * Use SSH_STRING_FREE_CHAR instead of plain free
+- Use mode="manual" in _service
+
+-------------------------------------------------------------------
+Wed Feb 14 08:50:18 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 0.1+git18:
+  * Add Security Considerations section to README.md
+  * Mention ssh-pairing prefix also in README.md
+  * Add ssh-pairing prefix to the client success message
+  * Clarify comment
+  * Show ssh-pairing-server stderr on failure
+  * Fail if kbd-interactive does not complete
+
+-------------------------------------------------------------------
+Fri Jan 26 15:54:45 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 0.1+git12:
+  * Avoid unnecessary strlcpy
+
+-------------------------------------------------------------------
+Fri Jan 26 14:51:06 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 0.1+git11:
+  * Document ssh-pairing tool
+  * Make it clear that the client message is important
+  * No bogus output
+  * Make shellcheck happy
+  * Add ssh-pairing tool
+  * Add a usage message
+  * Shorten status message sent to the client
+  * Print received keys immediately
+  * Some README.md improvements
+  * Fix indentation
+  * Use NI_MAXHOST
+
+-------------------------------------------------------------------
+Thu Jan 18 11:24:43 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Initial commit
