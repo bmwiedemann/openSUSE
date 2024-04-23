@@ -26,10 +26,8 @@ License:        BSL-1.0
 URL:            https://github.com/davisking/dlib
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  cblas-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -94,16 +92,19 @@ This package provides a module to allow importing and using dlib from Python.
 export CXX=g++
 export CFLAGS="%{optflags}"
 pushd dlib
-%cmake
+%cmake -DUSE_AVX_INSTRUCTIONS:BOOL=OFF -DUSE_SSE4_INSTRUCTIONS:BOOL=OFF
 %cmake_build
 popd
-%pyproject_wheel
+# cannot use pyproject_* macros because we need to pass cmake options to setup.py using --set
+# Note that setting these to `--yes` does not enable them unconditionally, but
+# rather makes them host machine dependent (boo#1223168)
+%python_build --no USE_AVX_INSTRUCTIONS --no USE_SSE4_INSTRUCTIONS
 
 %install
 pushd dlib
 %cmake_install
 popd
-%pyproject_install
+%python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %fdupes %{buildroot}%{_includedir}/
 
