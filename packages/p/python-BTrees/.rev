@@ -168,4 +168,13 @@
 </comment>
     <requestid>1122970</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>32c823c71a32456427365c7a8b645876</srcmd5>
+    <version>5.2</version>
+    <time>1713891293</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.2:
+  * Add preliminary support for Python 3.13 as of 3.13a3.</comment>
+    <requestid>1169358</requestid>
+  </revision>
 </revisionlist>
