@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 20 07:42:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update update 20.25.3:
+  * Python 3.13.0a6 renamed pathmod to parser
+  * Upgrade embedded wheels
+
+-------------------------------------------------------------------
 Tue Feb 27 18:13:43 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 20.25.1
@@ -61,7 +68,7 @@ Fri Jun 30 15:40:31 UTC 2023 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Mon May 22 08:32:57 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Add missing BuildRequires on time-machine 
+- Add missing BuildRequires on time-machine
 
 -------------------------------------------------------------------
 Fri May 12 09:12:55 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
@@ -151,7 +158,7 @@ Fri Mar 17 14:01:37 UTC 2023 - pgajdos@suse.com
 Wed Jan 11 03:46:18 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add python_module devel to BuildRequires in the test flavor, since
-  the test suite checks if the include path exists. 
+  the test suite checks if the include path exists.
 
 -------------------------------------------------------------------
 Sat Dec  3 02:36:31 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
@@ -349,7 +356,7 @@ Wed Sep 29 16:35:34 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Tue Sep 14 08:21:26 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Add missing Requires on two modules. 
+- Add missing Requires on two modules.
 - Drop no longer required appdirs Requires.
 - Shift new BuildRequires to :test to avoid cycles.
 
@@ -406,9 +413,9 @@ Sun Dec  6 23:22:34 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   gh#openSUSE/python-rpm-macros#66
 - Update to 20.2.1
   * Optionally skip VCS ignore directive for entire virtualenv directory
-  * Add ``--read-only-app-data`` option to allow for creation based on 
+  * Add ``--read-only-app-data`` option to allow for creation based on
     an existing app data cache which is non-writable
-  * The python specification can now take one or more values, first found 
+  * The python specification can now take one or more values, first found
     is used to create the virtual environment
 
 -------------------------------------------------------------------
@@ -854,7 +861,7 @@ Mon Jul 29 14:29:55 UTC 2013 - speilicke@suse.com
   + Along with this, --never-download is now always pinned to True, and is only
     being maintained in the short term for backward compatibility (Pull #412).
   + IMPORTANT Switched to the new setuptools (v0.9.7) which has been merged with
-    Distribute again and works for Python 2 and 3 with one codebase. The 
+    Distribute again and works for Python 2 and 3 with one codebase. The
     --distribute and --setuptools options are now no-op.
   + Updated to pip 1.4.
   + Added support for PyPy3k

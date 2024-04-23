@@ -776,4 +776,21 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
     <comment></comment>
     <requestid>1152923</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>ac70214ce28a8ded5963c08189e9fde2</srcmd5>
+    <version>20.25.3</version>
+    <time>1713891289</time>
+    <user>anag+factory</user>
+    <comment>- update update 20.25.3:
+  * Python 3.13.0a6 renamed pathmod to parser
+  * Upgrade embedded wheels
+
+- Add missing BuildRequires on time-machine
+  the test suite checks if the include path exists.
+- Add missing Requires on two modules.
+  * Add ``--read-only-app-data`` option to allow for creation based on
+  * The python specification can now take one or more values, first found
+    Distribute again and works for Python 2 and 3 with one codebase. The</comment>
+    <requestid>1169321</requestid>
+  </revision>
 </revisionlist>

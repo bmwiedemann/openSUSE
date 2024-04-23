@@ -27,11 +27,11 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-virtualenv%{psuffix}
-Version:        20.25.1
+Version:        20.25.3
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
-URL:            http://www.virtualenv.org/
+URL:            https://virtualenv.pypa.io/
 # SourceRepository: https://github.com/pypa/virtualenv
 Source:         https://files.pythonhosted.org/packages/source/v/virtualenv/virtualenv-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
