@@ -23,7 +23,10 @@ Summary:        Wallpaper application for layer-shell Wayland compositors
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://codeberg.org/dnkl/wbg
-Source0:        https://codeberg.org/dnkl/wbg/archive/%version.tar.gz
+Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.gz.sig
+# https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xb19964fbba09664cc81027ed5bbd4992c116573f
+Source2:        %{name}.keyring
 BuildRequires:  c_compiler
 BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
@@ -45,7 +48,7 @@ It takes a single argument, the image filename, which is displayed
 scaled-to-fit on all monitors.
 
 %prep
-%autosetup -n %name -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"
