@@ -18,14 +18,14 @@
 
 %define lname	libfwsi1
 Name:           libfwsi
-Version:        20240417
+Version:        20240423
 Release:        0
 Summary:        Library to access the Windows Shell Item format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libfwsi
-Source:         https://github.com/libyal/libfwsi/releases/download/%version/libfwsi-experimental-%version.tar.gz
-Source2:        https://github.com/libyal/libfwsi/releases/download/%version/libfwsi-experimental-%version.tar.gz.asc
+Source:         https://github.com/libyal/libfwsi/releases/download/%version/%name-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libfwsi/releases/download/%version/%name-experimental-%version.tar.gz.asc
 Source3:        %name.keyring
 Source9:        Windows_Shell_Item_format.pdf
 BuildRequires:  %python_module devel
