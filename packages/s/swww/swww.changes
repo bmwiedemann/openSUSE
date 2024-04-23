@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Apr 23 01:02:52 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.9.4:
+  * less casting between types
+  * implement fractional scaling
+  * merge BumpPool and RawPool; remove MmapMut2 dep
+  * fix output scaling
+  * delete proc traversal code from client
+  * do not set nonblocking mode for socket
+  * create ImageRequest and AnimationRequest structs
+  * update documentation regarding sockets and `init`
+  * Try pinging the daemon instead of inspecting /proc.
+  * Fix over-eager errors.
+  * Fix silly PathBuf recreation.
+  * Adjust instance checking to work with separate sockets.
+  * Bind to a separate socket per-display.
+  * typo when setting output's description
+  * fix transitions performance
+  * add SIGHUP to list of signals we catch
+  * reimplement the cache and error on unknown events
+  * fix initialization
+  * delete sctk dependency
+  * Implement layer shell manually
+  * implement WlOutput manually
+  * implement WlRegistry
+  * implement wl_shm
+  * delete CompositorState import
+  * implement delegate_compositor manually
+  * do not parallelize the simple transition
+  * fix sigaction on systems with different libc
+  * add bitcode git url to exceptions in cargo-deny
+  * use bitcode instead of rykv
+  * Fix build on i686 (32bit x86)
+  * automatically delete old socket in daemon
+  * Update README.md
+  * use eventfd instead of pipes to awake the daemon
+  * fix resize when image is larger than monitor
+  * simplify daemon's transitions
+  * refactor client's image format choice
+  * Increase thread pool stack size of daemon to 512KiB
+
+-------------------------------------------------------------------
 Sun Mar 31 16:59:18 UTC 2024 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Update to version 0.9.1:

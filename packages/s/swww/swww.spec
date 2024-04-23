@@ -26,12 +26,12 @@
 
 
 Name:           swww
-Version:        0.9.1
+Version:        0.9.4
 Release:        0
 Summary:        Wallpaper daemon for Wayland
 License:        GPL-3.0-only
 URL:            https://github.com/LGFae/swww
-Source0:        %{name}-%{version}.tar
+Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  rust+cargo >= 1.74.0
@@ -87,17 +87,10 @@ install -Dm644 -T completions/swww.bash  %{buildroot}%{_datadir}/bash-completion
 install -Dm644 -T completions/swww.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/swww.fish
 install -Dm644 -T completions/_swww %{buildroot}%{_datadir}/zsh/site-functions/_swww
 install -Dm644 -t %{buildroot}%{_mandir}/man1 doc/generated/swww*1
-%{cargo_install}
+install -Dm755 -t %{buildroot}%{_bindir} target/release/swww{,-daemon}
 
-# For the daemon
-unset LIBSSH2_SYS_USE_PKG_CONFIG && \
-if [[ -z $RUSTC_WRAPPER ]]; then CARGO_AUDITABLE="auditable" ; fi && \
-%{__cargo} $CARGO_AUDITABLE install \
-%{__cargo_common_opts} \
---offline \
---no-track \
---root=%{buildroot}%{_prefix} \
---path daemon
+%check
+%{cargo_test} --locked
 
 %files
 %{_bindir}/swww
