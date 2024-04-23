@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 29 14:21:45 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon May 29 16:44:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Unskip python311: numby 0.57 is released

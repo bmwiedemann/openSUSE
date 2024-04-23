@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-sparse
 Version:        0.14.0
 Release:        0
