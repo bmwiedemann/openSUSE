@@ -628,4 +628,12 @@ https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/284#note_280561
   * Add/fix compatibility for Python progressbar 2.5 &amp; 3.0 etc.</comment>
     <requestid>1161156</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>32c5428f691c0410524dd546a38f91a3</srcmd5>
+    <version>265</version>
+    <time>1713891427</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169826</requestid>
+  </revision>
 </revisionlist>

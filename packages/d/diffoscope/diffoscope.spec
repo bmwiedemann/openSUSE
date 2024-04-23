@@ -17,7 +17,7 @@
 
 
 Name:           diffoscope
-Version:        261
+Version:        265
 Release:        0
 Summary:        In-depth comparison of files, archives, and directories
 License:        GPL-3.0-or-later

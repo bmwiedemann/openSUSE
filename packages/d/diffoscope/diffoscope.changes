@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Apr 22 21:12:38 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 265:
+  * Ensure that tests with ">=" version constraints actually print
+    the corresponding tool name.
+    (Closes: reproducible-builds/diffoscope#370)
+  * Prevent odt2txt tests from always being skipped due to an
+    impossibly new version requirement.
+    (Closes: reproducible-builds/diffoscope#369)
+  * Avoid nested parens-in-parens when printing "skipping…"
+    messages in the testsuite.
+
+- Update to 264:
+  * Don't crash on invalid zipfiles, even if we encounter 'badness'
+    halfway through the file. (Re: #1068705)
+  * Add note when there are duplicate entries in ZIP files.
+    (Closes: reproducible-builds/diffoscope!140)
+  * Add an external tool reference for GNU Guix for zipdetails.
+
+- Update to 263:
+  * Add support for the zipdetails(1) tool included in the Perl
+    distribution.
+  * Don't use parenthesis within test "skipping…" messages; PyTest
+    adds its own parenthesis, so we were ending up with double
+    nested parens.
+  * Fix the .epub tests after supporting zipdetails(1).
+  * Update copyright years and debian/tests/control.
+  * Fix MozillaZipContainer's monkeypatch after Python's zipfile
+    module changed to detect potentially insecure overlapping
+    entries within .zip files.
+    (Closes: reproducible-builds/diffoscope#362)
+
+- Update to 262:
+  * Factor out Python version checking in test_zip.py. (Re: #362)
+  * Also skip some zip tests under 3.10.14 as well; a potential
+    regression may have been backported to the 3.10.x series. The
+    underlying cause is still to be investigated. (Re: #362)
+
+-------------------------------------------------------------------
 Sun Mar 24 17:59:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 261 (bsc#1220157, CVE-2024-25711):
