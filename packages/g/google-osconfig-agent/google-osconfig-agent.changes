@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Mar 22 13:36:36 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20240320.00 (bsc#1221900, bsc#1221901)
+  * Enable OSConfig agent to read GPG keys files with multiple entities (#537)
+- from version 20240314.00
+  * Update OWNERS file to replace mahmoudn GitHub
+    username by personal email GitHub username (#534)
+- from version 20240313.01
+  * Bump google.golang.org/protobuf from 1.30.0 to 1.33.0 in /e2e_tests (#535)
+- from version 20240313.00
+  * Adds a console and gcloud example policies (#533)
+- from version 20240228.00
+  * GuestPolicies e2e: Remove ed package if exist for zypper
+    startup_script in recipe-steps tests (#532)
+- from version 20240126.00
+  * Fix Enterprise Linux Recipe-Steps tests to install
+    info dependency package in the startup-script (#530)
+- from version 20240125.01
+  * Fix SUSE pkg-update and pkg-no-update e2e tests (#529)
+- from version 20240125.00
+  * Fix zypper patch info parser to consider conflicts-pkgs float versions (#528)
+- from version 20240123.01
+  * Fix SUSE package update e2e tests to use another existing package (#527)
+- from version 20240123.00
+  * Update cis-exclude-check-once-a-day.yaml (#526)
+
+-------------------------------------------------------------------
 Thu Jan  4 12:24:10 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20231219.00
