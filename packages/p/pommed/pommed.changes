@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 10 07:47:05 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to produce deterministic build results
+  independent of the number of cores/parallelism (boo#1102408)
+- Update pommed-dbus_policy.patch pommed-desktop.patch
+  to allow using %autopatch
+
+-------------------------------------------------------------------
 Thu Feb 29 14:48:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

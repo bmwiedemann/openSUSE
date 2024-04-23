@@ -228,4 +228,16 @@
     <comment></comment>
     <requestid>1154019</requestid>
   </revision>
+  <revision rev="34" vrev="18">
+    <srcmd5>722156a51799490c683ea2a31257326b</srcmd5>
+    <version>1.39</version>
+    <time>1713891350</time>
+    <user>anag+factory</user>
+    <comment>Add `reproducible.patch` to produce deterministic build results
+  independent of the number of cores/parallelism (boo#1102408)
+
+Update `pommed-dbus_policy.patch` and `pommed-desktop.patch`
+  to allow using `%autopatch` (forwarded request 1166592 from bmwiedemann)</comment>
+    <requestid>1169622</requestid>
+  </revision>
 </revisionlist>

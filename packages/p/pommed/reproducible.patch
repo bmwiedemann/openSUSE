@@ -1,0 +1,67 @@
+https://salsa.debian.org/mactel-team/pommed/-/merge_requests/2
+
+Author: Bernhard M. Wiedemann
+Date: 2023-12-20
+
+Compile client-common with consistent CFLAGS -
+otherwise debuginfo will vary across builds
+depending on how parallel make scheduled compilations.
+See https://reproducible-builds.org/ for why this matters.
+This patch was done while working on reproducible builds for openSUSE.
+Q: should we drop the duplicated rules from gpomme/Makefile wmpomme/Makefile ?
+
+diff --git a/Makefile b/Makefile
+index bf51b4e..5849c46 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,10 +7,13 @@ all: pommed gpomme wmpomme
+ pommed:
+ 	$(MAKE) -C pommed OFLIB=$(OFLIB)
+ 
+-gpomme:
++client-common:
++	$(MAKE) -C client-common
++
++gpomme: client-common
+ 	$(MAKE) -C gpomme
+ 
+-wmpomme:
++wmpomme: client-common
+ 	$(MAKE) -C wmpomme
+ 
+ clean:
+@@ -19,4 +22,4 @@ clean:
+ 	$(MAKE) -C wmpomme clean
+ 	rm -f *~
+ 
+-.PHONY: pommed gpomme wmpomme
++.PHONY: pommed gpomme wmpomme client-common
+diff --git a/client-common/Makefile b/client-common/Makefile
+new file mode 100644
+index 0000000..b0a4770
+--- /dev/null
++++ b/client-common/Makefile
+@@ -0,0 +1,10 @@
++DBUS_CFLAGS = $(shell pkg-config dbus-1 --cflags) -DDBUS_API_SUBJECT_TO_CHANGE
++CFLAGS = -g -O2 -Wall $(DBUS_CFLAGS)
++SOURCES = dbus-client.c \
++	  video-client.c
++
++OBJS = $(SOURCES:%.c=%.o)
++
++all: $(OBJS)
++dbus-client.o:  dbus-client.c  dbus-client.h
++video-client.o: video-client.c video-client.h
+diff --git a/wmpomme/Makefile b/wmpomme/Makefile
+index cc7a438..0679273 100644
+--- a/wmpomme/Makefile
++++ b/wmpomme/Makefile
+@@ -22,7 +22,7 @@ wmgeneral.o: wmgeneral.c wmgeneral.h
+ 
+ ../client-common/dbus-client.o: ../client-common/dbus-client.c ../client-common/dbus-client.h
+ 
+-../client-common/dbus-video.o: ../client-common/video-client.c ../client-common/video-client.h
++../client-common/video-client.o: ../client-common/video-client.c ../client-common/video-client.h
+ 
+ clean:
+ 	rm -f wmpomme $(OBJS)

@@ -1,7 +1,7 @@
 Index: dbus-policy.conf
 ===================================================================
---- dbus-policy.conf.orig
-+++ dbus-policy.conf
+--- a/dbus-policy.conf.orig
++++ b/dbus-policy.conf
 @@ -15,5 +15,7 @@
    <policy context="default">
      <allow send_destination="org.pommed"/>

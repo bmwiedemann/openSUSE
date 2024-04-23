@@ -37,6 +37,8 @@ Patch3:         pommed-1.38-hardcoded-libpci.patch
 # PATCH-FIX-UPSTREAM pommed-dbus_policy.patch ro@novell.com -- bnc#469771
 Patch4:         pommed-dbus_policy.patch
 Patch5:         pommed-1.39-multiple-def-lcd_bck_info.patch
+# PATCH-FIX-UPSTREAM https://salsa.debian.org/mactel-team/pommed/-/merge_requests/2
+Patch6:         reproducible.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
@@ -97,11 +99,7 @@ of each item controlled by pommed.
 
 %prep
 %setup -q
-%patch -P 1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4
-%patch -P 5 -p1
+%autopatch -p1
 
 %build
 make %{?_smp_mflags}
