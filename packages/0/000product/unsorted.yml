@@ -3289,7 +3289,6 @@ unsorted:
   - docker-fish-completion 
   - docker-lock 
   - docker-machine-driver-kvm2 
-  - docker-rootless-extras 
   - docker-zsh-completion 
   - docker_auth 
   - docparser-devel 
@@ -35125,7 +35124,6 @@ unsorted:
   - rook-k8s-yaml 
   - rook-rookflex 
   - root-tail 
-  - rootlesskit 
   - rosegarden 
   - rott 
   - roundcubemail 
@@ -36104,7 +36102,6 @@ unsorted:
   - slf4j-reload4j 
   - slf4j-sources 
   - slib 
-  - slirp4netns 
   - slop 
   - slop-devel 
   - slrn 
