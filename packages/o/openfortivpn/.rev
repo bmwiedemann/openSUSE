@@ -215,4 +215,12 @@
     <comment>Add patch to fix shebang</comment>
     <requestid>1159638</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0b84ac36d5e4de2a8107c6633d7e7a0b</srcmd5>
+    <version>1.22.0</version>
+    <time>1713891418</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169798</requestid>
+  </revision>
 </revisionlist>

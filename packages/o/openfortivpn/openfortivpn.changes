@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 18 17:18:21 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.22.0
+  * do not print TLS socket options in log (revert change from
+    1.16.0).
+  * add option to specify SNI.
+  * change most occurrences of "SSL" to "TLS" in user-visible text.
+
+-------------------------------------------------------------------
 Mon Feb 26 12:45:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
