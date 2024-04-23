@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Apr 22 12:52:18 UTC 2024 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 3.4.1:
+  * Fixed configuration of secondary glyphs in GraphRendererView
+  * Allowed to update the order of LayoutDOM.children
+  * Allowed to update InputWidget.{title,description}
+  * Allowed DataRange1d to respect min_interval and max_interval
+  * Fixed WebGL scaling of anti-aliasing by pixel ratio
+  * Enabled RUF001 to lint confusable characters
+  * Removed references to Twitter from documentation
+  * Enabled documentation build on Windows
+  * Various fixes to documentation and docstrings
+- Add additional test dependencies to fix tests
+
+-------------------------------------------------------------------
+Fri Apr 19 22:40:49 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix URL for CHANGELOG.
+
+-------------------------------------------------------------------
+Thu Apr  4 08:57:43 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.4.0:
+  * Too many changes to list, see
+    %{_docdir}/python3<N>-bokeh/CHANGELOG.
+- Add CHANGELOG file as Source; it is missing from PyPI tarballs.
+- Drop bokeh-sampledata.tar.xz as tarball cannot be checked
+  against upstream (it is generated locally by the packager and
+  liable to be compromised); delete or disable tests depending on
+  sampledata.
+- Drop python-nbconvert requirement for test flavour on `%ix86`,
+  where it is unavailable.
+
+-------------------------------------------------------------------
 Mon Mar  4 21:19:00 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.3.4

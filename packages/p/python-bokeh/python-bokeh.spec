@@ -29,7 +29,7 @@
 %bcond_with testexamples
 
 Name:           python-bokeh%{psuffix}
-Version:        3.3.4
+Version:        3.4.1
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
@@ -39,8 +39,8 @@ URL:            https://bokeh.org/
 Source0:        https://files.pythonhosted.org/packages/source/b/bokeh/bokeh-%{version}.tar.gz
 # for the tests
 Source1:        https://github.com/bokeh/bokeh/archive/refs/tags/%{version}.tar.gz#/bokeh-%{version}-gh.tar.gz
-# Sampledata:   `rm -rf .bokeh && HOME=$PWD bokeh sampledata && tar cJf bokeh-sampledata.tar.xz .bokeh`
-Source99:       bokeh-sampledata.tar.xz
+# Only present in the GH tarball, not extracted during non-test builds
+Source2:        https://raw.githubusercontent.com/bokeh/bokeh/%{version}/docs/CHANGELOG
 BuildRequires:  %{python_module Jinja2 >= 2.9}
 BuildRequires:  %{python_module Pillow >= 7.1.0}
 BuildRequires:  %{python_module PyYAML >= 3.10}
@@ -80,8 +80,12 @@ BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module icalendar}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module json5}
+%ifarch %{ix86}
 BuildRequires:  %{python_module nbconvert >= 5.4}
+%endif
+BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module networkx}
+BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module pandas-datareader}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pydot}
@@ -111,8 +115,9 @@ with interactivity over large or streaming datasets.
 %prep
 %if !%{with test}
 %setup -q -n bokeh-%{version}
+cp %{SOURCE2} ./
 %else
-%setup -q -n bokeh-%{version} -T -b1 -a99
+%setup -q -n bokeh-%{version} -T -b1
 %endif
 
 %if !%{with test}
@@ -174,7 +179,10 @@ deselectname+=" or test_external_js_and_css_resource_ordering"
 deselectname+=" or test_vermin"
 # network
 deselectname+=" or test__use_provided_session_header_autoload"
-# for finding the  sampledata (packaged in Source99)
+# No sampledata
+rm -fr tests/unit/bokeh/sampledata
+deselectname+=" or test_contour or test_sampledata__util"
+# Needed for writing fontconfig cache dir
 export HOME=$PWD
 export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 %pytest -v -m "not selenium" -k "not ($deselectname)" --no-js -n auto
@@ -189,7 +197,7 @@ export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 %if !%{with test}
 %files %{python_files}
 %license LICENSE.txt
-%doc README.md
+%doc README.md CHANGELOG
 %python_alternative %{_bindir}/bokeh
 %{python_sitelib}/bokeh/
 %{python_sitelib}/bokeh-%{version}*-info
