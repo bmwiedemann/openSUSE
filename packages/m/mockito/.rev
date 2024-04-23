@@ -63,4 +63,12 @@
     <comment>5.11.0</comment>
     <requestid>1169149</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>965b55e452cea7adbc5d978e60171823</srcmd5>
+    <version>5.11.0</version>
+    <time>1713891335</time>
+    <user>anag+factory</user>
+    <comment>Add bundle manifest to the mockito-core artifact</comment>
+    <requestid>1169588</requestid>
+  </revision>
 </revisionlist>

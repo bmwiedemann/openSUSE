@@ -36,6 +36,7 @@ BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(net.bytebuddy:byte-buddy)
 BuildRequires:  mvn(net.bytebuddy:byte-buddy-agent)
 BuildRequires:  mvn(net.bytebuddy:byte-buddy-dep)
+BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.junit.jupiter:junit-jupiter-api)
 BuildRequires:  mvn(org.objenesis:objenesis)
@@ -120,6 +121,31 @@ echo 'mock-maker-subclass' > src/main/resources/mockito-extensions/org.mockito.p
   </plugins>
 </build>
 '
+
+%pom_xpath_inject "pom:project" "<packaging>bundle</packaging>"
+%pom_add_plugin org.apache.felix:maven-bundle-plugin:2.3.7 . '
+<extensions>true</extensions>
+<configuration>
+  <instructions>
+    <Bundle-Name>Mockito Mock Library for Java.</Bundle-Name>
+    <Bundle-SymbolicName>org.mockito.mockito-core</Bundle-SymbolicName>
+    <Import-Package>net.bytebuddy.*,junit.*;resolution:=optional,org.junit.*;resolution:=optional,org.hamcrest;resolution:=optional,org.objenesis,org.mockito.*</Import-Package>
+    <Export-Package>org.mockito.internal.*;status=INTERNAL;mandatory:=status,org.mockito.*</Export-Package>
+    <Private-Package>org.mockito.*</Private-Package>
+    <_removeheaders>Private-Package</_removeheaders>
+    <Automatic-Module-Name>org.mockito</Automatic-Module-Name>
+    <_noextraheaders>true</_noextraheaders>
+  </instructions>
+</configuration>
+<executions>
+  <execution>
+    <id>bundle-manifest</id>
+    <phase>process-classes</phase>
+    <goals>
+      <goal>manifest</goal>
+    </goals>
+  </execution>
+</executions>'
 
 %{mvn_package} :aggregator __noinstall
 
