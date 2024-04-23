@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 22 15:40:46 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1713800438.8bd57dd:
+  * Add fallback for `PRODUCTDIR` under `CASEDIR/products/DISTRI`
+  * qemu: Reuse arch variable
+  * qemu: Set proper default on s390x
+  * qemu: Extract methods for architecture checks
+  * qemu: Extract method determine_qemu_version
+  * Add lookup for s390x qemu as well
+  * t: Improve error report in 26-video_stream.t
+
+-------------------------------------------------------------------
 Thu Apr 18 14:54:04 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1713447924.97bf9c0:
