@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-PyQt6-3D
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -16,21 +16,24 @@
 #
 
 
-%define mname PyQt6-3D
+%define qtlib 3D
 %define pyqt_build_for_qt6 1
+%define plainpython python
 %{?sle15_python_module_pythons}
-Name:           python-%{mname}
-Version:        6.6.0
+Name:           python-PyQt6-%{qtlib}
+Version:        6.7.0
 Release:        0
 Summary:        Python bindings for the Qt 3D framework
 License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqt3d
-Source:         https://files.pythonhosted.org/packages/source/P/PyQt6-3D/PyQt6_3D-%{version}.tar.gz
-BuildRequires:  %{python_module PyQt6-devel >= %{version}}
-BuildRequires:  %{python_module devel >= 3.6}
-BuildRequires:  %{python_module pyqt-builder >= 1.9}
-BuildRequires:  %{python_module sip-devel >= 6}
+# boo#1222514
+# Source:         https://files.pythonhosted.org/packages/source/P/PyQt6-%%{qtlib}/PyQt6_%%{qtlib}-%%{version}.tar.gz
+Source:         https://riverbankcomputing.com/pypi/packages/PyQt6-%{qtlib}/PyQt6_%{qtlib}-%{version}.tar.gz
+BuildRequires:  %{python_module PyQt6-devel >= 6.2}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pyqt-builder >= 1.9 with %python-pyqt-builder < 2}
+BuildRequires:  %{python_module sip-devel >= 6.8 with %python-sip-devel < 7}
 BuildRequires:  fdupes
 BuildRequires:  python-pyqt-rpm-macros
 BuildRequires:  python-rpm-macros
@@ -43,11 +46,12 @@ BuildRequires:  cmake(Qt63DInput)
 BuildRequires:  cmake(Qt63DLogic)
 BuildRequires:  cmake(Qt63DRender)
 %requires_ge    python-PyQt6
+%requires_ge    python-PyQt6-sip
 Provides:       python-qt3d-qt6 = %{version}-%{release}
 %python_subpackages
 
 %description
-PyQt6-3D is a set of Python bindings for The Qt Company’s Qt 3D framework. The
+PyQt6-3D is a set of Python bindings for The Qt Company's Qt 3D framework. The
 bindings sit on top of PyQt6 and are implemented as six separate modules
 corresponding to the different libraries that make up the framework.
 
@@ -55,7 +59,9 @@ corresponding to the different libraries that make up the framework.
 Summary:        Devel files for %{name}
 Group:          Development/Tools/IDE
 Requires:       python-PyQt6-devel
-Supplements:    packageand(eric:python-%{mname})
+Requires:       %plainpython(abi) = %{python_version}
+Supplements:    (eric and python-PyQt6-%{qtlib})
+Supplements:    (python-PyQt6-devel and python-PyQt6-%{qtlib})
 
 %description devel
 This package provides Qt6 API files for the Eric IDE and the SIP files
@@ -79,7 +85,7 @@ $python -c 'from PyQt6 import Qt3DAnimation, Qt3DCore, Qt3DExtras, Qt3DInput, Qt
 
 %files %{python_files}
 %license LICENSE
-%doc NEWS README
+%doc NEWS README.md
 %dir %{python_sitearch}/PyQt6/
 %{python_sitearch}/PyQt6/Qt3DAnimation.*
 %{python_sitearch}/PyQt6/Qt3DCore.*
@@ -87,13 +93,13 @@ $python -c 'from PyQt6 import Qt3DAnimation, Qt3DCore, Qt3DExtras, Qt3DInput, Qt
 %{python_sitearch}/PyQt6/Qt3DInput.*
 %{python_sitearch}/PyQt6/Qt3DLogic.*
 %{python_sitearch}/PyQt6/Qt3DRender.*
-%{python_sitearch}/PyQt6_3D-%{version}*-info/
+%{python_sitearch}/PyQt6_%{qtlib}-%{version}.dist-info/
 %exclude %{pyqt6_sipdir}
 
 %files %{python_files devel}
 %license LICENSE
 %dir %{_qt6_datadir}/qsci/api/python_%{python_bin_suffix}/
-%{_qt6_datadir}/qsci/api/python_%{python_bin_suffix}/PyQt6-3D.api
+%{_qt6_datadir}/qsci/api/python_%{python_bin_suffix}/PyQt6-%{qtlib}.api
 %dir %{pyqt6_sipdir}
 %{pyqt6_sipdir}/Qt3DAnimation/
 %{pyqt6_sipdir}/Qt3DCore/

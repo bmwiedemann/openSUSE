@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 21 13:44:55 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.7.0
+  * Add support for Qt 6.7
+
+-------------------------------------------------------------------
 Thu Jan 25 20:31:01 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Enable SLE15 python module for more modern python in 15.x
