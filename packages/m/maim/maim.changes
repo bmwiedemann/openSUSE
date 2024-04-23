@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 23 00:21:57 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 5.8.0
+  * Fixed hexadecimal parsing in parseWindow()
+  * No longer defaults to Debug build type
+  * Improved manpage for better apropos results
+  * Added commands for decoding QR codes
+  * Various readme and manpage improvements.
+
+-------------------------------------------------------------------
 Sat Jul 10 13:35:09 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 5.7.4

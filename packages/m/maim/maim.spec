@@ -1,7 +1,7 @@
 #
 # spec file for package maim
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 Name:           maim
-Version:        5.7.4
+Version:        5.8.0
 Release:        0
 Summary:        Flexible screenshotting utility
 License:        GPL-3.0-or-later
@@ -47,7 +47,7 @@ using EGL. It is meant to overcome shortcomings of the "scrot"
 utility and performs better in several ways.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake
