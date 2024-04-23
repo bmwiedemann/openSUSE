@@ -20,7 +20,7 @@
 %define lib_name librocksdb9
 %bcond_with jemalloc
 Name:           rocksdb
-Version:        9.0.1
+Version:        9.1.1
 Release:        0
 Summary:        Library for embeddable, persistent and fast key-value store
 License:        (Apache-2.0 OR GPL-2.0-only) AND BSD-2-Clause
@@ -29,7 +29,6 @@ Source:         https://github.com/facebook/rocksdb/archive/v%{version}.tar.gz#/
 Patch0:         rocksdb-8.0.0-reproducible.patch
 Patch1:         rocksdb-8.0.0-shared-liburing.patch
 Patch2:         rocksdb-8.0.0-rpath.patch
-Patch3:         rocksdb-9.0.0-Fix-zstd-typo-in-cmake.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
