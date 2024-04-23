@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 23 16:33:00 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20240423.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20240423
+  * Add CRuby security-fix releases 3.0.7, 3.1.5, 3.2.4, and 3.3.1 by @kpfleming in #2370
+
+-------------------------------------------------------------------
 Tue Apr 16 15:49:04 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20240416.
