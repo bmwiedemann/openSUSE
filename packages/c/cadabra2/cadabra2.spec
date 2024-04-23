@@ -18,7 +18,7 @@
 
 %bcond_without tests
 Name:           cadabra2
-Version:        2.4.5.4
+Version:        2.4.5.6
 Release:        0
 Summary:        A computer algebra system for solving problems in field theory
 License:        GPL-3.0-or-later
@@ -46,7 +46,7 @@ BuildRequires:  libboost_system-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel >= 3.8
+BuildRequires:  python3-devel >= 3.9
 BuildRequires:  python3-gobject-devel
 BuildRequires:  python3-ipykernel
 BuildRequires:  python3-matplotlib
@@ -171,7 +171,7 @@ cd ..
 install -D -m0644 %{S:1} %{buildroot}%{_datadir}/metainfo/%{name}-gtk.appdata.xml
 
 # Replace "/usr/bin/env python3" hashbang by "/usr/bin/python3"
-sed -E -i "s|^#!/usr/bin/env python3|#!/usr/bin/python3|" %{buildroot}%{_bindir}/cadabra2
+%python3_fix_shebang
 
 mkdir -p %{buildroot}%{_datadir}/texmf/tex/latex/cadabra2/
 ln %{buildroot}%{_datadir}/cadabra2/latex/* %{buildroot}%{_datadir}/texmf/tex/latex/cadabra2/
