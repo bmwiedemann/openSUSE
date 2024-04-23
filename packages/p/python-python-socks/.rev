@@ -61,4 +61,14 @@
   * The code base has been completely redesigned</comment>
     <requestid>1136322</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>75d1cdcb41de48457d7cf2138f1e4535</srcmd5>
+    <version>2.4.4</version>
+    <time>1713891354</time>
+    <user>anag+factory</user>
+    <comment>- Use tarball from GitHub (gh#romis2012/python-socks#30) to make
+  running the test suite possible.
+- Fix dependencies (bsc#1223181).</comment>
+    <requestid>1169638</requestid>
+  </revision>
 </revisionlist>
