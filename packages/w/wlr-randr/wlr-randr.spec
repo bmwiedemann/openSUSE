@@ -17,13 +17,16 @@
 
 
 Name:           wlr-randr
-Version:        0.3.1
+Version:        0.4.1
 Release:        0
 Summary:        Utility to manage outputs of a Wayland compositor
 License:        MIT
 Group:          Productivity/Graphics/Other
 URL:            https://git.sr.ht/~emersion/wlr-randr
-Source:         https://git.sr.ht/~emersion/wlr-randr/refs/download/v0.3.1/wlr-randr-%{version}.tar.gz
+Source:         https://git.sr.ht/~emersion/wlr-randr/refs/download/v%{version}/%{name}-%{version}.tar.gz
+Source1:        https://git.sr.ht/~emersion/wlr-randr/refs/download/v%{version}/%{name}-%{version}.tar.gz.sig
+# https://emersion.fr/.well-known/openpgpkey/hu/dj3498u4hyyarh35rkjfnghbjxug6b19
+Source2:        %{name}.keyring
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(wayland-client)
@@ -32,7 +35,7 @@ BuildRequires:  pkgconfig(wayland-client)
 wlr-randr is a command line utility to manage outputs of a Wayland compositor.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %meson
@@ -40,6 +43,9 @@ wlr-randr is a command line utility to manage outputs of a Wayland compositor.
 
 %install
 %meson_install
+
+%check
+%meson_test
 
 %files
 %license LICENSE

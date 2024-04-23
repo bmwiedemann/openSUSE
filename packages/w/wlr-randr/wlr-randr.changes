@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 23 02:15:58 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- wlr-randr v0.4.1
+  * Don't send unset props
+  * Fix zwlr_output_configuration_head_v1 leak
+  * Turn adaptive sync version check into assert in
+    apply_state()
+- wlr-randr v0.4.0
+  * build: find wayland-scanner via pkg-config
+  * build: require wayland-scanner >= 1.14.91
+  * build: drop unnecessary intermediate protocols library
+  * Add --json option
+
+-------------------------------------------------------------------
 Wed Jan 17 11:35:11 UTC 2024 - Denys Kondratenko <stdden@opensuse.org>
 
 - wlr-randr v0.3.1
