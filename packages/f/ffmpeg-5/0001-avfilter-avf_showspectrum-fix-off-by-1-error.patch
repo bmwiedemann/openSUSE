@@ -1,0 +1,36 @@
+From ab0fdaedd1e7224f7e84ea22fcbfaa4ca75a6c06 Mon Sep 17 00:00:00 2001
+From: Michael Niedermayer <michael@niedermayer.cc>
+Date: Sun, 24 Dec 2023 20:31:02 +0100
+Subject: [PATCH] avfilter/avf_showspectrum: fix off by 1 error
+References: https://bugzilla.opensuse.org/1223087
+References: CVE-2024-31585
+References: https://bugzilla.opensuse.org/1223273
+References: CVE-2023-51795
+
+Fixes: out of array access
+Fixes: tickets/10749/poc15ffmpeg
+
+Regression since: 81df787b53eb5c6433731f6eaaf7f2a94d8a8c80
+
+Found-by: Zeng Yunxiang
+Signed-off-by: Michael Niedermayer <michael@niedermayer.cc>
+---
+ libavfilter/avf_showspectrum.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libavfilter/avf_showspectrum.c b/libavfilter/avf_showspectrum.c
+index 8cf73fce70..99a5c33d09 100644
+--- a/libavfilter/avf_showspectrum.c
++++ b/libavfilter/avf_showspectrum.c
+@@ -1784,7 +1784,7 @@ static int showspectrumpic_request_frame(AVFilterLink *outlink)
+             int acc_samples = 0;
+             int dst_offset = 0;
+ 
+-            while (nb_frame <= s->nb_frames) {
++            while (nb_frame < s->nb_frames) {
+                 AVFrame *cur_frame = s->frames[nb_frame];
+                 int cur_frame_samples = cur_frame->nb_samples;
+                 int nb_samples = 0;
+-- 
+2.44.0
+

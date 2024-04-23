@@ -111,7 +111,14 @@ Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
-Patch10:        ffmpeg-chromium.patch
+Patch10:        0001-avfilter-af_dialoguenhance-fix-overreads.patch
+Patch11:        0001-avfilter-af_dialoguenhance-simplify-channels-copy.patch
+Patch12:        0001-avfilter-af_dialoguenhance-do-output-scaling-once.patch
+Patch13:        0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch
+Patch14:        0001-avfilter-avf_showspectrum-fix-off-by-1-error.patch
+Patch15:        0001-avfilter-vf_codecview-fix-heap-buffer-overflow.patch
+Patch16:        0001-avfilter-f_reverse-Apply-PTS-compensation-only-when-.patch
+Patch90:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch93:        soname.diff
 
@@ -831,7 +838,14 @@ Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
-Patch10:        ffmpeg-chromium.patch
+Patch10:        0001-avfilter-af_dialoguenhance-fix-overreads.patch
+Patch11:        0001-avfilter-af_dialoguenhance-simplify-channels-copy.patch
+Patch12:        0001-avfilter-af_dialoguenhance-do-output-scaling-once.patch
+Patch13:        0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch
+Patch14:        0001-avfilter-avf_showspectrum-fix-off-by-1-error.patch
+Patch15:        0001-avfilter-vf_codecview-fix-heap-buffer-overflow.patch
+Patch16:        0001-avfilter-f_reverse-Apply-PTS-compensation-only-when-.patch
+Patch90:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch93:        soname.diff
 BuildRequires:  c_compiler

@@ -203,4 +203,12 @@ https://www.reddit.com/r/openSUSE/comments/11sl1a7/comment/jcg9pbh/?utm_source=s
   at all (boo#1219494) (forwarded request 1143611 from sndirsch)</comment>
     <requestid>1143658</requestid>
   </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>515c37dd5c2325ce1c51b9c71c34c1ed</srcmd5>
+    <version>5.1.4</version>
+    <time>1713891377</time>
+    <user>anag+factory</user>
+    <comment>Address a bunch of CVEs</comment>
+    <requestid>1169772</requestid>
+  </revision>
 </revisionlist>
