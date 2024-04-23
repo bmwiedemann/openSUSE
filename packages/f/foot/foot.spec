@@ -25,7 +25,10 @@ Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT
 URL:            https://codeberg.org/dnkl/foot
-Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.gz.sig
+# https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xb19964fbba09664cc81027ed5bbd4992c116573f
+Source2:        %{name}.keyring
 Requires:       terminfo
 Requires:       utempter
 BuildRequires:  meson >= 0.59
@@ -71,7 +74,7 @@ This package contains popular themes for the foot terminal emulator providing
 users an easy way to theme foot.
 
 %prep
-%autosetup -p1 -n %{name}
+%autosetup -p1
 
 %build
 %meson \
