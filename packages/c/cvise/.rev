@@ -1144,4 +1144,25 @@
   * Bump to 2.10.0</comment>
     <requestid>1158644</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>9cf03f9e5c440ea4d0b685ba8191ad52</srcmd5>
+    <version>2.10.0+git.20240415.00bdd8c</version>
+    <time>1713891436</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.10.0+git.20240415.00bdd8c:
+  * format: run ruff
+  * Implement a stopping threshold
+  * Revert removal of restore_mode
+  * format: use Ruff
+  * Make CVise understand files in a filesystem tree
+  * Refactor testing.py to pathlib module
+  * Write pass statistics and test-case to --log-file as well
+  * Show logs on stdout only when log-file arg is not provided
+  * Fixed ruff's warning about too  many blank lines
+  * Removed basicConfig &amp; fixed working of --log-file arg
+  * Drop -Wno-error=deprecated-declarations option
+  * fix deprecation warnings
+  * CI: Set default to LLVM 18</comment>
+    <requestid>1169838</requestid>
+  </revision>
 </revisionlist>
