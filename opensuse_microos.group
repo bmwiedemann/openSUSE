@@ -143,6 +143,7 @@
     <package name="docbook_4" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="docker" supportstatus="unsupported"/> <!-- reason: opensuse_microos:docker -->
     <package name="docker-buildx" supportstatus="unsupported"/> <!-- reason: opensuse_microos:docker-buildx -->
+    <package name="docker-rootless-extras" supportstatus="unsupported"/> <!-- reason: opensuse_microos:docker-rootless-extras -->
     <package name="dolphin" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="dolphin-part" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="dosfstools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -1303,6 +1304,7 @@
     <package name="libsignon-qt5-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libsignon-qt6-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libslang2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="libslirp0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:docker-rootless-extras -->
     <package name="libsmartcols1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libsnapper7" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libsnappy1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -1757,6 +1759,7 @@
     <package name="qtdeclarative-imports-provides-qt6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="read-only-root-fs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="rebootmgr" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="rootlesskit" supportstatus="unsupported"/> <!-- reason: opensuse_microos:docker-rootless-extras -->
     <package name="rpm" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="rpm-config-SUSE" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="rsvg-thumbnailer" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
@@ -1796,6 +1799,7 @@
     <package name="signon-ui" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="signond" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="signond-libs" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="slirp4netns" supportstatus="unsupported"/> <!-- reason: opensuse_microos:docker-rootless-extras -->
     <package name="snapper" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="snmp-mibs" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="sof-firmware" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->

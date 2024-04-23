@@ -174,6 +174,7 @@
       <repopackage name="docbook_4"/>
       <repopackage name="docker"/>
       <repopackage name="docker-buildx"/>
+      <repopackage name="docker-rootless-extras"/>
       <repopackage name="dolphin"/>
       <repopackage name="dolphin-part"/>
       <repopackage name="dosfstools"/>
@@ -1302,6 +1303,7 @@
       <repopackage name="libsignon-qt5-1"/>
       <repopackage name="libsignon-qt6-1"/>
       <repopackage name="libslang2"/>
+      <repopackage name="libslirp0"/>
       <repopackage name="libSM6"/>
       <repopackage name="libsmartcols1"/>
       <repopackage name="libsnapper7"/>
@@ -1810,6 +1812,7 @@
       <repopackage name="qtdeclarative-imports-provides-qt6"/>
       <repopackage name="read-only-root-fs"/>
       <repopackage name="rebootmgr"/>
+      <repopackage name="rootlesskit"/>
       <repopackage name="rpm"/>
       <repopackage name="rpm-config-SUSE"/>
       <repopackage name="rsvg-thumbnailer"/>
@@ -1849,6 +1852,7 @@
       <repopackage name="signon-ui"/>
       <repopackage name="signond"/>
       <repopackage name="signond-libs"/>
+      <repopackage name="slirp4netns"/>
       <repopackage name="snapper"/>
       <repopackage name="snmp-mibs"/>
       <repopackage name="sof-firmware"/>
