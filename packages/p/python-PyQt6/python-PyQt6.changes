@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 21 13:32:25 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.7.0
+  * Implemented QBluetoothUuid.__hash__
+- Switch from development snapshot to pre-release tarball
+
+-------------------------------------------------------------------
 Fri Apr 12 08:17:13 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.7.0~dev2404081550

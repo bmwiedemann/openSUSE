@@ -19,10 +19,9 @@
 %define plainpython python
 %define mname PyQt6
 %define pyqt_build_for_qt6 1
-%define devversion 6.7.0.dev2404081550
 %{?sle15_python_module_pythons}
 Name:           python-%{mname}
-Version:        6.7.0~dev2404081550
+Version:        6.7.0
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
@@ -30,7 +29,7 @@ Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqt
 # boo#1222514
 #Source:         https://files.pythonhosted.org/packages/source/P/PyQt6/PyQt6-%%{version}.tar.gz
-Source:         https://riverbankcomputing.com/pypi/packages/PyQt6/PyQt6-%{devversion}.tar.gz
+Source:         https://riverbankcomputing.com/pypi/packages/PyQt6/PyQt6-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE - disable-rpaths.diff - Disable RPATH when building PyQt6.
 Patch0:         disable-rpaths.diff
 # PATCH-FIX-OPENSUSE - install binary dbus mainloop integration in arch dependent directory
@@ -179,7 +178,7 @@ PyQt is a set of Python bindings for the Qt framework.
 This package contains programming examples for PyQt6.
 
 %prep
-%autosetup -p1 -n PyQt6-%{devversion}
+%autosetup -p1 -n PyQt6-%{version}
 dos2unix examples/quick/models/*/view.qml
 dos2unix examples/multimedia*/*/*.ui
 
@@ -205,7 +204,7 @@ dos2unix examples/multimedia*/*/*.ui
 export PYTHONDONTWRITEBYTECODE=1 # boo#1047218
 %{python_expand # there is no test suite. If it compiles and imports, it should be okay.
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python -c 'from PyQt6 import QtCore; assert QtCore.PYQT_VERSION_STR == "%{devversion}"'
+$python -c 'from PyQt6 import QtCore; assert QtCore.PYQT_VERSION_STR == "%{version}"'
 }
 
 %post devel
@@ -218,7 +217,7 @@ $python -c 'from PyQt6 import QtCore; assert QtCore.PYQT_VERSION_STR == "%{devve
 %license LICENSE
 %doc README.md NEWS ChangeLog
 %{python_sitearch}/PyQt6/
-%{python_sitearch}/PyQt6-%{devversion}.dist-info/
+%{python_sitearch}/PyQt6-%{version}.dist-info/
 %dir %{python_sitelib}/dbus
 %dir %{python_sitelib}/dbus/mainloop
 %{python_sitelib}/dbus/mainloop/pyqt6.py

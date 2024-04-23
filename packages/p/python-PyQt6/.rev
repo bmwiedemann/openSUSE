@@ -171,4 +171,12 @@ in order to avoid conflicts like boo#1192300</comment>
     <comment></comment>
     <requestid>1167027</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6600e7c43fba574656562c2ee32092fb</srcmd5>
+    <version>6.7.0</version>
+    <time>1713891302</time>
+    <user>anag+factory</user>
+    <comment>Update to 6.7.0</comment>
+    <requestid>1169543</requestid>
+  </revision>
 </revisionlist>
