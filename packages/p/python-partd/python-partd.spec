@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-partd
 Version:        1.4.1
 Release:        0
