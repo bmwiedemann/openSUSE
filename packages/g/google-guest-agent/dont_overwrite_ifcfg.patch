@@ -1,16 +1,25 @@
-diff -Nru guest-agent-20240213.00.orig/google_guest_agent/network/manager/manager.go guest-agent-20240213.00/google_guest_agent/network/manager/manager.go
---- guest-agent-20240213.00.orig/google_guest_agent/network/manager/manager.go	2024-02-12 22:00:04.000000000 +0100
-+++ guest-agent-20240213.00/google_guest_agent/network/manager/manager.go	2024-02-26 14:05:33.128727886 +0100
-@@ -300,7 +300,12 @@
- 		logger.Debugf("write enabling ifcfg-%s config", iface)
+diff -Nru guest-agent-20240314.00.orig/google_guest_agent/network/manager/wicked_linux.go guest-agent-20240314.00/google_guest_agent/network/manager/wicked_linux.go
+--- guest-agent-20240314.00.orig/google_guest_agent/network/manager/wicked_linux.go	2024-03-12 18:24:11.000000000 +0100
++++ guest-agent-20240314.00/google_guest_agent/network/manager/wicked_linux.go	2024-03-22 12:59:57.908333528 +0100
+@@ -229,6 +229,7 @@
+ // writeEthernetConfigs writes config files for the given ifaces in the given configuration
+ // directory.
+ func (n wicked) writeEthernetConfigs(ifaces []string) error {
++	var err error
+ 	var priority = 10100
+ 
+ 	// Write the config for all the non-primary network interfaces.
+@@ -237,7 +238,13 @@
  
  		var ifcfg *os.File
--		ifcfg, err = os.Create("/etc/sysconfig/network/ifcfg-" + iface)
-+		filename := "/etc/sysconfig/network/ifcfg-" + iface
+ 
+-		ifcfg, err := os.Create(n.ifcfgFilePath(iface))
++		filename := n.ifcfgFilePath(iface)
 +		_, err = os.Stat(filename)
 +		if ! os.IsNotExist(err) {
 +			return nil
 +		}
++
 +		ifcfg, err = os.Create(filename)
  		if err != nil {
  			return err

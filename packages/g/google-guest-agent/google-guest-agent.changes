@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Mar 22 12:00:11 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20240314.00 (bsc#1221900, bsc#1221901)
+  * NetworkManager: only set secondary interfaces as up (#378)
+  * address manager: make sure we check for oldMetadata (#375)
+  * network: early setup network (#374)
+  * NetworkManager: fix ipv6 and ipv4 mode attribute (#373)
+  * Network Manager: make sure we clean up ifcfg files (#371)
+  * metadata script runner: fix script download (#370)
+  * oslogin: avoid adding extra empty line at the end of /etc/security/group.conf (#369)
+  * Dynamic vlan (#361)
+  * Check for nil response (#366)
+  * Create NetworkManager implementation (#362)
+  * Skip interface manager on Windows (#363)
+  * network: remove ignore setup (#360)
+  * Create wicked network service implementation and its respective unit (#356)
+  * Update metadata script runner, add tests (#357)
+  * Refactor guest-agent to use common retry util (#355)
+  * Flush logs before exiting #358 (#359)
+- Refresh patches for new version
+  * dont_overwrite_ifcfg.patch
+
+-------------------------------------------------------------------
 Tue Feb 27 13:23:01 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - No need for double %setup.
