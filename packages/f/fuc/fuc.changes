@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 21 14:55:00 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 2.1.0:
+  * Stable rust patch
+  * Upgrade FTZZ
+  * Add progress feature (closes #14)
+  * Upgrade deps
+  * Remove release_max_level_off since tracing is completely compiled out by default anyway
+  * Add tip for merging directories
+  * Integrate tracing
+
+-------------------------------------------------------------------
 Wed Jan 24 20:41:04 UTC 2024 - andreas.stieger@gmx.de
 
 - Update to version 2.0.0:

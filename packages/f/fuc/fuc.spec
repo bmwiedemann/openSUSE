@@ -1,7 +1,7 @@
 #
 # spec file for package fuc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           fuc
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Modern unix commands focused on performance
 License:        Apache-2.0
