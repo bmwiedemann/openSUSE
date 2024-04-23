@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 22 13:26:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20240307.00 (bsc#1221146, bsc#1221900, bsc#1221901)
+  * Support dot in NVMe device ids (#68)
+- from version 20240304.00
+  * google_set_hostname: Extract rsyslog service name
+    with a regexp for valid systemd unit names (#67)
+- from version 20240228.00
+  * Remove quintonamore from OWNERS (#64)
+- from version 20240119.00
+  * Setup smp affinity for IRQs and XPS on A3+ VMs (#63)
+
+-------------------------------------------------------------------
 Thu Jan  4 11:55:25 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20231214.00
