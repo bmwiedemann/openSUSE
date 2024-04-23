@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 18 20:50:16 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Build without date to improve reproducibility
+- Enable and run tests
+
+-------------------------------------------------------------------
+Fri Apr  5 14:10:22 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use full URL for package source (for tarball verification
+  purposes).
+- Use _service file to collect vendored sources in separate
+  vendor.tar.zstd file.
+- Set HOME to working dir to allow cache generation.
+- Empty %check section as recommended by rpmlint.
+
+-------------------------------------------------------------------
 Thu Feb  1 13:56:04 UTC 2024 - Hannes Braun <apple.hannes@gmail.com> - 0.17.0
 
 - Update to upstream version 0.17.0

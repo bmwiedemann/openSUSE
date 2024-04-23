@@ -24,13 +24,15 @@ Summary:        An email client for terminals
 License:        MIT
 Group:          Productivity/Networking/Email/Clients
 URL:            https://aerc-mail.org/
-Source:         %{name}-%{version}.tar.gz
+Source0:        https://git.sr.ht/~rjarry/aerc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.zst
 Patch0:         fix-script-interpreter.patch
 BuildRequires:  gcc
-BuildRequires:  go
+BuildRequires:  golang-packaging
 BuildRequires:  make
 BuildRequires:  notmuch-devel >= 0.37
 BuildRequires:  scdoc
+BuildRequires:  zstd
 Recommends:     dante
 Recommends:     w3m
 
@@ -38,17 +40,25 @@ Recommends:     w3m
 aerc is an email client that runs in terminals.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a1
 
 %build
+# Need for cache writes
+export HOME=${PWD}
+
 %if "%{_arch}" == "ppc64"
-    %make_build CC=cc GOFLAGS=""
+    export GOFLAGS=""
 %else
-    %make_build CC=cc GOFLAGS="-buildmode=pie -tags=notmuch"
+    export GOFLAGS="-buildmode=pie -tags=notmuch"
 %endif
+%make_build CC=cc DATE="$(date -d "@${SOURCE_DATE_EPOCH}" +%Y-%m-%d)"
 
 %install
 %make_install PREFIX=%{_prefix} LIBEXECDIR=%{_libexecdir}/%{name}
+
+%check
+%gotest ./...
+./filters/test.sh
 
 %files
 %license LICENSE
