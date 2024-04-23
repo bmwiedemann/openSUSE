@@ -84,4 +84,23 @@
 - Initial package (1.9.40)</comment>
     <requestid>1136459</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>516c84117763013d7e1a22edf60c02b3</srcmd5>
+    <version>2.0.4</version>
+    <time>1713891298</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.4:
+  * remove the install_requires from setup.py
+  * removed shebang from example/cupstree.py
+  * ignore driverless utilities for postscriptdriver tags
+    creation (Fedora bug #1873385)
+  * remove epydoc from Makefile (#27)
+  * fix invalid delete of pointer (#11)
+  * Makefile uses wrong Python (#32)
+  * define PY_SSIZE_T_CLEAN in cupsipp.h - fixes traceback during
+    IPPRequest.writeIO with Python 3.10
+  * fix the test.py when there is no printer installed (#46)
+  * Use PyObject_Call() instead of deprecated PyEval</comment>
+    <requestid>1169422</requestid>
+  </revision>
 </revisionlist>

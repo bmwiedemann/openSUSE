@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%global skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pycups
-Version:        2.0.1
+Version:        2.0.4
 Release:        0
 Summary:        Python Bindings for CUPS
 License:        GPL-2.0-or-later
