@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Mon Apr 22 20:09:39 UTC 2024 - mrueckert@suse.de
+
+- Update to version 1.30.2:
+  * chore: Run go mod tidy
+  * Telegraf v1.30.2
+  * Update changelog for v1.30.2
+  * Update build_version.txt for v1.30.2
+  * fix(outputs.sql): Enable the use of krb5 with mssql driver (#15196)
+  * test(inputs.postgresql): Remove error on startup integration test
+  * fix(inputs.sqlserver): Honor timezone on backup metrics  (#15154)
+  * fix(inputs.opcua): Make sure to always create a request (#15178)
+  * chore(CI): Add check for PR target branch (#15197)
+  * fix(inputs.prometheus): Correctly handle host header (#15195)
+  * chore(deps): Bump golang.org/x/net from 0.22.0 to 0.23.0 (#15193)
+  * fix(outputs.opensearch): Correctly error during failures or disconnect (#15157)
+  * docs(aggregators.final): Swap useful statements (#15159)
+  * docs(outputs.kafka): Add metadata options to docs (#15182)
+  * fix(inputs.phpfpm): Check error before continue processing (#15176)
+  * fix(inputs.nvidia): Include power limit field for v11 (#15144)
+  * fix(inputs.diskio): Update path to in /sys (#15155)
+  * docs: Add missing formats (#15166)
+  * chore(deps): Bump github.com/vmware/govmomi from 0.33.1 to 0.37.0 (#15160)
+  * fix(systemd): Remove 5 second timeout, use default (90) (#15168)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/timestreamwrite from 1.25.2 to 1.25.5 (#15161)
+  * chore(deps): Bump github.com/go-sql-driver/mysql from 1.7.1 to 1.8.1 (#15162)
+  * chore(deps): Bump github.com/aliyun/alibaba-cloud-sdk-go from 1.62.708 to 1.62.713 (#15163)
+  * Add go.sum changes
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/kinesis from 1.27.1 to 1.27.4 (#15164)
+  * docs(agent): Add README (#15150)
+  * fix(inputs.systemd_units): Revert to only gather loaded units by default (#15108)
+  * test(circleci): Ensure make docs is always run (#15140)
+  * fix(inputs.modbus): Avoid overflow when calculating with uint16 addresses (#15146)
+  * docs(processors.clone): Clarify filtering applies to all metrics (#15147)
+  * chore: Remove executable bit from files (#15143)
+  * docs(inputs.jolokia2_agent): Add example configs for table and all table metrics (#15141)
+  * docs(processors.scale): Correct example configuration (#15135)
+  * chore(inputs.diskio): Add udev properties only if available (#15122)
+  * fix(inputs.systemd_units): Reconnect if connection is lost (#15129)
+  * fix(inputs.win_eventlog): Handle empty query correctly (#15132)
+  * chore: Fix typos (#15114)
+  * chore(deps): Bump super-linter/super-linter from 6.3.0 to 6.3.1 (#15123)
+  * chore(deps): Bump k8s.io/client-go from 0.29.2 to 0.29.3 (#15124)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/cloudwatch from 1.36.1 to 1.37.0 (#15125)
+  * chore(deps): Bump github.com/jackc/pgtype from 1.14.2 to 1.14.3 (#15126)
+  * chore(deps): Bump github.com/redis/go-redis/v9 from 9.2.1 to 9.5.1 (#15127)
+  * chore(deps): Bump golang.org/x/oauth2 from 0.18.0 to 0.19.0 (#15128)
+  * test(inputs.postgresql): Add unit-test for #8586 (#15105)
+  * fix(inputs.prometheus): Remove duplicate response_timeout option (#15078)
+  * chore: Upgrade Go to 1.22.2 (#15109)
+  * chore(inputs.postgresql): Factor out common code and cleanup (#15103)
+  * chore(deps): Bump github.com/prometheus/client_golang from 1.18.0 to 1.19.0 (#15100)
+  * docs(inputs.x509_cert): Explain expiry field (#15099)
+  * chore(deps): Bump github.com/testcontainers/testcontainers-go from 0.27.0 to 0.29.1 (#15085)
+  * chore(deps): Bump github.com/apache/iotdb-client-go from 0.12.2-0.20220722111104-cd17da295b46 to 1.2.0-tsbs (#15086)
+  * chore(deps): Bump github.com/shirou/gopsutil from v3.23.11 to v3.24.3 (#15082)
+  * chore(deps): Bump github.com/gophercloud/gophercloud from 1.9.0 to 1.11.0 (#15084)
+  * chore(deps): Bump tj-actions/changed-files from 43 to 44 (#15083)
+  * chore(deps): Bump github.com/aliyun/alibaba-cloud-sdk-go from 1.62.563 to 1.62.708 (#15087)
+  * fix(agent): Ensure import of required package for pprof support (#15054)
+  * Revert "feat(inputs.gnmi): Add keepalive settings (#15149)"
+  * feat(inputs.gnmi): Add keepalive settings (#15149)
+
+-------------------------------------------------------------------
 Tue Apr 09 01:09:53 UTC 2024 - mrueckert@suse.de
 
 - Update to version 1.30.1:
