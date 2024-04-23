@@ -17,7 +17,7 @@
 
 
 Name:           python-python-docs-theme
-Version:        2024.2
+Version:        2024.4
 Release:        0
 Summary:        The Sphinx theme for the CPython docs and related projects
 License:        Python-2.0
@@ -46,7 +46,7 @@ The Sphinx theme for the CPython docs and related projects
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %{python_sitelib}/python_docs_theme
 %{python_sitelib}/python_docs_theme-%{version}*-info

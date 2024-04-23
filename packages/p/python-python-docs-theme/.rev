@@ -102,4 +102,20 @@
     visibility</comment>
     <requestid>1158467</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>25da45fedea7d1d067a200d6f1e97650</srcmd5>
+    <version>2024.4</version>
+    <time>1713891298</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.4:
+  * Add colour to version change directives
+  * Only show 'Last updated on ...' when `last_updated` defined
+  * Use system font stack for all code
+- update to 2024.3:
+  * Modernise font: use system font stack to improve text
+    readability and webpage performance
+  * Remove incorrect CSS property
+  * Don't test theme on 3.8 and 3.9 branches</comment>
+    <requestid>1169469</requestid>
+  </revision>
 </revisionlist>
