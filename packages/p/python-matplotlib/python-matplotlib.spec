@@ -29,7 +29,7 @@ ExclusiveArch:  x86_64 aarch64
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-matplotlib%{psuffix}
-Version:        3.8.3
+Version:        3.8.4
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
@@ -49,7 +49,7 @@ Provides:       python-matplotlib-gtk = %{version}
 Obsoletes:      python-matplotlib-gtk < %{version}
 # SECTION build
 BuildRequires:  %{python_module devel >= 3.9}
-BuildRequires:  %{python_module numpy-devel >= 1.19}
+BuildRequires:  %{python_module numpy-devel >= 1.25 with %python-numpy-devel < 2.3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel >= 2.6}
 BuildRequires:  %{python_module setuptools >= 64}
@@ -68,7 +68,7 @@ BuildRequires:  pkgconfig(libpng) >= 1.2
 BuildRequires:  pkgconfig(tcl)
 # /SECTION
 # SECTION runtime
-Requires:       (python-numpy >= 1.21 with python-numpy < 2)
+Requires:       python-numpy >= 1.21
 Requires:       python-Cycler >= 0.10
 Requires:       python-FontTools >= 4.22.0
 Requires:       python-Pillow >= 8

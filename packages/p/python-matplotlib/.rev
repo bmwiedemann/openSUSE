@@ -940,4 +940,22 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1163696</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>33556efe21e966f7722373958db82248</srcmd5>
+    <version>3.8.4</version>
+    <time>1713891285</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1169124 from bnavigator
+
+- Update to 3.8.4
+    * Enable building against numpy 2.0; released wheels are built
+      against numpy 2
+    * Add a draw during show for macos backend
+    * Fix color sequence data for Set2 and Set3
+    * gtk: Ensure pending draws are done before GTK draw
+    * Update &quot;Created with&quot; url in hand.svg
+    * Avoid modifying user input to Axes.bar
+    * fix quiver3d incorrect arrow colors</comment>
+    <requestid>1169287</requestid>
+  </revision>
 </revisionlist>

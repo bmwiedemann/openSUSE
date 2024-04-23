@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 18 20:52:01 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.8.4
+  * Enable building against numpy 2.0; released wheels are built
+    against numpy 2
+  * Add a draw during show for macos backend
+  * Fix color sequence data for Set2 and Set3
+  * gtk: Ensure pending draws are done before GTK draw
+  * Update "Created with" url in hand.svg
+  * Avoid modifying user input to Axes.bar
+  * fix quiver3d incorrect arrow colors
+
+-------------------------------------------------------------------
 Sat Mar 23 12:09:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.8.3:
