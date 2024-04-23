@@ -1227,6 +1227,7 @@ unsorted:
   - azure-cli-telemetry 
   - azure-cli-test 
   - azure-storage-cpp-devel 
+  - b3sum 
   - b4 
   - babelstone-han-fonts 
   - babelstone-marchen-fonts 
@@ -3560,6 +3561,9 @@ unsorted:
   - eiskaltdcpp-qt 
   - eiskaltdcpp-qt-lang 
   - eksctl 
+  - eksctl-bash-completion 
+  - eksctl-fish-completion 
+  - eksctl-zsh-completion 
   - element-desktop 
   - element-web 
   - elementary-cmake-modules 
@@ -4060,6 +4064,17 @@ unsorted:
   - ffmpeg-6-libswscale-devel 
   - ffmpeg-6-mini-devel 
   - ffmpeg-6-mini-libs 
+  - ffmpeg-7 
+  - ffmpeg-7-libavcodec-devel 
+  - ffmpeg-7-libavdevice-devel 
+  - ffmpeg-7-libavfilter-devel 
+  - ffmpeg-7-libavformat-devel 
+  - ffmpeg-7-libavutil-devel 
+  - ffmpeg-7-libpostproc-devel 
+  - ffmpeg-7-libswresample-devel 
+  - ffmpeg-7-libswscale-devel 
+  - ffmpeg-7-mini-devel 
+  - ffmpeg-7-mini-libs 
   - ffmpegthumbs-kf5 
   - ffmsindex 
   - ffnvcodec-devel 
@@ -6875,6 +6890,7 @@ unsorted:
   - git-cliff-zsh-completion 
   - git-cola 
   - git-credential-libsecret 
+  - git-credential-oauth 
   - git-crypt 
   - git-cvs 
   - git-daemon 
@@ -11650,12 +11666,15 @@ unsorted:
   - libavcodec59 
   - libavcodec59-32bit 
   - libavcodec60-32bit 
+  - libavcodec61 
   - libavdevice58_13 
   - libavdevice58_13-32bit 
   - libavdevice59 
   - libavdevice59-32bit 
   - libavdevice60 
   - libavdevice60-32bit 
+  - libavdevice61 
+  - libavfilter10 
   - libavfilter7_110 
   - libavfilter7_110-32bit 
   - libavfilter8 
@@ -11665,6 +11684,7 @@ unsorted:
   - libavformat59 
   - libavformat59-32bit 
   - libavformat60-32bit 
+  - libavformat61 
   - libavfs0 
   - libavif-devel 
   - libavif16-32bit 
@@ -11677,6 +11697,7 @@ unsorted:
   - libavutil57 
   - libavutil57-32bit 
   - libavutil58-32bit 
+  - libavutil59 
   - libaws-c-auth1_0_0 
   - libaws-c-cal0unstable 
   - libaws-c-common1 
@@ -15036,6 +15057,7 @@ unsorted:
   - libpostproc56 
   - libpostproc56-32bit 
   - libpostproc57-32bit 
+  - libpostproc58 
   - libpostquantumcryptoengine1 
   - libpowerman0 
   - libppl14 
@@ -15704,6 +15726,8 @@ unsorted:
   - libscca-devel 
   - libscca-tools 
   - libscca1 
+  - libscfg-devel 
+  - libscfg1 
   - libscg-devel 
   - libschily-devel 
   - libschily-devel-doc 
@@ -16045,10 +16069,12 @@ unsorted:
   - libswresample4-32bit 
   - libswresample4_ff5 
   - libswresample4_ff5-32bit 
+  - libswresample5 
   - libswscale5_9-32bit 
   - libswscale6 
   - libswscale6-32bit 
   - libswscale7-32bit 
+  - libswscale8 
   - libsybdb5 
   - libsybdb5-32bit 
   - libsymmetrica2 
@@ -20328,6 +20354,7 @@ unsorted:
   - owncloud-dolphin 
   - owncloud-icons 
   - owntone 
+  - oxipng 
   - oxygen5-icon-theme 
   - oxygen5-icon-theme-large 
   - oxygen5-icon-theme-scalable 
@@ -25115,6 +25142,7 @@ unsorted:
   - python310-httpsig_cffi 
   - python310-httptools 
   - python310-httpx 
+  - python310-httpx-socks 
   - python310-humanfriendly 
   - python310-humanhash3 
   - python310-humanize 
@@ -26834,6 +26862,7 @@ unsorted:
   - python310-time-machine 
   - python310-time-travel 
   - python310-timeout-decorator 
+  - python310-tiny-proxy 
   - python310-tinyarray 
   - python310-tinycss2 
   - python310-tinydb 
@@ -28634,6 +28663,7 @@ unsorted:
   - python311-httpretty 
   - python311-httpsig_cffi 
   - python311-httptools 
+  - python311-httpx-socks 
   - python311-humanfriendly 
   - python311-humanhash3 
   - python311-humanize 
@@ -30263,6 +30293,7 @@ unsorted:
   - python311-time-machine 
   - python311-time-travel 
   - python311-timeout-decorator 
+  - python311-tiny-proxy 
   - python311-tinyarray 
   - python311-tinycss2 
   - python311-tinydb 
@@ -32111,6 +32142,7 @@ unsorted:
   - python312-httpsig_cffi 
   - python312-httptools 
   - python312-httpx 
+  - python312-httpx-socks 
   - python312-humanfriendly 
   - python312-humanhash3 
   - python312-humanize 
@@ -33821,6 +33853,7 @@ unsorted:
   - python312-time-machine 
   - python312-time-travel 
   - python312-timeout-decorator 
+  - python312-tiny-proxy 
   - python312-tinyarray 
   - python312-tinycss2 
   - python312-tinydb 
@@ -36366,6 +36399,7 @@ unsorted:
   - ssh-contact-client 
   - ssh-contact-service 
   - ssh-import-id 
+  - ssh-pairing 
   - ssh-tools 
   - sshguard 
   - sshpass 
@@ -46787,8 +46821,6 @@ unsorted:
   - uncommons-maths-javadoc 
   - uncrustify 
   - unetbootin 
-  - ungoogled-chromium 
-  - ungoogled-chromium-chromedriver 
   - unibilium-devel 
   - unicode-blocks 
   - unicode-emoji 
