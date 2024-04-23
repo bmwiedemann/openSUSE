@@ -18,8 +18,8 @@
 
 %define _major 2
 %define _minor 10
-%define _micro 18
-%define _build 382
+%define _micro 20
+%define _build 384
 %define _version %{_major}.%{_minor}.%{_micro}
 %define _tag V_%{_major}_%{_minor}_%{_micro}_BUILD_%{_build}
 
