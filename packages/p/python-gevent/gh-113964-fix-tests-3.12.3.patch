@@ -1,0 +1,30 @@
+Index: gevent-24.2.1/src/greentest/3.12/test_subprocess.py
+===================================================================
+--- gevent-24.2.1.orig/src/greentest/3.12/test_subprocess.py
++++ gevent-24.2.1/src/greentest/3.12/test_subprocess.py
+@@ -3404,8 +3404,9 @@ class POSIXProcessTestCase(BaseTestCase)
+         atexit.register(exit_handler)
+         """
+         _, out, err = assert_python_ok("-c", code)
+-        self.assertEqual(out, b'')
+-        self.assertIn(b"preexec_fn not supported at interpreter shutdown", err)
++        # https://github.com/python/cpython/issues/113964
++        # self.assertEqual(out, b'')
++        # self.assertIn(b"preexec_fn not supported at interpreter shutdown", err)
+ 
+ 
+ @unittest.skipUnless(mswindows, "Windows specific tests")
+Index: gevent-24.2.1/src/greentest/3.12/test_threading.py
+===================================================================
+--- gevent-24.2.1.orig/src/greentest/3.12/test_threading.py
++++ gevent-24.2.1/src/greentest/3.12/test_threading.py
+@@ -1137,7 +1137,8 @@ class ThreadTests(BaseTestCase):
+         """
+         _, out, err = assert_python_ok("-c", code)
+         self.assertEqual(out, b'')
+-        self.assertIn(b"can't create new thread at interpreter shutdown", err)
++        # https://github.com/python/cpython/issues/113964
++        # self.assertIn(b"can't create new thread at interpreter shutdown", err)
+ 
+ class ThreadJoinOnShutdown(BaseTestCase):
+ 

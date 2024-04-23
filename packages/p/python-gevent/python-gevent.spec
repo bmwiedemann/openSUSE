@@ -26,7 +26,7 @@
 %bcond_with colortest
 %{?sle15_python_module_pythons}
 Name:           python-gevent
-Version:        23.9.1
+Version:        24.2.1
 Release:        0
 Summary:        Python network library that uses greenlet and libevent
 License:        MIT
@@ -34,11 +34,12 @@ Group:          Development/Languages/Python
 URL:            https://www.gevent.org/
 Source0:        https://github.com/gevent/gevent/archive/%{version}.tar.gz#/gevent-%{version}.tar.gz
 Source100:      %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM gevent-fix-unittest-returncode-py312.patch gh#gevent/gevent#2012
-Patch0:         https://github.com/gevent/gevent/commit/86ea07e273ed7938446688cef5492d48034b7ddb.patch#/gevent-fix-unittest-returncode-py312-c1.patch
-Patch1:         https://github.com/gevent/gevent/commit/f69bc6b872b81a3dbc704c83147822fd7009995d.patch#/gevent-fix-unittest-returncode-py312-c2.patch
 # PATCH-FEATURE-OPENSUSE gevent-opensuse-nocolor-tests.patch code@bnavigator.de -- Avoid colorization of test output in obs runners
 Patch2:         gevent-opensuse-nocolor-tests.patch
+# PATCH-FIX-OPENSUSE gh-113964-fix-tests-3.12.3.patch
+# Fix some tests that fails with python 3.12.3 in the current version,
+# related to  gh#python/cpython#113964
+Patch3:         gh-113964-fix-tests-3.12.3.patch
 BuildRequires:  %{python_module Cython >= 3.0.2}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel >= 3.8}

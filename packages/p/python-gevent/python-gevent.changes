@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Apr 22 07:38:07 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add gh-113964-fix-tests-3.12.3.patch to tix tests with python 3.12.3
+  (bsc#1223128)
+
+- Drop upstream patches:
+  * gevent-fix-unittest-returncode-py312-c1.patch
+  * gevent-fix-unittest-returncode-py312-c2.patch
+
+- Update to version 24.2.1:
+  - Add support for Python patch releases 3.11.8 and 3.12.2, which
+    changed internal details of threading.
+  - Errors raised from subprocess.Popen may not have a filename set.
+  - SSLSocket.recv_into and SSLSocket.read no longer require the
+    buffer to implement len and now work with buffers whose size is
+    not 1.
+  - gh-108310: Fix CVE-2023-40217: Check for & avoid the ssl pre-close
+    flaw.
+  - Drop setuptools to a soft test dependency.
+  - Drop support for very old versions of CFFI.
+  - Update bundled c-ares from 1.19.1 to 1.26.0.
+  - Locks created by gevent, but acquired from multiple different
+    threads (not recommended), no longer spin to implement timeouts
+    and interruptible blocking. Instead, they use the native
+    functionality of the Python 3 lock. This may improve some
+    scenarios. See issue #2013.
+
+-------------------------------------------------------------------
 Wed Jan 10 22:40:39 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Clean obsolete old python and old distribution directives

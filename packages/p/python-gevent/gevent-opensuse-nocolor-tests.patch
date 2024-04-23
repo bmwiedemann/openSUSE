@@ -1,9 +1,9 @@
 Avoid colorization of test output in obs runners
 
-Index: gevent-23.9.1/src/gevent/testing/util.py
+Index: gevent-24.2.1/src/gevent/testing/util.py
 ===================================================================
---- gevent-23.9.1.orig/src/gevent/testing/util.py
-+++ gevent-23.9.1/src/gevent/testing/util.py
+--- gevent-24.2.1.orig/src/gevent/testing/util.py
++++ gevent-24.2.1/src/gevent/testing/util.py
 @@ -98,6 +98,8 @@ def _color(what):
      return _color_code(_colorscheme[what])
  
