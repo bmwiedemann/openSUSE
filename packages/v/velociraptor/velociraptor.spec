@@ -218,6 +218,7 @@ License:        Apache-2.0
 Group:          System/Monitoring
 Provides:       group(velociraptor)
 Provides:       user(velociraptor)
+BuildArch:      noarch
 
 %description -n system-user-velociraptor
 This package provides a shared system user for all velociraptor components

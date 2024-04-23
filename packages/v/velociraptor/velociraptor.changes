@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 23 10:28:10 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Change system-user-velociraptor to noarch
+
+-------------------------------------------------------------------
 Wed Apr 17 21:53:20 UTC 2024 - Jeff Mahoney <jeffm@suse.com>
 
 - Fix unresolveable Debian group-velociraptor dependency.
