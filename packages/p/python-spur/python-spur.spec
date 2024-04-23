@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-spur
 Version:        0.3.23
 Release:        0
