@@ -44,6 +44,8 @@ Source5:        update-intersphinx.sh
 Source99:       python-Sphinx.keyring
 # PATCH-FIX-UPSTREAM: fix-autodoc-tests-python-3117.patch gh#sphinx-doc/sphinx#11793
 Patch01:        fix-autodoc-tests-python-3117.patch
+# PATCH-FIX-UPSTREAM: fix-test-expectation-for-enum-rendering-on-python-3.12.3.patch gh#sphinx-doc/sphinx#12293
+Patch02:        fix-test-expectation-for-enum-rendering-on-python-3.12.3.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}

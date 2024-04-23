@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 22 10:10:49 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-test-expectation-for-enum-rendering-on-python-3.12.3.patch
+  gh#sphinx-doc/sphinx#12293, bsc#1223128
+
+-------------------------------------------------------------------
 Wed Feb 28 13:53:54 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Disable test test_ext_imgconverter.

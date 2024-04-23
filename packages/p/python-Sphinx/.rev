@@ -1245,4 +1245,12 @@ IMPORTANT: It would be better to fix/update the test, so if you can fix this ple
   - Disable test test_ext_imgconverter.</comment>
     <requestid>1153136</requestid>
   </revision>
+  <revision rev="105" vrev="5">
+    <srcmd5>ea2c61d5252957c9e029595d7dca5a8e</srcmd5>
+    <version>7.2.6</version>
+    <time>1713891308</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169646</requestid>
+  </revision>
 </revisionlist>
