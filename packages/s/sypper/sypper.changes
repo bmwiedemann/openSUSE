@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 22 14:04:51 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 0.06:
+  * Avoid double slash after baseurl
+
+-------------------------------------------------------------------
 Thu Mar 14 14:41:24 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 0.05:

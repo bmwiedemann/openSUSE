@@ -14,7 +14,7 @@
 # with this program; if not, see <http://www.gnu.org/licenses/>.
 
 Name:           sypper
-Version:        0.05
+Version:        0.06
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Simple perl utility emulating zypper download

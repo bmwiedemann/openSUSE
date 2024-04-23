@@ -7,4 +7,12 @@
     <comment>I want to maintain sypper in Factory and would like to use openSUSE:infrastructure:MirrorCache as the devel/feeder project.</comment>
     <requestid>1160666</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>473918e24ac233178aed6949435414cd</srcmd5>
+    <version>0.06</version>
+    <time>1713891379</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169692</requestid>
+  </revision>
 </revisionlist>
