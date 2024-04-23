@@ -782,6 +782,8 @@ Ignore: ffmpeg-5-mini-devel:this-is-only-for-build-envs
 Ignore: ffmpeg-5-mini-libs:this-is-only-for-build-envs
 Ignore: ffmpeg-6-mini-devel:this-is-only-for-build-envs
 Ignore: ffmpeg-6-mini-libs:this-is-only-for-build-envs
+Ignore: gettext-runtime-mini:this-is-only-for-build-envs
+Ignore: gettext-tools-mini:this-is-only-for-build-envs
 Ignore: ghc-bootstrap-helpers:this-is-only-for-build-envs
 Ignore: ghc-bootstrap:this-is-only-for-build-envs
 Ignore: ghostscript-mini:this-is-only-for-build-envs
