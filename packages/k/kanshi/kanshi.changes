@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 22 23:35:06 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Add keyring and signature for package.
+- Enable tests
+- Update to v1.6.0:
+  * Fix memory leaks on exit
+  * Switch to scfg
+  * readme: add ircs:// link for IRC channel
+  * Add support for output blocks
+  * doc: document output blocks
+  * Include line numbers in error messages
+  * Define _POSIX_C_SOURCE globally
+
+-------------------------------------------------------------------
 Mon Feb 26 04:17:18 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to v1.5.1:

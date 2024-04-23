@@ -17,17 +17,21 @@
 
 
 Name:           kanshi
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        Dynamic display configuration
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://git.sr.ht/~emersion/kanshi
 Source0:        https://git.sr.ht/~emersion/kanshi/refs/download/v%{version}/%{name}-%{version}.tar.gz
+Source1:        https://git.sr.ht/~emersion/kanshi/refs/download/v%{version}/%{name}-%{version}.tar.gz.sig
+# https://emersion.fr/.well-known/openpgpkey/hu/dj3498u4hyyarh35rkjfnghbjxug6b19
+Source2:        %{name}.keyring
 BuildRequires:  cmake
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  scdoc
+BuildRequires:  pkgconfig(scfg)
 BuildRequires:  pkgconfig(wayland-client)
 
 %description
@@ -45,6 +49,9 @@ and disabled on hotplug.
 
 %install
 %meson_install
+
+%check
+%meson_test
 
 %files
 %{_bindir}/kanshi
