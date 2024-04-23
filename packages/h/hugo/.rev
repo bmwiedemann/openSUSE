@@ -1145,4 +1145,16 @@
   * build: Fix `GLIBC_2.29' not found issue (forwarded request 1169402 from jfkw)</comment>
     <requestid>1169403</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>4e688ac380f9524defd6839b08aafc34</srcmd5>
+    <version>0.125.3</version>
+    <time>1713891461</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.125.3:
+  Refs boo#1223309
+  * markup/goldmark: Fix data race in the hugocontext wrapper
+  * Delete .hugo_build.lock
+  * tpl: Escape .Title in built-in image and link render hooks (forwarded request 1169893 from jfkw)</comment>
+    <requestid>1169894</requestid>
+  </revision>
 </revisionlist>

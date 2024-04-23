@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 22 18:40:04 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.125.3:
+  Refs boo#1223309
+  * markup/goldmark: Fix data race in the hugocontext wrapper
+  * Delete .hugo_build.lock
+  * tpl: Escape .Title in built-in image and link render hooks
+  * tpl/tplimpl: Improve embedded templates
+  * SECURITY.md: Update link to security model
+  * modules: Fix potential infinite loop in module collection
+
+-------------------------------------------------------------------
 Sat Apr 20 15:29:44 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.125.2:
