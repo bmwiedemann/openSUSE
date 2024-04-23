@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 21 14:08:07 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.16.1
+  * The QtQuick3DHelpersImpl, QtQuickControls2MacOSStyleImpl and
+     QtQuickTimelineBlendTrees libraries added to Qt v6.7.0 are now
+     bundled.
+  * The missing `LICENSE` file was added.
+
+-------------------------------------------------------------------
 Tue Apr  9 07:36:05 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.16.0

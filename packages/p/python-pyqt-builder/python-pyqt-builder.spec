@@ -19,14 +19,13 @@
 %define mname pyqt-builder
 %{?sle15_python_module_pythons}
 Name:           python-%{mname}
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        The PEP 517 compliant PyQt build system
 License:        BSD-2-Clause
 URL:            https://github.com/Python-PyQt/PyQt-builder
-Source0:        https://files.pythonhosted.org/packages/source/P/PyQt-builder/PyQt-builder-%{version}.tar.gz
-# https://github.com/Python-PyQt/PyQt-builder/issues/7
-Source1:        https://github.com/Python-PyQt/PyQt-builder/raw/4763ecdaf4fd799336948367701818528859c3d5/LICENSE
+#Source0:        https://files.pythonhosted.org/packages/source/P/PyQt-builder/PyQt-builder-%%{version}.tar.gz
+Source0:        https://www.riverbankcomputing.com/pypi/packages/snapshots/PyQt-builder/pyqt_builder-%{version}.tar.gz
 # PATCH-FEATURE-SUSE support-python3.6.patch alarrosa@suse.com -- The PyQt5 packages have the SLE15 python module macro, but it is disable in some maintance projects
 Patch0:         support-python3.6.patch
 BuildRequires:  %{python_module base >= 3.6}
@@ -58,8 +57,7 @@ optional project.py script. Any PEP 517 compliant frontend, for example
 sip-install or pip can then be used to build and install the project.
 
 %prep
-%autosetup -p1 -n PyQt-builder-%{version}
-cp %{SOURCE1} ./
+%autosetup -p1 -n pyqt_builder-%{version}
 
 %build
 %pyproject_wheel
