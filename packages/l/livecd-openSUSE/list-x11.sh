@@ -87,6 +87,7 @@ buildignore mlocate-lang
 buildignore exo-lang
 buildignore xfdesktop-lang
 buildignore xfce4-power-manager-lang
+buildignore info-lang
 buildignore noto-sans-cjk-fonts
 buildignore man-pages-posix
 buildignore libvulkan_radeon

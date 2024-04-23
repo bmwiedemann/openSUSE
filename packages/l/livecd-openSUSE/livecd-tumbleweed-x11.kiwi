@@ -575,6 +575,8 @@
     <ignore name="xfdesktop-lang"/>
     <!-- OBS-IgnorePackage: xfce4-power-manager-lang -->
     <ignore name="xfce4-power-manager-lang"/>
+    <!-- OBS-IgnorePackage: info-lang -->
+    <ignore name="info-lang"/>
     <!-- OBS-IgnorePackage: noto-sans-cjk-fonts -->
     <ignore name="noto-sans-cjk-fonts"/>
     <!-- OBS-IgnorePackage: man-pages-posix -->
