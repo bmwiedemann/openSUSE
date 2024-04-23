@@ -1,7 +1,7 @@
 #
 # spec file for package tio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           tio
-Version:        2.7
+Version:        2.8
 Release:        0
 Summary:        Simple TTY terminal I/O application
 License:        GPL-2.0-or-later
 Group:          Hardware/Modem
 URL:            https://tio.github.io/
 Source:         https://github.com/tio/tio/releases/download/v%{version}/%{name}-%{version}.tar.xz
+BuildRequires:  cmake
+BuildRequires:  lua53-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(inih)

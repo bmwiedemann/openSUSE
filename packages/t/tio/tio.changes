@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Apr 14 17:41:55 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8
+  * Remove options --response-wait, --response-timeout
+  * Fix xymodem error print outs
+  * Rework x/y-modem transfer command
+  * Add independent input and output mode
+  * Add tty line configuration script API
+  * Add ONULBRK mapping flag
+  * Add --log-directory option
+  * Add Lua scripting feature
+  * Poll on serial port read instead of delay.
+  * Add Xmodem-CRC support.
+  * Support NO_COLOR env variable as per no-color.org
+  * Add map FF to ESC-c on input
+
+-------------------------------------------------------------------
 Thu Sep 21 14:22:40 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 2.7:
