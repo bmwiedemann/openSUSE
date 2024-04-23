@@ -133,4 +133,13 @@
 - Update to 3.7.0:</comment>
     <requestid>1133653</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b4cfe56c4e650e9d410e515d33a077a9</srcmd5>
+    <version>5.0.1</version>
+    <time>1713891295</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.1:
+  * Delinting and package refresh.</comment>
+    <requestid>1169419</requestid>
+  </revision>
 </revisionlist>
