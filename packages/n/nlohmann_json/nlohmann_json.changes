@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 20 18:27:48 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
 Sun Jan 21 11:39:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - fix build with non-suse dists
