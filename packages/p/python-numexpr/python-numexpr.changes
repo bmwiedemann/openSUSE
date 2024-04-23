@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 22 09:57:01 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add patch revert-to-numpy1.patch to restore compatibility with numpy v1
+  * revert of upstream commit, drop when numpy v2 comes to Factory
+
+-------------------------------------------------------------------
+Fri Apr 19 11:57:33 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.10.0
+  * Support for NumPy 2.0.0. This is still experimental, so please
+    report any issues you find. Thanks to Clément Robert and Thomas
+    Caswell for the work.
+  * Avoid erroring when OMP_NUM_THREADS is empty string. Thanks to
+    Patrick Hoefler.
+  * Do not warn if OMP_NUM_THREAD set.
+
+-------------------------------------------------------------------
 Tue Feb  6 09:32:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.0:

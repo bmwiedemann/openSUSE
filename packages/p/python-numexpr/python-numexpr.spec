@@ -18,22 +18,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-numexpr
-Version:        2.9.0
+Version:        2.10.0
 Release:        0
 Summary:        Numerical expression evaluator for NumPy
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pydata/numexpr/
 Source:         https://files.pythonhosted.org/packages/source/n/numexpr/numexpr-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM revert of https://github.com/pydata/numexpr/commit/beedecb3990d604d0f272c1a2f9a1d117f6120ba to enable numpy v1 again, drop when numpy is updated to v2
+Patch0:         revert-to-numpy1.patch
 BuildRequires:  %{python_module devel >= 3.7}
-BuildRequires:  %{python_module numpy-devel >= 1.13.3}
+# Until numpy 2 is in Factory, keep allowing to build with numpy 1.x. See comments in pyproject.toml for scipy and pandas
+BuildRequires:  %{python_module numpy-devel >= 1.19.3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.13.3
+Requires:       python-numpy >= 1.19.3
 %python_subpackages
 
 %description
@@ -43,7 +46,7 @@ can be accelerated and use less memory than doing the same
 calculation in Python.
 
 %prep
-%setup -q -n numexpr-%{version}
+%autosetup -p1 -n numexpr-%{version}
 # wrong-file-end-of-line-encoding
 sed -i 's/\r$//' ANNOUNCE.rst AUTHORS.txt  README.rst RELEASE_NOTES.rst site.cfg.example
 # remove unwanted shebang

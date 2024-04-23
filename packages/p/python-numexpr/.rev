@@ -245,4 +245,12 @@ Implement single-spec version</comment>
   * Modernized the test suite to avoid some warnings.</comment>
     <requestid>1144513</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>fa6ee89f79b2690815e8d083e1d358e0</srcmd5>
+    <version>2.10.0</version>
+    <time>1713891463</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169895</requestid>
+  </revision>
 </revisionlist>
