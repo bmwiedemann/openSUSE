@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Mon Apr 22 04:12:01 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Add man pages
+
+-------------------------------------------------------------------
+Sun Apr 21 21:57:11 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 9.1.0:
+  * Add --keep display equivalent to --strip safe.
+  * Add modified zeng palette sorting method, improving optimization of indexed images.
+  * If only one filter is specified, guarantee to only use this one.
+  * Evaluate low-depth indexed even if low-depth grayscale was already achieved.
+  * Fix battiato palette sorting method not being used if the input was not already indexed.
+  * Fix rare crash caused by a truncated palette.
+  * Reduce size of binaries.
+  * Add man page generation.
+
+-------------------------------------------------------------------
+Fri Nov 10 11:45:11 UTC 2023 - kilgore.trout@idesmi.eu
+
+- Update to version 9.0.0:
+  * Overhaul help
+  * Tidy some issue tests
+  * Add test
+  * Combine palette reduction and sorting
+  * Update `zopfli` to v0.8.0
+  * Bump actions/checkout from 3 to 4
+  * Remove libdeflate slack space no longer needed
+  * Update libdeflater
+  * Remove `backup` and `check` options
+
+-------------------------------------------------------------------
+Mon Jul 31 06:24:24 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Replace rust-packaging with cargo-packaging after the rename
+
+-------------------------------------------------------------------
+Sat Jan 14 21:10:56 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

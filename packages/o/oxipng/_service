@@ -1,0 +1,19 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/shssoichiro/oxipng.git</param>
+    <param name="revision">v9.1.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="exclude">Cargo.lock</param>
+    <param name="exclude">Dockerfile</param>
+    <param name="exclude">*.html</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srcdir">oxipng</param>
+    <param name="update">true</param>
+  </service>
+</services>
