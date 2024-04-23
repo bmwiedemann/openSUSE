@@ -78,4 +78,14 @@
     <comment></comment>
     <requestid>1141669</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>47625d5e3860508efafc23e5f0afb722</srcmd5>
+    <version>6.7.0</version>
+    <time>1713891326</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.7.0
+  * Add support for Qt 6.7
+</comment>
+    <requestid>1169551</requestid>
+  </revision>
 </revisionlist>
