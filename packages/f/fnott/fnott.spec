@@ -1,7 +1,7 @@
 #
 # spec file for package fnott
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,16 @@
 
 
 Name:           fnott
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Lightweight notification daemon for Wayland
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://codeberg.org/dnkl/fnott
-Source0:        https://codeberg.org/dnkl/fnott/archive/%{version}.tar.gz
-Patch1:         https://codeberg.org/dnkl/fnott/commit/bc80e607b14e4c25639d9414e646bbaa7d534adc.patch#/0001-memfd-noexec-seal.patch
+Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.gz.sig
+# https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xb19964fbba09664cc81027ed5bbd4992c116573f
+Source2:        %{name}.keyring
 BuildRequires:  meson >= 0.58
 BuildRequires:  pkgconfig
 BuildRequires:  python3
@@ -49,7 +51,7 @@ BuildRequires:  gcc >= 8
 Lightweight notification daemon for Wayland.
 
 %prep
-%autosetup -p1 -n %{name}
+%autosetup -p1
 
 %package        zsh-completion
 Summary:        Zsh Completion for %{name}
@@ -85,8 +87,8 @@ Zsh command-line completion support for %{name}
 %doc %{_datadir}/doc/%{name}/README.md
 %doc CHANGELOG.md
 
-%dir %{_datadir}/%{name}/
-%{_datadir}/%{name}/fnott.ini
+%dir %{_sysconfdir}/xdg/%{name}/
+%{_sysconfdir}/xdg/%{name}/fnott.ini
 %{_datadir}/applications/fnott.desktop
 
 %files zsh-completion

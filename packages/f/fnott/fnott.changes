@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 22 22:31:52 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Add package sig and developer keyring
+- Remove 0001-memfd-noexec-seal.patch (Fixed upstream)
+- Update to 1.5.0
+  Added:
+  * docs meson option
+  * pause and unpause commands to temporarily disable or re-enable
+    notifications.
+  * Support for fractional scaling (wp_fractional_scale_v1).
+  * Support for preferred buffer scale (wl_compositor >= 6).
+  * Support for server side cursors (wp_cursor_shape_v1).
+  Changed:
+  * Fnott now requires wayland-protocols >= 1.32.
+  * Minimum required meson version is now 0.59.
+  * Move example config to <sysconfdir>/xdg/fnott.ini.
+  * dpi-aware no longer accepts the value auto, and the default
+    value is now no.
+  Removed:
+  * dpi-aware=auto
+
+-------------------------------------------------------------------
 Fri Oct 13 13:12:31 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@uncomfyhalomacro.pl>
 
 - Add 0001-memfd-noexec-seal.patch
