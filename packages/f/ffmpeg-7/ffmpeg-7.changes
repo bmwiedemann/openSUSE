@@ -1,0 +1,133 @@
+-------------------------------------------------------------------
+Sun Apr  7 11:39:41 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Copy package ffmpeg-6 to ffmpeg-7 and adjust
+- Update to release 7.0.0
+  * Made the CLI tool support multithreading
+- Delete 0001-avcodec-tests-rename-the-bundled-Mesa-AV1-vulkan-vid.patch
+  (merged)
+
+-------------------------------------------------------------------
+Fri Mar 22 09:25:28 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-avcodec-tests-rename-the-bundled-Mesa-AV1-vulkan-vid.patch
+
+-------------------------------------------------------------------
+Thu Mar 14 18:58:31 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Let the ffmpeg-6 main program be combinable with ffmpeg-6-mini-libs
+
+-------------------------------------------------------------------
+Mon Jan 15 11:11:08 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 6.1.1:
+  * libaribcaption decoder
+  * Playdate video decoder and demuxer
+  * Extend VAAPI support for libva-win32 on Windows
+  * afireqsrc audio source filter
+  * arls filter
+  * ffmpeg CLI new option: -readrate_initial_burst
+  * zoneplate video source filter
+  * command support in the setpts and asetpts filters
+  * Vulkan decode hwaccel, supporting H264, HEVC and AV1
+  * color_vulkan filter
+  * bwdif_vulkan filter
+  * nlmeans_vulkan filter
+  * RivaTuner video decoder
+  * xfade_vulkan filter
+  * vMix video decoder
+  * Essential Video Coding parser, muxer and demuxer
+  * Essential Video Coding frame merge bsf
+  * bwdif_cuda filter
+  * Microsoft RLE video encoder
+  * Raw AC-4 muxer and demuxer
+  * Raw VVC bitstream parser, muxer and demuxer
+  * Bitstream filter for editing metadata in VVC streams
+  * Bitstream filter for converting VVC from MP4 to Annex B
+  * scale_vt filter for videotoolbox
+  * transpose_vt filter for videotoolbox
+  * support for the P_SKIP hinting to speed up libx264 encoding
+  * Support HEVC,VP9,AV1 codec in enhanced flv format
+  * apsnr and asisdr audio filters
+  * OSQ demuxer and decoder
+  * Support HEVC,VP9,AV1 codec fourcclist in enhanced rtmp protocol
+  * CRI USM demuxer
+  * ffmpeg CLI '-top' option deprecated in favor of the setfield filter
+  * VAAPI AV1 encoder
+  * ffprobe XML output schema changed to account for multiple variable-fields elements within the same parent element
+  * ffprobe -output_format option added as an alias of -of
+- Remove patch6 0001-avfilter-vf_libplacebo-remove-deprecated-field.diff
+- Prefer libvpl to libmfx: the latter is deprecated
+- Delete ffmpeg-6-private-devel package as it is only needed to build libav-tools
+
+-------------------------------------------------------------------
+Wed Nov 22 15:23:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Enable more decoders and encoders explicitly:
+  * amrwb via bcond_without for TW only (and in
+    enable_decoder/encoder)
+  * opencore via bcond_without for TW only (and in
+    enable_decoder/encoder)
+  * xvid via bcond_without for TW only (and in
+    enable_decoder/encoder)
+  * h.263 via enable_decoder/encoder and no longer explicitly
+    disabling in call to configure
+  * MPEG4 Visual via enable_decoder/encoder and no longer
+    explicitly disabling in call to configure
+  * MPEG2 Hardware decoders via enable_decoder/encoder
+  * And many many more via enable_decoder/encoder.
+
+-------------------------------------------------------------------
+Fri Nov 10 10:09:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 6.0.1:
+  * Updates and bugfixes to avcodecs, avformat and avfilters
+    mainly.
+- Drop patch fixed upstream:
+  * 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
+
+-------------------------------------------------------------------
+Wed Oct  4 07:59:01 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
+  to resolve a build failure on 15.4/15.5.
+
+-------------------------------------------------------------------
+Mon Jul 31 09:05:39 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Bump required libplacebo version to v6.292.0 or newer for TW
+- Temporarily demote deprecation errors to deprecation warnings
+  for vf_libplacebo
+- Add upstream patches to fix build with libplacebo v6:
+  * 0001-avfilter-vf_libplacebo-remove-deprecated-field.diff
+
+-------------------------------------------------------------------
+Mon Apr 10 09:08:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Reset fixed leftover value for BUILD_ORIG
+
+-------------------------------------------------------------------
+Thu Mar 16 17:56:04 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Conflict with otherproviders(ffmpeg-tools).
+
+-------------------------------------------------------------------
+Thu Mar  9 09:02:01 UTC 2023 - Enrico Belleri <idesmi@protonmail.com>
+
+- enable libplacebo filter
+- clean old BuildRequires conditions
+- add libjxl to enable_encoders
+
+-------------------------------------------------------------------
+Tue Feb 28 13:23:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Branch from ffmpeg-5.spec
+- Remove ffmpeg-4.4-CVE-2020-22046.patch (inapplicable),
+  no-vk-video-decoding.patch (obsolete),
+  ffmpeg-CVE-2022-3964.patch (appears merged)
+- Update to release 6.0
+  * FFmpeg now runs every muxer in a separate thread and requires
+    threading to be enabled for compilation
+  * VA-API encoding and decoding support for 10/12-bit 422,
+    10/12-bit 444 VP9 support
+  * RISC-V optimizations

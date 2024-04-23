@@ -1,0 +1,52 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2020-07-04 23:56:54.411950316 +0200
+References: http://ffmpeg.org/pipermail/ffmpeg-devel/2020-July/265694.html
+
+User frispete wrote on 2020-6-26 22:13+0000 at
+https://build.opensuse.org/package/show/multimedia:libs/ffmpeg-4#comment-1257440
+: """Unfortunately, this version is binary incompatible to 4.2.3 in some
+aspects. [...]"""
+
+Further discussion on the mailing list explored this topic, and
+revealed that ELF symbol versioning is lacklusterly implemented in
+ffmpeg, which can cause inadvertent mixing of library versions on
+openSUSE, and precompiled Linux distributions in general.
+
+Upstream says "we only add new functions" - which is ok in its own
+right. verdefs, if you have them, *must*not* change under any
+circumstances, but that is what they broke: the set of symbols
+included in the "LIBAVFORMAT_59" verdef changed between 5.0 and 5.1.
+
+$ abidiff abidiff /usr/lib64/libavformat.so.59.16.100 usr/lib64/libavformat.so.59.27.100
+Functions changes summary: 0 Removed, 0 Changed, 0 Added function
+Variables changes summary: 0 Removed, 0 Changed, 0 Added variable
+Function symbols changes summary: 0 Removed, 1 Added function symbol not referenced by debug info
+Variable symbols changes summary: 0 Removed, 0 Added variable symbol not referenced by debug info
+
+1 Added function symbol not referenced by debug info:
+
+  [A] avio_vprintf@@LIBAVFORMAT_59
+
+]
+
+Henceforth, we're changing the .v files such that the symbol set in
+any one verdef we will ever emit is never modified in future
+releases.
+
+---
+ ffbuild/library.mak |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: ffmpeg-5.1/ffbuild/library.mak
+===================================================================
+--- ffmpeg-5.1.orig/ffbuild/library.mak
++++ ffmpeg-5.1/ffbuild/library.mak
+@@ -59,7 +59,7 @@ $(SUBDIR)lib$(FULLNAME).pc: $(SUBDIR)ver
+ 	$$(M) $$(SRC_PATH)/ffbuild/pkgconfig_generate.sh $(NAME) "$(DESC)"
+ 
+ $(SUBDIR)lib$(NAME).ver: $(SUBDIR)lib$(NAME).v $(OBJS)
+-	$$(M)sed 's/MAJOR/$(lib$(NAME)_VERSION_MAJOR)/' $$< | $(VERSION_SCRIPT_POSTPROCESS_CMD) > $$@
++	$$(M)sed 's/MAJOR/$(lib$(NAME)_VERSION_MAJOR).$(lib$(NAME)_VERSION_MINOR)_SUSE/' $$< | $(VERSION_SCRIPT_POSTPROCESS_CMD) > $$@
+ 
+ $(SUBDIR)$(SLIBNAME): $(SUBDIR)$(SLIBNAME_WITH_MAJOR)
+ 	$(Q)cd ./$(SUBDIR) && $(LN_S) $(SLIBNAME_WITH_MAJOR) $(SLIBNAME)
