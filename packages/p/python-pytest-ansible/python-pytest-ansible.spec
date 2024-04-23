@@ -25,11 +25,15 @@
 %define ansible_python python310
 %define ansible_python_executable python3.10
 %define ansible_python_sitelib %python310_sitelib
+#
+%define python_for_dependencies python310
 %endif
 %if %pythons == "python311"
 %define ansible_python python311
 %define ansible_python_executable python3.11
 %define ansible_python_sitelib %python311_sitelib
+#
+%define python_for_dependencies python311
 %endif
 %else
 # Tumbleweed
@@ -37,20 +41,23 @@
 %define ansible_python python3
 %define ansible_python_executable python3
 %define ansible_python_sitelib %python3_sitelib
+#
+%define python_for_dependencies python311
 %endif
 
 Name:           python-pytest-ansible
-Version:        24.1.2
+Version:        24.1.3
 Release:        0
 Summary:        Plugin for pytest to simplify calling ansible modules from tests or fixtures
 License:        MIT
 URL:            https://github.com/ansible-community/pytest-ansible
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-ansible/pytest-ansible-%{version}.tar.gz
+Source:         pytest-ansible-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 63.0.0}
 BuildRequires:  %{python_module setuptools_scm >= 7.0.5}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  ansible-core >= 2.15.0
@@ -58,15 +65,14 @@ BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  molecule >= 6.0.0
 # /SECTION
 BuildRequires:  fdupes
-Requires:       ansible-core
-Requires:       python-ansible-compat
-Requires:       python-base >= 3.10
-Requires:       python-pytest >= 6
-Suggests:       python-attrs == 22.2.0
-Suggests:       python-iniconfig == 2.0.0
-Suggests:       python-packaging == 23.0
-Suggests:       python-pluggy == 1.0.0
-Suggests:       python-pytest == 7.2.2
+Requires:       %{python_for_dependencies}-packaging
+Requires:       %{python_for_dependencies}-pytest >= 6
+Requires:       ansible-core > 2.14
+Requires:       python-ansible-compat >= 4.1.11
+Suggests:       %{python_for_dependencies}-attrs == 22.2.0
+Suggests:       %{python_for_dependencies}-iniconfig == 2.0.0
+Suggests:       %{python_for_dependencies}-pluggy == 1.0.0
+Suggests:       %{python_for_dependencies}-pytest == 7.2.2
 BuildArch:      noarch
 %python_subpackages
 
