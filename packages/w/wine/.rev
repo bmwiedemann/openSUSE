@@ -5131,4 +5131,17 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 9.6 release</comment>
     <requestid>1165935</requestid>
   </revision>
+  <revision rev="437" vrev="1">
+    <srcmd5>a3d89e9c125893dad447753caea2944d</srcmd5>
+    <version>9.7</version>
+    <time>1713891353</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 9.7 release
+  - Build system support for ARM64X.
+  - Some restructuration of the Vulkan driver interface.
+  - WIDL improvements for ARM support as well as SLTG typelibs.
+  - Various bug fixes.
+- update staging to 9.7 release</comment>
+    <requestid>1169634</requestid>
+  </revision>
 </revisionlist>

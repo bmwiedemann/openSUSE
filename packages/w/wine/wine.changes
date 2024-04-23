@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 20 09:36:04 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 9.7 release
+  - Build system support for ARM64X.
+  - Some restructuration of the Vulkan driver interface.
+  - WIDL improvements for ARM support as well as SLTG typelibs.
+  - Various bug fixes.
+- update staging to 9.7 release
+
+-------------------------------------------------------------------
 Sat Apr  6 15:01:06 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 9.6 release
