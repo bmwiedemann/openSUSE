@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 22 06:46:07 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Use tarball from GitHub (gh#romis2012/python-socks#30) to make
+  running the test suite possible.
+- Fix dependencies (bsc#1223181).
+
+-------------------------------------------------------------------
 Mon Jan  1 20:31:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.4:
