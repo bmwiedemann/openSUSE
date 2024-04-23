@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr  3 12:56:40 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Fix file permissions for google_authorized_principals binary (bsc#1222171)
+
+-------------------------------------------------------------------
+Fri Mar 22 13:20:40 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20240311.00 (bsc#1218548, bsc#1221900, bsc#1221901)
+  * pam: Bring back pam's account management implementation (#133)
+  * Change error messages when checking login policy (#129)
+  * Remove quintonamore from OWNERS (#128)
+
+-------------------------------------------------------------------
 Mon Feb 26 14:25:55 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add explicit versioned dependency on google-guest-agent (bsc#1219642)
