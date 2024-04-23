@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 21 22:22:11 UTC 2024 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.9.4
+  * Add matplotlib.backend entry points
+  * Build using JupyterLab 4
+- Use newer jupyterlab macros
+- Source is python3-only now
+- Use new license directory
+
+-------------------------------------------------------------------
 Tue Mar  5 18:20:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39: no longer supported since ipython 8.19

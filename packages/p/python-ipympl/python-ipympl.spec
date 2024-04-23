@@ -17,8 +17,8 @@
 
 
 %define skip_python39 1
-%define pyver   0.9.3
-%define jsver   0.11.3
+%define pyver   0.9.4
+%define jsver   0.11.4
 %bcond_with     test
 Name:           python-ipympl
 Version:        %{pyver}
@@ -27,7 +27,7 @@ Summary:        Matplotlib Jupyter Extension
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/matplotlib/ipympl
-Source0:        https://files.pythonhosted.org/packages/py2.py3/i/ipympl/ipympl-%{pyver}-py2.py3-none-any.whl
+Source0:        https://files.pythonhosted.org/packages/py3/i/ipympl/ipympl-%{pyver}-py3-none-any.whl
 Source1:        https://github.com/matplotlib/ipympl/raw/%{pyver}/docs/examples/full-example.ipynb
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module ipython < 9}
@@ -110,7 +110,7 @@ cp %{SOURCE1} .
 %jupyter_move_config
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_jupyter_prefix}
-cp %{buildroot}%{python3_sitelib}/ipympl-%{pyver}.dist-info/LICENSE .
+cp %{buildroot}%{python3_sitelib}/ipympl-%{pyver}.dist-info/licenses/LICENSE .
 
 %check
 %pytest --nbval full-example.ipynb
@@ -127,7 +127,6 @@ cp %{buildroot}%{python3_sitelib}/ipympl-%{pyver}.dist-info/LICENSE .
 
 %files -n jupyter-matplotlib-jupyterlab
 %license LICENSE
-%dir %{_jupyter_prefix}/labextensions
-%{_jupyter_prefix}/labextensions/jupyter-matplotlib
+%{_jupyter_labextensions_dir3}/jupyter-matplotlib
 
 %changelog

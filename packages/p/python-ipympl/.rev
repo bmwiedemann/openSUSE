@@ -167,4 +167,12 @@
     <comment>- Skip python39: no longer supported since ipython 8.19</comment>
     <requestid>1155321</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>400d25db829f0607fdcbeb20ef822da6</srcmd5>
+    <version>unknown</version>
+    <time>1713891358</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169635</requestid>
+  </revision>
 </revisionlist>
