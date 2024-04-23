@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr 20 13:42:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.0:
+  * Add support for urllib3 2.0
+  * Fix documentation
+  * Add support for binary serializer storage; useful with custom
+    serializers (such as pickle based), however all builtin
+    betamax serializers remain text based.
+  * Fix bug with new_episodes always trying to record.
+  * Improved documentation.
+  * This release drops support for Python 3.3; if you are still
+    using Python 3.3 update your Python or don't update to
+    betamax 0.8.2.
+  * This release is the first release that declares support for
+    Python 3.7, however previous versions most likely worked with
+    3.7 as well.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:22:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

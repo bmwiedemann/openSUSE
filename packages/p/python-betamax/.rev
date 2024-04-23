@@ -53,4 +53,25 @@
     <comment></comment>
     <requestid>1081982</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>59bf195a34b9ba16a89766ddd4b75ab9</srcmd5>
+    <version>0.9.0</version>
+    <time>1713891293</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.0:
+  * Add support for urllib3 2.0
+  * Fix documentation
+  * Add support for binary serializer storage; useful with custom
+    serializers (such as pickle based), however all builtin
+    betamax serializers remain text based.
+  * Fix bug with new_episodes always trying to record.
+  * Improved documentation.
+  * This release drops support for Python 3.3; if you are still
+    using Python 3.3 update your Python or don't update to
+    betamax 0.8.2.
+  * This release is the first release that declares support for
+    Python 3.7, however previous versions most likely worked with
+    3.7 as well.</comment>
+    <requestid>1169363</requestid>
+  </revision>
 </revisionlist>
