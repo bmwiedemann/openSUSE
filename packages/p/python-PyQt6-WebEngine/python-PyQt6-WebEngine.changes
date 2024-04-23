@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 21 13:58:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.7.0
+  * Add support for Qt 6.7
+
+-------------------------------------------------------------------
 Thu Jan 25 20:33:30 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Drop support-python3.6.patch
