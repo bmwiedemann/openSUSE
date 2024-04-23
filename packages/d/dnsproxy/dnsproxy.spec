@@ -17,7 +17,7 @@
 
 
 Name:           dnsproxy
-Version:        0.66.1
+Version:        0.70.0
 Release:        0
 Summary:        A DNS proxy server
 License:        Apache-2.0
@@ -26,7 +26,7 @@ URL:            https://github.com/AdguardTeam/dnsproxy
 Source:         dnsproxy-%{version}.tar
 Source1:        vendor.tar.zstd
 BuildRequires:  zstd
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.22
 
 %description
 A DNS proxy server that supports numerous protocols, including

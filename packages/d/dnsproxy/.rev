@@ -259,4 +259,12 @@
   * API Changes (forwarded request 1164159 from VaiTon)</comment>
     <requestid>1164182</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d2bcfeeea482e6e7e72817823e82a322</srcmd5>
+    <version>0.70.0</version>
+    <time>1713891329</time>
+    <user>anag+factory</user>
+    <comment>- Declare go &gt;= 1.22 in .spec, following upstream go.mod file (forwarded request 1169531 from VaiTon)</comment>
+    <requestid>1169559</requestid>
+  </revision>
 </revisionlist>

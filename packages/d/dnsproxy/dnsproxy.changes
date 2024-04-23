@@ -1,5 +1,48 @@
 -------------------------------------------------------------------
-Tue Apr 02 15:17:20 UTC 2024 - eyadlorenzo@gmail.com
+Sun Apr 21 15:15:49 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Declare go >= 1.22 in .spec, following upstream go.mod file
+
+-------------------------------------------------------------------
+Fri Apr 19 08:55:47 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.70.0:
+  * SOA and NS requests containing ARPA domains implying private IP
+    addresses are now treated as private requests, as was
+    previously the case only for PTR requests.
+
+-------------------------------------------------------------------
+Mon Apr 15 23:44:33 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.69.2:
+  * API changes: Error-prone proxy.BeforeRequestError
+
+- Update to version 0.69.1:
+  * Validations in proxy.New performed with the default values, not the ones from configuration.
+
+- Update to version 0.69.0:
+  * The quic-go dependency has been updated to v0.42.0.i
+  * Unspecified IP addresses no more checked when using proxy.UModeFastestAddr
+  * API changes
+
+-------------------------------------------------------------------
+Fri Apr 05 08:16:29 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.68.0:
+  * PTR requests for domains containing DNS64 prefixes are now
+    answered with NXDOMAIN if proxy.Config.UseDNS64 is set to 
+    true, but proxy.Config.UsePrivateRDNS is not.
+  * Fallback servers aren't used for the aforementioned requests,
+    as well as for all private RDNS requests.
+  * All the private RDNS requests coming from external 
+    (non-private) client are now answered with NXDOMAIN 
+    before proxy.RequestHandler.
+
+- Update to version 0.67.0
+  * No relevant changes
+
+-------------------------------------------------------------------
+Tue Apr 02 15:17:20 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.66.1:
   * DNS64-mapped PTR requests now checked for possible resolving recursion.
