@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-gunicorn
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -27,19 +27,20 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-gunicorn%{psuffix}
-Version:        21.2.0
+Version:        22.0.0
 Release:        0
 Summary:        WSGI HTTP Server for UNIX
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://gunicorn.org
 Source:         https://files.pythonhosted.org/packages/source/g/gunicorn/gunicorn-%{version}.tar.gz
-BuildRequires:  %{python_module importlib_metadata}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 3.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-evenlet
 Suggests:       python-gevent
 Suggests:       python-gthread
@@ -56,6 +57,7 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module gevent >= 1.4}
 BuildRequires:  %{python_module gunicorn}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
@@ -95,11 +97,11 @@ sed -i -e 's/--cov[^ ]*//' -e 's/--cov-report[^ ]*//' setup.cfg
 %else  # without test
 
 %build
-%python_build
+%pyproject_wheel
 sphinx-build -b html -d docs/build/doctrees docs/source docs/build/html
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/gunicorn
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
