@@ -663,4 +663,12 @@ please use same ADI as https://build.opensuse.org/request/show/902766</comment>
     <comment>version 1.11.64</comment>
     <requestid>1166637</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>89f0a97f22a644b821588f0d55fbb1af</srcmd5>
+    <version>1.11.65</version>
+    <time>1713891464</time>
+    <user>anag+factory</user>
+    <comment>1.11.65</comment>
+    <requestid>1169896</requestid>
+  </revision>
 </revisionlist>
