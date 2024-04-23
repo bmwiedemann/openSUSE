@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 21 15:16:37 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Retire Qt5, long live Qt6!
+- Fix plugin library path
+- Make out-of-tree build
+
+-------------------------------------------------------------------
 Sat Feb 24 15:14:47 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Remove non-fatally failing execution of setup_rules.sh. The actual
