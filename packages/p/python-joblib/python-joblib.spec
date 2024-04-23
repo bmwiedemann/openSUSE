@@ -1,7 +1,7 @@
 #
 # spec file for package python-joblib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-joblib
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        Module for using Python functions as pipeline jobs
 License:        BSD-3-Clause
 URL:            https://github.com/joblib/joblib
 Source:         https://files.pythonhosted.org/packages/source/j/joblib/joblib-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#joblib/joblib#05caf0772d605799e5d2337018fd32ac829b37aa
-Patch0:         avoid-deprecated-ast.patch
 # PATCH-FIX-OPENSUSE Also avoid a DeprecationWarning when using fork() under
 # multiprocessing
 Patch1:         also-filter-new-fork-warning.patch
