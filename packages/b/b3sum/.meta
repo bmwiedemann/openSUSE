@@ -1,0 +1,6 @@
+<package name="b3sum" project="openSUSE:Factory">
+  <title>BLAKE3</title>
+  <description>Command line implementation of the BLAKE3 hash function	</description>
+  <devel project="security:privacy" package="b3sum"/>
+  <url>https://github.com/BLAKE3-team/BLAKE3</url>
+</package>

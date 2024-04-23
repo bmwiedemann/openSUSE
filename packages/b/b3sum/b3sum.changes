@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Mon Apr 22 14:37:02 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Package changes:
+  * Swap from obsolete tar_scm to obs_scm
+  * Remove obsolete cargo_audit (now part of cargo_vendor)
+  * Enable tests
+- Update to version 1.5.1:
+  * The Rust crate is now compatible with Miri.
+  * ~1% performance improvement on Arm NEON
+  * Various fixes and improvements in the CMake build.
+  * The MSRV of b3sum is now 1.74.1. (The MSRV of the library crate
+    is unchanged, 1.66.1.)
+
+-------------------------------------------------------------------
+Sun Dec 31 09:06:17 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 1.5.0:
+  * The Rust crate's Hasher type has gained new helper methods
+    for common forms of IO: update_reader, update_mmap, and
+    update_mmap_rayon. The latter matches the default behavior
+    of b3sum. The mmap methods are gated by the new "mmap" Cargo
+    feature.
+  * Most of the Rust crate's public types now implement the Zeroize
+    trait. This is gated by the new "zeroize" Cargo feature.
+  * The Rust crate's Hash types now implements the serde Serialize
+    and Deserialize traits. This is gated by the new "serde" Cargo
+    feature.
+  * NEON support is now disabled by default on big-endian AArch64.
+    Previously this was a build error if the caller didn't
+    explicitly disable it.
+  
+-------------------------------------------------------------------
+Fri Aug  4 04:05:18 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Initial package of blake3/b3sum 1.4.1 for openSUSE
