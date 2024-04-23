@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>288737b7412db6628730890de6ba4a12</srcmd5>
+    <version>0.9.1</version>
+    <time>1713891355</time>
+    <user>anag+factory</user>
+    <comment>Required as dependency of python-python-socks and sr#1169638.</comment>
+    <requestid>1169639</requestid>
+  </revision>
+</revisionlist>
