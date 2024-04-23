@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr 22 23:11:00 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.5.1:
+  + Features:
+    - Special categories can now have inline keys, e.g.
+      device[my-mouse-v1]:sensitivity = 1
+    - You can now mark areas to not throw errors with # hyprlang
+      noerror true and then later # hyprlang noerror false to
+      revert back
+  + Fixes:
+    - core: Fix recursive variables in RHS of variable assignment
+  + MRs:
+    - config.cpp: fix environ for Apple
+    - Fix: Comment escaping with multiple #
+
+-------------------------------------------------------------------
 Sat Mar 16 19:09:00 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.5.0:
