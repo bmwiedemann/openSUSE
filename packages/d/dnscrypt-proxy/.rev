@@ -307,4 +307,12 @@ dnscrypt-proxy v2 differs significantly from v1.</comment>
     <comment>use systemd sysusers</comment>
     <requestid>1144378</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>17b96079696ae133ab1877909a3daaf7</srcmd5>
+    <version>2.1.5</version>
+    <time>1713891388</time>
+    <user>anag+factory</user>
+    <comment>added patch quic-go.patch (boo#1222473)</comment>
+    <requestid>1169724</requestid>
+  </revision>
 </revisionlist>

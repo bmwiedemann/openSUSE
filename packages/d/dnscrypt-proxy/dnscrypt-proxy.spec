@@ -43,6 +43,8 @@ Source5:        README.openSUSE
 Source6:        %{name}.socket.conf
 # dnscrypt user configuration
 Source7:        %{user_group}-user.conf
+# can be dropped in next release with quic-go v0.42 included (boo#1222473)
+Patch0:         quic-go.patch
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
@@ -67,7 +69,7 @@ such as DNSCrypt v2, DNS-over-HTTPS, Anonymized DNSCrypt
 and ODoH (Oblivious DoH).
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 # replace with home directory from spec
 sed -i "s/home_dir_placeholder/%{home_dir_escaped}/" %{SOURCE7}
