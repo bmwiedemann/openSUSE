@@ -142,4 +142,26 @@
     <comment></comment>
     <requestid>1081807</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cc71c5bd7ac9926ef18526bd9e9e66a5</srcmd5>
+    <version>2.22</version>
+    <time>1713891299</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.22:
+  * Add missing SCHAR limit defines
+  * Use proper SPDX identifier
+  * Add Python 3.11 as a supported version
+  * Fix multi-pragma/single statement blocks (#479)
+  * Add an encoding parameter to parse_file
+  * Feature/add pragma support
+  * Set up permissions to ci.yml
+  * _build_tables: Invalidate cache before importing generated modules
+  * Upgrade GitHub Actions
+  * Create a Security Policy
+  * New example to generate AST from scratch
+  * Add support for Python 3.12
+  * ply: Make generated lextab.py deterministic
+- drop fix-lexer-build.patch (upstream)</comment>
+    <requestid>1169471</requestid>
+  </revision>
 </revisionlist>

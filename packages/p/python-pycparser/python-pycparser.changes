@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Apr 21 08:39:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.22:
+  * Add missing SCHAR limit defines
+  * Use proper SPDX identifier
+  * Add Python 3.11 as a supported version
+  * Fix multi-pragma/single statement blocks (#479)
+  * Add an encoding parameter to parse_file
+  * Feature/add pragma support
+  * Set up permissions to ci.yml
+  * _build_tables: Invalidate cache before importing generated modules
+  * Upgrade GitHub Actions
+  * Create a Security Policy
+  * New example to generate AST from scratch
+  * Add support for Python 3.12
+  * ply: Make generated lextab.py deterministic
+- drop fix-lexer-build.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:30:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -17,7 +36,7 @@ Mon Nov 29 15:44:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
   - Support for modern Python versions (3.9 and 3.10)
   - Fix support for structs with nested enums (#387)
   - Multiple small bug fixes
- 
+
 -------------------------------------------------------------------
 Mon Mar  9 20:59:13 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
