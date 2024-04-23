@@ -649,4 +649,13 @@
     <comment></comment>
     <requestid>1149083</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2a24bfbf51a911c31aa4f827bf55d195</srcmd5>
+    <version>1.4.2</version>
+    <time>1713891291</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.2:
+  * This release only includes support for numpy 2.</comment>
+    <requestid>1169326</requestid>
+  </revision>
 </revisionlist>

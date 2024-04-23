@@ -48,7 +48,7 @@ ExclusiveArch:  donotbuild
 %bcond_with pytestcolor
 
 Name:           python-scikit-learn%{psuffix}
-Version:        1.4.1.post1
+Version:        1.4.2
 Release:        0
 Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 15 09:06:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.2:
+  * This release only includes support for numpy 2.
+
+-------------------------------------------------------------------
 Tue Feb 20 14:17:06 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.4.1.post1
