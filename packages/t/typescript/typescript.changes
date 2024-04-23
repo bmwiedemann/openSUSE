@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 21 14:07:03 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.4.5
+  * Fix: type assertions affect the type narrowing of the subsequent code
+  * Fix: Don't propagate partial union/intersection properties between caches
+  * Fix: Mapped type reported as incompatible when passed through another mapped type (5.4 regression)
+  * Fix: No auto-import from aliased symbol from ts files in js files
+  * fix type import check for default-import/re-export in js files
+
+- remove useless empty %check section to the .spec
+
+-------------------------------------------------------------------
 Sun Apr  7 16:09:40 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.4.4

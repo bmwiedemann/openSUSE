@@ -17,7 +17,7 @@
 
 
 Name:           typescript
-Version:        5.4.4
+Version:        5.4.5
 Release:        0
 Summary:        A language for application scale JavaScript development
 License:        Apache-2.0
@@ -36,7 +36,7 @@ for large-scale JavaScript applications for any browser, for any host, on any
 OS. TypeScript compiles to readable, standards-based JavaScript.
 
 %prep
-%setup -q -n package
+%autosetup -n package
 
 sed -i 's/\r$//' ThirdPartyNoticeText.txt
 sed -i 's/\r$//' README.md
@@ -53,8 +53,6 @@ for file in %{buildroot}%{_bindir}/ts* ; do
 done
 
 %fdupes %{buildroot}
-
-%check
 
 %files
 %license LICENSE.txt ThirdPartyNoticeText.txt
