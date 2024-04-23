@@ -19,7 +19,7 @@
 %bcond_with docs
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp
-Version:        3.9.3
+Version:        3.9.5
 Release:        0
 Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0

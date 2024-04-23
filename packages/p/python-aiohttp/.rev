@@ -492,4 +492,41 @@
     <comment></comment>
     <requestid>1154997</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>59c2d03696aa1c231ada05d014a532b9</srcmd5>
+    <version>3.9.5</version>
+    <time>1713891294</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.9.5:
+  * Fixed &quot;Unclosed client session&quot; when initialization of
+    :py:class:`~aiohttp.ClientSession` fails
+  * Fixed regression (from :pr:`8280`) with adding Content-
+    Disposition to the form-data part after appending to writer
+  * Added default Content-Disposition in multipart/form-data
+    responses to avoid broken form-data responses
+  * The asynchronous internals now set the underlying causes when
+    assigning exceptions to the future objects
+  * Treated values of Accept-Encoding header as case-insensitive
+    when checking for gzip files
+  * Improved the DNS resolution performance on cache hit
+  * Changed the type annotations to allow dict on
+    :meth:`aiohttp.MultipartWriter.append`,
+    :meth:`aiohttp.MultipartWriter.append_json` and
+    :meth:`aiohttp.MultipartWriter.append_form` -- by
+    :user:`cakemanny` Related issues and pull requests on GitHub:
+    :issue:`7741`.
+  * Ensure websocket transport is closed when client does not
+    close it
+  * Leave websocket transport open if receive times out or is
+    cancelled
+  * Fixed content not being read when an upgrade request was not
+    supported with the pure Python implementation.
+  * Fixed a race condition with incoming connections during
+    server shutdown
+  * Fixed multipart/form-data compliance with RFC 7578
+  * Fixed blocking I/O in the event loop while processing files
+    in a POST request
+  * Escaped filenames in static view</comment>
+    <requestid>1169371</requestid>
+  </revision>
 </revisionlist>
