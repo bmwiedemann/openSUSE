@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 20 07:43:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- updatge to 2024.4.16:
+  * Git issue 525: segfault when fuzzy matching empty list
+  * The escape function no longer escapes \x00. It's not necessary.
+    Inline flags can now be turned off and apply to what follows.
+    Added \R to match line endings.
+
+-------------------------------------------------------------------
 Mon Dec  4 11:37:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.10.10:

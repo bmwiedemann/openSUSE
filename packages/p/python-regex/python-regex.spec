@@ -1,7 +1,7 @@
 #
 # spec file for package python-regex
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-regex
-Version:        2023.10.3
+Version:        2024.4.16
 Release:        0
 Summary:        Alternative regular expression module for Python
 License:        Apache-2.0

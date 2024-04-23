@@ -226,4 +226,16 @@
   * For fullmatch, added check for end/start of string for</comment>
     <requestid>1130727</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7968b17fe7086c6cf6e43b788070f536</srcmd5>
+    <version>2024.4.16</version>
+    <time>1713891287</time>
+    <user>anag+factory</user>
+    <comment>- updatge to 2024.4.16:
+  * Git issue 525: segfault when fuzzy matching empty list
+  * The escape function no longer escapes \x00. It's not necessary.
+    Inline flags can now be turned off and apply to what follows.
+    Added \R to match line endings.</comment>
+    <requestid>1169318</requestid>
+  </revision>
 </revisionlist>
