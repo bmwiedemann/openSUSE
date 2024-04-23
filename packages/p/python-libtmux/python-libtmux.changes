@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 23 08:02:41 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.37.0:
+  Tests
+  * pytest-xdist support in #522
+  * test stability improvements in #522
+    - retry_until() tests: Relax clock in assert.
+    - tests/test_pane.py::test_capture_pane_start: Use
+      retry_until() to poll, improve correctness of test.
+
+-------------------------------------------------------------------
 Sun Mar 24 18:12:11 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.36.0:

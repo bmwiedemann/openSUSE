@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-libtmux
-Version:        0.36.0
+Version:        0.37.0
 Release:        0
 Summary:        Python API / wrapper for tmux
 License:        MIT
