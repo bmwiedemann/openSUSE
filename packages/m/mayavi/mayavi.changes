@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 20 14:20:07 UTC 2024 - Benjamin Greiner <code@bnavigator.de>
+
+- Pin to numpy < 2: gh#enthought/mayavi#1294
+
+-------------------------------------------------------------------
 Fri Jan 26 19:59:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add mayavi-pr1290-vtk-9.3.patch for VTK 9.3

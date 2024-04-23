@@ -39,7 +39,8 @@ BuildRequires:  python3-Pygments
 BuildRequires:  python3-apptools
 BuildRequires:  python3-devel >= 3.7
 BuildRequires:  python3-envisage
-BuildRequires:  python3-numpy-devel
+# fails to build for 4.8.1, unpin on next release : gh#enthought/mayavi#1294
+BuildRequires:  python3-numpy-devel < 2
 BuildRequires:  python3-packaging
 BuildRequires:  python3-pip
 BuildRequires:  python3-pyface >= 6.1.1
@@ -55,7 +56,8 @@ BuildRequires:  vtk-devel
 Requires:       python3-Pygments
 Requires:       python3-apptools
 Requires:       python3-envisage
-Requires:       python3-numpy
+# keep in sync with numpy-devel above
+Requires:       python3-numpy < 2
 Requires:       python3-packaging
 Requires:       python3-pyface >= 6.1.1
 Requires:       python3-traits >= 6.0.0
