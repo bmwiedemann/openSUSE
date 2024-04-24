@@ -126,8 +126,6 @@ install -p -m 644 -D pasta.pp %{buildroot}%{_datadir}/selinux/packages/%{name}/p
 popd
 %endif
 
-%check
-
 %if %{with apparmor}
 %post
 %apparmor_reload %{_sysconfdir}/apparmor.d/usr.bin.passt
