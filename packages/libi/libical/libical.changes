@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 22 09:16:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.18:
+  * Requires CMake v3.5.0 or higher
+  * Escape ^ (U+005E) character in parameter values according to
+    RFC 6868
+  * New CMake option LIBICAL_BUILD_EXAMPLES to disable building
+    the examples
+  * Should be able to use the project as a submodule
+  * Built-in timezones updated to tzdata2024a
+
+-------------------------------------------------------------------
 Sat Nov 18 19:52:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.17:
