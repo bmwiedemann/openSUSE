@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 23 12:52:21 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch fix-meson-multiple-python-versions.patch:
+  * Ensure meson executes sys.executable when testing Cython.
+
+-------------------------------------------------------------------
 Tue Apr 16 19:12:21 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.26.4

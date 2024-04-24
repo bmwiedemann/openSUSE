@@ -90,6 +90,8 @@ Patch1:         numpy-1.9.0-remove-__declspec.patch
 Patch2:         0001-BUG-Fix-test_impossible_feature_enable-failing-witho.patch
 # PATCH-FIX-UPSTREAM https://github.com/numpy/meson/pull/12
 Patch3:         0001-feature-module-Fix-handling-of-multiple-conflicts-pe.patch
+# PATCH-FIX-UPSTREAM Based on gh#numpy/numpy#25839
+Patch4:         fix-meson-multiple-python-versions.patch
 BuildRequires:  %{python_module Cython >= 3.0}
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module devel}
@@ -366,8 +368,7 @@ export PYTHONPATH=%{buildroot}%{$python_sitearch}
 export PYTHONDONTWRITEBYTECODE=1
 [ -n "$test_failok" ] && $python runobstest.py "${test_failok:4}" ||:
 # test_new_policy: duplicates test runs and output and does not follow our deselection
-# test_cython: https://github.com/numpy/numpy/issues/24956
-$python runobstest.py "not (test_new_policy ${test_failok} or slow or test_cython)"
+$python runobstest.py "not (test_new_policy ${test_failok} or slow)"
 }
 
 popd
