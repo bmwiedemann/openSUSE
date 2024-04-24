@@ -5639,4 +5639,15 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>1164441</requestid>
   </revision>
+  <revision rev="501" vrev="373">
+    <srcmd5>17081da6ef89cfe84de0b51e58a131fa</srcmd5>
+    <version>unknown</version>
+    <time>1713964388</time>
+    <user>anag+factory</user>
+    <comment>- Update to bugfix release 24.0.5
+- supersedes mesa-fix-llvm18.patch
+- adjusted 0004-glx-pass-implicit-load-param-through-allocation.patch,
+  0010-glx-silence-more-implicit-load-zink-errors.patch</comment>
+    <requestid>1169406</requestid>
+  </revision>
 </revisionlist>

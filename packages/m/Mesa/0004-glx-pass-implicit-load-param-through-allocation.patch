@@ -7,10 +7,10 @@ Subject: [PATCH 4/9] glx: pass implicit load param through allocation
  src/glx/glxext.c | 14 +++++++-------
  1 file changed, 7 insertions(+), 7 deletions(-)
 
-Index: mesa-24.0.3/src/glx/glxext.c
+Index: mesa-24.0.5/src/glx/glxext.c
 ===================================================================
---- mesa-24.0.3.orig/src/glx/glxext.c
-+++ mesa-24.0.3/src/glx/glxext.c
+--- mesa-24.0.5.orig/src/glx/glxext.c
++++ mesa-24.0.5/src/glx/glxext.c
 @@ -763,7 +763,7 @@ glx_screen_cleanup(struct glx_screen *ps
  ** If that works then fetch the per screen configs data.
  */
@@ -44,7 +44,7 @@ Index: mesa-24.0.3/src/glx/glxext.c
  #endif /* GLX_DIRECT_RENDERING && !GLX_USE_APPLEGL */
  
        bool indirect = false;
-@@ -929,14 +929,14 @@ __glXInitialize(Display * dpy)
+@@ -930,14 +930,14 @@ __glXInitialize(Display * dpy)
     }
  #endif
  
@@ -55,16 +55,16 @@ Index: mesa-24.0.3/src/glx/glxext.c
        if (try_zink) {
           free(dpyPriv->screens);
           dpyPriv->driswDisplay->destroyDisplay(dpyPriv->driswDisplay);
-          dpyPriv->driswDisplay = driswCreateDisplay(dpy, false);
+          dpyPriv->driswDisplay = driswCreateDisplay(dpy, TRY_ZINK_NO);
 -         fail = !AllocAndFetchScreenConfigs(dpy, dpyPriv, False);
 +         fail = !AllocAndFetchScreenConfigs(dpy, dpyPriv, False, true);
        }
  #endif
        if (fail) {
-Index: mesa-24.0.3/src/glx/glxclient.h
+Index: mesa-24.0.5/src/glx/glxclient.h
 ===================================================================
---- mesa-24.0.3.orig/src/glx/glxclient.h
-+++ mesa-24.0.3/src/glx/glxclient.h
+--- mesa-24.0.5.orig/src/glx/glxclient.h
++++ mesa-24.0.5/src/glx/glxclient.h
 @@ -78,6 +78,8 @@ typedef struct __GLXDRIdisplayRec __GLXD
  typedef struct __GLXDRIscreenRec __GLXDRIscreen;
  typedef struct __GLXDRIdrawableRec __GLXDRIdrawable;

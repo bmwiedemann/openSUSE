@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 20 12:23:09 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to bugfix release 24.0.5
+- supersedes mesa-fix-llvm18.patch
+- adjusted 0004-glx-pass-implicit-load-param-through-allocation.patch,
+  0010-glx-silence-more-implicit-load-zink-errors.patch
+
+-------------------------------------------------------------------
 Wed Apr  3 06:55:12 UTC 2024 - Fei Yang <io@feiyang.eu.org>
 
 - fix missing free codecs in builds with non-free codecs enabled

@@ -7,10 +7,10 @@ Subject: [PATCH] glx: silence more implicit-load zink errors
  src/glx/drisw_glx.c | 5 +++--
  1 file changed, 3 insertions(+), 2 deletions(-)
 
-Index: mesa-24.0.3/src/glx/drisw_glx.c
+Index: mesa-24.0.5/src/glx/drisw_glx.c
 ===================================================================
---- mesa-24.0.3.orig/src/glx/drisw_glx.c
-+++ mesa-24.0.3/src/glx/drisw_glx.c
+--- mesa-24.0.5.orig/src/glx/drisw_glx.c
++++ mesa-24.0.5/src/glx/drisw_glx.c
 @@ -980,7 +980,8 @@ driswCreateScreenDriver(int screen, stru
                                      extensions,
                                      &driver_configs, implicit, psc);
@@ -21,30 +21,3 @@ Index: mesa-24.0.3/src/glx/drisw_glx.c
        goto handle_error;
     }
  
-@@ -1049,7 +1050,8 @@ driswCreateScreenDriver(int screen, stru
-    glx_screen_cleanup(&psc->base);
-    free(psc);
- 
--   CriticalErrorMessageF("failed to load driver: %s\n", driver);
-+   if (pdpyp->zink == TRY_ZINK_YES && !implicit)
-+      CriticalErrorMessageF("failed to load driver: %s\n", driver);
- 
-    return NULL;
- }
-Index: mesa-24.0.3/src/glx/glxclient.h
-===================================================================
---- mesa-24.0.3.orig/src/glx/glxclient.h
-+++ mesa-24.0.3/src/glx/glxclient.h
-@@ -133,6 +133,12 @@ struct __GLXDRIdrawableRec
-    int refcount;
- };
- 
-+enum try_zink {
-+   TRY_ZINK_NO,
-+   TRY_ZINK_INFER,
-+   TRY_ZINK_YES,
-+};
-+
- /*
- ** Function to create and DRI display data and initialize the display
- ** dependent methods.

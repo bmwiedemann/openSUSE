@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 24.0.3
+%define _version 24.0.5
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -123,7 +123,7 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        24.0.3
+Version:        24.0.5
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -142,8 +142,6 @@ Patch11:        u_0001-intel-genxml-Drop-from-__future__-import-annotations.patc
 Patch12:        u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
 Patch13:        python36-buildfix1.patch
 Patch14:        python36-buildfix2.patch
-# PATCH-FIX-UPSTREAM - boo#1221664
-Patch15:        mesa-fix-llvm18.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
@@ -773,7 +771,6 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %if 0%{?suse_version} < 1550
 %patch -P 14 -p1
 %endif
-%patch -P 15 -p1
 # no longer needed since gstreamer-plugins-vaapi 1.18.4
 %if 0%{?suse_version} < 1550
 %patch -P 54 -p1
