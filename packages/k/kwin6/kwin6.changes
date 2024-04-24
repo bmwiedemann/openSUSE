@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 22 21:15:19 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.4.1:
+  * New bugfix release
+- Changes since 6.0.4:
+  * Fall back to breeze_cursors if neither configured nor default can be loaded
+  * scene/workspacescene: don't check direct scanout candidates for a pixmap
+    (kde#485639, kde#485730, kde#485712)
+
+-------------------------------------------------------------------
 Wed Apr 17 08:12:44 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.4:
