@@ -78,4 +78,23 @@ I am sorry for the messy submission before. (forwarded request 1139042 from iDes
     <comment>needed for vulkan 280</comment>
     <requestid>1160586</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>11be9220520739abadb6bec18b9414c5</srcmd5>
+    <version>6.1.1</version>
+    <time>1713964401</time>
+    <user>anag+factory</user>
+    <comment>- Address boo#1223215/CVE-2023-49501: add patch
+  0001-avfilter-asrc_afirsrc-fix-by-one-smaller-allocation-.patch
+- Address boo#1223235/CVE-2023-49502: add patch
+  0001-avfilter-bwdif-account-for-chroma-sub-sampling-in-mi.patch
+- Address boo#1222730/CVE-2023-49528: add patches
+  0001-avfilter-af_dialoguenhance-fix-overreads.patch,
+  0001-avfilter-af_dialoguenhance-simplify-channels-copy.patch,
+  0001-avfilter-af_dialoguenhance-do-output-scaling-once.patch
+- Address boo#1223070/CVE-2024-31578: add patch
+  0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch
+- Address boo#1223085/CVE-2024-31582: add patch
+  0001-avfilter-vf_codecview-fix-heap-buffer-overflow.patch</comment>
+    <requestid>1169718</requestid>
+  </revision>
 </revisionlist>

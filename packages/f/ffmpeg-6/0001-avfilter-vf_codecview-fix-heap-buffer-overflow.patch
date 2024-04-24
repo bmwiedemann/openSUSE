@@ -1,0 +1,31 @@
+From 99debe5f823f45a482e1dc08de35879aa9c74bd2 Mon Sep 17 00:00:00 2001
+From: Zhao Zhili <zhilizhao@tencent.com>
+Date: Fri, 29 Dec 2023 05:56:43 +0800
+Subject: [PATCH] avfilter/vf_codecview: fix heap buffer overflow
+References: https://bugzilla.opensuse.org/1223085
+References: CVE-2024-31582
+
+And improve the performance by a little bit.
+
+Signed-off-by: Zhao Zhili <zhilizhao@tencent.com>
+---
+ libavfilter/vf_codecview.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/libavfilter/vf_codecview.c b/libavfilter/vf_codecview.c
+index 55d9c8c04f..f65ccbda70 100644
+--- a/libavfilter/vf_codecview.c
++++ b/libavfilter/vf_codecview.c
+@@ -216,9 +216,6 @@ static void draw_block_rectangle(uint8_t *buf, int sx, int sy, int w, int h, ptr
+         buf[sx + w - 1] = color;
+         buf += stride;
+     }
+-
+-    for (int x = sx; x < sx + w; x++)
+-        buf[x] = color;
+ }
+ 
+ static int filter_frame(AVFilterLink *inlink, AVFrame *frame)
+-- 
+2.44.0
+

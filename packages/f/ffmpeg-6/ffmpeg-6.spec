@@ -111,7 +111,14 @@ Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch6:         0001-avcodec-tests-rename-the-bundled-Mesa-AV1-vulkan-vid.patch
-Patch10:        ffmpeg-chromium.patch
+Patch7:         0001-avfilter-asrc_afirsrc-fix-by-one-smaller-allocation-.patch
+Patch8:         0001-avfilter-bwdif-account-for-chroma-sub-sampling-in-mi.patch
+Patch9:         0001-avfilter-af_dialoguenhance-fix-overreads.patch
+Patch10:        0001-avfilter-af_dialoguenhance-simplify-channels-copy.patch
+Patch11:        0001-avfilter-af_dialoguenhance-do-output-scaling-once.patch
+Patch12:        0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch
+Patch13:        0001-avfilter-vf_codecview-fix-heap-buffer-overflow.patch
+Patch90:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 
 BuildRequires:  ladspa-devel
@@ -824,7 +831,15 @@ Patch1:         ffmpeg-arm6l.diff
 Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
-Patch10:        ffmpeg-chromium.patch
+Patch6:         0001-avcodec-tests-rename-the-bundled-Mesa-AV1-vulkan-vid.patch
+Patch7:         0001-avfilter-asrc_afirsrc-fix-by-one-smaller-allocation-.patch
+Patch8:         0001-avfilter-bwdif-account-for-chroma-sub-sampling-in-mi.patch
+Patch9:         0001-avfilter-af_dialoguenhance-fix-overreads.patch
+Patch10:        0001-avfilter-af_dialoguenhance-simplify-channels-copy.patch
+Patch11:        0001-avfilter-af_dialoguenhance-do-output-scaling-once.patch
+Patch12:        0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch
+Patch13:        0001-avfilter-vf_codecview-fix-heap-buffer-overflow.patch
+Patch90:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs
