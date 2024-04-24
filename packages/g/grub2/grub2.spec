@@ -177,7 +177,6 @@ Source1:        90_persistent
 Source2:        grub.default
 Source4:        grub2.rpmlintrc
 Source6:        grub2-once
-Source7:        20_memtest86+
 Source8:        README.ibm3215
 Source10:       openSUSE-UEFI-CA-Certificate.crt
 Source11:       SLES-UEFI-CA-Certificate.crt
@@ -1009,9 +1008,6 @@ find %{buildroot}/%{_datadir}/%{name} \
 # Script that makes part of grub.cfg persist across updates
 install -m 755 %{SOURCE1} %{buildroot}/%{_sysconfdir}/grub.d/
 
-# Script to generate memtest86+ menu entry
-install -m 644 %{SOURCE7} %{buildroot}/%{_sysconfdir}/grub.d/
-
 # Ghost config file
 install -d %{buildroot}/boot/%{name}
 touch %{buildroot}/boot/%{name}/grub.cfg
@@ -1037,10 +1033,6 @@ install -m 755 -D %{SOURCE19} %{buildroot}/%{_libexecdir}/grub2-instdev-fixup.pl
 %endif
 
 R="%{buildroot}"
-%ifarch %{ix86} x86_64
-%else
-rm -f $R%{_sysconfdir}/grub.d/20_memtest86+
-%endif
 
 %ifarch ppc ppc64 ppc64le
 rm -f $R%{_sysconfdir}/grub.d/95_textmode
@@ -1173,9 +1165,6 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %config(noreplace) %{_sysconfdir}/grub.d/90_persistent
 %ifnarch ppc ppc64 ppc64le
 %config(noreplace) %{_sysconfdir}/grub.d/95_textmode
-%endif
-%ifarch %{ix86} x86_64
-%config(noreplace) %{_sysconfdir}/grub.d/20_memtest86+
 %endif
 %ifarch ppc ppc64 ppc64le
 %config(noreplace) %{_sysconfdir}/grub.d/20_ppc_terminfo

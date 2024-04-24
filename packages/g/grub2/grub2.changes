@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 19 21:50:53 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- remove deprecated file 20_memtest86+
+  * a similar file is provided by the package memtest86+
+
+-------------------------------------------------------------------
 Thu Apr 11 02:55:05 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Fix the compatibility issue with bash-completion 2.12
