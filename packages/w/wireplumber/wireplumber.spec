@@ -22,7 +22,7 @@
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -30,9 +30,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
-Patch0:         0001-core-set-context.modules.allow-empty-to-silence-warning-in.patch
-Patch1:         0002-monitor-utils-clear-cam-data-after-creating-nodes.patch
-Patch2:         0003-monitors_bluez-fix-BAP-device-set-node-naming.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz
