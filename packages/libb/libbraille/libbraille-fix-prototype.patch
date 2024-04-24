@@ -1,0 +1,14 @@
+diff -urp libbraille-0.19.0.orig/backend/baum/brl.c libbraille-0.19.0/backend/baum/brl.c
+--- libbraille-0.19.0.orig/backend/baum/brl.c	2006-03-03 18:31:25.000000000 -0600
++++ libbraille-0.19.0/backend/baum/brl.c	2024-04-21 12:02:18.174577670 -0500
+@@ -29,8 +29,8 @@
+ static char (*drvinit_func) (brli_term *term, const char *pathname);
+ static char (*drvclose_func) (brli_term *term);
+ static int (*write_func) (brli_term *term, char *bytes, int size);
+-static int (*read_byte_func) (brli_term *term, char *byte, int timeout);
+-static int (*read_bytes_func) (brli_term *term, char *bytes, int size, int timeout);
++static int (*read_byte_func) (brli_term *term, unsigned char *byte, int timeout);
++static int (*read_bytes_func) (brli_term *term, unsigned char *bytes, int size, int timeout);
+ 
+ #define ESCAPE 0x1B
+ #define TSP_DATA_SIZE 5

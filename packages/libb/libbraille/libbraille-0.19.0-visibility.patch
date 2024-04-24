@@ -1,7 +1,6 @@
-Index: configure.ac
-===================================================================
---- configure.ac.orig	2006-03-04 01:31:27.000000000 +0100
-+++ configure.ac	2009-10-07 01:53:26.000000000 +0200
+diff -urp libbraille-0.19.0.orig/configure.ac libbraille-0.19.0/configure.ac
+--- libbraille-0.19.0.orig/configure.ac	2006-03-03 18:31:27.000000000 -0600
++++ libbraille-0.19.0/configure.ac	2024-04-21 12:08:43.799885754 -0500
 @@ -208,6 +208,44 @@ AC_SUBST(JAVA_INC)
  AC_SUBST(JAVA_INC_NATIVE)
  AM_CONDITIONAL(JAVAWRAPPER, test x$enable_java = xyes)
@@ -47,10 +46,9 @@ Index: configure.ac
  # Finally create all the generated files
  # The configure script takes "file.in" and substitutes variables to produce
  # "file".  In this case we are just generating the Makefiles, but this could
-Index: include/braille.h
-===================================================================
---- include/braille.h.orig	2006-03-04 01:31:25.000000000 +0100
-+++ include/braille.h	2009-10-07 02:08:27.000000000 +0200
+diff -urp libbraille-0.19.0.orig/include/braille.h libbraille-0.19.0/include/braille.h
+--- libbraille-0.19.0.orig/include/braille.h	2006-03-03 18:31:25.000000000 -0600
++++ libbraille-0.19.0/include/braille.h	2024-04-21 12:08:43.799885754 -0500
 @@ -25,13 +25,7 @@ extern "C" {
  // that uses this DLL. This way any other project whose source files include this file see 
  // LIBBRAILLE_API functions as being imported from a DLL, wheras this DLL sees symbols

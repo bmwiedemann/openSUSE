@@ -1,7 +1,7 @@
 #
 # spec file for package libbraille
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ URL:            https://sourceforge.net/projects/libbraille/files/libbraille/
 Source:         http://downloads.sourceforge.net/project/libbraille/libbraille/libbraille-%{version}/libbraille-%{version}.tar.gz
 # PATCH-MISSING-TAG -- See http://en.opensuse.org/Packaging/Patches
 Patch0:         libbraille-0.19.0-visibility.patch
+# PATCH-FIX-UPSTREAM libbraille-fix-prototype.patch
+Patch1:         libbraille-fix-prototype.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  libusb-devel
@@ -92,7 +94,7 @@ write text on the display, directly draw dots, or get the value of
 keys pressed on the Braille keyboard.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 
 %build
 autoreconf -fi

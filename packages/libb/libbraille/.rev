@@ -139,4 +139,14 @@
   %patchN (forwarded request 1153436 from pgajdos)</comment>
     <requestid>1153780</requestid>
   </revision>
+  <revision rev="19" vrev="26">
+    <srcmd5>40a06b12c3725e8b37abbfb3a4dc666d</srcmd5>
+    <version>0.19.0</version>
+    <time>1713964394</time>
+    <user>anag+factory</user>
+    <comment>- Rebuild libbraille-0.19.0-visibility.patch to apply with -p1,
+  and adjust autosetup.
+-  Add libbraille-fix-prototype.patch: fix build with gcc 14. (forwarded request 1169554 from mgorse)</comment>
+    <requestid>1169602</requestid>
+  </revision>
 </revisionlist>

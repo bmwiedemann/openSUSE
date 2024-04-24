@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 21 17:09:03 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Rebuild libbraille-0.19.0-visibility.patch to apply with -p1,
+  and adjust autosetup.
+-  Add libbraille-fix-prototype.patch: fix build with gcc 14.
+
+-------------------------------------------------------------------
 Thu Feb 29 15:35:25 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
