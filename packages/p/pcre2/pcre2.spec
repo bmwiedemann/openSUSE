@@ -1,7 +1,7 @@
 #
 # spec file for package pcre2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -39,7 +39,6 @@ BuildRequires:  libedit-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
-%{?suse_build_hwcaps_libs}
 
 %description
 The PCRE2 library is a set of functions that implement regular
