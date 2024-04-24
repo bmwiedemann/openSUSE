@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package lua-luarocks
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define flavor @BUILD_FLAVOR@%{nil}
 %define mod_name luarocks
 %define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
-Version:        3.9.1
+Version:        3.11.0
 Release:        0
 Summary:        A deployment and management system for Lua modules
 License:        MIT
@@ -39,7 +39,7 @@ Requires:       openssl
 Requires:       unzip
 Requires:       zip
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %lua_provides
 %if "%{flavor}" == ""
