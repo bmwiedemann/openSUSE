@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Apr 23 08:02:10 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.4.1
+ * A new, hand-written parser
+ * A new language server in Rust
+ * ruff server is only in alpha, but it has a lot of features that you can try out today:
+   * Lints Python files automatically and shows quick-fixes when available
+   * Formats Python files, with support for range formatting
+   * Comes with commands for quickly performing actions: ruff.applyAutofix, ruff.applyFormat, and ruff.applyOrganizeImports
+   * Supports source.fixAll and source.organizeImports source actions
+   * Automatically reloads your project configuration when you change it
+   * To setup ruff server with your editor, refer to the README.md.
+ * Preview features
+   * [pylint] Implement invalid-hash-returned (PLE0309) 
+   * [pylint] Implement invalid-index-returned (PLE0305) 
+   * [pycodestyle] Do not trigger E3 rules on defs following a function/method with a dummy body 
+   * [pylint] Implement invalid-bytes-returned (E0308) 
+   * [pylint] Implement invalid-length-returned (E0303) 
+   * [pylint] Implement self-cls-assignment (W0642) 
+   * [pylint] Omit stubs from invalid-bool and invalid-str-return-type 
+   * [ruff] New rule unused-async (RUF029) to detect unneeded async keywords on functions 
+ * Rule changes
+   * [flake8-bandit] Allow urllib.request.urlopen calls with static Request argument (S310) 
+   * [flake8-bugbear] Treat raise NotImplemented-only bodies as stub functions (B006) 
+   * [flake8-slots] Respect same-file Enum subclasses (SLOT000) 
+   * [pylint] Support inverted comparisons (PLR1730) 
+ * Linter
+   * Improve handling of builtin symbols in linter rules 
+   * Improve display of rules in --show-settings 
+   * Improve inference capabilities of the BuiltinTypeChecker 
+   * Resolve classes and functions relative to script name 
+   * Improve performance of RuleTable::any_enabled 
+ * Server
+  * This section is devoted to updates for our new language server, written in Rust.
+   * Enable ruff-specific source actions 
+   * Refreshes diagnostics for open files when file configuration is changed 
+   * Important errors are now shown as popups 
+   * Introduce settings for directly configuring the linter and formatter 
+   * Resolve configuration for each document individually 
+   * Write a setup guide for Neovim 
+ * Configuration
+   * Add RUFF_OUTPUT_FILE environment variable support 
+ * Bug fixes
+   * [pylint] Allow NoReturn-like functions for __str__, __len__, etc. (PLE0307) 
+   * Parser: Use empty range when there's "gap" in token source 
+   * [ruff] Ignore stub functions in unused-async (RUF029) 
+   * Parser: Expect indented case block instead of match stmt 
+   * Avoid non-augmented-assignment for reversed, non-commutative operators (PLR6104) 
+   * Limit commutative non-augmented-assignments to primitive data types (PLR6104) 
+   * Respect per-file-ignores for RUF100 on blanket # noqa 
+   * Consider if expression for parenthesized with items parsing 
+   * Consider binary expr for parenthesized with items parsing 
+   * Reset FOR_TARGET context for all kinds of parentheses 
+
+-------------------------------------------------------------------
 Fri Apr 12 08:55:20 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.3.7
