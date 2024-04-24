@@ -23,7 +23,7 @@
 %endif
 
 Name:           jeos-firstboot
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Simple text based JeOS first boot wizard
 License:        MIT
@@ -35,6 +35,8 @@ Requires:       dialog
 Requires:       iproute2
 Requires:       live-langset-data
 Requires:       timezone
+# Optional, let's not install it by default just yet.
+# Requires:     ssh-pairing
 Requires:       (/usr/bin/nmtui if NetworkManager)
 BuildArch:      noarch
 %{?systemd_requires}
@@ -91,6 +93,7 @@ rm %{buildroot}%{_datadir}/jeos-firstboot/modules/raspberrywifi
 %dir %{_datadir}/jeos-firstboot/modules/network-modules/
 %{_datadir}/jeos-firstboot/modules/network-modules/NetworkManager
 %{_datadir}/jeos-firstboot/modules/network-modules/wicked
+%{_datadir}/jeos-firstboot/modules/ssh_enroll
 %{_datadir}/jeos-firstboot/modules/status_mail
 %{_sbindir}/jeos-config
 %{_sbindir}/jeos-firstboot
