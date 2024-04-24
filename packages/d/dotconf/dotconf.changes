@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 21 13:41:43 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- removed empty useless %check section
+
+-------------------------------------------------------------------
+Tue Apr 16 08:27:39 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.4.1
+  * fix possible buffer overflows in get_path and dotconf_get_next_line
+
+- fixed package group
+- added empty %check section (no unit tests in the project)
+
+-------------------------------------------------------------------
 Wed Aug 11 15:28:09 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop --with-pic, as it has no effect with --disable-static.

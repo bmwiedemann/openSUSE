@@ -161,4 +161,17 @@
     <comment>- Drop --with-pic, as it has no effect with --disable-static. (forwarded request 911473 from jengelh)</comment>
     <requestid>911476</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>57208f92a83d74d3f4059709f2c2119c</srcmd5>
+    <version>1.4.1</version>
+    <time>1713964410</time>
+    <user>anag+factory</user>
+    <comment>- removed empty useless %check section
+
+- Update to version 1.4.1
+  * fix possible buffer overflows in get_path and dotconf_get_next_line
+- fixed package group
+- added empty %check section (no unit tests in the project) (forwarded request 1169499 from amanzini)</comment>
+    <requestid>1169820</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package dotconf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dotconf
-Version:        1.3
+Version:        1.4.1
 Release:        0
 Summary:        Configuration file parser library
 License:        LGPL-2.1-or-later
@@ -28,8 +28,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig
 
 %description
 dotconf is a configuration-file parser
@@ -44,7 +43,7 @@ config files.
 
 %package -n libdotconf0
 Summary:        Configuration file parser library
-Group:          System/Languages
+Group:          Development/Libraries/C and C++
 # Package was formerly libdotconf-1_0-0
 Provides:       libdotconf-1_0-0 = %{version}
 Obsoletes:      libdotconf-1_0-0 < %{version}
@@ -93,7 +92,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 rm doc/Makefile*
 
 %post -n libdotconf0 -p /sbin/ldconfig
-
 %postun -n libdotconf0 -p /sbin/ldconfig
 
 %files -n libdotconf0
