@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 19 21:23:52 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- sg_inq: re-add Unit serial number field (bsc#1219547)
+
+-------------------------------------------------------------------
 Tue Feb 13 17:23:55 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Fix missing SCSI_MODEL and other fields for "sg_inq --export"

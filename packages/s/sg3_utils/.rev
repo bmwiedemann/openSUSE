@@ -692,4 +692,12 @@ Show aggregation and make compatible with Fedora declaration (forwarded request 
   (bsc#1219874)</comment>
     <requestid>1146464</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>45d0f23b1159909e0b627c04fc79bafd</srcmd5>
+    <version>1.48+9.ecc03bb</version>
+    <time>1713964383</time>
+    <user>anag+factory</user>
+    <comment>- sg_inq: re-add Unit serial number field (bsc#1219547)</comment>
+    <requestid>1169280</requestid>
+  </revision>
 </revisionlist>
