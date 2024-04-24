@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package boost
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -19,9 +19,9 @@
 #
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define ver 1.84.0
-%define _ver 1_84_0
-%define package_version 1_84_0
+%define ver 1.85.0
+%define _ver 1_85_0
+%define package_version 1_85_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
@@ -213,9 +213,9 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 
 Name:           %{base_name}
-Version:        1.84.0
+Version:        1.85.0
 Release:        0
-%define library_version 1_84_0
+%define library_version 1_85_0
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
@@ -243,6 +243,7 @@ Patch18:        dynamic_linking.patch
 Patch20:        python_library_name.patch
 Patch21:        boost-remove-cmakedir.patch
 Patch22:        boost-process.patch
+Patch23:        boost-charconv-quadmath.patch
 %{?suse_build_hwcaps_libs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -1212,6 +1213,25 @@ Provides:       libboost_json-devel-impl = %{version}
 %description -n libboost_json%{library_version}-devel
 This package contains development headers for Boost.JSON library.
 
+%package     -n libboost_charconv%{library_version}
+Summary:        Boost.CharConv runtime library
+Group:          System/Libraries
+Requires:       boost-license%{library_version}
+
+%description -n libboost_charconv%{library_version}
+This package contains Boost::CharConv runtime library.
+
+%package     -n libboost_charconv%{library_version}-devel
+Summary:        Development headers for Boost.CharConv library
+Group:          Development/Libraries/C and C++
+Requires:       libboost_charconv%{library_version} = %{version}
+Requires:       libboost_container%{library_version}-devel = %{version}
+Conflicts:      libboost_charconv-devel-impl
+Provides:       libboost_charconv-devel-impl = %{version}
+
+%description -n libboost_charconv%{library_version}-devel
+This package contains development headers for Boost.CharConv library.
+
 %package -n %{package_name}-quickbook
 Summary:        Documentation tool geared towards C++
 Group:          Development/Tools/Doc Generators
@@ -1250,6 +1270,7 @@ find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {}
 %patch -P 20 -p1
 %patch -P 21 -p1
 %patch -P 22 -p2
+%patch -P 23 -p1
 
 %build
 find . -type f -exec chmod u+w {} +
@@ -1599,6 +1620,7 @@ EOF
 %post -n libboost_thread%{library_version} -p /sbin/ldconfig
 %post -n libboost_type_erasure%{library_version} -p /sbin/ldconfig
 %post -n libboost_json%{library_version} -p /sbin/ldconfig
+%post -n libboost_charconv%{library_version} -p /sbin/ldconfig
 %post -n libboost_math%{library_version} -p /sbin/ldconfig
 %post -n libboost_nowide%{library_version} -p /sbin/ldconfig
 %post -n libboost_graph%{library_version} -p /sbin/ldconfig
@@ -1651,6 +1673,7 @@ EOF
 %postun -n libboost_thread%{library_version} -p /sbin/ldconfig
 %postun -n libboost_type_erasure%{library_version} -p /sbin/ldconfig
 %postun -n libboost_json%{library_version} -p /sbin/ldconfig
+%postun -n libboost_charconv%{library_version} -p /sbin/ldconfig
 %postun -n libboost_math%{library_version} -p /sbin/ldconfig
 %postun -n libboost_nowide%{library_version} -p /sbin/ldconfig
 %postun -n libboost_graph%{library_version} -p /sbin/ldconfig
@@ -2054,6 +2077,14 @@ EOF
 %dir %{package_libdir}/cmake/boost_json-%{version}
 %{package_libdir}/cmake/boost_json-%{version}/*
 %{package_libdir}/libboost_json.so
+
+%files -n libboost_charconv%{library_version}
+%{package_libdir}/libboost_charconv.so.%{version}
+
+%files -n libboost_charconv%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_charconv-%{version}
+%{package_libdir}/cmake/boost_charconv-%{version}/*
+%{package_libdir}/libboost_charconv.so
 
 %endif
 

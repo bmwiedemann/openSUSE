@@ -37,12 +37,13 @@ Index: boost_1_80_0/libs/chrono/build/Jamfile.v2
          <toolset>gcc-3.4.4:<linkflags>--enable-auto-import
          <toolset>gcc-4.3.4:<linkflags>--enable-auto-import
          <toolset>gcc-4.4.0,<target-os>windows:<linkflags>--enable-auto-import 
-@@ -104,7 +104,7 @@ lib boost_chrono
+@@ -104,8 +104,8 @@ lib boost_chrono
      : $(SOURCES).cpp
      :
-     <link>shared:<define>BOOST_ALL_DYN_LINK=1 # tell source we're building dll's
--    <link>static:<define>BOOST_All_STATIC_LINK=1 # tell source we're building static lib's
-+    # <link>static:<define>BOOST_All_STATIC_LINK=1 # tell source we're building static lib's
+     $(cxx11-requirements)
+     <link>shared:<define>BOOST_CHRONO_DYN_LINK=1 # tell source we're building dll's
+-    <link>static:<define>BOOST_CHRONO_STATIC_LINK=1 # tell source we're building static lib's
++    # <link>static:<define>BOOST_CHRONO_STATIC_LINK=1 # tell source we're building static lib's
      ;
  
  boost-install boost_chrono ;
@@ -105,6 +106,6 @@ Index: boost_1_80_0/libs/filesystem/build/Jamfile.v2
        <link>shared:<define>BOOST_FILESYSTEM_DYN_LINK=1
 -      <link>static:<define>BOOST_FILESYSTEM_STATIC_LINK=1
 +#      <link>static:<define>BOOST_FILESYSTEM_STATIC_LINK=1
-     :
-     :
-     ;
+       $(cxx_requirements)
+     : usage-requirements
+       $(cxx_requirements)

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 23 09:50:52 CEST 2024 - aschnell@suse.com
+
+- update to 1.85.0
+  * new libraries:
+    + charconv (implementation of <charconv>)
+    + scope (collection of scope guard utilities)
+  * for details on all changes see,
+    https://www.boost.org/users/history/version_1_85_0.html
+- dynamic_linking.patch: updated
+- boost-charconv-quadmath.patch: added
+
+-------------------------------------------------------------------
 Wed Mar 20 12:15:08 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Avoid BuildRequire of 'gcc-c++ > 5' which is only a redundant
