@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20240423" schemaversion="4.1">
+<image name="OBS__MicroOS___20240424" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20240423</productvar>
+      <productvar name="VERSION">20240424</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240423,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240424,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240423/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240424/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -87,7 +87,7 @@
       <repopackage name="bluez-firmware"/>
       <repopackage name="bluez-qt-imports"/>
       <repopackage name="bolt"/>
-      <repopackage name="boost-license1_84_0"/>
+      <repopackage name="boost-license1_85_0"/>
       <repopackage name="branding-openSUSE"/>
       <repopackage name="breeze6"/>
       <repopackage name="breeze6-cursors"/>
@@ -580,8 +580,8 @@
       <repopackage name="libblogger2"/>
       <repopackage name="libbluetooth3"/>
       <repopackage name="libbluray2"/>
-      <repopackage name="libboost_filesystem1_84_0"/>
-      <repopackage name="libboost_thread1_84_0"/>
+      <repopackage name="libboost_filesystem1_85_0"/>
+      <repopackage name="libboost_thread1_85_0"/>
       <repopackage name="libbpf1"/>
       <repopackage name="libbrotlicommon1"/>
       <repopackage name="libbrotlidec1"/>
