@@ -2358,4 +2358,26 @@ New Features
     <comment>Update to release 9.18.25</comment>
     <requestid>1159854</requestid>
   </revision>
+  <revision rev="207" vrev="1">
+    <srcmd5>5bb53bddd31a712cf63371f7904b1f72</srcmd5>
+    <version>9.18.26</version>
+    <time>1713964391</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 9.18.26
+  New Features:
+  * The statistics channel now includes counters that indicate the
+    number of currently connected TCP IPv4/IPv6 clients.
+  * Added RESOLVER.ARPA to the built in empty zones.
+  Bug Fixes:
+  * Changes to listen-on statements were ignored on reconfiguration
+    unless the port or interface address was changed, making it
+    impossible to change a related listener transport type. That
+    issue has been fixed.
+  * A bug in the keymgr code unintentionally slowed down some
+    DNSSEC key rollovers. This has been fixed.
+  * Some ISO 8601 durations were accepted erroneously, leading to
+    shorter durations than expected. This has been fixed.
+</comment>
+    <requestid>1169576</requestid>
+  </revision>
 </revisionlist>

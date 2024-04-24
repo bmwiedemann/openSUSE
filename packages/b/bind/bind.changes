@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Apr 21 21:17:19 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.26
+  New Features:
+  * The statistics channel now includes counters that indicate the
+    number of currently connected TCP IPv4/IPv6 clients.
+  * Added RESOLVER.ARPA to the built in empty zones.
+
+  Bug Fixes:
+  * Changes to listen-on statements were ignored on reconfiguration
+    unless the port or interface address was changed, making it
+    impossible to change a related listener transport type. That
+    issue has been fixed.
+  * A bug in the keymgr code unintentionally slowed down some
+    DNSSEC key rollovers. This has been fixed.
+  * Some ISO 8601 durations were accepted erroneously, leading to
+    shorter durations than expected. This has been fixed.
+
+-------------------------------------------------------------------
 Wed Mar 20 13:39:16 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 9.18.25
