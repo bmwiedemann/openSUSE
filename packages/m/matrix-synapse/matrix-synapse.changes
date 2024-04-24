@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Apr 23 16:37:19 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.105.1 (boo#1223319)
+  - Security
+    - GHSA-3h7q-rfh9-xm4v / CVE-2024-31208 — High Severity
+      Weakness in auth chain indexing allows DoS from remote room
+      members through disk fill and high CPU usage.
+
+      See the advisories for more details. If you have any
+      questions, email security@element.io.
+
+-------------------------------------------------------------------
+Tue Apr 16 19:29:37 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.105.0
+  - Features
+    - Stabilize support for MSC4010 which clarifies the interaction
+      of push rules and account data. Contributed by @clokep.
+      (#17022)
+    - Stabilize support for MSC3981: /relations recursion.
+      Contributed by @clokep. (#17023)
+    - Add support for moving /pushrules off of main process.
+      (#17037, #17038)
+  - Bugfixes
+    - Fix various long-standing bugs which could cause incorrect
+      state to be returned from /sync in certain situations.
+      (#16930, #16932, #16942, #17064, #17065, #17066)
+    - Fix server notice rooms not always being created as
+      unencrypted rooms, even when
+      encryption_enabled_by_default_for_room_type is in use (server
+      notices are always unencrypted). (#17033)
+    - Fix the .m.rule.encrypted_room_one_to_one and
+      .m.rule.room_one_to_one default underride push rules being in
+      the wrong order. Contributed by @Sumpy1. (#17043)
+  - Internal Changes
+    - Refactor auth chain fetching to reduce duplication. (#17044)
+    - Improve database performance by adding a missing index to
+      access_tokens.refresh_token_id. (#17045, #17054)
+    - Improve database performance by reducing number of receipts
+      fetched when sending push notifications. (#17049)
+
+-------------------------------------------------------------------
 Tue Apr  2 21:08:17 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.104.0

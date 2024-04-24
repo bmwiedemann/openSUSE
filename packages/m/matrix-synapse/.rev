@@ -904,4 +904,18 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment></comment>
     <requestid>1164557</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>57d543a724987dcfb1dc5a86e740d84c</srcmd5>
+    <version>1.105.1</version>
+    <time>1713964433</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.105.1 (boo#1223319)
+  - Security
+    - GHSA-3h7q-rfh9-xm4v / CVE-2024-31208 — High Severity
+      Weakness in auth chain indexing allows DoS from remote room
+      members through disk fill and high CPU usage.
+      See the advisories for more details. If you have any
+      questions, email security@element.io.</comment>
+    <requestid>1169911</requestid>
+  </revision>
 </revisionlist>
