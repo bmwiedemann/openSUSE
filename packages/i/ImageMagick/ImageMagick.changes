@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 22 08:01:53 UTC 2024 - pgajdos@suse.com
+
+- version update to 7.1.1.31
+  * Convert big PDF documents is slow #7263
+  * Update release.yml #7258
+  * Update README.md #7245
+  * uhdr.c: verify the availability of error message before accessing it #7229
+- removed patches
+  - ImageMagick-wmflite-detection.patch (upstreamed)
+`
+-------------------------------------------------------------------
 Mon Apr 15 10:19:07 UTC 2024 - pgajdos@suse.com
 
 - relax list-length resource limit, fixes build of python-Wand

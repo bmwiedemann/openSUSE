@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.1.1
-%define mfr_revision   30
+%define mfr_revision   31
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
@@ -54,8 +54,6 @@ Patch4:         ImageMagick-filter.t-disable-Contrast.patch
 #%%ifarch s390x
 Patch5:         ImageMagick-s390x-disable-tests.patch
 #%%endif
-# https://github.com/ImageMagick/ImageMagick/issues/7230
-Patch6:         ImageMagick-wmflite-detection.patch
 BuildRequires:  chrpath
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
@@ -276,7 +274,6 @@ HTML documentation for ImageMagick library and scene examples.
 %ifarch s390x
 %patch -P 5 -p1
 %endif
-%patch -P 6 -p1
 
 %build
 # PATCH 6
@@ -409,7 +406,7 @@ fi
 
 %files
 %license LICENSE
-%doc NEWS.txt
+%doc README.md
 %doc config/policy-{open,limited,secure,websafe}.xml
 %{_bindir}/[^MW]*
 %{_mandir}/man1/*
@@ -479,7 +476,7 @@ fi
 
 %files -n libMagick++-devel
 %doc Magick++/examples
-%doc Magick++/NEWS Magick++/README Magick++/AUTHORS
+%doc Magick++/AUTHORS
 %{_libdir}/libMagick++*.so
 %{_includedir}/ImageMagick*/Magick++.h
 %{_includedir}/ImageMagick*/Magick++

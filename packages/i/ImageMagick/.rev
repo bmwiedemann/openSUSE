@@ -3870,4 +3870,19 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   + ImageMagick-wmflite-detection.patch</comment>
     <requestid>1167789</requestid>
   </revision>
+  <revision rev="295" vrev="1">
+    <srcmd5>bad975311cf035f1f0570f587126ad69</srcmd5>
+    <version>7.1.1.31</version>
+    <time>1713964413</time>
+    <user>anag+factory</user>
+    <comment>- version update to 7.1.1.31
+  * Convert big PDF documents is slow #7263
+  * Update release.yml #7258
+  * Update README.md #7245
+  * uhdr.c: verify the availability of error message before accessing it #7229
+- removed patches
+  - ImageMagick-wmflite-detection.patch (upstreamed)
+`</comment>
+    <requestid>1169825</requestid>
+  </revision>
 </revisionlist>
