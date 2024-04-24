@@ -3195,4 +3195,12 @@
   * bmo#1841029 - Fix selfserv not stripping `publicname:` from -X value</comment>
     <requestid>1160555</requestid>
   </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>fc876b0b13f997f1b940b2377003fd6a</srcmd5>
+    <version>3.99</version>
+    <time>1713964386</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1169404</requestid>
+  </revision>
 </revisionlist>

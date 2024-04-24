@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr  4 11:20:08 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- update to NSS 3.99
+  * Removing check for message len in ed25519 (bmo#1325335)
+  * add ed25519 to SECU_ecName2params. (bmo#1884276)
+  * add EdDSA wycheproof tests. (bmo#1325335)
+  * nss/lib layer code for EDDSA. (bmo#1325335)
+  * Adding EdDSA implementation. (bmo#1325335)
+  * Exporting Certificate Compression types (bmo#1881027)
+  * Updating ACVP docker to rust 1.74 (bmo#1880857)
+  * Updating HACL* to 0f136f28935822579c244f287e1d2a1908a7e552 (bmo#1325335)
+  * Add NSS_CMSRecipient_IsSupported. (bmo#1877730)
+
+-------------------------------------------------------------------
 Sat Mar 16 21:39:31 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.98

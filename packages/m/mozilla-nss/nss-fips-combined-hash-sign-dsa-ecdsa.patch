@@ -16,7 +16,7 @@ Index: nss/cmd/lib/pk11table.c
 ===================================================================
 --- nss.orig/cmd/lib/pk11table.c
 +++ nss/cmd/lib/pk11table.c
-@@ -273,6 +273,10 @@ const Constant _consts[] = {
+@@ -274,6 +274,10 @@ const Constant _consts[] = {
      mkEntry(CKM_DSA_KEY_PAIR_GEN, Mechanism),
      mkEntry(CKM_DSA, Mechanism),
      mkEntry(CKM_DSA_SHA1, Mechanism),
@@ -27,7 +27,7 @@ Index: nss/cmd/lib/pk11table.c
      mkEntry(CKM_DH_PKCS_KEY_PAIR_GEN, Mechanism),
      mkEntry(CKM_DH_PKCS_DERIVE, Mechanism),
      mkEntry(CKM_X9_42_DH_DERIVE, Mechanism),
-@@ -438,6 +442,10 @@ const Constant _consts[] = {
+@@ -439,6 +443,10 @@ const Constant _consts[] = {
      mkEntry(CKM_EC_KEY_PAIR_GEN, Mechanism),
      mkEntry(CKM_ECDSA, Mechanism),
      mkEntry(CKM_ECDSA_SHA1, Mechanism),
@@ -37,12 +37,12 @@ Index: nss/cmd/lib/pk11table.c
 +    mkEntry(CKM_ECDSA_SHA512, Mechanism),
      mkEntry(CKM_ECDH1_DERIVE, Mechanism),
      mkEntry(CKM_ECDH1_COFACTOR_DERIVE, Mechanism),
-     mkEntry(CKM_ECMQV_DERIVE, Mechanism),
+     mkEntry(CKM_EC_EDWARDS_KEY_PAIR_GEN, Mechanism),
 Index: nss/lib/pk11wrap/pk11mech.c
 ===================================================================
 --- nss.orig/lib/pk11wrap/pk11mech.c
 +++ nss/lib/pk11wrap/pk11mech.c
-@@ -375,6 +375,10 @@ PK11_GetKeyType(CK_MECHANISM_TYPE type,
+@@ -377,6 +377,10 @@ PK11_GetKeyType(CK_MECHANISM_TYPE type,
              return CKK_RSA;
          case CKM_DSA:
          case CKM_DSA_SHA1:
@@ -53,7 +53,7 @@ Index: nss/lib/pk11wrap/pk11mech.c
          case CKM_DSA_KEY_PAIR_GEN:
              return CKK_DSA;
          case CKM_DH_PKCS_DERIVE:
-@@ -385,6 +389,10 @@ PK11_GetKeyType(CK_MECHANISM_TYPE type,
+@@ -387,6 +391,10 @@ PK11_GetKeyType(CK_MECHANISM_TYPE type,
              return CKK_KEA;
          case CKM_ECDSA:
          case CKM_ECDSA_SHA1:
@@ -68,16 +68,16 @@ Index: nss/lib/softoken/pkcs11c.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11c.c
 +++ nss/lib/softoken/pkcs11c.c
-@@ -2681,7 +2681,7 @@ nsc_DSA_Verify_Stub(void *ctx, void *sig
+@@ -2677,7 +2677,7 @@ nsc_DSA_Verify_Stub(void *ctx, void *sig
  static SECStatus
  nsc_DSA_Sign_Stub(void *ctx, void *sigBuf,
                    unsigned int *sigLen, unsigned int maxSigLen,
 -                  void *dataBuf, unsigned int dataLen)
 +                  const void *dataBuf, unsigned int dataLen)
  {
-     SECItem signature, digest;
-     SECStatus rv;
-@@ -2699,6 +2699,22 @@ nsc_DSA_Sign_Stub(void *ctx, void *sigBu
+     NSSLOWKEYPrivateKey *key = (NSSLOWKEYPrivateKey *)ctx;
+     SECItem signature = { siBuffer, (unsigned char *)sigBuf, maxSigLen };
+@@ -2690,6 +2690,22 @@ nsc_DSA_Sign_Stub(void *ctx, void *sigBu
      return rv;
  }
  
@@ -100,16 +100,16 @@ Index: nss/lib/softoken/pkcs11c.c
  static SECStatus
  nsc_ECDSAVerifyStub(void *ctx, void *sigBuf, unsigned int sigLen,
                      void *dataBuf, unsigned int dataLen)
-@@ -2716,7 +2732,7 @@ nsc_ECDSAVerifyStub(void *ctx, void *sig
+@@ -2703,7 +2719,7 @@ nsc_ECDSAVerifyStub(void *ctx, void *sig
  static SECStatus
  nsc_ECDSASignStub(void *ctx, void *sigBuf,
                    unsigned int *sigLen, unsigned int maxSigLen,
 -                  void *dataBuf, unsigned int dataLen)
 +                  const void *dataBuf, unsigned int dataLen)
  {
-     SECItem signature, digest;
-     SECStatus rv;
-@@ -2734,6 +2750,22 @@ nsc_ECDSASignStub(void *ctx, void *sigBu
+     NSSLOWKEYPrivateKey *key = (NSSLOWKEYPrivateKey *)ctx;
+     SECItem signature = { siBuffer, (unsigned char *)sigBuf, maxSigLen };
+@@ -2744,6 +2760,22 @@ nsc_EDDSASignStub(void *ctx, void *sigBu
      return rv;
  }
  
@@ -132,7 +132,7 @@ Index: nss/lib/softoken/pkcs11c.c
  /* NSC_SignInit setups up the signing operations. There are three basic
   * types of signing:
   *      (1) the tradition single part, where "Raw RSA" or "Raw DSA" is applied
-@@ -3614,6 +3646,22 @@ NSC_VerifyInit(CK_SESSION_HANDLE hSessio
+@@ -3647,6 +3679,22 @@ NSC_VerifyInit(CK_SESSION_HANDLE hSessio
          info->hashOid = SEC_OID_##mmm;                    \
          goto finish_rsa;
  
@@ -155,7 +155,7 @@ Index: nss/lib/softoken/pkcs11c.c
      switch (pMechanism->mechanism) {
          INIT_RSA_VFY_MECH(MD5)
          INIT_RSA_VFY_MECH(MD2)
-@@ -4850,6 +4898,73 @@ loser:
+@@ -4904,6 +4952,73 @@ loser:
  #define PAIRWISE_DIGEST_LENGTH SHA224_LENGTH /* 224-bits */
  #define PAIRWISE_MESSAGE_LENGTH 20           /* 160-bits */
  
@@ -229,7 +229,7 @@ Index: nss/lib/softoken/pkcs11c.c
  /*
   * FIPS 140-2 pairwise consistency check utilized to validate key pair.
   *
-@@ -4903,8 +5018,6 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
+@@ -4957,8 +5072,6 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
  
      /* Variables used for Signature/Verification functions. */
      /* Must be at least 256 bits for DSA2 digest */
@@ -238,7 +238,7 @@ Index: nss/lib/softoken/pkcs11c.c
      CK_ULONG signature_length;
  
      if (keyType == CKK_RSA) {
-@@ -5058,76 +5171,32 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
+@@ -5112,80 +5225,36 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
          }
      }
  
@@ -267,6 +267,11 @@ Index: nss/lib/softoken/pkcs11c.c
                  signature_length = MAX_ECKEY_LEN * 2;
 -                mech.mechanism = CKM_ECDSA;
 +                SIGNVERIFY_CHECK_MECH(CKM_ECDSA_SHA224)
+                 break;
+             case CKK_EC_EDWARDS:
+                 signature_length = ED25519_SIGN_LEN;
+-                mech.mechanism = CKM_EDDSA;
++                SIGNVERIFY_CHECK_MECH(CKM_EDDSA)
                  break;
              default:
                  return CKR_DEVICE_ERROR;
