@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 22 09:08:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.11.0:
+  * New Devices:
+     - Asus Zenbook Duo
+     - Lenovo Ideapad Duet, Ideapad Duet 3, Thinkpad L13 Yoga
+    Gen 3
+     - HP Envy x360
+  * The default fallback device is now an integrated tablet
+
+-------------------------------------------------------------------
 Tue Mar 26 08:58:37 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using
@@ -12,7 +23,7 @@ Thu Mar  7 23:50:38 UTC 2024 - Aeneas Jaißle <aj@ajaissle.de>
   * Add .tablet file for Ingenic touch and pen display (#621)
   * Update the name for the Dell Active Pen (#628)
   * Add support for xp-pen artist 10s table (#625)
-  * github: Minimize permissions granted to automated 
+  * github: Minimize permissions granted to automated
     workflows / jobs
   * data: Update ModelName for DTH134 and DTC121
   * data: Add Wacom HID-5362
@@ -25,13 +36,13 @@ Thu Mar  7 23:50:38 UTC 2024 - Aeneas Jaißle <aj@ajaissle.de>
   * data: Intuos Pro 2 is compatible with Intuos 4 styli
   * libwacom 2.10.0
   * data: add isdv4-50a0 (#630)
-  * build(deps): bump tj-actions/changed-files in 
+  * build(deps): bump tj-actions/changed-files in
     /.github/workflows
   * Add support for Lenovo ThinkPad X1 Yoga Gen 7 (#626)
-  
+
 - update to 2.9.0:
   * data: add Wacom Cintiq Pro 22 & 17
-  * data: remove erroneous dash from latest Cintiq Pro model 
+  * data: remove erroneous dash from latest Cintiq Pro model
     names
   * data: add dtc121
   * data: add dth134
