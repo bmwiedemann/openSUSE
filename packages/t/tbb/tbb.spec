@@ -41,7 +41,7 @@
 %bcond_with python3
 %endif
 Name:           tbb
-Version:        2021.11.0
+Version:        2021.12.0
 Release:        0
 Summary:        oneAPI Threading Building Blocks (oneTBB)
 License:        Apache-2.0
