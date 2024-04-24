@@ -115,7 +115,8 @@ Thu Feb  1 10:56:39 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.22.9:
   + av1parser: Fix potential stack overflow during tile list
-    parsing (CVE-2024-0444, bsc#1219453, ZDI-CAN-22300)
+    parsing (CVE-2024-0444, ZDI-CAN-22873, bsc#1219453,
+    CVE-2023-50186, ZDI-CAN-22300, bsc#1218534, bsc#1223263)
   + camerabin: Correctly relink viewfinderbin_queue
   + GstPlay: Fix error details parsing
   + h264decoder: Handle malformed avc/avc3 packets
