@@ -1,0 +1,46 @@
+From 3bb00c0a420c3ce83c6fafee30270d69622ccad7 Mon Sep 17 00:00:00 2001
+From: Zhao Zhili <zhilizhao@tencent.com>
+Date: Tue, 20 Feb 2024 20:08:55 +0800
+Subject: [PATCH] avutil/hwcontext: Don't assume frames_uninit is reentrant
+References: https://bugzilla.opensuse.org/1223070
+References: CVE-2024-31578
+
+Fix heap use after free when vulkan_frames_init failed.
+
+Signed-off-by: Zhao Zhili <zhilizhao@tencent.com>
+---
+ libavutil/hwcontext.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/libavutil/hwcontext.c b/libavutil/hwcontext.c
+index 1d2c2d7920..aa1329bf2b 100644
+--- a/libavutil/hwcontext.c
++++ b/libavutil/hwcontext.c
+@@ -359,7 +359,7 @@ int av_hwframe_ctx_init(AVBufferRef *ref)
+     if (ctx->internal->hw_type->frames_init) {
+         ret = ctx->internal->hw_type->frames_init(ctx);
+         if (ret < 0)
+-            goto fail;
++            return ret;
+     }
+ 
+     if (ctx->internal->pool_internal && !ctx->pool)
+@@ -369,14 +369,10 @@ int av_hwframe_ctx_init(AVBufferRef *ref)
+     if (ctx->initial_pool_size > 0) {
+         ret = hwframe_pool_prealloc(ref);
+         if (ret < 0)
+-            goto fail;
++            return ret;
+     }
+ 
+     return 0;
+-fail:
+-    if (ctx->internal->hw_type->frames_uninit)
+-        ctx->internal->hw_type->frames_uninit(ctx);
+-    return ret;
+ }
+ 
+ int av_hwframe_transfer_get_formats(AVBufferRef *hwframe_ref,
+-- 
+2.44.0
+

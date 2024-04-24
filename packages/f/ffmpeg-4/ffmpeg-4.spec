@@ -125,6 +125,7 @@ Patch11:        ffmpeg-libglslang-detection.patch
 Patch12:        0001-avcodec-libsvtav1-remove-compressed_ten_bit_format-a.patch
 Patch13:        0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
 Patch14:        ffmpeg-glslang-cxx17.patch
+Patch15:        0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel

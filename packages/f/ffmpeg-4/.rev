@@ -599,4 +599,13 @@
   at all (boo#1219494) (forwarded request 1143610 from sndirsch)</comment>
     <requestid>1143659</requestid>
   </revision>
+  <revision rev="64" vrev="7">
+    <srcmd5>77f1b7a5d8d001221be5350fb4e22826</srcmd5>
+    <version>4.4.4</version>
+    <time>1713964402</time>
+    <user>anag+factory</user>
+    <comment>- Address boo#1223070/CVE-2024-31578: add patch
+  0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch</comment>
+    <requestid>1169720</requestid>
+  </revision>
 </revisionlist>

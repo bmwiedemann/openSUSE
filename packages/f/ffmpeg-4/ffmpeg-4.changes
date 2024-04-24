@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 22 12:41:55 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Address boo#1223070/CVE-2024-31578: add patch
+  0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch
+
+-------------------------------------------------------------------
 Fri Feb  2 09:34:15 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - drop support for libmfx, which is no longer supported upstream
