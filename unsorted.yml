@@ -9403,6 +9403,7 @@ unsorted:
   - jupyter-jupyterlab-ipyvuetify 
   - jupyter-jupyterlab-latex 
   - jupyter-jupyterlab-pygments 
+  - jupyter-jupyterlab-pyviz 
   - jupyter-jupyterlab-templates 
   - jupyter-jupyterlab-widgets 
   - jupyter-lineup-widget 
@@ -11807,8 +11808,8 @@ unsorted:
   - libblkid1-32bit 
   - libblockdev-devel 
   - libblosc1 
-  - libblosc2-2 
-  - libblosc2-2-x86-64-v3 
+  - libblosc2-3 
+  - libblosc2-3-x86-64-v3 
   - libbluetooth3-32bit 
   - libbluray-bdj 
   - libbluray-devel 
@@ -19351,6 +19352,7 @@ unsorted:
   - nextcloud-desktop-doc 
   - nextcloud-desktop-dolphin 
   - nextcloud-desktop-lang 
+  - nextcloud-desktop-vfs-plugin 
   - nfacct 
   - nfc-eventd 
   - nfcutils 
