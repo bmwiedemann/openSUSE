@@ -1,7 +1,7 @@
 #
 # spec file for package boost-defaults
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define boost_version 1_84_0
+%define boost_version 1_85_0
 Name:           boost-defaults
-Version:        1.84.0
+Version:        1.85.0
 Release:        0
 Summary:        Default Boost C++ Libraries
 License:        MIT
@@ -67,7 +67,7 @@ Requires:       libboost_headers%{boost_version}-devel
 
 %description -n libboost_headers-devel
 A collection of header-only libraries for Boost. This package
-installs the dafault version.
+installs the default version.
 
 %package     -n libboost_atomic-devel
 Summary:        Development headers for Boost.Atomic
