@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 23 00:44:04 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- version update to 1.8.9
+  * feature: new "--si" option to display and interpret size
+    suffixes in multiples of 1000 rather than 1024
+  * fix: continue producing progress output when the output is
+    blocking writes
+  * fix: honour the TMPDIR / TMP environment variables again,
+    rather than hard-coding "/tmp", when using a terminal lock file
+  * i18n: corrections and missing strings added to French
+    translations
+
+-------------------------------------------------------------------
 Wed Feb 14 14:46:34 UTC 2024 - pgajdos@suse.com
 
 - version update to 1.8.5
