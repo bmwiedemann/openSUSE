@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 22 09:13:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.21.0:
+  * va: Add allow_content_tools and force_intger_mv to AV1 enc
+  * va: add VASurfaceAttribAlignmentSize
+  * va: Re-add drm_state and fd checks to VA_DRM_GetDriverNames
+  * va: export symbol vaGetLibFunc for Windows
+  * va: Add PRIME3 defination and correct the value
+  * va: add driver name map for new intel KMD xe
+  * va: export symbol vaMapBuffer2 for Windows
+  * va: add new interface vaMapBuffer2 for map operation
+    optimization
+  * va: Add VAConfigAttribEncMaxTileRows and
+    VAConfigAttribEncMaxTileCols
+  * va: fix handling when all wayland backends fail
+  * va_trace:add return value trace for vaPutSurfaces
+
+-------------------------------------------------------------------
 Mon Dec  4 12:12:46 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - This includes latest version of one of the components needed for
@@ -142,7 +160,7 @@ Mon Jan 16 08:00:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Mon Nov 28 11:21:48 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Make sure make runs with verbose builds so we see the gcc
-  cmdlines 
+  cmdlines
 
 -------------------------------------------------------------------
 Mon Nov 28 11:17:51 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
@@ -153,7 +171,7 @@ Mon Nov 28 11:17:51 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Mon Nov  7 12:52:38 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
-- needed for jira#PED-1174 (Video decoding/encoding support 
+- needed for jira#PED-1174 (Video decoding/encoding support
   (VA-API, ...) for Intel GPUs is outside of Mesa)
 
 -------------------------------------------------------------------
@@ -210,11 +228,11 @@ Tue Mar  1 00:07:18 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
   * doc: Add description of the fd management for surface importing
   * ci: fix freebsd build
   * meson: Copy public headers to build directory to support subproject
-  
+
 -------------------------------------------------------------------
 Mon Oct  4 15:17:42 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
-- fixed JIRA number in previous changelog 
+- fixed JIRA number in previous changelog
 
 -------------------------------------------------------------------
 Mon Sep 27 13:20:40 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
@@ -264,7 +282,7 @@ Wed Mar 24 09:30:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * ci: disable travis build
   * ci: update cache before attempting to install packages
   * ci: avoid running workloads on other workloads changes
-  * ci: enable github actions 
+  * ci: enable github actions
 
 -------------------------------------------------------------------
 Wed Dec 16 00:26:25 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
@@ -284,12 +302,12 @@ Wed Dec 16 00:26:25 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
   * doc: [AV1] Update documented ranges for loop filter and quantization params.
   * doc: Update va.h for multi-threaded usages
   * trace: va/va_trace: ignore system gettid() on Linux
-    
+
 -------------------------------------------------------------------
 Thu Nov 26 13:35:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.9.1:
-  * fix version mismatch between meson and autotools 
+  * fix version mismatch between meson and autotools
 
 -------------------------------------------------------------------
 Mon Oct  5 13:16:22 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
@@ -305,11 +323,11 @@ Mon Oct  5 13:16:22 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
   * add attributes for context priority setting
   * Add vaSyncBuffer for output buffers synchronization
   * Add vaSyncSurface2 with timeout
-  
+
 -------------------------------------------------------------------
 Mon Aug 31 17:11:17 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
-- version 2.8.0 needed for jira#SLE/SLE-12712 
+- version 2.8.0 needed for jira#SLE/SLE-12712
 
 -------------------------------------------------------------------
 Sat Aug 15 21:11:17 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -366,7 +384,7 @@ Wed Feb 26 11:49:43 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 - Update to version 2.6.1
   * adjust call sequence to ensure authenticate operation is
     executed this patch is not needed for media-driver, but
-    needed for i965 driver which check authentication. 
+    needed for i965 driver which check authentication.
 
 -------------------------------------------------------------------
 Fri Jan 10 23:49:36 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
@@ -491,7 +509,7 @@ Mon May  7 12:53:46 UTC 2018 - sndirsch@suse.com
   * Add Chroma siting flags in VPP
   * Add new color standard definitions
   * Add new interface for exporting surface
-  * Add message callbacks for drivers to use 
+  * Add message callbacks for drivers to use
 
 -------------------------------------------------------------------
 Fri Nov 17 09:47:29 UTC 2017 - zaitor@opensuse.org
@@ -545,7 +563,7 @@ Sat Aug 26 15:52:17 UTC 2017 - zaitor@opensuse.org
 -------------------------------------------------------------------
 Fri Aug 18 07:26:53 UTC 2017 - sndirsch@suse.com
 
-- fixed source URLs 
+- fixed source URLs
 
 -------------------------------------------------------------------
 Wed Aug 16 12:56:48 UTC 2017 - chris@computersalat.de
@@ -562,13 +580,13 @@ Wed Aug 16 12:56:48 UTC 2017 - chris@computersalat.de
 -------------------------------------------------------------------
 Wed Aug  9 13:29:36 UTC 2017 - sndirsch@suse.com
 
-- added COPYING as documentation file 
+- added COPYING as documentation file
 
 -------------------------------------------------------------------
 Fri Aug  4 13:46:46 UTC 2017 - sndirsch@suse.com
 
-- Version 1.8.2 
-  * Bump libva to 1.8.2 
+- Version 1.8.2
+  * Bump libva to 1.8.2
 
 -------------------------------------------------------------------
 Wed Apr 19 18:56:52 UTC 2017 - chris@computersalat.de
@@ -613,7 +631,7 @@ Tue Apr 11 14:38:45 UTC 2017 - sndirsch@suse.com
 -------------------------------------------------------------------
 Tue Apr 11 12:17:11 UTC 2017 - sndirsch@suse.com
 
-- Removed libva-wayland1 from bqaselibs.conf; add it to 
+- Removed libva-wayland1 from bqaselibs.conf; add it to
   baselibs.conf during a wayland build only; ugly I know ... This
   is needed since otherwise source validator
   ("osc service run source_validator") fails on sle
@@ -629,7 +647,7 @@ Tue Jan 17 14:26:39 UTC 2017 - sndirsch@suse.com
 
 - N_libva_Fix_wayland-client.h_include-path.patch/
   N_libva_Fix_wayland-client.h_include-path_1320.patch no longer
-  need after adjusting vaapi-intel-driver package 
+  need after adjusting vaapi-intel-driver package
 
 -------------------------------------------------------------------
 Thu Jan 12 19:48:00 UTC 2017 - chris@computersalat.de
@@ -769,7 +787,7 @@ Mon Mar 30 09:17:19 UTC 2015 - sndirsch@suse.com
 - Update to version 1.5.1
   * API: correct the comment for num_token_partitions in struct
     _VAEncPictureParameterBufferVP8
-  * VA/x11: fix double Unlocks/SyncHandle to avoid segmentation fault 
+  * VA/x11: fix double Unlocks/SyncHandle to avoid segmentation fault
 
 -------------------------------------------------------------------
 Sun Feb  8 22:35:09 UTC 2015 - zaitor@opensuse.org
@@ -823,16 +841,16 @@ Fri Sep 27 07:24:35 UTC 2013 - dimstar@opensuse.org
 Wed Jul 10 14:47:19 UTC 2013 - hrvoje.senjan@gmail.com
 
 - updated to version 1.2.1:
-  * fixed namespace issue with one of the new tools introduced as 
+  * fixed namespace issue with one of the new tools introduced as
     mpeg2enc. fdo#66221
   * API: new H.264 encoding API for Baseline, Main and High profiles
-  * API: add support for MPEG-2 encoding 
+  * API: add support for MPEG-2 encoding
   * API: add video processing interfaces
-  * API: add vaQuerySurfaceAttributes() to query surface attributes 
+  * API: add vaQuerySurfaceAttributes() to query surface attributes
     supported by the underlying drivers.
-  * API: new version of vaCreateSurfaces(), the old version of 
+  * API: new version of vaCreateSurfaces(), the old version of
     vaCreateSurfaces() is still supported if including <va/va_compat.h>
-  * API: add new surface attributes to enable VA surface creation 
+  * API: add new surface attributes to enable VA surface creation
     from external buffer
   * API: add new RT formats and fourcc codes
   * Refine VA trace utility
@@ -861,7 +879,7 @@ Thu Oct 18 11:09:09 UTC 2012 - kkhere.geo@gmail.com
 -------------------------------------------------------------------
 Thu Oct 18 10:59:21 UTC 2012 - kkhere.geo@gmail.com
 
-- packaging va backends seperately 
+- packaging va backends seperately
 
 -------------------------------------------------------------------
 Thu Oct 18 10:56:48 UTC 2012 - kkhere.geo@gmail.com
@@ -873,12 +891,12 @@ Thu Oct 18 10:56:48 UTC 2012 - kkhere.geo@gmail.com
   * Fix generic VA/GLX implementation for newer cluttersink versions
   * Fix threading issues in VA objects reference code (+Krzysztof Kotlenga)
   * Fix build on Android Ice Cream Sandwich (+Haitao Huang, Daniel Charles)
- 
+
 
 -------------------------------------------------------------------
 Tue May 29 15:24:49 UTC 2012 - kkhere.geo@gmail.com
 
-- get osc service localrun download_files to run 
+- get osc service localrun download_files to run
 
 -------------------------------------------------------------------
 Tue May 29 15:50:36 CEST 2012 - tiwai@suse.de
@@ -899,7 +917,7 @@ Wed May 23 14:13:51 UTC 2012 - kkhere.geo@gmail.com
 
 - Rename subpackage vaapi-drivers -> vaapi-dummy-driver
   since dummy is the only driver this package contains.
-- Let the library recommend the dummy driver in case no other 
+- Let the library recommend the dummy driver in case no other
   is present
 
 -------------------------------------------------------------------
@@ -940,12 +958,12 @@ Wed Mar 21 19:02:15 UTC 2012 - jengelh@medozas.de
 -------------------------------------------------------------------
 Mon Feb 27 19:30:59 CET 2012 - dmueller@suse.de
 
-- exclude from build on ARM 
+- exclude from build on ARM
 
 -------------------------------------------------------------------
 Tue Feb 14 13:18:40 UTC 2012 - sndirsch@suse.com
 
-- Update package BuildRequires to use pkgconfig symbols 
+- Update package BuildRequires to use pkgconfig symbols
 
 -------------------------------------------------------------------
 Sat Nov 19 16:03:00 UTC 2011 - coolo@suse.com
@@ -969,7 +987,7 @@ Wed Nov  9 16:20:42 UTC 2011 - kkhere.geo@gmail.com
 -------------------------------------------------------------------
 Tue Aug  9 14:50:19 UTC 2011 - kkhere.geo@gmail.com
 
-- new version 1.0.14 
+- new version 1.0.14
    no NEWS released; changelog in git http://cgit.freedesktop.org/libva/
 
 -------------------------------------------------------------------
@@ -977,37 +995,37 @@ Tue May 31 19:44:52 UTC 2011 - kkhere.geo@gmail.com
 
 - new version 1.0.13
   * cleans up licensing issue
-  * IvyBrigde video decoding support 
+  * IvyBrigde video decoding support
   * thread safety
   * Encoding support in SandyBridge
 
 -------------------------------------------------------------------
 Fri Apr  1 20:22:20 UTC 2011 - kkhere.geo@gmail.com
 
-- new version 1.0.12 
+- new version 1.0.12
 
 -------------------------------------------------------------------
 Mon Mar 28 17:23:25 UTC 2011 - kkhere.geo@gmail.com
 
-- new version 1.0.11 
+- new version 1.0.11
   * obsoletes patch
     - i965_dri_video: don't try to render an invalid surface
 
 -------------------------------------------------------------------
 Thu Mar  3 15:02:06 UTC 2011 - kkhere.geo@gmail.com
 
-- patch: i965_dri_video: don't try to render an invalid surface 
+- patch: i965_dri_video: don't try to render an invalid surface
 
 -------------------------------------------------------------------
 Tue Feb 15 12:05:12 UTC 2011 - kkhere.geo@gmail.com
 
-- new version 1.0.10 
+- new version 1.0.10
 
 -------------------------------------------------------------------
 Mon Jan 10 10:23:00 UTC 2011 - kkhere.geo@gmail.com
 
 - new version 1.0.7
-- support IA44 AI44 subpicture format in sandybridge 
+- support IA44 AI44 subpicture format in sandybridge
 
 -------------------------------------------------------------------
 Sun Dec 19 10:14:27 UTC 2010 - lnussel@suse.de
@@ -1017,7 +1035,7 @@ Sun Dec 19 10:14:27 UTC 2010 - lnussel@suse.de
 -------------------------------------------------------------------
 Fri Nov  5 13:41:52 UTC 2010 - kkhere.geo@gmail.com
 
-- update to version 1.0.6 
+- update to version 1.0.6
 
 -------------------------------------------------------------------
 Thu Sep 30 09:05:22 UTC 2010 - kkhere.geo@gmail.com
@@ -1030,7 +1048,7 @@ Thu Sep 30 09:05:22 UTC 2010 - kkhere.geo@gmail.com
 -------------------------------------------------------------------
 Thu Sep  9 14:19:54 UTC 2010 - kkhere.geo@gmail.com
 
-- update to version 1.0.4 
+- update to version 1.0.4
 
 -------------------------------------------------------------------
 Tue Jun  8 10:05:32 UTC 2010 - dimstar@opensuse.org
