@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 21 16:41:04 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add sbl-gcc14.patch: fix an implicit  declaration.
+
+-------------------------------------------------------------------
 Mon Feb 26 13:05:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

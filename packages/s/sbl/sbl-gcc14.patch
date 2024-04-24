@@ -1,0 +1,11 @@
+diff -urp sbl-3.5.0.20130317.git7a75bc29.orig/sbl/selkey.c sbl-3.5.0.20130317.git7a75bc29/sbl/selkey.c
+--- sbl-3.5.0.20130317.git7a75bc29.orig/sbl/selkey.c	2013-03-17 09:02:27.000000000 -0500
++++ sbl-3.5.0.20130317.git7a75bc29/sbl/selkey.c	2024-04-21 11:40:00.013681365 -0500
+@@ -1,5 +1,7 @@
+ #include "selkey.h"
+ 
++void reset_speech ();
++
+ int selkey (keymap_file keymap, int brl, int kbd)
+ {
+ 

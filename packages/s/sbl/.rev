@@ -313,4 +313,12 @@
     <comment></comment>
     <requestid>1151502</requestid>
   </revision>
+  <revision rev="47" vrev="8">
+    <srcmd5>d1f0aa5a598c1922112338bb08ce6f76</srcmd5>
+    <version>3.5.0.20130317.git7a75bc29</version>
+    <time>1713964390</time>
+    <user>anag+factory</user>
+    <comment>- Add sbl-gcc14.patch: fix an implicit  declaration. (forwarded request 1169553 from mgorse)</comment>
+    <requestid>1169560</requestid>
+  </revision>
 </revisionlist>
