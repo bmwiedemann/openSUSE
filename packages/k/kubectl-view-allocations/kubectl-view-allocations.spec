@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-view-allocations
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           kubectl-view-allocations
-Version:        0.18.1
+Version:        0.19.2
 Release:        0
 Summary:        kubectl plugin to list allocations
 License:        CC0-1.0
@@ -29,7 +29,8 @@ Source1:        vendor.tar.xz
 Source2:        cargo_config
 Recommends:     fzf
 BuildRequires:  cargo
-BuildRequires:  rust >= 1.67.0
+# kube-client v0.90.0 requires rust 1.75 or higher
+BuildRequires:  rust >= 1.75.0
 
 %description
 kubectl plugin lists allocations for resources (cpu, memory, gpu,...) as

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 23 19:17:31 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- BuildRequire cargo 1.75 aka rust 1.75 to avoid errors due to
+- kube-client v0.90.0
+
+-------------------------------------------------------------------
+Tue Apr 23 18:26:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- fix boo#1223224
+- Update to version 0.19.2 (skipping non-existing releases 0.19.0
+  and 0.19.1):
+  * (cargo-release) version 0.19.2
+  * (cargo-release) version 0.19.1
+  * (cargo-release) version 0.19.0
+  * Update kube & k8s-openapi, minimal k8s version is 1.24
+  * add socks5 support via the kube dependency
+  * Bump actions/cache from 3 to 4
+
+-------------------------------------------------------------------
 Mon Nov 27 05:53:44 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package kubectl-view-allocations: kubectl plugin to list
