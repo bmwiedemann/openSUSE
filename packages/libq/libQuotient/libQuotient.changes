@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Apr 24 08:40:39 UTC 2024 - Christopher Hock <christopher.hock@suse.com>
+
+- Add qt6-sql-sqlite to BuildRequires to allow Qt6 build to pass
+- Update to 0.8.2
+  * Historical encrypted messages can now be decrypted with old 
+    megolm keys retrieved from SSSS 
+    (gh#quotient-im/libQuotient#687)
+  * The User library API is getting prepared to be split into 
+    that for room members (RoomMember) and user profiles
+    (stays in User for now) in 0.9, is deprecating mos of User
+    methods that accept Room for the member context
+    (gh#quotient-im/libQuotient#685)
+  * Along the same lines: functions to (un)ignore users by userid
+    rather than User* are introduced; the old signatures are
+    deprecated now and will be removed in 0.9
+    (gh#quotient-im/libQuotient#718)
+  * More efficient (less cache-wasting) avatar retrieval
+    (gh#quotient-im/libQuotient#711)
+  * Property for querying conection's account_data
+    (gh#quotient-im/libQuotient#719)
+  * Fix brain-split when checking the event types on some Linux
+    distributions 
+    (gh#quotient-im/libQuotient#726)
+    (gh#quotient-im/libQuotient#692)
+  * A new event class for m.room.server_acl
+    (gh#quotient-im/libQuotient#729)
+  * The library supports defaulting direct chats to E2EE now
+    (gh#quotient-im/libQuotient#730)
+
+-------------------------------------------------------------------
 Wed Mar 13 21:01:31 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Move install commands into %install section

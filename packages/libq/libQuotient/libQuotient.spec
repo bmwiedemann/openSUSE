@@ -27,7 +27,7 @@
 %define rname libQuotient
 %bcond_without e2ee
 Name:           libQuotient%{?pkg_suffix}
-Version:        0.8.1.2
+Version:        0.8.2
 Release:        0
 Summary:        Library for Qt Matrix Clients
 License:        LGPL-2.1-only
@@ -42,6 +42,7 @@ BuildRequires:  gcc12-c++
 %endif
 BuildRequires:  pkgconfig
 %if 0%{?qt6}
+BuildRequires:  qt6-sql-sqlite
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
