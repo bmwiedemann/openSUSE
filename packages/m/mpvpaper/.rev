@@ -100,4 +100,19 @@
   * Fix int overflow for getopt_long() on ARM</comment>
     <requestid>1123176</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3a6747859224b0d14c72f347bd918b24</srcmd5>
+    <version>1.5</version>
+    <time>1714070884</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5:
+  * Allow selecting multiple outputs at once without using &quot;*&quot;
+    like: &quot;DP-2 HDMI-A-1 DP-1&quot;
+  * Allow using the mpv option &quot;--playlist&quot; to load media
+  * Load mpv options with the mpv option &quot;config=yes&quot;
+    instead of manually loading
+  * Override user configs with options passed with &quot;--mpv-options/-o&quot;
+  * Fix vo=libmpv not being set when empty for mpv 0.38</comment>
+    <requestid>1169925</requestid>
+  </revision>
 </revisionlist>
