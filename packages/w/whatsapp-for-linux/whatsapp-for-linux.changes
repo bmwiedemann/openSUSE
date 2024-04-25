@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 25 11:53:19 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.5:
+  Implemented enhancements:
+  * Add Chinese (simplified) translations #346
+  * Port to WebKit2GTK 4.1 #302
+  * Custom css or userscript #208
+  Fixed bugs:
+  * Google chrome version too old #360
+  * Visual: Repo's readme could look better #357
+  Merged pull requests:
+  * Adding custom.css #370
+  * Set user agent to a valid Google Chrome release #361
+  * Update es.po #354
+  * add polish translation #327
+
+-------------------------------------------------------------------
 Tue Jan 30 11:23:10 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to recent git checkout that will eventually become 1.6.5

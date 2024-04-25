@@ -176,4 +176,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1144556</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1d86bf1abcbc48221102050eaefd952b</srcmd5>
+    <version>1.6.5~20240425.2717ff6</version>
+    <time>1714071037</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.6.5:
+  Implemented enhancements:
+  * Add Chinese (simplified) translations #346
+  * Port to WebKit2GTK 4.1 #302
+  * Custom css or userscript #208
+  Fixed bugs:
+  * Google chrome version too old #360
+  * Visual: Repo's readme could look better #357
+  Merged pull requests:
+  * Adding custom.css #370
+  * Set user agent to a valid Google Chrome release #361
+  * Update es.po #354
+  * add polish translation #327</comment>
+    <requestid>1170143</requestid>
+  </revision>
 </revisionlist>
