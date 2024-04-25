@@ -26,8 +26,7 @@
 %bcond_with opengles
 %endif
 %bcond_without gstreamer
-# Fluidsynth plugin is known to cause strange crashes here and there - disable it for now (2014-10-07, DimStar)
-%bcond_with fluidsynth
+%bcond_without fluidsynth
 # VNC support - the module is not really usable in most cases tested so far (e.g. against qemu-kvm -vnc :xx)
 %bcond_with vnc
 %bcond_with faad
@@ -325,6 +324,21 @@ Supplements:    packageand(%{name}-noX:%(rpm --qf "%%{name}" -qf $(readlink -f %
 This package enhances the functionality of the VLC media player by
 using GStreamer and its submodules as a backend to decode streams.
 
+%package codec-fluidsynth
+Summary:        FluidSynth integration for the VLC media player
+Group:          Productivity/Multimedia/Video/Players
+Requires:       %{name}-noX = %{version}
+# We need the noX package first, as it contains vlc-cache-gen
+Requires(post): %{name}-noX
+Supplements:    packageand(%{name}-noX:%(rpm --qf "%%{name}" -qf $(readlink -f %{_libdir}/libfluidsynth.so)))
+
+%description codec-fluidsynth
+This package enhances the functionality of the VLC media player by
+using FluidSynth as a backend to play MIDI files.
+
+Note that FluidSynth plugin is known to cause strange crashes here
+and there.
+
 %package jack
 Summary:        Jack integration for the VLC media player
 Group:          Productivity/Multimedia/Video/Players
@@ -570,6 +584,18 @@ if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
 fi
 
 %postun -n %{name}-codec-gstreamer
+if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
+  %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+fi
+%endif
+
+%if %{with fluidsynth}
+%post -n %{name}-codec-fluidsynth
+if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
+  %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+fi
+
+%postun -n %{name}-codec-fluidsynth
 if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
   %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
 fi
@@ -890,9 +916,6 @@ fi
 %{_libdir}/vlc/plugins/codec/libedummy_plugin.so
 %{_libdir}/vlc/plugins/codec/libfdkaac_plugin.so
 %{_libdir}/vlc/plugins/codec/libflac_plugin.so
-%if %{with fluidsynth}
-%{_libdir}/vlc/plugins/codec/libfluidsynth_plugin.so
-%endif
 %{_libdir}/vlc/plugins/codec/libg711_plugin.so
 %{_libdir}/vlc/plugins/codec/libjpeg_plugin.so
 %{_libdir}/vlc/plugins/codec/libkate_plugin.so
@@ -1172,6 +1195,11 @@ fi
 %if %{with gstreamer}
 %files codec-gstreamer
 %{_libdir}/vlc/plugins/codec/libgstdecode_plugin.so
+%endif
+
+%if %{with fluidsynth}
+%files codec-fluidsynth
+%{_libdir}/vlc/plugins/codec/libfluidsynth_plugin.so
 %endif
 
 %files vdpau
