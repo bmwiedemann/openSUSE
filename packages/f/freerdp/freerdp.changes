@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Apr 24 08:57:51 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.5.1:
+  * Lots of fixes for oss-fuzz reports
+  * Timezone detection fixes (#10106)
+  * SDL key remapping support (#10103)
+  * Improved help (#10099)
+  * FreeBSD epoll detection fix (#10097)
+- Changes from 3.5.0:
+  * CVE:
+    - CVE-2024-32041 [Low[ OutOfBound Read in zgfx_decompress_segment
+    - CVE-2024-32039 [Moderate] Integer overflow & OutOfBound Write in clear_decompress_residual_data
+    - CVE-2024-32040 [Low] integer underflow in nsc_rle_decode
+    - CVE-2024-32458 [Low] OutOfBound Read in planar_skip_plane_rle
+    - CVE-2024-32459 [Low] OutOfBound Read in ncrush_decompress
+    - CVE-2024-32460 [Low] OutOfBound Read in interleaved_decompress
+  * location channel support #9981, #9984, #10065
+  * bugfixes for report from Evgeny Legerov of Kaspersky Lab #10077
+  * fuzzer tests from Evgeny Legerov of Kaspersky Lab #10078
+  * bugfixes for coverty scanner #10066, #10068,  #10069, #10070, #10075
+  * clipboard and generic locking fixes #10076
+  * split autoreconnect support from enabling it #10063
+  * various nightly and workflow fixes #10064, #10058, #10062
+  * always set wm-class to app_id #10051
+  * refactored and simplified CMake #10046, #10047
+  * fix relative mouse event sending #10010
+  * improve and unify check for APIs used (POSIX, win32, mac, ...) #9995
+  * fix termination for gateway connections #9985
+  * fix drivestoredirect RDP file setting, ignore invalid #9989
+  * drop IPP support #10038
+
+-------------------------------------------------------------------
 Tue Mar 26 14:04:54 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim duplicate version number from package names; rename
