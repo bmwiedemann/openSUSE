@@ -754,4 +754,15 @@ varienvironment able.
   - Bug fixes</comment>
     <requestid>1167679</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>dcf8c5a3a84341121574212e71e847c1</srcmd5>
+    <version>0.50.0</version>
+    <time>1714070925</time>
+    <user>anag+factory</user>
+    <comment>- Rearranging and renaming shell-related subpackages (reaction to
+  the discussion gh#akinomyoga/ble.sh$441 and
+  https://github.com/junegunn/fzf?tab=readme-ov-file#setting-up-shell-integration).
+- Shell subpackages should be Enahncing (not Supplementing) fzf.</comment>
+    <requestid>1170041</requestid>
+  </revision>
 </revisionlist>

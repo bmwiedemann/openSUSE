@@ -43,26 +43,30 @@ BuildArch:      noarch
 Tmux integration for fzf. Includes a wrapper script, fzf-tmux, that opens your list in a
 separate tmux pane.
 
-%package bash-completion
+%package bash-integration
 Summary:        Bash completion for fzf
 Group:          Productivity/File utilities
 Requires:       bash-completion
 Requires:       fzf
-Supplements:    (fzf and bash-completion)
+Enhances:       (fzf and bash-completion)
+Provides:       fzf-bash-completion = %{version}-%{release}
+Obsoletes:      fzf-bash-completion < %{version}-%{release}
 BuildArch:      noarch
 
-%description bash-completion
+%description bash-integration
 Bash shell completions for fzf
 
-%package fish-completion
+%package fish-integration
 Summary:        Fish completion for fzf
 Group:          Productivity/File utilities
 Requires:       fish
 Requires:       fzf
-Supplements:    (fzf and fish)
+Enhances:       (fzf and fish)
+Provides:       fzf-fish-completion = %{version}-%{release}
+Obsoletes:      fzf-fish-completion < %{version}-%{release}
 BuildArch:      noarch
 
-%description fish-completion
+%description fish-integration
 fish shell completions for fzf
 
 To enable it, ensure you have a file ~/.config/fish/functions/fish_user_key_bindings.fish
@@ -73,15 +77,17 @@ end
 
 (or append fzf_key_bindings to the fish_user_key_bindings function if the file already exists)
 
-%package zsh-completion
+%package zsh-integration
 Summary:        ZSH completion for fzf
 Group:          Productivity/File utilities
 Requires:       fzf
 Requires:       zsh
-Supplements:    (fzf and zsh)
+Enhances:       (fzf and zsh)
+Provides:       fzf-zsh-completion = %{version}-%{release}
+Obsoletes:      fzf-zsh-completion < %{version}-%{release}
 BuildArch:      noarch
 
-%description zsh-completion
+%description zsh-integration
 zsh shell completions for fzf
 
 %define     vimplugin_dir %{_datadir}/vim/site
@@ -90,6 +96,7 @@ zsh shell completions for fzf
 Summary:        Vim plugin for fzf
 Group:          Productivity/File utilities
 Requires:       (vim or neovim)
+Enhances:       (fzf and zsh)
 BuildArch:      noarch
 
 %description -n vim-fzf
@@ -119,21 +126,20 @@ install -Dm644 man/man1/fzf.1 %{buildroot}%{_mandir}/man1/fzf.1
 install -Dm644 man/man1/fzf-tmux.1 %{buildroot}%{_mandir}/man1/fzf-tmux.1
 
 # shell completions
-# csplit splits on end tags inside of the completions to allow for easy
-# splitting of the files for installation.
-./fzf --bash | csplit - '/.*end\:.*/+1' -f bash
-./fzf --zsh  | csplit - '/.*end\:.*/+1' -f zsh
-./fzf --fish > fish00
+# Since 0.48 fzf can generate shell integration scripts, but the
+# upstream still promotes "for finer control" availability of the
+# real scripts
+mkdir -p %{buildroot}%{_datadir}/fzf
+cp -p -r shell/ %{buildroot}%{_datadir}/fzf
 
-install -Dm0644 bash00 \
-    %{buildroot}%{_datadir}/bash-completion/completions/fzf-key-bindings
-install -Dm0644 bash01 \
-    %{buildroot}%{_datadir}/bash-completion/completions/fzf
-install -Dm0644 zsh00 \
+mkdir -p %{buildroot}%{_sysconfdir}/profile.d
+echo 'if [ "${BASH_VERSION-}" ] && [[ $- == *i* ]]; then eval "$(fzf --bash 2>/dev/null)"; fi' > \
+    %{buildroot}%{_sysconfdir}/profile.d/fzf-bash.sh
+install -Dm0644 shell/completion.zsh \
     %{buildroot}%{_sysconfdir}/zsh_completion.d/fzf-key-bindings
-install -Dm0644 zsh01 \
+install -Dm0644 shell/key-bindings.zsh \
     %{buildroot}%{_datadir}/zsh/site-functions/_fzf
-install -Dm0644 fish00 \
+install -Dm0644 shell/key-bindings.fish \
     %{buildroot}%{_datadir}/fish/vendor_functions.d/fzf_key_bindings.fish
 
 # vim plugin
@@ -159,25 +165,26 @@ go test -v -x -mod=vendor ${BUILDMOD} -a \
     github.com/junegunn/fzf/src/util
 
 %files
+%license LICENSE
 %doc README.md
 %{_bindir}/fzf
 %{_mandir}/man1/fzf.1%{?ext_man}
-%license LICENSE
+%dir %{_datadir}/fzf
+%{_datadir}/fzf/shell
 
 %files tmux
 %{_bindir}/fzf-tmux
 %{_mandir}/man1/fzf-tmux.1%{?ext_man}
 
-%files bash-completion
-%{_datadir}/bash-completion/completions/fzf
-%{_datadir}/bash-completion/completions/fzf-key-bindings
+%files bash-integration
+%config %{_sysconfdir}/profile.d/fzf-bash.sh
 
-%files fish-completion
+%files fish-integration
 %dir %{_datadir}/fish
 %dir %{_datadir}/fish/vendor_functions.d
 %{_datadir}/fish/vendor_functions.d/fzf_key_bindings.fish
 
-%files zsh-completion
+%files zsh-integration
 %{_datadir}/zsh
 %dir %{_sysconfdir}/zsh_completion.d
 %config %{_sysconfdir}/zsh_completion.d/fzf-key-bindings
