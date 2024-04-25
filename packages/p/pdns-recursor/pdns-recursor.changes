@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 24 08:56:56 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- update to 5.0.4:
+  * fixes a case when a crafted responses can lead to a denial of
+    service in Recursor if recursive forwarding is configured
+    (bsc#1223262, CVE-2024-25583)
+
+- changes in 5.0.3
+  * Log if a DNSSEC related limit was hit if log_bogus is set
+  * Reduce RPZ memory usage by not keeping the initially loaded
+    RPZs in memory
+  * Fix the zoneToCache regression introduced by 5.0.2 security
+    update
+
+-------------------------------------------------------------------
 Tue Feb 13 14:33:11 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - update to 5.0.2

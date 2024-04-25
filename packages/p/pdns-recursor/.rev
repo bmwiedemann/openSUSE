@@ -783,4 +783,21 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
 - cargo_build_fix.patch: add cargo_build parameters to Makefile...</comment>
     <requestid>1146434</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>74d48d7d5b2c7d1bc0afcc300489f0e6</srcmd5>
+    <version>5.0.4</version>
+    <time>1714070916</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.4:
+  * fixes a case when a crafted responses can lead to a denial of
+    service in Recursor if recursive forwarding is configured
+    (bsc#1223262, CVE-2024-25583)
+- changes in 5.0.3
+  * Log if a DNSSEC related limit was hit if log_bogus is set
+  * Reduce RPZ memory usage by not keeping the initially loaded
+    RPZs in memory
+  * Fix the zoneToCache regression introduced by 5.0.2 security
+    update</comment>
+    <requestid>1170013</requestid>
+  </revision>
 </revisionlist>
