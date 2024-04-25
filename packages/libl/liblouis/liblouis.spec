@@ -25,6 +25,8 @@ License:        LGPL-3.0-or-later
 Group:          Productivity/Other
 URL:            http://liblouis.io/
 Source0:        https://github.com/liblouis/liblouis/releases/download/v%{version}/liblouis-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM s390x-support gh#liblouis/liblouis#1552 bsc#1198348
+Patch0:         s390x-support.patch
 BuildRequires:  fdupes
 BuildRequires:  libyaml-devel
 BuildRequires:  pkgconfig

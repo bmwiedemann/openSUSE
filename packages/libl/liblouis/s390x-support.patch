@@ -1,0 +1,67 @@
+From e11dfbc7539e31be5e4381e416874ad22e408502 Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Thu, 11 Apr 2024 13:35:03 +0200
+Subject: [PATCH] python: use utf_%d_be encoding on bigendian archs
+
+Fix https://github.com/liblouis/liblouis/issues/1551
+---
+ python/louis/__init__.py.in |  5 +++--
+ python/tests/test_louis.py  | 16 ++++++++++++++++
+ 2 files changed, 19 insertions(+), 2 deletions(-)
+
+Index: liblouis-3.25.0/python/louis/__init__.py.in
+===================================================================
+--- liblouis-3.25.0.orig/python/louis/__init__.py.in
++++ liblouis-3.25.0/python/louis/__init__.py.in
+@@ -39,7 +39,7 @@ function for information about how liblo
+ @author: Andre-Abush Clause <dev@andreabc.net>
+ """
+ 
+-from sys import getfilesystemencoding, platform, version_info
++from sys import byteorder, getfilesystemencoding, platform, version_info
+ from atexit import register
+ from ctypes import (
+     c_ushort,
+@@ -60,6 +60,7 @@ except ImportError:  # Unix/Cygwin
+     _loader, _functype = cdll, CFUNCTYPE
+ liblouis = _loader["###LIBLOUIS_SONAME###"]
+ _is_windows = platform == "win32"
++_endianness = "be" if byteorder == "big" else "le"
+ 
+ # { Module Configuration
+ #: Specifies the charSize (in bytes) used by liblouis.
+@@ -78,7 +79,7 @@ outlenMultiplier = 4 + wideCharBytes * 2
+ fileSystemEncoding = "mbcs" if _is_windows else getfilesystemencoding()
+ #: Specifies the encoding to use when converting from byte strings to unicode strings.
+ #: @type: str
+-conversionEncoding = "utf_%d_le" % (wideCharBytes * 8)
++conversionEncoding = "utf_%d_%s" % (wideCharBytes * 8, _endianness)
+ # }
+ 
+ # Some general utility functions
+Index: liblouis-3.25.0/python/tests/test_louis.py
+===================================================================
+--- liblouis-3.25.0.orig/python/tests/test_louis.py
++++ liblouis-3.25.0/python/tests/test_louis.py
+@@ -96,5 +96,21 @@ class TestUnicodeDecomposed(unittest.Tes
+     def test_14(self):
+         self.assertEqual(louis.translateString(["en-ueb-g1.ctb", "tests/test.cti"], "a \ud83e\udd23 b"),
+                          'a "<rolling on the floor laughing"> b')
++
++class TestEndianness(unittest.TestCase):
++    def test_1(self):
++        self.assertEqual(louis.translate(["unicode.dis","en-chardefs.cti"], "abcdefghijklmnopqrstuvwxyz")[0],
++                         "⠁⠃⠉⠙⠑⠋⠛⠓⠊⠚⠅⠇⠍⠝⠕⠏⠟⠗⠎⠞⠥⠧⠺⠭⠽⠵")
++
++    def test_2(self):
++        # invert encoding
++        _encoding = louis.conversionEncoding
++        _endianness = "le" if louis._endianness == "be" else "be"
++        louis.conversionEncoding = "utf_%d_%s" % (louis.wideCharBytes * 8, _endianness)
++        with self.assertRaises(UnicodeDecodeError) as context:
++            self.assertEqual(louis.translate(["unicode.dis","en-chardefs.cti"], "abcdefghijklmnopqrstuvwxyz")[0],
++                             "⠁⠃⠉⠙⠑⠋⠛⠓⠊⠚⠅⠇⠍⠝⠕⠏⠟⠗⠎⠞⠥⠧⠺⠭⠽⠵")
++        louis.conversionEncoding = _encoding
++
+ if __name__ == '__main__':
+     unittest.main()

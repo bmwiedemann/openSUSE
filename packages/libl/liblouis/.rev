@@ -524,4 +524,12 @@ not all subpackages need the full blurb. (forwarded request 530874 from jengelh)
     <comment>- Run python tests in %check (forwarded request 1166860 from dgarcia)</comment>
     <requestid>1166866</requestid>
   </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>17cedf0eb000b392e6553fd0a5f07ec9</srcmd5>
+    <version>3.25.0</version>
+    <time>1714070866</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1170055</requestid>
+  </revision>
 </revisionlist>
