@@ -13,4 +13,13 @@ If this package is accepted in Factory, I will submit an update to the OpenScene
 </comment>
     <requestid>1163819</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>beb4f8db42a79c82d5a17d87a3fc86d1</srcmd5>
+    <version>2.5.1+git20200104.c1e20b7</version>
+    <time>1714071040</time>
+    <user>anag+factory</user>
+    <comment>Fixed compilation with boost 1.85.0 
+</comment>
+    <requestid>1170151</requestid>
+  </revision>
 </revisionlist>

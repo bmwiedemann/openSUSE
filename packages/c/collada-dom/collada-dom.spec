@@ -65,6 +65,9 @@ instance document.
 
 %prep
 %autosetup -p1 -n %{name}-%{version}
+# fix compilation with boost 1.85 due to deprecated stuff that was removed
+sed -i 's/convenience/operations/' dom/include/dae.h dom/src/dae/daeUtils.cpp
+sed -i 's/branch_path/parent_path/' dom/src/dae/daeZAEUncompressHandler.cpp
 
 %build
 # silence warning spam
