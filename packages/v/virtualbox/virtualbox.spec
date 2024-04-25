@@ -165,6 +165,7 @@ Patch42:        kernel-6.8.patch
 Patch43:        fixes_for_vboxconfig.patch
 Patch44:        kernel-6.9.patch
 Patch45:        libxml21206.patch
+Patch46:        fix_shared_folder_time.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -485,6 +486,7 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch -P 43 -p1
 %patch -P 44 -p1
 %patch -P 45 -p1
+%patch -P 46 -p1
 
 ### Documents for virtualbox main package ###
 %if %{main_package}
@@ -551,6 +553,7 @@ EOF
 
 cat >> vbox-guest-tools.conf << EOF
 g vboxguest - - - -
+g vboxsf - - - -
 %if 0%{?suse_version} <= 1500
 g vboxvideo - - - -
 %endif
@@ -1104,10 +1107,10 @@ rm -rf src/libs/{libpng-*,libxml2-*,libxslt-*,zlib-*,boost-*}
 
 # build kernel modules for guest and host (check novel-kmp package as example)
 # host  modules : vboxdrv,vboxnetflt,vboxnetadp
-# guest modules : vboxguest,vboxvideo
+# guest modules : vboxguest,vboxsf,vboxvideo
 echo "build kernel modules"
 for vbox_module in kmp_host/vbox{drv,netflt,netadp} \
-           kmp_additions/vbox{guest,video}; do
+           kmp_additions/vbox{guest,sf,video}; do
     #get the module name from path
     module_name=$(basename "$vbox_module")
 
@@ -1133,8 +1136,9 @@ for vbox_module in kmp_host/vbox{drv,netflt,netadp} \
 		  $PWD/modules_build_dir/$flavor/$module_name
 	    SYMBOLS="$PWD/modules_build_dir/$flavor/vboxdrv/Module.symvers"
 	fi
-        # copy vboxguest (for guest) module symbols which are used by vboxvideo km's:
-	if [ "$module_name" = "vboxvideo" ] ; then
+        # copy vboxguest (for guest) module symbols which are used by vboxsf and vboxvideo km's:
+	if [ "$module_name" = "vboxsf" -o \
+	     "$module_name" = "vboxvideo" ] ; then
 	    cp $PWD/modules_build_dir/$flavor/vboxguest/Module.symvers \
 		$PWD/modules_build_dir/$flavor/$module_name
 	    SYMBOLS="$PWD/modules_build_dir/$flavor/vboxguest/Module.symvers"
@@ -1149,7 +1153,7 @@ done
 export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=extra
 #to install modules we use here similar steps like in build phase, go through all the modules :
-for module_name in vbox{drv,netflt,netadp,guest,video}
+for module_name in vbox{drv,netflt,netadp,guest,sf,video}
 do
 	#and through all flavors
 	for flavor in %{flavors_to_build}; do

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 24 14:53:24 UTC 2024 - Larry Finger <Larry.Finger@gmail.com>
+
+- Provide a temporary fix to the problem of wrong timestamp for files
+  in a shared folder since kernel 6.6. File "fix_shared_folder_time.patch"
+  is added. This change fixes boo#1220524.
+
+-------------------------------------------------------------------
 Fri Apr 19 04:36:59 UTC 2024 - Larry Finger <Larry.Finger@gmail.com>
 
 - Fix build error on Factory;Staging due to libxml 2.12.6. Added file
