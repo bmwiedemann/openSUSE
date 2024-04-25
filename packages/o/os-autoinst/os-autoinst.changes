@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 25 14:54:16 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1713955884.12b7f09:
+  * MM setup: Ensure zone of uplink device is set correctly
+  * Add fallback for `PRODUCTDIR` under `CASEDIR/products/DISTRI`
+  * qemu: Reuse arch variable
+  * qemu: Set proper default on s390x
+  * qemu: Extract methods for architecture checks
+  * qemu: Extract method determine_qemu_version
+
+-------------------------------------------------------------------
 Mon Apr 22 15:40:46 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1713800438.8bd57dd:
