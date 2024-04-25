@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 25 08:18:43 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patch fix-wamp-tests.patch to make it work with modern
+  python-pytest-asyncio package gh#crossbario/autobahn-python#1631
+
+-------------------------------------------------------------------
 Thu Feb 22 03:58:14 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros.

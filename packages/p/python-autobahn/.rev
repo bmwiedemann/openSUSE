@@ -375,4 +375,13 @@
 - No more greedy globs in %files.</comment>
     <requestid>1148956</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>dbf9664702fea885f9c6edc07b9d87bc</srcmd5>
+    <version>23.6.2</version>
+    <time>1714071022</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream patch fix-wamp-tests.patch to make it work with modern
+  python-pytest-asyncio package gh#crossbario/autobahn-python#1631</comment>
+    <requestid>1170112</requestid>
+  </revision>
 </revisionlist>

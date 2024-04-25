@@ -31,6 +31,8 @@ URL:            https://github.com/crossbario/autobahn-python
 Source:         https://files.pythonhosted.org/packages/source/a/autobahn/autobahn-%{version}.tar.gz
 Patch0:         respect-cflags.patch
 Patch1:         intrin-arch.patch
+# PATCH-FIX-UPSTREAM fix-wamp-tests.patch gh#crossbario/autobahn-python#1634
+Patch2:         fix-wamp-tests.patch
 BuildRequires:  %{python_module PyNaCl >= 1.4.0}
 BuildRequires:  %{python_module Twisted >= 20.3.0}
 BuildRequires:  %{python_module argon2-cffi >= 20.1.0}
