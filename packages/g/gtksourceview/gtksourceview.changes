@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 22 15:39:39 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add gtksourceview-gcc14.patch: fix assignment from incompatible
+  pointer type.
+
+-------------------------------------------------------------------
 Tue Jan 16 16:44:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a

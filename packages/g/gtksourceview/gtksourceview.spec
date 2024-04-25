@@ -25,6 +25,8 @@ Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GtkSourceView
 Source0:        http://download.gnome.org/sources/gtksourceview/3.24/%{name}-%{version}.tar.xz
 Source1:        changes.lang
+# PATCH-FIX-UPSTREAM gtksourceview-gcc14.patch mgorse@suse.com -- fix assignment from incompatible pointer type.
+Patch0:         gtksourceview-gcc14.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 1.42.0
