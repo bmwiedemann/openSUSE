@@ -17,7 +17,7 @@
 
 
 Name:           waybar
-Version:        0.10.0
+Version:        0.10.2
 Release:        0
 Summary:        Customizable Wayland bar for Sway and Wlroots based compositors
 License:        MIT
@@ -25,8 +25,6 @@ Group:          System/GUI/Other
 URL:            https://github.com/Alexays/Waybar
 Source0:        https://github.com/Alexays/Waybar/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        waybar.rpmlintrc
-# PATCH-FIX-UPSTREAM smolsheep@opensuse.org -- Fix wireplumber build. See gh/Alexays/Waybar#2919
-Patch0:         waybar-build-for-wireplumber-0.5.patch
 BuildRequires:  cmake
 %if 0%{?sle_version} >= 150400
 BuildRequires:  gcc13-c++
@@ -104,11 +102,14 @@ This package provides the upstream look and feel for sway.
 %if 0%{?sle_version} >= 150400
 export CXX=g++-13
 %endif
-%meson -Dcava=disabled
+%meson -Dcava=disabled -Dtests=enabled
 %meson_build
 
 %install
 %meson_install
+
+%check
+%meson_test
 
 %files
 %{_bindir}/waybar

@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Apr 23 16:35:16 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Enabled tests
+- Update to 0.10.2
+  * fix: hover event did not propagate causing issues
+
+-------------------------------------------------------------------
+Tue Apr 23 12:40:11 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Remove waybar-build-for-wireplumber-0.5.patch (Fixed upstream)
+- Update to 0.10.1
+  * Add always on option for hyprland/submap
+  * Add dwl/window module
+  * Add empty workspace style for Sway
+  * Add waybar-styles(5) manual page
+  * Also consider floating nodes when checking for flags
+    and active workspace status
+  * battery: Add {cycles}, {health} format replacements
+  * calendar: add shift_reset action
+    empty workspaces
+  * Escape tooltip in custom module
+  * feat: (optional) hover for all modules
+  * (Fix) Alt format on group modules
+  * Fix clock on-scroll value not being used for calendar
+  * fix:dwl tag crash when use wlr-randr enable monitor
+  * Fixed segfault
+  * Fixes for hyprland/workspaces
+  * Fix peristent class on buttons
+  * fix(power-profiles-daemon): correctly set initial visibility
+  * Fix reloading config
+  * fix(sway/workspaces): floating_nodes and focused icon
+  * fix(sway/workspaces): visible class doesn't work
+  * fix(sway/workspaces): Visible class doesn't work on visible and
+  * fix: update clock tooltip without placeholders
+  * fix(wlr/taskbar): crash on taskbar drag and drop event
+    functions
+  * Hyprland workspaces hosting-monitor css class
+  * [hyprland/workspaces] New options to change on click behaviour
+  * Make right-click to circle down ppd
+  * Pipewire backend: use pipewire thread lock
+  * README: tweak repology badge
+  * refactor(backlight): use concrete types for some helper
+  * refactor(privacy): clean up the module
+  * Remove unused variable in Workspaces::updateWindows
+  * sway/workspaces: Fix scroll on unfocused monitor
+  * taskbar: search user directories first for desktop files
+  * Update Wireplumber API to 0.5
+  * Upower warning level
+
+-------------------------------------------------------------------
 Thu Mar 21 11:36:46 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update waybar-build-for-wireplumber-0.5.patch to current version.
