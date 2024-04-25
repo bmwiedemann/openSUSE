@@ -1,7 +1,7 @@
 From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
 From: Andrew Burgess <aburgess@redhat.com>
 Date: Tue, 20 Jun 2023 09:46:35 +0100
-Subject: gdb-rhbz2196395-debuginfod-legacy-openssl-crash.patch
+Subject: gdb-bz2196395-debuginfod-legacy-openssl-crash.patch
 
 ;; Backport upstream commit f3eee5861743d635 to fix a crash triggered
 ;; when debuginfod makes use of particular openssl settings.

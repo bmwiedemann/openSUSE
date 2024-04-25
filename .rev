@@ -2644,4 +2644,71 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
 </comment>
     <requestid>1168788</requestid>
   </revision>
+  <revision rev="178" vrev="8">
+    <srcmd5>3da18d111728577efef9e1d388d8b59d</srcmd5>
+    <version>13.2</version>
+    <time>1714070853</time>
+    <user>anag+factory</user>
+    <comment>- Maintenance script qa.sh:
+  * Add PR31671 unresolved.
+  * Add unresolved for yama ptrace_scope == 1.
+  * Limit PR31648 unresolved to SLE-11.
+- Patch added (swo#31524, bsc#1222188):
+  * make-pascal_language-print_type-handle-varstring-nul.patch
+- Renable gcc-fortran for SLE-11.
+- Use system compiler (gcc 4.3.4) for testing all languages on
+  SLE-11.
+- Maintenance script qa.sh:
+  * Ignore all fails for SLE-11.
+- Maintenance script import-fedora.sh:
+  * Use %patch -P N instead of deprecated %patchN.
+  * Drop patch skips:
+    * gdb-6.5-readline-long-line-crash-test.patch
+    * gdb-6.7-charsign-test.patch
+    * gdb-test-ivy-bridge.patch
+    * gdb-ppc-power7-test.patch
+    * gdb-6.3-bz140532-ppc-unwinding-test.patch
+- Patches added (import from fedora rawhide @ a27201b):
+  * gdb-bz2196395-debuginfod-legacy-openssl-crash.patch
+  * gdb-rhbz-2232086-cpp-ify-mapped-symtab.patch
+  * gdb-rhbz-2232086-generate-dwarf-5-index-consistently.patch
+  * gdb-rhbz-2232086-generate-gdb-index-consistently.patch
+  * gdb-rhbz-2232086-reduce-size-of-gdb-index.patch
+  * gdb-rhbz2232086-refactor-selftest-support.patch
+- Patches updated (import from fedora rawhide @ a27201b):
+  * gdb-6.6-buildid-locate-rpm.patch
+  * gdb-6.6-buildid-locate.patch
+  * gdb-fedora-libncursesw.patch
+  * gdb-rhbz2233961-CVE-2022-4806.patch
+  * gdb-rhbz2233965-memory-leak.patch
+- Patches updated:  
+  * gdb-6.6-buildid-locate-rpm-suse.patch
+- Patches deleted (import from fedora rawhide @ a27201b):
+  * gdb-rhbz1553104-s390x-arch12-test.patch
+  * gdb-lineno-makeup-test.patch
+  * gdb-6.3-bz202689-exec-from-pthread-test.patch
+  * gdb-6.5-bz109921-DW_AT_decl_file-test.patch
+  * gdb-6.5-ia64-libunwind-leak-test.patch
+  * gdb-6.5-last-address-space-byte-test.patch
+  * gdb-6.5-missed-trap-on-step-test.patch
+  * gdb-6.5-sharedlibrary-path.patch
+  * gdb-6.7-testsuite-stable-results.patch
+  * gdb-6.8-bz442765-threaded-exec-test.patch
+  * gdb-ccache-workaround.patch
+  * gdb-opcodes-clflushopt-test.patch
+  * gdb-rhbz1186476-internal-error-unqualified-name-re-set-test.patch
+  * gdb-rhbz1350436-type-printers-error.patch
+  * gdb-rhbz2196395-debuginfod-legacy-openssl-crash.patch
+  * gdb-rhel5.9-testcase-xlf-var-inside-mod.patch
+  * gdb-test-pid0-core.patch
+- Patches deleted:
+  * fixup-gdb-rhbz1553104-s390x-arch12-test.patch
+  * fixup-2-gdb-rhbz1553104-s390x-arch12-test.patch
+  * fixup-gdb-lineno-makeup-test.patch
+  * fixup-gdb-6.6-buildid-locate-rpm.patch
+- Remove commented out mention of dropped patch
+  gdb-fix-selftest-fails-with-gdb-build-with-O2-flto.patch.
+</comment>
+    <requestid>1170040</requestid>
+  </revision>
 </revisionlist>

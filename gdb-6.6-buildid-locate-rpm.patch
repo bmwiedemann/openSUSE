@@ -339,7 +339,7 @@ diff --git a/gdb/configure b/gdb/configure
    YACC        The `Yet Another Compiler Compiler' implementation to use.
                Defaults to the first program found out of: `bison -y', `byacc',
                `yacc'.
-@@ -17848,6 +17860,494 @@ _ACEOF
+@@ -17848,6 +17860,495 @@ _ACEOF
  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_auto_load_safe_path" >&5
  $as_echo "$with_auto_load_safe_path" >&6; }
  
@@ -403,6 +403,7 @@ diff --git a/gdb/configure b/gdb/configure
 +#include <rpm/rpmlib.h>
 +#include <dlfcn.h>
 +#include <errno.h>
++#include <string.h>
 +
 +int
 +main ()
@@ -837,7 +838,7 @@ diff --git a/gdb/configure b/gdb/configure
 diff --git a/gdb/configure.ac b/gdb/configure.ac
 --- a/gdb/configure.ac
 +++ b/gdb/configure.ac
-@@ -160,6 +160,199 @@ AC_DEFINE_DIR(AUTO_LOAD_SAFE_PATH, escape_dir,
+@@ -160,6 +160,200 @@ AC_DEFINE_DIR(AUTO_LOAD_SAFE_PATH, escape_dir,
  	      [Directories safe to hold auto-loaded files.])
  AC_MSG_RESULT([$with_auto_load_safe_path])
  
@@ -887,6 +888,7 @@ diff --git a/gdb/configure.ac b/gdb/configure.ac
 +#include <rpm/rpmlib.h>
 +#include <dlfcn.h>
 +#include <errno.h>
++#include <string.h>
 +  ]], [[
 +    void *h;
 +    const char *const *rpmverp;

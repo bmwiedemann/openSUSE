@@ -1,0 +1,222 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Andrew Burgess <aburgess@redhat.com>
+Date: Fri, 24 Nov 2023 11:50:35 +0000
+Subject: gdb-rhbz-2232086-reduce-size-of-gdb-index.patch
+
+;; Back-port upstream commit aa19bc1d259 as part of a fix for
+;; non-deterministic gdb-index generation (RH BZ 2232086).
+
+gdb: reduce size of generated gdb-index file
+
+I noticed in passing that out algorithm for generating the gdb-index
+file is incorrect.  When building the hash table in add_index_entry we
+count every incoming entry rehash when the number of entries gets too
+large.  However, some of the incoming entries will be duplicates,
+which don't actually result in new items being added to the hash
+table.
+
+As a result, we grow the gdb-index hash table far too often.
+
+With an unmodified GDB, generating a gdb-index for GDB, I see a file
+size of 90M, with a hash usage (in the generated index file) of just
+2.6%.
+
+With a patched GDB, generating a gdb-index for the _same_ GDB binary,
+I now see a gdb-index file size of 30M, with a hash usage of 41.9%.
+
+This is a 67% reduction in gdb-index file size.
+
+Obviously, not every gdb-index file is going to see such big savings,
+however, the larger a program, and the more symbols that are
+duplicated between compilation units, the more GDB would over count,
+and so, over-grow the index.
+
+The gdb-index hash table we create has a minimum size of 1024, and
+then we grow the hash when it is 75% full, doubling the hash table at
+that time.  Given this, then we expect that either:
+
+  a. The hash table is size 1024, and less than 75% full, or
+  b. The hash table is between 37.5% and 75% full.
+
+I've include a test that checks some of these constraints -- I've not
+bothered to check the upper limit, and over full hash table isn't
+really a problem here, but if the fill percentage is less than 37.5%
+then this indicates that we've done something wrong (obviously, I also
+check for the 1024 minimum size).
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+diff --git a/gdb/dwarf2/index-write.c b/gdb/dwarf2/index-write.c
+--- a/gdb/dwarf2/index-write.c
++++ b/gdb/dwarf2/index-write.c
+@@ -254,20 +254,29 @@ add_index_entry (struct mapped_symtab *symtab, const char *name,
+ 		 int is_static, gdb_index_symbol_kind kind,
+ 		 offset_type cu_index)
+ {
+-  offset_type cu_index_and_attrs;
++  symtab_index_entry *slot = &find_slot (symtab, name);
++  if (slot->name == NULL)
++    {
++      /* This is a new element in the hash table.  */
++      ++symtab->n_elements;
+ 
+-  ++symtab->n_elements;
+-  if (4 * symtab->n_elements / 3 >= symtab->data.size ())
+-    hash_expand (symtab);
++      /* We might need to grow the hash table.  */
++      if (4 * symtab->n_elements / 3 >= symtab->data.size ())
++	{
++	  hash_expand (symtab);
+ 
+-  symtab_index_entry &slot = find_slot (symtab, name);
+-  if (slot.name == NULL)
+-    {
+-      slot.name = name;
++	  /* This element will have a different slot in the new table.  */
++	  slot = &find_slot (symtab, name);
++
++	  /* But it should still be a new element in the hash table.  */
++	  gdb_assert (slot->name == nullptr);
++	}
++
++      slot->name = name;
+       /* index_offset is set later.  */
+     }
+ 
+-  cu_index_and_attrs = 0;
++  offset_type cu_index_and_attrs = 0;
+   DW2_GDB_INDEX_CU_SET_VALUE (cu_index_and_attrs, cu_index);
+   DW2_GDB_INDEX_SYMBOL_STATIC_SET_VALUE (cu_index_and_attrs, is_static);
+   DW2_GDB_INDEX_SYMBOL_KIND_SET_VALUE (cu_index_and_attrs, kind);
+@@ -279,7 +288,7 @@ add_index_entry (struct mapped_symtab *symtab, const char *name,
+      the last entry pushed), but a symbol could have multiple kinds in one CU.
+      To keep things simple we don't worry about the duplication here and
+      sort and uniquify the list after we've processed all symbols.  */
+-  slot.cu_indices.push_back (cu_index_and_attrs);
++  slot->cu_indices.push_back (cu_index_and_attrs);
+ }
+ 
+ /* See symtab_index_entry.  */
+diff --git a/gdb/testsuite/gdb.gdb/index-file.exp b/gdb/testsuite/gdb.gdb/index-file.exp
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.gdb/index-file.exp
+@@ -0,0 +1,118 @@
++# Copyright 2023 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Load the GDB executable, and then 'save gdb-index', and make some
++# checks of the generated index file.
++
++load_lib selftest-support.exp
++
++# Can't save an index with readnow.
++if {[readnow]} {
++    untested "cannot create an index when readnow is in use"
++    return -1
++}
++
++# A multiplier used to ensure slow tasks are less likely to timeout.
++set timeout_factor 20
++
++set filename [selftest_prepare]
++if { $filename eq "" } {
++    unsupported "${gdb_test_file_name}.exp"
++    return -1
++}
++
++with_timeout_factor $timeout_factor {
++    # Start GDB, load FILENAME.
++    clean_restart $filename
++}
++
++# Generate an index file.
++set dir1 [standard_output_file "index_1"]
++remote_exec host "mkdir -p ${dir1}"
++with_timeout_factor $timeout_factor {
++    gdb_test_no_output "save gdb-index $dir1" \
++	"create gdb-index file"
++}
++
++# Close GDB.
++gdb_exit
++
++# Validate that the index-file FILENAME has made efficient use of its
++# symbol hash table.  Calculate the number of symbols in the hash
++# table and the total hash table size.  The hash table starts with
++# 1024 entries, and then doubles each time it is filled to 75%.  At
++# 75% filled, doubling the size takes it to 37.5% filled.
++#
++# Thus, the hash table is correctly filled if:
++#  1. Its size is 1024 (i.e. it has not yet had its first doubling), or
++#  2. Its filled percentage is over 37%
++#
++# We could check that it is not over filled, but I don't as that's not
++# really an issue.  But we did once have a bug where the table was
++# doubled incorrectly, in which case we'd see a filled percentage of
++# around 2% in some cases, which is a huge waste of disk space.
++proc check_symbol_table_usage { filename } {
++    # Open the file in binary mode and read-only mode.
++    set fp [open $filename rb]
++
++    # Configure the channel to use binary translation.
++    fconfigure $fp -translation binary
++
++    # Read the first 8 bytes of the file, which contain the header of
++    # the index section.
++    set header [read $fp [expr 7 * 4]]
++
++    # Scan the header to get the version, the CU list offset, and the
++    # types CU list offset.
++    binary scan $header iiiiii version \
++	_ _ _ symbol_table_offset shortcut_offset
++
++    # The length of the symbol hash table (in entries).
++    set len [expr ($shortcut_offset - $symbol_table_offset) / 8]
++
++    # Now walk the hash table and count how many entries are in use.
++    set offset $symbol_table_offset
++    set count 0
++    while { $offset < $shortcut_offset } {
++	seek $fp $offset
++	set entry [read $fp 8]
++	binary scan $entry ii name_ptr flags
++	if { $name_ptr != 0 } {
++	    incr count
++	}
++
++	incr offset 8
++    }
++
++    # Close the file.
++    close $fp
++
++    # Calculate how full the cache is.
++    set pct [expr (100 * double($count)) / $len]
++
++    # Write our results out to the gdb.log.
++    verbose -log "Hash table size: $len"
++    verbose -log "Hash table entries: $count"
++    verbose -log "Percentage usage: $pct%"
++
++    # The minimum fill percentage is actually 37.5%, but we give TCL a
++    # little flexibility in case the FP maths give a result a little
++    # off.
++    gdb_assert { $len == 1024 || $pct > 37 } \
++	"symbol hash table usage"
++}
++
++set index_filename_base [file tail $filename]
++check_symbol_table_usage "$dir1/${index_filename_base}.gdb-index"

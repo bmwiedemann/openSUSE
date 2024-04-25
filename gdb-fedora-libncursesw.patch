@@ -12,7 +12,7 @@ https://bugzilla.redhat.com/show_bug.cgi?id=1270534
 diff --git a/gdb/configure b/gdb/configure
 --- a/gdb/configure
 +++ b/gdb/configure
-@@ -20915,6 +20915,7 @@ if test x"$prefer_curses" = xyes; then
+@@ -20916,6 +20916,7 @@ if test x"$prefer_curses" = xyes; then
    # search /usr/local/include, if ncurses is installed in /usr/local.  A
    # default installation of ncurses on alpha*-dec-osf* will lead to such
    # a situation.
@@ -20,7 +20,7 @@ diff --git a/gdb/configure b/gdb/configure
    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing waddstr" >&5
  $as_echo_n "checking for library containing waddstr... " >&6; }
  if ${ac_cv_search_waddstr+:} false; then :
-@@ -20939,7 +20940,7 @@ return waddstr ();
+@@ -20940,7 +20941,7 @@ return waddstr ();
    return 0;
  }
  _ACEOF
@@ -29,7 +29,7 @@ diff --git a/gdb/configure b/gdb/configure
    if test -z "$ac_lib"; then
      ac_res="none required"
    else
-@@ -21013,6 +21014,7 @@ case $host_os in
+@@ -21014,6 +21015,7 @@ case $host_os in
  esac
  
  # These are the libraries checked by Readline.
@@ -37,7 +37,7 @@ diff --git a/gdb/configure b/gdb/configure
  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing tgetent" >&5
  $as_echo_n "checking for library containing tgetent... " >&6; }
  if ${ac_cv_search_tgetent+:} false; then :
-@@ -21037,7 +21039,7 @@ return tgetent ();
+@@ -21038,7 +21040,7 @@ return tgetent ();
    return 0;
  }
  _ACEOF
@@ -49,7 +49,7 @@ diff --git a/gdb/configure b/gdb/configure
 diff --git a/gdb/configure.ac b/gdb/configure.ac
 --- a/gdb/configure.ac
 +++ b/gdb/configure.ac
-@@ -704,7 +704,8 @@ if test x"$prefer_curses" = xyes; then
+@@ -705,7 +705,8 @@ if test x"$prefer_curses" = xyes; then
    # search /usr/local/include, if ncurses is installed in /usr/local.  A
    # default installation of ncurses on alpha*-dec-osf* will lead to such
    # a situation.
@@ -59,7 +59,7 @@ diff --git a/gdb/configure.ac b/gdb/configure.ac
  
    if test "$ac_cv_search_waddstr" != no; then
      curses_found=yes
-@@ -746,7 +747,8 @@ case $host_os in
+@@ -747,7 +748,8 @@ case $host_os in
  esac
  
  # These are the libraries checked by Readline.

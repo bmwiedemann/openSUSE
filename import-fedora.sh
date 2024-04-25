@@ -13,20 +13,11 @@ skip_patches=(
     # Broken.
     # Over-specific test-case in a shell script.
     gdb-6.5-BEA-testsuite.patch
-    # Hangs for horizontal-scroll-mode on, times out after 10 minutes.
-    gdb-6.5-readline-long-line-crash-test.patch
 
     # Fragile test-case, requires glibc to fail in a certain way.
     gdb-rhbz1156192-recursive-dlopen-test.patch
 
-    # Obsolete (dropped by fedora).
-    gdb-6.7-charsign-test.patch
-    gdb-test-ivy-bridge.patch
-    gdb-ppc-power7-test.patch
-    gdb-6.3-bz140532-ppc-unwinding-test.patch
-
     # Obsolete.
-    gdb-6.7-charsign-test.patch
     gdb-6.7-ppc-clobbered-registers-O2-test.patch
 )
 
@@ -109,7 +100,7 @@ import_patches ()
 	    >> $f1
 
 	echo \
-	    "%patch$n -p1" \
+	    "%patch -P $n -p1" \
 	    >> $f2
 
 	n=$((n + 1))

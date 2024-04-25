@@ -561,7 +561,8 @@ diff --git a/gdb/build-id.c b/gdb/build-id.c
 -      if (separate_debug_file_debug)
 -	gdb_printf (gdb_stdlog, _(" no, unable to open.\n"));
 +      struct stat statbuf_trash;
-+
+ 
+-      return {};
 +      /* `access' automatically dereferences LINK.  */
 +      if (lstat (link.c_str (), &statbuf_trash) != 0)
 +	{
@@ -596,8 +597,7 @@ diff --git a/gdb/build-id.c b/gdb/build-id.c
 +	{
 +	  if (separate_debug_file_debug)
 +	    gdb_printf (gdb_stdlog, _(" no, unable to open.\n"));
- 
--      return {};
++
 +	  continue;
 +	}
 +
@@ -628,13 +628,13 @@ diff --git a/gdb/build-id.c b/gdb/build-id.c
 +      /* If none of the real files is found report as missing file
 +	 always the non-.%u-suffixed file.  */
 +      std::string link0 = orig_link;
- 
--      return {};
++
 +      /* If the symlink has target request to install the target.
 +	 BASE-debuginfo.rpm contains the symlink but BASE.rpm may be missing.
 +	 https://bugzilla.redhat.com/show_bug.cgi?id=981154  */
 +      std::string link0_resolved (link_resolve (link0.c_str (), 0));
-+
+ 
+-      return {};
 +      if (link_all.empty ())
 +	link_all = link0_resolved;
 +      else
@@ -703,7 +703,7 @@ diff --git a/gdb/build-id.c b/gdb/build-id.c
  	  if (debug_bfd != NULL)
  	    return debug_bfd;
  	}
-@@ -183,30 +687,655 @@ build_id_to_bfd_suffix (size_t build_id_len, const bfd_byte *build_id,
+@@ -183,30 +687,660 @@ build_id_to_bfd_suffix (size_t build_id_len, const bfd_byte *build_id,
    return {};
  }
  
@@ -1313,15 +1313,20 @@ diff --git a/gdb/build-id.c b/gdb/build-id.c
 +	   already requires its own separate lines.  */
 +
 +	gdb_printf (gdb_stdlog,
-+		    _("Missing separate debuginfo for %s\n"), binary);
-+        if (debug != NULL)
-+	  gdb_printf (gdb_stdlog, _("Try: %s %s\n"),
++		    _("Missing separate debuginfo for %s.\n"), binary);
++	if (debug != NULL)
++	{
++	  if (access (debug, F_OK) == 0) {
++	    gdb_printf (gdb_stdlog, _("Try: %s %s\n"),
 +#ifdef DNF_DEBUGINFO_INSTALL
-+			      "dnf"
++			"dnf"
 +#else
-+			      "yum"
++			"yum"
 +#endif
-+			      " --enablerepo='*debug*' install", debug);
++			" --enablerepo='*debug*' install", debug);
++	  } else
++	    gdb_printf (gdb_stdlog, _("The debuginfo package for this file is probably broken.\n"));
++	}
 +      }
 +}
 +
@@ -1365,7 +1370,7 @@ diff --git a/gdb/build-id.c b/gdb/build-id.c
    if (build_id != NULL)
      {
        if (separate_debug_file_debug)
-@@ -214,8 +1343,21 @@ find_separate_debug_file_by_buildid (struct objfile *objfile)
+@@ -214,8 +1348,21 @@ find_separate_debug_file_by_buildid (struct objfile *objfile)
  		    _("\nLooking for separate debug info (build-id) for "
  		      "%s\n"), objfile_name (objfile));
  
@@ -1388,7 +1393,7 @@ diff --git a/gdb/build-id.c b/gdb/build-id.c
        /* Prevent looping on a stripped .debug file.  */
        if (abfd != NULL
  	  && filename_cmp (bfd_get_filename (abfd.get ()),
-@@ -228,3 +1370,22 @@ find_separate_debug_file_by_buildid (struct objfile *objfile)
+@@ -228,3 +1375,22 @@ find_separate_debug_file_by_buildid (struct objfile *objfile)
  
    return std::string ();
  }

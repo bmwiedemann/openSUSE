@@ -1,14 +1,5 @@
-From 444f438fe775a9480b93dc7d63418e0e169b4fbd Mon Sep 17 00:00:00 2001
-From: Tom de Vries <tdevries@suse.de>
-Date: Fri, 21 Apr 2023 09:08:03 +0200
-Subject: [PATCH 1/5] gdb-6.6-buildid-locate-rpm-suse.patch
-
----
- gdb/build-id.c | 71 +++++++++-----------------------------------------
- 1 file changed, 13 insertions(+), 58 deletions(-)
-
 diff --git a/gdb/build-id.c b/gdb/build-id.c
-index 86dfc8409b5..29aa10d8225 100644
+index 059a72fc050..58d73e70bad 100644
 --- a/gdb/build-id.c
 +++ b/gdb/build-id.c
 @@ -863,10 +863,8 @@ missing_rpm_enlist_1 (const char *filename, int verify_vendor)
@@ -109,28 +100,24 @@ index 86dfc8409b5..29aa10d8225 100644
    for (const char *el : array)
      {
        gdb_printf (" %s", el);
-@@ -1295,13 +1251,12 @@ debug_print_missing (const char *binary, const char *debug)
- 	gdb_printf (gdb_stdlog,
- 		    _("Missing separate debuginfo for %s\n"), binary);
-         if (debug != NULL)
--	  gdb_printf (gdb_stdlog, _("Try: %s %s\n"),
+@@ -1296,14 +1252,15 @@ debug_print_missing (const char *binary, const char *debug)
+ 		    _("Missing separate debuginfo for %s.\n"), binary);
+ 	if (debug != NULL)
+ 	{
++#ifdef HAVE_LIBRPM
+ 	  if (access (debug, F_OK) == 0) {
+-	    gdb_printf (gdb_stdlog, _("Try: %s %s\n"),
 -#ifdef DNF_DEBUGINFO_INSTALL
--			      "dnf"
--#else
--			      "yum"
--#endif
--			      " --enablerepo='*debug*' install", debug);
-+	  {
+-			"dnf"
+ #else
+-			"yum"
++	  if (1) {
+ #endif
+-			" --enablerepo='*debug*' install", debug);
 +	    const char *p = strrchr (debug, '/');
 +	    gdb_printf (gdb_stdlog, _("Try: %s%.2s%.38s\"\n"),
 +			"zypper install -C \"debuginfo(build-id)=",
 +			p - 2, p + 1);
-+	  }
-       }
- }
- 
-
-base-commit: 91ac179279557e27e6a149cbb78e4052a348f109
--- 
-2.35.3
-
+ 	  } else
+ 	    gdb_printf (gdb_stdlog, _("The debuginfo package for this file is probably broken.\n"));
+ 	}
