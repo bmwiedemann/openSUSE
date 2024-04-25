@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Apr 24 09:43:44 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240424.11e262d0:
+  * Dev: behave: Add functional test for previous change
+  * Dev: ui_context: Skip querying CIB when in a sublevel or help command
+  * Dev: unittest: Adjust unit test for previous commit
+  * Dev: behave: Adjust functional test for previous changes
+  * Dev: bootstrap: Setup the stage dependency on init and join side (bsc#1175865, bsc#1219940)
+  * Dev: ui_cluster: Remove unused codes
+  * Dev: bootstrap: Enhance stage validation
+  * Dev: bootstrap: Remove unused function join_remote_auth
+
+-------------------------------------------------------------------
+Mon Apr 22 07:38:44 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240422.73eaf02a:
+  * Fix: healthcheck: Add crmsh.constants.SSH_OPTION when doing ssh in check_local
+  * Fix: healthcheck: Missing 'id_' prefix while checking the ssh key existence
+
+-------------------------------------------------------------------
+Tue Apr 16 07:54:40 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240416.3c953893:
+  * Dev: unittest: Adjust unit test for previous commit
+  * Fix: bootstrap: Detect cluster service on init node before saving the canonical hostname (bsc#1222714)
+
+-------------------------------------------------------------------
 Thu Apr 11 06:55:00 UTC 2024 - XLiang@suse.com
 
 - Update to version 4.6.0+20240411.9c4bf6c1:
