@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 20 07:42:55 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.08:
+  * Scripting: fixed a bug that could cause Praat to crash when an
+    unknown choice was given to an option menu.
+  * MelSpectrogram: fixed a bug that could cause Praat to crash if
+    a mel value was negative.
+  * DataModeler: improved confidence limits on estimated model
+    parameters.
+- Add empty %check section.
+
+-------------------------------------------------------------------
 Tue Mar 19 10:29:06 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.07:
