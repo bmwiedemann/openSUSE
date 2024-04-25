@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 25 14:33:29 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1713895143.68ea6d5a:
+  * Make CRITICAL_LOAD_AVG_THRESHOLD work with AppArmor
+  * Avoid race condition when reading step details
+
+-------------------------------------------------------------------
 Tue Apr 23 06:33:23 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1713801413.9fe9436d:
