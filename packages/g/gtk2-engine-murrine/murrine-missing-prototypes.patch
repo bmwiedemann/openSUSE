@@ -1,0 +1,29 @@
+diff -urp murrine-0.98.2.orig/src/murrine_rc_style.h murrine-0.98.2/src/murrine_rc_style.h
+--- murrine-0.98.2.orig/src/murrine_rc_style.h	2012-01-17 11:46:01.000000000 -0600
++++ murrine-0.98.2/src/murrine_rc_style.h	2024-04-22 11:35:07.629505140 -0500
+@@ -155,4 +155,5 @@ struct _MurrineRcStyleClass
+ 
+ GType murrine_rc_style_get_type	(void);
+ 
++void murrine_rc_style_register_types (GTypeModule *module);
+ #endif /* MURRINE_RC_STYLE_H */
+diff -urp murrine-0.98.2.orig/src/murrine_style.h murrine-0.98.2/src/murrine_style.h
+--- murrine-0.98.2.orig/src/murrine_style.h	2012-01-17 11:46:01.000000000 -0600
++++ murrine-0.98.2/src/murrine_style.h	2024-04-22 11:43:35.132145088 -0500
+@@ -103,4 +103,5 @@ struct _MurrineStyleClass
+ 
+ GType murrine_style_get_type (void);
+ 
++void murrine_style_register_types (GTypeModule *module);
+ #endif /* MURRINE_STYLE_H */
+diff -urp murrine-0.98.2.orig/src/support.h murrine-0.98.2/src/support.h
+--- murrine-0.98.2.orig/src/support.h	2012-01-17 11:46:01.000000000 -0600
++++ murrine-0.98.2/src/support.h	2024-04-22 11:35:57.549764946 -0500
+@@ -148,5 +148,7 @@ G_GNUC_INTERNAL void murrine_set_toolbar
+ G_GNUC_INTERNAL void murrine_get_notebook_tab_position (GtkWidget *widget,
+                                                         gboolean  *start,
+                                                         gboolean  *end);
++G_GNUC_INTERNAL gboolean murrine_widget_is_ltr (GtkWidget *widget);
++G_GNUC_INTERNAL gboolean murrine_object_is_a (const GObject * object, const gchar * type_name);
+ 
+ #endif /* SUPPORT_H */

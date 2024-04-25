@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 22 16:37:47 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add murrine-missing-prototypes.patch: add missing prototypes.
+
+-------------------------------------------------------------------
 Tue Mar  5 14:12:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: the -32bit packages are no longer needed and

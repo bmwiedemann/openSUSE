@@ -25,6 +25,8 @@ License:        LGPL-2.1-only OR LGPL-3.0-only
 Group:          System/GUI/XFCE
 URL:            http://ftp.gnome.org/pub/GNOME/sources/murrine/
 Source:         http://download.gnome.org/sources/murrine/0.98/%{_name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM murrine-missing-prototypes.patch mgorse@suse.com -- add missing prototypes.
+Patch0:         murrine-missing-prototypes.patch
 BuildRequires:  gtk2-devel >= 2.12.0
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
@@ -37,7 +39,7 @@ library to render widgets. It features a modern glassy look, is elegant
 and clean on the eyes, and is extremely customizable.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 %configure --enable-animation

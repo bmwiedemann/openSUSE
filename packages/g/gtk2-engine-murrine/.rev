@@ -179,4 +179,12 @@
   i586 only enabled in LegacyX86). (forwarded request 1155227 from dimstar)</comment>
     <requestid>1155244</requestid>
   </revision>
+  <revision rev="26" vrev="12">
+    <srcmd5>82459b5019b6a62ef164b8c7573b3ab2</srcmd5>
+    <version>0.98.2</version>
+    <time>1714070860</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1170050</requestid>
+  </revision>
 </revisionlist>
