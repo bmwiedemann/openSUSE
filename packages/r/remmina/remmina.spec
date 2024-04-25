@@ -69,9 +69,9 @@ BuildRequires:  pkgconfig(webkit2gtk-4.0)
 BuildRequires:  pkgconfig(freerdp3) >= 3.0.0
 BuildRequires:  pkgconfig(winpr3)
 %else
-BuildRequires:  freerdp2-devel < 3.0.0
-BuildRequires:  freerdp2-server < 3.0.0
-BuildRequires:  winpr2-devel < 3.0.0
+BuildRequires:  freerdp-devel < 3.0.0
+BuildRequires:  freerdp-server < 3.0.0
+BuildRequires:  pkgconfig(winpr2)
 %endif
 BuildRequires:  pkgconfig(xkbfile)
 Recommends:     %{name}-plugin-rdp
