@@ -31,4 +31,22 @@
     <comment></comment>
     <requestid>1170088</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b63645969afd133e30235aa3135b39d5</srcmd5>
+    <version>7.0.1</version>
+    <time>1714333809</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1170482 from rrahl0
+
+- update to 7.0.1:
+  * LFS data corruption when running the forgejo doctor check --fix CLI command
+    or setting [cron.gc_lfs].ENABLED=true (the default is false)
+  * non backward compatible change in the forgejo admin user create CLI command
+  * error 500 because of an incorrect evaluation of the template when visiting
+    the LFS settings of a repository
+  * GET /repos/{owner}/{name} API endpoint always returns an empty string for
+    the object_format_name field
+  * fuzzy search may fail with bleve</comment>
+    <requestid>1170483</requestid>
+  </revision>
 </revisionlist>

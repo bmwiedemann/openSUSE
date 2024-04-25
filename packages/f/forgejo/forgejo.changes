@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr 27 14:53:09 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 7.0.1:
+  * LFS data corruption when running the forgejo doctor check --fix CLI command
+    or setting [cron.gc_lfs].ENABLED=true (the default is false)
+  * non backward compatible change in the forgejo admin user create CLI command
+  * error 500 because of an incorrect evaluation of the template when visiting
+    the LFS settings of a repository
+  * GET /repos/{owner}/{name} API endpoint always returns an empty string for
+    the object_format_name field
+  * fuzzy search may fail with bleve
+
+-------------------------------------------------------------------
 Thu Apr 25 02:27:22 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to 7.0.0:
