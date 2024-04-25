@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 23 11:00:31 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.62.2:
+  * [Fix Python Deadlock] Guard
+    grpc_google_default_credentials_create with nogil
+
+-------------------------------------------------------------------
 Wed Mar 20 07:49:32 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.62.1:
