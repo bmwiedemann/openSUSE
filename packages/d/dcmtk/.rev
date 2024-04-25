@@ -262,4 +262,12 @@
     <comment>- Add missing requirements for dcmtk-devel (boo#1220809)</comment>
     <requestid>1154155</requestid>
   </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>7a823f66704ef1adaf4938e333a6296a</srcmd5>
+    <version>3.6.8</version>
+    <time>1714070907</time>
+    <user>anag+factory</user>
+    <comment>Cumulative fixes including boo#1223324 / CVE-2024-28130</comment>
+    <requestid>1169995</requestid>
+  </revision>
 </revisionlist>

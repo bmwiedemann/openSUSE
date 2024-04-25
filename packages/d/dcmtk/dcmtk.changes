@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 24 07:45:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes:
+  * 0001-Fixed-buffer-overflow-in-decompression-codecs.patch
+  * 0001-Fixed-possible-overflows-when-allocating-memory.patch
+  * 0001-Fixed-two-segmentation-faults.patch
+  * 0001-Fixed-unchecked-typecasts-of-DcmItem-search-results.patch
+  * 0002-Fixed-unchecked-typecasts-and-fixed-LUT-handling.patch
+    (boo#1223324, CVE-2024-28130)
+  * 0003-Fixed-wrong-error-handling-previous-commit.patch
+  * 0001-Fixed-DcmDecimalString-unit-tests.patch
+- Run unit tests
+
+-------------------------------------------------------------------
 Fri Mar  1 19:15:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add missing requirements for dcmtk-devel (boo#1220809)

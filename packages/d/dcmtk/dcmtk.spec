@@ -26,6 +26,14 @@ URL:            https://dicom.offis.de/dcmtk.php.en
 Source0:        ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/release/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE dcmtk-fix-DCMTKTargets.cmake.patch -- Do not track executables to be able to use dcmtk-devel without dcmtk package
 Patch0:         dcmtk-fix-DCMTKTargets.cmake.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fixed-buffer-overflow-in-decompression-codecs.patch
+Patch2:         0001-Fixed-possible-overflows-when-allocating-memory.patch
+Patch3:         0001-Fixed-two-segmentation-faults.patch
+Patch4:         0001-Fixed-unchecked-typecasts-of-DcmItem-search-results.patch
+Patch5:         0002-Fixed-unchecked-typecasts-and-fixed-LUT-handling.patch
+Patch6:         0003-Fixed-wrong-error-handling-previous-commit.patch
+Patch7:         0001-Fixed-DcmDecimalString-unit-tests.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -95,7 +103,10 @@ mv %{buildroot}%{_datadir}/doc/%{name}-%{version} %{buildroot}%{_docdir}/dcmtk
 # Install README file to documentation
 install -pm 0644 README %{buildroot}%{_docdir}/dcmtk/
 
-%fdupes -s %{buildroot}
+%fdupes %{buildroot}
+
+%check
+%ctest
 
 %ldconfig_scriptlets -n libdcmtk%{abiversion}
 
