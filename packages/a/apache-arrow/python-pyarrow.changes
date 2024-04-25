@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Thu Apr 25 08:58:22 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 16.0.0
+  * [Python] construct pandas.DataFrame with public API in
+    to_pandas (#40897)
+  * [Python] Fix ORC test segfault in the python wheel windows test
+    (#40609)
+  * [Python] Attach Python stacktrace to errors in ConvertPyError
+    (#39380)
+  * [Python] Plug reference leaks when creating Arrow array from
+    Python list of dicts (#40412)
+  * [Python] Empty slicing an array backwards beyond the start is
+    now empty (#40682)
+  * [Python] Slicing an array backwards beyond the start now
+    includes first item. (#39240)
+  * [Python] Calling
+    pyarrow.dataset.ParquetFileFormat.make_write_options as a class
+    method results in a segfault (#40976)
+  * [Python] Fix parquet import in encryption test (#40505)
+  * [Python] fix raising ValueError on _ensure_partitioning
+    (#39593)
+  * [Python] Validate max_chunksize in Table.to_batches (#39796)
+  * [C++][Python] Fix test_gdb failures on 32-bit (#40293)
+  * [Python] Make Tensor.__getbuffer__ work on 32-bit platforms
+    (#40294)
+  * [Python] Avoid using np.take in Array.to_numpy() (#40295)
+  * [Python][C++] Fix large file handling on 32-bit Python build
+    (#40176)
+  * [Python] Update size assumptions for 32-bit platforms (#40165)
+  * [Python] Fix OverflowError in foreign_buffer on 32-bit
+    platforms (#40158)
+  * [Python] Add Type_FIXED_SIZE_LIST to _NESTED_TYPES set (#40172)
+  * [Python] Mark ListView as a nested type (#40265)
+  * [Python] only allocate the ScalarMemoTable when used (#40565)
+  * [Python] Error compiling Cython files on Windows during release
+    verification
+  * [Python] Fix flake8 failures in python/benchmarks/parquet.py
+    (#40440)
+  * [Python] Suppress python/examples/minimal_build/Dockerfile.*
+    warnings (#40444)
+  * [Python][Docs] Add workaround for autosummary (#40739)
+  * [Python] BUG: Empty slicing an array backwards beyond the start
+    should be empty
+  * [CI][Python] Activate ARROW_PYTHON_VENV if defined in
+    sdist-test job (#40707)
+  * [CI][Python] CI failures on Python builds due to pytest_cython
+    (#40975)
+  * [Python] ListView pandas tests should use np.nan instead of
+    None (#41040)
+  * [C++][Python] Sporadic asof_join failures in PyArrow
+  ## New Features and Improvements
+  * [Python][CI] Remove legacy hdfs tests from hdfs and hypothesis
+    setup (#40363)
+  * [Python] Remove deprecated pyarrow.filesystem legacy
+    implementations (#39825)
+  * [C++][Python] Add missing methods to RecordBatch (#39506)
+  * [Python][CI] Support ORC in Windows wheels
+  * [Python] Correct test marker for join_asof tests (#40666)
+  * [Python] Add join_asof binding (#34234)
+  * [Python] Add a function to download and extract timezone
+    database on Windows (#38179)
+  * [Python][CI][Packaging] Enable ORC on Windows Appveyor CI and
+    Windows wheels for pyarrow
+  * [Python] Add a FixedSizeTensorScalar class (#37533)
+  * [Python][CI][Dev][Python] Release and merge script errors
+    (#37819)" (#40150)
+  * [Python] Construct pyarrow.Field and ChunkedArray through Arrow
+    PyCapsule Protocol (#40818)
+  * [Python] Fix missing byte_width attribute on DataType class
+    (#39592)
+  * [Python] Compatibility with NumPy 2.0
+  * [Packaging][Python] Enable building pyarrow against numpy 2.0
+    (#39557)
+  * [Python] Basic pyarrow bindings for Binary/StringView classes
+    (#39652)
+  * [Python] Expose force_virtual_addressing in PyArrow (#39819)
+  * [Python][Parquet] Support hashing for FileMetaData and
+    ParquetSchema (#39781)
+  * [Python] Add bindings for ListView and LargeListView (#39813)
+  * [Python][Packaging] Build pyarrow wheels with numpy RC instead
+    of nightly (#41097)
+  * [Python] Support creating Binary/StringView arrays from python
+    objects (#39853)
+  * [Python] ListView support for pa.array() (#40160)
+  * [Python][CI] Remove upper pin on pytest (#40487)
+  * [Python][FS][Azure] Minimal Python bindings for AzureFileSystem
+    (#40021)
+  * [Python] Low-level bindings for exporting/importing the C
+    Device Interface (#39980)
+  * [Python] Add ChunkedArray import/export to/from C (#39985)
+  * [Python] Use Cast() instead of CastTo (#40116)
+  * [C++][Python] Basic conversion of RecordBatch to Arrow Tensor
+    (#40064)
+  * [C++][Python] Basic conversion of RecordBatch to Arrow Tensor -
+    add support for different data types (#40359)
+  * [C++][Python] Basic conversion of RecordBatch to Arrow Tensor -
+    add option to cast NULL to NaN (#40803)
+  * [Python] Support requested_schema in __arrow_c_stream__()
+    (#40070)
+  * [Python] Support Binary/StringView conversion to numpy/pandas
+    (#40093)
+  * [Python] Allow FileInfo instances to be passed to dataset init
+    (#40143)
+  * [Python][CI] Add 32-bit Debian build on Crossbow (#40164)
+  * [Python] ListView arrow-to-pandas conversion (#40482)
+  * [Python][CI] Disable generating C lines in Cython tracebacks
+    (#40225)
+  * [Python] Support construction of Run-End Encoded arrays in
+    pa.array(..) (#40341)
+  * [Python] Accept dict in pyarrow.record_batch() function
+    (#40292)
+  * [Python] Update for NumPy 2.0 ABI change in
+    PyArray_Descr->elsize (#40418)
+  * [Python][CI] Fix install of nightly dask in integration tests
+    (#40378)
+  * [Python] Fix byte_width for binary(0) + fix hypothesis tests
+    (#40381)
+  * [Python][CI] Fix dataset partition filter tests with pandas
+    nightly (#40429)
+  * [Docs][Python] Added JsonFileFormat to docs (#40585)
+  * [Dev][C++][Python][R] Use pre-commit for clang-format (#40587)
+  * [Python][C++] Support conversion of pyarrow.RunEndEncodedArray
+    to numpy/pandas (#40661)
+  * [Python] Simplify and improve perf of creation of the column
+    names in Table.to_pandas (#40721)
+  * [Docs][C++][Python] Add initial documentation for
+    RecordBatch::Tensor conversion (#40842)
+  * [C++][Python] Basic conversion of RecordBatch to Arrow Tensor -
+    add support for row-major (#40867)
+  * [CI][Python] check message in test_make_write_options_error for
+    Cython 2 (#41059)
+  * [Python] Add copy keyword in Array.array for numpy 2.0+
+    compatibility (#41071)
+  * [Python][Packaging] PyArrow wheel building is failing because
+    of disabled vcpkg install of liblzma
+- Drop apache-arrow-pr40230-glog-0.7.patch
+- Drop apache-arrow-pr40275-glog-0.7-2.patch
+- Add pyarrow-pr41319-numpy2-tests.patch gh#apache/arrow#41319
+
+-------------------------------------------------------------------
 Sat Mar 23 15:23:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 15.0.2

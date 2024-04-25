@@ -19,7 +19,7 @@
 %bcond_with xsimd
 %define plainpython python
 Name:           python-pyarrow
-Version:        15.0.2
+Version:        16.0.0
 Release:        0
 Summary:        Python library for Apache Arrow
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
@@ -27,39 +27,33 @@ URL:            https://arrow.apache.org/
 # SourceRepository: https://github.com/apache/arrow
 Source0:        apache-arrow-%{version}.tar.gz
 Source99:       python-pyarrow.rpmlintrc
-# PATCH-FIX-UPSTREAM apache-arrow-pr40230-glog-0.7.patch gh#apache/arrow#40230
-Patch0:         apache-arrow-pr40230-glog-0.7.patch
-# PATCH-FIX-UPSTREAM apache-arrow-pr40275-glog-0.7-2.patch gh#apache/arrow#40275
-Patch1:         apache-arrow-pr40275-glog-0.7-2.patch
+# PATCH-FIX-UPSTREAM pyarrow-pr41319-numpy2-tests.patch gh#apache/arrow#41319
+Patch0:         pyarrow-pr41319-numpy2-tests.patch
 BuildRequires:  %{python_module Cython >= 0.29.31}
 BuildRequires:  %{python_module devel >= 3.8}
-BuildRequires:  %{python_module numpy-devel >= 1.16.6 with %python-numpy-devel < 2}
+BuildRequires:  %{python_module numpy-devel >= 1.25}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  apache-arrow-acero-devel-static = %{version}
-BuildRequires:  apache-arrow-dataset-devel-static = %{version}
-BuildRequires:  apache-arrow-devel = %{version}
-BuildRequires:  apache-arrow-devel-static = %{version}
-BuildRequires:  apache-parquet-devel = %{version}
-BuildRequires:  apache-parquet-devel-static = %{version}
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  libzstd-devel-static
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  cmake(re2)
+BuildRequires:  pkgconfig(arrow) = %{version}
+BuildRequires:  pkgconfig(arrow-acero) = %{version}
+BuildRequires:  pkgconfig(arrow-dataset) = %{version}
 BuildRequires:  pkgconfig(bzip2) >= 1.0.8
 BuildRequires:  pkgconfig(gmock) >= 1.10
 BuildRequires:  pkgconfig(gtest) >= 1.10
-Requires:       (python-numpy >= 1.16.6 with python-numpy < 2)
+BuildRequires:  pkgconfig(parquet) = %{version}
+Requires:       python-numpy >= 1.25
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module pytest-lazy-fixture}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 # /SECTION

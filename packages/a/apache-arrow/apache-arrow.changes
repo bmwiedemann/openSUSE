@@ -1,4 +1,267 @@
 -------------------------------------------------------------------
+Sun Apr 21 16:35:21 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 16.0.0
+  ## Bug Fixes
+  * [C++][ORC] Catch all ORC exceptions to avoid crash (#40697)
+  * [C++][S3] Handle conventional content-type for directories
+    (#40147)
+  * [C++] Strengthen handling of duplicate slashes in S3, GCS
+    (#40371)
+  * [C++] Avoid hash_mean overflow (#39349)
+  * [C++] Fix spelling (array) (#38963)
+  * [C++][Parquet] Fix crash in Modular Encryption (#39623)
+  * [C++][Dataset] Fix failures in dataset-scanner-benchmark
+    (#39794)
+  * [C++][Device] Fix Importing nested and string types for
+    DeviceArray (#39770)
+  * [C++] Use correct (non-CPU) address of buffer in
+    ExportDeviceArray (#39783)
+  * [C++] Improve error message for "chunker out of sync" condition
+    (#39892)
+  * [C++] Use make -j1 to install bundled bzip2 (#39956)
+  * [C++] DatasetWriter avoid creating zero-sized batch when
+    max_rows_per_file enabled (#39995)
+  * [C++][CI] Disable debug memory pool for ASAN and Valgrind
+    (#39975)
+  * [C++][Gandiva] Make Gandiva's default cache size to be 5000 for
+    object code cache (#40041)
+  * [C++][FS][Azure] Fix CreateDir and DeleteDir trailing slash
+    issues on hierarchical namespace accounts (#40054)
+  * [C++][FS][Azure] Validate containers in
+    AzureFileSystem::Impl::MovePaths() (#40086)
+  * [C++] Decimal types with different precisions and scales bind
+    failed in resolve type when call arithmetic function (#40223)
+  * [C++][Docs] Correct the console emitter link (#40146)
+  * [C++][Python] Fix test_gdb failures on 32-bit (#40293)
+  * [Python][C++] Fix large file handling on 32-bit Python build
+    (#40176)
+  * [C++] Support glog 0.7 build (#40230)
+  * [C++] Fix cast function bind failed after add an alias name
+    through AddAlias (#40200)
+  * [C++] TakeCC: Concatenate only once and delegate to TakeAA
+    instead of TakeCA (#40206)
+  * [C++] Fix an abort on asof_join_benchmark run for lost an arg
+    (#40234)
+  * [C++] Fix an simple buffer-overflow case in decimal_benchmark
+    (#40277)
+  * [C++] Reduce S3Client initialization time (#40299)
+  * [C++] Fix a wrong total_bytes to generate StringType's test
+    data in vector_hash_benchmark (#40307)
+  * [C++][Gandiva] Add support for compute module's decimal
+    promotion rules (#40434)
+  * [C++][Parquet] Add missing config.h include in
+    key_management_test.cc (#40330)
+  * [C++][CMake] Add missing glog::glog dependency to arrow_util
+    (#40332)
+  * [C++][Gandiva] Add missing OpenSSL dependency to
+    encrypt_utils_test.cc (#40338)
+  * [C++] Remove const qualifier from Buffer::mutable_span_as
+    (#40367)
+  * [C++] Avoid simplifying expressions which call impure functions
+    (#40396)
+  * [C++] Expose protobuf dependency if opentelemetry or ORC are
+    enabled (#40399)
+  * [C++][FlightRPC] Add missing expiration_time arguments (#40425)
+  * [C++] Move key_hash/key_map/light_array related files to
+    internal for prevent using by users (#40484)
+  * [C++] Add missing Threads::Threads dependency to arrow_static
+    (#40433)
+  * [C++] Fix static build on Windows (#40446)
+  * [C++] Ensure using bundled FlatBuffers (#40519)
+  * [C++][CI] Fix TSAN and ASAN/UBSAN crashes (#40559)
+  * [C++] Repair FileSystem merge error (#40564)
+  * [C++] Fix 3.12 Python support (#40322)
+  * [C++] Move mold linker flags to variables (#40603)
+  * [C++] Enlarge dest buffer according to dest offset for
+    CopyBitmap benchmark (#40769)
+  * [C++][Gandiva] 'ilike' function does not work (#40728)
+  * [C++] Fix protobuf package name setting for builds with
+    substrait (#40753)
+  * [C++][ORC] Fix std::filesystem related link error with ORC
+    2.0.0 or later (#41023)
+  * [C++] Fix TSAN link error for module library (#40864)
+  * [C++][FS][Azure] Don't run TestGetFileInfoGenerator() with
+    Valgrind (#41163)
+  * [C++] Fix null count check in BooleanArray.true_count()
+    (#41070)
+  * [C++] IO: fixing compiling in gcc 7.5.0 (#41025)
+  * [C++][Parquet] Bugfixes and more tests in boolean arrow
+    decoding (#41037)
+  * [C++] formatting.h: Make sure space is allocated for the 'Z'
+    when formatting timestamps (#41045)
+  * [C++] Ignore ARROW_USE_MOLD/ARROW_USE_LLD with clang < 12
+    (#41062)
+  * [C++] Fix: left anti join filter empty rows. (#41122)
+  * [CI][C++] Don't use CMake 3.29.1 with vcpkg (#41151)
+  * [CI][C++] Use newer LLVM on Ubuntu 24.04 (#41150)
+  * [CI][R][C++] test-r-linux-valgrind has started failing
+  * [C++][Python] Sporadic asof_join failures in PyArrow
+  * [C++] Fix Valgrind error in string-to-float16 conversion
+    (#41155)
+  * [C++] Stop defining ARROW_TEST_MEMCHECK in config.h.cmake
+    (#41177)
+  * [C++] Fix mistake in integration test. Explicitly cast
+    std::string to avoid compiler interpreting char* -> bool
+    (#41202)
+  ## New Features and Improvements
+  * [C++] Filesystem implementation for Azure Blob Storage
+  * [C++] Implement cast to/from halffloat (#40067)
+  * [C++] Add residual filter support to swiss join (#39487)
+  * [C++] Add support for building with Emscripten (#37821)
+  * [C++][Python] Add missing methods to RecordBatch (#39506)
+  * [C++][Java][Flight RPC] Add Session management messages
+    (#34817)
+  * [C++] build filesystems as separate modules (#39067)
+  * [C++][Parquet] Rewrite BYTE_STREAM_SPLIT SSE optimizations
+    using xsimd (#40335)
+  * [C++] Add support for service-specific endpoint for S3 using
+    AWS_ENDPOINT_URL_S3 (#39160)
+  * [C++][FS][Azure] Implement DeleteFile() (#39840)
+  * [C++] Implement Azure FileSystem Move() via Azure DataLake
+    Storage Gen 2 API (#39904)
+  * [C++] Add ImportChunkedArray and ExportChunkedArray to/from
+    ArrowArrayStream (#39455)
+  * [CI][C++][Go] Don't run jobs that use a self-hosted GitHub
+    Actions Runner on fork (#39903)
+  * [C++][FS][Azure] Use the generic filesystem tests (#40567)
+  * [C++][Compute] Add binary_slice kernel for fixed size binary
+    (#39245)
+  * [C++] Avoid creating memory manager instance for every buffer
+    view/copy (#39271)
+  * [C++][Parquet] Minor: Style enhancement for
+    parquet::FileMetaData (#39337)
+  * [C++] IO: Reuse same buffer in CompressedInputStream (#39807)
+  * [C++] Use more permissable return code for rename (#39481)
+  * [C++][Parquet] Use std::count in ColumnReader ReadLevels
+    (#39397)
+  * [C++] Support cast kernel from large string, (large) binary to
+    dictionary (#40017)
+  * [C++] Pass -jN to make in external projects (#39550)
+  * [C++][Parquet] Add integration test for BYTE_STREAM_SPLIT
+    (#39570)
+  * [C++] Ensure top-level benchmarks present informative metrics
+    (#40091)
+  * [C++] Ensure CSV and JSON benchmarks present a bytes/s or
+    items/s metric (#39764)
+  * [C++] Ensure dataset benchmarks present a bytes/s or items/s
+    metric (#39766)
+  * [C++][Gandiva] Ensure Gandiva benchmarks present a bytes/s or
+    items/s metric (#40435)
+  * [C++][Parquet] Benchmark levels decoding (#39705)
+  * [C++][FS][Azure] Remove StatusFromErrorResponse as it's not
+    necessary (#39719)
+  * [C++][Parquet] Make BYTE_STREAM_SPLIT routines type-agnostic
+    (#39748)
+  * [C++][Device] Generic CopyBatchTo/CopyArrayTo memory types
+    (#39772)
+  * [C++] Document and micro-optimize ChunkResolver::Resolve()
+    (#39817)
+  * [C++] Allow building cpp/src/arrow/**/*.cc without waiting
+    bundled libraries (#39824)
+  * [C++][Parquet] Parquet binary length overflow exception should
+    contain the length of binary (#39844)
+  * [C++][Parquet] Minor: avoid creating a new Reader object in
+    Decoder::SetData (#39847)
+  * [C++] Thirdparty: Bump google benchmark to 1.8.3 (#39878)
+  * [C++] DataType::ToString support optionally show metadata
+    (#39888)
+  * [C++][Gandiva] Accept LLVM 18 (#39934)
+  * [C++] Use Requires instead of Libs for system RE2 in arrow.pc
+    (#39932)
+  * [C++] Small CSV reader refactoring (#39963)
+  * [C++][Parquet] Expand BYTE_STREAM_SPLIT to support
+    FIXED_LEN_BYTE_ARRAY, INT32 and INT64 (#40094)
+  * [C++][FS][Azure] Add support for reading user defined metadata
+    (#40671)
+  * [C++][FS][Azure] Add AzureFileSystem support to
+    FileSystemFromUri() (#40325)
+  * [C++][FS][Azure] Make attempted reads and writes against
+    directories fail fast (#40119)
+  * [C++][Python] Basic conversion of RecordBatch to Arrow Tensor
+    (#40064)
+  * [C++][Python] Basic conversion of RecordBatch to Arrow Tensor -
+    add support for different data types (#40359)
+  * [C++][Python] Basic conversion of RecordBatch to Arrow Tensor -
+    add option to cast NULL to NaN (#40803)
+  * [C++][FS][Azure] Implement DeleteFile() for flat-namespace
+    storage accounts (#40075)
+  * [CI][C++] Add a job on ARM64 macOS (#40456)
+  * [C++][Parquet] Remove AVX512 variants of BYTE_STREAM_SPLIT
+    encoding (#40127)
+  * [C++][Parquet][Tools] Print FIXED_LEN_BYTE_ARRAY length
+    (#40132)
+  * [C++] Make S3 narrative test more flexible (#40144)
+  * [C++] Remove redundant invocation of BatchesFromTable (#40173)
+  * [C++][CMake] Use "RapidJSON" CMake target for RapidJSON
+    (#40210)
+  * [C++][CMake] Use arrow/util/config.h.cmake instead of
+    add_definitions() (#40222)
+  * [C++] Fix: improve the backpressure handling in the dataset
+    writer (#40722)
+  * [C++][CMake] Improve description why we need to initialize AWS
+    C++ SDK in arrow-s3fs-test (#40229)
+  * [C++] Add support for system glog 0.7 (#40275)
+  * [C++] Specialize ResolvedChunk::Value on value-specific types
+    instead of entire class (#40281)
+  * [C++][Docs] Add documentation of array factories (#40373)
+  * [C++][Parquet] Allow use of FileDecryptionProperties after the
+    CryptoFactory is destroyed (#40329)
+  * [FlightRPC][C++][Java][Go] Add URI scheme to reuse connection
+    (#40084)
+  * [C++] Add benchmark for ToTensor conversions (#40358)
+  * [C++] Define ARROW_FORCE_INLINE for non-MSVC builds (#40372)
+  * [C++] Add support for mold (#40397)
+  * [C++] Add support for LLD (#40927)
+  * [C++] Produce better error message when Move is attempted on
+    flat-namespace accounts (#40406)
+  * [C++][ORC] Upgrade ORC to 2.0.0 (#40508)
+  * [CI][C++] Don't install FlatBuffers (#40541)
+  * [C++] Ensure pkg-config flags include -ldl for static builds
+    (#40578)
+  * [Dev][C++][Python][R] Use pre-commit for clang-format (#40587)
+  * [C++] Rename Function::is_impure() to is_pure() (#40608)
+  * [C++] Add missing util/config.h in arrow/io/compressed_test.cc
+    (#40625)
+  * [Python][C++] Support conversion of pyarrow.RunEndEncodedArray
+    to numpy/pandas (#40661)
+  * [C++] Expand Substrait type support (#40696)
+  * [C++] Create registry for Devices to map DeviceType to
+    MemoryManager in C Device Data import (#40699)
+  * [C++][Parquet] Minor enhancement code of encryption (#40732)
+  * [C++][Parquet] Simplify PageWriter and ColumnWriter creation
+    (#40768)
+  * [C++] Re-order loads and stores in MemoryPoolStats update
+    (#40647)
+  * [C++] Revert changes from PR #40857 (#40980)
+  * [C++] Correctly report asimd/neon in GetRuntimeInfo (#40857)
+  * [C++] Thirdparty: bump zstd to 1.5.6 (#40837)
+  * [Docs][C++][Python] Add initial documentation for
+    RecordBatch::Tensor conversion (#40842)
+  * [C++][Python] Basic conversion of RecordBatch to Arrow Tensor -
+    add support for row-major (#40867)
+  * [C++][Parquet] Encoding: Optimize DecodeArrow/Decode(bitmap)
+    for PlainBooleanDecoder (#40876)
+  * [C++] Suppress shorten-64-to-32 warnings in CUDA/Skyhook codes
+    (#40883)
+  * [C++] Fix unused function build error (#40984)
+  * [C++][Parquet] RleBooleanDecoder supports DecodeArrow with
+    nulls (#40995)
+  * [C++][FS][Azure] Adjust
+    DeleteDir/DeleteDirContents/GetFileInfoSelector behaviors
+    against Azure for generic filesystem tests (#41068)
+  * [C++][Parquet] Avoid allocating buffer object in RecordReader's
+    SkipRecords (#39818)
+- Drop apache-arrow-pr40230-glog-0.7.patch
+- Drop apache-arrow-pr40275-glog-0.7-2.patch
+- Belated inclusion of submission without changelog by
+  Shani Hadiyanto <shanipribadi@gmail.com>)
+  * disable static devel packages by default: The CMake targets
+    require them for all builds, if not disabled
+  * Add subpackages for Apache Arrow Flight and Flight SQL
+  
+
+-------------------------------------------------------------------
 Sat Mar 23 15:23:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 15.0.2

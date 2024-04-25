@@ -1,0 +1,26 @@
+Index: arrow-apache-arrow-16.0.0/python/pyarrow/tests/test_array.py
+===================================================================
+--- arrow-apache-arrow-16.0.0.orig/python/pyarrow/tests/test_array.py
++++ arrow-apache-arrow-16.0.0/python/pyarrow/tests/test_array.py
+@@ -3323,7 +3323,7 @@ def test_numpy_array_protocol():
+     result = np.asarray(arr)
+     np.testing.assert_array_equal(result, expected)
+ 
+-    if Version(np.__version__) < Version("2.0"):
++    if Version(np.__version__) < Version("2.0.0rc1"):
+         # copy keyword is not strict and not passed down to __array__
+         result = np.array(arr, copy=False)
+         np.testing.assert_array_equal(result, expected)
+Index: arrow-apache-arrow-16.0.0/python/pyarrow/tests/test_table.py
+===================================================================
+--- arrow-apache-arrow-16.0.0.orig/python/pyarrow/tests/test_table.py
++++ arrow-apache-arrow-16.0.0/python/pyarrow/tests/test_table.py
+@@ -3244,7 +3244,7 @@ def test_numpy_array_protocol(constructo
+     table = constructor([[1, 2, 3], [4.0, 5.0, 6.0]], names=["a", "b"])
+     expected = np.array([[1, 4], [2, 5], [3, 6]], dtype="float64")
+ 
+-    if Version(np.__version__) < Version("2.0"):
++    if Version(np.__version__) < Version("2.0.0rc1"):
+         # copy keyword is not strict and not passed down to __array__
+         result = np.array(table, copy=False)
+         np.testing.assert_array_equal(result, expected)
