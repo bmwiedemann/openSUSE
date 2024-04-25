@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<image schemaversion="6.1" name="%OS_PRETTY_NAME_BEFORE_PAREN_DASHED%-%OS_VERSION_ID%-WSL">
+<image schemaversion="7.4" name="%OS_PRETTY_NAME_BEFORE_PAREN_DASHED%-%OS_VERSION_ID%-WSL">
   <description type="system">
     <author>SUSE WSL Team</author>
     <contact>wsl@suse.com</contact>

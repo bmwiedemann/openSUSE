@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 17 14:53:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- update kiwi schemaversion to 7.4
+
+-------------------------------------------------------------------
 Wed Aug 30 17:19:42 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Always remove wsl-appx so future rebuilds of that package don't
