@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 27 09:19:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.57.12:
+  * Use OpenTofu by default if available in environment (#3097)
+
+-------------------------------------------------------------------
 Fri Apr 26 16:55:15 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.57.11:
