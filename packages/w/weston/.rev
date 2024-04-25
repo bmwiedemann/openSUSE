@@ -279,4 +279,12 @@ For the future don't be shy to send patches upstream ;-) (forwarded request 5806
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1130866</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c2b63668622c65b20d156af1c2c53e80</srcmd5>
+    <version>13.0.1</version>
+    <time>1714071020</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 13.0.1</comment>
+    <requestid>1169919</requestid>
+  </revision>
 </revisionlist>

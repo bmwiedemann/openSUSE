@@ -1,7 +1,7 @@
 #
 # spec file for package weston
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           weston
 %define lname	libweston0
 %define major   13
-Version:        13.0.0
+Version:        13.0.1
 Release:        0
 Summary:        Wayland Reference Compositor
 License:        CC-BY-SA-3.0 AND MIT
@@ -27,8 +27,8 @@ Group:          System/X11/Servers
 URL:            https://wayland.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/wayland/weston
 #Git-Web:	https://cgit.freedesktop.org/wayland/weston/
-Source:         https://gitlab.freedesktop.org/wayland/weston/-/releases/%version/downloads/weston-%version.tar.xz
-Source2:        https://gitlab.freedesktop.org/wayland/weston/-/releases/%version/downloads/weston-%version.tar.xz.sig
+Source:         https://gitlab.freedesktop.org/wayland/weston/-/releases/%version/downloads/%name-%version.tar.xz
+Source2:        https://gitlab.freedesktop.org/wayland/weston/-/releases/%version/downloads/%name-%version.tar.xz.sig
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel >= 2.27
@@ -123,6 +123,7 @@ to develop plugins for Weston.
 %autosetup -p1
 
 %build
+# includedir intentional, cf. bugzilla.opensuse.org/795968
 %meson -Ddemo-clients=false -Dremoting=false -Dsimple-clients= \
 	-Dtest-junit-xml=false -Dpipewire=false -Dbackend-vnc=false \
 	--includedir="%_includedir/%name"
@@ -145,8 +146,7 @@ fi
 popd
 %endif
 
-%post   -n libweston-%major-0 -p /sbin/ldconfig
-%postun -n libweston-%major-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libweston-%major-0
 
 %files
 %license COPYING
