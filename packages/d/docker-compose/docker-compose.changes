@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Apr 25 05:12:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.27.0:
+  * fix: overlapping logs and menu navigation (#11765)
+  * build(deps): bump github.com/moby/buildkit
+  * chore(e2e): fix flaky cascade failure test
+  * use v2.26.1 tag for moby and Docker cli
+  * chore(deps): update to Moby v26.1 & buildx v0.14
+  * bump compose-go version to v2.1.0
+  * fix support for --context=foo
+  * Fix #11710: Avoid to try to close channel twice after hitting
+    Ctrl-C on compose up (#11719)
+  * fix(desktop): remove overly-aggressive feature flag check
+    (#11748)
+  * chore: fix typo in comment
+  * bump dependencies
+  * fix: do not try to create file shares for non-directories
+  * check container_name is not in use by another service we will
+    create
+  * don't clear line when navigation is disabled
+  * fix: return correct exit code with `--exit-code-from` (#11715)
+  * progress for resource can be restarted after more Working event
+    comes
+  * Revert "Stop the resource timer after last expected event"
+  * Revert change to allow trying to kill again if a kill fails
+  * Handle errors and allow to send multiple kills if one failed
+  * Ignore errors when killing on second Ctrl-C
+  * docker compose up always kills the containers on second Ctrl-C
+  * read COMPOSE_REMOVE_ORPHANS from .env
+  * Set Required false to depends_on containers for compose -p
+    stop/down
+  * Ignore missing containers when compose stop -p
+  * Ignore missing containers when compose down -p
+  * Introduce support for build.entitlements
+  * Remove dead url reference.
+  * e2e test for --all-resources
+  * introduce --all-resources to _not_ exclude resources not used
+    by services
+  * Introduce --abort-on-container-failure
+  * bump golang version to 1.21.9
+  * don't use ansi espace sequence when disabled
+
+-------------------------------------------------------------------
 Sat Mar 30 10:30:28 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.26.1:
