@@ -348,6 +348,7 @@ Summary:        Auxiliary data used by genprotimg
 License:        MIT
 Group:          System/Boot
 BuildArch:      noarch
+Requires(pre):  filesystem
 
 %description genprotimg-data
 The genprotimg allows preparing and analyzing boot images
