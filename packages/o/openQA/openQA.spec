@@ -78,7 +78,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1713895143.68ea6d5a
+Version:        4.6.1714133087.91cad33b
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later

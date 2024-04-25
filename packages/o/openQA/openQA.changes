@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 27 22:33:39 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1714133087.91cad33b:
+  * Fix missing installation of further assets required by Ace
+  * Use the latest version of AceEditor instead of CodeMirror
+
+-------------------------------------------------------------------
 Thu Apr 25 14:33:29 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1713895143.68ea6d5a:
