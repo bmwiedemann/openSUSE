@@ -4,27 +4,27 @@
   <attribute namespace="OBS" name="ApprovedRequestSource"/>
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
-  boo#0: '20240423'
+  boo#0: '20240424'
   boo#1172073: '20240205'
-  boo#1207390: '20240423'
+  boo#1207390: '20240424'
   boo#1207940: '20240423'
   boo#1209053: '20240129'
   boo#1209728: '20240115'
-  boo#1216660: '20240423'
-  boo#1217029: '20240423'
+  boo#1216660: '20240424'
+  boo#1217029: '20240424'
   boo#1217683: '20240309'
   boo#1218131: '20240318'
   boo#1218492: '20240124'
   boo#1218565: '20240107'
   boo#1218847: '20240126'
   boo#1218954: '20240119'
-  boo#1219132: '20240423'
+  boo#1219132: '20240424'
   boo#1219135: '20240124'
   boo#1219139: '20240129'
   boo#1219188: '20240128'
   boo#1219242: '20240205'
   boo#1219284: '20240222'
-  boo#1219384: '20240423'
+  boo#1219384: '20240424'
   boo#1219401: '20240216'
   boo#1219481: '20240322'
   boo#1219529: '20240204'
@@ -43,31 +43,31 @@
   boo#1221354: '20240313'
   boo#1221367: '20240321'
   boo#1221427: '20240315'
-  boo#1221451: '20240423'
+  boo#1221451: '20240424'
   boo#1221458: '20240314'
   boo#1221508: '20240315'
   boo#1221795: '20240328'
   boo#1221799: '20240328'
   boo#1221818: '20240320'
-  boo#1221840: '20240423'
+  boo#1221840: '20240424'
   boo#1221948: '20240325'
   boo#1222354: '20240408'
   boo#1222545: '20240409'
   boo#1222581: '20240409'
-  boo#1222583: '20240423'
+  boo#1222583: '20240424'
   boo#1222597: '20240409'
-  boo#1222994: '20240423'
+  boo#1222994: '20240424'
   gh#OSInside/kiwi#2529: '20240416'
   gh#os-autoinst/os-autoinst-distri-opensuse#18471: '20240116'
   gh#os-autoinst/os-autoinst-distri-opensuse#18688: '20240218'
   gh#os-autoinst/os-autoinst-distri-opensuse#18910: '20240402'
   gh#os-autoinst/os-autoinst-distri-opensuse#19023: '20240411'
-  poo#105271: '20240423'
+  poo#105271: '20240424'
   poo#120459: '20240110'
   poo#132191: '20240116'
   poo#133691: '20240111'
   poo#134078: '20240128'
-  poo#137423: '20240421'
+  poo#137423: '20240424'
   poo#138743: '20240423'
   poo#152320: '20240226'
   poo#152551: '20240116'
@@ -78,7 +78,7 @@
   poo#153526: '20240116'
   poo#153895: '20240118'
   poo#154153: '20240128'
-  poo#154465: '20240423'
+  poo#154465: '20240424'
   poo#154471: '20240130'
   poo#154693: '20240211'
   poo#154714: '20240214'
@@ -91,15 +91,15 @@
   poo#156223: '20240311'
   poo#156295: '20240311'
   poo#156955: '20240327'
-  poo#157174: '20240423'
+  poo#157174: '20240424'
   poo#157330: '20240314'
   poo#157351: '20240314'
-  poo#157672: '20240423'
-  poo#157678: '20240423'
+  poo#157672: '20240424'
+  poo#157678: '20240424'
   poo#158032: '20240419'
   poo#158035: '20240327'
   poo#158215: '20240405'
-  poo#159159: '20240423'
+  poo#159159: '20240424'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -298,10 +298,10 @@ products:
     - x86_64
   - opensuse-rmt-server-image:
     - x86_64
-  - opensuse-rstudio-desktop:
-    - x86_64
-  - opensuse-rstudio-server:
-    - x86_64
+#  - opensuse-rstudio-desktop:
+#    - x86_64
+#  - opensuse-rstudio-server:
+#    - x86_64
   - opensuse-spamassassin-image:
     - x86_64
   - opensuse-squid-image:
@@ -564,10 +564,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20240424'
 published: '20240423'
 publishing: '20240423'
-testing: '20240423'
+testing: '20240424'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
