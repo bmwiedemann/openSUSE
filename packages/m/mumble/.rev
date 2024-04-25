@@ -50,4 +50,12 @@
     <comment>mumble 1.5.629 (RC3) - with the bundled libs / license clean-up</comment>
     <requestid>1169390</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e4fabfa3595410375733cbf09e8af99a</srcmd5>
+    <version>1.5.629</version>
+    <time>1714070891</time>
+    <user>anag+factory</user>
+    <comment>Address licensedigger concerns</comment>
+    <requestid>1169949</requestid>
+  </revision>
 </revisionlist>

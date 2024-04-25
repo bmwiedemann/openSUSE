@@ -2,7 +2,7 @@ Index: mumble-1.5.629/scripts/generate_license_header.py
 ===================================================================
 --- mumble-1.5.629.orig/scripts/generate_license_header.py
 +++ mumble-1.5.629/scripts/generate_license_header.py
-@@ -22,49 +22,12 @@ repoRoot = os.path.normpath(os.path.join
+@@ -22,49 +22,10 @@ repoRoot = os.path.normpath(os.path.join
  # List of (3rdparty) licenses  [<variableName>, <pathToLicenseFile>, <DisplayName>, <URL>, (<define-guard>)?]
  licenses = [
      ["licenseMumble", "LICENSE", "Mumble", "https://www.mumble.info/"],
@@ -14,8 +14,8 @@ Index: mumble-1.5.629/scripts/generate_license_header.py
 -    ["licenseFLAC", "3rdPartyLicenses/libflac_license.txt", "libFLAC", "http://flac.sourceforge.net/"],
 -    ["licenseMachOverride", "3rdPartyLicenses/mach_override_license.txt", "mach_override", "https://github.com/rentzsch/mach_star", "Q_OS_MAC"],
 -    ["licenseMinHook", "3rdparty/minhook/LICENSE.txt", "MinHook", "https://github.com/TsudaKageyu/minhook", "Q_OS_WIN64"],
-     ["licenseQtTranslations", "src/mumble/qttranslations/LICENSE",
-         "Additional Qt translations", "https://www.virtualbox.org/ticket/2018", "USING_BUNDLED_QT_TRANSLATIONS"],
+-    ["licenseQtTranslations", "src/mumble/qttranslations/LICENSE",
+-        "Additional Qt translations", "https://www.virtualbox.org/ticket/2018", "USING_BUNDLED_QT_TRANSLATIONS"],
 -    ["licenseEmojiOne", "3rdPartyLicenses/cc_by_sa_40_legalcode.txt", "Emoji One artwork", "http://emojione.com/"],
 -    ["licenseXInputCheck", "3rdparty/xinputcheck-src/COPYING.txt", "XInputCheck (SDL_IsXInput function)", "https://www.libsdl.org/"],
 +    ["licenseEmojiOne", "icons/flags/LICENSE.md", "Emoji One artwork", "http://emojione.com/"],

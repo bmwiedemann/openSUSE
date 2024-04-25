@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 23 23:11:54 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Address licensedigger concerns:
+  * drop qttranslations from tarball, adjust licenses.patch
+  * The OCB design is in the public domain
+    add mumble-1.5.629-The-OCB-design-is-in-the-public-domain.patch
+  * drop unneeded installer files from tarball
+  * unbundle audio back-end headers from tarball:
+    pulseadio, jack, portadio, pipewire
+    add mumble-1.5.629-unbundle-audio-backends.patch
+- change from tarball to obscpio and build-time service
+
+-------------------------------------------------------------------
 Sat Apr 20 15:26:53 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - switch to source service generated tarball that has a number of

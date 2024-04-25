@@ -24,14 +24,10 @@ Name:           mumble
 Version:        1.5.629
 Release:        0
 Summary:        Voice Communication Client for Gamers
-# Most files are BSD-3-Clause, celt also contains BSD-2-Clause files.
+# Most files are BSD-3-Clause
 # 3rdparty/arc4random/LICENSE: MIT
-# 3rdparty/jack: LGPL-2.1-or-later
-# 3rdparty/pipewire: MIT
-# 3rdparty/portaudio: MIT
-# 3rdparty/pulseaudio: LGPL-2.1-or-later
 # 3rdparty/SPSCQueue: MIT
-License:        BSD-2-Clause AND BSD-3-Clause AND MIT AND LGPL-2.1-or-later
+License:        BSD-2-Clause AND BSD-3-Clause AND MIT
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://www.mumble.info/
 Source:         %{name}-%{version}.tar.xz
@@ -39,10 +35,11 @@ Source6:        baselibs.conf
 # PATCH-FIX-UPSTREAM fix-64bit-only-plugins.patch -- Requires 64bit memory alignment ( https://github.com/mumble-voip/mumble/issues/5849 )
 Patch0:         fix-64bit-only-plugins.patch
 Patch2:         mumble-cxx17.patch
-# Removes licenses that are unbundled, or not used
+# Patches related to dependency unbundling
 Patch100:       licenses.patch
-# Make mumble build without statically linked tracy
 Patch101:       mumble-unbundle-tracy.patch
+Patch102:       mumble-1.5.629-The-OCB-design-is-in-the-public-domain.patch
+Patch103:       mumble-1.5.629-unbundle-audio-backends.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.20
 BuildRequires:  libboost_headers-devel
@@ -63,11 +60,15 @@ BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(avahi-compat-libdns_sd)
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libpcre2-posix)
+BuildRequires:  pkgconfig(libpipewire-0.3)
+BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(opus)
+BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(speech-dispatcher)
 BuildRequires:  pkgconfig(speexdsp)
 BuildRequires:  pkgconfig(xext)
@@ -144,6 +145,7 @@ won't be audible to other players.
 	-Dbundled-renamenoise:BOOL=ON \
 	-Dbundled-speex:BOOL=OFF \
 	-Dqtspeech:BOOL=ON \
+	-Dbundle-qt-translations:BOOL=OFF \
 %if 0%{?suse_version} > 1600
 	-DCMAKE_SHARED_LINKER_FLAGS="-lGL" \
 %endif

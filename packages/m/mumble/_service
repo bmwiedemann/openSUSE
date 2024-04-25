@@ -10,21 +10,27 @@
     <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="set_version" mode="manual"/>
-  <service name="tar" mode="manual">
+  <service name="tar" mode="buildtime">
     <!-- throw away a number of unused, bundled libs -->
     <param name="exclude">3rdparty/GL</param>
     <param name="exclude">3rdparty/gsl</param>
+    <param name="exclude">3rdparty/jack</param>
     <param name="exclude">3rdparty/march-override-*</param>
     <param name="exclude">3rdparty/minhook</param>
     <param name="exclude">3rdparty/nlohmann_json</param>
+    <param name="exclude">3rdparty/pipewire</param>
+    <param name="exclude">3rdparty/portaudio</param>
+    <param name="exclude">3rdparty/pulseaudio</param>
     <param name="exclude">3rdparty/speexdsp-build</param>
     <param name="exclude">3rdparty/speexdsp</param>
     <param name="exclude">3rdparty/tracy</param>
     <param name="exclude">3rdparty/xinputcheck*</param>
+    <param name="exclude">installer</param>
+    <param name="exclude">src/mumble/qttranslations</param>
     <!-- and the licence texts, see license.patch -->
     <param name="exclude">3rdPartyLicenses</param>
   </service>
-  <service name="recompress" mode="manual">
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>

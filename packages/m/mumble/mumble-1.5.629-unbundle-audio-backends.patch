@@ -1,0 +1,38 @@
+Index: mumble-1.5.629/src/mumble/CMakeLists.txt
+===================================================================
+--- mumble-1.5.629.orig/src/mumble/CMakeLists.txt
++++ mumble-1.5.629/src/mumble/CMakeLists.txt
+@@ -1027,7 +1027,6 @@ if(jackaudio)
+ 	)
+ 
+ 	target_compile_definitions(mumble_client_object_lib PUBLIC "USE_JACKAUDIO")
+-	target_include_directories(mumble_client_object_lib SYSTEM PUBLIC "${3RDPARTY_DIR}/jack")
+ endif()
+ 
+ if(oss)
+@@ -1049,7 +1048,8 @@ if(pipewire)
+ 	)
+ 
+ 	target_compile_definitions(mumble_client_object_lib PUBLIC "USE_PIPEWIRE")
+-	target_include_directories(mumble_client_object_lib SYSTEM PUBLIC "${3RDPARTY_DIR}/pipewire")
++	target_include_directories(mumble_client_object_lib SYSTEM PUBLIC "/usr/include/pipewire-0.3")
++	target_include_directories(mumble_client_object_lib SYSTEM PUBLIC "/usr/include/spa-0.2")
+ endif()
+ 
+ if(portaudio)
+@@ -1060,7 +1060,6 @@ if(portaudio)
+ 	)
+ 
+ 	target_compile_definitions(mumble_client_object_lib PUBLIC "USE_PORTAUDIO")
+-	target_include_directories(mumble_client_object_lib SYSTEM PUBLIC "${3RDPARTY_DIR}/portaudio")
+ endif()
+ 
+ if(pulseaudio)
+@@ -1071,7 +1070,6 @@ if(pulseaudio)
+ 	)
+ 
+ 	target_compile_definitions(mumble_client_object_lib PUBLIC "USE_PULSEAUDIO")
+-	target_include_directories(mumble_client_object_lib SYSTEM PUBLIC "${3RDPARTY_DIR}/pulseaudio")
+ endif()
+ 
+ if(wasapi)
