@@ -17,13 +17,14 @@
 
 
 Name:           taskwarrior
-Version:        2.6.2
+Version:        3.0.2
 Release:        0
 Summary:        Command-line todo list manager
 License:        MIT
 Group:          Productivity/Office/Organizers
 URL:            https://taskwarrior.org/
-Source0:        https://taskwarrior.org/download/task-%{version}.tar.gz
+Source0:        https://github.com/GothenburgBitFactory/%{name}/releases/download/v%{version}/task-%{version}.tar.gz
+Source1:        vendor.tar.zst
 #PATCH-FIX-OPENSUSE: skip the INSTALL and LICENSE from files intended for the installation
 Patch0:         task-skip-INSTALL.patch
 BuildRequires:  awk
@@ -32,10 +33,9 @@ BuildRequires:  bash
 BuildRequires:  cmake >= 2.8
 BuildRequires:  coreutils
 BuildRequires:  gcc-c++
-BuildRequires:  gnutls-devel
 # for sync
-BuildRequires:  libgnutls-devel
 BuildRequires:  libuuid-devel
+BuildRequires:  cargo-packaging
 BuildRequires:  vim-base
 BuildRequires:  zsh
 # use the name as other distributions, so
@@ -52,18 +52,10 @@ Taskwarrior is a very active project involving people around the globe - check
 often for updates.
 
 %prep
-%autosetup -p1 -n task-%{version}
-
-# replace __TIME__/__DATE__ with values from source code tarball
-DATE=$(/bin/date -r "%{SOURCE0}" | awk '{print $2" "$3" "$6}')
-TIME=$(/bin/date -r "%{SOURCE0}" | awk '{print $4}')
-sed -i src/commands/CmdDiagnostics.cpp \
- -e "s/__TIME__/\"${TIME}\"/" \
- -e "s/__DATE__/\"${DATE}\"/"
+%autosetup -a1 -p1 -n task-%{version}
 
 %build
-%cmake -DENABLE_SYNC:BOOL=ON \
-    -DTASK_DOCDIR:PATH=%{_docdir}/task \
+%cmake -DTASK_DOCDIR:PATH=%{_docdir}/task \
     -DTASK_MAN1DIR:PATH=%{_mandir}/man1/ \
     -DBUILD_SHARED_LIBS:BOOL=OFF \
     -DBUILD_STATIC_LIBS:BOOL=OFF \
