@@ -945,4 +945,12 @@ Pushing GNOME 45.rc packages</comment>
     <comment></comment>
     <requestid>1159297</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>ef3f86507e52a027eed209ebe9c7f142</srcmd5>
+    <version>1.15.8</version>
+    <time>1714070855</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1170044</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Tue Apr 23 13:23:52 UTC 2024 - Robert Frohl <rfrohl@suse.com>
+
+- disable parental controls for now by using '-Dmalcontent=disabled', to work around
+  issues with xdg-desktop-portal
+
+-------------------------------------------------------------------
+Fri Apr 19 08:05:28 UTC 2024 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 1.15.8:
+  + Security fixes:
+    - Don't allow an executable name to be misinterpreted as a
+      command-line option for bwrap(1). This prevents a sandbox
+      escape where a malicious or compromised app could ask
+      xdg-desktop-portal to generate a .desktop file with access to
+      files outside the sandbox. (CVE-2024-32462, boo#1223110).
+  + Other bug fixes:
+    - Pass the -export-dynamic linker option as
+      -Wl,-export-dynamic, fixing build failures with clang 18 and
+      lld 18.
+    - Fix a double-free when installation is cancelled.
+    - Fix installed-tests failure with "FUSERMOUNT: unbound
+      variable".
+- Changes from version 1.15.7:
+  + New features:
+    - Automatically remove obsolete driver versions and other
+      autopruned refs.
+    - --socket=inherit-wayland-socket.
+    - Automatically reload D-Bus session bus configuration after
+      installing or upgrading apps, to pick up any exported D-Bus
+      services.
+  + Bug fixes:
+    - Don't parse <developer><name/></developer> as the application
+      name.
+    - Don't refuse to start apps when there is no D-Bus system bus
+      available.
+    - Don't try to repeat migration of apps whose data was migrated
+      to a new name and then deleted.
+    - Improve handling of mixed locales on systems with
+      systemd-localed.
+    - Improve display of ellipsized columns in wide terminals.
+    - Make flatpak info -e look for extensions in all
+      installations.
+    - Fix warnings from newer GLib versions.
+    - Always set the container environment variable.
+    - Always let the app inherit redirected file descriptors.
+    - In flatpak ps, add xdg-desktop-portal-gnome to the list of
+      backends we'll use to learn which apps are running in the
+      background.
+    - Don't use WAYLAND_SOCKET unless given
+      --socket=inherit-wayland-socket.
+    - Use fusermount3 if compiled with FUSE 3, overridable with
+      -Dsystem_fusermount compile-time option.
+    - Avoid leaking a temporary variable from
+      /etc/profile.d/flatpak.sh into the shell environment.
+    - Improve async-signal safety.
+    - Fix various memory leaks.
+    - Avoid undefined behaviour of signed left-shift when storing
+      object IDs in a hash table.
+    - Detect the correct gtk-doc when cross-compiling.
+    - Detect the correct wayland-scanner when cross-compiling.
+    - Documentation improvements.
+    - Skip more tests when FUSE isn't available.
+    - Updated translations.
+- Add libglnx.patch: fix meson function detection.
+- Switch build system to meson:
+  + Add meson BuildRequires.
+  + Switch configure/make_build/make_install macros to
+    meson/meson_build/meson_install, preserving the configure
+    parameters as close as possible:
+    --disable-silent-rules => obsoleted
+    --with-system-bubblewrap => -Dsystem_bubblewrap=bwrap
+    --with-curl => -Dhttp_backend=curl
+- Add pkgconfig(malcontent-0) BuildRequires: enable malcontent
+  support.
+
+-------------------------------------------------------------------
 Tue Mar 19 08:06:34 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Make flatpak-remote-flathub only supplement flatpak in TW

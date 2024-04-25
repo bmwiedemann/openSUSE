@@ -35,7 +35,7 @@
 %define support_environment_generators 1
 %endif
 Name:           flatpak
-Version:        1.15.6
+Version:        1.15.8
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
@@ -49,6 +49,8 @@ Source4:        update-user-flatpaks.timer
 Source5:        https://flathub.org/repo/flathub.flatpakrepo
 # PATCH-FEATURE-OPENSUSE polkit_rules_usability.patch -- Make the rules comply with openSUSE expectations
 Patch0:         polkit_rules_usability.patch
+# PATCH-FIX-UPSTREAM libglnx.patch https://gitlab.gnome.org/GNOME/libglnx/-/merge_requests/57
+Patch1:         libglnx.patch
 
 BuildRequires:  bison
 BuildRequires:  bubblewrap >= %{bubblewrap_version}
@@ -59,6 +61,7 @@ BuildRequires:  libcap-devel
 BuildRequires:  libgpg-error-devel
 BuildRequires:  libgpgme-devel >= 1.1.8
 BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-pyparsing
 BuildRequires:  selinux-policy-devel
@@ -163,8 +166,8 @@ more information.
 Summary:        Add Flathub repository to system flatpak
 Group:          System/Packages
 Requires:       flatpak
-Requires(postun): flatpak
-Requires(postun): sed
+Requires(postun):flatpak
+Requires(postun):sed
 %if 0%{?suse_version} > 1600
 Supplements:    flatpak
 %endif
@@ -204,27 +207,25 @@ fi
 sed -i -e '1s,#!%{_bindir}/env python3,#!%{_bindir}/python3,' scripts/flatpak-*
 
 %build
-./autogen.sh
-%configure \
-	--disable-silent-rules \
-	--with-system-bubblewrap \
-	--with-curl \
-	--with-priv-mode=none \
-	--with-dbus-config-dir=%{_dbusconfigdir} \
-	--with-system-dbus-proxy=%{_bindir}/xdg-dbus-proxy \
+%meson \
+        -Dsystem_bubblewrap=%{_bindir}/bwrap \
+        -Dhttp_backend=curl \
+        -Ddbus_config_dir=%{_dbusconfigdir} \
+        -Dsystem_dbus_proxy=%{_bindir}/xdg-dbus-proxy \
 %if !%{support_environment_generators}
-	--enable-gdm-env-file \
+        -Dgdm_env_file=enabled \
 %endif
-	--enable-documentation \
-	--enable-gtk-doc \
-	--with-wayland-security-context=yes \
-        --with-selinux_module=yes \
-	%{nil}
-%make_build
+        -Dgtkdoc=enabled \
+        -Dwayland_security_context=enabled \
+        -Dselinux_module=enabled \
+        -Dtests=false \
+        -Dmalcontent=disabled \
+        %{nil}
+%meson_build
 %sysusers_generate_pre system-helper/flatpak.conf system-user-flatpak flatpak.conf
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}%{_sbindir}
 ln -s service %{buildroot}%{_sbindir}/rcflatpak-system-helper
@@ -331,7 +332,9 @@ fi;
 %{_mandir}/man1/%{name}*.1%{?ext_man}
 %{_mandir}/man5/flatpak-metadata.5%{?ext_man}
 %{_mandir}/man5/flatpak-flatpakref.5%{?ext_man}
+%{_mandir}/man5/flatpakref.5%{?ext_man}
 %{_mandir}/man5/flatpak-flatpakrepo.5%{?ext_man}
+%{_mandir}/man5/flatpakrepo.5%{?ext_man}
 %{_mandir}/man5/flatpak-installation.5%{?ext_man}
 %{_mandir}/man5/flatpak-remote.5%{?ext_man}
 %{_datadir}/%{name}/
