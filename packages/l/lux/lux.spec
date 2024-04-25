@@ -17,7 +17,7 @@
 
 
 Name:           lux
-Version:        0.23.0
+Version:        0.24.0
 Release:        0
 Summary:        A video downloader built with Go
 License:        MIT
