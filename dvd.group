@@ -1710,9 +1710,9 @@
     <package name="libapr1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libarchive13" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libargon2-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libarrow1500" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libarrow_acero1500" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libarrow_dataset1500" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libarrow1600" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libarrow_acero1600" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libarrow_dataset1600" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libasan8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libasm1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libasound2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2542,7 +2542,7 @@
     <package name="libpaper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libpaper-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libpaper2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libparquet1500" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libparquet1600" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libparted-fs-resize0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libparted2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libpath_utils1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->

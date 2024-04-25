@@ -651,10 +651,7 @@ unsorted:
   - aopalliance 
   - aopalliance-javadoc 
   - apache-arrow 
-  - apache-arrow-acero-devel-static 
-  - apache-arrow-dataset-devel-static 
   - apache-arrow-devel 
-  - apache-arrow-devel-static 
   - apache-chainsaw 
   - apache-chainsaw-javadoc 
   - apache-commons-beanutils 
@@ -733,7 +730,6 @@ unsorted:
   - apache-logging-parent 
   - apache-parent 
   - apache-parquet-devel 
-  - apache-parquet-devel-static 
   - apache-parquet-utils 
   - apache-pdfbox 
   - apache-pdfbox-javadoc 
@@ -4460,10 +4456,10 @@ unsorted:
   - fx 
   - fxload 
   - fzf 
-  - fzf-bash-completion 
-  - fzf-fish-completion 
+  - fzf-bash-integration 
+  - fzf-fish-integration 
   - fzf-tmux 
-  - fzf-zsh-completion 
+  - fzf-zsh-integration 
   - fzy 
   - g3utils 
   - g810-led 
@@ -9364,6 +9360,7 @@ unsorted:
   - julia-devel 
   - juliaup 
   - julius 
+  - junction 
   - junit 
   - junit-javadoc 
   - junit-manual 
@@ -11585,6 +11582,8 @@ unsorted:
   - libarmnnTfLiteParser24-opencl 
   - libarpack2 
   - libarprec0 
+  - libarrow_flight1600 
+  - libarrow_flight_sql1600 
   - libart_lgpl-devel 
   - libart_lgpl_2-2 
   - libasan4 
@@ -34179,7 +34178,6 @@ unsorted:
   - python38-volatility3 
   - python39 
   - python39-32bit 
-  - python39-autobahn 
   - python39-base 
   - python39-base-32bit 
   - python39-curses 
@@ -47182,6 +47180,7 @@ unsorted:
   - vkeybd 
   - vkmark 
   - vkquake 
+  - vlc-codec-fluidsynth 
   - vlc-devel 
   - vlc-jack 
   - vlc-opencv 
