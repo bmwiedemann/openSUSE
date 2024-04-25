@@ -1,9 +1,9 @@
-# vim: set sw=4 ts=4 et:
 #
 # spec file for package libgig
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,18 +21,17 @@
 %define sover_gig  11
 %define sover_akai 0
 Name:           libgig
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 Summary:        Library for loading Gigasampler and DLS Level 1/2 files
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://linuxsampler.org/
 Source0:        http://download.linuxsampler.org/packages/libgig-%{version}.tar.bz2
-Source1:        libgig-rpmlintrc
-BuildRequires:  e2fsprogs-devel
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(sndfile) >= 1.0.2
+BuildRequires:  pkgconfig(uuid)
 
 %description
 C++ library for loading Gigasampler and DLS Level 1/2 files.
@@ -75,7 +74,7 @@ Some example applications for the libgig package.
 * rifftree: tool that prints out the RIFF tree of an arbitrary RIFF file
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-static
@@ -90,8 +89,11 @@ mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d/
 echo "%{_libdir}/libgig"  > "%{buildroot}%{_sysconfdir}/ld.so.conf.d/libgig%{sover_gig}.conf"
 echo "%{_libdir}/libakai" > "%{buildroot}%{_sysconfdir}/ld.so.conf.d/libakai%{sover_akai}.conf"
 
-%post   -n libgig%{sover_gig} -p /sbin/ldconfig
-%postun -n libgig%{sover_gig} -p /sbin/ldconfig
+%check
+%make_build check
+
+%ldconfig_scriptlets -n libgig%{sover_gig}
+%ldconfig_scriptlets -n libakai%{sover_akai}
 
 %files -n libgig%{sover_gig}
 %license COPYING
@@ -100,9 +102,6 @@ echo "%{_libdir}/libakai" > "%{buildroot}%{_sysconfdir}/ld.so.conf.d/libakai%{so
 %{_libdir}/libgig/libgig.so.%{sover_gig}
 %{_libdir}/libgig/libgig.so.%{sover_gig}.*
 %config %{_sysconfdir}/ld.so.conf.d/libgig%{sover_gig}.conf
-
-%post   -n libakai%{sover_akai} -p /sbin/ldconfig
-%postun -n libakai%{sover_akai} -p /sbin/ldconfig
 
 %files -n libakai%{sover_akai}
 %license COPYING

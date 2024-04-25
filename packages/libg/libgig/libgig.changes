@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 23 21:05:31 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to version 4.4.1:
+  * Fix build errors with some compilers
+- drop unused rpmlintrc
+
+-------------------------------------------------------------------
 Sat Jan 27 08:50:05 UTC 2024 - Edgar Aichinger <edogawa@aon.at>
 
 - update to version 4.4.0 (libgig.so.11):
