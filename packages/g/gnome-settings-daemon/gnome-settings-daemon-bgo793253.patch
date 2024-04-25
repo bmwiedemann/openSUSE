@@ -42,7 +42,7 @@ Index: gnome-settings-daemon-45.0/plugins/xsettings/xsettings-manager.c
        return XSETTINGS_TYPE_COLOR;
      default:
 -      g_assert_not_reached ();
-+      return NULL;
++      return 0;
      }
  }
  
