@@ -487,4 +487,15 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164753 from glaubitz)</comment>
     <requestid>1165151</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>cf0fb171a56a9541380d3b1dc53c5b2b</srcmd5>
+    <version>30.0.0</version>
+    <time>1714070915</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 30.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1170009 from glaubitz)</comment>
+    <requestid>1170011</requestid>
+  </revision>
 </revisionlist>
