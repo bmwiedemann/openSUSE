@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr 24 11:27:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.21.0:
+  * ci: Update slsa-github-generator to v2.0.0
+  * ci: Build release binaries with latest Go 1.22 patch
+  * build(deps): bump the ci group with 2 updates
+  * build(deps): bump golang.org/x/net from 0.22.0 to 0.23.0
+  * Add finalizers to `#Metadata` definition
+  * build(deps): bump the ci group with 1 update
+  * Setup Go in CI using `go.mod` version
+  * Update `cuelang.org/go` to v0.8.1
+  * Update dependencies to Kubernetes 1.29
+  * build(deps): bump the ci group with 1 update
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump the ci group with 3 updates
+  * build(deps): bump google.golang.org/protobuf from 1.31.0 to
+    1.33.0
+
+-------------------------------------------------------------------
 Sun Mar 17 12:49:42 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.20.0:
