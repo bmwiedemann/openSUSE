@@ -4078,4 +4078,27 @@ However, upstream development now focuses on 3.x series.
 </comment>
     <requestid>1158938</requestid>
   </revision>
+  <revision rev="194" vrev="45">
+    <srcmd5>63512702481b06b0f2879b4451fd214c</srcmd5>
+    <version>2.7.18</version>
+    <time>1714070850</time>
+    <user>anag+factory</user>
+    <comment>- Modify CVE-2023-27043-email-parsing-errors.patch to fix the
+  unicode string handling in email.utils.parseaddr()
+  (bsc#1222537).
+- Revert CVE-2022-48560-after-free-heappushpop.patch, the fix was
+  unneeded.
+- Modify CVE-2023-27043-email-parsing-errors.patch to fix the
+  unicode string handling in email.utils.parseaddr()
+  (bsc#1222537).
+- Revert CVE-2022-48560-after-free-heappushpop.patch, the fix was
+  unneeded.
+- Modify CVE-2023-27043-email-parsing-errors.patch to fix the
+  unicode string handling in email.utils.parseaddr()
+  (bsc#1222537).
+- Revert CVE-2022-48560-after-free-heappushpop.patch, the fix was
+  unneeded.
+</comment>
+    <requestid>1169941</requestid>
+  </revision>
 </revisionlist>

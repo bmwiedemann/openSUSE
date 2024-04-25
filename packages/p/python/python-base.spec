@@ -19,7 +19,7 @@
 %define so_version 2_7-1_0
 # We really don't care about quality of this package anymore, it
 # will be soon gone (bsc#1219306).
-%bcond_with tests
+%bcond_with test
 
 Name:           python-base
 Version:        2.7.18
@@ -154,7 +154,8 @@ Patch75:        CVE-2023-24329-blank-URL-bypass.patch
 Patch76:        PygmentsBridge-trime_doctest_flags.patch
 # PATCH-FIX-UPSTREAM CVE-2023-27043-email-parsing-errors.patch bsc#1210638 mcepl@suse.com
 # Detect email address parsing errors and return empty tuple to
-# indicate the parsing error (old API)
+# indicate the parsing error (old API), modified for fixing bsc#1222537,
+# so that email.utils.parseaddr accepts unicode string
 Patch77:        CVE-2023-27043-email-parsing-errors.patch
 # PATCH-FIX-UPSTREAM CVE-2022-48565-plistlib-XML-vulns.patch bsc#1214685 mcepl@suse.com
 # Reject entity declarations in plists
@@ -164,9 +165,6 @@ Patch79:        CVE-2023-40217-avoid-ssl-pre-close.patch
 # PATCH-FIX-UPSTREAM CVE-2022-48566-compare_digest-more-constant.patch bsc#1214691 mcepl@suse.com
 # Make compare_digest more constant-time
 Patch80:        CVE-2022-48566-compare_digest-more-constant.patch
-# PATCH-FIX-UPSTREAM CVE-2022-48560-after-free-heappushpop.patch bsc#1214675 mcepl@suse.com
-# fix use after free in heapq.heappushpop()
-Patch81:        CVE-2022-48560-after-free-heappushpop.patch
 # COMMON-PATCH-END
 %define         python_version    %(echo %{tarversion} | head -c 3)
 BuildRequires:  automake
@@ -323,7 +321,6 @@ other applications.
 %patch -P 78 -p1
 %patch -P 79 -p1
 %patch -P 80 -p1
-%patch -P 81 -p1
 
 # For patch 66
 cp -v %{SOURCE66} Lib/test/recursion.tar
@@ -431,8 +428,8 @@ make test TESTOPTS="-l -w -x $EXCLUDE" TESTPYTHONOPTS="-R"
 # use network, be verbose:
 #make test TESTOPTS="-l -u network -v"
 %endif
-# END OF CHECK SECTION
 %endif
+# END OF CHECK SECTION
 
 %install
 # replace rest of /usr/local/bin/python or /usr/bin/python2.5 with /usr/bin/python

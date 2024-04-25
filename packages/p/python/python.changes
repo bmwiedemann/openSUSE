@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 16 15:39:24 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Modify CVE-2023-27043-email-parsing-errors.patch to fix the
+  unicode string handling in email.utils.parseaddr()
+  (bsc#1222537).
+- Revert CVE-2022-48560-after-free-heappushpop.patch, the fix was
+  unneeded.
+
+-------------------------------------------------------------------
 Mon Mar 18 09:54:20 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch off tests. ONLY FOR FACTORY!!! (bsc#1219306)
