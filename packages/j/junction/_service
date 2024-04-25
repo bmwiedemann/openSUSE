@@ -1,0 +1,16 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/sonnyp/Junction.git</param>
+    <param name="scm">git</param>
+    <param name="revision">refs/tags/v1.8</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="filename">junction</param>
+  </service>
+  <service name="tar" mode="buildtime" />
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">zstd</param>
+  </service>
+  <service name="set_version" mode="manual" />
+</services>

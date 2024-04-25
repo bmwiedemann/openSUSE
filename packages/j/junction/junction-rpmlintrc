@@ -1,0 +1,6 @@
+# Package is not noarch, as /usr/bin/junction contains %{_libdir} references
+addFilter("no-binary")
+
+# package uses env to properly setup ENV variables for XDG_DATA_DIR to ensure
+# flatpak user-apps are listable. We add /usr/bin/gjs to the RPM deps manually
+addFilter("env-script-interpreter")
