@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 24 12:13:43 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.1 (9.5.0 does not exist):
+  Ansible 9.5.1 includes ansible-core 2.16.6 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 9
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/9/CHANGELOG-v9.rst
+
+-------------------------------------------------------------------
 Wed Mar 27 19:56:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.4.0:
