@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 25 14:20:29 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.125.4:
+  * commands: Clarify that create or install a theme are two options
+  * config: Setups with only one active language can never be multihost
+  * Fix rebuilds when running hugo -w
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.20.19 to 2.20.20
+  * tpl/tplimpl: Fix double-escaping in opengraph template
+  * Use Apache License without modification
+
+-------------------------------------------------------------------
 Mon Apr 22 18:40:04 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.125.3:
