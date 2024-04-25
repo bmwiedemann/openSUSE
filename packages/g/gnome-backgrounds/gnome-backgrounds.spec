@@ -27,6 +27,8 @@ Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+# jpeg-xl pixbuf loader
+Requires:       gdk-pixbuf-loader-jxl
 # svg pixbuf loader
 Requires:       gdk-pixbuf-loader-rsvg
 # webp pixbuf loader

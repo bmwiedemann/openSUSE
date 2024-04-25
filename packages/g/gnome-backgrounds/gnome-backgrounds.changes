@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 20 14:24:09 UTC 2024 - Frogster <lilfrogg@posteo.net>
+
+- Add requirement for gdk-pixbuf-loader-jxl to be able to show the
+  Gnome 46 backgrounds
+
+-------------------------------------------------------------------
 Tue Mar 19 07:47:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:
