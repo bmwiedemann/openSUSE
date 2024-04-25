@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 21 16:09:14 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add gtk2-gcc14.patch: fix build with gcc 14.
+
+-------------------------------------------------------------------
 Fri Apr 19 14:19:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not recommend the variuos -immodule-*: they have locale based
