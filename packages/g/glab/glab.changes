@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 25 05:13:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.40.0:
+  * feat: allow to provide custom client-id
+  * chore(deps): Update retry-go dependency
+  * feat(release): support `direct_asset_path` and alias `filepath`
+  * chore(ci): remove deprecated
+    Jobs/License-Scanning.latest.gitlab-ci.yml
+  * fix(docs): w/o issue-no, the example will fail
+  * chore(docs): update dependencies for commit-lint script
+  * chore: run tests with Go 1.22
+  * feat: Create a job artifact command
+  * test: fix issue with environment variables being set
+  * chore(deps): update github.com/xanzy/go-gitlab to v0.103.0
+  * docs(config): update editor and browser config docs
+
+-------------------------------------------------------------------
 Thu Apr 18 19:37:49 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.39.0:
