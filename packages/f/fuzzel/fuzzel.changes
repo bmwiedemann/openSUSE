@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Apr 22 21:58:46 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Add keyring and signature for package.
+- Remove patches (Fixed upstream):
+  * 0001-shm-create-mfd-noexec-seal.patch
+  * 0002-fix-breakage-mfd-noexec-seal.patch
+- Update to 1.10.2:
+  * Crash when terminal=yes (in fuzzel.ini), and a .desktop file
+    has Terminal=True but no Exec key.
+  * --anchor=center not working on some compositors.
+- Updates from 1.10.1:
+  * Crash when executing the command line as is, i.e. when there is
+    no matching entry.
+  * Crash when parsing a .desktop file with lines beginning with
+    whitespace.
+- Updates from 1.10.0:
+  Added:
+  * Support for the cursor-shape-v1 Wayland protocol.
+  * New option --anchor allows setting the window position anchor
+    (i.e. where on the screen the window should generally be
+    positioned), such as top, top-left, bottom-right, center, etc.
+    Defaults to center.
+  * --check-config command line option.
+  * New key binding: execute-input (mapped to shift+return by
+    default). This key binding executes the raw input as is,
+    regardless of whether it matches anything in the list or not.
+  * --select=STRING command line option. Selects the first entry
+    that matches the given string.
+  * include=<path> option to fuzzel.ini.
+  * New option --list-executables-in-path add executables presents
+    in the $PATH variable to the list.
+  * New key binding: delete-line-backward which corresponds to C-u
+    in bash. Also renames delete-line to delete-line-forward.
+  * The ID of the selected .desktop file, and executed command line
+    are now logged, at info level.
+  * Support for wp_fractional_scale_v1 (i.e. true fractional
+    scaling).
+  Changed:
+  * Minimum required version of wayland-protocols is now 1.32
+  * Selection color is now painted over background color.
+  * Exact matches (of the application title) are now sorted first.
+  * Set default log level to warning.
+  * Rename delete-line binding to delete-line-forward.
+  * password-character can now be set to the empty string.
+  Fixed:
+  * Ignore whitespace in .desktop files’ key and name values.
+  * Desktop entries with NoDisplay=true being ignored unless they
+    also had Name and Exec set.
+  * Crash when compositor sends a keyboard::modifiers event without
+    first sending a keyboard::keymap event (with a valid keymap).
+  * Quoted empty ("") arguments being ignored.
+  * Log-level not respected by syslog.
+
+-------------------------------------------------------------------
 Sun Oct 22 10:57:04 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Rename 0001-mfd-noexec-seal.patch to 0002-fix-breakage-mfd-noexec-seal.patch

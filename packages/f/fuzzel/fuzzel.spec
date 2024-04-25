@@ -1,7 +1,7 @@
 #
 # spec file for package fuzzel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 Name:           fuzzel
-Version:        1.9.2
+Version:        1.10.2
 Release:        0
 Summary:        A Wayland-native application launcher, similar to rofi's drun mode
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://codeberg.org/dnkl/fuzzel
-Source:         https://codeberg.org/dnkl/fuzzel/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         https://codeberg.org/dnkl/fuzzel/commit/31bef7d63aa71df8bbb49c82eebeeed5fe615939.patch#/0001-shm-create-mfd-noexec-seal.patch
-Patch2:         https://codeberg.org/dnkl/fuzzel/commit/6e1afa2ec8b9c760e83c30c959b3ee78cd7c6776.patch#/0002-fix-breakage-mfd-noexec-seal.patch
+Source:         https://codeberg.org/dnkl/fuzzel/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://codeberg.org/dnkl/fuzzel/releases/download/%{version}/%{name}-%{version}.tar.gz.sig
+# https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xb19964fbba09664cc81027ed5bbd4992c116573f
+Source2:        %{name}.keyring
 BuildRequires:  meson >= 0.58
 BuildRequires:  pkgconfig
 BuildRequires:  python3
@@ -50,7 +51,7 @@ BuildRequires:  gcc >= 8
 A Wayland-native application launcher, similar to rofi's drun mode.
 
 %prep
-%autosetup -n %name -p1
+%autosetup -p1
 
 %package        zsh-completion
 Summary:        Zsh Completion for %{name}
