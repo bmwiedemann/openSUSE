@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 24 06:08:56 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to make glfw build deterministic
+
+-------------------------------------------------------------------
 Fri Oct 20 05:48:50 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.0:

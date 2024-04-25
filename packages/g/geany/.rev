@@ -513,4 +513,12 @@
 - Rebased geany-appstream.patch. (forwarded request 1119159 from polslinux)</comment>
     <requestid>1119569</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>99d2e238e6976e74e56319b25a04c47a</srcmd5>
+    <version>2.0</version>
+    <time>1714070864</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1170052</requestid>
+  </revision>
 </revisionlist>

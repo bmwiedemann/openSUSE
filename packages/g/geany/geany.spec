@@ -27,6 +27,7 @@ Source0:        https://download.geany.org/%{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM geany-appstream.patch gh#geany/geany#1142 badshah400@gmail.com -- Downstream created appstream file, submitted upstream
 Patch1:         geany-appstream.patch
+Patch2:         reproducible.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docutils
