@@ -1199,4 +1199,12 @@ Pushing GNOME 45.rc packages</comment>
   + Update URL gedit-technology.net -&gt; gedit-technology.github.io.</comment>
     <requestid>1161648</requestid>
   </revision>
+  <revision rev="156" vrev="2">
+    <srcmd5>34fc2fdf593be174ee747cce4246a524</srcmd5>
+    <version>46.2</version>
+    <time>1714070857</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1170046</requestid>
+  </revision>
 </revisionlist>

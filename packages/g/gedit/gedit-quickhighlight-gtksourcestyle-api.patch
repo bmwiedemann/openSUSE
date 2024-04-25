@@ -1,0 +1,53 @@
+From 6fa2371e5d9f5e9ef5403e78271cdfd9c4055e9a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?S=C3=A9bastien=20Wilmet?= <swilmet@informatique-libre.be>
+Date: Tue, 8 Aug 2023 16:00:00 +0200
+Subject: [PATCH] quickhighlight plugin: adapt code for GtkSourceStyle API
+ break
+
+---
+ plugins/quickhighlight/gedit-quick-highlight-plugin.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/plugins/quickhighlight/gedit-quick-highlight-plugin.c b/plugins/quickhighlight/gedit-quick-highlight-plugin.c
+index 7b4289dc7..ee40bcc84 100644
+--- a/plugins/quickhighlight/gedit-quick-highlight-plugin.c
++++ b/plugins/quickhighlight/gedit-quick-highlight-plugin.c
+@@ -83,7 +83,7 @@ gedit_quick_highlight_plugin_load_style (GeditQuickHighlightPlugin *plugin)
+ 
+ 	gedit_debug (DEBUG_PLUGINS);
+ 
+-	g_clear_object (&plugin->priv->style);
++	g_clear_pointer (&plugin->priv->style, gtk_source_style_unref);
+ 
+ 	style_scheme = gtk_source_buffer_get_style_scheme (GTK_SOURCE_BUFFER (plugin->priv->buffer));
+ 
+@@ -93,7 +93,7 @@ gedit_quick_highlight_plugin_load_style (GeditQuickHighlightPlugin *plugin)
+ 
+ 		if (style != NULL)
+ 		{
+-			plugin->priv->style = gtk_source_style_copy (style);
++			plugin->priv->style = gtk_source_style_ref (style);
+ 		}
+ 	}
+ }
+@@ -336,7 +336,7 @@ gedit_quick_highlight_plugin_finalize (GObject *object)
+ {
+ 	GeditQuickHighlightPlugin *plugin = GEDIT_QUICK_HIGHLIGHT_PLUGIN (object);
+ 
+-	g_clear_object (&plugin->priv->style);
++	g_clear_pointer (&plugin->priv->style, gtk_source_style_unref);
+ 
+ 	G_OBJECT_CLASS (gedit_quick_highlight_plugin_parent_class)->finalize (object);
+ }
+@@ -435,7 +435,7 @@ gedit_quick_highlight_plugin_deactivate (GeditViewActivatable *activatable)
+ 
+ 	plugin = GEDIT_QUICK_HIGHLIGHT_PLUGIN (activatable);
+ 
+-	g_clear_object (&plugin->priv->style);
++	g_clear_pointer (&plugin->priv->style, gtk_source_style_unref);
+ 	g_clear_object (&plugin->priv->search_context);
+ 
+ 	gedit_quick_highlight_plugin_unref_weak_buffer (plugin);
+-- 
+2.44.0
+

@@ -31,6 +31,8 @@ Source0:        %{name}-%{version}.tar.zst
 Patch0:         gedit-desktop.patch
 # PATCH-FIX-OPENSUSE gedit-plugins-python-env.patch bjorn.lie@gmail.com -- Fix python env
 Patch1:         gedit-plugins-python-env.patch
+# PATCH-FIX-UPSTREAM gedit-quickhighlight-gtksourcestyle-api.patch mgorse@suse.com -- adapt quickhighlight plugin for new libgedit-gtksourceview API.
+Patch2:         gedit-quickhighlight-gtksourcestyle-api.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes

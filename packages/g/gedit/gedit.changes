@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 20 00:10:05 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add gedit-quickhighlight-gtksourcestyle-api.patch: adapt
+  quickhighlight plugin for new libgedit-gtksourceview API.
+
+-------------------------------------------------------------------
 Mon Mar 25 13:38:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.2:
