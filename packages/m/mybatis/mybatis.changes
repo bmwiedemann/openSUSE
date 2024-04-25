@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 24 09:15:10 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Make the apache-commons-ognl a non-optional dependency
+
+-------------------------------------------------------------------
 Wed Feb 21 10:51:56 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -79,4 +79,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148619</requestid>
   </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>e62d4cf3b9a288e6f9e7d7e2427ad699</srcmd5>
+    <version>3.5.6</version>
+    <time>1714070911</time>
+    <user>anag+factory</user>
+    <comment>commons-ognl should be explicit dependency</comment>
+    <requestid>1170004</requestid>
+  </revision>
 </revisionlist>

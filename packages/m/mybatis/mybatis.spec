@@ -72,7 +72,8 @@ This package contains javadoc for %{name}.
 %prep
 %setup -q -n %{name}-3-%{name}-%{version}
 
-%pom_change_dep ognl:ognl org.apache.commons:commons-ognl:4.0-SNAPSHOT
+%pom_remove_dep ognl:ognl
+%pom_add_dep org.apache.commons:commons-ognl:4.0-SNAPSHOT
 %patch -P 0 -p1
 
 %pom_remove_plugin :maven-pdf-plugin
