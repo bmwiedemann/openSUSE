@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 24 18:26:23 UTC 2024 - Nicolas FORMICHELLA <stigpro@outlook.fr>
+
+- Upgrade dependencies
+  * Fix boo#1223244/CVE-2024-32650 by pushing rustls to 0.21.11
+
+-------------------------------------------------------------------
 Mon Apr 15 09:20:49 UTC 2024 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Uppate to version 14.0.1:
