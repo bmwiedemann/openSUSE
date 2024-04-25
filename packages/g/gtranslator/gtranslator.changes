@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 24 05:09:44 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 46.1:
+  + Reduce toasts timeout to 5s
+  + Reduce some more common toats timeout to 1s
+  + Sync languages with d-l
+  + Fix navigation view bugs
+  + Improved metainfo
+  + Update some translations
+
+-------------------------------------------------------------------
 Thu Mar 21 07:20:49 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to version 46.0:

@@ -17,7 +17,7 @@
 
 
 Name:           gtranslator
-Version:        46.0
+Version:        46.1
 Release:        0
 Summary:        A gettext po file editor for the GNOME desktop
 License:        GPL-3.0-or-later
@@ -32,6 +32,7 @@ BuildRequires:  intltool
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.46.0
 BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-2.0) >= 2.36.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.71.3
