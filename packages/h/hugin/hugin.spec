@@ -31,6 +31,8 @@ Group:          Productivity/Graphics/Other
 URL:            http://hugin.sourceforge.net/
 Source:         https://downloads.sourceforge.net/project/%{name}/%{name}/%{name}-%{mversion}/%{name}-%{version}.tar.bz2
 Patch0:         hugin.appdata.patch
+# 8684:4d081490b48a
+Patch1:         hugin-deprecated-copy_option.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  OpenEXR-devel
 BuildRequires:  cmake >= 3.1.0

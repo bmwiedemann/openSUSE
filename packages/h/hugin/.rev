@@ -657,4 +657,12 @@
          bsc#1219821 (CVE-2024-25445), bsc#1219822 (CVE-2024-25446)</comment>
     <requestid>1146570</requestid>
   </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>e10d2784149801df613a74653237c61d</srcmd5>
+    <version>2023.0.0</version>
+    <time>1714071026</time>
+    <user>anag+factory</user>
+    <comment>- fixed build with new boost [bsc#1223377] (forwarded request 1170138 from pgajdos)</comment>
+    <requestid>1170139</requestid>
+  </revision>
 </revisionlist>

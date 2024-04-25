@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 25 09:53:30 UTC 2024 - pgajdos@suse.com
+
+- fixed build with new boost [bsc#1223377]
+- added patches
+  fix deprecated boost::filesystem::copy_option enum
+  + hugin-deprecated-copy_option.patch
+
+-------------------------------------------------------------------
 Tue Jan  2 08:32:37 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2023.0.0:
