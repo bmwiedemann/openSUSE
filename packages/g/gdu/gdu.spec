@@ -17,15 +17,15 @@
 
 
 Name:           gdu
-Version:        5.27.0
+Version:        5.28.0
 Release:        0
 Summary:        Fast disk usage analyzer with console interface
 License:        MIT
 URL:            https://github.com/dundee/gdu
 Source:         https://github.com/dundee/gdu/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zstd
-BuildRequires:  zstd
 BuildRequires:  gzip
+BuildRequires:  zstd
 BuildRequires:  golang(API) >= 1.20
 
 %description

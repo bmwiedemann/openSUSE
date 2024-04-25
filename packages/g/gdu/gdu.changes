@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 24 12:08:01 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Version 5.28.0
+  * feat: delete/empty items in background by @dundee in #336
+  * feat: add --show-item-count (-C) option by @ramgp in #332
+  * feat: add --no-delete option by @ramgp in #333
+  * feat: ignore item by pressing I by @dundee in #345
+  * feat: delete directory items in parallel by @dundee in #340
+  * feat: add --sequential option for sequential scanning by @dundee in #322
+
+-------------------------------------------------------------------
 Wed Apr 10 03:51:59 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
