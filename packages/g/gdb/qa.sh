@@ -395,49 +395,10 @@ kfail_sle12=(
 
 kfail_sle11=(
 
-    "${kfail_sle12[@]}"
-
-    # For SLE-11, libipt is not enabled, so on intel we can run into
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=30073 affecting
-    # many test-cases.
-    "FAIL: gdb.btrace/"
-    "FAIL: gdb.python/py-record-btrace"
-
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=26956
-    "FAIL: gdb.base/command-line-input.exp: print 1"
-
-    # Due to using old python, 2.6.
-    # For instance, "ValueError: zero length field name in format".
-    "FAIL: gdb.python/py-autoloaded-pretty-printers-in-newobjfile-event.exp: print test"
-    "FAIL: gdb.python/py-breakpoint.exp: test_bkpt_address: python gdb.Breakpoint\("  *{}".format\(str\(main_addr\)\)\)"
-    "FAIL: gdb.python/py-framefilter.exp: info frame filter after disable frame filter"
-    "FAIL: gdb.python/py-framefilter.exp: info frame filter after reenabling frame filter"
-    "FAIL: gdb.python/py-framefilter.exp: info frame filter after setting priority"
-    "FAIL: gdb.python/py-framefilter.exp: info frame filter before disable frame filter"
-    "FAIL: gdb.python/py-framefilter.exp: info frame filter before setting priority"
-    "FAIL: gdb.python/py-mi.exp: check tsrvw expression value \(unexpected output\)"
-    "FAIL: gdb.python/py-mi.exp: check tsrvw varobj value \(unexpected output\)"
-    "FAIL: gdb.python/py-mi.exp: create tsrvw varobj \(unexpected output\)"
-    "FAIL: gdb.python/py-prettyprint.exp: c\+\+: print tsrvw"
-    "FAIL: gdb.python/py-prettyprint.exp: c: print tsrvw"
-    "FAIL: gdb.python/py-value.exp: attempt to construct large value with small buffer"
-    "FAIL: gdb.python/py-value.exp: construct array value from buffer"
-    "FAIL: gdb.python/py-value.exp: construct value from buffer"
-    "FAIL: gdb.python/py-value.exp: print array value"
-    "FAIL: gdb.python/py-value.exp: print first array element"
-    "FAIL: gdb.python/py-value.exp: print out of bounds array element"
-    "FAIL: gdb.python/py-value.exp: print second array element"
-    "FAIL: gdb.python/py-value.exp: print third array element"
-
-    # To be investigated.
-    "FAIL: gdb.base/compare-sections.exp: after run to main: compare-sections -r"
-    "FAIL: gdb.python/py-framefilter-thread.exp: bt no-filters"
-
-    # Gdb runs out of virtual memory, we can expect an internal error.
-    "FAIL: gdb.base/gcore-excessive-memory.exp: attach \(GDB internal error\)"
-
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=30154
-    "FAIL: gdb.multi/multi-target-no-resumed.exp: inf_A=.: inf_B=.: send_gdb control C \(timeout\)"
+    # FAILs for SLE-11 are not very interesting.  This is with on old compiler:
+    # 4.3.4, and tests are likely to be broken.  We're really only interested in
+    # segmentation faults and internal errors.
+    "FAIL: "
 
 )
 
@@ -756,7 +717,7 @@ case $n in
 	    "UNRESOLVED: gdb.threads/async.exp: thread 1: current thread is 1"
 
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=31648
-	    "UNRESOLVED: gdb.ada/tick_length_array_enum_idx.exp: print vars'length"
+	    "SLE-11.*UNRESOLVED: gdb.ada/tick_length_array_enum_idx.exp: print vars'length"
 
 	    # yama ptrace_scope == 1
 	    # https://sourceware.org/pipermail/gdb-patches/2024-April/208251.html
@@ -766,6 +727,10 @@ case $n in
 	    "Factory.*UNRESOLVED: gdb.multi/multi-term-settings.exp: inf1_how=attach: inf2_how=attach: inf2: flush inferior output"
 	    "Factory.*UNRESOLVED: gdb.multi/multi-term-settings.exp: inf1_how=attach: inf2_how=run: continue"
 	    "Factory.*UNRESOLVED: gdb.multi/multi-term-settings.exp: inf1_how=attach: inf2_how=run: continue"
+	    "Factory.*UNRESOLVED: gdb.multi/multi-term-settings.exp: inf1_how=run: inf2_how=attach: continue"
+
+	    # https://sourceware.org/bugzilla/show_bug.cgi?id=31671
+	    "SLE-11.*UNRESOLVED: gdb.objc/basicclass.exp: call an Objective-C method with no arguments"
 	)
 
 	kfail_re=$(join "|" "${kfail[@]}")

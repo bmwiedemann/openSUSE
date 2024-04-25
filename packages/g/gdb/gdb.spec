@@ -172,59 +172,48 @@ NoSource:       20
 #Fedora Packages begin
 Patch2:         gdb-6.3-gstack-20050411.patch
 Patch3:         gdb-6.5-bz185337-resolve-tls-without-debuginfo-v2.patch
-Patch4:         gdb-6.5-sharedlibrary-path.patch
-Patch6:         gdb-6.5-last-address-space-byte-test.patch
-Patch8:         gdb-6.5-bz218379-ppc-solib-trampoline-test.patch
-Patch9:         gdb-6.5-bz109921-DW_AT_decl_file-test.patch
-Patch11:        gdb-6.3-bz202689-exec-from-pthread-test.patch
-Patch12:        gdb-6.6-bz229517-gcore-without-terminal.patch
-Patch13:        gdb-6.6-testsuite-timeouts.patch
-Patch14:        gdb-6.6-bz237572-ppc-atomic-sequence-test.patch
-Patch15:        gdb-6.3-attach-see-vdso-test.patch
-Patch16:        gdb-6.5-bz243845-stale-testing-zombie-test.patch
-Patch17:        gdb-6.6-buildid-locate.patch
-Patch18:        gdb-6.6-buildid-locate-solib-missing-ids.patch
-Patch19:        gdb-6.6-buildid-locate-rpm.patch
-Patch22:        gdb-6.7-testsuite-stable-results.patch
-Patch23:        gdb-6.5-ia64-libunwind-leak-test.patch
-Patch24:        gdb-6.5-missed-trap-on-step-test.patch
-Patch25:        gdb-6.5-gcore-buffer-limit-test.patch
-Patch26:        gdb-6.3-mapping-zero-inode-test.patch
-Patch27:        gdb-6.8-bz442765-threaded-exec-test.patch
-Patch28:        gdb-6.5-section-num-fixup-test.patch
-Patch30:        gdb-simultaneous-step-resume-breakpoint-test.patch
-Patch31:        gdb-core-open-vdso-warning.patch
-Patch32:        gdb-ccache-workaround.patch
-Patch33:        gdb-lineno-makeup-test.patch
-Patch35:        gdb-archer-next-over-throw-cxx-exec.patch
-Patch36:        gdb-6.6-buildid-locate-rpm-librpm-workaround.patch
-Patch37:        gdb-test-bt-cfi-without-die.patch
-Patch38:        gdb-bz634108-solib_address.patch
-Patch39:        gdb-test-pid0-core.patch
-Patch40:        gdb-test-dw2-aranges.patch
-Patch42:        gdb-glibc-strstr-workaround.patch
-Patch43:        gdb-rhel5.9-testcase-xlf-var-inside-mod.patch
-Patch44:        gdb-rhbz-818343-set-solib-absolute-prefix-testcase.patch
-Patch45:        gdb-rhbz947564-findvar-assertion-frame-failed-testcase.patch
-Patch46:        gdb-rhbz1007614-memleak-infpy_read_memory-test.patch
-Patch49:        gdb-rhbz1149205-catch-syscall-after-fork-test.patch
-Patch50:        gdb-rhbz1186476-internal-error-unqualified-name-re-set-test.patch
-Patch51:        gdb-rhbz1350436-type-printers-error.patch
-Patch52:        gdb-rhbz1084404-ppc64-s390x-wrong-prologue-skip-O2-g-3of3.patch
-Patch53:        gdb-fedora-libncursesw.patch
-Patch54:        gdb-opcodes-clflushopt-test.patch
-Patch55:        gdb-rhbz1261564-aarch64-hw-watchpoint-test.patch
-Patch57:        gdb-linux_perf-bundle.patch
-Patch59:        gdb-rhbz1553104-s390x-arch12-test.patch
-Patch60:        gdb-binutils29988-read_indexed_address.patch
-Patch61:        gdb-rhbz2192105-ftbs-dangling-pointer
-Patch62:        gdb-rhbz2160211-excessive-core-file-warnings.patch
-Patch63:        gdb-rhbz2196395-debuginfod-legacy-openssl-crash.patch
-Patch64:        gdb-bz2237515-debuginfod-double-free.patch
-Patch65:        gdb-bz2237392-dwarf-obstack-allocation.patch
-Patch66:        gdb-rhbz2233961-CVE-2022-4806.patch
-Patch67:        gdb-rhbz2233965-memory-leak.patch
-Patch68:        gdb-rhbz1773651-gdb-index-internal-error.patch
+Patch5:         gdb-6.5-bz218379-ppc-solib-trampoline-test.patch
+Patch6:         gdb-6.6-bz229517-gcore-without-terminal.patch
+Patch7:         gdb-6.6-testsuite-timeouts.patch
+Patch8:         gdb-6.6-bz237572-ppc-atomic-sequence-test.patch
+Patch9:         gdb-6.3-attach-see-vdso-test.patch
+Patch10:        gdb-6.5-bz243845-stale-testing-zombie-test.patch
+Patch11:        gdb-6.6-buildid-locate.patch
+Patch12:        gdb-6.6-buildid-locate-solib-missing-ids.patch
+Patch13:        gdb-6.6-buildid-locate-rpm.patch
+Patch15:        gdb-6.5-gcore-buffer-limit-test.patch
+Patch16:        gdb-6.3-mapping-zero-inode-test.patch
+Patch17:        gdb-6.5-section-num-fixup-test.patch
+Patch19:        gdb-simultaneous-step-resume-breakpoint-test.patch
+Patch20:        gdb-core-open-vdso-warning.patch
+Patch21:        gdb-archer-next-over-throw-cxx-exec.patch
+Patch22:        gdb-6.6-buildid-locate-rpm-librpm-workaround.patch
+Patch23:        gdb-test-bt-cfi-without-die.patch
+Patch24:        gdb-bz634108-solib_address.patch
+Patch25:        gdb-test-dw2-aranges.patch
+Patch26:        gdb-glibc-strstr-workaround.patch
+Patch27:        gdb-rhbz-818343-set-solib-absolute-prefix-testcase.patch
+Patch28:        gdb-rhbz947564-findvar-assertion-frame-failed-testcase.patch
+Patch29:        gdb-rhbz1007614-memleak-infpy_read_memory-test.patch
+Patch32:        gdb-rhbz1149205-catch-syscall-after-fork-test.patch
+Patch33:        gdb-rhbz1084404-ppc64-s390x-wrong-prologue-skip-O2-g-3of3.patch
+Patch34:        gdb-fedora-libncursesw.patch
+Patch35:        gdb-rhbz1261564-aarch64-hw-watchpoint-test.patch
+Patch37:        gdb-linux_perf-bundle.patch
+Patch39:        gdb-binutils29988-read_indexed_address.patch
+Patch40:        gdb-rhbz2192105-ftbs-dangling-pointer
+Patch41:        gdb-rhbz2160211-excessive-core-file-warnings.patch
+Patch42:        gdb-bz2196395-debuginfod-legacy-openssl-crash.patch
+Patch43:        gdb-bz2237515-debuginfod-double-free.patch
+Patch44:        gdb-bz2237392-dwarf-obstack-allocation.patch
+Patch45:        gdb-rhbz2233961-CVE-2022-4806.patch
+Patch46:        gdb-rhbz2233965-memory-leak.patch
+Patch47:        gdb-rhbz1773651-gdb-index-internal-error.patch
+Patch48:        gdb-rhbz2232086-refactor-selftest-support.patch
+Patch49:        gdb-rhbz-2232086-reduce-size-of-gdb-index.patch
+Patch50:        gdb-rhbz-2232086-cpp-ify-mapped-symtab.patch
+Patch51:        gdb-rhbz-2232086-generate-gdb-index-consistently.patch
+Patch52:        gdb-rhbz-2232086-generate-dwarf-5-index-consistently.patch
 #Fedora Packages end
 
 # Fedora patches fixup
@@ -232,18 +221,14 @@ Patch68:        gdb-rhbz1773651-gdb-index-internal-error.patch
 # them when upgrading.
 
 Patch1000:      fixup-gdb-linux_perf-bundle.patch
-Patch1002:      fixup-gdb-rhbz1553104-s390x-arch12-test.patch
 Patch1003:      fixup-gdb-glibc-strstr-workaround.patch
 Patch1004:      fixup-gdb-6.5-bz243845-stale-testing-zombie-test.patch
 Patch1005:      fixup-gdb-test-bt-cfi-without-die.patch
-Patch1006:      fixup-2-gdb-rhbz1553104-s390x-arch12-test.patch
 Patch1007:      fixup-gdb-test-dw2-aranges.patch
 Patch1008:      fixup-gdb-bz634108-solib_address.patch
 Patch1009:      fixup-gdb-6.3-gstack-20050411.patch
 Patch1010:      fixup-gdb-6.3-attach-see-vdso-test.patch
-Patch1011:      fixup-gdb-lineno-makeup-test.patch
 Patch1012:      fixup-gdb-rhbz1261564-aarch64-hw-watchpoint-test.pat.patch
-Patch1013:      fixup-gdb-6.6-buildid-locate-rpm.patch
 
 # openSUSE specific
 
@@ -256,9 +241,6 @@ Patch1101:      gdb-6.6-buildid-locate-rpm-suse.patch
 
 # Silences ada pie compilation FAILs.  Todo: Fix ada pie compilation.
 Patch1200:      gdb-testsuite-ada-pie.patch
-# Strictly speaking, not a testsuite patch, but purpose is to enable gdb.gdb
-# testcases.
-##Patch1201:      gdb-fix-selftest-fails-with-gdb-build-with-O2-flto.patch
 # The test-case expects init or systemd as process, but we run into a case
 # where it's bash instead.  This doesn't look harmful, so allow it.
 # It would be nice to upstream this, but in order to do that I'd like to have
@@ -289,7 +271,7 @@ Patch1505:      gdb-testsuite-fix-gdb.base-step-over-syscall.exp-with-m32-amd-ca
 
 #
 
-# Backports from master, available in next release.
+# Backports from master, available in next release (GDB 14).
 
 Patch2000:      remove-some-unnecessary-includes-from-exp.y.patch
 Patch2001:      gdb-testsuite-fix-gdb.gdb-python-helper.exp-with-o2-.patch
@@ -343,7 +325,7 @@ Patch2048:      gdb-tui-fix-segfault-in-tui_find_disassembly_address.patch
 # Part of upstream commit deb1ba4e38b ("[gdb/tui] Fix TUI resizing for TERM=ansi").
 Patch2049:      gdb-testsuite-add-wait_for_msg-arg-to-term-resize-fi.patch
 
-# Backports from master, not yet available in next release.
+# Backports from master, not yet available in next release (GDB 15).
 
 Patch2070:      gdb-symtab-work-around-pr-gas-29517.patch
 Patch2071:      gdb-symtab-add-producer_is_gas.patch
@@ -352,6 +334,7 @@ Patch2073:      gdb-tdep-fix-nr-array-elements-in-ppc64_aggregate_ca.patch
 Patch2074:      gdb-tui-fix-wmaybe-uninitialized-in-tui_find_disasse.patch
 Patch2075:      gdb-testsuite-add-missing-no-prompt-anchor-in-gdb.ba.patch
 Patch2076:      gdb-testsuite-remove-spurious-in-save_vars.patch
+Patch2077:      make-pascal_language-print_type-handle-varstring-nul.patch
 
 # Backport from gdb-patches
 
@@ -522,14 +505,7 @@ BuildRequires:  dejagnu
 BuildRequires:  sharutils
 # gcc-objc++ is not covered by the GDB testsuite.
 
-%if 0%{?suse_version} >= 1200
-# Skip for SLE-11 due to:
-#   unresolvable: conflict for providers of libquadmath0
-#   needed by libgfortran3
-#   (provider libquadmath0-gcc5 is in conflict with libquadmath0)
 BuildRequires:  gcc-fortran
-%endif
-
 BuildRequires:  gcc-objc
 %ifarch %ada_arch
 BuildRequires:  gcc-ada
@@ -548,6 +524,9 @@ BuildRequires:  gcc-ada-32bit
 
 %if 0%{suse_version} > 1110
 BuildRequires:  gcc-c++-32bit
+%else
+# Use system g++ for testing for SLE-11.
+BuildRequires:  gcc-c++
 %endif
 
 %if 0%{suse_version} >= 1210 && 0%{suse_version} != 1315
@@ -694,19 +673,21 @@ find -name "*.info*"|xargs rm -f
 #Fedora patching start
 %patch -P 2 -p1
 %patch -P 3 -p1
-%patch -P 4 -p1
+%patch -P 5 -p1
 %patch -P 6 -p1
+%patch -P 7 -p1
 %patch -P 8 -p1
 %patch -P 9 -p1
+%patch -P 10 -p1
 %patch -P 11 -p1
 %patch -P 12 -p1
 %patch -P 13 -p1
-%patch -P 14 -p1
 %patch -P 15 -p1
 %patch -P 16 -p1
 %patch -P 17 -p1
-%patch -P 18 -p1
 %patch -P 19 -p1
+%patch -P 20 -p1
+%patch -P 21 -p1
 %patch -P 22 -p1
 %patch -P 23 -p1
 %patch -P 24 -p1
@@ -714,60 +695,42 @@ find -name "*.info*"|xargs rm -f
 %patch -P 26 -p1
 %patch -P 27 -p1
 %patch -P 28 -p1
-%patch -P 30 -p1
-%patch -P 31 -p1
+%patch -P 29 -p1
 %patch -P 32 -p1
 %patch -P 33 -p1
+%patch -P 34 -p1
 %patch -P 35 -p1
-%patch -P 36 -p1
 %patch -P 37 -p1
-%patch -P 38 -p1
 %patch -P 39 -p1
 %patch -P 40 -p1
+%patch -P 41 -p1
 %patch -P 42 -p1
 %patch -P 43 -p1
 %patch -P 44 -p1
 %patch -P 45 -p1
 %patch -P 46 -p1
+%patch -P 47 -p1
+%patch -P 48 -p1
 %patch -P 49 -p1
 %patch -P 50 -p1
 %patch -P 51 -p1
 %patch -P 52 -p1
-%patch -P 53 -p1
-%patch -P 54 -p1
-%patch -P 55 -p1
-%patch -P 57 -p1
-%patch -P 59 -p1
-%patch -P 60 -p1
-%patch -P 61 -p1
-%patch -P 62 -p1
-%patch -P 63 -p1
-%patch -P 64 -p1
-%patch -P 65 -p1
-%patch -P 66 -p1
-%patch -P 67 -p1
-%patch -P 68 -p1
 #Fedora patching end
 
 %patch -P 1000 -p1
-%patch -P 1002 -p1
 %patch -P 1003 -p1
 %patch -P 1004 -p1
 %patch -P 1005 -p1
-%patch -P 1006 -p1
 %patch -P 1007 -p1
 %patch -P 1008 -p1
 %patch -P 1009 -p1
 %patch -P 1010 -p1
-%patch -P 1011 -p1
 %patch -P 1012 -p1
-%patch -P 1013 -p1
 
 %patch -P 1100 -p1
 %patch -P 1101 -p1
 
 %patch -P 1200 -p1
-#%patch -P 1201 -p1
 %patch -P 1202 -p1
 %patch -P 1203 -p1
 %patch -P 1204 -p1
@@ -836,6 +799,7 @@ find -name "*.info*"|xargs rm -f
 %patch -P 2074 -p1
 %patch -P 2075 -p1
 %patch -P 2076 -p1
+%patch -P 2077 -p1
 
 %patch -P 2100 -p1
 %patch -P 2101 -p1
@@ -1128,18 +1092,8 @@ echo ====================TESTSUITE DISABLED=========================
 %else
 echo ====================TESTING=========================
 cd gdb
-%if 0%{suse_version} > 1110
 CC=gcc
 CXX=g++
-%else
-CC=gcc-4.8
-CXX=g++-4.8
-mkdir progs
-for i in gcc g++ gcj gfortran gnat gnatbind gnatmake; do
-  test -f /usr/bin/${i}-4.8 && ln -sf /usr/bin/${i}-4.8 progs/$i
-done
-PATH="`pwd`"/progs:${PATH}
-%endif
 export CC
 export CXX
 $CC -o ./orphanripper %{SOURCE2} -Wall -lutil -ggdb2
