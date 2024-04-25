@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Apr 27 09:30:21 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.2.5:
+  * Extend proxy templates to allow the target host to be resolved
+    via a predicate expression or fuzzy matching. #40966
+  * Fix an issue where access requests would linger in UI and tctl
+    after expiry. #40964
+  * The teleport-cluster Helm chart can configure AccessMonitoring
+    when running in aws mode. #40957
+  * Make podSecurityContext configurable in the teleport-cluster
+    Helm chart. #40951
+  * Allow to mount extra volumes in the updater pod deployed by the
+    teleport-kube-agentchart. #40946
+  * Improve error message when performing an SSO login with a
+    hardware key. #40923
+  * Fix a bug in the teleport-cluster Helm chart that happened when
+    sessionRecording was off. #40919
+  * Fix audit event failures when using DynamoDB event storage.
+    #40913
+  * Allow setting additional Kubernetes labels on resources created
+    by the teleport-cluster Helm chart. #40909
+  * Fix Windows cursor getting stuck. #40890
+  * Issue cert.create events during device authentication. #40872
+  * Add the ability to control ssh_config generation in Machine
+    ID's Identity Outputs. This allows the generation of the
+    ssh_config to be disabled if unnecessary, improving performance
+    and removing the dependency on the Proxy being online. #40861
+  * Prevent deleting AWS OIDC integration used by External Audit
+    Storage. #40851
+  * Introduce the tpm join method, which allows for secure joining
+    in on-prem environments without the need for a shared secret.
+    #40823
+  * Reduce parallelism when polling AWS resources to prevent API
+    throttling when exporting them to Teleport Access Graph. #40811
+  * Fix spurious deletion of Access List Membership metadata during
+    SCIM push or sync. #40544
+  * Properly enforce session moderation requirements when starting
+    Kubernetes ephemeral containers. #40906
+
+-------------------------------------------------------------------
 Thu Apr 25 05:34:37 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 15.2.4 (skipping non-existing release 15.2.3):
