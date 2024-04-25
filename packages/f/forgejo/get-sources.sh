@@ -13,15 +13,15 @@ echo "++++++++++++++++++++++++++++++++++++++++++++++"
 echo "patching spec file and downloading the tarball"
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
 
-sed -i -e 's|%define gitea_version.*|%define gitea_version '${VERSION}'|g' forgejo.spec
+sed -i -e 's|Version: .*|Version:        '${VERSION}'|g' forgejo.spec
 osc service ra download_files
 
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
 echo "extracting package-lock.json"
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
 
-tar xf forgejo-src-${VERSION}-1.tar.gz forgejo-src-${VERSION}-1/package-lock.json
-cp forgejo-src-${VERSION}-1/package-lock.json .
+tar xf forgejo-src-${VERSION}.tar.gz forgejo-src-${VERSION}/package-lock.json
+cp forgejo-src-${VERSION}/package-lock.json .
 
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
 echo "Downloading node_modules"
@@ -33,7 +33,7 @@ echo "++++++++++++++++++++++++++++++++++++++++++++++"
 echo "Cleanup Step"
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
 
-rm -r forgejo-src-${VERSION}-1
+rm -r forgejo-src-${VERSION}
 rm node_modules.sums
 
 echo "++++++++++++++++++++++++++++++++++++++++++++++"

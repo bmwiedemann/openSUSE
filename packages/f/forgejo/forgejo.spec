@@ -16,15 +16,11 @@
 #
 
 
-%define gitea_version 1.21.11
-%define forgejo_version 1
 %if 0%{?suse_version} > 1600
-# TW
 %bcond_without selinux
 %bcond_without apparmor
 %else
 %if 0%{?suse_version} == 1600
-# ALP
 %bcond_without selinux
 %bcond_with apparmor
 %else
@@ -34,14 +30,14 @@
 %endif
 %endif
 Name:           forgejo
-Version:        %{gitea_version}+%{forgejo_version}
+Version:        7.0.0
 Release:        0
 Summary:        Self-hostable forge
 License:        MIT
 Group:          Development/Tools/Version Control
 URL:            https://forgejo.org
-Source0:        https://codeberg.org/%{name}/%{name}/releases/download/v%{gitea_version}-%{forgejo_version}/%{name}-src-%{gitea_version}-%{forgejo_version}.tar.gz
-Source1:        https://codeberg.org/%{name}/%{name}/releases/download/v%{gitea_version}-%{forgejo_version}/%{name}-src-%{gitea_version}-%{forgejo_version}.tar.gz.asc
+Source0:        https://codeberg.org/%{name}/%{name}/releases/download/v%{version}/%{name}-src-%{version}.tar.gz
+Source1:        https://codeberg.org/%{name}/%{name}/releases/download/v%{version}/%{name}-src-%{version}.tar.gz.asc
 Source2:        http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xeb114f5e6c0dc2bcdd183550a4b61a2dc5923710#/%{name}.keyring
 Source3:        package-lock.json
 Source4:        node_modules.spec.inc
@@ -110,14 +106,14 @@ Providing Git hosting for your project, friends, company or community? Forgejo (
 – the Esperanto word for forge) has you covered with its intuitive interface, light and easy hosting and a lot of builtin functionality.
 
 %prep
-%autosetup -p1 -n %{name}-src-%{gitea_version}-%{forgejo_version}
+%autosetup -p1 -n %{name}-src-%{version}
 local-npm-registry %{_sourcedir} install --also=dev
 
 %build
 %sysusers_generate_pre %{SOURCE6} %{name} %{name}.conf
 export EXTRA_GOFLAGS="-buildmode=pie -mod=vendor"
 export TAGS="bindata timetzdata sqlite sqlite_unlock_notify"
-%make_build
+%make_build build
 
 %install
 install -d %{buildroot}%{_bindir}
@@ -127,8 +123,8 @@ ln -s %{name} %{buildroot}%{_bindir}/gitea
 install -d %{buildroot}%{_sharedstatedir}/%{name}/{data,https,indexers,queues,repositories}
 install -d %{buildroot}%{_sysconfdir}/%{name}
 install -d %{buildroot}%{_localstatedir}/log/%{name}
-install -D -m 0644 %{_builddir}/%{name}-src-%{gitea_version}-%{forgejo_version}/custom/conf/app.example.ini %{buildroot}%{_sysconfdir}/%{name}/conf/app.ini
-install -D -m 0755 %{_builddir}/%{name}-src-%{gitea_version}-%{forgejo_version}/gitea %{buildroot}%{_bindir}/%{name}
+install -D -m 0644 %{_builddir}/%{name}-src-%{version}/custom/conf/app.example.ini %{buildroot}%{_sysconfdir}/%{name}/conf/app.ini
+install -D -m 0755 %{_builddir}/%{name}-src-%{version}/gitea %{buildroot}%{_bindir}/%{name}
 install -D -m 0644 %{SOURCE5} %{buildroot}%{_unitdir}/%{name}.service
 install -D -m 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/%{name}.conf
 
@@ -170,12 +166,12 @@ semodule -r %{name} 2>/dev/null || :
 %service_del_postun %{name}.service
 
 %check
-#right now broken, see https://github.com/openSUSE/obs-service-node_modules/issues/22
-#%%make_test
+#as of now, broken
+#%%make_build test
 
 %files
 %license LICENSE
-%doc CHANGELOG.md README.md RELEASE-NOTES.md CONTRIBUTING.md
+%doc README.md RELEASE-NOTES.md CONTRIBUTING.md
 %{_unitdir}/%{name}.service
 %{_bindir}/%{name}
 %{_bindir}/gitea

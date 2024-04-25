@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Apr 25 02:27:22 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 7.0.0:
+  This is only an excerpt from the full changelog, which you can find
+  in your RELEASE-NOTES.md or at
+  https://codeberg.org/forgejo/forgejo/src/branch/forgejo/RELEASE-NOTES.md#7-0-0
+  * MySQL 8.0 or PostgreSQL 12 are the minimum supported versions.
+    The database must be migrated before upgrading.
+    The requirements regarding SQLite did not change.
+  * The per_page parameter is no longer a synonym for limit in the
+    /repos/{owner}/{repo}/releases API endpoint.
+  * The date format of the created and last_update fields of the 
+    /repos/{owner}/{repo}/push_mirrors and /repos/{owner}/{repo}/push_mirrors
+    API endpoint changed to be timestamps instead of numbers.
+  * Labels used by pprof endpoint have been changed
+  * The fogejo admin user create CLI command requires a password change
+    by default when creating the first user
+
+-------------------------------------------------------------------
 Sat Apr 20 12:39:56 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to 1.21.11-1:
