@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 24 07:48:08 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- GuidedProposal: refine the :bigger_resize SpaceMaker strategy
+  (gh#openSUSE/agama#1164).
+- Fixed a bug related to the calculation of partitions required
+  for booting when RAID is involved.
+- 5.0.13
+
+-------------------------------------------------------------------
 Wed Apr 17 15:56:25 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
 
 - Optionally add the encryption status in the device description
