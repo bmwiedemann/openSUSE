@@ -13,7 +13,8 @@ Mon Mar 18 13:30:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
 Wed Dec 27 05:08:00 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Created package level-zero version 1.15.8
-  - API Headers, Loader, & Validation Layer based on oneAPI Level Zero Specification v1.8.0
+  - API Headers, Loader, & Validation Layer based on oneAPI 
+    Level Zero Specification v1.8.0
     * oneAPI Level Zero API Headers generated from:
       - oneAPI Level Zero v1.8.0 Core API Headers
       - oneAPI Level Zero v1.8.0 Tools API Headers
@@ -22,9 +23,10 @@ Wed Dec 27 05:08:00 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org
     * oneAPI Level Zero Validation Layer v1.15.8
     * oneAPI Level Zero Tracing Layer v1.15.8
   - Packages Included:
-    * level-zero -> Runtime package providing oneAPI Level Zero Loader & Validation Layer
-    * level-zero-devel -> Development package providing oneAPI Level Zero Loader, Validation Layer & API Headers
-    * level-zero Windows SDK -> Windows Software Development Kit for oneAPI Level-Zero
+    * level-zero -> Runtime package providing oneAPI 
+      Level Zero Loader & Validation Layer
+    * level-zero-devel -> Development package providing oneAPI Level Zero 
+      Loader, Validation Layer & API Headers
 
 -------------------------------------------------------------------
 Thu Nov  9 09:00:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -36,7 +38,8 @@ Thu Nov  9 09:00:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Fri Sep  1 03:26:09 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Created package level-zero version 1.14.0
-  - API Headers, Loader, & Validation Layer based on oneAPI Level Zero Specification v1.7.8 Contents:
+  - API Headers, Loader, & Validation Layer based on oneAPI 
+    Level Zero Specification v1.7.8 Contents:
     * oneAPI Level Zero API Headers generated from:
       - oneAPI Level Zero v1.7.8 Core API Headers
       - oneAPI Level Zero v1.7.8 Tools API Headers
@@ -45,19 +48,17 @@ Fri Sep  1 03:26:09 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org
     * oneAPI Level Zero Validation Layer v1.14.0
     * oneAPI Level Zero Tracing Layer v1.14.0
   - Packages Included:
-    * level-zero -> Runtime package providing oneAPI Level Zero Loader & Validation Layer
-    * level-zero-devel -> Development package providing oneAPI Level Zero Loader, Validation Layer & API Headers
-    * level-zero Windows SDK -> Windows Software Development Kit for oneAPI Level-Zero
-  - Installation of Windows SDK
-    * extract level-zero_win-sdk*.zip
-    * Add Include path for compiler to use <level-zero_win-sdk>\include
-    * Add Library path for compiler to use <level-zero_win-sdk>\lib
+    * level-zero -> Runtime package providing oneAPI Level Zero 
+      Loader & Validation Layer
+    * level-zero-devel -> Development package providing oneAPI Level Zero 
+      Loader, Validation Layer & API Headers
 
 -------------------------------------------------------------------
 Mon Jul 31 21:07:49 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Created package level-zero version 1.13.1
-  - API Headers, Loader, & Validation Layer based on oneAPI Level Zero Specification v1.6.10 Contents:
+  - API Headers, Loader, & Validation Layer based on oneAPI 
+    Level Zero Specification v1.6.10 Contents:
     * oneAPI Level Zero API Headers generated from:
       - oneAPI Level Zero v1.7.0 Core API Headers
       - oneAPI Level Zero v1.7.0 Tools API Headers
@@ -66,19 +67,17 @@ Mon Jul 31 21:07:49 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org
     * oneAPI Level Zero Validation Layer v1.13.1
     * oneAPI Level Zero Tracing Layer v1.13.1
   - Packages Included:
-    * level-zero -> Runtime package providing oneAPI Level Zero Loader & Validation Layer
-    * level-zero-devel -> Development package providing oneAPI Level Zero Loader, Validation Layer & API Headers
-    * level-zero Windows SDK -> Windows Software Development Kit for oneAPI Level-Zero
-  - Installation of Windows SDK
-    * extract level-zero_win-sdk*.zip
-    * Add Include path for compiler to use <level-zero_win-sdk>\include
-    * Add Library path for compiler to use <level-zero_win-sdk>\lib
+    * level-zero -> Runtime package providing oneAPI Level Zero 
+      Loader & Validation Layer
+    * level-zero-devel -> Development package providing oneAPI Level Zero 
+      Loader, Validation Layer & API Headers
 
 -------------------------------------------------------------------
 Mon Jun 12 04:18:43 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Created package level-zero version 1.12.0
-  - API Headers, Loader, & Validation Layer based on oneAPI Level Zero Specification v1.6.10 Contents:
+  - API Headers, Loader, & Validation Layer based on oneAPI Level Zero 
+    Specification v1.6.10 Contents:
     * oneAPI Level Zero API Headers generated from:
       - oneAPI Level Zero v1.6.10 Core API Headers
       - oneAPI Level Zero v1.6.10 Tools API Headers
@@ -87,18 +86,16 @@ Mon Jun 12 04:18:43 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org
     * oneAPI Level Zero Validation Layer v1.12.0
     * oneAPI Level Zero Tracing Layer v1.12.0
   - Packages Included:
-    * level-zero -> Runtime package providing oneAPI Level Zero Loader & Validation Layer
-    * level-zero-devel -> Development package providing oneAPI Level Zero Loader, Validation Layer & API Headers
-    * level-zero Windows SDK -> Windows Software Development Kit for oneAPI Level-Zero
-  - Installation of Windows SDK
-    * extract level-zero_win-sdk*.zip
-    * Add Include path for compiler to use <level-zero_win-sdk>\include
-    * Add Library path for compiler to use <level-zero_win-sdk>\lib
+    * level-zero -> Runtime package providing oneAPI Level Zero 
+      Loader & Validation Layer
+    * level-zero-devel -> Development package providing oneAPI 
+      Level Zero Loader, Validation Layer & API Headers
 
 -------------------------------------------------------------------
 Wed Apr 19 17:05:41 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
-- API Headers, Loader, & Validation Layer based on oneAPI Level Zero Specification v1.6.0
+- API Headers, Loader, & Validation Layer based on oneAPI Level Zero 
+  Specification v1.6.0
 - oneAPI Level Zero API Headers generated from:
   * oneAPI Level Zero v1.6.0 Core API Headers
   * oneAPI Level Zero v1.6.0 Tools API Headers
@@ -107,15 +104,13 @@ Wed Apr 19 17:05:41 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org
 - oneAPI Level Zero Validation Layer v1.10.0
 - oneAPI Level Zero Tracing Layer v1.10.0
 - Packages Included:
-  * level-zero -> Runtime package providing oneAPI Level Zero Loader & Validation Layer
-  * level-zero-devel -> Development package providing oneAPI Level Zero Loader, Validation Layer & API Headers
-  * level-zero Windows SDK -> Windows Software Development Kit for oneAPI Level-Zero
-- Installation of Windows SDK
-  * extract level-zero_win-sdk*.zip
-  * Add Include path for compiler to use <level-zero_win-sdk>\include
-  * Add Library path for compiler to use <level-zero_win-sdk>\lib
+  * level-zero -> Runtime package providing oneAPI Level Zero 
+    Loader & Validation Layer
+  * level-zero-devel -> Development package providing oneAPI Level Zero 
+    Loader, Validation Layer & API Headers
 - Runtime Implementations Supported
-  *    intel-level-zero-gpu (https://github.com/intel/compute-runtime/releases) Minimum required version 21.09.19150
+  * intel-level-zero-gpu (https://github.com/intel/compute-runtime/releases) 
+    Minimum required version 21.09.19150
 
 -------------------------------------------------------------------
 Tue Jun 28 05:30:56 UTC 2022 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
