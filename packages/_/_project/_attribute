@@ -151,7 +151,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20240424</value>
+    <value>20240425</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -489,8 +489,8 @@ products:
     - x86_64
   - kiwi-images-vagrant:virtualbox:
     - x86_64
-#  - kiwi-images-wsl:
-#    - x86_64
+  - kiwi-images-wsl:
+    - x86_64
   - kiwi-templates-Minimal:MS-HyperV:
     - x86_64
   - kiwi-templates-Minimal:Cloud:
@@ -564,10 +564,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20240424'
+    <value>failed: ''
 published: '20240423'
 publishing: '20240423'
-testing: '20240424'
+testing: '20240425'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
