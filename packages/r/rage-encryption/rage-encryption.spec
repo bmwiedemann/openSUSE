@@ -1,7 +1,7 @@
 #
 # spec file for package rage-encryption
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 Name:           rage-encryption
 #               This will be set by osc services, that will run after this.
-Version:        0.9.2+0
+Version:        0.10.0+0
 Release:        0
 Summary:        X25519-based, simple, modern, and secure file encryption tool
 #               If you know the license, put it's SPDX string here.
@@ -32,7 +32,6 @@ Group:          Productivity/Security
 URL:            https://github.com/str4d/rage
 Source0:        rage-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 %if %{suse_version} > 1500
 BuildRequires:  cargo-packaging
 %endif
@@ -88,10 +87,7 @@ BuildArch:      noarch
 Zsh command-line completion support for %{name}.
 
 %prep
-%setup -q -a 0 -n rage-%{version}
-%setup -q -n rage-%{version} -a 1 -D -T
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
+%autosetup -a 1 -n rage-%{version}
 %vendored_licenses_packager_prep
 
 %build
@@ -103,25 +99,34 @@ cp %{SOURCE2} .cargo/config
 cargo build %{build_args}
 %endif
 
-cargo run --example generate-completions %{build_args}
-cargo run --example generate-docs %{build_args}
+%check
+%if %{suse_version} > 1500
+%{cargo_test} --features "mount"
+%else
+cargo test %{build_args}
+%endif
 
 %install
-install -D -d -m 0755 %{buildroot}%{_bindir}
-install -m 0755 %{_builddir}/rage-%{version}/target/release/rage %{buildroot}%{_bindir}/rage
-install -m 0755 %{_builddir}/rage-%{version}/target/release/rage-keygen %{buildroot}%{_bindir}/rage-keygen
-install -m 0755 %{_builddir}/rage-%{version}/target/release/rage-keygen %{buildroot}%{_bindir}/rage-mount
+pushd target/release
 
+# Install each part of the tool and their respective completions.
 for i in "" -keygen -mount; do
-  install -D -p -m 644 target/manpages/rage$i.1.gz %{buildroot}/%{_mandir}/man1/rage$i.1%{?ext_man}
-  install -D -p -m 644 target/completions/rage$i.bash %{buildroot}%{_datadir}/bash-completion/completions/rage$i
-  install -D -p -m 644 target/completions/rage$i.zsh  %{buildroot}%{_datadir}/zsh/site-functions/_rage$i
-  install -D -p -m 644 target/completions/rage$i.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/rage$i.fish
-
+  install -D -m 0755 rage$i %{buildroot}%{_bindir}/rage$i
+  install -D -p -m 644 completions/rage$i.bash %{buildroot}%{_datadir}/bash-completion/completions/rage$i
+  install -D -p -m 644 completions/_rage$i  %{buildroot}%{_datadir}/zsh/site-functions/_rage$i
+  install -D -p -m 644 completions/rage$i.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/rage$i.fish
 done
-%vendored_licenses_packager_install
 
-%files
+pushd manpages
+mv es_AR es  # es_AR doesn't seem to be a correct manpage locale
+find . -name "*.1.gz" -exec install -Dpm644 {} %{buildroot}%{_mandir}/{} \;
+popd
+popd
+
+%vendored_licenses_packager_install
+%find_lang rage{,-keygen,-mount} rage.lang --with-man --all-name
+
+%files -f rage.lang
 %{_bindir}/rage
 %{_bindir}/rage-keygen
 %{_bindir}/rage-mount

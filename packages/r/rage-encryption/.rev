@@ -130,4 +130,12 @@
   * CI: Remove most uses of `actions-rs` actions</comment>
     <requestid>1113697</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>cdd2b22da78d765050e665abdf92b6d1</srcmd5>
+    <version>0.10.0+0</version>
+    <time>1714166838</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1170229</requestid>
+  </revision>
 </revisionlist>
