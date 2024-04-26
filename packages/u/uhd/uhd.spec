@@ -1,7 +1,7 @@
 #
 # spec file for package uhd
 #
-# Copyright (c) 2021-2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define libname libuhd4_6_0
 Name:           uhd
 Version:        4.6.0.0
@@ -25,6 +26,10 @@ Group:          Hardware/Other
 URL:            https://files.ettus.com/manual/
 Source0:        https://github.com/EttusResearch/uhd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/EttusResearch/uhd/releases/download/v%{version}/uhd-images_%{version}.tar.xz
+# PATCH-FIX-UPSTREAM fix-boost1.85-one.patch -- https://github.com/EttusResearch/uhd/commit/ea586168c596d13d05d145832519755794649ba0
+Patch0:         fix-boost1.85-one.patch
+# PATCH-FIX-UPSTREAM fix-boost1.85-two.patch -- https://github.com/EttusResearch/uhd/commit/c4863b9b9f8b639260f7797157e8ac4dd81fef93
+Patch1:         fix-boost1.85-two.patch
 BuildRequires:  cmake >= 2.6
 BuildRequires:  docutils
 BuildRequires:  doxygen
@@ -34,13 +39,13 @@ BuildRequires:  gpsd-devel
 BuildRequires:  memory-constraints
 BuildRequires:  orc
 BuildRequires:  pkgconfig
+BuildRequires:  python3-Mako >= 0.4.2
+BuildRequires:  python3-devel
+BuildRequires:  python3-numpy-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(udev)
-BuildRequires:  python3-devel
-BuildRequires:  python3-Mako >= 0.4.2
-BuildRequires:  python3-numpy-devel
-BuildRequires:  python3-setuptools
 Requires:       udev
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 26 09:39:29 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Fix build with boost 1.85, add patches fix-boost1.85-one.patch
+  and fix-boost1.85-two.patch
+
+-------------------------------------------------------------------
 Tue Nov 14 23:34:40 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 4.6.0.0
