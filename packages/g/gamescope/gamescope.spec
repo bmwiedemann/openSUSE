@@ -18,7 +18,7 @@
 
 %bcond_without  intree_libs
 Name:           gamescope
-Version:        3.14.2
+Version:        3.14.6
 Release:        0
 Summary:        Micro-compositor optimized for running video games on Wayland
 License:        BSD-2-Clause
@@ -47,7 +47,9 @@ BuildRequires:  pkgconfig(glm)
 BuildRequires:  pkgconfig(hwdata)
 BuildRequires:  pkgconfig(libavif)
 BuildRequires:  pkgconfig(libcap)
+BuildRequires:  pkgconfig(libdecor-0)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.113
+BuildRequires:  pkgconfig(libeis-1.0)
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vulkan)
@@ -107,6 +109,7 @@ BuildRequires:  pkgconfig(xkbcommon)
 %if 0%{?suse_version} < 1599
 sed -i "s|dependency('stb')|declare_dependency(include_directories: include_directories('/usr/include/stb'))|g" src/meson.build
 %endif
+sed -i "s|#include <libei-1.0/libeis.h>|#include <libeis.h>|g" src/InputEmulation.cpp
 %meson \
   -Dpipewire=enabled \
 %{nil}

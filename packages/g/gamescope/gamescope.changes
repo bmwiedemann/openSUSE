@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 25 14:16:52 UTC 2024 - antonio.teixeira@suse.com
+
+- Update to version 3.14.6:
+  * wlserver: Collection of cursor improvements/fixes
+  * wlserver: Fix some crashes wrt. Gamescope swapchain lifetime
+  * Revert "drm: Update AMD color management for Linux 6.8"
+  * convar: add Split helper
+  * drm: Only expose explicit sync on > kernel 6.8
+  * wayland_backend: comment out assert for now
+  * build: Add missing input_emulation option
+  * input: Add support for xtest emulation with libei
+  * drm: Get backend to close down cleanly
+  * steamcompmgr: Set PDEATHSIG for launched children
+
+-------------------------------------------------------------------
 Thu Mar 07 20:27:13 UTC 2024 - antonio.teixeira@suse.com
 
 - Update to version 3.14.2:

@@ -3,6 +3,7 @@
   <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/Plagman/gamescope.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">jupiter-3.6</param>
     <param name="scm">git</param>
     <param name="versionrewrite-pattern">([\.\d]+)</param>
     <param name="versionrewrite-replacement">\1</param>
