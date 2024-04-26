@@ -17,7 +17,7 @@
 
 
 Name:           gap-json
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        GAP: Package for reading and writing JSON
 License:        BSD-2-Clause
