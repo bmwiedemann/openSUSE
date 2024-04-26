@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri Apr 26 08:53:00 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 9.4.0:
+  * Add support for transformations involving coordinate epoch
+    changes (PointMotionOperation), specifically for Canadian
+    NAD83(CSRS)(gh#OSGeo/PROJ#3884)
+  * SSL_OPTIONS: set SSL options on Curl library
+    (gh#OSGeo/PROJ#3936)
+  * Add support for unity builds (gh#OSGeo/PROJ#3962)
+  * Added ability to install *.tif if present in data
+    (gh#OSGeo/PROJ#3970)
+  * createOperationsCompoundToGeog(): tune selection logic when
+    --grid-check known_available is specified (gh#OSGeo/PROJ#3990)
+  * Increase CMake minimum version from 3.9 to 3.16
+    (gh#OSGeo/PROJ#3997)
+  * CMake: use FetchContent to get googletest-1.12.1
+    (gh#OSGeo/PROJ#4006)
+  * CMake: Replace custom FindSqlite3 with FindSQLite3 built-in
+    (gh#OSGeo/PROJ#4007)
+  * tpeqd: use numerically stable formula for computing the
+    central angle from (phi_1, lam_1) to (phi_2, lam_2)
+    (gh#OSGeo/PROJ#4009)
+  * Move content of proj_experimental.h to proj.h
+    (gh#OSGeo/PROJ#4019)
+  * Add +proj=mod_krovak projection method for Modified Krovak
+    that applies to S-JTSK/05 in the Czech Republic
+    (gh#OSGeo/PROJ#4021)
+  * PROJString formatter optimizer: simplify pipelines doing
+    [Modified]Krovak (South West) <--> [Modified]Krovak (East
+    North) by just doing an axis swap (gh#OSGeo/PROJ#4034)
+  * +proj=gridshift: enhance to support grids referenced in
+    projected CRS, and with easting_offset/northing_offset
+    corrections (gh#OSGeo/PROJ#4038)
+  * Tune concatenated operation instanciation, reference CR2005
+    geoid for Czechia and add (disabled by default) records for
+    Czechia S-JTSK/05 based transformations (gh#OSGeo/PROJ#4044)
+  * Database: update to EPSG v11.004 (gh#OSGeo/PROJ#4062)
+  * Bug fixes
+    - Fix missing symbols at link time for Windows target in
+      Visual Studio (gh#OSGeo/PROJ#3984)
+    - Improve error message in axisswap (gh#OSGeo/PROJ#3885
+    - Avoid convergence errors in +proj=gridshift when using
+      biquadratic interpolation (gh#OSGeo/PROJ#3985)
+- Update data to 1.17:
+  * New revisions of chartdatum norway v2023b
+    (gh#OSGeo/PROJ-data#112).
+  * Add fr_ign_RAC23.tif grid for France-Corsica NGF-IGN 1978 to
+    RGF93-2b (gh#OSGeo/PROJ-data#114).
+  * Update DVR90 to reflect recent EPSG-changes
+    (gh#OSGeo/PROJ-data#115).
+  * UI: show red polygon on 'mouse over' the list
+    (gh#OSGeo/PROJ-data#116).
+  * check_gtiff_grid.py: enhance to support grids referenced in
+    projected… (gh#OSGeo/PROJ-data#117).
+  * Add Czech geoid model CR-2005 (gh#OSGeo/PROJ-data#119).
+  * Add converter script (only) for Czechia table_yx_3_v1710.dat
+    grid (gh#OSGeo/PROJ-data#118).
+  * Add Portuguese geoid model GeodPT08 (gh#OSGeo/PROJ-data#120).
+- Pass CMAKE_CXX_STANDARD=14 for builds on openSUSE >= 1650
+  (Tumbleweed) for compatibility with gtest >= 1.14.
+
+-------------------------------------------------------------------
 Fri Mar  1 09:21:33 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Reintroduce legacy provides/obsoletes as many packages still

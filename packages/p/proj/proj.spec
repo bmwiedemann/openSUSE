@@ -16,18 +16,19 @@
 #
 
 
-%define data_version 1.16
+%define data_version 1.17
 %define sover   25
 %define libname lib%{name}%{sover}
 Name:           proj
-Version:        9.3.1
+Version:        9.4.0
 Release:        0
 Summary:        Cartographic projection software
 License:        MIT
 URL:            https://proj.org/
-Source0:        https://download.osgeo.org/proj/%{name}-%{version}.tar.gz
-Source1:        https://download.osgeo.org/%{name}/%{name}-data-%{data_version}.tar.gz
-BuildRequires:  cmake
+# Download from GitHub, osgeo.org appears to be slow and flaky at the moment
+Source0:        https://github.com/OSGeo/PROJ/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/OSGeo/PROJ-data/releases/download/%{data_version}.0/%{name}-data-%{data_version}.tar.gz
+BuildRequires:  cmake >= 3.16
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  sqlite3
@@ -115,7 +116,12 @@ License:        MIT
 %autosetup
 
 %build
-%cmake
+# c++14 needed to build tests using gtest >= 1.14
+%cmake \
+%if 0%{?suse_version} >= 1650
+  -DCMAKE_CXX_STANDARD=14 \
+%endif
+  %{nil}
 %cmake_build
 
 %install
@@ -163,6 +169,8 @@ rm -rf %{buildroot}%{_datadir}/doc/${name}
 %{_datadir}/%{name}/ITRF2008
 %{_datadir}/%{name}/ITRF2014
 %{_datadir}/%{name}/README.DATA
+%{_datadir}/%{name}/cz_cuzk_CR-2005.tif
+%{_datadir}/%{name}/cz_cuzk_README.txt
 %{_datadir}/%{name}/deformation_model.schema.json
 %{_datadir}/%{name}/nad.lst
 %{_datadir}/%{name}/nad27

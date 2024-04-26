@@ -399,4 +399,12 @@ This package is included in Debian.
   rely on them</comment>
     <requestid>1153805</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>5d5ab2ce0a68e17c053cc96056c47959</srcmd5>
+    <version>9.4.0</version>
+    <time>1714166863</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1170297</requestid>
+  </revision>
 </revisionlist>
