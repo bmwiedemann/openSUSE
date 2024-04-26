@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 25 19:05:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.176.0:
+  * Add release notes for v0.176.0 (#7672)
+  * Enforce `authenticationMode:CONFIG_MAP` on Outposts (#7699)
+  * [EKSCTL create cluster command] Authorise self-managed nodes
+    via `aws-auth configmap` when EKS access entries are disabled
+    (#7698)
+  * Add support for AMIs based on AmazonLinux2023 (#7684)
+  * Bump mkdocs version (#7696)
+  * Display full draft release notes in PR description (#7686)
+  * Allow GPU instance types for Windows nodes (#7681)
+  * Include MixedInstancesPolicy LaunchTemplate for validation
+  * Aim for namespace uniqueness across parallel specs (#7680)
+
+-------------------------------------------------------------------
 Mon Apr 22 17:23:59 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - add completion subpackages
