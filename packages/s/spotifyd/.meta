@@ -1,5 +1,0 @@
-<package name="spotifyd" project="openSUSE:Factory">
-  <title>Spotifyd</title>
-  <description>Spotify client for remote control and listening to audio.</description>
-  <devel project="multimedia:apps" package="spotifyd"/>
-</package>
