@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Thu Apr 25 16:51:34 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 28.0.5
+  - Fix npm audit (related_resources#396) 6
+  - Feature(files): Hide breadcrumbs when an upload is ongoing on narrow screen #40942 (server#43834)
+  - Migrate setup checks to new API – round 3 (server#44268)
+  - Added rate limit bypass for app_api requests (server#44296)
+  - Fix default text processing provider in AI settings (server#44343)
+  - Fix(LDAP): escape DN on check-user (server#44352)
+  - Fix(JSRecourceLocator): Add missing slash after server root (server#44413)
+  - Fix(files): Do not escape file names in the file picker (server#44416)
+  - Fix(files): Only add copy suffix before file extension for files (not folders) (server#44434)
+  - Feat(perf): add cache for authtoken lookup (server#44446)
+  - Fix(DB): Sanitize host parameter for postgres databases when IPv6 address is passed (server#44461)
+  - Fix/caldav/eventcomparisionservice uses wrong array comparison (server#44473) 1
+  - Fix(preview): webp preview format (server#44489) 1
+  - Enh: Send empty expireDate when not expireDate set (server#44490)
+  - Fix(settings): Also verify that trusted_proxies only contains IP addresses (with range) (server#44495)
+  - Fix(security): Update expiration date in security.txt (server#44541)
+  - Add retry logic to cover deadlock situations during move operations (server#44551)
+  - Split live photo listener to extract trashbin specific code into its own listener (server#44561)
+  - Fix(files_sharing): Create passwords when enforced for mail shares (server#44570) 1
+  - Feat(trashbin): Show original location of deleted file (server#44583) 1
+  - Fix(files_reminders): Fix translations (server#44599)
+  - Config: fix correctness issues in reading (server#44605)
+  - Fix(files): Fix translation of “Delete file” (server#44610)
+  - Fix(tests): Fix tests when daytime saving time change happened recently (server#44615)
+  - Fix(files_sharing): Disable autocomplete for share label and password (server#44616) 1
+  - Fix(encryption): Clicking default module in UI sets bogus value (server#44633)
+  - Fix(files): breadcrumbs drag-and-drop & unifying methods (server#44652) 2 
+  - Fix(dav): Fix quota check for chunk upload (server#44655) 1
+  - Fix(deps): Update phpseclib from 2.0.45 to 2.0.47 (server#44672) 1
+  - Perf: Avoid updating the folder size if we know the size difference (server#44679)
+  - Fix(3rdparty): Add a CI job to check 3rdparty integrity (server#44691)
+  - Call davGetFavoritesReport after the registration of propfind properties (server#44734)
+  - Fix: Fix avatar images (server#44738)
+  - Fix: use proper jailed patch in watcher (server#44750)
+  - Fix(breadcrumbs): improved rendering of breadcrumb progress bar (server#44759)
+  - Fix(federation): give some time to prepare both servers (server#44779)
+  - Chore(deps): Bump @nextcloud/vue to v8.11.2 (server#44815)
+  - Fix npm audit (server#44817)
+  - Chore: Update @nextcloud/upload to 1.1.1 to fix uploading large files (server#44837) 1
+  - Fix(files): Inherit some node attributes when creating new nodes to preserve shared state (server#44844)
+  - Fix(files): Focus filename input in new-node dialog when opened (server#44851)
+  - Fix(files): Do not show files from hidden folders in “Recent”-view if hidden files are disabled by user (server#44867)
+  - Fix(systemtags): Use built-in input label to satisfy a11y check of NcSelect (server#44879)
+  - Fix(files): Clear search filter when changing directory or view (server#44883)
+  - Fix(files): Also skip cross storage move with access control (server#44891)
+  - Fix(files): Also restore shares after ownership transfer for object storage (server#44921)
+  - Fix(deps): Update phpseclib to 2.0.47 (3rdparty#1788) 1
+  - Group activities sent by mail (activity#1623)
+  - Update nextcloud/ocp dependency (activity#1630)
+  - Fix npm audit (activity#1632)
+  - Fix npm audit (files_pdfviewer#935)
+  - Update nextcloud/ocp dependency (firstrunwizard#1132)
+  - Fix npm audit (firstrunwizard#1141)
+  - Update nextcloud/ocp dependency (firstrunwizard#1161)
+  - Update nextcloud/ocp dependency (logreader#1208)
+  - Update nextcloud/ocp dependency (nextcloud_announcements#316)
+  - Update nextcloud/ocp dependency (notifications#1876
+  - Fix(setting): Clarify the “Account disabled” option (password_policy#577)
+  - Fix npm audit (photos#2406)
+  - Update nextcloud/ocp dependency (photos#2424)
+  - Fix: Open Viewer when clicking on photo in folder (photos#2432)
+  - Check download attribute when fetching previews (photos#2438)
+  - Fix npm audit (privacy#1049) 1
+  - Fix npm audit (privacy#1064) 1
+  - Fix npm audit (recommendations#716)
+  - Update nextcloud/ocp dependency (related_resources#375)
+  - Fix npm audit (related_resources#378)
+  - Update nextcloud/ocp dependency (related_resources#392)
+  - Update nextcloud/ocp dependency (serverinfo#583)
+  - Refactor document and session handling (text#5541)
+  - Fix(deps): update dependency @nextcloud/files to ^3.1.1 (text#5559)
+  - Fix(deps): update dependency @nextcloud/vue to ^8.11.1 (text#5560)
+  - Fix(deps): update dependency lib0 to ^0.2.93 (text#5561)
+  - Fix npm audit (text#5564)
+  - Remove bottom margin for better warning blocks display (text#5567)
+  - Chore(deps): update dependency cypress-split to ^1.21.1 (text#5585)
+  - Chore(deps): update dependency vite to ^5.2.7 (text#5586)
+  - Fix: Catch exceptions on non existing files (text#5599) 1
+  - Test(cypress): Wait for syncs after opening+editing in in sync.spec.js (text#5603)
+  - Chore(deps): update dependency cypress-split to ^1.21.2 (text#5619)
+  - Chore(deps): update dependency vite to ^5.2.8 (text#5620)
+  - Fix(deps): update dependency markdown-it-front-matter to ^0.2.4 (text#5621)
+  - Update nextcloud/ocp dependency (text#5645)
+  - Fix npm audit (text#5649)
+  - Fix: copy-paste markdown/raw text inconsistencies (text#5653)
+  - Fix: improve node and mark copy-paste behavior (text#5657)
+  - Fix: Avoid throwing when a workspace file cannot be found due to a failed storage (text#5664)
+  - Fix(deps): update dependency @nextcloud/vue to ^8.11.2 (text#5675)
+  - Chore(deps): update dependency cypress-split to ^1.23.0 (text#5677)
+  - Fix(deps): update dependency @nextcloud/dialogs to ^5.3.0 (text#5678)
+  - Fix npm audit (text#5684)
+  - Fix(l10n): “Connection failed” not translatable (text#5698)
+  - Fix npm audit (twofactor_totp#1505)
+  - Fix npm audit (twofactor_totp#1515)
+  - Preserve sort order (viewer#2177)
+  - Chore(deps): update cypress (viewer#2272)
+  - Fix npm audit (viewer#2276)
+  - Fix npm audit (viewer#2287)
+
+-------------------------------------------------------------------
 Thu Mar 28 11:37:29 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 28.0.4
