@@ -18,7 +18,7 @@
 
 %define cpan_name Net-OBS-Client
 Name:           perl-Net-OBS-Client
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 License:        Artistic-2.0
 Summary:        Simple OBS API calls
