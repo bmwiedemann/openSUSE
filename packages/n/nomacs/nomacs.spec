@@ -45,6 +45,7 @@ BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libraw) >= 0.17
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(zlib)
+Requires:       kf6-kimageformats
 Recommends:     %{name}-lang
 Recommends:     %{name}-plugins
 
