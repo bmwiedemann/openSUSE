@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 18 15:44:23 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update postgresql-libpq to version 0.10.1.0.
+  0.10.1.0
+  --------
+
+  - Fix issue with empty binary values (https://github.com/haskellari/postgresql-libpq/issues/54)
+
+-------------------------------------------------------------------
 Sun Nov 19 19:07:31 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update postgresql-libpq to version 0.10.0.0 revision 1.
