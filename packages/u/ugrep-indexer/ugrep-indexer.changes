@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 26 11:55:38 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.0.0:
+  * loads a .ugrep-indexer configuration file from the working or
+    home directory when present, with user-defined default options
+    (see man page)
+  * outputs current indexing settings/options for confirmation
+    (suppress with --no-messages)
+  * improved indexing stats reporting
+  * updated manual page
+  * change default accuracy to 4 from 5
+  * option --check when used with --quiet is now quiet
+  * final release of ugrep-indexer as a stand-alone component
+
+-------------------------------------------------------------------
 Sat Mar  9 19:42:34 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.9.6:

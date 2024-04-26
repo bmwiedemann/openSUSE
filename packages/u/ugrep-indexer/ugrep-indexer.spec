@@ -17,7 +17,7 @@
 
 
 Name:           ugrep-indexer
-Version:        0.9.6
+Version:        1.0.0
 Release:        0
 Summary:        File indexer for accelerated search using ugrep
 License:        BSD-3-Clause
