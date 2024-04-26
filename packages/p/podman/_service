@@ -1,5 +1,5 @@
 <services>
-  <service name="tar_scm" mode="manual">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/containers/podman.git</param>
     <param name="scm">git</param>
     <param name="revision">v5.0.2</param>
@@ -7,10 +7,10 @@
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
-  <service mode="manual" name="set_version">
-  </service>
-  <service name="recompress" mode="manual">
+  <service mode="manual" name="set_version"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">gz</param>
   </service>
 </services>

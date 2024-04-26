@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 19 12:17:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- convert to using obs_scm
+
+-------------------------------------------------------------------
 Thu Apr 18 09:52:56 UTC 2024 - danish.prakash@suse.com
 
 - spec: Fix incorrect conditional that included TW while requiring the legacy

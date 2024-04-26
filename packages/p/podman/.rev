@@ -1121,4 +1121,12 @@ Update to version 4.7.1 (forwarded request 1115956 from danishprakash)</comment>
 - Update to version 5.0.2 (forwarded request 1168805 from danishprakash)</comment>
     <requestid>1168940</requestid>
   </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>67032a2707945db15551e234e291c991</srcmd5>
+    <version>5.0.2</version>
+    <time>1714166802</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1170291</requestid>
+  </revision>
 </revisionlist>

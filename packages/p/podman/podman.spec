@@ -28,7 +28,7 @@ Summary:        Daemon-less container engine for managing containers, pods and i
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://%{project}
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        podman.conf
 BuildRequires:  bash-completion
 BuildRequires:  device-mapper-devel
