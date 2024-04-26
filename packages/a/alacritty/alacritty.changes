@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Apr 21 15:22:01 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.13.2:
+  * Added:
+    + Default Home/End bindings in Vi mode mapped to First/Last respectively
+  * Fixed:
+    + CLI env variables clearing configuration file variables
+    + Vi inline search/semantic selection expanding across newlines
+    + C0 and C1 codes being emitted in associated text when using kitty keyboard
+    + Occasional hang on startup with some Wayland compositors
+    + Missing key for NumpadDecimal in key bindings
+    + Scrolling content upwards moving lines into history when it shouldn't
+    + Sticky keys not working sometimes on X11
+    + Modifiers occasionally getting desynced on X11
+    + Autokey no longer working with alacritty on X11
+    + Freeze when moving window between monitors on Xfwm
+    + Mouse cursor not changing on Wayland when cursor theme uses legacy cursor icon names
+    + Config keys are available under proper names
+    + Build failure when compiling with x11 feature on NetBSD
+    + Hint Select action selecting the entire line for URL escapes
+    + Kitty encoding used for regular keys when they don't carry text
+  * Changed:
+    + No unused-key warnings will be emitted for OS-specific config keys
+    + Use built-in font for sextant symbols from U+1FB00 to U+1FB3B
+    + Kitty encoding is not used anymore for uncommon keys unless the protocol enabled
+
+
+-------------------------------------------------------------------
 Sun Apr  7 20:29:17 UTC 2024 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Bump required rust version to build
