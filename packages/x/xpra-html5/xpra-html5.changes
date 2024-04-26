@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Apr 18 15:05:02 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 13.0+git20240408.085e0df:
+  * #298 fix text/html clipboard copy
+
+-------------------------------------------------------------------
+Fri Mar 29 14:03:07 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 13.0+git20240329.81692ba:
+  * #292 fix 864dc00808c6caab238578919cc2442488d4c9cf which broke the connect page
+  * version bump
+  * fix: do not convert u8a to string if it's already a string
+  * fix do_keyb_process is not a function error
+  * split record_vcs_info from sdist, add subcommand for it
+  * ignore whitespace when updating vcs info
+  * #294 PR #288 broke offscreen decoding
+  * #292 getparam may return 'undefined' but not 'null' now
+  * remove redundant statement
+  * Update Utilities.js
+  * handle file download
+  * fix downloads: TextDecoder is not the same as String.fromCharCode.
+  * Bugfix URL parameters not being applied
+
+-------------------------------------------------------------------
 Sun Feb 25 20:12:48 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 12.0+git20240215.edf32fa:

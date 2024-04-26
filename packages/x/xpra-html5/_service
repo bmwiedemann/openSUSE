@@ -3,19 +3,18 @@
     <param name="url">https://github.com/Xpra-org/xpra-html5</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
-    <!-- TESTING -->
-    <!-- LAST KNOWN GOOD:  (older) ;  (newer) -->
-    <!-- VERIFIED GOOD:  (older) ;  (newer) -->
     <!--
       This comes from setup.py which defines
       a 'VERSION = ' based off a tag; current
       release is 'v9.0' (Tags) but master defines
       it as '12' (per `grep -r '^VERSION =' xpra-html5/setup.py`)
 
-    <param name="versionrewrite-pattern">v(.*)</param>
     -->
     <param name="versionrewrite-pattern">v9.0</param>
-    <param name="versionrewrite-replacement">12.0</param>
+    <param name="versionrewrite-replacement">13.0</param>
+    <!--
+    <param name="versionrewrite-pattern">v(.*)</param>
+    -->
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual"/>
