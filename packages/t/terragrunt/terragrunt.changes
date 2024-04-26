@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 26 16:55:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.57.11:
+  * fix: sync Terraform CLI args for 'show' command (#3075)
+
+-------------------------------------------------------------------
+Fri Apr 26 16:46:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.57.10:
+  * Open Telemetry context propagation (#3098)
+  * feat: Adding RFC Form (#3099)
+
+-------------------------------------------------------------------
 Wed Apr 24 16:58:58 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.57.9:
