@@ -57,6 +57,8 @@
   boo#1222583: '20240425'
   boo#1222597: '20240409'
   boo#1222994: '20240425'
+  boo#1223381: '20240425'
+  bsc#1223381: '20240425'
   gh#OSInside/kiwi#2529: '20240416'
   gh#os-autoinst/os-autoinst-distri-opensuse#18471: '20240116'
   gh#os-autoinst/os-autoinst-distri-opensuse#18688: '20240218'
@@ -564,9 +566,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20240425'
-published: '20240423'
-publishing: '20240423'
+    <value>failed: ''
+published: '20240425'
+publishing: '20240425'
 testing: '20240425'
 </value>
   </attribute>
