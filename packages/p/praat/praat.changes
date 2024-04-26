@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 25 15:03:37 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.10:
+  * Function windows: fixed a problem that could cause Praat to
+    crash when doing all after Group when windows had a different
+    duration.
+- Changes from version 6.4.09:
+  * TextGrid window: fixed a rare problem with Align interval that
+    could lead to a zero-length interval.
+  * Sound & TextGrid: Align interval... now also available in the
+    Objects window.
+- Drop empty %check section: rpmlint was misleading in
+  recommending its addition.
+
+-------------------------------------------------------------------
 Sat Apr 20 07:42:55 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.08:

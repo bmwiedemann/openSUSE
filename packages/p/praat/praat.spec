@@ -17,7 +17,7 @@
 
 
 Name:           praat
-Version:        6.4.08
+Version:        6.4.10
 Release:        0
 Summary:        Phonetics by computer
 License:        GPL-3.0-or-later
@@ -96,8 +96,6 @@ Categories=Science;NumericalAnalysis;GTK;
 StartupNotify=true
 MimeType=text/praat-textgrid;text/praat-pitch;
 EOF
-
-%check
 
 %files
 %license main/GNU_General_Public_License.txt
