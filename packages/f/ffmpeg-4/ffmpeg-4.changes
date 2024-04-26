@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr 23 16:14:18 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-CVE-2023-51793.patch:
+  Backporting 0ecc1f0e from upstream, Fix odd height handling.
+  (CVE-2023-51793 bsc#1223272)
+
+-------------------------------------------------------------------
+Thu Apr 23 15:35:32 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-CVE-2023-49502.patch:
+  Backporting 737ede40 from upstream, account for chroma sub-sampling
+  in min size calculation.
+  (CVE-2023-49502 bsc#1223235)
+
+-------------------------------------------------------------------
+Tue Apr 23 14:25:53 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Address boo#1223304/CVE-2023-51798: add patch
+  0001-avfilter-vf_minterpolate-Check-pts-before-division.patch
+
+-------------------------------------------------------------------
 Mon Apr 22 12:41:55 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Address boo#1223070/CVE-2024-31578: add patch

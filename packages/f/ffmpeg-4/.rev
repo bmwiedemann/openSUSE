@@ -608,4 +608,14 @@
   0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch</comment>
     <requestid>1169720</requestid>
   </revision>
+  <revision rev="65" vrev="8">
+    <srcmd5>02f8e4a6dc96c99ef9f7f9b8311a4479</srcmd5>
+    <version>4.4.4</version>
+    <time>1714166772</time>
+    <user>anag+factory</user>
+    <comment>  (CVE-2023-51793 bsc#1223272)
+  (CVE-2023-49502 bsc#1223235)
+  boo#1223304/CVE-2023-51798</comment>
+    <requestid>1170215</requestid>
+  </revision>
 </revisionlist>
