@@ -1,0 +1,25 @@
+# HG changeset patch
+# User Wolfgang Rosenauer <wr@rosenauer.org>
+# Parent  302a32e4a14475d3bae305decad92870ec37bbe5
+
+diff --git a/toolkit/system/unixproxy/nsLibProxySettings.cpp b/toolkit/system/unixproxy/nsLibProxySettings.cpp
+--- a/toolkit/system/unixproxy/nsLibProxySettings.cpp
++++ b/toolkit/system/unixproxy/nsLibProxySettings.cpp
+@@ -94,11 +94,17 @@ nsresult nsUnixSystemProxySettings::GetP
+ 
+     c++;
+   }
+ 
+   free(proxyArray);
+   return NS_OK;
+ }
+ 
++NS_IMETHODIMP
++nsUnixSystemProxySettings::GetSystemWPADSetting(bool* aSystemWPADSetting) {
++  *aSystemWPADSetting = false;
++  return NS_OK;
++}
++
+ NS_IMPL_COMPONENT_FACTORY(nsUnixSystemProxySettings) {
+   return do_AddRef(new nsUnixSystemProxySettings()).downcast<nsISupports>();
+ }

@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  831d03cde86aa6b8803d5ac431e2d28bf85c9289
+# Parent  af0655f894a27ef60aa8438af7939a5ebc498df0
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -420,7 +420,7 @@ diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/num
 diff --git a/js/src/irregexp/imported/regexp-parser.cc b/js/src/irregexp/imported/regexp-parser.cc
 --- a/js/src/irregexp/imported/regexp-parser.cc
 +++ b/js/src/irregexp/imported/regexp-parser.cc
-@@ -2644,16 +2644,17 @@ bool MayContainStrings(ClassSetOperandTy
+@@ -2764,16 +2764,17 @@ bool MayContainStrings(ClassSetOperandTy
        return false;
      case ClassSetOperandType::kCharacterClassEscape:
      case ClassSetOperandType::kClassStringDisjunction:
@@ -434,10 +434,10 @@ diff --git a/js/src/irregexp/imported/regexp-parser.cc b/js/src/irregexp/importe
  
  }  // namespace
  
- // TODO(v8:11935): Change permalink once proposal is in stage 4.
- // https://arai-a.github.io/ecma262-compare/snapshot.html?pr=2418#prod-ClassUnion
  template <class CharT>
- RegExpTree* RegExpParserImpl<CharT>::ParseClassUnion(
+ void RegExpParserImpl<CharT>::AddMaybeSimpleCaseFoldedRange(
+     ZoneList<CharacterRange>* ranges, CharacterRange new_range) {
+   DCHECK(unicode_sets());
 diff --git a/third_party/libwebrtc/api/adaptation/resource.cc b/third_party/libwebrtc/api/adaptation/resource.cc
 --- a/third_party/libwebrtc/api/adaptation/resource.cc
 +++ b/third_party/libwebrtc/api/adaptation/resource.cc
@@ -684,7 +684,7 @@ diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwe
 diff --git a/third_party/libwebrtc/media/base/codec.cc b/third_party/libwebrtc/media/base/codec.cc
 --- a/third_party/libwebrtc/media/base/codec.cc
 +++ b/third_party/libwebrtc/media/base/codec.cc
-@@ -201,16 +201,17 @@ bool Codec::Matches(const Codec& codec,
+@@ -200,16 +200,17 @@ bool Codec::Matches(const Codec& codec) 
                 (codec.bitrate == 0 || bitrate <= 0 ||
                  bitrate == codec.bitrate) &&
                 ((codec.channels < 2 && channels < 2) ||

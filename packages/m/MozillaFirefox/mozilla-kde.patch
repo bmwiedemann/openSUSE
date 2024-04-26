@@ -155,7 +155,7 @@ diff --git a/toolkit/components/downloads/moz.build b/toolkit/components/downloa
 diff --git a/toolkit/mozapps/downloads/HelperAppDlg.sys.mjs b/toolkit/mozapps/downloads/HelperAppDlg.sys.mjs
 --- a/toolkit/mozapps/downloads/HelperAppDlg.sys.mjs
 +++ b/toolkit/mozapps/downloads/HelperAppDlg.sys.mjs
-@@ -1241,36 +1241,66 @@ nsUnknownContentTypeDialog.prototype = {
+@@ -1227,36 +1227,66 @@ nsUnknownContentTypeDialog.prototype = {
          params.handlerApp &&
          params.handlerApp.executable &&
          params.handlerApp.executable.isFile()
@@ -238,7 +238,7 @@ diff --git a/toolkit/mozapps/downloads/HelperAppDlg.sys.mjs b/toolkit/mozapps/do
        var nsIFilePicker = Ci.nsIFilePicker;
        var fp = Cc["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
        fp.init(
-         this.mDialog,
+         this.mDialog.browsingContext,
          this.dialogElement("strings").getString("chooseAppFilePickerTitle"),
          nsIFilePicker.modeOpen
        );
@@ -283,7 +283,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
  nsUnixSystemProxySettings::GetMainThreadOnly(bool* aMainThreadOnly) {
    // dbus prevents us from being threadsafe, but this routine should not block
    // anyhow
-@@ -388,21 +392,46 @@ nsresult nsUnixSystemProxySettings::GetP
+@@ -388,24 +392,49 @@ nsresult nsUnixSystemProxySettings::GetP
    return NS_OK;
  }
  
@@ -325,11 +325,14 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
 +  return NS_OK;
 +}
 +
+ NS_IMETHODIMP
+ nsUnixSystemProxySettings::GetSystemWPADSetting(bool* aSystemWPADSetting) {
+   *aSystemWPADSetting = false;
+   return NS_OK;
+ }
+ 
  NS_IMPL_COMPONENT_FACTORY(nsUnixSystemProxySettings) {
    auto result = MakeRefPtr<nsUnixSystemProxySettings>();
-   result->Init();
-   return result.forget().downcast<nsISupports>();
- }
 diff --git a/toolkit/xre/moz.build b/toolkit/xre/moz.build
 --- a/toolkit/xre/moz.build
 +++ b/toolkit/xre/moz.build

@@ -6704,4 +6704,41 @@
     shipping in Ubuntu 24.04. (bmo#1884347)</comment>
     <requestid>1164364</requestid>
   </revision>
+  <revision rev="425" vrev="1">
+    <srcmd5>d872fadab1021f712624c84870a8bc05</srcmd5>
+    <version>125.0.2</version>
+    <time>1714166773</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Firefox 125.0.2
+  * The 125.0 and 125.0.1 releases were skipped due to problems with a
+    feature that proactively blocked downloads from potentially
+    untrustworthy URLs
+  * New: Firefox now supports the AV1 codec for Encrypted Media
+    Extensions (EME), enabling higher-quality playback from video
+    streaming providers
+  * New: The Firefox PDF viewer now supports text highlighting.
+  * New: Firefox View now displays pinned tabs in the Open tabs
+    section. Tab indicators have also been added to Open tabs, so
+    users can do things like see which tabs are playing media and
+    quickly mute or unmute across windows. Indicators were also
+    added for bookmarks, tabs with notifications, and more!
+    their addresses upon submitting an address form, allowing
+    Firefox to autofill stored address information in the future.
+  * New: The URL Paste Suggestion feature provides a convenient
+    way for users to quickly visit URLs copied to the clipboard
+    in the address bar of Firefox. When the clipboard contains a
+    URL and the URL bar is focused, an autocomplete result
+    appears automatically. Activating the clipboard suggestion
+    will navigate the user to the URL with 1 click.
+  * New: Users of tab-specific Container add-ons can now search
+    in the Address Bar for tabs that are open in different
+    containers. Special thanks to volunteer contributor atararx
+    for kicking off the work on this feature!
+  * New: Firefox now provides an option to enable Web Proxy Auto-
+    Discovery (WPAD) while configured to use system proxy
+    settings.
+  * Changed: In a group of radio buttons where no option is
+    selected, the tab key now only reaches the first option</comment>
+    <requestid>1169983</requestid>
+  </revision>
 </revisionlist>

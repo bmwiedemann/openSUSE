@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Sun Apr 21 04:49:23 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 125.0.2
+  * The 125.0 and 125.0.1 releases were skipped due to problems with a
+    feature that proactively blocked downloads from potentially
+    untrustworthy URLs
+  * New: Firefox now supports the AV1 codec for Encrypted Media
+    Extensions (EME), enabling higher-quality playback from video
+    streaming providers
+  * New: The Firefox PDF viewer now supports text highlighting.
+  * New: Firefox View now displays pinned tabs in the Open tabs
+    section. Tab indicators have also been added to Open tabs, so
+    users can do things like see which tabs are playing media and
+    quickly mute or unmute across windows. Indicators were also
+    added for bookmarks, tabs with notifications, and more!
+    their addresses upon submitting an address form, allowing
+    Firefox to autofill stored address information in the future.
+  * New: The URL Paste Suggestion feature provides a convenient
+    way for users to quickly visit URLs copied to the clipboard
+    in the address bar of Firefox. When the clipboard contains a
+    URL and the URL bar is focused, an autocomplete result
+    appears automatically. Activating the clipboard suggestion
+    will navigate the user to the URL with 1 click.
+  * New: Users of tab-specific Container add-ons can now search
+    in the Address Bar for tabs that are open in different
+    containers. Special thanks to volunteer contributor atararx
+    for kicking off the work on this feature!
+  * New: Firefox now provides an option to enable Web Proxy Auto-
+    Discovery (WPAD) while configured to use system proxy
+    settings.
+  * Changed: In a group of radio buttons where no option is
+    selected, the tab key now only reaches the first option
+    rather than cycling through all available options. The arrow
+    keys navigate between options as they do when there is a
+    selected option. This makes keyboard navigation more
+    efficient and consistent
+  * HTML5: Firefox now supports the `popover` global attribute
+    used for designating an element as a popover element. The
+    element won't be rendered until it is made visible, after
+    which it will appear on top of other page content.
+  * HTML5: WebAssembly multi-memory is now enabled by default.
+    Wasm multi-memory allows wasm modules to use and import
+    multiple independent linear memories. This enables more
+    efficient interoperability between modules and provides
+    better polyfills for upcoming wasm standards, such as the
+    component model.
+  * HTML5: Added support for Unicode Text Segmentation to
+    JavaScript.
+  * HTML5: Added support for `contextlost` and `contextrestored`
+    events on HTMLCanvasElement and OffscreenCanvas to allow user
+    code to recover from context loss with hardware accelerated
+    2d canvas.
+  * HTML5: Firefox now supports the
+    `navigator.clipboard.readText()` web API. A paste context
+    menu will appear for the user to confirm when attempting to
+    read clipboard data not provided by the same-origin page.
+  * HTML5: Added support for the `content-box` and `stroke-box`
+    keywords of the `transform-box` CSS property.
+  * HTML5: The `align-content` property now works in block
+    layout, allowing block direction alignment without needing a
+    flex or grid container.
+  * HTML5: Support for `SVGAElement.text` was removed in favor of
+    the more widely-implemented `SVGAElement.textContent` method.
+  * Developer: Following several requests, we have reintroduced
+    the option to disable the Pause Debugger Overlay
+    (`devtools.debugger.features.overlay`). This overlay appears
+    over the page content when the debugger pauses JavaScript
+    execution. In certain scenarios, the overlay can be
+    intrusive, making it challenging to interact with the page,
+    for instance, evaluating shades of color underneath.
+  * Developer: We've added a new drop-down menu button at the
+    bottom of the source view in the Debugger panel, specifically
+    designed for Source Map related actions. Users can now easily
+    disable or enable Source Maps support, open the Source Map
+    file in a new tab, switch between the original source and the
+    generated bundle, toggle the "open original source by
+    default" option, and view the Source Map status such as
+    errors, loading status, etc.
+    MFSA 2024-18 (bsc#1221327)
+  * CVE-2024-3852 (bmo#1883542)
+    GetBoundName in the JIT returned the wrong object
+  * CVE-2024-3853 (bmo#1884427)
+    Use-after-free if garbage collection runs during realm initialization
+  * CVE-2024-3854 (bmo#1884552)
+    Out-of-bounds-read after mis-optimized switch statement
+  * CVE-2024-3855 (bmo#1885828)
+    Incorrect JIT optimization of MSubstr leads to out-of-bounds reads
+  * CVE-2024-3856 (bmo#1885829)
+    Use-after-free in WASM garbage collection
+  * CVE-2024-3857 (bmo#1886683)
+    Incorrect JITting of arguments led to use-after-free during
+    garbage collection
+  * CVE-2024-3858 (bmo#1888892)
+    Corrupt pointer dereference in js::CheckTracedThing<js::Shape>
+  * CVE-2024-3859 (bmo#1874489)
+    Integer-overflow led to out-of-bounds-read in the OpenType
+    sanitizer
+  * CVE-2024-3860 (bmo#1881417)
+    Crash when tracing empty shape lists
+  * CVE-2024-3861 (bmo#1883158)
+    Potential use-after-free due to AlignedBuffer self-move
+  * CVE-2024-3862 (bmo#1884457)
+    Potential use of uninitialized memory in MarkStack assignment
+    operator on self-assignment
+  * CVE-2024-3863 (bmo#1885855)
+    Download Protections were bypassed by .xrm-ms files on Windows
+  * CVE-2024-3302 (bmo#1881183,
+    bmo#https://kb.cert.org/vuls/id/421644)
+    Denial of Service using HTTP/2 CONTINUATION frames
+  * CVE-2024-3864 (bmo#1888333)
+    Memory safety bug fixed in Firefox 125, Firefox ESR 115.10,
+    and Thunderbird 115.10
+  * CVE-2024-3865 (bmo#1881076, bmo#1884887, bmo#1885359, bmo#1889049)
+    Memory safety bugs fixed in Firefox 125
+- requires
+  NSS 3.99
+  rust 1.76
+- add mozilla-libproxy-fix.patch to fix with-libproxy build variant
+
+-------------------------------------------------------------------
 Wed Apr  3 12:50:27 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Mozilla Firefox 124.0.2
