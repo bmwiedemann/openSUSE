@@ -1658,4 +1658,20 @@ CVE-2020-13871 boo#1172646</comment>
 - Abort build when %version and %tarversion don't match.</comment>
     <requestid>1158281</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>69e7ada446f8caacba899b9cd16f4650</srcmd5>
+    <version>3.45.3</version>
+    <time>1714166786</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.45.3:
+  * Fix a long-standing bug (going back to version 3.24.0) that
+    might (rarely) cause the &quot;old.*&quot; values of an UPDATE trigger
+    to be incorrect if that trigger fires in response to an UPSERT.
+  * Reduce the scope of the NOT NULL strength reduction
+    optimization that was added as item 8e in version 3.35.0. The
+    optimization was being attempted in some contexts where it did
+    not work, resulting in incorrect query results.
+- Add SQLITE_STRICT_SUBTYPE=1 as recommended by upstream.</comment>
+    <requestid>1169661</requestid>
+  </revision>
 </revisionlist>

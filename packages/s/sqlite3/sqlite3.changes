@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 17 08:50:51 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Update to release 3.45.3:
+  * Fix a long-standing bug (going back to version 3.24.0) that
+    might (rarely) cause the "old.*" values of an UPDATE trigger
+    to be incorrect if that trigger fires in response to an UPSERT.
+  * Reduce the scope of the NOT NULL strength reduction
+    optimization that was added as item 8e in version 3.35.0. The
+    optimization was being attempted in some contexts where it did
+    not work, resulting in incorrect query results.
+- Add SQLITE_STRICT_SUBTYPE=1 as recommended by upstream.
+
+-------------------------------------------------------------------
 Tue Mar 12 14:50:27 UTC 2024 - Reinhard Max <max@suse.com>
 
 - Update to release 3.45.2:
