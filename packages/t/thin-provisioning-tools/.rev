@@ -318,4 +318,12 @@
 - Modernise cargo packaging usage in spec file</comment>
     <requestid>1160671</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>839a14ed3b0f804ab59c18b4f0cd09d0</srcmd5>
+    <version>1.0.12</version>
+    <time>1714166768</time>
+    <user>anag+factory</user>
+    <comment>- Update vendored dependencies</comment>
+    <requestid>1169882</requestid>
+  </revision>
 </revisionlist>
