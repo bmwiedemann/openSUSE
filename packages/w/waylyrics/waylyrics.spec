@@ -17,14 +17,14 @@
 
 
 Name:           waylyrics
-Version:        0.2.19
+Version:        0.3.5
 Release:        0
 Summary:        The furry way to show desktop lyrics
 License:        MIT
 URL:            https://github.com/waylyrics/waylyrics
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-BuildRequires:  cargo >= 1.73.0
+BuildRequires:  cargo >= 1.76.0
 BuildRequires:  cargo-packaging
 BuildRequires:  dbus-1-devel
 BuildRequires:  gettext
@@ -47,14 +47,14 @@ export WAYLYRICS_THEME_PRESETS_DIR=%{_datadir}/waylyrics/themes
 
 %install
 export WAYLYRICS_THEME_PRESETS_DIR=%{_datadir}/waylyrics/themes
-# locked is required as waylyrics includes some git dependencies
 %{cargo_install} --locked
 
-install -d %{buildroot}%{_datadir}/waylyrics
+install -dm755 %{buildroot}%{_datadir}/waylyrics
 cp -r themes %{buildroot}%{_datadir}/waylyrics/
 
-install -Dm644 "io.poly000.waylyrics.desktop" -t %{buildroot}%{_datadir}/applications/
-install -Dm644 "io.poly000.waylyrics.gschema.xml" -t %{buildroot}%{_datadir}/glib-2.0/schemas/
+install -Dm644 "metainfo/io.github.waylyrics.Waylyrics.desktop" -t %{buildroot}%{_datadir}/applications/
+install -Dm644 "metainfo/io.github.waylyrics.Waylyrics.gschema.xml" -t %{buildroot}%{_datadir}/glib-2.0/schemas/
+cp -r res/icons %{buildroot}%{_datadir}/icons
 
 # Locale files
 (
@@ -69,15 +69,16 @@ install -Dm644 "io.poly000.waylyrics.gschema.xml" -t %{buildroot}%{_datadir}/gli
 
 %check
 export WAYLYRICS_THEME_PRESETS_DIR=%{_datadir}/waylyrics/themes
-%{cargo_test} --locked --no-default-features --features mimalloc
+%{cargo_test} --locked --no-default-features --features mimalloc,tray-icon
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/waylyrics/
-%{_datadir}/applications/io.poly000.waylyrics.desktop
-%{_datadir}/glib-2.0/schemas/io.poly000.waylyrics.gschema.xml
+%{_datadir}/applications/io.github.waylyrics.Waylyrics.desktop
+%{_datadir}/glib-2.0/schemas/io.github.waylyrics.Waylyrics.gschema.xml
+%{_datadir}/icons/hicolor/scalable/apps/io.github.waylyrics.Waylyrics.svg
 
 %files lang -f %{name}.lang
 

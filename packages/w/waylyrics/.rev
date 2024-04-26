@@ -273,4 +273,40 @@ The upstream has developed for a long time and waylyrics has been stable, althou
   * docs(changelog): update changelog</comment>
     <requestid>1169316</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>967c9be1aee5decbf8e96e6f7eeda28f</srcmd5>
+    <version>0.3.5</version>
+    <time>1714166882</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.3.5:
+  * chore: release v0.3.5
+  * feat: emit NewLyricCache signal on lyric cache update
+  * feat: reload lyric from cache
+  * build(test): set profile.test.debug a boolean
+  * chore: release v0.3.4
+  * Fix Exec in desktop file
+  * chore(metainfo): use v0.3.3 tag
+  * chore(metainfo): add screenshot of search window
+  * chore(metainfo): fix warnings
+  * chore: release v0.3.3
+  * chore(desktopfile): remove action `Launch`
+  * chore(metainfo): h3 tags are not supported
+  * chore: release v0.3.2
+  * fix: enum tuple variant cannot be destrcucted by tuple matching
+  * fix(readme): broken link of desktop file
+  * Use patched ksni to solve tray issue in flatpak (thanks to @taoky)
+  * chore: make extracting values from tuples more readable
+  * chore: use for loop to refactor items appending in ui_section &amp; play_section
+  * chore: use for loop to refactor entries appending in imp.vbox
+  * log(tray): do not flood start_time on smtc
+  * ci: fix documents deploy CI
+  * ci: remove microsoft-prod.list
+  * ci: fix test.yml
+  * chore: release v0.3.1
+  * feat: set search-window ColumnView row padding in themes
+  * docs(changelog): update changelog
+  * Add replaces &amp; launchable
+  * Update metainfo to v0.3.0</comment>
+    <requestid>1170299</requestid>
+  </revision>
 </revisionlist>

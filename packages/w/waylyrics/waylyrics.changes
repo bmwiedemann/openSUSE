@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Fri Apr 26 11:16:31 UTC 2024 - xtexchooser@duck.com
+
+- Update to version 0.3.5:
+  * chore: release v0.3.5
+  * feat: emit NewLyricCache signal on lyric cache update
+  * feat: reload lyric from cache
+  * build(test): set profile.test.debug a boolean
+  * chore: release v0.3.4
+  * Fix Exec in desktop file
+  * chore(metainfo): use v0.3.3 tag
+  * chore(metainfo): add screenshot of search window
+  * chore(metainfo): fix warnings
+  * chore: release v0.3.3
+  * chore(desktopfile): remove action `Launch`
+  * chore(metainfo): h3 tags are not supported
+  * chore: release v0.3.2
+  * fix: enum tuple variant cannot be destrcucted by tuple matching
+  * fix(readme): broken link of desktop file
+  * Use patched ksni to solve tray issue in flatpak (thanks to @taoky)
+  * chore: make extracting values from tuples more readable
+  * chore: use for loop to refactor items appending in ui_section & play_section
+  * chore: use for loop to refactor entries appending in imp.vbox
+  * log(tray): do not flood start_time on smtc
+  * ci: fix documents deploy CI
+  * ci: remove microsoft-prod.list
+  * ci: fix test.yml
+  * chore: release v0.3.1
+  * feat: set search-window ColumnView row padding in themes
+  * docs(changelog): update changelog
+  * Add replaces & launchable
+  * Update metainfo to v0.3.0
+
+-------------------------------------------------------------------
+Fri Apr 26 11:15:19 UTC 2024 - xtexchooser@duck.com
+
+- Update to version 0.3.0:
+  * docs(changelog): update changelog
+  * chore: release v0.3.0
+  * fix(ci): new schema path
+  * docs(install): update packaging script
+  * BREAKING CHANGE: formalize app id & restructure files~
+  * Fix missing wayland icon
+  * Add metainfo
+  * Change filenames
+  * Change screenshot 1
+  * Add screenshots
+  * fix: set titlebar before set decorated
+  * log: set time diff log level to TRACE so we will not flood debug log
+  * log: mpris position delay
+  * refactor: pass WeakRef<Window> to register_sync_task
+  * fix(i18n): en_US translation
+  * revert: "Translate display modes"
+  * Translate display modes
+  * align -> alignment
+  * docs(changelog): update changelog
+  * chore: release v0.2.21
+  * fix: stop lyric update when show_lyric_on_pause not set on pause
+  * docs(changelog): update changelog
+  * chore: release v0.2.20
+  * build: remove git dependencies
+  * docs(changelog): update changelog
+
+-------------------------------------------------------------------
 Sat Apr 20 06:03:23 UTC 2024 - xtexchooser@duck.com
 
 - Update to version 0.2.19:
