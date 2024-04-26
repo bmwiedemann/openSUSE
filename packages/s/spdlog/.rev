@@ -490,4 +490,31 @@
     <comment></comment>
     <requestid>1139007</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2d4da509c87eb89c73bd119bb325ef60</srcmd5>
+    <version>1.14.0</version>
+    <time>1714166797</time>
+    <user>anag+factory</user>
+    <comment>- Update spdlog to 1.14.0
+- Release notes 1.14.0:
+  * Updated bundled fmt to version 10.2.1.
+  * Mapped Diagnostic Context (MDC) support by @massimiliano96 in #2907.
+    DC is a simple map of key-&gt;string values stored in thread local storage whose content will be printed by the loggers.
+  * Add milliseconds support to stopwatch by @brodao2 in #3034
+  * Add std::string_view overloads for logger accessor by @BenLeadbetter in #3023
+  * Make async_logger::flush() synchronous - wait for the flush operation to complete before returning by @walkerlala in #3049
+  * Use _stat() on Windows to be more UTF8 friendly by @liubing in #2978
+  * Add details about how compile time macros work by @egaban in #2981
+  * Fix typos found by codespell by @DimitriPapadopoulos in #3011
+  * Expose the flusher thread object to user in order to allow setting of thread name and thread affinity when needed by @cohdan in #3009
+  * Fix the problem of compilation failure under MINGW by @NU-LL in #3022
+  * Add missing include in circular_q.h by @magnus-nomono in #3026
+  * Fix #3038 by @Tomas-Zhu in #3044
+  * Don't remove previous defaullt logger from registry in set_default_logger. Fix #3016
+  * Remove the legacy AnalyzeTemporaryDtors option from .clang-tidy. by @shaharv in #3048
+  * Updated INSTALL.md has to better reflect compiler info. #3052
+  * Fixed README.md example by @darallium in #3066
+</comment>
+    <requestid>1170249</requestid>
+  </revision>
 </revisionlist>
