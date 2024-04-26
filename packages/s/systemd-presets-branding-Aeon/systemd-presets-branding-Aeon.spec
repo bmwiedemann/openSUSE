@@ -1,7 +1,7 @@
 #
 # spec file for package systemd-presets-branding-Aeon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ Supplements:    packageand(systemd:branding-MicroOS)
 Conflicts:      systemd-presets-branding
 Provides:       systemd-presets-branding = %{version}
 Obsoletes:      systemd-presets-branding-CAASP < 15.1
-Obsoletes:	systemd-presets-branding-MicroOS < 20231005
+Obsoletes:      systemd-presets-branding-MicroOS < 20231005
 BuildArch:      noarch
 
 %description
