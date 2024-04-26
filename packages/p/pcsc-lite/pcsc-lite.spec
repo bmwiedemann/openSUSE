@@ -26,7 +26,7 @@
 %define PKG_USER	scard
 %define PKG_GROUP	scard
 Name:           pcsc-lite
-Version:        2.0.3
+Version:        2.1.0
 Release:        0
 Summary:        PC/SC Smart Cards Library
 License:        BSD-3-Clause AND GPL-3.0-or-later
@@ -136,7 +136,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcpcscd
 mkdir -p %{buildroot}%{_fillupdir}
 cp %{name}.sysconfig %{buildroot}%{_fillupdir}/sysconfig.pcscd
 mkdir -p %{buildroot}%{_docdir}/%{name}
-cp -a AUTHORS ChangeLog COPYING HELP NEWS README README.SUSE SECURITY TODO %{buildroot}%{_docdir}/%{name}
+cp -a AUTHORS ChangeLog COPYING HELP NEWS README README.SUSE SECURITY %{buildroot}%{_docdir}/%{name}
 # Remove useless la files
 find %{buildroot} -type f -name "*.la" -delete -print
 install -Dm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{PKG_USER}.conf
@@ -175,9 +175,7 @@ install -Dm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{PKG_USER}.conf
 %{_docdir}/%{name}/README.SUSE
 %{_docdir}/%{name}/README.polkit
 %{_docdir}/%{name}/SECURITY
-%{_docdir}/%{name}/TODO
-%{_docdir}/%{name}/install_spy.sh
-%{_docdir}/%{name}/uninstall_spy.sh
+%{_docdir}/%{name}/setup_spy.sh
 %doc %{_mandir}/man?/*.*
 %{_sbindir}/*
 %dir %{_sysconfdir}/reader.conf.d
@@ -188,11 +186,13 @@ install -Dm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{PKG_USER}.conf
 %{_fillupdir}/sysconfig.pcscd
 # libpcsclite.so should stay in the main package (#732911). Third party packages may need it for dlopen().
 %{_libdir}/libpcsclite.so
+%{_libdir}/libpcsclite_real.so
 %{_datadir}/polkit-1/actions/org.debian.pcsc-lite.policy
 
 %files -n libpcsclite1
 %defattr(-,root,root)
 %{_libdir}/libpcsclite.so.*
+%{_libdir}/libpcsclite_real.so.*
 
 %files -n libpcscspy0
 %defattr(-,root,root)

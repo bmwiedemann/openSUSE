@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 23 08:15:56 UTC 2024 - Stephan Hemeier <Sauerlandlinux@gmx.de>
+
+- Update the spec for building with version 2.1.0
+
+-------------------------------------------------------------------
+Mon Apr 22 12:14:47 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.1.0
+  * LIBPCSCLITE_DELEGATE is used to redirect to another libpcsclite library
+  * setup_spy.sh displays the LIBPCSCLITE_DELEGATE value to use for spying
+  * provides libfake.c as a sample source code
+  * Some other minor improvements- 
+
+-------------------------------------------------------------------
 Wed Mar 13 14:52:38 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using                            
