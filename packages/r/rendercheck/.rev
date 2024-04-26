@@ -53,4 +53,42 @@
   release, since there was a bunch of other changes.</comment>
     <requestid>311744</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ccc1c498876524ed9e3753ce11162964</srcmd5>
+    <version>1.6</version>
+    <time>1714166788</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.6
+  * Skip shmblend if SHM pixmaps aren't supported
+  * triangles: Fix tests for conjoint and disjoint ops
+  * Be valgrind-clean
+  * Don't fail to find the a8r8g8b8 format pointlessly
+  * Enable a few more formats
+  * Update bug tracker URL in man page
+  * gitlab CI: add a basic build test
+  * t_repeat.c, t_triangles.c: convert from ISO-8859-1 to UTF-8
+  * autogen.sh: use quoted string variables
+  * Start using stdbool.h instead of Xlib or custom bools.
+  * Save the list of active formats in a global for use by tests.
+  * Use ELF sections to make test setup easier.
+  * shmblend: New test for XRenderComposite() from a pixmap in SHM.
+  * autogen: Set a default prefix for patches if unset.
+  * Fix a printf format warning.
+  * Add a meson build system.
+  * Remove the autotools build system.
+  * Simplify manpage variable substitution for Meson.
+  * Explain how to build using meson in the README.
+  * darwin: Build fix
+  * Mark pointers to test structs as used to prevent dead symbol stripping
+  * Prevent ASan from placing guards around test structs as we expect them to be laid out sequentially
+  * Revert &quot;Reduce the number of colors to speed up test execution.&quot;
+  * meson: Set project version
+  * meson: Set project license
+  * autogen.sh: drop --enable-maintainer-mode
+  * autogen.sh: honor NOCONFIGURE=1
+  * Fix errx handling of va_list
+- switched to meson build
+- fixed source URL in specfile</comment>
+    <requestid>1170149</requestid>
+  </revision>
 </revisionlist>
