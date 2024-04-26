@@ -32,9 +32,9 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define real_version 25.0.3
-%define git_version f417435e5
-%define git_commit_epoch 1706746344
+%define real_version 26.1.0
+%define git_version c8af8ebe4a89
+%define git_commit_epoch 1713797114
 
 Name:           docker
 Version:        %{real_version}_ce
@@ -92,7 +92,7 @@ BuildRequires:  fish
 BuildRequires:  go-go-md2man
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  sysuser-tools
-BuildRequires:  golang(API) = 1.20
+BuildRequires:  golang(API) = 1.21
 %if %{with apparmor}
 %if 0%{?sle_version} >= 150000
 # This conditional only works on rpm>=4.13, which SLE 12 doesn't have. But we

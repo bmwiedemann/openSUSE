@@ -1,4 +1,4 @@
-From 079e8a9eefc639772d8849cea26727ea0918a74b Mon Sep 17 00:00:00 2001
+From 7e422ce82b924b4d9e06c5f3277e6b235323122d Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Wed, 11 Oct 2023 21:19:12 +1100
 Subject: [PATCH 5/5] SLE12: revert "apparmor: remove version-conditionals from
@@ -26,7 +26,7 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  create mode 100644 pkg/aaparser/aaparser.go
 
 diff --git a/contrib/apparmor/main.go b/contrib/apparmor/main.go
-index 899d8378ed..93f98cbd20 100644
+index 899d8378edae..93f98cbd20e5 100644
 --- a/contrib/apparmor/main.go
 +++ b/contrib/apparmor/main.go
 @@ -6,9 +6,13 @@ import (
@@ -69,7 +69,7 @@ index 899d8378ed..93f98cbd20 100644
  		log.Fatalf("executing template failed: %v", err)
  	}
 diff --git a/contrib/apparmor/template.go b/contrib/apparmor/template.go
-index 58afcbe845..e6d0b6d37c 100644
+index 58afcbe845ee..e6d0b6d37c58 100644
 --- a/contrib/apparmor/template.go
 +++ b/contrib/apparmor/template.go
 @@ -20,9 +20,11 @@ profile /usr/bin/docker (attach_disconnected, complain) {
@@ -158,7 +158,7 @@ index 58afcbe845..e6d0b6d37c 100644
      /usr/bin/xz rm,
 diff --git a/pkg/aaparser/aaparser.go b/pkg/aaparser/aaparser.go
 new file mode 100644
-index 0000000000..89b48b2dba
+index 000000000000..89b48b2dba58
 --- /dev/null
 +++ b/pkg/aaparser/aaparser.go
 @@ -0,0 +1,86 @@
@@ -249,7 +249,7 @@ index 0000000000..89b48b2dba
 +	return numericVersion, nil
 +}
 diff --git a/profiles/apparmor/apparmor.go b/profiles/apparmor/apparmor.go
-index 1edfc53002..0d23b940bd 100644
+index 277c853ebe1f..d1aad80cbfd2 100644
 --- a/profiles/apparmor/apparmor.go
 +++ b/profiles/apparmor/apparmor.go
 @@ -11,10 +11,14 @@ import (
@@ -292,7 +292,7 @@ index 1edfc53002..0d23b940bd 100644
  }
  
 diff --git a/profiles/apparmor/template.go b/profiles/apparmor/template.go
-index cf8c34ce8a..4ebd647e14 100644
+index cf8c34ce8af9..4ebd647e14e4 100644
 --- a/profiles/apparmor/template.go
 +++ b/profiles/apparmor/template.go
 @@ -23,12 +23,14 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
@@ -321,5 +321,5 @@ index cf8c34ce8a..4ebd647e14 100644
  }
  `
 -- 
-2.39.0
+2.44.0
 

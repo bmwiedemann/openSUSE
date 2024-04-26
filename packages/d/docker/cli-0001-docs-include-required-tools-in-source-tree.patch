@@ -1,5 +1,5 @@
-From 1390b9a6e0698dd7865e0a910aa4c1338618da4c Mon Sep 17 00:00:00 2001
-From: Aleksa Sarai <asarai@suse.de>
+From b58b0cfe39ec00365ef260ee5758eca9b4fac099 Mon Sep 17 00:00:00 2001
+From: danishprakash <danish.prakash@suse.com>
 Date: Mon, 12 Feb 2024 18:07:06 +0530
 Subject: [PATCH] docs: include required tools in source tree
 
@@ -23,9 +23,9 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
  import.go                                     |   17 +
  man/tools.go                                  |   11 -
  scripts/docs/generate-man.sh                  |   33 +-
- scripts/docs/generate-md.sh                   |   38 +-
+ scripts/docs/generate-md.sh                   |   36 +-
  scripts/docs/generate-yaml.sh                 |   29 +-
- vendor.mod                                    |    8 +
+ vendor.mod                                    |    5 +
  vendor.sum                                    |    4 +
  .../cpuguy83/go-md2man/v2/.gitignore          |    2 +
  .../cpuguy83/go-md2man/v2/.golangci.yml       |    6 +
@@ -84,7 +84,7 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
  vendor/gopkg.in/yaml.v3/yamlh.go              |  807 +++++
  vendor/gopkg.in/yaml.v3/yamlprivateh.go       |  198 ++
  vendor/modules.txt                            |   15 +
- 66 files changed, 22635 insertions(+), 97 deletions(-)
+ 66 files changed, 22631 insertions(+), 96 deletions(-)
  delete mode 100644 docs/generate/go.mod
  delete mode 100644 docs/generate/tools.go
  create mode 100644 import.go
@@ -148,7 +148,7 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
 
 diff --git a/docs/generate/go.mod b/docs/generate/go.mod
 deleted file mode 100644
-index d62ff4557..000000000
+index d62ff455713a..000000000000
 --- a/docs/generate/go.mod
 +++ /dev/null
 @@ -1,13 +0,0 @@
@@ -167,7 +167,7 @@ index d62ff4557..000000000
 -//replace github.com/docker/cli v0.0.0+incompatible => ../../
 diff --git a/docs/generate/tools.go b/docs/generate/tools.go
 deleted file mode 100644
-index 47510bc49..000000000
+index 47510bc49a89..000000000000
 --- a/docs/generate/tools.go
 +++ /dev/null
 @@ -1,8 +0,0 @@
@@ -181,7 +181,7 @@ index 47510bc49..000000000
 -)
 diff --git a/import.go b/import.go
 new file mode 100644
-index 000000000..662a60551
+index 000000000000..662a6055146c
 --- /dev/null
 +++ b/import.go
 @@ -0,0 +1,17 @@
@@ -204,7 +204,7 @@ index 000000000..662a60551
 +)
 diff --git a/man/tools.go b/man/tools.go
 deleted file mode 100644
-index 3cafe6533..000000000
+index 3cafe6533aff..000000000000
 --- a/man/tools.go
 +++ /dev/null
 @@ -1,11 +0,0 @@
@@ -220,7 +220,7 @@ index 3cafe6533..000000000
 -	_ "github.com/spf13/pflag"
 -)
 diff --git a/scripts/docs/generate-man.sh b/scripts/docs/generate-man.sh
-index 12a4b8119..1e12a95e9 100755
+index 12a4b81199db..1e12a95e9c9a 100755
 --- a/scripts/docs/generate-man.sh
 +++ b/scripts/docs/generate-man.sh
 @@ -1,35 +1,22 @@
@@ -270,7 +270,7 @@ index 12a4b8119..1e12a95e9 100755
  mkdir -p man/man1
  (set -x ; /tmp/gen-manpages --root "." --target "$(pwd)/man/man1")
 diff --git a/scripts/docs/generate-md.sh b/scripts/docs/generate-md.sh
-index 9fa49ce27..5f622a229 100755
+index 4caa01eaed23..0af86843bbe4 100755
 --- a/scripts/docs/generate-md.sh
 +++ b/scripts/docs/generate-md.sh
 @@ -1,33 +1,29 @@
@@ -278,7 +278,7 @@ index 9fa49ce27..5f622a229 100755
  
 -set -eu
 -
--: "${CLI_DOCS_TOOL_VERSION=v0.6.0}"
+-: "${CLI_DOCS_TOOL_VERSION=v0.7.0}"
 +set -Eeuo pipefail
  
  export GO111MODULE=auto
@@ -323,15 +323,8 @@ index 9fa49ce27..5f622a229 100755
  
  (
    set -x
-@@ -35,4 +31,4 @@ trap clean EXIT
- )
- 
- # remove generated help.md file
--rm "$(pwd)/docs/reference/commandline/help.md" >/dev/null 2>&1 || true
-+rm "$(pwd)/docs/reference/commandline/help.md" >/dev/null 2>&1 || true
-\ No newline at end of file
 diff --git a/scripts/docs/generate-yaml.sh b/scripts/docs/generate-yaml.sh
-index 4d0006e43..7d98e161d 100755
+index 0d67c5e5bb09..7d98e161df5d 100755
 --- a/scripts/docs/generate-yaml.sh
 +++ b/scripts/docs/generate-yaml.sh
 @@ -1,33 +1,20 @@
@@ -339,7 +332,7 @@ index 4d0006e43..7d98e161d 100755
  
 -set -eu
 -
--: "${CLI_DOCS_TOOL_VERSION=v0.5.1}"
+-: "${CLI_DOCS_TOOL_VERSION=v0.7.0}"
 +set -Eeuo pipefail
  
  export GO111MODULE=auto
@@ -377,48 +370,45 @@ index 4d0006e43..7d98e161d 100755
  mkdir -p docs/yaml
  set -x
 diff --git a/vendor.mod b/vendor.mod
-index c89796cde..36c5777c3 100644
+index 4c62fc143db7..c077944c94d3 100644
 --- a/vendor.mod
 +++ b/vendor.mod
 @@ -11,6 +11,7 @@ require (
- 	github.com/containerd/containerd v1.7.12
+ 	github.com/containerd/containerd v1.7.15
  	github.com/creack/pty v1.1.21
  	github.com/distribution/reference v0.5.0
 +	github.com/docker/cli-docs-tool v0.6.0
  	github.com/docker/distribution v2.8.3+incompatible
- 	github.com/docker/docker v25.0.2+incompatible
+ 	github.com/docker/docker v26.0.1-0.20240422144514-c8af8ebe4a89+incompatible
  	github.com/docker/docker-credential-helpers v0.8.1
-@@ -46,6 +47,11 @@ require (
+@@ -53,6 +54,8 @@ require (
  	tags.cncf.io/container-device-interface v0.6.2
  )
  
-+require (
-+	github.com/cpuguy83/go-md2man/v2 v2.0.3
-+	github.com/docker/cli-docs-tool v0.6.0
-+)
++require github.com/cpuguy83/go-md2man/v2 v2.0.3
 +
  require (
  	github.com/Azure/go-ansiterm v0.0.0-20210617225240-d185dfc1b5a1 // indirect
  	github.com/Microsoft/go-winio v0.6.1 // indirect
-@@ -72,6 +78,7 @@ require (
- 	github.com/prometheus/common v0.42.0 // indirect
- 	github.com/prometheus/procfs v0.9.0 // indirect
+@@ -82,6 +85,7 @@ require (
+ 	github.com/prometheus/common v0.44.0 // indirect
+ 	github.com/prometheus/procfs v0.12.0 // indirect
  	github.com/rivo/uniseg v0.2.0 // indirect
 +	github.com/russross/blackfriday/v2 v2.1.0 // indirect
  	github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb // indirect
  	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
  	go.etcd.io/etcd/raft/v3 v3.5.6 // indirect
-@@ -87,4 +94,5 @@ require (
- 	google.golang.org/genproto/googleapis/rpc v0.0.0-20230711160842-782d3b101e98 // indirect
- 	google.golang.org/grpc v1.58.3 // indirect
- 	google.golang.org/protobuf v1.31.0 // indirect
+@@ -97,4 +101,5 @@ require (
+ 	google.golang.org/genproto/googleapis/rpc v0.0.0-20231016165738-49dd2c1f3d0b // indirect
+ 	google.golang.org/grpc v1.60.1 // indirect
+ 	google.golang.org/protobuf v1.33.0 // indirect
 +	gopkg.in/yaml.v3 v3.0.1 // indirect
  )
 diff --git a/vendor.sum b/vendor.sum
-index 599426b13..30f3d0339 100644
+index f89e8e9b45cf..7b2f888a10d6 100644
 --- a/vendor.sum
 +++ b/vendor.sum
-@@ -41,6 +41,7 @@ github.com/containerd/containerd v1.7.12/go.mod h1:/5OMpE1p0ylxtEUGY8kuCYkDRzJm9
+@@ -44,6 +44,7 @@ github.com/containerd/containerd v1.7.15/go.mod h1:ISzRRTMF8EXNpJlTzyr2XMhN+j9K3
  github.com/containerd/log v0.1.0 h1:TCJt7ioM2cr/tfR8GPbGf9/VRAX8D2B4PjzCpfX540I=
  github.com/containerd/log v0.1.0/go.mod h1:VRRf09a7mHDIRezVKTRCrOq78v577GXq3bSa3EhrzVo=
  github.com/coreos/go-systemd/v22 v22.3.2/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
@@ -426,7 +416,7 @@ index 599426b13..30f3d0339 100644
  github.com/cpuguy83/go-md2man/v2 v2.0.3/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
  github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
  github.com/creack/pty v1.1.21 h1:1/QdRyBaHHJP61QkWMXlOIBfsgdDeeKfK8SYVUWJKf0=
-@@ -51,6 +52,8 @@ github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSs
+@@ -54,6 +55,8 @@ github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSs
  github.com/denisenkom/go-mssqldb v0.0.0-20191128021309-1d7a30a10f73/go.mod h1:xbL0rPBG9cCiLr28tMa8zpbdarY27NDyej4t/EjAShU=
  github.com/distribution/reference v0.5.0 h1:/FUIFXtfc/x2gpa5/VGfiGLuOIdYa1t65IKK2OFGvA0=
  github.com/distribution/reference v0.5.0/go.mod h1:BbU0aIcezP1/5jX/8MP0YiH4SdvB5Y4f/wlDRiLyi3E=
@@ -435,17 +425,17 @@ index 599426b13..30f3d0339 100644
  github.com/docker/distribution v2.7.1+incompatible/go.mod h1:J2gT2udsDAN96Uj4KfcMRqY0/ypR+oyYUYmja8H+y+w=
  github.com/docker/distribution v2.8.3+incompatible h1:AtKxIZ36LoNK51+Z6RpzLpddBirtxJnzDrHLEKxTAYk=
  github.com/docker/distribution v2.8.3+incompatible/go.mod h1:J2gT2udsDAN96Uj4KfcMRqY0/ypR+oyYUYmja8H+y+w=
-@@ -227,6 +230,7 @@ github.com/prometheus/procfs v0.9.0 h1:wzCHvIvM5SxWqYvwgVL7yJY8Lz3PKn49KQtpgMYJf
- github.com/prometheus/procfs v0.9.0/go.mod h1:+pB4zwohETzFnmlpe6yd2lSc+0/46IYZRB/chUwxUZY=
- github.com/rivo/uniseg v0.2.0 h1:S1pD9weZBuJdFmowNwbpi7BJ8TNftyUImj/0WQi72jY=
+@@ -239,6 +242,7 @@ github.com/rivo/uniseg v0.2.0 h1:S1pD9weZBuJdFmowNwbpi7BJ8TNftyUImj/0WQi72jY=
  github.com/rivo/uniseg v0.2.0/go.mod h1:J6wj4VEh+S6ZtnVlnTBMWIodfgj8LQOQFoIToxlJtxc=
+ github.com/rogpeppe/go-internal v1.11.0 h1:cWPaGQEPrBb5/AsnsZesgZZ9yb1OQ+GOISoDNXVBh4M=
+ github.com/rogpeppe/go-internal v1.11.0/go.mod h1:ddIwULY96R17DhadqLgMfk9H9tvdUzkipdSkR5nkCZA=
 +github.com/russross/blackfriday/v2 v2.1.0 h1:JIOH55/0cWyOuilr9/qlrm0BSXldqnqwMsf35Ld67mk=
  github.com/russross/blackfriday/v2 v2.1.0/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
  github.com/sirupsen/logrus v1.0.6/go.mod h1:pMByvHTf9Beacp5x1UXfOR9xyW/9antXMhjMPG0dEzc=
  github.com/sirupsen/logrus v1.2.0/go.mod h1:LxeOpSwHxABJmUn/MG1IvRgCAasNZTLOkJPxbbu5VWo=
 diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/.gitignore b/vendor/github.com/cpuguy83/go-md2man/v2/.gitignore
 new file mode 100644
-index 000000000..30f97c3d7
+index 000000000000..30f97c3d73ab
 --- /dev/null
 +++ b/vendor/github.com/cpuguy83/go-md2man/v2/.gitignore
 @@ -0,0 +1,2 @@
@@ -453,7 +443,7 @@ index 000000000..30f97c3d7
 +bin
 diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/.golangci.yml b/vendor/github.com/cpuguy83/go-md2man/v2/.golangci.yml
 new file mode 100644
-index 000000000..71f073f3c
+index 000000000000..71f073f3c6b9
 --- /dev/null
 +++ b/vendor/github.com/cpuguy83/go-md2man/v2/.golangci.yml
 @@ -0,0 +1,6 @@
@@ -465,7 +455,7 @@ index 000000000..71f073f3c
 +
 diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/Dockerfile b/vendor/github.com/cpuguy83/go-md2man/v2/Dockerfile
 new file mode 100644
-index 000000000..7181c5306
+index 000000000000..7181c5306f41
 --- /dev/null
 +++ b/vendor/github.com/cpuguy83/go-md2man/v2/Dockerfile
 @@ -0,0 +1,20 @@
@@ -491,7 +481,7 @@ index 000000000..7181c5306
 +ENTRYPOINT ["/go-md2man"]
 diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/LICENSE.md b/vendor/github.com/cpuguy83/go-md2man/v2/LICENSE.md
 new file mode 100644
-index 000000000..1cade6cef
+index 000000000000..1cade6cef6a1
 --- /dev/null
 +++ b/vendor/github.com/cpuguy83/go-md2man/v2/LICENSE.md
 @@ -0,0 +1,21 @@
@@ -518,7 +508,7 @@ index 000000000..1cade6cef
 +SOFTWARE.
 diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/Makefile b/vendor/github.com/cpuguy83/go-md2man/v2/Makefile
 new file mode 100644
-index 000000000..437fc9997
+index 000000000000..437fc9997926
 --- /dev/null
 +++ b/vendor/github.com/cpuguy83/go-md2man/v2/Makefile
 @@ -0,0 +1,35 @@
@@ -559,7 +549,7 @@ index 000000000..437fc9997
 +
 diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/README.md b/vendor/github.com/cpuguy83/go-md2man/v2/README.md
 new file mode 100644
-index 000000000..0e30d3414
+index 000000000000..0e30d341483c
 --- /dev/null
 +++ b/vendor/github.com/cpuguy83/go-md2man/v2/README.md
 @@ -0,0 +1,15 @@
@@ -580,7 +570,7 @@ index 000000000..0e30d3414
 +As such you must be using at lest go1.11.
 diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/go-md2man.1.md b/vendor/github.com/cpuguy83/go-md2man/v2/go-md2man.1.md
 new file mode 100644
-index 000000000..aa4587e27
+index 000000000000..aa4587e279ff
 --- /dev/null
 +++ b/vendor/github.com/cpuguy83/go-md2man/v2/go-md2man.1.md
 @@ -0,0 +1,28 @@
@@ -614,7 +604,7 @@ index 000000000..aa4587e27
 +January 2015, Originally compiled by Brian Goff (cpuguy83@gmail.com).
 diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/md2man.go b/vendor/github.com/cpuguy83/go-md2man/v2/md2man.go
 new file mode 100644
-index 000000000..4ff873b8e
+index 000000000000..4ff873b8e767
 --- /dev/null
 +++ b/vendor/github.com/cpuguy83/go-md2man/v2/md2man.go
 @@ -0,0 +1,53 @@
@@ -673,7 +663,7 @@ index 000000000..4ff873b8e
 +}
 diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/md2man/md2man.go b/vendor/github.com/cpuguy83/go-md2man/v2/md2man/md2man.go
 new file mode 100644
-index 000000000..42bf32aab
+index 000000000000..42bf32aab003
 --- /dev/null
 +++ b/vendor/github.com/cpuguy83/go-md2man/v2/md2man/md2man.go
 @@ -0,0 +1,16 @@
@@ -695,7 +685,7 @@ index 000000000..42bf32aab
 +}
 diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/md2man/roff.go b/vendor/github.com/cpuguy83/go-md2man/v2/md2man/roff.go
 new file mode 100644
-index 000000000..4b19188d9
+index 000000000000..4b19188d90fd
 --- /dev/null
 +++ b/vendor/github.com/cpuguy83/go-md2man/v2/md2man/roff.go
 @@ -0,0 +1,348 @@
@@ -1049,7 +1039,7 @@ index 000000000..4b19188d9
 +}
 diff --git a/vendor/github.com/docker/cli-docs-tool/.dockerignore b/vendor/github.com/docker/cli-docs-tool/.dockerignore
 new file mode 100644
-index 000000000..c8c323c89
+index 000000000000..c8c323c89663
 --- /dev/null
 +++ b/vendor/github.com/docker/cli-docs-tool/.dockerignore
 @@ -0,0 +1,2 @@
@@ -1057,7 +1047,7 @@ index 000000000..c8c323c89
 +/example/docs
 diff --git a/vendor/github.com/docker/cli-docs-tool/.gitignore b/vendor/github.com/docker/cli-docs-tool/.gitignore
 new file mode 100644
-index 000000000..c8c323c89
+index 000000000000..c8c323c89663
 --- /dev/null
 +++ b/vendor/github.com/docker/cli-docs-tool/.gitignore
 @@ -0,0 +1,2 @@
@@ -1065,7 +1055,7 @@ index 000000000..c8c323c89
 +/example/docs
 diff --git a/vendor/github.com/docker/cli-docs-tool/.golangci.yml b/vendor/github.com/docker/cli-docs-tool/.golangci.yml
 new file mode 100644
-index 000000000..6c6557176
+index 000000000000..6c6557176b28
 --- /dev/null
 +++ b/vendor/github.com/docker/cli-docs-tool/.golangci.yml
 @@ -0,0 +1,37 @@
@@ -1108,7 +1098,7 @@ index 000000000..6c6557176
 +      text: "stutters"
 diff --git a/vendor/github.com/docker/cli-docs-tool/Dockerfile b/vendor/github.com/docker/cli-docs-tool/Dockerfile
 new file mode 100644
-index 000000000..f0e2739fa
+index 000000000000..f0e2739faa7c
 --- /dev/null
 +++ b/vendor/github.com/docker/cli-docs-tool/Dockerfile
 @@ -0,0 +1,86 @@
@@ -1200,7 +1190,7 @@ index 000000000..f0e2739fa
 +COPY --from=test /tmp/coverage.txt /coverage.txt
 diff --git a/vendor/github.com/docker/cli-docs-tool/LICENSE b/vendor/github.com/docker/cli-docs-tool/LICENSE
 new file mode 100644
-index 000000000..d64569567
+index 000000000000..d64569567334
 --- /dev/null
 +++ b/vendor/github.com/docker/cli-docs-tool/LICENSE
 @@ -0,0 +1,202 @@
@@ -1408,7 +1398,7 @@ index 000000000..d64569567
 +   limitations under the License.
 diff --git a/vendor/github.com/docker/cli-docs-tool/README.md b/vendor/github.com/docker/cli-docs-tool/README.md
 new file mode 100644
-index 000000000..4d5ee6474
+index 000000000000..4d5ee6474f8f
 --- /dev/null
 +++ b/vendor/github.com/docker/cli-docs-tool/README.md
 @@ -0,0 +1,67 @@
@@ -1481,7 +1471,7 @@ index 000000000..4d5ee6474
 +this project in the [CONTRIBUTING.md](/.github/CONTRIBUTING.md)
 diff --git a/vendor/github.com/docker/cli-docs-tool/annotation/annotation.go b/vendor/github.com/docker/cli-docs-tool/annotation/annotation.go
 new file mode 100644
-index 000000000..021846af6
+index 000000000000..021846af6e07
 --- /dev/null
 +++ b/vendor/github.com/docker/cli-docs-tool/annotation/annotation.go
 @@ -0,0 +1,25 @@
@@ -1512,7 +1502,7 @@ index 000000000..021846af6
 +)
 diff --git a/vendor/github.com/docker/cli-docs-tool/clidocstool.go b/vendor/github.com/docker/cli-docs-tool/clidocstool.go
 new file mode 100644
-index 000000000..d4aeaba3f
+index 000000000000..d4aeaba3f126
 --- /dev/null
 +++ b/vendor/github.com/docker/cli-docs-tool/clidocstool.go
 @@ -0,0 +1,123 @@
@@ -1641,7 +1631,7 @@ index 000000000..d4aeaba3f
 +}
 diff --git a/vendor/github.com/docker/cli-docs-tool/clidocstool_md.go b/vendor/github.com/docker/cli-docs-tool/clidocstool_md.go
 new file mode 100644
-index 000000000..1dee58c06
+index 000000000000..1dee58c06ca1
 --- /dev/null
 +++ b/vendor/github.com/docker/cli-docs-tool/clidocstool_md.go
 @@ -0,0 +1,280 @@
@@ -1927,7 +1917,7 @@ index 000000000..1dee58c06
 +}
 diff --git a/vendor/github.com/docker/cli-docs-tool/clidocstool_yaml.go b/vendor/github.com/docker/cli-docs-tool/clidocstool_yaml.go
 new file mode 100644
-index 000000000..523524297
+index 000000000000..523524297af4
 --- /dev/null
 +++ b/vendor/github.com/docker/cli-docs-tool/clidocstool_yaml.go
 @@ -0,0 +1,435 @@
@@ -2368,7 +2358,7 @@ index 000000000..523524297
 +func (s byName) Less(i, j int) bool { return s[i].Name() < s[j].Name() }
 diff --git a/vendor/github.com/docker/cli-docs-tool/docker-bake.hcl b/vendor/github.com/docker/cli-docs-tool/docker-bake.hcl
 new file mode 100644
-index 000000000..4a5f44f83
+index 000000000000..4a5f44f83018
 --- /dev/null
 +++ b/vendor/github.com/docker/cli-docs-tool/docker-bake.hcl
 @@ -0,0 +1,51 @@
@@ -2425,7 +2415,7 @@ index 000000000..4a5f44f83
 +}
 diff --git a/vendor/github.com/docker/cli-docs-tool/markdown.go b/vendor/github.com/docker/cli-docs-tool/markdown.go
 new file mode 100644
-index 000000000..32849236e
+index 000000000000..32849236ed9c
 --- /dev/null
 +++ b/vendor/github.com/docker/cli-docs-tool/markdown.go
 @@ -0,0 +1,87 @@
@@ -2518,7 +2508,7 @@ index 000000000..32849236e
 +}
 diff --git a/vendor/github.com/russross/blackfriday/v2/.gitignore b/vendor/github.com/russross/blackfriday/v2/.gitignore
 new file mode 100644
-index 000000000..75623dccc
+index 000000000000..75623dcccbb7
 --- /dev/null
 +++ b/vendor/github.com/russross/blackfriday/v2/.gitignore
 @@ -0,0 +1,8 @@
@@ -2532,7 +2522,7 @@ index 000000000..75623dccc
 +tags
 diff --git a/vendor/github.com/russross/blackfriday/v2/.travis.yml b/vendor/github.com/russross/blackfriday/v2/.travis.yml
 new file mode 100644
-index 000000000..b0b525a5a
+index 000000000000..b0b525a5a8e1
 --- /dev/null
 +++ b/vendor/github.com/russross/blackfriday/v2/.travis.yml
 @@ -0,0 +1,17 @@
@@ -2555,7 +2545,7 @@ index 000000000..b0b525a5a
 +  - go test -v ./...
 diff --git a/vendor/github.com/russross/blackfriday/v2/LICENSE.txt b/vendor/github.com/russross/blackfriday/v2/LICENSE.txt
 new file mode 100644
-index 000000000..2885af360
+index 000000000000..2885af3602d8
 --- /dev/null
 +++ b/vendor/github.com/russross/blackfriday/v2/LICENSE.txt
 @@ -0,0 +1,29 @@
@@ -2590,7 +2580,7 @@ index 000000000..2885af360
 +> POSSIBILITY OF SUCH DAMAGE.
 diff --git a/vendor/github.com/russross/blackfriday/v2/README.md b/vendor/github.com/russross/blackfriday/v2/README.md
 new file mode 100644
-index 000000000..d9c08a22f
+index 000000000000..d9c08a22fc54
 --- /dev/null
 +++ b/vendor/github.com/russross/blackfriday/v2/README.md
 @@ -0,0 +1,335 @@
@@ -2931,7 +2921,7 @@ index 000000000..d9c08a22f
 +   [PkgGoDevV2URL]: https://pkg.go.dev/github.com/russross/blackfriday/v2
 diff --git a/vendor/github.com/russross/blackfriday/v2/block.go b/vendor/github.com/russross/blackfriday/v2/block.go
 new file mode 100644
-index 000000000..dcd61e6e3
+index 000000000000..dcd61e6e35bc
 --- /dev/null
 +++ b/vendor/github.com/russross/blackfriday/v2/block.go
 @@ -0,0 +1,1612 @@
@@ -4549,7 +4539,7 @@ index 000000000..dcd61e6e3
 +}
 diff --git a/vendor/github.com/russross/blackfriday/v2/doc.go b/vendor/github.com/russross/blackfriday/v2/doc.go
 new file mode 100644
-index 000000000..57ff152a0
+index 000000000000..57ff152a0568
 --- /dev/null
 +++ b/vendor/github.com/russross/blackfriday/v2/doc.go
 @@ -0,0 +1,46 @@
@@ -4601,7 +4591,7 @@ index 000000000..57ff152a0
 +//       that are incompatible with those generated by blackfriday.
 diff --git a/vendor/github.com/russross/blackfriday/v2/entities.go b/vendor/github.com/russross/blackfriday/v2/entities.go
 new file mode 100644
-index 000000000..a2c3edb69
+index 000000000000..a2c3edb691c8
 --- /dev/null
 +++ b/vendor/github.com/russross/blackfriday/v2/entities.go
 @@ -0,0 +1,2236 @@
@@ -6843,7 +6833,7 @@ index 000000000..a2c3edb69
 +}
 diff --git a/vendor/github.com/russross/blackfriday/v2/esc.go b/vendor/github.com/russross/blackfriday/v2/esc.go
 new file mode 100644
-index 000000000..6ab60102c
+index 000000000000..6ab60102c9bf
 --- /dev/null
 +++ b/vendor/github.com/russross/blackfriday/v2/esc.go
 @@ -0,0 +1,70 @@
@@ -6919,7 +6909,7 @@ index 000000000..6ab60102c
 +}
 diff --git a/vendor/github.com/russross/blackfriday/v2/html.go b/vendor/github.com/russross/blackfriday/v2/html.go
 new file mode 100644
-index 000000000..cb4f26e30
+index 000000000000..cb4f26e30fd5
 --- /dev/null
 +++ b/vendor/github.com/russross/blackfriday/v2/html.go
 @@ -0,0 +1,952 @@
@@ -7877,7 +7867,7 @@ index 000000000..cb4f26e30
 +}
 diff --git a/vendor/github.com/russross/blackfriday/v2/inline.go b/vendor/github.com/russross/blackfriday/v2/inline.go
 new file mode 100644
-index 000000000..d45bd9417
+index 000000000000..d45bd941726e
 --- /dev/null
 +++ b/vendor/github.com/russross/blackfriday/v2/inline.go
 @@ -0,0 +1,1228 @@
@@ -9111,7 +9101,7 @@ index 000000000..d45bd9417
 +}
 diff --git a/vendor/github.com/russross/blackfriday/v2/markdown.go b/vendor/github.com/russross/blackfriday/v2/markdown.go
 new file mode 100644
-index 000000000..58d2e4538
+index 000000000000..58d2e4538c62
 --- /dev/null
 +++ b/vendor/github.com/russross/blackfriday/v2/markdown.go
 @@ -0,0 +1,950 @@
@@ -10067,7 +10057,7 @@ index 000000000..58d2e4538
 +}
 diff --git a/vendor/github.com/russross/blackfriday/v2/node.go b/vendor/github.com/russross/blackfriday/v2/node.go
 new file mode 100644
-index 000000000..04e6050ce
+index 000000000000..04e6050ceeae
 --- /dev/null
 +++ b/vendor/github.com/russross/blackfriday/v2/node.go
 @@ -0,0 +1,360 @@
@@ -10433,7 +10423,7 @@ index 000000000..04e6050ce
 +}
 diff --git a/vendor/github.com/russross/blackfriday/v2/smartypants.go b/vendor/github.com/russross/blackfriday/v2/smartypants.go
 new file mode 100644
-index 000000000..3a220e942
+index 000000000000..3a220e94247d
 --- /dev/null
 +++ b/vendor/github.com/russross/blackfriday/v2/smartypants.go
 @@ -0,0 +1,457 @@
@@ -10896,7 +10886,7 @@ index 000000000..3a220e942
 +}
 diff --git a/vendor/github.com/spf13/cobra/doc/man_docs.go b/vendor/github.com/spf13/cobra/doc/man_docs.go
 new file mode 100644
-index 000000000..b8c15ce88
+index 000000000000..b8c15ce88543
 --- /dev/null
 +++ b/vendor/github.com/spf13/cobra/doc/man_docs.go
 @@ -0,0 +1,246 @@
@@ -11148,7 +11138,7 @@ index 000000000..b8c15ce88
 +}
 diff --git a/vendor/github.com/spf13/cobra/doc/md_docs.go b/vendor/github.com/spf13/cobra/doc/md_docs.go
 new file mode 100644
-index 000000000..f98fe2a3b
+index 000000000000..f98fe2a3b8f3
 --- /dev/null
 +++ b/vendor/github.com/spf13/cobra/doc/md_docs.go
 @@ -0,0 +1,158 @@
@@ -11312,7 +11302,7 @@ index 000000000..f98fe2a3b
 +}
 diff --git a/vendor/github.com/spf13/cobra/doc/rest_docs.go b/vendor/github.com/spf13/cobra/doc/rest_docs.go
 new file mode 100644
-index 000000000..2cca6fd77
+index 000000000000..2cca6fd778de
 --- /dev/null
 +++ b/vendor/github.com/spf13/cobra/doc/rest_docs.go
 @@ -0,0 +1,186 @@
@@ -11504,7 +11494,7 @@ index 000000000..2cca6fd77
 +}
 diff --git a/vendor/github.com/spf13/cobra/doc/util.go b/vendor/github.com/spf13/cobra/doc/util.go
 new file mode 100644
-index 000000000..0aaa07a16
+index 000000000000..0aaa07a166d8
 --- /dev/null
 +++ b/vendor/github.com/spf13/cobra/doc/util.go
 @@ -0,0 +1,52 @@
@@ -11562,7 +11552,7 @@ index 000000000..0aaa07a16
 +func (s byName) Less(i, j int) bool { return s[i].Name() < s[j].Name() }
 diff --git a/vendor/github.com/spf13/cobra/doc/yaml_docs.go b/vendor/github.com/spf13/cobra/doc/yaml_docs.go
 new file mode 100644
-index 000000000..2b26d6ec0
+index 000000000000..2b26d6ec0f3e
 --- /dev/null
 +++ b/vendor/github.com/spf13/cobra/doc/yaml_docs.go
 @@ -0,0 +1,175 @@
@@ -11743,7 +11733,7 @@ index 000000000..2b26d6ec0
 +}
 diff --git a/vendor/gopkg.in/yaml.v3/LICENSE b/vendor/gopkg.in/yaml.v3/LICENSE
 new file mode 100644
-index 000000000..2683e4bb1
+index 000000000000..2683e4bb1f24
 --- /dev/null
 +++ b/vendor/gopkg.in/yaml.v3/LICENSE
 @@ -0,0 +1,50 @@
@@ -11799,7 +11789,7 @@ index 000000000..2683e4bb1
 +limitations under the License.
 diff --git a/vendor/gopkg.in/yaml.v3/NOTICE b/vendor/gopkg.in/yaml.v3/NOTICE
 new file mode 100644
-index 000000000..866d74a7a
+index 000000000000..866d74a7ad79
 --- /dev/null
 +++ b/vendor/gopkg.in/yaml.v3/NOTICE
 @@ -0,0 +1,13 @@
@@ -11818,7 +11808,7 @@ index 000000000..866d74a7a
 +limitations under the License.
 diff --git a/vendor/gopkg.in/yaml.v3/README.md b/vendor/gopkg.in/yaml.v3/README.md
 new file mode 100644
-index 000000000..08eb1babd
+index 000000000000..08eb1babddfa
 --- /dev/null
 +++ b/vendor/gopkg.in/yaml.v3/README.md
 @@ -0,0 +1,150 @@
@@ -11974,7 +11964,7 @@ index 000000000..08eb1babd
 +
 diff --git a/vendor/gopkg.in/yaml.v3/apic.go b/vendor/gopkg.in/yaml.v3/apic.go
 new file mode 100644
-index 000000000..ae7d049f1
+index 000000000000..ae7d049f182a
 --- /dev/null
 +++ b/vendor/gopkg.in/yaml.v3/apic.go
 @@ -0,0 +1,747 @@
@@ -12727,7 +12717,7 @@ index 000000000..ae7d049f1
 +//
 diff --git a/vendor/gopkg.in/yaml.v3/decode.go b/vendor/gopkg.in/yaml.v3/decode.go
 new file mode 100644
-index 000000000..0173b6982
+index 000000000000..0173b6982e84
 --- /dev/null
 +++ b/vendor/gopkg.in/yaml.v3/decode.go
 @@ -0,0 +1,1000 @@
@@ -13733,7 +13723,7 @@ index 000000000..0173b6982
 +}
 diff --git a/vendor/gopkg.in/yaml.v3/emitterc.go b/vendor/gopkg.in/yaml.v3/emitterc.go
 new file mode 100644
-index 000000000..0f47c9ca8
+index 000000000000..0f47c9ca8add
 --- /dev/null
 +++ b/vendor/gopkg.in/yaml.v3/emitterc.go
 @@ -0,0 +1,2020 @@
@@ -15759,7 +15749,7 @@ index 000000000..0f47c9ca8
 +}
 diff --git a/vendor/gopkg.in/yaml.v3/encode.go b/vendor/gopkg.in/yaml.v3/encode.go
 new file mode 100644
-index 000000000..de9e72a3e
+index 000000000000..de9e72a3e638
 --- /dev/null
 +++ b/vendor/gopkg.in/yaml.v3/encode.go
 @@ -0,0 +1,577 @@
@@ -16342,7 +16332,7 @@ index 000000000..de9e72a3e
 +}
 diff --git a/vendor/gopkg.in/yaml.v3/parserc.go b/vendor/gopkg.in/yaml.v3/parserc.go
 new file mode 100644
-index 000000000..268558a0d
+index 000000000000..268558a0d632
 --- /dev/null
 +++ b/vendor/gopkg.in/yaml.v3/parserc.go
 @@ -0,0 +1,1258 @@
@@ -17606,7 +17596,7 @@ index 000000000..268558a0d
 +}
 diff --git a/vendor/gopkg.in/yaml.v3/readerc.go b/vendor/gopkg.in/yaml.v3/readerc.go
 new file mode 100644
-index 000000000..b7de0a89c
+index 000000000000..b7de0a89c462
 --- /dev/null
 +++ b/vendor/gopkg.in/yaml.v3/readerc.go
 @@ -0,0 +1,434 @@
@@ -18046,7 +18036,7 @@ index 000000000..b7de0a89c
 +}
 diff --git a/vendor/gopkg.in/yaml.v3/resolve.go b/vendor/gopkg.in/yaml.v3/resolve.go
 new file mode 100644
-index 000000000..64ae88805
+index 000000000000..64ae888057a5
 --- /dev/null
 +++ b/vendor/gopkg.in/yaml.v3/resolve.go
 @@ -0,0 +1,326 @@
@@ -18378,7 +18368,7 @@ index 000000000..64ae88805
 +}
 diff --git a/vendor/gopkg.in/yaml.v3/scannerc.go b/vendor/gopkg.in/yaml.v3/scannerc.go
 new file mode 100644
-index 000000000..ca0070108
+index 000000000000..ca0070108f4e
 --- /dev/null
 +++ b/vendor/gopkg.in/yaml.v3/scannerc.go
 @@ -0,0 +1,3038 @@
@@ -21422,7 +21412,7 @@ index 000000000..ca0070108
 +}
 diff --git a/vendor/gopkg.in/yaml.v3/sorter.go b/vendor/gopkg.in/yaml.v3/sorter.go
 new file mode 100644
-index 000000000..9210ece7e
+index 000000000000..9210ece7e972
 --- /dev/null
 +++ b/vendor/gopkg.in/yaml.v3/sorter.go
 @@ -0,0 +1,134 @@
@@ -21562,7 +21552,7 @@ index 000000000..9210ece7e
 +}
 diff --git a/vendor/gopkg.in/yaml.v3/writerc.go b/vendor/gopkg.in/yaml.v3/writerc.go
 new file mode 100644
-index 000000000..b8a116bf9
+index 000000000000..b8a116bf9a22
 --- /dev/null
 +++ b/vendor/gopkg.in/yaml.v3/writerc.go
 @@ -0,0 +1,48 @@
@@ -21616,7 +21606,7 @@ index 000000000..b8a116bf9
 +}
 diff --git a/vendor/gopkg.in/yaml.v3/yaml.go b/vendor/gopkg.in/yaml.v3/yaml.go
 new file mode 100644
-index 000000000..8cec6da48
+index 000000000000..8cec6da48d3e
 --- /dev/null
 +++ b/vendor/gopkg.in/yaml.v3/yaml.go
 @@ -0,0 +1,698 @@
@@ -22320,7 +22310,7 @@ index 000000000..8cec6da48
 +}
 diff --git a/vendor/gopkg.in/yaml.v3/yamlh.go b/vendor/gopkg.in/yaml.v3/yamlh.go
 new file mode 100644
-index 000000000..7c6d00770
+index 000000000000..7c6d00770619
 --- /dev/null
 +++ b/vendor/gopkg.in/yaml.v3/yamlh.go
 @@ -0,0 +1,807 @@
@@ -23133,7 +23123,7 @@ index 000000000..7c6d00770
 +}
 diff --git a/vendor/gopkg.in/yaml.v3/yamlprivateh.go b/vendor/gopkg.in/yaml.v3/yamlprivateh.go
 new file mode 100644
-index 000000000..e88f9c54a
+index 000000000000..e88f9c54aecb
 --- /dev/null
 +++ b/vendor/gopkg.in/yaml.v3/yamlprivateh.go
 @@ -0,0 +1,198 @@
@@ -23336,10 +23326,10 @@ index 000000000..e88f9c54a
 +
 +}
 diff --git a/vendor/modules.txt b/vendor/modules.txt
-index 7ba2a97d3..9389d4131 100644
+index a9627e8c2978..78ee69b33ab7 100644
 --- a/vendor/modules.txt
 +++ b/vendor/modules.txt
-@@ -30,12 +30,20 @@ github.com/containerd/containerd/platforms
+@@ -33,12 +33,20 @@ github.com/containerd/containerd/platforms
  # github.com/containerd/log v0.1.0
  ## explicit; go 1.20
  github.com/containerd/log
@@ -23360,7 +23350,7 @@ index 7ba2a97d3..9389d4131 100644
  # github.com/docker/distribution v2.8.3+incompatible
  ## explicit
  github.com/docker/distribution
-@@ -242,12 +250,16 @@ github.com/prometheus/procfs/internal/util
+@@ -252,12 +260,16 @@ github.com/prometheus/procfs/internal/util
  # github.com/rivo/uniseg v0.2.0
  ## explicit; go 1.12
  github.com/rivo/uniseg
@@ -23377,7 +23367,7 @@ index 7ba2a97d3..9389d4131 100644
  # github.com/spf13/pflag v1.0.5
  ## explicit; go 1.12
  github.com/spf13/pflag
-@@ -452,6 +464,9 @@ google.golang.org/protobuf/types/known/timestamppb
+@@ -521,6 +533,9 @@ google.golang.org/protobuf/types/known/wrapperspb
  # gopkg.in/yaml.v2 v2.4.0
  ## explicit; go 1.15
  gopkg.in/yaml.v2
@@ -23388,5 +23378,5 @@ index 7ba2a97d3..9389d4131 100644
  ## explicit; go 1.17
  gotest.tools/v3/assert
 -- 
-2.39.0
+2.44.0
 

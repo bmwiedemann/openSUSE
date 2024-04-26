@@ -1391,4 +1391,12 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
     <comment></comment>
     <requestid>1151209</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>21792492e8ab20f60c746145f30a6d4c</srcmd5>
+    <version>26.1.0_ce</version>
+    <time>1714166803</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1170269</requestid>
+  </revision>
 </revisionlist>
