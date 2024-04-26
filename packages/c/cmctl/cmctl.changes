@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 25 19:06:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.14.5:
+  * [release-1.14] fix CVE-2023-45288, bump base images, bump go
+  * make update-licenses
+  * Bump github.com/go-jose/go-jose to v3.0.3 to fix CVE-2024-28180
+  * Update cmd/ctl's go.mod to v1.14.4
+
+-------------------------------------------------------------------
 Fri Mar 15 22:30:19 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.14.4:
