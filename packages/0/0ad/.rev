@@ -94,4 +94,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1158162</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>86a9bc1b564a1a9d4577afde9625e70a</srcmd5>
+    <version>0.0.26</version>
+    <time>1714166834</time>
+    <user>anag+factory</user>
+    <comment>- Add fix-boost-1.85-build.patch to fix build with boost 1.85.
+</comment>
+    <requestid>1170217</requestid>
+  </revision>
 </revisionlist>

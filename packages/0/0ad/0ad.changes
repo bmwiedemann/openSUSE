@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 25 22:29:04 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add fix-boost-1.85-build.patch to fix build with boost 1.85.
+
+-------------------------------------------------------------------
 Fri Mar  8 07:44:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
