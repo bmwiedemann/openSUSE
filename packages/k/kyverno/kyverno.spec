@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kyverno
-Version:        1.11.4
+Version:        1.12.0
 Release:        0
 Summary:        CLI and kubectl plugin for Kyverno
 License:        Apache-2.0
@@ -71,7 +71,10 @@ BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || dat
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-s -w -X github.com/kyverno/kyverno/pkg/version.BuildVersion=%{version} -X github.com/kyverno/kyverno/pkg/version.BuildHash=%{version} -X github.com/kyverno/kyverno/pkg/version.BuildTime=$BUILD_DATE" \
+   -ldflags=" \
+   -X github.com/kyverno/kyverno/pkg/version.BuildVersion=%{version} \
+   -X github.com/kyverno/kyverno/pkg/version.BuildHash=%{version} \
+   -X github.com/kyverno/kyverno/pkg/version.BuildTime=$BUILD_DATE" \
    -o bin/kyverno ./cmd/cli/kubectl-kyverno
 
 %install

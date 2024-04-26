@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 26 12:32:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.12.0:
+  large update, please see the full changelog at
+  https://github.com/kyverno/kyverno/releases/tag/v1.12.0
+  Breaking (Potentially)
+  * Policies using long-deprecated or invalid operators in
+    conditions (ex., In and NotIn) will be blocked. Please see
+    the current list of available operators
+    [here](https://kyverno.io/docs/writing-policies/preconditions/#operators)
+
+-------------------------------------------------------------------
+Thu Apr 18 07:48:19 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- do not strip aka remove -s -w ldflags
+
+-------------------------------------------------------------------
 Sat Jan 20 17:04:46 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.11.4:
