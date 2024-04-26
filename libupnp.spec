@@ -1,7 +1,7 @@
 #
 # spec file for package libupnp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011, Sascha Peilicke <saschpe@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,13 +20,13 @@
 %define pnpver 17
 %define ixmlver 11
 Name:           libupnp
-Version:        1.14.18
+Version:        1.14.19
 Release:        0
 Summary:        An implementation of Universal Plug and Play (UPnP)
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/pupnp/pupnp
-Source:         https://github.com/pupnp/pupnp/releases/download/release-%version/libupnp-%version.tar.bz2
+Source:         https://github.com/pupnp/pupnp/releases/download/release-%version/%name-%version.tar.bz2
 Source3:        baselibs.conf
 BuildRequires:  libtool
 BuildRequires:  pkg-config
@@ -80,12 +80,10 @@ systems.
 
 %install
 %make_install
-find %buildroot -type f -name "*.la" -delete -print
+find "%buildroot" -type f -name "*.la" -delete -print
 
-%post   -p /sbin/ldconfig -n %name%pnpver
-%postun -p /sbin/ldconfig -n %name%pnpver
-%post   -p /sbin/ldconfig -n libixml%ixmlver
-%postun -p /sbin/ldconfig -n libixml%ixmlver
+%ldconfig_scriptlets -n %name%pnpver
+%ldconfig_scriptlets -n libixml%ixmlver
 
 %files -n %name%pnpver
 %license COPYING
