@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 25 18:07:37 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.28.1
+  * fix: reduce memory footprint when loading TLDs
+    gh#kvesteri/validators#362
+  * fix: rfc cases in the domain validator
+    gh#kvesteri/validators#367
+  * chore: documentation maintenance
+    gh#kvesteri/validators#368
+
+-------------------------------------------------------------------
 Wed Apr 10 23:38:31 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.28.0

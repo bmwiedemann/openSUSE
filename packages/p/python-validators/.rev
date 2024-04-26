@@ -200,4 +200,18 @@ Changes in 0.19.0:
   See https://github.com/python-validators/validators/compare/0.24.0...0.28.0</comment>
     <requestid>1166730</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>faecf8c7a1dbfecae217b7554ad0cbd3</srcmd5>
+    <version>0.28.1</version>
+    <time>1714166796</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.28.1
+  * fix: reduce memory footprint when loading TLDs
+    gh#kvesteri/validators#362
+  * fix: rfc cases in the domain validator
+    gh#kvesteri/validators#367
+  * chore: documentation maintenance
+    gh#kvesteri/validators#368</comment>
+    <requestid>1170193</requestid>
+  </revision>
 </revisionlist>
