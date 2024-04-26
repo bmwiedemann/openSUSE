@@ -1379,4 +1379,16 @@
     <comment></comment>
     <requestid>1163262</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>da3b518c067850f222424e4f65c8920f</srcmd5>
+    <version>3.7.2</version>
+    <time>1714166793</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.7.2:
+  + Fix runtime issue introduced by SQLite 3.45.3.
+  + Fix possible inconsistency in the handling of DELETE WHERE
+    queries.
+  + Updated translations. (forwarded request 1170165 from dimstar)</comment>
+    <requestid>1170167</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 25 14:46:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.7.2:
+  + Fix runtime issue introduced by SQLite 3.45.3.
+  + Fix possible inconsistency in the handling of DELETE WHERE
+    queries.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Mar 28 08:04:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.7.1:
