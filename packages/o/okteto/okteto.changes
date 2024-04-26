@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 26 12:31:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.26.1:
+  * Build automatically an image in a compose scenario where build
+    is not specified, image is specified and there are volume
+    mounts (#4255) (#4264)
+  * fix push script (#4249) (#4258)
+
+-------------------------------------------------------------------
 Tue Apr 16 18:01:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.26.0:
