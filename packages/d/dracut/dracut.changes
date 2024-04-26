@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Apr 26 06:19:27 UTC 2024 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.581.g19b7c06c:
+  * fix(dracut): move hooks directory from /usr/lib to /var/lib (bsc#1218068)
+  * feat(tpm2-tss): add tpm2.target and systemd-tpm2-generator
+  * fix(systemd): explicitly install some libs that will not be statically included
+  * fix(dracut-lib): only remove initqueue/finished scripts, not the hook dir
+  * fix(dracut-util): avoid memory leak
+  * fix(dracut-install): memory leak in two `hashmap_put` calls if key exists
+  * fix(dracut-install): release memory allocated for regular expressions
+  * fix(dracut-install): memory leak in `--modalias` option
+  * refactor(dracut-install): strerror(errno) -> %m
+  * perf(dracut-install): don't strdup() environment block
+  * perf(dracut-install): don't reallocate {src,dst}path in hmac_install()
+  * perf(dracut-install): don't strdup() excessively for dracut_install()
+  * perf(dracut-install): stat() w/unused buf -> access(F_OK) in dracut-install
+  * perf(dracut-install): multiple single-character strstr()s -> strpbrk()
+
+-------------------------------------------------------------------
 Tue Apr 16 13:34:55 UTC 2024 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.563.g4900899a:

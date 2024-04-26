@@ -89,8 +89,9 @@ The following list shows the commits merged (those marked with "MERGED") since
 the upgrade to dracut-059 (0aa08f0e docs: update NEWS.md and AUTHORS), extracted
 using `git log --oneline 0aa08f0e..HEAD`:
 
+MERGED  5d2bda46 fix(zfcp_rules): correct shellcheck regression when parsing ccw args
         4980bad3 fix(configure): misleading error if C compiler is not installed
-        de8ac630 fix(github): update format of labeler
+MERGED  de8ac630 fix(github): update format of labeler
 MERGED  4971f443 fix(systemd-journald): add systemd-sysusers dependency
 MERGED  4d594210 fix(dracut-initramfs-restore.sh): do not set selinux labels if disabled
 MERGED  1586af09 fix(systemd-repart): correct undefined $libdir
@@ -295,13 +296,13 @@ MERGED  88fe9205 fix: shellcheck 0.8.0
 MERGED  93339444 fix(dmsquash-live): live:/dev/*
 MERGED  10cf8e46 fix(load_fstype): avoid false positive searchs
 MERGED  08b63a25 fix: shellcheck 0.8.0
-        94dcac7c refactor(dracut-install): strerror(errno) -> %m
-        efd4ca27 perf(dracut-install): don't strdup() environment block
-        77226cb4 perf(dracut-install): don't reallocate {src,dst}path in hmac_install()
-        a20556f0 perf(dracut-install): don't strdup() excessively for dracut_install()
-        e7ed8337 perf(dracut-install): stat() w/unused buf -> access(F_OK) in dracut-install
-        751a110f perf(dracut-install): multiple single-character strstr()s -> strpbrk()
-        1e5237dd chore: remove src/install/hashmap.lo
+MERGED  94dcac7c refactor(dracut-install): strerror(errno) -> %m
+MERGED  efd4ca27 perf(dracut-install): don't strdup() environment block
+MERGED  77226cb4 perf(dracut-install): don't reallocate {src,dst}path in hmac_install()
+MERGED  a20556f0 perf(dracut-install): don't strdup() excessively for dracut_install()
+MERGED  e7ed8337 perf(dracut-install): stat() w/unused buf -> access(F_OK) in dracut-install
+MERGED  751a110f perf(dracut-install): multiple single-character strstr()s -> strpbrk()
+MERGED  1e5237dd chore: remove src/install/hashmap.lo
 MERGED  9dbbebb1 feat(network-wicked): remove module
 
 
@@ -325,10 +326,15 @@ PR      Commit message
 2557    feat(kernel-modules): install SPMI modules on ARM/RISC-V
 2559    feat(install.d): add sort-key field to rescue BLS entries
 2560    feat(resume): do not attempt to install systemd-hibernate-resume@.service
+2571    fix(dracut-install): memory leak in `--modalias` option
+2573    fix(dracut-install): release memory allocated for regular expressions
+2574    fix(dracut-install): memory leak in two `hashmap_put` calls if key exists
 2593    fix(dracut.sh): do not add device if find_block_device returns an error
 2593    feat(dracut.sh): protect push_host_devs function
+2601    feat(tpm2-tss): add tpm2.target and systemd-tpm2-generator
 2607    fix(dracut-util): do not call strcmp if the value argument is NULL
 2607    fix(dracut): correct regression with multiple `rd.break=` options
+2608    fix(dracut-util): avoid memory leak
 2611    fix(livenet): propagate error code
 2611    fix(livenet): check also `content-length` from live image header
 2611    fix(livenet): split `imgsize` calculation to avoid misleading error message
@@ -336,5 +342,12 @@ PR      Commit message
 2614    fix(dracut-systemd): replace `rd.udev.log-priority` with `rd.udev.log_level`
 2618    fix(i18n): handle keymap includes with `--sysroot`
 2618    fix(dracut-init.sh): handle decompress with `--sysroot`
-2630    fix(zfcp_rules): correct shellcheck regression when parsing ccw args
+2623    fix(dracut-lib): only remove initqueue/finished scripts, not the hook dir
+2643    fix(systemd): explicitly install some libs that will not be statically included
+
+
+3. Commits from the new https://github.com/dracut-ng/dracut-ng upstream that
+were already merged
+
+a45048b8 fix(dracut): move hooks directory from /usr/lib to /var/lib
 
