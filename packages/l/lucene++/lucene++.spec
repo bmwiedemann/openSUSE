@@ -1,7 +1,7 @@
 #
 # spec file for package lucene++
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Patch2:         lucene++-3.0.8-fix-cmake-issues.patch
 # PATCH-FIX-UPSTREAM lucene++-3.0.8-fix-missing-headers.patch -- hillwood@opensuse.org
 # contrib headers should be installed
 Patch3:         lucene++-3.0.8-fix-missing-headers.patch
+# PATCH-FIX-UPSTREAM lucene++-3.0.9-fix-cmake-issues.patch -- https://github.com/luceneplusplus/LucenePlusPlus/pull/203
+Patch4:         lucene++-3.0.9-fix-boost1.85.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_atomic-devel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 26 08:11:30 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Fix build with boost 1.85, add patch lucene++-3.0.9-fix-boost1.85.patch
+
+-------------------------------------------------------------------
 Wed Apr 12 12:55:45 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Add explicit build dependency on libboost_atomic-devel: Fix build
