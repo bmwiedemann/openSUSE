@@ -120,7 +120,8 @@ Patch12:        0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch
 Patch13:        0001-avfilter-vf_codecview-fix-heap-buffer-overflow.patch
 Patch90:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
-
+Patch92:        ffmpeg-CVE-2023-50007.patch
+Patch93:        ffmpeg-CVE-2023-50008.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel >= 3.98.3
@@ -841,6 +842,8 @@ Patch12:        0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch
 Patch13:        0001-avfilter-vf_codecview-fix-heap-buffer-overflow.patch
 Patch90:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
+Patch92:        ffmpeg-CVE-2023-50007.patch
+Patch93:        ffmpeg-CVE-2023-50008.patch
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs
 

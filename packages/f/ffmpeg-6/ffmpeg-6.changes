@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 23 14:05:28 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-CVE-2023-50008.patch:
+  Backporting 5f87a68c from upstream, Fix memory leaks.
+  (CVE-2023-50008 bsc#1223254)
+
+-------------------------------------------------------------------
+Thu Apr 23 12:22:53 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-CVE-2023-50007.patch:
+  Backporting b1942734 from upstream, Fix crash with EOF handling.
+  (CVE-2023-50007 bsc#1223253)
+
+-------------------------------------------------------------------
 Mon Apr 22 12:41:55 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Address boo#1223215/CVE-2023-49501: add patch

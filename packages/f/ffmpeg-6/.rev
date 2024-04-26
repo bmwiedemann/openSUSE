@@ -97,4 +97,13 @@ I am sorry for the messy submission before. (forwarded request 1139042 from iDes
   0001-avfilter-vf_codecview-fix-heap-buffer-overflow.patch</comment>
     <requestid>1169718</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>39aafd03919b876fc7ca9daa4f046df7</srcmd5>
+    <version>6.1.1</version>
+    <time>1714166770</time>
+    <user>anag+factory</user>
+    <comment>  (CVE-2023-50008 bsc#1223254)
+  (CVE-2023-50007 bsc#1223253)</comment>
+    <requestid>1170119</requestid>
+  </revision>
 </revisionlist>
