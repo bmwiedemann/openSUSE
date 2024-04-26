@@ -18,7 +18,7 @@
 #
 
 
-%bcond_with tests
+%bcond_without tests
 %bcond_without server
 Name:           mumble
 Version:        1.5.629
@@ -194,6 +194,8 @@ sed -i -e 's|%{_prefix}%{_sysconfdir}|%{_sysconfdir}|g' %{buildroot}%{_unitdir}/
 
 %check
 %if %{with tests}
+# TestSettingsJSONSerialization fails loading qt xcb in headless
+export QT_QPA_PLATFORM=offscreen
 %ctest
 %endif
 

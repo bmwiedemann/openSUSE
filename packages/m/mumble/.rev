@@ -58,4 +58,12 @@
     <comment>Address licensedigger concerns</comment>
     <requestid>1169949</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>73303167f4d3b317d3248e3e5f2b6e54</srcmd5>
+    <version>1.5.629</version>
+    <time>1714166841</time>
+    <user>anag+factory</user>
+    <comment>enable and fix tests</comment>
+    <requestid>1170248</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 25 20:44:16 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enable and fix tests: TestSettingsJSONSerialization fails loading
+  qt xcb in headless
+
+-------------------------------------------------------------------
 Tue Apr 23 23:11:54 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Address licensedigger concerns:
