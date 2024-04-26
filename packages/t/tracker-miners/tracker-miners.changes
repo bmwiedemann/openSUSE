@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 25 14:48:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.7.2:
+  + Fixes to data deletion after removing an indexed folder
+    from configuration.
+  + Fixed glib/inotify based monitors to not follow symlinks in
+    some circumstances.
+  + Added a build-time option for fanotify.
+  + Fix build with musl libc.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Mar 28 08:05:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.7.1:

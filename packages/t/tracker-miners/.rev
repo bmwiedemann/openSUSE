@@ -1116,4 +1116,19 @@
     <comment></comment>
     <requestid>1163271</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>d0053a239522a99663045ad0df501bc0</srcmd5>
+    <version>3.7.2</version>
+    <time>1714166794</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.7.2:
+  + Fixes to data deletion after removing an indexed folder
+    from configuration.
+  + Fixed glib/inotify based monitors to not follow symlinks in
+    some circumstances.
+  + Added a build-time option for fanotify.
+  + Fix build with musl libc.
+  + Updated translations. (forwarded request 1170166 from dimstar)</comment>
+    <requestid>1170168</requestid>
+  </revision>
 </revisionlist>
