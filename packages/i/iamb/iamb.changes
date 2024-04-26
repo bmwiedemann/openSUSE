@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 26 02:16:06 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Enable building on more distro targets.
+
+-------------------------------------------------------------------
 Fri Mar 29 04:52:29 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Build against system sqlite & openssl. Added openssl and
