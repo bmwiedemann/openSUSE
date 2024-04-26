@@ -83,4 +83,41 @@ Changes from last request:
   * feat: add a new `[notify]` section to the `theme.toml` to configure the `notify` component's style (#749)</comment>
     <requestid>1163741</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>aa73bb3e9aede5cec80c32e58d56a43f</srcmd5>
+    <version>0.2.5</version>
+    <time>1714166859</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.2.5:
+  * chore: bump version to 0.2.5
+  * feat: new builtin `session.lua` plugin (#940)
+  * feat: split `ya send` into `ya pub` and `ya pub-static` to make it more ergonomic (#933)
+  * perf: cache each file's icon to avoid redundant calculations at rendering (#931)
+  * feat: preserve files' modified at timestamp while copying (#926)
+  * fix: prevent pasting a directory into itself (#925)
+  * feat: change status bar percent at 100 to Bot (#930)
+  * fix: always persist static messages even when there are no remote clients (#928)
+  * feat: expand the types supported by the event system (#923)
+  * fix: rollback ratatui to v0.26.1 to avoid panicking (#922)
+  * feat: allow opening interactively with the `--chosen-file` flag (#920)
+  * feat: generate autocomplete script for `ya` command (#919)
+  * feat: allow creating a tab with the startup directory when the `tab_create` command is called without specifying a `path` parameter (#917)
+  * feat: add a new `ya send` command to allow standalone client processes to communicate with DDS from the command line (#913)
+  * feat: smart case completion in `cd` paths (#910)
+  * feat: trigger path completion with both `/` and `\` on Windows (#909)
+  * perf: switch to `globset` to reduce CPU time spent on matching icons (#908)
+  * feat: default &quot;Reveal&quot; opener for Linux (#907)
+  * feat: add loading state to directories (#904)
+  * feat: when there are no files in the list, add a placeholder message (#900)
+  * feat: add `YAZI_ID` environment variable (#895)
+  * feat: add new `move`, `trash`, and `delete` event kinds to DDS (#880)
+  * fix: file list expansion arguments (`$@`, `$*`) of shell command under opener rules are out of order (#890)
+  * feat: add new `--orphan` option to the `shell` command (#887)
+  * feat: re-implement `fzf` as a built-in plugin (#884)
+  * feat: re-implement `zoxide` as a built-in plugin (#881)
+  * fix: CJK text rendering issue where the input popup component overlaps with images (#879)
+  * perf: re-implement file watcher in an async way (#877)
+  * feat: add `is_exec` and `is_sticky` to `Cha` bindings (#875)</comment>
+    <requestid>1170288</requestid>
+  </revision>
 </revisionlist>

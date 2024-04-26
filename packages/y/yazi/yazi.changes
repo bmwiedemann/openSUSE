@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Fri Apr 26 11:22:00 UTC 2024 - xtexchooser@duck.com
+
+- Update to version 0.2.5:
+  * chore: bump version to 0.2.5
+  * feat: new builtin `session.lua` plugin (#940)
+  * feat: split `ya send` into `ya pub` and `ya pub-static` to make it more ergonomic (#933)
+  * perf: cache each file's icon to avoid redundant calculations at rendering (#931)
+  * feat: preserve files' modified at timestamp while copying (#926)
+  * fix: prevent pasting a directory into itself (#925)
+  * feat: change status bar percent at 100 to Bot (#930)
+  * fix: always persist static messages even when there are no remote clients (#928)
+  * feat: expand the types supported by the event system (#923)
+  * fix: rollback ratatui to v0.26.1 to avoid panicking (#922)
+  * feat: allow opening interactively with the `--chosen-file` flag (#920)
+  * feat: generate autocomplete script for `ya` command (#919)
+  * feat: allow creating a tab with the startup directory when the `tab_create` command is called without specifying a `path` parameter (#917)
+  * feat: add a new `ya send` command to allow standalone client processes to communicate with DDS from the command line (#913)
+  * feat: smart case completion in `cd` paths (#910)
+  * feat: trigger path completion with both `/` and `\` on Windows (#909)
+  * perf: switch to `globset` to reduce CPU time spent on matching icons (#908)
+  * feat: default "Reveal" opener for Linux (#907)
+  * feat: add loading state to directories (#904)
+  * feat: when there are no files in the list, add a placeholder message (#900)
+  * feat: add `YAZI_ID` environment variable (#895)
+  * feat: add new `move`, `trash`, and `delete` event kinds to DDS (#880)
+  * fix: file list expansion arguments (`$@`, `$*`) of shell command under opener rules are out of order (#890)
+  * feat: add new `--orphan` option to the `shell` command (#887)
+  * feat: re-implement `fzf` as a built-in plugin (#884)
+  * feat: re-implement `zoxide` as a built-in plugin (#881)
+  * fix: CJK text rendering issue where the input popup component overlaps with images (#879)
+  * perf: re-implement file watcher in an async way (#877)
+  * feat: add `is_exec` and `is_sticky` to `Cha` bindings (#875)
+  * feat: merge the `sender` and `severity` in the DDS payload into the same field to simplify the protocol (#871)
+  * fix: a race condition in DDS static messages sent as internal events (#868)
+  * feat: detect CSI u through `Stderr` to allow using `Stdout` as the carrier of DDS payload without an ANSI sequence response timeout (#867)
+  * feat: the `cd` event in DDS will now also be triggered when the tab is first created (#861)
+  * fix: wrong `state` pointed to and ignore plugin/flavor directory creation errors
+  * feat: add a new `sender` property to the DDS payload (#855)
+  * feat: readable toml parsing error (#854)
+  * fix: do not default to passing `self` to `setup` to respect user invocation behavior
+  * perf: port `require()` and `ya.sync()` to Rust to avoid plugin information initialization process (#853)
+  * feat: DDS (Data Distribution Service) (#826)
+  * perf: add `BufWriter` to `Stderr` to avoid frequent system calls and increase rendering frame rate (#849)
+  * fix: Windows `cmd.exe` not responding to correct CSI sequences due to ConPTY (#845)
+  * feat: add support for `YAZI_FILE_ONE` to the built-in `file` previewer (#846)
+  * feat: time-based selection order preservation (#843)
+  * fix: mime-type for xz archives (#841)
+  * perf: accelerate kitty graphics protocol encoding by avoiding string reallocation (#837)
+  * feat: enhance the `ya.dbg()` and `ya.err()` debugging functions (#835)
+  * fix: disable ANSI colours for the `tracing_subscriber` so that the logs are not polluted with escape codes (#832)
+  * fix: adjust calculation for number of lines in a notification message (#828)
+  * feat: add a bunch of new debugging information to `yazi --debug` (#824)
+  * fix: kill all spawned processes when exiting Yazi (#812)
+  * feat: fix all dependencies to specific version numbers to allow non-`--locked` builds (#821)
+  * refactor: switch to `stderr` (#819)
+  * fix: respond to the `SIGTERM` signal even when Yazi is in the background and has passed control of the terminal to the spawned process (#797)
+  * fix: wrong type in iterator binding
+  * refactor: wrap `Opener` with `Cow` to avoid unnecessary memory reallocations when opening files (#805)
+  * fix: use `BTreeSet` for selected files to maintain order (#799)
+
+-------------------------------------------------------------------
 Sat Mar 30 23:12:22 UTC 2024 - xtexChooser <xtexchooser@duck.com>
 
 - Fix ripgrep depends
