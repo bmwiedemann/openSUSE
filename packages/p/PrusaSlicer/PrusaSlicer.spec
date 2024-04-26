@@ -17,7 +17,7 @@
 
 
 Name:           PrusaSlicer
-Version:        2.7.2
+Version:        2.7.4
 Release:        0
 Summary:        G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
 License:        AGPL-3.0-only
@@ -105,6 +105,8 @@ sed -i "s|find_package(Qhull 7.2 REQUIRED)|find_package(Qhull 8.0.2 REQUIRED)|" 
 sed -i 's#INTERFACE Qhull::qhullcpp#INTERFACE -lqhullcpp#' src/CMakeLists.txt
 # Disable slic3r_jobs_tests.cpp as the test fails sometimes
 sed -i 's|slic3r_jobs_tests.cpp||' tests/slic3rutils/CMakeLists.txt
+# gh#prusa3d/PrusaSlicer#12652
+sed -i /convenience.hpp/d src/slic3r/GUI/RemovableDriveManager.cpp
 
 %build
 # The build process really acquires that much memory per job. We are
