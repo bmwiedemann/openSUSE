@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 25 13:39:53 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.134
+  * Added MTOM referencing `href` attribute to `xop:Include`
+    element that was missing when XML is canonicalized with
+    `SOAP_XML_CANONICAL` and when the `xop:Include` element is not
+    actually explicitly defined in a WSDL or schema but is produced
+    on demand in the XML output. The `href` attribute in this
+    specific scenario was not recognized by XML
+    (re)canonicalization.
+  * Updated server-side XML (non-SOAP) REST handling such that the
+    POST plugin is not required to directly serve HTTP POST XML
+    REST requests just like serving SOAP/XML requests, see
+    samples/rest/calcrest.c for a client-server example.
+  * Updated HTTP digest plugin.
+
+-------------------------------------------------------------------
 Thu Apr 11 19:46:29 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.133
