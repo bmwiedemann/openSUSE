@@ -121,7 +121,10 @@ Patch16:        0001-avfilter-f_reverse-Apply-PTS-compensation-only-when-.patch
 Patch90:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch93:        soname.diff
-
+Patch94:        ffmpeg-CVE-2023-50007.patch
+Patch95:        ffmpeg-CVE-2023-50008.patch
+Patch96:        ffmpeg-CVE-2023-49502.patch
+Patch97:        ffmpeg-CVE-2023-51793.patch
 %if %{with amf_sdk}
 BuildRequires:  AMF-devel
 %endif
@@ -817,7 +820,7 @@ done
 %files private-devel
 %_includedir/ffmpeg/private/
 
-%else	# "flavor" == "ffmpeg-5-mini"
+%else
 
 %define _name ffmpeg
 
@@ -848,6 +851,14 @@ Patch16:        0001-avfilter-f_reverse-Apply-PTS-compensation-only-when-.patch
 Patch90:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch93:        soname.diff
+# PATCH-FIX-UPSTREAM ffmpeg-CVE-2023-50007.patch CVE-2023-50007 bsc#1223253 qzhao@suse.com -- Fix crash with EOF handling.
+Patch94:        ffmpeg-CVE-2023-50007.patch
+# PATCH-FIX-UPSTREAM ffmpeg-CVE-2023-50008.patch CVE-2023-50008 bsc#1223254 qzhao@suse.com -- Fix memory leaks.
+Patch95:        ffmpeg-CVE-2023-50008.patch
+# PATCH-FIX-UPSTREAM ffmpeg-CVE-2023-49502.patch CVE-2023-49502 bsc#1223235 qzhao@suse.com -- Account for chroma sub-sampling in min size calculation.
+Patch96:        ffmpeg-CVE-2023-49502.patch
+# PATCH-FIX-UPSTREAM ffmpeg-CVE-2023-51793.patch CVE-2023-51793 bsc#1223272 qzhao@suse.com -- Fix odd height handling.
+Patch97:        ffmpeg-CVE-2023-51793.patch
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs
 
@@ -946,6 +957,6 @@ rm -Rf "$b/%_datadir/ffmpeg/examples"
 %_libdir/pkgconfig/*.pc
 %_includedir/ffmpeg/
 
-%endif	# "flavor" == "ffmpeg-5-mini"
+%endif
 
 %changelog

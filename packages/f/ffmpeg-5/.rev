@@ -211,4 +211,15 @@ https://www.reddit.com/r/openSUSE/comments/11sl1a7/comment/jcg9pbh/?utm_source=s
     <comment>Address a bunch of CVEs</comment>
     <requestid>1169772</requestid>
   </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>2e8dfd2171860bd3e36135d787c382be</srcmd5>
+    <version>5.1.4</version>
+    <time>1714166832</time>
+    <user>anag+factory</user>
+    <comment>  (CVE-2023-51793 bsc#1223272)
+  (CVE-2023-49502 bsc#1223235)
+  (CVE-2023-50008 bsc#1223254)
+  (CVE-2023-50007 bsc#1223253)</comment>
+    <requestid>1170214</requestid>
+  </revision>
 </revisionlist>
