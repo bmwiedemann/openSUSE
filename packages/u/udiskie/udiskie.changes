@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 25 13:21:10 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- removed fix-keyutils-module-conflict.patch, fixed upstream
+- Update to 2.5.3:
+  * allow matching against a list of values in config rules (device_config)
+  * fix --terminal command line option (was not doing anything)
+  * fix AttributeError when python-keyring-keyutils is installed instead of
+    keyutils
+    
+-------------------------------------------------------------------
 Mon Mar 11 18:15:48 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - added fix-keyutils-module-conflict.patch to fix failure for udiskie

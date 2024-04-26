@@ -17,14 +17,13 @@
 
 
 Name:           udiskie
-Version:        2.5.2
+Version:        2.5.3
 Release:        0
 Summary:        Removable disk automounter for udisks
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/coldfix/udiskie
 Source:         https://files.pythonhosted.org/packages/source/u/%{name}/%{name}-%{version}.tar.gz
-Patch:          fix-keyutils-module-conflict.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 # Needed for typelib() - Requires.
@@ -67,7 +66,7 @@ or flash drives from userspace. Its features include:
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %python3_build
