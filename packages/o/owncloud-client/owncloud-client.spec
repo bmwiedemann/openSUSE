@@ -16,9 +16,13 @@
 #
 
 
-# The minimum required version of qtkeychain, stay with 0.4.0 for now
-# to stay compatible with 13.2
+# The minimum required version of qtkeychain
 %define keychain_version 0.12.0
+# old rpm without /usr/etc
+%if 0%{?suse_version} && 0%{?suse_version} <= 1500
+%global _distconfdir /etc
+%endif
+
 Name:           owncloud-client
 Version:        5.2.1
 Release:        0
@@ -126,11 +130,7 @@ managers on the desktop.
 %autosetup -p1 -n ownCloud_os-%{version}
 
 %build
-
-echo suse_version   0%{?suse_version}
-
-%cmake_qt6 -DKDE_SKIP_RPATH_SETTINGS=ON
-
+%cmake_qt6 -DKDE_SKIP_RPATH_SETTINGS=ON -DKDE_INSTALL_SYSCONFDIR=%{_distconfdir}
 %{qt6_build}
 
 %install

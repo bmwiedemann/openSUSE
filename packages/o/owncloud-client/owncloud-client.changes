@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 18 06:07:15 UTC 2024 - thod_@gmx.de
+
+- Fix build for Leap which is missing /usr/etc
+
+-------------------------------------------------------------------
 Thu Feb 22 17:12:13 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
 
 - Add runtime dep for qt6-sql-sqlite, fix depends to qt6 version
