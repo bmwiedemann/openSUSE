@@ -13282,7 +13282,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit 
   - libgsmsd8 
-  - libgsoap-2_8_133 
+  - libgsoap-2_8_134 
   - libgssapi3 
   - libgssdp-1_6-0-32bit 
   - libgssdp-devel 
@@ -15139,8 +15139,6 @@ unsorted:
   - libptytty-devel 
   - libptytty0 
   - libpugixml1 
-  - libpulp-tools 
-  - libpulp0 
   - libpulse-devel 
   - libpulse-devel-32bit 
   - libpulse-mainloop-glib0-32bit 
@@ -15907,8 +15905,8 @@ unsorted:
   - libspatialindex6 
   - libspatialite-devel 
   - libspatialite8 
-  - libspdlog1_13 
-  - libspdlog1_13-32bit 
+  - libspdlog1_14 
+  - libspdlog1_14-32bit 
   - libspdylay7 
   - libspectre-devel 
   - libspectre1 
@@ -18651,7 +18649,6 @@ unsorted:
   - mousetweaks-lang 
   - movit-devel 
   - mozaddon-devel 
-  - mozilla-jss 
   - mozilla-nspr-32bit 
   - mozilla-nspr-devel 
   - mozilla-nss-32bit 
@@ -36354,7 +36351,6 @@ unsorted:
   - spooles-openmpi-devel 
   - spotify-easyrpm 
   - spotify-qt 
-  - spotifyd 
   - spread-sheet-widget-devel 
   - spyder 
   - spyder-dicom 
