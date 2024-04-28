@@ -2553,12 +2553,9 @@
     <package name="libpciaccess0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpcre1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpcre2-16-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libpcre2-16-0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpcre2-32-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libpcre2-32-0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpcre2-8-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpcre2-8-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libpcre2-8-0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpcsclite1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpeas-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpeas-gtk-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
