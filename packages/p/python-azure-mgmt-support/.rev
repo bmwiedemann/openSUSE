@@ -38,4 +38,18 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164900 from glaubitz)</comment>
     <requestid>1165293</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>648ce4187a3b623ed9e67762283b0049</srcmd5>
+    <version>7.0.0</version>
+    <time>1714406338</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 7.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1170695 from glaubitz)</comment>
+    <requestid>1170816</requestid>
+  </revision>
 </revisionlist>
