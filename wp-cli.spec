@@ -1,7 +1,7 @@
 #
 # spec file for package wp-cli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wp-cli
-Version:        2.8.1
+Version:        2.10.0
 Release:        0
 Summary:        WordPress command-line interface
 License:        MIT
@@ -36,7 +36,7 @@ WP-CLI is the command-line interface for WordPress. You can update plugins,
 configure multisite installations and much more, without using a web browser.
 
 %prep
-%setup -q -c -T
+%autosetup -c -T
 
 %build
 
@@ -45,6 +45,8 @@ mkdir -p %{buildroot}%{_bindir}
 install -m 0755 %{SOURCE0} %{buildroot}%{_bindir}/wp
 mkdir -p %{buildroot}%{_sysconfdir}/profile.d
 install -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/profile.d
+
+%check
 
 %files
 %defattr(-,root,root,0755)
