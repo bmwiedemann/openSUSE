@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Apr 25 19:48:16 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.6.0:
+  Big update, see full changelog at
+  https://github.com/mkdocs/mkdocs/releases/tag/1.6.0
+  * Deprecations
+    - Python 3.7 is no longer supported, Python 3.12 is officially
+      supported. Context: #3429
+    - The theme config file mkdocs_theme.yml no longer executes
+      YAML tags. Context: #3465
+    - The plugin event on_page_read_source is soft-deprecated
+      because there is always a better alternative to it (see the
+      new File API or just on_page_markdown, depending on the
+      desired interaction).
+    - When multiple plugins/hooks apply this event handler, they
+      trample over each other, so now there is a warning in that
+      case.
+    - See documentation. Context: #3503
+  * API deprecations
+    - It is no longer allowed to set File.page to a type other than
+      Page or a subclass thereof. Context: #3443 - following the
+      deprecation in version 1.5.3 and #3381.
+    - Theme._vars is deprecated - use theme['foo'] instead of
+      theme._vars['foo']
+    - utils: modified_time(), get_html_path(), get_url_path(),
+      is_html_file(), is_template_file() are removed. path_to_url()
+      is deprecated.
+    - LiveReloadServer.watch() no longer accepts a custom callback.
+
+-------------------------------------------------------------------
 Tue Sep 19 04:43:11 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 1.5.3:

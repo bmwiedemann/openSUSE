@@ -1,7 +1,7 @@
 #
 # spec file for package python-mkdocs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mkdocs
-Version:        1.5.3
+Version:        1.6.0
 Release:        0
 Summary:        Project documentation with Markdown
 License:        BSD-2-Clause
@@ -26,19 +26,18 @@ URL:            https://www.mkdocs.org
 Source:         https://github.com/mkdocs/mkdocs/archive/%{version}.tar.gz#/mkdocs-%{version}.tar.gz
 BuildRequires:  %{python_module Babel >= 2.9.0}
 BuildRequires:  %{python_module Jinja2 >= 2.11.1}
-BuildRequires:  %{python_module Markdown >= 3.2.1}
-# https://github.com/mkdocs/mkdocs/blob/master/pyproject.toml#L38
-#BuildRequires:  %{python_module Markdown <3.4}
+BuildRequires:  %{python_module Markdown >= 3.3.6}
 BuildRequires:  %{python_module MarkupSafe}
-BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module click >= 7.0}
-BuildRequires:  %{python_module ghp-import  >= 1.0}
+BuildRequires:  %{python_module ghp-import >= 1.0}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module importlib_metadata if python-base < 3.10}
 BuildRequires:  %{python_module mergedeep >= 1.3.4}
+BuildRequires:  %{python_module mkdocs-get-deps >= 0.2.0}
 BuildRequires:  %{python_module packaging >= 20.5}
+BuildRequires:  %{python_module pathspec >= 0.11.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module platformdirs}
 BuildRequires:  %{python_module pyyaml_env_tag >= 0.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module watchdog >= 2.0}
@@ -48,21 +47,21 @@ BuildRequires:  fontawesome-fonts-web
 BuildRequires:  python-rpm-macros
 Requires:       fontawesome-fonts
 Requires:       fontawesome-fonts-web
-Requires:       python-Jinja2
-Requires:       python-Markdown
+Requires:       python-Jinja2 >= 2.11.1
+Requires:       python-Markdown >= 3.3.6
 Requires:       python-MarkupSafe
-Requires:       python-PyYAML
-Requires:       python-click
-Requires:       python-ghp-import
+Requires:       python-PyYAML >= 5.1
+Requires:       python-click >= 7.0
+Requires:       python-ghp-import >= 1.0
 Requires:       python-importlib_metadata
-Requires:       python-mergedeep
-Requires:       python-packaging
-Requires:       python-pathspec
-Requires:       python-platformdirs
-Requires:       python-pyyaml_env_tag
-Requires:       python-watchdog
+Requires:       python-mergedeep >= 1.3.4
+Requires:       python-mkdocs-get-deps >= 0.2.0
+Requires:       python-packaging >= 20.5
+Requires:       python-pathspec >= 0.11.1
+Requires:       python-pyyaml_env_tag >= 0.1
+Requires:       python-watchdog >= 2.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-babel
 BuildArch:      noarch
 %python_subpackages
