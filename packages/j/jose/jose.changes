@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 16 08:21:51 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 13:
+  * Fix potential DoS issue with p2c header (4ee7708)
+  * Build updates (#148) (dae5654)
+  * Display pkg_config in test logs (#134) (5e45732)
+
+-------------------------------------------------------------------
 Fri Mar  8 09:08:00 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 12

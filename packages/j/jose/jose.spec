@@ -19,7 +19,7 @@
 %define so_ver 0
 
 Name:           jose
-Version:        12
+Version:        13
 Release:        0
 Summary:        C-language implementation of Javascript Object Signing and Encryption
 License:        Apache-2.0
@@ -53,6 +53,8 @@ Requires:       pkgconfig(libcrypto) >= 1.0.2
 %description -n lib%{name}-devel
 The lib%{name}-devel package contains libraries and header files for
 developing applications that use lib%{name}.
+
+%check
 
 %prep
 %autosetup
