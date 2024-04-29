@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 27 11:36:31 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Put hamcrest on the classpath of ant-junit module
+
+-------------------------------------------------------------------
 Tue Feb 20 13:32:02 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

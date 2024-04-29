@@ -840,4 +840,12 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
     <comment>rpm 4.20 compat</comment>
     <requestid>1148032</requestid>
   </revision>
+  <revision rev="95" vrev="5">
+    <srcmd5>16a6ee8590269398645a9e0a186f870a</srcmd5>
+    <version>1.10.14</version>
+    <time>1714406251</time>
+    <user>anag+factory</user>
+    <comment>allow building against non-shaded hamcrest</comment>
+    <requestid>1170465</requestid>
+  </revision>
 </revisionlist>

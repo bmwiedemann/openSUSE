@@ -579,8 +579,8 @@ echo "ant/ant-swing" > %{buildroot}%{_sysconfdir}/%{name}.d/swing
 %endif
 
 %if %{with junit}
-echo "junit ant/ant-junit" > %{buildroot}%{_sysconfdir}/ant.d/junit
-echo "junit4 ant/ant-junit4" > %{buildroot}%{_sysconfdir}/ant.d/junit4
+echo "junit hamcrest ant/ant-junit" > %{buildroot}%{_sysconfdir}/ant.d/junit
+echo "junit4 hamcrest ant/ant-junit4" > %{buildroot}%{_sysconfdir}/ant.d/junit4
 %endif
 
 %if %{with junit5}
