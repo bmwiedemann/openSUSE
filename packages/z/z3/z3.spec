@@ -16,21 +16,25 @@
 #
 
 
-%define sover 4_12
+%define sover 4_13
 Name:           z3
-Version:        4.12.5
+Version:        4.13.0
 Release:        0
 Summary:        Theorem prover from Microsoft Research
 License:        MIT
 Group:          Productivity/Scientific/Other
 URL:            https://github.com/Z3Prover/z3/wiki
 Source0:        https://github.com/Z3Prover/z3/archive/z3-%{version}.tar.gz
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  gcc-c++ >= 6.0
-BuildRequires:  gmp-devel
 BuildRequires:  ninja
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
+%if 0%{?suse_version} > 1600
+BuildRequires:  pkgconfig(gmpxx)
+%else
+BuildRequires:  gmp-devel
+%endif
 
 %description
 Z3 is a Satisfiability Modulo Theories (SMT) solver and integrates
@@ -89,8 +93,10 @@ Python bindings for the Z3 library.
 %install
 %cmake_install
 
-%post -n libz3-%{sover} -p /sbin/ldconfig
-%postun -n libz3-%{sover} -p /sbin/ldconfig
+%check
+%ctest
+
+%ldconfig_scriptlets -n libz3-%{sover}
 
 %files
 %license LICENSE.txt
@@ -98,9 +104,11 @@ Python bindings for the Z3 library.
 %{_bindir}/z3
 
 %files -n libz3-%{sover}
+%license LICENSE.txt
 %{_libdir}/libz3.so.*
 
 %files devel
+%license LICENSE.txt
 %{_includedir}/z3*.h
 %{_libdir}/libz3.so
 %{_libdir}/pkgconfig/z3.pc
@@ -110,6 +118,7 @@ Python bindings for the Z3 library.
 %{_libdir}/cmake/z3/Z3Targets*
 
 %files -n python3-%{name}
+%license LICENSE.txt
 %dir %{python3_sitelib}/%{name}
 %{python3_sitelib}/%{name}/*py
 

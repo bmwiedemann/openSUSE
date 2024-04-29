@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 12 19:53:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- includes changes from 4.13.0:
+  * remove expensive rewrite that coalesces adjacent stores
+  * improved Java use of reference queues
+  * fixes to conditional import of python library
+  * include universe for constants that get removed during
+    pre-processing
+  * code improvements
+  * fix nested callback handling for user propagators
+  * added Julia API
+
+-------------------------------------------------------------------
 Thu Feb 22 07:59:37 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 4.12.5
