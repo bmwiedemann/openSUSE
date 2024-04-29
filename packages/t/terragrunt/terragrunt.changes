@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 29 09:27:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.57.13:
+  * fix(provider_cache): Use more permissive regex search for
+    Status Locked (#3105)
+  * fix: unit test (#3106)
+
+-------------------------------------------------------------------
 Sat Apr 27 09:19:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.57.12:
