@@ -191,4 +191,14 @@
 - Initial packaging execnet 1.1 for openSUSE</comment>
     <requestid>1165943</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9921cd657b614016a1f1e3ea2327d7f5</srcmd5>
+    <version>2.1.1</version>
+    <time>1714406249</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.1:
+  * Fixed regression in 2.1.0 where the strconfig argument to
+    load/loads is ignore</comment>
+    <requestid>1170447</requestid>
+  </revision>
 </revisionlist>

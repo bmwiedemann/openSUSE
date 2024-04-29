@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 27 09:00:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Fixed regression in 2.1.0 where the strconfig argument to
+    load/loads is ignore
+
+-------------------------------------------------------------------
 Sun Apr  7 08:59:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.0:
