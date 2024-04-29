@@ -41,6 +41,8 @@ License:        LGPL-2.0-or-later
 Group:          Productivity/Graphics/CAD
 URL:            https://sfcgal.gitlab.io/SFCGAL/
 Source0:        https://gitlab.com/sfcgal/SFCGAL/-/archive/v%{version}/SFCGAL-v%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM build with boost 1.85
+Patch1:         boost1_85.diff
 BuildRequires:  cmake
 BuildRequires:  gmp-devel
 BuildRequires:  lapack-devel
@@ -114,6 +116,7 @@ Content headers & files to envelopment files for %{_libname}
 
 %prep
 %setup -q -n %{source_name}-v%{version}
+%patch -P1 -p1
 
 %build
 %limit_build -m 6400

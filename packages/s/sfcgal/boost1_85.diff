@@ -1,0 +1,12 @@
+diff -ur SFCGAL-v1.5.1/test/regress/standalone/SFCGAL/StraightSkeletonTest.cpp SFCGAL-v1.5.1_fix/test/regress/standalone/SFCGAL/StraightSkeletonTest.cpp
+--- SFCGAL-v1.5.1/test/regress/standalone/SFCGAL/StraightSkeletonTest.cpp	2023-12-21 14:54:09.000000000 +0100
++++ SFCGAL-v1.5.1_fix/test/regress/standalone/SFCGAL/StraightSkeletonTest.cpp	2024-04-29 12:31:48.169848424 +0200
+@@ -60,7 +60,7 @@
+   BOOST_REQUIRE(ifs.good());
+ 
+   std::string       line;
+-  std::string const lbl_base = boost::filesystem::basename(filename);
++  std::string const lbl_base = boost::filesystem::path(filename).filename().string();
+ 
+   int lineno = 0;
+   while (std::getline(ifs, line)) {

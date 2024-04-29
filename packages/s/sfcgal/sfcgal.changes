@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 29 10:33:43 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- fix build with boost 1.85 (boost1_85.diff)
+
+-------------------------------------------------------------------
 Tue Jan  9 20:00:03 UTC 2024 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Set minimal version for libboost to 1.70 which is required by cgal 5.6

@@ -43,4 +43,13 @@ Thanks for your review and help to make it first citizen in Factory</comment>
     <comment></comment>
     <requestid>1137918</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>612214fc1c169474cadde5bd27261d69</srcmd5>
+    <version>1.5.1</version>
+    <time>1714406291</time>
+    <user>anag+factory</user>
+    <comment>- fix build with boost 1.85 (boost1_85.diff)
+</comment>
+    <requestid>1170740</requestid>
+  </revision>
 </revisionlist>
