@@ -1,7 +1,7 @@
 #
 # spec file for package python-easydev
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,31 @@
 
 
 Name:           python-easydev
-Version:        0.12.1
+Version:        0.13.2
 Release:        0
 Summary:        Common utilities to ease the development of Python packages
 License:        BSD-3-Clause
 URL:            https://github.com/cokelaer/easydev
-Source:         https://files.pythonhosted.org/packages/source/e/easydev/easydev-%{version}.tar.gz
-# https://github.com/cokelaer/easydev/issues/20
-Patch0:         python-easydev-no-mock.patch
-BuildRequires:  %{python_module setuptools}
+Source:         https://github.com/cokelaer/easydev/archive/refs/tags/v%{version}.tar.gz#/easydev-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-colorama
 Requires:       python-colorlog
+Requires:       python-line_profiler
 Requires:       python-pexpect
-Requires:       python-setuptools
+Requires:       python-platformdirs
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-line_profiler
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module colorlog}
+BuildRequires:  %{python_module line_profiler}
 BuildRequires:  %{python_module pexpect}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module platformdirs}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
@@ -54,30 +56,22 @@ also as an incubator for other packages and is stable.
 
 %prep
 %autosetup -p1 -n easydev-%{version}
-sed -i -e '/^#!\//, 1d' easydev/appdirs.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%python_clone -a %{buildroot}%{_bindir}/browse
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # Requires network access
 %pytest -k 'not test_isurl'
 
-%post
-%python_install_alternative browse
-
-%postun
-%python_uninstall_alternative browse
-
 %files %{python_files}
 %doc README.rst
 %license COPYING
-%python_alternative %{_bindir}/browse
-%{python_sitelib}/*
+%{python_sitelib}/easydev
+%{python_sitelib}/easydev*-info
 
 %changelog

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 29 06:11:17 UTC 2024 - pgajdos@suse.com
+
+- update to 0.13.2
+  * remove Python2 crumbs by @a-detiste in #29
+  * remove more Python2 compat code by @a-detiste in #30
+- removed patches
+  - python-easydev-no-mock.patch (upstreamed)
+
+-------------------------------------------------------------------
 Tue Mar 28 06:38:58 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on line_profiler. 
