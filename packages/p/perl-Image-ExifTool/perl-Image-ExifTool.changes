@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Apr 29 06:40:46 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.84:
+  * Added ability to read speed and accuracy_horizontal when geotagging from OpenTracks GPX files
+  * Decode a few more Apple tags and a new CanonVRD tag
+  * Enhanced Geolocation option with the ability to return any number of nearby cities
+  * Fixed long-standing bug in Windows version that didn't properly handle dates older than 50 years when writing
+  FileModifyDate or FileCreateDate
+  * Fixed API TimeZone option to work in Windows
+  * Fixed problem where the SetTags helper function didn't properly copy tags which have print conversions
+  * Fixed problem where a new subregion couldn't be added through a user-defined Geolocation database entry
+  * Fixed problem where GeolocFeature option didn't work for some features if a user-generated custom database
+  was used
+
+-------------------------------------------------------------------
+Mon Apr 29 06:40:19 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.83:
+  * Added SetTags helper function for use in advanced formatting expressions
+  * Added a couple of new tags from the DNG 1.7.1 specification
+  * Added a new Nikon Z lens
+  * Added a couple of new QuickTime tags
+  * Added a few more XMP-GCamera tags
+  * Added build_geolocation utility to the full distribution
+  * Decode a new CanonVRD tag and rename another one
+  * Updates to Sony maker note decoding for newer models (thanks Jos Roost)
+  * Minor change in -p option to avoid adding the trailing newline if the -b option is also used
+  * Minor changes to GM PDR decoding for Gear and angle measurements
+  * Removed Geolocation alternate language support from the standard distribution, and added PPLX feature codes
+  * Set family 1 group name for NextBase 'nbmt' information to "Nextbase"
+  * Fixed incorrect ID of a DNG tag
+  * API Changes:
+    + Added IgnoreGroups option
+
+-------------------------------------------------------------------
 Wed Apr 10 05:29:25 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 12.82:
