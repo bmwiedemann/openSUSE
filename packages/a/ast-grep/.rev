@@ -226,4 +226,29 @@
   * fix: ignore test 6c2cd46</comment>
     <requestid>1166897</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b1a9da2d20bca9597d45877489cda345</srcmd5>
+    <version>0.21.1+0</version>
+    <time>1714406271</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.21.1:
+  * feat: find defined vars in utils cbc6534
+  * fix: add referent rule stack overflow test case f7f24e1
+  * feat: add utils defined vars 59001eb
+
+- Update to 0.21.0:
+  * feat: report unused rewriters #1064
+  * feat: report undefined error in fix #1070
+  * feat: define the resolution order of meta variables #1068
+  * feat: export used meta-var in transform #1069
+  * feat: export meta variables defined in transform #1066
+  * feat: export meta variables defined in constraints/rules #1067
+  * test: add test for Pattern::defined_vars method #1065
+  * feat: analyze meta variables defined in pattern #1065
+  * feat: add field id Error for relational rule #1059
+  * feat: support rewrtier check in sub-rule eb4c47c
+  * test: add undefined rewriter test d56ad74
+  * feat: add used_vars in TemplateFix 641d3b4</comment>
+    <requestid>1170674</requestid>
+  </revision>
 </revisionlist>
