@@ -1,7 +1,7 @@
 #
 # spec file for package cpupower
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,6 +22,8 @@
 %define ssdir tools/power/x86/intel-speed-select
 # Use this as version when things are in mainline kernel
 %define version %(rpm -q --qf '%%{VERSION}' kernel-source)
+%global turbover %(grep -o "turbostat version [0-9.]*" %{_prefix}/src/linux/tools/power/x86/turbostat/turbostat.c)
+%global issver %(grep -o "version_str =.*" %{_prefix}/src/linux/tools/power/x86/intel-speed-select/isst-config.c | grep -o "[0-9]\.[0-9][0-9]")
 Name:           cpupower
 Version:        %{version}
 Release:        0
@@ -42,6 +44,9 @@ BuildRequires:  pciutils-devel
 %description
 This tool accesses the Linux kernel's processor power subsystems
 like CPU frequency switching (cpufreq) or CPU sleep states (cpuidle).
+Also part of the package are:
+%turbover
+intel-speed-select %issver
 
 %package -n libcpupower1
 Summary:        Processor power related C-library

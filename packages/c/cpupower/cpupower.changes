@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 15 12:57:13 UTC 2024 - Thomas Renninger <trenn@suse.de>
+
+- Parse turbostat and intel-speed-select version from kernel sources and
+  add them to %description
+
+-------------------------------------------------------------------
 Mon Feb 26 10:55:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
