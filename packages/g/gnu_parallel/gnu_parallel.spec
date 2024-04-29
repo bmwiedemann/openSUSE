@@ -17,12 +17,13 @@
 
 
 Name:           gnu_parallel
-Version:        20240122
+Version:        20240422
 Release:        0
 Summary:        Shell tool for executing jobs in parallel
 License:        GPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://www.gnu.org/software/parallel/
+#Git-Clone:     https://git.savannah.gnu.org/git/parallel.git
 Source:         https://ftp.gnu.org/gnu/parallel/parallel-%version.tar.bz2
 Source2:        https://ftp.gnu.org/gnu/parallel/parallel-%version.tar.bz2.sig
 Source3:        %name.keyring
