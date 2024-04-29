@@ -618,4 +618,12 @@
   boo#1223304/CVE-2023-51798</comment>
     <requestid>1170215</requestid>
   </revision>
+  <revision rev="66" vrev="9">
+    <srcmd5>04bed7015f3e45d4a36a53b0273d2b8a</srcmd5>
+    <version>4.4.4</version>
+    <time>1714406247</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-avfilter-af_stereowiden-Check-length.patch [boo#1223437, CVE-2023-51794]</comment>
+    <requestid>1170359</requestid>
+  </revision>
 </revisionlist>

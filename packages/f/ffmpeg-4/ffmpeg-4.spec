@@ -129,6 +129,7 @@ Patch15:        0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch
 Patch16:        0001-avfilter-vf_minterpolate-Check-pts-before-division.patch
 Patch17:        ffmpeg-CVE-2023-49502.patch
 Patch18:        ffmpeg-CVE-2023-51793.patch
+Patch19:        0001-avfilter-af_stereowiden-Check-length.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel
