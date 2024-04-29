@@ -16,10 +16,10 @@
 #
 
 
-%define awkward_cpp_version 30
+%define awkward_cpp_version 32
 %{?sle15_python_module_pythons}
 Name:           python-awkward
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module hatchling >= 1.10.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-awkward-cpp = %{awkward_cpp_version}
+Requires:       python-awkward-cpp >= %{awkward_cpp_version}
 Requires:       python-fsspec
 Requires:       python-numpy >= 1.17.0
 Requires:       python-packaging
@@ -90,7 +90,8 @@ rm -r %{buildroot}%{$python_sitelib}/awkward/_connect/rdataframe/include
 export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 # need to package cupy
 rm -rvf ./tests-cuda-kernels
-%pytest -n auto --ignore tests-cuda/
+# jax, jaxlib missing
+%pytest -n auto --ignore tests-cuda/ -k "not test_2603_custom_behaviors_with_jax"
 
 %files %{python_files}
 %doc README.md

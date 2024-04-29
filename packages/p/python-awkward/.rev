@@ -445,4 +445,12 @@
 - Add rpmlintrc to silence some rpmlint warnings</comment>
     <requestid>1158839</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>64f0cc4ef9327a0468c888e8c7dc2862</srcmd5>
+    <version>2.6.3</version>
+    <time>1714406301</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1170772</requestid>
+  </revision>
 </revisionlist>

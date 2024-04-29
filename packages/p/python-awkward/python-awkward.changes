@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Apr 28 16:45:34 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.6.3:
+  * feat: printing a typetracer array should not touch it
+    (gh#scikit-hep/awkward#3019).
+  * feat: add to_parquet_dataset function
+    (gh#scikit-hep/awkward#2898).
+  * feat: adding support for numpy.real, imag, round, angle,
+    (gh#scikit-hep/awkward#3053).
+  * feat: add miscellaneous CUDA kernels
+    (gh#scikit-hep/awkward#3021).
+  * feat: add dask_tokenize hook (gh#scikit-hep/awkward#3017).
+  * feat: added a commit method on TypeTracerReport to identify
+    touched buffers in the Dask DAG-building pass
+    (gh#scikit-hep/awkward#3043).
+  * feat: Allow interoperability with numpy 2.x
+    (gh#scikit-hep/awkward#3064).
+  * fix: return ufunc as it is for user defined vectorized funcs
+    (gh#scikit-hep/awkward#3025).
+  * fix: Support structured arrays in option type to_numpy
+    (gh#scikit-hep/awkward#3060).
+  * fix: Windows and 32-bit Linux default to 32-bit integers in
+    sums and prods UNLESS it's NumPy 2.0
+    (gh#scikit-hep/awkward#3068).
+  * perf: add a flag to turn off isinstance in
+    TypeTracerArray._new (gh#scikit-hep/awkward#3054).
+- Relax awkward-cpp requirement to allow any awkward-cpp version
+  above the minimum specified for building awkward.
+- Disable a test that depends on jax/jaxlib.
+
+-------------------------------------------------------------------
 Mon Mar 18 01:01:44 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.6.2:
