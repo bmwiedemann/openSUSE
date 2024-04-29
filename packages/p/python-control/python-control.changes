@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 29 06:41:41 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip a flaky plot test
+
+-------------------------------------------------------------------
 Sat Apr 20 15:20:30 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add control-pr994-numpy2.patch

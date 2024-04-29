@@ -371,4 +371,13 @@
   gh#python-control/python-control#994 (forwarded request 1169381 from bnavigator)</comment>
     <requestid>1169382</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>2434a92c5e4670c093541a3704b37b16</srcmd5>
+    <version>0.10.0</version>
+    <time>1714406311</time>
+    <user>anag+factory</user>
+    <comment>- Skip a flaky plot test
+</comment>
+    <requestid>1170664</requestid>
+  </revision>
 </revisionlist>

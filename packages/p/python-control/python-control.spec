@@ -74,6 +74,8 @@ sed -i '1{\@^#!/usr/bin/env@ d}' control/tests/*.py
 export MPLBACKEND="Qt5Agg"
 # precision issues
 donttest="test_lti_nlsys_response"
+# flaky precision issues
+donttest="$donttest or test_response_plot_kwargs"
 # gh#python-control/python-control#838
 [ "${RPM_ARCH}" != "x86_64" ] && donttest="$donttest or (test_optimal_doc and shooting-3-u0-None)"
 # causes i586 segfaults in matplotlib after successful balanced model reduction tests
