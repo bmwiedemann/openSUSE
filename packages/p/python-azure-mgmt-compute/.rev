@@ -420,4 +420,15 @@
 - Update Requires from setup.py (forwarded request 1166291 from glaubitz)</comment>
     <requestid>1166434</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>adc663aa30957c7e895a5eb024aa86ee</srcmd5>
+    <version>31.0.0</version>
+    <time>1714406333</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 31.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1170689 from glaubitz)</comment>
+    <requestid>1170793</requestid>
+  </revision>
 </revisionlist>

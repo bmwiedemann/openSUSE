@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-compute
-Version:        30.6.0
+Version:        31.0.0
 Release:        0
 Summary:        Microsoft Azure Compute Management Client Library
 License:        MIT
