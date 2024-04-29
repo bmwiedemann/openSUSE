@@ -316,4 +316,15 @@
 - Update Requires from setup.py (forwarded request 1166349 from glaubitz)</comment>
     <requestid>1166382</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b112037796eaf8c92345138095184588</srcmd5>
+    <version>7.0.0</version>
+    <time>1714406329</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 7.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1170682 from glaubitz)</comment>
+    <requestid>1170791</requestid>
+  </revision>
 </revisionlist>
