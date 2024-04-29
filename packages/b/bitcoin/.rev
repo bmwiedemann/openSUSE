@@ -508,4 +508,41 @@
   * Use hardened runtime on macOS release builds.</comment>
     <requestid>1167841</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>fc465d1f4a41469a56464c611b293726</srcmd5>
+    <version>27.0</version>
+    <time>1714406339</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 27.0:
+  * doc: update manual pages for v27.0
+  * build: bump version to v27.0 final
+  * doc: import release notes from devwiki
+  * Update the developer mailing list address.
+  * ci: Print tsan errors to stderr
+  * ci: Pull in qtbase5-dev instead of seperate low-level libraries
+  * doc: Suggest installing dev packages for debian/ubuntu qt5 build
+  * ci: Bump msan to llvm-18
+  * ci, macos: Use `--break-system-packages` with Homebrew's python
+  * ci: Add workaround for Homebrew's python link error
+  * serfloat: improve/simplify tests
+  * serfloat: do not test encode(bits)=bits anymore
+  * doc: point release-notes.md to the dev wiki
+  * doc: generate example bitcoin.conf for v27.0rc1
+  * doc: generate manual pages for v27.0rc1
+  * build: bump version to v27.0rc1
+  * fuzz: restrict fopencookie usage to Linux &amp; FreeBSD
+  * docs: Fix broken reference to CI setup in test/lint/README.md
+  * seeds: Update testnet seeds
+  * seeds: Update mainnet seeds
+  * makeseeds: Check i2p seeds too
+  * makeseeds: Update PATTERN_AGENT
+  * doc: remove rel note fragments
+  * kernel: chainparams updates for 27.x
+  * kernel: update chainTxData for 27.x
+  * kernel: update nMinimumChainWork &amp; defaultAssumeValid for 27.x
+  * qt: 27.0 translations update
+  * doc: update signet faucet link in offline-signing-tutorial.md
+  * test: remove file-wide interpreter.cpp ubsan suppression</comment>
+    <requestid>1170799</requestid>
+  </revision>
 </revisionlist>

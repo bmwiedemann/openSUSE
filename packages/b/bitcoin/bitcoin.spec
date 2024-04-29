@@ -24,11 +24,10 @@
 %define consensus 1
 %define is_base 1
 Name:           bitcoin
-Version:        26.1
+Version:        27.0
 Release:        0
 Summary:        P2P Digital Currency
 License:        MIT
-Group:          Productivity/Networking/Other
 URL:            https://%{name}.org
 Source0:        %{name}-%{version}.tar.gz
 Source1:        %{base}d.service
@@ -41,11 +40,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  java-devel
 BuildRequires:  lcov
-BuildRequires:  libboost_filesystem-devel >= 1.58.0
-BuildRequires:  libboost_program_options-devel >= 1.58.0
-BuildRequires:  libboost_system-devel >= 1.58.0
-BuildRequires:  libboost_test-devel >= 1.58.0
-BuildRequires:  libboost_thread-devel >= 1.58.0
+BuildRequires:  libboost_filesystem-devel >= 1.73.0
+BuildRequires:  libboost_program_options-devel >= 1.73.0
+BuildRequires:  libboost_system-devel >= 1.73.0
+BuildRequires:  libboost_test-devel >= 1.73.0
+BuildRequires:  libboost_thread-devel >= 1.73.0
 BuildRequires:  libdb-4_8-devel
 BuildRequires:  libminiupnpc-devel
 BuildRequires:  libqt5-qtbase-devel
@@ -62,10 +61,6 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sqlite3)
-%{?systemd_ordering}
-%if 0%{?suse_version} < 1550
-BuildRequires:  gcc13-c++
-%endif
 
 %description
 %{name_pretty} is a peer-to-peer electronic cash system
@@ -79,7 +74,6 @@ several GB of space, slowly growing.
 
 %package qt5
 Summary:        An end-user Qt5 GUI for the %{name_pretty} crypto-currency
-Group:          Development/Libraries/Other
 Requires(post): update-desktop-files
 Requires(postun): update-desktop-files
 
@@ -98,7 +92,6 @@ Qt.
 
 %package utils
 Summary:        An end-user CLI for the %{name_pretty} crypto-currency
-Group:          Productivity/Networking/Other
 
 %description utils
 %{name_pretty} is a peer-to-peer electronic cash system
@@ -115,7 +108,6 @@ This package provides %{name}-cli — a CLI tool to interact with the daemon.
 %if %{consensus} == 1
 %package -n lib%{name}consensus0
 Summary:        %{name_pretty} consensus library
-Group:          System/Libraries
 
 %description -n lib%{name}consensus0
 The purpose of this library is to make the verification functionality that
@@ -125,7 +117,6 @@ implementations.
 
 %package -n lib%{name}consensus-devel
 Summary:        Developmont files for %{name} consensus library
-Group:          Development/Languages/C and C++
 Requires:       lib%{name}consensus0 = %{version}-%{release}
 
 %description -n lib%{name}consensus-devel
@@ -139,7 +130,6 @@ This package contains development files.
 
 %package -n %{name}d
 Summary:        Headless daemon for %{name_pretty} crypto-currency
-Group:          Development/Libraries/Other
 Provides:       group(%{name})
 Provides:       user(%{name})
 
@@ -157,7 +147,6 @@ This package provides %{name}d, headless %{name} daemon.
 
 %package test
 Summary:        Automated tests for %{name} client
-Group:          Development/Libraries/Other
 
 %description test
 %{name_pretty} is a peer-to-peer electronic cash system
@@ -176,10 +165,6 @@ This package provides automated tests for %{name}-qt5 and %{name}d.
 
 %build
 autoreconf -fiv
-%if 0%{?suse_version} < 1550
-export CC=gcc-13
-export CXX=g++-13
-%endif
 %configure \
   --with-asm=auto \
   --with-cli=yes \
@@ -195,10 +180,8 @@ export CXX=g++-13
   --disable-hardening
 %make_build
 
-%if 0%{?suse_version} >= 1550
 %check
 %make_build LC_ALL=C.UTF-8 check
-%endif
 
 %install
 %make_install
