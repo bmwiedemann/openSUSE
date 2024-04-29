@@ -15,4 +15,18 @@
     <comment></comment>
     <requestid>1011991</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6e1a676bbcb129257677436f8a8e44fd</srcmd5>
+    <version>6.50</version>
+    <time>1714406265</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.50:
+  * psd.in: add missing var to fix backup limit
+  * Add vscode dir
+  * README and MIT: update
+  * Per XDG Base Directory Specification, create XDG_RUNTIME_DIR
+    in /tmp
+  * Fix surf support (rm wrong '/')</comment>
+    <requestid>1170625</requestid>
+  </revision>
 </revisionlist>

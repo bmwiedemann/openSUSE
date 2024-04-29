@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 28 19:01:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.50:
+  * psd.in: add missing var to fix backup limit
+  * Add vscode dir
+  * README and MIT: update
+  * Per XDG Base Directory Specification, create XDG_RUNTIME_DIR
+    in /tmp
+  * Fix surf support (rm wrong '/')
+
+-------------------------------------------------------------------
 Sun Oct 16 21:31:34 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
 
 - Update to verion 6.48:

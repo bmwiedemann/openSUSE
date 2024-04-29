@@ -1,7 +1,7 @@
 #
 # spec file for package profile-sync-daemon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013-2020 Artem Polishchuk & Christopher Meng
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %global shortname psd
 Name:           profile-sync-daemon
-Version:        6.48
+Version:        6.50
 Release:        0
 Summary:        Symlinks and syncs browser profile dirs to RAM thus reducing HDD/SDD calls
 License:        MIT
@@ -50,15 +50,12 @@ zsh completion for %{name}.
 %prep
 %autosetup -p1
 
-
 %build
 %make_build
-
 
 %install
 %make_install
 %fdupes %{buildroot}/%{_datadir}/%{shortname}/
-
 
 %post
 %{systemd_user_post %{shortname}.service}
