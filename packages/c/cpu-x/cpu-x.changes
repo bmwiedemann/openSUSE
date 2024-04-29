@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 28 17:02:32 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to release 5.0.4
+- Changed
+  * Update databases (more CPU packages, Intel Meteor Lake-H,
+    Intel Emerald Rapids-SP)
+  * Patch dmidecode to version 3.6
+- Fixed
+  * Do not display unavailable DMI fields in Memory tab (#322)
+
+- added %check section to run unit tests
+
+-------------------------------------------------------------------
 Mon Jan 15 09:42:42 UTC 2024 - pallaswept <pallaswept@proton.me>
 
 - Update to release 5.0.3

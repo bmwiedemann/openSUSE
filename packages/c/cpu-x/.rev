@@ -134,4 +134,12 @@
 - Add desktop file (forwarded request 1138800 from pallaswept)</comment>
     <requestid>1138809</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>47d6ac79dd52a8fa28647f00160bb0e7</srcmd5>
+    <version>5.0.4</version>
+    <time>1714406279</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 5.0.4</comment>
+    <requestid>1170708</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %define src_name CPU-X-%version
 Name:           cpu-x
-Version:        5.0.3
+Version:        5.0.4
 Release:        0
 Summary:        Hardware overview utility
 License:        GPL-3.0-or-later
@@ -99,6 +99,9 @@ export CC=gcc-12 CXX=g++-12
 %cmake_install
 rm -Rf "%buildroot/%_datadir/polkit-1"
 %find_lang %name
+
+%check
+for dir in awk grep ; do pushd tests/$dir && ./test_regex.sh && popd ; done
 
 %files
 %_bindir/cpu-x
