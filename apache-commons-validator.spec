@@ -91,6 +91,7 @@ export CLASSPATH=$(build-classpath \
                    commons-digester \
                    commons-beanutils \
                    junit \
+                   hamcrest \
                    oro )
 ant \
     -Dcompile.source=8 -Dcompile.target=8 \
@@ -104,6 +105,7 @@ export CLASSPATH=$(build-classpath \
                    commons-digester \
                    commons-beanutils \
                    junit \
+                   hamcrest \
                    oro )
 ant \
     -Dcompile.source=8 -Dcompile.target=8 \

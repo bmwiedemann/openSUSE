@@ -78,4 +78,12 @@
     <comment></comment>
     <requestid>1147887</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>f129b695f6cfa45f4cbd028ab5cfd8b6</srcmd5>
+    <version>1.5.0</version>
+    <time>1714333797</time>
+    <user>anag+factory</user>
+    <comment>allow building against non-shaded hamcrest</comment>
+    <requestid>1170464</requestid>
+  </revision>
 </revisionlist>
