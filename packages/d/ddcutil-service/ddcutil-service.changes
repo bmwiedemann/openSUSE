@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 29 03:52:43 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
+
+- 1.0.6
+  - Add SetVcp/SetVcpWithContext NO_VERIFY (no retry) flag option.
+  - Match the behaviour of the ddcutil command, default to verify-and-retry for all set-vcp method calls.
+  - Default to verify-and-retry for all libddcutil versions.
+  - Replace the stateful DdcutilVerifySetVcp property with the stateless NO_VERIFY flag.
+  - Fix the ServiceFlagOptions property so that it lists all flag options.
+  - Check the status returned by libddcutil ddca_init() and exit on error to prevent any inconsistent behaviour.
+  - Cleanup the --prefer-polling and --prefer-drm options to make them consistent with each other. 
+
+-------------------------------------------------------------------
 Fri Apr 12 22:50:44 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
 
 - 1.0.4
