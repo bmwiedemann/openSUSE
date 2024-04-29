@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-recoveryservicesbackup
-Version:        9.0.0
+Version:        9.1.0
 Release:        0
 Summary:        Microsoft Azure Recovery Services Backup Management Client Library
 License:        MIT

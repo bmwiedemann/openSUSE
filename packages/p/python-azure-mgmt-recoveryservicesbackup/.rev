@@ -286,4 +286,15 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164859 from glaubitz)</comment>
     <requestid>1165254</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b34c3b94c3899e74139ab5c9af8fdaa2</srcmd5>
+    <version>9.1.0</version>
+    <time>1714406327</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 9.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1170678 from glaubitz)</comment>
+    <requestid>1170788</requestid>
+  </revision>
 </revisionlist>
