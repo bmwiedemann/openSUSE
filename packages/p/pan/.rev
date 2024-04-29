@@ -167,4 +167,41 @@
     <comment></comment>
     <requestid>1165720</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>07d0ebfe86a16dd208e4492f29504d19</srcmd5>
+    <version>0.158</version>
+    <time>1714406268</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.158:
+  * add doc for cmake build options
+  * fix cmake install de-install doc
+  * fix ctest instructions
+  * cmake: set WANT_GMIME_CRYPTO option to default off
+  * cmake: install help and man files
+  * cmake: install translations files as pan.mo
+
+- Following upstream changes, add new BuildRequires: gettext,
+  + Corrected erroneous sourceurl in specfile.
+- fix build with GCC 4.4
+- obsoletes patches for CVE-2008-2363, glib-compat and gcc 4.3
+- add glib compat layer to abstract glib API
+- fix include file to get g_assert
+- GNOME moved to /usr
+- update to release 0.112
+- removed libzvt from neededforbuild (unused)
+- set default editor to gedit
+- finally renamed package to PAN
+- changed PREFIX to /opt/gnome
+- add patch for PAN incorrectly handling sockets
+- update to new stable version 0.14.0
+     * Fixed a serious 0.13.1 memory leak, and 0.13.2.92 cache
+       overflow, caused by the Task Manager window.
+     * Fixed a race condition that could cause Pan to crash on startup
+     * Fix 0.13.1 bug that crashed Pan when it encountered user-defined
+    * Fixed 0.13.0 message corruption fix in the composer when a
+- removed bogus self-provides
+- fixed wrong declarations in gmime-message-part.c
+		* About a dozen minor memory leaks fixed</comment>
+    <requestid>1170628</requestid>
+  </revision>
 </revisionlist>
