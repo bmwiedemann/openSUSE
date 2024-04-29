@@ -1,7 +1,7 @@
 #
 # spec file for package libecpint
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020-2021 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,14 @@
 
 
 Name:           libecpint
-Version:        1.0.7
+Version:        v1.0.7+git20230218.8e788d4
 Release:        0
 %global         sover 1
 Summary:        Efficient evaluation of integrals over ab initio effective core potentials
 License:        MIT
 Group:          Productivity/Scientific/Chemistry
 URL:            https://github.com/robashaw/libecpint
-Source0:        https://github.com/robashaw/libecpint/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 
 BuildRequires:  cmake >= 3.12
 BuildRequires:  doxygen
