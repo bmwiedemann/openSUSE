@@ -58,6 +58,7 @@ Patch16:        0016-bgpd-Ignore-handling-NLRIs-if-we-received-MP_UNREACH.patch
 Patch17:        0017-bgpd-Fix-use-beyond-end-of-stream-of-labeled-unicast.patch
 Patch18:        0018-bgpd-Flowspec-overflow-issue.patch
 Patch19:        0019-bgpd-fix-error-handling-when-receiving-BGP-Prefix-SID-attribute.patch
+Patch20:        0020-ospfd-Solved-crash-in-OSPF-TE-parsing.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison >= 2.7
@@ -93,7 +94,7 @@ BuildRequires:  pkgconfig(sqlite3)
 Requires(post): %{install_info_prereq}
 Requires(pre):  %{install_info_prereq}
 Requires(pre):  shadow
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 Recommends:     logrotate
 Conflicts:      quagga
 Provides:       zebra = %{version}

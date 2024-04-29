@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-parsel
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Library to extract data from HTML and XML using XPath and CSS selectors
 License:        BSD-3-Clause
@@ -54,7 +54,6 @@ selectors.
 
 %prep
 %autosetup -p1 -n parsel-%{version}
-sed -i -e '/pytest-runner/d' setup.py
 
 %build
 %pyproject_wheel

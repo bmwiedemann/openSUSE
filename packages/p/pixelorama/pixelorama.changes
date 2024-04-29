@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr 22 12:00:00 UTC 2024 - cunix@mail.de
+
+- Update to 0.11.4
+  * Exporting palettes to png files is now possible
+  * When quitting, multiple save confirmation dialogs now appear,
+    each for every project that has changes
+  * Loop through frames when clicking on go to
+    previous/next frame buttons on the timeline
+  * Make cloned frames only select a cel if its
+    corresponding original cel was selected as well
+  * All of the timeline buttons now have the same size
+  * Attempting to load an invalid pxo file no longer crashes the application
+  * Random brushes now work again
+
+-------------------------------------------------------------------
 Wed Nov 1 12:00:00 UTC 2023 - cunix@mail.de
 
 - Update to 0.11.3

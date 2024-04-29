@@ -1,7 +1,7 @@
 #
 # spec file for package python-fissix
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-fissix
-Version:        21.11.13
+Version:        24.4.24
 Release:        0
 Summary:        Backport of lib2to3, with enhancements
 License:        Python-2.0

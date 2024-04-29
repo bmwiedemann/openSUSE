@@ -45,4 +45,15 @@
   Upgrade Protego version to 0.2.0</comment>
     <requestid>1137429</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4ad50c71088125bef073cf74fe3ad112</srcmd5>
+    <version>0.3.1</version>
+    <time>1714333769</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.1:
+  * Added official support for Python 3.12.
+  *   ``=`` is no longer percent-encoded in patterns, fixing many
+    scenarios where patterns included query strings.</comment>
+    <requestid>1170438</requestid>
+  </revision>
 </revisionlist>

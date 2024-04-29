@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 24 07:17:36 UTC 2024 - dcermak@suse.com
+
+- Update to version 1.5.1:
+  * Release version 1.5.1
+  * Bump deps including rustls (fixes bsc#1223225 - CVE-2024-32650)
+
+-------------------------------------------------------------------
 Sun Jan 28 19:06:36 UTC 2024 - Kosei Hashimoto <ekr59uv25@gmail.com>
 
 - Initial spec for kubetui 1.5.0

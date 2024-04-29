@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 20 13:40:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.111:
+  * no upstream changelog
+
+-------------------------------------------------------------------
 Fri Sep  8 05:03:19 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.110:
@@ -24,14 +30,14 @@ Fri Feb 10 10:05:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Dec  7 15:55:47 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 1.104: 
+- Update to version 1.104:
   - move to GitHub home page
-  - add parameter for custom method repos 
+  - add parameter for custom method repos
 
 -------------------------------------------------------------------
 Mon Sep 26 23:54:56 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to Version 1.103: 
+- Update to Version 1.103:
   -The previous release brought several enhancements and fixes for the stats calculation mechanism but it wasn’t quite enough.
   -This release comes with some final follow-ups. We are hoping to start counting the RPM downloads shortly after.
   Minor UI improvements

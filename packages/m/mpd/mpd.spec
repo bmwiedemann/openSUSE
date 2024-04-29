@@ -263,7 +263,7 @@ getent passwd %{name} >/dev/null || useradd -rc 'Music Player Daemon' -s /bin/fa
 %dir %{_prefix}/lib/firewalld/services
 %{_prefix}/lib/firewalld/services/%{name}.xml
 %{_tmpfilesdir}/%{name}.conf
-%ghost %dir /run/%{name}
+%ghost %dir %attr(0755,%{name},audio) /run/%{name}
 
 %files doc
 %doc html/*.{html,js} html/_static

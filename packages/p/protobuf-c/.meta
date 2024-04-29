@@ -4,6 +4,6 @@
 Buffers from pure C (not C++).
 
 It uses a modified version of protoc called protoc-c.</description>
-  <devel project="server:monitoring" package="protobuf-c"/>
+  <devel project="devel:tools:building" package="protobuf-c"/>
   <url>http://code.google.com/p/protobuf-c/</url>
 </package>

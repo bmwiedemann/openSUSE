@@ -18,7 +18,7 @@
 
 %define lname   page.kramo.Cartridges
 Name:           cartridges
-Version:        2.8.3
+Version:        2.8.4
 Release:        0
 Summary:        A GTK4 + Libadwaita game launcher 
 License:        GPL-3.0-only

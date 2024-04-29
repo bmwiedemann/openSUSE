@@ -101,4 +101,32 @@
     <comment>- use setuptools_scm to get the right packaged version</comment>
     <requestid>1119968</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>425bf1e97a0fb7786dba5a7b61790b32</srcmd5>
+    <version>0.6.3</version>
+    <time>1714333803</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.3:
+  * build is now the default backend for asv to install projects.
+  * Partially skipped benchmarks will still have their results
+    displayed.
+  * asv will now correctly prepare all the build backend
+    dependencies into base_requirements and the default
+    build_command has been modified to allow fetching from PyPI.
+  * The asv package no longer prepends the script execution
+    directory unconditionally. Now we check for and remove the
+    path only if it matches the directory that the runner script
+    resides in.
+  * The bdist wheels no longer include benchmarks and test.
+  * The mamba plugin works correctly for newer versions (&gt;=1.5)
+    of libmambapy
+  * The mamba plugin respects the MAMBARC environment if set,
+    taking channels and channel priority from the file in the
+    environment variable.
+  * Fixed a bug where matrix requirements were dropped if an
+    environment file was specified.
+  * conda-forge is no longer a default channel for mamba.
+  * asv now depends on virtualenv</comment>
+    <requestid>1170473</requestid>
+  </revision>
 </revisionlist>

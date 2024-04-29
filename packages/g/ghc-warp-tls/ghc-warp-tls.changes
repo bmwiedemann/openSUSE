@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 19 10:46:05 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update warp-tls to version 3.4.5.
+  ## 3.4.5
+
+  * Making mkConn of WarpTLS interruptible
+    [#984](https://github.com/yesodweb/wai/pull/984)
+
+-------------------------------------------------------------------
 Sat Feb  3 07:37:49 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update warp-tls to version 3.4.4.

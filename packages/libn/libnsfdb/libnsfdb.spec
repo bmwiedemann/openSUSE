@@ -18,30 +18,31 @@
 
 Name:           libnsfdb
 %define lname	libnsfdb1
-Version:        20240211
+Version:        20240426
 Release:        0
 Summary:        Library and tools to access the Notes Storage Facility format
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libnsfdb
-Source:         https://github.com/libyal/libnsfdb/releases/download/%version/libnsfdb-experimental-%version.tar.gz
-Source2:        https://github.com/libyal/libnsfdb/releases/download/%version/libnsfdb-experimental-%version.tar.gz.asc
+Source:         https://github.com/libyal/libnsfdb/releases/download/%version/%name-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libnsfdb/releases/download/%version/%name-experimental-%version.tar.gz.asc
 Source3:        %name.keyring
 BuildRequires:  c_compiler
-BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcdata) >= 20240103
-BuildRequires:  pkgconfig(libcerror) >= 20240101
-BuildRequires:  pkgconfig(libcfile) >= 20240106
-BuildRequires:  pkgconfig(libclocale) >= 20240107
-BuildRequires:  pkgconfig(libcnotify) >= 20240108
-BuildRequires:  pkgconfig(libcpath) >= 20240109
-BuildRequires:  pkgconfig(libcsplit) >= 20240110
-BuildRequires:  pkgconfig(libcthreads) >= 20240102
-BuildRequires:  pkgconfig(libfcache) >= 20240112
-BuildRequires:  pkgconfig(libfdata) >= 20240114
-BuildRequires:  pkgconfig(libfdatetime) >= 20240115
-BuildRequires:  pkgconfig(libfvalue) >= 20240124
-BuildRequires:  pkgconfig(libuna) >= 20240130
+BuildRequires:  pkgconfig(libbfio) >= 20240414
+BuildRequires:  pkgconfig(libcdata) >= 20240414
+BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libcfile) >= 20240414
+BuildRequires:  pkgconfig(libclocale) >= 20240414
+BuildRequires:  pkgconfig(libcnotify) >= 20240414
+BuildRequires:  pkgconfig(libcpath) >= 20240414
+BuildRequires:  pkgconfig(libcsplit) >= 20240414
+BuildRequires:  pkgconfig(libcthreads) >= 20240413
+BuildRequires:  pkgconfig(libfcache) >= 20240414
+BuildRequires:  pkgconfig(libfdata) >= 20240415
+BuildRequires:  pkgconfig(libfdatetime) >= 20240415
+BuildRequires:  pkgconfig(libfvalue) >= 20240414
+BuildRequires:  pkgconfig(libuna) >= 20240414
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 libnsfdb is a library to access the Notes Storage Facility (NSF)
@@ -85,7 +86,6 @@ read Notes Storage Facility databases.
 
 %build
 if [ ! -e configure ]; then ./autogen.sh; fi
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static LDFLAGS="-Wl,--version-script=$PWD/v.sym"
 %make_build
@@ -94,8 +94,7 @@ echo "V_%version { global: *; };" >v.sym
 %make_install
 find "%buildroot" -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*

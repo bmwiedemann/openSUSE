@@ -17,14 +17,15 @@
 
 
 # Adjust baselibs.conf if this changes
-%define major 2
+%define major 3
 %define libname lib%{name}-%{major}
 Name:           blosc2
-Version:        2.13.2
+Version:        2.14.4
 Release:        0
 Summary:        A fast, compressed, persistent binary data store library for C
 License:        BSD-2-Clause AND BSD-3-Clause AND MIT
 URL:            https://www.blosc.org/c-blosc2/c-blosc2.html
+# SourceRepository: https://github.com/Blosc/c-blosc2
 Source:         https://github.com/Blosc/c-blosc2/archive/refs/tags/v%{version}.tar.gz#/c-blosc2-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  cmake

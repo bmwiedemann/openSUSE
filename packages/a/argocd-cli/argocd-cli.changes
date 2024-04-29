@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 26 18:52:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.8:
+  * Bump version to 2.10.8 (#17990)
+  * fix: codegen after security fix - 2.10 (#17985)
+  * Merge pull request from GHSA-9m6p-x4h2-6frq
+  * Merge pull request from GHSA-9m6p-x4h2-6frq
+  * chore: upgrade redis to 7.0.15 (#17666)
+  * fix: codegen and e2e tests in release-2.10 (#17844)
+
+-------------------------------------------------------------------
 Mon Apr 15 11:03:17 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.10.7:

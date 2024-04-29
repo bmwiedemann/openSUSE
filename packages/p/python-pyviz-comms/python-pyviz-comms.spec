@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyviz-comms
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,26 @@
 #
 
 
+
 Name:           python-pyviz-comms
-Version:        2.2.1
+Version:        3.0.2
 Release:        0
 Summary:        Tool to launch jobs, organize the output, and dissect the results
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pyviz/pyviz_comms
-# For the bundled JS files
-Source0:        https://files.pythonhosted.org/packages/source/p/pyviz_comms/pyviz_comms-%{version}.tar.gz
-# For the tests
-Source1:        https://github.com/holoviz/pyviz_comms/archive/refs/tags/v%{version}.tar.gz#/pyviz_comms-%{version}-gh.tar.gz
-Source100:      python-pyviz-comms-rpmlintrc
+Source0:        https://files.pythonhosted.org/packages/py3/p/pyviz-comms/pyviz_comms-%{version}-py3-none-any.whl
+Source99:       python-pyviz-comms-rpmlintrc
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 40.8.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       python-param
+Recommends:     jupyter-jupyterlab-pyviz = %{version}
 Provides:       python-pyviz_comms = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test requirements
@@ -47,24 +49,43 @@ PyViz-Comms offers a simple bidirectional communication architecture
 for PyViz tools including support for Jupyter comms in both the
 classic notebook and Jupyterlab.
 
+%package     -n jupyter-jupyterlab-pyviz
+Release:        0
+Summary:        PyViz JupyterLab Extension
+Group:          Development/Languages/Python
+Requires:       jupyter-jupyterlab
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(pyviz-comms) = %{version}
+Suggests:       python3-pyviz-comms
+
+%description -n jupyter-jupyterlab-pyviz
+Jupyter extension to display matplotlib plots in a widget.
+
+This package provides the JupyterLab extension.
+
 %prep
-%setup -q -n pyviz_comms-%{version}
-tar -x -f %{SOURCE1} --strip-components=1 pyviz_comms-%{version}/pyviz_comms/tests/
+%setup -q -c -T
 
 %build
-%pyproject_wheel
+# not needed
 
 %install
-%pyproject_install
+%pyproject_install %{SOURCE0}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+cp %{buildroot}%{python_sitelib}/pyviz_comms-%{version}.dist-info/licenses/LICENSE .
+cp %{buildroot}%{python_sitelib}/pyviz_comms-%{version}.dist-info/licenses/LICENSE.txt .
 
 %check
-%pytest
+%pytest %{buildroot}%{python_sitelib}/pyviz_comms
 
 %files %{python_files}
-%license LICENSE.txt
-%doc README.md
+%license LICENSE LICENSE.txt
 %{python_sitelib}/pyviz_comms
 %{python_sitelib}/pyviz_comms-%{version}.dist-info
+
+%files -n jupyter-jupyterlab-pyviz
+%license LICENSE LICENSE.txt
+%dir %{_jupyter_labextensions_dir3}/@pyviz/
+%{_jupyter_labextensions_dir3}/@pyviz/jupyterlab_pyviz
 
 %changelog

@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-yq
-Version:        3.2.3
+Version:        3.4.3
 Release:        0
 Summary:        Command-line YAML processor - jq wrapper for YAML documents
 License:        Apache-2.0
 URL:            https://github.com/kislyuk/yq
 Source:         https://files.pythonhosted.org/packages/source/y/yq/yq-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -35,7 +35,7 @@ Requires:       python-argcomplete >= 1.8.1
 Requires:       python-tomlkit >= 0.11.6
 Requires:       python-xmltodict >= 0.11.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 5.3.1}

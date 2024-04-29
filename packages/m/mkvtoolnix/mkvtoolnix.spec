@@ -17,7 +17,7 @@
 
 
 Name:           mkvtoolnix
-Version:        83.0
+Version:        84.0
 Release:        0
 Summary:        Tools to Create, Alter, and Inspect Matroska Files
 License:        GPL-2.0-or-later
@@ -61,7 +61,7 @@ BuildRequires:  pkgconfig(Qt6Svg)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(dvdread)
 BuildRequires:  pkgconfig(flac)
-BuildRequires:  pkgconfig(fmt) >= 6.1.0
+BuildRequires:  pkgconfig(fmt) >= 8.0.0
 BuildRequires:  pkgconfig(libcmark)
 BuildRequires:  pkgconfig(libebml) >= 1.4.4
 BuildRequires:  pkgconfig(libmatroska) >= 1.7.1

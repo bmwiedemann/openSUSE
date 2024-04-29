@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 27 16:11:14 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Fix group(velociraptor) dependency for SLE 15 SP3
+
+-------------------------------------------------------------------
 Tue Apr 23 10:28:10 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Change system-user-velociraptor to noarch

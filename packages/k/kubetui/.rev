@@ -7,4 +7,12 @@
     <comment>I want to maintain kubetui in openSUSE:Factory.</comment>
     <requestid>1145094</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a5cf8f827db8ff05df12e8f0728046c5</srcmd5>
+    <version>1.5.1</version>
+    <time>1714333804</time>
+    <user>anag+factory</user>
+    <comment>update to 1.5.1 - fixes bsc#1223225 aka CVE-2024-32650 (forwarded request 1169986 from dancermak)</comment>
+    <requestid>1170474</requestid>
+  </revision>
 </revisionlist>

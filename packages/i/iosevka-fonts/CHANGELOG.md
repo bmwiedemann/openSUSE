@@ -1,5 +1,43 @@
 ## Modifications since last major version
 
+### 29.2.1
+
+* Refine shape of `U+1CC09`, `U+1CC0A`, `U+1CC10` and `U+1CC11`.
+* Refine terminal shape of Schwa and Reversed Lower E (`U+018F`, `U+0258`..`U+025A`, `U+04D8`..`U+04D9`) under italics.
+* Make CYRILLIC CAPITAL LETTER SHHA (`U+04BA`) follow variants of Capital H (`cv08`).
+* Add characters:
+  - ARC (`U+2312`) ... SECTOR (`U+2314`).
+  - ERASE TO THE RIGHT (`U+2326`) ... X IN A RECTANGLE BOX (`U+2327`) (#2289).
+  - ERASE TO THE LEFT (`U+232B`) (#2289).
+  - NOT CHECK MARK (`U+237B`).
+  - BELL SYMBOL (`U+237E`) ... VERTICAL LINE WITH MIDDLE DOT (`U+237F`).
+  - WHITE SQUARE WITH CENTRE VERTICAL LINE (`U+2385`).
+  - MONOSTABLE SYMBOL (`U+238D`).
+  - DENTISTRY SYMBOL LIGHT VERTICAL AND TOP RIGHT (`U+23BE`) ... DENTISTRY SYMBOL LIGHT VERTICAL AND BOTTOM LEFT (`U+23CC`).
+  - EARTH GROUND (`U+23DA`) ... FUSE (`U+23DB`).
+  - WHITE TRAPEZIUM (`U+23E2`).
+  - STRAIGHTNESS (`U+23E4`) ... FLATNESS (`U+23E5`).
+  - UP ARROWHEAD IN A RECTANGLE BOX (`U+2BB9`).
+  - BALLOT BOX WITH LIGHT X (`U+2BBD`) ... CIRCLED BOLD X (`U+2BBF`).
+  - LEFT-FACING SNAKE HEAD WITH OPEN MOUTH (`U+1CC70`) ... DOWN-FACING SNAKE HEAD WITH CLOSED MOUTH (`U+1CC77`)  (Proposed for Unicode 16; L2/21-235).
+  - UPPER LEFT QUADRANT FACE WITH OPEN EYES (`U+1CCA6`) ... BOTTOM HALF FORWARD-FACING RUNNER FRAME-4 (`U+1CDF4`)  (Proposed for Unicode 16; L2/21-235).
+  - TOP HALF FLAILING ROBOT FRAME-1 (`U+1CDF6`) ... TOP HALF FLAILING ROBOT FRAME-2 (`U+1CDF7`)  (Proposed for Unicode 16; L2/21-235).
+* Fix `zero` feature application on MATHEMATICAL MONOSPACE DIGIT ZERO (`U+1D7F6`) (#2298).
+
+
+### 29.2.0
+
+* Drop NWID glyphs for ligatures in quasi-proportionals as they do not make sense for these styles. This change will save around 2MB for each Aile or Etoile font.
+* Make presence of descender serif automatic for GREEK CAPITAL KAI SYMBOL (`U+03CF`).
+* Make presence of top-left serif automatic for CYRILLIC {CAPITAL|SMALL} LETTER BASHKIR KA (`U+04A0`..`U+04A1`).
+* Make GREEK SMALL LETTER DIGAMMA (`U+03DD`) respond to top-right serif variants of Greek Capital Gamma (`cv56`).
+* Make GREEK SMALL LETTER HETA (`U+0371`) respond to top-left serif variants of `H` (`cv08`).
+* Make CYRILLIC {CAPITAL|SMALL} LIGATURE EN GHE (`U+04A4`..`U+04A5`) respond to top-right serif variants of Greek Capital Gamma (`cv56`).
+* Make CYRILLIC {CAPITAL|SMALL} LETTER STRAIGHT U (`U+04AE`..`U+04B1`) follow variants of Cyrillic Capital/Small U (`cv77`..`cv78`).
+* Make the terminal of {LATIN|CYRILLIC} {CAPITAL|SMALL} LETTER SCHWA (`U+018F`, `U+0259`, `U+04D8`..`U+04D9`) a full hook under italics to match CYRILLIC {CAPITAL|SMALL} LETTER E (`U+042D`, `U+044D`).
+* Quasi-proportional will now use `cyrl-ef` = `split-serifless`, `cyrl-ef` = `split-serifed`, and `cyrl-ef` = `split-cursive` for Aile, Etoile upright, and Etoile italic respectively.
+
+
 ### 29.1.0
 
 * Add support for naming override (#2275).

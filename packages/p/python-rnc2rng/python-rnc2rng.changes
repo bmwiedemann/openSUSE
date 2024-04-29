@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 27 07:41:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.0:
+  * stricter serialization of annotation namespaces
+  * Allow annotations in front of() and ref
+  * Add missing TOKEN productions
+  * Fix excessive stripping of documentation comments
+  * Handle datatypeLibrary namespaces
+
+-------------------------------------------------------------------
 Sun May  1 23:33:20 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Initial packaging effort for rnc2rng 2.6.6.

@@ -267,4 +267,12 @@
     <comment>- Declare go &gt;= 1.22 in .spec, following upstream go.mod file (forwarded request 1169531 from VaiTon)</comment>
     <requestid>1169559</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>03aef449e07b536c2decaa00f22f27ce</srcmd5>
+    <version>0.71.0</version>
+    <time>1714333728</time>
+    <user>anag+factory</user>
+    <comment>Update to version 0.71.0: (forwarded request 1170309 from VaiTon)</comment>
+    <requestid>1170310</requestid>
+  </revision>
 </revisionlist>

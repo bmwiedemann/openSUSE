@@ -159,4 +159,12 @@
   * Added in ephemeral bottle count, so we only destruct the bottle when the lockfile reads 0.</comment>
     <requestid>1166475</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3883d4872052ae295bd70ffebba5355f</srcmd5>
+    <version>1.2.9+git20240421.b9723c0</version>
+    <time>1714333883</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1170613</requestid>
+  </revision>
 </revisionlist>

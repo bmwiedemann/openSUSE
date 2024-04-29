@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr 22 12:00:00 UTC 2024 - cunix@mail.de
+
+- Update to 4.2.2
+  * Texture2D and Texture3D icons added
+  * Prompt require editor restart to user when gizmo color changed
+  * Make viewport message dependent on framerate not physics step
+  * Show modifier key functionality on all the editor tools
+  * Make AnimationTree reference AnimationPlayer instead of AnimationMixer
+  * Fix permanently selected audio bus effects
+  * Add missing RenderServer include for "get_video_adapter_driver_info"
+  * Fix frame number underflow in visual profiler
+  * ix leak of scene used for customization during export
+  * Handle export preset forward compat with 4.3+ platform name
+  * Fix reporting exit code when command line export fails
+  * Correctly enforce minimum window size in editor
+  * Add "--import" command-line flag
+  * Ensure the active window gains the keyboard focus
+  * Prevent escape key from closing Editor Settings window when filtering for shortcuts
+  * Fix Godot stealing focus on alternative window managers
+  * Don't re-set input focus if the given window already has it
+  * Force ANGLE on all pre GCN 4th gen. AMD/ATI GPUs
+  * Use render method from OS instead of project settings in compositor RD
+  * Add wireframe for compatibility mode
+  * Significantly improve the speed of shader compilation in compatibility backend
+
+  and more:
+  https://godotengine.github.io/godot-interactive-changelog/#4.2.2
+
+-------------------------------------------------------------------
 Tue Feb 27 11:11:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

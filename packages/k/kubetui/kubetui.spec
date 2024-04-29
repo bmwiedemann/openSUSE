@@ -17,7 +17,7 @@
 
 
 Name:           kubetui
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        A terminal UI for Kubernetes
 License:        MIT
@@ -34,7 +34,7 @@ Kubetui is a terminal user interface (TUI) tool designed for monitoring Kubernet
 It provides an easy-to-use interface for developers and operators to access important information about their applications and infrastructure.
 
 %prep
-%setup -q -a1
+%autosetup -a1
 install -D -m 0644 %{SOURCE2} .cargo/config
 
 %build

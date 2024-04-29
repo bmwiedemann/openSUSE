@@ -32,4 +32,18 @@
     <comment></comment>
     <requestid>942723</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1841782177a2c81afc4e6524ad72869e</srcmd5>
+    <version>24.4.24</version>
+    <time>1714333771</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.4.24:
+  * Maintenance release
+  * Updated project metadata
+  * Tested on Python 3.8 - 3.12
+
+  *  include dict in iterating context
+  * No upstream changelog.</comment>
+    <requestid>1170444</requestid>
+  </revision>
 </revisionlist>

@@ -70,4 +70,14 @@
 - drop h5py-fixup.patch, arf-pr10-h5py-open.patch (upstream)</comment>
     <requestid>1130508</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6b282bbdc009df4394ba9390f5c44ec8</srcmd5>
+    <version>2.6.7</version>
+    <time>1714333804</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.6.6:
+  * Added CI testing for newer versions of Python and other
+    platforms. Added type annotations.</comment>
+    <requestid>1170472</requestid>
+  </revision>
 </revisionlist>

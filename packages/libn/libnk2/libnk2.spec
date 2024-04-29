@@ -18,34 +18,34 @@
 
 Name:           libnk2
 %define lname	libnk2-1
-Version:        20240210
+Version:        20240426
 Release:        0
 Summary:        Library and tools to access the Outlook Nickfile (NK2) format
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libnk2
-Source:         https://github.com/libyal/libnk2/releases/download/%version/libnk2-alpha-%version.tar.gz
-Source2:        https://github.com/libyal/libnk2/releases/download/%version/libnk2-alpha-%version.tar.gz.asc
+Source:         https://github.com/libyal/libnk2/releases/download/%version/%name-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libnk2/releases/download/%version/%name-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcdata) >= 20240103
-BuildRequires:  pkgconfig(libcerror) >= 20240101
-BuildRequires:  pkgconfig(libcfile) >= 20240106
-BuildRequires:  pkgconfig(libclocale) >= 20240107
-BuildRequires:  pkgconfig(libcnotify) >= 20240108
-BuildRequires:  pkgconfig(libcpath) >= 20240109
-BuildRequires:  pkgconfig(libcsplit) >= 20240110
-BuildRequires:  pkgconfig(libcthreads) >= 20240102
-BuildRequires:  pkgconfig(libfdatetime) >= 20240115
-BuildRequires:  pkgconfig(libfguid) >= 20240116
-BuildRequires:  pkgconfig(libfmapi) >= 20240117
-BuildRequires:  pkgconfig(libfvalue) >= 20240124
-BuildRequires:  pkgconfig(libfwnt) >= 20240126
-BuildRequires:  pkgconfig(libuna) >= 20240130
+BuildRequires:  pkgconfig(libcdata) >= 20240414
+BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libcfile) >= 20240414
+BuildRequires:  pkgconfig(libclocale) >= 20240414
+BuildRequires:  pkgconfig(libcnotify) >= 20240414
+BuildRequires:  pkgconfig(libcpath) >= 20240414
+BuildRequires:  pkgconfig(libcsplit) >= 20240414
+BuildRequires:  pkgconfig(libcthreads) >= 20240413
+BuildRequires:  pkgconfig(libfdatetime) >= 20240415
+BuildRequires:  pkgconfig(libfguid) >= 20240415
+BuildRequires:  pkgconfig(libfmapi) >= 20240415
+BuildRequires:  pkgconfig(libfvalue) >= 20240415
+BuildRequires:  pkgconfig(libfwnt) >= 20240415
+BuildRequires:  pkgconfig(libuna) >= 20240414
 # Various notes: https://en.opensuse.org/libyal
 
 %description
@@ -95,8 +95,7 @@ grep '  local' config.log && exit 1
 %make_install
 find "%buildroot" -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*

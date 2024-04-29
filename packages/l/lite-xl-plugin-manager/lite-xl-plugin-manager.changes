@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr 21 16:45:13 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.9+git20240421.b9723c0:
+  * Fixed commas.
+  * Made {{ a thing.
+  * Made URL more sensible.
+  * Updated CHANGELOG.md.
+  * Fixed issue with SHOULD_COLOR being set to nil, rather than false.
+  * Fixed type inference.
+  * Made it so you can run the system bottle.
+  * Updated CHANGELOG.md.
+  * Changed how url is generated.
+  * Made it so that we can access `extra` fields. Closes #107.
+  * Fixed author variable position.
+  * Updated build to match new environment variable.
+  * Gcc as $CC (#108)
+
+-------------------------------------------------------------------
 Tue Apr  9 14:12:13 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adjusting for https://github.com/rpm-software-management/rpmlint/pull/1222

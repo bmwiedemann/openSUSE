@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 24 10:40:57 UTC 2024 - Marius Tomaschewski <mt@suse.com>
+
+- Apply upstream fix solving crash in OSPF TE parsing (bsc#1220548,
+  CVE-2024-27913, gh#FRRouting/frr#15431)
+  [+ 0020-ospfd-Solved-crash-in-OSPF-TE-parsing.patch]
+
+-------------------------------------------------------------------
 Wed Apr 10 18:59:00 UTC 2024 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - add

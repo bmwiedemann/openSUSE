@@ -1,7 +1,7 @@
 #
 # spec file for package python-arf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-arf
-Version:        2.6.4
+Version:        2.6.7
 Release:        0
 # Note: I know that "advertisement" words are frowned on, but in this case
 # the package name is an acronym so "advanced" needs to stay in
@@ -69,7 +69,7 @@ specifications on how different kinds of data are stored.
 %pytest
 
 %files %{python_files}
-%doc README.md
+%doc README.rst
 %license COPYING
 %{python_sitelib}/arf.py*
 %pycache_only %{python_sitelib}/__pycache__/arf*.pyc

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 27 09:01:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.2:
+  * Remove `split_six` utility function
+  * COMPAT: explictly cast numpy floats to native floats
+  * Remove empty plugins folder
+  * Drop Py3.7, add Py3.12
+
+-------------------------------------------------------------------
 Mon Mar 18 10:49:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.1:

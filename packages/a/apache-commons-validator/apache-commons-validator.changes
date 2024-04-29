@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 27 11:33:47 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Put hamcrest on classpath explicitely. This allows buiding against
+  junit without shaded hamcrest
+
+-------------------------------------------------------------------
 Tue Feb 20 10:22:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

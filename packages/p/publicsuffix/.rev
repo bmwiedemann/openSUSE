@@ -1503,4 +1503,20 @@ Now with build cycle removed.</comment>
   * util: gTLD data autopull updates for 2024-03-28T15:13:37 UTC (#1952)</comment>
     <requestid>1166660</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>b17179de51fb468485536140ccb2a31e</srcmd5>
+    <version>20240419</version>
+    <time>1714333725</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240419:
+  * add qnap entries to existing section (`myqnapcloud.cn` , `mycloudnas.com`, `mynascloud.com`) (#1837)
+  * Update public_suffix_list.dat (#1966)
+  * drop old domains (#1960)
+  * Jouwweb public suffixes (#1935)
+  * Add `us.kg` (#1755)
+  * Replacement for PR #1741 (#1962)
+  * Add `rt.ht` (#1860)
+  * Add cloudscale.ch domains (#1589)</comment>
+    <requestid>1170091</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 26 21:01:24 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- fix build with boost 1.85 (55162c465405d55f03be0f89daf16818c552d506.diff)
+
+-------------------------------------------------------------------
 Sat Mar 23 18:43:10 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 1.18.0:

@@ -299,4 +299,15 @@
   * Add match_range function [salitaba]</comment>
     <requestid>1165866</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>351f178b0e14eb664c5975e2a87e0292</srcmd5>
+    <version>2.0.5</version>
+    <time>1714333802</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.5:
+  * No changes, fix lint
+  * Support hashid strings in is_valid
+  * Avoid over-optimization in crontab expansions</comment>
+    <requestid>1170471</requestid>
+  </revision>
 </revisionlist>

@@ -398,4 +398,13 @@ A model Open Source game.</comment>
     <comment></comment>
     <requestid>1166901</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>3db6804cf3e022d69c6cc12e9e276866</srcmd5>
+    <version>1.18.0</version>
+    <time>1714333749</time>
+    <user>anag+factory</user>
+    <comment>- fix build with boost 1.85 (55162c465405d55f03be0f89daf16818c552d506.diff)
+</comment>
+    <requestid>1170348</requestid>
+  </revision>
 </revisionlist>

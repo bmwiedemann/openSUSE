@@ -163,8 +163,8 @@ Obsoletes:      velociraptor-kafka-humio-gateway < %{version}
 %endif
 
 %if 0%{?suse_version}
-# SLE12 doesn't support sysusers
-%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
+# SLE12 doesn't support sysusers and releases lower than SP4 don't build the server flavor which includes the system-user-velociraptor package.
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150400
 Requires(pre):  pwdutils
 %define pre_create_group 1
 %else

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Protego
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Pure-Python robotstxt parser with support for modern conventions
 License:        BSD-3-Clause

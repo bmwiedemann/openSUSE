@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytools
-Version:        2024.1.1
+Version:        2024.1.2
 Release:        0
 Summary:        A collection of tools for Python
 License:        MIT

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 21 22:22:11 UTC 2024 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.0.2
+  * Ensure save handler gracefully handles undefined layout data
+- Update to 3.0.1
+  * Add save handler for Panel Layout Builder
+  * Publish again to the `pyviz` channel
+- Update to 3.0.0
+  * Update to JupyterLab 4
+  * pip downstream dependency to fix build error
+- Switch to wheel to make sure jupyterlab plugin is properly installed
+- Package jupyterlab plugin
+
+-------------------------------------------------------------------
 Sat Jan 14 13:11:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.2.1

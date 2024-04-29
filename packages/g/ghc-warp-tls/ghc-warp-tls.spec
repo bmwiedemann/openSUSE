@@ -19,7 +19,7 @@
 %global pkg_name warp-tls
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        3.4.4
+Version:        3.4.5
 Release:        0
 Summary:        HTTP over TLS support for Warp via the TLS package
 License:        MIT

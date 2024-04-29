@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr 28 07:55:44 UTC 2024 - munix9@googlemail.com
+
+- Update to version 35.0.1
+  * adb
+    - Switch to libusb as the default on Linux issue #270205252.
+    - Fix adb startup on hosts without USB.
+    - Fix adb hangs caused by USB devices incorrectly reporting
+      zero-length descriptors issue #302212871.
+    - Fix return code of adb shell when device disconnects
+      issue #321787891.
+
+  * fastboot
+    - Limit the maximum size of the incoming packet queue.
+    - Remove bottlenecks that previously limited download speeds
+      to around 120MB/s. Now fastboot can saturate a SuperSpeed+
+      bus and achieve speeds up to 980MB/s, depending on the device.
+
+-------------------------------------------------------------------
 Fri Mar 22 06:42:10 UTC 2024 - munix9@googlemail.com
 
 - Update to version 34.0.5

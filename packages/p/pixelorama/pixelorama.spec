@@ -1,7 +1,7 @@
 #
 # spec file for package pixelorama
 #
-# Copyright (c) 2023 cunix
+# Copyright (c) 2023-2024 cunix
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define nameupper Pixelorama
 
 Name:           pixelorama
-Version:        0.11.3
+Version:        0.11.4
 Release:        0
 Summary:        2D sprite editor
 License:        MIT

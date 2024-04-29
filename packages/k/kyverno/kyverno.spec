@@ -66,15 +66,23 @@ zsh command line completion support for %{name}.
 %autosetup -p 1 -a 1
 
 %build
+# hash will be shortened by COMMIT_HASH:0:8 later
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/kyverno.obsinfo)"
+
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
+
+sed -i "/vcs.time/,+5 {s/---/${BUILD_DATE}/}" ./pkg/version/version.go
+sed -i "/vcs.revision/,+5 {s/---/${COMMIT_HASH:0:8}/}" ./pkg/version/version.go
+
+LDFLAGS="-X github.com/kyverno/kyverno/pkg/version.BuildVersion=%{version}"
+# LDFLAGS+=" -X github.com/kyverno/kyverno/cmd/cli/kubectl-kyverno/command.BuildHash=%{version}"
+# LDFLAGS+=" -X github.com/kyverno/kyverno/cmd/cli/kubectl-kyverno/command.BuildTime=${BUILD_DATE}"
+
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags=" \
-   -X github.com/kyverno/kyverno/pkg/version.BuildVersion=%{version} \
-   -X github.com/kyverno/kyverno/pkg/version.BuildHash=%{version} \
-   -X github.com/kyverno/kyverno/pkg/version.BuildTime=$BUILD_DATE" \
+   -ldflags="${LDFLAGS}" \
    -o bin/kyverno ./cmd/cli/kubectl-kyverno
 
 %install

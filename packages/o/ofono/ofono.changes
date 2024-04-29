@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Apr 28 11:36:29 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6
+  * Fix issue with handling ATD*99 for non-muxed ports.
+  * Fix issue with handling QRTR discover timeout.
+  * Add support for QMI voice call feature.
+  * Add support for exposing modem capabilities.
+  * Remove support for BlueZ 4.x services.
+- Update to version 2.5
+  * Fix issue with LTE provisioning support.
+  * Fix issue with SMS and address length checks.
+  * Add support for QRTR services.
+- Update to version 2.4
+  * Add support for new provision database format.
+  * Add support for Quectel EG96 modem.
+- Update to version 2.3
+  * Fix issue with handling SMS submit report sizes.
+  * Fix issue with handling operator name and ISI modems.
+- Update to version 2.2
+  * Fix issue with udev tracking of devices.
+  * Fix issue with QMI WDA initialization.
+  * Fix issue with handling QMI premultiplexed contexts.
+  * Fix issue with additional context types in MBPI.
+  * Remove CDMA support.
+- Update to version 2.1
+  * Fix issue with SIM ecc numbers are not always read.
+  * Fix issue with QMI and shared service creation logic.
+  * Fix issue with Quectel modems and USSD and LTE init.
+- Update to version 2.0
+  * Fix issue with using CHAP to be used as default.
+  * Fix issue with handling authentication options.
+  * Fix issue with Quectel EC200T modem initialization.
+
+-------------------------------------------------------------------
 Thu Feb 29 12:47:28 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Drop gpg signature verification due to issues with key

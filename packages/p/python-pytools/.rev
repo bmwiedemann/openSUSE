@@ -227,4 +227,15 @@
   * PersistentDict: replace _make_dir_recursively</comment>
     <requestid>1160045</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e66a4b14212029b4efa90a58645f6c69</srcmd5>
+    <version>2024.1.2</version>
+    <time>1714333767</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.1.2:
+  * WriteOncePersistentDict: use functools.lru_cache
+  * PersistentDict: better docs, type annotations
+  * clean up some version_info checks</comment>
+    <requestid>1170435</requestid>
+  </revision>
 </revisionlist>

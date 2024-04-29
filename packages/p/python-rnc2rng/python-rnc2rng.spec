@@ -1,7 +1,7 @@
 #
 # spec file for package python-rnc2rng
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rnc2rng
-Version:        2.6.6
+Version:        2.7.0
 Release:        0
 Summary:        RELAX NG Compact to regular syntax conversion library
 License:        MIT
 URL:            https://github.com/djc/rnc2rng
 Source:         https://files.pythonhosted.org/packages/source/r/rnc2rng/rnc2rng-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module rply}
 # /SECTION
@@ -36,7 +36,6 @@ Requires:       python-rply
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-
 
 %python_subpackages
 

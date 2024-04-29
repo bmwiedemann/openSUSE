@@ -17,7 +17,7 @@
 
 
 Name:           python-tesserocr
-Version:        2.6.3
+Version:        2.7.0
 Release:        0
 Summary:        A Python wrapper around tesseract-ocr
 License:        MIT
@@ -29,6 +29,7 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -58,6 +59,7 @@ GIL while processing an image in tesseract.
 
 %install
 %python_install
+%fdupes %{buildroot}
 
 %check
 export TESSDATA_PREFIX=/usr/share/tessdata
@@ -72,7 +74,6 @@ donttest+=" or test_init"
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitearch}/tesserocr.cpython*.so
-%{python_sitearch}/tesserocr*egg-info
+%{python_sitearch}/tesserocr*
 
 %changelog

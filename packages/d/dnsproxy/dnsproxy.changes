@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 26 15:54:34 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.71.0:
+  * The quic-go dependency has been updated due to issues with
+    QUIC and HTTP/3 upstreams on older Linux kernel versions.
+  * Domain specifications for top-level domains now considered when
+    routing the requests for unqualified names.
+-------------------------------------------------------------------
 Sun Apr 21 15:15:49 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Declare go >= 1.22 in .spec, following upstream go.mod file

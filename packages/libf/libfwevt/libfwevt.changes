@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr 27 23:00:58 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240427
+  * Deprecated functions libfwevt_xml_value_copy_to_(XX)bit
+  * Added functions libfwevt_value_get_data_as_(XX)bit_integer
+  * Datetime support
+
+-------------------------------------------------------------------
+Fri Apr 26 20:46:06 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240426
+  * Deprecated the libfwevt_xml_tag_get_utf8_value_size,
+    libfwevt_xml_tag_get_utf8_value,
+    libfwevt_xml_tag_get_utf16_value_size,
+    libfwevt_xml_tag_get_utf16_value functions, and introduced
+    libfwevt_xml_tag_get_value as replacement.
+
+-------------------------------------------------------------------
 Sun Apr 21 10:53:29 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20240419

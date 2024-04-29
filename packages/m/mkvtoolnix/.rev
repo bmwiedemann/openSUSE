@@ -1429,4 +1429,12 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment></comment>
     <requestid>1156769</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>8a3e27f2bd3e62a02d1ab46cca81d714</srcmd5>
+    <version>84.0</version>
+    <time>1714333874</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1170582</requestid>
+  </revision>
 </revisionlist>

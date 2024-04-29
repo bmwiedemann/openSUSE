@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 20 07:48:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.21.1:
+  * Fix `files` pattern not handling `str` and `BytesIO`
+  * Add support for `None` values in `data` pattern
+
+-------------------------------------------------------------------
 Thu Mar 21 17:03:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.21.0:

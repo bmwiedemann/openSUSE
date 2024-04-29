@@ -1,7 +1,7 @@
 cabal-version:       2.0
 name:                cryptohash-sha256
 version:             0.11.102.1
-x-revision:          3
+x-revision:          4
 
 synopsis:            Fast, pure and practical SHA-256 implementation
 description: {
@@ -45,15 +45,16 @@ license:             BSD3
 license-file:        LICENSE
 copyright:           Vincent Hanquez, Herbert Valerio Riedel
 maintainer:          Herbert Valerio Riedel <hvr@gnu.org>
-homepage:            https://github.com/hvr/cryptohash-sha256
-bug-reports:         https://github.com/hvr/cryptohash-sha256/issues
+homepage:            https://github.com/haskell-hvr/cryptohash-sha256
+bug-reports:         https://github.com/haskell-hvr/cryptohash-sha256/issues
 category:            Data, Cryptography
 build-type:          Simple
 
 tested-with:
-  GHC == 9.8.0
-  GHC == 9.6.2
-  GHC == 9.4.7
+  GHC == 9.10.0
+  GHC == 9.8.2
+  GHC == 9.6.4
+  GHC == 9.4.8
   GHC == 9.2.8
   GHC == 9.0.2
   GHC == 8.10.7
@@ -69,7 +70,7 @@ extra-source-files:  cbits/hs_sha256.h
 
 source-repository head
   type:     git
-  location: https://github.com/hvr/cryptohash-sha256.git
+  location: https://github.com/haskell-hvr/cryptohash-sha256.git
 
 flag exe
   description: Enable building @sha256sum@ executable
@@ -86,7 +87,7 @@ library
 
   ghc-options:       -Wall
 
-  build-depends:     base              >= 4.5 && < 4.20
+  build-depends:     base              >= 4.5 && < 4.21
 
   exposed-modules:   Crypto.Hash.SHA256
 

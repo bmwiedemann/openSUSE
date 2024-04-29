@@ -186,4 +186,19 @@
 * Documentation fixes and other minor improvments</comment>
     <requestid>1164224</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6abba01d12c9ab793990cc4b3862fcbd</srcmd5>
+    <version>2.7.0</version>
+    <time>1714333882</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.7.0:
+  * Allow passing configs/variables on initialization
+    gh#sirfz/tesserocr#349
+  * Stub file for completion
+    gh#sirfz/tesserocr#350
+  * Expose leptonica's log level setting via
+    set_leptonica_log_level function
+  * Keep tesseract's default debug_file setting</comment>
+    <requestid>1170607</requestid>
+  </revision>
 </revisionlist>

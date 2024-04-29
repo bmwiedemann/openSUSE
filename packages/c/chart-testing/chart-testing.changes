@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Apr 27 14:22:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.0:
+  * Bump actions/checkout from 4.1.2 to 4.1.3 in the actions group
+    (#642)
+  * Upgrade go to 1.22 and housekeeping (#641)
+  * Bump azure/setup-helm from 3.5 to 4 (#640)
+  * Bump sigstore/cosign-installer from 3.4.0 to 3.5.0 (#639)
+  * Bump docker/setup-buildx-action from 3.2.0 to 3.3.0 (#638)
+  * Bump anchore/sbom-action from 0.15.9 to 0.15.10 (#637)
+  * Bump docker/setup-buildx-action from 3.1.0 to 3.2.0 (#634)
+  * Bump docker/login-action from 3.0.0 to 3.1.0 (#635)
+  * Bump actions/checkout from 4.1.1 to 4.1.2 (#636)
+  * Bump anchore/sbom-action from 0.15.8 to 0.15.9 (#632)
+  * Bump docker/setup-buildx-action from 3.0.0 to 3.1.0 (#631)
+  * Bump github.com/stretchr/testify from 1.8.4 to 1.9.0 (#630)
+  * Bump golangci/golangci-lint-action from 3.7.0 to 4.0.0 (#627)
+  * Bump helm/kind-action from 1.8.0 to 1.9.0 (#628)
+  * Bump anchore/sbom-action from 0.15.6 to 0.15.8 (#626)
+  * Bump sigstore/cosign-installer from 3.3.0 to 3.4.0 (#625)
+  * Fix for `--upgrade` option (#624)
+  * Bump anchore/sbom-action from 0.15.5 to 0.15.6 (#623)
+  * Bump anchore/sbom-action from 0.15.3 to 0.15.5 (#622)
+  * feat(docker): Bump dependencies in Dockerfile (#620)
+  * Bump anchore/sbom-action from 0.15.1 to 0.15.3 (#621)
+  * Bump github.com/spf13/viper from 1.18.1 to 1.18.2 (#618)
+  * Bump actions/stale from 8.0.0 to 9.0.0 (#612)
+  * Bump sigstore/cosign-installer from 3.2.0 to 3.3.0 (#613)
+  * Bump actions/setup-go from 4.1.0 to 5.0.0 (#614)
+  * Bump github.com/spf13/viper from 1.17.0 to 1.18.1 (#616)
+  * Bump anchore/sbom-action from 0.15.0 to 0.15.1 (#611)
+  * Bump anchore/sbom-action from 0.14.3 to 0.15.0 (#610)
+  * (Breaking change) chore: change default target-branch to main
+    (#510)
+  * Bump github.com/hashicorp/go-retryablehttp from 0.7.4 to 0.7.5
+    (#608)
+  * Bump sigstore/cosign-installer from 3.1.2 to 3.2.0 (#609)
+  * Bump github.com/spf13/cobra from 1.7.0 to 1.8.0 (#607)
+
+-------------------------------------------------------------------
 Fri Nov 03 16:54:06 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 3.10.1:

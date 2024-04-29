@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 28 15:30:33 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 2.7.0:
+  * Allow passing configs/variables on initialization
+    gh#sirfz/tesserocr#349
+  * Stub file for completion
+    gh#sirfz/tesserocr#350
+  * Expose leptonica's log level setting via
+    set_leptonica_log_level function
+  * Keep tesseract's default debug_file setting
+
+-------------------------------------------------------------------
 Tue Apr  2 18:53:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.3:

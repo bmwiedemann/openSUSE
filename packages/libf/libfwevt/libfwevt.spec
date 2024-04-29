@@ -18,7 +18,7 @@
 
 %define lname	libfwevt1
 Name:           libfwevt
-Version:        20240419
+Version:        20240427
 Release:        0
 Summary:        Library for Windows XML Event Log (EVTX) data types
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig(libcthreads) >= 20240413
 BuildRequires:  pkgconfig(libfdatetime) >= 2024015
 BuildRequires:  pkgconfig(libfguid) >= 20240415
 BuildRequires:  pkgconfig(libfvalue) >= 20240415
-BuildRequires:  pkgconfig(libuna) >= 2024014
+BuildRequires:  pkgconfig(libuna) >= 20240414
 # Various notes: https://en.opensuse.org/libyal
 
 %description
@@ -75,7 +75,7 @@ grep '  local' config.log && exit 1
 
 %install
 %make_install
-find %buildroot -type f -name "*.la" -delete -print
+find "%buildroot" -type f -name "*.la" -delete -print
 
 %ldconfig_scriptlets -n %lname
 

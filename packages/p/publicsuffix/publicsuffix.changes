@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 25 05:13:39 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20240419:
+  * add qnap entries to existing section (`myqnapcloud.cn` , `mycloudnas.com`, `mynascloud.com`) (#1837)
+  * Update public_suffix_list.dat (#1966)
+  * drop old domains (#1960)
+  * Jouwweb public suffixes (#1935)
+  * Add `us.kg` (#1755)
+  * Replacement for PR #1741 (#1962)
+  * Add `rt.ht` (#1860)
+  * Add cloudscale.ch domains (#1589)
+
+-------------------------------------------------------------------
 Wed Apr 10 12:58:33 UTC 2024 - mpluskal@suse.com
 
 - Update to version 20240410:

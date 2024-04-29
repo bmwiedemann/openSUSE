@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 27 07:51:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.1:
+  * Removed the dependency on ``pytest-runner``.
+  * Removed the obsolete ``Makefile``.
+
+-------------------------------------------------------------------
 Sat Mar 16 09:25:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.0:

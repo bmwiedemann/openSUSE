@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Apr 27 12:57:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.3:
+  * build is now the default backend for asv to install projects.
+  * Partially skipped benchmarks will still have their results
+    displayed.
+  * asv will now correctly prepare all the build backend
+    dependencies into base_requirements and the default
+    build_command has been modified to allow fetching from PyPI.
+  * The asv package no longer prepends the script execution
+    directory unconditionally. Now we check for and remove the
+    path only if it matches the directory that the runner script
+    resides in.
+  * The bdist wheels no longer include benchmarks and test.
+  * The mamba plugin works correctly for newer versions (>=1.5)
+    of libmambapy
+  * The mamba plugin respects the MAMBARC environment if set,
+    taking channels and channel priority from the file in the
+    environment variable.
+  * Fixed a bug where matrix requirements were dropped if an
+    environment file was specified.
+  * conda-forge is no longer a default channel for mamba.
+  * asv now depends on virtualenv
+
+-------------------------------------------------------------------
 Tue Oct 24 12:08:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - use setuptools_scm to get the right packaged version

@@ -19,7 +19,7 @@
 
 
 Name:           ofono
-Version:        1.34
+Version:        2.6
 Release:        0
 Summary:        Mobile telephony application development framework
 License:        GPL-2.0-only
@@ -103,6 +103,8 @@ ln -s ../ofono.service %{buildroot}%{_unitdir}/network.target.wants/ofono.servic
 %{_sbindir}/ofonod
 %{_sbindir}/rc%{name}
 %{_mandir}/man8/ofonod.8%{?ext_man}
+%dir %{_datadir}/ofono
+%{_datadir}/ofono/provision.db
 %{_unitdir}/ofono.service
 %dir %{_unitdir}/network.target.wants
 %{_unitdir}/network.target.wants/ofono.service

@@ -78,4 +78,14 @@
     catch-all route</comment>
     <requestid>1160432</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e62c6529b29b3ac4e61cb97b76970575</srcmd5>
+    <version>0.21.1</version>
+    <time>1714333768</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.21.1:
+  * Fix `files` pattern not handling `str` and `BytesIO`
+  * Add support for `None` values in `data` pattern</comment>
+    <requestid>1170437</requestid>
+  </revision>
 </revisionlist>

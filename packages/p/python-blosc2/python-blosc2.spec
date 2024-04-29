@@ -17,14 +17,14 @@
 
 
 Name:           python-blosc2
-Version:        2.5.1
+Version:        2.6.2
 Release:        0
 Summary:        Python wrapper for the C-Blosc2 library
 License:        BSD-3-Clause
 URL:            https://github.com/Blosc/python-blosc2
 Source:         https://files.pythonhosted.org/packages/source/b/blosc2/blosc2-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module numpy-devel >= 1.20.3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scikit-build}
@@ -35,14 +35,16 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(blosc2) >= 2.13.1
+BuildRequires:  pkgconfig(blosc2) >= 2.14.4
 Requires:       python-msgpack
 Requires:       python-ndindex >= 1.4
+Requires:       python-numexpr
 Requires:       python-numpy >= 1.20.3
 Requires:       python-py-cpuinfo
 # SECTION test requirements
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module ndindex >= 1.4}
+BuildRequires:  %{python_module numexpr}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module py-cpuinfo}
 BuildRequires:  %{python_module pytest}
@@ -66,8 +68,6 @@ for the later.
 
 %prep
 %autosetup -p1 -n blosc2-%{version}
-# https://github.com/Blosc/python-blosc2/commit/f5fbba3a4f6b935da53563a6a0001f917dc407ab
-sed -i /pytest/d requirements-runtime.txt
 
 %build
 export CFLAGS="%{optflags}"

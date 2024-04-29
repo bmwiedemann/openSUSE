@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 27 12:55:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.6:
+  * Added CI testing for newer versions of Python and other
+    platforms. Added type annotations.
+
+-------------------------------------------------------------------
 Sat Dec  2 19:45:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.4:

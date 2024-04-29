@@ -156,4 +156,23 @@
     <comment>- require setuptools</comment>
     <requestid>1136268</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3a1ea8fe5cfe9ddf9bcd69cd82c864ed</srcmd5>
+    <version>3.4.3</version>
+    <time>1714333878</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.4.3:
+  * Finish migration to setuptools_scm
+  * Constrain setuptools_scm version
+  * Add module entry points for xq and tomlq
+  * yq -y: Induce quoting of string scalars that start with 08
+    and 09
+  * Revert “Do not interpret characters that cannot be parsed in
+    octal as int (#176)”
+  * tomlq: Use tomllib on Python 3.11 when not round-tripping
+  * xq: Support in-place XML editing
+  * Do not interpret characters that cannot be parsed in octal as
+    int</comment>
+    <requestid>1170598</requestid>
+  </revision>
 </revisionlist>

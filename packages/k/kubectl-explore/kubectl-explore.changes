@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Apr 27 09:21:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.1:
+  * version up
+  * Fix the bug after solving issue16
+
+-------------------------------------------------------------------
+Sat Apr 27 09:19:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.0:
+  * use v0.8.0 in README
+  * update demo.gif
+  * fix regex when fuzzy-finding from fields from all resources
+  * update help
+  * explore resources by regex
+  * add unit tests
+  * refactor
+  * update dependencies
+  * update on of GitHub Actions
+  * update README
+
+-------------------------------------------------------------------
 Mon Jan 15 20:24:18 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.7.2:

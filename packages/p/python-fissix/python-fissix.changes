@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 27 08:55:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.4.24:
+  * Maintenance release
+  * Updated project metadata
+  * Tested on Python 3.8 - 3.12
+
+-------------------------------------------------------------------
 Sat Dec 25 21:00:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 21.11.13
@@ -21,14 +29,14 @@ Fri Sep 18 15:33:11 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite
 - Update to 20.8.0
-  *  include dict in iterating context 
+  *  include dict in iterating context
   *  Fixed reporting some unchanged files as needing modification
 
 -------------------------------------------------------------------
 Wed Jul  1 06:10:52 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 20.5.1:
-  * No upstream changelog. 
+  * No upstream changelog.
 
 -------------------------------------------------------------------
 Fri Sep 13 09:33:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>

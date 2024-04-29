@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Fri Apr 26 18:51:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.5:
+  * Lock the connectivity command by @michi-covalent in #2448
+  * fix(deps): update module github.com/prometheus/common to
+    v0.51.1 by @renovate in #2459
+  * Update stable release to v0.16.4 by @michi-covalent in #2456
+  * fix(deps): update github.com/cilium/charts digest to 7ea270c by
+    @renovate in #2458
+  * Pin github.com/osrg/gobgp/v3 to v3.23.0 by @michi-covalent in
+    #2462
+  * k8s: Remove Tetragon client by @michi-covalent in #2463
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.57.2 by @renovate in #2457
+  * chore(deps): update docker.io/library/busybox:stable-glibc
+    docker digest to cb6aeb5 by @renovate in #2460
+  * fix(deps): update module github.com/cilium/cilium to
+    v1.16.0-pre.1 by @renovate in #2466
+  * chore(deps): update golang docker tag to v1.22.2 by @renovate
+    in #2467
+  * Use connectivity package from cilium/cilium by @michi-covalent
+    in #2355
+  * sysdump: Collect helm metadata by @chancez in #2442
+  * chore(deps): update go to v1.22.2 (patch) by @renovate in #2468
+  * fix(deps): update github.com/cilium/charts digest to 7815d99 by
+    @renovate in #2465
+  * Encryption status output enriched with IPsec details by
+    @viktor-kurchenko in #2454
+  * Revert #2355 by @michi-covalent in #2477
+  * connectivity: introduce host firewall tests by
+    @viktor-kurchenko in #2464
+  * fix(deps): update all go dependencies main by @renovate in
+    #2480
+  * connectivity: misc conn-disrupt-test improvements by @giorio94
+    in #2474
+  * connectivity: configure endpoint selector for entity-cluster
+    CNP by @giorio94 in #2483
+  * sysdump: Capture hubble auto TLS related resources by @chancez
+    in #2475
+  * connectivity: add endpointslice clustermesh sync test by
+    @MrFreezeex in #2267
+  * connectivity test: avoid segfault if no agent pods are found by
+    @multi-io in #2470
+  * chore(deps): update docker/setup-buildx-action action to v3.3.0
+    by @renovate in #2473
+  * chore(deps): update azure/login action to v2.1.0 by @renovate
+    in #2487
+  * fix(deps): update all go dependencies main (patch) by @renovate
+    in #2471
+  * fix(deps): update module github.com/cilium/hubble to v0.13.3 by
+    @renovate in #2491
+  * fix(deps): update module github.com/prometheus/common to
+    v0.53.0 by @renovate in #2492
+  * ci: Use zip output for windows releases by @jbpaux in #2472
+  * sysdump: Clarify sysdump worker-count defaults to the number of
+    available CPUs. by @chancez in #2482
+  * Split conn tests into chunks by @viktor-kurchenko in #2481
+  * chore(deps): update all github action dependencies (patch) by
+    @renovate in #2489
+  * Move the test namespace deletion logic to the install package
+    by @michi-covalent in #2498
+  * chore(deps): update module golang.org/x/net to v0.23.0
+    [security] by @renovate in #2493
+  * chore(deps): update dependency cilium/cilium to v1.15.4 by
+    @renovate in #2494
+  * chore(deps): update all github action dependencies (patch) by
+    @renovate in #2495
+  * sysdump: Check --namespace flag for cilium-operator by
+    @michi-covalent in #2502
+  * chore(deps): update helm/kind-action action to v1.10.0 by
+    @renovate in #2499
+  * Prepare for v0.16.5 release by @michi-covalent in #2507
+
+-------------------------------------------------------------------
 Sat Mar 30 10:36:50 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - rename executable to 'cilium' to match upstream docs

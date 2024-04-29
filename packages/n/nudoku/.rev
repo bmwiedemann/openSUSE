@@ -87,4 +87,14 @@
   * Fix toggling marks removing solution #51</comment>
     <requestid>1134426</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b1664209c18155ff722cab0954e6663e</srcmd5>
+    <version>4.0.0</version>
+    <time>1714333879</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.0:
+  * Add Turkish translation (pr #57)
+  * Add undo feature (pr #58)</comment>
+    <requestid>1170591</requestid>
+  </revision>
 </revisionlist>

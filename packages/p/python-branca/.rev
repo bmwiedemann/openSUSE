@@ -97,4 +97,16 @@ Required by python-ipyleaflet and python-folium</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1161364</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>175a0c0d8d16f42c05508b2fb486c442</srcmd5>
+    <version>0.7.2</version>
+    <time>1714333775</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.2:
+  * Remove `split_six` utility function
+  * COMPAT: explictly cast numpy floats to native floats
+  * Remove empty plugins folder
+  * Drop Py3.7, add Py3.12</comment>
+    <requestid>1170448</requestid>
+  </revision>
 </revisionlist>

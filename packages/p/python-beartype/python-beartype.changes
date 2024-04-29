@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 27 08:59:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.18.5:
+  * Beartype 0.18.5 resolves a critical low-level
+    issue in @beartype's dynamic type-checking code generator for
+    **nested beartype validator-in-container type hints** (e.g.,
+    type hints of the form `list[typing.Annotated[{type},
+    Is[{validator}]]]`). Someone, somewhere cares deeply about
+    this. You might even be that someone.
+
+-------------------------------------------------------------------
 Sat Apr 20 13:46:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.18.4:

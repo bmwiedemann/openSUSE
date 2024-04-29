@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-libzhuyin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ibus-libzhuyin
-Version:        1.10.2
+Version:        1.10.3
 Release:        0
 Summary:        Zhuyin engine based on libzhuyin for IBus
 License:        GPL-2.0-only
@@ -65,8 +65,7 @@ rm -rf %{buildroot}%{_datadir}/doc
 %{_ibus_libexecdir}/ibus-setup-libzhuyin
 %{_datadir}/%{name}
 %{_libdir}/ibus-libzhuyin/
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/libzhuyin.appdata.xml
+%{_datadir}/metainfo/*.appdata.xml
 %{_datadir}/ibus/component/libzhuyin.xml
 %{_datadir}/applications/ibus-setup-libzhuyin.desktop
 %{_datadir}/glib-2.0/schemas/com.github.libzhuyin.ibus-libzhuyin.gschema.xml

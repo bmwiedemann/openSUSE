@@ -95,4 +95,12 @@
 - Refresh patch remove-simplejson.patch</comment>
     <requestid>1109655</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1248080789c1ebc56b20b71b50be9cc9</srcmd5>
+    <version>1.111</version>
+    <time>1714333807</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1170478</requestid>
+  </revision>
 </revisionlist>

@@ -29,7 +29,7 @@
 %define compiler_version_leap 10
 
 Name:           godot
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -132,7 +132,7 @@ Provides:       bundled(enet) = 1.3.17
 
 # Has custom changes to support seeking in zip archives
 # Should not be unbundled.
-Provides:       bundled(minizip) = 1.3
+Provides:       bundled(minizip) = 1.3.1
 
 Provides:       bundled(FastLZ)
 Provides:       bundled(JetBrainsMono_Regular)
@@ -170,8 +170,8 @@ Provides:       bundled(pvrtccompressor)
 Provides:       bundled(smaz)
 Provides:       bundled(spirv-reflect) = sdk-1.3.261.1
 Provides:       bundled(stb)
-Provides:       bundled(thorvg) = 0.9.0
-Provides:       bundled(tinyexr) = 1.0.7
+Provides:       bundled(thorvg) = 0.12.9
+Provides:       bundled(tinyexr) = 1.0.8
 Provides:       bundled(vhacd)
 Provides:       bundled(volk) = sdk-1.3.261.1
 Provides:       bundled(vulkan) = sdk-1.3.261.1
@@ -197,16 +197,16 @@ Provides:       bundled(brotli) = 1.1.0
 Provides:       bundled(freetype2) = 2.13.2
 Provides:       bundled(graphite) = 1.3.14
 Provides:       bundled(harfbuzz) = 8.2.2
-Provides:       bundled(libpng) = 1.6.40
+Provides:       bundled(libpng) = 1.6.43
 Provides:       bundled(libzstd) = 1.5.5
-Provides:       bundled(zlib)
+Provides:       bundled(zlib) = 1.3.1
 %if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 2.28.5
+Provides:       bundled(mbedtls) = 2.28.8
 %endif
 %if !0%{?is_opensuse}
 # SLES seems not to have miniupnpc and wslay
 Provides:       bundled(libwslay) = 1.1.1
-Provides:       bundled(miniupnpc) = 2.2.5
+Provides:       bundled(miniupnpc) = 2.2.6
 %endif
 %endif
 

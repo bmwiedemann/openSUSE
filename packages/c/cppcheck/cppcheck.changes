@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 26 20:39:37 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- update to 2.14.0
+  * New checks:
+    - eraseIteratorOutOfBounds: warns when erase() is called on an
+      iterator that is out of bounds
+    - returnByReference: warns when a large class member is returned
+      by value from a getter function
+
+-------------------------------------------------------------------
 Sun Mar 24 17:19:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.13.4:

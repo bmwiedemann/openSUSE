@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Wed Apr 24 14:36:05 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Split out a nextcloud-desktop-vfs-plugin package.
+- Add README.vf.md file outlining steps needed to enable
+  virtual-file system plugin.
+
+-------------------------------------------------------------------
+Wed Apr 24 10:05:22 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.13.0:
+  * Allow event processing between each XML parser run, to improve
+    GUI performance (gh#nextcloud/desktop#6336).
+  * Bugfix. Random crash in LsColJob after recent changes
+    (gh#nextcloud/desktop#6393).
+  * wait longer to get the contextual menu entries: may be
+    necessary (gh#nextcloud/desktop#6406).
+  * suppress deprecated warnings from openssl
+    (gh#nextcloud/desktop#6402).
+  * Swift-format FileProviderExt (gh#nextcloud/desktop#6368).
+  * Display a message to upgrade client if
+    minimumSupportedDesktopVersion is thrown
+    (gh#nextcloud/desktop#6405).
+  * Do not create systray notification if there are no errors
+    (gh#nextcloud/desktop#6421).
+  * docs(conffile) Update chunk sizes to match v2 chunking PR
+    defaults (gh#nextcloud/desktop#6231).
+  * Fix undefined sync status reporting in tray icon
+    (gh#nextcloud/desktop#5565).
+  * clean up some qml code for share dialog
+    (gh#nextcloud/desktop#6425).
+  * Feature/detect open files (gh#nextcloud/desktop#6434).
+  * Settings dialog. Nextcloud version label should be visible
+    even if auto-updates are turned off in config
+    (gh#nextcloud/desktop#6459).
+  * add extra logs to investigate lock type issues
+    (gh#nextcloud/desktop#6451).
+  * Rewrite communication between client and File Provider
+    extensions using XPC (gh#nextcloud/desktop#6324).
+  * VFS. CfAPI. Provide detailed error message for leading '#'
+    placeholder update failure (gh#nextcloud/desktop#6456).
+  * E2EE. Allow decryption v1.0 and v1.1 folders
+    (gh#nextcloud/desktop#6471).
+  * Fix crash when deleting a local sync folder during sync
+    (gh#nextcloud/desktop#6454).
+  * Client Status Reporting. Only report statuses listed on the
+    server (gh#nextcloud/desktop#6479).
+  * Bugfix/e2ee v2 non-root sync (gh#nextcloud/desktop#6486).
+  * Bugfix. E2ee misleading log fix (gh#nextcloud/desktop#6484).
+  * Bugfix/expandable folder status model
+    (gh#nextcloud/desktop#6490).
+  * Bugfix. Federated share activity show 'Decline' action button
+    (gh#nextcloud/desktop#6502).
+  * when moving a file, checks that it exists at origin or
+    destination (gh#nextcloud/desktop#6463).
+  * Add option to perform fast synchronisation runs in File
+    Provider sync engine (gh#nextcloud/desktop#6461).
+  * Support the KF6 based version of Dolphin
+    (gh#nextcloud/desktop#6320).
+  * [socketapi] Replace QClipboard with KSystemClipboard when
+    available (gh#nextcloud/desktop#6515).
+  * always store newly created folders in DB even if it is missing
+    (gh#nextcloud/desktop#6535).
+  * newly created folders will be read-only when needed
+    (gh#nextcloud/desktop#6343).
+  * Bugfix. E2EE. Use 'double' for legacy metadata
+    (gh#nextcloud/desktop#6540).
+  * only display changed network errors during validation of
+    connection (gh#nextcloud/desktop#6542).
+  * Bugfix. Files-lock. Incorrect readonly state for TokenLock
+    (gh#nextcloud/desktop#6547).
+  * allow wipe feature to delete data of a wiped user account
+    (gh#nextcloud/desktop#6521).
+  * E2EE. Fix root metadata fetching path for non-root remote sync
+    folder. Refactoring. Stabilizing paths
+    (gh#nextcloud/desktop#6529).
+  * E2EE with VFS. Disallow MOVE as it is not supported. Prevent
+    data loss (gh#nextcloud/desktop#6528).
+  * if desktop client sent a first reply: wait for the menu data
+    (gh#nextcloud/desktop#6553).
+  * User 'Connection issue' instead of 'Network error' in systray
+    notification (gh#nextcloud/desktop#6514).
+  * libcloudproviders: Use DEFINE_VARIABLES to install in the
+    correct directory (gh#nextcloud/desktop#6137).
+  * use the proper name when reading system exclude config file
+    (gh#nextcloud/desktop#6568).
+  * context menu: do not recursively check pin and availability
+    states (gh#nextcloud/desktop#6573).
+  * properly compute if a folder is top level or child extern
+    mounted (gh#nextcloud/desktop#6578).
+  * Bugfix. Remove seen call notifications from the list
+    (gh#nextcloud/desktop#6563).
+  * Bump cpp-linter/cpp-linter-action from 2.10.0 to 2.10.2
+    (gh#nextcloud/desktop#6579).
+  * Add typical Syncthing files to default exclusion
+    (gh#nextcloud/desktop#6524).
+  * Fix crash when in debug mode when toggling enabled status of
+    an account's virtual files (macOS)
+    (gh#nextcloud/desktop#6636).
+  * Backport/stable 3.13 fp sharing (gh#nextcloud/desktop#6643).
+  * Make use of NextcloudFileProviderKit in File Provider Module
+    (gh#nextcloud/desktop#6645).
+  * Bugfix/folder conflict disappear (gh#nextcloud/desktop#6664).
+  * create registry keys needed for edit locally in local machine
+    category (gh#nextcloud/desktop#6667).
+  * Use davUser instead of direct credentials user in file
+    provider (gh#nextcloud/desktop#6674).
+  * Feature/office files lock newly created. Plus refactoring
+    (gh#nextcloud/desktop#6626).
+  * if a virtual file change but nothing changed: set it as in
+    sync (gh#nextcloud/desktop#6675).
+  * do not cause implicit hydration of virtual files during sync
+    (gh#nextcloud/desktop#6677).
+- Switch dolphin plugin to KF6/Qt6 (core client GUI still uses
+  Qt5) for openSUSE >= 1650 (Tumbleweed) (boo#1221923).
+- c++17 standard and <filesystem> header now required, enforce
+  gcc9 for openSUSE < 1650 (i.e. Leap:15.X).
+- Switch build from make to ninja.
+
+-------------------------------------------------------------------
 Fri Mar 29 06:49:34 UTC 2024 - Natasha Ament <stacheldrahtje@gmail.com>
 
 - Update to version 3.12.3:

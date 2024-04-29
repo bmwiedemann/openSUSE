@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 27 08:51:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240426
+  * Properly load samples from .stm files
+  * Fix a bug where any forced panning on an instrument would be
+    lost upon triggering a new note
+  * Make the instrument list's behavior when pressing space on an
+    instrument match the help list information
+  * Fix playing instruments in the instrument list
+
+-------------------------------------------------------------------
 Tue Apr  9 21:55:07 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20240409

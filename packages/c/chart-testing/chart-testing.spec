@@ -1,7 +1,7 @@
 #
 # spec file for package chart-testing
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define name_of_binary ct
 
 Name:           chart-testing
-Version:        3.10.1
+Version:        3.11.0
 Release:        0
 Summary:        CLI tool for linting and testing Helm charts
 Group:          Development/Languages/Other
@@ -29,7 +29,7 @@ License:        Apache-2.0
 URL:            https://github.com/helm/chart-testing
 Source:         chart-testing-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.16
+BuildRequires:  go >= 1.22
 Requires:       git-core
 Requires:       helm
 Requires:       python3-yamale

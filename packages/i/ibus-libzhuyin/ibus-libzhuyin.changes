@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 28 06:15:36 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 1.10.3
+  * configure.ac (AM_GNU_GETTEXT_VERSION): Bump to 0.21
+  * Fix processKeyEvent methods
+  * Update libzhuyin.appdata.xml
+
+-------------------------------------------------------------------
 Sat Jan 20 14:55:42 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fixes for %_ibus_libexecdir moving to %_libexecdir (bsc#1174075)

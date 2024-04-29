@@ -17,7 +17,7 @@
 
 
 Name:           python-eval-type-backport
-Version:        0.1.3
+Version:        0.2.0
 Release:        0
 Summary:        Lets older Python versions use newer typing features
 License:        MIT

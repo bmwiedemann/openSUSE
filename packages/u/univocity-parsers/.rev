@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>1148288</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>7bf41c88319b192c8dce5d8c9eadbbc7</srcmd5>
+    <version>2.9.1</version>
+    <time>1714333798</time>
+    <user>anag+factory</user>
+    <comment>Add Automatic-Module-Name to the manifest</comment>
+    <requestid>1170466</requestid>
+  </revision>
 </revisionlist>

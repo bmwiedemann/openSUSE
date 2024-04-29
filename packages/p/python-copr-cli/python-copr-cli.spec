@@ -1,7 +1,7 @@
 #
 # spec file for package python-copr-cli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-copr-cli
-Version:        1.110
+Version:        1.111
 Release:        0
 Summary:        Copr cli
 License:        GPL-2.0-or-later
@@ -45,7 +45,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module responses}
 # /SECTION
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description

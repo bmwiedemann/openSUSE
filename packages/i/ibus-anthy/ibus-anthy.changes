@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 28 06:35:29 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 1.5.16
+  * Fix CI
+  * Fix to commit selected candidate with OSK
+  * Fix pycotap detection (Maxim Cournoyer)
+  * Update era.t with 2024
+  * po: Update translation (Chinese (Simplified) (zh_CN))
+
+-------------------------------------------------------------------
 Sat Jan 20 14:54:56 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fixes for %_ibus_libexecdir moving to %_libexecdir (bsc#1174075)

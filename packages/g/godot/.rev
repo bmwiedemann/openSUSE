@@ -389,4 +389,12 @@
 - Pin mbedtls-devel version to be lower than 3 for Leap builds, too.</comment>
     <requestid>1152488</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>80fab9de17c8976ee98a5bb954f4f6d8</srcmd5>
+    <version>4.2.2</version>
+    <time>1714333855</time>
+    <user>anag+factory</user>
+    <comment>Update to 4.2.2</comment>
+    <requestid>1170513</requestid>
+  </revision>
 </revisionlist>

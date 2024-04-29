@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 27 07:43:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.1.2:
+  * WriteOncePersistentDict: use functools.lru_cache
+  * PersistentDict: better docs, type annotations
+  * clean up some version_info checks
+
+-------------------------------------------------------------------
 Thu Mar 21 09:31:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.1.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-asv
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-asv
-Version:        0.6.1
+Version:        0.6.3
 Release:        0
 Summary:        Airspeed Velocity: A Python history benchmarking tool
 License:        BSD-3-Clause AND MIT
@@ -32,10 +32,13 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
+Requires:       python-build
 Requires:       python-json5
 Requires:       python-tabulate
+Requires:       python-tomli
+Requires:       python-virtualenv
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-python-hglib >= 1.5
 # SECTION test requirements
 BuildRequires:  %{python_module json5}
@@ -66,7 +69,7 @@ export CFLAGS="%{optflags}"
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/asv
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-%python_expand rm -r %{buildroot}%{$python_sitearch}/{benchmarks,test}
+%python_expand rm -r %{buildroot}%{$python_sitearch}/{benchmarks,test,docs}
 %python_expand rm %{buildroot}%{$python_sitearch}/asv/_rangemedian.cpp
 
 %check

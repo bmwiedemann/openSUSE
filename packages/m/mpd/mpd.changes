@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 27 21:55:37 UTC 2024 - Илья Индиго <13ilya@gmail.com>
+
+- Fixed privileges of /run/mpd directory (rpm -qlv mpd | grep /run).
+
+-------------------------------------------------------------------
 Sun Feb  4 17:45:03 UTC 2024 - Илья Индиго <ilya@ilya.cf>
 
 - Provided user(mpd).

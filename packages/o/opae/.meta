@@ -5,5 +5,5 @@ managing and accessing programmable accelerators (FPGAs).
 
 The OPAE SDK is a collection of libraries and tools to facilitate the
 development of software applications and accelerators using OPAE.</description>
-  <devel project="science:HPC" package="opae"/>
+  <devel project="hardware:FPGA" package="opae"/>
 </package>
