@@ -140,4 +140,16 @@
     iterating over both user and site dirs/paths.</comment>
     <requestid>1143346</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2acc574b5767a9bb94fcda0f78bb47cc</srcmd5>
+    <version>4.2.1</version>
+    <time>1714406248</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.2.1:
+  * Switch to ruff for formatting and use codespell and
+    docformatter
+  * Use hatch over tox
+  * Allow working without ctypes</comment>
+    <requestid>1170433</requestid>
+  </revision>
 </revisionlist>

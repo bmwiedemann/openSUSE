@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 27 07:40:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.1:
+  * Switch to ruff for formatting and use codespell and
+    docformatter
+  * Use hatch over tox
+  * Allow working without ctypes
+
+-------------------------------------------------------------------
 Thu Feb  1 12:37:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.0:
