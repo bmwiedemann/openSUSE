@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr 28 07:50:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.3:
+  * bump up version
+  * update help output
+  * update doc and help output
+
+-------------------------------------------------------------------
+Sun Apr 28 07:46:55 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.2:
+  * bump up version
+  * update year of LICENSE
+  * unpin go version of goreleaser
+  * fix: Cannot explain if a filed contains uppercase letters
+  * docs: add info about Nix package in README
+
+-------------------------------------------------------------------
 Sat Apr 27 09:21:16 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.8.1:
