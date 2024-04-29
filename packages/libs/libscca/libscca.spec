@@ -18,35 +18,35 @@
 
 %define lname	libscca1
 Name:           libscca
-Version:        20240215
+Version:        20240427
 Release:        0
 Summary:        Library and tools to access the Windows Prefetch File (PF) format
 License:        GFDL-1.3-only AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libscca
-Source:         https://github.com/libyal/libscca/releases/download/%version/libscca-alpha-%version.tar.gz
-Source2:        https://github.com/libyal/libscca/releases/download/%version/libscca-alpha-%version.tar.gz.asc
+Source:         https://github.com/libyal/libscca/releases/download/%version/%name-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libscca/releases/download/%version/%name-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %python_module devel
+BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcdata) >= 20240103
-BuildRequires:  pkgconfig(libcerror) >= 20240101
-BuildRequires:  pkgconfig(libcfile) >= 20240106
-BuildRequires:  pkgconfig(libclocale) >= 20240107
-BuildRequires:  pkgconfig(libcnotify) >= 20240108
-BuildRequires:  pkgconfig(libcpath) >= 20240109
-BuildRequires:  pkgconfig(libcsplit) >= 20240110
-BuildRequires:  pkgconfig(libcthreads) >= 20240102
-BuildRequires:  pkgconfig(libfcache) >= 20240112
-BuildRequires:  pkgconfig(libfdata) >= 20240114
-BuildRequires:  pkgconfig(libfdatetime) >= 20240115
-BuildRequires:  pkgconfig(libfvalue) >= 20220120
-BuildRequires:  pkgconfig(libfwnt) >= 20231124
-BuildRequires:  pkgconfig(libuna) >= 20230710
+BuildRequires:  pkgconfig(libbfio) >= 20240414
+BuildRequires:  pkgconfig(libcdata) >= 20240414
+BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libcfile) >= 20240414
+BuildRequires:  pkgconfig(libclocale) >= 20240414
+BuildRequires:  pkgconfig(libcnotify) >= 20240414
+BuildRequires:  pkgconfig(libcpath) >= 20240414
+BuildRequires:  pkgconfig(libcsplit) >= 20240414
+BuildRequires:  pkgconfig(libcthreads) >= 20240413
+BuildRequires:  pkgconfig(libfcache) >= 20240414
+BuildRequires:  pkgconfig(libfdata) >= 20240415
+BuildRequires:  pkgconfig(libfdatetime) >= 20240415
+BuildRequires:  pkgconfig(libfvalue) >= 20240415
+BuildRequires:  pkgconfig(libfwnt) >= 20240414
+BuildRequires:  pkgconfig(libuna) >= 20240414
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 
@@ -55,12 +55,12 @@ Library and tools to access the Windows Prefetch File (PF) format.
 
 Note that this project currently only focuses on the analysis of the format.
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library to access the Windows Prefetch File (PF) format
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 libscca is a library to access the Windows Prefetch File (PF) format.
 
 Note that this project currently only focuses on the analysis of the format.
@@ -83,10 +83,10 @@ Requires:       %lname = %version
 Requires:       libbfio-devel
 
 %description devel
-%{name} is a library to access the Windows Prefetch File (PF) format.
+%name is a library to access the Windows Prefetch File (PF) format.
 
 This subpackage contains libraries and header files for developing
-applications that want to make use of %{name}.
+applications that want to make use of %name.
 
 %prep
 %autosetup -p1
@@ -107,23 +107,22 @@ grep ' '' ''local' config.log && exit 1
 mv "%_builddir/rt/"* "%buildroot/"
 find "%buildroot" -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/libscca.so.*
+%_libdir/libscca.so.*
 
 %files -n %name-tools
-%{_bindir}/scca*
-%{_mandir}/man1/sccainfo.1%{?ext_man}
+%_bindir/scca*
+%_mandir/man1/sccainfo.1%{?ext_man}
 
 %files -n %name-devel
-%{_includedir}/libscca.h
-%{_includedir}/libscca/
-%{_libdir}/libscca.so
-%{_libdir}/pkgconfig/libscca.pc
-%{_mandir}/man3/libscca.3%{?ext_man}
+%_includedir/libscca.h
+%_includedir/libscca/
+%_libdir/libscca.so
+%_libdir/pkgconfig/libscca.pc
+%_mandir/man3/libscca.3%{?ext_man}
 
 %files %python_files
 %license COPYING*
