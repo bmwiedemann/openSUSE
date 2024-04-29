@@ -1,7 +1,7 @@
 #
 # spec file for package proxychains-ng
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           proxychains-ng
-Version:        4.16
+Version:        4.17
 Release:        0
 Summary:        Redirect connection through proxy servers
 License:        GPL-2.0-only

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr  7 09:02:59 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.17:
+  * add hook for close_range function, fixing newer versions of
+    openssh
+  * fix DNS error handling in proxy_dns_old
+  * simplify init code
+  * fix double-close in multithreaded apps
+  * various improvements to configure script
+- Drop %check section
+  * nothing useful was done there
+
+-------------------------------------------------------------------
 Wed May  4 12:01:22 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.16:
