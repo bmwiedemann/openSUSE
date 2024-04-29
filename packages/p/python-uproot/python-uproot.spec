@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %global modname uproot
 Name:           python-uproot
-Version:        5.3.1
+Version:        5.3.3
 Release:        0
 Summary:        ROOT I/O in pure Python and Numpy
 License:        BSD-3-Clause
@@ -35,6 +35,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cramjam
+Requires:       python-fsspec
 Requires:       python-numpy >= 1.13.1
 Requires:       python-packaging
 Recommends:     python-awkward
@@ -84,16 +85,21 @@ arrays.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export HOME=$PWD
+export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 # Network based tests
-skip_network_tests=("-k" "not (test_0001_source_class or test_0006_notify_when_downloaded or test_0007_single_chunk_interface or test_0692_fsspec_reading)")
+skip_network_tests=\
+("-k" "not (test_0001_source_class or test_0006_notify_when_downloaded \
+            or test_0007_single_chunk_interface or test_0692_fsspec_reading \
+            or test_split_ranges_if_large_file_in_http \
+            or test_descend_into_path_classname_of)" \
+)
 if [ $(getconf LONG_BIT) -eq 32 ]; then
 # pandas tests assume 64bit types
 skiptests32="(test_jagged_pandas or test_pandas_vector_TLorentzVector or test_iterate_pandas_2 or test_function_iterate_pandas_2 or test_0430)"
 fi
 # Skip test_decompression_executor_for_dask until we have dask-awkward packaged
-export HOME=$PWD
-export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
-%pytest "${skip_network_tests[@]} ${skiptests32} and not test_decompression_executor_for_dask"
+%pytest "${skip_network_tests[@]} ${skiptests32} and not (test_decompression_executor_for_dask or test_dask_duplicated_keys)"
 
 %files %{python_files}
 %doc README.md

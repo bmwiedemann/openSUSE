@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 28 23:36:40 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.3.3:
+  * feat: add support for std::bitset (gh#scikit-hep/uproot5#1182).
+  * fix: dask failing for TTrees with duplicate TBranch names
+    (gh#scikit-hep/uproot5#1189).
+  * fix: update for NumPy 2.0 (gh#scikit-hep/uproot5#1195).
+- Disable a few more network based or awkward_dask dependent
+  tests.
+
+-------------------------------------------------------------------
 Sat Feb 24 13:36:52 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.3.1:
