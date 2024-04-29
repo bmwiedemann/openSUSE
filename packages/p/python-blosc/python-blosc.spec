@@ -1,7 +1,7 @@
 #
 # spec file for package python-blosc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ BuildRequires:  cmake >= 3.14.0
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module numpy >= 1.16}
+BuildRequires:  %{python_module numpy >= 1.16 with %python-numpy < 2}
 BuildRequires:  %{python_module psutil}
 # /SECTION
 Recommends:     python-numpy

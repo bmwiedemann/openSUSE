@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 26 16:44:43 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Pin to numpy < 2 -- gh#Blosc/python-blosc#327
+
+-------------------------------------------------------------------
 Sat Jun 10 12:29:50 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
