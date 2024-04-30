@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 29 23:07:26 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.8.19:
+  + Bug Fixes
+    - prevent zoom with keyboard
+  + Features
+    - Map float TIFF images to min-max range
+  + Chore
+    - Update logo
+    - update icon
+
+-------------------------------------------------------------------
 Sun Apr  7 19:04:05 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.8.18:

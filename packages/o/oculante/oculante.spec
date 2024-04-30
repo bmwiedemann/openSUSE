@@ -17,7 +17,7 @@
 
 
 Name:           oculante
-Version:        0.8.18
+Version:        0.8.19
 Release:        0
 Summary:        A minimalistic crossplatform image viewer written in rust
 License:        MIT
@@ -46,6 +46,8 @@ tools.
 %{cargo_install}
 install -Dpm644 res/%{name}.png -t %{buildroot}%{_datadir}/pixmaps/
 install -Dpm644 res/%{name}.desktop -t %{buildroot}%{_datadir}/applications
+
+%check
 
 %files
 %license LICENSE*
