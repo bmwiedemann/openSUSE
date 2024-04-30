@@ -6602,4 +6602,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.8.7 &amp; enable arm64 regulator modules -- fixed one + fixed ref</comment>
     <requestid>1168812</requestid>
   </revision>
+  <revision rev="731" vrev="1">
+    <srcmd5>9472b19706daa294b188f65bd929e0f2</srcmd5>
+    <version>6.8.8</version>
+    <time>1714490786</time>
+    <user>anag+factory</user>
+    <comment>6.8.8</comment>
+    <requestid>1170696</requestid>
+  </revision>
 </revisionlist>

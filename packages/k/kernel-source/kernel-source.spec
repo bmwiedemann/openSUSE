@@ -17,8 +17,8 @@
 
 
 %define srcversion 6.8
-%define patchversion 6.8.7
-%define git_commit 5c0cf230892cd49033b0b0f90f9347c678aa19bb
+%define patchversion 6.8.8
+%define git_commit 5cd329854ea295ada7c5947f7c0296101445c98e
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -26,9 +26,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-source
-Version:        6.8.7
+Version:        6.8.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g5c0cf23
+Release:        <RELEASE>.g5cd3298
 %else
 Release:        0
 %endif
