@@ -586,4 +586,15 @@
   * Miscellaneous small fixes and enhancements.</comment>
     <requestid>1147510</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d646e7d868cae9371163bec0395d3312</srcmd5>
+    <version>1.5.1</version>
+    <time>1714490840</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5.1:
+  * Add a safe workaround for a problem in KWin6 under X11.
+  * Under X11, if there is a minimized window on the current
+    desktop, open files as new tabs in it and unminimize it.</comment>
+    <requestid>1170835</requestid>
+  </revision>
 </revisionlist>
