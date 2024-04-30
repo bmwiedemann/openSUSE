@@ -2026,4 +2026,11 @@ those sources for i586 on its own.</comment>
     <user>anag+factory</user>
     <comment>docker-rootless-extras is also required for rootless_docker test</comment>
   </revision>
+  <revision rev="285" vrev="283">
+    <srcmd5>ed19dbed07ae988b9f9360aee151645c</srcmd5>
+    <version>unknown</version>
+    <time>1714460484</time>
+    <user>anag+factory</user>
+    <comment>skopeo is required for running docker_skopeo tests</comment>
+  </revision>
 </revisionlist>
