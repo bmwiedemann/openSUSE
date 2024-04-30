@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 27 19:11:28 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add Conflicts for k3s
+
+-------------------------------------------------------------------
+Tue Apr 23 11:36:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- make Conflicts with kubernetes easier to manage
+
+-------------------------------------------------------------------
 Thu Apr 18 12:58:18 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - add Conflicts for all `kubernetes-1.*-kubelet-common` packages,
