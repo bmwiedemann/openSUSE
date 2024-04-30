@@ -1,7 +1,7 @@
 #
 # spec file for package libfsclfs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,36 +18,38 @@
 
 Name:           libfsclfs
 %define lname	libfsclfs1
-Version:        20210417
+Version:        20240430
 Release:        0
 Summary:        Library and tools for accessing the Common Log File System (CLFS)
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libfsclfs
-Source:         %name-%version.tar.xz
-Patch1:         system-libs.patch
+Source:         https://github.com/libyal/libfsclfs/releases/download/%version/%name-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libfsclfs/releases/download/%version/%name-experimental-%version.tar.gz.asc
+Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libbfio) >= 20201229
-BuildRequires:  pkgconfig(libcdata) >= 20200509
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libcfile) >= 20201229
-BuildRequires:  pkgconfig(libclocale) >= 20200913
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcpath) >= 20200623
-BuildRequires:  pkgconfig(libcsplit) >= 20200703
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(libfcache) >= 20200708
-BuildRequires:  pkgconfig(libfdata) >= 20201129
-BuildRequires:  pkgconfig(libfdatetime) >= 20180910
-BuildRequires:  pkgconfig(libfguid) >= 20180724
-BuildRequires:  pkgconfig(libftxf) >= 20180815
-BuildRequires:  pkgconfig(libftxr) >= 20180815
-BuildRequires:  pkgconfig(libfusn) >= 20180726
-BuildRequires:  pkgconfig(libfwnt) >= 20210421
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libbfio) >= 20240414
+BuildRequires:  pkgconfig(libcdata) >= 20240414
+BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libcfile) >= 20240414
+BuildRequires:  pkgconfig(libclocale) >= 20240414
+BuildRequires:  pkgconfig(libcnotify) >= 20240414
+BuildRequires:  pkgconfig(libcpath) >= 20240414
+BuildRequires:  pkgconfig(libcsplit) >= 20240414
+BuildRequires:  pkgconfig(libcthreads) >= 20240413
+BuildRequires:  pkgconfig(libfcache) >= 20240414
+BuildRequires:  pkgconfig(libfdata) >= 20240415
+BuildRequires:  pkgconfig(libfdatetime) >= 20240415
+BuildRequires:  pkgconfig(libfguid) >= 20240415
+BuildRequires:  pkgconfig(libftxf) >= 20240416
+BuildRequires:  pkgconfig(libftxr) >= 20240416
+BuildRequires:  pkgconfig(libfusn) >= 20240416
+BuildRequires:  pkgconfig(libfwnt) >= 20240415
+BuildRequires:  pkgconfig(libuna) >= 20240414
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 libfsclfs is a library to access the Common Log File System (CLFS).
@@ -87,8 +89,6 @@ reading Common Log File Systems (CLFS).
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type LDFLAGS="-Wl,--version-script=$PWD/v.sym"
 %make_build
@@ -97,8 +97,7 @@ echo "V_%version { global: *; };" >v.sym
 %make_install
 find "%buildroot" -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*
