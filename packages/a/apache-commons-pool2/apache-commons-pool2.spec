@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-pool2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ BuildRequires:  ant
 BuildRequires:  cglib
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  junit
 Requires:       cglib
 Provides:       %{short_name} = %{version}
@@ -61,11 +61,8 @@ Pool 2.x Package.
 %prep
 %setup -q -n %{short_name}-%{version}-src
 # remove all binary libs
-find . -name "*.jar" -exec rm -f {} \;
+find . -name "*.jar" -print -delete
 %patch -P 0
-
-%pom_remove_parent .
-%pom_xpath_inject "pom:project" "<groupId>org.apache.commons</groupId>" .
 
 %build
 echo "cglib.jar=$(build-classpath cglib)" >> build.properties
@@ -76,32 +73,22 @@ ant \
 %install
 # jars
 install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 dist/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} `echo $jar| sed  "s|apache-||g"`; done)
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} `echo $jar| sed  "s|-%{version}||g"`; done)
+install -m 644 dist/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+ln -sf %{_javadir}/%{name}.jar %{buildroot}%{_javadir}/%{short_name}.jar
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -m 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
-%add_maven_depmap %{name}-%{version}.pom %{name}-%{version}.jar
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar
 
 # javadoc
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr dist/docs/api/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
-%files
+%files -f .mfiles
 %license LICENSE.txt
 %doc README.txt
-%{_javadir}/%{name}.jar
-%{_javadir}/%{name}-%{version}.jar
 %{_javadir}/%{short_name}.jar
-%{_javadir}/%{short_name}-%{version}.jar
-%{_mavenpomdir}/%{name}-%{version}.pom
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%endif
 
 %files javadoc
 %doc %{_javadocdir}/%{name}

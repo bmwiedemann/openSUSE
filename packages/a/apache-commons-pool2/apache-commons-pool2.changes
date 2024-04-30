@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 29 17:32:24 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Simplify and clean up the spec file: avoid versioned jars
+
+-------------------------------------------------------------------
 Tue Feb 20 11:06:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

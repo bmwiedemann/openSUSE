@@ -47,4 +47,12 @@
     <comment></comment>
     <requestid>1147954</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>1794d8a8dafab33a2a193f9938c27ed7</srcmd5>
+    <version>2.4.2</version>
+    <time>1714490851</time>
+    <user>anag+factory</user>
+    <comment>Simplify and clean up the spec file: avoid versioned jars</comment>
+    <requestid>1170859</requestid>
+  </revision>
 </revisionlist>
