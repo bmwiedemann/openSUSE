@@ -1,7 +1,7 @@
 #
 # spec file for package jaxb-api
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,9 @@
 
 
 %global artifact_name jakarta.xml.bind-api
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           jaxb-api
 Version:        4.0.0
 Release:        0
@@ -29,7 +32,8 @@ BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  jakarta-activation
 BuildRequires:  java-devel >= 9
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local > 6
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
@@ -45,15 +49,7 @@ API documentation for %{name}.
 
 %prep
 %setup -q
-
-pushd api
-cp %{SOURCE1} build.xml
-
-%pom_remove_parent
-%pom_xpath_inject pom:project "
-    <groupId>jakarta.xml.bind</groupId>
-    <version>%{version}</version>"
-popd
+cp %{SOURCE1} api/build.xml
 
 %build
 pushd api
@@ -69,7 +65,7 @@ install -m 644 api/target/%{artifact_name}-%{version}.jar %{buildroot}%{_javadir
 
 #pom
 install -d -m 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -m 644 api/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{artifact_name}.pom
+%{mvn_install_pom} api/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{artifact_name}.pom
 %add_maven_depmap %{name}/%{artifact_name}.pom %{name}/%{artifact_name}.jar
 
 # javadoc

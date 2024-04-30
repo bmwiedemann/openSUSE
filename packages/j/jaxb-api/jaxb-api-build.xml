@@ -13,10 +13,11 @@
   <property name="project.version" value="4.0.0"/>
 
   <property name="spec.version" value="4.0"/>
-  
+
   <property name="current.year" value="2022"/>
 
-  <property name="compiler.source" value="1.8"/>
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
@@ -72,6 +73,7 @@
            debug="true"
            optimize="false"
            deprecation="true"
+           release="9"
            target="9"
            verbose="false"
            fork="false"

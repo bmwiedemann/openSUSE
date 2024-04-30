@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 29 12:55:03 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- The binaries are compatible with java 1.8
+
+-------------------------------------------------------------------
 Mon Apr 11 13:23:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - In the ant build, replace current.year with 2022 for reproducible

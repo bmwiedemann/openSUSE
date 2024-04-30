@@ -15,4 +15,12 @@
     <comment>resolve current.year to something that does not change</comment>
     <requestid>969208</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cc6ad9b4b91e2be8b9c071077afbd4ae</srcmd5>
+    <version>4.0.0</version>
+    <time>1714490842</time>
+    <user>anag+factory</user>
+    <comment>This runs with java 8 just fine</comment>
+    <requestid>1170849</requestid>
+  </revision>
 </revisionlist>
