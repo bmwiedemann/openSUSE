@@ -2270,4 +2270,13 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment>GNOME 46 (forwarded request 1158691 from dimstar)</comment>
     <requestid>1159492</requestid>
   </revision>
+  <revision rev="253" vrev="2">
+    <srcmd5>346e03e470760826c866cfcc80e533d7</srcmd5>
+    <version>46.0</version>
+    <time>1714490780</time>
+    <user>anag+factory</user>
+    <comment>- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476] (forwarded request 1170762 from pgajdos)</comment>
+    <requestid>1170824</requestid>
+  </revision>
 </revisionlist>

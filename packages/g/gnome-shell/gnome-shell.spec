@@ -229,6 +229,7 @@ install -d %{buildroot}%{_datadir}/gnome-shell/modes
 %fdupes %{buildroot}%{_prefix}
 # Not needed, only used for nightly git snapshots
 rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.Devel.svg
+%python3_fix_shebang
 
 %files
 %license COPYING
