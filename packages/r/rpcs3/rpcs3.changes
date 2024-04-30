@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Sat Apr 20 04:41:58 UTC 2024 - i@guoyunhe.me
+
+- Update to version 0.0.31~git20240420:
+  * llvm: silence warning: dereferencing type-punned pointer might break strict-aliasing rules [-Wstrict-aliasing]
+  * cellSysutilAvc2MicRead: Fix some nonsensical nullptr deref warning
+  * cellKb: fix missing slashes and brackets on japanese layout
+  * cellKb: actually set the arrange member
+  * Use unordered map to store keyboard keys
+  * SPU Analyzer: Filter calls to calls
+  * PPU Analyzer: Look for functions using callers (fallback)
+  * PPU LLVM: Fix crash in Unity games
+  * savestate_utils.cpp: Fixup a tiny bug
+  * Qt: try to fix sound effects
+  * overlays/osk: Don't use meta out key code in the osk overlay
+  * fix some warnings and typos
+  * cellSysutilAvc2: improve unload and some more stuff
+  * uDraw emulation [3]
+  * uDraw emulation [2]
+  * Sort IO files
+  * uDraw emulation
+  * rsx: Make const explicitly unsigned
+  * rsx: Improve ROP output rounding precision
+  * Fix typo in System.cpp
+  * Fix OVL patching
+  * rsx: Fix intra-draw-call barrier queueing
+  * Buzz update
+  * Fix some msvc for loop warning
+  * fix some warnings
+  * Set a unique System Name
+  * rsx: Fix vertex texture invalidation
+  * rsx: Fix some broken latch checks
+  * vk: Always initialize internal objects
+  * Attempt at bundling wayland libraries
+  * Savestates: Fixup
+  * SPU: Add debug information when logging analyzer failures
+  * Add SPU Profiler to GUI
+  * CPUThread.cpp: Add reservation sampling
+  * SPU: Fixup breakpoints
+  * Savestates: serilialize avc2_settings
+  * Savestates: Add save stage names
+  * Progress Dialog: Force update every 20 seconds
+  * savestate_utils.cpp: Fix out-of-range bug
+  * Savestates: Make non-existing versions 0
+  * Default constructor for avc2_settings
+  * Add missing newline
+  * Update CMakelists.txt
+  * Get reworked RSX to compile
+  * rsx: Separate register context from RSX thread
+  * fix CellSysutilAvc2InitParam
+  * cellSysutilAvc2Load_shared: simplify max_video_windows check
+  * cellSysutilAvc2Load_shared: re-arrange streaming_mode checks
+  * cellSysutilAvc2Load_shared: review fixes
+  * cellSysutilAvc2Load_shared: use utils::align for total_bitrate
+  * cellSysutilAvc2Load_shared: fix compilation
+  * Only send cellSysutilAvc2LoadAsync callback with CELL_SYSUTIL_AVC2_VOICE_CHAT
+  * Fix callback_func check for CELL_SYSUTIL_AVC2_VIDEO_CHAT
+  * move cellSysutilAvc2LoadAsync to cellSysutilAvc2Load
+  * cellSysutilAvc2Load: param checks
+  * Initialize CB in cellSysutilAvc2Load
+  * SPU/Debugger: Use bitset for breakpoints
+  * SPU: Use bitset to reduce memory for compiler instance
+  * Logs: output always message level to debuggers
+  * GUI/CLI: Add setting to attach command line (Win32)
+  * PPU/reservations: send thread notification only if data changed
+  * Handle R16G16B16X16_FLOAT
+  * cellRtc: review + warning fixes
+  * cellRtc: tick conversion improvements
+
+-------------------------------------------------------------------
 Wed Apr 10 12:48:01 UTC 2024 - i@guoyunhe.me
 
 - Update to version 0.0.31~git20240409:
