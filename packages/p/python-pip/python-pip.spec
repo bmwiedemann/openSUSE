@@ -34,7 +34,7 @@
 %define mypython python
 %{?sle15_python_module_pythons}
 Name:           python-pip%{psuffix}
-Version:        23.3.2
+Version:        24.0
 Release:        0
 Summary:        A Python package management system
 License:        MIT

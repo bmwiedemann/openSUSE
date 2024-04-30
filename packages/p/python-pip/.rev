@@ -913,4 +913,39 @@
     <comment>- Fix shebang path for &quot;pip3.XX&quot; binaries</comment>
     <requestid>1144283</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>bcc592ed32a07159f3b4f8df64aca3e9</srcmd5>
+    <version>24.0</version>
+    <time>1714490773</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.0:
+  * Retry on HTTP status code 502
+  * Automatically use the setuptools PEP 517 build backend when
+    --config-settings is used for projects without
+    pyproject.toml.
+  * Make pip freeze and pip uninstall of legacy editable installs
+    of packages whose name contains _ compatible with
+    setuptools&gt;=69.0.3.
+  * Support per requirement --config-settings for editable
+    installs.
+  * Optimized usage of --find-links=&lt;path-to-dir&gt;, by only
+    scanning the relevant directory once, only considering file
+    names that are valid wheel or sdist names, and only
+    considering files in the directory that are related to the
+    install.
+  * Removed wheel from the [build-system].requires list fallback
+    that is used when pyproject.toml is absent.
+  * Upgrade distlib to 0.3.8
+  * Fix explanation of how PIP_CONFIG_FILE works
+  * Fix outdated pip install argument description in
+    documentation.
+  * Replace some links to PEPs with links to the canonical
+    specifications on the :doc:`pypug:index`
+  * Updated the pyproject.toml document to stop suggesting to
+    depend on wheel as a build dependency directly.
+  * Update supported interpreters in development docs
+  * Most project metadata is now defined statically via pip's
+    pyproject.toml file.</comment>
+    <requestid>1170734</requestid>
+  </revision>
 </revisionlist>
