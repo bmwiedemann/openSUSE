@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Mon Apr 29 16:07:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 1.78.1
+  * Defects Fixed:
+    - The new dependency of the the PGP API on the bcutil jar was
+      missing from the module jar, the OSGi manifest, and the Maven
+      POM. This has been fixed.
+    - Missing exports and duplicate imports have been added/removed
+      from the OSGi manifests.
+    - The OSGi manifests now have the same bundle IDs as 1.77 and
+      lock down dependencies to the equivalent variations
+    - A check in the X.509 Extensions class preventing the parsing
+      of empty extensions has been removed.
+
+-------------------------------------------------------------------
+Mon Apr 29 06:39:43 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 1.78: [bsc#1223252, CVE-2024-30171]
+  * Security Advisories.
+    - CVE-2024-29857: Importing an EC certificate with specially crafted
+      F2m parameters can cause high CPU usage during parameter evaluation.
+    - CVE-2024-30171: Possible timing based leakage in RSA based handshakes
+      due to exception processing eliminated.
+    - CVE-2024-30172: Crafted signature and public key can be used to
+      trigger an infinite loop in the Ed25519 verification code.
+    - CVE-2024-301XX: When endpoint identification is enabled in the BCJSSE
+      and an SSL socket is not created with an explicit hostname (as happens
+      with HttpsURLConnection), hostname verification could be performed
+      against a DNS-resolved IP address. This has been fixed.
+  * Defects Fixed:
+    - Issues with a dangling weak reference causing intermittent
+      NullPointerExceptions in the OcspCache have been fixed.
+    - Issues with non-constant time RSA operations in TLS handshakes.
+    - Issue with Ed25519, Ed448 signature verification causing intermittent
+      infinite loop have been fixed.
+    - Issues with non-constant time ML-KEM implementation ("Kyber Slash").
+    - Align ML-KEM input validation with FIPS 203 IPD requirements.
+    - Make PEM parsing more forgiving of whitespace to align with RFC 7468.
+    - Fix CCM length checks with large nonce sizes (n=12, n=13).
+    - EAC: Fixed the CertificateBody ASN.1 type to support an optional
+      Certification Authority Reference in a Certificate Request.
+    - ASN.1: ObjectIdentifier (also Relative OID) parsing has been optimized
+      and the contents octets for both types are now limited to 4096 bytes.
+    - BCJSSE: Fixed a missing null check on the result of PrivateKey.getEncoded(),
+      which could cause issues for HSM RSA keys.
+    - BCJSSE: When endpoint identification is enabled and an SSL socket is not
+      created with an explicit hostname (as happens with HttpsURLConnection),
+      hostname verification could be performed against a DNS-resolved IP address.
+    - The missing module import of java.logging to the provider module has been added.
+    - GOST ASN.1 public key alg parameters are now compliant with RFC 9215.
+    - An off-by-one error in the encoding for EccP256CurvePoint for ITS.
+    - PEM Parser now enforces PEM headers to start at the beginning of the line
+      to be meaningful.
+  * Additional Features and Functionality.
+    - An implementation of MLS (RFC 9420 - The Messaging Layer Security Protocol)
+      has been added as a new module.
+    - NTRU now supports NTRU-HPS4096-1229 and NTRU-HRSS-1373.
+    - Improvements to PGP support, including Camellia key wrapping and Curve25519,
+      Curve448 key types (including XDH with HKDF).
+    - Added initial support for ML-KEM in TLS.
+    - Added XWing hybrid KEM construction (X25519 + ML-KEM-768).
+    - Introduced initial KEMSpi support (NTRU, SNTRU Prime) for JDK 21+.
+    - Introduced initial composite signature support for X509 Certificates.
+    - PKCS#12 now supports PKCS12-AES256-AES128, PKCS12-AES256-AES128-GCM,
+      PKCS12-DEF-AES256-AES128, and PKCS12-DEF-AES256-AES128-GCM.
+    - The default type for the KeyStore.getInstance("PKCS12", "BC") can now be set
+      using the org.bouncycastle.pkcs12.default system/security property.
+    - The PGP SExpParser will now handle Ed25519 and Ed448 keys.
+    - Dilithium and Kyber key encoding updated to latest Draft RFCs
+      (draft-ietf-lamps-dilithium-certificates and draft-ietf-lamps-kyber-certificates)
+    - Support has been added for encryption key derivation using HKDF in CMS, see
+      draft-housley-lamps-cms-cek-hkdf-sha256.
+    - X500Name now recognises jurisdiction{C,ST,L} DNs.
+    - CertPathValidationContext and CertificatePoliciesValidation now include
+      implementations of Memoable.
+    - The Composite post-quantum signatures implementation has been updated to the
+      latest draft draft-ounsworth-pq-composite-sigs.
+  * Full release notes: bouncycastle.org/releasenotes.html#r1rv78
+  * Rebase bouncycastle-notests.patch
+
+-------------------------------------------------------------------
 Mon Dec  4 13:44:16 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to version 1.77:

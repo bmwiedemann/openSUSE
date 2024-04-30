@@ -1,7 +1,7 @@
-Index: bc-java-r1rv76/ant/bc+-build.xml
+Index: bc-java-r1rv78/ant/bc+-build.xml
 ===================================================================
---- bc-java-r1rv76.orig/ant/bc+-build.xml
-+++ bc-java-r1rv76/ant/bc+-build.xml
+--- bc-java-r1rv78.orig/ant/bc+-build.xml
++++ bc-java-r1rv78/ant/bc+-build.xml
 @@ -280,7 +280,7 @@
  
      </target>
@@ -11,7 +11,7 @@ Index: bc-java-r1rv76/ant/bc+-build.xml
  
      <target name="build-lw" depends="initMacros">
          <!--
-@@ -935,146 +935,6 @@
+@@ -935,149 +935,6 @@
  
      </target>
  
@@ -38,6 +38,7 @@ Index: bc-java-r1rv76/ant/bc+-build.xml
 -             <fileset dir="${src.dir}" includes="**/tsp/*UnitTest.java" />
 -             <fileset dir="${src.dir}" includes="**/utiltest/*Test.java" />
 -             <fileset dir="${src.dir}" includes="**/util/io/pem/*Test.java" />
+-             <fileset dir="${src.dir}" includes="**/keybox/*Test.java" />
 -             <fileset dir="${src.dir}" includes="**/test/*.java" />
 -             <fileset dir="${src.dir}" includes="**/test/*/*.java" />
 -             <fileset dir="${src.dir}" includes="**/*.asc" />
@@ -68,6 +69,7 @@ Index: bc-java-r1rv76/ant/bc+-build.xml
 -        </copy>
 -
 -        <delete file="${test.target.src.dir}/org/bouncycastle/pqc/crypto/lms/AllTests.java" />
+-        <delete file="${test.target.src.dir}/org/bouncycastle/gpg/keybox/AllTests.java" />
 -        <delete file="${test.target.src.dir}/org/bouncycastle/x509/CertPathReviewerMessages_de.properties" />
 -        <delete file="${test.target.src.dir}/org/bouncycastle/x509/CertPathReviewerMessages.properties" />
 -
@@ -106,6 +108,7 @@ Index: bc-java-r1rv76/ant/bc+-build.xml
 -                </fileset>
 -            </classpath>
 -            <sysproperty key="bc.test.data.home" value="../../core/src/test/data" />
+-            <sysproperty key="test.java.version.prefix" value="${env.JAVA_VERSION_PREFIX}" />
 -
 -            <formatter type="xml" />
 -            <batchtest todir="${artifacts.reports.xml.dir}" unless="testcase">

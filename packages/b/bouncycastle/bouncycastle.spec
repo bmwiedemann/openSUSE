@@ -1,7 +1,7 @@
 #
 # spec file for package bouncycastle
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 %global ver_major 1
-%global ver_minor 77
-%global gittag r%{ver_major}rv%{ver_minor}
-%global archivever jdk18on-%{ver_major}%{ver_minor}
+%global ver_minor 78
+%global ver_micro 1
+%global gittag r%{ver_major}rv%{ver_minor}%{?ver_micro:v%{ver_micro}}
+%global archivever jdk18on-%{ver_major}%{ver_minor}%{?ver_micro:0%{ver_micro}}
 %global classname org.bouncycastle.jce.provider.BouncyCastleProvider
 Name:           bouncycastle
-Version:        %{ver_major}.%{ver_minor}
+Version:        %{ver_major}.%{ver_minor}%{?ver_micro:.%{ver_micro}}
 Release:        0
 Summary:        Bouncy Castle Cryptography APIs for Java
 License:        Apache-2.0 AND MIT
@@ -51,7 +52,7 @@ BuildRequires:  jakarta-mail
 BuildRequires:  javamail
 BuildRequires:  javapackages-local >= 6
 Requires(post): javapackages-tools
-Requires(postun):javapackages-tools
+Requires(postun): javapackages-tools
 Provides:       bcprov = %{version}-%{release}
 BuildArch:      noarch
 
