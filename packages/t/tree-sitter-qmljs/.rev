@@ -7,4 +7,15 @@
     <comment>New package for tree-sitter grammar qmljs</comment>
     <requestid>1162330</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6687260334996f30b594f887125082e2</srcmd5>
+    <version>0.1.2.27.239f262</version>
+    <time>1714490869</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.1.2.27.239f262:
+  * add test of multi-line string literal
+  * define our set of reserved identifiers to get around &quot;new {}&quot; conflicts
+  * extend reserved identifiers test to include various property name positions</comment>
+    <requestid>1170886</requestid>
+  </revision>
 </revisionlist>

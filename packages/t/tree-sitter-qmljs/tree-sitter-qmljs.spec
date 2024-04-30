@@ -1,5 +1,5 @@
 #
-# spec file for package tree-sitter-qmldir
+# spec file for package tree-sitter-qmljs
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -19,7 +19,7 @@
 %define _name qmljs
 Summary:        QML grammar for tree-sitter
 Name:           tree-sitter-%{_name}
-Version:        0.1.2.24.9fa49ff
+Version:        0.1.2.27.239f262
 Release:        0
 License:        MIT
 Group:          Development/Tools/Other
