@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 28 14:55:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.14:
+  * Fix JACK Transport when using pipewire
+  * Update build-script (disable QT GUI)
+
+-------------------------------------------------------------------
 Sun Nov 19 21:57:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.13:

@@ -77,4 +77,12 @@
 - Remove xjadeo.desktop: use %%suse_update_desktop_file</comment>
     <requestid>1127585</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fc123d221d202df6fe39898856d463cd</srcmd5>
+    <version>0.8.14</version>
+    <time>1714490803</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1170681</requestid>
+  </revision>
 </revisionlist>
