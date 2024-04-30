@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 29 06:54:02 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.3.1456:
+  * CLJ-2843 - Reflective calls to Java methods that take primitive
+    long or double now work when passed a narrower boxed number at
+    runtime (Integer, Short, Byte, Float). Previously, these methods
+    were not matched during reflection and an error was thrown.
+
+-------------------------------------------------------------------
 Sun Mar 10 06:43:22 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.11.2.1446:

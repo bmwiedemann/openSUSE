@@ -245,4 +245,16 @@
     hashCode() (bsc#1220666)</comment>
     <requestid>1156680</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>20b9dcbc1532b44cad88cc3a4a773058</srcmd5>
+    <version>1.11.3.1456</version>
+    <time>1714490800</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.11.3.1456:
+  * CLJ-2843 - Reflective calls to Java methods that take primitive
+    long or double now work when passed a narrower boxed number at
+    runtime (Integer, Short, Byte, Float). Previously, these methods
+    were not matched during reflection and an error was thrown.</comment>
+    <requestid>1170673</requestid>
+  </revision>
 </revisionlist>
