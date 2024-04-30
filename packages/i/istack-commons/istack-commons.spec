@@ -1,7 +1,7 @@
 #
 # spec file for package istack-commons
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,9 @@
 #
 
 
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           istack-commons
 Version:        3.0.7
 Release:        0
@@ -59,6 +62,7 @@ BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.inject)
 BuildRequires:  mvn(org.jsoup:jsoup)
 BuildRequires:  mvn(org.tukaani:xz)
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
@@ -67,6 +71,7 @@ Code shared between JAXP, JAXB, SAAJ, and JAX-WS projects.
 %package maven-plugin
 Summary:        Istack-commons Maven Mojo
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description maven-plugin
 This package contains the istack-commons Maven Mojo.
@@ -74,6 +79,7 @@ This package contains the istack-commons Maven Mojo.
 %package -n import-properties-plugin
 Summary:        Istack-commons import properties plugin
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description -n import-properties-plugin
 This package contains the istack-commons import properties Maven Mojo.
@@ -81,6 +87,7 @@ This package contains the istack-commons import properties Maven Mojo.
 %package buildtools
 Summary:        Istack-commons buildtools
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description buildtools
 This package contains istack-commons buildtools.
@@ -88,6 +95,7 @@ This package contains istack-commons buildtools.
 %package runtime
 Summary:        Istack-commons runtime
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description runtime
 This package contains istack-commons runtime.
@@ -95,6 +103,7 @@ This package contains istack-commons runtime.
 %package soimp
 Summary:        Istack-commons soimp
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description soimp
 This package contains istack-commons soimp.
@@ -102,6 +111,7 @@ This package contains istack-commons soimp.
 %package test
 Summary:        Istack-commons test
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description test
 This package contains istack-commons test.
@@ -109,6 +119,7 @@ This package contains istack-commons test.
 %package tools
 Summary:        Istack-commons tools
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description tools
 This package contains istack-commons tools.
