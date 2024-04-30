@@ -34,4 +34,12 @@ This should be in SLES (jsc#10894), but we don't have it in Factory yet.
     <comment></comment>
     <requestid>955868</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>a6e4e0642ede4bc7fb531b071dd8bc25</srcmd5>
+    <version>0.4</version>
+    <time>1714490866</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1170875</requestid>
+  </revision>
 </revisionlist>

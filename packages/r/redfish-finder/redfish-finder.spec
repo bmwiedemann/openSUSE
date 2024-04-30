@@ -42,10 +42,7 @@ that to configure the appropriate network interface so that the bmc is
 canonically accessible via the hostname redfish-localhost
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 #noop here
