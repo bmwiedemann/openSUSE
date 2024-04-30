@@ -894,4 +894,13 @@
   (boo#1221660).</comment>
     <requestid>1159295</requestid>
   </revision>
+  <revision rev="103" vrev="49">
+    <srcmd5>062bcc17b1e7c0d2c318b13db5c8997d</srcmd5>
+    <version>20200505</version>
+    <time>1714490778</time>
+    <user>anag+factory</user>
+    <comment>- Update Summary for generic_desktop pattern: make clear that this
+  is based on IceWM (boo#1221320).</comment>
+    <requestid>1170802</requestid>
+  </revision>
 </revisionlist>

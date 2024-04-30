@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 29 13:52:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update Summary for generic_desktop pattern: make clear that this
+  is based on IceWM (boo#1221320).
+
+-------------------------------------------------------------------
 Tue Mar 19 08:29:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop dependency on gconf2 from patterns-base-x11_raspberrypi:

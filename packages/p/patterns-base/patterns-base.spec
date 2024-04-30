@@ -213,7 +213,7 @@ This is the base runtime system.  It contains only a basic multiuser booting sys
 # doesn't need to be in the openSUSE x11 package
 %package basic_desktop
 %pattern_graphicalenvironments
-Summary:        A very basic desktop (previously part of x11 pattern)
+Summary:        A basic desktop (based on IceWM)
 Group:          Metapackages
 Provides:       pattern() = basic_desktop
 Provides:       pattern-order() = 1802
