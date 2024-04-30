@@ -63,6 +63,7 @@ BuildRequires:  gnome-patch-translation
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  libtiff-devel
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(atk)
 # Needed for patches touching the build system / bootstrapping
 BuildRequires:  libtool
@@ -324,7 +325,6 @@ cp -a %{SOURCE2} .
 %patch -P 8 -p1
 %patch -P 9 -p1
 %patch -P 10 -p1
-sed -i "s|/usr/bin/env python|%{_bindir}/python3|" ./gtk/gtk-builder-convert
 gnome-patch-translation-update
 
 %build
@@ -368,6 +368,7 @@ mkdir -p %{buildroot}%{_rpmmacrodir}
 cp %{SOURCE5} %{buildroot}%{_rpmmacrodir}
 %fdupes %{buildroot}%{_datadir}
 %fdupes %{buildroot}%{_libdir}
+%python3_fix_shebang
 
 ###########################################################################
 # Note: when updating scriptlets, don't forget to also update baselibs.conf

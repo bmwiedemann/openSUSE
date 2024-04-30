@@ -1357,4 +1357,13 @@ Ensure nobody gets confused next time we want to update the version. (forwarded 
     <comment></comment>
     <requestid>1170047</requestid>
   </revision>
+  <revision rev="185" vrev="9">
+    <srcmd5>650ad3bd8b4352c74f0f574c901bbaf4</srcmd5>
+    <version>2.24.33</version>
+    <time>1714490768</time>
+    <user>anag+factory</user>
+    <comment>- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476] (forwarded request 1170677 from pgajdos)</comment>
+    <requestid>1170718</requestid>
+  </revision>
 </revisionlist>
