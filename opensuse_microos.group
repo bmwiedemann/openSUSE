@@ -1799,6 +1799,7 @@
     <package name="signon-ui" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="signond" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="signond-libs" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="skopeo" supportstatus="unsupported"/> <!-- reason: opensuse_microos:skopeo -->
     <package name="slirp4netns" supportstatus="unsupported"/> <!-- reason: opensuse_microos:docker-rootless-extras -->
     <package name="snapper" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="snmp-mibs" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
