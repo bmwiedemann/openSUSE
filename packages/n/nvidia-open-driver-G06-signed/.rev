@@ -364,4 +364,13 @@
   * addresse boo#1222972</comment>
     <requestid>1168796</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>eb9948c1b63483f90e8d0e0074c3fa77</srcmd5>
+    <version>550.78</version>
+    <time>1714490824</time>
+    <user>anag+factory</user>
+    <comment>- Update to 550.78
+  * addresses boo#1223454</comment>
+    <requestid>1170731</requestid>
+  </revision>
 </revisionlist>
