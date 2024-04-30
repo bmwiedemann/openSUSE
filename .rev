@@ -7,4 +7,14 @@
     <comment>New package for tree-sitter grammar go</comment>
     <requestid>1162322</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e28e25b3a3e7a5ff26059f8a34d82650</srcmd5>
+    <version>0.21.0</version>
+    <time>1714490859</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.21.0:
+  * refactor!: rework type parameters and interface type elements
+  * feat: support type instantiation expressions</comment>
+    <requestid>1170882</requestid>
+  </revision>
 </revisionlist>
