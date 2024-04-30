@@ -20,7 +20,7 @@
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-fastapi
-Version:        0.110.0
+Version:        0.110.2
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
@@ -31,13 +31,13 @@ Patch0:         remove-classifiers.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydantic-settings >= 2.0.0}
-BuildRequires:  %{python_module starlette >= 0.35.0 with %python-starlette < 0.36}
+BuildRequires:  %{python_module starlette >= 0.37.2 with %python-starlette < 0.38}
 BuildRequires:  %{python_module typing_extensions >= 4.8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pydantic >= 1.8.2
 Requires:       python-typing_extensions >= 4.8.0
-Requires:       (python-starlette >= 0.35.0 with python-starlette < 0.36)
+Requires:       (python-starlette >= 0.37.2 with python-starlette < 0.38)
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}

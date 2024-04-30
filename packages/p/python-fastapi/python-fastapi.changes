@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr 20 20:50:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.110.2:
+  * Fix support for query parameters with list types, handle
+    JSON encoding Pydantic `UndefinedType`
+  * Simplify Pydantic configs in OpenAPI models in
+    `fastapi/openapi/models.py`.
+  * Add support for Pydantic's 2.7 new deprecated Field
+    parameter, remove URL from validation errors response.
+- update to 0.110.1:
+  * Fix parameterless `Depends()` with generics.
+  * Update mypy.
+  * Simplify string format with f-strings in
+    `fastapi/applications.py`.
+  * Upgrade Starlette to >=0.37.2,<0.38.0, remove Starlette
+    filterwarning for internal tests. PR #11266 by @nothielf.
+
+-------------------------------------------------------------------
 Mon Mar 11 03:28:17 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.110.0:
