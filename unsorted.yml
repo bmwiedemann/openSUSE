@@ -862,6 +862,7 @@ unsorted:
   - arpwatch 
   - arpwatch-ethercodes 
   - arpwatch-ethercodes-build 
+  - artem 
   - artha 
   - arti 
   - artifacts 
@@ -2056,6 +2057,7 @@ unsorted:
   - chck-devel 
   - chealpix-devel 
   - cheat 
+  - check-a11y 
   - check-create-certificate 
   - check-devel 
   - check_postgres 
@@ -10196,6 +10198,9 @@ unsorted:
   - kubelogin 
   - kubens 
   - kubepug 
+  - kubepug-bash-completion 
+  - kubepug-fish-completion 
+  - kubepug-zsh-completion 
   - kuberlr 
   - kubernetes-apiserver 
   - kubernetes-apiserver-minus1 
@@ -19921,6 +19926,11 @@ unsorted:
   - open-iscsi-devel 
   - open-isns-devel 
   - open-lldp-devel 
+  - open-test-reporting-cli 
+  - open-test-reporting-events 
+  - open-test-reporting-javadoc 
+  - open-test-reporting-schema 
+  - open-test-reporting-tooling 
   - open-vm-tools-containerinfo 
   - open-vm-tools-salt-minion 
   - open-vm-tools-sdmp 
@@ -23204,7 +23214,6 @@ unsorted:
   - python-murmurhash-devel 
   - python-nautilus-common-devel 
   - python-ncclient-doc 
-  - python-networkx-doc 
   - python-neutronclient-doc 
   - python-notmuch-doc 
   - python-novaclient-doc 
@@ -25238,6 +25247,7 @@ unsorted:
   - python310-isort 
   - python310-itemadapter 
   - python310-itemloaders 
+  - python310-iterable-io 
   - python310-itsdangerous 
   - python310-itypes 
   - python310-iwlib 
@@ -26608,7 +26618,7 @@ unsorted:
   - python310-scikit-sparse 
   - python310-scipy 
   - python310-scipy-gnu-hpc 
-  - python310-scipy_1_11_4-gnu-hpc 
+  - python310-scipy_1_13_0-gnu-hpc 
   - python310-scitokens 
   - python310-scour 
   - python310-scp 
@@ -28754,6 +28764,7 @@ unsorted:
   - python311-isort 
   - python311-itemadapter 
   - python311-itemloaders 
+  - python311-iterable-io 
   - python311-itsdangerous 
   - python311-itypes 
   - python311-iwlib 
@@ -29495,6 +29506,7 @@ unsorted:
   - python311-pybcj 
   - python311-pybeam 
   - python311-pybgcode 
+  - python311-pybind11 
   - python311-pybind11-devel 
   - python311-pybind11-stubgen 
   - python311-pybluez 
@@ -30049,7 +30061,7 @@ unsorted:
   - python311-scikit-sound 
   - python311-scikit-sparse 
   - python311-scipy-gnu-hpc 
-  - python311-scipy_1_11_4-gnu-hpc 
+  - python311-scipy_1_13_0-gnu-hpc 
   - python311-scitokens 
   - python311-scp 
   - python311-screeninfo 
@@ -32241,6 +32253,7 @@ unsorted:
   - python312-isort 
   - python312-itemadapter 
   - python312-itemloaders 
+  - python312-iterable-io 
   - python312-itsdangerous 
   - python312-itypes 
   - python312-iwlib 
@@ -33604,7 +33617,7 @@ unsorted:
   - python312-scikit-sparse 
   - python312-scipy 
   - python312-scipy-gnu-hpc 
-  - python312-scipy_1_11_4-gnu-hpc 
+  - python312-scipy_1_13_0-gnu-hpc 
   - python312-scitokens 
   - python312-scour 
   - python312-scp 
