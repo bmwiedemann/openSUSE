@@ -36,4 +36,18 @@
     in the config (#69)</comment>
     <requestid>1163543</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fbb8e11112dd327e16af40d235f7080d</srcmd5>
+    <version>1.9.2+0</version>
+    <time>1714490888</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.9.2:
+  * Enable SOCKS proxy support (#71)
+  * Fixed error messages being put on the same line as the previous
+    info message
+  * Fixed wrong background colors of empty lines if a background
+    color is set in the config
+  * Bump rustls from 0.22.3 to 0.22.4 (#72) bsc#1223243 CVE-2024-32650</comment>
+    <requestid>1170911</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 30 06:20:46 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.2:
+  * Enable SOCKS proxy support (#71)
+  * Fixed error messages being put on the same line as the previous
+    info message
+  * Fixed wrong background colors of empty lines if a background
+    color is set in the config
+  * Bump rustls from 0.22.3 to 0.22.4 (#72) bsc#1223243 CVE-2024-32650
+
+-------------------------------------------------------------------
 Fri Mar 29 14:09:49 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.9.1:
