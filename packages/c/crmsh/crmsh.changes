@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 29 23:59:04 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240430.641cb15b:
+  * Fix: main: Set PATH environment first
+  * Dev: bash_completion: Enable complete 'id=' on non-interactive mode
+
+-------------------------------------------------------------------
+Thu Apr 25 08:32:10 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240425.c75d131a:
+  * Doc: regenerate man-4.6
+  * Dev: ui_context: ignore requirements when option --help is specified
+
+-------------------------------------------------------------------
 Wed Apr 24 09:43:44 UTC 2024 - XLiang@suse.com
 
 - Update to version 4.6.0+20240424.11e262d0:
