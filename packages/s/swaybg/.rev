@@ -45,4 +45,19 @@
     <comment></comment>
     <requestid>1058860</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>15eb595cc3627bcfc0a0ca192f75ae22</srcmd5>
+    <version>1.2.1</version>
+    <time>1714490798</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.1:
+  * Unify color validation and parsing functions
+  * Document option arguments in command line usage
+  * Correct for image orientation when loading image
+  * wayland-protocols min. version to 1.26
+  * main.c: fix build against gcc-14 (-Walloc-size)
+  * build: find native wayland-scanner program
+  * build: drop intermediate protocols library</comment>
+    <requestid>1170661</requestid>
+  </revision>
 </revisionlist>
