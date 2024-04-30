@@ -36,13 +36,10 @@ BuildRequires:  apache-commons-pool2
 BuildRequires:  fdupes
 BuildRequires:  geronimo-jta-1_1-api
 BuildRequires:  java-devel >= 1.7
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jdbc-stdext >= 2.0
 BuildRequires:  junit >= 3.8.1
 BuildRequires:  xerces-j2
-Requires:       commons-collections >= 3.2
-Requires:       commons-pool2
-Requires:       jta_api >= 1.1
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
 Provides:       %{short_name} = %{version}-%{release}
@@ -82,8 +79,6 @@ features.
 # remove all binary libs
 find . -name "*.jar" -exec rm -f {} \;
 
-%pom_remove_parent .
-
 %build
 ant \
         -Dcommons-pool.jar=$(build-classpath commons-pool2) \
@@ -98,14 +93,13 @@ ant \
 
 %install
 # jars
-install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 dist/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{name}2-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} `echo $jar| sed  "s|apache-||g"`; done)
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} `echo $jar| sed  "s|-%{version}||g"`; done)
+install -d -m 0755 %{buildroot}%{_javadir}
+install -m 0644 dist/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{name}2.jar
+ln -sf %{_javadir}/%{name}2.jar %{buildroot}%{_javadir}/%{short_name}.jar
 # pom
-install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -m 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}2-%{version}.pom
-%add_maven_depmap %{name}2-%{version}.pom %{name}2-%{version}.jar
+install -d -m 0755 %{buildroot}%{_mavenpomdir}
+%mvn_install_pom pom.xml %{buildroot}%{_mavenpomdir}/%{name}2.pom
+%add_maven_depmap %{name}2.pom %{name}2.jar
 
 # javadoc
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
@@ -124,20 +118,11 @@ if [ $1 -eq 0 ] ; then
   update-alternatives --remove hibernate_jdbc_cache %{_javadir}/%{name}2.jar
 fi
 
-%files
+%files -f .mfiles
 %license LICENSE.txt
-%{_javadir}/%{name}2.jar
-%{_javadir}/%{name}2-%{version}.jar
 %{_javadir}/%{short_name}.jar
-%{_javadir}/%{short_name}-%{version}.jar
 %{_javadir}/hibernate_jdbc_cache.jar
 %ghost %{_sysconfdir}/alternatives/hibernate_jdbc_cache.jar
-%{_mavenpomdir}/%{name}2-%{version}.pom
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%endif
 
 %files javadoc
 %{_javadocdir}/%{name}

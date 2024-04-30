@@ -56,4 +56,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1147975</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>ffb4bd9a9ce5d66f11dceda322d150b4</srcmd5>
+    <version>2.1.1</version>
+    <time>1714490899</time>
+    <user>anag+factory</user>
+    <comment>Simplify spec: remove old macros and avoid versioned jars</comment>
+    <requestid>1170957</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 30 10:54:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Simplify spec: remove old macros and avoid versioned jars
+
+-------------------------------------------------------------------
 Tue Feb 20 11:04:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
