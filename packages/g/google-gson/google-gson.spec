@@ -31,6 +31,10 @@ BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
 BuildRequires:  mvn(javax.annotation:jsr250-api)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
