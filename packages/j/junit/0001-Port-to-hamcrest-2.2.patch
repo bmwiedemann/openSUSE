@@ -1,7 +1,7 @@
-From 85c780b61cd35b4544d2926393805e1699641f38 Mon Sep 17 00:00:00 2001
+From d09cc37d39895b8b8b0bffb1c70d0a9d06df69a1 Mon Sep 17 00:00:00 2001
 From: Marian Koncek <mkoncek@redhat.com>
 Date: Fri, 6 Mar 2020 14:28:05 +0100
-Subject: [PATCH] Port to hamcrest 2.2
+Subject: [PATCH 1/2] Port to hamcrest 2.2
 
 ---
  .../org/junit/internal/matchers/StacktracePrintingMatcher.java | 3 ---
@@ -12,7 +12,7 @@ Subject: [PATCH] Port to hamcrest 2.2
  5 files changed, 2 insertions(+), 9 deletions(-)
 
 diff --git a/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java b/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java
-index 93a6827..3ea4a81 100644
+index 93a68276..3ea4a813 100644
 --- a/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java
 +++ b/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java
 @@ -1,7 +1,6 @@
@@ -38,7 +38,7 @@ index 93a6827..3ea4a81 100644
              Matcher<T> exceptionMatcher) {
          return new StacktracePrintingMatcher<T>(exceptionMatcher);
 diff --git a/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java b/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java
-index 6e2ff5e..1f0a0a0 100644
+index 6e2ff5e3..1f0a0a02 100644
 --- a/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java
 +++ b/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java
 @@ -1,7 +1,6 @@
@@ -58,7 +58,7 @@ index 6e2ff5e..1f0a0a0 100644
          return new ThrowableCauseMatcher<T>(matcher);
      }
 diff --git a/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java b/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java
-index 74386a8..7d16b11 100644
+index 74386a86..7d16b11b 100644
 --- a/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java
 +++ b/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java
 @@ -1,7 +1,6 @@
@@ -78,7 +78,7 @@ index 74386a8..7d16b11 100644
          return new ThrowableMessageMatcher<T>(matcher);
      }
 diff --git a/src/main/java/org/junit/matchers/JUnitMatchers.java b/src/main/java/org/junit/matchers/JUnitMatchers.java
-index 13407cc..8889266 100644
+index 13407cc0..8889266e 100644
 --- a/src/main/java/org/junit/matchers/JUnitMatchers.java
 +++ b/src/main/java/org/junit/matchers/JUnitMatchers.java
 @@ -56,7 +56,7 @@ public class JUnitMatchers {
@@ -91,7 +91,7 @@ index 13407cc..8889266 100644
      }
  
 diff --git a/src/test/java/org/junit/tests/experimental/theories/runner/WithDataPointMethod.java b/src/test/java/org/junit/tests/experimental/theories/runner/WithDataPointMethod.java
-index f2b2753..e5759ed 100644
+index f2b27531..e5759ed8 100644
 --- a/src/test/java/org/junit/tests/experimental/theories/runner/WithDataPointMethod.java
 +++ b/src/test/java/org/junit/tests/experimental/theories/runner/WithDataPointMethod.java
 @@ -108,7 +108,7 @@ public class WithDataPointMethod {
@@ -104,5 +104,5 @@ index f2b2753..e5759ed 100644
      }
  }
 -- 
-2.25.2
+2.44.0
 

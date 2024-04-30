@@ -1,0 +1,17 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/junit-team/junit4.git</param>
+		<param name="revision">r4.13.2</param>
+		<param name="match-tag">r*</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">r(.*)</param>
+        <param name="exclude">**/*.jar</param>
+        <param name="filename">junit</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

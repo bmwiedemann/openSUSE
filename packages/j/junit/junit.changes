@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 27 11:44:02 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Generate anew the ant build system using the maven pom.xml
+- Fetch sources from github by source service and filter out stale
+  hamcrest binaries.
+- Port to hamcrest 2.2 unconditionally
+- Added patch:
+  * 0002-remove-usages-of-deprecated-org.junit.Assert.assertT.patch
+    + upstream patch to replace deprecated assertThat
+
+-------------------------------------------------------------------
 Wed Feb 21 13:55:54 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

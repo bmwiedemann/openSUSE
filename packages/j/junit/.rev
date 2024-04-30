@@ -240,4 +240,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148723</requestid>
   </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>4f5578e8673c4b257f15e545efe3edda</srcmd5>
+    <version>4.13.2</version>
+    <time>1714490755</time>
+    <user>anag+factory</user>
+    <comment>refactor build system and clean-up dependencies</comment>
+    <requestid>1170622</requestid>
+  </revision>
 </revisionlist>

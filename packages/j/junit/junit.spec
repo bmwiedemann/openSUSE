@@ -23,12 +23,13 @@ Summary:        Java regression test package
 License:        EPL-1.0
 Group:          Development/Libraries/Java
 URL:            https://junit.org/junit4/
-Source0:        https://github.com/junit-team/junit4/archive/r%{version}.tar.gz
-Source1:        build.xml
+Source0:        %{name}-%{version}.tar.xz
+Source1:        %{name}-build.xml
 Patch0:         0001-Port-to-hamcrest-2.2.patch
+Patch1:         0002-remove-usages-of-deprecated-org.junit.Assert.assertT.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  hamcrest >= 1.3
+BuildRequires:  hamcrest >= 2.0
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
 Provides:       %{name}-demo = %{version}-%{release}
@@ -62,28 +63,21 @@ Obsoletes:      %{name}4-manual < %{version}-%{release}
 Documentation for %{name}.
 
 %prep
-%setup -q -n %{name}4-r%{version}
-%if %{?pkg_vcmp:%pkg_vcmp hamcrest >= 2.0}%{!?pkg_vcmp:0}
+%setup -q
 %patch -P 0 -p1
-%endif
-cp %{SOURCE1} .
+%patch -P 1 -p1
+cp %{SOURCE1} build.xml
 
 find . -type f -name "*.jar" -or -name "*.class" | xargs -t rm -rf
 
-%if %{?pkg_vcmp:%pkg_vcmp hamcrest >= 2.0}%{!?pkg_vcmp:0}
-ln -s $(build-classpath hamcrest/hamcrest) lib/hamcrest-core-1.3.jar
-%else
-ln -s $(build-classpath hamcrest/all) lib/hamcrest-core-1.3.jar
-%endif
-
 %build
-export CLASSPATH=$(build-classpath hamcrest)
-ant jars javadoc -Dversion-status=
+build-jar-repository -s lib hamcrest
+ant jar javadoc
 
 %install
 # jars
 install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 %{name}%{version}/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+install -m 644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # compat symlink
 ln -sf %{_javadir}/%{name}.jar %{buildroot}%{_javadir}/%{name}4.jar
 
@@ -94,7 +88,7 @@ install -d -m 755 %{buildroot}%{_mavenpomdir}
 
 # javadoc
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
-cp -pr %{name}%{version}/javadoc/* %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 %check
