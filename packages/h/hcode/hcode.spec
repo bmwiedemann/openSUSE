@@ -1,7 +1,7 @@
 #
 # spec file for package hcode
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Source0:        hcode2.1-mailpatch3.tar.gz
 Source1:        hdcode.c
 Patch1:         hcode2.1-mailpatch3-ksc5601.patch
 Patch2:         fix-implicit-declarations.patch
+Patch3:         CVE-2024-34020-putSDN_OOB_write.patch
 
 %description
 Hangul code conversion utilities (hcode, hdcode).
@@ -35,6 +36,7 @@ Hangul code conversion utilities (hcode, hdcode).
 cp -f %{SOURCE1} .
 %patch -P 1 -p1 -b .ksc5601
 %patch -P 2 -p1
+%patch -P 3 -p1
 
 %build
 %make_build CFLAGS="%{optflags}"
