@@ -1995,4 +1995,14 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1166339</requestid>
   </revision>
+  <revision rev="227" vrev="3">
+    <srcmd5>de403e6f43fc9e49455261dcff53f660</srcmd5>
+    <version>46.0</version>
+    <time>1714490762</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-Revert-clutter-stage-Avoid-queueing-stage-updates-wh.patch:
+  Reverting commit 261f516a to fix black screen on Xorg when logging
+  in or logging out (glgo#GNOME/mutter#3452 bsc#1222612). (forwarded request 1170534 from xiaoguang_wang)</comment>
+    <requestid>1170716</requestid>
+  </revision>
 </revisionlist>

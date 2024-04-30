@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 28 01:22:43 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add 0001-Revert-clutter-stage-Avoid-queueing-stage-updates-wh.patch:
+  Reverting commit 261f516a to fix black screen on Xorg when logging
+  in or logging out (glgo#GNOME/mutter#3452 bsc#1222612).
+
+-------------------------------------------------------------------
 Mon Apr  8 06:11:23 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add mutter-fix-front-buffer-lock.patch: Fix front buffer lock

@@ -40,6 +40,8 @@ Patch3:         mutter-fix-x11-restart.patch
 Patch4:         0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch
 # PATCH-FIX-UPSTREAM mutter-fix-front-buffer-lock.patch glgo#gnome/mutter!3674 bsc#1222409 alynx.zhou@suse.com -- Fix front buffer lock error
 Patch5:         mutter-fix-front-buffer-lock.patch
+# PATCH-FIX-UPSTREAM 0001-Revert-clutter-stage-Avoid-queueing-stage-updates-wh.patch glgo#GNOME/mutter#3452 bsc#1222612 xwang@suse.com -- Fix blank screen on Xorg when logging in or logging out
+Patch6:         0001-Revert-clutter-stage-Avoid-queueing-stage-updates-wh.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
@@ -152,6 +154,7 @@ applications that want to make use of the mutter library.
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 6 -p1
 %endif
 # SLE-only patches and translations.
 %if 0%{?sle_version}
