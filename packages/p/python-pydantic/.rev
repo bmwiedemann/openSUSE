@@ -350,4 +350,41 @@
     <comment>- Update to 2.6.3 (bsc#1222806, CVE-2024-3772):</comment>
     <requestid>1167847</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e4764bbb2753554d6f08572efa2a8d46</srcmd5>
+    <version>2.7.1</version>
+    <time>1714490741</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.7.1:
+  * Bump `pydantic-core` to `v2.18.2`
+  * Ftp and Websocket connection strings support
+  * Use field description for RootModel schema description when
+    there is `…`
+  * Fix `validation_alias` behavior with `model_construct` for
+    `AliasChoices` and `AliasPath`
+  * Revert `typing.Literal` and import it outside the
+    TYPE_CHECKING block
+  * Fix `Secret` serialization schema, applicable for unions
+  * Fix `strict` application to `function-after` with
+    `use_enum_values`
+  * Address case where `model_construct` on a class which defines
+    `model_post_init` fails with `AttributeError`
+  * Fix `model_json_schema` with config types
+  * Support multiple zeros as an `int`
+  * Fix validation of `int`s with leading unary plus
+  * Fix interaction between `extra != 'ignore'` and
+    `from_attributes=True`
+  * Handle error from `Enum`'s `missing` function as
+    `ValidationError`
+  * Fix memory leak with `Iterable` validation
+  * Adopt `jiter` `v0.2.0`
+  * Extract attribute docstrings from `FieldInfo.description`
+  * Add a `with_config` decorator to comply with typing spec
+  * Allow an optional separator splitting the value and unit of
+    the result of `ByteSize.human_readable`
+  * Add generic `Secret` base type
+  * Make use of `Sphinx` inventories for cross references in docs
+  * Add environment variable to disable plugins</comment>
+    <requestid>1170440</requestid>
+  </revision>
 </revisionlist>

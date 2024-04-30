@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic%{psuffix}
-Version:        2.6.4
+Version:        2.7.1
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
@@ -56,7 +56,7 @@ Requires:       python-annotated-types >= 0.4.0
 %if 0%{?python_version_nodots} < 310
 Requires:       python-eval-type-backport
 %endif
-Requires:       python-pydantic-core == 2.16.3
+Requires:       python-pydantic-core == 2.18.2
 Requires:       python-typing_extensions >= 4.6.1
 Suggests:       python-email-validator >= 2.0
 BuildArch:      noarch
