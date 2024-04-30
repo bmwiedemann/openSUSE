@@ -17,4 +17,41 @@
 - Add %{?sle15_python_module_pythons}</comment>
     <requestid>1157065</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>40e2772679d5c657377bca6b9433f542</srcmd5>
+    <version>2.18.2</version>
+    <time>1714490740</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.18.2:
+  * Support multiple zeros as an `int`
+  * Fix validation of `int`s with leading unary plus
+  * Fix interaction between `extra != 'ignore'` and
+    `from_attributes=True`
+  * Handle error from `Enum`'s `missing` function as
+    `ValidationError`
+  * Fix memory leak with `Iterable` validation
+- update to 2.18.1:
+  * allow serialization functions to upgrade warnings to
+    exceptions
+  * Fix: add `coerce_numbers_to_str option` in `StringSchema`
+  * Trim leading zeros before parsing `str` -&gt; `int`
+  * Prevent trailing dots in integers
+- update to 2.18.0:
+  * update to PyO3 0.21 final
+  * Add coerce_numbers_to_str option in str_schema
+  * caching strings from JSON
+  * fix build warnings on python &lt;3.11
+  * Fixes for `ser_json_inf_nan` inference
+  * Adopt jiter `0.2.0`
+- update to 2.17.0:
+  * Add benchmarks for serializing model with complete schema
+  * Prevent panicking when `__dict__` changes during iteration
+  * Fix `TzInfo` equality check based on offset
+  * Fix stack overflow due to recursion in some recursive
+    serializer schemas.
+  * Use PEP570 syntax
+  * Fix parsing `BigInt` from `str`
+  * Use new typing syntax for `_pydantic_core.pyi`</comment>
+    <requestid>1170439</requestid>
+  </revision>
 </revisionlist>

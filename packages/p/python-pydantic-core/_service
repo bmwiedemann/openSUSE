@@ -1,9 +1,9 @@
 <services>
-  <service name="cargo_vendor" mode="disabled">
-    <param name="srctar">pydantic_core-2.16.3.tar.gz</param>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srctar">pydantic_core-2.18.2.tar.gz</param>
     <param name="compression">xz</param>
     <param name="update">true</param>
   </service>
-  <service name="cargo_audit" mode="disabled"></service>
+  <service name="cargo_audit" mode="manual"></service>
 </services>
 

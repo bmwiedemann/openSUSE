@@ -1,7 +1,55 @@
 -------------------------------------------------------------------
+Sat Apr 27 07:55:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.18.2:
+  * Support multiple zeros as an `int`
+  * Fix validation of `int`s with leading unary plus
+  * Fix interaction between `extra != 'ignore'` and
+    `from_attributes=True`
+  * Handle error from `Enum`'s `missing` function as
+    `ValidationError`
+  * Fix memory leak with `Iterable` validation
+- update to 2.18.1:
+  * allow serialization functions to upgrade warnings to
+    exceptions
+  * Fix: add `coerce_numbers_to_str option` in `StringSchema`
+  * Trim leading zeros before parsing `str` -> `int`
+  * Prevent trailing dots in integers
+- update to 2.18.0:
+  * update to PyO3 0.21 final
+  * Add coerce_numbers_to_str option in str_schema
+  * caching strings from JSON
+  * fix build warnings on python <3.11
+  * Fixes for `ser_json_inf_nan` inference
+  * Adopt jiter `0.2.0`
+- update to 2.17.0:
+  * Add benchmarks for serializing model with complete schema
+  * Prevent panicking when `__dict__` changes during iteration
+  * Fix `TzInfo` equality check based on offset
+  * Fix stack overflow due to recursion in some recursive
+    serializer schemas.
+  * Use PEP570 syntax
+  * Fix parsing `BigInt` from `str`
+  * Use new typing syntax for `_pydantic_core.pyi`
+  * separate `Input` trait `'a` and `'py` lifetimes
+  * Fix json serialization when `computed_field` is excluded
+  * Implement `Input` for `str`
+  * Move list validation to produce an associated type
+  * Remove `with_new_extra`
+  * Associated types for arguments in Input
+  * Associated types for dict in input
+  * Remaining associated types
+  * Refactor `Input` trait to have single `as_python` cast for
+    python inputs
+  * Allow case where `__pydantic_extra__` is `None`, even if
+    `extra='allow'`
+  * Add ability to pass `context` to serialization
+  * Add `serialize_as_any` runtime flag support
+
+-------------------------------------------------------------------
 Tue Mar 12 00:24:28 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Sprinkle in multibuild to avoid build cycles. 
+- Sprinkle in multibuild to avoid build cycles.
 
 -------------------------------------------------------------------
 Sat Mar  9 13:15:13 UTC 2024 - ecsos <ecsos@opensuse.org>
