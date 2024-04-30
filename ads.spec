@@ -1,7 +1,7 @@
 #
 # spec file for package ads
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,6 +80,7 @@ pushd src
 %if 0%{?sle_version} <= 150100
 popd
 %endif
+%python3_fix_shebang
 
 %files
 %defattr(-,root,root)
