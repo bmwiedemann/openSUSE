@@ -63,4 +63,12 @@
     <comment>2.2</comment>
     <requestid>1168377</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>cef6397f01ba432db9e15e603763bac2</srcmd5>
+    <version>2.2</version>
+    <time>1714490848</time>
+    <user>anag+factory</user>
+    <comment>This runs with java 8 just fine</comment>
+    <requestid>1170856</requestid>
+  </revision>
 </revisionlist>

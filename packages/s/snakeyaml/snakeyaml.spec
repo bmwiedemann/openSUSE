@@ -17,6 +17,9 @@
 
 
 %global vertag a34989252e6f
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 %bcond_with tests
 Name:           snakeyaml
 Version:        2.2
@@ -36,6 +39,7 @@ BuildRequires:  apache-commons-codec
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
 BuildRequires:  javapackages-local >= 6
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
