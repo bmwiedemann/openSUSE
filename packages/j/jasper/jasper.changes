@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 27 19:31:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.2.4:
+  * Added some missing checks to the jas_heic_decode function in the
+    HEIC codec (#383).
+
+-------------------------------------------------------------------
 Sun Mar 31 20:57:24 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.2.3:

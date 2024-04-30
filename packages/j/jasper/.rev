@@ -380,4 +380,14 @@
     <comment>  * Added a missing check in the JPC codec (#381) bsc#1223155 (CVE-2024-31744)</comment>
     <requestid>1169268</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a3620a893a50477c9b88dfdd11874c34</srcmd5>
+    <version>4.2.4</version>
+    <time>1714490754</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.2.4:
+  * Added some missing checks to the jas_heic_decode function in the
+    HEIC codec (#383).</comment>
+    <requestid>1170497</requestid>
+  </revision>
 </revisionlist>
