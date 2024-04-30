@@ -16,6 +16,9 @@
 #
 
 
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           glassfish-fastinfoset
 Version:        1.2.15
 Release:        0
@@ -33,6 +36,7 @@ BuildRequires:  mvn(com.sun.xml.stream.buffer:streambuffer)
 BuildRequires:  mvn(com.sun.xsom:xsom)
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description

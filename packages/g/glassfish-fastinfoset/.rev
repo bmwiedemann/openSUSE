@@ -55,4 +55,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148569</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>bc7deca18e5c3e925f08ecb2cf04b0be</srcmd5>
+    <version>1.2.15</version>
+    <time>1714490834</time>
+    <user>anag+factory</user>
+    <comment>This runs with java 8 just fine</comment>
+    <requestid>1170839</requestid>
+  </revision>
 </revisionlist>
