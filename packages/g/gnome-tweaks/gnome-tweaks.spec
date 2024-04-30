@@ -66,8 +66,6 @@ of GNOME 3.
 %autosetup -p1
 # Tiny tweak to shut up rpmlint
 sed -i 's:Pantheon:X-Pantheon:g' */org.gnome.tweaks.desktop.in
-# Tweak to fix python env
-sed -i "s|#!%{_bindir}/env python3|#!%{_bindir}/python3|g" gnome-tweak*
 
 %build
 %meson
@@ -81,6 +79,7 @@ rm -rf %{buildroot}/%{python3_sitelib}/gtweak/tweaks/__pycache__/*.pyc
 %fdupes %{buildroot}%{_datadir}/gnome-tweaks/
 %fdupes %{buildroot}%{python_sitelib}
 %find_lang %{name} %{?no_lang_C}
+%python3_fix_shebang
 
 %files
 %license LICENSES/*
