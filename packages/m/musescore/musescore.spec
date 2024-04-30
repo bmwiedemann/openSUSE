@@ -114,7 +114,6 @@ Requires:       %{name}-fonts = %{version}-%{release}
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols2
 Requires:       ( alsa-plugins-pulse if pulseaudio )
-Requires:       ( pipewire-alsa      if pipewire )
 # For the following arch build fails in the crashpad client,
 # Maybe repairable? Disabled until a solution is found by someone.
 ExcludeArch:    aarch64 ppc64 ppc64le
