@@ -51,4 +51,15 @@
  * Update eu.po #64</comment>
     <requestid>1168457</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5e31846177c8534aa0670c3ecd23c26c</srcmd5>
+    <version>5.3.1</version>
+    <time>1714490886</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.3.1:
+  * Refactoring
+  * Add debug set theme
+  * Fix issue while saving files #43</comment>
+    <requestid>1170910</requestid>
+  </revision>
 </revisionlist>

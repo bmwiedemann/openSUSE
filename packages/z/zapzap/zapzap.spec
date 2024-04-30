@@ -17,7 +17,7 @@
 
 
 Name:           zapzap
-Version:        5.3
+Version:        5.3.1
 Release:        0
 Summary:        Whatsapp Desktop for Linux
 License:        GPL-3.0-only+
