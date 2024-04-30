@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 26 12:42:18 UTC 2024 - dcermak@suse.com
+
+- Update to version 20240426.d03c4e2:
+  * netlink: Use IFA_F_NODAD also while duplicating addresses from the host
+  * netlink: For IPv4, IFA_LOCAL is the interface address, not IFA_ADDRESS
+  * test: Make log truncation test more robust
+  * test: Slight simplification to pasta log tests
+  * udp: Correctly look up outbound socket with port remappings
+  * tcp: Replace TCP buffer structure by an iovec array
+  * conf: Don't fail if the template interface doesn't have a MAC address
+  * conf: We're interested in the MAC address, not in the MAC itself
+  * pasta, util: Align stack area for clones to maximum natural alignment
+  * treewide: Compilers' name for armv6l and armv7l is "arm"
+
+-------------------------------------------------------------------
 Tue Apr 16 08:33:53 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Remove pointless %%check section
