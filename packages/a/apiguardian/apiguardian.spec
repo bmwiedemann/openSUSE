@@ -1,7 +1,7 @@
 #
 # spec file for package apiguardian
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,11 @@
 #
 
 
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           apiguardian
-Version:        1.0.0
+Version:        1.1.2
 Release:        0
 Summary:        API Guardian Java annotation
 License:        Apache-2.0
@@ -28,8 +31,9 @@ Source1:        %{name}-build.xml
 Source100:      https://repo1.maven.org/maven2/org/apiguardian/apiguardian-api/%{version}/apiguardian-api-%{version}.pom
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.6
-BuildRequires:  javapackages-local
+BuildRequires:  java-devel >= 9
+BuildRequires:  javapackages-local >= 6
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
@@ -51,6 +55,8 @@ API documentation for %{name}.
 find -name \*.jar -delete
 cp -p %{SOURCE1} .
 
+mv src/module/java/*/module-info.java src/main/java/
+
 %build
 %{ant} -f %{name}-build.xml jar javadoc
 
@@ -60,7 +66,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 target/apiguardian-api-%{version}.jar %{buildroot}%{_javadir}/%{name}/apiguardian-api.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 %{SOURCE100} %{buildroot}%{_mavenpomdir}/%{name}/apiguardian-api.pom
+%{mvn_install_pom} %{SOURCE100} %{buildroot}%{_mavenpomdir}/%{name}/apiguardian-api.pom
 %add_maven_depmap %{name}/apiguardian-api.pom %{name}/apiguardian-api.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}

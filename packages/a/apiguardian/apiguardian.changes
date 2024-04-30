@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 29 07:13:35 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream vesion 1.1.2
+  * Fixes:
+    + Javadoc 1.8 cannot link to the published 1.1.0 API
+      documentation
+    + Add LICENSE/NOTICE to the generated jar
+    + Allow @API to be declared at the package level
+    + Explain usage of Status.DEPRECATED
+    + Include OSGi metadata in manifest
+
+-------------------------------------------------------------------
 Wed Mar 23 23:07:10 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

@@ -10,7 +10,7 @@
 
   <property name="project.groupId" value="org.apiguardian"/>
   <property name="project.artifactId" value="apiguardian-api"/>
-  <property name="project.version" value="1.0.0"/>
+  <property name="project.version" value="1.1.2"/>
   <property name="project.name" value="${project.groupId}:${project.artifactId}"/>
   <property name="project.description" value="@API Guardian"/>
 
@@ -22,7 +22,8 @@
 
   <property name="reporting.outputDirectory" value="${build.dir}/site"/>
 
-  <property name="compiler.source" value="1.8"/>
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <!-- ====================================================================== -->
@@ -39,11 +40,14 @@
 
   <target name="compile" description="Compile the code">
     <mkdir dir="${build.outputDir}"/>
+    <echo message="Compiling all except module-info.java with release=8"/>
     <javac destdir="${build.outputDir}"
            nowarn="false"
            debug="true"
+           encoding="utf-8" 
            optimize="false"
            deprecation="true"
+           release="${compiler.release}"
            target="${compiler.target}"
            verbose="false"
            fork="false"
@@ -51,6 +55,25 @@
       <src>
         <pathelement location="${build.srcDir}"/>
       </src>
+	  <exclude name="**/module-info.java"/>
+    </javac>
+    <echo message="Compiling module-info.java with release=9"/>
+    <javac destdir="${build.outputDir}" 
+           nowarn="false" 
+           debug="true" 
+           encoding="utf-8" 
+           optimize="false" 
+           deprecation="true" 
+           release="9" 
+           verbose="false" 
+           fork="false">
+      <src>
+        <pathelement location="${build.srcDir}"/>
+      </src>
+	  <include name="**/module-info.java"/>
+      <modulepath>
+        <pathelement location="${build.outputDir}"/>
+      </modulepath>
     </javac>
   </target>
 
@@ -63,7 +86,6 @@
              packagenames="*"
              destdir="${reporting.outputDirectory}/apidocs"
              access="protected"
-             old="false"
              verbose="false"
              version="true"
              use="true"
@@ -92,7 +114,7 @@
          basedir="${build.outputDir}"
          excludes="**/package.html">
       <manifest>
-        <attribute name="Automatic-Module-Name" value="${project.artifactId}"/>
+        <attribute name="Implementation-Title" value="${project.artifactId}"/>
         <attribute name="Implementation-Vendor" value="apiguardian.org"/>
         <attribute name="Implementation-Version" value="${project.version}"/>
         <attribute name="Specification-Title" value="${project.artifactId}"/>
