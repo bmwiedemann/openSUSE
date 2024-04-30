@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Apr 29 09:38:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.18:
+  + Fix a small memory leak in fwupdmgr.
+  + Use simple allow-listing for the syscall filter.
+- Changes from version 1.9.17:
+  + This release fixes the following bugs:
+    - Capture device status changes when in bootloader mode.
+    - Change the systemd SystemCallFilter to an allowlist.
+    - Detect when a CCGX dock forbids downgrade.
+    - Do not add an overly-generic instance ID to CrosEC devices.
+    - Do not read OptionROM verification data on Apple hardware.
+    - Emit a signal when a user-request is no longer valid.
+    - Fix a potential crash when parsing invalid CBOR data.
+    - Properly show SPDX project licenses with AND as a delimiter.
+    - Verify that syscalls are being filtered correctly at startup.
+  + This release adds support for the following hardware:
+    - Asus DC201.
+    - Realtek Gen1 RTS541x.
+
+-------------------------------------------------------------------
 Mon Apr  8 06:52:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.9.16:
