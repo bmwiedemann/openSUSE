@@ -16,6 +16,9 @@
 #
 
 
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 %if 0%{?suse_version} >= 1550
 %bcond_without extra_modules
 %else
@@ -55,6 +58,7 @@ BuildRequires:  mvn(org.jctools:jctools-core)
 BuildRequires:  mvn(org.osgi:osgi.core)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.slf4j:slf4j-ext)
+Requires:       java-headless >= 1.8
 Obsoletes:      log4j-mini
 BuildArch:      noarch
 %if %{with extra_modules}
@@ -75,12 +79,14 @@ variety of output targets.
 
 %package slf4j
 Summary:        Binding between LOG4J 2 API and SLF4J
+Requires:       java-headless >= 1.8
 
 %description slf4j
 Binding between LOG4J 2 API and SLF4J.
 
 %package jcl
 Summary:        Apache Log4j Commons Logging Bridge
+Requires:       java-headless >= 1.8
 
 %description jcl
 Apache Log4j Commons Logging Bridge.
@@ -88,6 +94,7 @@ Apache Log4j Commons Logging Bridge.
 %if %{with extra_modules}
 %package taglib
 Summary:        Apache Log4j Tag Library
+Requires:       java-headless >= 1.8
 
 %description taglib
 Apache Log4j Tag Library for Web Applications.
@@ -95,6 +102,7 @@ Apache Log4j Tag Library for Web Applications.
 %package jmx-gui
 Summary:        Apache Log4j JMX GUI
 Requires:       java-devel
+Requires:       java-headless >= 1.8
 
 %description jmx-gui
 Swing-based client for remotely editing the log4j configuration and remotely
@@ -102,6 +110,7 @@ monitoring StatusLogger output. Includes a JConsole plug-in.
 
 %package web
 Summary:        Apache Log4j Web
+Requires:       java-headless >= 1.8
 
 %description web
 Support for Log4j in a web servlet container.
@@ -114,6 +123,7 @@ Apache Log4j 2 Bill of Material
 
 %package nosql
 Summary:        Apache Log4j NoSql
+Requires:       java-headless >= 1.8
 
 %description nosql
 Use NoSQL databases such as MongoDB and CouchDB to append log messages.

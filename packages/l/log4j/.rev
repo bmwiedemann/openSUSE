@@ -342,4 +342,12 @@
     <comment>Fix build with jackson-databind 2.16.x</comment>
     <requestid>1156792</requestid>
   </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>5ad6a4a3daf98ce9048ae482ea5400fd</srcmd5>
+    <version>2.17.2</version>
+    <time>1714490843</time>
+    <user>anag+factory</user>
+    <comment>This runs with java 8 just fine</comment>
+    <requestid>1170852</requestid>
+  </revision>
 </revisionlist>

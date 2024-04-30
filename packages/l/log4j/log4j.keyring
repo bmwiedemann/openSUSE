@@ -2,16 +2,30 @@ This file contains the PGP&GPG keys of various Apache developers.
 Please don't use them for email unless you have to. Their main
 purpose is code signing.
 
-Apache users: pgp < KEYS
-Apache developers: 
-        (pgpk -ll <your name> && pgpk -xa <your name>) >> this file.
-      or
-        (gpg --fingerprint --list-sigs <your name>
-             && gpg --armor --export <your name>) >> this file.
+Apache users:
+-------------
 
-Apache developers: please ensure that your key is also available via the
-PGP keyservers (such as pgpkeys.mit.edu).
+You can import the keys as follows:
 
+* Using `gpg`: `gpg --import KEYS`
+* Using `pgp`: `pgp < KEYS`
+
+Apache developers:
+------------------
+
+You can append your keys as follows:
+
+* Using `gpg`: `(gpg --fingerprint --list-sigs <user-ID> && gpg --armor --export <user-ID>) >> KEYS`
+* Using `pgpk`: `(pgpk -ll <user-ID> && pgpk -xa <user-ID>) >> KEYS`
+
+`<user-ID>` denotes the ID associated with your key. This can
+be either your name or email address.
+
+Please ensure that your key is also available via public
+keyservers[1][2].
+
+[1] https://keyserver.ubuntu.com
+[2] https://pgpkeys.mit.edu
 
 Type bits /keyID    Date       User ID
 pub  1024D/0C7C4F05 2005/06/10 Mark Dwayne Womack <mwomack@apache.org>
@@ -1542,4 +1556,64 @@ uDMEYilkGBYJKwYBBAHaRw8BAQdAPHx0bsFG7r3Zw3sZCc0GVVIPpxa3AA2YG8xg
 RzUAAAoJEAMe4BDKFdHuMZ0BALB9hOZO2olaDYA4UmLx9AQXAXy99Bz5bmt9qVa+
 Vg+DAP9lmPUPXEdV8ogQBoExOifUOgLUoJ2BTcysUyVRkDvyAw==
 =oRrk
+-----END PGP PUBLIC KEY BLOCK-----
+pub   ed25519 2022-09-18 [C]
+      5270DFC517AD50957EDA0CFDBE1B8E71C9A0F3B2
+uid           [ultimate] Piotr P. Karwasz (code signing) <pkarwasz@apache.org>
+sub   ed25519 2022-09-18 [S] [expires: 2027-09-17]
+sub   cv25519 2023-01-09 [E] [expires: 2028-01-08]
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mDMEYycBsxYJKwYBBAHaRw8BAQdAptSgM1+8PFVIY/SCFosnftDlu+bH8KBTqU/d
+kh/rrD20NVBpb3RyIFAuIEthcndhc3ogKGNvZGUgc2lnbmluZykgPHBrYXJ3YXN6
+QGFwYWNoZS5vcmc+iJAEExYIADgWIQRScN/FF61QlX7aDP2+G45xyaDzsgUCYycB
+swIbAQULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAKCRC+G45xyaDzsljWAQDnmTMN
+Qya0KGyElZQpKCBxG9SbyWlT2uoHRLvecBiTRQD/fkZGU1/+QRS5GZKaU5CVw6hV
+XZZavKPjVHetLZMqKwe4MwRjJwZzFgkrBgEEAdpHDwEBB0CLalXqhw5b3ryZmSNM
+a0QfKdd85bx9XVI5YArmhI4NFoj1BBgWCAAmFiEEUnDfxRetUJV+2gz9vhuOccmg
+87IFAmMnBnMCGwIFCQlmAYAAgQkQvhuOccmg87J2IAQZFggAHRYhBAS0TAVmY5Bk
+Rrd6bYnxHcGRqnBCBQJjJwZzAAoJEInxHcGRqnBCxEwA/3XSEixaeNNC7lJ40wJg
+pK6xmdguh/ToHkTG0bl9E03yAQDJkEeLOWwhmS0OyZ1Exca9Pk73StsAEBtC/q3d
+rGvLAmn2AP4mtz1h2vYzRaSBznjUe4viqaXoBzTQ4KcTxTcIuS5B1gEAzFPpOjh3
+GNeWJNirCpd6rNhqj8s0F5TBy4ui9XfjZQG4OARjvIPPEgorBgEEAZdVAQUBAQdA
+3h7ospmMnRbUmb4pMgQFAjthwwuIWO6LTEbOtLB6rmcDAQgHiH4EGBYIACYWIQRS
+cN/FF61QlX7aDP2+G45xyaDzsgUCY7yDzwIbDAUJCWYBgAAKCRC+G45xyaDzsqGJ
+AP9OWAHlxF2zFPW1vBtY1CruqObDdYbCS0q1SxA6sxqpDwEAyrvVeLstlgZfaDjk
+c/Hx0Sb56W4ZDN5/uyxl+pM2bgk=
+=vPo/
+-----END PGP PUBLIC KEY BLOCK-----
+
+pub   rsa4096 2023-01-10 [SC]
+      077E8893A6DCC33DD4A4D5B256E73BA9A0B592D0
+uid           [ unknown] ASF Logging Services RM <private@logging.apache.org>
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQINBGO9IPgBEADHCB2evKGSjQutTtIjODtaYUoU634Tl4Iv4DYsOR+MyOQBJ3Eo
+9okST4azX6r9Fspgmc4LxpFnGm9OSEGn4NZ9ZxiTrmKaGsoXzj2w4JKtgAip4F5h
+o9Ai/ridqeA7V9VH31OLSyZ/YJvrcoBcxWdwcpydxchlKQOOYX6wKqGk0BO38870
+sI1d0y1W9pC9AiL+z7qaX3WUslOFDCGxRSxZs57x28P4pkRy0HwUWn38TrS4fnA5
+XfWuxXWr2K8/xtf+Uf2EGVUP+qiv7kDdKYbZj+SeF4ba8nLPcuFmnz6Q1iZUhA9s
+sTfruyibtm7htngt1IHFy7DT35GrIbE6D7W7S3ANqg/K+Gc/j9JXKjOwx8AM/WI0
+WQ5w4fSn3C6WhFTMpyq445c97+5ki/SKbFP45oWd7A9JqIMttMqZLzOSzFM4230J
+Cd6FQTGJdtcgfruwltQOUWl4IaCOsCAzI0XnxTIdsaCDDQ6+KspvdFw7zav03eVN
+TguQ39IkZgke2Am2He5vtxXAayv/qiTKsyTUxIIDe1ZTS5j3MJ+SNWR0faXvvDaV
+QgqVjsB9U/CHjcCYbmFhKxk2phGwa0Wc+NHKwyVwjhJkFo+U+XDGJaT2RbhDYD1H
+LeoZAT6kdngSzr2WvXWs6xJbWIXJc5FivUorfkhaiaBWam1R4o+8kSuxSwARAQAB
+tDRBU0YgTG9nZ2luZyBTZXJ2aWNlcyBSTSA8cHJpdmF0ZUBsb2dnaW5nLmFwYWNo
+ZS5vcmc+iQJOBBMBCgA4FiEEB36Ik6bcwz3UpNWyVuc7qaC1ktAFAmO9IPgCGwMF
+CwkIBwIGFQoJCAsCBBYCAwECHgECF4AACgkQVuc7qaC1ktBLOxAAgC1KsvQ40W2z
+HOIkVcmUxWBMNk9D4BcL6RqAdubTV3JcyvsqEQDVDsbHnJpKtDdABRjVRl59cpcG
+f1E2f1Vh2I5mJ9xdz09/NO30rbOioCnLp4bLK06ZH3SmBMc4fNMxie44PAhnCRsW
+vzWiCFAwg0RzQUj4tur5+RcQG3Fz6jBRlM5enuRr6JHN0dwtpZPiChsBJRFXmx6j
+mGExume3XR0cNxNi2JrPo43KHfN7HrzQrf1FoYCkkrM18+aasL3dmI7pyw/iB8Fi
+FLgiI85jGHlxTqyEtSfq23yBsPt6Fx/plDBUvsCL7NLbqz9FiUzO6dSx54Fszl94
+PqOWeLUrh9ldKJj88qatuQMjzZ1hsef992iDtjgqkKH4rdXji7k4UVpD/Z8YkQnt
+dd99v8tmfGKl7IN7YldtsnXJRIs6OogEiVvlSkpTveXXyZmqH5M6OSLCOcYE6bPV
+RIGzLiP1MPdObHcQlOal8rpWdgHDkRjZiIpk7LG0k0qI/g7RXvmnErKQQGxulpRX
+HqBnJEO8HQnfyeIh7PpkxrVT5Cp9Zsqu9EB6HQRw/GQnzDVaexCYhYjGH9NC0Ylc
+m6qS5N9HJP6Pp7ca4LdhV6pKLKkO9qTQchTVsMYUDtFAdDu5g++G41UGFSyM8c7r
+HRBtA2PPSK/tGD2VOaT9kxTmdX8o7+8=
+=4dis
 -----END PGP PUBLIC KEY BLOCK-----
