@@ -11,7 +11,8 @@
   <property name="project.artifactId" value="picocli"/>
   <property name="project.version" value="[UNKNOWN]"/>
 
-  <property name="compiler.source" value="8"/>
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <property name="build.dir" value="target"/>
@@ -43,6 +44,7 @@
            debug="true"
            optimize="false"
            deprecation="true"
+           release="${compiler.release}"
            target="${compiler.target}"
            verbose="false"
            fork="false"
@@ -75,6 +77,7 @@
            debug="true"
            optimize="false"
            deprecation="true"
+           release="${compiler.release}"
            target="${compiler.target}"
            verbose="false"
            fork="false"
@@ -114,6 +117,7 @@
            debug="true"
            optimize="false"
            deprecation="true"
+           release="${compiler.release}"
            target="${compiler.target}"
            verbose="false"
            fork="false"
@@ -154,8 +158,7 @@
   <!-- ====================================================================== -->
 
   <target name="javadoc" description="Generates the Javadoc of the application">
-    <javadoc
-             packagenames="*"
+    <javadoc packagenames="*"
              destdir="${reporting.outputDirectory}/apidocs"
              access="protected"
              verbose="false"
@@ -174,14 +177,15 @@
              charset="UTF-8"
              linksource="false"
              breakiterator="false"
-             source="${compiler.source}"
-             >
+             source="${compiler.source}">
       <sourcepath>
         <pathelement location="${build.srcDir}"/>
         <pathelement location="picocli-codegen/${build.srcDir}"/>
+        <pathelement location="picocli-shell-jline2/${build.srcDir}"/>
       </sourcepath>
       <classpath>
         <pathelement location="${build.outputDir}"/>
+        <pathelement location="${jline2.jar}"/>
       </classpath>
     </javadoc>
   </target>

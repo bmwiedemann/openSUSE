@@ -63,4 +63,12 @@
     <comment>reproducible</comment>
     <requestid>1110246</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>71bbf403bb83393003e5927b9a52b69a</srcmd5>
+    <version>4.7.5</version>
+    <time>1714490846</time>
+    <user>anag+factory</user>
+    <comment>This runs with java 8 just fine</comment>
+    <requestid>1170854</requestid>
+  </revision>
 </revisionlist>

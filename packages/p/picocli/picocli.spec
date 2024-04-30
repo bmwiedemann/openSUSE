@@ -1,7 +1,7 @@
 #
 # spec file for package picocli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,9 @@
 #
 
 
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           picocli
 Version:        4.7.5
 Release:        0
@@ -34,6 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
 BuildRequires:  javapackages-local
 BuildRequires:  jline >= 2
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
@@ -44,6 +48,7 @@ Easily included as source to avoid adding a dependency.
 %package codegen
 Summary:        Picocli Code Generation
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description codegen
 Java command line parser with both an annotations API and a programmatic API.
@@ -56,6 +61,7 @@ from a picocli model.
 %package shell-jline2
 Summary:        Picocli Shell JLine2
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description shell-jline2
 Java command line parser with both an annotations API and a programmatic API.

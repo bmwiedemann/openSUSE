@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 29 11:53:54 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- The binaries are compatible with java 1.8
+
+-------------------------------------------------------------------
 Sun Sep 10 10:27:31 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: Do not create timestamps with bnd wrap
