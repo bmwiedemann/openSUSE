@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 29 12:13:29 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Ensure that only one NVIDIA package flavor can be installed
+  Related to Issue #53
+
+-------------------------------------------------------------------
 Fri Apr 26 16:41:00 UTC 2024 - opensuse-releaseteam@opensuse.org
 
 - NVIDIA package needs to require specific flavor. Issue #53

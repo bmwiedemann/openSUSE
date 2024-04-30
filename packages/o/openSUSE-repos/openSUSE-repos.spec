@@ -119,6 +119,8 @@ Summary:        openSUSE NVIDIA repository definitions
 Requires:       openSUSE-repos-%{theme}
 Supplements:    modalias(pci:v000010DEd*sv*sd*bc03sc*i*)
 Provides:       openSUSE-repos-NVIDIA
+Conflicts:      otherproviders(openSUSE-repos-NVIDIA)
+
 %if "%{?theme}" == "Tumbleweed"
 Obsoletes:      openSUSE-repos-Leap-NVIDIA
 Obsoletes:      openSUSE-repos-LeapMicro-NVIDIA
