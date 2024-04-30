@@ -52,22 +52,11 @@ Conflicts:      rke2 < %{kubernetes_version_major_minor}
 Conflicts:      rke2 >= %{kubernetes_version_next}
 
 # /var/lib/kubelet is also packaged in kubernetes1.XX-kubelet-common
-Conflicts:      kubernetes1.17-kubelet-common
-Conflicts:      kubernetes1.18-kubelet-common
-Conflicts:      kubernetes1.19-kubelet-common
-Conflicts:      kubernetes1.20-kubelet-common
-Conflicts:      kubernetes1.21-kubelet-common
-Conflicts:      kubernetes1.22-kubelet-common
-Conflicts:      kubernetes1.23-kubelet-common
-Conflicts:      kubernetes1.24-kubelet-common
-Conflicts:      kubernetes1.25-kubelet-common
-Conflicts:      kubernetes1.26-kubelet-common
-Conflicts:      kubernetes1.27-kubelet-common
-Conflicts:      kubernetes1.28-kubelet-common
-Conflicts:      kubernetes1.29-kubelet-common
-Conflicts:      kubernetes1.30-kubelet-common
-Conflicts:      kubernetes1.31-kubelet-common
-Conflicts:      kubernetes1.32-kubelet-common
+# this in turn Requires kubernetes-kubelet-common
+# by conflicting with kubernetes-kubelet-common we conflict with all
+# kubernetes-version packages
+Conflicts:      kubernetes-kubelet-common
+Conflicts:      k3s
 
 # if iptables is missing, the nginx-controller pod does not start
 Requires:       iptables
