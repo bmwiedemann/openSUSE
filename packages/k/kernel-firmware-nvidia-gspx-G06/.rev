@@ -75,4 +75,13 @@ https://nvidia.custhelp.com/app/answers/detail/a_id/5491/~/security-bulletin%3A-
   * addresses boo#1222972</comment>
     <requestid>1168795</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2f65d8fa90e48c65b9d225696703d300</srcmd5>
+    <version>550.78</version>
+    <time>1714490811</time>
+    <user>anag+factory</user>
+    <comment>- Update to 550.78
+  * addresses boo#1223454</comment>
+    <requestid>1170730</requestid>
+  </revision>
 </revisionlist>
