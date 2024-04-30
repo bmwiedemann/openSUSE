@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 29 22:09:22 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Remove 0001-fix-escape-braces-in-regex.patch cherry-picked from
+  master it is now included in the current update.
+- Update to version 0.21.2:
+  * fix: add optional where clauses in associated types
+  * fix: rename highlights query constant
+
+-------------------------------------------------------------------
 Mon Feb 26 06:29:59 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Initial packaging for openSUSE

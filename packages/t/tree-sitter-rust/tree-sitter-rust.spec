@@ -19,16 +19,12 @@
 %define _name rust
 Summary:        Rust grammar for tree-sitter
 Name:           tree-sitter-%{_name}
-Version:        0.20.4
+Version:        0.21.2
 Release:        0
 License:        MIT
 Group:          Development/Tools/Other
 URL:            https://github.com/tree-sitter/tree-sitter-rust
 Source0:        %{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 0001-fix-escape-braces-in-regex.patch
-# -- unescaped curly brace in regex and invert query precedence for test
-# Fix build against new tree-sitter based taken from master branch
-Patch1:         0001-fix-escape-braces-in-regex.patch
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
 

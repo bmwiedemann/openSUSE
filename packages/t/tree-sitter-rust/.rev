@@ -7,4 +7,16 @@
     <comment>New package for tree-sitter grammar rust</comment>
     <requestid>1162333</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7d231d023e7df004204a08cd47fe6ecf</srcmd5>
+    <version>0.21.2</version>
+    <time>1714490871</time>
+    <user>anag+factory</user>
+    <comment>- Remove 0001-fix-escape-braces-in-regex.patch cherry-picked from
+  master it is now included in the current update.
+- Update to version 0.21.2:
+  * fix: add optional where clauses in associated types
+  * fix: rename highlights query constant</comment>
+    <requestid>1170888</requestid>
+  </revision>
 </revisionlist>
