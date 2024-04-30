@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-backports.tarfile
 Version:        1.0.0
 Release:        0
