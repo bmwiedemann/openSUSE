@@ -55,4 +55,12 @@
     <comment>1.2.0 + fix build with new modular atinject</comment>
     <requestid>1166716</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d223532d64eba1fb96c2388e2f0cad98</srcmd5>
+    <version>1.2.0</version>
+    <time>1714490847</time>
+    <user>anag+factory</user>
+    <comment>This runs with java 8 just fine</comment>
+    <requestid>1170855</requestid>
+  </revision>
 </revisionlist>

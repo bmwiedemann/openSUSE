@@ -16,6 +16,9 @@
 #
 
 
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           plexus-languages
 Version:        1.2.0
 Release:        0
@@ -36,7 +39,7 @@ BuildRequires:  objectweb-asm
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  qdox >= 2
 BuildRequires:  sisu-inject
-Requires:       java >= 1.8
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
