@@ -1,7 +1,7 @@
 #
 # spec file for package innoextract
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,7 @@ URL:            http://constexpr.org/innoextract/
 Source:         http://constexpr.org/innoextract/files/%{name}-%{version}.tar.gz
 Source1:        http://constexpr.org/innoextract/files/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
+Patch0:         https://github.com/dscharrer/innoextract/pull/169.patch
 BuildRequires:  cmake >= 2.8.0
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_date_time-devel
@@ -48,7 +49,7 @@ Extract currently supports installers created by Inno Setup 1.2.10 to
 5.4.3.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake

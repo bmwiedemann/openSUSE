@@ -113,4 +113,16 @@
     <comment></comment>
     <requestid>825720</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>458b3400eab27f322afa14543469a0e4</srcmd5>
+    <version>1.9</version>
+    <time>1714490797</time>
+    <user>anag+factory</user>
+    <comment>- Add patch:
+  * https://github.com/dscharrer/innoextract/pull/169
+    Fix build when using boost &gt;= 1.85
+  * 169.patch
+</comment>
+    <requestid>1170659</requestid>
+  </revision>
 </revisionlist>

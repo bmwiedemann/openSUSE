@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 28 13:13:44 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * https://github.com/dscharrer/innoextract/pull/169
+    Fix build when using boost >= 1.85
+  * 169.patch
+
+-------------------------------------------------------------------
 Mon Aug 10 12:39:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.9
