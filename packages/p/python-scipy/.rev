@@ -1266,4 +1266,12 @@ bsc#1130564: Apply update from the openSUSE package
     This fix is required to update OpenBLAS in oS:Factory!</comment>
     <requestid>1153127</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>4a4e8646e7b80af80679f3a6bdb37644</srcmd5>
+    <version>1.13.0</version>
+    <time>1714490749</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1170765</requestid>
+  </revision>
 </revisionlist>

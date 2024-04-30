@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Wed Apr 24 11:41:51 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip another test out of numeric precision for 32-bit
+- Fix HPC _version
+
+-------------------------------------------------------------------
+Fri Apr 19 10:55:20 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.13.0
+  ## Highlights of this release
+  * Support for NumPy 2.0.0.
+  * Interactive examples have been added to the documentation,
+    allowing users to run the examples locally on embedded
+    Jupyterlite notebooks in their browser.
+  * Preliminary 1D array support for the COO and DOK sparse
+    formats.
+  * Several scipy.stats functions have gained support for
+    additional axis, nan_policy, and keepdims arguments.
+    scipy.stats also has several performance and accuracy
+    improvements.
+  ## New features
+  * scipy.integrate improvements
+  * scipy.io improvements
+  * scipy.interpolate improvements
+  * scipy.signal improvements
+  * scipy.sparse improvements
+  * scipy.spatial improvements
+  * scipy.special improvements
+  * scipy.stats improvements
+  ## Deprecated features
+  * Complex dtypes in PchipInterpolator and Akima1DInterpolator
+    have been deprecated and will raise an error in SciPy 1.15.0.
+    If you are trying to use the real components of the passed
+    array, use np.real on y.
+  ## Other changes
+  * The second argument of scipy.stats.moment has been renamed to
+    order while maintaining backward compatibility.
+- Release 1.12.0
+  ## Highlights of this release
+  * Experimental support for the array API standard has been added
+    to part of scipy.special, and to all of scipy.fft and
+    scipy.cluster. There are likely to be bugs and early feedback
+    for usage with CuPy arrays, PyTorch tensors, and other array
+    API compatible libraries is appreciated. Use the
+    SCIPY_ARRAY_API environment variable for testing.
+  * A new class, ShortTimeFFT, provides a more versatile
+    implementation of the short-time Fourier transform (STFT), its
+    inverse (ISTFT) as well as the (cross-) spectrogram. It
+    utilizes an improved algorithm for calculating the ISTFT.
+  * Several new constructors have been added for sparse arrays, and
+    many operations now additionally support sparse arrays, further
+    facilitating the migration from sparse matrices.
+  * A large portion of the scipy.stats API now has improved support
+    for handling NaN values, masked arrays, and more fine-grained
+    shape-handling. The accuracy and performance of a number of
+    stats methods have been improved, and a number of new
+    statistical tests and distributions have been added.
+  ## New features
+  * scipy.cluster improvements
+  * scipy.fft improvements
+  * scipy.integrate improvements
+  * scipy.interpolate improvements
+  * scipy.linalg improvements
+  * scipy.ndimage improvements
+  * scipy.optimize improvements
+  * scipy.signal improvements
+  * scipy.sparse improvements
+  * scipy.spatial improvements
+  * scipy.special improvements
+  * scipy.stats improvements
+  ## Deprecated features
+  * Error messages have been made clearer for objects that don’t
+    exist in the public namespace and warnings sharpened for
+    private attributes that are not supposed to be imported at all.
+  * scipy.signal.cmplx_sort has been deprecated and will be removed
+    in SciPy 1.15. A replacement you can use is provided in the
+    deprecation message.
+  * Values the argument initial of
+    scipy.integrate.cumulative_trapezoid other than 0 and None are
+    now deprecated.
+  * scipy.stats.rvs_ratio_uniforms is deprecated in favour of
+    scipy.stats.sampling.RatioUniforms
+  * scipy.integrate.quadrature and scipy.integrate.romberg have
+    been deprecated due to accuracy issues and interface
+    shortcomings. They will be removed in SciPy 1.15. Please use
+    scipy.integrate.quad instead.
+  * Coinciding with upcoming changes to function signatures (e.g.
+    removal of a deprecated keyword), we are deprecating positional
+    use of keyword arguments for the affected functions, which will
+    raise an error starting with SciPy 1.14. In some cases, this
+    has delayed the originally announced removal date, to give time
+    to respond to the second part of the deprecation. Affected
+    functions are:
+    - linalg.{eigh, eigvalsh, pinv}
+    - integrate.simpson
+    - signal.{firls, firwin, firwin2, remez}
+    - sparse.linalg.{bicg, bicgstab, cg, cgs, gcrotmk, gmres,
+      lgmres, minres, qmr, tfqmr}
+    - special.comb
+    - stats.kendalltau
+  * All wavelet functions have been deprecated, as PyWavelets
+    provides suitable implementations; affected functions are:
+    signal.{daub, qmf, cascade, morlet, morlet2, ricker, cwt}
+  * scipy.integrate.trapz, scipy.integrate.cumtrapz, and
+    scipy.integrate.simps have been deprecated in favour of
+    scipy.integrate.trapezoid,
+    scipy.integrate.cumulative_trapezoid, and
+    scipy.integrate.simpson respectively and will be removed in
+    SciPy 1.14.
+  * The tol argument of
+    scipy.sparse.linalg.{bcg,bicstab,cg,cgs,gcrotmk,gmres,lgmres,
+    minres,qmr,tfqmr}
+    is now deprecated in favour of rtol and will be removed in
+    SciPy 1.14. Furthermore, the default value of atol for these
+    functions is due to change to 0.0 in SciPy 1.14.
+  ## Expired Deprecations
+  * There is an ongoing effort to follow through on long-standing
+    deprecations. The following previously deprecated features are
+    affected:
+  * The centered keyword of scipy.stats.qmc.LatinHypercube has been
+    removed. Use scrambled=False instead of centered=True.
+  * scipy.stats.binom_test has been removed in favour of
+    scipy.stats.binomtest.
+  * In scipy.stats.iqr, the use of scale='raw' has been removed in
+    favour of scale=1.
+  * Functions from NumPy’s main namespace which were exposed in
+    SciPy’s main namespace, such as numpy.histogram exposed by
+    scipy.histogram, have been removed from SciPy’s main namespace.
+    Please use the functions directly from numpy.
+  ## Other changes
+  * The arguments used to compile and link SciPy are now available
+    via show_config.
+- Drop 8c96a1f742335bca283aae418763aaba62c03378.patch (merged
+  upstream)
+- Add scipy-pr20530-f2py_error.patch gh#scipy/scipy#20530, used to
+  find workaround for failing HPC build gh#scipy/scipy#20535
+
+-------------------------------------------------------------------
 Tue Feb 27 17:20:08 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Add 8c96a1f742335bca283aae418763aaba62c03378.patch

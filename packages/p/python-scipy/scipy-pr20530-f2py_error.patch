@@ -1,0 +1,54 @@
+From 8dc60a00cfb428b530783d88b0aeb44a930ad3e0 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Fri, 19 Apr 2024 15:35:22 +0200
+Subject: [PATCH 1/2] BLD: Fix error message for f2py generation fail
+
+---
+ tools/generate_f2pymod.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tools/generate_f2pymod.py b/tools/generate_f2pymod.py
+index 5a8ba1389514..bb22fdb105cb 100644
+--- a/tools/generate_f2pymod.py
++++ b/tools/generate_f2pymod.py
+@@ -290,9 +290,9 @@ def main():
+                             cwd=os.getcwd())
+         out, err = p.communicate()
+         if not (p.returncode == 0):
+-            raise RuntimeError(f"Writing {args.outfile} with f2py failed!\n"
+-                            f"{out}\n"
+-                            r"{err}")
++            raise RuntimeError(f"Writing {fname_pyf} with f2py failed!\n"
++                            f"{out.decode()}\n"
++                            f"{err.decode()}")
+ 
+ 
+ if __name__ == "__main__":
+
+From f7b532b4fbee2a2e54d9e357cf395c237a7ee894 Mon Sep 17 00:00:00 2001
+From: Ralf Gommers <ralf.gommers@gmail.com>
+Date: Fri, 19 Apr 2024 17:38:04 +0200
+Subject: [PATCH 2/2] MAINT: tweak message a bit more, and fix style issue
+
+[skip ci]
+---
+ tools/generate_f2pymod.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tools/generate_f2pymod.py b/tools/generate_f2pymod.py
+index bb22fdb105cb..4b4ce105a011 100644
+--- a/tools/generate_f2pymod.py
++++ b/tools/generate_f2pymod.py
+@@ -290,9 +290,9 @@ def main():
+                             cwd=os.getcwd())
+         out, err = p.communicate()
+         if not (p.returncode == 0):
+-            raise RuntimeError(f"Writing {fname_pyf} with f2py failed!\n"
+-                            f"{out.decode()}\n"
+-                            f"{err.decode()}")
++            raise RuntimeError(f"Processing {fname_pyf} with f2py failed!\n"
++                               f"{out.decode()}\n"
++                               f"{err.decode()}")
+ 
+ 
+ if __name__ == "__main__":

@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-scipy
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
-%define _ver 1_11_4
+%define _ver 1_13_0
 %define shortname scipy
 %define pname python-%{shortname}
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
@@ -89,32 +89,35 @@ ExclusiveArch:  do_not_build
  %endif
 %{hpc_modules_init openblas}
 %endif
+# make sure the generators get called with the flavored python -- gh#scipy/scipy#20535
+%define pybuildgenerators tools/generate_f2pymod.py scipy/_build_utils/tempita.py
 
 # TODO explore debundling Boost for standard and hpc
 
 Name:           %{package_name}
-Version:        1.11.4
+Version:        1.13.0
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0
 URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
-# Create with pooch: `python3 scipy-%{version}/scipy/datasets/_download_all.py scipy-datasets/scipy-data; tar czf scipy-datasets.tar.gz scipy-datasets`
+# Create with pooch: `python3 scipy-%%{version}/scipy/datasets/_download_all.py scipy-datasets/scipy-data; tar czf scipy-datasets.tar.gz scipy-datasets`
 Source1:        scipy-datasets.tar.gz
-Patch1:         8c96a1f742335bca283aae418763aaba62c03378.patch
-BuildRequires:  %{python_module Cython >= 0.29.32}
-BuildRequires:  %{python_module devel >= 3.8}
-BuildRequires:  %{python_module meson-python >= 0.9.0}
+# PATCH-FIX-UPSTREAM scipy-pr20530-f2py_error.patch -- gh#scipy/scipy#20530
+Patch0:         scipy-pr20530-f2py_error.patch
+BuildRequires:  %{python_module Cython >= 3.0.8 with %python-Cython < 3.1}
+BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module meson-python >= 0.15.0 with %python-meson-python < 0.18}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pybind11 >= 2.4.3}
-BuildRequires:  %{python_module pybind11-devel >= 2.4.3}
-BuildRequires:  %{python_module pythran >= 0.9.12}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module pybind11-devel >= 2.12 with %python-pybind11-devel < 2.13}
+BuildRequires:  %{python_module pythran >= 0.14 with %python-pythran < 0.16}
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.62.2
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros >= 20220911
 %if %{with test}
+BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pooch}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xdist}
@@ -123,7 +126,7 @@ BuildRequires:  %{python_module scipy = %{version}}
 BuildRequires:  %{python_module threadpoolctl}
 %endif
 %if %{without hpc}
-BuildRequires:  %{python_module numpy-devel >= 1.18.5}
+BuildRequires:  %{python_module numpy-devel >= 1.18.5 with %python-numpy-devel < 2.3}
 %if 0%{?sle_version} && 0%{?sle_version} <= 150600
 # The default gcc on SLE15 is gcc7 we need something newer
 BuildRequires:  gcc10-c++
@@ -132,8 +135,7 @@ BuildRequires:  gcc10-fortran
 BuildRequires:  gcc-c++ >= 8
 BuildRequires:  gcc-fortran >= 8
 %endif
-Requires:       python-numpy >= 1.18.5
-Requires:       python-pybind11 >= 2.4.3
+Requires:       (python-numpy >= 1.22.4 with python-numpy < 2.3)
 Suggests:       python-pooch
  %if %{with openblas}
 BuildRequires:  openblas-devel
@@ -166,6 +168,11 @@ for numerical integration and optimization.
 sed -i '1{/env python/d}' scipy/sparse/linalg/_isolve/tests/test_gcrotmk.py
 chmod a-x scipy/stats/tests/test_distributions.py
 
+# make sure the generators get called with the flavored python -- gh#scipy/scipy#20535
+for c in %pybuildgenerators; do
+  sed -E '1{s/^#!(.*)$/#!@MYFLAVORPYTHON@/}' $c > $c.flavorin
+done
+
 %ifarch i586
 # Limit double floating point precision for x87, triggered by GCC 12.
 %global optflags %(echo "%{optflags} -ffloat-store")
@@ -189,6 +196,10 @@ export FC=gfortran-10
 # makes sure that the cython and pythran commands from the correct flavor are in PATH
 %python_flavored_alternatives
 %{python_expand #
+# make sure the generators get called with the flavored python -- gh#scipy/scipy#20535
+for c in %pybuildgenerators; do
+  sed '1{s|@MYFLAVORPYTHON@|%{__$python}|}' $c.flavorin > $c
+done
 %if %{with hpc}
 py_ver=%{$python_version}
 %hpc_setup
@@ -208,8 +219,7 @@ module load $python-numpy
 # https://github.com/scipy/scipy/issues/16310, delete in order to avoid rpmlint errors
 rm %{buildroot}%{p_python_sitearch_expand}/scipy/linalg/_blas_subroutines.h
 rm %{buildroot}%{p_python_sitearch_expand}/scipy/linalg/_lapack_subroutines.h
-rm %{buildroot}%{p_python_sitearch_expand}/scipy/special/_ufuncs_cxx_defs.h
-rm %{buildroot}%{p_python_sitearch_expand}/scipy/special/_ufuncs_defs.h
+find %{buildroot}%{p_python_sitearch_expand}/scipy/special -name '*.h' -delete
 %fdupes %{buildroot}%{p_python_sitearch_expand}
 }
 
@@ -309,6 +319,7 @@ donttest+=" or (test_svd_maxiter)"
 # not enough precison on 32 bits
 if [ $(getconf LONG_BIT) -eq 32 ]; then
     donttest+=" or (TestCheby1 and test_basic)"
+    donttest+=" or test_extreme_entropy"
 fi
 mv scipy scipy.dont-import-me
 %pytest_arch --pyargs scipy -n auto -m "not (slow or xslow $mark32bit)" -k "not ($donttest)"
