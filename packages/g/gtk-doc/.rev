@@ -362,4 +362,13 @@ Required meson version is now in Factory (forwarded request 976110 from susnux)<
     <comment>Update for GNOME 46 (forwarded request 1156646 from dimstar)</comment>
     <requestid>1159424</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>04f6d906d0192c98aa20b5ab3087bfae</srcmd5>
+    <version>1.34.0</version>
+    <time>1714490769</time>
+    <user>anag+factory</user>
+    <comment>- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang_path and %python_fix_shebang macros, [bsc#1212476] (forwarded request 1170691 from pgajdos)</comment>
+    <requestid>1170719</requestid>
+  </revision>
 </revisionlist>

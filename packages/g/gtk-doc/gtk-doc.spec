@@ -118,6 +118,10 @@ mkdir -p %{buildroot}%{_datadir}/gtk-doc/html
 %fdupes %{buildroot}%{_datadir}/help/[a-z]*
 %find_lang gtk-doc-manual %{?no_lang_C}
 %endif
+%python3_fix_shebang
+%if %{suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}%{_datadir}/gtk-doc/python/gtkdoc/*
+%endif
 
 %if "%{flavor}" == ""
 %files
