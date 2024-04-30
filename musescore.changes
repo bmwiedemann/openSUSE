@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 29 15:04:23 UTC 2024 - Cor Blom <cornelis@solcon.nl>
+
+- Delete unnecesaary require of "pipewire-alsa if pipewire"
+  (boo#1220821)
+
+-------------------------------------------------------------------
 Thu Feb 15 07:57:52 UTC 2024 - Cor Blom <cornelis@solcon.nl>
 
 - Update version check for Leap 15.6 so that gcc 12 is used also

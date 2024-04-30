@@ -560,4 +560,13 @@
   there</comment>
     <requestid>1146730</requestid>
   </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>3938d64a2f3fbb54a27b25e31d248f1f</srcmd5>
+    <version>4.2.1</version>
+    <time>1714490828</time>
+    <user>anag+factory</user>
+    <comment>- Delete unnecesaary require of &quot;pipewire-alsa if pipewire&quot;
+  (boo#1220821)</comment>
+    <requestid>1170822</requestid>
+  </revision>
 </revisionlist>
