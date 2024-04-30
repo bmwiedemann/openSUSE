@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 29 21:58:55 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Remove 0001-fix-unescaped-curly-brace-in-regex-and-invert-query-.patch
+  that was cherry picked from master, it is now included in the
+  current update below.
+- Update to version 0.21.0:
+  * fix: tweak escape sequence and identifier rules
+  * refactor: remove condition rule
+  * fix(test): remove leading space
+  * fix: unescaped curly brace in regex and invert query precedence for test
+
+-------------------------------------------------------------------
 Fri Mar 22 22:05:24 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Add patch from 0001-fix-unescaped-curly-brace-in-regex-and-invert-query-.patch
