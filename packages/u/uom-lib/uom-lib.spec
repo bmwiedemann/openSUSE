@@ -1,7 +1,7 @@
 #
 # spec file for package uom-lib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,9 @@
 #
 
 
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           uom-lib
 Version:        1.2
 Release:        0
@@ -34,12 +37,7 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-install-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
 BuildRequires:  mvn(org.assertj:assertj-core)
 BuildRequires:  mvn(tech.uom:uom-parent:pom:)
-#!BuildIgnore:  java-1_7_0-openjdk
-#!BuildIgnore:  java-1_7_0-openjdk-devel
-#!BuildIgnore:  java-1_7_0-openjdk-headless
-#!BuildIgnore:  java-1_8_0-openjdk
-#!BuildIgnore:  java-1_8_0-openjdk-devel
-#!BuildIgnore:  java-1_8_0-openjdk-headless
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
@@ -48,6 +46,7 @@ Units of Measurement Libraries - extending and complementing JSR 363.
 %package assertj
 Summary:        Java Units of Measurement AssertJ Library
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description assertj
 Units of Measurement AssertJ Library - extending and complementing JSR 363.
@@ -55,6 +54,7 @@ Units of Measurement AssertJ Library - extending and complementing JSR 363.
 %package common
 Summary:        Java Units of Measurement Common Library
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description common
 Units of Measurement Common Library - extending and complementing JSR 363.
@@ -62,6 +62,7 @@ Units of Measurement Common Library - extending and complementing JSR 363.
 %package jackson
 Summary:        Java Units of Measurement Jackson Library
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description jackson
 Units of Measurement Jackson Library - extending and complementing JSR 363.
@@ -83,9 +84,7 @@ Libraries (JSR 363).
 
 %build
 %{mvn_build} -f -s -- \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
-%endif
     -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
 
 %install
