@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package valgrind
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -29,23 +29,22 @@
 %endif
 %bcond_without docs
 Name:           valgrind%{?psuffix}
-Version:        3.22.0
+Version:        3.23.0
 Release:        0
 Summary:        Memory Management Debugger
 License:        GFDL-1.2-only AND GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://valgrind.org/
 Source0:        https://sourceware.org/pub/valgrind/valgrind-%{version}.tar.bz2
+Source1:        https://sourceware.org/pub/valgrind/valgrind-%{version}.tar.bz2.asc
+Source2:        valgrind.keyring
 # https://bugs.kde.org/show_bug.cgi?id=390553
 # https://github.com/olafhering/valgrind/compare/olh-base-master...olh-fixes-master
 Patch0:         valgrind.xen.patch
 # bko#276780 missing implementation for PINSRD
 Patch1:         VEX-x86-pinsrd.patch
-Patch2:         armv6-support.diff
 Patch9:         parallel-lto.patch
 Patch10:        dhat-use-datadir.patch
-# bko#478624 - Valgrind incompatibility with binutils-2.42 on x86 with new nop patterns (unhandled instruction bytes: 0x2E 0x8D 0xB4 0x26)
-Patch11:        VEX-x86-nop-pattern.patch
 BuildRequires:  automake
 BuildRequires:  pkgconfig
 %if %{suse_version} == 1600 && !0%{?is_opensuse}
