@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 29 21:49:24 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 0.21.0:
+  * fix: ms call modifier missing in some spots
+  * fix: allow ms pointer modifiers in abstract pointer declarators
+  * fix: ternary consequences can have comma expressions
+  * fix: asm strings can be concatenated
+
+-------------------------------------------------------------------
 Mon Feb 26 00:47:57 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Initial packaging for openSUSE 

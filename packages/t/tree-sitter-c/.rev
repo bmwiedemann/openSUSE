@@ -7,4 +7,16 @@
     <comment>New package for tree-sitter grammar c</comment>
     <requestid>1162318</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>91331833ec1cd2a01a7041b9a9f4e48f</srcmd5>
+    <version>0.21.0</version>
+    <time>1714490857</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.21.0:
+  * fix: ms call modifier missing in some spots
+  * fix: allow ms pointer modifiers in abstract pointer declarators
+  * fix: ternary consequences can have comma expressions
+  * fix: asm strings can be concatenated</comment>
+    <requestid>1170879</requestid>
+  </revision>
 </revisionlist>
