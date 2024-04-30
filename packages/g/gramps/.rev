@@ -590,4 +590,17 @@ Does it make sense to actually use &quot;Suggests:&quot;? I do not find a way to
     <comment></comment>
     <requestid>1167753</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>21a4066a0108db5f249721f19da215ea</srcmd5>
+    <version>5.2.2</version>
+    <time>1714490809</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.2.2
+  * Updated translations: cs, de, de_AT, es, fi, he, hr, nb, nl, pl, ru, sk,
+    sv, tr.
+  * Hebrew relationship calculator not loading.
+  * Narweb: Person object has no get_father_handle.
+  * Don’t show Navigation when we print a page. (forwarded request 1170669 from jaimeMF)</comment>
+    <requestid>1170720</requestid>
+  </revision>
 </revisionlist>
