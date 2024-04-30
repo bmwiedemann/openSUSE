@@ -29,6 +29,7 @@ Wed Sep 14 12:04:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
   + Dropped: intltool, nautilus-devel and libtool.
 - Add nautilus-share-lang-fix.patch: Add LINGUAS file to po dir
   https://gitlab.gnome.org/coreyberla/nautilus-share/-/issues/2
+- Drop upstream fixed patch: nautilus-share-ar-plural.patch
 
 -------------------------------------------------------------------
 Mon Sep 20 20:18:31 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
@@ -57,6 +58,13 @@ Thu Apr 26 16:35:55 UTC 2018 - badshah400@gmail.com
 
 - Drop Requires: gnome-icon-theme; the appropriate icon is
   provided by adwaita-icon-theme (pulled in by gtk3) already.
+
+-------------------------------------------------------------------
+Wed Apr 25 20:13:04 CEST 2018 - sbrabec@suse.com
+
+- Use current Arabic plural form to allow
+  translation-update-upstream pick the latest translation
+  (bsc#1087116, nautilus-share-ar-plural.patch).
 
 -------------------------------------------------------------------
 Sun Nov 27 06:43:38 UTC 2011 - coolo@suse.com
