@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-starlette
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-starlette%{psuffix}
-Version:        0.35.1
+Version:        0.37.2
 Release:        0
 Summary:        Lightweight ASGI framework/toolkit
 License:        BSD-3-Clause
@@ -49,16 +49,17 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module httpx >= 0.22}
 BuildRequires:  %{python_module itsdangerous}
-BuildRequires:  %{python_module python-multipart}
+BuildRequires:  %{python_module python-multipart >= 0.0.7}
 # /SECTION
 # SECTION test
 BuildRequires:  %{python_module exceptiongroup}
+BuildRequires:  %{python_module asyncio}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module trio}
 # testing requires it for all flavors
-BuildRequires:  %{python_module typing_extensions}
-BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module typing_extensions >= 4.10.0}
+BuildRequires:  %{python_module importlib-metadata >= 7.0.1}
 # /SECITON
 %endif
 %python_subpackages
@@ -72,10 +73,6 @@ building high performance asyncio services.
 
 %build
 %pyproject_wheel
-
-# override default pytest.ini configuration in pyproject.toml to do
-# not crash on deprecation warning
-touch pytest.ini
 
 %install
 %if ! %{with test}
@@ -91,6 +88,8 @@ touch pytest.ini
 # cannot just use ifarch conditionals here...
 ignored_tests="test_set_cookie"
 ignored_tests="$ignored_tests or test_expires_on_set_cookie"
+# fails to raise a deprecation warning as of 2024/04/25
+ignored_tests="$ignored_tests or test_lifespan_with_on_events"
 %pytest --asyncio-mode=strict -k "not ($ignored_tests)"
 
 %endif

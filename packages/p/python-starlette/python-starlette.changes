@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Apr 20 08:10:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.37.2:
+  * Add `bytes` to `_RequestData` type #2510.
+  * Revert "Turn `scope["client"]` to `None` on `TestClient`
+  * Remove deprecated `app` argument passed to `httpx.Client` on
+    the `TestClient` #2526.
+- update to 0.37.1:
+  * Warn instead of raise for missing env file on `Config` #2485.
+- update to 0.37.0:
+  * Support the WebSocket Denial Response ASGI extension #2041.
+- update to 0.36.3:
+  * Create `anyio.Event` on async context #2459.
+- update to 0.36.2:
+  * Upgrade `python-multipart` to `0.0.7` 13e5c26.
+  * Avoid duplicate charset on `Content-Type` #2443.
+- update to 0.36.1:
+  * Check if "extensions" in scope before checking the extension
+- update to 0.36.0:
+  * Add support for ASGI `pathsend` extension #2435.
+  * Cancel `WebSocketTestSession` on close #2427.
+  * Raise `WebSocketDisconnect` when `WebSocket.send()` excepts
+    `IOError` #2425.
+  * Raise `FileNotFoundError` when the `env_file` parameter on
+    `Config` is not valid #2422.
+
+-------------------------------------------------------------------
 Sat Jan 13 20:43:25 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.35.1
