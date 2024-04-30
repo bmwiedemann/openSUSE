@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Sun Apr 28 14:30:10 UTC 2024 - msuchanek@suse.com
+
+- Update to version 0+1695734895.5fd723d:
+  * Fix java & gtk4
+  * Add PyQt6
+  * Use correct import for PyQt5 check
+  * Add Qt 6
+  * Add openjdk 19
+  * Complete java support up to openjdk17
+  * fix gtk4 test
+  * Add pygtk4 support, not working yet due to #961238
+  * Use /usr/bin/env instead of fixed paths to binaries
+  * Fix package detection when both 32 and 64bit versions are installed
+- Fix-qt6.patch
+- Intall-target.patch
+- Initial package of check-a11y
