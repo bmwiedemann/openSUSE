@@ -89,4 +89,15 @@
   * gitlab CI: stop requiring Signed-off-by in commits</comment>
     <requestid>988370</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>600b937acec84067a84f6b01a815de3a</srcmd5>
+    <version>1.1.0</version>
+    <time>1714490757</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.0
+  * This release fixes use of the scroll wheel in the text area, 
+    adds -version and -help options, and removes support for several
+    older OS'es.</comment>
+    <requestid>1170638</requestid>
+  </revision>
 </revisionlist>

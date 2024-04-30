@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 28 20:52:32 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.0
+  * This release fixes use of the scroll wheel in the text area, 
+    adds -version and -help options, and removes support for several
+    older OS'es.
+
+-------------------------------------------------------------------
 Mon Jul 11 12:35:35 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.8:
