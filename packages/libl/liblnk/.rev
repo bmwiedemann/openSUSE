@@ -240,4 +240,12 @@ part of summer 2013 libyal refresh for opensuse 13.1
   with current libfwsi (20240225)</comment>
     <requestid>1153057</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5d9693a3ca064646638f32b756408141</srcmd5>
+    <version>20240423</version>
+    <time>1714490897</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240423</comment>
+    <requestid>1170936</requestid>
+  </revision>
 </revisionlist>

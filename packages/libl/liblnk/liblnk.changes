@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 23 07:01:20 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240423
+  * Add support for named properties
+- Delete 0001-Changes-for-updates-to-libfwsi.patch (merged)
+
+-------------------------------------------------------------------
 Wed Feb 28 20:35:14 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Changes-for-updates-to-libfwsi.patch to resolve FTBFS
