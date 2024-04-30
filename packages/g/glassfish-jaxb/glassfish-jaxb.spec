@@ -16,6 +16,9 @@
 #
 
 
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           glassfish-jaxb
 Version:        2.3.1
 Release:        0
@@ -67,6 +70,7 @@ Requires:       %{name}-txw2 = %{version}-%{release}
 Requires:       %{name}-txwc2 = %{version}-%{release}
 Requires:       %{name}-xjc = %{version}-%{release}
 Requires:       %{name}-xsom = %{version}-%{release}
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
@@ -75,6 +79,7 @@ GlassFish JAXB Reference Implementation.
 %package codemodel
 Summary:        Codemodel Core
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description codemodel
 The core functionality of the CodeModel java source code generation
@@ -83,6 +88,7 @@ library.
 %package codemodel-annotation-compiler
 Summary:        Codemodel Annotation Compiler
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description codemodel-annotation-compiler
 The annotation compiler ant task for the CodeModel java source code
@@ -91,6 +97,7 @@ generation library.
 %package bom
 Summary:        JAXB BOM
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description bom
 JAXB Bill of Materials (BOM)
@@ -98,6 +105,7 @@ JAXB Bill of Materials (BOM)
 %package bom-ext
 Summary:        JAXB BOM with all dependencies
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description bom-ext
 JAXB Bill of Materials (BOM) with all dependencies.
@@ -105,6 +113,7 @@ JAXB Bill of Materials (BOM) with all dependencies.
 %package codemodel-parent
 Summary:        Codemodel parent POM
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description codemodel-parent
 This package contains codemodel parent POM.
@@ -112,6 +121,7 @@ This package contains codemodel parent POM.
 %package external-parent
 Summary:        JAXB External parent POM
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description external-parent
 JAXB External parent POM.
@@ -119,6 +129,7 @@ JAXB External parent POM.
 %package jxc
 Summary:        JAXB schema generator
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description jxc
 The tool to generate XML schema based on java classes.
@@ -133,6 +144,7 @@ This package contains parent POM.
 %package runtime
 Summary:        JAXB Runtime
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description runtime
 JAXB (JSR 222) Reference Implementation
@@ -154,6 +166,7 @@ This package contains TXW parent POM.
 %package xjc
 Summary:        JAXB XJC
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description xjc
 JAXB Binding Compiler. Contains source code needed for binding
@@ -170,6 +183,7 @@ This package contains RELAX NG Object Model/Parser.
 %package relaxng-datatype
 Summary:        RelaxNG Datatype
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description relaxng-datatype
 This package contains RelaxNG Datatype.
@@ -177,6 +191,7 @@ This package contains RelaxNG Datatype.
 %package txw2
 Summary:        TXW2 Runtime
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description txw2
 TXW is a library that allows you to write XML documents.
@@ -184,6 +199,7 @@ TXW is a library that allows you to write XML documents.
 %package txwc2
 Summary:        TXW2 Compiler
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description txwc2
 JAXB schema generator. The tool to generate XML schema based on java
@@ -192,6 +208,7 @@ classes.
 %package xsom
 Summary:        XSOM
 Group:          Development/Libraries/Java
+Requires:       java-headless >= 1.8
 
 %description xsom
 XML Schema Object Model (XSOM) is a Java library that allows
