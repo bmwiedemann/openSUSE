@@ -1,7 +1,7 @@
 #
 # spec file for package python-networkx
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-networkx
-Version:        3.1
+Version:        3.3
 Release:        0
 Summary:        Python package for the study of complex networks
 License:        BSD-3-Clause
 URL:            https://networkx.github.io/
 Source:         https://files.pythonhosted.org/packages/source/n/networkx/networkx-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -65,28 +66,15 @@ Features:
  * Exploits existing code from high-quality legacy software in C, C++, Fortran, etc.
  * Unit-tested
 
-%package -n %{name}-doc
-Summary:        Documentation for %{name}
-Provides:       %{python_module networkx-doc = %{version}}
-
-%description -n %{name}-doc
-Documentation and examples for %{name}.
-
 %prep
 %setup -q -n networkx-%{version}
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-
-# Move docs into correct directory if necessary
-if [ "%{_docdir}" != "%{_datadir}/doc" ] ; then
-    mkdir -p %{buildroot}%{_docdir}/
-    mv %{buildroot}%{_datadir}/doc/networkx-%{version} %{buildroot}%{_docdir}/
-fi
+%pyproject_install
 
 %fdupes %{buildroot}%{_docdir}
 
@@ -116,10 +104,6 @@ rm -v networkx/drawing/tests/test_pydot.py
 %license LICENSE.txt
 %doc README.rst CONTRIBUTING.rst
 %{python_sitelib}/networkx/
-%{python_sitelib}/networkx-%{version}-py*.egg-info
-
-%files -n %{name}-doc
-%license LICENSE.txt
-%doc %{_docdir}/networkx-%{version}/
+%{python_sitelib}/networkx-%{version}*info
 
 %changelog

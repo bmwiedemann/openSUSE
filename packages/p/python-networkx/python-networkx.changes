@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Apr 22 15:25:05 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.3
+  * Add @nx._dispatch decorator to most algorithms
+  * Remove topo_order kwarg from is_semiconnected without deprecation
+  * API: Add a decorator to deprecate positional args
+  * Drop support for Python 3.8 and 3.9
+  * Support Python 3.12
+  * Test on Python 3.13-dev
+  * Don't test numpy2 nightlies
+  * Unpin scipy upperbound for tests
+  * Disallow negative number of nodes in complete_multipartite_graph
+  * [A-star] Added expansion pruning via cutoff if cutoff is provided
+  * Add Tadpole graph
+  * [Feat] Random expanders utilities
+  * Add Kirchhoff index / Effective graph resistance 
+  * Changed return types of shortest path methods to improve consistency
+  * Many more changes, see upstream changelog
+- drop doc build, PyPI tarball doesn't support it anymore
+
+-------------------------------------------------------------------
 Thu Jul 27 11:55:11 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to 3.1
