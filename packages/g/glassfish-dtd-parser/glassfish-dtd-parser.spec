@@ -16,6 +16,9 @@
 #
 
 
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           glassfish-dtd-parser
 Version:        1.4
 Release:        0
@@ -29,6 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
