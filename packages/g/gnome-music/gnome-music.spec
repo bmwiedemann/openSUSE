@@ -86,8 +86,6 @@ Music player and management application for GNOME.
 %patch -P 0 -p1
 %patch -P 1 -p1
 %endif
-# Fix shebangs:
-sed -i -e 's|#!%{_bindir}/env python3|#!%{_bindir}/python3|' gnome-music.in
 
 %build
 %meson
@@ -105,6 +103,7 @@ sed -i -e 's|#!%{_bindir}/env python3|#!%{_bindir}/python3|' gnome-music.in
 %find_lang org.gnome.Music %{?no_lang_C} %{name}.lang
 %fdupes %{buildroot}%{python3_sitelib}/gnomemusic
 %fdupes %{buildroot}%{_datadir}/
+%python3_fix_shebang
 
 %files
 %license LICENSE

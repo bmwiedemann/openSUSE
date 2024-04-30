@@ -660,4 +660,13 @@
     <comment>GNOME 46 (forwarded request 1158888 from dimstar)</comment>
     <requestid>1159505</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>1f8c0bd7b4effa4de46d8ecf029603ae</srcmd5>
+    <version>46.0</version>
+    <time>1714490782</time>
+    <user>anag+factory</user>
+    <comment>- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476] (forwarded request 1170763 from pgajdos)</comment>
+    <requestid>1170825</requestid>
+  </revision>
 </revisionlist>
