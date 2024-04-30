@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Apr 29 19:43:17 UTC 2024 - david.mulder@suse.com
+
+- Update to version 0.3.1+git.0.359a8d0:
+  * Add github workflows for the 0.3.x branch
+  * Fallback to SFA first if MFA fails Browse files
+  * deps(rust): update libnss requirement from 0.6.0 to 0.7.0
+  * deps(rust): update webauthn-rs-proto requirement from 0.4.8 to 0.5.0
+  * Fix deadlock caused by client write lock
+  * Add rid idmapping (replacing existing idmap)
+  * Additional debug for Hello auth
+  * Make proto Cargo.toml a physical file
+  * Push the clippy arg count limit a little higher
+  * Version 0.3.0
+  * Windows Hello PIN implementation
+  * deps(rust): update hostname requirement from ^0.3.1 to ^0.4.0
+  * Enable actions on stable branches
+  * Prevent dependabot from updating opentelemetry
+  * Revert "deps(rust): update opentelemetry requirement from 0.20.0 to 0.22.0 (#93)"
+  * deps(rust): update reqwest requirement from ^0.11.18 to ^0.12.2 (#95)
+  * deps(rust): update lru requirement from ^0.8.0 to ^0.12.3 (#94)
+  * deps(rust): update opentelemetry requirement from 0.20.0 to 0.22.0 (#93)
+  * deps(rust): update num_enum requirement from ^0.5.11 to ^0.7.2 (#92)
+  * deps(rust): update tonic requirement from 0.10.2 to 0.11.0 (#91)
+  * Use the Kanidm MFA patches
+  * deps(rust): update libnss requirement from 0.5.0 to 0.6.0 (#90)
+  * deps(rust): update tracing-opentelemetry requirement (#89)
+  * deps(rust): update rusqlite requirement from ^0.28.0 to ^0.31.0 (#88)
+  * deps(rust): update clap requirement from ^3.2 to ^4.5 (#87)
+  * deps(rust): update kanidm-hsm-crypto requirement from ^0.1.6 to ^0.2.0 (#86)
+  * Update dependabot.yml
+  * Add missing db dependency on sketching
+  * Set the workspace resolver version to 2
+  * Init the kanidm submodule during workflows
+  * Ignore clippy blocks_in_conditions warning in daemon
+  * Add build/clippy/dependabot_automerge workflows
+  * deps(rust): update opentelemetry-otlp requirement from 0.13.0 to 0.15.0
+  * deps(rust): update opentelemetry_sdk requirement from 0.20.0 to 0.22.1
+  * deps(rust): update base64 requirement from ^0.21.5 to ^0.22.0
+  * deps(rust): update notify-debouncer-full requirement from 0.1 to 0.3
+  * deps(rust): update systemd-journal-logger requirement
+  * Create dependabot.yml
+  * Add MFA capabilities
+  * Update to the latest Kanidm reqs
+  * Always force MFA when enrolling the device
+  * Update to latest msal
+
+-------------------------------------------------------------------
 Thu Feb 29 20:14:08 UTC 2024 - dmulder@suse.com
 
 - Himmelblau provides the features found in aad-auth packages from

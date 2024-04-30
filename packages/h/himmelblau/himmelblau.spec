@@ -17,7 +17,7 @@
 
 
 Name:           himmelblau
-Version:        0.2.0+git.4.904b915
+Version:        0.3.1+git.0.359a8d0
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure AD and Intune
 License:        MPL-2.0
@@ -57,7 +57,7 @@ Authentication Library to communicate with the Microsoft service.
 %package -n nss-himmelblau
 Summary:        Azure AD authentication NSS module
 Requires(post): /sbin/ldconfig
-Requires(postun):/sbin/ldconfig
+Requires(postun): /sbin/ldconfig
 Requires:       %{name} = %{version}
 Provides:       libnss-aad
 
