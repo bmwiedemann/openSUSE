@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 25 20:11:06 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.48
+  * decompressor: only take erroneous data on first try
+  * autotools: run autoupdate to modernize build system
+- Update to version 0.5.47
+  * request: limit probing after missing protocol
+
+-------------------------------------------------------------------
 Mon Feb 19 07:31:20 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to version 0.5.46
