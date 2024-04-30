@@ -1,0 +1,263 @@
+From ac129f1392ab200ec0d9832168cb90dae2fcb6c8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Fri, 26 Apr 2024 15:57:53 +0200
+Subject: [PATCH] Java 8 compatibility
+
+---
+ .../reporting/cli/ConvertCommand.java         |  4 +--
+ .../reporting/cli/ValidateCommand.java        | 11 ++++---
+ .../tooling/converter/DefaultConverter.java   | 25 +++++++-------
+ .../tooling/validator/DefaultValidator.java   | 33 +++++++++++--------
+ .../tooling/validator/ValidationResult.java   |  3 +-
+ 5 files changed, 42 insertions(+), 34 deletions(-)
+
+diff --git a/cli/src/main/java/org/opentest4j/reporting/cli/ConvertCommand.java b/cli/src/main/java/org/opentest4j/reporting/cli/ConvertCommand.java
+index 7c12f32..f478514 100644
+--- a/cli/src/main/java/org/opentest4j/reporting/cli/ConvertCommand.java
++++ b/cli/src/main/java/org/opentest4j/reporting/cli/ConvertCommand.java
+@@ -38,8 +38,8 @@ public class ConvertCommand implements Callable<Integer> {
+ 
+ 	@Override
+ 	public Integer call() throws Exception {
+-		var targetFile = eventsXml.resolveSibling("hierarchy.xml");
+-		var converter = new DefaultConverter();
++		Path targetFile = eventsXml.resolveSibling("hierarchy.xml");
++		DefaultConverter converter = new DefaultConverter();
+ 		converter.convert(eventsXml, targetFile);
+ 		LOG.info("Converted {} to {}", eventsXml, targetFile);
+ 		return 0;
+diff --git a/cli/src/main/java/org/opentest4j/reporting/cli/ValidateCommand.java b/cli/src/main/java/org/opentest4j/reporting/cli/ValidateCommand.java
+index 03f5615..82b3289 100644
+--- a/cli/src/main/java/org/opentest4j/reporting/cli/ValidateCommand.java
++++ b/cli/src/main/java/org/opentest4j/reporting/cli/ValidateCommand.java
+@@ -27,6 +27,7 @@ import picocli.CommandLine.Parameters;
+ 
+ import java.net.URI;
+ import java.nio.file.Path;
++import java.util.Arrays;
+ import java.util.List;
+ import java.util.concurrent.Callable;
+ 
+@@ -45,7 +46,7 @@ public class ValidateCommand implements Callable<Integer> {
+ 	List<Path> xmlFiles;
+ 
+ 	@Option(names = "--catalog")
+-	List<Path> catalogs = List.of();
++	List<Path> catalogs = Arrays.asList();
+ 
+ 	@Override
+ 	public Integer call() {
+@@ -53,9 +54,9 @@ public class ValidateCommand implements Callable<Integer> {
+ 	}
+ 
+ 	private boolean validateAll() {
+-		var validator = new DefaultValidator(catalogs.stream().map(Path::toUri).toArray(URI[]::new));
++		Validator validator = new DefaultValidator(catalogs.stream().map(Path::toUri).toArray(URI[]::new));
+ 		boolean allValid = true;
+-		for (var xmlFile : xmlFiles) {
++		for (Path xmlFile : xmlFiles) {
+ 			allValid &= validate(validator, xmlFile);
+ 		}
+ 		return allValid;
+@@ -63,9 +64,9 @@ public class ValidateCommand implements Callable<Integer> {
+ 
+ 	private boolean validate(Validator validator, Path xmlFile) {
+ 		try {
+-			var validationResult = validator.validate(xmlFile);
++			ValidationResult validationResult = validator.validate(xmlFile);
+ 			logValidationMessages(validationResult);
+-			var errors = validationResult.count(ERROR);
++			long errors = validationResult.count(ERROR);
+ 			if (errors == 0) {
+ 				LOG.info("Valid: {}", xmlFile);
+ 				return true;
+diff --git a/tooling/src/main/java/org/opentest4j/reporting/tooling/converter/DefaultConverter.java b/tooling/src/main/java/org/opentest4j/reporting/tooling/converter/DefaultConverter.java
+index 05135f7..9283a5c 100644
+--- a/tooling/src/main/java/org/opentest4j/reporting/tooling/converter/DefaultConverter.java
++++ b/tooling/src/main/java/org/opentest4j/reporting/tooling/converter/DefaultConverter.java
+@@ -39,17 +39,17 @@ import javax.xml.transform.stream.StreamResult;
+ import java.nio.file.Path;
+ import java.time.Duration;
+ import java.time.Instant;
++import java.util.Collections;
+ import java.util.HashMap;
+ import java.util.Map;
+ import java.util.Optional;
+ import java.util.Set;
+ import java.util.function.BiPredicate;
+ import java.util.function.IntFunction;
++import java.util.stream.Collectors;
+ import java.util.stream.IntStream;
+ import java.util.stream.Stream;
+ 
+-import static java.util.stream.Collectors.toList;
+-import static java.util.stream.Collectors.toUnmodifiableSet;
+ import static javax.xml.XMLConstants.FEATURE_SECURE_PROCESSING;
+ import static javax.xml.XMLConstants.XMLNS_ATTRIBUTE;
+ import static javax.xml.XMLConstants.XMLNS_ATTRIBUTE_NS_URI;
+@@ -70,7 +70,7 @@ public class DefaultConverter implements Converter {
+ 
+ 	private static final Set<String> EVENT_ONLY_ATTRIBUTES = Stream.of(Event.ID, Event.TIME, Started.PARENT_ID) //
+ 			.map(QualifiedName::getSimpleName) //
+-			.collect(toUnmodifiableSet());
++			.collect(Collectors.collectingAndThen(Collectors.toSet(), Collections::unmodifiableSet));
+ 
+ 	@Override
+ 	public void convert(Path eventsXmlFile, Path hierarchicalXmlFile) throws Exception {
+@@ -182,7 +182,7 @@ public class DefaultConverter implements Converter {
+ 	private void moveChildrenToEnd(Element targetElement) {
+ 		stream(targetElement.getChildNodes()) //
+ 				.filter(child -> CHILD_NODE_NAME.equals(child.getNodeName())) //
+-				.collect(toList()) // avoid concurrent modification
++				.collect(Collectors.toList()) // avoid concurrent modification
+ 				.forEach(child -> {
+ 					targetElement.removeChild(child);
+ 					targetElement.appendChild(child);
+@@ -201,14 +201,15 @@ public class DefaultConverter implements Converter {
+ 
+ 	private void mergeChildren(Node sourceElement, Node targetElement) {
+ 		stream(sourceElement.getChildNodes()) //
+-				.forEach(sourceChild -> findNode(targetElement.getChildNodes(), sourceChild.getNodeName()) //
+-						.ifPresentOrElse( //
+-							existingNode -> copyChildren(sourceChild, existingNode), //
+-							() -> {
+-								Node targetChild = sourceChild.cloneNode(true);
+-								targetElement.getOwnerDocument().adoptNode(targetChild);
+-								targetElement.appendChild(targetChild);
+-							}));
++				.forEach(sourceChild -> {
++						Optional<Node> existingNode = findNode(targetElement.getChildNodes(), sourceChild.getNodeName());
++						existingNode.ifPresent(existing -> copyChildren(sourceChild, existing));
++						if (!existingNode.isPresent()) {
++							Node targetChild = sourceChild.cloneNode(true);
++							targetElement.getOwnerDocument().adoptNode(targetChild);
++							targetElement.appendChild(targetChild);
++						}
++					});
+ 	}
+ 
+ 	private Optional<Node> findNode(NodeList nodes, String name) {
+diff --git a/tooling/src/main/java/org/opentest4j/reporting/tooling/validator/DefaultValidator.java b/tooling/src/main/java/org/opentest4j/reporting/tooling/validator/DefaultValidator.java
+index 5e5b204..8ed4d05 100644
+--- a/tooling/src/main/java/org/opentest4j/reporting/tooling/validator/DefaultValidator.java
++++ b/tooling/src/main/java/org/opentest4j/reporting/tooling/validator/DefaultValidator.java
+@@ -37,12 +37,16 @@ import java.io.Reader;
+ import java.net.URI;
+ import java.nio.file.Files;
+ import java.nio.file.Path;
++import java.util.AbstractMap;
+ import java.util.ArrayList;
++import java.util.Arrays;
+ import java.util.List;
+ import java.util.Map;
++import java.util.stream.Collectors;
+ 
+ import static java.util.Objects.requireNonNull;
+ import static javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI;
++import javax.xml.catalog.CatalogFeatures;
+ import static javax.xml.catalog.CatalogManager.catalogResolver;
+ import static org.opentest4j.reporting.tooling.validator.Severity.ERROR;
+ import static org.opentest4j.reporting.tooling.validator.Severity.WARNING;
+@@ -52,11 +56,12 @@ import static org.opentest4j.reporting.tooling.validator.Severity.WARNING;
+  */
+ public class DefaultValidator implements Validator {
+ 
+-	private static final Map<Namespace, String> SCHEMAS = Map.of( //
+-		Namespace.REPORTING_EVENTS, "/org/opentest4j/reporting/schema/events.xsd", //
+-		Namespace.REPORTING_HIERARCHY, "/org/opentest4j/reporting/schema/hierarchy.xsd", //
+-		Namespace.REPORTING_CORE, "/org/opentest4j/reporting/schema/core.xsd", //
+-		Namespace.REPORTING_JAVA, "/org/opentest4j/reporting/schema/java.xsd");
++	private static final Map<Namespace, String> SCHEMAS = Arrays.asList(
++		new AbstractMap.SimpleEntry<Namespace, String>(Namespace.REPORTING_EVENTS, "/org/opentest4j/reporting/schema/events.xsd"),
++		new AbstractMap.SimpleEntry<Namespace, String>(Namespace.REPORTING_HIERARCHY, "/org/opentest4j/reporting/schema/hierarchy.xsd"),
++		new AbstractMap.SimpleEntry<Namespace, String>(Namespace.REPORTING_CORE, "/org/opentest4j/reporting/schema/core.xsd"),
++		new AbstractMap.SimpleEntry<Namespace, String>(Namespace.REPORTING_JAVA, "/org/opentest4j/reporting/schema/java.xsd")
++		).stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+ 
+ 	private final SchemaFactory schemaFactory = SchemaFactory.newInstance(W3C_XML_SCHEMA_NS_URI);
+ 	private final CatalogResolver catalogResolver;
+@@ -67,13 +72,13 @@ public class DefaultValidator implements Validator {
+ 	 * @param catalogs for resolving references to XML schemas
+ 	 */
+ 	public DefaultValidator(URI... catalogs) {
+-		var features = CatalogFeatures.builder().with(Feature.RESOLVE, "continue").build();
++		CatalogFeatures features = CatalogFeatures.builder().with(Feature.RESOLVE, "continue").build();
+ 		this.catalogResolver = catalogResolver(features, catalogs);
+ 	}
+ 
+ 	@Override
+ 	public ValidationResult validate(Path xmlFile) {
+-		try (var in = Files.newInputStream(xmlFile)) {
++		try (InputStream in = Files.newInputStream(xmlFile)) {
+ 			return validateSafely(xmlFile, new StreamSource(in));
+ 		}
+ 		catch (Exception e) {
+@@ -82,13 +87,13 @@ public class DefaultValidator implements Validator {
+ 	}
+ 
+ 	private ValidationResult validateSafely(Path xmlFile, Source source) throws SAXException, IOException {
+-		var errorHandler = new CollectingErrorHandler(xmlFile);
++		CollectingErrorHandler errorHandler = new CollectingErrorHandler(xmlFile);
+ 		validate(source, errorHandler);
+ 		return errorHandler.toValidationResult();
+ 	}
+ 
+ 	private void validate(Source source, ErrorHandler errorHandler) throws SAXException, IOException {
+-		var validator = schemaFactory.newSchema().newValidator();
++		javax.xml.validation.Validator validator = schemaFactory.newSchema().newValidator();
+ 		validator.setResourceResolver(createResourceResolver());
+ 		validator.setErrorHandler(errorHandler);
+ 		validator.validate(source);
+@@ -97,14 +102,14 @@ public class DefaultValidator implements Validator {
+ 	private LSResourceResolver createResourceResolver() {
+ 		return (type, namespaceURI, publicId, systemId, baseURI) -> {
+ 			if (namespaceURI != null) {
+-				var namespace = Namespace.of(namespaceURI);
++				Namespace namespace = Namespace.of(namespaceURI);
+ 				if (SCHEMAS.containsKey(namespace)) {
+ 					LSInputImpl input = new LSInputImpl();
+ 					input.setPublicId(publicId);
+-					var schema = SCHEMAS.get(namespace);
++					String schema = SCHEMAS.get(namespace);
+ 					input.setSystemId(requireNonNull(Namespace.class.getResource(schema)).toExternalForm());
+ 					input.setBaseURI(baseURI);
+-					var stream = Namespace.class.getResourceAsStream(schema);
++					InputStream stream = Namespace.class.getResourceAsStream(schema);
+ 					input.setCharacterStream(new InputStreamReader(requireNonNull(stream)));
+ 					return input;
+ 				}
+@@ -227,8 +232,8 @@ public class DefaultValidator implements Validator {
+ 		}
+ 
+ 		private void addValidationMessage(Severity severity, SAXParseException e) {
+-			var path = e.getSystemId() == null ? xmlFile.toString() : e.getSystemId();
+-			var location = new Location(path, e.getLineNumber(), e.getColumnNumber());
++			String path = e.getSystemId() == null ? xmlFile.toString() : e.getSystemId();
++			Location location = new Location(path, e.getLineNumber(), e.getColumnNumber());
+ 			messages.add(new ValidationMessage(severity, location, e.getMessage()));
+ 		}
+ 
+diff --git a/tooling/src/main/java/org/opentest4j/reporting/tooling/validator/ValidationResult.java b/tooling/src/main/java/org/opentest4j/reporting/tooling/validator/ValidationResult.java
+index 01e9352..ea650b0 100644
+--- a/tooling/src/main/java/org/opentest4j/reporting/tooling/validator/ValidationResult.java
++++ b/tooling/src/main/java/org/opentest4j/reporting/tooling/validator/ValidationResult.java
+@@ -16,6 +16,7 @@
+ 
+ package org.opentest4j.reporting.tooling.validator;
+ 
++import java.util.ArrayList;
+ import java.util.Iterator;
+ import java.util.List;
+ import java.util.Objects;
+@@ -30,7 +31,7 @@ public class ValidationResult implements Iterable<ValidationMessage> {
+ 	private final List<ValidationMessage> messages;
+ 
+ 	ValidationResult(List<ValidationMessage> messages) {
+-		this.messages = List.copyOf(messages);
++		this.messages = new ArrayList<ValidationMessage>(messages);
+ 	}
+ 
+ 	/**
+-- 
+2.44.0
+

@@ -1,0 +1,5 @@
+<package name="open-test-reporting" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="open-test-reporting"/>
+</package>
