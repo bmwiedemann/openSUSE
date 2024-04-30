@@ -20,38 +20,38 @@
 
 Name:           libfsapfs
 %define lname   libfsapfs1
-Version:        20240218
+Version:        20240429
 Release:        0
 Summary:        Library and tools to access the Apple File System (APFS)
 License:        LGPL-3.0-only
 Group:          System/Filesystems
 URL:            https://github.com/libyal/libfsapfs
-Source:         https://github.com/libyal/libfsapfs/releases/download/%version/libfsapfs-experimental-%version.tar.gz
-Source2:        https://github.com/libyal/libfsapfs/releases/download/%version/libfsapfs-experimental-%version.tar.gz.asc
+Source:         https://github.com/libyal/libfsapfs/releases/download/%version/%name-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libfsapfs/releases/download/%version/%name-experimental-%version.tar.gz.asc
 Source3:        %name.keyring
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %python_module devel
+BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse) >= 2.6
-BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcaes) >= 20240114
-BuildRequires:  pkgconfig(libcdata) >= 20240103
-BuildRequires:  pkgconfig(libcerror) >= 20240101
-BuildRequires:  pkgconfig(libcfile) >= 20240106
-BuildRequires:  pkgconfig(libclocale) >= 20240107
-BuildRequires:  pkgconfig(libcnotify) >= 20240108
-BuildRequires:  pkgconfig(libcpath) >= 20240109
-BuildRequires:  pkgconfig(libcsplit) >= 20240110
-BuildRequires:  pkgconfig(libcthreads) >= 20240102
-BuildRequires:  pkgconfig(libfcache) >= 20240112
-BuildRequires:  pkgconfig(libfdata) >= 20240114
-BuildRequires:  pkgconfig(libfdatetime) >= 20240115
-BuildRequires:  pkgconfig(libfguid) >= 20240116
-BuildRequires:  pkgconfig(libfmos) >= 20240118
-BuildRequires:  pkgconfig(libhmac) >= 20240129
-BuildRequires:  pkgconfig(libuna) >= 20240130
+BuildRequires:  pkgconfig(libbfio) >= 20240414
+BuildRequires:  pkgconfig(libcaes) >= 20240413
+BuildRequires:  pkgconfig(libcdata) >= 20240414
+BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libcfile) >= 20240414
+BuildRequires:  pkgconfig(libclocale) >= 20240414
+BuildRequires:  pkgconfig(libcnotify) >= 20240414
+BuildRequires:  pkgconfig(libcpath) >= 20240414
+BuildRequires:  pkgconfig(libcsplit) >= 20240414
+BuildRequires:  pkgconfig(libcthreads) >= 20240413
+BuildRequires:  pkgconfig(libfcache) >= 20240414
+BuildRequires:  pkgconfig(libfdata) >= 20240415
+BuildRequires:  pkgconfig(libfdatetime) >= 20240415
+BuildRequires:  pkgconfig(libfguid) >= 20240415
+BuildRequires:  pkgconfig(libfmos) >= 20240415
+BuildRequires:  pkgconfig(libhmac) >= 20240417
+BuildRequires:  pkgconfig(libuna) >= 20240414
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib) >= 1.2.5
@@ -87,7 +87,7 @@ Requires:       %lname = %version
 Requires:       libbfio-devel
 
 %description devel
-Development files for %{name}.
+Development files for %name.
 
 %package tools
 Summary:        Tools to access the Apple File System format
@@ -110,7 +110,7 @@ Group:          System/Libraries
 %build
 %define _lto_cflags -ffat-lto-objects
 export LDFLAGS="-Wl,-z,relro,-z,now"
-export CFLAGS="%{optflags}"
+export CFLAGS="%optflags"
 %{python_expand #
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static \
@@ -132,24 +132,23 @@ rm -fv "%buildroot/%_libdir"/*.la
 %check
 make check || /bin/true
 
-%post -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %name
 %license COPYING*
-%{_bindir}/fsapfsinfo
-%{_bindir}/fsapfsmount
-%{_mandir}/man*/*
+%_bindir/fsapfsinfo
+%_bindir/fsapfsmount
+%_mandir/man*/*
 
 %files -n %name-devel
-%{_includedir}/%{name}*
-%{_libdir}/%{name}*.so
-%{_libdir}/pkgconfig/*
+%_includedir/%{name}*
+%_libdir/%{name}*.so
+%_libdir/pkgconfig/*
 
 %files -n %lname
-%{_libdir}/%{name}*so.*
+%_libdir/%{name}*so.*
 
 %files %python_files
-%{python_sitearch}/pyfsapfs*
+%python_sitearch/pyfsapfs*
 
 %changelog
