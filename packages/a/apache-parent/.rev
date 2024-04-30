@@ -53,4 +53,12 @@
     <comment>version 31 will be needed by apache-sshd</comment>
     <requestid>1140069</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>315f0dab65ccbcbce4002bd500775e18</srcmd5>
+    <version>31</version>
+    <time>1714490915</time>
+    <user>anag+factory</user>
+    <comment>Simplify the spec: remove old macros and fetch updated keyring</comment>
+    <requestid>1170969</requestid>
+  </revision>
 </revisionlist>
