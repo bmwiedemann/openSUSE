@@ -7,4 +7,15 @@
     <comment>New package for tree-sitter grammar javascript</comment>
     <requestid>1162326</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6af68cfd9bc728316c68c2a58d911de5</srcmd5>
+    <version>0.21.0</version>
+    <time>1714490861</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.21.0:
+  * fix: escape braces in regex
+  * fix: allow ampersands not followed by `#` or a letter in jsx strings
+  * refactor!: use last-wins precedence for queries</comment>
+    <requestid>1170884</requestid>
+  </revision>
 </revisionlist>
