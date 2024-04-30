@@ -1,7 +1,7 @@
 #
 # spec file for package openregex
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,9 @@
 #
 
 
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           openregex
 Version:        1.1.1
 Release:        0
@@ -29,6 +32,7 @@ BuildRequires:  maven-local
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
 BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
@@ -49,9 +53,7 @@ This package contains javadoc for %{name}.
 
 %build
 %{mvn_build} -f -- \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
 	-Dmaven.compiler.release=8 \
-%endif
 	-Dsource=8
 
 %install

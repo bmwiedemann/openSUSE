@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 29 12:04:20 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- The binaries are compatible with java 1.8
+
+-------------------------------------------------------------------
 Wed Jul 28 07:50:32 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Require a modular java for build

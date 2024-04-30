@@ -26,4 +26,12 @@
     <comment>Require modular java for build</comment>
     <requestid>908813</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>096a16c37261743b604908180b53a7ae</srcmd5>
+    <version>1.1.1</version>
+    <time>1714490845</time>
+    <user>anag+factory</user>
+    <comment>This runs with java 8 just fine</comment>
+    <requestid>1170853</requestid>
+  </revision>
 </revisionlist>
