@@ -108,4 +108,14 @@
   * use XDG_DATA_HOME if defined</comment>
     <requestid>872150</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>1add08c20985513e0ae015de5e47c4b3</srcmd5>
+    <version>2.24</version>
+    <time>1714490787</time>
+    <user>anag+factory</user>
+    <comment>- Build against boost 1.75 on Leap 15 to match the one used by
+  libtorrent-rasterbar (code-o-o#leap/features/issue/155)
+</comment>
+    <requestid>1170285</requestid>
+  </revision>
 </revisionlist>

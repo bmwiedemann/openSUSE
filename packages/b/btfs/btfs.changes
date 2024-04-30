@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 19 15:49:01 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Build against boost 1.75 on Leap 15 to match the one used by
+  libtorrent-rasterbar (code-o-o#leap/features/issue/155)
+
+-------------------------------------------------------------------
 Sun Feb 14 12:28:34 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - 2.24

@@ -1,7 +1,7 @@
 #
 # spec file for package btfs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,11 @@ Source:         https://github.com/johang/%{name}/archive/v%{version}.tar.gz#/%{
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler
+%if 0%{?suse_version} > 1500
 BuildRequires:  libboost_system-devel
+%else
+BuildRequires:  libboost_system1_75_0-devel
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fuse)
 BuildRequires:  pkgconfig(libcurl)
