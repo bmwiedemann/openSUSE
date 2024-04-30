@@ -123,6 +123,7 @@ diff -s %{SOURCE3} gobject-introspection-typelib.installed
 %fdupes %{buildroot}
 # fixup shebangs in files installed to /usr/bin
 sed -i "s|%{_bindir}/env python|%{_bindir}/python|" %{buildroot}%{_bindir}/*
+%python3_fix_shebang
 
 %ldconfig_scriptlets -n libgirepository-1_0-1
 

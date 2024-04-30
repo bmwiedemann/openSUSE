@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 29 11:46:08 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Mon Apr  8 13:59:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - gi-find-deps.sh: further expand on the java script scanner.

@@ -2139,4 +2139,12 @@
     <comment>- gi-find-deps.sh: further expand on the java script scanner. (forwarded request 1167036 from dimstar)</comment>
     <requestid>1167123</requestid>
   </revision>
+  <revision rev="112" vrev="3">
+    <srcmd5>00e17d3e6863522688f004ae5224a01a</srcmd5>
+    <version>1.80.1</version>
+    <time>1714490776</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1170753</requestid>
+  </revision>
 </revisionlist>
