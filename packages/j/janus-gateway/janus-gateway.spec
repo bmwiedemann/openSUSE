@@ -1,7 +1,7 @@
 #
 # spec file for package janus-gateway
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %endif
 
 Name:           janus-gateway
-Version:        1.1.4
+Version:        1.2.1
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Janus WebRTC Gateway
@@ -64,8 +64,8 @@ BuildRequires:  usrsctp-devel
 BuildRequires:  libwebsockets-devel >= 4.0.0
 # MQTT support
 BuildRequires:  libpaho-mqtt-devel
-Requires(pre):  shadow
 BuildRequires:  pkgconfig(systemd)
+Requires(pre):  shadow
 
 %{?systemd_ordering}
 %{sysusers_requires}
@@ -111,6 +111,8 @@ install -D -d -m 755 %{buildroot}%{_sbindir}
 install -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/janus.service
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcjanus
 #
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}-user.conf
+#
 pushd %{buildroot}%{_sysconfdir}/janus/
 rm -rv *.jcfg.sample
 chmod -R o= .
@@ -136,6 +138,7 @@ install -D -d -m 0750 %{buildroot}%{_sharedstatedir}/janus/
 %doc README.md
 %license COPYING
 %config(noreplace) %attr(-,root,janus) %{_sysconfdir}/janus/
+%{_sysusersdir}/%{name}-user.conf
 %{_sbindir}/rcjanus
 %{_bindir}/janus
 %{_bindir}/janus-cfgconv

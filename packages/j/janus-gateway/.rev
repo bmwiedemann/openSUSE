@@ -127,4 +127,12 @@
     <comment></comment>
     <requestid>1120274</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>98deded0cb28d0c41df94ed39174cf11</srcmd5>
+    <version>1.2.1</version>
+    <time>1714490863</time>
+    <user>anag+factory</user>
+    <comment>fix for boo#1221418 (forwarded request 1170873 from computersalat)</comment>
+    <requestid>1170874</requestid>
+  </revision>
 </revisionlist>
