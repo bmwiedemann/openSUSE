@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-pool
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Summary:        Apache Commons Pool
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://commons.apache.org/proper/commons-pool/
-Source0:        http://www.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
+Source0:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
 Patch0:         jakarta-commons-pool-build.patch
 Patch1:         commons-pool-1.6-sourcetarget.patch
 BuildRequires:  ant
@@ -74,38 +74,26 @@ ant -Djava.io.tmpdir=. clean dist
 
 %install
 # jars
-install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 dist/%{short_name}-%{version}-SNAPSHOT.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} `echo $jar| sed  "s|apache-||g"`; done)
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} `echo $jar| sed  "s|-%{version}||g"`; done)
+install -d -m 0755 %{buildroot}%{_javadir}
+install -m 0644 dist/%{short_name}-%{version}-SNAPSHOT.jar %{buildroot}%{_javadir}/%{name}.jar
+ln -sf %{_javadir}/%{name}.jar %{buildroot}%{_javadir}/%{short_name}.jar
 
 # pom
-install -d -m 755 %{buildroot}%{_mavenpomdir}
-%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
-%add_maven_depmap %{name}-%{version}.pom %{name}-%{version}.jar
+install -d -m 0755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar
 
 # javadoc
-install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
+install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr dist/docs/api/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
-%files
-%defattr(0644,root,root,0755)
+%files -f .mfiles
 %license LICENSE.txt
 %doc README.txt
-%{_javadir}/%{name}.jar
-%{_javadir}/%{name}-%{version}.jar
 %{_javadir}/%{short_name}.jar
-%{_javadir}/%{short_name}-%{version}.jar
-%{_mavenpomdir}/%{name}-%{version}.pom
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%endif
 
 %files javadoc
-%defattr(0644,root,root,0755)
 %doc %{_javadocdir}/%{name}
 
 %changelog
