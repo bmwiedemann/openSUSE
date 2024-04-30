@@ -18,7 +18,7 @@
 
 %define         short_name openQA
 Name:           %{short_name}-test
-Version:        4.6.1714133087.91cad33b
+Version:        4.6.1714402034.e9b99fa0
 Release:        0
 Summary:        Test package for openQA
 License:        GPL-2.0-or-later
@@ -41,6 +41,11 @@ touch %{_sourcedir}/%{short_name}
 # call one of the components but not openqa itself which would need a valid
 # configuration
 /usr/share/openqa/script/initdb --help
+
+# verify whether assets can be loaded
+perl -I/usr/share/openqa/lib -mOpenQA::Assets \
+    -e 'OpenQA::Assets::setup(Mojolicious->new(home => Mojo::Home->new("/usr/share/openqa")))'
+
 getent passwd geekotest
 
 %install
