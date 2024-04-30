@@ -19,6 +19,9 @@
 %global source_name error-prone
 %global artifactId error_prone_annotations
 %global group_name google-errorprone
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           %{group_name}-annotations
 Version:        2.26.1
 Release:        0
@@ -32,6 +35,7 @@ BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
 BuildRequires:  javapackages-local >= 6
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
