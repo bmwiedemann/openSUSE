@@ -1,7 +1,7 @@
 #
 # spec file for package stax-ex
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,9 @@
 #
 
 
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           stax-ex
 Version:        1.8
 Release:        0
@@ -32,6 +35,7 @@ BuildRequires:  mvn(javax.activation:activation)
 BuildRequires:  mvn(javax.xml.bind:jaxb-api)
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
