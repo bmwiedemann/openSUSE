@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 29 21:52:37 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 0.22.0:
+  * feat: support reference declarators in types
+  * feat: add optional attribute declarations after 'namespace'
+  * feat: support pure virtual destructors
+  * fix: specifier and virtual do not strictly require each other
+  * fix(scanner): only call memcpy if `length` is greater than 0
+  * feat(scanner): use alloc header
+
+-------------------------------------------------------------------
 Sun Feb 25 18:08:06 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Initial packaging for openSUSE
