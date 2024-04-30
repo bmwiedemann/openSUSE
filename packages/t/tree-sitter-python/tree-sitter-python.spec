@@ -19,7 +19,7 @@
 %define _name python
 Summary:        Python grammar for tree-sitter
 Name:           tree-sitter-%{_name}
-Version:        0.20.4
+Version:        0.21.0
 Release:        0
 License:        MIT
 Group:          Development/Tools/Other

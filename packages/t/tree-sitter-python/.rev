@@ -7,4 +7,16 @@
     <comment>New package for tree-sitter grammar python</comment>
     <requestid>1162328</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c99002a262285f12b0e25a14f21ebb40</srcmd5>
+    <version>0.21.0</version>
+    <time>1714490861</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.21.0:
+  * fix: don't parse the `l` suffix in floats, allow trailing commas in type parameters
+  * feat: improve bindings
+  * fix(queries): use last-precedence for highlights
+  * fix: regenerate with operator precedence fix</comment>
+    <requestid>1170885</requestid>
+  </revision>
 </revisionlist>
