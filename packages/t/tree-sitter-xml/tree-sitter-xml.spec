@@ -1,5 +1,5 @@
 #
-# spec file for package tree-sitter-qmldir
+# spec file for package tree-sitter-xml
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -19,7 +19,7 @@
 %define _name xml
 Summary:        Xml grammar for tree-sitter
 Name:           tree-sitter-%{_name}
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 License:        MIT
 Group:          Development/Tools/Other
