@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 29 12:37:38 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Sun Sep 11 18:17:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Use new upstream source url.
