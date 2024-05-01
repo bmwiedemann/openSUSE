@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pick
-Version:        2.2.0
+Version:        2.3.2
 Release:        0
 Summary:        Curses-based interactive selection list module
 License:        MIT
