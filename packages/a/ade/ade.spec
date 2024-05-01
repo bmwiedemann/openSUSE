@@ -1,7 +1,7 @@
 #
 # spec file for package ade
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://opencv.org/
 Source0:        https://github.com/opencv/ade/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM ade-use-cxx14-standard.patch gh#opencv/ade#44 badshah400@gmail.com -- Enforce CMAKE_CXX_STANDARD=14 to allow building tests with gtest >= 1.14.0
+Patch0:         ade-use-cxx14-standard.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake > 3.2
 %if %{with tests}
@@ -52,15 +54,18 @@ A graph construction, manipulation, and processing framework. It is suitable
 for organizing data flow processing and execution.
 
 %prep
-%setup -q
+%autosetup -p1
 # fixup library install directory (i.e. use CMake default)
 sed -i -e 's@ DESTINATION lib@ DESTINATION ${CMAKE_INSTALL_LIBDIR}@' sources/ade/CMakeLists.txt
 
 %build
+# c++14 is required, at a minimum, for gtest to build tests
 %cmake \
   %{?with_tutorials:-DBUILD_ADE_TUTORIAL=ON} \
   %{?with_docs:-DBUILD_ADE_DOCUMENTATION=ON} \
-  %{?with_tests:-DGTEST_ROOT:PATH=%{_prefix} -DENABLE_ADE_TESTING=ON} \
+  %{?with_tests:-DGTEST_ROOT:PATH=%{_prefix} \
+  -DENABLE_ADE_TESTING=ON} \
+  %{nil}
 
 %cmake_build
 

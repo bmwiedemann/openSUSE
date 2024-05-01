@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 25 08:16:19 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add ade-use-cxx14-standard.patch: Enforce CMAKE_CXX_STANDARD=14
+  to allow building tests with gtest >= 1.14.0 (gh#opencv/ade#44).
+
+-------------------------------------------------------------------
 Mon Jan  1 01:17:53 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.1.2d

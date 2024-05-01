@@ -1,0 +1,17 @@
+---
+ CMakeLists.txt |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: ade-0.1.2d/CMakeLists.txt
+===================================================================
+--- ade-0.1.2d.orig/CMakeLists.txt
++++ ade-0.1.2d/CMakeLists.txt
+@@ -18,7 +18,7 @@ option(FORCE_ADE_ASSERTS       "Always e
+ option(BUILD_ADE_DOCUMENTATION "Build doxygen documentation"      OFF)
+ option(BUILD_WITH_STATIC_CRT   "Build with static multi-threaded C Runtime (MS Windows/Visual Studio only)" OFF)
+ 
+-set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_STANDARD 14)
+ 
+ # TODO: this is horrible hack, we must follow cmake
+ # build/install policy
