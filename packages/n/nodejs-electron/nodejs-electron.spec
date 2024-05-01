@@ -51,7 +51,8 @@ BuildArch:      i686
 %bcond_with subzero
 %endif
 
-#the QT ui is currently borderline unusable (too small fonts in menu and wrong colors)
+#Not enabling this yet, as of electron 29 there are minor font rendering issues in menu, and the benefits are dubious
+#(all the widgets use Gtk unconditionally — not sure which of the changed codepaths are used in Electron)
 %bcond_with qt
 
 
@@ -370,7 +371,7 @@ Patch3148:      resolution_monitor-missing-bitset.patch
 Patch3149:      boringssl-internal-addc-cxx.patch
 Patch3150:      InternalAllocator-too-many-initializers.patch
 Patch3151:      distributed_point_functions-evaluate_prg_hwy-signature.patch
-Patch3152:      fake_ssl_socket_client-Wlto-type-mismatch.patch 
+Patch3152:      fake_ssl_socket_client-Wlto-type-mismatch.patch
 
 BuildRequires:  brotli
 %if %{with system_cares}
@@ -582,6 +583,8 @@ BuildRequires:  pkgconfig(pangocairo)
 %if %{with qt}
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Widgets)
 %endif
 %if %{with system_abseil} && %{with system_re2}
 #re2-11 has abseil as a public dependency. If you use system re2 you must use system abseil.
@@ -638,6 +641,16 @@ Requires:       libvulkan.so.1()(64bit)
 %endif
 %endif
 
+%if %{with qt}
+%if 0%{?fedora}
+Requires: (nodejs-electron-qt5%{_isa} if qt5-qtbase-gui%{_isa})
+Requires: (nodejs-electron-qt6%{_isa} if qt6-qtbase-gui%{_isa})
+%else
+Requires: (nodejs-electron-qt5%{_isa} if libQt5Gui5%{_isa})
+Requires: (nodejs-electron-qt6%{_isa} if libQt6Gui6%{_isa})
+%endif
+%endif
+
 Provides:       electron
 Provides:       electron%{_isa}(abi) = %{abi_version}
 
@@ -650,7 +663,7 @@ Nodejs application: Build cross platform desktop apps with JavaScript, HTML, and
 %package devel
 Summary:        Electron development headers
 Group:          Development/Libraries/C and C++
-Requires:       nodejs-electron%{?_isa} = %{version}
+Requires:       nodejs-electron%{_isa} = %{version}
 Requires:       pkgconfig(zlib)
 
 
@@ -666,6 +679,26 @@ BuildArch:      noarch
 
 %description doc
 Development documentation for the Electron runtime.
+
+%if %{with qt}
+%package qt5
+Summary:  Qt5 widgets for Electron
+Group:    System/Libraries
+Requires: nodejs-electron%{_isa} = %version
+
+%description qt5
+This is the Qt5-based UI backend for nodejs-electron,
+providing better integration with desktop environments such as KDE.
+
+%package qt6
+Summary:  Qt6 widgets for Electron
+Group:    System/Libraries
+Requires: nodejs-electron%{_isa} = %version
+
+%description qt6
+This is the Qt6-based UI backend for nodejs-electron,
+providing better integration with desktop environments such as KDE.
+%endif
 
 %prep
 # Use stable path to source to make use of ccache
@@ -1094,15 +1127,11 @@ myconf_gn+=' enable_extensions_legacy_ipc=false'
 # symbol_level=2 is full debug
 # symbol_level=1 is enough info for stacktraces
 # symbol_level=0 no debuginfo (only function names in private symbols)
-# blink (HTML engine) and v8 (js engine) are template-heavy, trying to compile them with full debug leads to linker errors
+# blink (HTML engine) and v8 (js engine) are template-heavy, trying to compile them with full debug leads to linker errors due to inherent limitations of the DWARF format.
 %ifnarch %ix86 %arm aarch64
-%if %{without lto}
-myconf_gn+=" symbol_level=2"
-%else
-myconf_gn+=" symbol_level=1"
-%endif
-myconf_gn+=" blink_symbol_level=1"
-myconf_gn+=" v8_symbol_level=1"
+myconf_gn+=' symbol_level=2'
+myconf_gn+=' blink_symbol_level=1'
+myconf_gn+=' v8_symbol_level=1'
 %endif
 %ifarch %ix86 %arm
 #Sorry, no debug on 32bit.
@@ -1203,7 +1232,10 @@ myconf_gn+=" use_pulseaudio=true link_pulseaudio=true"
 myconf_gn+=" is_component_build=false"
 myconf_gn+=" use_sysroot=false"
 myconf_gn+=" fatal_linker_warnings=false"
-myconf_gn+=" use_allocator_shim=true"
+
+#disable malloc interposer - bsc#1223366
+myconf_gn+=' use_allocator_shim=false'
+myconf_gn+=' enable_backup_ref_ptr_support=false'
 myconf_gn+=" use_partition_alloc=true"
 
 
@@ -1266,7 +1298,10 @@ myconf_gn+=" rtc_use_pipewire=true rtc_link_pipewire=true"
 %endif
 
 %if %{with qt}
-myconf_gn+=" use_qt=true"
+myconf_gn+=' use_qt=true'
+myconf_gn+=' moc_qt5_path="%{_libdir}/qt5/bin/"'
+myconf_gn+=' use_qt6=true'
+myconf_gn+=' moc_qt6_path="%{_qt6_libexecdir}"'
 %endif
 
 
@@ -1294,7 +1329,6 @@ ninja -v %{?_smp_mflags} -C out/Release chromium_licenses copy_node_headers vers
 install -d -m 0755 %{buildroot}%{_bindir}
 install -d -m 0755 %{buildroot}%{_includedir}/electron
 install -d -m 0755 %{buildroot}%{_libdir}/electron
-install -d -m 0755 %{buildroot}%{_libdir}/electron/resources
 install -d -m 0755 %{buildroot}%{_datadir}/applications
 install -d -m 0755 %{buildroot}%{_datadir}/pixmaps/
 install -d -m 0755 %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/
@@ -1312,21 +1346,11 @@ install -pvDm644 electron/shell/browser/resources/win/extracted-3.png %{buildroo
 desktop-file-install --dir %{buildroot}%{_datadir}/applications/ %{SOURCE11}
 
 pushd out/Release
-cp -lv *.bin *.pak -t %{buildroot}%{_libdir}/electron/
-install -pm 0644 resources/default_app.asar -t %{buildroot}%{_libdir}/electron/resources/
-
-cp -lrv locales -t %{buildroot}%{_libdir}/electron/
-rm -v %{buildroot}%{_libdir}/electron/locales/*.pak.info
-
-
-install -pm 0755 electron                -t %{buildroot}%{_libdir}/electron/
-install -pm 0755 chrome_crashpad_handler -t %{buildroot}%{_libdir}/electron/ ||true
-install -pm 0755 libEGL.so               -t %{buildroot}%{_libdir}/electron/
-install -pm 0755 libGLESv2.so            -t %{buildroot}%{_libdir}/electron/
-install -pm 0755 libqt5_shim.so          -t %{buildroot}%{_libdir}/electron/ ||true
-install -pm 0755 libvk_swiftshader.so    -t %{buildroot}%{_libdir}/electron/ ||true
-install -pm 0644 vk_swiftshader_icd.json -t %{buildroot}%{_libdir}/electron/ ||true
 install -pm 0644 version                 -t %{buildroot}%{_libdir}/electron/
+
+gn desc . //electron:electron_app runtime_deps | grep -v ^gen/ | sort | uniq | xargs -t cp -l -v --parents -t %{buildroot}%{_libdir}/electron/ --
+
+
 popd
 
 
@@ -1359,7 +1383,25 @@ ln -srv third_party -t out/Release
 %{_datadir}/icons/hicolor/256x256/apps/electron.png
 %{_datadir}/icons/hicolor/1024x1024
 
-%{_libdir}/electron/
+%dir %{_libdir}/electron/
+%{_libdir}/electron/chrome_100_percent.pak
+%{_libdir}/electron/chrome_200_percent.pak
+%{_libdir}/electron/chrome_crashpad_handler
+%{_libdir}/electron/electron
+%{_libdir}/electron/libEGL.so
+%{_libdir}/electron/libGLESv2.so
+%{_libdir}/electron/libvk_swiftshader.so
+%{_libdir}/electron/resources.pak
+%{_libdir}/electron/snapshot_blob.bin
+%{_libdir}/electron/v8_context_snapshot.bin
+%{_libdir}/electron/version
+%{_libdir}/electron/vk_swiftshader_icd.json
+%dir %{_libdir}/electron/locales
+%{_libdir}/electron/locales/*.pak
+%dir %{_libdir}/electron/resources
+%{_libdir}/electron/resources/default_app.asar
+
+
 
 %files devel
 %{_includedir}/electron
@@ -1368,5 +1410,12 @@ ln -srv third_party -t out/Release
 %files doc
 %doc electron/README.md
 %doc electron/docs
+
+%if %{with qt}
+%files qt5
+%{_libdir}/electron/libqt5_shim.so
+%files qt6
+%{_libdir}/electron/libqt6_shim.so
+%endif
 
 %changelog
