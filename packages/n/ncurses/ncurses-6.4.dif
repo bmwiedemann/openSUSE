@@ -359,7 +359,7 @@
  ttys.5				ttys.4
 --- man/ncurses.3x
 +++ man/ncurses.3x	2024-04-15 07:09:39.619910505 +0000
-@@ -330,6 +330,10 @@ and \fBmenu\fP(3X) libraries to ease con
+@@ -340,6 +340,10 @@ and \fBmenu\fP(3X) libraries to ease con
  with
  .IR curses .
  .SS "Initialization"

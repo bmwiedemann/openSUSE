@@ -4515,4 +4515,24 @@
       byacc by Andrin Geiger)</comment>
     <requestid>1167744</requestid>
   </revision>
+  <revision rev="262" vrev="35">
+    <srcmd5>40fcd3aace97ad374898ba5180e33f0b</srcmd5>
+    <version>unknown</version>
+    <time>1714568088</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to ncurses 6.5 (patch 20240427)
+  + update announcement
+  + fixes/corrections for manpages (patches by Branden Robinson).
+  + fix redefinition of CASTxPTR, for legacy Unix.
+- Update to tack 1.9 (patch 20230201)
+  * configure: regen
+  * configure.in: initialize $ac_includes_default
+    s/fgrep/$FGREP/
+  * aclocal.m4: resync with my-autoconf
+
+- Add ncurses patch 20240420
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + compiler warning/portability fixes.</comment>
+    <requestid>1170707</requestid>
+  </revision>
 </revisionlist>

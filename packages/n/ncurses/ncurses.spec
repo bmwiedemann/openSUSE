@@ -35,9 +35,9 @@
 %endif
 
 %global patchlvl %(bash %{_sourcedir}/get_version_number.sh %{_sourcedir})
-%global basevers 6.4
+%global basevers 6.5
 %global tackvers 1.09
-%global tacklvl  20221229
+%global tacklvl  20230201
 
 Name:           ncurses
 #!BuildIgnore: terminfo
@@ -76,7 +76,7 @@ Obsoletes:      ncurses-64bit
 # but also build the ABI version 5 as this is part of the source
 # tar ball including the latest upstream fixes for ABI 5.
 #
-Version:        6.4.%{patchlvl}
+Version:        6.5.%{patchlvl}
 Release:        0
 Summary:        Terminal control library
 #Git:           http://ncurses.scripts.mit.edu

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 29 07:42:51 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to ncurses 6.5 (patch 20240427)
+  + update announcement
+  + fixes/corrections for manpages (patches by Branden Robinson).
+  + fix redefinition of CASTxPTR, for legacy Unix.
+- Update to tack 1.9 (patch 20230201)
+  * configure: regen
+  * configure.in: initialize $ac_includes_default
+    s/fgrep/$FGREP/
+  * aclocal.m4: resync with my-autoconf
+
+-------------------------------------------------------------------
+Mon Apr 22 08:05:49 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20240420
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + compiler warning/portability fixes.
+
+-------------------------------------------------------------------
 Mon Apr 15 07:05:05 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20240414

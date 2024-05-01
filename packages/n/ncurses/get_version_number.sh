@@ -7,7 +7,7 @@ version=$(sed -rn '/^Version:[[:space:]]+/{s/^Version:[[:space:]]+([0-9]+\.[0-9]
 test -e ${sourcedir}/ncurses-${version}.tar.gz || exit 1
 last=($(tar Oxf ${sourcedir}/ncurses-${version}.tar.gz ncurses-${version}/VERSION)) || exit 1
 test -e ${sourcedir}/ncurses-${version}-patches.tar.bz2 || echo ${last[2]}
-tar --wildcards -tf ${sourcedir}/ncurses-${version}-patches.tar.bz2 '*/*.patch' &> /dev/null || echo ${last[2]}
+tar --wildcards -tf ${sourcedir}/ncurses-${version}-patches.tar.bz2 '*/*.patch' &> /dev/null || { echo ${last[2]}; exit 0; }
 OFS="$IFS"
 IFS=-
 last=($(tar -tf ${sourcedir}/ncurses-${version}-patches.tar.bz2 | grep -v 'gz.asc' | sed -r 's@\.patch$@@'| sort -t '-' -k 3,3 -n | tail -n 1))
