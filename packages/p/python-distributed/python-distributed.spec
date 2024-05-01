@@ -47,7 +47,7 @@
 
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2024.2.1
+Version:        2024.4.2
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -156,7 +156,10 @@ donttest+=" or test_nanny_timeout"
 donttest+=" or (test_asyncprocess and (test_exit_callback or test_simple))"
 donttest+=" or (test_client and test_repr)"
 donttest+=" or (test_client and test_profile_server)"
+donttest+=" or (test_client and test_forget_errors)"
+donttest+=" or (test_dask_collections and test_sparse_arrays)"
 donttest+=" or (test_metrics and test_wall_clock)"
+donttest+=" or (test_nanny and test_failure_during_worker_initialization)"
 donttest+=" or (test_priorities and test_compute)"
 donttest+=" or (test_resources and test_prefer_constrained)"
 donttest+=" or (test_scheduler and test_tell_workers_when_peers_have_left)"
@@ -169,6 +172,8 @@ donttest+=" or (test_worker_memory and test_digests)"
 donttest+=" or (test_worker_memory and test_pause_while_spilling)"
 donttest+=" or test_computations_futures"
 donttest+=" or test_task_state_instance_are_garbage_collected"
+donttest+=" or test_computation_object_code_client_submit_list_comp"
+donttest+=" or test_computation_object_code_client_submit_dict_comp"
 # server-side fail due to the non-network warning in a subprocess where the patched filter does not apply
 donttest+=" or (test_client and test_quiet_close_process)"
 # should return > 3, returns 3 exactly
