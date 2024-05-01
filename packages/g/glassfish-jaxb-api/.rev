@@ -48,4 +48,12 @@
     <comment>cleanup</comment>
     <requestid>1148904</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>cfb135b5d608ba4d3374e0b8c0c989a5</srcmd5>
+    <version>2.4.0</version>
+    <time>1714568089</time>
+    <user>dimstar_suse</user>
+    <comment>This runs with java 8 just fine</comment>
+    <requestid>1170841</requestid>
+  </revision>
 </revisionlist>

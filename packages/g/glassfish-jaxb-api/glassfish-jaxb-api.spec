@@ -18,6 +18,9 @@
 
 %global oname jaxb-spec
 %global bundle jaxb-api
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           glassfish-jaxb-api
 Version:        2.4.0
 Release:        0
@@ -33,6 +36,7 @@ BuildRequires:  glassfish-activation-api
 BuildRequires:  java-devel >= 9
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  unzip
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
