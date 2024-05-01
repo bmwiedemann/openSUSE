@@ -73,7 +73,6 @@ The official zsh completion script for git-absorb, generated during the build.
 %autosetup -p1 -a1
 
 %build
-%{cargo_build}
 
 %install
 %{cargo_install}
