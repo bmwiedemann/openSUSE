@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Apr 30 19:14:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.1:
+  * Bump github.com/containerd/containerd from 1.7.15 to 1.7.16
+    (#148)
+  * Bump github.com/onsi/gomega from 1.33.0 to 1.33.1 (#150)
+  * Bump github.com/onsi/gomega from 1.32.0 to 1.33.0 (#143)
+  * remove bundle injection, make golangci-lint config consistent
+    (#145)
+  * Bump github.com/operator-framework/operator-registry (#139)
+  * update dependencies (#137)
+  * update dependencies (#131)
+  * GH Actions: add workflow to add epic issues to OLMv1 project
+    (#121)
+  * Remove timflannagan from OWNERS (#114)
+  * Bump github.com/operator-framework/operator-registry (#104)
+  * Bump github.com/opencontainers/image-spec from 1.1.0-rc4 to
+    1.1.0-rc5 (#106)
+  * Bump github.com/containerd/containerd from 1.7.6 to 1.7.12
+    (#105)
+  * manage tool deps with bingo (#102)
+  * run CI in merge queue (#103)
+  * deps: bump k8s.io to 0.28.5 and controller-runtime to 0.16.3
+    (#101)
+  * Bump actions/setup-go from 3 to 5 (#94)
+  * Bump actions/checkout from 2 to 4 (#93)
+  * deps: bump go version, operator-controller, and golangci-lint
+    (#91)
+  * enable dependabot (#92)
+  * GH Actions CI and release improvements (#89)
+
+-------------------------------------------------------------------
 Fri Nov 17 17:56:17 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.5.0:

@@ -7,4 +7,12 @@
     <comment>new package kubectl-operator: Manage Kubernetes Operators from the command line</comment>
     <requestid>1127354</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>49eaa89e840c70e796812067bf0551fe</srcmd5>
+    <version>0.5.1</version>
+    <time>1714568219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1171030</requestid>
+  </revision>
 </revisionlist>
