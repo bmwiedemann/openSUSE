@@ -1,7 +1,7 @@
 #
 # spec file for package jakarta-mail
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,25 @@
 #
 
 
-%global artifact_name jakarta.mail-api
+%global srcname mail-api
+%global artifact_name jakarta.%{srcname}
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           jakarta-mail
-Version:        2.1.0
+Version:        2.1.3
 Release:        0
 Summary:        Jakarta Mail API
 License:        EPL-2.0 OR GPL-2.0-only WITH Classpath-exception-2.0
-URL:            https://eclipse-ee4j.github.io/mail/
-Source0:        https://github.com/eclipse-ee4j/mail/archive/%{version}/mail-%{version}.tar.gz
+URL:            https://github.com/jakartaee/mail-api
+Source0:        %{url}/archive/%{version}/%{srcname}-%{version}.tar.gz
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  jakarta-activation
 BuildRequires:  java-devel >= 9
-BuildRequires:  javapackages-local
-Requires:       mvn(jakarta.activation:jakarta.activation-api)
+BuildRequires:  javapackages-local >= 6
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
@@ -46,14 +50,12 @@ Summary:        Javadoc for %{name}
 This package contains javadoc for %{name}.
 
 %prep
-%setup -q -n mail-%{version}
+%setup -q -n %{srcname}-%{version}
 cp %{SOURCE1} api/build.xml
-mkdir -p api/lib
-
-%pom_remove_parent api
 
 %build
 pushd api
+mkdir -p lib
 build-jar-repository -s lib jakarta-activation
 %{ant} package javadoc
 popd
@@ -61,12 +63,12 @@ popd
 %install
 pushd api
 # jars
-mkdir -p %{buildroot}%{_javadir}/%{name}
-cp -a target/%{artifact_name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{artifact_name}.jar
+install -d -m 0755 %{buildroot}%{_javadir}/%{name}
+install -p -m 0644 target/%{artifact_name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{artifact_name}.jar
 
 #pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{artifact_name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{artifact_name}.pom
 %add_maven_depmap %{name}/%{artifact_name}.pom %{name}/%{artifact_name}.jar
 
 # javadoc

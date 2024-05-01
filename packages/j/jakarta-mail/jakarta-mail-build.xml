@@ -8,12 +8,13 @@
 
   <property name="project.groupId" value="jakarta.mail"/>
   <property name="project.artifactId" value="jakarta.mail-api"/>
-  <property name="project.version" value="2.1.0"/>
-  
+  <property name="project.version" value="2.1.3"/>
+
   <property name="spec.version" value="2.1"/>
   <property name="mail.version" value="${project.version}"/>
 
-  <property name="compiler.source" value="1.8"/>
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
@@ -56,14 +57,15 @@
     <copy todir="${build.srcDir}">
       <fileset dir="${build.resourceDir}"/>
     </copy>
-    <javac destdir="${build.outputDir}" 
-           nowarn="false" 
-           debug="true" 
-           optimize="false" 
-           deprecation="true" 
-           target="${compiler.target}" 
-           verbose="false" 
-           fork="false" 
+    <javac destdir="${build.outputDir}"
+           nowarn="false"
+           debug="true"
+           optimize="false"
+           deprecation="true"
+           release="${compiler.release}"
+           target="${compiler.target}"
+           verbose="false"
+           fork="false"
            source="${compiler.source}">
       <src>
         <pathelement location="${build.srcDir}"/>
@@ -71,14 +73,15 @@
 	  <exclude name="**/module-info.java"/>
       <classpath refid="build.classpath"/>
     </javac>
-    <javac destdir="${build.outputDir}" 
-           nowarn="false" 
-           debug="true" 
-           optimize="false" 
-           deprecation="true" 
-           target="9" 
-           verbose="false" 
-           fork="false" 
+    <javac destdir="${build.outputDir}"
+           nowarn="false"
+           debug="true"
+           optimize="false"
+           deprecation="true"
+           release="9"
+           target="9"
+           verbose="false"
+           fork="false"
            source="9">
       <src>
         <pathelement location="${build.srcDir}"/>
@@ -94,26 +97,26 @@
   <!-- ====================================================================== -->
 
   <target name="javadoc" description="Generates the Javadoc of the application">
-    <javadoc sourcepath="${build.srcDir}" 
-             packagenames="*" 
-             destdir="${reporting.outputDirectory}/apidocs" 
-             access="protected" 
-             verbose="false" 
-             encoding="UTF-8" 
-             version="true" 
-             use="true" 
-             author="true" 
-             splitindex="false" 
-             nodeprecated="false" 
-             nodeprecatedlist="false" 
-             notree="false" 
-             noindex="false" 
-             nohelp="false" 
-             nonavbar="false" 
-             serialwarn="false" 
-             charset="UTF-8" 
-             linksource="false" 
-             breakiterator="false" 
+    <javadoc sourcepath="${build.srcDir}"
+             packagenames="*"
+             destdir="${reporting.outputDirectory}/apidocs"
+             access="protected"
+             verbose="false"
+             encoding="UTF-8"
+             version="true"
+             use="true"
+             author="true"
+             splitindex="false"
+             nodeprecated="false"
+             nodeprecatedlist="false"
+             notree="false"
+             noindex="false"
+             nohelp="false"
+             nonavbar="false"
+             serialwarn="false"
+             charset="UTF-8"
+             linksource="false"
+             breakiterator="false"
              source="${compiler.source}">
       <classpath refid="build.classpath"/>
       <header>&lt;![CDATA[&lt;a href=&quot;https://reload4j.qos.ch&quot;&gt;
@@ -126,10 +129,10 @@
   <!-- ====================================================================== -->
 
   <target name="package" depends="compile" description="Package the application">
-    <jar jarfile="${build.dir}/${build.finalName}.jar" 
-         compress="true" 
-         index="false" 
-         basedir="${build.outputDir}" 
+    <jar jarfile="${build.dir}/${build.finalName}.jar"
+         compress="true"
+         index="false"
+         basedir="${build.outputDir}"
          excludes="**/package.html">
       <manifest>
 		<attribute name="Bundle-Description" value="Jakarta Mail API 2.1 Specification API"/>
@@ -146,7 +149,7 @@
 		<attribute name="Implementation-Title" value="Jakarta Mail API"/>
 		<attribute name="Implementation-Vendor" value="Eclipse Foundation"/>
 		<attribute name="Import-Package" value="jakarta.activation;version=&quot;[2.1,3)&quot;,jakarta.mail.event;version=&quot;[2.1,3)&quot;,jakarta.mail.internet;version=&quot;[2.1,3)&quot;,jakarta.mail.search;version=&quot;[2.1,3)&quot;,jakarta.mail.util;version=&quot;[2.1,3)&quot;,jakarta.mail;version=&quot;[2.1,3)&quot;"/>
-		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=1.8))&quot;"/>
+		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
 		<attribute name="Specification-Title" value="Jakarta Mail Specification"/>
 		<attribute name="Specification-Vendor" value="Eclipse Foundation"/>
 		<attribute name="Specification-Version" value="${spec.version}"/>
