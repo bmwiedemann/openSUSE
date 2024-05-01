@@ -11,7 +11,7 @@
   <property name="project.groupId" value="org.codehaus.plexus"/>
   <property name="project.fragment" value="utils"/>
   <property name="project.artifactId" value="plexus-${project.fragment}"/>
-  <property name="project.version" value="4.0.0"/>
+  <property name="project.version" value="4.0.1"/>
   
   <property name="compiler.release" value="8"/>
   <property name="compiler.source" value="1.${compiler.release}"/>

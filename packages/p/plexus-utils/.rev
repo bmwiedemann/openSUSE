@@ -73,4 +73,12 @@
     <comment>4.0.0 (once intergrated, xmvn must be rebuilt)</comment>
     <requestid>1165669</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cb35c7e46cf13660fc655dd46acac0b2</srcmd5>
+    <version>4.0.1</version>
+    <time>1714568200</time>
+    <user>dimstar_suse</user>
+    <comment>4.0.1</comment>
+    <requestid>1171007</requestid>
+  </revision>
 </revisionlist>

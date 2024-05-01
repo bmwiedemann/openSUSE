@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 30 14:09:54 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 4.0.1
+  * New features and improvements
+    + Add .gitignore to default excludes
+    + downgrade plexus-xml from 4 to 3: keep Maven 3 compatibility
+
+-------------------------------------------------------------------
 Fri Apr  5 08:16:44 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 4.0.0
