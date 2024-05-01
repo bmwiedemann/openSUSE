@@ -1170,4 +1170,14 @@ Remove spurious text from changes
     <comment></comment>
     <requestid>1147870</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>99f0e1a2f5680391ae27820b6bd51881</srcmd5>
+    <version>3.5.1</version>
+    <time>1714568250</time>
+    <user>dimstar_suse</user>
+    <comment>- Update VST3SDK to latest 3.7.11_build10
+- Remove vst3sdk-fix-include-cstdint-for-gcc13.patch and
+         vst3sdk-fix-limits-include-moduleinfoparser.patch</comment>
+    <requestid>1171075</requestid>
+  </revision>
 </revisionlist>

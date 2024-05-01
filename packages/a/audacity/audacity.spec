@@ -24,7 +24,7 @@
 %endif
 
 Name:           audacity
-Version:        3.4.2
+Version:        3.5.1
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        CC-BY-3.0 AND GPL-2.0-or-later AND GPL-3.0-only
@@ -33,7 +33,7 @@ URL:            http://audacityteam.org/
 Source:         https://github.com/audacity/audacity/archive/Audacity-%{version}.tar.gz
 Source1:        audacity-license-nyquist
 Source2:        audacity-rpmlintrc
-Source3:        vst3sdk-3.7.7_build_19.tar.xz
+Source3:        vst3sdk-3.7.11_build_10.tar.xz
 # PATCH-FIX-OPENSUSE audacity-no_buildstamp.patch davejplater@gmail.com -- Remove the buildstamp.
 Patch0:         audacity-no_buildstamp.patch
 # PATCH-FIX-UPSTREAM audacity-no_return_in_nonvoid.patch - Fix false positive errors Two new gcc10 ones ignoring assert
@@ -41,8 +41,6 @@ Patch1:         audacity-no_return_in_nonvoid.patch
 Patch2:         mod-script-pipe-disable-rpath.patch
 # PATCH-FIX-OPENSUSE vst-system-path.patch - search fo vsts in /usr/lib64 in x86_64 and ARM system
 Patch3:         lib64-plugins-default-path.patch
-Patch94:        vst3sdk-fix-include-cstdint-for-gcc13.patch
-Patch95:        vst3sdk-fix-limits-include-moduleinfoparser.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 %if 0%{?suse_version} <= 1600
@@ -63,6 +61,7 @@ BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac) >= 1.3.1
 BuildRequires:  pkgconfig(flac++)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(id3tag)
 BuildRequires:  pkgconfig(id3tag)
 BuildRequires:  pkgconfig(jack)
@@ -94,6 +93,10 @@ BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(vorbisfile)
 BuildRequires:  pkgconfig(wavpack)
+BuildRequires:  pkgconfig(xcb-cursor)
+BuildRequires:  pkgconfig(xcb-keysyms)
+BuildRequires:  pkgconfig(xcb-util)
+BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(zlib)
 # WARNING lilv-0 >= 0.24.6;lv2 >= 1.16.0;serd-0 >= 0.30.2;sord-0 >= 0.16.4;sratom-0 >= 0.6.4;suil-0 >= 0.10.6
 # check these versions after every update otherwise audacity builds libsuil itself.
@@ -141,9 +144,6 @@ touch include/RevisionIdent.h
 
 %if %{with vst}
 tar xf %{SOURCE3} --strip-components=1 --one-top-level=vst3sdk
-
-%patch -P 94 -p1 -d vst3sdk
-%patch -P 95 -p1 -d vst3sdk
 %endif
 
 %build
