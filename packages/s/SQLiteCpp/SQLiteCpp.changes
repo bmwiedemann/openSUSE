@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 25 10:18:18 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use c++14 standard to build, to avoid build failures against
+  gtest >= 1.14
+
+-------------------------------------------------------------------
 Sat Jan  6 19:06:49 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.

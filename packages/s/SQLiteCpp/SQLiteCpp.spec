@@ -58,6 +58,7 @@ sed -iE "s/\r$//" README.md
   -DSQLITE_ENABLE_COLUMN_METADATA=true \
   -DSQLITECPP_BUILD_TESTS=true \
   -DSQLITECPP_BUILD_EXAMPLES=true \
+  -Dcpp_std=c++14 \
 	%{nil}
 %meson_build
 
