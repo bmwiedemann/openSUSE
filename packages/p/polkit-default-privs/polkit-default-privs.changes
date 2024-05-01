@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 30 08:14:36 UTC 2024 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20240430.5327266:
+  * profiles: whitelist dnf5daemon-server (bsc#1218327)
+  * profiles: remove pseudo auth action kcmkwallet5 (bsc#1217190)
+
+-------------------------------------------------------------------
 Mon Mar 25 13:34:38 UTC 2024 - wolfgang.frisch@suse.com
 
 - Update to version 1550+20240325.eddbe04:
