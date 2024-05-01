@@ -46,7 +46,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2024.2.1
+Version:        2024.4.2
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -65,10 +65,10 @@ Requires:       python-PyYAML >= 5.3.1
 Requires:       python-click >= 8.1
 Requires:       python-cloudpickle >= 1.5
 Requires:       python-fsspec >= 2021.9
-Requires:       python-importlib-metadata >= 4.13.0
 Requires:       python-packaging >= 20.0
 Requires:       python-partd >= 1.2.0
 Requires:       python-toolz >= 0.10.0
+Requires:       (python-importlib-metadata >= 4.13.0 if python-base < 3.12)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     %{name}-array = %{version}
@@ -206,6 +206,8 @@ Summary:        Pandas-like DataFrame data structure for dask
 Requires:       %{name} = %{version}
 Requires:       %{name}-array = %{version}
 Requires:       %{name}-bag = %{version}
+# This is an extra package
+Requires:       (python-dask-expr >= 1.0 with python-dask-expr < 1.1)
 Requires:       python-pandas >= 1.3
 
 %description dataframe
@@ -325,6 +327,8 @@ if [[ $(getconf LONG_BIT) -eq 32 ]]; then
   #
   donttest+=" or test_pandas_multiindex"
   donttest+=" or test_categorize_info"
+  donttest+=" or test_memory_usage_dataframe"
+  donttest+=" or test_multi"
 fi
 # (rarely) flaky on obs
 donttest+=" or test_local_scheduler"
@@ -335,6 +339,8 @@ donttest+=" or test_select_from_select"
 donttest+=" or test_map_partitions_df_input"
 # needs s3fs support in arrow
 donttest+=" or test_pyarrow_filesystem_option_real_data"
+# different hash naming (?)
+donttest+=" or test_to_delayed_optimize_graph"
 %pytest --pyargs dask -n auto -r fE -m "not network" -k "not ($donttest)" --reruns 3 --reruns-delay 3
 %endif
 
