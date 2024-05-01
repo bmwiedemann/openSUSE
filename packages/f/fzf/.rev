@@ -765,4 +765,35 @@ varienvironment able.
 - Shell subpackages should be Enahncing (not Supplementing) fzf.</comment>
     <requestid>1170041</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>c866fc3c5808f0d9f822f0b22abfa917</srcmd5>
+    <version>0.51.0</version>
+    <time>1714568286</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.51.0:
+  - Added a new environment variable $FZF_POS exported to the
+    child processes. It's the vertical position of the cursor in
+    the list starting from 1.
+    # Toggle selection to the top or to the bottom
+    seq 30 | fzf --multi --bind 'load:pos(10)' \
+      --bind 'shift-up:transform:for _ in $(seq $FZF_POS $FZF_MATCH_COUNT); do echo -n +toggle+up; done' \
+      --bind 'shift-down:transform:for _ in $(seq 1 $FZF_POS); do echo -n +toggle+down; done'
+  - Added --with-shell option to start child processes with a
+    custom shell command and flags
+    gem list | fzf --with-shell 'ruby -e' \
+      --preview 'pp Gem::Specification.find_by_name({1})' \
+      --bind 'ctrl-o:execute-silent:
+          spec = Gem::Specification.find_by_name({1})
+          [spec.homepage, *spec.metadata.filter { _1.end_with?(&quot;uri&quot;) }.values].uniq.each do
+            system &quot;open&quot;, _1
+          end
+      '
+  - Added change-multi action for dynamically changing --multi option
+        change-multi - enable multi-select mode with no limit
+        change-multi(NUM) - enable multi-select mode with a limit
+        change-multi(0) - disable multi-select mode
+  - Bug fixes and improvements
+</comment>
+    <requestid>1171134</requestid>
+  </revision>
 </revisionlist>
