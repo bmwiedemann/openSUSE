@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Apr 30 19:21:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.6:
+  * Update stable release to v0.16.5 by @michi-covalent in #2510
+  * fix(deps): update github.com/cilium/charts digest to d93188b by
+    @renovate in #2506
+  * chore(deps): update golangci/golangci-lint-action action to v5
+    by @renovate in #2504
+  * chore(deps): update actions/download-artifact action to v4.1.7
+    by @renovate in #2500
+  * chore(deps): update docker/dockerfile:1.7 docker digest to
+    a57df69 by @renovate in #2505
+  * Pin test-connection-disruption using multi-platform image SHA
+    by @michi-covalent in #2513
+  * k8s: remove unused filter functionality from
+    k8sclient.CiliumLogs by @mhofstetter in #2501
+  * chore(deps): update docker.io/library/busybox:stable-glibc
+    docker digest to 735f3e2 by @renovate in #2517
+  * chore(deps): update golangci/golangci-lint-action action to
+    v5.1.0 by @renovate in #2515
+  * chore(deps): update actions/checkout action to v4.1.4 by
+    @renovate in #2514
+  * connectivity: Delete test-conn-disrupt pods immediately after
+    test run by @brb in #2511
+  * Prepare for v0.16.6 release by @michi-covalent in #2516
+
+-------------------------------------------------------------------
 Fri Apr 26 18:51:16 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.5:
