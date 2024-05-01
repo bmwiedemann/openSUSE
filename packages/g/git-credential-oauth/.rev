@@ -7,4 +7,12 @@
     <comment>Git credential helper that authenticates to GitHub and other forges using OAuth.</comment>
     <requestid>1169730</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>33f16df27f0345c616a868a8f187a346</srcmd5>
+    <version>0.11.2</version>
+    <time>1714568212</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1171019</requestid>
+  </revision>
 </revisionlist>

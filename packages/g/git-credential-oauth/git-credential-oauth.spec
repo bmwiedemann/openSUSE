@@ -17,7 +17,7 @@
 
 
 Name:           git-credential-oauth
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 Summary:        Git credential helper that authenticates to GitHub and other forges using OAuth
 License:        Apache-2.0
