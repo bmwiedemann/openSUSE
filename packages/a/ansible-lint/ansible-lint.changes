@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 30 11:35:52 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.2.3:
+  Bugfixes
+  * Make ignore_unreachable accept jinja templates (#4120) @audgirka
+  * Make fix more resilient to syntax-check errors (#4125) @ssbarnea
+  * Don't inject CWD parent into PATH (#4108) @garymm
+  * Do not assume working_directory is github.workspace (#4103) @ajfabbri
+  * Fix yaml rules being included regardless of tags (#4107) @cavcrosby
+  * Allow jinja2 expression for choices field (#4117) @cavcrosby
+  * Update order schema to work with jinja template (#4121) @audgirka
+  * Fix KeyError on key-order rule with blocks (#4116) @Qalthos
+  * Avoid running get_app more than once (#4115) @ssbarnea
+  * Avoid NameError if there is no notify keyword to update (#4113) @Qalthos
+  * Add AstraLinux platform identification (#4111) @dentist128
+
+-------------------------------------------------------------------
 Wed Apr 10 05:40:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.2.2:
