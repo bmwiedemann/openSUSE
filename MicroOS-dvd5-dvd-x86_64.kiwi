@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20240501" schemaversion="4.1">
+<image name="OBS__MicroOS___20240502" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20240501</productvar>
+      <productvar name="VERSION">20240502</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240501,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240502,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240501/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240502/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -573,7 +573,6 @@
       <repopackage name="libbd_part3"/>
       <repopackage name="libbd_swap3"/>
       <repopackage name="libbd_utils3"/>
-      <repopackage name="libblas3"/>
       <repopackage name="libblkid1"/>
       <repopackage name="libblockdev"/>
       <repopackage name="libblockdev3"/>
@@ -604,7 +603,6 @@
       <repopackage name="libcap-ng0"/>
       <repopackage name="libcap2"/>
       <repopackage name="libcares2"/>
-      <repopackage name="libcblas3"/>
       <repopackage name="libcbor0_11"/>
       <repopackage name="libcdda_interface0"/>
       <repopackage name="libcdda_paranoia0"/>
@@ -730,7 +728,6 @@
       <repopackage name="libgdm1"/>
       <repopackage name="libgeocode-glib-2-0"/>
       <repopackage name="libgexiv2-2"/>
-      <repopackage name="libgfortran5"/>
       <repopackage name="libgif7"/>
       <repopackage name="libgio-2_0-0"/>
       <repopackage name="libgiomm-2_68-1"/>
@@ -842,7 +839,6 @@
       <repopackage name="libIex-3_2-31"/>
       <repopackage name="libIlmThread-3_2-31"/>
       <repopackage name="libimaevm4"/>
-      <repopackage name="libimagequant0"/>
       <repopackage name="libImath-3_1-29"/>
       <repopackage name="libimobiledevice-1_0-6"/>
       <repopackage name="libimobiledevice-glue-1_0-0"/>
@@ -1007,7 +1003,6 @@
       <repopackage name="libKSysGuardSystemStats2"/>
       <repopackage name="libKWaylandClient6"/>
       <repopackage name="libkwin6"/>
-      <repopackage name="liblapack3"/>
       <repopackage name="liblastlog2-1"/>
       <repopackage name="libLayerShellQtInterface6"/>
       <repopackage name="liblc3-1"/>
@@ -1090,7 +1085,6 @@
       <repopackage name="libogg0"/>
       <repopackage name="libonig5"/>
       <repopackage name="libopenal1"/>
-      <repopackage name="libopenblas_pthreads0"/>
       <repopackage name="libopenconnect5"/>
       <repopackage name="libopencore-amrnb0"/>
       <repopackage name="libopencore-amrwb0"/>
@@ -1268,7 +1262,6 @@
       <repopackage name="libQt6WlShellIntegration6"/>
       <repopackage name="libQt6Xml6"/>
       <repopackage name="libQtQuick5"/>
-      <repopackage name="libquadmath0"/>
       <repopackage name="libraptor2-0"/>
       <repopackage name="librav1e0_6"/>
       <repopackage name="libraw1394-11"/>
@@ -1713,7 +1706,6 @@
       <repopackage name="python311"/>
       <repopackage name="python311-alembic"/>
       <repopackage name="python311-apipkg"/>
-      <repopackage name="python311-appdirs"/>
       <repopackage name="python311-attrs"/>
       <repopackage name="python311-base"/>
       <repopackage name="python311-blinker"/>
@@ -1721,13 +1713,9 @@
       <repopackage name="python311-cffi"/>
       <repopackage name="python311-charset-normalizer"/>
       <repopackage name="python311-configobj"/>
-      <repopackage name="python311-contourpy"/>
       <repopackage name="python311-cryptography"/>
-      <repopackage name="python311-Cycler"/>
       <repopackage name="python311-dbus-python"/>
       <repopackage name="python311-decorator"/>
-      <repopackage name="python311-FontTools"/>
-      <repopackage name="python311-fs"/>
       <repopackage name="python311-gobject"/>
       <repopackage name="python311-gobject-cairo"/>
       <repopackage name="python311-gobject-Gdk"/>
@@ -1741,22 +1729,15 @@
       <repopackage name="python311-jsonschema"/>
       <repopackage name="python311-jsonschema-specifications"/>
       <repopackage name="python311-keylime"/>
-      <repopackage name="python311-kiwisolver"/>
       <repopackage name="python311-lark"/>
       <repopackage name="python311-Mako"/>
       <repopackage name="python311-MarkupSafe"/>
-      <repopackage name="python311-matplotlib"/>
       <repopackage name="python311-netifaces"/>
-      <repopackage name="python311-networkx"/>
       <repopackage name="python311-nftables"/>
       <repopackage name="python311-notify2"/>
-      <repopackage name="python311-numpy"/>
       <repopackage name="python311-oauthlib"/>
-      <repopackage name="python311-olefile"/>
       <repopackage name="python311-packaging"/>
-      <repopackage name="python311-pandas"/>
       <repopackage name="python311-passlib"/>
-      <repopackage name="python311-Pillow"/>
       <repopackage name="python311-psutil"/>
       <repopackage name="python311-py"/>
       <repopackage name="python311-pycairo"/>
@@ -1765,23 +1746,18 @@
       <repopackage name="python311-pycurl"/>
       <repopackage name="python311-PyJWT"/>
       <repopackage name="python311-pyOpenSSL"/>
-      <repopackage name="python311-pyparsing"/>
       <repopackage name="python311-pyrsistent"/>
       <repopackage name="python311-pyserial"/>
       <repopackage name="python311-pysmbc"/>
-      <repopackage name="python311-python-dateutil"/>
-      <repopackage name="python311-pytz"/>
       <repopackage name="python311-PyYAML"/>
       <repopackage name="python311-pyzmq"/>
       <repopackage name="python311-referencing"/>
       <repopackage name="python311-requests"/>
       <repopackage name="python311-rpds-py"/>
-      <repopackage name="python311-scipy"/>
       <repopackage name="python311-selinux"/>
       <repopackage name="python311-semanage"/>
       <repopackage name="python311-setools"/>
       <repopackage name="python311-setuptools"/>
-      <repopackage name="python311-six"/>
       <repopackage name="python311-SQLAlchemy"/>
       <repopackage name="python311-tornado6"/>
       <repopackage name="python311-typing_extensions"/>

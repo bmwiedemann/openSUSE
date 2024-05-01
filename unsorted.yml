@@ -550,6 +550,7 @@ unsorted:
   - alure 
   - alure-devel 
   - amanda 
+  - amarok-doc 
   - amarok-lang 
   - amazon-ecs-init 
   - amazon-ssm-agent 
@@ -1398,6 +1399,7 @@ unsorted:
   - bitlbee-facebook 
   - bitlbee-steam 
   - bitmap 
+  - bitstream-vera-fonts 
   - bittwist 
   - bitwarden 
   - bitwise 
@@ -7028,6 +7030,7 @@ unsorted:
   - glassfishbuild-maven-plugin 
   - glassfishbuild-maven-plugin-javadoc 
   - gle-devel 
+  - gleam 
   - glew 
   - glew-devel 
   - glfw2-devel 
@@ -7756,13 +7759,17 @@ unsorted:
   - grantleetheme-devel 
   - graphite2 
   - graphite2-devel 
+  - graphviz 
   - graphviz-devel 
   - graphviz-doc 
+  - graphviz-gd 
+  - graphviz-gnome 
   - graphviz-guile 
   - graphviz-gvedit 
   - graphviz-lua 
   - graphviz-perl 
   - graphviz-php 
+  - graphviz-plugins-core 
   - graphviz-ruby 
   - graphviz-smyrna 
   - graphviz-tcl 
@@ -8351,6 +8358,8 @@ unsorted:
   - hmcfgusb 
   - hmconv 
   - hoard 
+  - hobbits 
+  - hobbits-devel 
   - hollywood 
   - hollywood-data 
   - holodev 
@@ -10979,7 +10988,9 @@ unsorted:
   - libOpenEXRUtil-3_2-31-32bit 
   - libOpenIPMI0 
   - libOpenIPMIui1 
-  - libOpenImageDenoise1 
+  - libOpenImageDenoise2 
+  - libOpenImageDenoise_core2_2_2 
+  - libOpenImageDenoise_device_cpu2_2_2 
   - libOpenImageIO2_5 
   - libOpenImageIO_Util2_5 
   - libOpenSceneGraph-devel 
@@ -11593,6 +11604,9 @@ unsorted:
   - libarmnnTfLiteParser24-opencl 
   - libarpack2 
   - libarprec0 
+  - libarrow1600 
+  - libarrow_acero1600 
+  - libarrow_dataset1600 
   - libarrow_flight1600 
   - libarrow_flight_sql1600 
   - libart_lgpl-devel 
@@ -13120,6 +13134,7 @@ unsorted:
   - libglib-testing-0-0 
   - libglib-testing-devel 
   - libglibmm-2_4-1-32bit 
+  - libglog2 
   - libgloox18 
   - libglpk40 
   - libglslang14-32bit 
@@ -13372,6 +13387,7 @@ unsorted:
   - libgtpnl-devel 
   - libgtpnl-tools 
   - libgtpnl0 
+  - libgts-0_7-5 
   - libgudev-1_0-0-32bit 
   - libgudev-1_0-devel 
   - libguess-devel 
@@ -13410,6 +13426,7 @@ unsorted:
   - libgviewv4l2core-2_1-2 
   - libgviewv4l2core-lang 
   - libgvncpulse-1_0-0 
+  - libgvpr2 
   - libgweather4-devel 
   - libgwengui-cpp79 
   - libgwengui-fox16-79 
@@ -13925,6 +13942,7 @@ unsorted:
   - libktorrent-devel 
   - libkwnn0 
   - libkyotocabinet-devel 
+  - liblab_gamut1 
   - liblagraph1 
   - liblagraphx1 
   - liblal20 
@@ -14891,6 +14909,7 @@ unsorted:
   - libparlatype7 
   - libparpack2-openmpi4 
   - libparpack2-openmpi5 
+  - libparquet1600 
   - libparserutils-devel 
   - libparserutils0 
   - libpartio1 
@@ -16178,6 +16197,7 @@ unsorted:
   - libtheoraenc1-32bit 
   - libthreadar-devel 
   - libthreadar1000 
+  - libthrift-0_17_0 
   - libthrift-devel 
   - libthrift_c_glib0 
   - libthriftnb-0_17_0 
@@ -17044,6 +17064,10 @@ unsorted:
   - libzmusic1 
   - libzn_poly-0_9 
   - libzopfli-devel 
+  - libzopfli1 
+  - libzopfli1-x86-64-v3 
+  - libzopflipng1 
+  - libzopflipng1-x86-64-v3 
   - libzrtpcpp-devel 
   - libzrtpcpp4 
   - libzscanner4 
@@ -19381,6 +19405,7 @@ unsorted:
   - nginx 
   - nginx-macros 
   - nginx-module-brotli 
+  - nginx-module-echo 
   - nginx-module-njs 
   - nginx-module-vts 
   - nginx-module-zstd 
@@ -19862,7 +19887,6 @@ unsorted:
   - ogre-devel 
   - ogre-docs 
   - ogre-media 
-  - ogre-mono 
   - ogre-python 
   - ogre-tools 
   - ohcount 
@@ -22477,6 +22501,8 @@ unsorted:
   - plexus-bsh-factory-javadoc 
   - plexus-build-api 
   - plexus-build-api-javadoc 
+  - plexus-build-api0 
+  - plexus-build-api0-javadoc 
   - plexus-cipher 
   - plexus-cipher-javadoc 
   - plexus-classworlds 
@@ -27163,6 +27189,7 @@ unsorted:
   - python310-zignal 
   - python310-zipp 
   - python310-zipstream 
+  - python310-zipstream-ng 
   - python310-zlib-ng 
   - python310-zodbpickle 
   - python310-zope.cachedescriptors 
@@ -27210,6 +27237,7 @@ unsorted:
   - python311-CommonMark 
   - python311-ConfigArgParse 
   - python311-ConfigUpdater 
+  - python311-Cycler 
   - python311-Cython 
   - python311-Cython0 
   - python311-DataProperty 
@@ -27251,6 +27279,7 @@ unsorted:
   - python311-Flask-Testing 
   - python311-Flask-WTF 
   - python311-Flask-doc 
+  - python311-FontTools 
   - python311-FormEncode 
   - python311-Genshi 
   - python311-GitPython 
@@ -27505,6 +27534,7 @@ unsorted:
   - python311-apfel 
   - python311-apiron 
   - python311-apns2 
+  - python311-appdirs 
   - python311-application 
   - python311-applicationinsights 
   - python311-apprise 
@@ -27542,6 +27572,7 @@ unsorted:
   - python311-astropy 
   - python311-astropy-healpix 
   - python311-astropy-iers-data 
+  - python311-asttokens 
   - python311-astunparse 
   - python311-asv 
   - python311-async-lru 
@@ -28118,6 +28149,7 @@ unsorted:
   - python311-confuse 
   - python311-construct 
   - python311-contexter 
+  - python311-contourpy 
   - python311-control 
   - python311-conu 
   - python311-convertdate 
@@ -28427,6 +28459,7 @@ unsorted:
   - python311-exam 
   - python311-exceptiongroup 
   - python311-execnet 
+  - python311-executing 
   - python311-exiv2 
   - python311-expandvars 
   - python311-expects 
@@ -28519,9 +28552,11 @@ unsorted:
   - python311-fqdn 
   - python311-framel 
   - python311-freeipa 
+  - python311-freetype-py 
   - python311-freezegun 
   - python311-frozendict 
   - python311-frozenlist 
+  - python311-fs 
   - python311-fsspec 
   - python311-ftfy 
   - python311-ftputil 
@@ -28570,6 +28605,7 @@ unsorted:
   - python311-glfw 
   - python311-glob2 
   - python311-glucat 
+  - python311-gmpy2 
   - python311-gns3fy 
   - python311-gobject-devel 
   - python311-google-api-core 
@@ -28757,6 +28793,7 @@ unsorted:
   - python311-ipyscales 
   - python311-ipysheet 
   - python311-ipytablewidgets 
+  - python311-ipython 
   - python311-ipython_genutils 
   - python311-ipyvolume 
   - python311-ipyvue 
@@ -28799,6 +28836,7 @@ unsorted:
   - python311-javaproperties 
   - python311-jdatetime 
   - python311-jdcal 
+  - python311-jedi 
   - python311-jeepney 
   - python311-jellyfish 
   - python311-jenkinsapi 
@@ -28880,6 +28918,7 @@ unsorted:
   - python311-kiss-headers 
   - python311-kitchen 
   - python311-kiwi-keg 
+  - python311-kiwisolver 
   - python311-kmatch 
   - python311-kmodpy 
   - python311-knack 
@@ -29037,10 +29076,12 @@ unsorted:
   - python311-material-color-utilities-python 
   - python311-mathgl 
   - python311-mathics-pygments 
+  - python311-matplotlib 
   - python311-matplotlib-cairo 
   - python311-matplotlib-gtk-common 
   - python311-matplotlib-gtk3 
   - python311-matplotlib-gtk4 
+  - python311-matplotlib-inline 
   - python311-matplotlib-latex 
   - python311-matplotlib-nbagg 
   - python311-matplotlib-qt 
@@ -29111,6 +29152,7 @@ unsorted:
   - python311-mpl-animators 
   - python311-mplcursors 
   - python311-mpld3 
+  - python311-mpmath 
   - python311-mrcfile 
   - python311-mrcz 
   - python311-msal 
@@ -29130,6 +29172,7 @@ unsorted:
   - python311-multipledispatch 
   - python311-multivolumefile 
   - python311-munch 
+  - python311-munkres 
   - python311-murmurhash 
   - python311-musicbrainzngs 
   - python311-mutagen 
@@ -29176,6 +29219,7 @@ unsorted:
   - python311-netmiko 
   - python311-netpbmfile 
   - python311-netutils 
+  - python311-networkx 
   - python311-nh3 
   - python311-nibabel 
   - python311-nilearn 
@@ -29282,6 +29326,7 @@ unsorted:
   - python311-pamela 
   - python311-pamqp 
   - python311-pan-python 
+  - python311-pandas 
   - python311-pandas-all 
   - python311-pandas-clipboard 
   - python311-pandas-compression 
@@ -29298,6 +29343,7 @@ unsorted:
   - python311-pandas-performance 
   - python311-pandas-plot 
   - python311-pandas-postgresql 
+  - python311-pandas-pyarrow 
   - python311-pandas-spss 
   - python311-pandas-sql-other 
   - python311-pandas-test 
@@ -29317,6 +29363,7 @@ unsorted:
   - python311-parsedatetime 
   - python311-parsel 
   - python311-parsimonious 
+  - python311-parso 
   - python311-parsy 
   - python311-partd 
   - python311-parted 
@@ -29442,6 +29489,7 @@ unsorted:
   - python311-progressbar2 
   - python311-prometheus-client 
   - python311-promise 
+  - python311-prompt_toolkit 
   - python311-proselint 
   - python311-proto-plus 
   - python311-protobuf 
@@ -29474,6 +29522,7 @@ unsorted:
   - python311-pudb 
   - python311-pulsectl 
   - python311-pulsemixer 
+  - python311-pure-eval 
   - python311-pure-protobuf 
   - python311-pure-sasl 
   - python311-purl 
@@ -29510,6 +29559,7 @@ unsorted:
   - python311-pyalsaaudio 
   - python311-pyaml 
   - python311-pyannotate 
+  - python311-pyarrow 
   - python311-pyarrow-devel 
   - python311-pybars3 
   - python311-pybcj 
@@ -29551,6 +29601,7 @@ unsorted:
   - python311-pydicom 
   - python311-pydicom-data 
   - python311-pydocstyle 
+  - python311-pydot 
   - python311-pydotplus 
   - python311-pydrive2 
   - python311-pydub 
@@ -29566,6 +29617,7 @@ unsorted:
   - python311-pyfeyn 
   - python311-pyfiglet 
   - python311-pyflakes 
+  - python311-pyftpdlib 
   - python311-pyfuse3 
   - python311-pygal 
   - python311-pygaljs 
@@ -29579,6 +29631,7 @@ unsorted:
   - python311-pygments-pytest 
   - python311-pygments-style-railscasts 
   - python311-pygn 
+  - python311-pygraphviz 
   - python311-pyhcl 
   - python311-pyhibp 
   - python311-pyicumessageformat 
@@ -29641,6 +29694,7 @@ unsorted:
   - python311-pyp 
   - python311-pypandoc 
   - python311-pyparallel 
+  - python311-pyparsing 
   - python311-pyperclip 
   - python311-pyperf 
   - python311-pypet 
@@ -29672,6 +29726,7 @@ unsorted:
   - python311-pysaml2 
   - python311-pyscard 
   - python311-pyscreenshot 
+  - python311-pysendfile 
   - python311-pyshark 
   - python311-pyshould 
   - python311-pyshp 
@@ -29972,6 +30027,7 @@ unsorted:
   - python311-releases 
   - python311-remoto 
   - python311-rencode 
+  - python311-reportlab 
   - python311-repoze.lru 
   - python311-repoze.sphinx.autointerface 
   - python311-repoze.who 
@@ -30070,6 +30126,7 @@ unsorted:
   - python311-scikit-learn 
   - python311-scikit-sound 
   - python311-scikit-sparse 
+  - python311-scipy 
   - python311-scipy-gnu-hpc 
   - python311-scipy_1_13_0-gnu-hpc 
   - python311-scitokens 
@@ -30232,6 +30289,7 @@ unsorted:
   - python311-sseclient 
   - python311-sshpubkeys 
   - python311-sshtunnel 
+  - python311-stack-data 
   - python311-starlette 
   - python311-statsd 
   - python311-statsmodels 
@@ -30265,6 +30323,7 @@ unsorted:
   - python311-swapper 
   - python311-swifter 
   - python311-sybil 
+  - python311-sympy 
   - python311-synr 
   - python311-syrupy 
   - python311-system-hotkey310 
@@ -30350,6 +30409,7 @@ unsorted:
   - python311-tpfd 
   - python311-tqdm 
   - python311-traceback2 
+  - python311-traitlets 
   - python311-traits 
   - python311-traitsui 
   - python311-traittypes 
@@ -30401,6 +30461,7 @@ unsorted:
   - python311-ua-parser 
   - python311-ubelt 
   - python311-uc-micro-py 
+  - python311-ufoLib2 
   - python311-ufoProcessor 
   - python311-ufonormalizer 
   - python311-uhashring 
@@ -30408,6 +30469,7 @@ unsorted:
   - python311-uncertainties 
   - python311-unearth 
   - python311-unicodecsv 
+  - python311-unicodedata2 
   - python311-unidiff 
   - python311-unify 
   - python311-uniseg 
@@ -30488,6 +30550,7 @@ unsorted:
   - python311-watermark 
   - python311-wcag-contrast-ratio 
   - python311-wcmatch 
+  - python311-wcwidth 
   - python311-weasyprint 
   - python311-web.py 
   - python311-web_cache 
@@ -30592,6 +30655,7 @@ unsorted:
   - python311-zignal 
   - python311-zipp 
   - python311-zipstream 
+  - python311-zipstream-ng 
   - python311-zlib-ng 
   - python311-zodbpickle 
   - python311-zope.cachedescriptors 
@@ -30612,6 +30676,7 @@ unsorted:
   - python311-zope.testbrowser-test 
   - python311-zope.testing 
   - python311-zope.testrunner 
+  - python311-zopfli 
   - python311-zstandard 
   - python311-zstd 
   - python311-zxcvbn 
@@ -34166,6 +34231,7 @@ unsorted:
   - python312-zignal 
   - python312-zipp 
   - python312-zipstream 
+  - python312-zipstream-ng 
   - python312-zlib-ng 
   - python312-zodbpickle 
   - python312-zope.cachedescriptors 
@@ -36260,6 +36326,7 @@ unsorted:
   - soapysdr0.8-module-uhd 
   - soapysdr0.8-module-xtrx 
   - sobby 
+  - socat-extra 
   - soci-devel 
   - soci-empty-devel 
   - soci-mysql-devel 
