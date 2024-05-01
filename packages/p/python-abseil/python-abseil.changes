@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 30 11:54:36 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- spec: use %{?sle15allpythons} instead of
+  %{?sle15_python_module_pythons} to allow building
+  protobuf for SLE15-SP6 in NON_Public:BuildOPS:hefur
+
+-------------------------------------------------------------------
 Wed Sep 27 10:24:36 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

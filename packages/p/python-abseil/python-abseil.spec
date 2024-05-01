@@ -16,7 +16,7 @@
 #
 
 
-%{?sle15_python_module_pythons}
+%{?sle15allpythons}
 Name:           python-abseil
 Version:        1.4.0
 Release:        0
