@@ -16,14 +16,9 @@
 #
 
 
-# On pre-15 SLE versions, _sharedstatedir was /usr/com -- which is just wrong.
-%if 0%{?suse_version} < 1500
-%define _sharedstatedir /var/lib
-%endif
-
 %define         shlib_version 1
 Name:           lxc
-Version:        5.0.3
+Version:        6.0.0
 Release:        0
 URL:            http://linuxcontainers.org/
 Summary:        Userspace tools for Linux kernel containers
@@ -48,9 +43,11 @@ BuildRequires:  libselinux-devel
 BuildRequires:  libtool
 BuildRequires:  libxslt
 BuildRequires:  meson >= 0.61
+BuildRequires:  pam
 BuildRequires:  pam-devel
 BuildRequires:  pkg-config
 BuildRequires:  systemd-devel
+BuildRequires:  dbus-1-devel
 Requires:       libcap-progs
 Requires:       lxcfs
 Requires:       lxcfs-hooks-lxc
@@ -194,8 +191,9 @@ systemctl is-active -q apparmor && systemctl reload apparmor ||:
 %verifyscript -n liblxc%{shlib_version}
 %verify_permissions -e %{_libexecdir}/%{name}/lxc-user-nic
 
+%check
+
 %files
-%defattr(-,root,root)
 %doc doc/FAQ.txt
 
 # Configuration for LXC.
@@ -216,15 +214,14 @@ systemctl is-active -q apparmor && systemctl reload apparmor ||:
 %config %{_sysconfdir}/apparmor.d/usr.bin.lxc-*
 
 %files -n pam_cgfs
-%defattr(-,root,root)
-%if 0%{?is_opensuse} && 0%{?suse_version} >= 1500
-%_pam_moduledir/pam_cgfs.so
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1699
+%{_pam_moduledir}/pam_cgfs.so
 %else
-/%{_lib}/security/pam_cgfs.so
+%dir /%{_libdir}/security/
+/%{_libdir}/security/pam_cgfs.so
 %endif
 
 %files -n liblxc%{shlib_version}
-%defattr(-,root,root)
 %doc AUTHORS MAINTAINERS
 %license COPYING
 %{_libdir}/lib%{name}.so.*
@@ -250,21 +247,17 @@ systemctl is-active -q apparmor && systemctl reload apparmor ||:
 %config %{_sysconfdir}/apparmor.d/lxc/*
 
 %files -n liblxc-devel
-%defattr(-,root,root)
 %{_libdir}/lib%{name}.so
 %{_includedir}/%name/
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files bash-completion
-%defattr(-,root,root)
 %{_datadir}/bash-completion/
 
 %files ja-doc
-%defattr(-,root,root)
 %{_mandir}/ja/
 
 %files ko-doc
-%defattr(-,root,root)
 %{_mandir}/ko/
 
 %changelog
