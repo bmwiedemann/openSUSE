@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 23 17:14:53 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- 0.4.3
+  * support SHA256 submodules
+  * minor improvements
+
+-------------------------------------------------------------------
 Wed Oct 18 15:20:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - readd git-lfs dependency
