@@ -1,7 +1,7 @@
 #
 # spec file for package clapper
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,69 +16,123 @@
 #
 
 
-%define typelib  typelib-1_0-GstClapper-1
-%define libname  libgstclapper-1_0-0
-%define libname2 libgstclapperglbaseimporter0
-%define appname  com.github.rafostar.Clapper
+%global uuid com.github.rafostar.Clapper
+%global libver 0.0
+%global libsuffix 0.6.0
+%global sover 0
+%global gstlib Clapper
+
+%global gst_version 1.20.0
+%global gtk4_version 4.10.0
+%global meson_version 0.64
+%global glib2_version 2.76.0
+%global adw_version 1.4.0
+
+%bcond_without server
 
 Name:           clapper
-Version:        0.5.2
+Version:        0.6.0
 Release:        0
 Summary:        A GNOME media player built using GJS with GTK4
+Group:          Productivity/Multimedia/Video/Players
 License:        GPL-3.0-or-later
 URL:            https://github.com/Rafostar/clapper
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
-BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
-BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  Mesa-libGLESv3-devel
-BuildRequires:  c++_compiler
-BuildRequires:  c_compiler
 BuildRequires:  desktop-file-utils
-BuildRequires:  meson
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(gjs-1.0)
-BuildRequires:  pkgconfig(gmodule-2.0)
+BuildRequires:  gcc
+BuildRequires:  gobject-introspection
+BuildRequires:  meson >= %{meson_version}
+BuildRequires:  update-desktop-files
+BuildRequires:  vala
+BuildRequires:  pkgconfig(gio-2.0) >= %{glib2_version}
+BuildRequires:  pkgconfig(gio-unix-2.0) >= %{glib2_version}
+BuildRequires:  pkgconfig(glib-2.0) >= %{glib2_version}
+BuildRequires:  pkgconfig(gmodule-2.0) >= %{glib2_version}
+BuildRequires:  pkgconfig(gobject-2.0) >= %{glib2_version}
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.18.0
-BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
-BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gst_version}
+BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= %{gst_version}
+BuildRequires:  pkgconfig(gstreamer-base-1.0) >= %{gst_version}
+BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= %{gst_version}
+BuildRequires:  pkgconfig(gstreamer-tag-1.0) >= %{gst_version}
+BuildRequires:  pkgconfig(gstreamer-video-1.0) >= %{gst_version}
+BuildRequires:  pkgconfig(gtk4) >= %{gtk4_version}
+BuildRequires:  pkgconfig(libadwaita-1) >= %{adw_version}
 
-%description
-A GNOME media player built using GJS with GTK4 toolkit and powered by GStreamer with OpenGL rendering.
+%if %{with server}
+BuildRequires:  pkgconfig(libsoup-3.0)
+BuildRequires:  pkgconfig(microdns) >= 0.2.0
+%endif
+
+%define altlibver %(sed s/[.]/_/g <<< %{libver})
+Requires:       lib%{name}-%{altlibver}-%{sover} = %{version}
+Requires:       lib%{name}-gtk-%{altlibver}-%{sover} = %{version}
+
+Requires:       gstreamer >= %{gst_version}
+Requires:       gstreamer-plugins-bad >= %{gst_version}
+Requires:       gstreamer-plugins-base >= %{gst_version}
+Requires:       gstreamer-plugins-good >= %{gst_version}
+# Popular video decoders
+Recommends:     gstreamer-plugins-libav >= %{gst_version}
+# CD Playback
+Suggests:       gstreamer-plugins-ugly
+# Intel/AMD video acceleration
+Suggests:       gstreamer-plugins-vaapi
+
+%global _description %{expand:
+A modern media player powered by GStreamer and built for the GNOME desktop environment.}
+
+%package -n lib%{name}-%{altlibver}-%{sover}
+Summary:        Media player components
+Group:          Productivity/Multimedia/Video/Players
+License:        LGPL-2.1-or-later
+
+%package -n typelib-1_0-%{gstlib}-%{altlibver}
+Summary:        Introspection bindings for lib%{name}-%{altlibver}-%{sover}
+Group:          System/Libraries
+License:        LGPL-2.1-or-later
+Requires:       lib%{name}-%{altlibver}-%{sover} = %{version}
+
+%package -n lib%{name}-gtk-%{altlibver}-%{sover}
+Summary:        GTK media player component
+Group:          Productivity/Multimedia/Video/Players
+License:        LGPL-2.1-or-later
+Requires:       lib%{name}-%{altlibver}-%{sover} = %{version}
+
+%package -n typelib-1_0-%{gstlib}Gtk-%{altlibver}
+Summary:        Introspection bindings for lib%{name}-gtk-%{altlibver}-%{sover}
+Group:          System/Libraries
+License:        LGPL-2.1-or-later
+Requires:       lib%{name}-gtk-%{altlibver}-%{sover} = %{version}
 
 %package devel
 Summary:        Development files for %{name}
-Requires:       %{libname2} = %{version}
-Requires:       %{libname} = %{version}
-Requires:       %{typelib} = %{version}
+Group:          Development/Libraries/C and C++
+License:        LGPL-2.1-or-later
+Requires:       lib%{name}-%{altlibver}-%{sover} = %{version}
+Requires:       lib%{name}-gtk-%{altlibver}-%{sover} = %{version}
 
-%description devel
-%{summary}.
+%description %{_description}
 
-%package -n %{typelib}
-Summary:        Clapper library typelib
+%description -n lib%{name}-%{altlibver}-%{sover} %{_description}
 
-%description -n %{typelib}
-%{summary}.
+%description -n typelib-1_0-%{gstlib}-%{altlibver} %{_description}
+This subpackage provides the GObject Introspection bindings for
+lib%{name}-%{altlibver}-%{sover}.
 
-%package -n %{libname}
-Summary:        Library for %{name}
-Obsoletes:      libgstclapper-1 < 0.5
-Provides:       libgstclapper-1 = 0.5
+%description -n lib%{name}-gtk-%{altlibver}-%{sover} %{_description}
 
-%description -n %{libname}
-%{summary}.
+%description -n typelib-1_0-%{gstlib}Gtk-%{altlibver} %{_description}
+This subpackage provides the GObject Introspection bindings for
+lib%{name}-gtk-%{altlibver}-%{sover}.
 
-%package -n %{libname2}
-Summary:        Library for %{name}
+%description devel %{_description}
 
-%description -n %{libname2}
-%{summary}.
+This subpackage holds the required files to compile against
+lib%{name}.
 
 %lang_package
 
@@ -87,56 +141,67 @@ Summary:        Library for %{name}
 
 %build
 %meson \
+	-Dserver=%{?with_server:enabled}%{!?with_server:disabled} \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
+%suse_update_desktop_file %{uuid}
 
-%find_lang %{appname}
+%find_lang %{name}-app
+%find_lang %{name}-gtk
 
-%ldconfig_scriptlets -n %{libname}
-%ldconfig_scriptlets -n %{libname2}
+%ldconfig_scriptlets -n lib%{name}-%{altlibver}-%{sover}
+%ldconfig_scriptlets -n lib%{name}-gtk-%{altlibver}-%{sover}
 
 %check
-desktop-file-validate %{buildroot}%{_datadir}/applications/%{appname}.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{uuid}.desktop
 
 %files
-%license COPYING
+%license COPYING-GPL
 %doc README.md
 %{_bindir}/%{name}
-%{_bindir}/%{appname}
-%{_datadir}/%{appname}/
-%{_datadir}/glib-2.0/schemas/%{appname}.gschema.xml
-%{_datadir}/icons/hicolor/*/*/*.svg
-%{_datadir}/metainfo/%{appname}.metainfo.xml
-%{_datadir}/mime/packages/%{appname}.xml
-%{_datadir}/applications/%{appname}.desktop
-%{_datadir}/dbus-1/services/%{appname}.service
-%dir %{_libdir}/clapper-1.0
-%dir %{_libdir}/clapper-1.0/gst
-%dir %{_libdir}/clapper-1.0/gst/plugin
-%dir %{_libdir}/clapper-1.0/gst/plugin/importers
-%{_libdir}/clapper-1.0/gst/plugin/importers/*.so
-%dir %{_libdir}/gstreamer-1.0
-%{_libdir}/gstreamer-1.0/*.so
+%{_datadir}/applications/%{uuid}.desktop
+%{_datadir}/dbus-1/services/%{uuid}.service
+%{_datadir}/glib-2.0/schemas/%{uuid}.gschema.xml
+%{_datadir}/icons/hicolor/*/apps/%{uuid}*.svg
+%{_datadir}/metainfo/%{uuid}.metainfo.xml
+%{_datadir}/mime/packages/%{uuid}.xml
 
-%files -n %{libname}
-%dir %{_libdir}/%{appname}
-%{_libdir}/%{appname}/*.so.*
+%files -n lib%{name}-%{altlibver}-%{sover}
+%license COPYING-LGPL
+%{_libdir}/lib%{name}-%{libver}.so.%{sover}
+%{_libdir}/lib%{name}-%{libver}.so.%{libsuffix}
 
-%files -n %{libname2}
-%{_libdir}/libgstclapperglbaseimporter.so.*
+%{_libdir}/libgst%{name}glcontexthandler.so.%{sover}
+%{_libdir}/libgst%{name}glcontexthandler.so.%{libsuffix}
+%{_libdir}/gstreamer-1.0/libgst%{name}.so
+%{_libdir}/%{name}-%{libver}/
 
-%files -n %{typelib}
-%dir %{_libdir}/%{appname}/girepository-1.0
-%{_libdir}/%{appname}/girepository-1.0/GstClapper-1.0.typelib
+%files -n typelib-1_0-%{gstlib}-%{altlibver}
+%{_libdir}/girepository-1.0/%{gstlib}-%{libver}.typelib
+
+%files -n lib%{name}-gtk-%{altlibver}-%{sover}
+%license COPYING-LGPL
+%{_libdir}/lib%{name}-gtk-%{libver}.so.%{sover}
+%{_libdir}/lib%{name}-gtk-%{libver}.so.%{libsuffix}
+
+%files -n typelib-1_0-%{gstlib}Gtk-%{altlibver}
+%{_libdir}/girepository-1.0/%{gstlib}Gtk-%{libver}.typelib
 
 %files devel
-%{_libdir}/%{appname}/*.so
-%{_libdir}/*.so
-%{_datadir}/gir-1.0/GstClapper-1.0.gir
+%{_datadir}/gir-1.0/%{gstlib}-%{libver}.gir
+%{_datadir}/gir-1.0/%{gstlib}Gtk-%{libver}.gir
+%{_datadir}/vala/vapi/%{name}-%{libver}.{deps,vapi}
+%{_datadir}/vala/vapi/%{name}-gtk-%{libver}.{deps,vapi}
+%{_includedir}/%{name}-%{libver}/
+%{_libdir}/lib%{name}-%{libver}.so
+%{_libdir}/lib%{name}-gtk-%{libver}.so
+%{_libdir}/libgst%{name}glcontexthandler.so
+%{_libdir}/pkgconfig/%{name}-%{libver}.pc
+%{_libdir}/pkgconfig/%{name}-gtk-%{libver}.pc
 
-%files lang -f %{appname}.lang
+%files lang -f %{name}-app.lang -f %{name}-gtk.lang
 
 %changelog
