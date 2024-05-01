@@ -183,6 +183,10 @@ mkdir -p %{buildroot}%{_datadir}/gstreamer-%{gst_branch}/presets
 install -m644 -D %{SOURCE1} %{buildroot}%{_fileattrsdir}/gstreamer.attr
 install -m755 -D %{SOURCE2} %{buildroot}%{_rpmconfigdir}/gstreamer-provides
 
+%if %{suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}%{_libexecdir}/gstreamer-*/*
+%endif
+
 %verifyscript
 %verify_permissions -e %{_libexecdir}/gstreamer-%{gst_branch}/gst-ptp-helper
 
