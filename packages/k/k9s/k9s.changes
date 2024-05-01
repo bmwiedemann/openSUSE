@@ -41,7 +41,7 @@ Sat Mar 16 17:38:56 UTC 2024 - opensuse_buildservice@ojkastl.de
 -------------------------------------------------------------------
 Sat Mar 16 17:36:06 UTC 2024 - opensuse_buildservice@ojkastl.de
 
-- Update to version 0.32.0:
+- Update to version 0.32.0 (bsc#1220207, CVE-2024-26147):
   * #2569 k9s panics on start if the main config file (config.yml)
     is owned by root
   * #2568 kube context in running k9s is no longer sticky, during
