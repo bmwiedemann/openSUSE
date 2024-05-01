@@ -18,8 +18,6 @@
 
 
 %define mchange_commons_min_version 0.2.15
-%define mchange_commons_version %(rpm -q --qf '%%{VERSION}' mchange-commons)
-
 Name:           c3p0
 Version:        0.9.5.5
 Release:        0
@@ -30,18 +28,19 @@ URL:            https://www.mchange.com/projects/c3p0/
 Source0:        http://downloads.sourceforge.net/sourceforge/c3p0/c3p0-%{version}.src.tgz
 Patch1:         %{name}-javadoc.patch
 BuildRequires:  ant
+BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local >= 6
+BuildRequires:  junit
+BuildRequires:  mchange-commons >= %{mchange_commons_min_version}
+Provides:       hibernate_jdbc_cache
+BuildArch:      noarch
 %if !0%{?rhel}
 BuildRequires:  ant-nodeps
 %endif
-BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
-BuildRequires:  junit
-BuildRequires:  mchange-commons >= %{mchange_commons_min_version}
 %if 0%{?rhel} >= 9
 BuildRequires:  xmvn-tools
 %endif
-Requires:       mchange-commons = %{mchange_commons_version}
 %if 0%{?rhel}
 Requires(post): chkconfig
 Requires(postun): chkconfig
@@ -49,8 +48,6 @@ Requires(postun): chkconfig
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
-Provides:       hibernate_jdbc_cache
-BuildArch:      noarch
 
 %description
 c3p0 is a library for augmenting traditional (DriverManager-based)
@@ -79,31 +76,29 @@ ant \
     jar javadoc
 
 sed -i "s/@c3p0.version.maven@/%{version}/g" src/maven/pom.xml
-sed -i "s/@mchange-commons-java.version.maven@/%{mchange_commons_version}/g" \
+sed -i "s/@mchange-commons-java.version.maven@/%{mchange_commons_min_version}/g" \
   src/maven/pom.xml
-%mvn_artifact src/maven/pom.xml build/%{name}-%{version}.jar
+%{mvn_artifact} src/maven/pom.xml build/%{name}-%{version}.jar
 
 %install
 %if 0%{?rhel}
 %mvn_install
 %else
 # jars
-mkdir -p %{buildroot}%{_javadir}
-cp -p build/%{name}-%{version}.jar \
-  %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}.jar; do ln -sf ${jar} `echo $jar| sed "s|-%{version}||g"`; done)
+install -d -m 0755 %{buildroot}%{_javadir}
+install -p -m 0644 build/%{name}-%{version}.jar \
+  %{buildroot}%{_javadir}/%{name}.jar
 
 # poms
-mkdir -p %{buildroot}%{_mavenpomdir}
-cp -p src/maven/pom.xml %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
-%add_maven_depmap %{name}-%{version}.pom %{name}-%{version}.jar -a c3p0:c3p0
+install -d -m 0755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} src/maven/pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar -a c3p0:c3p0
 %endif
 
 # javadoc
-mkdir -p %{buildroot}%{_javadocdir}/%{name}-%{version}
-cp -pr build/apidocs/* %{buildroot}%{_javadocdir}/%{name}-%{version}
-ln -s %{name}-%{version} %{buildroot}%{_javadocdir}/%{name}
-%fdupes -s %{buildroot}%{_javadocdir}/%{name}-%{version}
+mkdir -p %{buildroot}%{_javadocdir}/%{name}
+cp -pr build/apidocs/* %{buildroot}%{_javadocdir}/%{name}
+%fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 # hibernate_jdbc_cache ghost symlink
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
@@ -119,20 +114,13 @@ if [ "$1" = 0 ] ; then
   update-alternatives --remove hibernate_jdbc_cache %{_javadir}/%{name}.jar
 fi
 
-%files
+%files -f .mfiles
 %license src/dist-static/LICENSE
 %doc src/doc/index.html
-%{_javadir}/*
-%{_mavenpomdir}/*
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml
-%endif
+%{_javadir}/hibernate_jdbc_cache.jar
 %ghost %{_sysconfdir}/alternatives/hibernate_jdbc_cache.jar
 
 %files javadoc
-%{_javadocdir}/%{name}-%{version}
 %{_javadocdir}/%{name}
 
 %changelog

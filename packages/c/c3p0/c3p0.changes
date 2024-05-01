@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 30 11:48:06 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Simplify the spec: remove old macros and avoid versioned jars
+
+-------------------------------------------------------------------
 Wed Feb 21 08:35:16 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

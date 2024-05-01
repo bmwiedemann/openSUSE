@@ -47,4 +47,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148452</requestid>
   </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>a87113662bd1202db18d9c152dab289c</srcmd5>
+    <version>0.9.5.5</version>
+    <time>1714568155</time>
+    <user>dimstar_suse</user>
+    <comment>Simplify the spec: remove old macros and avoid versioned jars</comment>
+    <requestid>1170974</requestid>
+  </revision>
 </revisionlist>
