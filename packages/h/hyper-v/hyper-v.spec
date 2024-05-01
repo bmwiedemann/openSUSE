@@ -1,7 +1,7 @@
 #
 # spec file for package hyper-v
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,6 +24,7 @@
 Name:           hyper-v
 ExclusiveArch:  %ix86 x86_64 aarch64
 %{?systemd_requires}
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(systemd)
 # Due to usage of char device instead of netlink
 Conflicts:      kernel < 4.2
@@ -32,7 +33,7 @@ License:        GPL-2.0-only
 Group:          System/Kernel
 Supplements:    modalias(dmi:*svnMicrosoftCorporation*pnVirtualMachine*rnVirtualMachine*)
 Supplements:    modalias(pci:v00001414d00005353sv*sd*bc*sc*i*)
-Url:            http://www.kernel.org
+URL:            http://www.kernel.org
 # Arbitrary version number
 Version:        8
 Release:        0
@@ -109,15 +110,7 @@ mkdir -p $RPM_BUILD_ROOT%{helper_dir}/bin
 install -m755 %{hv_kvp_daemon} $RPM_BUILD_ROOT${bindir}
 install -m755 %{hv_vss_daemon} $RPM_BUILD_ROOT${bindir}
 install -m755 %{hv_fcopy_daemon} $RPM_BUILD_ROOT${bindir}
-sed '
-1 {
-%if 0%{?suse_version} > 1315
-s@^.*@#!%{_bindir}/python3@
-%else
-s@^.*@#!%{_bindir}/python2@
-%endif
-}
-' %{S:0} > $RPM_BUILD_ROOT%{_sbindir}/lsvmbus
+cp -avL %{S:0} $RPM_BUILD_ROOT%{_sbindir}/lsvmbus
 chmod 0755 $RPM_BUILD_ROOT%{_sbindir}/lsvmbus
 cp -avL %{S:20} $RPM_BUILD_ROOT%{helper_dir}/bin/hv_get_dhcp_info
 cp -avL %{S:21} $RPM_BUILD_ROOT%{helper_dir}/bin/hv_get_dns_info
@@ -210,6 +203,7 @@ fi
 EOF
 chmod 755 $RPM_BUILD_ROOT${bindir}/${helper}
 #
+%python3_fix_shebang
 
 %files
 %doc kvptest.ps1.txt

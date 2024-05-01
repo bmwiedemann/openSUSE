@@ -468,4 +468,12 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1149030 from dimstar)</comment>
     <requestid>1149224</requestid>
   </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>aad902319f1097acf6e6a3ece0de84fe</srcmd5>
+    <version>8</version>
+    <time>1714568131</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1170959</requestid>
+  </revision>
 </revisionlist>
