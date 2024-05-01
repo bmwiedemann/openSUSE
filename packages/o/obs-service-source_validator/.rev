@@ -684,4 +684,12 @@ last submission had wrong tar ball for unknown reason</comment>
   * Modifications in line with latest cargo vendor tool</comment>
     <requestid>1164389</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>bd7502610456eafffaf6dff7b51ba6f0</srcmd5>
+    <version>0.35</version>
+    <time>1714568259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1171105</requestid>
+  </revision>
 </revisionlist>

@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version}
+%define build_pkg_name build
+%else
+%define build_pkg_name obs-build
+%endif
+
 Name:           obs-service-source_validator
 Version:        0.35
 Release:        0
@@ -25,10 +31,10 @@ Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/obs-service-source_validator
 # use osc service mr to update
 Source:         %{name}-%{version}.tar.zst
-BuildRequires:  build
+BuildRequires:  %{build_pkg_name}
 BuildRequires:  zstd
 Requires:       %{_bindir}/xmllint
-Requires:       build
+Requires:       %{build_pkg_name}
 Requires:       patch
 Requires:       perl-TimeDate
 Provides:       osc-source_validator = %{version}
