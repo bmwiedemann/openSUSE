@@ -1,7 +1,7 @@
 #
 # spec file for package host-spawn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           host-spawn
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        A reimplementation of flatpak-spawn --host
 License:        MIT-0
 URL:            https://github.com/1player/host-spawn
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-BuildRequires:  golang(API) >= 1.18
 BuildRequires:  zstd
+BuildRequires:  golang(API) >= 1.18
 
 %description
 Run commands on your host machine from inside your flatpak sandbox, toolbox or distrobox containers.

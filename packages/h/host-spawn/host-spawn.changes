@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 28 03:08:16 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 1.5.1
+  * Update golang.org/x/sys dependency to v0.15.0.
+  * Refactor build scripts to target single architecture 
+
+-------------------------------------------------------------------
 Mon Nov 13 21:28:39 UTC 2023 - Michal Vyskocil <michal.vyskocil@gmail.com>
 
 - Run spec-cleaner, remove pointless FIXME comment 
