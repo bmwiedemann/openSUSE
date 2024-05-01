@@ -209,4 +209,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148594</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>757a870cc724802cfdc8ed1017ba550c</srcmd5>
+    <version>0.2.15</version>
+    <time>1714568094</time>
+    <user>dimstar_suse</user>
+    <comment>This runs with java 8 just fine</comment>
+    <requestid>1170851</requestid>
+  </revision>
 </revisionlist>

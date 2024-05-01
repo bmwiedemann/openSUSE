@@ -16,6 +16,9 @@
 #
 
 
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           jsch
 Version:        0.2.15
 Release:        0
@@ -36,8 +39,7 @@ BuildRequires:  javapackages-local >= 6
 BuildRequires:  jna
 BuildRequires:  jna-contrib
 BuildRequires:  slf4j
-# The jar still works with Java 8
-Requires:       java >= 1.8
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
