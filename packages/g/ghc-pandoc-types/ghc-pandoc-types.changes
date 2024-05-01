@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 23 04:45:52 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-types to version 1.23.1 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Nov 16 00:17:15 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update pandoc-types to version 1.23.1 revision 1.
