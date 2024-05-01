@@ -17,7 +17,7 @@
 
 
 Name:           python-jplephem
-Version:        2.21
+Version:        2.22
 Release:        0
 Summary:        Planet position predictor using a JPL ephemeris
 License:        MIT

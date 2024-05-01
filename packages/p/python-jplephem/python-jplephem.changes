@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 29 14:58:11 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.22
+  * No changelog. Notable commit messages:
+  * Move julian_day() routine to new calendar module
+  * Switch to calendar dates for printing SPK segments
+  * Add compute_julian_date() as a user convenience,
+  * Various CI updates
+
+-------------------------------------------------------------------
 Sun Mar 24 11:47:39 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.21
