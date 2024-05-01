@@ -17,7 +17,7 @@
 
 
 Name:           slirp4netns
-Version:        1.2.3
+Version:        1.3.0
 Release:        0
 Summary:        User-mode networking for unprivileged network namespaces
 License:        BSD-2-Clause AND GPL-2.0-only AND MIT
