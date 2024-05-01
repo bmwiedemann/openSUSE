@@ -1,7 +1,7 @@
 #
 # spec file for package python-cairocffi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cairocffi
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        Python cairo bindings based on cffi
 License:        BSD-3-Clause
@@ -27,7 +27,7 @@ URL:            https://github.com/Kozea/cairocffi
 Source:         https://files.pythonhosted.org/packages/source/c/cairocffi/cairocffi-%{version}.tar.gz
 # avoid pikepdf in Ring1, skipping the pikepdf related tests
 Patch1:         skip-pikepdf.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module cffi >= 1.1.0}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
