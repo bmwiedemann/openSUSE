@@ -59,4 +59,12 @@
   * fixes for sender getting too far ahead or receiver that can cause instability with reliable packets</comment>
     <requestid>857146</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e15918144c93b5ec543ab62347030afa</srcmd5>
+    <version>1.3.18</version>
+    <time>1714568255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1171084</requestid>
+  </revision>
 </revisionlist>
