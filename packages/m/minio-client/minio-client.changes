@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 30 11:00:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240429T095605Z:
+  * fix: divde by zero for decom status (#4908)
+  * enabling MC_DISABLE_PAGER and --dp (#4909)
+  * Fix the percent of pool used (#4910)
+  * scanner token buffer can overflow use bufio.NewReader() (#4912)
+  * move to crypto/sha256 instead of sha256-simd (#4911)
+  * fix: docker hotfix binaries
+  * fix: docker hotfix container builds
+  * Show ILM Expiry Replication status only if enabled (#4900)
+
+-------------------------------------------------------------------
 Fri Apr 19 04:49:30 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240418T164529Z:
