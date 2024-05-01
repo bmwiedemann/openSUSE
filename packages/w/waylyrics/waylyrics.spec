@@ -17,7 +17,7 @@
 
 
 Name:           waylyrics
-Version:        0.3.5
+Version:        0.3.8
 Release:        0
 Summary:        The furry way to show desktop lyrics
 License:        MIT
@@ -69,7 +69,7 @@ cp -r res/icons %{buildroot}%{_datadir}/icons
 
 %check
 export WAYLYRICS_THEME_PRESETS_DIR=%{_datadir}/waylyrics/themes
-%{cargo_test} --locked --no-default-features --features mimalloc,tray-icon
+%{cargo_test} --locked --features=offline-test
 
 %files
 %license LICENSE

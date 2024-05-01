@@ -309,4 +309,36 @@ The upstream has developed for a long time and waylyrics has been stable, althou
   * Update metainfo to v0.3.0</comment>
     <requestid>1170299</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ac41295b2bfc8c3dc4b40ccb54a46c72</srcmd5>
+    <version>0.3.8</version>
+    <time>1714568201</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.8:
+  * chore: release v0.3.8
+  * i18n: translate 'import lyric' &amp; translated/original lyric
+  * build: do not strip binary by default [ci skip]
+  * chore(deps): bump dependencies [ci skip]
+  * feat: import local lrc in tray &amp; csd menu
+  * docs(readme): intro waylyrics-sakura-translator [ci skip]
+  * chore: release v0.3.7
+  * feat: emit LoadLyricCache signal on lyric cache load
+  * chore: release v0.3.6
+  * fix(typo): import-lrc -&gt; import-lyric
+  * feat: select local LRC file to import
+  * refactor: inline variable &quot;text&quot;
+  * Avoid starting with article in summary
+  * build: migrate to ksni 0.2.2
+  * feat: allow LRC line that starts with [xxx] without ':'
+  * fix: disable local lrc hint on `enable-local-lyric=false`
+  * docs(install-en): add flatpak installation link
+  * docs(install): add flatpak installation link
+  * fix: missing import
+  * feat: disable loading local lyric
+  * refactor: Change net-test to offline-test
+  * chore: add archlinuxcn in installation guide
+  * feat(tray): refetch-lyric for windows
+  * refactor: store dbus connection instead of gapplication</comment>
+    <requestid>1171010</requestid>
+  </revision>
 </revisionlist>

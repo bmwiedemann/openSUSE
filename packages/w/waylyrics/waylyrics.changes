@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Apr 30 13:12:46 UTC 2024 - xtexchooser@duck.com
+
+- Update to version 0.3.8:
+  * chore: release v0.3.8
+  * i18n: translate 'import lyric' & translated/original lyric
+  * build: do not strip binary by default [ci skip]
+  * chore(deps): bump dependencies [ci skip]
+  * feat: import local lrc in tray & csd menu
+  * docs(readme): intro waylyrics-sakura-translator [ci skip]
+  * chore: release v0.3.7
+  * feat: emit LoadLyricCache signal on lyric cache load
+  * chore: release v0.3.6
+  * fix(typo): import-lrc -> import-lyric
+  * feat: select local LRC file to import
+  * refactor: inline variable "text"
+  * Avoid starting with article in summary
+  * build: migrate to ksni 0.2.2
+  * feat: allow LRC line that starts with [xxx] without ':'
+  * fix: disable local lrc hint on `enable-local-lyric=false`
+  * docs(install-en): add flatpak installation link
+  * docs(install): add flatpak installation link
+  * fix: missing import
+  * feat: disable loading local lyric
+  * refactor: Change net-test to offline-test
+  * chore: add archlinuxcn in installation guide
+  * feat(tray): refetch-lyric for windows
+  * refactor: store dbus connection instead of gapplication
+
+-------------------------------------------------------------------
 Fri Apr 26 11:16:31 UTC 2024 - xtexchooser@duck.com
 
 - Update to version 0.3.5:
