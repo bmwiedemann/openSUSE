@@ -23,22 +23,26 @@
 %endif
 
 %define shlib libsymspg2
+%define shlib_fort libspglib_f08-2
 Name:           spglib
-Version:        2.2.0
+Version:        2.4.0
 Release:        0
 Summary:        Find and handle crystal symmetries
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Physics
 URL:            https://spglib.github.io/spglib/
 Source0:        https://github.com/spglib/spglib/archive/v%{version}.tar.gz#/spglib-%{version}.tar.gz
-BuildRequires:  cmake
 BuildRequires:  c++_compiler
+BuildRequires:  cmake >= 3.24
+BuildRequires:  gcc-fortran
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-setuptools
 %if %{with tests}
-BuildRequires:  python3-pytest
+BuildRequires:  gmock
 BuildRequires:  python3-PyYAML
+BuildRequires:  python3-pytest
+BuildRequires:  pkgconfig(gmock)
 BuildRequires:  pkgconfig(gtest)
 %endif
 
@@ -76,13 +80,33 @@ Requires:       python3-numpy
 %description -n python3-spglib
 Spglib is a C library to find and handle crystal symmetries.
 
+%package -n %{shlib_fort}
+Summary:        Shared library for SPGLIB fortran bindings
+
+%description -n %{shlib_fort}
+Spglib is a C library to find and handle crystal symmetries.
+
+This package provides the shared library for fortran bindings of %{name}.
+
+%package -n spglib_f08-devel
+Summary:        Headers and sources for spglib fortran bindings
+Requires:       %{shlib_fort} = %{version}
+
+%description -n spglib_f08-devel
+Spglib is a C library to find and handle crystal symmetries.
+
+This package provides the headers and sources for fortran bindings of %{name}.
+
 %prep
 %setup -q
 %autopatch -p1
 
 %build
 %cmake \
+  -DSPGLIB_SHARED_LIBS:BOOL=ON \
+  -DSPGLIB_WITH_Fortran:BOOL=ON \
   -DSPGLIB_WITH_Python:BOOL=ON \
+  -DCMAKE_INSTALL_MODULEDIR=%{_libdir} \
   -DSPGLIB_WITH_TESTS:BOOL=%{?with_tests:ON}%{!?with_tests:OFF} \
   %{nil}
 %cmake_build
@@ -94,18 +118,18 @@ Spglib is a C library to find and handle crystal symmetries.
 chmod 644 ruby/*.rb
 
 # Remove shared library and header copies from python directory
-rm -Rf %{python3_sitearch}/spglib/include
-rm -Rf %{python3_sitearch}/spglib/libsymspg.so*
+rm -Rf %{buildroot}%{python3_sitearch}/spglib/include
+rm -Rf %{buildroot}%{python3_sitearch}/spglib/lib
 
 %check
 %if %{with tests}
-export PYTHONPATH=%{buildroot}%{python_sitearch} 
+export PYTHONPATH=%{buildroot}%{python_sitearch}
 export PYTHONDONTWRITEBYTECODE=1
 %ctest
 %endif
 
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib}
+%ldconfig_scriptlets -n %{shlib_fort}
 
 %files -n %{shlib}
 %license COPYING
@@ -117,8 +141,21 @@ export PYTHONDONTWRITEBYTECODE=1
 %{_libdir}/libsymspg.so
 %{_libdir}/cmake/Spglib
 %{_libdir}/pkgconfig/spglib.pc
+%exclude %{_libdir}/cmake/Spglib/*fortran*
 
 %files -n python3-spglib
 %{python3_sitearch}/spglib
+
+%files -n %{shlib_fort}
+%license COPYING
+%{_libdir}/libspglib_f08.so.2*
+
+%files -n spglib_f08-devel
+%license COPYING
+%{_includedir}/*.F90
+%{_libdir}/libspglib_f08.so
+%{_libdir}/spglib_f08.mod
+%{_libdir}/pkgconfig/spglib_f08.pc
+%{_libdir}/cmake/Spglib/*fortran*
 
 %changelog

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 25 09:42:36 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.0:
+  * New features:
+    - feat: Refactor CMake project (gh#spglib/spglib#397).
+    - feat: Switch to importlib.resources (gh#spglib/spglib#308).
+    - feat: Mark C functions as deprecated (gh#spglib/spglib#435).
+    - feat: Explicitly mark exported API (gh#spglib/spglib#437).
+  * Bug fix: Python installation when running outside skbuild
+    (gh#spglib/spglib#335).
+- Build fortran bindings and split put separate shared lib and
+  devel packages for fortran.
+- BuildRequires: pkgconfig(gmock) required for tests.
+
+-------------------------------------------------------------------
 Sat Jan  6 12:53:47 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 2.2.0:
