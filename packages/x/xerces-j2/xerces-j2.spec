@@ -147,18 +147,12 @@ update-alternatives --remove jaxp_parser_impl %{_javadir}/%{name}.jar >/dev/null
 # it deletes the link, set it up again
 ln -sf %{name}.jar %{_javadir}/jaxp_parser_impl.jar
 
-%files
+%files -f .mfiles
 %license LICENSE
 %doc NOTICE README
 %{_bindir}/*
-%{_javadir}/*
 %{_mandir}/*/*
-%{_mavenpomdir}/*
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%endif
+%{_javadir}/jaxp_parser_impl.jar
 
 %files javadoc
 %{_javadocdir}/%{name}

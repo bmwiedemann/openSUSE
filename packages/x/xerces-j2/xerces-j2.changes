@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 30 12:23:31 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Simplify the spec file: remove old macros
+
+-------------------------------------------------------------------
 Tue Feb 20 14:48:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

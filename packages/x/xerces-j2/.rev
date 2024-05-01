@@ -345,4 +345,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148115</requestid>
   </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>b4b21189ed264873596d70d169dd6ca5</srcmd5>
+    <version>2.12.2</version>
+    <time>1714568141</time>
+    <user>dimstar_suse</user>
+    <comment>Simplify the spec file: remove old macros</comment>
+    <requestid>1170986</requestid>
+  </revision>
 </revisionlist>
