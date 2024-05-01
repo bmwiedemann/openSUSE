@@ -1,0 +1,5 @@
+<package name="gping" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:utilities" package="gping"/>
+</package>

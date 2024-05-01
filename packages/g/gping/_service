@@ -1,0 +1,8 @@
+<services>
+  <service mode="manual" name="download_files" />
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">gping-v*</param>
+     <param name="compression">zst</param>
+     <param name="update">true</param>
+  </service>
+</services>
