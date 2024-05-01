@@ -25,4 +25,12 @@
   * Avoid including SIMD headers when compiling with nvcc</comment>
     <requestid>1095666</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3b968f3ecd6e3d4159933b2d1a47d7af</srcmd5>
+    <version>0.8.1</version>
+    <time>1714568264</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1171110</requestid>
+  </revision>
 </revisionlist>

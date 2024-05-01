@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 25 08:48:55 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Pass CMAKE_CXX_STANDARD=14 to cmake to allow building tests
+  against gtest >= 1.14.0.
+
+-------------------------------------------------------------------
 Tue Jun 27 15:49:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.1:
