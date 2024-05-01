@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 29 09:32:13 UTC 2024 - pgajdos@suse.com
+
+- usage of %python3_fix_shebang to cover /usr/bin is also
+  needed [bsc#1212476]
+
+-------------------------------------------------------------------
 Wed Mar 13 11:43:15 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

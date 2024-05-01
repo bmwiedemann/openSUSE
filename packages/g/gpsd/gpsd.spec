@@ -277,6 +277,7 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %suse_update_desktop_file -r xgpsspeed System Monitor
 %suse_update_desktop_file -r xgps System Monitor
 
+%python3_fix_shebang
 %if %{suse_version} >= 1600
 %python_expand %python3_fix_shebang_path %{buildroot}%{$python_sitearch}/gps/*
 %endif
