@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          125
-%define mainver        %major.0.2
-%define orig_version   125.0.2
+%define mainver        %major.0.3
+%define orig_version   125.0.3
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -98,8 +98,8 @@ BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
 BuildRequires:  memory-constraints
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
-BuildRequires:  gcc12
-BuildRequires:  gcc12-c++
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -382,8 +382,8 @@ export MOZ_TELEMETRY_REPORTING=1
 export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 export CFLAGS="%{optflags}"
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
-export CC=gcc-12
-export CXX=g++-12
+export CC=gcc-13
+export CXX=g++-13
 %else
 %if 0%{?clang_build} == 0
 export CC=gcc

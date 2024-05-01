@@ -6741,4 +6741,12 @@
     selected, the tab key now only reaches the first option</comment>
     <requestid>1169983</requestid>
   </revision>
+  <revision rev="426" vrev="1">
+    <srcmd5>2f42eb3bc2cfa63ddfbc6d62f5011e06</srcmd5>
+    <version>125.0.3</version>
+    <time>1714568095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1170867</requestid>
+  </revision>
 </revisionlist>

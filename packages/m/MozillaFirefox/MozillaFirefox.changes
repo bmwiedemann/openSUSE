@@ -1,10 +1,34 @@
 -------------------------------------------------------------------
+Mon Apr 29 18:17:48 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 125.0.3
+  * Fixed: Fixed an extra blank tab with an address of
+    `https://0.0.0.1` sometimes appearing when attempting to
+    launch Firefox when it is already running (bmo#1892612).
+  * Fixed: Fixed an issue that could cause incorrect font
+    selection in some situations for users with the Japanese
+    locale set (bmo#1892363).
+  * Fixed: Fixed text corruption when dragging text containing
+    unicode characters on Linux systems (bmo#1888202).
+  * Fixed: Fixed a correctness error when checking
+    `arguments.length` (and not using arguments otherwise) inside
+    of a generator or async function (bmo#1892699).
+  * Fixed: Fixed an issue that could lead to inconsistent focus
+    handling of `<select>` elements when opened (bmo#1893177).
+
+-------------------------------------------------------------------
+Wed Apr 24 08:43:53 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Fix build on Leap by requiring gcc13 which has been made available
+  as an update.
+
+-------------------------------------------------------------------
 Sun Apr 21 04:49:23 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 125.0.2
-  * The 125.0 and 125.0.1 releases were skipped due to problems with a
-    feature that proactively blocked downloads from potentially
-    untrustworthy URLs
+  * The 125.0 and 125.0.1 releases were skipped due to problems
+    with a feature that proactively blocked downloads from
+    potentially untrustworthy URLs.
   * New: Firefox now supports the AV1 codec for Encrypted Media
     Extensions (EME), enabling higher-quality playback from video
     streaming providers
@@ -81,18 +105,21 @@ Sun Apr 21 04:49:23 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
   * CVE-2024-3852 (bmo#1883542)
     GetBoundName in the JIT returned the wrong object
   * CVE-2024-3853 (bmo#1884427)
-    Use-after-free if garbage collection runs during realm initialization
+    Use-after-free if garbage collection runs during realm
+    initialization
   * CVE-2024-3854 (bmo#1884552)
     Out-of-bounds-read after mis-optimized switch statement
   * CVE-2024-3855 (bmo#1885828)
-    Incorrect JIT optimization of MSubstr leads to out-of-bounds reads
+    Incorrect JIT optimization of MSubstr leads to out-of-bounds
+    reads
   * CVE-2024-3856 (bmo#1885829)
     Use-after-free in WASM garbage collection
   * CVE-2024-3857 (bmo#1886683)
     Incorrect JITting of arguments led to use-after-free during
     garbage collection
   * CVE-2024-3858 (bmo#1888892)
-    Corrupt pointer dereference in js::CheckTracedThing<js::Shape>
+    Corrupt pointer dereference in
+    js::CheckTracedThing<js::Shape>
   * CVE-2024-3859 (bmo#1874489)
     Integer-overflow led to out-of-bounds-read in the OpenType
     sanitizer
@@ -104,14 +131,16 @@ Sun Apr 21 04:49:23 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
     Potential use of uninitialized memory in MarkStack assignment
     operator on self-assignment
   * CVE-2024-3863 (bmo#1885855)
-    Download Protections were bypassed by .xrm-ms files on Windows
+    Download Protections were bypassed by .xrm-ms files on
+    Windows
   * CVE-2024-3302 (bmo#1881183,
     bmo#https://kb.cert.org/vuls/id/421644)
     Denial of Service using HTTP/2 CONTINUATION frames
   * CVE-2024-3864 (bmo#1888333)
     Memory safety bug fixed in Firefox 125, Firefox ESR 115.10,
     and Thunderbird 115.10
-  * CVE-2024-3865 (bmo#1881076, bmo#1884887, bmo#1885359, bmo#1889049)
+  * CVE-2024-3865 (bmo#1881076, bmo#1884887, bmo#1885359,
+    bmo#1889049)
     Memory safety bugs fixed in Firefox 125
 - requires
   NSS 3.99
