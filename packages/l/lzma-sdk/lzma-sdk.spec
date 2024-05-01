@@ -1,7 +1,7 @@
 #
 # spec file for package lzma-sdk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,22 @@
 #
 
 
-%define _sver   2201
-%define _maver  22
+%define _sver   2301
+%define _maver  23
 %define _miver  01
 Name:           lzma-sdk
-Version:        22.01
+Version:        23.01
 Release:        0
 Summary:        An implementation of LZMA compression
 # Actually the site says "Public Domain". See license file.
 License:        LGPL-2.1-only
 Group:          Productivity/Archiving/Compression
 URL:            https://www.7-zip.org/sdk.html
-Source0:        https://www.7-zip.org/a/lzma%{_sver}.7z
+Source0:        https://www.7-zip.org/a/lzma%_sver.7z
 Source1:        lzma-sdk-LICENSE.fedora
 Source2:        baselibs.conf
 Patch1:         lzma-sdk-shlib.patch
+Patch2:         lzma-simd.patch
 BuildRequires:  automake
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -52,50 +53,48 @@ LZMA yields around 20%% better compression when operating at approximately
 zlib's speed, and around 40%% when trading more time.
 
 %package devel
-Summary:        Development libraries and headers for %{name}
+Summary:        Development libraries and headers for %name
 Group:          Development/Languages/C and C++
-Requires:       libclzma-suse0 = %{version}
+Requires:       libclzma-suse1 = %version
 
 %description devel
-This package contains development libraries and headers for %{name}.
+This package contains development libraries and headers for %name.
 
-%package -n libclzma-suse0
+%package -n libclzma-suse1
 Summary:        LZMA stream encoding/decoding library from 7-Zip
 Group:          System/Libraries
 
-%description -n libclzma-suse0
+%description -n libclzma-suse1
 Library for encoding/decoding LZMA streams, using the 7-Zip library
 implementation.
 
 %prep
-%setup -q -c -n lzma%{_sver}
-%patch -P 1 -p1
+%autosetup -c -n lzma%_sver -p1
 perl -i -pe 's{AC_INIT.*}{AC_INIT([lzma-sdk], [%version])}' configure.ac
 dos2unix DOC/*.txt
-install -p -m 0644 %{SOURCE1} .
+install -p -m 0644 %SOURCE1 .
 
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n libclzma-suse0 -p /sbin/ldconfig
-%postun -n libclzma-suse0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libclzma-suse1
 
-%files -n libclzma-suse0
+%files -n libclzma-suse1
 %license lzma-sdk-LICENSE.fedora
 %doc DOC/lzma.txt DOC/lzma-history.txt
-%{_libdir}/libclzma-suse.so.0*
+%_libdir/libclzma-suse.so.*
 
 %files devel
 %license lzma-sdk-LICENSE.fedora
 %doc DOC/7z*.txt DOC/Methods.txt
-%{_includedir}/clzma/
-%{_libdir}/libclzma.so
-%{_libdir}/pkgconfig/clzma.pc
+%_includedir/clzma/
+%_libdir/libclzma.so
+%_libdir/pkgconfig/clzma.pc
 
 %changelog

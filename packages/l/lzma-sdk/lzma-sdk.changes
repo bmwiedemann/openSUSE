@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 30 10:42:48 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 23.01
+  * New filter for ARM64 executables. BCJ2 filter was improved
+    for better compression ratio. Some bugs were fixed.
+- Add lzma-simd.patch to fix compiler error on old gcc
+
+-------------------------------------------------------------------
 Wed Mar 15 14:40:12 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 22.01:
