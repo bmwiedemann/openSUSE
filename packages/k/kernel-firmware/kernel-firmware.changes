@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 30 07:48:13 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240426 (git commit 2398d264f953):
+  * amdgpu: DMCUB updates for various AMDGPU ASICs
+  * linux-firmware: Add firmware for Cirrus CS35L56 for various HP laptops
+  * i915: Update Xe2LPD DMC to v2.20
+  * linux-firmware: Remove Calibration Firmware and Tuning for CS35L41
+  * linux-firmware: Add firmware for Lenovo Thinkbook 13X
+  * ASoC: tas2781: Add dsp firmware for Thinkpad ICE-1 laptop
+  * amdgpu: add DMCUB 3.5 firmware
+  * amdgpu: add VPE 6.1.0 firmware
+  * amdgpu: add VCN 4.0.5 firmware
+  * amdgpu: add UMSCH 4.0.0 firmware
+  * amdgpu: add SDMA 6.1.0 firmware
+  * amdgpu: add PSP 14.0.0  firmware
+  * amdgpu: add GC 11.5.0 firmware
+  * amdgpu: update license date
+
+-------------------------------------------------------------------
 Fri Apr 19 14:58:02 UTC 2024 - tiwai@suse.com
 
 - Update to version 20240419 (git commit 7eab37522984):
