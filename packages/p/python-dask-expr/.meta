@@ -1,0 +1,5 @@
+<package name="python-dask-expr" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python:numeric" package="python-dask-expr"/>
+</package>
