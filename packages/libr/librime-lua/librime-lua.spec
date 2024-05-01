@@ -1,7 +1,7 @@
 #
 # spec file for package librime-lua
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           librime-lua
-Version:        0.0.0+git20211220.8b37d55
+Version:        0.0.0+git20240308.20ddea9
 Release:        0
 Summary:        Lua plugin for librime
 License:        SUSE-Permissive
 URL:            https://github.com/hchunhui/librime-lua
-Source:         %{name}-%{version}.tar.xz
-Patch0:         boost_signals2.patch
+Source:         %{name}-%{version}.tar.gz
+Patch0:         glog.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  darts
@@ -31,6 +31,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  librime-private-devel
 BuildRequires:  lua54-devel
 BuildRequires:  marisa-devel
+BuildRequires:  opencc-devel
 BuildRequires:  xorgproto-devel
 BuildRequires:  pkgconfig(libglog)
 BuildRequires:  pkgconfig(opencc)
@@ -39,8 +40,7 @@ BuildRequires:  pkgconfig(opencc)
 Lua plugin for librime.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake -DBUILD_SHARED_LIBS=ON

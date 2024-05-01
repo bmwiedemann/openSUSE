@@ -23,4 +23,21 @@
     <comment></comment>
     <requestid>1124018</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2a3d103d3d215c5bea38617557e94c2e</srcmd5>
+    <version>0.0.0+git20240308.20ddea9</version>
+    <time>1714568274</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to git20240308.20ddea9:
+    https://build.opensuse.org/request/show/1159682
+  The current librime-lua does not work with librime 1.10 in the TW repo.
+  This project updates the source from upstream to make it work.
+- glog.patch:
+  Add compile definitions for glog
+- Dropped obsoleted boost_signals2.patch
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN</comment>
+    <requestid>1171123</requestid>
+  </revision>
 </revisionlist>
