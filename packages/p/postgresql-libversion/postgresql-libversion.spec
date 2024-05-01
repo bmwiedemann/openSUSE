@@ -1,7 +1,7 @@
 #
 # spec file for package postgresql-libversion
 #
-# Copyright (c) 2023 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define ext_name libversion
 %define __provides_exclude ^lib.*\\.so.*$
 Name:           %{pg_name}-%{ext_name}
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        PostgreSQL extension for version string comparison
 License:        MIT
@@ -45,6 +45,10 @@ PostgreSQL extension with support for version string comparison through libversi
 
 %install
 %make_install
+
+%check
+# https://github.com/repology/postgresql-libversion/blob/master/.github/workflows/ci.yml
+# incolves running a server, not implementing that for testing
 
 %files
 %license COPYING

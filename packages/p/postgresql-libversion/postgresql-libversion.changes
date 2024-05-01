@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 30 17:14:44 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.0.1:
+  * remove unused function wrap_version_compare_simple
+
+-------------------------------------------------------------------
 Wed Nov 29 13:14:41 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - drop postgresql11
