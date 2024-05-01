@@ -1,7 +1,7 @@
 #
 # spec file for package python-minidb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,18 @@
 
 
 %define modname minidb
-%define         skip_python2 1
 %bcond_without  test
 Name:           python-minidb
-Version:        2.0.7
+Version:        2.0.8
 Release:        0
 Summary:        SQLite3-based store for Python objects
 License:        ISC
 Group:          Development/Languages/Python
-URL:            https://thp.io/2010/minidb/
+URL:            https://github.com/thp/minidb
 Source:         https://github.com/thp/%{modname}/archive/refs/tags/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,10 +46,10 @@ Minidb 2 allows you to store Python objects in a SQLite 3 database.
 %autosetup -p1 -n minidb-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with test}
@@ -59,7 +60,7 @@ Minidb 2 allows you to store Python objects in a SQLite 3 database.
 %files %{python_files}
 %doc README.md
 %{python_sitelib}/minidb.py*
-%{python_sitelib}/minidb-%{version}-py*.egg-info
+%{python_sitelib}/minidb-%{version}.dist-info
 %pycache_only %{python_sitelib}/__pycache__/minidb*.py*
 
 %changelog

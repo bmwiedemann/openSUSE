@@ -80,4 +80,19 @@
 </comment>
     <requestid>1032574</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f6bd14d3610f9309c12b580a54d85b6d</srcmd5>
+    <version>2.0.8</version>
+    <time>1714568268</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.8:
+  * fix flake8 errors
+  * add python 3.12 support
+  * drop python2
+  * read sqlite result before releasing lock
+  * switch to PEP517 build
+
+- Update to 2.0.7</comment>
+    <requestid>1171116</requestid>
+  </revision>
 </revisionlist>
