@@ -22,7 +22,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           cronie
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        Cron Daemon
 License:        BSD-3-Clause AND GPL-2.0-only AND MIT
@@ -48,8 +48,6 @@ Patch5:         cronie-crond_pid.diff
 Patch13:        fix-manpage-replace-anacrontab-with-crontab.patch
 # PATCH-FEATURE-OPENSUSE user common-session-nonlogin
 Patch14:        cronie-pam_config-nonlogin.diff
-# PATCH-FIX-UPSTREAM jsegitz@suse.de https://github.com/cronie-crond/cronie/pull/172
-Patch16:        safe-backup-permissions.patch
 BuildRequires:  audit-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -111,7 +109,6 @@ cp %{SOURCE7} ./cron_to_cronie.README
 %if 0%{?suse_version} > 1500
 %patch -P 14 -p1
 %endif
-%patch -P 16 -p1
 
 %build
 # fill macro CRON_VERSION it is used in top three lines of crontab file,should be reworked

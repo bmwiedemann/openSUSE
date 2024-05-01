@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 29 07:40:14 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Remove safe-backup-permissions.patch -- Merged upstream
+- Update to 1.7.2:
+  * crond: Revert setting the return path to <>. It is not RFC
+    compliant.
+  * crond: Inherit MAILFROM from the crond process environment.
+
+-------------------------------------------------------------------
 Mon Feb 26 10:51:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
