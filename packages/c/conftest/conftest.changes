@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr 30 10:58:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.52.0:
+  * build(deps): bump github.com/open-policy-agent/opa from 0.64.0
+    to 0.64.1 (#947)
+  * build(deps): bump github.com/hashicorp/go-getter from 1.7.3 to
+    1.7.4 (#948)
+  * ci: Allow Dependabot to update github.com/hashicorp/go-getter
+    (#946)
+  * build(deps): bump github.com/moby/buildkit from 0.13.1 to
+    0.13.2 (#944)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.63.0
+    to 0.64.0 (#943)
+  * build(deps): bump github.com/spdx/tools-golang from 0.5.3 to
+    0.5.4 (#941)
+  * build(deps): bump github.com/docker/docker from
+    v25.0.3+incompatible to v25.0.5+incompatible (#932)
+  * build(deps): bump golang from 1.22.1-alpine to 1.22.2-alpine
+    (#938)
+  * build(deps): bump cuelang.org/go from 0.8.0 to 0.8.1 (#937)
+
+-------------------------------------------------------------------
 Wed Apr 03 17:25:26 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.51.0:
