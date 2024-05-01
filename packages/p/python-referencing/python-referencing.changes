@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr 24 11:27:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.35.0:
+  * Make Registry.contents raise NoSuchResource when needed.
+  * Update pre-commit hooks.
+  * Run coverage with 3.12
+  * Try convincing RTD to use uv.
+  * uv and minor workflow tweaks
+  * Use uv for envs, particularly the requirements env.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Whatever pyright regression was present is still present.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump suite from `71c85d0` to `87851a6`
+  * Bump suite from `d3fdf35` to `71c85d0`
+  * Bump suite from `e3fe0aa` to `d3fdf35`
+
+-------------------------------------------------------------------
 Sat Mar 16 13:53:14 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.34.0:
