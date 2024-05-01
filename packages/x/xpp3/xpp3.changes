@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 30 11:54:40 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Simplify the spec: remove old macros and avoid versioned jars
+
+-------------------------------------------------------------------
 Fri Apr  5 13:51:18 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fetch the tarball from internet archives in order to have at least

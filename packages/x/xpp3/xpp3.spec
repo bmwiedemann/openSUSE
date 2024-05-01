@@ -81,16 +81,15 @@ jar ufm build/%{name}-%{version}.jar %{SOURCE4}
 
 %install
 # jars
-mkdir -p %{buildroot}%{_javadir}
-cp -p build/%{name}-%{version}.jar \
-  %{buildroot}%{_javadir}/%{name}-%{version}.jar
-cp -p build/%{name}_min-%{version}.jar \
-  %{buildroot}%{_javadir}/%{name}-minimal-%{version}.jar
-cp -p build/%{name}_xpath-%{version}.jar \
-  %{buildroot}%{_javadir}/%{name}-xpath-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}.jar; do ln -sf ${jar} `echo $jar| sed "s|-%{version}||g"`; done)
+install -d -m 0755 %{buildroot}%{_javadir}
+install -p -m 0644 build/%{name}-%{version}.jar \
+  %{buildroot}%{_javadir}/%{name}.jar
+install -p -m 0644 build/%{name}_min-%{version}.jar \
+  %{buildroot}%{_javadir}/%{name}-minimal.jar
+install -p -m 0644 build/%{name}_xpath-%{version}.jar \
+  %{buildroot}%{_javadir}/%{name}-xpath.jar
 # javadoc
-mkdir -p %{buildroot}%{_javadocdir}/%{name}
+install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr doc/api/* %{buildroot}%{_javadocdir}/%{name}
 rm -rf doc/{build.txt,api}
 
@@ -101,36 +100,13 @@ install -d -m 755 %{buildroot}%{_mavenpomdir}
 %{mvn_install_pom} %{SOURCE3} %{buildroot}%{_mavenpomdir}/%{name}-xpath.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 %add_maven_depmap %{name}-minimal.pom %{name}-minimal.jar -f minimal
-%add_maven_depmap %{name}-xpath.pom %{name}-xpath.jar -f xpath
+%add_maven_depmap %{name}-xpath.pom %{name}-xpath.jar
 
-%files
-%defattr(0644,root,root,0755)
+%files -f .mfiles
 %license LICENSE.txt
 %doc README.html doc/*
-%{_javadir}/%{name}.jar
-%{_javadir}/%{name}-%{version}.jar
-%{_javadir}/%{name}-xpath.jar
-%{_javadir}/%{name}-xpath-%{version}.jar
-%{_mavenpomdir}/%{name}.pom
-%{_mavenpomdir}/%{name}-xpath.pom
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%{_mavendepmapfragdir}/%{name}-xpath
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%{_datadir}/maven-metadata/%{name}-xpath.xml*
-%endif
 
-%files minimal
-%defattr(0644,root,root,0755)
-%{_javadir}/%{name}-minimal.jar
-%{_javadir}/%{name}-minimal-%{version}.jar
-%{_mavenpomdir}/%{name}-minimal.pom
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}-minimal
-%else
-%{_datadir}/maven-metadata/%{name}-minimal.xml*
-%endif
+%files minimal -f .mfiles-minimal
 
 %files javadoc
 %defattr(0644,root,root,0755)

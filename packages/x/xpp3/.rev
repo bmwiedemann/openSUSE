@@ -173,4 +173,12 @@
     <comment>Trackability of the sources 'improved'</comment>
     <requestid>1165657</requestid>
   </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>424c6bb7969f7e3ec4ebad455ae9cb29</srcmd5>
+    <version>1.1.4c</version>
+    <time>1714568156</time>
+    <user>dimstar_suse</user>
+    <comment>Simplify the spec: remove old macros and avoid versioned jars</comment>
+    <requestid>1170978</requestid>
+  </revision>
 </revisionlist>
