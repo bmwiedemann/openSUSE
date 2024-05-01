@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 30 11:15:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Clean the spec: remove old macros and change to working urls
+
+-------------------------------------------------------------------
 Tue Feb 20 10:19:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

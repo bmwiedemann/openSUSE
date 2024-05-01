@@ -96,4 +96,12 @@
     <comment></comment>
     <requestid>1147959</requestid>
   </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>3d9c9f387b2ff7599f2c3dfd2a9dfee0</srcmd5>
+    <version>3.1</version>
+    <time>1714568134</time>
+    <user>dimstar_suse</user>
+    <comment>Clean the spec: remove old macros and change to working urls</comment>
+    <requestid>1170965</requestid>
+  </revision>
 </revisionlist>

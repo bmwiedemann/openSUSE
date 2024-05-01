@@ -23,9 +23,9 @@ Release:        0
 Summary:        Feature rich package for accessing resources via HTTP
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://hc.apache.org/httpclient-3.x/
-Source0:        http://www.apache.org/dist/httpcomponents/commons-httpclient/source/%{short_name}-%{version}-src.tar.gz
-Source1:        http://repo.maven.apache.org/maven2/%{short_name}/%{short_name}/%{version}/%{short_name}-%{version}.pom
+URL:            https://hc.apache.org/httpclient-3.x/
+Source0:        https://archive.apache.org/dist/httpcomponents/%{short_name}/source/%{short_name}-%{version}-src.tar.gz
+Source1:        https://repo1.maven.org/maven2/%{short_name}/%{short_name}/%{version}/%{short_name}-%{version}.pom
 Patch0:         %{name}-disablecryptotests.patch
 # Add OSGi MANIFEST.MF bits
 Patch1:         %{name}-addosgimanifest.patch
@@ -43,10 +43,8 @@ BuildRequires:  commons-codec
 BuildRequires:  commons-logging >= 1.0.3
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  junit
-Requires:       commons-codec
-Requires:       commons-logging >= 1.0.3
 Provides:       %{short_name} = %{version}
 Provides:       jakarta-%{short_name} = %{version}
 Obsoletes:      jakarta-%{short_name} < %{version}
@@ -155,17 +153,17 @@ ln -s %{name}.jar jakarta-%{short_name}3.jar
 popd
 
 # pom
-mkdir -p %{buildroot}%{_mavenpomdir}
-cp -p %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
+install -d -m 0755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar -a apache:commons-httpclient
 
 # javadoc
-mkdir -p %{buildroot}%{_javadocdir}
+install -d -m 0755 %{buildroot}%{_javadocdir}
 mv dist/docs/api %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 # demo
-mkdir -p %{buildroot}%{_datadir}/%{name}
+install -d -m 0755 %{buildroot}%{_datadir}/%{name}
 cp -pr src/examples src/contrib %{buildroot}%{_datadir}/%{name}
 %fdupes -s %{buildroot}%{_datadir}/%{name}
 
@@ -174,22 +172,15 @@ rm -f dist/docs/{BUILDING,TESTING}.txt
 ln -s %{_javadocdir}/%{name} dist/docs/apidocs
 %fdupes -s dist/docs
 
-%files
+%files -f .mfiles
 %defattr(0644,root,root,0755)
 %license LICENSE.txt
 %doc README.txt RELEASE_NOTES.txt
-%{_javadir}/%{name}.jar
 %{_javadir}/%{name}3.jar
 %{_javadir}/%{short_name}3.jar
 %{_javadir}/%{short_name}.jar
 %{_javadir}/jakarta-%{short_name}3.jar
 %{_javadir}/jakarta-%{short_name}.jar
-%{_mavenpomdir}/*
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%endif
 
 %files javadoc
 %defattr(0644,root,root,0755)
