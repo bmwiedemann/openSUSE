@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 29 14:23:07 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang_path macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Tue Feb 27 11:02:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

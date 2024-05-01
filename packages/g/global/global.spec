@@ -1,7 +1,7 @@
 #
 # spec file for package global
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,9 +71,9 @@ mv %{buildroot}/%{_docdir}/%{name}/gtags.el %{buildroot}%{_datadir}/emacs/site-l
 mv %{buildroot}/%{_docdir}/%{name}/gtags.conf %{buildroot}%{_sysconfdir}/
 rm -rf %{buildroot}/%{_docdir}/%{name}/INSTALL
 
-# use python3 by default
-sed -i "s|env python|python3|g" \
-  %{buildroot}%{_datadir}/gtags/script/pygments_parser.py
+%if %{suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}%{_datadir}/gtags/script/pygments_parser.py
+%endif
 
 # Do not use env
 sed -i "s|env perl|perl|g" \
