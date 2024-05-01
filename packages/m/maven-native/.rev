@@ -55,4 +55,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148610</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f69da2bfd05e2ee39727ab7beafa460d</srcmd5>
+    <version>1.0~M1</version>
+    <time>1714568199</time>
+    <user>dimstar_suse</user>
+    <comment>1.0-M1</comment>
+    <requestid>1171001</requestid>
+  </revision>
 </revisionlist>
