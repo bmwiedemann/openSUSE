@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 30 19:24:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.9:
+  * Bump version to 2.10.9 (#18033)
+  * fix: enable sha256 and sha512 for git ssh (#18028) (#18029)
+
+-------------------------------------------------------------------
 Fri Apr 26 18:52:22 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.10.8:
