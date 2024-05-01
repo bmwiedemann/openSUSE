@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 19 11:24:06 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Switch to python3.11 for Leap15 by added %{?sle15_python_module_pythons}
+- Explicit to define runtime requirements, macro
+  %{?python_enable_dependency_generator} won't work for Leap 15.
+  also removed %{?python_enable_dependency_generator}
+
+
+-------------------------------------------------------------------
 Tue Feb 13 13:23:17 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.5.4:

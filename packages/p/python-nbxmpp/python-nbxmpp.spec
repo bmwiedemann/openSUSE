@@ -19,9 +19,7 @@
 # Requires at least python 3.10
 %define skip_python38 1
 %define skip_python39 1
-%if 0%{?suse_version} <= 1500 && "%{?pythons}%{!?pythons:python3}" == "python3"
-%define pythons python310
-%endif
+%{?sle15_python_module_pythons}
 %define _name   nbxmpp
 Name:           python-nbxmpp
 Version:        4.5.4
@@ -44,9 +42,12 @@ BuildRequires:  %{python_module precis-i18n}
 BuildRequires:  %{python_module sqlite3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  typelib(Soup) = 3.0
+Requires:       python-idna
+Requires:       python-precis-i18n >= 1.0.0
+Requires:       python-packaging
+Requires:       python-gobject >= 3.42
 Recommends:     python-gssapi
 BuildArch:      noarch
-%{?python_enable_dependency_generator}
 
 %python_subpackages
 
