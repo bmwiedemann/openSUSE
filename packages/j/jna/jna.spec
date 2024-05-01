@@ -17,6 +17,9 @@
 #
 
 
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           jna
 Version:        5.13.0
 Release:        0
@@ -41,7 +44,7 @@ BuildRequires:  libXt-devel
 BuildRequires:  libffi-devel
 BuildRequires:  objectweb-asm
 BuildRequires:  pkgconfig
-Requires:       java >= 1.8
+Requires:       java-headless >= 1.8
 Provides:       jna-native = %{version}-%{release}
 Obsoletes:      jna-native < %{version}-%{release}
 Provides:       libjnidispatch = %{version}-%{release}
@@ -59,6 +62,7 @@ of use take priority.
 Summary:        Contrib for %{name}
 Group:          Development/Libraries/Java
 Requires:       %{name} = %{version}-%{release}
+Requires:       java-headless >= 1.8
 Provides:       jna-platform = %{version}-%{release}
 Obsoletes:      jna-platform < %{version}-%{release}
 BuildArch:      noarch
