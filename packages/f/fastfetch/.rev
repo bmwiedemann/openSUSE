@@ -438,4 +438,27 @@ Bugfixes:
     * Don't print ANSI escape codes in --pipe mode</comment>
     <requestid>1169930</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f56541867fd965658bdf335516a281b0</srcmd5>
+    <version>2.11.0</version>
+    <time>1714568241</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.11.0:
+  Changes:
+    - Default hideCursor to false. It doesn't make much difference
+      but makes user's terminal unusable if fastfetch is not exited correctly.
+  Bugfixes:
+    - Fix minimum cmake version support
+    - Fix wifi detection on platforms that don't use NetworkManager
+    - Fix GPU type detection for AMD cards
+  Features:
+    - Add basic support DE detection support for UKUI (DE, Linux)
+    - Make config specified in JSONC overridable by command line flags
+     * Note this change only make global config overridable; module configs are still not
+    - Suggest increasing --processing-timeout when child process timeouts
+    - Only detect folders that specified by --disk-folders
+     * Previously --disk-folders only omits unmatched disks from output.
+       This option can be used to improve detection performance by ignoring slow network drives</comment>
+    <requestid>1171072</requestid>
+  </revision>
 </revisionlist>
