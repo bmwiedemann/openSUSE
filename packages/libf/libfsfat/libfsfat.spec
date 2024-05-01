@@ -20,36 +20,36 @@
 
 Name:           libfsfat
 %define lname	libfsfat1
-Version:        20240220
+Version:        20240501
 Release:        0
 Summary:        Library and tools for accessing the FAT filesystem
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libfsfat
-Source:         https://github.com/libyal/libfsfat/releases/download/%version/libfsfat-experimental-%version.tar.gz
-Source2:        https://github.com/libyal/libfsfat/releases/download/%version/libfsfat-experimental-%version.tar.gz.asc
+Source:         https://github.com/libyal/libfsfat/releases/download/%version/%name-experimental-%version.tar.gz
+#Source2:        https://github.com/libyal/libfsfat/releases/download/%version/%name-experimental-%version.tar.gz.asc
 Source3:        %name.keyring
 BuildRequires:  %python_module devel
 BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcdata) >= 20240103
-BuildRequires:  pkgconfig(libcerror) >= 20240101
-BuildRequires:  pkgconfig(libcfile) >= 20240106
-BuildRequires:  pkgconfig(libclocale) >= 20240107
-BuildRequires:  pkgconfig(libcnotify) >= 20240108
-BuildRequires:  pkgconfig(libcpath) >= 20240109
-BuildRequires:  pkgconfig(libcsplit) >= 20240110
-BuildRequires:  pkgconfig(libcthreads) >= 20240102
-BuildRequires:  pkgconfig(libfcache) >= 20240112
-BuildRequires:  pkgconfig(libfcrypto) >= 20240115
-BuildRequires:  pkgconfig(libfdata) >= 20240114
-BuildRequires:  pkgconfig(libfdatetime) >= 20240115
-BuildRequires:  pkgconfig(libfguid) >= 20240116
-BuildRequires:  pkgconfig(libhmac) >= 20240129
-BuildRequires:  pkgconfig(libuna) >= 20240130
+BuildRequires:  pkgconfig(libbfio) >= 20240414
+BuildRequires:  pkgconfig(libcdata) >= 20240414
+BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libcfile) >= 20240414
+BuildRequires:  pkgconfig(libclocale) >= 20240414
+BuildRequires:  pkgconfig(libcnotify) >= 20240414
+BuildRequires:  pkgconfig(libcpath) >= 20240414
+BuildRequires:  pkgconfig(libcsplit) >= 20240414
+BuildRequires:  pkgconfig(libcthreads) >= 20240413
+BuildRequires:  pkgconfig(libfcache) >= 20240414
+BuildRequires:  pkgconfig(libfcrypto) >= 20240414
+BuildRequires:  pkgconfig(libfdata) >= 20240415
+BuildRequires:  pkgconfig(libfdatetime) >= 20240415
+BuildRequires:  pkgconfig(libfguid) >= 20240415
+BuildRequires:  pkgconfig(libhmac) >= 20240417
+BuildRequires:  pkgconfig(libuna) >= 20240414
 BuildRequires:  pkgconfig(python3)
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
@@ -110,8 +110,7 @@ grep ' '' ''local' config.log && exit 1
 mv "%_builddir/rt"/* %buildroot/
 find "%buildroot" -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*

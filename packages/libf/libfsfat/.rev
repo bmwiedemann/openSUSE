@@ -55,4 +55,12 @@
     <comment>- Update to release 20240220</comment>
     <requestid>1147783</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>390d3d9f26a837ebb9dea819612cf353</srcmd5>
+    <version>20240501</version>
+    <time>1714568272</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20240501</comment>
+    <requestid>1171120</requestid>
+  </revision>
 </revisionlist>
