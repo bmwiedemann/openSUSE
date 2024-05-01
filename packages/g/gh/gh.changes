@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed May 01 05:03:58 UTC 2024 - pdostal@suse.com
+
+- Update to version 2.49.0:
+  * Document repo clone protocol behaviour
+  * whitespace aligment for inspect/inspect.go
+  * whitespace alignment in attestation/attestation.go
+  * Added tweaked note to tuf-root-verify
+  * Tweaked gh attestation help strings to generate nicer cli manual site.
+  * Update attestation's beta designation
+  * Update cli/go-gh to v2.9.0
+  * Add beta designation on attestation command set
+  * Test `gh at verify -b` does not require auth
+  * Use ghinstance package for attestation host checks
+  * Test cmdutil.IsAuthCheckEnabled cases
+  * Fix issue with closing pager stream (#9020)
+  * Support long URLs in `gh repo clone` (#9008)
+  * check for enterprise host
+  * Add missing title field for projectv2
+  * Match query fields with `ProjectV2` type
+  * Include `URL` in `ProjectV2` type
+  * Include `projectsV2` in GraphQL query
+  * Remove unnecessary defensive check
+  * Test verification failures when attestations are bad
+  * Rework sigstore tests for easier maintenance
+  * Make error more obvious when bundle has wrong extension
+  * Add colon at the end of secret prompts (#9004)
+  * Use cmdutil.ExactArgs instead of MinimumArgs; also add tests
+  * proof of concept for flag-level disable auth check
+  * remove hidden flag from attestation command (#8998)
+  * Update `gh attestation verify` output (#8991)
+  * Just base verification policy on trusted root, not bundle
+  * Support offline mode for `gh attestation verify`
+  * build(deps): bump google.golang.org/grpc from 1.62.1 to 1.62.2
+  * `gh attestation tuf-root-verify` offline test fix (#8975)
+  * Update `sigstore-go` dependency to v0.3.0 (#8977)
+  * build(deps): bump golang.org/x/net from 0.21.0 to 0.23.0
+  * Make it clearer that job flag is meant to be an ID
+  * Ignore run-id when providing also job for rerun
+
+-------------------------------------------------------------------
 Wed Apr 17 14:42:00 UTC 2024 - pdostal@suse.com
 
 - Update to version 2.48.0:
