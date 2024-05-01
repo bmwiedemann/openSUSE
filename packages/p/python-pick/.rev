@@ -83,4 +83,27 @@
 </comment>
     <requestid>1147307</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>15f0df077869e0b5b5d179e5d14b7eac</srcmd5>
+    <version>2.3.2</version>
+    <time>1714568267</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.2:
+  * Disable some old Pythons on GitHub Actions with macos-latest
+  * Add `clear_screen` parameter
+- update to 2.3.1:
+  * Allow pick list with non `str` or `Options` types
+- update to 2.3.0:
+  * Bump mypy from 0.990 to 0.991
+  * Add Python 3.12 to test matrix
+  * Bump pytest to 7.2.0
+  * Adding descriptions for each option
+  * Bump mypy from 0.991 to 1.4.1
+  * added `position` argument so `pick` doesn't clear the screen
+    every time
+  * Bump version 2.3.0
+
+- Update to version 2.2.0</comment>
+    <requestid>1171115</requestid>
+  </revision>
 </revisionlist>
