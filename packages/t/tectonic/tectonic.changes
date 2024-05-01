@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 24 09:41:30 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Remove redundant %{cargo_build}
+
+-------------------------------------------------------------------
 Sun Mar 24 23:37:06 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to version 0.15.0

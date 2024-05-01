@@ -46,7 +46,6 @@ XeTeX and TeXLive.
 %autosetup -a1 -n %{name}-%{name}-%{version}
 
 %build
-%{cargo_build} --features external-harfbuzz
 
 %install
 %{cargo_install} --features external-harfbuzz
