@@ -1,7 +1,7 @@
 #
 # spec file for package assertj-core
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,28 @@
 #
 
 
-%bcond_with  memoryfilesystem
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           assertj-core
-Version:        3.8.0
+Version:        3.25.3
 Release:        0
 Summary:        Library of assertions similar to fest-assert
 License:        Apache-2.0
-Group:          Development/Libraries/Java
-URL:            http://joel-costigliola.github.io/assertj/
-Source0:        https://github.com/joel-costigliola/assertj-core/archive/assertj-core-%{version}.tar.gz
+URL:            https://joel-costigliola.github.io/assertj/
+Source0:        https://github.com/joel-costigliola/assertj-core/archive/assertj-build-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
-BuildRequires:  mvn(cglib:cglib-nodep)
+BuildRequires:  mvn(biz.aQute.bnd:bnd-maven-plugin)
 BuildRequires:  mvn(junit:junit)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.mockito:mockito-core)
+BuildRequires:  mvn(net.bytebuddy:byte-buddy)
+BuildRequires:  mvn(org.apiguardian:apiguardian-api)
+BuildRequires:  mvn(org.hamcrest:hamcrest)
+BuildRequires:  mvn(org.junit.jupiter:junit-jupiter-api)
+BuildRequires:  mvn(org.opentest4j:opentest4j)
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
-%if %{with memoryfilesystem}
-BuildRequires:  mvn(com.github.marschall:memoryfilesystem)
-%endif
 
 %description
 A set of strongly-typed assertions to use for unit testing
@@ -47,29 +50,28 @@ Summary:        API documentation for %{name}
 This package provides API documentation for %{name}.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%setup -q -n assertj-assertj-build-%{version}
 
-%{pom_remove_parent}
-%pom_xpath_inject "pom:project" "<groupId>org.assertj</groupId>"
+%pom_remove_plugin -r :maven-javadoc-plugin
+%pom_remove_plugin -r :maven-enforcer-plugin
+%pom_remove_plugin -r :jacoco-maven-plugin
+%pom_remove_plugin -r :spotless-maven-plugin
+#pom_remove_plugin -r :bnd-maven-plugin
+%pom_remove_plugin -r :bnd-resolver-maven-plugin
+%pom_remove_plugin -r :bnd-testing-maven-plugin
+%pom_remove_plugin -r :nexus-staging-maven-plugin
+%pom_remove_plugin -r :license-maven-plugin
+%pom_remove_plugin -r :flatten-maven-plugin
+%pom_remove_dep -r :mockito-bom
+%pom_remove_dep -r :junit-bom
 
-%pom_remove_plugin :maven-javadoc-plugin
-%pom_remove_plugin :maven-shade-plugin
-%pom_remove_plugin :maven-dependency-plugin
-%pom_remove_plugin org.jacoco:jacoco-maven-plugin
+%pom_disable_module assertj-core-kotlin assertj-tests/assertj-integration-tests
+%pom_disable_module assertj-core-groovy assertj-tests/assertj-integration-tests
 
-# package org.mockito.internal.util.collections does not exist
-rm -rf ./src/test/java/org/assertj/core/error/ShouldContainString_create_Test.java
-
-%if %{without memoryfilesystem}
-%pom_remove_dep :memoryfilesystem
-rm -r src/test/java/org/assertj/core/internal/{Paths*.java,paths}
-%endif
-
-# test lib not in openSUSE
-%pom_remove_dep com.tngtech.java:junit-dataprovider
+%pom_add_dep org.apiguardian:apiguardian-api:1.1.2:provided
 
 %build
-%{mvn_build} -f -- -Dproject.build.sourceEncoding=UTF-8 -Dsource=8
+%{mvn_build} -f -- -Dproject.build.sourceEncoding=UTF-8 -Dmaven.compiler.release=8 -Dsource=8
 
 %install
 %mvn_install
