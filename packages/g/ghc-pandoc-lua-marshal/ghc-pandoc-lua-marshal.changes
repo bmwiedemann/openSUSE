@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 23 10:02:42 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.2.6 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Mar 29 17:56:57 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update pandoc-lua-marshal to version 0.2.6.
