@@ -127,4 +127,12 @@
     <comment>- Update to release 20240301</comment>
     <requestid>1154337</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>927f75ffbe8e1733abf8670020ff312b</srcmd5>
+    <version>20240501</version>
+    <time>1714568270</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20240501</comment>
+    <requestid>1171119</requestid>
+  </revision>
 </revisionlist>
