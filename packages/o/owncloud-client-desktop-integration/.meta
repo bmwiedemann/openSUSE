@@ -1,0 +1,10 @@
+<package name="owncloud-client-desktop-integration" project="openSUSE:Factory">
+  <title>Integration for the ownCloud desktop client with various file managers</title>
+  <description>This package provides a Python extension for Nautilus and its forks Nemo and
+Caja to provide shell integration for the ownCloud desktop client for the
+GNOME, Cinnamon and MATE desktop environments.
+
+</description>
+  <devel project="network" package="owncloud-client-desktop-integration"/>
+  <url>https://github.com/owncloud/client-desktop-shell-integration-nautilus</url>
+</package>
