@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation
-Version:        5.0.8
+Version:        5.0.9
 Release:        0
 Summary:        YaST2 - Installation Parts
 License:        GPL-2.0-only
@@ -30,8 +30,8 @@ Source2:        YaST2-Firstboot.service
 BuildRequires:  update-desktop-files
 # Kernel: Use is_zvm from Yast::Arch
 BuildRequires:  yast2 >= 5.0.5
-# Whitelist cio_ignore s390 parameter
-BuildRequires:  yast2-bootloader >= 5.0.4
+# systemd-boot kernel parameters
+BuildRequires:  yast2-bootloader >= 5.0.9
 # storage-ng based version
 BuildRequires:  yast2-country >= 3.3.1
 BuildRequires:  yast2-devtools >= 3.1.10
@@ -76,7 +76,7 @@ Requires:       tar
 Requires:       (yast2-x11 >= 4.5.1 if libyui-qt)
 # Y2Packager::Repository.refresh
 Requires:       yast2 >= 5.0.3
-Requires:       yast2-bootloader >= 5.0.1
+Requires:       yast2-bootloader >= 5.0.9
 Requires:       yast2-country >= 3.3.1
 # Language::GetLanguageItems and other API
 # Language::Set (handles downloading the translation extensions)

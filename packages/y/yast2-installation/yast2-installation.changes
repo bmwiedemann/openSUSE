@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 26 14:09:15 UTC 2024 - Stefan Schubert <schubi@suse.com>
+
+- Handle SystemdBoot mitigations. (bsc#1220892)
+- 5.0.9
+
+-------------------------------------------------------------------
 Wed Apr  3 13:39:37 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
 
 - Adapted call for connecting all discovered NVMe-over-Fabrics 
