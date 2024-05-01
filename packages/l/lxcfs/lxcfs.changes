@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Apr 14 08:28:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.0.0:
+  The LXCFS team is pleased to announce the release of LXCFS 6.0
+  LTS!
+  This is the result of two years of work since the LXCFS 5.0
+  release and is the fifth LTS release for the LXCFS project. This
+  release will be supported until June 2029.
+  https://discuss.linuxcontainers.org/t/lxcfs-6-0-lts-has-been-released/19546
+  * New --enable-cgroup option
+    LXCFS can provide a virtual cgroupfs (v1) tree for use by
+    containers.
+    This feature was implemented prior to cgroup namespaces being
+    implemented in the kernel and effectively allow providing a
+    similar experience on kernels lacking that feature.
+    As most supported Linux distributions now all feature a kernel
+    supporting cgroup namespaces and most new distros have even
+    switched away from cgroupv1, it didn't make sense to keep this
+    feature enabled by default. As a result, it has now been moved
+    behind a new startup argument, --enable-cgroup.
+  * CPUs no longer masked in /sys/devices/system/cpu
+    LXCFS 5.0 shipped with logic to filter out entries in
+    /sys/devices/system/cpu based on what CPUs were allowed in the
+    caller's cpuset. This behavior doesn't actually reflect the
+    behavior on normal systems where even offline CPUs still show
+    up in /sys/devices/system/cpu.
+    As a result, LXCFS 6.0 reversed that logic and is now only
+    making sure to keep the list of online/offline CPUs up to date
+    while the individual CPU directories all remain accessible.
+
+-------------------------------------------------------------------
 Mon Jul 31 12:32:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.4:
