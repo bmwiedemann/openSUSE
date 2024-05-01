@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 24 11:23:49 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Fix the distro condition, Python 3.11 starts with 15 SP4 and
+  openSUSE Leap 15.4 not a version greated than 15.4
+
+-------------------------------------------------------------------
 Wed Mar 13 12:28:57 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Remove the split provides for the python3 package per agreement

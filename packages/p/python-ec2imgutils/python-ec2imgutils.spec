@@ -53,7 +53,7 @@ Requires(postun): update-alternatives
 %endif
 BuildArch:      noarch
 
-%if "%{python_provides}" == "python3" || (0%{?sle_version} > 150400 && 0%{?sle_version} < 160000)
+%if "%{python_provides}" == "python3" || (0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000)
 # Package renamed in SLE 12 do not remove Provides, Obsolete
 # directives until after SLE 12 EOL
 Provides:       %python-ec2utilsbase:/usr/lib/python2.7/site-packages/ec2utils
@@ -114,7 +114,6 @@ install -m 644 man/man1/* %{buildroot}/%{_mandir}/man1
 %python_clone -a %{buildroot}%{_mandir}/man1/ec2uploadimg.1
 
 %{python_expand %fdupes %{buildroot}%{$python_sitelib}}
-
 
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.

@@ -7,4 +7,12 @@
     <comment>- Replaces deleted python3-ec2imgutils</comment>
     <requestid>1157748</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c3dad4aafc31bba643dcf22995e1037c</srcmd5>
+    <version>10.0.3</version>
+    <time>1714568281</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1171142</requestid>
+  </revision>
 </revisionlist>
