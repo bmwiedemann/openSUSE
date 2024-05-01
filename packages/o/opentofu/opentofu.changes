@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr 30 19:15:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.7.0:
+  We're proud to announce that OpenTofu 1.7.0 is now officially
+  out!
+  What’s New?
+  * State Encryption - Protect your precious state files with
+    end-to-end encryption.
+  * Dynamic Provider-defined Functions - Author custom functions as
+    part of providers.
+  * Declarative removed Blocks - No more fighting with the CLI,
+    execute your removals declaratively!
+  * Loopable Import Blocks - Streamline importing multiple
+    resources.
+  * ...and much, much more!
+  See the launch post on our blog:
+  https://opentofu.org/blog/opentofu-1-7-0/
+  For all the features, see the detailed changelog:
+  https://github.com/opentofu/opentofu/blob/ba4c3a5b462129cd61644a3ae760d746dc12b8fc/CHANGELOG.md
+
+-------------------------------------------------------------------
 Fri Feb 23 07:51:17 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.6.2:
