@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 25 10:48:31 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add verdict-use-cxx14-standard.patch to build with cpp14
+  standard and avoid build failures with gtest >= 1.14.
+
+-------------------------------------------------------------------
 Tue Oct 10 08:30:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.2:

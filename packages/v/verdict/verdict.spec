@@ -1,7 +1,7 @@
 #
 # spec file for package verdict
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        Compute quality functions of 2 and 3-dimensional regions
 License:        BSD-3-Clause
 URL:            https://github.com/sandialabs/verdict
 Source:         https://github.com/sandialabs/verdict/archive/refs/tags/%{version}.tar.gz#/verdict-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM verdict-use-cxx14-standard.patch badshah400@gmail.com -- Use c++14 standard to avoid build failures against gtest >= 1.14
+Patch0:         verdict-use-cxx14-standard.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gtest
@@ -48,11 +50,12 @@ Requires:       %{libname} = %{version}
 This package contains the header files and cmake config files.
 
 %prep
-%setup
+%autosetup -p1
 
 %build
 %cmake \
   -DCMAKE_SKIP_RPATH:BOOL=OFF \
+  -DCMAKE_CXX_STANDARD:STRING=14 \
   -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
   -DVERDICT_ENABLE_TESTING:BOOL=ON \
   -DCMAKE_INSTALL_DOCDIR=%{_docdir} \

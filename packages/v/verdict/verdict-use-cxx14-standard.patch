@@ -1,0 +1,17 @@
+---
+ CMakeLists.txt |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: verdict-1.4.2/CMakeLists.txt
+===================================================================
+--- verdict-1.4.2.orig/CMakeLists.txt
++++ verdict-1.4.2/CMakeLists.txt
+@@ -4,7 +4,7 @@
+ 
+ cmake_minimum_required(VERSION 3.16)
+ 
+-set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_STANDARD 14)
+ set(CMAKE_CXX_STANDARD_REQUIRED 1)
+ 
+ project(verdict VERSION 1.4.2)
