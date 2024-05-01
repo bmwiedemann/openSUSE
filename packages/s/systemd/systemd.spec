@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package systemd
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -328,7 +328,10 @@ Requires:       %{name} = %{version}-%{release}
 %systemd_requires
 Requires:       filesystem
 %if %{without bootstrap}
+# kmod executable is needed by kmod-static-nodes.service
 Requires:       kmod
+# By v256 libkmod will be dlopen()ed.
+Requires:       libkmod2
 %endif
 Requires:       system-group-hardware
 Requires:       group(kvm)
@@ -338,7 +341,7 @@ Requires:       group(lp)
 Requires(pre):  group(kvm)
 Requires(post): sed
 Requires(post): coreutils
-Requires(postun):coreutils
+Requires(postun): coreutils
 # 'regenerate_initrd_post' macro is expanded during build, hence this BR.
 BuildRequires:  suse-module-tools
 %if %{without bootstrap}
@@ -613,6 +616,15 @@ Recommends:     knot
 Recommends:     selinux-policy-devel
 Recommends:     selinux-policy-targeted
 %endif
+# System users/groups that some tests rely on.
+Requires:       group(bin)
+Requires:       group(daemon)
+Requires:       group(games)
+Requires:       group(nobody)
+Requires:       user(bin)
+Requires:       user(daemon)
+Requires:       user(games)
+Requires:       user(nobody)
 # The following deps on libs are for test-dlopen-so whereas the pkgconfig ones
 # are used by test-funtions to find the libs on the host and install them in the
 # image, see install_missing_libraries() for details.
@@ -729,6 +741,7 @@ Have fun (at your own risk).
 %package doc
 Summary:        Additional documentation or doc formats for systemd
 License:        LGPL-2.1-or-later
+BuildArch:      noarch
 
 %description doc
 A HTML version of the systemd documentation, plus the manual pages
@@ -739,11 +752,6 @@ for the C APIs.
 %autosetup -p1 -n systemd-v%{version}%{archive_version}
 
 %build
-# Disable _FORTIFY_SOURCE=3 as it get confused by the use of
-# malloc_usable_size() (bsc#1200819). There used to be a workaround but it was
-# reverted, see 2cfb790391958ada34284290af1f9ab863a515c7 for the details.
-export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
-
 %meson \
         -Dmode=release \
         -Dversion-tag=%{version}%{archive_version} \

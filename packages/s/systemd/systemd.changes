@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Apr 25 09:08:21 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Update 0008-sysv-generator-translate-Required-Start-into-a-Wants.patch to
+  adapt sysv-generator-test to the SUSE's specificity brought by this patch.
+
+-------------------------------------------------------------------
+Thu Apr 25 08:57:30 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- systemd-testsuite: some of the integration tests depend on the bin, daemon,
+  games and nobody users/groups.
+
+-------------------------------------------------------------------
+Mon Apr 22 09:20:36 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Drop _FORTIFY_SOURCE=2 workaround. Since commit 7929e180aa (v253) it shouldn't
+  be needed anymore.
+
+-------------------------------------------------------------------
+Mon Apr  8 15:45:46 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: preparation for the next version of systemd (i.e. v256), libkmod2
+  will be dlopened hence explicitly require it now as it doesn't hurt with the
+  current version. However don't recommend it from systemd by assuming that when
+  module loading from PID1 is needed, udev is installed.
+
+- Make systemd-doc subpackage noarch.
+
+-------------------------------------------------------------------
 Wed Apr  3 07:03:59 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Move systemd-repart from experimental to udev.
@@ -1225,6 +1253,9 @@ Tue Nov  8 16:33:26 UTC 2022 - Franck Bui <fbui@suse.com>
 
   For a complete list of changes, visit:
   https://github.com/openSUSE/systemd/compare/c212388f7de8d22a3f7c22b19553548ccc0cdd15...9cdd78585069b133bebcd479f3a204057ad25d76
+
+- Force _FORTIFY_SOURCE=2 as systemd (ab)use of malloc_usable_size() leads to
+  build issues with FS=3 (bsc#1200819).
 
 -------------------------------------------------------------------
 Tue Oct 25 07:19:15 UTC 2022 - Franck Bui <fbui@suse.com>

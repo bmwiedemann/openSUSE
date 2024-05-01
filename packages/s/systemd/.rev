@@ -7162,4 +7162,12 @@ handle manual pages that consist only of a .so directive such as
   doesn't serve any purpose.</comment>
     <requestid>1164306</requestid>
   </revision>
+  <revision rev="420" vrev="3">
+    <srcmd5>e277cbaa34a8451490155ceb3e6bdace</srcmd5>
+    <version>255.4</version>
+    <time>1714568128</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1170821</requestid>
+  </revision>
 </revisionlist>
