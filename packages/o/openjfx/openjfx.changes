@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Apr 30 12:33:40 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag 17.0.11+3 (April 2024 CPU)
+  * Security fixes:
+    + JDK-8313032, CVE-2024-21004, bsc#1222989: Enhanced handling
+      of Glass
+    + JDK-8313040, CVE-2024-21005, bsc#1222990: Enhanced Font
+      handling
+    + JDK-8313064, CVE-2024-21002, bsc#1222981: General enhancements
+      of image handling
+    + JDK-8313072, CVE-2024-21003, bsc#1222988: Enhanced handling of
+      Fonts
+    + JDK-8320441: Additional fix for JDK-8313032
+    + JDK-8322236: Build failure after JDK-8313064
+  * Other fixes:
+    + JDK-8221261: Deadlock on macOS in JFXPanel app when handling
+      IME calls
+    + JDK-8271398: GTK3 drag view image swaps red and blue color
+      channels
+    + JDK-8282386: JavaFX media stubs rely on libav.org
+    + JDK-8318386: Update Glib to 2.78.1
+    + JDK-8318387: Update GStreamer to 1.22.6
+    + JDK-8318614: Update WebKit to 617.1
+    + JDK-8321722: Tab header flickering when dragging slowly other
+      tabs and reordering uncompleted
+    + JDK-8322703: Intermittent crash in WebView in a JFXPanel from
+      IME calls on macOS
+    + JDK-8323829: Change javaFX release version to 17.0.11 in
+      jfx17u
+    + JDK-8324337: Cherry-pick WebKit 617.1 stabilization fixes
+    + JDK-8325258: Additional WebKit 617.1 fixes from WebKitGTK
+      2.42.5
+    + JDK-8326989: Text selection issues on WebView after WebKit
+      617.1
+    + JDK-8327177: macOS: wrong GlobalRef deleted in GlassMenu
+
+-------------------------------------------------------------------
 Wed Feb 21 10:52:38 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

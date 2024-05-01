@@ -23,4 +23,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148622</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>33426057bd945efb85701d176514185b</srcmd5>
+    <version>17.0.11.0</version>
+    <time>1714568190</time>
+    <user>dimstar_suse</user>
+    <comment>April 2024 CPU fixes</comment>
+    <requestid>1170992</requestid>
+  </revision>
 </revisionlist>
