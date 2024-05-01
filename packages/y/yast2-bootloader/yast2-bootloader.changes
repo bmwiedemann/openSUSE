@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 26 13:07:51 UTC 2024 - Stefan Schubert <schubi@suse.com>
+
+- Creating kernel options for systemd-boot. (bsc#1220892)
+- 5.0.9
+
+-------------------------------------------------------------------
 Fri Apr  5 08:08:09 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
 
 - Follow up of previous change to use even more precise wording
