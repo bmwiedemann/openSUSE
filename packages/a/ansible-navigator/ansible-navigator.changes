@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 30 19:37:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 24.3.2:
+  * Fix python version in release workflow (#1748)
+
+-------------------------------------------------------------------
+Tue Apr 30 19:31:54 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 24.3.1:
+  * Bump the dependencies group across 1 directory with 18 updates
+    (#1743)
+  * Update GHA repo ref (#1745)
+  * Update the version of collection doc cache (#1739)
+  * Fix catalog collections script to display all available modules
+    in a collection (#1738)
+  * [pre-commit.ci] pre-commit autoupdate (#1742)
+  * [pre-commit.ci] pre-commit autoupdate (#1737)
+  * Bump the dependencies group in /.config with 7 updates (#1735)
+
+-------------------------------------------------------------------
 Wed Apr 10 05:36:59 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.3.0:

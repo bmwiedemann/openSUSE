@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible-navigator
-Version:        24.3.0
+Version:        24.3.2
 Release:        0
 Summary:        A text-based user interface (TUI) for Ansible
 License:        Apache-2.0
@@ -51,8 +51,9 @@ BuildRequires:  %{ansible_python}-setuptools
 BuildRequires:  %{ansible_python}-setuptools_scm
 BuildRequires:  %{ansible_python}-wheel
 BuildRequires:  python-rpm-macros
-# https://github.com/ansible/ansible-navigator/blob/main/requirements.txt
-BuildRequires:  ansible-core >= 2.14.3
+# Use Requires also as BuildRequires
+# to make sure we only build, if everything needed is present
+# https://github.com/ansible/ansible-navigator/blob/main/.config/requirements.in
 BuildRequires:  %{ansible_python}-Jinja2
 BuildRequires:  %{ansible_python}-PyYAML
 BuildRequires:  %{ansible_python}-jsonschema
@@ -60,6 +61,8 @@ BuildRequires:  %{ansible_python}-onigurumacffi >= 1.1.0
 BuildRequires:  %{ansible_python}-pytzdata
 BuildRequires:  %{ansible_python}-requirements-parser
 BuildRequires:  ansible-builder >= 3.0.0
+BuildRequires:  ansible-core >= 2.14.3
+BuildRequires:  ansible-lint >= 6.19.0
 BuildRequires:  ansible-runner >= 2.3.2
 # SECTION test requirements
 # https://github.com/ansible/ansible-navigator/blob/main/test/requirements.txt
@@ -69,12 +72,14 @@ BuildRequires:  tmux
 # /SECTION
 BuildRequires:  git-core
 BuildRequires:  fdupes
+# https://github.com/ansible/ansible-navigator/blob/main/.config/requirements.in
 Requires:       %{ansible_python}-Jinja2
 Requires:       %{ansible_python}-PyYAML
 Requires:       %{ansible_python}-curses
 Requires:       %{ansible_python}-jsonschema
 Requires:       %{ansible_python}-onigurumacffi >= 1.1.0
 Requires:       %{ansible_python}-pytzdata
+Requires:       %{ansible_python}-setuptools
 Requires:       ansible-builder >= 3.0.0
 Requires:       ansible-core >= 2.14.3
 Requires:       ansible-lint >= 6.19.0
