@@ -1,7 +1,7 @@
 #
 # spec file for package jakarta-activation
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,24 @@
 #
 
 
+%global srcname jaf-api
 %global artifact_name jakarta.activation-api
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           jakarta-activation
-Version:        2.1.0
+Version:        2.1.3
 Release:        0
 Summary:        Jakarta Activation Specification and Implementation
 License:        BSD-3-Clause
-URL:            https://eclipse-ee4j.github.io/jaf/
-Source0:        https://github.com/eclipse-ee4j/jaf/archive/%{version}/jaf-%{version}.tar.gz
+URL:            https://github.com/jakartaee/%{srcname}
+Source0:        https://github.com/jakartaee/%{srcname}/archive/%{version}/%{srcname}-%{version}.tar.gz
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
@@ -44,10 +49,8 @@ Summary:        Javadoc for %{name}
 This package contains javadoc for %{name}.
 
 %prep
-%setup -q -n jaf-%{version}
+%setup -q -n %{srcname}-%{version}
 cp %{SOURCE1} api/build.xml
-
-%pom_remove_parent api
 
 %build
 pushd api
@@ -55,24 +58,22 @@ pushd api
 popd
 
 %install
-pushd api
 # jars
-mkdir -p %{buildroot}%{_javadir}/%{name}
-cp -a target/%{artifact_name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{artifact_name}.jar
+install -d -m 0755 %{buildroot}%{_javadir}/%{name}
+install -pm 0644 api/target/%{artifact_name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{artifact_name}.jar
 
 #pom
-install -d -m 755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{artifact_name}.pom
+install -d -m 0755 %{buildroot}%{_mavenpomdir}/%{name}
+%{mvn_install_pom} api/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{artifact_name}.pom
 %add_maven_depmap %{name}/%{artifact_name}.pom %{name}/%{artifact_name}.jar
 
 # javadoc
-mkdir -p %{buildroot}%{_javadocdir}/%{name}
-cp -a target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
-popd
+install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -a api/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 
 %fdupes -s %{buildroot}%{_javadocdir}
 
-%files -f api/.mfiles
+%files -f .mfiles
 %doc README.md
 %license LICENSE.md NOTICE.md
 

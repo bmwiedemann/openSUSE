@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Apr 29 16:54:40 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.1.3
+  * Changes:
+    + #93 - Use OSGi service loader mediator
+    + #94 - Loading of service provider implementations needs to be
+      done under doPrivileged
+    + #100 - Avoid requiring accessDeclaredMembers permissions
+    + fix wrong class file version for package-info
+    + add missing javadoc description for MimeTypeEntry getters
+    + fixes erroneous assumption about classes being loaded from
+      Thread.getContextClassLoader
+    + allows reproducible build
+- Use the new https://github.com/jakartaee/jaf-api URL
+
+-------------------------------------------------------------------
+Mon Apr 29 14:28:00 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- The binaries are compatible with java 1.8
+
+-------------------------------------------------------------------
 Thu Mar  3 14:26:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Rewrite build system to build with ant
