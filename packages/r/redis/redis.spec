@@ -177,6 +177,6 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 %dir %attr(0750,%{name},%{name}) %{_data_dir}
 %dir %attr(0750,%{name},%{name}) %{_data_dir}/default
 %dir %attr(0750,%{name},%{name}) %{_log_dir}
-%ghost %dir /run/%{name}
+%ghost %dir %attr(0755,%{name},%{name}) /run/%{name}
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 27 22:00:24 UTC 2024 - Илья Индиго <13ilya@gmail.com>
+
+- Fixed privileges of /run/redis directory (rpm -qlv redis | grep /run).
+
+-------------------------------------------------------------------
 Fri Mar  1 10:12:43 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - The following issue has been fixed in TW but has not been
