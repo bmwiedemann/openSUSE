@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 02 06:16:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.35.1:
+  * Make Resource.pointer also properly handle empty pointers
+    (which refer to the root document).
+    This fix likely only affects you if you were using that
+    function directly, as Resource.lookup already handles empty
+    fragments.
+
+-------------------------------------------------------------------
 Wed Apr 24 11:27:53 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.35.0:
