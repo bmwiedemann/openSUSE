@@ -1841,6 +1841,7 @@ unsorted:
   - caja-extension-image-converter 
   - caja-extension-nextcloud 
   - caja-extension-open-terminal 
+  - caja-extension-owncloud 
   - caja-extension-rename 
   - caja-extension-sendto 
   - caja-extension-sendto-blueman 
@@ -4018,6 +4019,8 @@ unsorted:
   - fence-agents-amt_ws 
   - fence-agents-devel 
   - fence-sanlock 
+  - feroxbuster 
+  - feroxbuster-bash-completion 
   - festival 
   - festival-devel 
   - fetchmail 
@@ -7694,6 +7697,7 @@ unsorted:
   - gpick-lang 
   - gpicview 
   - gpicview-lang 
+  - gping 
   - gpm-devel 
   - gpomme 
   - gpp 
@@ -9127,6 +9131,7 @@ unsorted:
   - jdeparser-javadoc 
   - jdepend 
   - jdepend-demo 
+  - jdepend-javadoc 
   - jdependency 
   - jdependency-javadoc 
   - jdom 
@@ -12178,6 +12183,8 @@ unsorted:
   - libclang-cpp17 
   - libclang-cpp17-32bit 
   - libclang-cpp18-32bit 
+  - libclapper-0_0-0 
+  - libclapper-gtk-0_0-0 
   - libclastfm-devel 
   - libclaw-devel 
   - libclaw-doc 
@@ -12193,8 +12200,8 @@ unsorted:
   - libcloudproviders-devel 
   - libclthreads2 
   - libclxclient3 
-  - libclzma-suse0 
-  - libclzma-suse0-x86-64-v3 
+  - libclzma-suse1 
+  - libclzma-suse1-x86-64-v3 
   - libcm1 
   - libcmap4 
   - libcmap4-32bit 
@@ -13299,8 +13306,6 @@ unsorted:
   - libgstaudio-1_0-0-32bit 
   - libgstbadaudio-1_0-0-32bit 
   - libgstbasecamerabinsrc-1_0-0-32bit 
-  - libgstclapper-1_0-0 
-  - libgstclapperglbaseimporter0 
   - libgstcodecparsers-1_0-0-32bit 
   - libgstcodecs-1_0-0-32bit 
   - libgstcuda-1_0-0-32bit 
@@ -15927,6 +15932,7 @@ unsorted:
   - libspf2-apidocs 
   - libspf2-devel 
   - libspf2-tools 
+  - libspglib_f08-2 
   - libsphinxad0 
   - libsphinxbase1 
   - libsphinxbase3 
@@ -16115,9 +16121,6 @@ unsorted:
   - libtag-doc 
   - libtag2-32bit 
   - libtag_c2-32bit 
-  - libtaginfo-devel 
-  - libtaginfo1 
-  - libtaginfo_c0 
   - libtalloc-devel 
   - libtar 
   - libtar-devel 
@@ -19169,6 +19172,7 @@ unsorted:
   - nautilus-extension-dropbox 
   - nautilus-extension-folder-color 
   - nautilus-extension-nextcloud 
+  - nautilus-extension-owncloud 
   - nautilus-extension-sendto-blueman 
   - nautilus-extension-tilix 
   - nautilus-file-roller 
@@ -19233,6 +19237,7 @@ unsorted:
   - nemo-extension-folder-color 
   - nemo-extension-image-converter 
   - nemo-extension-nextcloud 
+  - nemo-extension-owncloud 
   - nemo-extension-pastebin 
   - nemo-extension-preview 
   - nemo-extension-repairer 
@@ -23101,6 +23106,7 @@ unsorted:
   - pw3270-branding 
   - pwgen 
   - py3c-devel 
+  - pybind11-abseil-devel 
   - pybugz-common 
   - pydf 
   - pyenv 
@@ -24629,6 +24635,7 @@ unsorted:
   - python310-dask-dataframe 
   - python310-dask-diagnostics 
   - python310-dask-distributed 
+  - python310-dask-expr 
   - python310-dask-test 
   - python310-databases 
   - python310-datadiff 
@@ -26041,6 +26048,7 @@ unsorted:
   - python310-pybind11 
   - python310-pybind11-devel 
   - python310-pybind11-stubgen 
+  - python310-pybind11_abseil 
   - python310-pybluez 
   - python310-pybtex 
   - python310-pybugz 
@@ -28174,6 +28182,7 @@ unsorted:
   - python311-dask-dataframe 
   - python311-dask-diagnostics 
   - python311-dask-distributed 
+  - python311-dask-expr 
   - python311-dask-test 
   - python311-databases 
   - python311-datadiff 
@@ -29509,6 +29518,7 @@ unsorted:
   - python311-pybind11 
   - python311-pybind11-devel 
   - python311-pybind11-stubgen 
+  - python311-pybind11_abseil 
   - python311-pybluez 
   - python311-pybtex 
   - python311-pybugz 
@@ -31636,6 +31646,7 @@ unsorted:
   - python312-dask-dataframe 
   - python312-dask-diagnostics 
   - python312-dask-distributed 
+  - python312-dask-expr 
   - python312-dask-test 
   - python312-databases 
   - python312-datadiff 
@@ -33042,6 +33053,7 @@ unsorted:
   - python312-pybind11 
   - python312-pybind11-devel 
   - python312-pybind11-stubgen 
+  - python312-pybind11_abseil 
   - python312-pybluez 
   - python312-pybtex 
   - python312-pybugz 
@@ -36339,6 +36351,7 @@ unsorted:
   - spek 
   - spew 
   - spglib-devel 
+  - spglib_f08-devel 
   - sphinx 
   - sphinxbase 
   - sphinxbase-devel 
@@ -46530,6 +46543,8 @@ unsorted:
   - typelib-1_0-Champlain-0_12 
   - typelib-1_0-CinnamonDesktop-3_0 
   - typelib-1_0-CjsPrivate-1_0 
+  - typelib-1_0-Clapper-0_0 
+  - typelib-1_0-ClapperGtk-0_0 
   - typelib-1_0-CloudProviders-0_3_0 
   - typelib-1_0-ClutterGst-3_0 
   - typelib-1_0-Cogl-2_0 
@@ -46626,7 +46641,6 @@ unsorted:
   - typelib-1_0-GstAnalytics-1_0 
   - typelib-1_0-GstApp-1_0 
   - typelib-1_0-GstBadAudio-1_0 
-  - typelib-1_0-GstClapper-1 
   - typelib-1_0-GstCodecs-1_0 
   - typelib-1_0-GstCuda-1_0 
   - typelib-1_0-GstDxva-1_0 
