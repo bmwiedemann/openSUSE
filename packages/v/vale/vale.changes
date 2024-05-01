@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 01 03:45:27 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.4.2:
+  * test: fix invalid pkg case
+  * test: add another cascade case
+  * Fix substitution rule parsing (#813)
+  * chore(deps): bump golang.org/x/net from 0.17.0 to 0.23.0 (#809)
+  * docs: add Digital Ocean
+
+-------------------------------------------------------------------
 Mon Apr 08 13:15:36 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.4.1:

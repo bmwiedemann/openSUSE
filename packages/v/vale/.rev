@@ -646,4 +646,17 @@
   * docs: add demo screenshot [ci skip] (forwarded request 1166208 from jfkw)</comment>
     <requestid>1166210</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>595e4892866af7362330d5aa1a394bae</srcmd5>
+    <version>3.4.2</version>
+    <time>1714568238</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.2:
+  * test: fix invalid pkg case
+  * test: add another cascade case
+  * Fix substitution rule parsing (#813)
+  * chore(deps): bump golang.org/x/net from 0.17.0 to 0.23.0 (#809)
+  * docs: add Digital Ocean (forwarded request 1171069 from jfkw)</comment>
+    <requestid>1171070</requestid>
+  </revision>
 </revisionlist>

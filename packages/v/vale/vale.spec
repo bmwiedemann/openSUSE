@@ -17,7 +17,7 @@
 
 
 Name:           vale
-Version:        3.4.1
+Version:        3.4.2
 Release:        0
 Summary:        CLI tool to lint text with extensible markup format support
 License:        MIT
