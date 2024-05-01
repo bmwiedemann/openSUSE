@@ -918,4 +918,12 @@ mostly-working synapse than nothing at all) and the package has been update to
       questions, email security@element.io.</comment>
     <requestid>1169911</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>834155b7b60ac8726cb5a959b12d98ca</srcmd5>
+    <version>1.106.0</version>
+    <time>1714568203</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.106.0</comment>
+    <requestid>1171009</requestid>
+  </revision>
 </revisionlist>

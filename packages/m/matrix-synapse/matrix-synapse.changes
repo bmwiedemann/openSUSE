@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Apr 30 14:09:46 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.106.0
+  - Features
+    - Send an email if the address is already bound to an user
+      account. (#16819)
+    - Implement the rendezvous mechanism described by MSC4108.
+      (#17056)
+    - Support delegating the rendezvous mechanism described MSC4108
+      to an external implementation. (#17086)
+  - Bugfixes
+    - Add validation to ensure that the limit parameter on
+      /publicRooms is non-negative. (#16920)
+    - Return 400 M_NOT_JSON upon receiving invalid JSON in query
+      parameters across various client and admin endpoints, rather
+      than an internal server error. (#16923)
+    - Make the CSAPI endpoint /keys/device_signing/upload
+      idempotent. (#16943)
+    - Redact membership events if the user requested erasure upon
+      deactivating. (#17076)
+  - Improved Documentation
+    - Add a prompt in the contributing guide to manually configure
+      icu4c. (#17069)
+    - Clarify what part of message retention is still experimental.
+      (#17099)
+  - Internal Changes
+    - Use new receipts column to optimise receipt and push action
+      SQL queries. Contributed by Nick @ Beeper (@Fizzadar).
+      (#17032, #17096)
+    - Fix mypy with latest Twisted release. (#17036)
+    - Bump minimum supported Rust version to 1.66.0. (#17079)
+    - Add helpers to transform Twisted requests to Rust http
+      Requests/Responses. (#17081)
+    - Fix type annotation for visited_chains after mypy upgrade.
+      (#17125)
+
+-------------------------------------------------------------------
 Tue Apr 23 16:37:19 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.105.1 (boo#1223319)
