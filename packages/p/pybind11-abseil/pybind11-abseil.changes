@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Fri Apr 26 18:20:46 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.
+- Add patches to fix build:
+  * use-system-packages-if-possible.patch -- Allow the use of
+    system absl-cpp and pybind11 if available
+  * find-and-link-python-libs.patch -- Link against python
+    libraries to avoid undefined references
+  * install-headers.patch -- Install header files to appropriate
+    system includedirs
+  

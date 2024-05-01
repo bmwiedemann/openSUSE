@@ -1,0 +1,6 @@
+<package name="pybind11-abseil" project="openSUSE:Factory">
+  <title>Pybind11 bindings for the Abseil C++ Common Libraries</title>
+  <description></description>
+  <devel project="devel:languages:python" package="pybind11-abseil"/>
+  <url>https://github.com/pybind/pybind11_abseil</url>
+</package>
