@@ -1,7 +1,7 @@
 #
 # spec file for package jdepend
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define section		free
 Name:           jdepend
 Version:        2.10
 Release:        0
@@ -27,9 +26,9 @@ URL:            http://www.clarkware.com/software/JDepend.html
 Source0:        https://github.com/clarkware/jdepend/archive/refs/tags/%{version}.tar.gz
 Source1:        %{name}-%{version}.pom
 BuildRequires:  ant
+BuildRequires:  fdupes
 BuildRequires:  java-devel
-BuildRequires:  javapackages-local
-Obsoletes:      %{name}-javadoc
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -53,6 +52,13 @@ and control package dependencies.
 
 This package contains demonstration and sample files for JDepend.
 
+%package javadoc
+Summary:        Javadoc for %{name}
+Group:          Documentation/HTML
+
+%description javadoc
+This package contains the API documentation for %{name}.
+
 %prep
 %setup -q
 # remove all binary libs
@@ -62,38 +68,37 @@ find . -name "*.jar" -exec rm -f {} \;
 %{ant} \
 	-Dant.build.javac.source=1.8 \
 	-Dant.build.javac.target=1.8 \
-	jar
+	jar javadoc
 
 %install
 # jars
-install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 dist/%{name}-%{version}.jar \
-    %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} ${jar/-%{version}/}; done)
+install -d -m 0755 %{buildroot}%{_javadir}
+install -p -m 0644 dist/%{name}-%{version}.jar \
+    %{buildroot}%{_javadir}/%{name}.jar
 
 # pom
-install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -m 644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
-%add_maven_depmap %{name}-%{version}.pom %{name}-%{version}.jar
+install -d -m 0755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar
+
+# javadoc
+install -d -m 0755 %{buildroot}%{_javadocdir}
+cp -pr build/docs/api %{buildroot}%{_javadocdir}/%{name}
+%fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 # # demo
 install -d -m 755 %{buildroot}%{_datadir}/%{name}
 cp -pr sample %{buildroot}%{_datadir}/%{name}
+%fdupes -s %{buildroot}%{_datadir}/%{name}
 
-%files
-%defattr(0644,root,root,0755)
+%files -f .mfiles
 %license LICENSE.md
 %doc CHANGELOG.md README.md
-%{_javadir}/*
-%{_mavenpomdir}/*
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%endif
+
+%files javadoc
+%{_javadocdir}/%{name}
 
 %files demo
-%defattr(0644,root,root,0755)
 %{_datadir}/%{name}
 
 %changelog

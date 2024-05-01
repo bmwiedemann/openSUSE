@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 30 12:06:20 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Simplify the spec:
+  * remove old macros,
+  * avoid versioned jars,
+  * build and distribute javadoc
+
+-------------------------------------------------------------------
 Sat Jun 18 18:38:40 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Clean-up the spec file

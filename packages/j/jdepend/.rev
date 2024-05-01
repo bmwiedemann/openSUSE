@@ -145,4 +145,12 @@
     <comment>minor spec cleanup</comment>
     <requestid>983619</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>e99f0ed47dd2fc386f85ba7e9892b691</srcmd5>
+    <version>2.10</version>
+    <time>1714568138</time>
+    <user>dimstar_suse</user>
+    <comment>Simplify the spec: remove old macros, avoid versioned jars, build javadoc</comment>
+    <requestid>1170982</requestid>
+  </revision>
 </revisionlist>
