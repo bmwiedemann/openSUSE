@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 30 15:39:55 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.48.0:
+  - Features
+    * feat: Add --tree flag to unmanaged command
+    * feat: Add --tree flag to managed command
+    * feat: Add --tree flag to ignored command
+    * feat: Include name of target in error message
+  - Fixes
+    * fix: Apply .chezmoiignore to dirs in external archives
+    * fix: Remove unmanaged files from exact_ directories containing external files
+    * fix: Better detect username on Android/Termux systems
+  - Documentation updates
+    * docs: Document --tree flag
+
+-------------------------------------------------------------------
 Tue Apr 16 15:53:19 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.47.4:
