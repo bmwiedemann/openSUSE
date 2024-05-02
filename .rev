@@ -251,4 +251,12 @@
     <comment>- Reinstate %optflags</comment>
     <requestid>1150529</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1982febbb1560d94e286837f2042c6ba</srcmd5>
+    <version>0.9.2+g191</version>
+    <time>1714686438</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1171168</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 Name:           libvmime
 %define lname	libvmime-suse6
-Version:        0.9.2+g188
+Version:        0.9.2+g191
 Release:        0
 Summary:        Library for working with RFC 5322, MIME messages and IMAP/POP/SMTP
 License:        GPL-3.0-or-later
