@@ -7,11 +7,11 @@
   <!-- that they should prefer consuming it instead. -->
   <!-- do_not_remove: published-with-gradle-metadata -->
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.junit.platform</groupId>
-  <artifactId>junit-platform-launcher</artifactId>
-  <version>1.8.2</version>
-  <name>JUnit Platform Launcher</name>
-  <description>Module "junit-platform-launcher" of JUnit 5.</description>
+  <groupId>org.junit.jupiter</groupId>
+  <artifactId>junit-jupiter</artifactId>
+  <version>5.10.2</version>
+  <name>JUnit Jupiter (Aggregator)</name>
+  <description>Module "junit-jupiter" of JUnit 5.</description>
   <url>https://junit.org/junit5/</url>
   <licenses>
     <license>
@@ -66,7 +66,7 @@
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
-        <version>5.8.2</version>
+        <version>5.10.2</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -74,16 +74,22 @@
   </dependencyManagement>
   <dependencies>
     <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-engine</artifactId>
-      <version>1.8.2</version>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.10.2</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>org.apiguardian</groupId>
-      <artifactId>apiguardian-api</artifactId>
-      <version>1.1.2</version>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <version>5.10.2</version>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.10.2</version>
+      <scope>runtime</scope>
     </dependency>
   </dependencies>
 </project>

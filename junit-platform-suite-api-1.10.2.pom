@@ -7,11 +7,11 @@
   <!-- that they should prefer consuming it instead. -->
   <!-- do_not_remove: published-with-gradle-metadata -->
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.junit.jupiter</groupId>
-  <artifactId>junit-jupiter-migrationsupport</artifactId>
-  <version>5.8.2</version>
-  <name>JUnit Jupiter Migration Support</name>
-  <description>Module "junit-jupiter-migrationsupport" of JUnit 5.</description>
+  <groupId>org.junit.platform</groupId>
+  <artifactId>junit-platform-suite-api</artifactId>
+  <version>1.10.2</version>
+  <name>JUnit Platform Suite API</name>
+  <description>Module "junit-platform-suite-api" of JUnit 5.</description>
   <url>https://junit.org/junit5/</url>
   <licenses>
     <license>
@@ -66,7 +66,7 @@
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
-        <version>5.8.2</version>
+        <version>5.10.2</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -74,15 +74,9 @@
   </dependencyManagement>
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.2</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>5.8.2</version>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-commons</artifactId>
+      <version>1.10.2</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
