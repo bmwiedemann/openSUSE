@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May  1 08:39:08 UTC 2024 - Matej Cepl <mcepl@suse.com>
+
+- Update CVE-2023-52425-libexpat-2.6.0-backport.patch
+  so that it uses features sniffing, not just
+  comparing version number. Include also
+  support-expat-CVE-2022-25236-patched.patch.
+- Add CVE-2023-52425-remove-reparse_deferral-tests.patch skipping
+  failing tests.
+- Refresh patches:
+  - CVE-2023-27043-email-parsing-errors.patch
+  - fix_configure_rst.patch
+  - skip_if_buildbot-extend.patch
+- Remove included patch:
+  - support-expat-CVE-2022-25236-patched.patch
+
+-------------------------------------------------------------------
 Mon Apr 15 10:31:32 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add CVE-2023-52425-libexpat-2.6.0-backport.patch to fix tests with

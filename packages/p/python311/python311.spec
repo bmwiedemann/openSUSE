@@ -155,9 +155,6 @@ Patch10:        skip-test_pyobject_freed_is_freed.patch
 # PATCH-FIX-SLE fix_configure_rst.patch bpo#43774 mcepl@suse.com
 # remove duplicate link targets and make documentation with old Sphinx in SLE
 Patch11:        fix_configure_rst.patch
-# PATCH-FIX-UPSTREAM support-expat-CVE-2022-25236-patched.patch jsc#SLE-21253 mcepl@suse.com
-# Makes Python resilient to changes of API of libexpat
-Patch12:        support-expat-CVE-2022-25236-patched.patch
 # PATCH-FIX-UPSTREAM skip_if_buildbot-extend.patch gh#python/cpython#103053 mcepl@suse.com
 # Skip test_freeze_simple_script
 Patch13:        skip_if_buildbot-extend.patch
@@ -173,6 +170,7 @@ Patch15:        bsc1221260-test_asyncio-ResourceWarning.patch
 # update, this patch changes the tests to match the libexpat provided
 # by SUSE
 Patch16:        CVE-2023-52425-libexpat-2.6.0-backport.patch
+Patch17:        CVE-2023-52425-remove-reparse_deferral-tests.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -429,11 +427,11 @@ other applications.
 
 %patch -p1 -P 10
 %patch -p1 -P 11
-%patch -p1 -P 12
 %patch -p1 -P 13
 %patch -p1 -P 14
 %patch -p1 -P 15
 %patch -p1 -P 16
+%patch -p1 -P 17
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

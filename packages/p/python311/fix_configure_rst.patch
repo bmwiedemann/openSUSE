@@ -3,11 +3,9 @@
  Misc/NEWS               |    2 +-
  2 files changed, 1 insertion(+), 4 deletions(-)
 
-Index: Python-3.11.8/Doc/using/configure.rst
-===================================================================
---- Python-3.11.8.orig/Doc/using/configure.rst
-+++ Python-3.11.8/Doc/using/configure.rst
-@@ -41,7 +41,6 @@ General Options
+--- a/Doc/using/configure.rst
++++ b/Doc/using/configure.rst
+@@ -43,7 +43,6 @@ General Options
  
     See :data:`sys.int_info.bits_per_digit <sys.int_info>`.
  
@@ -15,7 +13,7 @@ Index: Python-3.11.8/Doc/using/configure.rst
  .. option:: --with-cxx-main=COMPILER
  
     Compile the Python ``main()`` function and link Python executable with C++
-@@ -527,13 +526,11 @@ macOS Options
+@@ -529,13 +528,11 @@ macOS Options
  
  See ``Mac/README.rst``.
  
@@ -29,11 +27,9 @@ Index: Python-3.11.8/Doc/using/configure.rst
  .. option:: --enable-framework=INSTALLDIR
  
     Create a Python.framework rather than a traditional Unix install. Optional
-Index: Python-3.11.8/Misc/NEWS
-===================================================================
---- Python-3.11.8.orig/Misc/NEWS
-+++ Python-3.11.8/Misc/NEWS
-@@ -9411,7 +9411,7 @@ C API
+--- a/Misc/NEWS
++++ b/Misc/NEWS
+@@ -9768,7 +9768,7 @@ C API
  - bpo-40939: Removed documentation for the removed ``PyParser_*`` C API.
  
  - bpo-43795: The list in :ref:`limited-api-list` now shows the public name

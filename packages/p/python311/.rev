@@ -1276,4 +1276,23 @@ C API
     just in SLE.</comment>
     <requestid>1169286</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>af875f6ac042113c5ea7d2a92e27481f</srcmd5>
+    <version>3.11.9</version>
+    <time>1714686162</time>
+    <user>anag+factory</user>
+    <comment>- Update CVE-2023-52425-libexpat-2.6.0-backport.patch
+  so that it uses features sniffing, not just
+  comparing version number. Include also
+  support-expat-CVE-2022-25236-patched.patch.
+- Add CVE-2023-52425-remove-reparse_deferral-tests.patch skipping
+  failing tests.
+- Refresh patches:
+  - CVE-2023-27043-email-parsing-errors.patch
+  - fix_configure_rst.patch
+  - skip_if_buildbot-extend.patch
+- Remove included patch:
+  - support-expat-CVE-2022-25236-patched.patch</comment>
+    <requestid>1171202</requestid>
+  </revision>
 </revisionlist>

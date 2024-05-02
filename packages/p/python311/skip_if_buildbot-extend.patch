@@ -2,11 +2,9 @@
  Lib/test/support/__init__.py |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: Python-3.11.8/Lib/test/support/__init__.py
-===================================================================
---- Python-3.11.8.orig/Lib/test/support/__init__.py
-+++ Python-3.11.8/Lib/test/support/__init__.py
-@@ -383,7 +383,7 @@ def skip_if_buildbot(reason=None):
+--- a/Lib/test/support/__init__.py
++++ b/Lib/test/support/__init__.py
+@@ -384,7 +384,7 @@ def skip_if_buildbot(reason=None):
      if not reason:
          reason = 'not suitable for buildbots'
      try:
