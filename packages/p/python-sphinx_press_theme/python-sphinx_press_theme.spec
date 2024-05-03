@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx_press_theme
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,15 +19,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sphinx_press_theme
-Version:        0.8.0
+Version:        0.9.1
 Release:        0
 Summary:        A Sphinx-doc theme based on Vuepress
 License:        MIT
 URL:            https://schettino72.github.io/sphinx_press_site/
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx_press_theme/sphinx_press_theme-%{version}.tar.gz
-Source100:      LICENSE
 BuildRequires:  %{python_module Sphinx >= 4.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 4.0.0
 BuildArch:      noarch
@@ -40,17 +41,17 @@ This theme is based on VuePress. It uses Vue.js & Stylus managed by vite.
 
 %prep
 %setup -q -n sphinx_press_theme-%{version}
-cp %{SOURCE100} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/sphinx_press_theme
+%{python_sitelib}/sphinx_press_theme-%{version}.dist-info
 
 %changelog

@@ -17,4 +17,20 @@ It is required for OpenColorIO 2.0.0 to build.</comment>
     <comment></comment>
     <requestid>1008874</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f1785c4b6046c7c8d9770c40c0ac0758</srcmd5>
+    <version>0.9.1</version>
+    <time>1714758339</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.1:
+  * Add dark mode feature from Mister-Hope's vuepress PR
+  * Fix Sphinx 7 compatibility
+  * Add Sphinx 7 compatibility
+  * Update UI
+- use license from tarball
+- use PEP517 build
+
+- Update to version 0.8.0</comment>
+    <requestid>1171476</requestid>
+  </revision>
 </revisionlist>
