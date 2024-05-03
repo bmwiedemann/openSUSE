@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 28 16:37:28 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 1.6.4:
+  * Update module name and dependencies (#2)
+  * Document new options (#1)
+  * add min-char flags
+  * rename to --err-on-no-selection from --errorOnNoSelection
+
+- changed source repository, project has new maintainer
+- Added _service file
+
+-------------------------------------------------------------------
 Sun Jun  4 05:49:03 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to 1.6.2:

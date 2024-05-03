@@ -1,7 +1,7 @@
 #
 # spec file for package clipman
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           clipman
-Version:        1.6.2
+Version:        1.6.4
 Release:        0
 Summary:        A clipboard manager for Wayland
 License:        GPL-3.0-only
-URL:            https://github.com/yory8/clipman
-# Source0:        https://github.com/yory8/%%{name}/archive/%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
-Source0:        https://github.com/yory8/%{name}/archive/v%{version}.tar.gz
+URL:            https://github.com/chmouel/clipman
+Source0:        %{name}-%{version}.tar.zst
 # Run go build && go mod vendor to get vendor/ subdirectory
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
+BuildRequires:  zstd
 BuildRequires:  golang(API) >= 1.12
 
 %description
