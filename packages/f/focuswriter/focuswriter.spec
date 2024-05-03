@@ -18,7 +18,7 @@
 
 
 Name:           focuswriter
-Version:        1.8.6
+Version:        1.8.7
 Release:        0
 Summary:        A fullscreen, distraction-free writing program
 License:        GPL-3.0-or-later
@@ -48,8 +48,8 @@ BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(zlib)
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun):hicolor-icon-theme
-Requires(postun):update-desktop-files
+Requires(postun): hicolor-icon-theme
+Requires(postun): update-desktop-files
 
 %description
 A fullscreen, distraction-free writing program. You can customize your
