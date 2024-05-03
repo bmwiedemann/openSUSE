@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Fri May 03 14:24:45 UTC 2024 - opensuse-packaging@opensuse.org
+
+- Update to version 84.87.20240503.9343de5:
+  * Update for SLES 15 SP6 RC / Leap 15.6 RC poo#131735
+  * Manually remove further invalid character occurances
+  * Fix Browse C:\ drive incorrect escaping
+
+-------------------------------------------------------------------
+Fri May 03 11:16:02 UTC 2024 - opensuse-packaging@opensuse.org
+
+- Update to version 84.87.20240502.b932b7c:
+  * Add download_data_from_download-o-o.sh
+  * Added translation using Weblate (Latvian)
+  * Disable appstream and polkit extraction
+  * Leap 15.6 desktop-file-translations
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Chinese (China) (zh_CN))
+  * Translated using Weblate (Croatian)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (English (United Kingdom))
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Greek)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Latvian)
+  * Translated using Weblate (Lithuanian)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Portuguese)
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Serbian (latin) (sr@latin))
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Turkish)
+
+-------------------------------------------------------------------
+Fri Apr 14 11:17:09 UTC 2023 - opensuse-packaging@opensuse.org
+
+- Update to version 84.87.20230410.dc72281:
+  * Translated using Weblate (Latvian)
+  * Translated using Weblate (Latvian)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Lithuanian)
+  * Translated using Weblate (Macedonian)
+  * Translated using Weblate (Macedonian)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Persian)
+  * Translated using Weblate (Persian)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Georgian)
+  * Translated using Weblate (Georgian)
+  * Translated using Weblate (Georgian)
+  * Translated using Weblate (Georgian)
+  * Translated using Weblate (Georgian)
+  * Translated using Weblate (Georgian)
+
+-------------------------------------------------------------------
 Mon Feb 13 21:33:18 UTC 2023 - opensuse-packaging@opensuse.org
 
 - Update to version 84.87.20230128.350400f:
