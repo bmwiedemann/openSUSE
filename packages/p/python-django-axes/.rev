@@ -89,4 +89,15 @@
   * Add async support to middleware. [Taikono-Himazin]</comment>
     <requestid>1138693</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f6eb702058fd67b6c9aa61cea606d9af</srcmd5>
+    <version>6.4.0</version>
+    <time>1714758369</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.4.0:
+  * Add support for Python 3.12 and Django 5.0, drop support for
+    Django 4.1. [aleksihakli]
+  * Drop setuptools and pkg_resources dependencies. [Viicos]</comment>
+    <requestid>1171533</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May  3 07:27:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.4.0:
+  * Add support for Python 3.12 and Django 5.0, drop support for
+    Django 4.1. [aleksihakli]
+  * Drop setuptools and pkg_resources dependencies. [Viicos]
+
+-------------------------------------------------------------------
 Sun Jan 14 17:32:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.3.0:

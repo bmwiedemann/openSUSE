@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-axes
-Version:        6.3.0
+Version:        6.4.0
 Release:        0
 License:        MIT
 Summary:        Keep track of failed login attempts in Django-powered sites
