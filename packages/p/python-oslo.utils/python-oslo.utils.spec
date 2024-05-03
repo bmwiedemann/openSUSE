@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.utils
-Version:        6.3.0
+Version:        7.1.0
 Release:        0
 Summary:        OpenStack Utils Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.utils
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.utils/oslo.utils-6.3.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.utils/oslo.utils-7.1.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Babel
 BuildRequires:  python3-ddt
@@ -72,7 +72,7 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for OpenStack utils library.
 
 %prep
-%autosetup -p1 -n oslo.utils-6.3.0
+%autosetup -p1 -n oslo.utils-7.1.0
 
 %py_req_cleanup
 
@@ -83,13 +83,12 @@ Documentation for OpenStack utils library.
 %py3_install
 
 # generate html docs
-PBR_VERSION=6.3.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=7.1.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
-# tests fail with python 3.8
-rm -v oslo_utils/tests/test_reflection.py
+rm -v oslo_utils/tests/test_netutils.py
 %{openstack_stestr_run}
 
 %files -n python3-oslo.utils

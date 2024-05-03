@@ -569,4 +569,22 @@
   - Imported Translations from Zanata</comment>
     <requestid>1136726</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a4c9566242afb1ac7443b5ddc67b048c</srcmd5>
+    <version>7.1.0</version>
+    <time>1714758331</time>
+    <user>anag+factory</user>
+    <comment>- update to version 7.1.0
+  - Update python classifier in setup.cfg
+  - add &lt;range-in&gt; spec DSL operator
+  - reno: Update master for unmaintained/yoga
+  - Remove reference to monotonic on PyPI
+  - Remove strict from is_same_callback()
+  - Require pytz only in Python &lt; 3.9
+  - pre-commit: Integrate bandit
+  - Python-3.12: do not use datetime.datetime.utcnow()
+  - pre-commit: Bump versions
+  - Bump hacking</comment>
+    <requestid>1171465</requestid>
+  </revision>
 </revisionlist>
