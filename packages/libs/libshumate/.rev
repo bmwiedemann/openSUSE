@@ -95,4 +95,14 @@
     <comment>GNOME 46 (forwarded request 1159404 from dimstar)</comment>
     <requestid>1159552</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>eab2f374e01f5a671c8fe9c5975182df</srcmd5>
+    <version>1.2.1</version>
+    <time>1714758238</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.1:
+  + Fix compiling with C++.
+  + Fix crash with null reference map source. (forwarded request 1171349 from dimstar)</comment>
+    <requestid>1171400</requestid>
+  </revision>
 </revisionlist>
