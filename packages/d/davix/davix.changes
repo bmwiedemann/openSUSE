@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May  1 20:29:22 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use system available curl and rapidjson instead of bundled
+  instances. The use of system rapidjson has the nice side-effect
+  of no longer failing to build against GCC14.
+- Add davix-no-hardcoded-rapidjson-includes.patch -- Do not hard
+  code the location of rapidjson header, and allow system package
+  to be used if available [gh#cern-fts/davix#119].
+- Enable third-party copy program davix-cp, add BuildRequires:
+  pkgconfig(gsoapssl++).
+- Run tests as part of %check.
+
+-------------------------------------------------------------------
 Wed Apr 10 14:48:23 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.8.6:

@@ -28,11 +28,16 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://davix.web.cern.ch/davix/docs/devel
 Source:         https://github.com/cern-fts/davix/releases/download/R_%{v_maj}_%{v_min}_%{v_pat}/davix-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM davix-no-hardcoded-rapidjson-includes.patch gh#cern-fts/davix#119 badshah400@gmail.com -- Do not hard code the location of rapidjson header, and allow system package to be used if available
+Patch0:         davix-no-hardcoded-rapidjson-includes.patch
 BuildRequires:  cmake >= 2.6
 BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  pkgconfig
 BuildRequires:  python3
+BuildRequires:  pkgconfig(RapidJSON)
+BuildRequires:  pkgconfig(gsoapssl++)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(uuid)
@@ -69,7 +74,9 @@ applications using davix.
 %autosetup -p1
 
 %build
-%cmake
+%cmake \
+  -DEMBEDDED_LIBCURL=FALSE \
+  -DENABLE_THIRD_PARTY_COPY:BOOL=TRUE
 %cmake_build
 
 %install
@@ -79,6 +86,7 @@ applications using davix.
 rm -fr %{buildroot}%{_datadir}/doc/davix
 
 %check
+%ctest
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
@@ -86,6 +94,7 @@ rm -fr %{buildroot}%{_datadir}/doc/davix
 %files
 %doc README.md RELEASE-NOTES.md
 %license LICENSE
+%{_bindir}/davix-cp
 %{_bindir}/davix-get
 %{_bindir}/davix-http
 %{_bindir}/davix-ls
