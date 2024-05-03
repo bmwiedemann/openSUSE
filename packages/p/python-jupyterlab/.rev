@@ -739,4 +739,20 @@
   * Fix manager isDisposed is not set #15997 (@fcollonval)</comment>
     <requestid>1167857</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f6920cd2df73751bb786988f262235cb</srcmd5>
+    <version>4.1.8</version>
+    <time>1714758381</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.1.8
+  * Consider higher levels when toggling plugin #16251
+    (@divyansshhh)
+- Update to 4.1.7
+  * Fix toggling extension at system level #16241 (@krassowski)
+  * Fix extension toggling at different level #16102 (@divyansshhh)
+  * Partial backport of windowing fix from #16013 #16202
+    (@krassowski)
+</comment>
+    <requestid>1171751</requestid>
+  </revision>
 </revisionlist>

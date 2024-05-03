@@ -17,7 +17,7 @@
 
 
 Name:           python-jupyterlab
-Version:        4.1.6
+Version:        4.1.8
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module ipykernel >= 6.5.0}
 BuildRequires:  %{python_module jupyter-lsp >= 2.0.0}
 BuildRequires:  %{python_module jupyter_core}
 BuildRequires:  %{python_module jupyter_server >= 2.4.0 with %python-jupyter_server < 3}
-BuildRequires:  %{python_module jupyterlab_server >= 2.19.0 with %python-jupyterlab_server < 3}
+BuildRequires:  %{python_module jupyterlab_server >= 2.27.1 with %python-jupyterlab_server < 3}
 BuildRequires:  %{python_module notebook_shim >= 0.2}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}

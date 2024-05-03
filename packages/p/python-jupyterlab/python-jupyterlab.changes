@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May  3 12:38:41 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.1.8
+  * Consider higher levels when toggling plugin #16251
+    (@divyansshhh)
+- Update to 4.1.7
+  * Fix toggling extension at system level #16241 (@krassowski)
+  * Fix extension toggling at different level #16102 (@divyansshhh)
+  * Partial backport of windowing fix from #16013 #16202
+    (@krassowski)
+
+-------------------------------------------------------------------
 Mon Apr 15 17:29:21 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.1.6
