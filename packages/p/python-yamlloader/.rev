@@ -47,4 +47,17 @@
     desired in Python 3.7)</comment>
     <requestid>1135640</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>026716208c2aa3ec5128252d0fb6a464</srcmd5>
+    <version>1.4.1</version>
+    <time>1714758248</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.1:
+  * Fix name of `ConstructorError`
+  * enh: add python 3.12, cleanup
+
+- Update to version 1.2.2
+  * release: 1.2.2 add Python 3.11 support</comment>
+    <requestid>1171472</requestid>
+  </revision>
 </revisionlist>
