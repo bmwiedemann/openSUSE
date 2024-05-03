@@ -41,4 +41,22 @@
     <comment></comment>
     <requestid>1095203</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4874bd16ca8270ce0a59bc783e32f670</srcmd5>
+    <version>0.9.7</version>
+    <time>1714758248</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.7:
+  * Cosmetic release, switching to new maintenance organization.
+  * This release is functionally identical to 0.9.6.1.
+
+  * Pass correct formatting string to logger (#102)
+  * RRULE: Fix floating UNTIL with dateutil &gt; 2.6.1 (#115)
+  * Encode params if necessary in serialization (#109)
+  * Ignore escaped semi-colons in UNTIL value (#114)
+  * RRULE: Fix VTODO without DTSTART (#116)
+  * Fixed regexp for VCF Version 2.1 (#121)
+  * repr changed for datetime.timedelta in python 3.7 (#122)</comment>
+    <requestid>1171474</requestid>
+  </revision>
 </revisionlist>

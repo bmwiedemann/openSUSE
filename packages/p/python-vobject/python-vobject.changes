@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  2 22:20:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.7:
+  * Cosmetic release, switching to new maintenance organization.
+  * This release is functionally identical to 0.9.6.1.
+
+-------------------------------------------------------------------
 Sun Jun 25 07:20:17 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons
@@ -21,19 +28,19 @@ Tue Nov 20 21:23:56 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
   * Correctly order calendar properties before calendar components
     (#98)
   * Correctly serialize timestamp values (i.e. REV) (#99)
-  * Pass correct formatting string to logger (#102) 
+  * Pass correct formatting string to logger (#102)
     - thanks @CruzR!
-  * RRULE: Fix floating UNTIL with dateutil > 2.6.1 (#115) 
+  * RRULE: Fix floating UNTIL with dateutil > 2.6.1 (#115)
     - thanks @Unrud!
-  * Encode params if necessary in serialization (#109) 
+  * Encode params if necessary in serialization (#109)
     - thanks @matthias-k!
-  * Ignore escaped semi-colons in UNTIL value (#114) 
+  * Ignore escaped semi-colons in UNTIL value (#114)
     - thanks @Unrud!
-  * RRULE: Fix VTODO without DTSTART (#116) 
+  * RRULE: Fix VTODO without DTSTART (#116)
     - thanks @Unrud!
-  * Fixed regexp for VCF Version 2.1 (#121) 
+  * Fixed regexp for VCF Version 2.1 (#121)
     - thanks @farmovit!
-  * repr changed for datetime.timedelta in python 3.7 (#122) 
+  * repr changed for datetime.timedelta in python 3.7 (#122)
     - thanks @sharkcz!
 
 - enable testing
