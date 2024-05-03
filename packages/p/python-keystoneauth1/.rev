@@ -366,4 +366,27 @@ update to version 2.12.0
   - Allow federation to work with unversioned auth_url</comment>
     <requestid>1099313</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>672abf3ccf0e28c751ee38c29c6ef861</srcmd5>
+    <version>5.6.0</version>
+    <time>1714758328</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.6.0
+  - Update python classifier in setup.cfg
+  - Add doc of OAuth2.0 Client Credentials Grant Flow
+  - Support PKCE with v3oidcdeviceauthz
+  - Allow setting retriable status codes for Adapter via configuration options
+  - Keep request-id at redirect
+  - Update master for stable/2023.2
+  - Drop parameters when connecting to a redirected endpoint
+  - Add project URLs from README as packaging metadata
+  - Bump bandit
+  - Fix &quot;dictionary changed size during iteration&quot;
+  - Bump hacking, other flake8 plugins
+  - Change retries log level to warning instead of info
+  - Remove dependency on oslo_config
+  - reno: Update master for unmaintained/yoga
+  - Add doc of OAuth 2.0 Mutual-TLS Authenticate</comment>
+    <requestid>1171461</requestid>
+  </revision>
 </revisionlist>
