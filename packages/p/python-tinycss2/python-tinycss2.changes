@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  2 22:01:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * Support CSS nesting
+  * Deprecate parse_declaration_list, use parse_blocks_contents
+    instead
+
+-------------------------------------------------------------------
 Fri Apr 21 12:37:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -18,7 +26,7 @@ Thu Nov 17 13:30:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Sat Oct 29 16:06:46 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 1.2.1 
+- Update to 1.2.1
   * Fix tests included in the source tarball
   * Drop support of Python 3.6
   * Fix serialization of nested functions with no parameters
@@ -44,11 +52,11 @@ Tue Nov 23 17:41:46 UTC 2021 - Axel Braun <axel.braun@gmx.de>
   * Use Python standard librarie’s HSL to RGB converter.
   * Use GitHub Actions for tests.
   * New code structure, new packaging, new documentation.
-  
+
 -------------------------------------------------------------------
 Sat Jul 11 10:50:32 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- switch of isort in testing. isort5 is out and breaks everything 
+- switch of isort in testing. isort5 is out and breaks everything
 
 -------------------------------------------------------------------
 Sat May 16 00:00:10 UTC 2020 - Benjamin Greiner <code@bnavigator.de>

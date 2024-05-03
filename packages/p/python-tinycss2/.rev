@@ -101,4 +101,18 @@
     <comment></comment>
     <requestid>1081741</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6b39e727290bb16099bac9207910e740</srcmd5>
+    <version>1.3.0</version>
+    <time>1714758246</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.0:
+  * Support CSS nesting
+  * Deprecate parse_declaration_list, use parse_blocks_contents
+    instead
+
+- Update to 1.2.1
+- switch of isort in testing. isort5 is out and breaks everything</comment>
+    <requestid>1171457</requestid>
+  </revision>
 </revisionlist>
