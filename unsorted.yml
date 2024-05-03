@@ -6068,6 +6068,10 @@ unsorted:
   - ghc-ordered-containers-devel 
   - ghc-ordered-containers-doc 
   - ghc-ordered-containers-prof 
+  - ghc-os-string 
+  - ghc-os-string-devel 
+  - ghc-os-string-doc 
+  - ghc-os-string-prof 
   - ghc-pager 
   - ghc-pager-devel 
   - ghc-pager-doc 
@@ -6579,6 +6583,10 @@ unsorted:
   - ghc-uglymemo-devel 
   - ghc-uglymemo-doc 
   - ghc-uglymemo-prof 
+  - ghc-unbounded-delays 
+  - ghc-unbounded-delays-devel 
+  - ghc-unbounded-delays-doc 
+  - ghc-unbounded-delays-prof 
   - ghc-unicode-collation 
   - ghc-unicode-collation-devel 
   - ghc-unicode-collation-doc 
@@ -14096,6 +14104,7 @@ unsorted:
   - liblua5_1-5-32bit 
   - liblua5_4-5-32bit 
   - libluabind0_9_1 
+  - libluajit2-5_1-2 
   - liblucene++0 
   - libluksde-devel 
   - libluksde-tools 
@@ -17609,6 +17618,8 @@ unsorted:
   - luabind-devel 
   - luajit 
   - luajit-devel 
+  - luajit2 
+  - luajit2-devel 
   - luaposix-doc 
   - lucene++-devel 
   - lucene-analyzers-common 
@@ -46794,6 +46805,7 @@ unsorted:
   - typelib-1_0-SpeechProvider-1_0 
   - typelib-1_0-Spelling-1 
   - typelib-1_0-TelepathyFarstream-0_6 
+  - typelib-1_0-TelepathyLogger-0_2 
   - typelib-1_0-Template-1_0 
   - typelib-1_0-Thunarx-3_0 
   - typelib-1_0-TimezoneMap-1_0 
