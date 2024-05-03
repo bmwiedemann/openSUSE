@@ -777,4 +777,13 @@ New stable release</comment>
     <comment>GNOME 46 (forwarded request 1158711 from dimstar)</comment>
     <requestid>1159504</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>09bb698936c2d7b4d41e6fa500d20418</srcmd5>
+    <version>46.1</version>
+    <time>1714758210</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.1:
+  + Updated translations. (forwarded request 1171233 from dimstar)</comment>
+    <requestid>1171390</requestid>
+  </revision>
 </revisionlist>
