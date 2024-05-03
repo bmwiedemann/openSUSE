@@ -444,4 +444,19 @@
   - Update master for stable/2023.1</comment>
     <requestid>1135455</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ba37caed71ab37b52d3f891bcaab2e81</srcmd5>
+    <version>5.5.1</version>
+    <time>1714758334</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.5.1
+  - Fix eventlet detection
+  - Bump hacking
+  - Update TOX_CONSTRAINTS_FILE for stable/2024.1
+  - pre-commit: Bump versions
+  - pre-commit: Integrate bandit
+  - Update python classifier in setup.cfg
+  - Update .gitreview for stable/2024.1</comment>
+    <requestid>1171469</requestid>
+  </revision>
 </revisionlist>

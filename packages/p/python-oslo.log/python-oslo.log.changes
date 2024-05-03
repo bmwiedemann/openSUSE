@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May  2 22:14:38 UTC 2024 - cloud-devel@suse.de
+
+- update to version 5.5.1
+  - Fix eventlet detection
+  - Bump hacking
+  - Update TOX_CONSTRAINTS_FILE for stable/2024.1
+  - pre-commit: Bump versions
+  - pre-commit: Integrate bandit
+  - Update python classifier in setup.cfg
+  - Update .gitreview for stable/2024.1
+
+-------------------------------------------------------------------
 Thu Dec 28 09:39:45 UTC 2023 - cloud-devel@suse.de
 
 - update to version 5.4.0
