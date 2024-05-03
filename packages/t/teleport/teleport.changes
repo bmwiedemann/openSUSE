@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu May  2 17:45:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.3.0:
+  * Improved Roles UI
+    The Roles page of the web UI is now backed by a paginated API,
+    ensuring fast load times even on clusters with large numbers of
+    roles.
+  * Resizing for Windows desktop sessions
+    Windows desktop sessions now automatically resize as the size
+    of the browser window changes.
+  * Hardware key support for agentless nodes
+    Teleport now supports connecting to agentless OpenSSH nodes
+    even when Teleport is configured to require hardware key MFA
+    checks.
+  * TPM joining
+    The new TPM join method enables secure joining for agents and
+    Machine ID bots that run on-premise. Based on the secure
+    properties of the host's hardware trusted platform module, this
+    join method removes the need to create and distribute secret
+    tokens, significantly reducing the risk of exfiltration.
+  * Other improvements and fixes
+    - Fixed user SSO bypass by performing a local passwordless
+      login. #41067
+    - Enforce allow_passwordless server-side. #41057
+    - Fixed a memory leak caused by incorrectly passing the offset
+      when paginating all Access Lists' members when there are more
+      than the default pagesize (200) Access Lists. #41045
+    - Added resize capability to windows desktop sessions. #41025
+    - Fixed a regression causing roles filtering to not work.
+      #40999
+    - Allow AWS integration to be used for global services without
+      specifying a valid region. #40991
+    - Made account id visible when selecting IAM Role for accessing
+      the AWS Console. #40987
+
+-------------------------------------------------------------------
 Sat Apr 27 09:30:21 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 15.2.5:
