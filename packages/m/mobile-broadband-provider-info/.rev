@@ -250,4 +250,41 @@
     <comment></comment>
     <requestid>1079951</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>688282f148f8d8afc17e1c8fc163fe54</srcmd5>
+    <version>20240407</version>
+    <time>1714758243</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240407:
+  + Switch to meson
+  + Support MMS attachment size
+  + New providers:
+    - uk: Lebara
+  + Updated providers:
+    - in: Multiple providers
+    - uk: Superdrug
+  + Voicemail fixes:
+    - au:Vodafone
+    - us:AT&amp;T
+    - fr:FreeMobile
+- Add meson BuildRequires: follow upstreams port to meson.
+- Drop libtool BuildRequires: no longer needed with meson.
+- Replace configure/make/make_install macros by the meson
+  equivalents meson/meson_build/meson_install.
+- Enable test suite.
+- BuildRequire libxml2-tools, needed by the tests. 
+
+- Update to version 20240407:
+  * Release 20240407
+  * build: Drop autoconf
+  * ci: Use meson instead of autoconf
+  * build: Switch to meson
+  * ci: Switch to recent Debian
+  * gb: Add voicemail for Superdrug
+  * in: cleanup dead providers and update new and existing
+  * Add voicemail for Vodafone AU
+  * USA: Change AT&amp;T Visual Voicemail Protocol to ios
+  * Providers with mccmnc 310260: add primary attributes (forwarded request 1171359 from dimstar)</comment>
+    <requestid>1171405</requestid>
+  </revision>
 </revisionlist>

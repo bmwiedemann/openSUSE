@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu May  2 12:34:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 20240407:
+  + Switch to meson
+  + Support MMS attachment size
+  + New providers:
+    - uk: Lebara
+  + Updated providers:
+    - in: Multiple providers
+    - uk: Superdrug
+  + Voicemail fixes:
+    - au:Vodafone
+    - us:AT&T
+    - fr:FreeMobile
+- Add meson BuildRequires: follow upstreams port to meson.
+- Drop libtool BuildRequires: no longer needed with meson.
+- Replace configure/make/make_install macros by the meson
+  equivalents meson/meson_build/meson_install.
+- Enable test suite.
+- BuildRequire libxml2-tools, needed by the tests. 
+
+-------------------------------------------------------------------
+Thu May 02 12:34:13 UTC 2024 - dimstar@opensuse.org
+
+- Update to version 20240407:
+  * Release 20240407
+  * build: Drop autoconf
+  * ci: Use meson instead of autoconf
+  * build: Switch to meson
+  * ci: Switch to recent Debian
+  * gb: Add voicemail for Superdrug
+  * in: cleanup dead providers and update new and existing
+  * Add voicemail for Vodafone AU
+  * USA: Change AT&T Visual Voicemail Protocol to ios
+  * Providers with mccmnc 310260: add primary attributes
+  * fr: change Free Mobile standard to iOS
+  * dtd: add iOS standard and references to visual voicemail
+  * Lebara UK: Add maximum MMS size
+  * serviceproviders.2.dtd: Add support for MMS size in bytes
+  * Add Lebara UK Provider
+  * gb: Update Superdrug's MMS proxy
+
+-------------------------------------------------------------------
 Sun Apr 16 20:20:46 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 20230416:

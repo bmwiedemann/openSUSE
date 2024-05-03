@@ -1,7 +1,7 @@
 #
 # spec file for package mobile-broadband-provider-info
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mobile-broadband-provider-info
-Version:        20230416
+Version:        20240407
 Release:        0
 Summary:        Mobile Service Provider Database
 License:        SUSE-Public-Domain
@@ -27,7 +27,8 @@ URL:            http://live.gnome.org/NetworkManager/MobileBroadband/ServiceProv
 Source0:        %{name}-%{version}.tar.xz
 Source1:        mobile-broadband-provider-info-rpmlintrc
 
-BuildRequires:  libtool
+BuildRequires:  libxml2-tools
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildArch:      noarch
@@ -40,12 +41,14 @@ providers in different countries.
 %autosetup -p1
 
 %build
-# Needed, as we have a git snapshot
-NOCONFIGURE=1 ./autogen.sh
-%configure
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
+
+%check
+%meson_test
 
 %files
 %license COPYING
