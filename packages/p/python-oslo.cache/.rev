@@ -262,4 +262,37 @@
   - Imported Translations from Zanata</comment>
     <requestid>1136731</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9559f8d522572ed31f505b74dfc293d0</srcmd5>
+    <version>3.7.0</version>
+    <time>1714758329</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.7.0
+  - Update master for stable/2023.2
+  - reno: Update master for unmaintained/yoga
+  - Fix minor typos in parameter help texts
+  - Add native options for redis backend
+  - Automate TLS certificates settings for redis backend
+  - Do not mark hosts as alive when they are all dead
+  - Add a new option to enforce the OpenSSL FIPS mode
+  - memcache: Remove &quot;default&quot; username and password
+  - config: Document backends supporting specific options
+  - Fail if tls_enabled is True but backend does not support it
+  - pre-commit: Bump versions
+  - Bump hacking
+  - Fix wrong path in coveragerc
+  - [cache] memcache_password should be secret
+  - Prevent potential ReDoS attack
+  - Bump hacking (again)
+  - Clean-up memcache connection sockets
+  - Display coverage report
+  - Ensure requirements are capped by upper constraints
+  - Fix incomplete exception message
+  - Add support for Redis Sentinel backend
+  - Update python classifier in setup.cfg
+  - pre-commit: Integrate bandit
+  - Cleanup py27 support
+  - redis: Add functional tests</comment>
+    <requestid>1171462</requestid>
+  </revision>
 </revisionlist>
