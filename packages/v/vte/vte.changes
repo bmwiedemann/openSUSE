@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu May  2 06:56:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.76.1:
+  + terminal: fix UTF-8 bounds check.
+  + app: Don't hide scrolled-window option.
+  + app: Add built-in CSS to hide scrolled-window over-scroll
+    indicators.
+  + emulation: Fix the reported bold/etc. color if unset
+  + widget: Also set tag when returning no match.
+
+-------------------------------------------------------------------
+Thu May 02 06:56:11 UTC 2024 - dimstar@opensuse.org
+
+- Update to version 0.76.1:
+  * emulation: Fix the reported bold/etc. color if unset
+  * app: Fix the build with clang++
+  * app: Don't use typeof
+  * terminal: fix UTF-8 bounds check
+  * widget: Also set tag when returning no match
+  * app: Add built-in CSS to hide scrolled-window over-scroll indicators
+  * app: Don't hide scrolled-window option
+  * build: Post release version bump
+
+-------------------------------------------------------------------
 Mon Mar 18 16:14:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.76.0:
