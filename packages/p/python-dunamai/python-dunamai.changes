@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May  3 07:28:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.21.0:
+  * Generally, when Dunamai can detect the VCS in use, but
+    there's no version set yet, then Dunamai uses 0.0.0 as a
+    fallback, unless strict mode is enabled.
+    However, if there were some tags and none matched the version
+    pattern, then Dunamai would yield an error.
+  * Added `--ignore-untracked` option to control checking whether
+    the repository is dirty.
+
+-------------------------------------------------------------------
 Sat Apr 20 14:07:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.20.0:

@@ -25,4 +25,19 @@
     which only bumps when `distance != 0`.</comment>
     <requestid>1169374</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>018f4eeb8533b975d8dc0d9b26f032fb</srcmd5>
+    <version>1.21.0</version>
+    <time>1714758367</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.21.0:
+  * Generally, when Dunamai can detect the VCS in use, but
+    there's no version set yet, then Dunamai uses 0.0.0 as a
+    fallback, unless strict mode is enabled.
+    However, if there were some tags and none matched the version
+    pattern, then Dunamai would yield an error.
+  * Added `--ignore-untracked` option to control checking whether
+    the repository is dirty.</comment>
+    <requestid>1171535</requestid>
+  </revision>
 </revisionlist>
