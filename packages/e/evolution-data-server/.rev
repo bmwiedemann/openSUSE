@@ -2311,4 +2311,22 @@ New stable rel</comment>
     <comment>GNOME 46 (forwarded request 1158143 from dimstar)</comment>
     <requestid>1159451</requestid>
   </revision>
+  <revision rev="254" vrev="1">
+    <srcmd5>2463cf35cd94af31ed9a79cf4d6efad0</srcmd5>
+    <version>3.52.1</version>
+    <time>1714758249</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.52.1:
+  + Bug Fixes:
+    - Camel: Sanitize exported OpenPGP public key before transfer.
+    - Google Task stale item cannot be deleted.
+  + Miscellaneous:
+    - EOAuth2ServiceOutlook: Cannot be used with IMAP.
+    - IMAPx: Correct return value of imapx_splice_with_progress()
+      when cancelled.
+    - IMAPX: Correct path returned by imapx_get_filename().
+  + Updated translations.
+</comment>
+    <requestid>1171492</requestid>
+  </revision>
 </revisionlist>

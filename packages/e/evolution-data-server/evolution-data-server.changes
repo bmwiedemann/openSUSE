@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 19 12:58:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.52.1:
+  + Bug Fixes:
+    - Camel: Sanitize exported OpenPGP public key before transfer.
+    - Google Task stale item cannot be deleted.
+  + Miscellaneous:
+    - EOAuth2ServiceOutlook: Cannot be used with IMAP.
+    - IMAPx: Correct return value of imapx_splice_with_progress()
+      when cancelled.
+    - IMAPX: Correct path returned by imapx_get_filename().
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 15 07:12:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.52.0:
