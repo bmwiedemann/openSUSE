@@ -775,4 +775,41 @@
   * [PPC32] A crash bug related to --gc-sections has been fixed. (8eae0a3)</comment>
     <requestid>1158643</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>c453ba5e10812a5e5268b08f229ac2f5</srcmd5>
+    <version>2.31.0</version>
+    <time>1714758360</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.31.0
+  * mold is now up to 10% faster when linking very large, debug info-enabled
+    executables such as Blender (~1.8 GiB) or Clang (~3.8 GiB), thanks to several
+    improvements we've made to the string merging algorithm. (53ebcd8, d714301,
+    40f6b17, c9faf3d)
+  * -z start-stop-visibility=hidden is now supported so that linker-synthesized
+    __start_&lt;section-name&gt; and __stop_&lt;section-name&gt; symbols can be completely
+    hidden from other ELF modules. Previously, only -z
+    start-stop-visibility=protected was supported. (99a5b15)
+  * -Bsymbolic-non-weak and -Bsymbolic-non-weak-functions options are now supported
+    for compatibility with LLVM lld. Just like lld, these options control which
+    symbols are exported as dynamic symbols. -Bsymbolic-non-weak makes the linker to
+    export only weak symbols, whereas -Bsymbolic-non-weak-functions makes it to
+    export only weak function symbols. (7d17aa8)
+  * Previously, if a linker script contains a newline character in the beginning
+    four bytes of a file, it was not recognized as a linker script by mold. Now,
+    mold allows newlines at the beginning of a file. (ea054cc)
+  * Under rare circumstances, the INPUT linker script command may have found a
+    different file than GNU ld would. Now, mold's behavior aligns with GNU ld's.
+    (163975d)
+  * Previously, the --repro option produced corrupted tar files. Now the bug has
+    been fixed. (32c4a09)
+  * mold generally guarantees that its output is reproducible, meaning that if you
+    run the linker with the exact same command line options and input files, the
+    output is guaranteed to be bit-for-bit identical to the previous outputs.
+    However, under rare circumstances, it might produce different output due to a
+    bug. It's reported that this nondeterminism caused random crashes for some
+    programs (#1247). This bug has been fixed. (6463a7c)
+  * mold no longer sets the address of the .text section as the entry point address
+    if --entry option is not given, just like LLVM lld. (020b1a7)</comment>
+    <requestid>1171501</requestid>
+  </revision>
 </revisionlist>
