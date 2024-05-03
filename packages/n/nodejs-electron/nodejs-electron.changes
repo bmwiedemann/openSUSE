@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May  3 07:59:49 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Change version number to reflect this is a git snapshot.
+  Upstream removed the tag (gh#electron/electron#42025) due to their CI being broken (gh#electron/electron#42005)
+  but AFAIK there isn't anything wrong with the code itself so we're still publishing it.
+
+-------------------------------------------------------------------
+Thu May  2 18:52:39 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream relese 29.3.2
+  * Fixes an issue where console.log() in AudioWorkletGlobalScope produced incorrect output.
+  * electron doesn't paint on offscreen-render mode after gpu process crashed
+  * fix type confusion in ANGLE (CVE-2024-4058)
+
+-------------------------------------------------------------------
 Fri Apr 26 19:05:05 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Disable custom malloc due to bizarre segfaults (bsc#1223366)

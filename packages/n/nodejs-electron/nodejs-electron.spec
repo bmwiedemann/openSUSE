@@ -208,13 +208,14 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        29.3.1
+Version:        29.3.2~20240430g19f0abd6
+%global tag_version 29.3.2
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Source-Code AND bzip2-1.0.6 AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11%{!?with_system_minizip: AND Zlib}
 Group:          Development/Languages/NodeJS
 URL:            https://github.com/electron/electron
-Source0:        %{mod_name}-%{version}.tar.zst
+Source0:        %{mod_name}-%{tag_version}.tar.zst
 Source1:        create_tarball.sh
 Source10:       electron-launcher.sh
 Source11:       electron.desktop
@@ -1025,7 +1026,7 @@ find third_party/electron_node/deps/simdutf -type f ! -name "*.gn" -a ! -name "*
 # Create the configuration for GN
 # Available options: out/Release/gn args --list out/Release/
 myconf_gn=""
-myconf_gn+=' override_electron_version="%{version}"'
+myconf_gn+=' override_electron_version="%{tag_version}"'
 myconf_gn+=' electron_vendor_version="suse:Electron for openSUSE"'
 myconf_gn+=" custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:default\""
