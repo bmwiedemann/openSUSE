@@ -1,7 +1,7 @@
 #
 # spec file for package python-mechanize
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define modname mechanize
 %{?sle15_python_module_pythons}
 Name:           python-mechanize
-Version:        0.4.9
+Version:        0.4.10
 Release:        0
 Summary:        Stateful programmatic web browsing
 License:        BSD-3-Clause AND (BSD-3-Clause OR ZPL-2.1)

@@ -311,4 +311,13 @@
 - Removed provides (wrong package)</comment>
     <requestid>1129230</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>fda8401fa95576a37c2b4979176ecf82</srcmd5>
+    <version>0.4.10</version>
+    <time>1714758368</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.10:
+  * Fix overly long MIME multipart separator on 64 bit systems</comment>
+    <requestid>1171542</requestid>
+  </revision>
 </revisionlist>
