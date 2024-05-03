@@ -19,7 +19,7 @@
 %define binary_name jj
 
 Name:           jujutsu
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        Git-compatible DVCS that is both simple and powerful
 License:        MIT
@@ -53,7 +53,6 @@ rm -vf .cargo/config.toml
 
 %install
 install -D -d -m 0755 %{buildroot}%{_bindir}
-ls -lh %{_builddir}/
 install -m 0755 %{_builddir}/%{binary_name}-%{version}/target/release/%{binary_name} %{buildroot}%{_bindir}/%{binary_name}
 
 %check

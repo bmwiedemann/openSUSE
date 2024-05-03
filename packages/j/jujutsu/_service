@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v0.16.0</param>
+    <param name="revision">v0.17.0</param>
     <param name="changesgenerate">disable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
@@ -18,8 +18,5 @@
   <service name="cargo_vendor" mode="manual">
     <param name="update">true</param>
     <param name="srcdir">jj</param>
-  </service>
-  <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">jj</param>
   </service>
 </services>
