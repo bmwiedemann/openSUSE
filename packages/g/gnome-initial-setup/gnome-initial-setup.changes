@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May  2 12:26:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.1:
+  + gnome-initial-setup-copy-worker, which runs after Initial Setup
+    has created the first user on the system, is now ordered before
+    GNOME Keyring, assuming both Initial Setup and GNOME Keyring
+    have been configured with systemd support. This avoids a race
+    between gnome-initial-setup-copy-worker copying the login
+    keyring that was created during Initial Setup, and GNOME
+    Keyring creating a login keyring if none exists on disk.
+  + Keyboard navigation now works better on the Wi-Fi page.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Mar 17 09:33:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:

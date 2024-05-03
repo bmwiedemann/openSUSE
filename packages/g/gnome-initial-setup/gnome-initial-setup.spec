@@ -17,7 +17,7 @@
 
 
 Name:           gnome-initial-setup
-Version:        46.0
+Version:        46.1
 Release:        0
 Summary:        GNOME Initial Setup Assistant
 License:        GPL-2.0-or-later
@@ -125,8 +125,9 @@ Initial assistant, helping you to get the system up and running.
 %{_userunitdir}/gnome-initial-setup-first-login.service
 %dir %{_userunitdir}/gnome-session@gnome-initial-setup.target.d
 %{_userunitdir}/gnome-session@gnome-initial-setup.target.d/session.conf
+%dir %{_userunitdir}/basic.target.wants
 %dir %{_userunitdir}/gnome-session.target.wants
-%{_userunitdir}/gnome-session.target.wants/gnome-initial-setup-copy-worker.service
+%{_userunitdir}/basic.target.wants/gnome-initial-setup-copy-worker.service
 %{_userunitdir}/gnome-session.target.wants/gnome-initial-setup-first-login.service
 %{_sysusersdir}/gnome-initial-setup.conf
 %endif

@@ -234,4 +234,21 @@ Resub it :-)</comment>
     <comment>GNOME 46</comment>
     <requestid>1159765</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>6795b574570b49cecb4c0d8871027ef4</srcmd5>
+    <version>46.1</version>
+    <time>1714758243</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.1:
+  + gnome-initial-setup-copy-worker, which runs after Initial Setup
+    has created the first user on the system, is now ordered before
+    GNOME Keyring, assuming both Initial Setup and GNOME Keyring
+    have been configured with systemd support. This avoids a race
+    between gnome-initial-setup-copy-worker copying the login
+    keyring that was created during Initial Setup, and GNOME
+    Keyring creating a login keyring if none exists on disk.
+  + Keyboard navigation now works better on the Wi-Fi page.
+  + Updated translations. (forwarded request 1171381 from dimstar)</comment>
+    <requestid>1171406</requestid>
+  </revision>
 </revisionlist>
