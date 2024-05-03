@@ -125,4 +125,18 @@ New stable rel</comment>
     <comment>GNOME 46 (forwarded request 1159068 from dimstar)</comment>
     <requestid>1159516</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c709867cdc1501a5d63be825f9b32cac</srcmd5>
+    <version>46.1</version>
+    <time>1714758207</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.1:
+  + Remove D-Bus call timeout from Access portal requests that are
+    proxied to GNOME Shell. This prevents the Access portal from
+    failing requests if the user doesn't click on a dialog for more
+    than 25 seconds.
+  + Various fixes to the ScreenCast portal dialog.
+  + Updated translations. (forwarded request 1171143 from dimstar)</comment>
+    <requestid>1171388</requestid>
+  </revision>
 </revisionlist>

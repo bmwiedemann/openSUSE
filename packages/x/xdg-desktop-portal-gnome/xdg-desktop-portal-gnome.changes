@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  1 12:59:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.1:
+  + Remove D-Bus call timeout from Access portal requests that are
+    proxied to GNOME Shell. This prevents the Access portal from
+    failing requests if the user doesn't click on a dialog for more
+    than 25 seconds.
+  + Various fixes to the ScreenCast portal dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 18 15:26:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:
