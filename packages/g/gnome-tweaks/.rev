@@ -188,4 +188,16 @@
   %python3_fix_shebang macro, [bsc#1212476] (forwarded request 1170755 from pgajdos)</comment>
     <requestid>1170823</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8e71b8613376d1c07ec92ade7e770e1c</srcmd5>
+    <version>46.1</version>
+    <time>1714758211</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.1:
+  + Themes no longer show up despite that the user themes extension
+    being enabled.
+  + New font selections are not saved.
+  + Updated translations. (forwarded request 1171241 from dimstar)</comment>
+    <requestid>1171391</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  2 07:15:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.1:
+  + Themes no longer show up despite that the user themes extension
+    being enabled.
+  + New font selections are not saved.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Apr 29 11:55:26 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

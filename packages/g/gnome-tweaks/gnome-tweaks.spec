@@ -18,7 +18,7 @@
 
 
 Name:           gnome-tweaks
-Version:        46.0
+Version:        46.1
 Release:        0
 Summary:        A tool to customize advanced GNOME 3 options
 License:        CC0-1.0 AND GPL-3.0-or-later
