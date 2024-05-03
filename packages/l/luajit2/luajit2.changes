@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Wed May  1 02:13:06 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 2.1.20240314 (2.1.1710398010).
+- Refreshed spec-file via spec-cleaner and manual optimizations.
+- Added file luajit2-name.patch.
+- Renamed package to luajit2.
+
+-------------------------------------------------------------------
+Thu Jan 26 09:08:11 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Opencode %make_build to prevent build failure when not defined.
+
+-------------------------------------------------------------------
+Wed Jan 25 13:46:36 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Rewrite moonjit package to build openresty from
+  https://github.com/openresty/luajit2.
+
+-------------------------------------------------------------------
+Mon Jul 12 17:33:50 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Rewrite the packaging to acommodate a possibility of two LuaJIT
+  implementations in the distribution.
+
+-------------------------------------------------------------------
+Sat Jul  3 19:20:57 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Fix Provides ... we don't provide an equvalent of 2.2.0 LuaJIT
+  (which doesn't exsts).
+
+-------------------------------------------------------------------
+Mon Mar 30 12:31:09 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add moonjit105-string_gsub.patch to fix gsub method, which breaks
+  other packages (namely neovim).
+
+-------------------------------------------------------------------
+Thu Mar 12 12:09:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- No need to namespace luajit with update-alternatives, we really
+  want just one version of it to be provided to keep things
+  simple
+
+-------------------------------------------------------------------
+Thu Mar 12 11:42:21 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.2.0:
+  * The v2.2 release of moonjit brings many new features that bring the
+    project closer to its aim of unifying LuaJIT forks and compatibility
+    with Lua. 
+- Do not suffix the version anymore as we support all lua variants,
+  removes the patch:
+  * luajit-lua-versioned.patch
+
+-------------------------------------------------------------------
+Wed Dec 18 09:05:04 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Ignore make check error for PowerPC until upstream solved issue
+  https://github.com/moonjit/moonjit/issues/40
+- do the same for %arm rather than to disable all %check.
+
+-------------------------------------------------------------------
+Mon Dec 16 09:07:37 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable %check on %arm until the following issue is fixed:
+  https://github.com/moonjit/moonjit/issues/9
+
+-------------------------------------------------------------------
+Thu Dec 12 14:12:25 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Use %_lib
+
+-------------------------------------------------------------------
+Mon Dec  9 12:54:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Obsolete/provide lua51-luajit as it was the old luajit name
+
+-------------------------------------------------------------------
+Fri Dec  6 07:44:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fork of luajit with more active upstream
+- Version 2.1.2 building on top of 2.1.0-beta3 with following goodies:
+  * fix for CVE-2019-19391
+  * Support for ppc64 ppc64le s390 s390x
+- Still carry the patch luajit-lua-versioned.patch to mark it as
+  compatible with lua 5.1, future 2.2 release should contain
+  support for 5.2 and 5.3 release of LUA

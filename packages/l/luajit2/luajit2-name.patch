@@ -1,0 +1,124 @@
+diff -Pdpru luajit2-2.1-20240314.orig/Makefile luajit2-2.1-20240314/Makefile
+--- luajit2-2.1-20240314.orig/Makefile	2024-03-14 09:33:30.000000000 +0300
++++ luajit2-2.1-20240314/Makefile	2024-04-27 20:51:52.048428059 +0300
+@@ -38,10 +38,10 @@ DPREFIX= $(DESTDIR)$(PREFIX)
+ INSTALL_BIN=   $(DPREFIX)/bin
+ INSTALL_LIB=   $(DPREFIX)/$(MULTILIB)
+ INSTALL_SHARE= $(DPREFIX)/share
+-INSTALL_DEFINC= $(DPREFIX)/include/luajit-$(MMVERSION)
++INSTALL_DEFINC= $(DPREFIX)/include/luajit2-$(MMVERSION)
+ INSTALL_INC=   $(INSTALL_DEFINC)
+ 
+-INSTALL_LJLIBD= $(INSTALL_SHARE)/luajit-$(MMVERSION)
++INSTALL_LJLIBD= $(INSTALL_SHARE)/luajit2-$(MMVERSION)
+ INSTALL_JITLIB= $(INSTALL_LJLIBD)/jit
+ INSTALL_LMODD= $(INSTALL_SHARE)/lua
+ INSTALL_LMOD= $(INSTALL_LMODD)/$(ABIVER)
+@@ -50,23 +50,20 @@ INSTALL_CMOD= $(INSTALL_CMODD)/$(ABIVER)
+ INSTALL_MAN= $(INSTALL_SHARE)/man/man1
+ INSTALL_PKGCONFIG= $(INSTALL_LIB)/pkgconfig
+ 
+-INSTALL_TNAME= luajit-$(VERSION)
+-INSTALL_TSYMNAME= luajit
+-INSTALL_ANAME= libluajit-$(ABIVER).a
+-INSTALL_SOSHORT1= libluajit-$(ABIVER).so
+-INSTALL_SOSHORT2= libluajit-$(ABIVER).so.$(MAJVER)
+-INSTALL_SONAME= libluajit-$(ABIVER).so.$(VERSION)
+-INSTALL_DYLIBSHORT1= libluajit-$(ABIVER).dylib
+-INSTALL_DYLIBSHORT2= libluajit-$(ABIVER).$(MAJVER).dylib
+-INSTALL_DYLIBNAME= libluajit-$(ABIVER).$(VERSION).dylib
+-INSTALL_PCNAME= luajit.pc
++INSTALL_TNAME= luajit2
++INSTALL_MANNAME= $(INSTALL_TNAME).1
++INSTALL_SOSHORT1= libluajit2-$(ABIVER).so
++INSTALL_SOSHORT2= libluajit2-$(ABIVER).so.$(MAJVER)
++INSTALL_SONAME= libluajit2-$(ABIVER).so.$(VERSION)
++INSTALL_DYLIBSHORT1= libluajit2-$(ABIVER).dylib
++INSTALL_DYLIBSHORT2= libluajit2-$(ABIVER).$(MAJVER).dylib
++INSTALL_DYLIBNAME= libluajit2-$(ABIVER).$(VERSION).dylib
++INSTALL_PCNAME= luajit2.pc
+ 
+-INSTALL_STATIC= $(INSTALL_LIB)/$(INSTALL_ANAME)
+ INSTALL_DYN= $(INSTALL_LIB)/$(INSTALL_SONAME)
+ INSTALL_SHORT1= $(INSTALL_LIB)/$(INSTALL_SOSHORT1)
+ INSTALL_SHORT2= $(INSTALL_LIB)/$(INSTALL_SOSHORT2)
+ INSTALL_T= $(INSTALL_BIN)/$(INSTALL_TNAME)
+-INSTALL_TSYM= $(INSTALL_BIN)/$(INSTALL_TSYMNAME)
+ INSTALL_PC= $(INSTALL_PKGCONFIG)/$(INSTALL_PCNAME)
+ 
+ INSTALL_DIRS= $(INSTALL_BIN) $(INSTALL_LIB) $(INSTALL_INC) $(INSTALL_MAN) \
+@@ -78,19 +75,26 @@ RM= rm -f
+ MKDIR= mkdir -p
+ RMDIR= rmdir 2>/dev/null
+ SYMLINK= ln -sf
+-INSTALL_X= install -m 0755
+-INSTALL_F= install -m 0644
++INSTALL_X= install -pm0755
++INSTALL_F= install -pm0644
+ UNINSTALL= $(RM)
+ LDCONFIG= ldconfig -n 2>/dev/null
++SED_MAN= sed -e "s|luajit|luajit2|g" \
++	     -e "s|LuaJIT|LuaJIT2|g" \
++	     -e "s|luajit2.org|github.com/openresty/luajit2|" \
++	     -e "s|Just-In-Time Compiler for the Lua Language|OpenResty's maintained branch of LuaJIT|"
+ SED_PC= sed -e "s|^prefix=.*|prefix=$(PREFIX)|" \
+ 	    -e "s|^multilib=.*|multilib=$(MULTILIB)|" \
+-	    -e "s|^relver=.*|relver=$(RELVER)|"
++	    -e "s|^relver=.*|relver=$(RELVER)|" \
++	    -e "s|luajit-|luajit2-|g" \
++	    -e "s|LuaJIT|LuaJIT2|g" \
++	    -e "s|luajit.org|github.com/openresty/luajit2|" \
++	    -e "s|Just-in-time compiler for Lua|OpenResty's maintained branch of LuaJIT|"
+ ifneq ($(INSTALL_DEFINC),$(INSTALL_INC))
+   SED_PC+= -e "s|^includedir=.*|includedir=$(INSTALL_INC)|"
+ endif
+ 
+ FILE_T= luajit
+-FILE_A= libluajit.a
+ FILE_SO= libluajit.so
+ FILE_MAN= luajit.1
+ FILE_PC= luajit.pc
+@@ -129,25 +133,25 @@ install: $(INSTALL_DEP)
+ 	@echo "==== Installing LuaJIT $(VERSION) to $(PREFIX) ===="
+ 	$(MKDIR) $(INSTALL_DIRS)
+ 	cd src && $(INSTALL_X) $(FILE_T) $(INSTALL_T)
+-	cd src && test -f $(FILE_A) && $(INSTALL_F) $(FILE_A) $(INSTALL_STATIC) || :
+ 	$(RM) $(INSTALL_DYN) $(INSTALL_SHORT1) $(INSTALL_SHORT2)
+ 	cd src && test -f $(FILE_SO) && \
+ 	  $(INSTALL_X) $(FILE_SO) $(INSTALL_DYN) && \
+ 	  ( $(LDCONFIG) $(INSTALL_LIB) || : ) && \
+ 	  $(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT1) && \
+ 	  $(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT2) || :
+-	cd etc && $(INSTALL_F) $(FILE_MAN) $(INSTALL_MAN)
++	cd etc && $(SED_MAN) $(FILE_MAN) > $(FILE_MAN).tmp && \
++	  $(INSTALL_F) $(FILE_MAN).tmp $(INSTALL_MAN)/$(INSTALL_MANNAME) && \
++	  $(RM) $(FILE_MAN).tmp
+ 	cd etc && $(SED_PC) $(FILE_PC) > $(FILE_PC).tmp && \
+ 	  $(INSTALL_F) $(FILE_PC).tmp $(INSTALL_PC) && \
+ 	  $(RM) $(FILE_PC).tmp
+ 	cd src && $(INSTALL_F) $(FILES_INC) $(INSTALL_INC)
+ 	cd src/jit && $(INSTALL_F) $(FILES_JITLIB) $(INSTALL_JITLIB)
+-	$(SYMLINK) $(INSTALL_TNAME) $(INSTALL_TSYM)
+ 	@echo "==== Successfully installed LuaJIT $(VERSION) to $(PREFIX) ===="
+ 
+ uninstall:
+ 	@echo "==== Uninstalling LuaJIT $(VERSION) from $(PREFIX) ===="
+-	$(UNINSTALL) $(INSTALL_TSYM) $(INSTALL_T) $(INSTALL_STATIC) $(INSTALL_DYN) $(INSTALL_SHORT1) $(INSTALL_SHORT2) $(INSTALL_MAN)/$(FILE_MAN) $(INSTALL_PC)
++	$(UNINSTALL) $(INSTALL_T) $(INSTALL_DYN) $(INSTALL_SHORT1) $(INSTALL_SHORT2) $(INSTALL_MAN)/$(FILE_MAN) $(INSTALL_PC)
+ 	for file in $(FILES_JITLIB); do \
+ 	  $(UNINSTALL) $(INSTALL_JITLIB)/$$file; \
+ 	  done
+diff -Pdpru luajit2-2.1-20240314.orig/src/Makefile luajit2-2.1-20240314/src/Makefile
+--- luajit2-2.1-20240314.orig/src/Makefile	2024-03-14 09:33:30.000000000 +0300
++++ luajit2-2.1-20240314/src/Makefile	2024-04-27 21:17:52.326833066 +0300
+@@ -214,8 +214,8 @@ TARGET_AR= $(CROSS)ar rcus
+ TARGET_STRIP= $(CROSS)strip
+ 
+ TARGET_LIBPATH= $(or $(PREFIX),/usr/local)/$(or $(MULTILIB),lib)
+-TARGET_SONAME= libluajit-$(ABIVER).so.$(MAJVER)
+-TARGET_DYLIBNAME= libluajit-$(ABIVER).$(MAJVER).dylib
++TARGET_SONAME= libluajit2-$(ABIVER).so.$(MAJVER)
++TARGET_DYLIBNAME= libluajit2-$(ABIVER).$(MAJVER).dylib
+ TARGET_DYLIBPATH= $(TARGET_LIBPATH)/$(TARGET_DYLIBNAME)
+ TARGET_DLLNAME= lua$(NODOTABIVER).dll
+ TARGET_DLLDOTANAME= libluajit-$(ABIVER).dll.a
