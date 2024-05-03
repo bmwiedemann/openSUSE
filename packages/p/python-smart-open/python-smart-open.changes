@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May  2 22:17:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.4:
+  * Fix wb mode with zstd compression (PR #815, @djudd)
+  * Remove GCS bucket.exists call to avoid storage.buckets.get
+    permission (PR #813, @ddelange)
+  * add support for zst writing (PR #812, @mpenkov)
+  * roll back PR #812, restore compatibility with built-in open
+    function (@mpenkov)
+
+-------------------------------------------------------------------
 Thu Mar 21 17:19:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.2:

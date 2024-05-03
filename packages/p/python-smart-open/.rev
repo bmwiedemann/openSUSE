@@ -74,4 +74,18 @@ optional dep of https://build.opensuse.org/package/show/devel:languages:python/p
 - Update to version 6.3.0</comment>
     <requestid>1160440</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f56c5748d9e97e97eaf97ae46d2f335a</srcmd5>
+    <version>7.0.4</version>
+    <time>1714758338</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.0.4:
+  * Fix wb mode with zstd compression (PR #815, @djudd)
+  * Remove GCS bucket.exists call to avoid storage.buckets.get
+    permission (PR #813, @ddelange)
+  * add support for zst writing (PR #812, @mpenkov)
+  * roll back PR #812, restore compatibility with built-in open
+    function (@mpenkov)</comment>
+    <requestid>1171471</requestid>
+  </revision>
 </revisionlist>
