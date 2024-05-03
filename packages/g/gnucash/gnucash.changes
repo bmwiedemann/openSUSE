@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Apr 25 20:18:50 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 5.6
+  + Bugfixes
+  + Numeric parsing and string handling improvements in the Engine and XML backend.
+  + [gnc-dense-cal.c] sx popup: show date in preference (cf.locale) format
+    because the date format preference is user-facing and customisable. it's
+    jarring if the preference is dd/mm/yyyy and the display shows mm/dd/yyyy in
+    accordance to the locale.
+  + Correct misleading description about creating Scheduled Transaction.
+  + Date parsing efficiency improvements.
+  + Update minumum Python version to 3.8, made necessary by updating the C API
+    in the Python bindings.
+  + Replace deprecated distutils.sysconfig with sysconfig. distutils is not
+    present in Python 3.12.2.
+  + Query user via dialog for date when creating a reverse transaction.
+  + More C++ conversions
+  + Avoid deprecation warning for -py3 in swig >= 4.1
+  + [gnc-commodities.cpp] gnc_new_iso_codes is a std::unordered_map
+  + Replace some naked for loops with C++ algorithms
+  + Convert gnc-commodity to C++ and make GncQuoteSources a C++ class.
+  + [test-commodities.cpp] add some tests for gnc_quote_sources
+  + Remove the SLR status sort as it is too confusing
+  + Allow sorting of the transaction column in the Since Last Run dialog by
+    schedule name or occurrence date. To sort by schedule name, a schedule name
+    is first selected and then the column header is pressed to change order. To
+    sort by occurrence date, a date is selected and then the column header is
+    pressed to change order based on the date of the first occurrence. A tool
+    tip has been added to indicate the sort order being used.
+  + [gtest-gnc-numeric] add operator comparisons with example int64 numbers
+  + [assistant-stock-transaction] store & retrieve associated account as metadata
+  + Update Form/Schedule line references for 2023 for the US Income Tax Report
+  + Update another gnucash-help to gnucash-manual
+  + [invoice.scm] centralize layout components into layout-key-list instead of
+    maintaining 2 assoc lists.
+  + [invoice.scm] normalize header section generators, changing the functions
+    to require 1 options argument only
+  + Update invoice.scm: Add spacing for long Invoice ID's (Displayed as
+    "Reference" on the Invoice)
+
+-------------------------------------------------------------------
 Thu Jan 11 21:59:38 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 5.5

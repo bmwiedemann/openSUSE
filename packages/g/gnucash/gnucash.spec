@@ -34,7 +34,7 @@
 %endif
 
 Name:           gnucash
-Version:        5.5
+Version:        5.6
 Release:        0
 Summary:        Personal Finance Manager
 License:        SUSE-GPL-2.0-with-openssl-exception OR SUSE-GPL-3.0-with-openssl-exception
@@ -53,6 +53,10 @@ BuildRequires:  cmake >= 3.14
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc13-PIE
+BuildRequires:  gcc13-c++
+%endif
 BuildRequires:  gmock >= 1.8.0
 BuildRequires:  gtest >= 1.8.0
 BuildRequires:  guile-devel
@@ -148,6 +152,9 @@ a personal finance manager.
 %build
 %define _lto_cflags %{nil}
 %define __builder ninja
+%if 0%{?suse_version} == 1500
+export CXX=g++-13
+%endif
 %cmake \
     -DCMAKE_SKIP_INSTALL_RPATH:BOOL=OFF \
     -DCMAKE_SKIP_RPATH=OFF \
@@ -204,8 +211,8 @@ rm %{buildroot}%{_docdir}/%{name}/LICENSE
 %if %{with python}
 %files -n python3-gnucash
 %{_datadir}/gnucash/python
-%dir %{python3_sitearch}/gnucash
-%{python3_sitearch}/gnucash
+%dir %{python3_sitelib}/gnucash
+%{python3_sitelib}/gnucash
 %endif
 
 %files devel
