@@ -17,7 +17,7 @@
 
 
 Name:           znc
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 Summary:        Advanced IRC Bouncer
 License:        Apache-2.0
@@ -27,7 +27,6 @@ Source0:        https://znc.in/releases/%{name}-%{version}.tar.gz
 Source1:        https://znc.in/releases/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Patch0:         harden_znc.service.patch
-Patch1:         https://patch-diff.githubusercontent.com/raw/znc/znc/pull/1841.patch
 BuildRequires:  cmake >= 3.1
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -207,6 +206,7 @@ getent passwd %{name} >/dev/null || useradd -r -g %{name} -s /bin/false -c "znc 
 %{_libdir}/%{name}/send_raw.so
 %{_libdir}/%{name}/stripcontrols.so
 %{_libdir}/%{name}/samplewebapi.so
+%{_libdir}/%{name}/corecaps.so
 %{_datadir}/%{name}/
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %attr(750,%{name},%{name}) %{_var}/lib/%{name}

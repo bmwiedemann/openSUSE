@@ -1,7 +1,7 @@
-Index: znc-1.8.2/znc.service.in
+Index: znc-1.9.0/znc.service.in
 ===================================================================
---- znc-1.8.2.orig/znc.service.in
-+++ znc-1.8.2/znc.service.in
+--- znc-1.9.0.orig/znc.service.in
++++ znc-1.9.0/znc.service.in
 @@ -3,6 +3,19 @@ Description=ZNC, an advanced IRC bouncer
  After=network.target
  
@@ -19,6 +19,6 @@ Index: znc-1.8.2/znc.service.in
 +ProtectControlGroups=true
 +RestrictRealtime=true
 +# end of automatic additions 
- ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/znc -f
+ ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/znc -f --datadir=/var/lib/znc
  User=znc
  

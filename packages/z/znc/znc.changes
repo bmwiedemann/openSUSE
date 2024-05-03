@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May  2 19:46:23 UTC 2024 - David Mulder <dmulder@suse.com>
+
+- Update to version 1.9.0:
+  * Fixed crash when receiving SASL lines from server without having negotiated SASL via CAP.
+  * Fixed build with SWIG 4.2.0.
+  * Fixed build with LibreSSL.
+  * Fixed handling of timezones when parsing server-time tags received from server.
+  * Use module names as the module ident, otherwise some clients were merging conversations with different modules together.
+  * Stopped sending invalid 333 (`RPL_TOPICWHOTIME`) to client if topic owner is unknown.
+  * Fixed an ODR violation.
+  * Better hide password in PASS debug lines, sometimes it was not hidden.
+  * CAP REQ sent by client without CAP LS now suspends the registration as the spec requires.
+  * Removed 1841.patch (upstreamed).
+  * Modified harden_znc.service.patch to apply to latest release.
+
+-------------------------------------------------------------------
 Tue Feb  6 07:57:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide user/group, as required by RPM 4.19 (boo#1219531).
