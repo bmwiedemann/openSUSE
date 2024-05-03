@@ -1,7 +1,7 @@
 #
 # spec file for package python-wurlitzer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,20 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 Name:           python-wurlitzer
-Version:        3.0.3
+Version:        3.1.0
 Release:        0
 Summary:        Python package to capture C-level output in context managers
 License:        MIT
 URL:            https://github.com/minrk/wurlitzer
 Source:         https://files.pythonhosted.org/packages/source/w/wurlitzer/wurlitzer-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-selectors2
-%endif
-%ifpython2
-Requires:       python-selectors2
-%endif
 %python_subpackages
 
 %description
@@ -46,10 +41,10 @@ output in context managers.
 %setup -q -n wurlitzer-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +53,8 @@ output in context managers.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/wurlitzer.py
+%pycache_only %{python_sitelib}/__pycache__/wurlitzer.*
+%{python_sitelib}/wurlitzer-%{version}.dist-info
 
 %changelog

@@ -57,4 +57,18 @@
     <comment></comment>
     <requestid>1041385</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bfb9cc0de101d0a096415f09f2ffff08</srcmd5>
+    <version>3.1.0</version>
+    <time>1714758244</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.0:
+  * accept fileno-having objects for GIL-less capture
+  * accept Logger objects in pipes
+  * Update `pipes`'s docstring
+- use PEP517 build
+
+- Update to version 3.0.3</comment>
+    <requestid>1171454</requestid>
+  </revision>
 </revisionlist>
