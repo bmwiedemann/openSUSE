@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  2 08:53:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.42.11:
+  + Disable fringe loaders by default.
+  + Introspection fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Apr 15 13:29:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix path to gdk-pixbuf-query-loader in pkg-config file: we rename
