@@ -121,4 +121,22 @@
   * Maintenance and upkeep improvements</comment>
     <requestid>1163577</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>103b037f2ae8020c657e65dca78d56db</srcmd5>
+    <version>2.27.1</version>
+    <time>1714758380</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.27.1
+  * Move ENV_CONFIG_PATH import back into _get_config_manager #450
+    (@divyansshhh)
+- Release 2.27.0
+  * Add util to get consolidated page_config from higher levels
+    #448 (@divyansshhh)
+- Release 2.26.0
+  * For v2 extensions parse entrypoint data #445
+    (@AshokChoudhary11)
+  * Ignore pageconfig file if JSON is zero-length #444 (@holzman)
+</comment>
+    <requestid>1171750</requestid>
+  </revision>
 </revisionlist>

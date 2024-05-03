@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May  3 12:41:35 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.27.1
+  * Move ENV_CONFIG_PATH import back into _get_config_manager #450
+    (@divyansshhh)
+- Release 2.27.0
+  * Add util to get consolidated page_config from higher levels
+    #448 (@divyansshhh)
+- Release 2.26.0
+  * For v2 extensions parse entrypoint data #445
+    (@AshokChoudhary11)
+  * Ignore pageconfig file if JSON is zero-length #444 (@holzman)
+
+-------------------------------------------------------------------
 Fri Mar 29 18:32:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.25.4

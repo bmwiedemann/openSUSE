@@ -20,14 +20,13 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
-%define skip_python39 1
 %else
 %define psuffix %{nil}
 %bcond_with test
 %endif
 
 Name:           python-jupyterlab-server%{psuffix}
-Version:        2.25.4
+Version:        2.27.1
 Release:        0
 Summary:        Server components for JupyterLab and JupyterLab-like applications
 License:        BSD-3-Clause
