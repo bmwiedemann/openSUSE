@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  2 21:51:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0:
+  * add key_get_mods_for_level
+  * add python 3.12 support
+
+-------------------------------------------------------------------
 Mon Feb 13 12:47:46 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix source URL to actually refer to the current version.
