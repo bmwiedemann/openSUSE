@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  2 08:19:50 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Add gcc13-amdgcn-remove-fiji.patch removing Fiji support from
+  the GCN offload compiler as that is requiring Code Object version 3
+  which is no longer supported by llvm18.
+
+-------------------------------------------------------------------
 Thu Apr  4 07:43:17 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Add gcc13-pr101523.patch to avoid combine spending too much

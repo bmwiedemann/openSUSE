@@ -1,0 +1,310 @@
+From 601796b14b5bab6715b0ddff23f6d998a310b507 Mon Sep 17 00:00:00 2001
+From: Andrew Stubbs <ams@codesourcery.com>
+Date: Wed, 18 Oct 2023 16:59:42 +0100
+Subject: [PATCH 1/2] amdgcn: deprecate Fiji device and multilib
+To: gcc-patches@gcc.gnu.org
+
+LLVM wants to remove it, which breaks our build.  This patch means that
+most users won't notice that change, when it comes, and those that do will
+have chosen to enable Fiji explicitly.
+
+I'm selecting gfx900 as the new default as that's the least likely for users
+to want, which means most users will specify -march explicitly, which means
+we'll be free to change the default again, when we need to, without breaking
+anybody's makefiles.
+
+gcc/ChangeLog:
+
+	* config.gcc (amdgcn): Switch default to --with-arch=gfx900.
+	Implement support for --with-multilib-list.
+	* config/gcn/t-gcn-hsa: Likewise.
+	* doc/install.texi: Likewise.
+	* doc/invoke.texi: Mark Fiji deprecated.
+---
+ gcc/config.gcc           | 14 +++++++++++++-
+ gcc/config/gcn/t-gcn-hsa |  8 ++++++--
+ gcc/doc/install.texi     | 17 ++++++++++++++++-
+ gcc/doc/invoke.texi      |  4 +++-
+ 4 files changed, 38 insertions(+), 5 deletions(-)
+
+diff --git a/gcc/config.gcc b/gcc/config.gcc
+index c3b73d05eb7..a662cfea03c 100644
+--- a/gcc/config.gcc
++++ b/gcc/config.gcc
+@@ -4475,7 +4475,19 @@ case "${target}" in
+ 				;;
+ 			esac
+ 		done
+-		[ "x$with_arch" = x ] && with_arch=fiji
++		[ "x$with_arch" = x ] && with_arch=gfx900
++
++		case "x${with_multilib_list}" in
++		x | xno)
++			TM_MULTILIB_CONFIG=
++			;;
++		xdefault | xyes)
++			TM_MULTILIB_CONFIG=`echo "gfx900,gfx906,gfx908,gfx90a" | sed "s/${with_arch},\?//;s/,$//"`
++			;;
++		*)
++			TM_MULTILIB_CONFIG="${with_multilib_list}"
++			;;
++		esac
+ 		;;
+ 
+ 	hppa*-*-*)
+diff --git a/gcc/config/gcn/t-gcn-hsa b/gcc/config/gcn/t-gcn-hsa
+index ea27122e484..18db7075356 100644
+--- a/gcc/config/gcn/t-gcn-hsa
++++ b/gcc/config/gcn/t-gcn-hsa
+@@ -42,8 +42,12 @@ ALL_HOST_OBJS += gcn-run.o
+ gcn-run$(exeext): gcn-run.o
+ 	+$(LINKER) $(ALL_LINKERFLAGS) $(LDFLAGS) -o $@ $< -ldl
+ 
+-MULTILIB_OPTIONS = march=gfx900/march=gfx906/march=gfx908/march=gfx90a
+-MULTILIB_DIRNAMES = gfx900 gfx906 gfx908 gfx90a
++empty :=
++space := $(empty) $(empty)
++comma := ,
++multilib_list := $(subst $(comma),$(space),$(TM_MULTILIB_CONFIG)) 
++MULTILIB_OPTIONS = $(subst $(space),/,$(addprefix march=,$(multilib_list)))
++MULTILIB_DIRNAMES = $(multilib_list)
+ 
+ gcn-tree.o: $(srcdir)/config/gcn/gcn-tree.cc
+ 	$(COMPILE) $<
+diff --git a/gcc/doc/install.texi b/gcc/doc/install.texi
+index b30d3691fe6..5f55da89840 100644
+--- a/gcc/doc/install.texi
++++ b/gcc/doc/install.texi
+@@ -1218,7 +1218,7 @@ sysv, aix.
+ @itemx --without-multilib-list
+ Specify what multilibs to build.  @var{list} is a comma separated list of
+ values, possibly consisting of a single value.  Currently only implemented
+-for aarch64*-*-*, arm*-*-*, loongarch64-*-*, riscv*-*-*, sh*-*-* and
++for aarch64*-*-*, amdgcn*-*-*, arm*-*-*, loongarch64-*-*, riscv*-*-*, sh*-*-* and
+ x86-64-*-linux*.  The accepted values and meaning for each target is given
+ below.
+ 
+@@ -1232,6 +1232,15 @@ default run-time library will be built.  If @var{list} is
+ default set of libraries is selected based on the value of
+ @option{--target}.
+ 
++@item amdgcn*-*-*
++@var{list} is a comma separated list of ISA names (allowed values: @code{fiji},
++@code{gfx900}, @code{gfx906}, @code{gfx908}, @code{gfx90a}). It ought not
++include the name of the default ISA, specified via @option{--with-arch}.  If
++@var{list} is empty, then there will be no multilibs and only the default
++run-time library will be built.  If @var{list} is @code{default} or
++@option{--with-multilib-list=} is not specified, then the default set of
++libraries is selected.
++
+ @item arm*-*-*
+ @var{list} is a comma separated list of @code{aprofile} and
+ @code{rmprofile} to build multilibs for A or R and M architecture
+@@ -3876,6 +3885,12 @@ To run the binaries, install the HSA Runtime from the
+ @file{libexec/gcc/amdhsa-amdhsa/@var{version}/gcn-run} to launch them
+ on the GPU.
+ 
++To enable support for GCN3 Fiji devices (gfx803), GCC has to be configured with
++@option{--with-arch=@code{fiji}} or
++@option{--with-multilib-list=@code{fiji},...}.  Note that support for Fiji
++devices has been removed in ROCm 4.0 and support in LLVM is deprecated and will
++be removed in the future.
++
+ @html
+ <hr />
+ @end html
+diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
+index 792ce283bb9..5fd30cf5eae 100644
+--- a/gcc/doc/invoke.texi
++++ b/gcc/doc/invoke.texi
+@@ -20773,7 +20773,9 @@ are
+ 
+ @table @samp
+ @item fiji
+-Compile for GCN3 Fiji devices (gfx803).
++Compile for GCN3 Fiji devices (gfx803).  Support deprecated; availablility
++depends on how GCC has been configured, see @option{--with-arch} and
++@option{--with-multilib-list}.
+ 
+ @item gfx900
+ Compile for GCN5 Vega 10 devices (gfx900).
+-- 
+2.35.3
+
+
+From 4217f929357f23a94dec1d3946c84c6194ab385f Mon Sep 17 00:00:00 2001
+From: Tobias Burnus <tburnus@baylibre.com>
+Date: Mon, 22 Jan 2024 12:17:12 +0100
+Subject: [PATCH 2/2] [gcn] mkoffload: Fix linking with "-g"; fix file
+ deletion; improve diagnostic [PR111966]
+To: gcc-patches@gcc.gnu.org
+
+With debugging enabled, '*.mkoffload.dbg.o' files are generated. The e_flags
+header of all *.o files must be the same - otherwise, the linker complains.
+Since r14-4734-g56ed1055b2f40ac162ae8d382280ac07a33f789f the -march= default
+is now gfx900. If compiling without any -march= flag, the default value is
+used by the compiler but not passed to mkoffload. Hence, mkoffload.cc's uses
+its own default for march - unfortunately, it still had gfx803/fiji as default,
+leading to the linker error: 'incompatible mach'. Solution: Update the
+default to gfx900.
+
+While debugging it, I saw that /tmp/cc*.mkoffload.dbg.o kept accumulating;
+there were a couple of issues with the handling:
+* dbgobj was always added to files_to_cleanup
+* If copy_early_debug_info returned true, dbgobj was added again
+  -> pointless and in theory a race if the same file was added in the
+     faction of a second.
+* If copy_early_debug_info returned false,
+  - In exactly one case, it already deleted the file it self
+    (same potential race as above)
+  - The pointer dbgobj was freed - such that files_to_cleanup contained
+    a dangling pointer - probably the reason that stale files remained.
+Solution: Only if copy_early_debug_info returns true, dbgobj is added to
+files_to_cleanup. If it returns false, the file is unlinked before freeing
+the pointer.
+
+When compiling, GCC warned about several fatal_error messages as having
+no %<...%> or %qs quotes. This patch now silences several of those warnings
+by using those quotes.
+
+gcc/ChangeLog:
+
+	PR other/111966
+	* config/gcn/mkoffload.cc (elf_arch): Change default to gfx900
+	to match the compiler default.
+	(simple_object_copy_lto_debug_sections): Never unlink the outfile
+	on error as the caller does so.
+	(maybe_unlink, compile_native): Use %<...%> and %qs in fatal_error.
+	(main): Likewise. Fix 'mkoffload.dbg.o' cleanup.
+
+Signed-off-by: Tobias Burnus <tburnus@baylibre.com>
+---
+ gcc/config/gcn/mkoffload.cc | 32 ++++++++++++++++----------------
+ 1 file changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/gcc/config/gcn/mkoffload.cc b/gcc/config/gcn/mkoffload.cc
+index 61bc9273077..57bda59d868 100644
+--- a/gcc/config/gcn/mkoffload.cc
++++ b/gcc/config/gcn/mkoffload.cc
+@@ -113,7 +113,7 @@ static const char *gcn_dumpbase;
+ static struct obstack files_to_cleanup;
+ 
+ enum offload_abi offload_abi = OFFLOAD_ABI_UNSET;
+-uint32_t elf_arch = EF_AMDGPU_MACH_AMDGCN_GFX803;  // Default GPU architecture.
++uint32_t elf_arch = EF_AMDGPU_MACH_AMDGCN_GFX900;  // Default GPU architecture.
+ uint32_t elf_flags =
+     (EF_AMDGPU_FEATURE_XNACK_ANY_V4 | EF_AMDGPU_FEATURE_SRAMECC_ANY_V4);
+ 
+@@ -144,7 +144,7 @@ maybe_unlink (const char *file)
+   if (!save_temps)
+     {
+       if (unlink_if_ordinary (file) && errno != ENOENT)
+-	fatal_error (input_location, "deleting file %s: %m", file);
++	fatal_error (input_location, "deleting file %qs: %m", file);
+     }
+   else if (verbose)
+     fprintf (stderr, "[Leaving %s]\n", file);
+@@ -310,10 +310,7 @@ copy_early_debug_info (const char *infile, const char *outfile)
+ 
+   errmsg = simple_object_copy_lto_debug_sections (inobj, outfile, &err, true);
+   if (errmsg)
+-    {
+-      unlink_if_ordinary (outfile);
+-      return false;
+-    }
++    return false;
+ 
+   simple_object_release_read (inobj);
+   close (infd);
+@@ -769,7 +766,7 @@ compile_native (const char *infile, const char *outfile, const char *compiler,
+   const char *collect_gcc_options = getenv ("COLLECT_GCC_OPTIONS");
+   if (!collect_gcc_options)
+     fatal_error (input_location,
+-		 "environment variable COLLECT_GCC_OPTIONS must be set");
++		 "environment variable %<COLLECT_GCC_OPTIONS%> must be set");
+ 
+   struct obstack argv_obstack;
+   obstack_init (&argv_obstack);
+@@ -824,11 +821,11 @@ main (int argc, char **argv)
+ 
+   obstack_init (&files_to_cleanup);
+   if (atexit (mkoffload_cleanup) != 0)
+-    fatal_error (input_location, "atexit failed");
++    fatal_error (input_location, "%<atexit%> failed");
+ 
+   char *collect_gcc = getenv ("COLLECT_GCC");
+   if (collect_gcc == NULL)
+-    fatal_error (input_location, "COLLECT_GCC must be set.");
++    fatal_error (input_location, "%<COLLECT_GCC%> must be set");
+   const char *gcc_path = dirname (ASTRDUP (collect_gcc));
+   const char *gcc_exec = basename (ASTRDUP (collect_gcc));
+ 
+@@ -874,7 +871,7 @@ main (int argc, char **argv)
+ 
+   if (!found)
+     fatal_error (input_location,
+-		 "offload compiler %s not found", GCC_INSTALL_NAME);
++		 "offload compiler %qs not found", GCC_INSTALL_NAME);
+ 
+   /* We may be called with all the arguments stored in some file and
+      passed with @file.  Expand them into argv before processing.  */
+@@ -896,7 +893,7 @@ main (int argc, char **argv)
+ 	    offload_abi = OFFLOAD_ABI_ILP32;
+ 	  else
+ 	    fatal_error (input_location,
+-			 "unrecognizable argument of option " STR);
++			 "unrecognizable argument of option %<" STR "%>");
+ 	}
+ #undef STR
+       else if (strcmp (argv[i], "-fopenmp") == 0)
+@@ -941,7 +938,8 @@ main (int argc, char **argv)
+     }
+ 
+   if (!(fopenacc ^ fopenmp))
+-    fatal_error (input_location, "either -fopenacc or -fopenmp must be set");
++    fatal_error (input_location,
++		 "either %<-fopenacc%> or %<-fopenmp%> must be set");
+ 
+   const char *abi;
+   switch (offload_abi)
+@@ -993,7 +991,7 @@ main (int argc, char **argv)
+ 
+   cfile = fopen (gcn_cfile_name, "w");
+   if (!cfile)
+-    fatal_error (input_location, "cannot open '%s'", gcn_cfile_name);
++    fatal_error (input_location, "cannot open %qs", gcn_cfile_name);
+ 
+   /* Currently, we only support offloading in 64-bit configurations.  */
+   if (offload_abi == OFFLOAD_ABI_LP64)
+@@ -1057,7 +1055,6 @@ main (int argc, char **argv)
+ 		    }
+ 		  else
+ 		    dbgobj = make_temp_file (".mkoffload.dbg.o");
+-		  obstack_ptr_grow (&files_to_cleanup, dbgobj);
+ 
+ 		  /* If the copy fails then just ignore it.  */
+ 		  if (copy_early_debug_info (argv[ix], dbgobj))
+@@ -1066,7 +1063,10 @@ main (int argc, char **argv)
+ 		      obstack_ptr_grow (&files_to_cleanup, dbgobj);
+ 		    }
+ 		  else
+-		    free (dbgobj);
++		    {
++		      maybe_unlink (dbgobj);
++		      free (dbgobj);
++		    }
+ 		}
+ 	    }
+ 	}
+@@ -1140,7 +1140,7 @@ main (int argc, char **argv)
+ 
+       out = fopen (gcn_s2_name, "w");
+       if (!out)
+-	fatal_error (input_location, "cannot open '%s'", gcn_s2_name);
++	fatal_error (input_location, "cannot open %qs", gcn_s2_name);
+ 
+       process_asm (in, out, cfile);
+ 
+-- 
+2.35.3
+

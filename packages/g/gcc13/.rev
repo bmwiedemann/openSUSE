@@ -321,4 +321,14 @@
   [bsc#1221239]</comment>
     <requestid>1166436</requestid>
   </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>63f2ecd80856092e9285ca2f630d6bae</srcmd5>
+    <version>13.2.1+git8285</version>
+    <time>1714758259</time>
+    <user>anag+factory</user>
+    <comment>- Add gcc13-amdgcn-remove-fiji.patch removing Fiji support from
+  the GCN offload compiler as that is requiring Code Object version 3
+  which is no longer supported by llvm18.</comment>
+    <requestid>1171314</requestid>
+  </revision>
 </revisionlist>
