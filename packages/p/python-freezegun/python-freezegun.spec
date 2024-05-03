@@ -1,7 +1,7 @@
 #
 # spec file for package python-freezegun
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-freezegun
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Mock time date for Python
 License:        Apache-2.0

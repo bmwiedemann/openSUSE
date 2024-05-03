@@ -189,4 +189,21 @@
      `with freeze_time('1970-01-02', real_asyncio=True):`</comment>
     <requestid>1135657</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>612b4904363cb39060268470c3f294b2</srcmd5>
+    <version>1.5.0</version>
+    <time>1714758253</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.0:
+  * The default ignore list now contains the `queue`-package
+  * Added a missing `move_to`-function when calling
+    `freeze_time(tick=True)`
+  * Fixes a rounding error in `time.time_ns()`
+  * Fixed a bug where the default ignore list could not be empty
+    (`configure(default_ignore_list=[])`)
+  * All `tick()` methods now return the new datetime (instead of
+    None)
+  * Type improvements</comment>
+    <requestid>1171531</requestid>
+  </revision>
 </revisionlist>
