@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  2 22:04:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.1:
+  * Correctly mark a certain test as requiring Mercurial
+
+-------------------------------------------------------------------
 Thu Mar 21 08:20:56 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.1.0

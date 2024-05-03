@@ -55,4 +55,13 @@
     <comment></comment>
     <requestid>1160507</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e89f7a833a3c40766647401dddac906b</srcmd5>
+    <version>3.1.1</version>
+    <time>1714758338</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.1:
+  * Correctly mark a certain test as requiring Mercurial</comment>
+    <requestid>1171463</requestid>
+  </revision>
 </revisionlist>

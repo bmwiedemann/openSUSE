@@ -23,7 +23,7 @@
 %endif
 
 Name:           python-versioningit
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        Versioning It with your Version In Git
 License:        MIT
@@ -43,8 +43,7 @@ BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tomli >= 1.2}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  git
-BuildRequires:  mercurial
+BuildRequires:  git-core
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-packaging
