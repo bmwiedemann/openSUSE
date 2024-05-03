@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 28 16:53:01 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.1:
+  * Support NumPy 2 (gh#contourpy/contourpy#331,
+    gh#contourpy/contourpy#371, gh#contourpy/contourpy#372).
+  * Fix a few f-strings (gh#contourpy/contourpy#332).
+- New BuildRequires: python-meson-python.
+
+-------------------------------------------------------------------
 Sun May 14 12:49:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.7:

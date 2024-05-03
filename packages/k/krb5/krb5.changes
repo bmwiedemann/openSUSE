@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May  2 11:57:25 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove requires for not used cron
+
+-------------------------------------------------------------------
+Fri Mar 22 09:19:41 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix memory leaks, add patch 0009-Fix-three-memory-leaks.patch
+  * CVE-2024-26458, bsc#1220770
+  * CVE-2024-26461, bsc#1220771
+  * CVE-2024-26462, bsc#1220772
+
+-------------------------------------------------------------------
 Thu Feb 29 10:07:57 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Add crypto-policies support [bsc#1211301]

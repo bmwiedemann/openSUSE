@@ -1,0 +1,20 @@
+--- a/test.sh	2023-11-13 20:31:08.000000000 +0100
++++ b/test.sh	2024-05-01 21:25:27.709337509 +0200
+@@ -16054,9 +16054,15 @@
+ pid0=$!
+ relsleep 2
+ TTY=$(tty |sed 's|/dev/||')
+-pkill -USR1 -t $TTY socat || { echo "pkill -t $TTY -USR1 socat"; }
++if [ "$TTY" = 'not a tty' ]
++then
++   TTY=''
++else
++   TTY="-t $TTY"
++fi
++pkill -USR1 $TTY socat || { echo "pkill $TTY -USR1 socat"; }
+ relsleep 1
+-pkill -t $TTY socat
++pkill $TTY socat
+ wait
+ if [ "$(grep STATISTICS "${te}0" |wc -l)" -eq 2 ]; then
+     $PRINTF "$OK\n"

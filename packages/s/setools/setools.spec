@@ -20,7 +20,7 @@
 %define pythons %python3_primary_provider
 
 Name:           setools
-Version:        4.5.0
+Version:        4.5.1
 Release:        0
 URL:            https://github.com/SELinuxProject/setools
 Summary:        Policy analysis tools for SELinux
@@ -28,8 +28,6 @@ License:        GPL-2.0-only
 Group:          System/Management
 Source:         https://github.com/SELinuxProject/setools/releases/download/%{version}/%{name}-%{version}.tar.bz2
 Source2:        README.SUSE
-# can be removed again when this is fixed upstream: https://github.com/SELinuxProject/setools/issues/125
-Patch0:         0001-Make-networkx-optional-again-Fixes-125.patch
 BuildRequires:  %{python_module Cython >= 0.29.14}
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module setuptools}
@@ -71,10 +69,9 @@ License:        LGPL-2.0-only
 Group:          Development/Languages/Python
 Requires:       %{python3_primary_provider} >= 3.10
 Requires:       %{python3_primary_provider}-setuptools
-# require python-networkx on tumbleweed
-%if 0%{?suse_version} > 1600
-Requires:       %{python3_primary_provider}-networkx
-%endif
+# Only suggest python-networkx due to its large amount of dependencies
+# (see README.SUSE)
+Suggests:       %{python3_primary_provider}-networkx
 Obsoletes:      python-setools < %{version}-%{release}
 Provides:       python-setools = %{version}-%{release}
 %if "%{python3_primary_provider}" != "python3"

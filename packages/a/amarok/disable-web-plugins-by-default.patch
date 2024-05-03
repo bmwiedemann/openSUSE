@@ -3,10 +3,10 @@ Subject: Disable plugins which cause automatic network requests by default
 References: boo#1070899
 
 diff --git a/src/services/lastfm/amarok_service_lastfm.desktop b/src/services/lastfm/amarok_service_lastfm.desktop
-index 9f02d0e578..1c7276cfaa 100644
+index 8bce92c..ec01520 100644
 --- a/src/services/lastfm/amarok_service_lastfm.desktop
 +++ b/src/services/lastfm/amarok_service_lastfm.desktop
-@@ -117,6 +117,6 @@ X-KDE-PluginInfo-Email=kde@dontletsstart.com
+@@ -123,6 +123,6 @@ X-KDE-PluginInfo-Email=kde@dontletsstart.com
  X-KDE-PluginInfo-Version=1.0
  X-KDE-PluginInfo-Category=Service
  X-KDE-PluginInfo-License=GPL
@@ -15,10 +15,10 @@ index 9f02d0e578..1c7276cfaa 100644
  X-KDE-Library=amarok_service_lastfm
  X-KDE-PluginInfo-Name=amarok_service_lastfm
 diff --git a/src/services/magnatune/amarok_service_magnatunestore.desktop b/src/services/magnatune/amarok_service_magnatunestore.desktop
-index 98fec83d53..5a3d4754e7 100644
+index 14cf601..e222621 100644
 --- a/src/services/magnatune/amarok_service_magnatunestore.desktop
 +++ b/src/services/magnatune/amarok_service_magnatunestore.desktop
-@@ -123,7 +123,7 @@ X-KDE-PluginInfo-Email=nhnFreespirit@gmail.com
+@@ -129,7 +129,7 @@ X-KDE-PluginInfo-Email=nhnFreespirit@gmail.com
  X-KDE-PluginInfo-Version=2.0
  X-KDE-PluginInfo-Category=Service
  X-KDE-PluginInfo-License=GPL

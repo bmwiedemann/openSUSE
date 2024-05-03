@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  1 19:06:37 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to preview release 3.1.2
+  * Added SDL_GlobDirectory() and SDL_GlobStorageDirectory()
+  * Reduced startup time when scanning for game controllers on
+    Linux
+  * Removed SDL_RENDERER_ACCELERATED, SDL_RENDERER_SOFTWARE,
+    SDL_HINT_RENDER_SCALE_QUALITY, SDL_quit.h
+  * Renamed SDL_eventaction to SDL_EventAction
+
+-------------------------------------------------------------------
 Thu Apr 11 16:15:42 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to preview release 3.1.1

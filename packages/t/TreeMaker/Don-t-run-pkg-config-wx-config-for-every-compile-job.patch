@@ -1,0 +1,49 @@
+From 82d0e8294f2f96b01f894352ece7fdcf52a0a5dc Mon Sep 17 00:00:00 2001
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Wed, 1 May 2024 17:43:23 +0200
+Subject: [PATCH 1/2] Don't run pkg-config/wx-config for every compile job
+
+Makefiles are subtle here: `=` does lazy evaluation, meaning the
+variable will be evaluated every time it is used. So every compile jobs
+will run the *-config commands. With `:=` we can evaluate eagerly, so
+that the commands will only run once.
+---
+ linux/Makefile | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/linux/Makefile b/linux/Makefile
+index 8355495..943d53d 100644
+--- a/linux/Makefile
++++ b/linux/Makefile
+@@ -51,8 +51,8 @@ endif
+ endif
+ endif
+ 
+-CFLAGS = `$(WXCONFIG) --cxxflags` \
+-	-Wall $(CONDFLAGS) $(OPTIONS) $(INCCFLAGS) 
++WX_CFLAGS := $(shell $(WXCONFIG) --cxxflags)
++CFLAGS = $(WX_CFLAGS) -Wall $(CONDFLAGS) $(OPTIONS) $(INCCFLAGS)
+ # You may remake everything here anytime you want
+ BUILDGENERIC = build
+ # We'll leave dependency, object and binary files here
+@@ -60,7 +60,7 @@ BUILDROOT = $(BUILDGENERIC)/$(BUILD)
+ # Relative path from here to source directory
+ H2S = ../Source
+ # Extended header path
+-INCCFLAGS = \
++INCCFLAGS := \
+ 	-I$(H2S)/ \
+ 	-I$(H2S)/tmModel \
+ 	-I$(H2S)/tmModel/tmPtrClasses \
+@@ -86,7 +86,7 @@ INCCFLAGS = \
+ 	-I$(H2S)/tmwxGUI/tmwxLogFrame \
+ 	-I$(H2S)/tmwxGUI/tmwxOptimizerDialog \
+ 	-I$(H2S)/tmwxGUI/tmwxHtmlHelp \
+-	`pkg-config gtk+-3.0 --cflags`
++	$(shell pkg-config gtk+-3.0 --cflags)
+ 
+ #--- Source files (not all binaries need all of them)
+ PTRSRC =$(H2S)/tmModel/tmPtrClasses/tmDpptrTarget.cpp
+-- 
+2.44.0
+

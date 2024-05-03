@@ -52,7 +52,7 @@
 %global with_gcc 12
 %endif
 Name:           libreoffice
-Version:        24.2.2.2
+Version:        24.2.3.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -135,8 +135,8 @@ BuildRequires:  zxcvbn-devel
 %if %{with system_curl}
 BuildRequires:  curl-devel >= 7.68.0
 %else
-Source2013:     %{external_url}/curl-8.6.0.tar.xz
-Provides:       bundled(curl) = 8.6.0
+Source2013:     %{external_url}/curl-8.7.1.tar.xz
+Provides:       bundled(curl) = 8.7.1
 %endif
 # Needed for tests
 BuildRequires:  dejavu-fonts
@@ -335,8 +335,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  libgpgmepp-devel >= 1.14
 %else
 Source1000:     %{external_url}/gpgme-1.23.2.tar.bz2
-Source1001:     %{external_url}/libgpg-error-1.47.tar.bz2
-Source1002:     %{external_url}/libassuan-2.5.6.tar.bz2
+Source1001:     %{external_url}/libgpg-error-1.48.tar.bz2
+Source1002:     %{external_url}/libassuan-2.5.7.tar.bz2
 Provides:       bundled(gpgme) = 1.23.2
 Provides:       bundled(libassuan) = 2.5.6
 Provides:       bundled(libgpg-error) = 1.47

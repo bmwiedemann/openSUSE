@@ -548,4 +548,25 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
     <comment></comment>
     <requestid>1151211</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>8fe4e50563b4518ac523ce6d75dfabbd</srcmd5>
+    <version>1.7.15</version>
+    <time>1714686403</time>
+    <user>anag+factory</user>
+    <comment>- Use obs_scm service instead of tar_scm
+- Removed patch 0002-shim-Create-pid-file-with-0644-permissions.patch
+  (merged upstream at
+  &lt;https://github.com/containerd/containerd/pull/9571&gt;)
+- Update to containerd v1.7.15. Upstream release notes:
+  &lt;https://github.com/containerd/containerd/releases/tag/v1.7.15&gt;
+- Update to containerd v1.7.14. Upstream release notes:
+  &lt;https://github.com/containerd/containerd/releases/tag/v1.7.14&gt;
+- Update to containerd v1.7.13. Upstream release notes:
+  &lt;https://github.com/containerd/containerd/releases/tag/v1.7.13&gt;
+- Update to containerd v1.7.12. Upstream release notes:
+  &lt;https://github.com/containerd/containerd/releases/tag/v1.7.12&gt;
+- Update to containerd v1.7.11. Upstream release notes:
+  &lt;https://github.com/containerd/containerd/releases/tag/v1.7.11&gt;</comment>
+    <requestid>1171085</requestid>
+  </revision>
 </revisionlist>

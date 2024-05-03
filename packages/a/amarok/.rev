@@ -1277,4 +1277,12 @@ https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanB
     <comment>- Require a phonon-vlc backend that was built with Qt5</comment>
     <requestid>1158067</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>9ae1245e99744cb0c79a4e8287dd764a</srcmd5>
+    <version>3.0.0</version>
+    <time>1714686406</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1171132</requestid>
+  </revision>
 </revisionlist>

@@ -251,4 +251,19 @@ add: README.FAQ to answer some questions about Noto Fonts packaging
   * Fix Oriya interpolation issues</comment>
     <requestid>1163820</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>cf70c3eaa0a7cb4086ef59b4a909d986</srcmd5>
+    <version>20240501</version>
+    <time>1714686316</time>
+    <user>anag+factory</user>
+    <comment>- Update to 20240501
+  * Noto Rashi Hebrew
+    - Corrects the width and position of marks under double-yud and double-vov
+    - Improves the anchoring of yod
+    - Adds the U+053F yod triangle character
+    - Improves the spacing of tsadi
+  * Noto Egyptian Hieroglyphs
+    - Add codepoints from Unicode 14</comment>
+    <requestid>1171083</requestid>
+  </revision>
 </revisionlist>

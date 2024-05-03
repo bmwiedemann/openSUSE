@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  1 11:35:08 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2024-05-01:
+  * Stop setting re2_INCLUDE_DIR
+  * Fixes related to python bindings
+
+-------------------------------------------------------------------
 Wed Apr  3 20:30:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2024-04-01:

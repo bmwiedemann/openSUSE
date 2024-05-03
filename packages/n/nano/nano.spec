@@ -2,6 +2,7 @@
 # spec file for package nano
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +17,9 @@
 #
 
 
-%define _version 7
+%define _version 8
 Name:           nano
-Version:        7.2
+Version:        8.0
 Release:        0
 Summary:        Pico editor clone with enhancements
 License:        GPL-3.0-or-later
@@ -74,6 +75,9 @@ install -m 0644 ./nanorc %{buildroot}%{_sysconfdir}/nanorc
 mv %{buildroot}%{_datadir}/nano/extra/{ada,fortran,haskell,spec}.* %{buildroot}%{_datadir}/nano
 
 %find_lang %{name} --with-man --all-name
+
+%check
+%make_build check
 
 %files
 %license COPYING COPYING.DOC

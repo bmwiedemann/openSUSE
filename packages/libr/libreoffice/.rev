@@ -3503,4 +3503,12 @@ Petr</comment>
     <comment>24.2.2 release</comment>
     <requestid>1162937</requestid>
   </revision>
+  <revision rev="289" vrev="1">
+    <srcmd5>f687e2e80856a7dbce32d1fb1a6fdb33</srcmd5>
+    <version>24.2.3.2</version>
+    <time>1714686179</time>
+    <user>anag+factory</user>
+    <comment>24.2.3 release</comment>
+    <requestid>1171346</requestid>
+  </revision>
 </revisionlist>

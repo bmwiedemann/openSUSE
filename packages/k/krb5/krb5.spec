@@ -42,6 +42,7 @@ Patch5:         0005-krb5-1.6.3-ktutil-manpage.patch
 Patch6:         0006-krb5-1.12-api.patch
 Patch7:         0007-SELinux-integration.patch
 Patch8:         0008-krb5-1.9-debuginfo.patch
+Patch9:         0009-Fix-three-memory-leaks.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  cyrus-sasl-devel
@@ -81,7 +82,6 @@ client programs, like kinit, kadmin, ...
 
 %package server
 Summary:        Server program of the MIT Kerberos5 implementation
-Requires:       cron
 Requires:       libverto-libev1
 Requires:       logrotate
 Requires:       perl-Date-Calc

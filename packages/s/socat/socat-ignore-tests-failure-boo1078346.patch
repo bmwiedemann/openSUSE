@@ -1,25 +1,10 @@
-From: Michel Normand <normand@linux.vnet.ibm.com>
-Subject: socat ignore tests failure boo1078346
-Date: Wed, 31 Jan 2018 10:19:54 +0100
-
-socat ignore flaky tests failure boo1078346
-for PowerPC and S390
-
-Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
----
- test.sh |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-Index: socat-1.7.4.1/test.sh
-===================================================================
---- socat-1.7.4.1.orig/test.sh
-+++ socat-1.7.4.1/test.sh
-@@ -15042,7 +15042,7 @@ if [ "$numCANT" -gt 0 ]; then
+--- a/test.sh	2023-11-13 20:31:08.000000000 +0100
++++ b/test.sh	2024-05-01 21:16:36.479550579 +0200
+@@ -19239,6 +19239,7 @@
  fi
  if [ "$numFAIL" -gt 0 ]; then
      echo "FAILED: $listFAIL"
--    exit 1
-+    uname -p | grep -qE 'ppc|s390' && { echo "ignore flaky failures, bypass boo#1078346"; exit 0; } || exit 1
++    uname -p | grep -qE 'ppc|s390' && { echo "ignore flaky failures, bypass boo#1078346"; exit 0; } && exit
  fi
- exit 0
  
+ if [ -z "$OPT_EXPECT_FAIL" ]; then

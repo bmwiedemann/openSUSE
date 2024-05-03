@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  2 08:57:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.4.28:
+  * Git issue 527: `VERBOSE`/`X` flag breaks `\N` escapes
+
+-------------------------------------------------------------------
 Sat Apr 20 07:43:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - updatge to 2024.4.16:

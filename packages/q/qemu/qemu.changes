@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Apr 30 10:05:32 UTC 2024 - dfaggioli@suse.com
+
+- Fix a build issue on riscv:
+  * target/riscv/kvm: rename riscv_reg_id() to riscv_reg_id_ulong()
+  * target/riscv/kvm: add RISCV_CONFIG_REG()
+  * target/riscv/kvm: change timer regs size to u64
+  * target/riscv/kvm: change KVM_REG_RISCV_FP_D to u64
+  * target/riscv/kvm: change KVM_REG_RISCV_FP_F to u32
+- Update to version 8.2.3. Full changelog/backports here:
+   https://lore.kernel.org/qemu-devel/1713980341.971368.1218343.nullmailer@tls.msk.ru/
+   Some of the upstream backports are:
+   * Update version for 8.2.3 release
+   * ppc/spapr: Initialize max_cpus limit to SPAPR_IRQ_NR_IPIS.
+   * ppc/spapr: Introduce SPAPR_IRQ_NR_IPIS to refer IRQ range for CPU IPIs.
+   * hw/pci-host/ppc440_pcix: Do not expose a bridge device on PCI bus
+   * hw/isa/vt82c686: Keep track of PIRQ/PINT pins separately
+   * virtio-pci: fix use of a released vector
+   * linux-user/x86_64: Handle the vsyscall page in open_self_maps_{2,4}
+   * hw/audio/virtio-snd: Remove unused assignment
+   * hw/net/net_tx_pkt: Fix overrun in update_sctp_checksum()
+   * hw/sd/sdhci: Do not update TRNMOD when Command Inhibit (DAT) is set
+   * hw/net/lan9118: Fix overflow in MIL TX FIFO
+   * hw/net/lan9118: Replace magic '2048' value by MIL_TXFIFO_SIZE definition
+   * backends/cryptodev: Do not abort for invalid session ID
+   * hw/misc/applesmc: Fix memory leak in reset() handler
+   * hw/block/nand: Fix out-of-bound access in NAND block buffer
+   * hw/block/nand: Have blk_load() take unsigned offset and return boolean
+   * hw/block/nand: Factor nand_load_iolen() method out
+   * qemu-options: Fix CXL Fixed Memory Window interleave-granularity typo
+   * hw/virtio/virtio-crypto: Protect from DMA re-entrancy bugs
+   * hw/char/virtio-serial-bus: Protect from DMA re-entrancy bugs
+   * hw/display/virtio-gpu: Protect from DMA re-entrancy bugs
+   * ...and many more...
+
+-------------------------------------------------------------------
 Thu Apr 18 09:08:17 UTC 2024 - dfaggioli@suse.com
 
 - Backports and bugfixes:

@@ -238,4 +238,13 @@
     Added \R to match line endings.</comment>
     <requestid>1169318</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c3083e4697cb2bfd58a9b2d968659b07</srcmd5>
+    <version>2024.4.28</version>
+    <time>1714686176</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.4.28:
+  * Git issue 527: `VERBOSE`/`X` flag breaks `\N` escapes</comment>
+    <requestid>1171297</requestid>
+  </revision>
 </revisionlist>

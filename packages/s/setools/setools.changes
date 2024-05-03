@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  2 07:41:11 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 4.5.1:
+  - Correct annotations of NetworkX types to make it optional again.
+  -  Fix packaging issue for apol's style sheet (apol.css).
+- Drop 0001-Make-networkx-optional-again-Fixes-125.patch fixed upstream
+- Change networkx Requires to Suggests
+
+-------------------------------------------------------------------
 Thu Apr 18 13:21:48 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
 
 - Fix build for 15.4 and 15.5:

@@ -1,4 +1,117 @@
 -------------------------------------------------------------------
+Mon Apr 29 11:36:14 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Rebased patch CLI-253-workaround.patch to new version.
+- Updated apache-commons-cli-build.xml to new version.
+- Update to 1.7:
+  * New features:
+    - Add and use a Converter interface and implementations without
+      using BeanUtils #216. Fixes CLI-321. Thanks to Claude Warren,
+      Gary Gregory.
+    - Add Maven property project.build.outputTimestamp for build
+      reproducibility. Thanks to Gary Gregory.
+    - Add '-' as an option char and implemented extensive tests
+      #217. Fixes CLI-322. Thanks to Claude Warren, Gary Gregory.
+    - Make adding OptionGroups and Options to existing Options
+      easier #230. Fixes CLI-324. Thanks to Claude Warren, Gary
+      Gregory.
+    - Added Supplier<T> defaults for getParsedOptionValue #229.
+      Fixes CLI-323. Thanks to Claude Warren, Gary Gregory.
+    - Make Option.getKey() public #239. Fixes CLI-326. Thanks to
+      Claude Warren, Gary Gregory.
+    - Add builder factory CommandLine#builder(). Thanks to Claude
+      Warren, Gary Gregory.
+  * Fixes:
+    - Inconsistent behavior in key/value pairs (Java property
+      style). Fixes CLI-312. Thanks to Claude Warren, Gary Gregory.
+    - Avoid NullPointerException in
+      Util.stripLeadingAndTrailingQuotes(String). Thanks to Gary
+      Gregory.
+    - Awkward behavior of Option.builder() for multiple optional
+      args. Fixes CLI-320. Thanks to Paul King, Claude Warren.
+    - Properties from multiple arguments with value separator.
+      #237. Fixes CLI-325. Thanks to Claude Warren.
+    - Fix for expected textual date values. #244. Fixes CLI-327.
+      Thanks to Claude Warren, Gary Gregory.
+    - Option.Builder.option("") should throw
+      IllegalArgumentException instead of
+      ArrayIndexOutOfBoundsException. Thanks to Gary Gregory.
+    - Avoid NullPointerException in
+      CommandLine.getOptionValues(Option|String). Thanks to Gary
+      Gregory.
+  * Updates:
+    - Bump commons-parent from 64 to 69 #256. Thanks to Gary
+      Gregory.
+    - Update the tests to JUnit 5 #238. Thanks to Elric, Gary
+      Gregory.
+    - Bump tests commons-io:commons-io from 2.16.0 to 2.16.1 #258.
+      Thanks to Dependabot, Gary Gregory.
+- Includes changes from version 1.6:
+  * Fixes:
+    - [StepSecurity] ci: Harden GitHub Actions #176. Thanks to
+      step-security-bot, Gary Gregory.
+    - Inconsistent date format in changes report. Fixes CLI-318.
+      Thanks to Alexander Veit, Gary Gregory.
+    - Fix NPE in CommandLine.resolveOption(String). Fixes CLI-283.
+      Thanks to Dilraj Singh, Gary Gregory.
+    - CommandLine.addOption(Option) should not allow a null Option.
+      Fixes CLI-283. Thanks to Dilraj Singh, Gary Gregory.
+    - CommandLine.addArgs(String) should not allow a null String.
+      Fixes CLI-283. Thanks to Gary Gregory.
+    - Site docs: "Usage Scenarios" refers to deprecated methods.
+      Fixes CLI-303. Thanks to Julian Schilling, Gary Gregory.
+    - NullPointerException thrown by CommandLineParser.parse().
+      Fixes CLI-317. Thanks to Philippe Bastiani, Sruteesh Kumar
+      Paramata, Gary Gregory.
+    - StringIndexOutOfBoundsException thrown by
+      CommandLineParser.parse(). Fixes CLI-313. Thanks to Dominik
+      Stadler, HUNG LU, Sruteesh Kumar Paramata.
+  * Updates:
+    - Fix SpotBugs Error: Medium: Method intentionally throws
+      RuntimeException. [org.apache.commons.cli.Option] At
+      Option.java:[lines 417-423]
+      THROWS_METHOD_THROWS_RUNTIMEEXCEPTION Thanks to Gary Gregory.
+    - Fix SpotBugs Error: Medium: Method intentionally throws
+      RuntimeException. [org.apache.commons.cli.Option] At
+      Option.java:[lines 446-450]
+      THROWS_METHOD_THROWS_RUNTIMEEXCEPTION Thanks to Gary Gregory.
+    - Fix SpotBugs Error: Medium: Method intentionally throws
+      RuntimeException. [org.apache.commons.cli.Option] At
+      Option.java:[lines 474-478]
+      THROWS_METHOD_THROWS_RUNTIMEEXCEPTION Thanks to Gary Gregory.
+    - Use EMPTY_STRING_ARRAY constant. #102. Thanks to Ken Dombeck.
+    - Fix site links that are broken #155. Thanks to Arturo Bernal.
+    - Use Math.max() #111. Delete unused assignment #112. Thanks to
+      Arturo Bernal.
+    - Add github/codeql-action. Thanks to Dependabot, Gary Gregory.
+    - Bump Java from 7 to 8. Thanks to Gary Gregory.
+    - Bump actions/cache from 2.1.7 to 3.0.10 #97, #130, #132.
+      Thanks to Dependabot, Gary Gregory.
+    - Bump actions/checkout from 3 to 3.1.0 #133. Thanks to Gary
+      Gregory, Dependabot.
+    - Bump actions/setup-java from 2 to 3.6.0 #136. Thanks to Gary
+      Gregory.
+    - Bump spotbugs from 4.5.3 to 4.7.3 #96, #107, #113, #125,
+      #138. Thanks to Gary Gregory, Dependabot.
+    - Bump spotbugs-maven-plugin from 4.5.3.0 to 4.7.3.0 #98, #108,
+      #115, #117, #126, #145. Thanks to Dependabot.
+    - Bump commons-parent from 52 to 64 #100, #128, #151, #158.
+      Thanks to Dependabot, Gary Gregory.
+    - Bump maven-antrun-plugin from 3.0.0 to 3.1.0 #103. Thanks to
+      Dependabot.
+    - Bump maven-javadoc-plugin from 3.3.2 to 3.4.1 #105, #120.
+      Thanks to Dependabot.
+    - Bump maven-pmd-plugin from 3.16.0 to 3.19.0 #110, #124.
+      Thanks to Dependabot.
+    - Bump jacoco-maven-plugin from 0.8.7 to 0.8.8. Thanks to Gary
+      Gregory.
+    - Bump maven-checkstyle-plugin from 3.1.2 to 3.2.0 #121. Thanks
+      to Gary Gregory.
+    - Bump japicmp-maven-plugin from 0.15.4 to 0.16.0. Thanks to
+      Gary Gregory.
+    - Update JUnit 4 to 5 vintage. Thanks to Gary Gregory.
+
+-------------------------------------------------------------------
 Tue Feb 20 10:25:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

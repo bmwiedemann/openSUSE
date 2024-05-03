@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May  1 05:43:37 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 20240501
+  * Noto Rashi Hebrew
+    - Corrects the width and position of marks under double-yud and double-vov
+    - Improves the anchoring of yod
+    - Adds the U+053F yod triangle character
+    - Improves the spacing of tsadi
+  * Noto Egyptian Hieroglyphs
+    - Add codepoints from Unicode 14
+
+-------------------------------------------------------------------
 Mon Apr  1 01:23:39 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 20240401

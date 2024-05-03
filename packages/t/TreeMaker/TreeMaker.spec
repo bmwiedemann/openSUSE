@@ -1,8 +1,8 @@
 #
 # spec file for package TreeMaker
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2023 Aaron Puchert <aaronpuchert@alice-dsl.net>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Aaron Puchert <aaronpuchert@alice-dsl.net>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 # We have to build hhp2cached ourselves. We take the source from a fixed version
 # of wxWidgets to not break source validation, but warn if it doesn't match.
-%global hhp2cached_ver 3.2.2.1
+%global hhp2cached_ver 3.2.4
 %if %{pkg_vcmp wxGTK3-devel != %{hhp2cached_ver}}
 %{warn:hhp2cached version does not match wxGTK3-devel}
 %endif
@@ -57,6 +57,8 @@ Patch17:        Fix-annoying-warning-about-suspiciuos-cast.patch
 Patch18:        Fix-popups-about-ignored-flags-at-startup.patch
 Patch19:        Fix-crash-on-opening-help.patch
 Patch20:        Make-some-build-options-configurable.patch
+Patch21:        Don-t-run-pkg-config-wx-config-for-every-compile-job.patch
+Patch22:        Correctly-detect-64-bit-platforms.patch
 BuildRequires:  c++_compiler
 BuildRequires:  make
 BuildRequires:  pkgconfig

@@ -61,4 +61,13 @@
     <comment>- Update to trunk head, 7c2a9dbcc2c1cb1563774068c59d5e09e, git10008</comment>
     <requestid>1169181</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>231559acaa50b7892644eb0623559d2c</srcmd5>
+    <version>14.0.1+git10154</version>
+    <time>1714686200</time>
+    <user>anag+factory</user>
+    <comment>- Update to gcc-14 branch head, 7a00c459cbb913ac165a39d34, git10154
+  * GCC 14.1 RC1</comment>
+    <requestid>1170987</requestid>
+  </revision>
 </revisionlist>

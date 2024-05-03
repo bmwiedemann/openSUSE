@@ -19,13 +19,13 @@
 %global base_name       cli
 %global short_name      commons-%{base_name}
 Name:           apache-commons-cli
-Version:        1.5.0
+Version:        1.7.0
 Release:        0
 Summary:        Command Line Interface Library for Java
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://commons.apache.org/%{base_name}/
-Source0:        https://dlcdn.apache.org/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
+Source0:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
 Source1:        %{name}-build.xml
 Source2:        apache-commons-cli-rpmlintrc
 Patch0:         CLI-253-workaround.patch

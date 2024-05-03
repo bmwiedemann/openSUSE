@@ -366,4 +366,41 @@ See README (forwarded request 157221 from babelworx)</comment>
   and that fixes an ASAN error seen for 'test 313 NESTEDOVFL'. (forwarded request 969720 from marxin)</comment>
     <requestid>969803</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>428bc8a8076182b4403bf07973f90787</srcmd5>
+    <version>1.8.0.0</version>
+    <time>1714686176</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.0.0:
+    * Support for network namespaces (option netns)
+    * TCP client now automatically tries all addresses (IPv4 and IPv6) provided by nameserver until success
+    * Implementation of POSIX message queue (mq) control and access on Linux (addresses POSIXMQ-READ and following)
+    * New wrapper script socat-chain.sh allows to stack two addresses, e.g.HTTP proxy connect over SSL
+    * New script socat-mux.sh allows n-to-1 / 1-to-n communications
+    * New script socat-broker.sh allows group communications
+    * Experimental socks5 client feature
+    * Address ACCEPT-FD for systemd &quot;inetd&quot; mode
+    * UDP-Lite and DCCP address types
+    * Addresses SOCKETPAIR and SHELL
+    * New option bind-tmpname allows forked off children to bind UNIX domain client sockets to random unique pathes
+    * New option retrieve-vlan (with INTERFACE addresses) now makes kernel keep VLAN tags in incoming packets
+    * Simple statistics output with Socat option --statistics and with SIGUSR1
+    * A couple of new options, many fixes and corrections, see file CHANGES
+- Drop socat-common-fixes.patch (no longer necessary)
+- Refactor socat-ignore-tests-failure-boo1078346.patch (test suite no longer exits at this stage)
+- Add socat-test-dhparam fixture (reduce build load and time)
+- Add socat-test-without-tty.patch for testing without tty.
+- Note: This version introduces &quot;socat1&quot;, linking to &quot;socat&quot;
+- Note: This version introduces additional shell scripts, those are shipped in a new &quot;socat-extra&quot; subpackage
+
+- Update to 1.7.4.4:
+  * FIX: In error.c msg2() there was a stack overflow on long messages: The
+    terminating \0 Byte was written behind the last position.
+  * FIX: UDP-RECVFROM with fork sometimes terminated when multiple packets
+    arrived.
+  * FIX: a couple of weaknesses and errors when accessing invalid or
+    incompatible file system entries with UNIX domain, file, and generic
+    addresses.</comment>
+    <requestid>1171319</requestid>
+  </revision>
 </revisionlist>

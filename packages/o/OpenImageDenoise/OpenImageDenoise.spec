@@ -17,11 +17,15 @@
 #
 
 
-%define sover 1
-%define libname lib%{name}%{sover}
+%define sover 2
+%define sub_library_sover %(echo %{version} | tr '.' '_')
+%define main_library lib%{name}%{sover}
+%define core_library lib%{name}_core%{sub_library_sover}
+%define device_cpu_library lib%{name}_device_cpu%{sub_library_sover}
+
 %define pkgname oidn
 Name:           OpenImageDenoise
-Version:        1.4.3
+Version:        2.2.2
 Release:        0
 Summary:        Open Image Denoise library
 License:        Apache-2.0
@@ -30,7 +34,7 @@ URL:            https://openimagedenoise.github.io/
 Source:         https://github.com/%{name}/%{pkgname}/releases/download/v%{version}/%{pkgname}-%{version}.src.tar.gz
 BuildRequires:  cmake >= 3.1
 BuildRequires:  gcc-c++
-BuildRequires:  ispc
+BuildRequires:  ispc >= 1.21.0
 BuildRequires:  tbb-devel
 ExclusiveArch:  x86_64
 
@@ -38,18 +42,42 @@ ExclusiveArch:  x86_64
 Intel Open Image Denoise is an open source library of high-performance,
 high-quality denoising filters for images rendered with ray tracing.
 
-%package -n %{libname}
-Summary:        Open Image Denoise library
+%package -n %{main_library}
+Summary:        Shared library for Open Image Denoise library
 Group:          System/Libraries
+Requires:       %{core_library} = %{version}-%{release}
+Requires:       %{device_cpu_library} = %{version}-%{release}
 
-%description -n %{libname}
+%description -n %{main_library}
 Intel Open Image Denoise is an open source library of high-performance,
 high-quality denoising filters for images rendered with ray tracing.
+
+This package holds the main shared library.
+
+%package -n %{core_library}
+Summary:        Shared library for Open Image Denoise library
+Group:          System/Libraries
+
+%description -n %{core_library}
+Intel Open Image Denoise is an open source library of high-performance,
+high-quality denoising filters for images rendered with ray tracing.
+
+This package holds the core sub shared library.
+
+%package -n %{device_cpu_library}
+Summary:        Shared library for Open Image Denoise library
+Group:          System/Libraries
+
+%description -n %{device_cpu_library}
+Intel Open Image Denoise is an open source library of high-performance,
+high-quality denoising filters for images rendered with ray tracing.
+
+This package holds the device cpu sub shared library.
 
 %package devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       %{libname} = %{version}
+Requires:       %{main_library} = %{version}
 
 %description	devel
 This package contains the C++ header files and symbolic links to the shared
@@ -57,33 +85,42 @@ libraries for %{name}. If you would like to develop programs using %{name},
 you will need to install %{name}-devel.
 
 %prep
-%setup -q -n %{pkgname}-%{version}
-sed -i 's|-${OIDN_VERSION}$||' cmake/oidn_install.cmake
+%autosetup -p1 -n %{pkgname}-%{version}
 
 %build
 %cmake
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
 rm -r %{buildroot}%{_datadir}/doc
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{main_library}
+%ldconfig_scriptlets -n %{core_library}
+%ldconfig_scriptlets -n %{device_cpu_library}
 
 %files
 %license LICENSE.txt
 %{_bindir}/oidn*
 
-%files -n %{libname}
+
+%files -n %{main_library}
 %license LICENSE.txt
 %{_libdir}/lib%{name}.so.*
+
+%files -n %{core_library}
+%license LICENSE.txt
+%{_libdir}/lib%{name}_core.so.*
+
+%files -n %{device_cpu_library}
+%license LICENSE.txt
+%{_libdir}/lib%{name}_device_cpu.so.*
 
 %files devel
 %license LICENSE.txt
 %doc CHANGELOG.md README.md readme.pdf
 %{_includedir}/%{name}
-%{_libdir}/cmake/%{name}
-%{_libdir}/lib%{name}.so
+%{_libdir}/cmake/%{name}-%{version}
+%{_libdir}/lib%{name}*.so
 
 %changelog

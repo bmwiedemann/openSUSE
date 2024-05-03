@@ -1,7 +1,7 @@
 #
 # spec file for package sac
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Source3:        https://repo1.maven.org/maven2/org/w3c/css/sac/%{version}/%{name
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  unzip
 BuildRequires:  zip
 Requires:       java
@@ -61,25 +61,20 @@ ant \
     jar javadoc
 
 %install
-# inject OSGi manifests
-mkdir -p META-INF
-cp -p %{SOURCE2} META-INF/MANIFEST.MF
-touch META-INF/MANIFEST.MF
-zip -X -u build/lib/sac.jar META-INF/MANIFEST.MF
+# inject OSGi manifest
+jar -umf %{SOURCE2} build/lib/sac.jar
 
-mkdir -p %{buildroot}%{_javadir}
-cp -p ./build/lib/sac.jar %{buildroot}%{_javadir}/sac.jar
-
-install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
-cp -pr build/api/* %{buildroot}%{_javadocdir}/%{name}
+install -d -m 0755 %{buildroot}%{_javadir}
+install -p -m 0644 ./build/lib/sac.jar %{buildroot}%{_javadir}/%{name}.jar
 
 # poms
-install -d -m 755 %{buildroot}%{_mavendepmapfragdir}
-install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 %{SOURCE3} \
-    %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
-
+install -d -m 0755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} %{SOURCE3} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 %add_maven_depmap JPP-%{name}.pom %{name}.jar
+
+# javadoc
+install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr build/api/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles

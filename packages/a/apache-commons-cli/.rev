@@ -127,4 +127,12 @@ http://lists.opensuse.org/opensuse-factory/2014-04/msg00309.html</comment>
     <comment></comment>
     <requestid>1147892</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4d1395c8b4b17b309cd61ceb4e892508</srcmd5>
+    <version>1.7.0</version>
+    <time>1714686515</time>
+    <user>anag+factory</user>
+    <comment>1.7.0</comment>
+    <requestid>1171382</requestid>
+  </revision>
 </revisionlist>

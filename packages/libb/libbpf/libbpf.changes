@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  2 08:19:03 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- update to 1.4.1:
+  * Bug fix release fixing logic around determining whether to autoload
+    SEC("struct_ops") programs in cases when old kernel doesn't support some
+    optional callbacks and user reset them to NULL from BPF skeleton.
+
+-------------------------------------------------------------------
 Wed Apr  3 10:50:11 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - update to 1.4.0:

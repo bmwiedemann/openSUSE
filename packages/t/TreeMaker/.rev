@@ -41,4 +41,15 @@
 </comment>
     <requestid>1124312</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ca84394770a08405758037afa0cd63ba</srcmd5>
+    <version>5.0.1</version>
+    <time>1714686436</time>
+    <user>anag+factory</user>
+    <comment>- Add patches:
+  * Don-t-run-pkg-config-wx-config-for-every-compile-job.patch
+  * Correctly-detect-64-bit-platforms.patch to fix GCC 14 build.
+</comment>
+    <requestid>1171161</requestid>
+  </revision>
 </revisionlist>

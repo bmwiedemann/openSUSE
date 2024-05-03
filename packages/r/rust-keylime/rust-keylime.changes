@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu May 02 07:31:40 UTC 2024 - aplanas@suse.com
+
+- Update to version 0.2.5~0:
+  * Bump version to 0.2.5
+  * cargo: Relax required version for pest crate
+  * build(deps): bump log from 0.4.20 to 0.4.21
+  * build(deps): bump thiserror from 1.0.56 to 1.0.59
+
+-------------------------------------------------------------------
+Tue Apr 30 07:52:30 UTC 2024 - aplanas@suse.com
+
+- actix-web update moves rustls as feature (bsc#1223234, CVE-2024-32650)
+- Update to version 0.2.4~39:
+  * build(deps): bump openssl from 0.10.63 to 0.10.64
+  * build(deps): bump h2 from 0.3.24 to 0.3.26
+  * build(deps): bump serde_json from 1.0.107 to 1.0.116
+  * build(deps): bump actix-web from 4.4.1 to 4.5.1
+  * crypto: Enable TLS 1.3
+  * build(deps): bump tempfile from 3.9.0 to 3.10.1
+  * build(deps): bump mio from 0.8.4 to 0.8.11
+  * enable hex values to be used for tpm_ownerpassword
+  * config: Support IPv6 with or without brackets
+  * keylime: Implement a simple IP parser to remove brackets
+  * crypto: Implement CertificateBuilder to generate certificates
+  * tests: Fix coverage download by supporting arbitrary URL
+  * cargo: Add testing feature to keylime library
+  * Set X509 SAN with local DNSname/IP/IPv6
+  * Include newest Node20 versions for Github actions
+  * tpm: Add unit test for uncovered public functions
+  * crypto: Implement ECC key generation support
+  * crypto: Add test for match_cert_to_template()
+  * Fix minor typo, format and remove end whitespaces
+  * crypto: Make error types less specific
+  * tests/run.sh: Run tarpaulin with a single thread
+  * payloads: Remove explicit drop of channel transmitter
+  * crypto: Move to keylime library
+  * crypto: Add specific type for every possible error
+  * tpm: Rename origin of error as source in structures
+  * list_parser: Add source for error for backtrace
+  * algorithms: Make errors more specific
+  * typo fix for default path to measured boot log file
+  * README: remove mentions of libarchive as a dependency
+  * Dockerfile.wolfi: Update clang to version 17
+  * docker: Remove libarchive as a dependency
+  * rpm: Remove libarchive from dependencies
+  * cargo: Replace compress-tools with zip crate
+  * cargo: Bump ahash to version 0.8.7
+  * build(deps): bump serde from 1.0.195 to 1.0.196
+  * build(deps): bump libc from 0.2.152 to 0.2.153
+  * build(deps): bump reqwest from 0.11.23 to 0.11.24
+  * docker: Install configuration file in the correct path
+  * config: Make IAK/IDevID disabled by default
+
+-------------------------------------------------------------------
 Wed Jan 31 09:22:00 UTC 2024 - aplanas@suse.com
 
 - Update to version 0.2.4+git.1706692574.a744517:

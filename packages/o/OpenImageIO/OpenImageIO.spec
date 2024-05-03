@@ -31,11 +31,11 @@
 %bcond_with apidocs
 %bcond_with ptex
 
-%define images_ts 20240205T200840
+%define images_ts 20240410T102113
 %define so_ver 2_5
 %define major_minor_ver 2.5
 Name:           OpenImageIO
-Version:        2.5.10.1
+Version:        2.5.11.0
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        BSD-3-Clause

@@ -1,0 +1,27 @@
+From 70bc529e479a43057a1dbc16062c194fe088a043 Mon Sep 17 00:00:00 2001
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Wed, 1 May 2024 18:06:08 +0200
+Subject: [PATCH 2/2] Correctly detect 64-bit platforms
+
+This fixes a warning -Wincompatible-pointer-types in wnlib/mem/wnmem.c
+because malloc takes a long unsigned int instead of an unsigned int.
+---
+ Source/tmModel/wnlib/low/wnport.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Source/tmModel/wnlib/low/wnport.h b/Source/tmModel/wnlib/low/wnport.h
+index b6850af..4e962c5 100644
+--- a/Source/tmModel/wnlib/low/wnport.h
++++ b/Source/tmModel/wnlib/low/wnport.h
+@@ -58,7 +58,7 @@ AUTHOR:
+ #endif
+ 
+ 
+-#if defined(sparc64)
++#ifdef __LP64__
+ # define WN_SIZEOF_PTR  8
+ # define WN_SIZEOF_LONG  8
+ # define WN_SIZEOF_INT  4
+-- 
+2.44.0
+

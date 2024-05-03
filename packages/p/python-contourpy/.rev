@@ -55,4 +55,16 @@
   * CI improvements</comment>
     <requestid>1087096</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ebb59f461373c93939ac9201f919f87c</srcmd5>
+    <version>1.2.1</version>
+    <time>1714686166</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.1:
+  * Support NumPy 2 (gh#contourpy/contourpy#331,
+    gh#contourpy/contourpy#371, gh#contourpy/contourpy#372).
+  * Fix a few f-strings (gh#contourpy/contourpy#332).
+- New BuildRequires: python-meson-python.</comment>
+    <requestid>1171113</requestid>
+  </revision>
 </revisionlist>

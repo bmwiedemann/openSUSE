@@ -23,14 +23,12 @@
 %define release 1
 
 Name:           R-base
-Version:        4.3.3
+Version:        4.4.0
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.xz
 Source10:       macros.R
 #Source: http://cran.r-project.org/src/base/R-2/R-%%{version}.tar.gz
-# PATCH-FIX-UPSTREAM build with libcurl >= 8
-# Patch0:         R-4.2.3-curl-v8.patch
 
 URL:            http://www.r-project.org/
 
@@ -200,11 +198,68 @@ This package provides the core of R, i.e. all that is in base.
 # noarch
 
 # translations
-%doc %{_libdir}/R/library/translations/DESCRIPTION
 %dir %{_libdir}/R/library/translations/
+%doc %{_libdir}/R/library/translations/DESCRIPTION
+
+%dir %{_libdir}/R/library/translations/ar
+%dir %{_libdir}/R/library/translations/ar/LC_MESSAGES
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/R-base.mo
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/R-methods.mo
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/R-parallel.mo
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/R-splines.mo
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/R-stats.mo
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/R-stats4.mo
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/R-tcltk.mo
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/R-tools.mo
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/R-utils.mo
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/R.mo
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/RGui.mo
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/grDevices.mo
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/graphics.mo
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/methods.mo
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/parallel.mo
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/splines.mo
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/stats.mo
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/tcltk.mo
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/tools.mo
+%lang(ar) %{_libdir}/R/library/translations/ar/LC_MESSAGES/utils.mo
+
+%dir %{_libdir}/R/library/translations/bn/
+%dir %{_libdir}/R/library/translations/bn/LC_MESSAGES/
+%lang(bn) %{_libdir}/R/library/translations/bn/LC_MESSAGES/R-base.mo
+%lang(bn) %{_libdir}/R/library/translations/bn/LC_MESSAGES/RGui.mo
+%lang(bn) %{_libdir}/R/library/translations/bn/LC_MESSAGES/tcltk.mo
+
+%dir %{_libdir}/R/library/translations/ca/
+%dir %{_libdir}/R/library/translations/ca/LC_MESSAGES/
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/R-base.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/R-compiler.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/R-grDevices.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/R-graphics.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/R-grid.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/R-methods.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/R-parallel.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/R-splines.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/R-stats.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/R-stats4.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/R-tcltk.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/R-tools.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/R-utils.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/R.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/RGui.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/grDevices.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/graphics.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/grid.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/methods.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/parallel.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/splines.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/stats.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/tcltk.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/tools.mo
+%lang(ca) %{_libdir}/R/library/translations/ca/LC_MESSAGES/utils.mo
+
 %dir %{_libdir}/R/library/translations/da/
 %dir %{_libdir}/R/library/translations/da/LC_MESSAGES/
-
 %lang(da) %{_libdir}/R/library/translations/da/LC_MESSAGES/R-base.mo
 %lang(da) %{_libdir}/R/library/translations/da/LC_MESSAGES/R.mo
 %lang(da) %{_libdir}/R/library/translations/da/LC_MESSAGES/RGui.mo
@@ -226,11 +281,49 @@ This package provides the core of R, i.e. all that is in base.
 %dir %{_libdir}/R/library/translations/en_GB
 %dir %{_libdir}/R/library/translations/en_GB/LC_MESSAGES
 %lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/R.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/R-base.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/R-compiler.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/R-graphics.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/R-grid.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/R-methods.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/R-parallel.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/R-splines.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/R-stats.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/R-stats4.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/R-tcltk.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/R-tools.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/R-utils.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/RGui.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/graphics.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/grid.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/methods.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/parallel.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/splines.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/stats.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/tcltk.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/tools.mo
+%lang(en_GB) %{_libdir}/R/library/translations/en_GB/LC_MESSAGES/utils.mo
 
 %dir %{_libdir}/R/library/translations/es
 %dir %{_libdir}/R/library/translations/es/LC_MESSAGES
 %lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/R.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/R-base.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/R-grDevices.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/R-graphics.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/R-grid.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/R-methods.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/R-parallel.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/R-stats.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/R-stats4.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/R-tools.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/R-utils.mo
 %lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/RGui.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/grDevices.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/parallel.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/stats.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/tcltk.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/tools.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/utils.mo
 
 %dir %{_libdir}/R/library/translations/fa
 %dir %{_libdir}/R/library/translations/fa/LC_MESSAGES
@@ -244,6 +337,49 @@ This package provides the core of R, i.e. all that is in base.
 %lang(fr) %{_libdir}/R/library/translations/fr/LC_MESSAGES/R.mo
 %lang(fr) %{_libdir}/R/library/translations/fr/LC_MESSAGES/RGui.mo
 
+%dir %{_libdir}/R/library/translations/hi
+%dir %{_libdir}/R/library/translations/hi/LC_MESSAGES
+%lang(hi) %{_libdir}/R/library/translations/hi/LC_MESSAGES/R-base.mo
+%lang(hi) %{_libdir}/R/library/translations/hi/LC_MESSAGES/R-grDevices.mo
+%lang(hi) %{_libdir}/R/library/translations/hi/LC_MESSAGES/R-graphics.mo
+%lang(hi) %{_libdir}/R/library/translations/hi/LC_MESSAGES/R-parallel.mo
+%lang(hi) %{_libdir}/R/library/translations/hi/LC_MESSAGES/R-stats.mo
+%lang(hi) %{_libdir}/R/library/translations/hi/LC_MESSAGES/R-tools.mo
+%lang(hi) %{_libdir}/R/library/translations/hi/LC_MESSAGES/R-utils.mo
+%lang(hi) %{_libdir}/R/library/translations/hi/LC_MESSAGES/R.mo
+%lang(hi) %{_libdir}/R/library/translations/hi/LC_MESSAGES/RGui.mo
+%lang(hi) %{_libdir}/R/library/translations/hi/LC_MESSAGES/grDevices.mo
+%lang(hi) %{_libdir}/R/library/translations/hi/LC_MESSAGES/graphics.mo
+%lang(hi) %{_libdir}/R/library/translations/hi/LC_MESSAGES/parallel.mo
+%lang(hi) %{_libdir}/R/library/translations/hi/LC_MESSAGES/stats.mo
+%lang(hi) %{_libdir}/R/library/translations/hi/LC_MESSAGES/tools.mo
+%lang(hi) %{_libdir}/R/library/translations/hi/LC_MESSAGES/utils.mo
+
+%dir %{_libdir}/R/library/translations/hu
+%dir %{_libdir}/R/library/translations/hu/LC_MESSAGES
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/R-base.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/R-graphics.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/R-parallel.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/R-splines.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/R-stats.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/R-tcltk.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/R-tools.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/R-utils.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/R.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/RGui.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/grDevices.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/graphics.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/grid.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/parallel.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/stats.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/tcltk.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/tools.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/utils.mo
+
+%dir %{_libdir}/R/library/translations/id
+%dir %{_libdir}/R/library/translations/id/LC_MESSAGES
+%lang(id) %{_libdir}/R/library/translations/id/LC_MESSAGES/R-base.mo
+
 %dir %{_libdir}/R/library/translations/it
 %dir %{_libdir}/R/library/translations/it/LC_MESSAGES
 %lang(it) %{_libdir}/R/library/translations/it/LC_MESSAGES/R-base.mo
@@ -254,7 +390,9 @@ This package provides the core of R, i.e. all that is in base.
 %dir %{_libdir}/R/library/translations/ja/LC_MESSAGES
 %lang(ja) %{_libdir}/R/library/translations/ja/LC_MESSAGES/R-base.mo
 %lang(ja) %{_libdir}/R/library/translations/ja/LC_MESSAGES/R.mo
+%lang(ja) %{_libdir}/R/library/translations/ja/LC_MESSAGES/R-parallel.mo
 %lang(ja) %{_libdir}/R/library/translations/ja/LC_MESSAGES/RGui.mo
+%lang(ja) %{_libdir}/R/library/translations/ja/LC_MESSAGES/parallel.mo
 
 %dir %{_libdir}/R/library/translations/ko
 %dir %{_libdir}/R/library/translations/ko/LC_MESSAGES
@@ -268,10 +406,16 @@ This package provides the core of R, i.e. all that is in base.
 %lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/R.mo
 %lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/RGui.mo
 
+%dir %{_libdir}/R/library/translations/ne
+%dir %{_libdir}/R/library/translations/ne/LC_MESSAGES
+%lang(ne) %{_libdir}/R/library/translations/ne/LC_MESSAGES/R.mo
+%lang(ne) %{_libdir}/R/library/translations/ne/LC_MESSAGES/R-compiler.mo
+%lang(ne) %{_libdir}/R/library/translations/ne/LC_MESSAGES/RGui.mo
+
 %dir %{_libdir}/R/library/translations/nn
 %dir %{_libdir}/R/library/translations/nn/LC_MESSAGES
-%lang(nn) %{_libdir}/R/library/translations/nn/LC_MESSAGES/R-base.mo
 %lang(nn) %{_libdir}/R/library/translations/nn/LC_MESSAGES/R.mo
+%lang(nn) %{_libdir}/R/library/translations/nn/LC_MESSAGES/R-base.mo
 %lang(nn) %{_libdir}/R/library/translations/nn/LC_MESSAGES/RGui.mo
 
 %dir %{_libdir}/R/library/translations/pl
@@ -283,8 +427,10 @@ This package provides the core of R, i.e. all that is in base.
 %dir %{_libdir}/R/library/translations/pt_BR
 %dir %{_libdir}/R/library/translations/pt_BR/LC_MESSAGES
 %lang(pt_BR) %{_libdir}/R/library/translations/pt_BR/LC_MESSAGES/R-base.mo
+%lang(pt_BR) %{_libdir}/R/library/translations/pt_BR/LC_MESSAGES/R-parallel.mo
 %lang(pt_BR) %{_libdir}/R/library/translations/pt_BR/LC_MESSAGES/R.mo
 %lang(pt_BR) %{_libdir}/R/library/translations/pt_BR/LC_MESSAGES/RGui.mo
+%lang(pt_BR) %{_libdir}/R/library/translations/pt_BR/LC_MESSAGES/utils.mo
 
 %dir %{_libdir}/R/library/translations/ru
 %dir %{_libdir}/R/library/translations/ru/LC_MESSAGES
@@ -292,11 +438,20 @@ This package provides the core of R, i.e. all that is in base.
 %lang(ru) %{_libdir}/R/library/translations/ru/LC_MESSAGES/R.mo
 %lang(ru) %{_libdir}/R/library/translations/ru/LC_MESSAGES/RGui.mo
 
+%dir %{_libdir}/R/library/translations/sq
+%dir %{_libdir}/R/library/translations/sq/LC_MESSAGES
+%lang(sq) %{_libdir}/R/library/translations/sq/LC_MESSAGES/R-base.mo
+%lang(sq) %{_libdir}/R/library/translations/sq/LC_MESSAGES/R.mo
+
 %dir %{_libdir}/R/library/translations/tr
 %dir %{_libdir}/R/library/translations/tr/LC_MESSAGES
 %lang(tr) %{_libdir}/R/library/translations/tr/LC_MESSAGES/R-base.mo
 %lang(tr) %{_libdir}/R/library/translations/tr/LC_MESSAGES/R.mo
 %lang(tr) %{_libdir}/R/library/translations/tr/LC_MESSAGES/RGui.mo
+
+%dir %{_libdir}/R/library/translations/ur
+%dir %{_libdir}/R/library/translations/ur/LC_MESSAGES
+%lang(ur) %{_libdir}/R/library/translations/ur/LC_MESSAGES/R-base.mo
 
 %dir %{_libdir}/R/library/translations/zh_CN
 %dir %{_libdir}/R/library/translations/zh_CN/LC_MESSAGES
@@ -336,6 +491,9 @@ This package provides the core of R, i.e. all that is in base.
 
 %dir %{_libdir}/R/share/dictionaries/
 %{_libdir}/R/share/dictionaries/en_stats.rds
+%{_libdir}/R/share/dictionaries/R_Rd_files.rds
+%{_libdir}/R/share/dictionaries/R_manuals.rds
+%{_libdir}/R/share/dictionaries/R_vignettes.rds
 %license %{_libdir}/R/share/licenses/
 %{_libdir}/R/share/make/
 %{_libdir}/R/share/R/
@@ -1148,7 +1306,7 @@ Metapackage, Requires: all recommended Packages
 
 %package -n R-boot
 Summary:        Package provides recommended R-boot
-Version:        1.3.29
+Version:        1.3.30
 Release:        %release
 Requires:       R-base
 
@@ -1246,7 +1404,7 @@ This packages provides R-cluster, one of the recommended packages.
 
 %package -n R-codetools
 Summary:        Package provides recommended R-codetools
-Version:        0.2.19
+Version:        0.2.20
 Release:        %release
 Requires:       R-base
 
@@ -1326,7 +1484,7 @@ This packages provides R-KernSmooth, one of the recommended packages.
 
 %package -n R-lattice
 Summary:        Package provides recommended R-lattice
-Version:        0.22.5
+Version:        0.22.6
 Release:        %release
 Requires:       R-base
 
@@ -1393,7 +1551,7 @@ This packages provides R-MASS, one of the recommended packages.
 
 %package -n R-Matrix
 Summary:        Package provides recommended R-Matrix
-Version:        1.6.5
+Version:        1.7.0
 Release:        %release
 Requires:       R-base
 Obsoletes:      R-Matrix-devel <= 1.3.2
@@ -1444,6 +1602,21 @@ This packages provides R-Matrix, one of the recommended packages.
 %{_libdir}/R/library/Matrix/include/Matrix/remap.h
 %{_libdir}/R/library/Matrix/include/Matrix/stubs.c
 %{_libdir}/R/library/Matrix/include/Matrix/version.h
+%dir %{_libdir}/R/library/Matrix/scripts/
+%{_libdir}/R/library/Matrix/scripts/AMD.patch
+%{_libdir}/R/library/Matrix/scripts/CAMD.patch
+%{_libdir}/R/library/Matrix/scripts/CCOLAMD.patch
+%{_libdir}/R/library/Matrix/scripts/CHOLMOD.patch
+%{_libdir}/R/library/Matrix/scripts/COLAMD.patch
+%{_libdir}/R/library/Matrix/scripts/CXSparse.patch
+%{_libdir}/R/library/Matrix/scripts/SuiteSparse_config.patch
+%{_libdir}/R/library/Matrix/scripts/api.patch
+%{_libdir}/R/library/Matrix/scripts/disclaimer.txt
+%{_libdir}/R/library/Matrix/scripts/rules.mk
+%{_libdir}/R/library/Matrix/scripts/rules.sh
+%{_libdir}/R/library/Matrix/scripts/sources.mk
+%{_libdir}/R/library/Matrix/scripts/ssget.sh
+%{_libdir}/R/library/Matrix/scripts/wall.patch
 
 %package -n R-mgcv
 Summary:        Package provides recommended R-mgcv

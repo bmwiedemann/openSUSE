@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Tue Apr 30 20:52:47 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- split out the sub shared libraries to have a proper package
+  suffix
+
+-------------------------------------------------------------------
+Mon Apr 29 23:38:07 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- the cmake dir is versioned now
+
+-------------------------------------------------------------------
+Mon Apr 29 23:07:52 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.2.2: 
+  Fully fixed GPU memory leak when releasing SYCL, CUDA and HIP device objects
+  Fixed CUDA context error in some cases when using the CUDA driver API
+  Fixed crash on systems with an unsupported AMD Vega integrated GPU and old driver
+  Fixed memory leak when releasing SYCL, CUDA and HIP device objects
+  Fixed memory leak when initializing Metal filters
+  Improved denoising quality (better fine detail reconstruction)
+  Added Intel Meteor Lake GPU support (in Intel® Core™ Ultra Processors)
+  Added Metal device for Apple silicon GPUs (requires macOS Ventura or newer)
+  Added ARM64 (AArch64) CPU support on Windows and Linux (in addition to macOS)
+  Improved CPU performance
+  Significantly reduced overhead of committing filter changes
+  Switched to the CUDA driver API by default, added the OIDN_DEVICE_CUDA_API
+  CMake option for manually selecting between the driver and runtime APIs
+  Fixed crash when releasing a buffer after releasing the device
+  Added support for denoising 1-channel (e.g. alpha) and 2-channel images
+  Added support for arbitrary combinations of input image data types
+  (e.g. OIDN_FORMAT_FLOAT3 for color but OIDN_FORMAT_HALF3 for albedo)
+  Improved performance for most dedicated GPU architectures
+  Re-added OIDN_STATIC_LIB CMake option which enables building as a static
+  (CPU support only) or a hybrid static/shared (GPU support as well) library
+  Added release() method to C++ API objects (DeviceRef, BufferRef,
+  FilterRef)
+  Fixed possible crash when releasing GPU devices, buffers or filters
+  Fixed possible crash at process exit for some SYCL runtime versions
+  Fixed image quality inconsistency on Intel integrated GPUs, but at the cost
+  of some performance loss
+  Fixed future Windows driver compatibility for Intel integrated GPUs
+  Fixed rare output corruption on AMD RDNA2 GPUs
+  Fixed device detection on Windows when the path to the library has non-ANSI
+  characters
+  Added support for Intel® oneAPI DPC++/C++ Compiler 2024.0 and compatible
+  open source compiler versions
+  Upgraded to oneTBB 2021.10.0 in the official binaries
+  Improved detection of old oneTBB versions
+  Fixed performance issue for Intel integrated GPUs using recent Linux drivers
+  Fixed crash on systems with both dedicated and integrated AMD GPUs
+  Fixed importing D3D12_RESOURCE, D3D11_RESOURCE, D3D11_RESOURCE_KMT,
+  D3D11_TEXTURE and D3D11_TEXTURE_KMT external memory types on CUDA and
+  HIP devices
+  Fixed the macOS deployment target of the official x86 binaries (lowered from
+  11.0 to 10.11)
+  Minor improvements to verbose output
+  Added SYCL device for Intel Xe architecture GPUs (Xe-LP, Xe-HPG and Xe-HPC)
+  Added CUDA device for NVIDIA Volta, Turing, Ampere, Ada Lovelace and Hopper
+  architecture GPUs
+  Added HIP device for AMD RDNA2 (Navi 21 only) and RDNA3 (Navi 3x)
+  architecture GPUs
+  Added new buffer API functions for specifying the storage type (host, device
+  or managed), copying data to/from the host, and importing external buffers from
+  graphics APIs (e.g. Vulkan, Direct3D 12)
+  Removed the oidnMapBuffer and oidnUnmapBuffer functions
+  Added support for asynchronous execution (e.g. oidnExecuteFilterAsync,
+  oidnSyncDevice functions)
+  Added physical device API for querying the supported devices in the system
+  Added functions for creating a device from a physical device ID, UUID, LUID
+  or PCI address (e.g. oidnNewDeviceByID)
+  Added SYCL, CUDA and HIP interoperability API functions (e.g. oidnNewSYCLDevice,
+  oidnExecuteSYCLFilterAsync)
+  Added type device parameter for querying the device type
+  Added systemMemorySupported and managedMemorySupported device parameters
+  for querying memory allocations supported by the device
+  Added externalMemoryTypes device parameter for querying the supported
+  external memory handle types
+  Added quality filter parameter for setting the filtering quality mode (high
+  or balanced quality)
+  Minor API changes with backward compatibility:
+  Added oidn(Get|Set)(Device|Filter)(Bool|Int|Float) functions and
+  deprecated oidn(Get|Set)(Device|Filter)(1b|1i|1f) functions
+  Added oidnUnsetFilter(Image|Data) functions and deprecated
+  oidnRemoveFilter(Image|Data) functions
+  Renamed alignment and overlap filter parameters to tileAlignment
+  and tileOverlap but the old names remain supported
+  Removed OIDN_STATIC_LIB and OIDN_STATIC_RUNTIME CMake options due to
+  technical limitations
+  Fixed over-conservative buffer bounds checking for images with custom strides
+  Upgraded to oneTBB 2021.9.0 in the official binaries
+
+-------------------------------------------------------------------
 Fri Apr 22 00:16:32 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.4.3:

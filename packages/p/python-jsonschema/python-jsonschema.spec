@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-jsonschema
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -33,7 +33,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonschema%{psuffix}
-Version:        4.21.1
+Version:        4.22.0
 Release:        0
 Summary:        An implementation of JSON-Schema validation for Python
 License:        MIT
@@ -73,7 +73,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 %endif
 BuildArch:      noarch
 %python_subpackages

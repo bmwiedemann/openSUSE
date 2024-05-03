@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 30 09:29:53 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.1.11
+
+  * docs/Makefile: softcode GOMD2MAN by @rahilarious
+  * chore(deps): update dependency containers/automation_images to v20231208 by @renovate
+  * drop --tty on exec by @haircommander
+  * update packit config, enable downstream tasks by @lsm5
+  * Remove checks for (long)deprecated libsystemd-journal for libsystemd by @rahilarious
+  * Add support for s390x by @saschagrunert
+  * Build s390x binaries using musl libc by @saschagrunert
+
+-------------------------------------------------------------------
 Tue Dec 19 08:01:08 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 2.1.10
@@ -39,7 +52,7 @@ Thu Sep 28 16:02:58 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 Wed Sep  6 05:41:47 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Update to version 2.1.8:
-  * stdio: ignore EIO for terminals
+  * stdio: ignore EIO for terminals (bsc#1217773)
   * ensure console socket buffers are properly sized
   * conmon: drop return after pexit()
   * ctrl: make accept4 failures fatal

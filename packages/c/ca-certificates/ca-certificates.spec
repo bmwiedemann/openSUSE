@@ -1,7 +1,7 @@
 #
 # spec file for package ca-certificates
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ Name:           ca-certificates
 %define ssletcdir %{_sysconfdir}/ssl
 %define cabundle  /var/lib/ca-certificates/ca-bundle.pem
 %define sslcerts  %{ssletcdir}/certs
-Version:        2+git20230406.2dae8b7%{git_version}
+Version:        2+git20240415.3fe9324%{git_version}
 Release:        0
 Summary:        Utilities for system wide CA certificate installation
 License:        GPL-2.0-or-later
@@ -91,21 +91,21 @@ ln -s %{cabundle} %{buildroot}%{ssletcdir}/ca-bundle.pem
 install -D -m 444 /dev/null %{buildroot}/var/lib/ca-certificates/java-cacerts
 
 %pre
-%service_add_pre ca-certificates.path ca-certificates.service
+%service_add_pre ca-certificates.path ca-certificates.service ca-certificates-setup.service
 
 %post
 # force rebuilding all certificate stores.
 update-ca-certificates -f || true
-%service_add_post ca-certificates.path ca-certificates.service
+%service_add_post ca-certificates.path ca-certificates.service ca-certificates-setup.service
 
 %preun
-%service_del_preun ca-certificates.path ca-certificates.service
+%service_del_preun ca-certificates.path ca-certificates.service ca-certificates-setup.service
 
 %postun
 if [ "$1" -eq 0 ]; then
 	rm -rf /var/lib/ca-certificates/pem /var/lib/ca-certificates/openssl
 fi
-%service_del_postun ca-certificates.path ca-certificates.service
+%service_del_postun ca-certificates.path ca-certificates.service ca-certificates-setup.service
 
 %clean
 rm -rf %{buildroot}

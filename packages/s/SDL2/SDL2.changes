@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  1 19:03:52 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.30.3
+  * Fixed a pointer warping issue on XWayland
+  * Reduced startup time when scanning for game controllers on Linux
+
+-------------------------------------------------------------------
 Tue Apr  2 08:47:20 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.30.2

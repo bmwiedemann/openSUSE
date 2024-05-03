@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-contourpy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-contourpy%{psuffix}
-Version:        1.0.7
+Version:        1.2.1
 Release:        0
 Summary:        Python library for calculating contours of 2D quadrilateral grids
 License:        BSD-3-Clause
 URL:            https://github.com/contourpy/contourpy
 Source:         https://files.pythonhosted.org/packages/source/c/contourpy/contourpy-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module meson-python}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel >= 2.7}
 BuildRequires:  %{python_module setuptools >= 42}
@@ -49,6 +50,7 @@ BuildRequires:  %{python_module contourpy = %{version}}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy >= 1.16}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wurlitzer}
 %endif
 %python_subpackages
 

@@ -6,11 +6,11 @@ CommitDate: Mon Jun 22 15:04:05 2015 +0200
 
     [CLI-253] Prevent "Unrecognized option: --null" when handling long opts in PosixParser
 
-Index: commons-cli-1.5.0-src/src/main/java/org/apache/commons/cli/Options.java
+Index: commons-cli-1.7.0-src/src/main/java/org/apache/commons/cli/Options.java
 ===================================================================
---- commons-cli-1.5.0-src.orig/src/main/java/org/apache/commons/cli/Options.java
-+++ commons-cli-1.5.0-src/src/main/java/org/apache/commons/cli/Options.java
-@@ -186,6 +186,20 @@ public class Options implements Serializ
+--- commons-cli-1.7.0-src.orig/src/main/java/org/apache/commons/cli/Options.java
++++ commons-cli-1.7.0-src/src/main/java/org/apache/commons/cli/Options.java
+@@ -195,6 +195,20 @@ public class Options implements Serializ
          return this;
      }
  
@@ -31,10 +31,10 @@ Index: commons-cli-1.5.0-src/src/main/java/org/apache/commons/cli/Options.java
      /**
       * Gets the options with a long name starting with the name specified.
       *
-Index: commons-cli-1.5.0-src/src/main/java/org/apache/commons/cli/PosixParser.java
+Index: commons-cli-1.7.0-src/src/main/java/org/apache/commons/cli/PosixParser.java
 ===================================================================
---- commons-cli-1.5.0-src.orig/src/main/java/org/apache/commons/cli/PosixParser.java
-+++ commons-cli-1.5.0-src/src/main/java/org/apache/commons/cli/PosixParser.java
+--- commons-cli-1.7.0-src.orig/src/main/java/org/apache/commons/cli/PosixParser.java
++++ commons-cli-1.7.0-src/src/main/java/org/apache/commons/cli/PosixParser.java
 @@ -145,7 +145,7 @@ public class PosixParser extends Parser
                  } else if (matchingOpts.size() > 1) {
                      throw new AmbiguousOptionException(opt, matchingOpts);
@@ -44,10 +44,10 @@ Index: commons-cli-1.5.0-src/src/main/java/org/apache/commons/cli/PosixParser.ja
  
                      tokens.add("--" + currentOption.getLongOpt());
                      if (pos != -1) {
-Index: commons-cli-1.5.0-src/src/test/java/org/apache/commons/cli/bug/BugCLI253Test.java
+Index: commons-cli-1.7.0-src/src/test/java/org/apache/commons/cli/bug/BugCLI253Test.java
 ===================================================================
 --- /dev/null
-+++ commons-cli-1.5.0-src/src/test/java/org/apache/commons/cli/bug/BugCLI253Test.java
++++ commons-cli-1.7.0-src/src/test/java/org/apache/commons/cli/bug/BugCLI253Test.java
 @@ -0,0 +1,44 @@
 +/*
 + * Licensed to the Apache Software Foundation (ASF) under one or more
