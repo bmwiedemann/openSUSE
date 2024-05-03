@@ -84,4 +84,16 @@ already being maintained over a long period by https://build.opensuse.org/users/
   * The scheduler now defaults to db 0.</comment>
     <requestid>1138692</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>43797b9f02877bef2639fc02a1b0003a</srcmd5>
+    <version>2.10.2</version>
+    <time>1714758371</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.10.2:
+  * Added support for Django 5.0. Thanks @selwin!
+  * Fixed an error in Python 3.12. Thanks @selwin!
+  * Fixes an issue that may happen if Redis port is not
+    specified. Thanks @terencehonles!</comment>
+    <requestid>1171538</requestid>
+  </revision>
 </revisionlist>

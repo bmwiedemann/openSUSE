@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May  3 07:34:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.2:
+  * Added support for Django 5.0. Thanks @selwin!
+  * Fixed an error in Python 3.12. Thanks @selwin!
+  * Fixes an issue that may happen if Redis port is not
+    specified. Thanks @terencehonles!
+
+-------------------------------------------------------------------
 Sun Jan 14 17:31:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10.1:
