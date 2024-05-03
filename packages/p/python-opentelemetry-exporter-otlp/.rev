@@ -34,4 +34,12 @@
   * Fix license field in pyproject.toml files</comment>
     <requestid>1164541</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>cadcac33a2fb89bef515b58e47dbeaa9</srcmd5>
+    <version>1.24.0</version>
+    <time>1714758384</time>
+    <user>anag+factory</user>
+    <comment>- use modern python on sle15</comment>
+    <requestid>1171760</requestid>
+  </revision>
 </revisionlist>

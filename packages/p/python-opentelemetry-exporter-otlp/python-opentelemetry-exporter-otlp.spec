@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-opentelemetry-exporter-otlp
 Version:        1.24.0
 Release:        0
