@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-django-tastypie
-Version:        0.14.6
+Version:        0.14.7
 Release:        0
 Summary:        A webservice API framework layer for Django
 License:        BSD-3-Clause
