@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Fri May  3 07:38:51 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.164.0:
+  What's Changed
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.6 to
+    1.51.7 by @dependabot in #1429
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.7 to
+    1.51.8 by @dependabot in #1430
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.8 to
+    1.51.9 by @dependabot in #1432
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.9 to
+    1.51.10 by @dependabot in #1433
+  * remove HELMFILE_SKIP_INSECURE_TEMPLATE_FUNCTIONS for v1 by
+    @yxxhero in #1434
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.10 to
+    1.51.11 by @dependabot in #1435
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.11 to
+    1.51.12 by @dependabot in #1436
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.12 to
+    1.51.13 by @dependabot in #1438
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.13 to
+    1.51.14 by @dependabot in #1439
+  * build(deps): bump golang.org/x/sync from 0.6.0 to 0.7.0 by
+    @dependabot in #1441
+  * build(deps): bump github.com/helmfile/vals from 0.36.0 to
+    0.37.0 by @dependabot in #1440
+  * build(deps): bump golang.org/x/term from 0.18.0 to 0.19.0
+    by @dependabot in #1444
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.14 to
+    1.51.15 by @dependabot in #1443
+  * Misc documentation fixes by @StarlessNights in #1442
+  * update deps versions by @yxxhero in #1446
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.15 to
+    1.51.16 by @dependabot in #1447
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.16 to
+    1.51.17 by @dependabot in #1448
+  * build(deps): bump helm.sh/helm/v3 from 3.14.3 to 3.14.4 by
+    @dependabot in #1451
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.17 to
+    1.51.19 by @dependabot in #1450
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.19 to
+    1.51.20 by @dependabot in #1452
+  * bump helm to v3.14.4 by @yxxhero in #1453
+  * build(deps): bump helm-git from v0.15.1 to v0.16.0 (minor) by
+    @maxime1907 in #1455
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.20 to
+    1.51.21 by @dependabot in #1456
+  * build(deps): bump github.com/hashicorp/go-getter from 1.7.3 to
+    1.7.4 by @dependabot in #1457
+  * build(deps): bump k8s.io/apimachinery from 0.29.3 to 0.29.4 by
+    @dependabot in #1463
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.21 to
+    1.51.22 by @dependabot in #1462
+  * add NAMESPACE filed for diff by @yxxhero in #1460
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.22 to
+    1.51.23 by @dependabot in #1466
+  * build(deps): bump k8s.io/apimachinery from 0.29.4 to 0.30.0
+    by @dependabot in #1465
+  * chore(docs): update heading by @josephgardner in #1470
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.23 to
+    1.51.24 by @dependabot in #1469
+  * build(deps): bump github.com/helmfile/chartify from 0.18.1 to
+    0.19.0 by @dependabot in #1468
+  * Feature/support env hcl and interpolations by @XT-Phate in #1423
+  * build(deps): bump github.com/hashicorp/hcl/v2 from 2.19.1 to
+    2.20.1 by @dependabot in #1475
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.24 to
+    1.51.25 by @dependabot in #1476
+  * build(deps): bump github.com/zclconf/go-cty from 1.14.3 to
+    1.14.4 by @dependabot in #1474
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.25 to
+    1.51.26 by @dependabot in #1478
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.26 to
+    1.51.27 by @dependabot in #1480
+  * build(deps): bump golangci/golangci-lint-action from 4 to 5
+    by @dependabot in #1482
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.27 to
+    1.51.28 by @dependabot in #1481
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.28 to
+    1.51.29 by @dependabot in #1485
+  * Update DAG with dependencies by @vlpav030 in #1477
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.29 to
+    1.51.30 by @dependabot in #1486
+  * build(deps): bump github.com/helmfile/chartify from 0.19.0 to
+    0.20.0 by @dependabot in #1487
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.30 to
+    1.51.31 by @dependabot in #1488
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.51.31 to
+    1.51.32 by @dependabot in #1489
+
+-------------------------------------------------------------------
 Tue Mar 26 09:22:14 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.163.1:
