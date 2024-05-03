@@ -436,4 +436,18 @@
     <comment>- Convert to source service for easier updating. (forwarded request 1139289 from dimstar)</comment>
     <requestid>1139295</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>aa387b835d76db78e3616e881501d043</srcmd5>
+    <version>46.0</version>
+    <time>1714758203</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.0:
+  * Use adaptive dialogs.
+  * Replace telepathy-logger with private tracker database.
+  * Misc. bug fixes and cleanups.
+  + Updated translations.
+- Replace pkgconfig(telepathy-logger-0.2) BuildRequires with
+  pkgconfig(tracker-sparql-3.0): follow upstreams changes. (forwarded request 1171122 from dimstar)</comment>
+    <requestid>1171386</requestid>
+  </revision>
 </revisionlist>

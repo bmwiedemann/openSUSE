@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  1 09:02:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  * Use adaptive dialogs.
+  * Replace telepathy-logger with private tracker database.
+  * Misc. bug fixes and cleanups.
+  + Updated translations.
+- Replace pkgconfig(telepathy-logger-0.2) BuildRequires with
+  pkgconfig(tracker-sparql-3.0): follow upstreams changes.
+
+-------------------------------------------------------------------
 Tue Jan 16 17:44:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Convert to source service for easier updating.

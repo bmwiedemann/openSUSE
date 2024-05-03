@@ -18,7 +18,7 @@
 
 
 Name:           polari
-Version:        45.0
+Version:        46.0
 Release:        0
 Summary:        An IRC Client for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(telepathy-glib)
-BuildRequires:  pkgconfig(telepathy-logger-0.2)
+BuildRequires:  pkgconfig(tracker-sparql-3.0)
 Requires:       gjs >= 1.69.2
 Requires:       telepathy-idle
 Requires:       telepathy-logger
@@ -81,7 +81,7 @@ with GNOME 3.
 %{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.Polari.service
 %{_datadir}/dbus-1/services/org.gnome.Polari.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Polari.gschema.xml
-%{_datadir}/metainfo/org.gnome.Polari.appdata.xml
+%{_datadir}/metainfo/org.gnome.Polari.metainfo.xml
 %{_datadir}/polari/
 %dir %{_datadir}/telepathy
 %dir %{_datadir}/telepathy/clients
