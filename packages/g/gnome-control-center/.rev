@@ -2083,4 +2083,33 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1166684</requestid>
   </revision>
+  <revision rev="245" vrev="1">
+    <srcmd5>16f7fdfc8c61b24b934e258763224461</srcmd5>
+    <version>46.1</version>
+    <time>1714758218</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.1:
+  + Accessibility: Improve accessibility of &quot;Typing&quot; settings
+    sliders.
+  + Display: Fix crash when pressing Escape in the display
+    settings.
+  + Network: Add stable-ssid support for cloned-mac.
+  + Privacy:
+    - Add build option to enable Location services
+    - Fix opening of Help pages while viewing Privacy settings
+  + Sharing: Auto hide Sharing panel when Rygel AND
+    gnome-user-share are not available.
+  + System:
+    - Don't show auto-timezone setting when Location services
+      unavailable.
+    - Avoid unnecessary time-change requests.
+    - Fix issue with sensitivity of &quot;Add&quot; and &quot;Enroll&quot; Enterprise
+      Login buttons.
+    - Improve generated passwords capacity in Remote Desktop
+      settings.
+  + Wacom: Check for the right output connector name.
+- Drop upstream merged
+  gnome-control-center-datetime-Avoid-emitting-the-time-changed-signal.patch. (forwarded request 1171283 from dimstar)</comment>
+    <requestid>1171395</requestid>
+  </revision>
 </revisionlist>

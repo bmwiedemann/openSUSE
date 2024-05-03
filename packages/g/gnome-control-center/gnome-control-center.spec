@@ -26,7 +26,7 @@
 %endif
 
 Name:           gnome-control-center
-Version:        46.0.1
+Version:        46.1
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
@@ -37,8 +37,6 @@ Source99:       %{name}-rpmlintrc
 
 # PATCH-FIX-OPENSUSE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running
 Patch1:         gnome-control-center-disable-error-message-for-NM.patch
-# PATCH-FIX-UPSTREAM gnome-control-center-datetime-Avoid-emitting-the-time-changed-signal.patch bsc#1222149 glgo#GNOME/gnome-control-center#2943 xwang@suse.com -- Avoid emitting the time-changed signal
-Patch2:         gnome-control-center-datetime-Avoid-emitting-the-time-changed-signal.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
@@ -197,7 +195,6 @@ GNOME control center.
 %prep
 %setup -q
 %patch -P 1 -p1
-%patch -P 2 -p1
 
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000
