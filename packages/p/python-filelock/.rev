@@ -187,4 +187,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1169267</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6e8cd6fbb38021146f09956fa59618a8</srcmd5>
+    <version>3.14.0</version>
+    <time>1714758254</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.14.0:
+  * feat: `blocking` parameter on lock constructor with tests and
+    docs</comment>
+    <requestid>1171540</requestid>
+  </revision>
 </revisionlist>

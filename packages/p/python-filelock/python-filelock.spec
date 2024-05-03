@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-filelock
-Version:        3.13.4
+Version:        3.14.0
 Release:        0
 Summary:        Platform Independent File Lock in Python
 License:        Unlicense

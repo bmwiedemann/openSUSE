@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  3 07:35:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.14.0:
+  * feat: `blocking` parameter on lock constructor with tests and
+    docs
+
+-------------------------------------------------------------------
 Fri Apr 12 17:03:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.13.4:
