@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  2 22:00:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.0:
+  * Added support for the Scientific Python version of OpenBLAS
+    which exposes symbols with different names than the ones
+    of the original OpenBLAS library.
+
+-------------------------------------------------------------------
 Tue Apr  2 18:54:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.4.0:

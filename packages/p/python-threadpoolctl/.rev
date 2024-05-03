@@ -116,4 +116,15 @@
     identify the supported libraries.</comment>
     <requestid>1164225</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9938ca751cfb5415496d560c10cd56d1</srcmd5>
+    <version>3.5.0</version>
+    <time>1714758245</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.5.0:
+  * Added support for the Scientific Python version of OpenBLAS
+    which exposes symbols with different names than the ones
+    of the original OpenBLAS library.</comment>
+    <requestid>1171456</requestid>
+  </revision>
 </revisionlist>

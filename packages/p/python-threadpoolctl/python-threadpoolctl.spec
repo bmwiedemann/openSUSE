@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-threadpoolctl
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        Thread-pool Controls
 License:        BSD-3-Clause
