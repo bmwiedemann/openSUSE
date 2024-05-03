@@ -1,7 +1,24 @@
 -------------------------------------------------------------------
+Fri Apr 19 12:59:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.52.1:
+  + Bug Fixes:
+    - Wrong weeks in Month view when returning from different page
+      of dates.
+    - Mail: Prefer saving original message instead of re-encode.
+    - EHeaderBar: Report correct minimum width.
+    - Subject line in message pane not bold anymore in Wide view.
+    - Crash when hiding completed tasks.
+    - EMailBrowser: Hide Print preview menu option.
+  + Miscellaneous:
+    - data: Fix circular-component-relation in .appdata file.
+  + Updated translations.
+- Drop boo1221868.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Thu Apr  4 14:20:03 UTC 2024 - M K <tux93@opensuse.org>
 
-- Add boo1221868.patch, fixing a crash when hiding competed tasks
+- Add boo1221868.patch, fixing a crash when hiding completed tasks
   (boo#1221868, glgo#GNOME/evolution#2712)
 
 -------------------------------------------------------------------

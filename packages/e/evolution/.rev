@@ -2556,4 +2556,13 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1166089</requestid>
   </revision>
+  <revision rev="277" vrev="1">
+    <srcmd5>24e71d84d42d70bfe4b25aed8e3c37a4</srcmd5>
+    <version>3.52.1</version>
+    <time>1714758232</time>
+    <user>anag+factory</user>
+    <comment>- Drop boo1221868.patch: fixed upstream.
+- Add boo1221868.patch, fixing a crash when hiding completed tasks (forwarded request 1171338 from dimstar)</comment>
+    <requestid>1171399</requestid>
+  </revision>
 </revisionlist>
