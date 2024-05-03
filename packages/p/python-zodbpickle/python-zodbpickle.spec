@@ -1,7 +1,7 @@
 #
 # spec file for package python-zodbpickle
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zodbpickle
-Version:        3.1
+Version:        3.3
 Release:        0
 Summary:        Fork of Python 3 pickle module
 License:        Python-2.0 AND ZPL-2.1
@@ -26,8 +26,10 @@ Group:          Development/Libraries/Python
 URL:            https://pypi.python.org/pypi/zodbpickle
 Source:         https://files.pythonhosted.org/packages/source/z/zodbpickle/zodbpickle-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -45,13 +47,13 @@ This package presents a uniform pickling interface for ZODB:
 
 %prep
 %setup -q -n zodbpickle-%{version}
-rm -rf src/zodbpickle.egg-info
+rm -rv src/zodbpickle.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand find %{buildroot}%{$python_sitearch} -name *.c -delete
   %fdupes %{buildroot}%{$python_sitearch}
 }
@@ -64,6 +66,7 @@ mv zodbpickle{,_hide}
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.rst README.rst
-%{python_sitearch}/*
+%{python_sitearch}/zodbpickle
+%{python_sitearch}/zodbpickle-%{version}.dist-info
 
 %changelog

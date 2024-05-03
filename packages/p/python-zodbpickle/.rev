@@ -120,4 +120,16 @@
 - Use python_module macro for BuildRequires on the testsuite module</comment>
     <requestid>1133585</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6e2a594408209b35d48c6bce44256838</srcmd5>
+    <version>3.3</version>
+    <time>1714758326</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.3:
+  * Build Windows wheels on GHA.
+  * Add preliminary support for Python 3.13 as of 3.13a5.
+  * Add preliminary support for Python 3.13 as of 3.13a3.
+- use PEP517 build</comment>
+    <requestid>1171455</requestid>
+  </revision>
 </revisionlist>

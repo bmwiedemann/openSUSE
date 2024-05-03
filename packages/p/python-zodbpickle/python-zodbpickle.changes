@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  2 21:59:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3:
+  * Build Windows wheels on GHA.
+  * Add preliminary support for Python 3.13 as of 3.13a5.
+  * Add preliminary support for Python 3.13 as of 3.13a3.
+- use PEP517 build
+
+-------------------------------------------------------------------
 Sat Dec 16 09:03:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1:
