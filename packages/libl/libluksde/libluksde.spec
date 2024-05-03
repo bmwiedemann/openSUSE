@@ -20,36 +20,36 @@
 
 %define lname	libluksde1
 Name:           libluksde
-Version:        20240114
+Version:        20240503
 Release:        0
 Summary:        Library and tools to access LUKS Disk Encryption encrypted files
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libluksde
-Source:         https://github.com/libyal/libluksde/releases/download/%version/libluksde-experimental-%version.tar.gz
-Source2:        https://github.com/libyal/libluksde/releases/download/%version/libluksde-experimental-%version.tar.gz.asc
+Source:         https://github.com/libyal/libluksde/releases/download/%version/%name-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libluksde/releases/download/%version/%name-experimental-%version.tar.gz.asc
 Source9:        %name.keyring
 BuildRequires:  %python_module devel
 BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcaes) >= 20231120
-BuildRequires:  pkgconfig(libcdata) >= 20240103
-BuildRequires:  pkgconfig(libcerror) >= 20240101
-BuildRequires:  pkgconfig(libcfile) >= 20240106
-BuildRequires:  pkgconfig(libclocale) >= 20240107
-BuildRequires:  pkgconfig(libcnotify) >= 20240108
-BuildRequires:  pkgconfig(libcpath) >= 20240109
-BuildRequires:  pkgconfig(libcsplit) >= 20240110
-BuildRequires:  pkgconfig(libcthreads) >= 20240102
-BuildRequires:  pkgconfig(libfcache) >= 20240112
-BuildRequires:  pkgconfig(libfcrypto) >= 20231120
-BuildRequires:  pkgconfig(libfdatetime) >= 20220112
-BuildRequires:  pkgconfig(libfguid) >= 20220113
-BuildRequires:  pkgconfig(libhmac) >= 20231127
-BuildRequires:  pkgconfig(libuna) >= 20230710
+BuildRequires:  pkgconfig(libbfio) >= 20240414
+BuildRequires:  pkgconfig(libcaes) >= 20240413
+BuildRequires:  pkgconfig(libcdata) >= 20240414
+BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libcfile) >= 20240414
+BuildRequires:  pkgconfig(libclocale) >= 20240414
+BuildRequires:  pkgconfig(libcnotify) >= 20240414
+BuildRequires:  pkgconfig(libcpath) >= 20240414
+BuildRequires:  pkgconfig(libcsplit) >= 20240414
+BuildRequires:  pkgconfig(libcthreads) >= 20240413
+BuildRequires:  pkgconfig(libfcache) >= 20240414
+BuildRequires:  pkgconfig(libfcrypto) >= 20240414
+BuildRequires:  pkgconfig(libfdatetime) >= 20240414
+BuildRequires:  pkgconfig(libfguid) >= 20240414
+BuildRequires:  pkgconfig(libhmac) >= 20240417
+BuildRequires:  pkgconfig(libuna) >= 20240414
 BuildRequires:  pkgconfig(python3)
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
@@ -105,10 +105,9 @@ grep ' '' ''local' config.log && exit 1
 
 %install
 mv %_builddir/rt/* %buildroot/
-find %buildroot -type f -name "*.la" -delete -print
+find "%buildroot" -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*
