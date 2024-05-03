@@ -656,4 +656,28 @@
   * Add `uk_UA` automotive provider</comment>
     <requestid>1160803</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>ff13de9a53145f2646d82791c87870fb</srcmd5>
+    <version>25.0.1</version>
+    <time>1714758253</time>
+    <user>anag+factory</user>
+    <comment>- update to 25.0.1:
+  * Add type stub file to `setup.py`.
+  * Include type stubs in release.
+  * Add job provider for `cs_CZ`.
+  * Add geo provider for `sk_SK`.
+  * Clean up data in `sk_SK` job provider.
+  * Remove offensive word from `pl_PL` lorem provider.
+  * Tune `cs_CZ` phone number validation.
+  * Update list of `first_name_*` and `last_name` in `pt_BR`
+    `PersonProvider`.
+  * Update `uk_UA` phone provider.
+  * Fix wrong pricetag format in `ru_RU` locale.
+  * Update last names for `de_DE` locale.
+  * Update phone number formats for `cs_CZ`, `sk_SK`.
+  * Update versions in `user_agent` provider.
+  * Add type hints stubs.
+  * Add address words for `cs_CZ`.</comment>
+    <requestid>1171536</requestid>
+  </revision>
 </revisionlist>
