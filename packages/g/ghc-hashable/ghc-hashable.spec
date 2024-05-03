@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hashable
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.4.3.0
+Version:        1.4.4.0
 Release:        0
 Summary:        A class for types that can be converted to a hash value
 License:        BSD-3-Clause
@@ -38,6 +38,8 @@ BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-filepath-prof
+BuildRequires:  ghc-os-string-devel
+BuildRequires:  ghc-os-string-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  3 13:35:27 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hashable to version 1.4.4.0 revision 1.
+  ## Version 1.4.4.0
+
+    * Depend on `os-string-2` for GHC-9.2+
+    * Support `filepath-1.5`
+
+-------------------------------------------------------------------
 Tue Oct  3 20:15:46 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update hashable to version 1.4.3.0 revision 1.
