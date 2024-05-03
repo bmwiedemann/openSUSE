@@ -2005,4 +2005,30 @@ New stable rel</comment>
   in or logging out (glgo#GNOME/mutter#3452 bsc#1222612). (forwarded request 1170534 from xiaoguang_wang)</comment>
     <requestid>1170716</requestid>
   </revision>
+  <revision rev="228" vrev="1">
+    <srcmd5>9b9f9b0fdb9aa8cedd387f270109a551</srcmd5>
+    <version>46.1</version>
+    <time>1714758208</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.1:
+  + Implement linux-drm-syncobj-v1.
+  + Fix input lag on X11 nvidia.
+  + Fix scanout on secondary GPUs.
+  + Don't apply max-render-time to secondary GPUs.
+  + Fix reusing single-pixel buffers.
+  + Improve scanout candidate check.
+  + Always use logical pixels for.
+  + Fix modifiers getting stuck during grabs.
+  + Fix night-light on displays without EDID.
+  + Fix secondary GPU acceleration with nvidia driver.
+  + Fix some XWayland clients being partially click-through.
+  + Fix initial suspended state.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Drop mutter-fix-front-buffer-lock.patch and
+  0001-Revert-clutter-stage-Avoid-queueing-stage-updates-wh.patch:
+  fixed upstream. (forwarded request 1171180 from dimstar)</comment>
+    <requestid>1171389</requestid>
+  </revision>
 </revisionlist>

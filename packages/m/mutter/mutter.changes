@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May  1 13:01:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.1:
+  + Implement linux-drm-syncobj-v1.
+  + Fix input lag on X11 nvidia.
+  + Fix scanout on secondary GPUs.
+  + Don't apply max-render-time to secondary GPUs.
+  + Fix reusing single-pixel buffers.
+  + Improve scanout candidate check.
+  + Always use logical pixels for.
+  + Fix modifiers getting stuck during grabs.
+  + Fix night-light on displays without EDID.
+  + Fix secondary GPU acceleration with nvidia driver.
+  + Fix some XWayland clients being partially click-through.
+  + Fix initial suspended state.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Drop mutter-fix-front-buffer-lock.patch and
+  0001-Revert-clutter-stage-Avoid-queueing-stage-updates-wh.patch:
+  fixed upstream.
+
+-------------------------------------------------------------------
 Sun Apr 28 01:22:43 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add 0001-Revert-clutter-stage-Avoid-queueing-stage-updates-wh.patch:
