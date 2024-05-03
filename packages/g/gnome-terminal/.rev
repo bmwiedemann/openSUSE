@@ -2475,4 +2475,14 @@
     <comment>GNOME 46 (forwarded request 1159253 from dimstar)</comment>
     <requestid>1159524</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>1c068f89c05f80df01428b252329852f</srcmd5>
+    <version>3.52.1</version>
+    <time>1714758239</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.52.1:
+  + schema: Fix light green color to match the GNOME palette.
+  + prefs: Follow the theme variant setting. (forwarded request 1171350 from dimstar)</comment>
+    <requestid>1171401</requestid>
+  </revision>
 </revisionlist>

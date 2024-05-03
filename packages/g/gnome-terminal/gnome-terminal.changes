@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  2 08:58:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.52.1:
+  + schema: Fix light green color to match the GNOME palette.
+  + prefs: Follow the theme variant setting.
+
+-------------------------------------------------------------------
 Tue Mar 19 07:51:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.52.0:
