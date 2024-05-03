@@ -181,4 +181,16 @@ packages. This library is fasted, easier to maintain and easier for a user to co
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1165853</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>91c88d56f7e98baade13a960c20e5475</srcmd5>
+    <version>1.3.2</version>
+    <time>1714758353</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.3.2:
+  * dependencies update
+- Update resolves security incidents. I believe this does not really affect
+  how obs-service-cargo behaves but for now, I just want to avoid the alerts.
+</comment>
+    <requestid>1171489</requestid>
+  </revision>
 </revisionlist>
