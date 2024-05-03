@@ -1,7 +1,7 @@
 #
 # spec file for package python-tcolorpy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tcolorpy
-Version:        0.1.4
+Version:        0.1.6
 Release:        0
 Summary:        Python library to apply true color for terminal text
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/thombashi/tcolorpy
 Source:         https://files.pythonhosted.org/packages/source/t/tcolorpy/tcolorpy-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -40,10 +42,10 @@ A Python library to apply true color for terminal text.
 sed -i -e '1{/^#!\/usr\/bin\/env python/d}' tcolorpy/__main__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
