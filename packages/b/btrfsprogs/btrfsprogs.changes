@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu May  2 00:00:00 CEST 2024 - dsterba@suse.cz
+
+- update to 6.8.1
+  * mkfs: fix writing on zoned device when block-group-tree is selected
+  * tune: fix writing on zoned device with option --convert-to-block-group-tree
+  * check:
+    * more progress and error messages
+    * unify handling of unknown command line options with other commands
+  * subvolume delete: remove options --delete-qgroup and --no-delete-qgroup
+    (added in 6.6.3), qgroup deletion does not always work due to delayed
+    background processing of subvolume or set value in
+    sysfs:ggroup/drop_subtree_threshold
+  * other:
+    * misc refactoring
+    * error handling fixes reported by gcc -fanalyzer
+    * documentation updates
+    * new and updated tests
+
+-------------------------------------------------------------------
 Tue Mar 26 23:39:29 UTC 2024 - David Disseldorp <ddiss@suse.com>
 
 - enable zstd support for 15.6 / SLE15-SP6 build targets (bsc#1221943)

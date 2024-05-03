@@ -1393,4 +1393,12 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment></comment>
     <requestid>1162883</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>1a4e7823b15ad4fab0564b84d06c58a4</srcmd5>
+    <version>6.8.1</version>
+    <time>1714758255</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.8.1 (forwarded request 1171355 from dsterba)</comment>
+    <requestid>1171356</requestid>
+  </revision>
 </revisionlist>
