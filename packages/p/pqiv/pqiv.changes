@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 24 07:27:12 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.13.1:
+  * Fix fullscreen toggle bug by @wsldankers in #190
+  * Use larger thumbnails from newer spec by @chrysn in #199
+  * Use Pango to render infobox text. by @buzzingwires in #221
+  * .desktop file: Run pqiv --browse by @chrysn in #204
+  * thumbnails: Tolerate absence of MTime and URI by @chrysn in #230
+  * Prefer x11 over Wayland GDK backend (it overall provides a better experience)
+  * Fix Client Side Decorations (CSD), e.g. in Wayland
+  * Fix race/crash upon exit (Fixes #227)
+
+-------------------------------------------------------------------
 Mon Dec  5 20:58:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.12:
