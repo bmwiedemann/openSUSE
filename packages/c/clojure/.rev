@@ -257,4 +257,14 @@
     were not matched during reflection and an error was thrown.</comment>
     <requestid>1170673</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3a39e90900c08c4356feff42a3d344cf</srcmd5>
+    <version>1.11.3.1463</version>
+    <time>1714758358</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.11.3.1463:
+  * update to latest tools.deps, tools.deps.cli, tools.build
+  * update list of :deps programs in help</comment>
+    <requestid>1171499</requestid>
+  </revision>
 </revisionlist>
