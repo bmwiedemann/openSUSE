@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May  2 07:41:59 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.17.3:
+  * wlr_scene: Schedule new frame for WLR_SCENE_DEBUG_DAMAGE_HIGHLIGHT in output commit handler
+  * render/vulkan: Fix clang compiler error in 32 bit ARM Android
+  * render/pixman: fix flipped transforms
+  * render/pixman: Fix source crop
+  * gles2: Avoid crash when glGetInteger64vEXT is missing
+  * xwayland: add a size-safe wrapper for xcb_send_event
+  * tablet_v2: destroy tablet seats on manager destroy
+  * scene: ensure layer surface usable area >0
+  * vulkan: perform sRGB-to-linear conversion correctly for premultiplied values
+  * util: fix non-linear behavior of wlr_box_closest_point()
+  * viewporter: fix "has buffer" check
+
+-------------------------------------------------------------------
 Tue Mar 19 22:53:05 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 0.17.2:
