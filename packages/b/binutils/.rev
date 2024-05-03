@@ -2258,4 +2258,14 @@ libQt5WebEngine on i586.  *knockonwood*
   symbol is local when no-relax (forwarded request 1148803 from Andreas_Schwab)</comment>
     <requestid>1148804</requestid>
   </revision>
+  <revision rev="170" vrev="3">
+    <srcmd5>45bd11448c1afb7fc6a5d5c50b61b9b9</srcmd5>
+    <version>2.42</version>
+    <time>1714758257</time>
+    <user>anag+factory</user>
+    <comment>Allow to disable profiling
+there were some variations in .gcda files
+that rarely could lead to variations in optimized finaly binaries (forwarded request 1171128 from bmwiedemann)</comment>
+    <requestid>1171312</requestid>
+  </revision>
 </revisionlist>

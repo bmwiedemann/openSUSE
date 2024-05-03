@@ -253,40 +253,40 @@ cp ld/ldgram.y ld/ldgram.y.orig
 
 # Patch is outside test_vanilla because it's supposed to be the
 # patch bringing the tarball to the newest upstream version
-%patch1 -p1
+%patch -P 1 -p1
 %if !%{test_vanilla}
-%patch3 -p1
-%patch4
-%patch5
-%patch6
-%patch8
-%patch9
-%patch10
-%patch12
-%patch14
-%patch15
-%patch22
-%patch34 -p1
-%patch36 -p1
+%patch -P 3 -p1
+%patch -P 4
+%patch -P 5
+%patch -P 6
+%patch -P 8
+%patch -P 9
+%patch -P 10
+%patch -P 12
+%patch -P 14
+%patch -P 15
+%patch -P 22
+%patch -P 34 -p1
+%patch -P 36 -p1
 %if %{suse_version} < 1550
-%patch37 -p1
+%patch -P 37 -p1
 %endif
-%patch38
-%patch39 -p1
-%patch40 -p1
-%patch41 -p1
+%patch -P 38
+%patch -P 39 -p1
+%patch -P 40 -p1
+%patch -P 41 -p1
 %if %{suse_version} < 1550
-%patch42 -p1
-%patch43 -p1
-%patch44 -p1
+%patch -P 42 -p1
+%patch -P 43 -p1
+%patch -P 44 -p1
 %endif
-%patch60 -p1
-%patch61 -p1
+%patch -P 60 -p1
+%patch -P 61 -p1
 %if "%{TARGET}" == "avr"
 cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
-%patch90
-%patch92
-%patch93 -p1
+%patch -P 90
+%patch -P 92
+%patch -P 93 -p1
 %endif
 #
 # test_vanilla
@@ -380,7 +380,7 @@ cd build-dir
 %endif
 	--enable-shared \
 %if %{suse_version} > 1500
-%if %{with bootstrap}
+%if %{with bootstrap} && 0%{?do_profiling}
 	--enable-pgo-build=lto \
 %endif
 	--enable-colored-disassembly \
