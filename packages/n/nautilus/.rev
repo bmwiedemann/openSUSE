@@ -1620,4 +1620,22 @@ Hence, recommended to be added to 12.3</comment>
     <comment>GNOME 46 (forwarded request 1159028 from dimstar)</comment>
     <requestid>1159514</requestid>
   </revision>
+  <revision rev="214" vrev="1">
+    <srcmd5>69c2e91b528b87a021ab91c6897416bb</srcmd5>
+    <version>46.1</version>
+    <time>1714758204</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.1:
+  + Bugfixes:
+    - Create archive with Enter on Compress dialog.
+    - Move focus correctly when item is removed.
+    - View performance optimization.
+    - Fix crash when compressing a file and a folder.
+    - Don't show banners in global search.
+    - Preserve permissions when copying from read-only file
+      systems.
+    - Disable non-working global search from Other Locations.
+  + Updated translations. (forwarded request 1171124 from dimstar)</comment>
+    <requestid>1171387</requestid>
+  </revision>
 </revisionlist>
