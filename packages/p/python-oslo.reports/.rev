@@ -199,4 +199,23 @@
   - Fix formatting of release list</comment>
     <requestid>1138713</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d118a762b853258c5625ef6d14daef39</srcmd5>
+    <version>3.3.0</version>
+    <time>1714758333</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.3.0
+  - Update python classifier in setup.cfg
+  - GMR: Allow disabling signal handler
+  - Remove logic for python 2 support
+  - Bump hacking
+  - Update coverage commands
+  - pre-commit: Integrate bandit
+  - pre-commit: Bump versions
+  - Add missing direct imports
+  - Bump bandit
+  - Update master for stable/2023.2
+  - Make greenlet optional</comment>
+    <requestid>1171467</requestid>
+  </revision>
 </revisionlist>

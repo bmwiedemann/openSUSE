@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May  2 22:12:15 UTC 2024 - cloud-devel@suse.de
+
+- update to version 3.3.0
+  - Update python classifier in setup.cfg
+  - GMR: Allow disabling signal handler
+  - Remove logic for python 2 support
+  - Bump hacking
+  - Update coverage commands
+  - pre-commit: Integrate bandit
+  - pre-commit: Bump versions
+  - Add missing direct imports
+  - Bump bandit
+  - Update master for stable/2023.2
+  - Make greenlet optional
+
+-------------------------------------------------------------------
 Fri Dec  1 16:32:20 UTC 2023 - cloud-devel@suse.de
 
 - update to version 3.1.0
