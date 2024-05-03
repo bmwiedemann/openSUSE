@@ -842,4 +842,19 @@ all changed Requires/Buildrequires seem to be available
   - Update master for stable/2023.1</comment>
     <requestid>1130299</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>8a0f703f9aa8056885b60320fe0cd082</srcmd5>
+    <version>9.4.0</version>
+    <time>1714758335</time>
+    <user>anag+factory</user>
+    <comment>- update to version 9.4.0
+  - reno: Update master for unmaintained/yoga
+  - Update master for stable/2023.2
+  - Remove compatibility with Python &lt; 3.8
+  - Bump hacking
+  - Update python classifier in setup.cfg
+  - Add choices parameter for IntOpt class
+  - Bump hacking (again)</comment>
+    <requestid>1171470</requestid>
+  </revision>
 </revisionlist>

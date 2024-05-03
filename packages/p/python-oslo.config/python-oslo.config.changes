@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May  2 22:15:02 UTC 2024 - cloud-devel@suse.de
+
+- update to version 9.4.0
+  - reno: Update master for unmaintained/yoga
+  - Update master for stable/2023.2
+  - Remove compatibility with Python < 3.8
+  - Bump hacking
+  - Update python classifier in setup.cfg
+  - Add choices parameter for IntOpt class
+  - Bump hacking (again)
+
+-------------------------------------------------------------------
 Fri Dec  1 16:25:52 UTC 2023 - cloud-devel@suse.de
 
 - update to version 9.2.0
