@@ -19,7 +19,7 @@
 %define base_name  io
 %define short_name commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        2.15.1
+Version:        2.16.1
 Release:        0
 Summary:        Utilities to assist with developing IO functionality
 License:        Apache-2.0

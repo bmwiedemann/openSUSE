@@ -1,4 +1,175 @@
 -------------------------------------------------------------------
+Mon Apr 29 13:12:59 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to 2.16.1
+  * Fixes:
+    + Reimplement FileSystemUtils using NIO.
+    + FileSystemUtils no longer throws IllegalStateException. Fixes
+      IO-851.
+    + Avoid possible NullPointerException in
+      FileUtils.listAccumulate(File, IOFileFilter, IOFileFilter,
+      FileVisitOption...).
+    + BoundedInputStream.reset() not updating count. Fixes IO-853.
+    + ThresholdingOutputStream: a negative threshold should behave
+      like a zero threshold and trigger the event on the first
+      write #609. Fixes IO-854.
+  * Updates:
+    + Bump commons.bytebuddy.version from 1.14.12 to 1.14.13 #605. 
+    + Bump org.apache.commons:commons-parent from 67 to 69 #608. 
+- Update apache-commons-io-build.xml for new version
+- Includes changes from 2.16.0
+  * Fixes:
+    + Fix and re-enable testSkip_RequiredCharsets #518.
+    + SymbolicLineFileFilter documentation fixes. Fixes IO-824.
+    + CharSequenceInputStream.reset() only works once #520. Fixes
+      IO-795.
+    + Finish TODO on CharSequenceInputStream #540. Fixes IO-795.
+    + Add byte array size validation for methods in EndianUtils
+      #521. Fixes IO-825.
+    + Add missing test case CircularByteBufferTest. Fixes IO-825.
+    + Make CharSequenceInputStream.available() more correct in the
+      face of multibyte encodings #525. Fixes IO-781.
+    + Remove unreachable code in AbstractIOFileFilterTest #526.
+      Fixes IO-781.
+    + Rationalize and unify checking for existence of files and
+      directories #529. Fixes IO-808.
+    + Avoid NullPointerException in IOCase.checkEquals(String,
+      String) on null input.
+    + Avoid NullPointerException in
+      CanExecuteFileFilter.accept(File) on null input.
+    + Avoid NullPointerException in
+      CanExecuteFileFilter.accept(Path, BasicFileAttributes) on
+      null input.
+    + Avoid NullPointerException in CanReadFileFilter.accept(File)
+      on null input.
+    + Avoid NullPointerException in CanReadFileFilter.accept(Path,
+      BasicFileAttributes) on null input.
+    + Avoid NullPointerException in CanWriteFileFilter.accept(File)
+      on null input.
+    + Avoid NullPointerException in CanWriteFileFilter.accept(Path,
+      BasicFileAttributes) on null input.
+    + Avoid NullPointerException in
+      DirectoryFileFilter.accept(File) on null input.
+    + Avoid NullPointerException in
+      DirectoryFileFilter.accept(Path, BasicFileAttributes) on null
+      input.
+    + Avoid NullPointerException in EmptyFileFilter.accept(File) on
+      null input.
+    + Avoid NullPointerException in EmptyFileFilter.accept(Path,
+      BasicFileAttributes) on null input.
+    + Avoid NullPointerException in FileFileFilter.accept(File) on
+      null input.
+    + Avoid NullPointerException in FileFileFilter.accept(Path,
+      BasicFileAttributes) on null input.
+    + Avoid NullPointerException in HiddenFileFilter.accept(File)
+      on null input.
+    + Avoid NullPointerException in HiddenFileFilter.accept(Path,
+      BasicFileAttributes) on null input.
+    + Avoid NullPointerException in IOCase.checkIndexOf(String,
+      int, String) on null input.
+    + Avoid NullPointerException in
+      IOCase.checkRegionMatches(String, int, String) on null input.
+    + BoundedInputStream.getCount() should not count EOF.
+    + Modernize temporary file creation and deletion in
+      DeferredFileOutputStreamTest #535.
+    + Add PathMatcher to IOFileFilter class Javadoc #536.
+    + Fix CharSequenceInputStream coding exception handling #537.
+      Fixes IO-781.
+    + Deprecate int CountingInputStream#getCount() in favor of long
+      CountingInputStream#getByteCount(). Fixes IO-781.
+    + Deprecate CountingInputStream.resetCount() in favor of
+      resetByteCount(). Fixes IO-828.
+    + Deprecate CountingInputStream.getMaxLength() in favor of
+      getMaxCount()). Fixes IO-828.
+    + NullInputStream breaks InputStream's read method contract.
+      Fixes IO-818.
+    + Javadoc shouldn't reference 1.x behavior #539.
+    + Don't decode and reencode characters in a potentially
+      different charset in
+      AbstractOrigin.CharSequenceOrigin.getReader(Charset). Fixes
+      IO-829.
+    + Let subclasses of CountingInputStream.afterRead(int) throw
+      IOException.
+    + Characterization test for broken symlinks when copying
+      directories #547. Fixes IO-807.
+    + ClosedInputStream.read(byte[], int, int) does not always
+      return -1.
+    + ClosedOutputStream.write(byte[], int, int) does not always
+      throw IOException.
+    + XmlStreamReader can't parse an XML document with a multi-line
+      prolog #550.
+    + XmlStreamReader can't parse XML an document with an external
+      parsed entity prolog.
+    + Update FileNameUtils Javadoc #554. Fixes IO-836.
+    + Copy symlinks, not the files the symlinks point to #558.
+      Fixes IO-807.
+    + Pickup apache-rat-plugin version from parent POM.
+    + Add test for copying a symlink
+      FileUtilsTest#testCopyFile_symLink() #564.
+    + Make copyFile copy symbolic links by value rather than
+      reference #565.
+    + Deprecate CopyUtils 0-argument constructor.
+    + Deprecate EndianUtils 0-argument constructor. Fixes IO-843.
+    + Deprecate FileSystemUtils 0-argument constructor.
+    + Deprecate FilenameUtils 0-argument constructor.
+    + Deprecate RandomAccessFiles 0-argument constructor.
+    + Clarify and correct EndianUtils and SwappedDataInputStream
+      API doc #566.
+    + Add characterization test for copying a symlinked directory
+      #570.
+    + RandomAccessFileInputStream.builder().get() now throws ISE
+      instead of NPE.
+    + Test links to targets outside the source directory #571.
+      Fixes IO-845.
+    + Focus Javadoc on current version rather than past versions
+      #573, #574.
+    + "Self-suppression not permitted" while using BrokenOutput and
+      BrokenInput streams with try-with-resources. Fixes IO-469.
+    + Handle zero and negative thresholds #587. Fixes IO-405.
+    + Deprecate CountingInputStream in favor of BoundedInputStream.
+    + PathUtils.setPosixPermissions(...) only sets permissions if
+      needed.
+    + PathUtils.setReadOnly(...) only sets permissions if needed.
+    + PathUtils.deleteFile(..., DeleteOption...) only sets
+      permissions if needed.
+    + CleaningPathVisitor only sets permissions if needed.
+    + DeletingPathVisitor only sets permissions if needed.
+  * New features:
+    + Add and use PathUtils.getFileName(Path, Function<Path, R>).
+    + Add and use PathUtils.getFileNameString().
+    + Make public Erase.rethrow(Throwable).
+    + Add BrokenInputStream.BrokenInputStream(Throwable). Fixes
+      IO-826.
+    + Add BrokenReader.BrokenReader(Throwable). Fixes IO-826.
+    + Add BrokenOutputStream.BrokenOutputStream(Throwable). Fixes
+      IO-826.
+    + Add BrokenWriter.BrokenWriter(Throwable). Fixes IO-826.
+    + Add BoundedInputStream.getRemaining().
+    + Add FileTimes.toNtfsTime(long).
+    + Add FileTimes.fromUnixTime(long).
+    + Add FileTimes.isUnixTime(FileTime).
+    + Add FileTimes.isUnixTime(long).
+    + Add FileTimes.toUnixTime(FileTime).
+    + Add BrokenInputStream.Builder.
+    + Add PathUtils.getExtension(Path).
+    + Add PathUtils.getBaseName(Path).
+    + Add ThrottledInputStream.
+    + Add IORunnable.noop().
+    + Add ChecksumInputStream and test #548.
+    + Add AbstractStreamBuilder.getReader().
+    + Add Maven property project.build.outputTimestamp for build
+      reproducibility.
+    + Add ProxyInputStream.unwrap().
+    + Add a running count and builder to BoundedInputStream.
+  * Updates:
+    + Bump commons.bytebuddy.version from 1.14.10 to 1.14.12 #534,
+      #592.
+    + Bump org.apache.commons:commons-parent from 65 to 67.
+    + Bump commons-codec:commons-codec from 1.16.0 to 1.16.1 #583.
+    + Bump org.codehaus.mojo:exec-maven-plugin from 3.1.1 to 3.2.0
+      #593.
+
+-------------------------------------------------------------------
 Mon Feb 19 14:58:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 2.15.1
