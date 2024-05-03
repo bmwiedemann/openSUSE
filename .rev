@@ -1144,4 +1144,18 @@ New stable release</comment>
     <comment>GNOME 46 (forwarded request 1158299 from dimstar)</comment>
     <requestid>1159465</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>2ed623b59a1d60651cd50ea9b01e5047</srcmd5>
+    <version>46.1</version>
+    <time>1714758212</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.1:
+  + Fix a crash when updating apps when built with Mogwai.
+  + Fix a crash when installing flatpak application.
+  + Correct desktop/mobile hardware support detection.
+  + Correct state of Fedora upgrade.
+  + Several fixes in historical updates for rpm-ostree.
+  + Updated translations. (forwarded request 1171254 from dimstar)</comment>
+    <requestid>1171392</requestid>
+  </revision>
 </revisionlist>

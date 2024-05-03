@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May  2 07:51:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.1:
+  + Fix a crash when updating apps when built with Mogwai.
+  + Fix a crash when installing flatpak application.
+  + Correct desktop/mobile hardware support detection.
+  + Correct state of Fedora upgrade.
+  + Several fixes in historical updates for rpm-ostree.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 15 20:58:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:
