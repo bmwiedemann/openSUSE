@@ -313,4 +313,22 @@
   - Add Python3 antelope unit tests</comment>
     <requestid>1130303</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4c4790c533daa94f354e3481b6588521</srcmd5>
+    <version>5.4.0</version>
+    <time>1714758332</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.4.0
+  - Update master for stable/2023.2
+  - bandit: Disable B411
+  - reno: Update master for unmaintained/yoga
+  - pre-commit: Bump versions
+  - pre-commit: Integrate bandit
+  - Update python classifier in setup.cfg
+  - Display coverage report
+  - Require pytz only in Python &lt; 3.9
+  - Bump bandit
+  - jsonutils: Raise ValueError in case the input can't be converted</comment>
+    <requestid>1171466</requestid>
+  </revision>
 </revisionlist>
