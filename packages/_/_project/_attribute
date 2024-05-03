@@ -66,6 +66,7 @@
   gh#os-autoinst/os-autoinst-distri-opensuse#18688: '20240218'
   gh#os-autoinst/os-autoinst-distri-opensuse#18910: '20240402'
   gh#os-autoinst/os-autoinst-distri-opensuse#19023: '20240411'
+  gh#yast/yast-bootloader#701: '20240502'
   poo#105271: '20240502'
   poo#120459: '20240110'
   poo#132191: '20240116'
@@ -570,9 +571,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20240502'
-published: '20240430'
-publishing: '20240430'
+    <value>failed: ''
+published: '20240502'
+publishing: '20240502'
 testing: '20240502'
 </value>
   </attribute>
