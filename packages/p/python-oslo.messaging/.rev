@@ -597,4 +597,31 @@
   - test py311 job</comment>
     <requestid>1136729</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>15551bfd43ff4ddea7112099af9f478a</srcmd5>
+    <version>14.7.0</version>
+    <time>1714758334</time>
+    <user>anag+factory</user>
+    <comment>- update to version 14.7.0
+  - Display the reply queue's name in timeout logs
+  - Drop unused function from scenario test script
+  - Remove scenario 03/04 tests from CI
+  - Utilize the new RequestContext redacted_copy method
+  - Display coverage report
+  - Auto-delete the failed quorum rabbit queues
+  - Remove translation sections from setup.cfg
+  - Update python classifier in setup.cfg
+  - Add QManager to amqp driver
+  - Bump hacking (again)
+  - Add an option to use rabbitmq stream for fanout queues
+  - Update the python search path for extra qdrouter modules
+  - cleanup amqp1 scenarios remnants setups
+  - Fix clearing of the fake RPC Exchange
+  - reno: Update master for unmaintained/yoga
+  - Bump bandit
+  - Allow creating transient queues with no expire
+  - Bump hacking
+  - Enable use of quorum queues for transient messages</comment>
+    <requestid>1171468</requestid>
+  </revision>
 </revisionlist>
