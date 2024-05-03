@@ -1050,4 +1050,16 @@ new request.</comment>
   - Add all new APIs and constants in libvirt 10.1.0</comment>
     <requestid>1155383</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>5bd0bf9ab20fba007b6ab06bfd8bee7f</srcmd5>
+    <version>10.2.0</version>
+    <time>1714758341</time>
+    <user>anag+factory</user>
+    <comment>Updated perl bindings for libvirt 10.3.0. No new APIs were added
+in the libvirt 10.3.0 dev cycle, so no 10.3.0 release of the perl bindings.
+
+- Update to 10.2.0
+  - Add all new APIs and constants in libvirt 10.2.0</comment>
+    <requestid>1171481</requestid>
+  </revision>
 </revisionlist>
