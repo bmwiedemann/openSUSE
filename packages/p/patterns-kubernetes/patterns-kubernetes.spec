@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-kubernetes
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,6 @@ Requires:       kubernetes-kubeadm-criconfig
 Requires:       kubernetes-kubelet
 Requires:       kured-k8s-yaml
 Requires:       lvm2
-Requires:       metallb-k8s-yaml
 Requires:       nfs-client
 Requires:       nfs-client-provisioner-k8s-yaml
 # ExclusiveArch in the rook package

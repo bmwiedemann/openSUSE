@@ -15,4 +15,12 @@
     <comment>- Remove kube-prometheus-k8s-yaml, outdated</comment>
     <requestid>1074896</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8f94c08f351cb7bdbaf76705471c6d48</srcmd5>
+    <version>5.1</version>
+    <time>1714758376</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1171546</requestid>
+  </revision>
 </revisionlist>

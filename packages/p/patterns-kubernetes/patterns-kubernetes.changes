@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  3 07:51:17 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove metallb-k8s-yaml, outdated
+
+-------------------------------------------------------------------
 Tue Mar 28 07:30:08 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove kube-prometheus-k8s-yaml, outdated
