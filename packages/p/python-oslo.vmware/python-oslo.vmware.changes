@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  2 22:10:30 UTC 2024 - cloud-devel@suse.de
+
+- update to version 4.4.0
+  - reno: Update master for unmaintained/yoga
+  - Update python classifier in setup.cfg
+
+-------------------------------------------------------------------
 Thu Jan  4 09:08:45 UTC 2024 - cloud-devel@suse.de
 
 - update to version 4.3.0

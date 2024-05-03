@@ -425,4 +425,14 @@
   - Bump bandit and make oslo.messaging compatible with latest rules</comment>
     <requestid>1136725</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>87c8f4cc41741798cb3e9361d9eb615b</srcmd5>
+    <version>4.4.0</version>
+    <time>1714758330</time>
+    <user>anag+factory</user>
+    <comment>- update to version 4.4.0
+  - reno: Update master for unmaintained/yoga
+  - Update python classifier in setup.cfg</comment>
+    <requestid>1171464</requestid>
+  </revision>
 </revisionlist>
