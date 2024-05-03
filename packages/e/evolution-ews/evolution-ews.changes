@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 19 13:01:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.52.1:
+  + Miscellaneous:
+    - Do not include buildir in libecalbackendews.so.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 15 07:16:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.52.0:

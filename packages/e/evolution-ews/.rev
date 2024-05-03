@@ -1220,4 +1220,16 @@
     <comment>GNOME 46 (forwarded request 1158147 from dimstar)</comment>
     <requestid>1159460</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>f46b13059fb6d1704c204c2da8d38aad</srcmd5>
+    <version>3.52.1</version>
+    <time>1714758251</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.52.1:
+  + Miscellaneous:
+    - Do not include buildir in libecalbackendews.so.
+  + Updated translations.
+</comment>
+    <requestid>1171493</requestid>
+  </revision>
 </revisionlist>
