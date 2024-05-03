@@ -263,4 +263,16 @@
   * refactor: move check var around cfe3529</comment>
     <requestid>1171335</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1aa1878347287a159e59e7fcd2d6bae5</srcmd5>
+    <version>0.21.3+0</version>
+    <time>1714758361</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.21.3:
+  * feat: make pattern more permissive #1087
+  * refactor: further simplify test case 8188473
+  * refactor: make rewrite test simplier 5a754ef
+  * test: add test for contextual pattern defined var 2d6bae8</comment>
+    <requestid>1171500</requestid>
+  </revision>
 </revisionlist>
