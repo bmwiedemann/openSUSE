@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-grappelli
-Version:        3.0.8
+Version:        4.0.1
 Release:        0
 Summary:        A skin for the Django Admin-Interface
 License:        BSD-2-Clause AND LGPL-2.1-or-later

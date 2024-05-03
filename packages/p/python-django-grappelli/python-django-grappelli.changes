@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May  3 07:35:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.1:
+  * Compatibility with Django 5.x
+  * Adjusted checkbox (and related radio) styles.
+  * Added block submit-row to allow extending the submit line.
+  * Removed length_is template filter in favour of length.
+  * Fixed: breadcrumbs block.
+  * Fixed: logout link (POST instead of GET).
+  * Fixed: First non-checkbox column in changelist aligned
+    center.
+  * Fixed: Delete a warning with Python 3.12.
+  * Fixed: Translation string of Cancel button with Form.
+  * Fixed: Trigger change event in dismissRelatedLookupPopup.
+
+-------------------------------------------------------------------
 Wed Mar 13 14:02:05 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file
