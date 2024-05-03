@@ -256,4 +256,13 @@
   * Added Italian translation #186</comment>
     <requestid>1164487</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>59b807fc82fc2ecb6345f18a7af2b00d</srcmd5>
+    <version>1.12.7</version>
+    <time>1714758356</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.12.7:
+  * Get ready for Hyprland socket files moved to $XDG_RUNTIME_DIR/hypr</comment>
+    <requestid>1171496</requestid>
+  </revision>
 </revisionlist>
