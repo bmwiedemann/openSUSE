@@ -281,4 +281,37 @@
   * purge_cache test - was chasing a different bug</comment>
     <requestid>1165873</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>536ff71f98162fa15a9b78c164774845</srcmd5>
+    <version>2.19.4</version>
+    <time>1714758367</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.19.4:
+  * HTTPError can show up when you plan with the URL value
+  * #186 - explain how to maps arguments
+  * #188 - url now uses strings - as it should!
+  * #190 - remove Python 3.5 support because of f-string
+  * Add version 3.0 code and pinning info to README
+  * more api endpoints
+  * now that AI methods are in library - no need for
+    CLOUDFLARE_API_EXTRAS code more api endpoints
+  * remove f-string for Python &lt;3.6 compatibility
+  * added documentation urls, etc for pypi
+  * finally removed the VOID calls, added /ai/run endpoints
+  * still testing docs
+  * start of longstanding need for documentation, update of
+    copyright string
+  * moved all requests
+    code/exceptions into network where it belongs, import
+    cleanup, exception handling cleanup
+  * handle python &lt; 3.10 to get utc time correctly
+  * document cli4 having --header flag
+  * cli4 has --header flag, plus http_headers needed some
+    more syntax checking
+  * added Python 3.5 note
+  * remove excessive import
+  * improved date/time rfc/iso
+    code, lint fixes</comment>
+    <requestid>1171537</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri May  3 07:31:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19.4:
+  * HTTPError can show up when you plan with the URL value
+  * #186 - explain how to maps arguments
+  * #188 - url now uses strings - as it should!
+  * #190 - remove Python 3.5 support because of f-string
+  * Add version 3.0 code and pinning info to README
+  * more api endpoints
+  * now that AI methods are in library - no need for
+    CLOUDFLARE_API_EXTRAS code more api endpoints
+  * remove f-string for Python <3.6 compatibility
+  * added documentation urls, etc for pypi
+  * finally removed the VOID calls, added /ai/run endpoints
+  * still testing docs
+  * start of longstanding need for documentation, update of
+    copyright string
+  * moved all requests
+    code/exceptions into network where it belongs, import
+    cleanup, exception handling cleanup
+  * handle python < 3.10 to get utc time correctly
+  * document cli4 having --header flag
+  * cli4 has --header flag, plus http_headers needed some
+    more syntax checking
+  * added Python 3.5 note
+  * remove excessive import
+  * improved date/time rfc/iso
+    code, lint fixes
+
+-------------------------------------------------------------------
 Sat Apr  6 19:26:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.19.2:
