@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri May  3 00:35:37 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 7.0.2:
+  * regression where subscribing to or unsubscribing from an issue in a
+    repository with no code produced an internal server error.
+  * regression makes all the refs sent in Gitea webhooks to be full refs and
+    might break Woodpecker CI pipelines triggered on tag (CI_COMMIT_TAG
+    contained the full ref). This issue has been fixed in the main branch of
+    Woodpecker CI as well.
+  *  the webhook branch filter wrongly applied the match on the full ref for
+     branch creation and deletion (wrongly skipping events).
+  * toggling the WIP state of a pull request is possible from the sidebar,
+    but not from the footer.
+  * when mentioning a user, the markup post-processor does not handle the case
+    where the mentioned user does not exist: it tries to skip to the next node,
+    which in turn, ended up skipping the rest of the line.
+  * excessive and unnecessary database queries when a user with no repositories
+    is viewing their dashboard.
+  * duplicate status check contexts show in the branch protection settings.
+  * profile info fails to render german singular translation.
+  * inline attachments of incoming emails (as they occur for example with Apple
+    Mail) are not attached to comments.
+
+-------------------------------------------------------------------
 Sat Apr 27 14:53:09 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to 7.0.1:
