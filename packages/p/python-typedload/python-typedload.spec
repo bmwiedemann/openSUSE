@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-typedload
-Version:        2.27
+Version:        2.28
 Release:        0
 Summary:        Load and dump data from json-like format into typed data structures
 License:        GPL-3.0-only
@@ -31,7 +31,9 @@ Source1:        https://github.com/ltworf/typedload/releases/download/%{version}
 Source2:        python-typedload.keyring
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module base >= 3.5}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -44,10 +46,10 @@ Load and dump data from json-like format into typed data structures
 %setup -q -n typedload
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

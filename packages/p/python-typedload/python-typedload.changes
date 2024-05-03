@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  2 22:03:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.28:
+  * Add support for uuid.UUID
+
+-------------------------------------------------------------------
 Sun Jan 21 11:12:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.27:
