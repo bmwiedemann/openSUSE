@@ -1373,4 +1373,14 @@ New stable release</comment>
     <comment>- Properly tag patches as PATCH-FIX-SLE. (forwarded request 1164605 from dimstar)</comment>
     <requestid>1164964</requestid>
   </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>c8e2db1d60512ad42bc46762ef313991</srcmd5>
+    <version>46.1</version>
+    <time>1714758230</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.1:
+  + Metadata: Fix bugtracker URL.
+  + Updated translations. (forwarded request 1171296 from dimstar)</comment>
+    <requestid>1171398</requestid>
+  </revision>
 </revisionlist>
