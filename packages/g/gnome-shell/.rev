@@ -2279,4 +2279,20 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   %python3_fix_shebang macro, [bsc#1212476] (forwarded request 1170762 from pgajdos)</comment>
     <requestid>1170824</requestid>
   </revision>
+  <revision rev="254" vrev="1">
+    <srcmd5>54802508129d3cd14a6b57dfc962ae04</srcmd5>
+    <version>46.1</version>
+    <time>1714758214</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.1:
+  + Improve notification of conflicting session.
+  + Add shift level to Korean OSK layout.
+  + Fix markup support in notifications.
+  + extensions-app: Fix empty rows with '&amp;' in extension name.
+  + extensions-app: Improve HIG compliance.
+  + Omit expand buttons in notification banners.
+  + Misc. bug fixes and cleanups.
+  + Updated translations. (forwarded request 1171275 from dimstar)</comment>
+    <requestid>1171393</requestid>
+  </revision>
 </revisionlist>
