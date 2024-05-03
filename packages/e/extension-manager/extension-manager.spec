@@ -15,25 +15,26 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define         appname com.mattjakeman.ExtensionManager
 Name:           extension-manager
-Version:        0.4.3
+Version:        0.5.1
 Release:        0
 Summary:        A utility for browsing and installing GNOME Shell Extensions
 License:        GPL-3.0-only
 URL:            https://github.com/mjakeman/extension-manager
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  meson
-BuildRequires:  gcc-c++
 BuildRequires:  desktop-file-utils
+BuildRequires:  gcc-c++
 BuildRequires:  libbacktrace-devel
-BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  meson
+BuildRequires:  pkgconfig(blueprint-compiler)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(text-engine-0.1)
-BuildRequires:  pkgconfig(blueprint-compiler)
 
 %description
 A native tool for browsing, installing, and managing GNOME Shell Extensions.

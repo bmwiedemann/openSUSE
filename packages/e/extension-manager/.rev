@@ -7,4 +7,21 @@
     <comment></comment>
     <requestid>1149708</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>df1268ba8a6f06fe10fcbe1f22248079</srcmd5>
+    <version>0.5.1</version>
+    <time>1714758364</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.1:
+  * Add null checks for version parsing
+  * backtrace: Collate 'null' messages
+  * Use AdwPreferences* widgets
+  * Fix crash on close while loading
+- update to 0.5.0:
+  * New widgets, better resizing, cleaner look
+  * Compatibility with GNOME 46
+  * Display extension icons and statistics
+  * Search is more reliable</comment>
+    <requestid>1171541</requestid>
+  </revision>
 </revisionlist>

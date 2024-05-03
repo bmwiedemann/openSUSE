@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May  2 07:53:20 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 0.5.1:
+  * Add null checks for version parsing
+  * backtrace: Collate 'null' messages
+  * Use AdwPreferences* widgets
+  * Fix crash on close while loading
+
+- update to 0.5.0:
+  * New widgets, better resizing, cleaner look
+  * Compatibility with GNOME 46
+  * Display extension icons and statistics
+  * Search is more reliable
+
+-------------------------------------------------------------------
 Fri Feb 23 08:10:59 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - fix spec for Factory
