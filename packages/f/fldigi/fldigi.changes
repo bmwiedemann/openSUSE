@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed May  1 22:36:54 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to 4.2.05:
+  * Documentation Update
+    + Script command RSID BW_MIN.
+    + Script command C-Media PTT.
+    + Html generated page formatting issues related to escape
+      sequence characters in source.
+    + Document Source code formatting issues related to end of
+      line/return characters   (blasted text editor differences).
+  * RSID Scripting
+    + Add RSID minimum bandwidth script command.
+    + Add missing top level script list of commands.
+    + Comment out machine specific generated script file commands.
+    + Filter values to their modulus "step" values.
+  * Main X-Y-W-H restore: allow negative X, Y value
+  * pi-winkeyer: repair broken winkeyer serial i/o on Pi computers
+  * Add code to force default language to be English
+  * RSID Min Bandwidth
+    + add user adjustable bandwidth for minimum RsID detection
+      range.
+    + display RsID detection zone on waterfall (dashed lines) when
+      RsID is both ON and limited to a specific bandwidth range
+  * OFDM documentation
+    + Update, remove unsupported OFDM modes
+  * remove all instances of ° from strings literals
+  * DominoEX MFSK Thor s/n
+    + s/n & fec reports are erroneous when macro used to fill
+      in those values during subsequent transmit.
+      . change to provide last Rx max s/n & min error report
+      . values displayed in Status fields will time out and clear
+        in 15 seconds.
+  * gpio ptt: increase OS wait time before sending bit values
+  * fsq mod: reinstate squelch countdown
+  * Add CW send using Wordsworth timing
+  * RsID
+    + add LOG_INFO statement to notifier dialog call
+  * Add user adjustable menu font and font size
+  * Update po files
+  * Scope colors
+    + add user defined colors for all instances of scope view
+    + update fl files generation to fluid 1.3.9
+-------------------------------------------------------------------
 Wed Jan 17 20:30:22 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to 4.2.04:
