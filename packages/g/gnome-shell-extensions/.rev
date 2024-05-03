@@ -2358,4 +2358,14 @@
     <comment>GNOME 46</comment>
     <requestid>1159760</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>37eb7653c1483786bd8a08e3069ae102</srcmd5>
+    <version>46.1</version>
+    <time>1714758217</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.1:
+  + screenshot-window-sizer: Add flathub-recommended size.
+  + Updated translations. (forwarded request 1171276 from dimstar)</comment>
+    <requestid>1171394</requestid>
+  </revision>
 </revisionlist>
