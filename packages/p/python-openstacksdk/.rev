@@ -562,4 +562,41 @@
   - Fix Swift endpoint conversion to determine info/caps url</comment>
     <requestid>1138715</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>71ffd3d1e2cd18e9a4baa752d03cb354</srcmd5>
+    <version>3.1.0</version>
+    <time>1714758335</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.1.0
+  - Implemented heat 'stack suspend' and 'stack resume' function
+  - Fix: Update/Delete type encryption operation
+  - config: Add missing space to warning
+  - mypy: Address issues with openstack.orchestration
+  - Remove unnecessary `keys` calls
+  - [baremetal] Add some missing fields to node object
+  - identity: Add test for 'role_assignments_filter' proxy method
+  - Resource locks and access rules restrictions
+  - reno: Update master for unmaintained/yoga
+  - Add support for showing requested az in output
+  - Add volume transfer support [2/2]
+  - mypy: Address issues with openstack.network
+  - identity: Add access rule CRUD support
+  - connection: Fix typo
+  - Add snapshot manage unmanage support
+  - mypy: Address issues with openstack.compute
+  - Add sort_key and sort_dir to core Neutron resources
+  - Add volume manage support
+  - Adding SDK support for ``glance md-namespace-properties-delete``
+  - mypy: Address issues with remaining service modules
+  - tests: Remove unused hook
+  - [baremetal] Add missing owner attribute to allocation
+  - Fix project cleanup for routers with static routes
+  - Fix the mailing list domain in documentation link
+  - mypy: Address issues with openstack.block_storage
+  - mypy: Address issues with openstack.clustering
+  - mypy: Add typing to openstack._log
+  - zuul: Switch bifrost job to jammy
+  - Add support for provider_id for volume objects</comment>
+    <requestid>1171473</requestid>
+  </revision>
 </revisionlist>

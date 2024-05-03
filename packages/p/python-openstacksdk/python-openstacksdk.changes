@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu May  2 22:17:05 UTC 2024 - cloud-devel@suse.de
+
+- update to version 3.1.0
+  - Implemented heat 'stack suspend' and 'stack resume' function
+  - Fix: Update/Delete type encryption operation
+  - config: Add missing space to warning
+  - mypy: Address issues with openstack.orchestration
+  - Remove unnecessary `keys` calls
+  - [baremetal] Add some missing fields to node object
+  - identity: Add test for 'role_assignments_filter' proxy method
+  - Resource locks and access rules restrictions
+  - reno: Update master for unmaintained/yoga
+  - Add support for showing requested az in output
+  - Add volume transfer support [2/2]
+  - mypy: Address issues with openstack.network
+  - identity: Add access rule CRUD support
+  - connection: Fix typo
+  - Add snapshot manage unmanage support
+  - mypy: Address issues with openstack.compute
+  - Add sort_key and sort_dir to core Neutron resources
+  - Add volume manage support
+  - Adding SDK support for ``glance md-namespace-properties-delete``
+  - mypy: Address issues with remaining service modules
+  - tests: Remove unused hook
+  - [baremetal] Add missing owner attribute to allocation
+  - Fix project cleanup for routers with static routes
+  - Fix the mailing list domain in documentation link
+  - mypy: Address issues with openstack.block_storage
+  - mypy: Address issues with openstack.clustering
+  - mypy: Add typing to openstack._log
+  - zuul: Switch bifrost job to jammy
+  - Add support for provider_id for volume objects
+  - [baremetal] Add support for service steps
+  - Check Designate API version for shared zones tests
+  - Enforce endpoint override for services without discovery
+  - Return the results of init attachment request
+  - Fix list of server migrations
+  - Support the API for managing external gateways
+  - volume: Add Limit to volume v2 API
+  - compute: Add 'locked_reason' to Server resource
+  - cloud: Replace use of aliased exceptions
+  - fakes: Generate correct type for list type components
+  - Add missing snapshot parameters
+  - mypy: Address issues with openstack.baremetal, baremetal_introspection
+  - reno: Update master for unmaintained/victoria
+  - [baremetal] port add shard, is_smartnic, name
+  - Drop support for Python 3.6
+  - docs: Add docs on configuration of a service user
+  - Update master for stable/2024.1
+  - requirements: Sort alphabetically
+  - Implement heat 'stack event list'
+  - Incorrect protocol type in create_security_group_rule()
+  - mypy: Address issues with openstack.identity
+  - Remove importlib-metadata from requirements
+  - reno: Update master for unmaintained/wallaby
+  - tox: Correct functional test factors
+  - Add volume transfer support [1/2]
+  - Fix markup syntax in docstring
+  - mypy: Address issues with openstack.object_store
+  - reno: Update master for unmaintained/xena
+  - pre-commit: Bump linter versions
+  - [baremetal] driver add missing firmware interface
+  - Switch back to LaunchPad for issue tracking
+  - mypy: Address issues with openstack.image
+  - Fix typo
+  - Remove resource_key for dns floating IP
+
+-------------------------------------------------------------------
 Fri Dec  1 16:20:51 UTC 2023 - cloud-devel@suse.de
 
 - update to version 2.0.0

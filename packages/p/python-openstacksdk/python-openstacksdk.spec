@@ -16,15 +16,14 @@
 #
 
 
-%define with_tests 1
 Name:           python-openstacksdk
-Version:        2.0.0
+Version:        3.1.0
 Release:        0
 Summary:        An SDK for building applications to work with OpenStack
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/openstacksdk
-Source0:        https://files.pythonhosted.org/packages/source/o/openstacksdk/openstacksdk-2.0.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/openstacksdk/openstacksdk-3.1.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.13
 BuildRequires:  python3-appdirs
@@ -45,7 +44,7 @@ BuildRequires:  python3-os-service-types >= 1.7.0
 BuildRequires:  python3-oslo.config
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-platformdirs
+BuildRequires:  python3-platformdirs >= 3
 BuildRequires:  python3-python-subunit
 BuildRequires:  python3-requests-mock
 BuildRequires:  python3-requestsexceptions >= 1.2.0
@@ -81,7 +80,7 @@ Requires:       python3-keystoneauth1 >= 3.18.0
 Requires:       python3-munch
 Requires:       python3-netifaces >= 0.10.4
 Requires:       python3-os-service-types >= 1.7.0
-Requires:       python3-platformdirs
+Requires:       python3-platformdirs >= 3
 Requires:       python3-requestsexceptions >= 1.2.0
 %if 0%{?suse_version}
 Obsoletes:      python2-openstacksdk < 1.0.0
@@ -123,7 +122,7 @@ The openstacksdk is a collection of libraries for building
 applications to work with OpenStack clouds.
 
 %prep
-%autosetup -p1 -n openstacksdk-2.0.0
+%autosetup -p1 -n openstacksdk-3.1.0
 %py_req_cleanup
 sed -i -e 's,coverage.*,,' test-requirements.txt || true
 sed -i -e "s,'sphinx.ext.intersphinx'\,,," doc/source/conf.py
@@ -134,19 +133,17 @@ rm openstack/tests/unit/test_stats.py
 
 %build
 %py3_build
-PBR_VERSION=2.0.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=3.1.0 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
 %py3_install
 
-%if 0%{?with_tests}
 %check
 export OS_LOG_CAPTURE=true
 export OS_TEST_TIMEOUT=30
 rm -v openstack/tests/unit/test_hacking.py
 %{openstack_stestr_run}
-%endif
 
 %files -n python3-openstacksdk
 %license LICENSE
