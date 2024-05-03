@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  2 09:47:58 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Fix AC_SYS_LARGEFILE doesn't honor AC_LANG setting and undo the removing of
+  the largefile test. (bsc#1219035)
+  + Port-AC_SYS_LARGEFILE-to-C.patch
+  - remove-largefile-test.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 10:21:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

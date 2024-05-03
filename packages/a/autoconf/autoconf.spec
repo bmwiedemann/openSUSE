@@ -24,6 +24,7 @@
 %else
 %global psuffix %{nil}
 %endif
+
 Name:           autoconf%{?psuffix}
 Version:        2.72
 Release:        0
@@ -34,8 +35,8 @@ Source0:        https://ftp.gnu.org/gnu/autoconf/autoconf-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/autoconf/autoconf-%{version}.tar.xz.sig
 Source9:        autoconf.keyring
 Patch0:         autoreconf-ltdl.diff
-# Upstream's Known bug: see https://git.savannah.gnu.org/cgit/autoconf.git/tree/NEWS#n194
-Patch1:         remove-largefile-test.patch
+# PATCH-FIX-UPSTREAM: Fix problem https://savannah.gnu.org/support/?110983
+Patch1:         Port-AC_SYS_LARGEFILE-to-C.patch
 BuildRequires:  help2man
 BuildRequires:  m4 >= 1.4.16
 BuildArch:      noarch
@@ -68,11 +69,7 @@ be configuring software with an autoconf-generated script; autoconf is
 only required for the generation of the scripts, not their use.
 
 %prep
-%setup -q -n autoconf-%{version}
-%patch -P 0 -p1
-%if "%_arch" == "i386"
-%patch -P 1 -p1
-%endif
+%autosetup -p1 -n autoconf-%{version}
 
 %build
 %configure
