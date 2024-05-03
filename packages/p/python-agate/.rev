@@ -163,4 +163,22 @@
   * Add Babel 2.14 support.</comment>
     <requestid>1135259</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>de623d3af2ffb4f9892623458321ffd3</srcmd5>
+    <version>1.10.2</version>
+    <time>1714758372</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.10.2:
+  * fix: Version 1.10.0 errors on piped data.
+  * fix: :meth:`.Number.csvify` returns a Decimal (or None),
+    instead of str. :meth:`.Table.to_csv` with
+    quoting=csv.QUOTE_NONNUMERIC now works.
+  * feat: :meth:`.Table.from_csv` reads the file line by line. If
+    sniff_limit=None, it reads the file into memory once, instead
+    of twice. If column_types is a :class:`.TypeTester`, it reads
+    the file into memory. (#778)
+  * fix: Fix :meth:`.TableSet.print_structure` for nested
+    tablesets.</comment>
+    <requestid>1171534</requestid>
+  </revision>
 </revisionlist>

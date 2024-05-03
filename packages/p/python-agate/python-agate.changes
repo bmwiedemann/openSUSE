@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May  3 07:27:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.2:
+  * fix: Version 1.10.0 errors on piped data.
+  * fix: :meth:`.Number.csvify` returns a Decimal (or None),
+    instead of str. :meth:`.Table.to_csv` with
+    quoting=csv.QUOTE_NONNUMERIC now works.
+  * feat: :meth:`.Table.from_csv` reads the file line by line. If
+    sniff_limit=None, it reads the file into memory once, instead
+    of twice. If column_types is a :class:`.TypeTester`, it reads
+    the file into memory. (#778)
+  * fix: Fix :meth:`.TableSet.print_structure` for nested
+    tablesets.
+
+-------------------------------------------------------------------
 Wed Dec 27 10:03:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.1:
