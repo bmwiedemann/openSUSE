@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Sat Apr 27 07:39:32 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update os-string to version 2.0.2.1.
+  ## 2.0.2.1 *Apr 2024*
+
+  * Fix compabitiliby with GHC 9.10
+
+-------------------------------------------------------------------
+Tue Apr 23 13:21:27 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update os-string to version 2.0.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Fri Dec 15 16:24:41 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Add os-string at version 2.0.2.
+
