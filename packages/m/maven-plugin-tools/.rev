@@ -96,4 +96,12 @@
     <comment></comment>
     <requestid>1164210</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>770500050099f4ac176a128179e21733</srcmd5>
+    <version>3.9.0</version>
+    <time>1714686426</time>
+    <user>anag+factory</user>
+    <comment>plexus-build-api 1.2.0 + dependent changes</comment>
+    <requestid>1171148</requestid>
+  </revision>
 </revisionlist>

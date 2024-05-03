@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu May  2 06:59:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.18.stable.2:
+  * bugfix: Adjust Microos TLS policy regex by @dennislapchenko in
+    #63
+  * build: Align drone base images by @pjbgf in #60
+  * Add /etc/cni to the rke2-selinux context by @galal-hussein in
+    #67
+
+-------------------------------------------------------------------
+Sat Dec 09 20:07:10 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.17.stable.1:
+  * Revert to files_type instead of container_file_type for EL8
+    (#61)
+
+-------------------------------------------------------------------
+Tue Oct 31 08:53:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.16.stable.1:
+  * Fix container_unit_file_t for rke2 unit file (#57)
+
+-------------------------------------------------------------------
+Thu Oct 05 04:47:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.stable.1:
+  * revert to files_type instead of container_file_type for
+    slemicro (#54)
+  * rke2_tls_t type for cert files (#53)
+  * Adding support for /opt/rke2/bin/rke2 and fixing rke2_service_t
+    watch on container_var_lib_t (#48)
+  * Allow rke2_service_t to watch cert files in RHEL9 (#49)
+
+-------------------------------------------------------------------
 Tue Jun 13 11:08:42 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.14.stable.1:

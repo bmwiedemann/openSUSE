@@ -1,0 +1,5 @@
+<package name="spack-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed BCI Spack development</title>
+  <description>Spack is a flexible package manager for supercomputers, based on the openSUSE Tumbleweed Base Container Image.</description>
+  <devel project="devel:BCI:Tumbleweed" package="spack-image"/>
+</package>

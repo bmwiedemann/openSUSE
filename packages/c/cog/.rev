@@ -24,4 +24,12 @@
 - Trim repeated &quot;small&quot; word from description.</comment>
     <requestid>1137025</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1a80ffe9aef658dbdaf23faaca2c363f</srcmd5>
+    <version>0.18.2</version>
+    <time>1714686515</time>
+    <user>anag+factory</user>
+    <comment>- Properly tag patches. (forwarded request 1171354 from dimstar)</comment>
+    <requestid>1171404</requestid>
+  </revision>
 </revisionlist>

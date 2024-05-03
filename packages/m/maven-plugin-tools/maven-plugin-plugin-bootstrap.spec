@@ -39,7 +39,7 @@ BuildRequires:  maven-plugin-annotations
 BuildRequires:  maven-plugin-tools-api
 BuildRequires:  maven-plugin-tools-generators
 BuildRequires:  maven-resolver-api
-BuildRequires:  plexus-build-api
+BuildRequires:  plexus-build-api0
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-velocity
 BuildRequires:  plexus-xml
@@ -98,7 +98,7 @@ build-jar-repository -s lib \
     maven-resolver/maven-resolver-api \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
-    plexus/plexus-build-api \
+    plexus/plexus-build-api0 \
     plexus/utils \
     plexus/xml \
     plexus-velocity/plexus-velocity

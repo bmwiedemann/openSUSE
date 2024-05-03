@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-peewee
-Version:        3.17.1
+Version:        3.17.3
 Release:        0
 Summary:        An expressive ORM that supports multiple SQL backends
 License:        BSD-3-Clause

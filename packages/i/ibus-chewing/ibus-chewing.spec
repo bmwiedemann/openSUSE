@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-chewing
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           ibus-chewing
-Version:        1.6.1
+Version:        2.0.0
 Release:        0
 Summary:        The Chewing engine for IBus input platform
 License:        GPL-2.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/definite/ibus-chewing
 Source0:        https://github.com/definite/ibus-chewing/archive/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM ibus-chewing-drop-cmake-fedora.patch qzhao@suse.com Backport previous cmake module to get rid of dependence of cmake-fedora-modules, switch to the cmake upstream 2.6.2.
-Patch0:         ibus-chewing-drop-cmake-fedora.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake >= 2.6.2
 BuildRequires:  gcc-c++
@@ -34,8 +32,9 @@ BuildRequires:  gob2
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(chewing)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(ibus-1.0)
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(x11)
 
 %description
@@ -52,15 +51,15 @@ libchewing.
 %install
 %cmake_install
 
-rm -rf %{buildroot}%{_datadir}/doc/ibus-chewing
+rm -rf %{buildroot}%{_datadir}/doc/packages/ibus-chewing
 
 %find_lang %{name} %{?no_lang_C}
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
-%doc USER-GUIDE AUTHORS INSTALL ChangeLog README.md RELEASE-NOTES.txt
+%doc USER-GUIDE AUTHORS INSTALL ChangeLog-1.x CHANGELOG.md README.md
 %license COPYING
-%{_ibus_libexecdir}/ibus-*
+%{_libexecdir}/ibus-*
 %{_datadir}/%{name}
 %{_datadir}/ibus
 %{_datadir}/applications/ibus-setup-chewing.desktop

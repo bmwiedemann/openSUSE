@@ -17,25 +17,23 @@
 
 
 Name:           plexus-build-api
-Version:        0.0.7
+Version:        1.2.0
 Release:        0
 Summary:        Plexus Build API
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/sonatype/sisu-build-api
-#Fetched from https://github.com/sonatype/sisu-build-api/tarball/plexus-build-api-0.0.7
-Source0:        sonatype-sisu-build-api-plexus-build-api-0.0.7-0-g883ea67.tar.gz
-Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
-Source2:        %{name}-build.xml
-Patch0:         plexus-build-api-utils-3.3.0.patch
-Patch1:         plexus-build-api-javadoc.patch
+Source0:        https://github.com/codehaus-plexus/%{name}/archive/refs/tags/%{name}-%{version}.tar.gz
+Source1:        %{name}-build.xml
 BuildRequires:  ant
+BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-containers-container-default
-BuildRequires:  plexus-metadata-generator
+BuildRequires:  plexus-build-api0
 BuildRequires:  plexus-utils
+BuildRequires:  sisu-inject
+BuildRequires:  sisu-plexus
+BuildRequires:  slf4j
 BuildArch:      noarch
 
 %description
@@ -49,17 +47,18 @@ Group:          Documentation/HTML
 API documentation for %{name}.
 
 %prep
-%setup -q -n sonatype-sisu-build-api-f1f8849
-%patch -P 0 -p1
-%patch -P 1 -p1
-cp -p %{SOURCE1} .
-cp -p %{SOURCE2} build.xml
-
-%pom_remove_parent .
+%setup -q -n %{name}-%{name}-%{version}
+cp -p %{SOURCE1} build.xml
 
 %build
 mkdir -p lib
-build-jar-repository -s lib plexus/utils plexus/classworlds plexus-containers/plexus-container-default
+build-jar-repository -s lib \
+    atinject \
+    org.eclipse.sisu.inject \
+    org.eclipse.sisu.plexus \
+    plexus/utils \
+    plexus/plexus-build-api0 \
+    slf4j/api
 %{ant} \
   jar javadoc
 
@@ -77,10 +76,10 @@ cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%doc LICENSE-2.0.txt
+%license LICENSE
 
 %files javadoc
-%doc LICENSE-2.0.txt
+%license LICENSE
 %{_javadocdir}/%{name}
 
 %changelog

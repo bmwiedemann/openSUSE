@@ -1415,4 +1415,32 @@ Enable cycles-osl in build</comment>
 </comment>
     <requestid>1145156</requestid>
   </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>85ae839bccc388bdb7affe5c0a8e49af</srcmd5>
+    <version>4.1.1</version>
+    <time>1714686415</time>
+    <user>anag+factory</user>
+    <comment>- drop the blender-addons-4.1.1.tar.xz tarball again as it is
+  included in the main tarball, also ensure it wont be included
+  again by accident 
+
+- reenable the cmake_manpage_fix.patch and make it the most minimal
+  version of the patch:
+  After some testing with the doc_man target in the GNUMakefile I
+  noticed that the only thing we need is to hardcode the path to
+  blender in the concatenated shell script in the CMakeLists.txt.
+  so the new patch is doing exactly that.
+  This should make it easier and more robust to forward port.
+
+- Update to 4.1.1:
+  https://www.blender.org/download/releases/4-1/
+  https://developer.blender.org/docs/release_notes/4.1/
+  https://developer.blender.org/docs/release_notes/4.1/corrective_releases/
+- refresh patches:
+  Add_missing_system_error_handler.patch
+- drop patches:
+  aarch64_build_fix.patch
+- bump oidn dependency to &gt;= 2 for the new API</comment>
+    <requestid>1171364</requestid>
+  </revision>
 </revisionlist>

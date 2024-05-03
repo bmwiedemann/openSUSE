@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-proton-vpn-session
-Version:        0.6.5
+Version:        0.6.7
 Release:        0
 Summary:        Proton VPN session library
 License:        GPL-3.0-or-later

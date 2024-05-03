@@ -1,0 +1,16 @@
+diff --git a/CMakeGlobals.txt b/CMakeGlobals.txt
+index 15001b2..5e86187 100644
+--- a/CMakeGlobals.txt
++++ b/CMakeGlobals.txt
+@@ -29,11 +29,6 @@ endif()
+ get_filename_component(ROOT_SRC_DIR ${CMAKE_CURRENT_LIST_FILE} PATH)
+ set(CMAKE_MODULE_PATH "${ROOT_SRC_DIR}/cmake/modules/")
+ 
+-# read /etc/os-release
+-if(LINUX)
+-   include(OsRelease)
+-endif()
+-
+ # version info
+ if ("$ENV{RSTUDIO_VERSION_MAJOR}" STREQUAL "")
+   string(TIMESTAMP CPACK_PACKAGE_VERSION_MAJOR "%Y")

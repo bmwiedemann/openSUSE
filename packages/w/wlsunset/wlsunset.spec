@@ -1,7 +1,7 @@
 #
 # spec file for package wlsunset
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wlsunset
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        Day/night gamma adjustments for Wayland compositors
 License:        MIT
@@ -35,11 +35,10 @@ BuildRequires:  pkgconfig(wayland-scanner)
 Day/night gamma adjustments for Wayland compositors supporting wlr-gamma-control-unstable-v1
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %meson
-
 %meson_build
 
 %install

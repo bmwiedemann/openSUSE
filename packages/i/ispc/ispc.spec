@@ -28,14 +28,13 @@
 %endif
 
 Name:           ispc
-Version:        1.18.1
+Version:        1.23.0
 Release:        0
 Summary:        C-based SPMD programming language compiler
 License:        BSD-3-Clause
 Group:          Development/Languages/C and C++
 URL:            https://ispc.github.io/
 Source:         https://github.com/%{name}/%{name}/archive/v%{version}/v-%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         ispc-add-cstdint-include.patch
 #!BuildIgnore:  clang15
 BuildRequires:  bison
 BuildRequires:  clang%llvm_ver-devel
@@ -106,6 +105,7 @@ echo "optflags: %{optflags}"
         -DISPCRT_BUILD_TASK_MODEL=%{?with_openmp_task_model:OpenMP}%{!?with_openmp_task_model:TBB} \
         -DISPC_INCLUDE_EXAMPLES=OFF \
         -DISPC_INCLUDE_TESTS=ON \
+        -DISPCRT_BUILD_STATIC=OFF \
         -DISPC_NO_DUMPS=ON
 
 %cmake_build

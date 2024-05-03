@@ -19,20 +19,20 @@
 # Bundled dependencies from NOTICE:
 # - Qt (LGPL v2.1)                           => undbundled
 # - QtSingleApplication                      => bundled at some version, using BSD-3-Clause
-# - Ace (LGPL v2.1)                          => bundled at version 1.4.5 (see ./src/gwt/src/org/rstudio/studio/client/workbench/views/source/editors/text/ace/ace-uncompressed.js), license is BSD-3-Clause
-%global bundled_ace_version           1.4.5
+# - Ace (LGPL v2.1)                          => bundled (see ./src/gwt/src/org/rstudio/studio/client/workbench/views/source/editors/text/ace/ace-uncompressed.js), license is BSD-3-Clause
+%global bundled_ace_version           1.32.5
 # - Stan Ace Mode (LGPL 2.1)                 => bundled in ./src/gwt/acesupport/acemode/stan.js
 # - Boost                                    => unbundled
 # - RapidXml                                 => bundled in ./src/cpp/core/include/core/rapidxml/rapidxml.hpp at version 1.13, license is (BSL-1.0 OR MIT)
 %global bundled_rapidxml_version      1.13
 # - fmt                                      => unbundled
-# - Google Web Toolkit                       => bundled as gwt-rstudio (version 1.3), new upstream https://github.com/rstudio/gwt, license is Apache-2.0
-%global bundled_gwt_rstudio_version   1.3
-# - Guice                                    => bundled in ./src/gwt/lib/gin/%%{bundled_gin_version}/, version 3.0, license is Apache-2.0
-%global bundled_guice_version         3.0
+# - Google Web Toolkit                       => bundled as gwt-rstudio, new upstream https://github.com/rstudio/gwt, license is Apache-2.0
+%global bundled_gwt_rstudio_version   2.10.0
+# - Guice                                    => bundled in ./src/gwt/lib/gin/%%{bundled_gin_version}/, license is Apache-2.0
+%global bundled_guice_version         6.0.0
 # - GIN                                      => bundled in ./src/gwt/lib/gin/%%{bundled_gin_version}, license is Apache-2.0
 %global bundled_gin_version           2.1.2
-# - AOP Alliance                             => bundled in ./src/gwt/lib/gin/2.1.2/aopalliance.jar, version 1.0, license is Public Domain
+# - AOP Alliance                             => bundled in ./src/gwt/lib/gin/%%{bundled_gin_version}/aopalliance.jar, version 1.0, license is Public Domain
 %global bundled_aopalliance_version   1.0
 # - RSA-JS                                   => bundled in ./src/gwt/tools/rsa.js, however this is actually part of the jsbn library (ends up as encrypt.min.js in the rpm), version 1.1, license is MIT
 %global bundled_jsbn_version          1.1
@@ -86,19 +86,17 @@
 # missing from NOTICE:
 # - Google Closure Compiler                  => bundled in ./src/gwt/tools/compiler/ but AFAIK only used for building, version is "compiler-latest.zip as of July 9, 2019", license is Apache-2.0 with bundled dependencies under (NPL-1.1 AND (MPL-1.1 OR GPL-2.0-or-later)) AND MIT AND CPL-1.0 AND BSD-3-Clause AND Apache-2.0
 
-# override upstream's choice for the boost version on Leap 15.2,
-# but not on Tumbleweed and Leap >= 15.3
-%if 0%{?sle_version} == 150200
+# override upstream's choice for the boost version on Leap.
+%if %{suse_version} <= 1500
 %global rstudio_boost_requested_version 1.66
 %endif
-%define boost_version %{?rstudio_boost_requested_version}%{?!rstudio_boost_requested_version:1.69}
 
-%global rstudio_version_major 2023
-%global rstudio_version_minor 09
-%global rstudio_version_patch 1
-%global rstudio_version_suffix 494
+%global rstudio_version_major 2024
+%global rstudio_version_minor 04
+%global rstudio_version_patch 0
+%global rstudio_version_suffix 735
 # commit of the tag belonging to %%{version}
-%global rstudio_git_revision_hash cd7011dce393115d3a7c3db799dda4b1c7e88711
+%global rstudio_git_revision_hash a00d0e775dbc93e0d79a1bf474e3e8e8de677383
 Name:           rstudio
 Version:        %{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}+%{rstudio_version_suffix}
 Release:        0
@@ -141,11 +139,17 @@ Patch5:         0006-Fix-libclang-usage.patch
 Patch6:         remove-panmirror.patch
 # Leap 15.2 only patch
 Patch7:         0008-Add-support-for-RapidJSON-1.1.0-in-Leap-15.2.patch
+# We don't want do depend on /etc/os-release, because that changes frequently in Tumbleweed.
+# And it doesn't seem right that the package depends on the distribution it is a part of.
+Patch8:         skip-osrelease.patch
 Patch9:         unbundle-fmt.patch
+Patch10:        respect-system-yaml-cpp.patch
+Patch11:        fix-boost-1.85-build.patch
+Patch12:        fix-boost-1.66-build.patch
 Patch100:       old-boost.patch
 
 BuildRequires:  Mesa-devel
-BuildRequires:  R-core-devel
+BuildRequires:  R-core-devel >= 3.6.0
 BuildRequires:  ant
 BuildRequires:  clang-devel
 BuildRequires:  cmake
@@ -211,7 +215,6 @@ BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(websocketpp)
 BuildRequires:  pkgconfig(zlib)
-BuildConflicts: java-devel >= 12
 Requires:       R-base
 Requires:       R-core-libs
 Recommends:     gcc

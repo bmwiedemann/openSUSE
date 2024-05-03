@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  1 12:22:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the new codehaus plexus build api 1.2.0
+- Removed patch:
+  * 0003-Revert-Switch-to-codehaus-plexus-build-api-1.2.0-345.patch
+    + not needed any more
+
+-------------------------------------------------------------------
 Tue Apr 16 13:04:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Build all modello plugins

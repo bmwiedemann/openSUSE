@@ -257,4 +257,12 @@ Rebase patches:
     <comment>Prepare for RPM 4.20 (forwarded request 1149890 from dimstar)</comment>
     <requestid>1149925</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e844d36ea823a362d06b35559cfe04e7</srcmd5>
+    <version>2024.04.0+735</version>
+    <time>1714686474</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1171310</requestid>
+  </revision>
 </revisionlist>

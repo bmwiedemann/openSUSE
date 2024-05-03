@@ -518,4 +518,20 @@
   * Build aarch64, arm without libgit2</comment>
     <requestid>1168974</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>9cbae70e85cb664665793643b8f361fb</srcmd5>
+    <version>0.18.14+0</version>
+    <time>1714686453</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.14:
+  * Add icon for &quot;cron.minutely&quot; directory
+  * Bump uzers from 0.11.3 to 0.12.0
+  * Bump libc from 0.2.153 to 0.2.154
+  * Bump unicode-width from 0.1.11 to 0.1.12
+  * Bump palette from 0.7.5 to 0.7.6
+
+- Update to 0.18.13:
+  * Generate completion/manpage tarballs on release</comment>
+    <requestid>1171238</requestid>
+  </revision>
 </revisionlist>

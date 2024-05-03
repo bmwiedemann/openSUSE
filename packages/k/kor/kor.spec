@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kor
-Version:        0.3.7
+Version:        0.3.8
 Release:        0
 Summary:        Tool to discover unused Kubernetes Resources
 License:        MIT
 URL:            https://github.com/yonahd/kor
 Source:         kor-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.17
+BuildRequires:  go >= 1.22
 
 %description
 Kor is a tool to discover unused Kubernetes resources. Currently, Kor can identify and list unused:

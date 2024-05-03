@@ -1,14 +1,20 @@
 -------------------------------------------------------------------
-Thu Mar 28 02:48:54 UTC 2024 - Илья Индиго <13ilya@gmail.com>
+Thu May  2 14:27:09 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
-- Updatet to 5.0.21264 1efda863e47b690f460f069502a4391b3c7d87c4
+- Switched to default gcc for TW and gcc13 for Leap with disabled LTO.
+- Updated to 5.0.21460 a9544510468740b77cf06ef28daaa65fe247fd32
+
+-------------------------------------------------------------------
+Thu Mar 28 02:48:54 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 5.0.21264 1efda863e47b690f460f069502a4391b3c7d87c4
   * Removed file dolphin-emu-not-discord-presence.patch.
   * Using enet, minizip-ng and zlib-ng from externals source.
   * Changed fmt minimal version to 10.1.
   * Changed build with Qt6.
 
 -------------------------------------------------------------------
-Mon Jan 22 07:28:27 UTC 2024 - Илья Индиго <ilya@ilya.cf>
+Mon Jan 22 07:28:27 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Limited build to fmt < 10.
 
@@ -20,7 +26,7 @@ Mon Sep 11 12:31:12 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
   aside from original GPL-2.0-or-later 
 
 -------------------------------------------------------------------
-Sun Aug 20 19:17:37 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+Sun Aug 20 19:17:37 UTC 2023 - Илья Индиго <ilya@ilya.top>
 
 - Switched to gcc12 (boo#1210477).
 - Removed file dolphin-emu-gcc13.patch.
@@ -76,6 +82,6 @@ Fri Oct 14 17:17:06 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
   * Added support for NFS files.
 
 -------------------------------------------------------------------
-Fri Jul  8 15:22:47 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+Fri Jul  8 15:22:47 UTC 2022 - Илья Индиго <ilya@ilya.top>
 
 - Initialized 5.0.16793 3cd82b619388d0877436390093a6edc2319a6904

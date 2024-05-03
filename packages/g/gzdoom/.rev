@@ -263,4 +263,12 @@ and that one is GPL3.</comment>
     <comment>- Update to release 4.11.3</comment>
     <requestid>1123237</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>866938c4533349e05153ad059f4d44c3</srcmd5>
+    <version>4.12.2</version>
+    <time>1714686422</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 4.12.2</comment>
+    <requestid>1171125</requestid>
+  </revision>
 </revisionlist>

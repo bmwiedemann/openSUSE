@@ -105,4 +105,12 @@ Fix conflict
     <comment>fixed compilation with glslang v14 (forwarded request 1142758 from bobbie424242)</comment>
     <requestid>1143043</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>e7176538060d96e11ec6f9b49c274ae5</srcmd5>
+    <version>13.6.5</version>
+    <time>1714686525</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1171436</requestid>
+  </revision>
 </revisionlist>

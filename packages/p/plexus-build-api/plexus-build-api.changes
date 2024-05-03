@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed May  1 11:49:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.2.0
+  * Breaking changes
+    + change package to org.codehaus.plexus.build
+  * New features and improvements
+    + Convert to JSR 330 component
+    + Bump sisu-maven-plugin from 0.3.5 to 0.9.0.M2
+    + Switch to parent 13 and reformat
+    + Use a CachingOutputStream when using the build context
+    + Reuse plexus-pom action for CI
+    + Add README and LICENSE
+    + Remove ThreadBuildContext (#51) @laeubi
+  * Bug Fixes
+    + Store Objects in the DefaultContext in a map
+    + Let the DefaultBuildContext delegate to the legacy build-api
+- Removed patches:
+  * plexus-build-api-javadoc.patch
+  * plexus-build-api-utils-3.3.0.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
 Tue Feb 20 14:43:01 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

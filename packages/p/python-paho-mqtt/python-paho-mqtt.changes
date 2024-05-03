@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May  2 08:08:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Make transition from 1.x to 2.x version smoother
+  * Fix "protocol" property
+  * Fix publish() a bytearray payload
+  * Fix some type annotations
+  * Fix loop_stop() not stopping thread when called from callback
+  * Fix some documentation errors
+  * Add support for Unix socket
+  * Fix flaky test
+
+-------------------------------------------------------------------
 Fri Mar 22 14:38:52 UTC 2024 - pgajdos@suse.com
 
 - version update to 2.0.0
@@ -12,7 +25,7 @@ Fri Mar 22 14:38:52 UTC 2024 - pgajdos@suse.com
     This is a breaking change, but in previous version connect_srv was broken anyway.
     Closes #493.
   - **BREAKING** Remove some deprecated argument and method:
-  
+
     * ``max_packets`` argument in loop(), loop_write() and loop_forever() is removed
     * ``force`` argument in loop_stop() is removed
     * method ``message_retry_set()`` is removed

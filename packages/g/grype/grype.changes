@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 02 07:23:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.77.2:
+  * fix: update ignored vulnerability count in tui (#1837)
+  * fix: update sarif to pass microsoft validator (#1838)
+  * chore(deps): bump anchore/sbom-action from 0.15.10 to 0.15.11
+    (#1835)
+
+-------------------------------------------------------------------
 Fri Apr 26 18:51:37 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.77.1:

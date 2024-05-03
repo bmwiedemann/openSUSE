@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 23 02:19:03 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.4.0:
+  This release works around an issue where the compositor gives
+  a zero gamma size, and adds support for toggling forced modes
+  with SIGUSR1. Support for xdg_output is also removed, as newer
+  versions of wl_output contain the necessary output name.
+  * Force mode on SIGUSR1
+  * Change steps from 25K to 10K
+  * Calculate blend factor as double
+  * Remove xdg-output support
+  * Improve logging
+  * Free output name, skip storing description
+  * Explain the use of multiple locus better
+  * readme: Fix the list of forced modes
+  * Recreate controls on next set if gamma size is zero
+  * Fix typo in manpage
+
+-------------------------------------------------------------------
 Thu Jun  1 09:45:07 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.3.0:

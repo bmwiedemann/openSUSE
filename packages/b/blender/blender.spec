@@ -1,7 +1,7 @@
 #
 # spec file for package blender
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019-2023 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -77,7 +77,7 @@
 %bcond_with openxr
 
 Name:           blender
-Version:        4.0.1
+Version:        4.1.1
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -86,6 +86,7 @@ URL:            https://www.blender.org/
 # Please leave the source url intact
 Source0:        https://download.blender.org/source/%{name}-%{version}.tar.xz
 Source1:        https://download.blender.org/source/%{name}-%{version}.tar.xz.md5sum
+# if you have to comment in Source2 again, then you also have to fix the _service file to create the tarball again
 # addons are included again in the source tarball
 # https://projects.blender.org/blender/blender-addons.git
 #Source2:        %{name}-addons-%{version}.tar.xz
@@ -106,8 +107,6 @@ Patch0:         reproducible.patch
 Patch1:         Add_missing_system_error_handler.patch
 # PATCH-FIX-UPSTREAM https://projects.blender.org/blender/blender/pulls/115320
 Patch2:         cmake_manpage_fix.patch
-# PATCH-FIX-UPSTREAM https://projects.blender.org/blender/blender/pulls/115098
-Patch3:         aarch64_build_fix.patch
 BuildRequires:  %{py3pkg}-devel
 BuildRequires:  %{py3pkg}-numpy-devel
 BuildRequires:  %{py3pkg}-requests
@@ -197,7 +196,7 @@ Requires:       %{py3pkg}-base
 Requires:       %{py3pkg}-numpy
 Requires:       %{py3pkg}-requests
 Requires(post): hicolor-icon-theme
-Requires(postun):hicolor-icon-theme
+Requires(postun): hicolor-icon-theme
 Recommends:     %name-demo = %version
 # current locale handling doesn't create locale(..) provides correctly
 Recommends:     %name-lang = %version
@@ -239,7 +238,7 @@ BuildRequires:  openCOLLADA-devel
 BuildRequires:  cmake(embree)
 %endif
 %if %{with oidn}
-BuildRequires:  OpenImageDenoise-devel
+BuildRequires:  OpenImageDenoise-devel >= 2
 %endif
 %if %{with openpgl}
 BuildRequires:  openpgl-devel

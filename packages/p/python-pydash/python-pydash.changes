@@ -1,8 +1,19 @@
 -------------------------------------------------------------------
+Thu May  2 08:56:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.0.1:
+  * Fix issue where too many arguments were passed to stdlib's
+    operator.attrgetter, operator.itemgetter, and
+    operator.methodcaller when instances of those classes were
+    used as callbacks to functions like map_, filter_, etc. due
+    to a bug introduced in Python 3.12.3 and 3.11.9 that reported
+    an incorrect signature for those operator class instances.
+
+-------------------------------------------------------------------
 Wed Apr  3 01:30:20 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 8.0.0:
-  * Add functions: 
+  * Add functions:
     + apply_catch, apply_if, apply_if_not_none, eq_cmp, gt_cmp
     + gte_cmp, in_range_cmp, is_equal_cmp, is_equal_with_cmp
     + is_instance_of_cmp, is_match_cmp, is_match_with_cmp
@@ -22,7 +33,7 @@ Wed Apr  3 01:30:20 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
   * Fix typing for find_index and find_last_index by allowing predicate
     argument to be callback shorthand values.
   * Fix typing for difference_by, intersection_by, union_by, uniq_by,
-    and xor_by by allowing iteratee argument to be `Any`. 
+    and xor_by by allowing iteratee argument to be `Any`.
   * Fix missing install dependency, typing-extensions, for package.
   * Add type annotations to package.
   * Change behavior of to_dict to not using dict() internally.
@@ -77,7 +88,7 @@ Thu Apr  7 10:59:23 UTC 2022 - pgajdos@suse.com
   - Support matches-style callbacks on non-dictionary objects that are compatible with ``pydash.get`` in functions like ``pydash.find``.
   v5.0.2 (2021-07-15)
   -------------------
-  - Fix compatibility issue between ``pydash.py_`` / ``pydash._`` and ``typing.Protocol`` + ``typing.runtime_checkable`` 
+  - Fix compatibility issue between ``pydash.py_`` / ``pydash._`` and ``typing.Protocol`` + ``typing.runtime_checkable``
     that caused an exception to be raised for ``isinstance(py_, SomeRuntimeCheckableProtocol)``.
   v5.0.1 (2021-06-27)
   -------------------
@@ -99,7 +110,7 @@ Thu Apr  7 10:59:23 UTC 2022 - pgajdos@suse.com
   - Optimize regular expression constants used in ``pydash.strings`` by pre-compiling them to regular expression pattern objects.
   v4.9.3 (2021-03-03)
   -------------------
-  - Fix regression introduced in ``v4.8.0`` that caused ``merge`` and ``merge_with`` to raise an exception when passing ``None`` 
+  - Fix regression introduced in ``v4.8.0`` that caused ``merge`` and ``merge_with`` to raise an exception when passing ``None``
     as the first argument.
   v4.9.2 (2020-12-24)
   -------------------

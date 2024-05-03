@@ -16,19 +16,17 @@
 #
 
 
-%define commit 1efda863e47b690f460f069502a4391b3c7d87c4
+%define commit a9544510468740b77cf06ef28daaa65fe247fd32
 Name:           dolphin-emu
-Version:        5.0.21264
+Version:        5.0.21460
 Release:        0
 Summary:        Dolphin, a GameCube and Wii Emulator
 License:        (Apache-2.0 OR MIT) AND BSD-2-Clause AND libpng-2.0 AND GPL-2.0-or-later
 URL:            https://dolphin-emu.org
-# n=dolphin-emu && v=5.0.21264 && c=1efda863e47b690f460f069502a4391b3c7d87c4 && d=$n-$v && f=$d.tar.xz && cd /tmp && git clone https://github.com/$n/dolphin.git $n && pushd $n && git checkout $c && git submodule && git submodule update --init --recursive Externals/VulkanMemoryAllocator Externals/cubeb/cubeb Externals/enet/enet Externals/gtest Externals/implot/implot Externals/libspng/libspng Externals/rcheevos/rcheevos Externals/tinygltf/tinygltf Externals/zlib-ng/zlib-ng && git submodule status && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
+# n=dolphin-emu && v=5.0.21460 && c=a9544510468740b77cf06ef28daaa65fe247fd32 && d=$n-$v && f=$d.tar.xz && cd /tmp && git clone https://github.com/$n/dolphin.git $n && pushd $n && git checkout $c && git submodule && git submodule update --init --recursive Externals/VulkanMemoryAllocator Externals/cubeb/cubeb Externals/enet/enet Externals/gtest Externals/implot/implot Externals/libspng/libspng Externals/rcheevos/rcheevos Externals/tinygltf/tinygltf Externals/zlib-ng/zlib-ng && git submodule status && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gcc12
-BuildRequires:  gcc12-c++
 BuildRequires:  glslang-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  mbedtls-devel < 3
@@ -80,6 +78,10 @@ BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xrandr)
 Requires:       nintendo-gamecube-wiimote-udev-rules
 ExclusiveArch:  x86_64 aarch64
+%if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+%endif
 
 %description
 Dolphin is an emulator for two Nintendo video game consoles, GameCube and the Wii.
@@ -114,11 +116,14 @@ sed -i "s/VK_PRESENT_MODE_RANGE_SIZE_KHR/(VkPresentModeKHR)("`
     Source/Core/VideoBackends/Vulkan/VKSwapChain.h
 
 %build
+%define _lto_cflags %{nil}
 # FIXME: you should use the %%cmake macros
 cmake . -LA \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_C_COMPILER=gcc-12 \
-    -DCMAKE_CXX_COMPILER=g++-12 \
+%if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
+    -DCMAKE_C_COMPILER=gcc-13 \
+    -DCMAKE_CXX_COMPILER=g++-13 \
+%endif
     -DCMAKE_C_FLAGS="%{optflags}" \
     -DCMAKE_CXX_FLAGS="%{optflags}" \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
@@ -127,7 +132,7 @@ cmake . -LA \
     -DDOLPHIN_WC_DESCRIBE=%{version} \
     -DDOLPHIN_WC_REVISION=%{commit} \
     -DENABLE_ANALYTICS=OFF \
-    -DENABLE_LTO=ON \
+    -DENABLE_LTO=OFF \
     -DENCODE_FRAMEDUMPS=OFF \
     -DUSE_DISCORD_PRESENCE=OFF \
     -DUSE_MGBA=OFF \
@@ -147,7 +152,7 @@ install -Dpm0644 Data/51-usb-device.rules %{buildroot}%{_udevrulesdir}/51-ninten
 %files lang -f %{name}.lang
 
 %files
-%defattr(0644,root,root,0755)
+%defattr(0644,root,root,-)
 %license COPYING
 %doc Readme.md
 %attr(0755,root,root) %{_bindir}/%{name}*

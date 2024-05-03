@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-robots
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,9 @@ Summary:        Robots Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            https://live.gnome.org/Robots
-Source0:        https://download.gnome.org/sources/gnome-robots/40/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM
+Patch0:         gnome-robots-libm.patch
 BuildRequires:  fdupes
 BuildRequires:  gnome-games-scripts
 BuildRequires:  itstool

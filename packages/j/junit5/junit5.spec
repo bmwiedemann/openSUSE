@@ -22,11 +22,14 @@
 %else
 %bcond_with bootstrap
 %endif
-%global platform_version 1.8.2
+%global platform_version 1.10.2
 %global jupiter_version %{version}
 %global vintage_version %{version}
 %global base_name junit5
-Version:        5.8.2
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
+Version:        5.10.2
 Release:        0
 License:        EPL-2.0
 Group:          Development/Libraries/Java
@@ -44,7 +47,8 @@ Source205:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform
 Source206:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-runner/%{platform_version}/junit-platform-runner-%{platform_version}.pom
 Source207:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-suite-api/%{platform_version}/junit-platform-suite-api-%{platform_version}.pom
 Source208:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-reporting/%{platform_version}/junit-platform-reporting-%{platform_version}.pom
-Source209:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-suite-commons/%{platform_version}/junit-platform-suite-commons-%{platform_version}.pom
+Source209:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-testkit/%{platform_version}/junit-platform-testkit-%{platform_version}.pom
+Source210:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-suite-commons/%{platform_version}/junit-platform-suite-commons-%{platform_version}.pom
 # Jupiter POMs
 Source300:      https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter/%{jupiter_version}/junit-jupiter-%{jupiter_version}.pom
 Source301:      https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-api/%{jupiter_version}/junit-jupiter-api-%{jupiter_version}.pom
@@ -55,10 +59,14 @@ Source304:      https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-p
 Source400:      https://repo1.maven.org/maven2/org/junit/vintage/junit-vintage-engine/%{vintage_version}/junit-vintage-engine-%{vintage_version}.pom
 # BOM POM
 Source500:      https://repo1.maven.org/maven2/org/junit/junit-bom/%{version}/junit-bom-%{version}.pom
-Patch0:         unreported-exception.patch
+Patch1:         0001-Drop-transitive-requirement-on-apiguardian.patch
+Patch2:         0002-Add-missing-module-static-requires.patch
+Patch3:         0003-Bump-open-test-reporting-to-0.1.0-M2.patch
 BuildRequires:  apiguardian
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 9
 BuildRequires:  opentest4j
+Requires:       java-headless >= 1.8
 Requires:       javapackages-tools
 BuildArch:      noarch
 %if %{with bootstrap}
@@ -75,7 +83,12 @@ BuildRequires:  maven-local
 BuildRequires:  mvn(com.univocity:univocity-parsers)
 BuildRequires:  mvn(info.picocli:picocli)
 BuildRequires:  mvn(junit:junit)
+BuildRequires:  mvn(net.sf.jopt-simple:jopt-simple)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  mvn(org.apiguardian:apiguardian-api)
+BuildRequires:  mvn(org.assertj:assertj-core)
+BuildRequires:  mvn(org.opentest4j.reporting:open-test-reporting-events)
+BuildRequires:  mvn(org.opentest4j:opentest4j)
 %endif
 
 %description
@@ -106,7 +119,9 @@ JUnit 5 User Guide.
 
 %prep
 %setup -q -n %{base_name}-r%{version} -a1
-%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 find -name \*.jar -delete
 
 cp -p %{SOURCE100} pom.xml
@@ -118,7 +133,8 @@ cp -p %{SOURCE205} junit-platform-launcher/pom.xml
 cp -p %{SOURCE206} junit-platform-runner/pom.xml
 cp -p %{SOURCE207} junit-platform-suite-api/pom.xml
 cp -p %{SOURCE208} junit-platform-reporting/pom.xml
-cp -p %{SOURCE209} junit-platform-suite-commons/pom.xml
+cp -p %{SOURCE209} junit-platform-testkit/pom.xml
+cp -p %{SOURCE210} junit-platform-suite-commons/pom.xml
 cp -p %{SOURCE300} junit-jupiter/pom.xml
 cp -p %{SOURCE301} junit-jupiter-api/pom.xml
 cp -p %{SOURCE302} junit-jupiter-engine/pom.xml
@@ -128,21 +144,34 @@ cp -p %{SOURCE400} junit-vintage-engine/pom.xml
 cp -p %{SOURCE500} junit-bom/pom.xml
 
 for pom in $(find -mindepth 2 -name pom.xml | grep -v tests/); do
+    module=$(dirname $pom)
+    if [ -d ${module}/src/module ]; then
+      mkdir -p ${module}/src/main/java
+      mv ${module}/src/module/*/module-info.java ${module}/src/main/java/
+    fi
     # Set parent to aggregator
-    %pom_xpath_inject pom:project "<parent><groupId>org.fedoraproject.xmvn.junit5</groupId><artifactId>aggregator</artifactId><version>1.0.0</version></parent>" $pom
+    %pom_add_parent org.fedoraproject.xmvn.junit5:aggregator:any $pom
     # OSGi BSN
     bsn=$(sed 's|/pom.xml$||;s|.*/|org.|;s|-|.|g' <<<"$pom")
     %pom_xpath_inject pom:project "<properties><osgi.bsn>${bsn}</osgi.bsn></properties>" $pom
     # Incorrect scope - API guardian is just annotation, needed only during compilation
     %pom_xpath_set -f "pom:dependency[pom:artifactId='apiguardian-api']/pom:scope" provided $pom
-    sed -i s/runtime/compile/ $pom
+    %pom_xpath_set -f "pom:dependency[pom:scope='runtime']/pom:scope" compile $pom
 done
 
 %pom_remove_parent junit-bom
 
 # Add deps which are shaded by upstream and therefore not present in POMs.
-%pom_add_dep info.picocli:picocli:4.0.4 junit-platform-console
-%pom_add_dep com.univocity:univocity-parsers:2.9.1 junit-jupiter-params
+%pom_add_dep net.sf.jopt-simple:jopt-simple:5.0.4 junit-platform-console
+%pom_add_dep com.univocity:univocity-parsers:2.5.4 junit-jupiter-params
+%pom_add_dep org.opentest4j.reporting:open-test-reporting-events:0.1.0-M2 junit-platform-reporting
+%pom_add_dep info.picocli:picocli:4.7.5 junit-platform-console
+
+# Disable the standalone console (just jar with shaded dependencies)
+%pom_disable_module junit-platform-console-standalone
+# Disable the modules built in -minimal package
+%pom_disable_module junit-platform-commons
+%pom_disable_module junit-jupiter-api
 
 %{mvn_package} :junit-bom bom
 %{mvn_package} :aggregator __noinstall
@@ -179,7 +208,7 @@ done
 %else
 
 %mvn_install
-%jpackage_script org/junit/platform/console/ConsoleLauncher "" "" junit5:junit:opentest4j:picocli %{name} true
+%jpackage_script org/junit/platform/console/ConsoleLauncher "" "" junit5:junit:hamcrest:opentest4j:open-test-reporting:picocli:jopt-simple:assertj-core %{name} true
 %fdupes -s documentation/src/docs/
 
 %endif

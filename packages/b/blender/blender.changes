@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu May  2 13:19:16 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- drop the blender-addons-4.1.1.tar.xz tarball again as it is
+  included in the main tarball, also ensure it wont be included
+  again by accident 
+
+-------------------------------------------------------------------
+Tue Apr 30 23:22:10 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- reenable the cmake_manpage_fix.patch and make it the most minimal
+  version of the patch:
+
+  After some testing with the doc_man target in the GNUMakefile I
+  noticed that the only thing we need is to hardcode the path to
+  blender in the concatenated shell script in the CMakeLists.txt.
+
+  so the new patch is doing exactly that.
+
+  This should make it easier and more robust to forward port.
+
+-------------------------------------------------------------------
+Mon Apr 29 22:16:38 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.1.1:
+  https://www.blender.org/download/releases/4-1/
+  https://developer.blender.org/docs/release_notes/4.1/
+  https://developer.blender.org/docs/release_notes/4.1/corrective_releases/
+- refresh patches:
+  Add_missing_system_error_handler.patch
+- drop patches:
+  aarch64_build_fix.patch
+- bump oidn dependency to >= 2 for the new API
+
+-------------------------------------------------------------------
 Wed Feb 07 16:33:37 UTC 2024 - f.alexander.wilms@gmail.com
 
 - Remove downstream copy of AppStream metainfo file, since Blender

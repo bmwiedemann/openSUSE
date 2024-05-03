@@ -31,4 +31,16 @@
     <comment>- Do not build for Python 3.6, due to no NumPy.</comment>
     <requestid>887461</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bc03e0eeb1e6ae852ff50cc9eb437764</srcmd5>
+    <version>0.2.0.post2</version>
+    <time>1714686525</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2.0.post2:
+  * metadata/build updates
+- switch to PEP517 build
+
+- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>1171423</requestid>
+  </revision>
 </revisionlist>

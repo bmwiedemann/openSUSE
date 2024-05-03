@@ -67,4 +67,23 @@
 - No more greedy globs in %files.</comment>
     <requestid>1164246</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2aa9b65f9b3fdf4786df098521a14216</srcmd5>
+    <version>8.0.1</version>
+    <time>1714686484</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.0.1:
+  * Fix issue where too many arguments were passed to stdlib's
+    operator.attrgetter, operator.itemgetter, and
+    operator.methodcaller when instances of those classes were
+    used as callbacks to functions like map_, filter_, etc. due
+    to a bug introduced in Python 3.12.3 and 3.11.9 that reported
+    an incorrect signature for those operator class instances.
+
+  * Add functions:
+    and xor_by by allowing iteratee argument to be `Any`.
+  - Fix compatibility issue between ``pydash.py_`` / ``pydash._`` and ``typing.Protocol`` + ``typing.runtime_checkable``
+  - Fix regression introduced in ``v4.8.0`` that caused ``merge`` and ``merge_with`` to raise an exception when passing ``None``</comment>
+    <requestid>1171294</requestid>
+  </revision>
 </revisionlist>

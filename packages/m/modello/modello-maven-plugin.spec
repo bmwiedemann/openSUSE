@@ -29,7 +29,6 @@ Source0:        https://repo1.maven.org/maven2/org/codehaus/%{parent}/%{parent}/
 Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
 Patch0:         0001-Fix-ModelloCli-after-moving-from-Plexus-to-JSR330.patch
 Patch1:         0002-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
-Patch2:         0003-Revert-Switch-to-codehaus-plexus-build-api-1.2.0-345.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
@@ -52,9 +51,9 @@ BuildRequires:  mvn(org.codehaus.modello:modello-plugin-velocity) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-xdoc) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-xpp3) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-xsd) = %{version}
+BuildRequires:  mvn(org.codehaus.plexus:plexus-build-api)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.codehaus.plexus:plexus:pom:)
-BuildRequires:  mvn(org.sonatype.plexus:plexus-build-api)
 #!BuildRequires: maven-compiler-plugin-bootstrap
 #!BuildRequires: maven-jar-plugin-bootstrap
 #!BuildRequires: maven-javadoc-plugin-bootstrap
@@ -85,7 +84,6 @@ API documentation for %{name}.
 %setup -q -n %{parent}-%{version}
 %patch -P 0 -p1
 %patch -P 1 -p1
-%patch -P 2 -p1
 cp -p %{SOURCE1} LICENSE
 
 %pom_remove_plugin :maven-site-plugin

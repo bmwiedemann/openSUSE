@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Thu May  2 16:41:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.0.post2:
+  * metadata/build updates
+- switch to PEP517 build
+
+-------------------------------------------------------------------
 Thu Apr 22 06:52:18 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Do not build for Python 3.6, due to no NumPy. 
+- Do not build for Python 3.6, due to no NumPy.
 
 -------------------------------------------------------------------
 Wed May 20 07:26:08 UTC 2020 - Petr Gajdos <pgajdos@suse.com>

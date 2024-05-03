@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           stern
-Version:        1.28.0
+Version:        1.29.0
 Release:        0
 Summary:        Multi pod and container log tailing for Kubernetes
 License:        Apache-2.0
 URL:            https://github.com/stern/stern
 Source:         stern-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.19
+BuildRequires:  go >= 1.22
 
 %description
 Stern allows you to tail multiple pods on Kubernetes and multiple containers within the pod. Each result is color coded for quicker debugging.

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May  2 07:07:02 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.14:
+  * Add icon for "cron.minutely" directory
+  * Bump uzers from 0.11.3 to 0.12.0
+  * Bump libc from 0.2.153 to 0.2.154
+  * Bump unicode-width from 0.1.11 to 0.1.12
+  * Bump palette from 0.7.5 to 0.7.6
+
+-------------------------------------------------------------------
+Thu Apr 25 20:31:46 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.13:
+  * Generate completion/manpage tarballs on release
+
+-------------------------------------------------------------------
 Fri Apr 19 05:20:47 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.11:

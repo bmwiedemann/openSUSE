@@ -74,4 +74,14 @@
 - Update to version 3.34</comment>
     <requestid>1169423</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b92c58d131eec878bdd197d601fa1b69</srcmd5>
+    <version>3.54</version>
+    <time>1714686523</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.54:
+  * Add a DEFAULT_VERSION variable to version.py (bcl)
+  * Deprecate network team options on RHEL 10 (rvykydal)</comment>
+    <requestid>1171420</requestid>
+  </revision>
 </revisionlist>

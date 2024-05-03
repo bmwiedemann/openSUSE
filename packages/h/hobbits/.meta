@@ -1,0 +1,8 @@
+<package name="hobbits" project="openSUSE:Factory">
+  <title>A GUI for bit-based analysis, processing, and visualization</title>
+  <description>A GUI for bit-based analysis, processing, and visualization.
+
+</description>
+  <devel project="editors" package="hobbits"/>
+  <url>https://github.com/Mahlet-Inc/hobbits</url>
+</package>

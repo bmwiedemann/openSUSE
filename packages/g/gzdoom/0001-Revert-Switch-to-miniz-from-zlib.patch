@@ -7,37 +7,37 @@ This reverts commit ba9ce0e83f6e25e3ddef5000bd51d53f2e3947a2.
 ---
  CMakeLists.txt                                    |   13 ++++++++++++-
  src/CMakeLists.txt                                |    4 ++--
- src/common/audio/music/i_music.cpp                |    2 +-
- src/common/engine/serializer.cpp                  |    2 +-
- src/common/filesystem/source/files_decompress.cpp |    2 +-
- src/common/filesystem/source/filesystem.cpp       |    2 +-
- src/common/filesystem/source/resourcefile.cpp     |    2 +-
+ src/common/audio/music/i_music.cpp                |    3 ++-
+ src/common/engine/serializer.cpp                  |    3 ++-
+ src/common/filesystem/source/files_decompress.cpp |    3 ++-
+ src/common/filesystem/source/filesystem.cpp       |    3 ++-
+ src/common/filesystem/source/resourcefile.cpp     |    3 ++-
  src/common/models/model.cpp                       |   13 +++++++++++--
- src/common/platform/win32/i_crash.cpp             |    2 +-
- src/common/textures/m_png.cpp                     |    2 +-
- src/common/thirdparty/m_crc32.h                   |    5 +++--
- src/g_pch.h                                       |    2 +-
- src/g_pch2.h                                      |    2 +-
- src/maploader/glnodes.cpp                         |    2 +-
- src/serializer_doom.cpp                           |    2 +-
+ src/common/platform/win32/i_crash.cpp             |    3 ++-
+ src/common/textures/m_png.cpp                     |    3 ++-
+ src/common/thirdparty/m_crc32.h                   |    6 ++++--
+ src/g_pch.h                                       |    3 ++-
+ src/g_pch2.h                                      |    3 ++-
+ src/maploader/glnodes.cpp                         |    3 ++-
+ src/serializer_doom.cpp                           |    3 ++-
  tools/zipdir/CMakeLists.txt                       |    4 ++--
- tools/zipdir/zipdir.c                             |    2 +-
+ tools/zipdir/zipdir.c                             |    3 ++-
  vcpkg.json                                        |    4 ++++
- 18 files changed, 46 insertions(+), 21 deletions(-)
+ 18 files changed, 59 insertions(+), 21 deletions(-)
 
-Index: gzdoom-g4.11.3/CMakeLists.txt
+Index: gzdoom-g4.12.2/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.11.3.orig/CMakeLists.txt
-+++ gzdoom-g4.11.3/CMakeLists.txt
-@@ -216,6 +216,7 @@ option( NO_OPENAL "Disable OpenAL sound
+--- gzdoom-g4.12.2.orig/CMakeLists.txt
++++ gzdoom-g4.12.2/CMakeLists.txt
+@@ -215,6 +215,7 @@ option( NO_OPENAL "Disable OpenAL sound
  
  find_package( BZip2 )
  find_package( VPX )
 +find_package( ZLIB )
- find_package( WebP )
- if (NOT WebP_FOUND)
- 	include(FindPkgConfig)
-@@ -347,6 +348,7 @@ set( CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE
+ 
+ include( TargetArch )
+ 
+@@ -332,6 +333,7 @@ set( CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE
  set( CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} ${REL_C_FLAGS}" )
  set( CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} ${DEB_C_FLAGS} -D_DEBUG" )
  
@@ -45,7 +45,7 @@ Index: gzdoom-g4.11.3/CMakeLists.txt
  option(FORCE_INTERNAL_BZIP2 "Use internal bzip2")
  option(FORCE_INTERNAL_ASMJIT "Use internal asmjit" ON)
  mark_as_advanced( FORCE_INTERNAL_ASMJIT )
-@@ -360,6 +362,16 @@ set( DRPC_INCLUDE_DIR "-I/ignore" )
+@@ -348,6 +350,16 @@ set( DRPC_INCLUDE_DIR "-I/ignore" )
  set( DRPC_LIBRARIES -ldiscord-rpc )
  set( DRPC_LIBRARY -ldiscord-rpc )
  
@@ -62,19 +62,19 @@ Index: gzdoom-g4.11.3/CMakeLists.txt
  if( HAVE_VM_JIT AND UNIX )
  	check_symbol_exists( "backtrace" "execinfo.h" HAVE_BACKTRACE )
  	if( NOT HAVE_BACKTRACE )
-@@ -417,7 +429,6 @@ install(DIRECTORY docs/
- 
+@@ -406,7 +418,6 @@ install(DIRECTORY docs/
  option( DYN_OPENAL "Dynamically load OpenAL" ON )
  
+ add_subdirectory( libraries/lzma )
 -add_subdirectory( libraries/miniz )
  add_subdirectory( tools )
  add_subdirectory( wadsrc )
  add_subdirectory( wadsrc_bm )
-Index: gzdoom-g4.11.3/src/CMakeLists.txt
+Index: gzdoom-g4.12.2/src/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.11.3.orig/src/CMakeLists.txt
-+++ gzdoom-g4.11.3/src/CMakeLists.txt
-@@ -344,7 +344,7 @@ add_custom_target( revision_check ALL
+--- gzdoom-g4.12.2.orig/src/CMakeLists.txt
++++ gzdoom-g4.12.2/src/CMakeLists.txt
+@@ -319,7 +319,7 @@ add_custom_target( revision_check ALL
  
  # required libraries
  
@@ -83,84 +83,89 @@ Index: gzdoom-g4.11.3/src/CMakeLists.txt
  if (HAVE_VULKAN)
  	list( APPEND PROJECT_LIBRARIES "zvulkan" )
  endif()
-@@ -412,7 +412,7 @@ if (TARGET WebP::webp)
- 	endif()
+@@ -383,7 +383,7 @@ else()
+ 	message( SEND_ERROR "Could not find libvpx" )
  endif()
  
--include_directories( SYSTEM "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIRS}" "${ZMUSIC_INCLUDE_DIR}" "${DRPC_INCLUDE_DIR}")
-+include_directories( SYSTEM "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIRS}" "${ZMUSIC_INCLUDE_DIR}" "${DRPC_INCLUDE_DIR}")
+-include_directories( SYSTEM "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIR}" "${ZMUSIC_INCLUDE_DIR}" "${DRPC_INCLUDE_DIR}")
++include_directories( SYSTEM "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIR}" "${ZMUSIC_INCLUDE_DIR}" "${DRPC_INCLUDE_DIR}")
  
  if( ${HAVE_VM_JIT} )
  	add_definitions( -DHAVE_VM_JIT )
-Index: gzdoom-g4.11.3/src/common/audio/music/i_music.cpp
+Index: gzdoom-g4.12.2/src/common/audio/music/i_music.cpp
 ===================================================================
---- gzdoom-g4.11.3.orig/src/common/audio/music/i_music.cpp
-+++ gzdoom-g4.11.3/src/common/audio/music/i_music.cpp
-@@ -37,7 +37,7 @@
+--- gzdoom-g4.12.2.orig/src/common/audio/music/i_music.cpp
++++ gzdoom-g4.12.2/src/common/audio/music/i_music.cpp
+@@ -37,7 +37,8 @@
  #include <sys/wait.h>
  #endif
  
 -#include <miniz.h>
++#include <assert.h>
 +#include <zlib.h>
  
  #include <zmusic.h>
  #include "filesystem.h"
-Index: gzdoom-g4.11.3/src/common/engine/serializer.cpp
+Index: gzdoom-g4.12.2/src/common/engine/serializer.cpp
 ===================================================================
---- gzdoom-g4.11.3.orig/src/common/engine/serializer.cpp
-+++ gzdoom-g4.11.3/src/common/engine/serializer.cpp
-@@ -38,7 +38,7 @@
+--- gzdoom-g4.12.2.orig/src/common/engine/serializer.cpp
++++ gzdoom-g4.12.2/src/common/engine/serializer.cpp
+@@ -37,7 +37,8 @@
  #define RAPIDJSON_HAS_CXX11_RANGE_FOR 1
  #define RAPIDJSON_PARSE_DEFAULT_FLAGS kParseFullPrecisionFlag
  
 -#include <miniz.h>
++#include <assert.h>
 +#include <zlib.h>
  #include "rapidjson/rapidjson.h"
  #include "rapidjson/writer.h"
  #include "rapidjson/prettywriter.h"
-Index: gzdoom-g4.11.3/src/common/filesystem/source/files_decompress.cpp
+Index: gzdoom-g4.12.2/src/common/filesystem/source/files_decompress.cpp
 ===================================================================
---- gzdoom-g4.11.3.orig/src/common/filesystem/source/files_decompress.cpp
-+++ gzdoom-g4.11.3/src/common/filesystem/source/files_decompress.cpp
-@@ -36,7 +36,7 @@
- // Caution: LzmaDec also pulls in windows.h!
- #define NOMINMAX
- #include "LzmaDec.h"
+--- gzdoom-g4.12.2.orig/src/common/filesystem/source/files_decompress.cpp
++++ gzdoom-g4.12.2/src/common/filesystem/source/files_decompress.cpp
+@@ -39,7 +39,8 @@
+ #include "Xz.h"
+ // CRC table needs to be generated prior to reading XZ compressed files.
+ #include "7zCrc.h"
 -#include <miniz.h>
++#include <assert.h>
 +#include <zlib.h>
  #include <bzlib.h>
  #include <algorithm>
  #include <stdexcept>
-Index: gzdoom-g4.11.3/src/common/filesystem/source/filesystem.cpp
+Index: gzdoom-g4.12.2/src/common/filesystem/source/filesystem.cpp
 ===================================================================
---- gzdoom-g4.11.3.orig/src/common/filesystem/source/filesystem.cpp
-+++ gzdoom-g4.11.3/src/common/filesystem/source/filesystem.cpp
-@@ -36,7 +36,7 @@
+--- gzdoom-g4.12.2.orig/src/common/filesystem/source/filesystem.cpp
++++ gzdoom-g4.12.2/src/common/filesystem/source/filesystem.cpp
+@@ -36,7 +36,8 @@
  
  // HEADER FILES ------------------------------------------------------------
  
 -#include <miniz.h>
++#include <assert.h>
 +#include <zlib.h>
  #include <stdlib.h>
  #include <ctype.h>
  #include <string.h>
-Index: gzdoom-g4.11.3/src/common/filesystem/source/resourcefile.cpp
+Index: gzdoom-g4.12.2/src/common/filesystem/source/resourcefile.cpp
 ===================================================================
---- gzdoom-g4.11.3.orig/src/common/filesystem/source/resourcefile.cpp
-+++ gzdoom-g4.11.3/src/common/filesystem/source/resourcefile.cpp
-@@ -34,7 +34,7 @@
- **
+--- gzdoom-g4.12.2.orig/src/common/filesystem/source/resourcefile.cpp
++++ gzdoom-g4.12.2/src/common/filesystem/source/resourcefile.cpp
+@@ -35,7 +35,8 @@
  */
  
+ #include <algorithm>
 -#include <miniz.h>
++#include <assert.h>
 +#include <zlib.h>
- #include "resourcefile_internal.h"
+ #include "resourcefile.h"
  #include "md5.hpp"
  #include "fs_stringpool.h"
-Index: gzdoom-g4.11.3/src/common/models/model.cpp
+Index: gzdoom-g4.12.2/src/common/models/model.cpp
 ===================================================================
---- gzdoom-g4.11.3.orig/src/common/models/model.cpp
-+++ gzdoom-g4.11.3/src/common/models/model.cpp
+--- gzdoom-g4.12.2.orig/src/common/models/model.cpp
++++ gzdoom-g4.12.2/src/common/models/model.cpp
 @@ -25,7 +25,6 @@
  ** General model handling code
  **
@@ -169,7 +174,7 @@ Index: gzdoom-g4.11.3/src/common/models/model.cpp
  
  #include "filesystem.h"
  #include "cmdlib.h"
-@@ -133,7 +132,17 @@ FTextureID LoadSkin(const char * path, c
+@@ -132,7 +131,17 @@ FTextureID LoadSkin(const char * path, c
  
  int ModelFrameHash(FSpriteModelFrame * smf)
  {
@@ -188,41 +193,44 @@ Index: gzdoom-g4.11.3/src/common/models/model.cpp
  }
  
  //===========================================================================
-Index: gzdoom-g4.11.3/src/common/platform/win32/i_crash.cpp
+Index: gzdoom-g4.12.2/src/common/platform/win32/i_crash.cpp
 ===================================================================
---- gzdoom-g4.11.3.orig/src/common/platform/win32/i_crash.cpp
-+++ gzdoom-g4.11.3/src/common/platform/win32/i_crash.cpp
-@@ -68,7 +68,7 @@
+--- gzdoom-g4.12.2.orig/src/common/platform/win32/i_crash.cpp
++++ gzdoom-g4.12.2/src/common/platform/win32/i_crash.cpp
+@@ -68,7 +68,8 @@
  #include "i_mainwindow.h"
  
  #include <time.h>
 -#include <miniz.h>
++#include <assert.h>
 +#include <zlib.h>
  
  // MACROS ------------------------------------------------------------------
  
-Index: gzdoom-g4.11.3/src/common/textures/m_png.cpp
+Index: gzdoom-g4.12.2/src/common/textures/m_png.cpp
 ===================================================================
---- gzdoom-g4.11.3.orig/src/common/textures/m_png.cpp
-+++ gzdoom-g4.11.3/src/common/textures/m_png.cpp
-@@ -36,7 +36,7 @@
+--- gzdoom-g4.12.2.orig/src/common/textures/m_png.cpp
++++ gzdoom-g4.12.2/src/common/textures/m_png.cpp
+@@ -36,7 +36,8 @@
  
  #include <algorithm>
  #include <stdlib.h>
 -#include <miniz.h>
++#include <assert.h>
 +#include <zlib.h>
  #include <stdint.h>
  #ifdef _MSC_VER
  #include <malloc.h>		// for alloca()
-Index: gzdoom-g4.11.3/src/common/thirdparty/m_crc32.h
+Index: gzdoom-g4.12.2/src/common/thirdparty/m_crc32.h
 ===================================================================
---- gzdoom-g4.11.3.orig/src/common/thirdparty/m_crc32.h
-+++ gzdoom-g4.11.3/src/common/thirdparty/m_crc32.h
-@@ -32,11 +32,12 @@
+--- gzdoom-g4.12.2.orig/src/common/thirdparty/m_crc32.h
++++ gzdoom-g4.12.2/src/common/thirdparty/m_crc32.h
+@@ -32,11 +32,13 @@
  **
  */
  #pragma once 
 -#include <miniz.h>
++#include <assert.h>
 +#include <zlib.h>
  #include <stdint.h>
  
@@ -233,91 +241,96 @@ Index: gzdoom-g4.11.3/src/common/thirdparty/m_crc32.h
  inline uint32_t CalcCRC32 (const uint8_t *buf, unsigned int len)
  {
  	return crc32 (0, buf, len);
-Index: gzdoom-g4.11.3/src/g_pch.h
+Index: gzdoom-g4.12.2/src/g_pch.h
 ===================================================================
---- gzdoom-g4.11.3.orig/src/g_pch.h
-+++ gzdoom-g4.11.3/src/g_pch.h
-@@ -10,7 +10,7 @@
+--- gzdoom-g4.12.2.orig/src/g_pch.h
++++ gzdoom-g4.12.2/src/g_pch.h
+@@ -10,7 +10,8 @@
  #include <errno.h>
  #include <ctype.h>
  #include <stdint.h>
 -#include <miniz.h>
++#include <assert.h>
 +#include <zlib.h>
  #include <new>
  #include <algorithm>
  #include <forward_list>
-Index: gzdoom-g4.11.3/src/g_pch2.h
+Index: gzdoom-g4.12.2/src/g_pch2.h
 ===================================================================
---- gzdoom-g4.11.3.orig/src/g_pch2.h
-+++ gzdoom-g4.11.3/src/g_pch2.h
-@@ -11,7 +11,7 @@
+--- gzdoom-g4.12.2.orig/src/g_pch2.h
++++ gzdoom-g4.12.2/src/g_pch2.h
+@@ -11,7 +11,8 @@
  #include <errno.h>
  #include <ctype.h>
  #include <stdint.h>
 -#include <miniz.h>
++#include <assert.h>
 +#include <zlib.h>
  #include <new>
  #include <algorithm>
  #include <sys/stat.h>
-Index: gzdoom-g4.11.3/src/maploader/glnodes.cpp
+Index: gzdoom-g4.12.2/src/maploader/glnodes.cpp
 ===================================================================
---- gzdoom-g4.11.3.orig/src/maploader/glnodes.cpp
-+++ gzdoom-g4.11.3/src/maploader/glnodes.cpp
-@@ -42,7 +42,7 @@
+--- gzdoom-g4.12.2.orig/src/maploader/glnodes.cpp
++++ gzdoom-g4.12.2/src/maploader/glnodes.cpp
+@@ -42,7 +42,8 @@
  
  #endif
  
 -#include <miniz.h>
++#include <assert.h>
 +#include <zlib.h>
  
  #include "m_argv.h"
  #include "c_dispatch.h"
-Index: gzdoom-g4.11.3/src/serializer_doom.cpp
+Index: gzdoom-g4.12.2/src/serializer_doom.cpp
 ===================================================================
---- gzdoom-g4.11.3.orig/src/serializer_doom.cpp
-+++ gzdoom-g4.11.3/src/serializer_doom.cpp
-@@ -38,7 +38,7 @@
+--- gzdoom-g4.12.2.orig/src/serializer_doom.cpp
++++ gzdoom-g4.12.2/src/serializer_doom.cpp
+@@ -38,7 +38,8 @@
  #define RAPIDJSON_HAS_CXX11_RANGE_FOR 1
  #define RAPIDJSON_PARSE_DEFAULT_FLAGS kParseFullPrecisionFlag
  
 -#include <miniz.h>
++#include <assert.h>
 +#include <zlib.h>
  #include "rapidjson/rapidjson.h"
  #include "rapidjson/writer.h"
  #include "rapidjson/prettywriter.h"
-Index: gzdoom-g4.11.3/tools/zipdir/CMakeLists.txt
+Index: gzdoom-g4.12.2/tools/zipdir/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.11.3.orig/tools/zipdir/CMakeLists.txt
-+++ gzdoom-g4.11.3/tools/zipdir/CMakeLists.txt
+--- gzdoom-g4.12.2.orig/tools/zipdir/CMakeLists.txt
++++ gzdoom-g4.12.2/tools/zipdir/CMakeLists.txt
 @@ -1,9 +1,9 @@
  cmake_minimum_required( VERSION 3.16 )
  
  if( NOT CMAKE_CROSSCOMPILING )
--	include_directories( SYSTEM "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIRS}" )
-+	include_directories( SYSTEM "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIRS}" )
+-	include_directories( SYSTEM "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIR}" )
++	include_directories( SYSTEM "${ZLIB_INCLUDE_DIR} ${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIR}" )
  	add_executable( zipdir
  		zipdir.c )
--	target_link_libraries( zipdir miniz ${BZIP2_LIBRARIES} ${LZMA_LDFLAGS} )
-+	target_link_libraries( zipdir ${ZLIB_LIBRARIES} ${BZIP2_LIBRARIES} ${LZMA_LDFLAGS} )
+-	target_link_libraries( zipdir miniz ${BZIP2_LIBRARIES} lzma )
++	target_link_libraries( zipdir ${ZLIB_LIBRARIES} ${BZIP2_LIBRARIES} lzma )
  	set( CROSS_EXPORTS ${CROSS_EXPORTS} zipdir PARENT_SCOPE )
  endif()
-Index: gzdoom-g4.11.3/tools/zipdir/zipdir.c
+Index: gzdoom-g4.12.2/tools/zipdir/zipdir.c
 ===================================================================
---- gzdoom-g4.11.3.orig/tools/zipdir/zipdir.c
-+++ gzdoom-g4.11.3/tools/zipdir/zipdir.c
-@@ -46,7 +46,7 @@
+--- gzdoom-g4.12.2.orig/tools/zipdir/zipdir.c
++++ gzdoom-g4.12.2/tools/zipdir/zipdir.c
+@@ -46,7 +46,8 @@
  #include <errno.h>
  #include <stdlib.h>
  #include <time.h>
 -#include <miniz.h>
-+#include "zlib.h"
++#include <assert.h>
++#include <zlib.h>
  #include "bzlib.h"
  #include "LzmaEnc.h"
  #include "7zVersion.h"
-Index: gzdoom-g4.11.3/vcpkg.json
+Index: gzdoom-g4.12.2/vcpkg.json
 ===================================================================
---- gzdoom-g4.11.3.orig/vcpkg.json
-+++ gzdoom-g4.11.3/vcpkg.json
+--- gzdoom-g4.12.2.orig/vcpkg.json
++++ gzdoom-g4.12.2/vcpkg.json
 @@ -28,6 +28,10 @@
      },
      "dependencies": [
@@ -327,5 +340,5 @@ Index: gzdoom-g4.11.3/vcpkg.json
 +        },
 +        {
              "name": "bzip2",
-             "platform": "!windows | (windows & static & staticcrt)"
+             "platform": "(!windows & static) | (windows & static & staticcrt)"
          },

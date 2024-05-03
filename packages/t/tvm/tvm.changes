@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  2 08:15:45 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- No longer use GCC 12 for building 
+
+-------------------------------------------------------------------
 Wed Jan 24 16:17:44 UTC 2024 - Christian Goll <cgoll@suse.com>
 
 - Update to 0.14.0: 

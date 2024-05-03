@@ -17,7 +17,7 @@
 
 
 Name:           python-paho-mqtt
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        MQTT version 3.11 client class
 License:        EPL-1.0

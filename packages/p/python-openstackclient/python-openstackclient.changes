@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu May  2 16:05:27 UTC 2024 - cloud-devel@suse.de
+
+- update to version 6.6.0
+  - reno: Update master for unmaintained/victoria
+  - Update python classifier in setup.cfg
+  - Adds CLI support for ``glance md-object-update``
+  - Correct error message for "create server --wait"
+  - compute: Fix formatting of 'server show'
+  - tests: Remove unused flag
+  - test: Ignore 'OS_' environment variables
+  - doc: magnumclient provides a OSC plugin
+  - network: Clarify purpose of default sg rules
+  - Introduce `schema_version` in the federated attribute mapping API
+  - doc: Remove RSD subcommand
+  - Fix --use-prefix-delegation subnet create argument
+  - image: Fix the default description of image visibility
+  - doc: Remove Searchlight subcommands
+  - Use CommandError, not SystemExit, to exit
+  - Adding CLI command for ``glance member-get``
+  - Remove unnecessary file
+  - image: Trivial fixes
+  - tests: Enable logging fixture
+  - pre-commit: Bump linter versions
+  - parseactions: Use ArgumentError, not ArgumentTypeError
+  - Doc: Fix volume snapshot commands
+  - Explicitly specify namespace fields for output
+  - doc: Add manilaclient as a OSC plugin
+  - compute: Address bug in shelve offload logic
+  - [codespell] fix typos in doc,tests and help messages
+  - tests: Remove prints
+  - compute: Add 'server create --server-group' option
+  - trivial: Fix typo
+  - doc: Drop tripleoclient
+  - Revert "Temporarily drop aodhclient from doc build"
+  - reno: Update master for unmaintained/yoga
+  - reno: Update master for unmaintained/xena
+  - Add "hardware_offload_type" attribute to "port"
+  - reno: Update master for unmaintained/wallaby
+  - Fix clearing of dns_domain and description on a network by setting to empty strings
+  - trivial: Don't ignore missing resources
+  - Fix availability zone list command
+  - trivial: Place positional opts last
+
+-------------------------------------------------------------------
 Sun Jan 14 18:03:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.4.0:

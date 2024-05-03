@@ -1,0 +1,154 @@
+-------------------------------------------------------------------
+Tue Apr 30 06:38:06 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.54.1
+  * add versionless Qt build compatibility.
+
+-------------------------------------------------------------------
+Fri Feb 17 08:58:11 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.54.0
+  Features
+  * add Edit plugin.
+
+-------------------------------------------------------------------
+Sat Jun 18 17:09:17 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.53.2
+  Bug Fixes
+  * correctly display kaitai value instances for #145
+  * fix kaitai plugin byte and string array sizes.
+
+-------------------------------------------------------------------
+Sat Nov 27 16:40:29 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.53.0
+  Features
+  * add built-in batches.
+  * add config setting for skipping delete confirmation.
+  * replace FFTW with PFFFT and improve FFT UI and error reporting
+
+-------------------------------------------------------------------
+Thu Oct  7 19:40:51 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.52.0
+  Bug Fixes
+  * code quality improvements.
+  * reimplementing the libusb-1.0 into the include statement.
+  * removing trouble causing lines in USBreader.
+  * resolve parser class names for kaitai specs with underscores.
+  Features
+  * add USB reader importer plugin.
+  * UI for USB reader plugin is almost done.
+  * USB reader plugin, device, interface, alternate setting, and
+    endpoint selectors.
+
+-------------------------------------------------------------------
+Tue Aug 24 06:20:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.51.1
+  Bug fixes
+  * correctly reload custom kaitai KSY after it is edited
+  * show type for array, byte, and string in kaitai display
+
+-------------------------------------------------------------------
+Sun Aug 22 19:03:23 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.50.0
+  Bug Fixes
+  * [core] BitArray fromString parsing error reports.
+  * improve kaitai parser parser.
+  Features
+  * big fixes and improvements to kaitai
+- Update patch:
+  * hobbits-dont-hardcode-python3-version.patch
+
+-------------------------------------------------------------------
+Mon Jun  7 09:16:04 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * hobbits-dont-hardcode-python3-version.patch
+
+-------------------------------------------------------------------
+Sun Jun  6 20:01:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove useless ldconfig calls: there are libs with SONAME links.
+
+-------------------------------------------------------------------
+Fri Jun  4 20:29:41 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.50.0
+  Features
+  * better file dialog behavior during and between runs.
+- Update to version 0.49.0
+  Bug Fixes
+  * [plugin] re-enable autocorrelation in Width Framer.
+  Features
+  * add Bit Container import/export plugin.
+
+-------------------------------------------------------------------
+Sat May 22 09:49:23 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.48.1
+  Bug Fixes
+  * release artifact paths.
+- Update to version 0.48.0
+  Bug Fixes
+  * [plugin] json error parsing for kaitai compilers.
+  * correctly load config in standalone builds.
+  * correctly register Range and RangeHighlight meta types.
+  * correctly resize BitArrays when setBytes is called.
+  * prevent potential QFutureWatcher race conditions.
+  Features
+  * add basic "What's This?" help for plugin widgets.
+  * arbitrary view splitting and full view persistence for.
+
+-------------------------------------------------------------------
+Thu May 13 16:30:56 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.47.0
+  * improve plugin parameter specification (helps #84) (cef1055)
+
+-------------------------------------------------------------------
+Mon Apr 26 05:58:50 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.46.8
+  * handle bad display parameters without crashing #99 (7c3c587)
+
+-------------------------------------------------------------------
+Sat Apr 24 18:49:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.46.7
+  * appropriately offset imported sub-sections in kaitai (#93)
+    (03067d4)
+
+-------------------------------------------------------------------
+Sat Apr 24 08:02:51 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.46.6
+  * rollback offset changes in kaitai struct plugin (e2ac3c3)
+
+-------------------------------------------------------------------
+Fri Apr 23 19:45:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.46.5
+  * actually synchronize parameter editor preview calls
+  * track section offsets in kaitai parsing for #93 (ccd01f3)
+
+-------------------------------------------------------------------
+Tue Apr 13 14:37:04 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.46.3
+  * swapped mac and windows binary releases.
+
+-------------------------------------------------------------------
+Fri Mar 19 20:30:36 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.46.3
+  * correctly enforce FFTW thread-safety.
+  * load python plugins correctly.
+
+-------------------------------------------------------------------
+Sun Feb  7 16:03:34 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.46.2

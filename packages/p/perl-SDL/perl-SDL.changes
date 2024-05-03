@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  1 19:55:41 UTC 2024 - munix9@googlemail.com
+
+- Add 299.patch: Fix implicit declaration of _calc_offset,
+  also required for gcc 14 (gh#PerlGameDev/SDL#299).
+
+-------------------------------------------------------------------
 Mon Apr 15 18:43:39 UTC 2024 - munix9@googlemail.com
 
 - Add 308.patch: Fix reference-counting in set_event_filter

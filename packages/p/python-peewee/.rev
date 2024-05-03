@@ -324,4 +324,19 @@
   * Do not specify a `reconnect=` argument to `ping()` if using MySQL 8.x.</comment>
     <requestid>1146064</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d6b07eebe02e64283f731ec30f0da36e</srcmd5>
+    <version>3.17.3</version>
+    <time>1714686522</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.17.3:
+  * Better fix for #2871 (extraneous queries when coercing query
+    to list), and new fix in #2872 for regression in truthiness
+    of cursor.
+  * Full support for `psycopg3`.
+  * Basic support for Sqlite `jsonb`.
+  * Fix bug where calling `list(query)` resulted in extra
+    queries, #2871</comment>
+    <requestid>1171418</requestid>
+  </revision>
 </revisionlist>

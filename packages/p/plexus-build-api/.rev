@@ -39,4 +39,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148111</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0664baa83bb28c39297c93045e1b1c48</srcmd5>
+    <version>1.2.0</version>
+    <time>1714686428</time>
+    <user>anag+factory</user>
+    <comment>plexus-build-api 1.2.0 + dependent changes</comment>
+    <requestid>1171159</requestid>
+  </revision>
 </revisionlist>

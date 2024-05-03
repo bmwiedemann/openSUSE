@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May  1 15:05:30 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20240501.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20240501
+  * Add JRuby 9.4.7.0 by @headius in #2375
+  * Upgrade to OpenSSL 3.1.5 by @mislav in #2377
+  * rbenv install: error out instead of prompting in non-interactive mode by @mislav in #2378
+
+-------------------------------------------------------------------
 Tue Apr 23 16:33:00 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20240423.

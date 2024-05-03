@@ -1,0 +1,8 @@
+<package name="nginx-module-echo" project="openSUSE:Factory">
+  <title>echo-nginx-module</title>
+  <description>
+Brings &quot;echo&quot;, &quot;sleep&quot;, &quot;time&quot;, &quot;exec&quot; and more shell-style goodies to Nginx config file.
+  </description>
+  <devel project="server:http" package="nginx-module-echo"/>
+  <url>https://github.com/openresty/echo-nginx-module</url>
+</package>

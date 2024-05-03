@@ -1,7 +1,7 @@
 #
 # spec file for package gzdoom
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gzdoom
-Version:        4.11.3
+Version:        4.12.2
 Release:        0
 Summary:        A DOOM source port with graphic and modding extensions
 License:        GPL-3.0-only
@@ -27,12 +27,13 @@ URL:            https://zdoom.org/
 #Git-Clone:     https://github.com/zdoom/gzdoom
 Source:         https://github.com/zdoom/gzdoom/archive/g%version.tar.gz
 Patch1:         gzdoom-waddir.patch
-Patch2:         gzdoom-lzma.patch
-Patch6:         gzdoom-discord.patch
-Patch8:         0001-removed-some-32bit-only-CMake-code.patch
-Patch9:         0001-Revert-use-static_assert-to-make-32-bit-builds-fail.patch
-Patch10:        0001-Revert-Switch-to-miniz-from-zlib.patch
-Patch11:        more-32bit.patch
+Patch2:         gzdoom-discord.patch
+Patch3:         0001-Revert-Switch-to-miniz-from-zlib.patch
+Patch4:         gzdoom-lzma-simd.patch
+Patch5:         gzdoom-lzma.patch
+Patch6:         0001-removed-some-32bit-only-CMake-code.patch
+Patch7:         0001-Revert-use-static_assert-to-make-32-bit-builds-fail.patch
+Patch8:         more-32bit.patch
 BuildRequires:  cmake >= 2.8.7
 BuildRequires:  discord-rpc-devel
 BuildRequires:  gcc-c++
@@ -41,7 +42,6 @@ BuildRequires:  pkg-config
 BuildRequires:  unzip
 BuildRequires:  zmusic-devel
 BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(clzma) >= 17.01
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -50,14 +50,19 @@ BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl2) >= 2.0.6
 BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(zlib)
-Provides:       bundled(glslang) = 11.10.0
-Provides:       bundled(vulkan) = 1.2.189.1
-Suggests:       freedoom
+%if 0%{?suse_version} >= 1599
+BuildRequires:  pkgconfig(clzma) >= 23.01
+%else
+Provides:       bundled(clzma) = 23.01
+%endif
 Provides:       qzdoom = 1.3.0
 Provides:       zdoom = 2.8.1
 Provides:       bundled(gdtoa)
+Provides:       bundled(glslang) = 11.10.0
 Provides:       bundled(re2c) = 0.16.0
+Provides:       bundled(vulkan) = 1.2.189.1
 Provides:       bundled(xbrz) = 1.8
+Suggests:       freedoom
 
 %description
 GZDoom is a port (a modification) of the original Doom source code, featuring:
@@ -69,10 +74,15 @@ GZDoom is a port (a modification) of the original Doom source code, featuring:
   ZScript, and various modding features regarding actors and scenery.
 * Demo record/playback of classic and Boom demos is not supported.
 
-The executables hard-require SSE2 on i686 currently.
+%ifarch %ix86
+SSE2 is a hard requirement even on 32-bit x86.
+%endif
 
 %prep
 %autosetup -n %name-g%version -p1
+%if 0%{?suse_version} < 1599
+%patch -P 5 -R -p1
+%endif
 perl -i -pe 's{__DATE__}{"does not matter when"}g' src/common/platform/posix/sdl/i_main.cpp
 perl -i -pe 's{<unknown version>}{%version}g' tools/updaterevision/UpdateRevision.cmake
 

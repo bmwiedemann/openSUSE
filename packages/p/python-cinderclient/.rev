@@ -845,4 +845,25 @@
   - Add volume reimage command</comment>
     <requestid>1073024</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>0c57905a04a7fc1b15489cc4ad41a25b</srcmd5>
+    <version>9.5.0</version>
+    <time>1714686518</time>
+    <user>anag+factory</user>
+    <comment>- update to version 9.5.0
+  - Update master for stable/2023.1
+  - Use generic testing template
+  - Update master for stable/2023.2
+  - Add Python 3.10 to setup.cfg metadata
+  - Mock sleep for client tests
+  - Add os-extend_volume_completion volume action.
+  - Use tox 4
+  - reno: Update master for yoga Unmaintained status
+  - Honour all_tenants in consistency group list
+  - Remove USE_PYTHON3 setting from .zuul.yaml
+  - Use tox 4.11.0
+  - Update python classifier in setup.cfg
+  - Update functional jobs for 2023.2</comment>
+    <requestid>1171412</requestid>
+  </revision>
 </revisionlist>

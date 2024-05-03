@@ -26,10 +26,12 @@ URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/F/FR/FROGGS/%{cpan_name}-%{version}.tar.gz
 Source1:        perl-SDL.rpmlintrc
 Source2:        cpanspec.yml
+# PATCH-FIX-UPSTREAM 299.patch -- based on PR 299
+Patch0:         https://patch-diff.githubusercontent.com/raw/PerlGameDev/SDL/pull/299.patch
 # PATCH-FIX-UPSTREAM 304.patch -- based on PR 304
-Patch0:         https://patch-diff.githubusercontent.com/raw/PerlGameDev/SDL/pull/304.patch
+Patch1:         https://patch-diff.githubusercontent.com/raw/PerlGameDev/SDL/pull/304.patch
 # PATCH-FIX-UPSTREAM 308.patch -- based on PR 308
-Patch1:         https://patch-diff.githubusercontent.com/raw/PerlGameDev/SDL/pull/308.patch
+Patch2:         https://patch-diff.githubusercontent.com/raw/PerlGameDev/SDL/pull/308.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Alien::SDL) >= 1.446

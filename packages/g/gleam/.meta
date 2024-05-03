@@ -1,0 +1,6 @@
+<package name="gleam" project="openSUSE:Factory">
+  <title>A friendly language for building type-safe, scalable systems! </title>
+  <description>The power of a type system, the expressiveness of functional programming, and the reliability of the highly concurrent, fault tolerant Erlang runtime, with a familiar and modern syntax. </description>
+  <devel project="devel:languages:erlang" package="gleam"/>
+  <url>https://gleam.run/</url>
+</package>

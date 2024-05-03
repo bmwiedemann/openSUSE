@@ -1,0 +1,165 @@
+From 288fa4bafe414f26c99687b467feb25f512cb87d Mon Sep 17 00:00:00 2001
+From: Marian Koncek <mkoncek@redhat.com>
+Date: Mon, 27 Feb 2023 14:39:29 +0100
+Subject: [PATCH 1/3] Drop transitive requirement on apiguardian
+
+---
+ .../src/module/org.junit.jupiter.api/module-info.java           | 2 +-
+ .../module/org.junit.jupiter.migrationsupport/module-info.java  | 2 +-
+ .../src/module/org.junit.jupiter.params/module-info.java        | 2 +-
+ .../src/module/org.junit.platform.commons/module-info.java      | 2 +-
+ .../src/module/org.junit.platform.engine/module-info.java       | 2 +-
+ .../src/module/org.junit.platform.launcher/module-info.java     | 2 +-
+ .../src/module/org.junit.platform.reporting/module-info.java    | 2 +-
+ .../src/module/org.junit.platform.runner/module-info.java       | 2 +-
+ .../src/module/org.junit.platform.suite.api/module-info.java    | 2 +-
+ .../module/org.junit.platform.suite.commons/module-info.java    | 2 +-
+ .../src/module/org.junit.platform.testkit/module-info.java      | 2 +-
+ 11 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/junit-jupiter-api/src/module/org.junit.jupiter.api/module-info.java b/junit-jupiter-api/src/module/org.junit.jupiter.api/module-info.java
+index b6856c78a1..25a1523e0f 100644
+--- a/junit-jupiter-api/src/module/org.junit.jupiter.api/module-info.java
++++ b/junit-jupiter-api/src/module/org.junit.jupiter.api/module-info.java
+@@ -12,7 +12,7 @@
+  * Defines JUnit Jupiter API for writing tests.
+  */
+ module org.junit.jupiter.api {
+-	requires static transitive org.apiguardian.api;
++	requires static org.apiguardian.api;
+ 	requires transitive org.junit.platform.commons;
+ 	requires transitive org.opentest4j;
+ 
+diff --git a/junit-jupiter-migrationsupport/src/module/org.junit.jupiter.migrationsupport/module-info.java b/junit-jupiter-migrationsupport/src/module/org.junit.jupiter.migrationsupport/module-info.java
+index 3ace009eb0..25a86fabf4 100644
+--- a/junit-jupiter-migrationsupport/src/module/org.junit.jupiter.migrationsupport/module-info.java
++++ b/junit-jupiter-migrationsupport/src/module/org.junit.jupiter.migrationsupport/module-info.java
+@@ -15,7 +15,7 @@
+  */
+ module org.junit.jupiter.migrationsupport {
+ 	requires transitive junit; // 4
+-	requires static transitive org.apiguardian.api;
++	requires static org.apiguardian.api;
+ 	requires transitive org.junit.jupiter.api;
+ 	requires org.junit.platform.commons;
+ 
+diff --git a/junit-jupiter-params/src/module/org.junit.jupiter.params/module-info.java b/junit-jupiter-params/src/module/org.junit.jupiter.params/module-info.java
+index 7f3ea0550c..572e8ed019 100644
+--- a/junit-jupiter-params/src/module/org.junit.jupiter.params/module-info.java
++++ b/junit-jupiter-params/src/module/org.junit.jupiter.params/module-info.java
+@@ -14,7 +14,7 @@
+  * @since 5.0
+  */
+ module org.junit.jupiter.params {
+-	requires static transitive org.apiguardian.api;
++	requires static org.apiguardian.api;
+ 	requires transitive org.junit.jupiter.api;
+ 	requires transitive org.junit.platform.commons;
+ 
+diff --git a/junit-platform-commons/src/module/org.junit.platform.commons/module-info.java b/junit-platform-commons/src/module/org.junit.platform.commons/module-info.java
+index f33ffd314f..c25315a6a2 100644
+--- a/junit-platform-commons/src/module/org.junit.platform.commons/module-info.java
++++ b/junit-platform-commons/src/module/org.junit.platform.commons/module-info.java
+@@ -16,7 +16,7 @@
+ module org.junit.platform.commons {
+ 	requires java.logging;
+ 	requires java.management; // needed by RuntimeUtils to determine input arguments
+-	requires static transitive org.apiguardian.api;
++	requires static org.apiguardian.api;
+ 
+ 	exports org.junit.platform.commons;
+ 	exports org.junit.platform.commons.annotation;
+diff --git a/junit-platform-engine/src/module/org.junit.platform.engine/module-info.java b/junit-platform-engine/src/module/org.junit.platform.engine/module-info.java
+index 46c2069448..f359539a76 100644
+--- a/junit-platform-engine/src/module/org.junit.platform.engine/module-info.java
++++ b/junit-platform-engine/src/module/org.junit.platform.engine/module-info.java
+@@ -17,7 +17,7 @@
+  * @since 1.0
+  */
+ module org.junit.platform.engine {
+-	requires static transitive org.apiguardian.api;
++	requires static org.apiguardian.api;
+ 	requires transitive org.junit.platform.commons;
+ 	requires transitive org.opentest4j;
+ 
+diff --git a/junit-platform-launcher/src/module/org.junit.platform.launcher/module-info.java b/junit-platform-launcher/src/module/org.junit.platform.launcher/module-info.java
+index 9d79f3f416..872e5bee3c 100644
+--- a/junit-platform-launcher/src/module/org.junit.platform.launcher/module-info.java
++++ b/junit-platform-launcher/src/module/org.junit.platform.launcher/module-info.java
+@@ -23,7 +23,7 @@
+  */
+ module org.junit.platform.launcher {
+ 	requires transitive java.logging;
+-	requires static transitive org.apiguardian.api;
++	requires static org.apiguardian.api;
+ 	requires transitive org.junit.platform.commons;
+ 	requires transitive org.junit.platform.engine;
+ 
+diff --git a/junit-platform-reporting/src/module/org.junit.platform.reporting/module-info.java b/junit-platform-reporting/src/module/org.junit.platform.reporting/module-info.java
+index 66c749470b..2a6acd7d7e 100644
+--- a/junit-platform-reporting/src/module/org.junit.platform.reporting/module-info.java
++++ b/junit-platform-reporting/src/module/org.junit.platform.reporting/module-info.java
+@@ -15,7 +15,7 @@
+  */
+ module org.junit.platform.reporting {
+ 	requires java.xml;
+-	requires static transitive org.apiguardian.api;
++	requires static org.apiguardian.api;
+ 	requires org.junit.platform.commons;
+ 	requires transitive org.junit.platform.engine;
+ 	requires transitive org.junit.platform.launcher;
+diff --git a/junit-platform-runner/src/module/org.junit.platform.runner/module-info.java b/junit-platform-runner/src/module/org.junit.platform.runner/module-info.java
+index 47edeb10e7..4313c642ee 100644
+--- a/junit-platform-runner/src/module/org.junit.platform.runner/module-info.java
++++ b/junit-platform-runner/src/module/org.junit.platform.runner/module-info.java
+@@ -16,7 +16,7 @@
+  */
+ module org.junit.platform.runner {
+ 	requires transitive junit; // 4
+-	requires static transitive org.apiguardian.api;
++	requires static org.apiguardian.api;
+ 	requires transitive org.junit.platform.launcher;
+ 	requires transitive org.junit.platform.suite.api;
+ 	requires org.junit.platform.suite.commons;
+diff --git a/junit-platform-suite-api/src/module/org.junit.platform.suite.api/module-info.java b/junit-platform-suite-api/src/module/org.junit.platform.suite.api/module-info.java
+index 9af8daea9d..cf50c08f80 100644
+--- a/junit-platform-suite-api/src/module/org.junit.platform.suite.api/module-info.java
++++ b/junit-platform-suite-api/src/module/org.junit.platform.suite.api/module-info.java
+@@ -14,7 +14,7 @@
+  * @since 1.0
+  */
+ module org.junit.platform.suite.api {
+-	requires static transitive org.apiguardian.api;
++	requires static org.apiguardian.api;
+ 	requires transitive org.junit.platform.commons;
+ 
+ 	exports org.junit.platform.suite.api;
+diff --git a/junit-platform-suite-commons/src/module/org.junit.platform.suite.commons/module-info.java b/junit-platform-suite-commons/src/module/org.junit.platform.suite.commons/module-info.java
+index b810efc7f0..ccb6756022 100644
+--- a/junit-platform-suite-commons/src/module/org.junit.platform.suite.commons/module-info.java
++++ b/junit-platform-suite-commons/src/module/org.junit.platform.suite.commons/module-info.java
+@@ -14,7 +14,7 @@
+  * @since 1.8
+  */
+ module org.junit.platform.suite.commons {
+-	requires static transitive org.apiguardian.api;
++	requires static org.apiguardian.api;
+ 	requires org.junit.platform.suite.api;
+ 	requires org.junit.platform.commons;
+ 	requires org.junit.platform.engine;
+diff --git a/junit-platform-testkit/src/module/org.junit.platform.testkit/module-info.java b/junit-platform-testkit/src/module/org.junit.platform.testkit/module-info.java
+index 2a53f5ad64..729efae46b 100644
+--- a/junit-platform-testkit/src/module/org.junit.platform.testkit/module-info.java
++++ b/junit-platform-testkit/src/module/org.junit.platform.testkit/module-info.java
+@@ -15,7 +15,7 @@
+  * @uses org.junit.platform.engine.TestEngine
+  */
+ module org.junit.platform.testkit {
+-	requires static transitive org.apiguardian.api;
++	requires static org.apiguardian.api;
+ 	requires transitive org.assertj.core;
+ 	requires org.junit.platform.commons;
+ 	requires transitive org.junit.platform.engine;
+-- 
+2.44.0
+

@@ -273,4 +273,12 @@
     <comment></comment>
     <requestid>1149441</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f6506ca81293ce086ed7e0d54dbeedd4</srcmd5>
+    <version>2.0.0</version>
+    <time>1714686432</time>
+    <user>anag+factory</user>
+    <comment>- Drop ibus-chewing-drop-cmake-fedora.patch (forwarded request 1171152 from hillwood)</comment>
+    <requestid>1171153</requestid>
+  </revision>
 </revisionlist>

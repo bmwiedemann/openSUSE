@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  2 10:23:46 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.2:
+  * feat: Allow to use meta variable captured outside of rewrite rule inside the rewriter #1072
+  * refactor: move rule_core test out of rule_core 1e8af4c
+  * feat: move check variable usage out to a standalone file f086d10
+  * refactor: move check var around cfe3529
+
+-------------------------------------------------------------------
 Mon Apr 29 06:59:15 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.21.1:

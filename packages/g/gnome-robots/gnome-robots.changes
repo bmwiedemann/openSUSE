@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  2 13:12:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert package to obs_scm service.
+- Add gnome-robots-libm.patch: explicitly link against libm.
+  Needed, as new librsvg no longer takes care of that for us (and
+  robots wrongly relied on it).
+
+-------------------------------------------------------------------
 Sun Mar 21 08:03:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:

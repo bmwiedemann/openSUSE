@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 28 17:50:44 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.14.0:
+  New:
+  * Use Huh for choose, confirm, file, input and write
+  * Add support for `--show-error` for the spinner.
+  Fixes:
+  * don't commit filter.tape
+  * Output Pipes if Timeout Occurs
+  Documentation:
+  * add new gifs such as spin.gif
+  * add help for `gum log --time` option
+
+-------------------------------------------------------------------
 Wed Feb 14 06:32:41 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Enabled completions for bash, zsh and fish.

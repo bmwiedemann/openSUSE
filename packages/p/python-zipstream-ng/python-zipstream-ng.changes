@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Mon Apr 29 06:43:48 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Improved specfile to python standards:
+  * Correct license to SPDX
+  * Fix invalid python globs
+  * Remove shebangs that throw rpmlint errors
+- Enabled tests
+
+-------------------------------------------------------------------
+Wed Nov  8 12:08:57 UTC 2023 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Initial version 1.7.1

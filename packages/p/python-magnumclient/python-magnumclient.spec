@@ -1,7 +1,7 @@
 #
 # spec file for package python-magnumclient
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           python-magnumclient
-Version:        3.6.0
+Version:        4.4.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Magnum
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-magnumclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-magnumclient/python-magnumclient-3.6.0.tar.gz
-# Upstream Ibee09bf76399849f7da987c4661fa1945d27afb7
-Patch1:         0001-Fix-test_help_on_subcommand-on-Python-3.10.patch
+Source0:        https://files.pythonhosted.org/packages/source/p/python-magnumclient/python-magnumclient-4.4.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-cryptography >= 3.0
@@ -88,15 +86,15 @@ Client library for Magnum built on the Magnum API. It provides a Python API
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n python-magnumclient-3.6.0
+%autosetup -p1 -n python-magnumclient-4.4.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
 # Build HTML docs and man page
-PBR_VERSION=3.6.0 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=3.6.0 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=4.4.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=4.4.0 %sphinx_build -b man doc/source doc/build/man
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install
@@ -107,7 +105,7 @@ install -p -D -m 644 doc/build/man/python-magnumclient.1 %{buildroot}%{_mandir}/
 install -p -D -m 644 tools/magnum.bash_completion %{buildroot}%{_sysconfdir}/bash_completion.d/magnum.bash_completion
 
 %check
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-magnumclient
 %license LICENSE

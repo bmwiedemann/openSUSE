@@ -24,7 +24,9 @@ License:        MIT
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://github.com/Igalia/cog
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
 Patch0:         cog-fix-include-dirs.patch
+# PATCH-FIX-UPSTREAM
 Patch1:         cog-fix-load-backend-fdo-lib.patch
 
 BuildRequires:  cmake

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 02 07:31:27 CEST 2024 - aschnell@suse.com
+
+- fix build with gcc14
+- version 0.2.7
+
+-------------------------------------------------------------------
+Fri Mar 15 09:21:52 CET 2024 - aschnell@suse.com
+
+- mark inactive mount points
+
+-------------------------------------------------------------------
 Mon Feb 05 11:23:57 CET 2024 - aschnell@suse.com
 
 - follow renumbering of partitions during remove

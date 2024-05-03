@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  2 18:12:26 UTC 2024 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Disable mono bindings by default to fix build on Tumbleweed
+
+-------------------------------------------------------------------
 Tue Jan 30 11:36:50 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - fixed compilation with glslang v14

@@ -29,7 +29,7 @@
 # OpenEXR v3 is incompatible https://github.com/OGRECave/ogre/issues/2179
 %bcond_with openexr
 # Optionally build without mono bindings
-%bcond_without mono
+%bcond_with mono
 Name:           ogre
 Version:        %{major}.%{minor}.%{third}
 Release:        0

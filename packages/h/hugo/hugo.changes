@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 01 18:28:47 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.125.5:
+  * Fix rebuilds on cascade deletes/renames
+  * commands: Print "Webserver is ..." right before "Total ..."
+  * Make sure replaced pages gets marked as stale
+
+-------------------------------------------------------------------
 Thu Apr 25 14:20:29 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.125.4:

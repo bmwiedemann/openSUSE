@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pydash
-Version:        8.0.0
+Version:        8.0.1
 Release:        0
 Summary:        The kitchen sink of Python functional utility libraries
 License:        MIT

@@ -113,4 +113,12 @@
     <comment>We are able to build all modules without cycles</comment>
     <requestid>1168541</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>c55e0fb2bfc5459e844379928016c92f</srcmd5>
+    <version>2.3.0</version>
+    <time>1714686430</time>
+    <user>anag+factory</user>
+    <comment>plexus-build-api 1.2.0 + dependent changes</comment>
+    <requestid>1171345</requestid>
+  </revision>
 </revisionlist>

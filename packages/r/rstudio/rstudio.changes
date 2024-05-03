@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Tue Apr 30 21:25:36 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- New upstream release 2024.04.0+735. (boo#1223378)
+  * RStudio now requires R 3.6.0 or newer.
+  * RStudio's auto-completion system now supports ggplot2 aesthetic
+    names and data columns.
+  * RStudio's auto-completion system now supports the display of
+    the "label" attribute.
+  * RStudio Desktop on Windows and Linux supports auto-hiding the
+    menu bar.
+  * RStudio Desktop on Windows and Linux supports full-screen mode
+    via F11.
+  * RStudio Desktop now supports pasting of file paths for files
+    copied to the clipboard.
+  * RStudio now reports a diagnostics warning when `=` (rather than
+    `==`) is used in `if`, `for`, and `while` conditionals.
+  * R projects can be given a custom display name in Project Options.
+  * The automatic display of Copilot code completions can now be
+    controlled via a user preference.
+  * Copilot code suggestions can now be requested via the keyboard
+    shortcut `Ctrl + \`.
+  * The next word in a Copilot code suggestion can now be accepted
+    via `Ctrl + Right` (`Cmd + Right` on macOS).
+  * RStudio now highlights and lints Quarto chunk options in Python
+    code chunks.
+  * RStudio no longer highlights `\[ \]` and `\( \)` Mathjax
+    equations; prefer `$$ $$` and `$ $` instead.
+  * Added cmake option to build RStudio without the check for
+    updates feature.
+  * Allow choosing R from non-standard location at startup.
+  * Add `EnvironmentFile` support to systemd service definitions.
+  * RStudio's GWT sources can now be built with JDKs > 11.
+  * Show grey background instead of solid-white during Desktop
+    startup.
+  * The 'restartSession()' API method gains the 'clean' argument.
+  * 'dot' chunks in R Markdown documents are now executable.
+  * (rstudioapi) Fixed an issue where selectFile() did not parse
+    filter strings in a cross-platform way.
+  * RStudio now reports repository validation errors (if any) when
+    adding secondary repositories in the Global Options -> Packages
+    pane.
+  * The working directory of a background job now defaults to the
+    .Rproj location when a project is open.
+  * Add search results copy button and search results breadcrumbs
+    to RStudio User Guide.
+  * RStudio now supports generation of a Copilot diagnostic report
+    from the Copilot preferences pane.
+  * The RStudio debugger is now better at matching debugged code to
+    source documents.
+  * RStudio no longer includes spurious chunk markers from Copilot
+    completion results.
+  * Added new commands which toggle the maximized state of Console,
+    Source, and Tab Group quadrants [Accessibility].
+  * RStudio now prints a warning if an overly-long line of console
+    input is truncated when sending to R.
+  * RStudio now supports highlighting of inline YAML chunk options
+    in R Markdown / Quarto documents.
+  * RStudio now supports auto-completion following `@` via
+    `.AtNames`.
+  * RStudio now supports the execution and display of GraphViz
+    (`dot`) graphs in R Markdown / Quarto chunks.
+  * RStudio now supports the execution of chunks with the 'file'
+    option set.
+  * RStudio now supports `LuaLaTeX` to compile Sweave/Rnw
+    documents.
+  * RStudio now supports pasting of file paths for files copied to
+    the clipboard.
+  * Improved support for development documentation when a package
+    has been loaded via `devtools::load_all()`.
+  * Better error message when user preferences fail to save due to
+    folder permissions.
+  * With screen reader support enabled, hitting ESC key allows
+    Tabbing away from editor.
+- Rebase patches:
+  * 0002-Don-t-install-pandoc-and-mathjax.patch
+  * old-boost.patch
+  * remove-panmirror.patch
+- Set RSTUDIO_BOOST_REQUESTED_VERSION on all Leap versions.
+- Relax Java version requirement, Java > 11 is now supported.
+- Add fix-boost-1.85-build.patch to fix build with Boost 1.85.
+- Add fix-boost-1.66-build.patch from Michael Pujos to fix build
+  with Leap's older Boost 1.66. We can't use Boost 1.75 because it
+  conflicts with Boost 1.66 required by soci-devel.
+- Add respect-system-yaml-cpp.patch to make sure our choice of
+  RSTUDIO_USE_SYSTEM_YAML_CPP=TRUE is respected.
+- Add skip-osrelease.patch to skip parsing of /etc/os-release.
+
+-------------------------------------------------------------------
 Fri Feb 23 11:41:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - USe %autosetup: all supported openSUSE versions support this by

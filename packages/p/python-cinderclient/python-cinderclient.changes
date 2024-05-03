@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu May  2 16:03:34 UTC 2024 - cloud-devel@suse.de
+
+- update to version 9.5.0
+  - Update master for stable/2023.1
+  - Use generic testing template
+  - Update master for stable/2023.2
+  - Add Python 3.10 to setup.cfg metadata
+  - Mock sleep for client tests
+  - Add os-extend_volume_completion volume action.
+  - Use tox 4
+  - reno: Update master for yoga Unmaintained status
+  - Honour all_tenants in consistency group list
+  - Remove USE_PYTHON3 setting from .zuul.yaml
+  - Use tox 4.11.0
+  - Update python classifier in setup.cfg
+  - Update functional jobs for 2023.2
+
+-------------------------------------------------------------------
 Tue Mar  7 06:55:29 UTC 2023 - cloud-devel@suse.de
 
 - update to version 9.3.0

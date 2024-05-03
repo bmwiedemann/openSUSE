@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  2 16:15:02 UTC 2024 - cloud-devel@suse.de
+
+- update to version 10.5.0
+  - auth_token: fix issue when data in cache gets corrupted
+  - External OAuth2.0 Authorization Server Support
+
+-------------------------------------------------------------------
 Fri Dec  1 16:17:44 UTC 2023 - cloud-devel@suse.de
 
 - update to version 10.4.1

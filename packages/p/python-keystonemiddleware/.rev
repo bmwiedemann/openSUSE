@@ -323,4 +323,14 @@ update to version 4.9.0
   - Switch to 2023.1 Python3 unit tests and generic template name</comment>
     <requestid>1138716</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5d3385077b5e729a7c23e4909cf6e4d7</srcmd5>
+    <version>10.5.0</version>
+    <time>1714686521</time>
+    <user>anag+factory</user>
+    <comment>- update to version 10.5.0
+  - auth_token: fix issue when data in cache gets corrupted
+  - External OAuth2.0 Authorization Server Support</comment>
+    <requestid>1171417</requestid>
+  </revision>
 </revisionlist>

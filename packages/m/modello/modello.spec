@@ -28,21 +28,16 @@ Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
 Source100:      %{name}-build.tar.xz
 Patch0:         0001-Fix-ModelloCli-after-moving-from-Plexus-to-JSR330.patch
 Patch1:         0002-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
-Patch2:         0003-Revert-Switch-to-codehaus-plexus-build-api-1.2.0-345.patch
 BuildRequires:  ant
-BuildRequires:  aopalliance
 BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  google-guice
 BuildRequires:  guava
 BuildRequires:  jackson-core
 BuildRequires:  javadoc-parser
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsoup
 BuildRequires:  junit
-BuildRequires:  objectweb-asm
-BuildRequires:  plexus-build-api
-BuildRequires:  plexus-classworlds
+BuildRequires:  plexus-build-api >= 1.0
 BuildRequires:  plexus-compiler
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
@@ -60,7 +55,9 @@ Requires:       jackson-core
 Requires:       javadoc-parser
 Requires:       javapackages-tools
 Requires:       plexus-build-api
+Requires:       plexus-build-api0
 Requires:       plexus-classworlds
+Requires:       plexus-containers-component-annotations
 Requires:       plexus-utils
 Requires:       plexus-xml
 Requires:       sisu-inject
@@ -100,7 +97,6 @@ API documentation for %{name}.
 %setup -q -a100
 %patch -P 0 -p1
 %patch -P 1 -p1
-%patch -P 2 -p1
 cp -p %{SOURCE1} LICENSE
 
 %pom_remove_plugin :maven-site-plugin
@@ -117,17 +113,14 @@ cp -p %{SOURCE1} LICENSE
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-    aopalliance \
     atinject \
     guava/guava \
-    guice/google-guice \
     jackson-core \
     javadoc-parser \
     jsoup \
     junit \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
-    plexus/classworlds \
     plexus/cli \
     plexus-compiler \
     plexus/plexus-build-api \
@@ -168,7 +161,7 @@ done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # script
-%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:objectweb-asm:org.eclipse.sisu.plexus:org.eclipse.sisu.inject:jackson-core:javadoc-parser:google-guice:aopalliance:atinject:plexus-containers/plexus-component-annotations:plexus/classworlds:plexus/utils:plexus/xml:plexus/plexus-build-api:guava:slf4j/api:slf4j/simple:snakeyaml:velocity %{name} true
+%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:aopalliance:atinject:google-guice:guava:jackson-core:javadoc-parser:plexus/plexus-build-api:plexus/plexus-build-api0:plexus/classworlds:plexus-containers/plexus-component-annotations:plexus/utils:plexus/xml:org.eclipse.sisu.inject:org.eclipse.sisu.plexus:slf4j/api:slf4j/simple:snakeyaml:velocity %{name} true
 
 %files -f .mfiles -f .mfiles-core
 %license LICENSE

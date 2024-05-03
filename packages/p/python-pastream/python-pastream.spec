@@ -1,7 +1,7 @@
 #
 # spec file for package python-pastream
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-pastream
-Version:        0.2.0.post0
+Version:        0.2.0.post2
 Release:        0
 Summary:        GIL-less Portaudio Streams for Python
 License:        MIT
@@ -30,7 +30,9 @@ Source100:      python-pastream-rpmlintrc
 BuildRequires:  %{python_module cffi >= 1.4.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pa-ringbuffer >= 0.1.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -42,7 +44,7 @@ Requires:       python-cffi >= 1.0.0
 Requires:       python-pa-ringbuffer >= 0.1.2
 Requires:       python-sounddevice >= 0.3.9
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-numpy
 # SECTION test requirements
 BuildRequires:  %{python_module SoundFile >= 0.9.0}
@@ -64,10 +66,10 @@ sed -i -e '/^#!\//, 1d' src/pastream.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pastream
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
@@ -89,6 +91,9 @@ export CFLAGS="%{optflags}"
 %doc CHANGELOG.rst README.rst
 %license LICENSE
 %python_alternative %{_bindir}/pastream
-%{python_sitearch}/*
+%{python_sitearch}/pastream.py
+%pycache_only %{python_sitearch}/__pycache__/pastream*
+%{python_sitearch}/_py_pastream.abi3.so
+%{python_sitearch}/pastream-%{version}.dist-info
 
 %changelog

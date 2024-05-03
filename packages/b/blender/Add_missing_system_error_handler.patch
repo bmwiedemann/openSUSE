@@ -1,8 +1,8 @@
-Index: b/intern/cycles/util/thread.h
+Index: blender-4.1.1/intern/cycles/util/thread.h
 ===================================================================
---- a/intern/cycles/util/thread.h
-+++ b/intern/cycles/util/thread.h
-@@ -9,6 +9,7 @@
+--- blender-4.1.1.orig/intern/cycles/util/thread.h
++++ blender-4.1.1/intern/cycles/util/thread.h
+@@ -10,6 +10,7 @@
  #include <mutex>
  #include <queue>
  #include <thread>

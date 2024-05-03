@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun Apr 28 08:55:26 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 2.0.0
+  * Add: On non-gnome desktop with systray icon enabled, IBus will
+         display the currently selected input mode. Clicking on
+         the icon shows a menu to switch input modes.
+  * Changed:
+    - IBus-Chewing Preferences has been rewritten in GTK4 and
+      libadwaita
+    - Removed GOB2 dependency. Now gobjects are written in plain
+      C99
+    - Removed cmake-fedora dependency. Now CMakeLists.txt only
+      depends on built-in modules
+    - New CMake presets can be used for building with different
+      configurations
+    - Refresh property list (language bar)
+    - Update IBusChewingLookupTable.c
+    - Update property list (language bar)
+    - Update pre-edit and aux text after commit_text ()
+    - Change UTF8_MAX_BYTES from 6 to 4
+    - Fix self->bpmfLen always = 0
+    - Update keyHandlingRules
+    - Destroy *preEditText, *auxText and *outgoingText when disable
+    - Port to GTK+-3
+    - Ignore keystrokes in English mode
+    - Add: use arrow keys to choose candidate
+    - Display page number of the lookup table
+    - Show cursor on lookup table
+    - Stop marking interval with double underline
+    - Support vertical lookup table and optimize turn page keys
+    - Tweak ibus-setup dialog window and replace some deprecated
+      APIs
+    - Add dropdown menu for Chi-Eng-Mode toggle key
+    - Update ChangeLog and RELEASE-NOTES
+  * Deprecated: X11 support has been deprecated. IBus-chewing no
+                longer requires X11 to build. Running in X11
+                environment will continue to work as long as IBus
+                still supports X11/XIM
+  * Removed:
+    - GtkStatusIcon (X11) based systray icon has been removed. Now
+      there is only one icon provided by IBus to avoid confusion.
+      The new systray does not support using left mouse button to
+      switch between Chinese and English, and the right button to
+      switch between full and half width mode. (#190)
+    - Sync IM status back to CapsLock has been removed which also
+      depends on X11
+  * Fixed:
+    - Modifier key handling has been improved. Super key will no
+      longer conflict with desktop shortcut handling
+    - Shift key handling in English mode has been improved. Now
+      Shift+Arrow key will work correctly for highlighting text or
+      scroll window
+    - Shift_L or Shift_R can be individually asssigned as Eng/Chi
+      toggle key
+- Drop ibus-chewing-drop-cmake-fedora.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 13:33:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

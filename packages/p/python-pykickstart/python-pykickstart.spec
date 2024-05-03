@@ -23,7 +23,7 @@
 %global skip_python2 1
 
 Name:           python-%{mod_name}
-Version:        3.53
+Version:        3.54
 Release:        0
 Summary:        Python module for parsing and writing kickstart files
 Group:          Development/Libraries/Python

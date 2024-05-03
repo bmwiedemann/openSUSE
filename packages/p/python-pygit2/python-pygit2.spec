@@ -27,6 +27,10 @@ URL:            https://github.com/libgit2/pygit2
 Source:         https://files.pythonhosted.org/packages/source/p/pygit2/pygit2-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM pygit2-Upgrade_to_libgit2_v1_8_0.patch gh#libgit2/pygit2@6d539d76b53b
 Patch0:         pygit2-Upgrade_to_libgit2_v1_8_0.patch
+# PATCH-FIX-UPSTREAM - fixup for the libgit 1.8 support
+Patch1:         Fix-CI.patch
+# PATCH-FIX-UPSTREAM - happens to eliminate bogus pointer casts
+Patch2:         Fix-leaks-in-fetch_refspecs-and-push_refspecs.patch
 BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module cffi >= 1.4.0}
 BuildRequires:  %{python_module devel}
@@ -48,9 +52,10 @@ Requires:       python-cached-property
 Bindings for libgit2, a linkable C library for the Git version-control system.
 
 %prep
-%setup -q -n pygit2-%{version}
-%if %{?pkg_vcmp:%pkg_vcmp libgit2-devel >= 1.8}%{!?pkg_vcmp:0}
-%patch -P 0 -p1
+%autosetup -p1 -n pygit2-%{version}
+%if %{?pkg_vcmp:%pkg_vcmp libgit2-devel < 1.8}%{!?pkg_vcmp:1}
+%patch -P 1 -p1 -R
+%patch -P 0 -p1 -R
 %endif
 
 # do not add options to pytest

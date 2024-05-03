@@ -71,7 +71,6 @@ BuildRequires:  dlpack-devel >= 0.7
 BuildRequires:  dmlc-core-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gcc12-c++
 BuildRequires:  git
 BuildRequires:  gmock
 BuildRequires:  gtest
@@ -163,7 +162,7 @@ popd
 # USE_MICRO USE_MICRO_STANDALONE_RUNTIME
 # USE_NNPACK
 # USE_ROCBLAS USE_ROCM
-%cmake -DCMAKE_C_COMPILER=gcc-12 -DCMAKE_CXX_COMPILER=g++-12 -DCMAKE_LINKER=gcc-12 \
+%cmake \
 %if %{with arm_compute_lib}
   -DUSE_ARM_COMPUTE_LIB_GRAPH_RUNTIME=ON \
   -DUSE_ARM_COMPUTE_LIB=ON \

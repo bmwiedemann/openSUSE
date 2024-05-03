@@ -1,7 +1,7 @@
 #
 # spec file for package ntp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,6 +58,7 @@ Patch30:        ntp-move-kod-file.patch
 Patch33:        ntp-sntp-libevent.patch
 Patch34:        testdcf-gude.diff
 Patch35:        ntp-clarify-interface.patch
+Patch36:        Get-rid-of-EVP_MD_CTX_FLAG_NON_FIPS_ALLOW.patch
 
 BuildRequires:  avahi-compat-mDNSResponder-devel
 BuildRequires:  fdupes
@@ -144,6 +145,7 @@ cp %{SOURCE12} .
 %patch -P 33
 %patch -P 34 -p1
 %patch -P 35
+%patch -P 36 -p1
 
 # fix DOS line breaks
 sed -i 's/\r//g' html/scripts/{footer.txt,style.css}

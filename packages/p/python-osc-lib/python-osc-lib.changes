@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May  2 16:01:49 UTC 2024 - cloud-devel@suse.de
+
+- update to version 3.0.1
+  - tox: Use pre-commit for style checks
+  - Blacken code
+  - Ignore black changes
+  - Update master for stable/2023.2
+  - Fix pre-commit issues
+  - reno: Update master for unmaintained/yoga
+  - utils: Don't warn for partial formatter classes
+  - Drop formal support for Python 3.6, 3.7
+  - pre-commit: Integrate black
+  - Remove lower-constraints.txt
+  - Add pre-commit
+
+-------------------------------------------------------------------
 Fri Dec  1 16:23:11 UTC 2023 - cloud-devel@suse.de
 
 - update to version 2.8.1

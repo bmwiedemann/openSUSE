@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 30 10:40:25 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.12.2
+  * Set default backend to Vulkan, if Vulkan fails go GLES not OpenGL.
+  * Added a `mapinfo` console command.
+  * zscript: add `final` and `sealed` as class options.
+  * Always save a copy of the map in a savegame's metadata.
+  * Added wall texture skewing.
+  * Implemented dsda-doom's sector scrolling properties, added
+    UDMF wall scrolling properties from DSDA, added friction and
+    colormap related properties from DSDA, added DSDA's thrust
+    properties for UDMF, and added per-sector sky UDMF
+    properties.
+  * Allow defining zero gravity through MAPINFO
+  * Added rudimentary support for DSDA's COMPLVL lump.
+  * Added actor flag +BILLBOARDFACECAMERA.
+  * Added `sv_pistolstart` server flag.
+- Add gzdoom-lzma-simd.patch
+
+-------------------------------------------------------------------
 Fri Oct 27 04:20:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.11.3

@@ -304,4 +304,23 @@
   - formatters: Cast *all* columns before outputting</comment>
     <requestid>1130298</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>936e5a4913e8cec3b0e8480866220795</srcmd5>
+    <version>3.0.1</version>
+    <time>1714686518</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.0.1
+  - tox: Use pre-commit for style checks
+  - Blacken code
+  - Ignore black changes
+  - Update master for stable/2023.2
+  - Fix pre-commit issues
+  - reno: Update master for unmaintained/yoga
+  - utils: Don't warn for partial formatter classes
+  - Drop formal support for Python 3.6, 3.7
+  - pre-commit: Integrate black
+  - Remove lower-constraints.txt
+  - Add pre-commit</comment>
+    <requestid>1171411</requestid>
+  </revision>
 </revisionlist>

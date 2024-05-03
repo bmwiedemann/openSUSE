@@ -1375,4 +1375,12 @@ build with uclibc</comment>
   * 0008-Assume-C-compiler-s-default-standard-is-std-gnu17.patch</comment>
     <requestid>1146146</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3c5c520eb1e59a6dfabc89178ab00d22</srcmd5>
+    <version>3.1+20240418</version>
+    <time>1714686448</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1171230</requestid>
+  </revision>
 </revisionlist>

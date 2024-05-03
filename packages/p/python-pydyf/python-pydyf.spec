@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pydyf
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        A low-level PDF generator
 License:        BSD-3-Clause

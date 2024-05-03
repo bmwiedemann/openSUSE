@@ -443,4 +443,14 @@
     <comment>GNOME 46 (forwarded request 1159067 from dimstar)</comment>
     <requestid>1159515</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>01d3705daf45b266e3e711a4f02995fc</srcmd5>
+    <version>46.1</version>
+    <time>1714686513</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.1:
+  + Cleanup shortcut handling of some dialogs.
+  + Updated translations. (forwarded request 1171284 from dimstar)</comment>
+    <requestid>1171396</requestid>
+  </revision>
 </revisionlist>

@@ -221,4 +221,37 @@
   - Fix master_lb_enabled for cluster creation</comment>
     <requestid>983720</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4360f0e88297791f26cc83c8b39f5e55</srcmd5>
+    <version>4.4.0</version>
+    <time>1714686519</time>
+    <user>anag+factory</user>
+    <comment>- removed 0001-Fix-test_help_on_subcommand-on-Python-3.10.patch
+- update to version 4.4.0
+  - Update python testing as per zed cycle testing runtime
+  - Use TOX_CONSTRAINTS_FILE
+  - Fix multi-line strings spaces
+  - Clean up tox.ini
+  - Remove pypy and bump py37 to py38
+  - Update master for stable/zed
+  - Update client.authentication.k8s.io api version for kubeconfig
+  - Update master for stable/2023.1
+  - Fix test_help_on_subcommand on Python 3.10
+  - Add python 3.10 to setup.cfg metadata
+  - Switch to 2023.1 Python3 unit tests and generic template name
+  - Update master for stable/yoga
+  - setup.cfg: rename deprecated dash-separated options
+  - Drop bay and baymodel
+  - Imported Translations from Zanata
+  - Support tox4
+  - Remove translation sections from setup.cfg
+  - Update master for stable/2023.2
+  - Update python classifier in setup.cfg
+  - Allow directly output cluster config
+  - Drop lower-constraints.txt and its testing
+  - remove unicode from code
+  - Bugfix: master_lb_enabled flag now works as intended.
+  - reno: Update master for unmaintained/yoga</comment>
+    <requestid>1171413</requestid>
+  </revision>
 </revisionlist>

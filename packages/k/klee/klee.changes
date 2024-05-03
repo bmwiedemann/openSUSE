@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Apr 25 06:08:03 UTC 2024 - jslaby@suse.cz
+
+- Update to version 3.1+20240418:
+  * Renamed test/Expr to test/kleaver and move ReadExprConsistency.c to
+    test/Feature
+  * Workaround for MSan failures due to
+    https://github.com/llvm/llvm-project/issues/78354
+  * Addressed missing override warnings emitted by recent compilers
+  * add pythonpath to lit forwarded env vars
+  * TARGET_TRIPLE was renamed to LLVM_TARGET_TRIPLE since LLVM 15
+  * New domain name klee-se.org, updating links.
+  * Final changes to release notes for v3.1
+  * Add support to fully concretise objects if modified externally
+  * Support external call concretisation policies for referenced objects
+  * Refactor `ObjectState::flushToConcreteStore` to use `toConstant`
+  * Use correctly constrained constants if the memory object is fully symbolic
+  * Correctly update symbolic variables that have been changed externally
+  * and much more.
+- Remove
+  * 0001-Fix-brittleness-in-Feature-VarArgByVal-test.patch (in upstream)
+
+-------------------------------------------------------------------
 Fri Feb 09 07:40:49 UTC 2024 - jslaby@suse.cz
 
 - Update to version 3.0+20240208:

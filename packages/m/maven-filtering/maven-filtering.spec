@@ -32,7 +32,7 @@ BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-lib
-BuildRequires:  plexus-build-api
+BuildRequires:  plexus-build-api0
 BuildRequires:  plexus-interpolation
 BuildRequires:  plexus-utils
 BuildRequires:  sisu-inject
@@ -70,7 +70,7 @@ build-jar-repository -s lib \
     org.eclipse.sisu.inject \
     plexus/utils \
     plexus/interpolation \
-    plexus/plexus-build-api \
+    plexus/plexus-build-api0 \
     slf4j/api
 
 %{ant} \

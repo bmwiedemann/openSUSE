@@ -1,0 +1,15 @@
+Fetching should still respect RSTUDIO_USE_SYSTEM_YAML_CPP=ON.
+
+diff --git a/src/cpp/CMakeLists.txt b/src/cpp/CMakeLists.txt
+index 5fa2649..f509421 100644
+--- a/src/cpp/CMakeLists.txt
++++ b/src/cpp/CMakeLists.txt
+@@ -197,7 +197,7 @@ endif()
+ # yaml-cpp
+ set(YAML_CPP_VERSION "0.8.0")
+ set(YAML_CPP_REVISION "f7320141120f720aecc4c32be25586e7da9eb978")
+-if(CMAKE_VERSION VERSION_GREATER "3.14")
++if(NOT RSTUDIO_USE_SYSTEM_YAML_CPP AND CMAKE_VERSION VERSION_GREATER "3.14")
+ 
+    if(WIN32)
+       add_definitions(-DYAML_CPP_STATIC_DEFINE)

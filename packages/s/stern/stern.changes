@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 02 13:31:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.29.0:
+  * Update CHANGELOG for v1.29.0 (#301)
+  * Add support for UNIX time with nanoseconds to template
+    functions (#300)
+  * Clarify that '=' cannot be omitted in --timestamps (#296)
+  * Added example to README (#295)
+  * Update dependencies for Kubernetes 1.30 (#293)
+  * Add `--stdin` for `stdin` log parsing (#292)
+
+-------------------------------------------------------------------
 Tue Jan 09 20:14:36 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.28.0:

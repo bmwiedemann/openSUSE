@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu May  2 16:04:42 UTC 2024 - cloud-devel@suse.de
+
+- removed 0001-Fix-test_help_on_subcommand-on-Python-3.10.patch
+- update to version 4.4.0
+  - Update python testing as per zed cycle testing runtime
+  - Use TOX_CONSTRAINTS_FILE
+  - Fix multi-line strings spaces
+  - Clean up tox.ini
+  - Remove pypy and bump py37 to py38
+  - Update master for stable/zed
+  - Update client.authentication.k8s.io api version for kubeconfig
+  - Update master for stable/2023.1
+  - Fix test_help_on_subcommand on Python 3.10
+  - Add python 3.10 to setup.cfg metadata
+  - Switch to 2023.1 Python3 unit tests and generic template name
+  - Update master for stable/yoga
+  - setup.cfg: rename deprecated dash-separated options
+  - Drop bay and baymodel
+  - Imported Translations from Zanata
+  - Support tox4
+  - Remove translation sections from setup.cfg
+  - Update master for stable/2023.2
+  - Update python classifier in setup.cfg
+  - Allow directly output cluster config
+  - Drop lower-constraints.txt and its testing
+  - remove unicode from code
+  - Bugfix: master_lb_enabled flag now works as intended.
+  - reno: Update master for unmaintained/yoga
+
+-------------------------------------------------------------------
 Sun Jun 19 17:28:25 UTC 2022 - cloud-devel@suse.de
 
 - added 0001-Fix-test_help_on_subcommand-on-Python-3.10.patch

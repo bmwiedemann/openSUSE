@@ -106,4 +106,20 @@
     <comment></comment>
     <requestid>1161559</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2cfbf4aab0f74a2b2a069bd09854b602</srcmd5>
+    <version>2.1.0</version>
+    <time>1714686482</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.0:
+  * Make transition from 1.x to 2.x version smoother
+  * Fix &quot;protocol&quot; property
+  * Fix publish() a bytearray payload
+  * Fix some type annotations
+  * Fix loop_stop() not stopping thread when called from callback
+  * Fix some documentation errors
+  * Add support for Unix socket
+  * Fix flaky test</comment>
+    <requestid>1171279</requestid>
+  </revision>
 </revisionlist>

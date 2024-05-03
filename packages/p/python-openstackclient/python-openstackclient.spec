@@ -17,13 +17,13 @@
 
 
 Name:           python-openstackclient
-Version:        6.4.0
+Version:        6.6.0
 Release:        0
 Summary:        OpenStack Command-line Client
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-openstackclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-openstackclient/python-openstackclient-6.4.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-openstackclient/python-openstackclient-6.6.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cinderclient >= 3.3.0
 BuildRequires:  python3-cliff >= 3.5.0
@@ -103,14 +103,14 @@ actual REST API client actions.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-openstackclient-6.4.0
+%autosetup -p1 -n python-openstackclient-6.6.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=6.4.0 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=6.4.0 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=6.6.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=6.6.0 %sphinx_build -b man doc/source doc/build/man
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 02 07:36:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.58.1:
+  * Added `if_disabled` attribute for `generate` block (#3110)
+
+-------------------------------------------------------------------
+Thu May 02 07:33:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.58.0:
+  * OpenTofu 1.7 (#3111)
+  * LIB-75: Replace tfenv and tgswitch with mise (#3094)
+
+-------------------------------------------------------------------
 Mon Apr 29 09:27:45 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.57.13:

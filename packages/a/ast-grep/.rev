@@ -251,4 +251,16 @@
   * feat: add used_vars in TemplateFix 641d3b4</comment>
     <requestid>1170674</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c48e620988cdaf2b2f5b3c6a211b97c5</srcmd5>
+    <version>0.21.2+0</version>
+    <time>1714686499</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.21.2:
+  * feat: Allow to use meta variable captured outside of rewrite rule inside the rewriter #1072
+  * refactor: move rule_core test out of rule_core 1e8af4c
+  * feat: move check variable usage out to a standalone file f086d10
+  * refactor: move check var around cfe3529</comment>
+    <requestid>1171335</requestid>
+  </revision>
 </revisionlist>

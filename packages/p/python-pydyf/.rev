@@ -95,4 +95,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1160919</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>eed8c4110b9d8685fd8bf44476459d3d</srcmd5>
+    <version>0.10.0</version>
+    <time>1714686522</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.10.0:
+  * Add standard compliant default identifier</comment>
+    <requestid>1171419</requestid>
+  </revision>
 </revisionlist>

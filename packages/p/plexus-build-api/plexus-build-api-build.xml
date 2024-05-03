@@ -9,14 +9,11 @@
   <property file="build.properties"/>
 
   <property name="project.artifactId" value="plexus-build-api"/>
-  <property name="project.groupId" value="org.sonatype.plexus"/>
-  <property name="project.version" value="0.0.7"/>
-  <property name="project.url" value="http://forge.sonatype.com/spice-parent/plexus-build-api/"/>
-  <property name="project.organization.name" value="Sonatype, Inc."/>
+  <property name="project.groupId" value="org.codehaus.plexus"/>
+  <property name="project.version" value="1.2.0"/>
 
-  <property name="spec.version" value="0.0"/>
-
-  <property name="compiler.source" value="1.8"/>
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
@@ -32,8 +29,6 @@
 
   <path id="build.classpath">
     <fileset dir="lib">
-      <!-- plexus-utils-1.5.8 plexus-container-default-1.0-alpha-9
-           classworlds-1.1-alpha-2 -->
       <include name="**/*.jar"/>
     </fileset>
   </path>
@@ -57,6 +52,7 @@
            debug="true"
            optimize="false"
            deprecation="true"
+           release="${compiler.release}"
            target="${compiler.target}"
            verbose="false"
            fork="false"
@@ -72,24 +68,25 @@
   </target>
 
   <!-- ====================================================================== -->
-  <!-- Target to generate Plexus component.xml                                -->
+  <!-- Sisu javax.inject.Named generation target                              -->
   <!-- ====================================================================== -->
 
-  <target name="generate-metadata"
+  <target name="sisu"
           depends="compile"
-          description="Generate Plexus component.xml">
-    <mkdir dir="${build.outputDir}/META-INF/plexus"/>
-    <exec executable="plexus-metadata-generator" failonerror="true">
-      <env key="CLASSPATH" value="${build.outputDir}"/>
-      <arg value="-s"/>
-      <arg value="${build.srcDir}"/>
-      <arg value="-c"/>
-      <arg value="${build.outputDir}"/>
-      <arg value="-m"/>
-      <arg value="${build.outputDir}/META-INF/plexus"/>
-      <arg value="-o"/>
-      <arg value="${build.outputDir}/META-INF/plexus/components.xml"/>
-    </exec>
+          description="Generate javax.inject.Name index">
+    <sequential>
+	  <java classname="org.eclipse.sisu.space.SisuIndex"
+	        failonerror="true"
+			fork="true">
+        <classpath>
+          <path refid="build.classpath"/>
+        </classpath>
+        <arg value="${build.outputDir}"/>
+      </java>
+      <move todir="${build.outputDir}/META-INF">
+        <fileset dir="META-INF"/>
+      </move>
+	</sequential>
   </target>
 
   <!-- ====================================================================== -->
@@ -125,24 +122,16 @@
   <!-- Package target                                                         -->
   <!-- ====================================================================== -->
 
-  <target name="package" depends="generate-metadata" description="Package the application">
+  <target name="package" depends="sisu" description="Package the application">
     <jar jarfile="${build.dir}/${build.finalName}.jar"
          compress="true"
          index="false"
          basedir="${build.outputDir}"
          excludes="**/package.html">
       <manifest>
-        <attribute name="Implementation-Title" value="${project.artifactId}"/>
-        <attribute name="Implementation-URL" value="${project.url}"/>
-        <attribute name="Implementation-Vendor" value="${project.organization.name}"/>
-        <attribute name="Implementation-Vendor-Id" value="${project.groupId}"/>
-        <attribute name="Implementation-Version" value="${project.version}"/>
         <attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
         <attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
         <attribute name="JavaPackages-Version" value="${project.version}"/>
-        <attribute name="Specification-Title" value="${project.artifactId}"/>
-        <attribute name="Specification-Vendor" value="${project.organization.name}"/>
-        <attribute name="Specification-Version" value="0.0"/>
       </manifest>
     </jar>
   </target>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  1 12:36:18 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the plexus-build-api0 package containing sonatype
+  plexus build api
+
+-------------------------------------------------------------------
 Tue Apr  2 17:29:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on plexus-xml where relevant

@@ -1,7 +1,7 @@
 Format: 1.0
 Source: libvmime
 Architecture: any
-Version: 0.9.2+g188
+Version: 0.9.2+g191
 DEBTRANSFORM-RELEASE: 1
 Maintainer: openSUSE <opensuse@opensuse.org>
 Homepage: https://opensuse.org/

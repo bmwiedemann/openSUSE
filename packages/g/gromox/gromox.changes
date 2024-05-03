@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May  2 08:29:01 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.28
+  * imap: cure client session hang when midb failed to add
+    a mail during 64K-append
+  * mysql_adaptor: allow Unicode in alternate usernames (altnames)
+  * Populate PR_DELETED_ON property for softdeleted items
+  * exmdb: ``exmdb_rpc_debug`` will now emit execution time for
+    EXRPCs
+  * zcore: ``zrpc_debug`` logging now includes the session GUID
+    to help correlate which ZRPCs are executed by which user
+  * imap, pop3: print client IP address for lines from
+    ``imap_cmd_debug``/``pop3_cmd_debug``
+
+-------------------------------------------------------------------
 Sun Apr  7 06:43:12 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.27

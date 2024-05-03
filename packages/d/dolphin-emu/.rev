@@ -111,4 +111,13 @@
   * Changed build with Qt6.</comment>
     <requestid>1163170</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8798f8017d6bb4d4083bc0729124a9c7</srcmd5>
+    <version>5.0.21460</version>
+    <time>1714686509</time>
+    <user>anag+factory</user>
+    <comment>- Switched to default gcc for TW and gcc13 for Leap with disabled LTO.
+- Updated to 5.0.21460 a9544510468740b77cf06ef28daaa65fe247fd32</comment>
+    <requestid>1171379</requestid>
+  </revision>
 </revisionlist>

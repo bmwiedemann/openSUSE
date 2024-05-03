@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 29 23:17:45 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.23.0 
+  https://github.com/ispc/ispc/releases/tag/v1.23.0
+  https://github.com/ispc/ispc/releases/tag/v1.22.0
+  https://github.com/ispc/ispc/releases/tag/v1.21.1
+  https://github.com/ispc/ispc/releases/tag/v1.21.0
+  https://github.com/ispc/ispc/releases/tag/v1.20.0
+  https://github.com/ispc/ispc/releases/tag/v1.19.0
+- drop ispc-add-cstdint-include.patch:
+  included in update
+
+-------------------------------------------------------------------
 Sun Mar 24 21:14:40 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Replace libomp-devel requirement by libomp%llvm_ver-devel to

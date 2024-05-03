@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May 02 07:21:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.3.8:
+  * refactor: map false minikube unused resources (#241)
+  * refactor: configure golangci-lint and upgrade github actions
+    (#246)
+  * chore: upgrade go version to 1.22.0 (#250)
+  * feat(image): build multi-arch image (#247)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.29.3 to
+    0.30.0 (#244)
+  * Docs: Add CRDs to exceptions (#234)
+  * Add unused pods to getUnusedAllNamespaced (#231)
+  * Feat: Add support for multiple resources in Exporter function
+    (#229)
+
+-------------------------------------------------------------------
 Mon Mar 25 07:45:19 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.3.7:

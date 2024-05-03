@@ -278,4 +278,15 @@
     <comment>GNOME 40 - here we come (forwarded request 880962 from dimstar)</comment>
     <requestid>881133</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>40f6cda8ba1f05dff37d4358ff9e6d98</srcmd5>
+    <version>40.0</version>
+    <time>1714686517</time>
+    <user>anag+factory</user>
+    <comment>- Convert package to obs_scm service.
+- Add gnome-robots-libm.patch: explicitly link against libm.
+  Needed, as new librsvg no longer takes care of that for us (and
+  robots wrongly relied on it). (forwarded request 1171409 from dimstar)</comment>
+    <requestid>1171410</requestid>
+  </revision>
 </revisionlist>

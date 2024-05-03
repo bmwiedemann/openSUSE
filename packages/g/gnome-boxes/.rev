@@ -843,4 +843,14 @@
     <comment>GNOME 46 (forwarded request 1159571 from dimstar)</comment>
     <requestid>1159572</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>95ac1dbd3d53e153d25ca814361f0387</srcmd5>
+    <version>46.1</version>
+    <time>1714686514</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.1:
+  + Fix build with clang.
+  + Updated translations. (forwarded request 1171286 from dimstar)</comment>
+    <requestid>1171397</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May  2 16:33:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.17.3:
+  * Better fix for #2871 (extraneous queries when coercing query
+    to list), and new fix in #2872 for regression in truthiness
+    of cursor.
+  * Full support for `psycopg3`.
+  * Basic support for Sqlite `jsonb`.
+  * Fix bug where calling `list(query)` resulted in extra
+    queries, #2871
+
+-------------------------------------------------------------------
 Mon Feb 12 02:57:29 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.17.1:

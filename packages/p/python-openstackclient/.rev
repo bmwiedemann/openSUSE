@@ -614,4 +614,41 @@ update to version 3.1.0
   * Migrate volume backend commands to SDK</comment>
     <requestid>1138709</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0a90582ea957fee2f5a716f266bf5316</srcmd5>
+    <version>6.6.0</version>
+    <time>1714686520</time>
+    <user>anag+factory</user>
+    <comment>- update to version 6.6.0
+  - reno: Update master for unmaintained/victoria
+  - Update python classifier in setup.cfg
+  - Adds CLI support for ``glance md-object-update``
+  - Correct error message for &quot;create server --wait&quot;
+  - compute: Fix formatting of 'server show'
+  - tests: Remove unused flag
+  - test: Ignore 'OS_' environment variables
+  - doc: magnumclient provides a OSC plugin
+  - network: Clarify purpose of default sg rules
+  - Introduce `schema_version` in the federated attribute mapping API
+  - doc: Remove RSD subcommand
+  - Fix --use-prefix-delegation subnet create argument
+  - image: Fix the default description of image visibility
+  - doc: Remove Searchlight subcommands
+  - Use CommandError, not SystemExit, to exit
+  - Adding CLI command for ``glance member-get``
+  - Remove unnecessary file
+  - image: Trivial fixes
+  - tests: Enable logging fixture
+  - pre-commit: Bump linter versions
+  - parseactions: Use ArgumentError, not ArgumentTypeError
+  - Doc: Fix volume snapshot commands
+  - Explicitly specify namespace fields for output
+  - doc: Add manilaclient as a OSC plugin
+  - compute: Address bug in shelve offload logic
+  - [codespell] fix typos in doc,tests and help messages
+  - tests: Remove prints
+  - compute: Add 'server create --server-group' option
+  - trivial: Fix typo</comment>
+    <requestid>1171414</requestid>
+  </revision>
 </revisionlist>

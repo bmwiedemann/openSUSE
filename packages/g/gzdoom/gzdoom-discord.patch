@@ -7,12 +7,12 @@ Unbundle discord-rpc.
  libraries/discordrpc/src/CMakeLists.txt |    2 +-
  2 files changed, 4 insertions(+), 4 deletions(-)
 
-Index: gzdoom-g4.11.3/CMakeLists.txt
+Index: gzdoom-g4.12.2/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.11.3.orig/CMakeLists.txt
-+++ gzdoom-g4.11.3/CMakeLists.txt
-@@ -356,9 +356,9 @@ if (HAVE_VULKAN)
- endif()
+--- gzdoom-g4.12.2.orig/CMakeLists.txt
++++ gzdoom-g4.12.2/CMakeLists.txt
+@@ -345,9 +345,9 @@ add_subdirectory( libraries/ZWidget )
+ add_subdirectory( libraries/webp )
  
  add_subdirectory( libraries/discordrpc EXCLUDE_FROM_ALL )
 -set( DRPC_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libraries/discordrpc/include" )
@@ -24,10 +24,10 @@ Index: gzdoom-g4.11.3/CMakeLists.txt
  
  if( HAVE_VM_JIT AND UNIX )
  	check_symbol_exists( "backtrace" "execinfo.h" HAVE_BACKTRACE )
-Index: gzdoom-g4.11.3/libraries/discordrpc/src/CMakeLists.txt
+Index: gzdoom-g4.12.2/libraries/discordrpc/src/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.11.3.orig/libraries/discordrpc/src/CMakeLists.txt
-+++ gzdoom-g4.11.3/libraries/discordrpc/src/CMakeLists.txt
+--- gzdoom-g4.12.2.orig/libraries/discordrpc/src/CMakeLists.txt
++++ gzdoom-g4.12.2/libraries/discordrpc/src/CMakeLists.txt
 @@ -28,7 +28,7 @@ endif(${BUILD_SHARED_LIBS})
  if(WIN32)
      add_definitions(-DDISCORD_WINDOWS)

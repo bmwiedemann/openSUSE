@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 02 07:20:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.4.8:
+  * v2.4.8 adopts gitlab catalog fix and trifecta upgrade (#2169)
+  * Fix the signing commits check GitHub workflow for PRs from
+    forks (#2167)
+
+-------------------------------------------------------------------
 Mon Apr 29 09:15:47 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.4.7:

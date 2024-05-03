@@ -1171,4 +1171,15 @@
   * Use Apache License without modification (forwarded request 1170161 from jfkw)</comment>
     <requestid>1170163</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>29a3088019890997dc74011d7acec687</srcmd5>
+    <version>0.125.5</version>
+    <time>1714686443</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.125.5:
+  * Fix rebuilds on cascade deletes/renames
+  * commands: Print &quot;Webserver is ...&quot; right before &quot;Total ...&quot;
+  * Make sure replaced pages gets marked as stale (forwarded request 1171175 from jfkw)</comment>
+    <requestid>1171176</requestid>
+  </revision>
 </revisionlist>
