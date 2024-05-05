@@ -25,7 +25,7 @@
 %endif
 
 Name:           traefik
-Version:        2.11.0
+Version:        2.11.2
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT
@@ -40,8 +40,7 @@ Source5:        node_modules.spec.inc
 # prepare-sources.sh is used to prepare sources for packaging
 Source6:        prepare-sources.sh
 
-# PATCH-FIX-UPSTREAM allow packaging on 32bit architectures gh#traefik/traefik#10451
-Patch1:         traefik-fix-int-overflow-with-go-generate-10452.patch
+Patch0:         allow-node-21.patch
 
 BuildRequires:  go-bindata
 BuildRequires:  golang-packaging
@@ -64,6 +63,7 @@ Pointing Traefik at your orchestrator should be the only configuration step you 
 %prep
 %setup -b0 -a1 -q
 %autopatch -p1
+
 cd webui
 local-npm-registry %{_sourcedir} install --include=dev --legacy-peer-deps
 

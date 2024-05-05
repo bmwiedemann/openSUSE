@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri May  3 15:14:17 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Added allow-node-21.patch to allow building with nodejs21, too
+- Removed traefik-fix-int-overflow-with-go-generate-10452.patch
+
+- Update to version 2.11.2
+  * Important
+    * Read the migration guide at https://doc.traefik.io/traefik/migration/v2/#v2112
+
+  * CVEs:
+    * GHSA-7f4j-64p6-5h5v (related to CVE-2023-45288)
+    * CVE-2024-28869 (bsc#1222825)
+
+  * Bug fixes:
+    * [server] Revert LingeringTimeout and change default value for ReadTimeout
+    * [server] Set default ReadTimeout value to 60s
+
+- Update to version 2.11.1:
+  * Bug fixes:
+    * [acme,tls] Enforce handling of ACME-TLS/1 challenges
+    * [acme] Update go-acme/lego to v4.16.1
+    * [acme] Close created file in ACME local store CheckFile func
+    * [docker,http3] Update to quic-go v0.42.0 and docker/cli v24.0.9
+    * [docker,marathon,rancher,ecs,tls,nomad] Allow to configure TLSStore default generated certificate with labels
+    * [ecs] Adjust ECS network interface detection logi
+    * [logs,tls] Fix log when default TLSStore and TLSOptions are defined multiple times
+    * [middleware] Allow empty replacement with ReplacePathRegex middleware
+    * [plugins] Update Yaegi to v0.16.1
+    * [provider,rules] Don't allow routers higher than internal ones
+    * [rules] Reserve priority range for internal router
+    * [server,tcp] Introduce Lingering Timeout
+    * [tcp] Enforce failure for TCP HostSNI with hostname
+    * [tracing] Bump Elastic APM to v2.4.8
+    * [webui] Fix dashboard exposition through a router
+    * [webui] Display IPAllowlist middleware configuration in dashboard
+    * [webui] Make text more readable in dark mode
+    * [webui] Migrate to Quasar 2.x and Vue.js 3.x
+    * [webui] Add a horizontal scroll for the mobile view
+
+-------------------------------------------------------------------
 Wed Mar  6 11:13:51 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Remove node_modules.sums left over by obs-service-node_modules 
