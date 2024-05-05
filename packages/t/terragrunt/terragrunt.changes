@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 03 16:15:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.58.2:
+  * Fixed handling of module prefixes (#3104)
+  * Bump CI image (#3116)
+  * Get rid of third party code (#3114)
+
+-------------------------------------------------------------------
 Thu May 02 07:36:01 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.58.1:
