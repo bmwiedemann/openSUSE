@@ -1158,6 +1158,7 @@
       <repopackage name="libpwquality1"/>
       <repopackage name="libpxbackend-1_0"/>
       <repopackage name="libpython3_11-1_0"/>
+      <repopackage name="libqaccessibilityclient-qt6"/>
       <repopackage name="libqaccessibilityclient-qt6-0"/>
       <repopackage name="libqalculate22"/>
       <repopackage name="libqca-qt6-2"/>
@@ -1787,6 +1788,7 @@
       <repopackage name="qtdeclarative-imports-provides-qt6"/>
       <repopackage name="read-only-root-fs"/>
       <repopackage name="rebootmgr"/>
+      <repopackage name="registries-conf-default"/>
       <repopackage name="rootlesskit"/>
       <repopackage name="rpm"/>
       <repopackage name="rpm-config-SUSE"/>
