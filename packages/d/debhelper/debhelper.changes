@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Fri May  3 22:21:47 UTC 2024 - Jan Baier <jbaier@suse.com>
+
+- update to 13.15.3:
+   * debhelper-compat-upgrade-checklist.pod: Fix repeated substvar.
+     Thanks to Andrey Rakhmatullin
+   * debhelper-compat-upgrade-checklist.pod: Add ref to #1067653
+   * dh_gencontrol: Gracefully cope with custom substvars and -dbgsym packages
+     (Closes: #1067711)
+   * upgrade-checklist: Document `dh_installsystemduser` change
+     (Closes: #1066025)
+   * autopkgtest: Remove reference d/compat triggering perl tests
+   * dh_gencontrol: Fix inverted boolean logic causing warnings
+   * Dh_Lib.pm: Fix field truncation in compat 14+
+     (Closes: #1067508, #1067509)
+   * d/changelog: Fix typo of Felix Geyer
+   * dh_makeshlibs: Ensure t64:Provides is always provided (but
+     sometimes empty)
+   * Replace `d/compat` with a `X-DH-Compat` field in compat 14+.
+     (Closes: #1021877)
+   * Ensure values to --dbg-package and --link-doc are known packages
+   * PROGRAMMING.md: Add a note about `dh_assistant`
+   * Make it easier to re-bootstrap without `dwz` (and also `man-db`).
+     This is a new build profile that build `debhelper` with fewer
+     dependencies. Note that this profile causes `debhelper` to produce
+     a different result in some cases. Packages built with this minimal
+     version of debhelper should be rebuilt when bootstrapping is
+     complete.
+   * dh_shlibdeps: Use ${shlibs:Pre-Depends} for Essential packages
+     in compat 14+.
+   * dh_gencontrol: Automatically apply relationship substvars in
+     compat 14+
+   * Clearly document how to do filtering (which is via dh-exec)
+     (Closes: #1065742)
+   * Reject debhelper config files without a package prefix for
+     multi-binary packages in compat 15. Starting in compat 14, it will
+     now trigger a warning to have `debian/install` instead of
+     `debian/package.install` when `debian/control` contains 2 or more
+     binary packages. In compat 15, this is promoted to an error.  The
+     main exceptions are files like `debian/changelog`, `debian/NEWS`,
+     and `debian/copyright`, which are applied to all packages and can
+     still be used without a prefix. (Closes: #1014537)
+   * cmake.pm: Pass ASFLAGS as ASMFLAGS to cmake [c14] (Closes: #1036760)
+   * meson.pm: Pass --auto-features=enabled in compat 14+
+     (Closes: #1030011, #1062508)
+   * Dh_Lib.pm: Simplify reset_perm_and_owner so it only works with int
+     now. The only misbehaving call-sites where in debhelper itself
+     according to codesearch.debian.net and were fixed as well.
+   * Dh_Lib.pm: Bump perl version requirement to 5.28 (Closes: #1001403)
+   * dh_makeshlibs: Skip directories known not to contain SONAMEs
+     (Closes: #1063126)
+   * Restructure debhelper upgrade compat checklist for compat 14 in an
+     attempt to make it easier for consumers.
+   * dh_makeshlibs: Correct the auto-detected package name
+   * dh_makeshlibs: Use the "correct" package architecture definition
+   * debhelper-documentation.json: The pam change happened in c14
+   * dh_assistant: Expose bug#950723 marker in
+     list-guessed-dh-config-files
+   * dh_installsystemduser: Add missing pkgfiles in DH NOOP promise
+   * debhelper-documentation.json: Add dh_installsystemd files
+   * debhelper-documentation.json: Add dh_installsystemduser files
+   * d/changelog: Fix typo in a previous entry
+   * dh_gencontrol: Avoid Static-Built-Using in -dbgsym packages
+     (Closes: #1062960)
+   * dh_makeshlibs: Improve handling of t64 transition support
+     - The presence of the `X-Time64-Compat` now unconditionally
+       trigger the `${t64:Provides}` substvar.
+     - Auto-detection is now extended to include t64-nss libraries
+       (The detection regex is now: `m/^lib.*t64(?:-nss)?$/`)
+     - The `${t64:Provides}` substvars now uses `${binary:Version}`
+       instead of trying to guess the version. This works better
+       for packages that manually set their own version via
+       dpkg-gencontrol's -v option.
+   * check the dpkg "features" to decide whether to emit t64:Provides
+
+
+-------------------------------------------------------------------
 Mon Feb 26 08:02:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
