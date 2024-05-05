@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri May 03 16:19:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.12.1:
+  * feat: release-1.12.1 (#10166)
+  * Ensure CA certificate ConfigMaps get defined (#10156) (#10161)
+  * Release v1.12.1-rc.1 (#10154)
+  * fix: add error check in jmespath type conversion in context
+    variables (#10152) (#10153)
+  * fix: skip rules without operation in resource webhook creation
+    (#10146) (#10151)
+  * fix: shared policy context needs to be copied (#10139) (#10147)
+  * fix: fetch only adopted ephemeral report (#10148) (#10150)
+  * fix: sort pod controllers for autogen rule (#10140) (#10142)
+  * chore: remove a package that is imported twice (#10101)
+    (#10130)
+  * chore: update perf docs for 1.12 (#10116) (#10129)
+  * fix: evaluate namespaceObject for Kyverno policies in the CLI
+    (#9977) (#10077)
+  * fix: evaluate namespaceObject for VAPs in the CLI (#9978)
+    (#10076)
+  * fix: remove unused parameters (#10007) (#10069)
+  * fix: return skip when celPreconditions/matchConditions aren't
+    met (#9940) (#10085)
+
+-------------------------------------------------------------------
 Sat Apr 27 10:07:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - fix missing version output
