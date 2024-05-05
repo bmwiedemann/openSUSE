@@ -18,7 +18,7 @@
 
 %define lname libglslang14
 Name:           glslang
-Version:        14.1.0
+Version:        14.2.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -89,7 +89,7 @@ but which some downstream packages rely on.
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
-# ABI keeps on breaking (gh#3052 #3311 #3312)
+# ABI keeps on breaking (gh#3052 #3311 #3312 #3593)
 echo "V_%version { global: *; };" >/tmp/z.sym
 %if 0%{?suse_version} && 0%{?suse_version} < 1599
 export CC=gcc-11 CXX=g++-11

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May  2 22:40:16 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.2
+  * Improve checking for location aliasing errors
+  * Fix undefined behavior in parser
+  * Add bounds check to gl_SampleMask
+  * Fix alignment and padding of matrices consuming one vector
+  * Remove duplicate SPIR-V decorations
+  * Check for exponent overflow in float parser
+  * Fix bug in relaxed verification rules
+  * Fix bug when importing SPIR-V extended intruction set
+  * Fix issues with the interaction of cooperative_matrix and
+    spirv_intrinsics
+  * Support SPV_QCOM_image_processing2
+  * Support files with UTF8BOM character
+
+-------------------------------------------------------------------
 Sun Mar 10 09:15:59 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 14.1
