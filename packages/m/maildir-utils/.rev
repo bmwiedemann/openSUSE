@@ -771,4 +771,26 @@
     but hopefully avoids some db corruption.</comment>
     <requestid>1167921</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>061b3f98c06837cc9134fb6fd2e6118f</srcmd5>
+    <version>1.12.5</version>
+    <time>1714903853</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.12.5:
+  * Rework message composition; split off parts into mu4e-draft.el
+    This tries harder to maintain the current buffer as expected
+  * This fixes e.g. emacs-report-bug handling
+  * New hook mu4e-compose-post-hook for tweaking what mu4e does when
+    we're done with a message (after sending, cancelling, ...).
+    By default, it tries to close the frame if needed, and restore
+    the window configuration. See its docstring.
+  * Better handle forwarding of encoded messages
+  * Don't remove non-mu4e completion in composer
+  * Integrate iCalendar support with message-composition
+  * Handle mu4e-sent-messages-behavior correctly when it's a function
+  * Better support NetBSD
+  * Support some file systems that don't put the file type in d_type
+  * Improve documentation</comment>
+    <requestid>1171850</requestid>
+  </revision>
 </revisionlist>
