@@ -4,7 +4,7 @@
     <param name="url">https://github.com/linux-nvme/libnvme.git</param>
     <param name="filename">libnvme</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@.g%h</param>
-    <param name="revision">bff7dda</param>
+    <param name="revision">80c5cf2aa45f4afc7571dc48850fae3fd62828af</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
   </service>

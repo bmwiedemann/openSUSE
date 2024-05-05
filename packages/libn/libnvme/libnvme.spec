@@ -21,13 +21,12 @@
 %bcond_without check
 
 Name:           libnvme
-Version:        1.8+0.gbff7dda
+Version:        1.9+0.g80c5cf2
 Release:        0
 Summary:        Linux-native nvme device management library
 License:        LGPL-2.1-or-later
 URL:            https://github.com/linux-nvme/libnvme/
 Source0:        libnvme-%{version}.tar.gz
-Patch001:       0001-build-disable-sysfs-test.patch
 BuildRequires:  dbus-1-devel
 BuildRequires:  gcc
 BuildRequires:  gcc-c++

@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Fri May 03 13:11:16 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.9+0.g80c5cf2:
+  * types: Added Command and Feature Lockdown LID
+  * types: add ASQ, ACQ and BPMBL controller properties definitions
+  * types: add controller properties enum documentation
+  * types: fix CRTO.CRIMT mask value definition
+  * tree: use strtou32 to read lba_size
+  * types: Fix PMRWBM register name
+  * examples: fix mi-mctp build warning errors
+  * test: add CSTS.ST, CAP.CPS and CAP.NSSS registers
+  * types: add CAP.CPS and CAP.NSSS definitions
+  * types: add enum nvme_cap documentation
+  * types: Add enum nvme_unit/cmbebs/cmbswtp/flbas/cmic documentation
+  * util: Add string constant for ENVME_CONNECT_IGNORED
+  * tests: Add sample NBFT table with mpath IPv4+IPv6 discovery
+  * types: add controller status shutdown type (CSTS.ST) definition
+  * types: Add enum nvme_csts documentation
+  * types: Add NVME_CMIC definitions
+  * types: Add CMBSWTP property definitions
+  * types: Add NVME_CMBEBS property definitions
+  * types: Fix boot partition read offset (BPROF) mask value
+  * tree: fix mem leak in nvme_ns_init() (bsc#1223331)
+  * fabrics: retry discovery log page when DNR is not set
+  * ioctl: return EPROTO when an NVMe status occurred
+  * linux: Allocate aligned payload for nvme_get_telemetry_log
+  * test: use diff to compare sysfs output
+  * tree: fix lba_count size calculation
+  * tree: Add NVM subsystem controller identifier
+  * test: Add unit test for nvme_id_ns_flbas_to_lbaf_inuse()
+  * types: Fix NVME_CSTS_SHST_MASK definition
+  * util: Fixed nvme_id_ns_flbas_to_lbaf_inuse()
+  * types: Add optional data present filed mask and shift definition
+  * types: Fix EOM header optional data present fields definition
+  * libnvme : record the nvme pci adapter physical slot (bsc#1223208)
+  * sysfs: minimize heap allocations of sysfs paths
+  * json: Fix uninitialized variables
+  * libnvme: add missing symbol nvme_scan_tls_keys
+  * nbft: Whitespace fixes (bsc#1222026)
+  * tests: Add complex NBFT table from Dell R660 (bsc#1222026)
+  * tests: Adapt to added NBFT SSNS flags (bsc#1222026)
+  * nbft: Add SSNS 'discovered' flag (bsc#1222026)
+  * nbft: Add SSNS 'unavailable' flag (bsc#1222026)
+  * doc: Document the NBFT API (bsc#1222026)
+  * ioctl: Move nvme_cmd_dword_fields definitions into header file
+  * types: Add PEL set feature event layout definitions
+  * types: Fix enum nvme_pel_rci documentation error
+  * types: Add boot partition information definitions
+  * types: Add PEL header additional information definitions
+  * fabrics: keyring is a long (bsc#1216982)
+  * config-schema.json.in: tls keys and keyrings are strings (bsc#1216982)
+  * linux: Add nvme_scan_tls_keys() (bsc#1216982)
+  * json: dump TLS key data in PSK interchange format (bsc#1216982)
+  * json: import TLS key from PSK interchange format (bsc#1216982)
+  * json: export TLS key in PSK interchange format (bsc#1216982)
+  * tree: read TLS key in nvme_configure_ctrl() (bsc#1216982)
+  * linux: rework nvme_insert_tls_key_versioned() (bsc#1216982)
+  * linux: add nvme_import_tls_key() (bsc#1216982)
+  * linux: add nvme_export_tls_key() (bsc#1216982)
+  * crc32: Add CRC32 algorithm (bsc#1216982)
+  * linux: add nvme_update_key() (bsc#1216982)
+  * linux: add nvme_read_key() (bsc#1216982)
+  * linux: allow for NULL argument in nvme_lookup_keyring() (bsc#1216982)
+  * log: Respect DEFAULT_LOGLEVEL on uninitialized logging
+  * log: Introduce nvme_get_logging_level()
+  * ioctl: remove incomplete debug logging infrastructure
+  * ioctl: export nvme_submit_passthru{64} as weak symbol
+  * log: move nvme_{set|get}_debug to log.c
+  * fabrics: check the read() return value
+  * types: Add PEL reporting context port identifier type definitions
+  * types: Add persistent event log reporting context definitions
+-  Upstream changed the sysfs test setup, thus sysfs test works in OSB
+  * remove 0001-build-disable-sysfs-test.patch
+
+-------------------------------------------------------------------
 Wed Feb 14 12:04:28 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 1.8+0.gbff7dda:
