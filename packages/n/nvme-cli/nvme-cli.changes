@@ -1,4 +1,165 @@
 -------------------------------------------------------------------
+Fri May 03 14:06:47 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.9.1:
+  * plugins/spdk: drop the plugin
+
+-------------------------------------------------------------------
+Fri May 03 13:33:54 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.9:
+  * nvme-print: expand the maximum field length to prevent misalignment
+  * plugins/spdk: plugin to list SPDK subsystems
+  * nvme-print: check if controller belong to SPDK
+  * plugins/spdk: plugin to list SPDK controllers
+  * nvme-print-stdout: fix ASQB, ACQB and BMBBA prints
+  * build: bump libnvme wrap
+  * nvmf-autoconnect: fix string encoding
+  * nvme: identify primary ctrl do not accept nsid
+  * nvme-wrap: remove unused nvme_cli_get_log_ana_groups()
+  * nvme-print-json: use admin queue attributes definitions
+  * nvme-print-json: use CSTS definitions
+  * nvme-print-stdout: use POWER_OF_TWO macro
+  * nvme-print-json: use controller configuration definitions
+  * nvme-print-json, nvme-print-stdout: add tertiary version number
+  * nvme-print-json: use NVME_MAJOR and NVME_MINOR definitions
+  * nvme-print-json: use NVME_BOOT_PARTITION_INFO field definitions
+  * nvme-print-json: add support telemetry log create event in PEL
+  * nvme-print-json: add support set feature event in PEL
+  * nvme-print-json: add obj_d() function
+  * nvme-print-json: add obj_add_uint_0nx() function
+  * meson.build: Fix spelling of sed-opal.h filename
+  * sed_opal: Only build when we really have sed_opal headers
+  * nvme: fix error path if write() fails in get_telemetry_log()
+  * plugins/solidigm: Additional LID for temperature statistics.
+  * plugins/solidigm: Improved Solidigm UUID index detection.
+  * nvme-print-stdout: Add CSTS.ST register stdout print
+  * nvme-print-stdout: Use NVME_CMIC definitions
+  * nvme-print: Use NVME_UNIT definitions
+  * nvme-print-stdout: Use NVME_CMBMSC/STS/EBS/SWTP definitions
+  * plugins/ssstc: add a new plugin for SSSTC driver
+  * nvmf-connect: systemd hardening effort
+  * plugins/ocp: Adjusted variable type size carrying UUID index to 8 bit.
+  * nvme: fix security buffer allocation size
+  * nvme: Change fw-download xfer initialization to set 0
+  * nvme: Add fw-download warning message for FWUG alignment error
+  * plugins/ocp: Split ocp_get_uuid_index() into find and get functions.
+  * nvme: fix mem leak in multiple key related functions (bsc#1223331)
+  * fabrics: fix mem leak in nvmf_check_hostid_and_hostnqn() (bsc#1223331)
+  * nvme-print-stdout: Use NVME_BPRSEL definitions
+  * nvme-print-stdout: Use NVME_BPINFO definitions
+  * nvme-print-stdout: Use NVME_CMBSZ definitions
+  * nvme-print-stdout: Use NVME_CMBLOC definitions
+  * Revert "logging: fix error handling for ioctl passthru wrappers"
+  * fabrics: align identify command payload
+  * ocp: Unify line start spacing as tabs
+  * ocp: support OCP DSSD Async Event Config feature
+  * nvme: Add support for get-reg and set-reg commands
+  * nvme-print-json: Add register print functions
+  * nvme-print-stdout: Add register print functions
+  * nvme-print: Add register print functions
+  * nvme: Refactor mmap_registers to add writable parameter
+  * nvme-print: Change PMRSZU string function as unit string
+  * nvme-print: Refactor CMBLOC and PMRSTS registers function
+  * logging: fix error handling for ioctl passthru wrappers
+  * nbft: Fix scandir() error check
+  * nbft: Refactor connection attempt out
+  * nvme-print: Use EOM optional data present macros changed
+  * nvme-print: Print cntlid number for controller
+  * nvme: check-tls-key fails despite having hostnqn file (bsc#1223331)
+  * nvme: print retained key for gen-tls-key's -i option too (bsc#1223331)
+  * fabrics : allow host to create duplicate connections to target
+  * fabrics: Fix fast_io_fail_tmo option
+  * nvme-print-stdout: use admin queue attributes definitions
+  * nvme-print-stdout: use CSTS definitions
+  * nvme-print-stdout: use controller configuration definitions
+  * nvme-print-stdout: use NVME_MAJOR and NVME_MINOR definitions
+  * nvme-print-stdout: use FDP configuration attributes definitions
+  * nvme: add new function 'tls_key'
+  * nvme: use library functions for importing and exporting TLS keys (bsc#1216982)
+  * nvme: extend error message for ns scan failures
+  * nvme-print-json: Bugfix status json key of sanitize-log
+  * sed: update SED password when initalizing (bsc#1222168)
+  * plugins/memblaze: add performance stats
+  * plugins/memblaze: fix code mis-type error
+  * plugins/memblaze: code refactor on applying __packed on more structs
+  * plugins/memblaze: code refactor on using cleanup_nvme_dev
+  * nvme: Fix to cleanup free raw_secret memory allocated
+  * plugins/memblaze: code-format on leading indent and align
+  * plugins/wdc: Fix narrow index variable type in for loop to __u32
+  * plugins/wdc: Whitespace changes
+  * nvme: Delete unused nvme root scanned
+  * ocp: support OCP 2.5 Set Telemetry Profile feature
+  * nvme: Don't seg fault if given device is not char/block device
+  * nbft: Include SSNS index in error messages (bsc#1222026)
+  * nbft: Pause logging for expected connection failures (bsc#1222026)
+  * nbft: Silence connection failures for unavailable SSNS (bsc#1222026)
+  * nbft: Fix 'verbose' argument type (bsc#1222026)
+  * plugins/nbft: Implement verbose logging
+  * plugins/nbft: Print the new SSNS flags
+  * nbft: Fix uninitialized variable
+  * plugins/nbft: Fix uninitialized variables
+  * plugins/sed: Fix uninitialized variable
+  * nvme-print-stdout: Fix uninitialized variable
+  * nvme-print-json: Fix uninitialized variable
+  * build: Switch default meson buildtype to 'debugoptimized'
+  * nvme: do not scan topology when mmaping registers
+  * nvme-print-stdout: Use NVME_BOOT_PARTITION_INFO field definitions
+  * nvme-print-stdout: Use NVME_GET for MI commands supported and effects CSP
+  * nvme-print-stdout: Use NVME_GET for FID supported and effects FSP
+  * nvme-print-stdout: Use NVME_SET_FEAT_EVENT register definitions
+  * nvme-print: Add PEL EHAI port identifier type printf function
+  * build: bump libnvme wrap
+  * ocp: fix for power-state argument checking
+  * nvme: do not issue warning when nvme_core module is not loaded
+  * wdc: Review changes and build fixes
+  * wdc:  Fix timestamp displayed by vs-firmware-activate-history command
+  * logging: Split to output ioctl latency by log info level
+  * nvme-print-stdout: Change hexadecimal value 0x prefix to use %#x
+  * nvme-print-stdout: Fix LBA status DSLBA output as hexadecimal
+  * nvme-print-stdout: Split line length exceeded 100 columns
+  * nvme-print-stdout: Use NVME_PMRMSC register definitions to print
+  * nvme-print-stdout: Use NVME_PMRSWTP register definitions to print
+  * nvme-print-stdout: Use NVME_PMREBS register definitions to print
+  * nvme-print-stdout: Use NVME_PMRSTS register definitions to print
+  * nvme-print-stdout: Use NVME_PMRCTL_EN register definition to print
+  * nvme-print-stdout: Use NVME_PMRCAP register definition to print
+  * doc: Fix admin and io passthru cdw parameters description
+  * doc: Add get-feature cdw11 and set-feature cdw12 parameters
+  * micron-nvme: Unuse stat() to check if strMainDirName exists
+  * doc: Fix get-property and set-property offset and value descriptions
+  * doc: Fix documentation file mode 100755 to 100644
+  * nvme-print-stdout: Fix channel configuration descriptors pointer
+  * nvme-print-stdout: Check sscanf return value
+  * nvme-print-stdout: Fix linux kernel check patch errors
+  * nvme: Delete unusual fallthrough for cases have no body
+  * nvme: Delete duplicated semicolon
+  * nvme-print, common: Fix for whitespace change
+  * logging: output ioctl debugging info
+  * nvme: track verbose level
+  * logging: track log level globally
+  * logging: move logging code to a new file
+  * nvme: update include for libnvme
+  * nvme: remove unused declaration
+  * build: bump libnvme wrap
+  * nvme-netapp: add nspath tlv handling (bsc#1220971)
+  * rpm: Add missing rule and service files
+  * nvme-print-json, nvme-print-stdout: Use CHAR_BIT definition
+  * nvme-print-stdout: Delete duplicated if condition checking line
+  * ocp: Fix timestamp displayed by fw-activate-history command
+  * wdc: Add support for the get-drive-status command to SN861
+  * nvme-print: Fix nvme_host_metadata_type_to_string() indentation errors
+  * nvme-print: Add PEL RCI port identifier type printf function
+  * nvme-print-stdout: Use persistent event log RCI definitions
+  * build: bump libnvme wrap
+  * nvme: Add show-regs and get-property commands NSSD print outputs
+  * nvme-print: print more details in ns-descs verbose output (bsc#1223331)
+  * Revert "nvme-print-json: remove obj_print helper"
+  * sed: Confirm entered password before initialization.
+- drop systemd service harden file, upstream ships this patch.
+  * remove 0100-harden_nvmf-connect@.service.patch
+
+-------------------------------------------------------------------
 Wed Feb 14 12:37:16 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 2.8:

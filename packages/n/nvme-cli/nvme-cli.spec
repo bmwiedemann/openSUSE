@@ -19,7 +19,7 @@
 %bcond_without check
 
 Name:           nvme-cli
-Version:        2.8
+Version:        2.9.1
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only
@@ -27,8 +27,6 @@ Group:          Hardware/Other
 URL:            https://github.com/linux-nvme/nvme-cli/
 Source0:        nvme-cli-%{version}.tar.gz
 Source1:        nvme-cli-rpmlintrc
-# downstream patches
-Patch100:       0100-harden_nvmf-connect@.service.patch
 BuildRequires:  asciidoc
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
