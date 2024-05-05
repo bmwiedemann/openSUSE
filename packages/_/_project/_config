@@ -615,6 +615,9 @@ Prefer: -libkdecoration2-devel
 # have choice  for cmake(FreeRDP) >= 2.10: freerdp-devel freerdp2-devel
 Prefer: -freerdp-devel
 
+# have choice for registries-conf >= 20240408 needed by libcontainers-common: registries-conf-default registries-conf-suse
+Prefer: -registries-conf-suse
+
 #---
 
 Preinstall: aaa_base filesystem attr bash bash-sh coreutils diffutils
