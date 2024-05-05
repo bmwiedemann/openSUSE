@@ -4586,4 +4586,14 @@ bsc#1216656</comment>
   boo#1222100</comment>
     <requestid>1167494</requestid>
   </revision>
+  <revision rev="397" vrev="1">
+    <srcmd5>ef48463b7d65eeae27c0007523d9b731</srcmd5>
+    <version>10.3.0</version>
+    <time>1714903816</time>
+    <user>anag+factory</user>
+    <comment>- Update to libvirt 10.3.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v10-3-0-2024-05-02</comment>
+    <requestid>1171479</requestid>
+  </revision>
 </revisionlist>
