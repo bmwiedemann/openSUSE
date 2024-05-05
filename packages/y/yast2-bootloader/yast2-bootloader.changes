@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  3 13:07:26 UTC 2024 - Stefan Schubert <schubi@localhost>
+
+- Writing "root" entry into /etc/kernel/cmdline which is needed by
+  sdbootutil. (still for bsc#1220892)
+- 5.0.10
+
+-------------------------------------------------------------------
 Fri Apr 26 13:07:51 UTC 2024 - Stefan Schubert <schubi@suse.com>
 
 - Creating kernel options for systemd-boot. (bsc#1220892)
