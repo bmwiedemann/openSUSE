@@ -87,4 +87,24 @@
     <comment>- Add python-tomli requirement</comment>
     <requestid>1159845</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a240422615d60755ad3e27200a8f9b6a</srcmd5>
+    <version>0.14</version>
+    <time>1714903827</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.14:
+  * Introduce LiteTranslator and FullTranslator as convenience
+    classes for more deterministic behaviour, :pr:`95`.
+  * setuptools plugin: Fix ValueError when setup.cfg contains
+    [options.packages.find] but also lists [options] packages =
+    ... explicitly as a list of package names, :issue:`93`.
+  * Fix ValueError when setup.cfg contains
+    [options.packages.find] but also lists [options] packages =
+    ... explicitly as a list of package names, :issue:`93`.
+  * pytest plugin: Remove comments when converting addopts with
+    multi-line values, :issue:`98`.
+  * Remove comments when converting addopts with multi-line
+    values, :issue:`98`.</comment>
+    <requestid>1171769</requestid>
+  </revision>
 </revisionlist>

@@ -50,7 +50,7 @@
 
 %define skip_python2 1
 Name:           python-ini2toml%{psuffix}
-Version:        0.13
+Version:        0.14
 Release:        0
 Summary:        Automatic conversion of .ini/cfg files to TOML equivalents
 License:        MPL-2.0
@@ -157,6 +157,8 @@ sed -i 's/--cov ini2toml --cov-report term-missing//' setup.cfg
 %if %{with test}
 %check
 %if %{without all} && %{without full}
+rm -v src/ini2toml/drivers/configupdater.py
+rm -v src/ini2toml/drivers/full_toml.py
 ignoretests=(
     --ignore tests/test_examples.py
     --ignore tests/test_transformations.py
