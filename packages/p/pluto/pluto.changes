@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 05 07:31:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 5.19.4 (skipping non-existent version 5.19.3):
+  * Accept signature for cosign (#525)
+
+-------------------------------------------------------------------
+Sun May 05 07:26:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 5.19.2:
+  * Bumped golang.org/x/net to v0.17.0 to fix HIGH vulnerabilities
+    (#527)
+
+-------------------------------------------------------------------
 Wed Jan 31 17:37:20 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 5.19.1:
