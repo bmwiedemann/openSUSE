@@ -7,4 +7,12 @@
     <comment>Need for nxinx-module-lua</comment>
     <requestid>1171749</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e3c1e0a7eb95fb0afbc221ad0eee42ac</srcmd5>
+    <version>2.1.20240314</version>
+    <time>1714903854</time>
+    <user>anag+factory</user>
+    <comment>- Removed %check (tests don't run, and it's not known how to run them).</comment>
+    <requestid>1171854</requestid>
+  </revision>
 </revisionlist>

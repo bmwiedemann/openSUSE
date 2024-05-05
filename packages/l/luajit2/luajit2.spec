@@ -27,17 +27,12 @@ Version:        %{major}.%{minor}
 Release:        0
 Summary:        OpenResty's maintained branch of LuaJIT
 License:        MIT
-URL:            https://github.com/openresty/luajit2
+URL:            https://github.com/openresty/%{name}
 Source0:        https://github.com/openresty/%{name}/archive/refs/tags/v%{major}-%{minor}.tar.gz#/%{name}-%{major}-%{minor}.tar.gz
 Source1:        baselibs.conf
 Patch0:         %{name}-name.patch
 BuildRequires:  pkgconfig
 Requires:       lib%{name}-%{lib_ver} = %{version}
-%if 0%{?suse_version} > 1600
-BuildRequires:  perl-IPC-Run3
-BuildRequires:  perl-Test-Base
-BuildRequires:  perl-Test-LongString
-%endif
 
 %description
 This is the official OpenResty branch of LuaJIT. It is not to be considered a fork,
@@ -79,11 +74,6 @@ Devel files for %{name} package.
 	TARGET_STRIP=: \
 	PREFIX=%{_prefix} \
 	MULTILIB=%{_lib}
-
-%check
-%if 0%{?suse_version} > 1600
-perl t/TestLJ.pm
-%endif
 
 %post -n lib%{name}-%{lib_ver} -p /sbin/ldconfig
 %postun -n lib%{name}-%{lib_ver} -p /sbin/ldconfig
