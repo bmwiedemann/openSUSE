@@ -275,4 +275,13 @@
     <comment>Update to version 0.71.0: (forwarded request 1170309 from VaiTon)</comment>
     <requestid>1170310</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5d53184c62e8c2e423b15892692d40b4</srcmd5>
+    <version>0.71.1</version>
+    <time>1714903865</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.71.1:
+  * Ignored wildcard specifications for top-level domains (forwarded request 1171935 from VaiTon)</comment>
+    <requestid>1171936</requestid>
+  </revision>
 </revisionlist>
