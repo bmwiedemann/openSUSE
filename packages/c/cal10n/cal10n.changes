@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May  2 14:22:43 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fetch the latest git revision: 12th commit after 0.8.1 calling
+  it 0.8.1.12
+- Add a multibuild flavour to build the maven plugins
+- Added patch:
+  * Fix-SupportedSourceVersion-warning.patch
+    + fix the following: [WARNING] Supported source version
+      'RELEASE_5' from annotation processor
+      'ch.qos.cal10n.verifier.processor.CAL10NAnnotationProcessor'
+      less than -source '1.7'
+    + uncommitted change from the following pull request:
+      https://github.com/qos-ch/cal10n/pull/10
+
+-------------------------------------------------------------------
 Wed May 11 13:18:07 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fetch sources using source service from ch.qos git

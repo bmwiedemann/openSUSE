@@ -1,0 +1,47 @@
+From a1c260aeeeeb6583deecf76ab9a7ef884c89b942 Mon Sep 17 00:00:00 2001
+From: Sylvain Bugat <sylvain.bugat@cpexterne.org>
+Date: Thu, 27 Aug 2015 14:54:23 +0200
+Subject: [PATCH] Fix SupportedSourceVersion warning
+
+When using cal10n-api this compilation warning is displayed: [WARNING] Supported source version 'RELEASE_5' from annotation processor 'ch.qos.cal10n.verifier.processor.CAL10NAnnotationProcessor' less than -source '1.7'
+---
+ .../processor/CAL10NAnnotationProcessor.java  | 21 ++++++++++++++++++-
+ 1 file changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/cal10n-api/src/main/java/ch/qos/cal10n/verifier/processor/CAL10NAnnotationProcessor.java b/cal10n-api/src/main/java/ch/qos/cal10n/verifier/processor/CAL10NAnnotationProcessor.java
+index 136cfe1..023f450 100644
+--- a/cal10n-api/src/main/java/ch/qos/cal10n/verifier/processor/CAL10NAnnotationProcessor.java
++++ b/cal10n-api/src/main/java/ch/qos/cal10n/verifier/processor/CAL10NAnnotationProcessor.java
+@@ -13,12 +13,31 @@
+ import java.util.Set;
+ 
+ @SupportedAnnotationTypes("ch.qos.cal10n.BaseName")
+-@SupportedSourceVersion(SourceVersion.RELEASE_5)
+ public class CAL10NAnnotationProcessor extends AbstractProcessor {
+ 
+   TypeElement baseNameTypeElement;
+   Filer filer;
+ 
++  @Override
++  public SourceVersion getSupportedSourceVersion() {
++
++    //Replacement of @SupportedSourceVersion(SourceVersion.RELEASE_5) because it generate compilation warning like:
++    //[WARNING] Supported source version 'RELEASE_5' from annotation processor 'ch.qos.cal10n.verifier.processor.CAL10NAnnotationProcessor' less than -source '1.7'
++    try {
++      return SourceVersion.valueOf("RELEASE_8");
++    } catch (IllegalArgumentException e) {}
++
++    try {
++      return SourceVersion.valueOf("RELEASE_7");
++    } catch (IllegalArgumentException e) {}
++
++    try {
++      return SourceVersion.valueOf("RELEASE_6");
++    } catch (IllegalArgumentException x) {}
++
++    return SourceVersion.RELEASE_5;
++  }
++
+   @Override
+   public void init(ProcessingEnvironment env) {
+     super.init(env);

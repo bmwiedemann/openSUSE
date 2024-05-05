@@ -99,4 +99,12 @@
     <comment>redo packaging</comment>
     <requestid>976400</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8a14a585e449d9137d8ec04e679384fb</srcmd5>
+    <version>0.8.1.12</version>
+    <time>1714903814</time>
+    <user>anag+factory</user>
+    <comment>Fix warning + latest snapshot + maven plugins as an extra flavour</comment>
+    <requestid>1171385</requestid>
+  </revision>
 </revisionlist>
