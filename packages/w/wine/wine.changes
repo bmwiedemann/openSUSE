@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May  4 08:43:01 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 9.8 release
+  - Mono engine updated to version 9.1.0.
+  - IDL-generated files use fully interpreted stubs.
+  - Improved RPC/COM support on ARM platforms.
+  - Various bug fixes.
+- update staging to 9.8 release
+
+-------------------------------------------------------------------
 Sat Apr 20 09:36:04 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 9.7 release

@@ -5144,4 +5144,17 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 9.7 release</comment>
     <requestid>1169634</requestid>
   </revision>
+  <revision rev="438" vrev="1">
+    <srcmd5>b071fc00e818d5e3dc407b6bd039da55</srcmd5>
+    <version>9.8</version>
+    <time>1714903858</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 9.8 release
+  - Mono engine updated to version 9.1.0.
+  - IDL-generated files use fully interpreted stubs.
+  - Improved RPC/COM support on ARM platforms.
+  - Various bug fixes.
+- update staging to 9.8 release</comment>
+    <requestid>1171903</requestid>
+  </revision>
 </revisionlist>
