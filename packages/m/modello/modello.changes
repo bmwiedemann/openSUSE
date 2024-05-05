@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat May  4 12:02:36 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.4.0
+  * New features and improvements
+    + Keep license structure
+    + Support addition of license header to generated files
+    + Make generated code - Java 8 based by default
+    + threadsafety
+  * Bug Fixes
+    + Revert snakeyaml to 1.33 (as 2.x is not fully compatible with
+      1.x). This change is reverted and SnakeYaml fixed by the
+      0003-Fix-Snakeyaml.patch
+- Modified patches:
+  * 0001-Fix-ModelloCli-after-moving-from-Plexus-to-JSR330.patch
+  * 0002-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
+  * 0003-Fix-Snakeyaml.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
+Fri May  3 16:50:54 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0003-Fix-Snakeyaml.patch
+    + patch to fix the modello-plugin-snakeyaml with SnakeYaml 2.2
+    + https://github.com/codehaus-plexus/modello/pull/439
+
+-------------------------------------------------------------------
 Wed May  1 12:22:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the new codehaus plexus build api 1.2.0
@@ -14,7 +41,7 @@ Tue Apr 16 13:04:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Sun Apr 14 06:13:08 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
-- Upgrade to upstrem version 2.3.0
+- Upgrade to upstream version 2.3.0
   * Changes of version 2.3.0
     + Kill off dead Plexus
     + Fix for #366

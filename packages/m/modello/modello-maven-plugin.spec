@@ -19,7 +19,7 @@
 %global parent modello
 %global subname maven-plugin
 Name:           %{parent}-%{subname}
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Modello Maven Plugin
 License:        Apache-2.0 AND MIT
@@ -29,6 +29,7 @@ Source0:        https://repo1.maven.org/maven2/org/codehaus/%{parent}/%{parent}/
 Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
 Patch0:         0001-Fix-ModelloCli-after-moving-from-Plexus-to-JSR330.patch
 Patch1:         0002-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
+Patch2:         0003-Fix-Snakeyaml.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
@@ -84,6 +85,7 @@ API documentation for %{name}.
 %setup -q -n %{parent}-%{version}
 %patch -P 0 -p1
 %patch -P 1 -p1
+%patch -P 2 -p1
 cp -p %{SOURCE1} LICENSE
 
 %pom_remove_plugin :maven-site-plugin
