@@ -780,4 +780,12 @@ The LICENSE file in the sane-backends packages explains the licensing of the pac
 - Add BuildArch noarch to autoconfig subpackage</comment>
     <requestid>1148995</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>f7dd9e88e99ba244e927ca7786496baf</srcmd5>
+    <version>1.3.0</version>
+    <time>1714903818</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1171497</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Fri May  3 00:47:40 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
+
+- Updated to sane-backends version 1.3.0
+  * Backends
+    + avision:
+      - Correction for ADF presence detect which caused a hang.
+      - Internationalised some text items in the backend to make them available for translation.
+    + epsonds:
+      - Some small changes to option documentation.
+      - Added support for models: ES-C220, DS-C330, and DS-C490.
+    + escl:
+      - Fix for pwf:Version item.
+      - Fix for crash in libjpeg when cropping image.
+      - Fix for issue with configured device when AVAHI not running.
+      - Fix for build without poppler-glib.
+    + fujitsu:
+      - Added support for Ricoh scanners: FI-8040, FI-70F.
+    + genesys:
+      - Added missing configuration for Plustek OpticFilm 7500i and Plustek OpticFilm 8100.
+    + hpljm1005:
+      - Fixes to maximum geometries and various cropping and geometry details specifically for
+        the HP LaserJet M1005.
+    + lexmark_X2670:
+      - Added new backend for the Lexmark X26xx series of scanners.
+    + pixma:
+      - Fix to prevent mode change when source is selected. Mode should not change if still valid
+        for source.
+      - Added support for models: TS8630 Series, XK110 Series, GX3000 Series, GX4000 Series,
+        G3070 Series, G2070 Series, G4070 Series, G3030 Series, G2030 Series, TC-20M, TC-5200M,
+        TR4500 Series, TS8700 series, XK120 series, GX1000 series, GX2000 series, TS6630 series,
+        TS7700 series, TS7600i series, TS6730 series, TR7800 series, TS7700i series,
+        TS7700A series, GX6500 series, i-SENSYS MF750 Series
+    + snapscan:
+      - Corrections for Agfa ARCUS 1200 scan area.
+    + test:
+      - Fix for a crash in the backend.
+    + xerox_mfp:
+      - Added support for Dell 1135n, which is a clone of the Samsung SCX-4623F.
+      - Added support for Xerox WorkCentre 3335.
+      - Added JPEG mitigation for modules that don't properly support JPEG output:
+        Xerox WorkCentre 3225
+      - Fix to remove USB CLEAR HALT during initialisation which can potentially lock up devices.
+      - General fixes to support the SCX-4521F model.
+  * Frontends
+    + saned:
+      - Default scan buffer is now 1MB. -B option added to permit the buffersize to be set.
+      - Documentation fixes.
+    + scanimage:
+      - Fix for keyboard prompt processing
+      - Default scan buffer is now 1MB. --buffer-size and -B options now require an argument
+        to be provided.
+      - Fix for PDF generation, missing newline in generated file.
+  * Build
+    + Fixes for clang-16 compiler
+    + Fixes for FreeBSD build.
+    + Fixes for escl build option involving poppler-glib.
+    + Optionally take build version from ChangeLog if not other version source is available.
+    + Fixes to autoconf files to remove unnecessary warnings from test logs.
+    + Fix for macOS builds related to threading support: SANE in macOS doesn't work for
+      multi-process with libusb.
+  * Tools
+    + sane-find-scanner: Added some Linux SCSI device names since some later potential names
+      are missing. Better solution in the pipeline.
+  * Documentation
+    + Fixes for a number of man pages.
+    + Added documentation for a number of Ricoh scanners which are rebranded products acquired
+      from Fujitsu.
+  * Miscellaneous
+    + sanei_config: Fix for a potential crash.
+    + New Georgian translation added.
+    + Translations updated for: British English, Ukrainian, French and Simplified Chinese.
+
+-------------------------------------------------------------------
 Thu Feb 22 07:14:09 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
