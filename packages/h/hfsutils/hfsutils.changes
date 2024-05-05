@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 20 17:46:24 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Fix build with gcc14, incompatible pointer and deprecated declaration
+  [bsc#1221691]
+  + gcc14-fix-incompatible-pointer-type-const-char.patch
+  + deprecated-declaration-tcl-interp-result.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 07:49:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

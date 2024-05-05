@@ -1,7 +1,7 @@
 #
 # spec file for package hfsutils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ Patch3:         hfsutils-%{version}-conf.dif
 Patch4:         hfsutils-%{version}-errno.dif
 Patch5:         hfsutils-exclusive-open.patch
 Patch6:         bug1160268-no-common.patch
+Patch7:         gcc14-fix-incompatible-pointer-type-const-char.patch
+Patch8:         deprecated-declaration-tcl-interp-result.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  tcl-devel
@@ -64,6 +66,8 @@ modes (MacBinary, BinHex, text, etc.) for hfsutils.
 %patch -P 4
 %patch -P 5 -p1
 %patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
 
 %build
 autoreconf --force --install
