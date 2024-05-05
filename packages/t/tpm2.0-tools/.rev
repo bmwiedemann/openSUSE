@@ -698,4 +698,38 @@ fix the offset of the read buffer (forwarded request 909201 from aplanas)</comme
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1135462</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>afda3a2051e598ac9cea03751226bb2a</srcmd5>
+    <version>5.7</version>
+    <time>1714903826</time>
+    <user>anag+factory</user>
+    <comment>Update to version 5.7:
++ Security
+  - Fixed CVE-2024-29038
+  - Fixed CVE-2024-29039
++ Fixed
+  - Fix eventlog test
+  - Fix issues with reading NV indexes
+  - Fix context save error on tpm2_create
+  - tpm2_sessionconfig: fix handling of --disable-continue session so that the subsequent command will not fail
+  - when attempting to context save a flushed session.
+  - detection of functions within libcrypto when CRYPTO_LIBS is set and system has install libcrypto.
+  - tpm2_send: fix EOF detection on input stream.
+  - tpm2_policy.c fix compilation error caused by format directive for size_t on 32 bit systems.
+  - tpm2_nvread: fix input handling no nv index.
+  - Auth file: Ensure 0-termination when reading auths from a file.
+  - configure.ac: fix bashisms. configure scripts need to be runnable with a POSIX-compliant /bin/sh.
+  - cirrus.yml fix tss compilation with libtpms for FreeBSD.
+  - tpm2_tool.c Fix missing include for basename to enable compilation on netbsd.
+  - options: fix TCTI handling to avoid failures for commands that should work with no options.
+  - tpm2_getekcertificate.c Fix leak. ek_uri was not freed if get_ek_server_address failed.
++ Added
+  - Add the possibility for autoflush (environment variable &quot;TPM2TOOLS_AUTOFLUSH&quot;, or -R option)
++ Removed
+  - Testing on Ubuntu 18.04 as it's near EOL (May 2023).m2_policy.c fix compilation error caused by format directive for size_t on 32 bit systems.
+  - tpm2_nvread: fix input handling no nv index.
+- tpm2-tools.keyring: added Andreas Fuchs 0x8F4F9A45D7FFEE74 key, documented
+  in upstream repo, which was used for signing this new release tarball.</comment>
+    <requestid>1171752</requestid>
+  </revision>
 </revisionlist>
