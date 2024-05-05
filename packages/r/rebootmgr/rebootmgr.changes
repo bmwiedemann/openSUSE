@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 03 13:10:33 UTC 2024 - kukuk@suse.com
+
+- Remove rcrebootmgr symlink
+- Update to version 2.4+git20240503.5b98913:
+  * Don't generate html documentation anymore
+  * Fix manual page dependencies for parallel build
+  * Update configure.ac
+  * Fix soft-reboot detection in forced mode
+
+-------------------------------------------------------------------
 Fri Mar 15 12:34:51 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.4

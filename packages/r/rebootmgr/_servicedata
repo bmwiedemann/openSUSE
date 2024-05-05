@@ -1,0 +1,5 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/SUSE/rebootmgr.git</param>
+ <param name="changesrevision">5b98913fb31495c911c0eb6b919c503e26943bd1</param></service>
+</servicedata>

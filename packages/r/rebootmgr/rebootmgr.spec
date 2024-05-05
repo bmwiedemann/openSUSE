@@ -24,13 +24,16 @@
 %endif
 
 Name:           rebootmgr
-Version:        2.4
+Version:        2.4+git20240503.5b98913
 Release:        0
 Summary:        Automatic controlled reboot during a maintenance window
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          System/Base
 URL:            https://github.com/SUSE/rebootmgr
 Source:         %{name}-%{version}.tar.xz
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1)
@@ -45,12 +48,12 @@ If you updated a system with e.g. transactional updates or a kernel update was a
 %setup -q
 
 %build
+./autogen.sh
 %configure
 make %{?_smp_mflags}
 
 %install
 %make_install
-ln -sf service %{buildroot}%{_sbindir}/rcrebootmgr
 if [ ! -d %{buildroot}%{_distconfdir} ]; then
     mkdir -p %{buildroot}%{_distconfdir}
     mv %{buildroot}%{_sysconfdir}/rebootmgr.conf %{buildroot}%{_distconfdir}
@@ -85,7 +88,6 @@ test -f /etc/rebootmgr.conf.rpmsave && mv -v /etc/rebootmgr.conf.rpmsave /etc/re
 %{_tmpfilesdir}/soft-reboot-cleanup.conf
 %{_sbindir}/rebootmgrctl
 %{_sbindir}/rebootmgrd
-%{_sbindir}/rcrebootmgr
 %{_datadir}/dbus-1/interfaces/org.opensuse.RebootMgr.xml
 %{_datadir}/dbus-1/system.d/org.opensuse.RebootMgr.conf
 %{_mandir}/man1/rebootmgrctl.1%{?ext_man}

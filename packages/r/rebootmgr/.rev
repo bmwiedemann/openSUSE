@@ -250,4 +250,17 @@
     automatically</comment>
     <requestid>1158226</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>685668ad5d8ef118e9bf2b4677104919</srcmd5>
+    <version>2.4+git20240503.5b98913</version>
+    <time>1714903831</time>
+    <user>anag+factory</user>
+    <comment>- Remove rcrebootmgr symlink
+- Update to version 2.4+git20240503.5b98913:
+  * Don't generate html documentation anymore
+  * Fix manual page dependencies for parallel build
+  * Update configure.ac
+  * Fix soft-reboot detection in forced mode</comment>
+    <requestid>1171755</requestid>
+  </revision>
 </revisionlist>
