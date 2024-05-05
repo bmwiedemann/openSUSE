@@ -25,20 +25,21 @@
 %define psuffix %{nil}
 %endif
 
-%define skip_python39 1
+%define ghversion 2024.03.0
+
 %{?sle15_python_module_pythons}
 Name:           python-xarray%{psuffix}
-Version:        2024.2.0
+Version:        2024.3.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
 URL:            https://github.com/pydata/xarray
-Source:         https://files.pythonhosted.org/packages/source/x/xarray/xarray-%{version}.tar.gz
+Source:         https://github.com/pydata/xarray/archive/refs/tags/v%{ghversion}.tar.gz#/xarray-%{ghversion}-gh.tar.gz
 # PATCH-FEATURE-UPSTREAM local_dataset.patch gh#pydata/xarray#5377 mcepl@suse.com
 # fix xr.tutorial.open_dataset to work with the preloaded cache.
 Patch0:         local_dataset.patch
-# PATCH-FIX-UPSTREAM xarray-pr8797-tokenize.patch gh#pydata/xarray#8797 fixes gh#pydata/xarray#8788
-Patch1:         https://github.com/pydata/xarray/pull/8797.patch#/xarray-pr8797-tokenize.patch
+# PATCH-FIX-UPSTREAM xarray-pr8953-nodatatreeprune.patch gh#pydata/xarray#8953
+Patch1:         xarray-pr8953-nodatatreeprune.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -149,15 +150,7 @@ Except nc-time-axis, because it's not packaged yet.
 Use `pip-%{python_bin_suffix} --user install nc-time-axis` to install from PyPI, if needed.
 
 %prep
-%autosetup -p1 -n xarray-%{version}
-%if "%{version}" == "2024.2.0"
-# gh#pydata/xarray#8768, remove this after the next update!
-rm -r xarray/tests/datatree
-%else
-echo "You failed to update the specfile"
-exit 1
-%endif
-
+%autosetup -p1 -n xarray-%{ghversion}
 chmod -x xarray/util/print_versions.py
 
 %build

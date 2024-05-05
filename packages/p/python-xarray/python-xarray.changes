@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri May  3 13:02:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2024.3.0
+  ## New Features
+  * Partial writes to existing chunks with region or append_dim
+    will now raise an error (unless safe_chunks=False); previously
+    an error would only be raised on new variables. (PR8459,
+    GH8371, GH8882) By Maximilian Roos.
+  * Grouped and resampling quantile calculations now use the
+    vectorized algorithm in flox>=0.9.4 if present. By Deepak
+    Cherian.
+  * Do not broadcast in arithmetic operations when global option
+    arithmetic_broadcast=False (GH6806, PR8784). By Etienne Schalk
+    and Deepak Cherian.
+  * Add the .oindex property to Explicitly Indexed Arrays for
+    orthogonal indexing functionality. (GH8238, PR8750) By Anderson
+    Banihirwe.
+  * Add the .vindex property to Explicitly Indexed Arrays for
+    vectorized indexing functionality. (GH8238, PR8780) By Anderson
+    Banihirwe.
+  * Expand use of .oindex and .vindex properties. (:pull: 8790) By
+    Anderson Banihirwe and Deepak Cherian.
+  * Allow creating xr.Coordinates objects with no indexes (PR8711)
+    By Benoit Bovy and Tom Nicholas.
+  * Enable plotting of datetime.dates. (GH8866, PR8873) By Sascha
+    Hofmann.
+  ## Breaking changes
+  * Don’t allow overwriting index variables with to_zarr region
+    writes. (GH8589, PR8876). By Deepak Cherian.
+  ## Bug fixes
+  * The default freq parameter in xr.date_range() and
+    xr.cftime_range() is set to 'D' only if periods, start, or end
+    are None (GH8770, PR8774). By Roberto Chang.
+  * Ensure that non-nanosecond precision numpy.datetime64 and
+    numpy.timedelta64 values are cast to nanosecond precision
+    values when used in DataArray.expand_dims() and
+    :Dataset.expand_dims() (PR8781). By Spencer Clark.
+  * CF conform handling of _FillValue/missing_value and dtype in
+    CFMaskCoder/CFScaleOffsetCoder (GH2304, GH5597, GH7691, PR8713,
+    see also discussion in PR7654). By Kai Mühlbauer.
+  * Do not cast _FillValue/missing_value in CFMaskCoder if
+    _Unsigned is provided (GH8844, PR8852).
+  * Adapt handling of copy keyword argument for numpy >= 2.0dev
+    (GH8844, PR8851, PR8865). By Kai Mühlbauer.
+  * Import trapz/trapezoid depending on numpy version (GH8844,
+    PR8865). By Kai Mühlbauer.
+  * Warn and return bytes undecoded in case of UnicodeDecodeError
+    in h5netcdf-backend (GH5563, PR8874). By Kai Mühlbauer.
+  * Fix bug incorrectly disallowing creation of a dataset with a
+    multidimensional coordinate variable with the same name as one
+    of its dims. (GH8884, PR8886) By Tom Nicholas.
+  ## Internal Changes
+  * Migrates treenode functionality into xarray/core (PR8757) By
+    Matt Savoie and Tom Nicholas.
+  * Migrates datatree functionality into xarray/core. (:pull: 8789)
+    By Owen Littlejohns, Matt Savoie and Tom Nicholas.
+- Drop Add xarray-pr8797-tokenize.patch
+- Add xarray-pr8953-nodatatreeprune.patch gh#pydata/xarray#8953
+
+-------------------------------------------------------------------
 Mon Mar 18 19:47:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add xarray-pr8797-tokenize.patch
