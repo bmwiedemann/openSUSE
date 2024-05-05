@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kubectl-explore
-Version:        0.8.3
+Version:        0.9.2
 Release:        0
 Summary:        A better kubectl explain with the fuzzy finder
 License:        MIT

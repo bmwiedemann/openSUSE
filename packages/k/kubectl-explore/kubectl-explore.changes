@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun May 05 07:23:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.9.2:
+  * CSIStorageCapacity has been GA since 1.27
+  * Fix resource name detection logic from user input
+
+-------------------------------------------------------------------
+Fri May 03 16:26:48 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.9.1:
+  * don't use a specific verison in README
+  * use strings.TrimPrefix instead of TrimLeft
+
+-------------------------------------------------------------------
+Fri May 03 16:24:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.9.0:
+  * bump up version
+  * Enrich console output with breadcrumbs
+  * use schema.GroupVersionResource
+  * Add unit tests for Options.Run
+  * remove unused fields
+  * make explore package
+  * fix if conditional in GtiHub Actions
+  * don't run e2e tests for hpa in < 1.27
+  * run e2e with k8s version from 1.25 to 1.30
+  * update e2e tests
+  * use explain v2
+  * refactor Options fields
+
+-------------------------------------------------------------------
 Sun Apr 28 07:50:53 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.8.3:
