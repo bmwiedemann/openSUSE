@@ -1863,6 +1863,8 @@ unsorted:
   - caja-rename-lang 
   - cal10n 
   - cal10n-javadoc 
+  - cal10n-maven-plugins 
+  - cal10n-maven-plugins-javadoc 
   - cal3d 
   - cal3d-devel 
   - cal3d-doc 
@@ -15225,6 +15227,7 @@ unsorted:
   - libpython3_8-1_0 
   - libpython3_9-1_0 
   - libpython3_9-1_0-32bit 
+  - libqaccessibilityclient-qt5 
   - libqaccessibilityclient-qt5-0 
   - libqaccessibilityclient-qt5-devel 
   - libqaccessibilityclient-qt6-devel 
@@ -18266,9 +18269,6 @@ unsorted:
   - metainf-services-javadoc 
   - metaio-devel 
   - metaio-utils 
-  - metallb-controller 
-  - metallb-k8s-yaml 
-  - metallb-speaker 
   - metamath 
   - metatheme-adapta-common 
   - metatheme-ambiance-common 
@@ -35083,6 +35083,7 @@ unsorted:
   - reg 
   - regexp 
   - regexploit 
+  - registries-conf-suse 
   - rehex 
   - reiser4progs 
   - reiser4progs-devel 

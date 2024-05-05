@@ -2607,6 +2607,7 @@
     <package name="libpxbackend-1_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpython3_11-1_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpython3_11-1_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libqaccessibilityclient-qt6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqaccessibilityclient-qt6-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqalculate22" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqca-qt5-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
