@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  3 07:15:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream security fix (CVE-2024-33861):
+  * 0001-QStringConverterICU-Pass-correct-pointer-to-callback.patch
+
+-------------------------------------------------------------------
 Tue Apr  2 13:39:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.7.0:

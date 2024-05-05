@@ -456,4 +456,13 @@
     <comment>Qt 6.7.0. qtwebengine is still building (forwarded request 1164304 from krop)</comment>
     <requestid>1165776</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>de51987f255f26dc6f323dceb9938c33</srcmd5>
+    <version>6.7.0</version>
+    <time>1714903820</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream security fix (CVE-2024-33861):
+  * 0001-QStringConverterICU-Pass-correct-pointer-to-callback.patch</comment>
+    <requestid>1171530</requestid>
+  </revision>
 </revisionlist>
