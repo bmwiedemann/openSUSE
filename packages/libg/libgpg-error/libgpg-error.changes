@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 29 06:32:24 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.49:
+  * Two new functions to improve the logging interface. The
+    gpgrt_logv_domain is currently the same as gpgrt_logv_prefix but
+    allows to pass a domain string so that in future we will be able to
+    select log output by domain. It also provide a non yet functional
+    feature to include a hex dump.
+  * Add a "trunc" keyword to gpgrt_log_printhex. [rE0a39fbefcb]
+  * Avoid an endless loop in the argparser due to a conf file read
+    error. [rE2dc93cfecc]
+  * Interface changes relative to the 1.48 release:
+    - gpgrt_add_post_log_func        NEW.
+    - gpgrt_logv_domain              NEW.
+  * Release-info: https://dev.gnupg.org/T7012
+
+-------------------------------------------------------------------
 Mon Feb 26 10:51:14 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.48:
