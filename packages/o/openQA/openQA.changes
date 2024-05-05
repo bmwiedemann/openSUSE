@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 04 22:33:56 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1714815830.68247fd5:
+  * Bump datatables.net-bs4 from 2.0.5 to 2.0.6
+  * Document rendering documentation locally
+  * Remove out of date documentation about tests in non-CI containers
+  * Update names to reflect reality
+  * Remove obsoleted and non-working makefile targets
+  * Fix container-test-build target
+
+-------------------------------------------------------------------
 Thu May 02 14:33:40 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1714486212.11bc4a65:
