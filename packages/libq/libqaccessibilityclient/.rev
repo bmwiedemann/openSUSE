@@ -7,4 +7,12 @@
     <comment>Replace libqaccessibilityclient-qt5 with a multibuild package. Please stage with 1124411</comment>
     <requestid>1124413</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c5c8f53cf5a34433a6a6f98b38b231c7</srcmd5>
+    <version>0.6.0</version>
+    <time>1714903832</time>
+    <user>anag+factory</user>
+    <comment>Update to 0.6.0</comment>
+    <requestid>1171821</requestid>
+  </revision>
 </revisionlist>

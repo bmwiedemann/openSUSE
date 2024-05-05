@@ -34,7 +34,7 @@ ExclusiveArch: do_not_build
 %endif
 %bcond_without released
 Name:           libqaccessibilityclient%{?pkg_suffix}
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Accessibilty tools helper library, used e.g. by screen readers
 License:        LGPL-2.1-or-later
@@ -45,7 +45,7 @@ Source1:        https://download.kde.org/stable/%{rname}/%{rname}-%{version}.tar
 Source2:        libqaccessibilityclient.keyring
 %endif
 BuildRequires:  fdupes
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules
 %if 0%{?qt6}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
@@ -61,6 +61,7 @@ This library is used when writing accessibility clients such as screen readers.
 
 %package -n libqaccessibilityclient%{pkg_suffix}-0
 Summary:        Accessibilty tools helper library, used e.g. by screen readers
+Requires:       libqaccessibilityclient%{?pkg_suffix} >= %{version}
 Requires:       at-spi2-core
 
 %description -n libqaccessibilityclient%{pkg_suffix}-0
@@ -96,12 +97,19 @@ This library is used when writing accessibility clients such as screen readers.
 %kf5_makeinstall -C build
 %endif
 
-# Unlike accessibleapps, not that useful for debugging
+# Not that useful for debugging
 rm %{buildroot}%{_bindir}/dumper
 
 %fdupes %{buildroot}
 
 %ldconfig_scriptlets -n libqaccessibilityclient%{pkg_suffix}-0
+
+%files
+%if 0%{?qt6}
+%{_kf6_debugdir}/libqaccessibilityclient.categories
+%else
+%{_kf5_debugdir}/libqaccessibilityclient.categories
+%endif
 
 %files -n libqaccessibilityclient%{pkg_suffix}-0
 %license LICENSES/*
@@ -109,7 +117,6 @@ rm %{buildroot}%{_bindir}/dumper
 
 %files devel
 %doc README.md
-%{_bindir}/accessibleapps
 %{_libdir}/libqaccessibilityclient%{pkg_suffix}.so
 %if 0%{?qt6}
 %{_includedir}/QAccessibilityClient6/
