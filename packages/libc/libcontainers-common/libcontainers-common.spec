@@ -58,6 +58,12 @@ Requires(post): %{_bindir}/sed
 Requires:       (libcontainers-sles-mounts if (product(SUSE_SLE) or product(SLE-Micro)))
 Requires:       libcontainers-policy >= %{version}
 Suggests:       (libcontainers-policy-openSUSE if openSUSE-release)
+# Default to SUSE registry on SL Micro,
+# keep SUSE, openSUSE and dockerhub registries otherwise.
+# (jsc#SMO-376, jsc#PED-8289)
+Requires:       registries-conf >= %{version}
+Suggests:       (registries-conf-suse if (product(SL-Micro) or (product(SUSE_SLE) >= 15.5)))
+Suggests:       (registries-conf-default if openSUSE-release)
 Provides:       libcontainers-image = %{version}
 Provides:       libcontainers-storage = %{version}
 Obsoletes:      libcontainers-image < %{version}
@@ -72,7 +78,7 @@ github.com/containers libraries, such as Buildah, CRI-O, Podman and Skopeo.
 Summary:        Default mounts for SLE distributions
 
 %description -n libcontainers-sles-mounts
-Updates /etc/containers/mounts.conf with default mounts for SLE distributions
+Ships a /etc/containers/mounts.conf with default mounts for SLE distributions
 
 %package -n libcontainers-openSUSE-policy
 Summary:        Policy to enforce image verification for SLE BCI
@@ -93,6 +99,24 @@ Conflicts:      libcontainers-openSUSE-policy
 
 %description -n libcontainers-default-policy
 This package ships the default /etc/containers/policy.json
+
+%package -n registries-conf-suse
+Summary:                Defaults to SUSE Registry on SL Micro
+Provides:               registries-conf = %{version}-%{release}
+RemovePathPostfixes:    .suse
+Conflicts:              registries-conf-default
+
+%description -n registries-conf-suse
+Ships a modified registries.conf with registry.suse.com as the only unqualified search registry.
+
+%package -n registries-conf-default
+Summary:                Add SUSE and openSUSE registries to be used to pull images along with dockerhub
+Provides:               registries-conf = %{version}-%{release}
+RemovePathPostfixes:    .default
+Conflicts:              registries-conf-suse
+
+%description -n registries-conf-default
+Ships the upstream registries.conf with registry.opensuse.org and registry.suse.com as additional unqualified search registries.
 
 %prep
 cp %{SOURCE9} .
@@ -139,6 +163,9 @@ cat >>%{SOURCE5} <<EOL
 %{_sysconfdir}/zypp/credentials.d/SCCcredentials:%{_sysconfdir}/zypp/credentials.d/SCCcredentials
 EOL
 
+# Default to SUSE registry on SL Micro
+sed 's/unqualified-search-registries.*/unqualified-search-registries = \["registry.suse.com"\]/' %{SOURCE6} > registries.conf.suse
+
 cd common-%{commonver}
 %make_build docs
 cd ..
@@ -158,7 +185,6 @@ install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json
 install -D -m 0644 %{SOURCE4} %{buildroot}/%{_sysconfdir}/containers/storage.conf
 install -D -m 0644 %{SOURCE5} %{buildroot}/%{_datadir}/containers/mounts.conf
 install -D -m 0644 %{SOURCE5} %{buildroot}/%{_sysconfdir}/containers/mounts.conf
-install -D -m 0644 %{SOURCE6} %{buildroot}/%{_sysconfdir}/containers/registries.conf
 install -D -m 0644 %{SOURCE11} %{buildroot}/%{_sysconfdir}/containers/registries.conf.d/000-shortnames.conf
 install -D -m 0644 %{SOURCE7} %{buildroot}/%{_sysconfdir}/containers/registries.d/default.yaml
 install -D -m 0644 %_builddir/containers.conf %{buildroot}/%{_datadir}/containers/containers.conf
@@ -178,6 +204,9 @@ install -D -m 0644 common-%{commonver}/docs/containers.conf.5 %{buildroot}/%{_ma
 install -D -m 0644 %{SOURCE12} %{buildroot}/%{_sysconfdir}/containers/policy.json.openSUSE
 install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json.default
 
+install -D -m 0644 %{SOURCE6} %{buildroot}/%{_sysconfdir}/containers/registries.conf.default
+install -D -m 0644 registries.conf.suse %{buildroot}/%{_sysconfdir}/containers/registries.conf.suse
+
 %post
 # Comment out ostree_repo if it's blank [boo#1189893]
 sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' %{_sysconfdir}/containers/storage.conf
@@ -195,7 +224,6 @@ sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' %{_sysconfdir}/containers/stora
 %dir %{_datadir}/containers/systemd
 
 %config(noreplace) %{_sysconfdir}/containers/storage.conf
-%config(noreplace) %{_sysconfdir}/containers/registries.conf
 %config(noreplace) %{_sysconfdir}/containers/seccomp.json
 %config(noreplace) %{_sysconfdir}/containers/registries.d/default.yaml
 %config(noreplace) %{_sysconfdir}/containers/registries.conf.d/000-shortnames.conf
@@ -215,5 +243,11 @@ sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' %{_sysconfdir}/containers/stora
 
 %files -n libcontainers-default-policy
 %config(noreplace) %{_sysconfdir}/containers/policy.json.default
+
+%files -n registries-conf-suse
+%config(noreplace) %{_sysconfdir}/containers/registries.conf.suse
+
+%files -n registries-conf-default
+%config(noreplace) %{_sysconfdir}/containers/registries.conf.default
 
 %changelog
