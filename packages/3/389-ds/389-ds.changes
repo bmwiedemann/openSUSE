@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Apr 23 01:57:07 UTC 2024 - william.brown@suse.com
+
+- Update to version 3.0.1~git37.55529d1:
+  * Issue 6082 - Remove explicit dependencies toward libdb - revert default (#6145)
+  * Issue 6141 - freeipa test_topology_TestCASpecificRUVs is failing (#6144)
+  * Issue 6142 - [RFE] Add LMDB configuration related checks into Healthcheck tool (#6143)
+  * Issue 6136 - failure in freeipa tests (#6137)
+  * Issue 6133 - Move slapi_pblock_set_flag_operation_notes() to slapi-plugin.h
+  * Issue 5105 - lmdb - Cannot create entries with long rdn - fix covscan (#6131)
+  * Issue i6057 - Fix3 - Fix covscan issues (#6127)
+  * Issue 6105 - lmdb - Cannot create entries with long rdn (#6130)
+  * Issue 6125 - dscreate interactive fails when chosing mdb backend (#6126)
+  * Issue 6080 - ns-slapd crash in referint_get_config (#6081)
+  * Issue 6110 - Typo in Account Policy plugin message
+  * Issue 6057 - vlv search may result wrong result with lmdb - Fix 2 (#6121)
+  * Issue 6119 - Synchronise accept_thread with slapd_daemon (#6120)
+  * Issue 6117 - Fix the UTC offset print (#6118)
+  * Issue 6112 - RFE - add new operation note for MFA authentications
+  * Issue 5842 - Add log buffering to audit log
+  * Issue 5305 - OpenLDAP version autodetection doesn't work
+  * Issue 3527 - Support HAProxy and Instance on the same machine configuration (#6107)
+  * Issue 6057 - vlv search may result wrong result with lmdb (#6091)
+  * Issue 6103 - New connection timeout error breaks errormap (#6104)
+  * Issue 6086 - Ambiguous warning about SELinux in dscreate for non-root user
+  * Issue 6092 - passwordHistory is not updated with a pre-hashed password (#6093)
+  * Issue 6067 - Improve dsidm CLI No Such Entry handling (#6079)
+  * Issue 6096 - Improve connection timeout error logging (#6097)
+  * Issue 5647 - covscan: memory leak in audit log when adding entries
+  * Issue 6094 - Add coverity scan workflow
+  * Issue 6067 - Add hidden -v and -j options to each CLI subcommand (#6088)
+  * Issue 5487 - Fix various isses with logconv.pl (#6085)
+  * Issue 5962 - Rearrange includes for 32-bit support logic
+  * Issue 6046 - Make dscreate to work during kickstart installations
+  * Issue 6082 - Remove explicit dependencies toward libdb (#6083)
+  * Issue 6073 - Improve error log when running out of memory (#6084)
+  * Issue 6071 - Instance creation/removal is slow
+  * Issue 6010 - 389 ds ignores nsslapd-maxdescriptors (#6027)
+  * Issue 6075 - Ignore build artifacts (#6076)
+  * Issue 6068 - Add dscontainer stop function
+
+-------------------------------------------------------------------
 Fri Feb 02 05:31:39 UTC 2024 - william.brown@suse.com
 
 - Update to version 3.0.1~git1.1f95b57:

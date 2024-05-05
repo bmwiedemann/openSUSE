@@ -33,7 +33,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        3.0.1~git1.1f95b57
+Version:        3.0.1~git37.55529d1
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
