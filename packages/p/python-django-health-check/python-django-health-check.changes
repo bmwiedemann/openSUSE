@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  4 18:46:48 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Update to 3.18.2
+  * Jump multiple versions, reference upstream changelog
+- Drop python-django-health-check-no-mock.patch (solved upstream)
+- Build with sle15_python_module_pythons for modern Python on Leap
+
+-------------------------------------------------------------------
 Thu Feb 22 04:40:19 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros.
