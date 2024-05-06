@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  6 10:05:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.1:
+  + Hide the board during pause.
+  + Add pause accelerator.
+  + Add single key accelerator for undo, redo, and fullscreen.
+  + Add accelerators for warnings (C-w) and highlighter (C-h).
+  + Save fullscreen state on exit and add unfullscreen button.
+
+-------------------------------------------------------------------
 Fri Mar 15 12:20:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:
