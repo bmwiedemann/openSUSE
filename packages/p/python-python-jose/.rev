@@ -59,4 +59,16 @@
     <comment></comment>
     <requestid>1093029</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>36cd8815411620042f56a3b81599b341</srcmd5>
+    <version>3.3.0</version>
+    <time>1715010908</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream patches:
+   * CVE-2024-33663.patch, bsc#1223417, gh#mpdavis/python-jose#349
+   * CVE-2024-33664.patch, bsc#1223422, gh#mpdavis/python-jose#345
+   * fix-tests-ecdsa-019.patch, gh#mpdavis/python-jose#350
+</comment>
+    <requestid>1172135</requestid>
+  </revision>
 </revisionlist>

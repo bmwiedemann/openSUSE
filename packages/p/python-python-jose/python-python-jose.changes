@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  6 07:11:18 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patches:
+   * CVE-2024-33663.patch, bsc#1223417, gh#mpdavis/python-jose#349
+   * CVE-2024-33664.patch, bsc#1223422, gh#mpdavis/python-jose#345
+   * fix-tests-ecdsa-019.patch, gh#mpdavis/python-jose#350
+
+-------------------------------------------------------------------
 Tue Jun 13 12:18:28 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

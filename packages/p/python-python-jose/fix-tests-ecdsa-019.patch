@@ -1,0 +1,60 @@
+From ec5c62249b4f67b15376d3cbc96d2b1d272d0552 Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Thu, 2 May 2024 18:47:43 +0200
+Subject: [PATCH] test: Fix tests with ecdsa 0.19.0
+
+Fix https://github.com/mpdavis/python-jose/issues/348
+---
+ tests/algorithms/test_EC_compat.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+Index: python-jose-3.3.0/tests/algorithms/test_EC_compat.py
+===================================================================
+--- python-jose-3.3.0.orig/tests/algorithms/test_EC_compat.py
++++ python-jose-3.3.0/tests/algorithms/test_EC_compat.py
+@@ -37,7 +37,7 @@ class TestBackendEcdsaCompatibility:
+         key = BackendFrom(private_key, ALGORITHMS.ES256)
+         key2 = BackendTo(private_key, ALGORITHMS.ES256)
+ 
+-        assert key.public_key().to_pem().strip() == key2.public_key().to_pem().strip()
++        assert key.public_key().to_pem().strip().replace(b"\n", b"") == key2.public_key().to_pem().strip().replace(b"\n", b"")
+ 
+     @pytest.mark.parametrize("BackendFrom", [ECDSAECKey, CryptographyECKey])
+     @pytest.mark.parametrize("BackendTo", [ECDSAECKey, CryptographyECKey])
+@@ -45,7 +45,7 @@ class TestBackendEcdsaCompatibility:
+         key = BackendFrom(private_key, ALGORITHMS.ES256)
+         key2 = BackendTo(private_key, ALGORITHMS.ES256)
+ 
+-        assert key.to_pem().strip() == key2.to_pem().strip()
++        assert key.to_pem().strip().replace(b"\n", b"") == key2.to_pem().strip().replace(b"\n", b"")
+ 
+     @pytest.mark.parametrize("BackendFrom", [ECDSAECKey, CryptographyECKey])
+     @pytest.mark.parametrize("BackendTo", [ECDSAECKey, CryptographyECKey])
+@@ -57,7 +57,7 @@ class TestBackendEcdsaCompatibility:
+ 
+         pub_target = BackendTo(pub_pem_source, ALGORITHMS.ES256)
+ 
+-        assert pub_pem_source == pub_target.to_pem().strip()
++        assert pub_pem_source.replace(b"\n", b"") == pub_target.to_pem().strip().replace(b"\n", b"")
+ 
+     @pytest.mark.parametrize("BackendFrom", [ECDSAECKey, CryptographyECKey])
+     @pytest.mark.parametrize("BackendTo", [ECDSAECKey, CryptographyECKey])
+@@ -68,4 +68,4 @@ class TestBackendEcdsaCompatibility:
+ 
+         target = BackendTo(pem_source, ALGORITHMS.ES256)
+ 
+-        assert pem_source == target.to_pem().strip()
++        assert pem_source.replace(b"\n", b"") == target.to_pem().strip().replace(b"\n", b"")
+Index: python-jose-3.3.0/tests/algorithms/test_EC.py
+===================================================================
+--- python-jose-3.3.0.orig/tests/algorithms/test_EC.py
++++ python-jose-3.3.0/tests/algorithms/test_EC.py
+@@ -104,7 +104,7 @@ class TestECAlgorithm:
+     def test_to_pem(self):
+         key = ECKey(private_key, ALGORITHMS.ES256)
+         assert not key.is_public()
+-        assert key.to_pem().strip() == private_key.strip().encode("utf-8")
++        assert key.to_pem().strip().replace(b"\n", b"") == private_key.strip().encode("utf-8").replace(b"\n", b"")
+ 
+         public_pem = key.public_key().to_pem()
+         assert ECKey(public_pem, ALGORITHMS.ES256).is_public()

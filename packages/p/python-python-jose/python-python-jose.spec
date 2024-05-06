@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-python-jose
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,12 @@ License:        MIT
 URL:            https://github.com/mpdavis/python-jose
 Source:         https://files.pythonhosted.org/packages/source/p/python-jose/python-jose-%{version}.tar.gz
 Patch0:         unpin-deps.patch
+# PATCH-FIX-UPSTREAM CVE-2024-33664.patch gh#mpdavis/python-jose#345
+Patch1:         CVE-2024-33664.patch
+# PATCH-FIX-UPSTREAM CVE-2024-33663.patch gh#mpdavis/python-jose#349
+Patch2:         CVE-2024-33663.patch
+# PATCH-FIX-UPSTREAM fix-tests-ecdsa-019.patch gh#mpdavis/python-jose#350
+Patch3:         fix-tests-ecdsa-019.patch
 BuildRequires:  %{python_module setuptools >= 39.2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,6 +61,7 @@ Requires:       python-pyasn1
 Requires:       python-rsa
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module pycryptodome}
 BuildRequires:  %{python_module pytest}
 %if %{with testcryptography}
 BuildRequires:  %{python_module python-jose-cryptography = %{version}}
