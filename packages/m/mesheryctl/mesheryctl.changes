@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun May  5 07:28:29 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.53:
+  * Meshery UI
+    - fix broken connection path @codeKraken19 (#10858)
+    - Fix pagination issues with registrant tab @Yashsharma1911
+      (#10859)
+  * Maintenance
+    - Update models.md @MUzairS15 (#10868)
+  * Documentation
+    - Model include added in integrations layout @iArchitSharma
+      (#10759)
+    - [Docs] Quick Start enhancements; mesheryctl install
+      @leecalcote (#10865)
+    - [Docs] Shorten quick start guide @leecalcote (#10852)
+    - remove meshery-operator line from docs @vishalvivekm (#10850)
+
+-------------------------------------------------------------------
 Thu May  2 14:36:51 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.52:
