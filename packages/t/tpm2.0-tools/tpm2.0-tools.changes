@@ -4,8 +4,8 @@ Fri May  3 12:49:04 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
 Update to version 5.7:
 
 + Security
-  - Fixed CVE-2024-29038
-  - Fixed CVE-2024-29039
+  - Fixed CVE-2024-29038 (bsc#1223687)
+  - Fixed CVE-2024-29039 (bsc#1223689)
 + Fixed
   - Fix eventlog test
   - Fix issues with reading NV indexes

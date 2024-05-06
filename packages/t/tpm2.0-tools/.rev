@@ -732,4 +732,14 @@ fix the offset of the read buffer (forwarded request 909201 from aplanas)</comme
   in upstream repo, which was used for signing this new release tarball.</comment>
     <requestid>1171752</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>828f94e45dfb977c3980ae4ba3fe524c</srcmd5>
+    <version>5.7</version>
+    <time>1715010823</time>
+    <user>anag+factory</user>
+    <comment>also document bug numbers
+  - Fixed CVE-2024-29038 (bsc#1223687)
+  - Fixed CVE-2024-29039 (bsc#1223689)</comment>
+    <requestid>1172162</requestid>
+  </revision>
 </revisionlist>
