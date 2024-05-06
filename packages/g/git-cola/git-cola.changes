@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May  5 15:25:25 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.7.1:
+  * The Fetch dialog can now fetch directly into a remote tracking
+    branch
+  * The Fetch, Push and Pull dialogs now remember the selected
+    remotes, and now display the git commands that will be run.
+  * The Pull dialog now selects the remote branch automatically. 
+  * The cola.refreshonfocus and cola.inotify configuration settings
+    are now accessible from the git cola config settings dialog
+
+-------------------------------------------------------------------
 Sun Mar 17 17:33:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.1:

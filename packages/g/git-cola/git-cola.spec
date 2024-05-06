@@ -18,7 +18,7 @@
 
 
 Name:           git-cola
-Version:        4.6.1
+Version:        4.7.1
 Release:        0
 Summary:        A GUI for Git
 License:        GPL-2.0-or-later
@@ -70,6 +70,7 @@ make install-man prefix=%{_prefix} DESTDIR=%{buildroot} PYTHON=python3 PIP=pip
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/git-cola-folder-handler.desktop
 
 %files
+%license COPYING COPYRIGHT
 %{_bindir}/cola
 %{_bindir}/git-cola
 %{_bindir}/git-dag
