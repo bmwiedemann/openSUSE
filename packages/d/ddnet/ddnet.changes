@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sat May  4 08:05:13 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 18.2:
+  * [Client] Allow the vote creator to cancel the vote
+  * [Client] Track country/type filters separately for
+    internet/favorites tabs
+  * [Client] Add a "No Login required" filter
+  * [Server] Add /team0mode to have a team behave like team 0
+  * [Server] Fix freeze not working during first 50 server ticks
+  * [Client] Increase maximum number of favorite communities
+    from 3 to 5
+  * [Client] Improve layout of Appearance settings, overall
+    settings menus and restart message
+  * [Client] Show completion options for bind key names in console
+  * [Client] Add sorting by number of friends to the
+    server browser
+  * [Client] Reset tuning of dummy and main when disconnecting
+  * [Client] Improve performance when rendering menus
+  * [Client] Show countdown message in player/tee settings
+    for sv_info_change_delay
+  * [Client] Add optional name argument to start_video command
+  * [Client] Fix prediction errors and incorrect rendering after
+    changing map
+  * [Client] Fix tee briefly appearing at previous position
+    when joining
+  * [Client] Show Discord activity when offline
+  * [Client] Include more options in appearance settings
+  * [Client] cl_nameplates_strong improvements
+  * [Client] Take serverlist age into account when choosing master
+  * [Client] Fix race conditions in job state handling
+  * [Client] Disconnect when we get map change with invalid
+    parameters
+  * [Client] Support overlapping scroll regions, always allow
+    mouse scrolling
+  * [Client] Fix crash when the serverlist request fails
+  * [Client] Support clicking line color picker label to
+    toggle checkbox
+  * [Client] Fix recursive folder creation with mixed slashes
+    and drive letters
+  * [Client] Fix rcon username not reset when disconnecting
+    while connecting
+  * [Client] Render loading popup also while loading demo files
+  * [Client] Update immediately when changing
+    cl_background_entities
+  * [Client] Fix demo player hotkeys not working when menu
+    is inactive
+  * [Client] Fix incorrect score kind in demos depending on
+    last server
+  * [Client] Fix alignment of labels in friends list
+  * [Editor] Editor: Make embedded image popup bigger at all times
+  * [Editor] Fix crash when trying to select autorule with
+    arrow keys
+  * [Editor] Allow saving empty quads & sounds layers
+  * [Editor] Fix crash when constructing some game tiles
+  * [Editor] Fix envelope points not clickable after opening
+    bezier popup
+  * [Editor] Fix bug where certain tiles would not work in Game
+    tiles menu
+  * [Server] Disallow /save on teams with practice enabled,
+    teehistorian improvements
+  * [Server] Refresh air jumps after teleporting [murpi]
+  * [Server] Fix freeze bar not being correct after returning
+    from pause
+  * [Server] List all practice commands when enabling /practice
+  * [Server] Fix practice mode not resetting after disconnect
+    on solo servers
+  * [Server] Ensure commands executed via FIFO/ECon/LineReader
+    are valid UTF-8
+  * [Server] Improve /timecp chat command
+
+-------------------------------------------------------------------
 Wed Mar 20 18:29:00 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 18.1:
