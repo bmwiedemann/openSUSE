@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Apr 30 22:25:18 UTC 2024 - Mikhail Paulyshka <me@mixaill.net>
+
+- Added python3-QtPy and python3-QDarkStyle runtime dependencies (needed for gnuradio-companion --qt)
+- Update to version 3.10.10.0
+- Changed
+  * Runtime
+    + Modernize location of config files. XDG_CONFIG_HOME will be used if set
+      (often $HOME/.config). This change attempts to be backward compatible with
+      existing config file locations, but be aware that config files may show up
+      in the old ($HOME/.gnuradio/) and new ($XDG_CONFIG_HOME/gnuradio) locations
+      depending on GNU Radio version. Files are not automatically moved, since
+      some users run multiple versions of GNU Radio.
+    + Ctrlport Probe, Ctrlport Probe PSD and gr-ctrlport-monitor. Ctrlport Monitor
+      blocks are still broken.
+  * GRC
+    + NEW Qt-based front end! Run gnuradio-companion --qt to try it out. This
+      feature is still in testing, so the Gtk front end runs by default. In a
+      future release, Qt will become the default, removing Gtk as a manditory
+      dependency. Maintenance will focus on the Qt front end at that point.
+    + Restore property field background colors (as a View option, off by default)
+      for the Gtk front end. Background colors were previously replaced with textual
+      type string.
+    + The canvas can be panned using the middle mouse button
+    + C++ code generation improvements related to parameters and strings
+    + C++ code generation fixed for Add Const
+  * gr-audio
+    + Added 96 kHz and 192 kHz selections to ALSA source/sink
+  * gr-blocks
+    + Float To UChar block adds vector support, and also scale and bias params
+  * gr-digital
+    + Additive Scrambler adds soft symbol handling
+    + Add callback to set header format in Digital Protocol Formatter
+  * modtool
+    + Improvements to handling of Python blocks (add, rm, and rename work reliably)
+    + New parseable manifest format (yaml instead of md) to better support the OOT ecosystem
+    + Manifest and examples are installed by "make install"
+  * Build system and packaging
+    + Python byte-compiled (pyc) files are no longer installed, as they are deprecated by Python
+  * Testing
+    + Added MinGW test runner and fixed various MinGW compilation failures
+    + Update Fedora to test 38, 39 and 40
+
+-------------------------------------------------------------------
+Fri Mar 22 15:35:18 UTC 2024 - Mikhail Paulyshka <me@mixaill.net>
+
+- Added libad9361-iio-devel build dependency (fixes PlutoSDR support) 
+
+-------------------------------------------------------------------
 Tue Feb 27 11:05:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

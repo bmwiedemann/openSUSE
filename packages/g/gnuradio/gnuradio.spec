@@ -1,7 +1,7 @@
 #
 # spec file for package gnuradio
 #
-# Copyright (c) 2023-2024 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define sover  3_10_9
+%define sover  3_10_10
 %bcond_without docs
 Name:           gnuradio
-Version:        3.10.9.2
+Version:        3.10.10.0
 Release:        0
 Summary:        GNU software radio
 License:        GPL-3.0-or-later
@@ -43,6 +43,7 @@ BuildRequires:  gmp-devel
 BuildRequires:  gobject-introspection
 BuildRequires:  gsl-devel
 BuildRequires:  libSDL-devel
+BuildRequires:  libad9361-iio-devel
 BuildRequires:  libboost_atomic-devel >= 1.69
 BuildRequires:  libboost_filesystem-devel >= 1.69
 BuildRequires:  libboost_system-devel >= 1.69
@@ -77,16 +78,18 @@ BuildRequires:  qwt6-qt5-devel
 BuildRequires:  soapy-sdr-devel
 BuildRequires:  spdlog-devel
 BuildRequires:  thrift
-BuildRequires:  typelib(Gtk) = 3.0
-BuildRequires:  typelib(PangoCairo) = 1.0
-BuildRequires:  typelib(cairo) = 1.0
 BuildRequires:  uhd-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  volk-devel >= 2.4.1
+BuildRequires:  typelib(Gtk) = 3.0
+BuildRequires:  typelib(PangoCairo) = 1.0
+BuildRequires:  typelib(cairo) = 1.0
 # gr_soapy dependencies
 Requires:       python3-SoapySDR
 # gnuradio-companion dependencies
 Requires:       python3-cairo
+Requires:       python3-QDarkStyle
+Requires:       python3-QtPy
 # gr_modtool dependencies
 Requires:       python3-click
 Requires:       python3-click-plugins
