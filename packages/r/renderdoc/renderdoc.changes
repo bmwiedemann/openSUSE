@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon May  6 07:23:53 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.32
+  * Pixel history is now supported on D3D12, many thanks to the
+    contributions by Steve Karolewics and Jovan Ristic.
+  * All: Add the ability to right-click and rename a bookmark to
+    give it a custom string name.
+  * All: Add the ability to right-click and copy from pipeline
+    state stencil state, and the debug messages view.
+  * All: In the pixel history show depth value written even if no
+    pixel shader is bound.
+  * All: The pixel history view will show range-scaled colour for
+    integer targets as well as float/normalised targets.
+  * D3D12: Added support for pixel history.
+  * D3D12: Allow resource naming for queues and command buffers.
+  * Vulkan: Added support for the slang tool and shading language.
+  * Vulkan: Allow debugging specific pixel shader instance based on
+    the multiview or layered rendering index.
+  * Vulkan: If multiple outputs are declared at the same location
+    and have no names, use component in auto-generated name.
+  * Vulkan: Add support for extensions:
+    - VK_KHR_calibrated_timestamps
+    - VK_KHR_index_type_uint8
+    - VK_KHR_line_rasterization
+    - VK_KHR_load_store_op_none
+    - VK_KHR_vertex_attribute_divisor
+    - VK_EXT_texture_compression_astc_hdr (was previously
+      implemented but never reported)
+  * Android: Improve performance with high-instance count draws
+    when selecting 'show all instances' in mesh viewer. 
+
+-------------------------------------------------------------------
 Wed Jan 31 08:23:48 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.31
