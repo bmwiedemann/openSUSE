@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  6 11:04:35 UTC 2024 - cloud-devel@suse.de
+
+- added 0001-Fix-unit-tests-broken-by-requests-mock-1.12.0.patch
+- update to version 4.4.1
+  - Update .gitreview for stable/2023.2
+  - Update TOX_CONSTRAINTS_FILE for stable/2023.2
+  - Remove incorrect validation for glance-download import method
+
+-------------------------------------------------------------------
 Wed Jan 10 16:52:29 UTC 2024 - cloud-devel@suse.de
 
 - update to version 4.4.0
