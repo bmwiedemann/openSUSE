@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May  6 08:22:37 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 11.4.0:
+  * Improved pre-conversion checks. Now the program checks that tracks from different discs are not mixed.
+  * Compatibility of the output CUE with some players has been improved.
+  * Added ability to build a program using Qt6.
+  * Minor appearance improvements and minor bug fixes.
+  * Translations updated.
+
+- Build still uses Qt5, upcoming Qt6
+
+-------------------------------------------------------------------
 Thu Oct  5 06:23:03 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 11.3.0:
