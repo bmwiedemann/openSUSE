@@ -17,7 +17,7 @@
 
 
 Name:           git-annex
-Version:        10.20240227
+Version:        10.20240430
 Release:        0
 Summary:        Manage files with git, without checking their contents into git
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND MIT AND GPL-2.0-only
@@ -190,6 +190,8 @@ BuildRequires:  ghc-torrent-devel
 BuildRequires:  ghc-torrent-prof
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
+BuildRequires:  ghc-unbounded-delays-devel
+BuildRequires:  ghc-unbounded-delays-prof
 BuildRequires:  ghc-unix-compat-devel
 BuildRequires:  ghc-unix-compat-prof
 BuildRequires:  ghc-unix-devel
