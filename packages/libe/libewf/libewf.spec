@@ -20,21 +20,21 @@
 
 %define lname libewf3
 Name:           libewf
-Version:        20231119
+Version:        20240506
 Release:        0
 Summary:        Library for the Expert Witness Compression Format (EWF)
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libewf
-Source:         https://github.com/libyal/libewf/releases/download/%version/libewf-experimental-%version.tar.gz
-Source2:        https://github.com/libyal/libewf/releases/download/%version/libewf-experimental-%version.tar.gz.asc
+Source:         https://github.com/libyal/libewf/releases/download/%version/%name-experimental-%version.tar.gz
+#Source2:        https://github.com/libyal/libewf/releases/download/%version/%name-experimental-%version.tar.gz.asc
 Source3:        %name.keyring
 Source20:       http://downloads.sf.net/libewf/mount_ewf-20090113.py
 Source21:       Expert_Witness_Compression_Format_EWF.pdf
 Source23:       Expert_Witness_Compression_Format_2_EWF2.pdf
 Patch1:         remove_date_time_macros.patch
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %python_module devel
+BuildRequires:  %python_module setuptools
 BuildRequires:  bison
 BuildRequires:  c_compiler
 BuildRequires:  flex
@@ -45,27 +45,27 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  timezone
 BuildRequires:  pkgconfig(bzip2) >= 1.0
 BuildRequires:  pkgconfig(fuse) >= 2.6
-BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcaes) >= 20230406
-BuildRequires:  pkgconfig(libcdata) >= 20230108
-BuildRequires:  pkgconfig(libcdatetime) >= 20230115
-BuildRequires:  pkgconfig(libcerror) >= 20220101
-BuildRequires:  pkgconfig(libcfile) >= 20220106
-BuildRequires:  pkgconfig(libclocale) >= 20221218
-BuildRequires:  pkgconfig(libcnotify) >= 20220108
-BuildRequires:  pkgconfig(libcpath) >= 20220108
-BuildRequires:  pkgconfig(libcsplit) >= 20220109
-BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libfcache) >= 20230115
-BuildRequires:  pkgconfig(libfdata) >= 20230319
-BuildRequires:  pkgconfig(libfdatetime) >= 20220112
-BuildRequires:  pkgconfig(libfguid) >= 20220113
-BuildRequires:  pkgconfig(libfvalue) >= 20220120
-BuildRequires:  pkgconfig(libhmac) >= 20230407
-BuildRequires:  pkgconfig(libodraw) >= 20210503
-BuildRequires:  pkgconfig(libsmdev) >= 20221028
-BuildRequires:  pkgconfig(libsmraw) >= 20230320
-BuildRequires:  pkgconfig(libuna) >= 20230710
+BuildRequires:  pkgconfig(libbfio) >= 20240414
+BuildRequires:  pkgconfig(libcaes) >= 20240413
+BuildRequires:  pkgconfig(libcdata) >= 20240414
+BuildRequires:  pkgconfig(libcdatetime) >= 20240414
+BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libcfile) >= 20240414
+BuildRequires:  pkgconfig(libclocale) >= 20240414
+BuildRequires:  pkgconfig(libcnotify) >= 20240414
+BuildRequires:  pkgconfig(libcpath) >= 20240414
+BuildRequires:  pkgconfig(libcsplit) >= 20240414
+BuildRequires:  pkgconfig(libcthreads) >= 20240413
+BuildRequires:  pkgconfig(libfcache) >= 20240414
+BuildRequires:  pkgconfig(libfdata) >= 20240415
+BuildRequires:  pkgconfig(libfdatetime) >= 20240415
+BuildRequires:  pkgconfig(libfguid) >= 20240415
+BuildRequires:  pkgconfig(libfvalue) >= 20240415
+BuildRequires:  pkgconfig(libhmac) >= 20240417
+BuildRequires:  pkgconfig(libodraw) >= 20240505
+BuildRequires:  pkgconfig(libsmdev) >= 20240505
+BuildRequires:  pkgconfig(libsmraw) >= 20240506
+BuildRequires:  pkgconfig(libuna) >= 20240414
 BuildRequires:  pkgconfig(openssl) >= 1.0.0
 BuildRequires:  pkgconfig(uuid) >= 2.20
 BuildRequires:  pkgconfig(zlib) >= 1.2.5
@@ -126,7 +126,6 @@ cp -av %_sourcedir/*.pdf .
 
 %build
 %{python_expand #
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --disable-rpath \
 	--enable-wide-character-type \
@@ -150,8 +149,7 @@ export PYTHON="$(cat lastpython)"
 # and that no longer works when using version-script
 make check || :
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*
