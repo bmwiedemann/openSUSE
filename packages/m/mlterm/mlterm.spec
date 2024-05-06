@@ -16,6 +16,7 @@
 #
 
 
+%global build_cflags %optflags -fpermissive
 %global _configure ../configure
 %if 0%{?sle_version} && 0%{?sle_version} < 150500
 %global do_wayland 0

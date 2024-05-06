@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  3 16:24:18 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Build with -fpermissive to make buildable with gcc14 (boo#1223886)
+
+-------------------------------------------------------------------
 Fri Apr 19 07:55:23 UTC 2024 - pgajdos@suse.com
 
 - drop wnn subpackage (https://build.opensuse.org/request/show/1166015)
