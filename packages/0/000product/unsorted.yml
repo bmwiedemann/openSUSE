@@ -8501,6 +8501,7 @@ unsorted:
   - hyprlang-devel 
   - hyprpaper 
   - hyprshot 
+  - hyprwayland-scanner 
   - i18nspector 
   - i2c-tools 
   - i2pd 
@@ -9410,7 +9411,6 @@ unsorted:
   - jupyter-ipydatawidgets-jupyterlab 
   - jupyter-ipyevents 
   - jupyter-ipyevents-jupyterlab 
-  - jupyter-ipyleaflet 
   - jupyter-ipyparallel 
   - jupyter-ipyscales 
   - jupyter-ipysheet 
@@ -9432,6 +9432,7 @@ unsorted:
   - jupyter-jupyterlab-pyviz 
   - jupyter-jupyterlab-templates 
   - jupyter-jupyterlab-widgets 
+  - jupyter-leaflet 
   - jupyter-lineup-widget 
   - jupyter-lsp 
   - jupyter-matlab-kernel 
@@ -11483,6 +11484,9 @@ unsorted:
   - libacl-devel 
   - libacl-devel-32bit 
   - libacr38ucontrol0 
+  - libad9361-0 
+  - libad9361-iio-devel 
+  - libad9361-iio-devel-doc 
   - libada12 
   - libada12-32bit 
   - libada13 
@@ -13231,7 +13235,7 @@ unsorted:
   - libgnunettransporttesting2-0 
   - libgnunetutil16 
   - libgnunetvpn0 
-  - libgnuradio-3_10_9 
+  - libgnuradio-3_10_10 
   - libgnuradio-funcube-devel 
   - libgnuradio-funcube3_10_0 
   - libgnuradio-iqbalance-devel 
@@ -14025,7 +14029,6 @@ unsorted:
   - liblightdm-qt5-3-0 
   - liblightgrep-devel 
   - liblightgrep0 
-  - liblightlycommon5-5 
   - liblightmediascanner0 
   - liblilv-0-0-32bit 
   - liblilv-0-devel 
@@ -16474,7 +16477,7 @@ unsorted:
   - libvamp-hostsdk3-32bit 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit 
-  - libvapoursynth-66 
+  - libvapoursynth-67 
   - libvapoursynth-script0 
   - libvarnishapi3 
   - libvbr2 
@@ -17110,9 +17113,6 @@ unsorted:
   - lightdm-slick-greeter-branding-openSUSE 
   - lightdm-slick-greeter-branding-upstream 
   - lightdm-slick-greeter-lang 
-  - lightly 
-  - lightly-decoration 
-  - lightly-style 
   - lightmediascanner 
   - lightmediascanner-devel 
   - lighttpd 
@@ -20201,9 +20201,9 @@ unsorted:
   - opensaml-schemas 
   - openscad 
   - openscap 
+  - openscap-containers 
   - openscap-content 
   - openscap-devel 
-  - openscap-docker 
   - openscap-report 
   - openscap-utils 
   - openshot-qt 
@@ -25369,6 +25369,7 @@ unsorted:
   - python310-jupyter-core 
   - python310-jupyter-events 
   - python310-jupyter-kernel-test 
+  - python310-jupyter-leaflet 
   - python310-jupyter-lsp 
   - python310-jupyter-packaging 
   - python310-jupyter-server 
@@ -28894,6 +28895,7 @@ unsorted:
   - python311-jupyter-core 
   - python311-jupyter-events 
   - python311-jupyter-kernel-test 
+  - python311-jupyter-leaflet 
   - python311-jupyter-lsp 
   - python311-jupyter-packaging 
   - python311-jupyter-server 
@@ -32417,6 +32419,7 @@ unsorted:
   - python312-jupyter-core 
   - python312-jupyter-events 
   - python312-jupyter-kernel-test 
+  - python312-jupyter-leaflet 
   - python312-jupyter-lsp 
   - python312-jupyter-packaging 
   - python312-jupyter-server 
