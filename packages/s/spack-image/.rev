@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of spack-image</comment>
     <requestid>1171118</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ed85ad0969088f44d947561d571cc1b5</srcmd5>
+    <version>unknown</version>
+    <time>1715010899</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1172126</requestid>
+  </revision>
 </revisionlist>

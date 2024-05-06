@@ -13,7 +13,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
-
+#!ExclusiveArch: aarch64 x86_64
 #!BuildTag: opensuse/bci/spack:%%spack_version%%
 #!BuildTag: opensuse/bci/spack:%%spack_version%%-%RELEASE%
 #!BuildTag: opensuse/bci/spack:%%spack_minor%%
