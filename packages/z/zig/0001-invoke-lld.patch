@@ -1,11 +1,9 @@
-From: Soc Virnyl Estela <socvirnyl.estela@gmail.com>
-Date: Fri, 04 Aug 2023 14:55:02 PST
 Based on Aaron Puchert's <aaronpuchert@alice-dsl.net> patch.
 diff --git a/src/zig_llvm.cpp b/src/zig_llvm.cpp
-index d22bfc1..c6502f5 100644
+index ae1f0242..c0010c77 100644
 --- a/src/zig_llvm.cpp
 +++ b/src/zig_llvm.cpp
-@@ -66,18 +66,100 @@
+@@ -60,15 +60,18 @@
  #include <llvm/Transforms/Utils/CanonicalizeAliases.h>
  #include <llvm/Transforms/Utils/NameAnonGlobals.h>
  
@@ -22,8 +20,13 @@ index d22bfc1..c6502f5 100644
 +#include <spawn.h>
 +#include <sys/wait.h>
 +#include <unistd.h>
++
  
  using namespace llvm;
+ 
+@@ -78,6 +81,85 @@ static const bool assertions_on = true;
+ static const bool assertions_on = false;
+ #endif
  
 +namespace {
 +  class Pipe {
@@ -104,29 +107,28 @@ index d22bfc1..c6502f5 100644
 +    return WIFEXITED(wstatus) && WEXITSTATUS(wstatus) == 0;
 +}
 +
-+
- void ZigLLVMInitializeLoopStrengthReducePass(LLVMPassRegistryRef R) {
-     initializeLoopStrengthReducePass(*unwrap(R));
- }
-@@ -1375,18 +1457,15 @@ bool ZigLLVMWriteArchive(const char *archive_name, const char **file_names, size
+ LLVMTargetMachineRef ZigLLVMCreateTargetMachine(LLVMTargetRef T, const char *Triple,
+     const char *CPU, const char *Features, LLVMCodeGenOptLevel Level, LLVMRelocMode Reloc,
+     LLVMCodeModel CodeModel, bool function_sections, bool data_sections, ZigLLVMABIType float_abi, 
+@@ -558,18 +640,15 @@ namespace lld {
  }
  
  bool ZigLLDLinkCOFF(int argc, const char **argv, bool can_exit_early, bool disable_output) {
 -    std::vector<const char *> args(argv, argv + argc);
 -    return lld::coff::link(args, llvm::outs(), llvm::errs(), can_exit_early, disable_output);
-+ return InvokeLld("lld-link", llvm::ArrayRef<const char *>(argv, argc), llvm::outs(), llvm::errs(), disable_output);
++    return InvokeLld("lld-link-17", llvm::ArrayRef<const char *>(argv, argc), llvm::outs(), llvm::errs(), disable_output);
  }
  
  bool ZigLLDLinkELF(int argc, const char **argv, bool can_exit_early, bool disable_output) {
 -    std::vector<const char *> args(argv, argv + argc);
 -    return lld::elf::link(args, llvm::outs(), llvm::errs(), can_exit_early, disable_output);
-+  return InvokeLld("ld.lld", llvm::ArrayRef<const char *>(argv, argc), llvm::outs(), llvm::errs(), disable_output);
++    return InvokeLld("ld.lld-17", llvm::ArrayRef<const char *>(argv, argc), llvm::outs(), llvm::errs(), disable_output);
  }
  
  bool ZigLLDLinkWasm(int argc, const char **argv, bool can_exit_early, bool disable_output) {
 -    std::vector<const char *> args(argv, argv + argc);
 -    return lld::wasm::link(args, llvm::outs(), llvm::errs(), can_exit_early, disable_output);
-+  return InvokeLld("wasm-ld", llvm::ArrayRef<const char *>(argv, argc), llvm::outs(), llvm::errs(), disable_output);
++    return InvokeLld("wasm-ld-17", llvm::ArrayRef<const char *>(argv, argc), llvm::outs(), llvm::errs(), disable_output);
  }
  
- inline LLVMAttributeRef wrap(Attribute Attr) {
+ static_assert((Triple::ArchType)ZigLLVM_UnknownArch == Triple::UnknownArch, "");

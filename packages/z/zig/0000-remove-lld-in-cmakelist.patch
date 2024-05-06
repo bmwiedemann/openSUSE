@@ -1,20 +1,18 @@
-From: Soc Virnyl Estela <socvirnyl.estela@gmail.com>
-Date: Fri, 04 Aug 2023 14:59:44 PST
 We invoke LLD so we also commented/remove it out as well.
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 92be8fb..e19d18e 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -126,7 +126,7 @@ set(ZIG_PIE off CACHE BOOL "produce a position independent zig executable")
+@@ -136,7 +136,7 @@
  
- find_package(llvm 16)
- find_package(clang 16)
--find_package(lld 16)
-+# find_package(lld 16)
+ find_package(llvm 17)
+ find_package(clang 17)
+-find_package(lld 17)
++# find_package(lld 17)
  
  if(ZIG_STATIC_ZLIB)
      if (MSVC)
-@@ -173,7 +173,7 @@ foreach(CONFIG_TYPE ${CMAKE_CONFIGURATION_TYPES})
+@@ -183,7 +183,7 @@
  endforeach(CONFIG_TYPE CMAKE_CONFIGURATION_TYPES)
  
  include_directories(${LLVM_INCLUDE_DIRS})
@@ -23,7 +21,7 @@ index 92be8fb..e19d18e 100644
  include_directories(${CLANG_INCLUDE_DIRS})
  
  find_package(Threads)
-@@ -684,7 +684,7 @@ set_target_properties(zigcpp PROPERTIES COMPILE_FLAGS ${ZIGCPP_CXX_FLAGS})
+@@ -707,7 +707,7 @@
  
  target_link_libraries(zigcpp LINK_PUBLIC
      ${CLANG_LIBRARIES}

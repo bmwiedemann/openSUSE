@@ -1,45 +1,50 @@
-From: Soc Virnyl Estela <socvirnyl.estela@gmail.com>
-Date: Fri, 04 Aug 2023 14:57:54 PST
 Since we patched it to invoke LLD directly, we will have
 to remove any mentions of LLD here.
 diff --git a/build.zig b/build.zig
-index cb62d64..f9e0a6a 100644
+index 0e43b82f..14792f48 100644
 --- a/build.zig
 +++ b/build.zig
-@@ -612,12 +612,9 @@ fn addCmakeCfgOptionsToExe(
+@@ -689,12 +689,12 @@ fn addCmakeCfgOptionsToExe(
              cfg.cmake_static_library_suffix,
          }),
      }) });
 -    assert(cfg.lld_include_dir.len != 0);
 -    exe.addIncludePath(.{ .cwd_relative = cfg.lld_include_dir });
++    // assert(cfg.lld_include_dir.len != 0);
++    // exe.addIncludePath(.{ .cwd_relative = cfg.lld_include_dir });
      exe.addIncludePath(.{ .cwd_relative = cfg.llvm_include_dir });
      exe.addLibraryPath(.{ .cwd_relative = cfg.llvm_lib_dir });
      addCMakeLibraryList(exe, cfg.clang_libraries);
 -    addCMakeLibraryList(exe, cfg.lld_libraries);
++    // addCMakeLibraryList(exe, cfg.lld_libraries);
      addCMakeLibraryList(exe, cfg.llvm_libraries);
  
      if (use_zig_libcxx) {
-@@ -764,8 +761,6 @@ const CMakeConfig = struct {
-     cmake_static_library_prefix: []const u8,
+@@ -862,8 +862,8 @@ const CMakeConfig = struct {
      cmake_static_library_suffix: []const u8,
      cxx_compiler: []const u8,
+     cxx_compiler_arg1: []const u8,
 -    lld_include_dir: []const u8,
 -    lld_libraries: []const u8,
++    // lld_include_dir: []const u8,
++    // lld_libraries: []const u8,
      clang_libraries: []const u8,
      llvm_lib_dir: []const u8,
      llvm_include_dir: []const u8,
-@@ -829,8 +824,6 @@ fn parseConfigH(b: *std.Build, config_h_text: []const u8) ?CMakeConfig {
-         .cmake_static_library_prefix = undefined,
+@@ -929,8 +929,8 @@ fn parseConfigH(b: *std.Build, config_h_text: []const u8) ?CMakeConfig {
          .cmake_static_library_suffix = undefined,
          .cxx_compiler = undefined,
+         .cxx_compiler_arg1 = "",
 -        .lld_include_dir = undefined,
 -        .lld_libraries = undefined,
++        // .lld_include_dir = undefined,
++        // .lld_libraries = undefined,
          .clang_libraries = undefined,
          .llvm_lib_dir = undefined,
          .llvm_include_dir = undefined,
-@@ -859,14 +852,6 @@ fn parseConfigH(b: *std.Build, config_h_text: []const u8) ?CMakeConfig {
-             .prefix = "#define ZIG_CXX_COMPILER ",
-             .field = "cxx_compiler",
+@@ -964,14 +964,14 @@ fn parseConfigH(b: *std.Build, config_h_text: []const u8) ?CMakeConfig {
+             .prefix = "#define ZIG_CXX_COMPILER_ARG1 ",
+             .field = "cxx_compiler_arg1",
          },
 -        .{
 -            .prefix = "#define ZIG_LLD_INCLUDE_PATH ",
@@ -49,6 +54,14 @@ index cb62d64..f9e0a6a 100644
 -            .prefix = "#define ZIG_LLD_LIBRARIES ",
 -            .field = "lld_libraries",
 -        },
++        // .{
++        //     .prefix = "#define ZIG_LLD_INCLUDE_PATH ",
++        //     .field = "lld_include_dir",
++        // },
++        // .{
++        //     .prefix = "#define ZIG_LLD_LIBRARIES ",
++        //     .field = "lld_libraries",
++        // },
          .{
              .prefix = "#define ZIG_CLANG_LIBRARIES ",
              .field = "clang_libraries",
