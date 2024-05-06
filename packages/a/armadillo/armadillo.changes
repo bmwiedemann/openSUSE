@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  4 20:02:04 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop pkgconfig file from baselibs.conf generated -devel package
+  to avoid "have choice" issues for dependents arising from both
+  armadillo-devel and armadillo-32bit-devel (for example)
+  providing pkgconfig(armadillo).
+
+-------------------------------------------------------------------
 Wed Apr  3 15:18:32 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 12.8.2:
