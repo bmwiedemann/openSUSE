@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  5 20:59:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.2:
+  * `annotate`'s '`--style` now works again when used for a file
+    with an unrecognised extension.
+
+-------------------------------------------------------------------
 Thu Mar 21 05:37:40 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Set requires from git to git-core

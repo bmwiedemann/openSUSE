@@ -206,4 +206,14 @@
     <comment></comment>
     <requestid>1159994</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>cf83e004d1a4a43fc4eea2cfc100a9ce</srcmd5>
+    <version>3.0.2</version>
+    <time>1715010850</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.2:
+  * `annotate`'s '`--style` now works again when used for a file
+    with an unrecognised extension.</comment>
+    <requestid>1172025</requestid>
+  </revision>
 </revisionlist>

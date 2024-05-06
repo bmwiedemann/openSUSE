@@ -18,7 +18,7 @@
 
 
 Name:           reuse
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        A tool for compliance with the REUSE recommendations
 License:        Apache-2.0 AND CC-BY-SA-4.0 AND GPL-3.0-or-later AND CC0-1.0
