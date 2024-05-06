@@ -97,4 +97,15 @@
   * Add undo feature (pr #58)</comment>
     <requestid>1170591</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6c8253b6ab70050384279ed55a353bee</srcmd5>
+    <version>4.0.1</version>
+    <time>1715010937</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.1:
+  * Add macOS CI (pr #60)
+  * Fix variable scope (pr #59)
+  * Fix typo in Changelog</comment>
+    <requestid>1172202</requestid>
+  </revision>
 </revisionlist>

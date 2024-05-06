@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  6 15:03:25 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.0.1:
+  * Add macOS CI (pr #60)
+  * Fix variable scope (pr #59)
+  * Fix typo in Changelog
+
+-------------------------------------------------------------------
 Sun Apr 28 14:25:56 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.0.0:
