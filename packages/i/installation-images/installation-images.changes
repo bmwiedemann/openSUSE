@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Mon May 6 08:32:09 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#710
+- require libsolv-tools explicitly
+- 17.123
+
+--------------------------------------------------------------------
+Thu May 2 18:00:36 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#709
+- do not use gettext-runtime-mini (bsc#1223775)
+- 17.122
+
+--------------------------------------------------------------------
 Wed Apr 17 12:11:29 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#706

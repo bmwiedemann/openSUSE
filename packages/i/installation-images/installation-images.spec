@@ -192,7 +192,7 @@ BuildRequires:  SLE-Micro-release
 %endif
 %define config_bootmenu_no_upgrade 1
 # system-group-kvm needed for 15-SP2 based MicroOS
-BuildRequires:  system-group-kvm 
+BuildRequires:  system-group-kvm
 %endif
 
 %if "%theme" == "MicroOS"
@@ -345,7 +345,7 @@ BuildRequires:  fbiterm
 BuildRequires:  fonts-config
 BuildRequires:  gamin-server
 BuildRequires:  gdb
-BuildRequires:  gettext-runtime-mini
+BuildRequires:  gettext-runtime
 BuildRequires:  glibc-i18ndata
 BuildRequires:  glibc-locale
 BuildRequires:  gpart
@@ -386,6 +386,7 @@ BuildRequires:  dracut-fips
 BuildRequires:  openssh-fips
 %endif
 BuildRequires:  libpcsclite1
+BuildRequires:  libsolv-tools
 BuildRequires:  libyui-ncurses
 BuildRequires:  libyui-ncurses-pkg
 BuildRequires:  libyui-ncurses-rest-api
@@ -668,7 +669,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.121
+Version:        17.123
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
@@ -812,8 +813,8 @@ ln -s loader/initrd %{buildroot}/branding/%theme/CD1/boot/x86_64/initrd-xen
 ln -s loader/linux %{buildroot}/CD1/boot/x86_64/vmlinuz-xen
 %endif
 %endif
-# get rid of /usr/lib/rpm/brp-strip-debug 
-# strip kills the zImage.chrp-rs6k 
+# get rid of /usr/lib/rpm/brp-strip-debug
+# strip kills the zImage.chrp-rs6k
 export NO_BRP_STRIP_DEBUG=true
 export NO_DEBUGINFO_STRIP_DEBUG=true
 # for compatibility
@@ -856,7 +857,7 @@ install -D -m 644 images/cd1.iso %{_topdir}/ISO/cd1.iso
 %post -n install-initrd-%{theme}
 /bin/ln -snf %theme /usr/lib/install-initrd/branding 2>/dev/null || true
 
-%clean 
+%clean
 rm -rf %{buildroot}
 
 %files
