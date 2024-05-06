@@ -71,4 +71,14 @@
     <comment></comment>
     <requestid>1006898</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>af63289f2e7cfad2caa5c90d4fc48d35</srcmd5>
+    <version>0.16.0</version>
+    <time>1715010912</time>
+    <user>anag+factory</user>
+    <comment>- Enable tests again,
+  https://storyboard.openstack.org/#!/story/2009250 is solved.
+- Fix build for Backports with python 3.6, bsc#1222933</comment>
+    <requestid>1172148</requestid>
+  </revision>
 </revisionlist>

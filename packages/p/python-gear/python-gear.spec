@@ -1,7 +1,7 @@
 #
 # spec file for package python-gear
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@ Requires:       python-pbr >= 1.8.0
 Requires:       python-python-daemon >= 2.0.4
 Requires:       python-six >= 1.5.2
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,6 +53,10 @@ A pure-Python asynchronous library to interface with Gearman.
 
 %prep
 %setup -q -n gear-%{version}
+%if 0%{?sle_version} <= 150600
+# Remove project url in setup.cfg, this conf fails with old python
+sed -i '9,13d' setup.cfg
+%endif
 
 %build
 %python_build
@@ -63,8 +67,7 @@ A pure-Python asynchronous library to interface with Gearman.
 %python_clone -a %{buildroot}%{_bindir}/geard
 
 %check
-# Switched off because of https://storyboard.openstack.org/#!/story/2009250
-# %%pyunittest discover -v
+%pyunittest discover -v
 
 %post
 %python_install_alternative geard

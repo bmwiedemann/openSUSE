@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  6 10:51:00 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Enable tests again,
+  https://storyboard.openstack.org/#!/story/2009250 is solved.
+- Fix build for Backports with python 3.6, bsc#1222933
+
+-------------------------------------------------------------------
 Wed Sep 28 19:51:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - version update to 0.16.0 
