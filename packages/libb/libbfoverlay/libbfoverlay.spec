@@ -18,7 +18,7 @@
 
 Name:           libbfoverlay
 %define lname	libbfoverlay1
-Version:        20240314
+Version:        20240505
 Release:        0
 Summary:        Library for file overlay support in bfio
 License:        LGPL-3.0-or-later
@@ -32,17 +32,17 @@ BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fuse)
-BuildRequires:  pkgconfig(libbfio) >= 20240313
-BuildRequires:  pkgconfig(libcdata) >= 20240103
-BuildRequires:  pkgconfig(libcerror) >= 20240101
-BuildRequires:  pkgconfig(libcfile) >= 20240106
-BuildRequires:  pkgconfig(libclocale) >= 20240107
-BuildRequires:  pkgconfig(libcnotify) >= 20240108
-BuildRequires:  pkgconfig(libcpath) >= 20240109
-BuildRequires:  pkgconfig(libcsplit) >= 20240110
-BuildRequires:  pkgconfig(libcthreads) >= 20240102
-BuildRequires:  pkgconfig(libfvalue) >= 20240124
-BuildRequires:  pkgconfig(libuna) >= 20240130
+BuildRequires:  pkgconfig(libbfio) >= 20240414
+BuildRequires:  pkgconfig(libcdata) >= 20240414
+BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libcfile) >= 20240414
+BuildRequires:  pkgconfig(libclocale) >= 20240414
+BuildRequires:  pkgconfig(libcnotify) >= 20240414
+BuildRequires:  pkgconfig(libcpath) >= 20240414
+BuildRequires:  pkgconfig(libcsplit) >= 20240414
+BuildRequires:  pkgconfig(libcthreads) >= 20240413
+BuildRequires:  pkgconfig(libfvalue) >= 20240414
+BuildRequires:  pkgconfig(libuna) >= 20240414
 # Various notes: https://en.opensuse.org/libyal
 
 %description
