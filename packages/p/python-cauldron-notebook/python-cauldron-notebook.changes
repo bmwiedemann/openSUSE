@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  6 06:43:51 UTC 2024 - pgajdos@suse.com
+
+- remove superfluous sed
+
+-------------------------------------------------------------------
 Mon Mar  4 21:29:57 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Build PEP517 wheel

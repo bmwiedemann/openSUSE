@@ -72,8 +72,6 @@ modeling and analysis in Python.
 
 %prep
 %setup -q -n cauldron-%{version}
-# https://github.com/sernst/cauldron/issues/80
-sed -i 's:.pytest-runner.::' setup.py
 
 %build
 %pyproject_wheel
