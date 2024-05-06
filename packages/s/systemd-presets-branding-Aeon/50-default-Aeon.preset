@@ -4,3 +4,4 @@ enable health-checker.service
 disable purge-kernels.service
 enable lastlog2-import.service
 enable zramswap.service
+enable x86_64_v3-transactional-update.service
