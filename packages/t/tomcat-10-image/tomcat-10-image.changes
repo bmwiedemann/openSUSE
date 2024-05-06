@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  3 09:48:28 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- update tomcat readme to have standard footer and correct references
+
+-------------------------------------------------------------------
 Fri Apr 12 12:03:53 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - Don't wipe everything in /var/log, only remove log files (this omits directories owned by packages)
