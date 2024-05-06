@@ -885,4 +885,12 @@ New upstream release</comment>
   + Updated translations. (forwarded request 1169186 from dimstar)</comment>
     <requestid>1169226</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>9e8ac8e8af2f7a3e3f322208e1333fdf</srcmd5>
+    <version>4.14.4</version>
+    <time>1715010745</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1171914</requestid>
+  </revision>
 </revisionlist>
