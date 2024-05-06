@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May  5 18:54:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.8.0
+  ## New:
+  * BroadcastView.map is defined for API compatibility, but is not
+    particularly efficient or recommended.
+  ## Fixed:
+  * AsyncResult.join is fixed.
+  ## Improved:
+  * Performance optimization disabling timestamp parsing in
+    jupyter_client is not applied until ipyparallel classes are
+    instantiated, rather than at import time.
+
+-------------------------------------------------------------------
 Thu Mar 28 19:36:46 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.7.0

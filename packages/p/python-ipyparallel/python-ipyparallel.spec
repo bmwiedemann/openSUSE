@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python39 1
-%define distversion 8.7
+%define distversion 8.8
 Name:           python-ipyparallel
-Version:        8.7.0
+Version:        8.8.0
 Release:        0
 Summary:        Interactive parallel computing library for IPython
 License:        BSD-3-Clause
@@ -41,7 +40,7 @@ BuildRequires:  %{python_module entrypoints}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module ipykernel >= 4.4}
 BuildRequires:  %{python_module ipython >= 4}
-BuildRequires:  %{python_module jupyter-client}
+BuildRequires:  %{python_module jupyter-client >= 5}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
 BuildRequires:  %{python_module pyzmq >= 18}

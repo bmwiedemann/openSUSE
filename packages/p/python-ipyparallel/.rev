@@ -360,4 +360,21 @@
 - Drop ipyparallel-pr859-utcnow-deprecation.patch</comment>
     <requestid>1163391</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>65feaae1646a83b5211b3ed5e3795810</srcmd5>
+    <version>8.8.0</version>
+    <time>1715010849</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.8.0
+  ## New:
+  * BroadcastView.map is defined for API compatibility, but is not
+    particularly efficient or recommended.
+  ## Fixed:
+  * AsyncResult.join is fixed.
+  ## Improved:
+  * Performance optimization disabling timestamp parsing in
+    jupyter_client is not applied until ipyparallel classes are
+    instantiated, rather than at import time.</comment>
+    <requestid>1172020</requestid>
+  </revision>
 </revisionlist>
