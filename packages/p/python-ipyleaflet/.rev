@@ -184,4 +184,19 @@
   ipywidgets)</comment>
     <requestid>1155854</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4523ba6c72cc29387d8197f3f41ed7a4</srcmd5>
+    <version>0.19.0</version>
+    <time>1715010847</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.19.0
+  ## New Features
+  * feat: introduce leaflet-geoman as an alternative to
+    leaflet-draw by @iisakkirotko in #1181
+  ## Documentation
+  * Add colormaps to choropleth docs by @gjmooney in #1157
+  * Marker cluster api docs by @gjmooney in #1151
+- jupyter_leaflet is now a separate python/npm package</comment>
+    <requestid>1172016</requestid>
+  </revision>
 </revisionlist>

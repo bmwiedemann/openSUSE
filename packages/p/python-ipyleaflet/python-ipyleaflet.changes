@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May  5 18:08:50 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.19.0
+  ## New Features
+  * feat: introduce leaflet-geoman as an alternative to
+    leaflet-draw by @iisakkirotko in #1181
+  ## Documentation
+  * Add colormaps to choropleth docs by @gjmooney in #1157
+  * Marker cluster api docs by @gjmooney in #1151
+- jupyter_leaflet is now a separate python/npm package
+
+-------------------------------------------------------------------
 Thu Mar  7 10:49:01 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.18.2
