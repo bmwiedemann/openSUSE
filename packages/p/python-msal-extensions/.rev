@@ -102,4 +102,17 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164952 from glaubitz)</comment>
     <requestid>1165349</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7dfa1147de73b408754797fd0eaacb6f</srcmd5>
+    <version>1.2.0~b1</version>
+    <time>1715010918</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.0b1
+  + MSAL Extensions has been updated to work with
+    MSAL Python 1.27.* and 1.28.* (#127, #128)
+- Adjust upstream source name in spec file
+- Override upstream version with 1.2.0~b1
+- Update Requires from setup.py (forwarded request 1172130 from glaubitz)</comment>
+    <requestid>1172159</requestid>
+  </revision>
 </revisionlist>

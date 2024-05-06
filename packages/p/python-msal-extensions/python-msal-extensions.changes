@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  6 09:11:54 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.2.0b1
+  + MSAL Extensions has been updated to work with
+    MSAL Python 1.27.* and 1.28.* (#127, #128)
+- Adjust upstream source name in spec file
+- Override upstream version with 1.2.0~b1
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Apr  4 13:08:40 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch package to modern Python Stack on SLE-15
