@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-storages
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-django-storages
 Version:        1.13.2
 Release:        0
@@ -46,9 +44,6 @@ BuildRequires:  %{python_module dropbox >= 7.2.1}
 BuildRequires:  %{python_module google-cloud-storage >= 1.15.0}
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module pytest}
-%if %{with python2}
-BuildRequires:  python2-mock
-%endif
 # /SECTION
 %python_subpackages
 

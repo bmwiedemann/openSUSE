@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 23 22:26:13 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Switch to sle15_python_module_pythons to build for newer Python stack
+
+-------------------------------------------------------------------
 Wed Jan  4 16:14:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.2:

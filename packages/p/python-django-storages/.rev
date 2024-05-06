@@ -114,4 +114,12 @@
   * Fix ``get_modified_time()`` (`#1134`_)</comment>
     <requestid>1055944</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>e34d9b199ed2a2eb9e3805b63be94cca</srcmd5>
+    <version>1.13.2</version>
+    <time>1715010883</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1172100</requestid>
+  </revision>
 </revisionlist>
