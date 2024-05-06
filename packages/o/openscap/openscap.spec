@@ -115,12 +115,15 @@ Requires:       libopenscap%{sover} = %{version}
 This package contains the development files (mainly C header files) for the
 OpenSCAP C library.
 
-%package docker
-Summary:        Docker plugin for OpenSCAP
+%package containers
+Summary:        OpenSCAP plugin for scanning containers
 Group:          System/Libraries
+Provides:       openscap-docker = %{version}-%{release}
+Obsoletes:      openscap-docker < %{version}-%{release}
 
-%description docker
-This package contains the Docker support for OpenSCAP.
+%description containers
+This package contains plugins for scanning containers using OpenSCAP either via
+podman or docker.
 
 %if 0%{?with_bindings}
 %package -n python-openscap
@@ -291,9 +294,12 @@ mv %{buildroot}/%{_prefix}/libexec/oscap-remediate %{buildroot}/%{_bindir}
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*
 
-%files docker
+%files containers
 %{python3_sitelib}/oscap_docker_python
 %{_bindir}/oscap-docker
+%{_bindir}/oscap-podman
+%{_mandir}/man8/oscap-podman.8*
+%{_mandir}/man8/oscap-docker.8*
 
 %if 0%{?with_bindings}
 %files -n python-openscap
@@ -316,10 +322,11 @@ mv %{buildroot}/%{_prefix}/libexec/oscap-remediate %{buildroot}/%{_bindir}
 %{_bindir}/oscap-ssh
 %{_bindir}/oscap-chroot
 %{_bindir}/scap-as-rpm
-%{_bindir}/oscap-podman
 %{_bindir}/oscap-run-sce-script
 %{_sbindir}/rcoscap-scan
 %{_datadir}/bash-completion/completions/*
+%exclude %{_mandir}/man8/oscap-podman.8*
+%exclude %{_mandir}/man8/oscap-docker.8*
 %{_bindir}/oscap-remediate-offline
 %{_prefix}/lib/systemd/system/oscap-remediate.service
 %if 0%{?suse_version} != 1599
