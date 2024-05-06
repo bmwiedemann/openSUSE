@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 30 15:47:24 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update th-compat to version 0.1.5 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat Apr 20 12:02:09 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update th-compat to version 0.1.5 revision 1.
