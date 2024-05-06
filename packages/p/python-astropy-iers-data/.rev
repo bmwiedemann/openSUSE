@@ -35,4 +35,13 @@
     <comment></comment>
     <requestid>1156733</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>28431297bef61fb2c5a00e61639af87e</srcmd5>
+    <version>0.2024.4.29.0.28.48</version>
+    <time>1715010874</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.2024.4.29.0.28.48
+  * Update IERS Earth rotation and leap second tables (forwarded request 1171968 from bnavigator)</comment>
+    <requestid>1171969</requestid>
+  </revision>
 </revisionlist>
