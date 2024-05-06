@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May  4 00:57:01 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- JPMS: Add the Automatic-Module-Name attribute to the manifests
+
+-------------------------------------------------------------------
 Mon Apr 29 11:55:18 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - The binaries are compatible with java 1.8
