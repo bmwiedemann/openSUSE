@@ -217,4 +217,12 @@ part of summer 20013 libyal refresh for opensuse 13.1</comment>
     <comment>- Update to release 20240229</comment>
     <requestid>1153139</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2a96e3fb4db6a2038d11bef60cea1d98</srcmd5>
+    <version>20240504</version>
+    <time>1715010862</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240504</comment>
+    <requestid>1172030</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 
 %define lname	libvshadow1
 Name:           libvshadow
-Version:        20240229
+Version:        20240504
 Release:        0
 Summary:        Library to access the Volume Shadow Snapshot (VSS) format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -32,24 +32,24 @@ Source3:        %name.keyring
 Source11:       Paper_-_Windowless_Shadow_Snapshots.pdf
 Source12:       Slides_-_Windowless_Shadow_Snapshots.pdf
 Source13:       Volume_Shadow_Snapshot_VSS_format.pdf
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %python_module devel
+BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse)
-BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcdata) >= 20240103
-BuildRequires:  pkgconfig(libcerror) >= 20240101
-BuildRequires:  pkgconfig(libcfile) >= 20240106
-BuildRequires:  pkgconfig(libclocale) >= 20240107
-BuildRequires:  pkgconfig(libcnotify) >= 20240108
-BuildRequires:  pkgconfig(libcpath) >= 20240109
-BuildRequires:  pkgconfig(libcsplit) >= 20240110
-BuildRequires:  pkgconfig(libcthreads) >= 20240102
-BuildRequires:  pkgconfig(libfdatetime) >= 20240115
-BuildRequires:  pkgconfig(libfguid) >= 20240116
-BuildRequires:  pkgconfig(libuna) >= 20240130
+BuildRequires:  pkgconfig(libbfio) >= 20240414
+BuildRequires:  pkgconfig(libcdata) >= 20240414
+BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libcfile) >= 20240414
+BuildRequires:  pkgconfig(libclocale) >= 20240414
+BuildRequires:  pkgconfig(libcnotify) >= 20240414
+BuildRequires:  pkgconfig(libcpath) >= 20240414
+BuildRequires:  pkgconfig(libcsplit) >= 20240414
+BuildRequires:  pkgconfig(libcthreads) >= 20240413
+BuildRequires:  pkgconfig(libfdatetime) >= 20240414
+BuildRequires:  pkgconfig(libfguid) >= 20240414
+BuildRequires:  pkgconfig(libuna) >= 20240414
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 
