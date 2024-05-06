@@ -767,4 +767,41 @@
   * Link to GitHub contribution guide in CONTRIBUTING (#2632) (forwarded request 1169980 from ph03nix)</comment>
     <requestid>1170017</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ca961b4ce1bda26c3949d9fcfcc90a1f</srcmd5>
+    <version>3.75.0</version>
+    <time>1715010932</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.75.0:
+  * fix(deps): update module golang.org/x/text to v0.15.0 (#2786)
+  * fix(deps): update module golang.org/x/oauth2 to v0.20.0 (#2785)
+  * fix(deps): update module github.com/charmbracelet/bubbletea to v0.26.1 (#2777)
+  * fix(deps): update module github.com/googleapis/gax-go/v2 to v2.12.4 (#2781)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.52.2 (#2776)
+  * fix(deps): update module cloud.google.com/go/secretmanager to v1.13.0 (#2775)
+  * set default buffer size to 64 (#2778)
+  * Update result's extra data for Slack (#2779)
+  * fix for infinite recursion in Postman var sub (#2780)
+  * Update rabbitmq.go regex detect amqps protocol (#2609)
+  * adds build version to finished scanning log (#2773)
+  * update imports (#2772)
+  * fix(deps): update module google.golang.org/api to v0.177.0 (#2770)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.32 (#2769)
+  * Detector-Competition-Fix - fixed the alchemy detector regex (#1821)
+  * Detector-Fix: Reintroduce Cloudflareglobalapikey (#2101)
+  * Expose detector-specific false positive logic (#2743)
+  * fixed calendly api key (#2368)
+  * [bug] - Improve BufferedFileReader Close Behavior (#2768)
+  * fix(deps): update module google.golang.org/protobuf to v1.34.0 (#2766)
+  * [feat] - Add ReadFrom method to BufferedFileWriter (#2759)
+  * [feat] - buffered file reader (#2731)
+  * test(git): change length of chunks (#2767)
+  * [chore] Add some happy path logs to GitLab (#2765)
+  * Update ignore extensions (#2764)
+  * Correclty set metrics for enumerated orgs (#2757)
+  * feat(git): scan commit metadata (#2754)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.51.31 (#2763)
+  * ignore pbix and vsdx files (#2762) (forwarded request 1172166 from ph03nix)</comment>
+    <requestid>1172179</requestid>
+  </revision>
 </revisionlist>
