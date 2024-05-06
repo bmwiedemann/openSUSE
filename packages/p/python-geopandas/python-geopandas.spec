@@ -25,12 +25,13 @@
 %bcond_with test
 %endif
 Name:           python-geopandas%{psuffix}
-Version:        0.14.3
+Version:        0.14.4
 Release:        0
 Summary:        Geographic pandas extensions
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://geopandas.org
+# SourceRepository: https://github.com/geopandas/geopandas
 Source:         https://files.pythonhosted.org/packages/source/g/geopandas/geopandas-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
@@ -40,6 +41,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       proj
 Requires:       python-Fiona >= 1.8.21
+Requires:       python-numpy >= 1.22
 Requires:       python-packaging
 Requires:       python-pandas >= 1.4.0
 Requires:       python-pyproj >= 3.3.0
@@ -54,6 +56,7 @@ BuildRequires:  %{python_module fsspec}
 BuildRequires:  %{python_module geopandas = %{version}}
 BuildRequires:  %{python_module geopy}
 BuildRequires:  %{python_module matplotlib >= 3.5.0}
+BuildRequires:  %{python_module numpy >= 1.22}
 BuildRequires:  %{python_module psycopg2}
 BuildRequires:  %{python_module pyarrow}
 BuildRequires:  %{python_module pytest}

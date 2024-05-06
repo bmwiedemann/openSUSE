@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  5 10:59:24 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.14.4
+  * Several fixes for compatibility with the upcoming pandas 3.0,
+    numpy 2.0 and fiona 1.10 releases.
+
+-------------------------------------------------------------------
 Thu Mar 21 20:06:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Don't test folium on python39: no longer available
