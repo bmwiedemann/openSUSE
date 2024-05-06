@@ -129,4 +129,26 @@
 - Drop anywidget-pr439-py312mock.patch</comment>
     <requestid>1163384</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0c5e9eb6b4d5eecc02d61fb77e293222</srcmd5>
+    <version>0.9.10</version>
+    <time>1715010845</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.10
+  * fix: Bring back anywidget.json to support notebook v6 discovery
+    (#553)
+- Releases 0.9.4 to 0.9.9
+  * Make a blanket _repr_mimbundle_ implementation (#546)
+  * experimental Ensure anywidget.experimental.command is called
+    with self (#545)
+  * experimental Replace invoke timeout with more flexible
+    AbortSignal (#540)
+  * Refactor AnyWidget command registration (#526)
+  * feat: Suppress errors when inspecting widget for commands
+    (#522)
+  * Add experimental invoke API to call Python functions from the
+    front end and (#453) await the response.
+  * Bumped dependencies</comment>
+    <requestid>1172013</requestid>
+  </revision>
 </revisionlist>

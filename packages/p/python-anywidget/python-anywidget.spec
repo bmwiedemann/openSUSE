@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python39 1
-%define distver 0.9.3
+%define distver 0.9.10
 Name:           python-anywidget
-Version:        0.9.3
+Version:        0.9.10
 Release:        0
 Summary:        Custom jupyter widgets made easy
 License:        MIT
@@ -101,5 +100,6 @@ This package provides the jupyter notebook extensions.
 %license LICENSE
 %{_jupyter_prefix}/labextensions/anywidget
 %{_jupyter_nbextension_dir}/anywidget
+%_jupyter_config %{_jupyter_nb_notebook_confdir}/anywidget.json
 
 %changelog

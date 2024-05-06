@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun May  5 17:56:54 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.10
+  * fix: Bring back anywidget.json to support notebook v6 discovery
+    (#553)
+- Releases 0.9.4 to 0.9.9
+  * Make a blanket _repr_mimbundle_ implementation (#546)
+  * experimental Ensure anywidget.experimental.command is called
+    with self (#545)
+  * experimental Replace invoke timeout with more flexible
+    AbortSignal (#540)
+  * Refactor AnyWidget command registration (#526)
+  * feat: Suppress errors when inspecting widget for commands
+    (#522)
+  * Add experimental invoke API to call Python functions from the
+    front end and (#453) await the response.
+  * Bumped dependencies
+
+-------------------------------------------------------------------
 Thu Mar 28 19:23:31 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.9.3
