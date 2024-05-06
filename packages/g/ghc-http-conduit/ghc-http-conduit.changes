@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  3 13:55:03 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Forgot to update copyright header in spec file after last change.
+
+-------------------------------------------------------------------
 Tue Mar 12 15:08:10 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Drop obsolete 'drop-dependency-on-empty-attoparsec-aeson-library.patch'.
