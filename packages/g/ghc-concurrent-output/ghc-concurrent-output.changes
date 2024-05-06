@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 29 14:16:27 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update concurrent-output to version 1.10.21.
+  concurrent-output (1.10.21) unstable; urgency=medium
+
+    * Allow ansi-terminal-1.1
+
+   -- Joey Hess <id@joeyh.name>  Mon, 29 Apr 2024 10:15:55 -0400
+
+-------------------------------------------------------------------
 Thu Oct 12 19:46:55 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update concurrent-output to version 1.10.20.
