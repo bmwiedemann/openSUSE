@@ -1,7 +1,29 @@
 -------------------------------------------------------------------
-Fri Mar 29 10:39:40 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+Fri May  3 01:32:44 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to version 7:
+  * Messages that failed to send can now be retried or discarded.
+  * Messages can be reported to server admins for moderation.
+  * Room details are now considered complete, with the addition of room address
+    management, permissions, and room upgrade.
+  * A new member menu appears when clicking on an avatar in the room history.
+    It offers a quick way to do many actions related to that person,
+    including opening a direct chat with them and moderating them.
+  * Pills are clickable and allow to directly go to a room or member profile.
+  * Account recovery, introduced during this cycle, could lead to an unclear
+    situation where it was still incomplete even after successfully going
+    through the process
+  * After fixing a focus issue upstream in GtkListView, we got rid of more
+    focus issues in our widgets. That should make the room history completely
+    accessible with keyboard navigation.
+  * Third party verification, that happens in a direct chat, was partly broken
+    as the banner about an ongoing verification was not showing up anymore.
+    The culprit was found and we took that opportunity to improve the security
+    instructions. Along with this bugfix, a coat of polish has been applied.
+-------------------------------------------------------------------
+Fri Mar 29 10:39:40 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to version 7.beta:
   + Encryption support has been extended, with server-side key backup
     and account recovery.
   + Messages that failed to send can now be retried or discarded.

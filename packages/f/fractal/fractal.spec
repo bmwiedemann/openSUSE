@@ -23,7 +23,7 @@
 %{?is_beta:%bcond_without beta_build}%{!?is_beta:%bcond_with beta_build}
 
 Name:           fractal
-Version:        7.beta
+Version:        7
 Release:        0
 Summary:        Matrix group messaging app
 License:        GPL-3.0-or-later
