@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f0dacbd2738cf0f66527f6d58e254c0e</srcmd5>
+    <version>0.3</version>
+    <time>1715010793</time>
+    <user>anag+factory</user>
+    <comment>libad9361-iio library contains a set functions specific to the Analog Devices AD9361 RFIC
+
+This function is required to build an new version of existing package gnuradio ( https://build.opensuse.org/request/show/1171849/changes )</comment>
+    <requestid>1171983</requestid>
+  </revision>
+</revisionlist>

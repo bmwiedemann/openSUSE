@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Sat Jul 15 19:33:23 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to release 0.3
+  * build,.travis.yml: drop xcode 8 build by @commodo in #41
+  * CI/travis/after_deploy: trigger gr-iio build when done by @commodo in #42
+  * Fix rate checks by @tfcollins in #43
+  * build,centos,bionic: add ssh-dss algo to EXTRA_SSH env-var by @commodo in #45
+  * .travis.yml: force xenial for docker builds by @commodo in #46
+  * build,.travis.yml: update the build configuration by @commodo in #49
+  * ci,os-x: reduce build times by not upgrading by @commodo in #50
+  * ci,build: various updates by @commodo in #54
+  * ci,travis: add CentOS 8 & Ubuntu 20.04 builds by @commodo in #59
+  * Update HW test to use environmental variables by @tfcollins in #58
+  * ci,azure-pipelines: add initial yaml file by @commodo in #61
+  * ci,azure-pipelines: use matrix strategy, and user artifacts from libiio's pipeline by @commodo in #62
+  * cmake: change build define LIBIIO_EXPORTS to LIBAD9361_EXPORTS by @adisuciu in #64
+  * Minor fix to for loop for testing rates by @SrikanthPagadarai in #63
+  * Fix Centos builds which have bad version of cmake by @tfcollins in #69
+  * cmake: add "uninstall" target by @willcode in #68
+  * Add python bindings by @tfcollins in #70
+  * Make library check for python optional by @tfcollins in #71
+  * Fix flags for FMComms5 python tests by @tfcollins in #74
+  * CI: update azure-pipelines.yml file by @ccraluca in #77
+  * CI: remove libiio scripts dependencies and update CI folder by @ccraluca in #79
+  * CI:change os versions to match os version used on libiio by @ccraluca in #80
+  * Staging/fix arm builds by @ccraluca in #81
+  * Add readme for python bindings by @tfcollins in #83
+  * CI: add python deployment by @ccraluca in #84
+  * CI:update ci by @ccraluca in #85
+  * CI update: remove builds with deprecated OS version by @ccraluca in #86
+  * Minor fixes before release by @tfcollins in #88
+  * Doc updates by @tfcollins in #90
+  * CI:add tags on CI triggers by @ccraluca in #92
+  * CI: fix fetch error by @ccraluca in #93
+
+-------------------------------------------------------------------
+Thu Dec 24 12:14:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Use github source URL
+- Update patch libad9361-iio-lib-dir.patch to also fix the
+  pkgconfig file
+- Run spec-cleaner
+- Package license file
+
+-------------------------------------------------------------------
+Sat Dec 22 16:19:23 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to release 0.1
+
+-------------------------------------------------------------------
+Tue Dec  5 13:50:34 UTC 2017 - wk@ire.pw.edu.pl
+
+- git 20171204
+
+-------------------------------------------------------------------
+Tue Aug 22 12:31:18 UTC 2017 - wk@ire.pw.edu.pl
+
+- initial build
+- git 20170207
+

@@ -1,0 +1,33 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 34cb7f9..b89b8a3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -98,12 +98,12 @@ configure_file(libad9361-iio.iss.cmakein ${CMAKE_CURRENT_BINARY_DIR}/libad9361-i
+ 
+ set(LIBAD9361_PC ${CMAKE_CURRENT_BINARY_DIR}/libad9361.pc)
+ configure_file(libad9361.pc.cmakein ${LIBAD9361_PC} @ONLY)
+-install(FILES ${LIBAD9361_PC} DESTINATION ${INSTALL_LIB_DIR}/pkgconfig)
++install(FILES ${LIBAD9361_PC} DESTINATION ${INSTALL_LIB_DIR}${LIB_SUFFIX}/pkgconfig)
+ 
+ if(NOT SKIP_INSTALL_ALL)
+ 	install(TARGETS ad9361
+ 		ARCHIVE DESTINATION lib
+-		LIBRARY DESTINATION "${INSTALL_LIB_DIR}"
++		LIBRARY DESTINATION "${INSTALL_LIB_DIR}${LIB_SUFFIX}"
+ 		RUNTIME DESTINATION bin
+ 		FRAMEWORK DESTINATION lib
+ 		PUBLIC_HEADER DESTINATION include)
+diff --git a/libad9361.pc.cmakein b/libad9361.pc.cmakein
+index a2a37e4..fccb415 100644
+--- a/libad9361.pc.cmakein
++++ b/libad9361.pc.cmakein
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@CMAKE_INSTALL_PREFIX@/lib
+-sharedlibdir=@CMAKE_INSTALL_PREFIX@/lib
++libdir=@CMAKE_INSTALL_PREFIX@/lib@LIB_SUFFIX@
++sharedlibdir=@CMAKE_INSTALL_PREFIX@/lib@LIB_SUFFIX@
+ includedir=@CMAKE_INSTALL_PREFIX@/include
+ 
+ Name: libad9361

@@ -1,0 +1,5 @@
+<package name="libad9361-iio" project="openSUSE:Factory">
+  <title>AD9361 library fo iio</title>
+  <description>This is a simple library used for userspace, which manages multi-chip sync, on platforms (FMCOMMS5) where multiple AD9361 devices are used.</description>
+  <devel project="hardware:sdr" package="libad9361-iio"/>
+</package>
