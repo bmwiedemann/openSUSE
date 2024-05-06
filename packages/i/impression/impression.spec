@@ -18,7 +18,7 @@
 
 %define         appname io.gitlab.adhami3310.Impression
 Name:           impression
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        A straight-forward and modern application to create bootable drives
 License:        GPL-3.0-only
@@ -67,6 +67,7 @@ Write disk images onto your drives with ease. Select an image, insert your drive
 %{_datadir}/glib-2.0/schemas/%{appname}.gschema.xml
 %{_datadir}/impression
 %{_iconsdir}/hicolor/scalable/apps/%{appname}.svg
+%{_iconsdir}/hicolor/symbolic/apps/%{appname}-symbolic.svg
 %{_datadir}/metainfo/%{appname}.metainfo.xml
 
 %files lang -f impression.lang
