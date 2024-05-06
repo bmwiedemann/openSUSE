@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun May  5 19:38:44 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2024.7:
+  + Added:
+    - Allow configuration of internal messages in buffer
+    - User information added to context menu
+    - Support for IRCv3 CAP NEW and CAP DEL subcommands
+    - Enable support for IRCv3 multi-prefix, message-tags, WHOX,
+      and UTF8ONLY
+    - Dynamic commands and tooltips added to command
+      auto-completion via ISUPPORT
+    - Added support for socks5 proxy configuration
+    - Added support for http proxy configuration
+  + Changed:
+    - Simplified onboarding experience for users without a
+      config.toml file
+    - Context menus can be dismissed by pressing Escape
+    - Join channels that report themselves as requiring
+      registration after logging in
+  + Fixed:
+    - No longer automatically reconnects to a server after using
+      the /QUIT command.
+    - Fix infinite loop in rustls: bump version from 0.23.4 
+      to 0.23.5 (bsc#1223220)
+
+-------------------------------------------------------------------
 Mon Mar 25 22:52:03 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Initial package
