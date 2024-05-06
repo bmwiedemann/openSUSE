@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 22 14:19:43 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Use %patch -P N instead of %patchN.
+
+-------------------------------------------------------------------
+Tue Feb  6 08:04:04 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-pr88345-min-func-alignment.diff to add support for
+  -fmin-function-alignment.  [bsc#1214934]
+
+-------------------------------------------------------------------
 Mon Feb  5 14:24:16 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Use %{_target_cpu} to determine host and build.

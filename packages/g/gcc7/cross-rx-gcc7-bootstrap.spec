@@ -189,6 +189,7 @@ Patch123:       gcc7-pfe-0019-Backport-Use-the-section-flag-o-for-__patchable_fu
 Patch124:       gcc7-pfe-0020-Backport-varasm-Fix-up-__patchable_function_entries-.patch
 Patch125:       gcc7-pfe-0021-Backport-rs6000-Avoid-fpatchable-function-entry-regr.patch
 Patch126:       gcc7-pfe-0022-Fix-unwinding-issues-when-pfe-is-enabled.patch
+Patch127:       gcc7-pr88345-min-func-alignment.diff
 
 # Define the canonical target and host architecture
 #   %%gcc_target_arch  is supposed to be the full target triple
@@ -315,78 +316,79 @@ ln -s nvptx-newlib/newlib .
 
 #test patching start
 
-%patch2
-%patch5
-%patch6
-%patch7
+%patch -P 2
+%patch -P 5
+%patch -P 6
+%patch -P 7
 %if %{suse_version} < 1310
-%patch9
+%patch -P 9
 %endif
-%patch10
-%patch11
-%patch12
-%patch14
-%patch15
-%patch17 -p1
-%patch18
-%patch19
-%patch20
-%patch21 -p1
-%patch22 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
-%patch27 -p1
-%patch29
-%patch30 -p1
-%patch31 -p1
-%patch32 -p1
-%patch33 -p1
-%patch34 -p1
-%patch35 -p1
-%patch36 -p1
-%patch37 -p1
-%patch38 -p1
-%patch39 -p1
-%patch40 -p1
-%patch41 -p1
-%patch42 -p1
-%patch43 -p1
-%patch44 -p1
-%patch45 -p1
-%patch46 -p1
-%patch47 -p1
-%patch51
-%patch60
-%patch61
-%patch100 -p1
-%patch23 -p1
-%patch101 -p1
-%patch102 -p1
-%patch103 -p1
-%patch104 -p1
-%patch105 -p1
-%patch106 -p1
-%patch107 -p1
-%patch108 -p1
-%patch109 -p1
-%patch110 -p1
-%patch111 -p1
-%patch112 -p1
-%patch113 -p1
-%patch114 -p1
-%patch115 -p1
-%patch116 -p1
-%patch117 -p1
-%patch118 -p1
-%patch119 -p1
-%patch120 -p1
-%patch121 -p1
-%patch122 -p1
-%patch123 -p1
-%patch124 -p1
-%patch125 -p1
-%patch126 -p1
+%patch -P 10
+%patch -P 11
+%patch -P 12
+%patch -P 14
+%patch -P 15
+%patch -P 17 -p1
+%patch -P 18
+%patch -P 19
+%patch -P 20
+%patch -P 21 -p1
+%patch -P 22 -p1
+%patch -P 24 -p1
+%patch -P 25 -p1
+%patch -P 26 -p1
+%patch -P 27 -p1
+%patch -P 29
+%patch -P 30 -p1
+%patch -P 31 -p1
+%patch -P 32 -p1
+%patch -P 33 -p1
+%patch -P 34 -p1
+%patch -P 35 -p1
+%patch -P 36 -p1
+%patch -P 37 -p1
+%patch -P 38 -p1
+%patch -P 39 -p1
+%patch -P 40 -p1
+%patch -P 41 -p1
+%patch -P 42 -p1
+%patch -P 43 -p1
+%patch -P 44 -p1
+%patch -P 45 -p1
+%patch -P 46 -p1
+%patch -P 47 -p1
+%patch -P 51
+%patch -P 60
+%patch -P 61
+%patch -P 100 -p1
+%patch -P 23 -p1
+%patch -P 101 -p1
+%patch -P 102 -p1
+%patch -P 103 -p1
+%patch -P 104 -p1
+%patch -P 105 -p1
+%patch -P 106 -p1
+%patch -P 107 -p1
+%patch -P 108 -p1
+%patch -P 109 -p1
+%patch -P 110 -p1
+%patch -P 111 -p1
+%patch -P 112 -p1
+%patch -P 113 -p1
+%patch -P 114 -p1
+%patch -P 115 -p1
+%patch -P 116 -p1
+%patch -P 117 -p1
+%patch -P 118 -p1
+%patch -P 119 -p1
+%patch -P 120 -p1
+%patch -P 121 -p1
+%patch -P 122 -p1
+%patch -P 123 -p1
+%patch -P 124 -p1
+%patch -P 125 -p1
+%patch -P 126 -p1
+%patch -P 127 -p1
 
 #test patching end
 

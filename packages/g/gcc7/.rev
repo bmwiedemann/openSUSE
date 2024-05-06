@@ -645,4 +645,15 @@ This is in preparation of Pointer Authentication enablement in Tumbleweed. (forw
   through DW_AT_abstract_origin when using LTO.  [bsc#1216488]</comment>
     <requestid>1144321</requestid>
   </revision>
+  <revision rev="42" vrev="17">
+    <srcmd5>12f868ffaa0f5d5d0bf7e31e181e35b4</srcmd5>
+    <version>7.5.0+r278197</version>
+    <time>1715010751</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of %patchN.
+
+- Add gcc7-pr88345-min-func-alignment.diff to add support for
+  -fmin-function-alignment.  [bsc#1214934]</comment>
+    <requestid>1171357</requestid>
+  </revision>
 </revisionlist>

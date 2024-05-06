@@ -1,0 +1,141 @@
+From 874b0e7d0c16653beeed2ce8d92363cc0c1580cd Mon Sep 17 00:00:00 2001
+From: Martin Jambor <mjambor@suse.cz>
+Date: Thu, 25 Jan 2024 14:15:10 +0100
+Subject: [PATCH] Add -fmin-function-alignmnet
+To: gcc-patches@gcc.gnu.org
+
+This is a manual backport of gcc master ommit r14-8395-g0f5a9a00e3ab1f
+without alphabetical reordering of parameters in common.opt.  Commit
+message of that commit (without Changelog):
+
+  commit 0f5a9a00e3ab1fe96142f304cfbcf3f63b15f326
+  Author: Jan Hubicka <jh@suse.cz>
+  Date:   Wed Jan 24 18:13:17 2024 +0100
+
+      Add -fmin-function-alignmnet
+
+      -falign-functions is ignored in cold code, since it is an
+      optimization intended to improve instruction prefetch.  In some
+      case it is necessary to force alignment for all functions, so
+      this patch adds -fmin-function-alignment for this purpose.
+
+gcc/ChangeLog:
+
+2024-01-25  Jan Hubicka <jh@suse.cz>
+	    Martin Jambor  <mjambor@suse.cz>
+
+	* common.opt (fmin-function-alignment): New parameter.
+        * doc/invoke.texi: (-fmin-function-alignment): Document.
+        (-falign-functions,-falign-loops,-falign-labels): Mention that
+	* varasm.c (assemble_start_function): Handle min-function-alignment.
+	* lto-streamer.h (LTO_minor_version): Bump.
+---
+ gcc/common.opt      |  4 ++++
+ gcc/doc/invoke.texi | 17 +++++++++++++++++
+ gcc/lto-streamer.h  |  2 +-
+ gcc/varasm.c        |  5 +++++
+ 4 files changed, 27 insertions(+), 1 deletion(-)
+
+diff --git a/gcc/common.opt b/gcc/common.opt
+index 437db8e8615..8eadae558f3 100644
+--- a/gcc/common.opt
++++ b/gcc/common.opt
+@@ -1824,6 +1824,10 @@ fmessage-length=
+ Common RejectNegative Joined UInteger
+ -fmessage-length=<number>	Limit diagnostics to <number> characters per line.  0 suppresses line-wrapping.
+ 
++fmin-function-alignment=
++Common Joined RejectNegative UInteger Var(flag_min_function_alignment) Optimization
++Align the start of every function.
++
+ fmodulo-sched
+ Common Report Var(flag_modulo_sched) Optimization
+ Perform SMS based modulo scheduling before the first scheduling pass.
+diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
+index 8f279e454b0..bed117fa542 100644
+--- a/gcc/doc/invoke.texi
++++ b/gcc/doc/invoke.texi
+@@ -355,6 +355,7 @@ Objective-C and Objective-C++ Dialects}.
+ @gccoptlist{-faggressive-loop-optimizations  -falign-functions[=@var{n}] @gol
+ -falign-jumps[=@var{n}] @gol
+ -falign-labels[=@var{n}]  -falign-loops[=@var{n}] @gol
++-fmin-function-alignment=[@var{n}] @gol
+ -fassociative-math  -fauto-profile  -fauto-profile[=@var{path}] @gol
+ -fauto-inc-dec  -fbranch-probabilities @gol
+ -fbranch-target-load-optimize  -fbranch-target-load-optimize2 @gol
+@@ -8688,6 +8689,9 @@ Align the start of functions to the next power-of-two greater than
+ @option{-falign-functions=32} aligns functions to the next 32-byte
+ boundary, but @option{-falign-functions=24} aligns to the next
+ 32-byte boundary only if this can be done by skipping 23 bytes or less.
++This is an optimization of code performance and alignment is ignored for
++functions considered cold.  If alignment is required for all functions,
++use @option{-fmin-function-alignment}.
+ 
+ @option{-fno-align-functions} and @option{-falign-functions=1} are
+ equivalent and mean that functions are not aligned.
+@@ -8733,6 +8737,8 @@ Align loops to a power-of-two boundary, skipping up to @var{n} bytes
+ like @option{-falign-functions}.  If the loops are
+ executed many times, this makes up for any execution of the dummy
+ operations.
++This is an optimization of code performance and alignment is ignored for
++loops considered cold.
+ 
+ @option{-fno-align-loops} and @option{-falign-loops=1} are
+ equivalent and mean that loops are not aligned.
+@@ -8749,6 +8755,8 @@ Align branch targets to a power-of-two boundary, for branch targets
+ where the targets can only be reached by jumping, skipping up to @var{n}
+ bytes like @option{-falign-functions}.  In this case, no dummy operations
+ need be executed.
++This is an optimization of code performance and alignment is ignored for
++jumps considered cold.
+ 
+ @option{-fno-align-jumps} and @option{-falign-jumps=1} are
+ equivalent and mean that loops are not aligned.
+@@ -8758,6 +8766,15 @@ The maximum allowed @var{n} option value is 65536.
+ 
+ Enabled at levels @option{-O2}, @option{-O3}.
+ 
++@item -fmin-function-alignment
++@itemx -fmin-function-alignment=@var{n}
++@opindex fmin-function-alignment
++Specify minimal alignment of functions to the next power-of-two greater than or
++equal to @var{n}. Unlike @option{-falign-functions} this alignment is applied
++also to all functions (even those considered cold).  The alignment is also not
++affected by @option{-flimit-function-alignment}
++
++
+ @item -funit-at-a-time
+ @opindex funit-at-a-time
+ This option is left for compatibility reasons. @option{-funit-at-a-time}
+diff --git a/gcc/lto-streamer.h b/gcc/lto-streamer.h
+index 689fbcf64ee..ef0aec79863 100644
+--- a/gcc/lto-streamer.h
++++ b/gcc/lto-streamer.h
+@@ -129,7 +129,7 @@ along with GCC; see the file COPYING3.  If not see
+      form followed by the data for the string.  */
+ 
+ #define LTO_major_version 6
+-#define LTO_minor_version 2
++#define LTO_minor_version 3
+ 
+ typedef unsigned char	lto_decl_flags_t;
+ 
+diff --git a/gcc/varasm.c b/gcc/varasm.c
+index 1b9030029ac..311b899ced7 100644
+--- a/gcc/varasm.c
++++ b/gcc/varasm.c
+@@ -1778,6 +1778,11 @@ assemble_start_function (tree decl, const char *fnname)
+ 
+   /* Tell assembler to move to target machine's alignment for functions.  */
+   align = floor_log2 (align / BITS_PER_UNIT);
++  /* Handle forced alignment.  This really ought to apply to all functions,
++     since it is used by patchable entries.  */
++  if (flag_min_function_alignment)
++    align = MAX (align, floor_log2 (flag_min_function_alignment));
++
+   if (align > 0)
+     {
+       ASM_OUTPUT_ALIGN (asm_out_file, align);
+-- 
+2.35.3
+
