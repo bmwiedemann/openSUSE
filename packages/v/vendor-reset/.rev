@@ -21,4 +21,14 @@ See more on the repo: https://github.com/gnif/vendor-reset</comment>
     <comment></comment>
     <requestid>925392</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>474fc4220f12360a33243873f2777d06</srcmd5>
+    <version>0.1.0+084881c</version>
+    <time>1715010770</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.1.0+084881c:
+  * Fix build on kernel 6.8+
+  * [amd] add support for AMD Instinct MI100</comment>
+    <requestid>1171919</requestid>
+  </revision>
 </revisionlist>

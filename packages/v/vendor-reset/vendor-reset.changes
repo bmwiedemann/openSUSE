@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 04 04:04:04 UTC 2024 - olaf@aepfle.de
+
+- Update to version 0.1.0+084881c:
+  * Fix build on kernel 6.8+
+  * [amd] add support for AMD Instinct MI100
+
+-------------------------------------------------------------------
 Fri Oct 15 08:30:01 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Build only on supported architectures: %{ix86} x86_64

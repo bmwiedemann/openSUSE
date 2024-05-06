@@ -1,7 +1,7 @@
 #
 # spec file for package vendor-reset
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           vendor-reset
-Version:        0.1.0+225a49a
+Version:        0.1.0+084881c
 Release:        0
 Summary:        Kernel module for resetting devices used by VFIO
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/gnif/vendor-reset
-Source:         %{name}-%{version}.tar.xz
+Source:         %name-%version.tar.xz
 ExclusiveArch:  %{ix86} x86_64
 
 %description
@@ -56,18 +56,17 @@ for flavor in %{flavors_to_build}; do
 done
 
 %install
-export INSTALL_MOD_PATH=%{buildroot}
+export INSTALL_MOD_PATH=%buildroot
 export INSTALL_MOD_DIR=updates
 for flavor in %{flavors_to_build}; do
     make -C %{kernel_source $flavor} %{?linux_make_arch} modules_install M=$PWD
 done
-install -dm755 %{buildroot}%{_prefix}/lib/modules-load.d
-echo "vendor-reset" >> %{buildroot}%{_prefix}/lib/modules-load.d/vendor-reset.conf
+install -dm755 %buildroot%_modulesloaddir
+echo "vendor-reset" >> %buildroot%_modulesloaddir/%name.conf
 
 %files kmp
 %license LICENSE
 %doc README.md
-%dir %{_prefix}/lib/modules-load.d
-%{_prefix}/lib/modules-load.d/vendor-reset.conf
+%_modulesloaddir
 
 %changelog
