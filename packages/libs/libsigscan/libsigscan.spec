@@ -20,30 +20,30 @@
 
 %define lname	libsigscan1
 Name:           libsigscan
-Version:        20240219
+Version:        20240505
 Release:        0
 Summary:        Library for binary signature scanning
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libsigscan
-Source:         https://github.com/libyal/libsigscan/releases/download/%version/libsigscan-experimental-%version.tar.gz
-Source2:        https://github.com/libyal/libsigscan/releases/download/%version/libsigscan-experimental-%version.tar.gz.asc
+Source:         https://github.com/libyal/libsigscan/releases/download/%version/%name-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libsigscan/releases/download/%version/%name-experimental-%version.tar.gz.asc
 Source9:        %name.keyring
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %python_module devel
+BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcdata) >= 20240103
-BuildRequires:  pkgconfig(libcerror) >= 20240101
-BuildRequires:  pkgconfig(libcfile) >= 20240106
-BuildRequires:  pkgconfig(libclocale) >= 20240107
-BuildRequires:  pkgconfig(libcnotify) >= 20240108
-BuildRequires:  pkgconfig(libcpath) >= 20240109
-BuildRequires:  pkgconfig(libcsplit) >= 20240110
-BuildRequires:  pkgconfig(libcthreads) >= 20240102
-BuildRequires:  pkgconfig(libuna) >= 20240130
+BuildRequires:  pkgconfig(libbfio) >= 20240414
+BuildRequires:  pkgconfig(libcdata) >= 20240414
+BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libcfile) >= 20240414
+BuildRequires:  pkgconfig(libclocale) >= 20240414
+BuildRequires:  pkgconfig(libcnotify) >= 20240414
+BuildRequires:  pkgconfig(libcpath) >= 20240414
+BuildRequires:  pkgconfig(libcsplit) >= 20240414
+BuildRequires:  pkgconfig(libcthreads) >= 20240413
+BuildRequires:  pkgconfig(libuna) >= 20240414
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 
@@ -52,17 +52,17 @@ libsigscan is a library for binary signature scanning
 
 libsigscan is part of the libyal family of libraries
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library for binary signature scanning
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 libsigscan is a library for binary signature scanning
 
 %package tools
 Summary:        Tools to scan for binary signatures
 Group:          Productivity/File utilities
-Requires:       %{lname} = %{version}
+Requires:       %lname = %version
 
 %description tools
 Tools to scan binary files for signatures.
@@ -98,28 +98,27 @@ grep ' '' ''local' config.log && exit 1
 mv "%_builddir/rt/"* "%buildroot/"
 find "%buildroot" -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/libsigscan.so.*
+%_libdir/libsigscan.so.*
 
 %files -n %name-tools
 %license COPYING*
-%{_bindir}/sigscan
-%{_mandir}/man1/sigscan.1%{?ext_man}
-%config %{_sysconfdir}/sigscan.conf
+%_bindir/sigscan
+%_mandir/man1/sigscan.1%{?ext_man}
+%config %_sysconfdir/sigscan.conf
 
 %files -n %name-devel
 %license COPYING*
-%{_includedir}/libsigscan.h
-%{_includedir}/libsigscan/
-%{_libdir}/libsigscan.so
-%{_libdir}/pkgconfig/libsigscan.pc
-%{_mandir}/man3/libsigscan.3%{?ext_man}
+%_includedir/libsigscan.h
+%_includedir/libsigscan/
+%_libdir/libsigscan.so
+%_libdir/pkgconfig/libsigscan.pc
+%_mandir/man3/libsigscan.3%{?ext_man}
 
 %files %python_files
-%{python_sitearch}/pysigscan.so
+%python_sitearch/pysigscan.so
 
 %changelog
