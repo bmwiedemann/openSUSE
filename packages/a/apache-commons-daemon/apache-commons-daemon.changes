@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  6 11:08:35 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Add apache-commons-daemon-gcc14-compat.patch for GCC 14
+  compatibility.
+- Correct offset in apache-commons-daemon-JAVA_OS.patch.
+
+-------------------------------------------------------------------
 Tue Feb 20 11:03:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

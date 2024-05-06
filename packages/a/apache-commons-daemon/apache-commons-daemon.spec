@@ -31,6 +31,7 @@ Source1:        https://archive.apache.org/dist/commons/daemon/source/%{short_na
 Source2:        apache-commons-daemon.keyring
 Source10:       apache-commons-daemon-build.xml
 Patch0:         apache-commons-daemon-JAVA_OS.patch
+Patch1:         apache-commons-daemon-gcc14-compat.patch
 BuildRequires:  ant
 BuildRequires:  autoconf
 BuildRequires:  fdupes
@@ -77,6 +78,7 @@ The Javadoc Documentation for Commons Daemon.
 %setup -q -n %{short_name}-%{version}-src
 cp %{SOURCE10} build.xml
 %patch -P 0 -p1
+%patch -P 1 -p1
 
 # remove java binaries from sources
 rm -rf src/samples/build/
