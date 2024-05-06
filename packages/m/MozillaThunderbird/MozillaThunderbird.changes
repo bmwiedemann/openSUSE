@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  4 20:06:54 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Thunderbird 115.10.2:
+  https://www.thunderbird.net/en-US/thunderbird/115.10.2/releasenotes/
+  This release is identical to 115.10.1, other than changing the
+  Update channel for self-updating builds to ESR. (bmo#1893271)
+
+-------------------------------------------------------------------
 Fri Apr 19 06:34:22 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 115.10.1
