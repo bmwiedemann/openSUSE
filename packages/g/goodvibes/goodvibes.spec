@@ -1,7 +1,7 @@
 #
 # spec file for package goodvibes
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           goodvibes
-Version:        0.7.9
+Version:        0.8.0
 Release:        0
 Summary:        A lightweight radio player
 License:        GPL-3.0-only
@@ -34,12 +34,12 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.24
 BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= 1.4.4
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(keybinder-3.0)
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.74
+BuildRequires:  pkgconfig(libsoup-3.0)
 Recommends:     gstreamer-plugins-bad
 Recommends:     gstreamer-plugins-base
 Recommends:     gstreamer-plugins-good

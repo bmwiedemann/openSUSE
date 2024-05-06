@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon May  6 07:35:49 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.8.0:
+ * Switch to libsoup 3.x, GStreamer 1.24 and playbin3.
+ * Updated translations: Croatian, Dutch, Finnish, German, Italian, Polish,
+   Portuguese, Portuguese (Brazil), Spanish, Turkish.
+ * Playlist download is now a proper state, reported in UI and cancellable.
+ * Cap playlist downloads to a maximum size, to handle cases where an audio
+   stream is named like a playlist (as Goodvibes' first guess is based on the
+   filename's extension). When too big, cancel download and throw the uri at
+   GStreamer so that it tries to play it.
+ * Check the Content-Type header while downloading playlists, and abort early
+   when it seems to be an audio stream. Once again, hand over the uri to
+   GStreamer so that it tries to play it.
+ * Catch SSL/TLS failures during playlist download, ask user what to do.
+ * Report a whole bunch of errors in the UI (playlist download and parsing,
+   playback errors).
+ * Show redirections in UI and in SSL/TLS failure dialog.
+
+-------------------------------------------------------------------
 Sat Nov 11 14:27:58 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 0.7.9:
