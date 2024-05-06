@@ -2104,4 +2104,12 @@
   * Fix a spurious warning when calling sigma_clipped_stats on a</comment>
     <requestid>1163558</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>e51fced79c907b6968063b5a3f0b22e3</srcmd5>
+    <version>6.1.0</version>
+    <time>1715010876</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1171973</requestid>
+  </revision>
 </revisionlist>

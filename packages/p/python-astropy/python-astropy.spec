@@ -49,7 +49,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-astropy%{psuffix}
-Version:        6.0.1
+Version:        6.1.0
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -59,11 +59,11 @@ Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
-# https://docs.astropy.org/en/v6.0/install.html#requirements
+# https://docs.astropy.org/en/v6.1/install.html#requirements
 BuildRequires:  %{python_module Cython >= 3 with %python-Cython < 3.1}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module extension-helpers >= 1.0}
-BuildRequires:  %{python_module numpy-devel >= 1.25 with %python-numpy-devel < 2}
+BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module setuptools}
@@ -73,16 +73,16 @@ BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 3.13
-Requires:       python-astropy-iers-data >= 0.2024.2.26.0.28.55
+Requires:       python-astropy-iers-data >= 0.2024.4.29.0.28.48
+Requires:       python-numpy >= 1.23
 Requires:       python-packaging >= 19.0
 Requires:       python-pyerfa >= 2.0.1.1
-Requires:       (python-numpy >= 1.22 with python-numpy < 2)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # %%{_bindir}/showtable namespace clash
 Conflicts:      perl-Data-ShowTable
 # [recommended]
-Recommends:     python-scipy >= 1.5
+Recommends:     python-scipy >= 1.8
 Recommends:     python-matplotlib >= 3.3
 Conflicts:      python-matplotlib = 3.4.0
 Conflicts:      python-matplotlib = 3.5.2
@@ -126,9 +126,9 @@ BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pyarrow >= 5}
 %endif
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module scipy >= 1.5}
+BuildRequires:  %{python_module scipy >= 1.8}
 BuildRequires:  %{python_module sortedcontainers}
-BuildRequires:  %{python_module typing_extensions >= 3.10.0.1}
+BuildRequires:  %{python_module typing_extensions >= 4.0.0}
 BuildRequires:  libxml2-tools
 # /SECTION
 # SECTION [test]
@@ -180,7 +180,7 @@ hypothesis.settings.register_profile(
     suppress_health_check=[hypothesis.HealthCheck.too_slow]
 )
 " >> astropy/conftest.py
-sed -i 's/--color=yes//' pyproject.toml
+sed -i '/"--color=yes",/d' pyproject.toml
 find astropy -name .gitignore -delete
 find astropy -name .empty -delete
 find astropy -name '*.c' -exec chmod -x {} ';'
