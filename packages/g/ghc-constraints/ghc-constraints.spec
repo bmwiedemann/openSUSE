@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-constraints
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.14
+Version:        0.14.1
 Release:        0
 Summary:        Constraint manipulation
 License:        BSD-2-Clause
@@ -42,8 +42,6 @@ BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
-BuildRequires:  ghc-type-equality-devel
-BuildRequires:  ghc-type-equality-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 29 13:47:12 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update constraints to version 0.14.1.
+  0.14.1 [2024.04.29]
+  -------------------
+  * Remove an unused dependency on the `type-equality` library.
+
+-------------------------------------------------------------------
 Wed Oct 11 10:55:39 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update constraints to version 0.14.
