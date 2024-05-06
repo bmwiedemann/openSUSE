@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May  4 07:57:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240503
+  * Support for data segments, IEEE754 values
+  * Some more funnction deprecations and replacements
+
+-------------------------------------------------------------------
 Sat Apr 27 23:00:58 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20240427
