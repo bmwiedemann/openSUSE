@@ -20,34 +20,34 @@
 
 %define lname   libvslvm1
 Name:           libvslvm
-Version:        20240301
+Version:        20240504
 Release:        0
 Summary:        Library to access the Linux Logical Volume Manager (LVM) volume system
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libvslvm/
-Source:         https://github.com/libyal/libvslvm/releases/download/%{version}/libvslvm-experimental-%{version}.tar.gz
-Source2:        https://github.com/libyal/libvslvm/releases/download/%{version}/libvslvm-experimental-%{version}.tar.gz.asc
+Source:         https://github.com/libyal/libvslvm/releases/download/%version/%name-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libvslvm/releases/download/%version/%name-experimental-%version.tar.gz.asc
 Source3:        %name.keyring
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %python_module devel
+BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse)
-BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcdata) >= 20240103
-BuildRequires:  pkgconfig(libcerror) >= 20240101
-BuildRequires:  pkgconfig(libcfile) >= 20240106
-BuildRequires:  pkgconfig(libclocale) >= 20240107
-BuildRequires:  pkgconfig(libcnotify) >= 20240108
-BuildRequires:  pkgconfig(libcpath) >= 20240108
-BuildRequires:  pkgconfig(libcsplit) >= 20240109
-BuildRequires:  pkgconfig(libcthreads) >= 20240102
-BuildRequires:  pkgconfig(libfcache) >= 20240112
-BuildRequires:  pkgconfig(libfdata) >= 20240114
-BuildRequires:  pkgconfig(libfvalue) >= 20240124
-BuildRequires:  pkgconfig(libuna) >= 20240130
+BuildRequires:  pkgconfig(libbfio) >= 20240414
+BuildRequires:  pkgconfig(libcdata) >= 20240414
+BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libcfile) >= 20240414
+BuildRequires:  pkgconfig(libclocale) >= 20240414
+BuildRequires:  pkgconfig(libcnotify) >= 20240414
+BuildRequires:  pkgconfig(libcpath) >= 20240414
+BuildRequires:  pkgconfig(libcsplit) >= 20240414
+BuildRequires:  pkgconfig(libcthreads) >= 20240413
+BuildRequires:  pkgconfig(libfcache) >= 20240414
+BuildRequires:  pkgconfig(libfdata) >= 20240414
+BuildRequires:  pkgconfig(libfvalue) >= 20240415
+BuildRequires:  pkgconfig(libuna) >= 20240414
 BuildRequires:  pkgconfig(zlib)
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
@@ -56,12 +56,12 @@ BuildRequires:  pkgconfig(zlib)
 libvslvm is a library to access the Linux Logical Volume Manager
 (LVM) volume system.
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library to access Linux Logical Volume Manager (LVM) volume containers
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 The libvslvm library is a library to access Linux Logical Volume
 Manager (LVM) volume containers
 
@@ -108,32 +108,31 @@ grep ' '' ''local' config.log && exit 1
 
 %install
 mv %_builddir/rt/* %buildroot/
-find %{buildroot} -type f -name "*.la" -delete -print
+find "%buildroot" -type f -name "*.la" -delete -print
 
 %check
 #    this fails for the python check.
 #    It is only checking if the python modules are present, so this is a false failure.
 # make check
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/libvslvm.so.*
+%_libdir/libvslvm.so.*
 
 %files -n %name-tools
 %license COPYING*
-%{_bindir}/vslvm*
-%{_mandir}/man1/vslvm*.1*
+%_bindir/vslvm*
+%_mandir/man1/vslvm*.1*
 
 %files -n %name-devel
 %license COPYING*
-%{_includedir}/libvslvm.h
-%{_includedir}/libvslvm/
-%{_libdir}/libvslvm.so
-%{_libdir}/pkgconfig/libvslvm.pc
-%{_mandir}/man3/libvslvm.3*
+%_includedir/libvslvm.h
+%_includedir/libvslvm/
+%_libdir/libvslvm.so
+%_libdir/pkgconfig/libvslvm.pc
+%_mandir/man3/libvslvm.3*
 
 %files %python_files
 %license COPYING*
