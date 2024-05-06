@@ -584,7 +584,7 @@ echo "junit4 hamcrest ant/ant-junit4" > %{buildroot}%{_sysconfdir}/ant.d/junit4
 %endif
 
 %if %{with junit5}
-echo "junit5 hamcrest/core junit opentest4j univocity-parsers ant/ant-junitlauncher" > %{buildroot}%{_sysconfdir}/ant.d/junitlauncher
+echo "junit5 hamcrest junit opentest4j univocity-parsers open-test-reporting/events ant/ant-junitlauncher" > %{buildroot}%{_sysconfdir}/ant.d/junitlauncher
 %endif
 
 %if %{with antlr}

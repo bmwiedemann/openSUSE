@@ -848,4 +848,22 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
     <comment>allow building against non-shaded hamcrest</comment>
     <requestid>1170465</requestid>
   </revision>
+  <revision rev="96" vrev="6">
+    <srcmd5>de4c0891dc6f114293a73eefb1476fdf</srcmd5>
+    <version>1.10.14</version>
+    <time>1715010742</time>
+    <user>anag+factory</user>
+    <comment>- Add forgotten open-test-reporting/events to
+  %{_sysconfdir}/ant.d/junitlauncher
+
+- Add forgotten open-test-reporting/events to
+  %{_sysconfdir}/ant.d/junitlauncher
+
+- Add forgotten open-test-reporting/events to
+  %{_sysconfdir}/ant.d/junitlauncher
+
+- Add forgotten open-test-reporting/events to
+  %{_sysconfdir}/ant.d/junitlauncher</comment>
+    <requestid>1171907</requestid>
+  </revision>
 </revisionlist>

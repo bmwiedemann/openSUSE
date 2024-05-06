@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May  4 00:55:23 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Add forgotten open-test-reporting/events to
+  %{_sysconfdir}/ant.d/junitlauncher
+
+-------------------------------------------------------------------
 Sat Apr 27 11:36:31 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Put hamcrest on the classpath of ant-junit module
