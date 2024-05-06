@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun May  5 14:24:00 UTC 2024 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.9.5:
+  * flush the wayland_fd correctly from animations
+  * specialized function for `none` transition type
+  * refactor: Remove unused mutable buffer
+  * fix initial black screen due to late configuration
+  * don't use event_fd to wake up the main thread
+  * remove sleep during cache loading
+  * collapse else if into single line
+  * README.md - explicit warning about gnome
+  * fix switching width and height
+  * use output name advertised by wl_registry as id
+  * process output transforms properly
+  * fix fractional scale rounding calculation
+  * fix wallpaper never setting configured to 'true'
+  * fix typo and update documentation
+  * Add --no-cache option to swww-daemon
+
+-------------------------------------------------------------------
 Tue Apr 23 01:02:52 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.9.4:
