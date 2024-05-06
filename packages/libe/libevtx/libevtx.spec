@@ -18,7 +18,7 @@
 
 %define lname	libevtx1
 Name:           libevtx
-Version:        20240427
+Version:        20240504
 Release:        0
 Summary:        Library and tools to access the Windows XML Event Log (EVTX) format
 License:        GFDL-1.3-only AND LGPL-3.0-or-later
