@@ -1,7 +1,7 @@
 #
 # spec file for package python-Shapely
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Shapely
-Version:        2.0.2
+Version:        2.0.4
 Release:        0
 Summary:        Geospatial geometries, predicates, and operations
 License:        BSD-3-Clause
@@ -26,7 +26,7 @@ URL:            https://github.com/shapely/shapely
 Source:         https://files.pythonhosted.org/packages/source/s/shapely/shapely-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 0.29 with %python-Cython < 3}
 BuildRequires:  %{python_module devel >= 3.8}
-BuildRequires:  %{python_module numpy-devel >= 1.16}
+BuildRequires:  %{python_module numpy-devel >= 1.25}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -45,7 +45,7 @@ BuildRequires:  python-rpm-macros
 # (libgeos_c1 is detected due to some Cython optimized lib, but libgeos3 is not)
 # use requires_eq in order to be detectable by the python_subpackages rewriter
 %requires_eq    %(rpm -q --requires geos-devel | grep libgeos)
-Requires:       python-numpy >= 1.16
+Requires:       (python-numpy >= 1.14 with python-numpy < 3)
 Provides:       python-shapely = %{version}-%{release}
 Obsoletes:      python-shapely < %{version}-%{release}
 %python_subpackages

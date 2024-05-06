@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun May  5 11:01:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.4
+  * Fix bug in ``to_wkt`` with multiple empty Z geometries (#2012).
+  * Fix bug in ``to_ragged_array`` for an array of Points with
+    missing values (#2034).
+  * Compatibility with numpy 2
+- Release 2.0.3
+  * Fix regression in the ``oriented_envelope`` ufunc to accept
+    array-like input in case of GEOS<3.12 (#1929).
+  * The binary wheels are not yet compatible with a future NumPy
+    2.0 release, therefore a ``numpy<2`` upper pin was added to the
+    requirements (#1972).
+  * Upgraded the GEOS version in the binary wheel distributions to
+    3.11.3.
+
+-------------------------------------------------------------------
 Sun Dec 17 16:47:49 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Enable sle15_python_module_pythons, but don't test with MPL
