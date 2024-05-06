@@ -7,4 +7,12 @@
     <comment>Update Haskell ecosystem to GHC version 9.8.2.</comment>
     <requestid>1157225</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>76cd5b3fe5a4a4037158cadd5cacd40d</srcmd5>
+    <version>0.3.1</version>
+    <time>1715010760</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1171788</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 cabal-version: >=1.10
 name: half
 version: 0.3.1
-x-revision: 1
+x-revision: 2
 license: BSD3
 license-file: LICENSE
 copyright: Copyright (C) 2014 Edward A. Kmett
@@ -81,6 +81,6 @@ test-suite spec
         binary,
         bytestring,
         half,
-        QuickCheck >=2.14.1 && <2.15,
+        QuickCheck >=2.14.1 && <2.16,
         test-framework,
         test-framework-quickcheck2
