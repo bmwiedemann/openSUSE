@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May  6 07:52:44 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.108.1
+  * DMD Compiler regression fixes
+    + Bugzilla 23657: [REG2.101] Incorrect error escape reference to stack allocated value
+    + Bugzilla 24436: a array be overwritten when other array be written
+    + Bugzilla 24479: [REG2.104] Error on getAttributes on getOverloads of templates
+    + Bugzilla 24505: [REG2.108] ImportC: Function-like macros (newly translated to templates) may collide with regular symbols
+    + Bugzilla 24519: compiler segfault on default argument with slice operator []
+  * DMD Compiler bug fixes
+    + Bugzilla 24495: ImportC: Struct initialization expression fails to initialize field
+    + Bugzilla 24509: importC cannot handle _stdcall Function Calling Convention with single heading underscore
+    + Bugzilla 24511: __stdcall functions from C are extern(C) in D.
+  * Phobos regression fixes
+    + Bugzilla 24481: retro no longer works with types that support assignment but not moving
+  * Druntime regression fixes
+    + Bugzilla 24498: Multidimensional array not scanned by GC
+
+-------------------------------------------------------------------
 Tue Apr  2 15:34:52 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.108.0
