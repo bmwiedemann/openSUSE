@@ -37,7 +37,7 @@ Source3:        %name.keyring
 
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  gettext-tools-mini
+BuildRequires:  gettext-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libtool
 BuildRequires:  pkg-config

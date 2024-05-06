@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 15 07:13:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire gettext-devel instead of gettext-tools-mini: let
+  OBS sort out if the -mini package is the right one to be used or
+  not.
+
+-------------------------------------------------------------------
 Thu Feb 15 13:02:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.3.2:

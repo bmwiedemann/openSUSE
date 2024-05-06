@@ -444,4 +444,12 @@ SPDX format (forwarded request 94532 from babelworx)</comment>
 - modernize spec-file (move license to licensedir) (forwarded request 1146843 from dimstar)</comment>
     <requestid>1146854</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>d7b933011e4dd83e30e436d86df906be</srcmd5>
+    <version>2.3.2</version>
+    <time>1715010739</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1171081</requestid>
+  </revision>
 </revisionlist>
