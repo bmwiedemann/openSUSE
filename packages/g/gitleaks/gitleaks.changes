@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May  5 15:19:43 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.18.2:
+  * Remove IAM identifiers for non-credential resources in the aws-access-token rule
+  * Update stripe rule to not alert on publishable keys
+  * --max-target-megabytes flag now supported for --no-git flag as well
+  * add pre-commit hook gitleaks-system
+  * fix errors when using protect and an external git diff tool
+  * rename filesystem to directory
+  * Enhance Secret Descriptions
+  * Small refactor `detect` and `sources`
+  * chore(config): refactor to go generate; simplify configRules init
+  * pretty apparent 'protect' and 'detect' should be merged into one command
+  * style: sort the stopwords
+
+-------------------------------------------------------------------
 Sat Nov 25 19:45:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.18.1:
