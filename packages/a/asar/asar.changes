@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  5 15:36:24 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 3.2.10
+  * Fix relative link error (gh#electron/asar#308)
+
+-------------------------------------------------------------------
 Wed Mar  6 20:58:00 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream version 3.2.9
