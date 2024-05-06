@@ -37,8 +37,7 @@ Requires:       perl(URI)
 LDAP equivalents of yp tools ypcat, ypmatch and chsh
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 %configure --docdir=%{_docdir}/%{name} \

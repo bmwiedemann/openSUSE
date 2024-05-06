@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 14:27:26 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Jul 27 08:42:14 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Extend patch ldap-yp-tools-1.13.dif

@@ -17,4 +17,13 @@
     port 636 otherwise the connection fails</comment>
     <requestid>1101023</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>46c8a1070459b8573b13ce54cb859966</srcmd5>
+    <version>1.13</version>
+    <time>1715010873</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN (forwarded request 1153379 from pgajdos)</comment>
+    <requestid>1172080</requestid>
+  </revision>
 </revisionlist>
