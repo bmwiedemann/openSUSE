@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  6 10:05:10 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Build with protobuf21 on Leap 15 if the version is greater than
+  15.3, protobuf25 has added to SLE15 since SP4 update (bsc#1222929)
+
+-------------------------------------------------------------------
 Mon Feb 05 12:25:41 UTC 2024 - wolfgang.frisch@suse.com
 
 - Update to version 3.4+git14.b740dcf:

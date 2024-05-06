@@ -109,4 +109,12 @@
   * Print help to stdout if -h | --help was used</comment>
     <requestid>1144260</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>27587a2c3898a1f280ef2be5c16e503e</srcmd5>
+    <version>3.4+git14.b740dcf</version>
+    <time>1715010916</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1172154</requestid>
+  </revision>
 </revisionlist>

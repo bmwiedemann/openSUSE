@@ -33,10 +33,11 @@ BuildRequires:  glibc-devel
 BuildRequires:  libnl3-devel
 BuildRequires:  make
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} < 1550
-BuildRequires:  protobuf-devel
-%else
+# Protobuf 25 has added to SLE15 in SP4 Update
+%if 0%{?suse_version} > 1500 || (0%{?suse_version} == 1500 && 0%{?sle_version} > 150300)
 BuildRequires:  protobuf21-devel
+%else
+BuildRequires:  protobuf-devel
 %endif
 ExclusiveArch:  x86_64
 
