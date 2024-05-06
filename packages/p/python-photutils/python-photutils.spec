@@ -16,14 +16,15 @@
 #
 
 
+%define shortversion 1.12
 Name:           python-photutils
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 Summary:        An Astropy package for photometry
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/astropy/photutils
-Source:         https://files.pythonhosted.org/packages/source/p/photutils/photutils-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/photutils/photutils-%{shortversion}.tar.gz
 BuildRequires:  %{python_module Cython >= 3 with %python-Cython < 3.1}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module extension-helpers >= 1 with %python-extension-helpers < 2}
@@ -62,7 +63,7 @@ Photutils is an affiliated package of Astropy to provide tools for detecting
 and performing photometry of astronomical sources.
 
 %prep
-%autosetup -p1 -n photutils-%{version}
+%autosetup -p1 -n photutils-%{shortversion}
 
 %build
 export CFLAGS="%{optflags}"

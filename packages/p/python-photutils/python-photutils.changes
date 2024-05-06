@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun May  5 10:03:57 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.12
+  ## General
+  * The minimum required Python is now 3.10. [#1719]
+  * The minimum required NumPy is now 1.23. [#1719]
+  * The minimum required SciPy is now 1.8. [#1719]
+  * The minimum required scikit-image is now 0.20. [#1719]
+  * The minimum required scikit-learn is now 1.1. [#1719]
+  * The minimum required pytest-astropy is now 0.11. [#1719]
+  * The minimum required sphinx-astropy is now 1.9. [#1719]
+  * NumPy 2.0 is supported.
+  ## Bug Fixes
+  ### photutils.background
+  * No longer warn about NaNs in the data if those NaNs are masked
+    in mask passed to Background2D. [#1712]
+  ## API Changes
+  ### photutils.utils
+  * The default value for the ImageDepth mask_pad keyword is now
+    set to 0. [#1714]
+
+-------------------------------------------------------------------
 Sun Feb 18 15:10:59 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.11.0
