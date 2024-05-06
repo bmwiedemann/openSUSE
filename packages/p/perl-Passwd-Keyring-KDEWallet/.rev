@@ -7,4 +7,13 @@
     <comment>required by upcoming release of kanku</comment>
     <requestid>851263</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cff3d5d1e03714e2adc8922d2510ded4</srcmd5>
+    <version>1.0001</version>
+    <time>1715010927</time>
+    <user>anag+factory</user>
+    <comment>- added patch for kwalletd6 (0001-FIX-kwalletd6.patch)
+</comment>
+    <requestid>1172168</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,13 @@
+diff --git a/lib/Passwd/Keyring/KDEWallet.pm b/lib/Passwd/Keyring/KDEWallet.pm
+index e959f6b..a293b1a 100644
+--- a/lib/Passwd/Keyring/KDEWallet.pm
++++ b/lib/Passwd/Keyring/KDEWallet.pm
+@@ -130,7 +130,7 @@ sub new {
+ 
+ sub _which_kwalletd {
+   my ($self) = @_;
+-  for my $kwalletd ('kwalletd','kwalletd5') {
++  for my $kwalletd ('kwalletd','kwalletd5', 'kwalletd6') {
+     my $which = which($kwalletd);
+     if ($which) {
+       $self->{service_name}  = "org.kde.$kwalletd";

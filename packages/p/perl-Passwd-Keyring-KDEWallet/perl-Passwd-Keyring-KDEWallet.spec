@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Passwd-Keyring-KDEWallet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
+%define cpan_name Passwd-Keyring-KDEWallet
 Name:           perl-Passwd-Keyring-KDEWallet
 Version:        1.0001
 Release:        0
-%define cpan_name Passwd-Keyring-KDEWallet
-Summary:        Password storage implementation based on KDE Wallet
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Password storage implementation based on KDE Wallet
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/ME/MEKK/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Patch0:         0001-FIX-kwalletd6.patch
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(File::ShareDir) >= 1.00
@@ -51,21 +50,20 @@ BuildRequires:  perl(File::Which)
 Password storage implementation based on KDE Wallet.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p1
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes example README README.md
 
 %changelog

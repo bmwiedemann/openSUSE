@@ -7,8 +7,14 @@
 #sources:
 #  - source1
 #  - source2
-#patches:
-#  foo.patch: -p1
+patches:
+  # UPSTREAM SEEMS TO BE INACTIVE
+  # All links to (source/issues/homepage) on
+  # https://metacpan.org/dist/Passwd-Keyring-KDEWallet
+  # end up at
+  # https://helixteamhub.cloud/login
+  #
+  0001-FIX-kwalletd6.patch: -p1
 #  bar.patch:
 preamble: |-
   BuildRequires:  perl(File::Which)
