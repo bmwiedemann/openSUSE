@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May  3 14:38:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.7.3:
+  + Fix possible crashes handling live changes to extractor
+    configuration.
+  + Make it easier to run tracker-extract-3 under Valgrind.
+  + Plug a leak on misdetected JPEG files.
+  + Many further metadata extraction tests.
+
+-------------------------------------------------------------------
 Thu Apr 25 14:48:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.7.2:

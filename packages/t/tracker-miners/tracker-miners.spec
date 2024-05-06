@@ -19,7 +19,7 @@
 %define tracker_basever 3.7
 
 Name:           tracker-miners
-Version:        3.7.2
+Version:        3.7.3
 Release:        0
 Summary:        Various miners for Tracker
 License:        GPL-2.0-or-later
