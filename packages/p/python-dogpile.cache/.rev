@@ -446,4 +446,21 @@
     RedisBackend.socket_keepalive_options.</comment>
     <requestid>1158983</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e3b0b617832cb8f1f97463701157bb0f</srcmd5>
+    <version>1.3.3</version>
+    <time>1715010891</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.3:
+  * Added support for an additional pymemcached client parameter
+    PyMemcacheBackend.memcached_expire_time
+  * Fixed the return type for CacheRegion.get(), which was
+    inadvertently hardcoded to use CacheReturnType that only
+    resolved to CachedValue or NoValue. Fixed to return
+    ValuePayload which resolves to Any, as well as a new literal
+    indicating an enum constant for :data:.api.NO_VALUE. The
+    :data:.api.NO_VALUE constant remains available as the single
+    element of this enum.</comment>
+    <requestid>1172118</requestid>
+  </revision>
 </revisionlist>
