@@ -18,14 +18,14 @@
 
 Name:           libodraw
 %define lname	libodraw1
-Version:        20240306
+Version:        20240505
 Release:        0
 Summary:        Library and tools to access to optical disc (split) RAW image files
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libodraw
-Source:         https://github.com/libyal/libodraw/releases/download/%version/libodraw-alpha-%version.tar.gz
-Source2:        https://github.com/libyal/libodraw/releases/download/%version/libodraw-alpha-%version.tar.gz.asc
+Source:         https://github.com/libyal/libodraw/releases/download/%version/%name-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libodraw/releases/download/%version/%name-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 Source9:        CUE_sheet_format.pdf
 BuildRequires:  bison
@@ -34,17 +34,18 @@ BuildRequires:  flex
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcdata) >= 20240103
-BuildRequires:  pkgconfig(libcerror) >= 20240101
-BuildRequires:  pkgconfig(libcfile) >= 20240106
-BuildRequires:  pkgconfig(libclocale) >= 20240107
-BuildRequires:  pkgconfig(libcnotify) >= 20240108
-BuildRequires:  pkgconfig(libcpath) >= 20240109
-BuildRequires:  pkgconfig(libcsplit) >= 20240110
-BuildRequires:  pkgconfig(libcthreads) >= 20240102
-BuildRequires:  pkgconfig(libhmac) >= 20240129
-BuildRequires:  pkgconfig(libuna) >= 20240130
+BuildRequires:  pkgconfig(libbfio) >= 20240414
+BuildRequires:  pkgconfig(libcdata) >= 20240414
+BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libcfile) >= 20240414
+BuildRequires:  pkgconfig(libclocale) >= 20240414
+BuildRequires:  pkgconfig(libcnotify) >= 20240414
+BuildRequires:  pkgconfig(libcpath) >= 2024014
+BuildRequires:  pkgconfig(libcsplit) >= 20240414
+BuildRequires:  pkgconfig(libcthreads) >= 20240413
+BuildRequires:  pkgconfig(libhmac) >= 20240414
+BuildRequires:  pkgconfig(libuna) >= 20240414
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 libodraw is a library to access optical disc (split) RAW images such
@@ -89,7 +90,6 @@ cp %_sourcedir/*.pdf .
 
 %build
 if [ ! -e configure ]; then ./autogen.sh; fi
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type \
 	LDFLAGS="-Wl,--version-script=$PWD/v.sym"
