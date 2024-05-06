@@ -350,4 +350,83 @@
     <comment></comment>
     <requestid>1151941</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f0f17515e7bd97cf033e86864ad347ad</srcmd5>
+    <version>110.99.5</version>
+    <time>1715010851</time>
+    <user>anag+factory</user>
+    <comment>- update to 110.95.5:
+  * Changed Unsafe.Real64.toBits to Unsafe.Real64.castToWord and
+    Unsafe.Real64.fromBits to Unsafe.Real64.castFromWord. These
+    new names match MLton’s names for these operations.
+  * Reimplement the PackReal64Big and PackReal64Big structures to 
+    use the bit-casts between 64-bit reals and 64-bit words. This 
+    change fixes Issue #300 (PackReal64{Big,Little}.update is not implemented).
+  * Added ALIGN_STACK_16 preprocessor flag to x86 assembly code (
+    mach-dep/X86.prim.asm) in runtime system. This flag controls 
+    whether the SML stack frame is a multiple of 16 bytes (which 
+    allows foreign function calls to ensure 16-byte stack alignment).
+  * Expose the machine property functions as Unsafe.isBigEndian and 
+    Unsafe.wordSize. These functions are inlined by the compiler, 
+    which allows one to expect tests of the form if Unsafe.
+    isBigEndian() to be evaluated at compile time. These primops are 
+    also available to user code via the Unsafe structure.
+  * Improved the Unsafe.Real64.fromBits implementation to use a 
+    cast and a reference (instead of pack/unpack from a byte array).
+  * We now use Word_t to represent lengths in the various 
+    allocation routines in gc/ml-objects.c. This change fixes
+    Issue #283 (TextIO.inputAll segfaults when reading 980M file).
+  * Added implementation of Real64.nextAfter.
+  * Rewrote the Real64.split function to use the bit-
+    representation of reals in its implementation. This new 
+    version fixes Issue #269 (Real.realMod and Real.split produce 
+    incorrect result for values close to zero).
+  * Did a complete rewrite of the mechanisms used to implement 
+    conversions between strings and reals. As part of this rewrite, 
+    I implemented the support for the StringCvt.EXACT formatting 
+    mode and implemented the missing Real.toDecimal/fromDecimal 
+    functions. These changes also fix Issue #194 (Incorrect 
+    formatting of real number).  The new implementation is based on 
+    the Ryũ library and related PLDI 2018 paper by Ulf Adams.
+  * Fixed Issue #298 (Incorrect printing of source code in error message).
+  * Added Unsafe.Real64 structure to hold conversions between 
+    Real64.real and Word64.word values. The fromBits function can be 
+    further improved, but it needs the new host_big_endian primop to 
+    select the best code path based on endianess.
+  * Refactoring the Basis implementation directory structure to 
+    move code related to real numbers into its own directory. 
+    Modules that support sequences of reals are not included in this 
+    refactoring. This is the first step to a reimplementation of the 
+    support for printing reals.
+  * Added host_word_size and host_big_endian primops. These will 
+    expand into constant functions (e.g., fn () ⇒ 64 for 
+    host_word_size on a 64-bit system) that will be visible to the optimizer.
+  * The implementations of PackWord64Little.update and PackWord64Big
+    .update were swapped on 64-bit platforms (resulting in byte-
+    order reversal). These have been fixed. Note that the 32-bit versions are correct.
+  * Modified the implementation of OS.Path to allow for systems (
+    like Windows) that support more than one valid arc separator 
+    character. This change addresses Issue #280 (Support forward-
+    slash (&quot;/&quot;) as a separator in the Windows implementation of OS.Path).
+  * Modified the CPS contraction phase to address Issue #292 (
+    Word8.toLargeInt is broken in 32-bit version). The change is to 
+    disable fusing of conversions to IntInf.int that use 64-bit 
+    numbers as the intermediate type on 32-bit platforms.
+  * There was an inconsistency in the way that datatypes were 
+    printed in the REPL depending on if they were a top-level 
+    definition or defined in a structure. It was also the case that 
+    the printing of top-level declarations (TopLevel/print/ppdec.sml)
+    was using relative indentation, while the printing of 
+    declarations in modules (ElabData/modules/ppmod.sml) was 
+    using absolute indentation. I changed the code in TopLevel/
+    print/ppdec.sml to use absolute indentation.
+  * Fix bug in new-literals.sml, where the integer value 231 was 
+    being stored as a 32-bit signed integer in the literal table, 
+    instead of as a 64-bit signed integer. This change fixes Issue
+    #287 (The word literal 0wx80000000 is incorrectly converted to 0wx7FFFFFFF80000000).
+  * Add contraction rule for when two calls to SETHDLR appear in 
+    sequence. This situation arises when the body of a handler is optimized away.
+</comment>
+    <requestid>1172026</requestid>
+  </revision>
 </revisionlist>
