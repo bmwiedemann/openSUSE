@@ -18,7 +18,7 @@
 #
 
 Name:       bitwarden
-Version:    2024.3.2
+Version:    2024.4.3
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
