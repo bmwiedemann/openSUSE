@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Apr 30 08:41:56 UTC 2024 - Detlef Steuer <detlef.steuer@gmx.de>
+- VERSION 4.3 Patch 7 - 2024-04-29
+
+* IMPROVEMENT: build.tk: Add a note if build.tk obtains default settings
+  from an existing Remind installation.
+
+* IMPROVEMENT: configure: Pass all args to AC_INIT including the Remind
+  home page.  Remove some unused autoconf cruft.
+
+* IMPROVEMENT: Use standard C library versions of strdup, strcasemp and
+  strncasecmp where available, rather than using our own versions.
+
+* MINOR FEATURE: remind: Make $Tt a synonym for trigtime().
+
+* BUG FIX: remind: Make sure shellescape() doesn't mangle UTF-8 characters
+  with high-bits set.
+
+* BUG FIX: remind: Don't rely on undefined behavior of "%" operator in
+  the ord() built-in function.
+
+* BUG FIX: remind: Do not clear out trigtime() unnecessarily.  Before,
+  you could not write things like the following; now you can:
+
+      REM Tue AT 11:30 DURATION 0:30 MSG Thing 1
+      REM Tue AT [trigtime()+trigduration()] DURATION 1:00 MSG Thing 2
+      REM Tue AT [trigtime()+trigduration()] DURATION 0:45 MSG Thing 3
+
+  for successive reminders that should be moved as a block if the time of
+  the first one changes.
+
+* BUG FIX: Don't update trigdate() or trigtime() while parsing a REM
+  statement... only when actually computing the trigger.
+
+-------------------------------------------------------------------
 Wed Apr 10 12:10:06 UTC 2024 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 4.3 Patch 6 - 2024-04-02
