@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  7 07:07:07 UTC 2024 - ohering@suse.de
+
+- Update to version 2.53.5
+  * Various minor bugfixes.
+  * Recovery from errors during repeat mode (enabled in 2.53.1)
+    is disabled for time being.
+
+-------------------------------------------------------------------
 Tue Feb 20 20:20:20 UTC 2024 - ohering@suse.de
 
 - Update to version 2.53.4

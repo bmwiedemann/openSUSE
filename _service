@@ -53,7 +53,7 @@
     <param name="exclude">unison-gui.opam</param>
     <param name="exclude">unison.opam</param>
     <param name="filename">unison</param>
-    <param name="revision">f6e8bea5d9e5a5282904fdf644ed4d7ee9b9b2ad</param>
+    <param name="revision">060f54b0ec95e26df8725d699ef7b4cab23e0d68</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/bcpierce00/unison.git</param>
