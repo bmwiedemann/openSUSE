@@ -30,6 +30,9 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
+Patch0:         0001-lua-json-fix-error-ouput.patch
+Patch1:         0002-lua-json-add-method-to-merge-json-containers.patch
+Patch2:         0003-json-utils-fix-overriding-of-non-container-values-when.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz
@@ -250,12 +253,14 @@ fi
 %{_datadir}/wireplumber/wireplumber.conf
 %dir %{_datadir}/wireplumber/wireplumber.conf.d
 %exclude %{_datadir}/wireplumber/wireplumber.conf.d/00-device-monitors.conf
+%exclude %{_datadir}/wireplumber/wireplumber.conf.d/01-require-audio-in-main-profile.conf
 %{_datadir}/wireplumber/wireplumber.conf.d/alsa-vm.conf
 
 %files lang -f %{name}.lang
 
 %files audio
 %{_datadir}/wireplumber/wireplumber.conf.d/00-device-monitors.conf
+%{_datadir}/wireplumber/wireplumber.conf.d/01-require-audio-in-main-profile.conf
 
 %files devel
 %{_includedir}/wireplumber-%{apiver}

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon May  6 16:23:47 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Better fix for (bsc#1223916) that basically turns the main
+  profile into the (to be in 0.5.3) video-only profile unless
+  wireplumber-audio is installed which now turns the main profile
+  into exactly upstream's main profile.
+
+-------------------------------------------------------------------
+Mon May  6 07:41:23 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix a json log issue:
+  * 0001-lua-json-fix-error-ouput.patch
+- Add patch from upstream to add a method to merge json containers:
+  * 0002-lua-json-add-method-to-merge-json-containers.patch
+- Add patch from upstream to fix merging a particular case
+  of configuration options:
+  * 0003-json-utils-fix-overriding-of-non-container-values-when.patch
+- Fix wireplumber not starting successfully when audio support is
+  not enabled since the main profile now requires it. The best
+  option would be to use a video-only profile but it's too late
+  to change the way wireplumber is started in SLE/Leap, so the
+  solution just makes audio/bluetooth optional for now
+  (bsc#1223916)
+  * split-config-file.py
+
+-------------------------------------------------------------------
 Tue Apr 23 06:48:06 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.5.2:
