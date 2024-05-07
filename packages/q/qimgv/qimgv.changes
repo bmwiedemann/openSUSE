@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 30 13:49:11 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20240430.b515dcd5:
+  * m4v video format #494
+  * [mpvwidget] set vo=libmpv #541
+  * upd windows qt 6.7 key scancodes #539
+  * Added French translation
+
+-------------------------------------------------------------------
 Sat Jan 13 17:22:02 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 1.0.3a+git20240113.70dc0ef:
