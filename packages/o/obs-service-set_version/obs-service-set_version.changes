@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 06 14:28:11 UTC 2024 - dmueller@suse.com
+
+- Update to version 0.6.3:
+  * [dist] import spec file from O:S:U
+  * Mute warning about missing EMAIL env variable in unit tests
+  * Fix unit tests
+  * Replace invalid use of os.errno with errno module
+  * Replace @VERSION@ placeholders in .dsc files
+  * Remove usage of deprecated imp module with importlib
+  * Detect revision and set pkgrel for Arch packages
+
+-------------------------------------------------------------------
 Wed Jan 17 14:44:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add support for AL2023

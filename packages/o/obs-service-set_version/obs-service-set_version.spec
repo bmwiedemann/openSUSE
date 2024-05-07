@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package obs-service-set_version
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -24,7 +24,7 @@
 %define service set_version
 
 Name:           obs-service-%{service}
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        An OBS source service: Update spec file version
 License:        GPL-2.0-or-later

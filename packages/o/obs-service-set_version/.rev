@@ -386,4 +386,19 @@
     <comment></comment>
     <requestid>1139483</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>227e8a0abc0751f9e020d6156f59db3a</srcmd5>
+    <version>0.6.3</version>
+    <time>1715097737</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.3:
+  * [dist] import spec file from O:S:U
+  * Mute warning about missing EMAIL env variable in unit tests
+  * Fix unit tests
+  * Replace invalid use of os.errno with errno module
+  * Replace @VERSION@ placeholders in .dsc files
+  * Remove usage of deprecated imp module with importlib
+  * Detect revision and set pkgrel for Arch packages</comment>
+    <requestid>1172198</requestid>
+  </revision>
 </revisionlist>
