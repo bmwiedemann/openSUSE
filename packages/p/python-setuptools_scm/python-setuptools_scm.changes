@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  3 17:19:17 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix tests with git 2.45.0 (boo#1223839)
+  adding setuptools-scm-issue1038-git-2-45-0.patch
+
+-------------------------------------------------------------------
 Fri Jan  5 15:56:43 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add setuptools-scm-issue953-nowarn.patch

@@ -1,7 +1,8 @@
 #
-# spec file
+# spec file for package python-setuptools_scm
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,17 +25,18 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %{?sle15_python_module_pythons}
 Name:           python-setuptools_scm%{psuffix}
 Version:        8.0.4
 Release:        0
 Summary:        Python setuptools handler for SCM tags
 License:        MIT
-URL:            https://github.com/pypa/setuptools_scm
+URL:            https://github.com/pypa/setuptools_scm/
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools-scm/setuptools-scm-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE setuptools-scm-issue953-nowarn.patch gh#pypa/setuptools_scm#953 -- don't warn if setuptools_scm is present but not directly used
 Patch0:         setuptools-scm-issue953-nowarn.patch
+# PATCH-FIX-UPSTREAM setuptools-scm-issue1038-git-2-45-0.patch gp#pypa/setuptools_scm#1038 -- fix build with git 2.45.0
+Patch1:         setuptools-scm-issue1038-git-2-45-0.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61}
@@ -45,10 +47,10 @@ BuildRequires:  python-rpm-macros
 Requires:       python-packaging >= 20.0
 Requires:       python-setuptools
 Requires:       python-typing-extensions
+BuildArch:      noarch
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 1
 %endif
-BuildArch:      noarch
 %if %{with test}
 # Testing requirements
 BuildRequires:  %{python_module build}
