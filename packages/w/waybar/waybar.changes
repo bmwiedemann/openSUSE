@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May  7 02:56:52 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.10.3
+  * fix(battery): Fix {health} format replacement
+  * Cursor change to indicate module clickability
+  * upower: fix segfault by initializing lastWarningLevel
+  * Fix Hyprland socketpath changed to XDG_RUNTIME_DIR
+  * pipewire: unbreak build on FreeBSD
+  * fix: set cursor appropriately on user event hover
+  * fix: custom module mediaplayer doesn't respect argument
+  * feat: style tray icon on hover
+  * fix: tooltip-format on custom modules not working in some cases
+  * feat: hover for whole group
+  * Remove listener when the window is destroyed
+
+-------------------------------------------------------------------
 Tue Apr 23 16:35:16 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Enabled tests
