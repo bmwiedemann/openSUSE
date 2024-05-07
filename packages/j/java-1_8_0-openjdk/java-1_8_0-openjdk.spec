@@ -180,6 +180,8 @@ Patch2:         1015432.patch
 Patch3:         java-atk-wrapper-security.patch
 # Fix use of unintialized memory in adlc parser
 Patch12:        adlc-parser.patch
+# Fix different integer/pointer type mismatches that are fatal with gcc14
+Patch13:        fix-build-with-gcc14.patch
 # Avoid triggering inactivity timeout while generating javadoc in zero VM
 Patch14:        zero-javadoc-verbose.patch
 # Fix detection of jobserver support
@@ -513,6 +515,7 @@ patch -p0 -i %{PATCH1}
 patch -p0 -i %{PATCH2}
 patch -p0 -i %{PATCH3}
 patch -p0 -i %{PATCH12}
+patch -p0 -i %{PATCH13}
 
 %if %{with zero}
 patch -p0 -i %{PATCH14}
