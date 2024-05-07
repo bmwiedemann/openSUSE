@@ -112,4 +112,12 @@
     <comment>python 311 (forwarded request 1140803 from DocB)</comment>
     <requestid>1140822</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9579c9132e02c198dfd86a887cc04b7b</srcmd5>
+    <version>6.0.7</version>
+    <time>1715097807</time>
+    <user>dimstar_suse</user>
+    <comment>security update Tryton issue #13142</comment>
+    <requestid>1172367</requestid>
+  </revision>
 </revisionlist>
