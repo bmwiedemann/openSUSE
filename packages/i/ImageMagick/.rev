@@ -3885,4 +3885,14 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
 `</comment>
     <requestid>1169825</requestid>
   </revision>
+  <revision rev="296" vrev="1">
+    <srcmd5>b6de41e6dc47a66f41176a8a2fb38d54</srcmd5>
+    <version>7.1.1.32</version>
+    <time>1715097748</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.1.1.32
+  * Fix GIF ICC profile reading #7282
+  * uhdr.c: add support for rgb inputs #7273 (forwarded request 1172019 from adkorte)</comment>
+    <requestid>1172155</requestid>
+  </revision>
 </revisionlist>

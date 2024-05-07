@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  5 19:33:38 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- version update to 7.1.1.32
+  * Fix GIF ICC profile reading #7282
+  * uhdr.c: add support for rgb inputs #7273
+
+-------------------------------------------------------------------
 Mon Apr 22 08:01:53 UTC 2024 - pgajdos@suse.com
 
 - version update to 7.1.1.31
