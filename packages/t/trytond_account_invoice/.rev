@@ -267,4 +267,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1145844</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>79fe9c2f3bc45157b5f890582aa8c7a7</srcmd5>
+    <version>6.0.17</version>
+    <time>1715097805</time>
+    <user>dimstar_suse</user>
+    <comment>security update Tryton issue #13142</comment>
+    <requestid>1172365</requestid>
+  </revision>
 </revisionlist>
