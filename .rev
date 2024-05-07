@@ -172,4 +172,12 @@ Thanks for the SR</comment>
   * prevent start-on-demand dbus service from working</comment>
     <requestid>1128782</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>3025004c45b9d0a2c426ac032a86b236</srcmd5>
+    <version>6.0.0</version>
+    <time>1715097855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1172349</requestid>
+  </revision>
 </revisionlist>

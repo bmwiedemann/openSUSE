@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  2 08:44:35 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Use BuildRequires readline-devel for Leap15
+  * SLE15's readline-devel doesn't have pkgconfig file, readline-devel
+    should be used at the buildtime
+
+-------------------------------------------------------------------
 Sat Nov 25 19:13:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.0:

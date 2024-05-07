@@ -1,7 +1,7 @@
 #
 # spec file for package cjs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,11 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(mozjs-102)
+%if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(readline)
+%else
+BuildRequires:  readline-devel
+%endif
 BuildRequires:  pkgconfig(sysprof-capture-4)
 
 %description
