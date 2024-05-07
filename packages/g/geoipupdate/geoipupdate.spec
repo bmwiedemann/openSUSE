@@ -17,7 +17,7 @@
 
 
 Name:           geoipupdate
-Version:        6.1.0
+Version:        7.0.1
 Release:        0
 Summary:        GeoIP update client code
 License:        Apache-2.0 OR MIT

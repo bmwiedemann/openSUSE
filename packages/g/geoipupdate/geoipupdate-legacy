@@ -16,7 +16,7 @@ function download_geodata_csv()
 {
   csv_product=$1
   echo ">>> Downloading $csv_product.zip"
-  curl "https://download.maxmind.com/app/geoip_download?edition_id=$csv_product&license_key=$license_key&suffix=zip" \
+  curl -L "https://download.maxmind.com/app/geoip_download?edition_id=$csv_product&license_key=$license_key&suffix=zip" \
        -o $database_directory/$csv_product.zip
 }
 

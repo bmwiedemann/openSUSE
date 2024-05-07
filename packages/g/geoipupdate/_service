@@ -2,7 +2,7 @@
     <service name="tar_scm" mode="disabled">
         <param name="scm">git</param>
         <param name="url">https://github.com/maxmind/geoipupdate</param>
-        <param name="revision">v6.1.0</param>
+        <param name="revision">v7.0.1</param>
         <param name="exclude">.git</param>
         <param name="versionformat">@PARENT_TAG@</param>
         <param name="changesgenerate">enable</param>

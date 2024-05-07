@@ -244,4 +244,12 @@ variables: GEOIPUPDATE_CONF_FILE and GEOIPUPDATE_DB_DIR
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1153536</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7e7226e1df24e7150cbb2d0561d01731</srcmd5>
+    <version>7.0.1</version>
+    <time>1715097843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1172305</requestid>
+  </revision>
 </revisionlist>
