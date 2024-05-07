@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 07 06:23:39 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 3.75.1:
+  * Add webhook source protos (#2789)
+  * fix(deps): update module golang.org/x/net to v0.25.0 (#2792)
+  * Use custom fp logic for private keys (#2793)
+  * fix(deps): update module google.golang.org/protobuf to v1.34.1 (#2790)
+
+-------------------------------------------------------------------
 Mon May 06 11:59:37 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 3.75.0:
