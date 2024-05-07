@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  3 02:29:07 UTC 2024 - Federico Mena Quintero <federico@suse.com>
+
+- Update to version 0.43.4
+  + Fix incorrect compositing on big-endian architectures.
+  + Allow building on clang/arm32.
+
+-------------------------------------------------------------------
 Tue Apr  9 07:42:07 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - a64-neon is an aarch64 feature, not armv6/7
