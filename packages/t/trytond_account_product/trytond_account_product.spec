@@ -30,15 +30,15 @@
 %define majorver 6.0
 
 Name:           trytond_account_product
-Version:        %{majorver}.3
+Version:        %{majorver}.4
 Release:        0
 Summary:        The "account_product" module of the Tryton ERP system
 License:        GPL-3.0-only
 Group:          Productivity/Office/Management
 URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
-Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
-Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
+## Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
+## Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 # List of additional build dependencies
 BuildRequires:  %{mypython}-devel
 BuildRequires:  %{mypython}-pip
