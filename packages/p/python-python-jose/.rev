@@ -71,4 +71,12 @@
 </comment>
     <requestid>1172135</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>85e858e8295344b6b6683e693d5b91e0</srcmd5>
+    <version>3.3.0</version>
+    <time>1715097890</time>
+    <user>dimstar_suse</user>
+    <comment>- Make python-pycryptodome dependency only required for Factory.</comment>
+    <requestid>1172403</requestid>
+  </revision>
 </revisionlist>

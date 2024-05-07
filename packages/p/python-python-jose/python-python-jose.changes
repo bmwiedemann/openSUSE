@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  7 09:58:08 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Make python-pycryptodome dependency only required for Factory.
+
+-------------------------------------------------------------------
 Mon May  6 07:11:18 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add upstream patches:

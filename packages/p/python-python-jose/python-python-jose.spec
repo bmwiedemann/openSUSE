@@ -61,7 +61,11 @@ Requires:       python-pyasn1
 Requires:       python-rsa
 BuildArch:      noarch
 %if %{with test}
+# pycryptodome is needed just for one test added in CVE-2024-33663.
+# This package is not in Leap, so do not require for other versions.
+%if 0%{?suse_version} > 1600
 BuildRequires:  %{python_module pycryptodome}
+%endif
 BuildRequires:  %{python_module pytest}
 %if %{with testcryptography}
 BuildRequires:  %{python_module python-jose-cryptography = %{version}}
