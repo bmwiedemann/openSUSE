@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May  6 13:23:15 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 1.6.0
+  * Added buttons for accessing global details in various parts of
+    the app
+  * Added waiting+busy charts in the process viewer
+  * Added panning the Graph view using the secondary mouse button
+  * Made process viewer show updated data strictly every 0.5s,
+    instead of on every update like mouse movement
+  * Improved Global Tracker's filtering performance
+  * Enabled egui's parallel tessellation for better profiler
+    performance
+  * Several improvements from updating egui such as selectable text
+    and smooth scrolling
+
+-------------------------------------------------------------------
 Sat Jan 04 13:23:42 UTC 2024 - pallas wept <pallaswept@proton.me>
 
 - Update to version 1.5.1
