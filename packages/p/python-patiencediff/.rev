@@ -104,4 +104,19 @@
   * fix license declaration</comment>
     <requestid>1132684</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d5ef43f4ef685d2b2578245ca6520337</srcmd5>
+    <version>0.2.15</version>
+    <time>1715097908</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.15:
+  * Update README.rst
+  * Add dependabot config
+  * Bump actions/setup-python from 2 to 5
+  * Bump docker/setup-qemu-action from 1 to 3
+  * Bump actions/checkout from 2 to 4
+  * Publish wheels from github
+  * Drop python 3.7 support</comment>
+    <requestid>1172448</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-patiencediff
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-patiencediff
-Version:        0.2.14
+Version:        0.2.15
 Release:        0
 Summary:        Python implementation of the patiencediff algorithm
 License:        GPL-2.0-or-later
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 %python_subpackages
 
 %description

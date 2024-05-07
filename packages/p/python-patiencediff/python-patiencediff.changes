@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  7 13:17:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.15:
+  * Update README.rst
+  * Add dependabot config
+  * Bump actions/setup-python from 2 to 5
+  * Bump docker/setup-qemu-action from 1 to 3
+  * Bump actions/checkout from 2 to 4
+  * Publish wheels from github
+  * Drop python 3.7 support
+
+-------------------------------------------------------------------
 Tue Dec 12 13:40:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.14:
