@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May  1 16:47:14 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.45.0:
+  * Improved efficiency managing repositories with many references
+    ("git init --ref-format=reftable")
+  * "git checkout -p" and friends learned that that "@" is a
+    synonym for "HEAD"
+  * cli improvements handling refs
+  * Expanded a number of commands and options, UI improvements
+  * status.showUntrackedFiles now accepts "true"
+  * git-cherry-pick(1) now automatically drops redundant commits
+    with new --empty option
+  * The userdiff patterns for C# has been updated.
+
+-------------------------------------------------------------------
 Sun Feb 25 08:07:01 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.44.0:

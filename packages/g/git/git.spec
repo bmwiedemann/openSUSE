@@ -35,7 +35,7 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.44.0
+Version:        2.45.0
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
