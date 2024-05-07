@@ -47,4 +47,17 @@ New package for GNOME</comment>
   + Always use prefered caps. (forwarded request 1166996 from dimstar)</comment>
     <requestid>1167120</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>76f6612c1e0b22769552bfd1bef93317</srcmd5>
+    <version>46.3</version>
+    <time>1715097892</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 46.3:
+  + Assume cameras are front cameras by default.
+  + Update caps when switching cameras.
+  + Do not store caps file on errors.
+  + Avoid unnecessary stream restarts.
+  + Updated translations. (forwarded request 1172406 from dimstar)</comment>
+    <requestid>1172408</requestid>
+  </revision>
 </revisionlist>

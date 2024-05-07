@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  7 10:11:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.3:
+  + Assume cameras are front cameras by default.
+  + Update caps when switching cameras.
+  + Do not store caps file on errors.
+  + Avoid unnecessary stream restarts.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Apr 12 07:36:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.2:
