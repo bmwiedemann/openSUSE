@@ -28,6 +28,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-lxml
 BuildArch:      noarch
+Provides:       iso-codes-lang = %{version}
+Obsoletes:      iso-codes-lang <= %{version}
 
 %description
 This package provides the ISO-639 language code list, the ISO-3166
@@ -68,14 +70,11 @@ translations in gettext .po form.
 %find_lang iso_4217 %{name}.lang
 %find_lang iso_15924 %{name}.lang
 
-%files
+%files -f %{name}.lang
 %license COPYING
 %doc CHANGELOG.md README.md TODO
 %{_datadir}/xml/iso-codes/
 %{_datadir}/iso-codes/
-
-%files lang -f %{name}.lang
-%license COPYING
 
 %files devel
 %license COPYING

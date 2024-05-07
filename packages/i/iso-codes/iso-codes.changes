@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  6 12:58:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Merge iso codes-translations into the main package. iso-codes
+  isn't particularly useful without its translations. Some KDE
+  packages require and/or heavily rely on them.
+  gnome-control-center also needs translations to display
+  localized names in system config menu.
+
+-------------------------------------------------------------------
 Sun Jan 28 20:23:58 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.16.0:
