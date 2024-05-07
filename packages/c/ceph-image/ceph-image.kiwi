@@ -5,7 +5,7 @@
                 don't manually modify this file,
                 please check README
 -->
-<image xmlns:suse_label_helper="com.suse.label_helper" schemaversion="6.9" name="ceph-image">
+<image schemaversion="7.4" name="ceph-image">
   <description type="system">
     <author>SUSE LLC</author>
     <contact>https://bugs.opensuse.org</contact>
@@ -21,7 +21,7 @@
           <env name="PATH" value="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/mit/bin:/usr/lib/mit/sbin"/>
         </environment>
         <labels>
-          <suse_label_helper:add_prefix prefix="org.opensuse.ceph">
+          <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper" prefix="org.opensuse.ceph">
             <label name="org.opencontainers.image.title" value="Ceph container image"/>
             <label name="org.opencontainers.image.description" value="Ceph container image"/>
             <label name="org.opencontainers.image.version" value="%PKG_VERSION%.%RELEASE%"/>
