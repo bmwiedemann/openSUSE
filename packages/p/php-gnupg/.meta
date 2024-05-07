@@ -1,0 +1,5 @@
+<package name="php-gnupg" project="openSUSE:Factory">
+  <title>php-gnupg</title>
+  <description>PHP wrapper around the gpgme library</description>
+  <devel project="server:php:extensions" package="php-gnupg"/>
+</package>
