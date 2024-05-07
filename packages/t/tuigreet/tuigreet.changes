@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue May  7 06:46:11 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Enable tests
+- Remove tuigreet-version.patch (Fixed upstream)
+- Service to use manual instead of deprecated disabled
+- Remove deprecated cargo_config (now part of vendor)
+- Update to 0.9.0
+  * Added rebinding of F-key actions.
+  * Added more customization options and coloring support.
+  * Added support for using NSS to retrieve users instead of
+    /etc/passwd.
+  * Better handling of rendering/event loop.
+  * Support for X11 sessions specificities (environment variables,
+    wrappers, etc.).
+  * Better management of non-ASCII strings.
+  * Better handling of smaller screens.
+  * Overall better terminal management to clear screen on startup,
+    exit and error conditions.
+  * Various bugfixes.
+  * Various locale updates.
+
+-------------------------------------------------------------------
 Mon Feb 26 16:11:30 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
