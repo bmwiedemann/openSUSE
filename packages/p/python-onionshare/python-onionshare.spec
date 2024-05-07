@@ -28,7 +28,7 @@
 %define plainpython python
 
 Name:           python-onionshare
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        Self-hosting Tor Onion Service based file sharing
 License:        GPL-3.0-or-later

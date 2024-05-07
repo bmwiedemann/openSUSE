@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  7 00:21:33 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.6.2
+  * Security fix: Removes newlines from History item path
+  * Security fix: Set a maximum length of 524288 characters for text messages in Receive mode
+  * Security fix: Allows only specific ASCII characters for usernames and removes control characters
+  * Security fix: Forcefully disconnect user from chat on disconnect event
+  * Security fix: Handle username validation excpeptions to prevent silent joining
+
+-------------------------------------------------------------------
 Mon Mar  4 16:35:25 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add more missing runtime requirements
