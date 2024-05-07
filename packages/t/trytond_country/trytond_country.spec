@@ -2,7 +2,7 @@
 # spec file for package trytond_country
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2014-2021 Dr. Axel Braun
+# Copyright (c) 2014-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,8 +36,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Office/Management
 URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
-Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
-Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
+## Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
+## Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 Patch0:         001_pycountry.diff
 Patch1:         002_support_pycountry_22.diff
 Patch2:         003_revert_pycountry_limit.diff
