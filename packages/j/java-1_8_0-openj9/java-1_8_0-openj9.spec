@@ -115,7 +115,9 @@ Patch4:         libdwarf-fix.patch
 # Fix narrowing conversion error
 Patch5:         openj9-no-narrowing.patch
 # Fix build with gcc 13
-Patch32:        stringop-overflow.patch
+Patch31:        stringop-overflow.patch
+# Fix build with gcc 14
+Patch32:        fix-build-with-gcc14.patch
 # Patches for system libraries
 Patch201:       system-libjpeg.patch
 Patch202:       system-libpng.patch
@@ -358,6 +360,7 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 %patch -P 4 -p1
 %patch -P 5 -p1
 
+%patch -P 31 -p1
 %patch -P 32 -p1
 
 cat %{SOURCE100} \

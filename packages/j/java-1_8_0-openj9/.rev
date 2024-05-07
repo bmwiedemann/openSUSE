@@ -191,4 +191,12 @@
     <comment>Erase the existence of tzdata-java8 from the memory of mankind</comment>
     <requestid>1155987</requestid>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>3372f058b9a1cd03b23b2bcd14767e05</srcmd5>
+    <version>1.8.0.402</version>
+    <time>1715097815</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with gcc 14</comment>
+    <requestid>1172261</requestid>
+  </revision>
 </revisionlist>
