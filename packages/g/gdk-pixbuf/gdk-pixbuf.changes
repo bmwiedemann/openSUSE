@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  6 07:03:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Pass -Dothers=enabled to meson: enable other image loaders (most
+  notably beeded seems xpm,xbm). This is in line with upstreams
+  recommendation for now, but won't be working past version 2.43.x.
+  The loaders will likely be split out into a separate repo.
+  (boo#1223903, glgo#GNOME/gdk-pixbuf!169).
+- Add 238893d8cd6f9c2616a05ab521a29651a17a38c2.patch: Fix test
+  suite with other loaders enabled.
+
+-------------------------------------------------------------------
 Thu May  2 08:53:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.42.11:
