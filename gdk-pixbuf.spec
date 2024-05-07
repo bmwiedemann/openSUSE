@@ -36,6 +36,8 @@ Source1:        macros.gdk-pixbuf
 Source2:        README.SUSE
 Source3:        gdk-pixbuf-rpmlintrc
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch0:         https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/commit/238893d8cd6f9c2616a05ab521a29651a17a38c2.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docutils
@@ -141,6 +143,7 @@ cp -a %{SOURCE2} .
 %build
 %meson \
 	-Dinstalled_tests=false \
+	-Dothers=enabled \
 	%{nil}
 %meson_build
 
