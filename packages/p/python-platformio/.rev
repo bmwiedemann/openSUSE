@@ -249,4 +249,17 @@
     with Unicode code points higher than 127 (issue #4732)</comment>
     <requestid>1161396</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>73d253889c3d909c85392953193fbcb7</srcmd5>
+    <version>6.1.15</version>
+    <time>1715097888</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1.15:
+  * Resolved an issue where the LDF couldn't locate a library
+    dependency declared via version control system repository
+    (issue #4885)
+  * Resolved an issue related to the inaccurate detection of the
+    Clang compiler (pull #4897)</comment>
+    <requestid>1172343</requestid>
+  </revision>
 </revisionlist>

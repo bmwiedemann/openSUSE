@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  7 07:32:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.15:
+  * Resolved an issue where the LDF couldn't locate a library
+    dependency declared via version control system repository
+    (issue #4885)
+  * Resolved an issue related to the inaccurate detection of the
+    Clang compiler (pull #4897)
+
+-------------------------------------------------------------------
 Mon Mar 25 13:25:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.14:
