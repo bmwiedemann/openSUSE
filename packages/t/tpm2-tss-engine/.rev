@@ -139,4 +139,17 @@ so let's do that: add the bug ref to the change responsible for it. (forwarded r
     <comment>- Fix download url and add gpg signature for tarball. (forwarded request 1090284 from fcrozat)</comment>
     <requestid>1090469</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>5940cc2eb5b91255ba692b9554c9f08e</srcmd5>
+    <version>1.2.0</version>
+    <time>1715097871</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc14-fixes.patch: Building with gcc14 fails due to a mismatch in
+  OpenSSL function declarations. Provided PR# to upstream here:
+  https://github.com/tpm2-software/tpm2-tss-engine/pull/283
+- Add tpm2-tss-engine.keyring: needed for validation of the tarball signature.
+  This keyring is taken over from tpm2-0-tss which has the same (or very
+  similar) maintainers.</comment>
+    <requestid>1172350</requestid>
+  </revision>
 </revisionlist>

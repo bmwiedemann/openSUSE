@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May  6 14:15:17 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Add gcc14-fixes.patch: Building with gcc14 fails due to a mismatch in
+  OpenSSL function declarations. Provided PR# to upstream here:
+
+  https://github.com/tpm2-software/tpm2-tss-engine/pull/283
+
+- Add tpm2-tss-engine.keyring: needed for validation of the tarball signature.
+  This keyring is taken over from tpm2-0-tss which has the same (or very
+  similar) maintainers.
+
+-------------------------------------------------------------------
 Thu Jun  1 13:10:48 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Fix download url and add gpg signature for tarball.

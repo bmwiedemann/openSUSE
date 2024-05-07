@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2-tss-engine
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Group:          Productivity/Security
 URL:            https://github.com/tpm2-software
 Source0:        %{url}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{url}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
+Source2:        tpm2-tss-engine.keyring
+Patch0:         gcc14-fixes.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libtool
@@ -69,7 +71,7 @@ Enhanced System API (ESAPI) interface of the TSS 2.0 for downwards communication
 It supports RSA decryption and signatures as well as ECDSA signatures.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 
