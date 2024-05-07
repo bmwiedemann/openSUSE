@@ -1,7 +1,7 @@
 #
 # spec file for package lastpass-cli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lastpass-cli
-Version:        1.3.4
+Version:        1.4.0
 Release:        0
 Summary:        LastPass command line interface tool
 License:        GPL-2.0-only
@@ -25,7 +25,6 @@ Group:          Productivity/Security
 URL:            https://github.com/LastPass/lastpass-cli
 Source:         https://github.com/lastpass/lastpass-cli/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM 0001-Mark-global-variable-as-extern.patch gh#lastpass/lastpass-cli#532
-Patch0:         0001-Mark-global-variable-as-extern.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake
 BuildRequires:  gcc-c++

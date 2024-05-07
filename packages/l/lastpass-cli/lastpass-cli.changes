@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May  7 05:16:16 UTC 2024 - ming li <mli@suse.com>
+
+- Update to 1.4.0:
+  * Add support for writting encrypted URLs
+  * Add support for feature flags
+  * Fix shared folder username
+  
+  update to 1.3.7:
+  * Add support for reading encrypted URLs (Tibor Komlossy)
+  * Fix GCC 10 compatibility issue #532 (Tibor Komlossy)
+    
+  update to 1.3.6:
+  * Fix version (Béla Ormos)
+
+  update to 1.3.5:
+  * Updating certificate hashes (Béla Ormos)
+
+  Remove 0001-Mark-global-variable-as-extern.patch and
+  0002-latest-ssl-cert.patch file
+
+-------------------------------------------------------------------
 Fri Jan 20 17:27:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.4:
