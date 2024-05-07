@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  6 13:59:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move en_US and en_GB 'translations' to the main package. Do not
+  force the -lang package on all users.
+
+-------------------------------------------------------------------
 Sun Mar 17 09:37:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:

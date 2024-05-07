@@ -117,6 +117,8 @@ install -D -m0644 00_org.gnome.desktop.peripherals.gschema.override %{buildroot}
 %{_datadir}/GConf/gsettings/gsettings-desktop-schemas.convert
 %{_datadir}/GConf/gsettings/wm-schemas.convert
 %{_libdir}/girepository-1.0/GDesktopEnums-3.0.typelib
+%{_datadir}/locale/en_GB/LC_MESSAGES/gsettings-desktop-schemas.mo
+%{_datadir}/locale/en_US/LC_MESSAGES/gsettings-desktop-schemas.mo
 
 %files devel
 %doc AUTHORS ChangeLog HACKING MAINTAINERS
@@ -125,5 +127,7 @@ install -D -m0644 00_org.gnome.desktop.peripherals.gschema.override %{buildroot}
 %{_datadir}/gir-1.0/GDesktopEnums-3.0.gir
 
 %files lang -f %{name}.lang
+%exclude %{_datadir}/locale/en_GB/LC_MESSAGES/gsettings-desktop-schemas.mo
+%exclude %{_datadir}/locale/en_US/LC_MESSAGES/gsettings-desktop-schemas.mo
 
 %changelog
