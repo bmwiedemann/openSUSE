@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  7 07:49:07 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Bring back package %build from source, removing binary .whl
+  distribution from package.
+
+-------------------------------------------------------------------
 Sun Apr 21 22:22:11 UTC 2024 - Todd R <toddrme2178@gmail.com>
 
 - Update to 3.0.2

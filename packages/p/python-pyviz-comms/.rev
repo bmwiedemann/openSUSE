@@ -65,4 +65,14 @@
     <comment></comment>
     <requestid>1169665</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b1b105e3b0ed972f155ec420126c53e7</srcmd5>
+    <version>3.0.2</version>
+    <time>1715097866</time>
+    <user>dimstar_suse</user>
+    <comment>- Bring back package %build from source, removing binary .whl
+  distribution from package.
+</comment>
+    <requestid>1172347</requestid>
+  </revision>
 </revisionlist>

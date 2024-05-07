@@ -16,7 +16,6 @@
 #
 
 
-
 Name:           python-pyviz-comms
 Version:        3.0.2
 Release:        0
@@ -24,12 +23,17 @@ Summary:        Tool to launch jobs, organize the output, and dissect the result
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pyviz/pyviz_comms
-Source0:        https://files.pythonhosted.org/packages/py3/p/pyviz-comms/pyviz_comms-%{version}-py3-none-any.whl
+# For the bundled JS files
+Source0:        https://files.pythonhosted.org/packages/source/p/pyviz_comms/pyviz_comms-%{version}.tar.gz
+# For the tests
+Source1:        https://github.com/holoviz/pyviz_comms/archive/refs/tags/v%{version}.tar.gz#/pyviz_comms-%{version}-gh.tar.gz
 Source99:       python-pyviz-comms-rpmlintrc
 BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module hatch-jupyter-builder}
+BuildRequires:  %{python_module hatch-nodejs-version}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module jupyterlab}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 40.8.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
@@ -64,21 +68,21 @@ Jupyter extension to display matplotlib plots in a widget.
 This package provides the JupyterLab extension.
 
 %prep
-%setup -q -c -T
+%autosetup -p1 -n pyviz_comms-%{version}
+tar -x -f %{SOURCE1} --strip-components=1 pyviz_comms-%{version}/pyviz_comms/tests/
 
 %build
-# not needed
+%pyproject_wheel
 
 %install
-%pyproject_install %{SOURCE0}
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-cp %{buildroot}%{python_sitelib}/pyviz_comms-%{version}.dist-info/licenses/LICENSE .
-cp %{buildroot}%{python_sitelib}/pyviz_comms-%{version}.dist-info/licenses/LICENSE.txt .
 
 %check
-%pytest %{buildroot}%{python_sitelib}/pyviz_comms
+%pytest
 
 %files %{python_files}
+%doc README.md
 %license LICENSE LICENSE.txt
 %{python_sitelib}/pyviz_comms
 %{python_sitelib}/pyviz_comms-%{version}.dist-info
