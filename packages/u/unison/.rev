@@ -374,4 +374,15 @@
   * Bugfixes, minor improvements, cleanups.</comment>
     <requestid>1148334</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>8e11ff7e7a39b89218f8703b18b99a48</srcmd5>
+    <version>2.53.5</version>
+    <time>1715097841</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.53.5
+  * Various minor bugfixes.
+  * Recovery from errors during repeat mode (enabled in 2.53.1)
+    is disabled for time being.</comment>
+    <requestid>1172306</requestid>
+  </revision>
 </revisionlist>

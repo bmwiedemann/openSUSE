@@ -24,7 +24,7 @@
 
 %define     pkg unison
 Name:           %pkg%nsuffix
-Version:        2.53.4
+Version:        2.53.5
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        File synchronization tool
@@ -37,10 +37,8 @@ Source1:        %pkg.desktop
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocaml-rpm-macros >= 20231101
 %if "%build_flavor" == "doc"
-%if 0%?suse_version > 1500 || 0%?sle_version > 150300
 BuildRequires:  hevea
 BuildRequires:  lynx
-%endif
 BuildRequires:  texlive-collection-latex
 BuildRequires:  texlive-metafont
 %else
@@ -79,7 +77,6 @@ replica to the other.
 %build
 %if "%build_flavor" == "doc"
 %make_build docs
-ls -lart doc man
 %else
 %make_build PREFIX=%_prefix
 %endif
@@ -95,7 +92,21 @@ do
   echo "%%doc %_defaultdocdir/%pkg/unison-manual.$ext" >> files
 done
 %else
-echo '%%doc src/COPYING' > files
+# The presence of _defaultlicensedir is no inidicator for a usable %%license macro
+# If it is defined, but rpm is still too old, it will default to the last License: line.
+if bash -x -c 'read a b c < <(rpm --version)
+set -- ${c//./ }
+test $1 -lt 4 && exit 1
+if test $1 -eq 4 && test $2 -lt 14
+then
+	exit 1
+fi
+exit 0'
+then
+	echo '%%license src/COPYING' > files
+else
+	echo '%%doc src/COPYING' > files
+fi
 %make_install PREFIX=%_prefix
 
 mv %buildroot%_bindir/%name %buildroot%_bindir/%name-text
