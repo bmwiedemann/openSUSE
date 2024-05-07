@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon May  6 12:06:13 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.4.3 
+ * Enhancements
+   * Add support for PEP 696 syntax 
+ * Preview features
+   * [refurb] Use function range for reimplemented-operator diagnostics 
+   * [refurb] Ignore methods in reimplemented-operator (FURB118) 
+   * [refurb] Implement fstring-number-format (FURB116) 
+   * [ruff] Implement redirected-noqa (RUF101) 
+   * [pyflakes] Distinguish between first-party and third-party imports for fix suggestions 
+ * Rule changes
+   * [flake8-bugbear] Ignore non-abstract class attributes when enforcing B024 
+   * [flake8-logging] Include inline instantiations when detecting loggers 
+   * [pylint] Also emit PLR0206 for properties with variadic parameters 
+   * [ruff] Detect duplicate codes as part of unused-noqa (RUF100) 
+   * [flake8-pyi] Allow for overloaded __exit__ and __aexit__ definitions (PYI036) 
+   * [pyupgrade] Catch usages of "%s" % var and provide an unsafe fix (UP031) 
+   * [refurb] Implement new rule that suggests min/max over sorted() (FURB192) 
+ * Formatter
+   * Avoid multiline expression if format specifier is present 
+ * LSP
+   * Write ruff server setup guide for Helix 
+   * ruff server no longer hangs after shutdown 
+   * ruff server reads from a configuration TOML file in the user configuration directory if no local configuration exists 
+   * ruff server respects per-file-ignores configuration 
+   * ruff server: Support a custom TOML configuration file 
+   * ruff server: Support setting to prioritize project configuration over editor configuration 
+   * Fix an issue with missing diagnostics for Neovim and Helix 
+   * Implement hover documentation for noqa codes 
+   * Introduce common Ruff configuration options with new server settings 
+ * Bug fixes
+   * Avoid debug assertion around NFKC renames 
+   * [pyflakes] Prioritize redefined-while-unused over unused-import 
+   * [ruff] Respect async expressions in comprehension bodies 
+   * [pygrep_hooks] Fix blanket-noqa panic when last line has noqa with no newline (PGH004) 
+   * [perflint] Ignore list-copy recommendations for async for loops 
+   * [pyflakes] Improve invalid-print-syntax documentation 
+   * Use macos-12 for building release wheels to enable macOS 11 compatibility 
+   * [flake8-blind-expect] Allow raise from in BLE001 
+   * [flake8-pyi] Allow simple assignments to None in enum class scopes (PYI026) 
+   * [flake8-simplify] Avoid raising SIM911 for non-zip attribute calls 
+   * [refurb] Avoid operator.itemgetter suggestion for single-item tuple 
+   * [ruff] Respect per-file-ignores for RUF100 with no other diagnostics 
+   * [ruff] Fix async comprehension false positive (RUF029) 
+ * Performance
+   * Avoid allocations for isort module names 
+   * Build a separate ARM wheel for macOS 
+   * Use matchit to resolve per-file settings 
+ * Documentation
+   * [flake8-bugbear] Document explicitly disabling strict zip (B905) 
+   * [flake8-type-checking] Mention lint.typing-modules in TCH001, TCH002, and TCH003 
+   * [isort] Improve documentation around custom isort sections 
+   * [pylint] Fix documentation oversight for invalid-X-returns 
+
+-------------------------------------------------------------------
 Tue Apr 23 08:02:10 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.4.1

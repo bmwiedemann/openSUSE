@@ -895,4 +895,41 @@
    * Improve performance of RuleTable::any_enabled</comment>
     <requestid>1169832</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ea641aa9a7ad89b6a2ca99cafc2561e5</srcmd5>
+    <version>0.4.3</version>
+    <time>1715097750</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.3 
+ * Enhancements
+   * Add support for PEP 696 syntax 
+ * Preview features
+   * [refurb] Use function range for reimplemented-operator diagnostics 
+   * [refurb] Ignore methods in reimplemented-operator (FURB118) 
+   * [refurb] Implement fstring-number-format (FURB116) 
+   * [ruff] Implement redirected-noqa (RUF101) 
+   * [pyflakes] Distinguish between first-party and third-party imports for fix suggestions 
+ * Rule changes
+   * [flake8-bugbear] Ignore non-abstract class attributes when enforcing B024 
+   * [flake8-logging] Include inline instantiations when detecting loggers 
+   * [pylint] Also emit PLR0206 for properties with variadic parameters 
+   * [ruff] Detect duplicate codes as part of unused-noqa (RUF100) 
+   * [flake8-pyi] Allow for overloaded __exit__ and __aexit__ definitions (PYI036) 
+   * [pyupgrade] Catch usages of &quot;%s&quot; % var and provide an unsafe fix (UP031) 
+   * [refurb] Implement new rule that suggests min/max over sorted() (FURB192) 
+ * Formatter
+   * Avoid multiline expression if format specifier is present 
+ * LSP
+   * Write ruff server setup guide for Helix 
+   * ruff server no longer hangs after shutdown 
+   * ruff server reads from a configuration TOML file in the user configuration directory if no local configuration exists 
+   * ruff server respects per-file-ignores configuration 
+   * ruff server: Support a custom TOML configuration file 
+   * ruff server: Support setting to prioritize project configuration over editor configuration 
+   * Fix an issue with missing diagnostics for Neovim and Helix 
+   * Implement hover documentation for noqa codes 
+   * Introduce common Ruff configuration options with new server settings 
+ * Bug fixes</comment>
+    <requestid>1172165</requestid>
+  </revision>
 </revisionlist>
