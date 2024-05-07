@@ -1,0 +1,91 @@
+Update dinbrief class
+
+Nowadays UTF-8 is standard, also port the features of the letter class
+to dinbrief class.
+
+---
+ style/dinbrief.el |   45 ++++++++++++++++++++++++++++++++-------------
+ 1 file changed, 32 insertions(+), 13 deletions(-)
+
+--- style/dinbrief.el
++++ style/dinbrief.el	2024-05-07 07:10:38.580274545 +0000
+@@ -32,14 +32,26 @@
+ (require 'tex)
+ (require 'latex)
+ 
++;; Silence the compiler:
++(declare-function font-latex-add-keywords
++                  "font-latex"
++                  (keywords class))
++
++(defvar LaTeX-dinbrief-class-options
++  '("10pt" "11pt" "12pt" "norm" "a4paper" "a5paper" "b5paper"
++    "letterpaper" "legalpaper" "executivepaper" "twoside"
++    "addresshigh" "addressstd" "onecolumn" "twocolumn")
++  "Package options for the letter class.")
++
+ (TeX-add-style-hook
+  "dinbrief"
+  (lambda ()
+-   (add-hook 'LaTeX-document-style-hook
+-             #'LaTeX-dinbrief-style)
+    (LaTeX-add-environments
+     '("letter" LaTeX-dinbrief-env-recipient)
+     "dinquote")
++   (add-hook 'LaTeX-document-style-hook
++             #'LaTeX-dinbrief-style)
++   (setq LaTeX-default-document-environment "letter")
+    (TeX-add-symbols
+     '("address" "Absender")
+     '("postremark" "Postvermerk")
+@@ -61,7 +73,22 @@
+     '("backaddress" "Retouradresse")
+     '("signature" "Unterschrift")
+     '("opening" "Anrede")
+-    '("closing" "Schluss")))
++    '("closing" "Schluss"))
++
++   ;; Fontification
++   (when (and (featurep 'font-latex)
++              (eq TeX-install-font-lock 'font-latex-setup))
++     (font-latex-add-keywords '(("subject" "{")
++                                ("address" "{")
++                                ("signature" "{")
++                                ("opening" "{")
++                                ("closing" "{")
++                                ("location" "{")
++                                ("handling" "{")
++                                ("cc" "{")
++                                ("encl" "{")
++                                ("ps" "{"))
++                              'function)))
+  TeX-dialect)
+ 
+ (defmacro LaTeX-dinbrief-insert (&rest args)
+@@ -78,16 +105,8 @@
+     (open-line 2)
+     (indent-relative-first-indent-point)
+     (LaTeX-dinbrief-insert TeX-esc "usepackage"
+-                           LaTeX-optop "latin1,utf8" LaTeX-optcl
+-                           TeX-grop "inputenc" TeX-grcl)
+-    (newline-and-indent)
+-    (LaTeX-dinbrief-insert TeX-esc "usepackage"
+-                           LaTeX-optop "T1" LaTeX-optcl
+-                           TeX-grop "fontenc" TeX-grcl)
+-    (indent-relative-first-indent-point)
+-    (LaTeX-dinbrief-insert TeX-esc "usepackage"
+                            TeX-grop "ngerman" TeX-grcl))
+-  (TeX-run-style-hooks "inputenc" "fontenc" "ngerman"))
++  (TeX-run-style-hooks "ngerman"))
+ 
+ (defun LaTeX-dinbrief-env-recipient (environment)
+   "Insert ENVIRONMENT and prompt for recipient and address."
+@@ -246,7 +265,7 @@
+   (let ((ctime-string (current-time-string))
+         (month-alist '(("Jan" . "Januar")
+                        ("Feb" . "Februar")
+-                       ("Mar" . "M\\\"arz")
++                       ("Mar" . "März")
+                        ("Apr" . "April")
+                        ("May" . "Mai")
+                        ("Jun" . "Juni")

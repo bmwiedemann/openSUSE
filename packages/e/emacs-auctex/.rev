@@ -546,4 +546,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1164387</requestid>
   </revision>
+  <revision rev="47" vrev="4">
+    <srcmd5>5c3be743cf300c1c2bfc820f47fb5c6e</srcmd5>
+    <version>13.3</version>
+    <time>1715097867</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch dinbrief.patch
+  * Modernize this class to use by e.g. default UTF-8
+- Add patch initial-reset.patch
+  (Re)enable initial buffer reset at creation time of the
+  document class</comment>
+    <requestid>1172346</requestid>
+  </revision>
 </revisionlist>

@@ -57,6 +57,8 @@ URL:            https://www.gnu.org/software/auctex
 Patch0:         dvips.patch
 Patch1:         auctex-13.1-expand.patch
 Patch2:         ignore-errors.patch
+Patch3:         initial-reset.patch
+Patch4:         dinbrief.patch
 BuildArch:      noarch
 
 %description
@@ -82,6 +84,8 @@ you cannot use this package for XEmacs.
 %patch -P0
 %patch -P1
 %patch -P2
+%patch -P3
+%patch -P4
 
 %build
     unset ${!LC_*}
