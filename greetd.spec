@@ -17,6 +17,7 @@
 
 
 %if 0%{?suse_version} >= 1550
+  %define _pam_confdir %{_pam_vendordir}
   %define _config_norepl %nil
 %else
   %define _pam_confdir %{_sysconfdir}/pam.d
@@ -24,7 +25,7 @@
 %endif
 
 Name:           greetd
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        Minimal and flexible login manager daemon
 License:        GPL-3.0-only
@@ -32,7 +33,6 @@ Group:          System/Management
 URL:            https://git.sr.ht/~kennylevinsen/greetd
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Source2:        cargo_config
 Source3:        greetd.pam
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
@@ -45,9 +45,7 @@ greetd is a login manager daemon. greetd on its own does not have any user inter
 but instead offloads that to greeters, which are arbitrary applications that implement the greetd IPC protocol.
 
 %prep
-%setup -qa1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
+%autosetup -a1
 
 %build
 %{cargo_build}
@@ -68,6 +66,9 @@ install -D -m 0644 %{SOURCE3} %{buildroot}/%{_pam_confdir}/greetd
 install -d %{buildroot}%{_localstatedir}/cache/greetd
 install -d %{buildroot}%{_localstatedir}/lib/greetd
 install -d %{buildroot}/run/greetd
+
+%check
+%{cargo_test}
 
 %pre
 %service_add_pre %{name}.service
