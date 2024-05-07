@@ -35,8 +35,8 @@ Summary:        The "stock_lot" module of the Tryton ERP system
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
-Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
-Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
+## Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
+## Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 URL:            http://www.tryton.org/
 # List of additional build dependencies
 BuildRequires:  %{mypython}-devel
