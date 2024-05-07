@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 %ifarch %{ix86} armv7l
 %bcond_with test
 %else
@@ -24,16 +23,18 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Jinja2
-Version:        3.1.3
+Version:        3.1.4
 Release:        0
 Summary:        A template engine written in pure Python
 License:        BSD-3-Clause
 URL:            https://jinja.palletsprojects.com
-Source:         https://files.pythonhosted.org/packages/source/J/Jinja2/Jinja2-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/J/Jinja2/jinja2-%{version}.tar.gz
 BuildRequires:  %{python_module MarkupSafe >= 0.23}
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,14 +52,13 @@ inspired non-XML syntax but supports inline expressions and an optional
 sandboxed environment.
 
 %prep
-%setup -q -n Jinja2-%{version}
-dos2unix LICENSE.rst # Fix wrong EOL encoding
+%setup -q -n jinja2-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -70,9 +70,9 @@ donttest="test_striptags"
 %endif
 
 %files %{python_files}
-%license LICENSE.rst
-%doc README.rst CHANGES.rst artwork examples
+%license LICENSE.txt
+%doc README.md docs/changes.rst docs/examples
 %{python_sitelib}/jinja2
-%{python_sitelib}/Jinja2-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/jinja2-%{version}.dist-info
 
 %changelog

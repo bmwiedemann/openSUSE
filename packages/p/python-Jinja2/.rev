@@ -574,4 +574,17 @@
   (gh#pallets/jinja#1930, gh#pallets/markupsafe#417)</comment>
     <requestid>1142212</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>51fcc694bc22fd2fd20acd6b67cd74e7</srcmd5>
+    <version>3.1.4</version>
+    <time>1715097764</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.4 (bsc#1223980, CVE-2024-34064):
+  * The xmlattr filter does not allow keys with / solidus, &gt;
+    greater-than sign, or = equals sign, in addition to disallowing
+    spaces. Regardless of any validation done by Jinja, user input
+    should never be used as keys to this filter, or must be separately
+    validated first.</comment>
+    <requestid>1172259</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  6 18:10:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.4 (bsc#1223980, CVE-2024-34064):
+  * The xmlattr filter does not allow keys with / solidus, >
+    greater-than sign, or = equals sign, in addition to disallowing
+    spaces. Regardless of any validation done by Jinja, user input
+    should never be used as keys to this filter, or must be separately
+    validated first.
+
+-------------------------------------------------------------------
 Mon Jan 29 10:10:29 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable broken test with latest version of MarkupSafe (2.1.4)
