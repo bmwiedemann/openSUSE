@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Apr 29 15:38:13 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0
+  * Simplify lua line manipulation API
+  * Disable DEC Special Graphics at exit if vt100
+  * Add hexN output mode
+  * Rename sub-config to profile
+  * Use lua io.write() instead of print()
+  * Add new ways to manage serial devices
+    + Rename --list-devices to --list
+    + Rename --no-autoconnect to --no-reconnect
+    + Switch -l and -L options
+      -l now lists available serial devices
+      -L enables log to file
+    + Add option --auto-connect
+    + Connect to same port/device combination via unique
+      topology ID (TID)
+    + Reworked and improved listing of serial devices to show
+      serial devices
+  * Clean up timestamp enum definition
+  * Add missing options to show configuration
+  * Update description of mute option
+  * Add lua read_string() function
+  * Don't forget to log output in lua expect()
+  * Generalize automatic login example for Linux
+  * Fix log output in hex output mode
+  * Add timeout based timestamps in hex output mo
+  * Improve switched messages
+  * Extend lua expect() to also return matched string
+  * Add automatic login script example
+  * Organize examples directory
+  * Introduce basic line input mode
+  * Cleanup global variable name shadowing
+  * Updated login example with new expect logic
+  * Reset buffer size at start of expect
+
+-------------------------------------------------------------------
 Sun Apr 14 17:41:55 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.8
