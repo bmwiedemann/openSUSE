@@ -258,4 +258,24 @@
   * Ignore a DeprecationWarning treated as an error.</comment>
     <requestid>1144424</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>66d2d93d6b224572c88420cfa86bc37f</srcmd5>
+    <version>2.1.0</version>
+    <time>1715097900</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  * Improvements for synchronous and asychronous generators (#908)
+  * Additions to the .rx namespace including and_, bool, map, not_,
+    or_ and updating (#906)
+  * Add support for adding asynchronous watcher to rx (#917)
+  * Make it possible to resolve reactive expressions recursively
+    with .rx.resolve (#918)
+  * Add support for async and generator functions in .rx.pipe (#924)
+  * Ensure that .param.update context manager restore refs (#915)
+  * Avoid overeager root invalidation on rx leading to unnecessary
+    evaluation (#919)
+  * Passing positional arguments to Parameter now raises a
+    ParamDeprecationWarning</comment>
+    <requestid>1172438</requestid>
+  </revision>
 </revisionlist>

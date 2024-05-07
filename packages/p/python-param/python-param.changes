@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May  7 12:54:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Improvements for synchronous and asychronous generators (#908)
+  * Additions to the .rx namespace including and_, bool, map, not_,
+    or_ and updating (#906)
+  * Add support for adding asynchronous watcher to rx (#917)
+  * Make it possible to resolve reactive expressions recursively
+    with .rx.resolve (#918)
+  * Add support for async and generator functions in .rx.pipe (#924)
+  * Ensure that .param.update context manager restore refs (#915)
+  * Avoid overeager root invalidation on rx leading to unnecessary
+    evaluation (#919)
+  * Passing positional arguments to Parameter now raises a
+    ParamDeprecationWarning
+
+-------------------------------------------------------------------
 Tue Feb  6 01:28:23 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch filter-deprecationwarning.patch:
