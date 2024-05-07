@@ -129,4 +129,15 @@
   * Move 'ACX_PKGVERSION', 'ACX_BUGURL' into 'config/acx.m4'</comment>
     <requestid>1113614</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d22704b7257b5f40e7b7b6ae3cf0fa6a</srcmd5>
+    <version>1.0+git.20240419.9962793</version>
+    <time>1715097897</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git.20240419.9962793:
+  * as: Document current handling of '//:IND_FUNC_MAP' [#45]
+  * Handle &quot;:IND_FUNC_MAP&quot; in nvptx-as to ensure map-directive order is kept
+  * Handle --hash-style argument in nvptx-ld</comment>
+    <requestid>1172434</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package nvptx-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nvptx-tools
-Version:        1.0+git.20230913.c321f1a
+Version:        1.0+git.20240419.9962793
 Release:        0
 Summary:        PTX language tools
 License:        GPL-3.0-or-later

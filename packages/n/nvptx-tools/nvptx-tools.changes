@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 07 12:46:17 UTC 2024 - rguenther@suse.com
+
+- Update to version 1.0+git.20240419.9962793:
+  * as: Document current handling of '//:IND_FUNC_MAP' [#45]
+  * Handle ":IND_FUNC_MAP" in nvptx-as to ensure map-directive order is kept
+  * Handle --hash-style argument in nvptx-ld
+
+-------------------------------------------------------------------
 Tue Sep 26 07:13:08 UTC 2023 - rguenther@suse.com
 
 - Update to version 1.0+git.20230913.c321f1a:
