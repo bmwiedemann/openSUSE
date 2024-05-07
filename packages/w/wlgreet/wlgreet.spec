@@ -1,7 +1,7 @@
 #
 # spec file for package wlgreet
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wlgreet
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        Raw wayland greeter for greetd
 License:        GPL-3.0-only
@@ -25,7 +25,6 @@ Group:          System/Management
 URL:            https://git.sr.ht/~kennylevinsen/wlgreet
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 Recommends:     greetd
 
@@ -34,9 +33,7 @@ Raw wayland greeter for greetd, to be run under sway or similar.
 Note that cage is currently not supported due to it lacking wlr-layer-shell-unstable support.
 
 %prep
-%setup -qa1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
+%autosetup -a1
 
 %build
 %{cargo_build}

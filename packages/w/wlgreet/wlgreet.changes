@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  7 06:55:54 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Service to use manual instead of deprecated disabled
+- Remove deprecated cargo_config (now part of vendor)
+- Update to version 0.5.0:
+  * Remove unwanted unreachable macro
+
+-------------------------------------------------------------------
 Mon Jun  5 15:23:47 UTC 2023 - Denys Kondratenko <stdden@opensuse.org>
 
 - Update vendor dependencies to fix CVE bnc#1212013 
