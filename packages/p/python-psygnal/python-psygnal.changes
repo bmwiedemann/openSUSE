@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  7 12:51:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.1:
+  * perf: let EventedSet use clear\(\) method of underlying set
+
+-------------------------------------------------------------------
 Wed Apr  3 07:38:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.0:

@@ -48,4 +48,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1166598</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3a06797bbeb23fc28029a0f890aa274d</srcmd5>
+    <version>0.11.1</version>
+    <time>1715097899</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.1:
+  * perf: let EventedSet use clear\(\) method of underlying set</comment>
+    <requestid>1172435</requestid>
+  </revision>
 </revisionlist>
