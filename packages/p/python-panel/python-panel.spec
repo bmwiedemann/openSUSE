@@ -32,7 +32,7 @@ Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/holoviz/panel
-Source0:        https://files.pythonhosted.org/packages/py3/p/panel/panel-%{version}-py3-none-any.whl
+Source0:        https://files.pythonhosted.org/packages/source/p/panel/panel-%{version}.tar.gz
 Source99:       python-panel-rpmlintrc
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module bleach}
@@ -116,20 +116,29 @@ This package contains the notebook and server extension configuration common
 to all Python flavors.
 
 %prep
-%setup -q -c -T
-%if %{with test}
-%python_expand mkdir -p build && unzip %{SOURCE0} -d build/
-%endif
+%autosetup -p1 -n panel-%{version}
+# Do not try to rebuild the bundled npm stuff. We don't have network. Just use the shipped bundle.
+sed -i '/def _build_paneljs/ a \    return' setup.py
+# no color for pytest
+sed -i '/addopts/ s/--color=yes//' pyproject.toml
+for p in panel/tests/io/reload_module.py
+do \
+    [ -f $p -a ! -s $p ] || exit 1 && echo "# Empty module" > $p
+done
+for p in panel/dist/css/regular_table.css \
+  panel/dist/bundled/perspective/@finos/perspective-viewer@2.9.0/dist/css/variables.css
+do \
+    [ -f $p -a ! -s $p ] || exit 1 && echo "// Empty css" > $p
+done
 
 %build
-# not needed
+%pyproject_wheel
 
 %if ! %{with test}
 %install
-%pyproject_install %{SOURCE0}
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/panel
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-cp %{buildroot}%{python_sitelib}/panel-%{version}.dist-info/LICENSE.txt .
 %endif
 
 %if %{with test}
@@ -156,7 +165,7 @@ donttest="$donttest or test_pdf_local_file"
 # Don't test on 32-bit: asyncio is too flaky
 [ $(getconf LONG_BIT) -eq 32 ] && exit 0
 #
-%pytest build/panel -n auto -rsfE -k "not ($donttest)"
+%pytest -n auto -rsfE -k "not ($donttest)"
 %endif
 
 %post
@@ -168,6 +177,7 @@ donttest="$donttest or test_pdf_local_file"
 %if ! %{with test}
 %files %{python_files}
 %license LICENSE.txt
+%doc README.md
 %python_alternative %{_bindir}/panel
 %{python_sitelib}/panel
 %{python_sitelib}/panel-%{version}.dist-info
