@@ -27,12 +27,13 @@ BuildRequires:  git-core
 %define git_version %{nil}
 %endif
 Name:           sdbootutil
-Version:        1+git20240410.3325802%{git_version}
+Version:        1+git20240506.573a6a4%{git_version}
 Release:        0
 Summary:        script to install shim with sd-boot
 License:        MIT
 URL:            https://en.opensuse.org/openSUSE:Usr_merge
 Source:         %{name}-%{version}.tar
+Requires:       dialog
 Requires:       efibootmgr
 Requires:       jq
 Requires:       pcr-oracle

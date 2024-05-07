@@ -199,4 +199,14 @@
   * fallback for machine-id (forwarded request 1166657 from lnussel)</comment>
     <requestid>1166658</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>20db2db374635852662294ece9a28116</srcmd5>
+    <version>1+git20240506.573a6a4</version>
+    <time>1715097752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1+git20240506.573a6a4:
+  * Don't try to mess with overlayfs inside transaction
+  * .spec - requires: dialog (forwarded request 1172158 from lnussel)</comment>
+    <requestid>1172191</requestid>
+  </revision>
 </revisionlist>

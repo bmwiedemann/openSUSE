@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 06 11:52:10 UTC 2024 - lnussel@suse.com
+
+- Update to version 1+git20240506.573a6a4:
+  * Don't try to mess with overlayfs inside transaction
+  * .spec - requires: dialog
+
+-------------------------------------------------------------------
 Wed Apr 10 12:51:58 UTC 2024 - lnussel@suse.com
 
 - Update to version 1+git20240410.3325802:
