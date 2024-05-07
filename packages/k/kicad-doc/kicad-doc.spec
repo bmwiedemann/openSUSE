@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package kicad-doc
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -36,7 +36,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           kicad-doc%{?pkg_suffix}
-Version:        8.0.1
+Version:        8.0.2
 Release:        0
 Summary:        Documentation and tutorials for KiCad
 License:        CC-BY-SA-3.0 AND GPL-3.0-or-later
