@@ -29,15 +29,15 @@
 
 %define majorver 6.0
 Name:           trytond_stock
-Version:        %{majorver}.23
+Version:        %{majorver}.26
 Release:        0
 Summary:        The "stock" module for the Tryton ERP system
 License:        GPL-3.0-only
 Group:          Productivity/Office/Management
 URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
-Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
-Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
+## Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
+## Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 BuildRequires:  %{mypython}-devel
 BuildRequires:  %{mypython}-pip
 BuildRequires:  %{mypython}-setuptools
