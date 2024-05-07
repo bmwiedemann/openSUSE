@@ -471,4 +471,12 @@
   this adds buildrequires for golang-packaging/golang/zst</comment>
     <requestid>1157976</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>e3b20c725644b3a8dd0aca4725d63279</srcmd5>
+    <version>2.7.8</version>
+    <time>1715097798</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.8:</comment>
+    <requestid>1172230</requestid>
+  </revision>
 </revisionlist>
