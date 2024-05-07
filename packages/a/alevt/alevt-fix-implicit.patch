@@ -1,0 +1,13 @@
+Index: alevt-v1.8.1/lang.c
+===================================================================
+--- alevt-v1.8.1.orig/lang.c
++++ alevt-v1.8.1/lang.c
+@@ -142,6 +142,8 @@ lang_init(void)
+ 	lang_char[lang_chars[0][i]] = i;
+ }
+ 
++int is_koi(int c);
++int is_greek(int c);
+ 
+ void
+ conv2latin(u8 *p, int n, int lang)

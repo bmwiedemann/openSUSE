@@ -1,7 +1,7 @@
 #
 # spec file for package alevt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Hardware/TV
 URL:            https://gitlab.com/alevt/alevt
 Source0:        %{URL}/-/archive/v%{version}/alevt-v%{version}.tar.bz2
 Source1:        alevt.desktop
+Patch0:         alevt-fix-implicit.patch
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libpng)
