@@ -23,7 +23,7 @@
 %endif
 
 Name:           jeos-firstboot
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Simple text based JeOS first boot wizard
 License:        MIT
@@ -35,8 +35,10 @@ Requires:       dialog
 Requires:       iproute2
 Requires:       live-langset-data
 Requires:       timezone
-# Optional, let's not install it by default just yet.
-# Requires:     ssh-pairing
+# Very useful on distros which disable pw-based root login per ssh
+%if 0%{?suse_version} >= 1550
+Requires:       ssh-pairing
+%endif
 Requires:       (/usr/bin/nmtui if NetworkManager)
 BuildArch:      noarch
 %{?systemd_requires}

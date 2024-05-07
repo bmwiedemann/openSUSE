@@ -602,4 +602,15 @@
     <comment></comment>
     <requestid>1169613</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>25410d0fc00a0eb3ed8ca5d9384ab26c</srcmd5>
+    <version>1.4.2</version>
+    <time>1715097744</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.2:
+  * Resolve cycle w.r.t. wicked (bsc#1223391)
+
+- Make ssh-pairing a required dep on new distros</comment>
+    <requestid>1172157</requestid>
+  </revision>
 </revisionlist>
