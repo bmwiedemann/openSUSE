@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Apr 30 08:05:28 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 3.7.4:
+    * rar: Fix OOB in rar e8 filter (CVE-2024-26256, bsc#1222911)
+    * zip: Fix out of boundary access
+    * 7zip: Limit amount of properties
+    * bsdtar: Fix error handling around strtol() usages
+    * passphrase: Improve newline handling on Windows
+    * passphrase: Never allow empty passwords
+    * rar: Fix "File CRC Error" when extracting specific rar4 archives
+    * xar: Avoid infinite link loop
+    * zip: Update AppleDouble support for directories
+    * zstd: Implement core detection
+- Update to 3.7.3:
+    * PCRE2 support
+    * add trailing letter b to bsdtar(1) substitute pattern
+    * add support for long options "--group" and "--owner" to tar(1)
+    * Fix possible vulnerability in tar error reporting introduced in f27c173
+    * ISO9660: preserve the natural order of links
+    * rar5: fix decoding unicode filenames on Windows
+    * rar5: fix infinite loop if during rar5 decompression the last block produced no data
+    * xz filter: fix incorrect eof at the end of an lzip member
+    * zip: fix end-of-data marker processing when decompressing zip archives
+    * multiple bsdunzip(1) fixes
+    * filetime truncation fix on Windows
+- Fix rpmlint warning about summary being too long
+
+-------------------------------------------------------------------
 Fri Dec 29 18:39:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - skip write tests on 32bit, they OOM
