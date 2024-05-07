@@ -21,13 +21,13 @@
 %define typelibver 2_8
 
 Name:           rygel
-Version:        0.42.5
+Version:        0.42.6
 Release:        0
 Summary:        UPnP/DLNA home media server for GNOME
 License:        LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            http://live.gnome.org/Rygel
-Source0:        https://download.gnome.org/sources/rygel/0.42/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 1.33.4

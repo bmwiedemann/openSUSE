@@ -781,4 +781,15 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1152996</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>1ed0d6f128321e1ebe26cdf8e527ff4a</srcmd5>
+    <version>0.42.6</version>
+    <time>1715097894</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.42.6:
+  + MediaExport: Do not ignore dangling symlinks forever.
+  + External Plug-in: Fix issue with recent Vala version.
+  + Updated translations. (forwarded request 1172407 from dimstar)</comment>
+    <requestid>1172409</requestid>
+  </revision>
 </revisionlist>

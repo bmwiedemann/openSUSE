@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  7 10:15:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.42.6:
+  + MediaExport: Do not ignore dangling symlinks forever.
+  + External Plug-in: Fix issue with recent Vala version.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Feb 28 17:16:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.42.5:
