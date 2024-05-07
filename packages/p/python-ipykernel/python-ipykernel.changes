@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  5 18:01:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.29.4
+  * Fix side effect import for pickleutil #1216 (@blink1073)
+
+-------------------------------------------------------------------
 Tue Mar  5 15:11:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Skip build for python 3.9: python-ipython is no longer available.

@@ -560,4 +560,13 @@
     <comment></comment>
     <requestid>1155310</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>ca15dcaaff4b1a37a5c059131a3d34f6</srcmd5>
+    <version>6.29.4</version>
+    <time>1715097724</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.29.4
+  * Fix side effect import for pickleutil #1216 (@blink1073)</comment>
+    <requestid>1172014</requestid>
+  </revision>
 </revisionlist>
