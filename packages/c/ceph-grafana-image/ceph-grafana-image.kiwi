@@ -5,7 +5,7 @@
 		don't manually modify this file,
 		please check README
     -->
-<image xmlns:suse_label_helper="com.suse.label_helper" schemaversion="6.9" name="ceph-grafana-image">
+<image schemaversion="7.4" name="ceph-grafana-image">
   <description type="system">
     <author>SUSE LLC</author>
     <contact>https://bugs.opensuse.org</contact>
@@ -22,7 +22,7 @@
         </entrypoint>
         <subcommand clear="true"/>
         <labels>
-          <suse_label_helper:add_prefix prefix="org.opensuse.ceph">
+          <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper" prefix="org.opensuse.ceph">
             <label name="org.opencontainers.image.title" value="Grafana for Ceph"/>
             <label name="org.opencontainers.image.description" value="Grafana container image for Ceph"/>
             <label name="org.opencontainers.image.version" value="%PKG_VERSION%.%RELEASE%"/>

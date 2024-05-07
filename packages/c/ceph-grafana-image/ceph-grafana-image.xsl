@@ -9,8 +9,7 @@
 		don't manually modify this file,
 		please check README
     </xsl:comment>
-    <image schemaversion="6.9" name="ceph-grafana-image" 
-      xmlns:suse_label_helper="com.suse.label_helper">
+    <image schemaversion="7.4" name="ceph-grafana-image">
 
       <description type="system">
         <author>SUSE LLC</author>
@@ -41,7 +40,7 @@
 
             <labels>
 
-              <suse_label_helper:add_prefix>
+              <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper">
                 <xsl:attribute name="prefix">
                   <xsl:value-of select="param/prefix" />
                 </xsl:attribute>
