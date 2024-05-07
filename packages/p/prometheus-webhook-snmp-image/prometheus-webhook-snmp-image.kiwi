@@ -3,7 +3,7 @@
 <!--
       This file is generated, don't manually modify this file.
     -->
-<image xmlns:suse_label_helper="com.suse.label_helper" schemaversion="6.9" name="prometheus-webhook-snmp-image">
+<image schemaversion="7.4" name="prometheus-webhook-snmp-image">
   <description type="system">
     <author>SUSE LLC</author>
     <contact>https://bugs.opensuse.org</contact>
@@ -22,7 +22,7 @@
           <argument name="exec /usr/bin/prometheus-webhook-snmp $ARGS run $RUN_ARGS"/>
         </subcommand>
         <labels>
-          <suse_label_helper:add_prefix prefix="org.opensuse.prometheus-webhook-snmp">
+          <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper" prefix="org.opensuse.prometheus-webhook-snmp">
             <label name="org.opencontainers.image.title" value="Prometheus Alertmanager SNMP webhook"/>
             <label name="org.opencontainers.image.description" value="Image containing Prometheus Alertmanager receiver for SNMP traps"/>
             <label name="org.opencontainers.image.version" value="v%PKG_VERSION%.%RELEASE%"/>

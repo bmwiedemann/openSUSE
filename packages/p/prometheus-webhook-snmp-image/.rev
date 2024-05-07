@@ -7,4 +7,12 @@
     <comment>Get the image containing the Prometheus SNMP webhook into registry.opensuse.org to allow users of https://github.com/SUSE/prometheus-webhook-snmp to download it. The image is also required in SES7.</comment>
     <requestid>835766</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>320ecd4b1db5c413d6dfddfc8b200bc2</srcmd5>
+    <version>1.0.0</version>
+    <time>1715097882</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1172387</requestid>
+  </revision>
 </revisionlist>
