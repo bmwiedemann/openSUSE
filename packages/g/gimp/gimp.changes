@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  6 07:20:05 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.10.38:
+  * Fixed a crash with newer glib
+  * Indexed PNGs with transparency are now exported with the correct colors
+  * Anders Jonsson fixed the input ranges for several filters such as Waves and Distort
+  * The titlebar customization field now supports UTF-8 characters
+  * Existing image comments no longer “leak” into newly created images
+
+-------------------------------------------------------------------
 Wed Nov  8 07:03:13 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.10.36:

@@ -32,7 +32,7 @@
 %bcond_without python_plugin
 %endif
 Name:           gimp
-Version:        2.10.36
+Version:        2.10.38
 Release:        0
 Summary:        The GNU Image Manipulation Program
 License:        GPL-3.0-or-later
