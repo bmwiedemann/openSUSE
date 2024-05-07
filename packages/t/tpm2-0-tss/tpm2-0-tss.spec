@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2-0-tss
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tpm2-0-tss
-Version:        4.0.1
+Version:        4.1.0
 Release:        0
 Summary:        Intel's TCG Software Stack access libraries for TPM 2.0 chips
 License:        BSD-2-Clause
@@ -74,9 +74,11 @@ Requires:       libtss2-rc0 = %{version}
 Requires:       libtss2-sys1 = %{version}
 Requires:       libtss2-tcti-cmd0 = %{version}
 Requires:       libtss2-tcti-device0 = %{version}
+Requires:       libtss2-tcti-i2c-helper0 = %{version}
 Requires:       libtss2-tcti-mssim0 = %{version}
 Requires:       libtss2-tcti-pcap0 = %{version}
 Requires:       libtss2-tcti-spi-helper0 = %{version}
+Requires:       libtss2-tcti-spidev0 = %{version}
 Requires:       libtss2-tcti-swtpm0 = %{version}
 Requires:       libtss2-tctildr0 = %{version}
 Requires:       tpm2-0-tss = %{version}
@@ -139,6 +141,15 @@ Summary:        TCTI interface library for using a native TPM device node
 Group:          System/Libraries
 
 %description -n libtss2-tcti-device0
+TPM Command Transmission Interface library for communicating with a
+TPM device node. This provides direct access to the TPM through the Linux
+kernel driver.
+
+%package -n libtss2-tcti-spidev0
+Summary:        TCTI interface library for communicating with a SPI attached TPM
+Group:          System/Libraries
+
+%description -n libtss2-tcti-spidev0
 TPM Command Transmission Interface library for communicating with a
 TPM device node. This provides direct access to the TPM through the Linux
 kernel driver.
@@ -219,6 +230,16 @@ the details of communication with a TPM via SPI protocol. It uses user
 supplied methods for SPI and timing operations in order to be platform
 independent.
 
+%package -n     libtss2-tcti-i2c-helper0
+Summary:        TCTI i2c interface library
+Group:          System/Libraries
+
+%description -n libtss2-tcti-i2c-helper0
+A TCTI module for communication via I2C TPM device driver. Abstracts
+the details of communication with a TPM via I2C protocol. It uses user
+supplied methods for I2C and timing operations in order to be platform
+independent.
+
 %prep
 %autosetup -n tpm2-tss-%{version}
 
@@ -255,6 +276,8 @@ rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 %postun -n libtss2-tctildr0 -p /sbin/ldconfig
 %post -n libtss2-tcti-device0 -p /sbin/ldconfig
 %postun -n libtss2-tcti-device0 -p /sbin/ldconfig
+%post -n libtss2-tcti-spidev0 -p /sbin/ldconfig
+%postun -n libtss2-tcti-spidev0 -p /sbin/ldconfig
 %post -n libtss2-tcti-mssim0 -p /sbin/ldconfig
 %postun -n libtss2-tcti-mssim0 -p /sbin/ldconfig
 %post -n libtss2-mu0 -p /sbin/ldconfig
@@ -273,6 +296,8 @@ rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 %postun -n libtss2-tcti-pcap0 -p /sbin/ldconfig
 %post -n libtss2-tcti-spi-helper0 -p /sbin/ldconfig
 %postun -n libtss2-tcti-spi-helper0 -p /sbin/ldconfig
+%post -n libtss2-tcti-i2c-helper0 -p /sbin/ldconfig
+%postun -n libtss2-tcti-i2c-helper0 -p /sbin/ldconfig
 
 %files
 %doc *.md
@@ -309,6 +334,9 @@ rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 %files -n libtss2-tcti-device0
 %{_libdir}/libtss2-tcti-device.so.*
 
+%files -n libtss2-tcti-spidev0
+%{_libdir}/libtss2-tcti-spidev.so.*
+
 %files -n libtss2-tcti-mssim0
 %{_libdir}/libtss2-tcti-mssim.so.*
 
@@ -337,5 +365,8 @@ rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 
 %files -n libtss2-tcti-spi-helper0
 %{_libdir}/libtss2-tcti-spi-helper.so.*
+
+%files -n libtss2-tcti-i2c-helper0
+%{_libdir}/libtss2-tcti-i2c-helper.so.*
 
 %changelog

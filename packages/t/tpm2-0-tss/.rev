@@ -476,4 +476,41 @@ This is required for Kanidm as it requires openssl-3 and tpm2-0-tss. (forwarded 
     <comment>- Fix tmpfiles %ghost file names (forwarded request 1138485 from gmbr3)</comment>
     <requestid>1138772</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>404f216d84480c7ab74af22002348302</srcmd5>
+    <version>4.1.0</version>
+    <time>1715097748</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 4.1:
++ Security
+    - Fixed CVE-2024-29040 (bsc#1223690)
++ Fixed
+    - fapi: Fix length check on FAPI auth callbacks
+    - mu: Correct error message for errors
+    - tss2-rc: fix unknown laer handler dropping bits.
+    - fapi: Fix deviation from CEL specification (template_value was used instead of template_data).
+    - fapi: Fix json syntax error in FAPI profiles which was ignored by json-c.
+    - build: fix build fail after make clean.
+    - mu: Fix unneeded size check in TPM2B unmarshaling.
+    - fapi: Fix missing parameter encryption.
+    - build: Fix failed build with --disable-vendor.
+    - fapi: Fix flush of persistent handles.
+    - fapi: Fix test provisioning with template with self generated certificate disabled.
+    - fapi: Fix error in Fapi_GetInfo it TPM supports SHA3 hash algs.
+    - fapi: Revert pcr extension for EV_NO_ACTION events.
+    - fapi: Fix strange error messages if nv, ext, or policy path does not exits.
+    - fapi: Fix segfault caused by wrong allocation of pcr policy.
+    - esys: Fix leak in Esys_EvictControl for persistent handles.
+    - tss2-tcti: tcti-libtpms: fix test failure on big-endian platform.
+    - esys: Add reference counting for Esys_TR_FromTPMPublic.
+    - esys: Fix HMAC error if session bind key has an auth value with a trailing 0.
+    - fapi: fix usage of self signed certificates in TPM.
+    - fapi: Usage of self signed certificates.
+    - fapi: A segfault after the error handling of non existing keys.
+    - fapi: Fix several leaks.
+    - fapi: Fix error handling for policy execution.
+    - fapi: Fix usage of persistent handles (should not be flushed)
+    - fapi: Fix test provisioning with template (skip test without self generated certificate).</comment>
+    <requestid>1172147</requestid>
+  </revision>
 </revisionlist>
