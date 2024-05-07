@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue May  7 07:26:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.3 (bsc#1222492, CVE-2024-21506):
+  * Fixed a potential memory access violation when decoding invalid
+    bson.
+- update to 4.6.2:
+  * Fixed a bug appearing in Python 3.12 where “RuntimeError: can’t
+    create new thread at interpreter shutdown” could be written to
+    stderr when a MongoClient’s thread starts as the python
+    interpreter is shutting down.
+- update to 4.6.1:
+  * Ensure retryable read OperationFailure errors re-raise
+    exception when 0 or NoneType error code is provided.
+- update to 4.6.0:
+  * Release notes: https://www.mongodb.com/community/forums/t/pymongo-4-6-0-released/251866
+- update to 4.5.0:
+  * Release notes: https://www.mongodb.com/community/forums/t/pymongo-4-5-0-released/240662
+- update to 4.4.1:
+  * Fixed a bug where pymongo would raise a ConfigurationError:
+    Invalid SRV host error when connecting to a “mongodb+srv://”
+    URI that included capital letters in the SRV hosts returned
+    from DNS. (PYTHON-3800).
+  * Fixed a minor reference counting bug in the C extension (PYTHON-3798).
+- update to 4.4.0:
+  * Release notes: https://www.mongodb.com/community/forums/t/pymongo-4-4-released/232211
+
+-------------------------------------------------------------------
 Sat Jun 10 17:32:52 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -6,7 +33,7 @@ Sat Jun 10 17:32:52 UTC 2023 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Tue Dec  6 13:23:28 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 4.3.3 
+- Update to 4.3.3
   Version 4.3.3 documents support for the following:
   * CSFLE on-demand credentials for cloud KMS providers.
   * Authentication support for EKS Clusters.
@@ -18,7 +45,7 @@ Tue Dec  6 13:23:28 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Fri Oct 28 20:14:11 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 4.3.2 
+- Update to 4.3.2
   Complete Changelog https://pymongo.readthedocs.io/en/4.3.2/changelog.html
 
 -------------------------------------------------------------------
@@ -71,10 +98,10 @@ Sat Jul 16 18:05:53 UTC 2022 - Markéta Machová <mmachova@suse.com>
   * PyMongo 4.0 drops support for Python 2.7, 3.4, and 3.5.
   * PyMongo 4.1 drops support for Python 3.6.0 and 3.6.1, Python 3.6.2+ is now required.
   * PyMongo 4.0 drops support for MongoDB 2.6, 3.0, 3.2, and 3.4.
-  * The default uuid_representation for CodecOptions, JSONOptions, 
-    and MongoClient has been changed from bson.binary.UuidRepresentation.PYTHON_LEGACY 
-    to bson.binary.UuidRepresentation.UNSPECIFIED. Attempting to 
-    encode a uuid.UUID instance to BSON or JSON now produces an 
+  * The default uuid_representation for CodecOptions, JSONOptions,
+    and MongoClient has been changed from bson.binary.UuidRepresentation.PYTHON_LEGACY
+    to bson.binary.UuidRepresentation.UNSPECIFIED. Attempting to
+    encode a uuid.UUID instance to BSON or JSON now produces an
     error by default. See Handling UUID Data for details.
   * Removed some arguments and functions mostly from:
     * pymongo.mongo_client.MongoClient
@@ -82,16 +109,16 @@ Sat Jul 16 18:05:53 UTC 2022 - Markéta Machová <mmachova@suse.com>
     * pymongo.collection.Collection
     * pymongo.mongo_client.MongoClient
     * pymongo.son_manipulator
-  * directConnection URI option and keyword argument to MongoClient 
+  * directConnection URI option and keyword argument to MongoClient
     defaults to False instead of None
   * tz_aware, an argument for JSONOptions, now defaults to False instead of True.
   * items() now returns a dict_items object rather than a list.
   * The hint option is now required when using min or max queries with find().
-  * MongoClient` now raises an InvalidURI exception when it encounters 
+  * MongoClient` now raises an InvalidURI exception when it encounters
     unescaped percent signs in username and password when parsing MongoDB URIs.
-  * Enhanced connection pooling to create connections more efficiently 
+  * Enhanced connection pooling to create connections more efficiently
     and avoid connection storms.
-  * MongoClient now accepts a URI and keyword argument srvMaxHosts 
+  * MongoClient now accepts a URI and keyword argument srvMaxHosts
     that limits the number of mongos-like hosts a client will connect to.
   * Support for the “kmip” KMS provider for client side field level encryption.
   * Many more changes, seet the upstream changelog for details
@@ -295,7 +322,7 @@ Fri Feb 23 04:43:48 UTC 2018 - jacobwinski@gmail.com
 Sat Nov 25 17:07:57 UTC 2017 - axel.braun@gmx.de
 
 - update to version 3.5.1
-  tests_should_pass_without_MongoDB_running.patch removed - not needed anymore 
+  tests_should_pass_without_MongoDB_running.patch removed - not needed anymore
 
 -------------------------------------------------------------------
 Wed Apr 26 15:36:48 UTC 2017 - toddrme2178@gmail.com
@@ -350,8 +377,8 @@ Thu Feb 18 13:24:49 UTC 2016 - eshmarnev@suse.com
 
 - Update to 3.1.1:
   * Command monitoring support.
-  * Configurable error handling for UnicodeDecodeError. 
-  * Optional automatic timezone conversion when decoding BSON datetime. 
+  * Configurable error handling for UnicodeDecodeError.
+  * Optional automatic timezone conversion when decoding BSON datetime.
   * An implementation of GridFSBucket from the new GridFS spec.
   * Compliance with the new Connection String spec.
   * Reduced idle CPU usage in Python 2.
@@ -359,7 +386,7 @@ Thu Feb 18 13:24:49 UTC 2016 - eshmarnev@suse.com
 -------------------------------------------------------------------
 Wed Aug  5 00:49:55 UTC 2015 - jacobwinski@gmail.com
 
-- Update to 3.0.3, fixes: 
+- Update to 3.0.3, fixes:
   * PYTHON-942: Error in changelog guidance for Python 3 (find timeout parameter)
   * PYTHON-934: Unable to specify ssl_match_hostname option using URI style connection string
   * PYTHON-946: Undocumented regression in Collection.find - projection tuple no longer allowed
@@ -1076,7 +1103,7 @@ Fri Jul 25 08:59:00 UTC 2014 - mlin@suse.com
   * A new :doc:`bulk write operations API </examples/bulk>`.
   * Support for server side query timeouts using
     :meth:`~pymongo.cursor.Cursor.max_time_ms`.
-  * Support for writing :meth:`~pymongo.collection.Collection.aggregate` 
+  * Support for writing :meth:`~pymongo.collection.Collection.aggregate`
     output to a collection.
   * A new :meth:`~pymongo.collection.Collection.parallel_scan` helper.
   * :class:`~pymongo.errors.OperationFailure` and its subclasses now
@@ -1103,10 +1130,10 @@ Wed Nov 27 13:25:30 UTC 2013 - p.drouand@gmail.com
 - Update to version 2.6.3
   + fix : AttributeError raised when use_greenlets=True is specified
     without gevent (https://jira.mongodb.org/browse/PYTHON-561)
-  + fix : Semaphore leak during connection failure. 
+  + fix : Semaphore leak during connection failure.
     (https://jira.mongodb.org/browse/PYTHON-580)
-  + fix : MongoReplicaSetClient ignores waitQueueMultiple and 
-    waitQueueTimeoutMS 
+  + fix : MongoReplicaSetClient ignores waitQueueMultiple and
+    waitQueueTimeoutMS
     (https://jira.mongodb.org/browse/PYTHON-579)
 
 -------------------------------------------------------------------
@@ -1166,8 +1193,8 @@ Tue Jun  4 03:56:25 UTC 2013 - mlin@suse.com
 
 - Update to version 2.5.2
   * Version 2.5.2 fixes a NULL pointer dereference issue when decoding
-    an invalid :class:`~bson.dbref.DBRef`(bnc#822798, CVE-2013-2132). 
-    See release notes in JIRA: 
+    an invalid :class:`~bson.dbref.DBRef`(bnc#822798, CVE-2013-2132).
+    See release notes in JIRA:
     https://jira.mongodb.org/browse/PYTHON/fixforversion/12581 for details.
 
 -------------------------------------------------------------------
@@ -1176,14 +1203,14 @@ Tue Jun  4 03:54:45 UTC 2013 - mlin@suse.com
 - Update to version 2.5.1
   * Version 2.5.1 is a minor release that fixes issues discovered after the
     release of 2.5. Most importantly, this release addresses some race
-    conditions in replica set monitoring. See release notes in JIRA: 
+    conditions in replica set monitoring. See release notes in JIRA:
     https://jira.mongodb.org/browse/PYTHON/fixforversion/12484 for details.
 
 -------------------------------------------------------------------
 Wed Apr  3 21:23:59 UTC 2013 - dvaleev@suse.com
 
-- Set Exclusive arch for LittleEndian machines. mongodb is not 
-  BigEndian compatible. 
+- Set Exclusive arch for LittleEndian machines. mongodb is not
+  BigEndian compatible.
 
 -------------------------------------------------------------------
 Wed Mar 27 03:21:28 UTC 2013 - mlin@suse.com
@@ -1196,14 +1223,14 @@ Wed Mar 27 03:21:28 UTC 2013 - mlin@suse.com
 Wed Dec 12 08:01:11 UTC 2012 - mlin@suse.com
 
 - Update to version 2.4.1
-  * See https://jira.mongodb.org/secure/ReleaseNote.jspa?projectId=10004&version=12286 
+  * See https://jira.mongodb.org/secure/ReleaseNote.jspa?projectId=10004&version=12286
     for details
 
 -------------------------------------------------------------------
 Wed Dec 12 07:56:27 UTC 2012 - mlin@suse.com
 
 - Update to version 2.4
-  * See https://jira.mongodb.org/secure/ReleaseNote.jspa?projectId=10004&version=11485 
+  * See https://jira.mongodb.org/secure/ReleaseNote.jspa?projectId=10004&version=11485
     for details
 
 -------------------------------------------------------------------
@@ -1211,14 +1238,14 @@ Mon Sep 24 12:03:51 UTC 2012 - i@marguerite.su
 
 - Update to version 2.3
   * fixes see https://jira.mongodb.org/browse/PYTHON/fixforversion/11146
-  * Support for expanded read preferences including directing 
-    reads to tagged servers - See Secondary Reads for more 
+  * Support for expanded read preferences including directing
+    reads to tagged servers - See Secondary Reads for more
     information.
-  * Support for mongos failover - See High Availability and 
+  * Support for mongos failover - See High Availability and
     mongos for more information.
-  * A new aggregate() method to support MongoDB’s new 
+  * A new aggregate() method to support MongoDB’s new
     aggregation framework.
-  * Support for legacy Java and C# byte order when encoding 
+  * Support for legacy Java and C# byte order when encoding
     and decoding UUIDs.
   * Support for connecting directly to an arbiter.
 

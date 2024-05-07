@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymongo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pymongo
-Version:        4.3.3
+Version:        4.6.3
 Release:        0
 Summary:        Python driver for MongoDB
 License:        Apache-2.0
@@ -28,7 +28,10 @@ Source:         https://files.pythonhosted.org/packages/source/p/pymongo/pymongo
 # PATCH-FIX-SUSE: upstream does not care about 32bit
 Patch0:         mongodb-skip-test.patch
 BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} || 0%{?fedora_version} >= 24
@@ -51,10 +54,12 @@ implementation on top of pymongo.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+# do we really need C sources installed?
+%python_expand rm -v %{buildroot}%{$python_sitearch}/bson/*.{c,h}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -64,7 +69,7 @@ export CFLAGS="%{optflags}"
 %license LICENSE
 %doc README.rst
 %{python_sitearch}/pymongo
-%{python_sitearch}/pymongo-%{version}*-info
+%{python_sitearch}/pymongo-%{version}.dist-info
 %{python_sitearch}/bson
 %{python_sitearch}/gridfs
 
