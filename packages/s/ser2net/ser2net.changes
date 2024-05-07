@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 25 20:05:30 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.6.2
+  * Add initial EditorConfig support
+  * README.rst: fix typos
+  * Return 0 for the -v option
+  * Fix showport and showshortport state reporting
+
+-------------------------------------------------------------------
 Sat Mar 16 16:48:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.1:
