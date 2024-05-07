@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  5 19:35:03 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Fix ftbfs with gcc14:
+  * use correct optflags also in %check
+  * add test-tools-do-not-override-cflags.patch
+- Execute more tests
+
+-------------------------------------------------------------------
 Thu Nov 30 14:43:11 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Make use of openSUSE build flags

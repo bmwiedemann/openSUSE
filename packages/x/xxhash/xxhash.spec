@@ -1,7 +1,7 @@
 #
 # spec file for package xxhash
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        BSD-2-Clause AND GPL-2.0-only
 Group:          Productivity/Security
 URL:            https://github.com/Cyan4973/xxHash
 Source0:        https://github.com/Cyan4973/xxHash/archive/v%{version}.tar.gz#/xxHash-%{version}.tar.gz
+Patch0:         test-tools-do-not-override-cflags.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 
@@ -60,19 +61,25 @@ functions. Hashes are identical on all platforms.
 %build
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
-export LDFLAGS="%{?_lto_cflags}"
+export LDFLAGS="%{?build_ldflags}"
 %make_build prefix=%{_prefix} libdir=%{_libdir}
 
 %install
+export CFLAGS="%{optflags}"
+export CXXFLAGS="%{optflags}"
+export LDFLAGS="%{?build_ldflags}"
 %make_install prefix=%{_prefix} libdir=%{_libdir}
 rm -rf %{buildroot}%{_libdir}/libxxhash.a
 
 %check
+export CFLAGS="%{optflags}"
+export CXXFLAGS="%{optflags}"
+export LDFLAGS="%{?build_ldflags}"
 # not safe for parallel execution as it removes xxhash.o and recreates it with different flags
-%make_build -j1 test
+# the list is taken from test-all with non-working/irrelevant ones (such as ones that change the toolchain) removed
+%make_build -j1 test test-unicode listL120 trailingWhitespace test-xxh-nnn-sums
 
-%post -n libxxhash0 -p /sbin/ldconfig
-%postun -n libxxhash0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libxxhash0
 
 %files
 %license LICENSE
