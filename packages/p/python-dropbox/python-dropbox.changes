@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 23 22:28:00 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Switch to sle15_python_module_pythons to build for newer Python stack
+
+-------------------------------------------------------------------
 Thu Dec  9 09:15:50 UTC 2021 - pgajdos@suse.com
 
 - do not require pytest-runner for build, not required
