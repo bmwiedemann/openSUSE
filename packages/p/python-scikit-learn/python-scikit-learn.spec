@@ -24,9 +24,6 @@
 %else
 %define psuffix -%{flavor}
 %bcond_without test
-%if "%{flavor}" != "test-py39"
-%define skip_python39 1
-%endif
 %if "%{flavor}" != "test-py310"
 %define skip_python310 1
 %endif
@@ -36,8 +33,8 @@
 %if "%{flavor}" != "test-py312"
 %define skip_python312 1
 %endif
-# Skip all empty test flavors: The obs server-side interpreter cannot use lua or rpm shrink, last one is for sle15_python_module_pythons
-%if "%pythons" == "" || "%pythons" == " " || "%pythons" == "  " || "%pythons" == "   " || "%pythons" == "    " || ( "%pythons" == "python311" && 0%{?skip_python311} )
+# Skip empty buildsets, last one is for sle15_python_module_pythons
+%if "%{shrink:%{pythons}}" == "" || ("%pythons" == "python311" && 0%{?skip_python311})
 ExclusiveArch:  donotbuild
 %define python_module() %flavor-not-enabled-in-buildset-for-suse-%{?suse_version}
 %endif
@@ -57,7 +54,7 @@ Source0:        https://files.pythonhosted.org/packages/source/s/scikit-learn/sc
 BuildRequires:  %{python_module Cython >= 3.0.8}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module joblib >= 1.2.0}
-BuildRequires:  %{python_module numpy-devel >= 1.17.3 with %python-numpy-devel < 2}
+BuildRequires:  %{python_module numpy-devel >= 1.19.5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scipy >= 1.6.0}
 BuildRequires:  %{python_module setuptools}
@@ -70,9 +67,9 @@ BuildRequires:  openblas-devel
 BuildRequires:  python-rpm-macros
 # Check sklearn/_min_dependencies.py for dependencies
 Requires:       python-joblib >= 1.2.0
+Requires:       python-numpy >= 1.19.5
 Requires:       python-scipy >= 1.6.0
 Requires:       python-threadpoolctl >= 2.0.0
-Requires:       (python-numpy >= 1.19.5 with python-numpy < 2)
 Suggests:       python-matplotlib >= 3.3.4
 Suggests:       python-pandas
 Suggests:       python-seaborn

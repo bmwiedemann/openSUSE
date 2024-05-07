@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May  5 14:49:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Unlock numpy 2 (but don't force it for build)
+
+-------------------------------------------------------------------
 Mon Apr 15 09:06:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.2:
