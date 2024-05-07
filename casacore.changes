@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  2 14:25:09 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add casacore-drop-mirlib.patch: drop unused mirlib library,
+  patch taken from upstream PR. Fixes build failures against
+  GCC-14 (gh#casacore/casacore#1344).
+
+-------------------------------------------------------------------
 Mon Oct 23 11:40:11 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Drop support for obsolete openmpi[123]
