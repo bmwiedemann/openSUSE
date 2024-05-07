@@ -40,6 +40,8 @@ Patch0:         libxslt-1.1.24-no-net-autobuild.patch
 #   Initialize the random seed to ensure libxslt's math.random() function
 #   produces unpredictable outputs.
 Patch1:         libxslt-random-seed.patch
+# PATCH-FIX_UPSTREAM -- gcc14-runtest-no-const.patch
+Patch2:         gcc14-runtest-no-const.patch
 #
 ### SUSE patches starts on 1000
 # PATCH-FIX-SUSE

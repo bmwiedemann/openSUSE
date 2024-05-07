@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  5 16:26:10 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Fix ftbfs with GCC14 (bsc#1220571)
+  * correct libxslt-random-seed.patch to include time.h unconditionally
+  * add gcc14-runtest-no-const.patch
+
+-------------------------------------------------------------------
 Fri Nov 24 20:53:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.1.39:
