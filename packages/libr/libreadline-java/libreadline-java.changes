@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  6 15:58:26 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * libreadline-java-gcc14.patch
+    + cast out constness and fix build with gcc14
+
+-------------------------------------------------------------------
 Wed Feb 21 14:36:44 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
