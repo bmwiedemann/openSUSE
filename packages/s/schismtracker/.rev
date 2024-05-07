@@ -253,4 +253,12 @@
     <comment>- Update to release 20240426</comment>
     <requestid>1170449</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>767851c329973b1096a98bdae9ee5fc0</srcmd5>
+    <version>20240503</version>
+    <time>1715097869</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20240503</comment>
+    <requestid>1172348</requestid>
+  </revision>
 </revisionlist>

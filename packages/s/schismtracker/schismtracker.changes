@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May  5 22:18:06 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240503
+  * Add initial JACK-MIDI support.
+  * Fix handling of instrument + tone portamento while in
+    Compatible Gxx mode.
+  * Warn on nonfunctional MIDI processing.
+  * When loading .669 files, reset the effects list on a new note.
+
+-------------------------------------------------------------------
 Sat Apr 27 08:51:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20240426
