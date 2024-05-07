@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Apr 23 06:57:55 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.0
+  * Added implementation of the DHEat denial-of-service attack
+    (see --dheat option; CVE-2002-20001).
+  * Expanded filter of CBC ciphers to flag for the Terrapin
+    vulnerability. It now includes more rarely found ciphers.
+  * Fixed parsing of ecdsa-sha2-nistp* CA signatures on host keys.
+    Additionally, they are now flagged as potentially
+    back-doored, just as standard host keys are.
+  * Gracefully handle rare exceptions (i.e.: crashes) while
+    performing GEX tests.
+  * Built-in policies now include a change log (use -L -v to view
+    them).
+  * Custom policies now support the
+    allow_algorithm_subset_and_reordering directive to allow
+    targets to pass with a subset and/or re-ordered list of host
+    keys, kex, ciphers, and MACs. This allows for the creation of
+    a baseline policy where targets can optionally implement
+    stricter controls;
+  * Custom policies now support the allow_larger_keys directive to
+    allow targets to pass with larger host keys, CA keys, and
+    Diffie-Hellman keys. This allows for the creation of a baseline
+    policy where targets can optionally implement stricter controls
+  * Color output is disabled if the NO_COLOR environment variable
+    is set (see https://no-color.org/).
+  * Added 1 new key exchange algorithm: gss-nistp384-sha384-*.
+  * Added 1 new cipher: aes128-ocb@libassh.org.
+
+-------------------------------------------------------------------
 Wed Dec 20 18:41:05 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.1.0:
