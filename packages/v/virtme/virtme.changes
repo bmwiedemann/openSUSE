@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May  3 20:55:04 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.24:
+  * The most noticeable changes include the support for the loop
+    network type and the possibility to specify the --network
+    command multipe times, both useful for kernel selftests testing
+  * Moreover, there is a boot-time improvement in environments where
+    the kvm acceleration is not available, such as container, cloud
+    environments, etc. (using the q35 arch in qemu).
+  * Notably, this new version is expected to enhance the performance
+    of GitHub workflows that use virtme-ng.
+
+-------------------------------------------------------------------
 Fri Mar 29 14:17:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.23:
