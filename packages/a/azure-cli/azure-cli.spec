@@ -39,13 +39,13 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.59.0
+Version:        2.60.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
 Group:          System/Management
 URL:            https://github.com/Azure/azure-cli
-Source:         https://files.pythonhosted.org/packages/source/a/azure-cli/azure-cli-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure-cli/azure_cli-%{version}.tar.gz
 Source1:        LICENSE.txt
 Patch1:         ac_use-python3-by-default.patch
 %if 0%{?_test}
@@ -64,7 +64,7 @@ Requires:       %{pythons}-PyNaCl >= 1.5.0
 Requires:       %{pythons}-PyYAML >= 5.1
 Requires:       %{pythons}-antlr4-python3-runtime >= 4.13.1
 Requires:       %{pythons}-azure-appconfiguration >= 1.1.1
-Requires:       %{pythons}-azure-batch >= 14.1.0
+Requires:       %{pythons}-azure-batch >= 14.2.0
 Requires:       %{pythons}-azure-cosmos >= 3.0.2
 Requires:       %{pythons}-azure-data-tables >= 12.4.0
 Requires:       %{pythons}-azure-datalake-store >= 0.0.49
@@ -79,7 +79,7 @@ Requires:       %{pythons}-azure-mgmt-appconfiguration >= 3.0.0
 Requires:       %{pythons}-azure-mgmt-appcontainers >= 2.0.0
 Requires:       %{pythons}-azure-mgmt-applicationinsights >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-authorization >= 4.0.0
-Requires:       %{pythons}-azure-mgmt-batch >= 17.2.0
+Requires:       %{pythons}-azure-mgmt-batch >= 17.3.0
 Requires:       %{pythons}-azure-mgmt-batchai >= 7.0.0b1
 Requires:       %{pythons}-azure-mgmt-billing >= 6.0.0
 Requires:       %{pythons}-azure-mgmt-botservice >= 2.0.0b3
@@ -88,7 +88,7 @@ Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 13.5.0
 Requires:       %{pythons}-azure-mgmt-compute >= 30.6.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.1.0
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 10.3.0
-Requires:       %{pythons}-azure-mgmt-containerservice >= 29.1.0
+Requires:       %{pythons}-azure-mgmt-containerservice >= 30.0.0
 Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.4.0
 Requires:       %{pythons}-azure-mgmt-databoxedge >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-datalake-store >= 0.5.0
@@ -117,8 +117,8 @@ Requires:       %{pythons}-azure-mgmt-netapp >= 10.1.0
 Requires:       %{pythons}-azure-mgmt-policyinsights >= 1.1.0b4
 Requires:       %{pythons}-azure-mgmt-privatedns >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-rdbms >= 10.2.0b14
-Requires:       %{pythons}-azure-mgmt-recoveryservices >= 2.5.0
-Requires:       %{pythons}-azure-mgmt-recoveryservicesbackup >= 8.0.0
+Requires:       %{pythons}-azure-mgmt-recoveryservices >= 3.0.0
+Requires:       %{pythons}-azure-mgmt-recoveryservicesbackup >= 9.1.0
 Requires:       %{pythons}-azure-mgmt-redhatopenshift >= 1.4.0
 Requires:       %{pythons}-azure-mgmt-redis >= 14.3.0
 Requires:       %{pythons}-azure-mgmt-reservations >= 2.0.0
@@ -128,9 +128,9 @@ Requires:       %{pythons}-azure-mgmt-security >= 5.0.0
 Requires:       %{pythons}-azure-mgmt-servicebus >= 8.2.0
 Requires:       %{pythons}-azure-mgmt-servicefabric >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-servicefabricmanagedclusters >= 2.0.0~b6
-Requires:       %{pythons}-azure-mgmt-servicelinker >= 1.2.0~b1
+Requires:       %{pythons}-azure-mgmt-servicelinker >= 1.2.0~b2
 Requires:       %{pythons}-azure-mgmt-signalr >= 2.0.0~b1
-Requires:       %{pythons}-azure-mgmt-sql >= 4.0.0b15
+Requires:       %{pythons}-azure-mgmt-sql >= 4.0.0b16
 Requires:       %{pythons}-azure-mgmt-sqlvirtualmachine >= 1.0.0b5
 Requires:       %{pythons}-azure-mgmt-storage >= 21.1.0
 Requires:       %{pythons}-azure-mgmt-synapse >= 2.1.0b5
@@ -287,7 +287,7 @@ Microsoft Azure CLI 2.0 Command Line Utilities
 # reason
 touch %{_sourcedir}/%{short_name}
 %else
-%setup -q -n azure-cli-%{version}
+%setup -q -n azure_cli-%{version}
 %patch -P 1 -p1
 %endif
 
