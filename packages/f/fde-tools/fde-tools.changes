@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  7 05:53:20 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-bsc1223771-firstboot-make-Pass-phrase-mandatory.patch
+  to make "pass" mandatory during firstboot (bsc#1223771)
+
+-------------------------------------------------------------------
 Fri Apr 19 07:46:43 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add patches to adopt the "--target-platform" option when using

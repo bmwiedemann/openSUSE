@@ -37,6 +37,7 @@ Patch4:         fde-tools-bsc1222970-firstboot-replace-ALP.patch
 Patch5:         fde-tools-bsc1223002-firstboot-disable-ccid.patch
 Patch6:         fde-tools-bsc1218390-Switch-to-target-platform-when-available.patch
 Patch7:         fde-tools-bsc1218390-fix-tpm-present-with-the-newer-pcr-oracle.patch
+Patch8:         fde-tools-bsc1223771-firstboot-make-Pass-phrase-mandatory.patch
 BuildRequires:  help2man
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcryptsetup)

@@ -1,0 +1,56 @@
+From e0222c3dcf0bb1a44328b893bed9224d05b7506a Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Mon, 6 May 2024 16:28:41 +0800
+Subject: [PATCH] firstboot: make "Pass phrase" mandatory
+
+Without choosing the "Pass phrase" option, the default VM password will
+remain after firstboot. To ensure the default password is gone for good,
+make "Pass phrase" mandatory.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ firstboot/fde | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/firstboot/fde b/firstboot/fde
+index 4911b32..161e832 100755
+--- a/firstboot/fde
++++ b/firstboot/fde
+@@ -203,15 +203,22 @@ function fde_setup_unencrypted {
+ 
+ function __fde_valid_protections {
+ 
++    pass_warn=true
+     for tag in $*; do
+         case $tag in
+-        pass|tpm) : ;;
++        pass) pass_warn=false ;;
++        tpm) : ;;
+         *)
+ 	    display_errorbox "FDE key protection scheme $tag not yet implemented"
+ 	    return 1;;
+         esac
+     done
+ 
++    if $pass_warn; then
++        display_errorbox "Pass phrase is mandatory"
++        return 1
++    fi
++
+     return 0
+ }
+ 
+@@ -253,10 +260,6 @@ function fde_choose_protection {
+ 	FDE_PROTECTION="$result"
+ 	fde_trace "user selected protections: <$FDE_PROTECTION>"
+ 
+-	if [ -z "$FDE_PROTECTION" ]; then
+-	    return 1
+-	fi
+-
+ 	if __fde_valid_protections $FDE_PROTECTION; then
+ 	    break
+ 	fi
+-- 
+2.35.3
+
