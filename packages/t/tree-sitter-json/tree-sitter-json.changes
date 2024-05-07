@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 29 22:02:31 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 0.21.0:
+  * fix: only allow strings in object keys
+
+-------------------------------------------------------------------
 Mon Feb 26 06:43:44 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Initial packaging for openSUSE
