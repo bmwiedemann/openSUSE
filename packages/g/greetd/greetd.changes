@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue May  7 06:27:12 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Move PAM to /usr -- Fixes filelist-forbidden-move-to-usr badness
+- Enable tests
+- Service to use manual instead of deprecated disabled
+- Remove deprecated cargo_config (now part of vendor)
+- Update to version 0.10.0:
+  Breaking:
+  * Support for the old configuration format, superseded in 0.5.0,
+    has been removed. Please ensure that the new INI format
+    documented in `man 5 greetd` is used before upgrading.
+  * Support for falling back to the `login` PAM service when the
+    `greetd` PAM service is missing has been removed. Ensure that a
+    `greetd` PAM service is present in `/etc/pam.d/` or
+    `/usr/lib/pam.d` before upgrading. The file for `login` can be
+    copied if the fallback was used previously.
+  * Fewer environment variables are exposed to user sessions. In
+    particular, GREETD_SOCK is only shown to greeter sessions, and
+    XDG_SESSION_CLASS and XDG_VTNR is only shown to PAM.
+  Other:
+  * Update deprecated SPDX identifier for GPL-3.0-only
+  * Add ReGreet to list of known greetd greeters
+  * Drop unmaintained `users` crate
+  * Remove no-op question mark and Ok()
+  * Remove references that are implicitly dereferenced
+  * Remove pointless copying of string before copying it
+  * Use strip_prefix to strip prefix
+  * Derive VtSelection::default
+  * Deduplicate parsing of VtSelection
+  * Allow overriding VT via arguments
+  * agreety: Return error if no input when prompted
+  * config: Fix tests for service config
+  * server: cargo fmt
+  * pam: Remove fallback to the login service
+  * pam: Swap /etc/pam.d and /usr/lib/pam.d
+  * man: Document VT switch
+  * readme: Add two greeter implementations
+  * readme: Add Phog greeter implementation
+
+-------------------------------------------------------------------
 Wed Feb  7 09:53:18 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Remove dependencies getent, groupadd, useradd, group(video), now taken care
