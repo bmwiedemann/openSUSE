@@ -25,9 +25,6 @@
 %else
 %define psuffix -%{flavor}
 %bcond_without test
-%if "%{flavor}" != "test-py39"
-%define skip_python39 1
-%endif
 %if "%{flavor}" != "test-py310"
 %define skip_python310 1
 %endif
@@ -64,7 +61,7 @@ ExclusiveArch:  donotbuild
 %endif
 Name:           python-pandas%{psuffix}
 # Set version through _service
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -72,10 +69,13 @@ URL:            https://pandas.pydata.org/
 # SourceRepository: https://github.com/pandas-dev/pandas
 # Must be created by cloning through `osc service runall`: gh#pandas-dev/pandas#54903, gh#pandas-dev/pandas#54907
 Source0:        pandas-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pandas-pr58269-pyarrow16xpass.patch -- gh#pandas-dev/pandas#58269
+Patch0:         https://github.com/pandas-dev/pandas/pull/58269.patch#/pandas-pr58269-pyarrow16xpass.patch
+%if !%{with test}
 BuildRequires:  %{python_module Cython >= 3.0.5}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module meson-python >= 0.13.1}
-BuildRequires:  %{python_module numpy-devel >= 1.23.2 if %python-base < 3.12 else %python-numpy-devel >= 1.26}
+BuildRequires:  %{python_module numpy-devel >= 1.26}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module versioneer-toml}
 BuildRequires:  %{python_module wheel}
@@ -83,16 +83,21 @@ BuildRequires:  fdupes
 BuildRequires:  gcc%{?gccver}-c++
 BuildRequires:  git-core
 BuildRequires:  meson >= 1.2.1
+%endif
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.8.2
 Requires:       python-pytz >= 2020.1
 Requires:       timezone >= 2022a
 Obsoletes:      python-pandas-doc < %{version}
 Provides:       python-pandas-doc = %{version}
-%if 0%{python_version_nodots} < 312
-Requires:       (python-numpy >= 1.23.2 with python-numpy < 2)
+%if 0%{python_version_nodots} < 311
+Requires:       python-numpy >= 1.22.4
 %else
-Requires:       (python-numpy >= 1.26  with python-numpy < 2)
+%if 0%{python_version_nodots} == 311
+Requires:       python-numpy >= 1.23.2
+%else
+Requires:       python-numpy >= 1.26
+%endif
 %endif
 # SECTION extras
 Recommends:     python-pandas-performance
@@ -131,7 +136,7 @@ BuildRequires:  %{python_module dask-dataframe}
 BuildRequires:  %{python_module pandas-all = %{version}}
 BuildRequires:  %{python_module pandas-clipboard = %{version}}
 BuildRequires:  %{python_module pandas-compression = %{version}}
-BuildRequires:  %{python_module pandas-computation = %{version} if %python-base >= 3.10}
+BuildRequires:  %{python_module pandas-computation = %{version}}
 BuildRequires:  %{python_module pandas-excel = %{version}}
 %{?with_pyarrow:BuildRequires:  %{python_module pandas-feather = %{version}}}
 BuildRequires:  %{python_module pandas-fss = %{version}}
@@ -418,9 +423,7 @@ Requires:       python-pytest-xdist >= 2.2.0
 Requires:       python-scipy >= 1.10.0
 Requires:       python-tables >= 3.8.0
 Requires:       python-tabulate >= 0.9
-%if 0%{python_version_nodots} >= 310
 Requires:       python-xarray >= 2022.12
-%endif
 Requires:       python-xlrd >= 2.0.1
 Requires:       python-zstandard >= 0.19.0
 %{?with_aws:Requires:                  python-s3fs >= 2022.05.0}
@@ -456,6 +459,7 @@ sed -i "s|'generate_version.py',|'${genpython}', 'generate_version.py',|" meson.
 # don't require the PyPI data only tzdata package, we use the timezone RPM package
 sed -i '/dependencies = \[/,/\]/ {/tzdata.*>=/d}' pyproject.toml
 %endif
+%autopatch -p1
 
 %build
 %if !%{with test}
@@ -516,6 +520,11 @@ SKIP_TESTS+=" or test_maybe_promote_int_with_int"
 SKIP_TESTS+=" or (test_rolling_quantile_interpolation_options and data1 and linear and 0.1)"
 # overflow
 SKIP_TESTS+=" or test_large_string_pyarrow"
+SKIP_TESTS+=" or test_pandas_nullable_with_missing_values"
+SKIP_TESTS+=" or test_pandas_nullable_without_missing_values"
+# pyarrow read-only errors
+SKIP_TESTS+=" or test_left_join_multi_index"
+SKIP_TESTS+=" or test_join_on_single_col_dup_on_right"
 # dtype mismatch
 SKIP_TESTS+=" or test_frame_setitem_dask_array_into_new_col"
 SKIP_TESTS+=" or test_get_indexer_arrow_dictionary_target"
