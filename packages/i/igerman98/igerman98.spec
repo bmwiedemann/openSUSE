@@ -1,7 +1,7 @@
 #
 # spec file for package igerman98
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,9 +24,9 @@ Release:        0
 Summary:        German Spell Check Dictionaries
 # According to Documentation/Copyright we can distribute program under GPL-2.0
 # or GPL-3.0. We have choosed GPL-2.0.
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Text/Spell
-Url:            http://www.j3e.de/ispell/igerman98/dict/
+URL:            http://www.j3e.de/ispell/igerman98/dict/
 Source0:        https://www.j3e.de/ispell/igerman98/dict/%{name}-%{version}.tar.bz2
 Source2:        fix8bit.c
 Source3:        austrian.el
@@ -36,17 +36,17 @@ Patch0:         %{name}-ispell-sort.patch
 BuildRequires:  ispell
 
 %description
-A meta package for German, Swiss, and Austrian dictionaries for the ispell 
+A meta package for German, Swiss, and Austrian dictionaries for the ispell
 and myspell spell checkers.
 
 %package doc
 Summary:        Documentation for German dictionaries
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 BuildArch:      noarch
 
 %description doc
-Documentation for German, Swiss, and Austrian dictionaries for the ispell 
+Documentation for German, Swiss, and Austrian dictionaries for the ispell
 and myspell spell checkers.
 
 %package -n ispell-ngerman
@@ -63,7 +63,7 @@ the package ispell.
 
 %package -n ispell-nswiss
 Summary:        New Swiss ispell dictionary
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Provides:       ispell_dictionary
 Provides:       locale(ispell:de_CH)
@@ -77,7 +77,7 @@ package ispell.
 
 %package -n ispell-naustrian
 Summary:        New Austrian ispell dictionary
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Provides:       ispell_dictionary
 Provides:       locale(ispell:de_AT)

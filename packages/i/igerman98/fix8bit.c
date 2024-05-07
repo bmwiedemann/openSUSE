@@ -76,6 +76,7 @@ static char Rcs_Id[] =
  */
 
 #include <stdio.h>
+#include <string.h>
 
 int		main ();	/* Convert to/from 8-bit sequences */
 static void	usage ();	/* Issue a usage message */
