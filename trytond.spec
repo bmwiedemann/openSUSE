@@ -30,7 +30,7 @@
 %endif
 
 Name:           trytond
-Version:        %{majorver}.41
+Version:        %{majorver}.46
 Release:        0
 Summary:        An Enterprise Resource Planning (ERP) system
 License:        GPL-3.0-or-later
@@ -40,8 +40,8 @@ Source0:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.g
 Source1:        tryton-server.README.openSUSE
 Source3:        %{name}.conf
 Source4:        %{name}_log.conf
-Source5:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
-Source6:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
+## Source5:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
+## Source6:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 Source7:        openSUSE-trytond-setup
 Source20:       %{name}.service
 Patch0:         Update_changed_fields_6.0.diff

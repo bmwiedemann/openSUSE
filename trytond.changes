@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  7 08:02:02 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- Version 6.0.46 - Bugfix Release
+
+-------------------------------------------------------------------
+Mon Apr 29 17:39:57 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- sources are not signed anymore
+
+-------------------------------------------------------------------
 Mon Feb 26 16:05:43 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
