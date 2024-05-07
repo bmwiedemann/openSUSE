@@ -1030,4 +1030,12 @@ Build tested.
     <comment></comment>
     <requestid>1168480</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>86200568bf3b39207de166636e612686</srcmd5>
+    <version>1.0.5+git36.60deeb2</version>
+    <time>1715097755</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1172234</requestid>
+  </revision>
 </revisionlist>

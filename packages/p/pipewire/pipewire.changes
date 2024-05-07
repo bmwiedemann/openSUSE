@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon May 06 15:31:52 UTC 2024 - alarrosa@suse.com
+
+- Update to version 1.0.5+git36.60deeb2 to fix several crashes,
+  NULL checks, format strings and other issues:
+  * spa: libcamera: fix RGB mappings
+  * pw-dump: destroy all objects not just those matching the pattern
+  * pw-dump: fix string memory leak on error
+  * json: fix high surrogate escapes
+  * core: handle import errors better
+  * gst/src: fix crash when current_caps is NULL
+  * gst/src: Avoid unnecessary renegotiations during streaming
+  * gst/src: Cleanups for src_negotiate()
+  * pw-mon: fix type confusion in core event handler
+  * gst: fix stream params memory leak
+  * gst: handle some more errors
+  * treewide: fix errno assignments
+  * alsa-pcm: don't force quantum for iec958 formats
+  * journal: prepend code location to messages at debug log levels
+  * module-rt: fix compiler warning
+  * filter-chain: fix arguments of calloc
+  * combine-stream tag forward
+  * Add album to tag metadata
+  * impl-node: avoid bitfield races
+  * treewide: fix some format string issues
+  * conf: warn when match actions are missing
+  * module-protocol-simple: handle 'node.name' property
+  * module-ffado: only start after ports are configured
+  * context: fill basic properties early
+  * combine-stream: fix latency-compensate with resample.disabled=true
+  * profiler: remove unused data-loop
+  * v4l2: fix printf format
+  * spa: v4l2: encode device id into a json array
+  * spa: libcamera: encode device ids into a json array
+  * impl-port: avoid doing work when the port is destroyed
+  * impl-port: use 0 size when clearing IO
+  * stream: log a warning when media.class and direction mismatch
+  * module-loopback: only enable delay with valid rate and channels
+  * alsa: fix race when updating the eventfd
+  * audioconvert: also clamp monitor volume to min/max
+  * combine-stream: actually make use of resample.disable
+
+-------------------------------------------------------------------
 Wed Apr 17 06:56:33 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.0.5:
