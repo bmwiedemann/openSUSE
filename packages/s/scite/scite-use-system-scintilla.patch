@@ -1,7 +1,7 @@
-Index: scite-5.4.1/scite/gtk/makefile
+Index: scite-5.5.0/scite/gtk/makefile
 ===================================================================
---- scite-5.4.1.orig/scite/gtk/makefile
-+++ scite-5.4.1/scite/gtk/makefile
+--- scite-5.5.0.orig/scite/gtk/makefile
++++ scite-5.5.0/scite/gtk/makefile
 @@ -8,6 +8,7 @@
  
  srcdir ?= .
@@ -51,10 +51,10 @@ Index: scite-5.4.1/scite/gtk/makefile
  	rm -f $(DESTDIR)$(libdir)/liblexilla.so
  	rm -rf $(DESTDIR)$(SYSCONF_PATH)
  ifdef gnomeprefix
-Index: scite-5.4.1/lexilla/src/makefile
+Index: scite-5.5.0/lexilla/src/makefile
 ===================================================================
---- scite-5.4.1.orig/lexilla/src/makefile
-+++ scite-5.4.1/lexilla/src/makefile
+--- scite-5.5.0.orig/lexilla/src/makefile
++++ scite-5.5.0/lexilla/src/makefile
 @@ -38,6 +38,7 @@ else
      BASE_FLAGS += -fvisibility=hidden
  endif
