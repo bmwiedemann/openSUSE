@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  3 13:35:49 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Specify version for make_build so that passt reports its version correctly,
+  fixes bsc#1223853
+
+-------------------------------------------------------------------
 Fri Apr 26 12:42:18 UTC 2024 - dcermak@suse.com
 
 - Update to version 20240426.d03c4e2:
