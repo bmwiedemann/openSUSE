@@ -24,7 +24,7 @@ Summary:        RDF Storage and SPARQL Query Engine
 License:        GPL-3.0-or-later
 URL:            https://4store.github.io
 Source:         https://github.com/4store/4store/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch0:         invalid-define.patch
+Patch0:         Use-_GNU_SOURCE-instead-of-__USE_MISC.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel

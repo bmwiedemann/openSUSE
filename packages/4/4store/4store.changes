@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  6 16:40:32 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Delete incomplete patch invalid-define.patch and instead...
+- ...backport upstream patch 53e5c8f2ed512c2f4c45cea4e991e0c1fee01a35
+  (Steven Chamberlain: use _GNU_SOURCE instead of __USE_MISC), now in
+  patch Use-_GNU_SOURCE-instead-of-__USE_MISC.patch, to fix
+  boo#1223978.
+
+-------------------------------------------------------------------
 Fri Mar  8 07:48:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

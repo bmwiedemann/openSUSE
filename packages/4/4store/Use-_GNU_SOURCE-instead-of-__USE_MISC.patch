@@ -1,0 +1,36 @@
+From 53e5c8f2ed512c2f4c45cea4e991e0c1fee01a35 Mon Sep 17 00:00:00 2001
+From: Steven Chamberlain <steven@pyro.eu.org>
+Date: Sun, 28 Feb 2016 19:39:34 +0000
+Subject: [PATCH] use _GNU_SOURCE instead of __USE_MISC
+
+Defining __USE_MISC directly is forbidden in feature_test_macros(7).
+
+Use _GNU_SOURCE, as other source files do already, which implies
+_XOPEN_SOURCE and __USE_MISC.
+
+See https://bugs.debian.org/810975
+---
+ src/frontend/filter-datatypes.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/frontend/filter-datatypes.c b/src/frontend/filter-datatypes.c
+index 8aae1dd..555b3a0 100644
+--- a/src/frontend/filter-datatypes.c
++++ b/src/frontend/filter-datatypes.c
+@@ -18,11 +18,11 @@
+  *  Copyright (C) 2006 Steve Harris for Garlik
+  */
+ 
+-#define _XOPEN_SOURCE
++#define _GNU_SOURCE
++
+ #include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+-#define __USE_MISC
+ #include <time.h>
+ 
+ #include "filter.h"
+-- 
+2.44.0
+
