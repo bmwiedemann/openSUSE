@@ -662,4 +662,26 @@
     <comment></comment>
     <requestid>1153954</requestid>
   </revision>
+  <revision rev="71" vrev="8">
+    <srcmd5>69a39cb61658d8ea1b5953b14ebcf11f</srcmd5>
+    <version>2.1.28</version>
+    <time>1715097743</time>
+    <user>dimstar_suse</user>
+    <comment>- GCC 14: cyrus-sasl package fails (bsc#1221863)
+  Apply upstream patch:
+  0001-Fix-time.h-check.patch
+
+- GCC 14: cyrus-sasl package fails (bsc#1221863)
+  Apply upstream patch:
+  0001-Fix-time.h-check.patch
+
+- GCC 14: cyrus-sasl package fails (bsc#1221863)
+  Apply upstream patch:
+  0001-Fix-time.h-check.patch
+
+- GCC 14: cyrus-sasl package fails (bsc#1221863)
+  Apply upstream patch:
+  0001-Fix-time.h-check.patch</comment>
+    <requestid>1172385</requestid>
+  </revision>
 </revisionlist>

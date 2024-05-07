@@ -1,7 +1,7 @@
 #
 # spec file for package cyrus-sasl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Patch0:         cyrus-sasl.dif
 Patch5:         cyrus-sasl-no_rpath.patch
 Patch6:         cyrus-sasl-lfs.patch
 Patch7:         fix_libpq-fe_include.diff
+Patch8:         0001-Fix-time.h-check.patch
 BuildRequires:  gdbm-devel
 BuildRequires:  krb5-mini-devel
 BuildRequires:  libtool
@@ -173,6 +174,7 @@ fi
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1
+%patch -P 8 -p1
 
 %build
 find . -name "*.cvsignore" -exec rm -fv "{}" "+"
