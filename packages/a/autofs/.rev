@@ -1140,4 +1140,12 @@ Update 5.0.6 upstream patches to 20111210 (bnc#741878)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1152820</requestid>
   </revision>
+  <revision rev="134" vrev="3">
+    <srcmd5>7ed44f79cfa6de70cef51ac1a7f69ad3</srcmd5>
+    <version>5.1.9</version>
+    <time>1715097763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1172243</requestid>
+  </revision>
 </revisionlist>

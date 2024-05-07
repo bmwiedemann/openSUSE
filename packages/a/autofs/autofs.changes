@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 20 01:27:16 UTC 2024 - David Disseldorp <ddiss@suse.com>
+
+- Fix -Werror=incompatible-pointer-types issues (bsc#1221682)
+  * Add autofs-5.1.9-fix-ldap_parse_page_control-check.patch
+  * Add autofs-5.1.9-cast-sasl_callback_t-function-pointers.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 10:27:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

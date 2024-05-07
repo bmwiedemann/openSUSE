@@ -59,6 +59,9 @@ Patch104:       autofs-use-libldap_r-instead-of-libldap-for-thread-safety.patch
 Patch106:       autofs-nsswitch-usr-etc.patch
 # bsc#1207881 - Obsolete and incorrect manual page details for autofs(8)
 Patch108:       autofs-suse-manpage-remove-initdir.patch
+# bsc#1221682 - GCC 14: autofs package fails
+Patch109:       autofs-5.1.9-fix-ldap_parse_page_control-check.patch
+Patch110:       autofs-5.1.9-cast-sasl_callback_t-function-pointers.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  cyrus-sasl-devel
@@ -109,6 +112,8 @@ cp %{SOURCE5} .
 %patch -P 104 -p1
 %patch -P 106 -p1
 %patch -P 108 -p1
+%patch -P 109 -p1
+%patch -P 110 -p1
 
 %build
 autoreconf -fiv
