@@ -175,4 +175,12 @@
     <comment></comment>
     <requestid>1151860</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b1bd026ae2a76f9f4b576e20f010f4cc</srcmd5>
+    <version>6.0.39</version>
+    <time>1715097802</time>
+    <user>dimstar_suse</user>
+    <comment>security update Tryton issue #13142</comment>
+    <requestid>1172361</requestid>
+  </revision>
 </revisionlist>
