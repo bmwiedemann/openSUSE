@@ -781,4 +781,12 @@
     <comment></comment>
     <requestid>1151861</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>02b60a50ccc02d89afbf2d40d5bd350e</srcmd5>
+    <version>6.0.46</version>
+    <time>1715097803</time>
+    <user>dimstar_suse</user>
+    <comment>security update Tryton issue #13142</comment>
+    <requestid>1172363</requestid>
+  </revision>
 </revisionlist>
