@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May  7 13:18:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.1:
+  * Standard automated updates to Flatbot files: OUI File,
+    PROTOCOL Files.
+  * #509 Fixed parsing of empty banner, and dual banner for Cisco
+    platforms.
+- update to 1.8.0:
+  * Added support for Python 3.12.
+  * Added local support of `distutils.version` now that Python
+    3.12 deprecates disutils.
+  * Added functions `compare_version_loose` and
+    `compare_version_strict` based on `distutils.version`.
+  * Added function `paloalto_panos_clean_newlines`.
+  * Added various lib_mapper updates.
+  * Added HP Comware parser.
+
+-------------------------------------------------------------------
 Fri Mar 15 21:07:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.0:
