@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  7 11:16:53 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sun Feb 11 04:15:21 UTC 2024 - John Vandenberg <jayvdb@gmail.com>
 
 - Add sqlitetests.py & testutils.py
@@ -15,7 +20,7 @@ Sun Feb 11 04:15:21 UTC 2024 - John Vandenberg <jayvdb@gmail.com>
 -------------------------------------------------------------------
 Mon Apr 17 19:00:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- update to 4.0.39:
+- update to 4.0.39 (bsc#1210567):
   * Version 4.0.38 had a serious bug in Row.__repr__ which could
     cause crashes (#1196 ).
   * Version 5.0 is on its way and will drop support for Python 2.
