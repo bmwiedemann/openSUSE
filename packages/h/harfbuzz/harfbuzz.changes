@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  3 13:59:13 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Force higher C++ standard version for building with ICU 75.
+
+-------------------------------------------------------------------
 Fri Mar 29 19:08:48 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to version 8.4.0:

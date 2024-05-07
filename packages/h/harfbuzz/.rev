@@ -1031,4 +1031,12 @@ New stable rel</comment>
     <comment>harfbuzz 8.4.0 (forwarded request 1163586 from AndreasStieger)</comment>
     <requestid>1164135</requestid>
   </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>c47bb91bbc2ff2285d8c945cac59fb9e</srcmd5>
+    <version>8.4.0</version>
+    <time>1715097746</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1172132</requestid>
+  </revision>
 </revisionlist>

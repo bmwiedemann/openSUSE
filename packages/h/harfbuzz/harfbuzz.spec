@@ -1,7 +1,7 @@
 #
 # spec file for package harfbuzz
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -109,6 +109,8 @@ This package contains the development files.
 %autosetup -p1
 
 %build
+# harfbuzz-8.4.0 defaults to 11, icu-75 needs >=17
+export CXXFLAGS="%optflags -std=c++17"
 %meson \
 	-Ddocs=disabled \
 	-Dgraphite=enabled \
