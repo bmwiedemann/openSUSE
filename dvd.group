@@ -836,7 +836,6 @@
     <package name="irqbalance" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="irqbalance-ui" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="iso-codes" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="iso-codes-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="iso_ent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="issue-generator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="iw" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -1679,7 +1678,8 @@
     <package name="libZXing3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liba52-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libaa1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libabsl2401_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libabsl_2401_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libabsl_lite_2401_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libabw-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libaccounts-glib0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libaccounts-qt5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
@@ -3065,7 +3065,6 @@
     <package name="lunar-calendar-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lunar-date" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lunar-date-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="lv" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="lvm2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="lzop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="m17n-db" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

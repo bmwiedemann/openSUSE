@@ -2865,7 +2865,6 @@ unsorted:
   - cura-engine 
   - cura-engine-lulzbot 
   - cura-fdm-materials 
-  - cura-lulzbot 
   - curlftpfs 
   - curlie 
   - curtail 
@@ -11466,7 +11465,8 @@ unsorted:
   - libabigail3 
   - libabiword-3_0 
   - libabiword-3_0-devel 
-  - libabsl2401_0_0-32bit 
+  - libabsl_2401_0_0-32bit 
+  - libabsl_lite_2401_0_0-32bit 
   - libabw-devel 
   - libabw-devel-doc 
   - libabw-tools 
@@ -16308,11 +16308,13 @@ unsorted:
   - libtss2-tcti-cmd0 
   - libtss2-tcti-cmd0-32bit 
   - libtss2-tcti-device0-32bit 
+  - libtss2-tcti-i2c-helper0 
   - libtss2-tcti-mssim0 
   - libtss2-tcti-mssim0-32bit 
   - libtss2-tcti-pcap0 
   - libtss2-tcti-spi-helper0 
   - libtss2-tcti-spi-helper0-32bit 
+  - libtss2-tcti-spidev0 
   - libtss2-tcti-swtpm0 
   - libtss2-tcti-swtpm0-32bit 
   - libtss2-tctildr0-32bit 
@@ -22308,6 +22310,7 @@ unsorted:
   - php8-gettext 
   - php8-gmagick 
   - php8-gmp 
+  - php8-gnupg 
   - php8-ice 
   - php8-imagick 
   - php8-intl 
@@ -26345,7 +26348,6 @@ unsorted:
   - python310-pytest-regressions 
   - python310-pytest-relaxed 
   - python310-pytest-remotedata 
-  - python310-pytest-reorder 
   - python310-pytest-rerunfailures 
   - python310-pytest-responsemock 
   - python310-pytest-salt-factories 
@@ -29832,7 +29834,6 @@ unsorted:
   - python311-pytest-regressions 
   - python311-pytest-relaxed 
   - python311-pytest-remotedata 
-  - python311-pytest-reorder 
   - python311-pytest-rerunfailures 
   - python311-pytest-responsemock 
   - python311-pytest-salt-factories 
@@ -33391,7 +33392,6 @@ unsorted:
   - python312-pytest-regressions 
   - python312-pytest-relaxed 
   - python312-pytest-remotedata 
-  - python312-pytest-reorder 
   - python312-pytest-rerunfailures 
   - python312-pytest-responsemock 
   - python312-pytest-salt-factories 
