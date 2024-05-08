@@ -1,0 +1,9 @@
+<package name="python-openvino-telemetry" project="openSUSE:Factory">
+  <title>Module for use with openVINO toolkit to send usage statistics with user consent</title>
+  <description>OpenVINO Telemetry is a package for sending statistics with user's consent,
+used in combination with other OpenVINO packages.
+
+</description>
+  <devel project="science:machinelearning" package="python-openvino-telemetry"/>
+  <url>https://github.com/openvinotoolkit/telemetry</url>
+</package>

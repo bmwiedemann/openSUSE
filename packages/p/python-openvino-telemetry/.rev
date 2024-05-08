@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>72b8f8b1209261fc5d455be6aff1449d</srcmd5>
+    <version>2024.1.0</version>
+    <time>1715161166</time>
+    <user>dimstar_suse</user>
+    <comment>Needed dep for upcoming new package openVINO</comment>
+    <requestid>1172509</requestid>
+  </revision>
+</revisionlist>
