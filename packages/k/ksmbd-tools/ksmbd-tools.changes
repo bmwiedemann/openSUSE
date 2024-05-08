@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr  6 06:09:20 UTC 2024 - David Disseldorp <ddiss@suse.com>
+
+- Update to version 3.5.2
+  * Add durable handles parameter to ksmbd.conf.
+  * Add payload_sz in ksmbd_share_config_response to validate ipc response.
+  * Fix UAF and cleanups.
+- Update to version 3.5.1
+  * Fix worker_init_sa_handler return type.
+    - Drop ksmbd-tools-fix-worker_init_sa_handler-return-type.patch
+  * Don't add global default `read only = yes'.
+    Shares are still read-only by default.
+
+-------------------------------------------------------------------
 Tue Oct 31 09:45:20 UTC 2023 - David Disseldorp <ddiss@suse.com>
 
 - Update to version 3.5.0
