@@ -117,4 +117,13 @@
   * add .metal detection</comment>
     <requestid>1158395</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>344d2a5bf9cb9a6d605e6b854e1d70e9</srcmd5>
+    <version>2.5.36</version>
+    <time>1715161175</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.36:
+  * handle Cargo.toml</comment>
+    <requestid>1172528</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-identify
-Version:        2.5.35
+Version:        2.5.36
 Release:        0
 Summary:        File identification library for Python
 License:        MIT
