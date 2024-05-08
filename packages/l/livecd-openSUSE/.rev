@@ -1901,4 +1901,11 @@
     <user>dimstar_suse</user>
     <comment>Save a bit of space - no jfsutils</comment>
   </revision>
+  <revision rev="238" vrev="238">
+    <srcmd5>186566889fe0ff75e2a543fec1cbfce8</srcmd5>
+    <version>unknown</version>
+    <time>1715178582</time>
+    <user>dimstar_suse</user>
+    <comment>meh.. had a local experiment in there, breaking a pattern</comment>
+  </revision>
 </revisionlist>

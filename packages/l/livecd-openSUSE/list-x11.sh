@@ -34,7 +34,6 @@ buildignore awesfx
 buildignore sbl
 buildignore gnome-online-accounts
 buildignore snapper
-buildignore xfce4-power-manager
 
 # No YaST
 buildignore patterns-yast-yast2_basis

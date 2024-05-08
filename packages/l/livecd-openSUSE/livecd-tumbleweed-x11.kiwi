@@ -492,8 +492,6 @@
     <ignore name="gnome-online-accounts"/>
     <!-- OBS-IgnorePackage: snapper -->
     <ignore name="snapper"/>
-    <!-- OBS-IgnorePackage: xfce4-power-manager -->
-    <ignore name="xfce4-power-manager"/>
     <!-- OBS-IgnorePackage: patterns-yast-yast2_basis -->
     <ignore name="patterns-yast-yast2_basis"/>
     <!-- OBS-IgnorePackage: yast2-control-center -->
