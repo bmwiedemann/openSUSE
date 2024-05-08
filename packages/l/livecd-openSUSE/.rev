@@ -1894,4 +1894,11 @@
     <user>dimstar_suse</user>
     <comment>Save a bit of space - no pptp support</comment>
   </revision>
+  <revision rev="237" vrev="237">
+    <srcmd5>5fd5293b763173273efd6c28d27dd817</srcmd5>
+    <version>unknown</version>
+    <time>1715177703</time>
+    <user>dimstar_suse</user>
+    <comment>Save a bit of space - no jfsutils</comment>
+  </revision>
 </revisionlist>

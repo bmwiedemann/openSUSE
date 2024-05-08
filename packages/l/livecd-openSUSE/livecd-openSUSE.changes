@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  8 14:14:09 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop jfsutils from all lives: this is not one of our supported
+  file systems. USers of installed systems are free to use the
+  tools.
+
+-------------------------------------------------------------------
 Wed May  8 12:34:59 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Block NetworkManager-pptp from the x11 live: to recover the

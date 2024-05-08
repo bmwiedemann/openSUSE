@@ -359,7 +359,6 @@
     <package name="dosfstools"/>
     <package name="e2fsprogs"/>
     <package name="exfatprogs"/>
-    <package name="jfsutils"/>
     <package name="mdadm"/>
     <package name="multipath-tools"/>
     <package name="ntfs-3g"/>
@@ -493,6 +492,8 @@
     <ignore name="gnome-online-accounts"/>
     <!-- OBS-IgnorePackage: snapper -->
     <ignore name="snapper"/>
+    <!-- OBS-IgnorePackage: xfce4-power-manager -->
+    <ignore name="xfce4-power-manager"/>
     <!-- OBS-IgnorePackage: patterns-yast-yast2_basis -->
     <ignore name="patterns-yast-yast2_basis"/>
     <!-- OBS-IgnorePackage: yast2-control-center -->

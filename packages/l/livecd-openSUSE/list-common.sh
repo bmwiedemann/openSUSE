@@ -236,7 +236,6 @@ install dmraid
 install dosfstools
 install e2fsprogs
 install exfatprogs
-install jfsutils
 install mdadm
 install multipath-tools
 install ntfs-3g
