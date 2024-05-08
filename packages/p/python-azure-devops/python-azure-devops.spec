@@ -40,6 +40,8 @@ Requires:       python-azure-nspkg >= 3.0.0
 Requires:       (python-msrest >= 0.7.1 with python-msrest < 0.8.0)
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-devops < 7.1.0~b4
+Obsoletes:      python3-vsts <= 0.1.25
+Obsoletes:      python3-vsts-cd-manager <= 1.0.2
 %endif
 BuildArch:      noarch
 
