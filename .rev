@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of gcc-14-image</comment>
     <requestid>1169088</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fca5e2c1f9f87bb0a8c00a1ec8c4bd1c</srcmd5>
+    <version>unknown</version>
+    <time>1715161148</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1172477</requestid>
+  </revision>
 </revisionlist>
