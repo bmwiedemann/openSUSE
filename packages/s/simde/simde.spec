@@ -17,7 +17,7 @@
 
 
 Name:           simde
-Version:        0.8.0+git20240222.c200c16
+Version:        0.8.2+git20240430.71fd833
 Release:        0
 Summary:        Fallback implementation for SIMD intrinsics
 License:        MIT
@@ -25,6 +25,8 @@ URL:            https://github.com/simd-everywhere/%{name}
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  meson
 BuildRequires:  c++_compiler
+# simde >= 0.8.0, build errors out if this is set related to simde.pc
+#BuildArch:      noarch
 
 %description
 Portable implementations of SIMD intrinsics.
@@ -33,7 +35,7 @@ Portable implementations of SIMD intrinsics.
 Summary:        Fallback implementation for SIMD intrinsics
 
 %description devel
-The SIMDe header-only library provides portable implementations of SIMD
+The SIMDe header-only library provides fast, portable implementations of SIMD
 intrinsics on hardware which do not natively support them, such as calling
 SSE functions on ARM. There is no performance penalty if the hardware supports
 the native implementation (e.g. SSE/AVX runs at full speed on x86, NEON on
@@ -56,3 +58,4 @@ ARM, etc.).
 %doc README.md
 
 %changelog
+

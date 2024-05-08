@@ -7,4 +7,12 @@
     <comment>simde is required by kitty going forward, 0.33.0 will not build without it</comment>
     <requestid>1157304</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>79b28291de2d145021a37c2781ef34c1</srcmd5>
+    <version>0.8.2+git20240430.71fd833</version>
+    <time>1715161158</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1172504</requestid>
+  </revision>
 </revisionlist>

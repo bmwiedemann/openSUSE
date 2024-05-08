@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Apr 30 16:46:02 UTC 2024 - scott.bradnick@suse.com
+
+- Setting "BuildArch: noarch" causes build to fail, commented out
+- Update to version 0.8.2+git20240430.71fd833:
+  * prepare to release 0.8.0
+  * arm neon: Fully remove the problematic FCVTZS/FCVTMS/FCVTPS/FCVTNS family intrinsics
+  * arm: improve performance in vabd_xxx for risc-v
+  * arm: improve performance in vhadd_xxx for risc-v
+  * README: two more related projects
+  * arm: Add neon2rvv support in vand series intrinsics
+  * arm: fix some neon2rvv intrinsic function error
+  * arm: enable more intrinsic function for armv7
+  * wasm x86 impl: some were incorrectly marked SSE instead of SSE2
+  * arm x86 implementations: allow _m128 access from SSE
+  * tests x86, adjust import order so that MSVC pragma are processed early
+  * svml: SSE is good enough for native m128i and m128d types & functions
+  * sse2 MSVC `_mm_pause` implementaiton for x86
+  * x86 test msvc: really disable warning 4799,4730
+  * typo fixes from codespell
+  * README.md - move CLMUL to partial, list more of the CI.yml architectures
+  * Update README.md - link to VPCLMULQDQ; mention MSA (#1157)
+  * Update README.md (#1156)
+  * Packit: Drop i386 (i686) support. (#1155)
+  * gh-actions: build for AMD Buildozer version 2
+  * x86 xop: fix some native functions
+  * emscripten; use `__builtin_roundeven{f,}` from version 3.1.43 onwards
+  * arm 32 bits: native def fixes; workarounds for gcc
+  * Add gcc arm 32bit armv8-a test in CI
+  * CI: don't run twice on dependabot branches
+  * gh-actions codecov: use token
+  * build(deps): bump codecov/codecov-action from 3 to 4
+  * update list of fully implemented instruction sets (#1152)
+  * apple clang arm64: ignore SHA2
+  * semaphore: stop testing on GCC 5 & 6, clang 3.9 & 4 due to forced upgrade to Ubuntu 20.04
+  * gh-actions macos: report log if there is a configuration failure.
+  * arm platform: cleanup feature detection.
+  * arm neon sm3: check constant range
+  * arm neon: disable some FCVTZS/FCVTMS/FCVTPS/FCVTNS family intrinsics
+  * cirrus: upgrade to clang-17
+  * gh-actions: test Mac arm64
+  * arm neon clang: skip vrnd native before clang v18
+  * clang: detect versions 18 & 19
+  * build(deps): bump actions/checkout from 3 to 4 (#1149)
+
+-------------------------------------------------------------------
+Thu Mar 14 14:15:29 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 0.8.0+git20240314.b4e805a:
+  * Initial Support for the RISC-V Vector Extension in ARM NEON (#1130)
+  * start next development cycle: v0.8.1
+
+-------------------------------------------------------------------
+Thu Mar 07 16:40:51 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 0.8.0+git20240307.589c7d5:
+  *  Add @thomas-schlichter as a contributor
+  *  Add @Proudsalsa as a contributor
+  *  Add @Coeur as a contributor
+
+-------------------------------------------------------------------
 Mon Feb 26 17:29:54 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim unnecessary main package
