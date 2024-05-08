@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May  7 15:55:13 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.52.0:
+  * Added --highlight-line to highlight the whole current line (à
+    la set cursorline of Vim)
+  * Added color names for selected lines: selected-fg, selected-bg,
+    and selected-hl
+  * Added click-header event that is triggered when the header
+    section is clicked. When the event is triggered,
+    $FZF_CLICK_HEADER_COLUMN and $FZF_CLICK_HEADER_LINE are set.
+  * Add $FZF_COMPLETION_{DIR,PATH}_OPTS for separately
+    customizing the behavior of fuzzy completion
+  * Bug fixes and improvements
+  * The code was heavily refactored to allow using fzf as a library
+    in Go programs. The API is still experimental and subject to
+    change.
+
+-------------------------------------------------------------------
 Wed May  1 10:57:38 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.51.0:
