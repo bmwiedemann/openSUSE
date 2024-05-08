@@ -40,11 +40,11 @@ LABEL org.opensuse.release-stage="released"
 
 # endlabelprefix
 
-RUN set -euo pipefail; zypper -n in --no-recommends gcc12 gcc12-c++ make; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
+RUN set -euo pipefail; zypper -n in --no-recommends gcc12 gcc12-c++ make gawk; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 ENV GCC_VERSION="%%gcc_version%%"
 
 # symlink all versioned gcc & g++ binaries to unversioned
 # ones in /usr/local/bin so that plain gcc works
 RUN set -euo pipefail; for gcc_bin in $(rpm -ql gcc12 gcc12-c++ |grep ^/usr/bin/ ); do \
-        ln -f $gcc_bin $(echo "$gcc_bin" | sed -e 's|/usr/bin/|/usr/local/bin/|' -e 's|-12$||'); \
+        ln -sf $gcc_bin $(echo "$gcc_bin" | sed -e 's|/usr/bin/|/usr/local/bin/|' -e 's|-12$||'); \
     done
