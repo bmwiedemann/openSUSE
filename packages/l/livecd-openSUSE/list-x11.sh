@@ -1,5 +1,6 @@
 buildignore NetworkManager-lang
 buildignore NetworkManager-applet-lang
+buildignore NetworkManager-pptp
 buildignore PackageKit
 buildignore samba-libs
 buildignore release-notes-openSUSE

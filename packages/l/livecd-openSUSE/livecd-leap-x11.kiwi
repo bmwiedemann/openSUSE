@@ -383,6 +383,7 @@
     <package name="memtest86+" arch="i686,x86_64"/>
     <package name="mpt-firmware"/>
     <package name="nano"/>
+    <package name="pptp"/>
     <package name="quota"/>
     <package name="rsync"/>
     <package name="smartmontools"/>
@@ -424,6 +425,8 @@
     <ignore name="NetworkManager-lang"/>
     <!-- OBS-IgnorePackage: NetworkManager-applet-lang -->
     <ignore name="NetworkManager-applet-lang"/>
+    <!-- OBS-IgnorePackage: NetworkManager-pptp -->
+    <ignore name="NetworkManager-pptp"/>
     <!-- OBS-IgnorePackage: PackageKit -->
     <ignore name="PackageKit"/>
     <!-- OBS-IgnorePackage: samba-libs -->

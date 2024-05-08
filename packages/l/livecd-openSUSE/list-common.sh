@@ -263,6 +263,7 @@ install lvm2
 install memtest86+ i686,x86_64
 install mpt-firmware
 install nano
+install pptp
 install quota
 install rsync
 install smartmontools

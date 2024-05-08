@@ -383,6 +383,7 @@
     <package name="memtest86+" arch="i686,x86_64"/>
     <package name="mpt-firmware"/>
     <package name="nano"/>
+    <package name="pptp"/>
     <package name="quota"/>
     <package name="rsync"/>
     <package name="smartmontools"/>

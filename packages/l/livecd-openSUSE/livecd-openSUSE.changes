@@ -1,8 +1,8 @@
 -------------------------------------------------------------------
-Wed May  8 11:54:51 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
+Wed May  8 12:34:59 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
 
-- Drop pptp from the lives: also eliminates ppp and NM-pptp,
-  things most people won't use in a live-test-system.
+- Block NetworkManager-pptp from the x11 live: to recover the
+  machine, pptp is unlikely to be needed.
 
 -------------------------------------------------------------------
 Tue Apr 23 11:14:27 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
