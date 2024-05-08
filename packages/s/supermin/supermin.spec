@@ -62,6 +62,7 @@ BuildRequires:  pkgconfig(com_err)
 BuildRequires:  pkgconfig(ext2fs)
 BuildRequires:  pkgconfig(rpm)
 Requires:       distribution-release
+Requires:       e2fsprogs
 %if 0%{?suse_version} < 1599
 Requires:       sysconfig-netconfig
 %endif

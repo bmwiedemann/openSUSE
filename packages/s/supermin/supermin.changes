@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  6 15:27:43 MDT 2024 - carnold@suse.com
+
+- Supermin uses mke2fs. Add Requires e2fsprogs for this command.
+  supermin.spec
+
+-------------------------------------------------------------------
 Thu Jan  4 11:07:03 MST 2024 - carnold@suse.com
 
 - Update to version 5.3.3 (jsc#PED-6305)

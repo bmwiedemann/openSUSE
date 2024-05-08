@@ -175,4 +175,12 @@
     <comment>Add Jira request number to changelog. No code change.</comment>
     <requestid>1137604</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>79088c721f30d531b44c07d96456ae20</srcmd5>
+    <version>5.3.3</version>
+    <time>1715161186</time>
+    <user>dimstar_suse</user>
+    <comment>Add Requires e2fsprogs for mke2fs used in supermin</comment>
+    <requestid>1172599</requestid>
+  </revision>
 </revisionlist>
