@@ -1,7 +1,10 @@
 # Spack %%spack_version%% Container Image
+![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
+
 
 Spack is a package manager for supercomputers. It provides build recipes
-for more than 6000 software components, and it allows to build entire HPC application stacks with little to no prerequisites.
+for more than 6000 software components, and it allows to build entire
+HPC application stacks with little to no prerequisites.
 
 This container image serves as a build environment for a `Dockerfile`
 or an `apptainter.def` file created by `spack containerize`. It can be
@@ -22,7 +25,7 @@ spack:
   container:
     format: <container_format>
     images:
-      build: "registry.opensuse.org/opensuse/bci/spack:%%spack_version%%-%RELEASE%"
+      build: "registry.opensuse.org/opensuse/bci/spack:%%spack_version%%"
       final: "registry.suse.com/bci/bci-base:latest"
     os_packages:
       command: zypper
@@ -61,7 +64,15 @@ $ podman run -it --rm <target_name> <command line ...>
 If you do not have a local installation of Spack, you can use this container
 to run Spack commands - like `spack containerize`:
 ```ShellSession
-$ podman run -v $(pwd):/root:Z --rm registry.opensuse.org/opensuse/bci/spack:%%spack_version%%-%RELEASE% containerize > Containerfile
+$ podman run -v $(pwd):/root:Z --rm registry.opensuse.org/opensuse/bci/spack:%%spack_version%% containerize > Containerfile
 ```
 For further information, refer to the
 (Spack documentation on container images)[https://spack.readthedocs.io/en/latest/containers.html].
+## Licensing
+`SPDX-License-Identifier: MIT`
+
+The build recipe and this documentation is licensed as MIT.
+The container itself contains various software components under various open source licenses listed in the associated
+Software Bill of Materials (SBOM).
+
+This image is based on [openSUSE Tumbleweed](https://get.opensuse.org/tumbleweed/).
