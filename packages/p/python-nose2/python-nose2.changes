@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May  7 20:14:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.2:
+  * For the coverage plugin, add a config option, coverage-
+    combine, which defaults to False. When set, this config
+    invokes a coverage combine step before reporting results,
+    regardless of whether or not multiprocessing was used to run
+    tests. This allows reporting of coverage results via the
+    plugin on testsuites which invoke subprocesses.
+
+-------------------------------------------------------------------
 Fri Feb  9 21:43:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.1:

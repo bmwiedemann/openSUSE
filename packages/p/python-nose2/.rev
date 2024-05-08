@@ -142,4 +142,18 @@
 - drop support-python312.patch (upstream)</comment>
     <requestid>1145529</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5d1ff661c921fa8b2dee3421673b7ad6</srcmd5>
+    <version>0.14.2</version>
+    <time>1715161173</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.2:
+  * For the coverage plugin, add a config option, coverage-
+    combine, which defaults to False. When set, this config
+    invokes a coverage combine step before reporting results,
+    regardless of whether or not multiprocessing was used to run
+    tests. This allows reporting of coverage results via the
+    plugin on testsuites which invoke subprocesses.</comment>
+    <requestid>1172525</requestid>
+  </revision>
 </revisionlist>
