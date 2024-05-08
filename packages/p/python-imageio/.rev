@@ -169,4 +169,14 @@
   * Forward constructor kwargs to PyAV</comment>
     <requestid>1159132</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b30473994bf5f53f52e42f9f05f7f456</srcmd5>
+    <version>2.34.1</version>
+    <time>1715161229</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.34.1:
+  * Fix bug of #1068 that getattr cannot get attribute with index
+    directly</comment>
+    <requestid>1172591</requestid>
+  </revision>
 </revisionlist>
