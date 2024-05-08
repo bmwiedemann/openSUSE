@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  7 10:27:25 MDT 2024 - carnold@suse.com
+
+- Switch Recommends to Requires for several packages in the
+  libguestfs-appliance which is where the tools from these
+  packages are used. (bsc#1223444)
+
+-------------------------------------------------------------------
 Mon Apr 15 13:11:57 MDT 2024 - carnold@suse.com
 
 - Require ntfs-3g for libguestfs-winsupport

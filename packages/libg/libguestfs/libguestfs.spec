@@ -369,6 +369,7 @@ BuildRequires:  xz
 # the appliance will fail to start the guestfsd.
 Requires:       augeas
 Requires:       augeas-lenses
+Requires:       dhcp-client
 Requires:       libaugeas0
 Requires:       libcap2
 Requires:       libguestfs0
@@ -377,21 +378,19 @@ Requires:       libpcre1
 
 # For core disk features
 Requires:       qemu-tools
+Requires:       btrfsprogs
+Requires:       cryptsetup
+Requires:       dosfstools
+Requires:       e2fsprogs
+Requires:       gptfdisk
+Requires:       jfsutils
+Requires:       ldmtool
+Requires:       mdadm
+Requires:       mkisofs
+Requires:       parted
 Requires:       supermin >= 5.1.18
-
-# Optional packages that could be picked up by supermin
-Recommends:     btrfsprogs
-Recommends:     cryptsetup
-Recommends:     dosfstools
-Recommends:     e2fsprogs
-Recommends:     gptfdisk
-Recommends:     jfsutils
-Recommends:     ldmtool
-Recommends:     mdadm
-Recommends:     mkisofs
-Recommends:     parted
-Recommends:     xfsprogs
-Recommends:     zerofree
+Requires:       xfsprogs
+Requires:       zerofree
 
 Summary:        Virtual machine needed for libguestfs
 Provides:       guestfs-data = %{version}
@@ -407,6 +406,7 @@ BuildRequires:  ntfs-3g
 BuildRequires:  ntfsprogs
 BuildRequires:  rsync
 Requires:       ntfs-3g
+Requires:       ntfsprogs
 Provides:       guestfs-winsupport = %{version}
 Obsoletes:      guestfs-winsupport < %{version}
 

@@ -1126,4 +1126,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1169738</requestid>
   </revision>
+  <revision rev="105" vrev="8">
+    <srcmd5>fa1f19ab24aa432a5dfe736ba27607ef</srcmd5>
+    <version>1.52.0</version>
+    <time>1715161184</time>
+    <user>dimstar_suse</user>
+    <comment>Change from Recommends to Requires those packages that contain filesystem tools used by libguestfs-appliance</comment>
+    <requestid>1172597</requestid>
+  </revision>
 </revisionlist>
