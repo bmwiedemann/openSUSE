@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-tqdm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,14 +28,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-tqdm%{pkg_suffix}
-Version:        4.66.1
+Version:        4.66.4
 Release:        0
 Summary:        An extensible progress meter
 License:        MIT AND MPL-2.0
 URL:            https://github.com/tqdm/tqdm
 Source:         https://files.pythonhosted.org/packages/source/t/tqdm/tqdm-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#tqdm/tqdm#1519 Specify a timezone for fromtimestamp()
-Patch0:         sprinkle-in-timezone.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -45,7 +43,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Enhances:       python-ipython
 BuildArch:      noarch
 %if %{with test}

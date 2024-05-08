@@ -487,4 +487,20 @@ update to latest version</comment>
 - Remove conditionals from some BuildRequires.</comment>
     <requestid>1128418</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>1e44ae05dcfa99fce84ad5019a91d6e1</srcmd5>
+    <version>4.66.4</version>
+    <time>1715161118</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.66.4:
+  * rich: fix completion (#1395 &lt;- #1306)
+  * cli: eval safety (CVE-2024-34062, bsc#1223880)
+  * pandas: add DataFrame.progress_map (#1549)
+  * notebook: fix HTML padding (#1506)
+  * keras: fix resuming training when verbose&gt;=2 (#1508)
+  * fix format_num negative fractions missing leading zero (#1548)
+  * fix Python 3.12 DeprecationWarning on import (#1519)
+- Drop patch sprinkle-in-timezone.patch: Included upstream.</comment>
+    <requestid>1172287</requestid>
+  </revision>
 </revisionlist>

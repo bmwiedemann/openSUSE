@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May  7 01:37:49 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.66.4:
+  * rich: fix completion (#1395 <- #1306)
+  * cli: eval safety (CVE-2024-34062, bsc#1223880)
+  * pandas: add DataFrame.progress_map (#1549)
+  * notebook: fix HTML padding (#1506)
+  * keras: fix resuming training when verbose>=2 (#1508)
+  * fix format_num negative fractions missing leading zero (#1548)
+  * fix Python 3.12 DeprecationWarning on import (#1519)
+- Drop patch sprinkle-in-timezone.patch: Included upstream.
+
+-------------------------------------------------------------------
 Fri Nov 24 04:33:40 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch sprinkle-in-timezone.patch:
