@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  7 07:15:45 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pytest-8.patch:
+  * Support pytest >= 8.
+
+-------------------------------------------------------------------
 Fri Dec 29 16:18:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.19.1:

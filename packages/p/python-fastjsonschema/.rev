@@ -84,4 +84,13 @@
   * Fixed date format to accept only two digit months and days</comment>
     <requestid>1135686</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>13d5e928ae1915f394c94e9ee042f764</srcmd5>
+    <version>2.19.1</version>
+    <time>1715161122</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-pytest-8.patch:
+  * Support pytest &gt;= 8.</comment>
+    <requestid>1172337</requestid>
+  </revision>
 </revisionlist>
