@@ -1758,4 +1758,12 @@ As usual, a lot of patches don't make it to this list since they're more interna
     <comment></comment>
     <requestid>1164611</requestid>
   </revision>
+  <revision rev="199" vrev="1">
+    <srcmd5>8e8ce20de03a2cc018afdff5b190abce</srcmd5>
+    <version>6.7.3</version>
+    <time>1715161133</time>
+    <user>dimstar_suse</user>
+    <comment>Mercurial 6.7.3 (forwarded request 1172397 from develop7)</comment>
+    <requestid>1172398</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May  7 09:21:00 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 6.7.3
+
+  * setup: display return code information about failed `hg` call
+  * bundle-spec: properly identify changegroup-less bundle
+  * bundle-spec: properly parse boolean configuration as boolean
+  * matchers: fix the bug in rust PatternMatcher that made it cut off early
+  * match: fix the "visitdir" method on "rootfilesin" matchers
+  * match: fix the rust-side bug in visit_children_set for rootfilesin matchers
+  * match: strengthen visit_children_set invariant, Recursive means "all files"
+  * wireprotoserver: ensure that output stream gets flushed on exception
+  * re2: make errors quiet
+  * dirstate-v2: add check of parent/child nodes being related when writing
+  * dirstate-v2: check that root nodes are at the root before writing
+  * rust-cpython: don't swallow the dirstate error message
+  * rust: blanket implementation of Graph for Graph references
+  * Various fixes to `admin::verify`
+
+-------------------------------------------------------------------
 Thu Apr  4 12:12:21 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Mercurial 6.7.2
