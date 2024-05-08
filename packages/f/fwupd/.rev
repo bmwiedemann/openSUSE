@@ -718,4 +718,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>1170724</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>bcbdd18e4a6e1fefe146dbddaac8cb7e</srcmd5>
+    <version>1.9.19</version>
+    <time>1715161137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1172420</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May  7 10:48:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.19:
+  + This release adds the following features:
+    - Drop heap as part of a housekeeping action.
+    - Retry downloads to workaround flaky network connections.
+  + This release fixes the following bugs:
+    - Assume new ME versions are called CSME.
+    - Fix a buffer-overread when parsing invalid CoSWID entity
+      data.
+    - Fix a logic thinko when parsing GUID strings.
+    - Fix downloading files on Windows with libcurl >= 7.77.0.
+    - Revert back to a simpler syscall blocklist-based filter.
+  + This release adds support for the following hardware:.
+    - Acer U32 dock.
+    - Luxshare 7-in-1 dock.
+    - Pixart models 2404, 4206, 2440, 2418, 2752, 2840 and 2818.
+
+-------------------------------------------------------------------
 Mon Apr 29 09:38:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.9.18:
