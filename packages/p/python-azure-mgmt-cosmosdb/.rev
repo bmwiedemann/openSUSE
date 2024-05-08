@@ -290,4 +290,12 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164756 from glaubitz)</comment>
     <requestid>1165154</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>e239cfd159df9a0dfc49cc599d7185bd</srcmd5>
+    <version>9.4.0</version>
+    <time>1715161164</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Obsoletes for predecessor python3 package on SLE-15 (forwarded request 1172506 from glaubitz)</comment>
+    <requestid>1172507</requestid>
+  </revision>
 </revisionlist>

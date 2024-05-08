@@ -42,6 +42,7 @@ Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-mgmt-cosmosdb < 9.4.0
+Obsoletes:      python3-azure-mgmt-documentdb <= 0.1.3
 %endif
 BuildArch:      noarch
 
