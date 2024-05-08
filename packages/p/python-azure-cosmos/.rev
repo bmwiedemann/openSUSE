@@ -128,4 +128,12 @@
 - Update Requires from setup.py (forwarded request 1166357 from glaubitz)</comment>
     <requestid>1166387</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>11e668059709175feb23bba06a5fe2a9</srcmd5>
+    <version>4.6.0</version>
+    <time>1715161155</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Obsoletes for predecessor python3 package on SLE-15 (forwarded request 1172495 from glaubitz)</comment>
+    <requestid>1172500</requestid>
+  </revision>
 </revisionlist>
