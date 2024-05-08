@@ -93,6 +93,7 @@ BuildRequires:  pkgconfig(bash-completion)
 # For virt-builder:
 Requires:       curl
 Requires:       gpg2
+Requires:       libguestfs >= 1.49
 ###Requires:      /usr/bin/qemu-img
 Requires:       xz
 

@@ -119,4 +119,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1165710</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>f8bdc3d5ccce1f73a2b6654df47d6397</srcmd5>
+    <version>1.52.0</version>
+    <time>1715161185</time>
+    <user>dimstar_suse</user>
+    <comment>Add Requires on libguestfs which will pull in libguestfs-appliance and all its dependencies</comment>
+    <requestid>1172598</requestid>
+  </revision>
 </revisionlist>
