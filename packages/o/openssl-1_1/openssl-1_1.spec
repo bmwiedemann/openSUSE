@@ -194,6 +194,8 @@ Patch115:       openssl-CVE-2023-5678.patch
 Patch116:       openssl-Skip_SHA1-test-in-FIPS-mode.patch
 # PATCH-FIX-UPSTREAM: bsc#1219243 CVE-2024-0727: denial of service via null dereference
 Patch117:       openssl-CVE-2024-0727.patch
+# PATCH-FIX-UPSTREAM: bsc#1222548 CVE-2024-2511: Unbounded memory growth with session handling in TLSv1.3
+Patch118:       openssl-CVE-2024-2511.patch
 BuildRequires:  jitterentropy-devel >= 3.4.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)

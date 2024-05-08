@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  6 12:11:02 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Security fix: [bsc#1222548, CVE-2024-2511]
+  * Fix unconstrained session cache growth in TLSv1.3
+  * Add openssl-CVE-2024-2511.patch
+
+-------------------------------------------------------------------
 Wed Feb  7 14:48:11 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Enable running the regression tests in FIPS mode.
