@@ -68,7 +68,6 @@ the container image. Add them by installing one of the following
 packages:
 - tomcat-webapps
 - tomcat-admin-webapps
-- tomcat-docs-webapp
 
 
 
