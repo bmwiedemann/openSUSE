@@ -268,4 +268,25 @@
   * Update contributing guidelines</comment>
     <requestid>1169388</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8f0566c2b538b7f1be74e9e70e0033de</srcmd5>
+    <version>0.48</version>
+    <time>1715161176</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.48:
+  * Introduce workdays calculation support
+  * Refactor `HolidayBase::__getattr__`: speed up _add_holiday_*
+    methods
+  * Add Palau holidays
+  * Update Greece holidays: move 2024 Labor Day to May 7
+  * Update Timor-Leste holidays
+  * Update United States holidays: fix Confederate Memorial Day
+    in MS
+  * Update badges in README
+  * Update CI/CD: fix macOS Python versions
+  * Extend HolidayBase::_add_holiday family methods with Easter
+    support
+  * Prioritize entity default holiday category processing</comment>
+    <requestid>1172537</requestid>
+  </revision>
 </revisionlist>

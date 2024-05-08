@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May  7 20:54:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.48:
+  * Introduce workdays calculation support
+  * Refactor `HolidayBase::__getattr__`: speed up _add_holiday_*
+    methods
+  * Add Palau holidays
+  * Update Greece holidays: move 2024 Labor Day to May 7
+  * Update Timor-Leste holidays
+  * Update United States holidays: fix Confederate Memorial Day
+    in MS
+  * Update badges in README
+  * Update CI/CD: fix macOS Python versions
+  * Extend HolidayBase::_add_holiday family methods with Easter
+    support
+  * Prioritize entity default holiday category processing
+
+-------------------------------------------------------------------
 Sat Apr 20 15:39:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.47:
