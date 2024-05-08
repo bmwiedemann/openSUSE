@@ -1,0 +1,82 @@
+From eb81e61716f713da72469c3be89fe55014aed2bb Mon Sep 17 00:00:00 2001
+From: Neal Gompa <ngompa@opensuse.org>
+Date: Wed, 19 Jul 2023 08:07:52 -0400
+Subject: [PATCH] Use /usr/lib/sysimage for the persistent state directory
+
+This aligns us with the location where the RPM database is stored.
+---
+ doc/dnf5.8.rst                      | 2 +-
+ include/libdnf5/conf/const.hpp      | 2 +-
+ libdnf5/transaction/Swdb.cpp        | 2 +-
+ libdnf5/transaction/Swdb.hpp        | 2 +-
+ libdnf5/transaction/Transformer.cpp | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/doc/dnf5.8.rst b/doc/dnf5.8.rst
+index 005a5cdc..bacdfb4a 100644
+--- a/doc/dnf5.8.rst
++++ b/doc/dnf5.8.rst
+@@ -340,7 +340,7 @@ Files
+     /etc/yum.repos.d/
+ 
+ ``Repository Persistence``
+-    /var/lib/dnf/
++    /usr/lib/sysimage/dnf/
+ 
+ ``System State``
+     /usr/lib/sysimage/libdnf5/
+diff --git a/include/libdnf5/conf/const.hpp b/include/libdnf5/conf/const.hpp
+index 6f64a678..39fde64c 100644
+--- a/include/libdnf5/conf/const.hpp
++++ b/include/libdnf5/conf/const.hpp
+@@ -27,7 +27,7 @@ along with libdnf.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ namespace libdnf5 {
+ 
+-constexpr const char * PERSISTDIR = "/var/lib/dnf";
++constexpr const char * PERSISTDIR = "/usr/lib/sysimage/dnf";
+ constexpr const char * SYSTEM_STATE_DIR = "/usr/lib/sysimage/libdnf5";
+ constexpr const char * SYSTEM_CACHEDIR = "/var/cache/libdnf5";
+ 
+diff --git a/libdnf5/transaction/Swdb.cpp b/libdnf5/transaction/Swdb.cpp
+index 1ff6bb5c..c1fcb8b0 100644
+--- a/libdnf5/transaction/Swdb.cpp
++++ b/libdnf5/transaction/Swdb.cpp
+@@ -51,7 +51,7 @@ Swdb::Swdb(const std::string & path) : conn(nullptr), autoClose(true) {
+     } else if (!std::filesystem::exists(path.c_str())) {
+         // writing to a file that doesn't exist and must be created
+ 
+-        // extract persistdir from path - "/var/lib/dnf/"
++        // extract persistdir from path - "/usr/lib/sysimage/dnf/"
+         auto found = path.find_last_of("/");
+ 
+         Transformer transformer(path.substr(0, found), path);
+diff --git a/libdnf5/transaction/Swdb.hpp b/libdnf5/transaction/Swdb.hpp
+index 58d82b3b..6b84b0d3 100644
+--- a/libdnf5/transaction/Swdb.hpp
++++ b/libdnf5/transaction/Swdb.hpp
+@@ -54,7 +54,7 @@ public:
+ 
+     // Database
+     // FIXME load this from conf
+-    static constexpr const char * defaultPath = "/var/lib/dnf/history.sqlite";
++    static constexpr const char * defaultPath = "/usr/lib/sysimage/dnf/history.sqlite";
+     static constexpr const char * defaultDatabaseName = "history.sqlite";
+ 
+     const std::string & getPath() { return conn->get_path(); }
+diff --git a/libdnf5/transaction/Transformer.cpp b/libdnf5/transaction/Transformer.cpp
+index 9ff17aaf..ae584f88 100644
+--- a/libdnf5/transaction/Transformer.cpp
++++ b/libdnf5/transaction/Transformer.cpp
+@@ -99,7 +99,7 @@ TransactionItemReason Transformer::getReason(const std::string & reason) {
+ /**
+  * Default constructor of the Transformer object
+  * \param outputFile path to output SQLite3 database
+- * \param inputDir directory to load data from (e.g. `/var/lib/dnf/`)
++ * \param inputDir directory to load data from (e.g. `/usr/lib/sysimage/dnf/`)
+  */
+ Transformer::Transformer(const std::string & inputDir, const std::string & outputFile)
+     : inputDir(inputDir),
+-- 
+2.43.0
+

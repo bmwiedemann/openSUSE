@@ -1,0 +1,8 @@
+<package name="dnf5" project="openSUSE:Factory">
+  <title>Next generation RPM package manager</title>
+  <description>DNF5 is a command-line package manager that automates the process of installing, upgrading, configuring, and removing computer programs in a consistent manner.
+
+It supports RPM packages, modulemd modules, and comps groups &amp; environments.</description>
+  <devel project="system:packagemanager:dnf" package="dnf5"/>
+  <url>https://github.com/rpm-software-management/dnf5</url>
+</package>

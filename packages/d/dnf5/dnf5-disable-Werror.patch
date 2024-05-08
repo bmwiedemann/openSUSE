@@ -1,0 +1,30 @@
+From 0dd4013d3b993e8ee073bcde576a83d00c92589e Mon Sep 17 00:00:00 2001
+From: Neal Gompa <neal@gompa.dev>
+Date: Tue, 12 Sep 2023 18:25:34 -0400
+Subject: [PATCH] cmake: Drop Werror from compile options
+
+This fixes the build for the library bindings and tests.
+
+References:
+* https://github.com/rpm-software-management/dnf5/issues/746
+* https://github.com/rpm-software-management/dnf5/issues/562
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fd609e84..998f7ac2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -80,7 +80,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ add_compile_options("-fmacro-prefix-map=${PROJECT_SOURCE_DIR}/=")
+ 
+ # warnings
+-add_compile_options(-Wall -Wextra -Werror)
++add_compile_options(-Wall -Wextra)
+ add_compile_options(-Wcast-align -Wformat-nonliteral -Wmissing-format-attribute -Wredundant-decls -Wsign-compare -Wtype-limits -Wuninitialized -Wwrite-strings)
+ add_compile_options(-Werror=unused-result -Wodr)
+ 
+-- 
+2.43.0
+
