@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May  7 16:20:51 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add Obsoletes for python3-azure-functions-devops-build package on SLE-15
+
+-------------------------------------------------------------------
+Fri May  3 16:42:40 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Change version setting of Obsoletes to <= to trigger python3
+  binary removal since there was no source version bump
+
+-------------------------------------------------------------------
 Fri Apr  5 07:18:55 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Remove deprecated packages from the Azure SDK from Requires

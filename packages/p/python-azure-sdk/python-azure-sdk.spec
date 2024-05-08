@@ -165,7 +165,8 @@ Requires:       python-msal
 Requires:       python-msal-extensions
 Requires:       python-msrest
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-sdk < 4.0.0
+Obsoletes:      python3-azure-functions-devops-build <= 0.0.22
+Obsoletes:      python3-azure-sdk <= 4.0.0
 %endif
 BuildArch:      noarch
 %python_subpackages
