@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pingparsing
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        CLI-tool/Python-library for parsing ping command output
 License:        MIT
@@ -28,25 +28,25 @@ Source:         https://github.com/thombashi/pingparsing/archive/v%{version}.tar
 BuildRequires:  %{python_module setuptools >= 38.3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-humanreadable >= 0.2
+Requires:       python-humanreadable >= 0.3
 Requires:       python-loguru >= 0.4.1
 Requires:       python-pyparsing >= 2.0.3
 Requires:       python-pytz >= 2018.9
 Requires:       python-setuptools >= 38.3.0
 Requires:       python-simplejson
 Requires:       python-subprocrunner >= 1.2.2
-Requires:       python-typepy >= 1.1.0
+Requires:       python-typepy >= 1.3.2
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module humanreadable >= 0.1.0}
+BuildRequires:  %{python_module humanreadable >= 0.3}
 BuildRequires:  %{python_module pyparsing >= 2.0.3}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz >= 2018.9}
 BuildRequires:  %{python_module simplejson}
 BuildRequires:  %{python_module subprocrunner >= 1.2.2}
-BuildRequires:  %{python_module typepy >= 1.1.0}
+BuildRequires:  %{python_module typepy >= 1.3.2}
 # /SECTION
 %python_subpackages
 
