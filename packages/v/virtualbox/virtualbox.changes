@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue May  7 12:47:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Have the KMP package supplement the kernel-flavor plus
+  virtualbox-guest-tools: -guest tools requires the kmp anyway, and
+  this allows libsolv to give some hints on 'what kmp' to prefer on
+  a system.
+
+---------------------------------------------------------------------
+Fri May 3 20:09:00 UTC 2024 - Larry Rainey <llrainey15@gmail.com>
+
+- Version bump to VirtualBox 7.0.18 (released May 03 2024 by Oracle))
+
+This is a maintenance release. The following items were fixed and/or added:
+
+    Networking: Fixed an issue which caused host system crash when VM was using bridged or host-only network adapter (bug #22045)
+    Linux Guest Additions: Added more fixes to prevent UBSAN warnings (bug #21877) Fixes boo#1211941
+    Linux Guest Additions: Fixed issue when time stamps were displayed incorrectly within mounted shared folder (bug #22047)
+        Permanent fix for boo#1220524. File fix_shared_folder_time.patch is deleted.
+    Files fixes_for_python.patch and handle_gsoap_208103.patch are deleted.
+
+VirtualBox 7.0.16 (released April 16 2024)
+
+This is a maintenance release. The following items were fixed and/or added:
+
+    VMM: Fixed a guru meditation executing nested-guests using the KVM hypervisor in the guest on Intel hosts (bug #21805)
+    VMM: Fixed Linux VM crash on some recent AMD models
+    USB: Fixed issue when EHCI controller was mishandling short packets (bug #20726)
+    Audio: Introduced general improvements
+    VBoxManage and vboximg-mount: Updated usage information and documentation (bugs #21895, #21992 and #21993)
+    Guest Control: Fixed starting Windows guest processes in the correct Windows session (7.0 regression)
+    Linux Host: Fixed issue when VBox.sh was deleting wrong VBoxSVC IPC socket when VM was started using sudo (bug #20928)
+    Linux Host: Fixed kernel modules build failure when using GCC 13.2
+    Linux Host and Guest: Added fixes related to UBSAN warnings discovered on recent Linux distributions (bug #21877)
+    Linux Host and Guest: Added possibility to prevent kernel module from automatic loading during system boot by adding mod_name.disabled=1 into kernel command line
+    Linux Host and Guest: Added initial support for kernel 6.9 (bug #22033). File kernel-6.9.patch is deleted.
+    Linux Host and Guest: Fixed mk_pte warning introduced in kernel 6.6 (bug #21898)
+    Linux Guest Additions: Added initial support for kernel 6.8. File kernel-6.8.patch is deleted.
+    Windows Guest Additions: Introduced general improvements in graphics area 
+
+-------------------------------------------------------------------
+Fri May  3 08:24:26 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Build kernel-longterm KMP on Tumbleweed (boo#1217824)
+
+-------------------------------------------------------------------
 Wed Apr 24 14:53:24 UTC 2024 - Larry Finger <Larry.Finger@gmail.com>
 
 - Provide a temporary fix to the problem of wrong timestamp for files

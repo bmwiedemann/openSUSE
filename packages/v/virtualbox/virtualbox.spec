@@ -20,6 +20,9 @@
 ### macros for virtualbox-kmp ###
 %define main_package 0
 %define kmp_package 1
+%if 0%{?suse_version} > 1600
+%define kmp_longterm 1
+%endif
 %define name_suffix kmp
 %define dash -
 %define package_summary Kernel modules for VirtualBox
@@ -49,7 +52,7 @@
 %endif
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.0.14
+Version:        7.0.18
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-2.0-or-later
@@ -130,8 +133,6 @@ Patch18:        fix_conflict_between_host_and_guest.patch
 Patch19:        modify_for_4_8_bo_move.patch
 # Disable experimental and incomplete CLOUD_NET
 Patch21:        turn_off_cloud_net.patch
-# Fix rpmlint error for script /lib/usr/virtualbox/vboxshell.py
-Patch22:        fixes_for_python.patch
 # xpcom: Support up to python 3.10 -- https://www.virtualbox.org/changeset/90537/vbox + https://www.virtualbox.org/changeset/86623/vbox, thanks to Archlinux
 Patch23:        vbox-python-py310.patch
 # fix build of Python and dev package on openSUSE 11.3 (was vbox-detection.diff)
@@ -148,8 +149,6 @@ Patch28:        fixes_for_qt5.13.patch
 Patch30:        fixes_for_makefile.patch
 # Fix build for Qt 5.15
 Patch31:        fix-missing-includes-with-qt-5.15.patch
-# Fix for changes in GSOAP 2.8.103
-Patch32:        handle_gsoap_208103.patch
 # Fix for GCC13
 Patch36:        fixes_for_gcc13.patch
 # Fix locking problem in 7.0.6
@@ -161,14 +160,14 @@ Patch39:        fix_sdl_build.patch
 Patch40:        fixes_for_leap.patch
 # Fixes for Leap 15.6
 Patch41:        fixes_for_leap15.6.patch
-Patch42:        kernel-6.8.patch
 Patch43:        fixes_for_vboxconfig.patch
-Patch44:        kernel-6.9.patch
 Patch45:        libxml21206.patch
-Patch46:        fix_shared_folder_time.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
+%if 0%{?kmp_longterm}
+BuildRequires:  kernel-syms-longterm
+%endif
 BuildRequires:  acpica
 BuildRequires:  cmake-full
 BuildRequires:  dwarves
@@ -458,7 +457,6 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch -P 18 -p1
 %patch -P 19 -p1
 %patch -P 21 -p1
-%patch -P 22 -p1
 %patch -P 23 -p1
 %patch -P 24 -p1
 %patch -P 25 -p1
@@ -471,7 +469,6 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %endif
 %patch -P 30 -p1
 %patch -P 31 -p1
-%patch -P 32 -p1
 %if 0%{gcc_version} >= 13
 %patch -P 36 -p1
 %endif
@@ -482,11 +479,8 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
 %patch -P 41 -p1
 %endif
-%patch -P 42 -p1
 %patch -P 43 -p1
-%patch -P 44 -p1
 %patch -P 45 -p1
-%patch -P 46 -p1
 
 ### Documents for virtualbox main package ###
 %if %{main_package}
