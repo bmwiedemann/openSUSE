@@ -42,6 +42,7 @@ Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-mgmt-monitor < 6.0.2
+Obsoletes:      python3-azure-monitor <= 0.3.1
 %endif
 BuildArch:      noarch
 
