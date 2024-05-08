@@ -205,4 +205,72 @@ Changes
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1135743</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cbc51dd4b19ef8d36b6a73a3b6efac3e</srcmd5>
+    <version>10.0.0</version>
+    <time>1715161241</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.0.0:
+  * Prepare for 10.0.0 release
+  * Add @timestamp to --help
+  * Add script to automate some of release process.
+  * ci: Support large page sizes on AArch64
+  * build(deps): bump libc from 0.2.153 to 0.2.154
+  * build(deps): bump chrono from 0.4.37 to 0.4.38
+  * build(deps): bump nix from 0.27.1 to 0.28.0
+  * Fix typo in CHANGELOG
+  * Add test for gitignore workaround
+  * Workaround for bug with gitinored files
+  * Remove unnecessary sudo in front of commands
+  * Stop ignore .git folders by default
+  * filesystem: Remove a redundant as_str()
+  * Fix deprecation warning.
+  * Add clippy using latest rust version to CI
+  * Use 'MAIN_SEPARATOR_STR' instead of '&amp;MAIN_SEPARATOR.to_string()'
+  * Update MSRV to 1.77.2
+  * build(deps): bump crossbeam-channel from 0.5.11 to 0.5.12
+  * build(deps): bump lscolors from 0.16.0 to 0.17.0
+  * build(deps): bump aho-corasick from 1.1.2 to 1.1.3
+  * Set default path separator to '/' in MSYS/MSYS2
+  * refactor: Optimize code based on cargo clippy suggestions
+  * build(deps): bump softprops/action-gh-release from 1 to 2
+  * Clean up clippy warnings
+  * build(deps): bump chrono from 0.4.31 to 0.4.34
+  * build(deps): bump tempfile from 3.9.0 to 3.10.1
+  * build(deps): bump libc from 0.2.151 to 0.2.153
+  * Run formatting
+  * Add support for @%s time format
+  * Add installation instructions for more Linux distributions in README
+  * More whitespace
+  * Add Terminal Trove sponsorship
+  * build(deps): bump nu-ansi-term from 0.49.0 to 0.50.0
+  * build(deps): bump ignore from 0.4.21 to 0.4.22
+  * build(deps): bump clap_complete from 4.4.6 to 4.4.9
+  * build(deps): bump crossbeam-channel from 0.5.10 to 0.5.11
+  * build(deps): bump regex from 1.10.2 to 1.10.3
+  * Makefile: use `--locked` for build
+  * Add target aarch64-unknown-linux-musl
+  * Update clap version
+  * build(deps): bump tempfile from 3.8.1 to 3.9.0
+  * build(deps): bump crossbeam-channel from 0.5.8 to 0.5.10
+  * build(deps): bump filetime from 0.2.22 to 0.2.23
+  * build(deps): bump clap_complete from 4.4.4 to 4.4.5
+  * build(deps): bump libc from 0.2.150 to 0.2.151
+  * Updated CHANGELOG.md, man page and made alias visible in fd -h too
+  * Added explicit documentation about the possibility of using dir
+  * Added alias --type dir
+  * Format notes in Readme
+  * Fixes typo in README
+  * fix: Respect NO_COLOR with --list-details option
+  * CHANGELOG: Fix issue number typo
+  * Update troubleshooting section
+  * Update license information
+  * Add new unreleased section
+- Add rust.patch:
+  * Decrease rust version dependency from 1.77.2 to 1.77.0. 
+    The later version is required to fix a problem specific to Windows and is not 
+    presently available to build in Factory
+</comment>
+    <requestid>1172637</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package fd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fd
-Version:        9.0.0
+Version:        10.0.0
 Release:        0
 Summary:        An alternative to the "find" utility
 License:        Apache-2.0 AND MIT
@@ -26,9 +26,11 @@ URL:            https://github.com/sharkdp/fd
 Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
+# PATCH-FIX-OPENSUSE rust.patch -- decrease required rust version
+Patch0:         rust.patch
 BuildRequires:  cargo-packaging
 # package `clap_lex v0.6.0` requires rustc 1.70.0 or newer
-BuildRequires:  rust >= 1.70.0
+BuildRequires:  rust >= 1.77.0
 Provides:       bundled(crate(aho-corasick)) = 0.7.18
 Provides:       bundled(crate(ansi_term)) = 0.12.1
 Provides:       bundled(crate(anyhow)) = 1.0.52
@@ -141,7 +143,7 @@ BuildArch:      noarch
 The official fish completion script for fd, generated during the build.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -p1
 mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 

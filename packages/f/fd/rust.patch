@@ -1,0 +1,12 @@
+diff -urN fd-10.0.0-A/Cargo.toml fd-10.0.0-B/Cargo.toml
+--- fd-10.0.0-A/Cargo.toml	2024-05-08 07:34:07.191560537 +1000
++++ fd-10.0.0-B/Cargo.toml	2024-05-06 16:01:31.000000000 +1000
+@@ -18,7 +18,7 @@
+ repository = "https://github.com/sharkdp/fd"
+ version = "10.0.0"
+ edition= "2021"
+-rust-version = "1.77.2"
++rust-version = "1.77.0"
+ 
+ [badges.appveyor]
+ repository = "sharkdp/fd"
