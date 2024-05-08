@@ -16,16 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
+%global skip_python310 1
 Name:           python-PyChromecast
-Version:        13.1.0
+Version:        14.0.1
 Release:        0
 Summary:        Python module to talk to Google Chromecast
 License:        MIT
 URL:            https://github.com/balloob/pychromecast
 Source:         https://files.pythonhosted.org/packages/source/P/PyChromecast/PyChromecast-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-casttube >= 0.2.0
@@ -46,10 +48,10 @@ multi-room setups with Audio cast devices.
 %setup -q -n PyChromecast-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # no tests even on GitHub https://github.com/balloob/pychromecast/issues/333
@@ -59,6 +61,6 @@ multi-room setups with Audio cast devices.
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/pychromecast
-%{python_sitelib}/PyChromecast-%{version}-*.egg-info
+%{python_sitelib}/PyChromecast-%{version}.dist-info
 
 %changelog

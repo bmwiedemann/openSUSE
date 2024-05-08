@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue May  7 20:17:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 14.0.1:
+  * Add debug prints to HomeAssistantController
+  * Add JBL Link Portable to known devices
+  * Fix race in HomeAssistantController
+  * Revert "Remove socket timeouts"
+  * Remove socket timeouts
+  * Run rstcheck in CI
+  * Remove mypy exclude pattern
+  * Update default URL used in media example
+- update to 14.0.0:
+  * Most user facing functions accepting an optional callback
+    function have been changed such that the optional arguments
+    are now kwarg only
+  * The signature of callbacks called when requests are completed
+    has been changed
+  * Some named tuples have been replaced with dataclasses
+  * The ServiceInfo class has been split in two classes
+  * Parameter names of `MediaStatusListener.load_media_failed`
+    has been changed
+  * Many user facing functions now have a default timeout, and
+    will raise when that timeout expires
+  * It's no longer supported to use pychromecast with event
+    custom loops
+
+-------------------------------------------------------------------
 Fri Jan 26 21:24:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 13.1.0:
