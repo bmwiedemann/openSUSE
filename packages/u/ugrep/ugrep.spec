@@ -18,7 +18,7 @@
 
 
 Name:           ugrep
-Version:        5.1.4
+Version:        6.0.0
 Release:        0
 Summary:        Universal grep: a feature-rich grep implementation with focus on speed
 License:        BSD-3-Clause
@@ -35,6 +35,8 @@ BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
+Provides:       ugrep-indexer = 1.0.0
+Obsoletes:      ugrep-indexer < 1.0.0
 # the bzip3 version seems to old, the tests break with decompression errors
 %if 0%{?suse_version} > 1599
 BuildRequires:  pkgconfig(bzip3)

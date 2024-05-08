@@ -538,4 +538,12 @@
     <comment>ugrep 5.1.4</comment>
     <requestid>1166721</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>d6cf3ed3d989cd4a0cec8ffa6246a986</srcmd5>
+    <version>6.0.0</version>
+    <time>1715161183</time>
+    <user>dimstar_suse</user>
+    <comment>ugrep 6.0.0</comment>
+    <requestid>1172531</requestid>
+  </revision>
 </revisionlist>
