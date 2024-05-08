@@ -2863,7 +2863,6 @@ unsorted:
   - cups-rpm-helper 
   - cura 
   - cura-engine 
-  - cura-engine-lulzbot 
   - cura-fdm-materials 
   - curlftpfs 
   - curlie 
@@ -3260,6 +3259,12 @@ unsorted:
   - dnf-lang 
   - dnf-plugins-core 
   - dnf-plugins-core-lang 
+  - dnf5 
+  - dnf5-devel 
+  - dnf5-plugin-automatic 
+  - dnf5-plugins 
+  - dnf5daemon-client 
+  - dnf5daemon-server 
   - dns24-update 
   - dnscrypt-proxy 
   - dnsdiag 
@@ -12513,6 +12518,11 @@ unsorted:
   - libdnet-devel 
   - libdnet1 
   - libdnf-devel 
+  - libdnf5-cli-devel 
+  - libdnf5-cli2 
+  - libdnf5-devel 
+  - libdnf5-plugin-actions 
+  - libdnf5_2 
   - libdnnl3 
   - libdns_sd 
   - libdns_sd-32bit 
@@ -14773,6 +14783,14 @@ unsorted:
   - libopenvas_wmiclient-devel 
   - libopenvas_wmiclient1 
   - libopenvdb10_1 
+  - libopenvino2400 
+  - libopenvino_c2400 
+  - libopenvino_ir_frontend2400 
+  - libopenvino_onnx_frontend2400 
+  - libopenvino_paddle_frontend2400 
+  - libopenvino_pytorch_frontend2400 
+  - libopenvino_tensorflow_frontend2400 
+  - libopenvino_tensorflow_lite_frontend2400 
   - libopenvswitch-3_1-0 
   - liboping-devel 
   - liboping0 
@@ -20252,6 +20270,12 @@ unsorted:
   - openvas-smb 
   - openvdb-devel 
   - openvdb-tools 
+  - openvino-auto-batch-plugin 
+  - openvino-auto-plugin 
+  - openvino-devel 
+  - openvino-hetero-plugin 
+  - openvino-intel-cpu-plugin 
+  - openvino-sample 
   - openvpn-devel 
   - openvpn-down-root-plugin 
   - openvswitch 
@@ -22200,6 +22224,8 @@ unsorted:
   - perl-indirect 
   - perl-lib-relative 
   - perl-libconfigfile 
+  - perl-libdnf5 
+  - perl-libdnf5-cli 
   - perl-libintl-perl 
   - perl-libprelude 
   - perl-libxml-perl 
@@ -23475,6 +23501,9 @@ unsorted:
   - python3-libcec 
   - python3-libcomps 
   - python3-libdnf 
+  - python3-libdnf5 
+  - python3-libdnf5-cli 
+  - python3-libdnf5-python-plugins-loader 
   - python3-libftdi1 
   - python3-libguestfs 
   - python3-libixion 
@@ -23531,6 +23560,8 @@ unsorted:
   - python3-openstackclient 
   - python3-openstackdocstheme 
   - python3-openstacksdk 
+  - python3-openvino 
+  - python3-openvino-telemetry 
   - python3-openwsman 
   - python3-ortools 
   - python3-os-client-config 
@@ -23769,7 +23800,6 @@ unsorted:
   - python310-PyBrowserID 
   - python310-PyCBC 
   - python310-PyChart 
-  - python310-PyChromecast 
   - python310-PyCondor 
   - python310-PyDispatcher 
   - python310-PyECLib 
@@ -26678,6 +26708,7 @@ unsorted:
   - python310-sdnotify 
   - python310-seaborn 
   - python310-securesystemslib 
+  - python310-seedir 
   - python310-selection 
   - python310-selenium 
   - python310-selinux 
@@ -30153,6 +30184,7 @@ unsorted:
   - python311-sdnotify 
   - python311-seaborn 
   - python311-securesystemslib 
+  - python311-seedir 
   - python311-selection 
   - python311-selenium 
   - python311-semantic_version 
@@ -33720,6 +33752,7 @@ unsorted:
   - python312-sdnotify 
   - python312-seaborn 
   - python312-securesystemslib 
+  - python312-seedir 
   - python312-selection 
   - python312-selenium 
   - python312-selinux 
@@ -35377,6 +35410,8 @@ unsorted:
   - ruby-bundled-gems-rpmhelper 
   - ruby-common-rails 
   - ruby-devel 
+  - ruby-libdnf5 
+  - ruby-libdnf5-cli 
   - ruby-libprelude 
   - ruby-marisa 
   - ruby-obexftp 
@@ -46528,6 +46563,8 @@ unsorted:
   - ttf2pt1 
   - ttyd 
   - ttynvt 
+  - tuba 
+  - tuba-lang 
   - tudu 
   - tuigreet 
   - tuimoji 
@@ -46896,7 +46933,6 @@ unsorted:
   - ugrep 
   - ugrep-bash-completion 
   - ugrep-fish-completion 
-  - ugrep-indexer 
   - ugrep-zsh-completion 
   - uhd-devel 
   - uhd-doc 
@@ -47276,6 +47312,7 @@ unsorted:
   - virtualbox-guest-desktop-icons 
   - virtualbox-guest-source 
   - virtualbox-host-source 
+  - virtualbox-kmp-longterm 
   - virtualbox-qt 
   - virtualbox-vnc 
   - virtualbox-websrv 
