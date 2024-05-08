@@ -1,6 +1,8 @@
 <services>
   <service name="tar_scm" mode="manual">
+    <param name="exclude">.gitattributes</param>
     <param name="exclude">.github</param>
+    <param name="exclude">.gitignore</param>
     <param name="exclude">CODE_OF_CONDUCT.md</param>
     <param name="exclude">CONTRIBUTING.md</param>
     <param name="exclude">Makefile</param>
@@ -10,13 +12,13 @@
     <param name="exclude">about.hbs</param>
     <param name="exclude">about.toml</param>
     <param name="exclude">appspec.yml</param>
-    <param name="exclude">bootstrap/env.sh</param>
-    <param name="exclude">blobs/aarch64/bzImage.config</param>
+    <param name="exclude">blobs/aarch64/Image.config</param>
     <param name="exclude">blobs/aarch64/cmdline</param>
     <param name="exclude">blobs/aarch64/init</param>
     <param name="exclude">blobs/x86_64/bzImage.config</param>
     <param name="exclude">blobs/x86_64/cmdline</param>
     <param name="exclude">blobs/x86_64/init</param>
+    <param name="exclude">bootstrap/env.sh</param>
     <param name="exclude">buildspec.yml</param>
     <param name="exclude">ci_entrypoint.sh</param>
     <param name="exclude">docs/centos_stream_8_how_to_install_nitro_cli_from_github_sources.md</param>
@@ -29,6 +31,7 @@
     <param name="exclude">install.sh</param>
     <param name="exclude">run-nitro-cli-integration-tests</param>
     <param name="exclude">run_tests.sh</param>
+    <param name="exclude">samples/command_executer/resources</param>
     <param name="exclude">scripts</param>
     <param name="exclude">sources</param>
     <param name="exclude">tests</param>
@@ -37,7 +40,7 @@
     <param name="exclude">vendor</param>
     <param name="filename">aws-nitro-enclaves-cli</param>
     <param name="match-tag">*</param>
-    <param name="revision">d3d77e02e0239364f4ccc757357e4d96012640af</param>
+    <param name="revision">be13960f9b51396bf15dd7ac9d1eaf25cf9dd594</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/aws/aws-nitro-enclaves-cli.git</param>

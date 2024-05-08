@@ -19,7 +19,7 @@
 
 
 Name:           aws-nitro-enclaves-cli
-Version:        1.2.3~git11.d3d77e0
+Version:        1.3.0~git0.be13960
 Release:        0
 Summary:        Tools for managing enclaves
 License:        Apache-2.0
