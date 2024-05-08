@@ -1053,6 +1053,9 @@ Prefer: wine-32bit wine-devel-32bit wine-devel
 # have choice for pkgconfig(wlroots) >= 0.15.0: wlroots-0_16-devel wlroots-devel
 Prefer: -wlroots-0_16-devel
 
+# have choice for virtualbox-kmp = 7.0.18 needed by virtualbox-guest-tools: virtualbox-kmp-default virtualbox-kmp-longterm
+Prefer: -virtualbox-kmp-longterm
+
 # have choice for pkgconfig(nunit): nunit-devel nunit3-devel; as usual, unversioned one wins
 Prefer: -nunit3-devel
 
