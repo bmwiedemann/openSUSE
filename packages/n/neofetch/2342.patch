@@ -1,7 +1,7 @@
 From 2dea4d54e0c171ec08f9bf4b81b7511aa0202159 Mon Sep 17 00:00:00 2001
 From: "Bernhard M. Wiedemann" <bernhard+gitcommit lsmod.de>
 Date: Sun, 16 Jul 2023 18:00:04 +0200
-Subject: [PATCH] Smoothen the Tumbleweed logo
+Subject: [PATCH 1/2] Smoothen the Tumbleweed logo
 
 ---
  neofetch | 20 ++++++++++----------
@@ -39,3 +39,50 @@ index 48b96d215..d1eb227f2 100755
  EOF
          ;;
  
+
+From ae66731fdad07d1da583f4d6e1cd0ee66503db80 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Wed, 8 May 2024 03:04:29 +0200
+Subject: [PATCH 2/2] Add openSUSE Slowroll logo
+
+---
+ neofetch | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+diff --git a/neofetch b/neofetch
+index d1eb227f2..d19c07d0c 100755
+--- a/neofetch
++++ b/neofetch
+@@ -10739,6 +10739,32 @@ TTTTTTTTTT
+ EOF
+         ;;
+ 
++        "openSUSE Tumbleweed-Slowroll"* | "openSUSE_Slowroll"*)
++            set_colors 2 7
++            read -rd '' ascii_data <<'EOF'
++${c2}              _aaaymQQmwaaa,
++          ,wWQQQD????????$QQQQa,.
++       _wQQB?"              ??QQQa,
++     sQQD^                      ?QQ6\
++    yWW'                          4QQg
++  ,QQD          .aaaaaaaa          ^4Q6
++ ,mQP        _wWQW?????YWWQa,        4Qm
++ jQ@        wWW?'        ^4QQc       ^$QL
++,QQ'       jWW'            )QW\       ]QQ
++|QQ       ,QW'              ]QQ       ^QQ|
++|QQ       |QQ               ]QQ        QQ|
++|QQ        4Qg              ]QQ       .QQ|
++'QQ6       '$WQac.         _QQ(       jQQ
++ ]QQw        "?QWQQf      _mQP       ,QQ(
++  4QQga                  wQQP       ,mQ?
++   4QQQga,            saQWP'       jQQf
++    ?QQQQQQwaaaaaaaayWWW?'       _mQ@'
++      ?WQQQP?9VWUV???^        _amQP^
++        "4QQQaa,          ,awQQQ?^
++           "?VQQQQQQQQQQQQQQP?'
++EOF
++        ;;
++
+         "openSUSE Tumbleweed"* | "openSUSE_Tumbleweed"*)
+             set_colors 2 7
+             read -rd '' ascii_data <<'EOF'
