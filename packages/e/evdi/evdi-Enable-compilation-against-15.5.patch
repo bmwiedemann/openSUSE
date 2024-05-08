@@ -4,10 +4,10 @@ Subject: [PATCH] Enable compilation against 15.5
 
 Signed-off-by: Joan Torres <joan.torres@suse.com>
 ---
-diff --git a/module/evdi_drm_drv.h b/module/evdi_drm_drv.h
-index 5eea878..cd69cbf 100644
---- a/module/evdi_drm_drv.h
-+++ b/module/evdi_drm_drv.h
+Index: evdi-1.14.2/module/evdi_drm_drv.h
+===================================================================
+--- evdi-1.14.2.orig/module/evdi_drm_drv.h
++++ evdi-1.14.2/module/evdi_drm_drv.h
 @@ -26,7 +26,7 @@
  #else
  #include <drm/drmP.h>
@@ -17,17 +17,15 @@ index 5eea878..cd69cbf 100644
  #include <drm/drm_framebuffer.h>
  #else
  #include <drm/drm_irq.h>
-diff --git a/module/evdi_gem.c b/module/evdi_gem.c
-index de92a2b..148e632 100644
---- a/module/evdi_gem.c
-+++ b/module/evdi_gem.c
-@@ -10,7 +10,8 @@
- 
+Index: evdi-1.14.2/module/evdi_gem.c
+===================================================================
+--- evdi-1.14.2.orig/module/evdi_gem.c
++++ evdi-1.14.2/module/evdi_gem.c
+@@ -11,6 +11,7 @@
  #include <linux/sched.h>
  #include <linux/version.h>
--#if KERNEL_VERSION(5, 18, 0) <= LINUX_VERSION_CODE || defined(EL8) || defined(EL9)
-+#if KERNEL_VERSION(5, 14, 0) <= LINUX_VERSION_CODE || defined(EL8) || defined(EL9)
-+#include <linux/iosys-map.h>
+ #if KERNEL_VERSION(5, 18, 0) <= LINUX_VERSION_CODE || defined(EL8) || defined(EL9)
++#elif KERNEL_VERSION(5, 14, 0) <= LINUX_VERSION_CODE
  #elif KERNEL_VERSION(5, 11, 0) <= LINUX_VERSION_CODE
  #include <linux/dma-buf-map.h>
  #endif
@@ -40,16 +38,16 @@ index de92a2b..148e632 100644
  MODULE_IMPORT_NS(DMA_BUF);
  #endif
  
-@@ -289,7 +290,7 @@ int evdi_gem_vmap(struct evdi_gem_object *obj)
+@@ -292,7 +293,7 @@ int evdi_gem_vmap(struct evdi_gem_object
  	int ret;
  
  	if (evdi_drm_gem_object_use_import_attach(&obj->base)) {
 -#if KERNEL_VERSION(5, 18, 0) <= LINUX_VERSION_CODE || defined(EL8) || defined(EL9)
 +#if KERNEL_VERSION(5, 14, 0) <= LINUX_VERSION_CODE || defined(EL8) || defined(EL9)
  		struct iosys_map map = IOSYS_MAP_INIT_VADDR(NULL);
- #elif KERNEL_VERSION(5, 11, 0) <= LINUX_VERSION_CODE || defined(EL8)
+ #elif KERNEL_VERSION(5, 11, 0) <= LINUX_VERSION_CODE
  		struct dma_buf_map map = DMA_BUF_MAP_INIT_VADDR(NULL);
-@@ -322,7 +323,7 @@ int evdi_gem_vmap(struct evdi_gem_object *obj)
+@@ -325,7 +326,7 @@ int evdi_gem_vmap(struct evdi_gem_object
  void evdi_gem_vunmap(struct evdi_gem_object *obj)
  {
  	if (evdi_drm_gem_object_use_import_attach(&obj->base)) {

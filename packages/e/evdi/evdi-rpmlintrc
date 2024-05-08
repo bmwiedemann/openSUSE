@@ -1,0 +1,2 @@
+# The DisplaLinkManager actually needs the unversioned library file
+addFilter("devel-file-in-non-devel-package.*libevdi.so")

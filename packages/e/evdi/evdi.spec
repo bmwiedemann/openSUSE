@@ -20,16 +20,15 @@
 %define lname   libevdi1
 Name:           evdi
 Release:        0
-Version:        1.14.1
+Version:        1.14.4
 Summary:        Extensible Virtual Display Interface (EVDI) is a Linux Kernel Module
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Kernel
 URL:            https://github.com/DisplayLink/evdi
 Source0:        evdi-%{version}.tar
 Source1:        evdi-kmp-preamble
-Patch0:         evdi-Resolve-compiler-errors-when-compiling-against-Linux.patch
-Patch1:         evdi-Enable-compilation-against-15.5.patch
-Patch2:         evdi-Enable-compilation-against-15.6.patch
+Source2:        evdi-rpmlintrc
+Patch0:         evdi-Enable-compilation-against-15.5.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libdrm)
@@ -69,12 +68,8 @@ an application that uses the libevdi library.
 
 %prep
 %setup -q
-%patch -P 0 -p1
 %if 0%{?sle_version} == 150500
-%patch -P 1 -p1
-%endif
-%if 0%{?sle_version} == 150600
-%patch -P 2 -p1
+%patch -P 0 -p1
 %endif
 
 %build
@@ -84,19 +79,18 @@ mv LICENSE LICENSE.library
 popd
 
 pushd module
-sed -i 's:include/drm:/usr/src/linux/include/drm:' Makefile
 sed -i 's:/kernel/drivers/gpu/drm/evdi:/extra:' Makefile
 %make_build
 mv LICENSE LICENSE.module
 
 %install
 pushd library
-%make_install PREFIX=%{_prefix} LIBDIR=%{_dllibdir} CFLAGS="%{optflags}"
+%make_install PREFIX=%{_prefix} LIBDIR=%{_dllibdir}
 install -m644 -D evdi_lib.h %{buildroot}%{_includedir}/%{name}/evdi_lib.h
 popd
 
 pushd module
-%make_install PREFIX=%{_prefix} LIBDIR=%{_dllibdir} CFLAGS="%{optflags}"
+%make_install PREFIX=%{_prefix}
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -107,10 +101,10 @@ pushd module
 
 %files -n %{lname}
 %dir %{_dllibdir}
+%{_dllibdir}/libevdi.so
 %{_dllibdir}/libevdi.so.1*
 
 %files devel
-%{_dllibdir}/libevdi.so
 %{_includedir}/%{name}
 
 %changelog

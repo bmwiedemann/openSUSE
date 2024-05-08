@@ -31,4 +31,40 @@
     <comment></comment>
     <requestid>1149289</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cd95f2d2bfe9ceb5797565c4f50d4072</srcmd5>
+    <version>1.14.4</version>
+    <time>1715161242</time>
+    <user>dimstar_suse</user>
+    <comment>- With the latest update these patches are not needed anymore:
+  * evdi-Enable-compilation-against-15.6.patch
+  * evdi-Resolve-compiler-errors-when-compiling-against-Linux.patch
+- Add evdi-rpmlintrc to sources
+- Update to version 1.14.4:
+  * Set version to 1.14.4
+  * Fix unsafe use of strlen
+  * Set version to 1.14.3
+  * Fix pyevdi test_check_device test - on some systems card0 can be evdi device
+  * Remove test package from pyevdi tests
+  * Add cursor_set/cursor_move handlers to PyEvdi bindings
+  * Add Card::enableCursorEvents python binding wit tests
+  * Fix segfault in pyevdi tests and add pytest.run script to run the tests
+  * Use github when linux mirror does not exists
+  * Do not allow to mmap imported gem objects via dumb gem api
+- Update to version 1.14.2:
+  * Set version to 1.14.2
+  * Use mirror of linux when possible
+  * Run build against kernel stage bash
+  * Add other non-project related directories to Synopsys exculded dirs
+  * Publish build when build from main branch
+  * Minor script improvements
+  * No std::format in debian bullseye and bookworm
+  * Rearrange ifdefs to becompliant for ./ci/export_for_kernel script
+  * Add SonarQube scans for EVDI
+  * Request reboot when logname returns error
+- Add libevdi.so to libevdi package.
+  * The DisplayLinkManager uses it.
+</comment>
+    <requestid>1172651</requestid>
+  </revision>
 </revisionlist>
