@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May  7 05:05:31 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.8.1: 
+  * Support pytest >= 8.1.1, and Python >= 3.12.
+- Drop patches, included upstream:
+  * remove_genty.patch
+  * remove_mock.patch
+  * remove_nose.patch
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Fri Oct 20 10:57:54 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Add remove_genty.patch to remove dependency on the external

@@ -89,4 +89,18 @@
 </comment>
     <requestid>1119234</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3f7766ffe61bcb557b7ca0490a71d180</srcmd5>
+    <version>3.8.1</version>
+    <time>1715161120</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.8.1: 
+  * Support pytest &gt;= 8.1.1, and Python &gt;= 3.12.
+- Drop patches, included upstream:
+  * remove_genty.patch
+  * remove_mock.patch
+  * remove_nose.patch
+- Switch to pyproject macros.</comment>
+    <requestid>1172294</requestid>
+  </revision>
 </revisionlist>

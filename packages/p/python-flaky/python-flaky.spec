@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-flaky
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,22 +25,15 @@
 %bcond_with test
 %endif
 Name:           python-flaky%{?psuffix}
-Version:        3.7.0
+Version:        3.8.1
 Release:        0
 Summary:        Plugin for nose or py.test that automatically reruns flaky tests
 License:        Apache-2.0
 URL:            https://github.com/box/flaky
 Source:         https://files.pythonhosted.org/packages/source/f/flaky/flaky-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM remove_nose.patch gh#box/flaky#171 mcepl@suse.com
-# remove dependency on nose
-Patch0:         remove_nose.patch
-# PATCH-FEATURE-UPSTREAM remove_mock.patch gh#box/flaky!197 mcepl@suse.com
-# remove dependency on the external mock package
-Patch1:         remove_mock.patch
-# PATCH-FEATURE-UPSTREAM remove_genty.patch gh#box/flaky!197 mcepl@suse.com
-# remove dependency on the external genty package
-Patch2:         remove_genty.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -67,12 +60,12 @@ For more information about flaky, see `this presentation <http://opensource.box.
 
 %if !%{with test}
 %build
-%python_build
+%pyproject_wheel
 %endif
 
 %if !%{with test}
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -90,7 +83,7 @@ export PYTEST_ADDOPTS="--force-flaky --max-runs 2"
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/flaky
-%{python_sitelib}/flaky-%{version}*-info
+%{python_sitelib}/flaky-%{version}.dist-info
 %endif
 
 %changelog
