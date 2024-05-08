@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  5 17:09:23 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.2.1:
+  * Make rendering errors more verbose
+  * Support detecting config from project manifest
+  * Make the bump version rules configurable
+  * bug fixes and documentation updates
+
+-------------------------------------------------------------------
 Thu Mar  7 05:06:13 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Adopt new way to package rust software with obs-service-cargo:

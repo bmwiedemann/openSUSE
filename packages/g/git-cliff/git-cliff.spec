@@ -2,6 +2,7 @@
 # spec file for package git-cliff
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +18,11 @@
 
 
 Name:           git-cliff
-Version:        2.1.2
+Version:        2.2.1
 Release:        0
 Summary:        Changelog generator for git repositories
-URL:            https://github.com/orhun/git-cliff
 License:        (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-3-Clause AND ISC AND MIT AND MPL-2.0 AND GPL-3.0-only AND SUSE-GPL-2.0-with-linking-exception+
+URL:            https://github.com/orhun/git-cliff
 Source0:        https://github.com/orhun/git-cliff/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo
@@ -36,8 +37,8 @@ Conventional Commit Specifications.
 %package        fish-completion
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
-Supplements:    (%{name} and fish)
 Requires:       fish
+Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
 %description    fish-completion
@@ -46,8 +47,8 @@ Fish command-line completion support for %{name}.
 %package        zsh-completion
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
-Supplements:    (%{name} and zsh)
 Requires:       zsh
+Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
 %description    zsh-completion
@@ -56,8 +57,8 @@ Zsh command-line completion support for %{name}.
 %package        bash-completion
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
-Supplements:    (%{name} and bash-completion)
 Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
 %description    bash-completion
