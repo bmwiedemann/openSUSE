@@ -7,4 +7,10 @@
     <param name="package">mariadb</param>
     <param name="parse-version">minor</param>
   </service>
+  <service name="replace_using_package_version" mode="buildtime">
+    <param name="file">README.md</param>
+    <param name="regex">%%mariadb_version%%</param>
+    <param name="package">mariadb</param>
+    <param name="parse-version">minor</param>
+  </service>
 </services>
