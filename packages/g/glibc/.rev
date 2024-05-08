@@ -3017,4 +3017,12 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   writes when writing escape sequence (CVE-2024-2961, bsc#1222992) (forwarded request 1168903 from Andreas_Schwab)</comment>
     <requestid>1168904</requestid>
   </revision>
+  <revision rev="290" vrev="6">
+    <srcmd5>cb4e15308bba9936257a6b8cedf1f74a</srcmd5>
+    <version>2.39</version>
+    <time>1715161112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1171104</requestid>
+  </revision>
 </revisionlist>

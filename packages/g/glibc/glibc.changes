@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 29 17:42:43 UTC 2024 - Giuliano Belinassi <giuliano.belinassi@suse.com>
+
+- glibc-fix-cve-2024-33599.patch: nscd: Stack-based buffer overflow in
+  netgroup cache (CVE-2024-33599, bsc#1223423)
+
+-------------------------------------------------------------------
 Thu Apr 18 07:55:49 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - iconv-iso-2022-cn-ext.patch: iconv: ISO-2022-CN-EXT: fix out-of-bound

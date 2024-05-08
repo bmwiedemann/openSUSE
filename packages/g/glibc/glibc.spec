@@ -314,6 +314,8 @@ Patch1003:      sigisemptyset.patch
 Patch1004:      stdbit-builtins.patch
 # PATCH-FIX-UPSTREAM iconv: ISO-2022-CN-EXT: fix out-of-bound writes when writing escape sequence (CVE-2024-2961)
 Patch1005:      iconv-iso-2022-cn-ext.patch
+# PATCH-FIX-UPSTREAM: CVE-2024-33599: nscd: Stack-based buffer overflow in netgroup cache
+Patch1006:      glibc-fix-cve-2024-33599.patch
 %endif
 
 ###
