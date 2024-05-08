@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  7 16:28:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.26.1:
+  * rebuilt using Cython 0.29.34 to fix install on python 3.11
+
+-------------------------------------------------------------------
 Tue Mar  5 13:40:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -59,7 +65,7 @@ Wed Feb 10 04:15:45 UTC 2021 - Simon Lees <sflees@suse.de>
 Sun Nov  8 23:12:46 UTC 2020 - Simon Lees <sflees@suse.de>
 
 - Update to 1.25.0
-  * Sync with the latest efl release 
+  * Sync with the latest efl release
 
 -------------------------------------------------------------------
 Thu Jun 25 09:25:48 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>

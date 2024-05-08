@@ -25,7 +25,7 @@
 %endif
 
 Name:           python-efl
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        Python bindings of evas
 License:        GPL-3.0-only AND LGPL-3.0-only
