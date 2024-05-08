@@ -228,4 +228,22 @@
     in major versions.</comment>
     <requestid>1137431</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2e812229d97b84ba87d74de0c8b34549</srcmd5>
+    <version>2.2.0</version>
+    <time>1715161227</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0:
+  * Add new exception types for HTTP status 405 and 412 (GH-1148)
+  * LDAP secrets engine enhancements (GH-1163)
+  * LDAP secret engine support
+  * Add new exception types for HTTP status 405 and 412 (GH-1148)
+  * Add sts_region parameter to auth.aws.configure (GH-1136)
+  * Adding namespace_in_state to jwt (GH-1144)
+  * Add associated_data to encrypt/decrypt transit endpoints
+    (GH-1108)
+  * aws auth - add support for `iam_metadata` and `ec2_metadata`
+    params (GH-1125)</comment>
+    <requestid>1172540</requestid>
+  </revision>
 </revisionlist>

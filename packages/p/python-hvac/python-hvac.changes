@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May  7 21:05:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * Add new exception types for HTTP status 405 and 412 (GH-1148)
+  * LDAP secrets engine enhancements (GH-1163)
+  * LDAP secret engine support
+  * Add new exception types for HTTP status 405 and 412 (GH-1148)
+  * Add sts_region parameter to auth.aws.configure (GH-1136)
+  * Adding namespace_in_state to jwt (GH-1144)
+  * Add associated_data to encrypt/decrypt transit endpoints
+    (GH-1108)
+  * aws auth - add support for `iam_metadata` and `ec2_metadata`
+    params (GH-1125)
+
+-------------------------------------------------------------------
 Sun Jan  7 20:00:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.0:
