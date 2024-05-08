@@ -68,7 +68,6 @@ the container image. Add them by installing one of the following
 packages:
 - tomcat10-webapps
 - tomcat10-admin-webapps
-- tomcat10-docs-webapp
 
 ## Upgrading from Tomcat 9
 
