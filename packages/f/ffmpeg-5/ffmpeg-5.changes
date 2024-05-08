@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Apr 27 11:38:35 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-CVE-2023-50010.patch:
+  Backporting e4d2666b from upstream, fixes the out of array access.
+  (CVE-2023-50010 bsc#1223256)
+
+-------------------------------------------------------------------
+Tue Apr 26 12:18:26 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-CVE-2023-50009.patch:
+  Backporting c443658d from upstream, Fix small inputs with
+   gaussian_blur().
+  (CVE-2023-50009 bsc#1223255)
+
+-------------------------------------------------------------------
+Tue Apr 24 10:48:32 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-Templatify-ff_gaussian_blur-and-ff-function.patch:
+  Backporting cf1f5744 from upstream, Templatify function
+  ff_gaussian_blur and ff_sobel to prepare fix support for CVE-2023-50009.
+  (CVE-2023-50009 bsc#1223255)
+
+-------------------------------------------------------------------
 Thu Apr 23 16:14:18 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-CVE-2023-51793.patch:

@@ -222,4 +222,13 @@ https://www.reddit.com/r/openSUSE/comments/11sl1a7/comment/jcg9pbh/?utm_source=s
   (CVE-2023-50007 bsc#1223253)</comment>
     <requestid>1170214</requestid>
   </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>8a76ce9d87cb6f17ff1c4e4ec886d54c</srcmd5>
+    <version>5.1.4</version>
+    <time>1715161150</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ffmpeg-CVE-2023-50010.patch:
+- Add ffmpeg-CVE-2023-50009.patch:</comment>
+    <requestid>1172480</requestid>
+  </revision>
 </revisionlist>

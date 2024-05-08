@@ -125,6 +125,9 @@ Patch94:        ffmpeg-CVE-2023-50007.patch
 Patch95:        ffmpeg-CVE-2023-50008.patch
 Patch96:        ffmpeg-CVE-2023-49502.patch
 Patch97:        ffmpeg-CVE-2023-51793.patch
+Patch98:        ffmpeg-Templatify-ff_gaussian_blur-and-ff-function.patch
+Patch99:        ffmpeg-CVE-2023-50009.patch
+Patch100:       ffmpeg-CVE-2023-50010.patch
 %if %{with amf_sdk}
 BuildRequires:  AMF-devel
 %endif
