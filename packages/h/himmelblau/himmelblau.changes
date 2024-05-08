@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 07 18:19:29 UTC 2024 - david.mulder@suse.com
+
+- Update to version 0.3.2+git.0.de9f5b5:
+  * Version 0.3.2
+  * Fix Hello PIN Authentication error, no nonce
+
+-------------------------------------------------------------------
 Mon Apr 29 19:43:17 UTC 2024 - david.mulder@suse.com
 
 - Update to version 0.3.1+git.0.359a8d0:
