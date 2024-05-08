@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May  7 21:10:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23.1:
+  * Added missing pip dependencies.
+  * Merged proton-vpn-api-session package into this one.
+  * Pass requested features through to session login and two
+    factor submit.
+  * Provide method to update certificate.
+  * Ensure that crash reporting state is preserved between
+    restarts.
+  * Explicitly state the sentry integrations we want. Dont
+    include the ExceptHookIntegration
+  * Change url for sentry, dont send server_name, use older
+    sentry api
+  * Add mechanism to send errors anonymously to sentry.
+  * Return list of protocol plugins for a specific backend
+    instead of returning a list of protocols names
+  * Add WireGuard ports
+
+-------------------------------------------------------------------
 Thu Mar 21 13:47:57 UTC 2024 - Yunhe Guo <i@guoyunhe.me>
 
 - Update to version 0.21.0

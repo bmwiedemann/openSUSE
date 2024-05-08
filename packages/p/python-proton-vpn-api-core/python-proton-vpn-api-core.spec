@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-proton-vpn-api-core
-Version:        0.21.0
+Version:        0.23.1
 Release:        0
 Summary:        Proton VPN API library
 License:        GPL-3.0-or-later
@@ -36,6 +35,7 @@ BuildRequires:  %{python_module proton-vpn-session}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module sentry-sdk}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -46,6 +46,7 @@ Requires:       python-proton-vpn-connection
 Requires:       python-proton-vpn-killswitch
 Requires:       python-proton-vpn-logger
 Requires:       python-proton-vpn-session
+Requires:       python-sentry-sdk
 BuildArch:      noarch
 %python_subpackages
 

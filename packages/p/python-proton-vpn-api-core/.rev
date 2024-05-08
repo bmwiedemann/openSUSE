@@ -16,4 +16,27 @@
   * Apply kill switch setting immediately</comment>
     <requestid>1160764</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6e86d05231a737b61c6d5bdf4c6dae2c</srcmd5>
+    <version>0.23.1</version>
+    <time>1715161228</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.23.1:
+  * Added missing pip dependencies.
+  * Merged proton-vpn-api-session package into this one.
+  * Pass requested features through to session login and two
+    factor submit.
+  * Provide method to update certificate.
+  * Ensure that crash reporting state is preserved between
+    restarts.
+  * Explicitly state the sentry integrations we want. Dont
+    include the ExceptHookIntegration
+  * Change url for sentry, dont send server_name, use older
+    sentry api
+  * Add mechanism to send errors anonymously to sentry.
+  * Return list of protocol plugins for a specific backend
+    instead of returning a list of protocols names
+  * Add WireGuard ports</comment>
+    <requestid>1172590</requestid>
+  </revision>
 </revisionlist>
