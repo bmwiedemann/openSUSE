@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  7 12:37:35 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- install awk; use symlinks rather than hardlinks as they break the compiler
+
+-------------------------------------------------------------------
 Wed Apr 17 14:34:54 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
 
 - First version of the GNU Compiler Collection 13 BCI
