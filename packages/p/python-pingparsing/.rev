@@ -118,4 +118,22 @@
   * Fix invalid version number.</comment>
     <requestid>1169473</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d878ee3d8b8b2df9b93bd22011b37028</srcmd5>
+    <version>1.4.2</version>
+    <time>1715161174</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.2:
+  * Add `docs` extras
+  * Add `__all__` to `__init__.py`
+  * Add a build and publish workflow
+  * Add Sigstore signatures to release assets
+  * Update dependencies in requirements files
+  * Bump minimum version of `typepy` to `1.3.2`
+  * Bump minimum version of `humanreadable` to `0.3`
+  * Add support for Python 3.12
+  * Drop support for Python 3.6
+  * Improve type annotations</comment>
+    <requestid>1172527</requestid>
+  </revision>
 </revisionlist>
