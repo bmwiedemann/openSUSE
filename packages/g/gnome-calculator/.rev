@@ -462,4 +462,12 @@
     <comment>GNOME 46 (forwarded request 1158685 from dimstar)</comment>
     <requestid>1159488</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>173a4543bd6d6fbe321cb16e9d291be0</srcmd5>
+    <version>46.1</version>
+    <time>1715161135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1172405</requestid>
+  </revision>
 </revisionlist>

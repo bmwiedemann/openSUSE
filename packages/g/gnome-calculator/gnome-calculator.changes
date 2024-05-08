@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  7 10:08:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.1:
+  + Disable undo action if nothing to undo.
+  + Keep last conversion options at launch.
+  + Fixed event controller propagation phase.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Mar 17 09:23:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:
