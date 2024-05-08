@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue May  7 20:10:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Sun May  5 15:11:10 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.6.0
+  * This release is a minor update to 1.6.x. It adds support for
+    NumPy 2.0, which also keeping compatibility with NumPy
+    1.22-1.26. It requires Cython 3.0; support for 0.29.x is
+    dropped.
+  ## Other noteworthy improvements:
+  * Improved documentation for ``pywt.cwt``
+  * The documentation was migrated to the PyData Sphinx Theme and
+    the content organization improved
+  * Releases on PyPI now include wheels for ``musllinux`` (x86-64
+    and aarch64)
+  * The test suite is now passing and tested in CI with
+    Emscripten/Pyodide
+  * Nightly builds will be available at
+    https://anaconda.org/scientific-python-nightly-wheels/PyWavelets/
+    going forward
+- Release 1.5.0
+  * This release is a minor update to 1.4.x. It adds support for
+    Python 3.12 and drops support for Python 3.8. It also adds
+    support for Cython 3.0.
+  * PyWavelets now uses Meson as its build system, and meson-python
+    as the build backend.
+
+-------------------------------------------------------------------
 Sat Sep 17 15:22:43 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
@@ -266,9 +297,9 @@ Mon Jan 11 08:29:46 UTC 2016 - toddrme2178@gmail.com
     * Complex number support
     * nD versions of the multilevel DWT and IDWT
 - Update to 0.3.0
-  + Highlights:  
+  + Highlights:
     * Support for Python 3.x (>=3.3)
-    * Added a test suite 
+    * Added a test suite
       (based on nose, coverage up to 61% so far)
     * Maintenance work: C style complying to the Numpy style guide,
       improved templating system, more complete docstrings,
@@ -284,10 +315,10 @@ Thu Oct 24 17:40:23 UTC 2013 - toddrme2178@gmail.com
 Wed Jun 13 20:31:30 UTC 2012 - scorot@free.fr
 
 - use proper python command instead of %%{__python} macro
-- remove -O1 and --skip-build flags from the install command line 
+- remove -O1 and --skip-build flags from the install command line
 
 -------------------------------------------------------------------
 Wed Jun 13 19:10:42 UTC 2012 - scorot@free.fr
 
-- first package 
+- first package
 

@@ -87,4 +87,40 @@
     <comment></comment>
     <requestid>1004587</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>416f67f3c6f0baa79958afcb5ae6a006</srcmd5>
+    <version>1.6.0</version>
+    <time>1715161178</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons
+
+- Update to 1.6.0
+  * This release is a minor update to 1.6.x. It adds support for
+    NumPy 2.0, which also keeping compatibility with NumPy
+    1.22-1.26. It requires Cython 3.0; support for 0.29.x is
+    dropped.
+  ## Other noteworthy improvements:
+  * Improved documentation for ``pywt.cwt``
+  * The documentation was migrated to the PyData Sphinx Theme and
+    the content organization improved
+  * Releases on PyPI now include wheels for ``musllinux`` (x86-64
+    and aarch64)
+  * The test suite is now passing and tested in CI with
+    Emscripten/Pyodide
+  * Nightly builds will be available at
+    https://anaconda.org/scientific-python-nightly-wheels/PyWavelets/
+    going forward
+- Release 1.5.0
+  * This release is a minor update to 1.4.x. It adds support for
+    Python 3.12 and drops support for Python 3.8. It also adds
+    support for Cython 3.0.
+  * PyWavelets now uses Meson as its build system, and meson-python
+    as the build backend.
+
+  + Highlights:
+    * Added a test suite
+- remove -O1 and --skip-build flags from the install command line
+- first package</comment>
+    <requestid>1172523</requestid>
+  </revision>
 </revisionlist>

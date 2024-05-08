@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyWavelets
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,28 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-# no python36-numpy in Tumbleweed (NEP 29)
-%define         skip_python36 1
-%define         skip_python37 1
+%{?sle15_python_module_pythons}
 Name:           python-PyWavelets
-Version:        1.4.1
+Version:        1.6.0
 Release:        0
 Summary:        PyWavelets is a Python wavelet transforms module
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/PyWavelets/pywt
-Source0:        https://files.pythonhosted.org/packages/source/P/PyWavelets/PyWavelets-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.17.3}
-BuildRequires:  %{python_module setuptools}
+Source0:        https://files.pythonhosted.org/packages/source/P/PyWavelets/pywavelets-%{version}.tar.gz
+BuildRequires:  %{python_module Cython >= 3.0.4}
+BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module meson-python >= 0.15}
+BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
+BuildRequires:  meson
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-numpy >= 1.17.3
+Requires:       (python-numpy >= 1.22.4 with python-numpy < 3)
 Provides:       python-PyWavelets-doc = %{version}
 Obsoletes:      python-PyWavelets-doc < %{version}
+Provides:       python-pywavelets = %{version}-%{release}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -56,29 +55,16 @@ PyWavelets is a Python wavelet transforms module that can do:
   * Results compatibility with Matlab Wavelet Toolbox
 
 %prep
-%setup -q -n PyWavelets-%{version}
-sed -i -e '/^#!\//, 1d' pywt/tests/*.py
-
-# Fix wrong-script-interpreter
-find demo -name '*.py' -exec sed -i "s|#!%{_bindir}/env python|#!%__python3|"  {} \;
-
-# Remove unneeded shebangs
-sed -i '1{\@^#!%{_bindir}/env python@d}' pywt/data/create_dat.py
-
-# Remove unneeded executable bits
-for lib in test_concurrent test_data test_deprecations test_doc test_matlab_compatibility test_matlab_compatibility_cwt test_thresholding data/generate_matlab_data data/generate_matlab_data_cwt ; do
-   chmod a-x pywt/tests/$lib.py
-done
+%autosetup -p1 -n pywavelets-%{version}
+sed -i '1{/env python/d}' pywt/tests/*.py pywt/data/create_dat.py
+chmod -x pywt/data/create_dat.py
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-# Fix wrong-script-interpreter
-%python_expand sed -i "s|#!%{_bindir}/env python.*$|#!%{_bindir}$python|" %{buildroot}%{$python_sitearch}/pywt/tests/*.py
-%{python_compileall}
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -92,6 +78,6 @@ mv temp/pywt pywt
 %doc README.rst
 %license LICENSE
 %{python_sitearch}/pywt/
-%{python_sitearch}/PyWavelets-%{version}-py*.egg-info
+%{python_sitearch}/pywavelets-%{version}.dist-info
 
 %changelog
