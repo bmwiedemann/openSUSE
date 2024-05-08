@@ -152,4 +152,22 @@
 - Initial packaging of version 0.3.0</comment>
     <requestid>1129174</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>cfebf4d8a2303241fcf5c8e999c9f436</srcmd5>
+    <version>1.1.3</version>
+    <time>1715161153</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.3:
+  * Fix USB HID issue on MacOS that sometimes caused a pause
+    while waiting for a timeout.
+  * Fix argument to CredProp extension where an enum value
+    was required instead of also allowing a string.
+  * Fix parsing of some key types (ES384, ES512) causing
+    signature verification to fail.
+  * Deprecation: Calling websafe_decode with a bytes argument
+    instead of str.
+    This will raise a TypeError in the next major version of
+    the library.</comment>
+    <requestid>1172492</requestid>
+  </revision>
 </revisionlist>
