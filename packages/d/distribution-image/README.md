@@ -1,4 +1,5 @@
 # The SLE BCI Distribution Image
+![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 This container image allows to run a local OCI registry. Before you start the container,
 you need to create a `config.yml` with the following content:
