@@ -1,0 +1,61 @@
+Index: openvino-2024.0.0/cmake/developer_package/packaging/archive.cmake
+===================================================================
+--- openvino-2024.0.0.orig/cmake/developer_package/packaging/archive.cmake
++++ openvino-2024.0.0/cmake/developer_package/packaging/archive.cmake
+@@ -21,15 +21,19 @@ endif()
+ macro(ov_archive_cpack_set_dirs)
+     # common "archive" package locations
+     # TODO: move current variables to OpenVINO specific locations
+-    set(OV_CPACK_INCLUDEDIR runtime/include)
+-    set(OV_CPACK_OPENVINO_CMAKEDIR runtime/cmake)
+-    set(OV_CPACK_DOCDIR docs)
+-    set(OV_CPACK_LICENSESDIR licenses)
+-    set(OV_CPACK_SAMPLESDIR samples)
+-    set(OV_CPACK_WHEELSDIR tools)
+-    set(OV_CPACK_TOOLSDIR tools)
+-    set(OV_CPACK_DEVREQDIR tools)
+-    set(OV_CPACK_PYTHONDIR python)
++    set(OV_CPACK_INCLUDEDIR include)
++    set(OV_CPACK_OPENVINO_CMAKEDIR ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME})
++    set(OV_CPACK_DOCDIR ${CMAKE_INSTALL_DOCDIR})
++    set(OV_CPACK_LICENSESDIR ${CMAKE_INSTALL_DATAROOTDIR}/licenses/${PROJECT_NAME})
++    set(OV_CPACK_SAMPLESDIR ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/samples)
++    if (ENABLE_PYTHON)
++        find_package(Python3 QUIET COMPONENTS Interpreter)
++        file(RELATIVE_PATH OV_PYTHON_MODPATH ${CMAKE_INSTALL_PREFIX} ${Python3_SITEARCH})
++        set(OV_CPACK_WHEELSDIR tools)
++        set(OV_CPACK_TOOLSDIR tools)
++        set(OV_CPACK_DEVREQDIR tools)
++        set(OV_CPACK_PYTHONDIR ${OV_PYTHON_MODPATH})
++    endif()
+ 
+     if(USE_BUILD_TYPE_SUBFOLDER)
+         set(build_type ${CMAKE_BUILD_TYPE})
+@@ -46,11 +50,11 @@ macro(ov_archive_cpack_set_dirs)
+         set(OV_CPACK_RUNTIMEDIR runtime/lib/${ARCH_FOLDER}/${build_type})
+         set(OV_CPACK_ARCHIVEDIR runtime/lib/${ARCH_FOLDER}/${build_type})
+     else()
+-        set(OV_CPACK_LIBRARYDIR runtime/lib/${ARCH_FOLDER})
+-        set(OV_CPACK_RUNTIMEDIR runtime/lib/${ARCH_FOLDER})
+-        set(OV_CPACK_ARCHIVEDIR runtime/lib/${ARCH_FOLDER})
++        set(OV_CPACK_LIBRARYDIR ${CMAKE_INSTALL_LIBDIR})
++        set(OV_CPACK_RUNTIMEDIR ${CMAKE_INSTALL_LIBDIR})
++        set(OV_CPACK_ARCHIVEDIR ${CMAKE_INSTALL_LIBDIR})
+     endif()
+-    set(OV_CPACK_PLUGINSDIR ${OV_CPACK_RUNTIMEDIR})
++    set(OV_CPACK_PLUGINSDIR ${OV_CPACK_RUNTIMEDIR}/${PROJECT_NAME})
+ endmacro()
+ 
+ ov_archive_cpack_set_dirs()
+Index: openvino-2024.0.0/src/cmake/openvino.cmake
+===================================================================
+--- openvino-2024.0.0.orig/src/cmake/openvino.cmake
++++ openvino-2024.0.0/src/cmake/openvino.cmake
+@@ -254,6 +254,7 @@ if(ENABLE_PKGCONFIG_GEN)
+ 
+     # define relative paths
+     file(RELATIVE_PATH PKGCONFIG_OpenVINO_PREFIX "/${OV_CPACK_RUNTIMEDIR}/pkgconfig" "/")
++    cmake_path(NORMAL_PATH PKGCONFIG_OpenVINO_PREFIX)
+ 
+     set(pkgconfig_in "${OpenVINO_SOURCE_DIR}/cmake/templates/openvino.pc.in")
+     if(CMAKE_VERSION VERSION_GREATER_EQUAL 3.20 AND OV_GENERATOR_MULTI_CONFIG)

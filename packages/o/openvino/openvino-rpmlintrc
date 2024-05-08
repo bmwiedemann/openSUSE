@@ -1,0 +1,4 @@
+addFilter("openvino-sample.*: E: devel-file-in-non-devel-package")
+
+# These files are part of samples, meant for the user to copy and re-use, so env based hashbangs are preferred
+addFilter("openvino-sample.*: E: env-script-interpreter")

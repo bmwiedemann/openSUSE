@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Tue Apr 23 18:57:17 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- License update: play safe and list all third party licenses as
+  part of the License tag.
+
+-------------------------------------------------------------------
+Tue Apr 23 12:42:32 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Switch to _service file as tagged Source tarball does not
+  include `./thirdparty` submodules.
+- Update openvino-fix-install-paths.patch to fix python module
+  install path.
+- Enable python module and split it out into a python subpackage
+  (for now default python3 only).
+- Explicitly build python metadata (dist-info) and install it
+  (needs simple sed hackery to support "officially" unsupported
+  platform ppc64le).
+- Specify ENABLE_JS=OFF to turn off javascript bindings as
+  building these requires downloading npm stuff from the network.
+- Build with system pybind11.
+- Bump _constraints for updated disk space requirements.
+- Drop empty %check section, rpmlint was misleading when it
+  recommended adding this.
+
+-------------------------------------------------------------------
+Fri Apr 19 08:08:02 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Numerous specfile cleanups:
+  * Drop redundant `mv` commands and use `install` where
+    appropriate.
+  * Build with system protobuf.
+  * Fix Summary tags.
+  * Trim package descriptions.
+  * Drop forcing CMAKE_BUILD_TYPE=Release, let macro default
+    RelWithDebInfo be used instead.
+  * Correct naming of shared library packages.
+  * Separate out libopenvino_c.so.* into own shared lib package.
+  * Drop rpmlintrc rule used to hide shlib naming mistakes.
+  * Rename Source tarball to %{name}-%{version}.EXT pattern.
+  * Use ldconfig_scriptlet macro for post(un).
+- Add openvino-onnx-ml-defines.patch -- Define ONNX_ML at compile
+  time when using system onnx to allow using 'onnx-ml.pb.h'
+  instead of 'onnx.pb.h', the latter not being shipped with
+  openSUSE's onnx-devel package (gh#onnx/onnx#3074).
+- Add openvino-fix-install-paths.patch: Change hard-coded install
+  paths in upstream cmake macro to standard Linux dirs.
+- Add openvino-ComputeLibrary-include-string.patch: Include header
+  for std::string.
+- Add external devel packages as Requires for openvino-devel.
+- Pass -Wl,-z,noexecstack to %build_ldflags to avoid an exec stack
+  issue with intel CPU plugin.
+- Use ninja for build.
+- Adapt _constraits file for correct disk space and memory
+  requirements.
+- Add empty %check section.
+
+-------------------------------------------------------------------
+Mon Apr 15 03:18:33 UTC 2024 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Initial package
+- Version 2024.0.0
+- Add openvino-rpmlintrc.

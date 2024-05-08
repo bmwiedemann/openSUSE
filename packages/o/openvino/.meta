@@ -1,0 +1,6 @@
+<package name="openvino" project="openSUSE:Factory">
+  <title>A toolkit for optimizing and deploying AI inference</title>
+  <description>OpenVINO is an open-source toolkit for optimizing and deploying AI inference.</description>
+  <devel project="science:machinelearning" package="openvino"/>
+  <url>https://github.com/openvinotoolkit/openvino</url>
+</package>
