@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry-dynamic-versioning
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Plugin for Poetry to enable dynamic versioning based on VCS tags
 License:        MIT
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module poetry-core >= 1.2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
-Requires:       python-dunamai
+Requires:       python-dunamai >= 1.21.0
 Requires:       python-tomlkit
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
