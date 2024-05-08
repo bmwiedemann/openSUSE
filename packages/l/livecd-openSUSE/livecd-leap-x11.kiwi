@@ -383,7 +383,6 @@
     <package name="memtest86+" arch="i686,x86_64"/>
     <package name="mpt-firmware"/>
     <package name="nano"/>
-    <package name="pptp"/>
     <package name="quota"/>
     <package name="rsync"/>
     <package name="smartmontools"/>
@@ -535,14 +534,48 @@
     <ignore name="xfce4-settings-lang"/>
     <!-- OBS-IgnorePackage: xfce4-panel-lang -->
     <ignore name="xfce4-panel-lang"/>
-    <!-- OBS-IgnorePackage: xfce-terminal-lang -->
-    <ignore name="xfce-terminal-lang"/>
+    <!-- OBS-IgnorePackage: xfce4-terminal-lang -->
+    <ignore name="xfce4-terminal-lang"/>
+    <!-- OBS-IgnorePackage: xfce4-session-lang -->
+    <ignore name="xfce4-session-lang"/>
+    <!-- OBS-IgnorePackage: catfish-lang -->
+    <ignore name="catfish-lang"/>
+    <!-- OBS-IgnorePackage: libxfce4ui-lang -->
+    <ignore name="libxfce4ui-lang"/>
+    <!-- OBS-IgnorePackage: libxfce4util-lang -->
+    <ignore name="libxfce4util-lang"/>
+    <!-- OBS-IgnorePackage: xfwm4-lang -->
+    <ignore name="xfwm4-lang"/>
+    <!-- OBS-IgnorePackage: xfce4-whiskermenu-plugin-lang -->
+    <ignore name="xfce4-whiskermenu-plugin-lang"/>
+    <!-- OBS-IgnorePackage: xfce4-appfinder-lang -->
+    <ignore name="xfce4-appfinder-lang"/>
+    <!-- OBS-IgnorePackage: xfce4-notifyd-lang -->
+    <ignore name="xfce4-notifyd-lang"/>
+    <!-- OBS-IgnorePackage: thunar-volman-lang -->
+    <ignore name="thunar-volman-lang"/>
+    <!-- OBS-IgnorePackage: xfconf-lang -->
+    <ignore name="xfconf-lang"/>
+    <!-- OBS-IgnorePackage: xfce4-pulseaudio-plugin-lang -->
+    <ignore name="xfce4-pulseaudio-plugin-lang"/>
+    <!-- OBS-IgnorePackage: xfce4-xkb-plugin-lang -->
+    <ignore name="xfce4-xkb-plugin-lang"/>
+    <!-- OBS-IgnorePackage: libgarcon-lang -->
+    <ignore name="libgarcon-lang"/>
+    <!-- OBS-IgnorePackage: lightdm-lang -->
+    <ignore name="lightdm-lang"/>
+    <!-- OBS-IgnorePackage: lightdm-gtk-greeter-lang -->
+    <ignore name="lightdm-gtk-greeter-lang"/>
+    <!-- OBS-IgnorePackage: mlocate-lang -->
+    <ignore name="mlocate-lang"/>
     <!-- OBS-IgnorePackage: exo-lang -->
     <ignore name="exo-lang"/>
     <!-- OBS-IgnorePackage: xfdesktop-lang -->
     <ignore name="xfdesktop-lang"/>
     <!-- OBS-IgnorePackage: xfce4-power-manager-lang -->
     <ignore name="xfce4-power-manager-lang"/>
+    <!-- OBS-IgnorePackage: info-lang -->
+    <ignore name="info-lang"/>
     <!-- OBS-IgnorePackage: noto-sans-cjk-fonts -->
     <ignore name="noto-sans-cjk-fonts"/>
     <!-- OBS-IgnorePackage: man-pages-posix -->
@@ -559,6 +592,28 @@
     <ignore name="plymouth"/>
     <!-- OBS-IgnorePackage: 7zip -->
     <ignore name="7zip"/>
+    <!-- OBS-IgnorePackage: bash-completion -->
+    <ignore name="bash-completion"/>
+    <!-- OBS-IgnorePackage: ethtool-bash-completion -->
+    <ignore name="ethtool-bash-completion"/>
+    <!-- OBS-IgnorePackage: iproute2-bash-completion -->
+    <ignore name="iproute2-bash-completion"/>
+    <!-- OBS-IgnorePackage: cpupower-bash-completion -->
+    <ignore name="cpupower-bash-completion"/>
+    <!-- OBS-IgnorePackage: nvme-cli-bash-completion -->
+    <ignore name="nvme-cli-bash-completion"/>
+    <!-- OBS-IgnorePackage: btrfsprogs-bash-completion -->
+    <ignore name="btrfsprogs-bash-completion"/>
+    <!-- OBS-IgnorePackage: firewalld-bash-completion -->
+    <ignore name="firewalld-bash-completion"/>
+    <!-- OBS-IgnorePackage: kmod-bash-completion -->
+    <ignore name="kmod-bash-completion"/>
+    <!-- OBS-IgnorePackage: pulseaudio-bash-completion -->
+    <ignore name="pulseaudio-bash-completion"/>
+    <!-- OBS-IgnorePackage: udisks2-bash-completion -->
+    <ignore name="udisks2-bash-completion"/>
+    <!-- OBS-IgnorePackage: lightdm-bash-completion -->
+    <ignore name="lightdm-bash-completion"/>
     <!-- OBS-IgnorePackage: tumbler -->
     <ignore name="tumbler"/>
     <!-- OBS-IgnorePackage: ristretto -->
