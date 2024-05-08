@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of openjdk-22-devel-image</comment>
     <requestid>1171981</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>420d825fa1d2600710d6ffea7d6d8d10</srcmd5>
+    <version>unknown</version>
+    <time>1715161208</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1172565</requestid>
+  </revision>
 </revisionlist>
