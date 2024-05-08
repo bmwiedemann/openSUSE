@@ -189,4 +189,36 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1154920</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a2529f3cb5f3d8e825f72c1ca6099e26</srcmd5>
+    <version>0.5.0</version>
+    <time>1715161119</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  * Notable Changes
+    + Drop support for Python 3.5, 3.6, and 3.7.
+    + Python 3.12 is now supported.
+    + IMPORTANT: Fixes a potential denial of service attack (DOS) due to
+      recursion error for deeply nested statements.
+      (CVE-2024-2430, bsc#1223603)
+  * Enhancements:
+    + Splitting statements now allows to remove the semicolon at the end.
+      Some database backends love statements without semicolon.
+    + Support TypedLiterals in get_parameters.
+    + Improve splitting of Transact SQL when using GO keyword.
+    + Support for some JSON operators.
+    + Improve formatting of statements containing JSON operators.
+    + Support for BigQuery and Snowflake keywords.
+    + Support parsing of OVER clause.
+  * Bug Fixes
+    + Ignore dunder attributes when creating Tokens.
+    + Allow operators to precede dollar-quoted strings.
+    + Fix parsing of nested order clauses.
+    + Thread-safe initialization of Lexer class.
+    + Classify TRUNCATE as DDL and GRANT/REVOKE as DCL keywords.
+    + Fix parsing of PRIMARY KEY.
+  * Other
+    + Optimize performance of matching function.</comment>
+    <requestid>1172288</requestid>
+  </revision>
 </revisionlist>

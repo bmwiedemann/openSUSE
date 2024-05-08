@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sqlparse
-Version:        0.4.4
+Version:        0.5.0
 Release:        0
 Summary:        Non-validating SQL parser
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/andialbrecht/sqlparse
 Source:         https://files.pythonhosted.org/packages/source/s/sqlparse/sqlparse-%{version}.tar.gz
-BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
@@ -67,6 +67,6 @@ chmod -x sqlparse/cli.py
 %license LICENSE
 %python_alternative %{_bindir}/sqlformat
 %{python_sitelib}/sqlparse
-%{python_sitelib}/sqlparse-%{version}*-info
+%{python_sitelib}/sqlparse-%{version}.dist-info
 
 %changelog
