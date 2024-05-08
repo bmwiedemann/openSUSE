@@ -4,27 +4,27 @@
   <attribute namespace="OBS" name="ApprovedRequestSource"/>
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
-  boo#0: '20240506'
+  boo#0: '20240507'
   boo#1172073: '20240205'
-  boo#1207390: '20240506'
-  boo#1207940: '20240506'
+  boo#1207390: '20240507'
+  boo#1207940: '20240507'
   boo#1209053: '20240129'
   boo#1209728: '20240115'
-  boo#1216660: '20240506'
-  boo#1217029: '20240506'
+  boo#1216660: '20240507'
+  boo#1217029: '20240507'
   boo#1217683: '20240309'
   boo#1218131: '20240318'
   boo#1218492: '20240124'
   boo#1218565: '20240107'
   boo#1218847: '20240126'
   boo#1218954: '20240119'
-  boo#1219132: '20240506'
+  boo#1219132: '20240507'
   boo#1219135: '20240124'
   boo#1219139: '20240129'
   boo#1219188: '20240128'
   boo#1219242: '20240205'
   boo#1219284: '20240222'
-  boo#1219384: '20240506'
+  boo#1219384: '20240507'
   boo#1219401: '20240216'
   boo#1219481: '20240322'
   boo#1219529: '20240204'
@@ -43,7 +43,7 @@
   boo#1221354: '20240313'
   boo#1221367: '20240321'
   boo#1221427: '20240315'
-  boo#1221451: '20240506'
+  boo#1221451: '20240507'
   boo#1221458: '20240314'
   boo#1221508: '20240315'
   boo#1221795: '20240328'
@@ -54,12 +54,12 @@
   boo#1222354: '20240408'
   boo#1222545: '20240409'
   boo#1222581: '20240409'
-  boo#1222583: '20240506'
+  boo#1222583: '20240507'
   boo#1222597: '20240409'
-  boo#1222994: '20240506'
-  boo#1223381: '20240506'
-  boo#1223624: '20240506'
-  bsc#1223381: '20240506'
+  boo#1222994: '20240507'
+  boo#1223381: '20240507'
+  boo#1223624: '20240507'
+  bsc#1223381: '20240507'
   bsc#1223447: '20240426'
   gh#OSInside/kiwi#2529: '20240416'
   gh#os-autoinst/os-autoinst-distri-opensuse#18471: '20240116'
@@ -83,7 +83,7 @@
   poo#153526: '20240116'
   poo#153895: '20240118'
   poo#154153: '20240128'
-  poo#154465: '20240506'
+  poo#154465: '20240507'
   poo#154471: '20240130'
   poo#154693: '20240211'
   poo#154714: '20240214'
@@ -96,16 +96,17 @@
   poo#156223: '20240311'
   poo#156295: '20240311'
   poo#156955: '20240327'
-  poo#157174: '20240506'
+  poo#157174: '20240507'
   poo#157330: '20240314'
   poo#157351: '20240314'
-  poo#157672: '20240506'
-  poo#157678: '20240506'
+  poo#157672: '20240507'
+  poo#157678: '20240507'
   poo#158032: '20240419'
   poo#158035: '20240327'
   poo#158215: '20240405'
   poo#159159: '20240502'
-  poo#159960: '20240506'
+  poo#159960: '20240507'
+  poo#160068: '20240507'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -157,7 +158,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20240507</value>
+    <value>20240508</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -172,22 +173,22 @@ products:
     - x86_64
   - butane-image:
     - x86_64
-#  - ceph-grafana-image:
-#    - x86_64
-#  - ceph-image:
-#    - x86_64
-#  - csi-attacher-image:
-#    - x86_64
-#  - csi-livenessprobe-image:
-#    - x86_64
-#  - csi-node-driver-registrar-image:
-#    - x86_64
-#  - csi-provisioner-image:
-#    - x86_64
-#  - csi-resizer-image:
-#    - x86_64
-#  - csi-snapshotter-image:
-#    - x86_64
+  - ceph-grafana-image:
+    - x86_64
+  - ceph-image:
+    - x86_64
+  - csi-attacher-image:
+    - x86_64
+  - csi-livenessprobe-image:
+    - x86_64
+  - csi-node-driver-registrar-image:
+    - x86_64
+  - csi-provisioner-image:
+    - x86_64
+  - csi-resizer-image:
+    - x86_64
+  - csi-snapshotter-image:
+    - x86_64
   - distribution-image:
     - x86_64
   - git-image:
@@ -248,10 +249,6 @@ products:
     - x86_64
   - kubic-kured-image:
     - x86_64
-#  - kubic-metallb-controller-image:
-#    - x86_64
-#  - kubic-metallb-speaker-image:
-#    - x86_64
   - kubic-nfs-client-provisioner-image:
     - x86_64
   - kubic-pause-image:
@@ -322,8 +319,8 @@ products:
     - x86_64
   - php8-nginx-image:
     - x86_64
-#  - prometheus-webhook-snmp-image:
-#    - x86_64
+  - prometheus-webhook-snmp-image:
+    - x86_64
   - trivy-image:
     - x86_64
   - tumbleweed-busybox-image:
@@ -577,9 +574,9 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20240506'
-publishing: '20240506'
-testing: '20240506'
+published: '20240507'
+publishing: '20240507'
+testing: '20240507'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">

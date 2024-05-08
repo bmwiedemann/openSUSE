@@ -437,6 +437,7 @@ FileProvides: /usr/bin/sort busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/split busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/squeue slurm
 FileProvides: /usr/bin/ssh openssh-clients
+FileProvides: /usr/bin/ssh-keygen openssh-common
 FileProvides: /usr/bin/stap systemtap
 FileProvides: /usr/bin/stat busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/strip binutils
