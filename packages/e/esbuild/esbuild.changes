@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  7 22:04:11 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.21.1:
+  * Fix a regression with --keep-names (#3756)
+- includes 0.21.0:
+  * Implement the JavaScript decorators proposal (#104)
+  * Optimize generated code for private methods
+  * Fix an obscure bug with lowering class members with computed
+    property keys
+  * Fix some --keep-names edge cases
+
+-------------------------------------------------------------------
 Thu Mar 28 21:20:38 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
 
 - roll 0.20.0...0.20.2

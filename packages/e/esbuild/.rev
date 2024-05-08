@@ -89,4 +89,20 @@
 </comment>
     <requestid>1163400</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7ff1e025ac6257ec4a9f507e40e11cb0</srcmd5>
+    <version>0.21.1</version>
+    <time>1715161225</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.21.1:
+  * Fix a regression with --keep-names (#3756)
+- includes 0.21.0:
+  * Implement the JavaScript decorators proposal (#104)
+  * Optimize generated code for private methods
+  * Fix an obscure bug with lowering class members with computed
+    property keys
+  * Fix some --keep-names edge cases
+</comment>
+    <requestid>1172604</requestid>
+  </revision>
 </revisionlist>
