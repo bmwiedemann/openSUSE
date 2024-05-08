@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  7 08:59:53 MDT 2024 - carnold@suse.com
+
+- bsc#1223444 - New virt-v2v dependency on btrfsprogs causes error
+  with zypper dup on systems without btrfs installed
+  Drop Requires on the following packages and move them into
+  libguestfs-appliance
+  btrfsprogs, curl, dhcp-client, e2fsprogs, gptfdisk
+  ntfsprogs, xfsprogs
+
+-------------------------------------------------------------------
 Fri Apr 19 09:03:27 MDT 2024 - carnold@suse.com
 
 - Add Requires for dhcp-client

@@ -119,4 +119,12 @@
     <comment>Spec file changes to improve support for converting windows and vmware guests and remote operation.</comment>
     <requestid>1169235</requestid>
   </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>88cbdcfd4d5cd46ab86d6e9d2a5a2f7d</srcmd5>
+    <version>2.4.0</version>
+    <time>1715161187</time>
+    <user>dimstar_suse</user>
+    <comment>Drop Requires on filesystem tools packages and require libguestfs only which pulls in libguestfs-appliance</comment>
+    <requestid>1172600</requestid>
+  </revision>
 </revisionlist>

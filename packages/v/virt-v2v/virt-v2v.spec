@@ -37,7 +37,7 @@ BuildRequires:  file-devel
 BuildRequires:  gcc
 BuildRequires:  gettext-devel
 BuildRequires:  glib2-devel
-BuildRequires:  libguestfs-devel >= 1.42
+BuildRequires:  libguestfs-devel >= 1.49
 BuildRequires:  libjansson-devel
 BuildRequires:  libosinfo-devel
 BuildRequires:  libvirt-devel
@@ -63,13 +63,10 @@ Requires:       %{_bindir}/gawk
 Requires:       %{_bindir}/gzip
 Requires:       %{_bindir}/qemu-nbd
 Requires:       %{_bindir}/virsh
-Requires:       btrfsprogs
-Requires:       curl
-Requires:       dhcp-client
-Requires:       gptfdisk
-Requires:       guestfs-tools >= 1.42
+Requires:       guestfs-tools >= 1.49
+Requires:       libguestfs >= 1.49
 Requires:       libguestfs-winsupport
-Requires:       libguestfs0 >= 1.42
+Requires:       libguestfs0 >= 1.49
 Requires:       libnbd
 Requires:       nbdkit
 Requires:       nbdkit-curl-plugin
