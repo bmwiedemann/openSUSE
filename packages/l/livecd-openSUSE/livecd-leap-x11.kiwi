@@ -642,7 +642,6 @@
     <package name="leafpad"/>
     <package name="lightdm"/>
     <package name="lightdm-gtk-greeter"/>
-    <package name="photorec"/>
     <package name="thunar"/>
     <package name="thunar-volman"/>
     <package name="xfce4-appfinder"/>
@@ -658,7 +657,6 @@
     <package name="desktop-file-utils"/>
     <package name="libgnomesu"/>
     <package name="libxfce4ui-tools"/>
-    <package name="pinentry-gtk2"/>
     <package name="shared-mime-info"/>
     <package name="xdg-user-dirs-gtk"/>
     <package name="xdg-utils"/>

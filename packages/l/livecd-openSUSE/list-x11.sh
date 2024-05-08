@@ -149,7 +149,6 @@ install hexchat
 install leafpad
 install lightdm
 install lightdm-gtk-greeter
-install photorec
 install thunar
 install thunar-volman
 install xfce4-appfinder
@@ -167,7 +166,6 @@ install dbus-1-x11
 install desktop-file-utils
 install libgnomesu
 install libxfce4ui-tools
-install pinentry-gtk2
 install shared-mime-info
 install xdg-user-dirs-gtk
 install xdg-utils
