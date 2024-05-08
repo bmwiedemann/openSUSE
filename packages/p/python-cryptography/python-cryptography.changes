@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  7 07:34:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 42.0.6:
+  * Fixed compilation when using LibreSSL 3.9.1.
+
+-------------------------------------------------------------------
 Tue Apr  2 13:19:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 42.0.5:

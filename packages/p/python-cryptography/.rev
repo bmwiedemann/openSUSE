@@ -1065,4 +1065,13 @@
   * Upgrade pyo3 version, which fixes building on PowerPC.</comment>
     <requestid>1164122</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>b24c73762f6878c52cf9c9fcc874a8ca</srcmd5>
+    <version>42.0.6</version>
+    <time>1715161127</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 42.0.6:
+  * Fixed compilation when using LibreSSL 3.9.1.</comment>
+    <requestid>1172344</requestid>
+  </revision>
 </revisionlist>
