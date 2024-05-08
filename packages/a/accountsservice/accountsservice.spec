@@ -176,6 +176,8 @@ cp %{SOURCE1} subprojects/packagecache/
 %dir %{_localstatedir}/lib/AccountsService
 %dir %{_localstatedir}/lib/AccountsService/users
 %dir %{_localstatedir}/lib/AccountsService/icons
+%{_datadir}/locale/en/LC_MESSAGES/accounts-service.mo
+%{_datadir}/locale/en_GB/LC_MESSAGES/accounts-service.mo
 
 %files -n libaccountsservice0
 %{_libdir}/*.so.0*
@@ -199,5 +201,7 @@ cp %{SOURCE1} subprojects/packagecache/
 %endif
 
 %files lang -f accounts-service.lang
+%exclude %{_datadir}/locale/en/LC_MESSAGES/accounts-service.mo
+%exclude %{_datadir}/locale/en_GB/LC_MESSAGES/accounts-service.mo
 
 %changelog
