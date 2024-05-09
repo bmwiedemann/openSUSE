@@ -434,4 +434,12 @@ Advantages:
     <comment>submit new version 5.0.0</comment>
     <requestid>1119032</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>9f79c36f9c3659b3d5286aaea7de099a</srcmd5>
+    <version>5.0.1</version>
+    <time>1715249273</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 5.0.1</comment>
+    <requestid>1172657</requestid>
+  </revision>
 </revisionlist>
