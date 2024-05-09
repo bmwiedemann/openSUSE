@@ -67,7 +67,7 @@ to run Spack commands - like `spack containerize`:
 $ podman run -v $(pwd):/root:Z --rm registry.opensuse.org/opensuse/bci/spack:%%spack_version%% containerize > Containerfile
 ```
 For further information, refer to the
-(Spack documentation on container images)[https://spack.readthedocs.io/en/latest/containers.html].
+[Spack documentation on container images](https://spack.readthedocs.io/en/latest/containers.html).
 ## Licensing
 `SPDX-License-Identifier: MIT`
 
