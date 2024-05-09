@@ -1182,4 +1182,21 @@
   * Make sure replaced pages gets marked as stale (forwarded request 1171175 from jfkw)</comment>
     <requestid>1171176</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>14afd0678524cc8c99c7295289531e54</srcmd5>
+    <version>0.125.7</version>
+    <time>1715253171</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.125.7:
+  * deps: Downgrade github.com/getkin/kin-openapi v0.124.0 =&gt; v0.123.0
+  * readme: Update Sponsors
+
+- Update to version 0.125.6:
+  * Fix one more resource change eviction logic issue
+  * Make the cache eviction logic for stale entities more robust
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.2.1 to 2.2.2
+  * Run mage generate
+  * resources/page: Pull internal Page methods into its own interface (forwarded request 1172782 from jfkw)</comment>
+    <requestid>1172790</requestid>
+  </revision>
 </revisionlist>

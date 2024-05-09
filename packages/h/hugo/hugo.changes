@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 08 15:29:03 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.125.7:
+  * deps: Downgrade github.com/getkin/kin-openapi v0.124.0 => v0.123.0
+  * readme: Update Sponsors
+
+-------------------------------------------------------------------
+Wed May 08 15:28:27 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.125.6:
+  * Fix one more resource change eviction logic issue
+  * Make the cache eviction logic for stale entities more robust
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.2.1 to 2.2.2
+  * Run mage generate
+  * resources/page: Pull internal Page methods into its own interface
+
+-------------------------------------------------------------------
 Wed May 01 18:28:47 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.125.5:
