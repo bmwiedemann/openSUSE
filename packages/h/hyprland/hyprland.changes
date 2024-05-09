@@ -1,4 +1,168 @@
 -------------------------------------------------------------------
+Sat May  4 22:46:12 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.40.0:
+  + This is a massive update, with mostly changes under-the-hood, but
+    also many QoL additions and fixes!
+    A lot of wlroots implementations have been rewritten to use
+    Hyprland-made ones. More will come, but this release also serves
+    as a real test to their stability.
+  + Breaking changes:
+    - The hyprland logs, sockets, etc. have moved from /tmp/hypr to
+      $XDG_RUNTIME_DIR/hypr.
+  + New features:
+    - alpha-modifier: add support for protocol
+    - config: Add More Monitor 'Auto' Positions. (#5670)
+    - config: add absolute monitor workspace selectors (#5848)
+    - config: added option to choose the default monitor for the
+      cursor (#5847)
+    - core: add libinput backend support for headless session (#5699)
+    - ext-foreign-toplevel: add implementation
+    - keybindmgr: add optional silent suffix to movewindow. (#5597)
+    - log: Add some colors to stdout log (#5778)
+    - windowrules: add subtract window option to move rule (#5770)
+    - windows: add misc:initial_workspace_tracking
+    - workspace: Add 'v' flag for workspace selector that counts only
+      visible windows (#5628)
+    - workspace: Add fullscreen workspace selector (#5640)
+  + Fixes:
+    - CrashReporter: fix deadlocks by making it mostly
+      async-signal-safe (#5771)
+    - cursormgr: fix misscaled cursors on fractional
+    - foreign-toplevel: fix bad_any_cast in moveWindow
+    - foreign: fix no-pch builds
+    - format: fix clang-format
+    - hyprctl: add missing json string escapes (#5811)
+    - hyprctl: fix activewindow request not showing workspace name
+      (#5623)
+    - hyprctl: fix instances path
+    - hyprpm: fix for multi-user + improve directory structure
+    - hyprpm: fix updating headers
+    - input: fix active keyboard for seat after destroying one
+      (#5725)
+    - internal: fix a few asan reported leaks on exit of hyprland
+      (#5852)
+    - keybindmgr: add optional silent suffix to movewindow. (#5597)
+    - makefile: fix old headers only being copied
+    - misc: fix autocompletions for meson (hyprctl/hyprpm)
+    - nix: fix missing git in wlroots build
+    - pluginsystem: fix unhooking on exit
+    - pointer-constraints: remove emoji to fix clang
+    - protocols: fix for hyprwayland-scanner update
+    - relative-pointer: fix missing header for g_pCompositor (#5681)
+    - renderer: Fix mirrored displays when transformed and preserve
+      aspect ratio (#5697)
+    - renderer: fix rounding of the size of fractionally scaled
+      monitors (#5748)
+    - renderer: fix safety around sendFrameEventsToWorkspace
+    - scripts: fix asan patch
+    - sessionLock: fix incorrect protocol error raised
+    - socket2: fix empty activewindowv2 events
+    - swipe: fix crashes with invalid distance
+    - tokens: add more modes to initial_workspace_tracking
+    - tokens: fix initial workspace token ignoring special
+    - windowrules: Fix Floating Grouped Windows Crash and Bug.
+      (#5826)
+    - workspace: Fix duplication of "special:" in special workspace
+      name (#5729)
+    - workspacerule: Fix monitor settings being deleted when merging
+      ws rules (#5864)
+  + Other:
+    - Fractional-scale: move to new impl
+    - HookSystem: improve callback safety
+    - Protocols: implement protoLog
+    - XDG-Output: move to hyprwayland-scanner
+    - compositor: more fs safety around tmp directories
+    - compositor: properly update workspace in
+      moveWindowToWorkspaceSafe
+    - config: Allow more sensible input options for enabling
+      animations. (#5659)
+    - config: Default unconfigured monitors to open to the right
+      (#5741)
+    - config: Expand on window matching (#5518)
+    - config: merge all rules set for the same workspace selection
+      (#5656)
+    - config: polish default config file (#5672)
+    - core: Move /tmp/hypr to $XDG_RUNTIME_DIR/hypr (#5788)
+    - core: Move tearing to hyprwayland-scanner (#5657)
+    - core: prefer mkdir over create_directory and permissions
+    - core: remove libsystemd dependency (#5660)
+    - cursor-shape: allow duplicate devices per pointer resource
+    - cursor-shape: move to new impl
+    - cursor-shape: use - instead of _ in shapes
+    - cursormgr: attempt using - instead of _ for failed cursors
+      before fallback
+    - events: set window initial* before searching for rules
+    - ext-idle-notify: move to new impl
+    - fractional: set scale before configure
+    - gamma-control: move to new impl
+    - helpers: Add new C++ Signal and Listener classes
+    - hid: don't access expired resources in virtual devices
+    - hooksystem: check for existing random outdir
+    - hooksystem: use a random 700 directory for assembler
+    - hyprctl: use XDG_RUNTIME_DIR if available
+    - idle-inhibit: Always recheck idle inhibitors on creation and
+      deletion (#5738)
+    - idle-inhibit: don't destroy inhibitor on surface destroy
+    - idle-inhibit: move to new impl
+    - ime-v2: move to new impl
+    - input: Introduce basic hyprland HID classes
+    - input: check for focused_client being null before reading its
+      client
+    - input: ignore destroyed devices in static events
+    - inputmgr: dont double free on hotplug (#5855)
+    - internal: Window storage rework - part 1 (#5762)
+    - internal: store matched windowrules and emit event
+    - keybinds: check for special workspace equality before switching
+    - keybinds: clear repeat source on mouse inputs
+    - keyboard: check for wlr() validity before accessing
+    - keyboard: prevent UAF in destroy events
+    - layerSurface: refactor/move to a memory-safe impl
+    - layout: Trigger layout recalcuation on deco position/size
+      change (#5821)
+    - layout: limit updates when mouse animate drag is enabled
+      (#5838)
+    - managers: Add a TokenManager
+    - output-management: move to new impl
+    - pluginAPI/hooks: Remove dependency on cc from the hooksystem
+      (#5801)
+    - pluginapi: unregister callbacks on lost ptrs
+    - pluginsystem: unload entire plugin before calling dlclose()
+    - pointer-constraints: don't warp on entering a confined pointer
+    - pointer-constraints: move to new impl
+    - pointer-gestures: move to new impl
+    - props: bump version to 0.40.0
+    - protocols: minor style improvements to new impls
+    - protocols: utilize hyprwayland-scanner 0.3.3 functions
+    - relative-pointer: move to new impl
+    - renderer: avoid rendering frame if finalDamage is empty
+    - renderer: send frame events to apps on empty damage renders
+    - session-lock: move to new impl
+    - sessionLock: call wlr_surface_map/_unmap on the surface
+      manually
+    - sessionLock: remove m_pLastFocus on destroy of surface
+    - sessionLock: set locked after emitting event
+    - shaders: Use sin-less hash for noise (#5607)
+    - shortcuts-inhibitor: move to new impl
+    - tearing-control: hyprland impl (#5655)
+    - tearing-control: search through all valid windows
+    - text-input-v3: move to new impl
+    - tokenmgr: separate getRandomUUID from registerNewToken
+    - virtual-keyboard: destroy on vdestroy event
+    - virtual-keyboard: move to new impl
+    - virtual-pointer: move to new impl
+    - wayland-protocol: remove unused CWaylandResource
+    - Window: add destroy signal
+    - windows: don't force workspace change on same tracked workspace
+    - windows: recalculate monitor after updating windows (#5647)
+    - windows: set fullscreen border size to 0 (#5865)
+    - wlr-foreign-toplevel: move to new impl
+    - wlr-foreign-toplevel: send done after property changes
+    - wlr-output-power: move to new impl
+    - xdg-activation: move to new impl
+    - xdg-decoration: move to new impl
+
+-------------------------------------------------------------------
 Tue Apr 16 17:04:36 UTC 2024 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
 
 - Update to version 0.39.1:
