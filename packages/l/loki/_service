@@ -1,19 +1,19 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/grafana/loki.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="filename">loki</param>
     <param name="versionformat">@PARENT_TAG@+git.%ct.%h</param>
-    <param name="revision">v2.8.3</param>
+    <param name="revision">v2.8.11</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">loki*.tar</param>
-    <param name="compression">bz2</param>
+    <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled">
+  <service name="set_version" mode="manual">
     <param name="basename">loki</param>
   </service>
 </services>

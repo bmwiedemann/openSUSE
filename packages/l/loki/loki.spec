@@ -1,7 +1,7 @@
 #
 # spec file for package loki
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,13 @@
 %global promtail_datadir /var/lib/promtail
 
 Name:           loki
-Version:        2.8.3+git.1689949088.0d81144c
+Version:        2.8.11+git.1711098663.aa89d817
 Release:        0
 Summary:        Loki: like Prometheus, but for logs
 License:        Apache-2.0
 Group:          System/Monitoring
 URL:            https://grafana.com/loki
-Source:         %{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.xz
 Source1:        loki.service
 Source2:        promtail.service
 Source3:        sysconfig.loki
@@ -85,7 +85,7 @@ export GOLDFLAGS="-s -w -X %{buildpkg}.Version=%{version} \
 
 go build -ldflags="$GOLDFLAGS" ./cmd/loki
 go build -ldflags="$GOLDFLAGS" ./cmd/logcli
-CGO_ENABLED=1 go build -ldflags="$GOLDFLAGS" ./clients/cmd/promtail
+CGO_ENABLED=1 go build -ldflags="$GOLDFLAGS" --tags=promtail_journal_enabled ./clients/cmd/promtail
 
 %install
 

@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Apr 04 13:33:01 UTC 2024 - michal.hrusecky@opensuse.org
+
+- Update to version 2.8.11+git.1711098663.aa89d817:
+  * chore(deps): update module go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp to v0.44.0 [security] (release-2.8.x) (#12000)
+  * ci: add test-integration make target (#12280)
+  * fix: update google.golang.org/protobuf to v1.33.0 (#12276)
+  * ci: remove canary boringcrypto from 2.8.x (#12274)
+  * ci: pin release to loki-2.8.x tag in loki-release (#12271)
+
+-------------------------------------------------------------------
+Tue Mar 19 14:54:41 UTC 2024 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- Enable journald parsing in promtail
+- Small changes to _service file
+  * change tarball compression method to xz
+  * use "manual" service mode instead of "disabled"
+
+-------------------------------------------------------------------
+Tue Mar 19 14:07:23 UTC 2024 - michal.hrusecky@opensuse.org
+
+- Update to version 2.8.10+git.1709154536.536e9cd7:
+  * chore(release-2.8.x): release 2.8.10 (#12076)
+  * ci: fix version (#12085)
+  * fix: image tag from env and pin release to v1.11.5 (#12073)
+  * ci: revert release to using classic PAT (#12070)
+  * ci: fix docker image names (#12062)
+  * ci: bump release pipeline to 1.11.4 (#12060)
+  * chore(release-2.8.x): release 2.8.9 (#12052)
+  * ci: pin release to 1.11.2 (#12051)
+  * chore: release 2.8.9 (#12043)
+  * ci: pin release code to v1.11.0 (#12046)
+  * ci: fix 2.8 release config again (#12042)
+  * ci: allow release-please to accept manifest in config mode (#12040)
+  * fix: bump alpine base image and go to fix CVEs (#12026)
+  * chore: bring in new release automation to 2.8.x (#12014)
+  * [release-2.8.x] fix(background cache): increment queue size exactly once (#11779)
+  * Update patch versions in docs and YAML files to v2.8.8 (#11761)
+  * Release loki v2.8.8 (#11707)
+  * Update golang.org/x/crypto for v2.8.x (#11743)
+  * [release-2.8.x] Cache: correctly check background cache size (#11655)
+  * [release-2.8.x] Ruler: catering for another data race in tenant config (#11715)
+  * [release-2.8.x] fix(log results cache): compose empty response based on the request (#11658)
+  * [release-2.8.x] Ruler: protect overrides map with mutex when accessing tenant configs (#11602)
+  * upgrade dependencies to fix CVEs (#11461)
+  * Fixing links (#11401)
+  * Fix broken Promtail link (#11327)
+  * [release-2.8.x] fix: respect query matcher in ingester when getting label values (#10375) (#11057)
+  * fix(deps): update github.com/grafana/loki digest to 7fa2f6e [security] (release-2.8.x) (#10823)
+  * [release-2.8.x] add release notes for 2.8.6 (#10935)
+  * [release-2.8.x] update changelog for v2.8.6 (#10930)
+  * [release-2.8.x] update build image to use go1.20.10 (#10928)
+  * chore(deps): update module golang.org/x/net to v0.17.0 [security] (release-2.8.x) (#10891)
+  * [release-2.8.x] upgrade to go 1.20.10 (#10889)
+  * [release-2.8.x] upgrade go-grpc to v1.56.3 (#10887)
+  * [release-2.8.x] fix failing test  (#10890)
+  * drone(docker-driver): Fetch tags before pushing image during release (#10670)
+  * [Docs] Fix 404s/broken links in 2.8 branch (#10555)
+  * Add 2.8.5 references (#10593)
+  * Update alpine versions (#10573) (#10578)
+  * Rewrite duplicate headings for SEO. (#10275)
+  * Update GitHub URLs from master to main (#10289)
+  * Update changelog and release notes for 2.8.4 (#10235)
+  * Update changelog and release notes for 2.8.3 (#10234)
+  * Backport security fixes 2.8 (#10217)
+  * Backporting #9870 to latest (#10150)
+  * Remove recommendation for Tanak installation. (#10075)
+
+-------------------------------------------------------------------
 Wed Jul 26 10:12:51 UTC 2023 - ecsos@opensuse.org
 
 - Update to version 2.8.3+git.1689949088.0d81144c:
