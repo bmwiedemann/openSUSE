@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May  8 07:30:48 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.2.13
+  + Django 4.2.13 fixes a packaging error in 4.2.12.
+- Update to 4.2.12
+  + Django 4.2.12 fixes a compatibility issue with Python 3.11.9+ and 3.12.3+.
+  + Fixed a crash in Django 4.2 when validating email max line lengths
+    with content decoded using the surrogateescape error handling
+    scheme
+- Drop fix-safemimetext-set_payload.patch, already merged upstream
+
+-------------------------------------------------------------------
 Thu Apr 18 06:39:36 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-safemimetext-set_payload.patch, to support python 3.11.9+
