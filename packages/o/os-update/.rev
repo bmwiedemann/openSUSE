@@ -204,4 +204,13 @@
   - Enhance logging for soft-reboot tracking</comment>
     <requestid>1156907</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9ef60d2c38e9ef4fce2baca717e7d281</srcmd5>
+    <version>1.17</version>
+    <time>1715253166</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.17
+  - Implement soft-reboot support for non restartable services</comment>
+    <requestid>1172738</requestid>
+  </revision>
 </revisionlist>
