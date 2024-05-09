@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu May 09 07:20:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.7.3:
+  * chore(deps): update golang:1.21-alpine3.19 docker digest to
+    b3aea8d (#973)
+  * v1.7.3 changelog and version bump (#972)
+  * Update gomod go version (#971)
+  * Fix tests; add newly discovered vulns (#970)
+  * Update go.mod to 1.21.9 (#907)
+  * chore: import `sys` in Python generators (#966)
+  * ci: upgrade `golangci/golangci-lint-action` to v5 (#964)
+  * chore: only extract versions from packages in the generator
+    ecosystem (#957)
+  * refactor: encapsulate getting the working directory in a helper
+    function (#961)
+  * refactor: apply Rubocop to Ruby generator (#956)
+  * test: remove future snapshots (#960)
+  * chore(deps): update workflows (#935)
+  * fix(deps): update osv-scanner minor (#945)
+  * chore(deps): lock file maintenance (#962)
+  * Fix snapshot for test (#963)
+  * fix: ensure the sarif output has a stable order (#938)
+  * chore: support skipping known unsupported comparisons in
+    generators (#954)
+  * chore(deps): lock file maintenance (#936)
+  * chore: improve version fixture generators for local usage
+    (#953)
+  * ci: cancel in-progress runs when new changes are pushed (#959)
+  * Automated Updates: support parents and dependency imports
+    (#890)
+  *  GR: Support filtering on alias IDs (#946)
+  * ci: ensure input name case matches just to be safe (#955)
+  * refactor: use `maps` functions instead of custom
+    implementations (#940)
+  * test: update snapshots due to external vulnerability changes
+    (#951)
+  * ci: upgrade Codecov to v4 (#941)
+  * feat: add support for PNPM v9 lockfiles (#934)
+  * Add new vuln to tests (#947)
+  * chore: add missing space to panic message (#942)
+  * test: include groups when describing package details (#933)
+
+-------------------------------------------------------------------
 Fri Apr 19 04:46:42 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.7.2:
