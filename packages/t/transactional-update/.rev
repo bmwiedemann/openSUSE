@@ -1222,4 +1222,17 @@ Also requires https://build.opensuse.org/request/show/1167142.</comment>
 - Remove script to disable soft-reboot support - this is the default for now anyway</comment>
     <requestid>1168900</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>4723311d8b34015bb30a514999243494</srcmd5>
+    <version>4.6.8</version>
+    <time>1715249244</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.6.8
+  - tukit: Properly handle overlay syncing failures: If the system would not be rebooted and several snapshots accumulated in the meantime, it was possible that the previous base snapshot - required for /etc syncing - was deleted already. In that case changes in /etc might have been reset. [gh#openSUSE/transactional-update#116] [gh#kube-hetzner/terraform-hcloud-kube-hetzner#1287]
+  - soft-reboot: Log requested reboot type
+  - soft-reboot: Don't force hard reboot on version change only
+- Version 4.6.7
+  - Add support for snapper 0.11.0; also significantly decreases cleanup time [boo#1223504]</comment>
+    <requestid>1172470</requestid>
+  </revision>
 </revisionlist>
