@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  2 08:23:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.15.1:
+  * Reformat with ruff.
+  * Various updates to build procedures and wheel generation
+
+-------------------------------------------------------------------
 Mon Apr 15 09:03:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.15.0:

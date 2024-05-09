@@ -285,4 +285,12 @@
     is publishing wheels for less common platforms again.</comment>
     <requestid>1167774</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>fe908df0006a4df6d0993197b1493584</srcmd5>
+    <version>8.15.1</version>
+    <time>1715249679</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1172891</requestid>
+  </revision>
 </revisionlist>
