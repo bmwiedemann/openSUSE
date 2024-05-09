@@ -21,11 +21,11 @@
 # Workaround boo#1189991
 %define _lto_cflags %{nil}
 %define rname   mscore
-%define version_lesser 4.2
+%define version_lesser 4.3
 %define fontdir %{_datadir}/fonts/%{name}
 %define docdir  %{_docdir}/%{name}
 Name:           musescore
-Version:        4.2.1
+Version:        4.3.0
 Release:        0
 Summary:        A WYSIWYG music score typesetter
 # Licenses in MuseScore are a mess. To help other maintainers I give the following overview:

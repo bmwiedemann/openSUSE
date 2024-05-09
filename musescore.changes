@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed May  8 12:28:54 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- MuseScore 4.3.0:
+  - New "sound flags" can now be accessed via stave text when using
+    Muse Sounds instruments, offering a choice of various
+    instrument modifications and playing techniques that can be
+    heard in playback.
+  - The drumset panel now updates to show available sounds
+    depending on instrument selection in the mixer.
+  - Various percussion mapping improvements.
+  - New options for controlling visibility of clefs and key
+    signatures, as well as ties and parentheses on tablature
+    staves.
+  - New option in Format menu to "reset entire score to default
+    layout".
+  - Improved quality of MusicXML import.
+  - Improved placement of slurs that cross system breaks.
+  - Tempo change lines can now be extended across systems using
+    keyboard shortcut.
+  - Improved selection box behaviour, resolving an issue with
+    continuous view.
+  - Resolved playback issue with repeats after section breaks.
+  - Resolved issues where notation elements were disappearing from
+    parts.
+  - Resolved Muse Sounds playback issue affecting overlapping
+    unison notes.
+  - Resolved issue affecting unintended deletion of melisma lines.
+  - Updated product name to "MuseScore Studio" throughout the app.
+  - Fixed numerous crashes.
+
+-------------------------------------------------------------------
 Mon Apr 29 15:04:23 UTC 2024 - Cor Blom <cornelis@solcon.nl>
 
 - Delete unnecesaary require of "pipewire-alsa if pipewire"
