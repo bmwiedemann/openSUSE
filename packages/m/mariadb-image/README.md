@@ -1,9 +1,10 @@
 # MariaDB Server Container Image
 
+## Description
 MariaDB is an open-source, multi-threaded, relational database management system. It's a backward-compatible branch of the MySQL Community Server that provides a drop-in replacement for MySQL.
 
-## Using the image
 
+## Usage
 By default, the image launches MariaDB with the same configuration that comes with SUSE Linux Enterprise Server, with two exceptions: logging is sent to stdout, and binding to `localhost` is disabled.
 
 The only environment variable required to start the container is the MariaDB root password.
@@ -18,7 +19,7 @@ or:
 $ podman run -it --rm -p 3306:3306 -e MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=1 registry.opensuse.org/opensuse/mariadb:%%mariadb_version%%
 ```
 
-## Volumes
+### Volumes
 
 The database is stored in the directory `/var/lib/mysql`.
 
@@ -35,7 +36,7 @@ $ podman run -it --rm -v /my/own/datadir:/var/lib/mysql:Z -p 3306:3306 -e MARIAD
 
 The `-v /my/own/datadir:/var/lib/mysql:Z` part of the command mounts the `/my/own/datadir` directory from the underlying host system as `/var/lib/mysql` inside the container, where MariaDB will by default write its data files.
 
-## Environment Variables
+### Environment variables
 
 One of `MARIADB_RANDOM_ROOT_PASSWORD`, `MARIADB_ROOT_PASSWORD_HASH`, `MARIADB_ROOT_PASSWORD` or `MARIADB_ALLOW_EMPTY_ROOT_PASSWORD` (or equivalents, including `*_FILE`), is required.
 
@@ -43,7 +44,7 @@ All other environment variables are optional.
 
 All environment variables are documented in the MariaDB's Knowledge Base [MariaDB Server Docker Official Image Environment Variables](https://mariadb.com/kb/en/mariadb-server-docker-official-image-environment-variables/).
 
-## Health, liveness and readiness
+### Health, liveness and readiness
 
 There are no explicit health checks added to the container image. However, you can use the `healthcheck.sh` script to choose from a limited selection of tests to check for what you consider health, liveness, and readiness.
 
@@ -57,7 +58,7 @@ If you start a MariaDB container instance with a data directory that already con
 
 The only exception is the `MARIADB_AUTO_UPGRADE` environment variable. If it's set, it may run `mysql_upgrade` or `mariadb-upgrade`, potentially causing changes to the system tables.
 
-## Backup and restore
+### Backup and restore
 
 Information on how to perform backup and restore can be found on the MariaDB Knowledge Base [Container Backup and Restoration](https://mariadb.com/kb/en/container-backup-and-restoration/).
 
