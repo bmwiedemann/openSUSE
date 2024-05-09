@@ -1,4 +1,386 @@
 -------------------------------------------------------------------
+Wed May 08 11:31:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.6:
+  * Go 1.22.3 (#700)
+  * Bump golang.org/x/text from 0.14.0 to 0.15.0 (#699)
+  * Clean up version: null from "k0sctl init" output (#641)
+  * Don't check for unique machine IDs for k0s >= v1.30 (#697)
+  * Capture config validation errors from stderr (#692)
+  * Perform a daemon-reload after reset (#696)
+  * Don't rely on PATH for k0s existence detection (#695)
+  * Bump github.com/go-playground/validator/v10 from 10.19.0 to
+    10.20.0 (#694)
+  * Bump github.com/urfave/cli/v2 from 2.27.1 to 2.27.2 (#693)
+  * Missing fmt import
+  * Use low case hostname for node ready check (#686)
+  * Upload new k0s binary directly to final directory (#685)
+  * Add spec.hosts.k0sDownloadURL (#677)
+  * Remove self-update check (#681)
+  * Bump deps (#684)
+  * Bump k8s.io/client-go from 0.29.4 to 0.30.0 (#683)
+  * Fix go version in go.mod
+  * Update go to 1.22.2 (#682)
+  * Bump k8s.io/client-go from 0.29.3 to 0.29.4 (#680)
+
+-------------------------------------------------------------------
+Thu Apr 18 08:03:56 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- do not strip aka remove -s -w ldflags
+
+-------------------------------------------------------------------
+Wed Apr 10 17:50:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.5:
+  * Add GatherFacts phase to reset command (#671)
+  * Don't cordon all workers at once when upgrading (#672)
+  * Bump golangci/golangci-lint-action from 3 to 4 (#653)
+  * Bump github.com/go-playground/validator/v10 from 10.18.0 to
+    10.19.0 (#663)
+  * Bump k8s.io/client-go from 0.29.2 to 0.29.3 (#668)
+  * Bump github.com/k0sproject/rig from 0.17.5 to 0.18.1 (#667)
+  * Bump k8s.io/client-go from 0.29.1 to 0.29.2 (#658)
+  * Detect 404 not found error when downloading using curl (#657)
+  * Bump github.com/go-playground/validator/v10 from 10.17.0 to
+    10.18.0 (#654)
+  * Bump github.com/k0sproject/rig from 0.17.4 to 0.17.5 (#652)
+  * Reconnect ssh to reload changes after updating environment file
+    (#649)
+  * Retry networking check for 30 seconds instead of just twice
+    (#647)
+  * Bump k8s.io/client-go from 0.29.0 to 0.29.1 (#643)
+  * Bump github.com/k0sproject/rig from 0.17.3 to 0.17.4 (#644)
+  * Bump github.com/k0sproject/version from 0.5.0 to 0.6.0 (#636)
+  * Bump github.com/go-playground/validator/v10 from 10.16.0 to
+    10.17.0 (#637)
+  * Remove syntax highlighting from example output in README
+  * Remove extra : from README.md
+  * Bump github.com/k0sproject/version from 0.4.2 to 0.5.0 (#632)
+
+-------------------------------------------------------------------
+Wed Apr 10 17:50:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.4:
+  * Fix host_test (#631)
+  * Use go 1.21.6 (#629)
+
+-------------------------------------------------------------------
+Wed Apr 10 17:48:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.3:
+  * Fix file uploads from windows to linux #627
+  * Reduce log noise during node availability check #627
+  * Non-random sudo-method check order #628
+
+-------------------------------------------------------------------
+Wed Apr 10 17:47:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.2:
+  * Bump rig to v0.17.1 (#623)
+  * Move "Before Apply" hooks back to after "Upload Files" (#622)
+  * Rig 0.16.0 (#620)
+
+-------------------------------------------------------------------
+Wed Apr 10 17:45:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.1:
+  * Don't create /root/0750 (#619)
+
+-------------------------------------------------------------------
+Wed Apr 10 17:44:13 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.0:
+  * Look for fallback OS support through ID_LIKE field by @kke in
+    #584
+  * Validate API connectivity from new controllers before install
+    by @kke in #577
+  * Run reset after k0s install has been run but host doesn't come
+    up by @kke in #582
+  * Don't retry connection on hostkey mismatch by @kke in #593
+  * Fix k0sctl upgrade check by @kke in #594
+  * Add an experimental --dry-run by @kke in #588
+  * Cordon workers before upgrade by @kke in #595
+  * Error out in ValidateHosts if all controllers are marked to be
+    reset by @kke in #607
+  * Fix getting host address on OpenSSH connections by @kke in #597
+  * Skip GatherK0sFacts for hosts without pre-existing k0s by @kke
+    in #606
+  * Don't use filepath.Dir which breaks linux paths on windows
+    clients by @kke in #616
+  * Switch ozzo-validate to maintained jellydator/validation fork
+    by @kke in #575
+  * Bump k8s.io/client-go from 0.28.3 to 0.29.0 by @dependabot in
+    #608
+  * Bump golang.org/x/crypto from 0.14.0 to 0.17.0 by @dependabot
+    in #612
+  * Bump github.com/urfave/cli/v2 from 2.25.7 to 2.26.0 by
+    @dependabot in #604
+  * Bump github.com/urfave/cli/v2 from 2.26.0 to 2.27.1 by
+    @dependabot in #615
+  * Bump github.com/mattn/go-isatty from 0.0.19 to 0.0.20 by
+    @dependabot in #579
+  * Bump k8s.io/client-go from 0.28.2 to 0.28.3 by @dependabot in
+    #583
+  * Bump github.com/bmatcuk/doublestar/v4 from 4.6.0 to 4.6.1 by
+    @dependabot in #585
+  * Bump github.com/go-playground/validator/v10 from 10.15.5 to
+    10.16.0 by @dependabot in #592
+  * Bump golang.org/x/text from 0.13.0 to 0.14.0 by @dependabot in
+    #591
+  * Bump golang.org/x/net from 0.13.0 to 0.17.0 by @dependabot in
+    #573
+
+-------------------------------------------------------------------
+Wed Apr 10 17:43:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.0:
+  * Alternatively use system ssh client to connect (k0sproject/rig
+    v0.15.1) (#568)
+  * Validate k0s config before installing into k0s config path
+    (#567)
+  * Use k0sproject/bootloose in place of footloose for smoke tests
+    (#552)
+  * Bump github.com/k0sproject/rig from 0.13.0 to 0.14.0 (#564)
+  * Bump github.com/go-playground/validator/v10 from 10.15.1 to
+    10.15.5 (#565)
+  * Bump golang.org/x/text from 0.12.0 to 0.13.0 (#560)
+  * Bump k8s.io/client-go from 0.28.0 to 0.28.2 (#558)
+  * Validate quote balance in installFlags (#556)
+  * Extract logic from cmd/config_status into action.ConfigStatus
+  * Extract logic from cmd/config_edit into action.ConfigEdit
+  * Extract logic from cmd/backup into action.Backup
+  * Extract logic from cmd/reset into action.Reset
+  * Extract logic from cmd/kubeconfig into action.Kubeconfig
+  * Extract logic from cmd/apply into action.Apply
+  * Conditional iptables installation based on k0s version (#554)
+  * Bump k0sproject/version to v0.4.1 and adapt (#551)
+  * Bump rig to v0.13.0 (#553)
+  * POSIX compatibility for test scripts (#548)
+  * Bump actions/checkout from 3 to 4 (#550)
+  * Set a 20 second conenct timeout for HTTP status checks (#549)
+  * Wait for control plane scheduling and pods before worker
+    upgrades (#546)
+  * Refactor: extract node status waiting functions from Host to
+    pkg/node (#545)
+  * Bump github.com/go-playground/validator/v10 from 10.15.0 to
+    10.15.1 (#542)
+  * Fix dependabot auto-approve workflow (#543)
+  * Bump k8s.io/client-go from 0.27.4 to 0.28.0 (#540)
+
+-------------------------------------------------------------------
+Wed Apr 10 17:42:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.5:
+  * Use custom datadir in kubeconfig command (#536)
+  * Bump golangci/golangci-lint-action from 3.6.0 to 3.7.0 (#539)
+  * Fix reading host.dataDir from installFlags (#538)
+  * Wait for dynamic config reconciliation after leader init (#531)
+  * Bump go to 1.21 (#534)
+  * Bump github.com/go-playground/validator/v10 from 10.14.1 to
+    10.15.0 (#530)
+  * Copy networkConfig for every node (#523)
+  * Check for existing k0s service script and add --force for apply
+    (#526)
+  * Bump golang.org/x/text from 0.11.0 to 0.12.0 (#528)
+  * Remove go.mod replace directive to fix "go install" (#524)
+
+-------------------------------------------------------------------
+Wed Apr 10 17:40:39 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.4:
+  * Fix blank version info in k0sctl version command (#521)
+
+-------------------------------------------------------------------
+Wed Apr 10 17:38:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.3:
+  * Ignore 64bit ARM when setting ETCD_UNSUPPORTED_ARCH (#519)
+  * Ignore v-prefix when comparing k0s versions (#518)
+  * Bump k8s.io/client-go from 0.27.3 to 0.27.4 (#515)
+  * Bump github.com/alessio/shellescape from 1.4.1 to 1.4.2 (#514)
+  * Bump golang.org/x/text from 0.10.0 to 0.11.0 (#511)
+  * Revert "Use /usr/local/bin on Flatcar (#460)" (#496)
+  * Use go 1.18 BuildInfo for version when installed using go
+    install (#508)
+  * Enable analytics only when started from cmd/ (#507)
+  * Bump github.com/k0sproject/rig from 0.11.0 to 0.12.0 (#506)
+  * Bump github.com/urfave/cli/v2 from 2.25.6 to 2.25.7 (#504)
+  * Automatically merge dependabot PRs (#503)
+  * Bump k8s.io/client-go from 0.26.1 to 0.27.3 (#502)
+  * Bump github.com/AlecAivazis/survey/v2 from 2.3.6 to 2.3.7
+    (#499)
+  * Bump golang.org/x/text from 0.8.0 to 0.10.0 (#500)
+  * Bump github.com/stretchr/testify from 1.8.2 to 1.8.4 (#501)
+  * Bump actions/setup-go from 3 to 4 (#488)
+  * Bump github.com/go-playground/validator/v10 from 10.11.2 to
+    10.14.1 (#492)
+  * Bump github.com/sirupsen/logrus from 1.9.0 to 1.9.3 (#493)
+  * Bump github.com/creasty/defaults from 1.6.0 to 1.7.0 (#494)
+  * Bump golangci/golangci-lint-action from 3.1.0 to 3.6.0 (#489)
+  * Bump github.com/mattn/go-isatty from 0.0.17 to 0.0.19 (#491)
+  * Bump github.com/urfave/cli/v2 from 2.24.4 to 2.25.6 (#490)
+  * Create dependabot.yml (#487)
+  * Rig v0.11.0 (#486)
+
+-------------------------------------------------------------------
+Wed Apr 10 17:38:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.2:
+  * Don't count empty private addresses during validation
+
+-------------------------------------------------------------------
+Wed Apr 10 17:37:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.1:
+  * Enable dynamic config on all controllers (#474)
+  * Remove security scan triggering test cert-data (#470)
+  * Fix kubeconfig server address generation for ipv6 (#466)
+  * Use go 1.20 (#458)
+  * Ignore missing k0s binary on reset and avoid panic (#465)
+  * Bump golang.org/x/net from 0.2.0 to 0.7.0 (#463)
+  * Change kind:Cluster to kind:ClusterConfig in README
+  * Use /usr/local/bin on Flatcar (#460)
+  * Use /usr/local/bin on CoreOS (#459)
+  * Update copyright year to 2023 (#457)
+  * Fix localhost nil panic (#455)
+  * Validate host private address uniqueness (#453)
+  * Use --delete-emptydir-data instead of deprecated
+    --delete-local-data in node drain (#447)
+  * Retire upgrade test from k0s v0.11.0 (#441)
+  * Add host.DataDir (#446)
+  * Unify the way k0s binary is installed after upload or download
+    (#443)
+  * Use --data-dir from installFlags for token creation (#439)
+
+-------------------------------------------------------------------
+Wed Apr 10 17:34:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.0:
+  * Validate MachineID existence & uniqueness (#435)
+  * Fix dual stack installation with cloud provider (#432)
+  * Limit concurrency in phases (#431)
+  * Ensure k0s binary directory exists for upload (#430)
+  * Avoid retrying connection when it is unlikely that it would
+    succeed (#427)
+  * Update rig to v0.9.2 (.ssh/config, .ssh/knownhosts support, ..)
+    (#426)
+  * Bump rig to 0.8.1 (#420)
+  * Monitor host Ready status from host itself instead of leader
+    (#419)
+  * Fall back to kubelet.conf as kubeconfig for kubectl commands
+    (#418)
+  * Remove and reset nodes during apply by setting reset: true
+    (#417)
+
+-------------------------------------------------------------------
+Wed Apr 10 17:33:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.0:
+  * CoreOS support (#309)
+  * Use the correct `io.Writer` for `k0sctl kubeconfig` output
+    (#413)
+  * Add --kubeconfig-out to apply (#410)
+  * Update year in copyright notice (#408)
+
+-------------------------------------------------------------------
+Wed Apr 10 17:32:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.2:
+  * Add support for ssh client auth via windows openssh-agent and
+    pageant (#407)
+  * Rig 0.7.2
+  * Upgrade to go 1.19 (#406)
+  * Support opensuse-microos, use group root instead of adm for
+    bins (#405)
+  * Update rig to v0.7.1 (#404)
+
+-------------------------------------------------------------------
+Wed Apr 10 17:31:21 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.1:
+  * Don't quote env variable values
+  * Add spec: to k0s config example
+
+-------------------------------------------------------------------
+Wed Apr 10 17:26:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.0:
+  * Add spec.k0s.dynamicConfig (#308)
+  * Add "config edit" and "config status" for managing dynamic
+    config (#315)
+  * Use go 1.18 (#345)
+  * Update SSH dependency to enable ipv6 and
+    rsa-sha2-256/rsa-sha2-512 (#349)
+  * Remove backup tempfiles from target hosts after backup/restore
+    (#373, #380, #394)
+  * Avoid redownloading/uploading binaries (#371)
+  * Adhere to XDG Base Directory Specification for cache directory
+    (may cause redownloads) (#355)
+  * Avoid reuploading unchanged files by comparing modification
+    times and file sizes (#352)
+  * Fix tee error when uploading k0s binaries (#366)
+  * Only allow one instance of k0sctl at once to operate on a
+    target host (#382)
+  * Add `spec.hosts[*].noTaints` to disable default
+    controller+worker taints (#390)
+  * Document telemetry in README, only send a backtrace without
+    error message text on crash to avoid leaking private
+    information, ignore all submit errors (#388)
+  * Fix sudo usage on distros with newer sudo versions (#386)
+  * Add sudo to chmod when upgrading k0s (#359)
+  * Don't make k0s.yaml executable on target hosts (#365)
+  * Export envs like ETCD_UNSUPPORTED_ARCH when added to
+    /etc/conf.d (#351)
+  * Always install curl unless it exists (#348)
+  * Use the latest/stable.txt from k0s docs for k0s latest version
+    discovery instead of sorting github releases (#347)
+  * Delete k0s config on reset (#342)
+  * Fix always overwriting config k0s version with the latest
+    version (introduced in v0.13 betas) (#340)
+  * Drop images from k0sctl init --k0s config template (#329)
+  * Use sudo for chmod when uploading binaries (#325)
+  * Add missing privateAddress/privateInterface fields to host
+    documentation (#323)
+  * Fix running vs configuration k0s version comparison (#317)
+  * Fix k0sctl upgrade check in backup and reset subcommands (#314)
+
+-------------------------------------------------------------------
+Wed Apr 10 17:19:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.12.6:
+  * Fix hostname-override kubelet parameter passing (#313)
+  * Update the role in smoke-test k0sctl-single.yaml (#311)
+  * Fix default config generation on older k0s versions (#307)
+
+-------------------------------------------------------------------
+Wed Apr 10 17:15:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.12.5:
+  * Fix logic error in hostname overriding (#305)
+
+-------------------------------------------------------------------
+Wed Apr 10 17:05:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.12.4:
+  * Remove --config flag from token command (#303)
+
+-------------------------------------------------------------------
+Wed Apr 10 16:45:09 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add shell completion subpackages
+
+-------------------------------------------------------------------
+Wed Apr 10 16:33:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.12.3:
+  * Set EnableBashCompletion: true (#300)
+
+-------------------------------------------------------------------
+Wed Apr 10 16:31:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- rework spec file to match current packaging guidelines
+
+-------------------------------------------------------------------
 Sat Jan 15 03:20:57 UTC 2022 - Orville Q. Song <orville@anislet.dev>
 
 - Update to version 0.12.2:

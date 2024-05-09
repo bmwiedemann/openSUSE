@@ -1,5 +1,7 @@
+#
 # spec file for package k0sctl
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021-2022 Orville Q. Song <orville@anislet.dev>
 #
 # All modifications and additions to the file contributed by third parties
@@ -14,51 +16,108 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%global environment     production
-%global git_hash        ab868a9
 
-%global provider        github
-%global provider_tld    com
-%global project         k0sproject
-%global repo            k0sctl
-%global provider_prefix %{provider}.%{provider_tld}/%{project}
-%global import_path     %{provider_prefix}/%{repo}
+%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           k0sctl
-Version:        0.12.2
+Version:        0.17.6
 Release:        0
 Summary:        A bootstrapping and management tool for k0s clusters
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/k0sproject/k0sctl
-Source0:        %{name}-%{version}.tar.xz
-Source1:        %{name}-vendor.tar.xz
-BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.16
+Source0:        %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
+BuildRequires:  go >= 1.22
 
 %description
 k0sctl is a bootstrapping and management tool for k0s clusters.
 
-%{go_nostrip}
-%{go_provides}
+%package -n %{name}-bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description -n %{name}-bash-completion
+Bash command line completion support for %{name}.
+
+%package -n %{name}-fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description -n %{name}-fish-completion
+Fish command line completion support for %{name}.
+
+%package -n %{name}-zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description -n %{name}-zsh-completion
+zsh command line completion support for %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}
-%setup -a1 %{SOURCE1}
+%autosetup -p 1 -a 1
 
 %build
-%goprep .
-mkdir -p vendor/%{provider_prefix}
-ln -s . vendor/%{import_path}
-%gobuild -ldflags "-s -w -X github.com/k0sproject/k0sctl/version.Environment=%{environment} -X github.com/k0sproject/k0sctl/version.GitCommit=%{git_hash} -X github.com/k0sproject/k0sctl/version.Version=v%{version}" .
+# hash will be shortened by COMMIT_HASH:0:8 later
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/k0sctl.obsinfo)"
+
+go build \
+   -mod=vendor \
+   -buildmode=pie \
+   -trimpath -a \
+   -ldflags=" \
+   -X github.com/k0sproject/k0sctl/version.Environment=production \
+   -X github.com/carlmjohnson/versioninfo.Version=v%{version} \
+   -X github.com/carlmjohnson/versioninfo.Revision=${COMMIT_HASH:0:8}" \
+   -o bin/%{name} main.go
 
 %install
-%goinstall
+install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
+
+# create the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+%{buildroot}/%{_bindir}/%{name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+sed -i '1d' %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+
+# create the fish completion file
+mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
+%{buildroot}/%{_bindir}/%{name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+sed -i '1d' %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+# create the zsh completion file
+mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+sed -i '1d' %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+
+%check
 
 %files
-%defattr(-,root,root)
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
+
+%files -n %{name}-bash-completion
+%dir %{_datarootdir}/bash-completion/completions/
+%{_datarootdir}/bash-completion/completions/%{name}
+
+%files -n %{name}-fish-completion
+%dir %{_datarootdir}/fish
+%dir %{_datarootdir}/fish/vendor_completions.d
+%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+%files -n %{name}-zsh-completion
+%defattr(-,root,root)
+%dir %{_datarootdir}/zsh_completion.d/
+%{_datarootdir}/zsh_completion.d/_%{name}
 
 %changelog

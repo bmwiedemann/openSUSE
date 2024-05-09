@@ -7,4 +7,12 @@
     <comment>A bootstrapping and management tool for k0s clusters.</comment>
     <requestid>946859</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d91a69562e3dea42de534ce7bf250ba7</srcmd5>
+    <version>0.17.6</version>
+    <time>1715253120</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1172716</requestid>
+  </revision>
 </revisionlist>
