@@ -59,4 +59,17 @@
 - initial specfile 1.0.3</comment>
     <requestid>1130336</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>652e34fdf723e6139411647b1375e78d</srcmd5>
+    <version>2.0.1</version>
+    <time>1715249251</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1:
+  * Installation of this package using “setup.py” is no longer
+    supported. Use “pip” instead.
+  * Test: Fixed issues resulting from removal of support for
+    pytest.warns(None) in pytest version 8
+  * Fixed safety issues up to 2024-05-04</comment>
+    <requestid>1172529</requestid>
+  </revision>
 </revisionlist>
