@@ -83,6 +83,8 @@ Patch25:        openssl-CVE-2023-6237.patch
 Patch26:        openssl-3-use-include-directive.patch
 # PATCH-FIX-UPSTREAM: bsc#1219243 CVE-2024-0727: denial of service via null dereference
 Patch27:        openssl-CVE-2024-0727.patch
+# PATCH-FIX-UPSTREAM: bsc#1222548 CVE-2024-2511: Unbounded memory growth with session handling in TLSv1.3
+Patch28:        openssl-CVE-2024-2511.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 Requires:       libopenssl3 = %{version}-%{release}

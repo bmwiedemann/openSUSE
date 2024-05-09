@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May  7 11:51:38 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Add ktls capability [bsc#1216950]
+  Already added in January, but not mentioned in this changelog.
+
+-------------------------------------------------------------------
+Mon May  6 12:11:02 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Security fix: [bsc#1222548, CVE-2024-2511]
+  * Fix unconstrained session cache growth in TLSv1.3
+  * Add openssl-CVE-2024-2511.patch
+
+-------------------------------------------------------------------
 Fri Feb 23 11:31:44 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Build the 32bit flavor of libopenssl-3-fips-provider [bsc#1220232]
