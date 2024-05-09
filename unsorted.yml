@@ -9480,6 +9480,9 @@ unsorted:
   - jzlib-demo 
   - jzlib-javadoc 
   - k0sctl 
+  - k0sctl-bash-completion 
+  - k0sctl-fish-completion 
+  - k0sctl-zsh-completion 
   - k3b 
   - k3b-devel 
   - k3b-lang 
@@ -9844,6 +9847,9 @@ unsorted:
   - kgoldrunner-lang 
   - kgpg 
   - kgpg-lang 
+  - kgraphviewer 
+  - kgraphviewer-devel 
+  - kgraphviewer-lang 
   - kguiaddons 
   - kguiaddons-devel 
   - khealthcertificate 
@@ -10207,10 +10213,6 @@ unsorted:
   - kubectl-capacity 
   - kubectl-explore 
   - kubectl-foreach 
-  - kubectl-minio 
-  - kubectl-minio-bash-completion 
-  - kubectl-minio-fish-completion 
-  - kubectl-minio-zsh-completion 
   - kubectl-neat 
   - kubectl-node-shell 
   - kubectl-oomd 
@@ -13905,6 +13907,7 @@ unsorted:
   - libkeybinder0 
   - libkgantt-lang 
   - libkgapi6-devel 
+  - libkgraphviewer0 
   - libkim-api2 
   - libkioarchive-devel 
   - libkioarchive5 
@@ -15472,8 +15475,8 @@ unsorted:
   - libquvi-scripts-devel 
   - libquvi-scripts-nsfw 
   - libqwt5-qt5-5 
-  - libqwt6-qt5-6_2 
-  - libqwt6-qt6-6_2 
+  - libqwt6-qt5-6_3 
+  - libqwt6-qt6-6_3 
   - libqwtplot3d-qt5-0 
   - libqxmledit-0_9_17-0 
   - libqxmpp-devel 
@@ -17882,6 +17885,8 @@ unsorted:
   - marisa-devel 
   - marknote 
   - marknote-lang 
+  - massif-visualizer 
+  - massif-visualizer-lang 
   - mate-applet-appmenu 
   - mate-applet-dock 
   - mate-applet-dock-lang 
@@ -23791,7 +23796,6 @@ unsorted:
   - python310-Pillow-tk 
   - python310-Pint 
   - python310-Protego 
-  - python310-PsyLab 
   - python310-PubChemPy 
   - python310-Pweave 
   - python310-PyAudio 
@@ -26581,6 +26585,7 @@ unsorted:
   - python310-recommonmark 
   - python310-reconfigure 
   - python310-recordclass 
+  - python310-red-black-tree-mod 
   - python310-redbaron 
   - python310-redfish 
   - python310-redis 
@@ -27371,7 +27376,6 @@ unsorted:
   - python311-Pillow-tk 
   - python311-Pint 
   - python311-Protego 
-  - python311-PsyLab 
   - python311-PubChemPy 
   - python311-Pweave 
   - python311-PyAudio 
@@ -30063,6 +30067,7 @@ unsorted:
   - python311-recommonmark 
   - python311-reconfigure 
   - python311-recordclass 
+  - python311-red-black-tree-mod 
   - python311-redbaron 
   - python311-redfish 
   - python311-redis 
@@ -30843,7 +30848,6 @@ unsorted:
   - python312-Pillow-tk 
   - python312-Pint 
   - python312-Protego 
-  - python312-PsyLab 
   - python312-PubChemPy 
   - python312-Pweave 
   - python312-PyAudio 
@@ -33626,6 +33630,7 @@ unsorted:
   - python312-recommonmark 
   - python312-reconfigure 
   - python312-recordclass 
+  - python312-red-black-tree-mod 
   - python312-redbaron 
   - python312-redfish 
   - python312-redis 
