@@ -233,4 +233,24 @@
     <comment></comment>
     <requestid>1170770</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d99aceb98ae61dcc5fb76f9c782010c5</srcmd5>
+    <version>33</version>
+    <time>1715249292</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 33:
+  * Fix a crash bug in regex
+  * Fix schema &quot;required&quot; keyword cannot handle duplicated keys
+  * Fix cmake CMP0054 warning
+  * Added missing include guards in istreamwrapper.h and
+    ostreamwrapper.h
+  * Fix undefined behaviour
+  * Fix buffer overrun using PutN
+  * Fix rapidjson::value::Get&lt;std::string&gt;() may returns wrong
+    data
+  * Add Flush() for all value types
+  * Handle malloc() fail in PoolAllocator
+  * Fix builds on x32 platform. #703</comment>
+    <requestid>1172679</requestid>
+  </revision>
 </revisionlist>

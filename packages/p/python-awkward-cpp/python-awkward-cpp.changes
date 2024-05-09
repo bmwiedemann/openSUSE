@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May  7 20:10:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 33:
+  * Fix a crash bug in regex
+  * Fix schema "required" keyword cannot handle duplicated keys
+  * Fix cmake CMP0054 warning
+  * Added missing include guards in istreamwrapper.h and
+    ostreamwrapper.h
+  * Fix undefined behaviour
+  * Fix buffer overrun using PutN
+  * Fix rapidjson::value::Get<std::string>() may returns wrong
+    data
+  * Add Flush() for all value types
+  * Handle malloc() fail in PoolAllocator
+  * Fix builds on x32 platform. #703
+
+-------------------------------------------------------------------
 Sun Apr 28 16:19:34 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 32:
