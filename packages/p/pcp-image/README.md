@@ -1,7 +1,8 @@
-# Performance Co-Pilot container
+# openSUSE Tumbleweed Performance Co-Pilot (pcp): Performance Co-Pilot
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 
+## Description
 Performance Co-Pilot ([PCP](https://pcp.io)) is a system performance analysis toolkit.
 
 ## Usage
@@ -34,7 +35,7 @@ $ sudo podman run -d \
 
 ## Configuration
 
-### Environment Variables
+### Environment variables
 
 #### `PCP_SERVICES`
 Default: `pmcd,pmie,pmlogger,pmproxy`
@@ -52,7 +53,7 @@ Default: `localhost:6379`
 Redis connection spec(s) - could be any individual cluster host, and all hosts in the cluster will be automatically discovered.
 Alternately, use comma-separated hostspecs (non-clustered setup)
 
-### Configuration Files
+### Configuration files
 
 For custom configuration options beyond the above environment variables, it is advised to use a bind mount with a configuration file on the host to the container.
 Example command to run a pmlogger-only container:
