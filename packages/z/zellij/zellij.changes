@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May  8 09:54:06 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update _service:
+  * apply vendor filterer
+- Update ./README.suse-maint.md:
+  * manualrun obsoletes disabledrun
+- Update vendored dependencies:
+  * filter for only linux platforms. this lessens tarball size
+
+-------------------------------------------------------------------
+Wed May  8 08:59:34 UTC 2024 - Maikel Martens <maikel@martens.me>
+
+- Update to version 0.40.1:
+  * fix(sessions): issue where sessions would occasionally become unresponsive
+  * fix(cli): respect all options (eg. `default-layout`) when creating a session in the background from the CLI
+  * fix(cli): rename tab and pane from cli
+  * fix(plugins): respect $SHELL when opening a terminal from plugins (eg. from the filepicker strider)
+  * fix(tabs): closing a tab no longer breaks tab movement
+  * feat(plugins): add API to open new tabs with a LayoutInfo
+  * feat(cli): add `zellij action list-clients` to allow listing the connected clients as well as their pane_id and running command
+  * feat(cli): allow binding Ctrl J
+
+-------------------------------------------------------------------
 Sat Apr 20 09:20:37 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.40.0:

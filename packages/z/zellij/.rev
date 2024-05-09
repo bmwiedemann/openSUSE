@@ -258,4 +258,27 @@
     <comment></comment>
     <requestid>1169334</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>23c372cb6ca71e31653cdcfa7491a6b1</srcmd5>
+    <version>0.40.1</version>
+    <time>1715268515</time>
+    <user>dimstar_suse</user>
+    <comment>- Update _service:
+  * apply vendor filterer
+- Update ./README.suse-maint.md:
+  * manualrun obsoletes disabledrun
+- Update vendored dependencies:
+  * filter for only linux platforms. this lessens tarball size
+- Update to version 0.40.1:
+  * fix(sessions): issue where sessions would occasionally become unresponsive
+  * fix(cli): respect all options (eg. `default-layout`) when creating a session in the background from the CLI
+  * fix(cli): rename tab and pane from cli
+  * fix(plugins): respect $SHELL when opening a terminal from plugins (eg. from the filepicker strider)
+  * fix(tabs): closing a tab no longer breaks tab movement
+  * feat(plugins): add API to open new tabs with a LayoutInfo
+  * feat(cli): add `zellij action list-clients` to allow listing the connected clients as well as their pane_id and running command
+  * feat(cli): allow binding Ctrl J
+</comment>
+    <requestid>1172749</requestid>
+  </revision>
 </revisionlist>
