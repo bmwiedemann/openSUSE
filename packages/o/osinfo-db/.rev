@@ -568,4 +568,12 @@
     <comment>Add support of SLE Micro 6.0</comment>
     <requestid>1146962</requestid>
   </revision>
+  <revision rev="72" vrev="4">
+    <srcmd5>57f517c7b30e1c540a2f0f5e5e38c964</srcmd5>
+    <version>20231215</version>
+    <time>1715249257</time>
+    <user>dimstar_suse</user>
+    <comment>Add database entry for SUSE Linux Micro 6.0 and remove database entry for SUSE Linux Enterprise Micro 6.0</comment>
+    <requestid>1172594</requestid>
+  </revision>
 </revisionlist>

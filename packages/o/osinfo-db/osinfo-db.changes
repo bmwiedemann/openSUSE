@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  7 10:59:39 MDT 2024 - carnold@suse.com
+
+- bsc#1222738 - virt-manager shows SLE Micro 6.0 in suggested OS
+  version should be SL Micro 6.0
+  add-slm6.0-support.patch
+  Drop add-slem6.0-support.patch
+
+-------------------------------------------------------------------
 Thu Feb 15 12:51:20 MST 2024 - carnold@suse.com
 
 - Add support for SLE Micro 6.0 (jsc#PED-6305)
