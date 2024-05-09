@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed May  8 04:20:08 UTC 2024 - ming li <mli@suse.com>
+
+- update to 0.32.0:
+  * ENH: intrinsic float, dfloat by @Pranavchiku in #3163
+  * Implemented Left shift for lfortran by @parth121101 in #3164
+  * FIX: Elemental function with complex array throws error
+    by @Pranavchiku in #3172
+  * cmake: fix quotes in configure_runtime by @junghans in #3174
+  * Fix random_number() by @Shaikh-Ubaid in #3156
+  * Implemented ifix by @Kishan-Ved in #3173
+  * Add -fdefault-integer-8 by @meow464 in #3124
+  * Added error message by @parth121101 in #3167
+  * fix: raise syntax error when (sub)module name doesn't match
+    closing (sub)module name by @gxyd in #3179
+  * FIX: optional argument handling for elemental funtion
+    by @Pranavchiku in #3181
+  * Tighten the accuracy for random number checks by @certik in #3188
+  * Implemented Idint by @parth121101 in #3193
+  * lfortran: compile capital F files as well by @junghans in #3192
+  * TST: Add test for optional argument in elemental function
+    by @Pranavchiku in #3191
+  * Fix string slice handling by @HarshitaKalani in #3195
+  * FIX: abs for complex arrays by @Pranavchiku in #3197
+  * Importing issues with requirements and templates
+    by @ansharlubis in #3147
+  * Correctly handle elemental function return variable type
+    by @Pranavchiku in #3206
+  * CPP: add #elif handling by @certik in #3210
+  * CPP: implement % by @certik in #3213
+  * Support logical type in format by @Shaikh-Ubaid in #3212
+  * CPP: fix function-like macro expansion by @certik in #3216
+  * CPP: implement <<, >>, & and | by @certik in #3219
+
+-------------------------------------------------------------------
 Mon Jan 22 16:54:36 UTC 2024 - Christoph Junghans <junghans@votca.org>
 
 - Update to v0.31.0

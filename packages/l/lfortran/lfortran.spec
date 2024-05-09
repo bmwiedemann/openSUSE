@@ -15,10 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# for static libraries
+
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
-Version:        0.31.0
+Version:        0.32.0
 %global         sover 0
 Name:           lfortran
 Release:        0
@@ -27,33 +27,33 @@ Summary:        A modern interactive Fortran compiler built on top of LLVM
 # Main code is BSD-3-Clause
 # src/libasr/codegen/KaleidoscopeJIT.h is available under the Apache 2.0
 # License with LLVM exception
-License:        BSD-3-Clause AND Apache-2.0 WITH LLVM-exception
+License:        Apache-2.0 WITH LLVM-exception AND BSD-3-Clause
 URL:            https://lfortran.org/
 Source0:        https://lfortran.github.io/tarballs/release/lfortran-%{version}.tar.gz
 
 # https://github.com/lfortran/lfortran/issues/2981
-ExclusiveArch: x86_64
+ExclusiveArch:  x86_64
 
-BuildRequires: binutils-devel
-BuildRequires: bison
-BuildRequires: cmake
-BuildRequires: fmt-devel
-BuildRequires: gcc-c++ >= 8
-BuildRequires: nlohmann_json-devel
-BuildRequires: kokkos-devel
+BuildRequires:  binutils-devel
+BuildRequires:  bison
+BuildRequires:  cmake
+BuildRequires:  fmt-devel
+BuildRequires:  gcc-c++ >= 8
+BuildRequires:  kokkos-devel
+BuildRequires:  nlohmann_json-devel
 # kokkos is not link, but only use for backend=cpp
-Requires: kokkos-devel
-BuildRequires: libffi-devel
-BuildRequires: libunwind-devel
-BuildRequires: libuuid-devel
-BuildRequires: llvm16-devel
-BuildRequires: python3-devel
-BuildRequires: rapidjson-devel
-BuildRequires: re2c
-BuildRequires: zlib-devel
-BuildRequires: zlib-devel-static
-BuildRequires: libzstd-devel
-BuildRequires: libzstd-devel-static
+Requires:       kokkos-devel
+BuildRequires:  libffi-devel
+BuildRequires:  libunwind-devel
+BuildRequires:  libuuid-devel
+BuildRequires:  libzstd-devel
+BuildRequires:  libzstd-devel-static
+BuildRequires:  llvm16-devel
+BuildRequires:  python3-devel
+BuildRequires:  rapidjson-devel
+BuildRequires:  re2c
+BuildRequires:  zlib-devel
+BuildRequires:  zlib-devel-static
 
 %global lfortran_desc \
 LFortran is a modern open-source (BSD licensed) interactive Fortran \
@@ -66,9 +66,9 @@ architectures such as multi-core CPUs and GPUs.
 %{lfortran_desc}
 
 %package devel
-Summary:  Development headers and libraries for %{name}
-Requires: %{name}%{?_isa} = %{version}-%{release}
-Requires:  liblfortran%{sover}%{?_isa} = %{version}-%{release}
+Summary:        Development headers and libraries for %{name}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       liblfortran%{sover}%{?_isa} = %{version}-%{release}
 
 %description devel
 %{lfortran_desc}
@@ -76,23 +76,21 @@ Requires:  liblfortran%{sover}%{?_isa} = %{version}-%{release}
 This package contains development headers and libraries for %{name}.
 
 %package -n liblfortran%{sover}
-Summary:   %{name} runtime library
+Summary:        %{name} runtime library
 
 %description -n liblfortran%{sover}
 %{lfortran_desc}
 
 This package contains shared runtime libraries of %{name}.
 
-
 %package devel-static
-Summary:   %{name} static runtime library
-Requires:  %{name}-devel = %{version}
+Summary:        %{name} static runtime library
+Requires:       %{name}-devel = %{version}
 
 %description devel-static
 %{lfortran_desc}
 
 This package contains static runtime library for %{name}.
-
 
 %prep
 %autosetup -p1
