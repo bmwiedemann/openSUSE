@@ -1,7 +1,7 @@
 #
 # spec file for package live-langset-data
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,19 @@
 
 
 Name:           live-langset-data
-Version:        2.0
+Version:        3.0
 Release:        0
 Summary:        Scripts and data to allow locale switching in live media
-License:        GPL-2.0-only
+License:        GPL-3.0-or-later
 Group:          System/YaST
-URL:            https://build.opensuse.org/package/show/openSUSE:Factory:Live/live-langset-data
+URL:            https://build.opensuse.org/package/show/system:install:head/live-langset-data
 Source1:        langset.sh
 Source2:        langset.service
-Source3:        getcountrydata.rb
-Source4:        gpl-2.0.txt
+Source3:        getcountrydata.py
+Source4:        gpl-3.0.txt
 BuildRequires:  coreutils
+BuildRequires:  python3-langtable
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  yast2-country
-# Needed for X11 keyboard data
-BuildRequires:  yast2-x11
 # Support for /etc/sysconfig/language was dropped
 %if 0%{?suse_version} < 1500
 BuildRequires:  newer-distro
@@ -42,8 +40,8 @@ BuildArch:      noarch
 %{?systemd_requires}
 
 %description
-This package contains scripts and data to allow setting the locale (+ console font and keyboard
-layout) on live media.
+This package contains scripts and data to allow setting the locale (+ console font, keyboard
+layout and timezone) on live media.
 
 %prep
 %setup -q -T -c
@@ -51,12 +49,13 @@ cp %{SOURCE4} .
 
 %build
 mkdir output
-OUTPUTDIR=$PWD/output %{_prefix}/lib/YaST2/bin/y2start %{SOURCE3} UI
+cd output
+python3 %{SOURCE3}
 
 %install
 pushd output
 for i in *; do
-    install -Dm 644 $i %{buildroot}/%{_datadir}/langset/${i/.UTF-8}
+    install -Dm 644 $i %{buildroot}/%{_datadir}/langset/${i}
 done
 popd
 install -Dm 755 %{SOURCE1} %{buildroot}%{_sbindir}/langset.sh
@@ -75,7 +74,7 @@ install -Dm 644 %{SOURCE2} %{buildroot}%{_unitdir}/langset.service
 %service_del_postun langset.service
 
 %files
-%doc gpl-2.0.txt
+%doc gpl-3.0.txt
 %{_datadir}/langset
 %{_sbindir}/langset.sh
 %{_unitdir}/langset.service

@@ -45,12 +45,8 @@ fi
 # Read all values of the langset data files
 . "$file"
 
-# Chop the extension off
-KEYTABLE="${KEYTABLE%%.map*}"
-
 # Apply all options
-[ -n "$RC_LC_MESSAGES" ] || RC_LC_MESSAGES=$RC_LANG
-[ -z "$RC_LANG" ] || localectl set-locale LANG=$RC_LANG LC_MESSAGES=$RC_LC_MESSAGES
+[ -z "$RC_LANG" ] || localectl set-locale LANG=$RC_LANG
 
 # set_vconsole_option KEY value
 set_vconsole_option() {
@@ -61,26 +57,6 @@ set_vconsole_option() {
 }
 
 [ -z "$CONSOLE_FONT" ] || set_vconsole_option FONT "$CONSOLE_FONT"
-[ -z "$CONSOLE_SCREENMAP" ] || set_vconsole_option FONT_MAP "$CONSOLE_SCREENMAP"
-[ -z "$CONSOLE_UNICODEMAP" ] || set_vconsole_option FONT_UNIMAP "$CONSOLE_UNICODEMAP"
-
-# set_sysconfig_option KEY value
-set_sysconfig_option() {
-	sed -i -e "s#$1=\".*#$1=\"$2\"#" /etc/sysconfig/keyboard
-	sed -i -e "s#$1=\".*#$1=\"$2\"#" /etc/sysconfig/console
-}
-
-# Set legacy sysconfig values for backwards-compat
-if [ -e /etc/sysconfig/console ]; then
-	[ -z "$CONSOLE_FONT" ] || set_sysconfig_option CONSOLE_FONT "$CONSOLE_FONT"
-	[ -z "$CONSOLE_SCREENMAP" ] || set_sysconfig_option CONSOLE_SCREENMAP "$CONSOLE_SCREENMAP"
-	[ -z "$CONSOLE_UNICODEMAP" ] || set_sysconfig_option CONSOLE_UNICODEMAP "$CONSOLE_UNICODEMAP"
-fi
-
-if [ -e /etc/sysconfig/keyboard ]; then
-	[ -z "$KEYTABLE" ] || set_sysconfig_option KEYTABLE "$KEYTABLE"
-	[ -z "$COMPOSETABLE" ] || set_sysconfig_option COMPOSETABLE "$COMPOSETABLE"
-fi
 
 # Try the lang-provided keytable first
 [ -z "$KEYTABLE" ] || localectl set-keymap $KEYTABLE

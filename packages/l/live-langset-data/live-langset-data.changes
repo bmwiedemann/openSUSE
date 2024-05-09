@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  7 09:30:42 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Switch from yast2-country (getcountrydata.rb) to python-langtable
+  (getcountrydata.py). Effective changes:
+  * Remove writing to /etc/sysconfig/{console,keyboard}
+  * Remove CONSOLE_SCREENMAP, CONSOLE_UNICODEMAP, CONSOLE_MAGIC
+    and RC_LC_MESSAGES
+  * Uses different keyboard layouts and console fonts for some locales
+  * Drops the file extension from CONSOLE_FONT
+- Relicense to GPL-3.0-or-later
+
+-------------------------------------------------------------------
 Fri Dec 23 14:12:59 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Handle missing files explicitly, particularly useful with empty
