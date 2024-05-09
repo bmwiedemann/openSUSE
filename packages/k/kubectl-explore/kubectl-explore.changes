@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 08 10:41:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.9.3:
+  * fix regex
+  * Fix: cannot find resource when input exactly equals to resource
+
+-------------------------------------------------------------------
 Sun May 05 07:23:44 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.9.2:
