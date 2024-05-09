@@ -1,0 +1,114 @@
+-------------------------------------------------------------------
+Thu May  9 08:23:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.5.0:
+  https://blogs.kde.org/2024/05/08/kgraphviewer-2.5.0-released/
+  * Port to Qt6 and KF6
+  * General code modernization
+
+-------------------------------------------------------------------
+Fri Dec 15 22:07:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Require extra-cmake-modules at build time
+
+-------------------------------------------------------------------
+Wed Jul 17 20:42:04 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use _kf5_debugdir for logging categories files.
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Sep 17 16:25:31 UTC 2018 - wbauer@tmo.at
+
+- Update to 2.4.3
+  * https://jriddell.org/2018/09/17/kgraphviewer-2-4-3/
+  * Switch KgvPageLayout to QPageSize for page size handling
+  * Avoid double top-level layout in KGVSimplePrintingPageSetup
+  * Fix layout of page layout & size dialog
+  * Remove unused dependency KIO
+  * Fix minor typo
+  * Update kgraphviewer docbook
+  * Make sure the Graphviz library directories are known to the linker
+
+-------------------------------------------------------------------
+Wed Sep 27 13:47:25 UTC 2017 - wbauer@tmo.at
+
+- Update to 2.4.2
+  * http://jriddell.org/2017/09/27/kgraphviewer-2-4-2/
+  * add missing find dependency macro
+  * Fix broken reloading and broken layout changing due to lost filename
+  * kgraphviewer_part.rc: set fallback text for toplevel menu entries
+  * desktop-mime-but-no-exec-code
+  * Codefix, comparisons were meant to be assignments
+  * KGraphViewer 2.4.1 was made with an incorrect internal version number
+    and should be ignored
+
+-------------------------------------------------------------------
+Tue Sep 12 15:30:21 UTC 2017 - wbauer@tmo.at
+
+- Update to 2.4.0
+  * http://jriddell.org/2017/09/12/kgraphviewer-2-4-0/
+- Drop old_graphviz.diff, 13.1 and lower are no longer supported
+
+-------------------------------------------------------------------
+Sun Nov 30 17:45:09 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 2.2 final
+  * For more details, please see
+    http://milianw.de/blog/massif-visualizer-04-and-kgraphviewer-22-released
+
+-------------------------------------------------------------------
+Wed Nov 12 21:19:23 UTC 2014 - cgiboudeaux@gmx.com
+
+- Add KGraphViewer 2.2Beta
+- Drop the _service file
+
+-------------------------------------------------------------------
+Mon Oct 14 13:30:33 UTC 2013 - cgiboudeaux@gmx.com
+
+- Update translations
+
+-------------------------------------------------------------------
+Sun Mar  6 23:21:56 2011 - cgiboudeaux@gmail.com
+
+- Update snapshot (git-20110306)
+
+-------------------------------------------------------------------
+Wed Dec 15 00:33:32 2010 - cgiboudeaux@gmail.com
+
+- Update snapshot (git-20101215)
+
+ -------------------------------------------------------------------
+Tue Dec 14 01:15:00 2010 - cgiboudeaux@gmail.com
+
+- Update snapshot (git-20101214)
+
+ -------------------------------------------------------------------
+Sat Dec 11 00:29:48 2010 - cgiboudeaux@gmail.com
+
+- Update snapshot (git-20101211)
+
+ -------------------------------------------------------------------
+Tue Nov 30 12:22:57 2010 - cgiboudeaux@gmail.com
+
+- Update snapshot (git-20101130)
+
+ -------------------------------------------------------------------
+Sat Nov 27 01:59:39 2010 - cgiboudeaux@gmail.com
+
+- Update snapshot (git-20101127)
+
+ -------------------------------------------------------------------
+Wed Nov 17 13:18:01 2010 - cgiboudeaux@gmail.com
+
+- Update snapshot (git-20101117)
+
+ -------------------------------------------------------------------
+Sun Nov 14 01:20:25 2010 - cgiboudeaux@gmail.com
+
+- Update snapshot (git-20101114)
+
+ -------------------------------------------------------------------
+Mon Sep 20 2010 - cgiboudeaux@gmail.com
+- Kgraphviewer 2.0.90 (svn)
+

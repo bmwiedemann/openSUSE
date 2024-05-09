@@ -1,0 +1,10 @@
+<package name="kgraphviewer" project="openSUSE:Factory">
+  <title>Graphviz dot graph file viewer</title>
+  <description>KGraphViewer is a Graphviz dot graph file viewer, aimed to replace the other
+outdated Graphviz tools. Graphs are commonly used in scientific domains and
+particularly in computer science.
+
+</description>
+  <devel project="KDE:Extra" package="kgraphviewer"/>
+  <url>https://apps.kde.org/kgraphviewer</url>
+</package>
