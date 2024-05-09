@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue May  7 21:00:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.4:
+  * feat: `TypeTracerReport.data_touched_in` should ignore
+    unrecognized `node_ids`
+  * feat: better error message for missing dispatch
+  * feat: add boolean cases for CPU kernels
+  * feat: add ak.flatten and ak.concatenate kernels
+  * fix: restrict ak.softmax to axis=-1, the only axis for which
+    the calculation is correct right now
+  * fix: Numpy 2.0 out of bounds error for BitMaskedArray Py
+    kernels
+  * fix: _is_getitem_at_placeholder logic was backward for
+    UnionArray
+  * fix: refuse dak.Array in hidden-but-public-functions
+  * fix: PyPy segfault may be related to using out-of-scope array
+  * fix: distributed rdataframe is not yet support
+  * fix: support conversion to arrow and back with non-option
+    Unknown type
+  * fix: intermittent segfault in PyPy
+  * fix: is_valid checks in header-only library
+  * fix: UnmaskedArray was missing its _nextcarry_outindex
+
+-------------------------------------------------------------------
 Sun Apr 28 16:45:34 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.6.3:

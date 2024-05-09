@@ -16,10 +16,10 @@
 #
 
 
-%define awkward_cpp_version 32
+%define awkward_cpp_version 33
 %{?sle15_python_module_pythons}
 Name:           python-awkward
-Version:        2.6.3
+Version:        2.6.4
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause
