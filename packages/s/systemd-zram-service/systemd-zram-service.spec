@@ -1,7 +1,7 @@
 #
 # spec file for package systemd-zram-service
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012-2018 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,8 +29,8 @@ Source0:        zramswap-enabler-0.2.1.tar.bz2
 Source1:        zramswapon
 Source2:        zramswapoff
 Source3:        zramswap.service
+Requires:       kmod(zram.ko)
 Conflicts:      compcache
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %systemd_requires
 
@@ -75,7 +75,6 @@ popd
 %service_del_postun zramswap.service
 
 %files
-%defattr(-,root,root,-)
 %doc debian/copyright debian/changelog
 %{_sbindir}/rczramswap
 %{_sbindir}/zramswap*

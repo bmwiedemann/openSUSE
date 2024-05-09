@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  9 01:39:07 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Require zram kernel module (avoid failure on systems with minimal kernel packages)
+
+-------------------------------------------------------------------
 Wed Sep  7 00:00:00 CEST 2022 - dsterba@suse.cz
 
 - disable multi-zram devices (deprecated, not necessary since 4.7)
