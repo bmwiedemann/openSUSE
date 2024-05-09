@@ -1,7 +1,7 @@
 #
 # spec file for package qwt6
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,10 +31,11 @@ ExclusiveArch:  do_not_build
 %define qt_descr Qt5
 %endif
 
-%define sover   6_2
+%define sover   6_3
 %define mver    6
+%define bver    6.3
 Name:           qwt6%{?pkg_suffix}
-Version:        6.2.0
+Version:        6.3.0
 Release:        0
 Summary:        %{qt_descr} Widgets for Technical Applications
 License:        SUSE-QWT-1.0
@@ -207,10 +208,10 @@ cp -r build/examples/bin %{buildroot}%{_qt6_examplesdir}/qwt6
 %files -n libqwt%{mver}-%{qwt6_flavor}-%{sover}
 %license COPYING
 %if 0%{?qt5}
-%{_libqt5_libdir}/libqwt-%{qwt6_flavor}.so.6.2*
+%{_libqt5_libdir}/libqwt-%{qwt6_flavor}.so.%{bver}*
 %endif
 %if 0%{?qt6}
-%{_qt6_libdir}/libqwt-%{qwt6_flavor}.so.6.2*
+%{_qt6_libdir}/libqwt-%{qwt6_flavor}.so.%{bver}*
 %endif
 
 %files designer

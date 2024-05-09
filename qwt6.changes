@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed May  8 10:16:49 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.3.0
+  * QwtPainter::polylineSplitting has been reenabled.
+    Unfortunately the Qt raster paint engine still has serious
+    performance issues with rendering long polylines.
+  * QwtPlotCurve::adjacentPoint for monotonic curves: using a
+    binary search algo
+  * QwtPlotCurve::interpolatedValueAt for monotonic curves:
+    using a binary search algo
+  * QwtSeriesData
+    + wrong inheritances fixed
+    + firstSample, lastSample added
+  * QwtPlotIntervalCurve::TubeAsLines mode added. A performance
+    optimization for rendering huge datasets.
+  * Bugfixes/Adjustments - often needed because of new Qt
+    developments
+- Refreshed qwt-6.1.4-mkspecs.patch
+
+-------------------------------------------------------------------
 Fri Apr 28 11:07:33 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Fixes boo#1210931 
