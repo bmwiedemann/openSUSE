@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  8 09:17:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup: allows to eliminate usage of deprecated %patchN
+  syntax.
+- Rebase Coin60.patch to also apply with -p1.
+
+-------------------------------------------------------------------
 Tue Dec 15 00:12:48 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Explicitly request system libexpat. The bundled expat 2.0.1 has

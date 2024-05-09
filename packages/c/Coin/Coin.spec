@@ -1,7 +1,7 @@
 #
 # spec file for package Coin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -95,11 +95,7 @@ Coin is compatible to Open Inventor 2.1 and also has support for 3D
 sound, GLSL shaders, and additional file formats like VRML97.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p0
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 sed -i '/^#include "fonts\/freetype.h"$/i #include <cstdlib>\n#include <cmath>' src/fonts/freetype.cpp
 sed -i '/^#include <Inventor\/C\/basic.h>$/i #include <Inventor/C/errors/debugerror.h>' include/Inventor/SbBasic.h
 
