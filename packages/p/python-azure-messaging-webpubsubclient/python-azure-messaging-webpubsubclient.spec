@@ -16,17 +16,15 @@
 #
 
 
-%define realversion 1.0.0b1
-
 %{?sle15_python_module_pythons}
 Name:           python-azure-messaging-webpubsubclient
-Version:        1.0.0~b1
+Version:        1.1.0
 Release:        0
 Summary:        Microsoft Azure Web PubSub Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-messaging-webpubsubclient/azure-messaging-webpubsubclient-%{realversion}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-messaging-webpubsubclient/azure-messaging-webpubsubclient-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-messaging-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -35,13 +33,11 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-messaging-nspkg >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       (python-azure-core >= 1.24.0 with python-azure-core < 2.0.0)
+Requires:       (python-azure-core >= 1.26.3 with python-azure-core < 2.0.0)
 Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
-Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
-Requires:       (python-websocket-client >= 1.4.2 with python-websocket-client < 2.0.0)
+Requires:       (python-websocket-client >= 1.6.0 with python-websocket-client < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-messaging-webpubsubclient < 1.0.0~b1
@@ -68,10 +64,10 @@ PubSub resource. This client library:
  * reliably deliveries messages in number and in order after recovering from connection drops
 
 %prep
-%setup -q -n azure-messaging-webpubsubclient-%{realversion}
+%setup -q -n azure-messaging-webpubsubclient-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-messaging-webpubsubclient-%{realversion}
+install -m 644 %{SOURCE1} %{_builddir}/azure-messaging-webpubsubclient-%{version}
 %pyproject_wheel
 
 %install
