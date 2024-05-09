@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  7 19:07:24 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- extend READMEs; correct eula for application images
+
+-------------------------------------------------------------------
 Tue May  7 12:37:35 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - install awk; use symlinks rather than hardlinks as they break the compiler
