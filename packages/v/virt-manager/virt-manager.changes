@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  7 13:30:54 MDT 2024 - carnold@suse.com
+
+- bsc#1222738 - virt-manager shows SLE Micro 6.0 in suggested OS
+  version should be SL Micro 6.0
+  virtinst-add-slm-detection-support.patch
+
+-------------------------------------------------------------------
 Thu Mar  7 14:59:08 MST 2024 - carnold@suse.com
 
 - Disable mdev tests with introduction of libvirt 10.1.0

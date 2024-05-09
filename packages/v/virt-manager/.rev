@@ -1990,4 +1990,12 @@
     <comment>Disable mdev tests with introduction of libvirt 10.1.0. This a temporary work around.</comment>
     <requestid>1156150</requestid>
   </revision>
+  <revision rev="252" vrev="18">
+    <srcmd5>bb1af2debc2cd4d290ae8dc512d9a2ad</srcmd5>
+    <version>4.1.0</version>
+    <time>1715249259</time>
+    <user>dimstar_suse</user>
+    <comment>Add detection for SUSE Linux Micro 6.0</comment>
+    <requestid>1172595</requestid>
+  </revision>
 </revisionlist>

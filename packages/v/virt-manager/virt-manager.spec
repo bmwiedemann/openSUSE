@@ -148,10 +148,11 @@ Patch180:       virtinst-keep-iso-for-xenpv.patch
 Patch181:       virtinst-add-slem-detection-support.patch
 Patch182:       virtinst-add-sle-hpc-support.patch
 Patch183:       virtinst-add-oracle-linux-support.patch
-Patch184:       virtinst-windows-server-detection.patch
-Patch185:       virtman-fix-shared-disk-request-alignment-error.patch
-Patch186:       virtman-language-fixes.patch
-Patch187:       virtman-fix-inspection-apps-window.patch
+Patch184:       virtinst-add-slm-detection-support.patch
+Patch185:       virtinst-windows-server-detection.patch
+Patch186:       virtman-fix-shared-disk-request-alignment-error.patch
+Patch187:       virtman-language-fixes.patch
+Patch188:       virtman-fix-inspection-apps-window.patch
 
 BuildArch:      noarch
 
