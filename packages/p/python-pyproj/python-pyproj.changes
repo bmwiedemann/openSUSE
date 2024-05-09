@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  8 13:31:31 UTC 2024 - Libor Pechacek <lpechacek@gmx.com>
+
+- Fix test/crs/test_crs_cf.py::test_azimuthal_equidistant failure
+  (upstream #1384)
+- Add upstream patch:
+  * v3.6.1-BUG-Support-azimuthal_equidistant-coordinate-operati.patch
+
+-------------------------------------------------------------------
 Thu Mar 14 04:59:19 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Unrestrict Cython BuildRequires, Cython 3 is supported upstream.
