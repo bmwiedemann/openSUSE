@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  7 15:11:14 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add cheese-c99.patch: fix cast to invalid pointer type
+  (glgo#GNOME/cheese!70).
+
+-------------------------------------------------------------------
 Sun Jul 16 10:49:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.1:

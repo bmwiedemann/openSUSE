@@ -1,0 +1,17 @@
+libcheese: Add GtkWidget cast to avoid an incompatible-pointer-types error
+
+Submitted upstream: <https://gitlab.gnome.org/GNOME/cheese/-/merge_requests/70>
+
+diff --git a/libcheese/cheese-flash.c b/libcheese/cheese-flash.c
+index 59959dbd3414eafa..e402322166614276 100644
+--- a/libcheese/cheese-flash.c
++++ b/libcheese/cheese-flash.c
+@@ -132,7 +132,7 @@ cheese_flash_set_property (GObject      *object,
+       GObject *parent;
+       parent = g_value_get_object (value);
+       if (object != NULL)
+-        priv->parent = g_object_ref (parent);
++        priv->parent = GTK_WIDGET (g_object_ref (parent));
+       else
+         priv->parent = NULL;
+     }

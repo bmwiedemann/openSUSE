@@ -1,7 +1,7 @@
 #
 # spec file for package cheese
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://wiki.gnome.org/Apps/Cheese
 Source0:        https://download.gnome.org/sources/cheese/44/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM cheese-c99.patch boo#1224002 mgorse@suse.com -- fix cast to invalid pointer type.
+Patch0:         cheese-c99.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
