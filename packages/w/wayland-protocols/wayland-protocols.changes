@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May  4 23:02:59 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 1.36:
+  * xdg-dialog: fix missing namespace in protocol name
+- Changes from version 1.35:
+  * cursor-shape-v1: Does not advertises the list of supported cursors
+  * xdg-shell: add missing enum attribute to set_constraint_adjustment
+  * xdg-shell: recommend against drawing decorations when tiled
+  * tablet-v2: mark as stable
+  * staging: add alpha-modifier protocol
+
+-------------------------------------------------------------------
 Thu Mar 21 13:28:47 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.34:
