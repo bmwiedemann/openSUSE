@@ -17,15 +17,14 @@
 
 
 Name:           tinyproxy
-Version:        1.11.1
+Version:        1.11.2
 Release:        0
 Summary:        Minimalist WWW proxy
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Proxy
 URL:            https://tinyproxy.github.io/
-Source:         https://github.com/tinyproxy/tinyproxy/releases/download/%version/tinyproxy-%version.tar.xz
+Source:         https://github.com/tinyproxy/tinyproxy/releases/download/%version/%name-%version.tar.xz
 Source1:        %name.logrotate
-Patch1:         0001-prevent-junk-from-showing-up-in-error-page-in-invali.patch
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  xz

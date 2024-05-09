@@ -141,4 +141,12 @@
     <comment>- Provide user/group tinyproxy symbol as required by RPM 4.19.</comment>
     <requestid>1144954</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6251cf20c8939fb5dcc07e6d9d2b380b</srcmd5>
+    <version>1.11.2</version>
+    <time>1715249630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.11.2</comment>
+    <requestid>1172807</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  8 19:02:38 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.11.2
+  * Fix potential use-after-free in header handling
+    [CVE-2023-49606, boo#1233746]
+  * Prevent junk from showing up in error page in invalid requests
+    [CVE-2022-40468, CVE-2023-40533, boo#1223743]
+- Delete 0001-prevent-junk-from-showing-up-in-error-page-in-invali.patch
+  (merged)
+
+-------------------------------------------------------------------
 Wed Feb  7 11:41:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide user/group tinyproxy symbol as required by RPM 4.19.
