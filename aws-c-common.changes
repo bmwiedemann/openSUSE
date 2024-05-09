@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  8 12:23:34 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.17
+  * Fix invalid cpu_id for RHEL_5 by @waahm7 in (#1106)
+- from version 0.9.16
+  * Switch test harness to print errors in decimal by @DmitriyMusatkin in (#1100)
+  * Add list membership API and uint64 hash utilities by @bretambrose in (#1103)
+  * Clarity updates for uint64_t hash helper by @bretambrose in (#1104)
+  * Move is ipv4/ipv6 functions from Aws-c-sdkutils to Aws-c-common by @waahm7 in (#1105)
+
+-------------------------------------------------------------------
 Thu Apr  4 15:35:28 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.15
