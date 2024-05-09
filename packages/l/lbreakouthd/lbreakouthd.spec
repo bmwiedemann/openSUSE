@@ -18,7 +18,7 @@
 
 
 Name:           lbreakouthd
-Version:        1.1.7
+Version:        1.1.8
 Release:        0
 Summary:        Classic Breakout-Style Game
 License:        GPL-2.0-or-later
@@ -69,7 +69,7 @@ rm %{buildroot}%{_localstatedir}/games/*
 %doc Changelog README TODO
 %{_bindir}/lbreakouthd
 %{_datadir}/%{name}
-%{_datadir}/icons/hicolor/*/apps/lbreakouthd.png
+%{_datadir}/icons/lbreakouthd.png
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
