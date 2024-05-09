@@ -153,4 +153,23 @@
     <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1150808 from pgajdos)</comment>
     <requestid>1151117</requestid>
   </revision>
+  <revision rev="23" vrev="723">
+    <srcmd5>f705229691a4d580e2bd6176d5f7fcae</srcmd5>
+    <version>0.17</version>
+    <time>1715249693</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build with gcc 14
+- use %autosetup
+- modified patches
+  % netkit-ntalk-0.17-close_file_on_failure.patch (p1)
+  % netkit-ntalk-0.17-dont-resolve.patch (p1)
+  % netkit-ntalk-0.17-dots_in_usernames.patch (p1)
+  % netkit-ntalk-0.17-strip.diff (p1)
+  % netkit-ntalk-0.17.dif (p1)
+  % netkit-ntalk-multibyte.diff (p1)
+- added patches
+  fix build with gcc14
+  + talk-gcc14.patch</comment>
+    <requestid>1172897</requestid>
+  </revision>
 </revisionlist>

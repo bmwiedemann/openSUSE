@@ -1,5 +1,5 @@
---- talk/get_names.c
-+++ talk/get_names.c
+--- a/talk/get_names.c
++++ b/talk/get_names.c
 @@ -80,7 +80,7 @@
  	my_machine_name = hostname;
  	/* check for, and strip out, the machine name of the target */

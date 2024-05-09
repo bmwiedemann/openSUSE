@@ -36,6 +36,8 @@ Patch5:         netkit-n%{name}-0.17-dots_in_usernames.patch
 # PATCH-FIX-UPSTREAM netkit-ntalk-0.17-close_file_on_failure.patch
 Patch6:         netkit-ntalk-0.17-close_file_on_failure.patch
 Patch7:         netkit-ntalk-curses-lvalue.patch
+# build with gcc14
+Patch8:         talk-gcc14.patch
 BuildRequires:  ncurses-devel
 Provides:       nkitb:%{_bindir}/talk
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -62,15 +64,7 @@ another user on a different system. Talk is a communication program
 which copies lines from one terminal to the terminal of another user.
 
 %prep
-%setup -q -n netkit-ntalk-%{version}
-%patch -P 0
-%patch -P 1 -p1 -b .mb
-%patch -P 2 -p1
-%patch -P 3
-%patch -P 4
-%patch -P 5
-%patch -P 6
-%patch -P 7 -p1
+%autosetup -p1 -n netkit-ntalk-%{version}
 
 %build
 # Not autotools configure macro

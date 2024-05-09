@@ -1,0 +1,13 @@
+Index: netkit-ntalk-0.17/talkd/table.c
+===================================================================
+--- netkit-ntalk-0.17.orig/talkd/table.c
++++ netkit-ntalk-0.17/talkd/table.c
+@@ -46,7 +46,7 @@ char table_rcsid[] =
+  * Consider this a mis-guided attempt at modularity
+  */
+ #include <sys/param.h>
+-#include <sys/time.h>
++#include <time.h>
+ #include <sys/socket.h>
+ #include <syslog.h>
+ #include <unistd.h>

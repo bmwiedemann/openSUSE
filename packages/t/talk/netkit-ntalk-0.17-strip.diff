@@ -1,5 +1,5 @@
---- talk/Makefile
-+++ talk/Makefile
+--- a/talk/Makefile
++++ b/talk/Makefile
 @@ -16,7 +16,7 @@
  $(OBJS): talk.h ../include/prot_talkd.h ../version.h
  
@@ -9,8 +9,8 @@
  	install -m$(MANMODE) talk.1 $(INSTALLROOT)$(MANDIR)/man1/
  
  clean:
---- talkd/Makefile
-+++ talkd/Makefile
+--- a/talkd/Makefile
++++ b/talkd/Makefile
 @@ -13,7 +13,7 @@
  $(OBJS): proto.h ../include/prot_talkd.h ../version.h
  

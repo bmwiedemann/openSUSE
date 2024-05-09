@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May  9 09:10:44 UTC 2024 - pgajdos@suse.com
+
+- fix build with gcc 14
+- use %autosetup
+- modified patches
+  % netkit-ntalk-0.17-close_file_on_failure.patch (p1)
+  % netkit-ntalk-0.17-dont-resolve.patch (p1)
+  % netkit-ntalk-0.17-dots_in_usernames.patch (p1)
+  % netkit-ntalk-0.17-strip.diff (p1)
+  % netkit-ntalk-0.17.dif (p1)
+  % netkit-ntalk-multibyte.diff (p1)
+- added patches
+  fix build with gcc14
+  + talk-gcc14.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 10:14:36 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1,5 +1,5 @@
---- talkd/talkd.c
-+++ talkd/talkd.c
+--- a/talkd/talkd.c
++++ b/talkd/talkd.c
 @@ -220,28 +220,13 @@
  			   AF_INET);
  	if (hp == NULL) {

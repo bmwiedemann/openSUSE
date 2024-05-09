@@ -1,7 +1,7 @@
 Index: talkd/announce.c
 ===================================================================
---- talkd/announce.c.orig
-+++ talkd/announce.c
+--- a/talkd/announce.c
++++ b/talkd/announce.c
 @@ -169,9 +169,11 @@ announce_proc(CTL_MSG *request, const ch
  		return (PERMISSION_DENIED);
  	}
