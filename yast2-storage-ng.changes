@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  7 14:38:42 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Proposal: Make the encryption method and the key derivation
+  function configurable by product.
+- Partitioner: LUKS2 is always available and used by default, with
+  PBKDF2 as default derivation function (related to bsc#1185291).
+- 5.0.14
+
+-------------------------------------------------------------------
 Wed Apr 24 07:48:08 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - GuidedProposal: refine the :bigger_resize SpaceMaker strategy
