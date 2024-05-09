@@ -71,4 +71,17 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164642 from glaubitz)</comment>
     <requestid>1165041</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>96678ab078621730c8291db68952767e</srcmd5>
+    <version>0.2.2</version>
+    <time>1715249291</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.2.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1172678 from glaubitz)</comment>
+    <requestid>1172682</requestid>
+  </revision>
 </revisionlist>

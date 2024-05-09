@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-cognitiveservices-language-textanalytics
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        Microsoft Azure Cognitive Services Text Analytics Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-cognitiveservices-language-textanalytics/azure-cognitiveservices-language-textanalytics-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-cognitiveservices-language-textanalytics/azure-cognitiveservices-language-textanalytics-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-cognitiveservices-language-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-cognitiveservices-nspkg >= 3.0.0}
@@ -34,7 +34,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-cognitiveservices-language-nspkg >= 3.0.0
 Requires:       python-azure-cognitiveservices-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
@@ -43,7 +42,7 @@ Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
 Requires:       (python-azure-mgmt-core >= 1.2.0 with python-azure-mgmt-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-cognitiveservices-language-textanalytics < 0.2.1
+Obsoletes:      python3-azure-cognitiveservices-language-textanalytics <= 0.2.1
 %endif
 BuildArch:      noarch
 
