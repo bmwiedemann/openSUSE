@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed May  8 13:04:31 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.4.13
+  * chore(bindings): release 0.2.4 (#4530)
+  * nix gdb/lldb utils (#4460)
+  * binding: Add s2n_connection_get_session on the Connection (#4522)
+  * chore: update s2n-core team (#4520)
+  * fix: Python integ tests are flaky on arm (#4512)
+  * ci: Nix libcrypto helpers (#4422)
+  * ci: Remove actions-rs (#4514)
+  * chore(bindings): Pin `zeroize` to avoid MSRV increase (#4519)
+  * feat: add missing numbered security policies (#4511)
+  * docs(bindings): fix client hello doc tests (#4495)
+  * docs: add more warnings about security policy defaults (#4507)
+  * feat: add basic support for certificate_authorities (#4506)
+  * fix: Fix redundant code (#4504)
+  * chore: Rust bindings bump v1.4.12 (#4505)
+  * fix(sidetrail): Invalid stream cipher struct in proof wrapper (#4484)
+  * refactor: rename error + extension iana for consistency (#4503)
+- from version 1.4.12
+  * feat: Serialization Rust APIs (#4493)
+  * refactor: combine TLS1.2 and TLS1.3 sig scheme representations (#4498)
+  * feat: Release C APIs for serialization (#4501)
+  * fix: Wipe conn->in on all record parse failures (#4499)
+
+-------------------------------------------------------------------
 Mon Apr 15 11:09:16 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.4.11
