@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May  9 08:27:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.27.2:
+  * Don't use default prompt when one is not supplied to the
+    --prompt option.
+  * Don't install tests.
+  * Do not ignore the socket passed with the -S option, even when
+    no port is passed
+  * Fix unexpected exception when using dsn without username &
+    password (Thanks: [Will Wang])
+  * Let the `--prompt` option act normally with its predefined
+    default value
+  * paramiko is newer than 2.11.0 now, remove version pinning
+    `cryptography`.
+  * Drop support for Python 3.7
+
+-------------------------------------------------------------------
 Thu Dec  7 23:00:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.27.0:

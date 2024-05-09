@@ -31,4 +31,24 @@
   * Correctly report the version of TiDB.</comment>
     <requestid>1131995</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bba462183f03775dbee9837a4fcfa04c</srcmd5>
+    <version>1.27.2</version>
+    <time>1715249675</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.27.2:
+  * Don't use default prompt when one is not supplied to the
+    --prompt option.
+  * Don't install tests.
+  * Do not ignore the socket passed with the -S option, even when
+    no port is passed
+  * Fix unexpected exception when using dsn without username &amp;
+    password (Thanks: [Will Wang])
+  * Let the `--prompt` option act normally with its predefined
+    default value
+  * paramiko is newer than 2.11.0 now, remove version pinning
+    `cryptography`.
+  * Drop support for Python 3.7</comment>
+    <requestid>1172875</requestid>
+  </revision>
 </revisionlist>

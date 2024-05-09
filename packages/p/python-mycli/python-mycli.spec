@@ -1,7 +1,7 @@
 #
 # spec file for package python-mycli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-mycli
-Version:        1.27.0
+Version:        1.27.2
 Release:        0
 Summary:        CLI for MySQL Database. With auto-completion and syntax highlighting
 License:        BSD-3-Clause
@@ -60,7 +60,7 @@ Requires:       python-pyperclip >= 1.8.1
 Requires:       python-sqlglot >= 5.1.3
 Requires:       python-sqlparse >= 0.3.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-paramiko
 BuildArch:      noarch
 %python_subpackages
