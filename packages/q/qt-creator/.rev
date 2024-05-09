@@ -283,4 +283,12 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
     <comment>Update to 13.0.0</comment>
     <requestid>1165548</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>26ddac6c8bd9bb4c23e22d40502bf4f7</srcmd5>
+    <version>13.0.1</version>
+    <time>1715268532</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1172890</requestid>
+  </revision>
 </revisionlist>
