@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  9 06:59:50 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build from source not whl from pypi.
+
+-------------------------------------------------------------------
 Thu Mar  7 11:17:46 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip testing with python39: no longer supported since ipython

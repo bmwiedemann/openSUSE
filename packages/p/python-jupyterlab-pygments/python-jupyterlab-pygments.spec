@@ -34,10 +34,13 @@ Summary:        Pygments theme for jupyterlab
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyterlab/jupyterlab_pygments
-Source:         https://files.pythonhosted.org/packages/py3/j/jupyterlab-pygments/jupyterlab_pygments-%{version}-py3-none-any.whl
+Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab-pygments/jupyterlab_pygments-%{version}.tar.gz
 # Slightly modified from https://github.com/jupyterlab/jupyterlab_pygments/blob/0.2.2/notebooks/Example.ipynb
 Source1:        Example.ipynb
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module hatch-jupyter-builder}
+BuildRequires:  %{python_module hatch-nodejs-version}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
@@ -63,14 +66,14 @@ Requires:       python3dist(jupyterlab-pygments) = %{distversion}
 This package contains the Jupyterlab extension files for python-jupyterlab-pygments
 
 %prep
-%setup -q -c -T
+%autosetup -p1 -n jupyterlab_pygments-%{version}
 
 %build
-:
+%{pyproject_wheel}
 
 %if !%{with test}
 %install
-%pyproject_install %{SOURCE0}
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 find %{buildroot}%{_prefix} -path '*/site-packages/jupyterlab_pygments-%{version}.dist-info/licenses/LICENSE' -exec cp {} . ';' -quit
 %endif

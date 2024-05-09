@@ -88,4 +88,13 @@
   8.19 (nbval)</comment>
     <requestid>1155873</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>dad1b17e1d69d064eea7eb725dc90263</srcmd5>
+    <version>0.3.0</version>
+    <time>1715249659</time>
+    <user>dimstar_suse</user>
+    <comment>- Build from source not whl from pypi.
+</comment>
+    <requestid>1172853</requestid>
+  </revision>
 </revisionlist>
