@@ -1134,4 +1134,12 @@
     <comment>Change from Recommends to Requires those packages that contain filesystem tools used by libguestfs-appliance</comment>
     <requestid>1172597</requestid>
   </revision>
+  <revision rev="106" vrev="9">
+    <srcmd5>e18935ab140ced9ecf0cfb6d30746617</srcmd5>
+    <version>1.52.0</version>
+    <time>1715249632</time>
+    <user>dimstar_suse</user>
+    <comment>Set as Recommends packages zerofree (not in SLE) and ntfsprogs (in SLE-WE) in libguestfs-appliance for SLE compatibility</comment>
+    <requestid>1172813</requestid>
+  </revision>
 </revisionlist>

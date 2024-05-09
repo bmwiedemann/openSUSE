@@ -387,10 +387,11 @@ Requires:       jfsutils
 Requires:       ldmtool
 Requires:       mdadm
 Requires:       mkisofs
+Recommends:     ntfsprogs
 Requires:       parted
 Requires:       supermin >= 5.1.18
 Requires:       xfsprogs
-Requires:       zerofree
+Recommends:     zerofree
 
 Summary:        Virtual machine needed for libguestfs
 Provides:       guestfs-data = %{version}

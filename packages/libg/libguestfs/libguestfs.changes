@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  8 12:42:02 MDT 2024 - carnold@suse.com
+
+- Set Recommends on zerofree and ntfsprogs for libguestfs-appliance
+
+-------------------------------------------------------------------
 Tue May  7 10:27:25 MDT 2024 - carnold@suse.com
 
 - Switch Recommends to Requires for several packages in the
