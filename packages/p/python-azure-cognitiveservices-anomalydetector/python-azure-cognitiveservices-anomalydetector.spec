@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-cognitiveservices-anomalydetector
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Microsoft Azure Cognitive Services Anomaly Detector Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-cognitiveservices-anomalydetector/azure-cognitiveservices-anomalydetector-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-cognitiveservices-anomalydetector/azure-cognitiveservices-anomalydetector-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-cognitiveservices-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -33,14 +33,14 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-cognitiveservices-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.5.0
+Requires:       python-msrest >= 0.6.1
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
+Requires:       (python-azure-mgmt-core >= 1.1 with python-azure-mgmt-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-cognitiveservices-anomalydetector < 0.3.0
+Obsoletes:      python3-azure-cognitiveservices-anomalydetector <= 0.3.0
 %endif
 BuildArch:      noarch
 
