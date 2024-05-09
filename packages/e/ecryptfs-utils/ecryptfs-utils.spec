@@ -39,6 +39,7 @@ Patch0:         ecryptfs-setup-swap-SuSE.patch
 Patch1:         ecryptfs-utils-src-utils-Makefile.patch
 Patch2:         ecryptfs-utils-openssl11.patch
 Patch3:         ecryptfs-usrmerge.diff
+Patch4:         ecryptfs-fix-gcc14.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes

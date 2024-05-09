@@ -1,0 +1,13 @@
+Index: ecryptfs-utils-111/src/utils/ecryptfs_generate_tpm_key.c
+===================================================================
+--- ecryptfs-utils-111.orig/src/utils/ecryptfs_generate_tpm_key.c
++++ ecryptfs-utils-111/src/utils/ecryptfs_generate_tpm_key.c
+@@ -89,7 +89,7 @@ int main(int argc, char **argv)
+ 	int i, c, *pcrsSelected = NULL, numPcrsSelected = 0;
+ 	TSS_UUID *uuid;
+ 	BYTE wellknown[] = TSS_WELL_KNOWN_SECRET;
+-	char *tmp_pcrs;
++	int *tmp_pcrs;
+ 
+ 	while (1) {
+ 		c = getopt(argc, argv, "p:");
