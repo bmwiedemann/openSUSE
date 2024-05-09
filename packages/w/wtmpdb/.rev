@@ -115,4 +115,13 @@
   - last: add support for time-format option</comment>
     <requestid>1137589</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ff9ca79f0f866793f3b001b54104ff8a</srcmd5>
+    <version>0.12.0+git.20240508</version>
+    <time>1715249271</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.0+git.20240508:
+  - boot: Query systemd if soft-reboot was done</comment>
+    <requestid>1172655</requestid>
+  </revision>
 </revisionlist>

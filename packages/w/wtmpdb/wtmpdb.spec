@@ -18,7 +18,7 @@
 
 %define lname   libwtmpdb0
 Name:           wtmpdb
-Version:        0.11.0
+Version:        0.12.0+git.20240508
 Release:        0
 Summary:        Database for recording the last logged in users and system reboots
 License:        BSD-2-Clause
@@ -28,10 +28,11 @@ BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(audit)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(pam)
 BuildRequires:  pkgconfig(sqlite3)
 Requires(post): pam-config
-Requires(postun):pam-config
+Requires(postun): pam-config
 # Split provide for last
 Provides:       util-linux:/usr/bin/last
 

@@ -1,0 +1,7 @@
+<servicedata>
+<service name="tar_scm">
+	<param name="url">https://github.com/SUSE/pam-config.git</param>
+</service>
+<service name="tar_scm">
+                <param name="url">https://github.com/thkukuk/wtmpdb.git</param>
+              <param name="changesrevision">2b59d602309803fea481adce3887830cdf28692e</param></service></servicedata>

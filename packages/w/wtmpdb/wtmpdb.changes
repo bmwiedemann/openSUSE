@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 08 08:54:44 UTC 2024 - kukuk@suse.com
+
+- Update to version 0.12.0+git.20240508:
+  - boot: Query systemd if soft-reboot was done
+
+-------------------------------------------------------------------
 Mon Jan  8 14:53:09 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.11.0
