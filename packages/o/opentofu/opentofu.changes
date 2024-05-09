@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 08 16:22:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.7.1:
+  * Fixing changelog for 1.7.1
+  * Backport[v1.7] 1.7.1 docs (#1630)
+  * Backport Fixed tofu test when module has no resource (#1628)
+  * Backport Fix for tofu init failure when test have spaces in
+    their name (#1627)
+  * Backport: Allow unconfigured provider functions in test context
+    to 1.7.1 (#1621)
+  * Backport encryption fixes to 1.7.1 (#1620)
+  * Fix workflow.
+  * Run releases on larger workers. (#1587)
+  * Backport[v1.7] Linking provider-defined functions from the
+    what's new page (#1584) (#1585)
+
+-------------------------------------------------------------------
 Tue Apr 30 19:15:26 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.7.0:
