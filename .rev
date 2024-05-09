@@ -63,4 +63,14 @@
     <comment></comment>
     <requestid>1037412</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4f9616c02ae38dc4991a83922fe94e08</srcmd5>
+    <version>3.43.0</version>
+    <time>1715249634</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.43.0:
+  - fix many compile warnings (bsc#1220574)
+</comment>
+    <requestid>1172816</requestid>
+  </revision>
 </revisionlist>
