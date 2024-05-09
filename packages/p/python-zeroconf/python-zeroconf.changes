@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Wed May  8 10:56:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.132.2:
+  * Update references to minimum-supported python version of 3.8
+  * Set change during iteration when dispatching listeners
+  * Make async_get_service_info available on the Zeroconf object
+  * Drop python 3.7 support
+  * Avoid including scope_id in IPv6Address object if its zero
+  * Small speed up to constructing outgoing packets
+  * Speed up processing incoming packets
+  * Speed up the query handler
+  * Make ServiceInfo aware of question history
+  * Small speed up to ServiceInfo construction
+  * Significantly improve efficiency of the ServiceBrowser
+    scheduler
+  * Small speed up to processing incoming records
+  * Small performance improvement for converting time
+  * Small performance improvement for ServiceInfo asking
+    questions
+  * Small performance improvement constructing outgoing questions
+  * Scheduling race with the QueryScheduler
+  * Ensure question history suppresses duplicates
+  * Microsecond precision loss in the query handler
+  * Ensure IPv6 scoped address construction uses the string cache
+  * Add decoded_properties method to ServiceInfo
+  * Ensure ServiceInfo.properties always returns bytes
+  * Cache is_unspecified for zeroconf ip address objects
+  * `ServiceInfo.properties` always returns a dictionary with
+    type `dict[bytes, bytes | None]` instead of a mix `str` and
+    `bytes`. It was only possible to get a mixed dictionary if it
+    was manually passed in when `ServiceInfo` was constructed.
+  * Performance regression with ServiceInfo IPv6Addresses
+  * Re-expose ServiceInfo._set_properties for backwards compat
+  * Correct nsec record writing
+  * Timestamps missing double precision
+  * Match cython version for dev deps to build deps
+  * Correct handling of IPv6 addresses with scope_id in
+    ServiceInfo
+  * Speed up unpacking TXT record data in ServiceInfo
+  * Small speed up to writing outgoing packets
+  * Speed up incoming packet reader
+  * Small speed up to processing incoming dns records
+  * Speed up outgoing packet writer
+  * Speed up writing name compression for outgoing packets
+  * Speed up service browser queries when browsing many types
+  * Avoid decoding known answers if we have no answers to give
+  * Small speed up to process incoming packets
+  * Speed up instances only used to lookup answers
+  * Do not build aarch64 wheels for PyPy
+  * Speed up record updates
+  * Speed up incoming packet processing with a memory view
+  * Speed up decoding labels from incoming data
+  * Speed up ServiceBrowsers with a pxd for the signal interface
+  * Reduce size of wheels by excluding generated .c files
+  * Small improvements to ServiceBrowser performance
+  * Small cleanups to incoming data handlers
+  * Ensure ServiceInfo cache is cleared when adding to the
+    registry
+  * Add missing python definition for addresses_by_version
+  * Speed up outgoing multicast queue
+  * Speed up responding to queries
+  * Improve performance of loading records from cache in
+    ServiceInfo
+  * Improve AsyncServiceBrowser performance
+  * Speed up ServiceBrowsers with a cython pxd
+  * Speed up adding and removing RecordUpdateListeners
+  * Cache construction of records used to answer queries from the
+    service registry
+  * Race with InvalidStateError when async_request times out
+  * Speed up processing incoming records
+
+-------------------------------------------------------------------
 Tue Jun 20 17:40:25 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -63,7 +135,7 @@ Sat Sep 17 16:40:31 UTC 2022 - marec <marec@detebe.org>
 Sat Sep 17 07:29:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - Update to 0.39.1:
-  * Performance improvements for constructing outgoing packet data. 
+  * Performance improvements for constructing outgoing packet data.
 - Changes from 0.39.0:
   * Switch to using async_timeout for timeouts: Significantly
     reduces the number of asyncio tasks that are created when using
@@ -78,7 +150,7 @@ Sat Jun 25 15:21:12 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 -------------------------------------------------------------------
 Wed Jun 22 20:45:56 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- update to 0.38.7: 
+- update to 0.38.7:
   * Performance improvements for parsing incoming packet data
     (gh#jstasiak/python-zeroconf#1076).
 
@@ -95,7 +167,7 @@ Sat Jun  4 12:14:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Fri Feb  4 22:29:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.38.3:
-  * Make decode errors more helpful in finding the source of the bad data 
+  * Make decode errors more helpful in finding the source of the bad data
 
 -------------------------------------------------------------------
 Mon Jan  3 10:29:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -104,7 +176,7 @@ Mon Jan  3 10:29:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Dropped Python 3.6 support
   * Handle Service types that end with another service type
   * Improve performance of query scheduler
-  * Avoid linear type searches in ServiceBrowsers 
+  * Avoid linear type searches in ServiceBrowsers
 
 -------------------------------------------------------------------
 Mon Nov 29 11:04:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -117,7 +189,7 @@ Mon Nov 29 11:04:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Before this change the consumer would get a timeout or an EventLoopBlocked
     exception when calling ServiceInfo.*request when the instance had already been shutdown
     or had failed to startup.
-  * The EventLoopBlocked exception is now thrown when a coroutine times out  
+  * The EventLoopBlocked exception is now thrown when a coroutine times out
 
 -------------------------------------------------------------------
 Sat Nov  6 18:15:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -131,7 +203,7 @@ Sat Nov  6 18:15:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Tue Oct 26 20:31:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.36.9:
-  * Ensure ServiceInfo orders newest addresses first 
+  * Ensure ServiceInfo orders newest addresses first
 
 -------------------------------------------------------------------
 Tue Oct 19 19:36:05 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
@@ -142,7 +214,7 @@ Tue Oct 19 19:36:05 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 Sat Oct 16 19:44:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.36.8
-  * Fixed ServiceBrowser infinite loop when zeroconf is closed before it is canceled 
+  * Fixed ServiceBrowser infinite loop when zeroconf is closed before it is canceled
   * Improved performance of responding to queries
   * Improved log message when receiving an invalid or corrupt packet
   * Improved performance of sending outgoing packets
@@ -659,7 +731,7 @@ Thu Apr 16 08:47:59 UTC 2020 - pgajdos@suse.com
   * Eliminated 5s hangup when calling Zeroconf.close(), thanks to Erik Montnemery
   * Reverted uniqueness assertions when browsing, they caused a regression
   Backwards incompatible:
-  * Rationalized handling of TXT records. 
+  * Rationalized handling of TXT records.
 - deleted patches
   - python-zeroconf-disable-some-tests.patch (not needed, replaced by -k 'not ...')
 
@@ -746,7 +818,7 @@ Thu Feb 15 19:04:17 UTC 2018 - alarrosa@suse.com
   (it was making pkg_resources generate a DistributionNotFound exception
   because enum34 wasn't found). enum34 is only required by the python2
   package, which is what the enum-compat  package is all about.
-  * python-zeroconf-0.19.1-enum34-instead-of-enum-compat.patch 
+  * python-zeroconf-0.19.1-enum34-instead-of-enum-compat.patch
 
 - Require python-enum-compat to require python-enum34 on python2 and
   nothing on python3, just as the egg's requires.txt file does.
