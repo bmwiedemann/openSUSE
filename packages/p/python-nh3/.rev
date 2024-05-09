@@ -26,4 +26,15 @@
     <comment></comment>
     <requestid>1135872</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>380d97f7937c09b90f4b7e17e92a022b</srcmd5>
+    <version>0.2.17</version>
+    <time>1715249255</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.17:
+  * Fix type for ALLOWED_ATTRIBUTES
+  * Improve documentation
+  * Bump ammonia from 3.3.0 to 4.0.0</comment>
+    <requestid>1172587</requestid>
+  </revision>
 </revisionlist>
