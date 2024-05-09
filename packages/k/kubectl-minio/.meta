@@ -1,5 +1,0 @@
-<package name="kubectl-minio" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="devel:kubic" package="kubectl-minio"/>
-</package>
