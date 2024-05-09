@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May  8 07:22:28 UTC 2024 - Stefan Schubert <schubi@suse.com>
+
+- Added encryption_method and encryption_pbkdf in the product
+  description file (section partitioning/proposal) in order to
+  set the encryption method/pbkdf in the Guided Setup of
+  partitioning (related to bsc#1185291).
+- 5.0.10
+
+-------------------------------------------------------------------
 Fri Apr 26 14:09:15 UTC 2024 - Stefan Schubert <schubi@suse.com>
 
 - Handle SystemdBoot mitigations. (bsc#1220892)
