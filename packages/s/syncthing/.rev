@@ -1442,4 +1442,12 @@
     <comment>Update to v1.27.6</comment>
     <requestid>1166340</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>a27dd3161d6daac9b19b3ef3fe13803d</srcmd5>
+    <version>1.27.7</version>
+    <time>1715249287</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.27.7</comment>
+    <requestid>1172663</requestid>
+  </revision>
 </revisionlist>

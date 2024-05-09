@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  8 09:05:53 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.27.7
+  * Bugfixes:
+    #9503: lib/nat: panic: runtime error: index out of range
+
+-------------------------------------------------------------------
 Tue Apr  9 09:23:58 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.27.6
