@@ -1,13 +1,14 @@
-# SLE BCI-BusyBox: the smallest and GPLv3-free image
+# openSUSE Tumbleweed BCI openSUSE Tumbleweed BusyBox: the smallest and GPLv3-free image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 
-The SLE BCI-BusyBox image comes with the most basic tools provided by the BusyBox project.
+## Description
+This image comes with the most basic tools provided by the BusyBox project.
 The image contains no GPLv3 licensed software. When using the image, keep in mind that
 there are differences between the BusyBox tools and the GNU Coreutils.
 This means that scripts written for a system that uses GNU Coreutils may require
 modification to work with BusyBox. If you need a SLES compatible image with the GNU Coreutils,
-consider using the SLE BCI-Micro image instead.
+consider using the corresponding Micro image instead.
 
 ## Licensing
 `SPDX-License-Identifier: MIT`
