@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package taglib
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -114,8 +114,7 @@ BuildArch:      noarch
 This package contains the taglib API Documentation in HTML format.
 
 %prep
-%setup -q -n %{sname}-%{version}
-%patch1 -p1
+%autosetup -p1 -n %{sname}-%{version}
 
 %build
 # The testing needs static libs too
