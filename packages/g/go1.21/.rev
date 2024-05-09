@@ -258,4 +258,17 @@
   * go#66411 cmd/link: bad carrier sym for symbol runtime.elf_savegpr0.args_stackmap on ppc64le (forwarded request 1164435 from jfkw)</comment>
     <requestid>1164437</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>720970b2c2524037f843d317e9685ce7</srcmd5>
+    <version>1.21.10</version>
+    <time>1715249252</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.21.10 (released 2024-05-07) includes security fixes to the go
+  command, as well as bug fixes to the net/http package.
+  Refs boo#1212475 go1.21 release tracking
+  CVE-2024-24787
+  * go#67121 go#67119 boo#1224017 security: fix CVE-2024-24787 cmd/go: arbitrary code execution during build on darwin
+  * go#66697 net/http: TestRequestLimit/h2 becomes significantly more expensive and slower after x/net@v0.23.0 (forwarded request 1172533 from jfkw)</comment>
+    <requestid>1172535</requestid>
+  </revision>
 </revisionlist>
