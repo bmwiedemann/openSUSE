@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May  8 02:15:26 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.3:
+  * Installation of this package using “setup.py” is no longer supported.
+  * Fixed issues resulting from removal of support for pytest.warns(None)
+    in pytest version 8.
+  * Added support for Python 3.12.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Thu Sep 14 11:43:21 UTC 2023 - pgajdos@suse.com
 
 - version update to 2.0.1

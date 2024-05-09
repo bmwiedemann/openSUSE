@@ -59,4 +59,17 @@
     <comment></comment>
     <requestid>1111340</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>33b1f12d3c2de9f33691fe29b814720e</srcmd5>
+    <version>2.0.3</version>
+    <time>1715249261</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.3:
+  * Installation of this package using “setup.py” is no longer supported.
+  * Fixed issues resulting from removal of support for pytest.warns(None)
+    in pytest version 8.
+  * Added support for Python 3.12.
+- Switch to pyproject macros.</comment>
+    <requestid>1172613</requestid>
+  </revision>
 </revisionlist>
