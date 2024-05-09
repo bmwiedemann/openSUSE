@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 08 10:34:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.9.0:
+  * Bumped golang.org/x/net to v0.17.0 to fix HIGH vulnerabilities
+    (#300)
+
+-------------------------------------------------------------------
 Thu Mar 21 19:19:51 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.8.0:
