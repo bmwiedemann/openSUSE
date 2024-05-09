@@ -5,7 +5,7 @@
     <param name="exclude">.git</param>
     <param name="changesgenerate">enable</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">RELEASE.2024-04-29T09-56-05Z</param>
+    <param name="revision">RELEASE.2024-05-03T11-21-07Z</param>
     <param name="match-tag">RELEASE.*</param>
     <param name="versionrewrite-pattern">RELEASE\.(.*)-(.*)-(.*)-(.*)-(.*)</param>
     <param name="versionrewrite-replacement">\1\2\3\4\5</param>
@@ -19,6 +19,6 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="manual">
-    <param name="archive">mc-20240429T095605Z.obscpio</param>
+    <param name="archive">mc-20240503T112107Z.obscpio</param>
   </service>
 </services>

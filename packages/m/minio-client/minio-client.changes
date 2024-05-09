@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 08 10:35:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240503T112107Z:
+  * Add standard EC setting to admin info (#4918)
+  * fix: honor S3v2 if configured (#4917)
+  * make s3Config Transport a roundTripper (#4914)
+  * updating prefix validation and adding some tests (#4907)
+
+-------------------------------------------------------------------
 Tue Apr 30 11:00:40 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240429T095605Z:
