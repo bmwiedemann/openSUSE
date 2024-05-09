@@ -611,4 +611,12 @@ Features
     <comment>Update to 1.19.3</comment>
     <requestid>1159844</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>860ad3bd1879955ede77d617ac246ec3</srcmd5>
+    <version>1.20.0</version>
+    <time>1715249276</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.20.0</comment>
+    <requestid>1172666</requestid>
+  </revision>
 </revisionlist>
