@@ -1,7 +1,7 @@
 #
 # spec file for package python-bcrypt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,10 @@
 #
 
 
+%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %{?sle15_python_module_pythons}
 Name:           python-bcrypt
-Version:        4.0.1
+Version:        4.1.3
 Release:        0
 Summary:        BSD type 2a and 2b password hashing
 License:        Apache-2.0
@@ -27,7 +28,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pyca/bcrypt/
 Source0:        https://files.pythonhosted.org/packages/source/b/bcrypt/bcrypt-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Source2:        cargo_config
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 3.2.1}
 BuildRequires:  %{python_module setuptools-rust}
@@ -49,11 +49,10 @@ using the BSD-originating hashing methods known as "2a" and "2b".
 
 %prep
 %autosetup -p1 -a1 -n bcrypt-%{version}
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
-mv Cargo.lock src/_bcrypt
+rm -v src/_bcrypt/Cargo.lock
 
 %build
+export RUSTFLAGS=%{rustflags}
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %pyproject_wheel
 
