@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Thu May  9 08:40:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.8.0:
+  https://blogs.kde.org/2024/05/08/massif-visualizer-0.8.0-released/
+  * Port to Qt6 and KF6
+  * General code modernization
+
+-------------------------------------------------------------------
+Thu Aug 27 13:41:30 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Fri Sep  8 12:35:13 UTC 2017 - wbauer@tmo.at
+
+- Update to 0.7.0
+  * http://jriddell.org/2017/09/07/massif-visualizer-0-7-0-released/
+- Drop office-chart-area.png, a proper application icon is
+  included/installed now
+
+-------------------------------------------------------------------
+Sun Nov 30 17:45:09 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.4.0 final
+  * For more details, please see
+    http://milianw.de/blog/massif-visualizer-04-and-kgraphviewer-22-released
+
+-------------------------------------------------------------------
+Wed Nov 12 22:14:46 UTC 2014 - cgiboudeaux@gmx.com
+
+- Replace the GIT snapshot with massif-visualizer 0.4Beta
+
+-------------------------------------------------------------------
+Tue Jan 28 17:03:49 UTC 2014 - cgiboudeaux@gmx.com
+
+- Translations update.
+
+-------------------------------------------------------------------
+Mon Oct 14 13:33:41 UTC 2013 - cgiboudeaux@gmx.com
+
+- Update translations
+
+-------------------------------------------------------------------
+Thu Mar 17 12:54:52 UTC 2011 - cgiboudeaux@gmx.com
+
+- Add massif-visualizer. 
+Visualizer for Valgrind Massif data files.
+
+
