@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-testtools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,25 +30,23 @@ Version:        2.7.1
 Release:        0
 Summary:        Extensions to the Python Standard Library Unit Testing Framework
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/testing-cabal/testtools
 Source0:        https://files.pythonhosted.org/packages/source/t/testtools/testtools-%{version}.tar.gz
-Source99:       python-testtools.rpmlintrc
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Twisted
-Requires:       python-pbr >= 0.11
-Requires:       python-python-mimeparse
-Requires:       python-traceback2
+%if %python_version_nodots > 311
+Requires:       python-setuptools
+%endif
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module fixtures}
-BuildRequires:  %{python_module python-mimeparse}
+BuildRequires:  %{python_module testresources}
 BuildRequires:  %{python_module testscenarios}
-BuildRequires:  %{python_module traceback2}
+BuildRequires:  %{python_module testtools = %{version}}
 %endif
 Recommends:     python-fixtures >= 2.0
 %python_subpackages

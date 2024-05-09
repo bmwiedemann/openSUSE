@@ -396,4 +396,14 @@
     fixes testr run of streams containing progress markers (by discarding the</comment>
     <requestid>1135792</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>f82510a6cbc90dd400a06ba85463de57</srcmd5>
+    <version>2.7.1</version>
+    <time>1715249269</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the now unneeded rpmlintrc.
+- Clean up BuildRequires and Requires to match reality.
+- Add missing _multibuild file.</comment>
+    <requestid>1172636</requestid>
+  </revision>
 </revisionlist>
