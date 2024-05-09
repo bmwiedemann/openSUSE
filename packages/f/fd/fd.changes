@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May  8 17:44:56 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 10.1.0:
+  * Add --format to help in README
+  * Prepare for 10.1.0 release
+  * Implement option for printing custom formats
+  * docs: Make auto option for --strip-cwd-prefix more clear
+  * feat: Add option to always include cwd prefix
+  * Add upcoming to changelog
+  * Attempt to add aarch64 osx build to CI
+  * Fix #1085 for real
+
+-------------------------------------------------------------------
 Tue May 07 21:17:31 UTC 2024 - pallaswept@proton.me
 
 - Update to version 10.0.0:

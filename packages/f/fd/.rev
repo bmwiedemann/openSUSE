@@ -273,4 +273,21 @@ Changes
 </comment>
     <requestid>1172637</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7c505554d8771f710c0b08d00bb320a7</srcmd5>
+    <version>10.1.0</version>
+    <time>1715268530</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.1.0:
+  * Add --format to help in README
+  * Prepare for 10.1.0 release
+  * Implement option for printing custom formats
+  * docs: Make auto option for --strip-cwd-prefix more clear
+  * feat: Add option to always include cwd prefix
+  * Add upcoming to changelog
+  * Attempt to add aarch64 osx build to CI
+  * Fix #1085 for real
+</comment>
+    <requestid>1172852</requestid>
+  </revision>
 </revisionlist>
