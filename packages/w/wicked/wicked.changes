@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed May  8 10:16:30 UTC 2024 - Marius Tomaschewski <mt@suse.com>
+
+- Update to version 0.6.75:
+  - cleanup: fix ni_fsm_state_t enum-int-mismatch warnings
+  - cleanup: fix overflow warnings in a socket testcase on i586
+  - ifcheck: report new and deleted configs as changed (bsc#1218926)
+  - man: improve ARP configuration options in the wicked-config.5
+  - bond: add ports when master is UP to avoid port MTU revert (bsc#1219108)
+  - cleanup: fix interface dependencies and shutdown order (bsc#1205604)
+    - Remove port arrays from bond,team,bridge,ovs-bridge (redundant)
+      and consistently use config and state info attached to the port
+      interface as in rtnetlink(7).
+    - Cleanup ifcfg parsing, schema configuration and service properties
+    - Migrate ports in xml config and policies already applied in nanny
+    - Remove "missed config" generation from finite state machine, which
+      is completed while parsing the config or while xml config migration.
+    - Issue a warning when "lower" interface (e.g. eth0) config is missed
+      while parsing config depending on it (e.g. eth0.42 vlan).
+    - Resolve ovs master to the effective bridge in config and wickedd
+    - Implement netif-check-state require checks using system relations
+      from wickedd/kernel instead of config relations for ifdown and add
+      linkDown and deleteDevice checks to all master and lower references.
+    - Add a `wicked <ifup|ifdown|ifreload> --dry-run …` option to show the
+      system/config interface hierarchies as notice with +/- marked
+      interfaces to setup and/or shutdown.
+- Removed patches included in the source archive:
+  [- 0001-addrconf-fix-fallback-lease-drop-bsc-1220996.patch]
+  [- 0002-extensions-nbft-replace-nvme-show-nbft-with-nvme-nbf.patch]
+  [- 0003-move-all-attribute-definitions-to-compiler-h.patch]
+  [- 0004-hide-secrets-in-debug-log-bsc-1221194.patch]
+  [- 0005-client-do-to-not-convert-sec-to-msec-twice-bsc-1222105.patch]
+
+-------------------------------------------------------------------
 Tue Apr  9 15:39:01 UTC 2024 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - client: do not convert sec to msec twice (bsc#1222105)

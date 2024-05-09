@@ -1,7 +1,7 @@
 #
 # spec file for package wicked
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define		release_prefix  %{?snapshot:%{snapshot}}%{!?snapshot:0}
 Name:           wicked
-Version:        0.6.74
+Version:        0.6.75
 Release:        %{release_prefix}.0.0
 Summary:        Network configuration infrastructure
 License:        GPL-2.0-or-later
@@ -26,11 +26,6 @@ Group:          System/Management
 URL:            https://github.com/openSUSE/wicked
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        wicked-rpmlintrc
-Patch1:         0001-addrconf-fix-fallback-lease-drop-bsc-1220996.patch
-Patch2:         0002-extensions-nbft-replace-nvme-show-nbft-with-nvme-nbf.patch
-Patch3:         0003-move-all-attribute-definitions-to-compiler-h.patch
-Patch4:         0004-hide-secrets-in-debug-log-bsc-1221194.patch
-Patch5:         0005-client-do-to-not-convert-sec-to-msec-twice-bsc-1222105.patch
 #
 # Upstream First - openSUSE Build Service Policy:
 #
@@ -47,7 +42,7 @@ BuildRequires:  libtool
 BuildRequires:  make
 %if %{with wicked_devel}
 # libwicked-%%{version}.so shlib package compatible match for wicked-devel
-Provides:       libwicked-0_6_74 = %{version}-%{release}
+Provides:       libwicked-0_6_75 = %{version}-%{release}
 %endif
 # uninstall obsolete libwicked-0-6 (libwicked-0.so.6, wicked < 0.6.60)
 Provides:       libwicked-0-6 = %{version}
@@ -161,7 +156,7 @@ Summary:        Network configuration infrastructure - Development files
 Group:          Development/Libraries/C and C++
 Requires:       dbus-1-devel
 Requires:       libnl3-devel
-Requires:       libwicked-0_6_74 = %{version}-%{release}
+Requires:       libwicked-0_6_75 = %{version}-%{release}
 
 %description devel
 Wicked is a network configuration infrastructure incorporating a number
@@ -173,10 +168,9 @@ This package provides the wicked development files.
 
 %prep
 %setup
-%autopatch -p1
 
 %build
-autoreconf --force --install
+test -x ./configure || autoreconf --force --install
 export CFLAGS="-std=gnu89 $RPM_OPT_FLAGS -fPIC" LDFLAGS="-pie"
 %configure \
 	--with-piddir=%{wicked_piddir}	\
