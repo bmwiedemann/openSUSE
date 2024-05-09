@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 08 20:03:56 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.58.1:
+  * build(deps): bump github.com/4meepo/tagalign from 1.3.3 to 1.3.4 (#4705)
+  * build(deps): bump github.com/ghostiam/protogetter from 0.3.5 to 0.3.6 (#4707)
+  * build(deps): bump golang.org/x/tools from 0.20.0 to 0.21.0 (#4706)
+  * fix: remove GitHub Action problem matchers (#4700)
+  * build(deps): bump golangci/golangci-lint-action from 5.1.0 to 5.3.0 (#4701)
+  * build(deps): bump golang.org/x/oauth2 from 0.19.0 to 0.20.0 in /scripts/gen_github_action_config (#4702)
+  * fix: gochecknoinits shadow name (#4698)
+  * chore: keep v1.57 JSON schema
+  * docs: update documentation (#4694)
+  * docs: update documentation assets (#4692)
+  * docs: update GitHub Action assets (#4693)
+
+-------------------------------------------------------------------
 Fri May 03 18:45:13 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.58.0:
