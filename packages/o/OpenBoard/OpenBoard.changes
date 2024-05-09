@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May  8 09:01:25 UTC 2024 - Martin Winter <me@letsfindaway.de>
+
+- update to release version 1.7.1
+- remove upstreamed patches
+  * remove 0830-cmake-community-builds.patch
+  * remove 9686-cmake-add-shortcut-manager.patch
+- update patch to match updated sources
+  * replace 0686-shortcut-configuration.patch by 0955-shortcut-configuration.patch
+
+-------------------------------------------------------------------
 Sat Dec  9 09:21:18 UTC 2023 - Martin Winter <me@letsfindaway.de>
 
 - update to release version 1.7.0

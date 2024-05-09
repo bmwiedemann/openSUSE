@@ -1,4 +1,4 @@
-From fe93c32f56924cd45c71e532cf54493cefc64556 Mon Sep 17 00:00:00 2001
+From 2f227b50f1167d92808bb7bf42ac24ce66351951 Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Tue, 2 Mar 2021 10:57:06 +0100
 Subject: [PATCH 1/4] feat: configurable keyboard and mouse/tablet button
@@ -19,7 +19,7 @@ Subject: [PATCH 1/4] feat: configurable keyboard and mouse/tablet button
   - setting the icon at the action avoids this
 ---
  resources/forms/preferences.ui       | 169 ++++++
- src/board/UBBoardView.cpp            |   5 +-
+ src/core/CMakeLists.txt              |   2 +
  src/core/UBApplication.cpp           |  33 +-
  src/core/UBPreferencesController.cpp | 252 ++++++++-
  src/core/UBPreferencesController.h   |  12 +
@@ -34,7 +34,7 @@ Subject: [PATCH 1/4] feat: configurable keyboard and mouse/tablet button
  src/gui/UBMainWindow.cpp             |   3 +
  src/gui/UBStylusPalette.cpp          |  12 +-
  src/gui/UBToolbarButtonGroup.cpp     |   6 +-
- 16 files changed, 1364 insertions(+), 32 deletions(-)
+ 16 files changed, 1363 insertions(+), 30 deletions(-)
  create mode 100644 src/core/UBShortcutManager.cpp
  create mode 100644 src/core/UBShortcutManager.h
 
@@ -218,30 +218,21 @@ index 4f6facbeb..895721629 100644
       <widget class="QWidget" name="thirdPartyLicence">
        <property name="enabled">
         <bool>true</bool>
-diff --git a/src/board/UBBoardView.cpp b/src/board/UBBoardView.cpp
-index ed21bbbaf..57604e01a 100644
---- a/src/board/UBBoardView.cpp
-+++ b/src/board/UBBoardView.cpp
-@@ -250,14 +250,15 @@ void UBBoardView::keyPressEvent (QKeyEvent *event)
-             switch (event->key ())
-             {
-             case Qt::Key_Plus:
--            case Qt::Key_I:
-+// conflicts with pen selection shortcut
-+//            case Qt::Key_I:
-             {
-                 mController->zoomIn ();
-                 event->accept ();
-                 break;
-             }
-             case Qt::Key_Minus:
--            case Qt::Key_O:
-+//            case Qt::Key_O:
-             {
-                 mController->zoomOut ();
-                 event->accept ();
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index eda1052a9..e76d7f928 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -33,6 +33,8 @@ target_sources(${PROJECT_NAME} PRIVATE
+     UBSetting.h
+     UBSettings.cpp
+     UBSettings.h
++    UBShortcutManager.cpp
++    UBShortcutManager.h
+     UBTextTools.cpp
+     UBTextTools.h
+ )
 diff --git a/src/core/UBApplication.cpp b/src/core/UBApplication.cpp
-index 45365f916..8e6d39711 100644
+index eba18f7ba..4f04a69bd 100644
 --- a/src/core/UBApplication.cpp
 +++ b/src/core/UBApplication.cpp
 @@ -45,6 +45,7 @@
@@ -249,30 +240,30 @@ index 45365f916..8e6d39711 100644
  #include "UBIdleTimer.h"
  #include "UBApplicationController.h"
 +#include "UBShortcutManager.h"
- 
+
  #include "board/UBBoardController.h"
  #include "board/UBDrawingController.h"
-@@ -646,14 +647,14 @@ bool UBApplication::eventFilter(QObject *obj, QEvent *event)
+@@ -649,14 +650,14 @@ bool UBApplication::eventFilter(QObject *obj, QEvent *event)
          }
      }
- 
+
 -    if (event->type() == QEvent::TabletLeaveProximity)
 +    else if (event->type() == QEvent::TabletLeaveProximity)
      {
          if (boardController && boardController->controlView())
              boardController->controlView()->forcedTabletRelease();
      }
- 
- 
+
+
 -    if (event->type() == QEvent::ApplicationActivate)
 +    else if (event->type() == QEvent::ApplicationActivate)
      {
          boardController->controlView()->setMultiselection(false);
- 
-@@ -671,6 +672,34 @@ bool UBApplication::eventFilter(QObject *obj, QEvent *event)
+
+@@ -674,6 +675,34 @@ bool UBApplication::eventFilter(QObject *obj, QEvent *event)
  #endif
      }
- 
+
 +    else if (event->type() == QEvent::MouseButtonPress)
 +    {
 +        // intercept special mouse buttons for shortcut handler
@@ -303,7 +294,7 @@ index 45365f916..8e6d39711 100644
 +
      return result;
  }
- 
+
 diff --git a/src/core/UBPreferencesController.cpp b/src/core/UBPreferencesController.cpp
 index 798889881..e8d434173 100644
 --- a/src/core/UBPreferencesController.cpp
@@ -313,30 +304,30 @@ index 798889881..e8d434173 100644
  #include "core/UBApplicationController.h"
  #include "core/UBDisplayManager.h"
 +#include "core/UBShortcutManager.h"
- 
+
  #include "frameworks/UBStringUtils.h"
- 
+
 @@ -72,7 +73,6 @@ void UBPreferencesDialog::closeEvent(QCloseEvent* e)
  }
- 
- 
+
+
 -
  UBPreferencesController::UBPreferencesController(QWidget *parent)
      : QObject(parent)
      , mPreferencesWindow(0)
 @@ -88,6 +88,8 @@ UBPreferencesController::UBPreferencesController(QWidget *parent)
      adjustScreensPreferences();
- 
+
      connect(UBApplication::displayManager, &UBDisplayManager::availableScreenCountChanged, this, &UBPreferencesController::adjustScreensPreferences);
 +    mPreferencesUI->shortcutTab->installEventFilter(this);
 +
      wire();
  }
- 
+
 @@ -103,6 +105,90 @@ UBPreferencesController::~UBPreferencesController()
      delete mMarkerProperties;
  }
- 
+
 +bool UBPreferencesController::handleKeyEvent(QKeyEvent *event)
 +{
 +    if (!mPreferencesUI->recordButton->isChecked()
@@ -427,7 +418,7 @@ index 798889881..e8d434173 100644
 @@ -139,6 +225,50 @@ void UBPreferencesController::adjustScreensPreferences()
      }
  }
- 
+
 +void UBPreferencesController::applyShortcutFilter(const QString &filter, int filterCol)
 +{
 +    // go throug rows in reverse direction
@@ -477,7 +468,7 @@ index 798889881..e8d434173 100644
      init();
 @@ -297,6 +427,21 @@ void UBPreferencesController::wire()
      connect(mPreferencesUI->checkSoftwareUpdateAtLaunchCheckBox, SIGNAL(clicked(bool)), settings->appEnableAutomaticSoftwareUpdates, SLOT(setBool(bool)));
- 
+
      connect(mPreferencesUI->checkOpenSankoreAtStartup, SIGNAL(clicked(bool)), settings->appLookForOpenSankoreInstall, SLOT(setBool(bool)));
 +
 +    // shortcut tab
@@ -495,12 +486,12 @@ index 798889881..e8d434173 100644
 +        }
 +    });
  }
- 
+
  void UBPreferencesController::init()
 @@ -357,6 +502,27 @@ void UBPreferencesController::init()
- 
+
      mMarkerProperties->opacitySlider->setValue(settings->boardMarkerAlpha->get().toDouble() * 100);
- 
+
 +    // shortcut tab
 +    mPreferencesUI->shortcutTableView->setModel(UBShortcutManager::shortcutManager());
 +    mPreferencesUI->shortcutTableView->horizontalHeader()->setModel(UBShortcutManager::shortcutManager());
@@ -523,11 +514,11 @@ index 798889881..e8d434173 100644
 +        return QObject::eventFilter(obj, event);
 +    }
  }
- 
+
  void UBPreferencesController::close()
 @@ -455,7 +621,8 @@ void UBPreferencesController::defaultSettings()
          mPreferencesUI->checkOpenSankoreAtStartup->setChecked(defaultValue);
- 
+
      }
 -    else if(mPreferencesUI->mainTabWidget->currentWidget() == mPreferencesUI->networkTab){
 +    else if(mPreferencesUI->mainTabWidget->currentWidget() == mPreferencesUI->networkTab)
@@ -537,7 +528,7 @@ index 798889881..e8d434173 100644
          defaultValue = settings->webShowPageImmediatelyOnMirroredScreen->reset().toBool();
 @@ -490,6 +657,23 @@ void UBPreferencesController::defaultSettings()
          lightBackgroundCrossOpacityValueChanged(lightBackgroundOpacity);
- 
+
      }
 +    else if(mPreferencesUI->mainTabWidget->currentWidget() == mPreferencesUI->shortcutTab)
 +    {
@@ -557,12 +548,12 @@ index 798889881..e8d434173 100644
 +        resetClicked();
 +    }
  }
- 
+
  void UBPreferencesController::darkBackgroundCrossOpacityValueChanged(int value)
 @@ -712,6 +896,70 @@ void UBPreferencesController::setPdfZoomBehavior(bool checked)
      }
  }
- 
+
 +void UBPreferencesController::actionSelected(const QModelIndex &index)
 +{
 +    currentIndex = index;
@@ -637,17 +628,17 @@ index e260646d3..afc9b8c6f 100644
 @@ -70,6 +70,9 @@ class UBPreferencesController : public QObject
          UBPreferencesController(QWidget *parent);
          virtual ~UBPreferencesController();
- 
+
 +        bool handleKeyEvent(QKeyEvent *event);
 +        bool handleMouseEvent(QMouseEvent *event);
 +        bool handleTabletEvent(QTabletEvent *event);
- 
+
      public slots:
- 
+
 @@ -80,6 +83,8 @@ class UBPreferencesController : public QObject
          void wire();
          void init();
- 
+
 +        virtual bool eventFilter(QObject* obj, QEvent* event) Q_DECL_OVERRIDE;
 +
          UBPreferencesDialog* mPreferencesWindow;
@@ -661,22 +652,22 @@ index e260646d3..afc9b8c6f 100644
 +        void recordingClicked(bool checked);
 +        void abortClicked();
 +        void resetClicked();
- 
+
      private slots:
          void adjustScreensPreferences();
 +        void applyShortcutFilter(const QString& filter, int filterCol = -1);
 +
- 
+
      private:
          static qreal sSliderRatio;
          static qreal sMinPenWidth;
          static qreal sMaxPenWidth;
 +        QModelIndex currentIndex;
  };
- 
+
  class UBBrushPropertiesFrame : public Ui::brushProperties
 diff --git a/src/core/UBSettings.cpp b/src/core/UBSettings.cpp
-index 74962bb41..b5f9cc12b 100644
+index bb7fe2ea0..e6f2a890b 100644
 --- a/src/core/UBSettings.cpp
 +++ b/src/core/UBSettings.cpp
 @@ -544,17 +544,32 @@ void UBSettings::save()
@@ -698,7 +689,7 @@ index 74962bb41..b5f9cc12b 100644
 +                mUserSettings->remove(it.key());
 +            }
          }
- 
+
          else if (!mUserSettings->contains(it.key())
                   && it.value() != mAppSettings->value(it.key()))
          {
@@ -712,7 +703,7 @@ index 74962bb41..b5f9cc12b 100644
 +                mUserSettings->remove(it.key());
 +            }
          }
- 
+
          ++it;
 diff --git a/src/core/UBShortcutManager.cpp b/src/core/UBShortcutManager.cpp
 new file mode 100644
@@ -1577,7 +1568,7 @@ index 3ad1846bb..d4c4f9ddc 100644
 --- a/src/core/core.pri
 +++ b/src/core/core.pri
 @@ -1,5 +1,6 @@
- 
+
  HEADERS      += src/core/UB.h \
 +                src/core/UBShortcutManager.h \
                  src/core/UBApplication.h \
@@ -1585,7 +1576,7 @@ index 3ad1846bb..d4c4f9ddc 100644
                  src/core/UBSetting.h \
 @@ -19,6 +20,7 @@ HEADERS      += src/core/UB.h \
      $$PWD/UBForeignObjectsHandler.h
- 
+
  SOURCES      += src/core/main.cpp \
 +                src/core/UBShortcutManager.cpp \
                  src/core/UBApplication.cpp \
@@ -1603,22 +1594,22 @@ index c4bfe25d0..6196a6b07 100644
 +    mActionGroup = 0;
      mToolButtonStyle = Qt::ToolButtonIconOnly;
      mButtons.clear();
- 
+
 @@ -98,9 +98,10 @@ UBActionPaletteButton* UBActionPalette::createPaletteButton(QAction* action, QWi
      UBActionPaletteButton* button = new UBActionPaletteButton(action, parent);
      button->setIconSize(mButtonSize);
      button->setToolButtonStyle(mToolButtonStyle);
 +    action->setProperty("id", mButtons.length());
- 
+
 -    if (mButtonGroup)
 -        mButtonGroup->addButton(button, mButtons.length());
 +    if (mActionGroup)
 +        mActionGroup->addAction(action);
- 
+
      mButtons << button;
- 
+
 @@ -155,16 +156,19 @@ void UBActionPalette::setButtonIconSize(const QSize& size)
- 
+
  void UBActionPalette::groupActions()
  {
 -    mButtonGroup = new QButtonGroup(this);
@@ -1636,44 +1627,44 @@ index c4bfe25d0..6196a6b07 100644
 +            ++i;
 +        }
      }
- 
+
 -    connect(mButtonGroup, qOverload<QAbstractButton *>(&QButtonGroup::buttonClicked),
 -            this, &UBActionPalette::buttonGroupClicked);
 +    connect(mActionGroup, SIGNAL(triggered(QAction*)), this, SIGNAL(buttonGroupClicked(QAction*)));
  }
- 
- 
+
+
 diff --git a/src/gui/UBActionPalette.h b/src/gui/UBActionPalette.h
 index 55d3e6284..9c1859be5 100644
 --- a/src/gui/UBActionPalette.h
 +++ b/src/gui/UBActionPalette.h
 @@ -32,7 +32,7 @@
- 
+
  #include <QtGui>
  #include <QPoint>
 -#include <QButtonGroup>
 +#include <QActionGroup>
  #include <QToolButton>
- 
+
  #include "UBFloatingPalette.h"
 @@ -83,7 +83,7 @@ class UBActionPalette : public UBFloatingPalette
- 
+
      signals:
          void closed();
 -        void buttonGroupClicked(QAbstractButton *button);
 +        void buttonGroupClicked(QAction* action);
          void customMouseReleased();
- 
+
      protected:
 @@ -94,7 +94,7 @@ class UBActionPalette : public UBFloatingPalette
          virtual void updateLayout();
- 
+
          QList<UBActionPaletteButton*> mButtons;
 -        QButtonGroup* mButtonGroup;
 +        QActionGroup* mActionGroup;
          QList<QAction*> mActions;
          QMap<QAction*, UBActionPaletteButton*> mMapActionToButton;
- 
+
 diff --git a/src/gui/UBBackgroundPalette.cpp b/src/gui/UBBackgroundPalette.cpp
 index 4f8d8ebf6..6ba4af7ea 100644
 --- a/src/gui/UBBackgroundPalette.cpp
@@ -1685,7 +1676,7 @@ index 4f8d8ebf6..6ba4af7ea 100644
 -    mButtonGroup = 0;
      mToolButtonStyle = Qt::ToolButtonIconOnly;
      mButtons.clear();
- 
+
 @@ -60,8 +59,7 @@ void UBBackgroundPalette::init()
      mDrawIntermediateLinesCheckBox->setFixedSize(24,24);
      mDrawIntermediateLinesCheckBox->setCheckable(true);
@@ -1694,7 +1685,7 @@ index 4f8d8ebf6..6ba4af7ea 100644
 -
 +    UBApplication::mainWindow->actionDrawIntermediateGridLines->setProperty("ungrouped", true);
      connect(UBApplication::mainWindow->actionDrawIntermediateGridLines, SIGNAL(toggled(bool)), this, SLOT(toggleIntermediateLines(bool)));
- 
+
      mBottomLayout->addSpacing(16);
 diff --git a/src/gui/UBDocumentNavigator.cpp b/src/gui/UBDocumentNavigator.cpp
 index 6ae25b974..61c06b75f 100644
@@ -1727,7 +1718,7 @@ index 5b3f24094..4dceca7a8 100644
  #include "board/UBBoardController.h"
  #include "core/UBDisplayManager.h"
 +#include "core/UBShortcutManager.h"
- 
+
  // work around for handling tablet events on MAC OS with Qt 4.8.0 and above
  #if defined(Q_OS_OSX)
 @@ -76,6 +77,8 @@ UBMainWindow::UBMainWindow(QWidget *parent, Qt::WindowFlags flags)
@@ -1737,7 +1728,7 @@ index 5b3f24094..4dceca7a8 100644
 +
 +    UBShortcutManager::shortcutManager()->addMainActions(this);
  }
- 
+
  UBMainWindow::~UBMainWindow()
 diff --git a/src/gui/UBStylusPalette.cpp b/src/gui/UBStylusPalette.cpp
 index 2c09e718a..cac047991 100644
@@ -1760,17 +1751,17 @@ index 2c09e718a..cac047991 100644
 -                this, &UBActionPalette::buttonGroupClicked);
 +        connect(mActionGroup, SIGNAL(triggered(QAction*)), this, SIGNAL(buttonGroupClicked(QAction*)));
      }
- 
+
      adjustSizeAndPosition();
 @@ -131,7 +131,7 @@ UBStylusPalette::~UBStylusPalette()
- 
+
  void UBStylusPalette::stylusToolDoubleClicked()
  {
 -    emit stylusToolDoubleClicked(mButtonGroup->checkedId());
 +    emit stylusToolDoubleClicked(mActionGroup->checkedAction()->property("id").toInt());
  }
- 
- 
+
+
 diff --git a/src/gui/UBToolbarButtonGroup.cpp b/src/gui/UBToolbarButtonGroup.cpp
 index e68f11bf1..929c2ca08 100644
 --- a/src/gui/UBToolbarButtonGroup.cpp
@@ -1789,7 +1780,7 @@ index e68f11bf1..929c2ca08 100644
      }
  }
 
-From 80eb385da56d9d370511e634e30d162834a29b81 Mon Sep 17 00:00:00 2001
+From d20f804149e4cde70c8791f39fe15fb131d42c06 Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Sat, 23 Oct 2021 11:02:23 +0200
 Subject: [PATCH 2/4] feat: seamless switching between tools
@@ -1806,11 +1797,11 @@ Subject: [PATCH 2/4] feat: seamless switching between tools
  5 files changed, 61 insertions(+), 48 deletions(-)
 
 diff --git a/src/board/UBBoardView.cpp b/src/board/UBBoardView.cpp
-index 57604e01a..cc0e04c8b 100644
+index 72d4e5998..dc6f0eac5 100644
 --- a/src/board/UBBoardView.cpp
 +++ b/src/board/UBBoardView.cpp
 @@ -208,43 +208,45 @@ void UBBoardView::keyPressEvent (QKeyEvent *event)
- 
+
      if (!event->isAccepted ())
      {
 -        switch (event->key ())
@@ -1832,7 +1823,7 @@ index 57604e01a..cc0e04c8b 100644
 +                mController->previousScene ();
 +                break;
 +            }
- 
+
 -        case Qt::Key_Down:
 -        case Qt::Key_PageDown:
 -        case Qt::Key_Right:
@@ -1849,7 +1840,7 @@ index 57604e01a..cc0e04c8b 100644
 +                mController->nextScene ();
 +                break;
 +            }
- 
+
 -        case Qt::Key_Home:
 -        {
 -            mController->firstScene ();
@@ -1882,7 +1873,7 @@ index 57604e01a..cc0e04c8b 100644
 +            }
 +            }
          }
- 
+
 -
          if (event->modifiers () & Qt::ControlModifier) // keep only ctrl/cmd keys
          {
@@ -1893,8 +1884,8 @@ index b1843eb6e..f244a201d 100644
 +++ b/src/board/UBDrawingController.cpp
 @@ -156,11 +156,16 @@ void UBDrawingController::setStylusTool(int tool)
  }
- 
- 
+
+
 -bool UBDrawingController::isDrawingTool()
 +bool UBDrawingController::isDrawingTool(int tool)
  {
@@ -1910,8 +1901,8 @@ index b1843eb6e..f244a201d 100644
 +            || (tool == UBStylusTool::Marker)
 +            || (tool == UBStylusTool::Line);
  }
- 
- 
+
+
 diff --git a/src/board/UBDrawingController.h b/src/board/UBDrawingController.h
 index 61d4ad827..b44fe980b 100644
 --- a/src/board/UBDrawingController.h
@@ -1919,27 +1910,27 @@ index 61d4ad827..b44fe980b 100644
 @@ -52,7 +52,7 @@ class UBDrawingController : public QObject
          int stylusTool();
          int latestDrawingTool();
- 
+
 -        bool isDrawingTool();
 +        bool isDrawingTool(int tool = -1);
- 
+
          int currentToolWidthIndex();
          qreal currentToolWidth();
 diff --git a/src/domain/UBGraphicsScene.cpp b/src/domain/UBGraphicsScene.cpp
-index c9ddb3619..2c8cf7a0d 100644
+index 42aab2268..ce3ab9a41 100644
 --- a/src/domain/UBGraphicsScene.cpp
 +++ b/src/domain/UBGraphicsScene.cpp
-@@ -501,6 +501,7 @@ bool UBGraphicsScene::inputDeviceMove(const QPointF& scenePos, const qreal& pres
+@@ -502,6 +502,7 @@ bool UBGraphicsScene::inputDeviceMove(const QPointF& scenePos, const qreal& pres
      UBStylusTool::Enum currentTool = (UBStylusTool::Enum)dc->stylusTool();
- 
+
      QPointF position = QPointF(scenePos);
 +    mCurrentPoint = position;
- 
+
      if (currentTool == UBStylusTool::Eraser)
      {
-@@ -668,14 +669,9 @@ bool UBGraphicsScene::inputDeviceRelease(int tool)
+@@ -669,14 +670,9 @@ bool UBGraphicsScene::inputDeviceRelease(int tool)
      }
- 
+
      UBStylusTool::Enum currentTool = (UBStylusTool::Enum)tool;
 -
 -    if (currentTool == UBStylusTool::Eraser)
@@ -1947,14 +1938,14 @@ index c9ddb3619..2c8cf7a0d 100644
 -
 -
      UBDrawingController *dc = UBDrawingController::drawingController();
- 
+
 -    if (dc->isDrawingTool() || mDrawWithCompass)
 +    if (dc->isDrawingTool(tool) || mDrawWithCompass)
      {
          if(mArcPolygonItem){
- 
-@@ -2381,12 +2377,21 @@ void UBGraphicsScene::resizedMagnifier(qreal newPercent)
- 
+
+@@ -2388,12 +2384,21 @@ void UBGraphicsScene::resizedMagnifier(qreal newPercent)
+
  void UBGraphicsScene::stylusToolChanged(int tool, int previousTool)
  {
 -    if (mInputDeviceIsPressed && tool != previousTool)
@@ -1979,9 +1970,9 @@ index c9ddb3619..2c8cf7a0d 100644
 +        }
      }
  }
- 
+
 diff --git a/src/domain/UBGraphicsScene.h b/src/domain/UBGraphicsScene.h
-index 48281418d..d0d46b20f 100644
+index b78cce987..3825da6eb 100644
 --- a/src/domain/UBGraphicsScene.h
 +++ b/src/domain/UBGraphicsScene.h
 @@ -465,6 +465,7 @@ public slots:
@@ -1989,11 +1980,11 @@ index 48281418d..d0d46b20f 100644
          qreal mPreviousWidth;
          qreal mDistanceFromLastStrokePoint;
 +        QPointF mCurrentPoint;
- 
-         QList<UBGraphicsPolygonItem*> mPreviousPolygonItems;
- 
 
-From a0338dc4ccde839689326ba9802d563519f0ae99 Mon Sep 17 00:00:00 2001
+         QList<UBGraphicsPolygonItem*> mPreviousPolygonItems;
+
+
+From f35e631ef6e0d5f3cb68e75ed756b822c115674c Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Sun, 12 Dec 2021 11:04:56 +0100
 Subject: [PATCH 3/4] feat: activate tool while a key is pressed
@@ -2009,13 +2000,13 @@ Subject: [PATCH 3/4] feat: activate tool while a key is pressed
  5 files changed, 146 insertions(+), 3 deletions(-)
 
 diff --git a/src/core/UBApplication.cpp b/src/core/UBApplication.cpp
-index 8e6d39711..d78c4f289 100644
+index 4f04a69bd..1b1874aee 100644
 --- a/src/core/UBApplication.cpp
 +++ b/src/core/UBApplication.cpp
-@@ -700,6 +700,15 @@ bool UBApplication::eventFilter(QObject *obj, QEvent *event)
+@@ -703,6 +703,15 @@ bool UBApplication::eventFilter(QObject *obj, QEvent *event)
          }
      }
- 
+
 +    else if (event->type() == QEvent::KeyRelease)
 +    {
 +        // intercept key release events for shortcut handler
@@ -2027,15 +2018,15 @@ index 8e6d39711..d78c4f289 100644
 +
      return result;
  }
- 
+
 diff --git a/src/core/UBPreferencesController.cpp b/src/core/UBPreferencesController.cpp
 index e8d434173..a1be9bba3 100644
 --- a/src/core/UBPreferencesController.cpp
 +++ b/src/core/UBPreferencesController.cpp
 @@ -119,7 +119,7 @@ bool UBPreferencesController::handleKeyEvent(QKeyEvent *event)
- 
+
      int keys = mods;
- 
+
 -    if (key < Qt::Key_Shift || key > Qt::Key_Alt)
 +    if (key < Qt::Key_Shift || key > Qt::Key_ScrollLock)
      {
@@ -2048,7 +2039,7 @@ index 9e74e9c2b..e4afaa55c 100644
 @@ -294,6 +294,20 @@ void UBShortcutManager::addMainActions(UBMainWindow *mainWindow)
      ignoreCtrl(UBSettings::settings()->value("Shortcut/IgnoreCtrl").toBool());
  }
- 
+
 +void UBShortcutManager::addActionGroup(QActionGroup *actionGroup)
 +{
 +    mActionGroupHistoryMap[actionGroup] = new UBActionGroupHistory(actionGroup);
@@ -2069,7 +2060,7 @@ index 9e74e9c2b..e4afaa55c 100644
 @@ -328,6 +342,18 @@ bool UBShortcutManager::handleTabletEvent(QTabletEvent *event)
      return false;
  }
- 
+
 +bool UBShortcutManager::handleKeyReleaseEvent(QKeyEvent *event)
 +{
 +    for (UBActionGroupHistory* actionGroupHistory : mActionGroupHistoryMap.values())
@@ -2086,7 +2077,7 @@ index 9e74e9c2b..e4afaa55c 100644
  {
      Q_UNUSED(parent);
 @@ -479,6 +505,16 @@ bool UBShortcutManager::setData(const QModelIndex &index, const QVariant &value,
- 
+
      case 3:
          action->setProperty(mouseButtonProperty, value);
 +
@@ -2103,7 +2094,7 @@ index 9e74e9c2b..e4afaa55c 100644
          updateSettings(action);
          emit dataChanged(index, index);
 @@ -486,6 +522,16 @@ bool UBShortcutManager::setData(const QModelIndex &index, const QVariant &value,
- 
+
      case 4:
          action->setProperty(tabletButtonProperty, value);
 +
@@ -2185,30 +2176,30 @@ index e1e6a28bc..c6878fea2 100644
 +++ b/src/core/UBShortcutManager.h
 @@ -36,11 +36,13 @@
  #include <QTabletEvent>
- 
+
  class QAction;
 +class QActionGroup;
  class UBMainWindow;
 +class UBActionGroupHistory;
- 
+
  class UBShortcutManager : public QAbstractTableModel
  {
 -    Q_OBJECT;
 +    Q_OBJECT
- 
+
  private:
      UBShortcutManager();
 @@ -57,8 +59,12 @@ class UBShortcutManager : public QAbstractTableModel
      void addActions(const QString& group, const QList<QAction*> actions, QWidget* widget = nullptr);
      void addMainActions(UBMainWindow* mainWindow);
- 
+
 +    void addActionGroup(QActionGroup* actionGroup);
 +    void removeActionGroup(QActionGroup* actionGroup);
 +
      bool handleMouseEvent(QMouseEvent* event);
      bool handleTabletEvent(QTabletEvent* event);
 +    bool handleKeyReleaseEvent(QKeyEvent* event);
- 
+
      // QAbstractTableModel overrides
      virtual int rowCount(const QModelIndex &parent = QModelIndex()) const Q_DECL_OVERRIDE;
 @@ -87,9 +93,28 @@ public slots:
@@ -2217,10 +2208,10 @@ index e1e6a28bc..c6878fea2 100644
      QMap<Qt::MouseButton, QAction*> mTabletActions;
 +    QMap<QActionGroup*, UBActionGroupHistory*> mActionGroupHistoryMap;
      bool mIgnoreCtrl;
- 
+
      static UBShortcutManager* sShortcutManager;
  };
- 
+
 +class UBActionGroupHistory : public QObject
 +{
 +    Q_OBJECT
@@ -2250,20 +2241,20 @@ index cac047991..611fc59e3 100644
  #include "core/UBApplicationController.h"
 +#include "core/UBShortcutManager.h"
 +
- 
+
  #include "board/UBDrawingController.h"
- 
+
 @@ -87,6 +89,8 @@ UBStylusPalette::UBStylusPalette(QWidget *parent, Qt::Orientation orient)
          connect(mActionGroup, SIGNAL(triggered(QAction*)), this, SIGNAL(buttonGroupClicked(QAction*)));
      }
- 
+
 +    UBShortcutManager::shortcutManager()->addActionGroup(mActionGroup);
 +
      adjustSizeAndPosition();
- 
+
      initPosition();
 @@ -126,7 +130,10 @@ void UBStylusPalette::initPosition()
- 
+
  UBStylusPalette::~UBStylusPalette()
  {
 -
@@ -2272,10 +2263,10 @@ index cac047991..611fc59e3 100644
 +        UBShortcutManager::shortcutManager()->removeActionGroup(mActionGroup);
 +    }
  }
- 
+
  void UBStylusPalette::stylusToolDoubleClicked()
 
-From 2ace05331c43d119acd761f05ede315d87676d76 Mon Sep 17 00:00:00 2001
+From 1400927ab9bb55d830d6a6e4d8b7d799cebe896b Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Sat, 20 Mar 2021 08:28:35 +0100
 Subject: [PATCH 4/4] i18n: update translation files
@@ -2322,10 +2313,10 @@ Subject: [PATCH 4/4] i18n: update translation files
  36 files changed, 6985 insertions(+), 49 deletions(-)
 
 diff --git a/resources/i18n/OpenBoard_ar.ts b/resources/i18n/OpenBoard_ar.ts
-index d1a25d493..e446b2372 100644
+index f5f8710df..d6c24b759 100644
 --- a/resources/i18n/OpenBoard_ar.ts
 +++ b/resources/i18n/OpenBoard_ar.ts
-@@ -2281,6 +2281,28 @@ Do you want to ignore these errors for this host?</source>
+@@ -2293,6 +2293,28 @@ Do you want to ignore these errors for this host?</source>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -2354,7 +2345,7 @@ index d1a25d493..e446b2372 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2289,6 +2311,148 @@ Do you want to ignore these errors for this host?</source>
+@@ -2301,6 +2323,148 @@ Do you want to ignore these errors for this host?</source>
          <translation>أفلامي</translation>
      </message>
  </context>
@@ -2503,7 +2494,7 @@ index d1a25d493..e446b2372 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2973,6 +3137,46 @@ p, li { white-space: pre-wrap; }
+@@ -2985,6 +3149,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -2551,10 +2542,10 @@ index d1a25d493..e446b2372 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_bg.ts b/resources/i18n/OpenBoard_bg.ts
-index 68d9e51c5..54482ef45 100644
+index 55afee3c5..6b681a956 100644
 --- a/resources/i18n/OpenBoard_bg.ts
 +++ b/resources/i18n/OpenBoard_bg.ts
-@@ -2274,6 +2274,28 @@ Do you want to ignore these errors for this host?</source>
+@@ -2286,6 +2286,28 @@ Do you want to ignore these errors for this host?</source>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -2583,7 +2574,7 @@ index 68d9e51c5..54482ef45 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2282,6 +2304,148 @@ Do you want to ignore these errors for this host?</source>
+@@ -2294,6 +2316,148 @@ Do you want to ignore these errors for this host?</source>
          <translation>Моите филми</translation>
      </message>
  </context>
@@ -2732,7 +2723,7 @@ index 68d9e51c5..54482ef45 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2963,6 +3127,46 @@ p, li { white-space: pre-wrap; }
+@@ -2975,6 +3139,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -2780,10 +2771,10 @@ index 68d9e51c5..54482ef45 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_ca.ts b/resources/i18n/OpenBoard_ca.ts
-index be7b1a003..fa4055962 100644
+index e7fa6b78a..be55ab052 100644
 --- a/resources/i18n/OpenBoard_ca.ts
 +++ b/resources/i18n/OpenBoard_ca.ts
-@@ -2282,6 +2282,28 @@ Voleu ignorar aquests errors per a aquest amfitrió?</translation>
+@@ -2294,6 +2294,28 @@ Voleu ignorar aquests errors per a aquest amfitrió?</translation>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -2812,7 +2803,7 @@ index be7b1a003..fa4055962 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2290,6 +2312,148 @@ Voleu ignorar aquests errors per a aquest amfitrió?</translation>
+@@ -2302,6 +2324,148 @@ Voleu ignorar aquests errors per a aquest amfitrió?</translation>
          <translation>Les meves pel·lícules</translation>
      </message>
  </context>
@@ -2961,7 +2952,7 @@ index be7b1a003..fa4055962 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2965,6 +3129,46 @@ p, li { white-space: pre-wrap; }
+@@ -2977,6 +3141,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -3009,10 +3000,10 @@ index be7b1a003..fa4055962 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_cs.ts b/resources/i18n/OpenBoard_cs.ts
-index 38b88c2cc..ca11faf7c 100644
+index 4e0fa5cf4..555a170f7 100644
 --- a/resources/i18n/OpenBoard_cs.ts
 +++ b/resources/i18n/OpenBoard_cs.ts
-@@ -2278,6 +2278,28 @@ Chcete ignorovat tyto chyby na tomto serveru?</translation>
+@@ -2290,6 +2290,28 @@ Chcete ignorovat tyto chyby na tomto serveru?</translation>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -3041,7 +3032,7 @@ index 38b88c2cc..ca11faf7c 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2286,6 +2308,148 @@ Chcete ignorovat tyto chyby na tomto serveru?</translation>
+@@ -2298,6 +2320,148 @@ Chcete ignorovat tyto chyby na tomto serveru?</translation>
          <translation>Moje filmy</translation>
      </message>
  </context>
@@ -3190,7 +3181,7 @@ index 38b88c2cc..ca11faf7c 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2968,6 +3132,46 @@ p, li { white-space: pre-wrap; }
+@@ -2980,6 +3144,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -3238,10 +3229,10 @@ index 38b88c2cc..ca11faf7c 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_da.ts b/resources/i18n/OpenBoard_da.ts
-index 66b5e28e5..fbe3812ad 100644
+index d293255b3..397a1cb18 100644
 --- a/resources/i18n/OpenBoard_da.ts
 +++ b/resources/i18n/OpenBoard_da.ts
-@@ -2274,6 +2274,28 @@ Do you want to ignore these errors for this host?</source>
+@@ -2286,6 +2286,28 @@ Do you want to ignore these errors for this host?</source>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -3270,7 +3261,7 @@ index 66b5e28e5..fbe3812ad 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2282,6 +2304,148 @@ Do you want to ignore these errors for this host?</source>
+@@ -2294,6 +2316,148 @@ Do you want to ignore these errors for this host?</source>
          <translation>Mine Film</translation>
      </message>
  </context>
@@ -3419,7 +3410,7 @@ index 66b5e28e5..fbe3812ad 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2960,6 +3124,46 @@ p, li { white-space: pre-wrap; }
+@@ -2972,6 +3136,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -3467,10 +3458,10 @@ index 66b5e28e5..fbe3812ad 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_de.ts b/resources/i18n/OpenBoard_de.ts
-index 928014959..4afb82a1c 100644
+index efb1919c7..10cc45546 100644
 --- a/resources/i18n/OpenBoard_de.ts
 +++ b/resources/i18n/OpenBoard_de.ts
-@@ -2315,6 +2315,28 @@ Möchten Sie diese Fehler für diesen Computer ignorieren?</translation>
+@@ -2327,6 +2327,28 @@ Möchten Sie diese Fehler für diesen Computer ignorieren?</translation>
          <source>Use all available displays</source>
          <translation>Alle verfügbaren Bildschirme nutzen</translation>
      </message>
@@ -3499,7 +3490,7 @@ index 928014959..4afb82a1c 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2323,6 +2345,148 @@ Möchten Sie diese Fehler für diesen Computer ignorieren?</translation>
+@@ -2335,6 +2357,148 @@ Möchten Sie diese Fehler für diesen Computer ignorieren?</translation>
          <translation>Meine Filme</translation>
      </message>
  </context>
@@ -3648,7 +3639,7 @@ index 928014959..4afb82a1c 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -3019,6 +3183,46 @@ p, li { white-space: pre-wrap; }
+@@ -3031,6 +3195,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation>Liste der Bildschirme, die für die Hauptansicht, Erweiterte Ansicht und Vorherige Seiten verwendet werden</translation>
      </message>
@@ -3696,10 +3687,10 @@ index 928014959..4afb82a1c 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_el.ts b/resources/i18n/OpenBoard_el.ts
-index 941e6f198..fdc1ead36 100644
+index 85383bae8..c54f0e5a0 100644
 --- a/resources/i18n/OpenBoard_el.ts
 +++ b/resources/i18n/OpenBoard_el.ts
-@@ -2274,6 +2274,28 @@ Do you want to ignore these errors for this host?</source>
+@@ -2286,6 +2286,28 @@ Do you want to ignore these errors for this host?</source>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -3728,7 +3719,7 @@ index 941e6f198..fdc1ead36 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2282,6 +2304,148 @@ Do you want to ignore these errors for this host?</source>
+@@ -2294,6 +2316,148 @@ Do you want to ignore these errors for this host?</source>
          <translation>Οι ταινίες μου</translation>
      </message>
  </context>
@@ -3877,7 +3868,7 @@ index 941e6f198..fdc1ead36 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2964,6 +3128,46 @@ p, li { white-space: pre-wrap; }
+@@ -2976,6 +3140,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -3925,10 +3916,10 @@ index 941e6f198..fdc1ead36 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_en.ts b/resources/i18n/OpenBoard_en.ts
-index 2c1dca1a4..23a396db2 100644
+index 95ef6ce75..314b0e088 100644
 --- a/resources/i18n/OpenBoard_en.ts
 +++ b/resources/i18n/OpenBoard_en.ts
-@@ -2184,6 +2184,28 @@ Do you want to ignore these errors for this host?</source>
+@@ -2196,6 +2196,28 @@ Do you want to ignore these errors for this host?</source>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -3957,7 +3948,7 @@ index 2c1dca1a4..23a396db2 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2192,6 +2214,148 @@ Do you want to ignore these errors for this host?</source>
+@@ -2204,6 +2226,148 @@ Do you want to ignore these errors for this host?</source>
          <translation type="unfinished"></translation>
      </message>
  </context>
@@ -4106,7 +4097,7 @@ index 2c1dca1a4..23a396db2 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2865,6 +3029,46 @@ p, li { white-space: pre-wrap; }
+@@ -2877,6 +3041,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -4154,10 +4145,10 @@ index 2c1dca1a4..23a396db2 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_en_UK.ts b/resources/i18n/OpenBoard_en_UK.ts
-index 2c1dca1a4..23a396db2 100644
+index 95ef6ce75..314b0e088 100644
 --- a/resources/i18n/OpenBoard_en_UK.ts
 +++ b/resources/i18n/OpenBoard_en_UK.ts
-@@ -2184,6 +2184,28 @@ Do you want to ignore these errors for this host?</source>
+@@ -2196,6 +2196,28 @@ Do you want to ignore these errors for this host?</source>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -4186,7 +4177,7 @@ index 2c1dca1a4..23a396db2 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2192,6 +2214,148 @@ Do you want to ignore these errors for this host?</source>
+@@ -2204,6 +2226,148 @@ Do you want to ignore these errors for this host?</source>
          <translation type="unfinished"></translation>
      </message>
  </context>
@@ -4335,7 +4326,7 @@ index 2c1dca1a4..23a396db2 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2865,6 +3029,46 @@ p, li { white-space: pre-wrap; }
+@@ -2877,6 +3041,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -4383,10 +4374,10 @@ index 2c1dca1a4..23a396db2 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_es.ts b/resources/i18n/OpenBoard_es.ts
-index 10beebd82..9d265c700 100644
+index 8ecc50d34..cd8ba890d 100644
 --- a/resources/i18n/OpenBoard_es.ts
 +++ b/resources/i18n/OpenBoard_es.ts
-@@ -2293,6 +2293,28 @@ Do you want to ignore these errors for this host?</source>
+@@ -2305,6 +2305,28 @@ Do you want to ignore these errors for this host?</source>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -4415,7 +4406,7 @@ index 10beebd82..9d265c700 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2301,6 +2323,148 @@ Do you want to ignore these errors for this host?</source>
+@@ -2313,6 +2335,148 @@ Do you want to ignore these errors for this host?</source>
          <translation>Mis películas</translation>
      </message>
  </context>
@@ -4564,7 +4555,7 @@ index 10beebd82..9d265c700 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2991,6 +3155,46 @@ p, li { white-space: pre-wrap; }
+@@ -3003,6 +3167,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -4612,12 +4603,12 @@ index 10beebd82..9d265c700 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_eu.ts b/resources/i18n/OpenBoard_eu.ts
-index fbb21039e..e0fd6fe48 100644
+index 3fd21feda..da1abd521 100644
 --- a/resources/i18n/OpenBoard_eu.ts
 +++ b/resources/i18n/OpenBoard_eu.ts
-@@ -2463,6 +2463,28 @@ Ostalari onentzako errore hauek ez-ikusi nahi dituzu?</translation>
+@@ -2476,6 +2476,28 @@ Ostalari onentzako errore hauek ez-ikusi nahi dituzu?</translation>
          <source>Use all available displays</source>
-         <translation type="unfinished"></translation>
+         <translation type="unfinished">Erabili pantaila eskuragarri guztiak</translation>
      </message>
 +    <message>
 +        <source>Key sequence already in use</source>
@@ -4644,7 +4635,7 @@ index fbb21039e..e0fd6fe48 100644
  </context>
  <context>
      <name>UBProxyLoginDlg</name>
-@@ -2505,6 +2527,148 @@ Ostalari onentzako errore hauek ez-ikusi nahi dituzu?</translation>
+@@ -2518,6 +2540,148 @@ Ostalari onentzako errore hauek ez-ikusi nahi dituzu?</translation>
          <translation>Nire filmak</translation>
      </message>
  </context>
@@ -4793,7 +4784,7 @@ index fbb21039e..e0fd6fe48 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -3277,6 +3441,46 @@ p, li { white-space: pre-wrap; }
+@@ -3291,6 +3455,46 @@ p, li { white-space: pre-wrap; }
          <source>On Dark Background</source>
          <translation type="unfinished">Atzeko plano ilunean</translation>
      </message>
@@ -4841,10 +4832,10 @@ index fbb21039e..e0fd6fe48 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_fr.ts b/resources/i18n/OpenBoard_fr.ts
-index 287c7995e..f4c10afab 100644
+index e434001d4..5a96ac3d2 100644
 --- a/resources/i18n/OpenBoard_fr.ts
 +++ b/resources/i18n/OpenBoard_fr.ts
-@@ -2322,6 +2322,28 @@ Voulez-vous ignorer les erreurs pour ce serveur ?</translation>
+@@ -2334,6 +2334,28 @@ Voulez-vous ignorer les erreurs pour ce serveur ?</translation>
          <source>Use all available displays</source>
          <translation>Utiliser tous les écrans disponibles</translation>
      </message>
@@ -4873,7 +4864,7 @@ index 287c7995e..f4c10afab 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2330,6 +2352,148 @@ Voulez-vous ignorer les erreurs pour ce serveur ?</translation>
+@@ -2342,6 +2364,148 @@ Voulez-vous ignorer les erreurs pour ce serveur ?</translation>
          <translation>Mes films</translation>
      </message>
  </context>
@@ -5022,7 +5013,7 @@ index 287c7995e..f4c10afab 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -3025,6 +3189,46 @@ p, li { white-space: pre-wrap; }
+@@ -3037,6 +3201,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation>Liste des écrans utilisés pour les affichages Principal, Étendu et Pages précédentes</translation>
      </message>
@@ -5070,10 +5061,10 @@ index 287c7995e..f4c10afab 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_fr_CH.ts b/resources/i18n/OpenBoard_fr_CH.ts
-index 3fad17d86..53c2d0d70 100644
+index 65d3df316..b41c27da1 100644
 --- a/resources/i18n/OpenBoard_fr_CH.ts
 +++ b/resources/i18n/OpenBoard_fr_CH.ts
-@@ -2322,6 +2322,28 @@ Voulez-vous ignorer les erreurs pour ce serveur ?</translation>
+@@ -2334,6 +2334,28 @@ Voulez-vous ignorer les erreurs pour ce serveur ?</translation>
          <source>Use all available displays</source>
          <translation>Utiliser tous les écrans disponibles</translation>
      </message>
@@ -5102,7 +5093,7 @@ index 3fad17d86..53c2d0d70 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2330,6 +2352,148 @@ Voulez-vous ignorer les erreurs pour ce serveur ?</translation>
+@@ -2342,6 +2364,148 @@ Voulez-vous ignorer les erreurs pour ce serveur ?</translation>
          <translation>Mes films</translation>
      </message>
  </context>
@@ -5251,7 +5242,7 @@ index 3fad17d86..53c2d0d70 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -3025,6 +3189,46 @@ p, li { white-space: pre-wrap; }
+@@ -3037,6 +3201,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation>Liste des écrans utilisés pour les affichages Principal, Étendu et Pages précédentes</translation>
      </message>
@@ -5299,10 +5290,10 @@ index 3fad17d86..53c2d0d70 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_gl.ts b/resources/i18n/OpenBoard_gl.ts
-index fb0f64128..295ffb6f7 100644
+index a00a58d6a..792e368ec 100644
 --- a/resources/i18n/OpenBoard_gl.ts
 +++ b/resources/i18n/OpenBoard_gl.ts
-@@ -2293,6 +2293,28 @@ Do you want to ignore these errors for this host?</source>
+@@ -2305,6 +2305,28 @@ Do you want to ignore these errors for this host?</source>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -5331,7 +5322,7 @@ index fb0f64128..295ffb6f7 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2301,6 +2323,148 @@ Do you want to ignore these errors for this host?</source>
+@@ -2313,6 +2335,148 @@ Do you want to ignore these errors for this host?</source>
          <translation>As miñas películas</translation>
      </message>
  </context>
@@ -5480,7 +5471,7 @@ index fb0f64128..295ffb6f7 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2987,6 +3151,46 @@ p, li { white-space: pre-wrap; }
+@@ -2999,6 +3163,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -5528,10 +5519,10 @@ index fb0f64128..295ffb6f7 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_hr.ts b/resources/i18n/OpenBoard_hr.ts
-index 6ec464719..7e9d5de38 100644
+index 33ba76d01..d68637c9d 100644
 --- a/resources/i18n/OpenBoard_hr.ts
 +++ b/resources/i18n/OpenBoard_hr.ts
-@@ -2363,6 +2363,28 @@ Do you want to ignore these errors for this host?</source>
+@@ -2375,6 +2375,28 @@ Do you want to ignore these errors for this host?</source>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -5560,7 +5551,7 @@ index 6ec464719..7e9d5de38 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2371,6 +2393,148 @@ Do you want to ignore these errors for this host?</source>
+@@ -2383,6 +2405,148 @@ Do you want to ignore these errors for this host?</source>
          <translation>Moji filmovi</translation>
      </message>
  </context>
@@ -5709,7 +5700,7 @@ index 6ec464719..7e9d5de38 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -3259,6 +3423,46 @@ p, li { white-space: pre-wrap; }
+@@ -3271,6 +3435,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -5757,10 +5748,10 @@ index 6ec464719..7e9d5de38 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_hu.ts b/resources/i18n/OpenBoard_hu.ts
-index 0133b9452..7c0bb9f61 100644
+index 23013e991..8e068f1e8 100644
 --- a/resources/i18n/OpenBoard_hu.ts
 +++ b/resources/i18n/OpenBoard_hu.ts
-@@ -2374,6 +2374,28 @@ Figyelmen kívül hagyja ezeket a hibákat ennél a hosztnál?</translation>
+@@ -2386,6 +2386,28 @@ Figyelmen kívül hagyja ezeket a hibákat ennél a hosztnál?</translation>
          <source>Use all available displays</source>
          <translation>Az összes elérhető kijelző használata</translation>
      </message>
@@ -5789,7 +5780,7 @@ index 0133b9452..7c0bb9f61 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2382,6 +2404,148 @@ Figyelmen kívül hagyja ezeket a hibákat ennél a hosztnál?</translation>
+@@ -2394,6 +2416,148 @@ Figyelmen kívül hagyja ezeket a hibákat ennél a hosztnál?</translation>
          <translation>Videóim</translation>
      </message>
  </context>
@@ -5938,7 +5929,7 @@ index 0133b9452..7c0bb9f61 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -3072,6 +3236,46 @@ p, li { white-space: pre-wrap; }
+@@ -3084,6 +3248,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation>A vezérléshez, megjelenítéshez és az előző oldalakhoz használt képernyők listája</translation>
      </message>
@@ -5986,10 +5977,10 @@ index 0133b9452..7c0bb9f61 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_it.ts b/resources/i18n/OpenBoard_it.ts
-index 3174a2f2f..5fd7522e0 100644
+index bc50af993..87e8cc7f6 100644
 --- a/resources/i18n/OpenBoard_it.ts
 +++ b/resources/i18n/OpenBoard_it.ts
-@@ -2310,6 +2310,28 @@ Vuoi ignorare gli errori per questo host?</translation>
+@@ -2322,6 +2322,28 @@ Vuoi ignorare gli errori per questo host?</translation>
          <source>Use all available displays</source>
          <translation>Utlizzare tutti gli schermi</translation>
      </message>
@@ -6018,7 +6009,7 @@ index 3174a2f2f..5fd7522e0 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2318,6 +2340,148 @@ Vuoi ignorare gli errori per questo host?</translation>
+@@ -2330,6 +2352,148 @@ Vuoi ignorare gli errori per questo host?</translation>
          <translation>I miei film</translation>
      </message>
  </context>
@@ -6167,7 +6158,7 @@ index 3174a2f2f..5fd7522e0 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -3013,6 +3177,46 @@ p, li { white-space: pre-wrap; }
+@@ -3025,6 +3189,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation>Lista degli schermi utilizzati per le visualizzazioni Principale, Esteso ePpagine precedenti</translation>
      </message>
@@ -6215,10 +6206,10 @@ index 3174a2f2f..5fd7522e0 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_iw.ts b/resources/i18n/OpenBoard_iw.ts
-index 3dd620523..a8da1bc00 100644
+index b58db4915..213f35ecf 100644
 --- a/resources/i18n/OpenBoard_iw.ts
 +++ b/resources/i18n/OpenBoard_iw.ts
-@@ -2270,6 +2270,28 @@ Do you want to ignore these errors for this host?</source>
+@@ -2282,6 +2282,28 @@ Do you want to ignore these errors for this host?</source>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -6247,7 +6238,7 @@ index 3dd620523..a8da1bc00 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2278,6 +2300,148 @@ Do you want to ignore these errors for this host?</source>
+@@ -2290,6 +2312,148 @@ Do you want to ignore these errors for this host?</source>
          <translation>הסרטים שלי</translation>
      </message>
  </context>
@@ -6396,7 +6387,7 @@ index 3dd620523..a8da1bc00 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2956,6 +3120,46 @@ p, li { white-space: pre-wrap; }
+@@ -2968,6 +3132,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -6444,10 +6435,10 @@ index 3dd620523..a8da1bc00 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_ja.ts b/resources/i18n/OpenBoard_ja.ts
-index ef750e62b..ae8151610 100644
+index e96cb41b0..425358aed 100644
 --- a/resources/i18n/OpenBoard_ja.ts
 +++ b/resources/i18n/OpenBoard_ja.ts
-@@ -2264,6 +2264,28 @@ Do you want to ignore these errors for this host?</source>
+@@ -2276,6 +2276,28 @@ Do you want to ignore these errors for this host?</source>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -6476,7 +6467,7 @@ index ef750e62b..ae8151610 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2272,6 +2294,148 @@ Do you want to ignore these errors for this host?</source>
+@@ -2284,6 +2306,148 @@ Do you want to ignore these errors for this host?</source>
          <translation>マイ・ムービー </translation>
      </message>
  </context>
@@ -6625,7 +6616,7 @@ index ef750e62b..ae8151610 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2950,6 +3114,46 @@ p, li { white-space: pre-wrap; }
+@@ -2962,6 +3126,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -6673,10 +6664,10 @@ index ef750e62b..ae8151610 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_ko.ts b/resources/i18n/OpenBoard_ko.ts
-index 2492fef83..b4f33e2b8 100644
+index 920980f9a..873749d2c 100644
 --- a/resources/i18n/OpenBoard_ko.ts
 +++ b/resources/i18n/OpenBoard_ko.ts
-@@ -2277,6 +2277,28 @@ Do you want to ignore these errors for this host?</source>
+@@ -2289,6 +2289,28 @@ Do you want to ignore these errors for this host?</source>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -6705,7 +6696,7 @@ index 2492fef83..b4f33e2b8 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2285,6 +2307,148 @@ Do you want to ignore these errors for this host?</source>
+@@ -2297,6 +2319,148 @@ Do you want to ignore these errors for this host?</source>
          <translation>내 동영상</translation>
      </message>
  </context>
@@ -6854,7 +6845,7 @@ index 2492fef83..b4f33e2b8 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2967,6 +3131,46 @@ p, li { white-space: pre-wrap; }
+@@ -2979,6 +3143,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -6902,10 +6893,10 @@ index 2492fef83..b4f33e2b8 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_mg.ts b/resources/i18n/OpenBoard_mg.ts
-index 0d7717055..e2b61378b 100644
+index 55206eb5e..7bf24ed2f 100644
 --- a/resources/i18n/OpenBoard_mg.ts
 +++ b/resources/i18n/OpenBoard_mg.ts
-@@ -2274,6 +2274,28 @@ Tena tsy te hiraharaha an&apos;ireo tsy mety ho an&apos;ilay milina ve ianao?</t
+@@ -2286,6 +2286,28 @@ Tena tsy te hiraharaha an&apos;ireo tsy mety ho an&apos;ilay milina ve ianao?</t
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -6934,7 +6925,7 @@ index 0d7717055..e2b61378b 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2282,6 +2304,148 @@ Tena tsy te hiraharaha an&apos;ireo tsy mety ho an&apos;ilay milina ve ianao?</t
+@@ -2294,6 +2316,148 @@ Tena tsy te hiraharaha an&apos;ireo tsy mety ho an&apos;ilay milina ve ianao?</t
          <translation>Ny sarimietsiko</translation>
      </message>
  </context>
@@ -7083,7 +7074,7 @@ index 0d7717055..e2b61378b 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2964,6 +3128,46 @@ p, li { white-space: pre-wrap; }
+@@ -2976,6 +3140,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -7131,10 +7122,10 @@ index 0d7717055..e2b61378b 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_nb.ts b/resources/i18n/OpenBoard_nb.ts
-index 7aa706d59..3228f11dc 100644
+index 70c61d066..164cf2697 100644
 --- a/resources/i18n/OpenBoard_nb.ts
 +++ b/resources/i18n/OpenBoard_nb.ts
-@@ -2270,6 +2270,28 @@ Do you want to ignore these errors for this host?</source>
+@@ -2282,6 +2282,28 @@ Do you want to ignore these errors for this host?</source>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -7163,7 +7154,7 @@ index 7aa706d59..3228f11dc 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2278,6 +2300,148 @@ Do you want to ignore these errors for this host?</source>
+@@ -2290,6 +2312,148 @@ Do you want to ignore these errors for this host?</source>
          <translation>Mine filmer</translation>
      </message>
  </context>
@@ -7312,7 +7303,7 @@ index 7aa706d59..3228f11dc 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2961,6 +3125,46 @@ p, li { white-space: pre-wrap; }
+@@ -2973,6 +3137,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -7360,10 +7351,10 @@ index 7aa706d59..3228f11dc 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_nl.ts b/resources/i18n/OpenBoard_nl.ts
-index 262885a05..567ddcbc2 100644
+index 6cbbf525b..ab21d741e 100644
 --- a/resources/i18n/OpenBoard_nl.ts
 +++ b/resources/i18n/OpenBoard_nl.ts
-@@ -2260,6 +2260,28 @@ Do you want to ignore these errors for this host?</source>
+@@ -2272,6 +2272,28 @@ Do you want to ignore these errors for this host?</source>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -7392,7 +7383,7 @@ index 262885a05..567ddcbc2 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2268,6 +2290,148 @@ Do you want to ignore these errors for this host?</source>
+@@ -2280,6 +2302,148 @@ Do you want to ignore these errors for this host?</source>
          <translation>Mijn films</translation>
      </message>
  </context>
@@ -7541,7 +7532,7 @@ index 262885a05..567ddcbc2 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2949,6 +3113,46 @@ p, li { white-space: pre-wrap; }
+@@ -2961,6 +3125,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -7589,10 +7580,10 @@ index 262885a05..567ddcbc2 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_pl.ts b/resources/i18n/OpenBoard_pl.ts
-index 948d049d1..d09912ce5 100644
+index a0261b033..c11a5562f 100644
 --- a/resources/i18n/OpenBoard_pl.ts
 +++ b/resources/i18n/OpenBoard_pl.ts
-@@ -2305,6 +2305,28 @@ Czy chcesz ignorować te błędy dla tego hosta?</translation>
+@@ -2317,6 +2317,28 @@ Czy chcesz ignorować te błędy dla tego hosta?</translation>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -7621,7 +7612,7 @@ index 948d049d1..d09912ce5 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2313,6 +2335,148 @@ Czy chcesz ignorować te błędy dla tego hosta?</translation>
+@@ -2325,6 +2347,148 @@ Czy chcesz ignorować te błędy dla tego hosta?</translation>
          <translation>Moje filmy</translation>
      </message>
  </context>
@@ -7770,7 +7761,7 @@ index 948d049d1..d09912ce5 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -3003,6 +3167,46 @@ p, li { white-space: pre-wrap; }
+@@ -3015,6 +3179,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -7818,10 +7809,10 @@ index 948d049d1..d09912ce5 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_pt.ts b/resources/i18n/OpenBoard_pt.ts
-index 6e662d46c..67a248856 100644
+index 9808b1656..0857557ab 100644
 --- a/resources/i18n/OpenBoard_pt.ts
 +++ b/resources/i18n/OpenBoard_pt.ts
-@@ -2277,6 +2277,28 @@ Quer ignorar estes erros, deste servidor?</translation>
+@@ -2289,6 +2289,28 @@ Quer ignorar estes erros, deste servidor?</translation>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -7850,7 +7841,7 @@ index 6e662d46c..67a248856 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2285,6 +2307,148 @@ Quer ignorar estes erros, deste servidor?</translation>
+@@ -2297,6 +2319,148 @@ Quer ignorar estes erros, deste servidor?</translation>
          <translation>Os meus filmes</translation>
      </message>
  </context>
@@ -7999,7 +7990,7 @@ index 6e662d46c..67a248856 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2962,6 +3126,46 @@ p, li { white-space: pre-wrap; }
+@@ -2974,6 +3138,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -8047,10 +8038,10 @@ index 6e662d46c..67a248856 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_pt_BR.ts b/resources/i18n/OpenBoard_pt_BR.ts
-index 99ba7df83..a51a76ac1 100644
+index f4da67842..d9ee73139 100644
 --- a/resources/i18n/OpenBoard_pt_BR.ts
 +++ b/resources/i18n/OpenBoard_pt_BR.ts
-@@ -2433,25 +2433,25 @@ Quer ignorar estes erros deste servidor?</translation>
+@@ -2445,25 +2445,25 @@ Quer ignorar estes erros deste servidor?</translation>
      </message>
      <message>
          <source>Key sequence already in use</source>
@@ -8081,7 +8072,7 @@ index 99ba7df83..a51a76ac1 100644
      </message>
      <message>
          <source>Use all available displays</source>
-@@ -2469,142 +2469,142 @@ Quer ignorar estes erros deste servidor?</translation>
+@@ -2481,142 +2481,142 @@ Quer ignorar estes erros deste servidor?</translation>
      <name>UBShortcutManager</name>
      <message>
          <source>Common</source>
@@ -8257,7 +8248,7 @@ index 99ba7df83..a51a76ac1 100644
      </message>
  </context>
  <context>
-@@ -3364,43 +3364,43 @@ p, li { white-space: pre-wrap; }
+@@ -3376,43 +3376,43 @@ p, li { white-space: pre-wrap; }
      </message>
      <message>
          <source>Shortcut</source>
@@ -8312,10 +8303,10 @@ index 99ba7df83..a51a76ac1 100644
      <message>
          <source>Improve zoom execution time (can slightly affect rendering quality)</source>
 diff --git a/resources/i18n/OpenBoard_ro.ts b/resources/i18n/OpenBoard_ro.ts
-index af64341cf..932e00503 100644
+index c39cce163..4105363e0 100644
 --- a/resources/i18n/OpenBoard_ro.ts
 +++ b/resources/i18n/OpenBoard_ro.ts
-@@ -2274,6 +2274,28 @@ Doriţi să ignoraţi aceste erori pentru acest host?</translation>
+@@ -2286,6 +2286,28 @@ Doriţi să ignoraţi aceste erori pentru acest host?</translation>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -8344,7 +8335,7 @@ index af64341cf..932e00503 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2282,6 +2304,148 @@ Doriţi să ignoraţi aceste erori pentru acest host?</translation>
+@@ -2294,6 +2316,148 @@ Doriţi să ignoraţi aceste erori pentru acest host?</translation>
          <translation>Filmele mele</translation>
      </message>
  </context>
@@ -8493,7 +8484,7 @@ index af64341cf..932e00503 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2964,6 +3128,46 @@ p, li { white-space: pre-wrap; }
+@@ -2976,6 +3140,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -8541,10 +8532,10 @@ index af64341cf..932e00503 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_ru.ts b/resources/i18n/OpenBoard_ru.ts
-index 23bb78dce..c527aab80 100644
+index 505c952a6..2336e5a4d 100644
 --- a/resources/i18n/OpenBoard_ru.ts
 +++ b/resources/i18n/OpenBoard_ru.ts
-@@ -2299,6 +2299,28 @@ Do you want to ignore these errors for this host?</source>
+@@ -2311,6 +2311,28 @@ Do you want to ignore these errors for this host?</source>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -8573,7 +8564,7 @@ index 23bb78dce..c527aab80 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2307,6 +2329,148 @@ Do you want to ignore these errors for this host?</source>
+@@ -2319,6 +2341,148 @@ Do you want to ignore these errors for this host?</source>
          <translation>Мои видеофайлы</translation>
      </message>
  </context>
@@ -8722,7 +8713,7 @@ index 23bb78dce..c527aab80 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2993,6 +3157,46 @@ p, li { white-space: pre-wrap; }
+@@ -3005,6 +3169,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -8770,10 +8761,10 @@ index 23bb78dce..c527aab80 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_sk.ts b/resources/i18n/OpenBoard_sk.ts
-index 548117620..85744893a 100644
+index df96f6d50..d8f8d3b06 100644
 --- a/resources/i18n/OpenBoard_sk.ts
 +++ b/resources/i18n/OpenBoard_sk.ts
-@@ -2282,6 +2282,28 @@ Chcete ignorovať tieto chyby na tomto serveri?</translation>
+@@ -2294,6 +2294,28 @@ Chcete ignorovať tieto chyby na tomto serveri?</translation>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -8802,7 +8793,7 @@ index 548117620..85744893a 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2290,6 +2312,148 @@ Chcete ignorovať tieto chyby na tomto serveri?</translation>
+@@ -2302,6 +2324,148 @@ Chcete ignorovať tieto chyby na tomto serveri?</translation>
          <translation>Moje filmy</translation>
      </message>
  </context>
@@ -8951,7 +8942,7 @@ index 548117620..85744893a 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2977,6 +3141,46 @@ p, li { white-space: pre-wrap; }
+@@ -2989,6 +3153,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -8999,10 +8990,10 @@ index 548117620..85744893a 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_sv.ts b/resources/i18n/OpenBoard_sv.ts
-index 39cf7bf07..5096a3ebe 100644
+index a150c57f2..2d30dba51 100644
 --- a/resources/i18n/OpenBoard_sv.ts
 +++ b/resources/i18n/OpenBoard_sv.ts
-@@ -2275,6 +2275,28 @@ Vill du ignorera felen för den här värden?</translation>
+@@ -2287,6 +2287,28 @@ Vill du ignorera felen för den här värden?</translation>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -9031,7 +9022,7 @@ index 39cf7bf07..5096a3ebe 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2283,6 +2305,148 @@ Vill du ignorera felen för den här värden?</translation>
+@@ -2295,6 +2317,148 @@ Vill du ignorera felen för den här värden?</translation>
          <translation>Mina filmer</translation>
      </message>
  </context>
@@ -9180,7 +9171,7 @@ index 39cf7bf07..5096a3ebe 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2965,6 +3129,46 @@ p, li { white-space: pre-wrap; }
+@@ -2977,6 +3141,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -9228,10 +9219,10 @@ index 39cf7bf07..5096a3ebe 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_tr.ts b/resources/i18n/OpenBoard_tr.ts
-index 59d47a47a..459fb6e91 100644
+index b177f9336..8ab904d45 100644
 --- a/resources/i18n/OpenBoard_tr.ts
 +++ b/resources/i18n/OpenBoard_tr.ts
-@@ -2283,6 +2283,28 @@ Bu ana bilgisayar için yukarıdaki hatalar yok sayılsın mı?</translation>
+@@ -2295,6 +2295,28 @@ Bu ana bilgisayar için yukarıdaki hatalar yok sayılsın mı?</translation>
          <source>Use all available displays</source>
          <translation>Tüm kullanılabilir ekranları kullan</translation>
      </message>
@@ -9260,7 +9251,7 @@ index 59d47a47a..459fb6e91 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2291,6 +2313,148 @@ Bu ana bilgisayar için yukarıdaki hatalar yok sayılsın mı?</translation>
+@@ -2303,6 +2325,148 @@ Bu ana bilgisayar için yukarıdaki hatalar yok sayılsın mı?</translation>
          <translation>Filimlerim</translation>
      </message>
  </context>
@@ -9409,7 +9400,7 @@ index 59d47a47a..459fb6e91 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2978,6 +3142,46 @@ p, li { white-space: pre-wrap; }
+@@ -2990,6 +3154,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation>Denetim, Görüntü ve Önceki sayfalar için kullanılan ekranların listesi</translation>
      </message>
@@ -9457,10 +9448,10 @@ index 59d47a47a..459fb6e91 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_uk.ts b/resources/i18n/OpenBoard_uk.ts
-index 2fce8012a..9f76ee2fd 100644
+index 9ba4280c5..815d951c8 100644
 --- a/resources/i18n/OpenBoard_uk.ts
 +++ b/resources/i18n/OpenBoard_uk.ts
-@@ -2281,6 +2281,28 @@ Do you want to ignore these errors for this host?</source>
+@@ -2293,6 +2293,28 @@ Do you want to ignore these errors for this host?</source>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -9489,7 +9480,7 @@ index 2fce8012a..9f76ee2fd 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2289,6 +2311,148 @@ Do you want to ignore these errors for this host?</source>
+@@ -2301,6 +2323,148 @@ Do you want to ignore these errors for this host?</source>
          <translation>Мої відеофайли</translation>
      </message>
  </context>
@@ -9638,7 +9629,7 @@ index 2fce8012a..9f76ee2fd 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2975,6 +3139,46 @@ p, li { white-space: pre-wrap; }
+@@ -2987,6 +3151,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -9686,10 +9677,10 @@ index 2fce8012a..9f76ee2fd 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_zh.ts b/resources/i18n/OpenBoard_zh.ts
-index 61918c76e..14353d8fc 100644
+index c796326f4..830525bca 100644
 --- a/resources/i18n/OpenBoard_zh.ts
 +++ b/resources/i18n/OpenBoard_zh.ts
-@@ -2300,6 +2300,28 @@ Do you want to ignore these errors for this host?</source>
+@@ -2312,6 +2312,28 @@ Do you want to ignore these errors for this host?</source>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -9718,7 +9709,7 @@ index 61918c76e..14353d8fc 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2308,6 +2330,148 @@ Do you want to ignore these errors for this host?</source>
+@@ -2320,6 +2342,148 @@ Do you want to ignore these errors for this host?</source>
          <translation>我的视频</translation>
      </message>
  </context>
@@ -9867,7 +9858,7 @@ index 61918c76e..14353d8fc 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2998,6 +3162,46 @@ p, li { white-space: pre-wrap; }
+@@ -3010,6 +3174,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -9915,10 +9906,10 @@ index 61918c76e..14353d8fc 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_zh_CN.ts b/resources/i18n/OpenBoard_zh_CN.ts
-index c0ec06b6b..09a014882 100644
+index ccf283bfa..d37ba6102 100644
 --- a/resources/i18n/OpenBoard_zh_CN.ts
 +++ b/resources/i18n/OpenBoard_zh_CN.ts
-@@ -2302,6 +2302,28 @@ Do you want to ignore these errors for this host?</source>
+@@ -2314,6 +2314,28 @@ Do you want to ignore these errors for this host?</source>
          <source>Use all available displays</source>
          <translation>使用所有可用的显示</translation>
      </message>
@@ -9947,7 +9938,7 @@ index c0ec06b6b..09a014882 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2310,6 +2332,148 @@ Do you want to ignore these errors for this host?</source>
+@@ -2322,6 +2344,148 @@ Do you want to ignore these errors for this host?</source>
          <translation>我的视频</translation>
      </message>
  </context>
@@ -10096,7 +10087,7 @@ index c0ec06b6b..09a014882 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -3001,6 +3165,46 @@ p, li { white-space: pre-wrap; }
+@@ -3013,6 +3177,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation>用于控制、显示和上一页的屏幕列表</translation>
      </message>
@@ -10144,10 +10135,10 @@ index c0ec06b6b..09a014882 100644
  <context>
      <name>trapFlashDialog</name>
 diff --git a/resources/i18n/OpenBoard_zh_TW.ts b/resources/i18n/OpenBoard_zh_TW.ts
-index cf0e1d501..b7e32ea0c 100644
+index 510981a8d..ff4d686b5 100644
 --- a/resources/i18n/OpenBoard_zh_TW.ts
 +++ b/resources/i18n/OpenBoard_zh_TW.ts
-@@ -2288,6 +2288,28 @@ Do you want to ignore these errors for this host?</source>
+@@ -2300,6 +2300,28 @@ Do you want to ignore these errors for this host?</source>
          <source>Use all available displays</source>
          <translation type="unfinished"></translation>
      </message>
@@ -10176,7 +10167,7 @@ index cf0e1d501..b7e32ea0c 100644
  </context>
  <context>
      <name>UBSettings</name>
-@@ -2296,6 +2318,148 @@ Do you want to ignore these errors for this host?</source>
+@@ -2308,6 +2330,148 @@ Do you want to ignore these errors for this host?</source>
          <translation>我的影片</translation>
      </message>
  </context>
@@ -10325,7 +10316,7 @@ index cf0e1d501..b7e32ea0c 100644
  <context>
      <name>UBStartupHintsPalette</name>
      <message>
-@@ -2971,6 +3135,46 @@ p, li { white-space: pre-wrap; }
+@@ -2983,6 +3147,46 @@ p, li { white-space: pre-wrap; }
          <source>List of screens used for Control, Display and Previous pages</source>
          <translation type="unfinished"></translation>
      </message>
@@ -10377,11 +10368,11 @@ index e4afaa55c..3618efdcb 100644
 --- a/src/core/UBShortcutManager.cpp
 +++ b/src/core/UBShortcutManager.cpp
 @@ -43,7 +43,7 @@ UBShortcutManager* UBShortcutManager::sShortcutManager = nullptr;
- 
+
  UBShortcutManager::UBShortcutManager() : mIgnoreCtrl(false)
  {
 -    actionsOfGroup(QObject::tr("Common"));
 +    actionsOfGroup(tr("Common"));
  }
- 
+
  UBShortcutManager *UBShortcutManager::shortcutManager()

@@ -1,7 +1,7 @@
 #
 # spec file for package OpenBoard
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         namelc openboard
 %define         fqname ch.%{namelc}.%{name}
 Name:           OpenBoard
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Interactive whiteboard for schools and universities
 License:        GPL-3.0-or-later
@@ -28,14 +28,10 @@ URL:            https://openboard.ch
 Source0:        https://github.com/OpenBoard-org/OpenBoard/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # https://github.com/OpenBoard-org/OpenBoard/pull/569
 Patch569:       0569-scale-mirror-pixmap.patch
-# https://github.com/OpenBoard-org/OpenBoard/pull/686
-Patch686:       0686-shortcut-configuration.patch
-# https://github.com/OpenBoard-org/OpenBoard/pull/830
-Patch830:       0830-cmake-community-builds.patch
+# https://github.com/OpenBoard-org/OpenBoard/pull/955
+Patch955:       0955-shortcut-configuration.patch
 # https://github.com/letsfindaway/OpenBoard/pull/117
 Patch9117:      9117-disable-software-update.patch
-# no github url available
-Patch9686:      9686-cmake-add-shortcut-manager.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -62,17 +58,8 @@ application designed primarily for use in schools. It was
 originally forked from Open-Sankoré, which was itself based on
 Uniboard.
 
-This build is based on the development branch dev and includes
-a set of additional patches for features and bug fixes.
-
 %prep
 %autosetup -p1 -n %{name}-%{version}
-
-# remove x flag from any resource files
-find resources -type f -print0 | xargs -0 chmod a-x
-
-# remove leftover version control file
-rm resources/library/applications/Calculator.wgt/.gitignore
 
 %build
 %cmake
