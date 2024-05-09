@@ -18,7 +18,7 @@
 
 Name:           flint
 %define lname	libflint19
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        C library for doing number theory
 License:        LGPL-3.0-or-later
@@ -27,7 +27,7 @@ URL:            https://flintlib.org/
 
 # doc/source/history.rst for changelog
 #Git-Clone:     https://github.com/flintlib/flint
-Source:         https://github.com/flintlib/flint/archive/v%version.tar.gz
+Source:         https://github.com/flintlib/flint/releases/download/v%version/flint-%version.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
