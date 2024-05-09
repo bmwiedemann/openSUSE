@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May  9 06:22:23 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build from source not whl from pypi.
+- Update to 0.5.2:
+  * move from request helper to native fetch, fixes #242 by relying on
+    browser default by @timkpaine in #247
+  * Update ruff utilization, removed unused workflow, use
+    ServerConnection.makeRequest by @timkpaine @minrk in #253
+
+-------------------------------------------------------------------
 Fri Mar  8 12:59:07 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.5.1

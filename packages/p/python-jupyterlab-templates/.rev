@@ -125,4 +125,17 @@
 - Skip python39: jupyterlab requires ipython which dropped it.</comment>
     <requestid>1156356</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d997f4c7b8f1a00559ded128577dcfcd</srcmd5>
+    <version>0.5.2</version>
+    <time>1715249652</time>
+    <user>dimstar_suse</user>
+    <comment>- Build from source not whl from pypi.
+- Update to 0.5.2:
+  * move from request helper to native fetch, fixes #242 by relying on
+    browser default by @timkpaine in #247
+  * Update ruff utilization, removed unused workflow, use
+    ServerConnection.makeRequest by @timkpaine @minrk in #253</comment>
+    <requestid>1172850</requestid>
+  </revision>
 </revisionlist>

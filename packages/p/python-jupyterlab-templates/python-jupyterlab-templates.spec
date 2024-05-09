@@ -17,16 +17,18 @@
 
 
 %define skip_python39 1
-%define pyver 0.5.1
-%define distver 0.5.1
+%define pyver 0.5.2
+%define distver 0.5.2
 Name:           python-jupyterlab-templates
 Version:        %{pyver}
 Release:        0
 Summary:        Templates for notebooks in JupyterLab
 License:        Apache-2.0
 URL:            https://github.com/finos/jupyterlab_templates
-Source:         https://files.pythonhosted.org/packages/py3/j/jupyterlab_templates/jupyterlab_templates-%{version}-py3-none-any.whl
+Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_templates/jupyterlab_templates-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatch-jupyter-builder}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module jupyterlab >= 4.0.0}
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module pip}
@@ -60,10 +62,10 @@ Obsoletes:      jupyter-jupyterlab_templates < %{version}
 Support for jupyter notebook templates in jupyterlab.
 
 %prep
-%setup -q -c -T
+%autosetup -p1 -n jupyterlab_templates-%{version}
 
 %build
-%{python_expand mkdir build/; cp -a %{SOURCE0} build/}
+%pyproject_wheel
 
 %install
 %pyproject_install
