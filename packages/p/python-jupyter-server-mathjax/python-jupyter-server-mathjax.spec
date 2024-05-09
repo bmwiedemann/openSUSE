@@ -22,8 +22,7 @@ Release:        0
 Summary:        MathJax resources as a Jupyter Server Extension
 License:        Apache-2.0 AND BSD-3-Clause
 URL:            https://github.com/jupyter-server/jupyter_server_mathjax
-# Get the bundled JS stuff with the wheel
-Source:         https://files.pythonhosted.org/packages/py3/j/jupyter_server_mathjax/jupyter_server_mathjax-%{version}-py3-none-any.whl
+Source:         https://files.pythonhosted.org/packages/source/j/jupyter_server_mathjax/jupyter_server_mathjax-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module jupyter-packaging >= 0.10 with %python-jupyter-packaging < 2}
 BuildRequires:  %{python_module jupyter-server >= 1.1}
@@ -52,13 +51,13 @@ This package contains the jupyter server extension configuration common
 to all python flavors.
 
 %prep
-%setup -q -c jupyter-server-mathjax-%{version} -T
+%autosetup -p1 -n jupyter_server_mathjax-%{version}
 
 %build
-:
+%pyproject_wheel
 
 %install
-%pyproject_install %{SOURCE0}
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 cp %{buildroot}%{python3_sitelib}/jupyter_server_mathjax-%{version}.dist-info/LICENSE .
 cp %{buildroot}%{python3_sitelib}/jupyter_server_mathjax/static/LICENSE LICENSE-STATIC

@@ -42,4 +42,13 @@
   8.19 (no jupyter-server-test)</comment>
     <requestid>1155949</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>090dd940e1563de96f6dd17da643a2cc</srcmd5>
+    <version>0.2.6</version>
+    <time>1715249657</time>
+    <user>dimstar_suse</user>
+    <comment>- Build from source not whl from pypi.
+</comment>
+    <requestid>1172851</requestid>
+  </revision>
 </revisionlist>
