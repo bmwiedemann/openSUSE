@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  8 13:13:32 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build from source not whl from pypi.
+
+-------------------------------------------------------------------
 Fri Mar  8 13:53:52 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to v0.7.0

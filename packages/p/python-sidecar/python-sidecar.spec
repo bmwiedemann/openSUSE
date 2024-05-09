@@ -27,10 +27,15 @@ Summary:        A sidecar output widget for JupyterLab
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter-widgets/jupyterlab-sidecar
-Source:         https://files.pythonhosted.org/packages/py3/s/sidecar/sidecar-%{mainver}-py3-none-any.whl
+Source:         https://files.pythonhosted.org/packages/source/s/sidecar/sidecar-%{mainver}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module hatch-jupyter-builder}
+BuildRequires:  %{python_module hatch-nodejs-version}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module ipywidgets >= 8 with %python-ipywidgets < 9}
+BuildRequires:  %{python_module jupyterlab}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyter_core-filesystem
 BuildRequires:  jupyter-jupyterlab-filesystem
@@ -62,13 +67,13 @@ A sidecar output widget for JupyterLab.
 This package provides the JupyterLab extension.
 
 %prep
-%setup -q -c -T
+%autosetup -p1 -n sidecar-%{version}
 
 %build
-# Not needed
+%pyproject_wheel
 
 %install
-%pyproject_install %{SOURCE0}
+%pyproject_install
 %python_expand find %{buildroot}%{$python_sitelib} -name '*.py' -exec sed -i '1{/^#!.*env/ d}' {} \;
 %python_compileall
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
