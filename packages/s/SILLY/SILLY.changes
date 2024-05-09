@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  8 12:05:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro: allows us to eliminate usage of deprecated
+  %patchN syntax.
+
+-------------------------------------------------------------------
 Thu Jan  7 20:44:50 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Disable the static library and remove libtool metadata.

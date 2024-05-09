@@ -1,7 +1,7 @@
 #
 # spec file for package SILLY
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,9 +70,7 @@ to provide an MIT based replacement of DevIL with less image format supported
 and focused on loading image only.
 
 %prep
-%setup -b 1 -D -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -b 1 -D -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
