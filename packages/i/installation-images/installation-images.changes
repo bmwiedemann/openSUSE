@@ -1,4 +1,19 @@
 --------------------------------------------------------------------
+Wed May 8 13:00:13 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#707
+- refresh ssh_host_rsa_key (jsc#PED-129)
+- 17.125
+
+--------------------------------------------------------------------
+Tue May 7 14:24:52 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#711
+- increase XZ compression level for initrd (bsc#1223982)
+- support ZSTD compression for initrd
+- 17.124
+
+--------------------------------------------------------------------
 Mon May 6 08:32:09 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#710
