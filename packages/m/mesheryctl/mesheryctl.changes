@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu May  9 07:24:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.55:
+  * General
+    - [CI] Minor updates to playground cleanup @cpepper96 (#10802)
+    - fix nil pointer refrernce @MUzairS15 (#10892)
+  * Meshery UI
+    - ui: mention SMIResults has been deprecated @dottharun
+      (#10893)
+    - remove unused vars @codeKraken19 (#10882)
+    - Bump @emotion/styled from 11.11.0 to 11.11.5 in /provider-ui
+      @dependabot (#10840)
+    - Bump @4tw/cypress-drag-drop from 2.2.3 to 2.2.5 in /ui
+      @dependabot (#10837)
+    - Bump cypress from 13.7.1 to 13.8.1 in /provider-ui
+      @dependabot (#10842)
+  * Maintenance
+    - [CI] Fix .github/labeler.yml upgrade to actions/labeler@v5
+      problem @tico88612 (#10817)
+    - Bump @emotion/styled from 11.11.0 to 11.11.5 in /provider-ui
+      @dependabot (#10840)
+    - Bump @4tw/cypress-drag-drop from 2.2.3 to 2.2.5 in /ui
+      @dependabot (#10837)
+    - Bump cypress from 13.7.1 to 13.8.1 in /provider-ui
+      @dependabot (#10842)
+  * Documentation
+    - Fix sidebar top @abhishekmmgn (#10765)
+    - add: Relationship between pod and other k8s resources[high
+      level] @RipulHandoo (#10332)
+    - [docker-extension.md] Single line commands formatted.
+      @Aryakoste (#10866)
+
+-------------------------------------------------------------------
+Wed May  8 10:42:38 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.54:
+  * General
+    - Update README.md @MUzairS15 (#10876)
+    - [Server] Feat: Move to v1beta1 @MUzairS15 (#10623)
+  * Meshery UI
+    - Subscribe header component to CASL ability update @betelgeuse-code (#10869)
+    - sistent bump and valid component @captain-Akshay (#10872)
+    - [UI] fix design configurator @MUzairS15 (#10871)
+    - Bump sistent @aabidsofi19 (#10870)
+    - [UI] Account Menu Extension Enhancements @codeKraken19 (#10854)
+  * Documentation
+    - migrate to v1beta1 @MUzairS15 (#10623)
+
+-------------------------------------------------------------------
 Sun May  5 07:28:29 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.53:
