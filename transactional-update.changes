@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May  7 14:25:07 UTC 2024 - Ignaz Forster <iforster@suse.com>
+
+- Version 4.6.8
+  - tukit: Properly handle overlay syncing failures: If the system
+    would not be rebooted and several snapshots accumulated in the
+    meantime, it was possible that the previous base snapshot -
+    required for /etc syncing - was deleted already. In that case
+    changes in /etc might have been reset.
+    [gh#openSUSE/transactional-update#116]
+    [gh#kube-hetzner/terraform-hcloud-kube-hetzner#1287]
+  - soft-reboot: Log requested reboot type
+  - soft-reboot: Don't force hard reboot on version change only
+
+-------------------------------------------------------------------
+Tue Apr 30 13:09:04 UTC 2024 - Ignaz Forster <iforster@suse.com>
+
+- Version 4.6.7
+  - Add support for snapper 0.11.0; also significantly decreases
+    cleanup time [boo#1223504]
+
+-------------------------------------------------------------------
 Thu Apr 18 14:53:17 UTC 2024 - Ignaz Forster <iforster@suse.com>
 
 - Version 4.6.6  
