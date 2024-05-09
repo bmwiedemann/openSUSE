@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed May  8 10:32:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.3.1:
+  * Fixed screen_size behavior for Windows Desktops, which was
+    being overridden by the new resize feature. #41241
+  * Ensure that the active sessions page shows up in the web UI for
+    users with permissions to join sessions. #41221
+  * Added indicators on the account settings page that tell which
+    authentication methods are active. #41169
+  * Fix a bug that was preventing tsh proxy kube certificate
+    renewal from working when accessing a leaf kubernetes cluster
+    via the root. #41158
+  * Fixed AccessDeniedException for dynamodb:ConditionCheckItem
+    operations when using AWS DynamoDB for cluster state storage.
+    #41133
+  * Added lock target to lock deletion audit events. #41112
+  * Fixed a permissions issue that prevented the teleport-cluster
+    helm chart operator from registering agentless ssh servers.
+    #41108
+  * Improve the reliability of the upload completer. #41103
+  * Allows the listener for the tbot database-tunnel service to be
+    set to a unix socket. #41008
+
+-------------------------------------------------------------------
 Thu May  2 17:45:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 15.3.0:
