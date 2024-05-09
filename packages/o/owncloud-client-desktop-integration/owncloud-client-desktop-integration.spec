@@ -38,6 +38,7 @@ GNOME, Cinnamon and MATE desktop environments.
 %package -n nautilus-extension-owncloud
 Summary:        Owncloud client integration for nautilus, the GNOME file manager
 Requires:       nautilus
+Requires:       owncloud-client
 Requires:       python3-gobject
 Requires:       python3-nautilus
 Supplements:    (owncloud-client and nautilus)
@@ -50,6 +51,7 @@ file manager.
 %package -n caja-extension-owncloud
 Summary:        Owncloud client integration for caja file manager
 Requires:       caja
+Requires:       owncloud-client
 Requires:       python-caja
 Requires:       python3-gobject
 Supplements:    (owncloud-client and caja)
@@ -62,6 +64,7 @@ file manager.
 %package -n nemo-extension-owncloud
 Summary:        Owncloud client integration for nemo file manager
 Requires:       nemo
+Requires:       owncloud-client
 Requires:       python3-gobject
 Requires:       python3-nemo
 Supplements:    (owncloud-client and nemo)
