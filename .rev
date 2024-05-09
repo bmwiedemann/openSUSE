@@ -410,4 +410,41 @@
     <comment></comment>
     <requestid>1094229</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>855429aac7a6da2809298865e114a55c</srcmd5>
+    <version>0.132.2</version>
+    <time>1715253165</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.132.2:
+  * Update references to minimum-supported python version of 3.8
+  * Set change during iteration when dispatching listeners
+  * Make async_get_service_info available on the Zeroconf object
+  * Drop python 3.7 support
+  * Avoid including scope_id in IPv6Address object if its zero
+  * Small speed up to constructing outgoing packets
+  * Speed up processing incoming packets
+  * Speed up the query handler
+  * Make ServiceInfo aware of question history
+  * Small speed up to ServiceInfo construction
+  * Significantly improve efficiency of the ServiceBrowser
+    scheduler
+  * Small speed up to processing incoming records
+  * Small performance improvement for converting time
+  * Small performance improvement for ServiceInfo asking
+    questions
+  * Small performance improvement constructing outgoing questions
+  * Scheduling race with the QueryScheduler
+  * Ensure question history suppresses duplicates
+  * Microsecond precision loss in the query handler
+  * Ensure IPv6 scoped address construction uses the string cache
+  * Add decoded_properties method to ServiceInfo
+  * Ensure ServiceInfo.properties always returns bytes
+  * Cache is_unspecified for zeroconf ip address objects
+  * `ServiceInfo.properties` always returns a dictionary with
+    type `dict[bytes, bytes | None]` instead of a mix `str` and
+    `bytes`. It was only possible to get a mixed dictionary if it
+    was manually passed in when `ServiceInfo` was constructed.
+  * Performance regression with ServiceInfo IPv6Addresses</comment>
+    <requestid>1172726</requestid>
+  </revision>
 </revisionlist>
