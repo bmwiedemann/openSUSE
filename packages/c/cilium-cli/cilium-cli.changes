@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 08 11:09:12 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.7:
+  * Prepare for v0.16.7 release
+  * connectivity: cover echo-{same,other}-node services in ingress
+    tests
+  * chore(deps): update golangci/golangci-lint-action action to
+    v5.2.0
+  * fix(deps): update all go dependencies main
+  * chore(deps): update actions/setup-go action to v5.0.1
+  * Update stable release to v0.16.6
+
+-------------------------------------------------------------------
 Tue Apr 30 19:21:50 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.6:
