@@ -1,0 +1,45 @@
+From f45ee765f95260b53c2d3783daaff9d76b8c590b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dirk=20M=C3=BCller?= <dirk@dmllr.de>
+Date: Fri, 10 May 2024 10:19:00 +0200
+Subject: [PATCH] Improve compatibility with netaddr 1.x
+
+netaddr 0.10 added flags to define the semantics while parsing
+IP addresses. available are inet_pton() and inet_aton() semantics,
+which inet_aton() semantics the default in 0.10 and inet_pton() the
+default in 1.x. As the testsuite specifically tests for aton semantics,
+set that flag.
+
+Change-Id: I06eec5619f958f6c4b90f6068c361a18c2356be6
+---
+ ovsdbapp/utils.py | 2 +-
+ requirements.txt  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ovsdbapp/utils.py b/ovsdbapp/utils.py
+index 22338f7..fb892f1 100644
+--- a/ovsdbapp/utils.py
++++ b/ovsdbapp/utils.py
+@@ -24,7 +24,7 @@ from ovsdbapp.backend.ovs_idl import rowview
+ 
+ 
+ def normalize_ip(ip):
+-    return str(netaddr.IPAddress(ip))
++    return str(netaddr.IPAddress(ip, flags=netaddr.INET_ATON))
+ 
+ 
+ def normalize_ip_port(ipport):
+diff --git a/requirements.txt b/requirements.txt
+index 778430d..b15760c 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -2,6 +2,6 @@
+ # date but we do not test them so no guarantee of having them all correct. If
+ # you find any incorrect lower bounds, let us know or propose a fix.
+ fixtures>=3.0.0 # Apache-2.0/BSD
+-netaddr>=0.7.18 # BSD
++netaddr>=0.10.0 # BSD
+ ovs>=2.10.0 # Apache-2.0
+ pbr!=2.1.0,>=2.0.0 # Apache-2.0
+-- 
+2.44.0
+

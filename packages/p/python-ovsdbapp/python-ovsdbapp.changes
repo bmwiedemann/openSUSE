@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 10 09:04:45 UTC 2024 - cloud-devel@suse.de
+
+- added 0001-Improve-compatibility-with-netaddr-1.x.patch
+- update to version 2.6.0
+  - tox: Drop envdir
+  - Bump hacking
+  - reno: Update master for unmaintained/yoga
+  - add Port_Binding to lookup_table
+  - Update supported python versions
+  - Support add/remove CIDR type address in Address_Set cmds
+
+-------------------------------------------------------------------
 Thu Jan  4 09:07:26 UTC 2024 - cloud-devel@suse.de
 
 - update to version 2.5.0

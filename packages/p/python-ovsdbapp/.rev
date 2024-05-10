@@ -254,4 +254,19 @@
   - nb: add 'nexthop' argument to 'lr_route_del'</comment>
     <requestid>1136724</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>29ca9d87e9ab4fa2d6e6e1cf2b08d606</srcmd5>
+    <version>2.6.0</version>
+    <time>1715335590</time>
+    <user>dimstar_suse</user>
+    <comment>- added 0001-Improve-compatibility-with-netaddr-1.x.patch
+- update to version 2.6.0
+  - tox: Drop envdir
+  - Bump hacking
+  - reno: Update master for unmaintained/yoga
+  - add Port_Binding to lookup_table
+  - Update supported python versions
+  - Support add/remove CIDR type address in Address_Set cmds</comment>
+    <requestid>1173076</requestid>
+  </revision>
 </revisionlist>
