@@ -2,14 +2,14 @@
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 
+## Description
 Apache Tomcat (Tomcat for short) is a free and open-source implementation of the
 Jakarta Servlet, Jakarta Expression Language, and WebSocket technologies. It
 provides a pure Java HTTP web server environment that can run Java code. It is a
 Java web application server and not a complete JEE application server.
 
 
-## How to use the image
-
+## Usage
 By default, the image launches Tomcat with the same configuration as the one
 that comes with SUSE Linux Enterprise Server. The difference is that logging is
 sent to stdout, meaning that the `podman logs tomcat` command displays Tomcat
