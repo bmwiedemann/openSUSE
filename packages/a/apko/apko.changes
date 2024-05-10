@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Thu May 09 15:48:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.1:
+  * default supplier to Chainguard
+  * fix: remove default supplier for index SBOMs
+  * build(deps): bump actions/setup-go from 5.0.0 to 5.0.1
+  * build(deps): bump step-security/harden-runner from 2.7.0 to
+    2.7.1
+  * build(deps): bump golangci/golangci-lint-action from 5.0.0 to
+    5.1.0
+  * build(deps): bump github/codeql-action from 3.25.2 to 3.25.3
+  * build(deps): bump go.opentelemetry.io/otel from 1.25.0 to
+    1.26.0
+  * build(deps): bump golangci/golangci-lint-action from 4.0.0 to
+    5.0.0
+  * build(deps): bump actions/checkout from 4.1.3 to 4.1.4
+  * build(deps): bump github/codeql-action from 3.25.1 to 3.25.2
+  * build(deps): bump actions/checkout from 4.1.2 to 4.1.3
+  * Parse apkindex only once during initialization
+  * Comment fix
+  * Refresh make generate
+  * feat(user): Allow overriding the default shell
+  * Update sbom-aarch64.spdx.json
+  * spdx: remove more mentions of files
+  * build(deps): bump golang.org/x/net in the go_modules group
+  * Run build script for apko examples if such exists
+  * Prepare the script to be run as part of github workflow
+  * Fix golangci-lint
+  * build(deps): bump github/codeql-action from 3.25.0 to 3.25.1
+  * build(deps): bump github/codeql-action from 3.24.10 to 3.25.0
+  * Add example for building on top of base
+  * Update pkg/build/types/image_configuration.go
+  * Update internal/cli/build.go
+  * Address part of the comments from review round 1
+  * build(deps): bump github.com/sigstore/cosign/v2 from 2.2.3 to
+    2.2.4
+  * build(deps): bump sigstore/cosign-installer from 3.4.0 to 3.5.0
+  * Improve getImageForArch - nested index support and lookup of
+    arch in config
+  * Build and lock support for base image
+  * Build and lock support for base image
+  * Build and lock support for base image
+  * build(deps): bump golang.org/x/sys from 0.18.0 to 0.19.0
+  * build(deps): bump golang.org/x/sync from 0.6.0 to 0.7.0
+  * build(deps): bump github/codeql-action from 3.24.9 to 3.24.10
+  * build(deps): bump go.opentelemetry.io/otel from 1.24.0 to
+    1.25.0
+  * build(deps): bump sigs.k8s.io/release-utils from 0.8.0 to 0.8.1
+  * build(deps): bump sigs.k8s.io/release-utils from 0.7.7 to 0.8.0
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.11.0 to
+    5.12.0
+  * Add testdata for apko on top of base image
+  * build(deps): bump github/codeql-action from 3.24.8 to 3.24.9
+  * build(deps): bump github.com/charmbracelet/log
+  * more tests
+  * fix golden tests
+  * fix test
+  * try to fix this test
+  * ignore Files when generating SBOMs
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump github/codeql-action from 3.24.7 to 3.24.8
+  * build(deps): bump github.com/google/go-containerregistry
+  * Add more spans around potentially slow ops
+  * build(deps): bump github/codeql-action from 3.24.6 to 3.24.7
+  * Add Harden Runner audit configs
+  * build(deps): bump actions/checkout from 4.1.1 to 4.1.2
+  * build(deps): bump k8s.io/apimachinery from 0.28.3 to 0.29.2
+  * Bump go-apk
+  * build(deps): bump gopkg.in/go-jose/go-jose.v2 from 2.6.1 to
+    2.6.3
+  * build(deps): bump github.com/stretchr/testify from 1.8.4 to
+    1.9.0
+  * build(deps): bump github/codeql-action from 3.24.5 to 3.24.6
+  * Bump go-apk
+  * build(deps): bump go.opentelemetry.io/otel from 1.22.0 to
+    1.24.0
+  * build(deps): bump github/codeql-action from 3.23.2 to 3.24.5
+  * Store checksum of apko-config in the lock-file to detect
+    changes in origin.
+  * Drop creating group log
+  * Allow apko dot to be cancelled
+  * build(deps): bump golangci/golangci-lint-action from 3.7.0 to
+    4.0.0
+  * Make sure we clean up after ourselves
+  * Preserve APK hardlinks
+  * build(deps): bump golang.org/x/sys from 0.16.0 to 0.17.0
+  * build(deps): bump github.com/chainguard-dev/clog from 1.3.0 to
+    1.3.1
+  * go mod tidy
+  * fix repro test
+  * pick up go-apk changes
+  * move some logs to debug, avoid duplicate work/logs
+  * Cancel context on interrupt signal
+  * go mod tidy
+  * use charmlog @ head to get levels"
+  * support log-level flag
+  * Plumb ctx through daemon package
+  * use charm logger
+  * build(deps): bump github.com/chainguard-dev/clog
+  * build(deps): bump github.com/google/go-containerregistry
+  * build(deps): bump github.com/sigstore/cosign/v2 from 2.2.1 to
+    2.2.3
+  * build(deps): bump sigstore/cosign-installer from 3.2.0 to 3.4.0
+  * Make apko dot show errors
+  * build(deps): bump github/codeql-action from 2.22.6 to 3.23.2
+  * build(deps): bump actions/setup-go from 4.1.0 to 5.0.0
+
+-------------------------------------------------------------------
+Wed Jan 31 14:20:12 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.0:
+  * Bump go-apk to pick up new solver behavior
+  * Plumb offline flags around more
+  * Audit workflow permissions (#1017)
+  * Add test and trailing new line to `apko.lock.json` files.
+  * simplify logging to use slog
+  * remove unused MarkDeprecated
+  * remove unused AdditionalTags method
+  * drop deprecated options field
+
+-------------------------------------------------------------------
 Mon Jan 15 20:42:20 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.13.3:
