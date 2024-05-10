@@ -231,4 +231,12 @@
 Sorry - I missed that on the previous fixup. Now we should be good for sysusers (forwarded request 1144265 from dimstar)</comment>
     <requestid>1144284</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9482c0b5f6062ae8a07e20b47736fe5f</srcmd5>
+    <version>2.1.0</version>
+    <time>1715335579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1173063</requestid>
+  </revision>
 </revisionlist>

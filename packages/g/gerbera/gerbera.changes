@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu May  9 19:55:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Add ctypes include
+  * Add issue template
+  * Autoscan: avoid errors from parent directories
+  * Avoid crash when parent was not created yet.
+  * Bring back custom headers as client specific headers
+  * BUGFIX: common.js boxSetup check Video/AllDates for Dates
+  * Build Support for NPUPNP
+  * Bump express from 4.18.2 to 4.19.2 in /gerbera-web
+  * Bump follow-redirects from 1.15.3 to 1.15.4 in /gerbera-web
+  * Bump follow-redirects from 1.15.4 to 1.15.6 in /gerbera-web
+  * Bump xml2js and parse-bmfont-xml in /gerbera-web
+  * clang-tidy and cppcheck fixes
+  * clang-tidy fixes
+  * Cleanup FileRequestHandler
+  * CMake: Use presets
+  * Config: Refactor handling of integer types
+  * Correct two typos.
+  * debian12: fix script error
+  * Docker image usability
+  * Docker: update alpine version
+  * Enhances default javascript files to check config file
+    options
+  * Expand firewall advice in docs
+  * Fix build-deb.sh for releases
+  * Fix findAutoscanDirectory
+  * Gerbera welcomes 2024
+  * Gerbera-web: update chromedriver for tests
+  * github workflows: make cmake stuff consistent
+  * Import: Safely handle second scan
+  * Import: Safely handle second scan - 2
+  * matroska_handler: update API calls to work with
+    libebml/libmatroska 2.0
+  * MetadataHandler: Refactor static methods
+  * Metafile: handle instance
+  * Minor fixes to RST documentation
+  * Provide BoxKeys also for scripts
+  * Refactor config and enums to reduce nesting
+  * Refactor parser files
+  * Safely handle suppressed file types
+  * Scripting: print2 function with log level support
+  * some fixes
+  * Sqlite: Harden delete
+  * Take configuration into account when creating virtual-layout
+    (built-in + JS)
+  * Update Conan to v2
+  * Update screenshots to latest version
+  * Update various library versions
+  * Update workflow actions
+  * WebUI: Add Item View
+  * Webui: update vendor libraries
+
+-------------------------------------------------------------------
 Mon Feb  5 13:23:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Generate the pre script usingn sysusers_generate.
@@ -215,63 +270,63 @@ Thu Aug  5 05:35:30 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 Fri Jun 18 09:04:07 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.8.2:
-  * Enhance structured layout with configuration 
-  * string_view to string conversions 
-  * pass SearchLexer by value 
+  * Enhance structured layout with configuration
+  * string_view to string conversions
+  * pass SearchLexer by value
   * return std::nullopt for std::optional
-  * remove pointless const_cast 
+  * remove pointless const_cast
   * Improve handling of default config values
-  * several clang-tidy and manual cleanups 
+  * several clang-tidy and manual cleanups
   * Fix parseSortStatement
   * mostly pass by value changes
-  * Revert last_write_time to seconds since 1970 
-  * Encoding of web editor arguments 
-  * clang-analyzer and misc 
-  * Search query sign from beginning 
-  * manual destructor changes 
+  * Revert last_write_time to seconds since 1970
+  * Encoding of web editor arguments
+  * clang-analyzer and misc
+  * Search query sign from beginning
+  * manual destructor changes
   * Fix double truncation of playlist name
   * Generate correct statement for metadata table
-  * Make transactions for SQLite thread safe 
+  * Make transactions for SQLite thread safe
 
 -------------------------------------------------------------------
 Wed May 19 08:20:28 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.8.1:
-  * Mysql transactions 
+  * Mysql transactions
   * Support creation_time on FFmpeg handler
   * Bump lodash from 4.17.19 to 4.17.21 in /gerbera-web
-  * Synchronize threads properly 
-  * add missing optional header for GCC11 
-  * remove several implicit fs::path conversions 
-  * Concatenate multivalue field with entrySeparator 
-  * remove push_back branch 
-  * change some size_t to bool 
+  * Synchronize threads properly
+  * add missing optional header for GCC11
+  * remove several implicit fs::path conversions
+  * Concatenate multivalue field with entrySeparator
+  * remove push_back branch
+  * change some size_t to bool
   * remove some pointless lambdas
-  * remove std::distance where empty is sufficient 
-  * Implement SAMSUNG X_GetFeatureList 
-  * More chrono optimizations 
-  * algorithm cleanups 
+  * remove std::distance where empty is sufficient
+  * Implement SAMSUNG X_GetFeatureList
+  * More chrono optimizations
+  * algorithm cleanups
   * Determine container art image from files
   * massive std::chrono conversion
-  * string_view conversions 
+  * string_view conversions
   * Add support for Windows Media Player
   * Conan: Tidy up CMake conan integration
   * Implement UPnP SortCriteria
   * Avoid needless process elevation requirement on illumos
-  * Only use music tracks as container art source 
+  * Only use music tracks as container art source
   * Work around undefined syscalls on solaroid systems
   * Documentation for exiv2 meta data usage
-  * Clean compilation and errno fix 
-  * Enable ContainerArt for PC Directory 
-  * auto&& conversions 
-  * fs::path conversions 
-  * Cleanup path handling 
+  * Clean compilation and errno fix
+  * Enable ContainerArt for PC Directory
+  * auto&& conversions
+  * fs::path conversions
+  * Cleanup path handling
   * add -d, -u and -P commandline options to docs
   * Fixed required versions of libupnp and libnpupnp
   * fix UPNP_USING_CHUNKED breaks npupnp compatibility
   * clang-tidy: replace typedef with using
-  * Add cmdline options -u, -d and -P 
-  * Fix transcoded media ends before file is complete 
+  * Add cmdline options -u, -d and -P
+  * Fix transcoded media ends before file is complete
 
 -------------------------------------------------------------------
 Sat Apr 17 13:57:49 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
@@ -336,15 +391,15 @@ Mon Sep 28 15:17:30 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.6.1:
   * fixed mime type retrieval for symlinks with libmagic
-  * Actions: Run docker build on tags too 
-  * Bump js stuff to fix security warnings 
+  * Actions: Run docker build on tags too
+  * Bump js stuff to fix security warnings
   * Color folders with children instead of badges saying true
-  * Improve Resource Handling 
+  * Improve Resource Handling
   * Add subtitle as resource and update entries with resources attached,
     improve ContentHandler
   * Bump elliptic from 6.5.2 to 6.5.3 in /gerbera-web
-  * fix upnp header include 
-  * std::algorithm conversions 
+  * fix upnp header include
+  * std::algorithm conversions
   * v1.6.0: https://github.com/gerbera/gerbera/releases/tag/v1.6.0
 
 -------------------------------------------------------------------
