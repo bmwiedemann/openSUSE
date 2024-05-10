@@ -1203,7 +1203,6 @@
     <package name="kwordquiz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kwordquiz-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kwrited6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="lastlog2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="layer-shell-qt5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="layer-shell-qt6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ldmtool" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -2332,7 +2331,6 @@
     <package name="liblangtag1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liblapack3" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="liblastfm5-1" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
-    <package name="liblastlog2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblavfile-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblavjpeg-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblavplay-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
