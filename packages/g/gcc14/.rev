@@ -70,4 +70,12 @@
   * GCC 14.1 RC1</comment>
     <requestid>1170987</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b0d9771e790c3328aa25785ebd13a086</srcmd5>
+    <version>14.1.0+git10173</version>
+    <time>1715335471</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to GCC 14.1 release.</comment>
+    <requestid>1172664</requestid>
+  </revision>
 </revisionlist>
