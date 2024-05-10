@@ -755,4 +755,32 @@
 </comment>
     <requestid>1171751</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>3540a8308faf2ad3add545be53e03719</srcmd5>
+    <version>4.1.8</version>
+    <time>1715335475</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert to 4.1.8 until the ecosystem is ready (notebook)
+
+- Update to 4.2.0
+  * WorkspacesUI
+  * Recently opened/closed files
+  * Full notebook windowing mode by default
+  * Improved Shortcuts Editor
+  * Dark high contrast theme
+  * Keyboard shortcuts improvements
+  ## Bugs fixed
+  * Check the command is registered before calling
+    notifyCommandChanged() #16273 (@jtpio)
+  * Set aria-label to title if no label for #16262 (@fcollonval)
+  * Fix changing font size in text editor #16261 (@FoSuCloud)
+  * Fix replace when replacement text matches source text multiple
+    times #16258 (@JasonWeill)
+  * Add reopen closed command to tab context menu #16250
+    (@krassowski)
+- Drop some directives working around the former whl install scheme
+
+- Build from source not whl from pypi.</comment>
+    <requestid>1172955</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu May  9 15:11:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Revert to 4.1.8 until the ecosystem is ready (notebook)
+
+-------------------------------------------------------------------
+Thu May  9 09:13:15 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.2.0
+  * WorkspacesUI
+  * Recently opened/closed files
+  * Full notebook windowing mode by default
+  * Improved Shortcuts Editor
+  * Dark high contrast theme
+  * Keyboard shortcuts improvements
+  ## Bugs fixed
+  * Check the command is registered before calling
+    notifyCommandChanged() #16273 (@jtpio)
+  * Set aria-label to title if no label for #16262 (@fcollonval)
+  * Fix changing font size in text editor #16261 (@FoSuCloud)
+  * Fix replace when replacement text matches source text multiple
+    times #16258 (@JasonWeill)
+  * Add reopen closed command to tab context menu #16250
+    (@krassowski)
+- Drop some directives working around the former whl install scheme
+
+-------------------------------------------------------------------
+Wed May  8 13:27:11 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build from source not whl from pypi.
+
+-------------------------------------------------------------------
 Fri May  3 12:38:41 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.1.8

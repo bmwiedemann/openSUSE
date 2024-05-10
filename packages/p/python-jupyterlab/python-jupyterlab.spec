@@ -16,6 +16,7 @@
 #
 
 
+%define distversion 4.1.8
 Name:           python-jupyterlab
 Version:        4.1.8
 Release:        0
@@ -23,13 +24,13 @@ Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyterlab/jupyterlab
-# install from wheel with all the bundled nodejs stuff
-Source0:        https://files.pythonhosted.org/packages/py3/j/jupyterlab/jupyterlab-%{version}-py3-none-any.whl
-Source1:        https://github.com/jupyterlab/jupyterlab/raw/v%{version}/conftest.py
+Source0:        https://files.pythonhosted.org/packages/source/j/jupyterlab/jupyterlab-%{version}.tar.gz
 Source99:       python-jupyterlab-rpmlintrc
 BuildRequires:  %{python_module Jinja2 >= 3.0.3}
 BuildRequires:  %{python_module async_lru >= 1.0.0}
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatch-jupyter-builder}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module httpx >= 0.25.0}
 BuildRequires:  %{python_module importlib-metadata >= 4.8.3 if %python-base < 3.10}
 BuildRequires:  %{python_module importlib-resources >= 1.4 if %python-base < 3.9}
@@ -99,7 +100,7 @@ Requires:       jupyter-jupyterlab-filesystem
 Requires:       nodejs >= 10
 Requires:       npm >= 10
 # Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
-Requires:       python3dist(jupyterlab) = %{version}
+Requires:       python3dist(jupyterlab) = %{distversion}
 Suggests:       python3-jupyterlab
 Provides:       jupyter-jupyterlab-discovery = 6
 Obsoletes:      jupyter-jupyterlab-discovery < 6
@@ -114,27 +115,21 @@ Notebook (notebook, terminal, text editor, file browser, rich outputs,
 etc.).
 
 %prep
-%setup -q -c -T
+%autosetup -p1 -n jupyterlab-%{version}
+sed -i -e 's|^#!%{_bindir}/env node|#!%{_bindir}/node|' jupyterlab/staging/yarn.js
+chmod a+x jupyterlab/staging/yarn.js
+find jupyterlab -name yarn.lock -delete
+find jupyterlab -name .yarnrc.yml -delete
 
 %build
-# not needed
+%pyproject_wheel
 
 %install
-%pyproject_install %{SOURCE0}
+%pyproject_install
 %{python_expand #
-for f in %{buildroot}%{$python_sitelib}/jupyterlab/staging/yarn.js; do
-  sed -i -e 's|^#!%{_bindir}/env node|#!%{_bindir}/node|' $f
-  chmod a+x $f
-done
-find %{buildroot}%{$python_sitelib}/jupyterlab -name yarn.lock -delete
-find %{buildroot}%{$python_sitelib}/jupyterlab -name .yarnrc.yml -delete
-cp %{SOURCE1} %{buildroot}%{$python_sitelib}/jupyterlab/conftest.py
-%{$python_compile}
 %fdupes %{buildroot}%{$python_sitelib}
 }
 %fdupes %{buildroot}%{_jupyter_prefix}
-# Find any one installed LICENSE and get if for the rpm tagged file
-find %{buildroot}%{_prefix}/lib/python3.* -path '*/jupyterlab-%{version}.dist-info/licenses/LICENSE' -exec cp {} . ';' -quit
 %python_clone -a %{buildroot}%{_bindir}/jupyter-lab
 %python_clone -a %{buildroot}%{_bindir}/jupyter-labextension
 %python_clone -a %{buildroot}%{_bindir}/jupyter-labhub
@@ -160,8 +155,7 @@ donttest="$donttest or (TestAppHandlerRegistry and test_get_registry)"
 donttest="$donttest or (TestAppHandlerRegistry and test_populate_staging)"
 donttest="$donttest or (TestAppHandlerRegistry and test_yarn_config)"
 donttest="$donttest or (TestBuildAPI and test_build)"
-# can't use --pyargs because of conftest.py collection problems: https://github.com/pytest-dev/pytest/issues/1596
-%pytest %{buildroot}%{$python_sitelib}/jupyterlab -k "not (${donttest:4} ${$python_donttest})"
+%pytest -k "not (${donttest:4} ${$python_donttest})"
 
 %post
 %python_install_alternative jupyter-lab jupyter-labextension jupyter-labhub jlpm
