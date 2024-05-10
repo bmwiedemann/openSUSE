@@ -330,4 +330,33 @@
     <comment></comment>
     <requestid>956822</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>94d7414c16937d72d05cac1cf35b38f2</srcmd5>
+    <version>5.2</version>
+    <time>1715335527</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.2:
+  * New option -X / --fast-reachable to exit immediately once N
+    hosts have been found
+  * New option -k / -fwmark to set Linux fwmark mask (#289,
+  * Always output fatal error messages
+  * Fallback to SO\_TIMESTAMP if SO\_TIMESTAMPNS is not available
+  * Fix running in unprivileged mode
+  * Fix build issue for NetBSD/alpha
+  * Fix build issue for OpenBSD/alpha
+  * Fix build warning for long int usage
+  * Fix build error with musl libc
+  * Fix to guard against division by zero
+  * Decouple -a/-u effects from -c
+  * Added contrib/Dockerfile
+  * Update github action os images
+
+    (#91, Don Bowman)
+  + Feature:
+- Enable missing ipv6 support
+- update to 3.4
+- add ipv6 support (bnc#555691)
+- removed bogus self-provides</comment>
+    <requestid>1172977</requestid>
+  </revision>
 </revisionlist>
