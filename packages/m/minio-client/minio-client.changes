@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 10 05:01:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240509T170424Z:
+  * fix: test regression since #4920 (#4928)
+  * fix: mc find --metadata work without prefix (#4926)
+  * showing disable-pager flag as an option (#4929)
+  * fix: mc rb --force return ok with bucketNotExists (#4927)
+  * fix replication bandwidth unit conversion (#4922)
+  * Correct spelling in message (#4924)
+  * Added test for bucket replication (#4920)
+  * Fix panic in `mc admin health` command (#4921)
+
+-------------------------------------------------------------------
 Wed May 08 10:35:46 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240503T112107Z:
