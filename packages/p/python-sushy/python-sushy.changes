@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 10 08:41:29 UTC 2024 - cloud-devel@suse.de
+
+- update to version 5.0.0
+  - Allows System to access VirtualMedia in Sushy
+  - [codespell] Adding Tox Target for Codespell
+  - Add a boot progress indicator
+  - Update supported python versions
+  - [codespell] Fixing Spelling Mistakes
+  - reno: Update master for unmaintained/yoga
+  - Handle exceptions after re-authentication
+  - Force constraints when installing a package during tox test
+  - Handle session-uri in body
+  - Add release version to release notes
+  - [codespell] Adding CI target for Tox Codespell
+  - Handle a different related properties for missing TransferProtocolType
+  - Remove version field from iLO error
+
+-------------------------------------------------------------------
 Thu Jan  4 09:03:59 UTC 2024 - cloud-devel@suse.de
 
 - update to version 4.7.0

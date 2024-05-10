@@ -266,4 +266,25 @@
   - Fix wrong _get_registry logic in ResourceBase</comment>
     <requestid>1136721</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dde34302635d88a273abb9d1f585cadd</srcmd5>
+    <version>5.0.0</version>
+    <time>1715335575</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.0.0
+  - Allows System to access VirtualMedia in Sushy
+  - [codespell] Adding Tox Target for Codespell
+  - Add a boot progress indicator
+  - Update supported python versions
+  - [codespell] Fixing Spelling Mistakes
+  - reno: Update master for unmaintained/yoga
+  - Handle exceptions after re-authentication
+  - Force constraints when installing a package during tox test
+  - Handle session-uri in body
+  - Add release version to release notes
+  - [codespell] Adding CI target for Tox Codespell
+  - Handle a different related properties for missing TransferProtocolType
+  - Remove version field from iLO error</comment>
+    <requestid>1173072</requestid>
+  </revision>
 </revisionlist>
