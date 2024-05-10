@@ -178,4 +178,20 @@
   - tox: Trivial cleanups</comment>
     <requestid>977251</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c4c9e789bc9bcc2c789adc8645a94d0a</srcmd5>
+    <version>3.0.0</version>
+    <time>1715335571</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.0.0
+  - tox: Replace whitelist_externals
+  - coveragerc: Remove non-existent path
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - Update python classifier in setup.cfg
+  - Drop python3.6/3.7 support in testing runtime
+  - Add py39 package metadata
+  - Bump hacking
+  - Moves supported python runtimes from version 3.8 to 3.10</comment>
+    <requestid>1173070</requestid>
+  </revision>
 </revisionlist>

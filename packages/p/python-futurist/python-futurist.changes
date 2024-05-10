@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 10 08:39:55 UTC 2024 - cloud-devel@suse.de
+
+- update to version 3.0.0
+  - tox: Replace whitelist_externals
+  - coveragerc: Remove non-existent path
+  - Revert "Moves supported python runtimes from version 3.8 to 3.10"
+  - Update python classifier in setup.cfg
+  - Drop python3.6/3.7 support in testing runtime
+  - Add py39 package metadata
+  - Bump hacking
+  - Moves supported python runtimes from version 3.8 to 3.10
+
+-------------------------------------------------------------------
 Sat May 14 15:45:21 UTC 2022 - cloud-devel@suse.de
 
 - update to version 2.4.1

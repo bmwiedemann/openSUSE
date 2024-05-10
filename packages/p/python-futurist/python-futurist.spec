@@ -1,7 +1,7 @@
 #
 # spec file for package python-futurist
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-futurist
-Version:        2.4.1
+Version:        3.0.0
 Release:        0
 Summary:        Useful additions to futures, from the future.
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/futurist
-Source0:        https://files.pythonhosted.org/packages/source/f/futurist/futurist-2.4.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/f/futurist/futurist-3.0.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable
 BuildRequires:  python3-Sphinx
@@ -47,14 +47,14 @@ Useful additions to futures, from the future.
 This package contains the Python 3.x module.
 
 %prep
-%autosetup -p1 -n futurist-2.4.1
+%autosetup -p1 -n futurist-3.0.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
 # generate html docs
-PBR_VERSION=2.4.1 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=3.0.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -r doc/build/html/.{doctrees,buildinfo}
 
@@ -62,7 +62,7 @@ rm -r doc/build/html/.{doctrees,buildinfo}
 %{py3_install}
 
 %check
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-futurist
 %doc doc/build/html README.rst
