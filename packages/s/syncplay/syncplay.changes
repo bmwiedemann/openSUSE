@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu May  9 19:29:21 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.7.3:
+  * Fix MPV socket getting created in CWD folder rand only create second pipe 
+    if manually specified using input-ipc-server per player argument
+  * Add support for mpv installed from Microsoft store 
+  * Fix invalid string escapes 
+
+- Update to version 1.7.2:
+  * Add new per-user mpv.net path 
+  * Pass input-ipc-server player argument to mpv 
+  * Fix --no-gui PySide dependency issue on non-Windows OS 
+  * Fixed German Translation and added more Translated Strings 
+  * Remove adding executable permissions to .desktop files 
+  * Allow player arguments with spaces/quotes
+  * Fixed MPC-HC hanging issue involving 'LRESULT' error
+  * Don't log all 32/64-bit cryptography 'frozen zipimport' errors
+  * Provide more information on PySide load failure
+  * Avoid error when closing Syncplay before loadDelayedPath is complete
+
+-------------------------------------------------------------------
 Sat Feb  3 16:44:06 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.7.1:

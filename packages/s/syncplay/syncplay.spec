@@ -17,7 +17,7 @@
 
 
 Name:           syncplay
-Version:        1.7.1
+Version:        1.7.3
 Release:        0
 Summary:        Client/server to synchronize media playback on mpv/VLC on multiple computers
 License:        Apache-2.0
