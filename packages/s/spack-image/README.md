@@ -2,6 +2,7 @@
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 
+## Description
 Spack is a package manager for supercomputers. It provides build recipes
 for more than 6000 software components, and it allows to build entire
 HPC application stacks with little to no prerequisites.
@@ -11,8 +12,7 @@ or an `apptainter.def` file created by `spack containerize`. It can be
 used to run spack commands directly as well. Doing this may require to
 bind-mount local directories into the container.
 
-## How to use the image
-
+## Usage
 This image may be used to build and containerize application stacks using
 Spack. The stack is installed in a base container such as SLE BCI Base.
 To build a containerized application stack, create the file `spack.yaml`
