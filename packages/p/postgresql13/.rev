@@ -365,4 +365,22 @@
     <comment></comment>
     <requestid>1154712</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>26892742cd1d49a80cdc8ce53c2f9eb2</srcmd5>
+    <version>13.15</version>
+    <time>1715335518</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 13.15 (bsc#1224051):
+  * Fix incompatibility with LLVM 18.
+  * https://www.postgresql.org/docs/release/13.15/
+- Prepare for PostgreSQL 17.
+- Make sure all compilation and doc generation happens in %build.
+
+- Require LLVM &lt;= 17 for now, because LLVM 18 doesn't seem to work.
+
+- Remove constraints file because improved memory usage for s390x
+
+  * https://www.postgresql.org/docs/release/13.14/</comment>
+    <requestid>1172963</requestid>
+  </revision>
 </revisionlist>

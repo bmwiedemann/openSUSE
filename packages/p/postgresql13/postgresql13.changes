@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed May  8 14:10:27 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Upgrade to 13.15 (bsc#1224051):
+  * Fix incompatibility with LLVM 18.
+  * https://www.postgresql.org/docs/release/13.15/
+- Prepare for PostgreSQL 17.
+- Make sure all compilation and doc generation happens in %build.
+
+-------------------------------------------------------------------
+Wed May  1 15:24:39 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Require LLVM <= 17 for now, because LLVM 18 doesn't seem to work.
+
+-------------------------------------------------------------------
+Thu Mar  7 15:04:40 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Remove constraints file because improved memory usage for s390x
+
+-------------------------------------------------------------------
 Thu Feb 29 14:37:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -19,7 +38,7 @@ Thu Feb  8 14:10:04 UTC 2024 - Reinhard Max <max@suse.com>
   * If you use GIN indexes, you may need to reindex after updating
     to this release.
   * LLVM 18 is now supported.
-  * https://www.postgresql.org/docs/release/13.4/
+  * https://www.postgresql.org/docs/release/13.14/
 
 -------------------------------------------------------------------
 Wed Nov  8 14:35:06 UTC 2023 - Reinhard Max <max@suse.com>
