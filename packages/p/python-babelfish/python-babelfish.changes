@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 10 03:49:30 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.6.1
+  * Bump dependencies
+  * Replace pkg_resources with importlib
+- Drop python-babelfish-rpmlintrc (no longer necessary)
+
+-------------------------------------------------------------------
 Mon Nov  8 17:24:33 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.6.0

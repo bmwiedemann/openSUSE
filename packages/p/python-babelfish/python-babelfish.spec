@@ -1,7 +1,7 @@
 #
 # spec file for package python-babelfish
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,16 +17,15 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-babelfish
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        A Python library to work with countries and languages
 License:        BSD-3-Clause
 URL:            https://travis-ci.org/Diaoul/babelfish
 Source:         https://files.pythonhosted.org/packages/source/b/babelfish/babelfish-%{version}.tar.gz
-Source99:       %{name}-rpmlintrc
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry >= 1.0.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -36,19 +35,21 @@ BuildArch:      noarch
 BabelFish is a Python library to work with countries and languages.
 
 %prep
-%setup -q -n babelfish-%{version}
+%autosetup -p1 -n babelfish-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitelib}/babelfish
-%{python_sitelib}/babelfish-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/babelfish-%{version}.dist-info
 
 %changelog
