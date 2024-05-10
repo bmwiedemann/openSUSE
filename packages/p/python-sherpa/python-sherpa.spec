@@ -107,7 +107,8 @@ donttest+=" or (test_regproj and sherpa.plot.dummy_backend)"
 donttest+=" or (test_fit_single and Chi2XspecVar)"
 %endif
 donttest+=" or test_Griewank"
-%pytest_arch %{?jobs:-n %jobs} --pyargs sherpa -k "not ($donttest)"
+# Tests must not be run in parallel https://github.com/sherpa/sherpa/issues/2031
+%pytest_arch -n1 --pyargs sherpa -k "not ($donttest)"
 
 %post
 %python_install_alternative sherpa_smoke

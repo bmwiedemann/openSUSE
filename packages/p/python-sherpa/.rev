@@ -199,4 +199,12 @@
 - Skip python312: Requires setuptools &lt; 60 and distutils</comment>
     <requestid>1147599</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>a568de90cadd0a1421482357a1f952ad</srcmd5>
+    <version>4.16.0</version>
+    <time>1715335557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1173052</requestid>
+  </revision>
 </revisionlist>

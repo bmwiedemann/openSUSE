@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  8 19:28:20 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Do not run tests in parallel to avoid random failures
+  (gh#sherpa/sherpa#2031).
+
+-------------------------------------------------------------------
 Sun Feb 18 15:31:44 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python312: Requires setuptools < 60 and distutils
