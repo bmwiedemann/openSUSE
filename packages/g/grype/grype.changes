@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 10 05:07:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.77.4:
+  * Upgrade tool management (#1842)
+  * chore(deps): update Syft to v1.4.0 (#1855)
+  * chore(deps): update bootstrap tools to latest versions (#1852)
+  * chore(deps): bump github.com/charmbracelet/bubbletea (#1853)
+  * chore(deps): bump github.com/docker/docker (#1854)
+  * chore(deps): bump actions/checkout from 4.1.4 to 4.1.5 (#1847)
+
+-------------------------------------------------------------------
 Wed May 08 11:40:40 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.77.3:
