@@ -9,18 +9,15 @@ Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/cmd/kured/main.go b/cmd/kured/main.go
-index 6f6cfeb..e6d3a2f 100644
+index 3ad1cbe..ee54013 100644
 --- a/cmd/kured/main.go
 +++ b/cmd/kured/main.go
-@@ -126,7 +126,7 @@ func main() {
+@@ -185,7 +185,7 @@ func NewRootCommand() *cobra.Command {
  		"Taint name applied during pending node reboot (to prevent receiving additional pods from other rebooting nodes). Disabled by default. Set e.g. to \"weave.works/kured-node-reboot\" to enable tainting.")
  	rootCmd.PersistentFlags().StringVar(&rebootSentinelCommand, "reboot-sentinel-command", "",
  		"command for which a zero return code will trigger a reboot command")
 -	rootCmd.PersistentFlags().StringVar(&rebootCommand, "reboot-command", "/bin/systemctl reboot",
 +	rootCmd.PersistentFlags().StringVar(&rebootCommand, "reboot-command", "/usr/bin/systemctl reboot",
  		"command to run when a reboot is required")
- 
- 	rootCmd.PersistentFlags().StringVar(&slackHookURL, "slack-hook-url", "",
--- 
-2.34.1
-
+ 	rootCmd.PersistentFlags().IntVar(&concurrency, "concurrency", 1,
+ 		"amount of nodes to concurrently reboot. Defaults to 1")

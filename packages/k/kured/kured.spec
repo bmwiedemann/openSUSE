@@ -1,7 +1,7 @@
 #
 # spec file for package kured
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,8 @@
 # nodebuginfo
 
 
-# Remove stripping of Go binaries.
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-# Project upstream commit.
-%define commit 685f328
 Name:           kured
-Version:        1.10.2
+Version:        1.15.1
 Release:        0
 Summary:        Kubernetes daemonset to perform safe automatic node reboots
 License:        Apache-2.0
@@ -32,10 +28,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Patch0:         systemctl-path.patch
 Patch1:         kured-imagePullPolicy.patch
-BuildRequires:  fdupes
-BuildRequires:  go-go-md2man
-BuildRequires:  golang(API) >= 1.17
-ExcludeArch:    s390
+BuildRequires:  golang(API) >= 1.20
 
 %description
 Kured (KUbernetes REboot Daemon) is a Kubernetes daemonset that
@@ -60,27 +53,20 @@ This package contains the yaml file requried to download and run the
 kured container in a kubernetes cluster.
 
 %prep
-%autosetup -a1 -p1
+%autosetup -a 1 -p 1
 
 %build
-# Build the binary.
-export VERSION=%{version}
-export COMMIT=%{commit}
-go build \
-   -mod vendor -buildmode=pie \
-   -ldflags "-s -w -X main.gitCommit=$COMMIT -X main.version=$VERSION" \
-   -o %{name} cmd/kured/*go
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
+go build ./cmd/%{name}
+
+%check
+# execute the binary as a basic check
+./%{name} --help
 
 %install
-# Install the binary.
 install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
-
-# Build the man page from markdown documentation.
-go-md2man -in README.md -out %{name}.1
-
-# Install the man page.
-install -D -m 0644 %{name}.1 "%{buildroot}/%{_mandir}/man1/%{name}.1"
-rm %{name}.1
 
 # Install provided yaml file to download and run the kured container
 mkdir -p %{buildroot}%{_datadir}/k8s-yaml/kured
@@ -88,13 +74,10 @@ cat kured-rbac.yaml kured-ds.yaml > %{buildroot}%{_datadir}/k8s-yaml/kured/kured
 chmod 644  %{buildroot}%{_datadir}/k8s-yaml/kured/kured.yaml
 sed -i -e 's|image: .*|image: registry.opensuse.org/kubic/kured:%{version}|g' %{buildroot}%{_datadir}/k8s-yaml/kured/kured.yaml
 
-%fdupes %{buildroot}
-
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
-%{_mandir}/man1/kured.1%{?ext_man}
 
 %files k8s-yaml
 %dir %{_datarootdir}/k8s-yaml

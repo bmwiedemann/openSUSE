@@ -1,4 +1,305 @@
 -------------------------------------------------------------------
+Sun Mar 24 21:49:40 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Rebase kured-imagePullPolicy.patch
+  * Rebase systemctl-path.patch
+  * _service change disabled to manual per osc deprecation warning:
+    WARNING: Command 'disabledrun/dr' is obsolete, please convert
+    your _service to use 'manual' and then 'manualrun/mr' instead.
+  * Update to BuildRequires: golang(API) >= 1.20 matching go.mod
+  * Re-enable binary stripping and debuginfo boo#1210938
+  * Drop BuildRequires: go-md2man and use plain markdown as %doc
+  * Drop BuildRequires: fdupes and usage during install step. Go
+    application packages have a small number of installed files and
+    this hasn't been an issue following the transition from GOPATH
+  * Drop ExcludeArch: s390
+  * Remove ldflags -X entries for upstream import path and version.
+    This information is embedded in binaries with go1.18+ and
+    available via go version -m or runtime/debug.ReadBuildInfo().
+  * Remove define git commit ref no longer needed
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Add basic %check to execute binary --help
+
+-------------------------------------------------------------------
+Sun Mar 24 19:34:36 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.15.1:
+  * chore: update to 1.15.1
+  * update bootstrap tools
+  * update k8s deps
+  * build(deps): bump google.golang.org/protobuf from 1.32.0 to 1.33.0
+  * build(deps): bump guyarb/golang-test-annoations from 0.7.0 to 0.8.0
+  * build(deps): bump github.com/stretchr/testify from 1.8.4 to 1.9.0
+  * build(deps): bump aquasecurity/trivy-action from 0.17.0 to 0.18.0 (#905)
+  * build(deps): bump github.com/prometheus/client_golang
+  * build(deps): bump github.com/prometheus/common from 0.47.0 to 0.48.0
+  * Update k8s deps (#901)
+  * build(deps): bump github.com/prometheus/common from 0.46.0 to 0.47.0
+  * build(deps): bump helm/kind-action from 1.8.0 to 1.9.0
+  * build(deps): bump aquasecurity/trivy-action from 0.16.1 to 0.17.0
+  * build(deps): bump nick-invision/retry from 2.9.0 to 3.0.0 (#892)
+  * build(deps): bump docker/metadata-action from 5.5.0 to 5.5.1 (#893)
+  * build(deps): bump lycheeverse/lychee-action from 1.9.2 to 1.9.3
+  * build(deps): bump alpine from 3.19.0 to 3.19.1
+  * build(deps): bump lycheeverse/lychee-action from 1.9.1 to 1.9.2
+
+-------------------------------------------------------------------
+Sun Mar 24 19:33:04 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.15.0:
+  * feat: update to 1.15.0 (#887)
+  * build(deps): bump github.com/prometheus/common from 0.45.0 to 0.46.0 (#885)
+  * build(deps): bump lycheeverse/lychee-action from 1.9.0 to 1.9.1
+  * build(deps): bump actions/checkout from 3 to 4
+  * build(deps): bump actions/setup-go from 4 to 5 (#882)
+  * build(deps): bump docker/setup-qemu-action from 2 to 3
+  * build(deps): bump nick-invision/retry from 2.8.3 to 2.9.0 (#880)
+  * build(deps): bump docker/setup-buildx-action from 2 to 3 (#879)
+  * build(deps): bump kubereboot/kured from 1.13.2 to 1.14.2 (#877)
+  * ci: update k8s test matrix (#883)
+  * Add signal-reboot (#814)
+  * build(deps): bump lycheeverse/lychee-action from 1.8.0 to 1.9.0
+  * build(deps): bump docker/metadata-action from 5.4.0 to 5.5.0
+  * build(deps): bump aquasecurity/trivy-action from 0.16.0 to 0.16.1
+  * build(deps): bump github.com/prometheus/client_golang
+  * build(deps): bump github.com/spf13/viper from 1.18.1 to 1.18.2
+  * build(deps): bump docker/metadata-action from 5.3.0 to 5.4.0
+  * update k8s image versions
+  * update k8s deps
+  * build(deps): bump github/codeql-action from 2 to 3
+  * feat: add drain delay (#852)
+  * build(deps): bump aquasecurity/trivy-action from 0.15.0 to 0.16.0
+
+-------------------------------------------------------------------
+Sun Mar 24 19:32:41 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.14.2:
+  * build(deps): bump alpine from 3.18.5 to 3.19.0
+  * build(deps): bump github.com/spf13/viper from 1.18.0 to 1.18.1
+  * update for 1.14.2 release
+  * build(deps): bump actions/stale from 8 to 9
+  * build(deps): bump github.com/spf13/viper from 1.17.0 to 1.18.0
+  * build(deps): bump actions/setup-go from 4 to 5
+  * build(deps): bump aquasecurity/trivy-action from 0.14.0 to 0.15.0
+  * build(deps): bump docker/metadata-action from 5.2.0 to 5.3.0
+  * build(deps): bump docker/metadata-action from 5.1.0 to 5.2.0
+  * build(deps): bump alpine from 3.18.4 to 3.18.5
+  * build(deps): bump docker/metadata-action from 5.0.0 to 5.1.0
+  * doc: rename myself (#851)
+
+-------------------------------------------------------------------
+Sun Mar 24 19:32:17 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.14.1:
+  * update 'update instructions'
+  * prepare new release
+  * build(deps): bump aquasecurity/trivy-action from 0.13.1 to 0.14.0
+  * build(deps): bump github.com/spf13/cobra from 1.7.0 to 1.8.0
+  * build(deps): bump aquasecurity/trivy-action from 0.13.0 to 0.13.1 (#846)
+  * build(deps): bump aquasecurity/trivy-action from 0.12.0 to 0.13.0
+  * build(deps): bump github.com/prometheus/common from 0.44.0 to 0.45.0
+  * update x/net dependency
+  * update k8s dependencies
+  * build(deps): bump github.com/spf13/viper from 1.16.0 to 1.17.0
+  * build(deps): bump alpine from 3.18.3 to 3.18.4
+  * build(deps): bump github.com/prometheus/client_golang
+  * build(deps): bump nick-invision/retry from 2.8.3 to 2.9.0
+  * build(deps): bump gotest.tools/v3 from 3.5.0 to 3.5.1
+  * build(deps): bump docker/setup-buildx-action from 2 to 3
+  * build(deps): bump docker/metadata-action from 4.6.0 to 5.0.0
+  * build(deps): bump docker/build-push-action from 4 to 5
+  * build(deps): bump docker/login-action from 2 to 3
+  * build(deps): bump docker/setup-qemu-action from 2 to 3
+  * Fix the goreleaser architecture for arm and ppc (#824)
+  * build(deps): bump actions/checkout from 3 to 4
+  * build(deps): bump aquasecurity/trivy-action from 0.11.2 to 0.12.0
+  * build(deps): bump github.com/containrrr/shoutrrr from 0.7.1 to 0.8.0
+
+-------------------------------------------------------------------
+Sun Mar 24 19:31:18 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.14.0:
+  * feat: change manifest for 1.14.0 (#820)
+  * build: confirm cosign prompt
+  * fix: don’t hold node lock if reboot is blocked (#819)
+  * feat: use go@1.20, k8s@0.27.4, test k8s 1.26-1.28 (#818)
+  * cleanup: updated build-tools (#809)
+  * add argument to invert the behavior of alert-filter-regexp (#786)
+  * Add multiple concurrent node reboot feature (#660)
+  * build(deps): bump alpine from 3.18.2 to 3.18.3
+  * Adds new flag --metrics-host (#811)
+  * fix: log on unusual sentinel-command exit code (#806)
+  * feat: use readOnlyRootFilesystem (#805)
+  * Support pod-selector for drain command (#788)
+
+-------------------------------------------------------------------
+Sun Mar 24 19:31:00 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.13.2:
+  * chore: update manifest version
+  * update k8s components/images
+  * build(deps): bump guyarb/golang-test-annoations from 0.6.0 to 0.7.0 (#801)
+  * build(deps): bump helm/kind-action from 1.7.0 to 1.8.0
+  * build(deps): bump gotest.tools/v3 from 3.4.0 to 3.5.0 (#789)
+  * build(deps): bump alpine from 3.18.0 to 3.18.2
+  * build(deps): bump github.com/prometheus/client_golang
+  * build(deps): bump docker/metadata-action from 4.5.0 to 4.6.0
+  * build(deps): bump aquasecurity/trivy-action from 0.11.0 to 0.11.2
+  * feat: metrics port command (#780)
+
+-------------------------------------------------------------------
+Sun Mar 24 19:30:43 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.13.1:
+  * release 1.13.1 (#779)
+  * build(deps): bump docker/metadata-action from 4.4.0 to 4.5.0
+  * update k8s deps
+  * build(deps): bump aquasecurity/trivy-action from 0.10.0 to 0.11.0
+  * build(deps): bump github.com/sirupsen/logrus from 1.9.2 to 1.9.3
+  * build(deps): bump github.com/stretchr/testify from 1.8.3 to 1.8.4
+  * build(deps): bump github.com/spf13/viper from 1.15.0 to 1.16.0 (#773)
+  * build(deps): bump github.com/prometheus/common from 0.43.0 to 0.44.0
+  * build(deps): bump github.com/stretchr/testify from 1.8.2 to 1.8.3
+  * build(deps): bump github.com/sirupsen/logrus from 1.9.0 to 1.9.2
+  * build(deps): bump helm/kind-action from 1.6.0 to 1.7.0 (#767)
+  * build(deps): bump helm/kind-action from 1.5.0 to 1.6.0 (#766)
+  * build(deps): bump lycheeverse/lychee-action from 1.7.0 to 1.8.0
+  * build(deps): bump alpine from 3.17.3 to 3.18.0
+  * update Daniel's entry
+  * build(deps): bump github.com/prometheus/common from 0.42.0 to 0.43.0 (#762)
+  * build(deps): bump github.com/prometheus/client_golang
+
+-------------------------------------------------------------------
+Sun Mar 24 19:30:19 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.13.0:
+  * Update go-restful and prepare 1.13.0 (#760)
+  * update to new k8s releases
+  * update docs location (#758)
+  * build(deps): bump aquasecurity/trivy-action from 0.9.2 to 0.10.0
+  * build(deps): bump lycheeverse/lychee-action from 1.6.1 to 1.7.0
+  * build(deps): bump docker/metadata-action from 4.3.0 to 4.4.0
+  * fix: annotate nodes for reboot before aborting due to blocked (#749)
+  * build(deps): bump github.com/prometheus/client_golang
+  * update k8s dependencies and test images for k8s release (#747)
+  * build(deps): bump github.com/spf13/cobra from 1.6.1 to 1.7.0
+  * build(deps): bump alpine from 3.17.2 to 3.17.3
+  * build(deps): bump actions/stale from 7 to 8 (#748)
+  * build(deps): bump actions/setup-go from 3 to 4
+
+-------------------------------------------------------------------
+Sun Mar 24 19:29:58 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.12.2:
+  * chore: prepare release 1.12.2
+  * Add ports config to DaemonSet yaml. Closes #741 (#742)
+  * build(deps): bump github.com/prometheus/common from 0.41.0 to 0.42.0
+  * build(deps): bump aquasecurity/trivy-action from 0.9.1 to 0.9.2
+  * build(deps): bump github.com/prometheus/common from 0.40.0 to 0.41.0
+  * update Go to 1.19, it's used in k8s 1.24 as well
+  * lychee: exclude slack:// and teams:// urls as well
+  * Try to dropping golang.org/x/text replacement
+  * build(deps): bump github.com/stretchr/testify from 1.8.1 to 1.8.2
+  * build(deps): bump lycheeverse/lychee-action from 1.5.4 to 1.6.1
+  * build(deps): bump github.com/prometheus/common from 0.39.0 to 0.40.0
+  * Move to aquasecurity/trivy-action instead
+  * update relevant deps
+  * build(deps): bump alpine from 3.17.1 to 3.17.2
+
+-------------------------------------------------------------------
+Sun Mar 24 19:29:41 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.12.1:
+  * prepare for 1.12.1 release
+  * drop unnecessary replacement for go-restful CVE
+  * build(deps): bump docker/build-push-action from 3 to 4
+  * build(deps): bump github.com/containrrr/shoutrrr from 0.7.0 to 0.7.1
+  * build(deps): bump github.com/containrrr/shoutrrr from 0.6.1 to 0.7.0
+  * build(deps): bump github.com/spf13/viper from 1.14.0 to 1.15.0
+  * build(deps): bump docker/metadata-action from 4.2.0 to 4.3.0
+  * build(deps): bump docker/metadata-action from 4.1.1 to 4.2.0 (#716)
+  * build(deps): bump alpine from 3.17.0 to 3.17.1 (#714)
+  * build(deps): bump nick-invision/retry from 2.8.2 to 2.8.3
+  * build(deps): bump actions/stale from 6 to 7
+  * update golang.org/x/net dep
+
+-------------------------------------------------------------------
+Sun Mar 24 19:28:55 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.12.0:
+  * chore: updated image
+  * build(deps): bump github.com/prometheus/common from 0.38.0 to 0.39.0 (#710)
+  * build(deps): bump helm/kind-action from 1.4.0 to 1.5.0
+  * update for k8s 1.26
+  * build(deps): bump github.com/prometheus/common from 0.37.0 to 0.38.0
+  * document where to find the invidivual repositories
+  * move documentation to kured.dev
+  * build(deps): bump alpine from 3.16.3 to 3.17.0 (#704)
+  * use website logos
+  * make the governance ours
+  * Import GOVERNANCE-maintainer.md template
+  * add mailing list
+  * build(deps): bump alpine from 3.16.2 to 3.16.3
+  * Fix location of Dockerfile for dependabot
+  * build(deps): bump lycheeverse/lychee-action from 1.5.2 to 1.5.4
+  * build(deps): bump github.com/prometheus/client_golang
+  * build(deps): bump github.com/spf13/viper from 1.13.0 to 1.14.0
+
+-------------------------------------------------------------------
+Sun Mar 24 19:28:17 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.11.0:
+  * chore: bump to 1.11.0
+  * build(deps): bump lycheeverse/lychee-action from 1.5.1 to 1.5.2 (#691)
+  * build(deps): bump github.com/prometheus/client_golang
+  * build(deps): bump Jerome1337/golint-action from 1.0.2 to 1.0.3
+  * adjust link to CONTRIBUTING file
+  * brown paper bag for #686
+  * Replace set-output with GITHUB_OUTPUT
+  * simplify the setup of go in workflows
+  * Move DEV doc to be CONTRIBUTING.md
+  * Remove deadlink to k8s 1.10 support branch
+  * website: we don't use analytics
+  * Add CLOMonitor badge
+  * Move to lychee for checking links
+  * Add license scan report and status
+  * build(deps): bump github.com/spf13/cobra from 1.6.0 to 1.6.1
+  * build(deps): bump github.com/stretchr/testify from 1.8.0 to 1.8.1
+  * Add ArtifactHub badge
+  * build(deps): bump docker/metadata-action from 4.1.0 to 4.1.1
+  * update x/net and x/text to include security fix
+  * build(deps): bump nick-invision/retry from 2.8.1 to 2.8.2 (#669)
+  * build(deps): bump docker/metadata-action from 4.0.1 to 4.1.0
+  * add CodeQL cron job
+  * build(deps): bump github.com/spf13/cobra from 1.5.0 to 1.6.0
+  * build(deps): bump gotest.tools/v3 from 3.3.0 to 3.4.0 (#663)
+  * update meeting day
+  * fix: fix spdx-sbom-handling (#661)
+  * feat: Integrate GoReleaser, Cosign and Syft (#595)
+  * Update to latest k8s
+  * build(deps): bump helm/kind-action from 1.3.0 to 1.4.0
+  * build(deps): bump actions/stale from 5 to 6
+  * build(deps): bump docker/metadata-action from 3.3.0 to 4.0.1
+  * Remove reference to dockerhub image
+  * Use github token instead of bot accounts
+  * stop publishing to Docker Hub
+  * Changed weaveworks to kubereboot in many places
+  * Remove charts from repo
+  * Add footer to README
+  * require DCO from now on
+  * Add a warning to inform users about move
+  * Update golang and x/net
+  * ci: Ignore cache to pick latest matching go ver
+  * Update Slack information - point to CNCF Slack.
+  * Update maintainer email address
+  * build(deps): bump github.com/spf13/viper from 1.12.0 to 1.13.0 (#626)
+
+-------------------------------------------------------------------
 Thu Feb 22 12:42:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

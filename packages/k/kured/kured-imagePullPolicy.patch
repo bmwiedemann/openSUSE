@@ -9,18 +9,15 @@ Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/kured-ds.yaml b/kured-ds.yaml
-index d3bd85e..6afce93 100644
+index 6baf7c1..aac5c46 100644
 --- a/kured-ds.yaml
 +++ b/kured-ds.yaml
-@@ -34,7 +34,7 @@ spec:
-           image: docker.io/weaveworks/kured:1.10.2
-                  # If you find yourself here wondering why there is no
-                  # :latest tag on Docker Hub,see the FAQ in the README
+@@ -39,7 +39,7 @@ spec:
+           # If you find yourself here wondering why there is no
+           # :latest tag on Docker Hub,see the FAQ in the README
+           image: ghcr.io/kubereboot/kured:1.15.1
 -          imagePullPolicy: IfNotPresent
 +          imagePullPolicy: Always
            securityContext:
              privileged: true # Give permission to nsenter /proc/1/ns/mnt
-           env:
--- 
-2.37.2
-
+             readOnlyRootFilesystem: true
