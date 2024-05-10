@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 10 06:13:54 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Require cpio, needed for .obscpio support
+
+-------------------------------------------------------------------
 Mon Apr 29 06:31:36 UTC 2024 - Kentaro Ishii <sony.pcv.s520@gmail.com>
 
 - Fix dependency to obs-build for Fedora

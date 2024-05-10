@@ -33,6 +33,7 @@ URL:            https://github.com/openSUSE/obs-service-source_validator
 Source:         %{name}-%{version}.tar.zst
 BuildRequires:  %{build_pkg_name}
 BuildRequires:  zstd
+Requires:       %{_bindir}/cpio
 Requires:       %{_bindir}/xmllint
 Requires:       %{build_pkg_name}
 Requires:       patch
