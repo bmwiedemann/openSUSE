@@ -124,7 +124,7 @@ source_projects_expand = devel:languages:haskell
 allowed-scm-submission-sources = devel:Factory:git-workflow:staging
 
 # devel projects are auto-maintained by devel flags of all existing packages. If a new devel project is to be introduced, it needs to be white listed until the first package entered
-devel-whitelist = M17N:Maliit
+devel-whitelist = M17N:Maliit devel:microos:aeon:images
  
 # packagelist generator related configuration
 pkglistgen-archs = x86_64
@@ -138,7 +138,7 @@ rebuild =
 # subpackages of ring packages with unacceptable requires (don't abuse)
 repo_checker-binary-whitelist-ring = patterns-media-rest_dvd patterns-media-rest_cd_x11 patterns-devel-base-devel_web patterns-base-update_test monitoring-plugins-metadata codec2-examples libreoffice-l10n-fi java-1_8_0-openjdk-accessibility hplip-scan-utils patterns-kde-devel_qt6
 
-repo_checker-allowed-in-cycles = acl,attr,audit,autoconf,automake,bc,binutils,bison,bzip2,cmake,cmake:mini,compat-usrmerge,cpio,crypto-policies,debugedit,dejagnu,diffutils,dwz,e2fsprogs,ed,elfutils,expat,expect,fdupes,file,findutils,fipscheck,flex,gawk,gcc,gcc13,gcc14,gdbm,gettext-runtime:gettext-runtime-mini,gettext-runtime-mini,glibc,glibc:i686,gmp,gpm,gzip,help2man,isl,keyutils,krb5-mini,libcap,libcap-ng,libdb-4_8,libeconf,libedit,libffi,libgcrypt,libgpg-error,libnsl,libnss_usrfiles,libseccomp,libselinux,libsemanage,libsepol,libtirpc,libtool,libuv,libverto,libxcrypt,libzio,linux-glibc-devel,lua-macros,lua54,m4,make,makedepend,memory-constraints,meson,mpc,mpdecimal,mpfr,ncurses,netcfg,ninja,openssl,openssl-1_1,openssl-3,pam,patch,pcre2,perl,perl-Text-Unidecode,perl-gettext,permissions,pkgconf,popt,python-rpm-macros,python-rpm-packaging,python-flit-core:primary,python-packaging:primary,python-pyparsing:primary,python311:base,readline,rhash,rpm,screen,shadow,system-user-root,system-users,systemd-rpm-macros,systemtap:systemtap-headers,systemtap-headers,sysuser-tools,tcl,tclap,tcpd,texinfo,timezone,dpkg:update-alternatives,utempter,util-linux,which,xxhash,xz,zlib,zstd,
+repo_checker-allowed-in-cycles = acl,attr,audit,autoconf,automake,bc,binutils,bison,bzip2,cmake,cmake:mini,compat-usrmerge,cpio,crypto-policies,debugedit,dejagnu,diffutils,dwz,e2fsprogs,ed,elfutils,expat,expect,fdupes,file,findutils,fipscheck,flex,gawk,gcc,gcc13,gcc14,gdbm,gettext-runtime:gettext-runtime-mini,gettext-runtime-mini,glibc,glibc:i686,gmp,gpm,gzip,help2man,isl,keyutils,krb5-mini,libcap,libcap-ng,libdb-4_8,libeconf,libedit,libffi,libgcrypt,libgpg-error,libnsl,libnss_usrfiles,libseccomp,libselinux,libsemanage,libsepol,libtirpc,libtool,libuv,libverto,libxcrypt,libzio,linux-glibc-devel,lua-macros,lua54,m4,make,makedepend,memory-constraints,meson,mpc,mpdecimal,mpfr,ncurses,netcfg,ninja,openssl,openssl-1_1,openssl-3,pam,patch,pcre2,perl,perl-Text-Unidecode,perl-gettext,permissions,pkgconf,popt,python-rpm-macros,python-rpm-packaging,python-flit-core:primary,python-packaging:primary,python-pyparsing:primary,python311:base,readline,rhash,rpm,screen,shadow,system-user-root,system-users,systemd-rpm-macros,systemtap:systemtap-headers,systemtap-headers,sysuser-tools,tcl,tclap,tcpd,texinfo,timezone,dpkg:update-alternatives,ulp-macros,utempter,util-linux,which,xxhash,xz,zlib,zstd,
 
 staging-required-checks-adi = installcheck
 repo_checker-project-skip = True
@@ -161,7 +161,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20240509</value>
+    <value>20240510</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
