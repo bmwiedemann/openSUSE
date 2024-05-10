@@ -1,7 +1,7 @@
 #
 # spec file for package fscrypt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fscrypt
-Version:        0.3.4
+Version:        0.3.5
 Release:        0
 Summary:        Go tool for managing Linux filesystem encryption
 License:        Apache-2.0
@@ -31,7 +31,7 @@ BuildRequires:  golang-packaging
 BuildRequires:  m4
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-BuildRequires:  golang(API) >= 1.16
+BuildRequires:  golang(API) >= 1.18
 BuildRequires:  pkgconfig(bash-completion)
 Requires:       pam-fscrypt = %{version}
 

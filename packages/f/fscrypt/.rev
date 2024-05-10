@@ -45,4 +45,27 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1072103</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6f6b62a7b4f40a61f7d2aca41865b339</srcmd5>
+    <version>0.3.5</version>
+    <time>1715335525</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.5:
+  * Upgraded various dependencies, resolving two security alerts
+    from GitHub.
+  * `fscrypt` now requires Go 1.18 or later to build.
+  * `fscrypt` now provides a better error message when it's asked
+    to operate on a locked regular file.
+  * Made some improvements to the documentation.
+
+- drop pam-specs from main package
+- use pam_moduledir
+    script (CVE-2022-25328, command injection).
+  * Make pam_fscrypt ignore system users completely.
+- refresh 346.patch with final merged state
+- add 346.patch (bsc#1195623)
+  * Improved the documentation.
+- spec-cleaner run</comment>
+    <requestid>1172978</requestid>
+  </revision>
 </revisionlist>
