@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  3 07:33:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.1:
+  * update copy usage in Quantity converter to deal with astropy
+    6.1 changes.
+
+-------------------------------------------------------------------
 Fri Mar 15 19:17:10 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.6.0

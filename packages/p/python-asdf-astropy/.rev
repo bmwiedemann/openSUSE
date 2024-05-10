@@ -106,4 +106,12 @@ This is just to get rid of the build failure in d:l:p. It is not suitable for an
     <comment></comment>
     <requestid>1158294</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>348618e02ecafb5a992946ba3ccc8ece</srcmd5>
+    <version>0.6.1</version>
+    <time>1715335577</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1173055</requestid>
+  </revision>
 </revisionlist>
