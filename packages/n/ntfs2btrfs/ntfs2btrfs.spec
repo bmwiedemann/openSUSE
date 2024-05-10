@@ -1,7 +1,7 @@
 #
 # spec file for package ntfs2btrfs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,13 @@
 #
 
 
-%define		tag 	20230501
 Name:           ntfs2btrfs
-Version:        %{tag}
+Version:        20240115
 Release:        0
 Summary:        In-place conversion tool from NTFS to BTRFS
 License:        GPL-2.0-only
 URL:            https://github.com/maharmstone/ntfs2btrfs
-Source:         https://github.com/maharmstone/ntfs2btrfs/archive/refs/tags/%{tag}.tar.gz
+Source:         https://github.com/maharmstone/ntfs2btrfs/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fmt-devel
 BuildRequires:  gcc-c++

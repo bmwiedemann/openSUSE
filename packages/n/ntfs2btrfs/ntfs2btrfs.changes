@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  9 00:00:00 CEST 2024 - dsterba@suse.cz
+
+- update to version 20240115:
+  - fix build with gcc 14
+  - spec: use tag as version
+
+-------------------------------------------------------------------
 Tue Oct 24 00:00:00 CEST 2023 - dsterba@suse.cz
 
 - Update to version 20230501:
