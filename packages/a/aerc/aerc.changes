@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 10 08:08:08 UTC 2024 - Hannes Braun <apple.hannes@gmail.com>
+
+- Set locale to UTF-8 when testing filters 
+
+-------------------------------------------------------------------
 Thu Apr 18 20:50:16 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Build without date to improve reproducibility

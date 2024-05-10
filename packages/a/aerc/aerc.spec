@@ -58,7 +58,7 @@ export HOME=${PWD}
 
 %check
 %gotest ./...
-./filters/test.sh
+LC_ALL=C.UTF-8 ./filters/test.sh
 
 %files
 %license LICENSE
