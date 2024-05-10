@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  9 09:18:42 UTC 2024 - Matthias Bach <marix@marix.org> - 1.7.1
+
+- Update to 1.7.1
+  * Wait up to two seconds for uinput devices to appear.
+
+-------------------------------------------------------------------
 Mon Feb 19 18:59:44 UTC 2024 - Matthias Bach <marix@marix.org> - 1.7.0
 
 - Update to 1.7.0

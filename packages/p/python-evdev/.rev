@@ -140,4 +140,13 @@
 - Drop obsolete Leap 15.3 compatiblity handling in spec file.</comment>
     <requestid>1147703</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>99f87c269789c8335875f864a7d62cef</srcmd5>
+    <version>1.7.1</version>
+    <time>1715335523</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.1
+  * Wait up to two seconds for uinput devices to appear.</comment>
+    <requestid>1172973</requestid>
+  </revision>
 </revisionlist>
