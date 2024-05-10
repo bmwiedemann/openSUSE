@@ -18,13 +18,15 @@
 
 %bcond_without  intree_libs
 Name:           gamescope
-Version:        3.14.6
+Version:        3.14.13
 Release:        0
 Summary:        Micro-compositor optimized for running video games on Wayland
 License:        BSD-2-Clause
 Group:          Amusements/Games/Other
 URL:            https://github.com/Plagman/gamescope
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM libliftoff-fix-gcc14-calloc-transposed-args.patch -- Fixes libliftoff build with gcc14
+Patch1:         libliftoff-fix-gcc14-calloc-transposed-args.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  glslang-devel

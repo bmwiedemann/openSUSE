@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 08 13:35:00 UTC 2024 - antonio.teixeira@suse.com
+
+- Update to version 3.14.13:
+  * wlserver: Fix content overrides for reparented windows
+  * drm: Add drm_debug_disable_in_fence_fd convar
+  * wlserver: Cursor constraint improvements
+  * wlserver: Add affirmative log that libei started
+  * layer: Fix double ptr in RemoveFromChain (and add vkroots checks)
+  * rendervulkan, shaders: Fix mura correction with FSR + NIS
+  * InputEmulation: Add missing break to {START,STOP}_EMULATING
+  * layer: Fix crash with frame limiter aware
+  * reshade: added helper lambda: matchesAnnotationName
+  * reshade: prefer ranges + bind_front over custom lambda
+- Add upstream patch libliftoff-fix-gcc14-calloc-transposed-args.patch
+  * Fix libliftoff builds with gcc14
+
+-------------------------------------------------------------------
 Thu Apr 25 14:16:52 UTC 2024 - antonio.teixeira@suse.com
 
 - Update to version 3.14.6:
