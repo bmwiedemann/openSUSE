@@ -231,4 +231,12 @@
     <comment>- Update to release 4.2.3</comment>
     <requestid>1163151</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>98d2033d49e374ecd4ea0e7b19ce6ad4</srcmd5>
+    <version>4.2.4</version>
+    <time>1715335485</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.2.4</comment>
+    <requestid>1172906</requestid>
+  </revision>
 </revisionlist>
