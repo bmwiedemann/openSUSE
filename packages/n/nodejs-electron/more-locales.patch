@@ -1,0 +1,91 @@
+Upstream builds only include devtools in English and Chinese. But there are more translations available in the source.
+
+--- src/build/config/locales.gni.orig
++++ src/build/config/locales.gni
+@@ -169,9 +169,8 @@ platform_pak_locales = all_chrome_locale
+ if (is_android) {
+   platform_pak_locales -= _non_android_locales
+   extended_locales -= _non_android_locales
+-} else {
+-  platform_pak_locales -= extended_locales
+ }
++extended_locales = []
+ 
+ # The base list for all platforms except Android excludes the extended locales.
+ # Add or subtract platform specific locales below.
+--- src/chrome/app/resources/locale_settings_linux.grd.orig
++++ src/chrome/app/resources/locale_settings_linux.grd
+@@ -4,7 +4,6 @@
+     <output filename="grit/platform_locale_settings.h" type="rc_header">
+       <emit emit_type='prepend'></emit>
+     </output>
+-    <if expr="is_android">
+       <output filename="platform_locale_settings_as.pak" type="data_package" lang="as" />
+       <output filename="platform_locale_settings_az.pak" type="data_package" lang="az" />
+       <output filename="platform_locale_settings_be.pak" type="data_package" lang="be" />
+@@ -31,7 +30,6 @@
+       <output filename="platform_locale_settings_uz.pak" type="data_package" lang="uz" />
+       <output filename="platform_locale_settings_zh-HK.pak" type="data_package" lang="zh-HK" />
+       <output filename="platform_locale_settings_zu.pak" type="data_package" lang="zu" />
+-    </if>
+     <output filename="platform_locale_settings_af.pak" type="data_package" lang="af" />
+     <output filename="platform_locale_settings_am.pak" type="data_package" lang="am" />
+     <output filename="platform_locale_settings_ar.pak" type="data_package" lang="ar" />
+@@ -39,6 +37,7 @@
+     <output filename="platform_locale_settings_bn.pak" type="data_package" lang="bn" />
+     <output filename="platform_locale_settings_ca.pak" type="data_package" lang="ca" />
+     <output filename="platform_locale_settings_cs.pak" type="data_package" lang="cs" />
++    <output filename="platform_locale_settings_cy.pak" type="data_package" lang="cy" />
+     <output filename="platform_locale_settings_da.pak" type="data_package" lang="da" />
+     <output filename="platform_locale_settings_de.pak" type="data_package" lang="de" />
+     <output filename="platform_locale_settings_el.pak" type="data_package" lang="el" />
+--- src/third_party/devtools-frontend/src/config/gni/devtools_grd_files.gni.orig
++++ src/third_party/devtools-frontend/src/config/gni/devtools_grd_files.gni
+@@ -2,6 +2,9 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
++import("//build/config/devtools.gni")
++import("//$devtools_root_location/config/gni/i18n.gni")
++
+ # This represents all the files expected to be be in the GRD. The file
+ # has two lists, one for files expected for the Release build
+ # (is_debug=false), and another for the Debug build (is_debug=true).
+@@ -648,6 +651,15 @@ grd_files_release_sources = [
+   "front_end/worker_app.html",
+ ]
+ 
++
++grd_files_release_sources -= [
++    "front_end/core/i18n/locales/en-US.json",
++    "front_end/core/i18n/locales/zh.json"
++]
++foreach(locale, bundled_devtools_locales) {
++    grd_files_release_sources += [ "front_end/core/i18n/locales/$locale.json" ]
++}
++
+ grd_files_debug_sources = [
+   "front_end/core/common/App.js",
+   "front_end/core/common/AppProvider.js",
+--- src/third_party/devtools-frontend/src/config/gni/i18n.gni.orig
++++ src/third_party/devtools-frontend/src/config/gni/i18n.gni
+@@ -5,6 +5,9 @@
+ import("//build/config/devtools.gni")
+ 
+ remote_devtools_locales = [
++]
++
++bundled_devtools_locales = [
+   "af",
+   "am",
+   "ar",
+@@ -85,9 +88,6 @@ remote_devtools_locales = [
+   "zh-HK",
+   "zh-TW",
+   "zu",
+-]
+-
+-bundled_devtools_locales = [
+   "en-US",
+   "zh",
+ ]

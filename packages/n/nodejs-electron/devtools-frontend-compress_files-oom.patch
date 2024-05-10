@@ -1,0 +1,14 @@
+Avoid OOM on 32bit by iterating over files sequentially instead of stuffing them into async
+
+--- src/third_party/devtools-frontend/src/scripts/build/compress_files.js.orig
++++ src/third_party/devtools-frontend/src/scripts/build/compress_files.js
+@@ -75,7 +75,8 @@ async function main(argv) {
+   const fileList = argv[fileListPosition + 1];
+   const fileListContents = await readTextFile(fileList);
+   const files = fileListContents.split(' ');
+-  await Promise.all(files.map(filename => filename.trim()).map(compressFile));
++  for (i in files)
++    await compressFile(files[i].trim())
+ }
+ 
+ main(process.argv).catch(err => {

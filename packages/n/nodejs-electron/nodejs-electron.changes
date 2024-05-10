@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May  9 05:33:05 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 29.3.3
+  * Fixed an issue where fs.createWriteStream could write out of order.
+  * Avoid some crashes when launching new process if Electron package is upgraded while apps are running
+  * Fix use after free in V8 (CVE-2024-3914 bsc#1222958)
+  * Fix use after free in Angle (CVE-2024-4558 bsc#1224045)
+  * a11y: avoid clearing/resetting focus on an already focused element.
+
+-------------------------------------------------------------------
+Wed May  8 19:57:09 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Build all translations for devtools, not just Chinese.
+  * more-locales.patch
+  * devtools-frontend-compress_files-oom.patch
+
+-------------------------------------------------------------------
 Fri May  3 07:59:49 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Change version number to reflect this is a git snapshot.

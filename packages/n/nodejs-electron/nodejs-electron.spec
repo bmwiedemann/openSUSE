@@ -208,8 +208,8 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        29.3.2~20240430g19f0abd6
-%global tag_version 29.3.2
+Version:        29.3.3
+%global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Source-Code AND bzip2-1.0.6 AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11%{!?with_system_minizip: AND Zlib}
@@ -235,11 +235,10 @@ Source418:      v8-icu73-simple-case-folding.patch
 Source450:      wayland-proto-31-cursor-shape.patch
 
 
-# PATCHES for openSUSE-specific things
+# PATCHES for openSUSE-specific things (compiler flags, paths, etc.)
 Patch0:         chromium-102-compiler.patch
 Patch1:         fpic.patch
 Patch3:         gcc-enable-lto.patch
-Patch6:         chromium-vaapi.patch
 Patch7:         chromium-91-java-only-allowed-in-android-builds.patch
 # Always disable use_thin_lto which is an lld feature
 Patch21:        electron-13-fix-use-thin-lto.patch
@@ -247,28 +246,37 @@ Patch21:        electron-13-fix-use-thin-lto.patch
 Patch25:        electron-16-system-node-headers.patch
 # https://sources.debian.org/patches/chromium/102.0.5005.115-1/debianization/support-i386.patch/
 Patch39:        support-i386.patch
-# from https://sources.debian.org/patches/chromium/103.0.5060.53-1/disable/catapult.patch/
-Patch67:        disable-catapult.patch
 Patch69:        nasm-generate-debuginfo.patch
-Patch70:        disable-fuses.patch
-# https://code.qt.io/cgit/qt/qtwebengine-chromium.git/commit/?h=102-based&id=d617766b236a93749ddbb50b75573dd35238ffc9
-Patch73:        disable-webspeech.patch
 Patch74:        common.gypi-remove-fno-omit-frame-pointer.patch
 Patch75:        gcc-asmflags.patch
-# https://sources.debian.org/patches/chromium/108.0.5359.124-1/disable/tests.patch/
-Patch76:        disable-devtools-tests.patch
 Patch77:        angle_link_glx.patch
 Patch78:        rdynamic.patch
 Patch80:        icon.patch
-Patch81:        disable-tests.patch
 Patch82:        node-compiler.patch
-Patch83:        remove-rust.patch
 Patch84:        aarch64-Xclang.patch
-Patch85:        remove-dawn.patch
-Patch86:        aom-vpx-no-thread-wrapper.patch
-Patch87:        remove-openscreen.patch
-Patch88:        remove-password-manager-and-policy.patch
-Patch89:        remove-puffin.patch
+Patch85:        devtools-frontend-compress_files-oom.patch
+
+
+# PATCHES that remove code we don't want. Most of them can be reused verbatim by other distributors,
+# and some of them probably should be submitted upstream (at least to Electron, not necessarily to Chromium)
+
+# from https://sources.debian.org/patches/chromium/103.0.5060.53-1/disable/catapult.patch/
+Patch567:       disable-catapult.patch
+Patch570:       disable-fuses.patch
+# https://code.qt.io/cgit/qt/qtwebengine-chromium.git/commit/?h=102-based&id=d617766b236a93749ddbb50b75573dd35238ffc9
+Patch573:       disable-webspeech.patch
+# https://sources.debian.org/patches/chromium/108.0.5359.124-1/disable/tests.patch/
+Patch576:       disable-devtools-tests.patch
+Patch581:       disable-tests.patch
+Patch583:       remove-rust.patch
+Patch585:       remove-dawn.patch
+Patch586:       aom-vpx-no-thread-wrapper.patch
+Patch587:       remove-openscreen.patch
+Patch588:       remove-password-manager-and-policy.patch
+Patch589:       remove-puffin.patch
+
+
+
 
 # PATCHES to use system libs
 Patch1000:      do-not-build-libvulkan.so.patch
@@ -373,6 +381,11 @@ Patch3149:      boringssl-internal-addc-cxx.patch
 Patch3150:      InternalAllocator-too-many-initializers.patch
 Patch3151:      distributed_point_functions-evaluate_prg_hwy-signature.patch
 Patch3152:      fake_ssl_socket_client-Wlto-type-mismatch.patch
+
+# Patches to re-enable upstream force disabled features.
+# There's no sense in submitting them but they may be reused as-is by other packagers.
+Patch5000:      more-locales.patch
+Patch5006:      chromium-vaapi.patch
 
 BuildRequires:  brotli
 %if %{with system_cares}
