@@ -159,4 +159,12 @@
     <comment>- Update to release 20240303</comment>
     <requestid>1154440</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c611afda3334a6d07afd809685b80970</srcmd5>
+    <version>20240510</version>
+    <time>1715335586</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20240510</comment>
+    <requestid>1173057</requestid>
+  </revision>
 </revisionlist>
