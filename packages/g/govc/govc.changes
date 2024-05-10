@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 10 05:07:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.37.2:
+  * chore: Update version.go for v0.37.2
+  * vcsim: Add PbmCheckCompatibility method in pbm simulator
+  * api: add checksum validation in Content Library update session
+    file API
+  * vcsim: fix ReconfigVM validation when changing disk size
+  * api: add SSLCertificate to TransferEndpoint in content library
+    API
+
+-------------------------------------------------------------------
 Thu Apr 18 19:03:13 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.37.1:
