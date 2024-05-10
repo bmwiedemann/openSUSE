@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May  2 11:03:20 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.33.1.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-ui-1.33.1/src/CHANGES.md
+
+-------------------------------------------------------------------
+Thu Apr 18 23:38:07 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.33.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-ui-1.33/src/CHANGES.md
+
+- Drop obsolete "fix-build-with-ghc-9.8.x.patch".
+
+-------------------------------------------------------------------
 Wed Feb 28 16:04:39 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Apply "fix-build-with-ghc-9.8.x.patch" to fix the build with
