@@ -15,15 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%define ROCm_version 6.1.0
 Name:           btop
-Version:        1.3.2+git20240212.fd2a2ac
+Version:        1.3.2+git20240501.dd4ada7
 Release:        0
 Summary:        Usage and stats for processor, memory, disks, network and processes
 License:        Apache-2.0
 Group:          System/Monitoring
 URL:            https://github.com/aristocratos/btop
-Source:         %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
+### osc service runall download_files
+Source1:        https://github.com/ROCm/rocm_smi_lib/archive/refs/tags/rocm-%{ROCm_version}.tar.gz#/rocm_smi_lib-rocm-%{ROCm_version}.tar.gz
+#####
+Source99:       btop-rpmlintrc
 Patch0:         Makefile.diff
 BuildRequires:  coreutils
 BuildRequires:  cmake
@@ -31,7 +35,12 @@ BuildRequires:  cmake
 BuildRequires:  gcc13-c++
 %define cxxflags CXXFLAGS="%{optflags} -fPIE"
 %define cxxopt CXX="g++-13"
-%define lddopt LDCXXFLAGS="-ldl -lpthread -pie -DFMT_HEADER_ONLY"
+### Throws:
+# ... relocation R_X86_64_32S against hidden symbol `_ZTVN3fmt3v1012format_errorE' can not be used when
+#   making a PIE object ..." error when '-pie' is used
+#%%define lddopt LDCXXFLAGS="-ldl -lpthread -pie -DFMT_HEADER_ONLY"
+#####
+%define lddopt LDCXXFLAGS="-ldl -lpthread -DFMT_HEADER_ONLY"
 %else
 BuildRequires:  gcc-c++ >= 11
 %define cxxflags %{nil}
@@ -45,6 +54,9 @@ Resource monitor that shows usage and stats for processor, memory, disks, networ
 
 %prep
 %autosetup -p0
+cd %{_builddir}/%{name}-%{version}
+mkdir -vp %{_builddir}/%{name}-%{version}/lib/rocm_smi_lib
+tar zxf %{SOURCE1} -C %{_builddir}/%{name}-%{version}/lib/rocm_smi_lib --strip-components=1
 
 %build
 %make_build %{cxxflags} %{cxxopt} %{lddopt} RSMI_STATIC=true

@@ -248,4 +248,41 @@
     <comment></comment>
     <requestid>1149536</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4b0f8839f8ed5d607fb28b41ace84bcf</srcmd5>
+    <version>1.3.2+git20240501.dd4ada7</version>
+    <time>1715335500</time>
+    <user>dimstar_suse</user>
+    <comment>- Adding btop-rpmlintrc as Source99
+
+- Removing btop_collect.cpp.diff since it was fixed upstream
+- Update to version 1.3.2+git20240501.dd4ada7:
+  * Fixed missing definition for ROCm static build
+
+- Using '-pie' for 15.5 and 15.6 causes errors in the linking stage, removing.
+- Adding btop-rpmlintrc
+
+- Adjusting btop_collect.cpp.diff to follow suggestion from
+  https://github.com/aristocratos/btop/issues/837
+
+- Update to version 1.3.2+git20240430.b48bf6a:
+  * Add info text about regex filtering in help menu
+  * Add regex filtering
+  * Fix typo
+  * Show time in days when remaining battery exceeds an estimation of 24h
+  * Fix brew not finding LLVM path after release of LLVM 18
+  * Remove logging for uid without username
+  * osx: show uid instead of 'unknown' if no user exists with the same
+  * fix: crash on osx proc box
+  * fix pwr_usage not being defined correctly during rsmi collection
+
+- Adding btop_collect.cpp.diff which reverts changes that were done as a part
+  of https://github.com/aristocratos/btop/issues/794 and incorporated as
+  https://github.com/aristocratos/btop/pull/796
+- Adding ROCm tarball as Source1 vs. injecting into tarball manually
+- Updating included ROCm version from 6.0.2 to 6.1.0
+
+- Update to version 1.3.2+git20240218.6c66740:</comment>
+    <requestid>1172951</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu May  9 13:46:48 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding btop-rpmlintrc as Source99
+
+-------------------------------------------------------------------
+Wed May 01 18:53:11 UTC 2024 - scott.bradnick@suse.com
+
+- Removing btop_collect.cpp.diff since it was fixed upstream
+- Update to version 1.3.2+git20240501.dd4ada7:
+  * Fixed missing definition for ROCm static build
+
+-------------------------------------------------------------------
+Wed May  1 18:49:35 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Using '-pie' for 15.5 and 15.6 causes errors in the linking stage, removing.
+- Adding btop-rpmlintrc
+
+-------------------------------------------------------------------
+Wed May  1 18:27:21 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adjusting btop_collect.cpp.diff to follow suggestion from
+  https://github.com/aristocratos/btop/issues/837
+
+-------------------------------------------------------------------
+Wed May 01 15:03:01 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.3.2+git20240430.b48bf6a:
+  * Add info text about regex filtering in help menu
+  * Add regex filtering
+  * Fix typo
+  * Show time in days when remaining battery exceeds an estimation of 24h
+  * Fix brew not finding LLVM path after release of LLVM 18
+  * Remove logging for uid without username
+  * osx: show uid instead of 'unknown' if no user exists with the same
+  * fix: crash on osx proc box
+  * fix pwr_usage not being defined correctly during rsmi collection
+
+-------------------------------------------------------------------
+Wed May  1 13:59:12 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding btop_collect.cpp.diff which reverts changes that were done as a part
+  of https://github.com/aristocratos/btop/issues/794 and incorporated as
+  https://github.com/aristocratos/btop/pull/796
+- Adding ROCm tarball as Source1 vs. injecting into tarball manually
+- Updating included ROCm version from 6.0.2 to 6.1.0
+
+-------------------------------------------------------------------
+Thu Feb 22 14:21:45 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.3.2+git20240218.6c66740:
+  * collect: Fix reading of battery power draw on Linux
+  * cmake: Remove version specifier
+  * Ask for 'btop --version' in issue template
+  * Include build info in binary
+
+-------------------------------------------------------------------
 Thu Feb 22 10:21:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
