@@ -262,6 +262,7 @@ FileProvides: /usr/bin/comm busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/convert ImageMagick
 FileProvides: /usr/bin/cp busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/cpan perl
+FileProvides: /usr/bin/cpio cpio
 FileProvides: /usr/bin/crontab cronie
 FileProvides: /usr/bin/csh tcsh
 FileProvides: /usr/bin/csplit coreutils coreutils-single
@@ -630,7 +631,7 @@ Preinstall: libpopt0 libelf1 libzstd1 libpcre2-8-0
 #Runscripts: aaa_base
 
 Prefer: libdb-4_8-devel
-VMinstall: util-linux libmount1 perl-base libdb-4_8 libblkid1 libuuid1 libsmartcols1 libcrypt1
+VMinstall: util-linux libmount1 libeconf0 perl-base libdb-4_8 libblkid1 libuuid1 libsmartcols1 libcrypt1
 VMinstall: kernel-obs-build
 
 # Use the x86_64 kernel on i586 builds - boo#1178762 - Slow down in OBS since kernel 5.6.0 on 32bit
