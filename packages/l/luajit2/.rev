@@ -15,4 +15,12 @@
     <comment>- Removed %check (tests don't run, and it's not known how to run them).</comment>
     <requestid>1171854</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>66d288a51663e8011ed0a44bb69faaf5</srcmd5>
+    <version>2.1.20240314</version>
+    <time>1715335539</time>
+    <user>dimstar_suse</user>
+    <comment>- Changed file luajit2-name.patch and fixed package.path for modules.</comment>
+    <requestid>1173007</requestid>
+  </revision>
 </revisionlist>

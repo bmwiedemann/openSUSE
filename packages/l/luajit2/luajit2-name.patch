@@ -1,6 +1,6 @@
 diff -Pdpru luajit2-2.1-20240314.orig/Makefile luajit2-2.1-20240314/Makefile
 --- luajit2-2.1-20240314.orig/Makefile	2024-03-14 09:33:30.000000000 +0300
-+++ luajit2-2.1-20240314/Makefile	2024-04-27 20:51:52.048428059 +0300
++++ luajit2-2.1-20240314/Makefile	2024-05-10 06:41:04.539833148 +0300
 @@ -38,10 +38,10 @@ DPREFIX= $(DESTDIR)$(PREFIX)
  INSTALL_BIN=   $(DPREFIX)/bin
  INSTALL_LIB=   $(DPREFIX)/$(MULTILIB)
@@ -47,7 +47,7 @@ diff -Pdpru luajit2-2.1-20240314.orig/Makefile luajit2-2.1-20240314/Makefile
  INSTALL_PC= $(INSTALL_PKGCONFIG)/$(INSTALL_PCNAME)
  
  INSTALL_DIRS= $(INSTALL_BIN) $(INSTALL_LIB) $(INSTALL_INC) $(INSTALL_MAN) \
-@@ -78,19 +75,26 @@ RM= rm -f
+@@ -78,20 +75,27 @@ RM= rm -f
  MKDIR= mkdir -p
  RMDIR= rmdir 2>/dev/null
  SYMLINK= ln -sf
@@ -73,11 +73,14 @@ diff -Pdpru luajit2-2.1-20240314.orig/Makefile luajit2-2.1-20240314/Makefile
    SED_PC+= -e "s|^includedir=.*|includedir=$(INSTALL_INC)|"
  endif
  
- FILE_T= luajit
+-FILE_T= luajit
 -FILE_A= libluajit.a
- FILE_SO= libluajit.so
+-FILE_SO= libluajit.so
++FILE_T= luajit2
++FILE_SO= libluajit2.so
  FILE_MAN= luajit.1
  FILE_PC= luajit.pc
+ FILES_INC= lua.h lualib.h lauxlib.h luaconf.h lua.hpp luajit.h
 @@ -129,25 +133,25 @@ install: $(INSTALL_DEP)
  	@echo "==== Installing LuaJIT $(VERSION) to $(PREFIX) ===="
  	$(MKDIR) $(INSTALL_DIRS)
@@ -108,10 +111,22 @@ diff -Pdpru luajit2-2.1-20240314.orig/Makefile luajit2-2.1-20240314/Makefile
  	for file in $(FILES_JITLIB); do \
  	  $(UNINSTALL) $(INSTALL_JITLIB)/$$file; \
  	  done
+diff -Pdpru luajit2-2.1-20240314.orig/src/luaconf.h luajit2-2.1-20240314/src/luaconf.h
+--- luajit2-2.1-20240314.orig/src/luaconf.h	2024-03-14 09:33:30.000000000 +0300
++++ luajit2-2.1-20240314/src/luaconf.h	2024-05-10 06:38:55.054703618 +0300
+@@ -37,7 +37,7 @@
+ #endif
+ #define LUA_LROOT	"/usr/local"
+ #define LUA_LUADIR	"/lua/5.1/"
+-#define LUA_LJDIR	"/luajit-2.1/"
++#define LUA_LJDIR	"/luajit2-2.1/"
+ 
+ #ifdef LUA_ROOT
+ #define LUA_JROOT	LUA_ROOT
 diff -Pdpru luajit2-2.1-20240314.orig/src/Makefile luajit2-2.1-20240314/src/Makefile
 --- luajit2-2.1-20240314.orig/src/Makefile	2024-03-14 09:33:30.000000000 +0300
-+++ luajit2-2.1-20240314/src/Makefile	2024-04-27 21:17:52.326833066 +0300
-@@ -214,8 +214,8 @@ TARGET_AR= $(CROSS)ar rcus
++++ luajit2-2.1-20240314/src/Makefile	2024-05-10 06:41:13.089951754 +0300
+@@ -214,11 +214,11 @@ TARGET_AR= $(CROSS)ar rcus
  TARGET_STRIP= $(CROSS)strip
  
  TARGET_LIBPATH= $(or $(PREFIX),/usr/local)/$(or $(MULTILIB),lib)
@@ -121,4 +136,21 @@ diff -Pdpru luajit2-2.1-20240314.orig/src/Makefile luajit2-2.1-20240314/src/Make
 +TARGET_DYLIBNAME= libluajit2-$(ABIVER).$(MAJVER).dylib
  TARGET_DYLIBPATH= $(TARGET_LIBPATH)/$(TARGET_DYLIBNAME)
  TARGET_DLLNAME= lua$(NODOTABIVER).dll
- TARGET_DLLDOTANAME= libluajit-$(ABIVER).dll.a
+-TARGET_DLLDOTANAME= libluajit-$(ABIVER).dll.a
++TARGET_DLLDOTANAME= libluajit2-$(ABIVER).dll.a
+ TARGET_XSHLDFLAGS= -shared -fPIC -Wl,-soname,$(TARGET_SONAME)
+ TARGET_DYNXLDOPTS=
+ 
+@@ -541,9 +541,9 @@ LIB_VMDEF= jit/vmdef.lua
+ LIB_VMDEFP= $(LIB_VMDEF)
+ 
+ LUAJIT_O= luajit.o
+-LUAJIT_A= libluajit.a
+-LUAJIT_SO= libluajit.so
+-LUAJIT_T= luajit
++LUAJIT_A= libluajit2.a
++LUAJIT_SO= libluajit2.so
++LUAJIT_T= luajit2
+ 
+ ALL_T= $(LUAJIT_T) $(LUAJIT_A) $(LUAJIT_SO) $(HOST_T)
+ ALL_HDRGEN= lj_bcdef.h lj_ffdef.h lj_libdef.h lj_recdef.h lj_folddef.h \
