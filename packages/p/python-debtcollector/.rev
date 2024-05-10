@@ -259,4 +259,22 @@
   - Remove six</comment>
     <requestid>983967</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4656b88997675942417e7562e9176c39</srcmd5>
+    <version>3.0.0</version>
+    <time>1715335570</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.0.0
+  - Remove unused babel.cfg
+  - Update python classifier in setup.cfg
+  - Bump hacking
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - Drop python3.6/3.7 support in testing runtime
+  - requirements: Remove unnecessary dependency
+  - Add Python 3.8 and 3.9 to supported runtimes
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - coveragerc: Remove non-existent path
+  - Update CI to use unversioned jobs template</comment>
+    <requestid>1173069</requestid>
+  </revision>
 </revisionlist>
