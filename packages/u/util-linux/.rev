@@ -2582,4 +2582,12 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment>- Add file conflict of util-linux-tty-tools and busybox-util-linux. (forwarded request 1145508 from sbrabec)</comment>
     <requestid>1145510</requestid>
   </revision>
+  <revision rev="284" vrev="1">
+    <srcmd5>1c5132a0808ee4676f2f94e27aef5375</srcmd5>
+    <version>2.40.1</version>
+    <time>1715335466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1172935</requestid>
+  </revision>
 </revisionlist>

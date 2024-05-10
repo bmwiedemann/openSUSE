@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Wed May  8 14:06:51 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.40.1
+  * agetty: don't overwrite TERM passed by the user
+  * fsck.minix: fix possible overrun
+  * libblkid: fix segfault when blkid.conf doesn't exist
+  * libfdisk: add initializer to geometry
+  * libmount: fix access check for utab in context
+  * libmount: fix umount --read-only
+  * lsns: fix netns use
+- Drop skip-lsfd-tests-PR2888.patch, was a backport
+
+-------------------------------------------------------------------
+Mon May  6 17:09:08 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
+
+- Don't delete binaries not common for all architectures. Create an
+  util-linux-extra subpackage instead, so users of third party
+  tools can use them. (bsc#1222285)
+
+-------------------------------------------------------------------
+Mon Apr 15 13:27:41 UTC 2024 - Stefan Schubert <schubi@suse.com>
+
+- Added static_lib.patch to resolve build failure when using
+  libblkid.pc in --static mode
+
+-------------------------------------------------------------------
+Mon Apr  8 08:37:09 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add new lastlog2 sub-package (to solve migration problems due to
+  rpm %post/%postun ordering)
+  * Add pam-config calls to enable pam_lastlog2
+  * Add lastlog2.conf systemd-tmpfile to create database directory
+
+-------------------------------------------------------------------
+Sat Apr  6 19:53:02 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Skip tests marked as ts_skip_qemu_user when running under qemu
+- Mark racy lslocks test as known fail
+
+-------------------------------------------------------------------
+Fri Apr  5 15:55:44 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
+
+- Re-enable lsfd tests using mkfds, as it is fixed now.
+
+-------------------------------------------------------------------
+Fri Apr  5 09:33:46 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- liblastlog2-devel:
+  * Obsolete/provide lastlog2-devel for migration
+  * Add header file to filelist
+
+-------------------------------------------------------------------
+Thu Apr  4 12:27:18 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to release 2.40
+  * Add lastlog2
+  * agetty: Load autologin user from agetty.autologin credential
+  * agetty: use get_terminal_default_type()
+  * agetty: use sd_get_sessions() for number of users (#2088)
+  * blockdev: add support for BLKGETZONESZ
+  * cfdisk: ask y/n before wipe
+  * cfdisk: properly handle out-of-order partitions during resize
+  * chcpu: document limitations of -g
+  * chsh: use libeconf to read /etc/shells
+  * column: fix -l
+  * column: fix memory leak
+  * dmesg: fix FD leak
+  * dmesg: fix delta calculation
+  * dmesg: fix wrong size calculation
+  * dmesg: support reading kmsg format from file
+  * enosys: a new small command to make syscalls fail with ENOSYS
+  * exch: new command to atomically exchanges paths between two files
+  * fdisk: add support for partition resizing
+  * fdisk: remove usage of VLA
+  * fincore: add --output-all
+  * findmnt: add --list-columns
+  * findmnt: add -I, --dfi options for imitating the output of df -i
+  * findmnt: add inode-related columns for implementing "df -i" like output
+  * hexdump: add '--one-byte-hex' format option
+  * hwclock: add support for RTC_VL_READ/RTC_VL_CLR ioctls
+  * login: initialize noauth from login.noauth credential
+  * lsblk: add --filter
+  * lsblk: add --highlight
+  * lsblk: add --list-columns
+  * lsclocks: new command to show clocks
+  * lscpu: even more Arm part numbers
+  * mkfs.minix: handle 64bit time on 32bit system
+  * mkswap: implement --file
+  * mkswap: implement --offset
+  * mount: add --map-users and --map-groups convenience options
+  * nsenter: add option `-c` to join the cgroup of target process
+  * setarch: add riscv64/riscv32 support
+  * setpgid: new command to run a program in a new process group
+  * uuidd: add cont_clock persistence
+  * uuidgen: add option --count
+  * wall: query logind for list of users with tty (#2088)
+  * write: query logind for list of users with tty (#2088)
+  * libuuid: improved support for 64-bit time
+- skip-lsfd-tests-PR2888.patch: skip some lsfd tests which OBS does
+  not support (https://github.com/util-linux/util-linux/issues/2822)
+- use-logind-not-utmp.patch: removed, accepted upstream
+- tests-increase-delay-for-waitpid-test.patch: removed, upstreamed
+- 0001-Revert-libblkid-try-LUKS2-first-when-probing.patch: reverted upstream
+- util-linux-fix-tests-with-64k-pagesize.patch: was a backport
+
+-------------------------------------------------------------------
 Fri Feb  9 17:56:16 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
 
 - Add file conflict of util-linux-tty-tools and busybox-util-linux.

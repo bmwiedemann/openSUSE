@@ -20,7 +20,7 @@
 
 # Parts description:
 # core: libraries, all binaries except those dependent on libsystemd
-# systemd: binaries dependent on systemd, man pages (generator is dependent on ruby)
+# systemd: binaries dependent on systemd or sqlite3, man pages (generator is dependent on ruby)
 # python: Python bindings
 
 %if "%{flavor}" == ""
@@ -85,11 +85,11 @@ Group:          Development/Languages/Python
 %endif
 # ulbuild == python
 
-Version:        2.39.3
+Version:        2.40.1
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://www.kernel.org/pub/linux/utils/util-linux/
-Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-%{version}.tar.xz
+Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.40/util-linux-%{version}.tar.xz
 Source2:        util-linux-login_defs-check.sh
 Source3:        util-linux-rpmlintrc
 Source7:        baselibs.conf
@@ -102,16 +102,15 @@ Source13:       %{_name}.keyring
 Source14:       runuser.pamd
 Source15:       runuser-l.pamd
 Source16:       su-l.pamd
+Source17:       tmpfiles.lastlog2.conf
 Source51:       blkid.conf
+# PATCH-EXTEND-UPSTREAM: Let `su' handle /sbin and /usr/sbin in path
 Patch0:         make-sure-sbin-resp-usr-sbin-are-in-PATH.diff
 Patch1:         libmount-print-a-blacklist-hint-for-unknown-filesyst.patch
 Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
+# PATCH-FIX-SUSE util-linux-bash-completion-su-chsh-l.patch bsc1172427 -- Fix "su -s" bash completion.
 Patch3:         util-linux-bash-completion-su-chsh-l.patch
-Patch4:         0001-Revert-libblkid-try-LUKS2-first-when-probing.patch
-Patch5:         util-linux-fix-tests-with-64k-pagesize.patch
-Patch6:         use-logind-not-utmp.patch
-Patch7:         tests-increase-delay-for-waitpid-test.patch
-
+Patch5:         static_lib.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel
@@ -119,7 +118,7 @@ BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  gettext-devel
 BuildRequires:  libcap-ng-devel
-BuildRequires:  libeconf-devel
+BuildRequires:  libeconf-devel-static
 BuildRequires:  libselinux-devel
 BuildRequires:  libsepol-devel
 BuildRequires:  libtool
@@ -132,7 +131,7 @@ BuildRequires:  utempter-devel
 %endif
 BuildRequires:  zlib-devel
 Requires(post): permissions
-Requires(verify):permissions
+Requires(verify): permissions
 # util-linux is part of VMInstall, but we can well build without it
 # Helps shorten a cycle and eliminate a bootstrap issue
 #!BuildIgnore:  util-linux
@@ -148,6 +147,7 @@ BuildRequires:  libudev-devel
 BuildRequires:  socat
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  rubygem(asciidoctor)
 Supplements:    (util-linux and systemd)
 # Split-provides for upgrade from SLE < 12 and openSUSE <= 13.1
@@ -224,6 +224,18 @@ mount program, the fdisk configuration tool, and more.
 # Core packages #
 #################
 %if "%ulsubset" == "core"
+%ifarch s390 s390x ia64 m68k sparc
+%package -n util-linux-extra
+Summary:        A collection of basic system utilities - extra utilities
+License:        GPL-2.0-or-later
+Group:          System/Base
+
+%description -n util-linux-extra
+This package contains an util-linux tools that have no real use on a
+particular platform. It contains programs that are not well usable for the
+platform, but they can be required by scripts or third party tools.
+%endif
+
 %package -n libblkid1
 Summary:        Filesystem detection library
 License:        LGPL-2.1-or-later
@@ -247,6 +259,7 @@ Summary:        Development files for the filesystem detection library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libblkid-devel = %{version}
+Requires:       libeconf-devel-static
 
 %description -n libblkid-devel-static
 Files needed to develop applications using the library for filesystem
@@ -368,6 +381,40 @@ unique IDs (UUIDs).
 %endif
 # ulsubset == core
 
+%if "%ulsubset" == "systemd"
+
+%package -n lastlog2
+Summary:        Reports most recent login of users
+License:        BSD-2-Clause
+Group:          System/Base
+Requires(pre):  pam-config >= 2.4
+Requires(post): pam-config >= 2.4
+
+%description -n lastlog2
+pam_lastlog2 and lastlog2 are Y2038 safe versions of the old lastlog utility. pam_lastlog2 collects all data in a sqlite3 database and lastlog2 formats and prints the contents. The username, port, and last login time will be printed.
+
+%package -n liblastlog2-2
+Summary:        Library to report most recent login of users
+License:        BSD-2-Clause
+Group:          System/Libraries
+
+%description -n liblastlog2-2
+The liblastlog2 library provides various interfaces to read, write or modify the lastlog 2 database.
+
+%package -n liblastlog2-devel
+Summary:        Development files for the lastlog2 library
+License:        BSD-2-Clause
+Group:          Development/Libraries/C and C++
+Requires:       liblastlog2-2 = %{version}
+Provides:       lastlog2-devel = %{version}-%{release}
+Obsoletes:      lastlog2-devel <= 1.3.1
+
+%description -n liblastlog2-devel
+Files to develop applications using the liblastlog2 library.
+
+%endif
+# ulsubset == systemd
+
 ####################
 # Systemd packages #
 ####################
@@ -377,7 +424,7 @@ Summary:        Tools for writing to TTYs
 License:        BSD-3-Clause
 Requires(pre):  group(tty)
 Requires(post): permissions
-Requires(verify):permissions
+Requires(verify): permissions
 Provides:       util-linux:%{_bindir}/mesg
 Provides:       util-linux:%{_bindir}/wall
 Provides:       util-linux:%{_bindir}/write
@@ -450,7 +497,7 @@ configure_options+="--without-python "
 # ulbuild == base
 
 %if "%ulsubset" == "core"
-configure_options+="--without-systemd "
+configure_options+="--without-systemd --disable-liblastlog2"
 %endif
 # ulsubset == core
 
@@ -577,6 +624,7 @@ chmod 755 %{buildroot}%{_sbindir}/flushb
 
 # arch dependent
 
+%if "%ulsubset" != "core"
 %ifarch s390 s390x
 rm -f %{buildroot}%{_sysconfdir}/fdprm
 rm -f %{buildroot}%{_bindir}/setterm
@@ -602,6 +650,8 @@ rm -f %{buildroot}%{_sbindir}/fdisk
 rm -f %{buildroot}%{_mandir}/man8/fdisk.8*
 %endif
 # arch ia64 m68k
+%endif
+# ulsubset != core
 
 # create list of setarch(8) symlinks
 find  %{buildroot}%{_mandir}/man8 -regextype posix-egrep  \
@@ -618,6 +668,9 @@ mkdir -p %{buildroot}/run/uuidd
 # create it for uuidd. See boo#1206690.
 mkdir -p %{buildroot}%{_sharedstatedir}/libuuid/
 touch %{buildroot}%{_sharedstatedir}/libuuid/clock.txt
+# Install systemd-tmpfile for lastlog database
+mkdir -p %{buildroot}%{_tmpfilesdir}
+install -m 644 %{SOURCE17} %{buildroot}%{_tmpfilesdir}/lastlog2.conf
 %endif
 # ulsubset == systemd, ulbuild == base
 
@@ -651,6 +704,12 @@ ln -sf /sbin/service %{buildroot}%{_sbindir}/rcfstrim
 %endif
 # ulsubset == core, ulbuild == base
 
+%if "%ulsubset" == "systemd"
+# No *.la packages
+rm -r %{buildroot}%{_pam_moduledir}/*.la
+%endif
+# ulsubset == systemd
+
 %endif
 # ulbuild == base
 
@@ -681,18 +740,8 @@ rm -r %{buildroot}{%{_bindir},%{_mandir},%{_datadir},%{_includedir},%{_libdir}/{
 # mark some tests "known_fail"
 #
 %if 0%{?qemu_user_space_build}
-export TS_OPT_fdisk_gpt_known_fail="yes"
-export TS_OPT_fdisk_oddinput_known_fail="yes"
-export TS_OPT_fdisk_sunlabel_known_fail="yes"
-export TS_OPT_fincore_count_known_fail="yes"
-export TS_OPT_libfdisk_gpt_known_fail="yes"
-export TS_OPT_misc_flock_known_fail="yes"
-export TS_OPT_misc_ionice_known_fail="yes"
-export TS_OPT_misc_swaplabel_known_fail="yes"
-export TS_OPT_kill_name_to_number_known_fail="yes"
-export TS_OPT_kill_print_pid_known_fail="yes"
-export TS_OPT_kill_queue_known_fail="yes"
-export TS_OPT_uuid_uuidd_known_fail="yes"
+# skip tests marked as ts_skip_qemu_user
+export QEMU_USER=1
 # unsupported syscall in script(1) ... might be fixed in qemu
 export TS_OPT_script_known_fail="yes"
 # may segfault on qemu-user-space
@@ -702,10 +751,10 @@ export TS_OPT_misc_setarch_known_fail="yes"
 
 # Succeeds in local build, fails in OBS.
 export TS_OPT_hardlink_options_known_fail="yes"
-export TS_OPT_lsfd_mkfds_rw_character_device_known_fail="yes"
-export TS_OPT_lsfd_mkfds_symlink_known_fail="yes"
 # This does not work with a chroot build: / is not a mountpoint
 export TS_OPT_misc_mountpoint_known_fail="yes"
+# This test appears to be racy
+export TS_OPT_lslocks_lslocks_known_fail=yes
 #
 # hacks
 export PATH="$PATH:/sbin:/usr/sbin"
@@ -824,6 +873,23 @@ done
 %postun
 %service_del_postun fstrim.service fstrim.timer
 
+%pre -n lastlog2
+%service_add_pre lastlog2-import.service
+
+%post -n lastlog2
+%tmpfiles_create lastlog2.conf
+%service_add_post lastlog2-import.service
+%{_sbindir}/pam-config -a --lastlog2 --lastlog2-silent_if=gdm,gdm-password,lxdm,lightdm,mdm,sddm
+
+%preun -n lastlog2
+%service_del_preun lastlog2-import.service
+
+%postun -n lastlog2
+if [ "$1" -eq 0 ]; then
+    %{_sbindir}/pam-config -d --lastlog2
+fi
+%service_del_postun lastlog2-import.service
+
 %pre -n uuidd
 
 %if 0%{?suse_version} < 1330
@@ -852,6 +918,10 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 
 %post -n util-linux-tty-tools
 %set_permissions %{_bindir}/wall %{_bindir}/write
+
+%post -n liblastlog2-2 -p /sbin/ldconfig
+
+%postun -n liblastlog2-2 -p /sbin/ldconfig
 
 %endif
 %dnl # ulsubset == systemd, pre & post
@@ -947,6 +1017,8 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_bindir}/colrm
 %core %{_bindir}/column
 %core %{_bindir}/dmesg
+%core %{_bindir}/enosys
+%core %{_bindir}/exch
 %core %{_bindir}/fadvise
 %core %{_bindir}/fallocate
 %core %{_bindir}/fincore
@@ -980,6 +1052,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %endif
 # ul_extra_bin_sbin
 
+%core %{_bindir}/lsclocks
 %core %{_bindir}/lscpu
 %core %{_bindir}/lsfd
 %core %{_bindir}/lsipc
@@ -1001,6 +1074,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_bindir}/scriptlive
 %core %{_bindir}/scriptreplay
 %core %{_bindir}/setarch
+%core %{_bindir}/setpgid
 %core %{_bindir}/setpriv
 %core %{_bindir}/setsid
 %core %{_bindir}/taskset
@@ -1155,7 +1229,9 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_mandir}/man1/colrm.1.gz
 %core %{_mandir}/man1/column.1.gz
 %core %{_mandir}/man1/dmesg.1.gz
+%core %{_mandir}/man1/enosys.1.gz
 %core %{_mandir}/man1/eject.1.gz
+%core %{_mandir}/man1/exch.1.gz
 %core %{_mandir}/man1/fadvise.1.gz
 %core %{_mandir}/man1/fallocate.1.gz
 %core %{_mandir}/man1/fincore.1.gz
@@ -1179,6 +1255,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_mandir}/man1/login.1.gz
 %core %{_mandir}/man1/look.1.gz
 %core %{_mandir}/man1/lscpu.1.gz
+%core %{_mandir}/man1/lsclocks.1.gz
 %core %{_mandir}/man1/lsfd.1.gz
 %core %{_mandir}/man1/lsipc.1.gz
 %core %{_mandir}/man1/lsirq.1.gz
@@ -1199,6 +1276,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_mandir}/man1/script.1.gz
 %core %{_mandir}/man1/scriptlive.1.gz
 %core %{_mandir}/man1/scriptreplay.1.gz
+%core %{_mandir}/man1/setpgid.1.gz
 %core %{_mandir}/man1/setterm.1.gz
 %core %{_mandir}/man1/taskset.1.gz
 %core %{_mandir}/man1/ul.1.gz
@@ -1214,6 +1292,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_mandir}/man1/waitpid.1.gz
 %core %{_mandir}/man5/adjtime_config.5.gz
 %core %{_mandir}/man5/fstab.5.gz
+%core %{_mandir}/man5/scols-filter.5.gz
 %core %{_mandir}/man5/terminal-colors.d.5.gz
 %core %{_mandir}/man8/addpart.8.gz
 %core %{_mandir}/man8/agetty.8.gz
@@ -1342,6 +1421,8 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_datadir}/bash-completion/completions/delpart
 %exclude %{_datadir}/bash-completion/completions/dmesg
 %exclude %{_datadir}/bash-completion/completions/eject
+%exclude %{_datadir}/bash-completion/completions/enosys
+%exclude %{_datadir}/bash-completion/completions/exch
 %exclude %{_datadir}/bash-completion/completions/fallocate
 %exclude %{_datadir}/bash-completion/completions/fadvise
 %exclude %{_datadir}/bash-completion/completions/fdformat
@@ -1369,6 +1450,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_datadir}/bash-completion/completions/ldattach
 %exclude %{_datadir}/bash-completion/completions/look
 %exclude %{_datadir}/bash-completion/completions/losetup
+%exclude %{_datadir}/bash-completion/completions/lsclocks
 %exclude %{_datadir}/bash-completion/completions/lscpu
 %exclude %{_datadir}/bash-completion/completions/lsipc
 %exclude %{_datadir}/bash-completion/completions/lsirq
@@ -1402,6 +1484,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_datadir}/bash-completion/completions/scriptlive
 %exclude %{_datadir}/bash-completion/completions/scriptreplay
 %exclude %{_datadir}/bash-completion/completions/setarch
+%exclude %{_datadir}/bash-completion/completions/setpgid
 %exclude %{_datadir}/bash-completion/completions/setpriv
 %exclude %{_datadir}/bash-completion/completions/setsid
 %exclude %{_datadir}/bash-completion/completions/setterm
@@ -1499,6 +1582,56 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 # Core packages files #
 #######################
 %if "%ulsubset" == "core"
+%ifarch s390 s390x ia64 m68k sparc
+%files -n util-linux-extra
+#
+# Files not common for all architectures
+%ifarch ia64 m68k
+
+%if %{ul_extra_bin_sbin}
+%core /sbin/fdisk
+%endif
+# ul_extra_bin_sbin
+
+%core %{_sbindir}/fdisk
+%core %{_mandir}/man8/fdisk.8.gz
+%endif
+# arch ia64 m68k
+
+%ifarch %sparc ia64 m68k
+%core %{_mandir}/man8/cfdisk.8.gz
+%core %{_mandir}/man8/sfdisk.8.gz
+
+%if %{ul_extra_bin_sbin}
+%core /sbin/cfdisk
+%core /sbin/sfdisk
+%endif
+# ul_extra_bin_sbin
+
+%core %{_sbindir}/cfdisk
+%core %{_sbindir}/sfdisk
+%endif
+# arch sparc ia64 m68k
+
+%ifarch s390 s390x
+%core %{_sbindir}/fdformat
+
+%if %{ul_extra_bin_sbin}
+%core /sbin/hwclock
+%endif
+# ul_extra_bin_sbin
+
+%core %{_sbindir}/hwclock
+%core %{_bindir}/setterm
+%core %{_sbindir}/tunelp
+%core %{_mandir}/man8/fdformat.8.gz
+%core %{_mandir}/man8/hwclock.8.gz
+%core %{_mandir}/man8/tunelp.8.gz
+%endif
+# arch s390
+%endif
+# arch s390 s390x ia64 m68k sparc
+
 %files -n libblkid1
 %{_libdir}/libblkid.so.1
 %{_libdir}/libblkid.so.1.*
@@ -1601,6 +1734,26 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_datadir}/bash-completion/completions/wall
 %{_datadir}/bash-completion/completions/write
 %{_datadir}/bash-completion/completions/mesg
+
+%files -n lastlog2
+%{_bindir}/lastlog2
+%{_pam_moduledir}/pam_lastlog2.so
+%{_mandir}/man8/lastlog2.8.gz
+%{_mandir}/man8/pam_lastlog2.8.gz
+%{_unitdir}/lastlog2-import.service
+%{_tmpfilesdir}/lastlog2.conf
+%{_datadir}/bash-completion/completions/lastlog2
+
+%files -n liblastlog2-2
+%{_libdir}/liblastlog2.so.2
+%{_libdir}/liblastlog2.so.2.*
+
+%files -n liblastlog2-devel
+%{_libdir}/liblastlog2.so
+%dir %{_includedir}/liblastlog2
+%{_includedir}/liblastlog2/lastlog2.h
+%{_mandir}/man3/lastlog2.3.gz
+%{_mandir}/man3/ll2_*
 
 %endif
 # ulsubset == systemd

@@ -1,0 +1,31 @@
+From: Stefan Schubert <schubi@suse.com>
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2024-04-15T13:34:15Z
+
+[Original description: Added "Requires.private: libeconf" in order to
+build with static libeconf.a.]
+
+This patch addresses a build failure in libblkid-using programs when
+one attempts to static-link the program:
+
+$ g++ blkid_get_cache.cpp -static `pkg-config blkid --cflags --libs --static`
+ld: libblkid.a(la-config.o): in function `blkid_read_config':
+libblkid/src/config.c:160:(.text+0x150): undefined reference to `econf_readFile'
+ld: libblkid/src/config.c:241:(.text+0x1a1): undefined reference to `econf_freeFile'
+
+The patch is not upstreamable in this form, as the presence of the
+Requires.private line needs to be conditionalized upon
+``HAVE_LIBECONF`` (cf. meson.build/configure.ac).
+
+[Description updated; --jengelh]
+
+diff -ur org/libblkid/blkid.pc.in patch/libblkid/blkid.pc.in
+--- org/libblkid/blkid.pc.in	2024-01-31 11:02:15.460811568 +0100
++++ patch/libblkid/blkid.pc.in	2024-04-15 15:19:34.288703597 +0200
+@@ -6,5 +6,6 @@
+ Name: blkid
+ Description: Block device id library
+ Version: @LIBBLKID_VERSION@
++Requires.private: libeconf
+ Cflags: -I${includedir}/blkid
+ Libs: -L${libdir} -lblkid
