@@ -274,4 +274,13 @@ so there is no usability hurdle for existing mutt users.
     <comment></comment>
     <requestid>1170782</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>850e8cb20001891c2f508b37000f045a</srcmd5>
+    <version>20240425</version>
+    <time>1715335498</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend at least one SASL module to prevent &quot;No authenticators avaliable&quot;
+  error when sending mail via SMTP (forwarded request 1172915 from dsterba)</comment>
+    <requestid>1172917</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  9 00:00:00 CEST 2024 - mkoutny@suse.com
+
+- Recommend at least one SASL module to prevent "No authenticators avaliable"
+  error when sending mail via SMTP
+
+-------------------------------------------------------------------
 Fri Apr 26 09:02:21 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 20240425:

@@ -50,6 +50,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  w3m
 BuildRequires:  xsltproc
 BuildRequires:  zlib-devel
+Recommends:     cyrus-sasl-plain
 Recommends:     neomutt-doc
 Recommends:     neomutt-lang
 
