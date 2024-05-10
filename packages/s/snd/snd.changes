@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  9 09:12:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.3:
+  * s7: format now always returns a string (where it used to
+    return #f it now returns "")
+  * sam.c: bugfixes and improvements thanks to David Jaffe
+  * checked: sbcl 2.4.3
+
+-------------------------------------------------------------------
 Sat Jan 27 11:55:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.0:
