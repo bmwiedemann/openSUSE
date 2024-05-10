@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 14.11
+%define pgversion 14.12
 %define pgmajor 14
 %define buildlibs 0
 %define tarversion %{pgversion}
@@ -59,6 +59,12 @@ Name:           %pgname
 %define python python
 %endif
 
+%if %pgmajor >= 17
+%bcond_with dreived
+%else
+%bcond_without derived
+%endif
+
 %if 0%{?suse_version} >= 1500
 %bcond_without liblz4
 %endif
@@ -87,6 +93,12 @@ BuildRequires:  timezone
 BuildRequires:  zlib-devel
 %if %{with liblz4}
 BuildRequires:  pkgconfig(liblz4)
+%endif
+%if %{without derived}
+BuildRequires:  bison
+BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  flex
+BuildRequires:  perl
 %endif
 
 %if %{with libzstd}
@@ -573,7 +585,7 @@ PACKAGE_TARNAME=%pgname %configure \
 %if %mini
 make -C src/interfaces %{?_smp_mflags} PACKAGE_TARNAME=%pgname
 %else
-make %{?_smp_mflags} PACKAGE_TARNAME=%pgname
+make %{?_smp_mflags} PACKAGE_TARNAME=%pgname world
 
 %if %{with check}
 
@@ -641,9 +653,9 @@ find %buildroot -type f -cnewer flag -printf "/%%P\n" |
      > contrib.files
 rm flag
 install -d -m 750 %buildroot/var/lib/pgsql
-install -d -m755 %buildroot%pgdocdir
+install -d -m 755 %buildroot%pgdocdir
 cp doc/KNOWN_BUGS doc/MISSING_FEATURES COPYRIGHT \
-   README HISTORY  %buildroot%pgdocdir
+   README* HISTORY  %buildroot%pgdocdir
 # Use versioned names for the man pages:
 for f in %buildroot%pgmandir/man*/*; do
         mv $f ${f}pg%pgmajor
@@ -701,6 +713,7 @@ genlists main \
 	pg_receivewal \
 	pg_verify_checksums \
 	pg_checksums \
+	pg_combinebackup \
 	pg_verifybackup
 
 %find_lang plpgsql-$VLANG main.files
@@ -711,6 +724,8 @@ genlists server \
 	pg_ctl \
 	pg_controldata \
 	pg_resetwal \
+	pg_createsubscriber \
+	pg_walsummary \
 	pg_waldump \
 	pg_resetxlog \
 %if %pgmajor >= 15
@@ -924,7 +939,6 @@ fi
 
 %files llvmjit-devel
 %defattr(-,root,root)
-%doc README
 
 %files pltcl -f pltcl.lang
 %defattr(-,root,root)
