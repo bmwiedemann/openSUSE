@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  9 18:03:43 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.7
+  * Fix crash when adding IPv6 multicast route on a kernel without
+    IPv6 multicast support.
+
+-------------------------------------------------------------------
 Mon Feb 26 13:37:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
