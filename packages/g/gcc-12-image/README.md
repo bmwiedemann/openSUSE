@@ -1,13 +1,15 @@
-# The GNU Compiler Collection Container Image
+# openSUSE Tumbleweed BCI GNU Compiler Collection Container Image (GCC)
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
+
+# Description
 The GNU Compiler Collection (GCC) is an optimizing compiler for various
 architectures and operating systems. It is the default compiler in the GNU
 project and most Linux distributions, including SUSE Linux Enterprise and
 openSUSE.
 
 
-## How to use the image
+## Usage
 
 ### Compile an application with a `Dockerfile`
 
