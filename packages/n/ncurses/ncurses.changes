@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May  8 07:30:03 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Make verify the patches an optional task for local builds only 
+
+-------------------------------------------------------------------
+Mon May  6 06:51:35 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20240504
+  + update ncurses/wcwidth.c, for MinGW ports, from xterm.
+  + trim obsolete comment about tack from INSTALL.
+- Verify also every patch
+
+-------------------------------------------------------------------
 Mon Apr 29 07:42:51 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Update to ncurses 6.5 (patch 20240427)

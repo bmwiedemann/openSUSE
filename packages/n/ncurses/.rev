@@ -4535,4 +4535,17 @@
   + compiler warning/portability fixes.</comment>
     <requestid>1170707</requestid>
   </revision>
+  <revision rev="263" vrev="36">
+    <srcmd5>5f02127ca1917833094325838ce680f7</srcmd5>
+    <version>unknown</version>
+    <time>1715335469</time>
+    <user>dimstar_suse</user>
+    <comment>- Make verify the patches an optional task for local builds only 
+
+- Add ncurses patch 20240504
+  + update ncurses/wcwidth.c, for MinGW ports, from xterm.
+  + trim obsolete comment about tack from INSTALL.
+- Verify also every patch</comment>
+    <requestid>1172646</requestid>
+  </revision>
 </revisionlist>

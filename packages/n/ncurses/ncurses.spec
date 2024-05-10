@@ -27,6 +27,7 @@
 %bcond_with     ada
 %bcond_with     libbsd
 %bcond_with     usepcre2
+%bcond_with     gpgverify
 
 %if %{with onlytinfo}
 %global soname_tinfo tinfo
@@ -44,6 +45,10 @@ Name:           ncurses
 %if %{with hasheddb}
 BuildRequires:  db-devel
 %endif
+%if %{with gpgverify}
+BuildRequires:  /usr/bin/gpg
+%endif
+BuildRequires:  /usr/bin/zcat
 BuildRequires:  expect
 %if %{with ada}
 # Currently we're missing gprbuild and gprconfig
@@ -335,11 +340,18 @@ incoming data stream.
 %prep
 %setup -q -n %{name}-%{basevers} -b1 -a5
 set +x
-for patch in ../patches/ncurses*.patch
+%if %{with gpgverify}
+GPGTMP=$(mktemp -d ${PWD}/tmp.XXXXXXXXXX)
+gpg --homedir $GPGTMP -q --no-default-keyring --trust-model always --import %{S:11}
+gpg --homedir $GPGTMP -q --multifile --verify ../patches/*.patch.gz.asc
+unset GPGTMP
+rm -rf "$GPGTMP"
+%endif
+for patch in ../patches/ncurses*.patch.gz
 do
     test -e "$patch" || continue
     echo Apply patch: $patch
-    patch -f -T -p1 -s < $patch
+    zcat $patch | patch -f -T -p1 -s
 done
 set -x
 %if ! %{defined donttouch}
