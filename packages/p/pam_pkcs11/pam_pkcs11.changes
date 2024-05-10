@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  7 15:19:11 UTC 2024 - Davide Benini <davide.benini@suse.com>
+
+- Fix for bsc#1221255:
+  * Add patch 0001-Set-slot_num-configuration-parameter-to-0-by-default.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 14:54:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

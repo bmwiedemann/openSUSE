@@ -34,6 +34,7 @@ Source4:        pkcs11_eventmgr.service
 Patch0:         %{name}-fsf-address.patch
 Patch1:         %{name}-0.5.3-nss-conf.patch
 Patch3:         %{name}-0.6.0-nss-autoconf.patch
+Patch4:         0001-Set-slot_num-configuration-parameter-to-0-by-default.patch
 BuildRequires:  curl-devel
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  doxygen
