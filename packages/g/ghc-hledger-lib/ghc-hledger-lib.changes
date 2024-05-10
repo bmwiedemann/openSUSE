@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu May  2 11:03:15 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hledger-lib to version 1.33.1.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.33.1/src/CHANGES.md
+
+-------------------------------------------------------------------
+Thu Apr 18 23:38:03 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hledger-lib to version 1.33.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.33/src/CHANGES.md
+
+-------------------------------------------------------------------
 Tue Mar 12 15:07:08 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Jailbreak build for ghc-9.8.x.
