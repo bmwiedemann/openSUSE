@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 10 05:09:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.11:
+  * update and add tests for stern
+  * Bump golang.org/x/crypto from 0.22.0 to 0.23.0
+
+-------------------------------------------------------------------
 Tue Apr 30 11:02:30 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.10:
