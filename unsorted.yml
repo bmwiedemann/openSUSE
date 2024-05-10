@@ -197,7 +197,6 @@ unsorted:
   - OpenLP 
   - OpenMoji-Black 
   - OpenMoji-Color 
-  - OpenPrintingPPDs 
   - OpenRGB 
   - OpenRGB-udev-rules 
   - OpenSceneGraph 
@@ -218,7 +217,6 @@ unsorted:
   - PDAL-bash-completion 
   - PDAL-devel 
   - PDAL-doc 
-  - PackageKit-backend-dnf 
   - PackageKit-branding-upstream 
   - PackageKit-devel 
   - PgTcl 
@@ -1558,7 +1556,6 @@ unsorted:
   - brasero-devel 
   - brasero-lang 
   - breeze6-devel 
-  - breeze6-wallpapers 
   - breezy 
   - brial-devel 
   - brickd 
@@ -1735,7 +1732,6 @@ unsorted:
   - busybox-cpio 
   - busybox-dos2unix 
   - busybox-hexedit 
-  - busybox-hostname 
   - busybox-iproute2 
   - busybox-iputils 
   - busybox-k8s-yaml 
@@ -2306,7 +2302,6 @@ unsorted:
   - cockpit-kdump 
   - cockpit-machines 
   - cockpit-networkmanager 
-  - cockpit-packagekit 
   - cockpit-pcp 
   - cockpit-selinux 
   - cockpit-storaged 
@@ -2484,7 +2479,6 @@ unsorted:
   - containerized-data-importer-operator 
   - containerized-data-importer-uploadproxy 
   - containerized-data-importer-uploadserver 
-  - containers-systemd 
   - containment-rpm 
   - contractor 
   - contrast 
@@ -3236,12 +3230,8 @@ unsorted:
   - distcc-server 
   - distribution-gpg-keys 
   - distribution-logos-openSUSE 
-  - distribution-logos-openSUSE-Aeon 
   - distribution-logos-openSUSE-Kubic 
-  - distribution-logos-openSUSE-MicroOS 
   - distribution-registry 
-  - distrobox 
-  - distrobox-bash-completion 
   - distrobuilder 
   - dita 
   - diy-devel 
@@ -3266,7 +3256,6 @@ unsorted:
   - dmz-icon-theme-cursors 
   - dnf 
   - dnf-automatic 
-  - dnf-data 
   - dnf-lang 
   - dnf-plugins-core 
   - dnf-plugins-core-lang 
@@ -4010,7 +3999,6 @@ unsorted:
   - fde-tpm-helper-rpm-macros 
   - fdo-client 
   - fdo-client-devel 
-  - featherpad 
   - featherpad-lang 
   - fec-devel 
   - feedbackd 
@@ -4826,7 +4814,6 @@ unsorted:
   - gdl-devel 
   - gdl-lang 
   - gdlmm-devel 
-  - gdm-branding-MicroOS 
   - gdm-branding-upstream 
   - gdm-devel 
   - gdm-systemd 
@@ -6835,7 +6822,6 @@ unsorted:
   - ghex-lang 
   - ghostscript-devel 
   - ghostscript-fonts 
-  - ghostscript-fonts-other 
   - ghostscript-mini 
   - ghostscript-mini-devel 
   - ghostview 
@@ -7139,7 +7125,6 @@ unsorted:
   - gnome-bluetooth-devel 
   - gnome-boxes 
   - gnome-boxes-lang 
-  - gnome-branding-Aeon 
   - gnome-branding-MicroOS 
   - gnome-builder 
   - gnome-builder-doc 
@@ -7172,13 +7157,11 @@ unsorted:
   - gnome-font-viewer-lang 
   - gnome-games-scripts 
   - gnome-genius 
-  - gnome-getting-started-docs 
   - gnome-getting-started-docs-lang 
   - gnome-icon-theme 
   - gnome-icon-theme-extras 
   - gnome-icon-theme-symbolic 
   - gnome-info-collect 
-  - gnome-initial-setup 
   - gnome-initial-setup-lang 
   - gnome-keyring-sharp 
   - gnome-keyring-sharp-devel 
@@ -7457,7 +7440,6 @@ unsorted:
   - google-caladea-fonts 
   - google-cardo-fonts 
   - google-cousine-fonts 
-  - google-droid-fonts 
   - google-errorprone-annotation 
   - google-errorprone-annotations 
   - google-errorprone-annotations-javadoc 
@@ -7507,7 +7489,6 @@ unsorted:
   - google-noto-sans-cham-fonts 
   - google-noto-sans-cherokee-fonts 
   - google-noto-sans-chorasmian-fonts 
-  - google-noto-sans-cjk-fonts 
   - google-noto-sans-coptic-fonts 
   - google-noto-sans-cuneiform-fonts 
   - google-noto-sans-cypriot-fonts 
@@ -7537,7 +7518,6 @@ unsorted:
   - google-noto-sans-inscriptionalpahlavi-fonts 
   - google-noto-sans-inscriptionalparthian-fonts 
   - google-noto-sans-javanese-fonts 
-  - google-noto-sans-jp-fonts 
   - google-noto-sans-jp-mono-fonts 
   - google-noto-sans-kaithi-fonts 
   - google-noto-sans-kannada-fonts 
@@ -7547,7 +7527,6 @@ unsorted:
   - google-noto-sans-khmer-fonts 
   - google-noto-sans-khojki-fonts 
   - google-noto-sans-khudawadi-fonts 
-  - google-noto-sans-kr-fonts 
   - google-noto-sans-kr-mono-fonts 
   - google-noto-sans-lao-fonts 
   - google-noto-sans-laolooped-fonts 
@@ -7564,7 +7543,6 @@ unsorted:
   - google-noto-sans-manichaean-fonts 
   - google-noto-sans-marchen-fonts 
   - google-noto-sans-masaramgondi-fonts 
-  - google-noto-sans-math-fonts 
   - google-noto-sans-mayannumerals-fonts 
   - google-noto-sans-medefaidrin-fonts 
   - google-noto-sans-meeteimayek-fonts 
@@ -7608,7 +7586,6 @@ unsorted:
   - google-noto-sans-runic-fonts 
   - google-noto-sans-samaritan-fonts 
   - google-noto-sans-saurashtra-fonts 
-  - google-noto-sans-sc-fonts 
   - google-noto-sans-sc-mono-fonts 
   - google-noto-sans-sharada-fonts 
   - google-noto-sans-shavian-fonts 
@@ -7632,7 +7609,6 @@ unsorted:
   - google-noto-sans-tamil-fonts 
   - google-noto-sans-tamilsupplement-fonts 
   - google-noto-sans-tangsa-fonts 
-  - google-noto-sans-tc-fonts 
   - google-noto-sans-tc-mono-fonts 
   - google-noto-sans-telugu-fonts 
   - google-noto-sans-thaana-fonts 
@@ -8309,8 +8285,6 @@ unsorted:
   - healpix_cxx-devel 
   - health-check 
   - health-check-bash-completion 
-  - health-checker 
-  - health-checker-plugins-MicroOS 
   - health-checker-plugins-caasp 
   - health-checker-plugins-kubic 
   - health-checker-testing 
@@ -9644,7 +9618,6 @@ unsorted:
   - kddockwidgets-devel 
   - kddockwidgets-qt6-devel 
   - kde-fcstd-thumbnailer 
-  - kde-inotify-survey 
   - kde-inotify-survey-lang 
   - kde-l10n-devel 
   - kde-oxygen-fonts 
@@ -9653,7 +9626,6 @@ unsorted:
   - kdebugsettings-lang 
   - kdeclarative-devel 
   - kdeclarative-tools 
-  - kdeconnect-kde 
   - kdeconnect-kde-lang 
   - kdeconnect-kde-zsh-completion 
   - kdecoration6-devel 
@@ -9693,7 +9665,6 @@ unsorted:
   - kdiff3 
   - kdiff3-lang 
   - kdiskmark 
-  - kdnssd 
   - kdnssd-framework-devel 
   - kdnssd-lang 
   - kdoctools-devel 
@@ -9822,9 +9793,7 @@ unsorted:
   - kf6-knotifyconfig-devel 
   - kf6-kpackage-devel 
   - kf6-kparts-devel 
-  - kf6-kpeople 
   - kf6-kpeople-devel 
-  - kf6-kpeople-imports 
   - kf6-kpeople-lang 
   - kf6-kplotting-devel 
   - kf6-kpty-devel 
@@ -9941,7 +9910,6 @@ unsorted:
   - kio-devel 
   - kio-extras5 
   - kio-extras5-lang 
-  - kio-gdrive 
   - kio-gdrive-lang 
   - kio-stash 
   - kio-stash-lang 
@@ -10114,7 +10082,6 @@ unsorted:
   - kpipewire6-devel 
   - kpkpass-devel 
   - kplotting-devel 
-  - kpmcore 
   - kpmcore-devel 
   - kpmcore-lang 
   - kproperty 
@@ -10937,8 +10904,6 @@ unsorted:
   - libKF5UnitConversion5-lang 
   - libKF5XmlRpcClient5 
   - libKF5XmlRpcClient5-lang 
-  - libKF6People6 
-  - libKF6PulseAudioQt4 
   - libKGantt2 
   - libKHealthCertificate1 
   - libKOSM1 
@@ -10946,7 +10911,6 @@ unsorted:
   - libKOpeningHours1 
   - libKPim6AddressbookImportExport6-devel 
   - libKPim6GAPIBlogger6 
-  - libKPim6GAPIDrive6 
   - libKPim6GAPILatitude6 
   - libKPim6GAPIMaps6 
   - libKPim6IdentityManagementQuick6 
@@ -11810,7 +11774,6 @@ unsorted:
   - libb64 
   - libb64-devel 
   - libbacktrace-devel 
-  - libbacktrace0 
   - libbamf3-2 
   - libbandicoot1 
   - libbaresip12 
@@ -12556,9 +12519,6 @@ unsorted:
   - libdnet-devel 
   - libdnet1 
   - libdnf-devel 
-  - libdnf-plugin-txnupd 
-  - libdnf-repo-config-zypp 
-  - libdnf2 
   - libdnf5-cli-devel 
   - libdnf5-cli2 
   - libdnf5-devel 
@@ -12781,7 +12741,6 @@ unsorted:
   - libfactory-devel 
   - libfactory-gftables 
   - libfakekey-devel 
-  - libfakekey0 
   - libfaketime 
   - libfallocate-devel 
   - libfallocate-devel-static 
@@ -13835,7 +13794,6 @@ unsorted:
   - libjavamapscript 
   - libjavascriptcoregtk-4_0-18 
   - libjavascriptcoregtk-4_0-18-32bit 
-  - libjavascriptcoregtk-6_0-1 
   - libjaylink 
   - libjaylink-devel 
   - libjaylink0 
@@ -13989,7 +13947,6 @@ unsorted:
   - libkomparediff2-kf5-devel 
   - libkonkretcmpi0 
   - libkpathsea6 
-  - libkpmcore12 
   - libkrb5-26 
   - libkrun-devel 
   - libkrun-sev-devel 
@@ -14035,6 +13992,7 @@ unsorted:
   - liblasso3 
   - liblastfm-qt5-devel 
   - liblastfm_fingerprint5-1 
+  - liblastlog2-devel 
   - liblaszip8 
   - liblaszip_api8 
   - liblayout-javadoc 
@@ -15384,7 +15342,6 @@ unsorted:
   - libqt5-qtgamepad-examples 
   - libqt5-qtgamepad-imports 
   - libqt5-qtgamepad-private-headers-devel 
-  - libqt5-qtimageformats 
   - libqt5-qtimageformats-devel 
   - libqt5-qtlocation-devel 
   - libqt5-qtlocation-devel-32bit 
@@ -15720,7 +15677,6 @@ unsorted:
   - libreplaygain-devel 
   - libreplaygain1 
   - librepo-devel 
-  - librepo0 
   - librepository-javadoc 
   - libreproc++14 
   - libreproc14 
@@ -16718,7 +16674,6 @@ unsorted:
   - libwebcam0 
   - libwebkit2gtk-4_0-37 
   - libwebkit2gtk-4_0-37-32bit 
-  - libwebkitgtk-6_0-4 
   - libwebp-devel 
   - libwebp-devel-32bit 
   - libwebp-tools 
@@ -18389,7 +18344,6 @@ unsorted:
   - miao-fonts 
   - micro-editor 
   - microcom 
-  - microdnf 
   - microos-devel-tools 
   - micropython 
   - miller 
@@ -20327,7 +20281,6 @@ unsorted:
   - openvino-hetero-plugin 
   - openvino-intel-cpu-plugin 
   - openvino-sample 
-  - openvpn-auth-pam-plugin 
   - openvpn-devel 
   - openvpn-down-root-plugin 
   - openvswitch 
@@ -20488,7 +20441,6 @@ unsorted:
   - oxygen5-icon-theme 
   - oxygen5-icon-theme-large 
   - oxygen5-icon-theme-scalable 
-  - oxygen5-sounds 
   - oxygen6 
   - oxygen6-cursors 
   - oxygen6-decoration 
@@ -20655,7 +20607,6 @@ unsorted:
   - partio 
   - partio-devel 
   - partio-doc 
-  - partitionmanager 
   - partitionmanager-lang 
   - parzip 
   - pass-import 
@@ -20673,7 +20624,6 @@ unsorted:
   - patchutils 
   - patool 
   - patool-bash-completion 
-  - patterns-aeon-base 
   - patterns-base-32bit 
   - patterns-base-apparmor-32bit 
   - patterns-base-base-32bit 
@@ -20690,7 +20640,6 @@ unsorted:
   - patterns-ceph-containers-ceph_base 
   - patterns-cinnamon-cinnamon 
   - patterns-cinnamon-cinnamon_basis 
-  - patterns-containers-container_runtime 
   - patterns-deepin-deepin 
   - patterns-deepin-deepin_admin 
   - patterns-deepin-deepin_basis 
@@ -20719,7 +20668,6 @@ unsorted:
   - patterns-gnome-devel_gnome 
   - patterns-gnome-gnome_ide 
   - patterns-hpc-libraries 
-  - patterns-kalpa-base 
   - patterns-kde-devel_kde_frameworks 
   - patterns-kde-devel_kde_frameworks6 
   - patterns-kde-devel_qt5 
@@ -20746,15 +20694,6 @@ unsorted:
   - patterns-mate-mate_office 
   - patterns-mate-mate_office_opt 
   - patterns-mate-mate_utilities 
-  - patterns-microos-base 
-  - patterns-microos-base-microdnf 
-  - patterns-microos-base-packagekit 
-  - patterns-microos-base-zypper 
-  - patterns-microos-basesystem 
-  - patterns-microos-defaults 
-  - patterns-microos-desktop-common 
-  - patterns-microos-desktop-gnome 
-  - patterns-microos-desktop-kde 
   - patterns-network-network_admin 
   - patterns-openSUSEway 
   - patterns-rpm-macros 
@@ -22549,7 +22488,6 @@ unsorted:
   - plantuml-javadoc 
   - plasma-applet-weather-widget 
   - plasma-applet-weather-widget-lang 
-  - plasma-branding-Kalpa 
   - plasma-branding-MicroOS 
   - plasma-framework-desktoptheme 
   - plasma-framework-devel 
@@ -23352,7 +23290,6 @@ unsorted:
   - python-mpld3-doc 
   - python-murmurhash-devel 
   - python-nautilus-common-devel 
-  - python-nautilus-common-files 
   - python-ncclient-doc 
   - python-neutronclient-doc 
   - python-notmuch-doc 
@@ -29306,7 +29243,6 @@ unsorted:
   - python311-napalm-digineo-procurve 
   - python311-napalm-procurve 
   - python311-natsort 
-  - python311-nautilus 
   - python311-nautilus-devel 
   - python311-nbclassic 
   - python311-nbclient 
@@ -36453,7 +36389,6 @@ unsorted:
   - soci-postgresql-devel 
   - soci-sqlite3-devel 
   - socket_wrapper 
-  - sof-firmware 
   - sofia-sip 
   - sofia-sip-devel 
   - software-o-o-launcher 
@@ -36657,7 +36592,6 @@ unsorted:
   - stax2-api-javadoc 
   - stb-devel 
   - stdman 
-  - steam-devices 
   - steinberg-bravura-fonts 
   - stellarbatchsolver 
   - stellarium 
@@ -36935,13 +36869,10 @@ unsorted:
   - systemd-mini-devel 
   - systemd-network 
   - systemd-portable 
-  - systemd-presets-branding-Kalpa 
-  - systemd-presets-branding-MicroOS 
   - systemd-status-mail 
   - systemd-sysvcompat 
   - systemd-testsuite 
   - systemd-ui 
-  - systemd-zram-service 
   - systemtap 
   - systemtap-docs 
   - systemtap-dtrace 
@@ -46473,7 +46404,6 @@ unsorted:
   - tomoe-gtk-lang 
   - tomoyo-tools 
   - tomsfastmath-devel 
-  - toolbox 
   - topgrade 
   - tor 
   - torbrowser-apparmor-profile 
@@ -46505,7 +46435,6 @@ unsorted:
   - trader-lang 
   - traefik 
   - trang 
-  - transactional-update-notifier 
   - transconnect 
   - transfig 
   - transifex-client 
@@ -46900,7 +46829,6 @@ unsorted:
   - typelib-1_0-Msg-0 
   - typelib-1_0-Muffin-0_0 
   - typelib-1_0-NMA-1_0 
-  - typelib-1_0-Nautilus-4_0 
   - typelib-1_0-Nemo-3_0 
   - typelib-1_0-Nice-0_1 
   - typelib-1_0-OSTree-1_0 
@@ -47367,7 +47295,6 @@ unsorted:
   - vim-plugin-vimwiki 
   - vim-plugin-zoomwin 
   - vim-poke 
-  - vim-small 
   - vimb 
   - vinci 
   - vino 
@@ -47580,7 +47507,6 @@ unsorted:
   - webkit2gtk3-soup2-minibrowser 
   - webkit2gtk4-devel 
   - webkit2gtk4-minibrowser 
-  - webkitgtk-6_0-injected-bundles 
   - weblate 
   - weblate-doc 
   - weblug 
@@ -48460,7 +48386,6 @@ unsorted:
   - zynaddsubfx-dssi 
   - zynaddsubfx-lv2 
   - zynaddsubfx-vst 
-  - zypp-boot-plugin 
   - zypp-gui 
   - zypper-aptitude 
   - zypper-changelog-plugin 
