@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Wed May  8 13:27:11 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Conflict with other repart-brandings and no longer require systemd-experimental
+
+-------------------------------------------------------------------
+Mon Apr 22 08:14:58 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Reduce ESP to 1GB 
+
+-------------------------------------------------------------------
+Mon Apr  8 12:34:52 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Initial Packaging 
