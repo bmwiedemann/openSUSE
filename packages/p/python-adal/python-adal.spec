@@ -37,7 +37,7 @@ Requires:       python-cryptography >= 1.1.0
 Requires:       python-python-dateutil >= 2.1.0
 Requires:       python-requests >= 2.0.0
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-adal < 1.2.7
+Obsoletes:      python3-adal <= 1.2.7
 %endif
 BuildArch:      noarch
 
