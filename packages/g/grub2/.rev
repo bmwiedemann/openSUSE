@@ -2783,4 +2783,12 @@ pretty much the same. The main user visible changes are
     <comment></comment>
     <requestid>1169603</requestid>
   </revision>
+  <revision rev="326" vrev="15">
+    <srcmd5>9bc286c185936f0406d1a55a79f70438</srcmd5>
+    <version>2.12</version>
+    <time>1715444328</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1172867</requestid>
+  </revision>
 </revisionlist>
