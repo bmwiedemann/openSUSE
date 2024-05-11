@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-vpc-access
-Version:        1.10.0
+Version:        1.10.3
 Release:        0
 Summary:        Google Cloud Vpc Access API client library
 License:        Apache-2.0
@@ -29,13 +29,14 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module google-api-core >= 1.34.0}
+BuildRequires:  %{python_module google-api-core >= 1.34.1}
 BuildRequires:  %{python_module proto-plus >= 1.22.3}
 BuildRequires:  %{python_module protobuf >= 3.19.5}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-google-api-core >= 1.34.0
+Requires:       python-google-api-core >= 1.34.1
+Requires:       python-google-auth
 Requires:       python-proto-plus >= 1.22.3
 Requires:       python-protobuf >= 3.19.5
 BuildArch:      noarch
