@@ -7170,4 +7170,19 @@ handle manual pages that consist only of a .so directive such as
     <comment></comment>
     <requestid>1170821</requestid>
   </revision>
+  <revision rev="421" vrev="1">
+    <srcmd5>f7b0d2c5424be03ceb2e572bb8354ab2</srcmd5>
+    <version>255.5</version>
+    <time>1715444340</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit 49fb09fa18a7b81f6b3c3c15aca47fd00940430e (merge of v255.5)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/23b15deb203780580cbfad095ae1071bd2133220...49fb09fa18a7b81f6b3c3c15aca47fd00940430e
+
+- Import commit 23b15deb203780580cbfad095ae1071bd2133220
+  23b15deb20 gpt-auto-generator: be more defensive when checking the presence of ESP in fstab (bsc#1218671)
+  7ed2979654 journalctl: explicitly check &lt; 0 for error
+  fc5e25d0a0 journalctl: make --until work again with --after-cursor and --lines (bsc#1221906)</comment>
+    <requestid>1172983</requestid>
+  </revision>
 </revisionlist>

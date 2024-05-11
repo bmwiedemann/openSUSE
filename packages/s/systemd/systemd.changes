@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May  7 13:32:33 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import commit 49fb09fa18a7b81f6b3c3c15aca47fd00940430e (merge of v255.5)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/23b15deb203780580cbfad095ae1071bd2133220...49fb09fa18a7b81f6b3c3c15aca47fd00940430e
+
+-------------------------------------------------------------------
+Tue May  7 08:33:47 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import commit 23b15deb203780580cbfad095ae1071bd2133220
+
+  23b15deb20 gpt-auto-generator: be more defensive when checking the presence of ESP in fstab (bsc#1218671)
+  7ed2979654 journalctl: explicitly check < 0 for error
+  fc5e25d0a0 journalctl: make --until work again with --after-cursor and --lines (bsc#1221906)
+
+-------------------------------------------------------------------
 Thu Apr 25 09:08:21 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Update 0008-sysv-generator-translate-Required-Start-into-a-Wants.patch to

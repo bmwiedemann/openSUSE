@@ -1,5 +1,5 @@
 #
-# spec file for package systemd
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -26,9 +26,9 @@
 %define systemd_release    %{?release_override}%{!?release_override:0}
 %define archive_version    %{nil}
 %else
-%define systemd_version    255.4
+%define systemd_version    255.5
 %define systemd_release    0
-%define archive_version    +suse.22.g56b53b17bc
+%define archive_version    +suse.26.g49fb09fa18
 %endif
 
 %define systemd_major      %{sub %systemd_version 1 3}
@@ -341,7 +341,7 @@ Requires:       group(lp)
 Requires(pre):  group(kvm)
 Requires(post): sed
 Requires(post): coreutils
-Requires(postun): coreutils
+Requires(postun):coreutils
 # 'regenerate_initrd_post' macro is expanded during build, hence this BR.
 BuildRequires:  suse-module-tools
 %if %{without bootstrap}
