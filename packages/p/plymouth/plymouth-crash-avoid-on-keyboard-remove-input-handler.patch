@@ -1,6 +1,6 @@
-diff -Nura plymouth-0.9.5~git20220719.9e72df3/src/libply-splash-core/ply-keyboard.c plymouth-0.9.5~git20220719.9e72df3_new/src/libply-splash-core/ply-keyboard.c
---- plymouth-0.9.5~git20220719.9e72df3/src/libply-splash-core/ply-keyboard.c	2022-04-15 16:39:24.000000000 +0800
-+++ plymouth-0.9.5~git20220719.9e72df3_new/src/libply-splash-core/ply-keyboard.c	2022-07-29 14:19:35.951346564 +0800
+diff -Nura plymouth-22.02.122+180.b1d5aa9/src/libply-splash-core/ply-keyboard.c plymouth-22.02.122+180.b1d5aa9_new/src/libply-splash-core/ply-keyboard.c
+--- plymouth-22.02.122+180.b1d5aa9/src/libply-splash-core/ply-keyboard.c	2023-06-08 10:49:58.000000000 +0800
++++ plymouth-22.02.122+180.b1d5aa9_new/src/libply-splash-core/ply-keyboard.c	2023-07-12 22:52:25.011378645 +0800
 @@ -522,6 +522,8 @@
  
          assert (keyboard != NULL);
@@ -18,3 +18,10 @@ diff -Nura plymouth-0.9.5~git20220719.9e72df3/src/libply-splash-core/ply-keyboar
  }
  
  void
+@@ -666,4 +669,4 @@
+         }
+ 
+         return NULL;
+-}
+\ 文件尾没有换行符
++}

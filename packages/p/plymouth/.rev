@@ -1139,4 +1139,12 @@ plymouth-branding-openSUSE (forwarded request 114125 from gary_lin)</comment>
     <comment>Update old plymouth log to fix incorrect bug id for the update to SUSE:SLE-SP6.</comment>
     <requestid>1108386</requestid>
   </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>9e169de7f2fbd4352692b8a3ab996f0a</srcmd5>
+    <version>22.02.122+180.b1d5aa9</version>
+    <time>1715444419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1173068</requestid>
+  </revision>
 </revisionlist>
