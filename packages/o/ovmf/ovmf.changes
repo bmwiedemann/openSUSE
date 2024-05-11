@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri May 10 06:06:42 UTC 2024 - Joey Lee <jlee@suse.com>
+
+- Add the following patches from edk2-stable202402 for CVE-2022-36763:
+    - ovmf-SecurityPkg-DxeTpm2MeasureBootLib-SECURITY-PATCH-4117.patch
+        1ddcb9fc6b41 SecurityPkg: : Adding CVE 2022-36763 to SecurityFixes.yaml
+    - ovmf-SecurityPkg-DxeTpmMeasureBootLib-SECURITY-PATCH-4117.patch
+        4776a1b39ee0 SecurityPkg: DxeTpmMeasureBootLib: SECURITY PATCH 4117 - CVE 2022-36763
+    - ovmf-SecurityPkg-Adding-CVE-2022-36763-to-SecurityFixes.y.patch
+        224446543206 SecurityPkg: DxeTpm2MeasureBootLib: SECURITY PATCH 4117 - CVE 2022-36763
+    (bsc#1218678, CVE-2022-36763)
+- Add the following patches from edk2-stable202402 for CVE-2022-36764: 
+    - ovmf-SecurityPkg-DxeTpm2MeasureBootLib-SECURITY-PATCH-4118.patch
+        8f6d343ae639 SecurityPkg: : Adding CVE 2022-36764 to SecurityFixes.yaml
+    - ovmf-SecurityPkg-DxeTpmMeasureBootLib-SECURITY-PATCH-4118.patch
+        0d341c01eeab SecurityPkg: DxeTpmMeasureBootLib: SECURITY PATCH 4118 - CVE 2022-36764
+    - ovmf-SecurityPkg-Adding-CVE-2022-36764-to-SecurityFixes.y.patch
+        c7b279442181 SecurityPkg: DxeTpm2MeasureBootLib: SECURITY PATCH 4118 - CVE 2022-36764
+    (bsc#1218679, CVE-2022-36764)
+- All the above patches for CVE-2022-36763 and CVE-2022-36764 need the
+  following patches. We also backported them:
+    - ovmf-SecurityPkg-DxeTpm2MeasureBootLib-SECURITY-PATCH-4117-4118-symbol-rename.patch
+        264636d8e698 SecurityPkg: : Updating SecurityFixes.yaml after symbol rename
+    - ovmf-SecurityPkg-DxeTpmMeasureBootLib-SECURITY-PATCH-4117-4118-symbol-rename.patch
+        326db0c90720 SecurityPkg: DxeTpmMeasureBootLib: SECURITY PATCH 4117/4118 symbol rename
+    - ovmf-SecurityPkg-Updating-SecurityFixes.yaml-after-symbol.patch
+    40adbb7f628d SecurityPkg: DxeTpm2MeasureBootLib: SECURITY PATCH 4117/4118 symbol rename
+    (bsc#1218678, CVE-2022-36763)(bsc#1218679, CVE-2022-36764)
+
+-------------------------------------------------------------------
 Thu Apr 11 16:15:03 UTC 2024 - Joey Lee <jlee@suse.com>
 
 - Add ovmf-EmbeddedPkg-Library-Support-SOURCE_DATE_EPOCH-in-Vir.patch

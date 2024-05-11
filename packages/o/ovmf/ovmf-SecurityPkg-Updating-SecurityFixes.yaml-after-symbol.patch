@@ -1,0 +1,68 @@
+From 264636d8e6983e0f6dc6be2fca9d84ec81315954 Mon Sep 17 00:00:00 2001
+From: Doug Flick <dougflick@microsoft.com>
+Date: Wed, 17 Jan 2024 14:47:22 -0800
+Subject: [PATCH] SecurityPkg: : Updating SecurityFixes.yaml after symbol
+ rename
+
+Adding the new commit titles for the symbol renames
+
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Rahul Kumar <rahul1.kumar@intel.com>
+
+Signed-off-by: Doug Flick [MSFT] <doug.edk2@gmail.com>
+Message-Id: <5e0e851e97459e183420178888d4fcdadc2f1ae1.1705529990.git.doug.edk2@gmail.com>
+Reviewed-by: Jiewen Yao <Jiewen.yao@intel.com>
+---
+ SecurityPkg/SecurityFixes.yaml | 28 +++++++++++++++++-----------
+ 1 file changed, 17 insertions(+), 11 deletions(-)
+
+Index: edk2-edk2-stable202308/SecurityPkg/SecurityFixes.yaml
+===================================================================
+--- edk2-edk2-stable202308.orig/SecurityPkg/SecurityFixes.yaml
++++ edk2-edk2-stable202308/SecurityPkg/SecurityFixes.yaml
+@@ -9,28 +9,34 @@ CVE_2022_36763:
+     - "SecurityPkg: DxeTpm2Measurement: SECURITY PATCH 4117 - CVE 2022-36763"
+     - "SecurityPkg: DxeTpmMeasurement: SECURITY PATCH 4117 - CVE 2022-36763"
+     - "SecurityPkg: : Adding CVE 2022-36763 to SecurityFixes.yaml"
++    - "SecurityPkg: DxeTpm2MeasureBootLib: SECURITY PATCH 4117/4118 symbol rename"
++    - "SecurityPkg: DxeTpmMeasureBootLib: SECURITY PATCH 4117/4118 symbol rename"
++    - "SecurityPkg: : Updating SecurityFixes.yaml after symbol rename"
+   cve: CVE-2022-36763
+   date_reported: 2022-10-25 11:31 UTC
+   description: (CVE-2022-36763) - Heap Buffer Overflow in Tcg2MeasureGptTable()
+   note: This patch is related to and supersedes TCBZ2168
+   files_impacted:
+-  - Library\DxeTpm2MeasureBootLib\DxeTpm2MeasureBootLib.c
+-  - Library\DxeTpmMeasureBootLib\DxeTpmMeasureBootLib.c
++    - Library\DxeTpm2MeasureBootLib\DxeTpm2MeasureBootLib.c
++    - Library\DxeTpmMeasureBootLib\DxeTpmMeasureBootLib.c
+   links:
+-  - https://bugzilla.tianocore.org/show_bug.cgi?id=4117
+-  - https://bugzilla.tianocore.org/show_bug.cgi?id=2168
+-  - https://bugzilla.tianocore.org/show_bug.cgi?id=1990
++    - https://bugzilla.tianocore.org/show_bug.cgi?id=4117
++    - https://bugzilla.tianocore.org/show_bug.cgi?id=2168
++    - https://bugzilla.tianocore.org/show_bug.cgi?id=1990
+ CVE_2022_36764:
+   commit_titles:
+-     - "SecurityPkg: DxeTpm2MeasureBootLib: SECURITY PATCH 4118 - CVE 2022-36764"
+-     - "SecurityPkg: DxeTpmMeasureBootLib: SECURITY PATCH 4118 - CVE 2022-36764"
+-     - "SecurityPkg: : Adding CVE 2022-36764 to SecurityFixes.yaml"
++    - "SecurityPkg: DxeTpm2MeasureBootLib: SECURITY PATCH 4118 - CVE 2022-36764"
++    - "SecurityPkg: DxeTpmMeasureBootLib: SECURITY PATCH 4118 - CVE 2022-36764"
++    - "SecurityPkg: : Adding CVE 2022-36764 to SecurityFixes.yaml"
++    - "SecurityPkg: DxeTpm2MeasureBootLib: SECURITY PATCH 4117/4118 symbol rename"
++    - "SecurityPkg: DxeTpmMeasureBootLib: SECURITY PATCH 4117/4118 symbol rename"
++    - "SecurityPkg: : Updating SecurityFixes.yaml after symbol rename"
+   cve: CVE-2022-36764
+   date_reported: 2022-10-25 12:23 UTC
+   description: Heap Buffer Overflow in Tcg2MeasurePeImage()
+   note:
+   files_impacted:
+-  - Library\DxeTpm2MeasureBootLib\DxeTpm2MeasureBootLib.c
+-  - Library\DxeTpmMeasureBootLib\DxeTpmMeasureBootLib.c
++    - Library\DxeTpm2MeasureBootLib\DxeTpm2MeasureBootLib.c
++    - Library\DxeTpmMeasureBootLib\DxeTpmMeasureBootLib.c
+   links:
+-  - https://bugzilla.tianocore.org/show_bug.cgi?id=4118
++    - https://bugzilla.tianocore.org/show_bug.cgi?id=4118

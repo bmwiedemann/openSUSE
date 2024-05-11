@@ -1,0 +1,251 @@
+From 40adbb7f628dee79156c679fb0857968b61b7620 Mon Sep 17 00:00:00 2001
+From: Doug Flick <dougflick@microsoft.com>
+Date: Wed, 17 Jan 2024 14:47:20 -0800
+Subject: [PATCH] SecurityPkg: DxeTpm2MeasureBootLib: SECURITY PATCH 4117/4118
+ symbol rename
+
+Updates the sanitation function names to be lib unique names
+
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Rahul Kumar <rahul1.kumar@intel.com>
+
+Signed-off-by: Doug Flick [MSFT] <doug.edk2@gmail.com>
+Message-Id: <7b18434c8a8b561654efd40ced3becb8b378c8f1.1705529990.git.doug.edk2@gmail.com>
+Reviewed-by: Jiewen Yao <Jiewen.yao@intel.com>
+---
+ .../DxeTpm2MeasureBootLib.c                   |  8 +++---
+ .../DxeTpm2MeasureBootLibSanitization.c       |  8 +++---
+ .../DxeTpm2MeasureBootLibSanitization.h       |  8 +++---
+ .../DxeTpm2MeasureBootLibSanitizationTest.c   | 26 +++++++++----------
+ 4 files changed, 25 insertions(+), 25 deletions(-)
+
+Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLib.c
+===================================================================
+--- edk2-edk2-stable202308.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLib.c
++++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLib.c
+@@ -200,7 +200,7 @@ Tcg2MeasureGptTable (
+                      BlockIo->Media->BlockSize,
+                      (UINT8 *)PrimaryHeader
+                      );
+-  if (EFI_ERROR (Status) || EFI_ERROR (SanitizeEfiPartitionTableHeader (PrimaryHeader, BlockIo))) {
++  if (EFI_ERROR (Status) || EFI_ERROR (Tpm2SanitizeEfiPartitionTableHeader (PrimaryHeader, BlockIo))) {
+     DEBUG ((DEBUG_ERROR, "Failed to read Partition Table Header or invalid Partition Table Header!\n"));
+     FreePool (PrimaryHeader);
+     return EFI_DEVICE_ERROR;
+@@ -209,7 +209,7 @@ Tcg2MeasureGptTable (
+   //
+   // Read the partition entry.
+   //
+-  Status = SanitizePrimaryHeaderAllocationSize (PrimaryHeader, &AllocSize);
++  Status = Tpm2SanitizePrimaryHeaderAllocationSize (PrimaryHeader, &AllocSize);
+   if (EFI_ERROR (Status)) {
+     FreePool (PrimaryHeader);
+     return EFI_BAD_BUFFER_SIZE;
+@@ -250,7 +250,7 @@ Tcg2MeasureGptTable (
+   //
+   // Prepare Data for Measurement (CcProtocol and Tcg2Protocol)
+   //
+-  Status = SanitizePrimaryHeaderGptEventSize (PrimaryHeader, NumberOfPartition, &TcgEventSize);
++  Status = Tpm2SanitizePrimaryHeaderGptEventSize (PrimaryHeader, NumberOfPartition, &TcgEventSize);
+   if (EFI_ERROR (Status)) {
+     FreePool (PrimaryHeader);
+     FreePool (EntryPtr);
+@@ -420,7 +420,7 @@ Tcg2MeasurePeImage (
+   }
+ 
+   FilePathSize = (UINT32)GetDevicePathSize (FilePath);
+-  Status       = SanitizePeImageEventSize (FilePathSize, &EventSize);
++  Status       = Tpm2SanitizePeImageEventSize (FilePathSize, &EventSize);
+   if (EFI_ERROR (Status)) {
+     return EFI_UNSUPPORTED;
+   }
+Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.c
+===================================================================
+--- edk2-edk2-stable202308.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.c
++++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.c
+@@ -63,7 +63,7 @@
+ **/
+ EFI_STATUS
+ EFIAPI
+-SanitizeEfiPartitionTableHeader (
++Tpm2SanitizeEfiPartitionTableHeader (
+   IN CONST EFI_PARTITION_TABLE_HEADER  *PrimaryHeader,
+   IN CONST EFI_BLOCK_IO_PROTOCOL       *BlockIo
+   )
+@@ -169,7 +169,7 @@ SanitizeEfiPartitionTableHeader (
+ **/
+ EFI_STATUS
+ EFIAPI
+-SanitizePrimaryHeaderAllocationSize (
++Tpm2SanitizePrimaryHeaderAllocationSize (
+   IN CONST EFI_PARTITION_TABLE_HEADER  *PrimaryHeader,
+   OUT UINT32                           *AllocationSize
+   )
+@@ -221,7 +221,7 @@ SanitizePrimaryHeaderAllocationSize (
+     One of the passed parameters was invalid.
+ **/
+ EFI_STATUS
+-SanitizePrimaryHeaderGptEventSize (
++Tpm2SanitizePrimaryHeaderGptEventSize (
+   IN  CONST EFI_PARTITION_TABLE_HEADER  *PrimaryHeader,
+   IN  UINTN                             NumberOfPartition,
+   OUT UINT32                            *EventSize
+@@ -292,7 +292,7 @@ SanitizePrimaryHeaderGptEventSize (
+     One of the passed parameters was invalid.
+ **/
+ EFI_STATUS
+-SanitizePeImageEventSize (
++Tpm2SanitizePeImageEventSize (
+   IN  UINT32  FilePathSize,
+   OUT UINT32  *EventSize
+   )
+Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.h
+===================================================================
+--- edk2-edk2-stable202308.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.h
++++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.h
+@@ -54,7 +54,7 @@
+ **/
+ EFI_STATUS
+ EFIAPI
+-SanitizeEfiPartitionTableHeader (
++Tpm2SanitizeEfiPartitionTableHeader (
+   IN CONST EFI_PARTITION_TABLE_HEADER  *PrimaryHeader,
+   IN CONST EFI_BLOCK_IO_PROTOCOL       *BlockIo
+   );
+@@ -78,7 +78,7 @@ SanitizeEfiPartitionTableHeader (
+ **/
+ EFI_STATUS
+ EFIAPI
+-SanitizePrimaryHeaderAllocationSize (
++Tpm2SanitizePrimaryHeaderAllocationSize (
+   IN CONST EFI_PARTITION_TABLE_HEADER  *PrimaryHeader,
+   OUT UINT32                           *AllocationSize
+   );
+@@ -107,7 +107,7 @@ SanitizePrimaryHeaderAllocationSize (
+     One of the passed parameters was invalid.
+ **/
+ EFI_STATUS
+-SanitizePrimaryHeaderGptEventSize (
++Tpm2SanitizePrimaryHeaderGptEventSize (
+   IN  CONST EFI_PARTITION_TABLE_HEADER  *PrimaryHeader,
+   IN  UINTN                             NumberOfPartition,
+   OUT UINT32                            *EventSize
+@@ -131,7 +131,7 @@ SanitizePrimaryHeaderGptEventSize (
+     One of the passed parameters was invalid.
+ **/
+ EFI_STATUS
+-SanitizePeImageEventSize (
++Tpm2SanitizePeImageEventSize (
+   IN  UINT32  FilePathSize,
+   OUT UINT32  *EventSize
+   );
+Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/InternalUnitTest/DxeTpm2MeasureBootLibSanitizationTest.c
+===================================================================
+--- edk2-edk2-stable202308.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/InternalUnitTest/DxeTpm2MeasureBootLibSanitizationTest.c
++++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/InternalUnitTest/DxeTpm2MeasureBootLibSanitizationTest.c
+@@ -84,27 +84,27 @@ TestSanitizeEfiPartitionTableHeader (
+   PrimaryHeader.Header.CRC32 = CalculateCrc32 ((UINT8 *)&PrimaryHeader, PrimaryHeader.Header.HeaderSize);
+ 
+   // Test that a normal PrimaryHeader passes validation
+-  Status = SanitizeEfiPartitionTableHeader (&PrimaryHeader, &BlockIo);
++  Status = Tpm2SanitizeEfiPartitionTableHeader (&PrimaryHeader, &BlockIo);
+   UT_ASSERT_NOT_EFI_ERROR (Status);
+ 
+   // Test that when number of partition entries is 0, the function returns EFI_DEVICE_ERROR
+   // Should print "Invalid Partition Table Header NumberOfPartitionEntries!""
+   PrimaryHeader.NumberOfPartitionEntries = 0;
+-  Status                                 = SanitizeEfiPartitionTableHeader (&PrimaryHeader, &BlockIo);
++  Status                                 = Tpm2SanitizeEfiPartitionTableHeader (&PrimaryHeader, &BlockIo);
+   UT_ASSERT_EQUAL (Status, EFI_DEVICE_ERROR);
+   PrimaryHeader.NumberOfPartitionEntries = DEFAULT_PRIMARY_TABLE_HEADER_SIZE_OF_PARTITION_ENTRY;
+ 
+   // Test that when the header size is too small, the function returns EFI_DEVICE_ERROR
+   // Should print "Invalid Partition Table Header Size!"
+   PrimaryHeader.Header.HeaderSize = 0;
+-  Status                          = SanitizeEfiPartitionTableHeader (&PrimaryHeader, &BlockIo);
++  Status                          = Tpm2SanitizeEfiPartitionTableHeader (&PrimaryHeader, &BlockIo);
+   UT_ASSERT_EQUAL (Status, EFI_DEVICE_ERROR);
+   PrimaryHeader.Header.HeaderSize = sizeof (EFI_PARTITION_TABLE_HEADER);
+ 
+   // Test that when the SizeOfPartitionEntry is too small, the function returns EFI_DEVICE_ERROR
+   // should print: "SizeOfPartitionEntry shall be set to a value of 128 x 2^n where n is an integer greater than or equal to zero (e.g., 128, 256, 512, etc.)!"
+   PrimaryHeader.SizeOfPartitionEntry = 1;
+-  Status                             = SanitizeEfiPartitionTableHeader (&PrimaryHeader, &BlockIo);
++  Status                             = Tpm2SanitizeEfiPartitionTableHeader (&PrimaryHeader, &BlockIo);
+   UT_ASSERT_EQUAL (Status, EFI_DEVICE_ERROR);
+ 
+   DEBUG ((DEBUG_INFO, "%a: Test passed\n", __func__));
+@@ -137,7 +137,7 @@ TestSanitizePrimaryHeaderAllocationSize
+   PrimaryHeader.NumberOfPartitionEntries = 5;
+   PrimaryHeader.SizeOfPartitionEntry     = DEFAULT_PRIMARY_TABLE_HEADER_SIZE_OF_PARTITION_ENTRY;
+ 
+-  Status = SanitizePrimaryHeaderAllocationSize (&PrimaryHeader, &AllocationSize);
++  Status = Tpm2SanitizePrimaryHeaderAllocationSize (&PrimaryHeader, &AllocationSize);
+   UT_ASSERT_NOT_EFI_ERROR (Status);
+ 
+   // Test that the allocation size is correct compared to the existing logic
+@@ -146,19 +146,19 @@ TestSanitizePrimaryHeaderAllocationSize
+   // Test that an overflow is detected
+   PrimaryHeader.NumberOfPartitionEntries = MAX_UINT32;
+   PrimaryHeader.SizeOfPartitionEntry     = 5;
+-  Status                                 = SanitizePrimaryHeaderAllocationSize (&PrimaryHeader, &AllocationSize);
++  Status                                 = Tpm2SanitizePrimaryHeaderAllocationSize (&PrimaryHeader, &AllocationSize);
+   UT_ASSERT_EQUAL (Status, EFI_BAD_BUFFER_SIZE);
+ 
+   // Test the inverse
+   PrimaryHeader.NumberOfPartitionEntries = 5;
+   PrimaryHeader.SizeOfPartitionEntry     = MAX_UINT32;
+-  Status                                 = SanitizePrimaryHeaderAllocationSize (&PrimaryHeader, &AllocationSize);
++  Status                                 = Tpm2SanitizePrimaryHeaderAllocationSize (&PrimaryHeader, &AllocationSize);
+   UT_ASSERT_EQUAL (Status, EFI_BAD_BUFFER_SIZE);
+ 
+   // Test the worst case scenario
+   PrimaryHeader.NumberOfPartitionEntries = MAX_UINT32;
+   PrimaryHeader.SizeOfPartitionEntry     = MAX_UINT32;
+-  Status                                 = SanitizePrimaryHeaderAllocationSize (&PrimaryHeader, &AllocationSize);
++  Status                                 = Tpm2SanitizePrimaryHeaderAllocationSize (&PrimaryHeader, &AllocationSize);
+   UT_ASSERT_EQUAL (Status, EFI_BAD_BUFFER_SIZE);
+ 
+   DEBUG ((DEBUG_INFO, "%a: Test passed\n", __func__));
+@@ -196,7 +196,7 @@ TestSanitizePrimaryHeaderGptEventSize (
+   NumberOfPartition = 13;
+ 
+   // that the primary event size is correct
+-  Status = SanitizePrimaryHeaderGptEventSize (&PrimaryHeader, NumberOfPartition, &EventSize);
++  Status = Tpm2SanitizePrimaryHeaderGptEventSize (&PrimaryHeader, NumberOfPartition, &EventSize);
+   UT_ASSERT_NOT_EFI_ERROR (Status);
+ 
+   // Calculate the existing logic event size
+@@ -207,12 +207,12 @@ TestSanitizePrimaryHeaderGptEventSize (
+   UT_ASSERT_EQUAL (EventSize, ExistingLogicEventSize);
+ 
+   // Tests that the primary event size may not overflow
+-  Status = SanitizePrimaryHeaderGptEventSize (&PrimaryHeader, MAX_UINT32, &EventSize);
++  Status = Tpm2SanitizePrimaryHeaderGptEventSize (&PrimaryHeader, MAX_UINT32, &EventSize);
+   UT_ASSERT_EQUAL (Status, EFI_BAD_BUFFER_SIZE);
+ 
+   // Test that the size of partition entries may not overflow
+   PrimaryHeader.SizeOfPartitionEntry = MAX_UINT32;
+-  Status                             = SanitizePrimaryHeaderGptEventSize (&PrimaryHeader, NumberOfPartition, &EventSize);
++  Status                             = Tpm2SanitizePrimaryHeaderGptEventSize (&PrimaryHeader, NumberOfPartition, &EventSize);
+   UT_ASSERT_EQUAL (Status, EFI_BAD_BUFFER_SIZE);
+ 
+   DEBUG ((DEBUG_INFO, "%a: Test passed\n", __func__));
+@@ -245,7 +245,7 @@ TestSanitizePeImageEventSize (
+   FilePathSize = 255;
+ 
+   // Test that a normal PE image passes validation
+-  Status = SanitizePeImageEventSize (FilePathSize, &EventSize);
++  Status = Tpm2SanitizePeImageEventSize (FilePathSize, &EventSize);
+   UT_ASSERT_EQUAL (Status, EFI_SUCCESS);
+ 
+   // Test that the event size is correct compared to the existing logic
+@@ -258,7 +258,7 @@ TestSanitizePeImageEventSize (
+   }
+ 
+   // Test that the event size may not overflow
+-  Status = SanitizePeImageEventSize (MAX_UINT32, &EventSize);
++  Status = Tpm2SanitizePeImageEventSize (MAX_UINT32, &EventSize);
+   UT_ASSERT_EQUAL (Status, EFI_BAD_BUFFER_SIZE);
+ 
+   DEBUG ((DEBUG_INFO, "%a: Test passed\n", __func__));

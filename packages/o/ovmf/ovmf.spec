@@ -73,6 +73,17 @@ Patch11:        %{name}-UefiCpuPkg-BaseXApicX2ApicLib-fix-CPUID_V2_EXTENDED_.pat
 Patch12:        %{name}-OvmfPkg-SmbiosPlatformDxe-tweak-fallback-release-dat.patch
 # Bug 1217704 - ovmf: reproducible builds problem in ovmf-riscv64-code.bin
 Patch13:        %{name}-EmbeddedPkg-Library-Support-SOURCE_DATE_EPOCH-in-Vir.patch
+# Bug 1218678 (CVE-2022-36763) - VUL-0: CVE-2022-36763: EDK2 is susceptible to a vulnerability in the Tcg2MeasureGptTable() function...
+Patch14:        %{name}-SecurityPkg-DxeTpm2MeasureBootLib-SECURITY-PATCH-4117.patch
+Patch15:        %{name}-SecurityPkg-DxeTpmMeasureBootLib-SECURITY-PATCH-4117.patch
+Patch16:        %{name}-SecurityPkg-Adding-CVE-2022-36763-to-SecurityFixes.y.patch
+# Bug 1218679 (CVE-2022-36764) - VUL-0: CVE-2022-36764: EDK2 is susceptible to a vulnerability in the Tcg2MeasurePeImage() function...
+Patch17:        %{name}-SecurityPkg-DxeTpm2MeasureBootLib-SECURITY-PATCH-4118.patch
+Patch18:        %{name}-SecurityPkg-DxeTpmMeasureBootLib-SECURITY-PATCH-4118.patch
+Patch19:        %{name}-SecurityPkg-Adding-CVE-2022-36764-to-SecurityFixes.y.patch
+Patch20:        %{name}-SecurityPkg-DxeTpm2MeasureBootLib-SECURITY-PATCH-4117-4118-symbol-rename.patch
+Patch21:        %{name}-SecurityPkg-DxeTpmMeasureBootLib-SECURITY-PATCH-4117-4118-symbol-rename.patch
+Patch22:        %{name}-SecurityPkg-Updating-SecurityFixes.yaml-after-symbol.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
