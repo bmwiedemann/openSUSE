@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon May  6 12:22:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/6.2.0/
+- Changes since 6.1.0:
+  * Add support for media-playlist-no-shuffle icon name
+  * Add audio/ogg and audio/x-vorbis+ogg icons
+  * Add audio/vnd.wave MIME type
+  * Remove generic non-symbolic audio and video icons
+  * Add 16 and 22px symbolic versions of some Places icons that were missing (kde#486316)
+  * Add zoom-in-map and zoom-out-map icons along with -symbolic versions
+  * Longer description for the ICONS_LIBRARY option
+  * Add symbolic versions for more USB device style icons
+  * Fix some scale errors (kde#485479)
+  * Fixed input-combo-on.svg colour issue
+  * Add -symbolic symlinks for notification-* icons
+  * Use new `dev.suyu_emu.suyu` id, add symlink for old id
+  * Add accessories-screenshot-tool icon/symlink
+  * [webfont] enable ligatures
+  * gitignore: add VS Code dir
+  * add input-keyboard-color 22px, 32 px
+
+-------------------------------------------------------------------
 Fri Apr  5 12:52:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.1.0
