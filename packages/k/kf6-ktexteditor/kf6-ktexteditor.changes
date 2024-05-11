@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon May  6 12:22:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/6.2.0/
+- Changes since 6.1.0:
+  * Fix caret painting for inline notes at the end of line
+  * KateCompletionWidget: Mark function static
+  * KateCompletionModel: remove useless std::as_const
+  * run more tests offscreen
+  * Fix performance with many cursors in a large line
+  * fix test expectations
+  * fix crashs and OOM on load with encoding failures (kde#486195)
+  * a11y: Improve tab order for "Appeareance" -> "Borders"
+  * a11y: Set "Line Height Multiplier" buddy
+  * Fix broken navigation in completion widget with multiple views
+  * Fix clicking in completion
+  * fix textInsertedRange signal for insertText behind last line (kde#483363)
+
+-------------------------------------------------------------------
 Fri Apr  5 12:52:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.1.0
