@@ -3231,6 +3231,7 @@ unsorted:
   - distribution-gpg-keys 
   - distribution-logos-openSUSE 
   - distribution-logos-openSUSE-Kubic 
+  - distribution-logos-openSUSE-Slowroll 
   - distribution-registry 
   - distrobuilder 
   - dita 
@@ -4814,6 +4815,7 @@ unsorted:
   - gdl-devel 
   - gdl-lang 
   - gdlmm-devel 
+  - gdm-branding-MicroOS 
   - gdm-branding-upstream 
   - gdm-devel 
   - gdm-systemd 
@@ -20624,6 +20626,7 @@ unsorted:
   - patchutils 
   - patool 
   - patool-bash-completion 
+  - patterns-aeon-base 
   - patterns-base-32bit 
   - patterns-base-apparmor-32bit 
   - patterns-base-base-32bit 
@@ -20707,6 +20710,7 @@ unsorted:
   - patterns-server-printing-32bit 
   - patterns-server-xen_tools 
   - patterns-sway-sway 
+  - patterns-tik-base 
   - patterns-wsl-base 
   - patterns-wsl-gui 
   - patterns-wsl-systemd 
@@ -23290,6 +23294,7 @@ unsorted:
   - python-mpld3-doc 
   - python-murmurhash-devel 
   - python-nautilus-common-devel 
+  - python-nautilus-common-files 
   - python-ncclient-doc 
   - python-neutronclient-doc 
   - python-notmuch-doc 
@@ -29243,6 +29248,7 @@ unsorted:
   - python311-napalm-digineo-procurve 
   - python311-napalm-procurve 
   - python311-natsort 
+  - python311-nautilus 
   - python311-nautilus-devel 
   - python311-nbclassic 
   - python311-nbclient 
@@ -36070,7 +36076,7 @@ unsorted:
   - sdcc-doc 
   - sdcc-libc-sources 
   - sdcv 
-  - sddm-branding-upstream 
+  - sddm 
   - sddm-conf 
   - sddm-conf-lang 
   - sdl-asylum 
@@ -36869,6 +36875,8 @@ unsorted:
   - systemd-mini-devel 
   - systemd-network 
   - systemd-portable 
+  - systemd-repart-branding-Aeon 
+  - systemd-repart-branding-tik 
   - systemd-status-mail 
   - systemd-sysvcompat 
   - systemd-testsuite 
@@ -36897,6 +36905,9 @@ unsorted:
   - tai-heritage-pro-fonts 
   - taigo 
   - tailscale 
+  - tailscale-bash-completion 
+  - tailscale-fish-completion 
+  - tailscale-zsh-completion 
   - taisei 
   - taisei-data 
   - tali 
@@ -46282,6 +46293,11 @@ unsorted:
   - tiger-types 
   - tiger-types-javadoc 
   - tigervnc-x11vnc 
+  - tik 
+  - tik-config-Aeon 
+  - tik-config-generic 
+  - tik-module-mig 
+  - tik-module-welcome 
   - tilda 
   - tilda-lang 
   - tilde 
@@ -46829,6 +46845,7 @@ unsorted:
   - typelib-1_0-Msg-0 
   - typelib-1_0-Muffin-0_0 
   - typelib-1_0-NMA-1_0 
+  - typelib-1_0-Nautilus-4_0 
   - typelib-1_0-Nemo-3_0 
   - typelib-1_0-Nice-0_1 
   - typelib-1_0-OSTree-1_0 
@@ -47686,6 +47703,7 @@ unsorted:
   - x11vnc-frontend 
   - x2x 
   - x3270 
+  - x86_64_v3-branding-Aeon 
   - x86info 
   - xa 
   - xalan-c 
