@@ -738,4 +738,41 @@
         Fixed bug GH-13685 (Unexpected null pointer in zend_string.h).</comment>
     <requestid>1167767</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>6e47c3deba8f81f167dc98b56ee20550</srcmd5>
+    <version>8.3.7</version>
+    <time>1715444336</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.3.7
+    Core:
+        Fixed zend_call_stack build with Linux/uclibc-ng without thread support.
+        Fixed bug GH-13772 (Invalid execute_data-&gt;opline pointers in observer fcall handlers when JIT is enabled).
+        Fixed bug GH-13931 (Applying zero offset to null pointer in Zend/zend_opcode.c).
+        Fixed bug GH-13942 (Align the behavior of zend-max-execution-timers with other timeout implementations).
+        Fixed bug GH-14003 (Broken cleanup of unfinished calls with callable convert parameters).
+        Fixed bug GH-14013 (Erroneous dnl appended in configure).
+        Fixed bug GH-10232 (If autoloading occurs during constant resolution filename and lineno are identified incorrectly).
+        Fixed bug GH-13727 (Missing void keyword).
+    Fibers:
+        Fixed bug GH-13903 (ASAN false positive underflow when executing copy()).
+    Fileinfo:
+        Fixed bug GH-13795 (Test failing in ext/fileinfo/tests/bug78987.phpt on big-endian PPC).
+    FPM:
+        Fixed bug GH-13563 (Setting bool values via env in FPM config fails).
+    Intl:
+        Fixed build for icu 74 and onwards.
+    MySQLnd:
+        Fix shift out of bounds on 32-bit non-fast-path platforms.
+    Opcache:
+        Fixed bug GH-13433 (Segmentation Fault in zend_class_init_statics when using opcache.preload).
+        Fixed incorrect assumptions across compilation units for static calls.
+    OpenSSL:
+        Fixed bug GH-10495 (feof on OpenSSL stream hangs indefinitely).
+    PDO SQLite:
+        Fix GH-13984 (Buffer size is now checked before memcmp).
+        Fix GH-13998 (Manage refcount of agg_context-&gt;val correctly).
+    Phar:
+        Fixed bug GH-13836 (Renaming a file in a Phar to an already existing filename causes a NULL pointer dereference).</comment>
+    <requestid>1172959</requestid>
+  </revision>
 </revisionlist>
