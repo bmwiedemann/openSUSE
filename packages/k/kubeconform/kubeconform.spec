@@ -17,14 +17,14 @@
 
 
 Name:           kubeconform
-Version:        0.6.4
+Version:        0.6.6
 Release:        0
 Summary:        A fast Kubernetes manifests validator, with support for custom resources
 License:        Apache-2.0
 URL:            https://github.com/yannh/kubeconform/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.21
+BuildRequires:  go >= 1.22
 
 %description
 Kubeconform is a Kubernetes manifests validation tool. It is inspired by, contains

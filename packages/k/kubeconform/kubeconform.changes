@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri May 10 05:05:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.6:
+  * fix go.mod
+
+-------------------------------------------------------------------
+Thu May 09 16:37:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.5:
+  * Slightly improve the coverage of the validator test (#271)
+  * Stop validating output of closed channel in Validate (#265)
+  * Update go version in go.mod (#269)
+  * Update Go & Base images (#268)
+  * Remove deprecated Maintainer tag in Dockerfile (#267)
+  * Sanitize csv strings (#258)
+  * Update `kubeconform -h` output (#260)
+  * Fix junit output, also ensure junit output is deterministic
+    (#253)
+  * Fail early on incorrect version of k8s (#254)
+  * Update GH actions and goreleaser (#252)
+  * Update Golang to 1.21.4 (#245)
+
+-------------------------------------------------------------------
 Wed Apr 03 17:29:01 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.4:
