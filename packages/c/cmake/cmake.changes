@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  8 14:30:20 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- update to 3.29.3
+  * Tests/CXXModules: test exporting modules which include headers
+  * FindBoost: Add support for Boost 1.85
+  * FindHDF5: Fix detection of versions with more than three components
+
+-------------------------------------------------------------------
 Fri Apr 12 06:09:54 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - update to 3.29.2
