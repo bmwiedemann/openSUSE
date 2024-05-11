@@ -39,7 +39,7 @@ Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
 Requires:       (python-msrestazure >= 0.4.32 with python-msrestazure < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-graphrbac < 0.61.1
+Obsoletes:      python3-azure-graphrbac <= 0.61.1
 %endif
 BuildArch:      noarch
 
