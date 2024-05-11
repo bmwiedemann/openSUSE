@@ -36,7 +36,7 @@ BuildRequires:  unzip
 Requires:       python-azure-nspkg >= 3.0.0
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-common < 1.1.28
+Obsoletes:      python3-azure-common <= 1.1.28
 %endif
 BuildArch:      noarch
 

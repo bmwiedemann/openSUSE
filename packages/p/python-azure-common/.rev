@@ -124,4 +124,12 @@
 - Drop setting default file attributes in %files section (forwarded request 1164660 from glaubitz)</comment>
     <requestid>1165057</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>8d791c99ca7e5b5e0c8073d725420f5d</srcmd5>
+    <version>1.1.28</version>
+    <time>1715444509</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1173263</requestid>
+  </revision>
 </revisionlist>
