@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri May 10 15:16:33 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 1.66.1:
+  * Resolved issues with nftables rules for stateful filtering,
+    introduced in v1.66.0.
+  * tailscale set command flags --netfilter-mode, --snat-subnet-routes,
+     and --stateful-filtering are added.
+
+- update to 1.66.0:
+  * Implemented client-side quarantining for shared-in exit nodes,
+    as a mitigation for a security vulnerability described in TS-2024-005.
+  * Use the --stateful-filtering flag for the tailscale up to enable stateful filtering for
+    subnet routers and exit nodes, as a mitigation for a security vulnerability described
+    in TS-2024-005. 
+  * Added tab completions
+  * Use the tailscale exit-node suggest command to automatically pick an available exit node
+    that is likely to perform best.
+  * Site-to-site networking now also requires --stateful-filtering=false in addition to
+    --snat-subnet-routes=false on new subnet routers. Existing subnet routers with --snat-subnet-routes=false
+    will default to --stateful-filtering=false.
+
+- update to 1.64.2:
+  * nothing relevant for linux
+
+- update to 1.64.1:
+  * nothing relevant for linux
+
+- update to 1.64.0:
+  * New: tailscale configure kubeconfig now respects KUBECONFIG environment variable.
+  * Fixed: tailscale configure kubeconfig now works with partially empty kubeconfig.
+  * Fixed: MSS clamping for Kubernetes operator proxies using nftables.
+  * Fixed: Containers on hosts with partial support for ip6tables no longer crash.
+
+- turn of changelog generation
+- add completions for bash
+
+-------------------------------------------------------------------
 Sat Mar 30 08:28:56 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - update to 1.62.1:

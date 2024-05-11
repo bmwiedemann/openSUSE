@@ -1,18 +1,18 @@
-diff --git a/clientupdate/clientupdate.go b/clientupdate/clientupdate.go
---- tailscale/clientupdate/clientupdate.go	2024-03-14 04:13:53.421047482 +0100
-+++ tailscale-patched/clientupdate/clientupdate.go	2024-03-14 04:28:58.518529194 +0100
-@@ -205,6 +205,10 @@
+diff -rub tailscale/clientupdate/clientupdate.go tailscale-patched/clientupdate/clientupdate.go
+--- tailscale/clientupdate/clientupdate.go	2024-05-10 16:33:03.316978138 +0200
++++ tailscale-patched/clientupdate/clientupdate.go	2024-05-10 16:51:54.335053210 +0200
+@@ -207,6 +207,10 @@
  			// The distro.Debian switch case above should catch most apt-based
  			// systems, but add this fallback just in case.
- 			return up.updateDebLike, true
+ 			return up.updateDebLike, canAutoUpdate
 +		case haveExecutable("zypper"):
 +			// Zypper must come before dfn/yum as SUSE-based distros can have both alongside zypper.
 +			// This should catch both transactional (Micro) and non-transactional (Leap/Tumbleweed/SLES/SLED).
 +			return up.updateSUSE, false
  		case haveExecutable("dnf"):
- 			return up.updateFedoraLike("dnf"), true
+ 			return up.updateFedoraLike("dnf"), canAutoUpdate
  		case haveExecutable("yum"):
-@@ -526,6 +530,12 @@
+@@ -528,6 +532,12 @@
  you can use "pacman --sync --refresh --sysupgrade" or "pacman -Syu" to upgrade the system, including Tailscale.`)
  }
  
