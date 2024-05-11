@@ -17,14 +17,16 @@
 
 
 %define         _lto_cflags %{nil}
+%define         appname io.gitlab.news_flash.NewsFlash
 Name:           newsflash
-Version:        3.1.6
+Version:        3.2.0
 Release:        0
 Summary:        The spiritual successor to FeedReader
 License:        GPL-3.0-only
 URL:            https://gitlab.com/news-flash/news_flash_gtk
 Source0:        news_flash_gtk-%{version}.tar.zst
 Source1:        vendor.tar.zst
+Patch0:         show-actual-version.patch
 BuildRequires:  appstream-glib
 BuildRequires:  blueprint-compiler
 BuildRequires:  cargo-packaging
@@ -32,12 +34,11 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools
 BuildRequires:  glib-networking
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-gobject
-BuildRequires:  sqlite3-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  webkit2gtk4-devel
 BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
@@ -46,6 +47,7 @@ BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(webkitgtk-6.0)
 
 %description
@@ -65,6 +67,7 @@ and having access to all your articles as long as you like.
 
 %install
 %meson_install
+%suse_update_desktop_file %{appname}
 
 %find_lang %{name}
 
@@ -72,9 +75,10 @@ and having access to all your articles as long as you like.
 %license LICENSE
 %doc README.md
 %{_bindir}/io.gitlab.news_flash.NewsFlash
-%{_datadir}/applications/io.gitlab.news_flash.NewsFlash.desktop
-%{_datadir}/icons/hicolor/*
-%{_datadir}/metainfo/io.gitlab.news_flash.NewsFlash.appdata.xml
+%{_datadir}/applications/%{appname}.desktop
+%{_iconsdir}/hicolor/scalable/apps/%{appname}.svg
+%{_iconsdir}/hicolor/symbolic/apps/%{appname}-symbolic.svg
+%{_datadir}/metainfo/%{appname}.appdata.xml
 
 %files lang -f %{name}.lang
 

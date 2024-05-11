@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 10 09:20:01 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 3.2.0:
+  * new per feed setting: scrap articles
+  * local RSS: edit feed url
+  * option to manually clean database
+  * article list performance improvements
+  * use adwaita adaptive dialogs
+- show actual version in the app (show-actual-version.patch)
+- improve on the spec file
+- temporarily disable dep updating, as it breaks compile
+
+-------------------------------------------------------------------
 Wed Mar  6 14:51:00 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - update to 3.1.6:
