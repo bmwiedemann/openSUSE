@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Wed May  1 11:32:18 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Support fingerprint scanners (boo#1212071) 
+
+-------------------------------------------------------------------
+Wed May  1 11:19:04 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Support vulkan (boo#1223443)
+
+-------------------------------------------------------------------
+Tue Apr 30 14:24:31 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove desktop-data (not used, brings in wrong wallpaper)
+
+-------------------------------------------------------------------
+Fri Apr 26 10:59:59 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove gptfdisk as now using kiwi v10 
+
+-------------------------------------------------------------------
+Fri Apr 26 10:50:46 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Drop gnome-shell-classic 
+
+-------------------------------------------------------------------
+Fri Apr 26 10:35:59 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Pattern shouldn't be visible in YaST 
+
+-------------------------------------------------------------------
+Wed Apr 24 14:37:34 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Require distribution-logos-openSUSE-Aeon 
+
+-------------------------------------------------------------------
+Wed Apr 24 12:40:17 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- add replace gdm-branding-MicroOS with gdm-branding-Aeon 
+
+-------------------------------------------------------------------
+Thu Apr 18 08:08:13 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Add combustion & ignition 
+
+-------------------------------------------------------------------
+Wed Apr 17 15:04:50 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Add openssh back - we're a Desktop OS with gnome-control-center
+  which can manage openssh 
+
+-------------------------------------------------------------------
+Wed Apr 17 14:56:30 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- add gnome-control-center-users and gnome-control-center-user-faces
+  (note, may be removed if gets in the way of systemd-homed support)
+
+-------------------------------------------------------------------
+Wed Apr 17 14:36:16 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- add exfatprogs (boo#1222955)
+- add distrobox and podman (and wonder how I ever forgot either)
+  (boo#1222909)
+
+-------------------------------------------------------------------
+Mon Apr 15 14:31:24 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Add gnome-remote-desktop for remote desktop 
+
+-------------------------------------------------------------------
+Mon Apr 15 14:22:53 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Address various pattern related bugs
+  * (boo#1209716, boo#1215343) gnome-backgrounds, webp support
+  * (boo#1219098) EPSOM printers
+  * (boo#1214614) sane-backend, scanner support
+  * (boo#1222711) iio-sensor-proxy, screen rotation sensors support
+  * (boo#1218510) alsa-ucm-conf, ALSA UCM Profiles
+
+-------------------------------------------------------------------
+Mon Apr 15 14:06:37 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove unused recommends 
+
+-------------------------------------------------------------------
+Mon Apr 15 14:01:16 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove issue-generator and rebootmgr, MicroOS tools that don't
+  make sense in Aeon
+
+-------------------------------------------------------------------
+Mon Apr 15 13:53:04 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove openssh, we're a desktop OS 
+
+-------------------------------------------------------------------
+Mon Apr 15 08:18:14 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Removing live-add-yast-repos to stop config.sh removing the whole
+  OS on image build 
+
+-------------------------------------------------------------------
+Fri Apr 12 15:23:23 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Add live-add-yast-repos to include distro repos for Image 
+
+-------------------------------------------------------------------
+Fri Apr 12 12:06:07 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Require gptfdisk until kiwi v10 used in Factory 
+
+-------------------------------------------------------------------
+Fri Apr 12 12:03:12 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Move to systemd-boot for real this time 
+
+-------------------------------------------------------------------
+Mon Apr  8 13:12:33 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Add mandatory x86_64_v3 support
+- Add systemd-repart configuration
+- Remove obsoletes/conflicts for Legacy MicroOS Desktop patterns,
+  users will need to reinstall
+
+-------------------------------------------------------------------
+Tue Apr  2 08:13:02 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Revert back to power-profiles-daemon for now, still the best integrated in GNOME 
+
+-------------------------------------------------------------------
+Tue Apr  2 08:07:00 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove 'or' boolean deps - Aeon is opinionated
+- Set tuned as the supported power management stack 
+
+-------------------------------------------------------------------
+Tue Feb  6 11:07:56 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Add obsoletes/conflicts for all legacy MicroOS Desktop patterns 
+
+-------------------------------------------------------------------
 Tue Jan 30 19:15:44 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Added "Requires: steam-devices"

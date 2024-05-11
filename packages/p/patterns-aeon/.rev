@@ -39,4 +39,12 @@
     <comment>To be coordinated with https://build.opensuse.org/request/show/1143350</comment>
     <requestid>1143351</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>4e15b34fb76213a1b0a091422c9f8238</srcmd5>
+    <version>5.0</version>
+    <time>1715444426</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1172713</requestid>
+  </revision>
 </revisionlist>

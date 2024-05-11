@@ -40,7 +40,6 @@ Provides:       pattern() = aeon_base
 Provides:       pattern-category() = Aeon
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 9200
-Provides:       pattern-visible()
 %if %{with betatest}
 # need to require it as recommends are off
 Requires:       pattern() = update_test
@@ -53,36 +52,12 @@ Requires:       distribution-release
 Requires:       filesystem
 
 ### Packages formerly provided by bootloader
-Requires:       (grub2-snapper-plugin if snapper)
-Requires:       grub2
-%ifarch x86_64
-# XXX: not sure this really belongs here. More like a kernel
-# rather than bootloader related thing?
-Requires:       biosdevname
-%endif
-%ifnarch s390x ppc64 ppc64le
-%if 0%{?is_opensuse}
-Requires:       (grub2-branding-openSUSE if branding-openSUSE)
-%else
-%if 0%{?sle_version}
-Requires:       (grub2-branding-SLE if branding-SLE)
-%endif
-%endif
-%endif
-%ifarch x86_64
-Requires:       grub2-x86_64-efi
-%endif
-%ifarch aarch64
-Requires:       grub2-arm64-efi
-%endif
-%ifarch armv7l armv7hl
-Requires:       grub2-arm-efi
-Requires:       grub2-arm-uboot
-%endif
-%ifarch aarch64 x86_64
-Requires:       mokutil
+Requires:       sdbootutil-snapper
+Requires:       dracut-pcr-signature
+Requires:       efibootmgr
+Requires:       sdbootutil-rpm-scriptlets
 Requires:       shim
-%endif
+Requires:       uefi_mbr
 
 ### Packages formerly provided by base/basesystem
 Requires:       /usr/bin/hostname
@@ -105,7 +80,6 @@ Requires:       openSUSE-build-key
 Requires:       pam
 Requires:       pam-config
 Requires:       procps
-Requires:       rebootmgr
 Requires:       rpm
 Requires:       shadow
 Requires:       systemd
@@ -127,13 +101,11 @@ Suggests:       busybox-gzip
 Requires:       health-checker
 Requires:       health-checker-plugins-MicroOS
 Requires:       iputils
-Requires:       issue-generator
 %ifnarch %{arm}
 Requires:       kdump
 %endif
 Requires:       less
 Requires:       microos-tools
-Requires:       openssh
 Requires:       snapper
 Requires:       vim-small
 Requires:       wtmpdb
@@ -146,6 +118,8 @@ Conflicts:      gettext-runtime-mini
 Conflicts:      krb5-mini
 Obsoletes:      suse-build-key < 12.1
 Requires:       yast2-logs
+# exfat is an important filesystem too boo#1222955
+Requires:       exfatprogs
 
 ### Packages formerly provided by base_zypper
 Requires:       transactional-update
@@ -170,6 +144,7 @@ Requires:       hwinfo
 ### Packages formerly provided by selinux
 Requires:       container-selinux
 Requires:       policycoreutils
+Requires:       policycoreutils-python-utils
 Requires:       selinux-policy-targeted
 Requires:       selinux-tools
 
@@ -177,46 +152,28 @@ Requires:       selinux-tools
 Requires:       xf86-input-libinput
 Requires:       xorg-x11-fonts-core
 Requires:       xorg-x11-server
-# Recommend something other than xdm, default to lightdm
-Recommends:     (gdm or lightdm or sddm)
-Recommends:     dejavu-fonts
-Recommends:     libyui-qt
-Recommends:     libyui-qt-pkg
-Recommends:     noto-sans-fonts
-Recommends:     tigervnc
-Recommends:     x11-tools
-Recommends:     xdmbgrd
-Recommends:     xorg-x11-Xvnc
-Recommends:     xorg-x11-driver-video
-Recommends:     xorg-x11-essentials
-Recommends:     xorg-x11-fonts
-Recommends:     xorg-x11-server-extra
-Recommends:     xterm
-Recommends:     xtermset
-Recommends:     yast2-control-center
-Suggests:       lightdm
-# bsc#1071953
-%ifnarch s390 s390x
-Recommends:     xf86-input-vmmouse
-Recommends:     xf86-input-wacom
-%endif
 
 ### Packages formerly provided by desktop-common
 # PipeWire is the default sound server
 Requires:       gstreamer-plugin-pipewire
 Requires:       pipewire-alsa
 Requires:       pipewire-pulseaudio
+# Support UCM Profiles boo#1218510
+Requires:       alsa-ucm-conf
 # Allow users to print (and add some common printer drivers)
 Requires:       OpenPrintingPPDs
 Requires:       bluez-cups
 Requires:       cups
 Requires:       cups-filters
 Requires:       cups-pk-helper
+Requires:       epson-inkjet-printer-escpr
 Requires:       ghostscript
 Requires:       hplip-hpijs
 Requires:       system-config-printer-common
 Requires:       system-config-printer-dbus-service
 Requires:       udev-configure-printer
+# Support scanners boo#1214614
+Requires:       sane-backends
 # Add thunderbolt device management (boo#1208150)
 Requires:       bolt
 # Common tools
@@ -224,7 +181,6 @@ Requires:       bash-completion
 Requires:       bluez-firmware
 Requires:       glibc-locale
 Requires:       hicolor-icon-theme-branding-openSUSE
-Requires:       policycoreutils-python-utils
 Requires:       polkit-default-privs
 Requires:       systemd-icon-branding-openSUSE
 Requires:       udisks2
@@ -252,15 +208,14 @@ Requires:       kernel-firmware-all
 Requires:       sof-firmware
 
 ### Packages formerly provided by desktop-gnome
-Requires:       gdm-branding-MicroOS
+Requires:       gdm-branding-Aeon
+Requires:       distribution-logos-openSUSE-Aeon
 # gnome-initial-setup requirements
 Requires:       gnome-initial-setup
+Requires:       desktop-file-utils
 Requires:       gjs
 Requires:       gnome-menus-branding-openSUSE
 Requires:       system-group-wheel
-# from data/COMMON-DESKTOP
-Requires:       desktop-data
-Requires:       desktop-file-utils
 #
 # Now the real packages
 #
@@ -269,6 +224,8 @@ Requires:       gnome-keyring-pam
 # implied by gnome-keyring-pam
 #Requires:     gnome-keyring
 Requires:       gnome-disk-utility
+# boo#1215343
+Requires:       gnome-backgrounds
 # implied by gdm
 #Requires: gnome-shell
 #Requires: gnome-settings-daemon
@@ -288,7 +245,6 @@ Requires:       flatpak
 Requires:       gnome-branding-Aeon
 Requires:       gnome-color-manager
 #Requires:       gnome-packagekit
-Requires:       gnome-shell-classic
 Requires:       gnome-software
 Requires:       gnome-system-monitor
 Requires:       gnome-terminal
@@ -298,8 +254,12 @@ Requires:       gnome-user-docs
 Requires:       gpgme
 # for online accounts and calendar integration
 Requires:       gnome-bluetooth
-# for display color profile support
+# for display color profile support boo#1210492
 Requires:       gnome-control-center-color
+# for desktop remote access
+Requires:       gnome-remote-desktop
+# for shell remote access
+Requires:       openssh
 # needed to ensure bluetooth is enabled at startup (glgo#GNOME/gnome-bluetooth#110)
 Requires:       bluez-auto-enable-devices
 Requires:       gnome-control-center-goa
@@ -311,6 +271,9 @@ Requires:       gsf-office-thumbnailer
 Requires:       rsvg-thumbnailer
 # So that GNOME shell extensions can be installed
 Requires:       chrome-gnome-shell
+# So users can be configured and have pretty face thumbnails
+Requires:       gnome-control-center-users
+Requires:       gnome-control-center-user-faces
 # we need something for xdg-su
 Requires:       gnome-shell-search-provider-nautilus
 Requires:       libgnomesu
@@ -366,8 +329,7 @@ Requires:       polkit-gnome
 # https://build.opensuse.org/request/show/921373
 Requires:       xdg-desktop-portal-gnome
 # ensure laptop power support is there
-Requires:       (power-profiles-daemon or tlp)
-Suggests:       power-profiles-daemon
+Requires:       power-profiles-daemon
 
 # add steam-devices
 Requires:       steam-devices
@@ -395,11 +357,37 @@ Requires:       systemd-zram-service
 ### Virtualisation support
 Requires:       spice-vdagent
 Requires:       qemu-guest-agent
+### Container / Distrobox boo#1222909
+Requires:       distrobox
+Requires:       podman
 
-# bug#1211835
+# bug#1211835 - TPM2.0 support
 Requires:       tpm2.0-abrmd
 Requires:       tpm2-0-tss
 Requires:       tpm2.0-tools
+
+### x86_64_v3 support is mandatory on Aeon
+Requires:       x86_64_v3-branding-Aeon
+
+### Aeons partitions are defined to use systemd-repart
+# systemd-experimental is temproarily required for repart
+Requires:       systemd-experimental
+Requires:       systemd-repart-branding-Aeon
+
+### Firstboot Configuration
+Requires:       ignition-dracut
+Requires:       combustion
+
+### Support screen rotation boo#1222711
+Requires:       iio-sensor-proxy
+
+### Support Vulkan boo#1223443
+Requires:       libvulkan_radeon
+Requires:       libvulkan_intel
+
+### Support fingerprint scanners boo#1212071
+Requires:       fprintd
+Requires:       fprintd-pam
 
 %description base
 This is the openSUSE Aeon base system. It contains only fully working immutable desktop system.
