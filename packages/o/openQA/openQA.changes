@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri May 10 21:40:45 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1715377164.c357f5c7:
+  * CI: Fix broken uploader validation after upgrade to Leap 15.6
+  * CI: Bump codecov orb to current 4.1.0
+  * Dependency cron 2024-05-10
+  * Fix HTML for source view
+  * CI: Fix qemu-kvm dependency in Leap 15.6
+  * Update CircleCI image to Leap 15.6
+  * Allow specifying multiple comma-separated values for CORS header
+  * Bump datatables.net-bs4 from 2.0.6 to 2.0.7
+  * Bump @humanwhocodes/retry from 0.2.3 to 0.2.4
+  * Bump @floating-ui/dom from 1.6.4 to 1.6.5
+  * Update actions versions to latest release
+  * Remove duplicate check for status code in API authentication test
+  * Allow configuring Cross-Origin Resource Sharing (CORS) for API requests
+  * Include recording into documentation
+  * Show openQA web UI in a browser inside terminal
+  * Put recording inside a container
+  * Add scenario for asciinema recording
+  * Fix regular expression in grep
+  * Remove containers not mentioned anywhere
+
+-------------------------------------------------------------------
 Sat May 04 22:33:56 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1714815830.68247fd5:
