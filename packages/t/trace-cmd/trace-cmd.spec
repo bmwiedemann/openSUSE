@@ -1,7 +1,7 @@
 #
 # spec file for package trace-cmd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,9 +30,11 @@ BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  libtraceevent-devel
 BuildRequires:  libtracefs-devel
+BuildRequires:  libzstd-devel
 BuildRequires:  meson
 BuildRequires:  source-highlight
 BuildRequires:  xmlto
+BuildRequires:  zlib-devel
 Recommends:     libtraceevent1-plugins
 
 %description

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 10 09:19:23 UTC 2024 - Petr Tesařík <ptesarik@suse.com>
+
+- Build with support for zlib and zstd compression.
+
+-------------------------------------------------------------------
 Thu Jun 15 19:09:55 UTC 2023 - Tony Jones <tonyj@suse.com>
 
 - Add explicit thread dependency for older versions of meson (i.e SLE-15-SP5) 
