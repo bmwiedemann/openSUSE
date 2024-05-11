@@ -40,7 +40,7 @@ Requires:       python-msrest >= 0.6.0
 Requires:       python-six >= 1.11.0
 Requires:       (python-azure-core >= 1.11.0 with python-azure-core < 2.0.0)
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-communication-sms < 1.0.1
+Obsoletes:      python3-azure-communication-sms <= 1.0.1
 %endif
 BuildArch:      noarch
 %python_subpackages
