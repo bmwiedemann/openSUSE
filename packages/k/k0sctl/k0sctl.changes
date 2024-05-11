@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 10 08:25:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.8:
+  * Add a hidden ignored --disable-upgrade-check flag (#708)
+  * Add a smoke-test for non-root login user (#707)
+  * Use sudo to upload k0s to /usr/local/bin (#706)
+
+-------------------------------------------------------------------
+Wed May 08 16:23:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.7:
+  * Use sudo when downloading k0s to /usr/local/bin (#702)
+
+-------------------------------------------------------------------
 Wed May 08 11:31:10 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.17.6:
