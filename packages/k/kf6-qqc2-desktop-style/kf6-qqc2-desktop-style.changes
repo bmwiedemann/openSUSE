@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon May  6 12:23:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/6.2.0/
+- Changes since 6.1.0:
+  * DialogButtonBox: Use largeSpacing as padding
+  * TreeViewDelegate: Fix non-observable modelIndex property getting stuck
+  * [CheckIndicator] Use control as AbstractButton
+  * Add missing dependency to private module
+  * Add QTBUG to comment
+  * Make SwitchIndicator more compiler-friendly
+  * ItemBranchIndicators: Fix uninitialized member variable m_selected
+  * StyleSingleton: Check whether object is qGuiApp
+  * [RadioButton] Use id instead of parent lookup
+  * [TabButton] Fix property type
+  * Apply Kirigami.Units.cornerRadius to default list item background too
+  * gitignore: add VS Code dir
+  * Use consistent radius value from Kirigami.Units.radius
+
+-------------------------------------------------------------------
 Fri Apr  5 12:53:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.1.0
