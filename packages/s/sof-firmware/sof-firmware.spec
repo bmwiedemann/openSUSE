@@ -24,7 +24,7 @@ Name:           sof-firmware
 Summary:        Firmware data files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        2023.12.1
+Version:        2024.03
 Release:        0
 URL:            https://www.sofproject.org/
 BuildRequires:  fdupes
@@ -100,6 +100,15 @@ FW_DEST=%{buildroot}%{_firmwaredir}/intel \
 TOOLS_DEST=%{buildroot}%{_bindir} \
 ./install.sh
 rm -rf %{buildroot}%{_bindir}
+
+# A workaround for a symlinked directory sof-ace-tplg:
+# it was a real directory in the earlier versions, and now it's gone,
+# and rpm doesn't like the transition from a directory to a symlink at all.
+# So we copy all stuff manually.  It's waste of resources, but that's life
+rm %{buildroot}%{_firmwaredir}/intel/sof-ace-tplg
+cp -a %{buildroot}%{_firmwaredir}/intel/sof-ipc4-tplg \
+   %{buildroot}%{_firmwaredir}/intel/sof-ace-tplg
+
 %fdupes -s %{buildroot}
 
 # workaround for changing symlinked directory

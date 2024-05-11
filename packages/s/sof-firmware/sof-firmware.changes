@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri May 10 12:20:06 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Add a workaround for installation error due to the change of
+  intel/sof-ace-tplg directory to a symlink
+
+-------------------------------------------------------------------
+Thu May  9 10:02:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.03:
+  * For v2.9 series, the following new topology files have been
+    added since v2.8:
+    v2.9.x/sof-ipc4-tplg-v2.9
+    ├── sof-hda-generic-ace1-2ch.tplg
+    ├── sof-hda-generic-ace1-4ch.tplg
+    ├── sof-hda-generic-cavs25-2ch.tplg
+    ├── sof-hda-generic-cavs25-4ch.tplg
+    ├── sof-mtl-es83x6-ssp1-hdmi-ssp02.tplg
+    ├── sof-mtl-hdmi-ssp02.tplg
+  * For v2.2.8 series, the following new topology files have been
+    added since v2.2.8
+    ├── sof-adl-es8336-ssp1-hdmi-ssp02-4ch.tplg
+    └── sof-adl-sdw-cs42l42-4ch.tplg
+
+-------------------------------------------------------------------
 Wed Mar 27 10:02:22 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Updated to version 2023.12.1:
@@ -104,7 +128,7 @@ Sun Jul 17 04:40:36 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
   * New up mix and down mix module added with support for HiFi4
     that can up/down mix the number of channels in a stream.
   * Zephyr, more native APIs added now for logging, delays, sleeping.
-  * Codec adapter becomes the module adapter and it's API reflects the 
+  * Codec adapter becomes the module adapter and it's API reflects the
     same API used by the Windows processing modules
   * See details in https://github.com/thesofproject/sof/releases/tag/v2.2
 
