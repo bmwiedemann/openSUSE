@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Wed May  8 12:45:19 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Move to grub, better support for portable media 
+
+-------------------------------------------------------------------
+Thu May  2 12:43:57 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- And now we need distro specific config again, use tik-config-Aeon 
+
+-------------------------------------------------------------------
+Wed May  1 17:29:48 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Use tik-config-generic (no distro specific config required for
+  tik-gui, yet) 
+
+-------------------------------------------------------------------
+Wed May  1 11:19:04 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Support vulkan (boo#1223443)
+
+-------------------------------------------------------------------
+Wed May  1 11:10:38 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove gedit, there's vi 
+
+-------------------------------------------------------------------
+Tue Apr 30 14:28:52 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Add gedit for debugging/config editing 
+
+-------------------------------------------------------------------
+Tue Apr 30 14:24:14 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove desktop-data (not used, brings in wrong wallpaper) 
+
+-------------------------------------------------------------------
+Fri Apr 26 10:33:25 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Initial package 
