@@ -41,7 +41,7 @@ Requires:       python-msrest >= 0.6.21
 Requires:       (python-azure-core >= 1.8.2 with python-azure-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-security-attestation < 1.0.0
+Obsoletes:      python3-azure-security-attestation <= 1.0.0
 %endif
 BuildArch:      noarch
 %python_subpackages
