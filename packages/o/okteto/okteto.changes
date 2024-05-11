@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri May 10 16:36:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.27.1:
+  * chore: upgrade deps (PLAT-485) (#4290) (#4292)
+
+-------------------------------------------------------------------
+Fri May 10 12:56:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.27.0:
+  * New Feature
+    - feat: add variable expansion in manifest.build.dockerfile by
+      @jLopezbarb in #4217
+    - feat: add deploy insights by @jLopezbarb in #4206
+    - Improve getting started copy and update getting started
+      samples by @codyjlandstrom in #4215
+    - Support variable expansion in .env: "VAR1=${VAR2:-default}"
+      by @andreafalzetti in #4239
+    - mask .envvars + only mask vars longer than 5 chars by
+      @andreafalzetti in #4245
+    - okteto up: display warning when available disk space is
+      running low by @andreafalzetti in #4262
+    - feat: deprecate compose file detection by naming by
+      @jLopezbarb in #4254
+    - mask multiline variables by @andreafalzetti in #4251
+    - Detect syncthing readiness issue by @andreafalzetti in #4261
+    - [Backport release-2.27] set okteto context and namespace from
+      env vars by @github-actions in #4287
+  * Bug Fix
+    - fix: log on ui by @jLopezbarb in #4229
+    - fix: skip volume mount translation into okteto manifest build
+      by @jLopezbarb in #4231
+    - fix: repo with double url by @jLopezbarb in #4237
+    - fix push script by @jLopezbarb in #4249
+    - fix: hash on untracked folders by @jLopezbarb in #4263
+    - fix: dont include dockerfilepath for hash calculation by
+      @jLopezbarb in #4271
+    - tests(fix): remove defer on tests by @jLopezbarb in #4272
+    - [Backport release-2.27] fix: not show unwanted warning by
+      @github-actions in #4284
+    - [Backport release-2.27] fix: retry builds on depot by
+      @github-actions in #4286
+
+-------------------------------------------------------------------
 Fri Apr 26 12:31:51 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.26.1:
