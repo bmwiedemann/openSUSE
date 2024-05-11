@@ -69,4 +69,20 @@
     <comment></comment>
     <requestid>1158179</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>80d288662e88946522887651358a9852</srcmd5>
+    <version>16.3</version>
+    <time>1715444338</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 16.3 (bsc#1224051):
+  * bsc#1224038, CVE-2024-4317: Restrict visibility of pg_stats_ext
+    and pg_stats_ext_exprs entries to the table owner. See the
+    release notes for the steps that have to be taken to fix
+    existing PostgreSQL instances.
+  * Fix incompatibility with LLVM 18.
+  * https://www.postgresql.org/docs/release/16.3/
+- Prepare for PostgreSQL 17.
+- Make sure all compilation and doc generation happens in %build.</comment>
+    <requestid>1172960</requestid>
+  </revision>
 </revisionlist>

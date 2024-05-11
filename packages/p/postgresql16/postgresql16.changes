@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May  8 08:28:48 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Upgrade to 16.3 (bsc#1224051):
+  * bsc#1224038, CVE-2024-4317: Restrict visibility of pg_stats_ext
+    and pg_stats_ext_exprs entries to the table owner. See the
+    release notes for the steps that have to be taken to fix
+    existing PostgreSQL instances.
+  * Fix incompatibility with LLVM 18.
+  * https://www.postgresql.org/docs/release/16.3/
+- Prepare for PostgreSQL 17.
+- Make sure all compilation and doc generation happens in %build.
+
+-------------------------------------------------------------------
 Tue Mar 12 22:48:41 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Require LLVM <= 17 for now, because LLVM 18 doesn't seem to work.
