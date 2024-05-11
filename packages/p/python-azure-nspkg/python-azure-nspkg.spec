@@ -34,7 +34,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-nspkg < 3.0.2
+Obsoletes:      python3-azure-nspkg <= 3.0.2
 %endif
 BuildArch:      noarch
 
