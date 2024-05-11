@@ -35,7 +35,7 @@ Requires:       python-six
 Requires:       (python-adal >= 0.6.0 with python-adal < 2.0.0)
 Requires:       (python-msrest >= 0.6.0 with python-msrest < 2.0.0)
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-msrestazure < 0.6.4
+Obsoletes:      python3-msrestazure <= 0.6.4
 %endif
 BuildArch:      noarch
 
