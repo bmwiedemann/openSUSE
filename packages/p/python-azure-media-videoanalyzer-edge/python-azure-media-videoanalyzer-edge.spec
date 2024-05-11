@@ -40,7 +40,7 @@ Requires:       python-msrest >= 0.6.21
 Requires:       (python-azure-core >= 1.2.2 with python-azure-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-media-videoanalyzer-edge < 1.0.0b4
+Obsoletes:      python3-azure-media-videoanalyzer-edge <= 1.0.0b4
 %endif
 BuildArch:      noarch
 
