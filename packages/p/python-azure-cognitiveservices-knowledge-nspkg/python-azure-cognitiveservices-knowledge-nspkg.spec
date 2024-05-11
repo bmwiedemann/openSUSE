@@ -38,7 +38,7 @@ Requires:       python-azure-cognitiveservices-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-cognitiveservices-knowledge-nspkg < 3.0.0
+Obsoletes:      python3-azure-cognitiveservices-knowledge-nspkg <= 3.0.0
 %endif
 BuildArch:      noarch
 
