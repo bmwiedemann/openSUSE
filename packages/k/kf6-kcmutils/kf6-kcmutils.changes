@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon May  6 12:22:21 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/6.2.0/
+- Changes since 6.1.0:
+  * KQuickConfigModule: Don't crash on null object
+  * SimpleKCM: Remove remnants of footerParent
+  * Use ellipsis character instead of three dots
+  * GridDelegate: Port to ComponentBehavior: Bound
+  * GridDelegate: Consolidate code paths for opening a menu
+  * GridDelegate: Don't use qualified property access as appropriate
+  * GridDelegate: Use concrete type for the popup menu
+  * GridDelegate: Use somewhat more consistent ToolTip bindings, remove timeout
+  * components: Drop QML import versions, unify import aliases
+  * components: Guard nullable property access
+  * components: Explicitly specify signal handler arguments
+  * KCModuleQml: Provide a fallback in case a pushed page is not one of magical KCMUtils types
+  * Add API to make header and footer paddings optional
+  * Round all the things consistently
+  * pluginselector: cache delegates
+
+-------------------------------------------------------------------
 Fri Apr  5 12:52:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.1.0
