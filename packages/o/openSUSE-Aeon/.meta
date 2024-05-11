@@ -1,0 +1,5 @@
+<package name="openSUSE-Aeon" project="openSUSE:Factory">
+  <title>openSUSE Aeon Installer</title>
+  <description></description>
+  <devel project="devel:microos:aeon:images" package="openSUSE-Aeon"/>
+</package>
