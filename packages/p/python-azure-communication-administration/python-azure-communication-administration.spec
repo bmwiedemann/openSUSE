@@ -39,7 +39,7 @@ Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-msrest >= 0.6.0
 Requires:       (python-azure-core >= 1.6.0 with python-azure-core < 2.0.0)
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-communication-administration < 1.0.0b4
+Obsoletes:      python3-azure-communication-administration <= 1.0.0b4
 %endif
 BuildArch:      noarch
 %python_subpackages
