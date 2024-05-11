@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  6 12:22:26 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/6.2.0/
+- Changes since 6.1.0:
+  * Restore country detection tests on FreeBSD
+  * Disable FreeBSD tests that recently started to fail in the CI
+
+-------------------------------------------------------------------
 Fri Apr  5 12:52:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.1.0
