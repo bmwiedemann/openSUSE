@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May  6 12:23:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/6.2.0/
+- Changes since 6.1.0:
+  * Support single-quoted strings in MapCSS
+  * Add Syntax Highlighting for Vue Template Files
+  * Add syntax highlighting support for CashScript
+
+-------------------------------------------------------------------
 Fri Apr  5 12:53:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.1.0
