@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 10 13:28:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.4:
+  * Added typing for deepfreeze, register and unregister (see
+    #99)
+- update to 2.4.3:
+  * Now enums are not modified by deepfreeze (see #98)
+
+-------------------------------------------------------------------
 Sat Apr 20 20:41:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.2:

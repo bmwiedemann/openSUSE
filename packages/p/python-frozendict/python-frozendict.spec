@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-frozendict
-Version:        2.4.2
+Version:        2.4.4
 Release:        0
 Summary:        An immutable dictionary
 License:        MIT

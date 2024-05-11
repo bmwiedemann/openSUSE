@@ -164,4 +164,16 @@
   * Added muslinux builds</comment>
     <requestid>1169411</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>959a80222e1fe0a0ef300f69af8ed2bf</srcmd5>
+    <version>2.4.4</version>
+    <time>1715444460</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.4:
+  * Added typing for deepfreeze, register and unregister (see
+    #99)
+- update to 2.4.3:
+  * Now enums are not modified by deepfreeze (see #98)</comment>
+    <requestid>1173180</requestid>
+  </revision>
 </revisionlist>
