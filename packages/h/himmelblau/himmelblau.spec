@@ -17,7 +17,7 @@
 
 
 Name:           himmelblau
-Version:        0.3.2+git.0.de9f5b5
+Version:        0.3.3+git.0.c2197d7
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure AD and Intune
 License:        MPL-2.0
@@ -27,7 +27,7 @@ Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
-BuildRequires:  libopenssl-devel
+BuildRequires:  libopenssl-3-devel
 BuildRequires:  pam-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  tpm2-0-tss-devel

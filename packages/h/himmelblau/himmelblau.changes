@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May 10 18:59:23 UTC 2024 - david.mulder@suse.com
+
+- Himmelblau requires libopenssl-3 for PRT messages.
+
+-------------------------------------------------------------------
+Thu May 09 19:34:59 UTC 2024 - david.mulder@suse.com
+
+- Update to version 0.3.3+git.0.c2197d7:
+  * Correct the debug messages for Hello skip
+  * Version 0.3.3
+  * Allow disabling Hello PIN auth for enrolled users
+  * Add an option for disabling Windows Hello
+  * Remove the TODO doc from stable branch
+  * config: Remove comments about experimental policy enforement
+
+-------------------------------------------------------------------
 Tue May 07 18:19:29 UTC 2024 - david.mulder@suse.com
 
 - Update to version 0.3.2+git.0.de9f5b5:
