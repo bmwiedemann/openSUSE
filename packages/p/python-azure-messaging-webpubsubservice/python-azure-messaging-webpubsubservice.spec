@@ -43,7 +43,7 @@ Requires:       python-six >= 1.12.0
 Requires:       (python-azure-core >= 1.20.1 with python-azure-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-messaging-webpubsubservice < 1.0.1
+Obsoletes:      python3-azure-messaging-webpubsubservice <= 1.0.1
 %endif
 BuildArch:      noarch
 
