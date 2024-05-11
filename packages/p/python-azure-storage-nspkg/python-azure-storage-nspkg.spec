@@ -36,7 +36,7 @@ Requires:       python-azure-nspkg >= 3.0.0
 Conflicts:      python-azure-sdk <= 2.0.0
 Conflicts:      python-azure-storage <= 0.36.0
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-storage-nspkg < 3.1.0
+Obsoletes:      python3-azure-storage-nspkg <= 3.1.0
 %endif
 BuildArch:      noarch
 
