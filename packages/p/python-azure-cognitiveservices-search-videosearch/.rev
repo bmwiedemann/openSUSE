@@ -69,4 +69,12 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164652 from glaubitz)</comment>
     <requestid>1165050</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>42836f76b7fe0a293914203f16f093db</srcmd5>
+    <version>2.0.0</version>
+    <time>1715444501</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1173255</requestid>
+  </revision>
 </revisionlist>
