@@ -23,7 +23,7 @@
 
 %define rname kirigami-addons
 Name:           kirigami-addons6
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Add-ons for the Kirigami framework
 License:        LGPL-3.0-only
@@ -35,6 +35,7 @@ Source2:        kirigami-addons.keyring
 %endif
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiPlatform) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
