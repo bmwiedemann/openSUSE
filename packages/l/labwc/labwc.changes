@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Fri May 10 21:53:00 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.7.2
+  + Added
+    - Add <menu><ignoreButtonReleasePeriod> to prevent clicks with
+      small movements from inadvertantly closing a menu or
+      selecting a menu item.
+    - Support drop-shadows (disabled by default) for windows using
+      server-side decorations.
+    - Add window-rule ignoreConfigureRequest to ignore X11
+      client-side configure requests (positioning and resizing).
+    - Support window-rules based on window type: 
+      <windowRule type="">, where type can be for example
+      NET_WM_WINDOW_TYPE_DESKTOP for an XWayland window.
+    - Add none branch to the ForEach action.
+    - Add -S|--session <command> option to start <command> on
+      startup and to terminate the compositor when exits.
+    - In theme setting color definitions, support inline alpha
+      encoding like #aabbccff
+    - Add window-switcher custom field inspired by printf
+      formatting.
+    - Support defining window-switcher width as a percentage of
+      output (display) width.
+    - Support Openbox compatible pipe-menus.
+    - Add snap-to-edge overlay.
+    - This includes the following new config and theme settings.
+    - Add theme settings listed below for window-switcher preview
+      border.
+    - Support libinput config option for calibration matrices.
+    - Add new window-switcher field content types workspace, state,
+      type_short and output.
+    - Support input methods.
+    - Add atCursor attribute to action ShowMenu so that a window's
+      "client-menu" could optionally be launched at the pointer
+      using a keybind.
+    - Support workspace-prefix (<desktops><prefix>) for workspace-
+      switcher onscreen display when naming workspaces by digits.
+    - Process all *.env files in an environment.d directory
+      alongside and in the same way as each potential environment
+      file.
+    - Allow empty variables in environment files.
+    - Add optional headless fallback output that is automatically
+      created when no other output exists.
+    - Optionally show windows on all workspaces in window-switcher.
+    - Handle touch on headerbar using cursor emulate events.
+    - Updated dbus activation environment with more environment
+      variables.
+    - Run shutdown script on exit
+    - Add wrap argument to action MoveToOutput.
+  + Fixed
+    - Prevent Chromium from crashing when started after a virtual
+      keyboard is destroyed.
+    - Fix top-layer not showing when there is a minimized full-
+      screen window.
+    - Prevent the following whilst window-switcher cycling
+    - Prevent shaded XWayland windows from getting cursor events.
+    - Fix menu-parser use-after-free bug.
+    - Update top layer visibility on map to fix bug with Steam's
+      Big Picture Mode.
+    - window which requests fullscreen before mapping.
+    - Do not update server-side-decoration if window is too small.
+    - Fix crash on Kill action with XWayland windows.
+    - Update workspaces on --reconfigure.
+    - Notify idle manager when emulating cursor movement.
+    - Fix GrowToEdge/ShrinkToEdge action bug caused by clients
+      ignoring the requested size, for example a terminal honouring
+      size-hints. Fix assert() on VT switch.
+    - Ensure titlebar has consistent look when using transparency.
+    - Fix dnd bug where dnd does not finish properly on cursor-
+      button-release if there is no surface under the cursor such
+      as on the desktop when no background client is running.
+    - Send cursor-button release event to CSD client before
+      finishing window dragging to avoid a bug whereby the release
+      event is incorrectly sent to a layer-shell client at the end
+      of a drag.
+    - Validate double-click against SSD part type because clicks on
+      different parts of a client in quick succession should not be
+      interpreted as a double click.
+    - Fix bug that region overlay is not shown when a modifier key
+      is re-pressed.
+    - Fix workspace-switcher on-screen-display positioning of text
+      using right-to-left (RTL) locales.
+    - Unconstrain xdg-shell popups to usable area (rather than full
+      output) so that popups do not cover layer-shell clients such
+      as panels.
+    - Exclude unfocusable XWayland windows.
+    - Render text buffers with opaque backgrounds because subpixel
+      text rendering over a transparent background does not work
+      properly with cairo/pango.
+    - Fallback on layout 'us' if a keymap cannot be created for the
+      provided XKB_DEFAULT_LAYOUT. If keymap still cannot be
+      created, exit with a helpful message instead of a segv crash.
+    - Reload cursor theme and size on reconfigure.
+    - Fix a number of surface-focus related short-comings.
+    - Fix move/resize bug manifesting itself on touchpad taps.
+    - Include always-on-top windows in window-switcher.
+    - Make resize flicker free again when running labwc nested.
+    - Clean up dbus and systemd activation environments on exit
+    - Fix view_get_adjacent_output() bug resulting in often
+      returning an incorrect output when using more than two
+      outputs.
+  + Changed
+    - Support press-move-release when interacting with the labwc
+      root-menu.
+    - In theme settings, mark color definitions in the format use
+      #rrggbbaa instead #rrggbb aaa (deprecated).
+    - If your rc.xml contains a keybind to show menu "client-menu".
+    - Change action MoveToOutput argument 'name' to 'output'
+    - Do not deactivate window when giving keyboard focus to a non-
+      view surface such as a popup or layer-shell surface. This
+      matches Openbox behavior.
+    - Treat Globally Active XWayland windows according to type to
+      fix focus issues with IntelliJ IDEA and JDownloader 2.
+    - Also revert f6e3527 which allowed re-focus between Globally
+      Active XWayland windows of the same PID.
+    - Only update dbus and systemd activation environments when
+      running on the DRM backend or by explicit request using
+      environment variable LABWC_UPDATE_ACTIVATION_ENV.
+      
+-------------------------------------------------------------------
 Sat Mar 16 22:47:44 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Enable xwayland feature

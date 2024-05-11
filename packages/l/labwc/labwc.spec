@@ -21,7 +21,7 @@
 %define sname   wlroots
 %define sver    0.17.0
 Name:           labwc
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        A Wayland window-stacking compositor
 License:        GPL-2.0-or-later
