@@ -38,7 +38,7 @@ Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-requests
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-servicemanagement-legacy < 0.20.7
+Obsoletes:      python3-azure-servicemanagement-legacy <= 0.20.7
 %endif
 BuildArch:      noarch
 
