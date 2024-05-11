@@ -25,7 +25,7 @@
 
 %if "%{flavor}" == ""
  %bcond_with hpc
- %ifarch armv6l s390 s390x m68k
+ %ifarch armv6l s390 m68k
   %bcond_with openblas
  %else
     %if 0%{?sle_version} == 120200

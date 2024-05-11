@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  9 10:33:32 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Enable openblas for s390x
+
+-------------------------------------------------------------------
 Wed Apr 24 11:41:51 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip another test out of numeric precision for 32-bit
