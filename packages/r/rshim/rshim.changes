@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 10 14:17:18 UTC 2024 - Matthias Brugger <mbrugger@suse.com>
+
+- Update to 2.0.29.1 (jsc#PED-6843 jsc#PED-6979)
+  * Output SECURE_NIC_MODE in /dev/rshim<N>/misc
+  * Allow remote installation via bfb-install
+  * Make DROP_MODE more robust
+  * Avoid race in bfb push when accessing from BMC and rshim tool in parallel
+  * Fix handshake between NIC F and rshim over PCIe
+
+-------------------------------------------------------------------
 Thu Mar  7 10:06:39 UTC 2024 - Matthias Brugger <mbrugger@suse.com>
 
 - Update to 2.0.20.0 (jsc#PED-6843 jsc#PED-6979)
