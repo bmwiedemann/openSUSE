@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 10 13:36:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.6:
+  * This is the last release supporting Python 2.
+  * Fix various build issues.
+
+-------------------------------------------------------------------
 Fri Jan 19 09:45:13 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Don't run tests in s390x, mpiexec is not too reliable running in the

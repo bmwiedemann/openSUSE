@@ -199,4 +199,14 @@
   OBS virtual machine environment. bsc#1218604#c1</comment>
     <requestid>1139920</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ced4b0b006a2b2bba7cd2ba859aa1179</srcmd5>
+    <version>3.1.6</version>
+    <time>1715444463</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.6:
+  * This is the last release supporting Python 2.
+  * Fix various build issues.</comment>
+    <requestid>1173183</requestid>
+  </revision>
 </revisionlist>
