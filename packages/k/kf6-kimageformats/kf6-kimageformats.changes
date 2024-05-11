@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  6 12:22:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/6.2.0/
+- Changes since 6.1.0:
+  * Ensure dependencies are provided on Android
+  * Fix build with Qt 6.7 on 32 bits
+
+-------------------------------------------------------------------
 Fri Apr  5 12:52:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.1.0
