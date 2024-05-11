@@ -19,13 +19,13 @@
 %define qt6_version 6.6.0
 
 %define rname kwallet
-# Full KF6 version (e.g. 6.1.0)
+# Full KF6 version (e.g. 6.2.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kwallet
-Version:        6.1.0
+Version:        6.2.0
 Release:        0
 Summary:        Safe desktop-wide storage for passwords
 License:        LGPL-2.1-or-later
@@ -142,11 +142,14 @@ Development files.
 %{_kf6_debugdir}/kwallet.renamecategories
 
 %files -n kwalletd6
+%{_kf6_applicationsdir}/org.kde.kwalletd6.desktop
 %{_kf6_bindir}/kwalletd6
 %{_kf6_notificationsdir}/kwalletd6.notifyrc
 %{_kf6_sharedir}/dbus-1/services/org.kde.kwalletd5.service
 %{_kf6_sharedir}/dbus-1/services/org.kde.kwalletd6.service
-%{_kf6_applicationsdir}/org.kde.kwalletd6.desktop
+%dir %{_kf6_sharedir}/xdg-desktop-portal
+%dir %{_kf6_sharedir}/xdg-desktop-portal/portals
+%{_kf6_sharedir}/xdg-desktop-portal/portals/kwallet.portal
 
 %files -n libKF6Wallet6
 %license LICENSES/*
