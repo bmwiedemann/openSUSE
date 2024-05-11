@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  6 12:22:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/6.2.0/
+- Changes since 6.1.0:
+  * Use QUrl::PreferLocalFile for URL emitted with Part::setWindowCaption
+  * Enforce passing tests on Windows
+
+-------------------------------------------------------------------
 Fri Apr  5 12:52:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.1.0
