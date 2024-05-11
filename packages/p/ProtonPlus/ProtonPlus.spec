@@ -1,7 +1,7 @@
 #
 # spec file for package ProtonPlus
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,27 @@
 
 
 Name:           ProtonPlus
-Version:        0.4.9
+Version:        0.4.10
 Release:        0
 Summary:        A Wine and Proton-based compatibility tools manager for GNOME
 License:        GPL-3.0-only
 URL:            https://github.com/vysp3r/ProtonPlus
 Source:         %{name}-%{version}.tar.gz
-BuildRequires:  meson >= 0.62.0
 BuildRequires:  cmake
-BuildRequires:  ninja
-BuildRequires:  git
-BuildRequires:  vala
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+BuildRequires:  git
+BuildRequires:  json-glib-devel
+BuildRequires:  libgee-devel
 BuildRequires:  libjson-glib-1_0-0
-BuildRequires:  pkgconfig(libarchive)
+BuildRequires:  libsoup-devel
+BuildRequires:  meson >= 0.62.0
+BuildRequires:  ninja
+BuildRequires:  vala
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(libarchive)
-BuildRequires:  libgee-devel
-BuildRequires:  libsoup-devel
-BuildRequires:  json-glib-devel
+BuildRequires:  pkgconfig(libarchive)
 
 %description
 ProtonPlus is a Proton version manager for installing and managing Proton
