@@ -41,7 +41,7 @@ Requires:       python-azure-keyvault-secrets >= 4.4
 Requires:       python-azure-nspkg >= 3.0.0
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-keyvault < 4.2.0
+Obsoletes:      python3-azure-keyvault <= 4.2.0
 %endif
 BuildArch:      noarch
 
