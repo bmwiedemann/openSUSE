@@ -1,0 +1,24 @@
+[Unit]
+Description=Update the x86_64_v3 libraries after updating the system
+Documentation=man:transactional-update(8)
+ConditionCPUFeature=avx
+ConditionCPUFeature=avx2
+ConditionCPUFeature=bmi1
+ConditionCPUFeature=bmi2
+ConditionCPUFeature=f16c
+ConditionCPUFeature=fma3
+ConditionCPUFeature=movbe
+ConditionCPUFeature=osxsave
+After=transactional-update.service
+
+[Service]
+Type=oneshot
+Environment=UPDATE_METHOD=dup
+EnvironmentFile=-/usr/etc/transactional-update.conf
+EnvironmentFile=-/etc/transactional-update.conf
+ExecStart=/usr/sbin/transactional-update --continue --non-interactive pkg in --force --recommends patterns-glibc-hwcaps-x86_64_v3
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+
+[Install]
+WantedBy=transactional-update.service

@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa9974eb651912206d5b5c679bd6cc4d</srcmd5>
+    <version>20240429</version>
+    <time>1715444437</time>
+    <user>dimstar_suse</user>
+    <comment>Requires transactional-update as suggested by review. Rename suggestion isn't valid, all other consumers of transactional-update opted to NOT take this approach to ensuring x86_64 libs are present, so it's an Aeon specific config, hence *-branding-Aeon</comment>
+    <requestid>1172768</requestid>
+  </revision>
+</revisionlist>

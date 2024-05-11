@@ -1,0 +1,5 @@
+<package name="x86_64_v3-branding-Aeon" project="openSUSE:Factory">
+  <title>configuration for x86_64_v3 support in openSUSE Aeon</title>
+  <description></description>
+  <devel project="devel:microos:aeon" package="x86_64_v3-branding-Aeon"/>
+</package>
