@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 10 12:41:17 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.6.17
+  * Add 'const' modifiers to ufuncs via make_ufuncs.py
+  * Ensure the slice is an array
+  * Add gibbs and gibbs_ice via ufunc wrapping
+
+-------------------------------------------------------------------
 Thu Oct 13 07:40:28 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 3.6.16:

@@ -171,4 +171,17 @@
   - Enable again tests skipped on aarch64 since fixed upstream</comment>
     <requestid>1010450</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>481176ed79b8307d08883460df185257</srcmd5>
+    <version>3.6.17</version>
+    <time>1715444466</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1173104 from mcalabkova
+
+- Update to 3.6.17
+    * Add 'const' modifiers to ufuncs via make_ufuncs.py
+    * Ensure the slice is an array
+    * Add gibbs and gibbs_ice via ufunc wrapping</comment>
+    <requestid>1173200</requestid>
+  </revision>
 </revisionlist>
