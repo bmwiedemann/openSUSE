@@ -42,7 +42,7 @@ Requires:       python-msrest >= 0.5.0
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-cognitiveservices-vision-customvision < 3.1.0
+Obsoletes:      python3-azure-cognitiveservices-vision-customvision <= 3.1.0
 %endif
 BuildArch:      noarch
 
