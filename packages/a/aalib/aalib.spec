@@ -18,25 +18,12 @@
 
 Name:           aalib
 %define lname	libaa1
-BuildRequires:  libtool
-BuildRequires:  ncurses-devel
-BuildRequires:  pkgconfig(x11)
-%if 0%{?suse_version} > 1130
-BuildRequires:  gpm-devel
-%else
-BuildRequires:  gpm
-%endif
-URL:            https://aa-project.sourceforge.net/
-# bug437293
-%ifarch ppc64
-Obsoletes:      aalib-64bit
-%endif
-#
 Version:        1.4.0
 Release:        0
 Summary:        An ASCII Art Library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
+URL:            https://aa-project.sourceforge.net/
 Source:         http://sourceforge.net/projects/aa-project/files/aa-lib/1.4rc5/%{name}-1.4rc5.tar.gz
 Source1:        http://downloads.sourceforge.net/project/aa-project/aavga/1.0rc1/aavga-1.0rc1.tar.gz
 Source2:        http://downloads.sourceforge.net/project/aa-project/aview/1.3.0rc1/aview-1.3.0rc1.tar.gz
@@ -54,8 +41,16 @@ Patch10:        aalib-reentrant.patch
 Patch11:        aalib-1.4.0-config.patch
 Patch12:        aalib-1.4.0-fdleak.patch
 Patch13:        aalib-ncurses-6.0-accessors.patch
-PreReq:         %install_info_prereq
 BuildRequires:  fdupes
+BuildRequires:  gpm-devel
+BuildRequires:  libtool
+BuildRequires:  ncurses-devel
+BuildRequires:  pkgconfig(x11)
+PreReq:         %install_info_prereq
+# bug437293
+%ifarch ppc64
+Obsoletes:      aalib-64bit
+%endif
 
 %description
 AA-lib is a low level gfx library. AA-lib does not require a graphics
@@ -78,7 +73,6 @@ Group:          Development/Libraries/C and C++
 %ifarch ppc64
 Obsoletes:      aalib-devel-64bit
 %endif
-#
 Requires:       %lname = %version
 Requires:       glibc-devel
 Obsoletes:      aalibdev
@@ -108,7 +102,7 @@ cd ..
 %build
 %{?suse_update_config}
 autoreconf -fiv
-export CFLAGS="%{optflags} -fstrength-reduce -fomit-frame-pointer"
+export CFLAGS="%{optflags} -fstrength-reduce -fomit-frame-pointer -fpermissive"
 %ifarch %ix86
 export CFLAGS="$CFLAGS -falign-loops=2 -falign-jumps=2 -falign-functions=2"
 %endif
@@ -145,9 +139,7 @@ rm -f %{buildroot}%{_libdir}/*.la
 %preun
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
-%post -n %lname -p /sbin/ldconfig
-
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %docdir %{_defaultdocdir}/%{name}
