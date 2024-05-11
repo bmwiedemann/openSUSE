@@ -41,7 +41,7 @@ Requires:       python-six >= 1.11.0
 Requires:       (python-azure-core >= 1.18.0 with python-azure-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-purview-scanning < 1.0.0b2
+Obsoletes:      python3-azure-purview-scanning <= 1.0.0b2
 %endif
 BuildArch:      noarch
 
