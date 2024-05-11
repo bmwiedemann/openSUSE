@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May  6 12:22:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/6.2.0/
+- Changes since 6.1.0:
+  * allow to configure if we register our icon plugin for SVGs
+  * Port QML module to declarative type registration
+  * Fix typo in BreezeIcons::initIcons loading
+  * gitignore: add VS Code dir
+  * Set QML module base version to 1.0
+
+-------------------------------------------------------------------
 Fri Apr  5 12:52:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.1.0
