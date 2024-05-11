@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon May  6 12:22:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/6.2.0/
+- Changes since 6.1.0:
+  * [kfilefilter] Consider mime globs valid
+  * kfileitemtest: add basic tests for dir
+  * file_unix: don't call QMimeDatabase::mimeTypeForFile for directories
+  * widgetsaskuseractionhandler prevent crash when job had no parent widget
+  * PreviewJob: Add file extension to thumbnail temp files (kde#463989)
+  * KFileItem: handle the case parent url path is empty
+  * KFileItemActions: Add logic to order actions between separators (kde#466115)
+  * KFileItem: fix getStatusBarInfo() displaying symlink target as "http:" (kde#475422)
+  * ScopedProcessRunner: support waitForStarted
+  * ScopedProcessRunner: fix use of undeclared identifier 'close'
+  * [ftp] Always use default timeout values
+  * [http] Set error string for ERR_DOES_NOT_EXIST
+  * Force test language to en
+  * knewfilemenu: Add @since 6.2 to the new signals and methods
+  * kfilefilter.h: update API docs
+  * kencodingfiledialog dox: rewrite API dox that refer to removed functions
+  * kfilewidget dox: replace references to setFilter() with setFilters()
+  * Add `EnableRemoteFolderThumbnail` option checking
+  * PreviewJob: Display preview for locally mounted remote directories
+  * knewfilemenu: add isNewDirNameJobRunning
+  * KFilePlacesItem: Show teardown busy indicator during optical media eject
+  * KUrlNavigator: allow adding a badge widget after the breadcrumb
+  * Set ideal case for TwoVectors
+  * udsentry_api_comparison_benchmark: update
+  * kurlnavigatorbutton: prevent
+  * connection: don't queue tasks until OOM
+  * http: Fix parsing DAV:getlastmodified (kde#484671)
+  * kfileitem: Linux, use statx to refresh files (kde#446858)
+
+-------------------------------------------------------------------
 Fri Apr  5 12:52:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.1.0
