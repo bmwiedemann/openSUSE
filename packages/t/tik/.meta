@@ -1,0 +1,5 @@
+<package name="tik" project="openSUSE:Factory">
+  <title>Transactional Installation Kit</title>
+  <description>A toolkit for deploying Operating System images to UEFI hardware from a USB stick.</description>
+  <devel project="devel:microos:aeon" package="tik"/>
+</package>
