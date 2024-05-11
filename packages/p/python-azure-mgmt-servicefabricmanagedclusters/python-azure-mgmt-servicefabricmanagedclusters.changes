@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  3 16:42:40 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Change version setting of Obsoletes to <= to trigger python3
+  binary removal since there was no source version bump
+
+-------------------------------------------------------------------
 Tue Apr  9 07:03:11 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
