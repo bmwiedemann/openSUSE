@@ -1,7 +1,7 @@
 #
 # spec file for package gearlever
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,22 @@
 
 %define appid it.mijorus.gearlever
 Name:           gearlever
-Version:        1.0.18
+Version:        1.5.2
 Release:        0
 Summary:        Manage AppImages
 License:        GPL-3.0-or-later
 URL:            https://gearlever.mijorus.it/
 Source:         https://github.com/mijorus/gearlever/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: https://github.com/mijorus/gearlever/pull/80
+Patch1:         0001-Rename-icon-with-generic-name-that-conflicts-with-an.patch
 Group:          System/X11/Utilities
 BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  gtk4-tools
 BuildRequires:  meson
-BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(gio-2.0)
 Requires:       flatpak-spawn
 Requires:       p7zip
 Requires:       python3-dbus-python
@@ -72,4 +74,3 @@ rm %{buildroot}/%{_datadir}/gearlever/gearlever/assets/demo.AppImage
 %files lang -f %{name}.lang
 
 %changelog
-
