@@ -1,0 +1,68 @@
+--- cloudinit/distros/__init__.py.orig
++++ cloudinit/distros/__init__.py
+@@ -880,9 +880,12 @@ class Distro(persistence.CloudInitPickle
+         # it actually exists as a directory
+         sudoers_contents = ""
+         base_exists = False
++        system_sudo_base = "/usr/etc/sudoers"
+         if os.path.exists(sudo_base):
+             sudoers_contents = util.load_file(sudo_base)
+             base_exists = True
++        elif os.path.exists(system_sudo_base):
++            sudoers_contents = util.load_file(system_sudo_base)
+         found_include = False
+         for line in sudoers_contents.splitlines():
+             line = line.strip()
+@@ -907,7 +910,7 @@ class Distro(persistence.CloudInitPickle
+                         "#includedir %s" % (path),
+                         "",
+                     ]
+-                    sudoers_contents = "\n".join(lines)
++                    sudoers_contents += "\n".join(lines)
+                     util.write_file(sudo_base, sudoers_contents, 0o440)
+                 else:
+                     lines = [
+--- tests/unittests/distros/test__init__.py.orig
++++ tests/unittests/distros/test__init__.py
+@@ -230,6 +230,41 @@ class TestGenericDistro(helpers.Filesyst
+         self.assertIn("josh", contents)
+         self.assertEqual(2, contents.count("josh"))
+ 
++    def test_sudoers_ensure_append_sudoer_file(self):
++        cls = distros.fetch("ubuntu")
++        d = cls("ubuntu", {}, None)
++        self.patchOS(self.tmp)
++        self.patchUtils(self.tmp)
++        util.write_file("/etc/sudoers", "josh, josh\n")
++        d.ensure_sudo_dir("/b", "/etc/sudoers")
++        contents = util.load_file("/etc/sudoers")
++        self.assertIn("includedir /b", contents)
++        self.assertTrue(os.path.isdir("/b"))
++        self.assertIn("josh", contents)
++        self.assertEqual(2, contents.count("josh"))
++
++    def test_usr_sudoers_ensure_new(self):
++        cls = distros.fetch("ubuntu")
++        d = cls("ubuntu", {}, None)
++        self.patchOS(self.tmp)
++        self.patchUtils(self.tmp)
++        util.write_file("/usr/etc/sudoers", "josh, josh\n")
++        d.ensure_sudo_dir("/b")
++        contents = util.load_file("/etc/sudoers")
++        self.assertIn("josh", contents)
++        self.assertEqual(2, contents.count("josh"))
++        self.assertIn("includedir /b", contents)
++        self.assertTrue(os.path.isdir("/b"))
++
++    def test_usr_sudoers_ensure_no_etc_creat(self):
++        cls = distros.fetch("ubuntu")
++        d = cls("ubuntu", {}, None)
++        self.patchOS(self.tmp)
++        self.patchUtils(self.tmp)
++        util.write_file("/usr/etc/sudoers", "#includedir /b")
++        d.ensure_sudo_dir("/b")
++        self.assertTrue(not os.path.exists("/etc/sudoers"))
++
+     def test_sudoers_ensure_only_one_includedir(self):
+         cls = distros.fetch("ubuntu")
+         d = cls("ubuntu", {}, None)

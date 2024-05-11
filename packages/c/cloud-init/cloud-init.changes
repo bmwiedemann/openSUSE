@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 29 21:49:48 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-usr-sudoers.patch (bsc#1223469)
+  + Handle the existence of /usr/etc/sudoers to search for the expected
+    include location
+
+-------------------------------------------------------------------
 Tue Apr  9 16:00:13 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Update cloud-init-no-openstack-guess.patch
