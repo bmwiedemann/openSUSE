@@ -23,4 +23,12 @@
   + Update name for dist directory in %files section (forwarded request 1164621 from glaubitz)</comment>
     <requestid>1165020</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2abfec291b55744daf58b4710b28c44e</srcmd5>
+    <version>1.0.0</version>
+    <time>1715444482</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1173234</requestid>
+  </revision>
 </revisionlist>
