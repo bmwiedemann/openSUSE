@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 10 04:54:24 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.4.1:
+  * fix pruning binary packages when considering ELF packages
+    (#2862)
+
+-------------------------------------------------------------------
 Thu May 09 18:59:36 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.4.0:
