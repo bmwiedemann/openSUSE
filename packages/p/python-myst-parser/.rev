@@ -64,4 +64,28 @@
     maintenance/release policy of this project.  But it does feel</comment>
     <requestid>1128268</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7c0ee9fcaf601239f289ba49c7290f88</srcmd5>
+    <version>3.0.1</version>
+    <time>1715444330</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.1:
+  * Account for the final directive option having an empty value
+  * Re-allow indented directive option blocks
+  * Add support for Python 3.12
+  * Update docutils requirement from &gt;=0.16,&lt;0.21 to
+    &gt;=0.18,&lt;0.22
+  * Allow for use of the `line-block` directive
+  * Emits sphinx include-read event
+  * Nested parse attribution in `attr_block`
+  * Directive option parsing
+  * Improve directive parsing warnings
+  * Allow for opening external links in new tabs (#856)
+  * Replace black, isort, pyupgrade with ruff formatter
+  * remove redundant mypy config
+  * Add additional Ruff lints (and fix issues)
+  * mypy- disallow 'any generics'
+  * Fix docutils deprecation in option parsing</comment>
+    <requestid>1172883</requestid>
+  </revision>
 </revisionlist>

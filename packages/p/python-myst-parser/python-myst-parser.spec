@@ -1,7 +1,7 @@
 #
 # spec file for package python-myst-parser
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-myst-parser
-Version:        2.0.0
+Version:        3.0.1
 Release:        0
 Summary:        An extended commonmark compliant parser, with bridges to docutils & sphinx
 License:        MIT
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module docutils >= 0.16}
+BuildRequires:  %{python_module docutils >= 0.18 with %python-docutils < 0.22}
 BuildRequires:  %{python_module markdown-it-py}
 BuildRequires:  %{python_module markdown-it-py}
 BuildRequires:  %{python_module mdit-py-plugins}
@@ -56,11 +56,11 @@ BuildRequires:  %{python_module pytest}
 Requires:       python-Jinja2
 Requires:       python-PyYAML
 Requires:       python-Sphinx
-Requires:       python-docutils >= 0.16
+Requires:       python-docutils >= 0.18
 Requires:       python-markdown-it-py
 Requires:       python-mdit-py-plugins
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

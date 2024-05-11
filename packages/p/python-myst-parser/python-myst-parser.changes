@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu May  9 08:37:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * Account for the final directive option having an empty value
+  * Re-allow indented directive option blocks
+  * Add support for Python 3.12
+  * Update docutils requirement from >=0.16,<0.21 to
+    >=0.18,<0.22
+  * Allow for use of the `line-block` directive
+  * Emits sphinx include-read event
+  * Nested parse attribution in `attr_block`
+  * Directive option parsing
+  * Improve directive parsing warnings
+  * Allow for opening external links in new tabs (#856)
+  * Replace black, isort, pyupgrade with ruff formatter
+  * remove redundant mypy config
+  * Add additional Ruff lints (and fix issues)
+  * mypy- disallow 'any generics'
+  * Fix docutils deprecation in option parsing
+
+-------------------------------------------------------------------
 Thu Nov 23 07:46:00 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to version 2.0.0:
