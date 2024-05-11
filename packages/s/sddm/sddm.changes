@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 10 08:07:56 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop the empty branding-upstream subpackages (boo#1224063)
+
+-------------------------------------------------------------------
 Tue Apr 16 13:44:51 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add various fixes from upstream PRs:

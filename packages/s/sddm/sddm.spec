@@ -21,8 +21,8 @@
 # the only restriction is that the Qt X daemon defaults to run sddm-greeter-qtX
 # so that should be treated as a hard requirement. The default flavor builds
 # daemon and greeter with Qt 5 while the qt6 flavor builds both with Qt 6:
-# sddm builds sddm, sddm-greeter-qt5, sddm-branding-{upstream,openSUSE}
-# sddm:qt6 builds sddm-qt6, sddm-greeter-qt6, sddm-qt6-branding-upstream
+# sddm builds sddm, sddm-greeter-qt5, sddm-branding-openSUSE
+# sddm:qt6 builds sddm-qt6, sddm-greeter-qt6.
 # There is a PR pending (#1790) to build both greeters in one go, but here we
 # build them separately to allow separation with _multibuild flavors.
 
@@ -110,7 +110,6 @@ BuildRequires:  pkgconfig(xcb-xkb)
 BuildRequires:  update-alternatives
 Requires(post): %{_sbindir}/update-alternatives
 Requires(postun): %{_sbindir}/update-alternatives
-Requires:       %{name}-branding = %{version}
 Requires:       sddm-greeter-qt%{qtver} = %{version}
 Requires:       xdm
 %if %qt6
@@ -144,37 +143,14 @@ Group:          System/GUI/KDE
 BuildArch:      noarch
 Requires:       %{name} = %{version}
 Requires:       sddm-theme-openSUSE
-%if %qt6
-# Make installcheck happy: There needs to be a direct conflict,
-# not just via sddm-qt6-branding-foo -> sddm-qt6 <-> sddm-branding-foo -> sddm
-Conflicts:      sddm-branding
-%else
 # See 11-kwin_wayland.conf
 Requires:       kwin5 >= 5.26.90
 Supplements:    (plasma5-workspace and branding-openSUSE)
-%endif
 Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 
 %description branding-openSUSE
 This package provides the openSUSE branding for SDDM.
-
-%package branding-upstream
-Summary:        Upstream branding for SDDM (Qt%{qtver})
-Group:          System/GUI/KDE
-BuildArch:      noarch
-Requires:       %{name} = %{version}
-Supplements:    (%{name} and branding-upstream)
-%if %qt6
-# Make installcheck happy: There needs to be a direct conflict,
-# not just via sddm-qt6-branding-foo -> sddm-qt6 <-> sddm-branding-foo -> sddm
-Conflicts:      sddm-branding
-%endif
-Conflicts:      %{name}-branding
-Provides:       %{name}-branding = %{version}
-
-%description branding-upstream
-This package provides upstream branding for SDDM.
 
 %prep
 %autosetup -p1 -n sddm-%{version}
@@ -347,7 +323,7 @@ fi
 %{_libdir}/qt%{qtver}/qml/
 %{_datadir}/sddm/translations-qt%{qtver}/
 
-# No openSUSE branding for Qt 6 yet
+# The Plasma 6 branding is supplied by plasma6-workspace
 %if !%qt6
 %files branding-openSUSE
 %license LICENSE*
@@ -355,9 +331,5 @@ fi
 %{_prefix}/lib/sddm/sddm.conf.d/10-theme.conf
 %{_prefix}/lib/sddm/sddm.conf.d/11-kwin_wayland.conf
 %endif
-
-%files branding-upstream
-%license LICENSE*
-%doc README*
 
 %changelog
