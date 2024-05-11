@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  6 12:22:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/6.2.0/
+- Too many changes since 6.1.0, only listing bugfixes:
+  * Fixed wrong navigation and dialog header button colors (kde#486163)
+  * ContextualHelpButton: remove excess space from tooltip (kde#481817)
+
+-------------------------------------------------------------------
 Fri Apr  5 12:52:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.1.0
