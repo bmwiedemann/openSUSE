@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Wed May  8 13:26:24 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Conflict with other repart-brandings and no longer require systemd-experimental 
+
+-------------------------------------------------------------------
+Mon Apr  8 12:31:16 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove 49-ignition.conf (tik specific) 
+
+-------------------------------------------------------------------
+Thu Apr  4 16:38:11 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Initial packaging
+ 

@@ -1,0 +1,5 @@
+<package name="systemd-repart-branding-Aeon" project="openSUSE:Factory">
+  <title>repart.d configuration for openSUSE Aeon</title>
+  <description></description>
+  <devel project="devel:microos:aeon" package="systemd-repart-branding-Aeon"/>
+</package>
