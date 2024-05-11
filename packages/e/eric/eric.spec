@@ -23,7 +23,7 @@
 %bcond_with tools
 
 Name:           eric
-Version:        24.1
+Version:        24.5
 Release:        0
 Summary:        Python IDE based on Qt6
 License:        GPL-3.0-or-later
@@ -135,10 +135,11 @@ ln -sf %{distname}_ide %{buildroot}%{_bindir}/%{name}
 %{_datadir}/metainfo/%{distname}.appdata.xml
 %{_datadir}/applications/%{distname}_ide.desktop
 %{_datadir}/applications/%{distname}_browser.desktop
-%{_datadir}/icons/eric.png
+%{_datadir}/applications/%{distname}_mpy.desktop
+%{_datadir}/appdata/eric7.appdata.xml
+%{_datadir}/icons/eric*
 %{_datadir}/icons/ericWeb.png
-%{_datadir}/icons/hicolor/*/apps/eric.png
-%{_datadir}/icons/hicolor/*/apps/ericWeb.png
+%{_datadir}/icons/hicolor/*/apps/eric*
 %{python3_sitelib}/
 
 %files api

@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Sat May 11 08:11:53 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 24.5
+  - changes from version 24.5
+    + bug fixes
+    + General
+      - Changed code from using QFileSystemWatcher to our own
+        implementation (EricFileSystemWatcher) based on the
+        watchdog Python package in order to get more fine grained
+        control over the reported changes.
+    + Editor
+      - Added the capability to reload the current editor via its
+        context menu or the main File menu (see issue 556).
+      - Added basic support for Jenkins pipeline files (and Groovy
+        source files) (see issue 558).
+    + Editor Outline
+      - Improved the navigation capability by respecting the column
+        offset when placing the cursor of the editor (see issue 554)
+    + File Browser
+      - Improved the navigation capability by respecting the column
+        offset when placing the cursor of the editor (see issue 554)
+    + Project Browser
+      - Improved the navigation capability by respecting the column
+        offset when placing the cursor of the editor (see issue 554)
+    + Symbols Viewer
+      - Completed the list of selectable code blocks.
+  - changes from version 24.4
+    + bug fixes
+    + Code Style Checker
+      - Updated these checkers
+        * Security to bandit v1.7.8
+        * Miscellaneous to flake8-bugbear v24.2.6
+        * Logging to flake8-logging v1.5.0
+    + MicroPython
+      - Updated the list of known CircuitPython boards.
+      - Updated the list of known UF2 capable boards.
+    + pip Interface
+      - Added the capability to install packages given in the
+        project.dependencies section of a pyproject.toml file.
+    + Project
+      - Added an action to the Other Tools menu to clear the
+        byte code caches of the project.
+    + Shell
+      - Added a context menu action to open an editor for a file
+        at a line of an exception shown in the console window.
+    + Snapshot
+      - Disabled the snapshot functionality for Wayland based
+        desktops.
+    + Third Party Packages
+      - Upgraded pip-licenses to version 4.3.4.
+  - changes from version 24.3
+    + bug fixes
+    + General
+      -Removed support for the deprecated eric-ide specific XML
+       file formats.
+      -Removed the Oxygen based icons.
+  - changes from version 24.2.1
+    + bug fixes
+    + Code Style Checker
+      - Updated these checkers to support more cases.
+        * Miscellaneous
+        * Security
+    + Editor
+      - Added an Edit menu entry tp convert tabs to spaces manually.
+      - Added the capability to show local variables in the outline
+        view.
+      - Added code to show the indicator margin messages when the
+        mouse hovers over a syntax error or warning indicator.
+    + File Browser
+      - Added the capability to show local variables of functions
+        and methods.
+    + Find In Files
+      - Changed the filter entry to a filter selector with
+        associated edit capability to define a list of filter
+        entries.
+    + Log Viewer
+      - Added code to show an indicator for the log viewer icon, if
+        new messages were added and the "Autoshow" option is
+        deactivated.
+    + MicroPython
+      - Added an entry to the file manager's local and device
+        context menu to rename a file.
+      - Added a standalone application of the built-in MicroPython
+        interface ( eric7_mpy).
+      - Enhanced the MiucroPython file manager widget.
+    + Plugin Repository
+      - Added a label to show the number of selected entries.
+    + Project Browser
+      - Added the capability to show local variables of functions
+        and methods.
+    + Third Party packages
+      - Upgraded pyflakes to version 3.2.0.
+      - Upgraded jquery.js to version 3.7.1.
+  - changes from version 24.2
+    + bug fixes
+    + Code Style Checker
+      - Updated these checkers to support more cases.
+        * Miscellaneous
+        * Security
+    + Editor
+      - Added an Edit menu entry tp convert tabs to spaces manually
+      - Added the capability to show local variables in the outline
+        view.
+      - Added code to show the indicator margin messages when the
+        mouse hovers over a syntax error or warning indicator.
+    + File Browser
+      - Added the capability to show local variables of functions
+        and methods.
+    + Find In Files
+      - Changed the filter entry to a filter selector with
+        associated edit capability to define a list of filter
+        entries.
+    + Log Viewer
+      - Added code to show an indicator for the log viewer icon, if
+        new messages were added and the "Autoshow" option is
+        deactivated.
+    + MicroPython
+      - Added an entry to the file manager's local and device
+        context menu to rename a file.
+      - Added a standalone application of the built-in MicroPython
+        interface ( eric7_mpy).
+      - Enhanced the MiucroPython file manager widget.
+    + Plugin Repository
+      - Added a label to show the number of selected entries.
+    + Project Browser
+      - Added the capability to show local variables of functions and methods.
+    + Third Party packages
+      - Upgraded pyflakes to version 3.2.0.
+      - Upgraded jquery.js to version 3.7.1. 
+
+-------------------------------------------------------------------
 Fri Jan 19 03:23:47 UTC 2024 - Mikhail Terekhov <termim@gmail.com>
 
 - Update to version 24.1
