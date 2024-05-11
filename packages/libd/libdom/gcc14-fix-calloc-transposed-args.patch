@@ -1,0 +1,47 @@
+Index: b/bindings/xml/expat_xmlparser.c
+===================================================================
+--- a/bindings/xml/expat_xmlparser.c
++++ b/bindings/xml/expat_xmlparser.c
+@@ -484,7 +484,7 @@ dom_xml_parser_create(const char *enc, c
+ 
+ 	UNUSED(int_enc);
+ 
+-	parser = calloc(sizeof(*parser), 1);
++	parser = calloc(1, sizeof(*parser));
+ 	if (parser == NULL) {
+ 		msg(DOM_MSG_CRITICAL, mctx, "No memory for parser");
+ 		return NULL;
+Index: b/src/core/node.c
+===================================================================
+--- a/src/core/node.c
++++ b/src/core/node.c
+@@ -2379,7 +2379,7 @@ static inline dom_exception _dom_event_t
+ 	if (t == NULL) {
+ 		/* Create the event target list */
+ 		size = 64;
+-		t = calloc(sizeof(*t), size);
++		t = calloc(size, sizeof(*t));
+ 		if (t == NULL) {
+ 			return DOM_NO_MEM_ERR;
+ 		}
+Index: b/src/html/html_document.c
+===================================================================
+--- a/src/html/html_document.c
++++ b/src/html/html_document.c
+@@ -134,13 +134,13 @@ dom_exception _dom_html_document_initial
+ 	doc->cookie = NULL;
+ 	doc->body = NULL;
+ 
+-	doc->memoised = calloc(sizeof(dom_string *), hds_COUNT);
++	doc->memoised = calloc(hds_COUNT, sizeof(dom_string *));
+ 	if (doc->memoised == NULL) {
+ 		error = DOM_NO_MEM_ERR;
+ 		goto out;
+ 	}
+-	doc->elements = calloc(sizeof(dom_string *),
+-			DOM_HTML_ELEMENT_TYPE__COUNT);
++	doc->elements = calloc(DOM_HTML_ELEMENT_TYPE__COUNT,
++            sizeof(dom_string *));
+ 	if (doc->elements == NULL) {
+ 		error = DOM_NO_MEM_ERR;
+ 		goto out;

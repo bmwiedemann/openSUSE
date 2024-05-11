@@ -27,6 +27,8 @@ Summary:        C implementation of the W3C DOM API
 License:        MIT
 URL:            http://www.netsurf-browser.org/projects/libdom/
 Source:         http://download.netsurf-browser.org/libs/releases/%{name}-%{version}-src.tar.gz
+# PATCH-FIX-OPENSUSE gcc14-fix-calloc-transposed-args.patch -- Fix builds with gcc14
+Patch1:         gcc14-fix-calloc-transposed-args.patch
 BuildRequires:  netsurf-buildsystem
 BuildRequires:  perl(Switch)
 BuildRequires:  perl(XML::Parser::PerlSAX)

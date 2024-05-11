@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  8 14:44:42 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add patch gcc14-fix-calloc-transposed-args.patch
+  * Fix builds with gcc14
+
+-------------------------------------------------------------------
 Fri Jan 12 14:49:30 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Initial import of libdom, inspired from libcss package. 
