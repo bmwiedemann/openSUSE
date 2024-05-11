@@ -1,0 +1,23 @@
+# Directory for users to add custom configuration and modules
+# Default: "/etc/tik"
+TIK_CUSTOM_DIR="/etc/tik"
+
+# Directory for OS images to be deployed
+# Default: "/usr/lib/tik/img"
+TIK_IMG_DIR="/usr/lib/tik/img"
+
+# For unattended installations the disk device to deploy the image must be defined
+# Default: Undefined
+#TIK_INSTALL_DEVICE=""
+
+# For unattended installations the disk image to deploy must be defined if more than one is present
+# Default: Undefined
+#TIK_INSTALL_IMAGE=""
+
+# Display name of the OS to be deployed by tik
+# Default: Undefined
+TIK_OS_NAME="openSUSE Aeon"
+
+# URL for bug reports to go to
+# Default: https://aeondesktop.org/reportbug
+TIK_BUG_URL="https://aeondesktop.org/reportbug"

@@ -1,0 +1,5 @@
+<package name="tik-config-Aeon" project="openSUSE:Factory">
+  <title>Aeon specific config for tik installer</title>
+  <description></description>
+  <devel project="devel:microos:aeon" package="tik-config-Aeon"/>
+</package>

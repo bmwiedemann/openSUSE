@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Thu May  2 13:26:15 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Create and own module directories 
+
+-------------------------------------------------------------------
+Thu May  2 12:42:48 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Use new tik-gui variables 
+
+-------------------------------------------------------------------
+Mon Apr  8 12:37:17 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Change image path to /usr/lib/tik/img 
+
+-------------------------------------------------------------------
+Thu Apr  4 16:12:59 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Initial packaging 
