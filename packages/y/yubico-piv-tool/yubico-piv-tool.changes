@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  7 09:05:14 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- update to 2.5.2:
+  * cmd: Fix signing selfsigned certificate for ED25519 key.
+- update cmake-flags-upstream-issue-474.patch 
+
+-------------------------------------------------------------------
 Wed Feb 14 09:05:14 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - update to 2.5.1:

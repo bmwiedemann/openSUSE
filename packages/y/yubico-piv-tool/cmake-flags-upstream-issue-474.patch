@@ -11,10 +11,10 @@ Date:   Thu Feb 15 10:23:03 2024 +0100
     
     Fixes https://github.com/Yubico/yubico-piv-tool/issues/474
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index ae6654e..1bc068a 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
+Index: yubico-piv-tool-2.5.2/CMakeLists.txt
+===================================================================
+--- yubico-piv-tool-2.5.2.orig/CMakeLists.txt
++++ yubico-piv-tool-2.5.2/CMakeLists.txt
 @@ -25,7 +25,7 @@
  # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
@@ -24,10 +24,10 @@ index ae6654e..1bc068a 100644
  # policy CMP0025 is to get AppleClang identifier rather than Clang for both
  # this matters since the apple compiler accepts different flags.
  cmake_policy(SET CMP0025 NEW)
-diff --git a/cmake/openssl.cmake b/cmake/openssl.cmake
-index e650d81..ec29ee3 100644
---- a/cmake/openssl.cmake
-+++ b/cmake/openssl.cmake
+Index: yubico-piv-tool-2.5.2/cmake/openssl.cmake
+===================================================================
+--- yubico-piv-tool-2.5.2.orig/cmake/openssl.cmake
++++ yubico-piv-tool-2.5.2/cmake/openssl.cmake
 @@ -84,8 +84,9 @@ macro (find_libcrypto)
      endif(WIN32 OR OPENSSL_STATIC_LINK)
      
@@ -40,10 +40,10 @@ index e650d81..ec29ee3 100644
      link_directories(${LIBCRYPTO_LIBRARY_DIRS})
      include_directories(${LIBCRYPTO_INCLUDE_DIRS})
  
-diff --git a/cmake/pcscd.cmake b/cmake/pcscd.cmake
-index 4222693..5fe0ad9 100644
---- a/cmake/pcscd.cmake
-+++ b/cmake/pcscd.cmake
+Index: yubico-piv-tool-2.5.2/cmake/pcscd.cmake
+===================================================================
+--- yubico-piv-tool-2.5.2.orig/cmake/pcscd.cmake
++++ yubico-piv-tool-2.5.2/cmake/pcscd.cmake
 @@ -75,7 +75,7 @@ macro (find_pcscd)
          set(ENV{PKG_CONFIG_PATH} "${PCSCLITE_PKG_PATH}:$ENV{PKG_CONFIG_PATH}")
          pkg_check_modules(PCSC REQUIRED libpcsclite)
@@ -53,15 +53,11 @@ index 4222693..5fe0ad9 100644
              if(VERBOSE_CMAKE)
                  message("PCSC_FOUND: ${PCSC_FOUND}")
                  message("PCSC_LIBRARY_DIRS: ${PCSC_LIBRARY_DIRS}")
-@@ -100,8 +100,9 @@ macro (find_pcscd)
-         else(${PCSC_DIR} NOT STREQUAL "")
-             set(PCSC_CUSTOM_LIBS "-Wl,-l${PCSC_LIB}")
-         endif(${PCSC_DIR} NOT STREQUAL "")
--        set(CMAKE_C_FLAGS ${PCSC_CFLAGS} ${CMAKE_C_FLAGS})
--        set(PCSC_LIBRARIES ${PCSC_LIBRARIES} ${PCSC_CUSTOM_LIBS})
-+        list(JOIN PCSC_CFLAGS " " PCSC_CFLAGS_STRING)
-+        set(CMAKE_C_FLAGS "${PCSC_CFLAGS_STRING} ${CMAKE_C_FLAGS}")
-+        set(PCSC_LIBRARIES "${PCSC_LIBRARIES} ${PCSC_CUSTOM_LIBS}")
-         unset(PCSC_MACOSX_LIBS)
-         unset(PCSC_WIN_LIBS)
-         unset(PCSC_LIBS)
+@@ -124,4 +124,5 @@ macro (find_pcscd)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${PCSC_CFLAGS}")
+     link_directories(${PCSC_LIBRARY_DIRS})
+ 
+-endmacro()
+\ No newline at end of file
++endmacro()
++
