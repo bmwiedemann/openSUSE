@@ -17,7 +17,7 @@
 
 
 Name:           kora-icon-theme
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)
 License:        GPL-3.0-only
