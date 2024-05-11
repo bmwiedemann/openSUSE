@@ -343,4 +343,18 @@
 - drop avoid-deprecated-ast.patch (upstream)</comment>
     <requestid>1169420</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>12b5cb16e4cf57866992416b4ceb30b6</srcmd5>
+    <version>1.4.2</version>
+    <time>1715444328</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.2:
+  * Due to maintenance issues, 1.4.1 was not valid and we bumped
+    the version to 1.4.2
+  * Fix a backward incompatible change in MemorizedFunc.call
+    which needs to return the metadata. Also make sure that
+    NotMemorizedFunc.call return an empty dict for metadata for
+    consistency. https://github.com/joblib/joblib/pull/1576</comment>
+    <requestid>1172881</requestid>
+  </revision>
 </revisionlist>

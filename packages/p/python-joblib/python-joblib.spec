@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-joblib
-Version:        1.4.0
+Version:        1.4.2
 Release:        0
 Summary:        Module for using Python functions as pipeline jobs
 License:        BSD-3-Clause
