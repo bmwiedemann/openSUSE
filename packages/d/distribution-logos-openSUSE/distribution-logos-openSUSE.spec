@@ -18,7 +18,7 @@
 
 
 Name:           distribution-logos-openSUSE
-Version:        20240424
+Version:        20240429
 Release:        0
 Summary:        Logos for openSUSE Distros
 License:        CC-BY-SA-4.0
@@ -67,6 +67,17 @@ BuildArch:      noarch
 
 %description Tumbleweed
 Logos for openSUSE Tumbleweed
+
+%package Slowroll
+Summary:        Logos for openSUSE Slowroll
+Conflicts:      distribution-logos
+Obsoletes:      distribution-logos
+Provides:       distribution-logos
+Removepathpostfixes: .Slowroll
+BuildArch:      noarch
+
+%description Slowroll
+Logos for openSUSE Slowroll
 
 %package Kubic
 Summary:        Logos for openSUSE Kubic
@@ -128,7 +139,7 @@ mkdir -p %{buildroot}%{_datadir}/icons/hicolor/{scalable,symbolic}/apps
 %if 0%{?sle_version} || 0%{?suse_version} == 1600
 for distro in Leap LeapMicro; do \
 %else
-for distro in Tumbleweed Kubic MicroOS Aeon; do \
+for distro in Tumbleweed Slowroll Kubic MicroOS Aeon; do \
 %endif
 for file in `ls ${distro}`; do \
 cp -r ${distro}/${file} %{buildroot}%{_datadir}/pixmaps/distribution-logos/${file}.${distro}; \
@@ -153,6 +164,9 @@ ln -sf %{_datadir}/pixmaps/distribution-logos/square-symbolic.svg %{buildroot}%{
 
 %files Tumbleweed
 %{_datadir}/pixmaps/distribution-logos/*.Tumbleweed
+
+%files Slowroll
+%{_datadir}/pixmaps/distribution-logos/*.Slowroll
 
 %files Kubic
 %{_datadir}/pixmaps/distribution-logos/*.Kubic
