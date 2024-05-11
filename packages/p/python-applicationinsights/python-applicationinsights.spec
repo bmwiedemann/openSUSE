@@ -33,7 +33,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-applicationinsights < 0.11.10
+Obsoletes:      python3-applicationinsights <= 0.11.10
 %endif
 BuildArch:      noarch
 
