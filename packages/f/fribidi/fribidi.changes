@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  9 18:51:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.14:
+  * Updated Unicode tables to version 15.1
+
+-------------------------------------------------------------------
 Sun Jun 11 20:33:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.13:
@@ -114,7 +120,7 @@ Thu Nov  6 09:50:44 UTC 2014 - i@marguerite.su
 -------------------------------------------------------------------
 Wed Sep 10 13:36:21 UTC 2014 - ftake@geeko.jp
 
-- libfribidi-devel requires %{lname} = %{version} 
+- libfribidi-devel requires %{lname} = %{version}
 
 -------------------------------------------------------------------
 Sat Jul 19 21:30:39 UTC 2014 - jengelh@inai.de
@@ -168,7 +174,7 @@ Sun Jan  6 05:22:51 CET 2008 - crrodriguez@suse.de
 - update to version 0.10.9
   * Fixed type sizes when stdint.h is not available.
   * Update to Unicode Character Database 5.0.0
-  * Fixed type sizes on 64-bit architectures. 
+  * Fixed type sizes on 64-bit architectures.
 - disable static libraries
 - remove libtool archive with empty dependency_libs
 - do not require gtk2-devel for build as it is unused

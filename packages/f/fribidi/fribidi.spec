@@ -1,7 +1,7 @@
 #
 # spec file for package fribidi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname   libfribidi0
 Name:           fribidi
-Version:        1.0.13
+Version:        1.0.14
 Release:        0
 Summary:        An implementation of the Unicode BiDi algorithm
 License:        LGPL-2.1-only
