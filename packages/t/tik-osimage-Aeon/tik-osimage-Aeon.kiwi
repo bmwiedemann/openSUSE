@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<image schemaversion="7.6" name="tik-osimage-openSUSE-Aeon" displayname="openSUSE Aeon">
+    <description type="system">
+        <author>Richard Brown</author>
+        <contact>rbrownsuse@opensuse.org</contact>
+        <specification>openSUSE Aeon</specification>
+    </description>
+    <preferences>
+        <version>0.1.0</version>
+        <packagemanager>zypper</packagemanager>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
+        <type
+            image="oem"
+            filesystem="btrfs"
+            fsmountoptions="compress=zstd:1"
+            firmware="uefi"
+            bootpartition="false"
+            initrd_system="none"
+            efipartsize="4000"
+            bootkernel="custom"
+            devicepersistency="by-uuid"
+            btrfs_root_is_subvolume="true"
+            btrfs_root_is_snapshot="true"
+            btrfs_root_is_readonly_snapshot="true"
+            btrfs_quota_groups="true"
+        >
+            <bootloader name="custom"/>
+            <oemconfig>
+                <oem-resize>false</oem-resize>
+            </oemconfig>
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
+            </systemdisk>
+        </type>
+    </preferences>
+    <repository type="rpm-md">
+        <source path="obsrepositories:/"/>
+    </repository>
+    <packages type="image">
+        <package name="live-add-yast-repos"/>
+        <package name="patterns-aeon-base"/>
+    </packages>
+    <packages type="bootstrap">
+        <!-- Avoid that zypper picks the busybox-foo variant for those, that would fail later -->
+        <package name="coreutils"/>
+        <package name="gawk"/>
+        <package name="gzip"/>
+        <package name="hostname"/>
+        <!-- Avoid libressl -->
+        <package name="openssl"/>
+        <package name="filesystem"/>
+        <package name="glibc-locale-base"/>
+        <!-- So that https repos work for image package downloads -->
+        <package name="ca-certificates-mozilla"/>
+        <package name="Aeon-release"/>
+    </packages>
+</image>

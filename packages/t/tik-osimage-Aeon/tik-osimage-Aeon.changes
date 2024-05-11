@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Fri May 10 10:36:02 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Produce image with "tik-osimage-*" prefix to be consumed by tik-img-to-rpm post check
+- Remove compression debugging tool from the image 
+
+-------------------------------------------------------------------
+Fri Apr 12 12:07:21 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Initial Image 

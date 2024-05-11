@@ -1,0 +1,5 @@
+<package name="tik-osimage-Aeon" project="openSUSE:Factory">
+  <title>openSUSE Aeon OS Image for deployment via tik</title>
+  <description></description>
+  <devel project="devel:microos:aeon:images" package="tik-osimage-Aeon"/>
+</package>
