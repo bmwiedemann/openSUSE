@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May  6 12:22:25 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/6.2.0/
+- Changes since 6.1.0:
+  * KConfigDialogManager: port to non-deprecated QCheckBox signal
+  * KCommandBar: Better UI
+  * KRecentFilesAction: Load mimeType and action lazily
+  * Remove forward declaration of KToggleAction
+  * Test that an invalid language gives the empty string
+  * gitignore: add VS Code dir
+
+-------------------------------------------------------------------
 Fri Apr  5 12:52:28 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.1.0
