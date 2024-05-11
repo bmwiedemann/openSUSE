@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May  6 12:23:00 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/6.2.0/
+- Changes since 6.1.0:
+  * KViewStateSerializer: fix docu: setTreeView -> setView
+  * KBusyIndicatorWidget: fix warning when hiding on startup
+  * Introduce KContextualHelpButton
+  * KMessageWidget: Fix handling of palette changes
+  * KMessageWidget: Make sure icon label is always vertically centered
+  * gitignore: add VS Code dir
+
+-------------------------------------------------------------------
 Fri Apr  5 12:53:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.1.0
