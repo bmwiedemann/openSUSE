@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May  8 22:39:10 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- CVE-2024-4418: rpc: ensure temporary GSource is removed from
+  client event loop
+  bsc#1223849
+- libxl: Fix domxml-to-native conversion
+  bsc#1222584
+
+-------------------------------------------------------------------
 Thu May  2 22:48:28 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 10.3.0

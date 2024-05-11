@@ -4596,4 +4596,16 @@ bsc#1216656</comment>
     https://libvirt.org/news.html#v10-3-0-2024-05-02</comment>
     <requestid>1171479</requestid>
   </revision>
+  <revision rev="398" vrev="2">
+    <srcmd5>6b27af057cc37be4d9b41db7fb9ba825</srcmd5>
+    <version>10.3.0</version>
+    <time>1715444325</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2024-4418: rpc: ensure temporary GSource is removed from
+  client event loop
+  bsc#1223849
+- libxl: Fix domxml-to-native conversion
+  bsc#1222584</comment>
+    <requestid>1172820</requestid>
+  </revision>
 </revisionlist>
