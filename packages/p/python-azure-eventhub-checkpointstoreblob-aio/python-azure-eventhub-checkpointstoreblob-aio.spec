@@ -44,7 +44,7 @@ Requires:       (python-azure-eventhub >= 5.0.0 with python-azure-eventhub < 6.0
 Requires:       (python-azure-storage-blob >= 12.0.0 with python-azure-storage-blob < 13.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-eventhub-checkpointstoreblob-aio < 1.1.4
+Obsoletes:      python3-azure-eventhub-checkpointstoreblob-aio <= 1.1.4
 %endif
 BuildArch:      noarch
 %python_subpackages
