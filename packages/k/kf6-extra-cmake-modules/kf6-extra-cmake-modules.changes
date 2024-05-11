@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May  6 12:22:15 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/6.2.0/
+- Changes since 6.1.0:
+  * API dox: KDEInstallDirs6: refer to qtpaths now as source of Qt paths
+  * API dox: KDEInstallDirs6: drop outdated note about being in ALPHA state
+  * test: Increase minimum cmake version so that it works with Qt 6.7
+  * ECMQmlModule6: group qml and resource file calls
+  * modules/ECMAddTests.cmake - handle unset or empty QT_PLUGIN_PATH
+
+-------------------------------------------------------------------
 Fri Apr  5 12:52:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.1.0
