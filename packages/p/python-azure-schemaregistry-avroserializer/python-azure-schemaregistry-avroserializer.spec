@@ -41,7 +41,7 @@ Requires:       python-azure-schemaregistry >= 1.0.0
 Requires:       python-msrest >= 0.5.0
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-schemaregistry-avroserializer < 1.0.0b4
+Obsoletes:      python3-azure-schemaregistry-avroserializer <= 1.0.0b4
 %endif
 BuildArch:      noarch
 
