@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  3 16:42:40 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Change version setting of Obsoletes to <= to trigger python3
+  binary removal since there was no source version bump
+
+-------------------------------------------------------------------
 Thu Apr  4 13:00:36 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch package to modern Python Stack on SLE-15
