@@ -127,4 +127,12 @@
     <comment>Add Requires on libguestfs which will pull in libguestfs-appliance and all its dependencies</comment>
     <requestid>1172598</requestid>
   </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>4f5bcf2a282af5b5ca91d9168d5fcec2</srcmd5>
+    <version>1.52.0</version>
+    <time>1715444393</time>
+    <user>dimstar_suse</user>
+    <comment>No code change. Just added bug number to changelog entry</comment>
+    <requestid>1172937</requestid>
+  </revision>
 </revisionlist>
