@@ -21,7 +21,7 @@
 %define rname solid
 %bcond_without released
 Name:           kf6-solid
-Version:        6.1.0
+Version:        6.2.0
 Release:        0
 Summary:        KDE Desktop hardware abstraction
 License:        LGPL-2.1-or-later
@@ -31,8 +31,6 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-udisks-Return-empty-string-for-root-clearTextPath.patch
 BuildRequires:  bison
 BuildRequires:  doxygen
 BuildRequires:  fdupes

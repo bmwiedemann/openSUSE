@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon May  6 12:23:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/6.2.0/
+- Changes since 6.1.0:
+  * remove too aggressive assert (kde#464149)
+  * [StorageAccess] Fix storageAccessFromPath returning unmounted filesystems
+  * [SolidHwTest] Extend FakeHW description with encrypted volume, add tests
+  * [SolidHwTest] Test Device::storageAccessFromPath
+  * [DeviceManager] Remove exists() check from storageAccessFromPath
+  * udisks: Return empty string for "root" clearTextPath (kde#485507)
+  * [SolidHwTest] Remove unnecessary slotPropertyChanged helper, fix bug
+  * [SolidHwTest] Remove setenv wrapper, unnecessary qt_windows.h include
+  * [SolidHwTest] Move test class declaration to source file
+  * udisks2: Add support CanCheck/Check/CanRepair/Repair
+- Drop patch, merged upstream:
+  * 0001-udisks-Return-empty-string-for-root-clearTextPath.patch
+
+-------------------------------------------------------------------
 Thu Apr 18 19:28:50 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix mounting encrypted drives (kde#485507, boo#1222980):
