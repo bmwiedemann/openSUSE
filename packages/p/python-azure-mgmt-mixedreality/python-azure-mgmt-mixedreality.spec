@@ -43,7 +43,7 @@ Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
 Requires:       (python-azure-mgmt-core >= 1.2.0 with python-azure-mgmt-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
-Obsoletes:      python3-azure-mgmt-mixedreality < 1.0.0b1
+Obsoletes:      python3-azure-mgmt-mixedreality <= 1.0.0b1
 %endif
 BuildArch:      noarch
 
