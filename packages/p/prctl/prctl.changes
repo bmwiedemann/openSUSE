@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May  9 07:41:50 UTC 2024 - pgajdos@suse.com
+
+- fix build with gcc14
+- use %autosetup macro
+- modified patches
+  % prctl-1.5-warnings.patch (refreshed)
+- added patches
+  work with gcc14
+  + prctl-gcc14.patch
+
+-------------------------------------------------------------------
 Wed Feb 21 15:10:54 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -27,6 +27,8 @@ Source0:        http://downloads.sourceforge.net/project/prctl/prctl/%{version}/
 Source1:        COPYING
 Patch0:         prctl-1.5-Makefile.patch
 Patch1:         prctl-1.5-warnings.patch
+# work with gcc14
+Patch2:         prctl-gcc14.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -34,10 +36,8 @@ The prctl utility allows a user to control certain process behaviors in
 the runtime environment.
 
 %prep
-%setup -q
+%autosetup -p1
 cp %{SOURCE1} .
-%patch -P 0 -p1 -b .makefile
-%patch -P 1 -b .warnings
 
 %build
 %configure
