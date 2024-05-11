@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  7 13:35:31 UTC 2024 - Giuliano Belinassi <giuliano.belinassi@suse.com>
+
+- Enable livepatching support (bsc#1223428)
+
+-------------------------------------------------------------------
 Tue May  7 11:51:38 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Add ktls capability [bsc#1216950]

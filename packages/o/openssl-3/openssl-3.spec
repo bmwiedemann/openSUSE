@@ -22,6 +22,10 @@
 %define man_suffix 3ssl
 %global sslengcnf %{ssletcdir}/engines%{sover}.d
 %global sslengdef %{ssletcdir}/engdef%{sover}.d
+
+# Enable userspace livepatching.
+%define livepatchable 1
+
 Name:           openssl-3
 # Don't forget to update the version in the "openssl" meta-package!
 Version:        3.1.4
@@ -86,6 +90,13 @@ Patch27:        openssl-CVE-2024-0727.patch
 # PATCH-FIX-UPSTREAM: bsc#1222548 CVE-2024-2511: Unbounded memory growth with session handling in TLSv1.3
 Patch28:        openssl-CVE-2024-2511.patch
 BuildRequires:  pkgconfig
+%if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
+BuildRequires:  ulp-macros
+%else
+# Define ulp-macros macros as empty
+%define cflags_livepatching ""
+%define pack_ipa_dumps      echo "Livepatching is disabled in this build"
+%endif
 BuildRequires:  pkgconfig(zlib)
 Requires:       libopenssl3 = %{version}-%{release}
 Requires:       openssl
@@ -188,6 +199,7 @@ export MACHINE=armv6l
     --libdir=%{_lib} \
     --openssldir=%{ssletcdir} \
     %{optflags} \
+    %{cflags_livepatching} \
     -Wa,--noexecstack \
     -Wl,-z,relro,-z,now \
     -fno-common \
@@ -252,6 +264,7 @@ gcc -o showciphers %{optflags} -I%{buildroot}%{_includedir} %{SOURCE5} -L%{build
 LD_LIBRARY_PATH=%{buildroot}%{_libdir} ./showciphers
 
 %install
+%{pack_ipa_dumps}
 %make_install %{?_smp_mflags} MANSUFFIX=%{man_suffix}
 
 rename so.%{sover} so.%{version} %{buildroot}%{_libdir}/*.so.%{sover}
