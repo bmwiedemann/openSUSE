@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 10 13:29:15 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240510.6bfa644:
+  * Update nvidia-leap-repoindex.xml
+  * Leap add missing slash after distsub
+  * Update README.md
+
+-------------------------------------------------------------------
 Mon Apr 29 12:13:29 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Ensure that only one NVIDIA package flavor can be installed
