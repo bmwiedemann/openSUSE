@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  2 07:48:30 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix gcc error with CFLAGS=-Og
+  * grub2-grubenv-in-btrfs-header.patch
+
+-------------------------------------------------------------------
 Fri Apr 19 21:50:53 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - remove deprecated file 20_memtest86+
