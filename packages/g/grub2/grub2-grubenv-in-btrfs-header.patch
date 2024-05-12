@@ -9,17 +9,6 @@ v3:
   * Use xcalloc for overflow check and return NULL when it would
     occur.
 
-v4:
-  * Fix gcc error with CFLAGS=-Og
-
-  ../util/grub-editenv.c: In function ‘read_envblk_fs’:
-  ../util/grub-editenv.c:172:14: error: ‘sz’ may be used uninitialized [-Werror=maybe-uninitialized]
-    172 |           sz <<= GRUB_DISK_SECTOR_BITS;
-  ../util/grub-editenv.c:155:16: note: ‘sz’ was declared here
-    155 |       int off, sz;
-        |                ^~
-  cc1: all warnings being treated as errors
-
 ---
 --- a/grub-core/kern/fs.c
 +++ b/grub-core/kern/fs.c
@@ -60,7 +49,7 @@ v4:
  
  #include <stdio.h>
  #include <unistd.h>
-@@ -120,6 +123,142 @@
+@@ -120,6 +123,140 @@
    NULL, help_filter, NULL
  };
  
@@ -99,8 +88,6 @@ v4:
 +      off = strtol (value, &p, 10);
 +      if (*p == '+')
 +	sz = strtol (p+1, &p, 10);
-+      else
-+	return 0;
 +
 +      if (*p == '\0')
 +	{
@@ -203,7 +190,7 @@ v4:
  static grub_envblk_t
  open_envblk_file (const char *name)
  {
-@@ -182,10 +321,17 @@
+@@ -182,10 +319,17 @@
  list_variables (const char *name)
  {
    grub_envblk_t envblk;
@@ -221,7 +208,7 @@ v4:
  }
  
  static void
-@@ -209,6 +355,38 @@
+@@ -209,6 +353,38 @@
  }
  
  static void
@@ -260,7 +247,7 @@ v4:
  set_variables (const char *name, int argc, char *argv[])
  {
    grub_envblk_t envblk;
-@@ -224,8 +402,27 @@
+@@ -224,8 +400,27 @@
  
        *(p++) = 0;
  
@@ -290,7 +277,7 @@ v4:
  
        argc--;
        argv++;
-@@ -233,26 +430,158 @@
+@@ -233,26 +428,158 @@
  
    write_envblk (name, envblk);
    grub_envblk_close (envblk);
@@ -328,8 +315,8 @@ v4:
 +      write_envblk_fs (envblk_fs);
 +      grub_envblk_close (envblk_fs);
 +    }
- }
- 
++}
++
 +int have_abstraction = 0;
 +static void
 +probe_abstraction (grub_disk_t disk)
@@ -342,8 +329,8 @@ v4:
 +    {
 +      have_abstraction = 1;
 +    }
-+}
-+
+ }
+ 
 +static fs_envblk_t
 +probe_fs_envblk (fs_envblk_spec_t spec)
 +{
@@ -449,7 +436,7 @@ v4:
  int
  main (int argc, char *argv[])
  {
-@@ -284,6 +613,9 @@
+@@ -284,6 +611,9 @@
        command  = argv[curindex++];
      }
  

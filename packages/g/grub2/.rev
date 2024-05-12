@@ -2791,4 +2791,11 @@ pretty much the same. The main user visible changes are
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1172867</requestid>
   </revision>
+  <revision rev="327" vrev="16">
+    <srcmd5>bd94b2ce08a592ce1e8479bfb2850f84</srcmd5>
+    <version>2.12</version>
+    <time>1715499229</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1224150</comment>
+  </revision>
 </revisionlist>
