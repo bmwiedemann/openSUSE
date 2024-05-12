@@ -1,12 +1,8 @@
-diff -Nura plymouth-22.02.122+180.b1d5aa9/themes/spinfinity/meson.build plymouth-22.02.122+180.b1d5aa9_new/themes/spinfinity/meson.build
---- plymouth-22.02.122+180.b1d5aa9/themes/spinfinity/meson.build	2022-11-27 00:45:52.000000000 +0800
-+++ plymouth-22.02.122+180.b1d5aa9_new/themes/spinfinity/meson.build	2023-07-12 18:00:50.140486797 +0800
-@@ -53,8 +53,3 @@
-   'throbber-33.png',
-   install_dir: plymouth_theme_path / 'spinfinity',
- )
--
--install_symlink('header-image.png',
--  install_dir: plymouth_theme_path / 'spinfinity',
--  pointing_to: plymouth_logo_file,
--)
+diff -Nura plymouth-0.9.5~git20220412.e960111/themes/spinfinity/Makefile.am plymouth-0.9.5~git20220412.e960111_new/themes/spinfinity/Makefile.am
+--- plymouth-0.9.5~git20220412.e960111/themes/spinfinity/Makefile.am	2022-04-15 16:39:24.000000000 +0800
++++ plymouth-0.9.5~git20220412.e960111_new/themes/spinfinity/Makefile.am	2022-04-18 15:47:44.346708483 +0800
+@@ -54,4 +54,3 @@
+ EXTRA_DIST = spinfinity.plymouth.in
+ 
+ install-data-hook:
+-	ln -sf $(logofile) $(DESTDIR)$(themedir)/header-image.png
