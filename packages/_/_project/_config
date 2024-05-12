@@ -3143,6 +3143,7 @@ BuildFlags: onlybuild:tslib
 BuildFlags: onlybuild:ttf-converter
 BuildFlags: onlybuild:twolame
 BuildFlags: onlybuild:uchardet
+BuildFlags: onlybuild:ulp-macros
 BuildFlags: onlybuild:umockdev
 BuildFlags: onlybuild:unbound
 BuildFlags: onlybuild:unicode-emoji
