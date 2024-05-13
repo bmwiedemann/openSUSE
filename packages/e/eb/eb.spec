@@ -1,7 +1,7 @@
 #
 # spec file for package eb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Group:          System/Libraries
 URL:            https://github.com/aehlke/eb
 Source:         ftp://ftp.sra.co.jp/pub/misc/eb/%{name}-%{version}.tar.bz2
 Patch0:         gettext.patch
+# build with gcc14
+Patch1:         eb-gcc14.patch
 BuildRequires:  libtool
 BuildRequires:  zlib-devel
 Recommends:     %{name}-lang
