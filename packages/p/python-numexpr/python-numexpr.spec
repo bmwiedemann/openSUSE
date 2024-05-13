@@ -25,10 +25,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pydata/numexpr/
 Source:         https://files.pythonhosted.org/packages/source/n/numexpr/numexpr-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM revert of https://github.com/pydata/numexpr/commit/beedecb3990d604d0f272c1a2f9a1d117f6120ba to enable numpy v1 again, drop when numpy is updated to v2
-Patch0:         revert-to-numpy1.patch
+# PATCH-FIX-UPSTREAM numexpr-pr485-allow-numpy1.patch gh#pydata/numexpr#485, see also comments in gh#pydata/numexpr#478
+Patch0:         numexpr-pr485-allow-numpy1.patch
 BuildRequires:  %{python_module devel >= 3.7}
-# Until numpy 2 is in Factory, keep allowing to build with numpy 1.x. See comments in pyproject.toml for scipy and pandas
+# Until numpy 2 is in Factory, keep allowing to build with numpy 1.x. See Patch0
 BuildRequires:  %{python_module numpy-devel >= 1.19.3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
