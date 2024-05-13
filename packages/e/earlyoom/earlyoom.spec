@@ -16,13 +16,13 @@
 #
 
 
-# the tests are quite flaky in a VM
+# The tests are quite flaky in a VM
 %bcond_with tests
 %if ! 0%{?_fillupdir:1}
 %global _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           earlyoom
-Version:        1.8
+Version:        1.8.2
 Release:        0
 Summary:        Early OOM Daemon for Linux
 License:        MIT
@@ -30,7 +30,6 @@ Group:          System/Daemons
 URL:            https://github.com/rfjakob/%{name}
 Source0:        https://github.com/rfjakob/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.sysconfig
-# Inject pre-build earlyoom.1, built on x86_64 machine, as pandoc does not exist on all archs
 # pandoc MANPAGE.md -s -t man > earlyoom.1
 Source2:        earlyoom.1
 BuildRequires:  pkgconfig
@@ -46,19 +45,8 @@ below critical level, it will kill the largest process (highest oom_score).
 
 %prep
 %autosetup -p1
-# Test if our pre-build earloom.1 is newer than README.md; if not, fail.
-test %{SOURCE2} -nt README.md
-
-# Fix defaults file location
 sed -i 's|/default/|/sysconfig/|' earlyoom.service.in
-
-# remove calls to systemctl in install
 sed -e '/systemctl/d' -i Makefile
-
-%if %{with tests}
-# fix version test
-sed -i 's|stderrContains: "earlyoom v",|stderrContains: "earlyoom %{version}",|' testsuite_cli_test.go
-%endif
 
 %build
 CFLAGS='%{?build_cflags}%{!?build_cflags:%optflags} -DVERSION=\"%{version}\" -std=gnu99'
@@ -67,7 +55,9 @@ LDFLAGS="-lrt ${RPM_LD_FLAGS}"
 %make_build CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" PREFIX=%{_prefix}
 
 %check
+test %{SOURCE2} -nt README.md
 %if %{with tests}
+sed -i 's|stderrContains: "earlyoom v",|stderrContains: "earlyoom %{version}",|' testsuite_cli_test.go
 %make_build test
 %endif
 

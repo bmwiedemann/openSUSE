@@ -168,4 +168,16 @@
     <comment>- Removed -p flag from configuration (ineffective for systemd unit).</comment>
     <requestid>1169160</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0ff3928eb5fde48124da47f0e0042161</srcmd5>
+    <version>1.8.2</version>
+    <time>1715615861</time>
+    <user>anag+factory</user>
+    <comment>- Manual optimizations in spec-file.
+- Updated to 1.8.2
+  * Changed file earlyoom.1 (MANPAGE.md -s -t man &gt; earlyoom.1).
+  * https://github.com/rfjakob/earlyoom#changelog
+  * Fixed crash with -p flag in config and IPAddressDeny syntax.</comment>
+    <requestid>1173527</requestid>
+  </revision>
 </revisionlist>
