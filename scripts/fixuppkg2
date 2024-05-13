@@ -1,0 +1,7 @@
+#!/bin/sh
+# in case new packages did not get a git tree
+pkg=$1
+[ -n "$pkg" ] || exit 1
+( cd packages/*/$pkg && git init)
+grep "\"package\":\"$pkg\"" /home/opensuserabbit/dumprabbit.json | scripts/rabbithandle-single.py
+( cd packages/*/$pkg && test -e .git && git remote add origin https://code.opensuse.org/package/$pkg && git push --force --set-upstream origin master )
