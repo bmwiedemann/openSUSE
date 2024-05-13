@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat May 11 17:41:56 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.84
+  Bugfix release
+  * There was a bug in v1.83 making you unable to play-test (jam)
+    samples at all while the pattern editor was hidden.
+
+-------------------------------------------------------------------
+Sat May 11 09:25:43 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.83
+  * Now you cannot edit pattern notes/data while the pattern editor
+    is not visible. This further prevents accidental song edits.
+  * While in extended pattern editor mode, show a status bar with
+    global volume, pattern edit status (to see if you are editing),
+    and time elapsed
+  * It was not possible to issue a Note Insert (Insert key) or Line
+    Insert (Shift+Insert) on some keyboards. Added extra
+    keybindings:
+    + Ctrl+Return = Insert Note (same as Insert)
+    + Ctrl+Shift+Return = Insert Line (same as Shift+Insert)
+  * Updated the Keybindings help text to reflect the extra
+    keybindings
+
+-------------------------------------------------------------------
 Fri Apr 12 18:14:27 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.82
