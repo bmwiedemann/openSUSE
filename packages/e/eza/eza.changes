@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 13 06:20:40 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.5:
+  * Correct command for latest tag in deb-package.sh
+  * Add how to find man pages in terminal and online. Partly fixes #967
+  * Correct heading levels in markdown
+  * Move heading out of collapsed section
+  * Add some keywords for benefit of ctrl-f
+  * Return to original commit at the end of deb-package.sh
+  * Add optional tag argument to deb-package.sh
+
+-------------------------------------------------------------------
 Thu May  2 07:07:02 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.14:
