@@ -309,4 +309,18 @@
     <comment>- Make apptainer definition templates version dependent. (forwarded request 1160482 from eeich)</comment>
     <requestid>1160483</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>e1349770e4b9828275db06ba3dcb9792</srcmd5>
+    <version>1.3.0</version>
+    <time>1715615923</time>
+    <user>anag+factory</user>
+    <comment>- Make sure, digest values handled by the Go library
+  github.com/opencontainers/go-digest and used throughout the
+  Go-implemented containers ecosystem are always validated. This
+  prevents attackers from triggering unexpected authenticated
+  registry accesses.
+  * Bump-github.com-containers-image-v5-from-5.30.0-to-5.30.1.patch
+    (CVE-2024-3727, bsc#1224114).</comment>
+    <requestid>1173668</requestid>
+  </revision>
 </revisionlist>
