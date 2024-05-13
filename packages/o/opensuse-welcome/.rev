@@ -111,4 +111,17 @@
     <comment></comment>
     <requestid>1160706</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e5cd73fe0e385b0aaf3d5e87b4e62eca</srcmd5>
+    <version>0.1.9+git.55.08b0379</version>
+    <time>1715615822</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.1.9+git.55.08b0379:
+  * Update README.md
+  * Refresh README with build instructions
+  * adding donate button to allow donations to the Geeko Foundation
+  * Translated using Weblate (Macedonian)
+  * Translated using Weblate (Russian) (forwarded request 1172926 from lkocman)</comment>
+    <requestid>1173453</requestid>
+  </revision>
 </revisionlist>

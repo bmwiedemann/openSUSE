@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 09 11:02:49 UTC 2024 - lubos.kocman@suse.com
+
+- Update to version 0.1.9+git.55.08b0379:
+  * Update README.md
+  * Refresh README with build instructions
+  * adding donate button to allow donations to the Geeko Foundation
+  * Translated using Weblate (Macedonian)
+  * Translated using Weblate (Russian)
+
+-------------------------------------------------------------------
 Thu Mar 21 15:17:26 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using
