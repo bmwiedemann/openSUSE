@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  8 06:37:08 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not use pytest for the testsuite, switch to %pyunittest. 
+
+-------------------------------------------------------------------
 Wed Aug 16 02:47:15 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch use-correct-assertions.patch:

@@ -116,4 +116,12 @@
 - Switch to pyproject macros.</comment>
     <requestid>1104096</requestid>
   </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>8e76d2193c75373755eb1ee72c335166</srcmd5>
+    <version>2.0.1</version>
+    <time>1715615817</time>
+    <user>anag+factory</user>
+    <comment>- Do not use pytest for the testsuite, switch to %pyunittest.</comment>
+    <requestid>1172633</requestid>
+  </revision>
 </revisionlist>

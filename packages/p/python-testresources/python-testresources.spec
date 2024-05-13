@@ -1,7 +1,7 @@
 #
 # spec file for package python-testresources
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ Patch1:         use-correct-assertions.patch
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testtools}
 BuildRequires:  %{python_module wheel}
@@ -55,7 +54,7 @@ of resources by test cases.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pyunittest
 
 %files %{python_files}
 %license BSD Apache-2.0 COPYING
