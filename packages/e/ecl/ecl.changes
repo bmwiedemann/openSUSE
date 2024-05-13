@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Fri May 10 11:58:43 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to v24.5.10
+
+-------------------------------------------------------------------
+Sat Sep  9 10:14:26 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to v23.9.9  
+
+-------------------------------------------------------------------
+Wed Dec 21 21:39:29 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- Disable LTO on Tumbleweed as it breaks at least 'ecl -compile' 
+
+-------------------------------------------------------------------
+Mon Feb 15 06:39:13 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v21.2.1
+
+-------------------------------------------------------------------
+Thu Jul 16 07:35:35 UTC 2020 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Package PDF manual
+
+-------------------------------------------------------------------
+Sat Jul  4 12:04:54 UTC 2020 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v20.4.24
+
+-------------------------------------------------------------------
+Sun Jan 12 01:47:30 UTC 2020 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial commit with v16.1.3

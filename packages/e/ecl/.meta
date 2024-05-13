@@ -1,0 +1,8 @@
+<package name="ecl" project="openSUSE:Factory">
+  <title>Embeddable Common-Lisp</title>
+  <description>ECL (Embeddable Common-Lisp) is an interpreter of the Common-Lisp language as described in the X3J13 Ansi specification, featuring CLOS (Common-Lisp Object System), conditions, loops, etc, plus a translator to C, which can produce standalone executables.
+
+ECL supports the operating systems Linux, FreeBSD, NetBSD, OpenBSD, OS X, Solaris and Windows, running on top of the Intel, Sparc, Alpha, PowerPC and ARM processors.</description>
+  <devel project="devel:languages:misc" package="ecl"/>
+  <url>https://common-lisp.net/project/ecl/</url>
+</package>
