@@ -42,6 +42,7 @@ Source5:        Leap.def
 Source20:       %{name}-rpmlintrc
 Source21:       vendor.tar.gz
 Patch1:         Remove-signatures-from-Docker-images.patch
+Patch100:       Bump-github.com-containers-image-v5-from-5.30.0-to-5.30.1.patch
 BuildRequires:  cryptsetup
 BuildRequires:  fdupes
 BuildRequires:  gcc
