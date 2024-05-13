@@ -1,47 +1,53 @@
 -------------------------------------------------------------------
-Fri Feb 16 02:32:50 UTC 2024 - Илья Индиго <13ilya@gmail.com>
+Sun May 12 20:17:52 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Updated to dosbox-staging 0.81.1
+  * https://dosbox-staging.github.io/releases/release-notes/0.81.1
+
+-------------------------------------------------------------------
+Fri Feb 16 02:32:50 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Changed file dosbox-staging-config.patch.
 
 -------------------------------------------------------------------
-Wed Feb 14 12:14:32 UTC 2024 - Илья Индиго <13ilya@gmail.com>
+Wed Feb 14 12:14:32 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Updated to dosbox-staging 0.81.0
   * Changed files dosbox-staging-config.patch and dosbox-staging-name.patch.
   * Added python3 >= 3.7 and pkgconfig(zlib-ng) dependencies.
-  * https://dosbox-staging.github.io/releases/release-notes/0.81.0/
+  * https://dosbox-staging.github.io/releases/release-notes/0.81.0
 
 -------------------------------------------------------------------
-Sat Jan  7 10:59:45 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+Sat Jan  7 10:59:45 UTC 2023 - Илья Индиго <ilya@ilya.top>
 
 - Updated to dosbox-staging 0.80.1
   * Replaced dosbox-staging-0.80.0-config.patch by dosbox-staging-config.patch.
   * Replaced dosbox-staging-0.80.0-name.patch by dosbox-staging-name.patch.
   * Added pkgconfig(gl) dependencies.
   * Removed Provides/Obsoletes instructions for dosbox-translations subpackage.
-  * https://dosbox-staging.github.io/releases/release-notes/0.80.1/
+  * https://dosbox-staging.github.io/releases/release-notes/0.80.1
 
 -------------------------------------------------------------------
-Wed Jan  4 06:57:54 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+Wed Jan  4 06:57:54 UTC 2023 - Илья Индиго <ilya@ilya.top>
 
 - Updated to dosbox-staging 0.80.0
   * Replaced dosbox-staging-0.79.1-config.patch by dosbox-staging-0.80.0-config.patch.
   * Replaced dosbox-staging-0.79.1-name.patch by dosbox-staging-0.80.0-name.patch.
   * Added pkgconfig(SDL2_image), pkgconfig(xi) dependencies.
-  * https://dosbox-staging.github.io/releases/release-notes/0.80.0/
+  * https://dosbox-staging.github.io/releases/release-notes/0.80.0
 
 -------------------------------------------------------------------
-Mon Oct 24 07:11:24 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+Mon Oct 24 07:11:24 UTC 2022 - Илья Индиго <ilya@ilya.top>
 
 - Updated pkgconfig(slirp) >= 4.7.0 dependency.
 
 -------------------------------------------------------------------
-Sat Oct 22 09:28:32 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+Sat Oct 22 09:28:32 UTC 2022 - Илья Индиго <ilya@ilya.top>
 
 - Added pkgconfig(speexdsp) dependency.
 
 -------------------------------------------------------------------
-Sat Oct 15 23:12:46 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+Sat Oct 15 23:12:46 UTC 2022 - Илья Индиго <ilya@ilya.top>
 
 - Updated to dosbox-staging 0.79.1
   * Replaced dosbox-staging-0.78.1-config.patch by dosbox-staging-0.79.1-config.patch.
@@ -49,28 +55,28 @@ Sat Oct 15 23:12:46 UTC 2022 - Илья Индиго <ilya@ilya.cf>
   * Removed dosbox-translations subpackage and added Provides/Obsoletes instructions.
   * Added fdupes, pkgconfig(iir), pkgconfig(slirp) dependencies.
   * Removed irrelevant instructions and enabled fluidsynth and mt32emu for Leap.
-  * https://dosbox-staging.github.io/releases/release-notes/0.79.0/
-  * https://dosbox-staging.github.io/releases/release-notes/0.79.1/
+  * https://dosbox-staging.github.io/releases/release-notes/0.79.0
+  * https://dosbox-staging.github.io/releases/release-notes/0.79.1
 
 -------------------------------------------------------------------
-Tue May 24 15:14:09 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+Tue May 24 15:14:09 UTC 2022 - Илья Индиго <ilya@ilya.top>
 
 - Updated dosbox-staging-0.78.1-config.patch.
 - Updated dosbox-staging-0.78.1-name.patch.
 
 -------------------------------------------------------------------
-Sat May 21 13:23:30 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+Sat May 21 13:23:30 UTC 2022 - Илья Индиго <ilya@ilya.top>
 
 - Updated to dosbox-staging 0.78.1
   * Replaced dosbox-staging-0.77.1-config.patch by dosbox-staging-0.78.1-config.patch.
   * Replaced dosbox-staging-0.77.1-name.patch by dosbox-staging-0.78.1-name.patch.
   * Added BuildRequires: pkgconfig(gmock) dependency.
   * Disabled fluidsynth and mt32emu dependency for Leap.
-  * https://dosbox-staging.github.io/releases/release-notes/0.78.0/
-  * https://dosbox-staging.github.io/releases/release-notes/0.78.1/
+  * https://dosbox-staging.github.io/releases/release-notes/0.78.0
+  * https://dosbox-staging.github.io/releases/release-notes/0.78.1
 
 -------------------------------------------------------------------
-Sun Oct  3 17:48:00 UTC 2021 - Илья Индиго <ilya@ilya.cf>
+Sun Oct  3 17:48:00 UTC 2021 - Илья Индиго <ilya@ilya.top>
 
 - Updated to dosbox-staging 0.77.1
   * Removed old patches dosbox-0.71-manpage.diff dosbox-0.74-3-mt32-patch.diff.
@@ -80,21 +86,21 @@ Sun Oct  3 17:48:00 UTC 2021 - Илья Индиго <ilya@ilya.cf>
   * Addad translations subpackage.
   * Disabled "gtest soft_limiter" test for 32-bit architectures and Leap.
   * Added support: Opus, FLAC, MT32, GM, GUS, Raw mouse input and more.
-  * https://dosbox-staging.github.io/releases/release-notes/0.77.1/
+  * https://dosbox-staging.github.io/releases/release-notes/0.77.1
 
 -------------------------------------------------------------------
-Fri Apr  9 12:51:28 UTC 2021 - Илья Индиго <ilya@ilya.cf>
+Fri Apr  9 12:51:28 UTC 2021 - Илья Индиго <ilya@ilya.top>
 
 - Used pkgconfig everywhere and removed BuildRequires: Mesa-devel.
 - Refresh CONFIG-midi-mt32-gm file.
 
 -------------------------------------------------------------------
-Thu Mar 18 13:28:47 UTC 2021 - Илья Индиго <ilya@ilya.cf>
+Thu Mar 18 13:28:47 UTC 2021 - Илья Индиго <ilya@ilya.top>
 
 - Remove Roland MT-32 support for openSUSE Leap 15.3.
 
 -------------------------------------------------------------------
-Mon Nov  2 17:50:22 UTC 2020 - Илья Индиго <ilya@ilya.cf>
+Mon Nov  2 17:50:22 UTC 2020 - Илья Индиго <ilya@ilya.top>
 
 - Refresh spec-file via spec-cleaner and manual optimizations.
 - Add patch dosbox-0.74-3-mt32-patch.diff for Roland MT-32 support.

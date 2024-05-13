@@ -17,7 +17,7 @@
 
 
 Name:           dosbox
-Version:        0.81.0
+Version:        0.81.1
 Release:        0
 Summary:        DOS/x86 emulator to run old DOS games
 License:        GPL-2.0-or-later

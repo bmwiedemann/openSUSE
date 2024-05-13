@@ -374,4 +374,13 @@
     <comment>- Changed file dosbox-staging-config.patch.</comment>
     <requestid>1146987</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>31cf578df465764772007e72db6256c2</srcmd5>
+    <version>0.81.1</version>
+    <time>1715615865</time>
+    <user>anag+factory</user>
+    <comment>- Updated to dosbox-staging 0.81.1
+  * https://dosbox-staging.github.io/releases/release-notes/0.81.1</comment>
+    <requestid>1173532</requestid>
+  </revision>
 </revisionlist>
