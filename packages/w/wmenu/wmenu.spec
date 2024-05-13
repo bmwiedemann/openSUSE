@@ -17,7 +17,7 @@
 
 
 Name:           wmenu
-Version:        0.1.7
+Version:        0.1.8
 Release:        0
 Summary:        A dynamic menu for Sway and wlroots-based Wayland compositors
 License:        MIT
@@ -55,6 +55,7 @@ export CFLAGS="%{optflags}"
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
+%{_bindir}/%{name}-run
 %{_mandir}/man1/%{name}.1.gz
 
 %changelog

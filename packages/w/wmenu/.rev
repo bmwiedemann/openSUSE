@@ -23,4 +23,16 @@
     <comment></comment>
     <requestid>1158721</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b027c22731976a90486b861d559bfe5e</srcmd5>
+    <version>0.1.8</version>
+    <time>1715615872</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.1.8:
+  * Introduces a new wmenu-run executable which implements
+    support for the XDG activation protocol.
+  * Fixes some bugs introduced in the last release.
+</comment>
+    <requestid>1173535</requestid>
+  </revision>
 </revisionlist>
