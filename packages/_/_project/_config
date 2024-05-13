@@ -43,6 +43,7 @@ RepoType: rpm-md:sha512:filelists-ext
   Patterntype: none
   Prefer: openSUSE-release-ftp
   Support: release-compare
+  Required: containment-tik-img-to-rpm
 # BuildFlags: obsgendiff
 %endif
 
