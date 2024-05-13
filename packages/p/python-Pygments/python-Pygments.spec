@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pygments
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Pygments
-Version:        2.17.2
+Version:        2.18.0
 Release:        0
 Summary:        A syntax highlighting package written in Python
 License:        BSD-2-Clause
@@ -35,21 +35,19 @@ Source:         https://files.pythonhosted.org/packages/source/P/Pygments/pygmen
 # PATCH-FIX-UPSTREAM skip-wcag-contrast-ratio.patch gh#pygments/pygments!2564 mcepl@suse.com
 # Don't make wcag-contrast-ratio mandatory for testing
 Patch0:         skip-wcag-contrast-ratio.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-# Preferred for plugin loading, see https://pygments.org/docs/plugins/
-Requires:       (python-importlib-metadata if python-base < 3.8)
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 Provides:       python-pygments = %{version}
 Obsoletes:      python-pygments < %{version}
@@ -70,6 +68,8 @@ source code. Highlights are:
 
 %prep
 %autosetup -n pygments-%{version} -p1
+# Remove unneeded executable bit
+chmod -x pygments/formatters/_mapping.py pygments/lexers/gsql.py
 
 %build
 %pyproject_wheel

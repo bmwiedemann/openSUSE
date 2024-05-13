@@ -527,4 +527,41 @@
   * On Windows, add a new installation extra (``windows-</comment>
     <requestid>1129077</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e29275667afaa60ee7c30582040ae60b</srcmd5>
+    <version>2.18.0</version>
+    <time>1715615815</time>
+    <user>anag+factory</user>
+    <comment>- update to version 2.18.0:
+  * New lexers:
+    + Janet (#2557)
+    + Lean 4 (#2618, #2626)
+    + Luau (#2605)
+    + Mojo (#2691, #2515)
+    + org-mode (#2628, #2636)
+    + Promela (#2620)
+    + Soong / ``Android.bp`` (#2659)
+    + Tact (#2571)
+    + Typst (#2596)
+  * Updated lexers:
+    + Awk: recognize ternary operator (#2687)
+    + Bash: add ``openrc`` alias (#2599, #2371)
+    + Coq: add keywords, lex more vernacular command arguments,
+      produce fewer tokens on heading comments (#2678)
+    + DNS zone files: Fix comment parsing (#2595)
+    + Hy: Support unicode literals (#1126)
+    + Inform6: Update to Inform 6.42 (#2644)
+    + lean: Fix name handling (#2614)
+    + Logtalk: add ``uninstantiation`` keyword and recognize escape
+      sequences (#2619)
+    + Macaulay2: Update to 1.23 (#2655)
+    + Python: fix highlighting of soft keywords before ``None``/
+      ``True``/``False``
+    + reStructuredText: use ``Token.Comment`` for comments instead
+      of ``Comment.Preproc`` (#2598)
+    + Rust: highlight ``:``, ``::`` and ``-&gt;`` as ``Punctuation``
+      and whitespace as ``Whitespace``, instead of ``Text`` in both
+      cases (#2631)</comment>
+    <requestid>1172327</requestid>
+  </revision>
 </revisionlist>
