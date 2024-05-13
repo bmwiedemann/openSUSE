@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun May  5 20:27:36 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 1.2.1
+
+  * Shipping a fix for a stupid release bug 
+
+-------------------------------------------------------------------
+Sun May  5 15:00:29 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 1.2
+
+  * Manual: Updated text and dutch translations
+  * Manual: Updated screenshots for all languages
+  * Fix #211: Be more robust if no .git file is there
+  * Fix cmake warnings
+  * Substancial code cleanups
+  * Fix reproducable builds
+  * Fix saving of XRechnung files
+  * Added a template for XRechnung version 3.0.1
+  * Fix #218: Add a image mask for reportlab
+  * Fix tests
+  * Add checkbox to mark document types to get XRechnung support
+  * Add a feedback link to the system overview page
+
+-------------------------------------------------------------------
 Mon Mar 11 23:43:28 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Build without Akonadi integration for repositories that now
