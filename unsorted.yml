@@ -3827,8 +3827,6 @@ unsorted:
   - ext4magic 
   - extension-manager 
   - extension-manager-lang 
-  - extra-cmake-modules 
-  - extra-cmake-modules-doc 
   - extra166y 
   - extra166y-javadoc 
   - extrace 
@@ -8265,27 +8263,27 @@ unsorted:
   - hdf5-openmpi5 
   - hdf5-openmpi5-devel 
   - hdf5-openmpi5-devel-static 
-  - hdf5_1_12_2-gnu-hpc 
-  - hdf5_1_12_2-gnu-hpc-devel 
-  - hdf5_1_12_2-gnu-hpc-devel-static 
-  - hdf5_1_12_2-gnu-hpc-module 
-  - hdf5_1_12_2-gnu-mpich-hpc 
-  - hdf5_1_12_2-gnu-mpich-hpc-devel 
-  - hdf5_1_12_2-gnu-mpich-hpc-devel-static 
-  - hdf5_1_12_2-gnu-mpich-hpc-module 
-  - hdf5_1_12_2-gnu-mvapich2-hpc 
-  - hdf5_1_12_2-gnu-mvapich2-hpc-devel 
-  - hdf5_1_12_2-gnu-mvapich2-hpc-devel-static 
-  - hdf5_1_12_2-gnu-mvapich2-hpc-module 
-  - hdf5_1_12_2-gnu-openmpi4-hpc 
-  - hdf5_1_12_2-gnu-openmpi4-hpc-devel 
-  - hdf5_1_12_2-gnu-openmpi4-hpc-devel-static 
-  - hdf5_1_12_2-gnu-openmpi4-hpc-module 
-  - hdf5_1_12_2-gnu-openmpi5-hpc 
-  - hdf5_1_12_2-gnu-openmpi5-hpc-devel 
-  - hdf5_1_12_2-gnu-openmpi5-hpc-devel-static 
-  - hdf5_1_12_2-gnu-openmpi5-hpc-module 
-  - hdf5_1_12_2-hpc-examples 
+  - hdf5_1_12_3-gnu-hpc 
+  - hdf5_1_12_3-gnu-hpc-devel 
+  - hdf5_1_12_3-gnu-hpc-devel-static 
+  - hdf5_1_12_3-gnu-hpc-module 
+  - hdf5_1_12_3-gnu-mpich-hpc 
+  - hdf5_1_12_3-gnu-mpich-hpc-devel 
+  - hdf5_1_12_3-gnu-mpich-hpc-devel-static 
+  - hdf5_1_12_3-gnu-mpich-hpc-module 
+  - hdf5_1_12_3-gnu-mvapich2-hpc 
+  - hdf5_1_12_3-gnu-mvapich2-hpc-devel 
+  - hdf5_1_12_3-gnu-mvapich2-hpc-devel-static 
+  - hdf5_1_12_3-gnu-mvapich2-hpc-module 
+  - hdf5_1_12_3-gnu-openmpi4-hpc 
+  - hdf5_1_12_3-gnu-openmpi4-hpc-devel 
+  - hdf5_1_12_3-gnu-openmpi4-hpc-devel-static 
+  - hdf5_1_12_3-gnu-openmpi4-hpc-module 
+  - hdf5_1_12_3-gnu-openmpi5-hpc 
+  - hdf5_1_12_3-gnu-openmpi5-hpc-devel 
+  - hdf5_1_12_3-gnu-openmpi5-hpc-devel-static 
+  - hdf5_1_12_3-gnu-openmpi5-hpc-module 
+  - hdf5_1_12_3-hpc-examples 
   - hdhomerun_config 
   - hdhomerun_config_gui 
   - hdjmod-kmp-default 
@@ -11407,6 +11405,7 @@ unsorted:
   - libXfixes-devel-32bit 
   - libXfixes3-32bit 
   - libXfont-devel 
+  - libXfont1 
   - libXfont2-2-32bit 
   - libXfont2-devel 
   - libXfont2-devel-32bit 
@@ -11421,8 +11420,6 @@ unsorted:
   - libXinerama-devel 
   - libXinerama-devel-32bit 
   - libXinerama1-32bit 
-  - libXiterm-devel 
-  - libXiterm1 
   - libXm4 
   - libXmu-devel 
   - libXmu-devel-32bit 
@@ -13506,11 +13503,11 @@ unsorted:
   - libhdf5-gnu-mvapich2-hpc 
   - libhdf5-gnu-openmpi4-hpc 
   - libhdf5-gnu-openmpi5-hpc 
-  - libhdf5_1_12_2-gnu-hpc 
-  - libhdf5_1_12_2-gnu-mpich-hpc 
-  - libhdf5_1_12_2-gnu-mvapich2-hpc 
-  - libhdf5_1_12_2-gnu-openmpi4-hpc 
-  - libhdf5_1_12_2-gnu-openmpi5-hpc 
+  - libhdf5_1_12_3-gnu-hpc 
+  - libhdf5_1_12_3-gnu-mpich-hpc 
+  - libhdf5_1_12_3-gnu-mvapich2-hpc 
+  - libhdf5_1_12_3-gnu-openmpi4-hpc 
+  - libhdf5_1_12_3-gnu-openmpi5-hpc 
   - libhdf5_cpp-gnu-hpc 
   - libhdf5_cpp-gnu-mpich-hpc 
   - libhdf5_cpp-gnu-mvapich2-hpc 
@@ -13520,11 +13517,11 @@ unsorted:
   - libhdf5_cpp200-mvapich2 
   - libhdf5_cpp200-openmpi4 
   - libhdf5_cpp200-openmpi5 
-  - libhdf5_cpp_1_12_2-gnu-hpc 
-  - libhdf5_cpp_1_12_2-gnu-mpich-hpc 
-  - libhdf5_cpp_1_12_2-gnu-mvapich2-hpc 
-  - libhdf5_cpp_1_12_2-gnu-openmpi4-hpc 
-  - libhdf5_cpp_1_12_2-gnu-openmpi5-hpc 
+  - libhdf5_cpp_1_12_3-gnu-hpc 
+  - libhdf5_cpp_1_12_3-gnu-mpich-hpc 
+  - libhdf5_cpp_1_12_3-gnu-mvapich2-hpc 
+  - libhdf5_cpp_1_12_3-gnu-openmpi4-hpc 
+  - libhdf5_cpp_1_12_3-gnu-openmpi5-hpc 
   - libhdf5_fortran-gnu-hpc 
   - libhdf5_fortran-gnu-mpich-hpc 
   - libhdf5_fortran-gnu-mvapich2-hpc 
@@ -13534,11 +13531,11 @@ unsorted:
   - libhdf5_fortran200-mvapich2 
   - libhdf5_fortran200-openmpi4 
   - libhdf5_fortran200-openmpi5 
-  - libhdf5_fortran_1_12_2-gnu-hpc 
-  - libhdf5_fortran_1_12_2-gnu-mpich-hpc 
-  - libhdf5_fortran_1_12_2-gnu-mvapich2-hpc 
-  - libhdf5_fortran_1_12_2-gnu-openmpi4-hpc 
-  - libhdf5_fortran_1_12_2-gnu-openmpi5-hpc 
+  - libhdf5_fortran_1_12_3-gnu-hpc 
+  - libhdf5_fortran_1_12_3-gnu-mpich-hpc 
+  - libhdf5_fortran_1_12_3-gnu-mvapich2-hpc 
+  - libhdf5_fortran_1_12_3-gnu-openmpi4-hpc 
+  - libhdf5_fortran_1_12_3-gnu-openmpi5-hpc 
   - libhdf5_hl-gnu-hpc 
   - libhdf5_hl-gnu-mpich-hpc 
   - libhdf5_hl-gnu-mvapich2-hpc 
@@ -13548,11 +13545,11 @@ unsorted:
   - libhdf5_hl200-mvapich2 
   - libhdf5_hl200-openmpi4 
   - libhdf5_hl200-openmpi5 
-  - libhdf5_hl_1_12_2-gnu-hpc 
-  - libhdf5_hl_1_12_2-gnu-mpich-hpc 
-  - libhdf5_hl_1_12_2-gnu-mvapich2-hpc 
-  - libhdf5_hl_1_12_2-gnu-openmpi4-hpc 
-  - libhdf5_hl_1_12_2-gnu-openmpi5-hpc 
+  - libhdf5_hl_1_12_3-gnu-hpc 
+  - libhdf5_hl_1_12_3-gnu-mpich-hpc 
+  - libhdf5_hl_1_12_3-gnu-mvapich2-hpc 
+  - libhdf5_hl_1_12_3-gnu-openmpi4-hpc 
+  - libhdf5_hl_1_12_3-gnu-openmpi5-hpc 
   - libhdf5_hl_cpp-gnu-hpc 
   - libhdf5_hl_cpp-gnu-mpich-hpc 
   - libhdf5_hl_cpp-gnu-mvapich2-hpc 
@@ -13562,11 +13559,11 @@ unsorted:
   - libhdf5_hl_cpp200-mvapich2 
   - libhdf5_hl_cpp200-openmpi4 
   - libhdf5_hl_cpp200-openmpi5 
-  - libhdf5_hl_cpp_1_12_2-gnu-hpc 
-  - libhdf5_hl_cpp_1_12_2-gnu-mpich-hpc 
-  - libhdf5_hl_cpp_1_12_2-gnu-mvapich2-hpc 
-  - libhdf5_hl_cpp_1_12_2-gnu-openmpi4-hpc 
-  - libhdf5_hl_cpp_1_12_2-gnu-openmpi5-hpc 
+  - libhdf5_hl_cpp_1_12_3-gnu-hpc 
+  - libhdf5_hl_cpp_1_12_3-gnu-mpich-hpc 
+  - libhdf5_hl_cpp_1_12_3-gnu-mvapich2-hpc 
+  - libhdf5_hl_cpp_1_12_3-gnu-openmpi4-hpc 
+  - libhdf5_hl_cpp_1_12_3-gnu-openmpi5-hpc 
   - libhdf5_hl_fortran-gnu-hpc 
   - libhdf5_hl_fortran-gnu-mpich-hpc 
   - libhdf5_hl_fortran-gnu-mvapich2-hpc 
@@ -13576,11 +13573,11 @@ unsorted:
   - libhdf5hl_fortran200-mvapich2 
   - libhdf5hl_fortran200-openmpi4 
   - libhdf5hl_fortran200-openmpi5 
-  - libhdf5hl_fortran_1_12_2-gnu-hpc 
-  - libhdf5hl_fortran_1_12_2-gnu-mpich-hpc 
-  - libhdf5hl_fortran_1_12_2-gnu-mvapich2-hpc 
-  - libhdf5hl_fortran_1_12_2-gnu-openmpi4-hpc 
-  - libhdf5hl_fortran_1_12_2-gnu-openmpi5-hpc 
+  - libhdf5hl_fortran_1_12_3-gnu-hpc 
+  - libhdf5hl_fortran_1_12_3-gnu-mpich-hpc 
+  - libhdf5hl_fortran_1_12_3-gnu-mvapich2-hpc 
+  - libhdf5hl_fortran_1_12_3-gnu-openmpi4-hpc 
+  - libhdf5hl_fortran_1_12_3-gnu-openmpi5-hpc 
   - libhdhomerun-devel 
   - libhdhomerun2 
   - libhealpix_cxx3 
@@ -13782,7 +13779,6 @@ unsorted:
   - libispcrt1 
   - libite-devel 
   - libite5 
-  - libiterm-devel 
   - libitm1-32bit 
   - libitm1-gcc12 
   - libitm1-gcc12-32bit 
@@ -15804,7 +15800,7 @@ unsorted:
   - libscamperctrl-devel 
   - libscamperctrl2 
   - libscamperfile-devel 
-  - libscamperfile8 
+  - libscamperfile9 
   - libscca-devel 
   - libscca-tools 
   - libscca1 
@@ -20267,7 +20263,6 @@ unsorted:
   - openssh-cavs 
   - openssh-fips 
   - openssh-helpers 
-  - openssh-server-config-rootlogin 
   - openssl-1_0_0 
   - openssl-1_0_0-cavs 
   - openssl-1_0_0-doc 
@@ -22464,6 +22459,8 @@ unsorted:
   - pidgin-plugin-xmpp-receipts 
   - piglit 
   - pijul 
+  - pika-backup 
+  - pika-backup-lang 
   - pilot 
   - pimcommon-devel 
   - pin 
@@ -25583,7 +25580,6 @@ unsorted:
   - python310-ligotimegps 
   - python310-limnoria 
   - python310-line_profiler 
-  - python310-linecache2 
   - python310-linetable 
   - python310-lineup-widget 
   - python310-link-traits 
@@ -29103,7 +29099,6 @@ unsorted:
   - python311-ligotimegps 
   - python311-limnoria 
   - python311-line_profiler 
-  - python311-linecache2 
   - python311-linetable 
   - python311-lineup-widget 
   - python311-link-traits 
@@ -32631,7 +32626,6 @@ unsorted:
   - python312-ligotimegps 
   - python312-limnoria 
   - python312-line_profiler 
-  - python312-linecache2 
   - python312-linetable 
   - python312-lineup-widget 
   - python312-link-traits 
@@ -36812,6 +36806,9 @@ unsorted:
   - sxhkd 
   - sxiv 
   - syft 
+  - syft-bash-completion 
+  - syft-fish-completion 
+  - syft-zsh-completion 
   - symbols-only-nerd-fonts 
   - symmetrica-devel 
   - sympol 
@@ -46277,7 +46274,6 @@ unsorted:
   - texworks 
   - texworks-plugin-lua 
   - texworks-plugin-python 
-  - tflint 
   - tftpboot-installation-common 
   - tftpboot-installation-openSUSE-Tumbleweed-x86_64 
   - tgt 
@@ -47916,7 +47912,6 @@ unsorted:
   - xinput 
   - xiphos 
   - xiphos-lang 
-  - xiterm 
   - xjadeo 
   - xkb-switch 
   - xkbcomp-devel 
