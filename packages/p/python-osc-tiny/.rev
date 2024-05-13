@@ -276,4 +276,12 @@
   * Removed obsolete parser instance to allow pickling of Osc instances</comment>
     <requestid>1161091</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ab822c080ff4dc853c53224a0d482dc4</srcmd5>
+    <version>0.9.0</version>
+    <time>1715615912</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1173655</requestid>
+  </revision>
 </revisionlist>

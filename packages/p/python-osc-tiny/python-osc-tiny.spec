@@ -17,13 +17,14 @@
 
 
 %define skip_python2 1
+%{?sle15allpythons}
 Name:           python-osc-tiny
-Version:        0.8.2
+Version:        0.9.0
 Release:        0
 Summary:        Client API for openSUSE BuildService
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://github.com/crazyscientist/osc-tiny
+URL:            https://github.com/SUSE/osc-tiny
 Source:         https://files.pythonhosted.org/packages/source/o/osc-tiny/osc-tiny-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module lxml}
