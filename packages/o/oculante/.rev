@@ -87,4 +87,21 @@
     <comment></comment>
     <requestid>1170901</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ffc18b5124bc9f0c5ad152458f4e3744</srcmd5>
+    <version>0.8.21</version>
+    <time>1715615867</time>
+    <user>anag+factory</user>
+    <comment>- Enable heif format support
+- Update to version 0.8.21:
+  + Features
+    - Support EXR with single layers (non-rgba)
+  + Chore
+    - update deps and use new HDR support from image
+    - bump rustls version from 0.21.10 to 0.21.12: fix infinite
+      loop (bsc#1223231)
+- Update scripts install and check for test
+</comment>
+    <requestid>1173548</requestid>
+  </revision>
 </revisionlist>

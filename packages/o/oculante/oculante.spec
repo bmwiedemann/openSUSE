@@ -16,8 +16,9 @@
 #
 
 
+%bcond_without test
 Name:           oculante
-Version:        0.8.19
+Version:        0.8.21
 Release:        0
 Summary:        A minimalistic crossplatform image viewer written in rust
 License:        MIT
@@ -28,6 +29,7 @@ BuildRequires:  cargo-packaging
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc >= 13
 BuildRequires:  gtk3-devel
+BuildRequires:  libheif-devel
 BuildRequires:  nasm
 ExclusiveArch:  x86_64 aarch64
 
@@ -40,14 +42,17 @@ tools.
 %autosetup -a1 -p1
 
 %build
-%{cargo_build}
+%{cargo_build} --features 'heif'
 
 %install
-%{cargo_install}
+install -Dpm755 target/release/%{name} -t %{buildroot}%{_bindir}
 install -Dpm644 res/%{name}.png -t %{buildroot}%{_datadir}/pixmaps/
 install -Dpm644 res/%{name}.desktop -t %{buildroot}%{_datadir}/applications
 
 %check
+%if %{with test}
+%{cargo_test} -- --skip=tests::net --skip=bench
+%endif
 
 %files
 %license LICENSE*
@@ -57,4 +62,3 @@ install -Dpm644 res/%{name}.desktop -t %{buildroot}%{_datadir}/applications
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
-
