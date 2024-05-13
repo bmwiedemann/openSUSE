@@ -170,6 +170,7 @@ Patch80:        CVE-2022-48566-compare_digest-more-constant.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  libbz2-devel
+BuildRequires:  libexpat-devel
 BuildRequires:  libffi-devel
 # This is NOT switching off NIS support on SLE < 15,
 # support for NIS used to be in the glibc itself
@@ -345,6 +346,19 @@ cp -p %{SOURCE1} macros.python2
 sed -i -e 's/python2_package_prefix python2/python2_package_prefix python/' macros.python2
 %endif
 
+# Ensure that we're using the system copy of various libraries, rather than
+# copies shipped by upstream in the tarball:
+#   Remove embedded copy of expat:
+rm -r Modules/expat || exit 1
+
+#   Remove embedded copy of libffi:
+for SUBDIR in darwin libffi libffi_arm_wince libffi_msvc libffi_osx ; do
+  rm -r Modules/_ctypes/$SUBDIR || exit 1 ;
+done
+
+#   Remove embedded copy of zlib:
+rm -r Modules/zlib || exit 1
+
 %build
 %define _lto_cflags %{nil}
 # -std=gnu89 option is needed to build with gcc14, bsc#1220970
@@ -363,6 +377,7 @@ touch Parser/asdl* Python/Python-ast.c Include/Python-ast.h
     --docdir=%{_docdir}/python \
     --with-fpectl \
     --with-system-ffi \
+    --with-system-expat \
     --enable-ipv6 \
     --enable-shared \
     --enable-unicode=ucs4
@@ -483,6 +498,8 @@ ln -s python%{python_version}.1.gz %{buildroot}%{_mandir}/man1/python.1.gz
 ########################################
 # install Makefile.pre.in and Makefile.pre
 cp Makefile Makefile.pre.in Makefile.pre %{buildroot}%{_libdir}/python%{python_version}/config/
+
+%clean
 
 %post -n libpython2_7-1_0 -p %{run_ldconfig}
 %postun -n libpython2_7-1_0 -p %{run_ldconfig}

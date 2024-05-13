@@ -4101,4 +4101,15 @@ However, upstream development now focuses on 3.x series.
 </comment>
     <requestid>1169941</requestid>
   </revision>
+  <revision rev="195" vrev="46">
+    <srcmd5>321d69d56b8a63c77e8090e199be24b2</srcmd5>
+    <version>2.7.18</version>
+    <time>1715615819</time>
+    <user>anag+factory</user>
+    <comment>- Switch to using the system libexpat (bsc#1219559,
+  CVE-2023-52425)
+- Make sure to remove all embedded versions of other packages
+  (including expat).</comment>
+    <requestid>1173435</requestid>
+  </revision>
 </revisionlist>
