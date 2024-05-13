@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_dnssd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2009 Dominique Leuenberger, Almere, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,8 @@ URL:            http://0pointer.de/lennart/projects/mod_dnssd/
 Source:         %{_name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE apache2-mod_dnssd-apxs2-prefork.patch
 Patch0:         apache2-mod_dnssd-apxs2-prefork.patch
+# work with apache 2.4
+Patch1:         apache2-mod_dnssd-httpd24.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  apr-devel
@@ -52,9 +54,6 @@ DNS-SD using Avahi.
 %autosetup -p1 -n %{_name}-%{version}
 
 %build
-%if %{apache_branch} >= 204
-sed -i 's/unixd_setup_child/ap_&/' src/mod_dnssd.c
-%endif
 %configure \
 	--disable-lynx
 make %{?_smp_mflags}

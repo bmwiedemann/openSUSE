@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  7 12:01:10 UTC 2024 - pgajdos@suse.com
+
+- fix build with gcc14
+- added patches
+  work with apache 2.4
+  + apache2-mod_dnssd-httpd24.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 11:00:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
