@@ -5,29 +5,29 @@ Subject: Build PIE binaries
 Set lazarus project files so that we produce position
 independent executables.
 
-Index: peazip-9.7.0.src/dev/project_pea.lpi
+Index: peazip-9.8.0.src/dev/project_pea.lpi
 ===================================================================
---- peazip-9.7.0.src.orig/dev/project_pea.lpi
-+++ peazip-9.7.0.src/dev/project_pea.lpi
-@@ -555,6 +555,8 @@
+--- peazip-9.8.0.src.orig/dev/project_pea.lpi
++++ peazip-9.8.0.src/dev/project_pea.lpi
+@@ -560,6 +560,8 @@
          <DebugInfoType Value="dsDwarf3"/>
        </Debugging>
        <Options>
-+        <PassLinkerOptions Value="True"/>
-+        <LinkerOptions Value="-pie"/>
++       <PassLinkerOptions Value="True"/>
++       <LinkerOptions Value="-pie"/>
          <Win32>
            <GraphicApplication Value="True"/>
          </Win32>
-Index: peazip-9.7.0.src/dev/project_peach.lpi
+Index: peazip-9.8.0.src/dev/project_peach.lpi
 ===================================================================
---- peazip-9.7.0.src.orig/dev/project_peach.lpi
-+++ peazip-9.7.0.src/dev/project_peach.lpi
-@@ -1645,6 +1645,8 @@
+--- peazip-9.8.0.src.orig/dev/project_peach.lpi
++++ peazip-9.8.0.src/dev/project_peach.lpi
+@@ -1642,6 +1642,8 @@
          <GenerateDebugInfo Value="False"/>
        </Debugging>
        <Options>
-+        <PassLinkerOptions Value="True"/>
-+        <LinkerOptions Value="-pie"/>
++       <PassLinkerOptions Value="True"/>
++       <LinkerOptions Value="-pie"/>
          <Win32>
            <GraphicApplication Value="True"/>
          </Win32>

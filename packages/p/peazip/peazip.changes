@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon May 13 10:55:46 UTC 2024 - PragmaticLinux <info@pragmaticlinux.com>
+
+- Update to 9.8.0:
+  BACKEND
+  * Pea 1.18
+
+  CODE
+  * Code cleanup
+  * Compiled with Lazarus 3.2, sources are still compatible with Lazarus 2.x line
+  * Various fixes
+    * Fixed directory name sorting which for some widget sets was wrongly displayed in
+      treeview and breadcrumb dropdown menus
+    * Fixed drag and drop extraction failing for some paths (Windows)
+    * Fixed inability to browse symlinked directories on Windows (other systems are
+      immune from the issue)
+
+  FILE MANAGER
+  * Added "Always browse archives in flat view" option switch in main menu > Browse and
+    app's context menu > Navigation
+  * Added Comment, and Info functions to Status bar context menu, to improve its
+    usefulness in providing information to user
+  * Improved direct extraction of archives from context menu
+    * From context menu "Extract to" submenu it is now possible to directly extract all
+      or selected item(s), without further confirmation, to any output path in bookmarks,
+      history or breadcrumb
+    * Extract here links (optionally to smart folder or to new folder) can now extract
+      all or selected items
+      * In the dropdown menu of Extract button are still available "Extract all" entries
+    * Selection and navigation submenus in extraction and archiving screens are now
+      organized in same way of extract here submenu: bookmarks are shown first, history,
+      session history, and breadcrumb are shown in History submenu
+    * Rename dialog now allows to directly switch to Move to dialog (change file path
+      string rather than file name string)
+  * Updated themes
+    * New Mac and Tux themes
+    * Old themes and additional custom themes are still available online, clicking "Check
+      for Themes" button on Themes screen (Windows 10+) The application, which by default
+      follows system colors, can be manually forced to light or dark mode, regardless
+      system mode, creating an empty file named "light" or "dark" in the same path of the
+      executable (not integrated with themes due to technical limitations)
+
+  EXTRACTION and ARCHIVING
+  * Added new command line switches, which can be used both in scripts and for system
+    integration (context menus, SendTo items, .desktop files, Automator scripts)
+    * -ext2neutral directly extracts archives in current path applying the "new folder"
+      policy as defined in PeaZip app (non, new folder, smart new folder, or force new
+      folder)
+    * -ext2downloads, -ext2desktop, -ext2documents directly extract archives in
+      Downloads, Desktop, or Documents path (applying app's new folder policy)
+    * -ext2bookmark(1..8) extract archives in the path of the bookmarked item number 1 to 8
+    * Windows context menu versions of those switches begins with -ext2multi instead of -ext2
+    * Created sample scripts (.bat, .sh), W11 mini-context menu entries, SendTo items,
+      .desktop files and macOS service menus for -ext2downloads, -ext2desktop,
+      -ext2documents switches, in (PeaZip)/res/share/batch directory
+
+-------------------------------------------------------------------
 Thu Feb 15 07:28:15 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 9.7.1:
