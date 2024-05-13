@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon May 13 14:39:07 UTC 2024 - rbrown@suse.com
+
+- Update to version 0.9.2:
+  * Consider AccountsService info as optional
+  * Support migrating existing user local & system time settings
+
+-------------------------------------------------------------------
+Mon May 13 09:35:13 UTC 2024 - rbrown@suse.com
+
+- Update to version 0.9.1:
+  * module-mig: Legacy Aeon: look for a file that will actually be on legacy Aeon installs
+
+-------------------------------------------------------------------
+Mon May 13 09:04:07 UTC 2024 - rbrown@suse.com
+
+- Update to version 0.9.0:
+  * Don't auto-close errors, gives the user time to debug
+  * Introduce prun-opt function, make all other prun calls mandatory to exit cleanly
+
+-------------------------------------------------------------------
 Wed May 08 11:59:22 UTC 2024 - rbrown@suse.com
 
 - Update to version 0.2.2:

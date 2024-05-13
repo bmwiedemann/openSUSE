@@ -17,24 +17,24 @@
 
 
 Name:           tik
-Version:        0.2.2
+Version:        0.9.2
 Release:        0
 Summary:        Transactional Installation Kit
-License:        MIT 
+License:        MIT
 URL:            https://github.com/sysrich/tik
 Source:         %{name}-%{version}.tar.xz
 BuildArch:      noarch
-Requires:       tik-config
-Requires:       zenity
-Requires:       pkexec
 Requires:       coreutils
+Requires:       dbus-1-tools
+Requires:       efibootmgr
 Requires:       grep
+Requires:       pkexec
+Requires:       pv
+Requires:       tik-config
 Requires:       util-linux
 Requires:       util-linux-systemd
 Requires:       xz
-Requires:       dbus-1-tools
-Requires:       pv
-Requires:       efibootmgr
+Requires:       zenity
 
 %description
 A toolkit for deploying Operating System images to UEFI hardware from a USB stick.
@@ -111,4 +111,3 @@ install -D -m 644 usr/lib/tik/modules/post/20-mig %{buildroot}%{_prefix}/lib/tik
 %{_prefix}/lib/tik/modules/post/20-mig
 
 %changelog
-

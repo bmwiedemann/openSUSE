@@ -7,4 +7,21 @@
     <comment>New installer used by Aeon</comment>
     <requestid>1172741</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9c8f0e9091500e89d49600e871b29138</srcmd5>
+    <version>0.9.2</version>
+    <time>1715615927</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.9.2:
+  * Consider AccountsService info as optional
+  * Support migrating existing user local &amp; system time settings
+
+- Update to version 0.9.1:
+  * module-mig: Legacy Aeon: look for a file that will actually be on legacy Aeon installs
+
+- Update to version 0.9.0:
+  * Don't auto-close errors, gives the user time to debug
+  * Introduce prun-opt function, make all other prun calls mandatory to exit cleanly</comment>
+    <requestid>1173698</requestid>
+  </revision>
 </revisionlist>
