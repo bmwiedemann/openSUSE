@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 15 13:51:15 UTC 2024 - rbrown@suse.com
+
+- Update to version 0.9.4:
+  * module-mig: backup nested btrfs subvolumes and groups also
+  * module-mig: Also backup/restore subgid/subuid
+
+-------------------------------------------------------------------
+Tue May 14 13:59:51 UTC 2024 - rbrown@suse.com
+
+- Update to version 0.9.3:
+  * module-mig: chmod copy of AccountsService/users so it can be properly copied and cleaned up
+
+-------------------------------------------------------------------
 Mon May 13 14:39:07 UTC 2024 - rbrown@suse.com
 
 - Update to version 0.9.2:

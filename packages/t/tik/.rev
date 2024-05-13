@@ -24,4 +24,12 @@
   * Introduce prun-opt function, make all other prun calls mandatory to exit cleanly</comment>
     <requestid>1173698</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bad0b4eaff33eaf456bcb1df90593e66</srcmd5>
+    <version>0.9.4</version>
+    <time>1715801372</time>
+    <user>anag+factory</user>
+    <comment>Hi ana! Nothing urgent, bugfixes from the awesome Aeon community</comment>
+    <requestid>1174269</requestid>
+  </revision>
 </revisionlist>
