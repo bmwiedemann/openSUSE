@@ -7842,6 +7842,9 @@ unsorted:
   - grub2-x86_64-efi-extras 
   - grub2-x86_64-xen-extras 
   - grype 
+  - grype-bash-completion 
+  - grype-fish-completion 
+  - grype-zsh-completion 
   - gsasl 
   - gsasl-devel 
   - gsasl-lang 
@@ -11778,7 +11781,7 @@ unsorted:
   - libbacktrace-devel 
   - libbamf3-2 
   - libbandicoot1 
-  - libbaresip12 
+  - libbaresip15 
   - libbarvinok23 
   - libbase-javadoc 
   - libbaseencode-devel 
@@ -15525,7 +15528,7 @@ unsorted:
   - librdmacm-utils 
   - librdmacm1-32bit 
   - librdtk0-0 
-  - libre20 
+  - libre23 
   - libreadline-java 
   - libreadline-java-javadoc 
   - libreadline5 
@@ -36397,6 +36400,8 @@ unsorted:
   - socket_wrapper 
   - sofia-sip 
   - sofia-sip-devel 
+  - softhsm 
+  - softhsm-devel 
   - software-o-o-launcher 
   - solaar 
   - solaar-doc 
