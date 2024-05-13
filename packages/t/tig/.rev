@@ -520,4 +520,12 @@
   * Support editing from the pager and the log (-p) views. (#1243)</comment>
     <requestid>1163968</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>afca9bd7e1f0354df850165512dbcb92</srcmd5>
+    <version>2.5.10</version>
+    <time>1715615889</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1173567</requestid>
+  </revision>
 </revisionlist>

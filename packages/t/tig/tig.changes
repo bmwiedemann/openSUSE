@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May 12 19:01:21 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.5.10:
+  * Fix stat-* coloring file names in tig status instead of just
+    markers (regression in 2.5.9)
+  * Fix keybinding with +[cmd] not triggering view refreshing
+  * Fix reopening the blame view from the main view
+  * Fix editing when stdin is redirected
+  * Make Ctrl-C to kill only the command running in the foreground
+
+-------------------------------------------------------------------
 Mon Apr  1 17:51:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.5.9:
