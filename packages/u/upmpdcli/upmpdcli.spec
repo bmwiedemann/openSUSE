@@ -1,7 +1,7 @@
 #
 # spec file for package upmpdcli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           upmpdcli
-Version:        1.8.6
+Version:        1.8.10
 Release:        0
 Summary:        UPnP AV and OpenHome Media Renderer front-end to MPD, the Music Player Daemon
 License:        GPL-2.0-or-later
@@ -27,6 +27,7 @@ Source1:        https://www.lesbonscomptes.com/upmpdcli/downloads/upmpdcli-%{ver
 Source2:        https://www.lesbonscomptes.com/pages/jf-at-dockes.org.pub#/%{name}.keyring
 Patch0:         harden_upmpdcli.service.patch
 BuildRequires:  gcc-c++
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  group(audio)
@@ -36,7 +37,7 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libmicrohttpd)
 BuildRequires:  pkgconfig(libmpdclient)
 BuildRequires:  pkgconfig(libnpupnp)
-BuildRequires:  pkgconfig(libupnpp) >= 0.24.1
+BuildRequires:  pkgconfig(libupnpp) >= 0.26.0
 Requires:       python3-requests
 Requires(pre):  group(audio)
 Requires(pre):  shadow
@@ -60,11 +61,13 @@ It can also operate as an UPnP/DLNA Media Server to give access to various onlin
 
 %build
 export QMAKE=qmake-qt5
-%configure --enable-confgui
-%make_build
+%meson -Dscctl=true -Dconfgui=true
+%meson_build
 
 %install
-%make_install
+%meson_install
+rm %{buildroot}%{_sysconfdir}/upmpdcli.conf-dist
+
 install -D -m 644 systemd/upmpdcli.service %{buildroot}%{_unitdir}/upmpdcli.service
 mkdir -p %{buildroot}/%{_sbindir}
 ln -s service %{buildroot}/%{_sbindir}/rcupmpdcli
@@ -76,7 +79,6 @@ ln -s service %{buildroot}/%{_sbindir}/rcupmpdcli
 %{_bindir}/scctl
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/AVTransport.xml
-%{_datadir}/%{name}/Analog-Input
 %{_datadir}/%{name}/ConnectionManager.xml
 %{_datadir}/%{name}/ContentDirectory.xml
 %{_datadir}/%{name}/MS-description.xml
@@ -104,6 +106,7 @@ ln -s service %{buildroot}/%{_sbindir}/rcupmpdcli
 # don't package qobuz as plugin because it is also required for providing OpenHome Credentials Qobuz functionality
 %{_datadir}/%{name}/cdplugins/qobuz
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man5/%{name}.conf.5%{?ext_man}
 %{_unitdir}/upmpdcli.service
 %{_sbindir}/rcupmpdcli
 %config(noreplace) %{_sysconfdir}/upmpdcli.conf

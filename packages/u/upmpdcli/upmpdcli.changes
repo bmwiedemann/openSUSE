@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May 12 13:07:53 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.8.10:
+  * Moved build system from autotools to meson
+- Update to 1.8.9:
+  * Add man page for the config file
+  * Small internal cleanups. Always set id and parentId when generating didl
+- Update to 1.8.8:
+  * Tidal: avoid SQL error with older sqlite versions
+  * Misc subsonic and Tidal improvements
+- Update to 1.8.7:
+  * Misc small plugins fixes
+  
+-------------------------------------------------------------------
 Sat Dec 23 15:54:47 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
 
 - each Content Directory plugin is now packaged in its own noarch package
