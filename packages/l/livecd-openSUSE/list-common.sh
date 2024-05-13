@@ -118,6 +118,7 @@ buildignore usbmuxd
 # http://bugzilla.opensuse.org/show_bug.cgi?id=1209177
 buildignore gnome-keyring-pam
 buildignore pam_kwallet
+buildignore pam_kwallet6
 
 buildignore apparmor-docs
 buildignore mutt-doc

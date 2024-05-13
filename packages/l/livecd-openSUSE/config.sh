@@ -47,7 +47,8 @@ if rpm -q libQt6WebEngineCore6; then
 	rpm -e --nodeps libQt6WebEngineCore6
 fi
 
-/usr/lib/rpm/fdupes_wrapper /usr/share/licenses
+# Reuse what the macro does
+rpm --eval "%fdupes /usr/share/licenses" | sh
 
 #--------------------------------------
 # enable and disable services

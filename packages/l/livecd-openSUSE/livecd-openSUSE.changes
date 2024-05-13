@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 13 09:24:27 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Ignore pam_kwallet6 (boo#1224153)
+
+-------------------------------------------------------------------
 Wed May  8 14:14:09 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Drop jfsutils from all lives: this is not one of our supported
@@ -36,6 +41,11 @@ Mon Apr 22 12:41:09 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Fix tumbleweed live image, try to decrease size following the new
   branding packages. Remove a few lang packages from xfce.
+
+-------------------------------------------------------------------
+Mon Mar 25 14:48:59 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Use %fdupes in config.sh to fix build on Leap
 
 -------------------------------------------------------------------
 Tue Mar 19 16:18:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>

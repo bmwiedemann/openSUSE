@@ -239,6 +239,8 @@
     <ignore name="gnome-keyring-pam"/>
     <!-- OBS-IgnorePackage: pam_kwallet -->
     <ignore name="pam_kwallet"/>
+    <!-- OBS-IgnorePackage: pam_kwallet6 -->
+    <ignore name="pam_kwallet6"/>
     <!-- OBS-IgnorePackage: apparmor-docs -->
     <ignore name="apparmor-docs"/>
     <!-- OBS-IgnorePackage: mutt-doc -->
