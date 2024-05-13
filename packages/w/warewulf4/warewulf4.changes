@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 13 07:59:50 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- updated to version 4.5.1 with following changes
+  * wwctl [profile|node] list -a handles now slices correclty
+  * Fix a locking issue with concurrent read/writes for node status
+- removed fixed-ShimFind-for-aarch64.patch as incoperated upstreams
+- Remove API package as use of this wasn't documented
+
+-------------------------------------------------------------------
+Fri Apr  5 09:09:41 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- use tftp.socket for activation not service (bsc#1216994)
+	 
+-------------------------------------------------------------------
 Tue Mar 26 16:35:18 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - %ghost /etc/profile.d/setup-ssh.[c]sh

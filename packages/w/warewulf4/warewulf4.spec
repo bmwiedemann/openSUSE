@@ -16,7 +16,7 @@
 #
 
 
-%global vers 4.5.0
+%global vers 4.5.1
 %global tftpdir /srv/tftpboot
 %global srvdir %{_sharedstatedir}
 #%%global githash 5b0de8ea5397ca42584335517fd4959d7ffe3da5
@@ -31,12 +31,10 @@ License:        BSD-3-Clause
 Group:          Productivity/Clustering/Computing
 URL:            https://warewulf.org
 Source0:        https://github.com/warewulf/warewulf/releases/download/v%{vers}/warewulf-%{vers}.tar.gz#/warewulf4-v%{version}.tar.gz
-#Source1:        vendor.tar.gz
 Source5:        warewulf4-rpmlintrc
 Source10:       config-ww4.sh
 Source11:       adjust_overlays.sh
 Source20:       README.dnsmasq
-Patch01:        fixed-ShimFind-for-aarch64.patch
 
 # no firewalld in sle12
 %if 0%{?sle_version} >= 150000 || 0%{?suse_version} > 1500
@@ -82,15 +80,6 @@ Group:          Productivity/Clustering/Computing
 
 %description overlay
 Includes the default overlays so that they can be updated seprately.
-
-%package api
-Requires:       %{name} = %version
-Summary:        Contains the services for the warewulf rest API
-Conflicts:      warewulf-provision-x86_64-initramfs
-
-%description api
-Contains the binaries for the access of warewulf through a rest API and from
-the commandline from an external host.
 
 %package man
 Supplements:    %{name} = %version
@@ -176,6 +165,7 @@ cp %{S:20} .
 
 # use ipxe-bootimgs images from distribution
 yq e '
+  .tftp.["systemd name"] = "tftp.socket" |
   .tftp.ipxe."00:00" = "undionly.kpxe" |
   .tftp.ipxe."00:07" = "ipxe-x86_64.efi" |
   .tftp.ipxe."00:09" = "ipxe-x86_64.efi" |
@@ -257,14 +247,6 @@ mv %{buildroot}/%{_sysconfdir}/warewulf/examples %{buildroot}%{_defaultdocdir}/%
 %files man
 %{_mandir}/man1/wwctl*1.gz
 %{_mandir}/man5/*conf*gz
-
-%files api
-%{_bindir}/wwapic
-%{_bindir}/wwapid
-%{_bindir}/wwapird
-%config(noreplace) %{_sysconfdir}/warewulf/wwapic.conf
-%config(noreplace) %{_sysconfdir}/warewulf/wwapid.conf
-%config(noreplace) %{_sysconfdir}/warewulf/wwapird.conf
 
 %files overlay
 # The configuration files in this location are for the compute

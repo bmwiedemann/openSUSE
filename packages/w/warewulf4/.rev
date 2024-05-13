@@ -237,4 +237,18 @@
     <comment></comment>
     <requestid>1162844</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b67f132064aeb885a88475b49dfcc9ea</srcmd5>
+    <version>4.5.1</version>
+    <time>1715615898</time>
+    <user>anag+factory</user>
+    <comment>- updated to version 4.5.1 with following changes
+  * wwctl [profile|node] list -a handles now slices correclty
+  * Fix a locking issue with concurrent read/writes for node status
+- removed fixed-ShimFind-for-aarch64.patch as incoperated upstreams
+- Remove API package as use of this wasn't documented
+
+- use tftp.socket for activation not service (bsc#1216994) (forwarded request 1173599 from mslacken)</comment>
+    <requestid>1173600</requestid>
+  </revision>
 </revisionlist>
