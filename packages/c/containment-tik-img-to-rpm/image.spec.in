@@ -1,0 +1,32 @@
+# needsrootforbuild
+
+Url:            http://www.aeondeskop.org/
+Name:           __PKG_NAME__
+Summary:        Package with __OS_NAME__ tik OS image
+Version:        __VERSION__
+Release:        __RELEASE__
+Group:          System/Management
+License:        GPL-2.0+
+Source0:        __SOURCE0__
+Requires:	tik
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+%description
+This package contains the __OS_NAME__ image for tik.
+
+%prep
+
+%build
+
+%install
+install -d -m 644 $RPM_BUILD_ROOT%{_prefix}/lib/tik/img
+install -p -D -m 644 %{SOURCE0} $RPM_BUILD_ROOT%{_prefix}/lib/tik/img/%{name}.%{version}.raw.xz
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(-, root, root)
+%{_prefix}/lib/tik/img/%{name}.%{version}.raw.xz
+
+%changelog

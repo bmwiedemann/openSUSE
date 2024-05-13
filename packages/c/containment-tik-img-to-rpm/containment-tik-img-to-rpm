@@ -1,0 +1,79 @@
+#!/bin/sh -eu
+BUILD_DISTURL=
+
+# To get BUILD_DISTURL
+test -f /.buildenv && . /.buildenv
+
+top_dir="/usr/src/packages"
+img_dir="${top_dir}/KIWI"
+build_dir="/usr/lib/build"
+spec_in="${build_dir}/image.spec.in"
+arch="$(uname -m)"
+
+log() {
+	echo "[tik-img-to-rpm] $@"
+}
+
+log "Check for tik-osimage-*.raw.xz in KIWI output directory"
+if ! ls ${img_dir}/tik-osimage-*.raw.xz; then
+	log "No tik-osimage found" && exit 0
+fi
+
+log "tik-osimage-* found: Creating RPM from any tik-osimage-*.raw.xz images"
+
+for f in ${img_dir}/*.raw.xz; do
+	base_f=$(echo ${f} | awk -F '.raw.xz' '{print $1}' | awk -F "${img_dir}/" '{print $2}')
+	image=${base_f}.raw.xz
+	json_f=${img_dir}/${base_f}.cdx.json
+	log "[${base_f}] Parsing ${json_f} to populate variables for RPM .spec"
+	pkg_version=$(jq '.components[] | select(.name | endswith("-release")) | .version' ${json_f} | tr -d '"' | cut -f 1 -d '-')
+	pkg_release=$(jq '.components[] | select(.name | endswith("-release")) | .version' ${json_f} | tr -d '"' | cut -f 2 -d '-')
+	pkg_name=$(echo ${base_f} | awk -F ".${arch}" '{print $1}')
+	os_name=$(echo ${pkg_name} | awk -F 'tik-osimage-' '{print $2}')
+	
+	cd ${build_dir}
+	sed -e "s@__PKG_NAME__@${pkg_name}@g" \
+	-e "s@__VERSION__@${pkg_version}@g" \
+	-e "s@__RELEASE__@${pkg_release}@g" \
+	-e "s@__SOURCE0__@${image}@g" \
+	-e "s@__OS_NAME__@${os_name}@g" \
+	< ${spec_in} \
+	> ${build_dir}/image.spec
+	
+	touch ${build_dir}/image.changes
+
+	# Local builds have the file already in place, that's not true on IBS
+	if [ ! -f ${top_dir}/SOURCES/${image} ]; then
+  		ln ${f} ${top_dir}/SOURCES
+	fi
+	
+	# Make sure /usr/src/packages/* dirs exist
+	if [ ! -f ${top_dir}/BUILD ]; then
+	  log "Create BUILD dir"
+	  mkdir -p ${top_dir}/BUILD
+	fi
+
+	if [ ! -f ${top_dir}/SRPMS ]; then
+	  log "Create SRPMS dir"
+	  mkdir -p ${top_dir}/SRPMS
+	fi
+
+	if [ ! -f ${top_dir}/RPMS/${arch} ]; then
+	  log "Create ARCH RPMS dir"
+	  mkdir -p ${top_dir}/RPMS/${arch}
+	fi
+	
+	log "Starting build"
+	
+	if [ -z "$BUILD_DISTURL" ]; then
+  		rpmbuild --target ${arch} -ba ${build_dir}/image.spec
+	else
+		rpmbuild --target ${arch} -ba --define "disturl $BUILD_DISTURL" ${build_dir}/image.spec
+	fi
+
+	# required for the BS to find the rpm, because it is
+	# a "non-standard result file for KIWI"
+	mkdir -p ${top_dir}/OTHER
+	mv ${top_dir}/RPMS/${arch}/${pkg_name}-${pkg_version}-${pkg_release}.${arch}.rpm ${top_dir}/OTHER/
+	mv ${top_dir}/SRPMS/${pkg_name}-${pkg_version}-${pkg_release}.src.rpm ${top_dir}/OTHER/
+done

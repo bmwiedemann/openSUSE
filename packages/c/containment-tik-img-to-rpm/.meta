@@ -1,0 +1,7 @@
+<package name="containment-tik-img-to-rpm" project="openSUSE:Factory">
+  <title>OBS Post Hook for taking raw.xz files built for tik and putting them into rpms</title>
+  <description>Post hook that explicitly looks for kiwi built img.xz files with a name matching tik-osimage-*.raw.xz
+
+Takes the image, renames it as *.raw.xz and packages the image in an RPM named tik-osimage-*</description>
+  <devel project="devel:microos:aeon" package="containment-tik-img-to-rpm"/>
+</package>
