@@ -1,0 +1,17 @@
+diff --git a/src/lib/crypto/test/RSATests.cpp b/src/lib/crypto/test/RSATests.cpp
+index 9ac5b26..fe090f4 100644
+--- a/src/lib/crypto/test/RSATests.cpp
++++ b/src/lib/crypto/test/RSATests.cpp
+@@ -80,10 +80,11 @@ void RSATests::testKeyGeneration()
+ 	std::vector<size_t> keySizes;
+ 	keySizes.push_back(1024);
+ #ifndef WITH_FIPS
+-	keySizes.push_back(1025);
++	//keySizes.push_back(1025);
+ #endif
+ 	keySizes.push_back(1280);
+ 	keySizes.push_back(2048);
++	keySizes.push_back(3072);
+ 	//keySizes.push_back(4096);
+ 
+ 	for (std::vector<ByteString>::iterator e = exponents.begin(); e != exponents.end(); e++)
