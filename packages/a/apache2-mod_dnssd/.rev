@@ -142,4 +142,15 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1147824 from dimstar)</comment>
     <requestid>1149075</requestid>
   </revision>
+  <revision rev="21" vrev="31">
+    <srcmd5>710fe3cb3599ac16072feaa2aa8b0061</srcmd5>
+    <version>0.6</version>
+    <time>1715615902</time>
+    <user>anag+factory</user>
+    <comment>- fix build with gcc14
+- added patches
+  work with apache 2.4
+  + apache2-mod_dnssd-httpd24.patch (forwarded request 1172447 from pgajdos)</comment>
+    <requestid>1173610</requestid>
+  </revision>
 </revisionlist>
