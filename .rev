@@ -130,4 +130,15 @@
   * Align diff file timestamp</comment>
     <requestid>1166869</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e2b09380cd3ceeefd936a5779aa2a7ae</srcmd5>
+    <version>3.1.3~0</version>
+    <time>1715615895</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.1.3:
+  * By doing our best, highlighting parse errors in the output,
+    and then printing an error message after we're done.
+    Before this release, we just panicked on parse errors.</comment>
+    <requestid>1173674</requestid>
+  </revision>
 </revisionlist>
