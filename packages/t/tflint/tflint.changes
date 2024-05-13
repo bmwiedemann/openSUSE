@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat May 11 19:48:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.51.1:
+  * Bump up version to v0.51.1
+  * Introduce Artifact Attestations (#2038)
+  * Fix provider::terraform::* function names (#2046)
+  * build(deps): Bump golang.org/x/net from 0.24.0 to 0.25.0
+    (#2041)
+  * build(deps): Bump golang.org/x/text from 0.14.0 to 0.15.0
+    (#2042)
+  * go: remove loop variable copying (#2044)
+  * gh: update golangci-lint (#2045)
+  * build(deps): Bump golangci/golangci-lint-action from 5.1.0 to
+    5.3.0 (#2039)
+  * build(deps): Bump golang.org/x/oauth2 from 0.19.0 to 0.20.0
+    (#2043)
+  * lint: update config for new schema
+
+-------------------------------------------------------------------
 Fri May 03 16:17:43 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.51.0:

@@ -17,7 +17,7 @@
 
 
 Name:           tio
-Version:        3.0
+Version:        3.2
 Release:        0
 Summary:        Simple TTY terminal I/O application
 License:        GPL-2.0-or-later
@@ -29,7 +29,6 @@ BuildRequires:  lua53-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(inih)
 
 %description
 Tio is a simple TTY terminal application which features a straightforward

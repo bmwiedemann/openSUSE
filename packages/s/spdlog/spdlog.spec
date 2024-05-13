@@ -19,7 +19,7 @@
 Name:           spdlog
 %define lname	libspdlog1_14
 %define sover	1.14
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        C++ logging library
 License:        MIT
@@ -37,7 +37,7 @@ BuildRequires:  gcc8-c++
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  (pkgconfig(catch2) >= 3)
-BuildRequires:  pkgconfig(fmt) >= 8.0.0
+BuildRequires:  (pkgconfig(fmt) >= 10.0.0)
 BuildRequires:  pkgconfig(libsystemd)
 
 %description
@@ -112,6 +112,7 @@ export LD_LIBRARY_PATH="$PWD/build"
 %{_libdir}/libspdlog.so
 %{_libdir}/cmake/spdlog/
 %{_libdir}/pkgconfig/spdlog.pc
+%{_libdir}/cmake
 
 %files -n %{lname}
 %{_libdir}/libspdlog.so.*

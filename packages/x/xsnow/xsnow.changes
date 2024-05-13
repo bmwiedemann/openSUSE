@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat May 11 08:57:51 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 3.7.9 
+  + changes from 3.7.9
+    * ui.glade: make gui not-resizable to prevent wrong reported
+      size when user tries to change size. 
+    * windows.c, main.c, xsnow.h: when window is moved or resized,
+      convert fallensnow into flakes. Look for global.DoCapella.
+    * ui.glade: change color pickers (snow, birds, vintage tree)
+      to standard, the fancy color editor is still available using
+      the '+' button.
+    * main.c: take care that while changing OffsetY, fallensnow is
+      not converted to flakes. snow.h, main.c: use macro DOCAPELLA
+      for setting default.
+    * meteor.c: better simulation of meteors.
+    * generate flakes if window is minimized.
+    * snow.c and others: optional: 2 snow colors, pofiles/: add
+      translations for 2 snow colors.
+    * src/Makefile.am: specify dependencies of makeman.
+    * adaptations for FreeBSD:
+      - use sh in stead of bash in bootstrap
+      - addcopyright.sh: adapt sed calls to FreeBSD's sed
+      - remove src/safe_malloc.c, adapt src/safe_malloc.h,
+        safe_malloc.c was not used anyway
+    * addcopyright.sh: use tmpfile="tmpfile" in stead of `mktemp`
+    * src/Makefile.am: minor: avoid $< because of FreeBSD's make
+  + changes from 3.7.8
+    * src/Makefile.am: fix bug related with tarfile.inc which
+      caused --disable-selfrep not working
+  + changes from 3.7.7
+    * enable cross compiling
+    * fix minor issue: version in man page
+
+-------------------------------------------------------------------
 Wed Dec  6 18:20:17 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.7.6

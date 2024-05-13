@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           tflint
-Version:        0.51.0
+Version:        0.51.1
 Release:        0
 Summary:        A Pluggable Terraform Linter
 License:        MPL-2.0

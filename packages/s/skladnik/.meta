@@ -8,6 +8,6 @@ over them. If you are not careful, some of the crates can get stuck in wrong
 places and/or block your way.
 
 </description>
-  <devel project="KDE:Extra" package="skladnik"/>
+  <devel project="KDE:Applications" package="skladnik"/>
   <url>https://apps.kde.org/skladnik</url>
 </package>

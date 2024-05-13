@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May  3 15:11:30 UTC 2024 - Bernd Ritter <comrad@opensuse.org>
+
+- update fmt dependency to verrsion 10.0 
+
+-------------------------------------------------------------------
+Fri May  3 14:27:01 UTC 2024 - Bernd Ritter <comrad@opensuse.org>
+
+- Fixing rpm build failure for target i586
+
+-------------------------------------------------------------------
+Wed May  1 18:59:39 UTC 2024 - Bernd Ritter <comrad@opensuse.org>
+
+- Update spdlog to 1.14.1
+
+- Release nots 1.14.1:
+  * Fixed compatibility issue between c++17 and c++11 (#3081).
+  * Fixed creating folders under windows when full path with drive letter is given (#3079).
+  * Added mdc sample. Note: mdc is not supported in async loggers.
+
+-------------------------------------------------------------------
 Fri Apr 26 06:15:49 UTC 2024 - Bernd Ritter <comrad@opensuse.org>
 
 - Update spdlog to 1.14.0

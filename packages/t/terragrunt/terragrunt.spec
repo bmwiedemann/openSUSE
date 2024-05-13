@@ -19,13 +19,15 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           terragrunt
-Version:        0.58.2
+Version:        0.58.4
 Release:        0
 Summary:        Thin wrapper for Terraform for working with multiple Terraform modules
 License:        MIT
 URL:            https://github.com/gruntwork-io/terragrunt
 Source:         terragrunt-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Source2:        Makefile
+Source3:        PACKAGING_README.md
 BuildRequires:  go1.21 >= 1.21.7
 
 %description
@@ -38,7 +40,7 @@ Terragrunt is a thin wrapper for Terraform that provides extra tools for keeping
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-X main.VERSION=%{version}"
+   -ldflags="-X github.com/gruntwork-io/go-commons/version.Version=v%{version}"
 
 %install
 # Install the binary.

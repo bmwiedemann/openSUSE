@@ -1,0 +1,14 @@
+# Packaging terragrunt
+
+terragrunt 0.58.4 changed the Makefile. Since then, the `mocks` need to be
+prepared during build.
+This also means, that vendoring fails without first creating the mocks...
+
+1. Change the version in the `_service` file
+3. Run `make`
+4. Create a changelog entry
+5. Commit the changes as usual
+
+For the OBS workflow you need `obs-service-tar_scm`.
+
+For the `make` part you need `make` and a recent go installation.
