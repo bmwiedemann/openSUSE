@@ -1,0 +1,9 @@
+<package name="lua-resty-core" project="openSUSE:Factory">
+  <title>lua-resty-core</title>
+  <description>
+This pure Lua library reimplements part of the ngx_lua module's Nginx API for Lua with LuaJIT FFI
+and installs the new FFI-based Lua API into the ngx.* and ndk.* namespaces used by the ngx_lua module.
+  </description>
+  <devel project="devel:languages:lua" package="lua-resty-core"/>
+  <url>https://github.com/openresty/lua-resty-core</url>
+</package>
