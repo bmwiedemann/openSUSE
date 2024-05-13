@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May 12 13:57:28 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 6.1.2
+  * Removed autotools build system, now using meson
+- Update to 6.1.1
+  * Misc internal cleanups, mostly based on automated analysis tools
+    (cppcheck, fanalyzer, clang-tidy)
+- Update to 6.1.0
+  * Misc small internal cleanups, mostly for multi-platform building
+  * Add interface to free the netif data memory
+
+-------------------------------------------------------------------
 Sat Dec 23 14:29:44 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 6.0.1
