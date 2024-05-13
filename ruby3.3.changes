@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 23 16:24:04 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.3.1 (boo#1221851 boo#1221852 boo#1223314)
+  https://www.ruby-lang.org/en/news/2024/04/23/ruby-3-3-1-released/
+  https://www.ruby-lang.org/en/news/2024/04/23/arbitrary-memory-address-read-regexp-cve-2024-27282/
+  https://www.ruby-lang.org/en/news/2024/03/21/rce-rdoc-cve-2024-27281/
+  https://www.ruby-lang.org/en/news/2024/03/21/buffer-overread-cve-2024-27280/
+  https://github.com/ruby/ruby/releases/tag/v3_3_1
+
+-------------------------------------------------------------------
+Wed Jan 31 09:55:13 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add additionnal flags: cflags, cppflags and ASFLAGS
+
+-------------------------------------------------------------------
 Mon Dec 25 07:06:28 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.3.0

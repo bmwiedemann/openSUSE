@@ -7,4 +7,19 @@
     <comment>ruby 3.3.0 final</comment>
     <requestid>1135075</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e8f0967a4ce2e0d04e782335ef43f78a</srcmd5>
+    <version>3.3.1</version>
+    <time>1715615813</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.3.1 (boo#1221851 boo#1221852 boo#1223314)
+  https://www.ruby-lang.org/en/news/2024/04/23/ruby-3-3-1-released/
+  https://www.ruby-lang.org/en/news/2024/04/23/arbitrary-memory-address-read-regexp-cve-2024-27282/
+  https://www.ruby-lang.org/en/news/2024/03/21/rce-rdoc-cve-2024-27281/
+  https://www.ruby-lang.org/en/news/2024/03/21/buffer-overread-cve-2024-27280/
+  https://github.com/ruby/ruby/releases/tag/v3_3_1
+
+- Add additionnal flags: cflags, cppflags and ASFLAGS</comment>
+    <requestid>1169904</requestid>
+  </revision>
 </revisionlist>
