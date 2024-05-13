@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  5 12:58:39 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 3.12.6:
+ - Strict mode check should accept a location as str by @mindflayer in #230
+- Update to version 3.12.5:
+ - Add getblocking() method by @mindflayer in #228
+
+-------------------------------------------------------------------
 Tue Feb  6 12:22:14 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 3.12.4:

@@ -538,4 +538,15 @@
 </comment>
     <requestid>1144614</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>8882e6041109ae3936ef559cdcbfbeca</srcmd5>
+    <version>3.12.6</version>
+    <time>1715615816</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.12.6:
+ - Strict mode check should accept a location as str by @mindflayer in #230
+- Update to version 3.12.5:
+ - Add getblocking() method by @mindflayer in #228</comment>
+    <requestid>1172444</requestid>
+  </revision>
 </revisionlist>
