@@ -1,0 +1,5 @@
+<package name="softhsm" project="openSUSE:Factory">
+  <title>softhsm</title>
+  <description>An implementation of a cryptographic store accessible through a PKCS #11 interface.</description>
+  <devel project="security" package="softhsm"/>
+</package>
