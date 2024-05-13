@@ -99,4 +99,15 @@
   * `makoctl list` now includes desktop-entry and urgency</comment>
     <requestid>1090236</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8a510426236683e2d154251831267a9f</srcmd5>
+    <version>1.9.0</version>
+    <time>1715615886</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.9.0:
+  * &quot;makoctl mode -t &lt;name&gt;&quot; can be used to toggle modes
+  * The &quot;dismiss --no-history&quot; action can be used to bypass history
+  * The cursor-shape-v1 protocol is now supported</comment>
+    <requestid>1173568</requestid>
+  </revision>
 </revisionlist>

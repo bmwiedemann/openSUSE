@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 13 06:22:58 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.0:
+  * "makoctl mode -t <name>" can be used to toggle modes
+  * The "dismiss --no-history" action can be used to bypass history
+  * The cursor-shape-v1 protocol is now supported
+
+-------------------------------------------------------------------
 Thu Jun  1 09:43:48 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.9:
