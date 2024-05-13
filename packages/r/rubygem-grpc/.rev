@@ -51,4 +51,21 @@
     <comment>New upstream release 1.59.2</comment>
     <requestid>1127267</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>525e1f2305bc0464aa119c43e905a1ea</srcmd5>
+    <version>1.63.0</version>
+    <time>1715615823</time>
+    <user>anag+factory</user>
+    <comment>- bump grpc-devel to 1.60.0 as we need some newer APIs in the
+  bindings
+
+- New upstream release 1.63.0, no changelog found
+- refresh 0001-Return-Qnil-from-grpc_rb_fork_unsafe_begin-end_api.patch
+  to apply cleanly again
+- use system grpc instead of an intree copy:
+  - added use_system_libs.patch
+  - new BuildRequires: grpc-devel 
+- track series file to make it easier to update patches</comment>
+    <requestid>1173496</requestid>
+  </revision>
 </revisionlist>

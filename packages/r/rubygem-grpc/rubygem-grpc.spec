@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-grpc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,14 @@
 #
 
 Name:           rubygem-grpc
-Version:        1.59.2
+Version:        1.63.0
 Release:        0
 %define mod_name grpc
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
-BuildRequires: gcc-c++
+BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
+BuildRequires:  grpc-devel >= 1.60.0
 # /MANUAL
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{rubydevel >= 2.5.0}
@@ -37,9 +39,11 @@ BuildRequires:  %{rubygem gem2rpm}
 Url:            https://github.com/google/grpc/tree/master/src/ruby
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-grpc.rpmlintrc
-Source2:        gem2rpm.yml
+Source2:        series
+Source3:        gem2rpm.yml
 # MANUAL
 Patch0:  0001-Return-Qnil-from-grpc_rb_fork_unsafe_begin-end_api.patch
+Patch1:  use_system_libs.patch
 # /MANUAL
 Summary:        GRPC system in Ruby
 License:        Apache-2.0
@@ -49,7 +53,8 @@ Send RPCs from Ruby using GRPC.
 
 %prep
 %gem_unpack
-%patch0 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 find -type f -print0 | xargs -0 touch -r %{S:0}
 %gem_build
 
@@ -64,6 +69,8 @@ find -type f -print0 | xargs -0 touch -r %{S:0}
 find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '.sitearchdir.-.grpc.time' -o -name '.yardopts' \) | xargs rm
 # fix permissions
 find %{buildroot}/%{_libdir}/ruby/gems/ \( -name 'ca.pem' -o -name 'server1.key' -o -name 'server1.pem' \) | xargs chmod -x
+rm -rf %{buildroot}%{_libdir}/ruby/gems/*/gems/grpc-%{version}/src/ruby/ext/grpc/{libs,objs}/
+rm -rf %{buildroot}%{_libdir}/ruby/gems/*/gems/grpc-%{version}/src/ruby/spec/
 # /MANUAL
 
 

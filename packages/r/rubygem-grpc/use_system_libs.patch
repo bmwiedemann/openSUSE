@@ -1,0 +1,87 @@
+Index: grpc-1.63.0/src/ruby/ext/grpc/extconf.rb
+===================================================================
+--- grpc-1.63.0.orig/src/ruby/ext/grpc/extconf.rb
++++ grpc-1.63.0/src/ruby/ext/grpc/extconf.rb
+@@ -16,6 +16,7 @@ require 'etc'
+ require 'mkmf'
+ require_relative '../../lib/grpc/version.rb'
+ 
++=begin
+ windows = RUBY_PLATFORM =~ /mingw|mswin/
+ windows_ucrt = RUBY_PLATFORM =~ /(mingw|mswin).*ucrt/
+ bsd = RUBY_PLATFORM =~ /bsd/
+@@ -30,6 +31,7 @@ grpc_root = File.expand_path(File.join(F
+ grpc_config = ENV['GRPC_CONFIG'] || 'opt'
+ 
+ ENV['MACOSX_DEPLOYMENT_TARGET'] = '10.10'
++=end
+ 
+ def debug_symbols_output_dir
+   d = ENV['GRPC_RUBY_DEBUG_SYMBOLS_OUTPUT_DIR']
+@@ -82,6 +84,7 @@ inherit_env_or_rbconfig 'STRIP'
+ inherit_rbconfig 'CPPFLAGS'
+ inherit_rbconfig('LDFLAGS', linker_flag: true)
+ 
++=begin
+ ENV['LD'] = ENV['CC'] if env_unset?('LD')
+ ENV['LDXX'] = ENV['CXX'] if env_unset?('LDXX')
+ 
+@@ -108,6 +111,7 @@ if apple_toolchain && !cross_compiling
+     ENV['ARCH_FLAGS'] = '-arch i386 -arch x86_64'
+   end
+ end
++=end
+ 
+ env_append 'CPPFLAGS', '-DGRPC_XDS_USER_AGENT_NAME_SUFFIX="\"RUBY\""'
+ 
+@@ -116,6 +120,7 @@ env_append 'CPPFLAGS', '-DGRPC_XDS_USER_
+ env_append 'CPPFLAGS', '-DGRPC_POSIX_FORK_ALLOW_PTHREAD_ATFORK=1'
+ 
+ output_dir = File.expand_path(RbConfig::CONFIG['topdir'])
++=begin
+ grpc_lib_dir = File.join(output_dir, 'libs', grpc_config)
+ ENV['BUILDDIR'] = output_dir
+ 
+@@ -145,6 +150,7 @@ $DLDFLAGS = maybe_remove_strip_all_linke
+ $CFLAGS << ' -DGRPC_RUBY_WINDOWS_UCRT' if windows_ucrt
+ $CFLAGS << ' -I' + File.join(grpc_root, 'include')
+ $CFLAGS << ' -g'
++=end
+ 
+ def have_ruby_abi_version()
+   return true if RUBY_ENGINE == 'truffleruby'
+@@ -173,6 +179,7 @@ def ext_export_filename()
+   name
+ end
+ 
++=begin
+ ext_export_file = File.join(grpc_root, 'src', 'ruby', 'ext', 'grpc', ext_export_filename())
+ $LDFLAGS << ' -Wl,--version-script="' + ext_export_file + '.gcc"' if linux
+ if apple_toolchain
+@@ -195,11 +202,13 @@ if linux && RUBY_ENGINE != 'truffleruby'
+   $LDFLAGS << ' -static-libgcc -static-libstdc++'
+ end
+ $LDFLAGS << ' -static' if windows
++=end
+ 
+ $CFLAGS << ' -std=c11 '
+ $CFLAGS << ' -Wall '
+ $CFLAGS << ' -Wextra '
+ $CFLAGS << ' -pedantic '
++$LDFLAGS << ' -lgrpc '
+ 
+ output = File.join('grpc', 'grpc_c')
+ puts "extconf.rb $LDFLAGS: #{$LDFLAGS}"
+@@ -208,6 +217,7 @@ puts "extconf.rb $CFLAGS: #{$CFLAGS}"
+ puts 'Generating Makefile for ' + output
+ create_makefile(output)
+ 
++=begin
+ ruby_major_minor = /(\d+\.\d+)/.match(RUBY_VERSION).to_s
+ debug_symbols = "grpc-#{GRPC::VERSION}-#{RUBY_PLATFORM}-ruby-#{ruby_major_minor}.dbg"
+ 
+@@ -264,3 +274,4 @@ if ENV['GRPC_RUBY_TEST_ONLY_WORKAROUND_M
+   end
+   File.rename('Makefile.new', 'Makefile')
+ end
++=end

@@ -7,11 +7,11 @@ Subject: [PATCH] Return Qnil from grpc_rb_fork_unsafe_begin/end_api
  src/ruby/ext/grpc/rb_grpc.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/src/ruby/ext/grpc/rb_grpc.c b/src/ruby/ext/grpc/rb_grpc.c
-index 30281b5463..53b7e2ed38 100644
---- a/src/ruby/ext/grpc/rb_grpc.c
-+++ b/src/ruby/ext/grpc/rb_grpc.c
-@@ -450,9 +450,9 @@ void grpc_rb_fork_unsafe_begin() { g_grpc_rb_num_fork_unsafe_threads++; }
+Index: grpc-1.63.0/src/ruby/ext/grpc/rb_grpc.c
+===================================================================
+--- grpc-1.63.0.orig/src/ruby/ext/grpc/rb_grpc.c
++++ grpc-1.63.0/src/ruby/ext/grpc/rb_grpc.c
+@@ -449,9 +449,9 @@ void grpc_rb_fork_unsafe_begin() { g_grp
  void grpc_rb_fork_unsafe_end() { g_grpc_rb_num_fork_unsafe_threads--; }
  
  // APIs to mark fork-unsafe sections from ruby code
@@ -23,6 +23,3 @@ index 30281b5463..53b7e2ed38 100644
  
  // One-time initialization
  void Init_grpc_c() {
--- 
-2.42.0
-

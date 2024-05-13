@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun May 12 14:07:39 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump grpc-devel to 1.60.0 as we need some newer APIs in the
+  bindings
+
+-------------------------------------------------------------------
+Sun May 12 12:06:02 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- New upstream release 1.63.0, no changelog found
+- refresh 0001-Return-Qnil-from-grpc_rb_fork_unsafe_begin-end_api.patch
+  to apply cleanly again
+- use system grpc instead of an intree copy:
+  - added use_system_libs.patch
+  - new BuildRequires: grpc-devel 
+- track series file to make it easier to update patches
+
+-------------------------------------------------------------------
 Tue Nov 14 15:05:34 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 1.59.2, no changelog found
