@@ -58,7 +58,7 @@ You should checkout the docs for more information.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest tests
+%pyunittest
 
 %files %{python_files}
 %license LICENSE

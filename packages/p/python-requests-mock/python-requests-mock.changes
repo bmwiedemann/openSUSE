@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  8 06:40:50 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use the %pyunittest macro to run tests (because of testtools) 
+
+-------------------------------------------------------------------
 Sat Apr  6 12:15:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.1:

@@ -342,4 +342,12 @@
   * Use unittest.mock if available.</comment>
     <requestid>1165815</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>d104508230912d49eff262d8ead7e347</srcmd5>
+    <version>1.12.1</version>
+    <time>1715615818</time>
+    <user>anag+factory</user>
+    <comment>- Use the %pyunittest macro to run tests (because of testtools)</comment>
+    <requestid>1172635</requestid>
+  </revision>
 </revisionlist>
