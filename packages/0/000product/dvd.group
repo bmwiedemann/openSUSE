@@ -407,7 +407,6 @@
     <package name="expat" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="expect" supportstatus="unsupported"/> <!-- reason: dvd:expect -->
     <package name="f2fs-tools" supportstatus="unsupported"/> <!-- reason: dvd:f2fs-tools -->
-    <package name="fbiterm" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx-chewing" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -732,7 +731,6 @@
     <package name="gtk4-metatheme-greybird-geeko" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
     <package name="gtk4-schema" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gtk4-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="gtkiterm" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gtksourceview-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="gtksourceview4-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gtksourceview5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1657,7 +1655,6 @@
     <package name="libXdmcp6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libXext6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libXfixes3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libXfont1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libXfont2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libXft2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libXi6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2000,7 +1997,7 @@
     <package name="libfolks-eds26" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfolks26" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfontconfig1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libfontenc1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libfontenc1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libformula" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libfprint-2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -2252,7 +2249,6 @@
     <package name="libisl23" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libisoburn1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libisofs6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libiterm1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libitm1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libiw30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libixion-0_18-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2857,7 +2853,7 @@
     <package name="libusbmuxd-2_0-6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libusbredirhost1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libusbredirparser1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libutempter0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libutempter0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libutf8proc3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libuuid1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libuv1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3239,6 +3235,7 @@
     <package name="openssh-clients" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="openssh-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="openssh-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="openssh-server-config-rootlogin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="openssl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="openssl-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="opensuse-welcome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4022,7 +4019,7 @@
     <package name="tepl-6-lang" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="terminfo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="terminfo-base" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="terminfo-iterm" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="terminfo-iterm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="terminfo-screen" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="terminus-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="tftp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->

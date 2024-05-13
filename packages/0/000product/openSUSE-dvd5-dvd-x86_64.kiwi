@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20240514" schemaversion="4.1">
+<image name="OBS__openSUSE___20240515" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20240514</productvar>
+      <productvar name="VERSION">20240515</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20240514,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20240515,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20240514/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20240515/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -410,7 +410,6 @@
       <repopackage name="expat"/>
       <repopackage name="expect"/>
       <repopackage name="f2fs-tools"/>
-      <repopackage name="fbiterm"/>
       <repopackage name="fcitx"/>
       <repopackage name="fcitx-branding-openSUSE"/>
       <repopackage name="fcitx-chewing"/>
@@ -735,7 +734,6 @@
       <repopackage name="gtk4-metatheme-greybird-geeko"/>
       <repopackage name="gtk4-schema"/>
       <repopackage name="gtk4-tools"/>
-      <repopackage name="gtkiterm"/>
       <repopackage name="gtksourceview-lang"/>
       <repopackage name="gtksourceview4-lang"/>
       <repopackage name="gtksourceview5-lang"/>
@@ -1810,7 +1808,6 @@
       <repopackage name="libisl23"/>
       <repopackage name="libisoburn1"/>
       <repopackage name="libisofs6"/>
-      <repopackage name="libiterm1"/>
       <repopackage name="libitm1"/>
       <repopackage name="libiw30"/>
       <repopackage name="libixion-0_18-0"/>
@@ -2971,7 +2968,6 @@
       <repopackage name="libxfce4util7"/>
       <repopackage name="libxfconf-0-3"/>
       <repopackage name="libXfixes3"/>
-      <repopackage name="libXfont1"/>
       <repopackage name="libXfont2-2"/>
       <repopackage name="libXft2"/>
       <repopackage name="libXi6"/>
@@ -3280,6 +3276,7 @@
       <repopackage name="openssh-clients"/>
       <repopackage name="openssh-common"/>
       <repopackage name="openssh-server"/>
+      <repopackage name="openssh-server-config-rootlogin"/>
       <repopackage name="openssl"/>
       <repopackage name="openssl-3"/>
       <repopackage name="openSUSE-build-key"/>
