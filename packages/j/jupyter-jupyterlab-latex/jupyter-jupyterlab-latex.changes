@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  9 07:43:30 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build from source not whl, using obs-service-node_modules to get the
+  javascript packages required to build the package.
+
+-------------------------------------------------------------------
 Thu Mar  7 12:35:48 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Make sure not to create config files during test

@@ -27,11 +27,16 @@ URL:            https://github.com/jupyterlab/jupyterlab-latex
 # >= 3.1 not on PyPI gh#jupyterlab/jupyterlab-latex#218
 #Source:         https://files.pythonhosted.org/packages/py3/j/jupyterlab_latex/jupyterlab_latex-%%{version}-py3-none-any.whl
 Source0:        https://github.com/jupyterlab/jupyterlab-latex/archive/refs/tags/v%{version}.tar.gz#/jupyterlab_latex-%{version}-gh.tar.gz
-# Generate on a networked machine with `pip wheel -v .` inside the extracted github archive (needs npm)
-Source1:        jupyterlab_latex-%{version}-py3-none-any.whl
+# package-lock.json file generated with command:
+# npm install --package-lock-only --legacy-peer-deps --ignore-scripts
+Source2:        package-lock.json
+# node_modules generated using "osc service mr" with the https://github.com/openSUSE/obs-service-node_modules
+Source3:        node_modules.spec.inc
+%include        %{_sourcedir}/node_modules.spec.inc
 Source99:       jupyter-jupyterlab-latex-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
+BuildRequires:  local-npm-registry
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.8
 BuildRequires:  python3-pip
@@ -52,13 +57,16 @@ BuildArch:      noarch
 An extension for JupyterLab which allows for live-editing of LaTeX documents.
 
 %prep
-%setup -q -c -T
+%autosetup -p1 -n jupyterlab-latex-%{version}
+local-npm-registry %{_sourcedir} install --also=dev
+sed -i "s/jlpm/npm/" pyproject.toml
+sed -i "s/jlpm/npm run/g" package.json
 
 %build
-# needs to be built on networked machine, see comment for Source1 above
+%pyproject_wheel
 
 %install
-%pyproject_install %{SOURCE1}
+%pyproject_install
 
 %{jupyter_move_config}
 %fdupes %{buildroot}%{_jupyter_prefix}

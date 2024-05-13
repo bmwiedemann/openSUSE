@@ -85,4 +85,14 @@
     <comment>- Make sure not to create config files during test</comment>
     <requestid>1155893</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>48b0ef4797d801ad496a2160868a6282</srcmd5>
+    <version>4.0.0</version>
+    <time>1715615877</time>
+    <user>anag+factory</user>
+    <comment>- Build from source not whl, using obs-service-node_modules to get the
+  javascript packages required to build the package.
+</comment>
+    <requestid>1172896</requestid>
+  </revision>
 </revisionlist>
