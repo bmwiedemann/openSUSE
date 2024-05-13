@@ -1,7 +1,7 @@
 #
 # spec file for package libupnpp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_ver  16
 Name:           libupnpp
-Version:        0.25.0
+Version:        0.26.4
 Release:        0
 Summary:        Library providing a higher level API over libnpupnp or libupnp
 License:        GPL-2.0-or-later
@@ -28,6 +28,7 @@ Source0:        https://www.lesbonscomptes.com/upmpdcli/downloads/libupnpp-%{ver
 Source1:        https://www.lesbonscomptes.com/upmpdcli/downloads/libupnpp-%{version}.tar.gz.asc
 Source2:        https://www.lesbonscomptes.com/pages/jf-at-dockes.org.pub#/%{name}.keyring
 BuildRequires:  gcc-c++
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libcurl)
@@ -64,14 +65,15 @@ developing applications that use %{name}.
 
 %prep
 %autosetup
+# fix version
+sed -i 's/  soversion:.*/  version: '\''16.1.0'\'',/' meson.build
 
 %build
-%configure --disable-static
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*a" -delete -print
+%meson_install
 
 %post -p /sbin/ldconfig -n %{name}%{so_ver}
 %postun -p /sbin/ldconfig -n %{name}%{so_ver}
