@@ -266,4 +266,17 @@
   * Improve service scheduling at startup (#887)</comment>
     <requestid>1168505</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b08aa68d0bfcb971db6d37af5de07b18</srcmd5>
+    <version>4.5.2</version>
+    <time>1715615900</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.5.2
+  * Fix handling of timeperiods w/ downtime availability calculations 
+    in the Availability CGI report (Sebastian Wolf)
+  * Fix build when compiling against musl libc (#952) (Sebastian Wolf)
+  * Fix downtime comment using current time instead of the downtime's 
+    entry time (#910) (Dylan Anderson)</comment>
+    <requestid>1173606</requestid>
+  </revision>
 </revisionlist>

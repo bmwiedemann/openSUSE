@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 13 09:05:44 UTC 2024 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 4.5.2
+  * Fix handling of timeperiods w/ downtime availability calculations 
+    in the Availability CGI report (Sebastian Wolf)
+  * Fix build when compiling against musl libc (#952) (Sebastian Wolf)
+  * Fix downtime comment using current time instead of the downtime's 
+    entry time (#910) (Dylan Anderson)
+
+-------------------------------------------------------------------
 Tue Apr 16 14:11:00 UTC 2024 - Lars Vogdt <lars@linux-schulserver.de>
 
 - update to 4.5.1
