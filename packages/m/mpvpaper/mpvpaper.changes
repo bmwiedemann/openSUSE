@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 13 06:43:42 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6:
+  * Fix support for the Nvidia proprietary drivers
+    This required 3 edits found here: eaaed11 408092d 9a03925
+  * Change EGL errors into a more readable string
+  * Improve memory safety
+  * Reformat code and other various fixes
+  * Add detection of swww to the list of conflicting wallpapers
+
+-------------------------------------------------------------------
 Tue Apr 23 19:16:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.5:

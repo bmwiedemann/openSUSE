@@ -17,7 +17,7 @@
 
 
 Name:           mpvpaper
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        A video wallpaper program for wlroots based wayland compositors
 License:        GPL-3.0-or-later

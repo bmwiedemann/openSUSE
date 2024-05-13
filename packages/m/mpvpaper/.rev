@@ -115,4 +115,18 @@
   * Fix vo=libmpv not being set when empty for mpv 0.38</comment>
     <requestid>1169925</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>528d485fd8f3acb2995c98ce515865d3</srcmd5>
+    <version>1.6</version>
+    <time>1715615890</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.6:
+  * Fix support for the Nvidia proprietary drivers
+    This required 3 edits found here: eaaed11 408092d 9a03925
+  * Change EGL errors into a more readable string
+  * Improve memory safety
+  * Reformat code and other various fixes
+  * Add detection of swww to the list of conflicting wallpapers</comment>
+    <requestid>1173573</requestid>
+  </revision>
 </revisionlist>
