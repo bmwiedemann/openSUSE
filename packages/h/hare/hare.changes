@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 13 11:03:12 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add riscv64-correct-comments.patch to fix the build on riscv64.
+
+-------------------------------------------------------------------
 Sat Feb 17 01:02:16 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - First pre-release version of hare 0.24.0
