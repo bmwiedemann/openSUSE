@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May  5 19:57:56 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Pin to numpy < 2:  gh#vidartf/ipydatawidgets#62
+
+-------------------------------------------------------------------
 Tue Mar  5 18:47:31 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39: no longer supported since ipython 8.19 (through

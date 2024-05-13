@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python39 1
 %define mainver 4.3.5
 %define labver  7.1.2
 %define jupver  5.5.2
@@ -30,7 +29,7 @@ URL:            https://github.com/vidartf/ipydatawidgets
 Source0:        https://files.pythonhosted.org/packages/py2.py3/i/ipydatawidgets/ipydatawidgets-%{mainver}-py2.py3-none-any.whl
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module ipywidgets >= 7.0.0}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module numpy < 2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module traittypes >= 0.2.0}
 BuildRequires:  fdupes
@@ -42,7 +41,8 @@ BuildRequires:  %{python_module pytest}
 # /SECTION
 Requires:       jupyter-ipydatawidgets = %{jupver}
 Requires:       python-ipywidgets >= 7.0.0
-Requires:       python-numpy
+# https://github.com/vidartf/ipydatawidgets/issues/62
+Requires:       python-numpy < 2
 Requires:       python-traittypes >= 0.2.0
 Provides:       python-jupyter_ipydatawidgets = %{mainver}
 Obsoletes:      python-jupyter_ipydatawidgets < %{mainver}
