@@ -1,0 +1,12 @@
+Index: parcellite-1.2.4.0/src/parcellite.h
+===================================================================
+--- parcellite-1.2.4.0.orig/src/parcellite.h
++++ parcellite-1.2.4.0/src/parcellite.h
+@@ -22,7 +22,6 @@
+ #include <gtk/gtk.h>
+ #include <string.h>
+ #include <unistd.h>
+-#include <config.simple.h>
+ #include <stdlib.h>
+ #define PARCELLITE_PROG_NAME "parcellite"
+ #define PARCELLITE_ICON PARCELLITE_PROG_NAME

@@ -252,4 +252,35 @@
     <comment></comment>
     <requestid>1153420</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>85771c7f369d87f20603831e8188faa4</srcmd5>
+    <version>1.2.4.0</version>
+    <time>1715615905</time>
+    <user>anag+factory</user>
+    <comment>- Switch to https://github.com/rickyrockrat/parcellite
+  by the same person but containing newer tags than sf
+- Update to 1.2.2:
+  * Added Makefile.simple as a fix before changing autodiscover build system.
+  * Fixed issue with systemd logging output.
+  * Fixed bug with zero length history file.
+  * Added Disable clear history.
+  * Added manual Unity setting.
+  * Added save_history_Lineno preference for save as option
+  * Added fifo command to save history. echo &quot;save_history
+    /path/to/file&quot; &gt;/home/user/.local/share/parcellite/fifo_cmd
+  * Fixed bug where single and double quotes are lost when using xdotool
+    and keyboard input.
+- Update to 1.2.3:
+  * Added top_builddir definition for some intltools.
+  * Added basque translation.
+- Update to 1.2.4.0:
+  * Fixed span parse error for preferenced dialog.
+  * Move icon menu up 150 so it is not over systray, and history to top if not set in pref.
+  * Attempt to fix xdotool segfaulting when passed mis-matched quotes. This may break xdotool deps.
+  * Added install-bin, install-doc, and install-lang to support Alpine's sparse packages.
+- Update parcellite-1.1.7-defaults.patch
+- Add parcellite-1.2.4.0-simple.patch to remove non existing header
+- Run spec-cleaner</comment>
+    <requestid>1173607</requestid>
+  </revision>
 </revisionlist>

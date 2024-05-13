@@ -1,8 +1,8 @@
-Index: parcellite-1.1.7/src/preferences.c
+Index: parcellite-1.2.4.0/src/preferences.c
 ===================================================================
---- parcellite-1.1.7.orig/src/preferences.c
-+++ parcellite-1.1.7/src/preferences.c
-@@ -24,7 +24,7 @@
+--- parcellite-1.2.4.0.orig/src/preferences.c
++++ parcellite-1.2.4.0/src/preferences.c
+@@ -28,7 +28,7 @@ void setup_icon( void ); /**in main.c  *
  #define INIT_MENU_KEY         NULL
  
  #define DEF_USE_COPY          TRUE
@@ -11,7 +11,7 @@ Index: parcellite-1.1.7/src/preferences.c
  #define DEF_SYNCHRONIZE       FALSE
  #define DEF_SAVE_HISTORY      TRUE
  #define DEF_HISTORY_LIMIT     25
-@@ -35,10 +35,10 @@
+@@ -41,10 +41,10 @@ void setup_icon( void ); /**in main.c  *
  #define DEF_ITEM_LENGTH       50
  #define DEF_ITEM_LENGTH_MAX   200
  #define DEF_ELLIPSIZE         2
@@ -24,5 +24,5 @@ Index: parcellite-1.1.7/src/preferences.c
 +#define DEF_ACTIONS_KEY       ""
 +#define DEF_MENU_KEY          ""
  #define DEF_NO_ICON           FALSE
+ #define DEF_UNITY_ON          FALSE
  
- /**allow lower nibble to become the number of items of this type  */
