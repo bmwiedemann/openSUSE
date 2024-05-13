@@ -2480,6 +2480,7 @@ unsorted:
   - containerized-data-importer-uploadproxy 
   - containerized-data-importer-uploadserver 
   - containment-rpm 
+  - containment-tik-img-to-rpm 
   - contractor 
   - contrast 
   - contrast-lang 
@@ -3492,6 +3493,8 @@ unsorted:
   - echomixer 
   - eciadsl-usermode 
   - ecj 
+  - ecl 
+  - ecl-devel 
   - eclipse-anyedit 
   - eclipse-anyedit-javadoc 
   - eclipse-contributor-tools 
@@ -7262,6 +7265,9 @@ unsorted:
   - gnu-getopt 
   - gnu-getopt-javadoc 
   - gnu-netcat 
+  - gnu-recutils 
+  - gnu-recutils-devel 
+  - gnu-recutils-lang 
   - gnu-regexp 
   - gnu-regexp-demo 
   - gnu-regexp-javadoc 
@@ -12613,6 +12619,7 @@ unsorted:
   - libebur128-devel 
   - libecholib-devel 
   - libecholib1_3 
+  - libecl24_5 
   - libecm1 
   - libeconf-devel 
   - libeconf-devel-static 
@@ -15538,6 +15545,7 @@ unsorted:
   - librealsense-devel 
   - librealsense-examples 
   - librealsense2_54 
+  - librec1 
   - librecad 
   - librecad-parts 
   - librecode3 
@@ -17443,6 +17451,11 @@ unsorted:
   - lua-lmod-doc 
   - lua-macros 
   - lua-penlight-doc 
+  - lua-resty-core 
+  - lua-resty-lrucache 
+  - lua-resty-mysql 
+  - lua-resty-redis 
+  - lua-resty-websocket 
   - lua-rrdtool 
   - lua51 
   - lua51-BitOp 
@@ -35099,6 +35112,7 @@ unsorted:
   - readline-doc 
   - readline5-devel 
   - readline6-devel 
+  - readrec0 
   - reaim 
   - realmd 
   - realmd-lang 
@@ -37006,6 +37020,7 @@ unsorted:
   - telly-skout-lang 
   - telnet 
   - telnet-server 
+  - teluguvijayam-fonts 
   - template-glib-devel 
   - template-glib-lang 
   - template-resolver 
@@ -37212,6 +37227,7 @@ unsorted:
   - testdisk 
   - testng 
   - testng-javadoc 
+  - testrec0 
   - testssl.sh 
   - tetrinet-server 
   - tevent-man 
@@ -47459,7 +47475,6 @@ unsorted:
   - warewulf-provision-x86_64-initramfs 
   - warewulf-vnfs 
   - warewulf4 
-  - warewulf4-api 
   - warewulf4-man 
   - warewulf4-overlay 
   - warewulf4-overlay-slurm 
