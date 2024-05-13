@@ -1,0 +1,8 @@
+<package name="lua-resty-redis" project="openSUSE:Factory">
+  <title>lua-resty-redis</title>
+  <description>
+This Lua library is a Redis client driver for the ngx_lua nginx module.
+  </description>
+  <devel project="devel:languages:lua" package="lua-resty-redis"/>
+  <url>https://github.com/openresty/lua-resty-redis</url>
+</package>
