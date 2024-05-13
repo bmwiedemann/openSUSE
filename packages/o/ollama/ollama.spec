@@ -17,13 +17,13 @@
 
 
 Name:           ollama
-Version:        0.1.36
+Version:        0.1.37
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
 URL:            https://ollama.com
-Source:         %{name}-%{version}.tar.gz
-Source1:        vendor.tar.xz
+Source:         %{name}-%{version}.tar
+Source1:        vendor.tar.zstd
 Source2:        ollama.service
 Source3:        %{name}-user.conf
 Patch0:         enable-lto.patch
@@ -31,6 +31,7 @@ BuildRequires:  cmake >= 3.24
 BuildRequires:  gcc-c++ >= 11.4.0
 BuildRequires:  git
 BuildRequires:  sysuser-tools
+BuildRequires:  zstd
 BuildRequires:  golang(API) >= 1.22
 
 %{sysusers_requires}

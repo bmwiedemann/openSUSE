@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 12 19:05:53 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.1.37:
+  * Fixed issue where models with uppercase characters in the name
+    would not show with ollama list
+  * Fixed usage string for ollama create
+  * Fix finish_reason being "" instead of null in the Open-AI
+    compatible chat API.
+
+-------------------------------------------------------------------
+Sun May 12 15:20:28 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Use obs_scm service instead of the deprecated tar_scm
+- Use zstd for vendor tarball compression 
+
+-------------------------------------------------------------------
 Sun May 12 01:39:26 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.1.36:
