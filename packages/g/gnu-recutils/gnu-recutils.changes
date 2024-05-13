@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Sun Apr 17 08:48:23 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU recutils 1.9
+  * Fix bug preventing recins and recset to work when /tmp is
+    in a different mount point.
+  * Fix a segfault that occured when csv2rec was presented with
+    invalid data.
+  * Fix long option name for -j/--join.
+  * Format: New special field %singular to mark fields whose
+    contents must be unique in the containing record set.
+  * librec: Fix a segmentation fault when there are blank
+    characters before the list of fields in %type fields.
+  * Other fixes: CVE-2021-46019, CVE-2021-46022, CVE-2021-46022
+- add upstream signing key and verify source signature
+- drop gnu-recutils-rpmlintrc, no longer needed
+
+-------------------------------------------------------------------
+Tue Apr 13 14:34:02 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+  - Update to version 1.8
+  * Utilities:
+    + Fix the build of readrec with recent bash headers.
+  * librec:
+    + Fix evaluation of sexes containing #NAME expressions.
+    + Make numeric results from aggregated functions signed.
+  * readred:
+    + readrec --help now shows the help message and returns,
+    + instead of waiting for input.
+  * Emacs mode:
+    + rec-mode.el now supports case-insensitive searches.
+    + rec-mode.el now defines it's own faces.
+    + ob-rec.el was switched to lexical binding to satisfy later
+    + org-mode versions.
+  * It is now possible to run the testsuite in parallel.
+  * Other fixes:
+    + gnulib updated.
+    + Aggregate functions now work properly in Aarch64 and
+      powerpc.
+- Drop recutils-1.7-fix_implicit_declarations.patch,
+  recutils-1.7-fix_manpages.patch and
+  recutils-1.7-bash_includedirs.patch (merged upstream)
+
+-------------------------------------------------------------------
+Sun Nov  5 21:37:19 UTC 2017 - aloisio@gmx.com
+
+- Initial package (v1.7)
