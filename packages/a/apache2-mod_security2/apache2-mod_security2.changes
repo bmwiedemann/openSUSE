@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  7 13:16:44 UTC 2024 - pgajdos@suse.com
+
+- added patches
+  fix fix build with gcc14
+  + apache2-mod_security2-gcc14.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 11:02:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_security2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,8 @@ Patch1:         modsecurity-fixes.patch
 Patch2:         apache2-mod_security2_tests_conf.patch
 # https://github.com/SpiderLabs/ModSecurity/issues/2514
 Patch3:         modsecurity-2.9.3-input_filtering_errors.patch
+# fix build with gcc14
+Patch4:         apache2-mod_security2-gcc14.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  apache2-prefork
@@ -68,6 +70,7 @@ mv -v SpiderLabs* rules
 %patch -P 1 -p1
 %patch -P 2 -p1
 %patch -P 3 -p1
+%patch4 -p1
 
 %build
 aclocal

@@ -1,0 +1,35 @@
+Index: modsecurity-2.9.7/tests/msc_test.c
+===================================================================
+--- modsecurity-2.9.7.orig/tests/msc_test.c
++++ modsecurity-2.9.7/tests/msc_test.c
+@@ -81,7 +81,7 @@ char DSOLOCAL *real_server_signature = N
+ int DSOLOCAL remote_rules_fail_action = REMOTE_RULES_ABORT_ON_FAIL;
+ char DSOLOCAL *remote_rules_fail_message = NULL;
+ module AP_MODULE_DECLARE_DATA security2_module = {
+-    NULL,
++    STANDARD20_MODULE_STUFF,
+     NULL,
+     NULL,
+     NULL,
+Index: modsecurity-2.9.7/standalone/config.c
+===================================================================
+--- modsecurity-2.9.7.orig/standalone/config.c
++++ modsecurity-2.9.7/standalone/config.c
+@@ -989,7 +989,7 @@ AP_DECLARE(const char *) process_fnmatch
+         const char *rootpath, *filepath = fname;
+ 
+         /* locate the start of the directories proper */
+-        status = apr_filepath_root(&rootpath, &filepath, APR_FILEPATH_TRUENAME | APR_FILEPATH_NATIVE, ptemp);
++        status = apr_filepath_root((const char **) &rootpath, (const char **) &filepath, APR_FILEPATH_TRUENAME | APR_FILEPATH_NATIVE, ptemp);
+ 
+         /* we allow APR_SUCCESS and APR_EINCOMPLETE */
+         if (APR_ERELATIVE == status) {
+@@ -1104,7 +1104,7 @@ ProcessInclude:
+ 				incpath = w;
+ 
+ 				/* locate the start of the directories proper */
+-				status = apr_filepath_root(&rootpath, &incpath, APR_FILEPATH_TRUENAME | APR_FILEPATH_NATIVE, ptemp);
++				status = apr_filepath_root((const char**) &rootpath, (const char **) &incpath, APR_FILEPATH_TRUENAME | APR_FILEPATH_NATIVE, ptemp);
+ 
+ 				/* we allow APR_SUCCESS and APR_EINCOMPLETE */
+ 				if (APR_ERELATIVE == status) {

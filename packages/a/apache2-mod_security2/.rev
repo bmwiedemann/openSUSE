@@ -269,4 +269,14 @@ Many of the files in the rules/ subdirectory are GPL-2.0 licensed (forwarded req
     <comment>Prepare for RPM 4.20 (forwarded request 1147828 from dimstar)</comment>
     <requestid>1149082</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>e391699ff8915fd9ef34673d1d936e47</srcmd5>
+    <version>2.9.7</version>
+    <time>1715615903</time>
+    <user>anag+factory</user>
+    <comment>- added patches
+  fix fix build with gcc14
+  + apache2-mod_security2-gcc14.patch (forwarded request 1172451 from pgajdos)</comment>
+    <requestid>1173611</requestid>
+  </revision>
 </revisionlist>
