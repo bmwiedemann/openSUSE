@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 10 13:56:57 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 1.35.4:
+  * [release-1.35] Bump to Buildah v1.35.4
+  * [release-1.35] CVE-2024-3727 updates (bsc#1224117)
+  * integration test: handle new labels in "bud and test --unsetlabel"
+  * [release-1.35] Bump go-jose CVE-2024-28180
+  * [release-1.35] Bump ocicrypt and go-jose CVE-2024-28180
+
+-------------------------------------------------------------------
 Tue Apr 02 12:49:59 UTC 2024 - dcermak@suse.com
 
 - Update to version 1.35.3:
