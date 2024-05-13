@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 13 06:47:52 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update 0.8.5:
+  * Use C:\Users\username\AppData\Local instead of C:\Users\username\AppData\Roaming
+  * Fix Fish return codes
+  * Allow colors to be configured in a new optional config.toml
+  * Paste in emacs mode
+
+-------------------------------------------------------------------
 Mon Dec 25 07:49:21 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.4:

@@ -63,4 +63,16 @@
   * Add deprecation warning on brew tap.</comment>
     <requestid>1135079</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f32c10786060b22f6e2aadf83e7883e7</srcmd5>
+    <version>0.8.5+0</version>
+    <time>1715615893</time>
+    <user>anag+factory</user>
+    <comment>- Update 0.8.5:
+  * Use C:\Users\username\AppData\Local instead of C:\Users\username\AppData\Roaming
+  * Fix Fish return codes
+  * Allow colors to be configured in a new optional config.toml
+  * Paste in emacs mode</comment>
+    <requestid>1173575</requestid>
+  </revision>
 </revisionlist>
