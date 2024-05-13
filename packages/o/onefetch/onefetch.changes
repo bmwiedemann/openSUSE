@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 13 06:29:58 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.21.0:
+  * Add CLI option to force URL format to HTTP instead of SSH #1314
+  * Add CLI flag to hide token from repository URL #1319
+  * Make Lua logo more readable on dark terminal #1337
+  * Fix deadlock in Churn computation #1316
+  * Exclude bot commits from churn when --no-bots option is used #1335
+  * [onefetch.dev] switch to dark theme #1297
+  * RUSTSEC-2024-0320: remove yaml-rust dependency #1309
+  * Refactor --no-bots CLI option #1340
+
+-------------------------------------------------------------------
 Mon Mar 18 07:59:33 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.20.0:

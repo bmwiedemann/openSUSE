@@ -408,4 +408,20 @@
   * lang: Adding Oz programming language #1280</comment>
     <requestid>1158901</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ec8a73ecf6031ffa57f9e58e2a2eaae8</srcmd5>
+    <version>2.21.0+0</version>
+    <time>1715615892</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.21.0:
+  * Add CLI option to force URL format to HTTP instead of SSH #1314
+  * Add CLI flag to hide token from repository URL #1319
+  * Make Lua logo more readable on dark terminal #1337
+  * Fix deadlock in Churn computation #1316
+  * Exclude bot commits from churn when --no-bots option is used #1335
+  * [onefetch.dev] switch to dark theme #1297
+  * RUSTSEC-2024-0320: remove yaml-rust dependency #1309
+  * Refactor --no-bots CLI option #1340</comment>
+    <requestid>1173572</requestid>
+  </revision>
 </revisionlist>

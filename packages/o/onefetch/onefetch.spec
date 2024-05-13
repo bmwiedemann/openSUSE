@@ -17,7 +17,7 @@
 
 
 Name:           onefetch
-Version:        2.20.0+0
+Version:        2.21.0+0
 Release:        0
 Summary:        Git repository summary on your terminal
 License:        GPL-2.0-only AND MIT
