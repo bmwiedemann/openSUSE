@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May  9 16:47:00 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Reenable all tests
+  https://github.com/cli/cli/issues/8928 looks resolved.
+- Update to version 2.49.1:
+  * Fix `attestation verify` source repository check bug
+  * Fix unused params across project
+  * Add support for jobs with long filenames
+  * Run `attestation` command set integration tests separately
+  * build(deps): bump golang.org/x/net from 0.22.0 to 0.23.0
+  * Adjust short and long to be the same
+  * Do not mutate headers when initialising tableprinter
+  * Document relationship between host and active account
+
+-------------------------------------------------------------------
 Wed May 01 05:03:58 UTC 2024 - pdostal@suse.com
 
 - Update to version 2.49.0:
