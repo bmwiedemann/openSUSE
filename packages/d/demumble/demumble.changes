@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 13 00:30:01 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.2.3:
+  * Update LLVM demangling libraries to a new version
+  * Build using C++17
+  * Don't silently omit suffices on ms symbols
+
+-------------------------------------------------------------------
 Tue May 19 05:17:40 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Initial release on OBS 

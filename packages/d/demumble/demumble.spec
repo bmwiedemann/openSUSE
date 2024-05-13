@@ -2,6 +2,7 @@
 # spec file for package demumble
 #
 # Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           demumble
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        A better c++filt and a better undname.exe, in one binary
 License:        Apache-2.0
@@ -33,21 +34,20 @@ BuildRequires:  python3-base
 demumble demangles both Itanium and Visual Studio symbols. It runs on both POSIX and Windows.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %define __builder ninja
 %cmake
 %cmake_build
 
+%install
+install -D -m 0755 build/%{name} %{buildroot}%{_bindir}/%{name}
+
 %check
 cd build
 cp ../demumble_test.py .
 python3 ./demumble_test.py
-
-%install
-install -D -m 0755 build/%{name} %{buildroot}%{_bindir}/%{name}
 
 %files
 %license LICENSE
