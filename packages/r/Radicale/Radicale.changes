@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May  5 10:21:51 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
+
+- Update to 3.2.0
+  * Enhancement: add hook support for event changes+deletion hooks (initial support: "rabbitmq")
+  * Dependency: pika >= 1.1.0
+  * Enhancement: add support for webcal subscriptions
+  * Enhancement: major update of WebUI (design+features)
+  * Adjust: change default loglevel to "info"
+  * Enhancement: support "expand-property" on REPORT request
+  * Drop: support for Python 3.7 (EOSL, can't be tested anymore)
+  * Fix: allow quoted-printable encoding for vObjects
+
+-------------------------------------------------------------------
 Mon Mar 18 08:22:57 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
 
 - Update to 3.1.9

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 12 12:19:06 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.58.0:
+  * Produces better diffs by preserving parsed structure, trading
+    off showing fewer changes in case of parse errors
+  * Update C, C++, CMake, CSS, Elm, Go, Lua and Python parsers
+  * --strip-cr now defaults to on
+  * add a manpage
+  * Fix a memory leak and improved performance in some cases
+  * Fix a crash when unable to detect the terminal width (eshell)
+  * Considers $COLUMNS when detecting the terminal width
+
+-------------------------------------------------------------------
 Tue Apr  9 19:52:08 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - 0.57.0:

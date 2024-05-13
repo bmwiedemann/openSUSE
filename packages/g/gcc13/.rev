@@ -331,4 +331,13 @@
   which is no longer supported by llvm18.</comment>
     <requestid>1171314</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>52dca181008d507483ab3b03a6fa679d</srcmd5>
+    <version>13.2.1+git8761</version>
+    <time>1715547160</time>
+    <user>anag+factory</user>
+    <comment>- Update to gcc-13 branch head, b7a2697733d19a093cbdd0e200, git8761
+- Removed gcc13-pr111731.patch now included upstream</comment>
+    <requestid>1173185</requestid>
+  </revision>
 </revisionlist>

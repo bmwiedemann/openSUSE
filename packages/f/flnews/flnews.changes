@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May  6 20:38:18 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.1
+  * Potential crash fixed if an article is selected while article
+    tree/list widget update is still in progress (race condition).
+  * FLTK 1.3 may crash if Fl_Text_Display widget contains very long
+    lines. With FLTK 1.3 articles containing lines beyond 1000
+    octets are no longer displayed. It's still possible to store
+    the raw data to a file. With FLTK 1.4 the behaviour is unchanged.
+  * Inconsistent permissions of created files fixed.
+  * Conversion from multiple seldom used 8-bit codepages to Unicode
+    fixed.
+  * Unicode database updated to version 15.1.0.
+  * Connector lines in article tree are now solid for better
+    visibility.
+
+-------------------------------------------------------------------
 Sun Aug 27 13:50:46 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.0

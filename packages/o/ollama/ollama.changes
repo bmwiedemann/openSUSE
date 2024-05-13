@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sun May 12 01:39:26 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.1.36:
+  * Fixed exit status 0xc0000005 error with AMD graphics cards on Windows
+  * Fixed rare out of memory errors when loading a model to run with CPU
+
+- Update to version 0.1.35:
+  * New models: Llama 3 ChatQA: A model from NVIDIA based on Llama
+    3 that excels at conversational question answering (QA) and
+    retrieval-augmented generation (RAG).
+  * Quantization: ollama create can now quantize models when
+    importing them using the --quantize or -q flag
+  * Fixed issue where inference subprocesses wouldn't be cleaned up
+    on shutdown.
+  * Fixed a series out of memory errors when loading models on
+    multi-GPU systems
+  * Ctrl+J characters will now properly add newlines in ollama run
+  * Fixed issues when running ollama show for vision models
+  * OPTIONS requests to the Ollama API will no longer result in
+    errors
+  * Fixed issue where partially downloaded files wouldn't be
+    cleaned up
+  * Added a new done_reason field in responses describing why
+    generation stopped responding
+  * Ollama will now more accurately estimate how much memory
+    is available on multi-GPU systems especially when running
+    different models one after another
+
+- Update to version 0.1.34:
+  * New model: Llava Llama 3
+  * New model: Llava Phi 3
+  * New model: StarCoder2 15B Instruct
+  * New model: CodeGemma 1.1
+  * New model: StableLM2 12B
+  * New model: Moondream 2
+  * Fixed issues with LLaVa models where they would respond 
+    incorrectly after the first request
+  * Fixed out of memory errors when running large models such as 
+    Llama 3 70B
+  * Fixed various issues with Nvidia GPU discovery on Linux and 
+    Windows
+  * Fixed a series of Modelfile errors when running ollama create
+  * Fixed no slots available error that occurred when cancelling a
+    request and then sending follow up requests
+  * Improved AMD GPU detection on Fedora
+  * Improved reliability when using the experimental
+    OLLAMA_NUM_PARALLEL and OLLAMA_MAX_LOADED flags
+  * ollama serve will now shut down quickly, even if a model is
+    loading
+
+- Update to version 0.1.33:
+  * New model: Llama 3
+  * New model: Phi 3 Mini
+  * New model: Moondream
+  * New model: Llama 3 Gradient 1048K
+  * New model: Dolphin Llama 3
+  * New model: Qwen 110B
+  * Fixed issues where the model would not terminate, causing the 
+    API to hang.
+  * Fixed a series of out of memory errors on Apple Silicon Macs
+  * Fixed out of memory errors when running Mixtral architecture 
+    models
+  * Aded experimental concurrency features:
+    ~ OLLAMA_NUM_PARALLEL: Handle multiple requests simultaneously 
+      for a single model
+    ~ OLLAMA_MAX_LOADED_MODELS: Load multiple models simultaneously
+
+-------------------------------------------------------------------
 Tue Apr 23 02:26:34 UTC 2024 - rrahl0@disroot.org
 
 - Update to version 0.1.32:

@@ -55,7 +55,7 @@
 %define llvm_version 17
 # GCC version
 %define gcc_version 13
-%if 0%{?suse_version} < 1699
+%if 0%{?suse_version} <= 1699
 %bcond_with system_re2
 %bcond_with system_webp
 %else
@@ -92,7 +92,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        122.0.6261.128
+Version:        124.0.6367.201
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -133,7 +133,6 @@ Patch202:       chromium-prop-codecs.patch
 Patch203:       chromium-106-ffmpeg-duration.patch
 Patch205:       chromium-disable-GlobalMediaControlsCastStartStop.patch
 Patch224:       chromium-115-compiler-SkColor4f.patch
-Patch238:       chromium-117-blink-BUILD-mnemonic.patch
 Patch240:       chromium-117-string-convert.patch
 Patch244:       chromium-117-system-zstd.patch
 Patch248:       chromium-119-assert.patch
@@ -142,16 +141,21 @@ Patch254:       chromium-120-emplace-struct.patch
 Patch256:       chromium-120-make_unique-struct.patch
 Patch258:       chromium-121-nullptr_t-without-namespace-std.patch
 Patch261:       chromium-121-rust-clang_lib.patch
-Patch265:       chromium-121-blink-libxml-const.patch
 Patch311:       chromium-disable-FFmpegAllowLists.patch
 Patch316:       chromium-122-missing-header-files.patch
 Patch317:       chromium-122-no_matching_constructor.patch
-Patch318:       chromium-122-avoid-SFINAE-TypeConverter.patch
 Patch322:       chromium-122-lp155-typename.patch
 Patch324:       chromium-122-workaround_clang_bug-structured_binding.patch
-Patch325:       chromium-122-PA-undo-internal-alloc.patch
-Patch326:       chromium-122-BookmarkNode-missing-operator.patch
-Patch327:       chromium-122-WebUI-static_assert.patch
+Patch326:       chromium-123-stats-collector.patch
+Patch328:       chromium-124-angle-powf.patch
+Patch329:       chromium-124-atomic.patch
+Patch330:       chromium-124-extractor-bitset.patch
+Patch331:       chromium-124-fps-optional.patch
+Patch332:       chromium-124-span-optional.patch
+Patch333:       chromium-124-uint-includes.patch
+Patch334:       chromium-124-webgpu-optional.patch
+Patch336:       chromium-124-system-libxml.patch
+Patch337:       chromium-123-missing-QtGui.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -335,10 +339,12 @@ BuildRequires:  pkgconfig(libyuv)
 %endif
 %if %{with qt}
 BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
 %endif
 %if %{with qt6}
 BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Widgets)
 %endif
 %if %{with system_re2}
@@ -348,7 +354,7 @@ BuildRequires:  pkgconfig(re2) >= 11
 BuildRequires:  pkgconfig(libwebp) >= 0.4.0
 %endif
 %if %{with system_zstd}
-BuildRequires:  pkgconfig(libzstd) = 1.5.5
+BuildRequires:  pkgconfig(libzstd) >= 1.5.5
 %endif
 %if %{with clang}
 %if 0%{?suse_version} < 1570
@@ -401,7 +407,7 @@ patch -R -p1 < %{SOURCE5}
 patch -R -p1 < %{SOURCE4}
 %endif
 %if %{with libxml2_2_12}
-patch -R -p1 < %{PATCH265}
+patch -R -p1 < %{PATCH336}
 %endif
 
 %build
@@ -532,7 +538,6 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/mitt
     third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/rxjs
     third_party/devtools-frontend/src/front_end/third_party/wasmparser
-    third_party/devtools-frontend/src/test/unittests/front_end/third_party/i18n
     third_party/devtools-frontend/src/third_party
     third_party/distributed_point_functions
     third_party/dom_distiller_js
@@ -603,7 +608,6 @@ keeplibs=(
     third_party/ots
     third_party/pdfium
     third_party/pdfium/third_party/agg23
-    third_party/pdfium/third_party/base
     third_party/pdfium/third_party/bigint
     third_party/pdfium/third_party/freetype
     third_party/pdfium/third_party/lcms
@@ -678,6 +682,7 @@ keeplibs=(
     v8/third_party/glibc
     v8/third_party/inspector_protocol
     v8/third_party/v8/builtins
+    v8/third_party/v8/codegen
 )
 %if !%{with system_harfbuzz}
 keeplibs+=(
@@ -708,18 +713,18 @@ keeplibs+=(
 keeplibs+=( third_party/libyuv )
 keeplibs+=( third_party/libavif )
 %endif
+%if !%{with system_webp} || !%{with system_avif}
+keeplibs+=( third_party/libwebp )
+%endif
 # needed due to bugs in GN
 keeplibs+=(
     third_party/speech-dispatcher
     third_party/usb_ids
     third_party/xdg-utils
 )
-%if !%{with system_re2}
+# really if not with system_re2 but googletest needs it
 keeplibs+=( third_party/re2 )
-%endif
-%if !%{with system_webp}
-keeplibs+=( third_party/libwebp )
-%endif
+#endif
 %if !%{with system_zstd}
 keeplibs+=( third_party/zstd )
 %endif
@@ -791,7 +796,7 @@ export CFLAGS="${CXXFLAGS}"
 %if %{without clang}
 export CXXFLAGS="${CXXFLAGS} -Wno-subobject-linkage -Wno-class-memaccess"
 %endif
-export CXXFLAGS="${CXXFLAGS} -Wno-invalid-offsetof -fpermissive"
+export CXXFLAGS="${CXXFLAGS} -Wno-invalid-offsetof -U_GLIBCXX_ASSERTIONS -fpermissive"
 export RUSTFLAGS
 
 # do not eat all memory

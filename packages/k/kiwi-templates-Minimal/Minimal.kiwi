@@ -340,7 +340,6 @@
         <!-- Require 1.2.0.0 for proper NM support.
              Not sure whether this syntax is intentionally supported but it appears to work. -->
         <package name="jeos-firstboot &gt;= 1.2.0.0"/>
-        <package name="fbiterm"/> <!-- Optionally used by jeos-firstboot for non-latin fonts -->
 
         <!-- Not useful with Cloud -->
         <package name="firewalld"/>
@@ -389,7 +388,6 @@
         <package name="cloud-init"/>
         <package name="cloud-init-config-suse"/>
         <package name="jeos-firstboot"/>
-        <package name="fbiterm"/>
         <package name="xfsprogs"/>
         <package name="kernel-default-base"/>
     </packages>

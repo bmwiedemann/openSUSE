@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 10 11:56:22 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Drop fbiterm (jsc#PED-3655)
+
+-------------------------------------------------------------------
 Mon Apr 15 13:52:26 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Add kernel-firmware-bluetooth (bsc#1219216)

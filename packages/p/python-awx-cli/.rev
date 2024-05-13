@@ -7,4 +7,12 @@
     <comment>new package python-awx-cli: CLI for the AWX Ansible web UI (the upstream of Ansible Automation Platform)</comment>
     <requestid>1142011</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>06210e9467be67a6039602370e06611f</srcmd5>
+    <version>24.3.1</version>
+    <time>1715547259</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1173482</requestid>
+  </revision>
 </revisionlist>

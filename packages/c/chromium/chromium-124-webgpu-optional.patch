@@ -1,0 +1,26 @@
+commit 15e24abc1646ad9984923234a041cd0c3b8b1607
+Author: Jose Dapena Paz <jdapena@igalia.com>
+Date:   Tue Mar 19 16:21:06 2024 +0000
+
+    IWYU: missing include for usage of std::optional in gpu_adapter_info.h
+    
+    Bug: 41455655
+    Change-Id: I42d6c9f99ea7718fa87267ebcf3368d0f46f5053
+    Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5374260
+    Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+    Reviewed-by: Austin Eng <enga@chromium.org>
+    Cr-Commit-Position: refs/heads/main@{#1274974}
+
+diff --git a/third_party/blink/renderer/modules/webgpu/gpu_adapter_info.h b/third_party/blink/renderer/modules/webgpu/gpu_adapter_info.h
+index 70b15d5c055aa..2084afbe6e877 100644
+--- a/third_party/blink/renderer/modules/webgpu/gpu_adapter_info.h
++++ b/third_party/blink/renderer/modules/webgpu/gpu_adapter_info.h
+@@ -5,6 +5,8 @@
+ #ifndef THIRD_PARTY_BLINK_RENDERER_MODULES_WEBGPU_GPU_ADAPTER_INFO_H_
+ #define THIRD_PARTY_BLINK_RENDERER_MODULES_WEBGPU_GPU_ADAPTER_INFO_H_
+ 
++#include <optional>
++
+ #include "third_party/blink/renderer/platform/bindings/script_wrappable.h"
+ #include "third_party/blink/renderer/platform/heap/collection_support/heap_vector.h"
+ #include "third_party/blink/renderer/platform/wtf/text/wtf_string.h"

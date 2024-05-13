@@ -1,7 +1,7 @@
 #
 # spec file for package baresip
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%global sover   12
+%global sover   15
 %global libname lib%{name}%{sover}
 Name:           baresip
-Version:        3.8.0
+Version:        3.11.0
 Release:        0
 Summary:        Modular SIP useragent
 License:        BSD-3-Clause
@@ -30,7 +30,8 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ilbc-devel
 BuildRequires:  jack-devel
-BuildRequires:  openssl-devel
+#BuildRequires:  openssl-devel
+BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sndio-devel
 BuildRequires:  pkgconfig(alsa)

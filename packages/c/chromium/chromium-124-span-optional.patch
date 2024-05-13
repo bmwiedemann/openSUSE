@@ -1,0 +1,26 @@
+commit b3330cb62d7be253a5b99e40b88e2290c329ac08
+Author: Jose Dapena Paz <jdapena@igalia.com>
+Date:   Tue Mar 19 19:05:35 2024 +0000
+
+    IWYU: missing include for std::optional usage in span_reader.h
+    
+    Bug: 41455655
+    Change-Id: I13cc54ea91d4b02b170213e471c01fd5fc28394c
+    Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5374258
+    Reviewed-by: Daniel Cheng <dcheng@chromium.org>
+    Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+    Cr-Commit-Position: refs/heads/main@{#1275094}
+
+diff --git a/base/containers/span_reader.h b/base/containers/span_reader.h
+index 6b67b436bd9c1..3f323fd57a550 100644
+--- a/base/containers/span_reader.h
++++ b/base/containers/span_reader.h
+@@ -5,6 +5,8 @@
+ #ifndef BASE_CONTAINERS_SPAN_READER_H_
+ #define BASE_CONTAINERS_SPAN_READER_H_
+ 
++#include <optional>
++
+ #include "base/containers/span.h"
+ #include "base/numerics/safe_conversions.h"
+ 

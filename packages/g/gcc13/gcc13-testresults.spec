@@ -221,7 +221,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.2.1+git8285
+Version:        13.2.1+git8761
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -404,7 +404,6 @@ Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
 Patch21:        gdcflags.patch
 Patch23:        gcc13-bsc1216664.patch
 Patch24:        gcc13-sanitizer-remove-crypt-interception.patch
-Patch25:        gcc13-pr111731.patch
 Patch26:        gcc13-pr101523.patch
 Patch27:        gcc13-amdgcn-remove-fiji.patch
 # A set of patches from the RH srpm
@@ -550,7 +549,6 @@ ln -s newlib-4.3.0.20230120/newlib .
 %patch -P 21 -p1
 %patch -P 23 -p1
 %patch -P 24 -p1
-%patch -P 25 -p1
 %patch -P 26 -p1
 %patch -P 27 -p1
 %patch -P 51

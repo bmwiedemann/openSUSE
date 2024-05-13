@@ -1,0 +1,12 @@
+diff --git a/ui/qt/BUILD.gn b/ui/qt/BUILD.gn.new
+index 2da7845..02ae3c8 100644
+--- a/ui/qt/BUILD.gn
++++ b/ui/qt/BUILD.gn
+@@ -61,6 +61,7 @@ template("qt_shim") {
+     packages = [
+       "Qt" + invoker.qt_version + "Core",
+       "Qt" + invoker.qt_version + "Widgets",
++      "Qt" + invoker.qt_version + "Gui",
+     ]
+   }
+ 

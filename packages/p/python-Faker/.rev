@@ -680,4 +680,14 @@
   * Add address words for `cs_CZ`.</comment>
     <requestid>1171536</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>b0d05baa886f5395f99cc7136279ef19</srcmd5>
+    <version>25.1.0</version>
+    <time>1715547156</time>
+    <user>anag+factory</user>
+    <comment>- update to 25.1.0:
+  * Add geo for `pl_PL`. Thanks @george0st.
+  * Add geo for `sk_SK`. Thanks @george0st.</comment>
+    <requestid>1173187</requestid>
+  </revision>
 </revisionlist>

@@ -1096,4 +1096,12 @@
   * Added cache line size detection for some architectures.</comment>
     <requestid>1168473</requestid>
   </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>6c3e9cd13302b4b3431557c2b8851ceb</srcmd5>
+    <version>1.25.5</version>
+    <time>1715547158</time>
+    <user>anag+factory</user>
+    <comment>- Updated list of recommended modules (deleted unavailable in TW).</comment>
+    <requestid>1173379</requestid>
+  </revision>
 </revisionlist>

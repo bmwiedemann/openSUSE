@@ -60,10 +60,8 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
 %requires_eq    perl
-Recommends:     %{name}-module-fancyindex
-Recommends:     %{name}-module-geoip2
-Recommends:     %{name}-module-headers-more
-Recommends:     %{name}-module-http-flv
+Recommends:     %{name}-module-echo
+Recommends:     %{name}-module-lua
 Recommends:     logrotate
 Provides:       http_daemon
 Provides:       httpd

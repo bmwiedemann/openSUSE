@@ -129,4 +129,12 @@
     <comment>- Add kernel-firmware-bluetooth (bsc#1219216)</comment>
     <requestid>1167822</requestid>
   </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>455fc4faad6fa0fc44eae1228c5a0a17</srcmd5>
+    <version>84.87.1</version>
+    <time>1715547155</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1173098</requestid>
+  </revision>
 </revisionlist>

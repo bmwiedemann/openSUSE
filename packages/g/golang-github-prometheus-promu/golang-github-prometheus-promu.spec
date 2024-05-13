@@ -19,7 +19,7 @@
 %define shortname promu
 
 Name:           golang-github-prometheus-promu
-Version:        0.15.0
+Version:        0.17.0
 Release:        0
 Summary:        Prometheus Utility Tool
 License:        Apache-2.0
@@ -27,18 +27,15 @@ Group:          System/Management
 URL:            https://github.com/prometheus/promu
 Source:         %{shortname}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-# PATCH-FIX-UPSTREAM Fix setting reproducible user and host during the build
-# https://github.com/prometheus/promu/pull/267
-Patch1:         0001-do_not_discover_user_host_for_reproducible_builds.patch
 # PATCH-FIX-OPENSUSE Do not pass -static to external linker by default
 Patch2:         extldflags-no-static.patch
 ExcludeArch:    s390
 %if 0%{?rhel}
 # Fix ERROR: No build ID note found in
 %undefine _missing_build_ids_terminate_build
-BuildRequires:  golang >= 1.19
+BuildRequires:  golang >= 1.21
 %else
-BuildRequires:  golang(API) >= 1.19
+BuildRequires:  golang(API) >= 1.21
 %endif
 
 %description

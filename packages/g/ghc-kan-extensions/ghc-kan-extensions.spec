@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-kan-extensions
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %global pkg_name kan-extensions
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        5.2.5
+Version:        5.2.6
 Release:        0
 Summary:        Kan extensions, Kan lifts, the Yoneda lemma, and (co)density (co)monads
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-adjunctions-devel
 BuildRequires:  ghc-adjunctions-prof
@@ -54,8 +53,6 @@ BuildRequires:  ghc-semigroupoids-devel
 BuildRequires:  ghc-semigroupoids-prof
 BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-tagged-prof
-BuildRequires:  ghc-transformers-compat-devel
-BuildRequires:  ghc-transformers-compat-prof
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
 ExcludeArch:    %{ix86}
@@ -92,7 +89,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

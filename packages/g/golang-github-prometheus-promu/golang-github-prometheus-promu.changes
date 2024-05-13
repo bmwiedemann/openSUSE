@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Apr 20 11:43:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.0:
+  * [FEATURE] Add codesign utility function #284
+
+-------------------------------------------------------------------
+Sat Apr 20 11:41:19 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- drop patch
+  0001-do_not_discover_user_host_for_reproducible_builds.patch that
+  was merged upstream
+  (https://github.com/prometheus/promu/pull/267)
+- BuildRequire go1.21 as upstream does
+- Update to version 0.16.0:
+  * [FEATURE] Do not discover user/host for reproducible builds
+    #267
+  * [BUGFIX] Fix example/prometheus build error #274
+
+-------------------------------------------------------------------
 Sat Feb 10 04:51:27 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:

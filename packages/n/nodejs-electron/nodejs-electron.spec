@@ -192,6 +192,12 @@ BuildArch:      i686
 %endif
 
 
+%if 0%{?suse_version}
+%{expand:%%global NODEJS_DEFAULT_VER %(echo %{nodejs_version}|sed 's/\..*//')}
+%else
+%global NODEJS_DEFAULT_VER %nil
+%endif
+
 # We always ship the following bundled libraries as part of Electron despite a system version being available in either openSUSE or Fedora:
 # Name         | Path in tarball                   | Reason
 # -------------+-----------------------------------+---------------------------------------
@@ -238,6 +244,7 @@ Source450:      wayland-proto-31-cursor-shape.patch
 # PATCHES for openSUSE-specific things (compiler flags, paths, etc.)
 Patch0:         chromium-102-compiler.patch
 Patch1:         fpic.patch
+Patch2:         common.gypi-compiler.patch
 Patch3:         gcc-enable-lto.patch
 Patch7:         chromium-91-java-only-allowed-in-android-builds.patch
 # Always disable use_thin_lto which is an lld feature
@@ -437,6 +444,9 @@ BuildRequires:  ninja-build >= 1.7.2
 BuildRequires:  nodejs-npm
 %else
 BuildRequires:  npm
+%endif
+%if 0%{?suse_version}
+BuildRequires: nodejs-packaging
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  plasma-wayland-protocols
@@ -679,6 +689,11 @@ Summary:        Electron development headers
 Group:          Development/Libraries/C and C++
 Requires:       nodejs-electron%{_isa} = %{version}
 Requires:       pkgconfig(zlib)
+%if 0%{?suse_version}
+Requires:       npm%{NODEJS_DEFAULT_VER}
+%else
+Requires:       nodejs-npm
+%endif
 
 
 %description devel
@@ -1373,10 +1388,83 @@ popd
 
 cp -lrvT out/Release/gen/node_headers/include/node %{buildroot}%{_includedir}/electron
 
+# Electron has a little known feature that make it work like a nodejs binary.
+# We make use of it in the %%electron_rebuild macro which builds all dependencies in node_modules against Electron's headers.
+# Not all scripts work when run under electron,
+# but importantly npm/yarn and GYP do.
+mkdir -pv %{buildroot}%{_libexecdir}/electron-node
+
+
+cat <<EOF > %{buildroot}%{_libexecdir}/electron-node/node
+#!/bin/sh
+ELECTRON_RUN_AS_NODE=1 exec %{_libdir}/electron/electron "\$@"
+EOF
+
+# HACK: This will refer to /usr/bin/npm17 on openSUSE, /usr/bin/npm on Fedora which are Node scripts
+cat <<EOF >%{buildroot}%{_libexecdir}/electron-node/npm
+#!/bin/sh
+exec %{_libexecdir}/electron-node/node %{_bindir}/npm%{NODEJS_DEFAULT_VER} "\$@"
+EOF
+
+cat <<EOF > %{buildroot}%{_libexecdir}/electron-node/npx
+#!/bin/sh
+exec %{_libexecdir}/electron-node/node %{_bindir}/npx%{NODEJS_DEFAULT_VER} "\$@"
+EOF
+
+# On Fedora, /usr/bin/yarn is a node script which means it needs to be wrapped too. On openSUSE, it is a shell script.
+%if 0%{?fedora}
+cat <<EOF > %{buildroot}%{_libexecdir}/electron-node/yarn
+#!/bin/sh
+exec %{_libexecdir}/electron-node/node %{_bindir}/yarn "\$@"
+EOF
+%endif
+chmod -v 0755 %{buildroot}%{_libexecdir}/electron-node/*
+
 # Install electron.macros
 mkdir -p %{buildroot}%{_rpmconfigdir}/macros.d
 cp /dev/stdin %{buildroot}%{_rpmconfigdir}/macros.d/macros.electron <<"EOF"
+# Ensure rebuilds when electron major changes.
 %%electron_req Requires: electron%{_isa}(abi) = %{abi_version}
+
+# Build native modules against Electron. This should be done as the first step in ‰build. You must set CFLAGS/LDFLAGS previously.
+# You can call it multiple times in different directories and pass more parameters to it (seen in vscode)
+%%electron_rebuild PATH="%{_libexecdir}/electron-node:$PATH" npm rebuild --verbose --foreground-scripts --nodedir=%{_includedir}/electron
+
+# Sanity check that native modules load. You must include this in ‰check if the package includes native modules (possibly in addition to actual test suites)
+# These do, in order:
+# 1. Detect underlinking (missing dependencies)
+# 2. Detect accidental linking to libuv which must not be used (Electron exports its own incompatible version)
+# 3. Actually load each module
+
+# This one should be paired with a simple `Requires: nodejs-electron%{_isa}` in requirements.
+%%electron_check_native \
+  find '%%{buildroot}' -type f -name '*.node' -print0 | xargs -0 -t -IXXX sh -c '! ldd -d -r XXX | \\\
+    grep    '\\''^undefined symbol'\\'' | \\\
+    grep -v '\\''^undefined symbol: napi_'\\'' | \\\
+    grep -v '\\''^undefined symbol: uv_'\\'' ' \
+  find '%%{buildroot}' -type f -name '*.node' -print0 | xargs -0 -t -IXXX sh -c '! objdump -p XXX | grep -F libuv.so.1' \
+  find '%%{buildroot}' -type f -name '*.node' -print0 | xargs -0 -t -IXXX env ELECTRON_RUN_AS_NODE=1 %{_libdir}/electron/electron -e 'require("XXX")'
+
+# This one allows use of unstable APIs and should be paired with the `‰electron_req` macro in requirements.
+%%electron_check_native_unstable \
+  find '%%{buildroot}' -type f -name '*.node' -print0 | xargs -0 -t -IXXX sh -c '! ldd -d -r XXX | \\\
+    grep    '\\''^undefined symbol'\\'' | \\\
+    grep -v '\\''^undefined symbol: node_'\\'' | \\\
+    grep -v '\\''^undefined symbol: _ZN12v8_inspector'\\'' | \\\
+    grep -v '\\''^undefined symbol: _ZN2v8'\\'' | \\\
+    grep -v '\\''^undefined symbol: _ZN4node'\\'' | \\\
+    grep -v '\\''^undefined symbol: _ZN5cppgc'\\'' | \\\
+    grep -v '\\''^undefined symbol: _ZN8electron'\\'' | \\\
+    grep -v '\\''^undefined symbol: _ZNK12v8_inspector'\\'' | \\\
+    grep -v '\\''^undefined symbol: _ZNK2v8'\\'' | \\\
+    grep -v '\\''^undefined symbol: _ZNK4node'\\'' | \\\
+    grep -v '\\''^undefined symbol: _ZNK5cppgc'\\'' | \\\
+    grep -v '\\''^undefined symbol: napi_'\\'' | \\\
+    grep -v '\\''^undefined symbol: uv_'\\'' ' \
+  find '%%{buildroot}' -type f -name '*.node' -print0 | xargs -0 -t -IXXX sh -c '! objdump -p XXX | grep -F libuv.so.1' \
+  find '%%{buildroot}' -type f -name '*.node' -print0 | xargs -0 -t -IXXX env ELECTRON_RUN_AS_NODE=1 %{_libdir}/electron/electron -e 'require("XXX")'
+
+
 EOF
 chmod -v 644 %{buildroot}%{_rpmconfigdir}/macros.d/macros.electron
 
@@ -1420,6 +1508,13 @@ ln -srv third_party -t out/Release
 %files devel
 %{_includedir}/electron
 %{_rpmconfigdir}/macros.d/macros.electron
+%dir %{_libexecdir}/electron-node
+%{_libexecdir}/electron-node/node
+%{_libexecdir}/electron-node/npm
+%{_libexecdir}/electron-node/npx
+%if 0%{?fedora}
+%{_libexecdir}/electron-node/yarn
+%endif
 
 %files doc
 %doc electron/README.md

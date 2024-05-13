@@ -3,6 +3,6 @@
   <description>Francis uses the well-known pomodoro technique to help you get more productive.
 
 </description>
-  <devel project="KDE:Extra" package="francis"/>
+  <devel project="KDE:Applications" package="francis"/>
   <url>https://apps.kde.org/francis</url>
 </package>

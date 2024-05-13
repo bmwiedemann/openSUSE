@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Apr 14 13:04:10 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.11.0
+  * https://github.com/baresip/baresip/releases/tag/v3.11.0
+  * https://github.com/baresip/baresip/releases/tag/v3.10.1
+  * https://github.com/baresip/baresip/releases/tag/v3.10.0
+  * https://github.com/baresip/baresip/releases/tag/v3.9.0
+
+-------------------------------------------------------------------
+Wed Jan  3 10:57:18 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.8.1
+  * aur: set audio format correctly.
+  * cmake: add only non-system link paths to rpath.
+
+-------------------------------------------------------------------
 Wed Dec 27 19:19:05 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.8.0

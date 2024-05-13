@@ -1,4 +1,154 @@
 -------------------------------------------------------------------
+Sat May 11 00:37:16 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to 4.9.0
+  + Changes from 4.9.0
+    * Support for specifying a fixed denominator for display of
+      fractions
+    * Return gcd of numerators divided by lcm of denominators in
+      gcd() with non-integer rational numbers, and vice versa for
+      lcm()
+    * Add units for mean Gregorian and tropical years
+    * Ignore underscore in number
+    * Replace defunct exchange rates source and fix bitcoin
+      exchange rate
+    * Fix asin(x)=a, acos(x)=a, and atan(x)=a, when a contains an
+      angle unit and default angle unit is set
+    * Fix output of value converted to unit expression with
+      numerical multiplier in denominator, e.g. "➞ L/(100 km)"
+    * Fix segfault when trying to solve
+      "(x*sqrt(x)-y*sqrt(y))/(sqrt(x)-sqrt(y))=x+sqrt(x*y)+y"
+    * Fix parsing of case insensitive object name ending with
+      Unicode character when followed by another Unicode character
+      in expression, e.g. "микрометр"
+    * Always add result to history (even if identical to previous)
+      if expression contains a function generating a random
+      number (GTK, Qt)
+    * Prefer capitalized function name (over name with underscore),
+      when completing function name (GTK, Qt)
+    * Improve decision to (not) update calculate-as-you-type
+      result when last character is an operator (GTK)
+    * Add percent and permille output options in rational number
+      form menu (GTK)
+    * Fix keypad button (up/down) for cycling through expression
+      history (GTK)
+    * Restore decimal number base after closing programming
+      keypad (Qt)
+    * Improve appearance of conversion menu (Qt)
+    * Save position of main window even if size has not changed
+      from the default (Qt)
+    * Fix custom middle click button action (Qt)
+    * Fix immediate calculation after selecting to-conversion
+      completion (Qt)
+    * Add history command, listing expression history (CLI)
+    * Display all exponents 0-9 using Unicode superscript
+      characters if these are the only exponents in the
+      expression (CLI)
+    * Minor bug fixes and feature enhancements 
+  + Changes from 4.8.1
+    * Fix besselj() and bessely()
+    * Fix display of matrices and vectors with complex number
+      form other than rectangular (default)
+    * Fix conflict between decibel units (e.g. "0dB") and
+      duodecimal 0d… syntax (now requires at least two digits)
+    * Fixes for title options in plot() function
+    * Add additional buttons and button menus to general
+      keypad (Qt)
+    * Add option to show all functions, units, and variables in
+      tool button menus (Qt)
+    * Add recently used objects to functions, units, and variables
+      menus (Qt)
+    * Add option to bypass dialog for functions in menu (Qt)
+    * Add option, in context menu, to display text for tool
+      buttons (Qt)
+    * Open functions, units, and variables tool button menus using
+      long-press or right-click (in addition to arrow button),
+      and add keyboard shortcuts (Qt)
+    * Use keypad tool button menu as context menu and show keypad
+      type in title bar of keypad (Qt)
+    * Auto-update number bases above programming keypad when
+      entering simple integers, even if calculate-as-you-type is
+      deactivated (GTK)
+  + Changes from 4.8.0
+    * Concise (e.g. "1.2345(67)") and relative (e.g. "5+/-2%")
+      notation for output and input (disabled by default for
+      concise notation) of interval
+    * Optimize rest of unit expression when converting to partial
+      (insufficient) expression (e.g. 18MA×100ns to J = 1.8 J/V)
+    * Round high precision intervals enclosing integers for
+      integer arguments
+    * Add support for specifying position of sign bit in floating
+      point functions
+    * New derived units: Debye, C·m, Daraf, F^-1, V/C, N/C, kcal,
+      kcal/g, kJ
+    * Use international foot as base unit for rod
+    * Fix fibonacci() for non-integers and recursive use
+    * Fix conversion options presented for speed units
+      (and possibly other)
+    * Update dialogs for editing of variables, functions, units,
+      etc. to match the corresponding dialogs in the Qt UI (GTK)
+    * Show user-defined objects in a separate category in menus
+      and dialogs (GTK)
+    * Add option to disable tooltips in keypad or everywhere
+      (GTK, Qt)
+    * Add option to disable units and to interpret unrecognized
+      symbols as variables (unknowns) to preferences (Qt)
+    * Make closing of application with Escape key optional and
+      disabled by default (GTK, Qt)
+    * Hide name column in conversion list when applied to current
+      result (Qt)
+    * Add temporary option to unknown variable edit dialog
+      (GTK, Qt)
+    * Add Microship (PIC16/17) 24 and 32 bit floating point
+      formats (GTK, Qt)
+    * Fix initial height of list and description in units window
+      (GTK)
+    * Minor bug fixes and feature enhancements
+  + Changes from 4.7.0
+    * Support for custom default angle unit, e.g. turn, arcsec,
+      arcmin
+    * Append default angle unit (instead of always radians) when
+      converting value without unit to angle unit
+    * More consistent addition and removal of angle unit from
+      function arguments
+    * Always interpret ./, .*, and .^ as entrywise operators if
+      user intention is unclear
+    * Change order of operations to place entrywise and ordinary
+      operators on the same precedence level
+    * Add function, kron(), for Kronecker product, and constants
+      for Pauli matrices
+    * Add radius to planets dataset and update other properties
+    * Support replacement of unknown variables within variable
+      values
+    * Fix besselj(0, 0)
+    * Fix incomplete calculation in tan() with try exact
+      approximation
+    * Fix 0/0=0 equality (do not return true) and output of 2/0
+      (and similar)
+    * Fixes and improvements for newtonsolve() and secantsolve()
+    * Fix segfault when MathStructure is deleted after Calculator,
+      and in destructor of calculated DynamicVariable
+      (called from Calculator destructor)
+    * Do not save mode on exit if "-defaults" command line switch
+      where used (CLI)
+    * Allow multiple actions for keyboard shortcuts (GTK, Qt)
+    * Add toggle precision, and min, max, or min and max decimals
+      to available shortcut and button actions (GTK, Qt)
+    * Add option to exclude units for unformatted ASCII copy
+      (GTK, Qt)
+    * Add optional value to copy result action, allowing
+      expression copy and formatting selection (GTK, Qt)
+    * Fix copy unformatted ASCII when local digit group separator
+      is same as selected decimal separator (GTK, Qt)
+    * Add option to automatically copy result (Qt)
+    * Always set (primary) selection clipboard contents when whole
+      expression is selected or selection is cleared, e.g. after
+      calculation (Qt)
+    * Improve support dark mode and high contrast modes, and
+      change default style to Fusion, on Windows (Qt)
+    * Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
 Thu Apr 20 09:24:22 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.6.1:

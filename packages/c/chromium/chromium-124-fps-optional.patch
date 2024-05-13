@@ -1,0 +1,25 @@
+commit 072b9f3bc340020325cf3dd7bff1991cd22de171
+Author: Jose Dapena Paz <jdapena@igalia.com>
+Date:   Tue Mar 19 16:27:55 2024 +0000
+
+    IWYU: missing include for std::optional usage in first_party_sets_handler_database_helper.h
+    
+    Bug: 41455655
+    Change-Id: Ia644d2e6baa904190d162575dd16264e66ea227e
+    Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5377063
+    Reviewed-by: Chris Fredrickson <cfredric@chromium.org>
+    Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+    Cr-Commit-Position: refs/heads/main@{#1274977}
+
+diff --git a/content/browser/first_party_sets/first_party_sets_handler_database_helper.h b/content/browser/first_party_sets/first_party_sets_handler_database_helper.h
+index a12af718abda0..92afb98d64ea4 100644
+--- a/content/browser/first_party_sets/first_party_sets_handler_database_helper.h
++++ b/content/browser/first_party_sets/first_party_sets_handler_database_helper.h
+@@ -6,6 +6,7 @@
+ #define CONTENT_BROWSER_FIRST_PARTY_SETS_FIRST_PARTY_SETS_HANDLER_DATABASE_HELPER_H_
+ 
+ #include <memory>
++#include <optional>
+ #include <string>
+ #include <utility>
+ #include <vector>

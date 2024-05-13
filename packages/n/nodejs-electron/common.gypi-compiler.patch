@@ -1,0 +1,51 @@
+--- src/third_party/electron_node/common.gypi.orig	2024-05-09 09:30:23.202414200 +0000
++++ src/third_party/electron_node/common.gypi	2024-05-10 17:53:01.801592000 +0000
+@@ -428,10 +428,15 @@
+         'ldflags': [ '-pthread' ],
+       }],
+       [ 'OS in "linux freebsd openbsd solaris android aix os400 cloudabi"', {
+-        'cflags': [ '-Wall', '-Wextra', '-Wno-unused-parameter', ],
++        # Add some useful flags which need to be specified on all modules anyway.
++        # `-fpic -fno-semantic-interposition` is the best relocation model for code that will live in a dlopened library
++        # If a downstream package needs capital `-fPIC` (unlikely) it can still override this (unlike CFLAGS which are injected at the very end)
++        # `-fvisibility=hidden` is something we're adding to fix downstream overzealous exports.
++        # The electron headers annotate their visibility correctly, but many third-party code does not which leads to bloated builds.
++        'cflags': [ '-Wall', '-Wextra', '-Wno-unused-parameter', '-fpic', '-fno-semantic-interposition', '-fvisibility=hidden' ],
+         'cflags_cc': [ '-fno-rtti', '-fno-exceptions', '-std=gnu++17' ],
+         'defines': [ '__STDC_FORMAT_MACROS' ],
+-        'ldflags': [ '-rdynamic' ],
++        #'ldflags': [ '-rdynamic' ], this is totally bogus — we are building a plugin, not a plugin host
+         'target_conditions': [
+           # The 1990s toolchain on SmartOS can't handle thin archives.
+           ['_type=="static_library" and OS=="solaris"', {
+@@ -608,29 +613,7 @@
+           '-Wl,--export-dynamic',
+         ],
+       }],
+-      # if node is built as an executable,
+-      #      the openssl mechanism for keeping itself "dload"-ed to ensure proper
+-      #      atexit cleanup does not apply
+-      ['node_shared_openssl!="true" and node_shared!="true"', {
+-        'defines': [
+-          # `OPENSSL_NO_PINSHARED` prevents openssl from dload
+-          #      current node executable,
+-          #      see https://github.com/nodejs/node/pull/21848
+-          #      or https://github.com/nodejs/node/issues/27925
+-          'OPENSSL_NO_PINSHARED'
+-        ],
+-      }],
+-      ['node_shared_openssl!="true"', {
+-        # `OPENSSL_THREADS` is defined via GYP for openSSL for all architectures.
+-        'defines': [
+-          'OPENSSL_THREADS',
+-        ],
+-      }],
+-      ['node_shared_openssl!="true" and openssl_no_asm==1', {
+-        'defines': [
+-          'OPENSSL_NO_ASM',
+-        ],
+-      }],
++      # Electron does not export its openssl fork (boringssl). Removing these defines which are bogus and can interfere with modules actually using openssl (signal-desktop is known to use it)
+       ['OS == "zos"', {
+         'defines': [
+           '_XOPEN_SOURCE_EXTENDED',

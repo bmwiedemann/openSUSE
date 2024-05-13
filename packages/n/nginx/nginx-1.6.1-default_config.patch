@@ -2,7 +2,7 @@ Index: conf/nginx.conf
 ===================================================================
 --- conf/nginx.conf.orig
 +++ conf/nginx.conf
-@@ -1,16 +1,26 @@
+@@ -1,16 +1,25 @@
  
 -#user  nobody;
 +#user  nginx;
@@ -11,13 +11,12 @@ Index: conf/nginx.conf
 -#error_log  logs/error.log;
 -#error_log  logs/error.log  notice;
 -#error_log  logs/error.log  info;
-+# load_module #LIBDIR#/nginx/modules/ngx_http_fancyindex_module.so;
-+# load_module #LIBDIR#/nginx/modules/ngx_http_headers_more_filter_module.so;
++# load_module #LIBDIR#/nginx/modules/ngx_http_echo_module.so;
 +# load_module #LIBDIR#/nginx/modules/ngx_http_image_filter_module.so;
++# load_module #LIBDIR#/nginx/modules/ngx_http_lua_module.so;
 +# load_module #LIBDIR#/nginx/modules/ngx_http_perl_module.so;
 +# load_module #LIBDIR#/nginx/modules/ngx_http_xslt_filter_module.so;
 +# load_module #LIBDIR#/nginx/modules/ngx_mail_module.so;
-+# load_module #LIBDIR#/nginx/modules/ngx_rtmp_module.so;
 +# load_module #LIBDIR#/nginx/modules/ngx_stream_module.so;
 +
 +#error_log  /var/log/nginx/error.log;

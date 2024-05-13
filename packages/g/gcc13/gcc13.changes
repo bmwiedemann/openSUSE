@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 10 12:33:27 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-13 branch head, b7a2697733d19a093cbdd0e200, git8761
+- Removed gcc13-pr111731.patch now included upstream
+
+-------------------------------------------------------------------
 Thu May  2 08:19:50 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Add gcc13-amdgcn-remove-fiji.patch removing Fiji support from

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May  4 15:32:13 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update reflection to version 2.1.8.
+  # 2.1.8 [2024.05.04]
+  * Fix a memory leak in `reifyTypeable`.
+
+-------------------------------------------------------------------
 Sat Sep 30 12:49:12 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update reflection to version 2.1.7 revision 1.

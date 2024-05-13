@@ -188,7 +188,7 @@ Index: chromium-120.0.6099.35/build/config/compiler/BUILD.gn
      if (is_apple) {
        cflags_objc = [ "-Wimplicit-retain-self" ]
        cflags_objcc = [ "-Wimplicit-retain-self" ]
-@@ -2371,7 +2237,8 @@ config("default_stack_frames") {
+@@ -2257,7 +2257,8 @@
  }
  
  # Default "optimization on" config.
@@ -196,8 +196,8 @@ Index: chromium-120.0.6099.35/build/config/compiler/BUILD.gn
 +config("optimize") { }
 +config("xoptimize") {
    if (is_win) {
-     if (chrome_pgo_phase != 2) {
-       # Favor size over speed, /O1 must be before the common flags.
+     cflags = [ "/O2" ] + common_optimize_on_cflags
+ 
 @@ -2430,7 +2297,8 @@ config("optimize") {
  }
  

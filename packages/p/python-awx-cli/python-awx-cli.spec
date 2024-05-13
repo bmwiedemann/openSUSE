@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-awx-cli
-Version:        23.6.0
+Version:        24.3.1
 Release:        0
 Summary:        CLI for the AWX Ansible web platform
 License:        Apache-2.0
@@ -30,14 +30,14 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 # SECTION
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module websocket-client}
-BuildRequires:  %{python_module PyYAML}
 # SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-requests
 Requires:       python-PyYAML
+Requires:       python-requests
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 

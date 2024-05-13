@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Sun May 12 08:19:08 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.3.1:
+  https://github.com/ansible/awx/releases/tag/24.3.1
+  No CLI-related changes mentioned in the release notes
+
+-------------------------------------------------------------------
+Sun May 12 08:18:05 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.3.0:
+  https://github.com/ansible/awx/releases/tag/24.3.0
+  * Fixed awxkit uploads when re-running promote workflow
+    (@shanemcd #15096)
+
+-------------------------------------------------------------------
+Sun May 12 08:14:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.2.0:
+  https://github.com/ansible/awx/releases/tag/24.2.0
+  No CLI-related changes mentioned in the release notes
+
+-------------------------------------------------------------------
+Sun May 12 08:12:33 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.1.0:
+  https://github.com/ansible/awx/releases/tag/24.1.0
+  No CLI-related changes mentioned in the release notes
+
+-------------------------------------------------------------------
+Sun May 12 08:07:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.0.0:
+  https://github.com/ansible/awx/releases/tag/24.0.0
+  No CLI-related changes mentioned in the release notes
+
+-------------------------------------------------------------------
+Sun May 12 08:06:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 23.9.0:
+  https://github.com/ansible/awx/releases/tag/23.9.0
+  * Updated the release doc to check for awxkit tar files
+    (@thedoubl3j #14892)
+  * Added the ability to use awxkit with websocket custom URLs
+    (@CFSNM #14901)
+  * Added support for Terraform credentials in awxkit (@CFSNM
+    #14902)
+
+-------------------------------------------------------------------
+Sun May 12 08:05:04 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 23.8.1:
+  https://github.com/ansible/awx/releases/tag/23.8.1
+  No CLI-related changes mentioned in the release notes
+
+-------------------------------------------------------------------
+Sun May 12 08:01:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 23.8.0:
+  https://github.com/ansible/awx/releases/tag/23.8.0
+  * Updated awxkit to allow to modify API base URL (@Zokormazo
+    #14835)
+  * Fixed the way the API passes the awxkit base path to resources
+    (@CFSNM #14862)
+
+-------------------------------------------------------------------
+Sun May 12 07:56:21 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 23.7.0:
+  https://github.com/ansible/awx/releases/tag/23.7.0
+  * Built the awxkit source distribution bundle to also upload to
+    PyPI (@jbradberry #14757)
+
+-------------------------------------------------------------------
 Sat Jan 27 19:58:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package python-awx-cli: CLI to manage the AWX Ansible web
