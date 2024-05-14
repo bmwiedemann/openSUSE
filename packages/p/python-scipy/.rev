@@ -1282,4 +1282,12 @@ bsc#1130564: Apply update from the openSUSE package
     <comment></comment>
     <requestid>1173051</requestid>
   </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>7fb3672320969bd178a7c2e6dced8f6f</srcmd5>
+    <version>1.13.0</version>
+    <time>1715686649</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1173658</requestid>
+  </revision>
 </revisionlist>

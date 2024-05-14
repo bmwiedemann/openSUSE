@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 12 16:37:45 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Enable python-scipy:gnu-hpc for s390x (together with python-numpy:gnu-hpc)
+
+-------------------------------------------------------------------
 Thu May  9 10:33:32 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Enable openblas for s390x

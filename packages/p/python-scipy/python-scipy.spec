@@ -84,7 +84,7 @@
 %if %{with ringdisabled}
 ExclusiveArch:  do_not_build
 %endif
- %ifarch armv6l s390 s390x m68k i586
+ %ifarch armv6l s390 m68k i586
 ExclusiveArch:  do_not_build
  %endif
 %{hpc_modules_init openblas}
