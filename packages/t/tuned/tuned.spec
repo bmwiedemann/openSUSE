@@ -48,8 +48,6 @@ Requires:       python3-linux-procfs
 Requires:       python3-pyudev
 Requires:       util-linux
 Requires:       virt-what
-Conflicts:      power-profiles-daemon
-Conflicts:      tlp
 BuildArch:      noarch
 %{?systemd_requires}
 

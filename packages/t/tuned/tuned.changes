@@ -1,10 +1,4 @@
 -------------------------------------------------------------------
-Tue Apr  9 22:09:05 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
-
-- Add Conflicts against power-profiles-daemon and tlp as noted
-  in tuned.service and tuned's README.md.
-
--------------------------------------------------------------------
 Thu Feb 29 11:37:09 UTC 2024 - trenn@suse.de
 
 - Update to version 2.22.1.2+git.86ac977:
