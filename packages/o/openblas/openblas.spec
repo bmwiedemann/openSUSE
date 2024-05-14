@@ -434,7 +434,7 @@ make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
      %{?dynamic_list} \
      %{!?with_hpc:%{?libnamesuffix} FC=gfortran CC=gcc%{?cc_v:-%{cc_v}} %{?cc_v:CEXTRALIB=""}} \
      %{?ldflags_tests:LDFLAGS_TESTS=%{ldflags_tests}} \
-     %{?with_hpc:%{?cc_v:CC=gcc-%{cc_v} CEXTRALIB=""}}
+     %{?with_hpc:%{?cc_v:CC=gcc-%{cc_v} FC=gfortran-%{cc_v} CEXTRALIB=""}}
 
 %install
 %if %{with hpc}

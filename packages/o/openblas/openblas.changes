@@ -9,53 +9,39 @@ Wed Jan 17 08:47:55 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Update to version 0.3.26:
   * General:
-    - Improved the version of openblas.pc that is created by the
-      CMAKE build.
-    - Fixed a CMAKE-specific build problem on older versions of
-      MacOS.
-    - Worked around linking problems on old versions of MacOS.
-    - Corrected installation location of the lapacke_mangling
-      header in CMAKE builds.
     - Added type declarations for complex variables to the
       MSVC-specific parts of the LAPACK header.
-    - Significantly sped up ?GESV for small problem sizes by
+    - Significantly sped up `?GESV` for small problem sizes by
       introducing a lower bound for multithreading.
     - Imported additions and corrections from the Reference-LAPACK
       project:
-      + Added new LAPACK functions for truncated QR with pivoting
+      + Added new LAPACK functions for truncated `QR` with pivoting
         (Reference-LAPACK PRs 891&941).
       + Handle miscalculation of minimum work array size in corner
       	cases (Reference-LAPACK PR 942).
-      + Fixed use of uninitialized variables in ?GEDMD and
+      + Fixed use of uninitialized variables in `?GEDMD` and
       	improved inline documentation.
       + Fixed use of uninitialized variables (and consequential
-      	failures) in ?BBCSD.
+      	failures) in `?BBCSD`.
       + Added tests for the recently introduced Dynamic Mode
       	Decomposition functions.
       + Fixed several memory leaks in the LAPACK testsuite.
-      + Fixed counting of testsuite results by the Python script.
   * x86-64:
-    - Fixed computation of CASUM on SkylakeX and newer targets in
+    - Fixed computation of `CASUM` on SkylakeX and newer targets in
       the special case that AVX512 is not supported by the compiler
       or operating environment.
-    - Fixed potential undefined behaviour in the CASUM/ZASUM
+    - Fixed potential undefined behaviour in the `CASUM`/`ZASUM`
       kernels for AVX512 targets.
-    - worked around a problem in the pre-AVX kernels for GEMV
+    - worked around a problem in the pre-AVX kernels for `GEMV`
   * arm64:
-    - Sped up SGEMM and DGEMM on Neoverse V1 and N1.
-    - Sped up ?DOT on SVE-capable targets.
-    - Reduced the number of targets in DYNAMIC_ARCH builds by
+    - Sped up `SGEMM` and `DGEMM` on Neoverse V1 and N1.
+    - Sped up `?DOT` on SVE-capable targets.
+    - Reduced the number of targets in `DYNAMIC_ARCH` builds by
       eliminating functionally equivalent ones.
   * POWER:
     - Improved the SGEMM kernel for POWER10.
     - Fixed compilation with (very) old versions of gcc.
-    - Fixed detection of old 32bit PPC targets in CMAKE-based
-      builds.
     - Added autodetection of the POWERPC 7400 subtype.
-    - Fixed CMAKE-based compilation for PPCG4 and PPC970 targets.
-  * LONGARCH64:
-    - Added and improved optimized kernels for almost all BLAS
-      functions.
 
 -------------------------------------------------------------------
 Wed Dec 20 12:02:55 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
@@ -72,44 +58,188 @@ Wed Nov 29 05:43:18 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
       thread count
     - improved the code to add supplementary thread buffers in
       case of overflow
-    - fixed a potential division by zero in ?ROTG
-    - improved the ?MATCOPY functions to accept zero-sized rows or
+    - fixed a potential division by zero in `?ROTG`
+    - improved the `?MATCOPY` functions to accept zero-sized rows or
       columns
     - corrected empty prototypes in function declarations
     - cleaned up unused declarations in the f2c-converted versions
       of the LAPACK sources
-    - fixed compilation with the Cray CCE Compiler suite
     - improved link line rewriting to avoid mixed libgomp/libomp
       builds with clang&gfortran
-    - worked around OPENMP builds with LLVM14's libomp hanging on
-      FreeBSD
-    - improved the Makefiles to require less option duplication on
-      "make install"
     - imported the following changes from the upcoming release
       3.12 of Reference-LAPACK: LAPACK PR 900, LAPACK PR 904,
       LAPACK PR 907, LAPACK PR 909, LAPACK PR 926, LAPACK PR 927,
       LAPACK PR 928 & 930
   * x86-64:
-    - fixed compile-time autodetection of AMD Ryzen3 and Ryzen4
-      cpus
     - fixed capability-based fallback selection for unknown cpus
-      in DYNAMIC_ARCH
-    - added AVX512 optimizations for ?ASUM on Sapphire Rapids and
+      in `DYNAMIC_ARCH`
+    - added AVX512 optimizations for `?ASUM` on Intel Sapphire Rapids and
       Cooper Lake
   * ARM64:
-    - fixed building on Apple with homebrew gcc
     - fixed building with XCODE 15
     - fixed building on A64FX and Cortex A710/X1/X2
-    - increased the default buffer size for recent ARM server cpus
+    - increased the default buffer size for recent arm server cpus
   * POWER:
-    - fixed building with the IBM xlf 16.1.1 compiler
-    - fixed building with IBM XL C
-    - added support for DYNAMIC_ARCH builds with clang
-    - fixed union declaration in the BFLOAT16 test case
-    - enable optimizations for the AIX assembler on POWER10
-  * LOONGARCH64:
-    - added an optimized SGEMV kernel
-    - added an optimized DTRSM kernel
+    - added support for `DYNAMIC_ARCH` builds with clang
+    - fixed union declaration in the `BFLOAT16` test case
+- Changes in version 0.3.24
+  * General:
+    - Declared the arguments of `cblas_xerbla` as `const`
+      (in accordance with the reference implementation
+      and others, the previous discrepancy appears to have dated
+      back to GotoBLAS)
+    - fixed the implementation of `?GEMMT` that was added in 0.3.23
+    - made cpu-specific `SWITCH_RATIO` parameters for GEMM
+      available to `DYNAMIC_ARCH` builds
+    - fixed missing `SSYCONVF` function in the shared library
+    - fixed parallel build logic used with gmake
+    - fixed several issues with the handling of runtime limits on
+      the number of OPENMP threads
+    - corrected the error code returned by `SGEADD`/`DGEADD` when
+      LDA is too small
+    - corrected the error code returned by `IMATCOPY` when LDB
+      is too small
+    - updated `?NRM2` to support negative increment values (as
+      introduced in release 3.10.0 of the Reference BLAS)
+    - updated `?ROTG` to use the safe scaling algorithm introduced
+      in release 3.10.0 of the Reference BLAS
+    - fixed OpenMP builds with CLANG for the case where libomp is
+      not in a standard location
+    - fixed a potential overwrite of unrelated memory during
+      thread initialisation on startup
+    - fixed a potential integer overflow in the multithreading
+      threshold for `?SYMM`/`?SYRK`
+    - fixed build of the LAPACKE interfaces for the LAPACK 3.11.0
+      `?TRSYL` functions added in 0.3.22
+    - applied additions and corrections from the development
+      branch of Reference-LAPACK:
+      - fixed actual arguments passed to a number of LAPACK
+        functions (from Reference-LAPACK PR 885)
+      - fixed workspace query results in LAPACK `?SYTRF`/`?TRECV3`
+        (from Reference-LAPACK PR 883)
+      - fixed derivation of the UPLO parameter in `LAPACKE_?larfb`
+        (from Reference-LAPACK PR 878)
+      - fixed a crash in LAPACK `?GELSDD` on `NRHS=0` (from
+        Reference-LAPACK PR 876)
+      - added new LAPACK utility functions `CRSCL` and `ZRSCL`
+        (from Reference-LAPACK PR 839)
+      - corrected the order of eigenvalues for 2x2 matrices in
+       `?STEMR` (Reference-LAPACK PR 867)
+      - removed spurious reference to OpenMP variables outside
+        OpenMP contexts (Reference-LAPACK PR 860)
+      - updated file comments on use of `LAMBDA` variable in
+        LAPACK (Reference-LAPACK PR 852)
+      - fixed documentation of LAPACK `SLASD0`/`DLASD0`
+        (Reference-LAPACK PR 855)
+      - fixed confusing use of "minor" in LAPACK documentation
+        (Reference-LAPACK PR 849)
+      - added new LAPACK functions ?GEDMD for dynamic mode
+        decomposition (Reference-LAPACK PR 736)
+      - fixed potential stack overflows in the `EIG` part of the
+        LAPACK testsuite (Reference-LAPACK PR 854)
+      - applied small improvements to the variants of
+        Cholesky and QR functions (Reference-LAPACK PR 847)
+      - removed unused variables from LAPACK `?BDSQR`
+        (Reference-LAPACK PR 832)
+      - fixed a potential crash on allocation failure in LAPACKE
+        `SGEESX`/`DGEESX` (Reference-LAPACK PR 836)
+      - added a quick return from `SLARUV`/`DLARUV` for N < 1
+        (Reference-LAPACK PR 837)
+      - updated function descriptions in LAPACK `?GEGS`/`?GEGV`
+        (Reference-LAPACK PR 831)
+      - improved algorithm description in `?GELSY`
+        (Reference-LAPACK PR 833)
+      - fixed scaling in LAPACK `STGSNA`/`DTGSNA`
+        (Reference-LAPACK PR 830)
+      - fixed crash in `LAPACKE_?geqrt` with row-major data
+        (Reference-LAPACK PR 768)
+      - added LAPACKE interfaces for `C/ZUNHR_COL` and
+        `S/DORHR_COL` (Reference-LAPACK PR 827)
+      - added error exit tests for `SYSV`/`SYTD2`/`GEHD2` to
+        the testsuite (Reference-LAPACK PR 795)
+      - fixed typos in LAPACK source and comments
+        (Reference-LAPACK PRs 809,811,812,814,820)
+      - adopt refactored `?GEBAL` implementation
+        (Reference-LAPACK PR 808)
+  * x86_64:
+    - added cpu model autodetection for Intel Alder Lake N
+    - added activation of the AMX tile to the Sapphire Rapids
+      `SBGEMM` kernel
+    - worked around miscompilations of GEMV/SYMV kernels by
+      gcc's tree-vectorizer
+    - fixed runtime detection of Cooperlake and Sapphire Rapids
+      in `DYNAMIC_ARCH`
+    - fixed feature-based cputype fallback in `DYNAMIC_ARCH`
+    - corrected `ZAXPY` result on old pre-AVX hardware for the
+      `INCX=0` case
+    - fixed a potential use of uninitialized variables in ZTRSM
+  * ARMV8:
+    - implemented SWITCH_RATIO parameter for improved GEMM
+      performance on Neoverse
+    - activated SVE SGEMM and DGEMM kernels for Neoverse V1
+    - improved performance of the SVE CGEMM and ZGEMM kernels
+      on Neoverse V1
+    - improved kernel selection for the ARMV8SVE target and added
+      it to `DYNAMIC_ARCH`
+    - fixed runtime check for SVE availability in `DYNAMIC_ARCH`
+      builds to take OS or container restrictions into account
+    - fixed a potential use of uninitialized variables in ZTRSM
+  * POWER:
+    - fixed compiler warnings in the POWER10 SBGEMM kernel
+- Changes in version 0.3.23
+  * General:
+    - fixed a serious regression in `GETRF`/`GETF2` and
+      `ZGETRF`/`ZGETF2` where subnormal but nonzero data elements
+      triggered the singularity flag
+    - fixed a long-standing bug in `CSPR`/`ZSPR` in single-threaded
+      operation
+    - for cases where elements of the X vector are real numbers (or
+      complex with only the real part zero)
+  * x86_64:
+    - added further CPUID values for Intel Raptor Lake
+- Changes in version 0.3.22
+  * General:
+    - Updated the included LAPACK to Reference-LAPACK release 3.11.0
+      plus post-release corrections and improvements
+    - Added a threshold for multithreading in `SYMM`, `SYMV` and
+      `SYR2K`
+    - Increased the threshold for multithreading in `SYRK`
+    - OpenBLAS no longer decreases the global `OMP_NUM_THREADS`
+      when it exceeds the maximum thread count the library was
+      compiled for.
+    - fixed `?GETF2` potentially returning `NaN` with tiny matrix
+      elements
+    - fixed `openblas_set_num_threads` to work in `USE_OPENMP`
+      builds.
+    - fixed cpu core counting in `USE_OPENMP` builds returning the
+      number of OMP "places" rather than cores
+    - fixed stride calculation in the optimized small-matrix path of
+      complex `SYR`
+    - fixed building of Reference-LAPACK with recent gfortran
+    - added new environment variable `OPENBLAS_DEFAULT_NUM_THREADS`
+    - added a GEMV-based implementation of `GEMMT`
+  * x86_64:
+    - added autodetection of Intel Raptor Lake cpu models
+    - added SSCAL microkernels for Haswell and newer targets
+    - improved the performance of the Haswell DSCAL microkernel
+    - added CSCAL and ZSCAL microkernels for SkylakeX targets
+    - fixed detection of gfortran and Cray CCE compilers
+    - fixed runtime selection of COOPERLAKE in `DYNAMIC_ARCH` builds
+    - worked around gcc/llvm using risky FMA operations in
+      CSCAL/ZSCAL
+  * ARMV8:
+    - fixed cross-compilation to CortexA53 with CMAKE
+    - fixed compilation with CMAKE and "Arm Compiler for Linux 22.1"
+    - added cpu autodetection for Cortex X3 and A715
+    - fixed conditional compilation of SVE-capable targets in
+      `DYNAMIC_ARCH`
+    - sped up SVE kernels by removing unnecessary prefetches
+    - improved the GEMM performance of Neoverse V1
+    - added SVE kernels for SDOT and DDOT
+    - added an SBGEMM kernel for Neoverse N2
+    - improved cpu-specific compiler option selection for
+      Neoverse cpus
+    - added support for setting `CONSISTENT_FPCSR`
 - Minor rebase of openblas-ppc64be_up2_p8.patch to apply cleanly.
 - Drop upstreamed patches:
   * Use-blasint-for-INTERFACE64-compatibility.patch

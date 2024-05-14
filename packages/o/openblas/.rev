@@ -737,4 +737,21 @@ Currently, openSUSE:Factory:Staging:E.
       + Fixed counting of testsuite results by the Python script.</comment>
     <requestid>1153572</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>3e22ce44c249e0e3cf275dee2cad9eec</srcmd5>
+    <version>0.3.26</version>
+    <time>1715686647</time>
+    <user>anag+factory</user>
+    <comment>- Cleaned up changelog:
+  * Added missing changes from 0.3.22 to 0.3.24 release.
+  * Formated list of package changes in markdown format for easier
+    conversion.
+  * Dropped all entries that are irrelevant for SUSE or to
+    users:
+    - build related - in particular CMAKE
+    - OS-related except Linux
+    - related to compilers not supported on SUSE
+    - related to architectures presently not supported on SUSE (forwarded request 1160107 from eeich)</comment>
+    <requestid>1173654</requestid>
+  </revision>
 </revisionlist>
