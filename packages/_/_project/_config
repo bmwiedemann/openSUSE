@@ -43,7 +43,8 @@ RepoType: rpm-md:sha512:filelists-ext
   Patterntype: none
   Prefer: openSUSE-release-ftp
   Support: release-compare
-  Required: containment-tik-img-to-rpm
+## rbrown: 14 May 2024 not quite ready yet
+##  Required: containment-tik-img-to-rpm
 # BuildFlags: obsgendiff
 %endif
 
