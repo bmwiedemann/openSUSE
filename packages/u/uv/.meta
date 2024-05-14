@@ -1,0 +1,9 @@
+<package name="uv" project="openSUSE:Factory">
+  <title>A Python package installer and resolver, written in Rust</title>
+  <description>uv is a Python package installer and resolver, written in Rust. Designed as a
+drop-in replacement for common pip and pip-tools workflows.
+
+</description>
+  <devel project="devel:languages:python" package="uv"/>
+  <url>https://github.com/astral-sh/uv</url>
+</package>
