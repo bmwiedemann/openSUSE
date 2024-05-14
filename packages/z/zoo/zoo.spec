@@ -1,7 +1,7 @@
 #
 # spec file for package zoo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Patch5:         zoo-security_pathsize.patch
 Patch6:         zoo-security_parse.patch
 Patch7:         zoo-%{version}-security-infinite_loop.patch
 Patch8:         zoo-fclose.patch
+Patch9:         zoo-gcc14.patch
 
 %description
 Zoo is a packer based on the Lempel-Ziv algorithm. Lots of files on
