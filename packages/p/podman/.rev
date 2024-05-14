@@ -1129,4 +1129,13 @@ Update to version 4.7.1 (forwarded request 1115956 from danishprakash)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1170291</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>a65f1e72e80c147b0edc0d4b6f319948</srcmd5>
+    <version>5.0.3</version>
+    <time>1715686628</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.0.3:
+- Fix for CVE-2024-3727 (bsc#1224122) (forwarded request 1173229 from danishprakash)</comment>
+    <requestid>1173579</requestid>
+  </revision>
 </revisionlist>

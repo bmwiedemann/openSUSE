@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 10 18:10:00 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 5.0.3:
+  * Bump to v5.0.3
+  * Update release notes for v5.0.3
+  * [v5.0] Bump Buildah to v1.35.4 CVE-2024-3727 (bsc#1224122)
+  * [CI:DOCS] Fix artifact action
+  * [CI:DOCS] Build & upload release artifacts with GitHub Actions
+  * Fix machine volumes with long path and paths with dashes
+  * Disable failing bud test
+  * Remove unncessary lines at the end of specfile summary
+  * Add GitHub action to update version on Podman.io
+  * Bump to v5.0.3-dev
+
+-------------------------------------------------------------------
 Fri Apr 19 12:17:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - convert to using obs_scm
