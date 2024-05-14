@@ -7,4 +7,13 @@
     <comment>New Aeon Installer Media</comment>
     <requestid>1172755</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>39788ab762556bcef2a99213552f9d54</srcmd5>
+    <version>0.1.0</version>
+    <time>1715686755</time>
+    <user>anag+factory</user>
+    <comment>- Move optional tik-module-mig and -welcome from patterns-tik to
+  image definition</comment>
+    <requestid>1173956</requestid>
+  </revision>
 </revisionlist>

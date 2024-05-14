@@ -50,6 +50,8 @@
     <packages type="image">
         <package name="live-add-yast-repos"/>
         <package name="patterns-tik-base"/>
+        <package name="tik-module-welcome"/>
+        <package name="tik-module-mig"/>
     </packages>
     <packages type="bootstrap">
         <!-- Avoid that zypper picks the busybox-foo variant for those, that would fail later -->
