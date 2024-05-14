@@ -3,10 +3,10 @@
     <param name="url">https://github.com/kanidm/kanidm.git</param>
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
     <param name="scm">git</param>
-    <param name="revision">1.1.0-rc.16</param>
+    <param name="revision">1.2.0</param>
     <param name="match-tag">v*</param>
-    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)-([a-z]+)\.(\d+)</param>
-    <param name="versionrewrite-replacement">\1~\2\3</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">william.brown@suse.com</param>
   </service>
