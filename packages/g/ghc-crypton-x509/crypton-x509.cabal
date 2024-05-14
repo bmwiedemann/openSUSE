@@ -1,6 +1,6 @@
 Name:                crypton-x509
 version:             1.7.6
-x-revision: 1
+x-revision: 2
 Description:         X509 reader and writer. please see README
 License:             BSD3
 License-file:        LICENSE
@@ -55,7 +55,7 @@ Test-Suite test-x509
                    , tasty-quickcheck
                    , hourglass
                    , asn1-types
-                   , x509
+                   , x509 < 0
                    , crypton
   ghc-options:       -Wall -fno-warn-orphans -fno-warn-missing-signatures
 
