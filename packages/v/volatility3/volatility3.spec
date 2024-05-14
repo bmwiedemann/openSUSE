@@ -1,7 +1,7 @@
 #
 # spec file for package volatility3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-
-%if 0%{?suse_version} > 1540
-# For reashons unknown to me, this spec file only works if only one python version is targetted.
-# Choosing python38 as I have tested it the most.
-# opensuse releases 15.4 and before only target one python version so don't need this define.
-%define pythons python38
-%endif
-
 Name:           volatility3
-Version:        2.0.1
+Version:        2.5.2
 Release:        0
 Summary:        Volatile memory artifact extraction utility framework
 #License:        BSD-2-Clause-Patent and CC-PDDC
 License:        BSD-2-Clause-Patent
 Group:          Development/Libraries/Python
-URL:            http://www.volatilityfoundation.org/
-Source:         v%{version}.tar.gz
+URL:            https://www.volatilityfoundation.org/
+Source:         https://github.com/volatilityfoundation/volatility3/archive/refs/tags/v%{version}.tar.gz#/volatility3-%{version}.tar.gz
+# https://github.com/volatilityfoundation/volatility3/archive/refs/tags/v2.4.1.tar.gz
 #Patch0:         python-volality-2.6.1_fixbuild.patch
 BuildRequires:  fdupes
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  pkgconfig(python3)
 Requires:       capstone >= 3.0.0
 Requires:       python3-distorm3
@@ -47,22 +41,19 @@ Requires:       python3-pycryptodome
 Requires:       python3-yara >= 3.8.0
 #used in script vol_genprofile for generation of linux profile
 #Requires:       libdwarf-tools
-
 # this package previously cmade the RPM volatility3, now it is python38-volatility3 (etc)
 Obsoletes:      volatility3 < %{version}
 Provides:       volatility3 = %{version}
-
 # volatility was a python 2 release, provides 10.0.0 to ensure all future python 2 releases are obsolete
 Obsoletes:      volatility <= 2.4
 Provides:       volatility = 10.0.0
-
 # python-volatility was a python 2 release, provides 10.0.0 to ensure all future python 2 release are obsolete
 Obsoletes:      python-volatility <= 2.6.1
 Provides:       python-volatility = 10.0.0
-
+# python38-volatility was the previous release, which was using %%python_subpackage without much reason
+Obsoletes:      python38-volatility <= %{version}
+Provides:       python38-volatility = %{version}
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%python_subpackages
 
 %description
 The Volatility Framework is a collection of tools, implemented in
@@ -72,23 +63,27 @@ the system being investigated but offer visibilty into the runtime
 state of the system.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 sed -i 's/\r//' doc/make.bat
 
 %build
-env CFLAGS="%{optflags}" python3 setup.py build
+export CFLAGS="%{optflags}"
+%python3_pyproject_wheel
 
 %install
 # this entire install section is setup to mirror what fedora does in its spec file
-python3 setup.py install --root=%{buildroot} --prefix=%{_prefix}
-%fdupes %{buildroot}
+%python3_pyproject_install
+%fdupes %{buildroot}%{python3_sitelib}
 
-%files %{python_files}
-%defattr(-,root,root)
+%check
+# Test require downloading Windows ISO image, not something we would like to do.
+
+%files
 %license LICENSE.txt
 %doc doc README.md
-%{python3_sitelib}/volatility*
-/usr/bin/vol
-/usr/bin/volshell
+%{python3_sitelib}/volatility3
+%{python3_sitelib}/volatility3-%{version}*-info
+%{_bindir}/vol
+%{_bindir}/volshell
 
 %changelog

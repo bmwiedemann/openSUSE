@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri May  3 19:46:00 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Rewrite of the Python packaging not to use superfluous %python_subpackages.
+- Upgrade to 2.5.2:
+    New Layers:
+        Amazon S3 support
+        Google Cloud Storage support
+    New plugins:
+        linux.vmayarascan
+        windows.mftscan.ads
+    New features:
+        Dumping of Elf files added to the elfs plugin
+    Better support for remote ISF directories
+- Upgrade to 2.5.0:
+    New plugins:
+        Linux capabilities plugin
+    Linux process dumping
+    Add support for Xen ELF file format
+    Improved Linux subsystem support
+- Upgrade to 2.4.1:
+    New plugins:
+        linux.sockstat
+        linux.iomem
+        linux.psscan
+        linux.envars
+        windows.drivermodule
+        windows.vadwalk
+    Pid filtering for Windows pstree plugin
+    Minor fixes for Windows callbacks plugin
+    Minimum Python version was increased to 3.7
+    Python-snappy dependency was replaced with ctypes to ease installation
+    Whole codebase was reformatted with black
+- Upgrade to 2.4.0:
+    For the 2.4.0 release, the major version has jumped a few
+    numbers for compatibility, but this is the next release
+    including the following:
+    New plugins
+        linux.mountinfo
+        linux.psaux
+        windows.devicetree
+        windows.joblinks
+        windows.ldrmodules
+        windows.mbrscan
+        windows.mftscan
+        windows.sessions
+    Introduced the concept of modules and module requirements
+    Unified symbol handling and ISF file caching between OS versions
+    Better QEVM support (fixed the QEMU PCI hole)
+    Exposed an API for automatic PDB symbol table use
+
+-------------------------------------------------------------------
 Fri Jun 10 01:35:22 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to v2.0.1 
