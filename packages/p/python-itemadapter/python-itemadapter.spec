@@ -25,11 +25,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
-# Scrapy on TW has disabled python36 due to uvloop
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-itemadapter%{psuffix}
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Wrapper for data container objects
 License:        BSD-3-Clause
@@ -37,12 +35,15 @@ URL:            https://github.com/scrapy/itemadapter
 Source:         https://github.com/scrapy/itemadapter/archive/v%{version}.tar.gz#/itemadapter-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM pydantic2.patch gh#scrapy/itemadapter#76
 Patch0:         pydantic2.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.5.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module Scrapy >= 2.0}
 BuildRequires:  %{python_module attrs}
+BuildRequires:  %{python_module itemadapter >= %{version}}
 BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pytest >= 5.4}
 %endif
@@ -57,11 +58,11 @@ manner, regardless of their underlying implementation.
 %autosetup -p1 -n itemadapter-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -75,7 +76,7 @@ manner, regardless of their underlying implementation.
 %license LICENSE
 %doc README.md
 %{python_sitelib}/itemadapter
-%{python_sitelib}/itemadapter-%{version}-py*.egg-info
+%{python_sitelib}/itemadapter-%{version}.dist-info
 %endif
 
 %changelog

@@ -50,4 +50,19 @@
   gh#scrapy/itemadapter#76</comment>
     <requestid>1159849</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0bedadb3447e33aca51d845802c243de</srcmd5>
+    <version>0.9.0</version>
+    <time>1715686743</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.0:
+  * Dropped Python 3.7 support, added official Python 3.12
+    support
+  * Updated the documentation and the type hint about
+    `ItemAdapter.ADAPTER_CLASSES` to say that subclasses can
+    use any iterable, not just `collections.deque`
+  * Documented that `Pydantic &gt;= 2` is not supported yet
+  * Updated CI configuration</comment>
+    <requestid>1173911</requestid>
+  </revision>
 </revisionlist>
