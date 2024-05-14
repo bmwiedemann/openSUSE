@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  3 07:11:27 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Compile with C89 standard to build with gcc14
+
+-------------------------------------------------------------------
 Tue Feb 20 12:09:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

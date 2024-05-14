@@ -62,7 +62,7 @@ PKZIP(tm) 2.04g (Phil Katz ZIP) for MS-DOS systems.
 
 %build
 # Remove FORTIFY_SOURCE=3 for bsc#1200712
-EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g') -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
+EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g') -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -std=gnu89"
 make %{?_smp_mflags} -f unix/Makefile prefix=/usr CC="gcc $EXTRA_CFLAGS -DLARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64" generic_gcc
 
 %install
