@@ -20,7 +20,7 @@
 %define         soname  3_0
 %define         libsocksoname  libsocketxx1_2
 Name:           gdcm
-Version:        3.0.23
+Version:        3.0.24
 Release:        0
 Summary:        C++ library to parse DICOM medical files
 License:        BSD-3-Clause
