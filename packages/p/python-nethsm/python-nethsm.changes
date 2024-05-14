@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  3 16:28:42 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.1.0:
+  * Support key import from PEM files (#99)
+  * Add ignore_whitespace option to Base64.from_encoded (#108)
+
+-------------------------------------------------------------------
 Tue Nov 28 05:53:23 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 1.0.0:

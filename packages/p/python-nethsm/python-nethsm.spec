@@ -1,7 +1,7 @@
 #
 # spec file for package python-nethsm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nethsm
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Python Library to manage NetHSM(s)
 License:        Apache-2.0
 URL:            https://github.com/Nitrokey/nethsm-sdk-py
 Source:         https://github.com/Nitrokey/nethsm-sdk-py/archive/v%{version}.tar.gz#/nethsm-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module flit >= 3.2}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module cryptography >= 41.0}
+BuildRequires:  %{python_module flit >= 3.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module typing_extensions >= 4.3.0}
 BuildRequires:  %{python_module urllib3 >= 2.0}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pycryptodome}
 BuildRequires:  %{python_module docker}
+BuildRequires:  %{python_module podman}
+BuildRequires:  %{python_module pycryptodome}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-certifi
