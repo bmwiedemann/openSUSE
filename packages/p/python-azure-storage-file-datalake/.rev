@@ -248,4 +248,16 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164940 from glaubitz)</comment>
     <requestid>1165337</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f4af2f9bb0fdddf4b36bd764a1dfcc32</srcmd5>
+    <version>12.15.0</version>
+    <time>1715686673</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 12.15.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1173589 from glaubitz)</comment>
+    <requestid>1173720</requestid>
+  </revision>
 </revisionlist>
