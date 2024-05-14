@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20240329
+ExpandFlags: macroserial:20240514
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -1252,6 +1252,7 @@ Prefer: -libnl3-devel-32bit
 Prefer: -libnotify-devel-32bit
 Prefer: -libopenssl-1_0_0-devel-32bit
 Prefer: -libopenssl-1_1-devel-32bit
+Prefer: -libpackagekit-glib2-devel-32bit
 Prefer: -libpcap-devel-32bit
 Prefer: -libpng12-compat-devel-32bit
 Prefer: -libpng12-devel-32bit
@@ -3549,7 +3550,7 @@ Macros:
 # I can't just not define it, as otherwise all specs using it break: [   25s] error: line 27: Empty tag: Requires(post):
 %install_info_prereq /bin/sh
 %kernel_build_shell_package bash-sh
-%kernel_module_package_buildreqs modutils kernel-syms kmod-compat suse-kernel-rpm-scriptlets %kernel_build_shell_package
+%kernel_module_package_buildreqs modutils kernel-syms kernel-syms-longterm kmod-compat suse-kernel-rpm-scriptlets %kernel_build_shell_package
 
 %sles_version 0
 %ul_version 0
