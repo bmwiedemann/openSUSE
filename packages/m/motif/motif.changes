@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 13 13:47:29 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add fix-implicit-declarations-gcc14.patch
+  * fixes builds with gcc14 
+
+-------------------------------------------------------------------
 Fri Jun  3 13:16:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim old specfile constructs

@@ -1,7 +1,7 @@
 #
 # spec file for package motif
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ Patch3:         fix_hardcoded_x11rgb_path.patch
 # PATCH-FIX-UPSTREM 16-fix-undefined-use-of-sprintf.patch -- http://bugs.motifzone.net/show_bug.cgi?id=1628
 Patch4:         fix-undefined-use-of-sprintf.patch
 Patch5:         https://git.alpinelinux.org/aports/plain/community/motif/18-option-main.patch
+# PATCH-FIX-OPENSUSE fix-implicit-declarations-gcc14.patch -- Include <string.h> in order to avoid implicit declarations, fixes builds with gcc14
+Patch6:         fix-implicit-declarations-gcc14.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
