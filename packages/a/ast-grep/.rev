@@ -275,4 +275,41 @@
   * test: add test for contextual pattern defined var 2d6bae8</comment>
     <requestid>1171500</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1c44fd83dac77e6336510e205044b2b1</srcmd5>
+    <version>0.22.3+0</version>
+    <time>1715686664</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.22.3:
+  * fix: fix napi test #1140
+  * fix: use dumb implementation for web-tree-sitter 5cb7052
+  * chore: fix asset names 70cef40
+  * fix af20be8
+
+- Update to 0.22.2:
+  * fix: fix releases 3a6e553
+  * fix: fix efaa1ca
+  * fix: debug e39fd12
+
+- Update to 0.22.1:
+  * feat(language): Add support for Haskell via tree-sitter-haskell #1128
+  * fix: add ast-grep to release #1130
+  * fix(deps): update dependency @swc/core to v1.5.5 31428dd
+  * fix(deps): update dependency tree-sitter-typescript to v0.21.1 188525d
+  * chore(deps): update dependency @types/node to v20.12.11 3fe7780
+
+- Update to 0.22.0:
+  * test: add string test case back in Rust #1060
+  * chore: bump tree-sitter version 5b45bd7
+  * fix: update wasm crate ce9acba
+  * fix: update ts deps 3a67b6b
+
+- Update to 0.21.4:
+  * fix: build from source #1125
+  * doc: update how to install via cargo #1118
+  * feat: report undefined util rules #1106
+  * Breaking change: feat: separate RuleCoreError and RuleConfigError d96efa9
+  * refactor: move Transformation into a standalone module b51cc95</comment>
+    <requestid>1173693</requestid>
+  </revision>
 </revisionlist>

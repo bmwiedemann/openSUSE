@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon May 13 14:06:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.22.3:
+  * fix: fix napi test #1140
+  * fix: use dumb implementation for web-tree-sitter 5cb7052
+  * chore: fix asset names 70cef40
+  * fix af20be8
+
+-------------------------------------------------------------------
+Mon May 13 06:51:13 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.22.2:
+  * fix: fix releases 3a6e553
+  * fix: fix efaa1ca
+  * fix: debug e39fd12
+
+-------------------------------------------------------------------
+Mon May 13 06:50:55 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.22.1:
+  * feat(language): Add support for Haskell via tree-sitter-haskell #1128
+  * fix: add ast-grep to release #1130
+  * fix(deps): update dependency @swc/core to v1.5.5 31428dd
+  * fix(deps): update dependency tree-sitter-typescript to v0.21.1 188525d
+  * chore(deps): update dependency @types/node to v20.12.11 3fe7780
+
+-------------------------------------------------------------------
+Mon May 13 06:50:40 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.22.0:
+  * test: add string test case back in Rust #1060
+  * chore: bump tree-sitter version 5b45bd7
+  * fix: update wasm crate ce9acba
+  * fix: update ts deps 3a67b6b
+
+-------------------------------------------------------------------
+Tue May  7 06:37:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.4:
+  * fix: build from source #1125
+  * doc: update how to install via cargo #1118
+  * feat: report undefined util rules #1106
+  * Breaking change: feat: separate RuleCoreError and RuleConfigError d96efa9
+  * refactor: move Transformation into a standalone module b51cc95
+  * fix(deps): update dependency @babel/core to v7.24.5 77ea8bd
+
+-------------------------------------------------------------------
 Fri May  3 05:34:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.21.3:

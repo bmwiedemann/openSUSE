@@ -17,7 +17,7 @@
 
 
 Name:           ast-grep
-Version:        0.21.3+0
+Version:        0.22.3+0
 Release:        0
 Summary:        A CLI tool for code structural search, lint and rewriting
 License:        MIT
@@ -36,7 +36,7 @@ ast-grep(sg) is a CLI tool for code structural search, lint, and rewriting.
 install -D -m 644 %{SOURCE2} .cargo/config
 
 %build
-%{cargo_build}
+%{cargo_build} --locked
 
 %install
 install -D -d -m 0755 %{buildroot}%{_bindir}
