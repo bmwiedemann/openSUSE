@@ -1,0 +1,12 @@
+diff -uNr openvino.orig/samples/cpp/build_samples.sh openvino/samples/cpp/build_samples.sh
+--- openvino.orig/samples/cpp/build_samples.sh	2024-04-25 01:04:42.451868881 -0300
++++ openvino/samples/cpp/build_samples.sh	2024-04-25 01:05:04.678342617 -0300
+@@ -59,7 +59,7 @@
+ printf "\nSetting environment variables for building samples...\n"
+ 
+ if [ -z "$INTEL_OPENVINO_DIR" ]; then
+-    if [[ "$SAMPLES_SOURCE_DIR" = "/usr/share/openvino"* ]]; then
++    if [[ "$SAMPLES_SOURCE_DIR" = "/usr/share/OpenVINO"* ]]; then
+         true
+     elif [ -e "$SAMPLES_SOURCE_DIR/../../setupvars.sh" ]; then
+         setupvars_path="$SAMPLES_SOURCE_DIR/../../setupvars.sh"

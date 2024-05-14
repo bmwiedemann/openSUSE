@@ -21,12 +21,12 @@
 # Compilation takes ~1 hr on OBS for a single python, don't try all supported flavours
 %define pythons python3
 %define __builder ninja
-%define so_ver 2400
+%define so_ver 2410
 %define shlib lib%{name}%{so_ver}
 %define shlib_c lib%{name}_c%{so_ver}
 %define prj_name OpenVINO
 Name:           openvino
-Version:        2024.0.0
+Version:        2024.1.0
 Release:        0
 Summary:        A toolkit for optimizing and deploying AI inference
 # Let's be safe and put all third party licenses here, no matter that we use specific thirdparty libs or not
@@ -40,6 +40,8 @@ Patch0:         openvino-onnx-ml-defines.patch
 Patch2:         openvino-fix-install-paths.patch
 # PATCH-FIX-UPSTREAM openvino-ComputeLibrary-include-string.patch badshah400@gmail.com -- Include header for std::string
 Patch3:         openvino-ComputeLibrary-include-string.patch
+# PATCH-FIX-UPSTREAM openvino-fix-build-sample-path.patch cabelo@opensuse.org -- Fix sample source path in build script
+Patch4:         openvino-fix-build-sample-path.patch
 BuildRequires:  ade-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -51,6 +53,12 @@ BuildRequires:  opencl-cpp-headers
 # headers. Please regenerate this file with a newer version of protoc.
 #BuildRequires:  cmake(ONNX)
 BuildRequires:  pkgconfig
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pybind11-devel}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(OpenCL-Headers)
 BuildRequires:  pkgconfig(flatbuffers)
@@ -62,12 +70,6 @@ BuildRequires:  pkgconfig(pugixml)
 BuildRequires:  pkgconfig(snappy)
 BuildRequires:  pkgconfig(tbb)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pybind11-devel}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 %ifarch %{arm64}
 BuildRequires:  scons
 %endif
@@ -79,8 +81,11 @@ ExcludeArch:    %{ix86} %{arm32} ppc
 %description
 OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 
+
+
 ## Main shared libs and devel pkg ##
 #
+
 %package -n %{shlib}
 Summary:        Shared library for OpenVINO toolkit
 
@@ -89,14 +94,20 @@ OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 
 This package provides the shared library for OpenVINO.
 
+
+
 #
+
 %package -n %{shlib_c}
 Summary:        Shared C library for OpenVINO toolkit
 
 %description -n %{shlib_c}
 This package provides the C library for OpenVINO.
 
+
+
 #
+
 %package  -n %{name}-devel
 Summary:        Headers and sources for OpenVINO toolkit
 Requires:       %{shlib_c} = %{version}
@@ -127,8 +138,11 @@ OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 This package provides the headers and sources for developing applications with
 OpenVINO.
 
+
+
 ## Plugins ##
 #
+
 %package -n %{name}-arm-cpu-plugin
 Summary:        Intel CPU plugin for OpenVINO toolkit
 
@@ -137,7 +151,10 @@ OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 
 This package provides the ARM CPU plugin for OpenVINO on %{arm64} archs.
 
+
+
 #
+
 %package -n %{name}-auto-plugin
 Summary:        Auto / Multi software plugin for OpenVINO toolkit
 
@@ -146,7 +163,10 @@ OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 
 This package provides the Auto / Multi software plugin for OpenVINO.
 
+
+
 #
+
 %package -n %{name}-auto-batch-plugin
 Summary:        Automatic batch software plugin for OpenVINO toolkit
 
@@ -155,7 +175,10 @@ OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 
 This package provides the automatic batch software plugin for OpenVINO.
 
+
+
 #
+
 %package -n %{name}-hetero-plugin
 Summary:        Hetero frontend for Intel OpenVINO toolkit
 
@@ -164,7 +187,10 @@ OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 
 This package provides the hetero frontend for OpenVINO.
 
+
+
 #
+
 %package -n %{name}-intel-cpu-plugin
 Summary:        Intel CPU plugin for OpenVINO toolkit
 
@@ -173,8 +199,23 @@ OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 
 This package provides the intel CPU plugin for OpenVINO for %{x86_64} archs.
 
+
+
+#
+
+%package -n %{name}-intel-npu-plugin
+Summary:        Intel NPU plugin for OpenVINO toolkit
+
+%description -n %{name}-intel-npu-plugin
+OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
+
+This package provides the intel NPU plugin for OpenVINO for %{x86_64} archs.
+
+
+
 ## Frontend shared libs ##
 #
+
 %package -n lib%{name}_ir_frontend%{so_ver}
 Summary:        Paddle frontend for Intel OpenVINO toolkit
 
@@ -183,7 +224,10 @@ OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 
 This package provides the ir frontend for OpenVINO.
 
+
+
 #
+
 %package -n lib%{name}_onnx_frontend%{so_ver}
 Summary:        Onnx frontend for OpenVINO toolkit
 
@@ -192,7 +236,10 @@ OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 
 This package provides the onnx frontend for OpenVINO.
 
+
+
 #
+
 %package -n lib%{name}_paddle_frontend%{so_ver}
 Summary:        Paddle frontend for Intel OpenVINO toolkit
 
@@ -201,7 +248,10 @@ OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 
 This package provides the paddle frontend for OpenVINO.
 
+
+
 #
+
 %package -n lib%{name}_pytorch_frontend%{so_ver}
 Summary:        PyTorch frontend for OpenVINO toolkit
 
@@ -210,7 +260,10 @@ OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 
 This package provides the pytorch frontend for OpenVINO.
 
+
+
 #
+
 %package -n lib%{name}_tensorflow_frontend%{so_ver}
 Summary:        TensorFlow frontend for OpenVINO toolkit
 
@@ -219,7 +272,10 @@ OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 
 This package provides the tensorflow frontend for OpenVINO.
 
+
+
 #
+
 %package -n lib%{name}_tensorflow_lite_frontend%{so_ver}
 Summary:        TensorFlow Lite frontend for OpenVINO toolkit
 
@@ -228,8 +284,11 @@ OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 
 This package provides the tensorflow-lite frontend for OpenVINO.
 
+
+
 ## Python module ##
 #
+
 %package -n python-openvino
 Summary:        Python module for openVINO toolkit
 Requires:       python-numpy < 2
@@ -241,8 +300,11 @@ OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 This package provides a Python module for interfacing with openVINO toolkit.
 
 
+
+
 ## Samples/examples ##
 #
+
 %package -n %{name}-sample
 Summary:        Samples for use with OpenVINO toolkit
 BuildArch:      noarch
@@ -251,8 +313,10 @@ BuildArch:      noarch
 OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 
 This package provides some samples for use with openVINO.
-#
 
+
+
+#
 %prep
 %autosetup -p1
 
@@ -352,6 +416,10 @@ rm -fr %{buildroot}%{_datadir}/licenses/*
 %files -n %{name}-intel-cpu-plugin
 %dir %{_libdir}/%{prj_name}
 %{_libdir}/%{prj_name}/libopenvino_intel_cpu_plugin.so
+
+%files -n %{name}-intel-npu-plugin
+%dir %{_libdir}/%{prj_name}
+%{_libdir}/%{prj_name}/libopenvino_intel_npu_plugin.so
 %endif
 
 %ifarch %{arm64}
