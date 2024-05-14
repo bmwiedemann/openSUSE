@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 13 14:15:21 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1715609300.c38e9908:
+  * Bump ace-builds from 1.33.1 to 1.33.2
+  * Add trailing slashes and autoindex to asset config example
+  * Update to Leap 15.6 where applicable
+  * Prevent keyboxd usage when gpg >= 2.4 is used
+
+-------------------------------------------------------------------
 Fri May 10 21:40:45 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1715377164.c357f5c7:
