@@ -6610,4 +6610,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.8.8</comment>
     <requestid>1170696</requestid>
   </revision>
+  <revision rev="732" vrev="1">
+    <srcmd5>b440409f83bfb3534fe257fe46924821</srcmd5>
+    <version>6.8.9</version>
+    <time>1715686633</time>
+    <user>anag+factory</user>
+    <comment>6.8.9 &amp; other fixes</comment>
+    <requestid>1173625</requestid>
+  </revision>
 </revisionlist>
