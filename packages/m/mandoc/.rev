@@ -77,4 +77,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1103482</requestid>
   </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>18da7bdb02afd255a1d2733848adbedc</srcmd5>
+    <version>1.14.6</version>
+    <time>1715686646</time>
+    <user>anag+factory</user>
+    <comment>- Add /usr/lib/rpm/lua/mandoc.lua and use it for processing man
+  pages in the trigger scripts, making processing of packages
+  with many man pages (see OpenSSL for an example) significantly
+  faster.</comment>
+    <requestid>1173641</requestid>
+  </revision>
 </revisionlist>

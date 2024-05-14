@@ -1,7 +1,7 @@
 #
 # spec file for package mandoc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        ISC
 Group:          Productivity/Publishing/Troff
 URL:            http://mandoc.bsd.lv/
 Source:         http://mandoc.bsd.lv/snapshots/mandoc-%{version}.tar.gz
+Source1:        mandoc.lua
 # PATCH-FIX-UPSTREAM boo1209830-endless-loop.patch bsc#1209830 mcepl@suse.com
 # Fix endless loop
 Patch0:         boo1209830-endless-loop.patch
@@ -71,62 +72,43 @@ export CFLAGS="%optflags"
 %make_install MANDIR=%{_mandir} BINDIR=%{_bindir} SBINDIR=%{_sbindir}
 cp -fv %{buildroot}%{_bindir}/apropos %{_tmppath}/
 mv -fv %{_tmppath}/apropos %{buildroot}%{_sbindir}/makewhatis
+install -D -m 644 %{SOURCE1} %{buildroot}%{_rpmconfigdir}/lua/mandoc.lua
 
 # ghost
 : > %{buildroot}%{_mandir}/mandoc.db
 
-%post
-%{_sbindir}/makewhatis
+%posttrans
+/usr/sbin/makewhatis || :
 
 %filetriggerin -p <lua> -- %{_mandir}
--- no point registering individual files if we can call
--- makewhatis in %%post to catch all if
-if posix.getenv("VERBOSE_FILETRIGGERS") then
-    print("%{nvr}: running file install trigger")
-end
-if posix.access("%{_mandir}/mandoc.db") then
+if not posix.access("/usr/share/man/mandoc.db") then return end
+require("mandoc")
+mandoc.debug = "%{nvr}(fin)"
+file = rpm.next_file()
+while file do
+    mandoc.add(file)
     file = rpm.next_file()
-    while file do
-        if string.match(file, "%{_mandir}/man[^/]+/[^/]+%{?ext_man}$") then
-            if posix.access(file) then
-                if posix.getenv("VERBOSE_FILETRIGGERS") then
-                    print("%{nvr}: adding " .. file)
-                end
-                rpm.execute("%{_sbindir}/makewhatis", "-d", "%{_mandir}", file)
-            else
-                io.stderr:write("%{nvr}: missing " .. file .. "\n")
-            end
-        end
-        file = rpm.next_file()
-    end
-elseif posix.getenv("VERBOSE_FILETRIGGERS") then
-    print("%{nvr}: missing mandoc.db, skipped")
 end
-io.flush()
+
+%transfiletriggerin -p <lua> -- %{_mandir}
+require("mandoc")
+mandoc.debug = "%{nvr}(tfin)"
+mandoc.done()
 
 %filetriggerun -p <lua> -- %{_mandir}
-if posix.getenv("VERBOSE_FILETRIGGERS") then
-    print("%{nvr}: running file remove trigger")
-end
-if posix.access("%{_mandir}/mandoc.db") then
+if not posix.access("/usr/share/man/mandoc.db") then return end
+require("mandoc")
+mandoc.debug = "%{nvr}(fun)"
+file = rpm.next_file()
+while file do
+    mandoc.remove(file)
     file = rpm.next_file()
-    while file do
-        if string.match(file, "%{_mandir}/man[^/]+/[^/]+%{?ext_man}$") then
-            if posix.access(file) then
-                if posix.getenv("VERBOSE_FILETRIGGERS") then
-                    print("%{nvr}: removing " .. file)
-                end
-                rpm.execute("%{_sbindir}/makewhatis", "-u", "%{_mandir}", file)
-            else
-                io.stderr:write("%{nvr}: missing " .. file .. "\n")
-            end
-        end
-        file = rpm.next_file()
-    end
-elseif posix.getenv("VERBOSE_FILETRIGGERS") then
-    print("%{nvr}: missing mandoc.db, skipped")
 end
-io.flush()
+
+%transfiletriggerpostun -p <lua> -- %{_mandir}
+require("mandoc")
+mandoc.debug = "%{nvr}(tfpun)"
+mandoc.done()
 
 %files
 %license LICENSE
@@ -137,6 +119,8 @@ io.flush()
 %{_bindir}/soelim
 %{_bindir}/whatis
 %{_sbindir}/makewhatis
+%dir %{_rpmconfigdir}/lua
+%{_rpmconfigdir}/lua/mandoc.lua
 %{_mandir}/man1/*.1%{?ext_man}
 %{_mandir}/man5/*.5%{?ext_man}
 %{_mandir}/man7/*.7%{?ext_man}

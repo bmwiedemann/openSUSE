@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 13 11:37:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add /usr/lib/rpm/lua/mandoc.lua and use it for processing man
+  pages in the trigger scripts, making processing of packages
+  with many man pages (see OpenSSL for an example) significantly
+  faster.
+
+-------------------------------------------------------------------
 Fri Jun  9 16:23:30 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add boo1209830-endless-loop.patch (boo#1209830) avoid endless
