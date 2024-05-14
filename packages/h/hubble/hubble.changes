@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May 14 05:23:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.4:
+  * Modify version to 0.13.4
+  * Modify changelog for 0.13.4 release
+  * Bump Golang to v1.21.10
+  * vendor: Bump Cilium to v1.15.4
+  * chore(deps): update golangci/golangci-lint-action action to v6
+  * chore(deps): update all github action dependencies
+  * chore(deps): update golangci/golangci-lint-action action to
+    v5.3.0
+  * chore(deps): update actions/setup-go action to v5.0.1
+  * chore(deps): update golangci/golangci-lint-action action to
+    v5.1.0
+  * chore(deps): update golangci/golangci-lint-action action to v5
+  * chore(deps): update all github action dependencies
+  * chore(deps): update helm/kind-action action to v1.10.0
+  * chore(deps): update all github action dependencies
+  * chore(deps): update github/codeql-action action to v3.25.1
+  * CHANGELOG: Use correct year for the last few releases
+  * Prepare for 0.13.4
+
+-------------------------------------------------------------------
 Thu Apr 18 13:16:14 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.13.3:
