@@ -17,7 +17,7 @@
 
 
 %define major_ver 4
-%define minor_ver 2
+%define minor_ver 3
 %define patch_ver 00
 %define shlib   libkokkos-%{major_ver}_%{minor_ver}
 %global kokkos_desc \
