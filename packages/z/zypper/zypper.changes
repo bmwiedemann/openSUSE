@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri May  3 12:37:42 CEST 2024 - ma@suse.de
+
+- Fixed check for outdated repo metadata as non-root user
+  (bsc#1222086)
+- BuildRequires:  libzypp-devel >= 17.33.0.
+- Delay zypp lock until command options are parsed (bsc#1223766)
+- version 1.14.73
+
+-------------------------------------------------------------------
+Mon Apr 29 12:41:23 CEST 2024 - ma@suse.de
+
+- Unify message format(fixes #485)
+- version 1.14.72
+
+-------------------------------------------------------------------
+Wed Apr 24 07:42:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- switch cmake build type to RelWithDebInfo
+- modernize spec file (remove Authors section, use proper macros,
+  remove redundant clean section, don't mark man pages as doc)
+- switch to -O2 -fvisibility=hidden -fpie:
+  * PIC is not needed as no shared lib is built
+  * fstack-protector-strong is default on modern dists and would
+    be downgraded by fstack-protector
+  * default visibility hidden allows better optimisation
+  * O2 is reducing inlining bloat
+  -> 18% reduced binary size
+
+-------------------------------------------------------------------
+Mon Apr 22 13:11:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- remove procps requires (was only for ZMD which is dropped)
+  (jsc#PED-8153)
+
+-------------------------------------------------------------------
 Mon Apr 15 13:02:18 CEST 2024 - ma@suse.de
 
 - Do not try to refresh repo metadata as non-root user
