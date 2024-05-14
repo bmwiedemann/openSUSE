@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           gitsign
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        Keyless Git signing using Sigstore
 License:        Apache-2.0
