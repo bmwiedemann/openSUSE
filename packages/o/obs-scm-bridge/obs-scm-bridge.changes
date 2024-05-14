@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  7 09:39:21 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- 0.5.0
+  project mode related enhancements:
+  * no more defining of bcntsynctag. We need to move this to package
+    spec files to avoid to have these always defined.
+  * QA hook to limit building a defined set of packages only
+
+-------------------------------------------------------------------
 Tue Apr 23 17:14:53 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - 0.4.3
