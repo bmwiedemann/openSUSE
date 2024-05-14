@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon May 13 15:35:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.30.0+rke2r1:
+  * This release updates Kubernetes to v1.30.0, and fixes a number
+    of issues.
+  * Details see
+    https://github.com/rancher/rke2/releases/tag/v1.30.0+rke2r1
+   * This release is RKE2's first in the v1.30 line. This release
+     updates Kubernetes to v1.30.0. Before upgrading from earlier
+     releases, be sure to read the Kubernetes Changelog
+  * Important Note
+    If your server (control-plane) nodes were not started with the
+    --token CLI flag or config file key, a randomized token was
+    generated during initial cluster startup. This key is used both
+    for joining new nodes to the cluster, and for encrypting
+    cluster bootstrap data within the datastore. Ensure that you
+    retain a copy of this token, as is required when restoring from
+    backup.
+    You may retrieve the token value from any server already joined
+    to the cluster:
+      cat /var/lib/rancher/rke2/server/token
+
+-------------------------------------------------------------------
 Wed May  8 20:54:28 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.29.4+rke2r1:
