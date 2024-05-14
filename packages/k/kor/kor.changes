@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 14 05:13:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.4.0:
+  * chore(deps): bump github.com/prometheus/client_golang (#264)
+  * feat: allow grouping options for output (#256)
+  * Add Kind exceptions (#263)
+  * Support -e as shortened flag for --exclude-namespaces (#261)
+  * feat: add AKS exceptions (#260)
+  * fix(GetUnusedAll): skip non-namespaced resources if
+    --include-namespaces flag is used (#258)
+  * fix: refactor exceptions into seperate files (#257)
+  * feat: add GKE exceptions (#252)
+  * ci: skip running go checks when no relevant files were changed
+    (#254)
+  * chore: add github pr template (#251)
+
+-------------------------------------------------------------------
 Thu May 02 07:21:00 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.3.8:
