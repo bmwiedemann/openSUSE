@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 14 05:05:41 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.22:
+  * Fixed #7170 <https://github.com/squidfunk/mkdocs-material/issues/7170>:
+    Copy button adds empty lines for line spans (9.5.18 regression)
+  * Fixed #7160 <https://github.com/squidfunk/mkdocs-material/issues/7160>:
+    Version switching doesn't stay on page (9.5.5 regression)
+  * Fixed #5619 <https://github.com/squidfunk/mkdocs-material/issues/5619>:
+    Links in Mermaid.js diagrams not discernible
+
+-------------------------------------------------------------------
 Sun May  5 07:24:25 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.21:
