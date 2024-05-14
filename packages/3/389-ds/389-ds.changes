@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 14 01:33:16 UTC 2024 - william.brown@suse.com
+
+- Update to version 3.0.1~git39.e24615f:
+  * Issue 6142 - Fix CI tests (#6161)
+  * Issue 6157 - Cockipt crashes when getting replication status if topology contains an old 389ds version (#6158)
+
+-------------------------------------------------------------------
 Tue Apr 23 01:57:07 UTC 2024 - william.brown@suse.com
 
 - Update to version 3.0.1~git37.55529d1:
