@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 12 12:26:09 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 20.26.1:
+  * No Linux related change.
+- Changes from version 20.26.0:
+  * allow builtin discovery to discover specific interpreters
+    (e.g. python3.12) given an unspecific spec (e.g. python3) -
+    (gh#pypa/virtualenv#2709)
+
+-------------------------------------------------------------------
 Sat Apr 20 07:42:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update update 20.25.3:

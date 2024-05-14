@@ -793,4 +793,12 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
     Distribute again and works for Python 2 and 3 with one codebase. The</comment>
     <requestid>1169321</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>317737ebc3f8cd2a62ea7720ec901964</srcmd5>
+    <version>20.26.1</version>
+    <time>1715686646</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1173647</requestid>
+  </revision>
 </revisionlist>
