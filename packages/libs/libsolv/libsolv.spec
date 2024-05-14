@@ -1,7 +1,7 @@
 #
 # spec file for package libsolv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,7 +65,7 @@
 %bcond_with zypp
 
 Name:           libsolv
-Version:        0.7.28
+Version:        0.7.29
 Release:        0
 Summary:        Package dependency solver using a satisfiability algorithm
 License:        BSD-3-Clause
@@ -153,6 +153,7 @@ so-called satisfiability algorithm for resolving package
 dependencies.
 
 %endif
+
 %package devel
 Summary:        Development files for libsolv, a package solver
 Group:          Development/Libraries/C and C++
@@ -166,6 +167,14 @@ Conflicts:      libsatsolver-devel
 Development files for libsolv, a library for solving packages and
 reading repositories.
 
+%package tools-base
+Summary:        Utilities used by libzypp to manage .solv files
+Group:          System/Management
+Provides:       libsolv-tools:%{_bindir}/repo2solv
+
+%description tools-base
+This subpackage contains utilities used by libzypp to manage solv files.
+
 %package tools
 Summary:        Utilities to work with .solv files
 Group:          System/Management
@@ -173,6 +182,7 @@ Conflicts:      satsolver-tools-obsolete
 Obsoletes:      satsolver-tools < 0.18
 Provides:       satsolver-tools = 0.18
 Requires:       findutils
+Requires:       libsolv-tools-base = %{version}
 
 %description tools
 libsolv is a library for solving packages and reading repositories.
@@ -256,6 +266,7 @@ cmake . $CMAKE_FLAGS \
 	-DWITH_LIBXML2=1 \
 	-DENABLE_APPDATA=1 \
 	-DENABLE_COMPS=1 \
+	-DMULTI_SEMANTICS=1 \
 	%{?with_static:-DENABLE_STATIC=1} \
 	%{!?with_shared:-DDISABLE_SHARED=1} \
 	%{?with_perl:-DENABLE_PERL=1} \
@@ -285,15 +296,14 @@ ln -s repo2solv %{buildroot}/%{_bindir}/repo2solv.sh
 %endif
 %endif
 %if %{with python_singlespec}
-%{python_expand 
-pyver=%%python_version
+%{python_expand #
+pyver=%{$python_version}
 cmake . -U '*PYTHON*' -DENABLE_PYTHON=1 -DPYTHON_VERSION_MAJOR=${pyver%%.*} -DPYTHON_VERSION_MINOR=${pyver#*.}
 make DESTDIR=%{buildroot} -C bindings/python clean
 make DESTDIR=%{buildroot} -C bindings/python install
 }
 %python_compileall
 %endif
-
 
 %check
 make ARGS=--output-on-failure test
@@ -310,6 +320,13 @@ make ARGS=--output-on-failure test
 %{_libdir}/libsolvext.so.*
 %endif
 
+%files tools-base
+%defattr(-,root,root)
+%{_bindir}/repo2solv
+%{_bindir}/rpmdb2solv
+%{_mandir}/man1/repo2solv.1*
+%{_mandir}/man1/rpmdb2solv.1*
+
 %files tools
 %defattr(-,root,root)
 %if 0%{?suse_version}
@@ -317,7 +334,11 @@ make ARGS=--output-on-failure test
 %exclude %{_mandir}/man1/helix2solv*
 %endif
 %exclude %{_mandir}/man1/solv.1*
+%exclude %{_mandir}/man1/repo2solv.1*
+%exclude %{_mandir}/man1/rpmdb2solv.1*
 %exclude %{_bindir}/solv
+%exclude %{_bindir}/repo2solv
+%exclude %{_bindir}/rpmdb2solv
 %{_bindir}/*
 %{_mandir}/man1/*
 
@@ -380,6 +401,5 @@ make ARGS=--output-on-failure test
 %{python_sitearch}/*/*solv*
 %endif
 %endif
-
 
 %changelog
