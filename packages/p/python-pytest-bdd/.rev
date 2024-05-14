@@ -116,4 +116,41 @@
 - No longer skip tests that are not broken</comment>
     <requestid>960954</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d346ba4104fcddb36eb950a0d1ea1596</srcmd5>
+    <version>7.1.2</version>
+    <time>1715686745</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.1.2:
+  * Address another compatibility issue with pytest 8.1 (fixture registration). 
+  * Address a bug introduced in pytest-bdd 7.1 caused by incorrect pytest
+    version check.
+  * Address compatibility issue with pytest 8.1. 
+  * Fix errors occurring if `pytest_unconfigure` is called before
+    `pytest_configure`. 
+  * parsers.re now does a fullmatch instead of a partial match. This is to
+    make it work just like the other parsers, since they don't ignore
+    non-matching characters at the end of the string. 
+  * Drop python 3.7 compatibility, as it's no longer supported. 
+  * Declare official support for python 3.12 
+  * Improve parser performance by 15% 
+  * Fix regression introduced in version 6.1.0 where the
+    pytest_bdd_after_scenario hook would be called after every step instead
+    of after the scenario. 
+  * Fix bug where steps without parsers would take precedence over steps
+    with parsers. 
+  * Step functions can now be decorated multiple times with @given, @when,
+    @then. Previously every decorator would override converters and
+    target_fixture every at every application. 
+  * Require pytest&gt;=6.2 
+  * Using modern way to specify hook options to avoid deprecation warnings
+    with pytest &gt;=7.2.
+  * Add generic step decorator that will be used for all kind of steps 
+  * Add stacklevel param to given, when, then, step decorators. This allows
+    for programmatic step generation 
+  * Hide pytest-bdd internal method in user tracebacks 
+  * Make the package PEP 561-compatible 
+  * Configuration option bdd_features_base_dir is interpreted as relative</comment>
+    <requestid>1172299</requestid>
+  </revision>
 </revisionlist>

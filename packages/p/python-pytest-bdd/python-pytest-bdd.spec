@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-bdd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,34 +16,36 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-pytest-bdd
-Version:        5.0.0
+Version:        7.1.2
 Release:        0
 Summary:        BDD for pytest
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-bdd
 Source:         https://github.com/pytest-dev/pytest-bdd/archive/%{version}.tar.gz#/pytest-bdd-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Mako
-Requires:       python-glob2
+Requires:       python-packaging
 Requires:       python-parse
 Requires:       python-parse_type
-Requires:       python-py
-Requires:       python-pytest >= 4.3.0
+Requires:       python-pytest >= 6.2.0
+Requires:       python-typing_extensions
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Mako}
 BuildRequires:  %{python_module execnet}
-BuildRequires:  %{python_module glob2}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module parse_type}
 BuildRequires:  %{python_module parse}
-BuildRequires:  %{python_module pytest >= 4.3.0}
-BuildRequires:  %{python_module py}
+BuildRequires:  %{python_module pytest >= 6.2.0}
+BuildRequires:  %{python_module typing_extensions}
 %python_subpackages
 
 %description
@@ -64,13 +66,12 @@ containing the side effects of the Gherkin imperative declarations.
 
 %prep
 %setup -q -n pytest-bdd-%{version}
-sed -i '/tox/d' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/pytest-bdd
 
@@ -93,6 +94,7 @@ export PATH=$PWD/build/testbin:$PATH
 %doc AUTHORS.rst CHANGES.rst README.rst
 %license LICENSE.txt
 %python_alternative %{_bindir}/pytest-bdd
-%{python_sitelib}/*
+%{python_sitelib}/pytest_bdd
+%{python_sitelib}/pytest_bdd-%{version}.dist-info
 
 %changelog
