@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue May 14 05:39:32 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- major upgrade to 1.22.0:
+  https://istio.io/latest/news/releases/1.22.x/announcing-1.22/
+  https://istio.io/latest/news/releases/1.22.x/announcing-1.22/change-notes/
+  * Added the istioctl proxy-stauts command, which is the promoted
+    istioctl experimental proxy-status command. The old istioctl
+    proxy-status command has been removed. This promotion should
+    not result in any loss of functionality. However, the request
+    is now sent based on xDS instead of HTTP, and we have
+    introduced a set of new xDS-based flags to target the control
+    plane.
+  * Added support for multi-cluster analysis in istioctl analyze
+    command when there are remote cluster secrets set up through
+    Install Multicluster.
+  * Added a new istioctl dashboard proxy command, which can be used
+    to show the admin UI of different proxy pods, for example:
+    Envoy, ztunnel, and waypoint.
+  * Added the --proxy option to istioctl experimental wait command.
+    (Issue #48696)
+  * Added namespace filtering to istioctl proxy-config workload
+    command using the --workloads-namespace flag to display
+    workloads in the specified namespace.
+  * Added the istioctl dashboard istio-debug command to display the
+    Istio debug endpoints dashboard.
+  * Added the istioctl experimental describe command to support
+    displaying the details of policies for PortLevelSettings.
+    (Issue #49802)
+  * Added ability to define the traffic address type (service,
+    workload, all or none) for waypoints via the --for flag when
+    using the istioctl experimental waypoint apply command. (Issue
+    #49896)
+  * Added the ability to name waypoints through istioctl via the
+    --name flag on the waypoint command. (Issue #49915), (Issue
+    #50173)
+  * Removed the ability to specify a service account for the
+    waypoint by deleting the --service-account flag on the waypoint
+    command. (Issue #49915), (Issue #50173)
+  * Added the ability to enroll a waypoint proxy in the waypoint’s
+    namespace through istioctl via the --enroll-namespace flag on
+    the waypoint command. (Issue #50248)
+  * Added the istioctl ztunnel-config command. This allow users to
+    view ztunnel configuration information via the istioctl
+    ztunnel-config workload command. (Issue #49841)
+  * Removed the workload flag from proxy-config command. Use
+    istioctl ztunnel-config workload command to view ztunnel
+    configuration information instead. (Issue #49841)
+  * Added a warning when using istioctl experimental waypoint apply
+    --enroll-namespace and the namespace is not labeled for ambient
+    redirection. (Issue #50396)
+  * Added the --for flag to istioctl experimental waypoint generate
+    command so that the user can preview the YAML before they apply
+    it. (Issue #50790)
+  * Added an experimental OpenShift Kubernetes platform profile to
+    istioctl. To install with the OpenShift profile, use istioctl
+    install --set profile=openshift. See OpenShift Platform Setup
+    and Install OpenShift using istioctl documents for more
+    information.
+  * Added the flag --proxy-admin-port to the command istioctl
+    experimental envoy-stats to set a custom proxy admin port.
+  * Fixed an issue where the istioctl experimental proxy-status
+    <pod> compare command was not working due to unknown configs.
+  * Fixed the istioctl describe command not displaying Ingress
+    information under non istio-system namespaces. (Issue #50074)
+
+-------------------------------------------------------------------
 Tue Apr 23 07:59:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.21.2:
