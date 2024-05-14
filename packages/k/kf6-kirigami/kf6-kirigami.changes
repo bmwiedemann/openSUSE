@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 13 06:56:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.1
+  * New bugfix release
+- Changes since 6.2.0:
+  * Revert "Dialog: Always use an overlay as visual parent"
+
+-------------------------------------------------------------------
 Mon May  6 12:22:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.2.0
