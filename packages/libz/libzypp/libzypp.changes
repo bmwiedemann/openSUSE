@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon May 13 11:48:13 CEST 2024 - bzeller@suse.de
+
+- version 17.33.4 (35)
+
+-------------------------------------------------------------------
+Thu May  9 13:43:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add one more missing export for libyui-qt-pkg
+
+-------------------------------------------------------------------
+Wed May  8 14:05:16 CEST 2024 - bzeller@suse.de
+
+- Revert eintrSafeCall behavior to setting errno to 0.
+- version 17.33.3 (34)
+
+-------------------------------------------------------------------
+Mon May  6 08:28:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- fix up requires_eq usage for libsolv-tools-base
+- add one more missing export for PackageKit
+- version 17.33.2
+
+-------------------------------------------------------------------
+Fri May  3 14:06:58 CEST 2024 - ma@suse.de
+
+- version 17.33.1 (33)
+
+-------------------------------------------------------------------
+Fri May  3 11:31:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- switch to reduced size libsolv-tools-base (jsc#PED-8153)
+
+-------------------------------------------------------------------
+Fri May  3 12:52:22 CEST 2024 - ma@suse.de
+
+- Fixed check for outdated repo metadata as non-root user
+  (bsc#1222086)
+- Add ZYPP_API for exported functions and switch to
+  visibility=hidden (jsc#PED-8153)
+- Dynamically resolve libproxy (jsc#PED-8153)
+- version 17.33.0 (33)
+
+-------------------------------------------------------------------
+Mon Apr 29 12:00:59 CEST 2024 - ma@suse.de
+
+- Fix download from gpgkey URL (bsc#1223430, fixes openSUSE/zypper#546)
+- version 17.32.6 (32)
+
+-------------------------------------------------------------------
 Fri Apr 19 15:58:26 CEST 2024 - ma@suse.de
 
 - Don't try to refresh volatile media as long as raw metadata are
