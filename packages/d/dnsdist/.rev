@@ -92,4 +92,26 @@
   https://dnsdist.org/changelog.html#change-1.9.0</comment>
     <requestid>1147125</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9059cb619a9e5d410dfb706a420865e4</srcmd5>
+    <version>1.9.4</version>
+    <time>1715686677</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.9.4: (bsc#1224001, CVE-2024-25581)
+  * Fix “C++ One Definition Rule” warnings in XSK
+  * Fix DNS over plain HTTP broken by reloadAllCertificates()
+  * Fix a crash in incoming DoH with nghttp2
+  * Fix handling of XFR requests over DoH
+- changes since 1.9.0:
+  * Support “no server available” result from Lua FFI load-balancing policies
+  * Release incoming TCP connection right away on backend failure
+  * Use server preference algorithm for ALPN selection
+  * Fix a null-deref in incoming DNS over HTTPS with the nghttp2 provider
+  * Fix DNS over HTTP connections/queries counters with the nghttp2 provider
+  * Fix first IPv6 console connection being rejected
+  * Fix XSK-enabled check when reconnecting a backend
+  * Properly handle a failure of the first lazy health-check
+  * Also handle EHOSTUNREACH as a case for reconnecting the socket</comment>
+    <requestid>1173740</requestid>
+  </revision>
 </revisionlist>

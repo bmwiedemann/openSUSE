@@ -38,7 +38,7 @@
 %bcond_with     dnsdist_luajit
 %endif
 Name:           dnsdist
-Version:        1.9.0
+Version:        1.9.4
 Release:        0
 Summary:        A highly DNS-, DoS- and abuse-aware loadbalancer
 License:        GPL-2.0-only

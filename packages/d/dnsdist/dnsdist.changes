@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon May 13 15:36:16 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- update to 1.9.4: (bsc#1224001, CVE-2024-25581)
+  * Fix “C++ One Definition Rule” warnings in XSK
+  * Fix DNS over plain HTTP broken by reloadAllCertificates()
+  * Fix a crash in incoming DoH with nghttp2
+  * Fix handling of XFR requests over DoH
+
+- changes since 1.9.0:
+  * Support “no server available” result from Lua FFI load-balancing policies
+  * Release incoming TCP connection right away on backend failure
+  * Use server preference algorithm for ALPN selection
+  * Fix a null-deref in incoming DNS over HTTPS with the nghttp2 provider
+  * Fix DNS over HTTP connections/queries counters with the nghttp2 provider
+  * Fix first IPv6 console connection being rejected
+  * Fix XSK-enabled check when reconnecting a backend
+  * Properly handle a failure of the first lazy health-check
+  * Also handle EHOSTUNREACH as a case for reconnecting the socket
+
+-------------------------------------------------------------------
 Fri Feb 16 15:04:56 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - update to 1.9.0:
