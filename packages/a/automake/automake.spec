@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package automake
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,11 @@ Source3:        automake-rpmlintrc
 Patch2:         automake-require_file.patch
 Patch3:         automake-1.13.4-fix-primary-prefix-invalid-couples-test.patch
 Patch5:         0001-correct-parameter-parsing-in-test-driver-script.patch
+# PATCH-FIX-UPSTREAM: Fix testuite with GCC-14
+Patch6:         tests-Fix-type-defaults-error-in-link_cond.patch
+Patch7:         tests-avoid-implicit-function-declaration-in-depcomp.patch
+Patch8:         tests-don-t-try-to-prevent-flex-from-including-unist.patch
+Patch9:         tests-avoid-implicit-function-declarations.patch
 Patch100:       automake-suse-vendor.patch
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  bison
@@ -52,7 +57,7 @@ BuildRequires:  perl(threads)
 Requires:       autoconf >= 2.69
 Requires:       perl
 Requires(post): info
-Requires(preun):info
+Requires(preun): info
 BuildArch:      noarch
 %if "%{flavor}" == "testsuite"
 BuildRequires:  cscope

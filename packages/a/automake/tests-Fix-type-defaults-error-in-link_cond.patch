@@ -1,0 +1,31 @@
+From 2a9908da9dbc075ee6c4e853cf3be0365b15f202 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20B=C3=A9rat?= <fberat@redhat.com>
+Date: Mon, 12 Dec 2022 08:05:53 +0100
+Subject: [PATCH] tests: Fix 'type defaults' error in link_cond due to main not
+ being properly declared
+
+This is related to an effort to prepare Automake for future GCC/Clang
+versions which set c99 as default standard to be used.
+Not properly declaring main as "int main(...)" is rejected since c99.
+
+* t/link_cond.sh: Add (void) to main definition.
+---
+ t/link_cond.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/link_cond.sh b/t/link_cond.sh
+index 45d0d7f40..889623131 100644
+--- a/t/link_cond.sh
++++ b/t/link_cond.sh
+@@ -52,7 +52,7 @@ $AUTOCONF
+ rm -f *.c++
+ cat > less.c <<'END'
+ /* Valid C but deliberately invalid C++ */
+-main ()
++int main (void)
+ {
+   int new = 0;
+   return new;
+-- 
+2.35.3
+

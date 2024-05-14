@@ -1,0 +1,1166 @@
+From c1f34ffe129323ec7ccebf77bc1eee89f97f971e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20B=C3=A9rat?= <fberat@redhat.com>
+Date: Mon, 28 Aug 2023 18:32:53 -0700
+Subject: [PATCH] tests: don't try to prevent flex from including unistd.h.
+
+This patch is from https://bugs.gnu.org/59994.
+
+* t/cond35.sh: This patch is related to an effort to prepare
+Automake for future GCC/Clang versions which set c99 as default
+standard to be used.
+
+In the current version of flex, not having unistd.h leads to
+implicit function declarations that are not compatible with C99.
+
+A future version of flex will (hopefully) make the "NO_UNISTD"
+flag a no-op, and include unistd.h by default.
+
+Also, while flex-dedicated tests had this macro set,
+yacc tests did not, despite their use of flex.
+
+For consistency, all the yacc/flex related tests now have the
+"--never-interactive" option set in AM_LFLAGS, and do not try
+define an isatty function.
+
+* t/lex-clean-cxx.sh: Likewise.
+* t/lex-clean.sh: Likewise.
+* t/lex-depend-cxx.sh: Likewise.
+* t/lex-depend.sh: Likewise.
+* t/lex-header.sh: Likewise.
+* t/lex-lib-external.sh: Likewise.
+* t/lex-lib.sh: Likewise.
+* t/lex-libobj.sh: Likewise.
+* t/lex-line.sh: Likewise.
+* t/lex-multiple.sh: Likewise.
+* t/lex-nodist.sh: Likewise.
+* t/lex-noyywrap.sh: Likewise.
+* t/lex-pr204.sh: Likewise.
+* t/lex-subobj-nodep.sh: Likewise.
+* t/lex3.sh: Likewise.
+* t/lex5.sh: Likewise.
+* t/lexvpath.sh: Likewise.
+* t/silent-lex.sh: Likewise.
+* t/silent-many-languages.sh: Likewise.
+* t/silent-yacc-headers.sh: Likewise.
+* t/silent-yacc.sh: Likewise.
+* t/subpkg-yacc.sh: Likewise.
+* t/suffix10.tap: Likewise.
+* t/yacc-auxdir.sh: Likewise.
+* t/yacc-basic.sh: Likewise.
+* t/yacc-bison-skeleton-cxx.sh: Likewise.
+* t/yacc-bison-skeleton.sh: Likewise.
+* t/yacc-clean-cxx.sh: Likewise.
+* t/yacc-clean.sh: Likewise.
+* t/yacc-cxx-grepping.sh: Likewise.
+* t/yacc-cxx.sh: Likewise.
+* t/yacc-d-basic.sh: Likewise.
+* t/yacc-d-cxx.sh: Likewise.
+* t/yacc-d-vpath.sh: Likewise.
+* t/yacc-deleted-headers.sh: Likewise.
+* t/yacc-depend.sh: Likewise.
+* t/yacc-depend2.sh: Likewise.
+* t/yacc-dist-nobuild-subdir.sh: Likewise.
+* t/yacc-dist-nobuild.sh: Likewise.
+* t/yacc-dry.sh: Likewise.
+* t/yacc-grepping.sh: Likewise.
+* t/yacc-grepping2.sh: Likewise.
+* t/yacc-headers-and-dist-pr47.sh: Likewise.
+* t/yacc-line.sh: Likewise.
+* t/yacc-misc.sh: Likewise.
+* t/yacc-mix-c-cxx.sh: Likewise.
+* t/yacc-nodist.sh: Likewise.
+* t/yacc-pr204.sh: Likewise.
+* t/yacc-subdir.sh: Likewise.
+* t/yacc-vpath.sh: Likewise.
+* t/yacc-weirdnames.sh: Likewise.
+* t/yflags-cmdline-override.sh: Likewise.
+* t/yflags-cxx.sh: Likewise.
+* t/yflags-d-false-positives.sh: Likewise.
+* t/yflags-force-conditional.sh: Likewise.
+* t/yflags-force-override.sh: Likewise.
+* t/yflags-var-expand.sh: Likewise.
+* t/yflags.sh: Likewise.
+---
+ t/cond35.sh                     |  4 +---
+ t/lex-clean-cxx.sh              |  4 ++--
+ t/lex-clean.sh                  |  5 ++---
+ t/lex-depend-cxx.sh             |  4 ++--
+ t/lex-depend.sh                 |  5 ++---
+ t/lex-header.sh                 |  6 ++----
+ t/lex-lib-external.sh           |  5 ++---
+ t/lex-lib.sh                    |  5 ++---
+ t/lex-libobj.sh                 |  5 ++---
+ t/lex-line.sh                   |  7 ++++---
+ t/lex-multiple.sh               |  7 +++----
+ t/lex-nodist.sh                 |  5 ++---
+ t/lex-noyywrap.sh               |  5 ++---
+ t/lex-pr204.sh                  |  5 ++---
+ t/lex-subobj-nodep.sh           |  5 ++---
+ t/lex3.sh                       |  5 ++---
+ t/lex5.sh                       |  4 +---
+ t/lexvpath.sh                   | 11 ++---------
+ t/silent-lex.sh                 |  7 ++++---
+ t/silent-many-languages.sh      |  1 +
+ t/silent-yacc-headers.sh        |  1 +
+ t/silent-yacc.sh                |  4 ++++
+ t/subpkg-yacc.sh                |  2 ++
+ t/suffix10.tap                  |  2 ++
+ t/yacc-auxdir.sh                |  4 ++++
+ t/yacc-basic.sh                 |  2 ++
+ t/yacc-bison-skeleton-cxx.sh    |  2 ++
+ t/yacc-bison-skeleton.sh        |  2 ++
+ t/yacc-clean-cxx.sh             |  2 ++
+ t/yacc-clean.sh                 |  2 ++
+ t/yacc-cxx-grepping.sh          |  2 ++
+ t/yacc-cxx.sh                   |  2 ++
+ t/yacc-d-basic.sh               |  2 ++
+ t/yacc-d-cxx.sh                 |  2 ++
+ t/yacc-d-vpath.sh               |  2 ++
+ t/yacc-deleted-headers.sh       |  2 ++
+ t/yacc-depend.sh                |  2 ++
+ t/yacc-depend2.sh               |  2 ++
+ t/yacc-dist-nobuild-subdir.sh   |  2 ++
+ t/yacc-dist-nobuild.sh          |  2 ++
+ t/yacc-dry.sh                   |  2 ++
+ t/yacc-grepping.sh              |  2 ++
+ t/yacc-grepping2.sh             |  2 ++
+ t/yacc-headers-and-dist-pr47.sh |  2 ++
+ t/yacc-line.sh                  |  4 ++++
+ t/yacc-misc.sh                  |  2 ++
+ t/yacc-mix-c-cxx.sh             |  2 ++
+ t/yacc-nodist.sh                |  2 ++
+ t/yacc-pr204.sh                 |  2 ++
+ t/yacc-subdir.sh                |  2 ++
+ t/yacc-vpath.sh                 |  2 ++
+ t/yacc-weirdnames.sh            |  2 ++
+ t/yflags-cmdline-override.sh    |  2 ++
+ t/yflags-cxx.sh                 |  2 ++
+ t/yflags-d-false-positives.sh   |  2 ++
+ t/yflags-force-conditional.sh   |  2 ++
+ t/yflags-force-override.sh      |  2 ++
+ t/yflags-var-expand.sh          |  2 ++
+ t/yflags.sh                     |  2 ++
+ 59 files changed, 125 insertions(+), 63 deletions(-)
+
+diff --git a/t/cond35.sh b/t/cond35.sh
+index dc3b8aae9..8b044644e 100644
+--- a/t/cond35.sh
++++ b/t/cond35.sh
+@@ -30,6 +30,7 @@ EOF
+ 
+ cat > Makefile.am <<'EOF'
+ AM_YFLAGS               =       -d
++AM_LFLAGS               =       --never-interactive
+ 
+ BUILT_SOURCES           =       tparse.h
+ 
+@@ -58,9 +59,6 @@ $FGREP 'tparse.h' Makefile.in # For debugging.
+ test $($FGREP -c 'tparse.h:' Makefile.in) -eq 1
+ 
+ cat > tscan.l << 'END'
+-%{
+-#define YY_NO_UNISTD_H 1
+-%}
+ %%
+ "END"   return EOF;
+ %%
+diff --git a/t/lex-clean-cxx.sh b/t/lex-clean-cxx.sh
+index 8a086304f..fea054457 100644
+--- a/t/lex-clean-cxx.sh
++++ b/t/lex-clean-cxx.sh
+@@ -29,6 +29,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo bar baz qux
+ 
+ foo_SOURCES = mainfoo.cc parsefoo.lxx
+@@ -57,6 +57,4 @@ cat > parsefoo.lxx << 'END'
+ extern "C" YY_DECL;
+-#define YY_NO_UNISTD_H 1
+-int isatty (int fd) { return 0; }
+ %}
+ %%
+ "GOOD"   return EOF;
+diff --git a/t/lex-clean.sh b/t/lex-clean.sh
+index 1ee7d8f5b..4668e97c7 100644
+--- a/t/lex-clean.sh
++++ b/t/lex-clean.sh
+@@ -29,6 +29,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo bar baz qux
+ 
+ foo_SOURCES = main.c lexer.l
+@@ -52,9 +54,6 @@ LDADD = $(LEXLIB)
+ END
+ 
+ cat > lexer.l << 'END'
+-%{
+-#define YY_NO_UNISTD_H 1
+-%}
+ %%
+ "GOOD"   return EOF;
+ .
+diff --git a/t/lex-depend-cxx.sh b/t/lex-depend-cxx.sh
+index 682b2ccc5..cc7004eab 100644
+--- a/t/lex-depend-cxx.sh
++++ b/t/lex-depend-cxx.sh
+@@ -27,6 +27,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ noinst_PROGRAMS = joe moe
+ joe_SOURCES = joe.ll
+ moe_SOURCES = moe.l++
+@@ -50,6 +52,4 @@ cat > joe.ll << 'END'
+ extern "C" YY_DECL;
+-#define YY_NO_UNISTD_H 1
+-int isatty (int fd) { return 0; }
+ %}
+ %%
+ "foo" return EOF;
+diff --git a/t/lex-depend.sh b/t/lex-depend.sh
+index 16f937ef1..68cc5ee7b 100644
+--- a/t/lex-depend.sh
++++ b/t/lex-depend.sh
+@@ -27,6 +27,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = zoo
+ zoo_SOURCES = joe.l
+ LDADD = $(LEXLIB)
+@@ -42,9 +44,6 @@ test-obj-updated: joe.$(OBJEXT)
+ END
+ 
+ cat > joe.l << 'END'
+-%{
+-#define YY_NO_UNISTD_H 1
+-%}
+ %%
+ "foo" return EOF;
+ .
+diff --git a/t/lex-header.sh b/t/lex-header.sh
+index 22567642e..48b42457a 100644
+--- a/t/lex-header.sh
++++ b/t/lex-header.sh
+@@ -33,6 +33,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo
+ foo_SOURCES = lexer.l main.c mylex.h
+ foo_LFLAGS = --header-file=mylex.h
+@@ -45,9 +47,6 @@ END
+ 
+ cat > lexer.l << 'END'
+ %option noyywrap
+-%{
+-#define YY_NO_UNISTD_H 1
+-%}
+ %%
+ "GOOD"   return EOF;
+ .
+@@ -55,7 +54,6 @@ cat > lexer.l << 'END'
+ END
+ 
+ cat > main.c <<'END'
+-#define YY_NO_UNISTD_H 1
+ #include "mylex.h"
+ int main (void)
+ {
+diff --git a/t/lex-lib-external.sh b/t/lex-lib-external.sh
+index 85403612f..25ad2a39b 100644
+--- a/t/lex-lib-external.sh
++++ b/t/lex-lib-external.sh
+@@ -28,6 +28,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = lexer
+ lexer_SOURCES = foo.l
+ lexer_LDADD = $(LEXLIB)
+@@ -42,9 +44,6 @@ have-lexlib:
+ END
+ 
+ cat > foo.l <<'END'
+-%{
+-#define YY_NO_UNISTD_H 1
+-%}
+ %%
+ "GOOD"   return EOF;
+ .
+diff --git a/t/lex-lib.sh b/t/lex-lib.sh
+index f0a0d37f6..7734fd228 100644
+--- a/t/lex-lib.sh
++++ b/t/lex-lib.sh
+@@ -31,6 +31,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = lexer
+ lexer_SOURCES = foo.l
+ lexer_LDADD = $(LEXLIB)
+@@ -47,9 +49,6 @@ int yywrap (void)
+ END
+ 
+ cat > foo.l <<'END'
+-%{
+-#define YY_NO_UNISTD_H 1
+-%}
+ %%
+ "END" return EOF;
+ .
+diff --git a/t/lex-libobj.sh b/t/lex-libobj.sh
+index b26381fcf..6e36a98ed 100644
+--- a/t/lex-libobj.sh
++++ b/t/lex-libobj.sh
+@@ -32,6 +32,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ noinst_PROGRAMS = foo
+ foo_SOURCES = foo.l
+ foo_LDADD = $(LEXLIB) $(LIBOBJS)
+@@ -45,9 +47,6 @@ int yywrap (void)
+ END
+ 
+ cat > foo.l <<'END'
+-%{
+-#define YY_NO_UNISTD_H 1
+-%}
+ %%
+ "END" return EOF;
+ .
+diff --git a/t/lex-line.sh b/t/lex-line.sh
+index 340800ef2..5f9145847 100644
+--- a/t/lex-line.sh
++++ b/t/lex-line.sh
+@@ -32,6 +32,8 @@ END
+ mkdir dir sub sub/dir
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ SUBDIRS = sub
+ bin_PROGRAMS = foo bar
+ LDADD = $(LEXLIB)
+@@ -44,6 +46,8 @@ bar-quux.@OBJEXT@: bar-quux.c
+ END
+ 
+ cat > sub/Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ AUTOMAKE_OPTIONS = subdir-objects
+ noinst_PROGRAMS = foo bar
+ ## We already used $(LEXLIB) above, so try @LEXLIB@ now.
+@@ -57,9 +61,6 @@ dir/quux.@OBJEXT@: dir/quux.c
+ END
+ 
+ cat > zardoz.l << 'END'
+-%{
+-#define YY_NO_UNISTD_H 1
+-%}
+ %%
+ "END"  return EOF;
+ .
+diff --git a/t/lex-multiple.sh b/t/lex-multiple.sh
+index 9565bd6b8..6486a012f 100644
+--- a/t/lex-multiple.sh
++++ b/t/lex-multiple.sh
+@@ -31,7 +31,9 @@ AC_PROG_RANLIB
+ AC_OUTPUT
+ END
+ 
+-cat > Makefile.am << 'END'
++cat > Makefile.am <<  'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = zardoz
+ 
+ zardoz_SOURCES = main.c
+@@ -72,9 +74,6 @@ int main (int argc, char *argv[])
+ END
+ 
+ cat > 0.l << 'END'
+-%{
+-#define YY_NO_UNISTD_H 1
+-%}
+ %%
+ "VANILLA" { printf (":%s:\n", yytext); return 121; }
+ . { printf (":%s:\n", yytext); return 1; }
+diff --git a/t/lex-nodist.sh b/t/lex-nodist.sh
+index 73e23a13e..d499aea7f 100644
+--- a/t/lex-nodist.sh
++++ b/t/lex-nodist.sh
+@@ -31,6 +31,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ .PHONY: test-build test-dist
+ test-build: all
+ 	ls -l
+@@ -45,9 +47,6 @@ check-local: test-build test-dist
+ lexer.l:
+ 	rm -f $@ $@-t
+ 	:; { : \
+-	  && echo '%{' \
+-	  && echo '#define YY_NO_UNISTD_H 1' \
+-	  && echo '%}' \
+ 	  && echo '%%' \
+ 	  && echo '"GOOD" return EOF;' \
+ 	  && echo '.'; \
+diff --git a/t/lex-noyywrap.sh b/t/lex-noyywrap.sh
+index 1c61a1ab3..5ec68b9ba 100644
+--- a/t/lex-noyywrap.sh
++++ b/t/lex-noyywrap.sh
+@@ -26,6 +26,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo
+ foo_SOURCES = foo.l
+ 
+@@ -37,9 +39,6 @@ END
+ 
+ cat > foo.l << 'END'
+ %option noyywrap
+-%{
+-#define YY_NO_UNISTD_H 1
+-%}
+ %%
+ "GOOD"   return EOF;
+ .
+diff --git a/t/lex-pr204.sh b/t/lex-pr204.sh
+index ebfaafef5..cbad1c266 100644
+--- a/t/lex-pr204.sh
++++ b/t/lex-pr204.sh
+@@ -35,6 +35,8 @@ EOF
+ # The LEXER2 intermediate variable is there to make sure Automake
+ # matches 'nodist_' against the right variable name...
+ cat > Makefile.am << 'EOF'
++AM_LFLAGS = --never-interactive
++
+ EXTRA_PROGRAMS = foo
+ LEXER2 = lexer2.l
+ nodist_foo_SOURCES = lexer.l $(LEXER2)
+@@ -49,9 +51,6 @@ distdirtest: distdir
+ EOF
+ 
+ cat > lexer.l << 'END'
+-%{
+-#define YY_NO_UNISTD_H 1
+-%}
+ %%
+ "GOOD"   return EOF;
+ .
+diff --git a/t/lex-subobj-nodep.sh b/t/lex-subobj-nodep.sh
+index f8bb87a9c..8ef4d68b1 100644
+--- a/t/lex-subobj-nodep.sh
++++ b/t/lex-subobj-nodep.sh
+@@ -28,6 +28,8 @@ END
+ 
+ cat >Makefile.am <<\END
+ AUTOMAKE_OPTIONS = subdir-objects
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = p1 p2
+ p1_SOURCES = sub1/s1.l
+ p2_SOURCES = sub2/s2.l
+@@ -37,9 +39,6 @@ END
+ mkdir sub1 sub2
+ 
+ cat >sub1/s1.l <<\END
+-%{
+-#define YY_NO_UNISTD_H 1
+-%}
+ %%
+ "END"   return EOF;
+ .
+diff --git a/t/lex3.sh b/t/lex3.sh
+index 41b87dc06..4a20f85da 100644
+--- a/t/lex3.sh
++++ b/t/lex3.sh
+@@ -28,14 +28,13 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ noinst_PROGRAMS = foo
+ foo_SOURCES = foo.l
+ END
+ 
+ cat > foo.l << 'END'
+-%{
+-#define YY_NO_UNISTD_H 1
+-%}
+ %%
+ "GOOD"   return EOF;
+ .
+diff --git a/t/lex5.sh b/t/lex5.sh
+index 3d84d9b41..687903e65 100644
+--- a/t/lex5.sh
++++ b/t/lex5.sh
+@@ -28,6 +28,7 @@ END
+ cat > Makefile.am << 'END'
+ AUTOMAKE_OPTIONS  = subdir-objects
+ LDADD             = @LEXLIB@
++AM_LFLAGS         = --never-interactive
+ 
+ bin_PROGRAMS    = foo/foo
+ foo_foo_SOURCES = foo/foo.l
+@@ -36,9 +37,6 @@ END
+ mkdir foo
+ 
+ cat > foo/foo.l << 'END'
+-%{
+-#define YY_NO_UNISTD_H 1
+-%}
+ %%
+ "END"   return EOF;
+ .
+diff --git a/t/lexvpath.sh b/t/lexvpath.sh
+index 5185a1f71..d064fd2bd 100644
+--- a/t/lexvpath.sh
++++ b/t/lexvpath.sh
+@@ -37,6 +37,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo
+ foo_SOURCES = lexer.l foo.c
+ LDADD = $(LEXLIB)
+@@ -44,9 +46,6 @@ END
+ 
+ # Original lexer, with a "foobar" comment
+ cat > lexer.l << 'END'
+-%{
+-#define YY_NO_UNISTD_H 1
+-%}
+ %%
+ "END" return EOF;
+ .
+@@ -89,9 +88,6 @@ $sleep
+ 
+ # New lexer, with 'fubar' comment.
+ cat > ../lexer.l << 'END'
+-%{
+-#define YY_NO_UNISTD_H 1
+-%}
+ %%
+ "END" return EOF;
+ .
+@@ -112,9 +108,6 @@ $sleep
+ 
+ # New lexer, with 'maude' comment.
+ cat > ../lexer.l << 'END'
+-%{
+-#define YY_NO_UNISTD_H 1
+-%}
+ %%
+ "END" return EOF;
+ .
+diff --git a/t/silent-lex.sh b/t/silent-lex.sh
+index cfe1a9b5d..e424afc38 100644
+--- a/t/silent-lex.sh
++++ b/t/silent-lex.sh
+@@ -28,6 +28,8 @@ AC_OUTPUT
+ EOF
+ 
+ cat > Makefile.am <<'EOF'
++AM_LFLAGS = --never-interactive
++
+ # Need generic and non-generic rules.
+ bin_PROGRAMS = foo1 foo2
+ foo1_SOURCES = foo.l
+@@ -40,6 +42,8 @@ EOF
+ 
+ cat > sub/Makefile.am <<'EOF'
+ AUTOMAKE_OPTIONS = subdir-objects
++AM_LFLAGS = --never-interactive
++
+ # Need generic and non-generic rules.
+ bin_PROGRAMS = bar1 bar2
+ bar1_SOURCES = bar.l
+@@ -50,9 +54,6 @@ LDADD = $(LEXLIB)
+ EOF
+ 
+ cat > foo.l <<'EOF'
+-%{
+-#define YY_NO_UNISTD_H 1
+-%}
+ %%
+ "END"   return EOF;
+ .
+diff --git a/t/silent-many-languages.sh b/t/silent-many-languages.sh
+index 4edb46884..85773d339 100644
+--- a/t/silent-many-languages.sh
++++ b/t/silent-many-languages.sh
+@@ -151,6 +151,7 @@ ba2_YFLAGS = -v
+ ba2_LFLAGS = -n
+ ba2_LDADD = $(LEXLIB)
+ AM_YFLAGS = -d
++AM_LFLAGS = --never-interactive
+ BUILT_SOURCES = baz6.h
+ EOF
+ 
+diff --git a/t/silent-yacc-headers.sh b/t/silent-yacc-headers.sh
+index 98ae45b8a..f64342c82 100644
+--- a/t/silent-yacc-headers.sh
++++ b/t/silent-yacc-headers.sh
+@@ -31,6 +31,7 @@ EOF
+ cat > Makefile.am <<'EOF'
+ # Need generic and non-generic rules.
+ AM_YFLAGS = -d
++AM_LFLAGS = --never-interactive
+ bin_PROGRAMS = foo bar
+ foo_SOURCES = parse.y
+ bar_SOURCES = $(foo_SOURCES)
+diff --git a/t/silent-yacc.sh b/t/silent-yacc.sh
+index 9645aff83..d89ff49a7 100644
+--- a/t/silent-yacc.sh
++++ b/t/silent-yacc.sh
+@@ -29,6 +29,8 @@ AC_OUTPUT
+ EOF
+ 
+ cat > Makefile.am <<'EOF'
++AM_LFLAGS = --never-interactive
++
+ # Need generic and non-generic rules.
+ bin_PROGRAMS = foo1 foo2
+ foo1_SOURCES = foo.y
+@@ -40,6 +42,8 @@ EOF
+ 
+ cat > sub/Makefile.am <<'EOF'
+ AUTOMAKE_OPTIONS = subdir-objects
++AM_LFLAGS = --never-interactive
++
+ # Need generic and non-generic rules.
+ bin_PROGRAMS = bar1 bar2
+ bar1_SOURCES = bar.y
+diff --git a/t/subpkg-yacc.sh b/t/subpkg-yacc.sh
+index edd14532b..782ee0957 100644
+--- a/t/subpkg-yacc.sh
++++ b/t/subpkg-yacc.sh
+@@ -61,6 +61,8 @@ AC_OUTPUT
+ EOF
+ 
+ cat >lib/Makefile.am <<'EOF'
++AM_LFLAGS = --never-interactive
++
+ noinst_LIBRARIES = liblib.a
+ liblib_a_SOURCES = src/x.c foo.y
+ EXTRA_liblib_a_SOURCES = bar.y
+diff --git a/t/suffix10.tap b/t/suffix10.tap
+index 3869d07fd..8d3dc1756 100644
+--- a/t/suffix10.tap
++++ b/t/suffix10.tap
+@@ -31,6 +31,8 @@ AC_OUTPUT
+ EOF
+ 
+ cat >Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ lib_LTLIBRARIES = libfoo.la
+ libfoo_la_SOURCES = foo.x_
+ .x_.y:
+diff --git a/t/yacc-auxdir.sh b/t/yacc-auxdir.sh
+index be8ac4fd4..f6ff7de48 100644
+--- a/t/yacc-auxdir.sh
++++ b/t/yacc-auxdir.sh
+@@ -35,12 +35,16 @@ cat > Makefile.am << 'END'
+ SUBDIRS = sub
+ bin_PROGRAMS = foo
+ AM_YFLAGS = -d
++AM_LFLAGS = --never-interactive
++
+ foo_SOURCES = foo.y
+ END
+ 
+ cat > sub/Makefile.am << 'END'
+ bin_PROGRAMS = bar
+ AM_YFLAGS = -d
++AM_LFLAGS = --never-interactive
++
+ bar_SOURCES = bar.y main.c
+ END
+ 
+diff --git a/t/yacc-basic.sh b/t/yacc-basic.sh
+index b7a35bd39..51ee5f6a3 100644
+--- a/t/yacc-basic.sh
++++ b/t/yacc-basic.sh
+@@ -27,6 +27,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo bar
+ foo_SOURCES = parse.y foo.c
+ bar_SOURCES = $(foo_SOURCES)
+diff --git a/t/yacc-bison-skeleton-cxx.sh b/t/yacc-bison-skeleton-cxx.sh
+index bded1a34f..da76238fa 100644
+--- a/t/yacc-bison-skeleton-cxx.sh
++++ b/t/yacc-bison-skeleton-cxx.sh
+@@ -27,6 +27,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = zardoz
+ zardoz_SOURCES = zardoz.yy foo.cc
+ 
+diff --git a/t/yacc-bison-skeleton.sh b/t/yacc-bison-skeleton.sh
+index b77b29f1e..11b64b831 100644
+--- a/t/yacc-bison-skeleton.sh
++++ b/t/yacc-bison-skeleton.sh
+@@ -31,6 +31,8 @@ cat > Makefile.am << 'END'
+ bin_PROGRAMS = zardoz
+ zardoz_SOURCES = zardoz.y foo.c
+ AM_YFLAGS = -d --skeleton glr.c
++AM_LFLAGS = --never-interactive
++
+ BUILT_SOURCES = zardoz.h
+ END
+ 
+diff --git a/t/yacc-clean-cxx.sh b/t/yacc-clean-cxx.sh
+index d12e02308..71eb4f315 100644
+--- a/t/yacc-clean-cxx.sh
++++ b/t/yacc-clean-cxx.sh
+@@ -39,6 +39,8 @@ END
+ mkdir sub1 sub2
+ 
+ cat > sub1/Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo bar baz qux
+ 
+ foo_SOURCES = mainfoo.cc parsefoo.yxx
+diff --git a/t/yacc-clean.sh b/t/yacc-clean.sh
+index 0baf0afd8..d0f793843 100644
+--- a/t/yacc-clean.sh
++++ b/t/yacc-clean.sh
+@@ -38,6 +38,8 @@ END
+ mkdir sub1 sub2
+ 
+ cat > sub1/Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo bar baz qux
+ 
+ foo_SOURCES = main.c parse.y
+diff --git a/t/yacc-cxx-grepping.sh b/t/yacc-cxx-grepping.sh
+index 7b3a6bc5e..e094d5f16 100644
+--- a/t/yacc-cxx-grepping.sh
++++ b/t/yacc-cxx-grepping.sh
+@@ -27,6 +27,8 @@ AC_PROG_YACC
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo bar baz qux
+ foo_SOURCES = foo.y++
+ bar_SOURCES = bar.ypp
+diff --git a/t/yacc-cxx.sh b/t/yacc-cxx.sh
+index 5b385870c..0ce4116dd 100644
+--- a/t/yacc-cxx.sh
++++ b/t/yacc-cxx.sh
+@@ -28,6 +28,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo1 foo2 foo3 foo4
+ foo1_SOURCES = parse1.yy  foo.cc
+ foo2_SOURCES = parse2.y++ bar.c++
+diff --git a/t/yacc-d-basic.sh b/t/yacc-d-basic.sh
+index fe80a0888..166111fdb 100644
+--- a/t/yacc-d-basic.sh
++++ b/t/yacc-d-basic.sh
+@@ -35,6 +35,8 @@ END
+ mkdir foo bar baz
+ 
+ cat > foo/Makefile.am <<'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = zardoz
+ zardoz_SOURCES = parse.y main.c
+ .PHONY: echo-distcom
+diff --git a/t/yacc-d-cxx.sh b/t/yacc-d-cxx.sh
+index 576e8e2aa..40247d3c8 100644
+--- a/t/yacc-d-cxx.sh
++++ b/t/yacc-d-cxx.sh
+@@ -70,6 +70,8 @@ mkdir foo bar baz qux baz/sub
+ 
+ # These makefiles will be extended later.
+ cat > Makefile.am <<'END'
++AM_LFLAGS = --never-interactive
++
+ .PHONY: echo-distcom
+ echo-distcom:
+ 	@echo ' ' $(DIST_COMMON) ' '
+diff --git a/t/yacc-d-vpath.sh b/t/yacc-d-vpath.sh
+index dced4818f..3dcf17ade 100644
+--- a/t/yacc-d-vpath.sh
++++ b/t/yacc-d-vpath.sh
+@@ -32,6 +32,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo
+ foo_SOURCES = parse.y foo.c
+ AM_YFLAGS = -d
+diff --git a/t/yacc-deleted-headers.sh b/t/yacc-deleted-headers.sh
+index c3fdbeee4..8c27dcefb 100644
+--- a/t/yacc-deleted-headers.sh
++++ b/t/yacc-deleted-headers.sh
+@@ -26,6 +26,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am <<'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = p1 p2 p3 p4
+ # The order in which files are listed in the p*_SOURCES variables
+ # below is significant, since it causes make failures whenever
+diff --git a/t/yacc-depend.sh b/t/yacc-depend.sh
+index cf544359f..d1e09bc39 100644
+--- a/t/yacc-depend.sh
++++ b/t/yacc-depend.sh
+@@ -29,6 +29,8 @@ END
+ cat > Makefile.am << 'END'
+ bin_PROGRAMS = foo
+ AM_YFLAGS = -d
++AM_LFLAGS = --never-interactive
++
+ foo_SOURCES = foo.y main.c
+ BUILT_SOURCES = foo.h
+ END
+diff --git a/t/yacc-depend2.sh b/t/yacc-depend2.sh
+index a61e4957d..a52d4489f 100644
+--- a/t/yacc-depend2.sh
++++ b/t/yacc-depend2.sh
+@@ -28,6 +28,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo
+ AM_YFLAGS = -d
+ foo_SOURCES = foo.y main.c
+diff --git a/t/yacc-dist-nobuild-subdir.sh b/t/yacc-dist-nobuild-subdir.sh
+index d1788811f..56320fe48 100644
+--- a/t/yacc-dist-nobuild-subdir.sh
++++ b/t/yacc-dist-nobuild-subdir.sh
+@@ -49,6 +49,8 @@ END
+ 
+ cat > Makefile.am <<'END'
+ AUTOMAKE_OPTIONS = subdir-objects
++AM_LFLAGS = --never-interactive
++
+ noinst_PROGRAMS = foo bar
+ foo_SOURCES = sub/parse.y
+ bar_SOURCES = $(foo_SOURCES)
+diff --git a/t/yacc-dist-nobuild.sh b/t/yacc-dist-nobuild.sh
+index a30fefec2..71be0d52c 100644
+--- a/t/yacc-dist-nobuild.sh
++++ b/t/yacc-dist-nobuild.sh
+@@ -28,6 +28,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foobar zardoz
+ foobar_SOURCES = parse.y main.c
+ zardoz_SOURCES = $(foobar_SOURCES)
+diff --git a/t/yacc-dry.sh b/t/yacc-dry.sh
+index 9b08d3863..6500ba811 100644
+--- a/t/yacc-dry.sh
++++ b/t/yacc-dry.sh
+@@ -26,6 +26,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ AM_YFLAGS = -d
+ bin_PROGRAMS = foo
+ foo_SOURCES = foo.c parse.y
+diff --git a/t/yacc-grepping.sh b/t/yacc-grepping.sh
+index b0cf91353..67381ba89 100644
+--- a/t/yacc-grepping.sh
++++ b/t/yacc-grepping.sh
+@@ -35,6 +35,8 @@ END
+ $ACLOCAL
+ 
+ cat > Makefile.am <<'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = zardoz
+ zardoz_SOURCES = zardoz.y
+ END
+diff --git a/t/yacc-grepping2.sh b/t/yacc-grepping2.sh
+index 159dd3e15..4af321fbe 100644
+--- a/t/yacc-grepping2.sh
++++ b/t/yacc-grepping2.sh
+@@ -25,6 +25,8 @@ AC_PROG_YACC
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = maude
+ maude_SOURCES = sub/maude.y
+ END
+diff --git a/t/yacc-headers-and-dist-pr47.sh b/t/yacc-headers-and-dist-pr47.sh
+index 57c8251ad..74ec525f9 100644
+--- a/t/yacc-headers-and-dist-pr47.sh
++++ b/t/yacc-headers-and-dist-pr47.sh
+@@ -30,6 +30,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo
+ foo_SOURCES = foo.y
+ AM_YFLAGS = -d
+diff --git a/t/yacc-line.sh b/t/yacc-line.sh
+index e7a4d6244..2319c9791 100644
+--- a/t/yacc-line.sh
++++ b/t/yacc-line.sh
+@@ -32,6 +32,8 @@ END
+ mkdir dir sub sub/dir
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ SUBDIRS = sub
+ bin_PROGRAMS = foo bar
+ AM_YFLAGS = -d
+@@ -45,6 +47,8 @@ END
+ 
+ cat > sub/Makefile.am << 'END'
+ AUTOMAKE_OPTIONS = subdir-objects
++AM_LFLAGS = --never-interactive
++
+ noinst_PROGRAMS = foo bar
+ foo_YFLAGS = -d
+ foo_SOURCES = zardoz.y
+diff --git a/t/yacc-misc.sh b/t/yacc-misc.sh
+index 2bfb0c55e..fcc19aa49 100644
+--- a/t/yacc-misc.sh
++++ b/t/yacc-misc.sh
+@@ -26,6 +26,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo bar
+ foo_SOURCES = parse.y foo.c
+ bar_SOURCES = bar.y foo.c
+diff --git a/t/yacc-mix-c-cxx.sh b/t/yacc-mix-c-cxx.sh
+index 7c44e0926..de05cdab8 100644
+--- a/t/yacc-mix-c-cxx.sh
++++ b/t/yacc-mix-c-cxx.sh
+@@ -28,6 +28,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = c1 c2 cxx1 cxx2 cxx3
+ AM_YFLAGS = -d
+ 
+diff --git a/t/yacc-nodist.sh b/t/yacc-nodist.sh
+index dbb86bdb2..8e5338e94 100644
+--- a/t/yacc-nodist.sh
++++ b/t/yacc-nodist.sh
+@@ -31,6 +31,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ SUBDIRS = sub1 sub2
+ .PHONY: test-build test-dist
+ test-build: all
+diff --git a/t/yacc-pr204.sh b/t/yacc-pr204.sh
+index 91882e4d7..89acb1ee0 100644
+--- a/t/yacc-pr204.sh
++++ b/t/yacc-pr204.sh
+@@ -34,6 +34,8 @@ EOF
+ # sure Automake match 'nodist_' against the right
+ # variable name...
+ cat > Makefile.am << 'EOF'
++AM_LFLAGS = --never-interactive
++
+ AM_YFLAGS = -d
+ EXTRA_PROGRAMS = foo
+ PARSE2 = parse2.y
+diff --git a/t/yacc-subdir.sh b/t/yacc-subdir.sh
+index df31a3c51..d6c3f0cc8 100644
+--- a/t/yacc-subdir.sh
++++ b/t/yacc-subdir.sh
+@@ -28,6 +28,8 @@ END
+ 
+ cat > Makefile.am << 'END'
+ AUTOMAKE_OPTIONS = subdir-objects
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo/foo
+ foo_foo_SOURCES = foo/parse.y
+ AM_YFLAGS = -d
+diff --git a/t/yacc-vpath.sh b/t/yacc-vpath.sh
+index 52d2c45bd..42044ecf2 100644
+--- a/t/yacc-vpath.sh
++++ b/t/yacc-vpath.sh
+@@ -32,6 +32,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo
+ foo_SOURCES = parse.y foo.c
+ END
+diff --git a/t/yacc-weirdnames.sh b/t/yacc-weirdnames.sh
+index 60f199d2d..8397bc636 100644
+--- a/t/yacc-weirdnames.sh
++++ b/t/yacc-weirdnames.sh
+@@ -27,6 +27,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am << 'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo bar foo2 bar2
+ 
+ foo_SOURCES = parse.y.y
+diff --git a/t/yflags-cmdline-override.sh b/t/yflags-cmdline-override.sh
+index 37304645c..73982753a 100644
+--- a/t/yflags-cmdline-override.sh
++++ b/t/yflags-cmdline-override.sh
+@@ -27,6 +27,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am <<'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo
+ foo_SOURCES = foo.y
+ # A minor automake wart: automake doesn't generate code to clean
+diff --git a/t/yflags-cxx.sh b/t/yflags-cxx.sh
+index 9bd28b8ce..2596a95e3 100644
+--- a/t/yflags-cxx.sh
++++ b/t/yflags-cxx.sh
+@@ -39,6 +39,8 @@ END
+ 
+ cat > Makefile.am <<'END'
+ AUTOMAKE_OPTIONS = no-dependencies
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo bar
+ foo_SOURCES = main.cc foo.yy
+ bar_SOURCES = main.cc bar.y++
+diff --git a/t/yflags-d-false-positives.sh b/t/yflags-d-false-positives.sh
+index 21efb2345..666dbe938 100644
+--- a/t/yflags-d-false-positives.sh
++++ b/t/yflags-d-false-positives.sh
+@@ -26,6 +26,8 @@ END
+ $ACLOCAL
+ 
+ cat > Makefile.am <<'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = zardoz foobar
+ zardoz_SOURCES = zardoz.y
+ foobar_SOURCES = foobar.y
+diff --git a/t/yflags-force-conditional.sh b/t/yflags-force-conditional.sh
+index 3f9a13293..976b6f782 100644
+--- a/t/yflags-force-conditional.sh
++++ b/t/yflags-force-conditional.sh
+@@ -38,6 +38,8 @@ YACC=fake-yacc; export YACC
+ 
+ cat > Makefile.am <<'END'
+ AUTOMAKE_OPTIONS = no-dependencies
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo bar
+ foo_SOURCES = foo.y main.c
+ bar_SOURCES = $(foo_SOURCES)
+diff --git a/t/yflags-force-override.sh b/t/yflags-force-override.sh
+index b1c36ef0f..7c865935b 100644
+--- a/t/yflags-force-override.sh
++++ b/t/yflags-force-override.sh
+@@ -28,6 +28,8 @@ AC_OUTPUT
+ END
+ 
+ cat > Makefile.am <<'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo
+ foo_SOURCES = foo.y
+ # Don't do this in a real-life Makefile.am!
+diff --git a/t/yflags-var-expand.sh b/t/yflags-var-expand.sh
+index 0e06e0d9c..bf34922a6 100644
+--- a/t/yflags-var-expand.sh
++++ b/t/yflags-var-expand.sh
+@@ -29,6 +29,8 @@ END
+ $ACLOCAL
+ 
+ cat > Makefile.am <<'END'
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo bar
+ foo_SOURCES = foo.y
+ bar_SOURCES = bar.y
+diff --git a/t/yflags.sh b/t/yflags.sh
+index 1f73776f8..2359a76b7 100644
+--- a/t/yflags.sh
++++ b/t/yflags.sh
+@@ -39,6 +39,8 @@ END
+ 
+ cat > Makefile.am <<'END'
+ AUTOMAKE_OPTIONS = no-dependencies
++AM_LFLAGS = --never-interactive
++
+ bin_PROGRAMS = foo bar
+ foo_SOURCES = main.c foo.y
+ bar_SOURCES = main.c bar.y
+-- 
+2.35.3
+

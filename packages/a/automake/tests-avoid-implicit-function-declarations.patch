@@ -1,0 +1,260 @@
+From 80714ea0aba62f025780f432abfbab2e66f6f801 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20B=C3=A9rat?= <fberat@redhat.com>
+Date: Tue, 29 Aug 2023 11:00:41 -0700
+Subject: [PATCH] tests: avoid implicit function declarations.
+
+This patch is from https://bugs.gnu.org/59993 (v2 part 2).
+
+* t/c-demo.sh: This patch is related to an effort to prepare
+Automake for future GCC/Clang versions which set c99 as default
+standard to be used.
+
+C99 requires that functions be properly declared before use.
+This is true for both user functions and standard functions,
+e.g., printf.
+
+* t/cond35.sh: Likewise.
+* t/dist-vs-built-sources.sh: Likewise.
+* t/lex-clean.sh: Likewise.
+* t/lex-multiple.sh: Likewise.
+* t/lex-nodist.sh: Likewise.
+* t/ltcond2.sh: Likewise.
+* t/ltconv.sh: Likewise.
+* t/subobj-clean-lt-pr10697.sh: Likewise.
+* t/subobj-clean-pr10697.sh: Likewise.
+* t/tags-pr12372.sh: Likewise.
+* t/yacc-basic.sh: Likewise.
+* t/yacc-clean.sh: Likewise.
+* t/yacc-nodist.sh: Likewise.
+
+This patch is from https://bugs.gnu.org/59993.
+---
+ t/c-demo.sh                  |  1 +
+ t/cond35.sh                  |  2 ++
+ t/dist-vs-built-sources.sh   |  1 +
+ t/lex-clean.sh               |  1 +
+ t/lex-multiple.sh            |  4 ++++
+ t/lex-nodist.sh              |  2 ++
+ t/ltcond2.sh                 |  2 ++
+ t/ltconv.sh                  |  6 ++++++
+ t/subobj-clean-lt-pr10697.sh | 10 +++++++++-
+ t/subobj-clean-pr10697.sh    | 10 +++++++++-
+ t/tags-pr12372.sh            |  3 ++-
+ t/yacc-basic.sh              |  1 +
+ t/yacc-clean.sh              |  4 ++++
+ t/yacc-nodist.sh             |  2 ++
+ 14 files changed, 46 insertions(+), 3 deletions(-)
+
+diff --git a/t/c-demo.sh b/t/c-demo.sh
+index 446551958..ee0d5c3ec 100644
+--- a/t/c-demo.sh
++++ b/t/c-demo.sh
+@@ -113,6 +113,7 @@ test -f build-aux/compile # We have per-target flags on C sources.
+ ./configure --enable-dependency-tracking
+ 
+ cat > src/main.c << 'END'
++#include <stdio.h>
+ #include "foo.h"
+ #include "bar.h"
+ int main (void)
+diff --git a/t/cond35.sh b/t/cond35.sh
+index 8b044644e..a00c9e280 100644
+--- a/t/cond35.sh
++++ b/t/cond35.sh
+@@ -71,6 +71,8 @@ END
+ 
+ cat > tparse.y << 'END'
+ %{
++extern int yylex(void);
++
+ void yyerror (const char *s) {}
+ %}
+ %token EOF
+diff --git a/t/dist-vs-built-sources.sh b/t/dist-vs-built-sources.sh
+index da8c8fb23..4c73d53b0 100644
+--- a/t/dist-vs-built-sources.sh
++++ b/t/dist-vs-built-sources.sh
+@@ -41,6 +41,7 @@ foo_SOURCES = foo.c
+ END
+ 
+ cat > foo.c << 'END'
++#include <stdio.h>
+ #include "h.h"
+ int main (void) { printf ("%s\n", F); return 0; }
+ END
+diff --git a/t/lex-clean.sh b/t/lex-clean.sh
+index 4668e97c7..a966b4b07 100644
+--- a/t/lex-clean.sh
++++ b/t/lex-clean.sh
+@@ -60,6 +60,7 @@ cat > lexer.l << 'END'
+ END
+ 
+ cat > main.c << 'END'
++extern int yylex (void);
+ int main (void)
+ {
+   return yylex ();
+diff --git a/t/lex-multiple.sh b/t/lex-multiple.sh
+index 6486a012f..32dd854b6 100644
+--- a/t/lex-multiple.sh
++++ b/t/lex-multiple.sh
+@@ -58,6 +58,10 @@ cat > main.c << 'END'
+ #include <stdlib.h>
+ #include <string.h>
+ 
++extern int yylex (void);
++extern int foolex (void);
++extern int bar_lex (void);
++
+ int main (int argc, char *argv[])
+ {
+   if (argc != 2)
+diff --git a/t/lex-nodist.sh b/t/lex-nodist.sh
+index d499aea7f..29f0cb0ec 100644
+--- a/t/lex-nodist.sh
++++ b/t/lex-nodist.sh
+@@ -61,6 +61,8 @@ CLEANFILES = $(nodist_prog_SOURCES)
+ END
+ 
+ cat > main.c << 'END'
++extern int yylex (void);
++
+ int main ()
+ {
+   return yylex ();
+diff --git a/t/ltcond2.sh b/t/ltcond2.sh
+index 000d0ad34..c9f7af1dc 100644
+--- a/t/ltcond2.sh
++++ b/t/ltcond2.sh
+@@ -73,6 +73,8 @@ void print (void)
+ END
+ 
+ cat > main.c <<'END'
++extern void print(void);
++
+ int main (void)
+ {
+   print();
+diff --git a/t/ltconv.sh b/t/ltconv.sh
+index 64e42949a..3c35f50e7 100644
+--- a/t/ltconv.sh
++++ b/t/ltconv.sh
+@@ -91,6 +91,12 @@ echo 'int sub22 () { return 22; }' > sub2/sub22/sub22.c
+ 
+ cat >test.c <<'EOF'
+ #include <stdio.h>
++
++extern int sub1 (void);
++extern int sub2 (void);
++extern int sub21 (void);
++extern int sub22 (void);
++
+ int main ()
+ {
+   if (1 != sub1 ())
+diff --git a/t/subobj-clean-lt-pr10697.sh b/t/subobj-clean-lt-pr10697.sh
+index 0b4bb10a7..94af0778b 100644
+--- a/t/subobj-clean-lt-pr10697.sh
++++ b/t/subobj-clean-lt-pr10697.sh
+@@ -83,7 +83,15 @@ libfoo_la_SOURCES = \
+ END
+ 
+ mkdir sub1 sub2
+-echo 'int libmain (void)' > main.c
++
++echo "/* Subobj clean: libtool case*/" > main.c
++for i in 1 2; do
++  for j in a b c d e f; do
++    echo "extern void $j$i (void);" >> main.c
++  done
++done
++
++echo 'int libmain (void)' >> main.c
+ echo '{' >> main.c
+ for i in 1 2; do
+   for j in a b c d e f; do
+diff --git a/t/subobj-clean-pr10697.sh b/t/subobj-clean-pr10697.sh
+index 591684bc8..360716ec3 100644
+--- a/t/subobj-clean-pr10697.sh
++++ b/t/subobj-clean-pr10697.sh
+@@ -81,7 +81,15 @@ foo_SOURCES = \
+ END
+ 
+ mkdir sub1 sub2
+-echo 'int main (void)' > main.c
++
++echo "/* Subobj clean: generic case*/" > main.c
++for i in 1 2; do
++  for j in a b c d e f; do
++    echo "extern void $j$i (void);" >> main.c
++  done
++done
++
++echo 'int main (void)' >> main.c
+ echo '{' >> main.c
+ for i in 1 2; do
+   for j in a b c d e f; do
+diff --git a/t/tags-pr12372.sh b/t/tags-pr12372.sh
+index 7e86f7214..19ac07da4 100644
+--- a/t/tags-pr12372.sh
++++ b/t/tags-pr12372.sh
+@@ -53,7 +53,8 @@ noinst_PROGRAMS = zap
+ zap_SOURCES = zardoz.pc
+ END
+ 
+-echo 'int main(void) [ return bar(1); ]' > foo-main.pc
++echo 'extern int bar(int);' > foo-main.pc
++echo 'int main(void) [ return bar(1); ]' >> foo-main.pc
+ echo 'int bar(int x) { return !x; }' > barbar.c
+ echo 'int m@in(void) { return 0; }' > sub/zardoz.pc
+ 
+diff --git a/t/yacc-basic.sh b/t/yacc-basic.sh
+index 51ee5f6a3..be578e14a 100644
+--- a/t/yacc-basic.sh
++++ b/t/yacc-basic.sh
+@@ -51,6 +51,7 @@ a : 'a' { exit(0); };
+ END
+ 
+ cat > foo.c << 'END'
++extern int yyparse(void);
+ int main () { yyparse (); return 1; }
+ END
+ 
+diff --git a/t/yacc-clean.sh b/t/yacc-clean.sh
+index d0f793843..da2e3d5b2 100644
+--- a/t/yacc-clean.sh
++++ b/t/yacc-clean.sh
+@@ -67,6 +67,8 @@ END
+ 
+ cat > sub1/parse.y << 'END'
+ %{
++#include <stdio.h>
++
+ int yylex () { return (getchar ()); }
+ void yyerror (const char *s) {}
+ %}
+@@ -76,6 +78,8 @@ END
+ cp sub1/parse.y sub2/parse.y
+ 
+ cat > sub1/main.c << 'END'
++extern int yyparse(void);
++
+ int main ()
+ {
+   return yyparse ();
+diff --git a/t/yacc-nodist.sh b/t/yacc-nodist.sh
+index 8e5338e94..e3b02b3fa 100644
+--- a/t/yacc-nodist.sh
++++ b/t/yacc-nodist.sh
+@@ -80,6 +80,8 @@ BUILT_SOURCES = parse.h
+ END
+ 
+ cat > sub1/main.c << 'END'
++extern int yyparse(void);
++
+ int main ()
+ {
+   return yyparse ();
+-- 
+2.35.3
+

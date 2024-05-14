@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  7 15:46:57 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Fix testsuite with gcc 14
+  + tests-Fix-type-defaults-error-in-link_cond.patch
+  + tests-avoid-implicit-function-declaration-in-depcomp.patch
+  + tests-avoid-implicit-function-declarations.patch
+  + tests-don-t-try-to-prevent-flex-from-including-unist.patch
+
+-------------------------------------------------------------------
 Mon Aug  8 11:42:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - switch to python3 testing for testsuite, we no longer care

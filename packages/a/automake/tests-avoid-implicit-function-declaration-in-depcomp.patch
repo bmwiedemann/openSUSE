@@ -1,0 +1,56 @@
+From 6c10512cce14d8537b33c2026aadbdbb1ff215c8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20B=C3=A9rat?= <fberat@redhat.com>
+Date: Mon, 28 Aug 2023 06:11:39 -0700
+Subject: [PATCH] tests: avoid implicit function declaration in t/depcomp.sh.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This patch is from https://bugs.gnu.org/60962.
+
+* t/ax/depcomp.sh: save and restore sub/subfoo.h, so its
+declaration will be seen, as required by C99.
+* THANKS: add Frédéric.
+---
+ THANKS          | 1 +
+ t/ax/depcomp.sh | 5 +++--
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/THANKS b/THANKS
+index 446c84e1b..1217d3c2a 100644
+--- a/THANKS
++++ b/THANKS
+@@ -138,6 +138,7 @@ Florian Briegel                 briegel@zone42.de
+ Francesco Salvestrini           salvestrini@gmail.com
+ François Pinard                 pinard@iro.umontreal.ca
+ Fred Fish                       fnf@ninemoons.com
++Frédéric Bérat                fberat@redhat.com
+ Ganesan Rajagopal               rganesan@novell.com
+ Garrett D'Amore                 garrett@qualcomm.com
+ Garth Corral                    garthc@inktomi.com
+diff --git a/t/ax/depcomp.sh b/t/ax/depcomp.sh
+index 7a3ac63a7..1d29673fe 100644
+--- a/t/ax/depcomp.sh
++++ b/t/ax/depcomp.sh
+@@ -243,6 +243,8 @@ cat > sub/subfoo.h <<'END'
+ #include <stdio.h>
+ extern int subfoo (void);
+ END
++# Save subfoo.h so we can restore it below; see #60962.
++cp sub/subfoo.h sub/subfoo.save
+ 
+ cat > src/baz.c <<'END'
+ #include "baz.h"
+@@ -399,8 +401,7 @@ do_test ()
+       && rewrite "$srcdir"/sub/subfoo.h echo 'choke me' \
+       && not $MAKE \
+       && delete "$srcdir"/sub/subfoo.h \
+-      && edit "$srcdir"/sub/subfoo.c -e 1d \
+-      && edit "$srcdir"/foo.h -e 2d \
++      && cp "$srcdir"/sub/subfoo.save "$srcdir"/sub/subfoo.h \
+       && make_ok \
+       || r='not ok'
+     result_ "$r" "$pfx dependency tracking works"
+-- 
+2.35.3
+
