@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  7 14:08:26 UTC 2024 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc14
+  + perl-Crypt-DES-gcc14.patch
+
+-------------------------------------------------------------------
 Mon Jul 29 12:11:49 UTC 2013 - cfarrell@suse.com
 
 - license update: BSD-3-Clause

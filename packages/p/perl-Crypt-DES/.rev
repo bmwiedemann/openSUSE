@@ -175,4 +175,14 @@ See Copyright (forwarded request 184611 from babelworx)</comment>
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>1138a8726315df66a7496d938402041b</srcmd5>
+    <version>2.07</version>
+    <time>1715686631</time>
+    <user>anag+factory</user>
+    <comment>- added patches
+  fix build with gcc14
+  + perl-Crypt-DES-gcc14.patch (forwarded request 1172468 from pgajdos)</comment>
+    <requestid>1173612</requestid>
+  </revision>
 </revisionlist>
