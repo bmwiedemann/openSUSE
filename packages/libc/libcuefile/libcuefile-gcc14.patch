@@ -1,0 +1,13 @@
+Index: src/cue_parse.c
+===================================================================
+--- src/cue_parse.c.orig
++++ src/cue_parse.c
+@@ -1508,6 +1508,8 @@ extern int cue_lineno;
+ extern int yydebug;
+ extern FILE *cue_yyin;
+ 
++void cue_delete_buffer();
++
+ void yyerror (char *s)
+ {
+ 	fprintf(stderr, "%d: %s\n", cue_lineno, s);

@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>1153478</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6262eee49ec4c981112d9aa3a865b20d</srcmd5>
+    <version>r475</version>
+    <time>1715686662</time>
+    <user>anag+factory</user>
+    <comment>- added patches
+  fix build with gcc14
+  + libcuefile-gcc14.patch (forwarded request 1173692 from pgajdos)</comment>
+    <requestid>1173699</requestid>
+  </revision>
 </revisionlist>

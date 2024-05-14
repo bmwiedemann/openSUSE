@@ -1,7 +1,7 @@
 #
 # spec file for package libcuefile
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Asterios Dramis <asterios.dramis@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,10 +25,12 @@ Release:        0
 Summary:        Library for Working With Cue Sheet (cue) and Table Of Contents (toc) Files
 License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Url:            https://www.musepack.net/
+URL:            https://www.musepack.net/
 Source0:        https://files.musepack.net/source/%{name}_%{version}.tar.gz
 # PATCH-FIX-OPENSUSE mathmeaning.patch asterios.dramis@gmail.com -- Fix rpm post build error "Program uses operation a <= b <= c, which is not well defined." (based on patch from openSUSE cuetools)
 Patch0:         mathmeaning.patch
+# build with gcc14
+Patch1:         libcuefile-gcc14.patch
 BuildRequires:  cmake
 
 %description
