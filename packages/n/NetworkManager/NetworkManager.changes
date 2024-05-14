@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  9 02:29:22 UTC 2024 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Don't recommend ModemManager for the main package, as it's only
+  needed by NetworkManager-wwan subpackage(bsc#1100395).
+
+-------------------------------------------------------------------
 Fri Apr 19 13:03:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.44.4:

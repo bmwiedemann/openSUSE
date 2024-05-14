@@ -149,7 +149,6 @@ Recommends:     dnsmasq
 Recommends:     iproute2
 Recommends:     iputils
 Recommends:     nftables
-Recommends:     org.freedesktop.ModemManager
 # Provides required by sysconfig. The latter is used by older versions.
 Provides:       dhcdbd = 1.14
 Provides:       service(network)

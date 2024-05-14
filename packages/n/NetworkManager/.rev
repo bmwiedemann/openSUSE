@@ -2295,4 +2295,12 @@ New stable release</comment>
   + Fix handling of IPv6 hop limit (forwarded request 1169194 from dimstar)</comment>
     <requestid>1169230</requestid>
   </revision>
+  <revision rev="268" vrev="2">
+    <srcmd5>7aa0036c5973a90f0a20d56792a54509</srcmd5>
+    <version>1.44.4</version>
+    <time>1715686642</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1173635</requestid>
+  </revision>
 </revisionlist>
