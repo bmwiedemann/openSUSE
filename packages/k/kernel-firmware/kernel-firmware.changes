@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May 13 13:14:22 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240510 (git commit 7c2303328d8e):
+  * linux-firmware: Amphion: Update vpu firmware
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel Bluetooth Magnetor core
+  * linux-firmware: Update firmware file for Intel Bluetooth Solar core
+  * linux-firmware: Update firmware file for Intel Bluetooth Solar core
+  * i915: Add BMG DMC v2.06
+  * linux-firmware: Add CS35L41 HDA Firmware for Asus HN7306
+  * linux-firmware: Update firmware tuning for HP Consumer Laptop
+  * amdgpu: DMCUB updates for various AMDGPU ASICs
+  * rtl_bt: Update RTL8822C BT UART firmware to 0x0FD6_407B
+  * rtl_bt: Update RTL8822C BT USB firmware to 0x0ED6_407B
+  * cirrus: cs35l56: Add firmware for Cirrus CS35L56 for various ASUS laptops
+  * linux-firmware: Add firmware and tuning for Lenovo Y770S
+
+-------------------------------------------------------------------
 Tue Apr 30 07:48:13 UTC 2024 - tiwai@suse.com
 
 - Update to version 20240426 (git commit 2398d264f953):
