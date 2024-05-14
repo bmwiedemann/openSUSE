@@ -1,7 +1,7 @@
 #
 # spec file for package python-dfwinreg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 
-%define timestamp 20211207
+%define timestamp 20240316
 %define modname dfwinreg
 Name:           python-dfwinreg
 Version:        0~%{timestamp}
@@ -34,10 +34,14 @@ BuildRequires:  %{python_module dfdatetime}
 BuildRequires:  %{python_module dtfabric}
 BuildRequires:  %{python_module libcreg}
 BuildRequires:  %{python_module libregf}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-libcreg
+Requires:       python-dfdatetime
+Requires:       python-dtfabric
+Requires:       python-libcreg >= 20210502
 Requires:       python-libregf >= 20201002
 BuildArch:      noarch
 %python_subpackages
@@ -47,15 +51,13 @@ BuildArch:      noarch
 
 %prep
 %setup -q -n %{modname}-%{timestamp}
-sed -i 's/python setup.py install/python3 setup.py install/' setup.py
-sed -i 's/py2_build/py3_build/' setup.py
 sed -i 's|/usr/bin/env python|/usr/bin/env python3|' run_tests.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # these are installed into the wrong place

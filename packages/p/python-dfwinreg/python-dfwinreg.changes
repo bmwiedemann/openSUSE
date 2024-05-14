@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 22 09:25:25 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- update to 20240316
+  * Updated pylintrc to version 3.0
+  * Removed end-of-life Python 3.7 support 
+  * Changes for mapping Windows XP UsrClass.dat
+  * Changes for mapping HKEY_CURRENT_USER\Software\Classes
+  * Changes to REGFWinRegistryFile for virtual keys
+  * Changes for handling virtual keys
+
+-------------------------------------------------------------------
 Tue Aug  1 16:32:05 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - use %{?sle15_python_module_pythons} for opensuse15.5 compatibility
