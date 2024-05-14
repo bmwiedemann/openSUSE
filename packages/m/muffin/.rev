@@ -1774,4 +1774,40 @@ Sat Jul  15 12:00:38 UTC 2023 - sb56637 &lt;mxoo28j7@duck.com&gt;
     <comment></comment>
     <requestid>1130391</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5db76fd44ecc12b64319789754549005</srcmd5>
+    <version>6.0.1</version>
+    <time>1715686741</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0.1:
+  * meta-compositor-x11.c: Don't disable fractional scaling when
+    unredirecting a fullscreen window.
+
+- Update to version 5.8.1:
+- Update to version 5.8.0:
+  * meta-gpu-xrandr: Account for the current user text scale
+  * window activation: Detect a couple of conditions that might
+    cause initial window focus and stacking to be wrong
+  * window.c: Improve the test for checking if an 'above'
+  * tiling: Try to tile to the default size if a match exists,
+  * tiling: Disable drag-to-maximize behavior if tiling is disabled,
+  * tiling: Treat a maximized window as tiled for the purposes of determining
+  * tiling: When tiling at the end of a grab, use the initial position
+  * tiling: re-maximize previously-maximized windows when dragging,
+  * grabs: Fix restoration of window state when resize or move actions
+  * window.c: If maximizing a tiled window via titlebar,
+    use the window's current, not its unconstrained position and
+  * core/main.c: Squelch certain glib debug messages to reduce log
+  * shaped-texture: Use the REPLACE combine function on opaque
+    areas said to give 5% render improvement at 4K and lower power
+  * screen.c: Check for MetaMonitorInfo being non-null before
+  * Remove toggle_input_panel call during a key press.
+  * Fix up tile signal optimization (#372)
+  * re-add keybindings schema to allow cinnamon-desktop migration
+  * Send destroy events for minimized, attached windows to Cinnamon,
+  * Fix unescapable fullscreen in chrome/chromium.
+  * Temporary hack for resized corner-tiled window frame issues on themes
+  * Don't apply snapping rules to maximized windows when they're in a different workspace.</comment>
+    <requestid>1173676</requestid>
+  </revision>
 </revisionlist>

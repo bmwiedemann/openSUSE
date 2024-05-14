@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 13 13:41:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.1:
+  * meta-compositor-x11.c: Don't disable fractional scaling when
+    unredirecting a fullscreen window.
+
+-------------------------------------------------------------------
 Fri Dec 1 12:03:06 UTC 2023 - sb56637 <mxoo28j7@duck.com>
 
 - Update to version 6.0.0:
@@ -19,7 +26,7 @@ Fri Dec 1 12:03:06 UTC 2023 - sb56637 <mxoo28j7@duck.com>
 -------------------------------------------------------------------
 Tue Jul 18 05:21:31 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Update to version 5.8.1: 
+- Update to version 5.8.1:
 - drop  muffin-svid-default-source.patch
 
 -------------------------------------------------------------------
@@ -30,7 +37,7 @@ Sat Jul  15 12:00:38 UTC 2023 - sb56637 <mxoo28j7@duck.com>
 -------------------------------------------------------------------
 Thu Jun  8 16:09:38 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Update to version 5.8.0: 
+- Update to version 5.8.0:
 
 -------------------------------------------------------------------
 Fri Jun  2 21:19:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -45,7 +52,7 @@ Fri Jun  2 21:19:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Wed May  3 16:57:15 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 5.6.4:
-  * meta-gpu-xrandr: Account for the current user text scale 
+  * meta-gpu-xrandr: Account for the current user text scale
     factor when calculating the crtc scale based on Xft.dpi.
   * window.c: Allow meta_window_get_xwindow() to be used with introspection.
   * window.c: Restore property notify for the tile mode property.
@@ -56,10 +63,10 @@ Wed May  3 16:57:15 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
   * tiling: Skip the resize effect for tiled windows during user grabs.
   * tiling: Remove unnecessary update_edge_constraints().
   * Add tilix and qterminal to the new-window focus list.
-  * window activation: Detect a couple of conditions that might 
-    cause initial window focus and stacking to be wrong 
+  * window activation: Detect a couple of conditions that might
+    cause initial window focus and stacking to be wrong
     (mostly because of bad timestamps), and correct them.
-  * window.c: Improve the test for checking if an 'above' 
+  * window.c: Improve the test for checking if an 'above'
     window may cover a new window.
   * Disable automaximize by default.
   * Bring back window placement-mode  (#649)
@@ -69,7 +76,7 @@ Wed May  3 16:57:15 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
   * Support multiple key bindings for 'locate-pointer-key' (#638)
   * Revert renaming of the X11 atoms wm_name and gnome_wm_keybindings
   * keybindings: Fix workspace navigation while dragging a window with the mouse.
-  * tiling: Try to tile to the default size if a match exists, 
+  * tiling: Try to tile to the default size if a match exists,
     but is impossible to satisfy due to min/max size constraints.
   * tiling: Fix tile top/maximize tests.
   * window.c: Remove unused code.
@@ -80,14 +87,14 @@ Wed May  3 16:57:15 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
   * clutter: Bail out and warn on reentry into mapping/unmapping cycle
   * fix a spelling error spotted by lintian
   * window.c: Allow tiling in any monitor orientataion.
-  * tiling: Disable drag-to-maximize behavior if tiling is disabled, 
+  * tiling: Disable drag-to-maximize behavior if tiling is disabled,
     fix drag re-tile/maximize behavior in all scenarios.
   * workspace.c: Don't abort when requesting the index of an invalid workspace.
   * Enable tablet support.
   * keybindings.c: Make sure we can tile before we attempt to (#624)
-  * tiling: Treat a maximized window as tiled for the purposes of determining 
+  * tiling: Treat a maximized window as tiled for the purposes of determining
     whether or not to save the window's original position and size.
-  * tiling: When tiling at the end of a grab, use the initial position 
+  * tiling: When tiling at the end of a grab, use the initial position
     and size from when the grab began instead of it's last position before tiling.
   * Fix placement of transient children of fullscreen windows
   * frames.c: Re-implement directional maximization when double-clicking the frame edges.
@@ -96,12 +103,12 @@ Wed May  3 16:57:15 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
   * window.c: Make opacity a public property.
   * Fix "Center window in screen" behavior (#623)
   * frames.c: Fix calculations for determining resize zones in a tiled state.
-  * tiling: re-maximize previously-maximized windows when dragging, 
+  * tiling: re-maximize previously-maximized windows when dragging,
     regardless of the tile-maximize preference.
-  * grabs: Fix restoration of window state when resize or move actions 
+  * grabs: Fix restoration of window state when resize or move actions
     are cancelled via Escape.
-  * window.c: If maximizing a tiled window via titlebar, 
-    use the window's current, not its unconstrained position and 
+  * window.c: If maximizing a tiled window via titlebar,
+    use the window's current, not its unconstrained position and
     size to pass to the constraints call.
   * compositor: Add a MetaSizeChange value for tiling.
 
@@ -161,26 +168,26 @@ Thu Jan 14 10:21:20 UTC 2021 - andy great <andythe_great@pm.me>
 Mon Dec  7 20:25:57 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.8.0.
-  * core/main.c: Squelch certain glib debug messages to reduce log 
+  * core/main.c: Squelch certain glib debug messages to reduce log
     spam.
-  * shaped-texture: Use the REPLACE combine function on opaque 
-    areas said to give 5% render improvement at 4K and lower power 
+  * shaped-texture: Use the REPLACE combine function on opaque
+    areas said to give 5% render improvement at 4K and lower power
     use.
 
 -------------------------------------------------------------------
 Fri Sep 18 18:57:44 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.6.3.
-  * screen.c: Check for MetaMonitorInfo being non-null before 
+  * screen.c: Check for MetaMonitorInfo being non-null before
     attempting to access it.
   * Remove 0001-fix-warnings-when-compiling.patch
-  
+
 -------------------------------------------------------------------
 Mon Aug  3 12:58:02 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 4.6.2
   * Fallback WM theme - ensure dialogs such as nemo preferences have titlebar buttons
-  
+
 -------------------------------------------------------------------
 Wed Mar 18 12:03:33 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
 
@@ -189,14 +196,14 @@ Wed Mar 18 12:03:33 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
   * src/ui/theme.c: Use a simpler method for getting an image file's dimensions before scaling it for hidpi.
   * meta-window-actor.c: Detach after redirecting, not before unredirecting.
   * MetaWindow: clear the cached window icon when _NET_WM_ICON changes, to force a regen the next time the icon is requested for the window.
-  
+
 -------------------------------------------------------------------
 Sun Nov 24 17:24:05 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 4.4.1
   * meta-shadow-factory: Fix terminal shadows
   * window.c: Fix regression on window move
-  
+
 -------------------------------------------------------------------
 Wed Nov  6 04:00:02 UTC 2019 - Marguerite Su <i@marguerite.su>
 
@@ -226,7 +233,7 @@ Wed Jul 17 03:41:40 UTC 2019 - Marguerite Su <i@marguerite.su>
 Mon Jul 15 13:16:08 UTC 2019 - Marguerite Su <i@marguerite.su>
 
 - Update to version 4.2.1
-  * Remove toggle_input_panel call during a key press.  
+  * Remove toggle_input_panel call during a key press.
   * Fix standalone muffin executable
 
 -------------------------------------------------------------------
@@ -461,7 +468,7 @@ Fri Mar 15 02:55:03 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
   * Fix redraw issues in some fullscreen applications
   * Don't queue full stage relayouts when moving windows
   * window: Make sure update_corners gets called after every resize, theme change
-  * Fix up tile signal optimization (#372) 
+  * Fix up tile signal optimization (#372)
 
 -------------------------------------------------------------------
 Sat Jun 16 15:48:41 UTC 2018 - sor.alexei@meowr.ru
@@ -801,7 +808,7 @@ Thu Apr 23 15:55:50 UTC 2015 - stefan@fam-elser.de
 Mon Nov 10 06:41:33 UTC 2014 - i@marguerite.su
 
 - update version 2.4.1
-  * re-add keybindings schema to allow cinnamon-desktop migration 
+  * re-add keybindings schema to allow cinnamon-desktop migration
     script to work
 
 -------------------------------------------------------------------
@@ -816,7 +823,7 @@ Wed Nov  5 06:14:07 UTC 2014 - i@marguerite.su
 Mon Jul 14 16:51:24 UTC 2014 - i@marguerite.su
 
 - update version 2.3.0
-  * Send destroy events for minimized, attached windows to Cinnamon, 
+  * Send destroy events for minimized, attached windows to Cinnamon,
     so the parent un-dimming can occur.
   * Fix #154
   * Don't break scrolling when 'special key to move windows' is disabled.
@@ -864,15 +871,15 @@ Mon Nov 25 14:51:01 UTC 2013 - johann.luce@wanadoo.fr
   * Real fix for double frame decorations when resizing corner-tiled windows
   * Revert "Temporary hack for resized corner-tiled window frame issues on themes"
   * Fix for desktop modal dialogs being centered on the workspace instead of the primary monitor.
-  * Fix unescapable fullscreen in chrome/chromium. 
+  * Fix unescapable fullscreen in chrome/chromium.
   * Revert "Partial fix for errant tooltips - fixes all cases except nemo views"
   * Partial fix for errant tooltips - fixes all cases except nemo views
-  * Temporary hack for resized corner-tiled window frame issues on themes 
+  * Temporary hack for resized corner-tiled window frame issues on themes
     that support tiling... this results in a gradually growing window if you
     resize repeatedly, but for now it prevents average users from getting the
     dreaded 'double frame'.  Still not sure what's causing.
   * Stop-gap fix for stuttered resizing of gtk3 windows.
-  * Don't apply snapping rules to maximized windows when they're in a different workspace. 
+  * Don't apply snapping rules to maximized windows when they're in a different workspace.
 
 -------------------------------------------------------------------
 Fri Nov  8 11:17:08 UTC 2013 - johann.luce@wanadoo.fr

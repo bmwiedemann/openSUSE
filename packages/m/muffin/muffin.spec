@@ -1,7 +1,7 @@
 #
 # spec file for package muffin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,41 +21,41 @@
 %define typelib typelib-1_0-Muffin-0_0
 %define _lto_cflags %{nil}
 Name:           muffin
-Version:        6.0.0
+Version:        6.0.1
 Release:        0
 Summary:        Cinnamon Desktop default window manager
 License:        GPL-2.0-or-later AND MIT
 Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/muffin
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  meson
+BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
+BuildRequires:  libxcvt
+BuildRequires:  meson
 BuildRequires:  mutter-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  zenity
-BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  pkgconfig(cinnamon-desktop) >= 4.0.0
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gnome-doc-utils)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk-doc)
+BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libcanberra)
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libinput)
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(libwacom)
+BuildRequires:  pkgconfig(libxcvt)
 BuildRequires:  pkgconfig(sm)
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(xkeyboard-config)
 BuildRequires:  pkgconfig(xtst)
-BuildRequires:  pkgconfig(gudev-1.0)
-BuildRequires:  pkgconfig(libwacom)
-BuildRequires:  pkgconfig(libpipewire-0.3)
-BuildRequires:  pkgconfig(wayland-protocols)
-BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(xwayland)
-BuildRequires:  pkgconfig(libxcvt)
-BuildRequires:  libxcvt
 Requires:       cinnamon-gschemas
 Requires:       zenity
 Recommends:     %{name}-lang
