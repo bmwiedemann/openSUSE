@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Sat May 11 16:00:16 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- We actually don't need any hard Requires for OpenSSL at all
+  (and yes, rpmlint is right, we shouldn't use it at all).
+
+-------------------------------------------------------------------
+Tue May  7 15:59:43 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add creation of ods user.
+
+-------------------------------------------------------------------
+Mon Apr 15 12:26:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Rebuild with inspiration (and patches) from the Fedora package.
+- Remove obsolete patch softhsm-rsakeys.patch
+- Add Fedora patches (comments in SPEC indicate their true origin):
+  - softhsm-openssl3-tests.patch
+  - softhsm-prevent-global-deleted-objects-access.patch
+  - softhsm-2.6.1-rh1831086-exit.patch
+  - softhsm-2.6.1-uninitialized.patch
+
+-------------------------------------------------------------------
+Thu Apr 21 09:51:16 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- switched URL to https
+
+-------------------------------------------------------------------
+Thu Apr 30 15:31:19 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.1
+  * Issue #542: Support Ed448/X448 for OpenSSL
+  * Issue #538: Improved warning and compilation issues for GCC10
+
+-------------------------------------------------------------------
+Tue Mar 17 19:58:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.0
+
+  Changes:
+  * Issue #493: Upgrade to Botan 2.
+  * Issue #530: Update appveyor build.
+  * Issue #438: Detect crypto algorithms by default.
+  * Issue #455: Provide a new configuration option to allow enabling and
+    disabling various mechanisms (slots.mechanisms in the softhsm2.conf).
+  * Issue #479: Increase SQLite busy timeout from 15 seconds to 3 minutes.
+  * Issue #513: Add configuration option to reset state on fork closing all
+    sessions rather than keeping all sessions open in duplicate process.
+  * Issue #500: C_WaitForSlotEvent implementation.
+  * Issue #445: Add wrap support with CKM_AES_CBC.
+  
+  Bugfixes:
+  * Issue #418: Set fields to NULL to avoid double free.
+  * Issue #423: ENGINE_load_rdrand is not supported with older openssl.
+  * Issue #429: Updated prerequisite to build from repository.
+  * Issue #434: Fix build issues with CMake.
+  * Issue #435: Fix botan build without EDDSA.
+  * Issue #442: Release resources from OSSLEVPSymmetricAlgorithm.
+  * Issue #449/#502: Do not copy zero sized buffer avoid null pointer reference.
+  * Issue #464: Race condition with multiple threads closing last session and
+    opening a newer sessions.
+  * Issue #452: Fixes to automake build fir undefined macros.
+  * Issue #462: User PIN count wrongly calculated.
+  * Issue #516: Fix memory leak in OSSLCryptoFactory.
+  * Issue #494: Allow null pointers as arguments when count is zero.
+  * Issue #518: Sporadic problem in closing sessions because of lookup of
+    object without prior locking.
+  * Issue #506: Check key type for C_EncryptInit and C_DecryptInit.
+  * Issue #526: Adjust EDDSA code to return valid EC_PARAMS.
+  * Issue #452: Autogen failure on undefined macro AC_MSG_ERROR.
+  * Issue #527: Fixed some build errors for GCC 10.
+  * Issue #470: Null pointer arguments validation for C_EncryptFinal, etc.
+
+-------------------------------------------------------------------
 Mon May 20 13:38:34 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add the missing zlib requirement.
