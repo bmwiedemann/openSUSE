@@ -338,6 +338,7 @@
     <package name="discover6-backend-packagekit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="discover6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="discover6-notifier" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="distribution-logos-openSUSE-Aeon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_basis -->
     <package name="distribution-logos-openSUSE-Tumbleweed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="distribution-logos-openSUSE-icons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dmidecode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2590,7 +2591,7 @@
     <package name="libpotrace0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libpq5" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
     <package name="libpresage1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libproc2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
+    <package name="libproc2-0" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="libprocps8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libprojectM3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libprotobuf-c1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2736,7 +2737,7 @@
     <package name="libsnmp40" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsodium23" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsoftokn3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libsolv-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libsolv-tools-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsord-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsoup-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsoup-3_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3571,8 +3572,8 @@
     <package name="procmail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="procps" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="procps-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="procps4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
-    <package name="procps4-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
+    <package name="procps4" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="procps4-lang" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="psmisc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="psmisc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="psutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
