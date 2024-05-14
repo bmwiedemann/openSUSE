@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 15 08:17:59 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Prevent screen blanking during install 
+
+-------------------------------------------------------------------
 Tue May 14 08:30:59 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Move optional tik-module-mig and -welcome from patterns-tik to

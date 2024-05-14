@@ -196,9 +196,16 @@ cat >> /usr/share/glib-2.0/schemas/31_tik.gschema.override << "EOF"
 [org.gnome.shell]
 favorite-apps=['']
 
+[org.gnome.desktop.session]
+idle-delay=0
+
 [org.gnome.desktop.screensaver]
 lock-enabled=false
 user-switch-enabled=false
+
+[org.gnome.settings-daemon.plugins.power]
+sleep-inactive-battery-type='nothing'
+sleep-inactive-ac-type='nothing'
 
 [org.gnome.desktop.lockdown]
 disable-lock-screen=true
