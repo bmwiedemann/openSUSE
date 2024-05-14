@@ -7,4 +7,14 @@
     <comment>New installer used by Aeon</comment>
     <requestid>1172740</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a45bc02d75cf0fd2c3fc496589124470</srcmd5>
+    <version>1.0</version>
+    <time>1715686757</time>
+    <user>anag+factory</user>
+    <comment>- Correct architecture support 
+
+- Move optional modules into image definition instead of patterns</comment>
+    <requestid>1173957</requestid>
+  </revision>
 </revisionlist>
