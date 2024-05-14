@@ -59,4 +59,13 @@
   * CI fixes</comment>
     <requestid>1160434</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>4db340e95380ab3c0396eeae0172289b</srcmd5>
+    <version>1.14.1</version>
+    <time>1715686743</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- Skip a broken test with pytest &gt;= 8.1.</comment>
+    <requestid>1172302</requestid>
+  </revision>
 </revisionlist>

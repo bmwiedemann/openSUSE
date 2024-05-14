@@ -16,13 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-twisted
 Version:        1.14.1
 Release:        0
 Summary:        Pytest Plugin for Twisted
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-twisted
 Source:         https://github.com/pytest-dev/pytest-twisted/archive/v%{version}.tar.gz#/pytest-twisted-%{version}-gh.tar.gz
 # PATCH-FIX-OPENSUSE pytest-twisted-ignorepy310DeprecationWarnings.patch -- upstream wants this fixed in twisted itself -- gh#pytest-dev/pytest-twisted/146
@@ -30,8 +28,10 @@ Patch0:         pytest-twisted-ignorepy310DeprecationWarnings.patch
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module greenlet}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 2.3}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -51,20 +51,20 @@ objects and pytest will wait for their completion with this plugin.
 %autosetup -p1 -n pytest-twisted-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k 'not test_async_fixture_module_scope'
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/pytest_twisted.py*
-%pycache_only %{python_sitelib}/__pycache__/pytest_twisted.*
-%{python_sitelib}/pytest_twisted-%{version}*-info
+%{python_sitelib}/pytest_twisted.py
+%pycache_only %{python_sitelib}/__pycache__/pytest_twisted*pyc
+%{python_sitelib}/pytest_twisted-%{version}.dist-info
 
 %changelog
