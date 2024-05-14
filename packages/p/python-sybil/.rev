@@ -150,4 +150,41 @@
     <comment></comment>
     <requestid>1139373</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0e0c4b37993396b9a6f6bfd3ff6d528a</srcmd5>
+    <version>6.1.0</version>
+    <time>1715686626</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.1.0:
+  * Add support for lexing nested fenced codeblocks in markdown.
+  * Add support for tilde-delimited codeblocks in markdown.
+  * Fix bug with the end offset of codeblocks in markdown.
+  * Support pytest 8 and above, due to yet another breaking change in an API
+    Sybil relies on.
+  * Remove use of deprecated py.path.local.
+  * Fix lexing of ReST directives and directives-in-comments where the
+    directives were not separated by at least one newline.
+  * Official support for Python 3.12 with Python 3.7 now being the minimum
+    supported version.
+  * sybil.parsers.rest.lexers.DirectiveLexer and
+    sybil.parsers.myst.lexers.DirectiveLexer directives now have their
+    options extracted as part of the lexing process.
+  * Added support for MyST single-line html-style comment directives.
+  * Fixed parsing of MyST directive options with no leading whitespace.
+  * Fixed parsing of Markdown and MyST fenced codeblocks at the end of
+    documents with no trailing newline.
+  * Rework document evaluators to be more flexible and structured.
+  * :ref:`skip &lt;skip-parser&gt;` has been reworked to check validity of operations
+    and allow a reason to be provided for an unconditional skip so it can be
+    highlighted as a skipped test in test runner output. The skip parsers
+    are also now lexer-based.
+  * Make Region.evaluator optional, removing the need for the separate
+    LexedRegion class.
+  * Fix bug in traceback trimming on the latest release of pytest.
+  * Fixed bug in the repr of LexedRegion instances where a lexeme was None.
+  * Fixed lexing of ReST directives, such as :rst:dir:`code-block`, where they
+    occurred at the end of a docstring.
+  * Ensure the sybil.Document.namespace in which doctests are</comment>
+    <requestid>1173546</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-sybil
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,35 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?sle15_python_module_pythons}
-Name:           python-sybil
-Version:        3.0.1
+Name:           python-sybil%{psuffix}
+Version:        6.1.0
 Release:        0
 Summary:        Automated testing of examples in documentation
 License:        MIT
-URL:            https://github.com/cjw296/sybil
-Source:         https://files.pythonhosted.org/packages/source/s/sybil/sybil-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM https://github.com/simplistix/sybil/commit/df0d221c1d9da1454a5ef7fd72675d8d43b96eb0 Deal with more pytest internals changing
-Patch:          pytest74.patch
+URL:            https://github.com/simplistix/sybil
+Source:         https://github.com/simplistix/sybil/archive/refs/tags/%{version}.tar.gz#/sybil-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest >= 6.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+%if %{with test}
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module pytest >= 7.1}
+BuildRequires:  %{python_module seedir}
+BuildRequires:  %{python_module sybil = %{version}}
+BuildRequires:  %{python_module testfixtures}
 %if 0%{?sle_version} && 0%{?sle_version} <= 150400
 BuildRequires:  %{python_module dataclasses}
+%endif
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,24 +58,29 @@ them from the documentation source and evaluating the parsed examples as part
 of the normal test run. Integration is provided for the main Python test runners.
 
 %prep
-%setup -q -n sybil-%{version}
+%autosetup -p1 -n sybil-%{version}
 sed -i '/pytest-cov/ d'  setup.py
-%autopatch -p1
 
 %build
 %pyproject_wheel
 
+%if !%{with test}
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst docs/changes.rst
 %license docs/license.rst
 %{python_sitelib}/sybil
-%{python_sitelib}/sybil-%{version}*-info
+%{python_sitelib}/sybil-%{version}.dist-info
+%endif
 
 %changelog

@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon May 13 04:09:28 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.1.0:
+  * Add support for lexing nested fenced codeblocks in markdown.
+  * Add support for tilde-delimited codeblocks in markdown.
+  * Fix bug with the end offset of codeblocks in markdown.
+  * Support pytest 8 and above, due to yet another breaking change in an API
+    Sybil relies on.
+  * Remove use of deprecated py.path.local.
+  * Fix lexing of ReST directives and directives-in-comments where the
+    directives were not separated by at least one newline.
+  * Official support for Python 3.12 with Python 3.7 now being the minimum
+    supported version.
+  * sybil.parsers.rest.lexers.DirectiveLexer and
+    sybil.parsers.myst.lexers.DirectiveLexer directives now have their
+    options extracted as part of the lexing process.
+  * Added support for MyST single-line html-style comment directives.
+  * Fixed parsing of MyST directive options with no leading whitespace.
+  * Fixed parsing of Markdown and MyST fenced codeblocks at the end of
+    documents with no trailing newline.
+  * Rework document evaluators to be more flexible and structured.
+  * :ref:`skip <skip-parser>` has been reworked to check validity of operations
+    and allow a reason to be provided for an unconditional skip so it can be
+    highlighted as a skipped test in test runner output. The skip parsers
+    are also now lexer-based.
+  * Make Region.evaluator optional, removing the need for the separate
+    LexedRegion class.
+  * Fix bug in traceback trimming on the latest release of pytest.
+  * Fixed bug in the repr of LexedRegion instances where a lexeme was None.
+  * Fixed lexing of ReST directives, such as :rst:dir:`code-block`, where they
+    occurred at the end of a docstring.
+  * Ensure the sybil.Document.namespace in which doctests are
+    evaluated always has a __name__. This is required by an implementation
+    detail of typing.runtime_checkable.
+  * Fix a bug that prevent r-prefixed docstrings from being correctly parsed
+    from .py files.
+  * The sybil.Document.namespace can now be cleared in both ReST and MyST.
+  * Support for Python 3.6 has been dropped.
+  * Support for pytest versions earlier than 7.1 has been dropped.
+  * Switch :func:`sybil.parsers.myst.SkipParser` to use the correct comment
+    character.
+  * Warn about ReST and MyST doctest parsers and overlapping blocks.
+  * Restructure to support lexing source languages such as ReST and MyST
+    while testing examples in target languages such as Python, doctest and bash.
+  * Add support for MyST examples.
+- Drop patch pytest74.patch, included upstream.
+- Sprinkle in multibuild to avoid a cycle.
+
+-------------------------------------------------------------------
 Tue Jan 16 15:22:42 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Drop unneeded setuptools-git dependency
