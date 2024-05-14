@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon May 13 17:59:29 UTC 2024 - pdostal@suse.com
+
+- Update to version 2.49.2:
+  * build(deps): bump github.com/sigstore/protobuf-specs from 0.3.1 to 0.3.2
+  * Add further docs to Option type
+  * Comment further on config changes
+  * Remove unnecessary config list variable
+  * Fix mistaken find and replace for Option type
+  * Fix repo fork to use remote protocol if none configured
+  * Avoid reconstructing config Options on each use
+  * Make config list less fallible
+  * Provide more type safety around config values
+  * Move config interfaces into gh package (#9060)
+  * Fix typos
+  * Creating doc to capture Codespace usage guidance
+  * Fix test function name
+  * Add test to verify JSON fields section is rendered in Markdown
+  * Output `JSON Fields` section in Markdown
+  * Add test to verify JSON fields section is rendered
+  * Add `jsonCmd` test command variable
+  * Output `JSON Fields` section
+  * Output `JSON FIELDS`
+  * Add tests to verify proper `help:json-fields` annotations
+  * Add `help:json-fields` annotation
+  * Add `FormatSlice` function
+  * Add --latest=false example to `release create` command
+  * Update create.go
+  * Add --latest=false to `gh release create` docs
+
+-------------------------------------------------------------------
 Thu May  9 16:47:00 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Reenable all tests
