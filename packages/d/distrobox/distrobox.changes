@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat May 11 03:38:58 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 1.7.2.1
+  + changes from 1.7.2.1
+    * chore(init): Add sudo to Wolfi (#1375)
+    * Add fedora toolbox 40 to list of compatible images (#1377)
+    * init: fix setting empty DISPLAY variable, breaking gpg 
+  + changes from 1.7.2
+    * all: properly handle env vars and configs in all commands
+      (#1328)
+    * chore: bump CI actions, minor fixes to README and other
+      files (#1345)
+    * docs: Specify that distrobox is in the extra repo (#1316)
+    * docs: Support latest alpine (#1341)
+    * docs: Update copyright in footer (#1365)
+    * docs: Update useful_tips.md (#1330)
+    * enter: make log_timestamp date format universally
+      compatible (#1343)
+    * export: cancel export when trying to delete (#1340)
+    * export: consider only absolute candidate icon paths that
+      exist (#1318)
+    * init: Support musl variant of Void Linux (#1327)
+    * init: add explicit creation of /etc/fish/conf.d (#1348)
+    * init: massively speed up apt/pacman/xbps deps install (#1324)
+    * install: use more portable install(1) arguments (#1364)
+    * CI: fix hostname test
+    * CI: try to ensure enough disk space
+    * CI: use shell-funcheck
+    * all: improve function docs
+    * assemble: add custom hostname support
+    * create: fix regression with rootless runc 1.20~rc1 (#1359)
+    * docs: add Slackware 15 (#1357)
+    * docs: move upgrading instruction a bit more ahead (#1342)
+    * docs: update xhost command to be silent (#1350)
+    * enter: Fix support for Active Directory usernames including
+      backslashes (#1360)
+    * enter: fix regression in fish shell login with initful
+      systems
+    * enter: fix typo in command generation (#1331)
+    * export: fix duplicate extra_flags (#1311)
+    * export: use different symbol for IFS (#1351)
+    * init, create: use $CONTAINER_ID to distinguish container's
+      prompts. Use host's hostname by default.
+    * init: ensure fish config is sourced only on interactive
+      shell (#1292)
+    * init: fix endless hook append (#1320)
+    * init: fix performance regression in skel file setup (#1317)
+    * init: forward wayland display only if it is set
+    * rm: revert 22bc081, simplify removal of exported
+      app/bins (#1301)
+
+-------------------------------------------------------------------
 Mon Mar 25 22:02:17 UTC 2024 - Michal Vyskocil <michal.vyskocil@gmail.com>
 
 - Update to 1.7.1
