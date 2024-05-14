@@ -1290,4 +1290,12 @@ The Python versions supported in this release are 3.9-3.11.
   * Ensure meson executes sys.executable when testing Cython.</comment>
     <requestid>1169880</requestid>
   </revision>
+  <revision rev="129" vrev="3">
+    <srcmd5>cb52c1522291e4c2a4e2288bd64f725e</srcmd5>
+    <version>1.26.4</version>
+    <time>1715686650</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1173659</requestid>
+  </revision>
 </revisionlist>

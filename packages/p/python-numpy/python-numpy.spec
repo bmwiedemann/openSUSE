@@ -39,9 +39,6 @@
 %if 0%{?sle_version} == 120300
 %{?with_openblas:ExclusiveArch:  do_not_build}
 %endif
-%ifarch s390 s390x
-%{?with_openblas:ExclusiveArch:  do_not_build}
-%endif
 %{?with_hpc:%{hpc_requires}}
 #
 %if 0%{?suse_version} > 1500
