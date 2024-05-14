@@ -932,4 +932,28 @@
  * Bug fixes</comment>
     <requestid>1172165</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c25770e30d3bbd1a8c308668e5f4650e</srcmd5>
+    <version>0.4.4</version>
+    <time>1715686641</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.4
+ * Preview features
+   * [pycodestyle] Ignore end-of-line comments when determining blank line rules 
+   * [pylint] Detect pathlib.Path.open calls in unspecified-encoding (PLW1514) 
+   * [flake8-pyi] Implement PYI059 (generic-not-last-base-class) 
+   * [flake8-pyi] Implement PYI062 (duplicate-literal-member) 
+ * Rule changes
+   * [flake8-boolean-trap] Allow passing booleans as positional-only arguments in code such as set(True) 
+   * [flake8-bugbear] Ignore enum classes in cached-instance-method (B019) 
+ * Server
+   * Expand tildes when resolving Ruff server configuration file 
+   * Fix ruff server hanging after Neovim closes 
+   * Editor settings are used by default if no file-based configuration exists 
+ * Bug fixes
+   * [pylint] Consider with statements for too-many-branches (PLR0912) 
+   * [flake8-blind-except, tryceratops] Respect logged and re-raised expressions in nested statements (BLE001, TRY201) 
+   * Recognise assignments such as __all__ = builtins.list([&quot;foo&quot;, &quot;bar&quot;]) as valid __all__ definitions</comment>
+    <requestid>1173634</requestid>
+  </revision>
 </revisionlist>
