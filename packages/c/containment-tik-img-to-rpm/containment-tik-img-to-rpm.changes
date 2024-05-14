@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 14 09:49:57 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Handle changelog properly, to work with reproducible builds
+  in Factory 
+
+-------------------------------------------------------------------
 Fri May 10 18:19:04 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Conflict with containment-rpm 

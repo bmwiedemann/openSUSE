@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1173228</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>09ead52c51a369d9b31945f135c4bda3</srcmd5>
+    <version>1.0</version>
+    <time>1715686755</time>
+    <user>anag+factory</user>
+    <comment>- Handle changelog properly, to work with reproducible builds
+  in Factory</comment>
+    <requestid>1173955</requestid>
+  </revision>
 </revisionlist>

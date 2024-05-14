@@ -15,23 +15,23 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# norootforbuild
 
 Name:           containment-tik-img-to-rpm
 Version:        1.0
 Release:        0
-Summary:	OBS Post check for containing tik-osimage-* images in RPM
+Summary:        OBS Post check for containing tik-osimage-* images in RPM
 License:        MIT
 Source:         containment-tik-img-to-rpm
-Source1:	image.spec.in
+Source1:        image.spec.in
 BuildRequires:  filesystem
-BuildArch:	noarch
+BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Requires:       jq
-Requires:       gawk
+Requires:       build
 Requires:       coreutils
-Conflicts:	containment-rpm
-
+Requires:       gawk
+Requires:       jq
+Requires:       perl-DateTime-Format-DateParse
+Conflicts:      containment-rpm
 
 %description
 OBS Post check for containing tik-osimage-* images in RPM
@@ -52,4 +52,3 @@ install -m 644 %{SOURCE1} %{buildroot}/usr/lib/build/
 %{_prefix}/lib/build/image.spec.in
 
 %changelog
-
