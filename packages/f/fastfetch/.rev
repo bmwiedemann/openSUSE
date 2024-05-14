@@ -461,4 +461,12 @@ Bugfixes:
        This option can be used to improve detection performance by ignoring slow network drives</comment>
     <requestid>1171072</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>738689a66455c72de6573662aa7b4e60</srcmd5>
+    <version>2.11.5</version>
+    <time>1715686686</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1173794</requestid>
+  </revision>
 </revisionlist>
