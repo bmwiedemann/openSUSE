@@ -2602,6 +2602,7 @@ unsorted:
   - crash-eppic 
   - crash-gcore 
   - crash-kmp-default 
+  - crash-kmp-longterm 
   - crash-trace 
   - crawl 
   - crawl-data 
@@ -3351,6 +3352,7 @@ unsorted:
   - dpdk-doc 
   - dpdk-examples 
   - dpdk-kmp-default 
+  - dpdk-kmp-longterm 
   - dpdk-tools 
   - dpic 
   - dpic-doc 
@@ -13952,7 +13954,7 @@ unsorted:
   - libknet1-devel 
   - libknet1-plugins-all 
   - libknot14 
-  - libkokkos-4_2 
+  - libkokkos-4_3 
   - libkolabxml-devel 
   - libkomparediff2-devel 
   - libkomparediff2-kf5 
@@ -14798,14 +14800,14 @@ unsorted:
   - libopenvas_wmiclient-devel 
   - libopenvas_wmiclient1 
   - libopenvdb10_1 
-  - libopenvino2400 
-  - libopenvino_c2400 
-  - libopenvino_ir_frontend2400 
-  - libopenvino_onnx_frontend2400 
-  - libopenvino_paddle_frontend2400 
-  - libopenvino_pytorch_frontend2400 
-  - libopenvino_tensorflow_frontend2400 
-  - libopenvino_tensorflow_lite_frontend2400 
+  - libopenvino2410 
+  - libopenvino_c2410 
+  - libopenvino_ir_frontend2410 
+  - libopenvino_onnx_frontend2410 
+  - libopenvino_paddle_frontend2410 
+  - libopenvino_pytorch_frontend2410 
+  - libopenvino_tensorflow_frontend2410 
+  - libopenvino_tensorflow_lite_frontend2410 
   - libopenvswitch-3_1-0 
   - liboping-devel 
   - liboping0 
@@ -15963,6 +15965,7 @@ unsorted:
   - libsolarus1 
   - libsolv-demo 
   - libsolv-devel 
+  - libsolv-tools 
   - libsonivox3 
   - libsord-0-0-32bit 
   - libsoundio-devel 
@@ -19611,6 +19614,8 @@ unsorted:
   - nut-drivers-net 
   - nvdock 
   - nvidia-open-driver-G06-signed-default-devel 
+  - nvidia-open-driver-G06-signed-kmp-longterm 
+  - nvidia-open-driver-G06-signed-longterm-devel 
   - nvidia-texture-tools 
   - nvimpager 
   - nvimpager-zsh-completion 
@@ -20298,6 +20303,7 @@ unsorted:
   - openvino-devel 
   - openvino-hetero-plugin 
   - openvino-intel-cpu-plugin 
+  - openvino-intel-npu-plugin 
   - openvino-sample 
   - openvpn-devel 
   - openvpn-down-root-plugin 
@@ -20449,6 +20455,7 @@ unsorted:
   - ovn-host 
   - ovn-vtep 
   - ovpn-dco-kmp-default 
+  - ovpn-dco-kmp-longterm 
   - owasp-modsecurity-crs 
   - owasp-modsecurity-crs-apache2 
   - owncloud-client 
@@ -20748,6 +20755,7 @@ unsorted:
   - pcb-doc 
   - pcfclock 
   - pcfclock-kmp-default 
+  - pcfclock-kmp-longterm 
   - pciutils-devel 
   - pciutils-devel-32bit 
   - pcm 
@@ -27011,7 +27019,6 @@ unsorted:
   - python310-tox-wheel 
   - python310-tpfd 
   - python310-tqdm 
-  - python310-traceback2 
   - python310-traitlets 
   - python310-traits 
   - python310-traitsui 
@@ -30481,7 +30488,6 @@ unsorted:
   - python311-tox-wheel 
   - python311-tpfd 
   - python311-tqdm 
-  - python311-traceback2 
   - python311-traitlets 
   - python311-traits 
   - python311-traitsui 
@@ -34055,7 +34061,6 @@ unsorted:
   - python312-tox-wheel 
   - python312-tpfd 
   - python312-tqdm 
-  - python312-traceback2 
   - python312-traitlets 
   - python312-traits 
   - python312-traitsui 
@@ -34344,7 +34349,6 @@ unsorted:
   - python38-testsuite 
   - python38-tk 
   - python38-tools 
-  - python38-volatility3 
   - python39 
   - python39-32bit 
   - python39-base 
@@ -35289,6 +35293,7 @@ unsorted:
   - rke2-1.26 
   - rke2-1.27 
   - rke2-1.28 
+  - rke2-1.29 
   - rke2-selinux 
   - rkhunter 
   - rkward 
@@ -47140,6 +47145,7 @@ unsorted:
   - uudeview 
   - uuid-devel 
   - uuidd 
+  - uv 
   - uvcdynctrl 
   - uwac0-devel 
   - uwsc 
@@ -47393,6 +47399,7 @@ unsorted:
   - vodovod 
   - voikkospell 
   - vokoscreenNG 
+  - volatility3 
   - volk 
   - volk-devel 
   - volk_modtool 
@@ -48014,6 +48021,7 @@ unsorted:
   - xom-demo 
   - xom-javadoc 
   - xone-kmp-default 
+  - xone-kmp-longterm 
   - xonotic 
   - xonotic-data 
   - xonotic-server 
@@ -48043,6 +48051,7 @@ unsorted:
   - xournalpp 
   - xournalpp-lang 
   - xpadneo-kmp-default 
+  - xpadneo-kmp-longterm 
   - xpadneo-ueficert 
   - xpenguins 
   - xpinguin 
@@ -48124,6 +48133,7 @@ unsorted:
   - xsynth-dssi 
   - xtables-addons 
   - xtables-addons-kmp-default 
+  - xtables-addons-kmp-longterm 
   - xtables-geoip 
   - xteddy 
   - xtensor-devel 
