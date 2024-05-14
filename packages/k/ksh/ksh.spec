@@ -1,7 +1,7 @@
 #
 # spec file for package ksh
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,7 +80,7 @@ Source31:       vmbalance
 Source42:       sigexec.c
 Patch0:         ksh93.dif
 Patch1:         workaround-stupid-build-system.diff
-Patch2:         ksh-qemu.patch
+Patch2:         ksh93-no-posix_spawn.dif
 Patch3:         ksh93-shift_ijs.dif
 Patch4:         ksh93-gmt2utc.dif
 Patch5:         ksh93-uname.dif
@@ -207,9 +207,7 @@ fi
 %patch -P 0
 %patch -P 62
 %patch -P 1
-%ifarch %arm
 %patch -P 2
-%endif
 %patch -P 3
 %patch -P 4
 %patch -P 5

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 13 16:38:57 CEST 2024 - mls@suse.de
+
+- remove no longer needed qemu workaround
+  deleted patch: ksh-qemu.patch
+- do not use posix_spawn as it lacks proper job handling [bsc#1224057]
+  new patch: ksh93-no-posix_spawn.dif
+
+-------------------------------------------------------------------
 Thu Feb 22 12:41:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

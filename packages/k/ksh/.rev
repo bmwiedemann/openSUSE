@@ -1118,4 +1118,12 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1149310 from dimstar)</comment>
     <requestid>1150564</requestid>
   </revision>
+  <revision rev="116" vrev="9">
+    <srcmd5>052ccea6f1c3e3ab93e13c865867ea08</srcmd5>
+    <version>93vu</version>
+    <time>1715686740</time>
+    <user>anag+factory</user>
+    <comment>- do not use posix_spawn as it lacks proper job handling [bsc#1224057]</comment>
+    <requestid>1173897</requestid>
+  </revision>
 </revisionlist>
