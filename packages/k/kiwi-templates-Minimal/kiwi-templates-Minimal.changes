@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 14 07:53:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add procps into the image (previously pulled in by zypper,
+  and the openQA tests rely on it)
+
+-------------------------------------------------------------------
 Fri May 10 11:56:22 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Drop fbiterm (jsc#PED-3655)
@@ -77,7 +83,7 @@ Thu Dec 29 08:56:59 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
 Thu Nov 10 15:52:38 UTC 2022 - Guilherme Moro <gmoro@suse.com>
 
 - Rename OpenStack-Cloud to Cloud (jsc#PED-1849)
-- Enable jeos-firstboot on Cloud image 
+- Enable jeos-firstboot on Cloud image
 
 -------------------------------------------------------------------
 Thu Aug 25 13:59:00 UTC 2022 - Guilherme Moro <gmoro@suse.com>
@@ -625,7 +631,7 @@ Mon Mar 26 13:01:12 UTC 2018 - fvogt@suse.com
 -------------------------------------------------------------------
 Thu Mar 15 18:42:12 UTC 2018 - gmoro@suse.com
 
-- include issue-generator that is not a requirement of 
+- include issue-generator that is not a requirement of
   sles-release anymore, fix bsc#1084879
 
 -------------------------------------------------------------------
@@ -724,7 +730,7 @@ Mon Nov 13 12:36:12 UTC 2017 - gmoro@suse.com
 
 - Configure snapper as part of the image build process, related to bsc#1064819
 - Use kiwi functionality for disabling CoW on subvolumes, related to bsc#1064819
-- Drop cracklib-dict-small from the bootstrap, requirements changed in kiwi 
+- Drop cracklib-dict-small from the bootstrap, requirements changed in kiwi
 
 -------------------------------------------------------------------
 Tue Oct 24 10:59:39 UTC 2017 - gmoro@suse.com
@@ -757,7 +763,7 @@ Wed Oct  4 11:07:25 UTC 2017 - coolo@suse.com
 Wed Oct  4 08:57:17 UTC 2017 - aherzig@suse.com
 
 - patterns renamed
-- multibuild file added 
+- multibuild file added
 
 -------------------------------------------------------------------
 Tue Aug 15 13:12:18 UTC 2017 - gmoro@suse.com

@@ -312,6 +312,7 @@
         <package name="openssh"/>
         <package name="rsync"/>
         <package name="dosfstools"/> <!-- For fscking /boot/efi -->
+        <package name="procps"/> <!-- For free/ps and other basic utilities -->
         <package name="lsof"/> <!-- For zypper ps (bsc#1167553) -->
         <package name="live-add-yast-repos"/>
         <!-- <package name="rsyslog"/> for SLE -->
