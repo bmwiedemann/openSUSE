@@ -1,4 +1,269 @@
 -------------------------------------------------------------------
+Tue May 14 12:36:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 3.14.0:
+  * New features:
+    + Add Functions#function(Function).
+    + Add FailableFunction#function(FailableFunction).
+    + Add CalendarUtils.getInstance().
+    + Add syntax for optional tokens to DurationFormatUtils.
+    + Add ArrayFill.
+    + Add FastDateParser.TimeZoneStrategy.TzInfo.toString().
+    + Add LocaleUtils.isLanguageUndetermined(Locale).
+    + Add ObjectUtils.toString(Supplier<Object>, Supplier<String>).
+    + Add LazyInitializer.isInitialized().
+    + Add ConcurrentInitializer#isInitialized() #1120.
+    + Add Streams.failableStream(T...).
+    + Add FailableSupplier.nul().
+    + Add Suppliers.nul().
+    + Add ExceptionUtils.throwUnchecked(T) where T extends
+      Throwable, and deprecate Object version.
+    + Add ExceptionUtils.rethrowRuntimeException(T), and deprecate
+      rethrow(T).
+    + ConcurrentInitializer implementations can now be instantiated
+      and configured with allocation and release lambdas.
+      Fixes LANG-1716.
+    + Add support for RISC-V in ArchUtils #1128. Fixes LANG-1717.
+  * Fixed bugs:
+    + Rename variable names from 'clss' to 'clazz'.
+    + [Javadoc] ComparableUtils'c1' to 'comparable1', 'c2' to
+      'comparable2'
+    + [Javadoc] Remove 2.1 specific comment #1091.
+    + [Javadoc] Fix Incorrect Description in Processor isAarch64()
+      #1093. Fixes LANG-1704.
+    + [Javadoc] Point to right getShortClassName flavor in Javadoc
+      for relevant notes #1097.
+    + Improve performance of StringUtils.isMixedCase().
+    + ThreadUtils find methods should not return null items. Fixes
+      LANG-1706.
+    + ReflectionToStringBuilder changes in version 3.13.0 has broken
+      the logic for overriding classes. Fixes LANG-1710.
+    + Return "null" instead of NPE in
+      ClassLoaderUtils.toString(ClassLoader).
+    + Return "null" instead of NPE in
+      ClassLoaderUtils.toString(URLClassLoader).
+    + Return ToStringStyle.nullText instead of NPE for
+      ReflectionToStringBuilder.toString().
+    + Fix ThresholdCircuitBreaker#checkState().
+    + Use ConcurrentInitializer implementations without subclassing.
+    + Update critical value for chi-square test.
+    + Fix Javadoc syntax errors #1129.
+- From 3.13.0 update
+  * New features:
+    + Add GitHub coverage.yml.
+    + Add EnumUtils.getEnumSystemProperty(...).
+    + Add TriConsumer.
+    + Add and use EnumUtils.getFirstEnumIgnoreCase(Class, String,
+      Function, E).
+    + Add and use Suppliers.
+    + Add and use ArrayUtils.getComponentType(T[]).
+    + Add and use ClassUtils.getComponentType(Class>T[]>).
+    + Add and use ObjectUtils.getClass(T).
+    + Add and use ArrayUtils.newInstance(Class>T>, int).
+    + Add and use null-safe Streams.of(T...).
+    + Add ClassUtils.comparator().
+    + Add and use ThreadUtils.sleepQuietly(Duration).
+    + Add and use ArrayUtils.setAll(T[], IntFunction).
+    + Add and use ArrayUtils.setAll(T[], Supplier).
+    + Add BooleanConsumer.
+    + Add IntToCharFunction.
+    + Add IntStreams.
+    + Add UncheckedFuture.
+    + Add UncheckedException.
+    + Add UncheckedExecutionException.
+    + Add UncheckedTimeoutException.
+    + Add UncheckedInterruptedException.
+    + Add TimeZones.GMT.
+    + Add ObjectUtils.identityHashCodeHex(Object).
+    + Add ObjectUtils.hashCodeHex(Object).
+    + Add StringUtils.removeStart(String, char).
+    + Add null-safe ObjectUtils.isArray(). Fixes LANG-1659.
+    + Add ComparableUtils.max(A, A) and ComparableUtils.min(A, A).
+    + Add UncheckedReflectiveOperationException.
+    + Add and use ClassUtils.isPublic(Class).
+    + Add UncheckedIllegalAccessException.
+    + Add MethodInvokers.
+    + Add Streams.nullSafeStream(Collection).
+    + Add Streams.toStream(Collection).
+    + Add Streams.failableStream(Collection) and deprecate misnamed
+      stream(Collection).
+    + Add Streams.failableStream(Stream) and deprecate misnamed
+      stream(Stream).
+    + Add EnumUtils.getEnumMap(Class, Function).
+    + Add FluentBitSet.
+    + Add Streams.instancesOf(Class, Collection).
+    + Add ImmutablePair.ofNonNull(L, R).
+    + Add ImmutableTriple.ofNonNull(L, M, R).
+    + Add MutablePair.ofNonNull(L, R).
+    + Add MutableTriple.ofNonNull(L, M, R).
+    + Add Pair.ofNonNull(L, R).
+    + Add Triple.ofNonNull(L, M, R).
+    + Add ArrayUtils.containsAny(Object[], Object...).
+    + Add Processor.Type.AARCH_64.
+    + Add Processor.isAarch64().
+    + Update ArchUtils.getProcessor(String) for "aarch64".
+    + Add JavaVersion.JAVA_18.
+    + Add JavaVersion.JAVA_19.
+    + Add JavaVersion.JAVA_20.
+    + Add JavaVersion.JAVA_21.
+    + Add TimeZones.toTimeZone(TimeZone).
+    + Add FutureTasks.
+    + Add Memoizer(Function) and Memoizer(Function, boolean).
+    + Add Consumers.
+    + Add github/codeql-action.
+    + Add coverage.yml.
+    + Add DurationUtils.since(Temporal).
+    + Add DurationUtils.of(FailableConsumer|FailableRunnbale).
+    + Add ExceptionUtils.forEach(Throwable, Consumer<Throwable>).
+    + Add ExceptionUtils.stream(Throwable).
+    + Add ExceptionUtils.getRootCauseStackTraceList(Throwable).
+    + Add SystemUtils.IS_OS_WINDOWS_11.
+    + Add SystemUtils.IS_JAVA_16.
+    + Add SystemUtils.IS_JAVA_17.
+    + Add SystemUtils.IS_JAVA_18.
+    + Add SystemUtils.IS_JAVA_19.
+    + Add SystemUtils.IS_JAVA_20.
+    + Add SystemUtils.IS_JAVA_21.
+    + Add ArrayUtils.oneHot(). Fixes LANG-1627.
+    + Let ReflectionToStringBuilder only reflect given field names.
+      Fixes LANG-1662.
+    + Add Streams.of(Enumeration<E>).
+    + Add Streams.of(Iterable<E>).
+    + Add Streams.of(Iterator<E>).
+    + Simple support for Optional in ObjectUtils#isEmpty(). Fixes
+      LANG-1689.
+    + Add Processor.Type.getLabel().
+    + Add Processor.toString().
+    + Add HashCodeBuilder.equals(Object).
+    + Add BooleanUtils.values() and forEach().
+    + Add ClassPathUtils.packageToPath(String) and pathToPackage(String)
+    + Add CalendarUtils#getDayOfYear()
+    + Add NumberRange, DoubleRange, IntegerRange, LongRange.
+    + Add missing exception javadoc/tests for some null arguments.
+    + Add ClassLoaderUtils.getSystemURLs() and getThreadURLs().
+    + Add RegExUtils.dotAll() and dotAllMatcher().
+    + Add Pair.accept(FailableBiConsumer).
+    + Add Pair.apply(FailableBiFunction).
+    + Add ReflectionDiffBuilder.setExcludeFieldNames(...) and
+      DiffExclude a... Fixes LANG-1677.
+    + Add and ExceptionUtils.isChecked() and isUnchecked(). Fixes
+      LANG-1647.
+    + Add and use ExceptionUtils.throwUnchecked(throwable).
+    + Add LockingVisitors.create(O, ReadWriteLock).
+  * Fixed bugs:
+    + NumberUtils.createNumber() to recognize hex integers prefixed
+      with +. Fixes LANG-1645.
+    + NumberUtils.createNumber() to return requested floating point
+      type for zero. Fixes LANG-1646.
+    + DMI: Random object created and used only once
+      (DMI_RANDOM_USED_ONLY_ONCE); Better multi-threaded behavior.
+    + Redundant Collection operation. Use
+      Collections.emptyIterator(). Fixes LANG-1646.
+    + Make Streams.stream(Collection) null-safe.
+    + Allow tests to access java.util classes such as ArrayList in
+      Java 16. Fixes LANG-1667.
+    + OpenJDK 16 Day Period Parsing. Fixes LANG-1669.
+    + Update documentation to list correct exception for null array
+      parameters. Fixes LANG-1663.
+    + Fixing reversed Javadoc descriptions in StopWatch.
+    + Fix typos in JavaDoc. Fixes LANG-1670.
+    + Simplify assertions with equivalent but more simple..
+    + Avoid multiple equivalent occurrences of the same expression.
+    + Remove redundant initializers.
+    + Fix ObjectUtils Javadocs.
+    + Make Range constructors more generic. Fixes LANG-1674.
+    + Use final and Remove redundant String.
+    + Use Set instead of List for checking the contains() method.
+    + Javadoc for StringUtils.substringBefore(String str,
+      int separator) doesn't mention that the separator is an int.
+    + Fix NullPointerException in ThreadUtils.getSystemThreadGroup()
+      when the current thread is stopped.
+    + ArrayUtils.toPrimitive(Boolean...) null array elements map to
+      false, like Boolean.parseBoolean(null) and its callers return
+      false.
+    + StrBuilder.StrBuilderReader.skip(long): Throw an exception
+      when an implicit narrowing conversion in a compound assignment
+      would result in information loss or a numeric error such as an
+      overflows.
+    + Deprecate Validate#notNull(Object) in favor of using
+      Objects#requireNonNull(Object, String).
+    + Use TimeZone from calendar in DateFormatUtils. Fixes
+      LANG-1462.
+    + Updating javadoc for NullPointerException when
+      Validate.notNull() is called.
+    + Fixing and adding DateUtils exception Javadocs.
+    + Improve performance of StringUtils.unwrap(String, String).
+      Fixes LANG-1679.
+    + Improve performance of StringUtils.join for primitives. Fixes
+      LANG-1675.
+    + Fixed NPE getting Stack Trace if Throwable is null. Fixes
+      LANG-1675.
+    + Make Validate.isAssignableFrom() check null inputs.
+    + Fix Javadoc for Validate.isAssignableFrom().
+    + Make final mappingFunction variable.
+    + Remove unnecessary variable creations.
+    + Minor changes.
+    + FastDateFormat does not support the 'L'-Pattern from
+      SimpleDateFormat. Fixes LANG-1680.
+    + Increase test coverage of ComparableUtils from 71% to 100%.
+    + Increase method test coverage of
+      MultilineRecursiveToStringStyle.
+    + Fix unstable coverage of CharSequenceUtils tests noticed
+      during merge of PRs 898 and 899.
+    + Rewrite Conversion.binaryBeMsb0ToHexDigit to invert logic of
+      binaryToHexDigit.
+    + Allow extension of previously final classes ImmutablePair and
+      ImmutableTriple.
+    + Update ClassUtils Javadoc with some missing throws NPE.
+    + Javadoc: StringUtils.repeat("", "x", 3) = "xx";.
+    + StringUtils.join(Iterable, String) should only return null
+      when the Iterable is null.
+    + Add tests to increase coverage.
+    + Extends Object clauses are redundant.
+    + Simplify conditional expression..
+    + Fix some Javadoc comments.
+    + Deprecate getNanosOfMiili() method with typo and create proper
+      getNanosOfMilli().
+    + Deprecate ThreadUtils code that defines custom function
+      interfaces in favor of stock java.util.function.Predicate
+      usage.
+    + Fix links in Javadoc and documentation.
+    + Deprecate RandomUtils in favor of Apache Commons RNG
+      UniformRandomProvider. Fixes LANG-1604.
+    + Added docs regarding week year support. Fixes LANG-1638.
+    + ClassUtils.getShortCanonicalName doesn't use the
+      canonicalName. Fixes LANG-1691.
+    + Validate: Get error messages without using String.format when
+      varargs is empty.
+    + Simplify expression (length is never < 0).
+    + Fix simple broken javadoc..
+    + Fix typo.
+    + Use Objects.requireNonNull() directly.
+    + MethodUtils.getMatchingMethod() fails with "Found multiple
+      candidates". Fixes LANG-1694.
+    + Construct ArrayList with better default size. Fixes LANG-1643.
+    + ThreadUtilsTest#testThreadGroups will test failed when using
+      Junit5 parallel test.
+    + Swap the order of assertion args (first excepted then actual).
+    + Fix the comment of Failable, redundant "-".
+    + Fix the comment of ComparableUtils, using "smallest", not
+      "largest".
+    + AnnotationUtilsTest and FormattableUtilsTest Only use static
+      imports to import assert methods in tests.
+    + [LANG-1681] Fix some FieldUtils Javadocs.
+    + Remove unnecessary statement in DurationFormatUtils.
+    + Corrected value of SystemUtils.JAVA_VENDOR. Fixes LANG-1699.
+    + [StepSecurity] ci: Harden GitHub Actions.
+    + Update Javadoc for the insert methods in ArrayUtils.
+    + Deprecate ExceptionUtils.ExceptionUtils().
+    + TypeUtils.getRawType() throws a NullPointerException on
+      Wildcard GenericArrayType. Fixes LANG-1697.
+    + Throw IllegalArgumentException instead of InternalError in the
+      builder package.
+    + Avoid NPE in MutableObject#equals() for null content.
+    + SystemUtils fix and updates related to macOS.
+
+-------------------------------------------------------------------
 Wed Aug 30 20:57:36 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Break cycle with the new bcel

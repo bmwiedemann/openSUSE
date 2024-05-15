@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package apache-commons-lang3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define base_name lang3
 %define short_name commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        3.12.0
+Version:        3.14.0
 Release:        0
 Summary:        Apache Commons Lang Package
 License:        Apache-2.0
