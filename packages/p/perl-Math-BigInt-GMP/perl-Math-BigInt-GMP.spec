@@ -18,7 +18,7 @@
 
 %define cpan_name Math-BigInt-GMP
 Name:           perl-Math-BigInt-GMP
-Version:        1.7000
+Version:        1.7001
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Backend library for Math::BigInt etc. based on GMP
