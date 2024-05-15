@@ -1,7 +1,7 @@
 #
 # spec file for package sbctl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,19 @@
 
 
 Name:           sbctl
-Version:        0.13
+Version:        0.14
 Release:        0
 Summary:        Secure Boot key manager
 License:        MIT
 Group:          System/Boot
 URL:            https://github.com/Foxboron/sbctl
+%if "%{_vendor}" == "debbuild"
+# Needed to set Maintainer in output debs
+Packager:       Jan Loeser <jan.loeser@posteo.de>
+%endif
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Source2:        %{name}-rpmlintrc
 Requires:       binutils
 %if 0%{?suse_version}
 Requires:       util-linux-systemd
@@ -54,6 +59,12 @@ needs to be signed in the boot chain.
 
 %install
 %make_install BINDIR="%{_sbindir}" PREFIX="%{_prefix}"
+
+# Fix potential-bashisms rpmlint error by using bash shebang
+sed -i 's|bin/sh|bin/bash|' %{buildroot}%{_prefix}/lib/kernel/install.d/91-sbctl.install
+
+%check
+%make_build test
 
 %files
 %doc README.md

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu May  9 15:54:58 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Enable tests
+- Fix bashism error in 91-sbctl.install by using bash shebang
+- Service to use manual instead of deprecated disabled and pattern
+  cleanup
+- Update to version 0.14:
+  New commands
+  * export-enrolled-keys will export all enrolled keys on the
+    system to a directory
+  * list-enrolled-keys will list the enrolled keys on the system
+  New Things
+  * The test suite has now been rewritten to use the new vmtest
+    library.
+  Bugfixes
+  * sign-all won't abort when it encounters a file it can't sign.
+  * The kernel-install hook won't try to sign things if there are
+    no signing keys available.
+  * The kernel-install hook will now only remove things if they
+    actually did exist on the system.
+  * The mkinitcpio hook now only sign the built kernel/UKI instead
+    of all the sbctl files.
+
+-------------------------------------------------------------------
 Wed Dec 27 08:21:25 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to version 0.13:
