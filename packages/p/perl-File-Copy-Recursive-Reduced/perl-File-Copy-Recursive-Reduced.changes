@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 26 03:06:31 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.008
+   see /usr/share/doc/packages/perl-File-Copy-Recursive-Reduced/Changes
+
+  0.008 Mon Mar 25 09:59:23 AM EDT 2024
+      - Encoding directive added to POD, contributed by gregor herrmann from
+        Debian.
+      - Corrections in test files to guard against CPANtesters who run tests
+        with PERL_AUTHOR_TESTING turned on.
+
+-------------------------------------------------------------------
 Fri Mar  8 22:27:09 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

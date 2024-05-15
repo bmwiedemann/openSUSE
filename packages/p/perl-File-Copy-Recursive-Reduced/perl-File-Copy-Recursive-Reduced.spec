@@ -18,9 +18,10 @@
 
 %define cpan_name File-Copy-Recursive-Reduced
 Name:           perl-File-Copy-Recursive-Reduced
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
-%define cpan_version 0.007
+# 0.008 -> normalize -> 0.8.0
+%define cpan_version 0.008
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Recursive copying of files and directories within Perl 5 toolchain
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -30,7 +31,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Capture::Tiny)
 BuildRequires:  perl(Path::Tiny)
-Provides:       perl(File::Copy::Recursive::Reduced) = 0.7.0
+Provides:       perl(File::Copy::Recursive::Reduced) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 
