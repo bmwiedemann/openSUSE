@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 14 14:47:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Address build failures with GCC 14 (boo#1223909):
+  + Add 4645.patch: fix incompatible-pointer-types assignment
+    on Linux.
+
+-------------------------------------------------------------------
 Sun Apr 21 07:09:31 UTC 2024 - Fei Yang <io@feiyang.eu.org>
 
 - Enable FluidSynth plugin using an optional package
