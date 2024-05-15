@@ -24,6 +24,8 @@ Summary:        A utility library for mocking out the `requests` Python library
 License:        Apache-2.0
 URL:            https://github.com/getsentry/responses
 Source:         https://files.pythonhosted.org/packages/source/r/responses/responses-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#getsentry/responses#707
+Patch0:         use-asyncio-markers.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

@@ -394,4 +394,12 @@
     header is missing from the request. See #702</comment>
     <requestid>1157880</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>edbee6ca37c36b9bab6a750456bea24b</srcmd5>
+    <version>0.25.0</version>
+    <time>1715801149</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1173906</requestid>
+  </revision>
 </revisionlist>

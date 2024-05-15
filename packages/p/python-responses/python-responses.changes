@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  7 07:29:01 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-asyncio-markers.patch:
+  * Use asyncio markers for pytest.
+
+-------------------------------------------------------------------
 Thu Mar 14 08:19:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.25.0:
