@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 15 05:41:41 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 13.6:
+  * Compact parent path display for medium/large row sizes
+  * Fixed crash when mouse inputs are queued due to system lag
+  * Don't steal focus from other app when sync progress dialog is shown
+  * Fix crackling sound at the beginning of WAV playback (Linux)
+  * Prevent middle grid tooltip from covering sync direction
+  * Disable Nagle algorithm for SFTP connections
+
+-------------------------------------------------------------------
 Wed Apr  3 11:31:49 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 13.5:

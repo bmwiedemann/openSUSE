@@ -279,4 +279,19 @@ It would be nice to have this application available in the default repos. </comm
 </comment>
     <requestid>1164341</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0e8b697e8f2b0ade35960d4b0fe64ad7</srcmd5>
+    <version>13.6</version>
+    <time>1715801323</time>
+    <user>anag+factory</user>
+    <comment>- Update to 13.6:
+  * Compact parent path display for medium/large row sizes
+  * Fixed crash when mouse inputs are queued due to system lag
+  * Don't steal focus from other app when sync progress dialog is shown
+  * Fix crackling sound at the beginning of WAV playback (Linux)
+  * Prevent middle grid tooltip from covering sync direction
+  * Disable Nagle algorithm for SFTP connections
+</comment>
+    <requestid>1174162</requestid>
+  </revision>
 </revisionlist>
