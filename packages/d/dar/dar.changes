@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 14 14:12:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.7.14:
+  + Adding safe guard in fichier_libcurl destructor to verify all
+    data have been passed to libcurl *and* libcurl has completed
+    the writing operation before destroying a fichier_libcurl
+    object.
+  + Adding support for thread cancellation when interacting with
+    libcurl.
+  + Updating man page.
+  + Fixing some error in the code documentation.
+  + updated FAQ.
+
+-------------------------------------------------------------------
 Mon Nov 13 10:04:56 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix Leap 15.6 build (libattr)
