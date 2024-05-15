@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu May 09 10:30:42 UTC 2024 - kskarthik@disroot.org
+
+- Update to version 0.2.62:
+  * chore: bump VERSION to 0.2.62
+  * build(deps): bump megalinter/megalinter from 7.10.0 to 7.11.1 (#2309)
+  * build(deps): bump golangci/golangci-lint-action from 4.0.0 to 5.0.0 (#2310)
+  * build(deps): bump github.com/docker/cli (#2307)
+  * build(deps): bump github.com/docker/docker (#2306)
+  * build(deps): bump github.com/moby/buildkit from 0.13.1 to 0.13.2 (#2308)
+  * build(deps): bump github.com/docker/cli (#2302)
+  * Add codespell support (config, workflow to detect/not fix) and make it fix few typos (#2296)
+  * build(deps): bump github.com/docker/docker (#2299)
+  * build(deps): bump github.com/docker/docker (#2295)
+  * build(deps): bump megalinter/megalinter from 7.9.0 to 7.10.0 (#2294)
+  * build(deps): bump megalinter/megalinter from 7.8.0 to 7.9.0 (#2216)
+  * build(deps): bump golangci/golangci-lint-action from 3.7.0 to 4.0.0 (#2215)
+  * build(deps): bump golang.org/x/term from 0.18.0 to 0.19.0 (#2278)
+  * build(deps): bump github.com/docker/cli (#2291)
+  * Update action.yml (#2293)
+  * build(deps): bump github.com/moby/buildkit from 0.12.5 to 0.13.1 (#2253)
+  * Bump docker to v26 (#2289)
+  * fix: skipped jobs have no result (#2276)
+  * fix: favor command-line over files (#2274)
+  * chore: fix some comments (#2279)
+  * build(deps): bump actions/cache from 3 to 4 (#2163)
+  * Remove local action cache if remote has changed (#2284)
+  * chore: fix codecov (#2288)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.11.0 to 5.12.0 (#2269)
+  * chore: bump VERSION to 0.2.61
+  * fix: cache adjust restore order of exact key matches (#2267)
+  * Trivial: reduce log spam. (#2256)
+  * chore: remove repetitive words (#2259)
+  * Support overwriting caches (#2265)
+  * test: use ping to improve network test (#2266)
+  * build(deps): bump github.com/docker/docker (#2252)
+  * build(deps): bump golang.org/x/term from 0.17.0 to 0.18.0 (#2244)
+  * fix: rootless permission bits (new actions cache) (#2242)
+  * fix function name in comment (#2240)
+  * fix: docker buildx cache restore not working (#2236)
+  * build(deps): bump github.com/stretchr/testify from 1.8.4 to 1.9.0 (#2235)
+
+-------------------------------------------------------------------
 Sat Mar 02 01:01:52 UTC 2024 - ila.embsys@gmail.com
 
 - Update to version 0.2.60:
