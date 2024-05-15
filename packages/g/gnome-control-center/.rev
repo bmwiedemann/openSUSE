@@ -2112,4 +2112,16 @@ New stable rel</comment>
   gnome-control-center-datetime-Avoid-emitting-the-time-changed-signal.patch. (forwarded request 1171283 from dimstar)</comment>
     <requestid>1171395</requestid>
   </revision>
+  <revision rev="246" vrev="2">
+    <srcmd5>f065ed85e2a08b0f56310ecd37e62895</srcmd5>
+    <version>46.1</version>
+    <time>1715801050</time>
+    <user>anag+factory</user>
+    <comment>- Re-Enable location-services support:
+  + Pass -Dlocation-services=enabled to meson.
+  ** Support had been disabled by upstream as the mozilla location
+     service will shut down. which in turn means location service
+     will not be very accurate anymore. (forwarded request 1174025 from dimstar)</comment>
+    <requestid>1174028</requestid>
+  </revision>
 </revisionlist>

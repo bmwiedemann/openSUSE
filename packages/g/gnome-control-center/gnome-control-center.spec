@@ -212,6 +212,7 @@ GNOME control center.
 	-Dmalcontent=true \
 	-Dtests=false \
 	-Dsnap=false \
+	-Dlocation-services=enabled \
 	%{nil}
 %meson_build
 

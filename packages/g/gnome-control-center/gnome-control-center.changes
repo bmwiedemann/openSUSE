@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 13 23:02:40 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- Re-Enable location-services support:
+  + Pass -Dlocation-services=enabled to meson.
+  ** Support had been disabled by upstream as the mozilla location
+     service will shut down. which in turn means location service
+     will not be very accurate anymore.
+
+-------------------------------------------------------------------
 Thu May  2 08:14:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.1:
