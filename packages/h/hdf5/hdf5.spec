@@ -35,7 +35,7 @@
 %define use_sz2 0
 
 %define short_ver 1.12
-%define vers %{short_ver}.2
+%define vers %{short_ver}.3
 %define _vers %( echo %{vers} | tr '.' '_' )
 %define src_ver %{version}
 %define pname hdf5
@@ -332,20 +332,13 @@ Patch9:         Fix-error-message-not-the-name-but-the-link-information-is-parse
 # Imported from Fedora, strip flags from h5cc wrapper
 Patch10:        hdf5-wrappers.patch
 Patch101:       H5O_fsinfo_decode-Make-more-resilient-to-out-of-bounds-read.patch
-Patch102:       H5O__pline_decode-Make-more-resilient-to-out-of-bounds-read.patch
-Patch103:       H5O_dtype_decode_helper-Parent-of-enum-needs-to-have-same-size-as-enum-itself.patch
 Patch104:       Report-error-if-dimensions-of-chunked-storage-in-data-layout-2.patch
 Patch105:       When-evicting-driver-info-block-NULL-the-corresponding-entry.patch
-Patch106:       Pass-compact-chunk-size-info-to-ensure-requested-elements-are-within-bounds.patch
 Patch107:       Validate-location-offset-of-the-accumulated-metadata-when-comparing.patch
-Patch108:       Make-sure-info-block-for-external-links-has-at-least-3-bytes.patch
 Patch109:       Hot-fix-for-CVE-2020-10812.patch
-Patch110:       Compound-datatypes-may-not-have-members-of-size-0.patch
-Patch111:       H5IMget_image_info-H5Sget_simple_extent_dims-does-not-exceed-array-size.patch
-Patch112:       Check-for-overflow-when-calculating-on-disk-attribute-data-size-2459.patch
-Patch113:       Remove-duplicate-code.patch
 
 BuildRequires:  fdupes
+BuildRequires:  hostname
 %if 0%{?use_sz2}
 BuildRequires:  libsz2-devel
 %endif
@@ -583,18 +576,10 @@ library packages.
 %patch -P 9 -p1
 %patch -P 10 -p1
 %patch -P 101 -p1
-%patch -P 102 -p1
-%patch -P 103 -p1
 %patch -P 104 -p1
 %patch -P 105 -p1
-%patch -P 106 -p1
 %patch -P 107 -p1
-%patch -P 108 -p1
 %patch -P 109 -p1
-%patch -P 110 -p1
-%patch -P 111 -p1
-%patch -P 112 -p1
-%patch -P 113 -p1
 
 %if %{without hpc}
 # baselibs looks different for different flavors - generate it on the fly
@@ -624,7 +609,15 @@ EOF
 export CC=gcc
 export CXX=g++
 export F9X=gfortran
-export CFLAGS="%{optflags}"
+# Ouch, how ugly! Upstream configure depends on hacking out Werror manually:
+# > configure.ac:## Strip out -Werror from CFLAGS since that can cause checks to fail when
+# > configure.ac:CFLAGS="`echo $CFLAGS | sed -e 's/-Werror//g'`"
+# We need to clear out -Werror=return-type from our optflags otherwise we leave
+# a bare '=return-type' hanging in the options passed to GCC by configure
+export CFLAGS=`echo "%{optflags}" | sed -e 's/-Werror=return-type //'`
+export CXXFLAGS=`echo "%{optflags}" | sed -e 's/-Werror=return-type //'`
+export FFLAGS=`echo "%{optflags}" | sed -e 's/-Werror=return-type //'`
+export FCFLAGS=`echo "%{optflags}" | sed -e 's/-Werror=return-type //'`
 %ifarch %arm
 # we want to have useful H5_CFLAGS on arm too
 test -e config/linux-gnueabi || cp config/linux-gnu config/linux-gnueabi
@@ -863,6 +856,7 @@ export HDF5_Make_Ignore=yes
 %{my_bindir}/h5repart
 %{my_bindir}/h5stat
 %{my_bindir}/h5unjam
+%{my_bindir}/h5watch
 
 %files -n %{libname -s %{sonum}}
 %doc ACKNOWLEDGMENTS README.md

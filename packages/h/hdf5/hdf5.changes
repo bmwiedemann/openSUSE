@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon May 13 11:41:05 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.12.3:
+  * Bumped the minimum required version of Autoconf to 2.71.
+  * Added new option to build libaec and zlib inline with CMake.
+  * Changed the error handling for a not found path in the find
+    plugin process.
+  * Removed "-commons" linking option to fix a compile error on
+    MacOS Sonoma that resulted in build failure.
+  * Doxygen User Guide documentation can be configured and
+    generated.
+- Minor patch rebase for updated version:
+  * Disable-phdf5-tests.patch
+  * Fix-error-message-not-the-name-but-the-link-information-is-parsed.patch
+  * H5O_fsinfo_decode-Make-more-resilient-to-out-of-bounds-read.patch
+  * Hot-fix-for-CVE-2020-10812.patch
+  * PPC64LE-Fix-long-double-handling.patch
+  * Report-error-if-dimensions-of-chunked-storage-in-data-layout-2.patch
+  * Validate-location-offset-of-the-accumulated-metadata-when-comparing.patch
+  * When-evicting-driver-info-block-NULL-the-corresponding-entry.patch
+  * hdf5-1.8.11-abort_unknown_host_config.patch
+  * hdf5-LD_LIBRARY_PATH.patch
+  * hdf5-Remove-timestamps-from-binaries.patch
+  * hdf5-wrappers.patch
+- Drop upstreamed patches:
+  * Remove-duplicate-code.patch
+  * H5O__pline_decode-Make-more-resilient-to-out-of-bounds-read.patch
+  * H5O_dtype_decode_helper-Parent-of-enum-needs-to-have-same-size-as-enum-itself.patch
+  * Pass-compact-chunk-size-info-to-ensure-requested-elements-are-within-bounds.patch
+  * Make-sure-info-block-for-external-links-has-at-least-3-bytes.patch
+  * Compound-datatypes-may-not-have-members-of-size-0.patch
+  * H5IMget_image_info-H5Sget_simple_extent_dims-does-not-exceed-array-size.patch
+  * Check-for-overflow-when-calculating-on-disk-attribute-data-size-2459.patch
+- New BuildRequires: hostname.
+- Work around an sed hack in upstream configure file by dropping
+  "-Werror=return-type" from RPM %optflags.
+
+-------------------------------------------------------------------
 Wed Mar 20 03:09:27 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Work around bot rejection for unapplied Patch7.

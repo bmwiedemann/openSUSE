@@ -1,8 +1,8 @@
-Index: hdf5-1.12.2/src/Makefile.in
+Index: hdf5-1.12.3/src/Makefile.in
 ===================================================================
---- hdf5-1.12.2.orig/src/Makefile.in
-+++ hdf5-1.12.2/src/Makefile.in
-@@ -1998,8 +1998,6 @@ help:
+--- hdf5-1.12.3.orig/src/Makefile.in
++++ hdf5-1.12.3/src/Makefile.in
+@@ -2831,8 +2831,6 @@ help:
  # Remove the generated .c file if errors occur unless HDF5_Make_Ignore
  # is set to ignore the error.
  H5Tinit.c: H5detect$(EXEEXT)
@@ -11,7 +11,7 @@ Index: hdf5-1.12.2/src/Makefile.in
  	$(RUNSERIAL) ./H5detect$(EXEEXT)  $@  ||                               \
  	    (test $$HDF5_Make_Ignore && echo "*** Error ignored") ||          \
  	    ($(RM) $@ ; exit 1)
-@@ -2010,8 +2008,6 @@ H5Tinit.c: H5detect$(EXEEXT)
+@@ -2843,8 +2841,6 @@ H5Tinit.c: H5detect$(EXEEXT)
  # Remove the generated .c file if errors occur unless HDF5_Make_Ignore
  # is set to ignore the error.
  H5lib_settings.c: H5make_libsettings$(EXEEXT) libhdf5.settings

@@ -19,11 +19,11 @@ Signed-off-by: Egbert Eich <eich@suse.de>
 ---
  src/H5Ofsinfo.c | 14 +++++++++++++-
  1 file changed, 13 insertions(+), 1 deletion(-)
-diff --git a/src/H5Ofsinfo.c b/src/H5Ofsinfo.c
-index 9f6514a291..15cbb5ae7b 100644
---- a/src/H5Ofsinfo.c
-+++ b/src/H5Ofsinfo.c
-@@ -88,6 +88,13 @@ H5FL_DEFINE_STATIC(H5O_fsinfo_t);
+Index: hdf5-1.12.3/src/H5Ofsinfo.c
+===================================================================
+--- hdf5-1.12.3.orig/src/H5Ofsinfo.c
++++ hdf5-1.12.3/src/H5Ofsinfo.c
+@@ -87,6 +87,13 @@ H5FL_DEFINE_STATIC(H5O_fsinfo_t);
   *
   *-------------------------------------------------------------------------
   */
@@ -37,7 +37,7 @@ index 9f6514a291..15cbb5ae7b 100644
  static void *
  H5O__fsinfo_decode(H5F_t *f, H5O_t H5_ATTR_UNUSED *open_oh, unsigned H5_ATTR_UNUSED mesg_flags,
                     unsigned H5_ATTR_UNUSED *ioflags, size_t p_size, const uint8_t *p)
-@@ -112,6 +119,7 @@ H5O__fsinfo_decode(H5F_t *f, H5O_t H5_ATTR_UNUSED *open_oh, unsigned H5_ATTR_UNU
+@@ -111,6 +118,7 @@ H5O__fsinfo_decode(H5F_t *f, H5O_t H5_AT
          fsinfo->fs_addr[ptype - 1] = HADDR_UNDEF;
  
      /* Version of message */
@@ -45,7 +45,7 @@ index 9f6514a291..15cbb5ae7b 100644
      vers = *p++;
  
      if (vers == H5O_FSINFO_VERSION_0) {
-@@ -125,6 +133,7 @@ H5O__fsinfo_decode(H5F_t *f, H5O_t H5_ATTR_UNUSED *open_oh, unsigned H5_ATTR_UNU
+@@ -124,6 +132,7 @@ H5O__fsinfo_decode(H5F_t *f, H5O_t H5_AT
          fsinfo->pgend_meta_thres    = H5F_FILE_SPACE_PGEND_META_THRES;
          fsinfo->eoa_pre_fsm_fsalloc = HADDR_UNDEF;
  
@@ -53,7 +53,7 @@ index 9f6514a291..15cbb5ae7b 100644
          strategy = (H5F_file_space_type_t)*p++; /* File space strategy */
          H5F_DECODE_LENGTH(f, p, threshold);     /* Free-space section threshold */
  
-@@ -170,6 +179,7 @@ H5O__fsinfo_decode(H5F_t *f, H5O_t H5_ATTR_UNUSED *open_oh, unsigned H5_ATTR_UNU
+@@ -169,6 +178,7 @@ H5O__fsinfo_decode(H5F_t *f, H5O_t H5_AT
          HDassert(vers >= H5O_FSINFO_VERSION_1);
  
          fsinfo->version  = vers;
@@ -61,7 +61,7 @@ index 9f6514a291..15cbb5ae7b 100644
          fsinfo->strategy = (H5F_fspace_strategy_t)*p++; /* File space strategy */
          fsinfo->persist  = *p++;                        /* Free-space persist or not */
          H5F_DECODE_LENGTH(f, p, fsinfo->threshold);     /* Free-space section threshold */
-@@ -181,9 +191,11 @@ H5O__fsinfo_decode(H5F_t *f, H5O_t H5_ATTR_UNUSED *open_oh, unsigned H5_ATTR_UNU
+@@ -180,9 +190,11 @@ H5O__fsinfo_decode(H5F_t *f, H5O_t H5_AT
  
          /* Decode addresses of free space managers, if persisting */
          if (fsinfo->persist)

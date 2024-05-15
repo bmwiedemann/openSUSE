@@ -16,11 +16,11 @@ Signed-off-by: Egbert Eich <eich@suse.de>
 ---
  src/H5Fsuper.c | 2 ++
  1 file changed, 2 insertions(+)
-diff --git a/src/H5Fsuper.c b/src/H5Fsuper.c
-index 60b045ae29..1283790c57 100644
---- a/src/H5Fsuper.c
-+++ b/src/H5Fsuper.c
-@@ -1044,6 +1044,8 @@ done:
+Index: hdf5-1.12.3/src/H5Fsuper.c
+===================================================================
+--- hdf5-1.12.3.orig/src/H5Fsuper.c
++++ hdf5-1.12.3/src/H5Fsuper.c
+@@ -1045,6 +1045,8 @@ done:
              /* Evict the driver info block from the cache */
              if (sblock && H5AC_expunge_entry(f, H5AC_DRVRINFO, sblock->driver_addr, H5AC__NO_FLAGS_SET) < 0)
                  HDONE_ERROR(H5E_FILE, H5E_CANTEXPUNGE, FAIL, "unable to expunge driver info block")

@@ -7,49 +7,15 @@ Signed-off-by: Egbert Eich <eich@suse.com>
 
 Signed-off-by: Egbert Eich <eich@suse.com>
 ---
- hdf5-1.10.1/config/cmake/ConversionTests.c | 16 ++++++++++++++++
- hdf5-1.10.1/test/dt_arith.c                | 26 ++++++++++++++++++++++++--
- 2 files changed, 40 insertions(+), 2 deletions(-)
+ config/cmake/ConversionTests.c |   16 ++++++++++++++++
+ test/dt_arith.c                |   27 +++++++++++++++++++++++++--
+ 2 files changed, 41 insertions(+), 2 deletions(-)
 
-Index: hdf5-1.12.2/config/cmake/ConversionTests.c
+Index: hdf5-1.12.3/test/dt_arith.c
 ===================================================================
---- hdf5-1.12.2.orig/config/cmake/ConversionTests.c
-+++ hdf5-1.12.2/config/cmake/ConversionTests.c
-@@ -34,6 +34,14 @@ int HDF_NO_UBSAN main(void)
-     unsigned char       s2[8];
-     int                 ret = 1;
- 
-+#if defined __powerpc64__ && defined _LITTLE_ENDIAN
-+                /* Don't bother checking on ppc64le, we know it'll work, and
-+                   that what hdf5 calls 'special algorithm' simply is
-+                   IBM ldouble 128 (i.e. two seperately scaled doubles).
-+                   The check below assumes big endian.  */
-+                ret = 0;
-+#endif
-+
-     if(sizeof(long double) == 16 && sizeof(long) == 8) {
-     /*make sure the long double type has 16 bytes in size and
-     * 11 bits of exponent.  If it is,
-@@ -157,6 +165,14 @@ int HDF_NO_UBSAN main(void)
-     unsigned char       s[16];
-     int                 ret = 0;
- 
-+#if defined __powerpc64__ && defined _LITTLE_ENDIAN
-+                /* Don't bother checking on ppc64le, we know it'll work, and
-+                   that what hdf5 calls 'special algorithm' simply is
-+                   IBM ldouble 128 (i.e. two seperately scaled doubles).
-+                   The check below assumes big endian.  */
-+                ret = 0;
-+#endif
-+
-     if(sizeof(long double) == 16) {
-         /*make sure the long double type is the same as the failing type
-          *which has 16 bytes in size and 11 bits of exponent.  If it is,
-Index: hdf5-1.12.2/test/dt_arith.c
-===================================================================
---- hdf5-1.12.2.orig/test/dt_arith.c
-+++ hdf5-1.12.2/test/dt_arith.c
-@@ -3036,7 +3036,19 @@ test_conv_flt_1(const char *name, int ru
+--- hdf5-1.12.3.orig/test/dt_arith.c
++++ hdf5-1.12.3/test/dt_arith.c
+@@ -3035,7 +3035,19 @@ test_conv_flt_1(const char *name, int ru
  #if H5_SIZEOF_LONG_DOUBLE != H5_SIZEOF_DOUBLE
              }
              else if (src_type == FLT_LDOUBLE) {
@@ -70,7 +36,7 @@ Index: hdf5-1.12.2/test/dt_arith.c
  #endif
              }
              else
-@@ -3736,7 +3748,18 @@ test_conv_int_fp(const char *name, int r
+@@ -3735,7 +3747,18 @@ test_conv_int_fp(const char *name, int r
                             nelmts);
          }
          else {
@@ -90,3 +56,37 @@ Index: hdf5-1.12.2/test/dt_arith.c
          }
  #endif
      }
+Index: hdf5-1.12.3/config/cmake/ConversionTests.c
+===================================================================
+--- hdf5-1.12.3.orig/config/cmake/ConversionTests.c
++++ hdf5-1.12.3/config/cmake/ConversionTests.c
+@@ -34,6 +34,14 @@ int HDF_NO_UBSAN main(void)
+     unsigned char       s2[8];
+     int                 ret = 1;
+ 
++#if defined __powerpc64__ && defined _LITTLE_ENDIAN
++                /* Don't bother checking on ppc64le, we know it'll work, and
++                   that what hdf5 calls 'special algorithm' simply is
++                   IBM ldouble 128 (i.e. two seperately scaled doubles).
++                   The check below assumes big endian.  */
++                ret = 0;
++#endif
++
+     if (sizeof(long double) == 16 && sizeof(long) == 8) {
+         /* Make sure the long double type has 16 bytes in size and
+          * 11 bits of exponent.  If it is, the bit sequence should be
+@@ -174,6 +182,14 @@ int HDF_NO_UBSAN main(void)
+     unsigned char       s[16];
+     int                 ret = 0;
+ 
++#if defined __powerpc64__ && defined _LITTLE_ENDIAN
++                /* Don't bother checking on ppc64le, we know it'll work, and
++                   that what hdf5 calls 'special algorithm' simply is
++                   IBM ldouble 128 (i.e. two seperately scaled doubles).
++                   The check below assumes big endian.  */
++                ret = 0;
++#endif
++
+     if (sizeof(long double) == 16) {
+         /* Make sure the long double type is the same as the failing type
+          * which has 16 bytes in size and 11 bits of exponent.  If it is,
