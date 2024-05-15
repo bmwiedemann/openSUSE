@@ -17,7 +17,7 @@
 
 
 Name:           just
-Version:        1.25.2
+Version:        1.26.0
 Release:        0
 Summary:        Commmand runner
 License:        (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-3-Clause AND CC0-1.0 AND MIT AND CC0-1.0
@@ -74,6 +74,9 @@ Zsh command-line completion support for %{name}.
 install -Dm644 -T completions/%{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 install -Dm644 -T completions/%{name}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
 install -Dm644 -T completions/%{name}.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
+
+%check
+%{cargo_test}
 
 %files
 %license LICENSE

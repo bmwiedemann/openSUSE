@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 14 10:43:57 UTC 2024 - rrahl0@disroot.org
+
+- Update to version 1.26.0:
+  * Update dependencies
+  * Clarify that janus operates on public justfiles only (#2021)
+  * Fix Error::TmpdirIo error message (#1987)
+  * Add --no-aliases to hide aliases in --list (#1961)
+  * Add -E as alias for --dotenv-path (#1910)
+  * Rename `delete` example recipe to `delete-all` (#1966)
+- enable upstream tests
+
+-------------------------------------------------------------------
 Mon Mar 18 07:07:59 UTC 2024 - rrahl0@proton.me
 
 - Update to version 1.25.2:
