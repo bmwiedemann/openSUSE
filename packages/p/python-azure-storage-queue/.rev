@@ -255,4 +255,12 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164943 from glaubitz)</comment>
     <requestid>1165340</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>54d71728b736c7b077065974653dc340</srcmd5>
+    <version>12.10.0</version>
+    <time>1715801328</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1174174</requestid>
+  </revision>
 </revisionlist>
