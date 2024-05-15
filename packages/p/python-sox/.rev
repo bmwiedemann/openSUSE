@@ -17,4 +17,22 @@ Required by the latest version of python-audiomate, which is already in openSUSE
     <comment></comment>
     <requestid>927548</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2d91141e60029fd6170f03f4380c9c90</srcmd5>
+    <version>1.5.0</version>
+    <time>1715801182</time>
+    <user>anag+factory</user>
+    <comment>- Build package from source
+- Run tests
+- Update to 1.5.0
+  - This is the first stable release of the 1.5 series. It is
+    functionally identical to 1.5-rc1. Compared to 1.4, the main
+    change is that we have dropped support for EOL Python (3.7 and
+    earlier) and have added support for Python up to 3.12 (@hugovk and
+    @lostanlen).
+  - New features:
+    * pathlib support (#124), @cjacoby
+    * type hints (#129), @hadware and @rabitt</comment>
+    <requestid>1173977</requestid>
+  </revision>
 </revisionlist>

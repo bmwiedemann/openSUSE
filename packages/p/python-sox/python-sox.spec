@@ -1,7 +1,7 @@
 #
 # spec file for package python-sox
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,24 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sox
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 License:        BSD-3-Clause
 Summary:        Python wrapper around SoX
 URL:            https://github.com/rabitt/pysox
 Group:          Development/Languages/Python
-Source0:        https://files.pythonhosted.org/packages/py2.py3/s/sox/sox-%{version}-py2.py3-none-any.whl
-BuildRequires:  %{python_module pip}
+Source:         https://github.com/marl/pysox/archive/v%{version}/sox-%{version}.tar.gz
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module soundfile}
+BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  sox
+Requires:       python-numpy
+Requires:       python-typing-extensions
 Requires:       sox
 BuildArch:      noarch
 
@@ -42,20 +48,24 @@ hide the wacky options with one-line shell scripts.
 This is a Python wrapper for SOX.
 
 %prep
-%setup -q -c -T
+%autosetup -p1 -n pysox-%{version}
+sed -i -e '/^#!\//, 1d' sox/*.py
 
 %build
-# not needed
+%python_build
 
 %install
-cp -a %{SOURCE0} .
-%pyproject_install
-%python_expand sed -i -e '/^#!\//, 1d' %{buildroot}%{$python_sitelib}/sox/*.py
+%python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+# Fails in i586
+donttest="test_multichannel or test_valid"
+%pytest -k "not ($donttest)"
+
 %files %{python_files}
-%license %{python_sitelib}/sox-%{version}.dist-info/LICENSE
-%{python_sitelib}/sox-%{version}.dist-info/
+%license LICENSE
+%{python_sitelib}/sox-%{version}*-info/
 %{python_sitelib}/sox
 
 %changelog

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 14 11:32:32 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build package from source
+- Run tests
+- Update to 1.5.0
+  - This is the first stable release of the 1.5 series. It is
+    functionally identical to 1.5-rc1. Compared to 1.4, the main
+    change is that we have dropped support for EOL Python (3.7 and
+    earlier) and have added support for Python up to 3.12 (@hugovk and
+    @lostanlen).
+  - New features:
+    * pathlib support (#124), @cjacoby
+    * type hints (#129), @hadware and @rabitt
+
+-------------------------------------------------------------------
 Tue Oct 26 12:45:07 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.4.1
