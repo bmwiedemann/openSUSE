@@ -1,7 +1,7 @@
 #
 # spec file for package giac
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with cocoa
 Name:           giac
-%define tarver  1.9.0-27
+%define tarver  1.9.0-97
 Version:        %( echo %{tarver} | sed 's/-/./' )
 %define mainver %( echo %{tarver} | sed 's/-.*//' )
 %define soname  0
@@ -172,6 +172,9 @@ rm %{buildroot}%{_docdir}/giac/Makefile.am
 %find_lang %{name}
 
 %fdupes -s %{buildroot}%{_datadir}
+
+%check
+%make_build check
 
 %post   -n lib%{name}%{soname} -p /sbin/ldconfig
 %postun -n lib%{name}%{soname} -p /sbin/ldconfig

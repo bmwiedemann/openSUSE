@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  2 16:22:09 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.9.0-97:
+  * No release notes.
+- Changes from version 1.9.0-43:
+  * Univariate polynomials rootfinder enhancements
+- Run `make check` as part of %check section.
+
+-------------------------------------------------------------------
 Wed Nov  2 13:56:07 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.9.0.23:
