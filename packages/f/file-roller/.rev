@@ -1286,4 +1286,17 @@ Fixed macro (as commented) (forwarded request 885296 from susnux)</comment>
   + Updated translations. (forwarded request 1166577 from dimstar)</comment>
     <requestid>1167759</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>5caee6702ac04ea4e07e48e68842936c</srcmd5>
+    <version>44.2</version>
+    <time>1715801033</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 44.2:
+  + Features: Added expanders to the tree view.
+  + Bugfixes:
+    - Fixed crash opening some rar files.
+    - Do not crash if the loaded file is empty.
+  + Updated translations. (forwarded request 1173681 from dimstar)</comment>
+    <requestid>1173978</requestid>
+  </revision>
 </revisionlist>

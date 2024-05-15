@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 13 13:56:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 44.2:
+  + Features: Added expanders to the tree view.
+  + Bugfixes:
+    - Fixed crash opening some rar files.
+    - Do not crash if the loaded file is empty.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Apr 10 07:11:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 44.1:
