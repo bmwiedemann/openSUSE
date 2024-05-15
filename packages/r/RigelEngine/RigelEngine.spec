@@ -1,7 +1,7 @@
 #
 # spec file for package RigelEngine
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -45,8 +45,7 @@ You need the original game's data files in order to play, e.g. the freely
 available shareware version.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %if 0%{?sle_version} >= 150100 && 0%{?is_opensuse}
