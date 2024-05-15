@@ -1,7 +1,7 @@
 #
 # spec file for package VFlib3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,8 +87,7 @@ Requires:       pkgconfig(kpathsea)
 Development headers and libraries for VFlib3
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %configure \
