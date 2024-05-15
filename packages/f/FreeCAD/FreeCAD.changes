@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May  4 17:46:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Add freecad-boost185.patch
+  * Upstream fix for #13549: smesh doesn't compile with boost 1.85
+- Add freecad-copy_options.patch and freecad-copy_options-2.patch
+  * Upstream fix: c++20 deprecate copy_option
+- Add freecad-opengl.patch: use both OPENGL_LIBRARY and OPENGL_gl_LIBRARY,
+  fixing undefined references on aarch64 architecture
+
+-------------------------------------------------------------------
 Mon Jan  1 00:46:54 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.21.2:

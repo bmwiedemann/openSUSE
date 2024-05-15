@@ -1,7 +1,7 @@
 #
 # spec file for package FreeCAD
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,6 +50,14 @@ Patch2:         0001-Implement-math.comb-fallback-for-Python-3.6.patch
 Patch9:         0001-Fix-variable-name-for-OpenGL-library.patch
 # PATCH-FIX-UPSTREAM
 Patch10:        https://github.com/FreeCAD/FreeCAD/commit/d0fb2b8b29fe0428d9dd8aa790b0d6e45c8a9516.patch#/fix_vtk_9_3_compat.patch
+# PATCH-FIX-UPSTREAM
+Patch11:        https://github.com/FreeCAD/FreeCAD/commit/f555a25f9e67e628e8075fc8599d7c11807eaddd.patch#/freecad-boost185.patch
+# PATCH-FIX-UPSTREAM
+Patch12:        https://github.com/FreeCAD/FreeCAD/commit/aa54ba73df4d42878130c99688be35acf10725a0.patch#/freecad-copy_options.patch
+# PATCH-FIX-UPSTREAM
+Patch13:        https://github.com/FreeCAD/FreeCAD/commit/91457bbdee2422c7f0372688cf72d021cf222073.patch#/freecad-copy_options-2.patch
+# PATCH-FIX-OPENSUSE
+Patch14:        freecad-opengl.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
