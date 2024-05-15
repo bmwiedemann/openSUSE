@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Mako
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        A Python templating language
 License:        MIT

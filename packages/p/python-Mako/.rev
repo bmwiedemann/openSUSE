@@ -596,4 +596,21 @@ Switching over to update-alternatives for python 3 would be a huge undertaking a
     checklist when using strict_undefined mode.</comment>
     <requestid>1167721</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>fb3cfe6418ca0e546cac716ebdf5b5df</srcmd5>
+    <version>1.3.4</version>
+    <time>1715801155</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.4:
+  * Fixed regression caused by the fix for :ticket:`320` where new
+    logic added to interpret list and dictionary comprehensions
+    would fail for expression oriented keys.  As the parsing in
+    question was not necessary for these
+    keys, it's been removed.
+  * Fixed issue where a parsed expression which contained
+    sub-brackets, such as dictionary literals, would fail to be
+    interpreted correctly even though the
+    initial parsing is correct.</comment>
+    <requestid>1173914</requestid>
+  </revision>
 </revisionlist>
