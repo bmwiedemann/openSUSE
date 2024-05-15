@@ -31,4 +31,12 @@
     <comment>remove dependency on old apache-commons-lang</comment>
     <requestid>1113758</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>0b53103841dda8cd84d8b8d6d3a3e5e3</srcmd5>
+    <version>1.6</version>
+    <time>1715801352</time>
+    <user>anag+factory</user>
+    <comment>Fix for building with new maven-plugin-tools</comment>
+    <requestid>1174251</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package replacer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,6 +67,11 @@ This package contains javadoc for %{name}.
 for i in $(find -name "*.java"); do
     sed -i "s/org.apache.commons.lang./org.apache.commons.lang3./g" $i;
 done
+
+%pom_xpath_inject 'pom:plugin[pom:artifactId="maven-plugin-plugin"]' '
+    <configuration>
+      <goalPrefix>replacer</goalPrefix>
+    </configuration>'
 
 %{mvn_file} :%{name} %{name}
 %{mvn_alias} :%{name} com.google.code.maven-replacer-plugin:maven-replacer-plugin
