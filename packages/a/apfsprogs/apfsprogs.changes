@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 14 13:48:12 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0~git490
+  * Ignore orphans for directory statistics
+  * Don't check the sparse byte count for orphans
+  * Support tiny disks in the ephemeral info checks
+  * mkapfs: Support containers of less than 128M
+  * mkapfs: Pack hardcoded blocks closer together
+  * mkapfs: Fix size of spaceman mmap
+  * mkapfs: Don't hardcode checkpoint desc/data sizes
+  * mkapfs: Fix checkpoint data blocks formula for 3G
+  * mkapfs: Remove comment about oldest xid in fq
+  * apfsck: Ignore WAS_EVER_CLONED before the epoch
+  * Update raw volume superblock to match driver
+  * Add checks for new volume flags
+  * Add checks for new file extent flags
+  * Document the existence of a new xattr flag
+  * Allow newer xids in snapshots for sealed volumes
+
+-------------------------------------------------------------------
 Sun Dec  3 20:11:15 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0~git475

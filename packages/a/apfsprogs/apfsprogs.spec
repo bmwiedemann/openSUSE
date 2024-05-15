@@ -1,7 +1,7 @@
 #
 # spec file for package apfsprogs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           apfsprogs
-Version:        0~git475
+Version:        0~git490
 Release:        0
 Summary:        Experimental APFS tools for Linux
 License:        GPL-2.0-only
