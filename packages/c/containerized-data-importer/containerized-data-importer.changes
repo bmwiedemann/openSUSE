@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 14 11:19:43 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Bump github.com/containers/image/v5 (bsc#1224119, CVE-2024-3727)
+  0001-Bump-github.com-containers-image-v5-to-v5.30.1.patch
+
+-------------------------------------------------------------------
 Wed Apr  3 07:53:06 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 1.59.0

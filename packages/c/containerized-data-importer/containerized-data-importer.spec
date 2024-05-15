@@ -40,6 +40,7 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        cdi_containers_meta
 Source2:        cdi_containers_meta.service
 Source100:      %{name}-rpmlintrc
+Patch1:         0001-Bump-github.com-containers-image-v5-to-v5.30.1.patch
 BuildRequires:  golang-packaging
 BuildRequires:  libnbd-devel
 BuildRequires:  pkgconfig
