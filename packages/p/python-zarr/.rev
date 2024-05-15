@@ -150,4 +150,12 @@
   * Bump minimum supported NumPy version to 1.23 (per spec 0000)</comment>
     <requestid>1169325</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>99cfdbea06bef02a9c3053c8cd8f9d4a</srcmd5>
+    <version>2.18.0</version>
+    <time>1715801337</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1174207</requestid>
+  </revision>
 </revisionlist>

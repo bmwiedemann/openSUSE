@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May  8 10:59:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.18.0:
+  * Performance improvement for reading and writing chunks if any
+    of the dimensions is size 1.
+  * Enable ruff/bugbear rules (B) and fix issues.
+  * Minor updates to use np.inf instead of np.PINF / np.NINF in
+    preparation for NumPy 2.0.0 release.
+  * Deprecate experimental v3 support by issuing a FutureWarning.
+    Also updated docs to warn about using the experimental v3
+    version.
+  * Deprecate the following stores:
+    :class:`zarr.storage.DBMStore`,
+    :class:`zarr.storage.LMDBStore`,
+    :class:`zarr.storage.SQLiteStore`,
+    :class:`zarr.storage.MongoDBStore`,
+    :class:`zarr.storage.RedisStore`, and
+    :class:`zarr.storage.ABSStore`. These stores are slated to be
+    removed from Zarr-Python in version 3.0.
+
+-------------------------------------------------------------------
 Sat Apr 20 08:12:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.17.2:
