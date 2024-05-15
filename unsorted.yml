@@ -3011,7 +3011,6 @@ unsorted:
   - dd_rhelp 
   - ddclient 
   - ddcutil 
-  - ddcutil-i2c-udev-rules 
   - ddcutil-service 
   - ddgr 
   - ddnet 
@@ -10605,6 +10604,7 @@ unsorted:
   - lector 
   - ledger 
   - ledmon 
+  - ledmon-devel 
   - leechcraft 
   - leechcraft-advancednotifications 
   - leechcraft-aggregator 
@@ -11404,8 +11404,6 @@ unsorted:
   - libXfixes-devel 
   - libXfixes-devel-32bit 
   - libXfixes3-32bit 
-  - libXfont-devel 
-  - libXfont1 
   - libXfont2-2-32bit 
   - libXfont2-devel 
   - libXfont2-devel-32bit 
@@ -14026,6 +14024,7 @@ unsorted:
   - libldl-doc 
   - libldl3 
   - libldm-1_0-0-devel 
+  - libled1 
   - libleechcraft-util-db-qt5-0_6_75_1 
   - libleechcraft-util-gui-qt5-0_6_75_1 
   - libleechcraft-util-models-qt5-0_6_75_1 
@@ -16512,7 +16511,7 @@ unsorted:
   - libvamp-hostsdk3-32bit 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit 
-  - libvapoursynth-67 
+  - libvapoursynth-68 
   - libvapoursynth-script0 
   - libvarnishapi3 
   - libvbr2 
@@ -19860,6 +19859,7 @@ unsorted:
   - ocr_1_0_1-gnu-openmpi4-hpc-examples 
   - ocrad 
   - ocrad-devel 
+  - ocrs 
   - ocserv 
   - octave 
   - octave-CSXCAD 
@@ -20263,6 +20263,7 @@ unsorted:
   - openssh-cavs 
   - openssh-fips 
   - openssh-helpers 
+  - openssh-server-config-rootlogin 
   - openssl-1_0_0 
   - openssl-1_0_0-cavs 
   - openssl-1_0_0-doc 
@@ -20837,6 +20838,7 @@ unsorted:
   - pcp-pmda-systemd 
   - pcp-pmda-trace 
   - pcp-pmda-unbound 
+  - pcp-pmda-uwsgi 
   - pcp-pmda-weblog 
   - pcp-pmda-zimbra 
   - pcp-pmda-zswap 
@@ -22589,7 +22591,6 @@ unsorted:
   - plexus-component-metadata-javadoc 
   - plexus-components-pom 
   - plexus-containers-component-annotations 
-  - plexus-containers-container-default 
   - plexus-containers-javadoc 
   - plexus-i18n 
   - plexus-i18n-javadoc 
@@ -26302,6 +26303,7 @@ unsorted:
   - python310-pyqtgraph 
   - python310-pyquery 
   - python310-pyrad 
+  - python310-pyrage 
   - python310-pyramid 
   - python310-pyramid-chameleon 
   - python310-pyramid-debugtoolbar 
@@ -29789,6 +29791,7 @@ unsorted:
   - python311-pyqtgraph 
   - python311-pyquery 
   - python311-pyrad 
+  - python311-pyrage 
   - python311-pyramid 
   - python311-pyramid-chameleon 
   - python311-pyramid-debugtoolbar 
@@ -33345,6 +33348,7 @@ unsorted:
   - python312-pyqtgraph 
   - python312-pyquery 
   - python312-pyrad 
+  - python312-pyrage 
   - python312-pyramid 
   - python312-pyramid-chameleon 
   - python312-pyramid-debugtoolbar 
@@ -36277,6 +36281,7 @@ unsorted:
   - skanpage-lang 
   - skelcd-control-MicroOS 
   - skelcd-control-openSUSE 
+  - skelcd-control-openSUSE-Slowroll 
   - skelcd-fallbackrepo-openSUSE 
   - skelcd-installer-MicroOS 
   - skelcd-installer-net-MicroOS 
