@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  7 14:12:47 UTC 2024 - Thomas Schmidt <tschmidt@suse.com>
+
+- Update to version 1.9.0
+  * Fix certificate import for Yast when using a registration proxy with
+    self-signed SSL certificate (bsc#1223107) 
+
+-------------------------------------------------------------------
 Wed Mar 13 12:37:29 UTC 2024 - José Gómez <1josegomezr@gmail.com>
 
 - Update to version 1.8.0
