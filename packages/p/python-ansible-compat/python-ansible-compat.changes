@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 14 14:19:11 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.5.1:
+  * Minor Changes
+    - Add has_playbook method to Runtime (#364) @ssbarnea
+  * Bugfixes
+    - Fix packaging version to recognize pre-release versions
+      (#371) @ssbarnea
+    - Update requirements (#365) @ssbarnea
+    - Allow dashes in role namespaces (#355) @sur5r
+    - If project_dir is passed, locate requirements within that
+      directory (#339) @audgirka
+
+-------------------------------------------------------------------
 Sat Mar 16 14:04:01 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 4.1.12:

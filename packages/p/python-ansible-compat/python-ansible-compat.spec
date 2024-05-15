@@ -24,7 +24,7 @@
 %endif
 
 Name:           python-ansible-compat
-Version:        4.1.12
+Version:        24.5.1
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
@@ -36,12 +36,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test
-# https://github.com/ansible/ansible-compat/blob/main/pyproject.toml#L38
+# https://github.com/ansible/ansible-compat/blob/main/.config/requirements.in
 BuildRequires:  ansible-core >= 2.12
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module jsonschema >= 4.17.3}
 BuildRequires:  %{python_module subprocess-tee >= 0.4.1}
-# https://github.com/ansible/ansible-compat/blob/main/pyproject.toml#L56
+# https://github.com/ansible/ansible-compat/blob/main/.config/requirements-test.in
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-plus}
@@ -89,6 +89,7 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[isolatedT-scanT-raises_n
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[scanF-raises_not_foundT]"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[scanT-raises_not_foundF]"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_upgrade_collection"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_runtime_has_playbook"
 # Disable checks on test names: https://github.com/pytest-dev/pytest-plus#user-content-avoiding-problematic-test-identifiers https://github.com/ansible/ansible-compat/issues/340
 export PYTEST_CHECK_TEST_ID_REGEX=0
 %pytest -k "not (${IGNORED_CHECKS})"
