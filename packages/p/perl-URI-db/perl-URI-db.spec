@@ -1,7 +1,7 @@
 #
 # spec file for package perl-URI-db
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,39 +18,87 @@
 
 %define cpan_name URI-db
 Name:           perl-URI-db
-Version:        0.21
+Version:        0.220.0
 Release:        0
+# 0.22 -> normalize -> 0.220.0
+%define cpan_version 0.22
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Database URIs
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DW/DWHEELER/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DW/DWHEELER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build) >= 0.300000
+BuildRequires:  perl(Module::Build) >= 0.30
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(URI) >= 1.40
 BuildRequires:  perl(URI::Nested) >= 0.10
 Requires:       perl(URI) >= 1.40
 Requires:       perl(URI::Nested) >= 0.10
+Provides:       perl(URI::cassandra) = %{version}
+Provides:       perl(URI::cockroach) = %{version}
+Provides:       perl(URI::cockroachdb) = %{version}
+Provides:       perl(URI::couch) = %{version}
+Provides:       perl(URI::couchdb) = %{version}
+Provides:       perl(URI::cubrid) = %{version}
+Provides:       perl(URI::db) = %{version}
+Provides:       perl(URI::db2) = %{version}
+Provides:       perl(URI::derby) = %{version}
+Provides:       perl(URI::exasol) = %{version}
+Provides:       perl(URI::firebird) = %{version}
+Provides:       perl(URI::hive) = %{version}
+Provides:       perl(URI::impala) = %{version}
+Provides:       perl(URI::informix) = %{version}
+Provides:       perl(URI::ingres) = %{version}
+Provides:       perl(URI::interbase) = %{version}
+Provides:       perl(URI::ldapdb) = %{version}
+Provides:       perl(URI::maria) = %{version}
+Provides:       perl(URI::mariadb) = %{version}
+Provides:       perl(URI::max) = %{version}
+Provides:       perl(URI::maxdb) = %{version}
+Provides:       perl(URI::monet) = %{version}
+Provides:       perl(URI::monetdb) = %{version}
+Provides:       perl(URI::mongo) = %{version}
+Provides:       perl(URI::mongodb) = %{version}
+Provides:       perl(URI::mssql) = %{version}
+Provides:       perl(URI::mysql) = %{version}
+Provides:       perl(URI::oracle) = %{version}
+Provides:       perl(URI::pg) = %{version}
+Provides:       perl(URI::pgsql) = %{version}
+Provides:       perl(URI::pgxc) = %{version}
+Provides:       perl(URI::postgres) = %{version}
+Provides:       perl(URI::postgresql) = %{version}
+Provides:       perl(URI::postgresxc) = %{version}
+Provides:       perl(URI::redshift) = %{version}
+Provides:       perl(URI::snowflake) = %{version}
+Provides:       perl(URI::sqlite) = %{version}
+Provides:       perl(URI::sqlite3) = %{version}
+Provides:       perl(URI::sqlserver) = %{version}
+Provides:       perl(URI::sybase) = %{version}
+Provides:       perl(URI::teradata) = %{version}
+Provides:       perl(URI::unify) = %{version}
+Provides:       perl(URI::vertica) = %{version}
+Provides:       perl(URI::yugabyte) = %{version}
+Provides:       perl(URI::yugabytedb) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
 Database URIs
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
