@@ -20,7 +20,7 @@
 %{go_nostrip}
 
 Name:           golang-github-prometheus-node_exporter
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Prometheus exporter for machine metrics
 License:        Apache-2.0
@@ -31,10 +31,6 @@ Source:         node_exporter-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        prometheus-node_exporter.service
 Source4:        prometheus-node_exporter.sysconfig
-# Updates rtnetlink to version 1.4.1
-Patch1:         fix_arp_collector.patch
-# https://github.com/prometheus/node_exporter/pull/2923
-Patch2:         add_device_error_label.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu >= 0.12.0
 BuildRequires:  golang-packaging
