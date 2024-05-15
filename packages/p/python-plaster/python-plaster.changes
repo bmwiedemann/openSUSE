@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 14 12:49:13 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build from source, using obs_scm service to download from repository
+  without docs/* to do not distribute CC-noncomercial licensed
+  documentation.
+
+-------------------------------------------------------------------
 Fri Jun  9 05:33:35 UTC 2023 - ecsos <ecsos@popensuse.org>
 
 - Add %{?sle15_python_module_pythons}

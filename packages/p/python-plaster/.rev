@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>1092232</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>38a109712bfa3d0ad2030d0e8b0089ac</srcmd5>
+    <version>1.1.2</version>
+    <time>1715801189</time>
+    <user>anag+factory</user>
+    <comment>- Build from source, using obs_scm service to download from repository
+  without docs/* to do not distribute CC-noncomercial licensed
+  documentation.</comment>
+    <requestid>1173987</requestid>
+  </revision>
 </revisionlist>

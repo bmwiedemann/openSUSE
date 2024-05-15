@@ -1,7 +1,7 @@
 #
 # spec file for package python-plaster
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,13 @@ Summary:        A loader interface around multiple config file formats
 License:        MIT
 Group:          Development/Languages/Python
 URL:            http://docs.pylonsproject.org/projects/plaster/en/latest
-# Wheels lack files with problematic noncommercial license
-Source:         https://files.pythonhosted.org/packages/py2.py3/p/plaster/plaster-%{version}-py2.py3-none-any.whl
+# The _service download the source and repack without the docs folder
+# that has CC noncommercial license.
+Source:         plaster-%{version}.tar.xz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -42,15 +46,17 @@ implemented in a pluggable loader which can be registered via an
 entrypoint.
 
 %prep
-%setup -q -c -T
+%autosetup -p1 -n plaster-%{version}
 
 %build
-# Not Needed
+%pyproject_wheel
 
 %install
-cp -a %{SOURCE0} .
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %license %{python_sitelib}/plaster-%{version}.dist-info/LICENSE.txt
