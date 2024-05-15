@@ -3550,7 +3550,7 @@ Macros:
 # I can't just not define it, as otherwise all specs using it break: [   25s] error: line 27: Empty tag: Requires(post):
 %install_info_prereq /bin/sh
 %kernel_build_shell_package bash-sh
-%kernel_module_package_buildreqs modutils kernel-syms kernel-syms-longterm kmod-compat suse-kernel-rpm-scriptlets %kernel_build_shell_package
+%kernel_module_package_buildreqs modutils kernel-syms kmod-compat suse-kernel-rpm-scriptlets %kernel_build_shell_package
 
 %sles_version 0
 %ul_version 0
