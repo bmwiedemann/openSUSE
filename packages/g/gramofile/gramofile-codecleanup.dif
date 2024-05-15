@@ -1,5 +1,5 @@
---- gramofile-1.6/bplaysrc/bplay.c
-+++ gramofile-1.6/bplaysrc/bplay.c
+--- bplaysrc/bplay.c
++++ bplaysrc/bplay.c
 @@ -30,7 +30,7 @@
  
  #include "../yesnowindow.h"
@@ -27,8 +27,8 @@
  	progname = basename(argv[0]);	/* For errors */
  #else
  	progname = strrchr(argv[0], '/');  /* Replacement for e.g. FreeBSD */
---- gramofile-1.6/clrscr.c
-+++ gramofile-1.6/clrscr.c
+--- clrscr.c
++++ clrscr.c
 @@ -8,6 +8,7 @@
   */
  
@@ -37,8 +37,8 @@
  #ifndef OLD_CURSES
  #include <ncurses.h>
  #else
---- gramofile-1.6/errorwindow.c
-+++ gramofile-1.6/errorwindow.c
+--- errorwindow.c
++++ errorwindow.c
 @@ -11,6 +11,7 @@
  #include "buttons.h"
  #include "boxes.h"
@@ -47,8 +47,8 @@
  #ifndef OLD_CURSES
  #include <ncurses.h>
  #else
---- gramofile-1.6/gramofile.c
-+++ gramofile-1.6/gramofile.c
+--- gramofile.c
++++ gramofile.c
 @@ -12,6 +12,7 @@
  #include <signal.h>
  #include <unistd.h>
@@ -75,8 +75,8 @@
  {
    char startdir[250];
    char *helpcharptr;
---- gramofile-1.6/mainmenu.c
-+++ gramofile-1.6/mainmenu.c
+--- mainmenu.c
++++ mainmenu.c
 @@ -21,6 +21,7 @@
  #include "tracksplit.h"
  #include <stdlib.h>
@@ -85,8 +85,8 @@
  #ifndef OLD_CURSES
  #include <ncurses.h>
  #else
---- gramofile-1.6/signpr_cmf.c
-+++ gramofile-1.6/signpr_cmf.c
+--- signpr_cmf.c
++++ signpr_cmf.c
 @@ -31,6 +31,7 @@
  #include <stdlib.h>
  #include <stdio.h>
@@ -95,8 +95,8 @@
  #ifndef OLD_CURSES
  #include <ncurses.h>
  #else
---- gramofile-1.6/signpr_cmf2.c
-+++ gramofile-1.6/signpr_cmf2.c
+--- signpr_cmf2.c
++++ signpr_cmf2.c
 @@ -33,6 +33,7 @@
  #include <stdlib.h>
  #include <stdio.h>
@@ -105,8 +105,8 @@
  #ifndef OLD_CURSES
  #include <ncurses.h>
  #else
---- gramofile-1.6/signpr_doubmed.c
-+++ gramofile-1.6/signpr_doubmed.c
+--- signpr_doubmed.c
++++ signpr_doubmed.c
 @@ -17,6 +17,7 @@
  #include "helpline.h"
  #include <stdlib.h>
@@ -115,8 +115,8 @@
  #ifndef OLD_CURSES
  #include <ncurses.h>
  #else
---- gramofile-1.6/signpr_mean.c
-+++ gramofile-1.6/signpr_mean.c
+--- signpr_mean.c
++++ signpr_mean.c
 @@ -17,6 +17,7 @@
  #include "helpline.h"
  #include <stdlib.h>
@@ -125,8 +125,8 @@
  #ifndef OLD_CURSES
  #include <ncurses.h>
  #else
---- gramofile-1.6/signpr_median.c
-+++ gramofile-1.6/signpr_median.c
+--- signpr_median.c
++++ signpr_median.c
 @@ -17,6 +17,7 @@
  #include "helpline.h"
  #include <stdlib.h>
@@ -135,8 +135,8 @@
  #ifndef OLD_CURSES
  #include <ncurses.h>
  #else
---- gramofile-1.6/signpr_rms.c
-+++ gramofile-1.6/signpr_rms.c
+--- signpr_rms.c
++++ signpr_rms.c
 @@ -18,6 +18,7 @@
  #include <stdlib.h>
  #include <stdio.h>
@@ -145,8 +145,8 @@
  #ifndef OLD_CURSES
  #include <ncurses.h>
  #else
---- gramofile-1.6/stringinput.c
-+++ gramofile-1.6/stringinput.c
+--- stringinput.c
++++ stringinput.c
 @@ -8,6 +8,7 @@
   */
  
@@ -155,8 +155,8 @@
  #ifndef OLD_CURSES
  #include <ncurses.h>
  #else
---- gramofile-1.6/tracksplit_parammenu.c
-+++ gramofile-1.6/tracksplit_parammenu.c
+--- tracksplit_parammenu.c
++++ tracksplit_parammenu.c
 @@ -16,6 +16,7 @@
  #include "helpline.h"
  #include <stdlib.h>
@@ -165,8 +165,8 @@
  #ifndef OLD_CURSES
  #include <ncurses.h>
  #else
---- gramofile-1.6/yesnowindow.c
-+++ gramofile-1.6/yesnowindow.c
+--- yesnowindow.c
++++ yesnowindow.c
 @@ -11,6 +11,7 @@
  #include "buttons.h"
  #include "boxes.h"

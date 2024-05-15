@@ -1,5 +1,5 @@
---- gramofile-1.6/Makefile
-+++ gramofile-1.6/Makefile
+--- Makefile
++++ Makefile
 @@ -1,3 +1,9 @@
 +DISTDIR = 
 +prefix = /usr
@@ -61,8 +61,8 @@
  #%.d: %.c   - according to 'info make', doesn't work
  #	$(SHELL) -ec '$(CC) -MM $(CPPFLAGS) $< \
  #		      | sed '\''s/\($*\)\.o[ :]*/\1 $@/g'\'' > $@'
---- gramofile-1.6/bplaysrc/Makefile
-+++ gramofile-1.6/bplaysrc/Makefile
+--- bplaysrc/Makefile
++++ bplaysrc/Makefile
 @@ -12,7 +12,7 @@
  ########## CHOOSE YOUR ARCHITECTURE:    (NOTE: also see ../Makefile!)
  

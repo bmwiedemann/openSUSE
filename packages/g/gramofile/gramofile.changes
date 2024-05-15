@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 15 11:00:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro: allows us to eliminate usage of deprecated
+  %patchN syntax.
+- Rebase gramofile-1.6-makefiles.dif and gramofile-codecleanup.dif:
+  make them apply with -p0 like all the other patches in this
+  package.
+
+-------------------------------------------------------------------
 Wed Feb 28 08:09:11 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Small spec file cleanup
