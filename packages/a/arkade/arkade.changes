@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 14 14:17:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.12:
+  * Move Hashicorp tools to GH Version Strategy
+  * Add kube-score to available tools
+  * update readme tool table
+  * add k8s version strategy
+  * Fix issue which saw versions resolved twice
+
+-------------------------------------------------------------------
 Fri May 10 05:09:34 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.11:
