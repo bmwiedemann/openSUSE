@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar 24 08:05:13 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.5 (yes, this is a 10 years gap)
+  * bugfix: wrong init in dns_add_srch() resulting repeating
+    queries twice for non-existing domains.
+  * bugfix: typo: LDLAGS=>LDFLAGS.
+  * portability: include <sys/socket.h> before probing for
+    socket() et al, so modern compilers don't fail on
+    -Werror=missing-declarations
+  * remove a few compiler warnings
+  * remove debian/ dir from the release tarball
+  * multiple typo fixes
+- Drop Fix-dns_add_srch-initialization-problem.patch (merged
+  upstream)
+
+-------------------------------------------------------------------
 Tue Feb 20 15:45:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

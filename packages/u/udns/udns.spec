@@ -1,7 +1,7 @@
 #
 # spec file for package udns
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           udns
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        DNS resolver tools
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/DNS/Utilities
-URL:            http://www.corpit.ru/mjt/udns.html
-Source:         http://www.corpit.ru/mjt/udns/udns-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- http://www.corpit.ru/pipermail/udns/2018q2/000186.html
-Patch0:         Fix-dns_add_srch-initialization-problem.patch
+URL:            https://www.corpit.ru/mjt/udns.html
+Source:         https://www.corpit.ru/mjt/udns/udns-%{version}.tar.gz
 
 %description
 UDNS is a stub DNS resolver library with ability to perform both
