@@ -4,7 +4,7 @@ SPEC = golang-github-prometheus-prometheus.spec
 default: clean tar
 
 clean:
-	rm -f $(NAME)-*.tar $(NAME)-*.tar.gz web-ui-*.tar.gz npm_licenses.tar.bz2 vendor.tar.gz
+	rm -rf prometheus $(NAME)-*.tar $(NAME)-*.tar.gz web-ui-*.tar.gz npm_licenses.tar.bz2 vendor.tar.gz
 
 tar:
 	osc service manualrun
