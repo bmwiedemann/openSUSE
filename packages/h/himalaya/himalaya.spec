@@ -22,7 +22,7 @@ Release:        0
 Summary:        Command-line interface for email management
 License:        AGPL-3.0-only AND AGPL-3.0-or-later AND GPL-2.0-or-later AND MIT AND bzip2-1.0.6 AND MPL-2.0 AND CC-BY-3.0 AND BSD-4-Clause AND OpenSSL AND OFL-1.1
 Group:          Productivity/Networking/Email/Clients
-URL:            https://pimalaya.org/himalaya
+URL:            https://pimalaya.org/himalaya/cli/latest/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
