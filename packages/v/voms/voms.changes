@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 14 14:17:11 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- voms-gcc14.patch: fixed missing prototype
+
+-------------------------------------------------------------------
 Mon Feb  6 12:36:36 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - updated to 2.1.0~rc3

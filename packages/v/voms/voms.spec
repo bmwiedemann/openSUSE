@@ -1,7 +1,7 @@
 #
 # spec file for package voms
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2015 mischa.salle@gmail.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,7 @@ Summary:        The Virtual Organisation Membership Service
 License:        Apache-2.0
 URL:            https://wiki.italiangrid.it/VOMS
 Source:         https://github.com/italiangrid/voms/archive/v%{upstream_version}.tar.gz#/%{name}-%{upstream_version}.tar.gz
+Patch0:         voms-gcc14.patch
 
 %description
 The Virtual Organization Membership Service (VOMS) is an attribute authority

@@ -1,0 +1,73 @@
+Index: voms-2.1.0-rc3/src/sslutils/namespaces.y
+===================================================================
+--- voms-2.1.0-rc3.orig/src/sslutils/namespaces.y
++++ voms-2.1.0-rc3/src/sslutils/namespaces.y
+@@ -33,6 +33,9 @@
+ 
+ char **parse_subjects(char *string);
+ void namespaceserror(void *policies, void *scanner, char const *msg);
++extern int namespaceslex(YYSTYPE * yylval_param ,yyscan_t yyscanner);
++
++#
+ %}
+ 
+ %error-verbose
+Index: voms-2.1.0-rc3/src/sslutils/signing_policy.y
+===================================================================
+--- voms-2.1.0-rc3.orig/src/sslutils/signing_policy.y
++++ voms-2.1.0-rc3/src/sslutils/signing_policy.y
+@@ -33,6 +33,8 @@
+ #include "parsertypes.h"
+ #include "listfunc.h"
+ 
++extern int signinglex (YYSTYPE * yylval_param ,yyscan_t yyscanner);
++
+ char **parse_subjects(char *string);
+ void signingerror(void *policies, void *scanner, char const *msg);
+ %}
+Index: voms-2.1.0-rc3/src/sslutils/namespaces.c
+===================================================================
+--- voms-2.1.0-rc3.orig/src/sslutils/namespaces.c
++++ voms-2.1.0-rc3/src/sslutils/namespaces.c
+@@ -176,6 +176,7 @@ typedef union YYSTYPE
+ # define YYSTYPE_IS_DECLARED 1
+ #endif
+ 
++extern int namespaceslex(YYSTYPE * yylval_param ,void* yyscanner);
+ 
+ /* Copy the second part of user declarations.  */
+ 
+Index: voms-2.1.0-rc3/src/sslutils/signing_policy.c
+===================================================================
+--- voms-2.1.0-rc3.orig/src/sslutils/signing_policy.c
++++ voms-2.1.0-rc3/src/sslutils/signing_policy.c
+@@ -112,6 +112,7 @@
+ #include "parsertypes.h"
+ #include "listfunc.h"
+ 
++
+ char **parse_subjects(char *string);
+ void signingerror(void *policies, void *scanner, char const *msg);
+ 
+@@ -181,6 +182,7 @@ typedef union YYSTYPE
+ # define YYSTYPE_IS_DECLARED 1
+ #endif
+ 
++extern int signinglex (YYSTYPE * yylval_param ,void* yyscanner);
+ 
+ /* Copy the second part of user declarations.  */
+ 
+Index: voms-2.1.0-rc3/src/utils/vomsparser.c
+===================================================================
+--- voms-2.1.0-rc3.orig/src/utils/vomsparser.c
++++ voms-2.1.0-rc3/src/utils/vomsparser.c
+@@ -633,6 +633,9 @@ while (YYID (0))
+ # define YYLEX yylex ()
+ #endif
+ 
++extern int yylex(void);
++extern void yyerror(char const*);
++
+ /* Enable debugging if requested.  */
+ #if YYDEBUG
+ 
