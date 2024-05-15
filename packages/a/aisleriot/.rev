@@ -599,4 +599,13 @@
     <comment></comment>
     <requestid>1163367</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>41a39a9274893dc49a1b1baf6965baac</srcmd5>
+    <version>3.22.32</version>
+    <time>1715801194</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.22.32:
+  + Fixes and optimisations. (forwarded request 1173991 from dimstar)</comment>
+    <requestid>1174001</requestid>
+  </revision>
 </revisionlist>
