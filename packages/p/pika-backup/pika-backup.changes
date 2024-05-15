@@ -1,0 +1,265 @@
+-------------------------------------------------------------------
+Mon May 13 22:35:06 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- clean spec file, readying for Factory
+- let cargo_vendor update dependencies
+
+-------------------------------------------------------------------
+Fri Apr 12 17:41:02 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.7.2:
+  * This release fixes a crash in the view for scheduled backups. 
+    For the feature of automatically executed shell commands, 
+    the environment variables of the interface process are now 
+    passed through to the shell command.
+
+-------------------------------------------------------------------
+Mon Mar 18 02:58:23 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.7.1:
+  * This release fixes an issue with displaying the selected 
+    scheduled times correctly, and correctly lowers the CPU 
+    priority of backup processes again.
+
+-------------------------------------------------------------------
+Sat Mar  2 15:37:18 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.7.0:
+  * Fix filesystem was unmounted via other means error when trying 
+    to unmount.
+  * Fix don't consider already mounted an error.
+  * Fix non-create operations would not postpone the schedule.
+  * Fix newly inserted volumes would sometimes not be detected 
+    to contain backup repositories.
+  * Fix free space lookup doesn't use the SSH port from the backup 
+    configuration.
+  * Fix missing device dialog would appear on top of other dialogs.
+  * Fix no time/day preselected when changing schedule 
+    frequency mode.
+  * Change setup dialog to use new design.
+  * Change SMB mount error to be more descriptive.
+  * Change history log to include archive mounting errors.
+  * Change behavior on missing keyring daemon: Save passwords 
+    in memory until close.
+  * Change to offer to stop browsing archive for every borg task.
+  * Change file and folder choosers to preselect a folder.
+  * Change backup notifications to be dismissed when a new backup 
+    starts.
+  * Change local borg repository config to set 
+    additional_free_space to 2G.
+  * Add docker to containers and VMs exclusion preset.
+  * Add per-backup preferences window.
+  * Add ability to set custom titles for backup configs.
+  * Add ability to edit regex and shell exclusion patterns.
+  * Add ability to run shell scripts on certain backup events.
+  * Add ability to change the backup encryption password.
+  * Add preference to allow running scheduled backups on battery.
+  * Add exclusion suggestions for unreadable paths.
+  * Add eject button for backup disk.
+  * Add function to check archives integrity.
+  * Add restart functionality to monitor process after app updates.
+
+-------------------------------------------------------------------
+Thu Feb 15 15:58:19 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Removed cargo_config, now located in vendor archive. 
+
+-------------------------------------------------------------------
+Thu Feb 15 14:09:05 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update specfile to modern rust packaging guidelines.
+- Update to version 0.6.2:
+  * Fix an error where reconnection would silently fail
+
+-------------------------------------------------------------------
+Sat Apr 22 16:48:17 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.6.1:
+  * Fix archives can not be mounted on some systems.
+  * Fix removable drives can not be added to a backup. 
+
+-------------------------------------------------------------------
+Fri Apr 14 15:50:06 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.6.0:
+  * Change prune section to only ask for confirmation 
+    if more archives could be deleted.
+  * Change some of the setup dialogs design.
+  * Change status icon colors for better contrast.
+  * Change to always use Adwaita icon theme.
+  * Change to hide advanced settings behind toggle button in setup.
+  * Change to only list mounted SMB and SFTP locations 
+    in setup dialog.
+  * Change to only mention SMB and SFTP schemas in setup dialog.
+  * Change to use AdwAboutWindow.
+  * Change to use AdwMessageDialog.
+  * Change to use XDG runtime dir on host instead of 
+    HOME for mounts.
+  * Change to symbolic icons in include/exclude list.
+  * Add ability to add multiple includes/excludes at once from 
+    file chooser.
+  * Add ability to delete single archives.
+  * Add automatic mounting of unmounted drives.
+  * Add debug information to about window.
+  * Add detection of renamed drives.
+  * Add guessed history entry when transferring config.
+  * Add missing standard shortcuts.
+  * Add predefined exclusion rules.
+  * Add regular expressions and shell pattern exclude support.
+  * Remove special representation with switch for Home folder.
+  * Fix a panic during backup size estimates for files that have 
+    invalid time metadata.
+  * Fix spelling mistake in daemon app id constant.
+
+-------------------------------------------------------------------
+Thu Jul 14 16:04:26 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.4.2:
+  * Fix again some xdg-desktop-portal versions writing broken
+    autostart files (workaround).
+  * Add mobile device support indication in metadata.
+
+-------------------------------------------------------------------
+Sat Jun 25 10:51:04 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.4.1:
+  * Fix some xdg-desktop-portal versions writing broken autostart 
+    files (workaround).
+  * Change status labels to use fixed width numbers.
+  * Add support for new 'finished' archive progress field 
+    in borg 1.2.1.
+
+-------------------------------------------------------------------
+Fri Apr  8 08:07:33 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.4.0:
+  * Fix backups cannot be aborted if backup source is unresponsive
+  * Fix memory leak from setup dialog
+  * Fix not all data in mounted archives where always readable
+  * Fix sometimes free space of the wrong device is reported 
+    for remote repositories
+  * Change backup compression to the more effective 
+    "Zstandard" algorithm
+  * Change design of many UI components
+  * Change setup dialog to include password question
+  * Change to GTK 4 and libadwaita for frontend
+  * Change to a different password storage
+  * Change to a new app icon by @bertob
+  * Change to accept ssh host keys for new hosts
+  * Change to use faster blake2 hash algorithm if no SHA256
+    CPU instruction is available
+  * Add archive name prefixes
+  * Add better error messages for incorrect remote locations
+  * Add help with information about recovery
+  * Add message to inform user about what task is locking 
+    the repo
+  * Add message to user interface if target devive or server 
+    is unrepsonive
+  * Added missing dependency: python3-msgpack.
+  * Add setup option to inherit include, exclude, and prefix
+    from existing archives
+  * Add several mnemonics
+  * Add shortcuts dialog
+  * Add support for manually and automatically deleting 
+    old archives
+  * Add support for scheduled backups
+  * Add support for user@host:path borg remote location 
+    syntax
+  * Remove option to not store encryption passwords in 
+    secrete service
+  * Remove support for migrating from Pika Backup 
+    v0.2 configs
+
+-------------------------------------------------------------------
+Sat Sep 25 17:30:13 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Fix warning non-conffile-in-etc 
+  /etc/xdg/autostart/org.gnome.World.PikaBackup.Daemon.desktop 
+
+-------------------------------------------------------------------
+Wed Sep  8 01:29:10 UTC 2021 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 0.3.5:
+  * Add Dutch translation.
+  * Add Occitan translation.
+  * Remove disable-update-desktop-database-and-gtk-update-icon-cache.patch
+
+-------------------------------------------------------------------
+Sat May 29 15:34:31 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.3.2:
+  * Correct an error in the Spanish translation.
+  * Update Indonesian translation.
+  * Add Polish translation. 
+
+-------------------------------------------------------------------
+Thu May 20 02:53:39 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.3.1:
+  * Fixes existing env var LD_PRELOAD on host makes remote backups 
+    unusable.
+
+-------------------------------------------------------------------
+Sun May 16 12:09:33 UTC 2021 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 0.3.0:
+  * Adds basic explanation to URL field when creating new repository.
+  * Adds button to unmount archives.
+  * Adds estimate for remaining time to complete backup.
+  * Adds translations to several new languages.
+  * Adds warning for creating repositories on non-journaling file systems.
+  * Changes backups to differentiate between warnings and errors.
+  * Changes borg processes to lower priority.
+  * Changes config file to be backup.json instead of config.json.
+  * Changes history storage from config file to separate history.json.
+  * Changes several messages to be more understandable.
+  * Changes to a limited amount of borg reconnect attempts.
+  * Changes to continue backups while ui is closed.
+  * Changes to more concrete dialog responses than "No/Yes". 
+
+-------------------------------------------------------------------
+Wed Mar 31 03:46:39 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.2.3:
+  * No changelog was made available.
+
+-------------------------------------------------------------------
+Tue Mar 23 17:01:39 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.2.2:
+  * Fixes archives listed with wrong creation time. 
+
+-------------------------------------------------------------------
+Wed Jan 20 13:28:47 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.2.1:
+  * Fixes crash on adding backup config with invalid URI
+  * Fixes list of archives for tark themes
+  * Adds translation to Swedish
+  * Adds keywords to .desktop-file 
+
+-------------------------------------------------------------------
+Fri Dec 25 16:45:47 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.2.0:
+  * Adds translations to several languages.
+  * Redesigns some parts of the user interface.
+  * Shows backup status for each repository in overview.
+  * Adds basis for supporting mobile clients.
+  * Reduces idle CPU usage (stop invisible GtkSpinner's).
+  * Makes handling of encryption password requests faster and smother.
+  * Adds caching for repository archives.
+  * Adds basic support for GVfs enabling backups to sftp, smb etc.
+  * Adds custom command line options for borg to setup.
+  * Enables easier onboarding for developers.
+  * Many code cleanups 
+
+-------------------------------------------------------------------
+Tue Dec  1 06:39:15 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Format version. 
+
+-------------------------------------------------------------------
+Tue Dec  1 03:29:50 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Initial package 

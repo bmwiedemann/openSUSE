@@ -1,0 +1,11 @@
+diff -rub pika-backup/src/ui/utils/borg.rs pika-backup-patched/src/ui/utils/borg.rs
+--- pika-backup/src/ui/utils/borg.rs	2024-05-13 22:46:09.141984175 +0200
++++ pika-backup-patched/src/ui/utils/borg.rs	2024-05-14 05:25:20.535720508 +0200
+@@ -377,6 +377,7 @@
+     Ok(())
+ }
+ 
++#[ignore]
+ #[async_std::test]
+ async fn test_exec_operation_register() {
+     gtk::init().unwrap();

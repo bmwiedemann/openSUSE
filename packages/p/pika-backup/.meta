@@ -1,0 +1,6 @@
+<package name="pika-backup" project="openSUSE:Factory">
+  <title>Simple backups based on borg</title>
+  <description>Doing backups the easy way. Plugin your USB drive and let the Pika do the rest for you.</description>
+  <devel project="Archiving:Backup" package="pika-backup"/>
+  <url>https://gitlab.gnome.org/World/pika-backup</url>
+</package>
