@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  2 08:14:31 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- No longer force use of GCC 12. 
+
+-------------------------------------------------------------------
 Mon Dec 18 22:26:07 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Add 32bit package

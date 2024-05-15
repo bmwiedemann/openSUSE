@@ -76,4 +76,12 @@
     <comment></comment>
     <requestid>1142968</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>755a4f6dd6f5b244af76b015a7c4f6d2</srcmd5>
+    <version>0.3.2.10</version>
+    <time>1715801168</time>
+    <user>anag+factory</user>
+    <comment>- No longer force use of GCC 12. (forwarded request 1171289 from rguenther)</comment>
+    <requestid>1173964</requestid>
+  </revision>
 </revisionlist>

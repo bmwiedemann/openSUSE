@@ -1,7 +1,7 @@
 #
 # spec file for package vkbasalt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,8 +37,7 @@ BuildRequires:  vulkan-headers
 BuildRequires:  gcc11
 BuildRequires:  gcc11-c++
 %else
-BuildRequires:  gcc12
-BuildRequires:  gcc12-c++
+BuildRequires:  gcc-c++
 %endif
 
 %description
@@ -51,9 +50,6 @@ vkBasalt is a Vulkan post processing layer to enhance the visual graphics of gam
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
 export CC="gcc-11"
 export CXX="g++-11"
-%else
-export CC="gcc-12"
-export CXX="g++-12"
 %endif
 %meson
 %meson_build
