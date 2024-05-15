@@ -2,6 +2,7 @@
 # spec file for package cacti
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +29,7 @@
 %bcond_with systemd
 %endif
 Name:           cacti
-Version:        1.2.26
+Version:        1.2.27
 Release:        0
 Summary:        Web Front-End to Monitor System Data via RRDtool
 License:        GPL-2.0-or-later

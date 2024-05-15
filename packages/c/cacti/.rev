@@ -434,4 +434,22 @@ CVE-2023-51448 boo#1218381
     <comment></comment>
     <requestid>1150931</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>a9443b5a4bd0a6a7e33a04ed5fb1b66f</srcmd5>
+    <version>1.2.27</version>
+    <time>1715801244</time>
+    <user>anag+factory</user>
+    <comment>cacti 1.2.27
+* CVE-2024-34340: Authentication Bypass when using using older password hashes (boo#1224240)
+* CVE-2024-25641: RCE vulnerability when importing packages (boo#1224229)
+* CVE-2024-31459: RCE vulnerability when plugins include files (boo#1224238)
+* CVE-2024-31460: SQL Injection vulnerability when using tree rules through Automation API (boo#1224239)
+* CVE-2024-29894: XSS vulnerability when using JavaScript based messaging API (boo#1224231)
+* CVE-2024-31458: SQL Injection vulnerability when using form templates (boo#1224241)
+* CVE-2024-31444: XSS vulnerability when reading tree rules with Automation API (boo#1224236)
+* CVE-2024-31443: XSS vulnerability when managing data queries (boo#1224235)
+* CVE-2024-31445: SQL Injection vulnerability when retrieving graphs using Automation API (boo#1224237)
+* CVE-2024-27082: XSS vulnerability when managing trees (boo#1224230)</comment>
+    <requestid>1174071</requestid>
+  </revision>
 </revisionlist>

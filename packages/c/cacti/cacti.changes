@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue May 14 18:25:17 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti 1.2.27:
+  * CVE-2024-34340: Authentication Bypass when using using older password hashes (boo#1224240)
+  * CVE-2024-25641: RCE vulnerability when importing packages (boo#1224229)
+  * CVE-2024-31459: RCE vulnerability when plugins include files (boo#1224238)
+  * CVE-2024-31460: SQL Injection vulnerability when using tree rules through Automation API (boo#1224239)
+  * CVE-2024-29894: XSS vulnerability when using JavaScript based messaging API (boo#1224231)
+  * CVE-2024-31458: SQL Injection vulnerability when using form templates (boo#1224241)
+  * CVE-2024-31444: XSS vulnerability when reading tree rules with Automation API (boo#1224236)
+  * CVE-2024-31443: XSS vulnerability when managing data queries (boo#1224235)
+  * CVE-2024-31445: SQL Injection vulnerability when retrieving graphs using Automation API (boo#1224237)
+  * CVE-2024-27082: XSS vulnerability when managing trees (boo#1224230)
+  * Improve PHP 8.3 support
+  * When importing packages via command line, data source profile could not be selected
+  * When changing password, returning to previous page does not always work
+  * When using LDAP authentication the first time, warnings may appear in logs
+  * When editing/viewing devices, add IPv6 info to hostname tooltip
+  * Improve speed of polling when Boost is enabled
+  * Improve support for Half-Hour time zones
+  * When user session not found, device lists can be incorrectly returned
+  * On import, legacy templates may generate warnings
+  * Improve support for alternate locations of Ping
+  * Improve PHP 8.1 support for Installer
+  * Fix issues with number formatting
+  * Improve PHP 8.1 support when SpikeKill is run first time
+  * Improve PHP 8.1 support for SpikeKill
+  * When using Chinese to search for graphics, garbled characters appear.
+  * When importing templates, preview mode will not always load
+  * When remote poller is installed, MySQL TimeZone DB checks are not performed
+  * When Remote Poller installation completes, no finish button is shown
+  * Unauthorized agents should be recorded into logs
+  * Poller cache may not always update if hostname changes
+  * When using CMD poller, Failure and Recovery dates may have incorrect values
+  * Saving a Tree can cause the tree to become unpublished
+  * Web Basic Authentication does not record user logins
+  * When using Accent-based languages, translations may not work properly
+  * Fix automation expressions for device rules
+  * Improve PHP 8.1 Support during fresh install with boost
+  * Add a device "enabled/disabled" indicator next to the graphs
+  * Notify the admin periodically when a remote data collector goes into heartbeat status
+  * Add template for Aruba Clearpass
+  * Add fliter/sort of Device Templates by Graph Templates
+
+-------------------------------------------------------------------
 Mon Feb 26 10:31:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
