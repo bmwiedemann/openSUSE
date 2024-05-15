@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  8 11:37:09 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update more-32bit.patch to fix i586/ILP32 FTBFS.
+
+-------------------------------------------------------------------
 Tue Apr 30 10:40:25 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.12.2
