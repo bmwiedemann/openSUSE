@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 14 16:03:17 UTC 2024 - dmueller@suse.com
+
+- Update to version 0.6.4:
+  * Treat LegacyVersion as InvalidVersion
+  * Add testing python 3.10 - 3.12
+
+-------------------------------------------------------------------
 Mon May 06 14:28:11 UTC 2024 - dmueller@suse.com
 
 - Update to version 0.6.3:

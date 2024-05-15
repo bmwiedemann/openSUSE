@@ -24,7 +24,7 @@
 %define service set_version
 
 Name:           obs-service-%{service}
-Version:        0.6.3
+Version:        0.6.4
 Release:        0
 Summary:        An OBS source service: Update spec file version
 License:        GPL-2.0-or-later

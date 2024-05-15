@@ -401,4 +401,14 @@
   * Detect revision and set pkgrel for Arch packages</comment>
     <requestid>1172198</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>4952da5a58a2a8dace41ff4845f5fef5</srcmd5>
+    <version>0.6.4</version>
+    <time>1715801064</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.6.4:
+  * Treat LegacyVersion as InvalidVersion
+  * Add testing python 3.10 - 3.12</comment>
+    <requestid>1174046</requestid>
+  </revision>
 </revisionlist>
