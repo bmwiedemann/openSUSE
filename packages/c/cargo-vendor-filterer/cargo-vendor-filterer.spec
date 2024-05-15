@@ -21,7 +21,7 @@ Summary:        Cargo vendor filterer
 License:        Apache-2.0
 Group:          Development/Tools/Building
 URL:            https://github.com/coreos/cargo-vendor-filterer
-Version:        0.5.13
+Version:        0.5.14
 Release:        0
 Source0:        https://github.com/coreos/cargo-vendor-filterer/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst

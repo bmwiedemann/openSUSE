@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May  8 09:50:40 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to 0.5.14:
+  * improvement: add option `--no-default-features` and `--features`
+  * change fieldname types of feature and no-default-features to Vec<String> and bool, respectively
+  * fix: use clap and serde default for new fieldnames
+  * cleanup: replace Option<bool> with default values with bool for all-features
+  * cleanup: add the if-elses for the new cli and config options on add_packages_for_platform too
+  * ci: update nushell to 0.91.0 for vendor tests
+- Update service file:
+  * use glob so we don't need to edit versions in the _service file.
+
+-------------------------------------------------------------------
 Thu Mar 28 09:25:41 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to 0.5.13
