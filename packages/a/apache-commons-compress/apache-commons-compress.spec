@@ -19,7 +19,7 @@
 %global base_name       compress
 %global short_name      commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        Java API for working with compressed files and archivers
 License:        Apache-2.0
@@ -33,6 +33,7 @@ Patch2:         0003-Remove-Pack200-compressor.patch
 BuildRequires:  ant
 BuildRequires:  commons-codec
 BuildRequires:  commons-io >= 2.14
+BuildRequires:  commons-lang3
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
@@ -85,7 +86,7 @@ rm src/test/java/org/apache/commons/compress/java/util/jar/Pack200Test.java
 
 %build
 mkdir -p lib
-build-jar-repository -s lib xz-java commons-io commons-codec
+build-jar-repository -s lib xz-java commons-io commons-codec commons-lang3
 %{ant} package javadoc
 
 %install

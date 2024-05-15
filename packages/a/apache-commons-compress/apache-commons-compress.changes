@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May 14 10:26:58 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.26.1
+  * Fixed Bugs
+    + COMPRESS-659: TarArchiveOutputStream should use Commons IO
+      Charsets instead of Commons Codec Charsets.
+    + COMPRESS-660: Add org.apache.commons.codec to OSGi imports.
+    + COMPRESS-664 Return null value from getNextEntry() for empty
+      file.
+    + COMPRESS-664: Remove unused variables in tests.
+    + COMPRESS-666: Multithreaded access to Tar archive throws
+      java.util.zip.ZipException: Corrupt GZIP trailer.
+    + COMPRESS-644: ArchiveStreamFactory.detect(InputStream) returns
+      TAR for ICO file.
+    + COMPRESS-661: ArchiveInputStream markSupported should always
+      return false.
+    + COMPRESS-662: Remove out of date jar and scripts.
+
+-------------------------------------------------------------------
 Tue Feb 20 10:24:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
