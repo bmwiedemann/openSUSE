@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 13 14:14:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.3:
+  + Fix a trivial build error when
+    -Werror=implicit-function-declaration is specified.
+- Changes from version 46.2:
+  + Fix an issue with cancellation of closing a page.
+  + Try harder to ensure a buffer disposes associated resources
+    when the page is closed.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Apr 11 11:27:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.1:

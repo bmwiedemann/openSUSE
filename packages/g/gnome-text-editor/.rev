@@ -307,4 +307,19 @@
     <comment>Update to 46.1 (forwarded request 1166844 from dimstar)</comment>
     <requestid>1166851</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4b38f46df06335f51cc22949ed1852cb</srcmd5>
+    <version>46.3</version>
+    <time>1715801187</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.3:
+  + Fix a trivial build error when
+    -Werror=implicit-function-declaration is specified.
+- Changes from version 46.2:
+  + Fix an issue with cancellation of closing a page.
+  + Try harder to ensure a buffer disposes associated resources
+    when the page is closed.
+  + Updated translations. (forwarded request 1173689 from dimstar)</comment>
+    <requestid>1173980</requestid>
+  </revision>
 </revisionlist>
