@@ -763,4 +763,13 @@
   * Use the 64-bit value of sys.maxsize.</comment>
     <requestid>1134140</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>aa920e2ddef742176619c3911fd63354</srcmd5>
+    <version>3.4.0</version>
+    <time>1715801135</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-pytest-8.patch:
+  * Use non-deprecated setup method to support pytest &gt;= 8.</comment>
+    <requestid>1173814</requestid>
+  </revision>
 </revisionlist>
