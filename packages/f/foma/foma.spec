@@ -1,7 +1,7 @@
 #
 # spec file for package foma
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        Apache-2.0
 URL:            https://fomafst.github.io/
 Source0:        foma-%{version}.tar.xz
 Patch0:         foma-harden-build.patch
+# https://github.com/mhulden/foma/commit/9a99d2d41809422080606bb49531b38ce1e2111a
+Patch1:         foma-gcc14.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  ncurses-devel

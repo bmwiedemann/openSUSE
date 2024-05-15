@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 13 12:10:56 UTC 2024 - pgajdos@suse.com
+
+- added patches
+  fix https://github.com/mhulden/foma/commit/9a99d2d41809422080606bb49531b38ce1e2111a
+  + foma-gcc14.patch
+
+-------------------------------------------------------------------
 Sat Aug 27 07:27:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.10.0
