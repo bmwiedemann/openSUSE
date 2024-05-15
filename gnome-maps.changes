@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon May 13 14:19:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.11:
+  + Fix crash on startup when unnamed favorites where previously
+    saved.
+  + Don't show OSM edit dialog if the user previously reclined
+    signing in.
+  + Don't show stored routes in the search results when searching
+    for destinations.
+- changes from version 46.10:
+  + Due to a typo in the version number in the metadata for 46.0
+    (being 46.9) make this release version number 46.10
+  + Fix current location marker not moving when updating location.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May 13 14:19:03 UTC 2024 - dimstar@opensuse.org
+
+- Update to version 46.11:
+  * Release 46.11
+  * placeListRow: Use fallback when place has no title
+  * Update Hindi translation
+  * Update Brazilian Portuguese translation
+  * Update Portuguese translation
+  * mapView: Check the signed in status after showing the OSM account dialog
+  * placeButtons: Check the signed in status after showing the OSM account dialog
+  * Update Greek translation
+  * placeEntry: Fix filtering out stored routes for routing entries
+  * Post-release version bump
+  * Release 46.10
+  * shields: Fix shields with OMT update
+  * place: Make location a GObject property
+  * Update Kabyle translation
+  * meson: Bump next version to 46.10
+  * appdata: Fix typo in release version number
+  * Post-release version bump
+
+-------------------------------------------------------------------
 Sat Mar 16 09:32:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:
