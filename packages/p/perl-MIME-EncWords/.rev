@@ -105,4 +105,12 @@
 - update Requires: according to Makefile.PL</comment>
     <requestid>252638</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9883b90660a266480f5d1c35bb660a24</srcmd5>
+    <version>1.15.0</version>
+    <time>1715801177</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1173972</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 13 03:07:23 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.015.0
+   see /usr/share/doc/packages/perl-MIME-EncWords/Changes
+
+  1.015.0 2024-02-12  Hatuka*nezumi - IKEDA Soji  <hatuka@nezumi.nu>
+
+      * Fix: Correct specials for DISPNAME mode.
+      * Fix: CPAN RT #116463: Remove . from @INC when loading modules
+        dynamically.
+      * Fix: Suppress "Use of uninitialized value" warnings.
+      * CPAN RT #116465: Fix spelling error in manpage.
+
+-------------------------------------------------------------------
 Sat Sep 27 17:48:05 UTC 2014 - opensuse@cboltz.de
 
 - update to 1.014.3:
