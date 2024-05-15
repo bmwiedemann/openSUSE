@@ -674,4 +674,17 @@
     now 10 years sunset.</comment>
     <requestid>1165958</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>8a25e9780e19d4fc6a787d6c9043e797</srcmd5>
+    <version>25.2.1</version>
+    <time>1715801154</time>
+    <user>anag+factory</user>
+    <comment>- update to 25.2.1:
+  * Fix typo in CLI creds mode.
+
+- update to 25.2.0:
+  * Added options for 'keyring get' command to support credential
+    retrieval and emit as JSON.</comment>
+    <requestid>1173912</requestid>
+  </revision>
 </revisionlist>

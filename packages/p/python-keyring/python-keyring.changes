@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 14 08:11:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 25.2.1:
+  * Fix typo in CLI creds mode.
+
+-------------------------------------------------------------------
+Fri May 10 13:32:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 25.2.0:
+  * Added options for 'keyring get' command to support credential
+    retrieval and emit as JSON.
+
+-------------------------------------------------------------------
 Sat Apr  6 19:38:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 25.1.0:
