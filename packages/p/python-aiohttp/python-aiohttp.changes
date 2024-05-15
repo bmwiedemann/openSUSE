@@ -8,6 +8,7 @@ Sat Apr 20 13:59:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
     Disposition to the form-data part after appending to writer
   * Added default Content-Disposition in multipart/form-data
     responses to avoid broken form-data responses
+- from version 3.9.4
   * The asynchronous internals now set the underlying causes when
     assigning exceptions to the future objects
   * Treated values of Accept-Encoding header as case-insensitive
@@ -30,7 +31,7 @@ Sat Apr 20 13:59:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
   * Fixed multipart/form-data compliance with RFC 7578
   * Fixed blocking I/O in the event loop while processing files
     in a POST request
-  * Escaped filenames in static view
+  * Escaped filenames in static view (bsc#1223098, CVE-2024-27306)
   * Fixed the pure python parser to mark a connection as closing
     when a response has no length
   * Upgraded llhttp to 9.2.1, and started rejecting obsolete line
