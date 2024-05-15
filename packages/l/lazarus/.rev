@@ -222,4 +222,12 @@
     <comment></comment>
     <requestid>1154454</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>c6420664626fc466c74880cee09b3c11</srcmd5>
+    <version>3.2</version>
+    <time>1715801255</time>
+    <user>anag+factory</user>
+    <comment>- Add lazarus-libqt6_fix.patch to fix libqt6pas per upstream issue #40901</comment>
+    <requestid>1174084</requestid>
+  </revision>
 </revisionlist>
