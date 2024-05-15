@@ -1,7 +1,7 @@
 #
 # spec file for package RemoteBox
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,8 +51,7 @@ this gap by providing a graphical VirtualBox client which is able to
 communicate with and manage a VirtualBox server installation.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 install -m 0644 %{SOURCE1} .
 # Set the locations of Remotebox's files
 sed -i 's|\$Bin/share/remotebox|%{_datadir}/%{name}|g' remotebox

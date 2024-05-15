@@ -213,4 +213,12 @@ reports this as a valid minimum, the guest won't start.
     <comment></comment>
     <requestid>1060101</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>bd9b05e343207867bc7e5ae3adb07a69</srcmd5>
+    <version>3.2</version>
+    <time>1715801322</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1174153</requestid>
+  </revision>
 </revisionlist>
