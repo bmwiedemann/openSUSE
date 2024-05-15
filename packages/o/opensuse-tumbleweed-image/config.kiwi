@@ -86,6 +86,7 @@
     <package name="openSUSE-release-appliance-docker"/>
     <package name="patterns-base-minimal_base"/>
     <package name="patterns-base-fips"/>
+    <package name="procps"/>
     <package name="shadow"/>
     <package name="tar"/>
     <package name="timezone"/>
