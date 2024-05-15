@@ -1,7 +1,7 @@
 #
 # spec file for package mcpp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,14 @@
 
 
 Name:           mcpp
-Version:        2.7.2
+Version:        2.7.2.1
 Release:        0
 Summary:        Matsui's C Preprocessor
 License:        BSD-3-Clause
 Group:          Development/Languages/C and C++
-URL:            http://mcpp.sourceforge.net/
-Source0:        http://sourceforge.net/projects/mcpp/files/mcpp/V.%{version}/%{name}-%{version}.tar.gz
-Patch0:         %{name}-%{version}.diff
-Patch1:         CVE-2019-14274.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://mcpp.sourceforge.net/
+Source0:        https://github.com/museoa/mcpp/archive/refs/tags/%{version}.tar.gz
+Patch0:         %{name}-2.7.2.1.diff
 
 %description
 mcpp is a small and portable C/C++ preprocessor implementing all of
@@ -57,36 +55,31 @@ C90, C99 and C++98.
 This package holds the development files for libev.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -D_BSD_SOURCE"
 %configure --enable-mcpplib
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 rm -rf %{buildroot}%{_datadir}/doc/mcpp
 rm -rf %{buildroot}%{_libdir}/libmcpp.*a
 
 %post   -n %{_libname} -p /sbin/ldconfig
-
 %postun -n %{_libname} -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
-%doc doc/mcpp-manual.html LICENSE NEWS README
+%license LICENSE
+%doc doc/mcpp-manual.html NEWS README
 %{_bindir}/*
-%{_mandir}/man1/mcpp.1.gz
+%{_mandir}/man1/mcpp.1%{?ext_man}
 
 %files -n %{_libname}
-%defattr(-,root,root,-)
-%{_libdir}/libmcpp.so.*
+%{_libdir}/libmcpp.so.0*
 
 %files devel
-%defattr(-,root,root,-)
 %{_includedir}/mcpp_*.h
 %{_libdir}/libmcpp.so
 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 31 09:45:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.2.1:
+  * include patches from homebrew
+- Rebase and rename mcpp-2.7.2.diff to mcpp-2.7.2.1.diff
+- drop CVE-2019-14274.patch (included already)
+
+-------------------------------------------------------------------
 Wed Mar 18 17:29:06 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add CVE-2019-14274.patch (bsc#1143032, CVE-2019-14274)

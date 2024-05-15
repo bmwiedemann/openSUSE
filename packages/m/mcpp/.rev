@@ -115,4 +115,15 @@
     <comment>- add CVE-2019-14274.patch (bsc#1143032, CVE-2019-14274)</comment>
     <requestid>786229</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>39e5a2b12382b51bb718425c4316e1ec</srcmd5>
+    <version>2.7.2.1</version>
+    <time>1715801345</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.7.2.1:
+  * include patches from homebrew
+- Rebase and rename mcpp-2.7.2.diff to mcpp-2.7.2.1.diff
+- drop CVE-2019-14274.patch (included already)</comment>
+    <requestid>1174214</requestid>
+  </revision>
 </revisionlist>
