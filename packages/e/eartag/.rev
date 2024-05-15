@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>1152269</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a909947be8b788edea727fef96c0d66d</srcmd5>
+    <version>0.6.1</version>
+    <time>1715801205</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.6.1:
+  + switch to libadwaita &gt;= 1.5
+- Add blueprint-compiler BuildRequires: new upstream dependency
+  since commit 324f6a24.
+- Add forgotten set_version service.</comment>
+    <requestid>1174021</requestid>
+  </revision>
 </revisionlist>

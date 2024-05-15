@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 13 19:39:49 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- Update to version 0.6.1:
+  + switch to libadwaita >= 1.5
+- Add blueprint-compiler BuildRequires: new upstream dependency
+  since commit 324f6a24.
+- Add forgotten set_version service.
+
+-------------------------------------------------------------------
 Fri Feb 23 06:45:56 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - add chromaprint-fpcalc as dependency for identifying songs

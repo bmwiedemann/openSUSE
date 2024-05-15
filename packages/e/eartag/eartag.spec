@@ -17,13 +17,14 @@
 
 
 Name:           eartag
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Edit audio file tags
 License:        X11-distribute-modifications-variant
 URL:            https://gitlab.gnome.org/World/eartag
 Source:         %{name}-%{version}.tar.gz
 BuildArch:      noarch
+BuildRequires:  blueprint-compiler
 BuildRequires:  meson
 BuildRequires:  python3-Pillow
 BuildRequires:  python3-gobject
@@ -31,7 +32,7 @@ BuildRequires:  python3-mutagen
 BuildRequires:  python3-pyacoustid
 BuildRequires:  python3-python-magic
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.5
 Requires:       chromaprint-fpcalc
 Requires:       python3-Pillow
 Requires:       python3-gobject
