@@ -51,6 +51,7 @@
     <package name="ltrace"/>
     <package name="man"/>
     <package name="pciutils"/>
+    <package name="procps"/>
     <package name="socat"/>
     <package name="strace"/>
     <package name="sudo"/>
