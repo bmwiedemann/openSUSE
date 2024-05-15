@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue May 14 19:35:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.7.0:
+  * Find shbangs to generate depends by @smoser in #1110
+  * presubmit: remove gdk-pixbuf by @imjasonh in #1143
+  * Revert "presubmit: remove gdk-pixbuf" by @imjasonh in #1147
+  * verify SPDX SBOMs using spdx-tools-java by @imjasonh in #1146
+  * Fix sca detection case for env with multiple arguments. by
+    @dlorenc in #1148
+  * Update shbang collection to ignore 'python' and support simple
+    'env -S'. by @smoser in #1159
+  * ensure shbang check only checks valid shbangs by @joshrwolf in
+    #1160
+  * config: allow scriplets in subpackages with range replacements
+    by @xnox in #1165
+  * Drop -release from pc versions by @jonjohnsonjr in #1173
+  * fix(cargo): Install all built binaries if output isn't defined
+    by @EyeCantCU in #1174
+  * sbom: set supplier in addition to originator by @imjasonh in
+    #1184
+  * Add melange scan by @jonjohnsonjr in #1175
+  * Bump go-apk by @jonjohnsonjr in #1185
+  * add global --gcplog flag to emit GCP-compatible JSON logs by
+    @imjasonh in #1186
+  * pipelines/go: add back symbols tables by @xnox in #1142
+  * Only consider that are in a PATH dir from generateCmdProviders
+    by @smoser in #1164
+  * Allow symlinks to provide cmd: by @smoser in #1188
+  * Extract melange sign to a library by @tcnghia in #1198
+  * Revert "Allow symlinks to provide cmd:" by @joshrwolf in #1200
+  * Bump apko by @jonjohnsonjr in #1201
+  * Make unit tests faster by @jonjohnsonjr in #1202
+  * Add buildmode to go/build by @jonjohnsonjr in #1210
+  * lots of updates for build dependencies
+
+-------------------------------------------------------------------
 Tue Apr 09 06:26:37 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.11:
