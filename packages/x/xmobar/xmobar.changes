@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  7 16:47:09 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update xmobar to version 0.48.1.
+  ## Version 0.48.1 (May, 2024)
+
+  - Removing for now mouse support for `Kbd`, which can be recovered by
+    interested users using regular actions (see issue #703 for further details).
+
+-------------------------------------------------------------------
 Mon Apr  1 01:52:34 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update xmobar to version 0.48.
