@@ -99,6 +99,9 @@ find -name ResolverIntegrationTest.java -delete
 # Remove all dependencies with scope test, since a raw xmvn does not hide them
 %pom_remove_dep -r :::test:
 
+%pom_xpath_inject "pom:project/pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-plugin-plugin']/pom:configuration" '
+    <goalPrefix>xmvn-mojo</goalPrefix>' xmvn-mojo
+
 pushd %{name}
   %{mvn_file} :{*} %{parent}/@1
 popd

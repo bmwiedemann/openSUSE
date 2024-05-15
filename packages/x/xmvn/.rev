@@ -151,4 +151,12 @@
     <comment>needed by apache-commons-compress 1.26.0</comment>
     <requestid>1147591</requestid>
   </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>d2621330538968c6cc97975756a2e554</srcmd5>
+    <version>4.2.0</version>
+    <time>1715801352</time>
+    <user>anag+factory</user>
+    <comment>Fix for building with new maven-plugin-tools</comment>
+    <requestid>1174252</requestid>
+  </revision>
 </revisionlist>
