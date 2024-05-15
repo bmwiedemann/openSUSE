@@ -7185,4 +7185,14 @@ handle manual pages that consist only of a .so directive such as
   fc5e25d0a0 journalctl: make --until work again with --after-cursor and --lines (bsc#1221906)</comment>
     <requestid>1172983</requestid>
   </revision>
+  <revision rev="422" vrev="1">
+    <srcmd5>6420716b670cd210379860afda30686a</srcmd5>
+    <version>255.6</version>
+    <time>1715801145</time>
+    <user>anag+factory</user>
+    <comment>- Import commit a3dccacb97e94ed91f1c41ce82ef13bfe8fa1a79 (merge of v255.6)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/49fb09fa18a7b81f6b3c3c15aca47fd00940430e...a3dccacb97e94ed91f1c41ce82ef13bfe8fa1a79</comment>
+    <requestid>1173887</requestid>
+  </revision>
 </revisionlist>

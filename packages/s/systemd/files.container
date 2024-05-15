@@ -43,6 +43,7 @@
 %endif
 
 %if %{with importd}
+%{_datadir}/bash-completion/completions/importctl
 %{_datadir}/dbus-1/interfaces/org.freedesktop.import1.Manager.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.import1.Transfer.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.import1.service
