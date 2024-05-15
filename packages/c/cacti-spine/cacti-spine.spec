@@ -2,6 +2,7 @@
 # spec file for package cacti-spine
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %{!?make_build: %define make_build make %{?_smp_mflags}}
 Name:           cacti-spine
-Version:        1.2.26
+Version:        1.2.27
 Release:        0
 Summary:        Threaded poller for Cacti written in C
 License:        LGPL-2.1-or-later
@@ -37,7 +38,7 @@ Spine is a supplemental poller for Cacti that makes use of pthreads to achieve
 excellent performance.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 ./bootstrap
