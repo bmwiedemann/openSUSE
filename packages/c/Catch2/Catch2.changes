@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon May 13 19:14:33 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.6.0:
+  * Fixes
+    - Fixed the JUnit reporter sometimes crashing when reporting a
+      fatal error (gh#catchorg/Catch2#1210,
+      gh#catchorg/Catch2#2855).
+  * Improvements
+    - Disable -Wnon-virtual-dtor in Decomposer and Matchers
+      (gh#catchorg/Catch2#2854).
+    - precision in floating point stringmakers defaults to
+      max_digits10.
+    - Column wrapping ignores ansi colour codes when calculating
+      string width (gh#catchorg/Catch2#2833,
+      gh#catchorg/Catch2#2849).
+  * Miscellaneous
+    - Conan support improvements
+    - SelfTest target can be built through Bazel
+      (gh#catchorg/Catch2#2857).
+
+-------------------------------------------------------------------
 Wed Apr 10 13:38:14 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.5.4:
