@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 25 03:06:54 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.515
+   see /usr/share/doc/packages/perl-MIME-tools/ChangeLog
+
+  5.515	  2024-04-24  Dianne Skoll <dianne@skoll.ca>
+
+  	* VERSION 5.514 RELEASED
+
+  	* Fix the "version" setting in META.yml.  There are no other changes
+  	  since 5.514.
+
+-------------------------------------------------------------------
 Wed Feb  7 03:08:54 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.514

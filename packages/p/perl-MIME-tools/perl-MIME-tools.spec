@@ -18,10 +18,10 @@
 
 %define cpan_name MIME-tools
 Name:           perl-MIME-tools
-Version:        5.514.0
+Version:        5.515.0
 Release:        0
-# 5.514 -> normalize -> 5.514.0
-%define cpan_version 5.514
+# 5.515 -> normalize -> 5.515.0
+%define cpan_version 5.515
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Tools to manipulate MIME messages
 URL:            https://metacpan.org/release/%{cpan_name}

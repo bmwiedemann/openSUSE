@@ -312,4 +312,17 @@
     <comment></comment>
     <requestid>1163124</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>9c91010417ca343485f02cd91b9d2b59</srcmd5>
+    <version>5.515.0</version>
+    <time>1715801316</time>
+    <user>anag+factory</user>
+    <comment>- updated to 5.515
+   see /usr/share/doc/packages/perl-MIME-tools/ChangeLog
+  5.515	  2024-04-24  Dianne Skoll &lt;dianne@skoll.ca&gt;
+  	* VERSION 5.514 RELEASED
+  	* Fix the &quot;version&quot; setting in META.yml.  There are no other changes
+  	  since 5.514. (forwarded request 1173737 from tinita)</comment>
+    <requestid>1174132</requestid>
+  </revision>
 </revisionlist>
