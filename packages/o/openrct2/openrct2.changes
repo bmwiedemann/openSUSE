@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 12 17:41:44 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.4.11
+  * https://github.com/OpenRCT2/OpenRCT2/releases/tag/v0.4.11
+- Update dependencies
+  * objects_version 1.4.4
+  * opensound_version 1.0.5
+- use gcc 10 for openSUSE Leap because std=c++20 now required
+
+-------------------------------------------------------------------
 Sat Feb 10 15:29:32 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 0.4.8

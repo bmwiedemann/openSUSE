@@ -15,6 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# std=c++20 now required, use GCC 10 for Leap
+%if 0%{?suse_version} < 1650
+%define gcc_ver 10
+%endif
 
 %define lib_suffix %{nil}
 %ifarch x86_64
@@ -22,10 +26,10 @@
 %endif
 %define title_version 0.4.6
 %define title_version_url %{title_version}
-%define objects_version 1.3.13
+%define objects_version 1.4.4
 %define openmusic_version 1.5
-%define opensound_version 1.0.3
-%define openrct2_version 0.4.8
+%define opensound_version 1.0.5
+%define openrct2_version 0.4.11
 
 Name:           openrct2
 Version:        %{openrct2_version}
@@ -42,7 +46,7 @@ Source4:        https://github.com/OpenRCT2/OpenSoundEffects/releases/download/v
 Source5:        https://raw.githubusercontent.com/OpenRCT2/OpenMusic/master/COPYING
 BuildRequires:  cmake >= 3.9
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  glibc-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  nlohmann_json-devel >= 3.6.0
@@ -124,7 +128,13 @@ sed -i "s/__TIME__/\"Build Service\"/" src/openrct2/Version.h
 
 %build
 export CXXFLAGS="%optflags -Wno-maybe-uninitialized"
-%cmake -DDOWNLOAD_TITLE_SEQUENCES=OFF -DDOWNLOAD_OBJECTS=OFF
+
+%cmake \
+  -DCMAKE_C_COMPILER=gcc%{?gcc_ver:-%{gcc_ver}} \
+  -DCMAKE_CXX_COMPILER=g++%{?gcc_ver:-%{gcc_ver}} \
+  -DDOWNLOAD_TITLE_SEQUENCES=OFF \
+  -DDOWNLOAD_OBJECTS=OFF
+
 %make_build all
 # libopenrct2 is not installed when openrct2 is called by make, so set the LD_LIBRARY_PATH
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$(dirname $(find . -name libopenrct2.so))"
