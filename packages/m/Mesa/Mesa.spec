@@ -76,7 +76,7 @@
   %endif
   %ifarch %{arm} aarch64
     %define with_vulkan 1
-    %define vulkan_drivers swrast,amd,broadcom,freedreno
+    %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk
   %endif
   %ifarch riscv64
     %define with_vulkan 1
@@ -238,7 +238,7 @@ BuildRequires:  pkgconfig(libdrm_etnaviv) >= 2.4.89
 BuildRequires:  pkgconfig(libdrm_freedreno) >= 2.4.74
 BuildRequires:  pkgconfig(libelf)
 %endif
-%ifarch x86_64 %{ix86}
+%ifarch x86_64 %{ix86} aarch64 %{arm}
 BuildRequires:  libelf-devel
 BuildRequires:  pkgconfig(libdrm_intel) >= 2.4.75
 %else
@@ -1221,7 +1221,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %endif
 
 %if 0%{with_vulkan}
-%ifarch %{ix86} x86_64
+%ifarch %{ix86} x86_64 aarch64 %{arm}
 %files -n libvulkan_intel
 %dir %{_datadir}/vulkan
 %dir %{_datadir}/vulkan/icd.d
