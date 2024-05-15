@@ -589,4 +589,14 @@
     <comment></comment>
     <requestid>1171849</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>b7daf0b28e63b63997257e6b61cd96f1</srcmd5>
+    <version>3.10.10.0</version>
+    <time>1715801184</time>
+    <user>anag+factory</user>
+    <comment>- Added a patches gnuradio-fix-error-message-for-Qwt-version.patch
+  and gnuradio-remove-maximum-version-for-Qwt.patch (taken from
+  upstream), fixing build with Qwt-6.3.0 (forwarded request 1173459 from wkazubski)</comment>
+    <requestid>1173967</requestid>
+  </revision>
 </revisionlist>

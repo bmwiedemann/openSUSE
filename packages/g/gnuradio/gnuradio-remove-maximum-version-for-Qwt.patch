@@ -1,0 +1,24 @@
+From ca344658756dab10a762571c51acf92c00c066c1 Mon Sep 17 00:00:00 2001
+From: Jeff Long <willcode4@gmail.com>
+Date: Fri, 10 May 2024 06:21:08 -0400
+Subject: [PATCH] cmake: remove maximum version for Qwt (was < 6.3)
+
+Signed-off-by: Jeff Long <willcode4@gmail.com>
+---
+ cmake/Modules/FindQwt.cmake | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/cmake/Modules/FindQwt.cmake b/cmake/Modules/FindQwt.cmake
+index 8718a6f73cc..e87c6a20a91 100644
+--- a/cmake/Modules/FindQwt.cmake
++++ b/cmake/Modules/FindQwt.cmake
+@@ -32,9 +32,6 @@ if(QWT_INCLUDE_DIRS)
+     if(QWT_VERSION VERSION_LESS "6.1")
+         set(QWT_WRONG_VERSION True)
+     endif()
+-    if(NOT QWT_VERSION VERSION_LESS "6.3")
+-        set(QWT_WRONG_VERSION True)
+-    endif()
+ 
+     message(STATUS "QWT Version: ${QWT_VERSION}")
+     if(NOT QWT_WRONG_VERSION)

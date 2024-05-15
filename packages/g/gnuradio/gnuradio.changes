@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 11 21:54:03 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Added a patches gnuradio-fix-error-message-for-Qwt-version.patch
+  and gnuradio-remove-maximum-version-for-Qwt.patch (taken from
+  upstream), fixing build with Qwt-6.3.0
+
+-------------------------------------------------------------------
 Tue Apr 30 22:25:18 UTC 2024 - Mikhail Paulyshka <me@mixaill.net>
 
 - Added python3-QtPy and python3-QDarkStyle runtime dependencies (needed for gnuradio-companion --qt)
