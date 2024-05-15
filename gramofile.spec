@@ -50,21 +50,7 @@ saved in WAV format, making it easy to record on CD with programs like
 cdrecord or xcdroast.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7
-%patch8
-%patch9
-%patch10
-%patch12
-%patch13
-%patch14
-%patch15
+%autosetup -p0
 
 %build
 %make_build CC="gcc"
