@@ -96,11 +96,11 @@ developing applications which use WindowMaker.
 %setup -q -n %{name}-%{version} -a 1
 mkdir menu_orig
 cp %{name}/{menu.*,plmenu.*} menu_orig
-%patch1
-%patch2
-%patch3
-%patch101
-%patch102
+%patch -P 1
+%patch -P 2
+%patch -P 3
+%patch -P 101
+%patch -P 102
 cp %{S:4} .
 cp %{S:6} .
 %if 0%{?suse_version} < 1140

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 15 07:53:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N format to eliminate usage of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Apr 17 08:40:25 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Use png for default wallpaper as SLES, TW, Leap 15.6+ are using png
