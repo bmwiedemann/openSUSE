@@ -1,0 +1,34 @@
+---
+ systemd/test/test_journal.py |   11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+--- a/systemd/test/test_journal.py
++++ b/systemd/test/test_journal.py
+@@ -43,11 +43,11 @@ class MockSender:
+         self.buf.append(args)
+ 
+ @contextlib.contextmanager
+-def skip_oserror(code):
++def skip_oserror(*errnos):
+     try:
+         yield
+     except (OSError, IOError) as e:
+-        if e.errno == code:
++        if e.errno in errnos:
+             pytest.skip()
+         raise
+ 
+@@ -233,9 +233,10 @@ def test_reader_this_boot(tmpdir):
+ def test_reader_this_machine(tmpdir):
+     j = journal.Reader(path=tmpdir.strpath)
+     with j:
+-        j.this_machine()
+-        j.this_machine(TEST_MID)
+-        j.this_machine(TEST_MID.hex)
++        with skip_oserror(errno.ENOENT, errno.ENOSYS, 123):
++            j.this_machine()
++            j.this_machine(TEST_MID)
++            j.this_machine(TEST_MID.hex)
+ 
+ def test_reader_query_unique(tmpdir):
+     j = journal.Reader(path=tmpdir.strpath)

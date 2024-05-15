@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 13 18:03:23 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add fix_test_reader_this_machine.patch to make
+  test_reader_this_machine pass in the limited build environment.
+- Do not pull in whole systemd, when just libsystemd0 is enough
+  (bsc#1215538).
+
+-------------------------------------------------------------------
 Sun Jun 11 14:08:18 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

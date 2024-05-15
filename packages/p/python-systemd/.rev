@@ -135,4 +135,16 @@
     <comment></comment>
     <requestid>1092373</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>4f4820eed5cf806b430aa4bc6a6e8ece</srcmd5>
+    <version>235</version>
+    <time>1715801072</time>
+    <user>anag+factory</user>
+    <comment>- Add fix_test_reader_this_machine.patch to make
+  test_reader_this_machine pass in the limited build environment.
+- Do not pull in whole systemd, when just libsystemd0 is enough
+  (bsc#1215538).
+</comment>
+    <requestid>1173791</requestid>
+  </revision>
 </revisionlist>

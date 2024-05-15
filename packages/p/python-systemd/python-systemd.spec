@@ -1,7 +1,7 @@
 #
 # spec file for package python-systemd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,9 @@ Patch1:         iso-c-90.patch
 # PATCH-FIX-OPENSUSE OBS_missing_etc_machine_id.patch gh#systemd/python-systemd#118 mcepl@suse.com
 # build environment doesn't have /etc/machine-id
 Patch2:         OBS_missing_etc_machine_id.patch
+# PATCH-FIX-UPSTREAM fix_test_reader_this_machine.patch mcepl@suse.com
+# make test_reader_this_machine test pass in the limited build environment
+Patch3:         fix_test_reader_this_machine.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -39,7 +42,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libsystemd)
-Requires:       systemd
+Requires:       libsystemd0
 Suggests:       %{name}-doc
 # /SECTION
 BuildRequires:  %{python_module pytest}
@@ -64,7 +67,7 @@ Python module for native access to the systemd facilities. Functionality is sepe
 
 %check
 # Not sure about the first exclusion,
-export PYTEST_ADDOPTS="-k 'not (test_reader_this_machine or test_get_machine)'"
+# export PYTEST_ADDOPTS="-k 'not (test_reader_this_machine or test_get_machine)'"
 %python_expand make PYTHON=python%{$python_version} check
 
 %files %{python_files}

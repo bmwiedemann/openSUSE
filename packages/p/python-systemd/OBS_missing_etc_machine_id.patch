@@ -6,14 +6,12 @@ Subject: [PATCH] tests: check for errnos that sd_id128_get_machine actually
 
 Fixes #118.
 ---
- systemd/test/test_id128.py | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ systemd/test/test_id128.py |   11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
 
-diff --git a/systemd/test/test_id128.py b/systemd/test/test_id128.py
-index 146ec73..f5fc65f 100644
 --- a/systemd/test/test_id128.py
 +++ b/systemd/test/test_id128.py
-@@ -6,11 +6,11 @@
+@@ -6,11 +6,11 @@ import pytest
  from systemd import id128
  
  @contextlib.contextmanager
@@ -27,13 +25,24 @@ index 146ec73..f5fc65f 100644
              pytest.skip()
          raise
  
-@@ -29,7 +29,8 @@ def test_get_machine_app_specific():
+@@ -21,7 +21,10 @@ def test_randomize():
+     assert u1 != u2
+ 
+ def test_get_machine():
+-    u1 = id128.get_machine()
++    # yikes, python2 doesn't know ENOMEDIUM
++    with skip_oserror(errno.ENOENT, errno.ENOSYS, 123):
++        u1 = id128.get_machine()
++
+     u2 = id128.get_machine()
+     assert u1 == u2
+ 
+@@ -29,7 +32,7 @@ def test_get_machine_app_specific():
      a1 = uuid.uuid1()
      a2 = uuid.uuid1()
  
 -    with skip_oserror(errno.ENOSYS):
-+    # yikes, python2 doesn't know ENOMEDIUM
-+    with skip_oserror(errno.ENOENT, 123):
++    with skip_oserror(errno.ENOENT, errno.ENOSYS, 123):
          u1 = id128.get_machine_app_specific(a1)
  
      u2 = id128.get_machine_app_specific(a2)
