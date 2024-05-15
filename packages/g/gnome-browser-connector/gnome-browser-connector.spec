@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/action/show/Projects/GnomeShellIntegration
 Source:         https://download.gnome.org/sources/%{name}/42/%{name}-%{version}.tar.xz
+# PATCH-FIX-SLE python36.patch bsc#1223902 yfjiang@suse.com  -- Patch to support python 3.6 on SLE/Leap 15.6.
+Patch0:         python36.patch
 
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
@@ -43,7 +45,10 @@ host messaging connector that provides integration with GNOME Shell and the
 corresponding extensions repository https://extensions.gnome.org.
 
 %prep
-%autosetup -p1
+%setup -q
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%autopatch -p1
+%endif
 
 %build
 %meson

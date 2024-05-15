@@ -1,0 +1,94 @@
+Index: gnome-browser-connector-42.1/gnome_browser_connector/application.py
+===================================================================
+--- gnome-browser-connector-42.1.orig/gnome_browser_connector/application.py
++++ gnome-browser-connector-42.1/gnome_browser_connector/application.py
+@@ -1,6 +1,5 @@
+ # SPDX-License-Identifer: GPL-3.0-or-later
+ 
+-from __future__ import annotations
+ 
+ import signal
+ import sys
+@@ -120,9 +119,9 @@ class Application(BaseGioApplication):
+ 
+     def default_exception_hook(
+         self,
+-        exception_type: type[BaseException],
++        exception_type: 'type[BaseException]',
+         value: BaseException,
+-        tb: TracebackType
++        tb: 'TracebackType'
+     ) -> None:
+         self._log.fatal("Uncaught exception of type %s occured", exception_type)
+         traceback.print_tb(tb)
+Index: gnome-browser-connector-42.1/gnome_browser_connector/connector.py
+===================================================================
+--- gnome-browser-connector-42.1.orig/gnome_browser_connector/connector.py
++++ gnome-browser-connector-42.1/gnome_browser_connector/connector.py
+@@ -1,6 +1,5 @@
+ # SPDX-License-Identifer: GPL-3.0-or-later
+ 
+-from __future__ import annotations
+ 
+ import json
+ import struct
+@@ -24,7 +23,7 @@ class Connector(ApplicationHandler):
+     # https://developer.chrome.com/extensions/nativeMessaging#native-messaging-host-protocol
+     MESSAGE_LENGTH_SIZE = 4
+ 
+-    def __init__(self, application: BaseGioApplication) -> None:
++    def __init__(self, application: 'BaseGioApplication') -> None:
+         super().__init__(application)
+ 
+         self._log = get_logger(self)
+@@ -83,12 +82,12 @@ class Connector(ApplicationHandler):
+     def on_dbus_signal(
+         self,
+         connection: Gio.DBusConnection,
+-        sender_name: Optional[str],
++        sender_name: 'Optional[str]',
+         object_path: str,
+         interface_name: str,
+         signal_name: str,
+         parameters: GLib.Variant,
+-        user_data: Optional[Any]
++        user_data: 'Optional[Any]'
+     ) -> None:
+         self._log.debug('Signal %s from %s', signal_name, interface_name)
+ 
+@@ -140,7 +139,7 @@ class Connector(ApplicationHandler):
+         self,
+         source: GLib.IOChannel,
+         condition: GLib.IOCondition,
+-        data: Optional[GObject.Object]
++        data: 'Optional[GObject.Object]'
+     ) -> Optional[bool]:
+         self._log.debug('On input')
+         text_length_bytes: bytes = source.read(self.MESSAGE_LENGTH_SIZE)
+@@ -166,7 +165,7 @@ class Connector(ApplicationHandler):
+ 
+         return True
+ 
+-    def send_message(self, response: Any):
++    def send_message(self, response: 'Any'):
+         """
+         Helper function that sends a message to the webapp.
+         :param response: dictionary of response data
+@@ -191,7 +190,7 @@ class Connector(ApplicationHandler):
+         except IOError as e:
+             raise Exception(f'IOError occured: {e.strerror}')
+ 
+-    def process_request(self, request: dict[str, Any]) -> None:
++    def process_request(self, request: 'dict[str, Any]') -> None:
+         self._log.debug("Execute: to %s", request['execute'])
+ 
+         if request['execute'] == 'initialize':
+@@ -355,7 +354,7 @@ class Connector(ApplicationHandler):
+         self._log.debug('Execute: from %s',  request['execute'])
+ 
+     # Helpers
+-    def dbus_call_response(self, method: str, parameters: Optional[GLib.Variant], result_property: str):
++    def dbus_call_response(self, method: str, parameters: 'Optional[GLib.Variant]', result_property: str):
+         try:
+             result = self._shell_proxy.call_sync(method,
+                                                 parameters,
