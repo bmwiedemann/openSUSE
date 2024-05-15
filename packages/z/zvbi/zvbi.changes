@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 14 06:04:33 UTC 2024 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc14
+  https://github.com/zapping-vbi/zvbi/commit/ae74ae513714f81b9b8abdb12e1b235d16fad74e
+  + zvbi-gcc14.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 12:12:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
