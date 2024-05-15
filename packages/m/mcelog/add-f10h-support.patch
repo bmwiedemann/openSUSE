@@ -8,10 +8,10 @@ Signed-off-by: Borislav Petkov <bp@suse.de>
  mcelog.h |    1 
  4 files changed, 506 insertions(+), 51 deletions(-)
 
-Index: mcelog-189/amd.c
+Index: mcelog-198/amd.c
 ===================================================================
---- mcelog-189.orig/amd.c
-+++ mcelog-189/amd.c
+--- mcelog-198.orig/amd.c
++++ mcelog-198/amd.c
 @@ -14,7 +14,7 @@
  #include "mcelog.h"
  #include "amd.h"
@@ -561,10 +561,10 @@ Index: mcelog-189/amd.c
 +	}
 +        return 1;
  }
-Index: mcelog-189/amd.h
+Index: mcelog-198/amd.h
 ===================================================================
---- mcelog-189.orig/amd.h
-+++ mcelog-189/amd.h
+--- mcelog-198.orig/amd.h
++++ mcelog-198/amd.h
 @@ -1,6 +1,25 @@
 +#include <stdbool.h>
 +
@@ -628,11 +628,11 @@ Index: mcelog-189/amd.h
  
  enum tt_ids {
  	TT_INSTR = 0,
-Index: mcelog-189/mcelog.c
+Index: mcelog-198/mcelog.c
 ===================================================================
---- mcelog-189.orig/mcelog.c
-+++ mcelog-189/mcelog.c
-@@ -152,8 +152,8 @@ static int mce_filter(struct mce *m, uns
+--- mcelog-198.orig/mcelog.c
++++ mcelog-198/mcelog.c
+@@ -151,8 +151,8 @@ static int mce_filter(struct mce *m, uns
  	/* Filter out known broken MCEs */
  	if (cputype >= CPU_INTEL)
  		return mce_filter_intel(m, recordlen);

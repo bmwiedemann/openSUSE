@@ -2,9 +2,11 @@
  memdb.c |   10 +++++-----
  1 file changed, 5 insertions(+), 5 deletions(-)
 
---- a/memdb.c
-+++ b/memdb.c
-@@ -431,11 +431,11 @@
+Index: mcelog-198/memdb.c
+===================================================================
+--- mcelog-198.orig/memdb.c
++++ mcelog-198/memdb.c
+@@ -440,11 +440,11 @@ void prefill_memdb(int do_dmi)
  		md->location = xstrdup(bl);
  		md->name = xstrdup(dmi_getstring(&d->header, d->device_locator));
  	}

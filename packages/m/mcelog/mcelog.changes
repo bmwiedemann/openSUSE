@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 13 12:47:27 UTC 2024 - trenn@suse.de
+
+- Update to version 198:
+  * Remove obsolete on disk dimm database code
+  * page.c: Disable gcc warnings
+  * page.c: Remove obsolete comment
+  * mcelog: Fix clang warnings
+  * mcelog: mempage_replace missing initialization of mempage fields
+  * mcelog: Add third model number for Arrowlake
+- Refresh patches according to mainline:
+M    add-f10h-support.patch
+M    email.patch
+M    fix_setgroups_missing_call.patch
+M    mcelog_invert_prefill_db_warning.patch
+
+-------------------------------------------------------------------
 Mon Feb 12 06:23:11 UTC 2024 - trenn@suse.de
 
 - Update to version 197:

@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           mcelog
-Version:        197
+Version:        198
 Release:        0
 Summary:        Log Machine Check Events
 License:        GPL-2.0-only

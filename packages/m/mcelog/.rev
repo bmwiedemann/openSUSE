@@ -784,4 +784,12 @@ M email.patch
   * mcelog: Fix two parsing issues</comment>
     <requestid>1146084</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>fe66c937720a1e37cd97a2db863eaaf2</srcmd5>
+    <version>198</version>
+    <time>1715801144</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1173886</requestid>
+  </revision>
 </revisionlist>
