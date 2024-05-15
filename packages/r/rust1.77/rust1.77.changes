@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May 10 12:10:13 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
+
+Version 1.77.2 (2024-04-09)
+===========================
+
+- [CVE-2024-24576: fix escaping of Windows batch file arguments in `std::process::Command`](https://blog.rust-lang.org/2024/04/09/cve-2024-24576.html)
+
+Version 1.77.1 (2024-03-28)
+===========================
+
+- [Revert stripping debuginfo by default for Windows](https://github.com/rust-lang/cargo/pull/13654)
+  This fixes a regression in 1.77 by reverting to the previous default.
+  Platforms other than Windows are not affected.
+- Internal: [Fix heading anchor rendering in doc pages](https://github.com/rust-lang/rust/pull/122693)
+
+-------------------------------------------------------------------
 Fri Apr  5 00:12:29 UTC 2024 - William Brown <william.brown@suse.com>
 
 - Remove suggests as they do nothing.
