@@ -1,8 +1,8 @@
-Index: uwsgi-2.0.13/uwsgiconfig.py
+Index: uwsgi-2.0.25.1/uwsgiconfig.py
 ===================================================================
---- uwsgi-2.0.13.orig/uwsgiconfig.py
-+++ uwsgi-2.0.13/uwsgiconfig.py
-@@ -1420,10 +1420,7 @@ def build_plugin(path, uc, cflags, ldfla
+--- uwsgi-2.0.25.1.orig/uwsgiconfig.py
++++ uwsgi-2.0.25.1/uwsgiconfig.py
+@@ -1444,10 +1444,7 @@ def build_plugin(path, uc, cflags, ldfla
      except:
          pass
  

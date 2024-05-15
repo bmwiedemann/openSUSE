@@ -29,7 +29,8 @@
 %endif
 
 Name:           uwsgi
-Version:        2.0.23
+Version:        2.0.25.1
+
 Release:        0
 Summary:        Application Container Server for Networked/Clustered Web Applications
 License:        Apache-2.0 AND GPL-2.0-only WITH GCC-exception-2.0

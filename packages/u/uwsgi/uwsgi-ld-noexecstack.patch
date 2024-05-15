@@ -1,8 +1,6 @@
-Index: uwsgi-2.0.21/uwsgiconfig.py
-===================================================================
---- uwsgi-2.0.21.orig/uwsgiconfig.py
-+++ uwsgi-2.0.21/uwsgiconfig.py
-@@ -539,7 +539,7 @@ def build_uwsgi(uc, print_only=False, gc
+--- a/uwsgiconfig.py
++++ b/uwsgiconfig.py
+@@ -535,7 +535,7 @@ def build_uwsgi(uc, print_only=False, gc
                          gcc_list.append('%s/%s' % (path, cfile))
                  for bfile in up.get('BINARY_LIST', []):
                      try:
@@ -11,7 +9,7 @@ Index: uwsgi-2.0.21/uwsgiconfig.py
                          print(binary_link_cmd)
                          if subprocess.call(binary_link_cmd, shell=True) != 0:
                              raise Exception('unable to link binary file')
-@@ -1146,7 +1146,7 @@ class uConf(object):
+@@ -1150,7 +1150,7 @@ class uConf(object):
              if not self.embed_config:
                  self.embed_config = self.get('embed_config')
              if self.embed_config:
@@ -20,7 +18,7 @@ Index: uwsgi-2.0.21/uwsgiconfig.py
                  print(binary_link_cmd)
                  subprocess.call(binary_link_cmd, shell=True)
                  self.cflags.append("-DUWSGI_EMBED_CONFIG=_binary_%s_start" % binarize(self.embed_config))
-@@ -1165,7 +1165,7 @@ class uConf(object):
+@@ -1169,7 +1169,7 @@ class uConf(object):
                          for directory, directories, files in os.walk(ef):
                              for f in files:
                                  fname = "%s/%s" % (directory, f)
@@ -29,7 +27,7 @@ Index: uwsgi-2.0.21/uwsgiconfig.py
                                  print(binary_link_cmd)
                                  subprocess.call(binary_link_cmd, shell=True)
                                  if symbase:
-@@ -1175,7 +1175,7 @@ class uConf(object):
+@@ -1179,7 +1179,7 @@ class uConf(object):
                                          subprocess.call(objcopy_cmd, shell=True)
                                  binary_list.append(binarize(fname))
                      else:
@@ -38,7 +36,7 @@ Index: uwsgi-2.0.21/uwsgiconfig.py
                          print(binary_link_cmd)
                          subprocess.call(binary_link_cmd, shell=True)
                          binary_list.append(binarize(ef))
-@@ -1460,7 +1460,7 @@ def build_plugin(path, uc, cflags, ldfla
+@@ -1464,7 +1464,7 @@ def build_plugin(path, uc, cflags, ldfla
              gcc_list.append(path + '/' + cfile)
      for bfile in up.get('BINARY_LIST', []):
          try:

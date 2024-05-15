@@ -1,8 +1,6 @@
-Index: uwsgi-2.0.21/plugins/jvm/uwsgiplugin.py
-===================================================================
---- uwsgi-2.0.21.orig/plugins/jvm/uwsgiplugin.py
-+++ uwsgi-2.0.21/plugins/jvm/uwsgiplugin.py
-@@ -66,11 +66,6 @@ if "-framework JavaVM" in JVM_LIBPATH:
+--- a/plugins/jvm/uwsgiplugin.py
++++ b/plugins/jvm/uwsgiplugin.py
+@@ -69,11 +69,6 @@ if "-framework JavaVM" in JVM_LIBPATH:
  
  GCC_LIST = ['jvm_plugin']
  
@@ -14,23 +12,19 @@ Index: uwsgi-2.0.21/plugins/jvm/uwsgiplugin.py
  def post_build(config):
      if subprocess.call("javac %s/plugins/jvm/uwsgi.java" % os.getcwd(), shell=True) != 0:
          os._exit(1)
-Index: uwsgi-2.0.21/plugins/php/uwsgiplugin.py
-===================================================================
---- uwsgi-2.0.21.orig/plugins/php/uwsgiplugin.py
-+++ uwsgi-2.0.21/plugins/php/uwsgiplugin.py
+--- a/plugins/php/uwsgiplugin.py
++++ b/plugins/php/uwsgiplugin.py
 @@ -19,7 +19,6 @@ LDFLAGS = os.popen(PHPPATH + ' --ldflags
  
  if ld_run_path:
      LDFLAGS.append('-L%s' % ld_run_path)
 -    os.environ['LD_RUN_PATH'] = ld_run_path
  
- LIBS = [os.popen(PHPPATH + ' --libs').read().rstrip(), '-lphp' + php_version]
- 
-Index: uwsgi-2.0.21/plugins/python/uwsgiplugin.py
-===================================================================
---- uwsgi-2.0.21.orig/plugins/python/uwsgiplugin.py
-+++ uwsgi-2.0.21/plugins/python/uwsgiplugin.py
-@@ -64,8 +64,6 @@ if not 'UWSGI_PYTHON_NOLIB' in os.enviro
+ # PHP8 and above does not add the version to the library
+ # name
+--- a/plugins/python/uwsgiplugin.py
++++ b/plugins/python/uwsgiplugin.py
+@@ -90,8 +90,6 @@ if not 'UWSGI_PYTHON_NOLIB' in os.enviro
          LDFLAGS.append("-L%s" % libdir)
          LDFLAGS.append("-Wl,-rpath,%s" % libdir)
  
@@ -39,11 +33,9 @@ Index: uwsgi-2.0.21/plugins/python/uwsgiplugin.py
          LIBS.append('-lpython%s' % get_python_version())
  else:
      LIBS = []
-Index: uwsgi-2.0.21/plugins/rack/uwsgiplugin.py
-===================================================================
---- uwsgi-2.0.21.orig/plugins/rack/uwsgiplugin.py
-+++ uwsgi-2.0.21/plugins/rack/uwsgiplugin.py
-@@ -46,7 +46,6 @@ LIBS = os.popen(RUBYPATH + " -e \"requir
+--- a/plugins/rack/uwsgiplugin.py
++++ b/plugins/rack/uwsgiplugin.py
+@@ -48,7 +48,6 @@ LIBS = os.popen(RUBYPATH + " -e \"requir
  
  if has_shared == 'yes':
      LDFLAGS.append('-L' + libpath )
@@ -51,11 +43,9 @@ Index: uwsgi-2.0.21/plugins/rack/uwsgiplugin.py
      LIBS.append(os.popen(RUBYPATH + " -e \"require 'rbconfig';print '-l' + %s::CONFIG['RUBY_SO_NAME']\"" % rbconfig).read().rstrip())
  else:
      rubylibdir = os.popen(RUBYPATH + " -e \"require 'rbconfig';print RbConfig::CONFIG['rubylibdir']\"").read().rstrip()
-Index: uwsgi-2.0.21/plugins/ruby19/uwsgiplugin.py
-===================================================================
---- uwsgi-2.0.21.orig/plugins/ruby19/uwsgiplugin.py
-+++ uwsgi-2.0.21/plugins/ruby19/uwsgiplugin.py
-@@ -40,6 +40,5 @@ LDFLAGS = os.popen(RUBYPATH + " -e \"req
+--- a/plugins/ruby19/uwsgiplugin.py
++++ b/plugins/ruby19/uwsgiplugin.py
+@@ -42,6 +42,5 @@ LDFLAGS = os.popen(RUBYPATH + " -e \"req
  
  libpath = os.popen(RUBYPATH + " -e \"require 'rbconfig';print %s::CONFIG['libdir']\"" % rbconfig).read().rstrip()
  LDFLAGS.append('-L' + libpath )

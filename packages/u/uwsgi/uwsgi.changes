@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue May 14 07:07:42 UTC 2024 - pgajdos@suse.com
+
+- version update to 2.0.25.1
+  * fixed build with gcc14
+  2.0.25.1
+  * Fix build when pcre is not found and is optional (umut)
+  2.0.25
+  * Update glusterfs io callback function signature for 6.0 (Ralf Ertzinger)
+  * Fix default values in help for min-worker-lifetime & legion-skew-tolerance (Thomas Riccardi)
+  * Fix build regression with gcc < 5 (Riccardo Magliocchetti)
+  * Add support for building against prcre2. This changes the regexp internal data structures (Alexandre Rossi)
+  * Allow the valgrind generator script to run with a different python version (Wynn Wilkes)
+  * Fix a potential error with not releasing the gil in uwsgi_python_rpc (Wynn Wilkes)
+  * Rework threading cancellation handling. This can fix issues with threading, missing atexit callbacks and whatnot. (Inada Naoki)
+- modified patches
+  % uwsgi-1.9.17-plugin_build_path.patch (refreshed)
+- deleted patches
+  - uwsgi-2.0.24-update-glusterfs-io-callback-signature.patch (upstreamed)
+
+-------------------------------------------------------------------
+Fri Mar 15 14:26:20 UTC 2024 - James Oakley <jfunk@funktronics.ca>
+
+- Update to 2.0.24
+  * properly init cache for purge_lru (Alexandre Rossi)
+  * fix linking with php8 (Remi Collet)
+  * remove unused variables to fix compilation (László Károlyi)
+  * fix function parameter type to avoid overflow in harakiri (Shai Bentov)
+  * fix socket queue stats for ipv6 (Riccardo Magliocchetti)
+  * fixup -Wformat-signedness warnings (Riccardo Magliocchetti)
+  * Avoid strncpy from null in pyloader (Ben Kallus)
+  * add clang to compile test matrix in ci (Riccardo Magliocchetti)
+
+-------------------------------------------------------------------
 Tue Feb 20 15:39:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
