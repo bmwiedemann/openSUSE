@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 12 18:41:21 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.17:
+  * Moved project to Codeberg
+  * Fix lookup of string table
+  * End stderr output with a newline
+
+-------------------------------------------------------------------
 Tue Mar 17 12:20:29 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file
