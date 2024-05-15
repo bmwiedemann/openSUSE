@@ -1,0 +1,12 @@
+Index: vorbis-tools-1.4.2/ogginfo/codec_skeleton.c
+===================================================================
+--- vorbis-tools-1.4.2.orig/ogginfo/codec_skeleton.c
++++ vorbis-tools-1.4.2/ogginfo/codec_skeleton.c
+@@ -24,6 +24,7 @@
+ 
+ #include <ogg/ogg.h>
+ 
++#include "utf8.h"
+ #include "i18n.h"
+ 
+ #include "private.h"

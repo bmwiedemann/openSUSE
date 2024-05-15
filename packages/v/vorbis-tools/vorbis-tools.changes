@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 14 14:03:09 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- vorbis-tools-gcc14.patch: fix gcc14 build issues
+
+-------------------------------------------------------------------
 Tue Feb 20 13:26:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
