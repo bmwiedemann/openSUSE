@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Mon May 13 15:05:50 UTC 2024 - rombert@apache.org
+
+- Update to version 2.3.0:
+   * PR#4783 - @stefanprodan - ci: Consolidate conformance tests
+   * PR#4781 - @stefanprodan - Set Kubernetes 1.28 as min required
+     version
+   * PR#4780 - @stefanprodan - Update helm-controller to v1.0.1
+   * PR#4779 - @fluxcdbot - Update toolkit components
+   * PR#4778 - @darkowlzz - tests/integration: Run flux check after
+     installation
+   * PR#4777 - @stefanprodan - Add k3s to the conformance test suite
+   * PR#4775 - @stefanprodan - Update HelmRelease API to v2 (GA)
+   * PR#4773 - @makkes - Add (create|delete|export) source chart
+     commands
+   * PR#4771 - @matheuscscp - Add 2.3.x release label
+   * PR#4770 - @stefanprodan - Update Flux architecture diagram
+   * PR#4769 - @frekw - Add --reproducible flag to flux push
+     artifact
+   * PR#4768 - @stefanprodan - Improve end-to-end test workflow
+   * PR#4766 - @souleb - Add support for HelmRelease v2 in
+     fluxreconcile and flux create
+   * PR#4764 - @stefanprodan - ci: Adapt image automation test to
+     v1beta2
+   * PR#4759 - @stefanprodan - Update Helm Source APIs to v1 (GA)
+   * PR#4754 - @stefanprodan - Add --ssh-hostkey-algos flag to
+     bootstrap command
+   * PR#4747 - @stefanprodan - Update dependencies to Kubernetes
+     1.30
+   * PR#4746 - @swade1987 - Specifying go version in setup-go github
+     action.
+   * PR#4736 - @dependabot[bot] - build(deps): bump the ci group
+     with 4 updates
+   * PR#4735 - @JasonTheDeveloper - feat(secret): add create
+     notation secret handler
+  * PR#4734 - @stefanprodan - Run conformance tests for Kubernetes
+    1.30.0
+  * PR#4729 - @stefanprodan - Add OpenShift to the conformance test
+    suite
+  * PR#4728 - @toomaj - bootstrap: Add support for Git HTTP/S
+    authorization header
+  * PR#4727 - @makkes - Add flags for issuer/subject OCI signature
+    verification
+  * PR#4717 - @hawwwdi - Set GOMAXPROCS and GOMEMLIMIT to all Flux
+    controllers
+  * PR#4710 - @stefanprodan - Add flux envsubst command
+  * PR#4709 - @stefanprodan - Add --strict-substitute flag to flux
+    build ks and flux diff ks
+  * PR#4706 - @stefanprodan - Add --registry-creds flag to
+    bootstrap and install commands
+  * PR#4705 - @stefanprodan - Update dependencies to Kustomize
+    v5.4.0
+  * PR#4701 - @fluxcdbot - Update toolkit components
+  * PR#4699 - @stefanprodan - Update dependencies to Go 1.22 and
+    Kubernetes 1.29.3
+  * PR#4689 - @makkes - Pin envtest version
+  * PR#4687 - @carlpett - Add permissions required for flow control
+  * PR#4678 - @darkowlzz - Update ImageUpdateAutomation API to
+    v1beta2
+  * PR#4666 - @stefanprodan - Mark RFC-0006 as implementable
+  * PR#4657 - @stefanprodan - ci: Include all go modules in snyk
+    testing
+  * PR#4654 - @stefanprodan - Remove deprecated e2e tests
+  * PR#4629 - @rishinair11 - Fix a typo in --force flag description
+  * PR#4620 - @stefanprodan - Update Equinix ARM64 GitHub runners
+  * PR#4610 - @takp - Fix typo in build.go
+  * PR#4589 - @stefanprodan - Update dependencies
+  * PR#4583 - @fluxcdbot - Update toolkit components
+  * PR#4575 - @stefanprodan - Update dependencies to Kubernetes
+    v1.28.6
+  * PR#4558 - @twinguy - flux check should error on unrecognised
+    args
+  * PR#4557 - @twinguy - flux stats should error on unrecognised
+    args
+  * PR#4553 - @twinguy - Properly detect unexpected arguments
+    during uninstall
+  * PR#4534 - @adamkenihan - [RFC-0006] Flux-CDEvent Receiver
+- Build with golang 1.22
+
+-------------------------------------------------------------------
 Tue Feb 06 07:32:56 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.2.3:

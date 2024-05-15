@@ -22,15 +22,15 @@
 
 # check these versions on updates
 # see flux2/manifests/bases/*/kustomization.yaml
-%define helm_controller_version             v0.37.4
-%define image_automation_controller_version v0.37.1
-%define image_reflector_controller_version  v0.31.2
-%define kustomize_controller_version        v1.2.2
-%define notification_controller_version     v1.2.4
-%define source_controller_version           v1.2.4
+%define helm_controller_version             v1.0.1
+%define image_automation_controller_version v0.38.0
+%define image_reflector_controller_version  v0.32.0
+%define kustomize_controller_version        v1.3.0
+%define notification_controller_version     v1.3.0
+%define source_controller_version           v1.3.0
 
 Name:           flux2-cli
-Version:        2.2.3
+Version:        2.3.0
 Release:        0
 Summary:        CLI for Flux2CD
 License:        Apache-2.0
@@ -52,7 +52,7 @@ Source22:       source-controller.deployment.yaml
 Source101:      Packaging_README.md
 Source102:      download_yaml.sh
 BuildRequires:  git-core
-BuildRequires:  go >= 1.20
+BuildRequires:  go >= 1.22
 BuildRequires:  helm
 BuildRequires:  kustomize
 
