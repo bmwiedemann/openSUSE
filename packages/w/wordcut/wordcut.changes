@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 14 06:34:35 UTC 2024 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc14
+  + wordcut-gcc14.patch
+
+-------------------------------------------------------------------
 Tue May 30 10:55:00 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Update tarball url to proper location.

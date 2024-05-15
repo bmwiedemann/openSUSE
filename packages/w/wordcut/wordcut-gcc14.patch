@@ -1,0 +1,11 @@
+Index: wordcut-0.5.1b2/wordcut/xmalloc.h
+===================================================================
+--- wordcut-0.5.1b2.orig/wordcut/xmalloc.h
++++ wordcut-0.5.1b2/wordcut/xmalloc.h
+@@ -37,5 +37,6 @@
+ #ifndef __XMALLOC_H__
+ #define __XMALLOC_H__
+ void* xmalloc(size_t size);
++void* xrealloc(void *ptr,size_t size);
+ #endif
+ 

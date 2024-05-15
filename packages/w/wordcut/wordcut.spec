@@ -1,7 +1,7 @@
 #
 # spec file for package wordcut
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://thaiwordseg.sourceforge.net/
 Source0:        https://downloads.sourceforge.net/project/thaiwordseg/wordcut/wordcut-%{version}/wordcut-%{version}.tar.gz
 Patch0:         bugzilla-152315-locale-variable-used-before-set.patch
+# build with gcc14
+Patch1:         wordcut-gcc14.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
