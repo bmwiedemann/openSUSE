@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 14 02:07:51 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject and autosetup macros.
+- Add patch support-pytest-8.patch:
+  * Use new "setup_method" to support pytest >= 8.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:27:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

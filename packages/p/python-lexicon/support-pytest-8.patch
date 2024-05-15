@@ -1,0 +1,22 @@
+Index: lexicon-2.0.1/tests/alias_dict.py
+===================================================================
+--- lexicon-2.0.1.orig/tests/alias_dict.py
++++ lexicon-2.0.1/tests/alias_dict.py
+@@ -36,7 +36,7 @@ class AliasDict_:
+                 ad.unalias("lol no")
+ 
+     class aliases_of:
+-        def setup(self):
++        def setup_method(self):
+             self.ad = AliasDict()
+ 
+         def returns_list_of_aliases_for_given_real_key(self):
+@@ -162,7 +162,7 @@ class AliasDict_:
+     class aliases_are_not_real_keys:
+         "aliases are not real keys"
+ 
+-        def setup(self):
++        def setup_method(self):
+             self.a = AliasDict({"key1": "val1", "key2": "val2"})
+             self.a.alias("myalias", "key1")
+ 

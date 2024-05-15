@@ -71,4 +71,14 @@
     <comment></comment>
     <requestid>1081866</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>a4f5310208f93886778f8a17d803f61a</srcmd5>
+    <version>2.0.1</version>
+    <time>1715801132</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject and autosetup macros.
+- Add patch support-pytest-8.patch:
+  * Use new &quot;setup_method&quot; to support pytest &gt;= 8.</comment>
+    <requestid>1173811</requestid>
+  </revision>
 </revisionlist>
