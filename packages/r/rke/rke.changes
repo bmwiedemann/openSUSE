@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 14 06:05:39 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.9:
+  * What's Changed
+    - Bump containerd to v1.6.27. See #3566
+    - Fix the issue where not all kube-apiserver containers restart
+      after changing the Pod Security Admission Configuration. See
+      #3547
+  * Kubernetes version
+    - v1.25.16-rancher2-3
+    - v1.26.15-rancher1-1
+    - v1.27.13-rancher1-1
+    - v1.28.9-rancher1-1 (default)
+
+-------------------------------------------------------------------
 Thu Apr 11 05:00:14 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.5.8:
