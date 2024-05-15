@@ -18,7 +18,7 @@
 
 
 Name:           scamper
-Version:        20240229
+Version:        20240503
 Release:        0
 Summary:        Parallel Internet measurement utility
 License:        GPL-2.0-only
@@ -33,6 +33,7 @@ BuildRequires:  python3-Cython0
 BuildRequires:  pkgconfig(sqlite3)
 # for sc_hoiho
 BuildRequires:  pkgconfig(libpcre2-8)
+BuildRequires:  pkgconfig(libpcre)
 
 %description
 Scamper is a program that is able to conduct Internet measurement
@@ -50,17 +51,11 @@ infer where the failure appears to occur.
 
 This also contains the Python module.
 
-%package -n libscamperfile8
+%package -n libscamperfile9
 Summary:        File access library for scamper's binary dump format
 Group:          System/Libraries
-Obsoletes:      libscamperfile1 < %{version}
-Obsoletes:      libscamperfile2 < %{version}
-Obsoletes:      libscamperfile3 < %{version}
-Obsoletes:      libscamperfile4 < %{version}
-Obsoletes:      libscamperfile5 < %{version}
-Obsoletes:      libscamperfile6 < %{version}
 
-%description -n libscamperfile8
+%description -n libscamperfile9
 Scamper is a program that is able to conduct Internet measurement
 tasks to large numbers of IPv4 and IPv6 addresses, in parallel, to
 fill a specified packets-per-second rate. Currently, it supports the
@@ -73,7 +68,7 @@ files that scamper can produce in certain modes.
 %package -n libscamperfile-devel
 Summary:        Development headers for scamper's binary dump file access library
 Group:          Development/Libraries/Other
-Requires:       libscamperfile8 = %{version}-%{release}
+Requires:       libscamperfile9 = %{version}-%{release}
 
 %description -n libscamperfile-devel
 Scamper is a program that is able to conduct Internet measurement
@@ -120,16 +115,23 @@ libscamperctrl library.
 
 %build
 export PYTHON=%{_bindir}/python3
-%configure --disable-static --without-debugfile --with-pcre2 --enable-sc_hoiho --enable-sc_uptime --with-python
+# disable pcre2 build in 20240229 because of build failure. Reported upstream
+#%%configure --disable-static --without-debugfile --with-pcre2 --enable-sc_hoiho --enable-sc_uptime --with-python --enable-tests
+%configure --disable-static --without-debugfile --enable-sc_uptime --with-python --enable-tests
 make %{?_smp_mflags}
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n libscamperfile8 -p /sbin/ldconfig
+%check
+pushd tests
+make %{?_smp_mflags}
+popd
+
+%post   -n libscamperfile9 -p /sbin/ldconfig
 %post   -n libscamperctrl2 -p /sbin/ldconfig
-%postun -n libscamperfile8 -p /sbin/ldconfig
+%postun -n libscamperfile9 -p /sbin/ldconfig
 %postun -n libscamperctrl2 -p /sbin/ldconfig
 
 %files
@@ -140,7 +142,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man5/*
 %{python3_sitelib}/scamper.so
 
-%files -n libscamperfile8
+%files -n libscamperfile9
 %{_libdir}/libscamperfile.so.*
 
 %files -n libscamperfile-devel

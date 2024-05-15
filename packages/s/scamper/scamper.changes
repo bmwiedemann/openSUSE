@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Mon May 13 06:41:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix dependency of libscamperfile-devel: require the new
+  libscamperfile9. The last updated bumpted the so-version, which
+  results in a different package name.
+- Drop all obsoletes of libscamperfile9: obsoleting old library
+  packages is explicitly not to be done according to the packaging
+  guidelines around shared libaries.
+
+-------------------------------------------------------------------
+Sun May  5 14:11:00 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+* update to version 20240503:
+ * scamper:
+   * improvements with -N squeries; let -Q send all probes when using -N.
+     add -H wait-probe-hop, which specifies the minimum delay between
+     probes with the same TTL.  identify the hop that would have caused
+     traceroute to stop when not using -N so that a normal traceroute
+     path with one hop representing the destination or stopping hop in
+     the path is rendered.  in the json output, put extra hops beyond
+     the stopping hop into a extra_hops array.
+   * make ring-nolocked the default when using -O ring.
+   * improvements with udpprobe: provide ability to send multiple copies
+     of the same payload, add json output, reuse available UDP sockets
+     where possible.
+   * consistently set and record the IPv4 tos and IPv6 tclass fields for
+     both ping and trace.
+   * fix warts.bz2 and warts.xz output, which could previously use all
+     available space on the file system.
+   * speed up rendering of byte arrays as hex in json output.
+   * fix obtaining IPv6 hoplimit on received packets on MacOS.
+   * record the name of the interface that received IPv4 and IPv6 ICMP
+     responses in ping.
+   * add TXT queries to host command; add chaos query class; add
+     DNS-over-TCP.
+   * fix use of ctype functions according to netbsd (cast all parameters
+     to unsigned char).  make pass through use of ctype functions to do
+     ctype function calls last in most logical statements.
+   * cleanup scamper_file_warts.h so that only necessary struct
+     definitions are in that header.
+ * libscamperfile:
+   * add new functions, bump library version due to udpprobe changes.
+ * python library
+   * improve the usefulness of the ScamperInstError exceptions
+   * let all address parameters to do_() methods also be ScamperAddr
+   * support creation of ScamperAddr from bytes objects
+   * updates to support new functionality in udpprobe primitive
+   * support RR filters on all sections of a DNS response
+   * add tx, rx, and rtt attributes to DNS responses
+   * add qtype=txt, qclass=chaos, tcp DNS queries, and ScamperHostTxt
+     class.
+   * add helper method to get ns and txt records out of ans section
+     -- ans_nses() and ans_txts()
+   * add rx and ifname attributes to ScamperPingReply
+   * add ScamperDealiasProbe.is_from_target() method
+ * configure:
+   * remove obsolete AC_PROG_GCC_TRADITIONAL
+   * fix net/pfvar.h conditional
+ * sc_hoiho:
+   * fix crashes in IP and FNU stages so that router name regular
+     expression inferences work again.
+ * sc_wartscat:
+   * fix index into infiles array
+ * tests:
+   * add tests for string_byte2hex, and json escaping
+   * add unit tests for TXT records
+   * add fuzzing cradle for host_rr_list
+   * in fuzz_cmd cradle, ensure any error strings only contain printable
+     characters.
+
+-------------------------------------------------------------------
 Sat Mar 16 19:34:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 20240229:
