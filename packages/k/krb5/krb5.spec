@@ -55,6 +55,7 @@ BuildRequires:  pkgconfig(com_err)
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libverto)
+BuildRequires:  pkgconfig(lmdb)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(ss)
 BuildRequires:  pkgconfig(systemd)
@@ -189,7 +190,8 @@ DEFCCNAME=DIR:/run/user/%%{uid}/krb5cc; export DEFCCNAME
     --with-selinux \
     --with-system-et \
     --with-system-ss \
-    --with-system-verto
+    --with-system-verto \
+    --with-lmdb
 
 %make_build
 
@@ -428,6 +430,7 @@ done
 %{_sbindir}/sserver
 %{_sbindir}/uuserver
 %{_libdir}/krb5/plugins/kdb/db2.so
+%{_libdir}/krb5/plugins/kdb/klmdb.so
 %{_mandir}/man5/kdc.conf.5%{?ext_man}
 %{_mandir}/man5/kadm5.acl.5%{?ext_man}
 %{_mandir}/man8/kadmind.8%{?ext_man}

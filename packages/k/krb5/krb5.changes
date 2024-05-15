@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 13 14:06:29 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Enable the LMDB backend for KDB
+
+-------------------------------------------------------------------
 Thu May  2 11:57:25 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove requires for not used cron
