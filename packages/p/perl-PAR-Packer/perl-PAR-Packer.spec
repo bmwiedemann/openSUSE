@@ -18,9 +18,10 @@
 
 %define cpan_name PAR-Packer
 Name:           perl-PAR-Packer
-Version:        1.61.0
+Version:        1.63.0
 Release:        0
-%define cpan_version 1.061
+# 1.063 -> normalize -> 1.63.0
+%define cpan_version 1.063
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        PAR Packager
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,11 +33,12 @@ BuildRequires:  perl(Archive::Zip) >= 1.02
 BuildRequires:  perl(Compress::Zlib) >= 1.30
 BuildRequires:  perl(Digest::SHA) >= 5.40
 BuildRequires:  perl(ExtUtils::CBuilder)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.31
 BuildRequires:  perl(Getopt::ArgvFile) >= 1.07
 BuildRequires:  perl(IO::Compress::Gzip)
 BuildRequires:  perl(IPC::Run3) >= 0.048
 BuildRequires:  perl(Module::ScanDeps) >= 1.21
-BuildRequires:  perl(PAR) >= 1.016
+BuildRequires:  perl(PAR) >= 1.20.0
 BuildRequires:  perl(PAR::Dist) >= 0.22
 Requires:       perl(Archive::Zip) >= 1.02
 Requires:       perl(Compress::Zlib) >= 1.30
@@ -44,7 +46,7 @@ Requires:       perl(Digest::SHA) >= 5.40
 Requires:       perl(Getopt::ArgvFile) >= 1.07
 Requires:       perl(IO::Compress::Gzip)
 Requires:       perl(Module::ScanDeps) >= 1.21
-Requires:       perl(PAR) >= 1.016
+Requires:       perl(PAR) >= 1.20.0
 Requires:       perl(PAR::Dist) >= 0.22
 Provides:       perl(App::Packer::PAR) = 0.91
 Provides:       perl(PAR::Filter) = 0.03
@@ -56,7 +58,7 @@ Provides:       perl(PAR::Filter::PodStrip)
 Provides:       perl(PAR::Packer) = %{version}
 Provides:       perl(PAR::StrippedPARL::Base) = 0.975
 Provides:       perl(pp) = 0.992
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 Recommends:     perl(Module::Signature)
 Recommends:     perl(Tk)
 Recommends:     perl(Tk::ColoredButton)
