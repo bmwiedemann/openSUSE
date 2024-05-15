@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar 23 03:06:17 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.9013
+   see /usr/share/doc/packages/perl-Catalyst-Manual/Changes
+
+  5.9013 - 2024-03-22
+      - fix mojibake in metadata
+
+  5.9012 - 2024-02-03
+      - fixed some broken links (Graham Knop, Daniel Böhmer)
+
+-------------------------------------------------------------------
 Tue Jul 28 09:28:38 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.9011
