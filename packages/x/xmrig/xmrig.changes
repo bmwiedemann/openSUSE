@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 15 12:04:33 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.21.3:
+  * v6.21.3
+  * Update CHANGELOG.md
+  * RandomX: correct memcpy size for JIT initialization
+  * RandomX: check pointer sizes during JIT initialization
+  * Use internal logger for error message.
+  * v6.21.3-dev
+
+-------------------------------------------------------------------
 Mon Mar 25 14:01:41 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.21.2:

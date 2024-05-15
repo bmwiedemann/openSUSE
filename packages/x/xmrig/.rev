@@ -676,4 +676,18 @@
   * v6.21.2-dev</comment>
     <requestid>1161422</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>76d0667182dd45dfd4fb25dec9214ae7</srcmd5>
+    <version>6.21.3</version>
+    <time>1715801350</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 6.21.3:
+  * v6.21.3
+  * Update CHANGELOG.md
+  * RandomX: correct memcpy size for JIT initialization
+  * RandomX: check pointer sizes during JIT initialization
+  * Use internal logger for error message.
+  * v6.21.3-dev</comment>
+    <requestid>1174236</requestid>
+  </revision>
 </revisionlist>
