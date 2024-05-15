@@ -313,6 +313,7 @@
     <package name="dconf" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="dconf-editor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dconf-editor-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="ddcutil-i2c-udev-rules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ddskk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="debianutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="debuginfod-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1894,7 +1895,7 @@
     <package name="libdc1394-26" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdca0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdconf1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libddcutil4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libddcutil5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdebuginfod1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdecor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdecor-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3235,7 +3236,6 @@
     <package name="openssh-clients" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="openssh-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="openssh-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="openssh-server-config-rootlogin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="openssl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="openssl-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="opensuse-welcome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
