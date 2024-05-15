@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 14 19:34:12 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.2:
+  * fix source being ignored when using pipewire #557
+  * fix stdlib.h not being included after iniparser upgrade #560
+  * add waveform visualization #484
+  * exit with error if pipewire loop creation fails #561
+
+-------------------------------------------------------------------
 Fri Feb  2 17:50:51 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.10.1:

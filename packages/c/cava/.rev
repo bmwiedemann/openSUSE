@@ -270,4 +270,16 @@
   * default to pulseaudio before sndio</comment>
     <requestid>1143715</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4588c4359b90f9f0234db4d5604790a5</srcmd5>
+    <version>0.10.2</version>
+    <time>1715801253</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.10.2:
+  * fix source being ignored when using pipewire #557
+  * fix stdlib.h not being included after iniparser upgrade #560
+  * add waveform visualization #484
+  * exit with error if pipewire loop creation fails #561</comment>
+    <requestid>1174078</requestid>
+  </revision>
 </revisionlist>
