@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 14 21:10:01 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 5.2.4
+  * This is mostly a bugfix release, including some quality of life
+    improvements for Wayland users on GNU/Linux and Windows users
+    running KVirc as a "portable" app. It also includes an important
+    fix for a crash related to the undo/redo functionality.
+    As a goodie, a new "Vertical line margin" option has been added
+    to the ircview to make your ASCII art look better than ever.
+
+-------------------------------------------------------------------
 Tue Jan 16 09:28:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.2.0
