@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May 15 11:14:38 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.126.1:
+  * Fix mixed case Page params handling in content adapters
+  * Fix paths with dots issue with content adapters
+
+-------------------------------------------------------------------
+Tue May 14 15:45:05 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.126.0:
+  * tpl/tplimpl: Plainify title and description in twitter_cards.html
+  * tpl/tplimpl: Plainify title and description in schema.html
+  * resources/images: Handle NaN EXIF latitude and longitude
+  * Create pages from _content.gotmpl
+  * create/skeletons: Remove superfluous language code fallback
+  * tpl/tplimpl: Improve locale value in opengraph.html
+  * build(deps): bump golang.org/x/net from 0.24.0 to 0.25.0
+  * build(deps): bump golang.org/x/image from 0.15.0 to 0.16.0
+  * livereload: Improve the livereload script build and update to v4.0.2
+  * tpl/tplimpl: Retain query string and fragment in render-image.html
+  * markup/goldmark: Support extras extension
+
+-------------------------------------------------------------------
 Wed May 08 15:29:03 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.125.7:
