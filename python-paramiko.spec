@@ -1,7 +1,7 @@
 #
 # spec file for package python-paramiko
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Patch0:         paramiko-test_extend_timeout.patch
 Patch1:         remove-icecream-dep.patch
 # PATCH-FIX-OPENSUSE use 64-bit value of sys.maxsize to prevent test failure on 32-bit
 Patch2:         use-64-bit-maxsize-everywhere.patch
+# PATCH-FIX-UPSTREAM gh#paramiko/paramiko#2349 Use non-deprecated setup method name to support pytest >= 8
+Patch3:         support-pytest-8.patch
 BuildRequires:  %{python_module PyNaCl >= 1.0.1}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module bcrypt >= 3.2}

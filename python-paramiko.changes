@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 14 03:27:34 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pytest-8.patch:
+  * Use non-deprecated setup method to support pytest >= 8.
+
+-------------------------------------------------------------------
 Wed Dec 20 06:57:15 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.4.0: (CVE-2023-48795, bsc#1218168)
