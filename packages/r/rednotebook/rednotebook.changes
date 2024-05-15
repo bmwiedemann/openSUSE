@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu May  9 20:02:38 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.33 
+  * Ignore image filenames and web links in word clouds (#537, #696, @laraconda).
+  * Add more pre-commit checks (#705, @laraconda).
+
+- Update to version 2.32
+  * Allow copying text in preview mode (#732, Jendrik Seipp).
+  * Allow hashtags that start with (but are longer than) hex colors and preprocessor directives (#738, Jendrik Seipp).
+  * Highlight hashtags and formatting within lists (#744, Jendrik Seipp).
+  * Improve Debian packaging (Phil Wyett).
+  
+- Update to version 2.31
+  * Add basic text replace functionality (#715, @curioussushiroll).
+
+- Update to version 2.30 
+  * Modernize code (#689, @HighnessAtharva and @laraconda).
+  * Fix: Correctly color URLs with hashtags symbols in edit mode (#703, @laraconda).
+  * Add menu item to insert numbered lists (#526, @curioussushiroll).
+
+-------------------------------------------------------------------
 Thu May  4 13:22:31 UTC 2023 - Deepthi Yadabettu Venkatachala <deepthi.venkatachala@suse.com>
 
 - Update to version 2.29.6
