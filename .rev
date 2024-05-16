@@ -106,4 +106,28 @@
   * supports overwriting package (from) information in updatinfo</comment>
     <requestid>1166882</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a9a163c63e3da1a13eccfa4c94464064</srcmd5>
+    <version>0.4.5</version>
+    <time>1715872585</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.5
+  * generate .sha256 files for .iso files</comment>
+    <requestid>1174414</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cd415ea4ace95599a040086778fdc464</srcmd5>
+    <version>0.4.7</version>
+    <time>1715969190</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.7
+  * Support aborting on embargo updates in future
+  * Clean updateinfo.xml from OBS internal elements
+  * Add tagmedia for iso files to support checkmedia command
+
+- update to version 0.4.6
+  * fixing signature creation for -Source and -Debug media
+  * added option to allow to specify an updateinfo id prefix</comment>
+    <requestid>1174868</requestid>
+  </revision>
 </revisionlist>

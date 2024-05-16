@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri May 17 13:36:46 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.7
+  * Support aborting on embargo updates in future
+  * Clean updateinfo.xml from OBS internal elements
+  * Add tagmedia for iso files to support checkmedia command
+
+-------------------------------------------------------------------
+Fri May 17 07:58:33 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.6
+  * fixing signature creation for -Source and -Debug media
+  * added option to allow to specify an updateinfo id prefix
+
+-------------------------------------------------------------------
+Thu May 16 09:04:27 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.5
+  * generate .sha256 files for .iso files
+
+-------------------------------------------------------------------
 Thu Apr 11 12:17:13 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.4.4
