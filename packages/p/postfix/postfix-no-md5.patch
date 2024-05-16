@@ -2,7 +2,7 @@ Index: src/global/mail_params.h
 ===================================================================
 --- src/global/mail_params.h.orig
 +++ src/global/mail_params.h
-@@ -1387,7 +1387,7 @@ extern char *var_smtpd_tls_mand_excl;
+@@ -1391,7 +1391,7 @@ extern char *var_smtpd_tls_mand_excl;
  
  #define VAR_SMTPD_TLS_FPT_DGST	"smtpd_tls_fingerprint_digest"
  #define DEF_SMTPD_TLS_FPT_DGST	"${{$compatibility_level} <level {3.6} ? " \
@@ -11,7 +11,7 @@ Index: src/global/mail_params.h
  extern char *var_smtpd_tls_fpt_dgst;
  
  #define VAR_SMTPD_TLS_512_FILE	"smtpd_tls_dh512_param_file"
-@@ -1549,10 +1549,10 @@ extern char *var_smtp_tls_mand_excl;
+@@ -1553,10 +1553,10 @@ extern char *var_smtp_tls_mand_excl;
  
  #define VAR_SMTP_TLS_FPT_DGST	"smtp_tls_fingerprint_digest"
  #define DEF_SMTP_TLS_FPT_DGST	"${{$compatibility_level} <level {3.6} ? " \
@@ -23,4 +23,4 @@ Index: src/global/mail_params.h
 +                                "{sha1} : {sha256}}"
  extern char *var_smtp_tls_fpt_dgst;
  
- #define VAR_SMTP_TLS_TAFILE	"smtp_tls_trust_anchor_file"
+ #define VAR_SMTP_TLS_ENABLE_RPK	"smtp_tls_enable_rpk"

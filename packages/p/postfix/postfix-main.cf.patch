@@ -71,7 +71,7 @@ Index: conf/main.cf
 +biff = no
 +content_filter = 
 +delay_warning_time = 0h
-+disable_dns_lookups = no
++smtp_dns_support_level = enabled
 +disable_mime_output_conversion = no
 +disable_vrfy_command = yes
 +inet_interfaces = all

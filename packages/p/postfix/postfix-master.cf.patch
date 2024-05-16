@@ -9,7 +9,7 @@ Index: conf/master.cf
 +#amavis    unix  -       -       n       -       4       smtp
 +#  -o smtp_data_done_timeout=1200
 +#  -o smtp_send_xforward_command=yes
-+#  -o disable_dns_lookups=yes
++#  -o smtp_dns_support_level=disabled
 +#  -o max_use=20
  #smtp      inet  n       -       n       -       1       postscreen
  #smtpd     pass  -       -       n       -       -       smtpd

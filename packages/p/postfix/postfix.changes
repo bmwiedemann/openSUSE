@@ -4,6 +4,94 @@ Fri Apr  5 01:44:30 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreut
 - Move qshape(1) out of -doc, install it as a binary with the main package
 
 -------------------------------------------------------------------
+Thu Mar  7 18:42:30 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 3.9.0
+  * As described in DEPRECATION_README, the SMTP server features
+    "permit_naked_ip_address", "check_relay_domains", and
+    "reject_maps_rbl" have been removed, after they have been logging
+    a warning for some 20 years. These features now log a warning
+    and return a "server configuration error" response.
+  * The MySQL client no longer supports MySQL versions < 4.0. MySQL
+    version 4.0 was released in 2003.
+  * As covered in DEPRECATION_README, the configuration parameter
+    "disable_dns_lookup" and about a dozen TLS-related parameters
+    are now officially obsolete. These parameters still work, but
+    the postconf command logs warnings that they will be removed
+    from Postfix.
+  * As covered in DEPRECATION_README, "permit_mx_backup" logs a
+    warning that it will be removed from Postfix.
+  * In message headers, Postfix now formats numerical days as
+    two-digit days, i.e. days 1-9 have a leading zero instead of a
+    leading space. This change was made because the RFC 5322 date
+    and time specification recommends (i.e. SHOULD) that a single
+    space be used in each place that folding white space appears.
+    This change avoids a breaking change in the length of a date
+    string.
+  * The MySQL client default characterset is now configurable with
+    the "charset" configuration file attribute. The default is
+    "utf8mb4", consistent with the MySQL 8.0 built-in default, but
+    different from earlier MySQL versions where the built-in default
+    was "latin1".
+  * Support to query MongoDB databases, contributed by Hamid Maadani,
+    based on earlier code by Stephan Ferraro. See MONGODB_README
+    and mongodb_table(5)
+  * The RFC 3461 envelope ID is now exported in the local(8) delivery
+    agent with the ENVID environment variable, and in the pipe(8)
+    delivery agent with the ${envid} command-line attribute.
+  * Configurable idle and retry timer settings in the mysql: and
+    pgsql: clients. A shorter than default retry timer can sped up
+    the recovery after error, when Postfix is configured with only
+    one server in the "hosts" attribute. After the code was frozen
+    for release, we have learned that Postfix can recover faster
+    from some errors when the single server is specified multiple
+    times in the "hosts" attribute.
+  * Optional Postfix TLS support to request an RFC7250 raw public
+    key instead of an X.509 public-key certificate. The configuration
+    settings for raw key public support will be ignored when there
+    is no raw public key support in the local TLS implementation
+    (i.e. Postfix with OpenSSL versions before 3.2). See RELEASE_NOTES
+    for more information.
+  * Preliminary support for OpenSSL configuration files, primarily
+    OpenSSL 1.1.1b and later. This introduces two new parameters
+    "tls_config_file" and "tls_config_name", which can be used to
+    limit collateral damage from OS distributions that crank up
+    security to 11, increasing the number of plaintext email
+    deliveries. Details are in the postconf(5) manpage under
+    "tls_config_file" and "tls_config_name".
+  * With "smtpd_forbid_unauth_pipelining = yes" (the default),
+    Postfix defends against multiple "blind" SMTP attacks. This
+    feature was back-ported to older stable releases but disabled
+    by default.
+  * With "smtpd_forbid_bare_newline = normalize" (the default)
+    Postfix defends against SMTP smuggling attacks. See RELEASE_NOTES
+    for details. This feature was back-ported to older stable
+    releases but disabled by default.
+  * Prevent outbound SMTP smuggling, where an attacker uses Postfix
+    to send email containing a non-standard End-of-DATA sequence,
+    to exploit inbound SMTP smuggling at a vulnerable remote SMTP
+    server. With "cleanup_replace_stray_cr_lf = yes" (the default),
+    the cleanup daemon replaces each stray <CR> or <LF> character
+    in message content with a space character. This feature was
+    back-ported to older stable releases with identical functionality.
+  * The Postfix DNS client now limits the total size of DNS lookup
+    results to 100 records; it drops the excess records, and logs
+    a warning. This limit is 20x larger than the number of server
+    addresses that the Postfix SMTP client is willing to consider
+    when delivering mail, and is far below the number of records
+    that could cause a tail recursion crash in dns_rr_append() as
+    reported by Toshifumi Sakaguchi. This also introduces a similar
+    limit on the number of DNS requests that a check_*_*_access
+    restriction can make. All this was back-ported to older stable
+    releases with identical functionality.
+- refreshed patch:
+  % postfix-no-md5.patch
+- change obsoleted "disable_dns_lookups" to "smtp_dns_support_level"
+  % postfix-SUSE.tar.gz
+  % postfix-main.cf.patch
+  % postfix-master.cf.patch
+
+-------------------------------------------------------------------
 Tue Mar  5 16:46:16 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.8.6
