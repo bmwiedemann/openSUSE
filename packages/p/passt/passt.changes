@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon May 13 06:50:32 UTC 2024 - dcermak@suse.com
+
+- Update to version 20240510.7288448:
+  * apparmor: allow read access on /tmp for pasta
+  * tcp_splice: Set OUT_WAIT_ flag whenever pipe isn't emptied
+  * udp: Single buffer for IPv4, IPv6 headers and metadata
+  * udp: Use the same buffer for the L2 header for all frames
+  * udp: Share payload buffers between IPv4 and IPv6
+  * udp: Explicitly set checksum in guest-bound UDP headers
+  * udp: Combine initialisation of IPv4 and IPv6 iovs
+  * udp: Split tap-bound UDP packets into multiple buffers using io vector
+  * test: Allow sftp via vsock-ssh in tests
+  * tcp: Update tap specific header too in tcp_fill_headers[46]()
+  * iov: Helper macro to construct iovs covering existing variables or fields
+  * tap, tcp: (Re-)abstract TAP specific header handling
+  * tcp: Simplify packet length calculation when preparing headers
+  * treewide: Standardise variable names for various packet lengths
+  * checksum: Make csum_ip4_header() take a host endian length
+  * treewide: Remove misleading and redundant endianness notes
+  * tap: Remove unused structs tap_msg, tap_l4_msg
+  * tap: Split tap specific and L2 (ethernet) headers
+  * checksum: Use proto_ipv6_header_psum() for ICMPv6 as well
+  * netlink: Fix iterations over nexthop objects
+
+-------------------------------------------------------------------
 Fri May  3 13:35:49 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Specify version for make_build so that passt reports its version correctly,
