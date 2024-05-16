@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 15 11:49:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.42.12:
+  + Fix a build failure,
+  + Fix occasional build failures,
+  + ani: Reject files with multiple INA or IART chunks,
+  + ani: Reject files with multiple anih chunks (CVE-2022-48622),
+  + ani: validate chunk size,
+  + Updated translations.
+- Drop 238893d8cd6f9c2616a05ab521a29651a17a38c2.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Mon May  6 07:03:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Pass -Dothers=enabled to meson: enable other image loaders (most

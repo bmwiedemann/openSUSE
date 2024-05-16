@@ -2,7 +2,7 @@
  <service name="download_url" mode="manual">
    <param name="protocol">https</param>
    <param name="host">download.gnome.org</param>
-   <param name="path">sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.11.tar.xz</param>
+   <param name="path">sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.12.tar.xz</param>
  </service>
  <service name="set_version" mode="manual" />
 </services>
