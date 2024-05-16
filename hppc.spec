@@ -83,6 +83,9 @@ find . -name "*.jar" -print -delete
 %pom_xpath_set "pom:project/pom:properties/pom:maven.compiler.source" "1.8"
 %pom_xpath_set "pom:project/pom:properties/pom:maven.compiler.target" "1.8"
 
+%pom_xpath_inject "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-plugin-plugin']/pom:configuration" "
+  <goalPrefix>hppc-template-processor</goalPrefix>" hppc-template-processor
+
 # Convert from dos to unix line ending
 for file in CHANGES.txt; do
  sed -i.orig 's|\r||g' $file
