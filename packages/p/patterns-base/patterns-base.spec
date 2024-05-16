@@ -156,6 +156,9 @@ Recommends:     service(network)
 # We don't necessarily want zypper in specific minimal environments
 # e.g. buildroots and locked down appliance environments
 Recommends:     zypper
+# We don't necessarily want procps but it's highly useful in default
+# installations
+Recommends:     procps
 # If anything requests "kernel", pick the full kernel package by default
 Suggests:       kernel-default
 # we have two providers for 'pkgconfig(jack)' - prefer the real one to the one from pipewire

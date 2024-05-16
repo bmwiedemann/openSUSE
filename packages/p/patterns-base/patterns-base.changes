@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 14 07:48:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add procps into the base pattern as recommended together
+  with zypper (which dropped the dependency)
+
+-------------------------------------------------------------------
 Mon Apr 29 13:52:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update Summary for generic_desktop pattern: make clear that this
@@ -44,7 +50,7 @@ Sun Sep 10 19:04:21 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 Fri Aug 18 02:33:18 UTC 2023 - Simon Lees <sflees@suse.de>
 
 - move udev-configure-printer from enhanced_base to x11_enhanced
-  Currently it pulls in Cups and Mesa dependencies the first is 
+  Currently it pulls in Cups and Mesa dependencies the first is
   probably not really needed by default on servers and the second
   is certainly not desired there. Originally it was included for
   livecd's
