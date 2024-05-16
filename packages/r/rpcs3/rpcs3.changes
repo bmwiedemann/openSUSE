@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed May 08 12:52:39 UTC 2024 - i@guoyunhe.me
+
+- Update to version 0.0.32~git20240507:
+  * Move cache dir code to utils
+  * Adust vsh cache dir criteria
+  * Qt: disable vsh removal options if vsh is running
+  * Qt: allow to remove vsh cache in context menu
+  * Qt: allow to batch remove vsh cache
+  * VSH: move cache to /cache/vsh/
+  * merge qt_music_error_handler into qt_music_handler
+  * merge qt_camera_error_handler into qt_camera_handler
+  * Qt: replace m_progress_dialog_timer with setMinimumDuration
+  * Qt: properly hide and show progress indicator
+  * Qt: remove seemingly obsolete processEvents
+  * Qt: Keep progress dialog alive to fix rare segfaults
+  * Savestates: Fix avconf serialization
+  * Savestates: Fixup file write
+  * cellVideoOutGetDeviceInfo: Fix Interlace typo for 1080p
+  * Rename enum values to be more precise
+  * Hide interlaced resolutions from the settings dialog
+  * cellVideoOut: support interlaced scan modes
+  * Remove p from resolution strings. The Param.sfo doesn't specificy progressive/interlaced
+  * Allow any 1080p selection if the game supports 1080p
+  * sys: force resolution to 720p if the game does not support the configuration
+  * Qt: Replace custom config resolution string logic with enum values
+  * HLE: use original filename for media exports
+  * Qt/Logs: Fixing spaces, optimize string to html conversion
+  * Add SPRX booting option
+  * Add logging of exported SPRX functions on dummy load
+  * Logging fix
+  * Avoid calling std::vector::data() if empty
+  * Fix some warnings
+  * Thread.cpp: Prevent repeatedly halting the debugger
+  * llvm_calli fix
+  * Win32: Fix deadlock on std::cerr usage
+  * Savestates: Fix rare race
+  * Fixup SPU Profiler
+  * USB: Allow UsbPspCm passthrough
+  * rpcs3_version: Bump to 0.0.32
+  * USB: Update GameTablet
+  * USB: GunCon 3 emulation
+  * USB: Update GameTablet
+  * syscall: Register syscall 149 sys_time_get_system_time
+  * Clamp spu_fi results
+  * SPU LLVM: Remove wrong zero sign fixup
+  * Camera: optimize some loops
+  * cellRtc: review fixes
+  * sys_time: review fixes
+  * cellRtc: set to HLE by default
+  * cellRtc: replace vm::check_addr() with sys_memory_get_page_attribute()
+  * cellRtc: improvements
+  * lv2: stub sys_time syscalls, add error code to sys_ss
+  * Revert "Split normal sockets and p2p sockets handling"
+  * input: use keyboard consumers to seperate cell and overlay logic
+  * Logging improvements
+  * PPU LLVM: Do not crash on linkage of garbage code
+  * Split normal sockets and p2p sockets handling
+  * rsx: optimize some loops
+  * Compile AUDIT on release builds
+  * simplify template code like std::invoke_result<T>::type
+  * simplify template code like std::is_same<T>::value
+  * Don't crash the game if only a LDD controller is present
+  * Fix include on linux
+  * Don't create perf map files in linux unless enabled
+  * Move freopen to console.h
+  * cellRtc: implement remaining parsers, improve formatters (#15451)
+  * Update spurs_test.self
+  * Warning cleanup
+  * cellMusic
+
+-------------------------------------------------------------------
 Sat Apr 20 04:41:58 UTC 2024 - i@guoyunhe.me
 
 - Update to version 0.0.31~git20240420:

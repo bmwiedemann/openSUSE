@@ -18,7 +18,7 @@
 
 
 Name:           whois
-Version:        5.5.22
+Version:        5.5.23
 Release:        0
 Summary:        Intelligent WHOIS client
 License:        GPL-2.0-or-later
@@ -62,7 +62,7 @@ bash command line completion support for whois.
 # the signature is on the Debian .dsc. Extract the checksums and verify against source
 echo "`grep -A1 "Checksums-Sha256" %{SOURCE2} | grep %{name}_%{version}.tar.xz | cut -d\  -f2`  %{SOURCE0}" | sha256sum -c
 
-%autosetup -p1
+%autosetup -p1 -n %{name}
 
 %build
 %make_build all mkpasswd HAVE_LIBIDN2=1 HAVE_ICONV=1 \

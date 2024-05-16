@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 15 15:19:43 UTC 2024 - david.mulder@suse.com
+
+- Update to version 0.3.4+git.0.01d099f:
+  * Version 0.3.4
+  * Only remove cached user if it doesn't exist
+  * Use existing user token at refresh
+  * Always use the spn of the user for nss requests
+  * Generate a fake user token to please SSH
+  * Fix aad-tool to handle MFA
+  * Fix lib_crypto version
+  * Fix user dropping from NSS
+
+-------------------------------------------------------------------
 Fri May 10 18:59:23 UTC 2024 - david.mulder@suse.com
 
 - Himmelblau requires libopenssl-3 for PRT messages.

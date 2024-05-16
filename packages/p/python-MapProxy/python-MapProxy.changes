@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 15 09:18:07 UTC 2024 - ming li <mli@suse.com>
+
+- Update to 2.0.2:
+  * Revert PR "Fix mixed image format for file, S3 and azureblob
+    caches"
+  
+ update to 2.0.1:
+  * Alpine based docker images have been added
+  * Added parameter to change background map source in layer preview
+  * Dependency updates
+  * Rendering issue: Check for existing tile coordinates before
+    using them
+  * Fix mixed image format for file, S3 and azureblob caches
+
+ Remove mapproxy-pr846-nofreetype.patch file
+
+-------------------------------------------------------------------
 Sat Dec 30 09:58:55 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add mapproxy-pr846-nofreetype.patch gh#mapproxy/mapproxy#846

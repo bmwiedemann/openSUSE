@@ -1,7 +1,7 @@
 #
 # spec file for package python-MapProxy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 
 Name:           python-MapProxy
-Version:        2.0.0
+Version:        2.0.2
 Release:        0
 Summary:        Proxy for geospatial data
 License:        Apache-2.0
@@ -35,8 +35,6 @@ Source0:        https://files.pythonhosted.org/packages/source/M/MapProxy/MapPro
 Source1:        https://github.com/mapproxy/mapproxy/raw/%{version}/mapproxy/test/system/fixture/cache.gpkg
 Source2:        https://github.com/mapproxy/mapproxy/raw/%{version}/mapproxy/test/unit/polygons/polygons.geojson
 Source99:       python-MapProxy-rpmlintrc
-# PATCH-FIX-UPSTREAM mapproxy-pr846-nofreetype.patch gh#mapproxy/mapproxy#846
-Patch0:         mapproxy-pr846-nofreetype.patch
 BuildRequires:  %{python_module GDAL}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PyYAML >= 3.0}
@@ -74,7 +72,7 @@ Recommends:     python-Shapely >= 1.8
 Provides:       python-mapproxy = %{version}-%{release}
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
