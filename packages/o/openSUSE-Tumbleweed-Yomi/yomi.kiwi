@@ -102,7 +102,6 @@
 
     <!-- Only if not cloud-init -->
     <package name="jeos-firstboot"/>
-    <package name="fbiterm"/> <!-- Optionally used by jeos-firstboot for non-latin fonts -->
 
     <!-- Not useful with OpenStack -->
     <!-- <package name="firewalld"/> -->

@@ -189,4 +189,13 @@ different profiles.</comment>
 </comment>
     <requestid>1168016</requestid>
   </revision>
+  <revision rev="22" vrev="22">
+    <srcmd5>9c627b2d7ecc069becdabea06caf708f</srcmd5>
+    <version>1.0.0</version>
+    <time>1715842176</time>
+    <user>anag+factory</user>
+    <comment>- Remove fbiterm package dependency
+</comment>
+    <requestid>1174372</requestid>
+  </revision>
 </revisionlist>

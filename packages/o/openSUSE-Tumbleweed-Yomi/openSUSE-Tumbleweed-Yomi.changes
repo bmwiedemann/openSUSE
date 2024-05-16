@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 16 06:36:39 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Remove fbiterm package dependency
+
+-------------------------------------------------------------------
 Tue Apr 16 10:45:22 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Remove size field in the pxeboot image
