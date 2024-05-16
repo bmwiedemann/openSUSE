@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  7 16:14:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 42.0.7:
+  * Restored Windows 7 compatibility for our pre-built wheels.
+    Note that we do not test on Windows 7 and wheels for our next
+    release will not support it. Microsoft no longer provides
+    support for Windows 7 and users are encouraged to upgrade.
+
+-------------------------------------------------------------------
 Tue May  7 07:34:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 42.0.6:

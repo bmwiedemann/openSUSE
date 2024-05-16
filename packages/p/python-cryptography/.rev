@@ -1074,4 +1074,12 @@
   * Fixed compilation when using LibreSSL 3.9.1.</comment>
     <requestid>1172344</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>b9a7a821e4b4651e136ee8489f054300</srcmd5>
+    <version>42.0.7</version>
+    <time>1715872359</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1174053</requestid>
+  </revision>
 </revisionlist>
