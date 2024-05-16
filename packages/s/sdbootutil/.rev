@@ -209,4 +209,12 @@
   * .spec - requires: dialog (forwarded request 1172158 from lnussel)</comment>
     <requestid>1172191</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8d4d894c30f325620c62f5043fd7f5c4</srcmd5>
+    <version>1+git20240514.56dc89c</version>
+    <time>1715872356</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1173988</requestid>
+  </revision>
 </revisionlist>

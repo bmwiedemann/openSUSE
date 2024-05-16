@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 14 12:12:16 UTC 2024 - lnussel@suse.com
+
+- Update to version 1+git20240514.56dc89c:
+  * Add show-entry command
+  * Add SYSTEMD_COLORS flag
+  * Add byte order mark to boot.csv
+
+-------------------------------------------------------------------
 Mon May 06 11:52:10 UTC 2024 - lnussel@suse.com
 
 - Update to version 1+git20240506.573a6a4:
