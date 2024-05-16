@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May 11 07:03:51 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- update to 1.4.2:
+  * Another struct_ops-focused bug fix release. It addresses a few more corner
+    cases when dealing with SEC("struct_ops") programs.
+  * It also improves error messaging around common use case of declaring
+    struct_ops BPF program and not referencing it from SEC(".struct_ops")
+    variable (backed by struct_ops BPF map).
+  * This release should improve overall experience of using BPF struct_ops
+    functionality.
+
+-------------------------------------------------------------------
 Thu May  2 08:19:03 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - update to 1.4.1:
