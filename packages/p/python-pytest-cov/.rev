@@ -332,4 +332,14 @@
     It’s possible that this issue is not present in</comment>
     <requestid>1161491</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>8df36d863963b41f9390a4e9cac4eacd</srcmd5>
+    <version>5.0.0</version>
+    <time>1715872365</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pytest macro.
+- Add patch support-coverage-75.patch:
+  * Support changes in coverage 7.5.</comment>
+    <requestid>1174102</requestid>
+  </revision>
 </revisionlist>

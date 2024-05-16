@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 15 04:22:31 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pytest macro.
+- Add patch support-coverage-75.patch:
+  * Support changes in coverage 7.5.
+
+-------------------------------------------------------------------
 Mon Mar 25 15:17:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.0:

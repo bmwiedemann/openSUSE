@@ -1,0 +1,29 @@
+From 89bd477d5d176666e2d4f3e38983bb69a055a457 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 15 May 2024 14:08:51 +1000
+Subject: [PATCH] Support Coverage 7.5's HTML report changes
+
+Coverage 7.5 now writes out two other files when generating a HTML
+report -- class_index and function_index. We check explicitly for which
+files have been written, so add those two in if coverage is >= 7.5.
+---
+ tests/test_pytest_cov.py | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_pytest_cov.py b/tests/test_pytest_cov.py
+index bd9df38..114d34b 100644
+--- a/tests/test_pytest_cov.py
++++ b/tests/test_pytest_cov.py
+@@ -292,7 +292,11 @@ def test_term_report_does_not_interact_with_html_output(testdir):
+     )
+     dest_dir = testdir.tmpdir.join(DEST_DIR)
+     assert dest_dir.check(dir=True)
+-    assert sorted(dest_dir.visit('**/*.html')) == [dest_dir.join('index.html'), dest_dir.join('test_funcarg_py.html')]
++    expected = [dest_dir.join('index.html'), dest_dir.join('test_funcarg_py.html')]
++    if coverage.version_info >= (7, 5):
++        expected.insert(0, dest_dir.join('function_index.html'))
++        expected.insert(0, dest_dir.join('class_index.html'))
++    assert sorted(dest_dir.visit('**/*.html')) == expected
+     assert dest_dir.join('index.html').check()
+     assert result.ret == 0
+ 

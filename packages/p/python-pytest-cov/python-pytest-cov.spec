@@ -32,6 +32,8 @@ Summary:        Pytest plugin for coverage reporting
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-cov
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-cov/pytest-cov-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#pytest-dev/pytest-cov#643
+Patch0:         support-coverage-75.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -72,7 +74,6 @@ through pytest-cov or through coverage's config file.
 
 %check
 %if %{with test}
-export PYTHONDONTWRITEBYTECODE=1
 echo "import site;site.addsitedir(\"$(pwd)/src\")" > tests/sitecustomize.py
 # test_dist_missing_data - needs internet access
 # test_central_subprocess_change_cwd_with_pythonpath - needs pytest cov in venv which is not doable in OBS build
@@ -82,7 +83,7 @@ donttest="test_dist_missing_data or test_central_subprocess_change_cwd_with_pyth
 donttest+=" or test_contexts"
 # gh#pytest-dev/pytest-cov#565
 donttest+=" or test_dist_boxed"
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}:$PWD/tests py.test-%{$python_bin_suffix} -v -k "not (${donttest})"
+%pytest -v -k "not (${donttest})"
 %endif
 
 %if ! %{with test}
