@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 13 08:31:15 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.19
+  * Fix aws_host_utils_is_ipv6 function by @waahm7 in (#1114)
+- from version 0.9.18
+  * memtrace: Fix underflow when stack_depth < FRAMES_TO_SKIP
+    by @zhaofengli in (#873)
+  * chore: Make CBMC stubs with zero parameters proper
+    declarations by @tautschnig in (#1107)
+  * Satisfy some signed vs unsigned comparison
+    warnings by @KaibaLopez in (#809)
+  * Remove promise class by @waahm7 in (#1110)
+  * Fix host parsing for IPv6 URI by @waahm7 in (#1112)
+
+-------------------------------------------------------------------
 Wed May  8 12:23:34 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.17
