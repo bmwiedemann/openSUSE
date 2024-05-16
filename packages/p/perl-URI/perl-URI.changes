@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 27 03:08:07 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.28
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  5.28      2024-03-27 01:49:44Z
+      - Using Scalar::Util::reftype instead of just ref(), but mindful this time
+        about definedness to avoid warnings (GH#140) (Jacques Deguest)
+
+-------------------------------------------------------------------
 Fri Mar  8 23:11:08 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

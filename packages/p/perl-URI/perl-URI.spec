@@ -18,9 +18,10 @@
 
 %define cpan_name URI
 Name:           perl-URI
-Version:        5.270.0
+Version:        5.280.0
 Release:        0
-%define cpan_version 5.27
+# 5.28 -> normalize -> 5.280.0
+%define cpan_version 5.28
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Uniform Resource Identifiers (absolute and relative)
 URL:            https://metacpan.org/release/%{cpan_name}
